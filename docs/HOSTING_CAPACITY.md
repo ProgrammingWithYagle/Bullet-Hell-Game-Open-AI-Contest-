@@ -1,6 +1,6 @@
 # Hosting capacity and free-tier controls
 
-Checked 2026-10-23. The browser client playtest is registered with Sites, initially private. Registration and an expected URL do not establish deployment. The gameplay service is now deployed on Render Free; actual evidence follows below. Neither registration nor a localhost benchmark establishes public hosting capacity.
+Checked 2026-10-23. The browser client development playtest is deployed publicly at https://grave-accord-playtest.ivoryflame12.chatgpt.site/ after specific user audience approval. The gameplay service is now deployed on Render Free; actual evidence follows below. Neither registration nor a localhost benchmark establishes public hosting capacity.
 
 The Render service form shows Free at $0/month, 0.1 CPU and 512 MB RAM. Initial calibration is bounded to one room and eight reserved slots. Fifty remains an unpassed hosting target. Keep auto-deploy off while validating exact source versions. Use `/api/health` for protocol, content revision, startup and capacity identity.
 
@@ -41,3 +41,7 @@ Evidence: reviews/performance/local-49-plus-rendered-server-protocol4-bounds.jso
 ## First actual Free-host run
 
 Render deployed commit 853a5a64a953691772e0bc829a3237e43788657f on Free, protocol 4, eight reserved slots and one room. Eight actual SDK clients remained active through natural Baby combat, then mutation vote, contract vote and shop. No damage/HP/timer/projectile injection. The sampled window was 58.797 seconds within a sixty-second bounded loop. Encoded outbound was 840,679 bytes; peak server-only RSS was 122,556,416 bytes; natural hostile peak 14. Early rolling p99 peaked at 96.029 ms/max 101.079 ms with 199 samples, falling to 4.472 ms at 261 samples and about 3 ms later in combat. This does not pass a strict all-window 25 ms target or establish 4,000-hostile/50-player capacity. Retain the eight-slot calibration cap pending warmed/restart/endurance/host-stress evidence. All test slots/rooms were released. See reviews/performance/hosted-render-free-eight.json; the rejected first driver attempt is preserved separately.
+
+## Latest access and HTTP observation
+
+At 2026-10-23T19:56:00Z, anonymous Site HTTP returned 200/Grave Accord. Gameplay health returned 200 after 22.318 seconds, with a new startedAt, source 33b36bc, protocol 4, expected content fingerprint and zero occupied rooms/slots. This is one reachability/wake observation, not rendered performance or a cold-start percentile. Supported browser inventory and direct attach now report disabled in Work settings despite the user's working preview. The cause is unknown. Native Sites get_site reports NOT_FOUND for the saved ID; preserve the existing public Site rather than creating a duplicate. Current source copy/handshake changes are not published to the frontend until the saved Site can be accessed.

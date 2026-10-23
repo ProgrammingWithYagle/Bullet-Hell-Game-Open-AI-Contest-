@@ -32,6 +32,43 @@ const register = (r: Room<WorldState>) => {
 };
 
 test(
+  'explicit ready handshake delivers private codes after client handlers attach and permits a real guest join',
+  { timeout: 15000 },
+  async () => {
+    const { server, httpServer } = createGameServer();
+    await server.listen(0, '127.0.0.1');
+    const address = httpServer.address();
+    assert(address && typeof address === 'object');
+    const endpoint = 'http://127.0.0.1:' + address.port;
+    const owner = new Session(endpoint),
+      guest = new Session(endpoint);
+    const opts = {
+      name: 'Private host',
+      classId: 'soldier' as const,
+      mode: 'short' as const,
+      difficulty: 'normal',
+    };
+    try {
+      await owner.connect(opts, undefined, 'private');
+      await until(
+        () =>
+          /^[ABCDEFGHJKLMNPQRSTUVWXYZ23456789]{6}$/.test(owner.code) && owner.status === 'ui.ready',
+      );
+      await guest.connect(
+        { ...opts, name: 'Private guest', classId: 'medic' },
+        { code: owner.code },
+      );
+      await until(() => guest.code === owner.code && guest.view?.players.length === 2);
+      assert.equal(guest.room!.roomId, owner.room!.roomId);
+      assert.deepEqual(await (await fetch(endpoint + '/api/rooms')).json(), []);
+    } finally {
+      await Promise.allSettled([guest.close(), owner.close()]);
+      await server.gracefullyShutdown(false);
+    }
+  },
+);
+
+test(
   'real client supply state and capacity queue admit one slot, support cancellation and never reopen a closed session',
   { timeout: 20000 },
   async () => {

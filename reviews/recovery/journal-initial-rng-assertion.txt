@@ -1,0 +1,41 @@
+✔ journal acknowledges combat before the caller starts it, refreshes every thirty seconds and preserves response-lost event IDs (8.993ms)
+✔ initial outages, invalid acknowledgements and later failures cannot silently re-enable a journal (3.6707ms)
+✖ actual HTTP process restart preserves file-backed boundaries and only one competing owner can claim them (2026.8896ms)
+✔ combat interrupted by a process restart can restore only as Recovery Practice (1764.9445ms)
+✔ HTTP writer authentication binds exact UTF-8 bytes, route, time and nonce; identical event retries need a new nonce (30.9117ms)
+✔ writer transport matches the documented seconds, body-digest and base64url HMAC contract (4.1863ms)
+✔ a valid key cannot impersonate an unconfigured server or key ID, or add unsigned URL queries (2.1465ms)
+✔ authenticated JSON rejects unknown fields, ill-typed restore flags and invalid IDs before changing a run (7.1774ms)
+✔ unauthenticated/oversized writes and ranked registrations are rejected without creating a run (2.8965ms)
+✔ authenticated ledger requests distinguish a stale ownership conflict from unavailable nonce/database storage (4.36ms)
+✔ actual local HTTP client registers, retries, reads and finalizes signed state without following redirects or leaking service access (107.2878ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 10
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4678.9227
+
+✖ failing tests:
+
+test at tests\run-journal.test.ts:1:4642
+✖ actual HTTP process restart preserves file-backed boundaries and only one competing owner can claim them (2026.8896ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 3471308036
+  - -823659260
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\run-journal.test.ts:221:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 3471308036,
+    expected: -823659260,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

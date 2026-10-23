@@ -5,9 +5,18 @@ Meaningful implemented changes are recorded here. Planned work belongs in the Pr
 ## Unreleased
 
 ### Added
+- Published an anonymous two-class development Practice playtest at https://grave-accord-playtest.ivoryflame12.chatgpt.site/ with an eight-slot Render Free calibration service. This is not the full-game/Windows release.
+- Added authenticated 64-KiB checkpoint HTTP transport with documented body-digest signatures, key/server allowlists, durable ten-minute nonce replay prevention and redirect rejection.
+- Added a server lifecycle journal with acknowledged combat-start, thirty-second lease renewal, identical-event retry and one-owner claims. Separate-process HTTP/SQLite restart tests preserve state and reject stale/finalized owners. These components are not yet wired into public gameplay recovery or hosted D1.
+- Corrected production capacity/online Practice copy and private-code delivery after the client ready handshake; the guest-join network test passes.
 - Added eight authoritative consumables, three inventory slots, shared cooldowns, keyboard/pointer/touch-button/gamepad bindings and replicated movement/shields/barriers; final unique supply icons and physical input review remain pending.
 - Added expiring capacity offers, bounded queue/cancellation and server warmup messaging. Protocol is now 4.
 - Added server-only signed boundary serialization and a transactional SQL run ledger with lease/epoch/idempotence/race tests. These foundations are not yet connected to a deployed online recovery or ranking service.
+- Added tested Gatehouse masonry boundaries shared by server and prediction, visible build grades and concrete equivalent squad recommendations.
+- Added illustrated parchment mutation/contract voting and self-hosted multilingual fonts. Desktop assistant browser review covers cards, selection/counts, ratings, supplies and north/south sprites; mutation artwork currently reuses five representative item illustrations. Small-screen and native-language review remain separate.
+- Added crossing volleys and gapped rings to Constable phases, plus a four-phase Brutal runtime variant with doubled health/damage. All sixty bosses have authored Brutal definitions; other boss runtimes remain pending.
+- Added preserved four-direction survivor reference/seed proofs and exact provenance. Four-frame north/south walk strips are integrated for Soldier and Medic with shared anchors and preserved native requests. The complete eight-frame action library remains pending.
+- Passed 68 rules/network tests, strict TypeScript, content checks and production build on the current source. Added a complete new-chat handoff and resume prompt.
 - Expanded the skill catalog to 54 nodes per class: three parent branches, each with three six-node specializations and all eighteen grades D- through SS+. A path costs 21 SP within the 27-SP run budget.
 - Added a skippable four-part first-visit field guide with replay, separate class/route/map/difficulty/review setup pages, character and arena previews, icon-only inventory buttons, a connected skill tree and a numerical item inspector.
 - Added five original painted upgrade item illustrations, preserved native PNGs/alpha and prompts, and integrated 256-pixel runtime assets. Other gameplay icons remain provisional.
@@ -30,16 +39,16 @@ Meaningful implemented changes are recorded here. Planned work belongs in the Pr
 - Authored seven distinct cooldown ultimates with skill-tree upgrades while retaining 378 total skill nodes.
 - Generated and inspected original survivor, boss and Gatehouse art proofs.
 - Added the team-run leaderboard design, including scoring categories and separate squad-size and difficulty boards.
-- Completed 15 AI-authored translation catalogs with 1,475 keys each, including all sixty bosses, content coverage, placeholder checks and plural forms.
+- Completed 15 AI-authored translation catalogs with 1,489 keys each, including all sixty bosses, content coverage, placeholder checks and plural forms.
 - Completed two original arranged music loops, eight editable stems and 25 SFX, with deterministic synthesis and objective signal verification.
 - Added corrected HUDs and eight-frame survivor/boss animation proofs with fixed-pivot atlases and browser playback review.
 - Added strict Stage 1 content, mutation-combination, analytical balance, art, audio and localization validation.
 - Initialized the GitHub Wiki and one production Project with stage, subsystem, priority, status and acceptance-evidence tracking.
 
 ### Known limitations
-- The runtime is a development prototype; full content, signed online recovery, verified leaderboards, a Windows build and public hosting remain in progress.
-- Embedded multilingual fonts, shaped-script/layout review and native-speaker review remain pending.
-- Browser access works after reopening the preview. Local rendered testing is underway; physical-device performance, free-host capacity, endurance and human playtesting remain outstanding.
+- The runtime is a development prototype; full content, signed online recovery, verified leaderboards, a Windows build and full hosting-capacity validation remain in progress.
+- Multilingual fonts are bundled in the source build; latest shaped-script/layout review and native-speaker review remain pending.
+- Supported browser control worked earlier; the latest retry reports disabled in Work settings despite the user opening the preview. Desktop voting/wall/phase/sprite/supply review exists. Foreground rendering, physical devices, free-host capacity, endurance and human playtesting retain individually recorded gates.
 
 ## Changelog policy
 

@@ -6,7 +6,7 @@ The localization data is authored for all fifteen launch locales. Language switc
 
 - `locales/en.json`, `zh-Hans.json`, `zh-Hant.json`, `ja.json`, `es.json`, `fr.json`, `de.json`, `pt-BR.json`, `ru.json`, `hi.json`, `ar.json`, `bn.json`, `id.json`, `ur.json` and `ko.json` are independent UTF-8 runtime-ready data catalogs.
 <!-- localization-counts:start -->
-- Current content version: **0.3.0**. Every catalog has **1,487 flat message keys**, for **22,305 localized messages** across **15 locales**. The count includes three typed plural messages per locale; plural alternatives are additional strings within those messages.
+- Current content version: **0.3.0**. Every catalog has **1,489 flat message keys**, for **22,335 localized messages** across **15 locales**. The count includes three typed plural messages per locale; plural alternatives are additional strings within those messages.
 - Coverage includes 234 menu, lobby, connection, HUD, vote, shop, skill-tree, ending, accessibility, settings, changelog and squad-leaderboard strings; all 5 modes and 6 difficulties; all 7 classes, 21 branches, 14 ordinary abilities and 7 unique ultimates; all 28 weapons, 378 skills, 24 mutations, **60 bosses**, 6 arenas, 8 supplies and 5 upgrades; 53 stat labels; and every attack kind used by the current content catalog.
 <!-- localization-counts:end -->
 - Source wording is editable in `locales/source/`. Its named groups and line order are defined by `source/en.mjs`. The builder rejects missing groups and incorrect line counts. `source/additional.mjs` contains later attack definitions, and `source/plurals.mjs` contains cardinal forms. Final JSON has fully named keys and does not depend on line order at runtime.

@@ -10,7 +10,7 @@ export interface DurableDB {
   prepare(sql: string): Statement;
   batch(statements: Statement[]): Promise<unknown>;
 }
-type Run = {
+export type RunRecord = {
   run_id: string;
   registration_hash: string;
   owner_id: string;
@@ -23,7 +23,12 @@ type Run = {
   ranked: number;
 };
 type Event = { payload_hash: string; response: string };
-type Ack = { sequence: number; ownerEpoch: number; state: Run['state']; ranked: boolean };
+export type RunAck = {
+  sequence: number;
+  ownerEpoch: number;
+  state: RunRecord['state'];
+  ranked: boolean;
+};
 export type LifecycleEvent = {
   runId: string;
   eventId: string;
@@ -51,15 +56,27 @@ export class RunStore {
     private db: DurableDB,
     private signingKey: Uint8Array,
   ) {}
+  private async read<T>(sql: string, values: (string | number | null)[]) {
+    try {
+      return await this.db
+        .prepare(sql)
+        .bind(...values)
+        .first<T>();
+    } catch {
+      throw new RunUnavailable();
+    }
+  }
   async get(runId: string) {
-    return this.db.prepare('SELECT * FROM runs WHERE run_id=?').bind(runId).first<Run>();
+    return this.read<RunRecord>('SELECT * FROM runs WHERE run_id=?', [runId]);
   }
   async register(
     input: { runId: string; ownerId: string; checkpoint: SignedBoundary; ranked: boolean },
     now = Date.now(),
-  ): Promise<Ack> {
+  ): Promise<RunAck> {
     const verified = verifyBoundary(input.checkpoint, this.signingKey, now);
     if (
+      typeof input.runId !== 'string' ||
+      !/^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/i.test(input.runId) ||
       verified.runId !== input.runId ||
       verified.ownerEpoch !== 1 ||
       verified.sequence !== 0 ||
@@ -94,8 +111,10 @@ export class RunStore {
     }
     return { sequence: 0, ownerEpoch: 1, state: 'intermission', ranked: input.ranked };
   }
-  async apply(input: LifecycleEvent, now = Date.now()): Promise<Ack> {
+  async apply(input: LifecycleEvent, now = Date.now()): Promise<RunAck> {
     if (
+      typeof input.runId !== 'string' ||
+      !/^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/i.test(input.runId) ||
       !/^[a-zA-Z0-9_-]{1,64}$/.test(input.eventId) ||
       typeof input.ownerId !== 'string' ||
       !/^[a-zA-Z0-9_-]{1,64}$/.test(input.ownerId) ||
@@ -107,13 +126,13 @@ export class RunStore {
     )
       throw Error('invalidLifecycleEvent');
     const payloadHash = hash(input);
-    const oldEvent = await this.db
-      .prepare('SELECT payload_hash,response FROM run_events WHERE run_id=? AND event_id=?')
-      .bind(input.runId, input.eventId)
-      .first<Event>();
+    const oldEvent = await this.read<Event>(
+      'SELECT payload_hash,response FROM run_events WHERE run_id=? AND event_id=?',
+      [input.runId, input.eventId],
+    );
     if (oldEvent) {
       if (oldEvent.payload_hash !== payloadHash) throw new RunConflict();
-      return JSON.parse(oldEvent.response) as Ack;
+      return JSON.parse(oldEvent.response) as RunAck;
     }
     const run = await this.get(input.runId);
     if (!run) throw new RunConflict();
@@ -127,7 +146,7 @@ export class RunStore {
     ];
     let update = '',
       values: (string | number)[] = [],
-      ack: Ack = {
+      ack: RunAck = {
         sequence: input.expectedSequence,
         ownerEpoch: input.ownerEpoch,
         state: run.state,
@@ -210,11 +229,11 @@ export class RunStore {
         this.db.prepare('UPDATE runs SET ' + update + ' WHERE ' + where).bind(...values, ...guard),
       ]);
     } catch (error) {
-      const duplicate = await this.db
-        .prepare('SELECT payload_hash,response FROM run_events WHERE run_id=? AND event_id=?')
-        .bind(input.runId, input.eventId)
-        .first<Event>();
-      if (duplicate?.payload_hash === payloadHash) return JSON.parse(duplicate.response) as Ack;
+      const duplicate = await this.read<Event>(
+        'SELECT payload_hash,response FROM run_events WHERE run_id=? AND event_id=?',
+        [input.runId, input.eventId],
+      );
+      if (duplicate?.payload_hash === payloadHash) return JSON.parse(duplicate.response) as RunAck;
       if (error instanceof Error && /constraint/i.test(error.message)) throw new RunConflict();
       throw new RunUnavailable();
     }

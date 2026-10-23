@@ -12,7 +12,7 @@ Public discovery/private codes, sixty-second reconnect reservations and boundary
 
 ## Current evidence
 
-- reviews/runtime-verification.json: 56 meaningful tests, strict TypeScript, content/15-locale validation and production build; exact source digest and output hashes. Automated checks do not establish art quality, physical input or human playtesting.
+- reviews/runtime-verification.json: 68 meaningful tests, strict TypeScript, content/15-locale validation and production build; exact source digest and output hashes. Automated checks do not establish art quality, physical input or human playtesting.
 - tests/network.test.ts: actual local SDK/WebSockets for protocol rejection, rooms/privacy, owner changes, duplicate purchases, reconnect, replicated supplies and queue cancellation/admission.
 - tests/supplies.test.ts: all eight actual item effects, no-waste checks, transient shields/barriers, cooldown and fixed-slot limits.
 - tests/signed-boundary.test.ts and tests/run-store.test.ts: signed multiplayer state and actual local SQLite transactions, competing claims, idempotence, stale writes, finalized rejection and Practice downgrade. These are not deployed recovery or D1 evidence.
@@ -32,3 +32,11 @@ Current foreground rendering, physical phone 30 FPS/desktop 60 FPS, free-host ca
 The protocol-4 repeat after the swept-bounds optimization held fifty active players/connections and exactly 4,000 actual hostiles for 90.004 seconds: 2,700 ticks, p99 19.772 ms, maximum 37.428 ms, event-loop p99 71.827 ms and zero rejected inputs. Baseline p99 was 6.662 ms. Revive/elimination/return/reconnect and production-clock votes/shop passed. Combined server/bot RSS was 451,883,008 bytes; encoded stress traffic averaged 105,903 B/s/client, about 19.06 GB/hour for fifty if sustained, excluding transport overhead. This remains a localhost synthetic fixture, not normal-play/WAN/hosted usage. Current rendered frames contained exactly 4,000 hostile images/fifty active players, but the preview was throttled around 1.31 FPS, so current foreground rendering remains unestablished. The pre-optimization protocol-4 run missed the server target at p99 42.515 ms and remains preserved separately. A single before/after run does not prove causality or hardware stability.
 
 Evidence: reviews/performance/local-49-plus-rendered-server-protocol4-bounds.json and reviews/performance/rendered-protocol4-bounds-stress.json. Source/assets/fixture hashes are in the server report. Its source digest covers src/package/lock/Vite; the full verification digest also covers tests and other runtime config, so those two digest definitions are intentionally different.
+
+## Public development playtest and recovery continuation
+
+https://grave-accord-playtest.ivoryflame12.chatgpt.site/ is the published anonymous two-class Practice playtest. The current recorded browser/backend deployment is 33b36bc; read deployment evidence for the exact identity. The official Free host is capped at eight slots/one room. This is partial browser publication, not a Windows/full-game release. Actual assistant browser interaction and public HTTP/artifact evidence are under reviews/hosting/.
+
+The source adds accurate eight-slot production copy, online Practice copy and a ready-only private-code/bootstrap handshake; the new real-network test confirms a guest can join by the delivered code. tests/run-service.test.ts and run-journal.test.ts exercise authenticated HTTP, durable nonce replay rejection, response-loss retry, thirty-second lease renewal, separate-process SQLite restart, competing claims and interrupted-combat Practice recovery. These components are not yet connected to public room recovery/D1/rankings. See RECOVERY_IMPLEMENTATION.md.
+
+The latest supported browser control retry fails with disabled in Work settings, even though the user can open localhost:5173. Current source/UI changes after the recorded live build are not rendered-browser-verified. Native Sites access to the saved ID currently fails too; keep the existing Site and audience. No new foreground/device/full-scene pass is claimed.

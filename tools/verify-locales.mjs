@@ -8,7 +8,7 @@ import { bossExpansionIds, expansionMessages } from '../locales/source/boss-expa
 import { interfaceMessages } from '../locales/source/interface-expansion.mjs';
 import { contractMessages } from '../locales/source/contract-ui.mjs';
 import { suppliesMessages } from '../locales/source/supplies-ui.mjs';
-import { capacityMessages } from '../locales/source/capacity-ui.mjs';
+import { capacityMessages, playtestMessages } from '../locales/source/capacity-ui.mjs';
 
 const defaultRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 export const launchLocales = ['en','zh-Hans','zh-Hant','ja','es','fr','de','pt-BR','ru','hi','ar','bn','id','ur','ko'];
@@ -85,6 +85,7 @@ export function validateOne(document, canonical, content, locale) {
       ...Object.keys(contractMessages('en')),
       ...Object.keys(suppliesMessages('en')),
       ...Object.keys(capacityMessages('en')),
+      ...Object.keys(playtestMessages('en')),
       ...content.skills.filter(x=>x.sourceSkillId&&x.sourceSkillId!==x.id).map(x=>`skill.${x.id}.name`),
       ...['players','encounters','seconds'].map(k=>`count.${k}`),
       ...['weapons','skills','mutations','upgrades'].flatMap(group=>{

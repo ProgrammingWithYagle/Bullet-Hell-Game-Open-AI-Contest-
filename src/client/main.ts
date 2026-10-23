@@ -459,7 +459,7 @@ function renderOverlay(view: View, p: PlayerView) {
     body = `<p>${text('ui.tutorialTeam')}</p>`;
   } else {
     title = t(view.phase === 'victory' ? 'ui.victory' : 'ui.defeat');
-    body = `<p>${text('ui.offlineNotice')}</p><button id="return-menu" class="primary">${text('ui.mainMenu')}</button>`;
+    body = `<p>${text(session?.online ? 'ui.practiceNotice' : 'ui.offlineNotice')}</p><button id="return-menu" class="primary">${text('ui.mainMenu')}</button>`;
   }
   const previous =
     document.activeElement instanceof HTMLElement && overlay.contains(document.activeElement)

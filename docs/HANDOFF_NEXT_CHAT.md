@@ -1,6 +1,6 @@
 # Grave Accord — complete continuation handoff
 
-Updated 2026-10-23. This is a continuation of an authorized game implementation, not a new project or a request to redesign it from scratch. The original handoff was requested to retry browser access; this continuation has working supported browser control. Read this document and IMPLEMENTATION_STATE.md before editing anything.
+Updated 2026-10-23. This is a continuation of an authorized game implementation, not a new project or a request to redesign it from scratch. The original handoff was requested to retry browser access; supported browser control worked earlier, but the latest retry has regressed; current access details are below. Read this document and IMPLEMENTATION_STATE.md before editing anything.
 
 ## 1. Open the correct workspace and preserve the working tree
 
@@ -8,7 +8,7 @@ Updated 2026-10-23. This is a continuation of an authorized game implementation,
 
 `C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)`
 
-Do not start in a clean clone, cloud container, main checkout, or fresh worktree: most current changes have not been committed or pushed. Do not reset, clean, discard, overwrite, or regenerate the working tree indiscriminately. Inspect `git status --short` and the handoff inventory first. The original MIT license remains authoritative for the source.
+Do not start in a clean clone, cloud container, main checkout, or fresh worktree. The preserved original work was committed/pushed as 853a5a6 and the first production connection as 33b36bc; later work must be read from Git status and exact evidence. Do not reset, clean, discard, overwrite, or regenerate the working tree indiscriminately. Inspect `git status --short` and the handoff inventory first. The original MIT license remains authoritative for the source.
 
 - Branch: `feat/first-playable-loop`.
 - Starting published Git HEAD: `47108bd4f60e0e0081407c16bc2941746f707533` — the earlier initial runtime, **not** the latest work on disk.
@@ -16,7 +16,7 @@ Do not start in a clean clone, cloud container, main checkout, or fresh worktree
 - Existing draft PR 14: https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14
 - Current source/content version: **0.3.0**. Protocol: **4**.
 - Content fingerprint: `b8d9fb6918c854f3eed38b327ed0cb3026e071e6fe24932e50beed36943db241`.
-- The latest complete `verify` passed on 2026-10-23: authored-content checks, strict TypeScript, **56 rules and real-network tests**, and production build. `reviews/runtime-verification.json` records the exact current source digest and build artifact hashes; read that JSON after the latest verify run. This does not establish a finished game or current rendered performance.
+- The latest complete `verify` passed on 2026-10-23: authored-content checks, strict TypeScript, **68 rules and real-network tests**, and production build. `reviews/runtime-verification.json` records the exact current source digest and build artifact hashes; read that JSON after the latest verify run. This does not establish a finished game or current rendered performance.
 - A first restricted run failed because SDK fetch could not reach loopback. The identical suite passed with normal reviewed local-network escalation. Do not change expected version-rejection assertions to hide access failures.
 - The handoff's file inventory records paths, sizes and hashes independently of the old commit. It excludes dependencies/build output and its own inventory to avoid circular hashes.
 
@@ -66,7 +66,7 @@ The user observed repetitive Constable animation/attacks and explicitly requeste
 
 ### Language, rankings, audio and polish requirements
 
-- Fifteen launch catalogs: en, zh-Hans, zh-Hant, ja, es, fr, de, pt-BR, ru, hi, ar, bn, id, ur, ko. Simplified and Traditional Chinese are independent. Current catalogs each have **1,487 keys**, total **22,305** messages, **1,200** required content keys. AI-authored translations are not native approval. RTL menus must not reverse game geometry, numbers or rank order.
+- Fifteen launch catalogs: en, zh-Hans, zh-Hant, ja, es, fr, de, pt-BR, ru, hi, ar, bn, id, ur, ko. Simplified and Traditional Chinese are independent. Current catalogs each have **1,489 keys**, total **22,335** messages, **1,200** required content keys. AI-authored translations are not native approval. RTL menus must not reverse game geometry, numbers or rank order.
 - One shared leaderboard row/rank for a team run, with expandable roster including departed/late participants. Four timed modes get bounded score from clear/time/survivors/damage; Endless orders completed progress first, then time through last clear and damage. Do not reward stalling in an unfinished fight. Exact formula, ties, partitions, HMAC/auth, D1 schema, restore/finalize races and outage behavior are specified in `docs/LEADERBOARDS.md` and `content/leaderboards.json`. No durable leaderboard implementation is shipped.
 - Offline/modded/LAN remain Local/Practice, never verified global ranks. Timed base victory stays banked before secret extension. Accessibility options do not invalidate ranks.
 - Original music and SFX are required. Current package has 2 arranged loops, 8 stems and 25 SFX (35 WAVs), with editable deterministic synthesis and objective checks. Final adaptive mix, more complete soundtrack/ambience and human listening remain pending.
@@ -92,15 +92,15 @@ Implemented in source:
 - Constable phase/Brutal source changes pass tests. The attack animation is triggered once per new warning rather than repeatedly throughout the warning.
 - New pooled Phaser projectile images replace three Graphics circles per projectile. All hostile hazards remain visible. A protocol-3 pooled sample measured 110.28 FPS with exactly 4,000 rendered hostiles and fifty active players; current protocol-4 repeat is tracked separately.
 
-Eight usable supplies, queue/cold-start UX, signed boundary serialization and a transactional SQL ledger are now implemented. The signing/ledger foundations are not connected to deployed recovery. Missing systems include full profiles/mastery/unlocks, live authenticated recovery, durable rankings, full content, final art/animations, all-device/input/accessibility polish, hosting verification and Windows/LAN packaging.
+Eight usable supplies, queue/cold-start UX, signed boundaries, transactional SQL ledger, authenticated bounded HTTP transport and a lease/claim journal are implemented. Real separate-process local HTTP/SQLite restart and owner-race tests pass. The journal is not wired to GraveRoom and these foundations are not deployed recovery. Missing systems include full profiles/mastery/unlocks, live authenticated recovery, durable rankings, full content, final art/animations, all-device/input/accessibility polish, hosting verification and Windows/LAN packaging.
 
 ## 5. Current continuation actions
 
-Access to this exact folder, GitHub and supported IAB browser was verified. Browser control is no longer disabled. Follow IMPLEMENTATION_STATE.md, RECOVERY_IMPLEMENTATION.md, HOSTING_CAPACITY.md and FIRST_PLAYABLE.md for current gate evidence. Preserve the original working tree and historical inventories.
+Access to this exact folder and GitHub is verified. Supported IAB worked earlier, but latest inventory/direct-attach calls report disabled in Work settings despite the user seeing enabled settings and a working localhost preview. Cause is unconfirmed. Follow IMPLEMENTATION_STATE.md, RECOVERY_IMPLEMENTATION.md, HOSTING_CAPACITY.md and FIRST_PLAYABLE.md for current gate evidence. Preserve the original working tree and historical inventories.
 
 ## 6. Browser state and evidence limits
 
-Supported IAB controls localhost:5173. A hidden-chat opening request can return queued and the page can render about one FPS despite document.hidden=false. User must have this chat and its game preview visible for an ordinary foreground measurement; do not stimulate every frame with tools or count a background sample as foreground. No broader search permission is needed. Do not use raw CDP/browser packages to bypass supported controls. A requested 390×844 override remained 1280×1228; that screenshot is explicitly not phone evidence.
+Supported IAB controlled localhost:5173 earlier. The latest control retry fails before tab listing or attaching to the localhost tab the user opened, even after a supported session reset. Preview opening and agent control are distinct; do not blame the project or assume the user disabled settings. A hidden-chat opening request can return queued and the page can render about one FPS despite document.hidden=false. User must have this chat and its game preview visible for an ordinary foreground measurement; do not stimulate every frame with tools or count a background sample as foreground. No broader search permission is needed. Do not use raw CDP/browser packages to bypass supported controls. An early requested 390×844 override remained 1280×1228 and is not phone evidence. A later English public home observation measured an actual 390×844 viewport with scrollWidth 390; it remains emulation, not a physical phone, and complete latest-font/RTL review is open.
 
 ## 7. Performance evidence
 
@@ -208,6 +208,14 @@ The analytical 16,716-row model passes for legal **normal** campaign/Raid founda
 - [ ] Matching source, binaries, release archives, package hashes, licenses/notices, downloadable play copy and a fresh download/extraction/startup audit. No final Windows build currently exists.
 - [ ] Updated illustrated Markdown/PDF/design packet if needed; preserve old sealed versions and issue a new version with independent artifact checks.
 - [ ] Contest title, cover, description, playable URL, controls, credits and measured evidence. Record **actual Handshake submission separately**, with no invented submission/eligibility claim.
+
+## Latest publication and access continuation
+
+The user specifically approved public anonymous access to https://grave-accord-playtest.ivoryflame12.chatgpt.site/ after an initial automatic-review rejection. That change succeeded (access revision 2); approval is resolved. Do not ask again or return this Site to private. Deployed source was 33b36bc022452e89be4dbdadd73040e28614aba6, with native deployment appgdep_6adbaf5aab8c81919c915781d3554967 and version appgprj_6adba24c54c4819197768bbc03f2997e~appgver_f8f10d69d6f88191989b55df7fd23fe5. Public assistant browser gameplay exercised a real purchase/start/fire/Q/E/damage/defeat and returned to menu. It is assistant evidence, not a human session. Linked client JS/CSS/worker/sprites matched local build hashes; provider-added script changes delivered HTML bytes. The later HTTPS check returned 200 for Site and health, zero rooms/slots and the matching source/protocol/content.
+
+Current Sites connector get_site reports NOT_FOUND for the saved project ID; this does not prove the public Site was removed. Preserve .openai/hosting.json, existing publication and archive. Do not create another Site or bypass access with expired credentials. Current browser control is also unavailable as described above. Local files and GitHub still work. Render connector can read the exact existing service, but a mutating MCP deploy requires the user-confirmed workspace context. Continue independent code work and explain any concrete remaining connection requirement.
+
+Full verification now passes 68 tests. HTTP authentication follows documented seconds/body-digest/base64url signing, key/server allowlists, ten-minute nonces and 64-KiB limits. The server journal retries identical event IDs, checks acknowledgments, renews leases and claims recovery; tests stop/restart a separate loopback process with persisted SQLite. Its clock and encounter victory are synthetic. It is not yet called by GraveRoom. Live D1, player identity/new-transport binding, historical roster, bounded fifty-player transfer and rankings remain required. See RECOVERY_IMPLEMENTATION.md. Existing v0.2 sealed outputs are unchanged.
 
 ## 11. Historical sealed delivery and GitHub state
 

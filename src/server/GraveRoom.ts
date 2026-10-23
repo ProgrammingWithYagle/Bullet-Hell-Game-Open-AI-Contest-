@@ -151,7 +151,6 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
     }
     this.instrument(client);
     if (!this.state.owner) this.state.owner = client.sessionId;
-    this.welcome(client);
     this.syncState();
   }
   private instrument(client: Client) {
@@ -194,7 +193,6 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
   onReconnect(client: Client) {
     this.game.setConnected(client.sessionId, true);
     this.instrument(client);
-    this.welcome(client);
     this.syncState();
   }
   onLeave(client: Client) {

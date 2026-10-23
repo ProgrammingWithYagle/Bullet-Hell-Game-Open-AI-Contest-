@@ -8,7 +8,7 @@ import { expansionMessages } from './source/boss-expansion.mjs';
 import { interfaceMessages } from './source/interface-expansion.mjs';
 import { contractMessages } from './source/contract-ui.mjs';
 import { suppliesMessages } from './source/supplies-ui.mjs';
-import { capacityMessages } from './source/capacity-ui.mjs';
+import { capacityMessages, playtestMessages } from './source/capacity-ui.mjs';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const catalog = JSON.parse(await readFile(path.join(root, 'content/catalog.json'), 'utf8'));
 const ids = ['en','zh-Hans','zh-Hant','ja','es','fr','de','pt-BR','ru','hi','ar','bn','id','ur','ko'];
@@ -30,6 +30,7 @@ for (const id of ids) {
   Object.assign(messages, contractMessages(id));
   Object.assign(messages, suppliesMessages(id));
   Object.assign(messages, capacityMessages(id));
+  Object.assign(messages, playtestMessages(id));
   // Added specialization nodes reuse the approved localized base names plus an already
   // localized focus label. Numerical effect text is formatted from the authored values.
   for(const skill of catalog.skills)if(skill.sourceSkillId&&skill.sourceSkillId!==skill.id){

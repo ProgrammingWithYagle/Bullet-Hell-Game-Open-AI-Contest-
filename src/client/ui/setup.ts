@@ -8,6 +8,7 @@ import { icon } from './icons.ts';
 import { escape as e } from './html.ts';
 import { tutorial, tutorialSeen } from './tutorial.ts';
 import { savedBoundary } from '../storage.ts';
+import { onlinePlaytestSlots } from '../deployment.ts';
 type Hooks = {
   resume: () => void;
   launch: (
@@ -40,6 +41,12 @@ export function mountSetup(host: HTMLElement, hooks: Hooks) {
     previewMap = arenaId;
   const availableClass = (id: string) => ['soldier', 'medic'].includes(id),
     availableMode = (id: string) => ['short', 'endless'].includes(id);
+  const modeCapacity = (id: string, maximum: number) =>
+    availableMode(id) ? Math.min(maximum, onlinePlaytestSlots ?? maximum) : maximum;
+  const capacityNotice = () =>
+    onlinePlaytestSlots
+      ? `<p class="prototype-note">${e(t('ui.playtestCapacity', { count: number(onlinePlaytestSlots) }))}</p>`
+      : '';
   const steps = ['class', 'mode', 'map', 'difficulty', 'review'];
   const labels: Record<string, string> = {
     home: 'ui.mainMenu',
@@ -65,14 +72,14 @@ export function mountSetup(host: HTMLElement, hooks: Hooks) {
     host.innerHTML = `<div class="expedition-shell ${page === 'home' ? 'at-home' : ''}"><header class="masthead"><button id="brand-home" class="brand">${icon('bell')}<span>GRAVE ACCORD<small>${e(t('ui.tagline'))}</small></span></button><div class="masthead-controls"><label class="sr-only" for="language">${e(t('ui.language'))}</label><select id="language" aria-label="${e(t('ui.language'))}">${languages.map(([id, label]) => `<option value="${id}" ${id === locale ? 'selected' : ''}>${e(label)}</option>`).join('')}</select><button id="guide" class="icon-button" aria-label="${e(t('ui.playTutorial'))}" title="${e(t('ui.playTutorial'))}">${icon('tree')}</button><button id="settings" class="icon-button" aria-label="${e(t('ui.settings'))}">${icon('engineer')}</button></div></header>${stage >= 0 ? `<nav class="setup-steps" aria-label="${e(t('ui.chooseSetup'))}">${steps.map((step, i) => `<button data-page="${step}" class="${i === stage ? 'current' : ''}" ${i > stage ? 'disabled' : ''}><b>${number(i + 1)}</b><span>${e(t(labels[step]))}</span></button>`).join('')}</nav>` : ''}<section id="setup-content" class="setup-content"></section><p id="notice" class="setup-notice" role="status" hidden></p><footer class="setup-footer"><span>0.3.0 · ${e(t('ui.translationNotice'))}</span><a href="https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/wiki" target="_blank" rel="noopener">${e(t('ui.howToPlay'))}</a><a href="https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/CHANGELOG.md" target="_blank" rel="noopener">${e(t('ui.changelog'))}</a></footer></div>`;
     const content = host.querySelector<HTMLElement>('#setup-content')!;
     if (page === 'home')
-      content.innerHTML = `<div class="home-composition"><div class="home-art"><img src="${assets.cover}" alt="Grave Accord"></div><div class="home-actions"><p class="eyebrow">${e(t('ui.chooseSetup'))}</p><h1>${e(t('ui.tagline'))}</h1><div class="home-buttons">${button('new-run', t('ui.newRun'), 'play', 'class="primary"')}${savedBoundary() ? button('resume-boundary', t('ui.resumeCheckpoint'), 'bell') : ''}${button('join', t('ui.joinRoom'), 'rescue')}${button('tutorial', t('ui.tutorial'), 'tree')}</div><p class="prototype-note">${e(prototypeNotice[locale])}</p></div></div>`;
+      content.innerHTML = `<div class="home-composition"><div class="home-art"><img src="${assets.cover}" alt="Grave Accord"></div><div class="home-actions"><p class="eyebrow">${e(t('ui.chooseSetup'))}</p><h1>${e(t('ui.tagline'))}</h1><div class="home-buttons">${button('new-run', t('ui.newRun'), 'play', 'class="primary"')}${savedBoundary() ? button('resume-boundary', t('ui.resumeCheckpoint'), 'bell') : ''}${button('join', t('ui.joinRoom'), 'rescue')}${button('tutorial', t('ui.tutorial'), 'tree')}</div><p class="prototype-note">${e(prototypeNotice[locale])}</p>${capacityNotice()}</div></div>`;
     if (page === 'class') {
       const c = data.classes.find((c) => c.id === previewClass)!;
       content.innerHTML = `<div class="setup-heading"><h1>${e(t(labels[page]))}</h1><p>${e(t('ui.tutorialTeam'))}</p></div><div class="class-composition"><div class="character-roster" role="group" aria-label="${e(t('ui.chooseClass'))}">${data.classes.map((cl) => `<button data-class="${cl.id}" aria-pressed="${cl.id === previewClass}" class="character-pick ${cl.id === previewClass ? 'selected' : ''}">${portrait(cl.id, 'small')}<span>${e(t('class.' + cl.id + '.name'))}<small>${e(cl.survivor)}</small></span>${availableClass(cl.id) ? '' : icon('lock')}</button>`).join('')}</div><div class="character-reveal">${portrait(c.id)}<span class="character-sigil">${icon(c.id)}</span></div><article class="character-story"><span class="eyebrow">${e(c.survivor)}</span><h2>${e(t('class.' + c.id + '.name'))}</h2><p>${e(t('class.' + c.id + '.role'))}</p><p class="lore">${e(t('class.' + c.id + '.lore'))}</p><div class="stat-ribbon"><span>${icon('health')}${number(c.health)} ${e(t('stat.health'))}</span><span>${icon('move')}${number(c.speed)} ${e(t('stat.moveSpeed'))}</span></div><div class="starting-abilities">${[...c.abilities, c.ultimate].map((a) => `<article>${icon(a.slot === 'ultimate' ? 'ultimate' : 'ability')}<div><h3>${e(t('ability.' + a.id + '.name'))}</h3><p>${e(t('ability.' + a.id + '.description'))}</p><small>${e(t('ui.cooldown', { seconds: t('template.seconds', { value: number(a.cooldown) }) }))}</small></div></article>`).join('')}</div>${availableClass(c.id) ? '' : `<p class="availability">${e(t('ui.inProduction'))}</p>`}</article></div>${navigation(!availableClass(c.id))}`;
     }
     if (page === 'mode') {
       const m = modeMap(previewMode);
-      content.innerHTML = `<div class="setup-heading"><h1>${e(t(labels[page]))}</h1></div><div class="route-composition"><div class="route-list">${data.modes.map((m) => `<button data-mode="${m.id}" class="route-pick ${m.id === previewMode ? 'selected' : ''}" aria-pressed="${m.id === previewMode}">${icon(m.id === 'endless' ? 'infinity' : 'map')}<span>${e(t('mode.' + m.id + '.name'))}<small>${number(m.maxPlayers)} ${e(t('ui.players'))}</small></span>${availableMode(m.id) ? '' : icon('lock')}</button>`).join('')}</div><article class="route-detail">${mapPreview('gatehouse')}<div><p class="eyebrow">${e(t('ui.chooseMode'))}</p><h2>${e(t('mode.' + m.id + '.name'))}</h2><p>${e(t('mode.' + m.id + '.description'))}</p><div class="stat-ribbon"><span>${icon('rescue')}${number(m.minPlayers)}–${number(m.maxPlayers)}</span><span>${icon(m.encounters ? 'bell' : 'infinity')}${m.encounters ? number(m.encounters) : '∞'}</span></div><p class="prototype-note">${availableMode(m.id) ? e(prototypeNotice[locale]) : e(t('ui.inProduction'))}</p></div></article></div>${navigation(!availableMode(m.id))}`;
+      content.innerHTML = `<div class="setup-heading"><h1>${e(t(labels[page]))}</h1></div><div class="route-composition"><div class="route-list">${data.modes.map((m) => `<button data-mode="${m.id}" class="route-pick ${m.id === previewMode ? 'selected' : ''}" aria-pressed="${m.id === previewMode}">${icon(m.id === 'endless' ? 'infinity' : 'map')}<span>${e(t('mode.' + m.id + '.name'))}<small>${number(modeCapacity(m.id, m.maxPlayers))} ${e(t('ui.players'))}</small></span>${availableMode(m.id) ? '' : icon('lock')}</button>`).join('')}</div><article class="route-detail">${mapPreview('gatehouse')}<div><p class="eyebrow">${e(t('ui.chooseMode'))}</p><h2>${e(t('mode.' + m.id + '.name'))}</h2><p>${e(t('mode.' + m.id + '.description'))}</p><div class="stat-ribbon"><span>${icon('rescue')}${number(m.minPlayers)}–${number(modeCapacity(m.id, m.maxPlayers))}</span><span>${icon(m.encounters ? 'bell' : 'infinity')}${m.encounters ? number(m.encounters) : '∞'}</span></div><p class="prototype-note">${availableMode(m.id) ? e(prototypeNotice[locale]) : e(t('ui.inProduction'))}</p></div></article></div>${navigation(!availableMode(m.id))}`;
     }
     if (page === 'map') {
       const a = data.arenas.find((a) => a.id === previewMap)!;
@@ -92,7 +99,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks) {
         )
         .join(
           '',
-        )}</div><p class="muted">${e(t('ui.offlineNotice'))}</p>${button('launch', t('ui.play'), 'play', 'class="primary launch"')}</section></div>${navigation(false, true)}`;
+        )}</div><p class="muted">${e(t(visibility === 'offline' ? 'ui.offlineNotice' : 'ui.practiceNotice'))}</p>${capacityNotice()}${button('launch', t('ui.play'), 'play', 'class="primary launch"')}</section></div>${navigation(false, true)}`;
     if (page === 'settings')
       content.innerHTML = `<div class="settings-page"><h1>${e(t('ui.settings'))}</h1>${hooks.settingsHTML()}<div class="actions">${button('back-home', t('ui.back'), 'map')}</div></div>`;
     if (page === 'join')

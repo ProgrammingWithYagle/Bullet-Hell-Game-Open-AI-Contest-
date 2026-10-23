@@ -146,7 +146,7 @@ export function createGameServer() {
               mode: r.metadata.mode,
               difficulty: r.metadata.difficulty,
               players: r.clients.length,
-              maximumPlayers: r.maxClients,
+              maximumPlayers: Math.min(r.maxClients, capacity.limit),
               phase: r.game.phase,
               contentRevision: CONTENT_REVISION,
             })),
