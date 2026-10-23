@@ -1,5 +1,7 @@
 # Implementation backlog and contest acceptance map
 
+**Latest continuation:** [WARDEN_SIGNATURE_REHEARSAL.md](WARDEN_SIGNATURE_REHEARSAL.md) adds eight drawn idle/channel frames (sixteen Warden motion frames total), measured lantern attachments and a separate local Phaser signature rehearsal. Nine new automated checks bring the full suite to 83. The room shares warning/active/rest geometry between rendering and collision; full encounter, network integration and final Phaser motion acceptance remain open. Browser troubleshooting was not repeated. Read current Git status and the exact verification/publication evidence before continuing.
+
 The approved scope includes genuine endless play, fifteen locales, changelogs, team leaderboards, original music/SFX, seven upgradeable ultimates, sixty distinct bosses and the clean-detail art standard. Items become complete only with the listed evidence. All stages are authorized; later gates do not require an additional request for already approved work.
 
 Latest partial S2-08/UI progress: 29 poses normalized at common identity scales, five native setup portraits integrated, one eight-frame Warden attack study and a local art-room tool with browser evidence. Full states/attachments, in-engine boss motion and gameplay remain pending; all five preview classes stay locked. The full 74-test/type/content/build suite passes. Browser control worked for the saved checks and later regressed, so the new offline-match/performance/device gates stay open. See [exact evidence and continuation](ART_NORMALIZATION_AND_MOTION.md).

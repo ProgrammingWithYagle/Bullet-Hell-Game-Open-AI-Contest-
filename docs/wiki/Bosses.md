@@ -1,5 +1,7 @@
 # Bosses
 
+Current Warden source adds a local signature rehearsal and sixteen motion frames (idle/attack/channel). Its warning, rotating cone and trailing wedge are exercised separately from normal matches. Full Warden phases, other attacks, hurt/defeat, networking and final Phaser motion acceptance remain pending. See [the source checkpoint](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/WARDEN_SIGNATURE_REHEARSAL.md).
+
 Sixty identities are authored: fifty in separate timed-route pools, nine exclusive to Endless and The Uncounted. The original eleven-boss sheet is an early identity proof. See [Gauntlets](Gauntlets) for route ownership and production gates. Hollow Constable executes gameplay, including later-phase crossing volleys/gapped rings and a four-phase Brutal variant. The other identities and their complete signatures remain In production.
 
 Contract cards show threat, bounty and recommended build strength, never the next boss identity.

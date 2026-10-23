@@ -88,7 +88,7 @@ function library() {
     button.dataset.art = entry.id;
     button.setAttribute('aria-pressed', String(selected.id === entry.id));
     const motion = entry.kind === 'animation';
-    button.innerHTML = `<span><strong>${escape(entry.name)}</strong><small>${motion ? `${entry.frames} attack frames` : `${entry.frames} reference poses`}</small></span>`;
+    button.innerHTML = `<span><strong>${escape(entry.name)}</strong><small>${motion ? `${entry.frames} motion frames` : `${entry.frames} reference poses`}</small></span>`;
     button.prepend(thumbnail(entry, 0, 55, 67));
     button.addEventListener('click', () => select(entry));
     target.append(button);
@@ -110,7 +110,7 @@ function select(entry: ArtEntry) {
   playing = false;
   element('selected-name').textContent = entry.name;
   element('selected-kind').textContent =
-    `${entry.family === 'survivors' ? 'SURVIVOR' : 'BOSS'} / ${entry.kind === 'animation' ? 'ATTACK MOTION STUDY' : 'DIRECTION & POSE REFERENCE'}`;
+    `${entry.family === 'survivors' ? 'SURVIVOR' : 'BOSS'} / ${entry.kind === 'animation' ? 'MOTION STUDY' : 'DIRECTION & POSE REFERENCE'}`;
   const play = element<HTMLButtonElement>('play');
   play.disabled = entry.kind !== 'animation';
   play.textContent = 'Play';
@@ -129,7 +129,7 @@ function select(entry: ArtEntry) {
     ],
     [
       'Display height',
-      `${entry.displayHeight} world px (maximum pose extent at one shared identity scale)`,
+      `${entry.displayHeight} world px (nominal body height at one shared identity scale)`,
     ],
     ['Source SHA-256', escape(entry.sourceSha256)],
     ['Atlas SHA-256', escape(entry.atlasSha256)],
@@ -219,7 +219,7 @@ function draw() {
     }
     context.fillStyle = paper ? '#3a4d3b' : '#a9bdad';
     context.fillText(
-      `${selected.displayHeight * multiple} px maximum pose extent`,
+      `${selected.displayHeight * multiple} px nominal body height`,
       x - 92,
       baseline + 34,
     );
@@ -330,7 +330,7 @@ Promise.all(
       .filter((entry) => entry.kind === 'animation')
       .reduce((total, entry) => total + entry.frames, 0);
     element('library-summary').textContent =
-      `${new Set(entries.map((entry) => entry.id.replace(/-attack$/, ''))).size} identities · ${poses} reference poses${motionFrames ? ` · ${motionFrames} motion frames` : ''}`;
+      `${new Set(entries.filter((entry) => entry.kind === 'static-reference').map((entry) => entry.id)).size} identities · ${poses} reference poses${motionFrames ? ` · ${motionFrames} motion frames` : ''}`;
     select(entries.find((entry) => entry.id === location.hash.slice(1)) ?? entries[0]);
     if (reducedMotion)
       element('status').title = 'Paused by default; reduced motion preference is respected.';

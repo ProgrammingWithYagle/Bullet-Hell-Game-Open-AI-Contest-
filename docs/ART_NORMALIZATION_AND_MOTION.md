@@ -1,5 +1,7 @@
 # Production art preparation and first Warden motion study
 
+**Successor checkpoint:** [WARDEN_SIGNATURE_REHEARSAL.md](WARDEN_SIGNATURE_REHEARSAL.md) adds idle/channel motion, attachment measurements and a separate local signature exercise. The attack study and historical browser evidence below remain preserved with their original limits.
+
 2026-10-23 continuation in the existing local workspace and `feat/first-playable-loop`. Soldier/Medic and Hollow Constable remain the playable subset. This checkpoint adds prepared assets, five visible setup portraits, and a local art-review tool.
 
 ## Prepared references and portraits

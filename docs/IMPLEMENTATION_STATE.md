@@ -1,5 +1,7 @@
 # Grave Accord implementation state
 
+**Latest continuation:** [WARDEN_SIGNATURE_REHEARSAL.md](WARDEN_SIGNATURE_REHEARSAL.md) adds eight drawn idle/channel frames (sixteen Warden motion frames total), measured lantern attachments and a separate local Phaser signature rehearsal. Nine new automated checks bring the full suite to 83. The room shares warning/active/rest geometry between rendering and collision; full encounter, network integration and final Phaser motion acceptance remain open. Browser troubleshooting was not repeated. Read current Git status and the exact verification/publication evidence before continuing.
+
 The full implementation/publication scope remains authorized. Use the same existing local folder and preserve its work. No new worktree, clone, paid provisioning or subagent delegation is authorized. The complete requirements and remaining deliverables remain in HANDOFF_NEXT_CHAT.md and IMPLEMENTATION_BACKLOG.md.
 
 ## Current snapshot — 2026-10-23

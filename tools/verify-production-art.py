@@ -25,7 +25,8 @@ def verify():
     library = read('assets/production/normalized/library.json')
     references = [entry for entry in library['entries'] if entry['kind'] == 'static-reference']
     motions = [entry for entry in library['entries'] if entry['kind'] == 'animation']
-    assert len(references) == 8 and len(motions) == 1
+    assert len(references) == 8
+    assert {entry['id'] for entry in motions} == {'lantern-warden-attack', 'lantern-warden-idle', 'lantern-warden-channel'}
     assert sum(entry['frames'] for entry in references) == 29
     native_manifest = read('docs/art-production-2026-10-23.json')
     historical_inventory = read('reviews/art-production-2026-10-23/inventory.json')
@@ -63,7 +64,7 @@ def verify():
             portrait_count += 1
     assert portrait_count == 5
     packing = read('reviews/art-normalization-2026-10-23/warden-attack-packing.json')
-    motion = motions[0]
+    motion = next(entry for entry in motions if entry['id'] == 'lantern-warden-attack')
     assert packing['atlasSha256'] == motion['atlasSha256']
     assert sum(motion['frameDurationsMs'][:4]) == 1200
     assert len(motion['frameDurationsMs']) == motion['frames'] == 8
@@ -89,7 +90,7 @@ def verify():
         if original_path.is_file():
             assert sha(copy) == sha(original_path), 'Generated original and preserved project native differ'
     report = {'schemaVersion': 1, 'passed': True, 'referenceIdentities': 8, 'referencePoses': 29,
-              'motionStudies': 1, 'motionFrames': 8, 'nativePixelExactPortraits': portrait_count,
+              'motionStudies': len(motions), 'motionFrames': sum(entry['frames'] for entry in motions), 'nativePixelExactPortraits': portrait_count,
               'previousBatchNativesUnchanged': len(historical_inventory['nativeSources']),
               'motionSourceRectanglesConserveAllRGBAPixels': True, 'anticipationMs': 1200,
               'librarySha256': sha(project_file('assets/production/normalized/library.json')),
