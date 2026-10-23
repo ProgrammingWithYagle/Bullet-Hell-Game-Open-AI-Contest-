@@ -15,6 +15,11 @@ import medicNorth from '../../assets/sprites/medic/north-walk.png?url';
 import medicSouth from '../../assets/sprites/medic/south-walk.png?url';
 import medicEast from '../../assets/proofs/directions/medic-east-seed.png?url';
 import medicWest from '../../assets/proofs/directions/medic-west-seed.png?url';
+import heavyPortrait from '../../assets/production/normalized/survivors/heavy/portrait-south-v1.png?url';
+import tankPortrait from '../../assets/production/normalized/survivors/tank/portrait-south-v1.png?url';
+import magePortrait from '../../assets/production/normalized/survivors/mage/portrait-south-v1.png?url';
+import engineerPortrait from '../../assets/production/normalized/survivors/engineer/portrait-south-v1.png?url';
+import assassinPortrait from '../../assets/production/normalized/survivors/assassin/portrait-south-v1.png?url';
 export const assets = {
   arena,
   cover,
@@ -23,6 +28,13 @@ export const assets = {
   medic,
   lineup,
   directions: { soldierNorth, soldierSouth, medicNorth, medicSouth, medicEast, medicWest },
+  portraits: {
+    heavy: heavyPortrait,
+    tank: tankPortrait,
+    mage: magePortrait,
+    engineer: engineerPortrait,
+    assassin: assassinPortrait,
+  } as Record<string, string>,
   upgrades: {
     damage: damageIcon,
     'fire-rate': rateIcon,

@@ -31,8 +31,10 @@ let arenaId = 'gatehouse',
 export const setupOptions = () => ({ ...selected });
 export function portrait(classId: string, size = 'large') {
   const index = data.classes.findIndex((c) => c.id === classId);
-  const isolated = classId === 'medic';
-  return `<div class="survivor-portrait ${size} ${isolated ? 'isolated' : ''}" role="img" aria-label="${e(data.classes[index]?.survivor ?? '')}" style="--person:${index};background-image:url('${isolated ? assets.medic : assets.lineup}')"></div>`;
+  const productionPortrait = assets.portraits[classId];
+  const isolated = classId === 'medic' || Boolean(productionPortrait);
+  const image = productionPortrait ?? (classId === 'medic' ? assets.medic : assets.lineup);
+  return `<div class="survivor-portrait ${size} ${isolated ? 'isolated' : ''}" role="img" aria-label="${e(data.classes[index]?.survivor ?? '')}" style="--person:${index};background-image:url('${image}')"></div>`;
 }
 export function mountSetup(host: HTMLElement, hooks: Hooks) {
   let page = 'home',

@@ -2,6 +2,8 @@
 
 The approved scope includes genuine endless play, fifteen locales, changelogs, team leaderboards, original music/SFX, seven upgradeable ultimates, sixty distinct bosses and the clean-detail art standard. Items become complete only with the listed evidence. All stages are authorized; later gates do not require an additional request for already approved work.
 
+Latest partial S2-08/UI progress: 29 poses normalized at common identity scales, five native setup portraits integrated, one eight-frame Warden attack study and a local art-room tool with browser evidence. Full states/attachments, in-engine boss motion and gameplay remain pending; all five preview classes stay locked. The full 74-test/type/content/build suite passes. Browser control worked for the saved checks and later regressed, so the new offline-match/performance/device gates stay open. See [exact evidence and continuation](ART_NORMALIZATION_AND_MOTION.md).
+
 | ID | Stage | Subsystem | Priority | Deliverable and acceptance evidence | Rubric |
 | --- | --- | --- | --- | --- | --- |
 | S1-01 | Stage 1 | Design | P0 | Versioned complete catalog; unique IDs, units and no unresolved entries; content validator | Execution |

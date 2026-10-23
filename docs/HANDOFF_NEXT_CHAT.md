@@ -2,6 +2,8 @@
 
 Updated 2026-10-23. This is a continuation of an authorized game implementation, not a new project or a request to redesign it from scratch. The original handoff was requested to retry browser access; supported browser control worked earlier, but the latest retry has regressed; current access details are below. Read this document and IMPLEMENTATION_STATE.md before editing anything.
 
+**Latest continuation:** [ART_NORMALIZATION_AND_MOTION.md](ART_NORMALIZATION_AND_MOTION.md) records 29 normalized static poses, five native portraits now integrated into setup, and one eight-frame Warden attack study. The local review page is `http://127.0.0.1:5173/tools/art-review.html#lantern-warden-attack`. Preserved prompts/natives, exact crops, atlas measurements, pixel/hash audit and screenshots live under assets/production and reviews/art-normalization-2026-10-23. Five new classes stay In production; Warden gameplay/full action libraries remain pending. Current source passes all 74 tests/content/type/build checks. Browser control worked for the saved art/portrait checks, then again returned disabled in Work settings during an incomplete offline-match smoke test. Preserve the later access interruption and capture limitations. Continue art/actions/encounter review and remaining first-loop gates; no repeat permission troubleshooting is needed. Read actual Git HEAD/status and publication evidence, not historical commit IDs below.
+
 ## 1. Open the correct workspace and preserve the working tree
 
 **Use this existing local folder, including its uncommitted changes:**

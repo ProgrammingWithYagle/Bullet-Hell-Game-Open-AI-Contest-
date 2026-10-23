@@ -2,6 +2,8 @@
 
 The implementation plan is approved. Status entries below report observed completion. Full runtime and release gates remain in IMPLEMENTATION_BACKLOG.md.
 
+Latest art/UI checkpoint: five native portraits are integrated with class locks preserved; 29 static poses are normalized; an eight-frame Warden attack study and local art room have structural and assistant browser evidence. Full animation/encounter/in-engine approval remains pending. Browser review includes desktop and phone viewport emulation, followed by a later disabled-control interruption; no new completed match/device/performance pass is inferred. See [ART_NORMALIZATION_AND_MOTION.md](ART_NORMALIZATION_AND_MOTION.md).
+
 | Area | Target | Observed state |
 | --- | --- | --- |
 | Design content | 7 classes / 378 skills / 28 weapons / 24 mutations / 6 arenas / 60 bosses / 7 ultimates | Authored and strict source checks pass |

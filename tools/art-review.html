@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Grave Accord · Art room</title>
+  </head>
+  <body>
+    <header>
+      <a class="wordmark" href="/">GRAVE ACCORD <span>/ ART ROOM</span></a>
+      <span class="workspace-tag">LOCAL PRODUCTION REVIEW</span>
+    </header>
+    <main>
+      <aside aria-label="Art library">
+        <p class="eyebrow">THE FIELD ARCHIVE</p>
+        <h1>People of the cordon.</h1>
+        <p class="intro">
+          Survivors, strange officials, and the things they carry. Inspect their silhouettes before
+          they enter the field.
+        </p>
+        <div id="library-summary" class="summary"></div>
+        <nav aria-label="Filter art">
+          <button data-filter="all" aria-pressed="true">All</button>
+          <button data-filter="survivors" aria-pressed="false">Survivors</button>
+          <button data-filter="bosses" aria-pressed="false">Bosses</button>
+        </nav>
+        <div id="library"></div>
+      </aside>
+      <section class="workbench" aria-labelledby="selected-name">
+        <div class="selection-header">
+          <div>
+            <p id="selected-kind" class="eyebrow"></p>
+            <h2 id="selected-name">Loading archive…</h2>
+          </div>
+          <a id="native-link" target="_blank" rel="noopener">Open native ↗</a>
+        </div>
+        <div class="stage">
+          <canvas
+            id="stage"
+            width="960"
+            height="560"
+            aria-label="Selected art at gameplay size and twice gameplay size"
+          ></canvas>
+          <div class="stage-legend">
+            <span id="status">Loading preserved art</span
+            ><span>1× &nbsp; / &nbsp; 2× WORLD SCALE</span>
+          </div>
+        </div>
+        <div class="transport">
+          <button id="play" disabled>Play</button><button id="step">Next frame</button>
+          <output id="frame-label"></output>
+          <label
+            >Speed
+            <select id="speed">
+              <option value="0.5">½×</option>
+              <option value="1" selected>1×</option>
+              <option value="2">2×</option>
+            </select></label
+          >
+        </div>
+        <div id="frames" class="frames" aria-label="Select pose or animation frame"></div>
+        <div class="view-options">
+          <label
+            >Ground
+            <select id="ground">
+              <option value="teal">Dark teal</option>
+              <option value="paper">Paper</option>
+              <option value="checker">Alpha checker</option>
+            </select></label
+          >
+          <label><input id="anchors" type="checkbox" checked /> Feet anchors</label>
+          <label><input id="hazards" type="checkbox" /> Illustrative hazards</label>
+          <label><input id="onion" type="checkbox" /> Previous frame</label>
+        </div>
+        <p id="asset-note" class="asset-note"></p>
+        <details>
+          <summary>Atlas and provenance</summary>
+          <dl id="metadata"></dl>
+        </details>
+      </section>
+    </main>
+    <footer>
+      Art preparation and assistant review. Static references are not animations; motion studies are
+      not playable encounters. Human and physical-device review remain separate.
+    </footer>
+    <script type="module" src="./art-review.ts"></script>
+  </body>
+</html>

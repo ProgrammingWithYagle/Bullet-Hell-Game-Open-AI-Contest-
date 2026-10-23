@@ -24,5 +24,10 @@ if(fs.existsSync(path.join(root,'assets/proofs/directions/walk-normalization.jso
     if(target){target.status='prototype-runtime-full-contract-pending';target.runtimeProof={file:proof.atlas,sha256:proof.atlasSha256,frames:proof.frames,fps:proof.fps,pivot:proof.pivot,displayCellWorldPixels:128,provenance:'docs/direction-walk-requests.json',normalization:'assets/proofs/directions/walk-normalization.json'};}
   }
 }
+if(fs.existsSync(path.join(root,'assets/production/normalized/library.json'))){
+  const production=read('assets/production/normalized/library.json');
+  manifest.productionReferenceLibrary={file:'assets/production/normalized/library.json',reviewTool:'tools/art-review.html',normalization:'reviews/art-normalization-2026-10-23/normalization.json',references:production.entries.filter(a=>a.kind==='static-reference'),limits:'Static references and setup portraits do not complete survivor actions or enable new classes.'};
+  manifest.productionMotionStudies=production.entries.filter(a=>a.kind==='animation');
+}
 fs.writeFileSync(path.join(root,'docs/ASSET_MANIFEST.json'),JSON.stringify(manifest,null,2)+'\n');
 console.log(JSON.stringify({assets:assets.length,survivorFrames:840,bossFrames:c.bosses.length*23}));

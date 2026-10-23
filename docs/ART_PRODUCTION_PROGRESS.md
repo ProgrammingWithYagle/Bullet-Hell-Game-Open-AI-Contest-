@@ -43,6 +43,8 @@ Assistant inspection found distinct class color/silhouette/equipment at 56 pixel
 
 ## Next production work
 
-Normalize the selected references to the existing 256-pixel survivor and 512-pixel boss cell contracts. Preserve native proportions and common scale/anchors; do not stretch individual views to equal height. Then produce/review actual idle, run, attack, hurt, dash and downed motion for survivors, and idle, attack, hurt and defeat motion for bosses. The existing baseline contracts require 120 frames per survivor across four facings and 23 per boss before additional phase/signature states. This reference batch closes none of those full animation contracts.
+The selected references have now been normalized to the existing 256-pixel survivor and 512-pixel boss cell contracts, with common identity scales and documented static foot anchors. Five native south-view crops are integrated into setup portraits. A new eight-frame Lantern Warden attack study has browser/cell review; its full states and Phaser encounter remain pending. See [normalization, motion and current evidence](ART_NORMALIZATION_AND_MOTION.md).
+
+Continue actual idle, run, attack, hurt, dash and downed motion for survivors, and idle, attack, hurt and defeat motion for bosses. The existing baseline contracts require 120 frames per survivor across four facings and 23 per boss before additional phase/signature states. Static normalization and one motion study do not close those complete contracts.
 
 Continue the opening-route boss identities and their signature effects/minions/props, then other route pools and arena kits. Runtime remains marked In production until its gameplay, animation, localization and QA are implemented. Preserve authored content, static art, synthetic tests, assistant observations and human/device findings as separate evidence.

@@ -2,6 +2,8 @@
 
 Soldier and Medic fight Hollow Constable in Gatehouse. Five-fight practice and uncapped prototype Endless reuse Constable variants. Sixty distinct boss designs are authored; their gameplay is still in production. This is a development playtest, not the full game release.
 
+The latest [art continuation](ART_NORMALIZATION_AND_MOTION.md) integrates five new setup portraits while keeping those classes In production, normalizes 29 static poses and adds a Warden attack study. The local art room has assistant browser review; the Warden is not playable. Current source passes 74 tests/type/content/build verification. Browser control worked for these checks, then regressed to disabled in Work settings during a new, incomplete offline-match smoke test. Earlier current-browser-unavailable statements below retain historical context; see the new evidence for the surfaces actually reviewed.
+
 ## Run from source
 
 Node 24 and pnpm 11.25.0: install with pnpm install --frozen-lockfile, verify with pnpm verify, then run pnpm dev and pnpm server in separate terminals. Client: http://localhost:5173/; default service: 127.0.0.1:2567. VITE_GAME_SERVER sets a different browser endpoint; CLIENT_ORIGINS is the allowed-origin list. Offline solo runs the shared rules in a worker without a multiplayer server. Protocol is 4; incompatible old saves/clients are rejected. LAN hosting and portable Windows packaging remain pending.

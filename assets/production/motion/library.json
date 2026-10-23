@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "entries": [
+    {
+      "id": "lantern-warden-attack",
+      "name": "Lantern Warden \u00b7 Attack",
+      "family": "bosses",
+      "kind": "animation",
+      "atlas": "assets/production/motion/lantern-warden-attack-v2-atlas.png",
+      "source": "assets/production/bosses/lantern-warden/attack-sheet-v2.png",
+      "sourceSha256": "23b215ba839dbe82967291d92217dcd8583ca9f9db8292e5b21f2cb435f5792a",
+      "atlasSha256": "f25c083a176b0b6f634228e0bd8eb03d1f8ddf598812e80fb27b4801a8f36fc2",
+      "cellSize": 512,
+      "columns": 4,
+      "frames": 8,
+      "labels": [
+        "neutral",
+        "lift",
+        "shoulder",
+        "anticipation",
+        "release",
+        "return",
+        "lower",
+        "settle"
+      ],
+      "origin": [
+        0.5,
+        0.83984375
+      ],
+      "displayHeight": 150,
+      "displayCell": 223.25581395348837,
+      "fps": 10,
+      "frameDurationsMs": [
+        160,
+        260,
+        320,
+        460,
+        120,
+        160,
+        200,
+        180
+      ],
+      "status": "Assistant motion study; gameplay integration pending",
+      "notes": "Eight drawn frames. Preview holds the first four poses for 1.2 seconds before release. Planted-foot translations and one common scale correct source-sheet spacing. This is an art timing study; the authored rotating cone, safe wedge and boss encounter are still pending."
+    }
+  ]
+}

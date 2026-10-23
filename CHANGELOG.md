@@ -5,6 +5,7 @@ Meaningful implemented changes are recorded here. Planned work belongs in the Pr
 ## Unreleased
 
 ### Added
+- Integrated five native production portraits into class selection while retaining their In production locks. Normalized twenty survivor directions and nine boss poses with recorded scales/anchors and preserved originals. Added a local art room and an eight-frame Lantern Warden attack study with a 1.2-second anticipation, exact generation provenance, pixel/hash audits and assistant browser review; the complete Warden encounter and action libraries remain pending. See docs/ART_NORMALIZATION_AND_MOTION.md.
 - Added five four-direction survivor production references and three new individual boss pose studies (20 views/nine poses), with exact prompts, seventeen preserved natives and static 1x/2x readability/alpha/hash review. These are not completed animation sets or new playable classes/bosses. See docs/ART_PRODUCTION_PROGRESS.md.
 - Published an anonymous two-class development Practice playtest at https://grave-accord-playtest.ivoryflame12.chatgpt.site/ with an eight-slot Render Free calibration service. This is not the full-game/Windows release.
 - Added authenticated 64-KiB checkpoint HTTP transport with documented body-digest signatures, key/server allowlists, durable ten-minute nonce replay prevention and redirect rejection.
