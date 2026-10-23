@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "reviewer": "OpenAI assistant visual inspection",
+  "humanArtReviewPerformed": false,
+  "backendReportedModel": null,
+  "proofs": [
+    {
+      "id": "Cover",
+      "file": "assets/proofs/cover-v1.png",
+      "sha256": "d841a1a1cbc2daae8d388e816dd49543c999c5182070332929dcc7b5c78b03c1",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "hasTransparentPixels": false,
+      "passed": true,
+      "review": "Original dry-ink/matte-gouache poster, legible wordmark and restrained palette. Full composition inspected."
+    },
+    {
+      "id": "Survivors",
+      "file": "assets/proofs/survivors-v3.png",
+      "sha256": "bf9cc0b3c15bfceb0cbe9658e17ca6fb18f59c023d479f0b0b75432f8f853967",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGBA",
+      "hasTransparentPixels": true,
+      "passed": true,
+      "review": "Seven distinct adults in the required order; third reference has calmer coat panels and focal face/hand/prop detail. Native and gameplay-size review recorded in clean-detail-review.json. Production animation still requires new finish review."
+    },
+    {
+      "id": "Bosses",
+      "file": "assets/proofs/bosses-v1.png",
+      "sha256": "f9988d4af26a6a12ef7a7ec8e335776b5763a6343c5aa53a334ec8148380db94",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGBA",
+      "hasTransparentPixels": true,
+      "passed": true,
+      "review": "Eleven distinct undead civic identities in two rows; all full figures visible. Suitable silhouette and art authority."
+    },
+    {
+      "id": "Arena",
+      "file": "assets/proofs/arena-v1.png",
+      "sha256": "b5edf920d23f7672895f18313e933e3b247b8a2271780d91d6bf66721184cc26",
+      "width": 1586,
+      "height": 992,
+      "mode": "RGB",
+      "hasTransparentPixels": false,
+      "passed": true,
+      "review": "Broad quiet central ground, readable fountain cover and outer paths. Collision-aligned Gatehouse rectangles authored in catalog."
+    },
+    {
+      "id": "Desktop HUD",
+      "file": "assets/proofs/hud-desktop-v1.png",
+      "sha256": "2e3c48116c3b4da4be457ec0063e2395c8166f308f66da0468e9c114689dbcd3",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "hasTransparentPixels": false,
+      "passed": true,
+      "review": "Second generation corrects boss and survivor identities; health, timer, ammo, dodge/Q/E/ultimate and party hierarchy are clear. Composition proof; baked mockup text is not a runtime UI asset."
+    },
+    {
+      "id": "Phone HUD",
+      "file": "assets/proofs/hud-phone-v1.png",
+      "sha256": "13f7268d6b711cc56056c295fa10a1816a4b6c40de5d485f2d1134e3e67514c9",
+      "width": 1844,
+      "height": 853,
+      "mode": "RGB",
+      "hasTransparentPixels": false,
+      "passed": true,
+      "review": "Second generation corrects Constable and Medic and adds interact hand. Landscape dual sticks, dodge/Q/E, ultimate and pause are distinct and inset. Physical-device touch testing remains pending."
+    },
+    {
+      "id": "Survivor animation",
+      "file": "assets/proofs/soldier-run-v1.png",
+      "sha256": "cfa25b3f2237f830b1419119a0a3fd71fb99adae4664712dde9e6ab12b902ebc",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGBA",
+      "hasTransparentPixels": true,
+      "passed": true,
+      "review": "Eight same-facing poses, stable cap/face/coat/pistol, alternating run legs. Packed at a common scale and fixed anchor. Viewed source cells and browser GIF at gameplay and 2x size."
+    },
+    {
+      "id": "Boss animation",
+      "file": "assets/proofs/boss-attack-v1.png",
+      "sha256": "27f8c83927e9b168f57ef9f1b8db9caca58f2a0ab8ac9130bf98853d2ad9b4af",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGBA",
+      "hasTransparentPixels": true,
+      "passed": true,
+      "review": "Eight same-facing anticipation/cast/recovery poses, consistent bell/cap/anatomy. Regenerated for cell separation. Viewed source cells and browser GIF at gameplay and 2x size."
+    }
+  ],
+  "limitations": [
+    "These are preproduction proofs, not a complete production asset library.",
+    "HUD images are visual compositions; all functional UI text will be localized DOM/game UI.",
+    "Physical phone input and human aesthetic approval remain later verification."
+  ]
+}

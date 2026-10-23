@@ -1,0 +1,2235 @@
+[
+  {
+    "id": "soldier-ballistics-1",
+    "classId": "soldier",
+    "branchId": "ballistics",
+    "branchName": "Ballistics",
+    "name": "Clean Bore",
+    "depth": 1,
+    "cost": 1,
+    "grade": "D-",
+    "prerequisite": null,
+    "capstone": false,
+    "effects": {
+      "weaponDamage": 0.08,
+      "fireRate": 0
+    },
+    "description": "weaponDamage: +0.08; fireRate: +0. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "soldier-ballistics-2",
+    "classId": "soldier",
+    "branchId": "ballistics",
+    "branchName": "Ballistics",
+    "name": "Measured Pair",
+    "depth": 2,
+    "cost": 2,
+    "grade": "C-",
+    "prerequisite": "soldier-ballistics-1",
+    "capstone": false,
+    "effects": {
+      "weaponDamage": 0.1,
+      "fireRate": 0.04
+    },
+    "description": "weaponDamage: +0.1; fireRate: +0.04. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "soldier-ballistics-3",
+    "classId": "soldier",
+    "branchId": "ballistics",
+    "branchName": "Ballistics",
+    "name": "Copper Jackets",
+    "depth": 3,
+    "cost": 3,
+    "grade": "B-",
+    "prerequisite": "soldier-ballistics-2",
+    "capstone": false,
+    "effects": {
+      "weaponDamage": 0.12,
+      "fireRate": 0.06
+    },
+    "description": "weaponDamage: +0.12; fireRate: +0.06. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "soldier-ballistics-4",
+    "classId": "soldier",
+    "branchId": "ballistics",
+    "branchName": "Ballistics",
+    "name": "Crossfire Drill",
+    "depth": 4,
+    "cost": 4,
+    "grade": "A-",
+    "prerequisite": "soldier-ballistics-3",
+    "capstone": false,
+    "effects": {
+      "weaponDamage": 0.15,
+      "fireRate": 0.08
+    },
+    "description": "weaponDamage: +0.15; fireRate: +0.08. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "soldier-ballistics-5",
+    "classId": "soldier",
+    "branchId": "ballistics",
+    "branchName": "Ballistics",
+    "name": "Long Watch",
+    "depth": 5,
+    "cost": 5,
+    "grade": "S-",
+    "prerequisite": "soldier-ballistics-4",
+    "capstone": false,
+    "effects": {
+      "weaponDamage": 0.2,
+      "fireRate": 0.12
+    },
+    "description": "weaponDamage: +0.2; fireRate: +0.12. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "soldier-ballistics-6",
+    "classId": "soldier",
+    "branchId": "ballistics",
+    "branchName": "Ballistics",
+    "name": "Last Word",
+    "depth": 6,
+    "cost": 6,
+    "grade": "SS-",
+    "prerequisite": "soldier-ballistics-5",
+    "capstone": true,
+    "effects": {
+      "weaponDamage": 0.35,
+      "fireRate": 0.16,
+      "extraShots": 1
+    },
+    "description": "weaponDamage: +0.35; fireRate: +0.16; extraShots: +1. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "soldier-command-1",
+    "classId": "soldier",
+    "branchId": "command",
+    "branchName": "Command",
+    "name": "Clear Signal",
+    "depth": 1,
+    "cost": 1,
+    "grade": "D",
+    "prerequisite": null,
+    "capstone": false,
+    "effects": {
+      "cooldownReduction": 0.025,
+      "abilityPotency": 0.05
+    },
+    "description": "cooldownReduction: +0.025; abilityPotency: +0.05. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "soldier-command-2",
+    "classId": "soldier",
+    "branchId": "command",
+    "branchName": "Command",
+    "name": "Steady Orders",
+    "depth": 2,
+    "cost": 2,
+    "grade": "C",
+    "prerequisite": "soldier-command-1",
+    "capstone": false,
+    "effects": {
+      "cooldownReduction": 0.025,
+      "abilityPotency": 0.05
+    },
+    "description": "cooldownReduction: +0.025; abilityPotency: +0.05. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "soldier-command-3",
+    "classId": "soldier",
+    "branchId": "command",
+    "branchName": "Command",
+    "name": "Shared Bearings",
+    "depth": 3,
+    "cost": 3,
+    "grade": "B",
+    "prerequisite": "soldier-command-2",
+    "capstone": false,
+    "effects": {
+      "cooldownReduction": 0.04,
+      "abilityPotency": 0.08,
+      "ultimateCooldownReduction": 0.1
+    },
+    "description": "cooldownReduction: +0.04; abilityPotency: +0.08; ultimateCooldownReduction: +0.1. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "soldier-command-4",
+    "classId": "soldier",
+    "branchId": "command",
+    "branchName": "Command",
+    "name": "Fire Discipline",
+    "depth": 4,
+    "cost": 4,
+    "grade": "A",
+    "prerequisite": "soldier-command-3",
+    "capstone": false,
+    "effects": {
+      "cooldownReduction": 0.05,
+      "abilityPotency": 0.1
+    },
+    "description": "cooldownReduction: +0.05; abilityPotency: +0.1. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "soldier-command-5",
+    "classId": "soldier",
+    "branchId": "command",
+    "branchName": "Command",
+    "name": "Unbroken Line",
+    "depth": 5,
+    "cost": 5,
+    "grade": "S",
+    "prerequisite": "soldier-command-4",
+    "capstone": false,
+    "effects": {
+      "cooldownReduction": 0.06,
+      "abilityPotency": 0.12,
+      "ultimateCooldownReduction": 0.1,
+      "ultimatePotency": 0.25
+    },
+    "description": "cooldownReduction: +0.06; abilityPotency: +0.12; ultimateCooldownReduction: +0.1; ultimatePotency: +0.25. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "soldier-command-6",
+    "classId": "soldier",
+    "branchId": "command",
+    "branchName": "Command",
+    "name": "Citywide Rally",
+    "depth": 6,
+    "cost": 6,
+    "grade": "SS",
+    "prerequisite": "soldier-command-5",
+    "capstone": true,
+    "effects": {
+      "cooldownReduction": 0.1,
+      "abilityPotency": 0.2,
+      "rallyRadius": 0.5,
+      "ultimateShield": 30
+    },
+    "description": "cooldownReduction: +0.1; abilityPotency: +0.2; rallyRadius: +0.5; ultimateShield: +30. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "soldier-survival-1",
+    "classId": "soldier",
+    "branchId": "survival",
+    "branchName": "Survival",
+    "name": "Field Dressing",
+    "depth": 1,
+    "cost": 1,
+    "grade": "D+",
+    "prerequisite": null,
+    "capstone": false,
+    "effects": {
+      "maxHealth": 10,
+      "armor": 0,
+      "regeneration": 0
+    },
+    "description": "maxHealth: +10 HP; armor: +0; regeneration: +0 HP/s. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "soldier-survival-2",
+    "classId": "soldier",
+    "branchId": "survival",
+    "branchName": "Survival",
+    "name": "Low Profile",
+    "depth": 2,
+    "cost": 2,
+    "grade": "C+",
+    "prerequisite": "soldier-survival-1",
+    "capstone": false,
+    "effects": {
+      "maxHealth": 12,
+      "armor": 0.03,
+      "regeneration": 0.1
+    },
+    "description": "maxHealth: +12 HP; armor: +0.03; regeneration: +0.1 HP/s. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "soldier-survival-3",
+    "classId": "soldier",
+    "branchId": "survival",
+    "branchName": "Survival",
+    "name": "Hardened Coat",
+    "depth": 3,
+    "cost": 3,
+    "grade": "B+",
+    "prerequisite": "soldier-survival-2",
+    "capstone": false,
+    "effects": {
+      "maxHealth": 15,
+      "armor": 0.04,
+      "regeneration": 0.15
+    },
+    "description": "maxHealth: +15 HP; armor: +0.04; regeneration: +0.15 HP/s. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "soldier-survival-4",
+    "classId": "soldier",
+    "branchId": "survival",
+    "branchName": "Survival",
+    "name": "Second Wind",
+    "depth": 4,
+    "cost": 4,
+    "grade": "A+",
+    "prerequisite": "soldier-survival-3",
+    "capstone": false,
+    "effects": {
+      "maxHealth": 20,
+      "armor": 0.05,
+      "regeneration": 0.2
+    },
+    "description": "maxHealth: +20 HP; armor: +0.05; regeneration: +0.2 HP/s. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "soldier-survival-5",
+    "classId": "soldier",
+    "branchId": "survival",
+    "branchName": "Survival",
+    "name": "Hold Fast",
+    "depth": 5,
+    "cost": 5,
+    "grade": "S+",
+    "prerequisite": "soldier-survival-4",
+    "capstone": false,
+    "effects": {
+      "maxHealth": 25,
+      "armor": 0.06,
+      "regeneration": 0.25
+    },
+    "description": "maxHealth: +25 HP; armor: +0.06; regeneration: +0.25 HP/s. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "soldier-survival-6",
+    "classId": "soldier",
+    "branchId": "survival",
+    "branchName": "Survival",
+    "name": "Nobody Left",
+    "depth": 6,
+    "cost": 6,
+    "grade": "SS+",
+    "prerequisite": "soldier-survival-5",
+    "capstone": true,
+    "effects": {
+      "maxHealth": 30,
+      "armor": 0.1,
+      "regeneration": 0.5,
+      "selfRevives": 1
+    },
+    "description": "maxHealth: +30 HP; armor: +0.1; regeneration: +0.5 HP/s; selfRevives: +1. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "heavy-ordnance-1",
+    "classId": "heavy",
+    "branchId": "ordnance",
+    "branchName": "Ordnance",
+    "name": "Fresh Belt",
+    "depth": 1,
+    "cost": 1,
+    "grade": "D",
+    "prerequisite": null,
+    "capstone": false,
+    "effects": {
+      "weaponDamage": 0.08,
+      "fireRate": 0
+    },
+    "description": "weaponDamage: +0.08; fireRate: +0. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "heavy-ordnance-2",
+    "classId": "heavy",
+    "branchId": "ordnance",
+    "branchName": "Ordnance",
+    "name": "Hot Chamber",
+    "depth": 2,
+    "cost": 2,
+    "grade": "C",
+    "prerequisite": "heavy-ordnance-1",
+    "capstone": false,
+    "effects": {
+      "weaponDamage": 0.1,
+      "fireRate": 0.04
+    },
+    "description": "weaponDamage: +0.1; fireRate: +0.04. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "heavy-ordnance-3",
+    "classId": "heavy",
+    "branchId": "ordnance",
+    "branchName": "Ordnance",
+    "name": "Hard Rounds",
+    "depth": 3,
+    "cost": 3,
+    "grade": "B",
+    "prerequisite": "heavy-ordnance-2",
+    "capstone": false,
+    "effects": {
+      "weaponDamage": 0.12,
+      "fireRate": 0.06
+    },
+    "description": "weaponDamage: +0.12; fireRate: +0.06. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "heavy-ordnance-4",
+    "classId": "heavy",
+    "branchId": "ordnance",
+    "branchName": "Ordnance",
+    "name": "Feed Motor",
+    "depth": 4,
+    "cost": 4,
+    "grade": "A",
+    "prerequisite": "heavy-ordnance-3",
+    "capstone": false,
+    "effects": {
+      "weaponDamage": 0.15,
+      "fireRate": 0.08
+    },
+    "description": "weaponDamage: +0.15; fireRate: +0.08. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "heavy-ordnance-5",
+    "classId": "heavy",
+    "branchId": "ordnance",
+    "branchName": "Ordnance",
+    "name": "Iron Torrent",
+    "depth": 5,
+    "cost": 5,
+    "grade": "S",
+    "prerequisite": "heavy-ordnance-4",
+    "capstone": false,
+    "effects": {
+      "weaponDamage": 0.2,
+      "fireRate": 0.12
+    },
+    "description": "weaponDamage: +0.2; fireRate: +0.12. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "heavy-ordnance-6",
+    "classId": "heavy",
+    "branchId": "ordnance",
+    "branchName": "Ordnance",
+    "name": "Foundry Roar",
+    "depth": 6,
+    "cost": 6,
+    "grade": "SS",
+    "prerequisite": "heavy-ordnance-5",
+    "capstone": true,
+    "effects": {
+      "weaponDamage": 0.35,
+      "fireRate": 0.16,
+      "pierce": 2
+    },
+    "description": "weaponDamage: +0.35; fireRate: +0.16; pierce: +2. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "heavy-suppression-1",
+    "classId": "heavy",
+    "branchId": "suppression",
+    "branchName": "Suppression",
+    "name": "Wide Sweep",
+    "depth": 1,
+    "cost": 1,
+    "grade": "D+",
+    "prerequisite": null,
+    "capstone": false,
+    "effects": {
+      "cooldownReduction": 0.025,
+      "abilityPotency": 0.05
+    },
+    "description": "cooldownReduction: +0.025; abilityPotency: +0.05. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "heavy-suppression-2",
+    "classId": "heavy",
+    "branchId": "suppression",
+    "branchName": "Suppression",
+    "name": "Pinned Shadows",
+    "depth": 2,
+    "cost": 2,
+    "grade": "C+",
+    "prerequisite": "heavy-suppression-1",
+    "capstone": false,
+    "effects": {
+      "cooldownReduction": 0.025,
+      "abilityPotency": 0.05
+    },
+    "description": "cooldownReduction: +0.025; abilityPotency: +0.05. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "heavy-suppression-3",
+    "classId": "heavy",
+    "branchId": "suppression",
+    "branchName": "Suppression",
+    "name": "Heavy Rhythm",
+    "depth": 3,
+    "cost": 3,
+    "grade": "B+",
+    "prerequisite": "heavy-suppression-2",
+    "capstone": false,
+    "effects": {
+      "cooldownReduction": 0.04,
+      "abilityPotency": 0.08,
+      "ultimateCooldownReduction": 0.1
+    },
+    "description": "cooldownReduction: +0.04; abilityPotency: +0.08; ultimateCooldownReduction: +0.1. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "heavy-suppression-4",
+    "classId": "heavy",
+    "branchId": "suppression",
+    "branchName": "Suppression",
+    "name": "Clearing Fire",
+    "depth": 4,
+    "cost": 4,
+    "grade": "A+",
+    "prerequisite": "heavy-suppression-3",
+    "capstone": false,
+    "effects": {
+      "cooldownReduction": 0.05,
+      "abilityPotency": 0.1
+    },
+    "description": "cooldownReduction: +0.05; abilityPotency: +0.1. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "heavy-suppression-5",
+    "classId": "heavy",
+    "branchId": "suppression",
+    "branchName": "Suppression",
+    "name": "Wall of Lead",
+    "depth": 5,
+    "cost": 5,
+    "grade": "S+",
+    "prerequisite": "heavy-suppression-4",
+    "capstone": false,
+    "effects": {
+      "cooldownReduction": 0.06,
+      "abilityPotency": 0.12,
+      "ultimateCooldownReduction": 0.1,
+      "ultimatePotency": 0.25
+    },
+    "description": "cooldownReduction: +0.06; abilityPotency: +0.12; ultimateCooldownReduction: +0.1; ultimatePotency: +0.25. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "heavy-suppression-6",
+    "classId": "heavy",
+    "branchId": "suppression",
+    "branchName": "Suppression",
+    "name": "Quiet the Street",
+    "depth": 6,
+    "cost": 6,
+    "grade": "SS+",
+    "prerequisite": "heavy-suppression-5",
+    "capstone": true,
+    "effects": {
+      "cooldownReduction": 0.1,
+      "abilityPotency": 0.2,
+      "suppressionDuration": 0.5,
+      "ultimateDuration": 2
+    },
+    "description": "cooldownReduction: +0.1; abilityPotency: +0.2; suppressionDuration: +0.5; ultimateDuration: +2. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "heavy-endurance-1",
+    "classId": "heavy",
+    "branchId": "endurance",
+    "branchName": "Endurance",
+    "name": "Padded Harness",
+    "depth": 1,
+    "cost": 1,
+    "grade": "D-",
+    "prerequisite": null,
+    "capstone": false,
+    "effects": {
+      "maxHealth": 10,
+      "armor": 0,
+      "regeneration": 0
+    },
+    "description": "maxHealth: +10 HP; armor: +0; regeneration: +0 HP/s. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "heavy-endurance-2",
+    "classId": "heavy",
+    "branchId": "endurance",
+    "branchName": "Endurance",
+    "name": "Deep Breath",
+    "depth": 2,
+    "cost": 2,
+    "grade": "C-",
+    "prerequisite": "heavy-endurance-1",
+    "capstone": false,
+    "effects": {
+      "maxHealth": 12,
+      "armor": 0.03,
+      "regeneration": 0.1
+    },
+    "description": "maxHealth: +12 HP; armor: +0.03; regeneration: +0.1 HP/s. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "heavy-endurance-3",
+    "classId": "heavy",
+    "branchId": "endurance",
+    "branchName": "Endurance",
+    "name": "Steel Shoulders",
+    "depth": 3,
+    "cost": 3,
+    "grade": "B-",
+    "prerequisite": "heavy-endurance-2",
+    "capstone": false,
+    "effects": {
+      "maxHealth": 15,
+      "armor": 0.04,
+      "regeneration": 0.15
+    },
+    "description": "maxHealth: +15 HP; armor: +0.04; regeneration: +0.15 HP/s. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "heavy-endurance-4",
+    "classId": "heavy",
+    "branchId": "endurance",
+    "branchName": "Endurance",
+    "name": "Unshaken",
+    "depth": 4,
+    "cost": 4,
+    "grade": "A-",
+    "prerequisite": "heavy-endurance-3",
+    "capstone": false,
+    "effects": {
+      "maxHealth": 20,
+      "armor": 0.05,
+      "regeneration": 0.2
+    },
+    "description": "maxHealth: +20 HP; armor: +0.05; regeneration: +0.2 HP/s. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "heavy-endurance-5",
+    "classId": "heavy",
+    "branchId": "endurance",
+    "branchName": "Endurance",
+    "name": "Long Haul",
+    "depth": 5,
+    "cost": 5,
+    "grade": "S-",
+    "prerequisite": "heavy-endurance-4",
+    "capstone": false,
+    "effects": {
+      "maxHealth": 25,
+      "armor": 0.06,
+      "regeneration": 0.25
+    },
+    "description": "maxHealth: +25 HP; armor: +0.06; regeneration: +0.25 HP/s. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "heavy-endurance-6",
+    "classId": "heavy",
+    "branchId": "endurance",
+    "branchName": "Endurance",
+    "name": "Still Standing",
+    "depth": 6,
+    "cost": 6,
+    "grade": "SS-",
+    "prerequisite": "heavy-endurance-5",
+    "capstone": true,
+    "effects": {
+      "maxHealth": 30,
+      "armor": 0.1,
+      "regeneration": 0.5,
+      "selfRevives": 1
+    },
+    "description": "maxHealth: +30 HP; armor: +0.1; regeneration: +0.5 HP/s; selfRevives: +1. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "tank-breaching-1",
+    "classId": "tank",
+    "branchId": "breaching",
+    "branchName": "Breaching",
+    "name": "Close Quarters",
+    "depth": 1,
+    "cost": 1,
+    "grade": "D+",
+    "prerequisite": null,
+    "capstone": false,
+    "effects": {
+      "weaponDamage": 0.08,
+      "fireRate": 0
+    },
+    "description": "weaponDamage: +0.08; fireRate: +0. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "tank-breaching-2",
+    "classId": "tank",
+    "branchId": "breaching",
+    "branchName": "Breaching",
+    "name": "Buckshot Proof",
+    "depth": 2,
+    "cost": 2,
+    "grade": "C+",
+    "prerequisite": "tank-breaching-1",
+    "capstone": false,
+    "effects": {
+      "weaponDamage": 0.1,
+      "fireRate": 0.04
+    },
+    "description": "weaponDamage: +0.1; fireRate: +0.04. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "tank-breaching-3",
+    "classId": "tank",
+    "branchId": "breaching",
+    "branchName": "Breaching",
+    "name": "Door Knocker",
+    "depth": 3,
+    "cost": 3,
+    "grade": "B+",
+    "prerequisite": "tank-breaching-2",
+    "capstone": false,
+    "effects": {
+      "weaponDamage": 0.12,
+      "fireRate": 0.06
+    },
+    "description": "weaponDamage: +0.12; fireRate: +0.06. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "tank-breaching-4",
+    "classId": "tank",
+    "branchId": "breaching",
+    "branchName": "Breaching",
+    "name": "Breach Pattern",
+    "depth": 4,
+    "cost": 4,
+    "grade": "A+",
+    "prerequisite": "tank-breaching-3",
+    "capstone": false,
+    "effects": {
+      "weaponDamage": 0.15,
+      "fireRate": 0.08
+    },
+    "description": "weaponDamage: +0.15; fireRate: +0.08. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "tank-breaching-5",
+    "classId": "tank",
+    "branchId": "breaching",
+    "branchName": "Breaching",
+    "name": "Forward Pressure",
+    "depth": 5,
+    "cost": 5,
+    "grade": "S+",
+    "prerequisite": "tank-breaching-4",
+    "capstone": false,
+    "effects": {
+      "weaponDamage": 0.2,
+      "fireRate": 0.12
+    },
+    "description": "weaponDamage: +0.2; fireRate: +0.12. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "tank-breaching-6",
+    "classId": "tank",
+    "branchId": "breaching",
+    "branchName": "Breaching",
+    "name": "Open the Way",
+    "depth": 6,
+    "cost": 6,
+    "grade": "SS+",
+    "prerequisite": "tank-breaching-5",
+    "capstone": true,
+    "effects": {
+      "weaponDamage": 0.35,
+      "fireRate": 0.16,
+      "extraShots": 2
+    },
+    "description": "weaponDamage: +0.35; fireRate: +0.16; extraShots: +2. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "tank-protection-1",
+    "classId": "tank",
+    "branchId": "protection",
+    "branchName": "Protection",
+    "name": "Broad Guard",
+    "depth": 1,
+    "cost": 1,
+    "grade": "D-",
+    "prerequisite": null,
+    "capstone": false,
+    "effects": {
+      "cooldownReduction": 0.025,
+      "abilityPotency": 0.05
+    },
+    "description": "cooldownReduction: +0.025; abilityPotency: +0.05. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "tank-protection-2",
+    "classId": "tank",
+    "branchId": "protection",
+    "branchName": "Protection",
+    "name": "Safe Passage",
+    "depth": 2,
+    "cost": 2,
+    "grade": "C-",
+    "prerequisite": "tank-protection-1",
+    "capstone": false,
+    "effects": {
+      "cooldownReduction": 0.025,
+      "abilityPotency": 0.05
+    },
+    "description": "cooldownReduction: +0.025; abilityPotency: +0.05. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "tank-protection-3",
+    "classId": "tank",
+    "branchId": "protection",
+    "branchName": "Protection",
+    "name": "Reinforced Face",
+    "depth": 3,
+    "cost": 3,
+    "grade": "B-",
+    "prerequisite": "tank-protection-2",
+    "capstone": false,
+    "effects": {
+      "cooldownReduction": 0.04,
+      "abilityPotency": 0.08,
+      "ultimateCooldownReduction": 0.1
+    },
+    "description": "cooldownReduction: +0.04; abilityPotency: +0.08; ultimateCooldownReduction: +0.1. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "tank-protection-4",
+    "classId": "tank",
+    "branchId": "protection",
+    "branchName": "Protection",
+    "name": "Linked Shelter",
+    "depth": 4,
+    "cost": 4,
+    "grade": "A-",
+    "prerequisite": "tank-protection-3",
+    "capstone": false,
+    "effects": {
+      "cooldownReduction": 0.05,
+      "abilityPotency": 0.1
+    },
+    "description": "cooldownReduction: +0.05; abilityPotency: +0.1. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "tank-protection-5",
+    "classId": "tank",
+    "branchId": "protection",
+    "branchName": "Protection",
+    "name": "Rescue Habit",
+    "depth": 5,
+    "cost": 5,
+    "grade": "S-",
+    "prerequisite": "tank-protection-4",
+    "capstone": false,
+    "effects": {
+      "cooldownReduction": 0.06,
+      "abilityPotency": 0.12,
+      "ultimateCooldownReduction": 0.1,
+      "ultimatePotency": 0.25
+    },
+    "description": "cooldownReduction: +0.06; abilityPotency: +0.12; ultimateCooldownReduction: +0.1; ultimatePotency: +0.25. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "tank-protection-6",
+    "classId": "tank",
+    "branchId": "protection",
+    "branchName": "Protection",
+    "name": "The Last Door",
+    "depth": 6,
+    "cost": 6,
+    "grade": "SS-",
+    "prerequisite": "tank-protection-5",
+    "capstone": true,
+    "effects": {
+      "cooldownReduction": 0.1,
+      "abilityPotency": 0.2,
+      "barrierHealth": 0.6,
+      "ultimatePotency": 0.25
+    },
+    "description": "cooldownReduction: +0.1; abilityPotency: +0.2; barrierHealth: +0.6; ultimatePotency: +0.25. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "tank-bastion-1",
+    "classId": "tank",
+    "branchId": "bastion",
+    "branchName": "Bastion",
+    "name": "Riveted Coat",
+    "depth": 1,
+    "cost": 1,
+    "grade": "D",
+    "prerequisite": null,
+    "capstone": false,
+    "effects": {
+      "maxHealth": 10,
+      "armor": 0,
+      "regeneration": 0
+    },
+    "description": "maxHealth: +10 HP; armor: +0; regeneration: +0 HP/s. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "tank-bastion-2",
+    "classId": "tank",
+    "branchId": "bastion",
+    "branchName": "Bastion",
+    "name": "Grounded Stance",
+    "depth": 2,
+    "cost": 2,
+    "grade": "C",
+    "prerequisite": "tank-bastion-1",
+    "capstone": false,
+    "effects": {
+      "maxHealth": 12,
+      "armor": 0.03,
+      "regeneration": 0.1
+    },
+    "description": "maxHealth: +12 HP; armor: +0.03; regeneration: +0.1 HP/s. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "tank-bastion-3",
+    "classId": "tank",
+    "branchId": "bastion",
+    "branchName": "Bastion",
+    "name": "Impact Bracing",
+    "depth": 3,
+    "cost": 3,
+    "grade": "B",
+    "prerequisite": "tank-bastion-2",
+    "capstone": false,
+    "effects": {
+      "maxHealth": 15,
+      "armor": 0.04,
+      "regeneration": 0.15
+    },
+    "description": "maxHealth: +15 HP; armor: +0.04; regeneration: +0.15 HP/s. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "tank-bastion-4",
+    "classId": "tank",
+    "branchId": "bastion",
+    "branchName": "Bastion",
+    "name": "Deep Reserve",
+    "depth": 4,
+    "cost": 4,
+    "grade": "A",
+    "prerequisite": "tank-bastion-3",
+    "capstone": false,
+    "effects": {
+      "maxHealth": 20,
+      "armor": 0.05,
+      "regeneration": 0.2
+    },
+    "description": "maxHealth: +20 HP; armor: +0.05; regeneration: +0.2 HP/s. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "tank-bastion-5",
+    "classId": "tank",
+    "branchId": "bastion",
+    "branchName": "Bastion",
+    "name": "Stone Resolve",
+    "depth": 5,
+    "cost": 5,
+    "grade": "S",
+    "prerequisite": "tank-bastion-4",
+    "capstone": false,
+    "effects": {
+      "maxHealth": 25,
+      "armor": 0.06,
+      "regeneration": 0.25
+    },
+    "description": "maxHealth: +25 HP; armor: +0.06; regeneration: +0.25 HP/s. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "tank-bastion-6",
+    "classId": "tank",
+    "branchId": "bastion",
+    "branchName": "Bastion",
+    "name": "Unfallen",
+    "depth": 6,
+    "cost": 6,
+    "grade": "SS",
+    "prerequisite": "tank-bastion-5",
+    "capstone": true,
+    "effects": {
+      "maxHealth": 30,
+      "armor": 0.1,
+      "regeneration": 0.5,
+      "selfRevives": 1
+    },
+    "description": "maxHealth: +30 HP; armor: +0.1; regeneration: +0.5 HP/s; selfRevives: +1. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "medic-chemistry-1",
+    "classId": "medic",
+    "branchId": "chemistry",
+    "branchName": "Chemistry",
+    "name": "Sharp Dose",
+    "depth": 1,
+    "cost": 1,
+    "grade": "D-",
+    "prerequisite": null,
+    "capstone": false,
+    "effects": {
+      "weaponDamage": 0.08,
+      "fireRate": 0
+    },
+    "description": "weaponDamage: +0.08; fireRate: +0. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "medic-chemistry-2",
+    "classId": "medic",
+    "branchId": "chemistry",
+    "branchName": "Chemistry",
+    "name": "Pressure Injector",
+    "depth": 2,
+    "cost": 2,
+    "grade": "C-",
+    "prerequisite": "medic-chemistry-1",
+    "capstone": false,
+    "effects": {
+      "weaponDamage": 0.1,
+      "fireRate": 0.04
+    },
+    "description": "weaponDamage: +0.1; fireRate: +0.04. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "medic-chemistry-3",
+    "classId": "medic",
+    "branchId": "chemistry",
+    "branchName": "Chemistry",
+    "name": "Stable Mixture",
+    "depth": 3,
+    "cost": 3,
+    "grade": "B-",
+    "prerequisite": "medic-chemistry-2",
+    "capstone": false,
+    "effects": {
+      "weaponDamage": 0.12,
+      "fireRate": 0.06
+    },
+    "description": "weaponDamage: +0.12; fireRate: +0.06. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "medic-chemistry-4",
+    "classId": "medic",
+    "branchId": "chemistry",
+    "branchName": "Chemistry",
+    "name": "Surgical Volley",
+    "depth": 4,
+    "cost": 4,
+    "grade": "A-",
+    "prerequisite": "medic-chemistry-3",
+    "capstone": false,
+    "effects": {
+      "weaponDamage": 0.15,
+      "fireRate": 0.08
+    },
+    "description": "weaponDamage: +0.15; fireRate: +0.08. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "medic-chemistry-5",
+    "classId": "medic",
+    "branchId": "chemistry",
+    "branchName": "Chemistry",
+    "name": "Last Formula",
+    "depth": 5,
+    "cost": 5,
+    "grade": "S-",
+    "prerequisite": "medic-chemistry-4",
+    "capstone": false,
+    "effects": {
+      "weaponDamage": 0.2,
+      "fireRate": 0.12
+    },
+    "description": "weaponDamage: +0.2; fireRate: +0.12. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "medic-chemistry-6",
+    "classId": "medic",
+    "branchId": "chemistry",
+    "branchName": "Chemistry",
+    "name": "Mercy with Teeth",
+    "depth": 6,
+    "cost": 6,
+    "grade": "SS-",
+    "prerequisite": "medic-chemistry-5",
+    "capstone": true,
+    "effects": {
+      "weaponDamage": 0.35,
+      "fireRate": 0.16,
+      "healOnHit": 2
+    },
+    "description": "weaponDamage: +0.35; fireRate: +0.16; healOnHit: +2 HP. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "medic-triage-1",
+    "classId": "medic",
+    "branchId": "triage",
+    "branchName": "Triage",
+    "name": "Clean Hands",
+    "depth": 1,
+    "cost": 1,
+    "grade": "D",
+    "prerequisite": null,
+    "capstone": false,
+    "effects": {
+      "cooldownReduction": 0.025,
+      "abilityPotency": 0.05
+    },
+    "description": "cooldownReduction: +0.025; abilityPotency: +0.05. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "medic-triage-2",
+    "classId": "medic",
+    "branchId": "triage",
+    "branchName": "Triage",
+    "name": "Quick Assessment",
+    "depth": 2,
+    "cost": 2,
+    "grade": "C",
+    "prerequisite": "medic-triage-1",
+    "capstone": false,
+    "effects": {
+      "cooldownReduction": 0.025,
+      "abilityPotency": 0.05
+    },
+    "description": "cooldownReduction: +0.025; abilityPotency: +0.05. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "medic-triage-3",
+    "classId": "medic",
+    "branchId": "triage",
+    "branchName": "Triage",
+    "name": "Wide Ward",
+    "depth": 3,
+    "cost": 3,
+    "grade": "B",
+    "prerequisite": "medic-triage-2",
+    "capstone": false,
+    "effects": {
+      "cooldownReduction": 0.04,
+      "abilityPotency": 0.08,
+      "ultimateCooldownReduction": 0.1
+    },
+    "description": "cooldownReduction: +0.04; abilityPotency: +0.08; ultimateCooldownReduction: +0.1. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "medic-triage-4",
+    "classId": "medic",
+    "branchId": "triage",
+    "branchName": "Triage",
+    "name": "Measured Serum",
+    "depth": 4,
+    "cost": 4,
+    "grade": "A",
+    "prerequisite": "medic-triage-3",
+    "capstone": false,
+    "effects": {
+      "cooldownReduction": 0.05,
+      "abilityPotency": 0.1
+    },
+    "description": "cooldownReduction: +0.05; abilityPotency: +0.1. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "medic-triage-5",
+    "classId": "medic",
+    "branchId": "triage",
+    "branchName": "Triage",
+    "name": "Rescue Protocol",
+    "depth": 5,
+    "cost": 5,
+    "grade": "S",
+    "prerequisite": "medic-triage-4",
+    "capstone": false,
+    "effects": {
+      "cooldownReduction": 0.06,
+      "abilityPotency": 0.12,
+      "ultimateCooldownReduction": 0.1,
+      "ultimatePotency": 0.25
+    },
+    "description": "cooldownReduction: +0.06; abilityPotency: +0.12; ultimateCooldownReduction: +0.1; ultimatePotency: +0.25. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "medic-triage-6",
+    "classId": "medic",
+    "branchId": "triage",
+    "branchName": "Triage",
+    "name": "Nobody Forgotten",
+    "depth": 6,
+    "cost": 6,
+    "grade": "SS",
+    "prerequisite": "medic-triage-5",
+    "capstone": true,
+    "effects": {
+      "cooldownReduction": 0.1,
+      "abilityPotency": 0.2,
+      "reviveRate": 0.5,
+      "ultimateRadius": 80
+    },
+    "description": "cooldownReduction: +0.1; abilityPotency: +0.2; reviveRate: +0.5; ultimateRadius: +80. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "medic-recovery-1",
+    "classId": "medic",
+    "branchId": "recovery",
+    "branchName": "Recovery",
+    "name": "Padded Satchel",
+    "depth": 1,
+    "cost": 1,
+    "grade": "D+",
+    "prerequisite": null,
+    "capstone": false,
+    "effects": {
+      "maxHealth": 10,
+      "armor": 0,
+      "regeneration": 0
+    },
+    "description": "maxHealth: +10 HP; armor: +0; regeneration: +0 HP/s. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "medic-recovery-2",
+    "classId": "medic",
+    "branchId": "recovery",
+    "branchName": "Recovery",
+    "name": "Stubborn Pulse",
+    "depth": 2,
+    "cost": 2,
+    "grade": "C+",
+    "prerequisite": "medic-recovery-1",
+    "capstone": false,
+    "effects": {
+      "maxHealth": 12,
+      "armor": 0.03,
+      "regeneration": 0.1
+    },
+    "description": "maxHealth: +12 HP; armor: +0.03; regeneration: +0.1 HP/s. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "medic-recovery-3",
+    "classId": "medic",
+    "branchId": "recovery",
+    "branchName": "Recovery",
+    "name": "Safe Footing",
+    "depth": 3,
+    "cost": 3,
+    "grade": "B+",
+    "prerequisite": "medic-recovery-2",
+    "capstone": false,
+    "effects": {
+      "maxHealth": 15,
+      "armor": 0.04,
+      "regeneration": 0.15
+    },
+    "description": "maxHealth: +15 HP; armor: +0.04; regeneration: +0.15 HP/s. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "medic-recovery-4",
+    "classId": "medic",
+    "branchId": "recovery",
+    "branchName": "Recovery",
+    "name": "Fresh Bandage",
+    "depth": 4,
+    "cost": 4,
+    "grade": "A+",
+    "prerequisite": "medic-recovery-3",
+    "capstone": false,
+    "effects": {
+      "maxHealth": 20,
+      "armor": 0.05,
+      "regeneration": 0.2
+    },
+    "description": "maxHealth: +20 HP; armor: +0.05; regeneration: +0.2 HP/s. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "medic-recovery-5",
+    "classId": "medic",
+    "branchId": "recovery",
+    "branchName": "Recovery",
+    "name": "Living Memory",
+    "depth": 5,
+    "cost": 5,
+    "grade": "S+",
+    "prerequisite": "medic-recovery-4",
+    "capstone": false,
+    "effects": {
+      "maxHealth": 25,
+      "armor": 0.06,
+      "regeneration": 0.25
+    },
+    "description": "maxHealth: +25 HP; armor: +0.06; regeneration: +0.25 HP/s. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "medic-recovery-6",
+    "classId": "medic",
+    "branchId": "recovery",
+    "branchName": "Recovery",
+    "name": "A Name Returned",
+    "depth": 6,
+    "cost": 6,
+    "grade": "SS+",
+    "prerequisite": "medic-recovery-5",
+    "capstone": true,
+    "effects": {
+      "maxHealth": 30,
+      "armor": 0.1,
+      "regeneration": 0.5,
+      "selfRevives": 1
+    },
+    "description": "maxHealth: +30 HP; armor: +0.1; regeneration: +0.5 HP/s; selfRevives: +1. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "mage-hexcraft-1",
+    "classId": "mage",
+    "branchId": "hexcraft",
+    "branchName": "Hexcraft",
+    "name": "Ash Script",
+    "depth": 1,
+    "cost": 1,
+    "grade": "D",
+    "prerequisite": null,
+    "capstone": false,
+    "effects": {
+      "weaponDamage": 0.08,
+      "fireRate": 0
+    },
+    "description": "weaponDamage: +0.08; fireRate: +0. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "mage-hexcraft-2",
+    "classId": "mage",
+    "branchId": "hexcraft",
+    "branchName": "Hexcraft",
+    "name": "Resonant Ink",
+    "depth": 2,
+    "cost": 2,
+    "grade": "C",
+    "prerequisite": "mage-hexcraft-1",
+    "capstone": false,
+    "effects": {
+      "weaponDamage": 0.1,
+      "fireRate": 0.04
+    },
+    "description": "weaponDamage: +0.1; fireRate: +0.04. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "mage-hexcraft-3",
+    "classId": "mage",
+    "branchId": "hexcraft",
+    "branchName": "Hexcraft",
+    "name": "Split Glyph",
+    "depth": 3,
+    "cost": 3,
+    "grade": "B",
+    "prerequisite": "mage-hexcraft-2",
+    "capstone": false,
+    "effects": {
+      "weaponDamage": 0.12,
+      "fireRate": 0.06
+    },
+    "description": "weaponDamage: +0.12; fireRate: +0.06. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "mage-hexcraft-4",
+    "classId": "mage",
+    "branchId": "hexcraft",
+    "branchName": "Hexcraft",
+    "name": "Grave Arithmetic",
+    "depth": 4,
+    "cost": 4,
+    "grade": "A",
+    "prerequisite": "mage-hexcraft-3",
+    "capstone": false,
+    "effects": {
+      "weaponDamage": 0.15,
+      "fireRate": 0.08
+    },
+    "description": "weaponDamage: +0.15; fireRate: +0.08. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "mage-hexcraft-5",
+    "classId": "mage",
+    "branchId": "hexcraft",
+    "branchName": "Hexcraft",
+    "name": "Forbidden Meter",
+    "depth": 5,
+    "cost": 5,
+    "grade": "S",
+    "prerequisite": "mage-hexcraft-4",
+    "capstone": false,
+    "effects": {
+      "weaponDamage": 0.2,
+      "fireRate": 0.12
+    },
+    "description": "weaponDamage: +0.2; fireRate: +0.12. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "mage-hexcraft-6",
+    "classId": "mage",
+    "branchId": "hexcraft",
+    "branchName": "Hexcraft",
+    "name": "The Silent Chord",
+    "depth": 6,
+    "cost": 6,
+    "grade": "SS",
+    "prerequisite": "mage-hexcraft-5",
+    "capstone": true,
+    "effects": {
+      "weaponDamage": 0.35,
+      "fireRate": 0.16,
+      "pierce": 2
+    },
+    "description": "weaponDamage: +0.35; fireRate: +0.16; pierce: +2. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "mage-control-1",
+    "classId": "mage",
+    "branchId": "control",
+    "branchName": "Control",
+    "name": "Marked Ground",
+    "depth": 1,
+    "cost": 1,
+    "grade": "D+",
+    "prerequisite": null,
+    "capstone": false,
+    "effects": {
+      "cooldownReduction": 0.025,
+      "abilityPotency": 0.05
+    },
+    "description": "cooldownReduction: +0.025; abilityPotency: +0.05. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "mage-control-2",
+    "classId": "mage",
+    "branchId": "control",
+    "branchName": "Control",
+    "name": "Patient Circle",
+    "depth": 2,
+    "cost": 2,
+    "grade": "C+",
+    "prerequisite": "mage-control-1",
+    "capstone": false,
+    "effects": {
+      "cooldownReduction": 0.025,
+      "abilityPotency": 0.05
+    },
+    "description": "cooldownReduction: +0.025; abilityPotency: +0.05. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "mage-control-3",
+    "classId": "mage",
+    "branchId": "control",
+    "branchName": "Control",
+    "name": "Deep Binding",
+    "depth": 3,
+    "cost": 3,
+    "grade": "B+",
+    "prerequisite": "mage-control-2",
+    "capstone": false,
+    "effects": {
+      "cooldownReduction": 0.04,
+      "abilityPotency": 0.08,
+      "ultimateCooldownReduction": 0.1
+    },
+    "description": "cooldownReduction: +0.04; abilityPotency: +0.08; ultimateCooldownReduction: +0.1. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "mage-control-4",
+    "classId": "mage",
+    "branchId": "control",
+    "branchName": "Control",
+    "name": "Echoing Ward",
+    "depth": 4,
+    "cost": 4,
+    "grade": "A+",
+    "prerequisite": "mage-control-3",
+    "capstone": false,
+    "effects": {
+      "cooldownReduction": 0.05,
+      "abilityPotency": 0.1
+    },
+    "description": "cooldownReduction: +0.05; abilityPotency: +0.1. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "mage-control-5",
+    "classId": "mage",
+    "branchId": "control",
+    "branchName": "Control",
+    "name": "Bell Geometry",
+    "depth": 5,
+    "cost": 5,
+    "grade": "S+",
+    "prerequisite": "mage-control-4",
+    "capstone": false,
+    "effects": {
+      "cooldownReduction": 0.06,
+      "abilityPotency": 0.12,
+      "ultimateCooldownReduction": 0.1,
+      "ultimatePotency": 0.25
+    },
+    "description": "cooldownReduction: +0.06; abilityPotency: +0.12; ultimateCooldownReduction: +0.1; ultimatePotency: +0.25. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "mage-control-6",
+    "classId": "mage",
+    "branchId": "control",
+    "branchName": "Control",
+    "name": "Name the Storm",
+    "depth": 6,
+    "cost": 6,
+    "grade": "SS+",
+    "prerequisite": "mage-control-5",
+    "capstone": true,
+    "effects": {
+      "cooldownReduction": 0.1,
+      "abilityPotency": 0.2,
+      "sigilRadius": 0.5,
+      "ultimatePulses": 1
+    },
+    "description": "cooldownReduction: +0.1; abilityPotency: +0.2; sigilRadius: +0.5; ultimatePulses: +1. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "mage-warding-1",
+    "classId": "mage",
+    "branchId": "warding",
+    "branchName": "Warding",
+    "name": "Paper Seal",
+    "depth": 1,
+    "cost": 1,
+    "grade": "D-",
+    "prerequisite": null,
+    "capstone": false,
+    "effects": {
+      "maxHealth": 10,
+      "armor": 0,
+      "regeneration": 0
+    },
+    "description": "maxHealth: +10 HP; armor: +0; regeneration: +0 HP/s. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "mage-warding-2",
+    "classId": "mage",
+    "branchId": "warding",
+    "branchName": "Warding",
+    "name": "Bone Charm",
+    "depth": 2,
+    "cost": 2,
+    "grade": "C-",
+    "prerequisite": "mage-warding-1",
+    "capstone": false,
+    "effects": {
+      "maxHealth": 12,
+      "armor": 0.03,
+      "regeneration": 0.1
+    },
+    "description": "maxHealth: +12 HP; armor: +0.03; regeneration: +0.1 HP/s. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "mage-warding-3",
+    "classId": "mage",
+    "branchId": "warding",
+    "branchName": "Warding",
+    "name": "Quiet Mantle",
+    "depth": 3,
+    "cost": 3,
+    "grade": "B-",
+    "prerequisite": "mage-warding-2",
+    "capstone": false,
+    "effects": {
+      "maxHealth": 15,
+      "armor": 0.04,
+      "regeneration": 0.15
+    },
+    "description": "maxHealth: +15 HP; armor: +0.04; regeneration: +0.15 HP/s. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "mage-warding-4",
+    "classId": "mage",
+    "branchId": "warding",
+    "branchName": "Warding",
+    "name": "Stolen Breath",
+    "depth": 4,
+    "cost": 4,
+    "grade": "A-",
+    "prerequisite": "mage-warding-3",
+    "capstone": false,
+    "effects": {
+      "maxHealth": 20,
+      "armor": 0.05,
+      "regeneration": 0.2
+    },
+    "description": "maxHealth: +20 HP; armor: +0.05; regeneration: +0.2 HP/s. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "mage-warding-5",
+    "classId": "mage",
+    "branchId": "warding",
+    "branchName": "Warding",
+    "name": "Salted Hem",
+    "depth": 5,
+    "cost": 5,
+    "grade": "S-",
+    "prerequisite": "mage-warding-4",
+    "capstone": false,
+    "effects": {
+      "maxHealth": 25,
+      "armor": 0.06,
+      "regeneration": 0.25
+    },
+    "description": "maxHealth: +25 HP; armor: +0.06; regeneration: +0.25 HP/s. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "mage-warding-6",
+    "classId": "mage",
+    "branchId": "warding",
+    "branchName": "Warding",
+    "name": "A Circle Remains",
+    "depth": 6,
+    "cost": 6,
+    "grade": "SS-",
+    "prerequisite": "mage-warding-5",
+    "capstone": true,
+    "effects": {
+      "maxHealth": 30,
+      "armor": 0.1,
+      "regeneration": 0.5,
+      "selfRevives": 1
+    },
+    "description": "maxHealth: +30 HP; armor: +0.1; regeneration: +0.5 HP/s; selfRevives: +1. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "engineer-demolitions-1",
+    "classId": "engineer",
+    "branchId": "demolitions",
+    "branchName": "Demolitions",
+    "name": "Fine Teeth",
+    "depth": 1,
+    "cost": 1,
+    "grade": "D+",
+    "prerequisite": null,
+    "capstone": false,
+    "effects": {
+      "weaponDamage": 0.08,
+      "fireRate": 0
+    },
+    "description": "weaponDamage: +0.08; fireRate: +0. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "engineer-demolitions-2",
+    "classId": "engineer",
+    "branchId": "demolitions",
+    "branchName": "Demolitions",
+    "name": "Charged Rivets",
+    "depth": 2,
+    "cost": 2,
+    "grade": "C+",
+    "prerequisite": "engineer-demolitions-1",
+    "capstone": false,
+    "effects": {
+      "weaponDamage": 0.1,
+      "fireRate": 0.04
+    },
+    "description": "weaponDamage: +0.1; fireRate: +0.04. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "engineer-demolitions-3",
+    "classId": "engineer",
+    "branchId": "demolitions",
+    "branchName": "Demolitions",
+    "name": "Spare Barrel",
+    "depth": 3,
+    "cost": 3,
+    "grade": "B+",
+    "prerequisite": "engineer-demolitions-2",
+    "capstone": false,
+    "effects": {
+      "weaponDamage": 0.12,
+      "fireRate": 0.06
+    },
+    "description": "weaponDamage: +0.12; fireRate: +0.06. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "engineer-demolitions-4",
+    "classId": "engineer",
+    "branchId": "demolitions",
+    "branchName": "Demolitions",
+    "name": "Impact Fuse",
+    "depth": 4,
+    "cost": 4,
+    "grade": "A+",
+    "prerequisite": "engineer-demolitions-3",
+    "capstone": false,
+    "effects": {
+      "weaponDamage": 0.15,
+      "fireRate": 0.08
+    },
+    "description": "weaponDamage: +0.15; fireRate: +0.08. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "engineer-demolitions-5",
+    "classId": "engineer",
+    "branchId": "demolitions",
+    "branchName": "Demolitions",
+    "name": "Overclock",
+    "depth": 5,
+    "cost": 5,
+    "grade": "S+",
+    "prerequisite": "engineer-demolitions-4",
+    "capstone": false,
+    "effects": {
+      "weaponDamage": 0.2,
+      "fireRate": 0.12
+    },
+    "description": "weaponDamage: +0.2; fireRate: +0.12. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "engineer-demolitions-6",
+    "classId": "engineer",
+    "branchId": "demolitions",
+    "branchName": "Demolitions",
+    "name": "Turn the Key",
+    "depth": 6,
+    "cost": 6,
+    "grade": "SS+",
+    "prerequisite": "engineer-demolitions-5",
+    "capstone": true,
+    "effects": {
+      "weaponDamage": 0.35,
+      "fireRate": 0.16,
+      "turretDamage": 0.5
+    },
+    "description": "weaponDamage: +0.35; fireRate: +0.16; turretDamage: +0.5. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "engineer-constructs-1",
+    "classId": "engineer",
+    "branchId": "constructs",
+    "branchName": "Constructs",
+    "name": "Level Footing",
+    "depth": 1,
+    "cost": 1,
+    "grade": "D-",
+    "prerequisite": null,
+    "capstone": false,
+    "effects": {
+      "cooldownReduction": 0.025,
+      "abilityPotency": 0.05
+    },
+    "description": "cooldownReduction: +0.025; abilityPotency: +0.05. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "engineer-constructs-2",
+    "classId": "engineer",
+    "branchId": "constructs",
+    "branchName": "Constructs",
+    "name": "Fast Assembly",
+    "depth": 2,
+    "cost": 2,
+    "grade": "C-",
+    "prerequisite": "engineer-constructs-1",
+    "capstone": false,
+    "effects": {
+      "cooldownReduction": 0.025,
+      "abilityPotency": 0.05
+    },
+    "description": "cooldownReduction: +0.025; abilityPotency: +0.05. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "engineer-constructs-3",
+    "classId": "engineer",
+    "branchId": "constructs",
+    "branchName": "Constructs",
+    "name": "Spare Motor",
+    "depth": 3,
+    "cost": 3,
+    "grade": "B-",
+    "prerequisite": "engineer-constructs-2",
+    "capstone": false,
+    "effects": {
+      "cooldownReduction": 0.04,
+      "abilityPotency": 0.08,
+      "ultimateCooldownReduction": 0.1
+    },
+    "description": "cooldownReduction: +0.04; abilityPotency: +0.08; ultimateCooldownReduction: +0.1. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "engineer-constructs-4",
+    "classId": "engineer",
+    "branchId": "constructs",
+    "branchName": "Constructs",
+    "name": "Linked Repairs",
+    "depth": 4,
+    "cost": 4,
+    "grade": "A-",
+    "prerequisite": "engineer-constructs-3",
+    "capstone": false,
+    "effects": {
+      "cooldownReduction": 0.05,
+      "abilityPotency": 0.1
+    },
+    "description": "cooldownReduction: +0.05; abilityPotency: +0.1. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "engineer-constructs-5",
+    "classId": "engineer",
+    "branchId": "constructs",
+    "branchName": "Constructs",
+    "name": "Long Service",
+    "depth": 5,
+    "cost": 5,
+    "grade": "S-",
+    "prerequisite": "engineer-constructs-4",
+    "capstone": false,
+    "effects": {
+      "cooldownReduction": 0.06,
+      "abilityPotency": 0.12,
+      "ultimateCooldownReduction": 0.1,
+      "ultimatePotency": 0.25
+    },
+    "description": "cooldownReduction: +0.06; abilityPotency: +0.12; ultimateCooldownReduction: +0.1; ultimatePotency: +0.25. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "engineer-constructs-6",
+    "classId": "engineer",
+    "branchId": "constructs",
+    "branchName": "Constructs",
+    "name": "Two Hands More",
+    "depth": 6,
+    "cost": 6,
+    "grade": "SS-",
+    "prerequisite": "engineer-constructs-5",
+    "capstone": true,
+    "effects": {
+      "cooldownReduction": 0.1,
+      "abilityPotency": 0.2,
+      "extraTurrets": 1,
+      "ultimateDuration": 6
+    },
+    "description": "cooldownReduction: +0.1; abilityPotency: +0.2; extraTurrets: +1; ultimateDuration: +6. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "engineer-repair-1",
+    "classId": "engineer",
+    "branchId": "repair",
+    "branchName": "Repair",
+    "name": "Work Gloves",
+    "depth": 1,
+    "cost": 1,
+    "grade": "D",
+    "prerequisite": null,
+    "capstone": false,
+    "effects": {
+      "maxHealth": 10,
+      "armor": 0,
+      "regeneration": 0
+    },
+    "description": "maxHealth: +10 HP; armor: +0; regeneration: +0 HP/s. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "engineer-repair-2",
+    "classId": "engineer",
+    "branchId": "repair",
+    "branchName": "Repair",
+    "name": "Reinforced Apron",
+    "depth": 2,
+    "cost": 2,
+    "grade": "C",
+    "prerequisite": "engineer-repair-1",
+    "capstone": false,
+    "effects": {
+      "maxHealth": 12,
+      "armor": 0.03,
+      "regeneration": 0.1
+    },
+    "description": "maxHealth: +12 HP; armor: +0.03; regeneration: +0.1 HP/s. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "engineer-repair-3",
+    "classId": "engineer",
+    "branchId": "repair",
+    "branchName": "Repair",
+    "name": "Patch Plate",
+    "depth": 3,
+    "cost": 3,
+    "grade": "B",
+    "prerequisite": "engineer-repair-2",
+    "capstone": false,
+    "effects": {
+      "maxHealth": 15,
+      "armor": 0.04,
+      "regeneration": 0.15
+    },
+    "description": "maxHealth: +15 HP; armor: +0.04; regeneration: +0.15 HP/s. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "engineer-repair-4",
+    "classId": "engineer",
+    "branchId": "repair",
+    "branchName": "Repair",
+    "name": "Safe Ground",
+    "depth": 4,
+    "cost": 4,
+    "grade": "A",
+    "prerequisite": "engineer-repair-3",
+    "capstone": false,
+    "effects": {
+      "maxHealth": 20,
+      "armor": 0.05,
+      "regeneration": 0.2
+    },
+    "description": "maxHealth: +20 HP; armor: +0.05; regeneration: +0.2 HP/s. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "engineer-repair-5",
+    "classId": "engineer",
+    "branchId": "repair",
+    "branchName": "Repair",
+    "name": "Measured Steps",
+    "depth": 5,
+    "cost": 5,
+    "grade": "S",
+    "prerequisite": "engineer-repair-4",
+    "capstone": false,
+    "effects": {
+      "maxHealth": 25,
+      "armor": 0.06,
+      "regeneration": 0.25
+    },
+    "description": "maxHealth: +25 HP; armor: +0.06; regeneration: +0.25 HP/s. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "engineer-repair-6",
+    "classId": "engineer",
+    "branchId": "repair",
+    "branchName": "Repair",
+    "name": "A Thing Rebuilt",
+    "depth": 6,
+    "cost": 6,
+    "grade": "SS",
+    "prerequisite": "engineer-repair-5",
+    "capstone": true,
+    "effects": {
+      "maxHealth": 30,
+      "armor": 0.1,
+      "regeneration": 0.5,
+      "selfRevives": 1
+    },
+    "description": "maxHealth: +30 HP; armor: +0.1; regeneration: +0.5 HP/s; selfRevives: +1. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "assassin-precision-1",
+    "classId": "assassin",
+    "branchId": "precision",
+    "branchName": "Precision",
+    "name": "Fine Needle",
+    "depth": 1,
+    "cost": 1,
+    "grade": "D-",
+    "prerequisite": null,
+    "capstone": false,
+    "effects": {
+      "weaponDamage": 0.08,
+      "fireRate": 0
+    },
+    "description": "weaponDamage: +0.08; fireRate: +0. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "assassin-precision-2",
+    "classId": "assassin",
+    "branchId": "precision",
+    "branchName": "Precision",
+    "name": "Soft Trigger",
+    "depth": 2,
+    "cost": 2,
+    "grade": "C-",
+    "prerequisite": "assassin-precision-1",
+    "capstone": false,
+    "effects": {
+      "weaponDamage": 0.1,
+      "fireRate": 0.04
+    },
+    "description": "weaponDamage: +0.1; fireRate: +0.04. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "assassin-precision-3",
+    "classId": "assassin",
+    "branchId": "precision",
+    "branchName": "Precision",
+    "name": "True Line",
+    "depth": 3,
+    "cost": 3,
+    "grade": "B-",
+    "prerequisite": "assassin-precision-2",
+    "capstone": false,
+    "effects": {
+      "weaponDamage": 0.12,
+      "fireRate": 0.06
+    },
+    "description": "weaponDamage: +0.12; fireRate: +0.06. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "assassin-precision-4",
+    "classId": "assassin",
+    "branchId": "precision",
+    "branchName": "Precision",
+    "name": "Through the Seam",
+    "depth": 4,
+    "cost": 4,
+    "grade": "A-",
+    "prerequisite": "assassin-precision-3",
+    "capstone": false,
+    "effects": {
+      "weaponDamage": 0.15,
+      "fireRate": 0.08
+    },
+    "description": "weaponDamage: +0.15; fireRate: +0.08. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "assassin-precision-5",
+    "classId": "assassin",
+    "branchId": "precision",
+    "branchName": "Precision",
+    "name": "Last Aperture",
+    "depth": 5,
+    "cost": 5,
+    "grade": "S-",
+    "prerequisite": "assassin-precision-4",
+    "capstone": false,
+    "effects": {
+      "weaponDamage": 0.2,
+      "fireRate": 0.12
+    },
+    "description": "weaponDamage: +0.2; fireRate: +0.12. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "assassin-precision-6",
+    "classId": "assassin",
+    "branchId": "precision",
+    "branchName": "Precision",
+    "name": "A Single Thread",
+    "depth": 6,
+    "cost": 6,
+    "grade": "SS-",
+    "prerequisite": "assassin-precision-5",
+    "capstone": true,
+    "effects": {
+      "weaponDamage": 0.35,
+      "fireRate": 0.16,
+      "criticalChance": 0.2
+    },
+    "description": "weaponDamage: +0.35; fireRate: +0.16; criticalChance: +0.2. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "assassin-ambush-1",
+    "classId": "assassin",
+    "branchId": "ambush",
+    "branchName": "Ambush",
+    "name": "Quiet Hem",
+    "depth": 1,
+    "cost": 1,
+    "grade": "D",
+    "prerequisite": null,
+    "capstone": false,
+    "effects": {
+      "cooldownReduction": 0.025,
+      "abilityPotency": 0.05
+    },
+    "description": "cooldownReduction: +0.025; abilityPotency: +0.05. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "assassin-ambush-2",
+    "classId": "assassin",
+    "branchId": "ambush",
+    "branchName": "Ambush",
+    "name": "Hidden Route",
+    "depth": 2,
+    "cost": 2,
+    "grade": "C",
+    "prerequisite": "assassin-ambush-1",
+    "capstone": false,
+    "effects": {
+      "cooldownReduction": 0.025,
+      "abilityPotency": 0.05
+    },
+    "description": "cooldownReduction: +0.025; abilityPotency: +0.05. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "assassin-ambush-3",
+    "classId": "assassin",
+    "branchId": "ambush",
+    "branchName": "Ambush",
+    "name": "Long Veil",
+    "depth": 3,
+    "cost": 3,
+    "grade": "B",
+    "prerequisite": "assassin-ambush-2",
+    "capstone": false,
+    "effects": {
+      "cooldownReduction": 0.04,
+      "abilityPotency": 0.08,
+      "ultimateCooldownReduction": 0.1
+    },
+    "description": "cooldownReduction: +0.04; abilityPotency: +0.08; ultimateCooldownReduction: +0.1. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "assassin-ambush-4",
+    "classId": "assassin",
+    "branchId": "ambush",
+    "branchName": "Ambush",
+    "name": "Borrowed Shadow",
+    "depth": 4,
+    "cost": 4,
+    "grade": "A",
+    "prerequisite": "assassin-ambush-3",
+    "capstone": false,
+    "effects": {
+      "cooldownReduction": 0.05,
+      "abilityPotency": 0.1
+    },
+    "description": "cooldownReduction: +0.05; abilityPotency: +0.1. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "assassin-ambush-5",
+    "classId": "assassin",
+    "branchId": "ambush",
+    "branchName": "Ambush",
+    "name": "Safe Return",
+    "depth": 5,
+    "cost": 5,
+    "grade": "S",
+    "prerequisite": "assassin-ambush-4",
+    "capstone": false,
+    "effects": {
+      "cooldownReduction": 0.06,
+      "abilityPotency": 0.12,
+      "ultimateCooldownReduction": 0.1,
+      "ultimatePotency": 0.25
+    },
+    "description": "cooldownReduction: +0.06; abilityPotency: +0.12; ultimateCooldownReduction: +0.1; ultimatePotency: +0.25. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "assassin-ambush-6",
+    "classId": "assassin",
+    "branchId": "ambush",
+    "branchName": "Ambush",
+    "name": "No Witness",
+    "depth": 6,
+    "cost": 6,
+    "grade": "SS",
+    "prerequisite": "assassin-ambush-5",
+    "capstone": true,
+    "effects": {
+      "cooldownReduction": 0.1,
+      "abilityPotency": 0.2,
+      "veilDuration": 0.5,
+      "ultimateCharges": 1
+    },
+    "description": "cooldownReduction: +0.1; abilityPotency: +0.2; veilDuration: +0.5; ultimateCharges: +1. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "assassin-evasion-1",
+    "classId": "assassin",
+    "branchId": "evasion",
+    "branchName": "Evasion",
+    "name": "Light Soles",
+    "depth": 1,
+    "cost": 1,
+    "grade": "D+",
+    "prerequisite": null,
+    "capstone": false,
+    "effects": {
+      "maxHealth": 10,
+      "armor": 0,
+      "regeneration": 0
+    },
+    "description": "maxHealth: +10 HP; armor: +0; regeneration: +0 HP/s. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "assassin-evasion-2",
+    "classId": "assassin",
+    "branchId": "evasion",
+    "branchName": "Evasion",
+    "name": "Loose Shoulders",
+    "depth": 2,
+    "cost": 2,
+    "grade": "C+",
+    "prerequisite": "assassin-evasion-1",
+    "capstone": false,
+    "effects": {
+      "maxHealth": 12,
+      "armor": 0.03,
+      "regeneration": 0.1
+    },
+    "description": "maxHealth: +12 HP; armor: +0.03; regeneration: +0.1 HP/s. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "assassin-evasion-3",
+    "classId": "assassin",
+    "branchId": "evasion",
+    "branchName": "Evasion",
+    "name": "Narrow Escape",
+    "depth": 3,
+    "cost": 3,
+    "grade": "B+",
+    "prerequisite": "assassin-evasion-2",
+    "capstone": false,
+    "effects": {
+      "maxHealth": 15,
+      "armor": 0.04,
+      "regeneration": 0.15
+    },
+    "description": "maxHealth: +15 HP; armor: +0.04; regeneration: +0.15 HP/s. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "assassin-evasion-4",
+    "classId": "assassin",
+    "branchId": "evasion",
+    "branchName": "Evasion",
+    "name": "Steady Pulse",
+    "depth": 4,
+    "cost": 4,
+    "grade": "A+",
+    "prerequisite": "assassin-evasion-3",
+    "capstone": false,
+    "effects": {
+      "maxHealth": 20,
+      "armor": 0.05,
+      "regeneration": 0.2
+    },
+    "description": "maxHealth: +20 HP; armor: +0.05; regeneration: +0.2 HP/s. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "assassin-evasion-5",
+    "classId": "assassin",
+    "branchId": "evasion",
+    "branchName": "Evasion",
+    "name": "Afterimage",
+    "depth": 5,
+    "cost": 5,
+    "grade": "S+",
+    "prerequisite": "assassin-evasion-4",
+    "capstone": false,
+    "effects": {
+      "maxHealth": 25,
+      "armor": 0.06,
+      "regeneration": 0.25
+    },
+    "description": "maxHealth: +25 HP; armor: +0.06; regeneration: +0.25 HP/s. Effects add to the purchased build; global modifier limits apply."
+  },
+  {
+    "id": "assassin-evasion-6",
+    "classId": "assassin",
+    "branchId": "evasion",
+    "branchName": "Evasion",
+    "name": "Another Way Home",
+    "depth": 6,
+    "cost": 6,
+    "grade": "SS+",
+    "prerequisite": "assassin-evasion-5",
+    "capstone": true,
+    "effects": {
+      "maxHealth": 30,
+      "armor": 0.1,
+      "regeneration": 0.5,
+      "selfRevives": 1
+    },
+    "description": "maxHealth: +30 HP; armor: +0.1; regeneration: +0.5 HP/s; selfRevives: +1. Effects add to the purchased build; global modifier limits apply."
+  }
+]

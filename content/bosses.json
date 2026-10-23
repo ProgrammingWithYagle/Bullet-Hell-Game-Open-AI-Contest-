@@ -1,0 +1,7132 @@
+[
+  {
+    "id": "constable",
+    "name": "Hollow Constable",
+    "lore": "A dead watch captain remembers every order except whom it was meant to protect.",
+    "minThreat": 1,
+    "timer": 120,
+    "healthFactor": 1,
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "arrestZoneSlow": 0.35,
+      "zoneDuration": 3
+    },
+    "secret": false,
+    "radius": 58,
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "fan",
+            "count": 7,
+            "speed": 160,
+            "damage": 12,
+            "interval": 3.2,
+            "telegraph": 0.85,
+            "arc": 90
+          },
+          {
+            "kind": "zone",
+            "count": 2,
+            "speed": 0,
+            "damage": 10,
+            "interval": 7,
+            "telegraph": 1.2,
+            "radius": 75,
+            "duration": 3,
+            "slow": 0.35
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "fan",
+            "count": 9,
+            "speed": 173,
+            "damage": 12,
+            "interval": 2.88,
+            "telegraph": 0.85,
+            "arc": 90
+          },
+          {
+            "kind": "zone",
+            "count": 4,
+            "speed": 0,
+            "damage": 10,
+            "interval": 6.3,
+            "telegraph": 1.2,
+            "radius": 75,
+            "duration": 3,
+            "slow": 0.35
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "fan",
+            "count": 11,
+            "speed": 186,
+            "damage": 12,
+            "interval": 2.56,
+            "telegraph": 0.85,
+            "arc": 90
+          },
+          {
+            "kind": "zone",
+            "count": 6,
+            "speed": 0,
+            "damage": 10,
+            "interval": 5.6,
+            "telegraph": 1.2,
+            "radius": 75,
+            "duration": 3,
+            "slow": 0.35
+          }
+        ]
+      }
+    ],
+    "route": "short",
+    "preferredArena": "gatehouse",
+    "finale": false,
+    "damageWindowFraction": 1,
+    "signature": {
+      "id": "constable",
+      "behavior": "Lock aimed volleys at the warned target position and stamp arrest zones that slow survivors before expiring.",
+      "counterplay": "Move after the volley locks, cross between the fan shots and leave outlined arrest zones before they activate.",
+      "parameters": {
+        "arrestZoneSlow": 0.35,
+        "zoneDuration": 3
+      }
+    },
+    "artBrief": "A dead watch captain remembers every order except whom it was meant to protect. One dominant silhouette and one signature prop; quiet matte fabric masses, restrained surface detail."
+  },
+  {
+    "id": "courier",
+    "name": "Carrion Courier",
+    "lore": "A messenger runs the same route after the streets and their names have disappeared.",
+    "minThreat": 1,
+    "timer": 90,
+    "healthFactor": 0.75,
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "chargeTrailWidth": 32,
+      "chargeTrailDuration": 3,
+      "chargeTrailDamagePerSecond": 10
+    },
+    "secret": false,
+    "radius": 58,
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "charge",
+            "count": 1,
+            "speed": 420,
+            "damage": 18,
+            "interval": 5,
+            "telegraph": 1
+          },
+          {
+            "kind": "cross",
+            "count": 20,
+            "speed": 160,
+            "damage": 11,
+            "interval": 4,
+            "telegraph": 0.9
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "charge",
+            "count": 1,
+            "speed": 454,
+            "damage": 18,
+            "interval": 4.5,
+            "telegraph": 1
+          },
+          {
+            "kind": "cross",
+            "count": 22,
+            "speed": 173,
+            "damage": 11,
+            "interval": 3.6,
+            "telegraph": 0.9
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "charge",
+            "count": 1,
+            "speed": 487,
+            "damage": 18,
+            "interval": 4,
+            "telegraph": 1
+          },
+          {
+            "kind": "cross",
+            "count": 24,
+            "speed": 186,
+            "damage": 11,
+            "interval": 3.2,
+            "telegraph": 0.9
+          }
+        ]
+      }
+    ],
+    "route": "short",
+    "preferredArena": "gatehouse",
+    "finale": false,
+    "damageWindowFraction": 1,
+    "signature": {
+      "id": "courier",
+      "behavior": "Charge through a locked straight lane, leaving a short damaging trail while crossing volleys divide the escape ground.",
+      "counterplay": "Step perpendicular to the marked charge and cross its trail only after its visible timer expires.",
+      "parameters": {
+        "chargeTrailWidth": 32,
+        "chargeTrailDuration": 3,
+        "chargeTrailDamagePerSecond": 10
+      }
+    },
+    "artBrief": "A messenger runs the same route after the streets and their names have disappeared. One dominant silhouette and one signature prop; quiet matte fabric masses, restrained surface detail."
+  },
+  {
+    "id": "pallbearer",
+    "name": "Pallbearer",
+    "lore": "The coffin is empty. Its bearer keeps making room.",
+    "minThreat": 1,
+    "timer": 150,
+    "healthFactor": 1.05,
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "movingCoverHealth": 180,
+      "movingCoverSpeed": 75,
+      "coffinFrontResistance": 0.5
+    },
+    "secret": false,
+    "radius": 58,
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "charge",
+            "count": 1,
+            "speed": 330,
+            "damage": 22,
+            "interval": 7,
+            "telegraph": 1.1
+          },
+          {
+            "kind": "fan",
+            "count": 9,
+            "speed": 140,
+            "damage": 13,
+            "interval": 4.5,
+            "telegraph": 1,
+            "arc": 130
+          },
+          {
+            "kind": "armor",
+            "count": 1,
+            "speed": 0,
+            "damage": 0,
+            "interval": 13,
+            "telegraph": 1,
+            "duration": 3,
+            "resistance": 0.5
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "charge",
+            "count": 1,
+            "speed": 356,
+            "damage": 22,
+            "interval": 6.3,
+            "telegraph": 1.1
+          },
+          {
+            "kind": "fan",
+            "count": 11,
+            "speed": 151,
+            "damage": 13,
+            "interval": 4.05,
+            "telegraph": 1,
+            "arc": 130
+          },
+          {
+            "kind": "armor",
+            "count": 1,
+            "speed": 0,
+            "damage": 0,
+            "interval": 11.7,
+            "telegraph": 1,
+            "duration": 3,
+            "resistance": 0.5
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "charge",
+            "count": 1,
+            "speed": 383,
+            "damage": 22,
+            "interval": 5.6,
+            "telegraph": 1.1
+          },
+          {
+            "kind": "fan",
+            "count": 13,
+            "speed": 162,
+            "damage": 13,
+            "interval": 3.6,
+            "telegraph": 1,
+            "arc": 130
+          },
+          {
+            "kind": "armor",
+            "count": 1,
+            "speed": 0,
+            "damage": 0,
+            "interval": 10.4,
+            "telegraph": 1,
+            "duration": 3,
+            "resistance": 0.5
+          }
+        ]
+      }
+    ],
+    "route": "long",
+    "preferredArena": "gatehouse",
+    "finale": false,
+    "damageWindowFraction": 1,
+    "signature": {
+      "id": "pallbearer",
+      "behavior": "Advance behind a resistant coffin front and moving cover, then commit to a long straight charge.",
+      "counterplay": "Flank the coffin, use the moving cover against volleys and attack during the charge recovery.",
+      "parameters": {
+        "movingCoverHealth": 180,
+        "movingCoverSpeed": 75,
+        "coffinFrontResistance": 0.5
+      }
+    },
+    "artBrief": "The coffin is empty. Its bearer keeps making room. One dominant silhouette and one signature prop; quiet matte fabric masses, restrained surface detail."
+  },
+  {
+    "id": "matron",
+    "name": "Cradle Matron",
+    "lore": "An infirmary keeper shelters the dead beneath a dress sewn from bed linen.",
+    "minThreat": 1,
+    "timer": 150,
+    "healthFactor": 1,
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "nestHealth": 100,
+      "nestSpawnInterval": 6,
+      "nestMaximum": 3,
+      "minionsPerNest": 2
+    },
+    "secret": false,
+    "radius": 58,
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "summon",
+            "count": 4,
+            "speed": 80,
+            "damage": 9,
+            "interval": 8,
+            "telegraph": 1.2,
+            "health": 45,
+            "maximum": 18
+          },
+          {
+            "kind": "ring",
+            "count": 20,
+            "speed": 120,
+            "damage": 11,
+            "interval": 6,
+            "telegraph": 1
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "summon",
+            "count": 6,
+            "speed": 86,
+            "damage": 9,
+            "interval": 7.2,
+            "telegraph": 1.2,
+            "health": 45,
+            "maximum": 18
+          },
+          {
+            "kind": "ring",
+            "count": 22,
+            "speed": 130,
+            "damage": 11,
+            "interval": 5.4,
+            "telegraph": 1
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "summon",
+            "count": 8,
+            "speed": 93,
+            "damage": 9,
+            "interval": 6.4,
+            "telegraph": 1.2,
+            "health": 45,
+            "maximum": 18
+          },
+          {
+            "kind": "ring",
+            "count": 24,
+            "speed": 139,
+            "damage": 11,
+            "interval": 4.8,
+            "telegraph": 1
+          }
+        ]
+      }
+    ],
+    "route": "standard",
+    "preferredArena": "triage-yard",
+    "finale": false,
+    "damageWindowFraction": 1,
+    "signature": {
+      "id": "matron",
+      "behavior": "Build destructible nests that continuously summon bounded packs while slow expanding rings divide the arena.",
+      "counterplay": "Destroy nests to control new arrivals, clear a path through the packs and cross each ring at its visible gap.",
+      "parameters": {
+        "nestHealth": 100,
+        "nestSpawnInterval": 6,
+        "nestMaximum": 3,
+        "minionsPerNest": 2
+      }
+    },
+    "artBrief": "An infirmary keeper shelters the dead beneath a dress sewn from bed linen. One dominant silhouette and one signature prop; quiet matte fabric masses, restrained surface detail."
+  },
+  {
+    "id": "alchemist",
+    "name": "Mold Alchemist",
+    "lore": "A municipal chemist carries a garden that learned to grow without sunlight.",
+    "minThreat": 1,
+    "timer": 150,
+    "healthFactor": 0.95,
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "poolSafeWindow": 1.3,
+      "poolDuration": 5
+    },
+    "secret": false,
+    "radius": 58,
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "pool",
+            "count": 3,
+            "speed": 0,
+            "damage": 10,
+            "interval": 6,
+            "telegraph": 1.3,
+            "radius": 65,
+            "duration": 5
+          },
+          {
+            "kind": "fan",
+            "count": 11,
+            "speed": 145,
+            "damage": 12,
+            "interval": 4,
+            "telegraph": 0.9,
+            "arc": 110
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "pool",
+            "count": 5,
+            "speed": 0,
+            "damage": 10,
+            "interval": 5.4,
+            "telegraph": 1.3,
+            "radius": 65,
+            "duration": 5
+          },
+          {
+            "kind": "fan",
+            "count": 13,
+            "speed": 157,
+            "damage": 12,
+            "interval": 3.6,
+            "telegraph": 0.9,
+            "arc": 110
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "pool",
+            "count": 7,
+            "speed": 0,
+            "damage": 10,
+            "interval": 4.8,
+            "telegraph": 1.3,
+            "radius": 65,
+            "duration": 5
+          },
+          {
+            "kind": "fan",
+            "count": 15,
+            "speed": 168,
+            "damage": 12,
+            "interval": 3.2,
+            "telegraph": 0.9,
+            "arc": 110
+          }
+        ]
+      }
+    ],
+    "route": "standard",
+    "preferredArena": "triage-yard",
+    "finale": false,
+    "damageWindowFraction": 1,
+    "signature": {
+      "id": "alchemist",
+      "behavior": "Place warned mold pools on changing ground while aimed fans limit the route between safe patches.",
+      "counterplay": "Leave each landing circle before its safe window ends, and reserve a clear route to the next unmarked patch.",
+      "parameters": {
+        "poolSafeWindow": 1.3,
+        "poolDuration": 5
+      }
+    },
+    "artBrief": "A municipal chemist carries a garden that learned to grow without sunlight. One dominant silhouette and one signature prop; quiet matte fabric masses, restrained surface detail."
+  },
+  {
+    "id": "bellringer",
+    "name": "Bellringer",
+    "lore": "Every note is a warning delivered too late.",
+    "minThreat": 1,
+    "timer": 120,
+    "healthFactor": 0.9,
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "ringGapDegrees": 35,
+      "gapRotationDegreesPerAttack": 30
+    },
+    "secret": false,
+    "radius": 58,
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "pulse",
+            "count": 24,
+            "speed": 130,
+            "damage": 14,
+            "interval": 5.5,
+            "telegraph": 1.1,
+            "gap": 35
+          },
+          {
+            "kind": "spiral",
+            "count": 12,
+            "speed": 150,
+            "damage": 11,
+            "interval": 4,
+            "telegraph": 0.8
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "pulse",
+            "count": 26,
+            "speed": 140,
+            "damage": 14,
+            "interval": 4.95,
+            "telegraph": 1.1,
+            "gap": 35
+          },
+          {
+            "kind": "spiral",
+            "count": 14,
+            "speed": 162,
+            "damage": 11,
+            "interval": 3.6,
+            "telegraph": 0.8
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "pulse",
+            "count": 28,
+            "speed": 151,
+            "damage": 14,
+            "interval": 4.4,
+            "telegraph": 1.1,
+            "gap": 35
+          },
+          {
+            "kind": "spiral",
+            "count": 16,
+            "speed": 174,
+            "damage": 11,
+            "interval": 3.2,
+            "telegraph": 0.8
+          }
+        ]
+      }
+    ],
+    "route": "standard",
+    "preferredArena": "sunken-chapel",
+    "finale": false,
+    "damageWindowFraction": 1,
+    "signature": {
+      "id": "bellringer",
+      "behavior": "Release expanding rings with a rotating timed gap while a slower spiral punishes standing still.",
+      "counterplay": "Follow the hollow gap marker as it rotates and cross each ring rather than trying to outrun it.",
+      "parameters": {
+        "ringGapDegrees": 35,
+        "gapRotationDegreesPerAttack": 30
+      }
+    },
+    "artBrief": "Every note is a warning delivered too late. One dominant silhouette and one signature prop; quiet matte fabric masses, restrained surface detail."
+  },
+  {
+    "id": "stitchwright",
+    "name": "Stitchwright",
+    "lore": "A surgeon of uniforms now mends the people who wore them.",
+    "minThreat": 1,
+    "timer": 120,
+    "healthFactor": 0.9,
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "tetherHealth": 45,
+      "tetherDuration": 4,
+      "tetherRange": 350,
+      "rescueChannelSeconds": 1
+    },
+    "secret": false,
+    "radius": 58,
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "hook",
+            "count": 3,
+            "speed": 230,
+            "damage": 15,
+            "interval": 5,
+            "telegraph": 1,
+            "slow": 0.5,
+            "duration": 2
+          },
+          {
+            "kind": "lanes",
+            "count": 18,
+            "speed": 170,
+            "damage": 13,
+            "interval": 6,
+            "telegraph": 1.1
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "hook",
+            "count": 5,
+            "speed": 248,
+            "damage": 15,
+            "interval": 4.5,
+            "telegraph": 1,
+            "slow": 0.5,
+            "duration": 2
+          },
+          {
+            "kind": "lanes",
+            "count": 20,
+            "speed": 184,
+            "damage": 13,
+            "interval": 5.4,
+            "telegraph": 1.1
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "hook",
+            "count": 7,
+            "speed": 267,
+            "damage": 15,
+            "interval": 4,
+            "telegraph": 1,
+            "slow": 0.5,
+            "duration": 2
+          },
+          {
+            "kind": "lanes",
+            "count": 22,
+            "speed": 197,
+            "damage": 13,
+            "interval": 4.8,
+            "telegraph": 1.1
+          }
+        ]
+      }
+    ],
+    "route": "standard",
+    "preferredArena": "triage-yard",
+    "finale": false,
+    "damageWindowFraction": 1,
+    "signature": {
+      "id": "stitchwright",
+      "behavior": "Catch survivors with destructible rescue tethers while hooks and crossing lanes pressure their teammates.",
+      "counterplay": "Shoot the outlined tether or channel its short rescue interaction; the bound survivor can still dodge and contribute.",
+      "parameters": {
+        "tetherHealth": 45,
+        "tetherDuration": 4,
+        "tetherRange": 350,
+        "rescueChannelSeconds": 1
+      }
+    },
+    "artBrief": "A surgeon of uniforms now mends the people who wore them. One dominant silhouette and one signature prop; quiet matte fabric masses, restrained surface detail."
+  },
+  {
+    "id": "choir",
+    "name": "Grave Choir",
+    "lore": "The singers are separate corpses. The voice beneath them is singular.",
+    "minThreat": 1,
+    "timer": 150,
+    "healthFactor": 1,
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "casterCount": 3,
+      "casterRadius": 24,
+      "casterHealthFraction": 0.34,
+      "beamOffsetSeconds": 0.45
+    },
+    "secret": false,
+    "radius": 58,
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "beam",
+            "count": 3,
+            "speed": 0,
+            "damage": 20,
+            "interval": 6,
+            "telegraph": 1.3,
+            "duration": 0.6,
+            "width": 26
+          },
+          {
+            "kind": "spiral",
+            "count": 20,
+            "speed": 145,
+            "damage": 13,
+            "interval": 4,
+            "telegraph": 0.9
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "beam",
+            "count": 5,
+            "speed": 0,
+            "damage": 20,
+            "interval": 5.4,
+            "telegraph": 1.3,
+            "duration": 0.6,
+            "width": 26
+          },
+          {
+            "kind": "spiral",
+            "count": 22,
+            "speed": 157,
+            "damage": 13,
+            "interval": 3.6,
+            "telegraph": 0.9
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "beam",
+            "count": 7,
+            "speed": 0,
+            "damage": 20,
+            "interval": 4.8,
+            "telegraph": 1.3,
+            "duration": 0.6,
+            "width": 26
+          },
+          {
+            "kind": "spiral",
+            "count": 24,
+            "speed": 168,
+            "damage": 13,
+            "interval": 3.2,
+            "telegraph": 0.9
+          }
+        ]
+      }
+    ],
+    "route": "standard",
+    "preferredArena": "sunken-chapel",
+    "finale": true,
+    "damageWindowFraction": 1,
+    "signature": {
+      "id": "choir",
+      "behavior": "Three coordinated casters offset their beam casts, leaving a readable sequence between the individual releases.",
+      "counterplay": "Track the three numbered caster tells and move between locked beam directions; attacks remain visible without sound.",
+      "parameters": {
+        "casterCount": 3,
+        "casterRadius": 24,
+        "casterHealthFraction": 0.34,
+        "beamOffsetSeconds": 0.45
+      }
+    },
+    "artBrief": "The singers are separate corpses. The voice beneath them is singular. One dominant silhouette and one signature prop; quiet matte fabric masses, restrained surface detail."
+  },
+  {
+    "id": "engine",
+    "name": "Mortuary Engine",
+    "lore": "A foundry foreman is buried inside the machine that will not let him clock out.",
+    "minThreat": 1,
+    "timer": 180,
+    "healthFactor": 1.15,
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "weakPointRadius": 26,
+      "weakPointDamageMultiplier": 1.6,
+      "armorSeconds": 4,
+      "armorResistance": 0.6
+    },
+    "secret": false,
+    "radius": 76,
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "armor",
+            "count": 1,
+            "speed": 0,
+            "damage": 0,
+            "interval": 15,
+            "telegraph": 1,
+            "duration": 4,
+            "resistance": 0.6
+          },
+          {
+            "kind": "lanes",
+            "count": 26,
+            "speed": 170,
+            "damage": 15,
+            "interval": 6,
+            "telegraph": 1.2
+          },
+          {
+            "kind": "fan",
+            "count": 13,
+            "speed": 170,
+            "damage": 14,
+            "interval": 4.5,
+            "telegraph": 1,
+            "arc": 150
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "armor",
+            "count": 1,
+            "speed": 0,
+            "damage": 0,
+            "interval": 13.5,
+            "telegraph": 1,
+            "duration": 4,
+            "resistance": 0.6
+          },
+          {
+            "kind": "lanes",
+            "count": 28,
+            "speed": 184,
+            "damage": 15,
+            "interval": 5.4,
+            "telegraph": 1.2
+          },
+          {
+            "kind": "fan",
+            "count": 15,
+            "speed": 184,
+            "damage": 14,
+            "interval": 4.05,
+            "telegraph": 1,
+            "arc": 150
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "armor",
+            "count": 1,
+            "speed": 0,
+            "damage": 0,
+            "interval": 12,
+            "telegraph": 1,
+            "duration": 4,
+            "resistance": 0.6
+          },
+          {
+            "kind": "lanes",
+            "count": 30,
+            "speed": 197,
+            "damage": 15,
+            "interval": 4.8,
+            "telegraph": 1.2
+          },
+          {
+            "kind": "fan",
+            "count": 17,
+            "speed": 197,
+            "damage": 14,
+            "interval": 3.6,
+            "telegraph": 1,
+            "arc": 150
+          }
+        ]
+      }
+    ],
+    "route": "long",
+    "preferredArena": "ossuary-works",
+    "finale": true,
+    "damageWindowFraction": 1,
+    "signature": {
+      "id": "engine",
+      "behavior": "Alternate armored firing cycles with an exposed weak point while ordered lanes and broad fans cover the floor.",
+      "counterplay": "Aim at the outlined weak point, use the firing gaps and save burst damage for the exposed cycle.",
+      "parameters": {
+        "weakPointRadius": 26,
+        "weakPointDamageMultiplier": 1.6,
+        "armorSeconds": 4,
+        "armorResistance": 0.6
+      }
+    },
+    "artBrief": "A foundry foreman is buried inside the machine that will not let him clock out. One dominant silhouette and one signature prop; quiet matte fabric masses, restrained surface detail."
+  },
+  {
+    "id": "regent",
+    "name": "Drowned Regent",
+    "lore": "The mayor opens the floodgates for a city that no longer breathes.",
+    "minThreat": 1,
+    "timer": 180,
+    "healthFactor": 1.1,
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "waterShiftInterval": 12,
+      "waterSlow": 0.2,
+      "decoyDuration": 2,
+      "decoyMaximum": 2
+    },
+    "secret": false,
+    "radius": 58,
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "warp",
+            "count": 1,
+            "speed": 0,
+            "damage": 0,
+            "interval": 10,
+            "telegraph": 1.3
+          },
+          {
+            "kind": "ring",
+            "count": 30,
+            "speed": 150,
+            "damage": 16,
+            "interval": 5,
+            "telegraph": 1.1
+          },
+          {
+            "kind": "pool",
+            "count": 4,
+            "speed": 0,
+            "damage": 12,
+            "interval": 7,
+            "telegraph": 1.4,
+            "radius": 70,
+            "duration": 5
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "warp",
+            "count": 1,
+            "speed": 0,
+            "damage": 0,
+            "interval": 9,
+            "telegraph": 1.3
+          },
+          {
+            "kind": "ring",
+            "count": 32,
+            "speed": 162,
+            "damage": 16,
+            "interval": 4.5,
+            "telegraph": 1.1
+          },
+          {
+            "kind": "pool",
+            "count": 6,
+            "speed": 0,
+            "damage": 12,
+            "interval": 6.3,
+            "telegraph": 1.4,
+            "radius": 70,
+            "duration": 5
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "warp",
+            "count": 1,
+            "speed": 0,
+            "damage": 0,
+            "interval": 8,
+            "telegraph": 1.3
+          },
+          {
+            "kind": "ring",
+            "count": 34,
+            "speed": 174,
+            "damage": 16,
+            "interval": 4,
+            "telegraph": 1.1
+          },
+          {
+            "kind": "pool",
+            "count": 8,
+            "speed": 0,
+            "damage": 12,
+            "interval": 5.6,
+            "telegraph": 1.4,
+            "radius": 70,
+            "duration": 5
+          }
+        ]
+      }
+    ],
+    "route": "long",
+    "preferredArena": "sunken-chapel",
+    "finale": true,
+    "damageWindowFraction": 1,
+    "signature": {
+      "id": "regent",
+      "behavior": "Shift flooded ground and relocate among harmless decoys before announcing the true ring and pool attacks.",
+      "counterplay": "Follow the solid true-body marker, use dry paths and wait for the relocation tell before committing a dodge.",
+      "parameters": {
+        "waterShiftInterval": 12,
+        "waterSlow": 0.2,
+        "decoyDuration": 2,
+        "decoyMaximum": 2
+      }
+    },
+    "artBrief": "The mayor opens the floodgates for a city that no longer breathes. One dominant silhouette and one signature prop; quiet matte fabric masses, restrained surface detail."
+  },
+  {
+    "id": "uncounted",
+    "name": "The Uncounted",
+    "lore": "The bells remember the names the city refused to record.",
+    "minThreat": 11,
+    "timer": 210,
+    "healthFactor": 1.2,
+    "arenaIds": [
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "ledgerEchoInterval": 10,
+      "echoMaximum": 4,
+      "finalRingGapDegrees": 40
+    },
+    "secret": true,
+    "radius": 58,
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "spiral",
+            "count": 28,
+            "speed": 165,
+            "damage": 17,
+            "interval": 4,
+            "telegraph": 1
+          },
+          {
+            "kind": "beam",
+            "count": 4,
+            "speed": 0,
+            "damage": 22,
+            "interval": 7,
+            "telegraph": 1.4,
+            "duration": 0.6,
+            "width": 28
+          },
+          {
+            "kind": "warp",
+            "count": 1,
+            "speed": 0,
+            "damage": 0,
+            "interval": 12,
+            "telegraph": 1.3
+          },
+          {
+            "kind": "summon",
+            "count": 5,
+            "speed": 90,
+            "damage": 10,
+            "interval": 10,
+            "telegraph": 1.3,
+            "health": 60,
+            "maximum": 20
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "spiral",
+            "count": 30,
+            "speed": 178,
+            "damage": 17,
+            "interval": 3.6,
+            "telegraph": 1
+          },
+          {
+            "kind": "beam",
+            "count": 6,
+            "speed": 0,
+            "damage": 22,
+            "interval": 6.3,
+            "telegraph": 1.4,
+            "duration": 0.6,
+            "width": 28
+          },
+          {
+            "kind": "warp",
+            "count": 1,
+            "speed": 0,
+            "damage": 0,
+            "interval": 10.8,
+            "telegraph": 1.3
+          },
+          {
+            "kind": "summon",
+            "count": 7,
+            "speed": 97,
+            "damage": 10,
+            "interval": 9,
+            "telegraph": 1.3,
+            "health": 60,
+            "maximum": 20
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "spiral",
+            "count": 32,
+            "speed": 191,
+            "damage": 17,
+            "interval": 3.2,
+            "telegraph": 1
+          },
+          {
+            "kind": "beam",
+            "count": 8,
+            "speed": 0,
+            "damage": 22,
+            "interval": 5.6,
+            "telegraph": 1.4,
+            "duration": 0.6,
+            "width": 28
+          },
+          {
+            "kind": "warp",
+            "count": 1,
+            "speed": 0,
+            "damage": 0,
+            "interval": 9.6,
+            "telegraph": 1.3
+          },
+          {
+            "kind": "summon",
+            "count": 9,
+            "speed": 104,
+            "damage": 10,
+            "interval": 8,
+            "telegraph": 1.3,
+            "health": 60,
+            "maximum": 20
+          }
+        ]
+      }
+    ],
+    "route": "secret",
+    "preferredArena": "crown-crypt",
+    "finale": false,
+    "damageWindowFraction": 1,
+    "signature": {
+      "id": "uncounted",
+      "behavior": "Combine ledger echoes, announced relocations, offset beams and bounded summons after the campaign victory is banked.",
+      "counterplay": "Use the persistent echo warnings and wide final ring gap, clear nearby summons and treat the extension as a separate challenge.",
+      "parameters": {
+        "ledgerEchoInterval": 10,
+        "echoMaximum": 4,
+        "finalRingGapDegrees": 40
+      }
+    },
+    "artBrief": "The bells remember the names the city refused to record. One dominant silhouette and one signature prop; quiet matte fabric masses, restrained surface detail."
+  },
+  {
+    "id": "tollkeeper",
+    "name": "The Tollkeeper",
+    "route": "short",
+    "preferredArena": "gatehouse",
+    "timer": 105,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.88,
+    "damageWindowFraction": 1,
+    "finale": false,
+    "secret": false,
+    "lore": "A corpse toll collector crouched behind one enormous coin wheel. The quarantine left its work unfinished.",
+    "artBrief": "A corpse toll collector crouched behind one enormous coin wheel. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "tollkeeper",
+      "behavior": "Roll a coin wheel down a marked lane; it banks off one wall and returns along the reflected path.",
+      "counterplay": "Follow the two-segment floor arrow and cross after the wheel passes.",
+      "parameters": {
+        "wheelRadiusPx": 42,
+        "wheelSpeedPxPerSecond": 260,
+        "bounces": 1,
+        "warningSeconds": 1.2,
+        "cycleSeconds": 7
+      }
+    },
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "wheelRadiusPx": 42,
+      "wheelSpeedPxPerSecond": 260,
+      "bounces": 1,
+      "warningSeconds": 1.2,
+      "cycleSeconds": 7
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "lanes",
+            "count": 12,
+            "speed": 155,
+            "damage": 11,
+            "interval": 5,
+            "telegraph": 1.2
+          },
+          {
+            "kind": "ring",
+            "count": 14,
+            "speed": 125,
+            "damage": 10,
+            "interval": 7,
+            "telegraph": 1
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "lanes",
+            "count": 14,
+            "speed": 167,
+            "damage": 11,
+            "interval": 4.5,
+            "telegraph": 1.2
+          },
+          {
+            "kind": "ring",
+            "count": 16,
+            "speed": 135,
+            "damage": 10,
+            "interval": 6.3,
+            "telegraph": 1
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "lanes",
+            "count": 16,
+            "speed": 180,
+            "damage": 11,
+            "interval": 4,
+            "telegraph": 1.2
+          },
+          {
+            "kind": "ring",
+            "count": 18,
+            "speed": 145,
+            "damage": 10,
+            "interval": 5.6,
+            "telegraph": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lantern-warden",
+    "name": "Lantern Warden",
+    "route": "short",
+    "preferredArena": "gatehouse",
+    "timer": 120,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.88,
+    "damageWindowFraction": 1,
+    "finale": false,
+    "secret": false,
+    "lore": "A tall dead lamplighter with one caged lantern and a clean triangular coat. The quarantine left its work unfinished.",
+    "artBrief": "A tall dead lamplighter with one caged lantern and a clean triangular coat. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "lantern-warden",
+      "behavior": "Rotate a narrow cone of falling sparks around the lantern, with a clear trailing safe wedge.",
+      "counterplay": "Move behind the marked cone; its ground boundary remains visible with reduced effects.",
+      "parameters": {
+        "coneDegrees": 55,
+        "rotationDegreesPerSecond": 24,
+        "warningSeconds": 1.2,
+        "activeSeconds": 4,
+        "restSeconds": 4
+      }
+    },
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "coneDegrees": 55,
+      "rotationDegreesPerSecond": 24,
+      "warningSeconds": 1.2,
+      "activeSeconds": 4,
+      "restSeconds": 4
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "fan",
+            "count": 7,
+            "speed": 145,
+            "damage": 11,
+            "interval": 4,
+            "telegraph": 1,
+            "arc": 80
+          },
+          {
+            "kind": "zone",
+            "count": 2,
+            "speed": 0,
+            "damage": 9,
+            "interval": 8,
+            "telegraph": 1.2,
+            "radius": 60,
+            "duration": 3
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "fan",
+            "count": 9,
+            "speed": 157,
+            "damage": 11,
+            "interval": 3.6,
+            "telegraph": 1,
+            "arc": 80
+          },
+          {
+            "kind": "zone",
+            "count": 4,
+            "speed": 0,
+            "damage": 9,
+            "interval": 7.2,
+            "telegraph": 1.2,
+            "radius": 60,
+            "duration": 3
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "fan",
+            "count": 11,
+            "speed": 168,
+            "damage": 11,
+            "interval": 3.2,
+            "telegraph": 1,
+            "arc": 80
+          },
+          {
+            "kind": "zone",
+            "count": 6,
+            "speed": 0,
+            "damage": 9,
+            "interval": 6.4,
+            "telegraph": 1.2,
+            "radius": 60,
+            "duration": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ratcatcher",
+    "name": "Ratcatcher",
+    "route": "short",
+    "preferredArena": "triage-yard",
+    "timer": 120,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.88,
+    "damageWindowFraction": 1,
+    "finale": false,
+    "secret": false,
+    "lore": "A hunched pest-control corpse with a large sack and hooked walking stick. The quarantine left its work unfinished.",
+    "artBrief": "A hunched pest-control corpse with a large sack and hooked walking stick. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "ratcatcher",
+      "behavior": "Send three rat packs along visible scent lanes; striking the sack interrupts the next pack.",
+      "counterplay": "Break the outlined sack weak point or cross between the three trails.",
+      "parameters": {
+        "packs": 3,
+        "ratsPerPack": 4,
+        "ratHealthHP": 12,
+        "packSpeedPxPerSecond": 125,
+        "sackHealthHP": 65,
+        "spawnIntervalSeconds": 7
+      }
+    },
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "packs": 3,
+      "ratsPerPack": 4,
+      "ratHealthHP": 12,
+      "packSpeedPxPerSecond": 125,
+      "sackHealthHP": 65,
+      "spawnIntervalSeconds": 7
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "summon",
+            "count": 3,
+            "speed": 100,
+            "damage": 8,
+            "interval": 8,
+            "telegraph": 1.2,
+            "health": 20,
+            "maximum": 12
+          },
+          {
+            "kind": "cross",
+            "count": 12,
+            "speed": 135,
+            "damage": 10,
+            "interval": 6,
+            "telegraph": 1
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "summon",
+            "count": 5,
+            "speed": 108,
+            "damage": 8,
+            "interval": 7.2,
+            "telegraph": 1.2,
+            "health": 20,
+            "maximum": 12
+          },
+          {
+            "kind": "cross",
+            "count": 14,
+            "speed": 146,
+            "damage": 10,
+            "interval": 5.4,
+            "telegraph": 1
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "summon",
+            "count": 7,
+            "speed": 116,
+            "damage": 8,
+            "interval": 6.4,
+            "telegraph": 1.2,
+            "health": 20,
+            "maximum": 12
+          },
+          {
+            "kind": "cross",
+            "count": 16,
+            "speed": 157,
+            "damage": 10,
+            "interval": 4.8,
+            "telegraph": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "quarantine-clerk",
+    "name": "Quarantine Clerk",
+    "route": "short",
+    "preferredArena": "gatehouse",
+    "timer": 120,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.88,
+    "damageWindowFraction": 1,
+    "finale": false,
+    "secret": false,
+    "lore": "A thin undead clerk carrying a broad folded ledger and red sealing stamp. The quarantine left its work unfinished.",
+    "artBrief": "A thin undead clerk carrying a broad folded ledger and red sealing stamp. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "quarantine-clerk",
+      "behavior": "Stamp three ground zones in sequence, then reopen the first zone as the guaranteed safe space.",
+      "counterplay": "Read the numbered outline sequence and move into the erased first stamp.",
+      "parameters": {
+        "zones": 3,
+        "zoneRadiusPx": 82,
+        "spacingSeconds": 0.65,
+        "warningSeconds": 1.3,
+        "activeSeconds": 2.5,
+        "safeZoneIndex": 0
+      }
+    },
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "zones": 3,
+      "zoneRadiusPx": 82,
+      "spacingSeconds": 0.65,
+      "warningSeconds": 1.3,
+      "activeSeconds": 2.5,
+      "safeZoneIndex": 0
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "zone",
+            "count": 3,
+            "speed": 0,
+            "damage": 10,
+            "interval": 7,
+            "telegraph": 1.3,
+            "radius": 82,
+            "duration": 2.5
+          },
+          {
+            "kind": "fan",
+            "count": 9,
+            "speed": 150,
+            "damage": 11,
+            "interval": 5,
+            "telegraph": 1,
+            "arc": 105
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "zone",
+            "count": 5,
+            "speed": 0,
+            "damage": 10,
+            "interval": 6.3,
+            "telegraph": 1.3,
+            "radius": 82,
+            "duration": 2.5
+          },
+          {
+            "kind": "fan",
+            "count": 11,
+            "speed": 162,
+            "damage": 11,
+            "interval": 4.5,
+            "telegraph": 1,
+            "arc": 105
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "zone",
+            "count": 7,
+            "speed": 0,
+            "damage": 10,
+            "interval": 5.6,
+            "telegraph": 1.3,
+            "radius": 82,
+            "duration": 2.5
+          },
+          {
+            "kind": "fan",
+            "count": 13,
+            "speed": 174,
+            "damage": 11,
+            "interval": 4,
+            "telegraph": 1,
+            "arc": 105
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "chain-marshal",
+    "name": "Chain Marshal",
+    "route": "short",
+    "preferredArena": "gatehouse",
+    "timer": 150,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.88,
+    "damageWindowFraction": 1,
+    "finale": true,
+    "secret": false,
+    "lore": "A dead gate marshal in a rectangular iron coat carrying two heavy chains. The quarantine left its work unfinished.",
+    "artBrief": "A dead gate marshal in a rectangular iron coat carrying two heavy chains. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "chain-marshal",
+      "behavior": "Anchor two chains to wall sockets and sweep the marked sectors once before the anchors break.",
+      "counterplay": "Stand in either unswept quadrant or destroy an anchor to widen the gap.",
+      "parameters": {
+        "anchors": 2,
+        "anchorHealthHP": 90,
+        "chainWidthPx": 18,
+        "sweepDegrees": 80,
+        "sweepSeconds": 2.5,
+        "warningSeconds": 1.4,
+        "cycleSeconds": 9
+      }
+    },
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "anchors": 2,
+      "anchorHealthHP": 90,
+      "chainWidthPx": 18,
+      "sweepDegrees": 80,
+      "sweepSeconds": 2.5,
+      "warningSeconds": 1.4,
+      "cycleSeconds": 9
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "hook",
+            "count": 2,
+            "speed": 190,
+            "damage": 14,
+            "interval": 6,
+            "telegraph": 1.2,
+            "slow": 0.3,
+            "duration": 1.5
+          },
+          {
+            "kind": "fan",
+            "count": 13,
+            "speed": 155,
+            "damage": 12,
+            "interval": 5,
+            "telegraph": 1,
+            "arc": 150
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "hook",
+            "count": 4,
+            "speed": 205,
+            "damage": 14,
+            "interval": 5.4,
+            "telegraph": 1.2,
+            "slow": 0.3,
+            "duration": 1.5
+          },
+          {
+            "kind": "fan",
+            "count": 15,
+            "speed": 167,
+            "damage": 12,
+            "interval": 4.5,
+            "telegraph": 1,
+            "arc": 150
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "hook",
+            "count": 6,
+            "speed": 220,
+            "damage": 14,
+            "interval": 4.8,
+            "telegraph": 1.2,
+            "slow": 0.3,
+            "duration": 1.5
+          },
+          {
+            "kind": "fan",
+            "count": 17,
+            "speed": 180,
+            "damage": 12,
+            "interval": 4,
+            "telegraph": 1,
+            "arc": 150
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gate-widow",
+    "name": "Gate Widow",
+    "route": "short",
+    "preferredArena": "gatehouse",
+    "timer": 150,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.88,
+    "damageWindowFraction": 1,
+    "finale": true,
+    "secret": false,
+    "lore": "A mourning corpse whose veil is a single large gate-shaped iron frame. The quarantine left its work unfinished.",
+    "artBrief": "A mourning corpse whose veil is a single large gate-shaped iron frame. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "gate-widow",
+      "behavior": "Close two portcullis lanes while raising the third; rotate the open lane after each cast.",
+      "counterplay": "Use the plainly outlined open lane and wait for the next audible latch cue.",
+      "parameters": {
+        "lanes": 3,
+        "openLanes": 1,
+        "gateWidthPx": 150,
+        "warningSeconds": 1.5,
+        "closedSeconds": 3.5,
+        "cycleSeconds": 8
+      }
+    },
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "lanes": 3,
+      "openLanes": 1,
+      "gateWidthPx": 150,
+      "warningSeconds": 1.5,
+      "closedSeconds": 3.5,
+      "cycleSeconds": 8
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "lanes",
+            "count": 18,
+            "speed": 145,
+            "damage": 13,
+            "interval": 6,
+            "telegraph": 1.4
+          },
+          {
+            "kind": "pulse",
+            "count": 22,
+            "speed": 125,
+            "damage": 12,
+            "interval": 7,
+            "telegraph": 1.2,
+            "gap": 55
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "lanes",
+            "count": 20,
+            "speed": 157,
+            "damage": 13,
+            "interval": 5.4,
+            "telegraph": 1.4
+          },
+          {
+            "kind": "pulse",
+            "count": 24,
+            "speed": 135,
+            "damage": 12,
+            "interval": 6.3,
+            "telegraph": 1.2,
+            "gap": 55
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "lanes",
+            "count": 22,
+            "speed": 168,
+            "damage": 13,
+            "interval": 4.8,
+            "telegraph": 1.4
+          },
+          {
+            "kind": "pulse",
+            "count": 26,
+            "speed": 145,
+            "damage": 12,
+            "interval": 5.6,
+            "telegraph": 1.2,
+            "gap": 55
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "black-ambulance",
+    "name": "Black Ambulance",
+    "route": "short",
+    "preferredArena": "triage-yard",
+    "timer": 150,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.748,
+    "damageWindowFraction": 0.85,
+    "finale": true,
+    "secret": false,
+    "lore": "A horse-shaped mortuary ambulance fused to its skeletal driver and one bell. The quarantine left its work unfinished.",
+    "artBrief": "A horse-shaped mortuary ambulance fused to its skeletal driver and one bell. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "black-ambulance",
+      "behavior": "Circle the perimeter, stop at a marked station, then charge a straight rescue lane.",
+      "counterplay": "Avoid the telegraphed destination; the stationary recovery exposes the driver.",
+      "parameters": {
+        "perimeterSpeedPxPerSecond": 140,
+        "chargeSpeedPxPerSecond": 380,
+        "chargeWarningSeconds": 1.4,
+        "recoverySeconds": 3,
+        "cycleSeconds": 10
+      }
+    },
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "perimeterSpeedPxPerSecond": 140,
+      "chargeSpeedPxPerSecond": 380,
+      "chargeWarningSeconds": 1.4,
+      "recoverySeconds": 3,
+      "cycleSeconds": 10
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "charge",
+            "count": 1,
+            "speed": 380,
+            "damage": 18,
+            "interval": 10,
+            "telegraph": 1.4
+          },
+          {
+            "kind": "cross",
+            "count": 16,
+            "speed": 145,
+            "damage": 11,
+            "interval": 6,
+            "telegraph": 1
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "charge",
+            "count": 1,
+            "speed": 410,
+            "damage": 18,
+            "interval": 9,
+            "telegraph": 1.4
+          },
+          {
+            "kind": "cross",
+            "count": 18,
+            "speed": 157,
+            "damage": 11,
+            "interval": 5.4,
+            "telegraph": 1
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "charge",
+            "count": 1,
+            "speed": 441,
+            "damage": 18,
+            "interval": 8,
+            "telegraph": 1.4
+          },
+          {
+            "kind": "cross",
+            "count": 20,
+            "speed": 168,
+            "damage": 11,
+            "interval": 4.8,
+            "telegraph": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "glass-surgeon",
+    "name": "Glass Surgeon",
+    "route": "standard",
+    "preferredArena": "triage-yard",
+    "timer": 120,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.88,
+    "damageWindowFraction": 1,
+    "finale": false,
+    "secret": false,
+    "lore": "A slender corpse surgeon with one transparent glass arm and an ivory apron. The quarantine left its work unfinished.",
+    "artBrief": "A slender corpse surgeon with one transparent glass arm and an ivory apron. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "glass-surgeon",
+      "behavior": "Place four glass needles that connect into a temporary polygon with one deliberately missing edge.",
+      "counterplay": "Leave through the missing edge before the outlined polygon activates.",
+      "parameters": {
+        "needles": 4,
+        "needleHealthHP": 35,
+        "beamWidthPx": 14,
+        "warningSeconds": 1.4,
+        "activeSeconds": 2.5,
+        "missingEdges": 1,
+        "cycleSeconds": 8
+      }
+    },
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "needles": 4,
+      "needleHealthHP": 35,
+      "beamWidthPx": 14,
+      "warningSeconds": 1.4,
+      "activeSeconds": 2.5,
+      "missingEdges": 1,
+      "cycleSeconds": 8
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "beam",
+            "count": 3,
+            "speed": 0,
+            "damage": 13,
+            "interval": 8,
+            "telegraph": 1.4,
+            "duration": 0.45,
+            "width": 14
+          },
+          {
+            "kind": "fan",
+            "count": 9,
+            "speed": 155,
+            "damage": 11,
+            "interval": 5,
+            "telegraph": 1,
+            "arc": 110
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "beam",
+            "count": 5,
+            "speed": 0,
+            "damage": 13,
+            "interval": 7.2,
+            "telegraph": 1.4,
+            "duration": 0.45,
+            "width": 14
+          },
+          {
+            "kind": "fan",
+            "count": 11,
+            "speed": 167,
+            "damage": 11,
+            "interval": 4.5,
+            "telegraph": 1,
+            "arc": 110
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "beam",
+            "count": 7,
+            "speed": 0,
+            "damage": 13,
+            "interval": 6.4,
+            "telegraph": 1.4,
+            "duration": 0.45,
+            "width": 14
+          },
+          {
+            "kind": "fan",
+            "count": 13,
+            "speed": 180,
+            "damage": 11,
+            "interval": 4,
+            "telegraph": 1,
+            "arc": 110
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ash-baker",
+    "name": "Ash Baker",
+    "route": "standard",
+    "preferredArena": "triage-yard",
+    "timer": 120,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.88,
+    "damageWindowFraction": 1,
+    "finale": false,
+    "secret": false,
+    "lore": "A broad dead baker with a shovel and a single round brick-oven torso. The quarantine left its work unfinished.",
+    "artBrief": "A broad dead baker with a shovel and a single round brick-oven torso. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "ash-baker",
+      "behavior": "Eject slow loaves that split once into two clearly announced crumbs after landing.",
+      "counterplay": "Step away from the landing circles and the two marked split directions.",
+      "parameters": {
+        "loaves": 3,
+        "loafSpeedPxPerSecond": 100,
+        "splitAfterSeconds": 1.5,
+        "crumbsPerLoaf": 2,
+        "crumbSpeedPxPerSecond": 165,
+        "warningSeconds": 1.2
+      }
+    },
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "loaves": 3,
+      "loafSpeedPxPerSecond": 100,
+      "splitAfterSeconds": 1.5,
+      "crumbsPerLoaf": 2,
+      "crumbSpeedPxPerSecond": 165,
+      "warningSeconds": 1.2
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "pool",
+            "count": 3,
+            "speed": 0,
+            "damage": 9,
+            "interval": 7,
+            "telegraph": 1.2,
+            "radius": 55,
+            "duration": 2
+          },
+          {
+            "kind": "fan",
+            "count": 6,
+            "speed": 145,
+            "damage": 11,
+            "interval": 5,
+            "telegraph": 1,
+            "arc": 90
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "pool",
+            "count": 5,
+            "speed": 0,
+            "damage": 9,
+            "interval": 6.3,
+            "telegraph": 1.2,
+            "radius": 55,
+            "duration": 2
+          },
+          {
+            "kind": "fan",
+            "count": 8,
+            "speed": 157,
+            "damage": 11,
+            "interval": 4.5,
+            "telegraph": 1,
+            "arc": 90
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "pool",
+            "count": 7,
+            "speed": 0,
+            "damage": 9,
+            "interval": 5.6,
+            "telegraph": 1.2,
+            "radius": 55,
+            "duration": 2
+          },
+          {
+            "kind": "fan",
+            "count": 10,
+            "speed": 168,
+            "damage": 11,
+            "interval": 4,
+            "telegraph": 1,
+            "arc": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sluice-keeper",
+    "name": "Sluice Keeper",
+    "route": "standard",
+    "preferredArena": "sunken-chapel",
+    "timer": 150,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.88,
+    "damageWindowFraction": 1,
+    "finale": false,
+    "secret": false,
+    "lore": "A drowned municipal worker hauling one circular floodgate on his back. The quarantine left its work unfinished.",
+    "artBrief": "A drowned municipal worker hauling one circular floodgate on his back. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "sluice-keeper",
+      "behavior": "Open alternating channels that push players sideways without dealing damage; bullets still require dodging.",
+      "counterplay": "Use the dry elevated strips or steer against the announced current.",
+      "parameters": {
+        "currentForcePxPerSecond": 65,
+        "currentWidthPx": 190,
+        "currentSeconds": 4,
+        "warningSeconds": 1.5,
+        "channels": 3,
+        "cycleSeconds": 9
+      }
+    },
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "currentForcePxPerSecond": 65,
+      "currentWidthPx": 190,
+      "currentSeconds": 4,
+      "warningSeconds": 1.5,
+      "channels": 3,
+      "cycleSeconds": 9
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "lanes",
+            "count": 16,
+            "speed": 135,
+            "damage": 11,
+            "interval": 6,
+            "telegraph": 1.2
+          },
+          {
+            "kind": "ring",
+            "count": 18,
+            "speed": 120,
+            "damage": 10,
+            "interval": 7,
+            "telegraph": 1
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "lanes",
+            "count": 18,
+            "speed": 146,
+            "damage": 11,
+            "interval": 5.4,
+            "telegraph": 1.2
+          },
+          {
+            "kind": "ring",
+            "count": 20,
+            "speed": 130,
+            "damage": 10,
+            "interval": 6.3,
+            "telegraph": 1
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "lanes",
+            "count": 20,
+            "speed": 157,
+            "damage": 11,
+            "interval": 4.8,
+            "telegraph": 1.2
+          },
+          {
+            "kind": "ring",
+            "count": 22,
+            "speed": 139,
+            "damage": 10,
+            "interval": 5.6,
+            "telegraph": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "stationmaster",
+    "name": "Last Stationmaster",
+    "route": "standard",
+    "preferredArena": "gatehouse",
+    "timer": 120,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.88,
+    "damageWindowFraction": 1,
+    "finale": false,
+    "secret": false,
+    "lore": "A rigid dead conductor with a huge ticket punch and broad signal flags. The quarantine left its work unfinished.",
+    "artBrief": "A rigid dead conductor with a huge ticket punch and broad signal flags. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "stationmaster",
+      "behavior": "Alternate two rail lanes; a red signal closes one and a white signal opens its partner.",
+      "counterplay": "Follow the distinct cross and arrow symbols rather than signal color alone.",
+      "parameters": {
+        "railWidthPx": 125,
+        "rails": 2,
+        "trainSpeedPxPerSecond": 300,
+        "warningSeconds": 1.5,
+        "cycleSeconds": 7
+      }
+    },
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "railWidthPx": 125,
+      "rails": 2,
+      "trainSpeedPxPerSecond": 300,
+      "warningSeconds": 1.5,
+      "cycleSeconds": 7
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "charge",
+            "count": 1,
+            "speed": 300,
+            "damage": 17,
+            "interval": 7,
+            "telegraph": 1.5
+          },
+          {
+            "kind": "cross",
+            "count": 16,
+            "speed": 145,
+            "damage": 11,
+            "interval": 5,
+            "telegraph": 1
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "charge",
+            "count": 1,
+            "speed": 324,
+            "damage": 17,
+            "interval": 6.3,
+            "telegraph": 1.5
+          },
+          {
+            "kind": "cross",
+            "count": 18,
+            "speed": 157,
+            "damage": 11,
+            "interval": 4.5,
+            "telegraph": 1
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "charge",
+            "count": 1,
+            "speed": 348,
+            "damage": 17,
+            "interval": 5.6,
+            "telegraph": 1.5
+          },
+          {
+            "kind": "cross",
+            "count": 20,
+            "speed": 168,
+            "damage": 11,
+            "interval": 4,
+            "telegraph": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lamplighter",
+    "name": "The Lamplighter",
+    "route": "standard",
+    "preferredArena": "sunken-chapel",
+    "timer": 120,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.88,
+    "damageWindowFraction": 1,
+    "finale": false,
+    "secret": false,
+    "lore": "A long-limbed corpse carrying a three-pronged civic candle ladder. The quarantine left its work unfinished.",
+    "artBrief": "A long-limbed corpse carrying a three-pronged civic candle ladder. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "lamplighter",
+      "behavior": "Ignite three large candles whose shadows mark the only three safe pockets during the next pulse.",
+      "counterplay": "Stand in an outlined shadow pocket; hazard boundaries remain visible in every display setting.",
+      "parameters": {
+        "candles": 3,
+        "safeRadiusPx": 95,
+        "pulseWarningSeconds": 1.5,
+        "pulseSeconds": 1.2,
+        "cycleSeconds": 9
+      }
+    },
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "candles": 3,
+      "safeRadiusPx": 95,
+      "pulseWarningSeconds": 1.5,
+      "pulseSeconds": 1.2,
+      "cycleSeconds": 9
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "pulse",
+            "count": 24,
+            "speed": 125,
+            "damage": 12,
+            "interval": 8,
+            "telegraph": 1.5,
+            "gap": 60
+          },
+          {
+            "kind": "fan",
+            "count": 8,
+            "speed": 150,
+            "damage": 10,
+            "interval": 5,
+            "telegraph": 1,
+            "arc": 100
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "pulse",
+            "count": 26,
+            "speed": 135,
+            "damage": 12,
+            "interval": 7.2,
+            "telegraph": 1.5,
+            "gap": 60
+          },
+          {
+            "kind": "fan",
+            "count": 10,
+            "speed": 162,
+            "damage": 10,
+            "interval": 4.5,
+            "telegraph": 1,
+            "arc": 100
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "pulse",
+            "count": 28,
+            "speed": 145,
+            "damage": 12,
+            "interval": 6.4,
+            "telegraph": 1.5,
+            "gap": 60
+          },
+          {
+            "kind": "fan",
+            "count": 12,
+            "speed": 174,
+            "damage": 10,
+            "interval": 4,
+            "telegraph": 1,
+            "arc": 100
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "anatomist",
+    "name": "The Anatomist",
+    "route": "standard",
+    "preferredArena": "triage-yard",
+    "timer": 150,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.88,
+    "damageWindowFraction": 1,
+    "finale": false,
+    "secret": false,
+    "lore": "A corpse lecturer with a clean bone torso chart and oversized calipers. The quarantine left its work unfinished.",
+    "artBrief": "A corpse lecturer with a clean bone torso chart and oversized calipers. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "anatomist",
+      "behavior": "Mark two players for a delayed caliper snap, preserving their last marked positions.",
+      "counterplay": "Leave the fixed marked circles; warning icons show the target lock has ended.",
+      "parameters": {
+        "markedPlayersMaximum": 2,
+        "markRadiusPx": 70,
+        "lockSeconds": 0.7,
+        "warningSeconds": 1.6,
+        "snapDamageHP": 16,
+        "cycleSeconds": 8
+      }
+    },
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "markedPlayersMaximum": 2,
+      "markRadiusPx": 70,
+      "lockSeconds": 0.7,
+      "warningSeconds": 1.6,
+      "snapDamageHP": 16,
+      "cycleSeconds": 8
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "zone",
+            "count": 2,
+            "speed": 0,
+            "damage": 12,
+            "interval": 8,
+            "telegraph": 1.6,
+            "radius": 70,
+            "duration": 1
+          },
+          {
+            "kind": "fan",
+            "count": 11,
+            "speed": 145,
+            "damage": 11,
+            "interval": 5,
+            "telegraph": 1,
+            "arc": 135
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "zone",
+            "count": 4,
+            "speed": 0,
+            "damage": 12,
+            "interval": 7.2,
+            "telegraph": 1.6,
+            "radius": 70,
+            "duration": 1
+          },
+          {
+            "kind": "fan",
+            "count": 13,
+            "speed": 157,
+            "damage": 11,
+            "interval": 4.5,
+            "telegraph": 1,
+            "arc": 135
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "zone",
+            "count": 6,
+            "speed": 0,
+            "damage": 12,
+            "interval": 6.4,
+            "telegraph": 1.6,
+            "radius": 70,
+            "duration": 1
+          },
+          {
+            "kind": "fan",
+            "count": 15,
+            "speed": 168,
+            "damage": 11,
+            "interval": 4,
+            "telegraph": 1,
+            "arc": 135
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "plague-gardener",
+    "name": "Plague Gardener",
+    "route": "standard",
+    "preferredArena": "triage-yard",
+    "timer": 150,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.88,
+    "damageWindowFraction": 1,
+    "finale": false,
+    "secret": false,
+    "lore": "A corpse gardener under a broad wilted leaf cape carrying one pruning hook. The quarantine left its work unfinished.",
+    "artBrief": "A corpse gardener under a broad wilted leaf cape carrying one pruning hook. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "plague-gardener",
+      "behavior": "Grow vines along four marked radial strips, then cut one strip into a restorative path.",
+      "counterplay": "Use the cut strip; destroying a root shortens the growth phase.",
+      "parameters": {
+        "roots": 4,
+        "rootHealthHP": 70,
+        "vineWidthPx": 35,
+        "growthSeconds": 3,
+        "cutPathHealHP": 10,
+        "warningSeconds": 1.4,
+        "cycleSeconds": 10
+      }
+    },
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "roots": 4,
+      "rootHealthHP": 70,
+      "vineWidthPx": 35,
+      "growthSeconds": 3,
+      "cutPathHealHP": 10,
+      "warningSeconds": 1.4,
+      "cycleSeconds": 10
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "zone",
+            "count": 4,
+            "speed": 0,
+            "damage": 9,
+            "interval": 9,
+            "telegraph": 1.4,
+            "radius": 65,
+            "duration": 4
+          },
+          {
+            "kind": "spiral",
+            "count": 14,
+            "speed": 130,
+            "damage": 10,
+            "interval": 6,
+            "telegraph": 1
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "zone",
+            "count": 6,
+            "speed": 0,
+            "damage": 9,
+            "interval": 8.1,
+            "telegraph": 1.4,
+            "radius": 65,
+            "duration": 4
+          },
+          {
+            "kind": "spiral",
+            "count": 16,
+            "speed": 140,
+            "damage": 10,
+            "interval": 5.4,
+            "telegraph": 1
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "zone",
+            "count": 8,
+            "speed": 0,
+            "damage": 9,
+            "interval": 7.2,
+            "telegraph": 1.4,
+            "radius": 65,
+            "duration": 4
+          },
+          {
+            "kind": "spiral",
+            "count": 18,
+            "speed": 151,
+            "damage": 10,
+            "interval": 4.8,
+            "telegraph": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "red-abbess",
+    "name": "Red Abbess",
+    "route": "standard",
+    "preferredArena": "sunken-chapel",
+    "timer": 150,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.88,
+    "damageWindowFraction": 1,
+    "finale": true,
+    "secret": false,
+    "lore": "An undead abbess with one broad red stole and an iron hymn book. The quarantine left its work unfinished.",
+    "artBrief": "An undead abbess with one broad red stole and an iron hymn book. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "red-abbess",
+      "behavior": "Move two sanctuaries around the arena before a slow outside-in judgment wave.",
+      "counterplay": "Reach either sanctuary; any survivor can hold its neutralizing pad.",
+      "parameters": {
+        "sanctuaries": 2,
+        "safeRadiusPx": 100,
+        "padHoldSeconds": 1.2,
+        "warningSeconds": 1.6,
+        "waveSpeedPxPerSecond": 90,
+        "cycleSeconds": 11
+      }
+    },
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "sanctuaries": 2,
+      "safeRadiusPx": 100,
+      "padHoldSeconds": 1.2,
+      "warningSeconds": 1.6,
+      "waveSpeedPxPerSecond": 90,
+      "cycleSeconds": 11
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "pulse",
+            "count": 26,
+            "speed": 120,
+            "damage": 13,
+            "interval": 8,
+            "telegraph": 1.6,
+            "gap": 60
+          },
+          {
+            "kind": "beam",
+            "count": 2,
+            "speed": 0,
+            "damage": 15,
+            "interval": 9,
+            "telegraph": 1.4,
+            "duration": 0.5,
+            "width": 22
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "pulse",
+            "count": 28,
+            "speed": 130,
+            "damage": 13,
+            "interval": 7.2,
+            "telegraph": 1.6,
+            "gap": 60
+          },
+          {
+            "kind": "beam",
+            "count": 4,
+            "speed": 0,
+            "damage": 15,
+            "interval": 8.1,
+            "telegraph": 1.4,
+            "duration": 0.5,
+            "width": 22
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "pulse",
+            "count": 30,
+            "speed": 139,
+            "damage": 13,
+            "interval": 6.4,
+            "telegraph": 1.6,
+            "gap": 60
+          },
+          {
+            "kind": "beam",
+            "count": 6,
+            "speed": 0,
+            "damage": 15,
+            "interval": 7.2,
+            "telegraph": 1.4,
+            "duration": 0.5,
+            "width": 22
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "vesper-judge",
+    "name": "Vesper Judge",
+    "route": "standard",
+    "preferredArena": "crown-crypt",
+    "timer": 180,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.88,
+    "damageWindowFraction": 1,
+    "finale": true,
+    "secret": false,
+    "lore": "A dead magistrate with a massive split gavel and simple half-white cloak. The quarantine left its work unfinished.",
+    "artBrief": "A dead magistrate with a massive split gavel and simple half-white cloak. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "vesper-judge",
+      "behavior": "Present a left or right floor verdict, then strike that half while the other half stays open.",
+      "counterplay": "Move across the central boundary during the long verdict tell; no class-specific interaction is needed.",
+      "parameters": {
+        "verdictHalfWidthPx": 800,
+        "warningSeconds": 1.7,
+        "strikeSeconds": 0.6,
+        "recoverySeconds": 2.8,
+        "cycleSeconds": 9
+      }
+    },
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "verdictHalfWidthPx": 800,
+      "warningSeconds": 1.7,
+      "strikeSeconds": 0.6,
+      "recoverySeconds": 2.8,
+      "cycleSeconds": 9
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "lanes",
+            "count": 22,
+            "speed": 145,
+            "damage": 13,
+            "interval": 7,
+            "telegraph": 1.5
+          },
+          {
+            "kind": "fan",
+            "count": 15,
+            "speed": 155,
+            "damage": 12,
+            "interval": 5,
+            "telegraph": 1.1,
+            "arc": 155
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "lanes",
+            "count": 24,
+            "speed": 157,
+            "damage": 13,
+            "interval": 6.3,
+            "telegraph": 1.5
+          },
+          {
+            "kind": "fan",
+            "count": 17,
+            "speed": 167,
+            "damage": 12,
+            "interval": 4.5,
+            "telegraph": 1.1,
+            "arc": 155
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "lanes",
+            "count": 26,
+            "speed": 168,
+            "damage": 13,
+            "interval": 5.6,
+            "telegraph": 1.5
+          },
+          {
+            "kind": "fan",
+            "count": 19,
+            "speed": 180,
+            "damage": 12,
+            "interval": 4,
+            "telegraph": 1.1,
+            "arc": 155
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinder-foreman",
+    "name": "Cinder Foreman",
+    "route": "long",
+    "preferredArena": "bell-foundry",
+    "timer": 150,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.88,
+    "damageWindowFraction": 1,
+    "finale": false,
+    "secret": false,
+    "lore": "A blocky corpse foreman with a broad coal shovel and one furnace eye. The quarantine left its work unfinished.",
+    "artBrief": "A blocky corpse foreman with a broad coal shovel and one furnace eye. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "cinder-foreman",
+      "behavior": "Assign three marked work zones; the last occupied zone cools while the other two vent.",
+      "counterplay": "Touch the reachable neutral cooling switch or use the naturally safe third sector.",
+      "parameters": {
+        "zones": 3,
+        "ventRadiusPx": 105,
+        "coolHoldSeconds": 1.2,
+        "warningSeconds": 1.5,
+        "ventSeconds": 3,
+        "cycleSeconds": 9
+      }
+    },
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "zones": 3,
+      "ventRadiusPx": 105,
+      "coolHoldSeconds": 1.2,
+      "warningSeconds": 1.5,
+      "ventSeconds": 3,
+      "cycleSeconds": 9
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "zone",
+            "count": 3,
+            "speed": 0,
+            "damage": 11,
+            "interval": 8,
+            "telegraph": 1.5,
+            "radius": 105,
+            "duration": 3
+          },
+          {
+            "kind": "fan",
+            "count": 10,
+            "speed": 150,
+            "damage": 12,
+            "interval": 5,
+            "telegraph": 1,
+            "arc": 120
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "zone",
+            "count": 5,
+            "speed": 0,
+            "damage": 11,
+            "interval": 7.2,
+            "telegraph": 1.5,
+            "radius": 105,
+            "duration": 3
+          },
+          {
+            "kind": "fan",
+            "count": 12,
+            "speed": 162,
+            "damage": 12,
+            "interval": 4.5,
+            "telegraph": 1,
+            "arc": 120
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "zone",
+            "count": 7,
+            "speed": 0,
+            "damage": 11,
+            "interval": 6.4,
+            "telegraph": 1.5,
+            "radius": 105,
+            "duration": 3
+          },
+          {
+            "kind": "fan",
+            "count": 14,
+            "speed": 174,
+            "damage": 12,
+            "interval": 4,
+            "telegraph": 1,
+            "arc": 120
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "canal-diver",
+    "name": "Canal Diver",
+    "route": "long",
+    "preferredArena": "sunken-chapel",
+    "timer": 120,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.704,
+    "damageWindowFraction": 0.8,
+    "finale": false,
+    "secret": false,
+    "lore": "A drowned diver in a cracked spherical brass helmet with a short anchor. The quarantine left its work unfinished.",
+    "artBrief": "A drowned diver in a cracked spherical brass helmet with a short anchor. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "canal-diver",
+      "behavior": "Dive into one of three visible puddles and emerge from the one that starts bubbling first.",
+      "counterplay": "Read the expanding ring and move clear; the full resurfacing recovery is attackable.",
+      "parameters": {
+        "puddles": 3,
+        "puddleRadiusPx": 65,
+        "diveSeconds": 1.8,
+        "resurfaceWarningSeconds": 1.5,
+        "recoverySeconds": 4,
+        "cycleSeconds": 9
+      }
+    },
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "puddles": 3,
+      "puddleRadiusPx": 65,
+      "diveSeconds": 1.8,
+      "resurfaceWarningSeconds": 1.5,
+      "recoverySeconds": 4,
+      "cycleSeconds": 9
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "warp",
+            "count": 1,
+            "speed": 0,
+            "damage": 0,
+            "interval": 9,
+            "telegraph": 1.5
+          },
+          {
+            "kind": "ring",
+            "count": 22,
+            "speed": 130,
+            "damage": 11,
+            "interval": 6,
+            "telegraph": 1
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "warp",
+            "count": 1,
+            "speed": 0,
+            "damage": 0,
+            "interval": 8.1,
+            "telegraph": 1.5
+          },
+          {
+            "kind": "ring",
+            "count": 24,
+            "speed": 140,
+            "damage": 11,
+            "interval": 5.4,
+            "telegraph": 1
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "warp",
+            "count": 1,
+            "speed": 0,
+            "damage": 0,
+            "interval": 7.2,
+            "telegraph": 1.5
+          },
+          {
+            "kind": "ring",
+            "count": 26,
+            "speed": 151,
+            "damage": 11,
+            "interval": 4.8,
+            "telegraph": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "clockmender",
+    "name": "Clockmender",
+    "route": "long",
+    "preferredArena": "ossuary-works",
+    "timer": 150,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.88,
+    "damageWindowFraction": 1,
+    "finale": false,
+    "secret": false,
+    "lore": "A dead clockmaker with one huge exposed clock face and two winding keys. The quarantine left its work unfinished.",
+    "artBrief": "A dead clockmaker with one huge exposed clock face and two winding keys. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "clockmender",
+      "behavior": "Stop a ring of slow bullets visibly, then restart it in the same direction after a counted warning.",
+      "counterplay": "Cross the stationary ring before the three-beat restart cue ends.",
+      "parameters": {
+        "stopAfterSeconds": 1.4,
+        "stationarySeconds": 2,
+        "restartWarningSeconds": 1.2,
+        "ringBullets": 24,
+        "bulletSpeedPxPerSecond": 125,
+        "cycleSeconds": 8
+      }
+    },
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "stopAfterSeconds": 1.4,
+      "stationarySeconds": 2,
+      "restartWarningSeconds": 1.2,
+      "ringBullets": 24,
+      "bulletSpeedPxPerSecond": 125,
+      "cycleSeconds": 8
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "ring",
+            "count": 24,
+            "speed": 125,
+            "damage": 11,
+            "interval": 8,
+            "telegraph": 1.2
+          },
+          {
+            "kind": "fan",
+            "count": 9,
+            "speed": 150,
+            "damage": 11,
+            "interval": 5,
+            "telegraph": 1,
+            "arc": 100
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "ring",
+            "count": 26,
+            "speed": 135,
+            "damage": 11,
+            "interval": 7.2,
+            "telegraph": 1.2
+          },
+          {
+            "kind": "fan",
+            "count": 11,
+            "speed": 162,
+            "damage": 11,
+            "interval": 4.5,
+            "telegraph": 1,
+            "arc": 100
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "ring",
+            "count": 28,
+            "speed": 145,
+            "damage": 11,
+            "interval": 6.4,
+            "telegraph": 1.2
+          },
+          {
+            "kind": "fan",
+            "count": 13,
+            "speed": 174,
+            "damage": 11,
+            "interval": 4,
+            "telegraph": 1,
+            "arc": 100
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "wire-seamstress",
+    "name": "Seamstress of Wires",
+    "route": "long",
+    "preferredArena": "ossuary-works",
+    "timer": 150,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.88,
+    "damageWindowFraction": 1,
+    "finale": false,
+    "secret": false,
+    "lore": "An undead seamstress with a smooth iron hoop skirt and two wire spools. The quarantine left its work unfinished.",
+    "artBrief": "An undead seamstress with a smooth iron hoop skirt and two wire spools. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "wire-seamstress",
+      "behavior": "Sew a visible zigzag fence between three anchors, leaving one 170-pixel doorway.",
+      "counterplay": "Use the stable doorway or break an anchor to remove its adjoining wire.",
+      "parameters": {
+        "anchors": 3,
+        "anchorHealthHP": 80,
+        "wireWidthPx": 14,
+        "doorwayWidthPx": 170,
+        "warningSeconds": 1.5,
+        "activeSeconds": 4,
+        "cycleSeconds": 10
+      }
+    },
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "anchors": 3,
+      "anchorHealthHP": 80,
+      "wireWidthPx": 14,
+      "doorwayWidthPx": 170,
+      "warningSeconds": 1.5,
+      "activeSeconds": 4,
+      "cycleSeconds": 10
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "beam",
+            "count": 3,
+            "speed": 0,
+            "damage": 13,
+            "interval": 9,
+            "telegraph": 1.5,
+            "duration": 0.5,
+            "width": 14
+          },
+          {
+            "kind": "hook",
+            "count": 2,
+            "speed": 180,
+            "damage": 12,
+            "interval": 6,
+            "telegraph": 1.2,
+            "slow": 0.25,
+            "duration": 1.5
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "beam",
+            "count": 5,
+            "speed": 0,
+            "damage": 13,
+            "interval": 8.1,
+            "telegraph": 1.5,
+            "duration": 0.5,
+            "width": 14
+          },
+          {
+            "kind": "hook",
+            "count": 4,
+            "speed": 194,
+            "damage": 12,
+            "interval": 5.4,
+            "telegraph": 1.2,
+            "slow": 0.25,
+            "duration": 1.5
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "beam",
+            "count": 7,
+            "speed": 0,
+            "damage": 13,
+            "interval": 7.2,
+            "telegraph": 1.5,
+            "duration": 0.5,
+            "width": 14
+          },
+          {
+            "kind": "hook",
+            "count": 6,
+            "speed": 209,
+            "damage": 12,
+            "interval": 4.8,
+            "telegraph": 1.2,
+            "slow": 0.25,
+            "duration": 1.5
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gravedigger",
+    "name": "Gravedigger",
+    "route": "long",
+    "preferredArena": "crown-crypt",
+    "timer": 150,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.88,
+    "damageWindowFraction": 1,
+    "finale": false,
+    "secret": false,
+    "lore": "A hunched burial worker with an enormous flat spade and one plain grave marker. The quarantine left its work unfinished.",
+    "artBrief": "A hunched burial worker with an enormous flat spade and one plain grave marker. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "gravedigger",
+      "behavior": "Lift a moving ridge of earth that blocks hostile bullets and then collapses into marked pits.",
+      "counterplay": "Use the ridge as cover briefly, then step off the outlined collapse path.",
+      "parameters": {
+        "ridgeWidthPx": 220,
+        "ridgeHealthHP": 150,
+        "ridgeSpeedPxPerSecond": 65,
+        "collapseWarningSeconds": 1.5,
+        "pitSeconds": 3,
+        "cycleSeconds": 10
+      }
+    },
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "ridgeWidthPx": 220,
+      "ridgeHealthHP": 150,
+      "ridgeSpeedPxPerSecond": 65,
+      "collapseWarningSeconds": 1.5,
+      "pitSeconds": 3,
+      "cycleSeconds": 10
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "charge",
+            "count": 1,
+            "speed": 260,
+            "damage": 17,
+            "interval": 8,
+            "telegraph": 1.5
+          },
+          {
+            "kind": "zone",
+            "count": 3,
+            "speed": 0,
+            "damage": 10,
+            "interval": 9,
+            "telegraph": 1.4,
+            "radius": 70,
+            "duration": 3
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "charge",
+            "count": 1,
+            "speed": 281,
+            "damage": 17,
+            "interval": 7.2,
+            "telegraph": 1.5
+          },
+          {
+            "kind": "zone",
+            "count": 5,
+            "speed": 0,
+            "damage": 10,
+            "interval": 8.1,
+            "telegraph": 1.4,
+            "radius": 70,
+            "duration": 3
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "charge",
+            "count": 1,
+            "speed": 302,
+            "damage": 17,
+            "interval": 6.4,
+            "telegraph": 1.5
+          },
+          {
+            "kind": "zone",
+            "count": 7,
+            "speed": 0,
+            "damage": 10,
+            "interval": 7.2,
+            "telegraph": 1.4,
+            "radius": 70,
+            "duration": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ink-notary",
+    "name": "Ink Notary",
+    "route": "long",
+    "preferredArena": "crown-crypt",
+    "timer": 120,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.88,
+    "damageWindowFraction": 1,
+    "finale": false,
+    "secret": false,
+    "lore": "A narrow dead notary with a single oversized quill and an ink-black paper cloak. The quarantine left its work unfinished.",
+    "artBrief": "A narrow dead notary with a single oversized quill and an ink-black paper cloak. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "ink-notary",
+      "behavior": "Draw an incomplete spiral of ink on the ground, leaving its mouth visibly open before activation.",
+      "counterplay": "Exit through the opening rather than crossing the ink stroke after it hardens.",
+      "parameters": {
+        "strokeWidthPx": 26,
+        "openingDegrees": 65,
+        "drawSeconds": 2,
+        "warningSeconds": 1.4,
+        "inkSeconds": 3,
+        "cycleSeconds": 9
+      }
+    },
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "strokeWidthPx": 26,
+      "openingDegrees": 65,
+      "drawSeconds": 2,
+      "warningSeconds": 1.4,
+      "inkSeconds": 3,
+      "cycleSeconds": 9
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "spiral",
+            "count": 18,
+            "speed": 130,
+            "damage": 11,
+            "interval": 6,
+            "telegraph": 1.2
+          },
+          {
+            "kind": "pool",
+            "count": 2,
+            "speed": 0,
+            "damage": 10,
+            "interval": 8,
+            "telegraph": 1.4,
+            "radius": 70,
+            "duration": 3
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "spiral",
+            "count": 20,
+            "speed": 140,
+            "damage": 11,
+            "interval": 5.4,
+            "telegraph": 1.2
+          },
+          {
+            "kind": "pool",
+            "count": 4,
+            "speed": 0,
+            "damage": 10,
+            "interval": 7.2,
+            "telegraph": 1.4,
+            "radius": 70,
+            "duration": 3
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "spiral",
+            "count": 22,
+            "speed": 151,
+            "damage": 11,
+            "interval": 4.8,
+            "telegraph": 1.2
+          },
+          {
+            "kind": "pool",
+            "count": 6,
+            "speed": 0,
+            "damage": 10,
+            "interval": 6.4,
+            "telegraph": 1.4,
+            "radius": 70,
+            "duration": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "spore-beekeeper",
+    "name": "Spore Beekeeper",
+    "route": "long",
+    "preferredArena": "triage-yard",
+    "timer": 150,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.88,
+    "damageWindowFraction": 1,
+    "finale": false,
+    "secret": false,
+    "lore": "A dead beekeeper with one large honeycomb fungus cage and a quiet canvas veil. The quarantine left its work unfinished.",
+    "artBrief": "A dead beekeeper with one large honeycomb fungus cage and a quiet canvas veil. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "spore-beekeeper",
+      "behavior": "Send three hive drones to fixed posts; destroying a drone opens a whole wedge in the next swarm.",
+      "counterplay": "Focus one outlined drone or use the permanently open fallback wedge.",
+      "parameters": {
+        "drones": 3,
+        "droneHealthHP": 55,
+        "swarmBullets": 24,
+        "fallbackGapDegrees": 45,
+        "warningSeconds": 1.5,
+        "cycleSeconds": 10
+      }
+    },
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "drones": 3,
+      "droneHealthHP": 55,
+      "swarmBullets": 24,
+      "fallbackGapDegrees": 45,
+      "warningSeconds": 1.5,
+      "cycleSeconds": 10
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "summon",
+            "count": 3,
+            "speed": 85,
+            "damage": 8,
+            "interval": 10,
+            "telegraph": 1.5,
+            "health": 55,
+            "maximum": 6
+          },
+          {
+            "kind": "pulse",
+            "count": 24,
+            "speed": 120,
+            "damage": 11,
+            "interval": 8,
+            "telegraph": 1.4,
+            "gap": 45
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "summon",
+            "count": 5,
+            "speed": 92,
+            "damage": 8,
+            "interval": 9,
+            "telegraph": 1.5,
+            "health": 55,
+            "maximum": 6
+          },
+          {
+            "kind": "pulse",
+            "count": 26,
+            "speed": 130,
+            "damage": 11,
+            "interval": 7.2,
+            "telegraph": 1.4,
+            "gap": 45
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "summon",
+            "count": 7,
+            "speed": 99,
+            "damage": 8,
+            "interval": 8,
+            "telegraph": 1.5,
+            "health": 55,
+            "maximum": 6
+          },
+          {
+            "kind": "pulse",
+            "count": 28,
+            "speed": 139,
+            "damage": 11,
+            "interval": 6.4,
+            "telegraph": 1.4,
+            "gap": 45
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ice-custodian",
+    "name": "Ice Custodian",
+    "route": "long",
+    "preferredArena": "sunken-chapel",
+    "timer": 120,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.88,
+    "damageWindowFraction": 1,
+    "finale": false,
+    "secret": false,
+    "lore": "A corpse icehouse keeper in a pale square coat carrying a large cold-iron tongs. The quarantine left its work unfinished.",
+    "artBrief": "A corpse icehouse keeper in a pale square coat carrying a large cold-iron tongs. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "ice-custodian",
+      "behavior": "Freeze three marked floor strips, creating bounded sideways sliding only while players choose to stand there.",
+      "counterplay": "Use the dry strips; dodge remains responsive and never adds uncontrolled momentum.",
+      "parameters": {
+        "strips": 3,
+        "stripWidthPx": 120,
+        "slideAccelerationPxPerSecondSquared": 80,
+        "maximumSlidePxPerSecond": 45,
+        "warningSeconds": 1.5,
+        "frozenSeconds": 4,
+        "cycleSeconds": 9
+      }
+    },
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "strips": 3,
+      "stripWidthPx": 120,
+      "slideAccelerationPxPerSecondSquared": 80,
+      "maximumSlidePxPerSecond": 45,
+      "warningSeconds": 1.5,
+      "frozenSeconds": 4,
+      "cycleSeconds": 9
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "lanes",
+            "count": 18,
+            "speed": 135,
+            "damage": 11,
+            "interval": 6,
+            "telegraph": 1.2
+          },
+          {
+            "kind": "fan",
+            "count": 9,
+            "speed": 145,
+            "damage": 10,
+            "interval": 5,
+            "telegraph": 1,
+            "arc": 110
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "lanes",
+            "count": 20,
+            "speed": 146,
+            "damage": 11,
+            "interval": 5.4,
+            "telegraph": 1.2
+          },
+          {
+            "kind": "fan",
+            "count": 11,
+            "speed": 157,
+            "damage": 10,
+            "interval": 4.5,
+            "telegraph": 1,
+            "arc": 110
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "lanes",
+            "count": 22,
+            "speed": 157,
+            "damage": 11,
+            "interval": 4.8,
+            "telegraph": 1.2
+          },
+          {
+            "kind": "fan",
+            "count": 13,
+            "speed": 168,
+            "damage": 10,
+            "interval": 4,
+            "telegraph": 1,
+            "arc": 110
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bridge-ferryman",
+    "name": "Bridge Ferryman",
+    "route": "long",
+    "preferredArena": "sunken-chapel",
+    "timer": 150,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.88,
+    "damageWindowFraction": 1,
+    "finale": false,
+    "secret": false,
+    "lore": "A drowned ferryman carrying a broad ferry pole and folded wooden footbridge. The quarantine left its work unfinished.",
+    "artBrief": "A drowned ferryman carrying a broad ferry pole and folded wooden footbridge. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "bridge-ferryman",
+      "behavior": "Place two temporary bridges across explicitly marked dangerous water bands, then alternate which bridge remains open.",
+      "counterplay": "Follow the open bridge arrow; all ground stays traversable with a safe outer bypass.",
+      "parameters": {
+        "bridges": 2,
+        "bridgeWidthPx": 180,
+        "outerBypassWidthPx": 190,
+        "waterDamageHPPerSecond": 8,
+        "warningSeconds": 1.6,
+        "cycleSeconds": 10
+      }
+    },
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "bridges": 2,
+      "bridgeWidthPx": 180,
+      "outerBypassWidthPx": 190,
+      "waterDamageHPPerSecond": 8,
+      "warningSeconds": 1.6,
+      "cycleSeconds": 10
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "pool",
+            "count": 3,
+            "speed": 0,
+            "damage": 8,
+            "interval": 9,
+            "telegraph": 1.6,
+            "radius": 75,
+            "duration": 4
+          },
+          {
+            "kind": "cross",
+            "count": 16,
+            "speed": 140,
+            "damage": 11,
+            "interval": 6,
+            "telegraph": 1.1
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "pool",
+            "count": 5,
+            "speed": 0,
+            "damage": 8,
+            "interval": 8.1,
+            "telegraph": 1.6,
+            "radius": 75,
+            "duration": 4
+          },
+          {
+            "kind": "cross",
+            "count": 18,
+            "speed": 151,
+            "damage": 11,
+            "interval": 5.4,
+            "telegraph": 1.1
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "pool",
+            "count": 7,
+            "speed": 0,
+            "damage": 8,
+            "interval": 7.2,
+            "telegraph": 1.6,
+            "radius": 75,
+            "duration": 4
+          },
+          {
+            "kind": "cross",
+            "count": 20,
+            "speed": 162,
+            "damage": 11,
+            "interval": 4.8,
+            "telegraph": 1.1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "porcelain-mourner",
+    "name": "Porcelain Mourner",
+    "route": "long",
+    "preferredArena": "crown-crypt",
+    "timer": 150,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.88,
+    "damageWindowFraction": 1,
+    "finale": false,
+    "secret": false,
+    "lore": "A dead mourner under one large cracked porcelain mask and smooth ivory funeral cloth. The quarantine left its work unfinished.",
+    "artBrief": "A dead mourner under one large cracked porcelain mask and smooth ivory funeral cloth. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "porcelain-mourner",
+      "behavior": "Shed four large mask fragments that act as moving cover; each fragment cracks before becoming a radial hazard.",
+      "counterplay": "Use cover during its intact state and move away from the clearly cracking fragment.",
+      "parameters": {
+        "fragments": 4,
+        "coverHealthHP": 65,
+        "fragmentSpeedPxPerSecond": 55,
+        "crackWarningSeconds": 1.5,
+        "shardsPerFragment": 6,
+        "shardSpeedPxPerSecond": 140,
+        "cycleSeconds": 11
+      }
+    },
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "fragments": 4,
+      "coverHealthHP": 65,
+      "fragmentSpeedPxPerSecond": 55,
+      "crackWarningSeconds": 1.5,
+      "shardsPerFragment": 6,
+      "shardSpeedPxPerSecond": 140,
+      "cycleSeconds": 11
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "ring",
+            "count": 16,
+            "speed": 125,
+            "damage": 11,
+            "interval": 7,
+            "telegraph": 1.1
+          },
+          {
+            "kind": "fan",
+            "count": 9,
+            "speed": 150,
+            "damage": 11,
+            "interval": 5,
+            "telegraph": 1,
+            "arc": 100
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "ring",
+            "count": 18,
+            "speed": 135,
+            "damage": 11,
+            "interval": 6.3,
+            "telegraph": 1.1
+          },
+          {
+            "kind": "fan",
+            "count": 11,
+            "speed": 162,
+            "damage": 11,
+            "interval": 4.5,
+            "telegraph": 1,
+            "arc": 100
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "ring",
+            "count": 20,
+            "speed": 145,
+            "damage": 11,
+            "interval": 5.6,
+            "telegraph": 1.1
+          },
+          {
+            "kind": "fan",
+            "count": 13,
+            "speed": 174,
+            "damage": 11,
+            "interval": 4,
+            "telegraph": 1,
+            "arc": 100
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boiler-tender",
+    "name": "Boiler Tender",
+    "route": "long",
+    "preferredArena": "bell-foundry",
+    "timer": 150,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.88,
+    "damageWindowFraction": 1,
+    "finale": false,
+    "secret": false,
+    "lore": "A broad dead stoker with one oval pressure tank and a short valve wrench. The quarantine left its work unfinished.",
+    "artBrief": "A broad dead stoker with one oval pressure tank and a short valve wrench. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "boiler-tender",
+      "behavior": "Charge pressure through three visible valves; turning any valve vents a safe wedge.",
+      "counterplay": "Hold one neutral valve briefly, or take the always-available marked outer gap.",
+      "parameters": {
+        "valves": 3,
+        "valveHoldSeconds": 1.2,
+        "pressureSeconds": 5,
+        "warningSeconds": 1.6,
+        "safeWedgeDegrees": 70,
+        "fallbackGapDegrees": 45,
+        "cycleSeconds": 11
+      }
+    },
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "valves": 3,
+      "valveHoldSeconds": 1.2,
+      "pressureSeconds": 5,
+      "warningSeconds": 1.6,
+      "safeWedgeDegrees": 70,
+      "fallbackGapDegrees": 45,
+      "cycleSeconds": 11
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "pulse",
+            "count": 26,
+            "speed": 130,
+            "damage": 12,
+            "interval": 9,
+            "telegraph": 1.6,
+            "gap": 45
+          },
+          {
+            "kind": "beam",
+            "count": 2,
+            "speed": 0,
+            "damage": 14,
+            "interval": 8,
+            "telegraph": 1.3,
+            "duration": 0.5,
+            "width": 20
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "pulse",
+            "count": 28,
+            "speed": 140,
+            "damage": 12,
+            "interval": 8.1,
+            "telegraph": 1.6,
+            "gap": 45
+          },
+          {
+            "kind": "beam",
+            "count": 4,
+            "speed": 0,
+            "damage": 14,
+            "interval": 7.2,
+            "telegraph": 1.3,
+            "duration": 0.5,
+            "width": 20
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "pulse",
+            "count": 30,
+            "speed": 151,
+            "damage": 12,
+            "interval": 7.2,
+            "telegraph": 1.6,
+            "gap": 45
+          },
+          {
+            "kind": "beam",
+            "count": 6,
+            "speed": 0,
+            "damage": 14,
+            "interval": 6.4,
+            "telegraph": 1.3,
+            "duration": 0.5,
+            "width": 20
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mirror-undertaker",
+    "name": "Mirror Undertaker",
+    "route": "long",
+    "preferredArena": "crown-crypt",
+    "timer": 150,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.88,
+    "damageWindowFraction": 1,
+    "finale": false,
+    "secret": false,
+    "lore": "A tall funeral corpse carrying a single oval silvered coffin lid. The quarantine left its work unfinished.",
+    "artBrief": "A tall funeral corpse carrying a single oval silvered coffin lid. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "mirror-undertaker",
+      "behavior": "Show one non-damaging reflection that copies a previous boss position; the real body retains its black foot marker.",
+      "counterplay": "Use the persistent body marker and distinct hollow reflection outline; no invisible collision or surprise damage.",
+      "parameters": {
+        "reflections": 1,
+        "positionDelaySeconds": 1.5,
+        "reflectionSeconds": 4,
+        "reflectionOpacity": 0.35,
+        "warningSeconds": 1.2,
+        "cycleSeconds": 9
+      }
+    },
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "reflections": 1,
+      "positionDelaySeconds": 1.5,
+      "reflectionSeconds": 4,
+      "reflectionOpacity": 0.35,
+      "warningSeconds": 1.2,
+      "cycleSeconds": 9
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "warp",
+            "count": 1,
+            "speed": 0,
+            "damage": 0,
+            "interval": 9,
+            "telegraph": 1.2
+          },
+          {
+            "kind": "fan",
+            "count": 12,
+            "speed": 150,
+            "damage": 12,
+            "interval": 5,
+            "telegraph": 1,
+            "arc": 140
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "warp",
+            "count": 1,
+            "speed": 0,
+            "damage": 0,
+            "interval": 8.1,
+            "telegraph": 1.2
+          },
+          {
+            "kind": "fan",
+            "count": 14,
+            "speed": 162,
+            "damage": 12,
+            "interval": 4.5,
+            "telegraph": 1,
+            "arc": 140
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "warp",
+            "count": 1,
+            "speed": 0,
+            "damage": 0,
+            "interval": 7.2,
+            "telegraph": 1.2
+          },
+          {
+            "kind": "fan",
+            "count": 16,
+            "speed": 174,
+            "damage": 12,
+            "interval": 4,
+            "telegraph": 1,
+            "arc": 140
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "chalk-magistrate",
+    "name": "Chalk Magistrate",
+    "route": "long",
+    "preferredArena": "gatehouse",
+    "timer": 150,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.88,
+    "damageWindowFraction": 1,
+    "finale": false,
+    "secret": false,
+    "lore": "An undead survey judge with a broad black slate and one oversized chalk hand. The quarantine left its work unfinished.",
+    "artBrief": "An undead survey judge with a broad black slate and one oversized chalk hand. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "chalk-magistrate",
+      "behavior": "Draw a rectangle around a marked region, then erase one wall before the other three flash.",
+      "counterplay": "Cross the erased wall during the long warning; no player is trapped by solid collision.",
+      "parameters": {
+        "walls": 4,
+        "erasedWalls": 1,
+        "wallWidthPx": 22,
+        "rectangleWidthPx": 420,
+        "rectangleHeightPx": 280,
+        "warningSeconds": 1.6,
+        "activeSeconds": 1,
+        "cycleSeconds": 9
+      }
+    },
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "walls": 4,
+      "erasedWalls": 1,
+      "wallWidthPx": 22,
+      "rectangleWidthPx": 420,
+      "rectangleHeightPx": 280,
+      "warningSeconds": 1.6,
+      "activeSeconds": 1,
+      "cycleSeconds": 9
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "beam",
+            "count": 3,
+            "speed": 0,
+            "damage": 14,
+            "interval": 8,
+            "telegraph": 1.6,
+            "duration": 0.5,
+            "width": 22
+          },
+          {
+            "kind": "cross",
+            "count": 16,
+            "speed": 140,
+            "damage": 11,
+            "interval": 6,
+            "telegraph": 1
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "beam",
+            "count": 5,
+            "speed": 0,
+            "damage": 14,
+            "interval": 7.2,
+            "telegraph": 1.6,
+            "duration": 0.5,
+            "width": 22
+          },
+          {
+            "kind": "cross",
+            "count": 18,
+            "speed": 151,
+            "damage": 11,
+            "interval": 5.4,
+            "telegraph": 1
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "beam",
+            "count": 7,
+            "speed": 0,
+            "damage": 14,
+            "interval": 6.4,
+            "telegraph": 1.6,
+            "duration": 0.5,
+            "width": 22
+          },
+          {
+            "kind": "cross",
+            "count": 20,
+            "speed": 162,
+            "damage": 11,
+            "interval": 4.8,
+            "telegraph": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "wire-harpist",
+    "name": "Wire Harpist",
+    "route": "long",
+    "preferredArena": "sunken-chapel",
+    "timer": 150,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.88,
+    "damageWindowFraction": 1,
+    "finale": false,
+    "secret": false,
+    "lore": "A corpse musician carrying one triangular street-wire harp with wide empty gaps. The quarantine left its work unfinished.",
+    "artBrief": "A corpse musician carrying one triangular street-wire harp with wide empty gaps. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "wire-harpist",
+      "behavior": "Pluck parallel strings in a fixed low-middle-high sequence, showing the next string with a thick dashed outline.",
+      "counterplay": "Move between the numbered lanes; audio has a matching visual countdown.",
+      "parameters": {
+        "strings": 3,
+        "stringWidthPx": 18,
+        "sequence": [
+          0,
+          1,
+          2
+        ],
+        "spacingSeconds": 0.8,
+        "warningSeconds": 1.4,
+        "activeSeconds": 0.45,
+        "cycleSeconds": 8
+      }
+    },
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "strings": 3,
+      "stringWidthPx": 18,
+      "sequence": [
+        0,
+        1,
+        2
+      ],
+      "spacingSeconds": 0.8,
+      "warningSeconds": 1.4,
+      "activeSeconds": 0.45,
+      "cycleSeconds": 8
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "beam",
+            "count": 3,
+            "speed": 0,
+            "damage": 13,
+            "interval": 8,
+            "telegraph": 1.4,
+            "duration": 0.45,
+            "width": 18
+          },
+          {
+            "kind": "fan",
+            "count": 7,
+            "speed": 150,
+            "damage": 10,
+            "interval": 5,
+            "telegraph": 1,
+            "arc": 90
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "beam",
+            "count": 5,
+            "speed": 0,
+            "damage": 13,
+            "interval": 7.2,
+            "telegraph": 1.4,
+            "duration": 0.45,
+            "width": 18
+          },
+          {
+            "kind": "fan",
+            "count": 9,
+            "speed": 162,
+            "damage": 10,
+            "interval": 4.5,
+            "telegraph": 1,
+            "arc": 90
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "beam",
+            "count": 7,
+            "speed": 0,
+            "damage": 13,
+            "interval": 6.4,
+            "telegraph": 1.4,
+            "duration": 0.45,
+            "width": 18
+          },
+          {
+            "kind": "fan",
+            "count": 11,
+            "speed": 174,
+            "damage": 10,
+            "interval": 4,
+            "telegraph": 1,
+            "arc": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "crow-shepherd",
+    "name": "Crow Shepherd",
+    "route": "long",
+    "preferredArena": "gatehouse",
+    "timer": 120,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.88,
+    "damageWindowFraction": 1,
+    "finale": false,
+    "secret": false,
+    "lore": "A dead shepherd in a broad black felt cape carrying one curved rook staff. The quarantine left its work unfinished.",
+    "artBrief": "A dead shepherd in a broad black felt cape carrying one curved rook staff. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "crow-shepherd",
+      "behavior": "Call three geometric bird flocks along crossing trails; the flocks have discrete silhouettes rather than particle swarms.",
+      "counterplay": "Read the three dashed paths and cross after their leading bird passes.",
+      "parameters": {
+        "flocks": 3,
+        "birdsPerFlock": 5,
+        "flockSpeedPxPerSecond": 150,
+        "trailWidthPx": 40,
+        "warningSeconds": 1.5,
+        "cycleSeconds": 8
+      }
+    },
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "flocks": 3,
+      "birdsPerFlock": 5,
+      "flockSpeedPxPerSecond": 150,
+      "trailWidthPx": 40,
+      "warningSeconds": 1.5,
+      "cycleSeconds": 8
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "cross",
+            "count": 15,
+            "speed": 150,
+            "damage": 10,
+            "interval": 8,
+            "telegraph": 1.5
+          },
+          {
+            "kind": "fan",
+            "count": 9,
+            "speed": 140,
+            "damage": 10,
+            "interval": 5,
+            "telegraph": 1,
+            "arc": 120
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "cross",
+            "count": 17,
+            "speed": 162,
+            "damage": 10,
+            "interval": 7.2,
+            "telegraph": 1.5
+          },
+          {
+            "kind": "fan",
+            "count": 11,
+            "speed": 151,
+            "damage": 10,
+            "interval": 4.5,
+            "telegraph": 1,
+            "arc": 120
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "cross",
+            "count": 19,
+            "speed": 174,
+            "damage": 10,
+            "interval": 6.4,
+            "telegraph": 1.5
+          },
+          {
+            "kind": "fan",
+            "count": 13,
+            "speed": 162,
+            "damage": 10,
+            "interval": 4,
+            "telegraph": 1,
+            "arc": 120
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ledger-leech",
+    "name": "Ledger Leech",
+    "route": "long",
+    "preferredArena": "crown-crypt",
+    "timer": 150,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.88,
+    "damageWindowFraction": 1,
+    "finale": false,
+    "secret": false,
+    "lore": "A pale folded-book corpse with a thick black spine and one sealing ribbon. The quarantine left its work unfinished.",
+    "artBrief": "A pale folded-book corpse with a thick black spine and one sealing ribbon. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "ledger-leech",
+      "behavior": "Attach a visible paper seal to a player; walking through a neutral cleansing circle removes its slow before expiration.",
+      "counterplay": "Use either cleansing circle or let the bounded slow expire; there is no stolen permanent currency or unavoidable damage.",
+      "parameters": {
+        "sealsMaximum": 2,
+        "slowFraction": 0.2,
+        "sealSeconds": 4,
+        "cleansingCircles": 2,
+        "cleanseRadiusPx": 90,
+        "warningSeconds": 1.4,
+        "cycleSeconds": 9
+      }
+    },
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "sealsMaximum": 2,
+      "slowFraction": 0.2,
+      "sealSeconds": 4,
+      "cleansingCircles": 2,
+      "cleanseRadiusPx": 90,
+      "warningSeconds": 1.4,
+      "cycleSeconds": 9
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "hook",
+            "count": 2,
+            "speed": 180,
+            "damage": 10,
+            "interval": 9,
+            "telegraph": 1.4,
+            "slow": 0.2,
+            "duration": 4
+          },
+          {
+            "kind": "ring",
+            "count": 20,
+            "speed": 125,
+            "damage": 11,
+            "interval": 6,
+            "telegraph": 1
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "hook",
+            "count": 4,
+            "speed": 194,
+            "damage": 10,
+            "interval": 8.1,
+            "telegraph": 1.4,
+            "slow": 0.2,
+            "duration": 4
+          },
+          {
+            "kind": "ring",
+            "count": 22,
+            "speed": 135,
+            "damage": 11,
+            "interval": 5.4,
+            "telegraph": 1
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "hook",
+            "count": 6,
+            "speed": 209,
+            "damage": 10,
+            "interval": 7.2,
+            "telegraph": 1.4,
+            "slow": 0.2,
+            "duration": 4
+          },
+          {
+            "kind": "ring",
+            "count": 24,
+            "speed": 145,
+            "damage": 11,
+            "interval": 4.8,
+            "telegraph": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "salt-patriarch",
+    "name": "Salt Patriarch",
+    "route": "long",
+    "preferredArena": "crown-crypt",
+    "timer": 180,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.88,
+    "damageWindowFraction": 1,
+    "finale": true,
+    "secret": false,
+    "lore": "An immense funeral patriarch with a broad salt-white mantle and one black censer. The quarantine left its work unfinished.",
+    "artBrief": "An immense funeral patriarch with a broad salt-white mantle and one black censer. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "salt-patriarch",
+      "behavior": "Move a salt boundary inward in three visible steps while opening two broad gates through the boundary.",
+      "counterplay": "Pass through either gate and use an Accord pad to hold the next step briefly.",
+      "parameters": {
+        "steps": 3,
+        "gateCount": 2,
+        "gateWidthPx": 200,
+        "stepWarningSeconds": 1.6,
+        "boundaryWidthPx": 25,
+        "holdSeconds": 2,
+        "cycleSeconds": 12
+      }
+    },
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "steps": 3,
+      "gateCount": 2,
+      "gateWidthPx": 200,
+      "stepWarningSeconds": 1.6,
+      "boundaryWidthPx": 25,
+      "holdSeconds": 2,
+      "cycleSeconds": 12
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "pulse",
+            "count": 30,
+            "speed": 135,
+            "damage": 14,
+            "interval": 8,
+            "telegraph": 1.5,
+            "gap": 65
+          },
+          {
+            "kind": "spiral",
+            "count": 20,
+            "speed": 145,
+            "damage": 12,
+            "interval": 6,
+            "telegraph": 1.2
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "pulse",
+            "count": 32,
+            "speed": 146,
+            "damage": 14,
+            "interval": 7.2,
+            "telegraph": 1.5,
+            "gap": 65
+          },
+          {
+            "kind": "spiral",
+            "count": 22,
+            "speed": 157,
+            "damage": 12,
+            "interval": 5.4,
+            "telegraph": 1.2
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "pulse",
+            "count": 34,
+            "speed": 157,
+            "damage": 14,
+            "interval": 6.4,
+            "telegraph": 1.5,
+            "gap": 65
+          },
+          {
+            "kind": "spiral",
+            "count": 24,
+            "speed": 168,
+            "damage": 12,
+            "interval": 4.8,
+            "telegraph": 1.2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "chain-colossus",
+    "name": "Chain Colossus",
+    "route": "raid",
+    "preferredArena": "ossuary-works",
+    "timer": 210,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.748,
+    "damageWindowFraction": 0.85,
+    "finale": false,
+    "secret": false,
+    "lore": "A giant corpse assembled around one heavy anchor chain and a square iron rib cage. The quarantine left its work unfinished.",
+    "artBrief": "A giant corpse assembled around one heavy anchor chain and a square iron rib cage. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "chain-colossus",
+      "behavior": "Anchor to three pylons and pull a marked floor section; breaking one pylon creates a shared damage opening.",
+      "counterplay": "Destroy any pylon or use the unobstructed outer lane; pylon health scales with roster.",
+      "parameters": {
+        "pylons": 3,
+        "pylonHealthHP": 110,
+        "pullSpeedPxPerSecond": 45,
+        "pullSeconds": 3,
+        "openingSeconds": 4,
+        "warningSeconds": 1.6,
+        "cycleSeconds": 12
+      }
+    },
+    "arenaIds": [
+      "ossuary-works",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "pylons": 3,
+      "pylonHealthHP": 110,
+      "pullSpeedPxPerSecond": 45,
+      "pullSeconds": 3,
+      "openingSeconds": 4,
+      "warningSeconds": 1.6,
+      "cycleSeconds": 12
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "hook",
+            "count": 3,
+            "speed": 180,
+            "damage": 14,
+            "interval": 8,
+            "telegraph": 1.5,
+            "slow": 0.25,
+            "duration": 2
+          },
+          {
+            "kind": "lanes",
+            "count": 24,
+            "speed": 145,
+            "damage": 13,
+            "interval": 7,
+            "telegraph": 1.4
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "hook",
+            "count": 5,
+            "speed": 194,
+            "damage": 14,
+            "interval": 7.2,
+            "telegraph": 1.5,
+            "slow": 0.25,
+            "duration": 2
+          },
+          {
+            "kind": "lanes",
+            "count": 26,
+            "speed": 157,
+            "damage": 13,
+            "interval": 6.3,
+            "telegraph": 1.4
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "hook",
+            "count": 7,
+            "speed": 209,
+            "damage": 14,
+            "interval": 6.4,
+            "telegraph": 1.5,
+            "slow": 0.25,
+            "duration": 2
+          },
+          {
+            "kind": "lanes",
+            "count": 28,
+            "speed": 168,
+            "damage": 13,
+            "interval": 5.6,
+            "telegraph": 1.4
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ossuary-leviathan",
+    "name": "Ossuary Leviathan",
+    "route": "raid",
+    "preferredArena": "ossuary-works",
+    "timer": 210,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.704,
+    "damageWindowFraction": 0.8,
+    "finale": false,
+    "secret": false,
+    "lore": "A long skeletal burial beast with three large readable ribs and one casket head. The quarantine left its work unfinished.",
+    "artBrief": "A long skeletal burial beast with three large readable ribs and one casket head. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "ossuary-leviathan",
+      "behavior": "Expose three rib weak points sequentially while the body moves along a predictable wide curve.",
+      "counterplay": "Attack the numbered exposed rib and stay outside the thick body outline.",
+      "parameters": {
+        "ribs": 3,
+        "weakPointRadiusPx": 28,
+        "weakPointDamageMultiplier": 1.5,
+        "exposureSeconds": 3,
+        "bodySpeedPxPerSecond": 70,
+        "warningSeconds": 1.6,
+        "cycleSeconds": 12
+      }
+    },
+    "arenaIds": [
+      "ossuary-works",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "ribs": 3,
+      "weakPointRadiusPx": 28,
+      "weakPointDamageMultiplier": 1.5,
+      "exposureSeconds": 3,
+      "bodySpeedPxPerSecond": 70,
+      "warningSeconds": 1.6,
+      "cycleSeconds": 12
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "charge",
+            "count": 1,
+            "speed": 250,
+            "damage": 20,
+            "interval": 10,
+            "telegraph": 1.6
+          },
+          {
+            "kind": "fan",
+            "count": 18,
+            "speed": 145,
+            "damage": 13,
+            "interval": 6,
+            "telegraph": 1.2,
+            "arc": 160
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "charge",
+            "count": 1,
+            "speed": 270,
+            "damage": 20,
+            "interval": 9,
+            "telegraph": 1.6
+          },
+          {
+            "kind": "fan",
+            "count": 20,
+            "speed": 157,
+            "damage": 13,
+            "interval": 5.4,
+            "telegraph": 1.2,
+            "arc": 160
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "charge",
+            "count": 1,
+            "speed": 290,
+            "damage": 20,
+            "interval": 8,
+            "telegraph": 1.6
+          },
+          {
+            "kind": "fan",
+            "count": 22,
+            "speed": 168,
+            "damage": 13,
+            "interval": 4.8,
+            "telegraph": 1.2,
+            "arc": 160
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bell-triplets",
+    "name": "Bell Triplets",
+    "route": "raid",
+    "preferredArena": "bell-foundry",
+    "timer": 210,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.88,
+    "damageWindowFraction": 1,
+    "finale": false,
+    "secret": false,
+    "lore": "Three dead bronze bell keepers sharing one broad shoulder yoke. The quarantine left its work unfinished.",
+    "artBrief": "Three dead bronze bell keepers sharing one broad shoulder yoke. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "bell-triplets",
+      "behavior": "Three keepers take turns casting; striking the highlighted keeper interrupts one crossing beam.",
+      "counterplay": "Track the single highlighted caster; a fixed safe gap remains even without an interrupt.",
+      "parameters": {
+        "keepers": 3,
+        "activeCasters": 1,
+        "interruptHealthHP": 95,
+        "beamDelaySeconds": 0.65,
+        "safeGapPx": 185,
+        "warningSeconds": 1.5,
+        "cycleSeconds": 11
+      }
+    },
+    "arenaIds": [
+      "ossuary-works",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "keepers": 3,
+      "activeCasters": 1,
+      "interruptHealthHP": 95,
+      "beamDelaySeconds": 0.65,
+      "safeGapPx": 185,
+      "warningSeconds": 1.5,
+      "cycleSeconds": 11
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "beam",
+            "count": 3,
+            "speed": 0,
+            "damage": 16,
+            "interval": 9,
+            "telegraph": 1.5,
+            "duration": 0.5,
+            "width": 24
+          },
+          {
+            "kind": "pulse",
+            "count": 28,
+            "speed": 130,
+            "damage": 13,
+            "interval": 8,
+            "telegraph": 1.4,
+            "gap": 50
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "beam",
+            "count": 5,
+            "speed": 0,
+            "damage": 16,
+            "interval": 8.1,
+            "telegraph": 1.5,
+            "duration": 0.5,
+            "width": 24
+          },
+          {
+            "kind": "pulse",
+            "count": 30,
+            "speed": 140,
+            "damage": 13,
+            "interval": 7.2,
+            "telegraph": 1.4,
+            "gap": 50
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "beam",
+            "count": 7,
+            "speed": 0,
+            "damage": 16,
+            "interval": 7.2,
+            "telegraph": 1.5,
+            "duration": 0.5,
+            "width": 24
+          },
+          {
+            "kind": "pulse",
+            "count": 32,
+            "speed": 151,
+            "damage": 13,
+            "interval": 6.4,
+            "telegraph": 1.4,
+            "gap": 50
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "quarantine-heart",
+    "name": "Quarantine Heart",
+    "route": "raid",
+    "preferredArena": "triage-yard",
+    "timer": 210,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.748,
+    "damageWindowFraction": 0.85,
+    "finale": false,
+    "secret": false,
+    "lore": "A suspended municipal plague pump in a corpse chest with four broad ivory hoses. The quarantine left its work unfinished.",
+    "artBrief": "A suspended municipal plague pump in a corpse chest with four broad ivory hoses. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "quarantine-heart",
+      "behavior": "Pump four streams toward the walls; any survivor can turn one valve to reverse a stream into the core.",
+      "counterplay": "Use a neutral valve or maintain damage from the guaranteed open side; no particular class is required.",
+      "parameters": {
+        "hoses": 4,
+        "valveHoldSeconds": 1.5,
+        "reverseDamageHP": 120,
+        "coreOpeningSeconds": 4,
+        "streamWidthPx": 28,
+        "warningSeconds": 1.6,
+        "cycleSeconds": 12
+      }
+    },
+    "arenaIds": [
+      "ossuary-works",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "hoses": 4,
+      "valveHoldSeconds": 1.5,
+      "reverseDamageHP": 120,
+      "coreOpeningSeconds": 4,
+      "streamWidthPx": 28,
+      "warningSeconds": 1.6,
+      "cycleSeconds": 12
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "lanes",
+            "count": 28,
+            "speed": 140,
+            "damage": 13,
+            "interval": 8,
+            "telegraph": 1.6
+          },
+          {
+            "kind": "pool",
+            "count": 3,
+            "speed": 0,
+            "damage": 10,
+            "interval": 10,
+            "telegraph": 1.5,
+            "radius": 75,
+            "duration": 4
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "lanes",
+            "count": 30,
+            "speed": 151,
+            "damage": 13,
+            "interval": 7.2,
+            "telegraph": 1.6
+          },
+          {
+            "kind": "pool",
+            "count": 5,
+            "speed": 0,
+            "damage": 10,
+            "interval": 9,
+            "telegraph": 1.5,
+            "radius": 75,
+            "duration": 4
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "lanes",
+            "count": 32,
+            "speed": 162,
+            "damage": 13,
+            "interval": 6.4,
+            "telegraph": 1.6
+          },
+          {
+            "kind": "pool",
+            "count": 7,
+            "speed": 0,
+            "damage": 10,
+            "interval": 8,
+            "telegraph": 1.5,
+            "radius": 75,
+            "duration": 4
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "crown-procession",
+    "name": "Crown Procession",
+    "route": "raid",
+    "preferredArena": "crown-crypt",
+    "timer": 240,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.704,
+    "damageWindowFraction": 0.8,
+    "finale": true,
+    "secret": false,
+    "lore": "A dead civic ruler borne on a large simple palanquin by four skeletal attendants. The quarantine left its work unfinished.",
+    "artBrief": "A dead civic ruler borne on a large simple palanquin by four skeletal attendants. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "crown-procession",
+      "behavior": "Four attendants carry the throne along visible waypoints; defeating one lowers the throne for an opening.",
+      "counterplay": "Focus any attendant or use the next scheduled throne rest; damage is never locked behind group participation.",
+      "parameters": {
+        "attendants": 4,
+        "attendantHealthHP": 90,
+        "routeSpeedPxPerSecond": 65,
+        "scheduledRestSeconds": 4,
+        "openingSeconds": 5,
+        "warningSeconds": 1.7,
+        "cycleSeconds": 14
+      }
+    },
+    "arenaIds": [
+      "ossuary-works",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "attendants": 4,
+      "attendantHealthHP": 90,
+      "routeSpeedPxPerSecond": 65,
+      "scheduledRestSeconds": 4,
+      "openingSeconds": 5,
+      "warningSeconds": 1.7,
+      "cycleSeconds": 14
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "fan",
+            "count": 20,
+            "speed": 145,
+            "damage": 14,
+            "interval": 7,
+            "telegraph": 1.4,
+            "arc": 170
+          },
+          {
+            "kind": "ring",
+            "count": 30,
+            "speed": 125,
+            "damage": 13,
+            "interval": 9,
+            "telegraph": 1.4
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "fan",
+            "count": 22,
+            "speed": 157,
+            "damage": 14,
+            "interval": 6.3,
+            "telegraph": 1.4,
+            "arc": 170
+          },
+          {
+            "kind": "ring",
+            "count": 32,
+            "speed": 135,
+            "damage": 13,
+            "interval": 8.1,
+            "telegraph": 1.4
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "fan",
+            "count": 24,
+            "speed": 168,
+            "damage": 14,
+            "interval": 5.6,
+            "telegraph": 1.4,
+            "arc": 170
+          },
+          {
+            "kind": "ring",
+            "count": 34,
+            "speed": 145,
+            "damage": 13,
+            "interval": 7.2,
+            "telegraph": 1.4
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "city-eater",
+    "name": "City Eater",
+    "route": "raid",
+    "preferredArena": "crown-crypt",
+    "timer": 240,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.704,
+    "damageWindowFraction": 0.8,
+    "finale": true,
+    "secret": false,
+    "lore": "An enormous hollow corpse whose clean rectangular jaw resembles a civic arch. The quarantine left its work unfinished.",
+    "artBrief": "An enormous hollow corpse whose clean rectangular jaw resembles a civic arch. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "city-eater",
+      "behavior": "Mark two bite lanes and leave one broad escape corridor; destroyed temporary walls expose the core.",
+      "counterplay": "Use the unmarked corridor and the long recovery; static arena exits never disappear.",
+      "parameters": {
+        "biteLanes": 2,
+        "escapeWidthPx": 240,
+        "biteWarningSeconds": 1.8,
+        "recoverySeconds": 4,
+        "temporaryWalls": 2,
+        "wallHealthHP": 120,
+        "cycleSeconds": 13
+      }
+    },
+    "arenaIds": [
+      "ossuary-works",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "biteLanes": 2,
+      "escapeWidthPx": 240,
+      "biteWarningSeconds": 1.8,
+      "recoverySeconds": 4,
+      "temporaryWalls": 2,
+      "wallHealthHP": 120,
+      "cycleSeconds": 13
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "charge",
+            "count": 1,
+            "speed": 260,
+            "damage": 22,
+            "interval": 12,
+            "telegraph": 1.8
+          },
+          {
+            "kind": "pulse",
+            "count": 32,
+            "speed": 130,
+            "damage": 14,
+            "interval": 9,
+            "telegraph": 1.5,
+            "gap": 65
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "charge",
+            "count": 1,
+            "speed": 281,
+            "damage": 22,
+            "interval": 10.8,
+            "telegraph": 1.8
+          },
+          {
+            "kind": "pulse",
+            "count": 34,
+            "speed": 140,
+            "damage": 14,
+            "interval": 8.1,
+            "telegraph": 1.5,
+            "gap": 65
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "charge",
+            "count": 1,
+            "speed": 302,
+            "damage": 22,
+            "interval": 9.6,
+            "telegraph": 1.8
+          },
+          {
+            "kind": "pulse",
+            "count": 36,
+            "speed": 151,
+            "damage": 14,
+            "interval": 7.2,
+            "telegraph": 1.5,
+            "gap": 65
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "last-breath-saint",
+    "name": "Saint of the Last Breath",
+    "route": "raid",
+    "preferredArena": "sunken-chapel",
+    "timer": 240,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.88,
+    "damageWindowFraction": 1,
+    "finale": true,
+    "secret": false,
+    "lore": "A towering dead hospital saint under one pale sail-shaped shroud with an iron respirator. The quarantine left its work unfinished.",
+    "artBrief": "A towering dead hospital saint under one pale sail-shaped shroud with an iron respirator. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "last-breath-saint",
+      "behavior": "Alternate inhalation that gently pulls and exhalation that sends slow rings; two shelter pads cancel the pull.",
+      "counterplay": "Use either shelter or steer outward; solo needs only one pad and normal dodge remains available.",
+      "parameters": {
+        "pullSpeedPxPerSecond": 45,
+        "inhaleSeconds": 3,
+        "exhaleRings": 3,
+        "shelterPads": 2,
+        "shelterRadiusPx": 100,
+        "warningSeconds": 1.8,
+        "cycleSeconds": 14
+      }
+    },
+    "arenaIds": [
+      "ossuary-works",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "pullSpeedPxPerSecond": 45,
+      "inhaleSeconds": 3,
+      "exhaleRings": 3,
+      "shelterPads": 2,
+      "shelterRadiusPx": 100,
+      "warningSeconds": 1.8,
+      "cycleSeconds": 14
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "pulse",
+            "count": 30,
+            "speed": 115,
+            "damage": 14,
+            "interval": 9,
+            "telegraph": 1.8,
+            "gap": 60
+          },
+          {
+            "kind": "beam",
+            "count": 2,
+            "speed": 0,
+            "damage": 16,
+            "interval": 10,
+            "telegraph": 1.5,
+            "duration": 0.5,
+            "width": 26
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "pulse",
+            "count": 32,
+            "speed": 124,
+            "damage": 14,
+            "interval": 8.1,
+            "telegraph": 1.8,
+            "gap": 60
+          },
+          {
+            "kind": "beam",
+            "count": 4,
+            "speed": 0,
+            "damage": 16,
+            "interval": 9,
+            "telegraph": 1.5,
+            "duration": 0.5,
+            "width": 26
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "pulse",
+            "count": 34,
+            "speed": 133,
+            "damage": 14,
+            "interval": 7.2,
+            "telegraph": 1.8,
+            "gap": 60
+          },
+          {
+            "kind": "beam",
+            "count": 6,
+            "speed": 0,
+            "damage": 16,
+            "interval": 8,
+            "telegraph": 1.5,
+            "duration": 0.5,
+            "width": 26
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hourglass-widow",
+    "name": "Hourglass Widow",
+    "route": "endless",
+    "preferredArena": "crown-crypt",
+    "timer": 150,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.88,
+    "damageWindowFraction": 1,
+    "finale": false,
+    "secret": false,
+    "lore": "A narrow veiled corpse holding one oversized sandglass against a smooth black dress. The quarantine left its work unfinished.",
+    "artBrief": "A narrow veiled corpse holding one oversized sandglass against a smooth black dress. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "hourglass-widow",
+      "behavior": "Record one slow bullet fan and replay its same path once after a visible countdown; never rewind players or health.",
+      "counterplay": "Remember the dashed replay paths or use the persistent safe flank.",
+      "parameters": {
+        "replayDelaySeconds": 2.5,
+        "replays": 1,
+        "fanBullets": 11,
+        "warningSeconds": 1.5,
+        "cycleSeconds": 9
+      }
+    },
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "replayDelaySeconds": 2.5,
+      "replays": 1,
+      "fanBullets": 11,
+      "warningSeconds": 1.5,
+      "cycleSeconds": 9
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "fan",
+            "count": 11,
+            "speed": 140,
+            "damage": 12,
+            "interval": 6,
+            "telegraph": 1.5,
+            "arc": 120
+          },
+          {
+            "kind": "ring",
+            "count": 20,
+            "speed": 120,
+            "damage": 11,
+            "interval": 8,
+            "telegraph": 1.2
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "fan",
+            "count": 13,
+            "speed": 151,
+            "damage": 12,
+            "interval": 5.4,
+            "telegraph": 1.5,
+            "arc": 120
+          },
+          {
+            "kind": "ring",
+            "count": 22,
+            "speed": 130,
+            "damage": 11,
+            "interval": 7.2,
+            "telegraph": 1.2
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "fan",
+            "count": 15,
+            "speed": 162,
+            "damage": 12,
+            "interval": 4.8,
+            "telegraph": 1.5,
+            "arc": 120
+          },
+          {
+            "kind": "ring",
+            "count": 24,
+            "speed": 139,
+            "damage": 11,
+            "interval": 6.4,
+            "telegraph": 1.2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "unlit-astronomer",
+    "name": "Unlit Astronomer",
+    "route": "endless",
+    "preferredArena": "bell-foundry",
+    "timer": 180,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.88,
+    "damageWindowFraction": 1,
+    "finale": false,
+    "secret": false,
+    "lore": "A dead astronomer beneath one dark circular star chart with a short brass telescope. The quarantine left its work unfinished.",
+    "artBrief": "A dead astronomer beneath one dark circular star chart with a short brass telescope. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "unlit-astronomer",
+      "behavior": "Move two large orbiting hazard markers around the core while a third harmless marker outlines a safe orbit.",
+      "counterplay": "Follow the clear hollow safe marker; visual paths remain readable without glow.",
+      "parameters": {
+        "hazardOrbits": 2,
+        "orbitRadiusPx": [
+          180,
+          300
+        ],
+        "orbitSpeedDegreesPerSecond": 22,
+        "safeOrbitRadiusPx": 240,
+        "markerRadiusPx": 32,
+        "warningSeconds": 1.5,
+        "cycleSeconds": 12
+      }
+    },
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "hazardOrbits": 2,
+      "orbitRadiusPx": [
+        180,
+        300
+      ],
+      "orbitSpeedDegreesPerSecond": 22,
+      "safeOrbitRadiusPx": 240,
+      "markerRadiusPx": 32,
+      "warningSeconds": 1.5,
+      "cycleSeconds": 12
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "spiral",
+            "count": 24,
+            "speed": 135,
+            "damage": 12,
+            "interval": 7,
+            "telegraph": 1.3
+          },
+          {
+            "kind": "beam",
+            "count": 2,
+            "speed": 0,
+            "damage": 15,
+            "interval": 9,
+            "telegraph": 1.5,
+            "duration": 0.5,
+            "width": 22
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "spiral",
+            "count": 26,
+            "speed": 146,
+            "damage": 12,
+            "interval": 6.3,
+            "telegraph": 1.3
+          },
+          {
+            "kind": "beam",
+            "count": 4,
+            "speed": 0,
+            "damage": 15,
+            "interval": 8.1,
+            "telegraph": 1.5,
+            "duration": 0.5,
+            "width": 22
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "spiral",
+            "count": 28,
+            "speed": 157,
+            "damage": 12,
+            "interval": 5.6,
+            "telegraph": 1.3
+          },
+          {
+            "kind": "beam",
+            "count": 6,
+            "speed": 0,
+            "damage": 15,
+            "interval": 7.2,
+            "telegraph": 1.5,
+            "duration": 0.5,
+            "width": 22
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "folded-man",
+    "name": "Folded Man",
+    "route": "endless",
+    "preferredArena": "gatehouse",
+    "timer": 150,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.88,
+    "damageWindowFraction": 1,
+    "finale": false,
+    "secret": false,
+    "lore": "An angular corpse folded into one large paper-coat silhouette with a black seam. The quarantine left its work unfinished.",
+    "artBrief": "An angular corpse folded into one large paper-coat silhouette with a black seam. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "folded-man",
+      "behavior": "Fold a visible line across the floor; bullets cross the line at a mirrored angle after a long warning.",
+      "counterplay": "Use the permanently unreflected side; predicted paths show both entry and exit directions.",
+      "parameters": {
+        "foldLines": 1,
+        "foldLengthPx": 520,
+        "warningSeconds": 1.6,
+        "activeSeconds": 3,
+        "maximumReflectionsPerBullet": 1,
+        "cycleSeconds": 10
+      }
+    },
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "foldLines": 1,
+      "foldLengthPx": 520,
+      "warningSeconds": 1.6,
+      "activeSeconds": 3,
+      "maximumReflectionsPerBullet": 1,
+      "cycleSeconds": 10
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "fan",
+            "count": 13,
+            "speed": 135,
+            "damage": 12,
+            "interval": 6,
+            "telegraph": 1.4,
+            "arc": 140
+          },
+          {
+            "kind": "cross",
+            "count": 20,
+            "speed": 130,
+            "damage": 11,
+            "interval": 8,
+            "telegraph": 1.2
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "fan",
+            "count": 15,
+            "speed": 146,
+            "damage": 12,
+            "interval": 5.4,
+            "telegraph": 1.4,
+            "arc": 140
+          },
+          {
+            "kind": "cross",
+            "count": 22,
+            "speed": 140,
+            "damage": 11,
+            "interval": 7.2,
+            "telegraph": 1.2
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "fan",
+            "count": 17,
+            "speed": 157,
+            "damage": 12,
+            "interval": 4.8,
+            "telegraph": 1.4,
+            "arc": 140
+          },
+          {
+            "kind": "cross",
+            "count": 24,
+            "speed": 151,
+            "damage": 11,
+            "interval": 6.4,
+            "telegraph": 1.2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "red-comet",
+    "name": "Red Comet",
+    "route": "endless",
+    "preferredArena": "gatehouse",
+    "timer": 120,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.748,
+    "damageWindowFraction": 0.85,
+    "finale": false,
+    "secret": false,
+    "lore": "A dead meteor courier wrapped in one broad red scarf and a long tapered brass shell. The quarantine left its work unfinished.",
+    "artBrief": "A dead meteor courier wrapped in one broad red scarf and a long tapered brass shell. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "red-comet",
+      "behavior": "Dash through three fixed waypoints, leaving trails that go harmless in the order they were created.",
+      "counterplay": "Follow the numbered path and cross the oldest faded trail.",
+      "parameters": {
+        "waypoints": 3,
+        "dashSpeedPxPerSecond": 360,
+        "trailWidthPx": 30,
+        "trailSeconds": 2.5,
+        "waypointWarningSeconds": 1.3,
+        "recoverySeconds": 3,
+        "cycleSeconds": 10
+      }
+    },
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "waypoints": 3,
+      "dashSpeedPxPerSecond": 360,
+      "trailWidthPx": 30,
+      "trailSeconds": 2.5,
+      "waypointWarningSeconds": 1.3,
+      "recoverySeconds": 3,
+      "cycleSeconds": 10
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "charge",
+            "count": 1,
+            "speed": 360,
+            "damage": 17,
+            "interval": 10,
+            "telegraph": 1.3
+          },
+          {
+            "kind": "cross",
+            "count": 18,
+            "speed": 150,
+            "damage": 12,
+            "interval": 6,
+            "telegraph": 1.1
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "charge",
+            "count": 1,
+            "speed": 389,
+            "damage": 17,
+            "interval": 9,
+            "telegraph": 1.3
+          },
+          {
+            "kind": "cross",
+            "count": 20,
+            "speed": 162,
+            "damage": 12,
+            "interval": 5.4,
+            "telegraph": 1.1
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "charge",
+            "count": 1,
+            "speed": 418,
+            "damage": 17,
+            "interval": 8,
+            "telegraph": 1.3
+          },
+          {
+            "kind": "cross",
+            "count": 22,
+            "speed": 174,
+            "damage": 12,
+            "interval": 4.8,
+            "telegraph": 1.1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "memory-taxer",
+    "name": "Memory Taxer",
+    "route": "endless",
+    "preferredArena": "crown-crypt",
+    "timer": 180,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.88,
+    "damageWindowFraction": 1,
+    "finale": false,
+    "secret": false,
+    "lore": "A blind corpse assessor carrying one large empty portrait frame and a square ledger bag. The quarantine left its work unfinished.",
+    "artBrief": "A blind corpse assessor carrying one large empty portrait frame and a square ledger bag. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "memory-taxer",
+      "behavior": "Show three large safe-pad symbols, then request the first shown symbol before a bounded outside pulse.",
+      "counterplay": "Use the numbered visual history that stays on the HUD; memorization is optional and accessible.",
+      "parameters": {
+        "symbols": 3,
+        "pads": 3,
+        "padRadiusPx": 105,
+        "displaySeconds": 2,
+        "answerWarningSeconds": 2,
+        "cycleSeconds": 12
+      }
+    },
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "symbols": 3,
+      "pads": 3,
+      "padRadiusPx": 105,
+      "displaySeconds": 2,
+      "answerWarningSeconds": 2,
+      "cycleSeconds": 12
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "pulse",
+            "count": 28,
+            "speed": 120,
+            "damage": 12,
+            "interval": 10,
+            "telegraph": 1.5,
+            "gap": 65
+          },
+          {
+            "kind": "zone",
+            "count": 2,
+            "speed": 0,
+            "damage": 10,
+            "interval": 8,
+            "telegraph": 1.4,
+            "radius": 65,
+            "duration": 3
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "pulse",
+            "count": 30,
+            "speed": 130,
+            "damage": 12,
+            "interval": 9,
+            "telegraph": 1.5,
+            "gap": 65
+          },
+          {
+            "kind": "zone",
+            "count": 4,
+            "speed": 0,
+            "damage": 10,
+            "interval": 7.2,
+            "telegraph": 1.4,
+            "radius": 65,
+            "duration": 3
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "pulse",
+            "count": 32,
+            "speed": 139,
+            "damage": 12,
+            "interval": 8,
+            "telegraph": 1.5,
+            "gap": 65
+          },
+          {
+            "kind": "zone",
+            "count": 6,
+            "speed": 0,
+            "damage": 10,
+            "interval": 6.4,
+            "telegraph": 1.4,
+            "radius": 65,
+            "duration": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "choir-of-moths",
+    "name": "Choir of Moths",
+    "route": "endless",
+    "preferredArena": "sunken-chapel",
+    "timer": 150,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.88,
+    "damageWindowFraction": 1,
+    "finale": false,
+    "secret": false,
+    "lore": "A silent corpse singer in one wide moth-wing shawl with three large ivory eye shapes. The quarantine left its work unfinished.",
+    "artBrief": "A silent corpse singer in one wide moth-wing shawl with three large ivory eye shapes. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "choir-of-moths",
+      "behavior": "Release three cohesive moth ribbons along curved paths; one ribbon visibly breaks to create a crossing.",
+      "counterplay": "Cross at the broken ribbon and ignore decorative wing dust, which is not generated.",
+      "parameters": {
+        "ribbons": 3,
+        "mothsPerRibbon": 6,
+        "ribbonSpeedPxPerSecond": 130,
+        "gapWidthPx": 180,
+        "warningSeconds": 1.5,
+        "cycleSeconds": 10
+      }
+    },
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "ribbons": 3,
+      "mothsPerRibbon": 6,
+      "ribbonSpeedPxPerSecond": 130,
+      "gapWidthPx": 180,
+      "warningSeconds": 1.5,
+      "cycleSeconds": 10
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "spiral",
+            "count": 18,
+            "speed": 130,
+            "damage": 11,
+            "interval": 7,
+            "telegraph": 1.3
+          },
+          {
+            "kind": "beam",
+            "count": 2,
+            "speed": 0,
+            "damage": 14,
+            "interval": 9,
+            "telegraph": 1.5,
+            "duration": 0.5,
+            "width": 20
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "spiral",
+            "count": 20,
+            "speed": 140,
+            "damage": 11,
+            "interval": 6.3,
+            "telegraph": 1.3
+          },
+          {
+            "kind": "beam",
+            "count": 4,
+            "speed": 0,
+            "damage": 14,
+            "interval": 8.1,
+            "telegraph": 1.5,
+            "duration": 0.5,
+            "width": 20
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "spiral",
+            "count": 22,
+            "speed": 151,
+            "damage": 11,
+            "interval": 5.6,
+            "telegraph": 1.3
+          },
+          {
+            "kind": "beam",
+            "count": 6,
+            "speed": 0,
+            "damage": 14,
+            "interval": 7.2,
+            "telegraph": 1.5,
+            "duration": 0.5,
+            "width": 20
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "zero-hour-conductor",
+    "name": "Zero-Hour Conductor",
+    "route": "endless",
+    "preferredArena": "bell-foundry",
+    "timer": 180,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.88,
+    "damageWindowFraction": 1,
+    "finale": false,
+    "secret": false,
+    "lore": "A dead conductor with a broad metronome torso and one long baton. The quarantine left its work unfinished.",
+    "artBrief": "A dead conductor with a broad metronome torso and one long baton. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "zero-hour-conductor",
+      "behavior": "Count four visible beats and release one alternating lane pattern on each beat with a fixed safe syncopation.",
+      "counterplay": "Read the persistent beat pips and safe lane marker; audio rhythm is never required.",
+      "parameters": {
+        "beats": 4,
+        "beatSeconds": 0.9,
+        "lanes": 4,
+        "safeLanes": 1,
+        "warningSeconds": 1.8,
+        "cycleSeconds": 11
+      }
+    },
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "beats": 4,
+      "beatSeconds": 0.9,
+      "lanes": 4,
+      "safeLanes": 1,
+      "warningSeconds": 1.8,
+      "cycleSeconds": 11
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "lanes",
+            "count": 24,
+            "speed": 145,
+            "damage": 12,
+            "interval": 8,
+            "telegraph": 1.8
+          },
+          {
+            "kind": "pulse",
+            "count": 26,
+            "speed": 125,
+            "damage": 12,
+            "interval": 9,
+            "telegraph": 1.4,
+            "gap": 55
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "lanes",
+            "count": 26,
+            "speed": 157,
+            "damage": 12,
+            "interval": 7.2,
+            "telegraph": 1.8
+          },
+          {
+            "kind": "pulse",
+            "count": 28,
+            "speed": 135,
+            "damage": 12,
+            "interval": 8.1,
+            "telegraph": 1.4,
+            "gap": 55
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "lanes",
+            "count": 28,
+            "speed": 168,
+            "damage": 12,
+            "interval": 6.4,
+            "telegraph": 1.8
+          },
+          {
+            "kind": "pulse",
+            "count": 30,
+            "speed": 145,
+            "damage": 12,
+            "interval": 7.2,
+            "telegraph": 1.4,
+            "gap": 55
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "walking-district",
+    "name": "Walking District",
+    "route": "endless",
+    "preferredArena": "ossuary-works",
+    "timer": 210,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.748,
+    "damageWindowFraction": 0.85,
+    "finale": false,
+    "secret": false,
+    "lore": "A monumental corpse bent around three broad civic roof shapes and one central bell. The quarantine left its work unfinished.",
+    "artBrief": "A monumental corpse bent around three broad civic roof shapes and one central bell. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "walking-district",
+      "behavior": "Lift two temporary building blocks and shift them along outlined lanes, exposing one large central weak point.",
+      "counterplay": "Use the broad outer bypass or the cleared central path after the blocks settle.",
+      "parameters": {
+        "blocks": 2,
+        "blockWidthPx": 150,
+        "blockHeightPx": 130,
+        "blockSpeedPxPerSecond": 55,
+        "outerBypassWidthPx": 200,
+        "weakPointSeconds": 4,
+        "warningSeconds": 1.8,
+        "cycleSeconds": 13
+      }
+    },
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "blocks": 2,
+      "blockWidthPx": 150,
+      "blockHeightPx": 130,
+      "blockSpeedPxPerSecond": 55,
+      "outerBypassWidthPx": 200,
+      "weakPointSeconds": 4,
+      "warningSeconds": 1.8,
+      "cycleSeconds": 13
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "lanes",
+            "count": 28,
+            "speed": 135,
+            "damage": 13,
+            "interval": 9,
+            "telegraph": 1.6
+          },
+          {
+            "kind": "ring",
+            "count": 30,
+            "speed": 120,
+            "damage": 12,
+            "interval": 10,
+            "telegraph": 1.4
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "lanes",
+            "count": 30,
+            "speed": 146,
+            "damage": 13,
+            "interval": 8.1,
+            "telegraph": 1.6
+          },
+          {
+            "kind": "ring",
+            "count": 32,
+            "speed": 130,
+            "damage": 12,
+            "interval": 9,
+            "telegraph": 1.4
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "lanes",
+            "count": 32,
+            "speed": 157,
+            "damage": 13,
+            "interval": 7.2,
+            "telegraph": 1.6
+          },
+          {
+            "kind": "ring",
+            "count": 34,
+            "speed": 139,
+            "damage": 12,
+            "interval": 8,
+            "telegraph": 1.4
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "last-knocker",
+    "name": "The Last Knocker",
+    "route": "endless",
+    "preferredArena": "gatehouse",
+    "timer": 180,
+    "minThreat": 1,
+    "radius": 58,
+    "healthFactor": 0.88,
+    "damageWindowFraction": 1,
+    "finale": false,
+    "secret": false,
+    "lore": "A faceless corpse carrying one immense upright front door and a single brass knocker. The quarantine left its work unfinished.",
+    "artBrief": "A faceless corpse carrying one immense upright front door and a single brass knocker. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
+    "signature": {
+      "id": "last-knocker",
+      "behavior": "Knock three times before the door swings through a marked sector; the opposite sector remains open.",
+      "counterplay": "Follow the three visible knocks and move behind the hinge; attack during the open-door recovery.",
+      "parameters": {
+        "knocks": 3,
+        "knockSpacingSeconds": 0.65,
+        "swingDegrees": 100,
+        "swingSeconds": 1.4,
+        "warningSeconds": 1.8,
+        "recoverySeconds": 3.5,
+        "cycleSeconds": 11
+      }
+    },
+    "arenaIds": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "mechanics": {
+      "knocks": 3,
+      "knockSpacingSeconds": 0.65,
+      "swingDegrees": 100,
+      "swingSeconds": 1.4,
+      "warningSeconds": 1.8,
+      "recoverySeconds": 3.5,
+      "cycleSeconds": 11
+    },
+    "phases": [
+      {
+        "healthThreshold": 1,
+        "accordBreak": false,
+        "attacks": [
+          {
+            "kind": "fan",
+            "count": 16,
+            "speed": 145,
+            "damage": 12,
+            "interval": 7,
+            "telegraph": 1.4,
+            "arc": 150
+          },
+          {
+            "kind": "beam",
+            "count": 2,
+            "speed": 0,
+            "damage": 15,
+            "interval": 9,
+            "telegraph": 1.8,
+            "duration": 0.5,
+            "width": 24
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.75,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "fan",
+            "count": 18,
+            "speed": 157,
+            "damage": 12,
+            "interval": 6.3,
+            "telegraph": 1.4,
+            "arc": 150
+          },
+          {
+            "kind": "beam",
+            "count": 4,
+            "speed": 0,
+            "damage": 15,
+            "interval": 8.1,
+            "telegraph": 1.8,
+            "duration": 0.5,
+            "width": 24
+          }
+        ]
+      },
+      {
+        "healthThreshold": 0.4,
+        "accordBreak": true,
+        "attacks": [
+          {
+            "kind": "fan",
+            "count": 20,
+            "speed": 168,
+            "damage": 12,
+            "interval": 5.6,
+            "telegraph": 1.4,
+            "arc": 150
+          },
+          {
+            "kind": "beam",
+            "count": 6,
+            "speed": 0,
+            "damage": 15,
+            "interval": 7.2,
+            "telegraph": 1.8,
+            "duration": 0.5,
+            "width": 24
+          }
+        ]
+      }
+    ]
+  }
+]

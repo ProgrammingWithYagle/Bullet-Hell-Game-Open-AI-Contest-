@@ -1,0 +1,17 @@
+* text=auto
+.gitattributes text eol=lf
+.gitignore text eol=lf
+*.md text eol=lf
+*.mjs text eol=lf
+*.json text eol=lf
+*.ts text eol=lf
+*.py text eol=lf
+*.csv text eol=lf
+*.html text eol=lf
+*.yml text eol=lf
+*.png binary
+*.wav binary
+*.pdf binary
+*.zip binary
+# Preserve verbatim third-party license text, including upstream whitespace.
+docs/licenses/** -text -whitespace

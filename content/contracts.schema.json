@@ -1,0 +1,1042 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://grave-accord.invalid/contracts/v1",
+  "title": "Grave Accord versioned interface contracts",
+  "description": "Authored Stage 1 schemas. Runtime must use a strict validator plus semantic invariants; schema validation alone does not establish trusted combat results. Timings are seconds unless fields end in Ticks (30 Hz) or Ms.",
+  "$defs": {
+    "Vec2": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "x": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1600
+        },
+        "y": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1000
+        }
+      },
+      "required": [
+        "x",
+        "y"
+      ]
+    },
+    "RoomSettings": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": [
+            "short",
+            "standard",
+            "long",
+            "raid",
+            "endless"
+          ]
+        },
+        "difficulty": {
+          "type": "string",
+          "enum": [
+            "baby",
+            "easy",
+            "normal",
+            "hard",
+            "insane",
+            "hellish"
+          ]
+        },
+        "visibility": {
+          "type": "string",
+          "enum": [
+            "public",
+            "private"
+          ]
+        },
+        "ranked": {
+          "type": "boolean"
+        },
+        "seed": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295
+        },
+        "protocolVersion": {
+          "const": 1
+        },
+        "contentRevision": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "mode",
+        "difficulty",
+        "visibility",
+        "ranked",
+        "seed",
+        "protocolVersion",
+        "contentRevision"
+      ]
+    },
+    "PublicRoomSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "roomId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 48
+        },
+        "mode": {
+          "type": "string",
+          "enum": [
+            "short",
+            "standard",
+            "long",
+            "raid",
+            "endless"
+          ]
+        },
+        "difficulty": {
+          "type": "string",
+          "enum": [
+            "baby",
+            "easy",
+            "normal",
+            "hard",
+            "insane",
+            "hellish"
+          ]
+        },
+        "players": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 50
+        },
+        "maximumPlayers": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 50
+        },
+        "phase": {
+          "type": "string",
+          "enum": [
+            "lobby",
+            "combat",
+            "mutation-vote",
+            "boss-vote",
+            "shop",
+            "loading",
+            "victory",
+            "defeat"
+          ]
+        },
+        "capacity": {
+          "type": "string",
+          "enum": [
+            "available",
+            "reserved",
+            "queued",
+            "full"
+          ]
+        },
+        "protocolVersion": {
+          "const": 1
+        },
+        "contentRevision": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "roomId",
+        "name",
+        "mode",
+        "difficulty",
+        "players",
+        "maximumPlayers",
+        "phase",
+        "capacity",
+        "protocolVersion",
+        "contentRevision"
+      ]
+    },
+    "InputFrame": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sequence": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295
+        },
+        "clientTick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295
+        },
+        "moveX": {
+          "type": "number",
+          "minimum": -1,
+          "maximum": 1
+        },
+        "moveY": {
+          "type": "number",
+          "minimum": -1,
+          "maximum": 1
+        },
+        "aim": {
+          "type": "number",
+          "minimum": -3.141592653589793,
+          "maximum": 3.141592653589793
+        },
+        "fire": {
+          "type": "boolean"
+        },
+        "reload": {
+          "type": "boolean"
+        },
+        "dodge": {
+          "type": "boolean"
+        },
+        "q": {
+          "type": "boolean"
+        },
+        "e": {
+          "type": "boolean"
+        },
+        "ultimate": {
+          "type": "boolean"
+        },
+        "interact": {
+          "type": "boolean"
+        },
+        "supply": {
+          "type": "integer",
+          "minimum": -1,
+          "maximum": 2
+        }
+      },
+      "required": [
+        "sequence",
+        "clientTick",
+        "moveX",
+        "moveY",
+        "aim",
+        "fire",
+        "reload",
+        "dodge",
+        "q",
+        "e",
+        "ultimate",
+        "interact",
+        "supply"
+      ]
+    },
+    "Purchase": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "transactionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "itemId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "weapon",
+            "upgrade",
+            "supply",
+            "respec"
+          ]
+        },
+        "quantity": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2
+        }
+      },
+      "required": [
+        "transactionId",
+        "itemId",
+        "kind",
+        "quantity"
+      ]
+    },
+    "Vote": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "phaseSequence": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "choice": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2
+        }
+      },
+      "required": [
+        "phaseSequence",
+        "choice"
+      ]
+    },
+    "Build": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "classId": {
+          "type": "string",
+          "enum": [
+            "soldier",
+            "heavy",
+            "tank",
+            "medic",
+            "mage",
+            "engineer",
+            "assassin"
+          ]
+        },
+        "weaponId": {
+          "type": "string",
+          "enum": [
+            "soldier-0",
+            "soldier-1",
+            "soldier-2",
+            "soldier-3",
+            "heavy-0",
+            "heavy-1",
+            "heavy-2",
+            "heavy-3",
+            "tank-0",
+            "tank-1",
+            "tank-2",
+            "tank-3",
+            "medic-0",
+            "medic-1",
+            "medic-2",
+            "medic-3",
+            "mage-0",
+            "mage-1",
+            "mage-2",
+            "mage-3",
+            "engineer-0",
+            "engineer-1",
+            "engineer-2",
+            "engineer-3",
+            "assassin-0",
+            "assassin-1",
+            "assassin-2",
+            "assassin-3"
+          ]
+        },
+        "coins": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "skillPointsEarned": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 27
+        },
+        "skills": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "soldier-ballistics-1",
+              "soldier-ballistics-2",
+              "soldier-ballistics-3",
+              "soldier-ballistics-4",
+              "soldier-ballistics-5",
+              "soldier-ballistics-6",
+              "soldier-command-1",
+              "soldier-command-2",
+              "soldier-command-3",
+              "soldier-command-4",
+              "soldier-command-5",
+              "soldier-command-6",
+              "soldier-survival-1",
+              "soldier-survival-2",
+              "soldier-survival-3",
+              "soldier-survival-4",
+              "soldier-survival-5",
+              "soldier-survival-6",
+              "heavy-ordnance-1",
+              "heavy-ordnance-2",
+              "heavy-ordnance-3",
+              "heavy-ordnance-4",
+              "heavy-ordnance-5",
+              "heavy-ordnance-6",
+              "heavy-suppression-1",
+              "heavy-suppression-2",
+              "heavy-suppression-3",
+              "heavy-suppression-4",
+              "heavy-suppression-5",
+              "heavy-suppression-6",
+              "heavy-endurance-1",
+              "heavy-endurance-2",
+              "heavy-endurance-3",
+              "heavy-endurance-4",
+              "heavy-endurance-5",
+              "heavy-endurance-6",
+              "tank-breaching-1",
+              "tank-breaching-2",
+              "tank-breaching-3",
+              "tank-breaching-4",
+              "tank-breaching-5",
+              "tank-breaching-6",
+              "tank-protection-1",
+              "tank-protection-2",
+              "tank-protection-3",
+              "tank-protection-4",
+              "tank-protection-5",
+              "tank-protection-6",
+              "tank-bastion-1",
+              "tank-bastion-2",
+              "tank-bastion-3",
+              "tank-bastion-4",
+              "tank-bastion-5",
+              "tank-bastion-6",
+              "medic-chemistry-1",
+              "medic-chemistry-2",
+              "medic-chemistry-3",
+              "medic-chemistry-4",
+              "medic-chemistry-5",
+              "medic-chemistry-6",
+              "medic-triage-1",
+              "medic-triage-2",
+              "medic-triage-3",
+              "medic-triage-4",
+              "medic-triage-5",
+              "medic-triage-6",
+              "medic-recovery-1",
+              "medic-recovery-2",
+              "medic-recovery-3",
+              "medic-recovery-4",
+              "medic-recovery-5",
+              "medic-recovery-6",
+              "mage-hexcraft-1",
+              "mage-hexcraft-2",
+              "mage-hexcraft-3",
+              "mage-hexcraft-4",
+              "mage-hexcraft-5",
+              "mage-hexcraft-6",
+              "mage-control-1",
+              "mage-control-2",
+              "mage-control-3",
+              "mage-control-4",
+              "mage-control-5",
+              "mage-control-6",
+              "mage-warding-1",
+              "mage-warding-2",
+              "mage-warding-3",
+              "mage-warding-4",
+              "mage-warding-5",
+              "mage-warding-6",
+              "engineer-demolitions-1",
+              "engineer-demolitions-2",
+              "engineer-demolitions-3",
+              "engineer-demolitions-4",
+              "engineer-demolitions-5",
+              "engineer-demolitions-6",
+              "engineer-constructs-1",
+              "engineer-constructs-2",
+              "engineer-constructs-3",
+              "engineer-constructs-4",
+              "engineer-constructs-5",
+              "engineer-constructs-6",
+              "engineer-repair-1",
+              "engineer-repair-2",
+              "engineer-repair-3",
+              "engineer-repair-4",
+              "engineer-repair-5",
+              "engineer-repair-6",
+              "assassin-precision-1",
+              "assassin-precision-2",
+              "assassin-precision-3",
+              "assassin-precision-4",
+              "assassin-precision-5",
+              "assassin-precision-6",
+              "assassin-ambush-1",
+              "assassin-ambush-2",
+              "assassin-ambush-3",
+              "assassin-ambush-4",
+              "assassin-ambush-5",
+              "assassin-ambush-6",
+              "assassin-evasion-1",
+              "assassin-evasion-2",
+              "assassin-evasion-3",
+              "assassin-evasion-4",
+              "assassin-evasion-5",
+              "assassin-evasion-6"
+            ]
+          },
+          "maxItems": 18,
+          "uniqueItems": true
+        },
+        "upgrades": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "enum": [
+                  "damage",
+                  "fire-rate",
+                  "magazine",
+                  "reload",
+                  "health"
+                ]
+              },
+              "level": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 5
+              }
+            },
+            "required": [
+              "id",
+              "level"
+            ]
+          },
+          "maxItems": 5
+        },
+        "supplies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "enum": [
+                  "medkit",
+                  "adrenaline",
+                  "armor-plate",
+                  "antidote",
+                  "revive-kit",
+                  "barrier-charge",
+                  "ammo-pouch",
+                  "focus-tonic"
+                ]
+              },
+              "count": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 2
+              }
+            },
+            "required": [
+              "id",
+              "count"
+            ]
+          },
+          "maxItems": 3
+        }
+      },
+      "required": [
+        "classId",
+        "weaponId",
+        "coins",
+        "skillPointsEarned",
+        "skills",
+        "upgrades",
+        "supplies"
+      ]
+    },
+    "Participant": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "participantId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "displayName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 48
+        },
+        "build": {
+          "$ref": "#/$defs/Build"
+        },
+        "health": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1000
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "alive",
+            "downed",
+            "eliminated",
+            "departed"
+          ]
+        },
+        "ultimateCooldownSeconds": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 120
+        },
+        "masteryEarned": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100000000
+        }
+      },
+      "required": [
+        "participantId",
+        "displayName",
+        "build",
+        "health",
+        "state",
+        "ultimateCooldownSeconds",
+        "masteryEarned"
+      ]
+    },
+    "ActiveMutation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "enum": [
+            "glass-pact",
+            "borrowed-day",
+            "rationed-mercy",
+            "hot-iron",
+            "open-veins",
+            "heavy-oath",
+            "dead-calm",
+            "quick-blood",
+            "storm-tax",
+            "long-night",
+            "lifeline",
+            "thin-walls",
+            "steady-hands",
+            "deep-pockets",
+            "panic-drill",
+            "iron-rain",
+            "salt-circle",
+            "grave-interest",
+            "bitter-medicine",
+            "brass-halo",
+            "last-rites",
+            "mercury-hour",
+            "spare-parts",
+            "ash-tithe"
+          ]
+        },
+        "encountersRemaining": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3
+        }
+      },
+      "required": [
+        "id",
+        "encountersRemaining"
+      ]
+    },
+    "CheckpointV1": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "protocolVersion": {
+          "const": 1
+        },
+        "contentRevision": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "runId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "issuedAtMs": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "expiresAtMs": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "settings": {
+          "$ref": "#/$defs/RoomSettings"
+        },
+        "nextEncounter": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100000000
+        },
+        "accordBreaks": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "timeouts": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "bankedCampaignVictory": {
+          "type": "boolean"
+        },
+        "seedState": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295
+        },
+        "participants": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Participant"
+          },
+          "maxItems": 50
+        },
+        "mutations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ActiveMutation"
+          },
+          "maxItems": 3
+        },
+        "combatElapsedTicks": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "leaderboardEventSequence": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "rankedEligible": {
+          "type": "boolean"
+        },
+        "signature": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "protocolVersion",
+        "contentRevision",
+        "runId",
+        "sequence",
+        "issuedAtMs",
+        "expiresAtMs",
+        "settings",
+        "nextEncounter",
+        "accordBreaks",
+        "timeouts",
+        "bankedCampaignVictory",
+        "seedState",
+        "participants",
+        "mutations",
+        "combatElapsedTicks",
+        "leaderboardEventSequence",
+        "rankedEligible",
+        "signature"
+      ]
+    },
+    "ProfileV1": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "locale": {
+          "type": "string",
+          "enum": [
+            "en",
+            "zh-Hans",
+            "zh-Hant",
+            "ja",
+            "es",
+            "fr",
+            "de",
+            "pt-BR",
+            "ru",
+            "hi",
+            "ar",
+            "bn",
+            "id",
+            "ur",
+            "ko"
+          ]
+        },
+        "mastery": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "classId": {
+                "type": "string",
+                "enum": [
+                  "soldier",
+                  "heavy",
+                  "tank",
+                  "medic",
+                  "mage",
+                  "engineer",
+                  "assassin"
+                ]
+              },
+              "points": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100000000
+              }
+            },
+            "required": [
+              "classId",
+              "points"
+            ]
+          },
+          "maxItems": 7
+        },
+        "cosmetics": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          },
+          "maxItems": 256
+        },
+        "lore": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          },
+          "maxItems": 256
+        },
+        "unlockedDifficulties": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "baby",
+              "easy",
+              "normal",
+              "hard",
+              "insane",
+              "hellish"
+            ]
+          },
+          "maxItems": 6,
+          "uniqueItems": true
+        },
+        "settings": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "musicVolume": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "effectsVolume": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "masterVolume": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "textScale": {
+              "type": "number",
+              "minimum": 0.85,
+              "maximum": 1.5
+            },
+            "reducedMotion": {
+              "type": "boolean"
+            },
+            "reducedFlash": {
+              "type": "boolean"
+            },
+            "highContrast": {
+              "type": "boolean"
+            },
+            "autoFire": {
+              "type": "boolean"
+            },
+            "aimAssist": {
+              "type": "boolean"
+            },
+            "holdToInteract": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "musicVolume",
+            "effectsVolume",
+            "masterVolume",
+            "textScale",
+            "reducedMotion",
+            "reducedFlash",
+            "highContrast",
+            "autoFire",
+            "aimAssist",
+            "holdToInteract"
+          ]
+        },
+        "bindings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "type": "string",
+                "enum": [
+                  "up",
+                  "down",
+                  "left",
+                  "right",
+                  "fire",
+                  "reload",
+                  "dodge",
+                  "q",
+                  "e",
+                  "ultimate",
+                  "interact",
+                  "supply1",
+                  "supply2",
+                  "supply3",
+                  "pause"
+                ]
+              },
+              "code": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 32
+              }
+            },
+            "required": [
+              "action",
+              "code"
+            ]
+          },
+          "maxItems": 15
+        },
+        "localRecords": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "mode": {
+                "type": "string",
+                "enum": [
+                  "short",
+                  "standard",
+                  "long",
+                  "raid",
+                  "endless"
+                ]
+              },
+              "difficulty": {
+                "type": "string",
+                "enum": [
+                  "baby",
+                  "easy",
+                  "normal",
+                  "hard",
+                  "insane",
+                  "hellish"
+                ]
+              },
+              "bossesCleared": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "activeTicks": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "score": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 1000000
+              }
+            },
+            "required": [
+              "mode",
+              "difficulty",
+              "bossesCleared",
+              "activeTicks",
+              "score"
+            ]
+          },
+          "maxItems": 128
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "locale",
+        "mastery",
+        "cosmetics",
+        "lore",
+        "unlockedDifficulties",
+        "settings",
+        "bindings",
+        "localRecords"
+      ]
+    }
+  },
+  "semanticInvariants": [
+    "Normalize diagonal movement to length at most one; reject non-finite numbers before simulation.",
+    "Maximum client message 2048 bytes; input at most 60/s per peer, latest sequence only. Repeated violations disconnect with a localized reason.",
+    "Buy only during shop, compatible class, affordable exact server price, unique transaction ID; deduct once.",
+    "Skill costs and prerequisites are server-derived; earned SP <=27 and at most one capstone.",
+    "Profile imports cannot provide online unlock authority or run inventory. Unlocks affect matchmaking choices, not permanent combat power.",
+    "Checkpoint signature covers canonical complete payload excluding signature. Require content/protocol revision, 24h TTL and latest durable intermission claim.",
+    "Recovery can retain progress as practice after interrupted combat; never promote unverified client results to global rankings.",
+    "Private codes and reconnect/restore credentials are never public room-summary fields."
+  ]
+}

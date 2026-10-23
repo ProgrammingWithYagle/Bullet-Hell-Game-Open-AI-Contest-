@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "reviewer": "OpenAI assistant visual inspection",
+  "humanReviewPerformed": false,
+  "criteria": "docs/ART_READABILITY_CONTRACT.json",
+  "evidence": "reviews/clean-detail-scale-review.png",
+  "processing": "Uniform whole-sheet Lanczos resampling and alpha compositing onto quiet paper/dark grounds only; source illustrations are unchanged.",
+  "sources": [
+    {
+      "path": "assets/proofs/survivors-v3.png",
+      "sha256": "bf9cc0b3c15bfceb0cbe9658e17ca6fb18f59c023d479f0b0b75432f8f853967",
+      "reviewHeightsPixels": [56, 112],
+      "nativeInspected": true,
+      "passed": true,
+      "notes": "All seven silhouettes and class color masses remain distinct. Coat panels are calmer, with focal face, hand and weapon detail. This is a finish reference, not a new animation atlas."
+    },
+    {
+      "path": "assets/proofs/bosses-clean-detail-v2.png",
+      "sha256": "f7327b3dd308481452712129bfc03375d60ac63325dc68bfd8c5125b2e911f1b",
+      "reviewHeightsPixels": [150, 300],
+      "nativeInspected": true,
+      "passed": true,
+      "notes": "Six distinct props and silhouettes read on both grounds. The regenerated finish removes most random surface crackle while preserving detailed faces and signature props. Original intermediate version is retained as superseded."
+    }
+  ],
+  "limitations": [
+    "Only six representative bosses are illustrated in the new finish proof; sixty identities are authored in data.",
+    "Live hazard overlap, physical phone rendering and new animation finish review remain production gates.",
+    "The browser art-review page could not be opened because local browser use was disabled in Work settings. This review uses a local deterministic plate, not a browser capture."
+  ]
+}

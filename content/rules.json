@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "contentVersion": "0.2.0",
+  "protocolVersion": 1,
+  "simulationHz": 30,
+  "patchHz": 20,
+  "worldWidth": 1600,
+  "worldHeight": 1000,
+  "playerRadius": 9,
+  "bossRadius": 58,
+  "bulletRadius": 5,
+  "dodgeDuration": 0.22,
+  "dodgeInvulnerability": 0.16,
+  "dodgeSpeed": 800,
+  "dodgeCooldown": 3.5,
+  "reviveSeconds": 2,
+  "downedSeconds": 20,
+  "revivedHealthFraction": 0.5,
+  "soloSelfRevives": 1,
+  "reconnectSeconds": 60,
+  "checkpointLifetimeHours": 24,
+  "mutationVoteSeconds": 15,
+  "bossVoteSeconds": 15,
+  "shopSeconds": 25,
+  "deploymentSeconds": 5,
+  "mutationDurationEncounters": 3,
+  "mutationMaximumActive": 3,
+  "initialSkillPoints": 3,
+  "additionalCampaignSkillPoints": 24,
+  "skillDepthCosts": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "maximumActiveCapstones": 1,
+  "ultimate": {
+    "startsReady": true,
+    "combatTimeOnly": true,
+    "maximumCooldownReduction": 0.4,
+    "focusTonicAffectsUltimate": false,
+    "strongestIdenticalAuraOnly": true
+  },
+  "initialCoins": 120,
+  "nominalIncomeBeforeFinal": 2400,
+  "bossHealthBase": 1800,
+  "bossHealthThreatGrowth": 1.22,
+  "bossHealthAdditionalPlayer": 0.7,
+  "bossHealthTimerBaseline": 120,
+  "maximumHostileProjectiles": 4000,
+  "maximumMinions": 60,
+  "friendlyFire": false,
+  "playerCollision": false,
+  "healingAtEncounterStart": true,
+  "modifierLimits": {
+    "damage": [
+      0.35,
+      4
+    ],
+    "maxHealth": [
+      0.3,
+      2.5
+    ],
+    "fireRate": [
+      0.35,
+      2.5
+    ],
+    "moveSpeed": [
+      0.55,
+      1.65
+    ],
+    "reloadTime": [
+      0.4,
+      2
+    ],
+    "cooldown": [
+      0.4,
+      1.6
+    ],
+    "healing": [
+      0.3,
+      2
+    ],
+    "armor": [
+      0,
+      0.65
+    ],
+    "bossBulletCount": [
+      0.7,
+      2
+    ],
+    "bossSpeed": [
+      0.65,
+      1.6
+    ],
+    "bossHealth": [
+      0.6,
+      2.5
+    ],
+    "bossDamage": [
+      0.5,
+      2.5
+    ],
+    "coins": [
+      0.5,
+      4
+    ],
+    "timer": [
+      0.75,
+      1.25
+    ],
+    "barrierHealth": [
+      0.4,
+      2
+    ],
+    "spread": [
+      0.3,
+      1.75
+    ],
+    "magazine": [
+      0.5,
+      2
+    ],
+    "dodgeCooldown": [
+      0.4,
+      1.6
+    ],
+    "reviveTime": [
+      0.4,
+      1.6
+    ],
+    "abilityPotency": [
+      0.5,
+      2
+    ],
+    "extraShots": [
+      0,
+      3
+    ],
+    "startShield": [
+      0,
+      100
+    ]
+  },
+  "buildRating": {
+    "weights": {
+      "offense": 0.5,
+      "survival": 0.25,
+      "support": 0.25
+    },
+    "gradeGrowth": 1.1,
+    "scope": "Equipment and purchased build power, not player skill. Normalize each role against its own baseline."
+  },
+  "endless": {
+    "finalEncounter": null,
+    "fullBuildByEncounter": 10,
+    "cycleEncounters": 10,
+    "healthGrowthPerCycle": 0.15,
+    "damageGrowthPerCycle": 0.12,
+    "speedGrowthPerCycle": 0.025,
+    "maximumSpeedGrowth": 0.5,
+    "cappedPlayerPower": true,
+    "rewards": "Completed-encounter mastery, cosmetics and local streak records. Power purchases stop at their normal caps."
+  },
+  "secret": {
+    "minimumDifficulty": "normal",
+    "minimumAccordBreaks": 3,
+    "requireCampaignVictory": true,
+    "maximumTimeouts": 0,
+    "bankVictoryBeforeOffer": true
+  }
+}
