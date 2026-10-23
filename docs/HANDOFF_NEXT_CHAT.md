@@ -188,7 +188,7 @@ The analytical 16,716-row model passes for legal **normal** campaign/Raid founda
 - [ ] Implement the lifecycle/restore protocol from LEADERBOARDS.md: idempotent event IDs/payloads, HMAC over exact body bytes, nonce/time bounds, owner epochs/leases, atomic compare-and-set, stale/replayed/finalized-run rejection and bounded participant deltas.
 - [ ] Server secrets only; no credentials in source/browser/Electron/checkpoints/public JSON. Store actual values through approved native secret configuration, not a committed .env.
 - [ ] Offline/LAN/custom/unverified/practice labels; outage fallback, pending finalization retries and cache timestamps. Actual deployed write/read/restart/race evidence and separate private-room disclosure.
-- [ ] Free Render realtime service and approved free static/client/service host. Inspect allowances, sleeping/restarts and quota exposure. Sites/D1 design exists but no deployment is claimed. Do not switch stack/provider silently if tools are unavailable; document a concrete compatible path.
+- [ ] Free Render realtime service and approved free static/client/service host. Inspect allowances, sleeping/restarts and quota exposure. The Render/client Practice playtest is deployed; D1 deployment remains open. Do not switch stack/provider silently if tools are unavailable; document a concrete compatible path.
 
 ### Stage 2.5 verification
 
