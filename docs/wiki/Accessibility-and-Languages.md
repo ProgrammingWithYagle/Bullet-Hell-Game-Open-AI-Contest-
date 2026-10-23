@@ -9,7 +9,7 @@ These are the selected global-coverage launch locales, not a claim about one def
 
 ## Player experience
 
-- Language selection is available before joining and in settings, persists in ProfileV1, and changes without restarting the application.
+- Language selection is available before joining and in settings, persists locally in the current runtime (the full ProfileV1 system is pending), and changes without restarting the application.
 - Match browser locale on first launch; use zh-TW, zh-HK and zh-MO as Traditional Chinese, zh-CN and zh-SG as Simplified Chinese. Fall back to English for unsupported locales.
 - Localize menus, errors, tutorials, class and skill descriptions, weapons, supplies, mutations, boss mechanics, accessibility labels, endings, and release highlights.
 - Keep identifiers, protocol fields, saved content IDs, and the Grave Accord brand independent of display language.
@@ -30,7 +30,7 @@ These are the selected global-coverage launch locales, not a claim about one def
 
 ## Current state
 
-Requirements recorded. Runtime catalogs, font assets, and UI coverage are pending implementation.
+All fifteen AI-authored catalogs are bundled, with 1,489 keys each and 22,335 messages. Language selection/persistence, Intl formatting, RTL menus and self-hosted licensed Fontsource families are implemented. Earlier class-menu layouts were assistant-reviewed in all locales; complete current-font/scene shaping and physical-device checks remain open. No native-speaker certification is claimed.
 
 
 Additional options: remappable controls, touch/gamepad support, optional aim assistance and auto-fire, reduced effects and motion, text scaling, independent audio volume, and shape-based danger cues.

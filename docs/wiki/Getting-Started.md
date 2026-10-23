@@ -1,14 +1,31 @@
 # Getting started
 
-Status: preproduction. Playable download and hosted URL will be added only after release verification.
+[Open the development playtest](https://grave-accord-playtest.ivoryflame12.chatgpt.site/). No game account is required. The first-visit field guide has Skip and can be replayed from the menu.
 
-| Flow | Behavior |
+Choose New run, Soldier or Medic, Quarantine Run or Endless Vigil, Gatehouse, then a currently available difficulty. Other classes/maps/routes can be inspected but are marked In production. At Review, choose Offline solo, Public or Private, enter a display name and launch. The owner starts the encounter from the lobby. Join room supports public discovery or a private six-character code.
+
+The Free multiplayer service currently reserves at most eight slots and one room. It can sleep while idle; warmup may take time. The source includes queue position/cancellation and a 75-second warmup window. The browser deployment may lag the feature branch; exact frontend/backend identities are in the repository deployment evidence.
+
+## Controls
+
+| Action | Keyboard and mouse |
 | --- | --- |
-| Launch | Language choice and accessibility are available immediately. Start offline solo, browse public games, create private room, join by code, open codex or view changes. No account is required. |
-| Create | Choose mode, route when applicable, difficulty, public/private, nickname and class. Explain locked difficulties and public capacity before starting. |
-| Lobby | Show connected party, classes, readiness, mode, difficulty and room code where appropriate. Public listing data excludes private codes and recovery tokens. |
-| Combat | Top: boss health, phase and timer. Bottom: own health, ammo, dodge and abilities. Side: concise party state and pings. Accord Break prompts have clear progress and deadline. |
-| Intermission | Personal rewards, three mutation cards, three anonymous boss contracts, then class shop and skill tree. Timers are server-owned. Solo can confirm early; multiplayer advances early only when every eligible participant has confirmed. |
-| Defeat | Show the reason, completed contracts, personal and squad streaks, and next actions. Preserve earned mastery. Offer retry, return to lobby or exit. |
-| Victory | Bank rewards, show chapter ending and unlocked content, then offer the optional secret encounter if eligible. Other players may extract while willing players continue. |
-| Recovery | Show reconnecting status without freezing the whole room. After a restart, restore an unexpired signed intermission checkpoint with compatible protocol and content revision. |
+| Move | WASD or arrow keys |
+| Aim/fire | Pointer / primary button |
+| Dodge/reload | Space / R |
+| Starting abilities | Q and E |
+| Ultimate | X |
+| Revive nearby teammate | Hold F |
+| Use supply slots | 1, 2, 3 |
+
+Standard gamepad bindings: sticks move/aim, RT fire, A dodge, X reload, LB/RB abilities, Y ultimate, B revive, D-pad up/down/left supplies. Touch adapters provide movement/aim drags and action buttons. Actual physical controller/phone validation remains pending.
+
+After a non-final victory: fifteen-second mutation vote, fifteen-second concealed contract vote, twenty-five-second shop/skill window and five-second deployment. Shops enforce class, currency, prerequisites and the single-capstone rule. Three inventory slots carry up to two of each selected supply. Votes and purchases are authoritative online.
+
+Any teammate can channel a two-second revive during a twenty-second downed window. Solo has one self-revive per encounter. Eliminated participants return at the next encounter. A whole incapacitated party or expired boss deadline ends the run. The prototype's five-fight completion and Endless repetitions use Constable variants, not the complete sixty-boss roster.
+
+Offline solo runs the shared simulation in a worker. Compatible lobby/intermission saves preserve the build and offered choices; interrupted offline combat resumes from the prior boundary. Online has sixty-second reconnect reservations while the process survives. Server-process restart recovery and global rankings are not live yet.
+
+## Run from source
+
+Install Node 24 and pnpm 11.25.0. In the existing source folder, run pnpm install --frozen-lockfile and pnpm verify. Run pnpm dev and pnpm server in separate terminals, then open http://localhost:5173/. The normal service binds loopback port 2567. Offline solo needs no multiplayer server. Portable Windows/offline/LAN packaging is still pending.

@@ -1,6 +1,6 @@
 # Bosses
 
-Sixty identities are authored: fifty in separate timed-route pools, nine exclusive to Endless and The Uncounted. The original eleven-boss sheet is an early identity proof. See [Gauntlets](Gauntlets) for route ownership and production gates. Gameplay implementation is pending.
+Sixty identities are authored: fifty in separate timed-route pools, nine exclusive to Endless and The Uncounted. The original eleven-boss sheet is an early identity proof. See [Gauntlets](Gauntlets) for route ownership and production gates. Hollow Constable executes gameplay, including later-phase crossing volleys/gapped rings and a four-phase Brutal variant. The other identities and their complete signatures remain In production.
 
 Contract cards show threat, bounty and recommended build strength, never the next boss identity.
 

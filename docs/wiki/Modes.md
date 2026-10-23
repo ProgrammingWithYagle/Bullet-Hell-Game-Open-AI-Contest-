@@ -1,5 +1,7 @@
 # Modes and endless play
 
+The table describes the full authored target. The current prototype offers five-fight Quarantine Practice and uncapped Endless using Constable variants; the official Free service is capped at eight slots. The other routes and Raid are In production.
+
 | Mode | Players | Encounters | Minutes |
 | --- | --- | --- | --- |
 | Quarantine Run | 1-8 | 5 | 10-20 |

@@ -275,3 +275,9 @@ This handoff and IMPLEMENTATION_STATE.md take precedence over stale implementati
 - `reviews/runtime-verification.json` limitations still use a broad “browser review pending” phrase; historical UI reviews exist, latest visual changes remain unreviewed. This is a wording cleanup, not evidence to fabricate.
 
 The human explicitly wants context and all unfinished work preserved for a new chat. Do not spend the new chat replanning the full project, requesting implementation authorization again, or treating a chat change as losing the saved source. Resume the concrete gate work above.
+
+## Gameplay service update — 2026-10-23
+
+The user confirmed Render “My Workspace” (tea-d574jver433s73eg4mhg) for the existing service. This workspace context remains authorized for continuing the same approved service work; pass it explicitly rather than asking again. Deployment dep-dbdrquom7kps73bg2l7g is live at source dfade8834e81cfd324eeb124d22ec3b7bd68c245. Both GitHub verify checks pass. Render remains Free/Ohio/auto-deploy Off/eight slots/one room. Actual hosted SDK verification passed public eight-slot discovery and private-code delivery/two-person join with private discovery exclusion. All test slots/rooms were released. App error logs for the checked deployment window were empty. See reviews/hosting/render-update-dfade88.json and hosted-ready-handshake-dfade88.json.
+
+The frontend still serves source 33b36bc. The recovery components are not wired into GraveRoom, so the update does not enable live recovery/rankings. The current Sites connector cannot access the saved Site; the user is checking the existing Site in the signed-in Sites list. Do not describe reconnecting as a confirmed fix or invent a reconnect button. Browser control and Sites access remain concrete blockers for the corresponding first-loop gates.
