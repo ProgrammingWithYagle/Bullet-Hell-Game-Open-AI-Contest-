@@ -158,14 +158,26 @@ async function begin(
         if (controls.blocked) controls.clear();
       }
     };
+    active.onCheckpointStatus = (status) => {
+      const element = $('checkpoint-notice');
+      if (element)
+        element.textContent =
+          status === 'pending'
+            ? t('ui.checkpointSaving')
+            : status === 'unavailable'
+              ? t('ui.checkpointUnavailable')
+              : '';
+    };
     active.onPurchase = (r) => {
       if (!r.ok) {
         $('status').textContent = t(
-          r.reason === 'insufficientCoins'
-            ? 'ui.notEnoughCoins'
-            : r.reason === 'inventoryFull'
-              ? 'ui.inventoryFull'
-              : 'ui.errorPurchase',
+          r.reason === 'checkpointPending'
+            ? 'ui.checkpointSaving'
+            : r.reason === 'insufficientCoins'
+              ? 'ui.notEnoughCoins'
+              : r.reason === 'inventoryFull'
+                ? 'ui.inventoryFull'
+                : 'ui.errorPurchase',
         );
       } else void audio.sound('ui-confirm');
     };
@@ -205,6 +217,10 @@ function setupGame(online: boolean) {
   prediction = new Prediction();
   app.innerHTML = `<div id="stage" dir="ltr"></div><section class="hud" aria-label="${text('ui.health')}"><div class="topline"><div><strong id="encounter"></strong><small id="status" role="status"></small></div><div id="boss-panel"><strong>${text('boss.constable.name')}</strong><span id="deadline"></span><progress id="boss-health" max="1" value="1" aria-label="${text('ui.boss')}"></progress></div><button id="pause-button">Ⅱ <span>${text('ui.pause')}</span></button></div><div id="accord" class="accord" hidden></div><div class="bottomline"><div class="vitals"><strong id="player-name"></strong><progress id="health" max="1" value="1" aria-label="${text('ui.health')}"></progress><span id="health-text"></span><span id="ammo"></span><span id="currency"></span></div><div id="abilities" class="ability-list"></div><div id="squad" class="squad"></div></div></section><div id="modal" class="overlay" hidden></div><div id="pause-menu" class="overlay" hidden><section class="dialog"><h2>${text('ui.paused')}</h2><p>${text(online ? 'ui.onlinePause' : 'ui.offlineNotice')}</p>${settingsMarkup()}<div class="actions"><button id="resume" class="primary">${text('ui.continue')}</button><button id="leave">${text('ui.leaveRoom')}</button></div></section></div><div class="touch-buttons"><button data-action="Space">${text('ui.dodge')}</button><button data-action="KeyQ">Q</button><button data-action="KeyE">E</button><button data-action="KeyX">${text('ui.ultimate')}</button><button data-action="interact">${text('ui.revive')}</button><button data-action="KeyR">${text('ui.reload')}</button></div><div class="portrait-note">${text('ui.portraitHint')}</div>`;
   const supplyBar = document.createElement('div');
+  const checkpointNotice = document.createElement('small');
+  checkpointNotice.id = 'checkpoint-notice';
+  checkpointNotice.setAttribute('role', 'status');
+  $('status').after(checkpointNotice);
   supplyBar.id = 'supply-bar';
   supplyBar.className = 'supply-bar';
   supplyBar.setAttribute('aria-label', t('ui.supplies'));
@@ -268,7 +284,9 @@ function update(view: View) {
     view.phase !== 'combat' ||
     session.status === 'ui.reconnecting' ||
     session.status === 'ui.errorNetwork';
-  $('encounter').textContent = t('ui.encounter', { number: view.encounter + 1 });
+  $('encounter').textContent = t('ui.encounter', {
+    number: view.encounter + 1,
+  });
   $('player-name').textContent =
     p.name +
     ' · ' +
@@ -369,7 +387,9 @@ function update(view: View) {
     (session.code ? ' · ' + t('ui.roomCode') + ' ' + session.code : '');
   if (p.status === 'downed')
     $('status').textContent =
-      t('ui.bleedout', { seconds: Math.max(0, Math.ceil((p.downUntil - view.combatTick) / 30)) }) +
+      t('ui.bleedout', {
+        seconds: Math.max(0, Math.ceil((p.downUntil - view.combatTick) / 30)),
+      }) +
       ' · ' +
       t('ui.revivePrompt', { binding: 'F / B', player: p.name });
   else if (p.status === 'waiting') $('status').textContent = t('ui.lateJoin');

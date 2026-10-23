@@ -12,7 +12,7 @@ Public discovery/private codes, sixty-second reconnect reservations and boundary
 
 ## Current evidence
 
-- reviews/runtime-verification.json: 68 meaningful tests, strict TypeScript, content/15-locale validation and production build; exact source digest and output hashes. Automated checks do not establish art quality, physical input or human playtesting.
+- reviews/runtime-verification.json: 74 meaningful tests, strict TypeScript, content/15-locale validation and production build; exact source digest and output hashes. Automated checks do not establish art quality, physical input or human playtesting.
 - tests/network.test.ts: actual local SDK/WebSockets for protocol rejection, rooms/privacy, owner changes, duplicate purchases, reconnect, replicated supplies and queue cancellation/admission.
 - tests/supplies.test.ts: all eight actual item effects, no-waste checks, transient shields/barriers, cooldown and fixed-slot limits.
 - tests/signed-boundary.test.ts and tests/run-store.test.ts: signed multiplayer state and actual local SQLite transactions, competing claims, idempotence, stale writes, finalized rejection and Practice downgrade. These are not deployed recovery or D1 evidence.
@@ -37,6 +37,6 @@ Evidence: reviews/performance/local-49-plus-rendered-server-protocol4-bounds.jso
 
 https://grave-accord-playtest.ivoryflame12.chatgpt.site/ is the published anonymous two-class Practice playtest. The current recorded browser/backend deployment is 33b36bc; read deployment evidence for the exact identity. The official Free host is capped at eight slots/one room. This is partial browser publication, not a Windows/full-game release. Actual assistant browser interaction and public HTTP/artifact evidence are under reviews/hosting/.
 
-The source adds accurate eight-slot production copy, online Practice copy and a ready-only private-code/bootstrap handshake; the new real-network test confirms a guest can join by the delivered code. tests/run-service.test.ts and run-journal.test.ts exercise authenticated HTTP, durable nonce replay rejection, response-loss retry, thirty-second lease renewal, separate-process SQLite restart, competing claims and interrupted-combat Practice recovery. These components are not yet connected to public room recovery/D1/rankings. See RECOVERY_IMPLEMENTATION.md.
+The source adds accurate eight-slot production copy, online Practice copy and a ready-only private-code/bootstrap handshake; the new real-network test confirms a guest can join by the delivered code. tests/run-service.test.ts and run-journal.test.ts exercise authenticated HTTP, durable nonce replay rejection, response-loss retry, thirty-second lease renewal, separate-process SQLite restart, competing claims and interrupted-combat Practice recovery. A server-only factory now connects journal acknowledgements to room transitions; normal/public execution leaves it disabled, and participant recovery/D1/rankings remain unfinished. See RECOVERY_IMPLEMENTATION.md.
 
 The latest supported browser control retry fails with disabled in Work settings, even though the user can open localhost:5173. Current source/UI changes after the recorded live build are not rendered-browser-verified. Native Sites access to the saved ID currently fails too; keep the existing Site and audience. No new foreground/device/full-scene pass is claimed.

@@ -4,6 +4,8 @@ export const CONTENT_REVISION = revision.sha256;
 export const HZ = 30,
   DT = 1 / HZ;
 export type ClassId = 'soldier' | 'medic';
+export type CheckpointStatus =
+  'disabled' | 'pending' | 'acknowledged' | 'unavailable' | 'finalized';
 export type Phase =
   'lobby' | 'combat' | 'mutationVote' | 'contractVote' | 'shop' | 'loading' | 'victory' | 'defeat';
 export type InputFrame = {
@@ -57,7 +59,11 @@ export function validInput(x: unknown): x is InputFrame {
     Number(p.supply) <= 2
   );
 }
-export type Command = { id: string; kind: 'weapon' | 'upgrade' | 'skill' | 'supply'; item: string };
+export type Command = {
+  id: string;
+  kind: 'weapon' | 'upgrade' | 'skill' | 'supply';
+  item: string;
+};
 export type SupplySlot = { id: string; count: number };
 export function validCommand(x: unknown): x is Command {
   if (!x || typeof x !== 'object' || Array.isArray(x)) return false;

@@ -5,7 +5,8 @@ import { pathToFileURL } from 'node:url';
 import { GraveRoom, privateRooms, liveRooms } from './GraveRoom.ts';
 import { capacity } from './capacity.ts';
 import { CONTENT_REVISION, PROTOCOL } from '../shared/protocol.ts';
-export function createGameServer() {
+import type { RunJournal } from './run-journal.ts';
+export function createGameServer(options: { createRunJournal?: () => RunJournal } = {}) {
   const startedAt = new Date().toISOString();
   const origins = new Set(
     (process.env.CLIENT_ORIGINS ?? 'http://localhost:5173,http://127.0.0.1:5173')
@@ -181,7 +182,14 @@ export function createGameServer() {
       });
     },
   });
-  server.define('grave', GraveRoom).filterBy(['mode', 'difficulty', 'contentRevision']);
+  const ServerRoom = options.createRunJournal
+    ? class extends GraveRoom {
+        protected override createRunJournal() {
+          return options.createRunJournal!();
+        }
+      }
+    : GraveRoom;
+  server.define('grave', ServerRoom).filterBy(['mode', 'difficulty', 'contentRevision']);
   return { server, httpServer };
 }
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {

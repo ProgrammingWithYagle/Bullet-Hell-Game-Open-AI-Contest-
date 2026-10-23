@@ -8,6 +8,7 @@ import {
   type Command,
   type Event,
   type Phase,
+  type CheckpointStatus,
 } from '../shared/protocol.ts';
 import type { View, PlayerView } from '../shared/view.ts';
 import { savedBoundary, storeBoundary } from './storage.ts';
@@ -34,6 +35,7 @@ export class Session {
   online = false;
   status = '';
   queuePosition = 0;
+  checkpointStatus: CheckpointStatus = 'disabled';
   private admissionId = '';
   worker?: Worker;
   room?: Room<WorldState>;
@@ -43,6 +45,7 @@ export class Session {
   onEvents: (events: Event[]) => void = () => {};
   onStatus: (key: string) => void = () => {};
   onPurchase: (result: { ok: boolean; reason?: string }) => void = () => {};
+  onCheckpointStatus: (status: CheckpointStatus) => void = () => {};
   constructor(
     readonly endpoint = import.meta.env?.VITE_GAME_SERVER ??
       (import.meta.env?.PROD ? productionGameServer : 'http://localhost:2567'),
@@ -198,10 +201,12 @@ export class Session {
     this.id = room.sessionId;
     // Own the retry lifetime so leaving during a retry cannot reopen an old session.
     room.reconnection.enabled = false;
-    room.onMessage('welcome', (m: { code: string }) => {
+    room.onMessage('welcome', (m: { code: string; checkpointStatus?: CheckpointStatus }) => {
       this.code = m.code;
+      this.receiveCheckpointStatus(m.checkpointStatus);
       this.notify('ui.ready');
     });
+    room.onMessage('checkpointStatus', (m) => this.receiveCheckpointStatus(m?.status));
     room.onMessage('events', (events: Event[]) => this.onEvents(events));
     room.onMessage('purchaseResult', (r) => this.onPurchase(r));
     room.onStateChange((state) => this.receive(networkView(state)));
@@ -248,6 +253,16 @@ export class Session {
     if (this.closed) return;
     this.view = view;
     this.onView(view);
+  }
+  private receiveCheckpointStatus(status: unknown) {
+    if (
+      this.closed ||
+      typeof status !== 'string' ||
+      !['disabled', 'pending', 'acknowledged', 'unavailable', 'finalized'].includes(status)
+    )
+      return;
+    this.checkpointStatus = status as CheckpointStatus;
+    this.onCheckpointStatus(this.checkpointStatus);
   }
   input(input: InputFrame) {
     if (this.online) {

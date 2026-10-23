@@ -9,6 +9,7 @@ import { interfaceMessages } from '../locales/source/interface-expansion.mjs';
 import { contractMessages } from '../locales/source/contract-ui.mjs';
 import { suppliesMessages } from '../locales/source/supplies-ui.mjs';
 import { capacityMessages, playtestMessages } from '../locales/source/capacity-ui.mjs';
+import { recoveryMessages } from '../locales/source/recovery-ui.mjs';
 
 const defaultRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 export const launchLocales = ['en','zh-Hans','zh-Hant','ja','es','fr','de','pt-BR','ru','hi','ar','bn','id','ur','ko'];
@@ -86,6 +87,7 @@ export function validateOne(document, canonical, content, locale) {
       ...Object.keys(suppliesMessages('en')),
       ...Object.keys(capacityMessages('en')),
       ...Object.keys(playtestMessages('en')),
+      ...Object.keys(recoveryMessages('en')),
       ...content.skills.filter(x=>x.sourceSkillId&&x.sourceSkillId!==x.id).map(x=>`skill.${x.id}.name`),
       ...['players','encounters','seconds'].map(k=>`count.${k}`),
       ...['weapons','skills','mutations','upgrades'].flatMap(group=>{
@@ -105,6 +107,9 @@ export function validateOne(document, canonical, content, locale) {
   }
   const expectedCategories = new Intl.PluralRules(locale).resolvedOptions().pluralCategories.slice().sort();
   const expandedSource = expansionMessages(locale);
+  for (const [key,text] of Object.entries(recoveryMessages(locale))) {
+    if (messages[key] !== text) fail(`recovery UI source mismatch at ${key}`);
+  }
   for (const [key,text] of Object.entries(expandedSource)) {
     if (messages[key] !== text) fail(`boss expansion source mismatch at ${key}`);
   }
