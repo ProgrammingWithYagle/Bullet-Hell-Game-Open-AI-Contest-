@@ -1,5 +1,5 @@
 import type { Game } from './game.ts';
-import type { ClassId, Phase, Warning, Field, Contract } from './protocol.ts';
+import type { ClassId, Phase, Warning, Field, Contract, SupplySlot } from './protocol.ts';
 export type PlayerView = {
   id: string;
   name: string;
@@ -27,6 +27,8 @@ export type PlayerView = {
   weapon: string;
   skills: string[];
   upgrades: Record<string, number>;
+  supplies: SupplySlot[];
+  supplyAt: number;
   speed: number;
   dashUntil: number;
   dashX: number;
@@ -43,6 +45,7 @@ export type View = {
   owner: string;
   players: PlayerView[];
   boss: {
+    variant: 'normal' | 'brutal';
     x: number;
     y: number;
     health: number;
@@ -77,7 +80,7 @@ export function viewOf(g: Game, owner: string): View {
       aim: p.aim,
       health: p.health,
       maxHealth: p.maxHealth,
-      shield: p.shield,
+      shield: p.shield + (g.combatTick < p.supplyShieldUntil ? p.supplyShield : 0),
       status: p.status,
       connected: p.connected,
       ack: p.ack,
@@ -95,7 +98,9 @@ export function viewOf(g: Game, owner: string): View {
       weapon: p.weapon,
       skills: [...p.skills],
       upgrades: { ...p.upgrades },
-      speed: g.stats(p).speed,
+      supplies: p.supplies.map((s) => ({ ...s })),
+      supplyAt: p.supplyAt,
+      speed: g.movementSpeed(p),
       dashUntil: p.dashUntil,
       dashX: p.dashX,
       dashY: p.dashY,

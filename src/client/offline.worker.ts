@@ -5,14 +5,39 @@ let game: Game | null = null,
   paused = false,
   last = performance.now(),
   accumulator = 0;
-const emit = () => {
+let lastSavedPhase = '',
+  lastSavedTick = -1000;
+const emit = (force = false) => {
   if (!game) return;
   postMessage({ type: 'view', view: viewOf(game, 'solo') });
   const events = game.drainEvents();
   if (events.length) postMessage({ type: 'events', events });
+  if (['victory', 'defeat'].includes(game.phase)) {
+    if (lastSavedPhase !== game.phase) postMessage({ type: 'checkpoint', value: null });
+    lastSavedPhase = game.phase;
+  } else if (
+    game.phase !== 'combat' &&
+    (force || game.phase !== lastSavedPhase || game.tick - lastSavedTick >= 30)
+  ) {
+    postMessage({ type: 'checkpoint', value: game.offlineCheckpoint() });
+    lastSavedPhase = game.phase;
+    lastSavedTick = game.tick;
+  }
 };
 self.onmessage = (e: MessageEvent) => {
   const m = e.data;
+  if (m.type === 'resume') {
+    try {
+      game = Game.restoreOffline(m.value);
+      paused = false;
+      last = performance.now();
+      accumulator = 0;
+      emit(true);
+    } catch {
+      postMessage({ type: 'error', key: 'ui.errorCheckpoint' });
+      return;
+    }
+  }
   if (m.type === 'init') {
     game = new Game(m.settings as Settings);
     game.addPlayer('solo', m.name, m.classId as ClassId);
@@ -26,10 +51,12 @@ self.onmessage = (e: MessageEvent) => {
   else if (m.type === 'start') {
     game.start();
     emit();
-  } else if (m.type === 'vote') game.vote('solo', m.index);
-  else if (m.type === 'purchase') {
+  } else if (m.type === 'vote') {
+    game.vote('solo', m.index);
+    emit(true);
+  } else if (m.type === 'purchase') {
     postMessage({ type: 'purchaseResult', id: m.request.id, ...game.transact('solo', m.request) });
-    emit();
+    emit(true);
   } else if (m.type === 'pause') {
     paused = Boolean(m.value);
     last = performance.now();

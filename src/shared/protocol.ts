@@ -1,5 +1,5 @@
 import revision from '../../content/revision.json' with { type: 'json' };
-export const PROTOCOL = 1;
+export const PROTOCOL = 4;
 export const CONTENT_REVISION = revision.sha256;
 export const HZ = 30,
   DT = 1 / HZ;
@@ -57,7 +57,8 @@ export function validInput(x: unknown): x is InputFrame {
     Number(p.supply) <= 2
   );
 }
-export type Command = { id: string; kind: 'weapon' | 'upgrade' | 'skill'; item: string };
+export type Command = { id: string; kind: 'weapon' | 'upgrade' | 'skill' | 'supply'; item: string };
+export type SupplySlot = { id: string; count: number };
 export function validCommand(x: unknown): x is Command {
   if (!x || typeof x !== 'object' || Array.isArray(x)) return false;
   const p = x as Command;
@@ -65,7 +66,7 @@ export function validCommand(x: unknown): x is Command {
     Object.keys(p).length === 3 &&
     typeof p.id === 'string' &&
     /^[a-zA-Z0-9_-]{1,64}$/.test(p.id) &&
-    ['weapon', 'upgrade', 'skill'].includes(p.kind) &&
+    ['weapon', 'upgrade', 'skill', 'supply'].includes(p.kind) &&
     typeof p.item === 'string' &&
     /^[a-z0-9-]{1,64}$/.test(p.item)
   );
@@ -85,7 +86,7 @@ export type Shot = {
 };
 export type Warning = {
   id: number;
-  kind: 'fan' | 'zone';
+  kind: 'fan' | 'ring' | 'zone';
   x: number;
   y: number;
   aim: number;
@@ -100,7 +101,7 @@ export type Warning = {
 export type Field = {
   id: number;
   owner: string;
-  kind: 'rally' | 'heal' | 'zone';
+  kind: 'rally' | 'heal' | 'zone' | 'barrier';
   x: number;
   y: number;
   radius: number;
@@ -119,5 +120,6 @@ export type Contract = {
   risk: number;
   bounty: number;
   recommendedRating: number;
+  variant?: 'normal' | 'brutal';
 };
 export type Result = { ok: boolean; reason?: string };

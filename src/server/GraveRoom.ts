@@ -1,10 +1,13 @@
 import { Room, ServerError, type Client, type ISendOptions } from '@colyseus/core';
 import { randomBytes } from 'node:crypto';
 import { performance } from 'node:perf_hooks';
+import { Encoder } from '@colyseus/schema';
 import { Game, type Settings } from '../shared/game.ts';
 import { CONTENT_REVISION, PROTOCOL, type ClassId, type Event } from '../shared/protocol.ts';
 import { WorldState, PlayerState } from '../shared/network-state.ts';
 import { capacity } from './capacity.ts';
+// Bounded fifty-player builds can exceed Schema's 8 KiB initial encode buffer.
+Encoder.BUFFER_SIZE = 64 * 1024;
 type Metadata = {
   mode: string;
   difficulty: string;
@@ -22,6 +25,7 @@ type Options = {
   code?: string;
   name: string;
   classId: ClassId;
+  admissionId?: string;
 };
 export const privateRooms = new Map<string, string>();
 export const liveRooms = new Map<string, GraveRoom>();
@@ -54,7 +58,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
     if (typeof options.createKey !== 'string' || !/^[a-f0-9-]{36}$/.test(options.createKey))
       throw new ServerError(400, 'invalidCreateKey');
     try {
-      capacity.addRoom(this.roomId);
+      capacity.addRoom(this.roomId, options.admissionId);
     } catch {
       throw new ServerError(503, 'capacity');
     }
@@ -139,7 +143,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
   }
   onJoin(client: Client, options: Options) {
     try {
-      capacity.reserve(client.sessionId);
+      capacity.reserve(client.sessionId, options.admissionId);
       this.game.addPlayer(client.sessionId, options.name, options.classId);
     } catch (error) {
       capacity.release(client.sessionId);
@@ -262,6 +266,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
     s.bossHealth = Math.max(0, g.boss.health);
     s.bossMaxHealth = g.boss.maxHealth;
     s.bossPhase = g.boss.phase;
+    s.bossVariant = g.boss.variant;
     s.threat = g.boss.threat;
     s.deadline = g.boss.deadline;
     s.staggerUntil = g.boss.staggerUntil;
@@ -279,7 +284,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       view.aim = Math.round(p.aim * 1000);
       view.health = Math.round(p.health * 10) / 10;
       view.maxHealth = Math.ceil(p.maxHealth);
-      view.shield = Math.ceil(p.shield);
+      view.shield = Math.ceil(p.shield + (g.combatTick < p.supplyShieldUntil ? p.supplyShield : 0));
       view.status = p.status;
       view.connected = p.connected;
       view.ack = p.ack;
@@ -291,11 +296,17 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       view.ultimateAt = p.ultimateAt;
       view.dodgeAt = p.dodgeAt;
       view.reloadAt = p.reloadAt;
+      view.supplyAt = p.supplyAt;
       view.downUntil = p.downUntil;
       view.reviveProgress = Math.floor(p.reviveProgress);
       view.reviveTarget = p.reviveTarget;
-      view.build = JSON.stringify({ weapon: p.weapon, skills: p.skills, upgrades: p.upgrades });
-      view.speed = g.stats(p).speed;
+      view.build = JSON.stringify({
+        weapon: p.weapon,
+        skills: p.skills,
+        upgrades: p.upgrades,
+        supplies: p.supplies,
+      });
+      view.speed = g.movementSpeed(p);
       view.dashUntil = p.dashUntil;
       view.dashX = p.dashX;
       view.dashY = p.dashY;

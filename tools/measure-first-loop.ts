@@ -1,5 +1,5 @@
 // Local synthetic pilot; this does not establish rendered FPS or free-host capacity.
-import { writeFileSync, mkdirSync } from 'node:fs';
+import { writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { cpus, totalmem, platform } from 'node:os';
 import { performance, monitorEventLoopDelay } from 'node:perf_hooks';
 import { randomUUID } from 'node:crypto';
@@ -10,6 +10,10 @@ import { WorldState } from '../src/shared/network-state.ts';
 import { CONTENT_REVISION, PROTOCOL, idleInput } from '../src/shared/protocol.ts';
 const players = Number(process.argv[2] ?? 50),
   seconds = Number(process.argv[3] ?? 10);
+const output =
+  process.argv[4] ?? 'reviews/performance/local-' + players + '-pilot-' + Date.now() + '.json';
+if (!/^reviews\/performance\/[a-z0-9-]+\.json$/.test(output) || existsSync(output))
+  throw Error('Choose a new JSON filename under reviews/performance; prior evidence is preserved.');
 if (![8, 16, 50].includes(players) || seconds < 5 || seconds > 120)
   throw Error('Use 8, 16 or 50 players and 5-120 seconds per measured phase');
 const { server, httpServer } = createGameServer(),
@@ -193,10 +197,7 @@ try {
     ],
   };
   mkdirSync('reviews/performance', { recursive: true });
-  writeFileSync(
-    'reviews/performance/local-' + players + '-pilot.json',
-    JSON.stringify(report, null, 2) + '\n',
-  );
+  writeFileSync(output, JSON.stringify(report, null, 2) + '\n');
   console.log(
     JSON.stringify({
       players,

@@ -31,6 +31,90 @@ const register = (r: Room<WorldState>) => {
   return r;
 };
 
+test(
+  'real client supply state and capacity queue admit one slot, support cancellation and never reopen a closed session',
+  { timeout: 20000 },
+  async () => {
+    const { server, httpServer } = createGameServer();
+    await server.listen(0, '127.0.0.1');
+    const address = httpServer.address();
+    assert(address && typeof address === 'object');
+    const base = 'http://127.0.0.1:' + address.port;
+    const owner = new Session(base),
+      cancelled = new Session(base),
+      guest = new Session(base);
+    const fixtures: string[] = [];
+    const opts = {
+      name: 'Mara',
+      classId: 'soldier' as const,
+      mode: 'short' as const,
+      difficulty: 'normal',
+    };
+    try {
+      await owner.connect(opts);
+      const healthIdentity = await (await fetch(base + '/api/health')).json();
+      assert.equal(healthIdentity.protocolVersion, PROTOCOL);
+      assert.equal(healthIdentity.practiceOnly, true);
+      const metrics = await (await fetch(base + '/api/metrics')).json();
+      assert.equal(metrics.protocolVersion, PROTOCOL);
+      assert.equal(metrics.connections, 1);
+      assert.equal(metrics.rooms, 1);
+      assert.equal('roomId' in metrics, false);
+      assert.equal('name' in metrics, false);
+      await until(() => Boolean(owner.view?.players.length));
+      const live = liveRooms.get(owner.room!.roomId)!,
+        p = live.game.players.get(owner.id)!;
+      p.coins = 300;
+      const command = { id: 'supply-network', kind: 'supply', item: 'medkit' };
+      owner.room!.send('purchase', command);
+      owner.room!.send('purchase', command);
+      await until(() => owner.view?.players[0]?.supplies[0]?.count === 1);
+      assert.equal(p.coins, 210);
+      assert.equal(p.supplies[0].count, 1);
+      owner.start();
+      await until(() => owner.view?.phase === 'combat');
+      p.health = 10;
+      p.invulnerableUntil = 1e9;
+      owner.input({ ...idleInput(), sequence: 1, supply: 0 });
+      await until(() => owner.view?.players[0]?.supplies[0]?.count === 0);
+      assert.equal(p.health, 55);
+      assert.equal(p.supplies[0].id, '');
+      while (capacity.slots.size < capacity.limit) {
+        const id = 'queue-fixture-' + fixtures.length;
+        fixtures.push(id);
+        capacity.reserve(id);
+      }
+      const statuses: string[] = [];
+      cancelled.onStatus = (key) => statuses.push(key);
+      const cancelledJoin = cancelled.connect(opts);
+      const rejected = assert.rejects(cancelledJoin, /ui.errorCapacity/);
+      await until(() => statuses.includes('ui.waitingCapacity'));
+      assert.equal(cancelled.queuePosition, 1);
+      await cancelled.close();
+      await rejected;
+      assert.equal(capacity.slots.size, capacity.limit);
+      const admitted: string[] = [];
+      guest.onStatus = (key) => admitted.push(key);
+      const joining = guest.connect({ ...opts, name: 'Iona' });
+      await until(() => admitted.includes('ui.waitingCapacity'));
+      capacity.release(fixtures.pop()!);
+      await joining;
+      await until(() => Boolean(guest.view?.players.length));
+      assert.equal(capacity.slots.size, capacity.limit);
+      assert.equal(guest.room!.connection.isOpen, true);
+      const health = await (await fetch(base + '/api/health')).json();
+      assert.equal(health.capacity.offeredSlots, 0);
+      assert.equal(health.protocolVersion, PROTOCOL);
+    } finally {
+      await Promise.allSettled([owner.close(), guest.close(), cancelled.close()]);
+      for (const id of fixtures) capacity.release(id);
+      await server.gracefullyShutdown(false);
+    }
+    assert.equal(capacity.slots.size, 0);
+    assert.equal(capacity.rooms.size, 0);
+  },
+);
+
 test('instance capacity reserves reconnect slots independently of room limits', () => {
   const c = new Capacity(2, 1);
   c.addRoom('a');

@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-23",
+  "tool": "Built-in image_gen.imagegen",
+  "reportedModel": null,
+  "modelSelectionExposed": false,
+  "qualitySelectionExposed": false,
+  "transparentBackground": true,
+  "entries": [
+    {
+      "classId": "soldier",
+      "direction": "north",
+      "prompt": "Use case: identity-preserve. Production game sprite animation edit for Grave Accord. Image 1 is the transparent animation edit canvas: its first-slot character is the identity, costume, scale and matte ink/gouache finish authority. Fill exactly FOUR equal 256-pixel slots in ONE horizontal row at y=384..640 of the same 1024x1024 transparent canvas. Four complete full-body frames of Mara Rook walking NORTH away from the camera, shown from the rear at the SAME slightly elevated game-camera angle in every frame. Preserve navy watch cap, short brown hair, navy long coat, brown belts/boots, ochre details and compact antique pistol. True rear-facing torso and head, weapon aimed straight north away from viewer with correct foreshortening; no sideways aiming, no visible face. Frame sequence: left foot forward, passing, right foot forward, passing, a seamless restrained 4-frame walk loop. Arms and aiming direction remain steady; legs and lower coat move naturally. One unchanged character in every slot, identical body scale and centered anchor; both feet baseline at y=616, centers x=128,384,640,896. Every entire figure and weapon stay within its cell with generous transparent margins. Quiet broad clothing planes, clean ink outline, readable at 100px gameplay size. Actual transparent alpha, no background, ground shadows, checkerboard, scenery, particles, labels, grid, duplicate figures or extra rows. Generate the WHOLE strip together.",
+      "reference": "tmp/directions/soldier-north-edit.png",
+      "native": "assets/proofs/directions/soldier-north-walk-rejected-v1.png",
+      "status": "rejected-lateral-aim"
+    },
+    {
+      "classId": "soldier",
+      "direction": "south",
+      "prompt": "Use case: identity-preserve. Production game sprite animation edit for Grave Accord. Image 1 is the transparent animation edit canvas: its first-slot character is the identity, costume, scale and matte ink/gouache finish authority. Fill exactly FOUR equal 256-pixel slots in ONE horizontal row at y=384..640 of the same 1024x1024 transparent canvas. Four complete full-body frames of Mara Rook walking SOUTH toward the camera, shown frontally at the SAME slightly elevated game-camera angle in every frame. Preserve her face, navy watch cap, short brown hair, navy long coat, brown belts/boots, ochre badge and compact antique pistol. Weapon points SOUTH toward viewer with correct foreshortening; no sideways aiming. Frame sequence: left foot forward, passing, right foot forward, passing, a seamless restrained 4-frame walk loop. Arms and aiming direction remain steady; legs and lower coat move naturally. One unchanged character in every slot, identical body scale and centered anchor; both feet baseline at y=616, centers x=128,384,640,896. Every entire figure and weapon stay within its cell with generous transparent margins. Quiet broad clothing planes, clean ink outline, readable at 100px gameplay size. Actual transparent alpha, no background, ground shadows, checkerboard, scenery, particles, labels, grid, duplicate figures or extra rows. Generate the WHOLE strip together.",
+      "reference": "tmp/directions/soldier-south-edit.png",
+      "native": "assets/proofs/directions/soldier-south-walk-v1.png",
+      "status": "runtime-candidate"
+    },
+    {
+      "classId": "soldier",
+      "direction": "north",
+      "reference": "assets/proofs/directions/soldier-north-walk-rejected-v1.png",
+      "prompt": "Use case: precise-object-edit, production transparent sprite strip correction. This is the SAME Mara Rook four-frame NORTH walk strip. Preserve all four full-body walking poses, identity, proportions, coat, hat, hair, belts, boots, scale, slot positions, palette, ink/gouache finish and transparent alpha. Correct ONLY the aim in ALL four frames: she is aiming straight NORTH away from camera. Her hands and pistol are in front of her torso, hidden by her head/upper torso from this rear camera. Remove the sideways-pointing pistol silhouette sticking out to the RIGHT of her head; no weapon may protrude laterally from either side of her head. Back of head and body are centered straight away, shoulders level. No face visible. Preserve exactly four aligned frames in a single row and the walk loop. Generous transparent margins. No background, scenery, particles, labels, grid or shadow.",
+      "native": "assets/proofs/directions/soldier-north-walk-v2.png",
+      "status": "runtime-candidate"
+    },
+    {
+      "classId": "medic",
+      "direction": "north",
+      "reference": "tmp/directions/medic-north-edit.png",
+      "prompt": "Use case: identity-preserve. Production transparent four-frame game sprite animation for Grave Accord. The supplied edit canvas's first-slot Iona Vale is the identity/costume/finish authority. Create exactly FOUR complete full-body frames in ONE horizontal row, one figure per equal slot, a restrained seamless NORTH walk loop: left foot forward, passing, right foot forward, passing. SAME blonde woman, ivory hooded long coat, dark trousers, brown boots, red satchel with diagonal ivory bandage motifs and brass/red injector carbine. All frames TRUE REAR VIEW facing and aiming straight NORTH away from camera at a slightly elevated game-camera view. Back of hood, coat and satchel visible, no face. Hands and gun are IN FRONT of her body, occluded by head and upper torso; absolutely NO sideways-pointing gun or weapon protruding to either side of her head. Fixed scale, level shoulders and steady arms, subtle natural alternating legs and coat hem. Same costume and proportions across all four frames. Use the whole image width for 4 equal slots, shared feet baseline and transparent space between figures. Preserve quiet matte gouache, clean ink contours and selective detail; no excessive texture or colored edge fringe. Actual transparent alpha, generous padding, no background, scenery, ground shadows, checkerboard, text, grid, particles or additional rows. Generate all four frames together.",
+      "native": "assets/proofs/directions/medic-north-walk-rejected-v1.png",
+      "status": "rejected-or-superseded"
+    },
+    {
+      "classId": "medic",
+      "direction": "south",
+      "reference": "tmp/directions/medic-south-edit.png",
+      "prompt": "Use case: identity-preserve. Production transparent four-frame game sprite animation for Grave Accord. The supplied edit canvas's first-slot Iona Vale is the identity/costume/finish authority. Create exactly FOUR complete full-body frames in ONE horizontal row, one figure per equal slot, a restrained seamless SOUTH walk loop: left foot forward, passing, right foot forward, passing. SAME blonde woman, ivory hooded long coat, dark trousers, brown boots, red satchel with diagonal ivory bandage motifs and brass/red injector carbine. All frames FRONT VIEW facing and aiming SOUTH toward camera at a slightly elevated game-camera angle; carbine must point at viewer with correct foreshortening, never sideways. Preserve her face, hood, outfit, weapon and proportions. Fixed scale, level shoulders and steady arms, subtle natural alternating legs and coat hem. Same costume and proportions across all four frames. Use the whole image width for 4 equal slots, shared feet baseline and generous transparent space between figures. Quiet matte gouache, clean ink contours, selective face/hand/weapon detail and no colored edge fringe. Actual transparent alpha, generous padding, no background, scenery, ground shadows, checkerboard, text, grid, particles or additional rows. Generate all four frames together.",
+      "native": "assets/proofs/directions/medic-south-walk-rejected-v1.png",
+      "status": "rejected-or-superseded"
+    },
+    {
+      "classId": "medic",
+      "direction": "north",
+      "reference": "assets/proofs/directions/medic-north-walk-rejected-v1.png",
+      "prompt": "Use case: background-extraction and precise-object-edit. Correct this SAME FOUR-frame Iona Vale NORTH walk sprite strip. Keep all four full-body poses, rear-facing hood and body, ivory coat, dark trousers, boots, red satchel with TWO PARALLEL diagonal ivory bandages, bottle, palette, proportions, frame positions and aligned feet. Remove ALL red, bright yellow and green fringes/halos along the outside of every figure. The exterior contour must be a clean dark ink line directly adjacent to true transparent alpha, with no stray colored pixels or background remnants. Do not add outlines or glow. Also remove the rifle stock/barrel protruding sideways to the LEFT of each shoulder: the gun and both hands aim straight NORTH in front of her torso and are hidden from the rear, so neither weapon end sticks out laterally. Preserve four complete walking frames in one row, same size and angle, no face visible. Clean original matte ink/gouache asset, quiet clothing planes. Actual transparent background. No ground shadow, scenery, text, labels, grid, checkerboard or extra rows.",
+      "native": "assets/proofs/directions/medic-north-walk-rejected-v2.png",
+      "status": "rejected-or-superseded"
+    },
+    {
+      "classId": "medic",
+      "direction": "south",
+      "reference": "assets/proofs/directions/medic-south-walk-rejected-v1.png",
+      "prompt": "Use case: background-extraction and precise-object-edit. Correct this SAME FOUR-frame Iona Vale SOUTH walk sprite strip. Keep all four full-body poses, face/hood, ivory coat, dark trousers, boots, brass/red foreshortened carbine, palette, proportions, positions and feet alignment. Remove ALL bright red, yellow and green fringes/halos along the exterior of every figure. The clean dark ink edge must meet true transparent alpha with no stray colored pixels or backdrop remnants. Do not add a glow or thick outline. Correct the red satchel emblem in ALL four frames: exactly TWO PARALLEL diagonal ivory bandage strips, separate and never touching or crossing, as two short diagonal strokes //, with no cross, star, airplane or medical cross emblem. Everything else stays unchanged. Exactly four complete front-facing walk frames in one horizontal row, no extra rows. Clean original matte ink/gouache with quiet clothing planes. Actual transparent alpha, no scenery, ground shadow, labels, text, checkerboard or grid.",
+      "native": "assets/proofs/directions/medic-south-walk-rejected-v2.png",
+      "status": "rejected-or-superseded"
+    },
+    {
+      "classId": "medic",
+      "direction": "north",
+      "reference": "assets/prototype/medic-source-v2.png",
+      "prompt": "Use case: identity-preserve. Create a new clean production four-frame walking animation strip of Iona Vale for Grave Accord from this ORIGINAL identity portrait. Preserve blonde woman, face, ivory hooded long coat, dark trousers, brown boots, dark gloves, brass injector carbine with red chamber and red satchel bearing exactly TWO SEPARATE PARALLEL DIAGONAL IVORY BANDAGES (not crossed, not a cross or star). Exactly four full-body frames of the same woman across ONE horizontal strip with four equal cells, fixed body scale, centered anchors and one shared feet baseline. A restrained seamless four-frame walk cycle: left stride, passing, right stride, passing. ALL four frames face and aim NORTH AWAY FROM CAMERA, true straight rear view: back of hood and body visible, NO face. Both arms and the whole gun are IN FRONT of her body and fully occluded from this rear view, no weapon protruding sideways. Body direction is identical in every frame. Preserve quiet matte gouache and original dark ink contours. Broad clean clothing planes, no added surface noise. Every figure fully contained with generous space between cells, no cropped boots or equipment. The exterior is ONLY a clean dark ink contour against genuinely transparent alpha: no red/yellow/green outline, no fringe, no glow, no stray pixels. No background or colored backdrop, no floor, shadow, particles, checkerboard, labels, grid, text or extra figures/rows. Generate the WHOLE four-frame strip together.",
+      "native": "assets/proofs/directions/medic-north-walk-v3.png",
+      "status": "superseded-framing"
+    },
+    {
+      "classId": "medic",
+      "direction": "south",
+      "reference": "assets/prototype/medic-source-v2.png",
+      "prompt": "Use case: identity-preserve. Create a new clean production four-frame walking animation strip of Iona Vale for Grave Accord from this ORIGINAL identity portrait. Preserve blonde woman, face, ivory hooded long coat, dark trousers, brown boots, dark gloves, brass injector carbine with red chamber and red satchel bearing exactly TWO SEPARATE PARALLEL DIAGONAL IVORY BANDAGES (not crossed, not a cross or star). Exactly four full-body frames of the same woman across ONE horizontal strip with four equal cells, fixed body scale, centered anchors and one shared feet baseline. A restrained seamless four-frame walk cycle: left stride, passing, right stride, passing. ALL four frames face and aim SOUTH TOWARD CAMERA, straight frontal view at a slightly elevated game-camera angle. Weapon muzzle points toward viewer with clear foreshortening, never to the side. Body direction is identical in every frame. Preserve quiet matte gouache and original dark ink contours. Broad clean clothing planes, no added surface noise. Every figure fully contained with generous space between cells, no cropped boots or equipment. The exterior is ONLY a clean dark ink contour against genuinely transparent alpha: no red/yellow/green outline, no fringe, no glow, no stray pixels. No background or colored backdrop, no floor, shadow, particles, checkerboard, labels, grid, text or extra figures/rows. Generate the WHOLE four-frame strip together.",
+      "native": "assets/proofs/directions/medic-south-walk-v3.png",
+      "status": "superseded-framing"
+    },
+    {
+      "classId": "medic",
+      "direction": "north",
+      "reference": "assets/proofs/directions/medic-north-walk-v3.png",
+      "prompt": "Use case: precise-object-edit. Layout and padding correction ONLY for this exact four-frame Iona Vale NORTH walk strip. Preserve all four individual complete figures, their exact faces/hoods, costume, weapon direction, satchel with two separate parallel bandages, palette, illustration finish and four distinct walking poses. Place these SAME four complete figures in four evenly spaced equal-width cells in ONE horizontal row on a larger transparent canvas. Reduce ALL four figures uniformly to 75 percent of their current size relative to each cell. Each figure's ENTIRE silhouette, including coat hem, boots, hood tip and equipment, must have at least 40 pixels fully TRANSPARENT EMPTY SPACE on every side inside its own cell. No figure can touch or cross a cell boundary or image boundary. Add generous transparent headroom and footroom. All four have identical body scale, fixed center and one shared feet baseline. Do not add borders or labels. Actual transparent alpha. No background, grid, scenery, shadows, text, checkerboard, particles or extra figures. Do not enlarge any frame or crop any body part. Keep the four-frame animation and character identity unchanged.",
+      "native": "assets/proofs/directions/medic-north-walk-v4.png",
+      "status": "runtime-candidate"
+    },
+    {
+      "classId": "medic",
+      "direction": "south",
+      "reference": "assets/proofs/directions/medic-south-walk-v3.png",
+      "prompt": "Use case: precise-object-edit. Layout and padding correction ONLY for this exact four-frame Iona Vale SOUTH walk strip. Preserve all four individual complete figures, their exact faces/hoods, costume, weapon direction, satchel with two separate parallel bandages, palette, illustration finish and four distinct walking poses. Place these SAME four complete figures in four evenly spaced equal-width cells in ONE horizontal row on a larger transparent canvas. Reduce ALL four figures uniformly to 75 percent of their current size relative to each cell. Each figure's ENTIRE silhouette, including coat hem, boots, hood tip and equipment, must have at least 40 pixels fully TRANSPARENT EMPTY SPACE on every side inside its own cell. No figure can touch or cross a cell boundary or image boundary. Add generous transparent headroom and footroom. All four have identical body scale, fixed center and one shared feet baseline. Do not add borders or labels. Actual transparent alpha. No background, grid, scenery, shadows, text, checkerboard, particles or extra figures. Do not enlarge any frame or crop any body part. Keep the four-frame animation and character identity unchanged.",
+      "native": "assets/proofs/directions/medic-south-walk-v4.png",
+      "status": "runtime-candidate"
+    }
+  ],
+  "reviewNotes": [
+    "Native transparent previews exaggerate low-alpha RGB fringe; assess actual light and dark alpha compositing.",
+    "Earlier Medic strips are preserved, not painted or cleaned with Python. New v3 corrected identity and aim but needed v4 spacing.",
+    "Technical extraction and class-shared scaling are recorded separately. Runtime candidates require gameplay-size motion review."
+  ]
+}

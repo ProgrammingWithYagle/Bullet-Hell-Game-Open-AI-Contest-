@@ -1,0 +1,69 @@
+@import '@fontsource/im-fell-english-sc/400.css';
+@import '@fontsource/noto-sans/400.css';
+@import '@fontsource/noto-sans/600.css';
+@import '@fontsource/noto-sans-arabic/400.css';
+@import '@fontsource/noto-sans-devanagari/400.css';
+@import '@fontsource/noto-sans-bengali/400.css';
+@import '@fontsource/noto-sans-sc/400.css';
+@import '@fontsource/noto-sans-tc/400.css';
+@import '@fontsource/noto-sans-jp/400.css';
+@import '@fontsource/noto-sans-kr/400.css';
+
+:root {
+  --ui-font: 'Noto Sans', sans-serif;
+  --display-font: 'IM Fell English SC', 'Noto Sans', serif;
+}
+html:lang(zh-Hans) {
+  --ui-font: 'Noto Sans SC', 'Noto Sans', sans-serif;
+  --display-font: var(--ui-font);
+}
+html:lang(zh-Hant) {
+  --ui-font: 'Noto Sans TC', 'Noto Sans', sans-serif;
+  --display-font: var(--ui-font);
+}
+html:lang(ja) {
+  --ui-font: 'Noto Sans JP', 'Noto Sans', sans-serif;
+  --display-font: var(--ui-font);
+}
+html:lang(ko) {
+  --ui-font: 'Noto Sans KR', 'Noto Sans', sans-serif;
+  --display-font: var(--ui-font);
+}
+html:lang(ar),
+html:lang(ur) {
+  --ui-font: 'Noto Sans Arabic', 'Noto Sans', sans-serif;
+  --display-font: var(--ui-font);
+}
+html:lang(hi) {
+  --ui-font: 'Noto Sans Devanagari', 'Noto Sans', sans-serif;
+  --display-font: var(--ui-font);
+}
+html:lang(bn) {
+  --ui-font: 'Noto Sans Bengali', 'Noto Sans', sans-serif;
+  --display-font: var(--ui-font);
+}
+#app {
+  font-family: var(--ui-font);
+}
+#app
+  :is(
+    button,
+    input,
+    select,
+    summary,
+    p,
+    label,
+    small,
+    .eyebrow,
+    .loadout-summary,
+    .item-details,
+    .tree-lane h4,
+    .setup-footer,
+    .stat-ribbon
+  ) {
+  font-family: var(--ui-font);
+}
+#app :is(h1, h2, h3, .brand, .vote-title) {
+  font-family: var(--display-font);
+  font-weight: 400;
+}

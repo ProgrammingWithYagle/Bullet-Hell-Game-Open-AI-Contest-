@@ -11,7 +11,7 @@ function strongestWeaponModel(cl,sp,coins){
   let best={dps:0};
   for(const depths of combinations){
     const spent=depths.reduce((s,n)=>s+costs[n],0);if(spent>sp)continue;
-    const effects={};for(let b=0;b<3;b++)for(const s of c.skills.filter(s=>s.classId===cl.id&&s.branchId===cl.branches[b].id&&s.depth<=depths[b]))for(const [k,v]of Object.entries(s.effects))effects[k]=(effects[k]??0)+v;
+    const effects={};for(let b=0;b<3;b++)for(const s of c.skills.filter(s=>s.classId===cl.id&&s.branchId===cl.branches[b].id&&s.lane===0&&s.depth<=depths[b]))for(const [k,v]of Object.entries(s.effects))effects[k]=(effects[k]??0)+v;
     for(const w of c.weapons.filter(x=>x.classId===cl.id))for(let damage=0;damage<=5;damage++)for(let rate=0;rate<=5;rate++){
       const spentCoins=w.price+upgradeCost('damage',damage)+upgradeCost('fire-rate',rate);if(spentCoins>coins)continue;
       const multiplier=Math.min(4,1+(effects.weaponDamage??0)+damage*0.14),fr=w.fireRate*Math.min(2.5,1+(effects.fireRate??0)+rate*0.07);
@@ -38,7 +38,7 @@ for(const mode of c.modes.filter(m=>m.kind!=='endless'))for(let j=0;j<mode.encou
 const fields=Object.keys(rows[0]);fs.mkdirSync(path.join(root,'docs/balance'),{recursive:true});
 fs.writeFileSync(path.join(root,'docs/balance/uptime-model.csv'),[fields.join(','),...rows.map(r=>fields.map(k=>r[k]).join(','))].join('\n')+'\n');
 const misses=rows.filter(r=>r.deadlineRatio>1),worst=rows.toSorted((a,b)=>b.deadlineRatio-a.deadlineRatio).slice(0,20);
-const report={schemaVersion:1,kind:'Analytical design model; not gameplay measurement',assumptions:{movementAndAimUptime:0.65,shotgunPelletHitFraction:0.7,abilitiesAndUltimatesExcluded:true,accordBreakBenefitsExcluded:true,mutationsExcluded:true,optimization:'Legal prefix skill allocations with one capstone; class weapons and affordable damage/fire-rate upgrades. Offensive feasibility model, not a recommendation for every build.',armor:'Worst-phase repeated armor duty cycle; ignores weak-point bonus. Boss health is solo; group scaling is sublinear.'},rows:rows.length,deadlineMisses:misses.length,worst,passed:misses.length===0};
+const report={schemaVersion:1,kind:'Analytical design model; not gameplay measurement',assumptions:{movementAndAimUptime:0.65,shotgunPelletHitFraction:0.7,abilitiesAndUltimatesExcluded:true,accordBreakBenefitsExcluded:true,mutationsExcluded:true,optimization:'Conservative legal foundation-path prefixes with one capstone; class weapons and affordable damage/fire-rate upgrades. Specialization alternatives are excluded here and validated separately. This is an offensive feasibility witness, not exhaustive optimization or a recommendation for every build.',armor:'Worst-phase repeated armor duty cycle; ignores weak-point bonus. Boss health is solo; group scaling is sublinear.'},rows:rows.length,deadlineMisses:misses.length,worst,passed:misses.length===0};
 report.contentRevision=JSON.parse(fs.readFileSync(path.join(root,'content/revision.json'),'utf8')).sha256;
 fs.mkdirSync(path.join(root,'reviews'),{recursive:true});fs.writeFileSync(path.join(root,'reviews/balance-model-review.json'),JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify({rows:rows.length,deadlineMisses:misses.length,worst:worst.slice(0,3)},null,2));

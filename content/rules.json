@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "0.2.0",
-  "protocolVersion": 1,
+  "contentVersion": "0.3.0",
+  "protocolVersion": 3,
   "simulationHz": 30,
   "patchHz": 20,
   "worldWidth": 1600,
@@ -152,6 +152,21 @@
     },
     "gradeGrowth": 1.1,
     "scope": "Equipment and purchased build power, not player skill. Normalize each role against its own baseline."
+  },
+  "brutal": {
+    "healthMultiplier": 2,
+    "damageMultiplier": 2,
+    "deadlineMultiplier": 1.5,
+    "bountyMultiplier": 1.75,
+    "phaseThresholds": [
+      1,
+      0.75,
+      0.5,
+      0.25
+    ],
+    "minimumTelegraphSeconds": 0.85,
+    "endlessTrigger": "A boss is eligible after its first completed appearance. The first-loop Constable repeat is always Brutal.",
+    "projectileCapUnchanged": true
   },
   "endless": {
     "finalEncounter": null,

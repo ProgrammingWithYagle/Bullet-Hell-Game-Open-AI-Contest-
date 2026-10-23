@@ -3,6 +3,7 @@ import { assets } from './assets.ts';
 import type { View, PlayerView } from '../shared/view.ts';
 import type { Event, Shot } from '../shared/protocol.ts';
 import { arena, data } from '../shared/game.ts';
+import { FrameMeter } from './frame-meter.ts';
 export class CombatScene extends Phaser.Scene {
   private resolveReady!: () => void;
   private rejectReady!: (error: Error) => void;
@@ -17,15 +18,38 @@ export class CombatScene extends Phaser.Scene {
   highContrast = false;
   reduceMotion = false;
   private people = new Map<string, Phaser.GameObjects.Sprite>();
+  private facings = new Map<string, string>();
   private shadows!: Phaser.GameObjects.Graphics;
   private hazards!: Phaser.GameObjects.Graphics;
-  private bullets!: Phaser.GameObjects.Graphics;
+  private bulletImages = new Map<number, Phaser.GameObjects.Image>();
+  private bulletPool: Phaser.GameObjects.Image[] = [];
   private foreground!: Phaser.GameObjects.Graphics;
   private bossSprite!: Phaser.GameObjects.Sprite;
   private shots = new Map<number, Shot>();
   private lastPhase = '';
-  readonly frameTimes: number[] = [];
+  private animatedWarning = 0;
+  private lastFrameClock = 0;
+  readonly frameMeter = new FrameMeter();
   ready = false;
+  diagnostics() {
+    return {
+      ...this.frameMeter.summary(),
+      renderedProjectiles: this.bulletImages.size,
+      renderedHostiles: this.renderedHostiles,
+      environment: {
+        userAgent: navigator.userAgent,
+        viewport: [innerWidth, innerHeight],
+        pixelRatio: devicePixelRatio,
+        renderer: this.game.renderer.type,
+        internalCanvas: [this.game.canvas.width, this.game.canvas.height],
+        displayedCanvas: [
+          this.game.canvas.getBoundingClientRect().width,
+          this.game.canvas.getBoundingClientRect().height,
+        ],
+      },
+    };
+  }
+  private renderedHostiles = 0;
   constructor() {
     super('combat');
   }
@@ -35,13 +59,29 @@ export class CombatScene extends Phaser.Scene {
     this.load.spritesheet('soldier', assets.soldier, { frameWidth: 256, frameHeight: 256 });
     this.load.spritesheet('constable', assets.boss, { frameWidth: 512, frameHeight: 512 });
     this.load.image('medic', assets.medic);
+    for (const [key, url] of Object.entries(assets.directions)) {
+      if (key.endsWith('North') || key.endsWith('South'))
+        this.load.spritesheet(key, url, { frameWidth: 256, frameHeight: 256 });
+      else this.load.image(key, url);
+    }
   }
   create() {
     this.add.image(800, 500, 'gatehouse').setDisplaySize(1600, 1000).setAlpha(0.8);
     this.add.rectangle(800, 500, 1600, 1000, 0x172b29, 0.18);
     this.shadows = this.add.graphics().setDepth(1);
     this.hazards = this.add.graphics().setDepth(2);
-    this.bullets = this.add.graphics().setDepth(20);
+    for (const [key, color] of [
+      ['hostile', 0xf08370],
+      ['contrast', 0xffc23e],
+      ['friendly', 0xa7dcd0],
+    ] as const) {
+      const paint = this.make.graphics({ x: 0, y: 0 });
+      paint.fillStyle(key === 'friendly' ? 0x24453f : 0x44242c).fillCircle(16, 16, 15);
+      paint.fillStyle(color).fillCircle(16, 16, 10);
+      if (key !== 'friendly') paint.fillStyle(0xffe9b0).fillCircle(16, 16, 3.5);
+      paint.generateTexture('projectile-' + key, 32, 32);
+      paint.destroy();
+    }
     this.foreground = this.add.graphics().setDepth(30);
     this.anims.create({
       key: 'soldier-run',
@@ -55,6 +95,13 @@ export class CombatScene extends Phaser.Scene {
       frameRate: 10,
       repeat: 0,
     });
+    for (const key of ['soldierNorth', 'soldierSouth', 'medicNorth', 'medicSouth'])
+      this.anims.create({
+        key: key + '-walk',
+        frames: this.anims.generateFrameNumbers(key, { start: 0, end: 3 }),
+        frameRate: 8,
+        repeat: -1,
+      });
     this.bossSprite = this.add
       .sprite(800, 315, 'constable', 0)
       .setOrigin(0.5, 0.84)
@@ -64,7 +111,10 @@ export class CombatScene extends Phaser.Scene {
     this.resolveReady();
   }
   apply(view: View) {
-    if (this.lastPhase && view.phase !== this.lastPhase) this.shots.clear();
+    if (this.lastPhase && view.phase !== this.lastPhase) {
+      for (const id of this.shots.keys()) this.recycleBullet(id);
+      this.shots.clear();
+    }
     this.lastPhase = view.phase;
     this.view = view;
   }
@@ -73,36 +123,35 @@ export class CombatScene extends Phaser.Scene {
       if (event.type === 'shots')
         for (const shot of event.shots) this.shots.set(shot.id, { ...shot });
       if (event.type === 'remove') {
-        if (!event.ids.length) this.shots.clear();
-        for (const id of event.ids) this.shots.delete(id);
+        const ids = event.ids.length ? event.ids : [...this.shots.keys()];
+        for (const id of ids) {
+          this.shots.delete(id);
+          this.recycleBullet(id);
+        }
       }
+    }
+  }
+  private recycleBullet(id: number) {
+    const image = this.bulletImages.get(id);
+    if (image) {
+      image.setVisible(false);
+      this.bulletPool.push(image);
+      this.bulletImages.delete(id);
     }
   }
   update(_time: number, delta: number) {
     if (!this.ready || !this.view) return;
-    this.frameTimes.push(delta);
-    if (this.frameTimes.length > 3600) this.frameTimes.shift();
+    const frameNow = performance.now(),
+      wallDelta = this.lastFrameClock ? frameNow - this.lastFrameClock : delta;
+    this.lastFrameClock = frameNow;
     const view = this.view,
       dt = Math.min(delta, 100) / 1000,
       now = view.combatTick;
     this.shadows.clear();
     this.hazards.clear();
-    this.bullets.clear();
     this.foreground.clear();
     const h = this.hazards,
-      b = this.bullets,
       f = this.foreground;
-    for (const rect of arena.obstacles) {
-      this.shadows
-        .fillStyle(0x132623, 0.85)
-        .fillRoundedRect(rect.x, rect.y + 8, rect.width, rect.height, 10);
-      this.shadows
-        .fillStyle(0x687b6e, 0.9)
-        .fillRoundedRect(rect.x, rect.y, rect.width, rect.height, 10);
-      this.shadows
-        .lineStyle(3, 0xb9be9a, 0.6)
-        .strokeRoundedRect(rect.x, rect.y, rect.width, rect.height, 10);
-    }
     for (const field of view.fields) {
       const hostile = field.kind === 'zone',
         color = hostile ? 0xe2734f : field.kind === 'heal' ? 0x81ddc4 : 0xe3c776;
@@ -133,6 +182,18 @@ export class CombatScene extends Phaser.Scene {
           .arc(w.x, w.y, w.radius * 0.8, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * progress)
           .strokePath();
         h.fillStyle(color, 0.1).fillCircle(w.x, w.y, w.radius);
+      } else if (w.kind === 'ring') {
+        h.lineStyle(3, color, 1)
+          .beginPath()
+          .arc(w.x, w.y, 125, w.aim + w.arc / 2, w.aim + Math.PI * 2 - w.arc / 2)
+          .strokePath();
+        for (const angle of [w.aim - w.arc / 2, w.aim + w.arc / 2])
+          h.lineStyle(2, 0xf3e5b3, 0.8).lineBetween(
+            w.x + Math.cos(angle) * 100,
+            w.y + Math.sin(angle) * 100,
+            w.x + Math.cos(angle) * 150,
+            w.y + Math.sin(angle) * 150,
+          );
       } else {
         const r = 210,
           points = [new Phaser.Math.Vector2(w.x, w.y)];
@@ -157,12 +218,12 @@ export class CombatScene extends Phaser.Scene {
     }
     this.bossSprite.setVisible(view.phase === 'combat');
     this.bossSprite.setAlpha(now < view.boss.staggerUntil ? 0.55 : 1);
-    if (
-      view.warnings.some((w) => w.kind === 'fan') &&
-      !this.bossSprite.anims.isPlaying &&
-      !this.reduceMotion
-    )
+    const cast = view.warnings.find((w) => w.kind !== 'zone');
+    if (cast && cast.id !== this.animatedWarning && !this.reduceMotion) {
+      this.animatedWarning = cast.id;
       this.bossSprite.play('constable-attack');
+    }
+    if (!cast && !this.bossSprite.anims.isPlaying) this.bossSprite.setFrame(0);
     if (view.phase === 'combat' && this.hitboxes)
       f.lineStyle(2, 0xf2c487, 0.65).strokeCircle(
         view.boss.x,
@@ -184,17 +245,33 @@ export class CombatScene extends Phaser.Scene {
       const dx = p.x - sprite.x,
         dy = p.y - sprite.y,
         moving = Math.hypot(dx, dy) > 0.35,
-        blend = p.id === this.localId ? 1 : Math.min(1, delta / 65);
+        blend = p.id === this.localId ? 1 : Math.min(1, wallDelta / 65);
       sprite.x += dx * blend;
       sprite.y += dy * blend;
       sprite.setDepth(5 + sprite.y / 1000);
-      sprite.setFlipX(Math.cos(p.aim) < 0);
+      const vertical = Math.abs(Math.sin(p.aim)) > Math.abs(Math.cos(p.aim));
+      const facing = vertical
+        ? Math.sin(p.aim) < 0
+          ? 'North'
+          : 'South'
+        : Math.cos(p.aim) < 0
+          ? 'West'
+          : 'East';
+      const key = vertical || p.classId === 'medic' ? p.classId + facing : 'soldier';
+      if (this.facings.get(p.id) !== facing) {
+        sprite.anims.stop();
+        sprite.setTexture(key, 0);
+        this.facings.set(p.id, facing);
+      }
+      sprite.setOrigin(0.5, key === 'soldier' ? 0.86 : 232 / 256).setDisplaySize(128, 128);
+      sprite.setFlipX(key === 'soldier' && facing === 'West');
       sprite.setAlpha(
         p.status === 'waiting' ? 0.35 : p.status === 'eliminated' ? 0.2 : p.connected ? 1 : 0.4,
       );
       sprite.setTint(p.status === 'downed' ? 0xc58d7c : 0xffffff);
-      if (p.classId === 'soldier') {
-        if (moving && !this.reduceMotion && p.status === 'active') sprite.play('soldier-run', true);
+      if (vertical || p.classId === 'soldier') {
+        if (moving && !this.reduceMotion && p.status === 'active')
+          sprite.play(vertical ? key + '-walk' : 'soldier-run', true);
         else {
           sprite.anims.stop();
           sprite.setFrame(0);
@@ -227,22 +304,37 @@ export class CombatScene extends Phaser.Scene {
       if (!existing.has(id)) {
         sprite.destroy();
         this.people.delete(id);
+        this.facings.delete(id);
       }
+    this.renderedHostiles = 0;
     for (const [id, s] of this.shots) {
       s.x += s.vx * dt;
       s.y += s.vy * dt;
       if (now >= s.expires || s.x < 0 || s.x > 1600 || s.y < 0 || s.y > 1000) {
         this.shots.delete(id);
+        this.recycleBullet(id);
         continue;
       }
-      const hostile = s.owner === 'hostile';
-      b.fillStyle(hostile ? 0x44242c : 0x24453f, 1).fillCircle(s.x, s.y, s.radius + 2);
-      b.fillStyle(hostile ? (this.highContrast ? 0xffc23e : 0xf08370) : 0xa7dcd0, 1).fillCircle(
-        s.x,
-        s.y,
-        s.radius,
-      );
-      if (hostile) b.fillStyle(0xffe9b0, 1).fillCircle(s.x, s.y, Math.max(1, s.radius * 0.35));
+      const key =
+        'projectile-' +
+        (s.owner === 'hostile' ? (this.highContrast ? 'contrast' : 'hostile') : 'friendly');
+      let image = this.bulletImages.get(id);
+      if (!image) {
+        image = this.bulletPool.pop() ?? this.add.image(s.x, s.y, key).setDepth(20);
+        this.bulletImages.set(id, image);
+      }
+      if (image.texture.key !== key) image.setTexture(key);
+      image
+        .setPosition(s.x, s.y)
+        .setScale((s.radius + 2) / 15)
+        .setVisible(true);
+      if (s.owner === 'hostile') this.renderedHostiles++;
     }
+    this.frameMeter.sample(
+      performance.now(),
+      !document.hidden,
+      this.renderedHostiles,
+      view.players.filter((p) => p.connected && p.status === 'active').length,
+    );
   }
 }

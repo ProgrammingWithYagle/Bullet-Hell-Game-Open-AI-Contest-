@@ -10,6 +10,7 @@ import {
   type Phase,
 } from '../shared/protocol.ts';
 import type { View, PlayerView } from '../shared/view.ts';
+import { savedBoundary, storeBoundary } from './storage.ts';
 export type ConnectionOptions = {
   name: string;
   classId: ClassId;
@@ -31,6 +32,8 @@ export class Session {
   code = '';
   online = false;
   status = '';
+  queuePosition = 0;
+  private admissionId = '';
   worker?: Worker;
   room?: Room<WorldState>;
   private closed = false;
@@ -40,22 +43,41 @@ export class Session {
   onStatus: (key: string) => void = () => {};
   onPurchase: (result: { ok: boolean; reason?: string }) => void = () => {};
   constructor(readonly endpoint = import.meta.env?.VITE_GAME_SERVER ?? 'http://localhost:2567') {}
-  offline(options: ConnectionOptions) {
-    this.worker = new Worker(new URL('./offline.worker.ts', import.meta.url), { type: 'module' });
-    this.worker.onmessage = (e) => {
-      const m = e.data;
-      if (m.type === 'view') this.receive(m.view);
-      else if (m.type === 'events') this.onEvents(m.events);
-      else if (m.type === 'purchaseResult') this.onPurchase(m);
-    };
-    this.worker.onerror = () => this.onStatus('ui.errorServer');
-    this.worker.postMessage({
-      type: 'init',
-      ...options,
-      settings: { ...options, seed: crypto.getRandomValues(new Uint32Array(1))[0], maxPlayers: 1 },
+  offline(options: ConnectionOptions, resume = false) {
+    return new Promise<void>((resolve, reject) => {
+      this.worker = new Worker(new URL('./offline.worker.ts', import.meta.url), { type: 'module' });
+      this.worker.onmessage = (e) => {
+        const m = e.data;
+        if (m.type === 'view') {
+          this.receive(m.view);
+          resolve();
+        } else if (m.type === 'events') this.onEvents(m.events);
+        else if (m.type === 'purchaseResult') this.onPurchase(m);
+        else if (m.type === 'checkpoint') {
+          if (!storeBoundary(m.value)) this.notify('ui.errorSave');
+        } else if (m.type === 'error') reject(Error(m.key));
+      };
+      this.worker.onerror = () => {
+        this.notify('ui.errorServer');
+        reject(Error('ui.errorServer'));
+      };
+      this.worker.postMessage(
+        resume
+          ? { type: 'resume', value: savedBoundary() }
+          : {
+              type: 'init',
+              ...options,
+              settings: {
+                ...options,
+                seed: crypto.getRandomValues(new Uint32Array(1))[0],
+                maxPlayers: 1,
+              },
+            },
+      );
     });
   }
   async rooms(): Promise<RoomSummary[]> {
+    await this.warmServer();
     const response = await fetch(this.endpoint + '/api/rooms', {
       signal: AbortSignal.timeout(10000),
     });
@@ -68,6 +90,7 @@ export class Session {
     visibility: 'public' | 'private' = 'public',
   ) {
     this.online = true;
+    await this.warmServer();
     const client = new Client(this.endpoint);
     let roomId = join?.roomId;
     if (join?.code) {
@@ -85,11 +108,82 @@ export class Session {
       createKey: crypto.randomUUID(),
       visibility,
       code: join?.code?.toUpperCase(),
+      admissionId: await this.admit(roomId ? 'join' : 'create'),
     };
-    const room = roomId
-      ? await client.joinById<WorldState>(roomId, settings, WorldState)
-      : await client.create<WorldState>('grave', settings, WorldState);
+    let room: Room<WorldState>;
+    try {
+      room = roomId
+        ? await client.joinById<WorldState>(roomId, settings, WorldState)
+        : await client.create<WorldState>('grave', settings, WorldState);
+    } finally {
+      await this.cancelAdmission();
+    }
+    if (this.closed) {
+      if (room.connection.isOpen) await room.leave();
+      throw Error('ui.errorNetwork');
+    }
     this.attach(room, client);
+  }
+  private async warmServer() {
+    this.notify('ui.serverWaking');
+    const wakingDeadline = Date.now() + 75000;
+    while (!this.closed) {
+      try {
+        const response = await fetch(this.endpoint + '/api/health', {
+          signal: AbortSignal.timeout(10000),
+        });
+        if (response.ok) {
+          const health = await response.json();
+          if (health.protocolVersion !== PROTOCOL || health.contentRevision !== CONTENT_REVISION)
+            throw Error('ui.errorVersion');
+          break;
+        }
+      } catch (error) {
+        if (error instanceof Error && error.message === 'ui.errorVersion') throw error;
+      }
+      if (Date.now() >= wakingDeadline) throw Error('ui.errorServer');
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+    }
+    if (this.closed) throw Error('ui.errorNetwork');
+  }
+  private async admit(kind: 'create' | 'join') {
+    const response = await fetch(this.endpoint + '/api/admission/' + kind, {
+      method: 'POST',
+      signal: AbortSignal.timeout(10000),
+    });
+    if (!response.ok) throw Error(response.status === 429 ? 'ui.errorRate' : 'ui.errorCapacity');
+    let ticket = await response.json();
+    if (typeof ticket.id !== 'string' || !/^[a-f0-9-]{36}$/.test(ticket.id))
+      throw Error('ui.errorServer');
+    this.admissionId = ticket.id;
+    const deadline = Date.now() + 10 * 60000;
+    while (!this.closed) {
+      if (ticket.state === 'ready') {
+        this.notify('ui.connecting');
+        return ticket.id as string;
+      }
+      this.queuePosition = ticket.position;
+      this.notify('ui.waitingCapacity');
+      if (Date.now() >= deadline) break;
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      if (this.closed) break;
+      const poll = await fetch(this.endpoint + '/api/admission/' + this.admissionId, {
+        signal: AbortSignal.timeout(10000),
+      });
+      if (!poll.ok) break;
+      ticket = await poll.json();
+    }
+    await this.cancelAdmission();
+    throw Error('ui.errorCapacity');
+  }
+  private async cancelAdmission() {
+    const id = this.admissionId;
+    this.admissionId = '';
+    if (id)
+      await fetch(this.endpoint + '/api/admission/' + id, {
+        method: 'DELETE',
+        signal: AbortSignal.timeout(1000),
+      }).catch(() => {});
   }
   private notify(key: string) {
     this.status = key;
@@ -178,6 +272,7 @@ export class Session {
   }
   async close() {
     this.closed = true;
+    await this.cancelAdmission();
     this.worker?.terminate();
     if (this.room) {
       this.room.reconnection.enabled = false;
@@ -225,6 +320,7 @@ function networkView(s: WorldState): View {
     ultimateAt: p.ultimateAt,
     dodgeAt: p.dodgeAt,
     reloadAt: p.reloadAt,
+    supplyAt: p.supplyAt,
     downUntil: p.downUntil,
     reviveProgress: p.reviveProgress,
     reviveTarget: p.reviveTarget,
@@ -245,6 +341,7 @@ function networkView(s: WorldState): View {
     owner: s.owner,
     players,
     boss: {
+      variant: s.bossVariant as 'normal' | 'brutal',
       x: 800,
       y: 250,
       health: s.bossHealth,

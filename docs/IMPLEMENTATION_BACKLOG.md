@@ -5,7 +5,7 @@ The approved scope includes genuine endless play, fifteen locales, changelogs, t
 | ID | Stage | Subsystem | Priority | Deliverable and acceptance evidence | Rubric |
 | --- | --- | --- | --- | --- | --- |
 | S1-01 | Stage 1 | Design | P0 | Versioned complete catalog; unique IDs, units and no unresolved entries; content validator | Execution |
-| S1-02 | Stage 1 | Balance | P0 | 126 skills, route-normalized budgets, bounded modifiers; analytical uptime report and CSV | Execution, value |
+| S1-02 | Stage 1 | Balance | P0 | 378 skills, route-normalized budgets, bounded modifiers; analytical uptime report and CSV | Execution, value |
 | S1-03 | Stage 1 | Art | P0 | Eight proof sets; original references, provenance, frame/pivot review and gameplay-size animation preview | Creativity, polish |
 | S1-04 | Stage 1 | Audio | P0 | Two arranged original loops, editable stems, 25 SFX, PCM/seam/hash/summation report | Creativity, polish |
 | S1-05 | Stage 1 | Localization | P0 | Fifteen complete catalogs, placeholder parity and explicit translation-review status | Value, polish |
@@ -43,3 +43,7 @@ The approved scope includes genuine endless play, fifteen locales, changelogs, t
 | S3-06 | Stage 3 | Contest | P0 | Title/cover/description/controls/credits/URL/evidence packet; actual Handshake submission recorded separately | All four |
 
 The four rubric categories are equally important. This matrix is a production guide, not an assertion of a judge's score. Physical-device, human playtesting and native-speaker checks require actual people or devices; simulated evidence is labeled as simulated.
+
+## Current first-loop evidence
+
+56 automated tests, strict TypeScript and production build pass. Eight supplies, three slots, bounded queue/cold-start UX and limited two-class north/south walks are implemented. Desktop assistant review exists. The current local 49+1 server stress passes p99 at 19.772 ms with fifty active players/4,000 hostiles; current foreground FPS is unestablished because the preview was throttled. Signed-boundary/SQL lease foundations are tested locally; live authenticated recovery/D1, hosted capacity, physical devices, human review and all full-content/release gates remain open. No row above becomes complete merely from these partial results.

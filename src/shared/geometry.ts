@@ -18,6 +18,15 @@ export function segmentCircle(a: Vec, b: Vec, c: Vec, r: number): number | null 
   return t >= 0 && t <= 1 ? t : null;
 }
 export function segmentRect(a: Vec, b: Vec, r: Rect, pad = 0): { t: number; normal: Vec } | null {
+  // Most projectiles are nowhere near masonry. Reject disjoint swept bounds
+  // before allocating slab normals; touching bounds still use the exact sweep.
+  if (
+    Math.max(a.x, b.x) < r.x - pad ||
+    Math.min(a.x, b.x) > r.x + r.width + pad ||
+    Math.max(a.y, b.y) < r.y - pad ||
+    Math.min(a.y, b.y) > r.y + r.height + pad
+  )
+    return null;
   let enter = 0,
     exit = 1,
     normal = { x: 0, y: 0 };

@@ -79,8 +79,8 @@ test('skill prerequisites, budgets, class ownership and one capstone are enforce
     p = g.addPlayer('p', 'Mara', 'soldier');
   p.totalSp = 100;
   const nodes = data.skills.filter((s) => s.classId === 'soldier'),
-    first = nodes.filter((s) => s.branchId === nodes[0].branchId),
-    second = nodes.filter((s) => s.branchId === nodes[6].branchId);
+    first = nodes.filter((s) => s.subbranchId === nodes[0].subbranchId),
+    second = nodes.filter((s) => s.subbranchId === nodes[6].subbranchId);
   assert(!g.transact('p', { id: 'bad', kind: 'skill', item: first[2].id }).ok);
   assert(
     !g.transact('p', {

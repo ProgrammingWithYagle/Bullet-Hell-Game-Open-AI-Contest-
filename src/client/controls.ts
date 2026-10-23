@@ -146,6 +146,9 @@ export class Controls {
         4: 'KeyQ',
         5: 'KeyE',
         3: 'KeyX',
+        12: 'Digit1',
+        13: 'Digit2',
+        14: 'Digit3',
       };
       for (const [index, action] of Object.entries(actions)) {
         const n = Number(index),
@@ -166,6 +169,11 @@ export class Controls {
     input.moveY = Math.max(-1, Math.min(1, input.moveY));
     input.fire = this.firing || this.autoFire || gamepadFire;
     input.interact ||= this.interacting || key('KeyF');
+    for (let n = 0; n < 3; n++)
+      if (this.pressed.has('Digit' + (n + 1))) {
+        input.supply = n;
+        break;
+      }
     for (const [action, code] of [
       ['dodge', 'Space'],
       ['reload', 'KeyR'],

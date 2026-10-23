@@ -3,6 +3,8 @@ import catalog from '../../content/catalog.json' with { type: 'json' };
 import {
   HZ,
   DT,
+  CONTENT_REVISION,
+  PROTOCOL,
   idleInput,
   validInput,
   validCommand,
@@ -16,6 +18,7 @@ import {
   type Command,
   type Contract,
   type Result,
+  type SupplySlot,
 } from './protocol.ts';
 import { moveBody, segmentCircle, segmentRect, distance, clamp, SpatialGrid } from './geometry.ts';
 import { Random } from './random.ts';
@@ -73,12 +76,18 @@ export type Player = {
   totalSp: number;
   skills: string[];
   upgrades: Record<string, number>;
+  supplies: SupplySlot[];
+  supplyAt: number;
+  adrenalineUntil: number;
+  supplyShield: number;
+  supplyShieldUntil: number;
   damageTaken: number;
   damageDealt: number;
   healing: number;
   eligible: boolean;
 };
 export type Boss = {
+  variant: 'normal' | 'brutal';
   x: number;
   y: number;
   health: number;
@@ -125,6 +134,7 @@ export class Game {
   peakPlayers = 0;
   accords = 0;
   boss: Boss = {
+    variant: 'normal',
     x: 800,
     y: 250,
     health: 1,
@@ -154,6 +164,7 @@ export class Game {
   private attackAt = [0, 0];
   private transactions = new Map<string, Map<string, { request: string; result: Result }>>();
   private statsCache = new Map<string, Stats>();
+  private healOnHitAt = new Map<string, number>();
   private selectedContract: Contract = {
     id: 'initial',
     threat: 1,
@@ -240,6 +251,11 @@ export class Game {
       totalSp: this.skillBudget(this.encounter),
       skills: [],
       upgrades: {},
+      supplies: Array.from({ length: 3 }, () => ({ id: '', count: 0 })),
+      supplyAt: 0,
+      adrenalineUntil: 0,
+      supplyShield: 0,
+      supplyShieldUntil: 0,
       damageTaken: 0,
       damageDealt: 0,
       healing: 0,
@@ -303,7 +319,7 @@ export class Game {
       effects[u.effect] = (effects[u.effect] ?? 0) + (p.upgrades[u.id] ?? 0) * u.amount;
     const s: Stats = {
       health: cl.health + (effects.maxHealth ?? 0),
-      speed: cl.speed,
+      speed: cl.speed * (1 + (effects.moveSpeed ?? 0)),
       armor: clamp(effects.armor ?? 0, 0, 0.65),
       damage: clamp(1 + (effects.weaponDamage ?? 0), 0.35, 4),
       fireRate: clamp(1 + (effects.fireRate ?? 0), 0.35, 2.5),
@@ -314,10 +330,10 @@ export class Game {
       ability: 1 + (effects.abilityPotency ?? 0),
       crit: clamp(0.05 + (effects.criticalChance ?? 0), 0, 1),
       critMultiplier: 1.5 + (effects.criticalMultiplier ?? 0),
-      pierce: Math.floor(effects.pierce ?? 0),
+      pierce: w.pierce + Math.floor(effects.pierce ?? 0),
       regen: effects.regeneration ?? 0,
       reviveRate: 1 + (effects.reviveRate ?? 0),
-      dodgeCooldown: 1,
+      dodgeCooldown: 1 + (effects.dodgeCooldown ?? 0),
       extraShots: Math.floor(effects.extraShots ?? 0),
       effects,
     };
@@ -350,6 +366,16 @@ export class Game {
     s.dodgeCooldown = clamp(s.dodgeCooldown, 0.4, 1.6);
     this.statsCache.set(p.id, s);
     return s;
+  }
+  movementSpeed(p: Player) {
+    const base = data.classes.find((c) => c.id === p.classId)!.speed;
+    return Math.min(
+      base * 1.65,
+      this.stats(p).speed *
+        (this.combatTick < p.adrenalineUntil
+          ? 1 + data.supplies.find((s) => s.id === 'adrenaline')!.amount
+          : 1),
+    );
   }
   transact(id: string, request: unknown): Result {
     const p = this.players.get(id);
@@ -385,6 +411,15 @@ export class Game {
       price = u.basePrice + level * u.priceStep;
       if (p.coins < price) return { ok: false, reason: 'insufficientCoins' };
       p.upgrades[u.id] = level + 1;
+    } else if (r.kind === 'supply') {
+      const supply = data.supplies.find((s) => s.id === r.item);
+      if (!supply) return { ok: false, reason: 'incompatibleItem' };
+      const slot = p.supplies.find((s) => s.id === supply.id) ?? p.supplies.find((s) => !s.count);
+      if (!slot || slot.count >= supply.maximumStack) return { ok: false, reason: 'inventoryFull' };
+      price = supply.price;
+      if (p.coins < price) return { ok: false, reason: 'insufficientCoins' };
+      slot.id = supply.id;
+      slot.count++;
     } else {
       const s = data.skills.find((s) => s.id === r.item && s.classId === p.classId);
       if (!s || p.skills.includes(s.id) || (s.prerequisite && !p.skills.includes(s.prerequisite)))
@@ -440,7 +475,10 @@ export class Game {
     return [...this.players.values()].filter((p) => !p.expired && p.status !== 'waiting');
   }
   private healthForRoster(n: number, contract = this.selectedContract) {
-    const cycles = this.settings.mode === 'endless' ? Math.floor(this.encounter / 10) : 0;
+    const cycles =
+      this.settings.mode === 'endless'
+        ? Math.floor(this.encounter / rule.endless.cycleEncounters)
+        : 0;
     return (
       rule.bossHealthBase *
       rule.bossHealthThreatGrowth ** (contract.threat - 1) *
@@ -448,8 +486,9 @@ export class Game {
       this.difficulty.health *
       (1 + 0.7 * Math.max(0, n - 1)) *
       this.modifier('bossHealth') *
-      (1 + cycles * 0.15) *
-      (1 + contract.risk * 0.08)
+      (1 + cycles * rule.endless.healthGrowthPerCycle) *
+      (1 + contract.risk * 0.08) *
+      (contract.variant === 'brutal' ? rule.brutal.healthMultiplier : 1)
     );
   }
   private startEncounter() {
@@ -492,6 +531,9 @@ export class Game {
       p.reviveProgress = 0;
       p.downUntil = 0;
       p.channelUntil = 0;
+      p.adrenalineUntil = 0;
+      p.supplyShield = 0;
+      p.supplyShieldUntil = 0;
       p.x = arena.playerSpawn.x + ((i % 8) - 3.5) * 30;
       p.y = arena.playerSpawn.y + Math.floor(i / 8) * 15;
       p.oldX = p.x;
@@ -499,8 +541,15 @@ export class Game {
       p.invulnerableUntil = this.combatTick + ticks(1);
     }
     const health = this.healthForRoster(this.players.size),
-      deadline = this.combatTick + ticks(constable.timer * this.modifier('timer'));
+      deadline =
+        this.combatTick +
+        ticks(
+          constable.timer *
+            this.modifier('timer') *
+            (this.selectedContract.variant === 'brutal' ? rule.brutal.deadlineMultiplier : 1),
+        );
     this.boss = {
+      variant: this.selectedContract.variant ?? 'normal',
       x: 800,
       y: 250,
       health,
@@ -511,7 +560,7 @@ export class Game {
       staggerUntil: 0,
       vulnerableUntil: 0,
     };
-    this.attackAt = [this.combatTick + ticks(2), this.combatTick + ticks(4)];
+    this.attackAt = this.bossPhases()[0].attacks.map((_, i) => this.combatTick + ticks(2 + i * 2));
     this.events.push({ type: 'sound', id: 'boss-phase' });
   }
   private pruneExpired() {
@@ -583,15 +632,25 @@ export class Game {
         .map((w) => w.baselineSustainedDps)
         .toSorted((a, b) => a - b)[3];
       this.contractCards = [0, 1, 2].map((i) => {
+        const variant =
+          this.settings.mode === 'endless' && this.encounter > 0
+            ? ('brutal' as const)
+            : ('normal' as const);
         const card = {
           id: 'watch-' + this.encounter + '-' + i,
           threat,
           risk: i,
-          bounty: 1 + i * 0.15,
+          bounty: (1 + i * 0.15) * (variant === 'brutal' ? rule.brutal.bountyMultiplier : 1),
           recommendedRating: 0,
+          variant,
         };
         card.recommendedRating =
-          this.healthForRoster(1, card) / (constable.timer * referenceDps * 0.65);
+          this.healthForRoster(this.roster().length, card) /
+          (constable.timer *
+            this.modifier('timer') *
+            (variant === 'brutal' ? rule.brutal.deadlineMultiplier : 1) *
+            referenceDps *
+            0.65);
         return card;
       });
       this.changePhase('contractVote', rule.bossVoteSeconds);
@@ -619,6 +678,7 @@ export class Game {
         const next = { ...latest };
         for (const k of ['reload', 'dodge', 'q', 'e', 'ultimate'] as const)
           next[k] = p.pending.some((i) => i[k]);
+        next.supply = p.pending.find((i) => i.supply >= 0)?.supply ?? -1;
         p.ack = latest.sequence;
         p.input = next;
         p.pending = [];
@@ -628,6 +688,7 @@ export class Game {
       this.stepPlayer(p);
       // One-shot actions are consumed by the authoritative step, held movement/fire/interact persist briefly.
       p.input.reload = p.input.dodge = p.input.q = p.input.e = p.input.ultimate = false;
+      p.input.supply = -1;
     }
     this.grid.clear();
     for (const p of this.players.values())
@@ -661,6 +722,8 @@ export class Game {
       return;
     }
     if (p.status !== 'active') return;
+    if (now >= p.supplyShieldUntil) p.supplyShield = 0;
+    if (i.supply >= 0) this.useSupply(p, i.supply);
     if (stats.regen) p.health = Math.min(p.maxHealth, p.health + stats.regen * DT);
     if (p.reloadAt && now >= p.reloadAt) {
       p.ammo = stats.magazine;
@@ -694,7 +757,9 @@ export class Game {
         .map((f) => f.movement ?? 0),
     );
     const dash = now < p.dashUntil,
-      speed = dash ? rule.dodgeSpeed : stats.speed * (now < p.slowUntil ? 0.65 : 1) * (1 + rally);
+      speed = dash
+        ? rule.dodgeSpeed
+        : this.movementSpeed(p) * (now < p.slowUntil ? 0.65 : 1) * (1 + rally);
     const next = moveBody(
       p,
       { x: (dash ? p.dashX : mx) * speed * DT, y: (dash ? p.dashY : my) * speed * DT },
@@ -715,6 +780,67 @@ export class Game {
   private reload(p: Player) {
     const w = data.weapons.find((w) => w.id === p.weapon)!;
     p.reloadAt = this.combatTick + ticks(w.reloadTime * this.stats(p).reload);
+  }
+  private useSupply(p: Player, index: number) {
+    const slot = p.supplies[index],
+      now = this.combatTick;
+    if (!slot?.count || now < p.supplyAt) return;
+    const item = data.supplies.find((s) => s.id === slot.id);
+    if (!item) return;
+    switch (item.effect) {
+      case 'heal':
+        if (p.health >= p.maxHealth) return;
+        this.heal(p, p, item.amount);
+        break;
+      case 'moveSpeed':
+        p.adrenalineUntil = now + ticks(item.duration);
+        break;
+      case 'shield':
+        p.supplyShield = item.amount;
+        p.supplyShieldUntil = now + ticks(item.duration);
+        break;
+      case 'cleanse':
+        if (p.health >= p.maxHealth && p.slowUntil <= now) return;
+        p.slowUntil = 0;
+        this.heal(p, p, item.amount);
+        break;
+      case 'revive': {
+        const ally = this.roster()
+          .filter((a) => a.status === 'downed' && distance(p, a) <= 100)
+          .sort((a, b) => distance(p, a) - distance(p, b) || a.id.localeCompare(b.id))[0];
+        if (!ally) return;
+        this.revive(ally, item.amount);
+        break;
+      }
+      case 'barrier':
+        this.fields.push({
+          id: this.id(),
+          owner: p.id,
+          kind: 'barrier',
+          x: p.x,
+          y: p.y,
+          radius: 85,
+          until: now + ticks(item.duration),
+          potency: item.amount,
+        });
+        break;
+      case 'reload':
+        if (p.ammo === this.stats(p).magazine && !p.reloadAt) return;
+        p.ammo = this.stats(p).magazine;
+        p.reloadAt = 0;
+        break;
+      case 'abilityCooldown':
+        if (p.qAt <= now && p.eAt <= now) return;
+        p.qAt = now + Math.ceil(Math.max(0, p.qAt - now) * (1 - item.amount));
+        p.eAt = now + Math.ceil(Math.max(0, p.eAt - now) * (1 - item.amount));
+        break;
+      default:
+        return;
+    }
+    slot.count--;
+    if (!slot.count) slot.id = '';
+    p.supplyAt = now + ticks(item.cooldown);
+    this.events.push({ type: 'sound', id: 'ui-confirm', owner: p.id, x: p.x, y: p.y });
   }
   private emitShot(
     owner: string,
@@ -809,7 +935,9 @@ export class Game {
           );
       } else {
         const ultimate = slot === 'ultimate',
-          radius = a.radius + (ultimate ? (s.effects.ultimateRadius ?? 0) : 0);
+          radius =
+            a.radius * (ultimate ? 1 : 1 + (s.effects.rallyRadius ?? 0)) +
+            (ultimate ? (s.effects.ultimateRadius ?? 0) : 0);
         this.fields.push({
           id: this.id(),
           owner: p.id,
@@ -818,7 +946,10 @@ export class Game {
           y: p.y,
           radius,
           until: now + ticks(a.duration + (ultimate ? (s.effects.ultimateDuration ?? 0) : 0)),
-          potency: (ultimate ? 0.35 : 0.2) * s.ability,
+          potency: Math.min(
+            0.8,
+            (ultimate ? 0.35 * (1 + (s.effects.ultimatePotency ?? 0)) : 0.2) * s.ability,
+          ),
           movement: ultimate ? 0 : 0.1,
         });
         if (ultimate) {
@@ -826,6 +957,7 @@ export class Game {
             if (distance(ally, p) <= radius) {
               ally.ammo = this.stats(ally).magazine;
               ally.reloadAt = 0;
+              ally.shield = Math.max(ally.shield, s.effects.ultimateShield ?? 0);
             }
           for (const shot of this.shots.values())
             if (shot.owner === 'hostile' && distance(shot, p) <= radius) this.removeShot(shot);
@@ -886,9 +1018,11 @@ export class Game {
     if (p.status !== 'active' || this.combatTick < p.invulnerableUntil) return;
     const s = this.stats(p),
       reduced = amount * (1 - s.armor),
-      blocked = Math.min(p.shield, reduced);
+      plate = this.combatTick < p.supplyShieldUntil ? Math.min(p.supplyShield, reduced) : 0,
+      blocked = Math.min(p.shield, reduced - plate);
+    p.supplyShield -= plate;
     p.shield -= blocked;
-    const actual = Math.min(p.health, reduced - blocked);
+    const actual = Math.min(p.health, reduced - blocked - plate);
     p.health -= actual;
     p.damageTaken += actual;
     p.invulnerableUntil = this.combatTick + ticks(0.2);
@@ -907,14 +1041,37 @@ export class Game {
       amount * (this.combatTick < this.boss.vulnerableUntil ? 1.25 : 1),
     );
     this.boss.health -= actual;
-    if (p) p.damageDealt += actual;
+    if (p) {
+      p.damageDealt += actual;
+      const healing = this.stats(p).effects.healOnHit ?? 0;
+      if (actual > 0 && healing > 0 && this.combatTick >= (this.healOnHitAt.get(p.id) ?? 0)) {
+        const ally = this.roster()
+          .filter((a) => a.status === 'active' && distance(a, p) <= 160 && a.health < a.maxHealth)
+          .sort(
+            (a, b) => a.health / a.maxHealth - b.health / b.maxHealth || a.id.localeCompare(b.id),
+          )[0];
+        if (ally) {
+          this.heal(p, ally, healing);
+          this.healOnHitAt.set(p.id, this.combatTick + ticks(0.25));
+        }
+      }
+    }
+  }
+  private bossPhases() {
+    return this.boss.variant === 'brutal' ? constable.variants.brutal.phases : constable.phases;
   }
   private stepBoss() {
     const now = this.combatTick;
     const fraction = this.boss.health / this.boss.maxHealth,
-      phase = fraction <= 0.4 ? 2 : fraction <= 0.75 ? 1 : 0;
+      phase = this.bossPhases().reduce(
+        (last, p, i) => (fraction <= p.healthThreshold ? i : last),
+        0,
+      );
     if (phase > this.boss.phase && !this.accord) {
       this.boss.phase++;
+      this.attackAt = this.bossPhases()[this.boss.phase].attacks.map(
+        (_, i) => now + ticks(1.5 + i * 1.25),
+      );
       this.rescaleDepartures();
       const count = this.roster().length;
       this.accord = {
@@ -956,7 +1113,7 @@ export class Game {
       } else if (now >= a.until) this.accord = null;
     }
     if (now < this.boss.staggerUntil) return;
-    const attacks = constable.phases[this.boss.phase].attacks;
+    const attacks = this.bossPhases()[this.boss.phase].attacks;
     for (let index = 0; index < attacks.length; index++)
       if (now >= this.attackAt[index]) {
         const attack = attacks[index],
@@ -964,7 +1121,10 @@ export class Game {
         if (!targets.length) continue;
         const target = targets[Math.floor(this.rng.next() * targets.length)];
         this.attackAt[index] = now + ticks(attack.interval);
-        const cycle = Math.floor(this.encounter / 10),
+        const cycle =
+            this.settings.mode === 'endless'
+              ? Math.floor(this.encounter / rule.endless.cycleEncounters)
+              : 0,
           count = Math.min(
             80,
             Math.ceil(attack.count * this.modifier('bossBulletCount')) +
@@ -977,28 +1137,41 @@ export class Game {
             this.difficulty.speed *
             this.modifier('bossSpeed') *
             (1 + this.selectedContract.risk * 0.06) *
-            Math.min(1.5, 1 + cycle * 0.04),
+            (1 +
+              Math.min(rule.endless.maximumSpeedGrowth, cycle * rule.endless.speedGrowthPerCycle)),
           damage =
             attack.damage *
             this.difficulty.damage *
             this.modifier('bossDamage') *
-            (1 + cycle * 0.08);
-        if (attack.kind === 'fan')
-          this.warnings.push({
-            id: this.id(),
-            kind: 'fan',
-            x: this.boss.x,
-            y: this.boss.y,
-            aim: Math.atan2(target.y - this.boss.y, target.x - this.boss.x),
-            count,
-            arc: (90 * Math.PI) / 180,
-            speed,
-            damage,
-            radius: 5,
-            at: now + ticks(attack.telegraph),
-            until: 0,
-          });
-        else
+            (1 + cycle * rule.endless.damageGrowthPerCycle) *
+            (this.boss.variant === 'brutal' ? rule.brutal.damageMultiplier : 1);
+        if (attack.kind === 'fan' || attack.kind === 'ring' || attack.kind === 'lanes') {
+          const origins = attack.kind === 'lanes' ? [-130, 130] : [0];
+          for (const offset of origins)
+            this.warnings.push({
+              id: this.id(),
+              kind: attack.kind === 'ring' ? 'ring' : 'fan',
+              x: this.boss.x + offset,
+              y: this.boss.y,
+              aim: Math.atan2(target.y - this.boss.y, target.x - this.boss.x),
+              count,
+              arc:
+                ((attack.kind === 'ring'
+                  ? 'gap' in attack
+                    ? Number(attack.gap)
+                    : 70
+                  : 'arc' in attack
+                    ? Number(attack.arc)
+                    : 90) *
+                  Math.PI) /
+                180,
+              speed,
+              damage,
+              radius: 5,
+              at: now + ticks(attack.telegraph),
+              until: 0,
+            });
+        } else
           for (let n = 0; n < count; n++) {
             const t = targets[n % targets.length];
             this.warnings.push({
@@ -1021,13 +1194,15 @@ export class Game {
     for (let i = this.warnings.length - 1; i >= 0; i--) {
       const w = this.warnings[i];
       if (now < w.at) continue;
-      if (w.kind === 'fan') {
+      if (w.kind === 'fan' || w.kind === 'ring') {
         for (let n = 0; n < w.count; n++)
           this.emitShot(
             'hostile',
             w.x,
             w.y,
-            w.aim + (n / (w.count - 1) - 0.5) * w.arc,
+            w.kind === 'ring'
+              ? w.aim + w.arc / 2 + (n / Math.max(1, w.count - 1)) * (Math.PI * 2 - w.arc)
+              : w.aim + (n / Math.max(1, w.count - 1) - 0.5) * w.arc,
             w.speed,
             w.damage,
             w.radius,
@@ -1049,7 +1224,7 @@ export class Game {
   private stepFields() {
     for (let i = this.fields.length - 1; i >= 0; i--) {
       const f = this.fields[i];
-      if (this.combatTick >= f.until) {
+      if (this.combatTick >= f.until || (f.kind === 'barrier' && f.potency <= 0)) {
         this.fields.splice(i, 1);
         continue;
       }
@@ -1087,9 +1262,18 @@ export class Game {
         if (hit) wall = Math.min(wall, hit.t);
       }
       let player: Player | undefined,
+        barrier: Field | undefined,
         hitTime = wall,
         bossHit = false;
-      if (s.owner === 'hostile')
+      if (s.owner === 'hostile') {
+        for (const field of this.fields) {
+          if (field.kind !== 'barrier' || field.potency <= 0) continue;
+          const t = segmentCircle(old, next, field, field.radius + s.radius);
+          if (t !== null && t < hitTime) {
+            hitTime = t;
+            barrier = field;
+          }
+        }
         for (const p of this.grid.query(old, next, s.radius + rule.playerRadius)) {
           if (p.status !== 'active') continue;
           const t = segmentCircle(
@@ -1100,10 +1284,11 @@ export class Game {
           );
           if (t !== null && t < hitTime) {
             player = p;
+            barrier = undefined;
             hitTime = t;
           }
         }
-      else {
+      } else {
         const t = segmentCircle(old, next, this.boss, constable.radius + s.radius);
         if (t !== null && t < hitTime) {
           hitTime = t;
@@ -1113,9 +1298,11 @@ export class Game {
       s.x = next.x;
       s.y = next.y;
       if (player) this.damage(player, s.damage);
+      else if (barrier) barrier.potency = Math.max(0, barrier.potency - s.damage);
       else if (bossHit) this.hitBoss(this.players.get(s.owner), s.damage);
       if (
         player ||
+        barrier ||
         bossHit ||
         wall < 1 ||
         this.combatTick >= s.expires ||
@@ -1177,7 +1364,410 @@ export class Game {
     }
     return out;
   }
+  // Practice-only boundary saves never enter the online room or global rankings.
+  offlineCheckpoint() {
+    if (
+      this.players.size !== 1 ||
+      !['lobby', 'mutationVote', 'contractVote', 'shop', 'loading'].includes(this.phase)
+    )
+      return null;
+    const p = [...this.players.values()][0];
+    return {
+      schemaVersion: 1,
+      protocolVersion: PROTOCOL,
+      contentRevision: CONTENT_REVISION,
+      practiceOnly: true,
+      settings: { ...this.settings, maxPlayers: 1 },
+      tick: this.tick,
+      combatTick: this.combatTick,
+      phase: this.phase,
+      phaseEnds: this.phaseEnds,
+      encounter: this.encounter,
+      accords: this.accords,
+      rng: this.rng.state >>> 0,
+      nextId: this.nextId,
+      selectedContract: { ...this.selectedContract },
+      mutations: structuredClone(this.mutations),
+      mutationCards: [...this.mutationCards],
+      contractCards: structuredClone(this.contractCards),
+      votes: Object.fromEntries(this.votes),
+      player: {
+        name: p.name,
+        classId: p.classId,
+        weapon: p.weapon,
+        coins: p.coins,
+        incomeGranted: p.incomeGranted,
+        totalSp: p.totalSp,
+        skills: [...p.skills],
+        upgrades: { ...p.upgrades },
+        supplies: p.supplies.map((s) => ({ ...s })),
+        supplyAt: p.supplyAt,
+        qAt: p.qAt,
+        eAt: p.eAt,
+        ultimateAt: p.ultimateAt,
+        dodgeAt: p.dodgeAt,
+        damageTaken: p.damageTaken,
+        damageDealt: p.damageDealt,
+        healing: p.healing,
+      },
+    };
+  }
+  static restoreOffline(value: unknown): Game {
+    if (
+      !value ||
+      typeof value !== 'object' ||
+      Array.isArray(value) ||
+      JSON.stringify(value).length > 32768
+    )
+      throw Error('invalidCheckpoint');
+    const save = value as NonNullable<ReturnType<Game['offlineCheckpoint']>>;
+    const int = (n: unknown, min = 0, max = 0xffffffff): n is number =>
+      typeof n === 'number' && Number.isSafeInteger(n) && n >= min && n <= max;
+    const finite = (n: unknown, min = 0, max = 1e12) =>
+      typeof n === 'number' && Number.isFinite(n) && n >= min && n <= max;
+    if (
+      save.schemaVersion !== 1 ||
+      save.protocolVersion !== PROTOCOL ||
+      save.contentRevision !== CONTENT_REVISION ||
+      save.practiceOnly !== true
+    )
+      throw Error('versionMismatch');
+    if (
+      !save.settings ||
+      !['short', 'endless'].includes(save.settings.mode) ||
+      save.settings.maxPlayers !== 1 ||
+      !int(save.settings.seed) ||
+      !int(save.tick) ||
+      !int(save.combatTick) ||
+      save.combatTick > save.tick ||
+      !int(save.encounter, 0, 1000000) ||
+      !int(save.accords) ||
+      !int(save.rng) ||
+      !int(save.nextId, 1) ||
+      !['lobby', 'mutationVote', 'contractVote', 'shop', 'loading'].includes(save.phase) ||
+      !int(save.phaseEnds) ||
+      (save.phase !== 'lobby' && (save.phaseEnds < save.tick || save.phaseEnds - save.tick > 1800))
+    )
+      throw Error('invalidCheckpoint');
+    const g = new Game(save.settings),
+      p = save.player;
+    if (
+      !p ||
+      !['soldier', 'medic'].includes(p.classId) ||
+      typeof p.name !== 'string' ||
+      p.name.length > 48 ||
+      !int(p.coins, 0, 100000000) ||
+      !int(p.incomeGranted, 0, 100000000) ||
+      p.totalSp !== g.skillBudget(save.encounter) ||
+      !Array.isArray(p.skills) ||
+      p.skills.length > 18 ||
+      new Set(p.skills).size !== p.skills.length ||
+      !p.upgrades ||
+      typeof p.upgrades !== 'object' ||
+      Array.isArray(p.upgrades) ||
+      !data.weapons.some((w) => w.id === p.weapon && w.classId === p.classId)
+    )
+      throw Error('invalidBuild');
+    if (
+      !Array.isArray(p.supplies) ||
+      p.supplies.length !== 3 ||
+      !int(p.supplyAt) ||
+      p.supplyAt > save.combatTick + 3600
+    )
+      throw Error('invalidInventory');
+    const carried = new Set<string>();
+    for (const slot of p.supplies) {
+      if (
+        !slot ||
+        typeof slot !== 'object' ||
+        !int(slot.count, 0, 2) ||
+        typeof slot.id !== 'string'
+      )
+        throw Error('invalidInventory');
+      if (!slot.count) {
+        if (slot.id !== '') throw Error('invalidInventory');
+        continue;
+      }
+      const definition = data.supplies.find((s) => s.id === slot.id);
+      if (!definition || carried.has(slot.id) || slot.count > definition.maximumStack)
+        throw Error('invalidInventory');
+      carried.add(slot.id);
+    }
+    let spent = 0,
+      capstones = 0;
+    const owned = new Set<string>();
+    for (const id of p.skills) {
+      const node = data.skills.find((s) => s.id === id && s.classId === p.classId);
+      if (!node || (node.prerequisite && !owned.has(node.prerequisite)))
+        throw Error('invalidBuild');
+      spent += node.cost;
+      capstones += Number(node.capstone);
+      owned.add(id);
+    }
+    if (spent > p.totalSp || capstones > 1) throw Error('invalidBuild');
+    for (const [id, level] of Object.entries(p.upgrades)) {
+      const u = data.upgrades.find((u) => u.id === id);
+      if (!u || !int(level, 0, u.maximum)) throw Error('invalidBuild');
+    }
+    for (const n of [p.qAt, p.eAt, p.ultimateAt, p.dodgeAt])
+      if (!int(n) || n > save.combatTick + 3600) throw Error('invalidBuild');
+    for (const n of [p.damageTaken, p.damageDealt, p.healing])
+      if (!finite(n)) throw Error('invalidBuild');
+    if (
+      !Array.isArray(save.mutations) ||
+      save.mutations.length > 3 ||
+      new Set(save.mutations.map((m) => m.id)).size !== save.mutations.length
+    )
+      throw Error('invalidMutations');
+    for (const m of save.mutations) {
+      const definition = data.mutations.find((x) => x.id === m.id);
+      if (
+        !definition ||
+        !int(m.remaining, 1, 3) ||
+        save.mutations.some((other) => new Set<string>(definition.excludes).has(other.id))
+      )
+        throw Error('invalidMutations');
+    }
+    if (
+      !Array.isArray(save.mutationCards) ||
+      save.mutationCards.length > 3 ||
+      new Set(save.mutationCards).size !== save.mutationCards.length ||
+      !save.mutationCards.every((id) => data.mutations.some((m) => m.id === id))
+    )
+      throw Error('invalidCards');
+    const validContract = (c: Contract) =>
+      c &&
+      typeof c.id === 'string' &&
+      /^[a-z0-9-]{1,64}$/.test(c.id) &&
+      int(c.threat, 1, 10) &&
+      int(c.risk, 0, 2) &&
+      finite(c.bounty, 1, 3) &&
+      (c.variant === undefined || ['normal', 'brutal'].includes(c.variant)) &&
+      finite(c.recommendedRating, 0, 1000000);
+    if (
+      !validContract(save.selectedContract) ||
+      !Array.isArray(save.contractCards) ||
+      save.contractCards.length > 3 ||
+      !save.contractCards.every(validContract) ||
+      (save.phase === 'contractVote' && save.contractCards.length !== 3) ||
+      (save.phase === 'mutationVote' && save.mutationCards.length !== 3)
+    )
+      throw Error('invalidCards');
+    if (
+      !save.votes ||
+      typeof save.votes !== 'object' ||
+      Array.isArray(save.votes) ||
+      Object.keys(save.votes).some((id) => id !== 'solo') ||
+      Object.values(save.votes).some((i) => !int(i, 0, 2))
+    )
+      throw Error('invalidVotes');
+    const player = g.addPlayer('solo', p.name, p.classId);
+    Object.assign(player, {
+      weapon: p.weapon,
+      coins: p.coins,
+      incomeGranted: p.incomeGranted,
+      totalSp: p.totalSp,
+      skills: [...p.skills],
+      upgrades: { ...p.upgrades },
+      supplies: p.supplies.map((s) => ({ ...s })),
+      supplyAt: p.supplyAt,
+      qAt: p.qAt,
+      eAt: p.eAt,
+      ultimateAt: p.ultimateAt,
+      dodgeAt: p.dodgeAt,
+      damageTaken: p.damageTaken,
+      damageDealt: p.damageDealt,
+      healing: p.healing,
+      ack: 0,
+      pending: [],
+      input: idleInput(),
+      eligible: true,
+    });
+    g.tick = save.tick;
+    g.combatTick = save.combatTick;
+    g.phase = save.phase;
+    g.phaseEnds = save.phaseEnds;
+    g.encounter = save.encounter;
+    g.accords = save.accords;
+    g.rng.state = save.rng;
+    g.nextId = save.nextId;
+    g.selectedContract = { ...save.selectedContract };
+    g.mutations.push(...structuredClone(save.mutations));
+    g.mutationCards = [...save.mutationCards];
+    g.contractCards = structuredClone(save.contractCards);
+    for (const [id, index] of Object.entries(save.votes)) g.votes.set(id, index);
+    g.statsCache.clear();
+    player.maxHealth = g.stats(player).health;
+    player.health = player.maxHealth;
+    player.ammo = g.stats(player).magazine;
+    return g;
+  }
   // Snapshot is for first-playable rendering and boundary saves, never a trusted online combat result.
+  authoritativeCheckpoint() {
+    if (
+      !['lobby', 'mutationVote', 'contractVote', 'shop', 'loading'].includes(this.phase) ||
+      !this.players.size
+    )
+      return null;
+    return {
+      schemaVersion: 1,
+      protocolVersion: PROTOCOL,
+      contentRevision: CONTENT_REVISION,
+      serverOnly: true,
+      settings: { ...this.settings },
+      tick: this.tick,
+      combatTick: this.combatTick,
+      phase: this.phase,
+      phaseEnds: this.phaseEnds,
+      encounter: this.encounter,
+      accords: this.accords,
+      peakPlayers: this.peakPlayers,
+      rng: this.rng.state >>> 0,
+      nextId: this.nextId,
+      selectedContract: { ...this.selectedContract },
+      mutations: structuredClone(this.mutations),
+      mutationCards: [...this.mutationCards],
+      contractCards: structuredClone(this.contractCards),
+      votes: Object.fromEntries(this.votes),
+      players: this.snapshot().players,
+      transactions: [...this.transactions].map(([id, history]) => ({ id, history: [...history] })),
+    };
+  }
+  // Server code must verify the signature AND obtain a durable owner claim first.
+  // This validator is deliberately not connected to public matchmaking yet.
+  static restoreAuthoritative(value: unknown) {
+    if (
+      !value ||
+      typeof value !== 'object' ||
+      Array.isArray(value) ||
+      JSON.stringify(value).length > 1024 * 1024
+    )
+      throw Error('invalidCheckpoint');
+    const save = value as NonNullable<ReturnType<Game['authoritativeCheckpoint']>>;
+    if (
+      save.serverOnly !== true ||
+      !Array.isArray(save.players) ||
+      !save.players.length ||
+      save.players.length > 50 ||
+      !save.settings ||
+      save.players.length > save.settings.maxPlayers ||
+      !save.votes ||
+      typeof save.votes !== 'object' ||
+      Array.isArray(save.votes)
+    )
+      throw Error('invalidCheckpoint');
+    const ids = new Set<string>();
+    const parts: Game[] = [];
+    for (const source of save.players) {
+      if (
+        !source ||
+        typeof source.id !== 'string' ||
+        !/^[a-zA-Z0-9_-]{1,64}$/.test(source.id) ||
+        ids.has(source.id) ||
+        typeof source.eligible !== 'boolean' ||
+        typeof source.expired !== 'boolean' ||
+        !['active', 'downed', 'eliminated', 'waiting'].includes(source.status)
+      )
+        throw Error('invalidRoster');
+      ids.add(source.id);
+      parts.push(
+        Game.restoreOffline({
+          ...save,
+          players: undefined,
+          transactions: undefined,
+          serverOnly: undefined,
+          peakPlayers: undefined,
+          practiceOnly: true,
+          settings: { ...save.settings, maxPlayers: 1 },
+          player: source,
+          votes: source.id in save.votes ? { solo: save.votes[source.id] } : {},
+        }),
+      );
+    }
+    if (
+      !save.votes ||
+      Object.keys(save.votes).some((id) => !ids.has(id)) ||
+      !Number.isSafeInteger(save.peakPlayers) ||
+      save.peakPlayers < save.players.length ||
+      save.peakPlayers > 50
+    )
+      throw Error('invalidRoster');
+    const base = parts[0],
+      g = new Game(save.settings);
+    for (const key of [
+      'tick',
+      'combatTick',
+      'phase',
+      'phaseEnds',
+      'encounter',
+      'accords',
+      'nextId',
+    ] as const)
+      Object.assign(g, { [key]: base[key] });
+    g.peakPlayers = save.peakPlayers;
+    g.rng.state = base.rng.state;
+    g.selectedContract = { ...base.selectedContract };
+    g.mutations.push(...structuredClone(base.mutations));
+    g.mutationCards = [...base.mutationCards];
+    g.contractCards = structuredClone(base.contractCards);
+    for (const [id, index] of Object.entries(save.votes)) g.votes.set(id, index);
+    for (const [n, source] of save.players.entries()) {
+      const p = parts[n].players.get('solo')!;
+      for (const [key, max] of [
+        ['x', 1600],
+        ['y', 1000],
+        ['health', p.maxHealth],
+        ['shield', 1000],
+      ] as const)
+        if (!Number.isFinite(source[key]) || source[key] < 0 || source[key] > max)
+          throw Error('invalidRoster');
+      Object.assign(p, {
+        id: source.id,
+        x: source.x,
+        y: source.y,
+        oldX: source.x,
+        oldY: source.y,
+        health: source.health,
+        shield: source.shield,
+        status: source.status,
+        connected: false,
+        expired: source.expired,
+        eligible: source.eligible,
+        lastSeen: g.tick,
+        lastInputAt: g.tick,
+      });
+      g.players.set(p.id, p);
+    }
+    if (!Array.isArray(save.transactions) || save.transactions.length > 50)
+      throw Error('invalidTransactions');
+    for (const item of save.transactions) {
+      if (
+        !item ||
+        !ids.has(item.id) ||
+        g.transactions.has(item.id) ||
+        !Array.isArray(item.history) ||
+        item.history.length > 256
+      )
+        throw Error('invalidTransactions');
+      const history = new Map<string, { request: string; result: Result }>();
+      for (const [id, entry] of item.history) {
+        if (
+          typeof entry?.request !== 'string' ||
+          entry.request.length > 512 ||
+          typeof entry.result?.ok !== 'boolean' ||
+          (entry.result.reason !== undefined &&
+            (typeof entry.result.reason !== 'string' || entry.result.reason.length > 64))
+        )
+          throw Error('invalidTransactions');
+        const request = JSON.parse(entry.request);
+        if (!validCommand(request) || request.id !== id || history.has(id))
+          throw Error('invalidTransactions');
+        history.set(id, { request: entry.request, result: { ...entry.result } });
+      }
+      g.transactions.set(item.id, history);
+    }
+    return g;
+  }
   snapshot() {
     return {
       tick: this.tick,

@@ -716,3 +716,39 @@ progress::-moz-progress-bar {
     scroll-behavior: auto !important;
   }
 }
+#supply-bar {
+  display: flex;
+  gap: 4px;
+  pointer-events: auto;
+}
+#supply-bar button {
+  position: relative;
+  width: 48px;
+  min-height: 50px;
+  padding: 4px;
+  background: #112e26e8;
+  color: #f3e6bb;
+  border: 1px solid #a5b38a;
+}
+#supply-bar b {
+  position: absolute;
+  inset-inline-start: 3px;
+  top: 1px;
+  font-size: 10px;
+}
+#supply-bar .ink-icon {
+  width: 25px;
+  height: 25px;
+  display: block;
+  margin: auto;
+}
+#supply-bar small {
+  font-size: 11px;
+}
+#supply-bar [data-supply-time] {
+  color: #f7ba87;
+  margin-inline-start: 4px;
+}
+#supply-bar button:disabled {
+  opacity: 0.55;
+}

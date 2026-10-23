@@ -1,15 +1,22 @@
 import Phaser from 'phaser';
 import './style.css';
+import './ui/polish.css';
+import './fonts.css';
+import './ui/votes.css';
 import { CombatScene } from './scene.ts';
 import { Session, type ConnectionOptions } from './session.ts';
 import { Controls } from './controls.ts';
 import { Prediction } from './prediction.ts';
 import { AudioBus } from './audio.ts';
-import { assets } from './assets.ts';
-import { initialLanguage, languages, locale, number, setLanguage, t } from './i18n.ts';
+import { initialLanguage, locale, number, setLanguage, t } from './i18n.ts';
 import { prototypeNotice } from './runtime-messages.ts';
+import { mountSetup, setupOptions } from './ui/setup.ts';
+import { shopMarkup, bindShop, supplyGlyph } from './ui/shop.ts';
+import { icon } from './ui/icons.ts';
+import { supplyText } from './content-text.ts';
+import { voteMarkup } from './ui/votes.ts';
+import { rateBuild, buildGrade } from '../shared/build-rating.ts';
 import { data } from '../shared/game.ts';
-import type { ClassId } from '../shared/protocol.ts';
 import type { View, PlayerView } from '../shared/view.ts';
 const app = document.querySelector<HTMLElement>('#app')!,
   audio = new AudioBus();
@@ -30,6 +37,17 @@ const esc = (v: unknown) =>
   );
 const text = (key: string, args: Record<string, string | number> = {}) => esc(t(key, args));
 const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
+let lastMetricsPaint = 0;
+const ratingCache = new Map<string, { key: string; value: number }>();
+function rating(p: PlayerView) {
+  const key = JSON.stringify([p.classId, p.weapon, p.skills, p.upgrades]);
+  let cached = ratingCache.get(p.id);
+  if (cached?.key !== key) {
+    cached = { key, value: rateBuild(p) };
+    ratingCache.set(p.id, cached);
+  }
+  return cached!.value;
+}
 const settings = {
   autoFire: false,
   aimAssist: false,
@@ -70,8 +88,6 @@ function applySettings() {
   }
   audio.setVolume(settings.volume, settings.music);
 }
-const select = (id: string, label: string, options: [string, string][]) =>
-  `<label>${text(label)}<select id="${id}">${options.map(([value, label]) => `<option value="${esc(value)}">${esc(label)}</option>`).join('')}</select></label>`;
 function settingsMarkup() {
   return `<details class="settings"><summary>${text('ui.settings')}</summary><div class="settings-grid">${(['autoFire', 'aimAssist', 'hitboxes', 'reduceMotion', 'highContrast'] as const).map((key) => `<label class="check"><input type="checkbox" data-setting="${key}" ${settings[key] ? 'checked' : ''}>${text('ui.' + key)}</label>`).join('')}<label>${text('ui.effectsVolume')}<input data-setting="volume" type="range" min="0" max="1" step="0.05" value="${settings.volume}"></label><label>${text('ui.musicVolume')}<input data-setting="music" type="range" min="0" max="1" step="0.05" value="${settings.music}"></label><label>${text('ui.textSize')}<input data-setting="textScale" type="range" min="0.9" max="1.4" step="0.1" value="${settings.textScale}"></label></div></details>`;
 }
@@ -94,78 +110,37 @@ function notice(value: string) {
 }
 async function menu() {
   document.body.classList.remove('playing');
-  app.innerHTML = `<div class="menu"><header class="hero"><img src="${assets.cover}" alt=""><div><p class="eyebrow">GRAVE ACCORD · 0.2.0</p><h1>Grave Accord</h1><p>${text('ui.tagline')}</p></div></header><section class="menu-body"><p class="prototype">${esc(prototypeNotice[locale] ?? prototypeNotice.en)}</p><div class="menu-grid"><section class="setup"><h2>${text('ui.newRun')}</h2><div class="form-grid"><label>${text('ui.displayName')}<input id="name" maxlength="24" value="Survivor" autocomplete="nickname"></label>${select(
-    'class',
-    'ui.chooseClass',
-    [
-      ['soldier', t('class.soldier.name')],
-      ['medic', t('class.medic.name')],
-    ],
-  )}${select('mode', 'ui.chooseMode', [
-    ['short', t('mode.short.name')],
-    ['endless', t('mode.endless.name')],
-  ])}${select(
-    'difficulty',
-    'ui.chooseDifficulty',
-    ['baby', 'easy', 'normal', 'hard'].map((id) => [id, t('difficulty.' + id + '.name')]),
-  )}${select('language', 'ui.language', languages as [string, string][])}</div><div class="actions"><button id="solo" class="primary">${text('ui.solo')}</button><button id="public">${text('ui.createRoom')} · ${text('ui.publicRooms')}</button><button id="private">${text('ui.createRoom')} · ${text('ui.privateRoom')}</button></div><p class="muted">${text('ui.offlineNotice')}</p></section><section class="join"><h2>${text('ui.joinRoom')}</h2><label>${text('ui.roomCode')}<div class="inline"><input id="code" maxlength="6" autocapitalize="characters" spellcheck="false"><button id="join-code">${text('ui.joinRoom')}</button></div></label><div class="section-heading"><h3>${text('ui.publicRooms')}</h3><button id="refresh">↻ <span>${text('ui.search')}</span></button></div><div id="rooms" class="rooms"><p>${text('ui.noRooms')}</p></div></section></div><p id="notice" role="status" hidden></p>${settingsMarkup()}<details><summary>${text('ui.controls')}</summary><p>${text('ui.tutorialMove', { binding: 'WASD / ↑←↓→' })}</p><p>${text('ui.tutorialDodge', { binding: 'Space / A' })} · ${text('ui.reload')}: R / X</p><p>Q · E · ${text('ui.ultimate')}: X / Y · ${text('ui.revive')}: F / B</p><p>${text('ui.portraitHint')}</p></details><footer><span>${text('ui.translationNotice')}</span><a href="https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/wiki" target="_blank" rel="noopener">${text('ui.howToPlay')}</a><a href="https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/main/CHANGELOG.md" target="_blank" rel="noopener">${text('ui.changelog')}</a></footer></section></div>`;
-  $('language').addEventListener('change', async () => {
-    await setLanguage(($('language') as HTMLSelectElement).value);
-    await menu();
+  mountSetup(app, {
+    resume: () => {
+      void begin(false, undefined, 'public', undefined, true);
+    },
+    launch: (online, opts, join, visibility) => {
+      void begin(online, join, visibility, opts);
+    },
+    settingsHTML: settingsMarkup,
+    bindSettings,
   });
-  ($('language') as HTMLSelectElement).value = locale;
-  ($('difficulty') as HTMLSelectElement).value = 'normal';
-  bindSettings();
-  $('solo').onclick = () => void begin(false);
-  $('public').onclick = () => void begin(true);
-  $('private').onclick = () => void begin(true, undefined, 'private');
-  $('join-code').onclick = () => {
-    const code = ($('code') as HTMLInputElement).value.trim();
-    if (/^[ABCDEFGHJKLMNPQRSTUVWXYZ23456789]{6}$/i.test(code)) void begin(true, { code });
-    else notice(t('ui.errorCode'));
-  };
-  $('refresh').onclick = () => void refresh();
   applySettings();
 }
 function options(): ConnectionOptions {
-  return {
-    name: ($('name') as HTMLInputElement).value.trim() || 'Survivor',
-    classId: ($('class') as HTMLSelectElement).value as ClassId,
-    mode: ($('mode') as HTMLSelectElement).value as 'short' | 'endless',
-    difficulty: ($('difficulty') as HTMLSelectElement).value,
-  };
-}
-async function refresh() {
-  try {
-    const rooms = await new Session().rooms();
-    const container = $('rooms');
-    container.replaceChildren();
-    if (!rooms.length) container.textContent = t('ui.noRooms');
-    for (const room of rooms) {
-      const button = document.createElement('button');
-      button.textContent = `${t('mode.' + room.mode + '.name')} · ${t('difficulty.' + room.difficulty + '.name')} · ${number(room.players)}/${number(room.maximumPlayers)} · ${t('ui.' + (room.phase === 'lobby' ? 'ready' : 'lateJoin'))}`;
-      button.disabled = room.players >= room.maximumPlayers;
-      button.onclick = () => void begin(true, { roomId: room.roomId });
-      container.append(button);
-    }
-  } catch {
-    notice(t('ui.errorNetwork'));
-  }
+  return setupOptions();
 }
 async function begin(
   online: boolean,
   join?: { roomId?: string; code?: string },
   visibility: 'public' | 'private' = 'public',
+  prepared?: ConnectionOptions,
+  resume = false,
 ) {
   if (busy) return;
   busy = true;
-  const opts = options();
+  const opts = prepared ?? options();
   notice(t('ui.connecting'));
   await audio.unlock().catch(() => {});
   session = new Session();
   const active = session;
   try {
-    setupGame();
+    setupGame(online);
     active.onView = update;
     active.onEvents = (events) => {
       scene?.ingest(events);
@@ -173,7 +148,7 @@ async function begin(
     };
     active.onStatus = (key) => {
       const e = $('status');
-      if (e) e.textContent = t(key, { seconds: 60 });
+      if (e) e.textContent = t(key, { seconds: 60, position: active.queuePosition });
       if (controls) {
         controls.blocked =
           paused ||
@@ -186,14 +161,18 @@ async function begin(
     active.onPurchase = (r) => {
       if (!r.ok) {
         $('status').textContent = t(
-          r.reason === 'insufficientCoins' ? 'ui.notEnoughCoins' : 'ui.errorPurchase',
+          r.reason === 'insufficientCoins'
+            ? 'ui.notEnoughCoins'
+            : r.reason === 'inventoryFull'
+              ? 'ui.inventoryFull'
+              : 'ui.errorPurchase',
         );
       } else void audio.sound('ui-confirm');
     };
     $('status').textContent = t('ui.loading');
     await scene!.prepared;
     if (online) await active.connect(opts, join, visibility);
-    else active.offline(opts);
+    else await active.offline(opts, resume);
     timer = setInterval(() => {
       const view = active.view;
       if (!view || (paused && !active.online)) return;
@@ -218,13 +197,23 @@ async function begin(
     busy = false;
   }
 }
-function setupGame() {
+function setupGame(online: boolean) {
   document.body.classList.add('playing');
   paused = false;
   uiKey = '';
   lastPhase = '';
   prediction = new Prediction();
-  app.innerHTML = `<div id="stage" dir="ltr"></div><section class="hud" aria-label="${text('ui.health')}"><div class="topline"><div><strong id="encounter"></strong><small id="status" role="status"></small></div><div id="boss-panel"><strong>${text('boss.constable.name')}</strong><span id="deadline"></span><progress id="boss-health" max="1" value="1" aria-label="${text('ui.boss')}"></progress></div><button id="pause-button">Ⅱ <span>${text('ui.pause')}</span></button></div><div id="accord" class="accord" hidden></div><div class="bottomline"><div class="vitals"><strong id="player-name"></strong><progress id="health" max="1" value="1" aria-label="${text('ui.health')}"></progress><span id="health-text"></span><span id="ammo"></span><span id="currency"></span></div><div id="abilities" class="ability-list"></div><div id="squad" class="squad"></div></div></section><div id="modal" class="overlay" hidden></div><div id="pause-menu" class="overlay" hidden><section class="dialog"><h2>${text('ui.paused')}</h2><p>${text('ui.onlinePause')}</p>${settingsMarkup()}<div class="actions"><button id="resume" class="primary">${text('ui.continue')}</button><button id="leave">${text('ui.leaveRoom')}</button></div></section></div><div class="touch-buttons"><button data-action="Space">${text('ui.dodge')}</button><button data-action="KeyQ">Q</button><button data-action="KeyE">E</button><button data-action="KeyX">${text('ui.ultimate')}</button><button data-action="interact">${text('ui.revive')}</button><button data-action="KeyR">${text('ui.reload')}</button></div><div class="portrait-note">${text('ui.portraitHint')}</div>`;
+  app.innerHTML = `<div id="stage" dir="ltr"></div><section class="hud" aria-label="${text('ui.health')}"><div class="topline"><div><strong id="encounter"></strong><small id="status" role="status"></small></div><div id="boss-panel"><strong>${text('boss.constable.name')}</strong><span id="deadline"></span><progress id="boss-health" max="1" value="1" aria-label="${text('ui.boss')}"></progress></div><button id="pause-button">Ⅱ <span>${text('ui.pause')}</span></button></div><div id="accord" class="accord" hidden></div><div class="bottomline"><div class="vitals"><strong id="player-name"></strong><progress id="health" max="1" value="1" aria-label="${text('ui.health')}"></progress><span id="health-text"></span><span id="ammo"></span><span id="currency"></span></div><div id="abilities" class="ability-list"></div><div id="squad" class="squad"></div></div></section><div id="modal" class="overlay" hidden></div><div id="pause-menu" class="overlay" hidden><section class="dialog"><h2>${text('ui.paused')}</h2><p>${text(online ? 'ui.onlinePause' : 'ui.offlineNotice')}</p>${settingsMarkup()}<div class="actions"><button id="resume" class="primary">${text('ui.continue')}</button><button id="leave">${text('ui.leaveRoom')}</button></div></section></div><div class="touch-buttons"><button data-action="Space">${text('ui.dodge')}</button><button data-action="KeyQ">Q</button><button data-action="KeyE">E</button><button data-action="KeyX">${text('ui.ultimate')}</button><button data-action="interact">${text('ui.revive')}</button><button data-action="KeyR">${text('ui.reload')}</button></div><div class="portrait-note">${text('ui.portraitHint')}</div>`;
+  const supplyBar = document.createElement('div');
+  supplyBar.id = 'supply-bar';
+  supplyBar.className = 'supply-bar';
+  supplyBar.setAttribute('aria-label', t('ui.supplies'));
+  supplyBar.innerHTML = Array.from(
+    { length: 3 },
+    (_, i) =>
+      `<button data-supply-slot="${i}" data-action="Digit${i + 1}" disabled><b>${i + 1}</b><span data-supply-glyph>${icon('ability')}</span><small data-supply-count>—</small><small data-supply-time></small></button>`,
+  ).join('');
+  $('squad').before(supplyBar);
   controls = new Controls($('stage'));
   scene = new CombatScene();
   game = new Phaser.Game({
@@ -243,6 +232,19 @@ function setupGame() {
   $('leave').onclick = () => void leave();
   bindSettings();
   applySettings();
+  if (import.meta.env.DEV) {
+    const panel = document.createElement('aside');
+    panel.id = 'dev-metrics';
+    panel.hidden = true;
+    panel.style.cssText =
+      'position:fixed;right:8px;top:80px;z-index:60;background:#061b14eb;color:#f3e7bf;padding:12px;border:1px solid #bbcc9c;font:12px monospace;max-width:330px;max-height:80vh;overflow:auto;pointer-events:auto';
+    panel.innerHTML =
+      '<strong>Development measurement · F8</strong><pre id="dev-metrics-data"></pre><button id="dev-metrics-reset">Reset render sample</button><button id="dev-metrics-baseline">Capture 20 s baseline</button><button id="dev-metrics-stress">Capture 20 s at 4,000 hostiles</button>';
+    app.append(panel);
+    $('dev-metrics-reset').onclick = () => scene?.frameMeter.reset();
+    $('dev-metrics-baseline').onclick = () => scene?.frameMeter.beginCapture(20000);
+    $('dev-metrics-stress').onclick = () => scene?.frameMeter.beginCapture(20000, 4000);
+  }
 }
 function togglePause() {
   paused = !paused;
@@ -267,7 +269,22 @@ function update(view: View) {
     session.status === 'ui.reconnecting' ||
     session.status === 'ui.errorNetwork';
   $('encounter').textContent = t('ui.encounter', { number: view.encounter + 1 });
-  $('player-name').textContent = p.name + ' · ' + t('class.' + p.classId + '.name');
+  $('player-name').textContent =
+    p.name +
+    ' · ' +
+    t('class.' + p.classId + '.name') +
+    ' · ' +
+    t('ui.buildRating') +
+    ' ' +
+    buildGrade(rating(p));
+  const bossTitle = $('boss-panel').querySelector('strong');
+  if (bossTitle)
+    bossTitle.textContent =
+      t('boss.constable.name') +
+      ' · ' +
+      t(view.boss.variant === 'brutal' ? 'ui.variantBrutal' : 'ui.variantNormal') +
+      ' · ' +
+      t('ui.phase', { number: view.boss.phase + 1 });
   const hp = $<HTMLProgressElement>('health');
   hp.max = p.maxHealth;
   hp.value = p.health;
@@ -280,6 +297,35 @@ function update(view: View) {
     t(p.reloadAt > view.combatTick ? 'ui.reloading' : 'ui.ammo') + ' ' + number(p.ammo);
   $('currency').textContent =
     t('ui.coins') + ' ' + number(p.coins) + ' · ' + t('ui.skillPoints') + ' ' + number(p.sp);
+  for (const button of document.querySelectorAll<HTMLButtonElement>('[data-supply-slot]')) {
+    const index = Number(button.dataset.supplySlot),
+      slot = p.supplies[index];
+    const item = data.supplies.find((s) => s.id === slot?.id);
+    const remaining = Math.max(0, Math.ceil((p.supplyAt - view.combatTick) / 30));
+    const name = item ? t('supply.' + item.id + '.name') : t('ui.supplies');
+    button.disabled =
+      !item ||
+      !slot.count ||
+      remaining > 0 ||
+      p.status !== 'active' ||
+      view.phase !== 'combat' ||
+      paused;
+    button.setAttribute('aria-label', `${number(index + 1)} · ${name} ×${number(slot.count)}`);
+    button.title = item
+      ? name + '\n' + supplyText(item.id) + '\n' + t('ui.supplyHelp')
+      : t('ui.supplyHelp');
+    if (button.dataset.item !== slot.id) {
+      button.dataset.item = slot.id;
+      button.querySelector('[data-supply-glyph]')!.innerHTML = icon(
+        item ? supplyGlyph(item.effect) : 'ability',
+      );
+    }
+    button.querySelector('[data-supply-count]')!.textContent = item
+      ? '×' + number(slot.count)
+      : '—';
+    button.querySelector('[data-supply-time]')!.textContent =
+      item && remaining ? number(remaining) : '';
+  }
   const boss = $<HTMLProgressElement>('boss-health');
   boss.max = view.boss.maxHealth;
   boss.value = view.boss.health;
@@ -295,19 +341,24 @@ function update(view: View) {
       ' ' +
       clock((view.accord.until - view.combatTick) / 30);
   const cl = data.classes.find((c) => c.id === p.classId)!;
-  $('abilities').replaceChildren();
+  const abilityList = $('abilities');
   for (const [key, label, at, name] of [
     ['Space', t('ui.dodge'), p.dodgeAt, ''],
     ['Q', t('ui.abilityQ'), p.qAt, t('ability.' + cl.abilities[0].id + '.name')],
     ['E', t('ui.abilityE'), p.eAt, t('ability.' + cl.abilities[1].id + '.name')],
     ['X', t('ui.ultimate'), p.ultimateAt, t('ability.' + cl.ultimate.id + '.name')],
   ] as const) {
-    const e = document.createElement('span');
+    let e = abilityList.querySelector<HTMLElement>('[data-ability="' + key + '"]');
+    if (!e) {
+      e = document.createElement('span');
+      e.dataset.ability = key;
+      abilityList.append(e);
+    }
     e.className = at <= view.combatTick ? 'ability ready' : 'ability';
     e.title = name;
-    e.textContent =
+    const value =
       key + ' · ' + label + ' ' + (at > view.combatTick ? clock((at - view.combatTick) / 30) : '✓');
-    $('abilities').append(e);
+    if (e.textContent !== value) e.textContent = value;
   }
   $('squad').textContent =
     t('ui.players') +
@@ -323,6 +374,8 @@ function update(view: View) {
       t('ui.revivePrompt', { binding: 'F / B', player: p.name });
   else if (p.status === 'waiting') $('status').textContent = t('ui.lateJoin');
   else if (p.status === 'eliminated') $('status').textContent = t('ui.eliminated');
+  else if (!['ui.reconnecting', 'ui.errorNetwork'].includes(session.status))
+    $('status').textContent = '';
   if (view.phase !== lastPhase) {
     lastPhase = view.phase;
     void audio.loop(view.phase === 'combat');
@@ -334,6 +387,7 @@ function update(view: View) {
     p.weapon,
     p.skills,
     p.upgrades,
+    p.supplies,
     view.mutationCards,
     view.contractCards,
     view.owner,
@@ -347,7 +401,34 @@ function update(view: View) {
   if (time) time.textContent = clock((view.phaseEnds - view.tick) / 30);
   for (const e of document.querySelectorAll<HTMLElement>('[data-vote-count]')) {
     const i = Number(e.dataset.voteCount);
-    e.textContent = number(Object.values(view.votes).filter((v) => v === i).length);
+    e.textContent = number(
+      Object.entries(view.votes).filter(
+        ([id, v]) => v === i && view.players.some((p) => p.id === id && p.connected),
+      ).length,
+    );
+  }
+  for (const button of document.querySelectorAll<HTMLButtonElement>('[data-vote]')) {
+    const selected = view.votes[session.id] === Number(button.dataset.vote);
+    button.classList.toggle('voted', selected);
+    button.setAttribute('aria-pressed', String(selected));
+    const marker = button.querySelector<HTMLElement>('[data-your-vote]');
+    if (marker) marker.hidden = !selected;
+  }
+  if (import.meta.env.DEV) {
+    const panel = $('dev-metrics');
+    if (panel && !panel.hidden && performance.now() - lastMetricsPaint > 500) {
+      lastMetricsPaint = performance.now();
+      $('dev-metrics-data').textContent = JSON.stringify(
+        {
+          phase: view.phase,
+          tick: view.tick,
+          players: view.players.length,
+          ...scene.diagnostics(),
+        },
+        null,
+        2,
+      );
+    }
   }
 }
 function clock(seconds: number) {
@@ -362,10 +443,10 @@ function renderOverlay(view: View, p: PlayerView) {
     title = '';
   if (view.phase === 'mutationVote') {
     title = t('ui.mutationVote');
-    body = `<div class="cards">${view.mutationCards.map((id, i) => `<button data-vote="${i}"><h3>${text('mutation.' + id + '.name')}</h3><p>${text('mutation.' + id + '.description')}</p><span>${text('ui.vote')} · <b data-vote-count="${i}">0</b></span></button>`).join('')}</div>`;
+    body = voteMarkup(view);
   } else if (view.phase === 'contractVote') {
     title = t('ui.bossVote');
-    body = `<div class="cards">${view.contractCards.map((c, i) => `<button data-vote="${i}"><h3>${text('ui.bossConcealed')} ${number(i + 1)}</h3><p>${text('ui.threat')} ${number(c.threat)} · ${text('ui.bounty')} ×${number(c.bounty, 2)}</p><p>${text('ui.recommended')} ×${number(c.recommendedRating, 2)}</p><span>${text('ui.vote')} · <b data-vote-count="${i}">0</b></span></button>`).join('')}</div><p class="muted">${esc(prototypeNotice[locale])}</p>`;
+    body = voteMarkup(view);
   } else if (view.phase === 'lobby' || view.phase === 'shop') {
     title = t(view.phase === 'lobby' ? 'ui.roomSettings' : 'ui.shop');
     body =
@@ -380,11 +461,18 @@ function renderOverlay(view: View, p: PlayerView) {
     title = t(view.phase === 'victory' ? 'ui.victory' : 'ui.defeat');
     body = `<p>${text('ui.offlineNotice')}</p><button id="return-menu" class="primary">${text('ui.mainMenu')}</button>`;
   }
-  const focus =
-    document.activeElement instanceof HTMLElement
-      ? document.activeElement.dataset.focus
-      : undefined;
-  overlay.innerHTML = `<section class="dialog ${view.phase === 'lobby' || view.phase === 'shop' ? 'wide' : ''}"><div class="section-heading"><h2>${esc(title)}</h2><span id="phase-time"></span></div>${body}</section>`;
+  const previous =
+    document.activeElement instanceof HTMLElement && overlay.contains(document.activeElement)
+      ? document.activeElement
+      : null;
+  const focusedId = previous?.id;
+  const focusedItem = previous?.dataset.inspect;
+  const scroll = overlay.querySelector('.skill-scroll')?.scrollTop ?? 0;
+  const samePhase = overlay.dataset.phase === view.phase;
+  overlay.dataset.phase = view.phase;
+  overlay.innerHTML = `<section class="dialog ${view.phase === 'lobby' || view.phase === 'shop' ? 'wide' : ''}" role="dialog" aria-modal="true" aria-labelledby="phase-heading"><div class="section-heading"><h2 id="phase-heading" tabindex="-1">${esc(title)}</h2><span id="phase-time"></span></div>${body}</section>`;
+  if (['lobby', 'shop'].includes(view.phase))
+    bindShop(overlay, p, (request) => session?.purchase(request));
   overlay.querySelectorAll<HTMLButtonElement>('[data-vote]').forEach(
     (button) =>
       (button.onclick = () => {
@@ -392,85 +480,28 @@ function renderOverlay(view: View, p: PlayerView) {
         void audio.sound('ui-confirm');
       }),
   );
-  overlay.querySelectorAll<HTMLButtonElement>('[data-kind]').forEach(
-    (button) =>
-      (button.onclick = () =>
-        session?.purchase({
-          kind: button.dataset.kind as 'weapon' | 'upgrade' | 'skill',
-          item: button.dataset.item!,
-        })),
-  );
   const start = $('start');
   if (start) start.onclick = () => session?.start();
   const back = $('return-menu');
   if (back) back.onclick = () => void leave();
-  if (focus)
-    overlay.querySelector<HTMLElement>('[data-focus="' + CSS.escape(focus) + '"]')?.focus();
+  if (samePhase) {
+    const scroller = overlay.querySelector('.skill-scroll');
+    if (scroller) scroller.scrollTop = scroll;
+  }
+  if (!paused) {
+    const target = focusedId
+      ? overlay.querySelector<HTMLElement>('#' + CSS.escape(focusedId))
+      : focusedItem
+        ? overlay.querySelector<HTMLElement>('[data-inspect="' + CSS.escape(focusedItem) + '"]')
+        : null;
+    if (target && !(target instanceof HTMLButtonElement && target.disabled))
+      target.focus({ preventScroll: true });
+    else if (previous || !samePhase)
+      overlay.querySelector<HTMLElement>('#phase-heading')!.focus({ preventScroll: true });
+  }
 }
 function shop(p: PlayerView) {
-  const item = (
-    kind: string,
-    id: string,
-    title: string,
-    description: string,
-    price: number,
-    disabled: boolean,
-    currency: string,
-  ) =>
-    `<button data-kind="${kind}" data-item="${id}" data-focus="${id}" ${disabled ? 'disabled' : ''}><strong>${esc(title)}</strong><small>${esc(description)}</small><span>${number(price)} ${text(currency)}</span></button>`;
-  return `<div class="shop-summary">${text('ui.coins')} ${number(p.coins)} · ${text('ui.skillPoints')} ${number(p.sp)} · ${text('ui.capstoneLimit')}</div><div class="shop-columns"><section><h3>${text('ui.equip')}</h3><div class="shop-items">${data.weapons
-    .filter((w) => w.classId === p.classId)
-    .map((w) =>
-      item(
-        'weapon',
-        w.id,
-        t('weapon.' + w.id + '.name'),
-        t('stat.damage') + ' ' + number(w.damage) + ' · ' + t('ui.ammo') + ' ' + w.magazine,
-        w.price,
-        p.weapon === w.id || p.coins < w.price,
-        'ui.coins',
-      ),
-    )
-    .join('')}</div><h3>${text('ui.upgrade')}</h3><div class="shop-items">${data.upgrades
-    .map((u) => {
-      const level = p.upgrades[u.id] ?? 0,
-        price = u.basePrice + level * u.priceStep;
-      return item(
-        'upgrade',
-        u.id,
-        t('upgrade.' + u.id + '.name'),
-        number(level) + ' / ' + number(u.maximum),
-        price,
-        level >= u.maximum || p.coins < price,
-        'ui.coins',
-      );
-    })
-    .join(
-      '',
-    )}</div></section><section><h3>${text('ui.skillTree')}</h3><div class="branches">${data.classes
-    .find((c) => c.id === p.classId)!
-    .branches.map(
-      (branch) =>
-        `<section><h4>${text('branch.' + branch.id)}</h4>${data.skills
-          .filter((s) => s.classId === p.classId && s.branchId === branch.id)
-          .map((s) =>
-            item(
-              'skill',
-              s.id,
-              t('skill.' + s.id + '.name'),
-              t('skill.' + s.id + '.description'),
-              s.cost,
-              p.skills.includes(s.id) ||
-                p.sp < s.cost ||
-                Boolean(s.prerequisite && !p.skills.includes(s.prerequisite)) ||
-                (s.capstone &&
-                  p.skills.some((id) => data.skills.find((n) => n.id === id)?.capstone)),
-              'ui.skillPoints',
-            ),
-          )
-          .join('')}</section>`,
-    )
-    .join('')}</div></section></div>`;
+  return '<div class="loadout-editor">' + shopMarkup(p) + '</div>';
 }
 async function leave() {
   controls?.clear();
@@ -488,8 +519,18 @@ function destroy() {
   scene = undefined;
   controls = undefined;
   session = undefined;
+  ratingCache.clear();
 }
 window.addEventListener('keydown', (e) => {
+  if (import.meta.env.DEV && e.code === 'F8' && scene) {
+    e.preventDefault();
+    const panel = $('dev-metrics');
+    if (panel) {
+      panel.hidden = !panel.hidden;
+      if (!panel.hidden) scene.frameMeter.reset();
+    }
+    return;
+  }
   if (e.code === 'Escape' && session) togglePause();
 });
 document.addEventListener('visibilitychange', () => {
