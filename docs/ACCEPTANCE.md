@@ -18,3 +18,9 @@ The implementation plan is approved. Status entries below report observed comple
 | Human tests | Pacing, feel, teamwork, device and native-language review | Not performed |
 | GitHub | Source, Wiki, Project, protection, releases | Fifteen runtime-updated Wiki pages verified against canonical Git blobs; Stage 1 release published; active main ruleset and passing verify checks recorded. One Project and 12 issues exist. Runtime PR 14 is draft; per-item Project field verification remains pending |
 | Delivery | Windows, public URL and matching final release | Anonymous two-class Practice URL published and assistant-reviewed; portable Windows and matching full-game release pending |
+
+## Art production completed this round
+
+Five four-direction survivor references and three new individual boss pose studies are saved: 20 views/nine poses, selected from seventeen preserved generated natives. Heavy/Tank/Mage/Engineer/Assassin and Lantern Warden/Ratcatcher/Quarantine Clerk have assistant native and 1x/2x static readability review on quiet ground and an explicitly illustrative hazard overlay. Exact prompts, generated originals, revision decisions, workspace copies and hashes are recorded. These are static references, not completed animation, implemented gameplay, browser/device evidence or human approval. See [ART_PRODUCTION_PROGRESS.md](ART_PRODUCTION_PROGRESS.md) and reviews/art-production-2026-10-23/inventory.json.
+
+The user prioritized this work and asked to stop browser troubleshooting. Continue art/animation and content work in the same folder; keep unverified first-loop/device/recovery gates open. No new playable class or boss is claimed from these sheets. The runtime checkpoint f194746 passed both GitHub verify checks and local 74-test verification; newer art-only changes do not alter runtime source.

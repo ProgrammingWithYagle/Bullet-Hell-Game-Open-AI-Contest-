@@ -30,7 +30,7 @@ These are the selected global-coverage launch locales, not a claim about one def
 
 ## Current state
 
-All fifteen AI-authored catalogs are bundled, with 1,489 keys each and 22,335 messages. Language selection/persistence, Intl formatting, RTL menus and self-hosted licensed Fontsource families are implemented. Earlier class-menu layouts were assistant-reviewed in all locales; complete current-font/scene shaping and physical-device checks remain open. No native-speaker certification is claimed.
+All fifteen AI-authored catalogs are bundled, with 1,491 keys each and 22,365 messages. Language selection/persistence, Intl formatting, RTL menus and self-hosted licensed Fontsource families are implemented. Earlier class-menu layouts were assistant-reviewed in all locales; complete current-font/scene shaping and physical-device checks remain open. No native-speaker certification is claimed.
 
 
 Additional options: remappable controls, touch/gamepad support, optional aim assistance and auto-fire, reduced effects and motion, text scaling, independent audio volume, and shape-based danger cues.

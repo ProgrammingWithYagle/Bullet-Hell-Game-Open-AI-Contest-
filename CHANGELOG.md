@@ -5,6 +5,7 @@ Meaningful implemented changes are recorded here. Planned work belongs in the Pr
 ## Unreleased
 
 ### Added
+- Added five four-direction survivor production references and three new individual boss pose studies (20 views/nine poses), with exact prompts, seventeen preserved natives and static 1x/2x readability/alpha/hash review. These are not completed animation sets or new playable classes/bosses. See docs/ART_PRODUCTION_PROGRESS.md.
 - Published an anonymous two-class development Practice playtest at https://grave-accord-playtest.ivoryflame12.chatgpt.site/ with an eight-slot Render Free calibration service. This is not the full-game/Windows release.
 - Added authenticated 64-KiB checkpoint HTTP transport with documented body-digest signatures, key/server allowlists, durable ten-minute nonce replay prevention and redirect rejection.
 - Added a server lifecycle journal with acknowledged combat-start, thirty-second lease renewal, identical-event retry and one-owner claims. Separate-process HTTP/SQLite restart tests preserve state and reject stale/finalized owners. A server-only GraveRoom adapter now freezes safe transitions until acknowledgement and exposes waits/outages; it is disabled in normal/public execution, with participant recovery and hosted D1 still unfinished.
