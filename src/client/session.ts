@@ -11,6 +11,7 @@ import {
 } from '../shared/protocol.ts';
 import type { View, PlayerView } from '../shared/view.ts';
 import { savedBoundary, storeBoundary } from './storage.ts';
+import { productionGameServer } from './deployment.ts';
 export type ConnectionOptions = {
   name: string;
   classId: ClassId;
@@ -42,7 +43,10 @@ export class Session {
   onEvents: (events: Event[]) => void = () => {};
   onStatus: (key: string) => void = () => {};
   onPurchase: (result: { ok: boolean; reason?: string }) => void = () => {};
-  constructor(readonly endpoint = import.meta.env?.VITE_GAME_SERVER ?? 'http://localhost:2567') {}
+  constructor(
+    readonly endpoint = import.meta.env?.VITE_GAME_SERVER ??
+      (import.meta.env?.PROD ? productionGameServer : 'http://localhost:2567'),
+  ) {}
   offline(options: ConnectionOptions, resume = false) {
     return new Promise<void>((resolve, reject) => {
       this.worker = new Worker(new URL('./offline.worker.ts', import.meta.url), { type: 'module' });

@@ -29,6 +29,15 @@ if(command==='issues'){
   const existing=await api('GET',base+'/pulls?state=all&head=ProgrammingWithYagle:'+encodeURIComponent(config.head));
   const pr=existing[0]??await api('POST',base+'/pulls',config);
   console.log(JSON.stringify({number:pr.number,url:pr.html_url,head:pr.head.sha,state:pr.state}));
+}else if(command==='update-pr'){
+  const config=JSON.parse(fs.readFileSync('docs/github/first-loop-pr.json','utf8'));
+  const pr=await api('GET',base+'/pulls/14');
+  if(pr.head.ref!==config.head||pr.base.ref!==config.base||pr.draft!==true||config.draft!==true)
+    throw Error('Expected the existing draft first-loop PR and its unchanged branches.');
+  const updated=await api('PATCH',base+'/pulls/14',{title:config.title,body:config.body});
+  if(updated.title!==config.title||updated.body!==config.body||updated.draft!==true)
+    throw Error('Updated PR metadata or draft state did not match.');
+  console.log(JSON.stringify({number:updated.number,url:updated.html_url,head:updated.head.sha,draft:updated.draft,title:updated.title}));
 }else if(command==='merge'){
   const number=process.argv[3],sha=process.argv[4];
   if(!/^\d+$/.test(number??'')||!/^[a-f0-9]{40}$/.test(sha??''))throw Error('Supply PR number and validated head SHA.');
@@ -52,4 +61,4 @@ if(command==='issues'){
 }else if(command==='checks'){
   const sha=process.argv[3];if(!/^[a-f0-9]{40}$/.test(sha??''))throw Error('Commit SHA required.');
   const value=await api('GET',base+'/commits/'+sha+'/check-runs');console.log(JSON.stringify(value.check_runs.map(r=>({id:r.id,name:r.name,status:r.status,conclusion:r.conclusion,details_url:r.details_url}))));
-}else throw Error('Supported: issues, pr, merge <number> <validated-sha>, ruleset <verified-sha>, close <issue>, checks <sha>');
+}else throw Error('Supported: issues, pr, update-pr, merge <number> <validated-sha>, ruleset <verified-sha>, close <issue>, checks <sha>');

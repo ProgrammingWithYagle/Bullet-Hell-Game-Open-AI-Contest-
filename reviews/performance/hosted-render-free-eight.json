@@ -1,0 +1,1178 @@
+{
+  "createdAt": "2026-10-23T18:53:18.452Z",
+  "endpoint": "https://grave-accord-playtest.onrender.com",
+  "expectedCommit": "853a5a64a953691772e0bc829a3237e43788657f",
+  "protocolVersion": 4,
+  "contentRevision": "b8d9fb6918c854f3eed38b327ed0cb3026e071e6fe24932e50beed36943db241",
+  "scriptedClients": 8,
+  "renderedClients": 0,
+  "completed": true,
+  "failure": "",
+  "stopReason": "Sixty-second bounded measurement completed",
+  "durationSeconds": 58.79689210000001,
+  "phasesObserved": [
+    "combat",
+    "mutationVote",
+    "contractVote",
+    "shop"
+  ],
+  "combatPolls": 8,
+  "minimumActivePlayersDuringCombatPolls": 8,
+  "peakHostiles": 14,
+  "peakRollingWindowP99Ms": 96.02929899998708,
+  "peakRollingWindowMaxMs": 101.0787479999708,
+  "peakServerOnlyRssBytes": 122556416,
+  "encodedOutboundBytes": 840679,
+  "encodedBudgetBytes": 31457280,
+  "healthBefore": {
+    "status": "ok",
+    "startedAt": "2026-10-23T18:47:55.081Z",
+    "uptimeSeconds": 261.628598277,
+    "prototype": "constable-loop",
+    "protocolVersion": 4,
+    "contentRevision": "b8d9fb6918c854f3eed38b327ed0cb3026e071e6fe24932e50beed36943db241",
+    "practiceOnly": true,
+    "sourceCommit": "853a5a64a953691772e0bc829a3237e43788657f",
+    "capacity": {
+      "reservedSlots": 0,
+      "instanceLimit": 8,
+      "rooms": 0,
+      "roomLimit": 1,
+      "available": true,
+      "canJoin": true,
+      "canCreate": true,
+      "queued": 0,
+      "offeredSlots": 0
+    }
+  },
+  "healthAfter": {
+    "status": "ok",
+    "startedAt": "2026-10-23T18:47:55.081Z",
+    "uptimeSeconds": 331.050387744,
+    "prototype": "constable-loop",
+    "protocolVersion": 4,
+    "contentRevision": "b8d9fb6918c854f3eed38b327ed0cb3026e071e6fe24932e50beed36943db241",
+    "practiceOnly": true,
+    "sourceCommit": "853a5a64a953691772e0bc829a3237e43788657f",
+    "capacity": {
+      "reservedSlots": 0,
+      "instanceLimit": 8,
+      "rooms": 0,
+      "roomLimit": 1,
+      "available": true,
+      "canJoin": true,
+      "canCreate": true,
+      "queued": 0,
+      "offeredSlots": 0
+    }
+  },
+  "samples": [
+    {
+      "measuredAt": "2026-10-23T18:52:13.512Z",
+      "protocolVersion": 4,
+      "sourceCommit": "853a5a64a953691772e0bc829a3237e43788657f",
+      "uptimeSeconds": 266.337106733,
+      "processMemory": {
+        "rss": 119812096,
+        "heapTotal": 28479488,
+        "heapUsed": 25373320,
+        "external": 7639752,
+        "arrayBuffers": 3567255
+      },
+      "rooms": 1,
+      "connections": 8,
+      "activePlayers": 8,
+      "hostiles": 0,
+      "encodedOutboundBytes": 29174,
+      "acceptedInputs": 9,
+      "rejectedInputs": 0,
+      "tickWindow": {
+        "maximumSamplesPerRoom": 600,
+        "samples": 134,
+        "p99Ms": 2.650571000005584,
+        "maxMs": 4.472095999983139
+      },
+      "capacity": {
+        "reservedSlots": 8,
+        "instanceLimit": 8,
+        "rooms": 1,
+        "roomLimit": 1,
+        "available": false,
+        "canJoin": false,
+        "canCreate": false,
+        "queued": 0,
+        "offeredSlots": 0
+      },
+      "phase": "combat"
+    },
+    {
+      "measuredAt": "2026-10-23T18:52:15.720Z",
+      "protocolVersion": 4,
+      "sourceCommit": "853a5a64a953691772e0bc829a3237e43788657f",
+      "uptimeSeconds": 268.544285474,
+      "processMemory": {
+        "rss": 119541760,
+        "heapTotal": 28741632,
+        "heapUsed": 24371944,
+        "external": 7592864,
+        "arrayBuffers": 3520327
+      },
+      "rooms": 1,
+      "connections": 8,
+      "activePlayers": 8,
+      "hostiles": 0,
+      "encodedOutboundBytes": 145810,
+      "acceptedInputs": 464,
+      "rejectedInputs": 0,
+      "tickWindow": {
+        "maximumSamplesPerRoom": 600,
+        "samples": 199,
+        "p99Ms": 96.02929899998708,
+        "maxMs": 101.0787479999708
+      },
+      "capacity": {
+        "reservedSlots": 8,
+        "instanceLimit": 8,
+        "rooms": 1,
+        "roomLimit": 1,
+        "available": false,
+        "canJoin": false,
+        "canCreate": false,
+        "queued": 0,
+        "offeredSlots": 0
+      },
+      "phase": "combat"
+    },
+    {
+      "measuredAt": "2026-10-23T18:52:17.785Z",
+      "protocolVersion": 4,
+      "sourceCommit": "853a5a64a953691772e0bc829a3237e43788657f",
+      "uptimeSeconds": 270.609624537,
+      "processMemory": {
+        "rss": 120197120,
+        "heapTotal": 29003776,
+        "heapUsed": 25200016,
+        "external": 7669928,
+        "arrayBuffers": 3597391
+      },
+      "rooms": 1,
+      "connections": 8,
+      "activePlayers": 8,
+      "hostiles": 7,
+      "encodedOutboundBytes": 232767,
+      "acceptedInputs": 896,
+      "rejectedInputs": 0,
+      "tickWindow": {
+        "maximumSamplesPerRoom": 600,
+        "samples": 261,
+        "p99Ms": 4.472095999983139,
+        "maxMs": 101.0787479999708
+      },
+      "capacity": {
+        "reservedSlots": 8,
+        "instanceLimit": 8,
+        "rooms": 1,
+        "roomLimit": 1,
+        "available": false,
+        "canJoin": false,
+        "canCreate": false,
+        "queued": 0,
+        "offeredSlots": 0
+      },
+      "phase": "combat"
+    },
+    {
+      "measuredAt": "2026-10-23T18:52:19.841Z",
+      "protocolVersion": 4,
+      "sourceCommit": "853a5a64a953691772e0bc829a3237e43788657f",
+      "uptimeSeconds": 272.665666539,
+      "processMemory": {
+        "rss": 120459264,
+        "heapTotal": 29003776,
+        "heapUsed": 24906408,
+        "external": 7680920,
+        "arrayBuffers": 3608383
+      },
+      "rooms": 1,
+      "connections": 8,
+      "activePlayers": 8,
+      "hostiles": 14,
+      "encodedOutboundBytes": 416073,
+      "acceptedInputs": 1320,
+      "rejectedInputs": 0,
+      "tickWindow": {
+        "maximumSamplesPerRoom": 600,
+        "samples": 323,
+        "p99Ms": 4.038170000014361,
+        "maxMs": 101.0787479999708
+      },
+      "capacity": {
+        "reservedSlots": 8,
+        "instanceLimit": 8,
+        "rooms": 1,
+        "roomLimit": 1,
+        "available": false,
+        "canJoin": false,
+        "canCreate": false,
+        "queued": 0,
+        "offeredSlots": 0
+      },
+      "phase": "combat"
+    },
+    {
+      "measuredAt": "2026-10-23T18:52:21.912Z",
+      "protocolVersion": 4,
+      "sourceCommit": "853a5a64a953691772e0bc829a3237e43788657f",
+      "uptimeSeconds": 274.737039038,
+      "processMemory": {
+        "rss": 120721408,
+        "heapTotal": 29265920,
+        "heapUsed": 25617832,
+        "external": 7766046,
+        "arrayBuffers": 3693509
+      },
+      "rooms": 1,
+      "connections": 8,
+      "activePlayers": 8,
+      "hostiles": 0,
+      "encodedOutboundBytes": 523787,
+      "acceptedInputs": 1752,
+      "rejectedInputs": 0,
+      "tickWindow": {
+        "maximumSamplesPerRoom": 600,
+        "samples": 385,
+        "p99Ms": 4.038170000014361,
+        "maxMs": 101.0787479999708
+      },
+      "capacity": {
+        "reservedSlots": 8,
+        "instanceLimit": 8,
+        "rooms": 1,
+        "roomLimit": 1,
+        "available": false,
+        "canJoin": false,
+        "canCreate": false,
+        "queued": 0,
+        "offeredSlots": 0
+      },
+      "phase": "combat"
+    },
+    {
+      "measuredAt": "2026-10-23T18:52:23.979Z",
+      "protocolVersion": 4,
+      "sourceCommit": "853a5a64a953691772e0bc829a3237e43788657f",
+      "uptimeSeconds": 276.803548689,
+      "processMemory": {
+        "rss": 120983552,
+        "heapTotal": 29265920,
+        "heapUsed": 26171080,
+        "external": 7775731,
+        "arrayBuffers": 3703194
+      },
+      "rooms": 1,
+      "connections": 8,
+      "activePlayers": 8,
+      "hostiles": 0,
+      "encodedOutboundBytes": 591449,
+      "acceptedInputs": 2190,
+      "rejectedInputs": 0,
+      "tickWindow": {
+        "maximumSamplesPerRoom": 600,
+        "samples": 447,
+        "p99Ms": 3.812138000037521,
+        "maxMs": 101.0787479999708
+      },
+      "capacity": {
+        "reservedSlots": 8,
+        "instanceLimit": 8,
+        "rooms": 1,
+        "roomLimit": 1,
+        "available": false,
+        "canJoin": false,
+        "canCreate": false,
+        "queued": 0,
+        "offeredSlots": 0
+      },
+      "phase": "combat"
+    },
+    {
+      "measuredAt": "2026-10-23T18:52:26.088Z",
+      "protocolVersion": 4,
+      "sourceCommit": "853a5a64a953691772e0bc829a3237e43788657f",
+      "uptimeSeconds": 278.912875157,
+      "processMemory": {
+        "rss": 121638912,
+        "heapTotal": 30314496,
+        "heapUsed": 26660256,
+        "external": 7793992,
+        "arrayBuffers": 3721455
+      },
+      "rooms": 1,
+      "connections": 8,
+      "activePlayers": 8,
+      "hostiles": 0,
+      "encodedOutboundBytes": 693430,
+      "acceptedInputs": 2616,
+      "rejectedInputs": 0,
+      "tickWindow": {
+        "maximumSamplesPerRoom": 600,
+        "samples": 511,
+        "p99Ms": 3.0299140000133775,
+        "maxMs": 101.0787479999708
+      },
+      "capacity": {
+        "reservedSlots": 8,
+        "instanceLimit": 8,
+        "rooms": 1,
+        "roomLimit": 1,
+        "available": false,
+        "canJoin": false,
+        "canCreate": false,
+        "queued": 0,
+        "offeredSlots": 0
+      },
+      "phase": "combat"
+    },
+    {
+      "measuredAt": "2026-10-23T18:52:28.158Z",
+      "protocolVersion": 4,
+      "sourceCommit": "853a5a64a953691772e0bc829a3237e43788657f",
+      "uptimeSeconds": 280.982880038,
+      "processMemory": {
+        "rss": 121638912,
+        "heapTotal": 30314496,
+        "heapUsed": 26466736,
+        "external": 7871466,
+        "arrayBuffers": 3798929
+      },
+      "rooms": 1,
+      "connections": 8,
+      "activePlayers": 8,
+      "hostiles": 0,
+      "encodedOutboundBytes": 752366,
+      "acceptedInputs": 3024,
+      "rejectedInputs": 0,
+      "tickWindow": {
+        "maximumSamplesPerRoom": 600,
+        "samples": 572,
+        "p99Ms": 3.0299140000133775,
+        "maxMs": 101.0787479999708
+      },
+      "capacity": {
+        "reservedSlots": 8,
+        "instanceLimit": 8,
+        "rooms": 1,
+        "roomLimit": 1,
+        "available": false,
+        "canJoin": false,
+        "canCreate": false,
+        "queued": 0,
+        "offeredSlots": 0
+      },
+      "phase": "combat"
+    },
+    {
+      "measuredAt": "2026-10-23T18:52:30.223Z",
+      "protocolVersion": 4,
+      "sourceCommit": "853a5a64a953691772e0bc829a3237e43788657f",
+      "uptimeSeconds": 283.047693451,
+      "processMemory": {
+        "rss": 122032128,
+        "heapTotal": 30314496,
+        "heapUsed": 26645384,
+        "external": 7877228,
+        "arrayBuffers": 3804691
+      },
+      "rooms": 1,
+      "connections": 8,
+      "activePlayers": 8,
+      "hostiles": 0,
+      "encodedOutboundBytes": 807109,
+      "acceptedInputs": 3346,
+      "rejectedInputs": 0,
+      "tickWindow": {
+        "maximumSamplesPerRoom": 600,
+        "samples": 600,
+        "p99Ms": 3.0299140000133775,
+        "maxMs": 101.0787479999708
+      },
+      "capacity": {
+        "reservedSlots": 8,
+        "instanceLimit": 8,
+        "rooms": 1,
+        "roomLimit": 1,
+        "available": false,
+        "canJoin": false,
+        "canCreate": false,
+        "queued": 0,
+        "offeredSlots": 0
+      },
+      "phase": "mutationVote"
+    },
+    {
+      "measuredAt": "2026-10-23T18:52:32.316Z",
+      "protocolVersion": 4,
+      "sourceCommit": "853a5a64a953691772e0bc829a3237e43788657f",
+      "uptimeSeconds": 285.140455722,
+      "processMemory": {
+        "rss": 122163200,
+        "heapTotal": 29528064,
+        "heapUsed": 27004280,
+        "external": 7876426,
+        "arrayBuffers": 3803889
+      },
+      "rooms": 1,
+      "connections": 8,
+      "activePlayers": 8,
+      "hostiles": 0,
+      "encodedOutboundBytes": 809077,
+      "acceptedInputs": 3346,
+      "rejectedInputs": 0,
+      "tickWindow": {
+        "maximumSamplesPerRoom": 600,
+        "samples": 600,
+        "p99Ms": 3.0299140000133775,
+        "maxMs": 101.0787479999708
+      },
+      "capacity": {
+        "reservedSlots": 8,
+        "instanceLimit": 8,
+        "rooms": 1,
+        "roomLimit": 1,
+        "available": false,
+        "canJoin": false,
+        "canCreate": false,
+        "queued": 0,
+        "offeredSlots": 0
+      },
+      "phase": "mutationVote"
+    },
+    {
+      "measuredAt": "2026-10-23T18:52:34.391Z",
+      "protocolVersion": 4,
+      "sourceCommit": "853a5a64a953691772e0bc829a3237e43788657f",
+      "uptimeSeconds": 287.215329351,
+      "processMemory": {
+        "rss": 122163200,
+        "heapTotal": 29528064,
+        "heapUsed": 26520344,
+        "external": 7876422,
+        "arrayBuffers": 3803885
+      },
+      "rooms": 1,
+      "connections": 8,
+      "activePlayers": 8,
+      "hostiles": 0,
+      "encodedOutboundBytes": 811093,
+      "acceptedInputs": 3346,
+      "rejectedInputs": 0,
+      "tickWindow": {
+        "maximumSamplesPerRoom": 600,
+        "samples": 600,
+        "p99Ms": 1.7684310000040568,
+        "maxMs": 101.0787479999708
+      },
+      "capacity": {
+        "reservedSlots": 8,
+        "instanceLimit": 8,
+        "rooms": 1,
+        "roomLimit": 1,
+        "available": false,
+        "canJoin": false,
+        "canCreate": false,
+        "queued": 0,
+        "offeredSlots": 0
+      },
+      "phase": "mutationVote"
+    },
+    {
+      "measuredAt": "2026-10-23T18:52:36.456Z",
+      "protocolVersion": 4,
+      "sourceCommit": "853a5a64a953691772e0bc829a3237e43788657f",
+      "uptimeSeconds": 289.281259159,
+      "processMemory": {
+        "rss": 122163200,
+        "heapTotal": 29528064,
+        "heapUsed": 26804216,
+        "external": 7876422,
+        "arrayBuffers": 3803885
+      },
+      "rooms": 1,
+      "connections": 8,
+      "activePlayers": 8,
+      "hostiles": 0,
+      "encodedOutboundBytes": 812965,
+      "acceptedInputs": 3346,
+      "rejectedInputs": 0,
+      "tickWindow": {
+        "maximumSamplesPerRoom": 600,
+        "samples": 600,
+        "p99Ms": 1.292353999975603,
+        "maxMs": 3.0299140000133775
+      },
+      "capacity": {
+        "reservedSlots": 8,
+        "instanceLimit": 8,
+        "rooms": 1,
+        "roomLimit": 1,
+        "available": false,
+        "canJoin": false,
+        "canCreate": false,
+        "queued": 0,
+        "offeredSlots": 0
+      },
+      "phase": "mutationVote"
+    },
+    {
+      "measuredAt": "2026-10-23T18:52:38.546Z",
+      "protocolVersion": 4,
+      "sourceCommit": "853a5a64a953691772e0bc829a3237e43788657f",
+      "uptimeSeconds": 291.370317749,
+      "processMemory": {
+        "rss": 122163200,
+        "heapTotal": 29528064,
+        "heapUsed": 27185928,
+        "external": 7876470,
+        "arrayBuffers": 3803933
+      },
+      "rooms": 1,
+      "connections": 8,
+      "activePlayers": 8,
+      "hostiles": 0,
+      "encodedOutboundBytes": 814981,
+      "acceptedInputs": 3346,
+      "rejectedInputs": 0,
+      "tickWindow": {
+        "maximumSamplesPerRoom": 600,
+        "samples": 600,
+        "p99Ms": 1.292353999975603,
+        "maxMs": 3.0299140000133775
+      },
+      "capacity": {
+        "reservedSlots": 8,
+        "instanceLimit": 8,
+        "rooms": 1,
+        "roomLimit": 1,
+        "available": false,
+        "canJoin": false,
+        "canCreate": false,
+        "queued": 0,
+        "offeredSlots": 0
+      },
+      "phase": "mutationVote"
+    },
+    {
+      "measuredAt": "2026-10-23T18:52:40.615Z",
+      "protocolVersion": 4,
+      "sourceCommit": "853a5a64a953691772e0bc829a3237e43788657f",
+      "uptimeSeconds": 293.439836802,
+      "processMemory": {
+        "rss": 122163200,
+        "heapTotal": 29528064,
+        "heapUsed": 26620200,
+        "external": 7876518,
+        "arrayBuffers": 3803933
+      },
+      "rooms": 1,
+      "connections": 8,
+      "activePlayers": 8,
+      "hostiles": 0,
+      "encodedOutboundBytes": 816949,
+      "acceptedInputs": 3346,
+      "rejectedInputs": 0,
+      "tickWindow": {
+        "maximumSamplesPerRoom": 600,
+        "samples": 600,
+        "p99Ms": 1.2304810000350699,
+        "maxMs": 3.0299140000133775
+      },
+      "capacity": {
+        "reservedSlots": 8,
+        "instanceLimit": 8,
+        "rooms": 1,
+        "roomLimit": 1,
+        "available": false,
+        "canJoin": false,
+        "canCreate": false,
+        "queued": 0,
+        "offeredSlots": 0
+      },
+      "phase": "mutationVote"
+    },
+    {
+      "measuredAt": "2026-10-23T18:52:42.704Z",
+      "protocolVersion": 4,
+      "sourceCommit": "853a5a64a953691772e0bc829a3237e43788657f",
+      "uptimeSeconds": 295.528970216,
+      "processMemory": {
+        "rss": 122163200,
+        "heapTotal": 29528064,
+        "heapUsed": 26935112,
+        "external": 7876470,
+        "arrayBuffers": 3803933
+      },
+      "rooms": 1,
+      "connections": 8,
+      "activePlayers": 8,
+      "hostiles": 0,
+      "encodedOutboundBytes": 818917,
+      "acceptedInputs": 3346,
+      "rejectedInputs": 0,
+      "tickWindow": {
+        "maximumSamplesPerRoom": 600,
+        "samples": 600,
+        "p99Ms": 0.8239169999724254,
+        "maxMs": 3.0299140000133775
+      },
+      "capacity": {
+        "reservedSlots": 8,
+        "instanceLimit": 8,
+        "rooms": 1,
+        "roomLimit": 1,
+        "available": false,
+        "canJoin": false,
+        "canCreate": false,
+        "queued": 0,
+        "offeredSlots": 0
+      },
+      "phase": "mutationVote"
+    },
+    {
+      "measuredAt": "2026-10-23T18:52:44.932Z",
+      "protocolVersion": 4,
+      "sourceCommit": "853a5a64a953691772e0bc829a3237e43788657f",
+      "uptimeSeconds": 297.756786157,
+      "processMemory": {
+        "rss": 122163200,
+        "heapTotal": 29528064,
+        "heapUsed": 26649544,
+        "external": 7876622,
+        "arrayBuffers": 3804085
+      },
+      "rooms": 1,
+      "connections": 8,
+      "activePlayers": 8,
+      "hostiles": 0,
+      "encodedOutboundBytes": 829973,
+      "acceptedInputs": 3346,
+      "rejectedInputs": 0,
+      "tickWindow": {
+        "maximumSamplesPerRoom": 600,
+        "samples": 600,
+        "p99Ms": 0.732531999994535,
+        "maxMs": 1.7684310000040568
+      },
+      "capacity": {
+        "reservedSlots": 8,
+        "instanceLimit": 8,
+        "rooms": 1,
+        "roomLimit": 1,
+        "available": false,
+        "canJoin": false,
+        "canCreate": false,
+        "queued": 0,
+        "offeredSlots": 0
+      },
+      "phase": "contractVote"
+    },
+    {
+      "measuredAt": "2026-10-23T18:52:47.077Z",
+      "protocolVersion": 4,
+      "sourceCommit": "853a5a64a953691772e0bc829a3237e43788657f",
+      "uptimeSeconds": 299.901783415,
+      "processMemory": {
+        "rss": 122294272,
+        "heapTotal": 29528064,
+        "heapUsed": 27119544,
+        "external": 7876622,
+        "arrayBuffers": 3804085
+      },
+      "rooms": 1,
+      "connections": 8,
+      "activePlayers": 8,
+      "hostiles": 0,
+      "encodedOutboundBytes": 831989,
+      "acceptedInputs": 3346,
+      "rejectedInputs": 0,
+      "tickWindow": {
+        "maximumSamplesPerRoom": 600,
+        "samples": 600,
+        "p99Ms": 0.6369560000021011,
+        "maxMs": 1.7684310000040568
+      },
+      "capacity": {
+        "reservedSlots": 8,
+        "instanceLimit": 8,
+        "rooms": 1,
+        "roomLimit": 1,
+        "available": false,
+        "canJoin": false,
+        "canCreate": false,
+        "queued": 0,
+        "offeredSlots": 0
+      },
+      "phase": "contractVote"
+    },
+    {
+      "measuredAt": "2026-10-23T18:52:49.164Z",
+      "protocolVersion": 4,
+      "sourceCommit": "853a5a64a953691772e0bc829a3237e43788657f",
+      "uptimeSeconds": 301.988284519,
+      "processMemory": {
+        "rss": 122425344,
+        "heapTotal": 29528064,
+        "heapUsed": 26732992,
+        "external": 7942158,
+        "arrayBuffers": 3869621
+      },
+      "rooms": 1,
+      "connections": 8,
+      "activePlayers": 8,
+      "hostiles": 0,
+      "encodedOutboundBytes": 833909,
+      "acceptedInputs": 3346,
+      "rejectedInputs": 0,
+      "tickWindow": {
+        "maximumSamplesPerRoom": 600,
+        "samples": 600,
+        "p99Ms": 0.5106190000078641,
+        "maxMs": 1.3079049999942072
+      },
+      "capacity": {
+        "reservedSlots": 8,
+        "instanceLimit": 8,
+        "rooms": 1,
+        "roomLimit": 1,
+        "available": false,
+        "canJoin": false,
+        "canCreate": false,
+        "queued": 0,
+        "offeredSlots": 0
+      },
+      "phase": "contractVote"
+    },
+    {
+      "measuredAt": "2026-10-23T18:52:51.449Z",
+      "protocolVersion": 4,
+      "sourceCommit": "853a5a64a953691772e0bc829a3237e43788657f",
+      "uptimeSeconds": 304.273568545,
+      "processMemory": {
+        "rss": 122425344,
+        "heapTotal": 29528064,
+        "heapUsed": 27184856,
+        "external": 7942206,
+        "arrayBuffers": 3869669
+      },
+      "rooms": 1,
+      "connections": 8,
+      "activePlayers": 8,
+      "hostiles": 0,
+      "encodedOutboundBytes": 836069,
+      "acceptedInputs": 3346,
+      "rejectedInputs": 0,
+      "tickWindow": {
+        "maximumSamplesPerRoom": 600,
+        "samples": 600,
+        "p99Ms": 0.23280400002840906,
+        "maxMs": 1.0013080000062473
+      },
+      "capacity": {
+        "reservedSlots": 8,
+        "instanceLimit": 8,
+        "rooms": 1,
+        "roomLimit": 1,
+        "available": false,
+        "canJoin": false,
+        "canCreate": false,
+        "queued": 0,
+        "offeredSlots": 0
+      },
+      "phase": "contractVote"
+    },
+    {
+      "measuredAt": "2026-10-23T18:52:53.585Z",
+      "protocolVersion": 4,
+      "sourceCommit": "853a5a64a953691772e0bc829a3237e43788657f",
+      "uptimeSeconds": 306.409933469,
+      "processMemory": {
+        "rss": 122425344,
+        "heapTotal": 29528064,
+        "heapUsed": 26875832,
+        "external": 7942254,
+        "arrayBuffers": 3869717
+      },
+      "rooms": 1,
+      "connections": 8,
+      "activePlayers": 8,
+      "hostiles": 0,
+      "encodedOutboundBytes": 838133,
+      "acceptedInputs": 3346,
+      "rejectedInputs": 0,
+      "tickWindow": {
+        "maximumSamplesPerRoom": 600,
+        "samples": 600,
+        "p99Ms": 0.22223299997858703,
+        "maxMs": 1.0013080000062473
+      },
+      "capacity": {
+        "reservedSlots": 8,
+        "instanceLimit": 8,
+        "rooms": 1,
+        "roomLimit": 1,
+        "available": false,
+        "canJoin": false,
+        "canCreate": false,
+        "queued": 0,
+        "offeredSlots": 0
+      },
+      "phase": "contractVote"
+    },
+    {
+      "measuredAt": "2026-10-23T18:52:55.728Z",
+      "protocolVersion": 4,
+      "sourceCommit": "853a5a64a953691772e0bc829a3237e43788657f",
+      "uptimeSeconds": 308.55254915,
+      "processMemory": {
+        "rss": 122556416,
+        "heapTotal": 29528064,
+        "heapUsed": 27279368,
+        "external": 7942302,
+        "arrayBuffers": 3869765
+      },
+      "rooms": 1,
+      "connections": 8,
+      "activePlayers": 8,
+      "hostiles": 0,
+      "encodedOutboundBytes": 840149,
+      "acceptedInputs": 3346,
+      "rejectedInputs": 0,
+      "tickWindow": {
+        "maximumSamplesPerRoom": 600,
+        "samples": 600,
+        "p99Ms": 0.21701299998676404,
+        "maxMs": 1.0013080000062473
+      },
+      "capacity": {
+        "reservedSlots": 8,
+        "instanceLimit": 8,
+        "rooms": 1,
+        "roomLimit": 1,
+        "available": false,
+        "canJoin": false,
+        "canCreate": false,
+        "queued": 0,
+        "offeredSlots": 0
+      },
+      "phase": "contractVote"
+    },
+    {
+      "measuredAt": "2026-10-23T18:52:57.811Z",
+      "protocolVersion": 4,
+      "sourceCommit": "853a5a64a953691772e0bc829a3237e43788657f",
+      "uptimeSeconds": 310.635924716,
+      "processMemory": {
+        "rss": 122556416,
+        "heapTotal": 29528064,
+        "heapUsed": 26777128,
+        "external": 7942302,
+        "arrayBuffers": 3869765
+      },
+      "rooms": 1,
+      "connections": 8,
+      "activePlayers": 8,
+      "hostiles": 0,
+      "encodedOutboundBytes": 842165,
+      "acceptedInputs": 3346,
+      "rejectedInputs": 0,
+      "tickWindow": {
+        "maximumSamplesPerRoom": 600,
+        "samples": 600,
+        "p99Ms": 0.22223299997858703,
+        "maxMs": 1.2252999999909662
+      },
+      "capacity": {
+        "reservedSlots": 8,
+        "instanceLimit": 8,
+        "rooms": 1,
+        "roomLimit": 1,
+        "available": false,
+        "canJoin": false,
+        "canCreate": false,
+        "queued": 0,
+        "offeredSlots": 0
+      },
+      "phase": "contractVote"
+    },
+    {
+      "measuredAt": "2026-10-23T18:52:59.883Z",
+      "protocolVersion": 4,
+      "sourceCommit": "853a5a64a953691772e0bc829a3237e43788657f",
+      "uptimeSeconds": 312.707523108,
+      "processMemory": {
+        "rss": 122556416,
+        "heapTotal": 29528064,
+        "heapUsed": 27261984,
+        "external": 7943038,
+        "arrayBuffers": 3870501
+      },
+      "rooms": 1,
+      "connections": 8,
+      "activePlayers": 8,
+      "hostiles": 0,
+      "encodedOutboundBytes": 857949,
+      "acceptedInputs": 3346,
+      "rejectedInputs": 0,
+      "tickWindow": {
+        "maximumSamplesPerRoom": 600,
+        "samples": 600,
+        "p99Ms": 0.23280400002840906,
+        "maxMs": 1.2252999999909662
+      },
+      "capacity": {
+        "reservedSlots": 8,
+        "instanceLimit": 8,
+        "rooms": 1,
+        "roomLimit": 1,
+        "available": false,
+        "canJoin": false,
+        "canCreate": false,
+        "queued": 0,
+        "offeredSlots": 0
+      },
+      "phase": "shop"
+    },
+    {
+      "measuredAt": "2026-10-23T18:53:01.969Z",
+      "protocolVersion": 4,
+      "sourceCommit": "853a5a64a953691772e0bc829a3237e43788657f",
+      "uptimeSeconds": 314.793561486,
+      "processMemory": {
+        "rss": 122556416,
+        "heapTotal": 29790208,
+        "heapUsed": 26897400,
+        "external": 7943038,
+        "arrayBuffers": 3870501
+      },
+      "rooms": 1,
+      "connections": 8,
+      "activePlayers": 8,
+      "hostiles": 0,
+      "encodedOutboundBytes": 859965,
+      "acceptedInputs": 3346,
+      "rejectedInputs": 0,
+      "tickWindow": {
+        "maximumSamplesPerRoom": 600,
+        "samples": 600,
+        "p99Ms": 0.23280400002840906,
+        "maxMs": 1.2252999999909662
+      },
+      "capacity": {
+        "reservedSlots": 8,
+        "instanceLimit": 8,
+        "rooms": 1,
+        "roomLimit": 1,
+        "available": false,
+        "canJoin": false,
+        "canCreate": false,
+        "queued": 0,
+        "offeredSlots": 0
+      },
+      "phase": "shop"
+    },
+    {
+      "measuredAt": "2026-10-23T18:53:04.019Z",
+      "protocolVersion": 4,
+      "sourceCommit": "853a5a64a953691772e0bc829a3237e43788657f",
+      "uptimeSeconds": 316.844161807,
+      "processMemory": {
+        "rss": 122556416,
+        "heapTotal": 29790208,
+        "heapUsed": 27255752,
+        "external": 7943038,
+        "arrayBuffers": 3870501
+      },
+      "rooms": 1,
+      "connections": 8,
+      "activePlayers": 8,
+      "hostiles": 0,
+      "encodedOutboundBytes": 861885,
+      "acceptedInputs": 3346,
+      "rejectedInputs": 0,
+      "tickWindow": {
+        "maximumSamplesPerRoom": 600,
+        "samples": 600,
+        "p99Ms": 0.2735460000112653,
+        "maxMs": 1.2252999999909662
+      },
+      "capacity": {
+        "reservedSlots": 8,
+        "instanceLimit": 8,
+        "rooms": 1,
+        "roomLimit": 1,
+        "available": false,
+        "canJoin": false,
+        "canCreate": false,
+        "queued": 0,
+        "offeredSlots": 0
+      },
+      "phase": "shop"
+    },
+    {
+      "measuredAt": "2026-10-23T18:53:06.098Z",
+      "protocolVersion": 4,
+      "sourceCommit": "853a5a64a953691772e0bc829a3237e43788657f",
+      "uptimeSeconds": 318.922914108,
+      "processMemory": {
+        "rss": 122556416,
+        "heapTotal": 29790208,
+        "heapUsed": 26757768,
+        "external": 7943086,
+        "arrayBuffers": 3870549
+      },
+      "rooms": 1,
+      "connections": 8,
+      "activePlayers": 8,
+      "hostiles": 0,
+      "encodedOutboundBytes": 863901,
+      "acceptedInputs": 3346,
+      "rejectedInputs": 0,
+      "tickWindow": {
+        "maximumSamplesPerRoom": 600,
+        "samples": 600,
+        "p99Ms": 0.24346399999922141,
+        "maxMs": 1.2252999999909662
+      },
+      "capacity": {
+        "reservedSlots": 8,
+        "instanceLimit": 8,
+        "rooms": 1,
+        "roomLimit": 1,
+        "available": false,
+        "canJoin": false,
+        "canCreate": false,
+        "queued": 0,
+        "offeredSlots": 0
+      },
+      "phase": "shop"
+    },
+    {
+      "measuredAt": "2026-10-23T18:53:08.190Z",
+      "protocolVersion": 4,
+      "sourceCommit": "853a5a64a953691772e0bc829a3237e43788657f",
+      "uptimeSeconds": 321.014672323,
+      "processMemory": {
+        "rss": 122556416,
+        "heapTotal": 29790208,
+        "heapUsed": 27089392,
+        "external": 7943134,
+        "arrayBuffers": 3870549
+      },
+      "rooms": 1,
+      "connections": 8,
+      "activePlayers": 8,
+      "hostiles": 0,
+      "encodedOutboundBytes": 865869,
+      "acceptedInputs": 3346,
+      "rejectedInputs": 0,
+      "tickWindow": {
+        "maximumSamplesPerRoom": 600,
+        "samples": 600,
+        "p99Ms": 0.24346399999922141,
+        "maxMs": 1.2252999999909662
+      },
+      "capacity": {
+        "reservedSlots": 8,
+        "instanceLimit": 8,
+        "rooms": 1,
+        "roomLimit": 1,
+        "available": false,
+        "canJoin": false,
+        "canCreate": false,
+        "queued": 0,
+        "offeredSlots": 0
+      },
+      "phase": "shop"
+    },
+    {
+      "measuredAt": "2026-10-23T18:53:10.289Z",
+      "protocolVersion": 4,
+      "sourceCommit": "853a5a64a953691772e0bc829a3237e43788657f",
+      "uptimeSeconds": 323.114137288,
+      "processMemory": {
+        "rss": 122556416,
+        "heapTotal": 29790208,
+        "heapUsed": 27369048,
+        "external": 7943134,
+        "arrayBuffers": 3870597
+      },
+      "rooms": 1,
+      "connections": 8,
+      "activePlayers": 8,
+      "hostiles": 0,
+      "encodedOutboundBytes": 867885,
+      "acceptedInputs": 3346,
+      "rejectedInputs": 0,
+      "tickWindow": {
+        "maximumSamplesPerRoom": 600,
+        "samples": 600,
+        "p99Ms": 0.24346399999922141,
+        "maxMs": 1.2252999999909662
+      },
+      "capacity": {
+        "reservedSlots": 8,
+        "instanceLimit": 8,
+        "rooms": 1,
+        "roomLimit": 1,
+        "available": false,
+        "canJoin": false,
+        "canCreate": false,
+        "queued": 0,
+        "offeredSlots": 0
+      },
+      "phase": "shop"
+    },
+    {
+      "measuredAt": "2026-10-23T18:53:12.344Z",
+      "protocolVersion": 4,
+      "sourceCommit": "853a5a64a953691772e0bc829a3237e43788657f",
+      "uptimeSeconds": 325.169147042,
+      "processMemory": {
+        "rss": 122556416,
+        "heapTotal": 29790208,
+        "heapUsed": 26821192,
+        "external": 7943134,
+        "arrayBuffers": 3870597
+      },
+      "rooms": 1,
+      "connections": 8,
+      "activePlayers": 8,
+      "hostiles": 0,
+      "encodedOutboundBytes": 869853,
+      "acceptedInputs": 3346,
+      "rejectedInputs": 0,
+      "tickWindow": {
+        "maximumSamplesPerRoom": 600,
+        "samples": 600,
+        "p99Ms": 0.2574550000135787,
+        "maxMs": 1.2252999999909662
+      },
+      "capacity": {
+        "reservedSlots": 8,
+        "instanceLimit": 8,
+        "rooms": 1,
+        "roomLimit": 1,
+        "available": false,
+        "canJoin": false,
+        "canCreate": false,
+        "queued": 0,
+        "offeredSlots": 0
+      },
+      "phase": "shop"
+    }
+  ],
+  "limits": [
+    "Actual Render Free process, ordinary private-room client inputs, Baby difficulty; no invulnerability, boss health, timing or projectile injection.",
+    "Server-only memory excludes local SDK clients. Rolling tick windows overlap and are at most 600 samples per room; peak of their p99 values is not a global percentile.",
+    "Natural combat/intermission workload, not the 4,000-hostile stress or 60-minute endurance gate. No rendered FPS, physical device or human evidence."
+  ]
+}
