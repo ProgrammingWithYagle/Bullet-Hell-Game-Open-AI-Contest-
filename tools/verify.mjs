@@ -1,0 +1,11 @@
+import {spawnSync} from 'node:child_process';
+import {readFileSync,readdirSync,writeFileSync,statSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+const walk=dir=>readdirSync(dir).sort().flatMap(name=>{const path=dir+'/'+name;return statSync(path).isDirectory()?walk(path):[path];});
+const tests=readdirSync('tests').filter(n=>n.endsWith('.test.ts')).sort().map(n=>'tests/'+n);
+const commands=[['Stage 1 authored content',['tools/verify-stage1.mjs']],['TypeScript',['node_modules/typescript/bin/tsc','--noEmit']],['Headless rules and real-network integration',['--import','tsx','--test',...tests]],['Production client build',['node_modules/vite/bin/vite.js','build']]];
+const checks=[];for(const [name,args]of commands){const start=Date.now();console.log('\n'+name);const result=spawnSync(process.execPath,args,{stdio:'inherit',env:process.env});checks.push({name,passed:result.status===0,elapsedMs:Date.now()-start});if(result.status!==0){writeFileSync('reviews/runtime-verification.json',JSON.stringify({createdAt:new Date().toISOString(),passed:false,failedCheck:name,checks},null,2)+'\n');console.error(result.error??'Verification failed');process.exit(result.status??1);}}
+const files=[...walk('src'),...walk('tests'),...['package.json','pnpm-lock.yaml','pnpm-workspace.yaml','tsconfig.json','vite.config.ts','index.html']];const hash=createHash('sha256');for(const file of files.sort()){hash.update(file+'\0');hash.update(readFileSync(file));}
+const output=walk('dist').map(path=>({path,bytes:statSync(path).size,sha256:createHash('sha256').update(readFileSync(path)).digest('hex')}));
+writeFileSync('reviews/runtime-verification.json',JSON.stringify({createdAt:new Date().toISOString(),passed:true,sourceSnapshotSha256:hash.digest('hex'),contentRevision:JSON.parse(readFileSync('content/revision.json')).sha256,checks,outputFiles:output.length,outputBytes:output.reduce((n,f)=>n+f.bytes,0),artifacts:output,limits:['Browser gameplay and visual review remain pending.','No physical-device or human playtest is claimed.','This first-loop prototype does not implement the full content roster, verified leaderboards, signed recovery or a Windows release.']},null,2)+'\n');
+console.log('\nVerification passed; evidence: reviews/runtime-verification.json');

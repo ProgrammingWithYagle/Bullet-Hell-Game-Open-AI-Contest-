@@ -1,0 +1,115 @@
+import { Server } from '@colyseus/core';
+import { WebSocketTransport } from '@colyseus/ws-transport';
+import { createServer } from 'node:http';
+import { pathToFileURL } from 'node:url';
+import { GraveRoom, privateRooms, liveRooms } from './GraveRoom.ts';
+import { capacity } from './capacity.ts';
+import { CONTENT_REVISION, PROTOCOL } from '../shared/protocol.ts';
+export function createGameServer() {
+  const origins = new Set(
+    (process.env.CLIENT_ORIGINS ?? 'http://localhost:5173,http://127.0.0.1:5173')
+      .split(',')
+      .map((s) => s.trim()),
+  );
+  const httpServer = createServer();
+  const transport = new WebSocketTransport({
+    server: httpServer,
+    maxPayload: 16384,
+    beforeUpgrade: (request) => {
+      const origin = request.headers.get('origin');
+      if (origin && !origins.has(origin))
+        return new Response('Origin not permitted', { status: 403 });
+    },
+  });
+  const requests = new Map<string, { reset: number; count: number }>();
+  const server = new Server({
+    transport,
+    greet: false,
+    gracefullyShutdown: false,
+    express: (app) => {
+      app.use((req, res, next) => {
+        const origin = req.headers.origin;
+        if (origin && origins.has(origin)) {
+          res.setHeader('Access-Control-Allow-Origin', origin);
+          res.setHeader('Vary', 'Origin');
+        }
+        if (req.method === 'OPTIONS') {
+          res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
+          res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+          res.sendStatus(204);
+          return;
+        }
+        next();
+      });
+      app.get('/api/health', (_req, res) =>
+        res.json({
+          status: 'ok',
+          prototype: 'constable-loop',
+          protocolVersion: PROTOCOL,
+          contentRevision: CONTENT_REVISION,
+          practiceOnly: true,
+          capacity: capacity.summary(),
+        }),
+      );
+      app.get('/api/rooms', (_req, res) =>
+        res.json(
+          [...liveRooms.values()]
+            .filter((r) => !r.privateCode)
+            .map((r) => ({
+              roomId: r.roomId,
+              name: 'Gatehouse Vigil',
+              mode: r.metadata.mode,
+              difficulty: r.metadata.difficulty,
+              players: r.clients.length,
+              maximumPlayers: r.maxClients,
+              phase: r.game.phase,
+              contentRevision: CONTENT_REVISION,
+            })),
+        ),
+      );
+      app.get('/api/rooms/code/:code', (req, res) => {
+        const now = Date.now(),
+          key = req.ip ?? 'local';
+        let entry = requests.get(key);
+        if (!entry || entry.reset < now) {
+          entry = { reset: now + 60000, count: 0 };
+          requests.set(key, entry);
+        }
+        if (++entry.count > 30) {
+          res.setHeader('Retry-After', '60');
+          res.status(429).json({ error: 'rateLimited' });
+          return;
+        }
+        if (requests.size > 10000)
+          for (const [id, slot] of requests) if (slot.reset < now) requests.delete(id);
+        const code = req.params.code.toUpperCase();
+        if (!/^[ABCDEFGHJKLMNPQRSTUVWXYZ23456789]{6}$/.test(code)) {
+          res.status(404).json({ error: 'invalidCode' });
+          return;
+        }
+        const roomId = privateRooms.get(code);
+        if (!roomId) {
+          res.status(404).json({ error: 'invalidCode' });
+          return;
+        }
+        res.json({ roomId });
+      });
+    },
+  });
+  server.define('grave', GraveRoom).filterBy(['mode', 'difficulty', 'contentRevision']);
+  return { server, httpServer };
+}
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  const { server } = createGameServer();
+  const port = Number(process.env.PORT ?? 2567),
+    host = process.env.HOST ?? '127.0.0.1';
+  await server.listen(port, host);
+  console.log(
+    JSON.stringify({
+      listening: host + ':' + port,
+      protocol: PROTOCOL,
+      contentRevision: CONTENT_REVISION,
+      practiceOnly: true,
+    }),
+  );
+}

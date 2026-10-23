@@ -5,6 +5,10 @@ Meaningful implemented changes are recorded here. Planned work belongs in the Pr
 ## Unreleased
 
 ### Added
+- Added the shared 30 Hz first-loop combat core: Soldier/Medic abilities and ultimates, swept collisions, revives, authoritative votes, prerequisite-aware skill spending and idempotent purchases.
+- Added the Phaser client and offline worker, public discovery/private codes, sixty-second reconnect reservations, movement prediction/reconciliation, class shops, cooldown displays, keyboard/gamepad/touch controls, fifteen runtime language catalogs and original music/SFX playback.
+- Passed twenty rules/network checks, strict TypeScript and a production client build. A short fifty-scripted-client pilot reached 4,000 hostiles with a 13.4 ms simulation p99; it does not establish rendered FPS or hosting capacity.
+- Published the verified Stage 1 packet, PDF, checksums and report in prerelease v0.2.0-stage1; published fifteen Wiki pages and activated main protection after successful verify checks.
 - Expanded the authored boss roster to 60 distinct identities: 50 disjoint timed-route bosses, 9 Endless exclusives and The Uncounted. Each added boss has numerical mechanics, counterplay, an art brief and three phases.
 - Added no-repeat gauntlet pools with three concealed candidates at every vote and guaranteed Endless-exclusive slots.
 - Added a stricter clean-detail art contract concentrating detail on faces, hands and signature props.
@@ -24,9 +28,9 @@ Meaningful implemented changes are recorded here. Planned work belongs in the Pr
 - Initialized the GitHub Wiki and one production Project with stage, subsystem, priority, status and acceptance-evidence tracking.
 
 ### Known limitations
-- This is preproduction. No playable build or hosted game has been released.
-- Runtime localization, shaped-script font/layout review and native-speaker review remain pending.
-- Gameplay, networking, performance, and human playtesting remain outstanding.
+- The runtime is a development prototype; full content, offline/online recovery, verified leaderboards, a Windows build and public hosting remain in progress.
+- Embedded multilingual fonts, shaped-script/layout review and native-speaker review remain pending.
+- Browser automation still reports disabled access despite the user's enabled setting. Rendered gameplay, 49 bots plus one rendered client, physical-device performance, free-host capacity, endurance and human playtesting remain outstanding.
 
 ## Changelog policy
 

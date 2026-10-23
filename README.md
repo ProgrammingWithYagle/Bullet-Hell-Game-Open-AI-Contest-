@@ -4,7 +4,7 @@ An original cooperative zombie bullet hell about survivors keeping a forgotten c
 
 ![Grave Accord cover](assets/proofs/cover-v1.png)
 
-**Current status: Stage 1 preproduction. A playable game has not been released yet.** The complete implementation is authorized and tracked in the [production Project](https://github.com/users/ProgrammingWithYagle/projects/3). The [Wiki](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/wiki) is initialized; its canonical guides are prepared in docs/wiki for publication.
+**Current status: Stage 1 delivered; first-loop runtime in development. A verified playable release has not been published.** The complete implementation is tracked in the [production Project](https://github.com/users/ProgrammingWithYagle/projects/3). The [Wiki](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/wiki) has fifteen published guides. Download the illustrated design packet from the [Stage 1 prerelease](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/releases/tag/v0.2.0-stage1).
 
 The authored design includes seven classes with cooldown ultimates, 126 skills, 28 weapons, 24 mutations, six arena kits, fifty route bosses, nine Endless-exclusive bosses and one secret boss. Quarantine Run, Midnight Circuit and Black Bell Pilgrimage are distinct campaigns; Grand Raid supports sixteen players; Endless Vigil has no final round and targets fifty. Player counts and performance remain implementation gates until measured.
 
@@ -12,7 +12,11 @@ The Stage 1 source includes a full [production bible](docs/GAME_BIBLE.md), [sixt
 
 Open assets/proofs/animation/index.html to review animation proofs and assets/audio/preview.html to audition music and SFX. These worksheets work locally without a game server. They are preproduction reviews, not gameplay.
 
-With Node 24, run npm run verify to validate the authored content, art/audio evidence and localization catalogs. The illustrated PDF and portable Stage 1 packet are produced by the tools in tools/; source, fresh extraction and ordinary Windows copy must agree before delivery.
+The runtime branch contains Soldier and Medic, Gatehouse and Hollow Constable, five-round practice and an uncapped prototype loop. It shares combat rules between an offline worker and an authoritative Colyseus service. It includes public/private rooms, reconnect reservations, votes, a class shop, skill spending, ultimates, controls and fifteen language catalogs. Full-content implementation, saves, verified rankings, browser/device review, portable Windows packaging and deployment are still in progress. Constable variants are practice encounters, not the sixty distinct bosses.
+
+With Node 24 and pnpm 11.25.0, run `pnpm install --frozen-lockfile`, then `pnpm verify`. This validates Stage 1, checks TypeScript, runs twenty rules/network checks and builds the client. In separate terminals, run `pnpm dev` and `pnpm server`, then visit [the local prototype](http://localhost:5173/). Offline solo uses the worker and does not require the multiplayer service. See [first-loop evidence and remaining gates](docs/FIRST_PLAYABLE.md).
+
+The illustrated PDF and portable Stage 1 packet are produced by the tools in tools/; source, fresh extraction and ordinary Windows copy must agree before delivery.
 
 The game implementation uses TypeScript, Phaser, Vite, Colyseus and Electron with one shared authoritative rules simulation. A free Render realtime service and a public browser client with durable global team records are the approved hosting design. No paid provisioning is authorized.
 

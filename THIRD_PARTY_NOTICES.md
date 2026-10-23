@@ -6,4 +6,6 @@ The production PDF embeds subsets of Bitstream Vera. Its copyright and permissio
 
 No sprites, maps, audio recordings, fonts or code were copied from the cited reference games. Reference links describe inspiration and technical research. Built-in OpenAI image generation supplied original illustrations; the tool did not expose its model identifier or quality control. Audio was synthesized from the included original note/event score without external samples.
 
-Runtime dependencies and bundled font notices will be added with the corresponding verified game build. Noto font files must retain their SIL Open Font License notices. This statement is a production requirement and does not claim those future dependencies are already bundled.
+The installed runtime dependency inventory is recorded in docs/licenses/runtime-inventory.json, with verbatim copyright notices under docs/licenses/runtime/. It covers the Phaser and Colyseus browser/server trees; eventual browser and Windows packages may bundle different subsets. The @better-auth/utils npm archive declares MIT but omits a license file; its verbatim upstream notice and immutable retrieval source are recorded in docs/licenses/extra-notice-sources.json. Build tools remain development dependencies.
+
+Bundled multilingual fonts are still in progress. Noto font files must retain their SIL Open Font License notices when admitted; no font download is claimed here.
