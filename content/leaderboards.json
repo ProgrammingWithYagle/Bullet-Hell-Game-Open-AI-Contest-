@@ -1,0 +1,1602 @@
+{
+  "schemaVersion": 1,
+  "rulesVersion": 1,
+  "status": "Stage 1 specification; no online implementation or service deployment is implied",
+  "authoredDate": "2026-10-22",
+  "companionDocumentation": "docs/LEADERBOARDS.md",
+  "fixturePath": "reviews/leaderboard-score-fixtures.json",
+  "rankedUnit": "team-run",
+  "teamRankPolicy": "Every combat participant shares the one team-run rank. Personal contributions never establish individual ranks.",
+  "boards": [
+    {
+      "mode": "short",
+      "label": "Quarantine Run",
+      "ordering": "timed",
+      "requiredClears": 5,
+      "maximumPlayers": 8,
+      "sizeBands": [
+        "solo",
+        "2-4",
+        "5-8"
+      ]
+    },
+    {
+      "mode": "standard",
+      "label": "Midnight Circuit",
+      "ordering": "timed",
+      "requiredClears": 10,
+      "maximumPlayers": 8,
+      "sizeBands": [
+        "solo",
+        "2-4",
+        "5-8"
+      ]
+    },
+    {
+      "mode": "long",
+      "label": "Black Bell Pilgrimage",
+      "ordering": "timed",
+      "requiredClears": 16,
+      "maximumPlayers": 8,
+      "sizeBands": [
+        "solo",
+        "2-4",
+        "5-8"
+      ]
+    },
+    {
+      "mode": "raid",
+      "label": "Grand Raid",
+      "ordering": "timed",
+      "requiredClears": 3,
+      "maximumPlayers": 16,
+      "sizeBands": [
+        "solo",
+        "2-4",
+        "5-8",
+        "9-16"
+      ]
+    },
+    {
+      "mode": "endless",
+      "label": "Endless Vigil",
+      "ordering": "endless",
+      "minimumClears": 1,
+      "maximumPlayers": 50,
+      "sizeBands": [
+        "solo",
+        "2-4",
+        "5-8",
+        "9-16",
+        "17-50"
+      ]
+    }
+  ],
+  "difficultyIds": [
+    "baby",
+    "easy",
+    "normal",
+    "hard",
+    "insane",
+    "hellish"
+  ],
+  "partitionKeys": [
+    "mode",
+    "difficulty",
+    "sizeBand",
+    "seasonId",
+    "rulesVersion",
+    "contentRevision"
+  ],
+  "periods": {
+    "default": "all",
+    "all": "All qualifying terminal runs within the selected release season and exact content revision.",
+    "week": {
+      "zone": "UTC",
+      "starts": "Monday 00:00:00",
+      "endsExclusive": "Next Monday 00:00:00",
+      "membershipField": "endedAtUtcMs",
+      "explicitWeekStart": "YYYY-MM-DD Monday; reject any other weekday or time zone."
+    },
+    "seasons": {
+      "initialReleaseSeason": "ga-2026-01",
+      "rulesVersion": 1,
+      "contentPolicy": "Exact content revision partitions scores. Preserve older seasons as archives; never silently merge balance revisions."
+    }
+  },
+  "sizeBands": [
+    {
+      "id": "solo",
+      "minimum": 1,
+      "maximum": 1,
+      "label": "Solo"
+    },
+    {
+      "id": "2-4",
+      "minimum": 2,
+      "maximum": 4,
+      "label": "2–4"
+    },
+    {
+      "id": "5-8",
+      "minimum": 5,
+      "maximum": 8,
+      "label": "5–8"
+    },
+    {
+      "id": "9-16",
+      "minimum": 9,
+      "maximum": 16,
+      "label": "9–16"
+    },
+    {
+      "id": "17-50",
+      "minimum": 17,
+      "maximum": 50,
+      "label": "17–50"
+    }
+  ],
+  "rosterPolicy": {
+    "identity": "Server-minted opaque run-scoped UUID; a reconnect retains its original participantId.",
+    "admission": "Only at encounter boundaries. Spectators and lobby-only visitors are excluded.",
+    "finalEligibleRoster": "Union of every unique participant admitted into combat from the first encounter through the scored clear. Departures, kicks, and eliminations never remove members.",
+    "survivorsAtFinalClear": "Eligible participants alive, connected and admitted to combat at the authoritative base final-clear tick.",
+    "peakCombatRoster": "Maximum concurrent admitted combat slots at any encounter start, including downed, eliminated and reconnect-reserved slots.",
+    "peakIsMonotonic": true,
+    "historicalRosterMayExceedConcurrentCapacity": true,
+    "lateJoinCredit": "Same team rank, with encounter entry/range, participation and final-state context.",
+    "publicRosterPagination": 25,
+    "fields": [
+      "participantId",
+      "displayName",
+      "classesPlayed",
+      "firstEncounter",
+      "lastEncounter",
+      "encountersPlayed",
+      "joinedLate",
+      "departed",
+      "reconnected",
+      "finalState",
+      "damageDealtMilli",
+      "healingProvidedMilli",
+      "damageBlockedMilli",
+      "revivesCompleted"
+    ],
+    "finalStates": [
+      "alive",
+      "downed",
+      "eliminated",
+      "departed"
+    ],
+    "displayName": {
+      "normalize": "NFC",
+      "trim": true,
+      "minimumGraphemes": 1,
+      "maximumGraphemes": 24,
+      "maximumUtf8Bytes": 96,
+      "reject": [
+        "control characters",
+        "explicit bidi formatting",
+        "markup"
+      ],
+      "fallback": "localized Survivor {number}",
+      "render": "plain text in bdi"
+    },
+    "neverPublic": [
+      "email",
+      "ipAddress",
+      "deviceId",
+      "roomCode",
+      "reconnectToken",
+      "checkpointSignature",
+      "writeKey"
+    ]
+  },
+  "timed": {
+    "eligibleOutcome": "Completed required base encounters; each clears before its own deadline; at least one connected living survivor.",
+    "exclude": [
+      "defeats",
+      "timeouts",
+      "secret extension metrics",
+      "practice",
+      "custom rules",
+      "synthetic test sessions"
+    ],
+    "maximumScore": 1000000,
+    "weights": {
+      "clear": 500000,
+      "speed": 250000,
+      "survival": 150000,
+      "protection": 100000
+    },
+    "formula": "roundHalfUp(500000 + 250000 * clamp(1 - combatMs / deadlineBudgetMs, 0, 1) + 150000 * survivorsAtFinalClear / finalEligibleRoster + 100000 * clamp(1 - hpDamageTaken / summedPlayerMaxHealthAtEncounterStarts, 0, 1))",
+    "rounding": "Round complete nonnegative sum once: floor(x + 0.5). Use exact integer-ratio arithmetic at rounding boundaries.",
+    "healthCounterUnit": "milli-HP; 1000 units = 1 HP",
+    "metrics": {
+      "combatTicks": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 9007199254740991,
+        "unit": "30 Hz simulation ticks"
+      },
+      "combatMs": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 9007199254740991,
+        "derived": "floor(combatTicks * 1000 / 30)"
+      },
+      "deadlineBudgetMs": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 9007199254740991
+      },
+      "survivorsAtFinalClear": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 50
+      },
+      "finalEligibleRoster": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 9007199254740991,
+        "meaning": "All unique participants ever admitted into scored combat; departures remain eligible."
+      },
+      "hpDamageTaken": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991,
+        "unit": "milli-HP"
+      },
+      "summedPlayerMaxHealthAtEncounterStarts": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 9007199254740991,
+        "unit": "milli-HP"
+      },
+      "peakCombatRoster": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 50
+      },
+      "encountersCleared": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 9007199254740991
+      }
+    },
+    "healthDamage": "Actual HP removed, including hostile/environmental/self-damage; cap each hit at remaining HP. Exclude shield depletion, blocked damage, max-health-stat changes and overkill; healing never subtracts damage.",
+    "healthBudget": "Sum effective maximum HP once per admitted entrant per scored encounter start. Revives/reconnects/shields never add extra budget.",
+    "deadlineBudget": "Sum frozen per-encounter authored deadlines after legal difficulty/mutation adjustments; validate every individual clear.",
+    "clock": "Active simulation from first combat through base final clear, including telegraphs/Accord/phase invulnerability. Exclude all noncombat phases.",
+    "competitiveOrder": [
+      {
+        "field": "score",
+        "direction": "descending"
+      },
+      {
+        "field": "combatMs",
+        "direction": "ascending"
+      },
+      {
+        "field": "hpDamageTaken/summedPlayerMaxHealthAtEncounterStarts",
+        "direction": "ascending",
+        "exactRatio": true
+      }
+    ],
+    "secretPolicy": "Finalize and bank base campaign rank before optional Uncounted. Secret result is a badge and cannot alter base score."
+  },
+  "endless": {
+    "minimumBossesCleared": 1,
+    "terminalReasons": [
+      "team-defeat",
+      "boss-timeout",
+      "end-vigil-intermission",
+      "all-absent-after-reconnect-grace"
+    ],
+    "clock": "Only active combat ticks; freeze rank tuple after each completed boss. Show total active survival including final failed encounter.",
+    "metrics": {
+      "bossesCleared": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 9007199254740991
+      },
+      "combatThroughLastClearTicks": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 9007199254740991
+      },
+      "combatThroughLastClearMs": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 9007199254740991,
+        "derived": "floor(combatThroughLastClearTicks * 1000 / 30)"
+      },
+      "totalCombatSurvivalTicks": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 9007199254740991
+      },
+      "totalCombatSurvivalMs": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 9007199254740991,
+        "derived": "floor(totalCombatSurvivalTicks * 1000 / 30)"
+      },
+      "hpDamageThroughLastClear": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991,
+        "unit": "milli-HP"
+      },
+      "healthBudgetThroughLastClear": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 9007199254740991,
+        "unit": "milli-HP"
+      },
+      "peakCombatRoster": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 50
+      },
+      "finalEligibleRoster": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 9007199254740991,
+        "meaning": "All historical admitted combat participants; can exceed 50 because peak concurrency is separate."
+      }
+    },
+    "competitiveOrder": [
+      {
+        "field": "bossesCleared",
+        "direction": "descending"
+      },
+      {
+        "field": "combatThroughLastClearMs",
+        "direction": "ascending"
+      },
+      {
+        "field": "hpDamageThroughLastClear/healthBudgetThroughLastClear",
+        "direction": "ascending",
+        "exactRatio": true
+      }
+    ],
+    "survivalTimeAffectsRank": false,
+    "displayPrimary": "bossesCleared",
+    "displayProminent": "totalCombatSurvivalMs",
+    "partialEncounterPolicy": "Additional survival/damage after last clear stays in recap but cannot improve the ranking tuple.",
+    "activeRun": "In Progress, no finalized rank"
+  },
+  "ties": {
+    "style": "competition",
+    "example": [
+      1,
+      1,
+      3
+    ],
+    "timedKeys": [
+      "score",
+      "combatMs",
+      "exactDamageRatio"
+    ],
+    "endlessKeys": [
+      "bossesCleared",
+      "combatThroughLastClearMs",
+      "exactDamageRatio"
+    ],
+    "stableDisplayOnly": [
+      "endedAtUtcMs",
+      "runId"
+    ],
+    "ratioComparison": "Cross-multiply with arbitrary-precision integers; never compare rounded display percentages."
+  },
+  "rankedEligibility": {
+    "trustedSource": "Official authoritative Render combat server authenticated to the Sites HTTP service.",
+    "publicDefault": true,
+    "privateDefault": false,
+    "privateOptIn": "Explicit before first combat, disclosed to every lobby participant: results and nicknames become public; private room code remains private.",
+    "freezeAt": "First combat admission",
+    "latchesUnranked": [
+      "custom gameplay rules",
+      "protocol/content mismatch",
+      "required lifecycle registration unavailable",
+      "mid-combat checkpoint replay",
+      "offline or LAN authority",
+      "synthetic clients/load test"
+    ],
+    "accessibility": "Aim assist, auto-fire, remapping, touch, gamepad and reduced effects remain ranked-compatible."
+  },
+  "storage": {
+    "host": "Sites HTTP Worker",
+    "database": "D1",
+    "binding": "DB",
+    "transportFromCombatServer": "HTTPS",
+    "migrationPolicy": "Append versioned schema-only migrations; no runtime CREATE/ALTER.",
+    "tables": {
+      "runs": {
+        "primaryKey": [
+          "runId"
+        ],
+        "fields": [
+          "serverId",
+          "ownerEpoch",
+          "leaseExpiresAtUtcMs",
+          "mode",
+          "difficulty",
+          "seasonId",
+          "rulesVersion",
+          "contentRevision",
+          "protocolVersion",
+          "visibility",
+          "ranked",
+          "verificationState",
+          "phase",
+          "checkpointSequence",
+          "checkpointDigest",
+          "rosterDigest",
+          "historicalRosterCount",
+          "peakCombatRoster",
+          "cumulativeMetrics",
+          "finalizedPayloadHash",
+          "endedAtUtcMs",
+          "terminalResult"
+        ],
+        "index": "Exact board partition, competitive keys, terminal time"
+      },
+      "participants": {
+        "primaryKey": [
+          "runId",
+          "participantId"
+        ],
+        "index": "runId, firstAdmissionOrder",
+        "fields": "Public roster fields plus private admission counters; never reconnect secrets."
+      },
+      "events": {
+        "primaryKey": [
+          "runId",
+          "eventId"
+        ],
+        "fields": [
+          "payloadHash",
+          "acceptedAtUtcMs",
+          "resultSummary"
+        ],
+        "purpose": "Idempotency and sequence audit"
+      },
+      "nonces": {
+        "primaryKey": [
+          "keyId",
+          "serverId",
+          "nonce"
+        ],
+        "fields": [
+          "expiresAtUtcMs"
+        ],
+        "retentionSeconds": 600
+      }
+    },
+    "mutationAtomicity": "One D1 batch with constrained compare-and-set, event idempotency and all participant deltas. Failed state/owner/sequence checks must abort dependent writes.",
+    "rankedContentRegistry": "Server configuration allowlists exact protocol/content/rules/season combinations; requests cannot create trusted combinations.",
+    "exactRatioIndex": {
+      "field": "damageRatioSortKey",
+      "type": "TEXT",
+      "formula": "BigInt floor(numerator * 10^33 / denominator), left-pad to 49 decimal digits",
+      "counterMaximum": 9007199254740991,
+      "proof": "Any two distinct permitted fractions differ by at least 1/(2^53-1)^2; scaling by 10^33 separates them by more than 12, preserving exact ordering after floor. Equal fractions produce equal keys.",
+      "indexPolicy": "Use this key in the competitive ordering index and RANK window. Never SQLite floating division or rounded percentages.",
+      "public": false
+    }
+  },
+  "authentication": {
+    "algorithm": "HMAC-SHA-256",
+    "encoding": "base64url without padding",
+    "minimumKeyBits": 256,
+    "secrets": [
+      "LEADERBOARD_WRITE_KEY",
+      "CHECKPOINT_SIGNING_KEY"
+    ],
+    "publicConfiguration": [
+      "LEADERBOARD_KEY_ID",
+      "LEADERBOARD_BASE_URL",
+      "OFFICIAL_SERVER_ID"
+    ],
+    "headers": [
+      "X-GA-Key-Id",
+      "X-GA-Server-Id",
+      "X-GA-Timestamp",
+      "X-GA-Nonce",
+      "X-GA-Signature"
+    ],
+    "canonicalRequest": "UPPERCASE_METHOD + LF + PATH + LF + timestamp + LF + nonce + LF + SHA256_HEX(exactBodyBytes)",
+    "pathPolicy": "No writer query strings. Sign the normalized literal /api/v1/ path.",
+    "timestampUnit": "Unix seconds integer",
+    "maximumClockSkewSeconds": 300,
+    "nonceBits": 128,
+    "nonceRetentionSeconds": 600,
+    "verification": "Web Crypto verify; configured official key/server allowlist; never keys from a request body.",
+    "rotation": "Current key plus one configured previous key for a 24-hour transition.",
+    "browserSecretsAllowed": false
+  },
+  "http": {
+    "apiVersion": 1,
+    "maximumWriterBodyBytes": 65536,
+    "maximumParticipantDeltasPerEvent": 50,
+    "numericPolicy": "All counters are nonnegative safe integers. Positive denominators and validated enum values. Reject NaN, infinity, booleans-as-integers and unknown keys.",
+    "publicReads": [
+      {
+        "method": "GET",
+        "path": "/api/v1/leaderboards",
+        "requiredQuery": [
+          "mode",
+          "difficulty",
+          "sizeBand",
+          "seasonId",
+          "rulesVersion",
+          "contentRevision"
+        ],
+        "optionalQuery": [
+          "period",
+          "weekStart",
+          "limit",
+          "cursor"
+        ],
+        "defaultLimit": 10,
+        "maximumLimit": 25,
+        "returns": [
+          "board",
+          "rows",
+          "totalRuns",
+          "nextCursor",
+          "asOf"
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/api/v1/runs/{runId}",
+        "returns": [
+          "board",
+          "sharedRank",
+          "primaryMetrics",
+          "scoreBreakdown",
+          "verificationState",
+          "asOf"
+        ],
+        "notFinalizedStatus": 404
+      },
+      {
+        "method": "GET",
+        "path": "/api/v1/runs/{runId}/participants",
+        "optionalQuery": [
+          "limit",
+          "cursor"
+        ],
+        "defaultLimit": 25,
+        "maximumLimit": 25,
+        "returns": [
+          "participants",
+          "nextCursor"
+        ]
+      }
+    ],
+    "serverWrites": [
+      {
+        "method": "POST",
+        "path": "/api/v1/runs",
+        "required": [
+          "runId",
+          "serverId",
+          "mode",
+          "difficulty",
+          "seasonId",
+          "rulesVersion",
+          "contentRevision",
+          "protocolVersion",
+          "visibility",
+          "ranked",
+          "checkpointDigest"
+        ],
+        "optional": [],
+        "additionalProperties": false,
+        "initialPhase": "registered",
+        "initialOwnerEpoch": 1,
+        "initialCheckpointSequence": 0
+      },
+      {
+        "method": "POST",
+        "path": "/api/v1/runs/{runId}/events",
+        "required": [
+          "eventId",
+          "type",
+          "expectedCheckpointSequence",
+          "ownerEpoch",
+          "previousDigest",
+          "payload"
+        ],
+        "additionalProperties": false,
+        "eventTypes": [
+          "combat-start",
+          "intermission",
+          "lease-refresh",
+          "restore-claim",
+          "demote",
+          "finalize"
+        ]
+      }
+    ],
+    "readCachingSeconds": 15,
+    "errors": {
+      "400": "Invalid shape, enum, numeric range or board combination",
+      "401": "Missing/invalid signature or timestamp",
+      "403": "Untrusted server/key/revision or unranked submission",
+      "404": "Unknown or nonfinalized public run",
+      "409": "Conflicting idempotency/state/sequence/owner/checkpoint",
+      "413": "Body exceeds 64 KiB",
+      "429": "Rate limited",
+      "503": "Storage or service temporarily unavailable"
+    },
+    "semanticValidation": [
+      "Participant display names also require NFC/trim/grapheme/UTF-8/control checks; JSON Schema length alone is insufficient.",
+      "survivorsAtFinalClear <= min(finalEligibleRoster, peakCombatRoster); finalEligibleRoster equals registered historical roster count.",
+      "peakCombatRoster <= mode capacity and <= finalEligibleRoster. Derive the band; reject any caller-provided different band.",
+      "combatMs == floor(combatTicks * 1000 / 30); use arbitrary-precision integer intermediate products.",
+      "For Endless, totalCombatSurvivalTicks >= combatThroughLastClearTicks; both derived ms values must agree with ticks.",
+      "Every required individual timed encounter clears strictly before its frozen deadline; aggregate combatMs alone is insufficient evidence.",
+      "Timed final metrics are accepted only for timed modes and exact required encounter count; Endless metrics only for endless mode with >=1 clear.",
+      "Cumulative damage, elapsed combat, health budget, clears, roster count and peak cannot decrease across registered events.",
+      "Last-clear metrics freeze at the latest acknowledged clear and must match final Endless metrics.",
+      "Every participant delta uses an admitted run-scoped ID, valid class IDs, nondecreasing contribution totals and legal encounter bounds.",
+      "finalize terminalReason base-clear is valid only for timed clears; other terminal reasons are valid only for Endless global entries.",
+      "Run/event UUIDs are lowercase UUIDv4. Private checkpoint digests are never public API fields.",
+      "Week membership uses the signed authoritative terminal time; idempotent retries do not move a result between weeks."
+    ]
+  },
+  "eventPayloads": {
+    "combat-start": {
+      "required": [
+        "encounterIndex",
+        "checkpointDigest",
+        "participantDeltas",
+        "cumulativeMetrics",
+        "rosterDigest"
+      ],
+      "precondition": "registered or intermission; exact current sequence/digest/owner; roster durably registered",
+      "effect": "Set phase combat before simulating any tick; keep checkpoint sequence; refresh owner lease."
+    },
+    "intermission": {
+      "required": [
+        "checkpointDigest",
+        "participantDeltas",
+        "cumulativeMetrics",
+        "rosterDigest"
+      ],
+      "precondition": "combat clear or intermission bounded roster registration; exact current sequence/digest/owner",
+      "effect": "Set intermission; increment checkpoint sequence; replace digest; preserve monotonic counters."
+    },
+    "lease-refresh": {
+      "required": [],
+      "precondition": "Nonterminal eligible run; exact current sequence/digest/owner",
+      "effect": "Set owner lease expiry to service now + 90 seconds. No gameplay/sequence change."
+    },
+    "restore-claim": {
+      "required": [
+        "checkpointDigest"
+      ],
+      "precondition": "Latest acknowledged intermission digest; the official server validates the signed checkpoint and <=24h lifetime before requesting the claim; prior 90-second lease expired; exact sequence/digest.",
+      "effect": "Atomically increment ownerEpoch and replace server ownership. No counter/seed/offer reroll; one claimant wins."
+    },
+    "demote": {
+      "required": [
+        "reason"
+      ],
+      "precondition": "Nonterminal current owner",
+      "effect": "Latch verificationState unverified or practice. Never allow later promotion."
+    },
+    "finalize": {
+      "required": [
+        "terminalReason",
+        "endedAtUtcMs",
+        "participantDeltas",
+        "cumulativeMetrics",
+        "rosterDigest"
+      ],
+      "precondition": "Current owner, exact sequence/state/digest; completed timed clear or terminal endless with >=1 clear; all participants durably registered",
+      "effect": "Compute derived score/band/rank keys; atomically mark terminal and persist one immutable result."
+    }
+  },
+  "checkpointIntegrity": {
+    "lifetimeHours": 24,
+    "leaseSeconds": 90,
+    "leaseRefreshSeconds": 30,
+    "requiredSignedFields": [
+      "runId",
+      "ownerEpoch",
+      "checkpointSequence",
+      "rosterDigest",
+      "seed",
+      "mode",
+      "difficulty",
+      "intermissionState",
+      "cumulativeMetrics",
+      "protocolVersion",
+      "contentRevision",
+      "rulesVersion",
+      "issuedAtUtcMs",
+      "expiresAtUtcMs"
+    ],
+    "rankedRecovery": "Only exact latest durable intermission, atomically claimed by one owner after lease expiry; no finished run, old sequence or active-combat replay.",
+    "midCombatCrashRecovery": "Resume signed prior checkpoint as Recovery Practice. Cannot erase failed partial combat for a better verified result.",
+    "idempotentFinalize": "Same run/event/payload hash returns original result with no second row. Conflicting payload or terminal replay is 409.",
+    "serviceFailure": "Continue gameplay. Latch unverified if a required registration cannot be acknowledged; never block offline/LAN gameplay.",
+    "unknownFinalizeResponse": "Pending verification; owning official server retries exact event with fresh transport nonce for <=24h. Lost unacknowledged payload never becomes an invented rank.",
+    "leaseTransfer": "No early-release endpoint in v1. A replacement owner waits for the 90-second lease to expire; planned shutdown can stop refreshing it."
+  },
+  "ui": {
+    "defaults": {
+      "mode": "short",
+      "difficulty": "normal",
+      "sizeBand": "solo",
+      "period": "all",
+      "preferLastPlayed": true
+    },
+    "initialRows": 10,
+    "nextPageRows": 25,
+    "timedColumns": [
+      "rank",
+      "team",
+      "score",
+      "combatTime",
+      "survived"
+    ],
+    "endlessColumns": [
+      "rank",
+      "team",
+      "bossesCleared",
+      "totalCombatSurvival",
+      "peakCombatRoster"
+    ],
+    "resultCard": [
+      "sharedRank",
+      "totalQualifyingRuns",
+      "primaryMetric",
+      "componentExplanation"
+    ],
+    "statuses": [
+      "Verified",
+      "In Progress",
+      "Pending verification",
+      "Practice",
+      "Unverified",
+      "Unavailable"
+    ],
+    "labelsMustBeLocalized": true,
+    "localeIds": [
+      "en",
+      "zh-Hans",
+      "zh-Hant",
+      "ja",
+      "es",
+      "fr",
+      "de",
+      "pt-BR",
+      "ru",
+      "hi",
+      "ar",
+      "bn",
+      "id",
+      "ur",
+      "ko"
+    ],
+    "mobile": "Two-line rows; explicit expand button; no horizontal scrolling.",
+    "rtl": "Mirror menus while preserving rank/number direction and isolating nicknames."
+  },
+  "sources": [
+    {
+      "title": "Cloudflare D1 Database API",
+      "url": "https://developers.cloudflare.com/d1/worker-api/d1-database/",
+      "checked": "2026-10-22"
+    },
+    {
+      "title": "Cloudflare D1 limits",
+      "url": "https://developers.cloudflare.com/d1/platform/limits/",
+      "checked": "2026-10-22"
+    },
+    {
+      "title": "Cloudflare Workers Web Crypto",
+      "url": "https://developers.cloudflare.com/workers/runtime-apis/web-crypto/",
+      "checked": "2026-10-22"
+    }
+  ],
+  "jsonSchema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "urn:grave-accord:leaderboard:1",
+    "title": "Grave Accord authoritative leaderboard write contracts",
+    "$defs": {
+      "participantDelta": {
+        "type": "object",
+        "properties": {
+          "participantId": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+          },
+          "displayName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 96
+          },
+          "classesPlayed": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 7,
+            "uniqueItems": true,
+            "items": {
+              "enum": [
+                "soldier",
+                "heavy",
+                "tank",
+                "medic",
+                "mage",
+                "engineer",
+                "assassin"
+              ]
+            }
+          },
+          "firstEncounter": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "lastEncounter": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "encountersPlayed": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "joinedLate": {
+            "type": "boolean"
+          },
+          "departed": {
+            "type": "boolean"
+          },
+          "reconnected": {
+            "type": "boolean"
+          },
+          "finalState": {
+            "enum": [
+              "alive",
+              "downed",
+              "eliminated",
+              "departed"
+            ]
+          },
+          "damageDealtMilli": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "healingProvidedMilli": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "damageBlockedMilli": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "revivesCompleted": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          }
+        },
+        "required": [
+          "participantId",
+          "displayName",
+          "classesPlayed",
+          "firstEncounter",
+          "lastEncounter",
+          "encountersPlayed",
+          "joinedLate",
+          "departed",
+          "reconnected",
+          "finalState",
+          "damageDealtMilli",
+          "healingProvidedMilli",
+          "damageBlockedMilli",
+          "revivesCompleted"
+        ],
+        "additionalProperties": false
+      },
+      "lastClearMetrics": {
+        "type": "object",
+        "properties": {
+          "bossesCleared": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "combatThroughLastClearTicks": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "combatThroughLastClearMs": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "hpDamageThroughLastClear": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "healthBudgetThroughLastClear": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          }
+        },
+        "required": [
+          "bossesCleared",
+          "combatThroughLastClearTicks",
+          "combatThroughLastClearMs",
+          "hpDamageThroughLastClear",
+          "healthBudgetThroughLastClear"
+        ],
+        "additionalProperties": false
+      },
+      "cumulativeMetrics": {
+        "type": "object",
+        "properties": {
+          "combatTicks": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "combatMs": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "deadlineBudgetMs": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "encountersCleared": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "hpDamageTaken": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "summedPlayerMaxHealthAtEncounterStarts": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "finalEligibleRoster": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "peakCombatRoster": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 50
+          },
+          "lastClear": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/lastClearMetrics"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "combatTicks",
+          "combatMs",
+          "deadlineBudgetMs",
+          "encountersCleared",
+          "hpDamageTaken",
+          "summedPlayerMaxHealthAtEncounterStarts",
+          "finalEligibleRoster",
+          "peakCombatRoster",
+          "lastClear"
+        ],
+        "additionalProperties": false
+      },
+      "timedFinalMetrics": {
+        "type": "object",
+        "properties": {
+          "combatTicks": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "combatMs": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "deadlineBudgetMs": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "survivorsAtFinalClear": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 50
+          },
+          "finalEligibleRoster": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "hpDamageTaken": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "summedPlayerMaxHealthAtEncounterStarts": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "peakCombatRoster": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 50
+          },
+          "encountersCleared": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          }
+        },
+        "required": [
+          "combatTicks",
+          "combatMs",
+          "deadlineBudgetMs",
+          "survivorsAtFinalClear",
+          "finalEligibleRoster",
+          "hpDamageTaken",
+          "summedPlayerMaxHealthAtEncounterStarts",
+          "peakCombatRoster",
+          "encountersCleared"
+        ],
+        "additionalProperties": false
+      },
+      "endlessFinalMetrics": {
+        "type": "object",
+        "properties": {
+          "bossesCleared": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "combatThroughLastClearTicks": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "combatThroughLastClearMs": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "totalCombatSurvivalTicks": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "totalCombatSurvivalMs": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "hpDamageThroughLastClear": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "healthBudgetThroughLastClear": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "peakCombatRoster": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 50
+          },
+          "finalEligibleRoster": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          }
+        },
+        "required": [
+          "bossesCleared",
+          "combatThroughLastClearTicks",
+          "combatThroughLastClearMs",
+          "totalCombatSurvivalTicks",
+          "totalCombatSurvivalMs",
+          "hpDamageThroughLastClear",
+          "healthBudgetThroughLastClear",
+          "peakCombatRoster",
+          "finalEligibleRoster"
+        ],
+        "additionalProperties": false
+      },
+      "runCreate": {
+        "type": "object",
+        "properties": {
+          "runId": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+          },
+          "serverId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64,
+            "pattern": "^[A-Za-z0-9_-]+$"
+          },
+          "mode": {
+            "enum": [
+              "short",
+              "standard",
+              "long",
+              "raid",
+              "endless"
+            ]
+          },
+          "difficulty": {
+            "enum": [
+              "baby",
+              "easy",
+              "normal",
+              "hard",
+              "insane",
+              "hellish"
+            ]
+          },
+          "seasonId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64,
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "rulesVersion": {
+            "const": 1
+          },
+          "contentRevision": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "protocolVersion": {
+            "const": 1
+          },
+          "visibility": {
+            "enum": [
+              "public",
+              "private"
+            ]
+          },
+          "ranked": {
+            "type": "boolean"
+          },
+          "checkpointDigest": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "required": [
+          "runId",
+          "serverId",
+          "mode",
+          "difficulty",
+          "seasonId",
+          "rulesVersion",
+          "contentRevision",
+          "protocolVersion",
+          "visibility",
+          "ranked",
+          "checkpointDigest"
+        ],
+        "additionalProperties": false
+      },
+      "runEvent": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "eventId": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+              },
+              "type": {
+                "const": "combat-start"
+              },
+              "expectedCheckpointSequence": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "ownerEpoch": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9007199254740991
+              },
+              "previousDigest": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "payload": {
+                "type": "object",
+                "properties": {
+                  "encounterIndex": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 9007199254740991
+                  },
+                  "checkpointDigest": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  },
+                  "participantDeltas": {
+                    "type": "array",
+                    "minItems": 0,
+                    "maxItems": 50,
+                    "items": {
+                      "$ref": "#/$defs/participantDelta"
+                    }
+                  },
+                  "cumulativeMetrics": {
+                    "$ref": "#/$defs/cumulativeMetrics"
+                  },
+                  "rosterDigest": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  }
+                },
+                "required": [
+                  "encounterIndex",
+                  "checkpointDigest",
+                  "participantDeltas",
+                  "cumulativeMetrics",
+                  "rosterDigest"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "eventId",
+              "type",
+              "expectedCheckpointSequence",
+              "ownerEpoch",
+              "previousDigest",
+              "payload"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "eventId": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+              },
+              "type": {
+                "const": "intermission"
+              },
+              "expectedCheckpointSequence": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "ownerEpoch": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9007199254740991
+              },
+              "previousDigest": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "payload": {
+                "type": "object",
+                "properties": {
+                  "checkpointDigest": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  },
+                  "participantDeltas": {
+                    "type": "array",
+                    "minItems": 0,
+                    "maxItems": 50,
+                    "items": {
+                      "$ref": "#/$defs/participantDelta"
+                    }
+                  },
+                  "cumulativeMetrics": {
+                    "$ref": "#/$defs/cumulativeMetrics"
+                  },
+                  "rosterDigest": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  }
+                },
+                "required": [
+                  "checkpointDigest",
+                  "participantDeltas",
+                  "cumulativeMetrics",
+                  "rosterDigest"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "eventId",
+              "type",
+              "expectedCheckpointSequence",
+              "ownerEpoch",
+              "previousDigest",
+              "payload"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "eventId": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+              },
+              "type": {
+                "const": "lease-refresh"
+              },
+              "expectedCheckpointSequence": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "ownerEpoch": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9007199254740991
+              },
+              "previousDigest": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "payload": {
+                "type": "object",
+                "properties": {},
+                "required": [],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "eventId",
+              "type",
+              "expectedCheckpointSequence",
+              "ownerEpoch",
+              "previousDigest",
+              "payload"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "eventId": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+              },
+              "type": {
+                "const": "restore-claim"
+              },
+              "expectedCheckpointSequence": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "ownerEpoch": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9007199254740991
+              },
+              "previousDigest": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "payload": {
+                "type": "object",
+                "properties": {
+                  "checkpointDigest": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  }
+                },
+                "required": [
+                  "checkpointDigest"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "eventId",
+              "type",
+              "expectedCheckpointSequence",
+              "ownerEpoch",
+              "previousDigest",
+              "payload"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "eventId": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+              },
+              "type": {
+                "const": "demote"
+              },
+              "expectedCheckpointSequence": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "ownerEpoch": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9007199254740991
+              },
+              "previousDigest": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "payload": {
+                "type": "object",
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "custom-rules",
+                      "protocol-mismatch",
+                      "content-mismatch",
+                      "lifecycle-unavailable",
+                      "mid-combat-replay",
+                      "local-authority",
+                      "synthetic-test",
+                      "checkpoint-expired",
+                      "operator-integrity-review"
+                    ]
+                  }
+                },
+                "required": [
+                  "reason"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "eventId",
+              "type",
+              "expectedCheckpointSequence",
+              "ownerEpoch",
+              "previousDigest",
+              "payload"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "eventId": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+              },
+              "type": {
+                "const": "finalize"
+              },
+              "expectedCheckpointSequence": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "ownerEpoch": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9007199254740991
+              },
+              "previousDigest": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "payload": {
+                "type": "object",
+                "properties": {
+                  "terminalReason": {
+                    "enum": [
+                      "base-clear",
+                      "team-defeat",
+                      "boss-timeout",
+                      "end-vigil-intermission",
+                      "all-absent-after-reconnect-grace"
+                    ]
+                  },
+                  "endedAtUtcMs": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 9007199254740991
+                  },
+                  "participantDeltas": {
+                    "type": "array",
+                    "minItems": 0,
+                    "maxItems": 50,
+                    "items": {
+                      "$ref": "#/$defs/participantDelta"
+                    }
+                  },
+                  "cumulativeMetrics": {
+                    "oneOf": [
+                      {
+                        "$ref": "#/$defs/timedFinalMetrics"
+                      },
+                      {
+                        "$ref": "#/$defs/endlessFinalMetrics"
+                      }
+                    ]
+                  },
+                  "rosterDigest": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  }
+                },
+                "required": [
+                  "terminalReason",
+                  "endedAtUtcMs",
+                  "participantDeltas",
+                  "cumulativeMetrics",
+                  "rosterDigest"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "eventId",
+              "type",
+              "expectedCheckpointSequence",
+              "ownerEpoch",
+              "previousDigest",
+              "payload"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      }
+    },
+    "oneOf": [
+      {
+        "$ref": "#/$defs/runCreate"
+      },
+      {
+        "$ref": "#/$defs/runEvent"
+      }
+    ]
+  }
+}

@@ -1,0 +1,456 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "reviewStatus": "Source and packed frames inspected; browser playback sampled at gameplay and 2x scale.",
+  "animations": [
+    {
+      "id": "soldier-run",
+      "source": "assets/proofs/soldier-run-v1.png",
+      "atlas": "assets/proofs/animation/soldier-run-atlas.png",
+      "originalSourceSize": [
+        1774,
+        887
+      ],
+      "paddedSourceSize": [
+        1776,
+        888
+      ],
+      "cellSize": 256,
+      "frameCount": 8,
+      "fps": 10,
+      "alpha": true,
+      "pivot": [
+        0.5,
+        0.86
+      ],
+      "maximumPivotError": 0,
+      "pivotMeasurement": "All target anchors are identical by deterministic fixed-anchor packing; animated boot height is not mistaken for a changing atlas origin.",
+      "processing": "Equal-grid crop, one shared scale, translation and transparent padding only; no generated pixels or creative redraw.",
+      "frames": [
+        {
+          "frame": 0,
+          "sourceAlphaBounds": [
+            27,
+            16,
+            428,
+            427
+          ],
+          "sourceAnchor": [
+            244,
+            431
+          ],
+          "targetAnchor": [
+            128,
+            220
+          ],
+          "resampleScale": 0.46126126126126127,
+          "targetAlphaBounds": [
+            23,
+            26,
+            219,
+            226
+          ]
+        },
+        {
+          "frame": 1,
+          "sourceAlphaBounds": [
+            31,
+            16,
+            412,
+            434
+          ],
+          "sourceAnchor": [
+            244,
+            431
+          ],
+          "targetAnchor": [
+            128,
+            220
+          ],
+          "resampleScale": 0.46126126126126127,
+          "targetAlphaBounds": [
+            15,
+            26,
+            217,
+            225
+          ]
+        },
+        {
+          "frame": 2,
+          "sourceAlphaBounds": [
+            32,
+            16,
+            401,
+            431
+          ],
+          "sourceAnchor": [
+            244,
+            431
+          ],
+          "targetAnchor": [
+            128,
+            220
+          ],
+          "resampleScale": 0.46126126126126127,
+          "targetAlphaBounds": [
+            15,
+            25,
+            220,
+            226
+          ]
+        },
+        {
+          "frame": 3,
+          "sourceAlphaBounds": [
+            28,
+            15,
+            423,
+            399
+          ],
+          "sourceAnchor": [
+            244,
+            431
+          ],
+          "targetAnchor": [
+            128,
+            220
+          ],
+          "resampleScale": 0.46126126126126127,
+          "targetAlphaBounds": [
+            23,
+            23,
+            218,
+            226
+          ]
+        },
+        {
+          "frame": 4,
+          "sourceAlphaBounds": [
+            27,
+            9,
+            430,
+            418
+          ],
+          "sourceAnchor": [
+            244,
+            431
+          ],
+          "targetAnchor": [
+            128,
+            220
+          ],
+          "resampleScale": 0.46126126126126127,
+          "targetAlphaBounds": [
+            22,
+            21,
+            216,
+            218
+          ]
+        },
+        {
+          "frame": 5,
+          "sourceAlphaBounds": [
+            31,
+            11,
+            413,
+            426
+          ],
+          "sourceAnchor": [
+            244,
+            431
+          ],
+          "targetAnchor": [
+            128,
+            220
+          ],
+          "resampleScale": 0.46126126126126127,
+          "targetAlphaBounds": [
+            15,
+            22,
+            211,
+            220
+          ]
+        },
+        {
+          "frame": 6,
+          "sourceAlphaBounds": [
+            29,
+            12,
+            402,
+            425
+          ],
+          "sourceAnchor": [
+            244,
+            431
+          ],
+          "targetAnchor": [
+            128,
+            220
+          ],
+          "resampleScale": 0.46126126126126127,
+          "targetAlphaBounds": [
+            15,
+            21,
+            220,
+            220
+          ]
+        },
+        {
+          "frame": 7,
+          "sourceAlphaBounds": [
+            32,
+            11,
+            431,
+            395
+          ],
+          "sourceAnchor": [
+            244,
+            431
+          ],
+          "targetAnchor": [
+            128,
+            220
+          ],
+          "resampleScale": 0.46126126126126127,
+          "targetAlphaBounds": [
+            15,
+            21,
+            216,
+            209
+          ]
+        }
+      ],
+      "motionReviewPassed": true,
+      "atlasSha256": "78e29795a3f84cbe718ad970f539d560acba6fbcb667ef7c0074c78fa5d25051",
+      "sourceSha256": "cfa25b3f2237f830b1419119a0a3fd71fb99adae4664712dde9e6ab12b902ebc"
+    },
+    {
+      "id": "boss-attack",
+      "source": "assets/proofs/boss-attack-v1.png",
+      "atlas": "assets/proofs/animation/boss-attack-atlas.png",
+      "originalSourceSize": [
+        1774,
+        887
+      ],
+      "paddedSourceSize": [
+        1776,
+        888
+      ],
+      "cellSize": 512,
+      "frameCount": 8,
+      "fps": 10,
+      "alpha": true,
+      "pivot": [
+        0.5,
+        0.84
+      ],
+      "maximumPivotError": 0,
+      "pivotMeasurement": "All target anchors are identical by deterministic fixed-anchor packing; animated boot height is not mistaken for a changing atlas origin.",
+      "processing": "Equal-grid crop, one shared scale, translation and transparent padding only; no generated pixels or creative redraw.",
+      "frames": [
+        {
+          "frame": 0,
+          "sourceAlphaBounds": [
+            95,
+            14,
+            365,
+            432
+          ],
+          "sourceAnchor": [
+            222,
+            431
+          ],
+          "targetAnchor": [
+            256,
+            430
+          ],
+          "resampleScale": 0.9225225225225225,
+          "targetAlphaBounds": [
+            91,
+            42,
+            461,
+            442
+          ]
+        },
+        {
+          "frame": 1,
+          "sourceAlphaBounds": [
+            99,
+            17,
+            375,
+            432
+          ],
+          "sourceAnchor": [
+            222,
+            431
+          ],
+          "targetAnchor": [
+            256,
+            430
+          ],
+          "resampleScale": 0.9225225225225225,
+          "targetAlphaBounds": [
+            51,
+            40,
+            460,
+            438
+          ]
+        },
+        {
+          "frame": 2,
+          "sourceAlphaBounds": [
+            91,
+            15,
+            381,
+            432
+          ],
+          "sourceAnchor": [
+            222,
+            431
+          ],
+          "targetAnchor": [
+            256,
+            430
+          ],
+          "resampleScale": 0.9225225225225225,
+          "targetAlphaBounds": [
+            66,
+            33,
+            439,
+            436
+          ]
+        },
+        {
+          "frame": 3,
+          "sourceAlphaBounds": [
+            101,
+            11,
+            380,
+            433
+          ],
+          "sourceAnchor": [
+            222,
+            431
+          ],
+          "targetAnchor": [
+            256,
+            430
+          ],
+          "resampleScale": 0.9225225225225225,
+          "targetAlphaBounds": [
+            82,
+            32,
+            409,
+            436
+          ]
+        },
+        {
+          "frame": 4,
+          "sourceAlphaBounds": [
+            95,
+            12,
+            382,
+            430
+          ],
+          "sourceAnchor": [
+            222,
+            431
+          ],
+          "targetAnchor": [
+            256,
+            430
+          ],
+          "resampleScale": 0.9225225225225225,
+          "targetAlphaBounds": [
+            72,
+            38,
+            408,
+            441
+          ]
+        },
+        {
+          "frame": 5,
+          "sourceAlphaBounds": [
+            90,
+            11,
+            387,
+            430
+          ],
+          "sourceAnchor": [
+            222,
+            431
+          ],
+          "targetAnchor": [
+            256,
+            430
+          ],
+          "resampleScale": 0.9225225225225225,
+          "targetAlphaBounds": [
+            57,
+            36,
+            455,
+            441
+          ]
+        },
+        {
+          "frame": 6,
+          "sourceAlphaBounds": [
+            87,
+            14,
+            376,
+            430
+          ],
+          "sourceAnchor": [
+            222,
+            431
+          ],
+          "targetAnchor": [
+            256,
+            430
+          ],
+          "resampleScale": 0.9225225225225225,
+          "targetAlphaBounds": [
+            71,
+            38,
+            455,
+            441
+          ]
+        },
+        {
+          "frame": 7,
+          "sourceAlphaBounds": [
+            94,
+            13,
+            362,
+            430
+          ],
+          "sourceAnchor": [
+            222,
+            431
+          ],
+          "targetAnchor": [
+            256,
+            430
+          ],
+          "resampleScale": 0.9225225225225225,
+          "targetAlphaBounds": [
+            64,
+            38,
+            388,
+            441
+          ]
+        }
+      ],
+      "motionReviewPassed": true,
+      "atlasSha256": "76638969c238a0d322256f435f71d3e872b9929d5826b67dc6cbe104ad5025bb",
+      "sourceSha256": "27f8c83927e9b168f57ef9f1b8db9caca58f2a0ab8ac9130bf98853d2ad9b4af"
+    }
+  ],
+  "humanReviewPerformed": false,
+  "browserPreview": "http://localhost:8137/assets/proofs/animation/index.html",
+  "evidence": [
+    "reviews/animation-playback-a.png",
+    "reviews/animation-playback-b.png",
+    "reviews/animation-playback-c.png"
+  ]
+}

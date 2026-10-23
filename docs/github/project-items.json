@@ -1,0 +1,171 @@
+[
+  {
+    "stage": "Stage 1",
+    "priority": "P0",
+    "subsystem": "Design / Balance",
+    "title": "Complete the content bible and analytical balance validation",
+    "ids": [
+      "S1-01",
+      "S1-02"
+    ],
+    "evidence": "content/catalog.json; reviews/stage1-validation.json; reviews/balance-model-review.json",
+    "issue": 1,
+    "url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/issues/1"
+  },
+  {
+    "stage": "Stage 1",
+    "priority": "P0",
+    "subsystem": "Art / Audio",
+    "title": "Approve original art and audio proof sets",
+    "ids": [
+      "S1-03",
+      "S1-04"
+    ],
+    "evidence": "reviews/art-proof-review.json; reviews/animation-review.json; reviews/audio-proof-review.json",
+    "issue": 2,
+    "url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/issues/2"
+  },
+  {
+    "stage": "Stage 1",
+    "priority": "P0",
+    "subsystem": "Localization / Packet",
+    "title": "Deliver fifteen catalogs and the illustrated verified production packet",
+    "ids": [
+      "S1-05",
+      "S1-06"
+    ],
+    "evidence": "docs/LOCALIZATION_IMPLEMENTATION.md; reviews/stage1-delivery-review.json",
+    "issue": 3,
+    "url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/issues/3"
+  },
+  {
+    "stage": "Stage 2",
+    "priority": "P0",
+    "subsystem": "Simulation / Combat",
+    "title": "Implement the complete Soldier and Medic gameplay loop",
+    "ids": [
+      "S2-01",
+      "S2-02",
+      "S2-03",
+      "S2-04"
+    ],
+    "evidence": "Automated combat/economy/phase checks and rendered offline playthrough",
+    "issue": 4,
+    "url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/issues/4"
+  },
+  {
+    "stage": "Stage 2",
+    "priority": "P0",
+    "subsystem": "Networking / Capacity",
+    "title": "Prove authoritative multiplayer and the fifty-player feasibility gate",
+    "ids": [
+      "S2-05",
+      "S2-06",
+      "S2-07"
+    ],
+    "evidence": "49 scripted plus one rendered client, 4000-hostile-projectile stress, p99 tick, memory and encoded traffic; free-host capacity",
+    "issue": 5,
+    "url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/issues/5"
+  },
+  {
+    "stage": "Stage 2",
+    "priority": "P1",
+    "subsystem": "Content / Art / Audio",
+    "title": "Produce the complete class, boss, route, art and soundtrack library",
+    "ids": [
+      "S2-08",
+      "S2-09",
+      "S2-10",
+      "S2-11",
+      "S2-12",
+      "S2-13"
+    ],
+    "evidence": "Full catalog implementation, 126 skills, 28 weapons, 24 mutations, 6 arenas, 11 bosses, five modes, six difficulties; motion and audio review",
+    "issue": 6,
+    "url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/issues/6"
+  },
+  {
+    "stage": "Stage 2",
+    "priority": "P0",
+    "subsystem": "UI / Accessibility / Languages",
+    "title": "Finish responsive controls, accessibility and all launch languages",
+    "ids": [
+      "S2-14",
+      "S2-15"
+    ],
+    "evidence": "Mouse/keyboard/gamepad/touch, RTL menus, font and expansion layout checks; all 15 locales",
+    "issue": 7,
+    "url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/issues/7"
+  },
+  {
+    "stage": "Stage 2",
+    "priority": "P0",
+    "subsystem": "Leaderboards / Save / Recovery",
+    "title": "Implement durable team leaderboards, profiles and restart recovery",
+    "ids": [
+      "S2-16",
+      "S2-17",
+      "S2-18"
+    ],
+    "evidence": "Authoritative score fixtures, D1 idempotence and restore races, practice separation, signed checkpoint and profile checks",
+    "issue": 8,
+    "url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/issues/8"
+  },
+  {
+    "stage": "Stage 2.5",
+    "priority": "P0",
+    "subsystem": "Automated QA",
+    "title": "Verify all progression combinations and multiplayer edge cases",
+    "ids": [
+      "S25-01",
+      "S25-02",
+      "S25-03"
+    ],
+    "evidence": "126 class/campaign/difficulty combinations; mutation/prerequisite/currency/cooldown checks; 8/16/50-player lifecycle tests",
+    "issue": 9,
+    "url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/issues/9"
+  },
+  {
+    "stage": "Stage 2.5",
+    "priority": "P0",
+    "subsystem": "Performance / Endurance",
+    "title": "Pass sustained gameplay and device performance gates",
+    "ids": [
+      "S25-04",
+      "S25-05"
+    ],
+    "evidence": "60-minute active endurance, memory and traffic; documented desktop 60 FPS and physical phone 30 FPS",
+    "issue": 10,
+    "url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/issues/10"
+  },
+  {
+    "stage": "Stage 2.5",
+    "priority": "P0",
+    "subsystem": "Human / Language review",
+    "title": "Record human playtesting and language-review evidence",
+    "ids": [
+      "S25-06",
+      "S25-07"
+    ],
+    "evidence": "Actual human pacing/feel/teamwork/difficulty sessions; locale review status separate from synthetic evidence",
+    "issue": 11,
+    "url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/issues/11"
+  },
+  {
+    "stage": "Stage 3",
+    "priority": "P0",
+    "subsystem": "Release / Hosting / GitHub",
+    "title": "Publish verified Windows and browser releases with repository protections",
+    "ids": [
+      "S3-01",
+      "S3-02",
+      "S3-03",
+      "S3-04",
+      "S3-05",
+      "S3-06"
+    ],
+    "evidence": "Fresh Windows extraction/copy/offline/LAN/online tests and hashes; public URL/version; release/Wiki/Project/ruleset; separate contest submission status",
+    "issue": 12,
+    "url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/issues/12"
+  }
+]

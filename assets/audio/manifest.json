@@ -1,0 +1,632 @@
+{
+  "schemaVersion": 1,
+  "source": "grave-accord-original-synthesis-v1",
+  "seed": 221026,
+  "sampleRate": 44100,
+  "encoding": "RIFF/WAVE linear PCM signed 16-bit little-endian stereo",
+  "authoringMethod": "Original editable procedural composition and synthesis; no sampled third-party audio or generative music service.",
+  "sourcePath": "tools/synthesize-audio.py",
+  "sourceSha256": "cda7515ebca0ba04df5baefd812868c6552b8c67d273fb96337f6714e276912a",
+  "license": "MIT, matching the repository",
+  "playbackDefaults": {
+    "musicGain": 0.25,
+    "sfxGain": 0.7,
+    "ambientGain": 0.18,
+    "maxSfxVoices": 32,
+    "maxWeaponVoices": 8,
+    "warningMusicDuckDb": -6,
+    "warningDuckAttackSeconds": 0.035,
+    "warningDuckReleaseSeconds": 0.3,
+    "maxPanAbsolute": 0.75,
+    "note": "Initial design values. In-game and device listening validation remains required."
+  },
+  "tracks": [
+    {
+      "id": "city-wake",
+      "bpm": 78,
+      "meter": "4/4",
+      "bars": 8,
+      "beats": 32,
+      "sampleRate": 44100,
+      "loopStartFrame": 0,
+      "loopEndFrameExclusive": 1085538,
+      "durationSeconds": 24.615374149659864,
+      "arrangement": "78 BPM, 4/4, eight bars; D Aeolian with an A-major leading-tone turn; spacious hub chamber loop.",
+      "masterGainLinear": 1.1988799592829615,
+      "loopMethod": "circular voices and dark early-reflection tails; no endpoint fade",
+      "path": "assets/audio/music/city-wake.wav",
+      "stems": [
+        "assets/audio/stems/city-wake-bells.wav",
+        "assets/audio/stems/city-wake-strings.wav",
+        "assets/audio/stems/city-wake-bass.wav",
+        "assets/audio/stems/city-wake-percussion.wav"
+      ],
+      "peakDbfs": -3.34965,
+      "rmsDbfs": -17.52659
+    },
+    {
+      "id": "vigil-engine",
+      "bpm": 104,
+      "meter": "4/4",
+      "bars": 8,
+      "beats": 32,
+      "sampleRate": 44100,
+      "loopStartFrame": 0,
+      "loopEndFrameExclusive": 814154,
+      "durationSeconds": 18.46154195011338,
+      "arrangement": "104 BPM, 4/4, eight bars; D-minor pulse with Phrygian Eb/D tension and cadential C-sharp; combat loop.",
+      "masterGainLinear": 1.1160958174508084,
+      "loopMethod": "circular voices and dark early-reflection tails; no endpoint fade",
+      "path": "assets/audio/music/vigil-engine.wav",
+      "stems": [
+        "assets/audio/stems/vigil-engine-bells.wav",
+        "assets/audio/stems/vigil-engine-strings.wav",
+        "assets/audio/stems/vigil-engine-bass.wav",
+        "assets/audio/stems/vigil-engine-percussion.wav"
+      ],
+      "peakDbfs": -3.34965,
+      "rmsDbfs": -19.59372
+    }
+  ],
+  "sfx": [
+    {
+      "id": "weapon-pistol",
+      "role": "Soldier pistol: short dry crack and low recoil.",
+      "priority": 20,
+      "visualMeaning": "Soldier pistol: short dry crack and low recoil.",
+      "loop": false,
+      "spatial": true,
+      "maxVoices": 8,
+      "cooldownSeconds": 0.045,
+      "path": "assets/audio/sfx/weapon-pistol.wav",
+      "durationSeconds": 0.24,
+      "peakDbfs": -3.098,
+      "rmsDbfs": -21.02129
+    },
+    {
+      "id": "weapon-heavy-lmg",
+      "role": "Heavy machine gun: lower short mechanical report.",
+      "priority": 20,
+      "visualMeaning": "Heavy machine gun: lower short mechanical report.",
+      "loop": false,
+      "spatial": true,
+      "maxVoices": 8,
+      "cooldownSeconds": 0.045,
+      "path": "assets/audio/sfx/weapon-heavy-lmg.wav",
+      "durationSeconds": 0.19,
+      "peakDbfs": -3.098,
+      "rmsDbfs": -20.11737
+    },
+    {
+      "id": "weapon-shotgun",
+      "role": "Tank shotgun: wide softened impact and deeper recoil.",
+      "priority": 20,
+      "visualMeaning": "Tank shotgun: wide softened impact and deeper recoil.",
+      "loop": false,
+      "spatial": true,
+      "maxVoices": 8,
+      "cooldownSeconds": 0.045,
+      "path": "assets/audio/sfx/weapon-shotgun.wav",
+      "durationSeconds": 0.39,
+      "peakDbfs": -3.098,
+      "rmsDbfs": -22.55402
+    },
+    {
+      "id": "weapon-injector",
+      "role": "Medic injector: air click and small descending glass tone.",
+      "priority": 20,
+      "visualMeaning": "Medic injector: air click and small descending glass tone.",
+      "loop": false,
+      "spatial": true,
+      "maxVoices": 8,
+      "cooldownSeconds": 0.045,
+      "path": "assets/audio/sfx/weapon-injector.wav",
+      "durationSeconds": 0.23,
+      "peakDbfs": -3.098,
+      "rmsDbfs": -20.04876
+    },
+    {
+      "id": "weapon-grave-wand",
+      "role": "Mage wand: damped descending harmonic pulse.",
+      "priority": 20,
+      "visualMeaning": "Mage wand: damped descending harmonic pulse.",
+      "loop": false,
+      "spatial": true,
+      "maxVoices": 8,
+      "cooldownSeconds": 0.045,
+      "path": "assets/audio/sfx/weapon-grave-wand.wav",
+      "durationSeconds": 0.42,
+      "peakDbfs": -3.098,
+      "rmsDbfs": -15.3943
+    },
+    {
+      "id": "weapon-rivet",
+      "role": "Engineer rivet: bright metal onset with short body.",
+      "priority": 20,
+      "visualMeaning": "Engineer rivet: bright metal onset with short body.",
+      "loop": false,
+      "spatial": true,
+      "maxVoices": 8,
+      "cooldownSeconds": 0.045,
+      "path": "assets/audio/sfx/weapon-rivet.wav",
+      "durationSeconds": 0.26,
+      "peakDbfs": -3.098,
+      "rmsDbfs": -20.85876
+    },
+    {
+      "id": "weapon-needle",
+      "role": "Assassin needle: narrow soft pneumatic hiss.",
+      "priority": 20,
+      "visualMeaning": "Assassin needle: narrow soft pneumatic hiss.",
+      "loop": false,
+      "spatial": true,
+      "maxVoices": 8,
+      "cooldownSeconds": 0.045,
+      "path": "assets/audio/sfx/weapon-needle.wav",
+      "durationSeconds": 0.2,
+      "peakDbfs": -3.098,
+      "rmsDbfs": -19.16134
+    },
+    {
+      "id": "impact-flesh",
+      "role": "Enemy hit: muted low thud, no exaggerated gore.",
+      "priority": 18,
+      "visualMeaning": "Enemy hit: muted low thud, no exaggerated gore.",
+      "loop": false,
+      "spatial": true,
+      "maxVoices": 6,
+      "path": "assets/audio/sfx/impact-flesh.wav",
+      "durationSeconds": 0.24,
+      "peakDbfs": -3.098,
+      "rmsDbfs": -21.19102
+    },
+    {
+      "id": "impact-armor",
+      "role": "Armored hit: ceramic-metal tick indicates reduced damage.",
+      "priority": 25,
+      "visualMeaning": "Armored hit: ceramic-metal tick indicates reduced damage.",
+      "loop": false,
+      "spatial": true,
+      "maxVoices": 4,
+      "path": "assets/audio/sfx/impact-armor.wav",
+      "durationSeconds": 0.31,
+      "peakDbfs": -3.098,
+      "rmsDbfs": -13.58968
+    },
+    {
+      "id": "dodge",
+      "role": "Local dodge: brief cloth and air movement.",
+      "priority": 45,
+      "visualMeaning": "Local dodge: brief cloth and air movement.",
+      "loop": false,
+      "spatial": true,
+      "maxVoices": 2,
+      "path": "assets/audio/sfx/dodge.wav",
+      "durationSeconds": 0.35,
+      "peakDbfs": -3.098,
+      "rmsDbfs": -17.95056
+    },
+    {
+      "id": "warning",
+      "role": "High-priority two-note descending danger signal.",
+      "priority": 100,
+      "visualMeaning": "Incoming marked attack",
+      "loop": false,
+      "spatial": false,
+      "maxVoices": 1,
+      "minimumIntervalSeconds": 0.6,
+      "path": "assets/audio/sfx/warning.wav",
+      "durationSeconds": 0.68,
+      "peakDbfs": -3.098,
+      "rmsDbfs": -13.77416
+    },
+    {
+      "id": "revive",
+      "role": "Completed revive: warm upward three-note restoration, not the channel itself.",
+      "priority": 90,
+      "visualMeaning": "Ally revived",
+      "loop": false,
+      "spatial": false,
+      "maxVoices": 2,
+      "path": "assets/audio/sfx/revive.wav",
+      "durationSeconds": 1.3,
+      "peakDbfs": -3.098,
+      "rmsDbfs": -15.51915
+    },
+    {
+      "id": "accord-success",
+      "role": "Accord Break success: D-A-D-F communal consonance and warm low knock.",
+      "priority": 95,
+      "visualMeaning": "Accord Break: boss vulnerable",
+      "loop": false,
+      "spatial": false,
+      "maxVoices": 1,
+      "path": "assets/audio/sfx/accord-success.wav",
+      "durationSeconds": 1.65,
+      "peakDbfs": -3.098,
+      "rmsDbfs": -14.79127
+    },
+    {
+      "id": "ui-confirm",
+      "role": "Confirm, purchase or ready action: two small upward taps.",
+      "priority": 60,
+      "visualMeaning": "Confirm, purchase or ready action: two small upward taps.",
+      "loop": false,
+      "spatial": true,
+      "maxVoices": 1,
+      "path": "assets/audio/sfx/ui-confirm.wav",
+      "durationSeconds": 0.27,
+      "peakDbfs": -3.098,
+      "rmsDbfs": -14.06885
+    },
+    {
+      "id": "ui-back",
+      "role": "Back or cancel: quieter descending taps.",
+      "priority": 55,
+      "visualMeaning": "Back or cancel: quieter descending taps.",
+      "loop": false,
+      "spatial": true,
+      "maxVoices": 1,
+      "path": "assets/audio/sfx/ui-back.wav",
+      "durationSeconds": 0.21,
+      "peakDbfs": -3.098,
+      "rmsDbfs": -14.24606
+    },
+    {
+      "id": "downed",
+      "role": "Local downed state: downward double body, distinct from defeat music.",
+      "priority": 90,
+      "visualMeaning": "You are downed; revive window open",
+      "loop": false,
+      "spatial": false,
+      "maxVoices": 1,
+      "path": "assets/audio/sfx/downed.wav",
+      "durationSeconds": 0.9,
+      "peakDbfs": -3.098,
+      "rmsDbfs": -13.65005
+    },
+    {
+      "id": "ultimate-ready",
+      "role": "Local ultimate-ready cue; one sound on transition to ready, never a repeating reminder.",
+      "priority": 70,
+      "visualMeaning": "Ultimate ready",
+      "loop": false,
+      "spatial": true,
+      "maxVoices": 1,
+      "path": "assets/audio/sfx/ultimate-ready.wav",
+      "durationSeconds": 0.6,
+      "peakDbfs": -3.098,
+      "rmsDbfs": -13.57396
+    },
+    {
+      "id": "boss-phase",
+      "role": "Boss phase transition: deep civic bell with tense semitone partial.",
+      "priority": 85,
+      "visualMeaning": "Boss phase changed",
+      "loop": false,
+      "spatial": false,
+      "maxVoices": 1,
+      "path": "assets/audio/sfx/boss-phase.wav",
+      "durationSeconds": 1.1,
+      "peakDbfs": -3.098,
+      "rmsDbfs": -13.53451
+    },
+    {
+      "id": "ultimate-soldier",
+      "role": "Last Roll Call: clear three-part D-A-D command signal and final reload latch.",
+      "priority": 85,
+      "visualMeaning": "Last Roll Call active",
+      "loop": false,
+      "spatial": false,
+      "classId": "soldier",
+      "ultimateId": "soldier-ultimate",
+      "maxVoices": 2,
+      "path": "assets/audio/sfx/ultimate-soldier.wav",
+      "durationSeconds": 0.95,
+      "peakDbfs": -3.098,
+      "rmsDbfs": -13.18838
+    },
+    {
+      "id": "ultimate-heavy",
+      "role": "Foundry Overture: accelerating eight-tooth feed motor over a low foundry string.",
+      "priority": 85,
+      "visualMeaning": "Foundry Overture active",
+      "loop": false,
+      "spatial": false,
+      "classId": "heavy",
+      "ultimateId": "heavy-ultimate",
+      "maxVoices": 2,
+      "path": "assets/audio/sfx/ultimate-heavy.wav",
+      "durationSeconds": 1.05,
+      "peakDbfs": -3.098,
+      "rmsDbfs": -13.32499
+    },
+    {
+      "id": "ultimate-tank",
+      "role": "The City Holds: low gate slam with stable D/A reinforcing overtones.",
+      "priority": 85,
+      "visualMeaning": "The City Holds shield active",
+      "loop": false,
+      "spatial": false,
+      "classId": "tank",
+      "ultimateId": "tank-ultimate",
+      "maxVoices": 2,
+      "path": "assets/audio/sfx/ultimate-tank.wav",
+      "durationSeconds": 1.2,
+      "peakDbfs": -3.098,
+      "rmsDbfs": -14.8975
+    },
+    {
+      "id": "ultimate-medic",
+      "role": "Names Returned: rising glass D-F-A-D, a breath of bowed harmonics, delayed resolution.",
+      "priority": 90,
+      "visualMeaning": "Names Returned cast",
+      "loop": false,
+      "spatial": false,
+      "classId": "medic",
+      "ultimateId": "medic-ultimate",
+      "maxVoices": 2,
+      "path": "assets/audio/sfx/ultimate-medic.wav",
+      "durationSeconds": 1.65,
+      "peakDbfs": -3.098,
+      "rmsDbfs": -16.04973
+    },
+    {
+      "id": "ultimate-mage",
+      "role": "Silent Twelfth: reversed ink-bell intake and three descending-size pulses, no sustained hazard mask.",
+      "priority": 85,
+      "visualMeaning": "Silent Twelfth cast",
+      "loop": false,
+      "spatial": false,
+      "classId": "mage",
+      "ultimateId": "mage-ultimate",
+      "maxVoices": 2,
+      "path": "assets/audio/sfx/ultimate-mage.wav",
+      "durationSeconds": 1.75,
+      "peakDbfs": -3.098,
+      "rmsDbfs": -13.97312
+    },
+    {
+      "id": "ultimate-engineer",
+      "role": "Impossible Machine: seven ratchet ticks, ascending D-A-C-D gears and a locking low knock.",
+      "priority": 85,
+      "visualMeaning": "Impossible Machine deployed",
+      "loop": false,
+      "spatial": false,
+      "classId": "engineer",
+      "ultimateId": "engineer-ultimate",
+      "maxVoices": 2,
+      "path": "assets/audio/sfx/ultimate-engineer.wav",
+      "durationSeconds": 1.25,
+      "peakDbfs": -3.098,
+      "rmsDbfs": -16.71656
+    },
+    {
+      "id": "ultimate-assassin",
+      "role": "Unwritten Passage: inward air, a narrow falling harmonic slash, then rapid silence.",
+      "priority": 85,
+      "visualMeaning": "Unwritten Passage active",
+      "loop": false,
+      "spatial": false,
+      "classId": "assassin",
+      "ultimateId": "assassin-ultimate",
+      "maxVoices": 2,
+      "path": "assets/audio/sfx/ultimate-assassin.wav",
+      "durationSeconds": 0.82,
+      "peakDbfs": -3.098,
+      "rmsDbfs": -15.88557
+    }
+  ],
+  "files": [
+    {
+      "id": "city-wake-bells",
+      "path": "assets/audio/stems/city-wake-bells.wav",
+      "loop": true,
+      "sha256": "800cdbd290fe0be63ad687a9b9e19ba8132bea8dcf64ea6737a01941a9ef8d64"
+    },
+    {
+      "id": "city-wake-strings",
+      "path": "assets/audio/stems/city-wake-strings.wav",
+      "loop": true,
+      "sha256": "950fee7299d82e387e4a07efed1d7404d33f580ccd4fad73820f6bc37d6c807f"
+    },
+    {
+      "id": "city-wake-bass",
+      "path": "assets/audio/stems/city-wake-bass.wav",
+      "loop": true,
+      "sha256": "dcd6607c2ffdb63f4c2cee54b1bc5c3b9d1ab14d63a9808e3b2fd3323b0b59cf"
+    },
+    {
+      "id": "city-wake-percussion",
+      "path": "assets/audio/stems/city-wake-percussion.wav",
+      "loop": true,
+      "sha256": "39d24a6475cfe433abe6d09c62e060eacaaf8e52b12b2abe38b6157903e8b2e8"
+    },
+    {
+      "id": "city-wake",
+      "path": "assets/audio/music/city-wake.wav",
+      "loop": true,
+      "sha256": "4858dffa6bcb7ef101640def48b99f45f0ac2cf24d017aa8656bc2ace0f4e368"
+    },
+    {
+      "id": "vigil-engine-bells",
+      "path": "assets/audio/stems/vigil-engine-bells.wav",
+      "loop": true,
+      "sha256": "9f81ede91deb9f17adda7823e03c63cb8a70863c391518405c2655dec2a3cc31"
+    },
+    {
+      "id": "vigil-engine-strings",
+      "path": "assets/audio/stems/vigil-engine-strings.wav",
+      "loop": true,
+      "sha256": "02e6463f93ecdefb05c0f56499976ff0b75dfe794cf1125cc2aec92f871e4974"
+    },
+    {
+      "id": "vigil-engine-bass",
+      "path": "assets/audio/stems/vigil-engine-bass.wav",
+      "loop": true,
+      "sha256": "c488627535db102d1ced99e02ed590f052edc6d56a0b1b44b03c358cfaf56abc"
+    },
+    {
+      "id": "vigil-engine-percussion",
+      "path": "assets/audio/stems/vigil-engine-percussion.wav",
+      "loop": true,
+      "sha256": "7926ae2515e193b4fc5675afc0a350bec022e38cf0925983ebe0b3c9ef3449c0"
+    },
+    {
+      "id": "vigil-engine",
+      "path": "assets/audio/music/vigil-engine.wav",
+      "loop": true,
+      "sha256": "392f07058fba43a53be9522cff81b37e5b35851d2e9133a5d375b0da16d201e5"
+    },
+    {
+      "id": "weapon-pistol",
+      "path": "assets/audio/sfx/weapon-pistol.wav",
+      "loop": false,
+      "sha256": "75db6e994c8e7f0da3f2636e08010adeeb3dfde0c929517bd1ef47191e02000d"
+    },
+    {
+      "id": "weapon-heavy-lmg",
+      "path": "assets/audio/sfx/weapon-heavy-lmg.wav",
+      "loop": false,
+      "sha256": "7c135170209d2efa4bb7a28497fa92ae84241cb19c515fcbd2002b0f876b3605"
+    },
+    {
+      "id": "weapon-shotgun",
+      "path": "assets/audio/sfx/weapon-shotgun.wav",
+      "loop": false,
+      "sha256": "e181f69b2d4bd143b53bfe496db7352c36d26dbdd90a2a71083ed99164975264"
+    },
+    {
+      "id": "weapon-injector",
+      "path": "assets/audio/sfx/weapon-injector.wav",
+      "loop": false,
+      "sha256": "d2b9a60660617541aa9acfb4394560b2a107eb89af8c7d7a5357b5d499629a3b"
+    },
+    {
+      "id": "weapon-grave-wand",
+      "path": "assets/audio/sfx/weapon-grave-wand.wav",
+      "loop": false,
+      "sha256": "695d79d4b0f46ff3fe549e2683817f13fd04be088796b3ded598affbd8086aa7"
+    },
+    {
+      "id": "weapon-rivet",
+      "path": "assets/audio/sfx/weapon-rivet.wav",
+      "loop": false,
+      "sha256": "6a5b985df2d8b37017a7a04902afb07b5cc36b4d1fcba14041598e11a981701a"
+    },
+    {
+      "id": "weapon-needle",
+      "path": "assets/audio/sfx/weapon-needle.wav",
+      "loop": false,
+      "sha256": "ee5519e78269c66783528791a066de180ef357b6c42a0d16b08ddb4c6a73e170"
+    },
+    {
+      "id": "impact-flesh",
+      "path": "assets/audio/sfx/impact-flesh.wav",
+      "loop": false,
+      "sha256": "97bc99bc880f3884812b04266a62d6a896f5879053848bbf94e3f4f904f52f83"
+    },
+    {
+      "id": "impact-armor",
+      "path": "assets/audio/sfx/impact-armor.wav",
+      "loop": false,
+      "sha256": "a5a80c3c1a466799c8731ba403d8cabd867e0b773fda417ba5162540f663b6ae"
+    },
+    {
+      "id": "dodge",
+      "path": "assets/audio/sfx/dodge.wav",
+      "loop": false,
+      "sha256": "f7253324531851ba2ecd43c27f5c3338d06fa3bbcf9921ffe4855ee248ba5ad9"
+    },
+    {
+      "id": "warning",
+      "path": "assets/audio/sfx/warning.wav",
+      "loop": false,
+      "sha256": "91b4a8672136cec04ce9e1805e29335be2e331c6c406b9a20445ca0537abb37d"
+    },
+    {
+      "id": "revive",
+      "path": "assets/audio/sfx/revive.wav",
+      "loop": false,
+      "sha256": "3b61aceed1213100231707027bdfd1a433f12d72081d3857a2ba4593a1723590"
+    },
+    {
+      "id": "accord-success",
+      "path": "assets/audio/sfx/accord-success.wav",
+      "loop": false,
+      "sha256": "83a3d1b0ed9a3430589852997dfe805f011550093f50a8d771284fb839853018"
+    },
+    {
+      "id": "ui-confirm",
+      "path": "assets/audio/sfx/ui-confirm.wav",
+      "loop": false,
+      "sha256": "9f630f7d1869fae822a0bd939fe4438d7e8d7bc521a5e5b057088593aa946d20"
+    },
+    {
+      "id": "ui-back",
+      "path": "assets/audio/sfx/ui-back.wav",
+      "loop": false,
+      "sha256": "a0ad6193f944db4c62f7118c87f39d38a588c7e8b6bc3846ba45b324cb2a41a1"
+    },
+    {
+      "id": "downed",
+      "path": "assets/audio/sfx/downed.wav",
+      "loop": false,
+      "sha256": "a47b31cea701826e0cbe95ea4c9a7c9285fd66b323aef52844dba9bf20a0b7f3"
+    },
+    {
+      "id": "ultimate-ready",
+      "path": "assets/audio/sfx/ultimate-ready.wav",
+      "loop": false,
+      "sha256": "3da831a888ba33862ff270a1e69c4ea91102a8c9c846a3f24f23b4ec4219096b"
+    },
+    {
+      "id": "boss-phase",
+      "path": "assets/audio/sfx/boss-phase.wav",
+      "loop": false,
+      "sha256": "d2c4bc9dcbe788a6ce1bd6dd0258c79a11c1370dc7caef7462d50249ee230b33"
+    },
+    {
+      "id": "ultimate-soldier",
+      "path": "assets/audio/sfx/ultimate-soldier.wav",
+      "loop": false,
+      "sha256": "705b6e9543d5888db552b4717f1460e0078325104f3e98b5c8c05539e7e8806d"
+    },
+    {
+      "id": "ultimate-heavy",
+      "path": "assets/audio/sfx/ultimate-heavy.wav",
+      "loop": false,
+      "sha256": "1770890e7196a9d997b43089588703d4050b1831acc0eca107b6033d21006b79"
+    },
+    {
+      "id": "ultimate-tank",
+      "path": "assets/audio/sfx/ultimate-tank.wav",
+      "loop": false,
+      "sha256": "68256ca64f2aa55e098c5a9ddf2a24076578087963f05ab3c8cb7cc9f860063b"
+    },
+    {
+      "id": "ultimate-medic",
+      "path": "assets/audio/sfx/ultimate-medic.wav",
+      "loop": false,
+      "sha256": "4e41d851585bdff04779fd0f7a60341ab3277c3ea9f00e0b646f3c8a01a842be"
+    },
+    {
+      "id": "ultimate-mage",
+      "path": "assets/audio/sfx/ultimate-mage.wav",
+      "loop": false,
+      "sha256": "729de5d63c184c3e43e34e6cc5f1eeb01d8ac7babd65d94bbdc40e5d953126d6"
+    },
+    {
+      "id": "ultimate-engineer",
+      "path": "assets/audio/sfx/ultimate-engineer.wav",
+      "loop": false,
+      "sha256": "8517c1a3e56e4367465c2a1655cd65a4670ff2a8dbf4a3b6d71c6c9decd1d82e"
+    },
+    {
+      "id": "ultimate-assassin",
+      "path": "assets/audio/sfx/ultimate-assassin.wav",
+      "loop": false,
+      "sha256": "ba0fad62a82710edaa79955a7a467b65a8ed7c6e1b01a570c4243a2e0a8292d4"
+    }
+  ]
+}

@@ -1,0 +1,1281 @@
+{
+  "schemaVersion": 1,
+  "rulesVersion": 1,
+  "status": "Design arithmetic and acceptance fixtures, not live leaderboard integration evidence",
+  "authoredDate": "2026-10-22",
+  "healthCounterUnit": "milli-HP",
+  "rounding": "Exact rational sum, one final nonnegative round-half-up",
+  "timedScoreVectors": [
+    {
+      "id": "theoretical-maximum-boundary",
+      "input": {
+        "combatMs": 0,
+        "deadlineBudgetMs": 1000000,
+        "survivorsAtFinalClear": 1,
+        "finalEligibleRoster": 1,
+        "hpDamageTaken": 0,
+        "summedPlayerMaxHealthAtEncounterStarts": 1000000
+      },
+      "expectedScore": 1000000,
+      "expectedExactComponents": {
+        "clear": "500000",
+        "speed": "250000",
+        "survival": "150000",
+        "protection": "100000"
+      },
+      "onlineEligibleSubjectToPerEncounterValidation": false,
+      "note": "Formula-only boundary. Actual online clear requires positive simulation time."
+    },
+    {
+      "id": "solo-half-budget-no-damage",
+      "input": {
+        "combatMs": 500000,
+        "deadlineBudgetMs": 1000000,
+        "survivorsAtFinalClear": 1,
+        "finalEligibleRoster": 1,
+        "hpDamageTaken": 0,
+        "summedPlayerMaxHealthAtEncounterStarts": 1000000
+      },
+      "expectedScore": 875000,
+      "expectedExactComponents": {
+        "clear": "500000",
+        "speed": "125000",
+        "survival": "150000",
+        "protection": "100000"
+      },
+      "onlineEligibleSubjectToPerEncounterValidation": true,
+      "note": ""
+    },
+    {
+      "id": "full-squad-half-budget-quarter-damage",
+      "input": {
+        "combatMs": 500000,
+        "deadlineBudgetMs": 1000000,
+        "survivorsAtFinalClear": 4,
+        "finalEligibleRoster": 4,
+        "hpDamageTaken": 250000,
+        "summedPlayerMaxHealthAtEncounterStarts": 1000000
+      },
+      "expectedScore": 850000,
+      "expectedExactComponents": {
+        "clear": "500000",
+        "speed": "125000",
+        "survival": "150000",
+        "protection": "75000"
+      },
+      "onlineEligibleSubjectToPerEncounterValidation": true,
+      "note": ""
+    },
+    {
+      "id": "three-of-four-survive",
+      "input": {
+        "combatMs": 500000,
+        "deadlineBudgetMs": 1000000,
+        "survivorsAtFinalClear": 3,
+        "finalEligibleRoster": 4,
+        "hpDamageTaken": 250000,
+        "summedPlayerMaxHealthAtEncounterStarts": 1000000
+      },
+      "expectedScore": 812500,
+      "expectedExactComponents": {
+        "clear": "500000",
+        "speed": "125000",
+        "survival": "112500",
+        "protection": "75000"
+      },
+      "onlineEligibleSubjectToPerEncounterValidation": true,
+      "note": ""
+    },
+    {
+      "id": "departure-remains-in-denominator",
+      "input": {
+        "combatMs": 500000,
+        "deadlineBudgetMs": 1000000,
+        "survivorsAtFinalClear": 2,
+        "finalEligibleRoster": 4,
+        "hpDamageTaken": 250000,
+        "summedPlayerMaxHealthAtEncounterStarts": 1000000
+      },
+      "expectedScore": 775000,
+      "expectedExactComponents": {
+        "clear": "500000",
+        "speed": "125000",
+        "survival": "75000",
+        "protection": "75000"
+      },
+      "onlineEligibleSubjectToPerEncounterValidation": true,
+      "note": "Two departed participants remain in the four-person eligible roster."
+    },
+    {
+      "id": "late-join-context-same-rank",
+      "input": {
+        "combatMs": 500000,
+        "deadlineBudgetMs": 1000000,
+        "survivorsAtFinalClear": 4,
+        "finalEligibleRoster": 5,
+        "hpDamageTaken": 250000,
+        "summedPlayerMaxHealthAtEncounterStarts": 1000000
+      },
+      "expectedScore": 820000,
+      "expectedExactComponents": {
+        "clear": "500000",
+        "speed": "125000",
+        "survival": "120000",
+        "protection": "75000"
+      },
+      "onlineEligibleSubjectToPerEncounterValidation": true,
+      "note": "Five historical participants; four connected living survivors; all five share this rank."
+    },
+    {
+      "id": "quarter-budget-clear",
+      "input": {
+        "combatMs": 250000,
+        "deadlineBudgetMs": 1000000,
+        "survivorsAtFinalClear": 1,
+        "finalEligibleRoster": 1,
+        "hpDamageTaken": 250000,
+        "summedPlayerMaxHealthAtEncounterStarts": 1000000
+      },
+      "expectedScore": 912500,
+      "expectedExactComponents": {
+        "clear": "500000",
+        "speed": "187500",
+        "survival": "150000",
+        "protection": "75000"
+      },
+      "onlineEligibleSubjectToPerEncounterValidation": true,
+      "note": ""
+    },
+    {
+      "id": "near-deadline-but-completed",
+      "input": {
+        "combatMs": 999999,
+        "deadlineBudgetMs": 1000000,
+        "survivorsAtFinalClear": 1,
+        "finalEligibleRoster": 1,
+        "hpDamageTaken": 1000000,
+        "summedPlayerMaxHealthAtEncounterStarts": 1000000
+      },
+      "expectedScore": 650000,
+      "expectedExactComponents": {
+        "clear": "500000",
+        "speed": "1/4",
+        "survival": "150000",
+        "protection": "0"
+      },
+      "onlineEligibleSubjectToPerEncounterValidation": true,
+      "note": ""
+    },
+    {
+      "id": "at-budget-clamp-boundary",
+      "input": {
+        "combatMs": 1000000,
+        "deadlineBudgetMs": 1000000,
+        "survivorsAtFinalClear": 1,
+        "finalEligibleRoster": 1,
+        "hpDamageTaken": 1000000,
+        "summedPlayerMaxHealthAtEncounterStarts": 1000000
+      },
+      "expectedScore": 650000,
+      "expectedExactComponents": {
+        "clear": "500000",
+        "speed": "0",
+        "survival": "150000",
+        "protection": "0"
+      },
+      "onlineEligibleSubjectToPerEncounterValidation": false,
+      "note": "Formula boundary; an actual encounter clearing at its deadline is a timeout."
+    },
+    {
+      "id": "over-budget-does-not-go-negative",
+      "input": {
+        "combatMs": 1200000,
+        "deadlineBudgetMs": 1000000,
+        "survivorsAtFinalClear": 1,
+        "finalEligibleRoster": 1,
+        "hpDamageTaken": 1000000,
+        "summedPlayerMaxHealthAtEncounterStarts": 1000000
+      },
+      "expectedScore": 650000,
+      "expectedExactComponents": {
+        "clear": "500000",
+        "speed": "0",
+        "survival": "150000",
+        "protection": "0"
+      },
+      "onlineEligibleSubjectToPerEncounterValidation": false,
+      "note": "Formula boundary; aggregate/per-encounter time validation rejects online."
+    },
+    {
+      "id": "repeat-heal-damage-exceeds-budget",
+      "input": {
+        "combatMs": 500000,
+        "deadlineBudgetMs": 1000000,
+        "survivorsAtFinalClear": 1,
+        "finalEligibleRoster": 1,
+        "hpDamageTaken": 1500000,
+        "summedPlayerMaxHealthAtEncounterStarts": 1000000
+      },
+      "expectedScore": 775000,
+      "expectedExactComponents": {
+        "clear": "500000",
+        "speed": "125000",
+        "survival": "150000",
+        "protection": "0"
+      },
+      "onlineEligibleSubjectToPerEncounterValidation": true,
+      "note": ""
+    },
+    {
+      "id": "shield-only-no-hp-damage",
+      "input": {
+        "combatMs": 500000,
+        "deadlineBudgetMs": 1000000,
+        "survivorsAtFinalClear": 1,
+        "finalEligibleRoster": 1,
+        "hpDamageTaken": 0,
+        "summedPlayerMaxHealthAtEncounterStarts": 1000000
+      },
+      "expectedScore": 875000,
+      "expectedExactComponents": {
+        "clear": "500000",
+        "speed": "125000",
+        "survival": "150000",
+        "protection": "100000"
+      },
+      "onlineEligibleSubjectToPerEncounterValidation": true,
+      "note": "Shield damage is excluded from actual HP damage."
+    },
+    {
+      "id": "thirds-round-once",
+      "input": {
+        "combatMs": 10000,
+        "deadlineBudgetMs": 30000,
+        "survivorsAtFinalClear": 1,
+        "finalEligibleRoster": 3,
+        "hpDamageTaken": 1000000,
+        "summedPlayerMaxHealthAtEncounterStarts": 3000000
+      },
+      "expectedScore": 783333,
+      "expectedExactComponents": {
+        "clear": "500000",
+        "speed": "500000/3",
+        "survival": "50000",
+        "protection": "200000/3"
+      },
+      "onlineEligibleSubjectToPerEncounterValidation": true,
+      "note": "Component rounding first would change the intended exact calculation."
+    },
+    {
+      "id": "half-rounds-up",
+      "input": {
+        "combatMs": 1,
+        "deadlineBudgetMs": 500000,
+        "survivorsAtFinalClear": 1,
+        "finalEligibleRoster": 1,
+        "hpDamageTaken": 0,
+        "summedPlayerMaxHealthAtEncounterStarts": 1000000
+      },
+      "expectedScore": 1000000,
+      "expectedExactComponents": {
+        "clear": "500000",
+        "speed": "499999/2",
+        "survival": "150000",
+        "protection": "100000"
+      },
+      "onlineEligibleSubjectToPerEncounterValidation": false,
+      "note": "Formula-only half-up edge; combatMs is not a valid 30 Hz completed-game duration."
+    },
+    {
+      "id": "just-below-half-rounds-down",
+      "input": {
+        "combatMs": 1,
+        "deadlineBudgetMs": 499999,
+        "survivorsAtFinalClear": 1,
+        "finalEligibleRoster": 1,
+        "hpDamageTaken": 0,
+        "summedPlayerMaxHealthAtEncounterStarts": 1000000
+      },
+      "expectedScore": 999999,
+      "expectedExactComponents": {
+        "clear": "500000",
+        "speed": "124999500000/499999",
+        "survival": "150000",
+        "protection": "100000"
+      },
+      "onlineEligibleSubjectToPerEncounterValidation": false,
+      "note": "Formula-only edge below the half-up boundary."
+    },
+    {
+      "id": "zero-survivor-formula-only",
+      "input": {
+        "combatMs": 500000,
+        "deadlineBudgetMs": 1000000,
+        "survivorsAtFinalClear": 0,
+        "finalEligibleRoster": 4,
+        "hpDamageTaken": 0,
+        "summedPlayerMaxHealthAtEncounterStarts": 1000000
+      },
+      "expectedScore": 725000,
+      "expectedExactComponents": {
+        "clear": "500000",
+        "speed": "125000",
+        "survival": "0",
+        "protection": "100000"
+      },
+      "onlineEligibleSubjectToPerEncounterValidation": false,
+      "note": "A timed clear requires at least one connected living survivor."
+    },
+    {
+      "id": "health-budget-includes-each-encounter",
+      "input": {
+        "combatMs": 400000,
+        "deadlineBudgetMs": 1000000,
+        "survivorsAtFinalClear": 4,
+        "finalEligibleRoster": 4,
+        "hpDamageTaken": 1000000,
+        "summedPlayerMaxHealthAtEncounterStarts": 5000000
+      },
+      "expectedScore": 880000,
+      "expectedExactComponents": {
+        "clear": "500000",
+        "speed": "150000",
+        "survival": "150000",
+        "protection": "80000"
+      },
+      "onlineEligibleSubjectToPerEncounterValidation": true,
+      "note": "Five starts at 1000 team HP each; 1000 HP damage total."
+    },
+    {
+      "id": "milli-hp-preserves-fractions",
+      "input": {
+        "combatMs": 100000,
+        "deadlineBudgetMs": 400000,
+        "survivorsAtFinalClear": 1,
+        "finalEligibleRoster": 2,
+        "hpDamageTaken": 125,
+        "summedPlayerMaxHealthAtEncounterStarts": 1000
+      },
+      "expectedScore": 850000,
+      "expectedExactComponents": {
+        "clear": "500000",
+        "speed": "187500",
+        "survival": "75000",
+        "protection": "87500"
+      },
+      "onlineEligibleSubjectToPerEncounterValidation": true,
+      "note": "0.125 HP lost from a 1 HP budget remains exact."
+    }
+  ],
+  "timedOrdering": {
+    "runs": [
+      {
+        "runId": "t-cleaner",
+        "score": 812500,
+        "combatMs": 500000,
+        "hpDamageTaken": 100000,
+        "healthBudget": 1000000,
+        "endedAtUtcMs": 3000
+      },
+      {
+        "runId": "t-faster",
+        "score": 812500,
+        "combatMs": 499999,
+        "hpDamageTaken": 900000,
+        "healthBudget": 1000000,
+        "endedAtUtcMs": 4000
+      },
+      {
+        "runId": "t-equal-a",
+        "score": 812500,
+        "combatMs": 500000,
+        "hpDamageTaken": 250000,
+        "healthBudget": 1000000,
+        "endedAtUtcMs": 2000
+      },
+      {
+        "runId": "t-equal-b",
+        "score": 812500,
+        "combatMs": 500000,
+        "hpDamageTaken": 500000,
+        "healthBudget": 2000000,
+        "endedAtUtcMs": 1000
+      },
+      {
+        "runId": "t-lower-score",
+        "score": 812499,
+        "combatMs": 100000,
+        "hpDamageTaken": 0,
+        "healthBudget": 1000000,
+        "endedAtUtcMs": 5000
+      }
+    ],
+    "expectedOrder": [
+      "t-faster",
+      "t-cleaner",
+      "t-equal-b",
+      "t-equal-a",
+      "t-lower-score"
+    ],
+    "expectedRanks": [
+      1,
+      2,
+      3,
+      3,
+      5
+    ],
+    "note": "These synthetic ordering keys isolate comparator behavior; they are not independently generated real scored clears."
+  },
+  "endlessVectors": [
+    {
+      "id": "e-more-clears",
+      "input": {
+        "bossesCleared": 13,
+        "combatThroughLastClearMs": 1800000,
+        "totalCombatSurvivalMs": 1900000,
+        "hpDamageThroughLastClear": 800000,
+        "healthBudgetThroughLastClear": 1000000
+      }
+    },
+    {
+      "id": "e-fewer-clears",
+      "input": {
+        "bossesCleared": 12,
+        "combatThroughLastClearMs": 900000,
+        "totalCombatSurvivalMs": 1500000,
+        "hpDamageThroughLastClear": 100000,
+        "healthBudgetThroughLastClear": 1000000
+      }
+    },
+    {
+      "id": "e-stalled-final-fight",
+      "input": {
+        "bossesCleared": 12,
+        "combatThroughLastClearMs": 900000,
+        "totalCombatSurvivalMs": 3000000,
+        "hpDamageThroughLastClear": 100000,
+        "healthBudgetThroughLastClear": 1000000
+      }
+    },
+    {
+      "id": "e-faster-last-clear",
+      "input": {
+        "bossesCleared": 12,
+        "combatThroughLastClearMs": 899999,
+        "totalCombatSurvivalMs": 1200000,
+        "hpDamageThroughLastClear": 900000,
+        "healthBudgetThroughLastClear": 1000000
+      }
+    },
+    {
+      "id": "e-cleaner-same-clear-time",
+      "input": {
+        "bossesCleared": 12,
+        "combatThroughLastClearMs": 900000,
+        "totalCombatSurvivalMs": 1600000,
+        "hpDamageThroughLastClear": 50000,
+        "healthBudgetThroughLastClear": 1000000
+      }
+    },
+    {
+      "id": "e-identical-ratio-larger-denominator",
+      "input": {
+        "bossesCleared": 12,
+        "combatThroughLastClearMs": 900000,
+        "totalCombatSurvivalMs": 1400000,
+        "hpDamageThroughLastClear": 200000,
+        "healthBudgetThroughLastClear": 2000000
+      }
+    },
+    {
+      "id": "e-displayed-ratio-a",
+      "input": {
+        "bossesCleared": 8,
+        "combatThroughLastClearMs": 600000,
+        "totalCombatSurvivalMs": 610000,
+        "hpDamageThroughLastClear": 2500001,
+        "healthBudgetThroughLastClear": 10000000
+      }
+    },
+    {
+      "id": "e-displayed-ratio-b",
+      "input": {
+        "bossesCleared": 8,
+        "combatThroughLastClearMs": 600000,
+        "totalCombatSurvivalMs": 900000,
+        "hpDamageThroughLastClear": 2500000,
+        "healthBudgetThroughLastClear": 10000000
+      }
+    },
+    {
+      "id": "e-zero-clears-no-global-rank",
+      "input": {
+        "bossesCleared": 0,
+        "combatThroughLastClearMs": 0,
+        "totalCombatSurvivalMs": 45000,
+        "hpDamageThroughLastClear": 0,
+        "healthBudgetThroughLastClear": 0
+      }
+    }
+  ],
+  "endlessComparisons": [
+    {
+      "a": "e-more-clears",
+      "b": "e-fewer-clears",
+      "expected": "a-before-b",
+      "reason": "A thirteenth clear beats a much faster twelve-clear run."
+    },
+    {
+      "a": "e-fewer-clears",
+      "b": "e-stalled-final-fight",
+      "expected": "same-rank",
+      "reason": "Longer survival after the last clear cannot reward stalling."
+    },
+    {
+      "a": "e-faster-last-clear",
+      "b": "e-fewer-clears",
+      "expected": "a-before-b",
+      "reason": "Faster progress breaks a clear-count tie before damage."
+    },
+    {
+      "a": "e-cleaner-same-clear-time",
+      "b": "e-fewer-clears",
+      "expected": "a-before-b",
+      "reason": "Lower exact damage ratio breaks a clear-count/clear-time tie."
+    },
+    {
+      "a": "e-fewer-clears",
+      "b": "e-identical-ratio-larger-denominator",
+      "expected": "same-rank",
+      "reason": "1/10 and 2/20 are equal despite different raw damage totals."
+    },
+    {
+      "a": "e-displayed-ratio-b",
+      "b": "e-displayed-ratio-a",
+      "expected": "a-before-b",
+      "reason": "Exact 0.25 beats 0.2500001 even when both display 25.0%."
+    }
+  ],
+  "endlessOrdering": {
+    "inputIds": [
+      "e-stalled-final-fight",
+      "e-fewer-clears",
+      "e-cleaner-same-clear-time",
+      "e-faster-last-clear",
+      "e-more-clears",
+      "e-identical-ratio-larger-denominator",
+      "e-displayed-ratio-a",
+      "e-displayed-ratio-b"
+    ],
+    "expectedOrder": [
+      "e-more-clears",
+      "e-faster-last-clear",
+      "e-cleaner-same-clear-time",
+      "e-identical-ratio-larger-denominator",
+      "e-fewer-clears",
+      "e-stalled-final-fight",
+      "e-displayed-ratio-b",
+      "e-displayed-ratio-a"
+    ],
+    "expectedRanks": [
+      1,
+      2,
+      3,
+      4,
+      4,
+      4,
+      7,
+      8
+    ],
+    "stableTieDisplayForFixtures": "Input vectors use stable order identical-ratio, fewer-clears, stalled-final-fight; production uses endedAtUtcMs then runId."
+  },
+  "invalidInputVectors": [
+    {
+      "id": "zero-deadline",
+      "field": "deadlineBudgetMs",
+      "value": 0,
+      "expectedStatus": 400
+    },
+    {
+      "id": "zero-health-denominator",
+      "field": "summedPlayerMaxHealthAtEncounterStarts",
+      "value": 0,
+      "expectedStatus": 400
+    },
+    {
+      "id": "zero-roster-denominator",
+      "field": "finalEligibleRoster",
+      "value": 0,
+      "expectedStatus": 400
+    },
+    {
+      "id": "negative-damage",
+      "field": "hpDamageTaken",
+      "value": -1,
+      "expectedStatus": 400
+    },
+    {
+      "id": "fractional-ms",
+      "field": "combatMs",
+      "value": 33.5,
+      "expectedStatus": 400
+    },
+    {
+      "id": "unsafe-integer",
+      "field": "combatTicks",
+      "value": 9007199254740992,
+      "expectedStatus": 400
+    },
+    {
+      "id": "boolean-counter",
+      "field": "survivorsAtFinalClear",
+      "value": true,
+      "expectedStatus": 400
+    },
+    {
+      "id": "non-finite-counter",
+      "wireInput": "{\"combatMs\":1e309}",
+      "expectedStatus": 400
+    },
+    {
+      "id": "survivors-exceed-roster",
+      "input": {
+        "survivorsAtFinalClear": 5,
+        "finalEligibleRoster": 4
+      },
+      "expectedStatus": 400
+    },
+    {
+      "id": "final-roster-smaller-than-peak",
+      "input": {
+        "finalEligibleRoster": 3,
+        "peakCombatRoster": 4
+      },
+      "expectedStatus": 400
+    },
+    {
+      "id": "raid-invalid-size-band",
+      "input": {
+        "mode": "raid",
+        "sizeBand": "17-50"
+      },
+      "expectedStatus": 400
+    },
+    {
+      "id": "unknown-mode",
+      "input": {
+        "mode": "custom-map"
+      },
+      "expectedStatus": 400
+    },
+    {
+      "id": "client-score-in-payload",
+      "input": {
+        "score": 1000000
+      },
+      "expectedStatus": 400
+    },
+    {
+      "id": "endless-survival-shorter-than-clear",
+      "input": {
+        "combatThroughLastClearMs": 100000,
+        "totalCombatSurvivalMs": 99999
+      },
+      "expectedStatus": 400
+    },
+    {
+      "id": "inconsistent-tick-conversion",
+      "input": {
+        "combatTicks": 1,
+        "combatMs": 34
+      },
+      "expectedStatus": 400
+    },
+    {
+      "id": "individual-timeout-hidden-in-total",
+      "encounterClocks": [
+        {
+          "combatMs": 101000,
+          "deadlineMs": 100000
+        },
+        {
+          "combatMs": 1000,
+          "deadlineMs": 100000
+        }
+      ],
+      "expectedStatus": 400
+    },
+    {
+      "id": "malformed-week",
+      "input": {
+        "period": "week",
+        "weekStart": "2026-10-22"
+      },
+      "expectedStatus": 400
+    },
+    {
+      "id": "oversized-write",
+      "bodyBytes": 65537,
+      "expectedStatus": 413
+    }
+  ],
+  "rosterVectors": [
+    {
+      "id": "departure-never-reduces-denominator",
+      "admitted": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "departed": [
+        "c",
+        "d"
+      ],
+      "livingConnectedAtClear": [
+        "a",
+        "b"
+      ],
+      "expectedFinalEligibleRoster": 4,
+      "expectedSurvivors": 2,
+      "expectedPeakBand": "2-4"
+    },
+    {
+      "id": "late-join-full-rank-clear-context",
+      "encounterRosters": [
+        [
+          "a",
+          "b"
+        ],
+        [
+          "a",
+          "b",
+          "c"
+        ],
+        [
+          "a",
+          "b",
+          "c"
+        ]
+      ],
+      "livingConnectedAtClear": [
+        "a",
+        "b",
+        "c"
+      ],
+      "expectedFinalEligibleRoster": 3,
+      "expectedPeakBand": "2-4",
+      "expectedParticipantC": {
+        "joinedLate": true,
+        "firstEncounter": 2,
+        "sameTeamRank": true
+      }
+    },
+    {
+      "id": "reconnect-same-participant",
+      "encounterRosters": [
+        [
+          "a",
+          "b"
+        ],
+        [
+          "a",
+          "b"
+        ]
+      ],
+      "reconnects": [
+        "b"
+      ],
+      "expectedFinalEligibleRoster": 2,
+      "expectedPeakBand": "2-4"
+    },
+    {
+      "id": "spectator-excluded",
+      "admitted": [
+        "a"
+      ],
+      "spectators": [
+        "s"
+      ],
+      "livingConnectedAtClear": [
+        "a"
+      ],
+      "expectedFinalEligibleRoster": 1,
+      "expectedSurvivors": 1,
+      "expectedPeakBand": "solo"
+    },
+    {
+      "id": "peak-band-does-not-fall",
+      "encounterRosters": [
+        [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f",
+          "g",
+          "h",
+          "i"
+        ],
+        [
+          "a",
+          "b"
+        ]
+      ],
+      "expectedFinalEligibleRoster": 9,
+      "expectedPeakBand": "9-16"
+    },
+    {
+      "id": "endless-churn-roster-exceeds-concurrency",
+      "historicalParticipants": 75,
+      "peakCombatRoster": 50,
+      "expectedFinalEligibleRoster": 75,
+      "expectedPeakBand": "17-50",
+      "expectedRosterPagesAt25": 3
+    }
+  ],
+  "tickConversionVectors": [
+    {
+      "ticks": 1,
+      "expectedMs": 33
+    },
+    {
+      "ticks": 2,
+      "expectedMs": 66
+    },
+    {
+      "ticks": 3,
+      "expectedMs": 100
+    },
+    {
+      "ticks": 30,
+      "expectedMs": 1000
+    },
+    {
+      "ticks": 30000,
+      "expectedMs": 1000000
+    }
+  ],
+  "periodVectors": [
+    {
+      "weekStart": "2026-10-19",
+      "endedAt": "2026-10-19T00:00:00.000Z",
+      "expectedIncluded": true
+    },
+    {
+      "weekStart": "2026-10-19",
+      "endedAt": "2026-10-25T23:59:59.999Z",
+      "expectedIncluded": true
+    },
+    {
+      "weekStart": "2026-10-19",
+      "endedAt": "2026-10-26T00:00:00.000Z",
+      "expectedIncluded": false
+    }
+  ],
+  "eligibilityVectors": [
+    {
+      "id": "public-official-clear",
+      "context": "Public official default rules, final clear, all lifecycle registrations acknowledged",
+      "expected": "verified-global"
+    },
+    {
+      "id": "private-default",
+      "context": "Private lobby without ranked opt-in",
+      "expected": "local-practice"
+    },
+    {
+      "id": "private-opt-in",
+      "context": "Private lobby opted into ranked before combat with public-result disclosure",
+      "expected": "verified-global",
+      "neverPublish": [
+        "roomCode",
+        "reconnectToken"
+      ]
+    },
+    {
+      "id": "timed-defeat",
+      "context": "Final boss kills party before clear",
+      "expected": "no-timed-global-rank"
+    },
+    {
+      "id": "secret-failure",
+      "context": "Base campaign clear already banked, optional Uncounted fails",
+      "expected": "banked-rank-unchanged"
+    },
+    {
+      "id": "zero-endless-clears",
+      "context": "Endless total combat survival 45 seconds, no boss clears",
+      "expected": "local-recap-no-global-rank"
+    },
+    {
+      "id": "offline",
+      "context": "Offline solo complete clear",
+      "expected": "local-practice"
+    },
+    {
+      "id": "lan",
+      "context": "Electron private LAN server clear",
+      "expected": "local-practice"
+    },
+    {
+      "id": "synthetic-load",
+      "context": "49 scripted clients and one rendered client performance scenario",
+      "expected": "unranked-test-evidence"
+    },
+    {
+      "id": "assist-controls",
+      "context": "Official clear using aim assist, auto-fire and touch controls",
+      "expected": "verified-global"
+    },
+    {
+      "id": "service-outage-at-start",
+      "context": "Run registration receives 503",
+      "expected": "play-continues-practice"
+    },
+    {
+      "id": "service-outage-midrun",
+      "context": "Required lifecycle event cannot be acknowledged",
+      "expected": "play-continues-unverified-latched"
+    }
+  ],
+  "lifecycleVectors": [
+    {
+      "id": "same-finalization-retried",
+      "initial": {
+        "runId": "fixture-run-a",
+        "phase": "combat",
+        "ownerEpoch": 1,
+        "checkpointSequence": 4
+      },
+      "actions": [
+        "finalize event f1 hash h1 accepted",
+        "retry f1 hash h1 with new transport nonce"
+      ],
+      "expectedStatuses": [
+        200,
+        200
+      ],
+      "expectedFinalRows": 1,
+      "expectedSameResult": true
+    },
+    {
+      "id": "conflicting-final-payload",
+      "actions": [
+        "finalize f1 hash h1 accepted",
+        "retry f1 hash h2"
+      ],
+      "expectedStatuses": [
+        200,
+        409
+      ],
+      "expectedFinalRows": 1
+    },
+    {
+      "id": "second-terminal-event",
+      "actions": [
+        "finalize f1 accepted",
+        "finalize f2 with changed result"
+      ],
+      "expectedStatuses": [
+        200,
+        409
+      ],
+      "expectedFinalRows": 1
+    },
+    {
+      "id": "stale-checkpoint-replay",
+      "initial": {
+        "phase": "intermission",
+        "checkpointSequence": 7,
+        "checkpointDigest": "latest"
+      },
+      "actions": [
+        "restore sequence 6 digest old"
+      ],
+      "expectedStatuses": [
+        409
+      ],
+      "expectedOwnerChanges": 0
+    },
+    {
+      "id": "concurrent-restore-claims",
+      "initial": {
+        "phase": "intermission",
+        "ownerEpoch": 2,
+        "checkpointSequence": 7,
+        "leaseExpired": true
+      },
+      "actions": [
+        "server B and server C atomically claim epoch 2 sequence 7"
+      ],
+      "expectedSortedStatuses": [
+        200,
+        409
+      ],
+      "expectedNewOwnerEpoch": 3,
+      "expectedSuccessfulClaims": 1
+    },
+    {
+      "id": "previous-owner-after-claim",
+      "initial": {
+        "phase": "intermission",
+        "ownerEpoch": 3,
+        "checkpointSequence": 7
+      },
+      "actions": [
+        "old owner submits epoch 2 event"
+      ],
+      "expectedStatuses": [
+        409
+      ],
+      "expectedRankChanges": 0
+    },
+    {
+      "id": "unexpired-lease-claim",
+      "initial": {
+        "phase": "intermission",
+        "leaseExpired": false
+      },
+      "actions": [
+        "other server claims latest checkpoint"
+      ],
+      "expectedStatuses": [
+        409
+      ]
+    },
+    {
+      "id": "combat-crash-replay",
+      "initial": {
+        "phase": "combat",
+        "checkpointSequence": 7
+      },
+      "actions": [
+        "restore previous intermission 7 as ranked"
+      ],
+      "expectedStatuses": [
+        409
+      ],
+      "expectedGameplayRecovery": "Recovery Practice"
+    },
+    {
+      "id": "intermission-safe-restart",
+      "initial": {
+        "phase": "intermission",
+        "checkpointSequence": 7,
+        "leaseExpired": true,
+        "checkpointUnexpired": true
+      },
+      "actions": [
+        "new owner claims latest signed checkpoint",
+        "continues counters and accepted offers"
+      ],
+      "expectedStatuses": [
+        200,
+        200
+      ],
+      "expectedVerification": "ranked-eligible"
+    },
+    {
+      "id": "finalized-restore-rejected",
+      "initial": {
+        "phase": "finalized"
+      },
+      "actions": [
+        "restore any checkpoint"
+      ],
+      "expectedStatuses": [
+        409
+      ],
+      "expectedFinalRows": 1
+    },
+    {
+      "id": "unsigned-browser-write",
+      "actions": [
+        "POST finalization with no official HMAC"
+      ],
+      "expectedStatuses": [
+        401
+      ],
+      "expectedFinalRows": 0
+    },
+    {
+      "id": "reused-transport-nonce",
+      "actions": [
+        "valid event accepted nonce n1",
+        "same transport nonce n1 reused"
+      ],
+      "expectedStatuses": [
+        200,
+        401
+      ],
+      "expectedAdditionalWrites": 0
+    },
+    {
+      "id": "counter-regression",
+      "actions": [
+        "registered damage 500000",
+        "submit damage 499999"
+      ],
+      "expectedStatuses": [
+        409
+      ],
+      "expectedCounter": 500000
+    },
+    {
+      "id": "24h-expired-checkpoint",
+      "actions": [
+        "restore signed checkpoint older than 24 hours"
+      ],
+      "expectedStatuses": [
+        409
+      ],
+      "expectedGameplayRecovery": "Practice import only if compatible"
+    },
+    {
+      "id": "response-lost-after-commit",
+      "actions": [
+        "finalize commits but HTTP response is lost",
+        "retry identical event after reconnect with fresh nonce"
+      ],
+      "expectedStatuses": [
+        null,
+        200
+      ],
+      "expectedFinalRows": 1
+    },
+    {
+      "id": "demotion-is-sticky",
+      "actions": [
+        "required checkpoint registration fails",
+        "play continues locally",
+        "service returns",
+        "attempt verified finalize"
+      ],
+      "expected": "No promotion of this run; retain unverified recap"
+    },
+    {
+      "id": "weekly-delay-is-not-week-shift",
+      "actions": [
+        "terminal event at Sunday 23:59 UTC",
+        "idempotent retry accepted Monday 00:01 UTC"
+      ],
+      "expectedWeekMembership": "Week of terminal time, not retry acceptance time"
+    }
+  ],
+  "implementationAcceptance": [
+    "Exactly one row/rank per completed team run, with the full paginated roster and clear contribution/late-join context.",
+    "Live Sites/D1 writes survive browser reload and Render restart; authenticated state/restore races cannot duplicate results.",
+    "Public read from two independent browsers returns the same finalized run identity and board partition.",
+    "All 15 locales render filters, result breakdowns, error/pending states, number/plural formats and accessible mobile rows.",
+    "Private ranked disclosure is visible before combat; private codes and reconnect credentials never appear in public JSON.",
+    "Global-service outage never prevents offline/LAN gameplay; unverified, pending and practice statuses are truthful.",
+    "Actual deployed integration evidence is separate from these Stage 1 arithmetic/acceptance fixtures."
+  ],
+  "designVerification": {
+    "checkedDate": "2026-10-22",
+    "independentVerifier": "Node.js BigInt rational arithmetic and exact ratio comparator, separate from the Python Fraction fixture generation.",
+    "status": "PASS",
+    "checks": 71,
+    "coverage": [
+      "18 exact timed score vectors",
+      "Timed sorting and competition ranks",
+      "Six Endless pairwise comparisons and complete ordering/ranks",
+      "Five 30 Hz tick conversions",
+      "Three UTC week boundaries",
+      "Five mode-capacity contracts",
+      "All local JSON Schema references",
+      "15-locale and team-only contracts",
+      "13 exact padded-ratio index fixtures, scale proof and four schema/lease/partition consistency checks"
+    ],
+    "limits": [
+      "No gameplay or deployed service was exercised.",
+      "Lifecycle races are acceptance fixtures, not passing integration-test claims.",
+      "JSON Schema local references/structure were checked; a full Draft 2020-12 validator is not installed in this workspace."
+    ],
+    "additionalRatioIndexChecks": {
+      "status": "PASS",
+      "checks": 18,
+      "ratioFixtures": 13
+    }
+  },
+  "ratioSortKeyVectors": [
+    {
+      "id": "zero",
+      "numerator": 0,
+      "denominator": 1,
+      "expectedKey": "0000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "one-third",
+      "numerator": 1,
+      "denominator": 3,
+      "expectedKey": "0000000000000000333333333333333333333333333333333"
+    },
+    {
+      "id": "two-sixths",
+      "numerator": 2,
+      "denominator": 6,
+      "expectedKey": "0000000000000000333333333333333333333333333333333"
+    },
+    {
+      "id": "one-quarter",
+      "numerator": 1,
+      "denominator": 4,
+      "expectedKey": "0000000000000000250000000000000000000000000000000"
+    },
+    {
+      "id": "near-one-a",
+      "numerator": 9007199254740990,
+      "denominator": 9007199254740991,
+      "expectedKey": "0000000000000000999999999999999888977697537484333"
+    },
+    {
+      "id": "near-one-b",
+      "numerator": 9007199254740989,
+      "denominator": 9007199254740990,
+      "expectedKey": "0000000000000000999999999999999888977697537484321"
+    },
+    {
+      "id": "minimum-positive-a",
+      "numerator": 1,
+      "denominator": 9007199254740991,
+      "expectedKey": "0000000000000000000000000000000111022302462515666"
+    },
+    {
+      "id": "minimum-positive-b",
+      "numerator": 1,
+      "denominator": 9007199254740990,
+      "expectedKey": "0000000000000000000000000000000111022302462515678"
+    },
+    {
+      "id": "maximum-ratio",
+      "numerator": 9007199254740991,
+      "denominator": 1,
+      "expectedKey": "9007199254740991000000000000000000000000000000000"
+    }
+  ],
+  "ratioSortKeyComparisons": [
+    {
+      "a": "one-third",
+      "b": "two-sixths",
+      "expected": "equal"
+    },
+    {
+      "a": "one-quarter",
+      "b": "one-third",
+      "expected": "a-before-b"
+    },
+    {
+      "a": "near-one-b",
+      "b": "near-one-a",
+      "expected": "a-before-b"
+    },
+    {
+      "a": "minimum-positive-a",
+      "b": "minimum-positive-b",
+      "expected": "a-before-b"
+    }
+  ]
+}

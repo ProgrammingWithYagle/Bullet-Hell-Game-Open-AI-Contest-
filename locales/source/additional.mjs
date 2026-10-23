@@ -1,0 +1,18 @@
+// Complete sentences for mechanics added while the core catalog was being authored.
+export default {
+en: { 'attack.zone.name':'Arrest zone', 'attack.zone.description':'Marked areas become damaging arrest zones. Leave them before the warning ends.', 'attack.pulse.name':'Shock pulse', 'attack.pulse.description':'A short-range shock spreads from the boss. Move beyond the marked radius.' },
+'zh-Hans': {'attack.zone.name':'拘捕区域','attack.zone.description':'标记区域将变为伤害拘捕区，在预警结束前离开。','attack.pulse.name':'冲击脉冲','attack.pulse.description':'首领释放近距离冲击，移出标记半径。'},
+'zh-Hant': {'attack.zone.name':'拘捕區域','attack.zone.description':'標記區域將變為傷害拘捕區，在預警結束前離開。','attack.pulse.name':'衝擊脈衝','attack.pulse.description':'首領釋放近距離衝擊，移出標記半徑。'},
+ja: {'attack.zone.name':'逮捕区域','attack.zone.description':'印の範囲がダメージ区域になる。予告が終わる前に離れよう。','attack.pulse.name':'衝撃波','attack.pulse.description':'ボスから近距離衝撃波が広がる。印の半径外へ出よう。'},
+es: {'attack.zone.name':'Zona de arresto','attack.zone.description':'Las zonas marcadas se vuelven dañinas. Sal antes de que termine el aviso.','attack.pulse.name':'Pulso de choque','attack.pulse.description':'Un choque cercano se expande desde el jefe. Sal del radio marcado.'},
+fr: {'attack.zone.name':"Zone d'arrestation",'attack.zone.description':"Les zones marquées deviennent dangereuses. Sortez avant la fin de l'avertissement.",'attack.pulse.name':'Onde de choc','attack.pulse.description':'Une onde proche part du boss. Sortez du rayon marqué.'},
+de: {'attack.zone.name':'Arrestzone','attack.zone.description':'Markierte Bereiche werden zu Schadenszonen. Verlasse sie vor dem Ende der Warnung.','attack.pulse.name':'Schockpuls','attack.pulse.description':'Ein Nahbereichsschock breitet sich vom Boss aus. Verlasse den markierten Radius.'},
+'pt-BR': {'attack.zone.name':'Zona de prisão','attack.zone.description':'As áreas marcadas ficam perigosas. Saia antes do fim do aviso.','attack.pulse.name':'Pulso de choque','attack.pulse.description':'Um choque próximo parte do chefe. Saia do raio marcado.'},
+ru: {'attack.zone.name':'Зона ареста','attack.zone.description':'Отмеченные области наносят урон. Выйдите до конца предупреждения.','attack.pulse.name':'Ударный импульс','attack.pulse.description':'От босса расходится близкая ударная волна. Выйдите за отмеченный радиус.'},
+hi: {'attack.zone.name':'गिरफ्तारी क्षेत्र','attack.zone.description':'चिह्नित स्थान हानिकारक क्षेत्र बनते हैं। चेतावनी समाप्त होने से पहले निकलें।','attack.pulse.name':'आघात स्पंदन','attack.pulse.description':'बॉस से निकट आघात फैलता है। चिह्नित त्रिज्या से बाहर जाएँ।'},
+ar: {'attack.zone.name':'منطقة الاعتقال','attack.zone.description':'تصبح المناطق المحددة مؤذية. غادر قبل نهاية التحذير.','attack.pulse.name':'نبضة صادمة','attack.pulse.description':'تنتشر صدمة قريبة من الزعيم. اخرج من النطاق المحدد.'},
+bn: {'attack.zone.name':'গ্রেপ্তার এলাকা','attack.zone.description':'চিহ্নিত এলাকা ক্ষতিকর হয়। সতর্কতা শেষের আগে বের হন।','attack.pulse.name':'আঘাত স্পন্দন','attack.pulse.description':'বস থেকে কাছের আঘাত ছড়ায়। চিহ্নিত ব্যাসার্ধ ছাড়ুন।'},
+id: {'attack.zone.name':'Zona penangkapan','attack.zone.description':'Area bertanda menjadi zona berbahaya. Keluar sebelum peringatan berakhir.','attack.pulse.name':'Denyut kejut','attack.pulse.description':'Kejutan jarak dekat menyebar dari bos. Keluar dari radius bertanda.'},
+ur: {'attack.zone.name':'گرفتاری علاقہ','attack.zone.description':'نشان زدہ جگہ نقصان دہ ہوتی ہے۔ تنبیہ ختم ہونے سے پہلے نکلیں۔','attack.pulse.name':'ٹکر کی لہر','attack.pulse.description':'باس سے قریب صدمہ پھیلتا ہے۔ نشان زدہ دائرے سے باہر جائیں۔'},
+ko: {'attack.zone.name':'체포 구역','attack.zone.description':'표시 구역이 피해 지역이 됩니다. 경고가 끝나기 전에 벗어나세요.','attack.pulse.name':'충격 파동','attack.pulse.description':'보스에게서 근거리 충격이 퍼집니다. 표시 반경 밖으로 이동하세요.'}
+};

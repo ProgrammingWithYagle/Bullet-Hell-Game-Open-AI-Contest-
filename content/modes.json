@@ -1,0 +1,194 @@
+[
+  {
+    "id": "short",
+    "name": "Quarantine Run",
+    "kind": "campaign",
+    "maxPlayers": 8,
+    "encounters": 5,
+    "targetMinutes": [
+      10,
+      20
+    ],
+    "threats": [
+      1,
+      3,
+      5,
+      8,
+      10
+    ],
+    "arenas": [
+      "gatehouse",
+      "triage-yard",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "description": "A five-contract passage from the breached gate to the drowned seat of government.",
+    "minPlayers": 1,
+    "public": true,
+    "private": true,
+    "offlineSolo": true
+  },
+  {
+    "id": "standard",
+    "name": "Midnight Circuit",
+    "kind": "campaign",
+    "maxPlayers": 8,
+    "encounters": 10,
+    "targetMinutes": [
+      25,
+      35
+    ],
+    "threats": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "arenas": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "gatehouse",
+      "bell-foundry",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "description": "The full city circuit, balancing build development with a compact evening session.",
+    "minPlayers": 1,
+    "public": true,
+    "private": true,
+    "offlineSolo": true
+  },
+  {
+    "id": "long",
+    "name": "Black Bell Pilgrimage",
+    "kind": "campaign",
+    "maxPlayers": 8,
+    "encounters": 16,
+    "targetMinutes": [
+      45,
+      60
+    ],
+    "threats": [
+      1,
+      1,
+      2,
+      2,
+      3,
+      3,
+      4,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      9,
+      10,
+      10
+    ],
+    "arenas": [
+      "gatehouse",
+      "triage-yard",
+      "gatehouse",
+      "ossuary-works",
+      "triage-yard",
+      "sunken-chapel",
+      "ossuary-works",
+      "bell-foundry",
+      "sunken-chapel",
+      "gatehouse",
+      "bell-foundry",
+      "crown-crypt",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "description": "A longer rescue pilgrimage through all districts, with champions and additional survivor testimony.",
+    "minPlayers": 1,
+    "public": true,
+    "private": true,
+    "offlineSolo": true
+  },
+  {
+    "id": "raid",
+    "name": "Grand Raid",
+    "kind": "raid",
+    "maxPlayers": 16,
+    "encounters": 3,
+    "targetMinutes": [
+      10,
+      20
+    ],
+    "threats": [
+      4,
+      7,
+      10
+    ],
+    "arenas": [
+      "ossuary-works",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "skillBudgets": [
+      12,
+      20,
+      27
+    ],
+    "coinIncomeBudgets": [
+      600,
+      1400,
+      2400
+    ],
+    "bossHealthMultiplier": 1.25,
+    "description": "Three extended encounters with an accelerated starting build and larger cooperative objectives.",
+    "minPlayers": 1,
+    "public": true,
+    "private": true,
+    "offlineSolo": true
+  },
+  {
+    "id": "endless",
+    "name": "Endless Vigil",
+    "kind": "endless",
+    "maxPlayers": 50,
+    "encounters": null,
+    "targetMinutes": null,
+    "threats": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "arenas": [
+      "gatehouse",
+      "triage-yard",
+      "ossuary-works",
+      "sunken-chapel",
+      "bell-foundry",
+      "crown-crypt"
+    ],
+    "description": "No final round. Survive successive bosses indefinitely, vote on mutations, shop between encounters, and pursue a personal and squad streak. Solo, private and public play.",
+    "minPlayers": 1,
+    "public": true,
+    "private": true,
+    "offlineSolo": true
+  }
+]

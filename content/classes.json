@@ -1,0 +1,458 @@
+[
+  {
+    "id": "soldier",
+    "name": "Soldier",
+    "survivor": "Mara Rook",
+    "health": 110,
+    "speed": 225,
+    "color": "#7799a5",
+    "weapon": "soldier-0",
+    "role": "Reliable ranged damage and squad leadership.",
+    "lore": "A former night-watch officer who refused the order to bar the infirmary doors. Mara counts everyone before she moves.",
+    "branches": [
+      {
+        "id": "ballistics",
+        "name": "Ballistics"
+      },
+      {
+        "id": "command",
+        "name": "Command"
+      },
+      {
+        "id": "survival",
+        "name": "Survival"
+      }
+    ],
+    "abilities": [
+      {
+        "id": "soldier-q",
+        "slot": "q",
+        "kind": "rally",
+        "name": "Rally Field",
+        "cooldown": 16,
+        "duration": 6,
+        "radius": 170,
+        "damage": 0,
+        "description": "Allies in the field gain 20% weapon damage and 10% movement speed."
+      },
+      {
+        "id": "soldier-e",
+        "slot": "e",
+        "kind": "burst",
+        "name": "Precision Burst",
+        "cooldown": 9,
+        "duration": 0,
+        "radius": 0,
+        "damage": 45,
+        "description": "Fire three accurate piercing rounds toward the aim point."
+      }
+    ],
+    "ultimate": {
+      "id": "soldier-ultimate",
+      "slot": "ultimate",
+      "name": "Last Roll Call",
+      "kind": "roll-call",
+      "cooldown": 80,
+      "duration": 8,
+      "radius": 260,
+      "damage": 0,
+      "effects": {
+        "allyWeaponDamage": 0.35,
+        "instantReload": true,
+        "clearProjectilesOnCast": true
+      },
+      "description": "Reload allies instantly, clear nearby hostile projectiles once and grant 35% weapon damage in the rally field for 8 seconds."
+    }
+  },
+  {
+    "id": "heavy",
+    "name": "Heavy",
+    "survivor": "Hux Bell",
+    "health": 140,
+    "speed": 190,
+    "color": "#c3964c",
+    "weapon": "heavy-0",
+    "role": "Sustained fire and suppression.",
+    "lore": "Hux once kept the foundry running through winter. He now carries its last functioning feed motor into the streets.",
+    "branches": [
+      {
+        "id": "ordnance",
+        "name": "Ordnance"
+      },
+      {
+        "id": "suppression",
+        "name": "Suppression"
+      },
+      {
+        "id": "endurance",
+        "name": "Endurance"
+      }
+    ],
+    "abilities": [
+      {
+        "id": "heavy-q",
+        "slot": "q",
+        "kind": "suppress",
+        "name": "Suppressing Cone",
+        "cooldown": 12,
+        "duration": 3,
+        "radius": 220,
+        "damage": 45,
+        "description": "Fire fourteen rounds in a cone and slow ordinary enemies by 40%."
+      },
+      {
+        "id": "heavy-e",
+        "slot": "e",
+        "kind": "brace",
+        "name": "Braced Firing",
+        "cooldown": 18,
+        "duration": 5,
+        "radius": 0,
+        "damage": 0,
+        "description": "Gain 45% damage resistance and 30% fire rate; move at 60% speed."
+      }
+    ],
+    "ultimate": {
+      "id": "heavy-ultimate",
+      "slot": "ultimate",
+      "name": "Foundry Overture",
+      "kind": "overdrive",
+      "cooldown": 90,
+      "duration": 6,
+      "radius": 0,
+      "damage": 0,
+      "effects": {
+        "fireRate": 0.7,
+        "pierce": 2,
+        "unlimitedMagazine": true,
+        "moveSpeed": 0.65
+      },
+      "description": "Overdrive the weapon for 6 seconds with 70% additional fire rate, two extra pierces and no magazine consumption; movement is reduced."
+    }
+  },
+  {
+    "id": "tank",
+    "name": "Tank",
+    "survivor": "Bram Voss",
+    "health": 170,
+    "speed": 180,
+    "color": "#b3654b",
+    "weapon": "tank-0",
+    "role": "Protection, interruption and rescue.",
+    "lore": "A gate engineer carrying a door that outlived its building. Bram insists a shield is only useful with someone behind it.",
+    "branches": [
+      {
+        "id": "breaching",
+        "name": "Breaching"
+      },
+      {
+        "id": "protection",
+        "name": "Protection"
+      },
+      {
+        "id": "bastion",
+        "name": "Bastion"
+      }
+    ],
+    "abilities": [
+      {
+        "id": "tank-q",
+        "slot": "q",
+        "kind": "wall",
+        "name": "Protective Wall",
+        "cooldown": 16,
+        "duration": 5,
+        "radius": 150,
+        "damage": 0,
+        "description": "Place a 150-health bullet-blocking wall that allies can walk through."
+      },
+      {
+        "id": "tank-e",
+        "slot": "e",
+        "kind": "charge",
+        "name": "Rescue Charge",
+        "cooldown": 10,
+        "duration": 0.3,
+        "radius": 180,
+        "damage": 50,
+        "description": "Charge toward the aim point, gain brief invulnerability and damage nearby enemies."
+      }
+    ],
+    "ultimate": {
+      "id": "tank-ultimate",
+      "slot": "ultimate",
+      "name": "The City Holds",
+      "kind": "citadel",
+      "cooldown": 95,
+      "duration": 8,
+      "radius": 230,
+      "damage": 0,
+      "effects": {
+        "allyShield": 120,
+        "allyArmor": 0.35
+      },
+      "description": "Grant nearby allies 120 shield and 35 percentage points of armor for 8 seconds. Armor respects the global cap; identical fields do not stack."
+    }
+  },
+  {
+    "id": "medic",
+    "name": "Medic",
+    "survivor": "Iona Vale",
+    "health": 100,
+    "speed": 225,
+    "color": "#dfd3b4",
+    "weapon": "medic-0",
+    "role": "Healing, cleansing and rapid recovery.",
+    "lore": "Iona wrote names on bandages when the city ran out of paper. She refuses to let the bells make those names meaningless.",
+    "branches": [
+      {
+        "id": "chemistry",
+        "name": "Chemistry"
+      },
+      {
+        "id": "triage",
+        "name": "Triage"
+      },
+      {
+        "id": "recovery",
+        "name": "Recovery"
+      }
+    ],
+    "abilities": [
+      {
+        "id": "medic-q",
+        "slot": "q",
+        "kind": "heal",
+        "name": "Healing Field",
+        "cooldown": 16,
+        "duration": 6,
+        "radius": 140,
+        "damage": 0,
+        "description": "Restore 8 health per second to allies inside the field."
+      },
+      {
+        "id": "medic-e",
+        "slot": "e",
+        "kind": "cleanse",
+        "name": "Cleansing Serum",
+        "cooldown": 12,
+        "duration": 0,
+        "radius": 160,
+        "damage": 0,
+        "description": "Heal nearby allies for 20 health and remove poison and slow effects."
+      }
+    ],
+    "ultimate": {
+      "id": "medic-ultimate",
+      "slot": "ultimate",
+      "name": "Names Returned",
+      "kind": "resurrection",
+      "cooldown": 100,
+      "duration": 1,
+      "radius": 240,
+      "damage": 35,
+      "effects": {
+        "reviveFraction": 0.6,
+        "heal": 40,
+        "cleanse": true,
+        "soloShield": 40
+      },
+      "description": "After a one-second channel, revive nearby downed or eliminated allies at 60% health, heal living allies for 40, cleanse effects and strike nearby enemies for 35. Solo also gains 40 shield."
+    }
+  },
+  {
+    "id": "mage",
+    "name": "Mage",
+    "survivor": "Sable Quill",
+    "health": 85,
+    "speed": 225,
+    "color": "#8e82b4",
+    "weapon": "mage-0",
+    "role": "Area control and magical burst damage.",
+    "lore": "Sable catalogued forbidden bell harmonics before the quarantine. The cure and the curse now share the same notebook.",
+    "branches": [
+      {
+        "id": "hexcraft",
+        "name": "Hexcraft"
+      },
+      {
+        "id": "control",
+        "name": "Control"
+      },
+      {
+        "id": "warding",
+        "name": "Warding"
+      }
+    ],
+    "abilities": [
+      {
+        "id": "mage-q",
+        "slot": "q",
+        "kind": "bind",
+        "name": "Binding Sigil",
+        "cooldown": 12,
+        "duration": 4,
+        "radius": 120,
+        "damage": 35,
+        "description": "Damage enemies and slow ordinary enemies by 55% within a sigil."
+      },
+      {
+        "id": "mage-e",
+        "slot": "e",
+        "kind": "ward",
+        "name": "Ward Detonation",
+        "cooldown": 18,
+        "duration": 6,
+        "radius": 145,
+        "damage": 65,
+        "description": "Detonate a ward around the aim point and grant nearby allies a 35-health shield."
+      }
+    ],
+    "ultimate": {
+      "id": "mage-ultimate",
+      "slot": "ultimate",
+      "name": "Silent Twelfth",
+      "kind": "requiem",
+      "cooldown": 90,
+      "duration": 3,
+      "radius": 300,
+      "damage": 120,
+      "effects": {
+        "pulses": 3,
+        "clearProjectilesOnCast": true,
+        "ordinaryEnemySlow": 0.7
+      },
+      "description": "Release three 120-damage pulses over 3 seconds, erase hostile projectiles in range on the first pulse and strongly slow ordinary enemies."
+    }
+  },
+  {
+    "id": "engineer",
+    "name": "Engineer",
+    "survivor": "Tamsin Reed",
+    "health": 105,
+    "speed": 215,
+    "color": "#5eafa0",
+    "weapon": "engineer-0",
+    "role": "Deployables, repair and controlled ground.",
+    "lore": "Tamsin repairs tools with parts that were never meant to fit. She believes the city can be repaired by the same method.",
+    "branches": [
+      {
+        "id": "demolitions",
+        "name": "Demolitions"
+      },
+      {
+        "id": "constructs",
+        "name": "Constructs"
+      },
+      {
+        "id": "repair",
+        "name": "Repair"
+      }
+    ],
+    "abilities": [
+      {
+        "id": "engineer-q",
+        "slot": "q",
+        "kind": "turret",
+        "name": "Rivet Turret",
+        "cooldown": 18,
+        "duration": 12,
+        "radius": 0,
+        "damage": 25,
+        "description": "Deploy an 80-health turret with 25 base damage per second."
+      },
+      {
+        "id": "engineer-e",
+        "slot": "e",
+        "kind": "barricade",
+        "name": "Deployable Barricade",
+        "cooldown": 16,
+        "duration": 8,
+        "radius": 160,
+        "damage": 0,
+        "description": "Deploy a 120-health bullet barrier; teammates can pass through it."
+      }
+    ],
+    "ultimate": {
+      "id": "engineer-ultimate",
+      "slot": "ultimate",
+      "name": "Impossible Machine",
+      "kind": "siege-construct",
+      "cooldown": 100,
+      "duration": 14,
+      "radius": 0,
+      "damage": 90,
+      "effects": {
+        "constructHealth": 200,
+        "damagePerSecond": 90,
+        "turretFireRate": 0.5
+      },
+      "description": "Deploy a 200-health siege construct dealing 90 base damage per second for 14 seconds and overclock owned turrets by 50%."
+    }
+  },
+  {
+    "id": "assassin",
+    "name": "Assassin",
+    "survivor": "Vale Ash",
+    "health": 90,
+    "speed": 255,
+    "color": "#b67e8a",
+    "weapon": "assassin-0",
+    "role": "Precision, mobility and safe rescue openings.",
+    "lore": "Vale used to carry letters through streets the watch had abandoned. They still know which alleys lead home.",
+    "branches": [
+      {
+        "id": "precision",
+        "name": "Precision"
+      },
+      {
+        "id": "ambush",
+        "name": "Ambush"
+      },
+      {
+        "id": "evasion",
+        "name": "Evasion"
+      }
+    ],
+    "abilities": [
+      {
+        "id": "assassin-q",
+        "slot": "q",
+        "kind": "veil",
+        "name": "Invisibility",
+        "cooldown": 16,
+        "duration": 6,
+        "radius": 0,
+        "damage": 0,
+        "description": "Become untargetable by newly aimed attacks. Existing hazards still hurt."
+      },
+      {
+        "id": "assassin-e",
+        "slot": "e",
+        "kind": "step",
+        "name": "Shadow Step",
+        "cooldown": 10,
+        "duration": 0.18,
+        "radius": 180,
+        "damage": 50,
+        "description": "Blink toward the aim point, briefly evade damage and strike nearby enemies."
+      }
+    ],
+    "ultimate": {
+      "id": "assassin-ultimate",
+      "slot": "ultimate",
+      "name": "Unwritten Passage",
+      "kind": "passage",
+      "cooldown": 85,
+      "duration": 5,
+      "radius": 180,
+      "damage": 100,
+      "effects": {
+        "stepCharges": 3,
+        "criticalChance": 1,
+        "untargetable": true
+      },
+      "description": "For 5 seconds gain three free empowered Shadow Steps, 100% critical chance and untargetability to new aimed attacks. Existing hazards remain dangerous outside dodge invulnerability."
+    }
+  }
+]

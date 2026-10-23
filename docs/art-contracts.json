@@ -1,0 +1,131 @@
+{
+  "style": "Dry black ink and matte opaque gouache; bone, moss teal, rust, ochre, indigo and charcoal. Restrained scenery and no particles that obscure play.",
+  "rasterTextPolicy": "Brand wordmark may be raster. Functional UI and gameplay text are runtime-localized.",
+  "survivor": {
+    "sourceCell": 256,
+    "displayHeight": 56,
+    "origin": [
+      0.5,
+      0.86
+    ],
+    "directions": [
+      "south",
+      "east",
+      "north",
+      "west"
+    ],
+    "animations": {
+      "idle": {
+        "frames": 4,
+        "fps": 5
+      },
+      "run": {
+        "frames": 8,
+        "fps": 10
+      },
+      "attack": {
+        "frames": 4,
+        "fps": 12
+      },
+      "hurt": {
+        "frames": 2,
+        "fps": 8
+      },
+      "dash": {
+        "frames": 6,
+        "fps": 20
+      },
+      "downed": {
+        "frames": 6,
+        "fps": 6
+      }
+    }
+  },
+  "boss": {
+    "sourceCell": 512,
+    "displayHeight": 150,
+    "origin": [
+      0.5,
+      0.84
+    ],
+    "animations": {
+      "idle": {
+        "frames": 4,
+        "fps": 5
+      },
+      "attack": {
+        "frames": 8,
+        "fps": 10
+      },
+      "hurt": {
+        "frames": 3,
+        "fps": 10
+      },
+      "defeat": {
+        "frames": 8,
+        "fps": 8
+      }
+    }
+  },
+  "proofAnimation": {
+    "gridColumns": 4,
+    "gridRows": 2,
+    "frameCount": 8,
+    "fps": 10,
+    "alphaRequired": true,
+    "footPivotTolerancePixels": 8,
+    "review": "Review each frame at native resolution and loop at actual gameplay size. Reject shape morphs, missing limbs, ghosted weapon copies and moving cell boundaries."
+  },
+  "proofs": [
+    {
+      "id": "Cover",
+      "file": "assets/proofs/cover-v1.png",
+      "acceptance": "Wide finished original illustration with the Grave Accord wordmark."
+    },
+    {
+      "id": "Survivors",
+      "file": "assets/proofs/survivors-v3.png",
+      "acceptance": "Seven distinct full-body survivors, stable class identity and equipment, cleaner broad matte coat panels with focal face/hand/prop detail."
+    },
+    {
+      "id": "Bosses",
+      "file": "assets/proofs/bosses-v1.png",
+      "acceptance": "Eleven original boss identities with clear silhouettes and scale language."
+    },
+    {
+      "id": "Arena",
+      "file": "assets/proofs/arena-v1.png",
+      "acceptance": "Top-down Gatehouse composition with quiet floor and readable paths."
+    },
+    {
+      "id": "Desktop HUD",
+      "file": "assets/proofs/hud-desktop-v1.png",
+      "acceptance": "Illustrated UI composition with clear health, timer, ammo and ability hierarchy."
+    },
+    {
+      "id": "Phone HUD",
+      "file": "assets/proofs/hud-phone-v1.png",
+      "acceptance": "Landscape touch HUD with clear controls and safe areas."
+    },
+    {
+      "id": "Survivor animation",
+      "file": "assets/proofs/soldier-run-v1.png",
+      "acceptance": "Fixed-grid, same-facing eight-frame locomotion proof; inspect frame pivots and cycle in motion."
+    },
+    {
+      "id": "Boss animation",
+      "file": "assets/proofs/boss-attack-v1.png",
+      "acceptance": "Fixed-grid, same-facing eight-frame constable attack proof with anticipation, release and recovery."
+    }
+  ],
+  "supplementalProofs": [
+    {
+      "id": "Clean-detail boss finish",
+      "file": "assets/proofs/bosses-clean-detail-v2.png",
+      "acceptance": "Six representative boss identities with broad quiet painted surfaces; this finish proof does not constitute the full sixty-boss sprite library."
+    }
+  ],
+  "finishAuthority": "docs/ART_READABILITY_CONTRACT.json",
+  "noCopiedReferenceAssets": true,
+  "backendPolicy": "Built-in OpenAI image generation; record model identifier only if actually reported."
+}

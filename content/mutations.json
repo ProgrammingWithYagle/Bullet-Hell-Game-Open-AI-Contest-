@@ -1,0 +1,279 @@
+[
+  {
+    "id": "glass-pact",
+    "name": "Glass Pact",
+    "description": "Half maximum health; triple weapon damage.",
+    "modifiers": {
+      "maxHealth": 0.5,
+      "damage": 3
+    },
+    "excludes": [
+      "salt-circle"
+    ],
+    "durationEncounters": 3
+  },
+  {
+    "id": "borrowed-day",
+    "name": "Borrowed Day",
+    "description": "Boss health +30%; bounty doubled.",
+    "modifiers": {
+      "bossHealth": 1.3,
+      "coins": 2
+    },
+    "excludes": [],
+    "durationEncounters": 3
+  },
+  {
+    "id": "rationed-mercy",
+    "name": "Rationed Mercy",
+    "description": "Healing -40%; bounty +40%.",
+    "modifiers": {
+      "healing": 0.6,
+      "coins": 1.4
+    },
+    "excludes": [
+      "lifeline"
+    ],
+    "durationEncounters": 3
+  },
+  {
+    "id": "hot-iron",
+    "name": "Hot Iron",
+    "description": "Weapon damage +35%; reloads take 30% longer.",
+    "modifiers": {
+      "damage": 1.35,
+      "reloadTime": 1.3
+    },
+    "excludes": [],
+    "durationEncounters": 3
+  },
+  {
+    "id": "open-veins",
+    "name": "Open Veins",
+    "description": "Maximum health -25%; fire rate +25%.",
+    "modifiers": {
+      "maxHealth": 0.75,
+      "fireRate": 1.25
+    },
+    "excludes": [],
+    "durationEncounters": 3
+  },
+  {
+    "id": "heavy-oath",
+    "name": "Heavy Oath",
+    "description": "Move speed -18%; gain 22 percentage points of armor.",
+    "modifiers": {
+      "moveSpeed": 0.82,
+      "armor": 0.22
+    },
+    "excludes": [],
+    "durationEncounters": 3
+  },
+  {
+    "id": "dead-calm",
+    "name": "Dead Calm",
+    "description": "Hostile projectiles are 20% slower; weapon fire rate -15%.",
+    "modifiers": {
+      "bossSpeed": 0.8,
+      "fireRate": 0.85
+    },
+    "excludes": [
+      "mercury-hour"
+    ],
+    "durationEncounters": 3
+  },
+  {
+    "id": "quick-blood",
+    "name": "Quick Blood",
+    "description": "Move speed +20%; maximum health -20%.",
+    "modifiers": {
+      "moveSpeed": 1.2,
+      "maxHealth": 0.8
+    },
+    "excludes": [],
+    "durationEncounters": 3
+  },
+  {
+    "id": "storm-tax",
+    "name": "Storm Tax",
+    "description": "Boss bullet counts +30%; bounty +60%.",
+    "modifiers": {
+      "bossBulletCount": 1.3,
+      "coins": 1.6
+    },
+    "excludes": [],
+    "durationEncounters": 3
+  },
+  {
+    "id": "long-night",
+    "name": "Long Night",
+    "description": "Boss deadlines 10% shorter; bounty +40%.",
+    "modifiers": {
+      "timer": 0.9,
+      "coins": 1.4
+    },
+    "excludes": [],
+    "durationEncounters": 3
+  },
+  {
+    "id": "lifeline",
+    "name": "Lifeline",
+    "description": "Healing +50%; weapon damage -20%.",
+    "modifiers": {
+      "healing": 1.5,
+      "damage": 0.8
+    },
+    "excludes": [
+      "rationed-mercy"
+    ],
+    "durationEncounters": 3
+  },
+  {
+    "id": "thin-walls",
+    "name": "Thin Walls",
+    "description": "Barrier health -40%; weapon fire rate +20%.",
+    "modifiers": {
+      "barrierHealth": 0.6,
+      "fireRate": 1.2
+    },
+    "excludes": [],
+    "durationEncounters": 3
+  },
+  {
+    "id": "steady-hands",
+    "name": "Steady Hands",
+    "description": "Weapon spread -35%; move speed -10%.",
+    "modifiers": {
+      "spread": 0.65,
+      "moveSpeed": 0.9
+    },
+    "excludes": [],
+    "durationEncounters": 3
+  },
+  {
+    "id": "deep-pockets",
+    "name": "Deep Pockets",
+    "description": "Magazine capacity +40%; reloads take 25% longer.",
+    "modifiers": {
+      "magazine": 1.4,
+      "reloadTime": 1.25
+    },
+    "excludes": [],
+    "durationEncounters": 3
+  },
+  {
+    "id": "panic-drill",
+    "name": "Panic Drill",
+    "description": "Dodge cooldown -35%; hostile projectiles 10% faster.",
+    "modifiers": {
+      "dodgeCooldown": 0.65,
+      "bossSpeed": 1.1
+    },
+    "excludes": [],
+    "durationEncounters": 3
+  },
+  {
+    "id": "iron-rain",
+    "name": "Iron Rain",
+    "description": "One additional weapon projectile; weapon damage -30%.",
+    "modifiers": {
+      "extraShots": 1,
+      "damage": 0.7
+    },
+    "excludes": [],
+    "durationEncounters": 3
+  },
+  {
+    "id": "salt-circle",
+    "name": "Salt Circle",
+    "description": "Gain 15 percentage points of armor; maximum health -20%.",
+    "modifiers": {
+      "armor": 0.15,
+      "maxHealth": 0.8
+    },
+    "excludes": [
+      "glass-pact"
+    ],
+    "durationEncounters": 3
+  },
+  {
+    "id": "grave-interest",
+    "name": "Grave Interest",
+    "description": "Bounty +75%; boss damage +20%.",
+    "modifiers": {
+      "coins": 1.75,
+      "bossDamage": 1.2
+    },
+    "excludes": [],
+    "durationEncounters": 3
+  },
+  {
+    "id": "bitter-medicine",
+    "name": "Bitter Medicine",
+    "description": "Healing -25%; weapon damage +25%.",
+    "modifiers": {
+      "healing": 0.75,
+      "damage": 1.25
+    },
+    "excludes": [],
+    "durationEncounters": 3
+  },
+  {
+    "id": "brass-halo",
+    "name": "Brass Halo",
+    "description": "Start each boss with 30 shield; hostile projectiles 10% faster.",
+    "modifiers": {
+      "startShield": 30,
+      "bossSpeed": 1.1
+    },
+    "excludes": [],
+    "durationEncounters": 3
+  },
+  {
+    "id": "last-rites",
+    "name": "Last Rites",
+    "description": "Revive channel time -30%; boss health +15%.",
+    "modifiers": {
+      "reviveTime": 0.7,
+      "bossHealth": 1.15
+    },
+    "excludes": [],
+    "durationEncounters": 3
+  },
+  {
+    "id": "mercury-hour",
+    "name": "Mercury Hour",
+    "description": "Fire rate +25%; reloads take 15% longer.",
+    "modifiers": {
+      "fireRate": 1.25,
+      "reloadTime": 1.15
+    },
+    "excludes": [
+      "dead-calm"
+    ],
+    "durationEncounters": 3
+  },
+  {
+    "id": "spare-parts",
+    "name": "Spare Parts",
+    "description": "Ability potency +25%; weapon fire rate -10%.",
+    "modifiers": {
+      "abilityPotency": 1.25,
+      "fireRate": 0.9
+    },
+    "excludes": [],
+    "durationEncounters": 3
+  },
+  {
+    "id": "ash-tithe",
+    "name": "Ash Tithe",
+    "description": "Bounty +30% and weapon damage +10%; maximum health -20%.",
+    "modifiers": {
+      "coins": 1.3,
+      "damage": 1.1,
+      "maxHealth": 0.8
+    },
+    "excludes": [],
+    "durationEncounters": 3
+  }
+]
