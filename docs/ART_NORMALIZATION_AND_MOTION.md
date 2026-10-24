@@ -1,5 +1,7 @@
 # Production art preparation and first Warden motion study
 
+**Current continuation:** [WARDEN_AND_HEAVY_RUNTIME.md](WARDEN_AND_HEAVY_RUNTIME.md) integrates the actual Warden encounter and playable Heavy, protocol 5, 59 drawn motion frames, exact-value binary projectile batches and 108 passing tests. Earlier rehearsal-only/two-class statements below are dated history. The public deployment remains protocol 4. Final rendered/device/human review remains open.
+
 **Successor checkpoint:** [WARDEN_SIGNATURE_REHEARSAL.md](WARDEN_SIGNATURE_REHEARSAL.md) adds idle/channel motion, attachment measurements and a separate local signature exercise. The attack study and historical browser evidence below remain preserved with their original limits.
 
 2026-10-23 continuation in the existing local workspace and `feat/first-playable-loop`. Soldier/Medic and Hollow Constable remain the playable subset. This checkpoint adds prepared assets, five visible setup portraits, and a local art-review tool.

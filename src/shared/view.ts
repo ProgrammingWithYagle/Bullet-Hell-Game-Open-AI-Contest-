@@ -1,4 +1,6 @@
-import type { Game } from './game.ts';
+import type { Game, Boss } from './game.ts';
+import type { Minion } from './minions.ts';
+import type { WardenSample } from './warden-signature.ts';
 import type { ClassId, Phase, Warning, Field, Contract, SupplySlot } from './protocol.ts';
 export type PlayerView = {
   id: string;
@@ -29,6 +31,8 @@ export type PlayerView = {
   upgrades: Record<string, number>;
   supplies: SupplySlot[];
   supplyAt: number;
+  braceUntil: number;
+  overdriveUntil: number;
   speed: number;
   dashUntil: number;
   dashX: number;
@@ -44,17 +48,9 @@ export type View = {
   encounter: number;
   owner: string;
   players: PlayerView[];
-  boss: {
-    variant: 'normal' | 'brutal';
-    x: number;
-    y: number;
-    health: number;
-    maxHealth: number;
-    phase: number;
-    threat: number;
-    deadline: number;
-    staggerUntil: number;
-  };
+  boss: Boss;
+  signatures: WardenSample[];
+  minions: Minion[];
   warnings: Warning[];
   fields: Field[];
   mutations: { id: string; remaining: number }[];
@@ -100,6 +96,8 @@ export function viewOf(g: Game, owner: string): View {
       upgrades: { ...p.upgrades },
       supplies: p.supplies.map((s) => ({ ...s })),
       supplyAt: p.supplyAt,
+      braceUntil: p.braceUntil,
+      overdriveUntil: p.overdriveUntil,
       speed: g.movementSpeed(p),
       dashUntil: p.dashUntil,
       dashX: p.dashX,
@@ -108,11 +106,13 @@ export function viewOf(g: Game, owner: string): View {
       dodgeCooldown: g.stats(p).dodgeCooldown,
     })),
     boss: { ...g.boss },
+    signatures: structuredClone(g.signatures),
+    minions: g.minions.snapshot(),
     warnings: g.warnings.map((w) => ({ ...w })),
     fields: g.fields.map((f) => ({ ...f })),
     mutations: g.mutations.map((m) => ({ ...m })),
     mutationCards: [...g.mutationCards],
-    contractCards: g.contractCards.map((c) => ({ ...c })),
+    contractCards: g.contractCards.map(({ bossId: _concealed, ...card }) => card),
     votes: Object.fromEntries(g.votes),
     accord: g.accord ? structuredClone(g.accord) : null,
   };

@@ -47,8 +47,8 @@
         200,
         180
       ],
-      "status": "Assistant motion study; gameplay integration pending",
-      "notes": "Eight drawn frames. Preview holds the first four poses for 1.2 seconds before release. Planted-foot translations and one common scale correct source-sheet spacing. This is an art timing study; the authored rotating cone, safe wedge and boss encounter are still pending.",
+      "status": "Source runtime integrated; final Phaser motion/transition review pending",
+      "notes": "Eight drawn cast frames. Runtime holds the first four poses through the complete 1.2-second signature warning, channels during danger and uses the release/recovery frames for auxiliary casts. Planted-foot transforms and one shared action scale preserve the authored pose sizes. Final rendered review remains open.",
       "lanternCenters": [
         [
           377,
@@ -115,8 +115,8 @@
         200,
         200
       ],
-      "status": "Assistant motion candidate; local Phaser rehearsal available, final motion acceptance pending",
-      "notes": "Four drawn idle frames, common clip scale calibrated to the attack study body height. Physical-left lantern centers and foot anchors are exposed in the rehearsal contract. Local signature exercise only; full encounter, hurt/defeat states and final Phaser acceptance remain open.",
+      "status": "Source runtime integrated; final Phaser motion/transition review pending",
+      "notes": "Four drawn frames, one calibrated action scale and measured physical-left lantern attachment. Used by the source encounter, with final Phaser motion and transition acceptance pending.",
       "lanternCenters": [
         [
           361,
@@ -167,8 +167,8 @@
         200,
         200
       ],
-      "status": "Assistant motion candidate; local Phaser rehearsal available, final motion acceptance pending",
-      "notes": "Four drawn channel frames, common clip scale calibrated to the attack study body height. Physical-left lantern centers and foot anchors are exposed in the rehearsal contract. Local signature exercise only; full encounter, hurt/defeat states and final Phaser acceptance remain open.",
+      "status": "Source runtime integrated; final Phaser motion/transition review pending",
+      "notes": "Four drawn frames, one calibrated action scale and measured physical-left lantern attachment. Used by the source encounter, with final Phaser motion and transition acceptance pending.",
       "lanternCenters": [
         [
           428,
@@ -187,6 +187,80 @@
           179
         ]
       ]
+    },
+    "hurt": {
+      "id": "lantern-warden-hurt",
+      "name": "Lantern Warden \u00b7 Hurt",
+      "family": "bosses",
+      "kind": "animation",
+      "atlas": "assets/production/motion/lantern-warden-hurt-v1-atlas.png",
+      "source": "assets/production/bosses/lantern-warden/hurt-sheet-v1.png",
+      "sourceSha256": "fe83841ce5a2cc2a1f7e808c54c7b9a0c585c6281ab2e0e0a6d100a4ce2d25cb",
+      "atlasSha256": "13ce082b4de1694875cc57a8e2921e59cb94f230868b9f01fcf4ba7291b94b32",
+      "cellSize": 512,
+      "columns": 3,
+      "frames": 3,
+      "labels": [
+        "flinch",
+        "recoil",
+        "recover"
+      ],
+      "origin": [
+        0.5,
+        0.83984375
+      ],
+      "displayHeight": 150,
+      "displayCell": 223.25581395348837,
+      "fps": 10,
+      "frameDurationsMs": [
+        100,
+        100,
+        100
+      ],
+      "status": "Source runtime integrated; final Phaser motion/transition review pending",
+      "notes": "Brief planted hurt recoil; never interrupts a warning or active sweep."
+    },
+    "defeat": {
+      "id": "lantern-warden-defeat",
+      "name": "Lantern Warden \u00b7 Defeat",
+      "family": "bosses",
+      "kind": "animation",
+      "atlas": "assets/production/motion/lantern-warden-defeat-v1-atlas.png",
+      "source": "assets/production/bosses/lantern-warden/defeat-sheet-v1.png",
+      "sourceSha256": "56d3d4cc628e7a260723460de9e13a00d61c0c3b73a0c6a323aa2eda419a1a3e",
+      "atlasSha256": "95bd0b57aae0e6c4521046b2525973ed546d607e0328c76e7ed2d85c29d69a64",
+      "cellSize": 640,
+      "columns": 4,
+      "frames": 8,
+      "labels": [
+        "standing",
+        "slump",
+        "one knee",
+        "kneel",
+        "lean",
+        "brace",
+        "fallen",
+        "settled"
+      ],
+      "origin": [
+        0.5,
+        0.840625
+      ],
+      "displayHeight": 150,
+      "displayCell": 279.06976744186045,
+      "fps": 8,
+      "frameDurationsMs": [
+        125,
+        125,
+        125,
+        125,
+        125,
+        125,
+        125,
+        125
+      ],
+      "status": "Source runtime integrated; final Phaser motion/transition review pending",
+      "notes": "One continuous collapse. One standing-calibrated scale; fixed horizontal ground origin, measured floor contact. A 640px padded cell preserves complete faint alpha above and below the first-row baseline. Per-clip origin/display size preserves the exact shared world scale."
     }
   },
   "attachmentMethod": "Assistant measured lantern cage center per native frame, transformed with the exact packing scale and translation. Points lie on opaque art; they are not a skeletal rig.",
@@ -199,8 +273,16 @@
     "note": "Explicit 2.5D gameplay socket. Animated lantern center is a visual attachment, never the collision source."
   },
   "limits": [
-    "Rehearsal only; the production Game does not import this contract.",
-    "Hurt, defeat, full encounter and network replication are pending.",
-    "Final Phaser motion approval, physical-device and human review are pending."
-  ]
+    "Five Warden clips are now integrated into the source Game/CombatScene and replicated encounters.",
+    "Original three clips have measured lantern centers; hurt/defeat have no emitted signature attachment.",
+    "Final Phaser motion/transition approval, physical-device and human review remain pending."
+  ],
+  "runtimeIntegration": {
+    "protocol": 5,
+    "clips": 5,
+    "frames": 27,
+    "bossSelectable": true,
+    "publicDeploymentPerformed": false,
+    "phaserMotionAccepted": false
+  }
 }

@@ -1,5 +1,7 @@
 # Implementation backlog and contest acceptance map
 
+**Current continuation:** [WARDEN_AND_HEAVY_RUNTIME.md](WARDEN_AND_HEAVY_RUNTIME.md) integrates the actual Warden encounter and playable Heavy, protocol 5, 59 drawn motion frames, exact-value binary projectile batches and 108 passing tests. Earlier rehearsal-only/two-class statements below are dated history. The public deployment remains protocol 4. Final rendered/device/human review remains open.
+
 **Latest continuation:** [WARDEN_SIGNATURE_REHEARSAL.md](WARDEN_SIGNATURE_REHEARSAL.md) adds eight drawn idle/channel frames (sixteen Warden motion frames total), measured lantern attachments and a separate local Phaser signature rehearsal. Nine new automated checks bring the full suite to 83. The room shares warning/active/rest geometry between rendering and collision; full encounter, network integration and final Phaser motion acceptance remain open. Browser troubleshooting was not repeated. Read current Git status and the exact verification/publication evidence before continuing.
 
 The approved scope includes genuine endless play, fifteen locales, changelogs, team leaderboards, original music/SFX, seven upgradeable ultimates, sixty distinct bosses and the clean-detail art standard. Items become complete only with the listed evidence. All stages are authorized; later gates do not require an additional request for already approved work.

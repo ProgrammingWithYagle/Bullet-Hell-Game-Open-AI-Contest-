@@ -4,6 +4,9 @@ import type { View, PlayerView } from '../shared/view.ts';
 import type { Event, Shot } from '../shared/protocol.ts';
 import { arena, data } from '../shared/game.ts';
 import { FrameMeter } from './frame-meter.ts';
+import { wardenArt, wardenCombatPose, type WardenCombatClipId } from './warden-presentation.ts';
+import { heavyArt, heavyPose } from './heavy-presentation.ts';
+import type { Sector } from '../shared/warden-signature.ts';
 export class CombatScene extends Phaser.Scene {
   private resolveReady!: () => void;
   private rejectReady!: (error: Error) => void;
@@ -59,6 +62,22 @@ export class CombatScene extends Phaser.Scene {
     this.load.spritesheet('soldier', assets.soldier, { frameWidth: 256, frameHeight: 256 });
     this.load.spritesheet('constable', assets.boss, { frameWidth: 512, frameHeight: 512 });
     this.load.image('medic', assets.medic);
+    for (const [direction, url] of Object.entries(assets.heavy)) {
+      const size =
+        direction === 'reference'
+          ? heavyArt.reference.cellSize
+          : heavyArt.entries.find((entry) => entry.id === 'heavy-run-' + direction.toLowerCase())!
+              .cellSize;
+      this.load.spritesheet(
+        direction === 'reference' ? 'heavy-reference' : 'heavy-run-' + direction,
+        url,
+        { frameWidth: size, frameHeight: size },
+      );
+    }
+    for (const [clip, url] of Object.entries(assets.warden)) {
+      const size = wardenArt.clips[clip as WardenCombatClipId].cellSize;
+      this.load.spritesheet('warden-' + clip, url, { frameWidth: size, frameHeight: size });
+    }
     for (const [key, url] of Object.entries(assets.directions)) {
       if (key.endsWith('North') || key.endsWith('South'))
         this.load.spritesheet(key, url, { frameWidth: 256, frameHeight: 256 });
@@ -131,6 +150,26 @@ export class CombatScene extends Phaser.Scene {
       }
     }
   }
+  private paintSector(
+    graphics: Phaser.GameObjects.Graphics,
+    sector: Sector,
+    color: number,
+    alpha: number,
+    width: number,
+  ) {
+    const points = [new Phaser.Math.Vector2(sector.x, sector.y)];
+    for (let index = 0; index <= 40; index++) {
+      const angle = sector.aim - sector.arc / 2 + (sector.arc * index) / 40;
+      points.push(
+        new Phaser.Math.Vector2(
+          sector.x + Math.cos(angle) * sector.radius,
+          sector.y + Math.sin(angle) * sector.radius,
+        ),
+      );
+    }
+    graphics.fillStyle(color, alpha).fillPoints(points, true);
+    graphics.lineStyle(width, color, 1).strokePoints(points, true);
+  }
   private recycleBullet(id: number) {
     const image = this.bulletImages.get(id);
     if (image) {
@@ -172,6 +211,19 @@ export class CombatScene extends Phaser.Scene {
         );
       }
     }
+    for (const sample of view.signatures) {
+      if (sample.phase === 'rest') continue;
+      this.paintSector(
+        h,
+        sample.cone,
+        this.highContrast ? 0xffc23e : 0xe9a361,
+        sample.phase === 'active' ? 0.24 : 0.07,
+        sample.phase === 'active' ? 5 : 2,
+      );
+    }
+    const active = view.signatures.filter((sample) => sample.phase === 'active');
+    const trailing = active.at(-1) ?? view.signatures.find((sample) => sample.phase === 'warning');
+    if (trailing) this.paintSector(h, trailing.trailingSafe, 0xa5e2ce, 0.04, 3);
     for (const w of view.warnings) {
       const progress = 1 - Math.min(1, Math.max(0, (w.at - now) / 30)),
         color = this.highContrast ? 0xffb23d : 0xe9a361;
@@ -216,19 +268,35 @@ export class CombatScene extends Phaser.Scene {
         h.lineStyle(2, 0xf1e2aa, 0.8).strokeRect(point.x - 11, point.y - 11, 22, 22);
       }
     }
-    this.bossSprite.setVisible(view.phase === 'combat');
+    const warden = view.boss.id === 'lantern-warden';
+    this.bossSprite.setVisible(
+      view.phase === 'combat' || (warden && view.boss.defeatedAt > 0 && view.boss.health <= 0),
+    );
+    this.bossSprite.setPosition(view.boss.x, view.boss.y + (warden ? 0 : 65));
     this.bossSprite.setAlpha(now < view.boss.staggerUntil ? 0.55 : 1);
-    const cast = view.warnings.find((w) => w.kind !== 'zone');
-    if (cast && cast.id !== this.animatedWarning && !this.reduceMotion) {
-      this.animatedWarning = cast.id;
-      this.bossSprite.play('constable-attack');
+    if (warden) {
+      const pose = wardenCombatPose(view.boss, view.tick, now, view.signatures, this.reduceMotion);
+      const clip = wardenArt.clips[pose.clip];
+      this.bossSprite.anims.stop();
+      this.bossSprite
+        .setTexture('warden-' + pose.clip, pose.frame)
+        .setOrigin(clip.origin[0], clip.origin[1])
+        .setDisplaySize(clip.displayCell, clip.displayCell);
+    } else {
+      if (this.bossSprite.texture.key !== 'constable')
+        this.bossSprite.setTexture('constable', 0).setOrigin(0.5, 0.84).setDisplaySize(300, 300);
+      const cast = view.warnings.find((warning) => warning.kind !== 'zone');
+      if (cast && cast.id !== this.animatedWarning && !this.reduceMotion) {
+        this.animatedWarning = cast.id;
+        this.bossSprite.play('constable-attack');
+      }
+      if (!cast && !this.bossSprite.anims.isPlaying) this.bossSprite.setFrame(0);
     }
-    if (!cast && !this.bossSprite.anims.isPlaying) this.bossSprite.setFrame(0);
     if (view.phase === 'combat' && this.hitboxes)
       f.lineStyle(2, 0xf2c487, 0.65).strokeCircle(
         view.boss.x,
         view.boss.y,
-        data.bosses.find((b) => b.id === 'constable')!.radius,
+        data.bosses.find((boss) => boss.id === view.boss.id)!.radius,
       );
     const existing = new Set<string>();
     for (const actual of view.players) {
@@ -237,7 +305,7 @@ export class CombatScene extends Phaser.Scene {
       let sprite = this.people.get(p.id);
       if (!sprite) {
         sprite = this.add
-          .sprite(p.x, p.y, p.classId)
+          .sprite(p.x, p.y, p.classId === 'heavy' ? 'heavy-reference' : p.classId)
           .setOrigin(0.5, 0.86)
           .setDisplaySize(p.classId === 'medic' ? 72 : 128, p.classId === 'medic' ? 108 : 128);
         this.people.set(p.id, sprite);
@@ -249,34 +317,44 @@ export class CombatScene extends Phaser.Scene {
       sprite.x += dx * blend;
       sprite.y += dy * blend;
       sprite.setDepth(5 + sprite.y / 1000);
-      const vertical = Math.abs(Math.sin(p.aim)) > Math.abs(Math.cos(p.aim));
-      const facing = vertical
-        ? Math.sin(p.aim) < 0
-          ? 'North'
-          : 'South'
-        : Math.cos(p.aim) < 0
-          ? 'West'
-          : 'East';
-      const key = vertical || p.classId === 'medic' ? p.classId + facing : 'soldier';
-      if (this.facings.get(p.id) !== facing) {
+      if (p.classId === 'heavy') {
+        const pose = heavyPose(p.aim, moving, p.status, now, this.reduceMotion);
         sprite.anims.stop();
-        sprite.setTexture(key, 0);
-        this.facings.set(p.id, facing);
+        sprite
+          .setTexture(pose.texture, pose.frame)
+          .setFlipX(false)
+          .setOrigin(pose.origin[0], pose.origin[1])
+          .setDisplaySize(pose.displayCell, pose.displayCell);
+      } else {
+        const vertical = Math.abs(Math.sin(p.aim)) > Math.abs(Math.cos(p.aim));
+        const facing = vertical
+          ? Math.sin(p.aim) < 0
+            ? 'North'
+            : 'South'
+          : Math.cos(p.aim) < 0
+            ? 'West'
+            : 'East';
+        const key = vertical || p.classId === 'medic' ? p.classId + facing : 'soldier';
+        if (this.facings.get(p.id) !== facing) {
+          sprite.anims.stop();
+          sprite.setTexture(key, 0);
+          this.facings.set(p.id, facing);
+        }
+        sprite.setOrigin(0.5, key === 'soldier' ? 0.86 : 232 / 256).setDisplaySize(128, 128);
+        sprite.setFlipX(key === 'soldier' && facing === 'West');
+        if (vertical || p.classId === 'soldier') {
+          if (moving && !this.reduceMotion && p.status === 'active')
+            sprite.play(vertical ? key + '-walk' : 'soldier-run', true);
+          else {
+            sprite.anims.stop();
+            sprite.setFrame(0);
+          }
+        }
       }
-      sprite.setOrigin(0.5, key === 'soldier' ? 0.86 : 232 / 256).setDisplaySize(128, 128);
-      sprite.setFlipX(key === 'soldier' && facing === 'West');
       sprite.setAlpha(
         p.status === 'waiting' ? 0.35 : p.status === 'eliminated' ? 0.2 : p.connected ? 1 : 0.4,
       );
       sprite.setTint(p.status === 'downed' ? 0xc58d7c : 0xffffff);
-      if (vertical || p.classId === 'soldier') {
-        if (moving && !this.reduceMotion && p.status === 'active')
-          sprite.play(vertical ? key + '-walk' : 'soldier-run', true);
-        else {
-          sprite.anims.stop();
-          sprite.setFrame(0);
-        }
-      }
       this.shadows.fillStyle(0x10201d, 0.35).fillEllipse(p.x, p.y + 4, 38, 14);
       if (p.id === this.localId) f.lineStyle(2, 0xf5e6af, 0.9).strokeEllipse(p.x, p.y + 4, 42, 20);
       if (this.hitboxes)
@@ -289,6 +367,10 @@ export class CombatScene extends Phaser.Scene {
         f.lineStyle(4, 0xffb388, 1).strokeCircle(p.x, p.y, 24);
         f.lineStyle(3, 0xf5df9c, 1).lineBetween(p.x - 10, p.y, p.x + 10, p.y);
       }
+      if (p.status === 'active' && now < p.braceUntil)
+        f.lineStyle(3, 0xe5c77d, 0.85).strokeRoundedRect(p.x - 23, p.y - 19, 46, 38, 8);
+      if (p.status === 'active' && now < p.overdriveUntil)
+        f.lineStyle(3, 0xf1b06b, 0.9).strokeCircle(p.x, p.y, 29);
       if (p.status === 'active') {
         f.fillStyle(0x12251f, 0.9).fillRoundedRect(p.x - 20, p.y + 14, 40, 4, 2);
         f.fillStyle(p.classId === 'medic' ? 0x9ed9c4 : 0xe6d6a0, 1).fillRoundedRect(

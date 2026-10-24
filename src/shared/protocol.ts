@@ -1,9 +1,11 @@
 import revision from '../../content/revision.json' with { type: 'json' };
-export const PROTOCOL = 4;
+export const PROTOCOL = 5;
 export const CONTENT_REVISION = revision.sha256;
 export const HZ = 30,
   DT = 1 / HZ;
-export type ClassId = 'soldier' | 'medic';
+export const implementedClassIds = ['soldier', 'medic', 'heavy'] as const;
+export type ClassId = (typeof implementedClassIds)[number];
+export type BossId = 'constable' | 'lantern-warden';
 export type CheckpointStatus =
   'disabled' | 'pending' | 'acknowledged' | 'unavailable' | 'finalized';
 export type Phase =
@@ -122,6 +124,7 @@ export type Event =
   | { type: 'notice'; key: string };
 export type Contract = {
   id: string;
+  bossId?: BossId;
   threat: number;
   risk: number;
   bounty: number;

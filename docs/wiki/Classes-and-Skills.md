@@ -10,7 +10,7 @@
 | Engineer | Tamsin Reed | Deployables, repair and controlled ground. |
 | Assassin | Vale Ash | Precision, mobility and safe rescue openings. |
 
-Every class has 54 nodes across three parent branches and nine specialization paths. Every parent branch includes all 18 grades. Campaigns reach 27 SP before the final boss; a complete specialization costs 21. Purchased power resets between runs. Mastery and cosmetics persist. The finished game makes all seven available immediately. The current prototype plays Soldier and Medic; the other five kits are In production. The 378-node table is authored content, not proof that every class executes gameplay. Full mastery/cosmetic persistence remains pending.
+Every class has 54 nodes across three parent branches and nine specialization paths. Every parent branch includes all 18 grades. Campaigns reach 27 SP before the final boss; a complete specialization costs 21. Purchased power resets between runs. Mastery and cosmetics persist. The finished game makes all seven available immediately. The source now plays Soldier, Medic and Heavy; the other four kits are In production. The public deployment still has Soldier and Medic. Heavy executes Suppressing Cone, Braced Firing and Foundry Overture with compatible weapons, 54 skills and saved/networked state. Four drawn run directions and original facing idles are integrated; firing/hurt/dodge/downed clips and final rendered review remain open. The 378-node table is authored content, not proof that every class executes gameplay. Full mastery/cosmetic persistence remains pending.
 
 | Class | Branch | Skill | Cost | Grade |
 | --- | --- | --- | --- | --- |

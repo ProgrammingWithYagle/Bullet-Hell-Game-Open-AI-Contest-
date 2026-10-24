@@ -4,6 +4,7 @@ import {
   CONTENT_REVISION,
   PROTOCOL,
   type ClassId,
+  type BossId,
   type InputFrame,
   type Command,
   type Event,
@@ -11,6 +12,7 @@ import {
   type CheckpointStatus,
 } from '../shared/protocol.ts';
 import type { View, PlayerView } from '../shared/view.ts';
+import { decodeEvents, type WireEvent } from '../shared/wire-events.ts';
 import { savedBoundary, storeBoundary } from './storage.ts';
 import { productionGameServer } from './deployment.ts';
 export type ConnectionOptions = {
@@ -18,6 +20,7 @@ export type ConnectionOptions = {
   classId: ClassId;
   mode: 'short' | 'endless';
   difficulty: string;
+  openingBossId?: BossId;
 };
 export type RoomSummary = {
   roomId: string;
@@ -207,7 +210,16 @@ export class Session {
       this.notify('ui.ready');
     });
     room.onMessage('checkpointStatus', (m) => this.receiveCheckpointStatus(m?.status));
-    room.onMessage('events', (events: Event[]) => this.onEvents(events));
+    room.onMessage('events', (events: WireEvent[]) => {
+      let decoded: Event[];
+      try {
+        decoded = decodeEvents(events);
+      } catch {
+        this.notify('ui.errorVersion');
+        return;
+      }
+      this.onEvents(decoded);
+    });
     room.onMessage('purchaseResult', (r) => this.onPurchase(r));
     room.onStateChange((state) => this.receive(networkView(state)));
     room.onDrop(() => {
@@ -340,6 +352,8 @@ function networkView(s: WorldState): View {
     dodgeAt: p.dodgeAt,
     reloadAt: p.reloadAt,
     supplyAt: p.supplyAt,
+    braceUntil: p.braceUntil,
+    overdriveUntil: p.overdriveUntil,
     downUntil: p.downUntil,
     reviveProgress: p.reviveProgress,
     reviveTarget: p.reviveTarget,
@@ -360,9 +374,16 @@ function networkView(s: WorldState): View {
     owner: s.owner,
     players,
     boss: {
+      id: s.bossId as View['boss']['id'],
+      hurtAt: s.bossHurtAt,
+      defeatedAt: s.bossDefeatedAt,
+      castAt: s.bossCastAt,
+      castReleaseAt: s.bossCastReleaseAt,
+      castEndsAt: s.bossCastEndsAt,
+      vulnerableUntil: s.bossVulnerableUntil,
       variant: s.bossVariant as 'normal' | 'brutal',
-      x: 800,
-      y: 250,
+      x: s.bossX,
+      y: s.bossY,
       health: s.bossHealth,
       maxHealth: s.bossMaxHealth,
       phase: s.bossPhase,
@@ -370,6 +391,8 @@ function networkView(s: WorldState): View {
       deadline: s.deadline,
       staggerUntil: s.staggerUntil,
     },
+    signatures: hazards.signatures ?? [],
+    minions: hazards.minions ?? [],
     warnings: hazards.warnings ?? [],
     fields: hazards.fields ?? [],
     mutations: intermission.mutations ?? [],

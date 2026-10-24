@@ -2,8 +2,15 @@ import { Room, ServerError, type Client, type ISendOptions } from '@colyseus/cor
 import { randomBytes } from 'node:crypto';
 import { performance } from 'node:perf_hooks';
 import { Encoder } from '@colyseus/schema';
-import { Game, type Settings } from '../shared/game.ts';
-import { CONTENT_REVISION, PROTOCOL, type ClassId, type Event } from '../shared/protocol.ts';
+import { encodeEvents } from '../shared/wire-events.ts';
+import { Game, implementedBossIds, type Settings } from '../shared/game.ts';
+import {
+  CONTENT_REVISION,
+  PROTOCOL,
+  implementedClassIds,
+  type ClassId,
+  type Event,
+} from '../shared/protocol.ts';
 import { WorldState, PlayerState } from '../shared/network-state.ts';
 import { capacity } from './capacity.ts';
 import { RoomJournal } from './room-journal.ts';
@@ -23,6 +30,7 @@ type Options = {
   visibility: 'public' | 'private';
   contentRevision: string;
   protocolVersion: number;
+  openingBossId?: Settings['openingBossId'];
   createKey: string;
   code?: string;
   name: string;
@@ -58,6 +66,8 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
     if (options.protocolVersion !== PROTOCOL || options.contentRevision !== CONTENT_REVISION)
       throw new ServerError(409, 'versionMismatch');
     if (
+      (options.openingBossId !== undefined &&
+        !implementedBossIds.includes(options.openingBossId)) ||
       !['short', 'endless'].includes(options.mode) ||
       !['baby', 'easy', 'normal', 'hard'].includes(options.difficulty) ||
       !['public', 'private'].includes(options.visibility)
@@ -79,6 +89,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       mode: options.mode,
       difficulty: options.difficulty,
       maxPlayers: this.maxClients,
+      openingBossId: options.openingBossId,
     });
     this.state = new WorldState();
     this.journal = new RoomJournal(this.game, this.createRunJournal(), (status) => {
@@ -147,7 +158,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
     if (options.protocolVersion !== PROTOCOL || options.contentRevision !== CONTENT_REVISION)
       throw new ServerError(409, 'versionMismatch');
     if (
-      !['soldier', 'medic'].includes(options.classId) ||
+      !implementedClassIds.includes(options.classId) ||
       typeof options.name !== 'string' ||
       options.name.length > 100
     )
@@ -189,7 +200,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       id: client.sessionId,
       code: this.privateCode,
       practice: true,
-      prototype: 'constable-loop',
+      prototype: 'three-class-two-boss-practice',
       protocolVersion: PROTOCOL,
       contentRevision: CONTENT_REVISION,
       checkpointStatus: this.journal.status,
@@ -199,7 +210,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       (s) => s.owner === 'hostile' || s.owner === client.sessionId,
     );
     for (let i = 0; i < shots.length; i += 128)
-      client.send('events', [{ type: 'shots', shots: shots.slice(i, i + 128) }]);
+      client.send('events', encodeEvents([{ type: 'shots', shots: shots.slice(i, i + 128) }]));
   }
   async onDrop(client: Client) {
     if (!(await this.journal.writable())) return;
@@ -271,10 +282,10 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
         if (event.owner) add(event.owner, event);
       } else shared.push(event);
     }
-    if (shared.length) this.broadcast('events', shared);
+    if (shared.length) this.broadcast('events', encodeEvents(shared));
     for (const client of this.clients) {
       const events = personal.get(client.sessionId);
-      if (events?.length) client.send('events', events);
+      if (events?.length) client.send('events', encodeEvents(events));
     }
   }
   private syncState() {
@@ -285,6 +296,15 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
     s.phase = g.phase;
     s.phaseEnds = g.phaseEnds;
     s.encounter = g.encounter;
+    s.bossId = g.boss.id;
+    s.bossX = g.boss.x;
+    s.bossY = g.boss.y;
+    s.bossHurtAt = g.boss.hurtAt;
+    s.bossDefeatedAt = g.boss.defeatedAt;
+    s.bossCastAt = g.boss.castAt;
+    s.bossCastReleaseAt = g.boss.castReleaseAt;
+    s.bossCastEndsAt = g.boss.castEndsAt;
+    s.bossVulnerableUntil = g.boss.vulnerableUntil;
     s.bossHealth = Math.max(0, g.boss.health);
     s.bossMaxHealth = g.boss.maxHealth;
     s.bossPhase = g.boss.phase;
@@ -319,6 +339,8 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       view.dodgeAt = p.dodgeAt;
       view.reloadAt = p.reloadAt;
       view.supplyAt = p.supplyAt;
+      view.braceUntil = p.braceUntil;
+      view.overdriveUntil = p.overdriveUntil;
       view.downUntil = p.downUntil;
       view.reviveProgress = Math.floor(p.reviveProgress);
       view.reviveTarget = p.reviveTarget;
@@ -336,11 +358,16 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       view.dodgeCooldown = g.stats(p).dodgeCooldown;
     }
     for (const id of s.players.keys()) if (!g.players.has(id)) s.players.delete(id);
-    s.hazards = JSON.stringify({ warnings: g.warnings, fields: g.fields });
+    s.hazards = JSON.stringify({
+      warnings: g.warnings,
+      fields: g.fields,
+      signatures: g.signatures,
+      minions: g.minions.snapshot(),
+    });
     s.intermission = JSON.stringify({
       mutations: g.mutations,
       mutationCards: g.mutationCards,
-      contractCards: g.contractCards,
+      contractCards: g.contractCards.map(({ bossId: _concealed, ...card }) => card),
       votes: Object.fromEntries(g.votes),
     });
     s.accord = JSON.stringify(g.accord);

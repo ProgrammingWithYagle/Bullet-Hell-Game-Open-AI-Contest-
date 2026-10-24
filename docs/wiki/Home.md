@@ -4,7 +4,7 @@ Original cooperative zombie bullet hell in dry ink and matte gouache.
 
 [Play the development prototype](https://grave-accord-playtest.ivoryflame12.chatgpt.site/) — Soldier and Medic fight Hollow Constable in Gatehouse. The public service is capped at eight slots during Free-host calibration. This is Practice; live rankings and process-restart player recovery are unfinished.
 
-Source is v0.3.0, protocol 4. Sixty bosses and 378 skill nodes are authored. Two classes, one arena and one boss execute gameplay; five-fight practice and uncapped prototype Endless reuse Constable variants. Other classes/routes/maps are visibly In production. The complete game and portable Windows release are still being developed.
+Source is v0.3.0, protocol 5: Soldier, Medic and Heavy; Gatehouse; Constable and Warden. Opening boss selection, five-fight Practice and prototype Endless are implemented, with per-boss history controlling Brutal repeats. Four classes, fifty-eight boss identities and other routes/maps remain unfinished. [Current source evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/WARDEN_AND_HEAVY_RUNTIME.md) includes 108 passing tests and 59 motion frames; final rendered motion/device/human acceptance remains open. The public link above remains the earlier protocol-4 deployment. The complete game and portable Windows release are still being developed.
 
 - [Getting started and controls](Getting-Started)
 - [Modes and endless play](Modes)

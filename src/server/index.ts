@@ -48,7 +48,7 @@ export function createGameServer(options: { createRunJournal?: () => RunJournal 
           status: 'ok',
           startedAt,
           uptimeSeconds: process.uptime(),
-          prototype: 'constable-loop',
+          prototype: 'three-class-two-boss-practice',
           protocolVersion: PROTOCOL,
           contentRevision: CONTENT_REVISION,
           practiceOnly: true,

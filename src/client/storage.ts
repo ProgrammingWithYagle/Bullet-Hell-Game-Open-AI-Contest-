@@ -1,10 +1,11 @@
 import { CONTENT_REVISION, PROTOCOL } from '../shared/protocol.ts';
+import { migratePracticeBoundary } from '../shared/practice-migration.ts';
 const KEY = 'ga-offline-boundary-v1';
 export function savedBoundary(): unknown | null {
   try {
     const raw = localStorage.getItem(KEY);
     if (!raw || raw.length > 32768) return null;
-    const value = JSON.parse(raw);
+    const value = migratePracticeBoundary(JSON.parse(raw)) as { contentRevision?: unknown; protocolVersion?: unknown; practiceOnly?: unknown };
     return value?.contentRevision === CONTENT_REVISION &&
       value?.protocolVersion === PROTOCOL &&
       value?.practiceOnly === true

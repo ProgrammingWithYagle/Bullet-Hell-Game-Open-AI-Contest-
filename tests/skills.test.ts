@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { Game, data } from '../src/shared/game.ts';
-import { idleInput, type ClassId } from '../src/shared/protocol.ts';
+import { idleInput, implementedClassIds } from '../src/shared/protocol.ts';
 test('all seven classes have 54 nodes and every branch contains the complete 18-grade ladder', () => {
   const ids = new Set<string>();
   for (const cl of data.classes) {
@@ -31,8 +31,8 @@ test('all seven classes have 54 nodes and every branch contains the complete 18-
   }
   assert.equal(ids.size, 378);
 });
-test('all 18 implemented Soldier/Medic specialization paths enforce prerequisites and spend exactly 21 points', () => {
-  for (const classId of ['soldier', 'medic'] as ClassId[])
+test('all 27 implemented Soldier/Medic/Heavy specialization paths enforce prerequisites and spend exactly 21 points', () => {
+  for (const classId of implementedClassIds)
     for (const branch of data.classes.find((c) => c.id === classId)!.branches)
       for (const sub of branch.subbranches) {
         const g = new Game(),

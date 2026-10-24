@@ -1,5 +1,5 @@
-// Candidate Warden signature for the local rehearsal. The production Game does
-// not import this module; its encounter and multiplayer gates remain open.
+// Shared Warden sector geometry and clock, used by Game and the local rehearsal.
+// Candidate range/damage/ground projection tuning and final visual review remain open.
 import catalog from "../../content/catalog.json" with { type: "json" };
 import { HZ, type Vec } from "./protocol.ts";
 

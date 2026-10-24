@@ -26,7 +26,7 @@ def verify():
     references = [entry for entry in library['entries'] if entry['kind'] == 'static-reference']
     motions = [entry for entry in library['entries'] if entry['kind'] == 'animation']
     assert len(references) == 8
-    assert {entry['id'] for entry in motions} == {'lantern-warden-attack', 'lantern-warden-idle', 'lantern-warden-channel'}
+    assert {entry['id'] for entry in motions} == {'lantern-warden-attack', 'lantern-warden-idle', 'lantern-warden-channel', 'lantern-warden-hurt', 'lantern-warden-defeat'}
     assert sum(entry['frames'] for entry in references) == 29
     native_manifest = read('docs/art-production-2026-10-23.json')
     historical_inventory = read('reviews/art-production-2026-10-23/inventory.json')
@@ -95,7 +95,7 @@ def verify():
               'motionSourceRectanglesConserveAllRGBAPixels': True, 'anticipationMs': 1200,
               'librarySha256': sha(project_file('assets/production/normalized/library.json')),
               'limits': ['Structural/hash/pixel preservation audit only; assistant visual review is separate.',
-                         'No new playable boss or class, physical-device, human or Phaser in-engine animation approval.']}
+                         'This structural art audit does not establish gameplay acceptance, physical-device, human or Phaser in-engine animation approval.']}
     (ROOT / 'reviews/art-normalization-2026-10-23/verification.json').write_text(json.dumps(report, indent=2)+'\n', encoding='utf8', newline='\n')
     print(json.dumps(report))
 

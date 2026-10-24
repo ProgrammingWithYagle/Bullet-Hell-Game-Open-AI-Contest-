@@ -4,6 +4,16 @@ Meaningful implemented changes are recorded here. Planned work belongs in the Pr
 
 ## Unreleased
 
+### Runtime continuation — 2026-10-23
+
+- Integrated Lantern Warden into real offline/online encounters: selectable opening boss, signature/fan/zones, phases/Accord/Brutal echo, per-boss clear history, concealed future contracts and hurt/defeat presentation. Added eleven drawn hurt/defeat frames, for 27 Warden frames total.
+- Made Heavy playable with all three abilities, four weapon tiers, 54 skills, shop/save/network support, four drawn directional runs (32 frames), original facing idles and authored LMG/ultimate audio. Preserved two rejected west attempts. Added the bounded ordinary-enemy foundation and real suppression/piercing interactions; current bosses do not spawn ordinary adds.
+- Moved source to protocol 5, with strict online saves and compatible local protocol-4 Practice migration. Added exact-value compact projectile waves and fractional weapon cadence that sustains 35 shots/second at 30 Hz without idle catch-up.
+- Passed 108 tests, TypeScript, authored-content/fifteen-locale checks, production build and independent art audits. Final short 50-scripted-client stress p99 is 23.521 ms at peak 4,000 hostiles; earlier 42.301 ms failure/intermediate runs remain preserved. Zero rendered clients; final foreground/device/human/native-language/motion acceptance remains open.
+- Public frontend/gameplay remain the earlier protocol-4 deployment. Source/Wiki updates do not redeploy it. Full action art, four remaining classes, fifty-eight bosses, routes/arenas, live recovery/rankings and Windows release remain unfinished. See docs/WARDEN_AND_HEAVY_RUNTIME.md.
+
+### Earlier unreleased entries
+
 ### Added
 - Added four Warden idle and four channel frames, portable generation inputs, measured lantern sockets and a local Phaser signature rehearsal. The shared 30 Hz study executes the authored warning/rotating cone/rest with a trailing safe wedge and exact circle/sector contact; nine new checks bring the full suite to 83. Normal matches remain unchanged; full Warden gameplay and final Phaser motion acceptance are pending. See docs/WARDEN_SIGNATURE_REHEARSAL.md.
 - Integrated five native production portraits into class selection while retaining their In production locks. Normalized twenty survivor directions and nine boss poses with recorded scales/anchors and preserved originals. Added a local art room and an eight-frame Lantern Warden attack study with a 1.2-second anticipation, exact generation provenance, pixel/hash audits and assistant browser review; the complete Warden encounter and action libraries remain pending. See docs/ART_NORMALIZATION_AND_MOTION.md.

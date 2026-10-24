@@ -112,7 +112,9 @@ def pack():
     library = json.loads(library_path.read_text(encoding='utf8'))
     library['entries'] = [entry for entry in library['entries'] if entry['kind'] != 'animation'] + motion['entries']
     write(library_path,library)
-    clips = {'attack': {**attack,'lanternCenters':ATTACK_POINTS}}
+    prior = json.loads((OUT/'warden-rehearsal.json').read_text(encoding='utf8')) if (OUT/'warden-rehearsal.json').is_file() else {}
+    clips = {name:clip for name,clip in prior.get('clips',{}).items() if name not in ['attack','idle','channel']}
+    clips['attack'] = {**attack,'lanternCenters':ATTACK_POINTS}
     for entry,receipt in zip(entries,receipts):
         clips[receipt['clip']] = {**entry,'lanternCenters':[frame['targetLanternCenter'] for frame in receipt['frames']]}
     contract = {'schemaVersion':1,'cellSize':CELL,'origin':[.5,PIVOT[1]/CELL],
@@ -123,6 +125,9 @@ def pack():
         'limits':['Rehearsal only; the production Game does not import this contract.',
             'Hurt, defeat, full encounter and network replication are pending.',
             'Final Phaser motion approval, physical-device and human review are pending.']}
+    if 'runtimeIntegration' in prior:
+        contract['runtimeIntegration'] = prior['runtimeIntegration']
+        contract['limits'] = prior['limits']
     write(OUT / 'warden-rehearsal.json',contract)
     report = {'schemaVersion':1,'clips':receipts,'oldAttackAtlasUnchanged':sha(ROOT/attack['atlas'])==attack['atlasSha256'],
         'oneScalePerClip':True,'allClipsShareDisplayCell':display_cell,
@@ -144,7 +149,7 @@ def pack():
         assert sha(Path(request['original'])) == request['sha256']
     write(provenance_path,provenance)
     render_previews(contract)
-    print(json.dumps({'newMotionFrames':8,'totalWardenMotionFrames':16,
+    print(json.dumps({'newMotionFrames':8,'totalWardenMotionFrames':sum(clip['frames'] for clip in clips.values()),
         'contract':'assets/production/motion/warden-rehearsal.json','packing':'reviews/warden-signature-2026-10-23/packing.json'}))
 
 

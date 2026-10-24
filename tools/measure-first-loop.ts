@@ -7,7 +7,12 @@ import { Client, type Room } from '@colyseus/sdk';
 import { createGameServer } from '../src/server/index.ts';
 import { liveRooms } from '../src/server/GraveRoom.ts';
 import { WorldState } from '../src/shared/network-state.ts';
-import { CONTENT_REVISION, PROTOCOL, idleInput } from '../src/shared/protocol.ts';
+import {
+  CONTENT_REVISION,
+  PROTOCOL,
+  idleInput,
+  implementedClassIds,
+} from '../src/shared/protocol.ts';
 const players = Number(process.argv[2] ?? 50),
   seconds = Number(process.argv[3] ?? 10);
 const output =
@@ -51,7 +56,11 @@ try {
   for (let i = 1; i < players; i++) {
     const room = await client.joinById<WorldState>(
       first.roomId,
-      { ...settings, classId: i % 4 === 1 ? 'medic' : 'soldier', name: 'Pilot ' + i },
+      {
+        ...settings,
+        classId: implementedClassIds[i % implementedClassIds.length],
+        name: 'Pilot ' + i,
+      },
       WorldState,
     );
     room.onMessage('*', () => {});
@@ -86,6 +95,7 @@ try {
           q: sequence % 180 === i % 180,
           e: sequence % 240 === i % 240,
           dodge: sequence % 200 === i % 200,
+          ultimate: sequence === i + 1,
         });
       } else if (['mutationVote', 'contractVote'].includes(live.game.phase)) {
         const key = live.game.encounter + live.game.phase;
@@ -141,6 +151,7 @@ try {
       elapsed = (performance.now() - start) / 1000;
     return {
       scenario: stress ? '4000-hostile stress' : 'active combat',
+      bossId: live.game.boss.id,
       durationSeconds: elapsed,
       samples: ticks.length,
       tickP50Ms: percentile(ticks, 0.5),
@@ -170,6 +181,13 @@ try {
   const report = {
     createdAt: new Date().toISOString(),
     contentRevision: CONTENT_REVISION,
+    protocolVersion: PROTOCOL,
+    classRoster: Object.fromEntries(
+      implementedClassIds.map((id) => [
+        id,
+        [...live.game.players.values()].filter((player) => player.classId === id).length,
+      ]),
+    ),
     players,
     renderedClients: 0,
     scriptedClients: players,
@@ -191,6 +209,7 @@ try {
     },
     limitations: [
       'All clients are scripted; no rendered-client FPS measurement.',
+      'The Warden extinguishes hostile shots at signature release; 4000 is the measured peak, not a continuous-every-frame guarantee.',
       'Server and bot clients share this process; memory is combined.',
       'Invulnerability and extended boss health isolate throughput; stress projectiles and short intermissions are test fixtures.',
       'Localhost pilot does not establish WAN performance, free-host capacity, device performance, reconnection endurance or human play quality.',

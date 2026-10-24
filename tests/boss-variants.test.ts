@@ -33,7 +33,7 @@ test('all sixty bosses retain their identity and gain four bounded Brutal phases
   }
 });
 
-test('Brutal combat doubles health and attack damage, extends the deadline and marks repeat contracts', () => {
+test('Brutal combat doubles health and attack damage, extends the deadline while first Warden contracts remain Normal', () => {
   const normal = encounter('normal'),
     brutal = encounter('brutal');
   assert.equal(brutal.boss.maxHealth, normal.boss.maxHealth * 2);
@@ -50,8 +50,9 @@ test('Brutal combat doubles health and attack damage, extends the deadline and m
   assert.equal(normal.phase, 'contractVote');
   assert.equal(normal.contractCards.length, 3);
   for (const [risk, card] of normal.contractCards.entries()) {
-    assert.equal(card.variant, 'brutal');
-    assert.equal(card.bounty, (1 + risk * 0.15) * 1.75);
+    assert.equal(card.bossId, 'lantern-warden');
+    assert.equal(card.variant, 'normal');
+    assert.equal(card.bounty, 1 + risk * 0.15);
   }
 });
 

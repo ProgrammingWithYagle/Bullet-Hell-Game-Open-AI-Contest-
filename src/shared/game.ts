@@ -8,7 +8,9 @@ import {
   idleInput,
   validInput,
   validCommand,
+  implementedClassIds,
   type ClassId,
+  type BossId,
   type InputFrame,
   type Phase,
   type Shot,
@@ -22,16 +24,25 @@ import {
 } from './protocol.ts';
 import { moveBody, segmentCircle, segmentRect, distance, clamp, SpatialGrid } from './geometry.ts';
 import { Random } from './random.ts';
+import { migratePracticeBoundary } from './practice-migration.ts';
+import { Minions, type MinionSpawn } from './minions.ts';
+import {
+  WardenClock,
+  WARDEN_SIGNATURE,
+  wardenCanHit,
+  type WardenSample,
+} from './warden-signature.ts';
 export const data = catalog;
 const ticks = (s: number) => Math.ceil(s * HZ);
 const rule = data.rules;
 export const arena = data.arenas.find((x) => x.id === 'gatehouse')!;
-const constable = data.bosses.find((x) => x.id === 'constable')!;
+export const implementedBossIds: readonly BossId[] = ['constable', 'lantern-warden'];
 export type Settings = {
   seed: number;
   mode: 'short' | 'endless';
   difficulty: string;
   maxPlayers: number;
+  openingBossId: BossId;
 };
 export type Player = {
   id: string;
@@ -57,6 +68,7 @@ export type Player = {
   ammo: number;
   reloadAt: number;
   fireAt: number;
+  wasFiring: boolean;
   dodgeAt: number;
   dashUntil: number;
   invulnerableUntil: number;
@@ -79,6 +91,8 @@ export type Player = {
   supplies: SupplySlot[];
   supplyAt: number;
   adrenalineUntil: number;
+  braceUntil: number;
+  overdriveUntil: number;
   supplyShield: number;
   supplyShieldUntil: number;
   damageTaken: number;
@@ -87,6 +101,12 @@ export type Player = {
   eligible: boolean;
 };
 export type Boss = {
+  id: BossId;
+  hurtAt: number;
+  defeatedAt: number;
+  castAt: number;
+  castReleaseAt: number;
+  castEndsAt: number;
   variant: 'normal' | 'brutal';
   x: number;
   y: number;
@@ -122,6 +142,12 @@ export class Game {
   readonly settings: Settings;
   readonly players = new Map<string, Player>();
   readonly shots = new Map<number, Shot>();
+  readonly minions = new Minions();
+  private shotEffects = new Map<
+    number,
+    { slowTicks: number; slowMultiplier: number; rangeRemaining: number }
+  >();
+  private shotHits = new Map<number, Set<number>>();
   readonly warnings: Warning[] = [];
   readonly fields: Field[] = [];
   readonly mutations: { id: string; remaining: number }[] = [];
@@ -134,6 +160,12 @@ export class Game {
   peakPlayers = 0;
   accords = 0;
   boss: Boss = {
+    id: 'constable',
+    hurtAt: -100,
+    defeatedAt: 0,
+    castAt: 0,
+    castReleaseAt: 0,
+    castEndsAt: 0,
     variant: 'normal',
     x: 800,
     y: 250,
@@ -162,11 +194,17 @@ export class Game {
   private events: Event[] = [];
   private grid = new SpatialGrid<Player>();
   private attackAt = [0, 0];
+  readonly completedBossIds = new Set<BossId>();
+  signatures: WardenSample[] = [];
+  private wardenClocks: { clock: WardenClock; delay: number }[] = [];
+  private wardenEpoch = 0;
+  private wardenHitAt = new Map<string, number>();
   private transactions = new Map<string, Map<string, { request: string; result: Result }>>();
   private statsCache = new Map<string, Stats>();
   private healOnHitAt = new Map<string, number>();
   private selectedContract: Contract = {
     id: 'initial',
+    bossId: 'constable',
     threat: 1,
     risk: 0,
     bounty: 1,
@@ -178,14 +216,18 @@ export class Game {
       mode: settings.mode ?? 'short',
       difficulty: settings.difficulty ?? 'normal',
       maxPlayers: settings.maxPlayers ?? 8,
+      openingBossId: settings.openingBossId ?? 'constable',
     };
     if (
+      !implementedBossIds.includes(this.settings.openingBossId) ||
       !data.difficulties.some((d) => d.id === this.settings.difficulty) ||
       !Number.isInteger(this.settings.maxPlayers) ||
       this.settings.maxPlayers < 1 ||
       this.settings.maxPlayers > 50
     )
       throw Error('Invalid simulation settings');
+    this.selectedContract.bossId = this.settings.openingBossId;
+    this.boss.id = this.settings.openingBossId;
     this.rng = new Random(this.settings.seed);
   }
   get difficulty() {
@@ -201,7 +243,7 @@ export class Game {
     if (this.players.has(id)) throw Error('Duplicate player');
     this.pruneExpired();
     if (this.players.size >= this.settings.maxPlayers) throw Error('Room full');
-    if (!['soldier', 'medic'].includes(classId))
+    if (!implementedClassIds.includes(classId))
       throw Error('Class is not implemented in this milestone');
     const cl = data.classes.find((c) => c.id === classId)!;
     const p: Player = {
@@ -232,6 +274,7 @@ export class Game {
       ammo: 0,
       reloadAt: 0,
       fireAt: 0,
+      wasFiring: false,
       dodgeAt: 0,
       dashUntil: 0,
       invulnerableUntil: 0,
@@ -254,6 +297,8 @@ export class Game {
       supplies: Array.from({ length: 3 }, () => ({ id: '', count: 0 })),
       supplyAt: 0,
       adrenalineUntil: 0,
+      braceUntil: 0,
+      overdriveUntil: 0,
       supplyShield: 0,
       supplyShieldUntil: 0,
       damageTaken: 0,
@@ -369,12 +414,18 @@ export class Game {
   }
   movementSpeed(p: Player) {
     const base = data.classes.find((c) => c.id === p.classId)!.speed;
-    return Math.min(
-      base * 1.65,
-      this.stats(p).speed *
-        (this.combatTick < p.adrenalineUntil
-          ? 1 + data.supplies.find((s) => s.id === 'adrenaline')!.amount
-          : 1),
+    const braced = this.combatTick < p.braceUntil;
+    const overdrive = this.combatTick < p.overdriveUntil;
+    const penalty = Math.min(braced ? 0.6 : 1, overdrive ? 0.65 : 1);
+    return (
+      penalty *
+      Math.min(
+        base * 1.65,
+        this.stats(p).speed *
+          (this.combatTick < p.adrenalineUntil
+            ? 1 + data.supplies.find((s) => s.id === 'adrenaline')!.amount
+            : 1),
+      )
     );
   }
   transact(id: string, request: unknown): Result {
@@ -474,6 +525,9 @@ export class Game {
   private roster() {
     return [...this.players.values()].filter((p) => !p.expired && p.status !== 'waiting');
   }
+  private bossDefinition(contract = this.selectedContract) {
+    return data.bosses.find((boss) => boss.id === (contract.bossId ?? 'constable'))!;
+  }
   private healthForRoster(n: number, contract = this.selectedContract) {
     const cycles =
       this.settings.mode === 'endless'
@@ -482,7 +536,7 @@ export class Game {
     return (
       rule.bossHealthBase *
       rule.bossHealthThreatGrowth ** (contract.threat - 1) *
-      constable.healthFactor *
+      this.bossDefinition(contract).healthFactor *
       this.difficulty.health *
       (1 + 0.7 * Math.max(0, n - 1)) *
       this.modifier('bossHealth') *
@@ -498,6 +552,7 @@ export class Game {
     this.warnings.length = 0;
     this.fields.length = 0;
     this.clearShots();
+    this.minions.clear();
     this.statsCache.clear();
     this.accord = null;
     for (const [i, p] of [...this.players.values()].entries()) {
@@ -532,6 +587,9 @@ export class Game {
       p.downUntil = 0;
       p.channelUntil = 0;
       p.adrenalineUntil = 0;
+      p.wasFiring = false;
+      p.braceUntil = 0;
+      p.overdriveUntil = 0;
       p.supplyShield = 0;
       p.supplyShieldUntil = 0;
       p.x = arena.playerSpawn.x + ((i % 8) - 3.5) * 30;
@@ -544,11 +602,17 @@ export class Game {
       deadline =
         this.combatTick +
         ticks(
-          constable.timer *
+          this.bossDefinition().timer *
             this.modifier('timer') *
             (this.selectedContract.variant === 'brutal' ? rule.brutal.deadlineMultiplier : 1),
         );
     this.boss = {
+      id: this.selectedContract.bossId ?? 'constable',
+      hurtAt: -100,
+      defeatedAt: 0,
+      castAt: 0,
+      castReleaseAt: 0,
+      castEndsAt: 0,
       variant: this.selectedContract.variant ?? 'normal',
       x: 800,
       y: 250,
@@ -561,6 +625,7 @@ export class Game {
       vulnerableUntil: 0,
     };
     this.attackAt = this.bossPhases()[0].attacks.map((_, i) => this.combatTick + ticks(2 + i * 2));
+    this.resetWarden();
     this.events.push({ type: 'sound', id: 'boss-phase' });
   }
   private pruneExpired() {
@@ -584,6 +649,11 @@ export class Game {
     this.votes.clear();
   }
   private victory() {
+    this.completedBossIds.add(this.boss.id);
+    this.boss.health = 0;
+    this.boss.defeatedAt = this.tick;
+    this.signatures = [];
+    this.wardenClocks = [];
     for (const p of this.roster())
       if (p.eligible) {
         const reward =
@@ -596,9 +666,11 @@ export class Game {
         p.health = p.maxHealth;
         p.ammo = this.stats(p).magazine;
         p.status = 'active';
+        p.braceUntil = p.overdriveUntil = 0;
       }
     this.encounter++;
     this.clearShots();
+    this.minions.clear();
     this.warnings.length = 0;
     this.fields.length = 0;
     this.accord = null;
@@ -632,12 +704,18 @@ export class Game {
         .map((w) => w.baselineSustainedDps)
         .toSorted((a, b) => a - b)[3];
       this.contractCards = [0, 1, 2].map((i) => {
+        const bossId =
+          implementedBossIds[
+            (this.encounter + implementedBossIds.indexOf(this.settings.openingBossId)) %
+              implementedBossIds.length
+          ];
         const variant =
-          this.settings.mode === 'endless' && this.encounter > 0
+          this.settings.mode === 'endless' && this.completedBossIds.has(bossId)
             ? ('brutal' as const)
             : ('normal' as const);
         const card = {
           id: 'watch-' + this.encounter + '-' + i,
+          bossId,
           threat,
           risk: i,
           bounty: (1 + i * 0.15) * (variant === 'brutal' ? rule.brutal.bountyMultiplier : 1),
@@ -646,7 +724,7 @@ export class Game {
         };
         card.recommendedRating =
           this.healthForRoster(this.roster().length, card) /
-          (constable.timer *
+          (this.bossDefinition(card).timer *
             this.modifier('timer') *
             (variant === 'brutal' ? rule.brutal.deadlineMultiplier : 1) *
             referenceDps *
@@ -693,7 +771,17 @@ export class Game {
     this.grid.clear();
     for (const p of this.players.values())
       if (p.status === 'active') this.grid.insert(p, 9 + Math.hypot(p.x - p.oldX, p.y - p.oldY));
+    if (this.boss.health <= 0) {
+      this.victory();
+      return;
+    }
     this.stepBoss();
+    this.minions.step(
+      this.combatTick,
+      this.roster().filter((player) => player.status === 'active'),
+      arena.obstacles,
+      (target, damage) => this.damage(this.players.get(target.id)!, damage),
+    );
     this.stepFields();
     this.stepShots();
     this.stepRevives();
@@ -709,6 +797,10 @@ export class Game {
       (!roster.some((p) => p.status === 'active') && !soloCanRecover)
     ) {
       this.phase = 'defeat';
+      this.minions.clear();
+      this.signatures = [];
+      this.warnings.length = 0;
+      this.fields.length = 0;
       this.clearShots();
     }
   }
@@ -768,14 +860,24 @@ export class Game {
     );
     p.x = next.x;
     p.y = next.y;
-    if (i.reload && !p.reloadAt && p.ammo < stats.magazine) this.reload(p);
+    if (i.reload && now >= p.overdriveUntil && !p.reloadAt && p.ammo < stats.magazine)
+      this.reload(p);
     if (i.q && now >= p.qAt) this.ability(p, 'q');
     if (i.e && now >= p.eAt) this.ability(p, 'e');
     if (i.ultimate && now >= p.ultimateAt) this.ability(p, 'ultimate');
-    if (i.fire && now >= p.fireAt && !p.reloadAt) {
-      if (p.ammo > 0) this.fire(p);
-      else this.reload(p);
+    if (i.fire && !p.reloadAt) {
+      // A new trigger press starts now; sustained fire retains fractional debt.
+      // This supports rates above 30Hz without catching up missed idle shots.
+      if (!p.wasFiring) p.fireAt = Math.max(p.fireAt, now);
+      for (let burst = 0; burst < 3 && now >= p.fireAt; burst++) {
+        if (p.ammo > 0 || now < p.overdriveUntil) this.fire(p);
+        else {
+          this.reload(p);
+          break;
+        }
+      }
     }
+    p.wasFiring = i.fire && !p.reloadAt;
   }
   private reload(p: Player) {
     const w = data.weapons.find((w) => w.id === p.weapon)!;
@@ -874,12 +976,23 @@ export class Game {
     this.shots.set(shot.id, shot);
     if (owner === 'hostile') this.hostileShots++;
     this.spawns.push({ ...shot });
+    return shot;
   }
   private fire(p: Player) {
     const w = data.weapons.find((w) => w.id === p.weapon)!,
       s = this.stats(p);
-    p.ammo--;
-    p.fireAt = this.combatTick + ticks(1 / (w.fireRate * s.fireRate));
+    const overdrive = this.combatTick < p.overdriveUntil;
+    const braced = this.combatTick < p.braceUntil;
+    if (!overdrive) p.ammo--;
+    const rate = clamp(
+      s.fireRate *
+        (braced ? 1 + 0.3 * s.ability : 1) *
+        (overdrive ? 1 + 0.7 * (1 + (s.effects.ultimatePotency ?? 0)) : 1),
+      0.35,
+      2.5,
+    );
+    const interval = HZ / (w.fireRate * rate);
+    p.fireAt += interval;
     const count = w.pellets + s.extraShots,
       field = Math.max(
         0,
@@ -897,16 +1010,22 @@ export class Game {
         p.aim +
           (count > 1
             ? ((n / (count - 1) - 0.5) * w.spreadDegrees * this.modifier('spread') * Math.PI) / 180
-            : 0),
+            : ((this.rng.next() - 0.5) * w.spreadDegrees * this.modifier('spread') * Math.PI) /
+              180),
         w.projectileSpeed,
         damage,
         4,
-        s.pierce,
+        s.pierce + (overdrive ? 2 : 0),
         w.rangeSeconds,
       );
     this.events.push({
       type: 'sound',
-      id: p.classId === 'medic' ? 'weapon-injector' : 'weapon-pistol',
+      id:
+        p.classId === 'medic'
+          ? 'weapon-injector'
+          : p.classId === 'heavy'
+            ? 'weapon-heavy-lmg'
+            : 'weapon-pistol',
       owner: p.id,
       x: p.x,
       y: p.y,
@@ -920,7 +1039,33 @@ export class Game {
     if (slot === 'q') p.qAt = now + ticks(a.cooldown * s.cooldown);
     else if (slot === 'e') p.eAt = now + ticks(a.cooldown * s.cooldown);
     else p.ultimateAt = now + ticks(a.cooldown * s.ultimateCooldown);
-    if (p.classId === 'soldier') {
+    if (p.classId === 'heavy') {
+      if (slot === 'q') {
+        for (let index = 0; index < 14; index++) {
+          const shot = this.emitShot(
+            p.id,
+            p.x,
+            p.y,
+            p.aim + ((index / 13 - 0.5) * 70 * Math.PI) / 180,
+            700,
+            (a.damage * s.ability) / 14,
+            4,
+            s.pierce,
+            a.radius / 700,
+          );
+          if (shot)
+            this.shotEffects.set(shot.id, {
+              slowTicks: ticks(a.duration * (1 + (s.effects.suppressionDuration ?? 0))),
+              slowMultiplier: 0.6,
+              rangeRemaining: a.radius,
+            });
+        }
+      } else if (slot === 'e') p.braceUntil = now + ticks(a.duration);
+      else {
+        p.overdriveUntil = now + ticks(a.duration + (s.effects.ultimateDuration ?? 0));
+        p.reloadAt = 0;
+      }
+    } else if (p.classId === 'soldier') {
       if (slot === 'e') {
         for (let i = 0; i < 3; i++)
           this.emitShot(
@@ -1017,7 +1162,14 @@ export class Game {
   damage(p: Player, amount: number) {
     if (p.status !== 'active' || this.combatTick < p.invulnerableUntil) return;
     const s = this.stats(p),
-      reduced = amount * (1 - s.armor),
+      armor = clamp(
+        1 -
+          (1 - s.armor) *
+            (this.combatTick < p.braceUntil ? 1 - Math.min(0.8, 0.45 * s.ability) : 1),
+        0,
+        0.65,
+      ),
+      reduced = amount * (1 - armor),
       plate = this.combatTick < p.supplyShieldUntil ? Math.min(p.supplyShield, reduced) : 0,
       blocked = Math.min(p.shield, reduced - plate);
     p.supplyShield -= plate;
@@ -1041,6 +1193,11 @@ export class Game {
       amount * (this.combatTick < this.boss.vulnerableUntil ? 1.25 : 1),
     );
     this.boss.health -= actual;
+    if (actual > 0 && this.combatTick - this.boss.hurtAt >= ticks(0.3))
+      this.boss.hurtAt = this.combatTick;
+    this.creditHit(p, actual);
+  }
+  private creditHit(p: Player | undefined, actual: number) {
     if (p) {
       p.damageDealt += actual;
       const healing = this.stats(p).effects.healOnHit ?? 0;
@@ -1058,7 +1215,66 @@ export class Game {
     }
   }
   private bossPhases() {
-    return this.boss.variant === 'brutal' ? constable.variants.brutal.phases : constable.phases;
+    const definition = this.bossDefinition();
+    return this.boss.variant === 'brutal' ? definition.variants.brutal.phases : definition.phases;
+  }
+  private resetWarden() {
+    this.signatures = [];
+    this.wardenClocks = [];
+    this.wardenHitAt.clear();
+    this.wardenEpoch = this.combatTick;
+    if (this.boss.id !== 'lantern-warden') return;
+    const target = this.roster().find((player) => player.status === 'active') ?? { x: 800, y: 700 };
+    const origin = { x: this.boss.x + 55, y: this.boss.y };
+    const phase = this.bossPhases()[this.boss.phase];
+    const repeat =
+      'signatureRepeatOffsetSeconds' in phase ? Number(phase.signatureRepeatOffsetSeconds) : 0;
+    this.wardenClocks = [0, ...(repeat > 0 ? [ticks(repeat)] : [])].map((delay) => ({
+      clock: new WardenClock(origin, target),
+      delay,
+    }));
+    this.signatures = [this.wardenClocks[0].clock.sample()];
+  }
+  private bossDamageScale() {
+    const cycle =
+      this.settings.mode === 'endless'
+        ? Math.floor(this.encounter / rule.endless.cycleEncounters)
+        : 0;
+    return (
+      this.difficulty.damage *
+      this.modifier('bossDamage') *
+      (1 + cycle * rule.endless.damageGrowthPerCycle) *
+      (this.boss.variant === 'brutal' ? rule.brutal.damageMultiplier : 1)
+    );
+  }
+  private stepWarden() {
+    if (!this.wardenClocks.length) this.resetWarden();
+    const target = this.roster().find((player) => player.status === 'active');
+    if (!target) {
+      this.signatures = [];
+      return;
+    }
+    this.signatures = this.wardenClocks.flatMap(({ clock, delay }) => {
+      const elapsed = this.combatTick - this.wardenEpoch - delay;
+      if (elapsed < 0) return [];
+      return [elapsed > clock.tick ? clock.advance(target) : clock.sample()];
+    });
+    // The lantern extinguishes earlier auxiliary hazards at release so its
+    // outlined trailing space is clear throughout every active sweep.
+    if (this.signatures.some((sample) => sample.phase === 'active' && sample.phaseTick === 0)) {
+      for (const shot of this.shots.values()) if (shot.owner === 'hostile') this.removeShot(shot);
+      this.warnings.length = 0;
+      for (let index = this.fields.length - 1; index >= 0; index--)
+        if (this.fields[index].owner === 'hostile') this.fields.splice(index, 1);
+    }
+    for (const player of this.roster()) {
+      if (player.status !== 'active' || this.combatTick < (this.wardenHitAt.get(player.id) ?? 0))
+        continue;
+      if (this.signatures.some((sample) => wardenCanHit(sample, player, rule.playerRadius))) {
+        this.damage(player, WARDEN_SIGNATURE.contactDamage * this.bossDamageScale());
+        this.wardenHitAt.set(player.id, this.combatTick + WARDEN_SIGNATURE.contactIntervalTicks);
+      }
+    }
   }
   private stepBoss() {
     const now = this.combatTick;
@@ -1070,9 +1286,19 @@ export class Game {
     if (phase > this.boss.phase && !this.accord) {
       this.boss.phase++;
       this.attackAt = this.bossPhases()[this.boss.phase].attacks.map(
-        (_, i) => now + ticks(1.5 + i * 1.25),
+        (attack, i) =>
+          now +
+          ticks(
+            1.5 +
+              (this.boss.variant === 'brutal' &&
+              this.boss.phase === 3 &&
+              'comboOffsetSeconds' in attack
+                ? Number(attack.comboOffsetSeconds)
+                : i * 1.25),
+          ),
       );
       this.rescaleDepartures();
+      this.resetWarden();
       const count = this.roster().length;
       this.accord = {
         until: now + ticks(8),
@@ -1112,15 +1338,27 @@ export class Game {
         this.events.push({ type: 'sound', id: 'accord-success' });
       } else if (now >= a.until) this.accord = null;
     }
-    if (now < this.boss.staggerUntil) return;
+    if (now < this.boss.staggerUntil) {
+      this.signatures = [];
+      this.wardenClocks = [];
+      return;
+    }
+    if (this.boss.id === 'lantern-warden') this.stepWarden();
     const attacks = this.bossPhases()[this.boss.phase].attacks;
     for (let index = 0; index < attacks.length; index++)
-      if (now >= this.attackAt[index]) {
+      if (
+        now >= this.attackAt[index] &&
+        (this.boss.id !== 'lantern-warden' ||
+          this.signatures.every((sample) => sample.phase === 'rest'))
+      ) {
         const attack = attacks[index],
           targets = this.roster().filter((p) => p.status === 'active');
         if (!targets.length) continue;
         const target = targets[Math.floor(this.rng.next() * targets.length)];
         this.attackAt[index] = now + ticks(attack.interval);
+        this.boss.castAt = now;
+        this.boss.castReleaseAt = now + ticks(attack.telegraph);
+        this.boss.castEndsAt = this.boss.castReleaseAt + ticks(0.66);
         const cycle =
             this.settings.mode === 'endless'
               ? Math.floor(this.encounter / rule.endless.cycleEncounters)
@@ -1184,9 +1422,11 @@ export class Game {
               arc: 0,
               speed: 0,
               damage,
-              radius: 75,
+              radius: 'radius' in attack ? Number(attack.radius) : 75,
               at: now + ticks(attack.telegraph),
-              until: now + ticks(attack.telegraph + 3),
+              until:
+                now +
+                ticks(attack.telegraph + ('duration' in attack ? Number(attack.duration) : 3)),
             });
           }
         this.events.push({ type: 'sound', id: 'warning', x: this.boss.x, y: this.boss.y });
@@ -1243,8 +1483,64 @@ export class Game {
           }
     }
   }
+  spawnMinion(definition: MinionSpawn) {
+    if (this.phase !== 'combat' || this.minions.actors.size >= rule.maximumMinions) return null;
+    return this.minions.spawn(this.id(), definition, this.combatTick);
+  }
+  private friendlyCollision(
+    shot: Shot,
+    old: { x: number; y: number },
+    next: { x: number; y: number },
+    wall: number,
+  ) {
+    const bossTime = segmentCircle(
+      old,
+      next,
+      this.boss,
+      this.bossDefinition().radius + shot.radius,
+    );
+    const hits: { time: number; minionId?: number }[] = [];
+    if (bossTime !== null && bossTime < wall) hits.push({ time: bossTime });
+    for (const actor of this.minions.actors.values()) {
+      if (this.shotHits.get(shot.id)?.has(actor.id)) continue;
+      const time = segmentCircle(
+        { x: old.x - actor.oldX, y: old.y - actor.oldY },
+        { x: next.x - actor.x, y: next.y - actor.y },
+        { x: 0, y: 0 },
+        actor.radius + shot.radius,
+      );
+      if (time !== null && time < wall) hits.push({ time, minionId: actor.id });
+    }
+    hits.sort((a, b) => a.time - b.time || (a.minionId ?? 0) - (b.minionId ?? 0));
+    for (const hit of hits) {
+      if (hit.minionId === undefined) {
+        this.hitBoss(this.players.get(shot.owner), shot.damage);
+        return true;
+      }
+      let touched = this.shotHits.get(shot.id);
+      if (!touched) {
+        touched = new Set();
+        this.shotHits.set(shot.id, touched);
+      }
+      touched.add(hit.minionId);
+      const effect = this.shotEffects.get(shot.id);
+      const actual = this.minions.hit(
+        hit.minionId,
+        shot.damage,
+        this.combatTick,
+        effect?.slowTicks,
+        effect?.slowMultiplier,
+      );
+      this.creditHit(this.players.get(shot.owner), actual);
+      if (shot.pierce <= 0) return true;
+      shot.pierce--;
+    }
+    return false;
+  }
   private removeShot(s: Shot) {
     if (!this.shots.delete(s.id)) return;
+    this.shotEffects.delete(s.id);
+    this.shotHits.delete(s.id);
     if (s.owner === 'hostile') this.hostileShots--;
     this.removals.push(s.id);
     this.freeShots.push(s);
@@ -1256,6 +1552,14 @@ export class Game {
     for (const s of this.shots.values()) {
       const old = { x: s.x, y: s.y },
         next = { x: s.x + s.vx * DT, y: s.y + s.vy * DT };
+      const effect = this.shotEffects.get(s.id);
+      if (effect) {
+        const distance = Math.hypot(next.x - old.x, next.y - old.y);
+        const fraction = Math.min(1, effect.rangeRemaining / distance);
+        next.x = old.x + (next.x - old.x) * fraction;
+        next.y = old.y + (next.y - old.y) * fraction;
+        effect.rangeRemaining = Math.max(0, effect.rangeRemaining - distance);
+      }
       let wall = 1;
       for (const rect of arena.obstacles) {
         const hit = segmentRect(old, next, rect, s.radius);
@@ -1264,7 +1568,7 @@ export class Game {
       let player: Player | undefined,
         barrier: Field | undefined,
         hitTime = wall,
-        bossHit = false;
+        friendlyHit = false;
       if (s.owner === 'hostile') {
         for (const field of this.fields) {
           if (field.kind !== 'barrier' || field.potency <= 0) continue;
@@ -1288,22 +1592,17 @@ export class Game {
             hitTime = t;
           }
         }
-      } else {
-        const t = segmentCircle(old, next, this.boss, constable.radius + s.radius);
-        if (t !== null && t < hitTime) {
-          hitTime = t;
-          bossHit = true;
-        }
-      }
+      } else friendlyHit = this.friendlyCollision(s, old, next, wall);
       s.x = next.x;
       s.y = next.y;
       if (player) this.damage(player, s.damage);
       else if (barrier) barrier.potency = Math.max(0, barrier.potency - s.damage);
-      else if (bossHit) this.hitBoss(this.players.get(s.owner), s.damage);
+
       if (
         player ||
         barrier ||
-        bossHit ||
+        friendlyHit ||
+        effect?.rangeRemaining === 0 ||
         wall < 1 ||
         this.combatTick >= s.expires ||
         next.x < 0 ||
@@ -1384,6 +1683,7 @@ export class Game {
       phaseEnds: this.phaseEnds,
       encounter: this.encounter,
       accords: this.accords,
+      completedBossIds: [...this.completedBossIds],
       rng: this.rng.state >>> 0,
       nextId: this.nextId,
       selectedContract: { ...this.selectedContract },
@@ -1413,6 +1713,7 @@ export class Game {
     };
   }
   static restoreOffline(value: unknown): Game {
+    value = migratePracticeBoundary(value);
     if (
       !value ||
       typeof value !== 'object' ||
@@ -1452,8 +1753,16 @@ export class Game {
     const g = new Game(save.settings),
       p = save.player;
     if (
+      !Array.isArray(save.completedBossIds) ||
+      save.completedBossIds.length > implementedBossIds.length ||
+      new Set(save.completedBossIds).size !== save.completedBossIds.length ||
+      !save.completedBossIds.every((id) => implementedBossIds.includes(id as BossId))
+    )
+      throw Error('invalidBossHistory');
+    for (const id of save.completedBossIds) g.completedBossIds.add(id as BossId);
+    if (
       !p ||
-      !['soldier', 'medic'].includes(p.classId) ||
+      !implementedClassIds.includes(p.classId) ||
       typeof p.name !== 'string' ||
       p.name.length > 48 ||
       !int(p.coins, 0, 100000000) ||
@@ -1542,6 +1851,7 @@ export class Game {
       int(c.threat, 1, 10) &&
       int(c.risk, 0, 2) &&
       finite(c.bounty, 1, 3) &&
+      implementedBossIds.includes(c.bossId as BossId) &&
       (c.variant === undefined || ['normal', 'brutal'].includes(c.variant)) &&
       finite(c.recommendedRating, 0, 1000000);
     if (
@@ -1592,6 +1902,7 @@ export class Game {
     g.rng.state = save.rng;
     g.nextId = save.nextId;
     g.selectedContract = { ...save.selectedContract };
+    g.boss.id = save.selectedContract.bossId!;
     g.mutations.push(...structuredClone(save.mutations));
     g.mutationCards = [...save.mutationCards];
     g.contractCards = structuredClone(save.contractCards);
@@ -1621,6 +1932,7 @@ export class Game {
       phaseEnds: this.phaseEnds,
       encounter: this.encounter,
       accords: this.accords,
+      completedBossIds: [...this.completedBossIds],
       peakPlayers: this.peakPlayers,
       rng: this.rng.state >>> 0,
       nextId: this.nextId,
@@ -1636,6 +1948,12 @@ export class Game {
   // Server code must verify the signature AND obtain a durable owner claim first.
   // This validator is deliberately not connected to public matchmaking yet.
   static restoreAuthoritative(value: unknown) {
+    if (
+      !value ||
+      typeof value !== 'object' ||
+      (value as { protocolVersion?: unknown }).protocolVersion !== PROTOCOL
+    )
+      throw Error('versionMismatch');
     if (
       !value ||
       typeof value !== 'object' ||
@@ -1705,8 +2023,10 @@ export class Game {
     ] as const)
       Object.assign(g, { [key]: base[key] });
     g.peakPlayers = save.peakPlayers;
+    for (const id of base.completedBossIds) g.completedBossIds.add(id);
     g.rng.state = base.rng.state;
     g.selectedContract = { ...base.selectedContract };
+    g.boss.id = base.selectedContract.bossId!;
     g.mutations.push(...structuredClone(base.mutations));
     g.mutationCards = [...base.mutationCards];
     g.contractCards = structuredClone(base.contractCards);
@@ -1776,6 +2096,9 @@ export class Game {
       phaseEnds: this.phaseEnds,
       encounter: this.encounter,
       boss: { ...this.boss },
+      signatures: structuredClone(this.signatures),
+      minions: this.minions.snapshot(),
+      completedBossIds: [...this.completedBossIds],
       players: [...this.players.values()].map((p) => ({
         ...p,
         input: undefined,

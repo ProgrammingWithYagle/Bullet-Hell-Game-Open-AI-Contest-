@@ -26,7 +26,7 @@ def verify():
     contract = read('assets/production/motion/warden-rehearsal.json')
     packing = read('reviews/warden-signature-2026-10-23/packing.json')
     assert contract['origin'] == [.5,430/512] and contract['cellSize'] == 512
-    assert set(contract['clips']) == {'idle','attack','channel'}
+    assert set(contract['clips']) >= {'idle','attack','channel'}
     attack = contract['clips']['attack']
     old_motion = read('docs/production-motion-2026-10-23.json')
     old_natives = read('reviews/art-production-2026-10-23/inventory.json')['nativeSources']
@@ -35,7 +35,8 @@ def verify():
     for native in old_motion['requests']:
         assert sha(file(native['file'])) == native['sha256']
     total = 0
-    for name,clip in contract['clips'].items():
+    for name in ['idle','attack','channel']:
+        clip = contract['clips'][name]
         assert clip['displayCell'] == contract['displayCell']
         assert clip['origin'] == contract['origin']
         assert sha(file(clip['atlas'])) == clip['atlasSha256']
@@ -95,21 +96,21 @@ def verify():
         atlas=Image.open(file(seed['atlas'])); index=seed['frame']
         expected=atlas.crop((index%4*512,index//4*512,(index%4+1)*512,(index//4+1)*512))
         assert Image.open(file(seed['file'])).tobytes()==expected.tobytes()
-    # Production entry points must keep the study out of normal/public matches.
+    # The signature is now shared with Game; the local rehearsal room remains separate.
     for path in ['src/shared/game.ts','src/client/scene.ts','src/client/main.ts','src/server/index.ts']:
         source=file(path).read_text(encoding='utf8')
-        assert 'warden-rehearsal' not in source and 'warden-signature' not in source
+        assert 'warden-rehearsal.ts' not in source
     report={'schemaVersion':1,'createdAt':datetime.now(timezone.utc).isoformat(), 'passed':True,
-        'newNativeSheets':2,'newFrames':8,'totalWardenMotionFrames':total,
+        'newNativeSheets':2,'newFrames':8,'verifiedRehearsalFrames':total,'totalWardenMotionFrames':sum(clip['frames'] for clip in contract['clips'].values()),
         'olderNativesUnchanged':len(old_natives)+len(old_motion['requests']),
         'sourceRectanglesConserveEveryRGBAPixel':True,'packedPixelsMatchDocumentedTransforms':True,
         'opaqueMeasuredLanternAttachments':total,'sharedDisplayCell':contract['displayCell'],
-        'productionGameStillSeparate':True,'phaserMotionAccepted':False,'humanReviewPerformed':False,
+        'localRehearsalRoomSeparate':True,'productionSignatureIntegrated':True,'phaserMotionAccepted':False,'humanReviewPerformed':False,
         'hashes':{path:sha(file(path)) for path in ['assets/production/motion/warden-rehearsal.json',
             'docs/warden-motion-2026-10-23.json','reviews/warden-signature-2026-10-23/packing.json',
             'reviews/warden-signature-2026-10-23/action-contact-sheet.png']},
         'limits':['Structural and pixel evidence only; final Phaser motion review is pending.',
-            'No complete boss encounter, public deployment, physical-device, human or language approval.']}
+            'Original three-clip audit; new hurt/defeat/runtime evidence is under reviews/warden-encounter-2026-10-23. No public deployment, physical-device, human or language approval.']}
     (ROOT/'reviews/warden-signature-2026-10-23/art-verification.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf8',newline='\n')
     print(json.dumps(report))
 

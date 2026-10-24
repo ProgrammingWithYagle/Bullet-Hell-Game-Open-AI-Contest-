@@ -1,8 +1,8 @@
 # Bosses
 
-Current Warden source adds a local signature rehearsal and sixteen motion frames (idle/attack/channel). Its warning, rotating cone and trailing wedge are exercised separately from normal matches. Full Warden phases, other attacks, hurt/defeat, networking and final Phaser motion acceptance remain pending. See [the source checkpoint](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/WARDEN_SIGNATURE_REHEARSAL.md).
+Constable and Lantern Warden now execute source encounters. Warden is selectable as the opening boss and has the warning/rotating cone/rest, trailing interior, fan/zones, phases, Accord interrupt, Brutal delayed sweep and five motion clips (27 frames), including hurt/defeat. Actual offline/network tests pass; final rendered transitions remain open. [Current evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/WARDEN_AND_HEAVY_RUNTIME.md). The public deployment remains Constable/protocol 4.
 
-Sixty identities are authored: fifty in separate timed-route pools, nine exclusive to Endless and The Uncounted. The original eleven-boss sheet is an early identity proof. See [Gauntlets](Gauntlets) for route ownership and production gates. Hollow Constable executes gameplay, including later-phase crossing volleys/gapped rings and a four-phase Brutal variant. The other identities and their complete signatures remain In production.
+Sixty identities are authored: fifty in separate timed-route pools, nine exclusive to Endless and The Uncounted. Fifty-eight remain unimplemented. This source subset alternates Constable and Warden; completed-identity history makes an Endless repeat Brutal only after that identity is cleared. It does not implement the complete gauntlet pool. See [Gauntlets](Gauntlets).
 
 Contract cards show threat, bounty and recommended build strength, never the next boss identity.
 

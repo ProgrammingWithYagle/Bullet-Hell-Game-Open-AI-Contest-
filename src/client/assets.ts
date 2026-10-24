@@ -20,6 +20,16 @@ import tankPortrait from '../../assets/production/normalized/survivors/tank/port
 import magePortrait from '../../assets/production/normalized/survivors/mage/portrait-south-v1.png?url';
 import engineerPortrait from '../../assets/production/normalized/survivors/engineer/portrait-south-v1.png?url';
 import assassinPortrait from '../../assets/production/normalized/survivors/assassin/portrait-south-v1.png?url';
+import wardenIdle from '../../assets/production/motion/lantern-warden-idle-v1-atlas.png?url';
+import wardenAttack from '../../assets/production/motion/lantern-warden-attack-v2-atlas.png?url';
+import wardenChannel from '../../assets/production/motion/lantern-warden-channel-v1-atlas.png?url';
+import wardenHurt from '../../assets/production/motion/lantern-warden-hurt-v1-atlas.png?url';
+import wardenDefeat from '../../assets/production/motion/lantern-warden-defeat-v1-atlas.png?url';
+import heavyReference from '../../assets/production/normalized/survivors/heavy/reference-atlas-v1.png?url';
+import heavyRunNorth from '../../assets/production/motion/heavy-run-north-v1-atlas.png?url';
+import heavyRunSouth from '../../assets/production/motion/heavy-run-south-v1-atlas.png?url';
+import heavyRunEast from '../../assets/production/motion/heavy-run-east-v1-atlas.png?url';
+import heavyRunWest from '../../assets/production/motion/heavy-run-west-v1-atlas.png?url';
 export const assets = {
   arena,
   cover,
@@ -28,6 +38,20 @@ export const assets = {
   medic,
   lineup,
   directions: { soldierNorth, soldierSouth, medicNorth, medicSouth, medicEast, medicWest },
+  warden: {
+    idle: wardenIdle,
+    attack: wardenAttack,
+    channel: wardenChannel,
+    hurt: wardenHurt,
+    defeat: wardenDefeat,
+  },
+  heavy: {
+    reference: heavyReference,
+    North: heavyRunNorth,
+    South: heavyRunSouth,
+    East: heavyRunEast,
+    West: heavyRunWest,
+  },
   portraits: {
     heavy: heavyPortrait,
     tank: tankPortrait,

@@ -1,5 +1,5 @@
-import { data } from '../../shared/game.ts';
-import type { ClassId } from '../../shared/protocol.ts';
+import { data, implementedBossIds } from '../../shared/game.ts';
+import { implementedClassIds, type ClassId, type BossId } from '../../shared/protocol.ts';
 import { Session, type ConnectionOptions } from '../session.ts';
 import { assets } from '../assets.ts';
 import { languages, locale, number, setLanguage, t } from '../i18n.ts';
@@ -25,6 +25,7 @@ let selected: ConnectionOptions = {
   classId: 'soldier',
   mode: 'short',
   difficulty: 'normal',
+  openingBossId: 'constable',
 };
 let arenaId = 'gatehouse',
   visibility: 'offline' | 'public' | 'private' = 'offline';
@@ -41,7 +42,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks) {
     previewClass: string = selected.classId,
     previewMode: string = selected.mode,
     previewMap = arenaId;
-  const availableClass = (id: string) => ['soldier', 'medic'].includes(id),
+  const availableClass = (id: string) => implementedClassIds.includes(id as ClassId),
     availableMode = (id: string) => ['short', 'endless'].includes(id);
   const modeCapacity = (id: string, maximum: number) =>
     availableMode(id) ? Math.min(maximum, onlinePlaytestSlots ?? maximum) : maximum;
@@ -90,7 +91,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks) {
     if (page === 'difficulty')
       content.innerHTML = `<div class="setup-heading"><h1>${e(t(labels[page]))}</h1></div><div class="difficulty-cards">${data.difficulties.map((d, i) => `<button data-difficulty="${d.id}" class="difficulty-pick ${d.id === selected.difficulty ? 'selected' : ''}" ${d.locked ? 'disabled' : ''} aria-pressed="${d.id === selected.difficulty}"><span class="difficulty-bells">${Array.from({ length: i + 1 }, () => icon('bell')).join('')}</span><h2>${e(t('difficulty.' + d.id))}</h2><span>${e(t('stat.health'))} ×${number(d.health, 2)}</span><span>${e(t('stat.damage'))} ×${number(d.damage, 2)}</span><span>${e(t('stat.bossSpeed'))} ×${number(d.speed, 2)}</span>${d.locked ? `<small>${e(t('ui.hardUnlock'))}</small>` : ''}</button>`).join('')}</div>${navigation(false)}`;
     if (page === 'review')
-      content.innerHTML = `<div class="setup-heading"><h1>${e(t(labels[page]))}</h1></div><div class="review-composition"><div class="review-portrait">${portrait(selected.classId)}</div><section><h2>${e(t('class.' + selected.classId + '.name'))} · ${e(t('mode.' + selected.mode + '.name'))}</h2><p>${e(t('arena.' + arenaId + '.name'))} · ${e(t('difficulty.' + selected.difficulty))}</p><label class="name-label">${e(t('ui.displayName'))}<input id="name" value="${e(selected.name)}" maxlength="24" autocomplete="nickname"></label><div class="connection-choices" role="group" aria-label="${e(t('ui.roomSettings'))}">${[
+      content.innerHTML = `<div class="setup-heading"><h1>${e(t(labels[page]))}</h1></div><div class="review-composition"><div class="review-portrait">${portrait(selected.classId)}</div><section><h2>${e(t('class.' + selected.classId + '.name'))} · ${e(t('mode.' + selected.mode + '.name'))}</h2><p>${e(t('arena.' + arenaId + '.name'))} · ${e(t('difficulty.' + selected.difficulty))}</p><label class="name-label">${e(t('ui.boss'))}<select id="opening-boss">${implementedBossIds.map((id) => `<option value="${id}" ${id === selected.openingBossId ? 'selected' : ''}>${e(t('boss.' + id + '.name'))}</option>`).join('')}</select></label><label class="name-label">${e(t('ui.displayName'))}<input id="name" value="${e(selected.name)}" maxlength="24" autocomplete="nickname"></label><div class="connection-choices" role="group" aria-label="${e(t('ui.roomSettings'))}">${[
         ['offline', 'ui.solo', 'soldier'],
         ['public', 'ui.publicRooms', 'rescue'],
         ['private', 'ui.privateRoom', 'lock'],
@@ -105,7 +106,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks) {
     if (page === 'settings')
       content.innerHTML = `<div class="settings-page"><h1>${e(t('ui.settings'))}</h1>${hooks.settingsHTML()}<div class="actions">${button('back-home', t('ui.back'), 'map')}</div></div>`;
     if (page === 'join')
-      content.innerHTML = `<div class="join-page"><div class="setup-heading"><h1>${e(t('ui.joinRoom'))}</h1></div><div class="join-options"><label>${e(t('ui.displayName'))}<input id="name" maxlength="24" value="${e(selected.name)}"></label><label>${e(t('ui.chooseClass'))}<select id="join-class"><option value="soldier" ${selected.classId === 'soldier' ? 'selected' : ''}>${e(t('class.soldier.name'))}</option><option value="medic" ${selected.classId === 'medic' ? 'selected' : ''}>${e(t('class.medic.name'))}</option></select></label><label>${e(t('ui.roomCode'))}<div class="inline"><input id="code" maxlength="6" autocapitalize="characters" spellcheck="false"><button id="join-code">${e(t('ui.joinRoom'))}</button></div></label></div><div class="section-heading"><h2>${e(t('ui.publicRooms'))}</h2><button id="refresh">${e(t('ui.search'))}</button></div><div id="rooms" class="rooms"><p>${e(t('ui.noRooms'))}</p></div><div class="actions">${button('back-home', t('ui.back'), 'map')}</div></div>`;
+      content.innerHTML = `<div class="join-page"><div class="setup-heading"><h1>${e(t('ui.joinRoom'))}</h1></div><div class="join-options"><label>${e(t('ui.displayName'))}<input id="name" maxlength="24" value="${e(selected.name)}"></label><label>${e(t('ui.chooseClass'))}<select id="join-class">${implementedClassIds.map((id) => `<option value="${id}" ${selected.classId === id ? 'selected' : ''}>${e(t('class.' + id + '.name'))}</option>`).join('')}</select></label><label>${e(t('ui.roomCode'))}<div class="inline"><input id="code" maxlength="6" autocapitalize="characters" spellcheck="false"><button id="join-code">${e(t('ui.joinRoom'))}</button></div></label></div><div class="section-heading"><h2>${e(t('ui.publicRooms'))}</h2><button id="refresh">${e(t('ui.search'))}</button></div><div id="rooms" class="rooms"><p>${e(t('ui.noRooms'))}</p></div><div class="actions">${button('back-home', t('ui.back'), 'map')}</div></div>`;
     const byId = (id: string, fn: () => void) => {
       const el = host.querySelector<HTMLElement>('#' + id);
       if (el) el.onclick = fn;
@@ -124,6 +125,11 @@ export function mountSetup(host: HTMLElement, hooks: Hooks) {
       if (page === 'map') arenaId = previewMap;
       go(steps[stage + 1]);
     });
+    const openingBoss = host.querySelector<HTMLSelectElement>('#opening-boss');
+    if (openingBoss)
+      openingBoss.onchange = () => {
+        selected.openingBossId = openingBoss.value as BossId;
+      };
     byId('launch', () => {
       selected.name = host.querySelector<HTMLInputElement>('#name')!.value.trim() || 'Survivor';
       hooks.launch(

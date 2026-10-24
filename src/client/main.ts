@@ -298,7 +298,7 @@ function update(view: View) {
   const bossTitle = $('boss-panel').querySelector('strong');
   if (bossTitle)
     bossTitle.textContent =
-      t('boss.constable.name') +
+      t('boss.' + view.boss.id + '.name') +
       ' · ' +
       t(view.boss.variant === 'brutal' ? 'ui.variantBrutal' : 'ui.variantNormal') +
       ' · ' +
