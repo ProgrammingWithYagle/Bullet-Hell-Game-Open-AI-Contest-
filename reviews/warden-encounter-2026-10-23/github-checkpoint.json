@@ -1,0 +1,80 @@
+{
+  "createdAt": "2026-10-24T00:40:31.399446+00:00",
+  "sourceCommit": "d107454b0e8f650202838dd16d19ff120944c9f5",
+  "branch": "feat/first-playable-loop",
+  "pullRequest": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14",
+  "draft": true,
+  "sourceSnapshotSha256": "fd846de2d53dd9ad8e9af997ac18414901020ffb24d5676db005757fc2453d6d",
+  "protocolVersion": 5,
+  "automatedTests": 108,
+  "githubChecks": [
+    {
+      "id": 120727601385,
+      "name": "verify",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/40045952765/job/120727601385"
+    },
+    {
+      "id": 120727588925,
+      "name": "verify",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/40045948959/job/120727588925"
+    }
+  ],
+  "wiki": {
+    "publishedCommit": "c881a5337e1555d007c3a6c2f6206b2680b161c5",
+    "matchingPages": 15,
+    "publicChecks": [
+      {
+        "url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/wiki",
+        "status": 200,
+        "publicPlaytestLinkPresent": true
+      },
+      {
+        "url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/wiki/Getting-Started",
+        "status": 200,
+        "publicPlaytestLinkPresent": true
+      }
+    ]
+  },
+  "playableSourceClasses": [
+    "soldier",
+    "medic",
+    "heavy"
+  ],
+  "playableSourceBosses": [
+    "constable",
+    "lantern-warden"
+  ],
+  "wardenMotionFrames": 27,
+  "heavyMotionFrames": 32,
+  "totalMotionFrames": 59,
+  "finalLocalStress": {
+    "report": "reviews/performance/protocol5-three-classes-compact-waves-2026-10-23.json",
+    "scriptedClients": 50,
+    "renderedClients": 0,
+    "peakHostiles": 4000,
+    "p99Ms": 23.521099999999933,
+    "maximumMs": 38.62330000000111
+  },
+  "localPreview": {
+    "game": "http://127.0.0.1:5173/",
+    "serverProtocol": 5,
+    "successfulHTTPChecks": 20,
+    "browserExecutionPerformed": false
+  },
+  "publicDeploymentPerformed": false,
+  "recordedPublicFrontend": "33b36bc",
+  "recordedPublicGameplay": "dfade8834e81cfd324eeb124d22ec3b7bd68c245",
+  "recordedPublicProtocol": 4,
+  "browserTroubleshootingRepeated": false,
+  "phaserMotionAccepted": false,
+  "humanReviewPerformed": false,
+  "limits": [
+    "Exact source commit CI and matching Wiki evidence. A later evidence-only commit may have a newer HEAD.",
+    "Short local server pilot; no rendered FPS, continuous-every-frame 4000 count, WAN/host capacity or endurance proof.",
+    "Full content, action art, live recovery/rankings/profiles, physical devices, human/native-language review and Windows release remain open."
+  ]
+}
