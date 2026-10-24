@@ -1,10 +1,16 @@
+import { implementedBossIds } from '../shared/game.ts';
 import { Server } from '@colyseus/core';
 import { WebSocketTransport } from '@colyseus/ws-transport';
 import { createServer } from 'node:http';
 import { pathToFileURL } from 'node:url';
 import { GraveRoom, privateRooms, liveRooms } from './GraveRoom.ts';
 import { capacity } from './capacity.ts';
-import { CONTENT_REVISION, PROTOCOL } from '../shared/protocol.ts';
+import {
+  CONTENT_REVISION,
+  PROTOCOL,
+  implementedClassIds,
+  implementedModeIds,
+} from '../shared/protocol.ts';
 import type { RunJournal } from './run-journal.ts';
 export function createGameServer(options: { createRunJournal?: () => RunJournal } = {}) {
   const startedAt = new Date().toISOString();
@@ -48,7 +54,12 @@ export function createGameServer(options: { createRunJournal?: () => RunJournal 
           status: 'ok',
           startedAt,
           uptimeSeconds: process.uptime(),
-          prototype: 'seven-class-twenty-three-boss-circuit',
+          prototype: 'grave-accord-development',
+          playable: {
+            bosses: implementedBossIds.length,
+            classes: implementedClassIds.length,
+            modes: [...implementedModeIds],
+          },
           protocolVersion: PROTOCOL,
           contentRevision: CONTENT_REVISION,
           practiceOnly: true,

@@ -16,7 +16,7 @@ Development build **2026.10.24-pilgrimage**, protocol 10. These entries describe
 - Composed twenty new original themes with separate melodies, harmonic routes and phrasing. All earlier 23 music masters remain unchanged. Objective checks cover all 43 themes; final listening and device mix approval are still open.
 - Protocol 10 shares ice drift and seal cleansing with prediction, preserves bounded local protocol-9 saves, and replicates frozen/restarted projectile velocities using the same identities. Fixed a route-income rounding error that could lose one coin.
 - A guarded core transfers one boosted boss hit rather than double-counting the body. Warps reset the collision origin, moving cover stops at masonry, neutral salt holds delay the real next cast, and network signature cues copy coordinates without overwriting their numeric IDs.
-- Fixed health-reducing mutations at the voting boundary: current health and maximum health now agree immediately, so authoritative recovery accepts the same valid state the player sees.
+- Fixed health-reducing mutations at the voting boundary: current health and maximum health now agree immediately, so authoritative recovery accepts the same valid state the player sees. The local service health endpoint now reports actual playable-content counts automatically.
 
 ## 2026-10-24 — An in-game development journal
 
