@@ -44,7 +44,7 @@ self.onmessage = (e: MessageEvent) => {
     paused = false;
     last = performance.now();
     accumulator = 0;
-    emit();
+    emit(true);
   }
   if (!game) return;
   if (m.type === 'input') game.submitInput('solo', m.input);

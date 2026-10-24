@@ -1,6 +1,20 @@
 # Changelog
 
-Development build **2026.10.24-audio-delivery**, protocol 13. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.24-windows-lan**, protocol 13. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-24 — Windows portable app and opt-in LAN hosting
+
+### Desktop runtime
+
+- Added an Electron 45 Windows shell with a sandboxed isolated renderer, bundled fonts/art/music, the shared offline worker and native bell branding. Offline play starts no server and requires no separately installed Node or internet connection.
+- The desktop LAN menu explicitly starts/stops a separate bundled authority, shares private IPv4 addresses and accepts local host addresses. All seven classes and five modes retain their server-owned rules. Occupied ports return an error without replacing the existing listener.
+- The preload exposes only validated LAN commands to the main frame. Local assets use a restricted custom protocol, external navigation is bounded, and profile/preferences remain portable through existing JSON import/export.
+
+### Validation and delivery
+
+- The automated packaged renderer checks all 210 class/mode/difficulty starts, checkpoint restore, movement, firing, profile storage, bundled fonts and native decoding of all 61 compressed tracks. It reports zero external network attempts and no LAN authority on offline startup.
+- A separate native utility-process fixture exercises occupied-port preservation, two real WebSocket clients, combat replication and graceful shutdown. A physical second-computer LAN playtest and manual rendered/audio acceptance remain open.
+- Portable build tooling retains runtime license files and produces a per-file hash manifest. Fresh ZIP extraction, an ordinary Windows copy and exact build/source identity are verified separately for each issued package. The Windows build is an unsigned development playtest; final animation, tuning, online rankings/recovery and human/device/language release gates remain open.
 
 ## 2026-10-24 — Illustrated game Wiki
 

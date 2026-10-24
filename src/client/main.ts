@@ -168,7 +168,7 @@ async function begin(
   const opts = prepared ?? options();
   notice(t('ui.connecting'));
   await audio.unlock().catch(() => {});
-  session = new Session();
+  session = new Session(opts.serverEndpoint);
   const active = session;
   try {
     setupGame(online);

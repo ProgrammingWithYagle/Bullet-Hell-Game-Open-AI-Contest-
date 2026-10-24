@@ -1,3 +1,5 @@
+import { desktopBridge } from '../desktop.ts';
+import { mountLan, desktopText } from './lan.ts';
 import { mountProfile } from './profile.ts';
 import { loadProfile, changeProfile, difficultyUnlocked } from '../profile.ts';
 import history from '../../shared/update-history.json';
@@ -53,9 +55,11 @@ export function mountSetup(host: HTMLElement, hooks: Hooks) {
   const availableClass = (id: string) => implementedClassIds.includes(id as ClassId),
     availableMode = (id: string) => ['short', 'standard', 'long', 'raid', 'endless'].includes(id);
   const modeCapacity = (id: string, maximum: number) =>
-    availableMode(id) ? Math.min(maximum, onlinePlaytestSlots ?? maximum) : maximum;
+    availableMode(id)
+      ? Math.min(maximum, selected.serverEndpoint ? maximum : (onlinePlaytestSlots ?? maximum))
+      : maximum;
   const capacityNotice = () =>
-    onlinePlaytestSlots
+    onlinePlaytestSlots && !selected.serverEndpoint
       ? `<p class="prototype-note">${e(t('ui.playtestCapacity', { count: number(onlinePlaytestSlots) }))}</p>`
       : '';
   const steps = ['class', 'mode', 'map', 'difficulty', 'review'];
@@ -91,7 +95,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks) {
     host.innerHTML = `<div class="expedition-shell ${page === 'home' ? 'at-home' : ''}"><header class="masthead"><button id="brand-home" class="brand">${icon('bell')}<span>GRAVE ACCORD<small>${e(t('ui.tagline'))}</small></span></button><div class="masthead-controls"><label class="sr-only" for="language">${e(t('ui.language'))}</label><select id="language" aria-label="${e(t('ui.language'))}">${languages.map(([id, label]) => `<option value="${id}" ${id === locale ? 'selected' : ''}>${e(label)}</option>`).join('')}</select><button id="guide" class="icon-button" aria-label="${e(t('ui.playTutorial'))}" title="${e(t('ui.playTutorial'))}">${icon('tree')}</button><button id="settings" class="icon-button" aria-label="${e(t('ui.settings'))}">${icon('engineer')}</button></div></header>${stage >= 0 ? `<nav class="setup-steps" aria-label="${e(t('ui.chooseSetup'))}">${steps.map((step, i) => `<button data-page="${step}" class="${i === stage ? 'current' : ''}" ${i > stage ? 'disabled' : ''}><b>${number(i + 1)}</b><span>${e(t(labels[step]))}</span></button>`).join('')}</nav>` : ''}<section id="setup-content" class="setup-content"></section><p id="notice" class="setup-notice" role="status" hidden></p><footer class="setup-footer"><span><bdi>${e(revision.version)} · ${e(history.buildId)}</bdi> · ${e(t('ui.translationNotice'))}</span><a href="https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/wiki" target="_blank" rel="noopener">${e(t('ui.howToPlay'))}</a><button id="changelog" class="footer-link">${e(t('ui.changelog'))}</button></footer></div>`;
     const content = host.querySelector<HTMLElement>('#setup-content')!;
     if (page === 'home')
-      content.innerHTML = `<div class="home-composition"><div class="home-art"><img src="${assets.cover}" alt="Grave Accord"></div><div class="home-actions"><p class="eyebrow">${e(t('ui.chooseSetup'))}</p><h1>${e(t('ui.tagline'))}</h1><div class="home-buttons">${button('new-run', t('ui.newRun'), 'play', 'class="primary"')}${savedBoundary() ? button('resume-boundary', t('ui.resumeCheckpoint'), 'bell') : ''}${button('join', t('ui.joinRoom'), 'rescue')}${button('profile', t('ui.profile'), 'bell')}${button('tutorial', t('ui.tutorial'), 'tree')}</div><p class="prototype-note">${e(prototypeNotice[locale])}</p>${capacityNotice()}</div></div>`;
+      content.innerHTML = `<div class="home-composition"><div class="home-art"><img src="${assets.cover}" alt="Grave Accord"></div><div class="home-actions"><p class="eyebrow">${e(t('ui.chooseSetup'))}</p><h1>${e(t('ui.tagline'))}</h1><div class="home-buttons">${button('new-run', t('ui.newRun'), 'play', 'class="primary"')}${savedBoundary() ? button('resume-boundary', t('ui.resumeCheckpoint'), 'bell') : ''}${button('join', t('ui.joinRoom'), 'rescue')}${desktopBridge() ? button('lan', desktopText('title'), 'rescue') : ''}${button('profile', t('ui.profile'), 'bell')}${button('tutorial', t('ui.tutorial'), 'tree')}</div><p class="prototype-note">${e(prototypeNotice[locale])}</p>${capacityNotice()}</div></div>`;
     if (page === 'class') {
       const c = data.classes.find((c) => c.id === previewClass)!;
       content.innerHTML = `<div class="setup-heading"><h1>${e(t(labels[page]))}</h1><p>${e(t('ui.tutorialTeam'))}</p></div><div class="class-composition"><div class="character-roster" role="group" aria-label="${e(t('ui.chooseClass'))}">${data.classes.map((cl) => `<button data-class="${cl.id}" aria-pressed="${cl.id === previewClass}" class="character-pick ${cl.id === previewClass ? 'selected' : ''}">${portrait(cl.id, 'small')}<span>${e(t('class.' + cl.id + '.name'))}<small>${e(cl.survivor)}</small></span>${availableClass(cl.id) ? '' : icon('lock')}</button>`).join('')}</div><div class="character-reveal">${portrait(c.id)}<span class="character-sigil">${icon(c.id)}</span></div><article class="character-story"><span class="eyebrow">${e(c.survivor)}</span><h2>${e(t('class.' + c.id + '.name'))}</h2><p>${e(t('class.' + c.id + '.role'))}</p><p class="lore">${e(t('class.' + c.id + '.lore'))}</p><div class="stat-ribbon"><span>${icon('health')}${number(c.health)} ${e(t('stat.health'))}</span><span>${icon('move')}${number(c.speed)} ${e(t('stat.moveSpeed'))}</span></div><div class="starting-abilities">${[...c.abilities, c.ultimate].map((a) => `<article>${icon(a.slot === 'ultimate' ? 'ultimate' : 'ability')}<div><h3>${e(t('ability.' + a.id + '.name'))}</h3><p>${e(t('ability.' + a.id + '.description'))}</p><small>${e(t('ui.cooldown', { seconds: t('template.seconds', { value: number(a.cooldown) }) }))}</small></div></article>`).join('')}</div>${availableClass(c.id) ? '' : `<p class="availability">${e(t('ui.inProduction'))}</p>`}</article></div>${navigation(!availableClass(c.id))}`;
@@ -107,7 +111,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks) {
     if (page === 'difficulty')
       content.innerHTML = `<div class="setup-heading"><h1>${e(t(labels[page]))}</h1></div><div class="difficulty-cards">${data.difficulties.map((d, i) => `<button data-difficulty="${d.id}" class="difficulty-pick ${d.id === selected.difficulty ? 'selected' : ''}" ${!difficultyAvailable(d.id) ? 'disabled' : ''} aria-pressed="${d.id === selected.difficulty}"><span class="difficulty-bells">${Array.from({ length: i + 1 }, () => icon('bell')).join('')}</span><h2>${e(t('difficulty.' + d.id))}</h2><span>${e(t('stat.health'))} ×${number(d.health, 2)}</span><span>${e(t('stat.damage'))} ×${number(d.damage, 2)}</span><span>${e(t('stat.bossSpeed'))} ×${number(d.speed, 2)}</span>${!difficultyAvailable(d.id) ? `<small>${e(t('ui.hardUnlock'))}</small>` : ''}</button>`).join('')}</div>${navigation(false)}`;
     if (page === 'review')
-      content.innerHTML = `<div class="setup-heading"><h1>${e(t(labels[page]))}</h1></div><div class="review-composition"><div class="review-portrait">${portrait(selected.classId)}</div><section><h2>${e(t('class.' + selected.classId + '.name'))} · ${e(t('mode.' + selected.mode + '.name'))}</h2><p>${e(t('arena.' + arenaId + '.name'))} · ${e(t('difficulty.' + selected.difficulty))}</p><label class="name-label">${e(t('ui.boss'))}<select id="opening-boss">${implementedBossIds.map((id) => `<option value="${id}" ${id === selected.openingBossId ? 'selected' : ''}>${e(t('boss.' + id + '.name'))}</option>`).join('')}</select></label><label class="name-label">${e(t('ui.displayName'))}<input id="name" value="${e(selected.name)}" maxlength="24" autocomplete="nickname"></label><div class="connection-choices" role="group" aria-label="${e(t('ui.roomSettings'))}">${[
+      content.innerHTML = `<div class="setup-heading"><h1>${e(t(labels[page]))}</h1></div><div class="review-composition"><div class="review-portrait">${portrait(selected.classId)}</div><section><h2>${e(t('class.' + selected.classId + '.name'))} · ${e(t('mode.' + selected.mode + '.name'))}</h2><p>${e(t('arena.' + arenaId + '.name'))} · ${e(t('difficulty.' + selected.difficulty))}</p>${selected.serverEndpoint ? `<p class="prototype-note">${e(desktopText('target'))}: <bdi>${e(selected.serverEndpoint)}</bdi></p>` : ''}<label class="name-label">${e(t('ui.boss'))}<select id="opening-boss">${implementedBossIds.map((id) => `<option value="${id}" ${id === selected.openingBossId ? 'selected' : ''}>${e(t('boss.' + id + '.name'))}</option>`).join('')}</select></label><label class="name-label">${e(t('ui.displayName'))}<input id="name" value="${e(selected.name)}" maxlength="24" autocomplete="nickname"></label><div class="connection-choices" role="group" aria-label="${e(t('ui.roomSettings'))}">${[
         ['offline', 'ui.solo', 'soldier'],
         ['public', 'ui.publicRooms', 'rescue'],
         ['private', 'ui.privateRoom', 'lock'],
@@ -128,6 +132,20 @@ export function mountSetup(host: HTMLElement, hooks: Hooks) {
           render();
         },
       );
+    if (page === 'lan')
+      mountLan(
+        content,
+        (endpoint) => {
+          selected.serverEndpoint = endpoint;
+          visibility = 'public';
+          go('class');
+        },
+        (endpoint) => {
+          selected.serverEndpoint = endpoint;
+          go('join');
+        },
+        () => go('home'),
+      );
     if (page === 'changelog')
       content.innerHTML = changelogHTML(
         {
@@ -140,15 +158,23 @@ export function mountSetup(host: HTMLElement, hooks: Hooks) {
     if (page === 'settings')
       content.innerHTML = `<div class="settings-page"><h1>${e(t('ui.settings'))}</h1>${hooks.settingsHTML()}<div class="actions">${button('back-home', t('ui.back'), 'map')}</div></div>`;
     if (page === 'join')
-      content.innerHTML = `<div class="join-page"><div class="setup-heading"><h1>${e(t('ui.joinRoom'))}</h1></div><div class="join-options"><label>${e(t('ui.displayName'))}<input id="name" maxlength="24" value="${e(selected.name)}"></label><label>${e(t('ui.chooseClass'))}<select id="join-class">${implementedClassIds.map((id) => `<option value="${id}" ${selected.classId === id ? 'selected' : ''}>${e(t('class.' + id + '.name'))}</option>`).join('')}</select></label><label>${e(t('ui.roomCode'))}<div class="inline"><input id="code" maxlength="6" autocapitalize="characters" spellcheck="false"><button id="join-code">${e(t('ui.joinRoom'))}</button></div></label></div><div class="section-heading"><h2>${e(t('ui.publicRooms'))}</h2><button id="refresh">${e(t('ui.search'))}</button></div><div id="rooms" class="rooms"><p>${e(t('ui.noRooms'))}</p></div><div class="actions">${button('back-home', t('ui.back'), 'map')}</div></div>`;
+      content.innerHTML = `<div class="join-page"><div class="setup-heading"><h1>${e(t('ui.joinRoom'))}</h1>${selected.serverEndpoint ? `<p>${e(desktopText('target'))}: <bdi>${e(selected.serverEndpoint)}</bdi></p>` : ''}</div><div class="join-options"><label>${e(t('ui.displayName'))}<input id="name" maxlength="24" value="${e(selected.name)}"></label><label>${e(t('ui.chooseClass'))}<select id="join-class">${implementedClassIds.map((id) => `<option value="${id}" ${selected.classId === id ? 'selected' : ''}>${e(t('class.' + id + '.name'))}</option>`).join('')}</select></label><label>${e(t('ui.roomCode'))}<div class="inline"><input id="code" maxlength="6" autocapitalize="characters" spellcheck="false"><button id="join-code">${e(t('ui.joinRoom'))}</button></div></label></div><div class="section-heading"><h2>${e(t('ui.publicRooms'))}</h2><button id="refresh">${e(t('ui.search'))}</button></div><div id="rooms" class="rooms"><p>${e(t('ui.noRooms'))}</p></div><div class="actions">${button('back-home', t('ui.back'), 'map')}</div></div>`;
     const byId = (id: string, fn: () => void) => {
       const el = host.querySelector<HTMLElement>('#' + id);
       if (el) el.onclick = fn;
     };
     byId('brand-home', () => go('home'));
-    byId('new-run', () => go('class'));
+    byId('new-run', () => {
+      selected.serverEndpoint = undefined;
+      visibility = 'offline';
+      go('class');
+    });
     byId('resume-boundary', hooks.resume);
-    byId('join', () => go('join'));
+    byId('join', () => {
+      selected.serverEndpoint = undefined;
+      go('join');
+    });
+    byId('lan', () => go('lan'));
     byId('settings', () => go('settings'));
     byId('changelog', () => go('changelog'));
     byId('profile', () => go('profile'));
@@ -260,7 +286,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks) {
       byId('refresh', () => {
         void (async () => {
           try {
-            const rooms = await new Session().rooms(),
+            const rooms = await new Session(selected.serverEndpoint).rooms(),
               list = host.querySelector<HTMLElement>('#rooms');
             if (!list) return;
             list.replaceChildren();

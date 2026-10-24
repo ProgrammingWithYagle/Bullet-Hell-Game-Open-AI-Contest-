@@ -1,6 +1,6 @@
 # Grave Accord
 
-A cooperative gothic bullet-hell game in active development. Current feature branch: build **2026.10.24-audio-delivery**, protocol **13**, 60 distinct executable bosses with individual original themes, seven classes, 378 skills, 28 weapons and six different map layouts/sizes.
+A cooperative gothic bullet-hell game in active development. Current feature branch: build **2026.10.24-windows-lan**, protocol **13**, 60 distinct executable bosses with individual original themes, seven classes, 378 skills, 28 weapons and six different map layouts/sizes.
 
 All sixty identities execute, including nine scheduled Endless exclusives and the optional Uncounted finale. Five modes work offline and in local online rooms: five-fight Quarantine Run, ten-fight Midnight Circuit, sixteen-fight Black Bell Pilgrimage, three-fight Grand Raid and uncapped Endless Vigil. The in-game main menu has a dated changelog generated from the same history as [CHANGELOG.md](CHANGELOG.md) and the [GitHub Wiki changelog](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/wiki/Changelog).
 
@@ -9,3 +9,7 @@ Use Node 24 and pnpm 11.25.0. Run `pnpm install --frozen-lockfile`, `pnpm verify
 [Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains the current source. Protected main is a separate release boundary. The [public playtest](https://grave-accord-playtest.ivoryflame12.chatgpt.site/) still serves its earlier two-class, one-boss protocol-4 deployment. Source/Wiki updates do not redeploy it.
 
 The [Wiki](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/wiki), [Raid implementation](docs/GRAND_RAID_RUNTIME.md), [Pilgrimage implementation](docs/PILGRIMAGE_RUNTIME.md), [game bible](docs/GAME_BIBLE.md) and [authored roster](docs/BOSS_ROSTER_EXPANSION.md) distinguish working behavior from planned content. The authored target has sixty boss identities. Profiles now preserve class mastery, rescues, codex discoveries, cosmetic insignia, personal/squad Endless bests, settings and control mappings; a full Hard campaign unlocks Insane/Hellish. [Profile details](docs/PROFILE_V1.md). Complete directional/action animation, final encounter tuning, verified rankings, durable online recovery and Windows/offline/LAN packaging remain unfinished. Full rendered animation, listening, physical-device/native-language, WAN/endurance, capacity and balance acceptance remain open.
+
+## Windows development build
+
+The source includes a sandboxed Electron 45 app and explicit LAN host/join menu. After `pnpm verify`, run `pnpm desktop:build` on Windows to produce a new portable folder under `release/`. The app bundles its own runtime and assets; offline solo requires no Node or network. LAN uses a separate authority only after Host is selected. [Desktop build and validation](docs/WINDOWS_DESKTOP.md). Issued artifact links and extraction/copy evidence are maintained separately from the protected-main release boundary.

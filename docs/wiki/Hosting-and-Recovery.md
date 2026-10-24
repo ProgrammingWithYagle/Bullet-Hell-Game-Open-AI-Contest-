@@ -18,10 +18,12 @@ The existing public Site remains the earlier protocol-4 frontend and gameplay. S
 | SQL/HTTP/journal recovery foundation | Tested modules; disabled in the normal runtime |
 | Durable server-restart recovery | Not live |
 | Verified public rankings | Not live |
-| Portable Windows/offline/LAN release | Not built |
+| Windows portable runtime | Implemented and locally packaged; per-artifact extraction/copy evidence and release links are recorded separately |
 
 Server capacity and per-room capacity are separate constraints. Earlier scripted stress fixtures are not proof of physical-device FPS, WAN stability or a host's production capacity. Final 49+1, endurance and deployment acceptance remain open.
 
 Do not restart a local online service while active combat or reconnect reservations exist without coordinating with its players. Current development refreshes inspect health, admission and process identity first.
 
 [Getting Started](Getting-Started) · [Architecture](Architecture) · [Recovery design and gates](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/RECOVERY_IMPLEMENTATION.md) · [Hosting capacity](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/HOSTING_CAPACITY.md)
+
+The Electron desktop app contains its own runtime/assets and starts no server for offline solo. The desktop LAN menu explicitly launches a separate bundled authority; it reports an occupied port without replacing that listener. Automated native fixtures cover two local SDK clients and shutdown. Physical second-machine LAN and manual rendered/audio/device acceptance remain open. [Windows implementation](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/WINDOWS_DESKTOP.md).

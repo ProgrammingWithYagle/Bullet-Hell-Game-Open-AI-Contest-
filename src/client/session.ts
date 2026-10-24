@@ -18,6 +18,7 @@ import { savedBoundary, storeBoundary } from './storage.ts';
 import { recordPracticeCampaign } from './progress.ts';
 import { productionGameServer } from './deployment.ts';
 export type ConnectionOptions = {
+  serverEndpoint?: string;
   name: string;
   classId: ClassId;
   mode: 'short' | 'standard' | 'long' | 'raid' | 'endless';
@@ -115,8 +116,9 @@ export class Session {
       if (!response.ok) throw Error(response.status === 429 ? 'ui.errorRate' : 'ui.errorCode');
       roomId = ((await response.json()) as { roomId: string }).roomId;
     }
+    const { serverEndpoint: _endpoint, ...roomOptions } = options;
     const settings = {
-      ...options,
+      ...roomOptions,
       contentRevision: CONTENT_REVISION,
       protocolVersion: PROTOCOL,
       createKey: crypto.randomUUID(),
