@@ -1,5 +1,8 @@
 # Getting started
 
+Current development adds all seven playable classes, 378 skill nodes, 28 weapons, and six different map sizes/layouts. Nine bosses and their individual themes remain connected. Protocol 8 is required by current source. Final visuals, other boss identities/routes and release systems remain unfinished.
+
+
 > Current source continuation: nine playable bosses, six connected collision layouts and separate boss themes. Quarantine now ends with Chain Marshal, Gate Widow or Black Ambulance after its regular encounters. Protocol 7; 133 checks pass. Four further classes, full environment/action art, additional routes/bosses and final release acceptance remain open. See the repository document `docs/QUARANTINE_RUNTIME.md` for exact mechanics and evidence.
 
 

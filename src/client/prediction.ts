@@ -1,5 +1,6 @@
 import { moveBody, distance } from '../shared/geometry.ts';
 import { gateObstacles, leaveClosingGates } from '../shared/civic-director.ts';
+import { runtimeArena } from '../shared/arena-layouts.ts';
 import { data } from '../shared/game.ts';
 import { DT, HZ, type InputFrame } from '../shared/protocol.ts';
 import type { PlayerView, View } from '../shared/view.ts';
@@ -46,12 +47,16 @@ export class Prediction {
           .map((f) => f.movement ?? 0),
       ),
       dash = now < p.dashUntil,
-      speed = dash ? data.rules.dodgeSpeed : p.speed * (now < p.slowUntil ? 0.65 : 1) * (1 + rally);
+      speed = dash
+        ? now < p.kit.chargeUntil
+          ? 600
+          : data.rules.dodgeSpeed
+        : p.speed * (now < p.slowUntil ? 0.65 : 1) * (1 + rally);
     const next = moveBody(
       p,
       { x: (dash ? p.dashX : mx) * speed * DT, y: (dash ? p.dashY : my) * speed * DT },
       data.rules.playerRadius,
-      [...data.arenas.find((a) => a.id === view.arenaId)!.obstacles, ...gates],
+      [...runtimeArena(view.arenaId).obstacles, ...gates],
     );
     p.x = next.x;
     p.y = next.y;

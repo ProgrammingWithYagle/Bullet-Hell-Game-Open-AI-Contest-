@@ -1,3 +1,4 @@
+import { runtimeArenas, runtimeArena } from '../../shared/arena-layouts.ts';
 import { data, implementedBossIds } from '../../shared/game.ts';
 import { implementedClassIds, type ClassId, type BossId } from '../../shared/protocol.ts';
 import { Session, type ConnectionOptions } from '../session.ts';
@@ -65,10 +66,10 @@ export function mountSetup(host: HTMLElement, hooks: Hooks) {
     `<button id="${id}" ${extra}>${icon(glyph)}<span>${e(title)}</span></button>`;
   const modeMap = (id: string) => data.modes.find((m) => m.id === id)!;
   const mapPreview = (id: string) => {
-    const a = data.arenas.find((a) => a.id === id)!;
+    const a = runtimeArena(id);
     return id === 'gatehouse'
       ? `<img class="arena-preview" src="${assets.arena}" alt="${e(t('arena.' + a.id + '.name'))}">`
-      : `<svg class="arena-preview arena-plan" viewBox="0 0 1600 1000" role="img" aria-label="${e(t('ui.map'))}"><rect x="20" y="20" width="1560" height="960" rx="40" fill="${a.floor}" stroke="#c8c2a1" stroke-width="12"/>${a.obstacles.map((o) => `<rect x="${o.x}" y="${o.y}" width="${o.width}" height="${o.height}" fill="${a.shadow}" stroke="#ccc4a3" stroke-width="8"/>`).join('')}<circle cx="800" cy="300" r="60" fill="none" stroke="#e7a477" stroke-width="12"/><circle cx="800" cy="800" r="30" fill="#b7dec7"/></svg>`;
+      : `<svg class="arena-preview arena-plan" viewBox="0 0 1600 1000" role="img" aria-label="${e(t('ui.map'))}"><rect x="${a.bounds.x}" y="${a.bounds.y}" width="${a.width}" height="${a.height}" rx="40" fill="${a.floor}" stroke="#c8c2a1" stroke-width="12"/>${a.obstacles.map((o) => `<rect x="${o.x}" y="${o.y}" width="${o.width}" height="${o.height}" fill="${a.shadow}" stroke="#ccc4a3" stroke-width="8"/>`).join('')}<circle cx="${a.bossSpawn.x}" cy="${a.bossSpawn.y}" r="60" fill="none" stroke="#e7a477" stroke-width="12"/><circle cx="${a.playerSpawn.x}" cy="${a.playerSpawn.y}" r="30" fill="#b7dec7"/></svg>`;
   };
   function render() {
     const stage = steps.indexOf(page);
@@ -85,7 +86,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks) {
       content.innerHTML = `<div class="setup-heading"><h1>${e(t(labels[page]))}</h1></div><div class="route-composition"><div class="route-list">${data.modes.map((m) => `<button data-mode="${m.id}" class="route-pick ${m.id === previewMode ? 'selected' : ''}" aria-pressed="${m.id === previewMode}">${icon(m.id === 'endless' ? 'infinity' : 'map')}<span>${e(t('mode.' + m.id + '.name'))}<small>${number(modeCapacity(m.id, m.maxPlayers))} ${e(t('ui.players'))}</small></span>${availableMode(m.id) ? '' : icon('lock')}</button>`).join('')}</div><article class="route-detail">${mapPreview('gatehouse')}<div><p class="eyebrow">${e(t('ui.chooseMode'))}</p><h2>${e(t('mode.' + m.id + '.name'))}</h2><p>${e(t('mode.' + m.id + '.description'))}</p><div class="stat-ribbon"><span>${icon('rescue')}${number(m.minPlayers)}–${number(modeCapacity(m.id, m.maxPlayers))}</span><span>${icon(m.encounters ? 'bell' : 'infinity')}${m.encounters ? number(m.encounters) : '∞'}</span></div><p class="prototype-note">${availableMode(m.id) ? e(prototypeNotice[locale]) : e(t('ui.inProduction'))}</p></div></article></div>${navigation(!availableMode(m.id))}`;
     }
     if (page === 'map') {
-      const a = data.arenas.find((a) => a.id === previewMap)!;
+      const a = runtimeArena(previewMap);
       content.innerHTML = `<div class="setup-heading"><h1>${e(t('ui.map'))}</h1></div><div class="map-composition"><div class="map-strip">${data.arenas.map((a) => `<button data-map="${a.id}" class="map-pick ${a.id === previewMap ? 'selected' : ''}" aria-pressed="${a.id === previewMap}">${icon('map')}<span>${e(t('arena.' + a.id + '.name'))}</span></button>`).join('')}</div><article class="map-detail">${mapPreview(a.id)}<div><h2>${e(t('arena.' + a.id + '.name'))}</h2><p>${e(t('arena.' + a.id + '.description'))}</p><div class="stat-ribbon"><span>${e(t('template.pixels', { value: number(a.width) + ' × ' + number(a.height) }))}</span></div></div></article></div>${navigation(false)}`;
     }
     if (page === 'difficulty')

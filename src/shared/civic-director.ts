@@ -179,7 +179,9 @@ export class CivicDirector {
   }
   private startWheel(context: SignatureContext) {
     if (this.wheels.length) return;
-    const target = context.targets[context.phase % context.targets.length];
+    const targets = context.aimTargets ?? context.targets;
+    if (!targets.length) return;
+    const target = targets[context.phase % targets.length];
     const angle = Math.atan2(target.y - context.boss.y, target.x - context.boss.x);
     const d = { x: Math.cos(angle), y: Math.sin(angle) };
     const bounce = this.ray(context, context.boss, d, 42);
@@ -232,13 +234,14 @@ export class CivicDirector {
   private startGates(context: SignatureContext) {
     if (this.gates.length) return;
     const at = context.tick + ticks(1.5);
+    const bounds = context.bounds ?? { x: 200, y: 0, width: 1200, height: 1000 };
     for (let lane = 0; lane < 3; lane++)
       this.gates.push({
         kind: 'gate',
         id: context.id(),
-        x: 200 + lane * 400,
+        x: bounds.x + (lane * bounds.width) / 3,
         y: 615,
-        width: 400,
+        width: bounds.width / 3,
         height: 48,
         open: lane === this.openLane,
         lane,

@@ -1,9 +1,17 @@
 import revision from '../../content/revision.json' with { type: 'json' };
-export const PROTOCOL = 7;
+export const PROTOCOL = 8;
 export const CONTENT_REVISION = revision.sha256;
 export const HZ = 30,
   DT = 1 / HZ;
-export const implementedClassIds = ['soldier', 'medic', 'heavy'] as const;
+export const implementedClassIds = [
+  'soldier',
+  'medic',
+  'heavy',
+  'tank',
+  'mage',
+  'engineer',
+  'assassin',
+] as const;
 export type ClassId = (typeof implementedClassIds)[number];
 export type BossId =
   | 'constable'

@@ -1,5 +1,8 @@
 # Changelog
 
+Current source: all seven classes, 378 nodes, 28 weapons, nine bosses/themes and six different map sizes/layouts. Protocol 8 includes authoritative class kit state. The class art package adds 124 approved motion poses and 52 item illustrations; final rendered/human/device acceptance is open.
+
+
 Meaningful implemented changes are recorded here. Planned work belongs in the Project and implementation state, not in release claims.
 
 ## Unreleased

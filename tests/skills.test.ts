@@ -31,7 +31,7 @@ test('all seven classes have 54 nodes and every branch contains the complete 18-
   }
   assert.equal(ids.size, 378);
 });
-test('all 27 implemented Soldier/Medic/Heavy specialization paths enforce prerequisites and spend exactly 21 points', () => {
+test('all 63 implemented specialization paths enforce prerequisites and spend exactly 21 points', () => {
   for (const classId of implementedClassIds)
     for (const branch of data.classes.find((c) => c.id === classId)!.branches)
       for (const sub of branch.subbranches) {

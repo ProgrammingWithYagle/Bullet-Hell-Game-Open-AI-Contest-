@@ -1,5 +1,8 @@
 # Architecture
 
+Current source: all seven classes, 378 nodes, 28 weapons, nine bosses/themes and six different map sizes/layouts. Protocol 8 includes authoritative class kit state. The class art package adds 124 approved motion poses and 52 item illustrations; final rendered/human/device acceptance is open.
+
+
 The development runtime uses TypeScript, Phaser 4.2.1, Vite 8.3.5 and Colyseus 0.18. A deterministic shared simulation owns combat, progression, purchases, votes and timers. It advances at 30 Hz; Schema patches initially run at 20 Hz. Phaser renders independently and pools projectile images. Movement uses prediction/reconciliation with the same masonry collision rules as authority.
 
 Offline solo runs those rules in a worker. Online rooms run on the official gameplay server, validate bounded/finite inputs and reject stale sequences. The server owns currency, class compatibility, skill prerequisites, duplicate purchase replies and damage. Public and private discovery, capacity admission and sixty-second reconnect reservations are implemented. Private codes and reconnect credentials do not belong in public room listings.

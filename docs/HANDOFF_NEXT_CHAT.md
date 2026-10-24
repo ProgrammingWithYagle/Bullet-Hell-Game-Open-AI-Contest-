@@ -1,5 +1,10 @@
 # Grave Accord — complete continuation handoff
 
+Current checkpoint: all seven classes are playable with 378 skill nodes, 63 specialization paths and 28 weapons. Six maps have distinct layouts and actual playable sizes. Nine bosses each have an original theme. Protocol 8 carries class kit state. Class art adds 124 approved run poses, 52 item illustrations and 16 environment/construct props; Engineer north uses four consistent poses, with its other four retained as rejected. See [class and arena runtime](CLASS_AND_ARENA_RUNTIME.md). Full-game, final rendered, human/device and release acceptance remain open.
+
+The older checkpoint descriptions below are historical; this paragraph supersedes their current-state counts.
+
+
 **Current continuation:** [QUARANTINE_RUNTIME.md](QUARANTINE_RUNTIME.md) adds Tollkeeper and three Quarantine finales: nine playable bosses, a regular/finale short-route pool, six connected arena layouts, 32 more drawn poses, nine boss themes, protocol 7 and 133 passing tests. Full class/route/art/device/release work continues.
 
 

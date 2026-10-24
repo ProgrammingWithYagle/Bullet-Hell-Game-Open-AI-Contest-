@@ -58,6 +58,8 @@ export type SignatureContext = {
   radius: number;
   targets: (Vec & { id: string; oldX: number; oldY: number })[];
   obstacles: Rect[];
+  bounds?: Rect;
+  aimTargets?: (Vec & { id: string; oldX: number; oldY: number })[];
   damageScale: number;
   brutal: boolean;
   phase: number;

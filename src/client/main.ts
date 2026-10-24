@@ -368,7 +368,7 @@ function update(view: View) {
   for (const [key, label, at, name] of [
     ['Space', t('ui.dodge'), p.dodgeAt, ''],
     ['Q', t('ui.abilityQ'), p.qAt, t('ability.' + cl.abilities[0].id + '.name')],
-    ['E', t('ui.abilityE'), p.eAt, t('ability.' + cl.abilities[1].id + '.name')],
+    ['E', t('ui.abilityE') + (p.kit.stepCharges>0 ? ' ×'+number(p.kit.stepCharges) : ''), p.kit.stepCharges>0 ? 0 : p.eAt, t('ability.' + cl.abilities[1].id + '.name')],
     ['X', t('ui.ultimate'), p.ultimateAt, t('ability.' + cl.ultimate.id + '.name')],
   ] as const) {
     let e = abilityList.querySelector<HTMLElement>('[data-ability="' + key + '"]');

@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-24 — Seven classes and distinct arenas
+
+Current checkpoint: all seven classes are playable with 378 skill nodes, 63 specialization paths and 28 weapons. Six maps have distinct layouts and actual playable sizes. Nine bosses each have an original theme. Protocol 8 carries class kit state. Class art adds 124 approved run poses, 52 item illustrations and 16 environment/construct props; Engineer north uses four consistent poses, with its other four retained as rejected. See [class and arena runtime](docs/CLASS_AND_ARENA_RUNTIME.md). Full-game, final rendered, human/device and release acceptance remain open.
+
+The older checkpoint descriptions below are historical; this paragraph supersedes their current-state counts.
+
+
 ## Continued development — Quarantine finales
 
 Added four distinct bosses, a no-repeat regular/finale Quarantine progression, functional arena selection/rotation, 32 native action poses, nine individual boss themes and protocol-7/local-save compatibility. See docs/QUARANTINE_RUNTIME.md for mechanics, evidence and open gates.

@@ -412,6 +412,7 @@ function networkView(s: WorldState): View {
       ...(a.goalX >= 0 ? { goalX: a.goalX, goalY: a.goalY } : {}),
     })),
     bossCues: hazards.bossCues ?? [],
+    classCues: hazards.classCues ?? [],
     arenaId: hazards.arenaId ?? 'gatehouse',
     warnings: hazards.warnings ?? [],
     fields: hazards.fields ?? [],

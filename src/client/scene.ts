@@ -2,9 +2,11 @@ import Phaser from 'phaser';
 import { assets } from './assets.ts';
 import type { View, PlayerView } from '../shared/view.ts';
 import type { Event, Shot } from '../shared/protocol.ts';
+import { runtimeArena } from '../shared/arena-layouts.ts';
 import { data } from '../shared/game.ts';
 import { FrameMeter } from './frame-meter.ts';
 import { wardenArt, wardenCombatPose, type WardenCombatClipId } from './warden-presentation.ts';
+import { survivorArt, survivorPose, additionalSurvivors } from './survivor-presentation.ts';
 import { heavyArt, heavyPose } from './heavy-presentation.ts';
 import { encounterArt, encounterFrame } from './encounter-presentation.ts';
 import type { Sector } from '../shared/warden-signature.ts';
@@ -33,6 +35,8 @@ export class CombatScene extends Phaser.Scene {
   private arenaImage!: Phaser.GameObjects.Image;
   private arenaGround!: Phaser.GameObjects.Graphics;
   private lastArenaId = '';
+  private coverImages: Phaser.GameObjects.Image[] = [];
+  private constructImages = new Map<number, Phaser.GameObjects.Image>();
   private bossSprite!: Phaser.GameObjects.Sprite;
   private shots = new Map<number, Shot>();
   private lastPhase = '';
@@ -65,6 +69,10 @@ export class CombatScene extends Phaser.Scene {
   preload() {
     this.load.on('loaderror', () => this.rejectReady(Error('ui.errorServer')));
     this.load.image('gatehouse', assets.arena);
+    for (const [id, url] of Object.entries(assets.constructs))
+      this.load.image('construct-' + id, url);
+    for (const [id, url] of Object.entries(assets.environment))
+      this.load.image('environment-' + id, url);
     this.load.image('tollkeeper-wheel', assets.wheel);
     this.load.spritesheet('soldier', assets.soldier, {
       frameWidth: 256,
@@ -87,6 +95,16 @@ export class CombatScene extends Phaser.Scene {
         { frameWidth: size, frameHeight: size },
       );
     }
+    for (const ref of survivorArt.references)
+      this.load.spritesheet(ref.id + '-reference', assets.survivorReferences[ref.id], {
+        frameWidth: ref.cellSize,
+        frameHeight: ref.cellSize,
+      });
+    for (const clip of survivorArt.entries)
+      this.load.spritesheet(clip.id, assets.survivorRuns[clip.id], {
+        frameWidth: clip.cellSize,
+        frameHeight: clip.cellSize,
+      });
     for (const clip of encounterArt)
       this.load.spritesheet(clip.bossId + '-action', assets.encounters[clip.bossId], {
         frameWidth: clip.cellSize,
@@ -216,18 +234,31 @@ export class CombatScene extends Phaser.Scene {
       now = view.combatTick;
     if (this.lastArenaId !== view.arenaId) {
       this.lastArenaId = view.arenaId;
-      const map = data.arenas.find((a) => a.id === view.arenaId)!;
+      const map = runtimeArena(view.arenaId);
       this.arenaImage.setVisible(map.id === 'gatehouse');
       const ground = this.arenaGround;
       ground.clear();
+      this.coverImages.forEach((image) => image.destroy());
+      this.coverImages = [];
       if (map.id !== 'gatehouse') {
         const color = Number.parseInt(map.floor.slice(1), 16),
           shade = Number.parseInt(map.shadow.slice(1), 16);
-        ground.fillStyle(color, 0.8).fillRect(0, 0, 1600, 1000);
+        ground.fillStyle(0x101e1b, 1).fillRect(0, 0, 1600, 1000);
+        ground.fillStyle(color, 0.8).fillRect(map.bounds.x, map.bounds.y, map.width, map.height);
         ground.lineStyle(2, shade, 0.25);
-        for (let y = 0; y < 1000; y += 100) ground.lineBetween(0, y, 1600, y);
-        for (let x = 0; x < 1600; x += 160) ground.lineBetween(x, 0, x, 1000);
-        for (const obstacle of map.obstacles) {
+        for (let y = map.bounds.y; y < map.bounds.y + map.height; y += 100)
+          ground.lineBetween(map.bounds.x, y, map.bounds.x + map.width, y);
+        for (let x = map.bounds.x; x < map.bounds.x + map.width; x += 160)
+          ground.lineBetween(x, map.bounds.y, x, map.bounds.y + map.height);
+        for (const obstacle of map.cover) {
+          const image = this.add.image(
+            obstacle.x + obstacle.width / 2,
+            obstacle.y + obstacle.height / 2,
+            'environment-' + map.prop,
+          );
+          const fit = Math.min(obstacle.width / image.width, obstacle.height / image.height);
+          image.setScale(fit).setDepth(1);
+          this.coverImages.push(image);
           ground
             .fillStyle(shade, 0.9)
             .fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
@@ -243,7 +274,9 @@ export class CombatScene extends Phaser.Scene {
               obstacle.y + 10,
             );
         }
-        ground.lineStyle(5, shade, 0.8).strokeRect(3, 3, 1594, 994);
+        ground
+          .lineStyle(5, shade, 0.8)
+          .strokeRect(map.bounds.x + 3, map.bounds.y + 3, map.width - 6, map.height - 6);
       }
     }
     this.shadows.clear();
@@ -485,6 +518,79 @@ export class CombatScene extends Phaser.Scene {
         image.destroy();
         this.propImages.delete(id);
       }
+    const constructIds = new Set(
+      view.classCues.filter((c) => c.kind === 'turret' || c.kind === 'siege').map((c) => c.id),
+    );
+    for (const [id, image] of this.constructImages)
+      if (!constructIds.has(id)) {
+        image.destroy();
+        this.constructImages.delete(id);
+      }
+    for (const cue of view.classCues) {
+      const color =
+        cue.kind === 'sigil' || cue.kind === 'requiem'
+          ? 0xb9a6df
+          : cue.kind === 'citadel'
+            ? 0xe9c27a
+            : 0x97d8c7;
+      if (cue.kind === 'wall') {
+        const cosine = Math.cos(cue.aim),
+          sine = Math.sin(cue.aim),
+          points = [
+            [-12, -110],
+            [12, -110],
+            [12, 110],
+            [-12, 110],
+          ].map(
+            ([x, y]) =>
+              new Phaser.Math.Vector2(cue.x + x * cosine - y * sine, cue.y + x * sine + y * cosine),
+          );
+        h.fillStyle(color, 0.28).fillPoints(points, true);
+        h.lineStyle(4, color, 1).strokePoints(points, true);
+      } else if (cue.kind === 'turret' || cue.kind === 'siege') {
+        const facing =
+            Math.abs(Math.cos(cue.aim)) > Math.abs(Math.sin(cue.aim))
+              ? Math.cos(cue.aim) > 0
+                ? 1
+                : 3
+              : Math.sin(cue.aim) > 0
+                ? 0
+                : 2,
+          texture = 'construct-' + (facing + (cue.kind === 'siege' ? 4 : 0));
+        let image = this.constructImages.get(cue.id);
+        if (!image) {
+          image = this.add.image(cue.x, cue.y, texture);
+          this.constructImages.set(cue.id, image);
+        }
+        image
+          .setTexture(texture)
+          .setPosition(cue.x, cue.y)
+          .setDisplaySize(cue.kind === 'siege' ? 104 : 70, cue.kind === 'siege' ? 104 : 70)
+          .setDepth(5 + cue.y / 1000);
+        if (this.hitboxes) h.lineStyle(2, color, 0.8).strokeCircle(cue.x, cue.y, cue.radius);
+      } else {
+        h.fillStyle(color, 0.06).fillCircle(cue.x, cue.y, cue.radius);
+        h.lineStyle(3, color, 0.85).strokeCircle(cue.x, cue.y, cue.radius);
+        if (cue.kind === 'sigil')
+          h.lineStyle(2, color, 0.6).strokeRect(
+            cue.x - cue.radius * 0.6,
+            cue.y - cue.radius * 0.6,
+            cue.radius * 1.2,
+            cue.radius * 1.2,
+          );
+        if (cue.kind === 'requiem')
+          h.lineStyle(2, color, 0.6).strokeCircle(cue.x, cue.y, cue.radius * 0.7);
+      }
+      if ('health' in cue) {
+        f.fillStyle(0x142b27, 1).fillRect(cue.x - 25, cue.y - cue.radius - 12, 50, 5);
+        f.fillStyle(color, 1).fillRect(
+          cue.x - 25,
+          cue.y - cue.radius - 12,
+          (50 * cue.health) / cue.maxHealth,
+          5,
+        );
+      }
+    }
     const actorIds = new Set(view.minions.map((a) => a.id));
     for (const actor of view.minions) {
       let sprite = this.actors.get(actor.id);
@@ -576,7 +682,13 @@ export class CombatScene extends Phaser.Scene {
       let sprite = this.people.get(p.id);
       if (!sprite) {
         sprite = this.add
-          .sprite(p.x, p.y, p.classId === 'heavy' ? 'heavy-reference' : p.classId)
+          .sprite(
+            p.x,
+            p.y,
+            p.classId === 'heavy' || additionalSurvivors.some((id) => id === p.classId)
+              ? p.classId + '-reference'
+              : p.classId,
+          )
           .setOrigin(0.5, 0.86)
           .setDisplaySize(p.classId === 'medic' ? 72 : 128, p.classId === 'medic' ? 108 : 128);
         this.people.set(p.id, sprite);
@@ -588,7 +700,15 @@ export class CombatScene extends Phaser.Scene {
       sprite.x += dx * blend;
       sprite.y += dy * blend;
       sprite.setDepth(5 + sprite.y / 1000);
-      if (p.classId === 'heavy') {
+      if (additionalSurvivors.some((id) => id === p.classId)) {
+        const pose = survivorPose(p.classId, p.aim, moving, p.status, now, this.reduceMotion);
+        sprite.anims.stop();
+        sprite
+          .setTexture(pose.texture, pose.frame)
+          .setFlipX(false)
+          .setOrigin(pose.origin[0], pose.origin[1])
+          .setDisplaySize(pose.displayCell, pose.displayCell);
+      } else if (p.classId === 'heavy') {
         const pose = heavyPose(p.aim, moving, p.status, now, this.reduceMotion);
         sprite.anims.stop();
         sprite
@@ -623,7 +743,15 @@ export class CombatScene extends Phaser.Scene {
         }
       }
       sprite.setAlpha(
-        p.status === 'waiting' ? 0.35 : p.status === 'eliminated' ? 0.2 : p.connected ? 1 : 0.4,
+        p.status === 'waiting'
+          ? 0.35
+          : p.status === 'eliminated'
+            ? 0.2
+            : now < Math.max(p.kit.veilUntil, p.kit.passageUntil)
+              ? 0.45
+              : p.connected
+                ? 1
+                : 0.4,
       );
       sprite.setTint(p.status === 'downed' ? 0xc58d7c : 0xffffff);
       this.shadows.fillStyle(0x10201d, 0.35).fillEllipse(p.x, p.y + 4, 38, 14);

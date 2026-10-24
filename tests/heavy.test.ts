@@ -54,7 +54,15 @@ const spawned = (events: ReturnType<Game['drainEvents']>) =>
   events.flatMap((event) => (event.type === 'shots' ? event.shots : []));
 
 test('Heavy is admitted with authored health, weapon, movement and Practice/server boundary saves', () => {
-  assert.deepEqual(implementedClassIds, ['soldier', 'medic', 'heavy']);
+  assert.deepEqual(implementedClassIds, [
+    'soldier',
+    'medic',
+    'heavy',
+    'tank',
+    'mage',
+    'engineer',
+    'assassin',
+  ]);
   const { game, player } = setup();
   assert.equal(player.health, 140);
   assert.equal(player.weapon, 'heavy-0');

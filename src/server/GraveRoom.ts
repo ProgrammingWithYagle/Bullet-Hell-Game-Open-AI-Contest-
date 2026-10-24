@@ -333,7 +333,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       view.aim = Math.round(p.aim * 1000);
       view.health = Math.round(p.health * 10) / 10;
       view.maxHealth = Math.ceil(p.maxHealth);
-      view.shield = Math.ceil(p.shield + (g.combatTick < p.supplyShieldUntil ? p.supplyShield : 0));
+      view.shield = Math.ceil(p.shield + (g.combatTick < p.supplyShieldUntil ? p.supplyShield : 0) + g.classKits.status(p.id,g.combatTick).shield);
       view.status = p.status;
       view.connected = p.connected;
       view.ack = p.ack;
@@ -356,6 +356,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
         skills: p.skills,
         upgrades: p.upgrades,
         supplies: p.supplies,
+        kit: g.classKits.status(p.id,g.combatTick),
       });
       view.speed = g.movementSpeed(p);
       view.dashUntil = p.dashUntil;
@@ -399,6 +400,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       fields: g.fields,
       signatures: g.signatures,
       bossCues: g.director.cues(),
+      classCues: g.classKits.cues(),
       arenaId: g.arena.id,
     });
     s.intermission = JSON.stringify({

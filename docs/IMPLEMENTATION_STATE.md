@@ -1,31 +1,25 @@
 # Grave Accord implementation state
 
-**Current continuation:** [QUARANTINE_RUNTIME.md](QUARANTINE_RUNTIME.md) adds Tollkeeper and three Quarantine finales: nine playable bosses, a regular/finale short-route pool, six connected arena layouts, 32 more drawn poses, nine boss themes, protocol 7 and 133 passing tests. Full class/route/art/device/release work continues.
+## Current source checkpoint
 
+All seven classes are playable with 378 connected skill nodes, 63 specialization paths and 28 weapons. Tank, Mage, Engineer and Assassin have authoritative abilities, temporary shields/armor, finite-health constructs, ownership/damage credit, stealth target filtering and empowered steps. Kit state is replicated by protocol 8. Bounded old local Practice saves migrate; obsolete network clients and signed online boundaries stay strict.
 
-**Current continuation:** [BOSS_ENCOUNTERS_ITEMS_AND_MUSIC.md](BOSS_ENCOUNTERS_ITEMS_AND_MUSIC.md) adds Carrion Courier, Ratcatcher and Quarantine Clerk: five distinct playable bosses, no repeat in five-fight Practice, 71 new item illustrations, 32 action frames, five individual boss themes, protocol 6 and 124 passing tests. Older two-boss/protocol-5 statements below describe earlier checkpoints. Public hosting remains the earlier protocol-4 deployment. Rendered/device/human and listening acceptance remain open.
+Nine playable bosses: Constable, Warden, Courier, Ratcatcher, Quarantine Clerk, Tollkeeper, Chain Marshal, Gate Widow and Black Ambulance. Quarantine draws four different regulars and a finale. Endless uses the implemented pool without immediate repetition; the larger authored 59-boss bag and exclusive schedule remain to implement.
 
-## Source now
+All six arenas have distinct actual footprints and cover arrangements. Gatehouse is 1600x1000; Triage 1600x900; Ossuary 1300x1000; Chapel 1400x920; Foundry 1500x850; Crypt 1240x880. Setup, simulation, prediction, route rotation and Widow shutters share these bounds. Fifty spawn slots and every Accord pad remain reachable. See [class/arena details](CLASS_AND_ARENA_RUNTIME.md).
 
-- Existing local folder: C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell). Branch feat/first-playable-loop; existing draft PR 14. Inspect actual Git HEAD/status and publication receipts before continuing.
-- Source v0.3.0 / protocol 6; authored-content fingerprint remains b8d9fb6918c854f3eed38b327ed0cb3026e071e6fe24932e50beed36943db241.
-- Playable: Soldier, Medic, Heavy; Gatehouse; five bosses. Practice uses five different identities; Endless exhausts the pool before Brutal repeats and avoids consecutive identical bosses. Opening selection is on Review. Threat uses a + for Brutal.
-- Courier charge/trail, Ratcatcher real packs/breakable sack and Clerk stamp/safe interior join Warden and Constable. All use phases, Accord, deadlines, rewards and networking. Twelve live rats maximum; bounded ordinary actors support slow, cover, swept contact and piercing.
-- 71 new item paintings cover 12 weapon tiers, eight supplies, 27 paths / 162 playable skill nodes and 24 mutations. Five prior upgrade paintings remain. Four new action clips / 32 frames bring production motion to 91 Warden/Heavy/new-encounter frames. New Courier action is one view; remaining full action/directional/hurt/defeat libraries are unfinished.
-- Five separately composed boss themes select automatically, crossfade and duck for warning cues. Original score/PCM/synthesis retained. Objective signal checks pass; listening/device/mix acceptance remains open.
-- Protocol 6 patches actor fields rather than resending complete actor JSON. Server retains full-precision physics; render position/health fields use float32 and suppression multiplier stays exact float64. Compact projectile transport remains exact-value. Local protocol-4/5 Practice boundaries migrate; signed online state stays strict.
+The item library has 123 distinct illustrations plus five earlier generic upgrade paintings. New class runs add 124 approved poses across sixteen independent directional clips; Engineer north uses four consistent poses, with four hand-swapping source poses excluded. Painted construct/cover props add sixteen images. Every native, request, reference and rejected attempt is preserved. Native proofs were inspected; independent RGBA/pixel/hash reconstruction passes. Full rendered/action/human/device acceptance remains open.
 
-## Evidence and limits
+Nine original boss themes have editable scores and PCM masters, automated clipping/DC/mono/seam checks, crossfades and warning ducking. Human listening remains open.
 
-- reviews/runtime-verification.json: 124 passing rules/WebSocket/HTTP/SQL checks, strict TypeScript, content/fifteen-locale checks and production build; exact source/build hashes.
-- reviews/encounter-items-2026-10-23: 71 items / 32 frames match source transforms; 25 requests / 23 natives preserved; independent RGBA/pixel/hash audit and static size sheet. Earlier production/Warden/Heavy art audits still pass. Final rendered motion acceptance remains pending.
-- reviews/boss-themes-review.json: five distinct original loops pass PCM/clipping/DC/mono/seam checks. No human listening claim.
-- Final separate-process 50-client reports and preserved failed shared-process samples are under reviews/performance. Read [BOSS_ENCOUNTERS_ITEMS_AND_MUSIC.md](BOSS_ENCOUNTERS_ITEMS_AND_MUSIC.md) for conditions and actual values. Short, zero-rendered-client fixtures do not establish final 49+1, WAN, hosting or endurance acceptance.
-- Browser troubleshooting is not repeated. Prior browser evidence covers earlier builds only. Physical device/controller, human/native-language/listening and final rendered gates stay open.
-- PR/CI/Wiki receipts are updated after source publication. PR stays draft; main stays protected.
+## Verification and publication
 
-## Public deployment and continuation
+The preceding full run passed 150 rules/WebSocket/HTTP/SQL tests, TypeScript, authored content/fifteen locales and production build. Current evidence is reviews/runtime-verification.json, class-completion-2026-10-23 and the source/CI/Wiki receipts. Inspect actual Git HEAD and receipt source hashes before relying on publication. The branch is feat/first-playable-loop and PR 14 remains draft; main stays protected.
 
-The existing anonymous eight-slot Site remains https://grave-accord-playtest.ivoryflame12.chatgpt.site/ at recorded frontend/gameplay 33b36bc/dfade88, protocol 4, Soldier/Medic/Constable. It belongs to another ChatGPT account. Source/Wiki pushes do not redeploy it; require legitimate owner/editor access and a matching frontend/backend for a later deployment.
+No current rendered, physical-device, fifty-player, WAN or endurance acceptance is claimed. Earlier performance samples retain their recorded source and fixtures. Browser permission troubleshooting is not repeated.
 
-Continue the authorized implementation in this same folder. Four classes, 55 boss identities, route/finale gauntlets, arenas, complete action art and future boss themes remain. Durable recovery/rankings/profiles and Windows/offline/LAN release remain unfinished. No new clone/worktree, delegation, paid provisioning or repeated browser permission troubleshooting is authorized. Full requirements remain in HANDOFF_NEXT_CHAT.md, IMPLEMENTATION_BACKLOG.md and GAME_BIBLE.md.
+## Remaining authorized work
+
+Implement the other 51 boss identities with unique signatures/counterplay; Standard, Long and Raid pools/routes; full Endless exclusives and optional secret; difficulty unlock/profile/mastery/lore persistence; durable recovery/team rankings; complete action/environment art, adaptive audio and human/native-language/device checks; Windows portable/offline/LAN delivery and release/governance gates. All work remains authorized in the same existing checkout, without cloning, delegation, paid provisioning or merging main.
+
+The public Site remains the old protocol-4 build under another account. Source and Wiki pushes do not redeploy it. Do not deploy a mismatched backend. Local Vite serves current source; refresh an idle server only after checking exact process identity and zero room occupancy.

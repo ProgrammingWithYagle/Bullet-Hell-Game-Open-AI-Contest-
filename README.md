@@ -1,5 +1,8 @@
 # Grave Accord
 
+All seven classes are now playable with 378 connected skill nodes and 28 weapons. Six maps have distinct collision layouts and six actual playable footprints. See [class and arena runtime details](docs/CLASS_AND_ARENA_RUNTIME.md). The current source requires protocol 8; the nine-boss Quarantine checkpoint remains the prior published baseline. Full-game and final rendered/device acceptance remain open.
+
+
 **Current continuation:** [QUARANTINE_RUNTIME.md](docs/QUARANTINE_RUNTIME.md) adds Tollkeeper and three Quarantine finales: nine playable bosses, a regular/finale short-route pool, six connected arena layouts, 32 more drawn poses, nine boss themes, protocol 7 and 133 passing tests. Full class/route/art/device/release work continues.
 
 

@@ -1,9 +1,11 @@
+import type { KitCue, KitStatus } from './class-kits.ts';
 import type { Game, Boss } from './game.ts';
 import type { Minion } from './minions.ts';
 import type { BossCue } from './boss-director.ts';
 import type { WardenSample } from './warden-signature.ts';
 import type { ClassId, Phase, Warning, Field, Contract, SupplySlot } from './protocol.ts';
 export type PlayerView = {
+  kit: KitStatus;
   id: string;
   name: string;
   classId: ClassId;
@@ -54,6 +56,7 @@ export type View = {
   signatures: WardenSample[];
   minions: Minion[];
   bossCues: BossCue[];
+  classCues: KitCue[];
   warnings: Warning[];
   fields: Field[];
   mutations: { id: string; remaining: number }[];
@@ -73,6 +76,7 @@ export function viewOf(g: Game, owner: string): View {
     owner,
     players: [...g.players.values()].map((p) => ({
       id: p.id,
+      kit: g.classKits.status(p.id, g.combatTick),
       name: p.name,
       classId: p.classId,
       x: p.x,
@@ -80,7 +84,10 @@ export function viewOf(g: Game, owner: string): View {
       aim: p.aim,
       health: p.health,
       maxHealth: p.maxHealth,
-      shield: p.shield + (g.combatTick < p.supplyShieldUntil ? p.supplyShield : 0),
+      shield:
+        p.shield +
+        (g.combatTick < p.supplyShieldUntil ? p.supplyShield : 0) +
+        g.classKits.status(p.id, g.combatTick).shield,
       status: p.status,
       connected: p.connected,
       ack: p.ack,
@@ -113,6 +120,7 @@ export function viewOf(g: Game, owner: string): View {
     signatures: structuredClone(g.signatures),
     minions: g.minions.snapshot(),
     bossCues: g.director.cues(),
+    classCues: g.classKits.cues(),
     warnings: g.warnings.map((w) => ({ ...w })),
     fields: g.fields.map((f) => ({ ...f })),
     mutations: g.mutations.map((m) => ({ ...m })),

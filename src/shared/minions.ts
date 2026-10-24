@@ -129,6 +129,7 @@ export class Minions {
     targets: Target[],
     obstacles: Rect[],
     contact: (target: Target, damage: number) => void,
+    aimTargets: Target[] = targets,
   ) {
     for (const actor of this.actors.values()) {
       if (actor.expires <= tick) {
@@ -138,16 +139,16 @@ export class Minions {
       actor.oldX = actor.x;
       actor.oldY = actor.y;
       if (tick >= actor.slowUntil) actor.slowMultiplier = 1;
-      const target = targets.reduce<Target | undefined>(
+      const target = aimTargets.reduce<Target | undefined>(
         (nearest, candidate) =>
           !nearest || distance(actor, candidate) < distance(actor, nearest) ? candidate : nearest,
         undefined,
       );
-      if (!target) continue;
       if (actor.goalX !== undefined && distance(actor, { x: actor.goalX, y: actor.goalY! }) < 24) {
         actor.goalX = actor.goalY = undefined;
       }
-      const destination = actor.goalX === undefined ? target : { x: actor.goalX, y: actor.goalY! };
+      const destination =
+        actor.goalX === undefined ? (target ?? actor) : { x: actor.goalX, y: actor.goalY! };
       const dx = destination.x - actor.x,
         dy = destination.y - actor.y,
         length = Math.hypot(dx, dy);

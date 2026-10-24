@@ -31,6 +31,25 @@ import heavyRunNorth from '../../assets/production/motion/heavy-run-north-v1-atl
 import heavyRunSouth from '../../assets/production/motion/heavy-run-south-v1-atlas.png?url';
 import heavyRunEast from '../../assets/production/motion/heavy-run-east-v1-atlas.png?url';
 import heavyRunWest from '../../assets/production/motion/heavy-run-west-v1-atlas.png?url';
+const survivorReferences = import.meta.glob(
+  '../../assets/production/normalized/survivors/*/reference-atlas-v1.png',
+  { query: '?url', import: 'default', eager: true },
+) as Record<string, string>;
+const survivorRuns = import.meta.glob('../../assets/production/motion/*-run-*-v1-atlas.png', {
+  query: '?url',
+  import: 'default',
+  eager: true,
+}) as Record<string, string>;
+const constructProps = import.meta.glob('../../assets/production/constructs/*.png', {
+  query: '?url',
+  import: 'default',
+  eager: true,
+}) as Record<string, string>;
+const environmentProps = import.meta.glob('../../assets/production/environment/*.png', {
+  query: '?url',
+  import: 'default',
+  eager: true,
+}) as Record<string, string>;
 const items = import.meta.glob('../../assets/production/items/icons/*/*.png', {
   query: '?url',
   import: 'default',
@@ -42,6 +61,24 @@ const encounterMotion = import.meta.glob('../../assets/production/motion/*-actio
   eager: true,
 }) as Record<string, string>;
 export const assets = {
+  constructs: Object.fromEntries(
+    Object.entries(constructProps).map(([p, u]) => [p.split('/').at(-1)!.replace('.png', ''), u]),
+  ),
+  environment: Object.fromEntries(
+    Object.entries(environmentProps).map(([p, u]) => [p.split('/').at(-1)!.replace('.png', ''), u]),
+  ),
+  survivorReferences: Object.fromEntries(
+    Object.entries(survivorReferences).map(([path, url]) => [
+      path.split('/survivors/')[1].split('/')[0],
+      url,
+    ]),
+  ) as Record<string, string>,
+  survivorRuns: Object.fromEntries(
+    Object.entries(survivorRuns).map(([path, url]) => [
+      path.split('/').at(-1)!.replace('-v1-atlas.png', ''),
+      url,
+    ]),
+  ) as Record<string, string>,
   wheel,
   items: Object.fromEntries(
     Object.entries(items).map(([path, url]) => [

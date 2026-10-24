@@ -48,7 +48,7 @@ export function createGameServer(options: { createRunJournal?: () => RunJournal 
           status: 'ok',
           startedAt,
           uptimeSeconds: process.uptime(),
-          prototype: 'three-class-nine-boss-quarantine',
+          prototype: 'seven-class-nine-boss-quarantine',
           protocolVersion: PROTOCOL,
           contentRevision: CONTENT_REVISION,
           practiceOnly: true,
