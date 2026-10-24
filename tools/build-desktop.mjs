@@ -62,15 +62,24 @@ for (const [source, dest] of [
   });
   for (const input of Object.keys(result.metafile.inputs)) {
     if (!input.includes('node_modules/')) continue;
-    let directory = dirname(resolve(input));
-    while (directory !== root && !existsSync(join(directory, 'package.json'))) {
+    let directory = dirname(resolve(input)),
+      dependency;
+    // Some packages have nested type-only package.json files. License ownership
+    // belongs to the nearest named/versioned package, not that module marker.
+    while (directory !== root) {
+      if (existsSync(join(directory, 'package.json'))) {
+        const candidate = JSON.parse(readFileSync(join(directory, 'package.json'), 'utf8'));
+        if (typeof candidate.name === 'string' && typeof candidate.version === 'string') {
+          dependency = candidate;
+          break;
+        }
+      }
       const parent = dirname(directory);
       if (parent === directory) break;
       directory = parent;
     }
-    if (!existsSync(join(directory, 'package.json'))) continue;
-    const dependency = JSON.parse(readFileSync(join(directory, 'package.json'), 'utf8'));
-    runtimePackages.set(dependency.name + '@' + dependency.version, { directory, ...dependency });
+    if (!dependency) throw Error('Missing package identity for ' + input);
+    runtimePackages.set(dependency.name + '@' + dependency.version, { ...dependency, directory });
   }
 }
 cpSync('docs/licenses', join(output, 'docs', 'licenses'), { recursive: true });
