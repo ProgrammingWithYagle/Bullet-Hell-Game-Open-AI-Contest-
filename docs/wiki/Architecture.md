@@ -1,19 +1,21 @@
 # Architecture
 
-Current local feature-branch source: 23 playable bosses and individual themes, seven classes, six different map footprints, Quarantine and the ten-fight Midnight Circuit, protocol 9. The remaining 37 identities, later routes and full release/visual/device acceptance are unfinished. Older checkpoint counts below are historical. The public Site remains its earlier protocol-4 deployment; source/Wiki pushes do not redeploy it.
+The shared deterministic simulation runs at 30 Hz. Phaser presents its state; menus and HUD use a DOM overlay. Offline play hosts the same authority in a worker. Online play uses Colyseus rooms and a server-owned simulation, with client movement prediction and reconciliation.
 
+**Current runtime protocol: 9.** The immutable authored content revision is `b8d9fb6918c854f3eed38b327ed0cb3026e071e6fe24932e50beed36943db241`. The content bible's historical protocol field is not the live transport protocol; `src/shared/protocol.ts` owns that value.
 
-Current source: all seven classes, 378 nodes, 28 weapons, nine bosses/themes and six different map sizes/layouts. Protocol 8 includes authoritative class kit state. The class art package adds 124 approved motion poses and 52 item illustrations; final rendered/human/device acceptance is open.
+- Gameplay validates inputs, purchases, skill prerequisites, votes, rewards, collisions and boss transitions at the authority.
+- Compact projectile waves and actor field patches retain exact gameplay values. Shared geometry handles swept shots and body contacts.
+- Class kits, minions and the civic/service boss directors keep rules separate from presentation. Prediction shares map geometry and environmental forces.
+- All six maps use one camera space with different traversable footprints. The same source feeds server collision, prediction and map previews.
+- JSON boundary saves retain run state. Local protocol-4 through protocol-8 saves have explicitly bounded migrations. Online clients and signed saves require the current protocol.
+- Original image returns, exact requests, references and superseded attempts remain preserved; technical normalization does not invent animation frames.
+- One structured update history drives the in-game journal and both Markdown changelogs. Tests reject stale published source text or playable-content counts.
 
+## Verification
 
-The development runtime uses TypeScript, Phaser 4.2.1, Vite 8.3.5 and Colyseus 0.18. A deterministic shared simulation owns combat, progression, purchases, votes and timers. It advances at 30 Hz; Schema patches initially run at 20 Hz. Phaser renders independently and pools projectile images. Movement uses prediction/reconciliation with the same masonry collision rules as authority.
+`pnpm verify` checks authored content and fifteen locale catalogs, TypeScript, headless rules and real-network integration, then builds the production client. `reviews/runtime-verification.json` records the exact source snapshot hash and emitted build artifacts. Art/audio audits and Wiki publication evidence are separate reports.
 
-Offline solo runs those rules in a worker. Online rooms run on the official gameplay server, validate bounded/finite inputs and reject stale sequences. The server owns currency, class compatibility, skill prerequisites, duplicate purchase replies and damage. Public and private discovery, capacity admission and sixty-second reconnect reservations are implemented. Private codes and reconnect credentials do not belong in public room listings.
+Passing automated checks does not imply full rendered FPS, human playtest, device, WAN, restart recovery, native-language or release acceptance. [Hosting and Recovery](Hosting-and-Recovery) records operational limits.
 
-Protocol 6 adds shared signature cues and field-patched ordinary actors. Exact-value binary projectile waves retain five float64 values per shot and common attributes once per wave. Three classes and five bosses execute source gameplay. Local protocol-4/5 Practice boundaries migrate with original identity/history constraints; online boundaries remain strict. Full-precision authority is separate from render-state patches. [Current encounter/art/music implementation](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/BOSS_ENCOUNTERS_ITEMS_AND_MUSIC.md).
-
-Recovery components live under src/server/: checkpoints.ts, run-store.ts, run-auth.ts, run-service.ts, run-client.ts and run-journal.ts. SQL changes use transactional compare-and-set plus event insertion. HMAC covers documented method/path/time/nonce/body-digest bytes; SQL stores expiring nonces. The server journal validates acknowledgments, renews leases and handles owner claims. Its local HTTP/SQLite process-restart tests do not constitute deployed D1 or a recovered rendered match; a server-only GraveRoom factory now freezes safe transitions until acknowledgement and reports latched outage status. Normal/public execution leaves that factory disabled, with participant bindings and deployed recovery still pending.
-
-The latest local gate passes 124 rules, real-WebSocket, HTTP and SQL checks, TypeScript, content/localization validation and a production build. Exact CI publication identities are recorded after the source push. Short separate-process server throughput, failed shared-process pilots, saved-pixel audits and audio signal checks remain separate from rendered/device/human/listening acceptance.
-
-Electron is the approved portable Windows target and is not packaged yet. Versioned full profiles/mastery/unlocks, live durable rankings, historical rosters and the complete class/boss/arena/route library remain future implementation work. Current settings/language selection persist locally; they are not a finished ProfileV1 system.
+[Shared authority](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/src/shared/game.ts) · [Live protocol](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/src/shared/protocol.ts) · [Latest full verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/reviews/runtime-verification.json)

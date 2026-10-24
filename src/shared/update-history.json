@@ -1,0 +1,154 @@
+{
+  "buildId": "2026.10.24-journal",
+  "snapshot": {
+    "bosses": 23,
+    "classes": 7,
+    "skills": 378,
+    "weapons": 28,
+    "maps": 6,
+    "modes": [
+      "short",
+      "standard",
+      "endless"
+    ],
+    "protocol": 9
+  },
+  "entries": [
+    {
+      "id": "development-journal",
+      "date": "2026-10-24",
+      "title": "An in-game development journal",
+      "groups": [
+        {
+          "title": "Added",
+          "items": [
+            "Open Changelog from the main menu footer to read dated updates without leaving the game. The build identifier stays visible in the menu and the journal.",
+            "The game, repository changelog and GitHub Wiki changelog now read one history file. Older production records remain available in the source archive."
+          ]
+        },
+        {
+          "title": "Documentation corrected",
+          "items": [
+            "Rewrote the fifteen Wiki reference pages around the playable source build, removing contradictory checkpoint counts. Each page distinguishes working systems from planned features.",
+            "The public playtest still serves its older two-class build. Updating the source and Wiki does not update that deployment."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "midnight-circuit",
+      "date": "2026-10-24",
+      "title": "Fourteen new bosses and Midnight Circuit",
+      "commit": "9db2c6e81823451c165466a7da1c2f2133c17374",
+      "groups": [
+        {
+          "title": "Playable content",
+          "items": [
+            "Added Cradle Matron, Mold Alchemist, Bellringer, Stitchwright, Glass Surgeon, Ash Baker, Sluice Keeper, Last Stationmaster, The Lamplighter, The Anatomist, Plague Gardener, Grave Choir, Red Abbess and Vesper Judge. The playable roster is now 23 bosses.",
+            "Midnight Circuit is a ten-fight run: nine different regular bosses followed by one of three reserved finales. Skill points reach 27 and nominal base income reaches 2,400 before the finale.",
+            "Each encounter has its own counterplay: break nests or needles, rescue tethered allies, use ring gaps and lit pockets, avoid signaled trains, cut healing vines, silence individual Choir singers, neutralize the Abbess wave, or move to the safe arena half."
+          ]
+        },
+        {
+          "title": "Art, music and fixes",
+          "items": [
+            "Added fourteen original boss themes, 128 drawn boss/part/minion poses and eight signature props. The earlier nine boss music masters remain unchanged.",
+            "Choir singers now have separate visible bodies and shared boss health; defeated singers stop their own attacks. Infirmary patients have their own sprites. Bakery loaves stop at cover before splitting.",
+            "Protocol 9 shares current, pool and tether movement between prediction and the server. All fourteen new identities have real WebSocket encounter coverage; the full verification passed 171 tests, content checks, TypeScript and a production build."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seven-classes-six-maps",
+      "date": "2026-10-24",
+      "title": "All seven classes and six different maps",
+      "commit": "d51e6072649b4566263f7adddea6f66e2c504581",
+      "groups": [
+        {
+          "title": "Playable content",
+          "items": [
+            "Added Tank, Mage, Engineer and Assassin alongside Soldier, Medic and Heavy. All seven kits execute their two abilities and ultimate, with 378 skill nodes, 63 specialization paths and 28 class weapons.",
+            "Added six distinct traversable layouts: Gatehouse 1,600 × 1,000; Triage Yard 1,600 × 900; Ossuary Works 1,300 × 1,000; Sunken Chapel 1,400 × 920; Bell Foundry 1,500 × 850; Crown Crypt 1,240 × 880. Cover and spawn positions change with each map.",
+            "Connected 52 additional item illustrations, 124 approved class motion poses and sixteen environment/construct props. Weapons, supplies, all specialization paths and mutations now have individual item artwork."
+          ]
+        },
+        {
+          "title": "Rules and verification",
+          "items": [
+            "Protocol 8 carries authoritative class kit state. Turrets, barricades, rescue charges, wards, stealth and shadow movement work offline and online. Arena selection, route rotation and prediction use the same geometry.",
+            "Verified reachability for fifty spawn positions and five Accord pads on every map. The full pipeline passed 150 tests at this checkpoint."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "quarantine-finales",
+      "date": "2026-10-23",
+      "title": "A complete Quarantine boss pool",
+      "commit": "0cc5b1b77d8670e8d40595b77dcf28b4983e6387",
+      "groups": [
+        {
+          "title": "Added",
+          "items": [
+            "Added Tollkeeper, Chain Marshal, Gate Widow and Black Ambulance. Their signatures use a reflected wheel, breakable chain anchors, rotating open shutters and an exposed driver after a charge.",
+            "Quarantine Run now draws four different regular bosses and one reserved finale from its nine-boss pool. Added four themes and 32 drawn boss poses.",
+            "Connected map selection and rotation, Brutal finale contracts and protocol-7 save compatibility. The full pipeline passed 133 tests at this checkpoint."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "five-bosses-items-themes",
+      "date": "2026-10-23",
+      "title": "More bosses, illustrated items and individual themes",
+      "commit": "9a2ed8a",
+      "groups": [
+        {
+          "title": "Added and fixed",
+          "items": [
+            "Added Carrion Courier, Ratcatcher and Quarantine Clerk with charge trails, bounded rat packs and a breakable sack, and ordered stamps that reopen a safe interior.",
+            "Added 71 item illustrations, 32 boss/minion poses and five distinct original boss themes. Boss music crossfades and warning ducking are connected to combat.",
+            "Endless uses every implemented identity before Brutal repeats and avoids immediate repeats. Brutal threat labels append +. Fixed fractional weapon cadence and reused collision query buffers. Protocol 6; 124 tests passed."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "warden-heavy",
+      "date": "2026-10-23",
+      "title": "Lantern Warden and Heavy",
+      "commit": "d107454",
+      "groups": [
+        {
+          "title": "Added",
+          "items": [
+            "Connected the Lantern Warden signature, rotating safe gap, phases, Accord breaks and Brutal variant to actual encounters. Added 27 Warden motion frames.",
+            "Made Heavy playable with Suppressing Cone, Braced Firing and Foundry Overture, four weapons, 54 skills and 32 drawn run frames.",
+            "Added compact projectile waves and compatible local boundary-save migration. Protocol 5; 108 tests passed."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "first-playable",
+      "date": "2026-10-23",
+      "title": "First playable expedition",
+      "groups": [
+        {
+          "title": "Foundation",
+          "items": [
+            "Implemented the shared 30 Hz offline/online combat loop, Soldier and Medic, Hollow Constable, revives, Accord, concealed contracts, mutations, prerequisite-aware skills and authoritative purchases.",
+            "Added public rooms, private codes, sixty-second reconnect reservations, offline boundary saves, keyboard/mouse, gamepad and touch controls, fifteen language catalogs and original synthesized audio.",
+            "Published the earlier anonymous protocol-4 playtest. Its two-class content is an older deployment and does not represent the current local build."
+          ]
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Thirty-seven authored boss identities, Black Bell Pilgrimage, Grand Raid and the secret extension still need implementation.",
+    "Complete action/facing art, balance, final rendered playtests, physical-device and native-language review remain in progress.",
+    "Persistent mastery/cosmetics, verified rankings, durable online recovery and the Windows/offline/LAN release are not complete."
+  ]
+}

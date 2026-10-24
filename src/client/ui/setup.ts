@@ -1,3 +1,7 @@
+import history from '../../shared/update-history.json';
+import revision from '../../../content/revision.json';
+import changelogNotices from '../changelog-notices.json';
+import { changelogHTML } from './changelog.ts';
 import { runtimeArenas, runtimeArena } from '../../shared/arena-layouts.ts';
 import { data, implementedBossIds } from '../../shared/game.ts';
 import { implementedClassIds, type ClassId, type BossId } from '../../shared/protocol.ts';
@@ -73,7 +77,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks) {
   };
   function render() {
     const stage = steps.indexOf(page);
-    host.innerHTML = `<div class="expedition-shell ${page === 'home' ? 'at-home' : ''}"><header class="masthead"><button id="brand-home" class="brand">${icon('bell')}<span>GRAVE ACCORD<small>${e(t('ui.tagline'))}</small></span></button><div class="masthead-controls"><label class="sr-only" for="language">${e(t('ui.language'))}</label><select id="language" aria-label="${e(t('ui.language'))}">${languages.map(([id, label]) => `<option value="${id}" ${id === locale ? 'selected' : ''}>${e(label)}</option>`).join('')}</select><button id="guide" class="icon-button" aria-label="${e(t('ui.playTutorial'))}" title="${e(t('ui.playTutorial'))}">${icon('tree')}</button><button id="settings" class="icon-button" aria-label="${e(t('ui.settings'))}">${icon('engineer')}</button></div></header>${stage >= 0 ? `<nav class="setup-steps" aria-label="${e(t('ui.chooseSetup'))}">${steps.map((step, i) => `<button data-page="${step}" class="${i === stage ? 'current' : ''}" ${i > stage ? 'disabled' : ''}><b>${number(i + 1)}</b><span>${e(t(labels[step]))}</span></button>`).join('')}</nav>` : ''}<section id="setup-content" class="setup-content"></section><p id="notice" class="setup-notice" role="status" hidden></p><footer class="setup-footer"><span>0.3.0 · ${e(t('ui.translationNotice'))}</span><a href="https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/wiki" target="_blank" rel="noopener">${e(t('ui.howToPlay'))}</a><a href="https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/CHANGELOG.md" target="_blank" rel="noopener">${e(t('ui.changelog'))}</a></footer></div>`;
+    host.innerHTML = `<div class="expedition-shell ${page === 'home' ? 'at-home' : ''}"><header class="masthead"><button id="brand-home" class="brand">${icon('bell')}<span>GRAVE ACCORD<small>${e(t('ui.tagline'))}</small></span></button><div class="masthead-controls"><label class="sr-only" for="language">${e(t('ui.language'))}</label><select id="language" aria-label="${e(t('ui.language'))}">${languages.map(([id, label]) => `<option value="${id}" ${id === locale ? 'selected' : ''}>${e(label)}</option>`).join('')}</select><button id="guide" class="icon-button" aria-label="${e(t('ui.playTutorial'))}" title="${e(t('ui.playTutorial'))}">${icon('tree')}</button><button id="settings" class="icon-button" aria-label="${e(t('ui.settings'))}">${icon('engineer')}</button></div></header>${stage >= 0 ? `<nav class="setup-steps" aria-label="${e(t('ui.chooseSetup'))}">${steps.map((step, i) => `<button data-page="${step}" class="${i === stage ? 'current' : ''}" ${i > stage ? 'disabled' : ''}><b>${number(i + 1)}</b><span>${e(t(labels[step]))}</span></button>`).join('')}</nav>` : ''}<section id="setup-content" class="setup-content"></section><p id="notice" class="setup-notice" role="status" hidden></p><footer class="setup-footer"><span><bdi>${e(revision.version)} · ${e(history.buildId)}</bdi> · ${e(t('ui.translationNotice'))}</span><a href="https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/wiki" target="_blank" rel="noopener">${e(t('ui.howToPlay'))}</a><button id="changelog" class="footer-link">${e(t('ui.changelog'))}</button></footer></div>`;
     const content = host.querySelector<HTMLElement>('#setup-content')!;
     if (page === 'home')
       content.innerHTML = `<div class="home-composition"><div class="home-art"><img src="${assets.cover}" alt="Grave Accord"></div><div class="home-actions"><p class="eyebrow">${e(t('ui.chooseSetup'))}</p><h1>${e(t('ui.tagline'))}</h1><div class="home-buttons">${button('new-run', t('ui.newRun'), 'play', 'class="primary"')}${savedBoundary() ? button('resume-boundary', t('ui.resumeCheckpoint'), 'bell') : ''}${button('join', t('ui.joinRoom'), 'rescue')}${button('tutorial', t('ui.tutorial'), 'tree')}</div><p class="prototype-note">${e(prototypeNotice[locale])}</p>${capacityNotice()}</div></div>`;
@@ -104,6 +108,15 @@ export function mountSetup(host: HTMLElement, hooks: Hooks) {
         .join(
           '',
         )}</div><p class="muted">${e(t(visibility === 'offline' ? 'ui.offlineNotice' : 'ui.practiceNotice'))}</p>${capacityNotice()}${button('launch', t('ui.play'), 'play', 'class="primary launch"')}</section></div>${navigation(false, true)}`;
+    if (page === 'changelog')
+      content.innerHTML = changelogHTML(
+        {
+          title: t('ui.changelog'),
+          back: t('ui.back'),
+          english: changelogNotices[locale as keyof typeof changelogNotices] ?? changelogNotices.en,
+        },
+        locale,
+      );
     if (page === 'settings')
       content.innerHTML = `<div class="settings-page"><h1>${e(t('ui.settings'))}</h1>${hooks.settingsHTML()}<div class="actions">${button('back-home', t('ui.back'), 'map')}</div></div>`;
     if (page === 'join')
@@ -117,6 +130,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks) {
     byId('resume-boundary', hooks.resume);
     byId('join', () => go('join'));
     byId('settings', () => go('settings'));
+    byId('changelog', () => go('changelog'));
     byId('back-home', () => go('home'));
     for (const id of ['guide', 'tutorial']) byId(id, () => tutorial(host, () => {}));
     byId('setup-back', () => go(stage <= 0 ? 'home' : steps[stage - 1]));
@@ -246,6 +260,8 @@ export function mountSetup(host: HTMLElement, hooks: Hooks) {
     page = next;
     render();
     window.scrollTo({ top: 0, behavior: 'auto' });
+    if (next === 'changelog')
+      host.querySelector<HTMLElement>('#changelog-heading')?.focus({ preventScroll: true });
   }
   function showError(key: string) {
     const notice = host.querySelector<HTMLElement>('#notice');

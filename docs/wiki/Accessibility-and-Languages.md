@@ -1,36 +1,11 @@
 # Accessibility and languages
 
+The runtime includes fifteen language catalogs: English, Simplified Chinese, Traditional Chinese, Japanese, Spanish, French, German, Brazilian Portuguese, Russian, Hindi, Arabic, Bengali, Indonesian, Urdu and Korean. Arabic and Urdu mirror menu layout. Bundled Noto families cover the required scripts. Translation drafts are AI-authored; native-speaker review remains open.
 
-## Launch locales
+Language, audio and display preferences are separate from run difficulty. Keyboard/mouse, gamepad and touch controls are implemented. Reduced-motion handling, numerical cooldowns, named actions, focus indicators and accessible item names support the menus and HUD. Signature warnings use outlines, geometry and safe gaps as well as color/audio; sound or color alone must not be the only danger cue.
 
-English (en), Simplified Chinese (zh-Hans), Traditional Chinese (zh-Hant), Japanese (ja), Spanish (es), French (fr), German (de), Brazilian Portuguese (pt-BR), Russian (ru), Hindi (hi), Arabic (ar), Bengali (bn), Indonesian (id), Urdu (ur), and Korean (ko).
+The in-game changelog keeps navigation in the selected language. Editorial development notes are currently English and explicitly marked `lang="en"` with left-to-right text, including inside Arabic/Urdu menus. This avoids presenting untranslated prose as localized content.
 
-These are the selected global-coverage launch locales, not a claim about one definitive ranking of languages. Chinese script variants are independent catalogs.
+Automated catalog, layout, collision and source checks are evidence for specific behavior. They do not replace final rendered game review, physical-device/controller testing, photosensitivity/comfort review, native-language review or human accessibility testing. [Getting Started](Getting-Started) lists actual bindings.
 
-## Player experience
-
-- Language selection is available before joining and in settings, persists locally in the current runtime (the full ProfileV1 system is pending), and changes without restarting the application.
-- Match browser locale on first launch; use zh-TW, zh-HK and zh-MO as Traditional Chinese, zh-CN and zh-SG as Simplified Chinese. Fall back to English for unsupported locales.
-- Localize menus, errors, tutorials, class and skill descriptions, weapons, supplies, mutations, boss mechanics, accessibility labels, endings, and release highlights.
-- Keep identifiers, protocol fields, saved content IDs, and the Grave Accord brand independent of display language.
-- Use locale-aware numbers and plural forms, parameterized messages, and no concatenated sentence fragments.
-- Arabic and Urdu menus use right-to-left text and layout. Do not mirror the game world, aiming, movement, or control bindings.
-- Preserve font coverage with bundled licensed font subsets. Never require a font CDN for offline play.
-- Keep player-facing interface words out of raster artwork. Cover wordmarks may retain the brand.
-- Allow text wrapping and a minimum 40 percent expansion allowance in cards, buttons, and tooltips.
-
-## Verification
-
-- Every catalog must contain the canonical key set, matching placeholders and expected value types.
-- Test each locale at desktop, phone landscape, and portrait-menu sizes.
-- Verify Chinese variants independently; use shaped-script and RTL screenshots for Arabic, Urdu, Hindi, and Bengali.
-- Reject missing glyphs, clipped buttons, misplaced numbers, untranslated gameplay descriptions, and hidden language settings.
-- Describe translations as AI-authored and identify whether native-speaker review has occurred.
-- Changelog and Wiki remain canonical Markdown; in-game release highlights have localized summaries.
-
-## Current state
-
-All fifteen AI-authored catalogs are bundled, with 1,491 keys each and 22,365 messages. Language selection/persistence, Intl formatting, RTL menus and self-hosted licensed Fontsource families are implemented. Earlier class-menu layouts were assistant-reviewed in all locales; complete current-font/scene shaping and physical-device checks remain open. No native-speaker certification is claimed.
-
-
-Additional options: remappable controls, touch/gamepad support, optional aim assistance and auto-fire, reduced effects and motion, text scaling, independent audio volume, and shape-based danger cues.
+[English runtime strings](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/locales/en.json) · [Font and dependency notices](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/THIRD_PARTY_NOTICES.md)

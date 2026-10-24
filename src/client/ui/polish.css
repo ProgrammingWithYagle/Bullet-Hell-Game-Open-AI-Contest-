@@ -1548,3 +1548,88 @@
     padding: 0.8rem;
   }
 }
+
+.setup-footer .footer-link {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+.changelog-page {
+  max-width: 880px;
+  margin: 0 auto;
+  padding-bottom: 2rem;
+  overflow-wrap: anywhere;
+}
+.changelog-page .setup-heading {
+  display: block;
+}
+.changelog-page h1 {
+  margin-bottom: 0.3rem;
+}
+.changelog-page .build-stamp,
+.change-history time {
+  color: #bdc6b1;
+  font:
+    0.8rem/1.6 system-ui,
+    sans-serif;
+}
+.journal-status {
+  margin: 1.5rem 0 2rem;
+  padding: 1rem 1.3rem;
+  border: 1px solid #798969;
+  border-inline-start: 3px solid #d8b97c;
+  background: #101d16;
+}
+.journal-status p {
+  margin: 0.35rem 0;
+}
+.change-history {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.change-history > li {
+  padding: 0 0 2rem 1.3rem;
+  margin: 0 0 1.3rem;
+  border-inline-start: 1px solid #798969;
+}
+.change-history h2 {
+  margin: 0.3rem 0 0.8rem;
+  font-size: clamp(1.25rem, 3vw, 1.7rem);
+}
+.change-history h3 {
+  margin: 1.3rem 0 0.5rem;
+  color: #d8b97c;
+  font:
+    600 0.9rem system-ui,
+    sans-serif;
+}
+.change-history ul,
+.journal-status ul {
+  padding-inline-start: 1.2rem;
+}
+.change-history li li,
+.journal-status li {
+  margin: 0.6rem 0;
+  line-height: 1.7;
+  font-family: system-ui, sans-serif;
+  font-size: 0.9rem;
+}
+.journal-latest {
+  font:
+    0.7rem system-ui,
+    sans-serif;
+  border: 1px solid #b7c48d;
+  color: #d4dfb0;
+  padding: 0.25rem 0.6rem;
+  border-radius: 2px;
+}
+.change-history a {
+  font:
+    0.8rem system-ui,
+    sans-serif;
+}

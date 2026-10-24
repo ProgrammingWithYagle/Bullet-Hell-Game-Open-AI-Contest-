@@ -1,32 +1,35 @@
 # Grave Accord
 
-Current local feature-branch source: 23 playable bosses and individual themes, seven classes, six different map footprints, Quarantine and the ten-fight Midnight Circuit, protocol 9. The remaining 37 identities, later routes and full release/visual/device acceptance are unfinished. Older checkpoint counts below are historical. The public Site remains its earlier protocol-4 deployment; source/Wiki pushes do not redeploy it.
+Cooperative gothic zombie bullet hell. Choose a survivor, clear a boss contract, vote on mutations, buy a build and survive the next encounter.
 
+**Current development source: version 0.3.0, build `2026.10.24-journal`, protocol 9, updated 2026-10-24.** The game is still in development. [Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains the playable feature branch; protected `main` is a separate release boundary.
 
-Current development adds all seven playable classes, 378 skill nodes, 28 weapons, and six different map sizes/layouts. Nine bosses and their individual themes remain connected. Protocol 8 is required by current source. Final visuals, other boss identities/routes and release systems remain unfinished.
+| Playable now in that source | Contents |
+| --- | --- |
+| Survivors | All seven classes; two abilities and one ultimate per class |
+| Builds | 378 skills, 63 specialization paths, 28 weapons, eight supplies, 24 mutations |
+| Bosses and music | 23 distinct executable encounters, each with an original theme |
+| Routes | Five-fight Quarantine Run, ten-fight Midnight Circuit, uncapped Endless Vigil |
+| Maps | Six actual layouts with different cover, spawns and playable dimensions |
+| Sessions | Offline solo, public/private online rooms, boundary saves, process-live reconnect |
+| Interface | Keyboard/mouse, gamepad and touch support; fifteen language catalogs |
 
+The [public browser playtest](https://grave-accord-playtest.ivoryflame12.chatgpt.site/) remains the **older protocol-4 build with two classes and one boss**. Source and Wiki publication does not redeploy it. Run from source for the current build; see [Getting Started](Getting-Started).
 
-> Current source continuation: nine playable bosses, six connected collision layouts and separate boss themes. Quarantine now ends with Chain Marshal, Gate Widow or Black Ambulance after its regular encounters. Protocol 7; 133 checks pass. Four further classes, full environment/action art, additional routes/bosses and final release acceptance remain open. See the repository document `docs/QUARANTINE_RUNTIME.md` for exact mechanics and evidence.
+Black Bell Pilgrimage, Grand Raid, 37 further boss identities and the secret extension remain unfinished. Persistent mastery/cosmetics, verified leaderboards, durable online recovery and a portable Windows/LAN release are also unfinished. Automated evidence does not establish final rendered, human, device, language or balance acceptance.
 
+## Player reference
 
-Original cooperative zombie bullet hell in dry ink and matte gouache.
+- [Getting Started](Getting-Started): controls, installation and saving.
+- [Classes and Skills](Classes-and-Skills): the seven kits and build rules.
+- [Modes](Modes) and [Gauntlets](Gauntlets): playable routes, map sizes and boss selection.
+- [Bosses](Bosses): all 23 current signatures and counterplay.
+- [Economy and Mutations](Economy-and-Mutations): rewards, shops and team voting.
+- [Audio](Audio) and [Accessibility and Languages](Accessibility-and-Languages).
+- [Changelog](Changelog): dated changes, also available inside the game's main menu.
 
-[Play the development prototype](https://grave-accord-playtest.ivoryflame12.chatgpt.site/) — Soldier and Medic fight Hollow Constable in Gatehouse. The public service is capped at eight slots during Free-host calibration. This is Practice; live rankings and process-restart player recovery are unfinished.
+## Development reference
 
-Source is v0.3.0, protocol 6: Soldier, Medic and Heavy; Gatehouse; five playable bosses. Practice uses five distinct identities before a win; Endless exhausts the implemented pool before Brutal repeats. There are 71 new item illustrations, 32 new action frames and five different original boss themes. Four classes, 55 identities and other routes/finales/maps remain unfinished. [Current evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/BOSS_ENCOUNTERS_ITEMS_AND_MUSIC.md) includes 124 passing tests and explicit art/audio/performance limits. Final rendered/device/human/native-language/listening acceptance remains open. The public link above is still the earlier protocol-4 deployment; full-game/Windows delivery remains in development.
+[Architecture](Architecture) · [Hosting and Recovery](Hosting-and-Recovery) · [Leaderboards](Leaderboards) · [Contributing](Contributing) · [Credits](Credits)
 
-- [Getting started and controls](Getting-Started)
-- [Modes and endless play](Modes)
-- [Classes and skills](Classes-and-Skills)
-- [Bosses](Bosses)
-- [Sixty-boss gauntlets](Gauntlets)
-- [Economy and mutations](Economy-and-Mutations)
-- [Team leaderboard specification](Leaderboards)
-- [Audio](Audio)
-- [Accessibility and languages](Accessibility-and-Languages)
-- [Hosting, capacity and recovery](Hosting-and-Recovery)
-- [Architecture](Architecture)
-- [Changelog](Changelog)
-- [Credits](Credits)
-
-The [source repository](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-) contains the acceptance ledger and current implementation evidence. The v0.2.0-stage1 release is a verified design packet, not a Windows game download. Automated tests and assistant browser observations are separate from physical-device, human and native-language review.
+[Full acceptance backlog](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/IMPLEMENTATION_BACKLOG.md) · [Latest automated verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/reviews/runtime-verification.json) · [Midnight implementation evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/MIDNIGHT_CIRCUIT_RUNTIME.md)

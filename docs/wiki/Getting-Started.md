@@ -1,44 +1,40 @@
 # Getting started
 
-Current local feature-branch source: 23 playable bosses and individual themes, seven classes, six different map footprints, Quarantine and the ten-fight Midnight Circuit, protocol 9. The remaining 37 identities, later routes and full release/visual/device acceptance are unfinished. Older checkpoint counts below are historical. The public Site remains its earlier protocol-4 deployment; source/Wiki pushes do not redeploy it.
+The current feature-branch build supports seven classes, 23 bosses, six maps and three modes. The [public browser playtest](https://grave-accord-playtest.ivoryflame12.chatgpt.site/) is still its older two-class, one-boss protocol-4 deployment. These instructions distinguish that deployment from the current local source.
 
+## Play the current source
 
-Current development adds all seven playable classes, 378 skill nodes, 28 weapons, and six different map sizes/layouts. Nine bosses and their individual themes remain connected. Protocol 8 is required by current source. Final visuals, other boss identities/routes and release systems remain unfinished.
+Use Node.js 24 or newer and pnpm 11.25.0 in the existing checkout on `feat/first-playable-loop`:
 
+```powershell
+pnpm install --frozen-lockfile
+pnpm verify
+pnpm dev
+```
 
-> Current source continuation: nine playable bosses, six connected collision layouts and separate boss themes. Quarantine now ends with Chain Marshal, Gate Widow or Black Ambulance after its regular encounters. Protocol 7; 133 checks pass. Four further classes, full environment/action art, additional routes/bosses and final release acceptance remain open. See the repository document `docs/QUARANTINE_RUNTIME.md` for exact mechanics and evidence.
+Open `http://127.0.0.1:5173/`. Offline solo runs its authority in a worker and needs no multiplayer server. For local online rooms, run `pnpm server` in a second terminal. The service normally binds loopback port 2567; health is at `http://127.0.0.1:2567/api/health`.
 
-
-[Open the development playtest](https://grave-accord-playtest.ivoryflame12.chatgpt.site/). No game account is required. The first-visit field guide has Skip and can be replayed from the menu.
-
-Choose New run, Soldier or Medic, Quarantine Run or Endless Vigil, Gatehouse, then a currently available difficulty. Other classes/maps/routes can be inspected but are marked In production. At Review, choose Offline solo, Public or Private, enter a display name and launch. The owner starts the encounter from the lobby. Join room supports public discovery or a private six-character code.
-
-The Free multiplayer service currently reserves at most eight slots and one room. It can sleep while idle; warmup may take time. The source includes queue position/cancellation and a 75-second warmup window. The browser deployment may lag the feature branch; exact frontend/backend identities are in the repository deployment evidence.
-
-## Current source build
-
-The source branch offers three classes and five bosses, protocol 6. Choose any opening boss at Review; use the matching local server for online play. Source Practice completes five different identities; Endless only repeats after the pool, then marks the repeat Brutal with a + threat level. Shops/skill paths/supplies/mutations have illustrated items, and each current boss selects its own original music. [Current implementation and limits](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/BOSS_ENCOUNTERS_ITEMS_AND_MUSIC.md). The public Site remains the older protocol-4 build; four classes and the full roster/routes remain unfinished.
+Choose a class, mode, map and difficulty, review the setup, then start offline or create a public/private room. Private rooms use a six-character code. All seven classes, Quarantine Run, Midnight Circuit and Endless Vigil are available. The longer campaign and Raid remain locked. The opening-boss selector is an explicit rehearsal override; ordinary route progression reserves finales for the final encounter.
 
 ## Controls
 
-| Action | Keyboard and mouse |
+| Action | Keyboard/mouse |
 | --- | --- |
 | Move | WASD or arrow keys |
-| Aim/fire | Pointer / primary button |
-| Dodge/reload | Space / R |
-| Starting abilities | Q and E |
+| Aim / fire | Mouse / primary mouse button |
+| Dodge | Space |
+| Reload | R |
+| Class abilities | Q and E |
 | Ultimate | X |
-| Revive nearby teammate | Hold F |
-| Use supply slots | 1, 2, 3 |
+| Revive, Accord or neutral interaction | Hold F in range |
+| Use carried supply | 1, 2 or 3 |
 
-Standard gamepad bindings: sticks move/aim, RT fire, A dodge, X reload, LB/RB abilities, Y ultimate, B revive, D-pad up/down/left supplies. Touch adapters provide movement/aim drags and action buttons. Actual physical controller/phone validation remains pending.
+Gamepad uses left/right sticks for movement/aim, right trigger to fire, A to dodge, X to reload, bumpers for abilities, Y for ultimate, B for interaction, and D-pad for supplies. Touch uses twin sticks and action buttons. Physical controller/device acceptance remains open.
 
-After a non-final victory: fifteen-second mutation vote, fifteen-second concealed contract vote, twenty-five-second shop/skill window and five-second deployment. Shops enforce class, currency, prerequisites and the single-capstone rule. Three inventory slots carry up to two of each selected supply. Votes and purchases are authoritative online.
+## Between encounters
 
-Any teammate can channel a two-second revive during a twenty-second downed window. Solo has one self-revive per encounter. Eliminated participants return at the next encounter. A whole incapacitated party or expired boss deadline ends the run. The published prototype's five-fight completion and Endless repetitions use Constable variants, not the complete sixty-boss roster.
+Completed fights lead to a 15-second mutation vote, 15-second concealed boss vote, 25-second shop and five-second deployment. Currency and build choices are validated by the authority. Purchased power resets each run. Open **Changelog** in the main menu footer for the build identifier and dated updates.
 
-Offline solo runs the shared simulation in a worker. Compatible lobby/intermission saves preserve the build and offered choices; interrupted offline combat resumes from the prior boundary. Online has sixty-second reconnect reservations while the process survives. Server-process restart recovery and global rankings are not live yet.
+Offline saves resume at encounter boundaries and retain the build, economy, votes and RNG state. Supported older local saves are migrated within explicit bounds; incompatible or malformed saves are rejected. Online reconnect reserves a slot for 60 seconds while the server process survives. Server-restart recovery is not yet live.
 
-## Run from source
-
-Install Node 24 and pnpm 11.25.0. In the existing source folder, run pnpm install --frozen-lockfile and pnpm verify. Run pnpm dev and pnpm server in separate terminals, then open http://localhost:5173/. The normal service binds loopback port 2567. Offline solo needs no multiplayer server. Portable Windows/offline/LAN packaging is still pending.
+[Current implementation details](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/MIDNIGHT_CIRCUIT_RUNTIME.md) · [Accessibility and Languages](Accessibility-and-Languages)

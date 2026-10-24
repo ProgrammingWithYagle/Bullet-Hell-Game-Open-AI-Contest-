@@ -1,9 +1,19 @@
 # Credits and provenance
 
-Game direction: ProgrammingWithYagle. Code, production tools, documentation and translation drafting: OpenAI coding assistant. Original visual art: built-in OpenAI image generation; backend identifier is unreported unless tool metadata says otherwise. Music and sounds: original deterministic local synthesis. No copied sprites, music or maps from reference games.
+Game direction and playtesting: ProgrammingWithYagle. Code, production tools, documentation and translation drafting: OpenAI coding assistant. Original raster artwork: built-in OpenAI image generation; a specific backend model is not claimed without returned metadata. Music and sounds: original deterministic local synthesis. No reference-game sprites, maps or recordings are copied into the game.
 
-MIT source license is preserved. Third-party runtime and bundled Fontsource notices are preserved in THIRD_PARTY_NOTICES.md in the source repository; final Windows packaging remains pending. Native-speaker review and human playtesting are separate, explicitly recorded verification steps.
+Source uses the MIT license. Dependency and bundled Fontsource license notices are retained in [THIRD_PARTY_NOTICES.md](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/THIRD_PARTY_NOTICES.md). Final Windows packaging must carry its required notices and is still pending.
 
-The current [production-art progress index](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/ART_PRODUCTION_PROGRESS.md) links five survivor turnarounds and three new individual boss pose studies. It distinguishes static references from playable content and includes exact prompts, superseded versions, native hashes and static assistant review.
+## Current production records
 
-The [normalization and motion checkpoint](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/ART_NORMALIZATION_AND_MOTION.md) adds twenty-nine normalized poses, five native portrait crops used in setup, and an eight-frame Warden attack study. Original tool returns and exact prompts are preserved; deterministic cropping/packing does not manufacture animation frames. Full action libraries, the Warden encounter, Phaser motion acceptance and human review remain pending.
+- [Early native identities and production references](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/ART_PRODUCTION_PROGRESS.md).
+- [Initial normalization, anchor and Warden motion checkpoint](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/ART_NORMALIZATION_AND_MOTION.md).
+- [Seven-class and six-map completion evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/CLASS_AND_ARENA_RUNTIME.md).
+- [Fourteen service bosses and connected art/audio](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/MIDNIGHT_CIRCUIT_RUNTIME.md).
+- [Midnight request/native/reference provenance](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/midnight-art-2026-10-24.json).
+- [Independent source/atlas/pixel audit](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/reviews/midnight-2026-10-24/independent-art-audit.json).
+- [All 23 original boss compositions](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/assets/production/audio/boss-themes/library.json).
+
+Exact prompts, reference hashes, returned natives and superseded attempts remain available. Technical cropping/resampling/padding is documented separately from drawing. Selected motion currently totals 375 frames across bosses, classes, parts and minions; complete action/facing libraries are not finished. Native/proof inspection is not full in-engine or human motion acceptance.
+
+Native-speaker, device, final rendered and subjective listening reviews remain separate from automated evidence. Historical records retain their checkpoint counts; [Changelog](Changelog) and [Home](Home) describe the current source.

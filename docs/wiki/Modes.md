@@ -1,16 +1,28 @@
-# Modes and endless play
+# Modes and maps
 
-Current local feature-branch source: 23 playable bosses and individual themes, seven classes, six different map footprints, Quarantine and the ten-fight Midnight Circuit, protocol 9. The remaining 37 identities, later routes and full release/visual/device acceptance are unfinished. Older checkpoint counts below are historical. The public Site remains its earlier protocol-4 deployment; source/Wiki pushes do not redeploy it.
-
-
-The table describes the full authored target. The public protocol-4 prototype uses Constable variants; the source protocol-6 Practice subset completes five different implemented bosses and Endless exhausts that pool before Brutal repeats. The official Free service remains capped at eight slots. Full routes/finale pools and Raid remain in production.
-
-| Mode | Players | Encounters | Minutes |
+| Mode | Current status | Encounters | Source room limit |
 | --- | --- | --- | --- |
-| Quarantine Run | 1-8 | 5 | 10-20 |
-| Midnight Circuit | 1-8 | 10 | 25-35 |
-| Black Bell Pilgrimage | 1-8 | 16 | 45-60 |
-| Grand Raid | 1-16 | 3 | 10-20 |
-| Endless Vigil | 1-50 | No final round | Until defeat |
+| Quarantine Run | Playable | 5: four unique regulars and a reserved finale | 8 |
+| Midnight Circuit | Playable | 10: nine unique regulars and a reserved finale | 8 |
+| Endless Vigil | Playable | No final round; current pool has 23 identities | 50 |
+| Black Bell Pilgrimage | Authored, locked; implementation pending | 16 planned | 8 planned |
+| Grand Raid | Authored, locked; implementation pending | 3 planned | 16 planned |
 
-Endless Vigil continues indefinitely. Every boss victory is followed by rewards, mutation voting, boss voting and shopping. Player purchases cap at their normal limits; bosses grow per vigil cycle. Bank completed progress on extraction or defeat.
+Source room limits are admission rules, not a claim that the current hosted service or physical devices have passed full-capacity acceptance. The older public playtest is capped at eight slots. Final rendered/WAN/endurance and 49+1 scale acceptance remain open.
+
+Quarantine and Midnight use their authored threat and arena sequences and normalized progression budgets. All playable modes support offline solo and public/private rooms. Baby, Easy, Normal and Hard are selectable. Insane and Hellish are locked pending their full Hard-completion unlock/profile implementation.
+
+## Six different playable layouts
+
+| Map | Traversable size | Layout |
+| --- | --- | --- |
+| Gatehouse | 1600 × 1000 | Original walled courtyard |
+| Triage Yard | 1600 × 900 | Wide promenade, staggered bed islands |
+| Ossuary Works | 1300 × 1000 | Tall, offset industrial S corridor |
+| Sunken Chapel | 1400 × 920 | Central altar, side chapels, clear nave |
+| Bell Foundry | 1500 × 850 | Broad forge floor and machine cover |
+| Crown Crypt | 1240 × 880 | Compact asymmetric crypt |
+
+All maps share a 1600 × 1000 camera coordinate space; solids outside each footprint restrict actual movement. Cover, spawns, collision and prediction follow the selected layout. Route progression rotates maps. Reachability checks cover fifty player spawn positions, boss access and five Accord pads on every map.
+
+The secret Uncounted extension and its victory banking are authored future behavior. They are not currently playable. See [Gauntlets](Gauntlets), [Bosses](Bosses) and [actual arena geometry](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/src/shared/arena-layouts.ts).

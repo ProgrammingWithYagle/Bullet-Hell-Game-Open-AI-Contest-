@@ -1,15 +1,26 @@
 # Hosting and recovery
 
-The public [development browser playtest](https://grave-accord-playtest.ivoryflame12.chatgpt.site/) is published through Sites. Its recorded frontend source is 33b36bc. The [multiplayer service](https://grave-accord-playtest.onrender.com/api/health) is deployed on Render Free, Ohio, with eight reserved slots and one room during calibration. The latest gameplay deployment is dfade8834e81cfd324eeb124d22ec3b7bd68c245, protocol 4. It remains Practice. Auto-deploy is Off; no paid tier, card or persistent disk was added.
+Local source runs the Vite frontend on port 5173 and the Colyseus service on loopback port 2567. Health is `/api/health`. Offline solo requires only the client and worker. Public room discovery, private six-character codes and reconnect reservations are implemented.
 
-A brief actual hosted SDK check on this deployment passed public discovery with the eight-slot maximum, private-code delivery and a two-person private-code join. Private rooms stayed hidden; test slots/rooms were released. This is network integration evidence, not rendered QA or a capacity stress pass.
+The existing public Site remains the earlier protocol-4 frontend and gameplay. Source pushes, Wiki updates and draft PR changes do not redeploy that Site. The current protocol-9 source must use a matching backend. A public Site owned by a different account must not be replaced without the appropriate authorized deployment path.
 
-Render's checked Hobby allowance is 5 GB/month shared outbound, including WebSockets, and 750 shared Free instance hours. Services sleep after idle periods and the filesystem is ephemeral. Keep tests bounded and inspect current allowance before larger load. Fifty-player hosting and sixty-minute endurance are still open. Local synthetic 49+1/4,000-hostile server results do not establish equivalent Free-host capacity.
+## Capacity and recovery status
 
-The admission queue holds at most 128 waiting requests, renews thirty-second tickets and reserves an offered slot for fifteen seconds. Slots include reconnect reservations. Room and participant limits are separate. Public discovery excludes private codes and recovery credentials. A live process reserves disconnected seats for sixty seconds; late arrivals are admitted at encounter boundaries.
+| Feature | Actual state |
+| --- | --- |
+| Campaign room admission | Up to 8 slots in current source |
+| Endless room admission | Up to 50 slots in source; full rendered/hosting acceptance pending |
+| Public playtest admission | Earlier eight-slot configuration |
+| Reconnect reservation | 60 seconds while the same server process survives |
+| Offline resume | Validated encounter-boundary save with compatible local migrations |
+| Instance queue/cold-start logic | Tested foundation; live rollout depends on host configuration |
+| SQL/HTTP/journal recovery foundation | Tested modules; disabled in the normal runtime |
+| Durable server-restart recovery | Not live |
+| Verified public rankings | Not live |
+| Portable Windows/offline/LAN release | Not built |
 
-Offline Practice has validated local boundary saves. Online recovery foundations include signed 24-hour boundaries, transactional SQL ownership/sequence guards, authenticated bounded HTTP requests, nonce replay prevention and a lease/claim journal. Local tests stop and restart a separate HTTP process with persisted SQLite, race owners and verify unchanged builds, choices and purchase history. A server-only factory now connects GraveRoom to the journal, freezing safe boundaries until acknowledgement and reporting checkpoint waits/outages. Normal/public execution has no factory configured, and recoveryAvailable remains false. Deployed D1, player/new-transport recovery credentials, historical team records and rankings remain unfinished. Interrupted combat can only be recovered as Practice.
+Server capacity and per-room capacity are separate constraints. Earlier scripted stress fixtures are not proof of physical-device FPS, WAN stability or a host's production capacity. Final 49+1, endurance and deployment acceptance remain open.
 
-Current supported browser control reports disabled in Work settings despite the user's working localhost preview. The Sites connector also cannot currently access the saved Site ID; the public page remains available. Existing Site identity and audience are preserved. These access issues do not justify a duplicate project, new source checkout or invented browser approval.
+Do not restart a local online service while active combat or reconnect reservations exist without coordinating with its players. Current development refreshes inspect health, admission and process identity first.
 
-LAN hosting and a portable Windows download are pending. No paid provisioning is authorized.
+[Getting Started](Getting-Started) · [Architecture](Architecture) · [Recovery design and gates](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/RECOVERY_IMPLEMENTATION.md) · [Hosting capacity](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/HOSTING_CAPACITY.md)
