@@ -1,5 +1,5 @@
 import revision from '../../content/revision.json' with { type: 'json' };
-export const PROTOCOL = 9;
+export const PROTOCOL = 10;
 export const CONTENT_REVISION = revision.sha256;
 export const HZ = 30,
   DT = 1 / HZ;
@@ -13,7 +13,7 @@ export const implementedClassIds = [
   'assassin',
 ] as const;
 export type ClassId = (typeof implementedClassIds)[number];
-export const implementedModeIds = ['short', 'standard', 'endless'] as const;
+export const implementedModeIds = ['short', 'standard', 'long', 'endless'] as const;
 export type ModeId = (typeof implementedModeIds)[number];
 export type BossId =
   | 'constable'
@@ -38,7 +38,27 @@ export type BossId =
   | 'plague-gardener'
   | 'choir'
   | 'red-abbess'
-  | 'vesper-judge';
+  | 'vesper-judge'
+  | 'pallbearer'
+  | 'cinder-foreman'
+  | 'canal-diver'
+  | 'clockmender'
+  | 'wire-seamstress'
+  | 'gravedigger'
+  | 'ink-notary'
+  | 'spore-beekeeper'
+  | 'ice-custodian'
+  | 'bridge-ferryman'
+  | 'porcelain-mourner'
+  | 'boiler-tender'
+  | 'mirror-undertaker'
+  | 'chalk-magistrate'
+  | 'wire-harpist'
+  | 'crow-shepherd'
+  | 'ledger-leech'
+  | 'engine'
+  | 'regent'
+  | 'salt-patriarch';
 export type CheckpointStatus =
   'disabled' | 'pending' | 'acknowledged' | 'unavailable' | 'finalized';
 export type Phase =

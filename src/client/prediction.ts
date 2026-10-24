@@ -1,3 +1,4 @@
+import { districtMovement } from '../shared/district-director.ts';
 import { serviceMovement } from '../shared/service-director.ts';
 import { moveBody, distance } from '../shared/geometry.ts';
 import { gateObstacles, leaveClosingGates } from '../shared/civic-director.ts';
@@ -12,7 +13,7 @@ export class Prediction {
   acknowledge(view: View, id: string) {
     const p = view.players.find((p) => p.id === id);
     if (!p) return;
-    this.player = { ...p };
+    this.player = { ...p, terrain: structuredClone(p.terrain) };
     this.tick = view.combatTick;
     this.pending =
       view.phase === 'combat' ? this.pending.filter((i) => i.sequence > p.ack).slice(-120) : [];
@@ -42,6 +43,15 @@ export class Prediction {
       p.dodgeAt = now + Math.ceil(data.rules.dodgeCooldown * p.dodgeCooldown * HZ);
     }
     const environment = serviceMovement(view.bossCues, p, p.id, now);
+    const terrain = districtMovement(
+      view.bossCues,
+      p,
+      p.id,
+      now,
+      p.terrain,
+      { x: mx, y: my },
+      now < p.dashUntil,
+    );
     const rally = Math.max(
         0,
         ...view.fields
@@ -53,12 +63,16 @@ export class Prediction {
         ? now < p.kit.chargeUntil
           ? 600
           : data.rules.dodgeSpeed
-        : p.speed * (now < p.slowUntil ? 0.65 : 1) * (1 + rally) * environment.multiplier;
+        : p.speed *
+          (now < p.slowUntil ? 0.65 : 1) *
+          (1 + rally) *
+          environment.multiplier *
+          terrain.multiplier;
     const next = moveBody(
       p,
       {
-        x: ((dash ? p.dashX : mx) * speed + environment.x) * DT,
-        y: ((dash ? p.dashY : my) * speed + environment.y) * DT,
+        x: ((dash ? p.dashX : mx) * speed + environment.x + terrain.x) * DT,
+        y: ((dash ? p.dashY : my) * speed + environment.y + terrain.y) * DT,
       },
       data.rules.playerRadius,
       [...runtimeArena(view.arenaId).obstacles, ...gates],

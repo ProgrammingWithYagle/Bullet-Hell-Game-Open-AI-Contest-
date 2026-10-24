@@ -40,6 +40,11 @@ const survivorRuns = import.meta.glob('../../assets/production/motion/*-run-*-v1
   import: 'default',
   eager: true,
 }) as Record<string, string>;
+const pilgrimageProps = import.meta.glob('../../assets/production/pilgrimage-props/*.png', {
+  query: '?url',
+  import: 'default',
+  eager: true,
+}) as Record<string, string>;
 const midnightProps = import.meta.glob('../../assets/production/midnight-props/*.png', {
   query: '?url',
   import: 'default',
@@ -66,6 +71,9 @@ const encounterMotion = import.meta.glob('../../assets/production/motion/*-actio
   eager: true,
 }) as Record<string, string>;
 export const assets = {
+  pilgrimageProps: Object.fromEntries(
+    Object.entries(pilgrimageProps).map(([p, u]) => [p.split('/').at(-1)!.replace('.png', ''), u]),
+  ),
   midnightProps: Object.fromEntries(
     Object.entries(midnightProps).map(([p, u]) => [p.split('/').at(-1)!.replace('.png', ''), u]),
   ),

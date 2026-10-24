@@ -1,6 +1,6 @@
 # Getting started
 
-The current feature-branch build supports seven classes, 23 bosses, six maps and three modes. The [public browser playtest](https://grave-accord-playtest.ivoryflame12.chatgpt.site/) is still its older two-class, one-boss protocol-4 deployment. These instructions distinguish that deployment from the current local source.
+The current feature-branch build supports seven classes, 43 bosses, six maps and four modes. The [public browser playtest](https://grave-accord-playtest.ivoryflame12.chatgpt.site/) is still its older two-class, one-boss protocol-4 deployment. These instructions distinguish that deployment from the current local source.
 
 ## Play the current source
 
@@ -14,7 +14,7 @@ pnpm dev
 
 Open `http://127.0.0.1:5173/`. Offline solo runs its authority in a worker and needs no multiplayer server. For local online rooms, run `pnpm server` in a second terminal. The service normally binds loopback port 2567; health is at `http://127.0.0.1:2567/api/health`.
 
-Choose a class, mode, map and difficulty, review the setup, then start offline or create a public/private room. Private rooms use a six-character code. All seven classes, Quarantine Run, Midnight Circuit and Endless Vigil are available. The longer campaign and Raid remain locked. The opening-boss selector is an explicit rehearsal override; ordinary route progression reserves finales for the final encounter.
+Choose a class, mode, map and difficulty, review the setup, then start offline or create a public/private room. Private rooms use a six-character code. All seven classes, Quarantine Run, Midnight Circuit, Black Bell Pilgrimage and Endless Vigil are available. Grand Raid remains locked. The opening-boss selector is an explicit rehearsal override; ordinary route progression reserves finales for the final encounter.
 
 ## Controls
 

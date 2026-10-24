@@ -1,19 +1,40 @@
 {
-  "buildId": "2026.10.24-journal",
+  "buildId": "2026.10.24-pilgrimage",
   "snapshot": {
-    "bosses": 23,
+    "bosses": 43,
     "classes": 7,
     "skills": 378,
     "weapons": 28,
     "maps": 6,
-    "modes": [
-      "short",
-      "standard",
-      "endless"
-    ],
-    "protocol": 9
+    "modes": ["short", "standard", "long", "endless"],
+    "protocol": 10
   },
   "entries": [
+    {
+      "id": "pilgrimage",
+      "date": "2026-10-24",
+      "title": "Twenty more bosses and Black Bell Pilgrimage",
+      "groups": [
+        {
+          "title": "Playable content",
+          "items": [
+            "Black Bell Pilgrimage now runs sixteen different fights from its own twenty-boss pool: fifteen regular encounters and one of three reserved finales. The playable roster reaches 43 identities, each with an individual original music theme.",
+            "Added Pallbearer, Cinder Foreman, Canal Diver, Clockmender, Seamstress of Wires, Gravedigger, Ink Notary, Spore Beekeeper, Ice Custodian, Bridge Ferryman, Porcelain Mourner, Boiler Tender, Mirror Undertaker, Chalk Magistrate, Wire Harpist, Crow Shepherd and Ledger Leech, plus Mortuary Engine, Drowned Regent and Salt Patriarch finales.",
+            "New counterplay includes destructible moving cover, stopped and restarted projectiles, removable fence anchors and swarm wedges, bounded ice drift, alternate bridge crossings, porcelain cover that splits, neutral pressure valves, harmless ghost copies, erased chalk walls, timed strings, actual crow flocks, cleansing circles and open salt gates."
+          ]
+        },
+        {
+          "title": "Art, audio and fixes",
+          "items": [
+            "Connected 168 drawn boss/crow poses and sixteen signature props. Thirteen clipped first sheets were replaced by complete smaller-scale sheets; all 36 native returns and exact requests remain preserved. Independent audits reconstruct every shipped pixel and verify atlas padding.",
+            "Composed twenty new original themes with separate melodies, harmonic routes and phrasing. All earlier 23 music masters remain unchanged. Objective checks cover all 43 themes; final listening and device mix approval are still open.",
+            "Protocol 10 shares ice drift and seal cleansing with prediction, preserves bounded local protocol-9 saves, and replicates frozen/restarted projectile velocities using the same identities. Fixed a route-income rounding error that could lose one coin.",
+            "A guarded core transfers one boosted boss hit rather than double-counting the body. Warps reset the collision origin, moving cover stops at masonry, neutral salt holds delay the real next cast, and network signature cues copy coordinates without overwriting their numeric IDs.",
+            "Fixed health-reducing mutations at the voting boundary: current health and maximum health now agree immediately, so authoritative recovery accepts the same valid state the player sees."
+          ]
+        }
+      ]
+    },
     {
       "id": "development-journal",
       "date": "2026-10-24",
@@ -147,7 +168,7 @@
     }
   ],
   "limitations": [
-    "Thirty-seven authored boss identities, Black Bell Pilgrimage, Grand Raid and the secret extension still need implementation.",
+    "Seventeen authored boss identities, Grand Raid, the Endless-exclusive schedule and the secret extension still need implementation.",
     "Complete action/facing art, balance, final rendered playtests, physical-device and native-language review remain in progress.",
     "Persistent mastery/cosmetics, verified rankings, durable online recovery and the Windows/offline/LAN release are not complete."
   ]

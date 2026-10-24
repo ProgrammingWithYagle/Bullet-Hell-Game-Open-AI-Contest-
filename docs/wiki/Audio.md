@@ -1,6 +1,6 @@
 # Audio
 
-Every one of the 23 playable bosses has an individual original theme. These are separate editable compositions and synthesized PCM masters, with different motifs, phrasing and arrangements. They are not merely the same track transposed to another key. No sampled commercial music is used.
+Every one of the 43 playable bosses has an individual original theme. These are separate editable compositions and synthesized PCM masters, with different motifs, phrasing and arrangements. They are not merely the same track transposed to another key. No sampled commercial music is used.
 
 | Boss | Theme | Tempo | Meter |
 | --- | --- | --- | --- |
@@ -27,13 +27,33 @@ Every one of the 23 playable bosses has an individual original theme. These are 
 | Grave Choir | Three Names | 64 BPM | 5/4 |
 | Red Abbess | Scarlet Vespers | 72 BPM | 5/4 |
 | Vesper Judge | The Open Half | 96 BPM | 4/4 |
+| Pallbearer | Shoulders of Wood | 76 BPM | 4/4 |
+| Cinder Foreman | Last Shift | 118 BPM | 7/8 |
+| Canal Diver | Under the Lock | 64 BPM | 6/8 |
+| Clockmender | Borrowed Second | 112 BPM | 5/4 |
+| Seamstress of Wires | Hem of Silence | 104 BPM | 3/4 |
+| Gravedigger | One More Yard | 82 BPM | 4/4 |
+| Ink Notary | The Unclosed Line | 96 BPM | 5/4 |
+| Spore Beekeeper | Hive Without Sun | 108 BPM | 7/8 |
+| Ice Custodian | White Corridor | 74 BPM | 4/4 |
+| Bridge Ferryman | Two Crossings | 90 BPM | 6/8 |
+| Porcelain Mourner | First Hairline | 68 BPM | 3/4 |
+| Boiler Tender | Pressure Gauge | 122 BPM | 4/4 |
+| Mirror Undertaker | The Other Room | 80 BPM | 5/4 |
+| Chalk Magistrate | Erased Corner | 100 BPM | 4/4 |
+| Wire Harpist | Three Tensions | 116 BPM | 3/4 |
+| Crow Shepherd | Black Wing Count | 138 BPM | 7/8 |
+| Ledger Leech | Unpaid Name | 92 BPM | 5/4 |
+| Mortuary Engine | Mortuary Drive | 126 BPM | 4/4 |
+| Drowned Regent | The Water Remembers | 72 BPM | 5/4 |
+| Salt Patriarch | Three White Steps | 84 BPM | 3/4 |
 
-The audio bus switches boss themes, crossfades over 0.75 seconds, ducks music for warnings, caps live SFX voices at twelve and retains at most three decoded music buffers. Original menu/combat proofs and the representative SFX bank are separate assets. The earlier nine boss PCM masters were preserved unchanged when the fourteen Midnight themes were added.
+The audio bus switches boss themes, crossfades over 0.75 seconds, ducks music for warnings, caps live SFX voices at twelve and retains at most three decoded music buffers. Original menu/combat proofs and the representative SFX bank are separate assets. The earlier nine boss PCM masters were preserved when Midnight was added; all 23 earlier masters were preserved unchanged when the twenty Pilgrimage themes were added.
 
 ## Production and verification
 
 [Deterministic score/synthesis source](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/tools/compose-boss-themes.py) · [Theme manifest](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/assets/production/audio/boss-themes/library.json) · [Objective audio audit](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/reviews/boss-themes-review.json)
 
-The audit checks all 23 masters for format, clipping, DC offset, mono compatibility and loop continuity. Objective file checks do not establish subjective listening approval or a finished device mix. Native headphone, speaker, phone, muted-device and crowded online listening remain acceptance work.
+The audit checks all 43 masters for format, clipping, DC offset, mono compatibility and loop continuity. Objective file checks do not establish subjective listening approval or a finished device mix. Native headphone, speaker, phone, muted-device and crowded online listening remain acceptance work.
 
 Arena ambience, full-length menu/results development and complete per-action/per-boss SFX coverage remain in production. New bosses must receive their own composition rather than silently reusing an earlier boss identity's theme.

@@ -4,13 +4,13 @@
 | --- | --- | --- | --- |
 | Quarantine Run | Playable | 5: four unique regulars and a reserved finale | 8 |
 | Midnight Circuit | Playable | 10: nine unique regulars and a reserved finale | 8 |
-| Endless Vigil | Playable | No final round; current pool has 23 identities | 50 |
-| Black Bell Pilgrimage | Authored, locked; implementation pending | 16 planned | 8 planned |
+| Endless Vigil | Playable | No final round; current pool has 43 identities | 50 |
+| Black Bell Pilgrimage | Playable | 16: fifteen unique regulars and a reserved finale | 8 |
 | Grand Raid | Authored, locked; implementation pending | 3 planned | 16 planned |
 
 Source room limits are admission rules, not a claim that the current hosted service or physical devices have passed full-capacity acceptance. The older public playtest is capped at eight slots. Final rendered/WAN/endurance and 49+1 scale acceptance remain open.
 
-Quarantine and Midnight use their authored threat and arena sequences and normalized progression budgets. All playable modes support offline solo and public/private rooms. Baby, Easy, Normal and Hard are selectable. Insane and Hellish are locked pending their full Hard-completion unlock/profile implementation.
+Quarantine, Midnight and Pilgrimage use their authored threat and arena sequences and normalized progression budgets. All playable modes support offline solo and public/private rooms. Baby, Easy, Normal and Hard are selectable. Insane and Hellish are locked pending their full Hard-completion unlock/profile implementation.
 
 ## Six different playable layouts
 

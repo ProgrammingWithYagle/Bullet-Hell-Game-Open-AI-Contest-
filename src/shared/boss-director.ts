@@ -1,3 +1,4 @@
+import { DistrictDirector, type DistrictCue, type DistrictProp } from './district-director.ts';
 import { ServiceDirector, type ServiceCue } from './service-director.ts';
 // Authoritative signatures for the Courier, Ratcatcher and Quarantine Clerk.
 // All targets lock at warning creation; rendering consumes these same cues.
@@ -8,6 +9,7 @@ import { clamp, distance, moveBody, segmentCircle, segmentRect, type Rect } from
 export type BossCue =
   | CivicCue
   | ServiceCue
+  | DistrictCue
   | {
       kind: 'charge' | 'scent';
       id: number;
@@ -54,6 +56,16 @@ export type BossCue =
 type Lane = Extract<BossCue, { kind: 'charge' | 'scent' }>;
 type Stamp = Extract<BossCue, { kind: 'stamp' }>;
 export type SignatureContext = {
+  emitControlled?(
+    position: Vec,
+    angle: number,
+    speed: number,
+    damage: number,
+    radius: number,
+  ): number | undefined;
+  controlShot?(id: number, vx: number, vy: number): boolean;
+  removeHostile?(id: number): void;
+  relocateBoss?(point: Vec): void;
   bossMaximumHealth?: number;
   interactors?: string[];
   spawnOrdinary?(
@@ -97,6 +109,7 @@ const ticks = (seconds: number) => Math.ceil(seconds * HZ);
 export class BossDirector {
   readonly civic = new CivicDirector();
   readonly services = new ServiceDirector();
+  readonly district = new DistrictDirector();
   solids(tick: number) {
     return this.civic.solids(tick);
   }
@@ -105,6 +118,7 @@ export class BossDirector {
       ...(this.weakPoint() ? [this.weakPoint()!] : []),
       ...this.civic.weakPoints(),
       ...this.services.weakPoints(),
+      ...this.district.weakPoints(),
     ];
   }
   private lanes: Lane[] = [];
@@ -142,6 +156,7 @@ export class BossDirector {
 
   reset(kind: BossId, brutal = false, encounter = false) {
     this.services.reset(kind, encounter);
+    this.district.reset(kind, encounter);
     if (encounter) this.civic.resetEncounter(kind);
     else this.civic.reset(kind);
     this.kind = kind;
@@ -173,7 +188,32 @@ export class BossDirector {
         }
       : null;
   }
+  weakContact(from: Vec, to: Vec, weak: Vec & { kind: string; radius: number }, radius: number) {
+    return weak.kind === 'district-prop'
+      ? this.district.weakContact(from, to, weak as DistrictProp, radius)
+      : segmentCircle(from, to, weak, radius + weak.radius);
+  }
+  weakInRadius(point: Vec, radius: number, weak: Vec & { kind: string; radius: number }) {
+    if (weak.kind === 'district-prop') {
+      const prop = weak as DistrictProp;
+      if (prop.width > 0)
+        return (
+          Math.hypot(
+            Math.max(0, Math.abs(point.x - prop.x) - prop.width / 2),
+            Math.max(0, Math.abs(point.y - prop.y) - prop.height / 2),
+          ) <= radius
+        );
+    }
+    return distance(point, weak) <= radius + weak.radius;
+  }
+  coreContact(from: Vec, to: Vec, radius: number) {
+    return this.district
+      .weakPoints()
+      .some((p) => p.role === 'core' && this.district.weakContact(from, to, p, radius) !== null);
+  }
   hitWeakPoint(amount: number, tick: number, id?: number) {
+    if (id !== undefined && this.district.handles(this.kind))
+      return this.district.hit(id, amount, tick);
     if (id !== undefined && this.services.handles(this.kind))
       return this.services.hit(id, amount, tick);
     if (id !== undefined && this.kind !== 'ratcatcher') return this.civic.hit(id, amount);
@@ -333,6 +373,7 @@ export class BossDirector {
     return [
       ...this.civic.cues(),
       ...this.services.cues(),
+      ...this.district.cues(),
       ...this.lanes,
       ...this.trails.map((t) => t.cue),
       ...this.stamps,
@@ -424,6 +465,7 @@ export class BossDirector {
     }
     this.civic.step(context, this.charging);
     this.services.step(context);
+    this.district.step(context);
     for (const trail of this.trails) {
       if (context.tick >= trail.cue.until) continue;
       const retired = Math.min(

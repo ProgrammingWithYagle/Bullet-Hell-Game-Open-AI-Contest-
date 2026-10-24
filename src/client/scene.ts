@@ -1,3 +1,5 @@
+import { DistrictPresentation } from './district-presentation.ts';
+import type { DistrictCue } from '../shared/district-director.ts';
 import { ServicePresentation } from './service-presentation.ts';
 import type { ServiceCue } from '../shared/service-director.ts';
 import Phaser from 'phaser';
@@ -38,6 +40,7 @@ export class CombatScene extends Phaser.Scene {
   private arenaGround!: Phaser.GameObjects.Graphics;
   private lastArenaId = '';
   private serviceArt!: ServicePresentation;
+  private districtArt!: DistrictPresentation;
   private coverImages: Phaser.GameObjects.Image[] = [];
   private constructImages = new Map<number, Phaser.GameObjects.Image>();
   private bossSprite!: Phaser.GameObjects.Sprite;
@@ -77,6 +80,8 @@ export class CombatScene extends Phaser.Scene {
     for (const [id, url] of Object.entries(assets.environment))
       this.load.image('environment-' + id, url);
     this.load.image('tollkeeper-wheel', assets.wheel);
+    for (const [id, url] of Object.entries(assets.pilgrimageProps))
+      this.load.image('pilgrimage-prop-' + id, url);
     for (const [id, url] of Object.entries(assets.midnightProps))
       this.load.image('midnight-prop-' + id, url);
     this.load.spritesheet('soldier', assets.soldier, {
@@ -130,6 +135,7 @@ export class CombatScene extends Phaser.Scene {
   }
   create() {
     this.serviceArt = new ServicePresentation(this);
+    this.districtArt = new DistrictPresentation(this, (id) => this.people.get(id));
     this.arenaImage = this.add
       .image(800, 500, 'gatehouse')
       .setDisplaySize(1600, 1000)
@@ -597,6 +603,14 @@ export class CombatScene extends Phaser.Scene {
         );
       }
     }
+    this.districtArt.draw(
+      h,
+      f,
+      view.bossCues.filter((c): c is DistrictCue => c.kind.startsWith('district-')),
+      now,
+      this.reduceMotion,
+      this.hitboxes,
+    );
     this.serviceArt.draw(
       h,
       f,
@@ -658,9 +672,17 @@ export class CombatScene extends Phaser.Scene {
         h.lineStyle(2, 0xf1e2aa, 0.8).strokeRect(point.x - 11, point.y - 11, 22, 22);
       }
     }
+    if (view.phase === 'combat' && ['regent', 'mirror-undertaker'].includes(view.boss.id)) {
+      f.fillStyle(0x071410, 1).fillCircle(view.boss.x, view.boss.y, 9);
+      f.lineStyle(2, 0xd2d7b7, 1).strokeCircle(view.boss.x, view.boss.y, 11);
+    }
     const warden = view.boss.id === 'lantern-warden';
     this.bossSprite.setVisible(
-      (view.phase === 'combat' && view.boss.id !== 'choir') ||
+      (view.phase === 'combat' &&
+        view.boss.id !== 'choir' &&
+        !view.bossCues.some(
+          (c) => c.kind === 'district-state' && c.style === 'dive' && now >= c.at && now < c.until,
+        )) ||
         (view.boss.defeatedAt > 0 && view.boss.health <= 0),
     );
     this.bossSprite.setPosition(view.boss.x, view.boss.y + (view.boss.id === 'constable' ? 65 : 0));

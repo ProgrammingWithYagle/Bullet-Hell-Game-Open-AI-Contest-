@@ -1,6 +1,6 @@
 # Bosses
 
-Twenty-three bosses are playable in the current source. Each has its own signature, phases, normal/Brutal variant, presentation and music. A signature table describes practical counterplay; supplemental attacks still require ordinary bullet-hell movement.
+Forty-three bosses are playable in the current source. Each has its own signature, phases, normal/Brutal variant, presentation and music. A signature table describes practical counterplay; supplemental attacks still require ordinary bullet-hell movement.
 
 **Threat is encounter danger, separate from selected difficulty.** The tables show the authored minimum threat for each identity. Actual contracts follow the route's threat progression. A Brutal contract appends **+** to that threat, retains the same boss identity and signature, and adds its stronger variant behavior.
 
@@ -39,8 +39,33 @@ Brutal uses twice the health and damage, a 1.5× deadline, 1.75× bounty and fou
 | Red Abbess | 1 | Follow the moving sanctuary pockets or hold any neutral Accord pad for 1.2 seconds to cancel the inward wave. |
 | Vesper Judge | 1 | Move into the other arena half before the alternating 1.7-second verdict tell resolves. |
 
+## Black Bell Pilgrimage
+
+| Boss | Minimum threat | Signature and response |
+| --- | --- | --- |
+| Pallbearer | 1 | Break the 180-HP moving coffin or flank its protected front. The warned charge respects masonry. |
+| Cinder Foreman | 1 | The last occupied work zone stays cool. A neutral cooling lever can suppress the other vents. |
+| Canal Diver | 1 | Identify the bubbling true puddle, leave its emergence area and punish the recovery. The submerged body is protected. |
+| Clockmender | 1 | Real projectiles pause after 1.4 seconds, remain stopped for two seconds, then restart along their original vectors. |
+| Seamstress of Wires | 1 | Use the fixed 170-pixel gates or break an 80-HP anchor to remove its adjacent wire sections. |
+| Gravedigger | 1 | A destructible moving ridge blocks shots. Its final position warns before collapsing into a three-second pit. |
+| Ink Notary | 1 | The ground spiral draws progressively and leaves a 65-degree opening; cross through the missing sector. |
+| Spore Beekeeper | 1 | Three 55-HP hive drones control a 24-direction projectile wave. Breaking a drone removes its third; a fallback gap remains. |
+| Ice Custodian | 1 | Three warned strips build at most 45 pixels/second of extra drift. Dry ground and dodging clear that drift immediately. |
+| Bridge Ferryman | 1 | Cross the alternating open bridge or use the outer bypass. Water remains traversable but slows and hurts. |
+| Porcelain Mourner | 1 | Four moving cover fragments can be destroyed before their warned one-time six-shard split. |
+| Boiler Tender | 1 | Hold any neutral valve for 1.2 seconds to add a 70-degree escape wedge; the original fallback remains. |
+| Mirror Undertaker | 1 | The hollow delayed ghost at an old survivor position is harmless. Follow the black foot marker on the true body. |
+| Chalk Magistrate | 1 | The warned rectangle leaves one erased edge. Its other three walls strike without creating an invisible movement trap. |
+| Wire Harpist | 1 | Three visible strings strike in the fixed 0/1/2 order, 0.8 seconds apart. |
+| Crow Shepherd | 1 | Three flocks of five actual swept bird bodies follow warned paths and stop on cover. |
+| Ledger Leech | 1 | Up to two seals slow movement for four seconds. Walk through a cleansing circle; no currency is stolen. |
+| Mortuary Engine | 1 | Four seconds of body armor reduce incoming body damage by 60%; the exposed core then transfers one 1.6× hit to shared health. |
+| Drowned Regent | 1 | The true body warps with a black foot marker; two hollow decoys are harmless. Water lanes shift on an independent twelve-second clock. |
+| Salt Patriarch | 1 | Three inward salt perimeters retain two 200-pixel gates. A neutral two-second pad hold delays future steps. |
+
 ## Accord breaks
 
 At marked transitions, survivors have eight seconds to coordinate a two-second hold on distinct Accord pads. Required participation scales 1, 2, 3 or 5 with party size. Success staggers the boss for four seconds, increases incoming boss damage by 25% and restores 15% party health. These are neutral team interactions, not purchases or class-exclusive actions.
 
-The remaining 37 identities are authored designs. Their presence in the catalog does not make them playable. [Full numerical roster](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/content/bosses.json) · [Current boss implementation and verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/MIDNIGHT_CIRCUIT_RUNTIME.md)
+The remaining 17 identities are authored designs. Their presence in the catalog does not make them playable. [Full numerical roster](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/content/bosses.json) · [Current boss implementation and verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/MIDNIGHT_CIRCUIT_RUNTIME.md)

@@ -25,7 +25,7 @@ type Metadata = {
   phase: string;
 };
 type Options = {
-  mode: 'short' | 'standard' | 'endless';
+  mode: 'short' | 'standard' | 'long' | 'endless';
   difficulty: string;
   visibility: 'public' | 'private';
   contentRevision: string;
@@ -71,7 +71,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
         !data.arenas.some((a) => a.id === options.openingArenaId)) ||
       (options.openingBossId !== undefined &&
         !implementedBossIds.includes(options.openingBossId)) ||
-      !['short', 'standard', 'endless'].includes(options.mode) ||
+      !['short', 'standard', 'long', 'endless'].includes(options.mode) ||
       !['baby', 'easy', 'normal', 'hard'].includes(options.difficulty) ||
       !['public', 'private'].includes(options.visibility)
     )
@@ -361,6 +361,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
         upgrades: p.upgrades,
         supplies: p.supplies,
         kit: g.classKits.status(p.id, g.combatTick),
+        terrain: p.terrain,
       });
       view.speed = g.movementSpeed(p);
       view.dashUntil = p.dashUntil;

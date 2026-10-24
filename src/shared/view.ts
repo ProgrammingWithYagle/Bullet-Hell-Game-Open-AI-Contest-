@@ -1,3 +1,4 @@
+import type { TerrainStatus } from './district-director.ts';
 import type { KitCue, KitStatus } from './class-kits.ts';
 import type { Game, Boss } from './game.ts';
 import type { Minion } from './minions.ts';
@@ -5,6 +6,7 @@ import type { BossCue } from './boss-director.ts';
 import type { WardenSample } from './warden-signature.ts';
 import type { ClassId, Phase, Warning, Field, Contract, SupplySlot } from './protocol.ts';
 export type PlayerView = {
+  terrain: TerrainStatus;
   kit: KitStatus;
   id: string;
   name: string;
@@ -77,6 +79,7 @@ export function viewOf(g: Game, owner: string): View {
     players: [...g.players.values()].map((p) => ({
       id: p.id,
       kit: g.classKits.status(p.id, g.combatTick),
+      terrain: structuredClone(p.terrain),
       name: p.name,
       classId: p.classId,
       x: p.x,

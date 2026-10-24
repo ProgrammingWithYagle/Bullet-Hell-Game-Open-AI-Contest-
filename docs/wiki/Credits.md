@@ -14,6 +14,8 @@ Source uses the MIT license. Dependency and bundled Fontsource license notices a
 - [Independent source/atlas/pixel audit](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/reviews/midnight-2026-10-24/independent-art-audit.json).
 - [All 23 original boss compositions](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/assets/production/audio/boss-themes/library.json).
 
-Exact prompts, reference hashes, returned natives and superseded attempts remain available. Technical cropping/resampling/padding is documented separately from drawing. Selected motion currently totals 375 frames across bosses, classes, parts and minions; complete action/facing libraries are not finished. Native/proof inspection is not full in-engine or human motion acceptance.
+Exact prompts, reference hashes, returned natives and superseded attempts remain available. Technical cropping/resampling/padding is documented separately from drawing. Selected motion currently totals 543 frames across bosses, classes, parts and minions; complete action/facing libraries are not finished. Native/proof inspection is not full in-engine or human motion acceptance.
 
 Native-speaker, device, final rendered and subjective listening reviews remain separate from automated evidence. Historical records retain their checkpoint counts; [Changelog](Changelog) and [Home](Home) describe the current source.
+
+[Black Bell Pilgrimage implementation and evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/PILGRIMAGE_RUNTIME.md).

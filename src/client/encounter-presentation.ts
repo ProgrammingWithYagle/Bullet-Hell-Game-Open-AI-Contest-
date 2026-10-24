@@ -1,17 +1,24 @@
+import districts from '../../assets/production/motion/district-library.json';
+import { districtBossIds } from '../shared/district-director.ts';
 import services from '../../assets/production/motion/service-library.json';
 import { serviceBossIds } from '../shared/service-director.ts';
 import library from '../../assets/production/motion/encounter-library.json';
 import civic from '../../assets/production/motion/civic-library.json';
 import type { Boss } from '../shared/game.ts';
 import type { BossCue } from '../shared/boss-director.ts';
-export const encounterArt = [...library.entries, ...civic.entries, ...services.entries];
+export const encounterArt = [
+  ...library.entries,
+  ...civic.entries,
+  ...services.entries,
+  ...districts.entries,
+];
 export function encounterFrame(boss: Boss, now: number, cues: BossCue[], reduced = false) {
-  if (serviceBossIds.some((id) => id === boss.id)) {
+  if ([...serviceBossIds, ...districtBossIds].some((id) => id === boss.id)) {
     if (boss.health <= 0) return 7;
     if (reduced || now < boss.staggerUntil) return 0;
     const shapes = cues.filter(
       (c) =>
-        c.kind.startsWith('service-') &&
+        (c.kind.startsWith('service-') || c.kind.startsWith('district-')) &&
         'at' in c &&
         'until' in c &&
         c.until > now &&

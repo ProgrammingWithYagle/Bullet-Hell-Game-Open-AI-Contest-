@@ -4,8 +4,24 @@ import { CONTENT_REVISION, PROTOCOL } from './protocol.ts';
 export function migratePracticeBoundary(value: unknown): unknown {
   if (!value || typeof value !== 'object' || Array.isArray(value)) return value;
   const legacy = value as Record<string, unknown>;
-  if (![4, 5, 6, 7, 8].includes(legacy.protocolVersion as number)) return value;
+  if (![4, 5, 6, 7, 8, 9].includes(legacy.protocolVersion as number)) return value;
   const version = legacy.protocolVersion as number;
+  const previousServiceBosses = [
+    'matron',
+    'alchemist',
+    'bellringer',
+    'stitchwright',
+    'glass-surgeon',
+    'ash-baker',
+    'sluice-keeper',
+    'stationmaster',
+    'lamplighter',
+    'anatomist',
+    'plague-gardener',
+    'choir',
+    'red-abbess',
+    'vesper-judge',
+  ];
   const bosses =
     version >= 7
       ? [
@@ -18,6 +34,7 @@ export function migratePracticeBoundary(value: unknown): unknown {
           'chain-marshal',
           'gate-widow',
           'black-ambulance',
+          ...(version === 9 ? previousServiceBosses : []),
         ]
       : version === 4
         ? ['constable']
@@ -28,7 +45,9 @@ export function migratePracticeBoundary(value: unknown): unknown {
   if (
     !oldSettings ||
     typeof oldSettings !== 'object' ||
-    !['short', 'endless'].includes(oldSettings.mode as string) ||
+    !(version === 9 ? ['short', 'standard', 'endless'] : ['short', 'endless']).includes(
+      oldSettings.mode as string,
+    ) ||
     (oldSettings.openingBossId !== undefined &&
       !bosses.includes(oldSettings.openingBossId as string)) ||
     (version < 7 &&
@@ -46,7 +65,7 @@ export function migratePracticeBoundary(value: unknown): unknown {
     !legacy.player ||
     typeof legacy.player !== 'object' ||
     !(
-      version === 8
+      version >= 8
         ? ['soldier', 'medic', 'heavy', 'tank', 'mage', 'engineer', 'assassin']
         : version === 4
           ? ['soldier', 'medic']

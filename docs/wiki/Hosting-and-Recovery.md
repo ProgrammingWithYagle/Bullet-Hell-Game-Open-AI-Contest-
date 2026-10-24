@@ -2,7 +2,7 @@
 
 Local source runs the Vite frontend on port 5173 and the Colyseus service on loopback port 2567. Health is `/api/health`. Offline solo requires only the client and worker. Public room discovery, private six-character codes and reconnect reservations are implemented.
 
-The existing public Site remains the earlier protocol-4 frontend and gameplay. Source pushes, Wiki updates and draft PR changes do not redeploy that Site. The current protocol-9 source must use a matching backend. A public Site owned by a different account must not be replaced without the appropriate authorized deployment path.
+The existing public Site remains the earlier protocol-4 frontend and gameplay. Source pushes, Wiki updates and draft PR changes do not redeploy that Site. The current protocol-10 source must use a matching backend. A public Site owned by a different account must not be replaced without the appropriate authorized deployment path.
 
 ## Capacity and recovery status
 
