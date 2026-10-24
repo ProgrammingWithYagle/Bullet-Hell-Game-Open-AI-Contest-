@@ -25,7 +25,7 @@ type Metadata = {
   phase: string;
 };
 type Options = {
-  mode: 'short' | 'endless';
+  mode: 'short' | 'standard' | 'endless';
   difficulty: string;
   visibility: 'public' | 'private';
   contentRevision: string;
@@ -71,7 +71,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
         !data.arenas.some((a) => a.id === options.openingArenaId)) ||
       (options.openingBossId !== undefined &&
         !implementedBossIds.includes(options.openingBossId)) ||
-      !['short', 'endless'].includes(options.mode) ||
+      !['short', 'standard', 'endless'].includes(options.mode) ||
       !['baby', 'easy', 'normal', 'hard'].includes(options.difficulty) ||
       !['public', 'private'].includes(options.visibility)
     )
@@ -333,7 +333,11 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       view.aim = Math.round(p.aim * 1000);
       view.health = Math.round(p.health * 10) / 10;
       view.maxHealth = Math.ceil(p.maxHealth);
-      view.shield = Math.ceil(p.shield + (g.combatTick < p.supplyShieldUntil ? p.supplyShield : 0) + g.classKits.status(p.id,g.combatTick).shield);
+      view.shield = Math.ceil(
+        p.shield +
+          (g.combatTick < p.supplyShieldUntil ? p.supplyShield : 0) +
+          g.classKits.status(p.id, g.combatTick).shield,
+      );
       view.status = p.status;
       view.connected = p.connected;
       view.ack = p.ack;
@@ -356,7 +360,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
         skills: p.skills,
         upgrades: p.upgrades,
         supplies: p.supplies,
-        kit: g.classKits.status(p.id,g.combatTick),
+        kit: g.classKits.status(p.id, g.combatTick),
       });
       view.speed = g.movementSpeed(p);
       view.dashUntil = p.dashUntil;

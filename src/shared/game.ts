@@ -9,6 +9,8 @@ import {
   validInput,
   validCommand,
   implementedClassIds,
+  implementedModeIds,
+  type ModeId,
   type ClassId,
   type BossId,
   type InputFrame,
@@ -58,10 +60,24 @@ export const implementedBossIds: readonly BossId[] = [
   'chain-marshal',
   'gate-widow',
   'black-ambulance',
+  'matron',
+  'alchemist',
+  'bellringer',
+  'stitchwright',
+  'glass-surgeon',
+  'ash-baker',
+  'sluice-keeper',
+  'stationmaster',
+  'lamplighter',
+  'anatomist',
+  'plague-gardener',
+  'choir',
+  'red-abbess',
+  'vesper-judge',
 ];
 export type Settings = {
   seed: number;
-  mode: 'short' | 'endless';
+  mode: ModeId;
   difficulty: string;
   maxPlayers: number;
   openingBossId: BossId;
@@ -243,12 +259,13 @@ export class Game {
       mode: settings.mode ?? 'short',
       difficulty: settings.difficulty ?? 'normal',
       maxPlayers: settings.maxPlayers ?? 8,
-      openingBossId: settings.openingBossId ?? 'constable',
+      openingBossId:
+        settings.openingBossId ?? (settings.mode === 'standard' ? 'matron' : 'constable'),
       openingArenaId: settings.openingArenaId ?? 'gatehouse',
     };
     if (
       !implementedBossIds.includes(this.settings.openingBossId) ||
-      !['short', 'endless'].includes(this.settings.mode) ||
+      !implementedModeIds.includes(this.settings.mode) ||
       !data.arenas.some((a) => a.id === this.settings.openingArenaId) ||
       !data.difficulties.some((d) => d.id === this.settings.difficulty) ||
       !Number.isInteger(this.settings.maxPlayers) ||
@@ -384,13 +401,19 @@ export class Game {
     p.lastInputAt = this.tick;
     return true;
   }
+  private get routeLength() {
+    return data.modes.find((m) => m.id === this.settings.mode)!.encounters ?? Infinity;
+  }
   private skillBudget(j: number) {
     return this.settings.mode === 'endless'
       ? 3 + Math.floor((24 * Math.min(j, 9)) / 9)
-      : 3 + Math.floor((24 * Math.min(j, 4)) / 4);
+      : 3 + Math.floor((24 * Math.min(j, this.routeLength - 1)) / (this.routeLength - 1));
   }
   private incomeBudget(j: number) {
-    const n = this.settings.mode === 'endless' ? Math.min(j, 9) / 9 : Math.min(j, 4) / 4;
+    const n =
+      this.settings.mode === 'endless'
+        ? Math.min(j, 9) / 9
+        : Math.min(j, this.routeLength - 1) / (this.routeLength - 1);
     return Math.floor((120 + 2280 * n) * this.difficulty.coins);
   }
   stats(p: Player): Stats {
@@ -671,6 +694,7 @@ export class Game {
     this.attackAt = this.bossPhases()[0].attacks.map((_, i) => this.combatTick + ticks(2 + i * 2));
     this.resetWarden();
     this.director.reset(this.boss.id, this.boss.variant === 'brutal', true);
+    this.director.services.prepare(this.signatureContext());
     this.bossPrevious = { x: this.boss.x, y: this.boss.y };
     this.events.push({ type: 'sound', id: 'boss-phase' });
   }
@@ -705,7 +729,7 @@ export class Game {
     for (const p of this.roster())
       if (p.eligible) {
         const reward =
-          this.encounter < (this.settings.mode === 'endless' ? 9 : 4)
+          this.encounter < (this.settings.mode === 'endless' ? 9 : this.routeLength - 1)
             ? this.incomeBudget(this.encounter + 1) - this.incomeBudget(this.encounter)
             : 228;
         p.coins += Math.floor(reward * this.selectedContract.bounty * this.modifier('coins'));
@@ -725,7 +749,7 @@ export class Game {
     for (const m of this.mutations) m.remaining--;
     for (let i = this.mutations.length - 1; i >= 0; i--)
       if (this.mutations[i].remaining <= 0) this.mutations.splice(i, 1);
-    if (this.settings.mode === 'short' && this.encounter >= 5) {
+    if (this.settings.mode !== 'endless' && this.encounter >= this.routeLength) {
       this.phase = 'victory';
       this.events.push({ type: 'sound', id: 'accord-success' });
       return;
@@ -746,16 +770,18 @@ export class Game {
       const threat =
         this.settings.mode === 'endless'
           ? Math.min(10, this.encounter + 1)
-          : [1, 3, 5, 8, 10][Math.min(this.encounter, 4)];
+          : data.modes.find((m) => m.id === this.settings.mode)!.threats[
+              Math.min(this.encounter, this.routeLength - 1)
+            ];
       const referenceDps = data.weapons
         .filter((w) => w.price === 0)
         .map((w) => w.baselineSustainedDps)
         .toSorted((a, b) => a - b)[3];
       const routePool =
-        this.settings.mode === 'short'
-          ? this.encounter === 4
-            ? data.bossPools.short.finale
-            : data.bossPools.short.regular
+        this.settings.mode !== 'endless'
+          ? this.encounter === this.routeLength - 1
+            ? data.bossPools[this.settings.mode].finale
+            : data.bossPools[this.settings.mode].regular
           : implementedBossIds;
       const uncleared = routePool.filter((id) => !this.completedBossIds.has(id as BossId));
       // Before any repeat, exhaust the implemented identity pool. Concealed
@@ -914,15 +940,19 @@ export class Game {
         .filter((f) => f.kind === 'rally' && distance(f, p) <= f.radius)
         .map((f) => f.movement ?? 0),
     );
+    const environment = this.director.services.movement(p, p.id, now);
     const dash = now < p.dashUntil,
       speed = dash
         ? (this.classKits.chargeSpeed(p.id, now) ?? rule.dodgeSpeed)
-        : this.movementSpeed(p) * (now < p.slowUntil ? 0.65 : 1) * (1 + rally);
+        : this.movementSpeed(p) *
+          (now < p.slowUntil ? 0.65 : 1) *
+          (1 + rally) *
+          environment.multiplier;
     const next = moveBody(
       p,
       {
-        x: (dash ? p.dashX : mx) * speed * DT,
-        y: (dash ? p.dashY : my) * speed * DT,
+        x: ((dash ? p.dashX : mx) * speed + environment.x) * DT,
+        y: ((dash ? p.dashY : my) * speed + environment.y) * DT,
       },
       rule.playerRadius,
       this.obstacles,
@@ -1241,7 +1271,9 @@ export class Game {
         ally.slowUntil = 0;
       }
     if (this.roster().length === 1) p.shield = Math.max(p.shield, 40 * potency);
-    if (distance(p, this.boss) <= radius) this.hitBoss(p, 35 * potency);
+    if (this.boss.id !== 'choir' && distance(p, this.boss) <= radius) this.hitBoss(p, 35 * potency);
+    for (const weak of this.director.weakPoints())
+      if (distance(p, weak) <= radius + weak.radius) this.hitWeak(p, 35 * potency, weak.id);
   }
   private heal(source: Player, target: Player, amount: number) {
     const healed = Math.min(
@@ -1388,11 +1420,15 @@ export class Game {
       stats: (p) => this.stats(p),
       id: () => this.id(),
       area: (source, point, radius, damage, slow = 1, slowTicks = 0) => {
-        if (damage > 0 && distance(point, this.boss) <= radius + this.bossDefinition().radius)
+        if (
+          this.boss.id !== 'choir' &&
+          damage > 0 &&
+          distance(point, this.boss) <= radius + this.bossDefinition().radius
+        )
           this.hitBoss(source, damage);
         for (const weak of this.director.weakPoints())
           if (damage > 0 && distance(point, weak) <= radius + weak.radius)
-            this.creditHit(source, this.director.hitWeakPoint(damage, this.combatTick, weak.id));
+            this.hitWeak(source, damage, weak.id);
         for (const actor of this.minions.actors.values())
           if (distance(point, actor) <= radius + actor.radius)
             this.creditHit(
@@ -1402,12 +1438,21 @@ export class Game {
       },
       sweep: (source, from, to, radius, damage, touched) => {
         if (
+          this.boss.id !== 'choir' &&
           !touched.has('boss') &&
           segmentCircle(from, to, this.boss, radius + this.bossDefinition().radius) !== null
         ) {
           this.hitBoss(source, damage);
           touched.add('boss');
         }
+        for (const weak of this.director.weakPoints())
+          if (
+            !touched.has('weak-' + weak.id) &&
+            segmentCircle(from, to, weak, radius + weak.radius) !== null
+          ) {
+            this.hitWeak(source, damage, weak.id);
+            touched.add('weak-' + weak.id);
+          }
         for (const actor of this.minions.actors.values())
           if (
             !touched.has('actor-' + actor.id) &&
@@ -1435,6 +1480,32 @@ export class Game {
     return {
       tick: this.combatTick,
       bossId: this.boss.id,
+      bossMaximumHealth: this.boss.maxHealth,
+      interactors: this.roster()
+        .filter((p) => p.status === 'active' && p.input.interact)
+        .map((p) => p.id),
+      restore: (id, amount) => {
+        const p = this.players.get(id);
+        if (p) this.heal(p, p, amount);
+      },
+      emitHostile: (point, angle, speed, damage, radius) => {
+        this.emitShot('hostile', point.x, point.y, angle, speed, damage, radius);
+      },
+      spawnOrdinary: (point, speed, health, damage, maximum) => {
+        if (
+          [...this.minions.actors.values()].filter((a) => a.kind === 'ordinary').length >= maximum
+        )
+          return;
+        this.spawnMinion({
+          kind: 'ordinary',
+          ...point,
+          speed,
+          health: health * (this.boss.variant === 'brutal' ? 2 : 1),
+          damage,
+          radius: 12,
+          lifeSeconds: 45,
+        });
+      },
       boss: this.boss,
       radius: this.bossDefinition().radius,
       bounds: this.arena.bounds,
@@ -1555,8 +1626,12 @@ export class Game {
           targets = this.roster().filter(
             (p) => p.status === 'active' && !this.classKits.untargetable(p.id, now),
           );
-        if (!targets.length) continue;
-        const target = targets[Math.floor(this.rng.next() * targets.length)];
+        const target = targets.length
+          ? targets[Math.floor(this.rng.next() * targets.length)]
+          : {
+              x: this.arena.bounds.x + this.arena.width / 2,
+              y: this.arena.bounds.y + this.arena.height / 2,
+            };
         this.attackAt[index] = now + ticks(attack.interval);
         this.boss.castAt = now;
         this.boss.castReleaseAt = now + ticks(attack.telegraph);
@@ -1585,7 +1660,21 @@ export class Game {
             this.modifier('bossDamage') *
             (1 + cycle * rule.endless.damageGrowthPerCycle) *
             (this.boss.variant === 'brutal' ? rule.brutal.damageMultiplier : 1);
-        if (attack.kind === 'charge') {
+        if (
+          index === 0 &&
+          this.director.services.cast(this.signatureContext(), target, { ...attack, speed, count })
+        ) {
+          this.attackAt[index] = this.director.services.nextSignatureAt;
+          // This boss owns a real signature, not the fallback pool/fan.
+        } else if (
+          this.director.services.supplement(this.signatureContext(), target, {
+            ...attack,
+            speed,
+            count,
+          })
+        ) {
+          // Locked beams and timed spiral emitters remain real geometry/projectiles.
+        } else if (attack.kind === 'charge') {
           this.director.startCharge(this.signatureContext(), target, {
             ...attack,
             speed,
@@ -1719,18 +1808,27 @@ export class Game {
     if (this.phase !== 'combat' || this.minions.actors.size >= rule.maximumMinions) return null;
     return this.minions.spawn(this.id(), definition, this.combatTick);
   }
+  private hitWeak(source: Player | undefined, amount: number, id: number) {
+    const transfer = this.director.services.transfersDamage(id),
+      actual = this.director.hitWeakPoint(amount, this.combatTick, id);
+    if (transfer) this.hitBoss(source, actual);
+    else this.creditHit(source, actual);
+  }
   private friendlyCollision(
     shot: Shot,
     old: { x: number; y: number },
     next: { x: number; y: number },
     wall: number,
   ) {
-    const bossTime = segmentCircle(
-      { x: old.x - this.bossPrevious.x, y: old.y - this.bossPrevious.y },
-      { x: next.x - this.boss.x, y: next.y - this.boss.y },
-      { x: 0, y: 0 },
-      this.bossDefinition().radius + shot.radius,
-    );
+    const bossTime =
+      this.boss.id === 'choir'
+        ? null
+        : segmentCircle(
+            { x: old.x - this.bossPrevious.x, y: old.y - this.bossPrevious.y },
+            { x: next.x - this.boss.x, y: next.y - this.boss.y },
+            { x: 0, y: 0 },
+            this.bossDefinition().radius + shot.radius,
+          );
     const hits: { time: number; minionId?: number; weakId?: number }[] = [];
     for (const weak of this.director.weakPoints())
       if (weak.health > 0) {
@@ -1751,10 +1849,7 @@ export class Game {
     hits.sort((a, b) => a.time - b.time || (a.minionId ?? 0) - (b.minionId ?? 0));
     for (const hit of hits) {
       if (hit.weakId !== undefined) {
-        this.creditHit(
-          this.players.get(shot.owner),
-          this.director.hitWeakPoint(shot.damage, this.combatTick, hit.weakId),
-        );
+        this.hitWeak(this.players.get(shot.owner), shot.damage, hit.weakId);
         return true;
       }
       if (hit.minionId === undefined) {
@@ -2015,7 +2110,7 @@ export class Game {
       throw Error('versionMismatch');
     if (
       !save.settings ||
-      !['short', 'endless'].includes(save.settings.mode) ||
+      !implementedModeIds.includes(save.settings.mode) ||
       save.settings.maxPlayers !== 1 ||
       !int(save.settings.seed) ||
       !int(save.tick) ||

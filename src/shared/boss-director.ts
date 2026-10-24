@@ -1,3 +1,4 @@
+import { ServiceDirector, type ServiceCue } from './service-director.ts';
 // Authoritative signatures for the Courier, Ratcatcher and Quarantine Clerk.
 // All targets lock at warning creation; rendering consumes these same cues.
 import { CivicDirector, type CivicCue } from './civic-director.ts';
@@ -6,6 +7,7 @@ import { clamp, distance, moveBody, segmentCircle, segmentRect, type Rect } from
 
 export type BossCue =
   | CivicCue
+  | ServiceCue
   | {
       kind: 'charge' | 'scent';
       id: number;
@@ -52,6 +54,17 @@ export type BossCue =
 type Lane = Extract<BossCue, { kind: 'charge' | 'scent' }>;
 type Stamp = Extract<BossCue, { kind: 'stamp' }>;
 export type SignatureContext = {
+  bossMaximumHealth?: number;
+  interactors?: string[];
+  spawnOrdinary?(
+    position: Vec,
+    speed: number,
+    health: number,
+    damage: number,
+    maximum: number,
+  ): void;
+  emitHostile?(position: Vec, angle: number, speed: number, damage: number, radius: number): void;
+  restore?(id: string, amount: number): void;
   tick: number;
   bossId: BossId;
   boss: Vec;
@@ -83,11 +96,16 @@ const ticks = (seconds: number) => Math.ceil(seconds * HZ);
 
 export class BossDirector {
   readonly civic = new CivicDirector();
+  readonly services = new ServiceDirector();
   solids(tick: number) {
     return this.civic.solids(tick);
   }
   weakPoints() {
-    return [...(this.weakPoint() ? [this.weakPoint()!] : []), ...this.civic.weakPoints()];
+    return [
+      ...(this.weakPoint() ? [this.weakPoint()!] : []),
+      ...this.civic.weakPoints(),
+      ...this.services.weakPoints(),
+    ];
   }
   private lanes: Lane[] = [];
   private stamps: Stamp[] = [];
@@ -123,6 +141,7 @@ export class BossDirector {
   private restoreAt = 0;
 
   reset(kind: BossId, brutal = false, encounter = false) {
+    this.services.reset(kind, encounter);
     if (encounter) this.civic.resetEncounter(kind);
     else this.civic.reset(kind);
     this.kind = kind;
@@ -155,6 +174,8 @@ export class BossDirector {
       : null;
   }
   hitWeakPoint(amount: number, tick: number, id?: number) {
+    if (id !== undefined && this.services.handles(this.kind))
+      return this.services.hit(id, amount, tick);
     if (id !== undefined && this.kind !== 'ratcatcher') return this.civic.hit(id, amount);
     if (this.kind !== 'ratcatcher' || this.sackHealth <= 0) return 0;
     const actual = Math.min(this.sackHealth, amount);
@@ -311,6 +332,7 @@ export class BossDirector {
   cues(): BossCue[] {
     return [
       ...this.civic.cues(),
+      ...this.services.cues(),
       ...this.lanes,
       ...this.trails.map((t) => t.cue),
       ...this.stamps,
@@ -401,6 +423,7 @@ export class BossDirector {
       }
     }
     this.civic.step(context, this.charging);
+    this.services.step(context);
     for (const trail of this.trails) {
       if (context.tick >= trail.cue.until) continue;
       const retired = Math.min(

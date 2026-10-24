@@ -4,15 +4,38 @@ import { CONTENT_REVISION, PROTOCOL } from './protocol.ts';
 export function migratePracticeBoundary(value: unknown): unknown {
   if (!value || typeof value !== 'object' || Array.isArray(value)) return value;
   const legacy = value as Record<string, unknown>;
-  if (![4, 5, 6, 7].includes(legacy.protocolVersion as number)) return value;
+  if (![4, 5, 6, 7, 8].includes(legacy.protocolVersion as number)) return value;
   const version = legacy.protocolVersion as number;
   const bosses =
-    version === 7 ? ['constable','lantern-warden','courier','ratcatcher','quarantine-clerk','tollkeeper','chain-marshal','gate-widow','black-ambulance'] :
-    version === 4
-      ? ['constable']
-      : version === 5
-        ? ['constable', 'lantern-warden']
-        : ['constable', 'lantern-warden', 'courier', 'ratcatcher', 'quarantine-clerk'];
+    version >= 7
+      ? [
+          'constable',
+          'lantern-warden',
+          'courier',
+          'ratcatcher',
+          'quarantine-clerk',
+          'tollkeeper',
+          'chain-marshal',
+          'gate-widow',
+          'black-ambulance',
+        ]
+      : version === 4
+        ? ['constable']
+        : version === 5
+          ? ['constable', 'lantern-warden']
+          : ['constable', 'lantern-warden', 'courier', 'ratcatcher', 'quarantine-clerk'];
+  const oldSettings = legacy.settings as Record<string, unknown> | undefined;
+  if (
+    !oldSettings ||
+    typeof oldSettings !== 'object' ||
+    !['short', 'endless'].includes(oldSettings.mode as string) ||
+    (oldSettings.openingBossId !== undefined &&
+      !bosses.includes(oldSettings.openingBossId as string)) ||
+    (version < 7 &&
+      oldSettings.openingArenaId !== undefined &&
+      oldSettings.openingArenaId !== 'gatehouse')
+  )
+    throw Error('versionMismatch');
   if (
     legacy.schemaVersion !== 1 ||
     legacy.contentRevision !== CONTENT_REVISION ||
@@ -22,9 +45,13 @@ export function migratePracticeBoundary(value: unknown): unknown {
     legacy.transactions !== undefined ||
     !legacy.player ||
     typeof legacy.player !== 'object' ||
-    !(version === 4 ? ['soldier', 'medic'] : ['soldier', 'medic', 'heavy']).includes(
-      (legacy.player as Record<string, unknown>).classId as string,
-    ) ||
+    !(
+      version === 8
+        ? ['soldier', 'medic', 'heavy', 'tank', 'mage', 'engineer', 'assassin']
+        : version === 4
+          ? ['soldier', 'medic']
+          : ['soldier', 'medic', 'heavy']
+    ).includes((legacy.player as Record<string, unknown>).classId as string) ||
     JSON.stringify(value).length > 32768
   )
     throw Error('versionMismatch');

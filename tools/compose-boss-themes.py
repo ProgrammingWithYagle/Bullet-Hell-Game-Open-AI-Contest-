@@ -41,10 +41,15 @@ THEMES += [
   'intent':'F-sharp minor carriage gallop in two groups of three eighths, muted strings, a distant single roof bell and a held driver phrase after each rush.'},
 ]
 
+THEMES += [{'bossId': 'matron', 'id': 'cradle-ledger', 'title': 'Cradle Ledger', 'bpm': 62, 'beatsPerBar': 3, 'meter': '3/4', 'root': 41, 'roots': [0, 3, 5, 0, -2, 3, 7, 0], 'motif': [7, 3, 2, 0, -2, 2, 3, 0], 'lead': 'bells', 'arrangement': 'lullaby', 'intent': 'A spare F-minor cradle song, two low music-box notes answered by a single high bell. Bowed open fifths leave room around the nest tell.'}, {'bossId': 'alchemist', 'id': 'glasshouse-rot', 'title': 'Glasshouse Rot', 'bpm': 114, 'beatsPerBar': 2.5, 'bars': 24, 'meter': '5/8', 'root': 44, 'roots': [0, 1, 5, 0, 6, 1, 7, 0], 'motif': [0, 1, 6, 7, 3, 6, 1, -1], 'lead': 'keys', 'arrangement': 'droplets', 'intent': 'An uneven G-sharp Phrygian glass-key pattern in 2+3, dry droplets and an off-center plucked answer; short notes keep the ground warnings clear.'}, {'bossId': 'bellringer', 'id': 'late-warning', 'title': 'The Late Warning', 'bpm': 58, 'beatsPerBar': 4, 'meter': '4/4', 'root': 38, 'roots': [0, -5, 0, 3, -2, 0, 7, 0], 'motif': [0, 7, 12, 3, 2, 10, 7, 0], 'lead': 'bells', 'arrangement': 'bell-towers', 'intent': 'Four distant D-minor towers answer across a wide stereo field. Long low bell decays and a moving upper answer mark the deliberate rotating gap.'}, {'bossId': 'stitchwright', 'id': 'needle-debt', 'title': 'Needle Debt', 'bpm': 128, 'beatsPerBar': 3.5, 'bars': 24, 'meter': '7/8', 'root': 40, 'roots': [0, -1, 3, 5, 0, 7, -1, 0], 'motif': [0, 7, 1, 8, 3, 10, 1, -1], 'lead': 'reed', 'arrangement': 'sutures', 'intent': 'A tightening E-Phrygian reed stitch in 3+2+2. Paired short notes stretch into a held rescue phrase every fourth bar.'}, {'bossId': 'glass-surgeon', 'id': 'aperture', 'title': 'Aperture', 'bpm': 92, 'beatsPerBar': 5, 'meter': '5/4', 'root': 46, 'roots': [0, 1, 0, -4, 5, 1, 7, 0], 'motif': [12, 7, 1, 0, 8, 7, 3, 1], 'lead': 'keys', 'arrangement': 'polygon', 'intent': 'B-flat glass harmonics form three sides of a five-beat phrase; the fourth answer is an intentional rest, echoing the missing polygon edge.'}, {'bossId': 'ash-baker', 'id': 'oven-at-dawn', 'title': 'Oven at Dawn', 'bpm': 104, 'beatsPerBar': 4, 'meter': '4/4', 'root': 36, 'roots': [0, 0, 3, 5, 0, -2, 7, 0], 'motif': [0, 3, 7, 10, 7, 2, 3, 0], 'lead': 'brass', 'arrangement': 'embers', 'intent': 'Low C-minor oven brass moves in slow blocks while two light plucked crumbs answer each heavy note. Warm, dry percussion replaces a constant hiss.'}, {'bossId': 'sluice-keeper', 'id': 'watermark', 'title': 'Watermark', 'bpm': 78, 'beatsPerBar': 3, 'meter': '6/8', 'root': 43, 'roots': [0, 5, 3, 0, -2, 5, 7, 0], 'motif': [0, 7, 5, 3, 2, 0, -2, 3], 'lead': 'pluck', 'arrangement': 'tides', 'intent': 'A rocking G-minor current in two groups of three, alternating low/high plucks and slow bowed tides. The held middle register marks dry ground.'}, {'bossId': 'stationmaster', 'id': 'last-departure', 'title': 'Last Departure', 'bpm': 132, 'beatsPerBar': 4, 'meter': '4/4', 'root': 42, 'roots': [0, 0, 3, 7, 5, 3, 1, 0], 'motif': [0, 7, 0, 10, 3, 7, 1, -1], 'lead': 'keys', 'arrangement': 'signals', 'intent': 'F-sharp minor railway keys alternate left/right signal answers over a restrained four-beat rail pulse. A held departure tone follows every third stop.'}, {'bossId': 'lamplighter', 'id': 'unlit-wick', 'title': 'Unlit Wick', 'bpm': 68, 'beatsPerBar': 3, 'meter': '3/4', 'root': 45, 'roots': [0, -2, 3, 0, 5, 3, 7, 0], 'motif': [12, 7, 3, 2, 0, 7, 10, 3], 'lead': 'bells', 'arrangement': 'three-lights', 'intent': 'Three isolated A-minor lights, each answered in a different register. Quiet middle bars and barely struck toms let sanctuary warnings breathe.'}, {'bossId': 'anatomist', 'id': 'lecture-in-bone', 'title': 'Lecture in Bone', 'bpm': 112, 'beatsPerBar': 5, 'meter': '5/4', 'root': 37, 'roots': [0, 1, 3, 0, 5, 1, 7, 0], 'motif': [0, 1, 7, 3, 6, 1, 10, 0], 'lead': 'keys', 'arrangement': 'calipers', 'intent': 'Two opposed C-sharp prepared-key voices open then snap together, with one long space before the final beat. Dry wood taps suggest a lecture pointer.'}, {'bossId': 'plague-gardener', 'id': 'green-afterlife', 'title': 'Green Afterlife', 'bpm': 86, 'beatsPerBar': 3, 'meter': '6/8', 'root': 41, 'roots': [0, 5, 3, 0, -2, 5, 7, 0], 'motif': [0, 3, 5, 7, 10, 7, 5, 2], 'lead': 'reed', 'arrangement': 'roots', 'intent': 'A rising F-minor reed vine in six, answered by clipped pruning plucks. Its final phrase opens into a plain held fifth rather than adding decoration.'}, {'bossId': 'choir', 'id': 'three-names', 'title': 'Three Names', 'bpm': 64, 'beatsPerBar': 5, 'bars': 8, 'meter': '5/4', 'root': 39, 'roots': [0, -1, 3, 5, 0, 7, -1, 0], 'motif': [0, 7, 3, 10, 1, 8, 7, 0], 'lead': 'organ', 'arrangement': 'three-voices', 'intent': 'Three synthesized E-flat minor organ voices enter in offset turns, then resolve together. Each voice has its own register and stereo place, with no external vocal samples.'}, {'bossId': 'red-abbess', 'id': 'scarlet-vespers', 'title': 'Scarlet Vespers', 'bpm': 72, 'beatsPerBar': 5, 'meter': '5/4', 'root': 36, 'roots': [0, 5, 3, -2, 0, 7, 5, 0], 'motif': [7, 12, 10, 7, 3, 5, 2, 0], 'lead': 'organ', 'arrangement': 'vespers', 'intent': 'A slow C-minor organ prayer in five, two sanctuary voices answering a descending outside-in judgment line. Deep restrained bells arrive only at phrase boundaries.'}, {'bossId': 'vesper-judge', 'id': 'open-half', 'title': 'The Open Half', 'bpm': 96, 'beatsPerBar': 4, 'meter': '4/4', 'root': 35, 'roots': [0, 1, 0, 5, 3, 1, 7, 0], 'motif': [0, 7, 1, 8, 3, 10, 1, 0], 'lead': 'brass', 'arrangement': 'verdict', 'intent': 'A B-Phrygian split-gavel call alternates low left and high right brass phrases. A conspicuous recovery rest separates each verdict from its answer.'}]
+
 def voice(kind,note,seconds):
  if kind=='bells':return base['bell'](note,max(1.8,seconds))
  if kind=='pluck':return base['pluck'](note,seconds)
  t=base['times'](seconds);freq=base['midi'](note)
+ if kind=='organ':
+  y=sum(g*np.sin(2*np.pi*freq*h*t) for h,g in [(1,.65),(2,.18),(3,.11),(4,.04)])
+  return .4*y*base['envelope'](t,.12,.35)
  if kind=='reed':
   y=sum(np.sin(2*np.pi*freq*h*t+.15*h)/h**1.5 for h in (1,3,5,7))
   return .4*y*base['envelope'](t,.04,.13)*(1+.025*np.sin(2*np.pi*5*t))
@@ -114,6 +119,52 @@ def compose(theme):
    for b in (0,1.5):add('percussion',at+b,'kick',.4,.27)
    for b in (.5,1,2,2.5):add('percussion',at+b,'rim',.2,.15)
    if bar%4==0:add('lead',at,root+36,2.5,.12,.32,kind='bells')
+  elif theme.get('arrangement'):
+   arrangement=theme['arrangement'];phrase=theme['motif'];melody=root+24
+   if arrangement=='lullaby':
+    add('lead',at,melody+phrase[bar%8],2.6,.23,-.2);add('lead',at+1.5,root+19+phrase[(bar+2)%8],1.3,.16,.25)
+    if bar%4==3:add('percussion',at+2,'tom',.4,.1)
+   elif arrangement=='droplets':
+    for k,b in enumerate([0,.5,1.5,2]):add('lead',at+b,melody+phrase[(bar+k)%8],.32,.24,(-.3,.3)[k%2])
+    add('percussion',at+1,'rim',.2,.14)
+   elif arrangement=='bell-towers':
+    add('lead',at,root+12+phrase[bar%8],4.8,.27,-.4);add('lead',at+2,melody+phrase[(bar+3)%8],3.5,.21,.4)
+    if bar%2:add('lead',at+3,root+31,2,.1,0)
+   elif arrangement=='sutures':
+    for k,b in enumerate([0,.5,1.5,2,2.5]):add('lead',at+b,melody+phrase[(bar*2+k)%8],1.4 if bar%4==3 and k==4 else .38,.24,(-.2,.2)[k%2])
+    add('percussion',at,'rim',.2,.22);add('percussion',at+1.5,'tick',.2,.12)
+   elif arrangement=='polygon':
+    for k,b in enumerate([0,1.25,2.5]):add('lead',at+b,melody+phrase[(bar+k)%8],.65,.25,[-.35,0,.35][k])
+    add('percussion',at,'tom',.5,.16)
+   elif arrangement=='embers':
+    add('lead',at,root+12+phrase[bar%8],1.7,.28,-.1)
+    for k,b in enumerate([2,2.5]):add('lead',at+b,melody+phrase[(bar+k+2)%8],.4,.17,.25,kind='pluck')
+    add('percussion',at,'kick',.5,.3);add('percussion',at+3,'rim',.2,.17)
+   elif arrangement=='tides':
+    for k in range(6):add('lead',at+k*.5,root+12+(12 if k%2 else 0)+phrase[(bar+k)%8],.65,.2,(-.25,.25)[k%2])
+    if bar%2==0:add('percussion',at,'tom',.5,.16)
+   elif arrangement=='signals':
+    for k,b in enumerate([0,.75,2,2.75]):add('lead',at+b,melody+phrase[(bar*2+k)%8],.52,.25,(-.4,.4)[k%2])
+    for b in [0,1.5,2,3.5]:add('percussion',at+b,'rim',.2,.16)
+   elif arrangement=='three-lights':
+    add('lead',at+(bar%3)*.5,root+19+[0,7,12][bar%3]+phrase[bar%8],2.8,.23,[-.4,0,.4][bar%3])
+    if bar%4==0:add('percussion',at,'tom',.4,.09)
+   elif arrangement=='calipers':
+    for b,k in [(0,0),(.5,1),(1.5,2),(2,3)]:add('lead',at+b,melody+phrase[(bar+k)%8],.4,.22,-.3 if k<2 else .3)
+    add('lead',at+4,root+12,.7,.2,0);add('percussion',at+4,'rim',.3,.26)
+   elif arrangement=='roots':
+    for k,b in enumerate([0,.5,1,2]):add('lead',at+b,melody+phrase[(bar+k)%8],.8,.23,-.2)
+    add('lead',at+2.5,root+19,.4,.2,.25,kind='pluck');add('percussion',at,'tom',.5,.17)
+   elif arrangement=='three-voices':
+    for k in range(3):add('lead',at+k*.75,root+12+[0,7,12][k]+phrase[bar%8],2.5,.24,[-.4,0,.4][k])
+    for k in range(2):add('lead',at+3.5+k*.5,root+19+phrase[(bar+2+k)%8],.65,.12,-.2 if k==0 else .2,kind='bells')
+    add('percussion',at+4,'tom',.5,.14)
+   elif arrangement=='vespers':
+    add('lead',at,root+12+phrase[bar%8],4.5,.27,-.3);add('lead',at+2,melody+phrase[(bar+3)%8],2.8,.21,.3)
+    if bar%4==0:add('lead',at+4,root+31,3,.12,.1,kind='bells')
+   elif arrangement=='verdict':
+    for k,b in enumerate([0,1]):add('lead',at+b,root+(12 if bar%2==0 else 24)+phrase[(bar+k)%8],.8,.29,-.4 if bar%2==0 else .4)
+    add('percussion',at,'tom',.6,.32)
  for bus in buses:
   buses[bus]=base['circular_room'](buses[bus],.28 if bus=='lead' else .16)
  master=sum(buses.values());master-=master.mean(axis=0)
@@ -139,7 +190,10 @@ def main():
  if '--verify-only' in sys.argv:
   manifest=json.loads((OUT/'library.json').read_text(encoding='utf8'));verify(manifest);print('All distinct boss themes verified.');return
  tracks=[]
+ existing={t['bossId']:t for t in json.loads((OUT/'library.json').read_text(encoding='utf8'))['tracks']} if '--missing-only' in sys.argv and (OUT/'library.json').exists() else {}
  for theme in THEMES:
+  if theme['bossId'] in existing and '--refresh='+theme['bossId'] not in sys.argv:
+   previous=existing[theme['bossId']];assert hashlib.sha256((ROOT/previous['path']).read_bytes()).hexdigest()==previous['sha256'];tracks.append(previous);continue
   signal,score=compose(theme);path=OUT/(theme['id']+'.wav');base['write_wav'](path,signal)
   metrics=base['metrics'](path,True)
   tracks.append({**theme,**metrics,'score':score,'loopStartFrame':0,'loopEndFrameExclusive':len(signal),'loop':True})
@@ -148,5 +202,5 @@ def main():
   'sourceSha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'tracks':tracks}
  (OUT/'library.json').write_text(json.dumps(manifest,indent=2)+'\n',encoding='utf8');verify(manifest)
  cards=''.join('<article><h2>'+html.escape(t['title'])+'</h2><p>'+html.escape(t['bossId']+' · '+str(t['bpm'])+' BPM · '+t['meter'])+'</p><p>'+html.escape(t['intent'])+'</p><audio controls loop preload="none" src="'+t['id']+'.wav"></audio></article>' for t in tracks)
- (OUT/'preview.html').write_text('<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Grave Accord · Boss Themes</title><style>body{background:#142b27;color:#e8dcc5;max-width:1000px;margin:40px auto;padding:24px;font:17px/1.6 Georgia}main{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}article{padding:24px;border:1px solid #63786c}h2{color:#d8b278}audio{width:100%}</style><h1>Nine watches of the city</h1><p>Original boss compositions. Play one at a time; objective audio checks passed, listening review remains open.</p><main>'+cards+'</main></html>',encoding='utf8')
+ (OUT/'preview.html').write_text('<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Grave Accord · Boss Themes</title><style>body{background:#142b27;color:#e8dcc5;max-width:1000px;margin:40px auto;padding:24px;font:17px/1.6 Georgia}main{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}article{padding:24px;border:1px solid #63786c}h2{color:#d8b278}audio{width:100%}</style><h1>Watches of the city</h1><p>Original boss compositions. Play one at a time; objective audio checks passed, listening review remains open.</p><main>'+cards+'</main></html>',encoding='utf8')
 if __name__=='__main__':main()

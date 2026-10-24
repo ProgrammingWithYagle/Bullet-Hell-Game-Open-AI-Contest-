@@ -1,5 +1,8 @@
 # Implementation backlog and contest acceptance map
 
+Current source adds [Midnight Circuit](MIDNIGHT_CIRCUIT_RUNTIME.md): 23 playable boss identities, 23 original themes, all seven classes, six distinct map footprints, a separate ten-fight route and protocol 9. The preceding complete suite passed 171 checks; inspect the exact current verification/publication receipts. Thirty-seven identities, later modes and final release/visual/device systems remain in development.
+
+
 Current checkpoint: all seven classes are playable with 378 skill nodes, 63 specialization paths and 28 weapons. Six maps have distinct layouts and actual playable sizes. Nine bosses each have an original theme. Protocol 8 carries class kit state. Class art adds 124 approved run poses, 52 item illustrations and 16 environment/construct props; Engineer north uses four consistent poses, with its other four retained as rejected. See [class and arena runtime](CLASS_AND_ARENA_RUNTIME.md). Full-game, final rendered, human/device and release acceptance remain open.
 
 The older checkpoint descriptions below are historical; this paragraph supersedes their current-state counts.

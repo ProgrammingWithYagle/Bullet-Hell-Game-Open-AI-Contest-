@@ -159,8 +159,9 @@ test('Widow rotates the open gate, blocks shots and movement, and ejects a closi
   d.reset(c.bossId);
   c.tick++;
   d.step(c, false);
-  const rotated=d.cues().find(q=>q.kind==='gate'&&q.open);
-  assert(rotated?.kind==='gate');assert.equal(rotated.lane,1);
+  const rotated = d.cues().find((q) => q.kind === 'gate' && q.open);
+  assert(rotated?.kind === 'gate');
+  assert.equal(rotated.lane, 1);
 });
 
 test('Widow collision prediction uses the same active shutters as the authoritative player step', () => {
@@ -281,5 +282,5 @@ test('all six arena choices launch real collision layouts and survive a local bo
   assert.equal(Game.restoreOffline(save).settings.openingBossId, 'courier');
   const online = g.authoritativeCheckpoint()!;
   assert.throws(() => Game.restoreAuthoritative({ ...online, protocolVersion: 6 }));
-  assert.equal(implementedBossIds.length, 9);
+  assert.equal(implementedBossIds.length, 23);
 });

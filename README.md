@@ -1,5 +1,8 @@
 # Grave Accord
 
+Current source adds [Midnight Circuit](docs/MIDNIGHT_CIRCUIT_RUNTIME.md): 23 playable boss identities, 23 original themes, all seven classes, six distinct map footprints, a separate ten-fight route and protocol 9. The preceding complete suite passed 171 checks; inspect the exact current verification/publication receipts. Thirty-seven identities, later modes and final release/visual/device systems remain in development.
+
+
 All seven classes are now playable with 378 connected skill nodes and 28 weapons. Six maps have distinct collision layouts and six actual playable footprints. See [class and arena runtime details](docs/CLASS_AND_ARENA_RUNTIME.md). The current source requires protocol 8; the nine-boss Quarantine checkpoint remains the prior published baseline. Full-game and final rendered/device acceptance remain open.
 
 

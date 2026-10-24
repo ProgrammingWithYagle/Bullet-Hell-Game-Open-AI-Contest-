@@ -1,3 +1,4 @@
+import { serviceMovement } from '../shared/service-director.ts';
 import { moveBody, distance } from '../shared/geometry.ts';
 import { gateObstacles, leaveClosingGates } from '../shared/civic-director.ts';
 import { runtimeArena } from '../shared/arena-layouts.ts';
@@ -40,6 +41,7 @@ export class Prediction {
       p.dashUntil = now + Math.ceil(data.rules.dodgeDuration * HZ);
       p.dodgeAt = now + Math.ceil(data.rules.dodgeCooldown * p.dodgeCooldown * HZ);
     }
+    const environment = serviceMovement(view.bossCues, p, p.id, now);
     const rally = Math.max(
         0,
         ...view.fields
@@ -51,10 +53,13 @@ export class Prediction {
         ? now < p.kit.chargeUntil
           ? 600
           : data.rules.dodgeSpeed
-        : p.speed * (now < p.slowUntil ? 0.65 : 1) * (1 + rally);
+        : p.speed * (now < p.slowUntil ? 0.65 : 1) * (1 + rally) * environment.multiplier;
     const next = moveBody(
       p,
-      { x: (dash ? p.dashX : mx) * speed * DT, y: (dash ? p.dashY : my) * speed * DT },
+      {
+        x: ((dash ? p.dashX : mx) * speed + environment.x) * DT,
+        y: ((dash ? p.dashY : my) * speed + environment.y) * DT,
+      },
       data.rules.playerRadius,
       [...runtimeArena(view.arenaId).obstacles, ...gates],
     );

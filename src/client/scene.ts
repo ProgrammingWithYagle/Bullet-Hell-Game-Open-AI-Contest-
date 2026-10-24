@@ -1,3 +1,5 @@
+import { ServicePresentation } from './service-presentation.ts';
+import type { ServiceCue } from '../shared/service-director.ts';
 import Phaser from 'phaser';
 import { assets } from './assets.ts';
 import type { View, PlayerView } from '../shared/view.ts';
@@ -35,6 +37,7 @@ export class CombatScene extends Phaser.Scene {
   private arenaImage!: Phaser.GameObjects.Image;
   private arenaGround!: Phaser.GameObjects.Graphics;
   private lastArenaId = '';
+  private serviceArt!: ServicePresentation;
   private coverImages: Phaser.GameObjects.Image[] = [];
   private constructImages = new Map<number, Phaser.GameObjects.Image>();
   private bossSprite!: Phaser.GameObjects.Sprite;
@@ -74,6 +77,8 @@ export class CombatScene extends Phaser.Scene {
     for (const [id, url] of Object.entries(assets.environment))
       this.load.image('environment-' + id, url);
     this.load.image('tollkeeper-wheel', assets.wheel);
+    for (const [id, url] of Object.entries(assets.midnightProps))
+      this.load.image('midnight-prop-' + id, url);
     this.load.spritesheet('soldier', assets.soldier, {
       frameWidth: 256,
       frameHeight: 256,
@@ -124,6 +129,7 @@ export class CombatScene extends Phaser.Scene {
     }
   }
   create() {
+    this.serviceArt = new ServicePresentation(this);
     this.arenaImage = this.add
       .image(800, 500, 'gatehouse')
       .setDisplaySize(1600, 1000)
@@ -591,14 +597,30 @@ export class CombatScene extends Phaser.Scene {
         );
       }
     }
+    this.serviceArt.draw(
+      h,
+      f,
+      view.bossCues.filter((c): c is ServiceCue => c.kind.startsWith('service-')),
+      now,
+      runtimeArena(view.arenaId).bounds,
+      this.reduceMotion,
+      this.hitboxes,
+    );
     const actorIds = new Set(view.minions.map((a) => a.id));
     for (const actor of view.minions) {
       let sprite = this.actors.get(actor.id);
       if (!sprite) {
-        sprite = this.add.sprite(actor.x, actor.y, 'rat-action', 0);
+        sprite = this.add.sprite(
+          actor.x,
+          actor.y,
+          actor.kind === 'rat' ? 'rat-action' : 'infirmary-minion-action',
+          0,
+        );
         this.actors.set(actor.id, sprite);
       }
-      const clip = encounterArt.find((entry) => entry.bossId === 'rat')!;
+      const clip = encounterArt.find(
+        (entry) => entry.bossId === (actor.kind === 'rat' ? 'rat' : 'infirmary-minion'),
+      )!;
       sprite
         .setPosition(actor.x, actor.y)
         .setOrigin(0.5, 0.5)
@@ -606,7 +628,8 @@ export class CombatScene extends Phaser.Scene {
         .setDepth(5 + actor.y / 1000);
       const dx = actor.x - actor.oldX,
         dy = actor.y - actor.oldY;
-      if (Math.hypot(dx, dy) > 0.01) sprite.setRotation(Math.atan2(dy, dx) + Math.PI / 2);
+      if (Math.hypot(dx, dy) > 0.01)
+        sprite.setRotation(actor.kind === 'rat' ? Math.atan2(dy, dx) + Math.PI / 2 : 0);
       sprite
         .setFrame(this.reduceMotion ? 0 : Math.floor(now / 3) % 8)
         .setTint(now < actor.slowUntil ? 0x9dd8ce : 0xffffff);
@@ -637,7 +660,8 @@ export class CombatScene extends Phaser.Scene {
     }
     const warden = view.boss.id === 'lantern-warden';
     this.bossSprite.setVisible(
-      view.phase === 'combat' || (warden && view.boss.defeatedAt > 0 && view.boss.health <= 0),
+      (view.phase === 'combat' && view.boss.id !== 'choir') ||
+        (view.boss.defeatedAt > 0 && view.boss.health <= 0),
     );
     this.bossSprite.setPosition(view.boss.x, view.boss.y + (view.boss.id === 'constable' ? 65 : 0));
     this.bossSprite.setAlpha(now < view.boss.staggerUntil ? 0.55 : 1);

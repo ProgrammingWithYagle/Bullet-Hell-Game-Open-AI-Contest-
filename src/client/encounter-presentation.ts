@@ -1,9 +1,30 @@
+import services from '../../assets/production/motion/service-library.json';
+import { serviceBossIds } from '../shared/service-director.ts';
 import library from '../../assets/production/motion/encounter-library.json';
 import civic from '../../assets/production/motion/civic-library.json';
 import type { Boss } from '../shared/game.ts';
 import type { BossCue } from '../shared/boss-director.ts';
-export const encounterArt = [...library.entries, ...civic.entries];
+export const encounterArt = [...library.entries, ...civic.entries, ...services.entries];
 export function encounterFrame(boss: Boss, now: number, cues: BossCue[], reduced = false) {
+  if (serviceBossIds.some((id) => id === boss.id)) {
+    if (boss.health <= 0) return 7;
+    if (reduced || now < boss.staggerUntil) return 0;
+    const shapes = cues.filter(
+      (c) =>
+        c.kind.startsWith('service-') &&
+        'at' in c &&
+        'until' in c &&
+        c.until > now &&
+        !(c.kind === 'service-prop' && c.at <= now),
+    );
+    const next = shapes
+      .filter((c) => 'at' in c && c.at > now)
+      .sort((a, b) => ('at' in a ? a.at : 0) - ('at' in b ? b.at : 0))[0];
+    if (next && 'at' in next) return next.at - now > 15 ? 2 : 3;
+    const active = shapes.find((c) => 'at' in c && c.at <= now);
+    if (active && 'at' in active) return now - active.at < 8 ? 4 : 5;
+    return boss.castEndsAt > 0 && now < boss.castEndsAt + 12 ? 6 : 0;
+  }
   if (reduced || now < boss.staggerUntil) return boss.id === 'courier' ? 7 : 0;
   if (boss.id === 'courier') {
     const lane = cues.find((cue) => cue.kind === 'charge');

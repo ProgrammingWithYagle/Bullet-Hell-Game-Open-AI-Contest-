@@ -1,5 +1,8 @@
 # Grave Accord
 
+Current local feature-branch source: 23 playable bosses and individual themes, seven classes, six different map footprints, Quarantine and the ten-fight Midnight Circuit, protocol 9. The remaining 37 identities, later routes and full release/visual/device acceptance are unfinished. Older checkpoint counts below are historical. The public Site remains its earlier protocol-4 deployment; source/Wiki pushes do not redeploy it.
+
+
 Current development adds all seven playable classes, 378 skill nodes, 28 weapons, and six different map sizes/layouts. Nine bosses and their individual themes remain connected. Protocol 8 is required by current source. Final visuals, other boss identities/routes and release systems remain unfinished.
 
 

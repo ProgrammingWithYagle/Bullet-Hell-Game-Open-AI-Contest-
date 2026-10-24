@@ -1,5 +1,8 @@
 # Expanded boss production plan - edition 0.2.0
 
+Current local feature-branch source: 23 playable bosses and individual themes, seven classes, six different map footprints, Quarantine and the ten-fight Midnight Circuit, protocol 9. The remaining 37 identities, later routes and full release/visual/device acceptance are unfinished. Older checkpoint counts below are historical. The public Site remains its earlier protocol-4 deployment; source/Wiki pushes do not redeploy it.
+
+
 The revised target is **60 distinct bosses**, including The Uncounted. The original eleven images are an early reference proof, not the final roster. A boss counts toward sixty only when its identity, silhouette, signature mechanic, counterplay, phases, audio warning and acceptance evidence are implemented. A recolor, threat multiplier or repeated champion phase does not count as a new boss.
 
 The target is sixty because it supports route variety while leaving enough production and testing attention for each encounter. One hundred would add a substantial animation, translation, balance and playtesting burden. Additional bosses can follow in dated updates after the first complete release; the changelog must distinguish delivered content from a target.

@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-24 — Midnight Circuit
+
+Fourteen distinct service bosses, an actual ten-fight route, independent Choir bodies, patient minions, 128 drawn action poses, eight signature props and fourteen individual scores extend the playable roster to 23. Protocol 9, exact counterplay/prediction checks and real WebSocket coverage for all fourteen identities. Full rendered, human/device, balance and release acceptance remain open.
+
+
 ## 2026-10-24 — Seven classes and distinct arenas
 
 Current checkpoint: all seven classes are playable with 378 skill nodes, 63 specialization paths and 28 weapons. Six maps have distinct layouts and actual playable sizes. Nine bosses each have an original theme. Protocol 8 carries class kit state. Class art adds 124 approved run poses, 52 item illustrations and 16 environment/construct props; Engineer north uses four consistent poses, with its other four retained as rejected. See [class and arena runtime](docs/CLASS_AND_ARENA_RUNTIME.md). Full-game, final rendered, human/device and release acceptance remain open.
