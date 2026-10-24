@@ -91,7 +91,7 @@ export function moveBody(pos: Vec, delta: Vec, radius: number, obstacles: Rect[]
   return { x: clamp(p.x, radius, 1600 - radius), y: clamp(p.y, radius, 1000 - radius) };
 }
 export class SpatialGrid<T extends { x: number; y: number }> {
-  private cells = new Map<string, T[]>();
+  private cells = new Map<number, Map<number, T[]>>();
   private querySeen = new WeakMap<T, number>();
   private querySerial = 0;
   clear() {
@@ -108,10 +108,14 @@ export class SpatialGrid<T extends { x: number; y: number }> {
         y <= Math.floor((value.y + radius) / 128);
         y++
       ) {
-        const key = x + ':' + y,
-          list = this.cells.get(key) ?? [];
+        let column = this.cells.get(x);
+        if (!column) {
+          column = new Map<number, T[]>();
+          this.cells.set(x, column);
+        }
+        const list = column.get(y) ?? [];
         list.push(value);
-        this.cells.set(key, list);
+        column.set(y, list);
       }
   }
   query(a: Vec, b: Vec, radius: number): T[] {
@@ -138,7 +142,7 @@ export class SpatialGrid<T extends { x: number; y: number }> {
         y <= Math.floor((Math.max(a.y, b.y) + radius) / 128);
         y++
       ) {
-        const cell = this.cells.get(x + ':' + y);
+        const cell = this.cells.get(x)?.get(y);
         if (!cell) continue;
         for (const p of cell)
           if (this.querySeen.get(p) !== serial) {

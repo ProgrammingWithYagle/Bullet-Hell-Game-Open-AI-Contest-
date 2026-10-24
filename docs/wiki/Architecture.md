@@ -5,6 +5,7 @@ The shared deterministic simulation runs at 30 Hz. Phaser presents its state; me
 **Current runtime protocol: 13.** The immutable authored content revision is `b8d9fb6918c854f3eed38b327ed0cb3026e071e6fe24932e50beed36943db241`. The content bible's historical protocol field is not the live transport protocol; `src/shared/protocol.ts` owns that value.
 
 - Gameplay validates inputs, purchases, skill prerequisites, votes, rewards, collisions and boss transitions at the authority.
+- Projectile batches reuse weak-point/solid geometry with immediate refresh after destructive hits. Construct broad phases preserve rotated-wall contact and shield order; live Walking District buildings receive friendly weapon damage and block hostile shots.
 - Compact projectile waves and actor field patches retain exact gameplay values. Shared geometry handles swept shots and body contacts.
 - Class kits, minions and the civic/service boss directors keep rules separate from presentation. Prediction shares map geometry and environmental forces.
 - All six maps use one camera space with different traversable footprints. The same source feeds server collision, prediction and map previews.
@@ -20,3 +21,5 @@ The shared deterministic simulation runs at 30 Hz. Phaser presents its state; me
 Passing automated checks does not imply full rendered FPS, human playtest, device, WAN, restart recovery, native-language or release acceptance. [Hosting and Recovery](Hosting-and-Recovery) records operational limits.
 
 [Shared authority](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/src/shared/game.ts) · [Live protocol](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/src/shared/protocol.ts) · [Latest full verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/reviews/runtime-verification.json)
+
+[Latest balance, collision and local throughput evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/BALANCE_AND_COLLISION_RUNTIME.md): 268 full-pipeline tests, 210 progression combinations and 1,740 health/deadline deployments. Longer local 50-client Moths/Walking District and 16-client City Eater probes keep stress p99 below 25 ms; occasional slower ticks remain. Zero rendered clients means this is not final capacity acceptance.

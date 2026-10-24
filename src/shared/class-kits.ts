@@ -84,16 +84,34 @@ export type KitContext = {
   shoot(owner: Player, from: Vec, angle: number, damage: number): void;
   erase(point: Vec, radius: number): void;
 };
+const wallBounds = { x: -12, y: -110, width: 24, height: 220 };
 export function constructHit(from: Vec, to: Vec, body: Construct, pad: number) {
+  // A conservative L1 bound contains every rotated padded wall corner. Most
+  // bullets miss every construct; reject them before trigonometry/allocation.
+  const reach = body.kind === 'wall' ? 122 + 2 * pad : body.radius + pad;
+  if (
+    Math.max(from.x, to.x) < body.x - reach ||
+    Math.min(from.x, to.x) > body.x + reach ||
+    Math.max(from.y, to.y) < body.y - reach ||
+    Math.min(from.y, to.y) > body.y + reach
+  )
+    return null;
   if (body.kind !== 'wall') return segmentCircle(from, to, body, body.radius + pad);
   const c = Math.cos(body.aim),
     s = Math.sin(body.aim);
-  const local = (p: Vec) => ({
-    x: (p.x - body.x) * c + (p.y - body.y) * s,
-    y: -(p.x - body.x) * s + (p.y - body.y) * c,
-  });
   return (
-    segmentRect(local(from), local(to), { x: -12, y: -110, width: 24, height: 220 }, pad)?.t ?? null
+    segmentRect(
+      {
+        x: (from.x - body.x) * c + (from.y - body.y) * s,
+        y: -(from.x - body.x) * s + (from.y - body.y) * c,
+      },
+      {
+        x: (to.x - body.x) * c + (to.y - body.y) * s,
+        y: -(to.x - body.x) * s + (to.y - body.y) * c,
+      },
+      wallBounds,
+      pad,
+    )?.t ?? null
   );
 }
 export class ClassKits {

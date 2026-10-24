@@ -19,13 +19,35 @@ const bossId = process.argv[2] as BossId,
   output = process.argv[5];
 if (
   !implementedBossIds.includes(bossId) ||
-  ![8, 50].includes(players) ||
+  ![8, 16, 50].includes(players) ||
   seconds < 5 ||
   seconds > 60 ||
   !/^reviews\/performance\/[a-z0-9-]+\.json$/.test(output ?? '') ||
   existsSync(output)
 )
-  throw Error('Choose a boss, 8/50 clients, 5-60 seconds and a new reviews/performance JSON path.');
+  throw Error(
+    'Choose a boss, 8/16/50 clients, 5-60 seconds and a new reviews/performance JSON path.',
+  );
+function runtimeDigest() {
+  const walk = (dir: string): string[] =>
+    readdirSync(dir)
+      .sort()
+      .flatMap((name) => {
+        const p = dir + '/' + name;
+        return statSync(p).isDirectory() ? walk(p) : [p];
+      });
+  const hash = createHash('sha256');
+  for (const p of walk('src')) {
+    hash.update(p + '\0');
+    hash.update(readFileSync(p));
+  }
+  return hash.digest('hex');
+}
+const runtimeStarted = runtimeDigest();
+const toolSources = [
+  'tools/measure-encounter-isolated.ts',
+  'tools/encounter-server-fixture.ts',
+].map((path) => ({ path, sha256: createHash('sha256').update(readFileSync(path)).digest('hex') }));
 const child = fork('tools/encounter-server-fixture.ts', {
   execArgv: ['--import', 'tsx'],
   stdio: ['ignore', 'pipe', 'pipe', 'ipc'],
@@ -94,7 +116,11 @@ try {
   for (let i = 1; i < players; i++) {
     const room = await client.joinById<WorldState>(
       first.roomId,
-      { ...settings, name: 'Pilot ' + i, classId: implementedClassIds[i % 3] },
+      {
+        ...settings,
+        name: 'Pilot ' + i,
+        classId: implementedClassIds[i % implementedClassIds.length],
+      },
       WorldState,
     );
     room.onMessage('*', () => {});
@@ -127,20 +153,13 @@ try {
   }, 1000 / 30);
   const baseline = await ask('measure', first.roomId),
     stress = await ask('measure', first.roomId, true);
-  const walk = (dir: string): string[] =>
-    readdirSync(dir)
-      .sort()
-      .flatMap((name) => {
-        const file = dir + '/' + name;
-        return statSync(file).isDirectory() ? walk(file) : [file];
-      });
-  const runtimeHash = createHash('sha256');
-  for (const file of walk('src')) {
-    runtimeHash.update(file + '\0');
-    runtimeHash.update(readFileSync(file));
-  }
+  if (runtimeDigest() !== runtimeStarted)
+    throw Error('Source changed during measurement; no report accepted.');
+  const verification = JSON.parse(readFileSync('reviews/runtime-verification.json', 'utf8'));
   const report = {
-    runtimeSourceSha256: runtimeHash.digest('hex'),
+    runtimeSourceSha256: runtimeStarted,
+    toolSources,
+    verificationMatchesRuntime: verification.runtimeSourceSha256 === runtimeStarted,
     createdAt: new Date().toISOString(),
     protocolVersion: PROTOCOL,
     contentRevision: CONTENT_REVISION,
@@ -160,11 +179,9 @@ try {
     baseline,
     stress,
     clientProcessMemory: process.memoryUsage(),
-    verificationSourceSnapshot: JSON.parse(
-      readFileSync('reviews/runtime-verification.json', 'utf8'),
-    ).sourceSnapshotSha256,
+    verificationSourceSnapshot: verification.sourceSnapshotSha256,
     sourceSnapshotNote:
-      'Full verification snapshot and the separate exact src-only runtime digest are recorded for this measurement.',
+      'The src-only digest identifies measured code; verificationMatchesRuntime states whether the last full pipeline verified that same runtime. The source is checked unchanged across measurement.',
     limitations: [
       'Short localhost throughput fixture with zero rendered clients; no foreground FPS, WAN, free-host, endurance, device or human acceptance.',
       'Invulnerable players, 1e9 boss HP and replenished peak 4000 hostile projectiles isolate load. These are fixtures, not authored fight balance.',

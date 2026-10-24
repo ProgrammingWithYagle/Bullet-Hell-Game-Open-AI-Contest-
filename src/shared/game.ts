@@ -56,6 +56,7 @@ import {
   wardenCanHit,
   type WardenSample,
 } from './warden-signature.ts';
+const constructOrder = (a: Construct, b: Construct) => a.id - b.id;
 export const data = catalog;
 const ticks = (s: number) => Math.ceil(s * HZ);
 const rule = data.rules;
@@ -266,6 +267,10 @@ export class Game {
   private events: Event[] = [];
   private grid = new SpatialGrid<Player>();
   private projectilePlayers: Player[] = [];
+  private constructGrid = new SpatialGrid<Construct>();
+  private projectileConstructs: Construct[] = [];
+  private collisionHits: { time: number; minionId?: number; weakId?: number }[] = [];
+
   private attackAt = [0, 0];
   readonly completedBossIds = new Set<BossId>();
   signatures: WardenSample[] = [];
@@ -699,12 +704,13 @@ export class Game {
     return (
       rule.bossHealthBase *
       rule.bossHealthThreatGrowth ** (Math.min(10, contract.threat) - 1) *
+      (this.bossDefinition(contract).timer / 120) *
       this.bossDefinition(contract).healthFactor *
       (this.settings.mode === 'raid' && this.bossDefinition(contract).route !== 'secret'
         ? 1.25
         : 1) *
       this.difficulty.health *
-      (1 + 0.7 * Math.max(0, n - 1)) *
+      (1 + rule.bossHealthAdditionalPlayer * Math.max(0, n - 1)) *
       this.modifier('bossHealth') *
       (1 + cycles * rule.endless.healthGrowthPerCycle) *
       (1 + contract.risk * 0.08) *
@@ -2055,17 +2061,22 @@ export class Game {
     old: { x: number; y: number },
     next: { x: number; y: number },
     wall: number,
+    weakPoints: ReturnType<BossDirector['weakPoints']>,
   ) {
     const bossTime = this.director.hasIndependentBodies()
       ? null
-      : segmentCircle(
-          { x: old.x - this.bossPrevious.x, y: old.y - this.bossPrevious.y },
-          { x: next.x - this.boss.x, y: next.y - this.boss.y },
-          { x: 0, y: 0 },
+      : segmentCircleXY(
+          old.x - this.bossPrevious.x,
+          old.y - this.bossPrevious.y,
+          next.x - this.boss.x,
+          next.y - this.boss.y,
+          0,
+          0,
           this.bossDefinition().radius + shot.radius,
         );
-    const hits: { time: number; minionId?: number; weakId?: number }[] = [];
-    for (const weak of this.director.weakPoints())
+    const hits = this.collisionHits;
+    hits.length = 0;
+    for (const weak of weakPoints)
       if (weak.health > 0) {
         const time = this.director.weakContact(old, next, weak, shot.radius);
         if (time !== null && time < wall) hits.push({ time, weakId: weak.id });
@@ -2078,15 +2089,19 @@ export class Game {
       hits.push({ time: bossTime });
     for (const actor of this.minions.actors.values()) {
       if (this.shotHits.get(shot.id)?.has(actor.id)) continue;
-      const time = segmentCircle(
-        { x: old.x - actor.oldX, y: old.y - actor.oldY },
-        { x: next.x - actor.x, y: next.y - actor.y },
-        { x: 0, y: 0 },
+      const time = segmentCircleXY(
+        old.x - actor.oldX,
+        old.y - actor.oldY,
+        next.x - actor.x,
+        next.y - actor.y,
+        0,
+        0,
         actor.radius + shot.radius,
       );
       if (time !== null && time < wall) hits.push({ time, minionId: actor.id });
     }
-    hits.sort((a, b) => a.time - b.time || (a.minionId ?? 0) - (b.minionId ?? 0));
+    if (hits.length > 1)
+      hits.sort((a, b) => a.time - b.time || (a.minionId ?? 0) - (b.minionId ?? 0));
     for (const hit of hits) {
       if (hit.weakId !== undefined) {
         this.hitWeak(this.players.get(shot.owner), shot.damage, hit.weakId);
@@ -2131,6 +2146,22 @@ export class Game {
     const safeZones = this.director.safeZones(this.combatTick);
     const districtCover = this.director.district.projectileCover();
     const constructs = this.classKits.constructs();
+    const useConstructGrid = constructs.length >= 8;
+    if (useConstructGrid) {
+      this.constructGrid.clear();
+      for (const body of constructs)
+        this.constructGrid.insert(body, body.kind === 'wall' ? 122 : body.radius);
+    }
+    let weakPoints = this.director.weakPoints();
+
+    // Moving buildings are weak targets for friendly shots and solids for
+    // hostile ones. Treating them as friendly masonry discarded weapon hits.
+    const gates = this.director.civic.solids(this.combatTick);
+    const fixedObstacles = gates.length
+      ? [...this.arena.obstacles, ...gates]
+      : this.arena.obstacles;
+    let hostileObstacles = this.obstacles;
+
     const old = { x: 0, y: 0 },
       next = { x: 0, y: 0 };
     for (const s of this.shots.values()) {
@@ -2149,7 +2180,7 @@ export class Game {
         effect.rangeRemaining = Math.max(0, effect.rangeRemaining - distance);
       }
       let wall = 1;
-      for (const rect of this.obstacles) {
+      for (const rect of s.owner === 'hostile' ? hostileObstacles : fixedObstacles) {
         const hit = segmentRect(old, next, rect, s.radius);
         if (hit) wall = Math.min(wall, hit.t);
       }
@@ -2182,7 +2213,13 @@ export class Game {
             safeHit = false;
           }
         }
-        for (const body of constructs)
+        let candidates: Construct[] = constructs;
+        if (useConstructGrid) {
+          this.constructGrid.queryInto(old, next, s.radius * 2, this.projectileConstructs);
+          if (this.projectileConstructs.length > 1) this.projectileConstructs.sort(constructOrder);
+          candidates = this.projectileConstructs;
+        }
+        for (const body of candidates)
           if (body.health > 0) {
             const time = constructHit(old, next, body, s.radius);
             if (time !== null && time < hitTime) {
@@ -2212,7 +2249,15 @@ export class Game {
             hitTime = t;
           }
         }
-      } else friendlyHit = this.friendlyCollision(s, old, next, wall);
+      } else {
+        friendlyHit = this.friendlyCollision(s, old, next, wall, weakPoints);
+        // A weapon may destroy a building. Rebuild its solid list before a
+        // later projectile in this same tick; never keep a dead shield alive.
+        if (friendlyHit) {
+          hostileObstacles = this.obstacles;
+          weakPoints = this.director.weakPoints();
+        }
+      }
       s.x = next.x;
       s.y = next.y;
       if (player) this.damage(player, s.damage);

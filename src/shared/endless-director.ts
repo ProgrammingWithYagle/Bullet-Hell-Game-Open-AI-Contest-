@@ -206,7 +206,8 @@ export class EndlessDirector {
       : 1;
   }
   reflectShot(s: Shot, a: Vec, b: Vec, now: number) {
-    if (s.owner !== 'hostile' || this.reflected.has(s.id)) return false;
+    if (this.kind !== 'folded-man' || s.owner !== 'hostile' || this.reflected.has(s.id))
+      return false;
     for (const l of this.shapes) {
       if (l.kind !== 'endless-line' || l.style !== 'fold' || now < l.at || now >= l.until) continue;
       if ((a.x - l.x1) * (b.x - l.x1) > 0 || Math.abs(b.x - a.x) < 1e-9) continue;

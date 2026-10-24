@@ -1,6 +1,20 @@
 # Changelog
 
-Development build **2026.10.24-profile**, protocol 13. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.24-balance-collision**, protocol 13. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-24 — Boss health correction, destructible buildings and collision performance
+
+### Combat fixes
+
+- Restored the authored encounter-duration factor in boss health. A solo Normal Courier now has 1,012.5 HP for its 90-second fight, correcting 1,350 HP; the 120-second Constable remains at 1,800. Brutal still doubles health and extends the deadline separately by 50%. Raid and secret coefficients remain independent.
+- Weapon projectiles now damage active Walking District buildings. Their solid geometry previously discarded a friendly shot before its damage could reach the destructible target. Hostile bullets still stop at live buildings, and destroyed buildings cease shielding later projectiles within the same tick.
+- Reduced repeated projectile geometry and allocation work. Large construct groups use a spatial broad phase, grid queries use numeric coordinates, and weak-point/solid batches refresh immediately after hits. Rotated wall corners, shield precedence and sack destruction retain exact collision behavior.
+
+### Validation and evidence
+
+- Added progression smoke coverage for all 168 timed class/mode/difficulty combinations and 42 Endless combinations: 2,436 deliberate fixture clears and 2,226 restored boundaries. Legal purchases, power caps, profile participation and Hard unlocks are checked; these fixtures do not claim human combat wins.
+- An actual-deployment audit checks all sixty identities in 1,740 legal difficulty/roster/variant combinations against authored health and deadline rules. Full-loop damage uptime and final human balance remain open.
+- Expanded isolated-process throughput fixtures to all seven classes and 8/16/50 clients, with preserved failing samples, optional Node CPU diagnostics and longer stress measurements. These localhost fixtures have zero rendered clients and do not establish hosted, WAN, device, endurance or final capacity acceptance.
 
 ## 2026-10-24 — Persistent profiles, mastery and remappable controls
 

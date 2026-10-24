@@ -1,3 +1,5 @@
+import { Session as CpuProfiler } from 'node:inspector';
+import { writeFileSync } from 'node:fs';
 // Local benchmark child. IPC-only fixtures never enter the production server entry point.
 import { performance } from 'node:perf_hooks';
 import { createGameServer } from '../src/server/index.ts';
@@ -48,6 +50,16 @@ process.on('message', async (raw: unknown) => {
     }
     if (request.kind !== 'measure' || request.seconds < 5 || request.seconds > 60)
       throw Error('Invalid fixture measurement');
+    const cpu = request.stress && process.env.GRAVE_CPU_PROFILE ? new CpuProfiler() : null;
+    if (cpu) {
+      cpu.connect();
+      await new Promise<void>((resolve, reject) =>
+        cpu.post('Profiler.enable', (error) => (error ? reject(error) : resolve())),
+      );
+      await new Promise<void>((resolve, reject) =>
+        cpu.post('Profiler.start', (error) => (error ? reject(error) : resolve())),
+      );
+    }
     const startIndex = room.telemetry.ticks.length,
       startBytes = room.telemetry.encodedOutboundBytes,
       start = performance.now();
@@ -80,6 +92,13 @@ process.on('message', async (raw: unknown) => {
       peakMinions = Math.max(peakMinions, game.minions.actors.size);
       peakBossCues = Math.max(peakBossCues, game.director.cues().length);
       await new Promise((r) => setTimeout(r, 50));
+    }
+    if (cpu) {
+      const value = await new Promise<{ profile: unknown }>((resolve, reject) =>
+        cpu.post('Profiler.stop', (error, value) => (error ? reject(error) : resolve(value))),
+      );
+      writeFileSync(process.env.GRAVE_CPU_PROFILE!, JSON.stringify(value.profile));
+      cpu.disconnect();
     }
     const ticks = room.telemetry.ticks.slice(startIndex),
       elapsed = (performance.now() - start) / 1000;
