@@ -1,3 +1,4 @@
+import { raidBossIds, raidMovement } from './raid-director.ts';
 import {
   districtMovement,
   districtBossIds,
@@ -81,6 +82,7 @@ export const implementedBossIds: readonly BossId[] = [
   'red-abbess',
   'vesper-judge',
   ...districtBossIds,
+  ...raidBossIds,
 ];
 export type Settings = {
   seed: number;
@@ -266,15 +268,18 @@ export class Game {
       seed: settings.seed ?? 1,
       mode: settings.mode ?? 'short',
       difficulty: settings.difficulty ?? 'normal',
-      maxPlayers: settings.maxPlayers ?? 8,
+      maxPlayers: settings.maxPlayers ?? (settings.mode === 'raid' ? 16 : 8),
       openingBossId:
         settings.openingBossId ??
-        (settings.mode === 'long'
-          ? 'pallbearer'
-          : settings.mode === 'standard'
-            ? 'matron'
-            : 'constable'),
-      openingArenaId: settings.openingArenaId ?? 'gatehouse',
+        (settings.mode === 'raid'
+          ? 'chain-colossus'
+          : settings.mode === 'long'
+            ? 'pallbearer'
+            : settings.mode === 'standard'
+              ? 'matron'
+              : 'constable'),
+      openingArenaId:
+        settings.openingArenaId ?? (settings.mode === 'raid' ? 'ossuary-works' : 'gatehouse'),
     };
     if (
       !implementedBossIds.includes(this.settings.openingBossId) ||
@@ -286,6 +291,10 @@ export class Game {
       this.settings.maxPlayers > 50
     )
       throw Error('Invalid simulation settings');
+    if (this.settings.mode === 'raid') {
+      this.selectedContract.threat = 4;
+      this.boss.threat = 4;
+    }
     this.selectedContract.bossId = this.settings.openingBossId;
     this.boss.id = this.settings.openingBossId;
     this.rng = new Random(this.settings.seed);
@@ -419,11 +428,18 @@ export class Game {
     return data.modes.find((m) => m.id === this.settings.mode)!.encounters ?? Infinity;
   }
   private skillBudget(j: number) {
+    if (this.settings.mode === 'raid')
+      return data.modes.find((m) => m.id === 'raid')!.skillBudgets![Math.min(j, 2)];
     return this.settings.mode === 'endless'
       ? 3 + Math.floor((24 * Math.min(j, 9)) / 9)
       : 3 + Math.floor((24 * Math.min(j, this.routeLength - 1)) / (this.routeLength - 1));
   }
   private incomeBudget(j: number) {
+    if (this.settings.mode === 'raid')
+      return Math.floor(
+        data.modes.find((m) => m.id === 'raid')!.coinIncomeBudgets![Math.min(j, 2)] *
+          this.difficulty.coins,
+      );
     const denominator = this.settings.mode === 'endless' ? 9 : this.routeLength - 1;
     // Multiply integer encounter counts before division: (11/15)*2280 loses a coin.
     return Math.floor(
@@ -617,6 +633,7 @@ export class Game {
       rule.bossHealthBase *
       rule.bossHealthThreatGrowth ** (contract.threat - 1) *
       this.bossDefinition(contract).healthFactor *
+      (this.settings.mode === 'raid' ? 1.25 : 1) *
       this.difficulty.health *
       (1 + 0.7 * Math.max(0, n - 1)) *
       this.modifier('bossHealth') *
@@ -710,6 +727,7 @@ export class Game {
     this.director.reset(this.boss.id, this.boss.variant === 'brutal', true);
     this.director.services.prepare(this.signatureContext());
     this.director.district.prepare(this.signatureContext());
+    this.director.raids.prepare(this.signatureContext());
     for (const p of this.roster()) p.terrain = freshTerrain();
     this.bossPrevious = { x: this.boss.x, y: this.boss.y };
     this.events.push({ type: 'sound', id: 'boss-phase' });
@@ -963,7 +981,7 @@ export class Game {
     );
     const environment = this.director.services.movement(p, p.id, now);
     const terrain = districtMovement(
-      this.director.cues(),
+      this.director.district.cues(),
       p,
       p.id,
       now,
@@ -971,6 +989,7 @@ export class Game {
       { x: mx, y: my },
       now < p.dashUntil,
     );
+    const raidForce = raidMovement(this.director.raids.cues(), p, now);
     const dash = now < p.dashUntil,
       speed = dash
         ? (this.classKits.chargeSpeed(p.id, now) ?? rule.dodgeSpeed)
@@ -982,8 +1001,8 @@ export class Game {
     const next = moveBody(
       p,
       {
-        x: ((dash ? p.dashX : mx) * speed + environment.x + terrain.x) * DT,
-        y: ((dash ? p.dashY : my) * speed + environment.y + terrain.y) * DT,
+        x: ((dash ? p.dashX : mx) * speed + environment.x + terrain.x + raidForce.x) * DT,
+        y: ((dash ? p.dashY : my) * speed + environment.y + terrain.y + raidForce.y) * DT,
       },
       rule.playerRadius,
       this.obstacles,
@@ -1303,7 +1322,7 @@ export class Game {
       }
     if (this.roster().length === 1) p.shield = Math.max(p.shield, 40 * potency);
     if (
-      this.boss.id !== 'choir' &&
+      !this.director.hasIndependentBodies() &&
       !this.director.coreContact(p, p, radius) &&
       distance(p, this.boss) <= radius
     )
@@ -1359,7 +1378,10 @@ export class Game {
       amount *
         (this.combatTick < this.boss.vulnerableUntil ? 1.25 : 1) *
         (this.boss.id === 'black-ambulance' && this.director.civic.recovering ? 1.25 : 1) *
-        (bypassArmor ? 1 : this.director.district.bodyMultiplier(p, this.boss, this.combatTick)),
+        (bypassArmor
+          ? 1
+          : this.director.district.bodyMultiplier(p, this.boss, this.combatTick) *
+            this.director.raids.bodyMultiplier(this.combatTick)),
     );
     this.boss.health -= actual;
     if (actual > 0 && this.combatTick - this.boss.hurtAt >= ticks(0.3))
@@ -1458,7 +1480,7 @@ export class Game {
       id: () => this.id(),
       area: (source, point, radius, damage, slow = 1, slowTicks = 0) => {
         if (
-          this.boss.id !== 'choir' &&
+          !this.director.hasIndependentBodies() &&
           !this.director.coreContact(point, point, radius) &&
           damage > 0 &&
           distance(point, this.boss) <= radius + this.bossDefinition().radius
@@ -1476,7 +1498,7 @@ export class Game {
       },
       sweep: (source, from, to, radius, damage, touched) => {
         if (
-          this.boss.id !== 'choir' &&
+          !this.director.hasIndependentBodies() &&
           !this.director.coreContact(from, to, radius) &&
           !touched.has('boss') &&
           segmentCircle(from, to, this.boss, radius + this.bossDefinition().radius) !== null
@@ -1520,6 +1542,8 @@ export class Game {
       tick: this.combatTick,
       bossId: this.boss.id,
       bossMaximumHealth: this.boss.maxHealth,
+      hurtBoss: (amount, sourceId) =>
+        this.hitBoss(sourceId ? this.players.get(sourceId) : undefined, amount, true),
       emitControlled: (point, angle, speed, damage, radius) =>
         this.emitShot('hostile', point.x, point.y, angle, speed, damage, radius)?.id,
       controlShot: (id, vx, vy) => {
@@ -1678,6 +1702,8 @@ export class Game {
     if (this.boss.id === 'lantern-warden') this.stepWarden();
     if (this.director.district.handles(this.boss.id))
       this.attackAt[0] = Math.max(this.attackAt[0] ?? now, this.director.district.nextSignatureAt);
+    if (this.director.raids.handles(this.boss.id))
+      this.attackAt[0] = Math.max(this.attackAt[0] ?? now, this.director.raids.nextSignatureAt);
     const attacks = this.bossPhases()[this.boss.phase].attacks;
     for (let index = 0; index < attacks.length; index++)
       if (
@@ -1724,6 +1750,11 @@ export class Game {
             (1 + cycle * rule.endless.damageGrowthPerCycle) *
             (this.boss.variant === 'brutal' ? rule.brutal.damageMultiplier : 1);
         if (
+          index === 0 &&
+          this.director.raids.cast(this.signatureContext(), target, { ...attack, speed, count })
+        ) {
+          this.attackAt[index] = this.director.raids.nextSignatureAt;
+        } else if (
           index === 0 &&
           this.director.district.cast(this.signatureContext(), target, { ...attack, speed, count })
         ) {
@@ -1877,27 +1908,26 @@ export class Game {
     return this.minions.spawn(this.id(), definition, this.combatTick);
   }
   private hitWeak(source: Player | undefined, amount: number, id: number) {
-    const core = this.director.district.transfersDamage(id);
-    const transfer = core || this.director.services.transfersDamage(id),
-      actual = this.director.hitWeakPoint(amount, this.combatTick, id);
-    if (transfer) this.hitBoss(source, actual * (core ? 1.6 : 1), core);
+    const transfer = this.director.damageTransfer(id);
+    const actual = this.director.hitWeakPoint(amount, this.combatTick, id);
+    if (transfer) this.hitBoss(source, actual * transfer.multiplier, transfer.bypassArmor);
     else this.creditHit(source, actual);
   }
+
   private friendlyCollision(
     shot: Shot,
     old: { x: number; y: number },
     next: { x: number; y: number },
     wall: number,
   ) {
-    const bossTime =
-      this.boss.id === 'choir'
-        ? null
-        : segmentCircle(
-            { x: old.x - this.bossPrevious.x, y: old.y - this.bossPrevious.y },
-            { x: next.x - this.boss.x, y: next.y - this.boss.y },
-            { x: 0, y: 0 },
-            this.bossDefinition().radius + shot.radius,
-          );
+    const bossTime = this.director.hasIndependentBodies()
+      ? null
+      : segmentCircle(
+          { x: old.x - this.bossPrevious.x, y: old.y - this.bossPrevious.y },
+          { x: next.x - this.boss.x, y: next.y - this.boss.y },
+          { x: 0, y: 0 },
+          this.bossDefinition().radius + shot.radius,
+        );
     const hits: { time: number; minionId?: number; weakId?: number }[] = [];
     for (const weak of this.director.weakPoints())
       if (weak.health > 0) {
@@ -1907,7 +1937,7 @@ export class Game {
     if (
       bossTime !== null &&
       bossTime < wall &&
-      !hits.some((h) => h.weakId !== undefined && this.director.district.transfersDamage(h.weakId))
+      !hits.some((h) => h.weakId !== undefined && this.director.damageTransfer(h.weakId))
     )
       hits.push({ time: bossTime });
     for (const actor of this.minions.actors.values()) {

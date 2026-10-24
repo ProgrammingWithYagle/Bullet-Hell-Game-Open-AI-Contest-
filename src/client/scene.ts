@@ -1,3 +1,5 @@
+import { RaidPresentation } from './raid-presentation.ts';
+import type { RaidCue } from '../shared/raid-director.ts';
 import { DistrictPresentation } from './district-presentation.ts';
 import type { DistrictCue } from '../shared/district-director.ts';
 import { ServicePresentation } from './service-presentation.ts';
@@ -40,6 +42,7 @@ export class CombatScene extends Phaser.Scene {
   private arenaGround!: Phaser.GameObjects.Graphics;
   private lastArenaId = '';
   private serviceArt!: ServicePresentation;
+  private raidArt!: RaidPresentation;
   private districtArt!: DistrictPresentation;
   private coverImages: Phaser.GameObjects.Image[] = [];
   private constructImages = new Map<number, Phaser.GameObjects.Image>();
@@ -80,6 +83,8 @@ export class CombatScene extends Phaser.Scene {
     for (const [id, url] of Object.entries(assets.environment))
       this.load.image('environment-' + id, url);
     this.load.image('tollkeeper-wheel', assets.wheel);
+    for (const [id, url] of Object.entries(assets.raidProps))
+      this.load.image('raid-prop-' + id, url);
     for (const [id, url] of Object.entries(assets.pilgrimageProps))
       this.load.image('pilgrimage-prop-' + id, url);
     for (const [id, url] of Object.entries(assets.midnightProps))
@@ -135,6 +140,7 @@ export class CombatScene extends Phaser.Scene {
   }
   create() {
     this.serviceArt = new ServicePresentation(this);
+    this.raidArt = new RaidPresentation(this);
     this.districtArt = new DistrictPresentation(this, (id) => this.people.get(id));
     this.arenaImage = this.add
       .image(800, 500, 'gatehouse')
@@ -603,6 +609,14 @@ export class CombatScene extends Phaser.Scene {
         );
       }
     }
+    this.raidArt.draw(
+      h,
+      f,
+      view.bossCues.filter((c): c is RaidCue => c.kind.startsWith('raid-')),
+      now,
+      this.reduceMotion,
+      this.hitboxes,
+    );
     this.districtArt.draw(
       h,
       f,
@@ -680,6 +694,7 @@ export class CombatScene extends Phaser.Scene {
     this.bossSprite.setVisible(
       (view.phase === 'combat' &&
         view.boss.id !== 'choir' &&
+        view.boss.id !== 'bell-triplets' &&
         !view.bossCues.some(
           (c) => c.kind === 'district-state' && c.style === 'dive' && now >= c.at && now < c.until,
         )) ||

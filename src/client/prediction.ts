@@ -1,3 +1,4 @@
+import { raidMovement } from '../shared/raid-director.ts';
 import { districtMovement } from '../shared/district-director.ts';
 import { serviceMovement } from '../shared/service-director.ts';
 import { moveBody, distance } from '../shared/geometry.ts';
@@ -52,6 +53,7 @@ export class Prediction {
       { x: mx, y: my },
       now < p.dashUntil,
     );
+    const raidForce = raidMovement(view.bossCues, p, now);
     const rally = Math.max(
         0,
         ...view.fields
@@ -71,8 +73,8 @@ export class Prediction {
     const next = moveBody(
       p,
       {
-        x: ((dash ? p.dashX : mx) * speed + environment.x + terrain.x) * DT,
-        y: ((dash ? p.dashY : my) * speed + environment.y + terrain.y) * DT,
+        x: ((dash ? p.dashX : mx) * speed + environment.x + terrain.x + raidForce.x) * DT,
+        y: ((dash ? p.dashY : my) * speed + environment.y + terrain.y + raidForce.y) * DT,
       },
       data.rules.playerRadius,
       [...runtimeArena(view.arenaId).obstacles, ...gates],

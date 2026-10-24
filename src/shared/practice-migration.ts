@@ -4,7 +4,7 @@ import { CONTENT_REVISION, PROTOCOL } from './protocol.ts';
 export function migratePracticeBoundary(value: unknown): unknown {
   if (!value || typeof value !== 'object' || Array.isArray(value)) return value;
   const legacy = value as Record<string, unknown>;
-  if (![4, 5, 6, 7, 8, 9].includes(legacy.protocolVersion as number)) return value;
+  if (![4, 5, 6, 7, 8, 9, 10].includes(legacy.protocolVersion as number)) return value;
   const version = legacy.protocolVersion as number;
   const previousServiceBosses = [
     'matron',
@@ -22,6 +22,28 @@ export function migratePracticeBoundary(value: unknown): unknown {
     'red-abbess',
     'vesper-judge',
   ];
+  const previousDistrictBosses = [
+    'pallbearer',
+    'cinder-foreman',
+    'canal-diver',
+    'clockmender',
+    'wire-seamstress',
+    'gravedigger',
+    'ink-notary',
+    'spore-beekeeper',
+    'ice-custodian',
+    'bridge-ferryman',
+    'porcelain-mourner',
+    'boiler-tender',
+    'mirror-undertaker',
+    'chalk-magistrate',
+    'wire-harpist',
+    'crow-shepherd',
+    'ledger-leech',
+    'engine',
+    'regent',
+    'salt-patriarch',
+  ];
   const bosses =
     version >= 7
       ? [
@@ -34,7 +56,8 @@ export function migratePracticeBoundary(value: unknown): unknown {
           'chain-marshal',
           'gate-widow',
           'black-ambulance',
-          ...(version === 9 ? previousServiceBosses : []),
+          ...(version >= 9 ? previousServiceBosses : []),
+          ...(version === 10 ? previousDistrictBosses : []),
         ]
       : version === 4
         ? ['constable']
@@ -45,9 +68,13 @@ export function migratePracticeBoundary(value: unknown): unknown {
   if (
     !oldSettings ||
     typeof oldSettings !== 'object' ||
-    !(version === 9 ? ['short', 'standard', 'endless'] : ['short', 'endless']).includes(
-      oldSettings.mode as string,
-    ) ||
+    !(
+      version === 10
+        ? ['short', 'standard', 'long', 'endless']
+        : version === 9
+          ? ['short', 'standard', 'endless']
+          : ['short', 'endless']
+    ).includes(oldSettings.mode as string) ||
     (oldSettings.openingBossId !== undefined &&
       !bosses.includes(oldSettings.openingBossId as string)) ||
     (version < 7 &&

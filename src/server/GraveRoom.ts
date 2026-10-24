@@ -25,7 +25,7 @@ type Metadata = {
   phase: string;
 };
 type Options = {
-  mode: 'short' | 'standard' | 'long' | 'endless';
+  mode: 'short' | 'standard' | 'long' | 'raid' | 'endless';
   difficulty: string;
   visibility: 'public' | 'private';
   contentRevision: string;
@@ -71,7 +71,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
         !data.arenas.some((a) => a.id === options.openingArenaId)) ||
       (options.openingBossId !== undefined &&
         !implementedBossIds.includes(options.openingBossId)) ||
-      !['short', 'standard', 'long', 'endless'].includes(options.mode) ||
+      !['short', 'standard', 'long', 'raid', 'endless'].includes(options.mode) ||
       !['baby', 'easy', 'normal', 'hard'].includes(options.difficulty) ||
       !['public', 'private'].includes(options.visibility)
     )
@@ -84,7 +84,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       throw new ServerError(503, 'capacity');
     }
     this.creatorKey = options.createKey;
-    this.maxClients = options.mode === 'endless' ? 50 : 8;
+    this.maxClients = options.mode === 'endless' ? 50 : options.mode === 'raid' ? 16 : 8;
     this.maxMessagesPerSecond = 90;
     this.patchRate = 50;
     this.game = new Game({

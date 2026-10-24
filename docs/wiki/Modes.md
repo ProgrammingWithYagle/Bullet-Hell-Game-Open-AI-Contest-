@@ -4,13 +4,15 @@
 | --- | --- | --- | --- |
 | Quarantine Run | Playable | 5: four unique regulars and a reserved finale | 8 |
 | Midnight Circuit | Playable | 10: nine unique regulars and a reserved finale | 8 |
-| Endless Vigil | Playable | No final round; current pool has 43 identities | 50 |
+| Endless Vigil | Playable | No final round; current pool has 50 identities | 50 |
 | Black Bell Pilgrimage | Playable | 16: fifteen unique regulars and a reserved finale | 8 |
-| Grand Raid | Authored, locked; implementation pending | 3 planned | 16 planned |
+| Grand Raid | Playable | 3: two unique regulars and a reserved finale | 16 |
 
 Source room limits are admission rules, not a claim that the current hosted service or physical devices have passed full-capacity acceptance. The older public playtest is capped at eight slots. Final rendered/WAN/endurance and 49+1 scale acceptance remain open.
 
-Quarantine, Midnight and Pilgrimage use their authored threat and arena sequences and normalized progression budgets. All playable modes support offline solo and public/private rooms. Baby, Easy, Normal and Hard are selectable. Insane and Hellish are locked pending their full Hard-completion unlock/profile implementation.
+Quarantine, Midnight, Pilgrimage and Raid use their authored threat and arena sequences and normalized progression budgets. All playable modes support offline solo and public/private rooms. Baby, Easy, Normal and Hard are selectable. Insane and Hellish are locked pending their full Hard-completion unlock/profile implementation.
+
+Grand Raid begins at 12 skill points and 600 nominal coins, reaches 20/1,400 before its second fight and 27/2,400 before its finale. It uses threats 4/7/10 and a 1.25 boss-health multiplier. Its objectives require no particular class.
 
 ## Six different playable layouts
 

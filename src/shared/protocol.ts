@@ -1,5 +1,5 @@
 import revision from '../../content/revision.json' with { type: 'json' };
-export const PROTOCOL = 10;
+export const PROTOCOL = 11;
 export const CONTENT_REVISION = revision.sha256;
 export const HZ = 30,
   DT = 1 / HZ;
@@ -13,7 +13,7 @@ export const implementedClassIds = [
   'assassin',
 ] as const;
 export type ClassId = (typeof implementedClassIds)[number];
-export const implementedModeIds = ['short', 'standard', 'long', 'endless'] as const;
+export const implementedModeIds = ['short', 'standard', 'long', 'raid', 'endless'] as const;
 export type ModeId = (typeof implementedModeIds)[number];
 export type BossId =
   | 'constable'
@@ -58,7 +58,14 @@ export type BossId =
   | 'ledger-leech'
   | 'engine'
   | 'regent'
-  | 'salt-patriarch';
+  | 'salt-patriarch'
+  | 'chain-colossus'
+  | 'ossuary-leviathan'
+  | 'bell-triplets'
+  | 'quarantine-heart'
+  | 'crown-procession'
+  | 'city-eater'
+  | 'last-breath-saint';
 export type CheckpointStatus =
   'disabled' | 'pending' | 'acknowledged' | 'unavailable' | 'finalized';
 export type Phase =

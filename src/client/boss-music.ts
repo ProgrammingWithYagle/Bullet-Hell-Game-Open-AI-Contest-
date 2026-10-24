@@ -43,6 +43,13 @@ export const bossThemes = {
   engine: 'mortuary-drive',
   regent: 'the-water-remembers',
   'salt-patriarch': 'three-white-steps',
+  'chain-colossus': 'city-under-tension',
+  'ossuary-leviathan': 'ribs-of-the-road',
+  'bell-triplets': 'third-toll',
+  'quarantine-heart': 'municipal-pulse',
+  'crown-procession': 'borrowed-crown',
+  'city-eater': 'arch-without-door',
+  'last-breath-saint': 'last-exhalation',
 } satisfies Record<BossId, string>;
 export function musicIdentity(combat: boolean, boss: BossId = 'constable') {
   return combat ? bossThemes[boss] : 'city-wake';

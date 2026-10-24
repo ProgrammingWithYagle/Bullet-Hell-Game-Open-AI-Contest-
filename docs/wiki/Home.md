@@ -2,21 +2,21 @@
 
 Cooperative gothic zombie bullet hell. Choose a survivor, clear a boss contract, vote on mutations, buy a build and survive the next encounter.
 
-**Current development source: version 0.3.0, build `2026.10.24-pilgrimage`, protocol 10, updated 2026-10-24.** The game is still in development. [Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains the playable feature branch; protected `main` is a separate release boundary.
+**Current development source: version 0.3.0, build `2026.10.24-raid`, protocol 11, updated 2026-10-24.** The game is still in development. [Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains the playable feature branch; protected `main` is a separate release boundary.
 
 | Playable now in that source | Contents |
 | --- | --- |
 | Survivors | All seven classes; two abilities and one ultimate per class |
 | Builds | 378 skills, 63 specialization paths, 28 weapons, eight supplies, 24 mutations |
-| Bosses and music | 43 distinct executable encounters, each with an original theme |
-| Routes | Five-fight Quarantine Run, ten-fight Midnight Circuit, sixteen-fight Black Bell Pilgrimage, uncapped Endless Vigil |
+| Bosses and music | 50 distinct executable encounters, each with an original theme |
+| Routes | Five-fight Quarantine Run, ten-fight Midnight Circuit, sixteen-fight Black Bell Pilgrimage, three-fight Grand Raid, uncapped Endless Vigil |
 | Maps | Six actual layouts with different cover, spawns and playable dimensions |
 | Sessions | Offline solo, public/private online rooms, boundary saves, process-live reconnect |
 | Interface | Keyboard/mouse, gamepad and touch support; fifteen language catalogs |
 
 The [public browser playtest](https://grave-accord-playtest.ivoryflame12.chatgpt.site/) remains the **older protocol-4 build with two classes and one boss**. Source and Wiki publication does not redeploy it. Run from source for the current build; see [Getting Started](Getting-Started).
 
-Grand Raid, 17 further boss identities and the secret extension remain unfinished. Persistent mastery/cosmetics, verified leaderboards, durable online recovery and a portable Windows/LAN release are also unfinished. Automated evidence does not establish final rendered, human, device, language or balance acceptance.
+Ten further boss identities, the full Endless schedule and the secret extension remain unfinished. Persistent mastery/cosmetics, verified leaderboards, durable online recovery and a portable Windows/LAN release are also unfinished. Automated evidence does not establish final rendered, human, device, language or balance acceptance.
 
 ## Player reference
 

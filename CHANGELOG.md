@@ -1,6 +1,21 @@
 # Changelog
 
-Development build **2026.10.24-pilgrimage**, protocol 10. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.24-raid**, protocol 11. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-24 — Seven more bosses and Grand Raid
+
+### Playable content
+
+- Grand Raid is a three-fight route for one to sixteen survivors: two different regular bosses, then a reserved finale. Threat rises through 4, 7 and 10; skill budgets are 12, 20 and 27; nominal income budgets are 600, 1,400 and 2,400. Ossuary Works, Bell Foundry and Crown Crypt provide the three layouts.
+- Added Chain Colossus, Ossuary Leviathan, Bell Triplets, Quarantine Heart, Crown Procession, City Eater and Last Breath Saint. The executable roster reaches 50 bosses across five modes, with an individual original theme for each.
+- Counterplay includes breakable anchor pylons, three sequential rib openings, three independently visible interruptible keepers, neutral F-operated pump valves, four separate throne attendants, a 240-pixel bite escape lane, destructible core covers and shelters against inhalation. These objectives work with a solo class as well as a party.
+
+### Art, music and rules
+
+- Connected 72 drawn boss/keeper/attendant poses and eight props. All twelve returned natives and exact requests remain preserved, including the two superseded sheets. Independent audits reconstruct all selected sprites and verify their transparent padding.
+- Composed seven additional original themes. The prior 43 music masters remain unchanged. Final human listening, full rendered motion, device mix and balance acceptance remain open.
+- Protocol 11 shares Raid pull movement with client prediction and migrates bounded local protocol-10 saves. Online and signed recovery require an exact current version. Rib and core hits transfer one boosted hit without also crediting the body.
+- The Leviathan checks its whole broad body against cover; interrupting a highlighted keeper disables that keeper beam. Defeating a throne attendant opens a five-second stop, and a neutral valve reverses one hose only once.
 
 ## 2026-10-24 — Twenty more bosses and Black Bell Pilgrimage
 
@@ -101,7 +116,7 @@ Development build **2026.10.24-pilgrimage**, protocol 10. These entries describe
 
 ## Still in development
 
-- Seventeen authored boss identities, Grand Raid, the Endless-exclusive schedule and the secret extension still need implementation.
+- Ten authored boss identities, the full Endless-exclusive schedule and the secret extension still need implementation.
 - Complete action/facing art, balance, final rendered playtests, physical-device and native-language review remain in progress.
 - Persistent mastery/cosmetics, verified rankings, durable online recovery and the Windows/offline/LAN release are not complete.
 

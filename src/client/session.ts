@@ -18,7 +18,7 @@ import { productionGameServer } from './deployment.ts';
 export type ConnectionOptions = {
   name: string;
   classId: ClassId;
-  mode: 'short' | 'standard' | 'long' | 'endless';
+  mode: 'short' | 'standard' | 'long' | 'raid' | 'endless';
   difficulty: string;
   openingBossId?: BossId;
   openingArenaId?: string;

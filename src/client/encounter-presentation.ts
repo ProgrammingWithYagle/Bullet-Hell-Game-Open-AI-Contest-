@@ -1,3 +1,5 @@
+import raids from '../../assets/production/motion/raid-library.json';
+import { raidBossIds } from '../shared/raid-director.ts';
 import districts from '../../assets/production/motion/district-library.json';
 import { districtBossIds } from '../shared/district-director.ts';
 import services from '../../assets/production/motion/service-library.json';
@@ -11,14 +13,17 @@ export const encounterArt = [
   ...civic.entries,
   ...services.entries,
   ...districts.entries,
+  ...raids.entries,
 ];
 export function encounterFrame(boss: Boss, now: number, cues: BossCue[], reduced = false) {
-  if ([...serviceBossIds, ...districtBossIds].some((id) => id === boss.id)) {
+  if ([...serviceBossIds, ...districtBossIds, ...raidBossIds].some((id) => id === boss.id)) {
     if (boss.health <= 0) return 7;
     if (reduced || now < boss.staggerUntil) return 0;
     const shapes = cues.filter(
       (c) =>
-        (c.kind.startsWith('service-') || c.kind.startsWith('district-')) &&
+        (c.kind.startsWith('service-') ||
+          c.kind.startsWith('district-') ||
+          c.kind.startsWith('raid-')) &&
         'at' in c &&
         'until' in c &&
         c.until > now &&

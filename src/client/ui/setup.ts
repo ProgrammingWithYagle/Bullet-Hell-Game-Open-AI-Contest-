@@ -48,7 +48,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks) {
     previewMode: string = selected.mode,
     previewMap = arenaId;
   const availableClass = (id: string) => implementedClassIds.includes(id as ClassId),
-    availableMode = (id: string) => ['short', 'standard', 'long', 'endless'].includes(id);
+    availableMode = (id: string) => ['short', 'standard', 'long', 'raid', 'endless'].includes(id);
   const modeCapacity = (id: string, maximum: number) =>
     availableMode(id) ? Math.min(maximum, onlinePlaytestSlots ?? maximum) : maximum;
   const capacityNotice = () =>
@@ -137,13 +137,15 @@ export function mountSetup(host: HTMLElement, hooks: Hooks) {
     byId('setup-next', () => {
       if (page === 'class') selected.classId = previewClass as ClassId;
       if (page === 'mode') {
-        selected.mode = previewMode as 'short' | 'standard' | 'long' | 'endless';
+        selected.mode = previewMode as 'short' | 'standard' | 'long' | 'raid' | 'endless';
         selected.openingBossId =
-          selected.mode === 'long'
-            ? 'pallbearer'
-            : selected.mode === 'standard'
-              ? 'matron'
-              : 'constable';
+          selected.mode === 'raid'
+            ? 'chain-colossus'
+            : selected.mode === 'long'
+              ? 'pallbearer'
+              : selected.mode === 'standard'
+                ? 'matron'
+                : 'constable';
       }
       if (page === 'map') {
         arenaId = previewMap;

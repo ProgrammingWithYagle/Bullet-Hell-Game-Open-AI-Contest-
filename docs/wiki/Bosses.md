@@ -1,6 +1,6 @@
 # Bosses
 
-Forty-three bosses are playable in the current source. Each has its own signature, phases, normal/Brutal variant, presentation and music. A signature table describes practical counterplay; supplemental attacks still require ordinary bullet-hell movement.
+Fifty bosses are playable in the current source. Each has its own signature, phases, normal/Brutal variant, presentation and music. A signature table describes practical counterplay; supplemental attacks still require ordinary bullet-hell movement.
 
 **Threat is encounter danger, separate from selected difficulty.** The tables show the authored minimum threat for each identity. Actual contracts follow the route's threat progression. A Brutal contract appends **+** to that threat, retains the same boss identity and signature, and adds its stronger variant behavior.
 
@@ -68,4 +68,18 @@ Brutal uses twice the health and damage, a 1.5× deadline, 1.75× bounty and fou
 
 At marked transitions, survivors have eight seconds to coordinate a two-second hold on distinct Accord pads. Required participation scales 1, 2, 3 or 5 with party size. Success staggers the boss for four seconds, increases incoming boss damage by 25% and restores 15% party health. These are neutral team interactions, not purchases or class-exclusive actions.
 
-The remaining 17 identities are authored designs. Their presence in the catalog does not make them playable. [Full numerical roster](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/content/bosses.json) · [Current boss implementation and verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/MIDNIGHT_CIRCUIT_RUNTIME.md)
+## Grand Raid
+
+| Boss | Counterplay |
+| --- | --- |
+| Chain Colossus | Break any 110-HP anchor pylon to stop the three-second pull and open four seconds of vulnerability. Outer lanes remain clear. |
+| Ossuary Leviathan | Three ribs expose in sequence for three seconds each, transferring one 1.5x hit. The long body curves through the arena and respects cover. |
+| Bell Triplets | Three separate keepers share boss health. Deal 95 base damage to the highlighted keeper to interrupt its beam; a 185-pixel gap remains. |
+| Quarantine Heart | Hold F at a neutral valve for 1.5 seconds to disable its hose, reverse 120 damage and open a four-second vulnerability. |
+| Crown Procession | Four visible attendants follow a moving throne. Defeat any attendant to stop it for five seconds, or use its scheduled four-second rest. |
+| City Eater | Leave the two warned bite lanes through the 240-pixel corridor. Break either 120-HP core cover to expose a 1.5x weak point. |
+| Saint of the Last Breath | Move into either shelter to cancel inhalation; avoid the three later slow rings of actual projectiles. |
+
+Pylon, keeper interrupt and attendant durability scales with party size and Brutal rules. Neutral valve holds remain usable by every class.
+
+The remaining 10 identities are authored designs. Their presence in the catalog does not make them playable. [Full numerical roster](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/content/bosses.json) · [Current boss implementation and verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/MIDNIGHT_CIRCUIT_RUNTIME.md)
