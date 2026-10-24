@@ -1,3 +1,4 @@
+import wheel from '../../assets/production/motion/tollkeeper-wheel-v1.png?url';
 import arena from '../../assets/proofs/arena-v1.png?url';
 import cover from '../../assets/proofs/cover-v1.png?url';
 import soldier from '../../assets/proofs/animation/soldier-run-atlas.png?url';
@@ -41,6 +42,7 @@ const encounterMotion = import.meta.glob('../../assets/production/motion/*-actio
   eager: true,
 }) as Record<string, string>;
 export const assets = {
+  wheel,
   items: Object.fromEntries(
     Object.entries(items).map(([path, url]) => [
       path.split('/icons/')[1].replace(/\.png$/, ''),

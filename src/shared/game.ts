@@ -35,6 +35,7 @@ import { Random } from './random.ts';
 import { migratePracticeBoundary } from './practice-migration.ts';
 import { Minions, type MinionSpawn } from './minions.ts';
 import { BossDirector, type SignatureContext } from './boss-director.ts';
+import { leaveClosingGates } from './civic-director.ts';
 import {
   WardenClock,
   WARDEN_SIGNATURE,
@@ -51,6 +52,10 @@ export const implementedBossIds: readonly BossId[] = [
   'courier',
   'ratcatcher',
   'quarantine-clerk',
+  'tollkeeper',
+  'chain-marshal',
+  'gate-widow',
+  'black-ambulance',
 ];
 export type Settings = {
   seed: number;
@@ -58,6 +63,7 @@ export type Settings = {
   difficulty: string;
   maxPlayers: number;
   openingBossId: BossId;
+  openingArenaId: string;
 };
 export type Player = {
   id: string;
@@ -235,9 +241,12 @@ export class Game {
       difficulty: settings.difficulty ?? 'normal',
       maxPlayers: settings.maxPlayers ?? 8,
       openingBossId: settings.openingBossId ?? 'constable',
+      openingArenaId: settings.openingArenaId ?? 'gatehouse',
     };
     if (
       !implementedBossIds.includes(this.settings.openingBossId) ||
+      !['short', 'endless'].includes(this.settings.mode) ||
+      !data.arenas.some((a) => a.id === this.settings.openingArenaId) ||
       !data.difficulties.some((d) => d.id === this.settings.difficulty) ||
       !Number.isInteger(this.settings.maxPlayers) ||
       this.settings.maxPlayers < 1 ||
@@ -247,6 +256,20 @@ export class Game {
     this.selectedContract.bossId = this.settings.openingBossId;
     this.boss.id = this.settings.openingBossId;
     this.rng = new Random(this.settings.seed);
+  }
+  get arena() {
+    if (this.encounter === 0)
+      return data.arenas.find((a) => a.id === this.settings.openingArenaId)!;
+    const mode = data.modes.find((m) => m.id === this.settings.mode)!;
+    const index =
+      this.settings.mode === 'endless'
+        ? this.encounter % mode.arenas.length
+        : Math.min(this.encounter, mode.arenas.length - 1);
+    return data.arenas.find((a) => a.id === mode.arenas[index])!;
+  }
+  get obstacles() {
+    const gates = this.director.solids(this.combatTick);
+    return gates.length ? [...this.arena.obstacles, ...gates] : this.arena.obstacles;
   }
   get difficulty() {
     return data.difficulties.find((d) => d.id === this.settings.difficulty)!;
@@ -272,8 +295,8 @@ export class Game {
           .replace(/[\p{Cc}\p{Cf}]/gu, '')
           .slice(0, 24) || 'Survivor',
       classId,
-      x: arena.playerSpawn.x + ((this.players.size % 8) - 3.5) * 30,
-      y: arena.playerSpawn.y + Math.floor(this.players.size / 8) * 15,
+      x: this.arena.playerSpawn.x + ((this.players.size % 8) - 3.5) * 30,
+      y: this.arena.playerSpawn.y + Math.floor(this.players.size / 8) * 15,
       oldX: 0,
       oldY: 0,
       aim: -Math.PI / 2,
@@ -610,8 +633,8 @@ export class Game {
       p.overdriveUntil = 0;
       p.supplyShield = 0;
       p.supplyShieldUntil = 0;
-      p.x = arena.playerSpawn.x + ((i % 8) - 3.5) * 30;
-      p.y = arena.playerSpawn.y + Math.floor(i / 8) * 15;
+      p.x = this.arena.playerSpawn.x + ((i % 8) - 3.5) * 30;
+      p.y = this.arena.playerSpawn.y + Math.floor(i / 8) * 15;
       p.oldX = p.x;
       p.oldY = p.y;
       p.invulnerableUntil = this.combatTick + ticks(1);
@@ -632,8 +655,8 @@ export class Game {
       castReleaseAt: 0,
       castEndsAt: 0,
       variant: this.selectedContract.variant ?? 'normal',
-      x: 800,
-      y: 250,
+      x: this.arena.bossSpawn.x,
+      y: this.arena.bossSpawn.y,
       health,
       maxHealth: health,
       phase: 0,
@@ -644,7 +667,7 @@ export class Game {
     };
     this.attackAt = this.bossPhases()[0].attacks.map((_, i) => this.combatTick + ticks(2 + i * 2));
     this.resetWarden();
-    this.director.reset(this.boss.id, this.boss.variant === 'brutal');
+    this.director.reset(this.boss.id, this.boss.variant === 'brutal', true);
     this.bossPrevious = { x: this.boss.x, y: this.boss.y };
     this.events.push({ type: 'sound', id: 'boss-phase' });
   }
@@ -724,14 +747,20 @@ export class Game {
         .filter((w) => w.price === 0)
         .map((w) => w.baselineSustainedDps)
         .toSorted((a, b) => a - b)[3];
-      const uncleared = implementedBossIds.filter((id) => !this.completedBossIds.has(id));
+      const routePool =
+        this.settings.mode === 'short'
+          ? this.encounter === 4
+            ? data.bossPools.short.finale
+            : data.bossPools.short.regular
+          : implementedBossIds;
+      const uncleared = routePool.filter((id) => !this.completedBossIds.has(id as BossId));
       // Before any repeat, exhaust the implemented identity pool. Concealed
       // choices use the saved RNG, so restoring a vote never rerolls it.
       const pool = this.rng.shuffle(
         uncleared.length ? uncleared : implementedBossIds.filter((id) => id !== this.boss.id),
       );
       this.contractCards = [0, 1, 2].map((i) => {
-        const bossId = pool[i % pool.length];
+        const bossId = pool[i % pool.length] as BossId;
         const variant =
           this.settings.mode === 'endless' && this.completedBossIds.has(bossId)
             ? ('brutal' as const)
@@ -803,7 +832,7 @@ export class Game {
     this.minions.step(
       this.combatTick,
       this.roster().filter((player) => player.status === 'active'),
-      arena.obstacles,
+      this.obstacles,
       (target, damage) => this.damage(this.players.get(target.id)!, damage),
     );
     this.stepFields();
@@ -834,6 +863,9 @@ export class Game {
       stats = this.stats(p),
       i = p.input;
     p.aim = i.aim;
+    const clear = leaveClosingGates(p, this.director.solids(now), rule.playerRadius);
+    p.x = clear.x;
+    p.y = clear.y;
     if (p.status === 'downed') {
       if (now >= p.downUntil) p.status = 'eliminated';
       return;
@@ -884,7 +916,7 @@ export class Game {
         y: (dash ? p.dashY : my) * speed * DT,
       },
       rule.playerRadius,
-      arena.obstacles,
+      this.obstacles,
     );
     p.x = next.x;
     p.y = next.y;
@@ -1229,7 +1261,9 @@ export class Game {
   private hitBoss(p: Player | undefined, amount: number) {
     const actual = Math.min(
       this.boss.health,
-      amount * (this.combatTick < this.boss.vulnerableUntil ? 1.25 : 1),
+      amount *
+        (this.combatTick < this.boss.vulnerableUntil ? 1.25 : 1) *
+        (this.boss.id === 'black-ambulance' && this.director.civic.recovering ? 1.25 : 1),
     );
     this.boss.health -= actual;
     if (actual > 0 && this.combatTick - this.boss.hurtAt >= ticks(0.3))
@@ -1321,7 +1355,7 @@ export class Game {
       bossId: this.boss.id,
       boss: this.boss,
       radius: this.bossDefinition().radius,
-      obstacles: arena.obstacles,
+      obstacles: this.obstacles,
       targets: this.roster().filter((p) => p.status === 'active'),
       damageScale: this.bossDamageScale(),
       brutal: this.boss.variant === 'brutal',
@@ -1372,7 +1406,7 @@ export class Game {
       this.rescaleDepartures();
       this.resetWarden();
       this.director.reset(this.boss.id, this.boss.variant === 'brutal');
-      if (['courier', 'ratcatcher', 'quarantine-clerk'].includes(this.boss.id)) {
+      if (this.boss.id !== 'constable' && this.boss.id !== 'lantern-warden') {
         this.warnings.length = 0;
         for (const shot of this.shots.values()) if (shot.owner === 'hostile') this.removeShot(shot);
       }
@@ -1481,6 +1515,8 @@ export class Game {
         } else if (
           attack.kind === 'fan' ||
           attack.kind === 'ring' ||
+          attack.kind === 'pulse' ||
+          attack.kind === 'hook' ||
           attack.kind === 'lanes' ||
           attack.kind === 'cross'
         ) {
@@ -1488,19 +1524,21 @@ export class Game {
           for (const offset of origins)
             this.warnings.push({
               id: this.id(),
-              kind: attack.kind === 'ring' ? 'ring' : 'fan',
+              kind: attack.kind === 'ring' || attack.kind === 'pulse' ? 'ring' : 'fan',
               x: this.boss.x + offset,
               y: this.boss.y,
               aim: Math.atan2(target.y - this.boss.y, target.x - (this.boss.x + offset)),
               count: attack.kind === 'cross' ? Math.ceil(count / 2) : count,
               arc:
-                ((attack.kind === 'ring'
+                ((attack.kind === 'ring' || attack.kind === 'pulse'
                   ? 'gap' in attack
                     ? Number(attack.gap)
                     : 70
                   : 'arc' in attack
                     ? Number(attack.arc)
-                    : 90) *
+                    : attack.kind === 'hook'
+                      ? 35
+                      : 90) *
                   Math.PI) /
                 180,
               speed,
@@ -1605,12 +1643,12 @@ export class Game {
       { x: 0, y: 0 },
       this.bossDefinition().radius + shot.radius,
     );
-    const hits: { time: number; minionId?: number; sack?: boolean }[] = [];
-    const sack = this.director.weakPoint();
-    if (sack && sack.health > 0) {
-      const time = segmentCircle(old, next, sack, sack.radius + shot.radius);
-      if (time !== null && time < wall) hits.push({ time, sack: true });
-    }
+    const hits: { time: number; minionId?: number; weakId?: number }[] = [];
+    for (const weak of this.director.weakPoints())
+      if (weak.health > 0) {
+        const time = segmentCircle(old, next, weak, weak.radius + shot.radius);
+        if (time !== null && time < wall) hits.push({ time, weakId: weak.id });
+      }
     if (bossTime !== null && bossTime < wall) hits.push({ time: bossTime });
     for (const actor of this.minions.actors.values()) {
       if (this.shotHits.get(shot.id)?.has(actor.id)) continue;
@@ -1624,10 +1662,10 @@ export class Game {
     }
     hits.sort((a, b) => a.time - b.time || (a.minionId ?? 0) - (b.minionId ?? 0));
     for (const hit of hits) {
-      if (hit.sack) {
+      if (hit.weakId !== undefined) {
         this.creditHit(
           this.players.get(shot.owner),
-          this.director.hitWeakPoint(shot.damage, this.combatTick),
+          this.director.hitWeakPoint(shot.damage, this.combatTick, hit.weakId),
         );
         return true;
       }
@@ -1684,7 +1722,7 @@ export class Game {
         effect.rangeRemaining = Math.max(0, effect.rangeRemaining - distance);
       }
       let wall = 1;
-      for (const rect of arena.obstacles) {
+      for (const rect of this.obstacles) {
         const hit = segmentRect(old, next, rect, s.radius);
         if (hit) wall = Math.min(wall, hit.t);
       }

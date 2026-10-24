@@ -21,6 +21,7 @@ export type ConnectionOptions = {
   mode: 'short' | 'endless';
   difficulty: string;
   openingBossId?: BossId;
+  openingArenaId?: string;
 };
 export type RoomSummary = {
   roomId: string;
@@ -411,6 +412,7 @@ function networkView(s: WorldState): View {
       ...(a.goalX >= 0 ? { goalX: a.goalX, goalY: a.goalY } : {}),
     })),
     bossCues: hazards.bossCues ?? [],
+    arenaId: hazards.arenaId ?? 'gatehouse',
     warnings: hazards.warnings ?? [],
     fields: hazards.fields ?? [],
     mutations: intermission.mutations ?? [],

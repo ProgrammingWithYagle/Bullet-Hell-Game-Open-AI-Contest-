@@ -1,5 +1,8 @@
 # Grave Accord
 
+**Current continuation:** [QUARANTINE_RUNTIME.md](docs/QUARANTINE_RUNTIME.md) adds Tollkeeper and three Quarantine finales: nine playable bosses, a regular/finale short-route pool, six connected arena layouts, 32 more drawn poses, nine boss themes, protocol 7 and 133 passing tests. Full class/route/art/device/release work continues.
+
+
 An original cooperative zombie bullet hell about survivors keeping a forgotten city alive. Dry ink, matte gouache, distinct class roles, shared mutation votes and escalating civic horrors.
 
 ![Grave Accord cover](assets/proofs/cover-v1.png)

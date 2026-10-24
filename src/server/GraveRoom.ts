@@ -31,6 +31,7 @@ type Options = {
   contentRevision: string;
   protocolVersion: number;
   openingBossId?: Settings['openingBossId'];
+  openingArenaId?: string;
   createKey: string;
   code?: string;
   name: string;
@@ -66,6 +67,8 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
     if (options.protocolVersion !== PROTOCOL || options.contentRevision !== CONTENT_REVISION)
       throw new ServerError(409, 'versionMismatch');
     if (
+      (options.openingArenaId !== undefined &&
+        !data.arenas.some((a) => a.id === options.openingArenaId)) ||
       (options.openingBossId !== undefined &&
         !implementedBossIds.includes(options.openingBossId)) ||
       !['short', 'endless'].includes(options.mode) ||
@@ -90,6 +93,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       difficulty: options.difficulty,
       maxPlayers: this.maxClients,
       openingBossId: options.openingBossId,
+      openingArenaId: options.openingArenaId,
     });
     this.state = new WorldState();
     this.journal = new RoomJournal(this.game, this.createRunJournal(), (status) => {
@@ -395,6 +399,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       fields: g.fields,
       signatures: g.signatures,
       bossCues: g.director.cues(),
+      arenaId: g.arena.id,
     });
     s.intermission = JSON.stringify({
       mutations: g.mutations,

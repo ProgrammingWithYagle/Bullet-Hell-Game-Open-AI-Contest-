@@ -1,5 +1,9 @@
 # Changelog
 
+## Continued development — Quarantine finales
+
+Added four distinct bosses, a no-repeat regular/finale Quarantine progression, functional arena selection/rotation, 32 native action poses, nine individual boss themes and protocol-7/local-save compatibility. See docs/QUARANTINE_RUNTIME.md for mechanics, evidence and open gates.
+
 Meaningful implemented changes are recorded here. Planned work belongs in the Project and implementation state, not in release claims.
 
 ## Unreleased

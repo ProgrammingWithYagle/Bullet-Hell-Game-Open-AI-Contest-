@@ -1,5 +1,8 @@
 # Getting started
 
+> Current source continuation: nine playable bosses, six connected collision layouts and separate boss themes. Quarantine now ends with Chain Marshal, Gate Widow or Black Ambulance after its regular encounters. Protocol 7; 133 checks pass. Four further classes, full environment/action art, additional routes/bosses and final release acceptance remain open. See the repository document `docs/QUARANTINE_RUNTIME.md` for exact mechanics and evidence.
+
+
 [Open the development playtest](https://grave-accord-playtest.ivoryflame12.chatgpt.site/). No game account is required. The first-visit field guide has Skip and can be replayed from the menu.
 
 Choose New run, Soldier or Medic, Quarantine Run or Endless Vigil, Gatehouse, then a currently available difficulty. Other classes/maps/routes can be inspected but are marked In production. At Review, choose Offline solo, Public or Private, enter a display name and launch. The owner starts the encounter from the lobby. Join room supports public discovery or a private six-character code.

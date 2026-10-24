@@ -3,7 +3,9 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import items from '../assets/production/items/library.json' with { type: 'json' };
-import motion from '../assets/production/motion/encounter-library.json' with { type: 'json' };
+import historicMotion from '../assets/production/motion/encounter-library.json' with { type: 'json' };
+import civicMotion from '../assets/production/motion/civic-library.json' with { type: 'json' };
+const motion = { entries: [...historicMotion.entries, ...civicMotion.entries] };
 import music from '../assets/production/audio/boss-themes/library.json' with { type: 'json' };
 import { data, implementedBossIds } from '../src/shared/game.ts';
 import { implementedClassIds } from '../src/shared/protocol.ts';
@@ -37,11 +39,11 @@ test('illustrations cover every playable weapon, supply, specialization path and
     assert.equal(bytes[25], 6, 'PNG must preserve RGBA');
   }
 });
-test('four drawn action atlases retain 32 distinct frames, common action scale and exact source hashes', () => {
-  assert.equal(motion.entries.length, 4);
+test('eight drawn action atlases retain 64 distinct frames, common action scale and exact source hashes', () => {
+  assert.equal(motion.entries.length, 8);
   assert.equal(
     motion.entries.reduce((sum, e) => sum + e.frames, 0),
-    32,
+    64,
   );
   for (const entry of motion.entries) {
     assert.equal(
@@ -58,9 +60,12 @@ test('four drawn action atlases retain 32 distinct frames, common action scale a
 });
 test('each playable boss selects its own complete original theme and intermission returns to city music', () => {
   assert.deepEqual(Object.keys(bossThemes).sort(), [...implementedBossIds].sort());
-  assert.equal(new Set(implementedBossIds.map((b) => musicIdentity(true, b))).size, 5);
+  assert.equal(
+    new Set(implementedBossIds.map((b) => musicIdentity(true, b))).size,
+    implementedBossIds.length,
+  );
   assert.equal(musicIdentity(false, 'ratcatcher'), 'city-wake');
-  assert.equal(music.tracks.length, 5);
+  assert.equal(music.tracks.length, implementedBossIds.length);
   for (const boss of implementedBossIds) {
     const track = music.tracks.find((t) => t.bossId === boss)!;
     assert(track);

@@ -1,6 +1,7 @@
 import libraryData from '../assets/production/normalized/library.json';
 import heavyMotion from '../assets/production/motion/heavy-library.json';
 import encounters from '../assets/production/motion/encounter-library.json';
+import civic from '../assets/production/motion/civic-library.json';
 import items from '../assets/production/items/library.json';
 import './art-review.css';
 
@@ -29,6 +30,7 @@ const entries: ArtEntry[] = [
   ...(libraryData as { entries: ArtEntry[] }).entries,
   ...heavyMotion.entries,
   ...encounters.entries,
+  ...civic.entries,
   ...items.entries,
 ];
 const images = new Map<string, HTMLImageElement>();

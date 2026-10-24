@@ -1,5 +1,8 @@
 # Grave Accord
 
+> Current source continuation: nine playable bosses, six connected collision layouts and separate boss themes. Quarantine now ends with Chain Marshal, Gate Widow or Black Ambulance after its regular encounters. Protocol 7; 133 checks pass. Four further classes, full environment/action art, additional routes/bosses and final release acceptance remain open. See the repository document `docs/QUARANTINE_RUNTIME.md` for exact mechanics and evidence.
+
+
 Original cooperative zombie bullet hell in dry ink and matte gouache.
 
 [Play the development prototype](https://grave-accord-playtest.ivoryflame12.chatgpt.site/) — Soldier and Medic fight Hollow Constable in Gatehouse. The public service is capped at eight slots during Free-host calibration. This is Practice; live rankings and process-restart player recovery are unfinished.

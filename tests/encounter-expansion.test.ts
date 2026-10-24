@@ -41,7 +41,7 @@ function shot(game: Game, definition: Partial<Shot> & Pick<Shot, 'x' | 'y'>) {
   return value;
 }
 
-test('five-fight Practice exhausts five distinct bosses for every opening identity and saved vote', () => {
+test('five-fight Quarantine keeps five distinct bosses for every opening identity and saved vote', () => {
   for (const openingBossId of implementedBossIds)
     for (const seed of [1, 19, 871]) {
       let game = new Game({ openingBossId, seed, maxPlayers: 1 });
@@ -71,9 +71,9 @@ test('five-fight Practice exhausts five distinct bosses for every opening identi
 
 test('Endless only repeats after the complete pool, marks repeats Brutal and avoids consecutive identical bosses', () => {
   const game = encounter('constable');
-  for (let fight = 0; fight < 8; fight++) {
+  for (let fight = 0; fight < implementedBossIds.length + 3; fight++) {
     const last = game.boss.id;
-    assert.equal(game.boss.variant, fight < 5 ? 'normal' : 'brutal');
+    assert.equal(game.boss.variant, fight < implementedBossIds.length ? 'normal' : 'brutal');
     game.boss.health = 0;
     game.step();
     while (game.phase !== 'contractVote') game.step();

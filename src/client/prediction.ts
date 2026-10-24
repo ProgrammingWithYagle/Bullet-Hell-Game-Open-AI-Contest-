@@ -1,5 +1,6 @@
 import { moveBody, distance } from '../shared/geometry.ts';
-import { arena, data } from '../shared/game.ts';
+import { gateObstacles, leaveClosingGates } from '../shared/civic-director.ts';
+import { data } from '../shared/game.ts';
 import { DT, HZ, type InputFrame } from '../shared/protocol.ts';
 import type { PlayerView, View } from '../shared/view.ts';
 export class Prediction {
@@ -28,6 +29,10 @@ export class Prediction {
       mx = len > 1 ? i.moveX / len : i.moveX,
       my = len > 1 ? i.moveY / len : i.moveY;
     p.aim = i.aim;
+    const gates = gateObstacles(view.bossCues, now);
+    const clear = leaveClosingGates(p, gates, data.rules.playerRadius);
+    p.x = clear.x;
+    p.y = clear.y;
     if (i.dodge && now >= p.dodgeAt) {
       p.dashX = len ? mx : Math.cos(i.aim);
       p.dashY = len ? my : Math.sin(i.aim);
@@ -46,7 +51,7 @@ export class Prediction {
       p,
       { x: (dash ? p.dashX : mx) * speed * DT, y: (dash ? p.dashY : my) * speed * DT },
       data.rules.playerRadius,
-      arena.obstacles,
+      [...data.arenas.find((a) => a.id === view.arenaId)!.obstacles, ...gates],
     );
     p.x = next.x;
     p.y = next.y;

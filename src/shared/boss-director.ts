@@ -1,9 +1,11 @@
 // Authoritative signatures for the Courier, Ratcatcher and Quarantine Clerk.
 // All targets lock at warning creation; rendering consumes these same cues.
+import { CivicDirector, type CivicCue } from './civic-director.ts';
 import { DT, HZ, type BossId, type Vec } from './protocol.ts';
 import { clamp, distance, moveBody, segmentCircle, segmentRect, type Rect } from './geometry.ts';
 
 export type BossCue =
+  | CivicCue
   | {
       kind: 'charge' | 'scent';
       id: number;
@@ -78,6 +80,13 @@ export type SignatureAttack = {
 const ticks = (seconds: number) => Math.ceil(seconds * HZ);
 
 export class BossDirector {
+  readonly civic = new CivicDirector();
+  solids(tick: number) {
+    return this.civic.solids(tick);
+  }
+  weakPoints() {
+    return [...(this.weakPoint() ? [this.weakPoint()!] : []), ...this.civic.weakPoints()];
+  }
   private lanes: Lane[] = [];
   private stamps: Stamp[] = [];
   private packs: {
@@ -111,7 +120,9 @@ export class BossDirector {
   private blockPack = false;
   private restoreAt = 0;
 
-  reset(kind: BossId, brutal = false) {
+  reset(kind: BossId, brutal = false, encounter = false) {
+    if (encounter) this.civic.resetEncounter(kind);
+    else this.civic.reset(kind);
     this.kind = kind;
     this.lanes = [];
     this.stamps = [];
@@ -141,7 +152,8 @@ export class BossDirector {
         }
       : null;
   }
-  hitWeakPoint(amount: number, tick: number) {
+  hitWeakPoint(amount: number, tick: number, id?: number) {
+    if (id !== undefined && this.kind !== 'ratcatcher') return this.civic.hit(id, amount);
     if (this.kind !== 'ratcatcher' || this.sackHealth <= 0) return 0;
     const actual = Math.min(this.sackHealth, amount);
     this.sackHealth -= actual;
@@ -178,7 +190,8 @@ export class BossDirector {
     };
   }
   startCharge(context: SignatureContext, target: Vec, attack: SignatureAttack) {
-    if (this.charge) return false;
+    if (this.charge || (context.bossId === 'black-ambulance' && this.civic.recovering))
+      return false;
     const end = this.end(context, target, 100),
       at = context.tick + ticks(attack.telegraph);
     const speed = Math.min(600, attack.speed);
@@ -295,6 +308,7 @@ export class BossDirector {
   }
   cues(): BossCue[] {
     return [
+      ...this.civic.cues(),
       ...this.lanes,
       ...this.trails.map((t) => t.cue),
       ...this.stamps,
@@ -331,7 +345,7 @@ export class BossDirector {
       );
       context.boss.x = next.x;
       context.boss.y = next.y;
-      if (!this.trails.some((t) => t.cue.id === charge.cue.id)) {
+      if (this.kind === 'courier' && !this.trails.some((t) => t.cue.id === charge.cue.id)) {
         const total = distance(charge.origin, end) || 1;
         this.trails.push({
           cue: {
@@ -355,10 +369,12 @@ export class BossDirector {
           damage: 10,
         });
       }
-      const trail = this.trails.find((t) => t.cue.id === charge.cue.id)!;
-      trail.length = distance(charge.origin, next);
-      trail.cue.x2 = next.x;
-      trail.cue.y2 = next.y;
+      const trail = this.trails.find((t) => t.cue.id === charge.cue.id);
+      if (trail) {
+        trail.length = distance(charge.origin, next);
+        trail.cue.x2 = next.x;
+        trail.cue.y2 = next.y;
+      }
       for (const target of context.targets)
         if (
           !charge.touched.has(target.id) &&
@@ -378,10 +394,11 @@ export class BossDirector {
         context.tick >= charge.cue.until
       ) {
         charge.cue.until = context.tick;
-        trail.cue.until = context.tick + ticks(3);
+        if (trail) trail.cue.until = context.tick + ticks(3);
         this.charge = null;
       }
     }
+    this.civic.step(context, this.charging);
     for (const trail of this.trails) {
       if (context.tick >= trail.cue.until) continue;
       const retired = Math.min(

@@ -2,7 +2,7 @@ import Phaser from 'phaser';
 import { assets } from './assets.ts';
 import type { View, PlayerView } from '../shared/view.ts';
 import type { Event, Shot } from '../shared/protocol.ts';
-import { arena, data } from '../shared/game.ts';
+import { data } from '../shared/game.ts';
 import { FrameMeter } from './frame-meter.ts';
 import { wardenArt, wardenCombatPose, type WardenCombatClipId } from './warden-presentation.ts';
 import { heavyArt, heavyPose } from './heavy-presentation.ts';
@@ -29,6 +29,10 @@ export class CombatScene extends Phaser.Scene {
   private bulletImages = new Map<number, Phaser.GameObjects.Image>();
   private bulletPool: Phaser.GameObjects.Image[] = [];
   private foreground!: Phaser.GameObjects.Graphics;
+  private propImages = new Map<number, Phaser.GameObjects.Image>();
+  private arenaImage!: Phaser.GameObjects.Image;
+  private arenaGround!: Phaser.GameObjects.Graphics;
+  private lastArenaId = '';
   private bossSprite!: Phaser.GameObjects.Sprite;
   private shots = new Map<number, Shot>();
   private lastPhase = '';
@@ -61,6 +65,7 @@ export class CombatScene extends Phaser.Scene {
   preload() {
     this.load.on('loaderror', () => this.rejectReady(Error('ui.errorServer')));
     this.load.image('gatehouse', assets.arena);
+    this.load.image('tollkeeper-wheel', assets.wheel);
     this.load.spritesheet('soldier', assets.soldier, {
       frameWidth: 256,
       frameHeight: 256,
@@ -101,7 +106,11 @@ export class CombatScene extends Phaser.Scene {
     }
   }
   create() {
-    this.add.image(800, 500, 'gatehouse').setDisplaySize(1600, 1000).setAlpha(0.8);
+    this.arenaImage = this.add
+      .image(800, 500, 'gatehouse')
+      .setDisplaySize(1600, 1000)
+      .setAlpha(0.8);
+    this.arenaGround = this.add.graphics().setDepth(0);
     this.add.rectangle(800, 500, 1600, 1000, 0x172b29, 0.18);
     this.shadows = this.add.graphics().setDepth(1);
     this.hazards = this.add.graphics().setDepth(2);
@@ -205,6 +214,38 @@ export class CombatScene extends Phaser.Scene {
     const view = this.view,
       dt = Math.min(delta, 100) / 1000,
       now = view.combatTick;
+    if (this.lastArenaId !== view.arenaId) {
+      this.lastArenaId = view.arenaId;
+      const map = data.arenas.find((a) => a.id === view.arenaId)!;
+      this.arenaImage.setVisible(map.id === 'gatehouse');
+      const ground = this.arenaGround;
+      ground.clear();
+      if (map.id !== 'gatehouse') {
+        const color = Number.parseInt(map.floor.slice(1), 16),
+          shade = Number.parseInt(map.shadow.slice(1), 16);
+        ground.fillStyle(color, 0.8).fillRect(0, 0, 1600, 1000);
+        ground.lineStyle(2, shade, 0.25);
+        for (let y = 0; y < 1000; y += 100) ground.lineBetween(0, y, 1600, y);
+        for (let x = 0; x < 1600; x += 160) ground.lineBetween(x, 0, x, 1000);
+        for (const obstacle of map.obstacles) {
+          ground
+            .fillStyle(shade, 0.9)
+            .fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
+          ground
+            .lineStyle(4, 0xc4c5a5, 0.8)
+            .strokeRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
+          ground
+            .lineStyle(2, 0xc4c5a5, 0.45)
+            .lineBetween(
+              obstacle.x + 8,
+              obstacle.y + 10,
+              obstacle.x + obstacle.width - 8,
+              obstacle.y + 10,
+            );
+        }
+        ground.lineStyle(5, shade, 0.8).strokeRect(3, 3, 1594, 994);
+      }
+    }
     this.shadows.clear();
     this.hazards.clear();
     this.foreground.clear();
@@ -324,6 +365,105 @@ export class CombatScene extends Phaser.Scene {
           h.lineStyle(4, color, 1)
             .lineBetween(cue.x - 18, cue.y + 25, cue.x - 3, cue.y + 38)
             .lineBetween(cue.x - 3, cue.y + 38, cue.x + 24, cue.y + 10);
+      } else if (cue.kind === 'wheel') {
+        h.lineStyle(now < cue.at ? 4 : 2, 0xe6bf72, now < cue.at ? 0.9 : 0.3);
+        for (let i = 1; i < cue.path.length; i++) {
+          const a = cue.path[i - 1],
+            b = cue.path[i];
+          h.lineBetween(a.x, a.y, b.x, b.y);
+          h.strokeCircle(b.x, b.y, 12);
+        }
+        let image = this.propImages.get(cue.id);
+        if (!image) {
+          image = this.add
+            .image(cue.x, cue.y, 'tollkeeper-wheel')
+            .setDepth(8)
+            .setDisplaySize(100, 100);
+          this.propImages.set(cue.id, image);
+        }
+        image
+          .setPosition(cue.x, cue.y)
+          .setVisible(now >= cue.at)
+          .setRotation(this.reduceMotion ? 0 : cue.rotation);
+        h.lineStyle(2, 0xe6bf72, 0.9).strokeCircle(cue.x, cue.y, cue.radius);
+      } else if (cue.kind === 'chain') {
+        const active = now >= cue.at,
+          broken = cue.health <= 0,
+          color = broken ? 0x8bc9a7 : 0xe6b875;
+        if (!active && !broken)
+          this.paintSector(
+            h,
+            {
+              x: cue.x,
+              y: cue.y,
+              aim: cue.startAngle + cue.sweep / 2,
+              arc: cue.sweep,
+              radius: cue.length,
+            },
+            color,
+            0.07,
+            2,
+          );
+        if (active && !broken) {
+          const end = {
+            x: cue.x + Math.cos(cue.angle) * cue.length,
+            y: cue.y + Math.sin(cue.angle) * cue.length,
+          };
+          h.lineStyle(cue.width, color, 0.65).lineBetween(cue.x, cue.y, end.x, end.y);
+          for (let d = 30; d < cue.length; d += 26)
+            h.lineStyle(2, 0x302d26, 1).strokeCircle(
+              cue.x + Math.cos(cue.angle) * d,
+              cue.y + Math.sin(cue.angle) * d,
+              7,
+            );
+        }
+        f.lineStyle(4, color, 1).strokeCircle(cue.x, cue.y, cue.radius);
+        f.fillStyle(0x142b27, 1).fillRect(cue.x - 30, cue.y - 42, 60, 6);
+        f.fillStyle(color, 1).fillRect(
+          cue.x - 30,
+          cue.y - 42,
+          (60 * cue.health) / cue.maxHealth,
+          6,
+        );
+        if (broken)
+          f.lineStyle(3, color, 1).lineBetween(cue.x - 14, cue.y - 14, cue.x + 14, cue.y + 14);
+      } else if (cue.kind === 'gate') {
+        const active = now >= cue.at,
+          color = cue.open ? 0x9be6c9 : 0xe88664;
+        h.fillStyle(color, cue.open ? 0.05 : active ? 0.3 : 0.07).fillRect(
+          cue.x,
+          cue.y,
+          cue.width,
+          cue.height,
+        );
+        h.lineStyle(cue.open ? 4 : 3, color, 1).strokeRect(cue.x, cue.y, cue.width, cue.height);
+        if (cue.open)
+          h.lineStyle(4, color, 1).lineBetween(
+            cue.x + cue.width / 2,
+            cue.y + cue.height + 30,
+            cue.x + cue.width / 2,
+            cue.y - 30,
+          );
+        else
+          for (let x = cue.x + 14; x < cue.x + cue.width; x += 28)
+            h.lineStyle(active ? 7 : 2, color, active ? 0.85 : 0.5).lineBetween(
+              x,
+              cue.y,
+              x,
+              cue.y + cue.height,
+            );
+        for (let n = 0; n <= cue.lane; n++)
+          f.lineStyle(4, color, 1).lineBetween(
+            cue.x + cue.width / 2 + (n - cue.lane / 2) * 10,
+            cue.y + cue.height / 2 - 10,
+            cue.x + cue.width / 2 + (n - cue.lane / 2) * 10,
+            cue.y + cue.height / 2 + 10,
+          );
+      } else if (cue.kind === 'driver') {
+        f.lineStyle(4, 0xf4d99c, 1).strokeCircle(cue.x, cue.y, cue.radius);
+        f.lineStyle(3, 0xf4d99c, 1)
+          .lineBetween(cue.x - 12, cue.y - cue.radius - 15, cue.x, cue.y - cue.radius - 3)
+          .lineBetween(cue.x, cue.y - cue.radius - 3, cue.x + 12, cue.y - cue.radius - 15);
       } else if (cue.kind === 'sack') {
         f.lineStyle(2, cue.health > 0 ? 0xe4d291 : 0x94c6ad, 0.85).strokeCircle(
           cue.x,
@@ -339,6 +479,12 @@ export class CombatScene extends Phaser.Scene {
         );
       }
     }
+    const liveProps = new Set(view.bossCues.filter((c) => c.kind === 'wheel').map((c) => c.id));
+    for (const [id, image] of this.propImages)
+      if (!liveProps.has(id)) {
+        image.destroy();
+        this.propImages.delete(id);
+      }
     const actorIds = new Set(view.minions.map((a) => a.id));
     for (const actor of view.minions) {
       let sprite = this.actors.get(actor.id);

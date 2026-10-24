@@ -1,5 +1,8 @@
 # Grave Accord implementation state
 
+**Current continuation:** [QUARANTINE_RUNTIME.md](QUARANTINE_RUNTIME.md) adds Tollkeeper and three Quarantine finales: nine playable bosses, a regular/finale short-route pool, six connected arena layouts, 32 more drawn poses, nine boss themes, protocol 7 and 133 passing tests. Full class/route/art/device/release work continues.
+
+
 **Current continuation:** [BOSS_ENCOUNTERS_ITEMS_AND_MUSIC.md](BOSS_ENCOUNTERS_ITEMS_AND_MUSIC.md) adds Carrion Courier, Ratcatcher and Quarantine Clerk: five distinct playable bosses, no repeat in five-fight Practice, 71 new item illustrations, 32 action frames, five individual boss themes, protocol 6 and 124 passing tests. Older two-boss/protocol-5 statements below describe earlier checkpoints. Public hosting remains the earlier protocol-4 deployment. Rendered/device/human and listening acceptance remain open.
 
 ## Source now

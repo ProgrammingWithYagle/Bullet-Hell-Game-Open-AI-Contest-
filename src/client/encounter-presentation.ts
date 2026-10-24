@@ -1,7 +1,8 @@
 import library from '../../assets/production/motion/encounter-library.json';
+import civic from '../../assets/production/motion/civic-library.json';
 import type { Boss } from '../shared/game.ts';
 import type { BossCue } from '../shared/boss-director.ts';
-export const encounterArt = library.entries;
+export const encounterArt = [...library.entries, ...civic.entries];
 export function encounterFrame(boss: Boss, now: number, cues: BossCue[], reduced = false) {
   if (reduced || now < boss.staggerUntil) return boss.id === 'courier' ? 7 : 0;
   if (boss.id === 'courier') {
@@ -31,6 +32,45 @@ export function encounterFrame(boss: Boss, now: number, cues: BossCue[], reduced
     if (strike) return now - strike.at < 4 ? 4 : 5;
     const next = stamps.filter((s) => s.at > now).sort((a, b) => a.at - b.at)[0];
     if (next) return next.at - now > 20 ? 1 : next.at - now > 10 ? 2 : 3;
+  }
+  if (boss.id === 'tollkeeper') {
+    const wheel = cues.find((c) => c.kind === 'wheel');
+    if (wheel?.kind === 'wheel')
+      return now < wheel.at
+        ? wheel.at - now > 12
+          ? 1
+          : 2
+        : Math.min(6, 4 + Math.floor((now - wheel.at) / 15));
+    return 7;
+  }
+  if (boss.id === 'chain-marshal') {
+    const chain = cues.find((c) => c.kind === 'chain' && c.health > 0);
+    if (chain?.kind === 'chain')
+      return now < chain.at
+        ? chain.at - now > 16
+          ? 2
+          : 3
+        : Math.min(6, 4 + Math.floor((now - chain.at) / 25));
+  }
+  if (boss.id === 'gate-widow') {
+    const gate = cues.find((c) => c.kind === 'gate');
+    if (gate?.kind === 'gate')
+      return now < gate.at
+        ? gate.at - now > 20
+          ? 2
+          : 3
+        : Math.min(6, 4 + Math.floor((now - gate.at) / 25));
+  }
+  if (boss.id === 'black-ambulance') {
+    if (cues.some((c) => c.kind === 'driver')) return 7;
+    const charge = cues.find((c) => c.kind === 'charge');
+    if (charge?.kind === 'charge')
+      return now < charge.at
+        ? charge.at - now > 15
+          ? 1
+          : 2
+        : 3 + (Math.floor((now - charge.at) / 4) % 3);
+    return Math.floor(now / 6) % 2 ? 3 : 5;
   }
   return 0;
 }

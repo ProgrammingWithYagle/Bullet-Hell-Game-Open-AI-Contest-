@@ -47,6 +47,7 @@ export type View = {
   phase: Phase;
   phaseEnds: number;
   encounter: number;
+  arenaId: string;
   owner: string;
   players: PlayerView[];
   boss: Boss;
@@ -68,6 +69,7 @@ export function viewOf(g: Game, owner: string): View {
     phase: g.phase,
     phaseEnds: g.phaseEnds,
     encounter: g.encounter,
+    arenaId: g.arena.id,
     owner,
     players: [...g.players.values()].map((p) => ({
       id: p.id,

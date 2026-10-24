@@ -86,7 +86,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks) {
     }
     if (page === 'map') {
       const a = data.arenas.find((a) => a.id === previewMap)!;
-      content.innerHTML = `<div class="setup-heading"><h1>${e(t('ui.map'))}</h1></div><div class="map-composition"><div class="map-strip">${data.arenas.map((a) => `<button data-map="${a.id}" class="map-pick ${a.id === previewMap ? 'selected' : ''}" aria-pressed="${a.id === previewMap}">${icon('map')}<span>${e(t('arena.' + a.id + '.name'))}</span>${a.id !== 'gatehouse' ? icon('lock') : ''}</button>`).join('')}</div><article class="map-detail">${mapPreview(a.id)}<div><h2>${e(t('arena.' + a.id + '.name'))}</h2><p>${e(t('arena.' + a.id + '.description'))}</p><div class="stat-ribbon"><span>${e(t('template.pixels', { value: number(a.width) + ' × ' + number(a.height) }))}</span></div>${a.id !== 'gatehouse' ? `<p class="availability">${e(t('ui.inProduction'))}</p>` : ''}</div></article></div>${navigation(a.id !== 'gatehouse')}`;
+      content.innerHTML = `<div class="setup-heading"><h1>${e(t('ui.map'))}</h1></div><div class="map-composition"><div class="map-strip">${data.arenas.map((a) => `<button data-map="${a.id}" class="map-pick ${a.id === previewMap ? 'selected' : ''}" aria-pressed="${a.id === previewMap}">${icon('map')}<span>${e(t('arena.' + a.id + '.name'))}</span></button>`).join('')}</div><article class="map-detail">${mapPreview(a.id)}<div><h2>${e(t('arena.' + a.id + '.name'))}</h2><p>${e(t('arena.' + a.id + '.description'))}</p><div class="stat-ribbon"><span>${e(t('template.pixels', { value: number(a.width) + ' × ' + number(a.height) }))}</span></div></div></article></div>${navigation(false)}`;
     }
     if (page === 'difficulty')
       content.innerHTML = `<div class="setup-heading"><h1>${e(t(labels[page]))}</h1></div><div class="difficulty-cards">${data.difficulties.map((d, i) => `<button data-difficulty="${d.id}" class="difficulty-pick ${d.id === selected.difficulty ? 'selected' : ''}" ${d.locked ? 'disabled' : ''} aria-pressed="${d.id === selected.difficulty}"><span class="difficulty-bells">${Array.from({ length: i + 1 }, () => icon('bell')).join('')}</span><h2>${e(t('difficulty.' + d.id))}</h2><span>${e(t('stat.health'))} ×${number(d.health, 2)}</span><span>${e(t('stat.damage'))} ×${number(d.damage, 2)}</span><span>${e(t('stat.bossSpeed'))} ×${number(d.speed, 2)}</span>${d.locked ? `<small>${e(t('ui.hardUnlock'))}</small>` : ''}</button>`).join('')}</div>${navigation(false)}`;
@@ -122,7 +122,10 @@ export function mountSetup(host: HTMLElement, hooks: Hooks) {
     byId('setup-next', () => {
       if (page === 'class') selected.classId = previewClass as ClassId;
       if (page === 'mode') selected.mode = previewMode as 'short' | 'endless';
-      if (page === 'map') arenaId = previewMap;
+      if (page === 'map') {
+        arenaId = previewMap;
+        selected.openingArenaId = previewMap;
+      }
       go(steps[stage + 1]);
     });
     const openingBoss = host.querySelector<HTMLSelectElement>('#opening-boss');
