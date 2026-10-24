@@ -1,3 +1,4 @@
+import { loadProfile, PROFILE_KEY } from './profile.ts';
 import english from '../../locales/en.json';
 import { formatMessage, type Message } from '../shared/messages.ts';
 type Catalog = typeof english;
@@ -34,7 +35,10 @@ export async function setLanguage(id: string) {
 export function initialLanguage() {
   let saved = '';
   try {
-    saved = localStorage.getItem('ga-language') ?? '';
+    saved =
+      localStorage.getItem(PROFILE_KEY) !== null
+        ? loadProfile(localStorage).locale
+        : (localStorage.getItem('ga-language') ?? '');
   } catch {}
   if (languages.some(([id]) => id === saved)) return saved;
   const n = navigator.language;

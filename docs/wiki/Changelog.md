@@ -1,6 +1,21 @@
 # Changelog
 
-Development build **2026.10.24-endless-secret**, protocol 12. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.24-profile**, protocol 13. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-24 — Persistent profiles, mastery and remappable controls
+
+### Progress that survives a run
+
+- Added a local ProfileV1 menu with seven class mastery records, 100 XP per completed encounter, separate teammate rescue counts, discovered boss codex entries and personal/squad Endless bests by difficulty. Progress banks after each clear and remains after defeat or voluntary departure.
+- Six clean ink insignia unlock through completed encounters or an earned Uncounted memorial. They appear beside the local survivor name and never change health, damage, coins, weapons or skills.
+- Completing any full timed campaign on Hard unlocks Insane and Hellish in setup. Personal participation is recorded from deployment; a late join plus the optional secret cannot substitute for a missed campaign encounter. All six difficulties now execute online with server-owned coefficients.
+- Profiles export/import as bounded, validated JSON and retain exact previous bytes before replacement. Repeated views and stale restored boundaries cannot double-award mastery or remove a memorial. Older campaign-only records are retained separately because they lack personal participation evidence.
+
+### Input, accessibility and compatibility
+
+- Keyboard/mouse actions and standard gamepad buttons can be remapped. Duplicate and reserved bindings are rejected; movement retains two optional keyboard bindings. Fire and interaction each offer Hold or Toggle, and blur/pause clears latched input. Touch and gamepad actions remain independent of keyboard key codes.
+- The profile also carries locale, audio, display and accessibility settings. Profile navigation and control messages cover all fifteen locales. Existing boss mechanic descriptions remain localized; the newly surfaced background histories are explicitly marked English pending translation and native review.
+- Protocol 13 adds opaque run IDs and personal progress to replicated state and saved boundaries. Local Practice saves from protocols 4 through 12 migrate with bounded validation; protocol-12 secret offers and Endless history are preserved. Signed online checkpoints stay strict. Seeded future schedules remain concealed.
 
 ## 2026-10-24 — Nine Endless exclusives and The Uncounted
 

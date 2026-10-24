@@ -1,10 +1,11 @@
+import catalog from '../../content/catalog.json';
 import { CONTENT_REVISION, PROTOCOL } from './protocol.ts';
 
 /** Bounded local migrations preserve old Practice saves. Online signatures stay strict. */
 export function migratePracticeBoundary(value: unknown): unknown {
   if (!value || typeof value !== 'object' || Array.isArray(value)) return value;
   const legacy = value as Record<string, unknown>;
-  if (![4, 5, 6, 7, 8, 9, 10, 11].includes(legacy.protocolVersion as number)) return value;
+  if (![4, 5, 6, 7, 8, 9, 10, 11, 12].includes(legacy.protocolVersion as number)) return value;
   const version = legacy.protocolVersion as number;
   const previousServiceBosses = [
     'matron',
@@ -54,32 +55,34 @@ export function migratePracticeBoundary(value: unknown): unknown {
     'last-breath-saint',
   ];
   const bosses =
-    version >= 7
-      ? [
-          'constable',
-          'lantern-warden',
-          'courier',
-          'ratcatcher',
-          'quarantine-clerk',
-          'tollkeeper',
-          'chain-marshal',
-          'gate-widow',
-          'black-ambulance',
-          ...(version >= 9 ? previousServiceBosses : []),
-          ...(version >= 10 ? previousDistrictBosses : []),
-          ...(version === 11 ? previousRaidBosses : []),
-        ]
-      : version === 4
-        ? ['constable']
-        : version === 5
-          ? ['constable', 'lantern-warden']
-          : ['constable', 'lantern-warden', 'courier', 'ratcatcher', 'quarantine-clerk'];
+    version === 12
+      ? catalog.bosses.map((b) => b.id)
+      : version >= 7
+        ? [
+            'constable',
+            'lantern-warden',
+            'courier',
+            'ratcatcher',
+            'quarantine-clerk',
+            'tollkeeper',
+            'chain-marshal',
+            'gate-widow',
+            'black-ambulance',
+            ...(version >= 9 ? previousServiceBosses : []),
+            ...(version >= 10 ? previousDistrictBosses : []),
+            ...(version >= 11 ? previousRaidBosses : []),
+          ]
+        : version === 4
+          ? ['constable']
+          : version === 5
+            ? ['constable', 'lantern-warden']
+            : ['constable', 'lantern-warden', 'courier', 'ratcatcher', 'quarantine-clerk'];
   const oldSettings = legacy.settings as Record<string, unknown> | undefined;
   if (
     !oldSettings ||
     typeof oldSettings !== 'object' ||
     !(
-      version === 11
+      version >= 11
         ? ['short', 'standard', 'long', 'raid', 'endless']
         : version === 10
           ? ['short', 'standard', 'long', 'endless']
@@ -135,18 +138,46 @@ export function migratePracticeBoundary(value: unknown): unknown {
   return {
     ...legacy,
     protocolVersion: PROTOCOL,
-    timeouts: 0,
-    secretStatus: 'locked',
-    campaignBank: null,
-    extensionParticipants: [],
-    endlessHistory: {
-      recent:
-        oldSettings.mode === 'endless' && Array.isArray(legacy.completedBossIds)
-          ? legacy.completedBossIds.slice(-12)
-          : [],
-      routeBag: [],
-      exclusiveBag: [],
+    settings: { ...oldSettings, runId: 'legacy-' + oldSettings.seed + '-' + oldSettings.mode },
+    player: {
+      ...(legacy.player as object),
+      progress: {
+        clears: legacy.encounter,
+        rescues: 0,
+        campaignClears: legacy.campaignBank
+          ? (legacy.campaignBank as { encounters: number }).encounters
+          : 0,
+        firstEncounter: Number(legacy.encounter) > 0 ? 0 : -1,
+        clearedBossIds:
+          version === 4
+            ? Number(legacy.encounter) > 0
+              ? ['constable']
+              : []
+            : legacy.completedBossIds,
+      },
     },
+    ...(version === 12
+      ? {
+          timeouts: legacy.timeouts,
+          secretStatus: legacy.secretStatus,
+          campaignBank: legacy.campaignBank,
+          extensionParticipants: legacy.extensionParticipants,
+          endlessHistory: legacy.endlessHistory,
+        }
+      : {
+          timeouts: 0,
+          secretStatus: 'locked',
+          campaignBank: null,
+          extensionParticipants: [],
+          endlessHistory: {
+            recent:
+              oldSettings.mode === 'endless' && Array.isArray(legacy.completedBossIds)
+                ? legacy.completedBossIds.slice(-12)
+                : [],
+            routeBag: [],
+            exclusiveBag: [],
+          },
+        }),
     completedBossIds:
       version !== 4
         ? legacy.completedBossIds

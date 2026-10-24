@@ -1,3 +1,4 @@
+import type { RunProgress } from './run-progress.ts';
 import type { TerrainStatus } from './district-director.ts';
 import type { KitCue, KitStatus } from './class-kits.ts';
 import type { Game, Boss } from './game.ts';
@@ -6,6 +7,7 @@ import type { BossCue } from './boss-director.ts';
 import type { WardenSample } from './warden-signature.ts';
 import type { ClassId, Phase, Warning, Field, Contract, SupplySlot } from './protocol.ts';
 export type PlayerView = {
+  progress: RunProgress;
   eligible: boolean;
   terrain: TerrainStatus;
   kit: KitStatus;
@@ -47,6 +49,7 @@ export type PlayerView = {
   dodgeCooldown: number;
 };
 export type View = {
+  run: { id: string; mode: Game['settings']['mode']; difficulty: string; practiceOnly: true };
   secretStatus: Game['secretStatus'];
   extensionParticipants: string[];
   campaignBank: Game['campaignBank'];
@@ -73,6 +76,12 @@ export type View = {
 };
 export function viewOf(g: Game, owner: string): View {
   return {
+    run: {
+      id: g.settings.runId,
+      mode: g.settings.mode,
+      difficulty: g.settings.difficulty,
+      practiceOnly: true,
+    },
     secretStatus: g.secretStatus,
     extensionParticipants: [...g.extensionParticipants],
     campaignBank: g.campaignBank ? { ...g.campaignBank } : null,
@@ -85,6 +94,7 @@ export function viewOf(g: Game, owner: string): View {
     owner,
     players: [...g.players.values()].map((p) => ({
       id: p.id,
+      progress: structuredClone(p.progress),
       eligible: p.eligible,
       kit: g.classKits.status(p.id, g.combatTick),
       terrain: structuredClone(p.terrain),

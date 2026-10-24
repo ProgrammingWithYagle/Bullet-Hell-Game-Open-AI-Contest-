@@ -93,7 +93,7 @@ function nodeButton(
     owned = kind === 'skill' ? p.skills.includes(id) : kind === 'weapon' ? p.weapon === id : false;
   return `<button type="button" class="item-node ${kind === 'skill' ? 'skill-node' : ''} ${owned ? 'owned' : ''} ${state.allowed ? 'available' : 'unavailable'} ${chosen?.kind === kind && chosen.id === id ? 'inspected' : ''}" data-inspect="${id}" data-item-kind="${kind}" aria-label="${e(name + (grade ? ' · ' + grade : ''))}" aria-pressed="${chosen?.kind === kind && chosen.id === id}" title="${e(name + (grade ? ' · ' + grade : ''))}">${itemArt(kind, id, glyph)}${grade ? `<span class="node-grade" aria-hidden="true">${e(grade)}</span>` : ''}${owned ? `<span class="node-status">${icon('check')}</span>` : ''}</button>`;
 }
-export function shopMarkup(p: PlayerView) {
+export function shopMarkup(p: PlayerView, supplyBindings: readonly string[] = ['1', '2', '3']) {
   const cl = data.classes.find((c) => c.id === p.classId)!;
   if (!cl.branches.some((b) => b.id === branchId)) branchId = cl.branches[0].id;
   if (
@@ -118,7 +118,7 @@ export function shopMarkup(p: PlayerView) {
           )
           .join(
             '',
-          )}</div><h3>${e(t('ui.upgrade'))}</h3><div class="gear-icons">${data.upgrades.map((u) => nodeButton(p, 'upgrade', u.id, effectIcon({ [u.effect]: u.amount }), t('upgrade.' + u.id + '.name'))).join('')}</div><h3>${e(t('ui.supplies'))} · 1 / 2 / 3</h3><p>${e(t('ui.supplyHelp'))}</p><div class="gear-icons">${data.supplies.map((s) => nodeButton(p, 'supply', s.id, supplyGlyph(s.effect), t('supply.' + s.id + '.name'))).join('')}</div><p>${p.supplies.map((s, i) => `${number(i + 1)}: ${s.count ? e(t('supply.' + s.id + '.name')) + ' ×' + number(s.count) : '—'}`).join(' · ')}</p></section>`
+          )}</div><h3>${e(t('ui.upgrade'))}</h3><div class="gear-icons">${data.upgrades.map((u) => nodeButton(p, 'upgrade', u.id, effectIcon({ [u.effect]: u.amount }), t('upgrade.' + u.id + '.name'))).join('')}</div><h3>${e(t('ui.supplies'))} · ${e(supplyBindings.join(' / '))}</h3><p>${e(t('ui.supplyHelp', { bindings: supplyBindings.join(' / ') }))}</p><div class="gear-icons">${data.supplies.map((s) => nodeButton(p, 'supply', s.id, supplyGlyph(s.effect), t('supply.' + s.id + '.name'))).join('')}</div><p>${p.supplies.map((s, i) => `${e(supplyBindings[i])}: ${s.count ? e(t('supply.' + s.id + '.name')) + ' ×' + number(s.count) : '—'}`).join(' · ')}</p></section>`
       : `<div class="branch-tabs" role="tablist" aria-label="${e(t('ui.specializations'))}">${cl.branches.map((b) => `<button data-branch="${b.id}" role="tab" aria-selected="${b.id === branchId}">${e(t('branch.' + b.id))}</button>`).join('')}</div><div class="skill-scroll"><div class="skill-tree" role="group" aria-label="${e(t('branch.' + branch.id))}"><svg class="tree-connections" viewBox="0 0 600 700" preserveAspectRatio="none" aria-hidden="true"><path d="M300 40V80 M100 123V80H500V123 M300 80V123"/>${branch.subbranches
           .map((sub, i) => {
             const nodes = skillsOf(p)
@@ -215,13 +215,14 @@ export function bindShop(
   host: HTMLElement,
   p: PlayerView,
   purchase: (request: Omit<Command, 'id'>) => void,
+  supplyBindings: readonly string[] = ['1', '2', '3'],
 ) {
   const redraw = () => {
     const workspace = host.querySelector<HTMLElement>('.loadout-editor');
     if (!workspace) return;
     const scroll = host.querySelector<HTMLElement>('.skill-scroll')?.scrollTop ?? 0;
-    workspace.innerHTML = shopMarkup(p);
-    bindShop(host, p, purchase);
+    workspace.innerHTML = shopMarkup(p, supplyBindings);
+    bindShop(host, p, purchase, supplyBindings);
     const scroller = host.querySelector<HTMLElement>('.skill-scroll');
     if (scroller) scroller.scrollTop = scroll;
   };

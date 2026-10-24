@@ -72,7 +72,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       (options.openingBossId !== undefined &&
         !implementedBossIds.includes(options.openingBossId)) ||
       !['short', 'standard', 'long', 'raid', 'endless'].includes(options.mode) ||
-      !['baby', 'easy', 'normal', 'hard'].includes(options.difficulty) ||
+      !data.difficulties.some((d) => d.id === options.difficulty) ||
       !['public', 'private'].includes(options.visibility)
     )
       throw new ServerError(400, 'invalidSettings');
@@ -88,6 +88,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
     this.maxMessagesPerSecond = 90;
     this.patchRate = 50;
     this.game = new Game({
+      runId: this.roomId,
       seed: randomBytes(4).readUInt32LE(),
       mode: options.mode,
       difficulty: options.difficulty,
@@ -356,6 +357,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       view.reviveProgress = Math.floor(p.reviveProgress);
       view.reviveTarget = p.reviveTarget;
       view.build = JSON.stringify({
+        progress: p.progress,
         eligible: p.eligible,
         weapon: p.weapon,
         skills: p.skills,
@@ -410,6 +412,12 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       arenaId: g.arena.id,
     });
     s.intermission = JSON.stringify({
+      run: {
+        id: g.settings.runId,
+        mode: g.settings.mode,
+        difficulty: g.settings.difficulty,
+        practiceOnly: true,
+      },
       secretStatus: g.secretStatus,
       campaignBank: g.campaignBank,
       extensionParticipants: g.extensionParticipants,

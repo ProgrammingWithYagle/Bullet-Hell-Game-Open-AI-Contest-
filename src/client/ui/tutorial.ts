@@ -1,3 +1,6 @@
+import { loadProfile } from '../profile.ts';
+import { defaultControls } from '../input-bindings.ts';
+import { bindingLabel } from './control-settings.ts';
 import { t, number } from '../i18n.ts';
 import { escape as e } from './html.ts';
 import { icon } from './icons.ts';
@@ -15,19 +18,29 @@ export function tutorial(host: HTMLElement, done: () => void) {
   const panel = document.createElement('div');
   panel.className = 'tutorial-overlay';
   host.append(panel);
+  let bindings = defaultControls();
+  try {
+    bindings = loadProfile(localStorage).controls;
+  } catch {}
+  const key = (action: keyof typeof bindings.bindings) =>
+    bindings.bindings[action].map(bindingLabel).join(' / ');
   const slides = [
     [
       'move',
       'ui.controls',
-      t('ui.tutorialMove', { binding: 'WASD / ↑←↓→ · LS' }) +
+      t('ui.tutorialMove', {
+        binding: ['up', 'left', 'down', 'right'].map((a) => key(a as 'up')).join(' · ') + ' / LS',
+      }) +
         ' ' +
-        t('ui.tutorialDodge', { binding: 'Space / A' }),
+        t('ui.tutorialDodge', { binding: key('dodge') + ' / ' + bindings.gamepad.dodge }),
     ],
     ['weapon', 'ui.tutorial', t('ui.tutorialCombat')],
     [
       'ultimate',
       'ui.ultimate',
-      t('ui.tutorialUltimate', { binding: 'X / Y' }) + ' ' + t('ui.tutorialTeam'),
+      t('ui.tutorialUltimate', { binding: key('ultimate') + ' / ' + bindings.gamepad.ultimate }) +
+        ' ' +
+        t('ui.tutorialTeam'),
     ],
     ['tree', 'ui.skillTree', t('ui.tutorialShop')],
   ];

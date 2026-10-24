@@ -1,3 +1,4 @@
+import { freshProgress, validProgress, type RunProgress } from './run-progress.ts';
 import { finalBossIds, endlessSolids, leaveMovingBlocks } from './endless-director.ts';
 import { EndlessSchedule, validEndlessHistory } from './endless-schedule.ts';
 import { raidBossIds, raidMovement } from './raid-director.ts';
@@ -88,6 +89,7 @@ export const implementedBossIds: readonly BossId[] = [
   ...finalBossIds,
 ];
 export type Settings = {
+  runId: string;
   seed: number;
   mode: ModeId;
   difficulty: string;
@@ -96,6 +98,7 @@ export type Settings = {
   openingArenaId: string;
 };
 export type Player = {
+  progress: RunProgress;
   terrain: TerrainStatus;
   id: string;
   name: string;
@@ -282,6 +285,7 @@ export class Game {
   };
   constructor(settings: Partial<Settings> = {}) {
     this.settings = {
+      runId: settings.runId ?? 'simulation-' + (settings.seed ?? 1).toString(36),
       seed: settings.seed ?? 1,
       mode: settings.mode ?? 'short',
       difficulty: settings.difficulty ?? 'normal',
@@ -299,6 +303,8 @@ export class Game {
         settings.openingArenaId ?? (settings.mode === 'raid' ? 'ossuary-works' : 'gatehouse'),
     };
     if (
+      typeof this.settings.runId !== 'string' ||
+      !/^[A-Za-z0-9_-]{1,100}$/.test(this.settings.runId) ||
       !implementedBossIds.includes(this.settings.openingBossId) ||
       !implementedModeIds.includes(this.settings.mode) ||
       !data.arenas.some((a) => a.id === this.settings.openingArenaId) ||
@@ -354,6 +360,7 @@ export class Game {
       throw Error('Class is not implemented in this milestone');
     const cl = data.classes.find((c) => c.id === classId)!;
     const p: Player = {
+      progress: freshProgress(),
       id,
       name:
         name
@@ -728,6 +735,7 @@ export class Game {
       }
       p.status = 'active';
       p.eligible = true;
+      if (p.progress.firstEncounter < 0) p.progress.firstEncounter = this.encounter;
       p.totalSp = Math.max(p.totalSp, this.skillBudget(this.encounter));
       p.maxHealth = this.stats(p).health;
       p.health = p.maxHealth;
@@ -834,6 +842,9 @@ export class Game {
     this.wardenClocks = [];
     for (const p of this.roster())
       if (p.eligible) {
+        p.progress.clears++;
+        if (!p.progress.clearedBossIds.includes(this.boss.id))
+          p.progress.clearedBossIds.push(this.boss.id);
         const reward =
           this.encounter < (this.settings.mode === 'endless' ? 9 : this.routeLength - 1)
             ? this.incomeBudget(this.encounter + 1) - this.incomeBudget(this.encounter)
@@ -862,9 +873,9 @@ export class Game {
       return;
     }
     if (this.settings.mode !== 'endless' && this.encounter >= this.routeLength) {
+      for (const p of this.roster()) if (p.eligible) p.progress.campaignClears = p.progress.clears;
       this.campaignBank = {
-        runId:
-          this.settings.mode + '-' + this.settings.seed.toString(36) + '-' + this.tick.toString(36),
+        runId: this.settings.runId,
         mode: this.settings.mode,
         difficulty: this.settings.difficulty,
         encounters: this.routeLength,
@@ -1177,7 +1188,7 @@ export class Game {
           .filter((a) => a.status === 'downed' && distance(p, a) <= 100)
           .sort((a, b) => distance(p, a) - distance(p, b) || a.id.localeCompare(b.id))[0];
         if (!ally) return;
-        this.revive(ally, item.amount);
+        this.revive(ally, item.amount, p);
         break;
       }
       case 'barrier':
@@ -1433,7 +1444,7 @@ export class Game {
       potency = 1 + (s.effects.ultimatePotency ?? 0);
     for (const ally of this.roster())
       if (distance(ally, p) <= radius) {
-        if (ally.status === 'downed' || ally.status === 'eliminated') this.revive(ally, 0.6);
+        if (ally.status === 'downed' || ally.status === 'eliminated') this.revive(ally, 0.6, p);
         else if (ally.status === 'active') this.heal(p, ally, 40 * potency);
         ally.slowUntil = 0;
       }
@@ -2225,7 +2236,9 @@ export class Game {
         this.removeShot(s);
     }
   }
-  private revive(p: Player, fraction: number) {
+  private revive(p: Player, fraction: number, source?: Player) {
+    if (source && source.id !== p.id && ['downed', 'eliminated'].includes(p.status))
+      source.progress.rescues = Math.min(1000000, source.progress.rescues + 1);
     p.status = 'active';
     p.health = p.maxHealth * fraction;
     p.reviveProgress = 0;
@@ -2256,7 +2269,7 @@ export class Game {
         p.reviveTarget === target.id ? p.reviveProgress + this.stats(p).reviveRate : 1;
       p.reviveTarget = target.id;
       if (p.reviveProgress >= ticks(rule.reviveSeconds * this.modifier('reviveTime'))) {
-        this.revive(target, 0.5);
+        this.revive(target, 0.5, p);
         p.reviveTarget = '';
         p.reviveProgress = 0;
       }
@@ -2311,6 +2324,7 @@ export class Game {
       contractCards: structuredClone(this.contractCards),
       votes: Object.fromEntries(this.votes),
       player: {
+        progress: structuredClone(p.progress),
         id: p.id,
         name: p.name,
         classId: p.classId,
@@ -2398,7 +2412,7 @@ export class Game {
       if (
         !b ||
         typeof b.runId !== 'string' ||
-        !/^[a-z0-9-]{1,100}$/.test(b.runId) ||
+        !/^[A-Za-z0-9_-]{1,100}$/.test(b.runId) ||
         !implementedModeIds.includes(b.mode) ||
         b.mode === 'endless' ||
         b.mode !== g.settings.mode ||
@@ -2431,6 +2445,7 @@ export class Game {
     for (const id of save.completedBossIds) g.completedBossIds.add(id as BossId);
     if (
       !p ||
+      !validProgress(p.progress, save.encounter) ||
       !implementedClassIds.includes(p.classId) ||
       typeof p.name !== 'string' ||
       p.name.length > 48 ||
@@ -2542,6 +2557,7 @@ export class Game {
       throw Error('invalidVotes');
     const player = g.addPlayer('solo', p.name, p.classId);
     Object.assign(player, {
+      progress: structuredClone(p.progress),
       weapon: p.weapon,
       coins: p.coins,
       incomeGranted: p.incomeGranted,

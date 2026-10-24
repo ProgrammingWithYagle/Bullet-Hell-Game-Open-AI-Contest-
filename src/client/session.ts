@@ -1,3 +1,4 @@
+import { recordProfileView } from './profile.ts';
 import { Client, type Room } from '@colyseus/sdk';
 import { WorldState } from '../shared/network-state.ts';
 import {
@@ -81,6 +82,7 @@ export class Session {
               ...options,
               settings: {
                 ...options,
+                runId: crypto.randomUUID(),
                 seed: crypto.getRandomValues(new Uint32Array(1))[0],
                 maxPlayers: 1,
               },
@@ -263,10 +265,35 @@ export class Session {
     this.recovering = false;
     if (!this.closed) this.notify('ui.errorNetwork');
   }
+  private recordedProgress = '';
+  private profileRetryAt = 0;
   private recordedCampaign = '';
   private receive(view: View) {
     if (this.closed) return;
     view = personalView(view, this.id);
+    const player = view.players.find((p) => p.id === this.id);
+    const progressKey = JSON.stringify([
+      view.run?.id,
+      player?.progress,
+      view.encounter,
+      view.secretStatus,
+      view.phase,
+    ]);
+    if (
+      typeof localStorage !== 'undefined' &&
+      progressKey !== this.recordedProgress &&
+      Date.now() >= this.profileRetryAt
+    ) {
+      try {
+        recordProfileView(view, this.id, localStorage);
+        this.recordedProgress = progressKey;
+        if (this.status === 'ui.errorSave') this.notify('');
+      } catch {
+        this.profileRetryAt = Date.now() + 10000;
+        this.notify('ui.errorSave');
+      }
+    }
+
     const recordKey = view.campaignBank?.runId + ':' + view.secretStatus;
     if (view.campaignBank && recordKey !== this.recordedCampaign) {
       this.recordedCampaign = recordKey;
@@ -355,6 +382,7 @@ function networkView(s: WorldState): View {
     shield: p.shield,
     status: p.status,
     eligible: false,
+    progress: { clears: 0, rescues: 0, firstEncounter: -1, campaignClears: 0, clearedBossIds: [] },
     connected: p.connected,
     ack: p.ack,
     ammo: p.ammo,
@@ -380,6 +408,7 @@ function networkView(s: WorldState): View {
     ...JSON.parse(p.build),
   }));
   return {
+    run: intermission.run,
     tick: s.tick,
     combatTick: s.combatTick,
     phase: s.phase as Phase,

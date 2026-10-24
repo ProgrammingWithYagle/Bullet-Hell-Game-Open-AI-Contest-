@@ -11,7 +11,7 @@ assert.equal(text('.wiki-checkout','remote','get-url','origin'),'https://github.
 const publishedCommit=text('.wiki-checkout','ls-remote','origin','refs/heads/master').split(/\s+/)[0];
 assert.equal(text('.wiki-checkout','rev-parse','HEAD'),publishedCommit,'Remote Wiki head differs from the inspected checkout');
 const files=readdirSync('docs/wiki').filter(n=>n.endsWith('.md')).sort();
-assert.equal(files.length,15);
+assert.equal(files.length,16);
 const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
 const evidence=files.map(file=>{
   const source=git('.','show',sourceCommit+':docs/wiki/'+file),published=git('.wiki-checkout','show',publishedCommit+':'+file);
@@ -26,6 +26,6 @@ const publicChecks=await Promise.all(['','/Getting-Started'].map(async route=>{
   assert.equal(result.status,200);assert(result.publicPlaytestLinkPresent,'Published page is missing the playtest link');return result;
 }));
 const report={createdAt:new Date().toISOString(),passed:true,sourceCommit,publishedCommit,pages:evidence.length,files:evidence,publicChecks,
-  limits:['Canonical committed Markdown blobs match all fifteen published Git Wiki blobs; filesystem CRLF is normalized explicitly.','Two anonymous public HTTP pages checked; no rendered Wiki browser or native-language review claimed.','Runtime PR remains draft and full-game release gates remain open.']};
+  limits:['Canonical committed Markdown blobs match all sixteen published Git Wiki blobs; filesystem CRLF is normalized explicitly.','Two anonymous public HTTP pages checked; no rendered Wiki browser or native-language review claimed.','Runtime PR remains draft and full-game release gates remain open.']};
 writeFileSync('reviews/wiki-runtime-publication.json',JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify({passed:true,sourceCommit,publishedCommit,pages:evidence.length,publicChecks}));

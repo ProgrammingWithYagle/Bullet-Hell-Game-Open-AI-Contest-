@@ -1,8 +1,21 @@
 import { idleInput, type InputFrame } from '../shared/protocol.ts';
+import {
+  defaultControls,
+  actions,
+  buttonActions,
+  ActionLatch,
+  type Action,
+  type ControlOptions,
+} from './input-bindings.ts';
 export class Controls {
   private keys = new Set<string>();
   private pressed = new Set<string>();
+  private virtualPressed = new Set<Action>();
   private pointers = new Map<number, { kind: 'move' | 'aim'; x: number; y: number }>();
+  private options = defaultControls();
+  private fireLatch = new ActionLatch();
+  private interactLatch = new ActionLatch();
+  private suppressPad = true;
   move = { x: 0, y: 0 };
   aim = { x: 0, y: 0 };
   pointer = { x: 800, y: 250 };
@@ -25,16 +38,18 @@ export class Controls {
     on(window, 'keydown', (e) => {
       if (
         this.blocked ||
-        e.target instanceof HTMLInputElement ||
-        e.target instanceof HTMLSelectElement
+        (e.target instanceof HTMLElement &&
+          e.target.closest('input,select,textarea,[contenteditable="true"]'))
       )
         return;
-      if (['Space', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.code))
+      if (Object.values(this.options.bindings).some((list) => list.includes(e.code)))
         e.preventDefault();
       if (!this.keys.has(e.code)) this.pressed.add(e.code);
       this.keys.add(e.code);
     });
-    on(window, 'keyup', (e) => this.keys.delete(e.code));
+    on(window, 'keyup', (e) => {
+      this.keys.delete(e.code);
+    });
     on(window, 'blur', () => this.clear());
     on(element, 'contextmenu', (e) => e.preventDefault());
     on(element, 'pointerdown', (e) => {
@@ -48,7 +63,9 @@ export class Controls {
         if (kind === 'aim') this.firing = true;
       } else {
         this.touch = false;
-        this.firing = true;
+        const code = 'Mouse' + e.button;
+        if (!this.keys.has(code)) this.pressed.add(code);
+        this.keys.add(code);
       }
       this.setPointer(e);
     });
@@ -67,10 +84,13 @@ export class Controls {
     const release = (e: PointerEvent) => {
       const start = this.pointers.get(e.pointerId);
       if (start?.kind === 'move') this.move = { x: 0, y: 0 };
-      else {
+      else if (start) {
         this.firing = false;
         this.aim = { x: 0, y: 0 };
       }
+      this.keys.delete('Mouse' + e.button);
+      if (e.type === 'pointercancel')
+        for (const code of ['Mouse0', 'Mouse1', 'Mouse2']) this.keys.delete(code);
       this.pointers.delete(e.pointerId);
     };
     on(element, 'pointerup', release);
@@ -78,18 +98,24 @@ export class Controls {
     for (const button of document.querySelectorAll<HTMLButtonElement>('[data-action]')) {
       on(button, 'pointerdown', (e) => {
         e.preventDefault();
-        if (this.blocked) return;
-        const action = button.dataset.action!;
+        if (this.blocked || button.disabled) return;
+        const action = button.dataset.action as Action;
+        if (!actions.includes(action)) return;
         if (action === 'interact') this.interacting = true;
-        else this.pressed.add(action);
+        this.virtualPressed.add(action);
         button.setPointerCapture(e.pointerId);
       });
       const up = () => {
-        this.interacting = false;
+        if (button.dataset.action === 'interact') this.interacting = false;
       };
       on(button, 'pointerup', up);
       on(button, 'pointercancel', up);
     }
+  }
+  configure(options: ControlOptions) {
+    if (JSON.stringify(options) === JSON.stringify(this.options)) return;
+    this.options = structuredClone(options);
+    this.clear();
   }
   private setPointer(e: PointerEvent) {
     const r = this.element.getBoundingClientRect(),
@@ -102,11 +128,14 @@ export class Controls {
   clear() {
     this.keys.clear();
     this.pressed.clear();
+    this.virtualPressed.clear();
     this.pointers.clear();
     this.move = { x: 0, y: 0 };
     this.aim = { x: 0, y: 0 };
-    this.firing = false;
-    this.interacting = false;
+    this.firing = this.interacting = false;
+    this.fireLatch.clear();
+    this.interactLatch.clear();
+    this.suppressPad = true;
   }
   destroy() {
     this.clear();
@@ -124,15 +153,17 @@ export class Controls {
       this.clear();
       return input;
     }
-    const key = (...names: string[]) => names.some((k) => this.keys.has(k));
-    input.moveX =
-      Number(key('KeyD', 'ArrowRight')) - Number(key('KeyA', 'ArrowLeft')) + this.move.x;
-    input.moveY = Number(key('KeyS', 'ArrowDown')) - Number(key('KeyW', 'ArrowUp')) + this.move.y;
+    const held = (a: Action) => this.options.bindings[a].some((k) => this.keys.has(k));
+    const pulse = (a: Action) =>
+      this.virtualPressed.has(a) || this.options.bindings[a].some((k) => this.pressed.has(k));
+    input.moveX = Number(held('right')) - Number(held('left')) + this.move.x;
+    input.moveY = Number(held('down')) - Number(held('up')) + this.move.y;
     if (player && !this.touch)
       this.angle = Math.atan2(this.pointer.y - player.y, this.pointer.x - player.x);
     if (Math.hypot(this.aim.x, this.aim.y) > 0.15) this.angle = Math.atan2(this.aim.y, this.aim.x);
     const pad = navigator.getGamepads?.().find((p) => p?.connected);
-    let gamepadFire = false;
+    let padFire = false,
+      padInteract = false;
     if (pad) {
       const dead = (n: number) => (Math.abs(n) > 0.18 ? n : 0);
       input.moveX += dead(pad.axes[0] ?? 0);
@@ -140,24 +171,20 @@ export class Controls {
       const x = dead(pad.axes[2] ?? 0),
         y = dead(pad.axes[3] ?? 0);
       if (x || y) this.angle = Math.atan2(y, x);
-      const actions: Record<number, string> = {
-        0: 'Space',
-        2: 'KeyR',
-        4: 'KeyQ',
-        5: 'KeyE',
-        3: 'KeyX',
-        12: 'Digit1',
-        13: 'Digit2',
-        14: 'Digit3',
-      };
-      for (const [index, action] of Object.entries(actions)) {
-        const n = Number(index),
-          down = pad.buttons[n]?.pressed ?? false;
-        if (down && !this.lastButtons[n]) this.pressed.add(action);
+      const down = pad.buttons.map((b) => b.pressed);
+      if (this.suppressPad && !down.some(Boolean)) this.suppressPad = false;
+      if (!this.suppressPad) {
+        for (const a of buttonActions) {
+          const n = this.options.gamepad[a];
+          if (down[n] && !this.lastButtons[n]) this.virtualPressed.add(a);
+        }
+        padFire = Boolean(down[this.options.gamepad.fire]);
+        padInteract = Boolean(down[this.options.gamepad.interact]);
       }
-      this.lastButtons = pad.buttons.map((b) => b.pressed);
-      gamepadFire = Boolean(pad.buttons[7]?.pressed);
-      input.interact = Boolean(pad.buttons[1]?.pressed);
+      this.lastButtons = down;
+    } else {
+      this.lastButtons = [];
+      this.suppressPad = false;
     }
     if (this.aimAssist && player && boss) {
       const target = Math.atan2(boss.y - player.y, boss.x - player.x),
@@ -167,22 +194,25 @@ export class Controls {
     input.aim = this.angle;
     input.moveX = Math.max(-1, Math.min(1, input.moveX));
     input.moveY = Math.max(-1, Math.min(1, input.moveY));
-    input.fire = this.firing || this.autoFire || gamepadFire;
-    input.interact ||= this.interacting || key('KeyF');
+    input.fire =
+      this.fireLatch.sample(
+        held('fire') || this.firing || padFire,
+        pulse('fire'),
+        this.options.fireMode,
+      ) || this.autoFire;
+    input.interact = this.interactLatch.sample(
+      held('interact') || this.interacting || padInteract,
+      pulse('interact'),
+      this.options.interactMode,
+    );
     for (let n = 0; n < 3; n++)
-      if (this.pressed.has('Digit' + (n + 1))) {
+      if (pulse(('supply' + (n + 1)) as Action)) {
         input.supply = n;
         break;
       }
-    for (const [action, code] of [
-      ['dodge', 'Space'],
-      ['reload', 'KeyR'],
-      ['q', 'KeyQ'],
-      ['e', 'KeyE'],
-      ['ultimate', 'KeyX'],
-    ] as const)
-      input[action] = this.pressed.has(code);
+    for (const a of ['dodge', 'reload', 'q', 'e', 'ultimate'] as const) input[a] = pulse(a);
     this.pressed.clear();
+    this.virtualPressed.clear();
     return input;
   }
 }

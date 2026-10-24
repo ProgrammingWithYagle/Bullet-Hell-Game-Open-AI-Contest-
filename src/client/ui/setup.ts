@@ -1,3 +1,5 @@
+import { mountProfile } from './profile.ts';
+import { loadProfile, changeProfile, difficultyUnlocked } from '../profile.ts';
 import history from '../../shared/update-history.json';
 import revision from '../../../content/revision.json';
 import changelogNotices from '../changelog-notices.json';
@@ -22,6 +24,7 @@ type Hooks = {
     join?: { roomId?: string; code?: string },
     visibility?: 'public' | 'private',
   ) => void;
+  profileChanged: () => Promise<void>;
   settingsHTML: () => string;
   bindSettings: () => void;
 };
@@ -75,12 +78,20 @@ export function mountSetup(host: HTMLElement, hooks: Hooks) {
       ? `<img class="arena-preview" src="${assets.arena}" alt="${e(t('arena.' + a.id + '.name'))}">`
       : `<svg class="arena-preview arena-plan" viewBox="0 0 1600 1000" role="img" aria-label="${e(t('ui.map'))}"><rect x="${a.bounds.x}" y="${a.bounds.y}" width="${a.width}" height="${a.height}" rx="40" fill="${a.floor}" stroke="#c8c2a1" stroke-width="12"/>${a.obstacles.map((o) => `<rect x="${o.x}" y="${o.y}" width="${o.width}" height="${o.height}" fill="${a.shadow}" stroke="#ccc4a3" stroke-width="8"/>`).join('')}<circle cx="${a.bossSpawn.x}" cy="${a.bossSpawn.y}" r="60" fill="none" stroke="#e7a477" stroke-width="12"/><circle cx="${a.playerSpawn.x}" cy="${a.playerSpawn.y}" r="30" fill="#b7dec7"/></svg>`;
   };
+  const difficultyAvailable = (id: string) => {
+    try {
+      return difficultyUnlocked(loadProfile(localStorage), id);
+    } catch {
+      return !data.difficulties.find((d) => d.id === id)?.locked;
+    }
+  };
   function render() {
+    if (!difficultyAvailable(selected.difficulty)) selected.difficulty = 'normal';
     const stage = steps.indexOf(page);
     host.innerHTML = `<div class="expedition-shell ${page === 'home' ? 'at-home' : ''}"><header class="masthead"><button id="brand-home" class="brand">${icon('bell')}<span>GRAVE ACCORD<small>${e(t('ui.tagline'))}</small></span></button><div class="masthead-controls"><label class="sr-only" for="language">${e(t('ui.language'))}</label><select id="language" aria-label="${e(t('ui.language'))}">${languages.map(([id, label]) => `<option value="${id}" ${id === locale ? 'selected' : ''}>${e(label)}</option>`).join('')}</select><button id="guide" class="icon-button" aria-label="${e(t('ui.playTutorial'))}" title="${e(t('ui.playTutorial'))}">${icon('tree')}</button><button id="settings" class="icon-button" aria-label="${e(t('ui.settings'))}">${icon('engineer')}</button></div></header>${stage >= 0 ? `<nav class="setup-steps" aria-label="${e(t('ui.chooseSetup'))}">${steps.map((step, i) => `<button data-page="${step}" class="${i === stage ? 'current' : ''}" ${i > stage ? 'disabled' : ''}><b>${number(i + 1)}</b><span>${e(t(labels[step]))}</span></button>`).join('')}</nav>` : ''}<section id="setup-content" class="setup-content"></section><p id="notice" class="setup-notice" role="status" hidden></p><footer class="setup-footer"><span><bdi>${e(revision.version)} · ${e(history.buildId)}</bdi> · ${e(t('ui.translationNotice'))}</span><a href="https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/wiki" target="_blank" rel="noopener">${e(t('ui.howToPlay'))}</a><button id="changelog" class="footer-link">${e(t('ui.changelog'))}</button></footer></div>`;
     const content = host.querySelector<HTMLElement>('#setup-content')!;
     if (page === 'home')
-      content.innerHTML = `<div class="home-composition"><div class="home-art"><img src="${assets.cover}" alt="Grave Accord"></div><div class="home-actions"><p class="eyebrow">${e(t('ui.chooseSetup'))}</p><h1>${e(t('ui.tagline'))}</h1><div class="home-buttons">${button('new-run', t('ui.newRun'), 'play', 'class="primary"')}${savedBoundary() ? button('resume-boundary', t('ui.resumeCheckpoint'), 'bell') : ''}${button('join', t('ui.joinRoom'), 'rescue')}${button('tutorial', t('ui.tutorial'), 'tree')}</div><p class="prototype-note">${e(prototypeNotice[locale])}</p>${capacityNotice()}</div></div>`;
+      content.innerHTML = `<div class="home-composition"><div class="home-art"><img src="${assets.cover}" alt="Grave Accord"></div><div class="home-actions"><p class="eyebrow">${e(t('ui.chooseSetup'))}</p><h1>${e(t('ui.tagline'))}</h1><div class="home-buttons">${button('new-run', t('ui.newRun'), 'play', 'class="primary"')}${savedBoundary() ? button('resume-boundary', t('ui.resumeCheckpoint'), 'bell') : ''}${button('join', t('ui.joinRoom'), 'rescue')}${button('profile', t('ui.profile'), 'bell')}${button('tutorial', t('ui.tutorial'), 'tree')}</div><p class="prototype-note">${e(prototypeNotice[locale])}</p>${capacityNotice()}</div></div>`;
     if (page === 'class') {
       const c = data.classes.find((c) => c.id === previewClass)!;
       content.innerHTML = `<div class="setup-heading"><h1>${e(t(labels[page]))}</h1><p>${e(t('ui.tutorialTeam'))}</p></div><div class="class-composition"><div class="character-roster" role="group" aria-label="${e(t('ui.chooseClass'))}">${data.classes.map((cl) => `<button data-class="${cl.id}" aria-pressed="${cl.id === previewClass}" class="character-pick ${cl.id === previewClass ? 'selected' : ''}">${portrait(cl.id, 'small')}<span>${e(t('class.' + cl.id + '.name'))}<small>${e(cl.survivor)}</small></span>${availableClass(cl.id) ? '' : icon('lock')}</button>`).join('')}</div><div class="character-reveal">${portrait(c.id)}<span class="character-sigil">${icon(c.id)}</span></div><article class="character-story"><span class="eyebrow">${e(c.survivor)}</span><h2>${e(t('class.' + c.id + '.name'))}</h2><p>${e(t('class.' + c.id + '.role'))}</p><p class="lore">${e(t('class.' + c.id + '.lore'))}</p><div class="stat-ribbon"><span>${icon('health')}${number(c.health)} ${e(t('stat.health'))}</span><span>${icon('move')}${number(c.speed)} ${e(t('stat.moveSpeed'))}</span></div><div class="starting-abilities">${[...c.abilities, c.ultimate].map((a) => `<article>${icon(a.slot === 'ultimate' ? 'ultimate' : 'ability')}<div><h3>${e(t('ability.' + a.id + '.name'))}</h3><p>${e(t('ability.' + a.id + '.description'))}</p><small>${e(t('ui.cooldown', { seconds: t('template.seconds', { value: number(a.cooldown) }) }))}</small></div></article>`).join('')}</div>${availableClass(c.id) ? '' : `<p class="availability">${e(t('ui.inProduction'))}</p>`}</article></div>${navigation(!availableClass(c.id))}`;
@@ -94,7 +105,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks) {
       content.innerHTML = `<div class="setup-heading"><h1>${e(t('ui.map'))}</h1></div><div class="map-composition"><div class="map-strip">${data.arenas.map((a) => `<button data-map="${a.id}" class="map-pick ${a.id === previewMap ? 'selected' : ''}" aria-pressed="${a.id === previewMap}">${icon('map')}<span>${e(t('arena.' + a.id + '.name'))}</span></button>`).join('')}</div><article class="map-detail">${mapPreview(a.id)}<div><h2>${e(t('arena.' + a.id + '.name'))}</h2><p>${e(t('arena.' + a.id + '.description'))}</p><div class="stat-ribbon"><span>${e(t('template.pixels', { value: number(a.width) + ' × ' + number(a.height) }))}</span></div></div></article></div>${navigation(false)}`;
     }
     if (page === 'difficulty')
-      content.innerHTML = `<div class="setup-heading"><h1>${e(t(labels[page]))}</h1></div><div class="difficulty-cards">${data.difficulties.map((d, i) => `<button data-difficulty="${d.id}" class="difficulty-pick ${d.id === selected.difficulty ? 'selected' : ''}" ${d.locked ? 'disabled' : ''} aria-pressed="${d.id === selected.difficulty}"><span class="difficulty-bells">${Array.from({ length: i + 1 }, () => icon('bell')).join('')}</span><h2>${e(t('difficulty.' + d.id))}</h2><span>${e(t('stat.health'))} ×${number(d.health, 2)}</span><span>${e(t('stat.damage'))} ×${number(d.damage, 2)}</span><span>${e(t('stat.bossSpeed'))} ×${number(d.speed, 2)}</span>${d.locked ? `<small>${e(t('ui.hardUnlock'))}</small>` : ''}</button>`).join('')}</div>${navigation(false)}`;
+      content.innerHTML = `<div class="setup-heading"><h1>${e(t(labels[page]))}</h1></div><div class="difficulty-cards">${data.difficulties.map((d, i) => `<button data-difficulty="${d.id}" class="difficulty-pick ${d.id === selected.difficulty ? 'selected' : ''}" ${!difficultyAvailable(d.id) ? 'disabled' : ''} aria-pressed="${d.id === selected.difficulty}"><span class="difficulty-bells">${Array.from({ length: i + 1 }, () => icon('bell')).join('')}</span><h2>${e(t('difficulty.' + d.id))}</h2><span>${e(t('stat.health'))} ×${number(d.health, 2)}</span><span>${e(t('stat.damage'))} ×${number(d.damage, 2)}</span><span>${e(t('stat.bossSpeed'))} ×${number(d.speed, 2)}</span>${!difficultyAvailable(d.id) ? `<small>${e(t('ui.hardUnlock'))}</small>` : ''}</button>`).join('')}</div>${navigation(false)}`;
     if (page === 'review')
       content.innerHTML = `<div class="setup-heading"><h1>${e(t(labels[page]))}</h1></div><div class="review-composition"><div class="review-portrait">${portrait(selected.classId)}</div><section><h2>${e(t('class.' + selected.classId + '.name'))} · ${e(t('mode.' + selected.mode + '.name'))}</h2><p>${e(t('arena.' + arenaId + '.name'))} · ${e(t('difficulty.' + selected.difficulty))}</p><label class="name-label">${e(t('ui.boss'))}<select id="opening-boss">${implementedBossIds.map((id) => `<option value="${id}" ${id === selected.openingBossId ? 'selected' : ''}>${e(t('boss.' + id + '.name'))}</option>`).join('')}</select></label><label class="name-label">${e(t('ui.displayName'))}<input id="name" value="${e(selected.name)}" maxlength="24" autocomplete="nickname"></label><div class="connection-choices" role="group" aria-label="${e(t('ui.roomSettings'))}">${[
         ['offline', 'ui.solo', 'soldier'],
@@ -108,6 +119,15 @@ export function mountSetup(host: HTMLElement, hooks: Hooks) {
         .join(
           '',
         )}</div><p class="muted">${e(t(visibility === 'offline' ? 'ui.offlineNotice' : 'ui.practiceNotice'))}</p>${capacityNotice()}${button('launch', t('ui.play'), 'play', 'class="primary launch"')}</section></div>${navigation(false, true)}`;
+    if (page === 'profile')
+      mountProfile(
+        content,
+        () => go('home'),
+        async () => {
+          await hooks.profileChanged();
+          render();
+        },
+      );
     if (page === 'changelog')
       content.innerHTML = changelogHTML(
         {
@@ -131,6 +151,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks) {
     byId('join', () => go('join'));
     byId('settings', () => go('settings'));
     byId('changelog', () => go('changelog'));
+    byId('profile', () => go('profile'));
     byId('back-home', () => go('home'));
     for (const id of ['guide', 'tutorial']) byId(id, () => tutorial(host, () => {}));
     byId('setup-back', () => go(stage <= 0 ? 'home' : steps[stage - 1]));
@@ -169,6 +190,13 @@ export function mountSetup(host: HTMLElement, hooks: Hooks) {
     });
     host.querySelector<HTMLSelectElement>('#language')!.onchange = async (event) => {
       await setLanguage((event.target as HTMLSelectElement).value);
+      try {
+        changeProfile(localStorage, (p) => {
+          p.locale = locale;
+        });
+      } catch {
+        showError('ui.errorSave');
+      }
       render();
     };
     host
@@ -198,6 +226,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks) {
     host.querySelectorAll<HTMLButtonElement>('[data-difficulty]').forEach(
       (b) =>
         (b.onclick = () => {
+          if (!difficultyAvailable(b.dataset.difficulty!)) return;
           selected.difficulty = b.dataset.difficulty!;
           render();
         }),

@@ -1,3 +1,9 @@
+import { loadProfile, changeProfile, type CosmeticId } from './profile.ts';
+import { defaultPreferences } from './preferences.ts';
+import { defaultControls } from './input-bindings.ts';
+import { controlsMarkup, bindControlSettings, bindingLabel } from './ui/control-settings.ts';
+import { insignia } from './ui/insignia.ts';
+import { profileText } from './profile-text.ts';
 import { extensionText, signatureHelp } from './extension-ui.ts';
 import Phaser from 'phaser';
 import './style.css';
@@ -50,36 +56,33 @@ function rating(p: PlayerView) {
   }
   return cached!.value;
 }
-const settings = {
-  autoFire: false,
-  aimAssist: false,
-  hitboxes: true,
-  reduceMotion: false,
-  highContrast: false,
-  volume: 0.45,
-  music: 0.3,
-  textScale: 1,
-};
+const settings = defaultPreferences();
+let inputOptions = defaultControls(),
+  selectedCosmetic: CosmeticId = 'field-mark',
+  profileError = false;
 try {
-  const stored = JSON.parse(localStorage.getItem('ga-settings') ?? '{}');
-  for (const key of ['autoFire', 'aimAssist', 'hitboxes', 'reduceMotion', 'highContrast'] as const)
-    if (typeof stored[key] === 'boolean') settings[key] = stored[key];
-  for (const key of ['volume', 'music', 'textScale'] as const)
-    if (Number.isFinite(stored[key]))
-      settings[key] = Math.max(
-        key === 'textScale' ? 0.9 : 0,
-        Math.min(key === 'textScale' ? 1.4 : 1, stored[key]),
-      );
-} catch {}
+  const p = loadProfile(localStorage);
+  Object.assign(settings, p.settings);
+  inputOptions = p.controls;
+  selectedCosmetic = p.selectedCosmetic;
+} catch {
+  profileError = true;
+}
 const saveSettings = () => {
   try {
+    changeProfile(localStorage, (p) => {
+      p.settings = { ...settings };
+    });
     localStorage.setItem('ga-settings', JSON.stringify(settings));
-  } catch {}
+  } catch {
+    notice(t('ui.errorSave'));
+  }
   applySettings();
 };
 function applySettings() {
   document.documentElement.style.setProperty('--text-scale', String(settings.textScale));
   if (controls) {
+    controls.configure(inputOptions);
     controls.autoFire = settings.autoFire;
     controls.aimAssist = settings.aimAssist;
   }
@@ -91,9 +94,23 @@ function applySettings() {
   audio.setVolume(settings.volume, settings.music);
 }
 function settingsMarkup() {
-  return `<details class="settings"><summary>${text('ui.settings')}</summary><div class="settings-grid">${(['autoFire', 'aimAssist', 'hitboxes', 'reduceMotion', 'highContrast'] as const).map((key) => `<label class="check"><input type="checkbox" data-setting="${key}" ${settings[key] ? 'checked' : ''}>${text('ui.' + key)}</label>`).join('')}<label>${text('ui.effectsVolume')}<input data-setting="volume" type="range" min="0" max="1" step="0.05" value="${settings.volume}"></label><label>${text('ui.musicVolume')}<input data-setting="music" type="range" min="0" max="1" step="0.05" value="${settings.music}"></label><label>${text('ui.textSize')}<input data-setting="textScale" type="range" min="0.9" max="1.4" step="0.1" value="${settings.textScale}"></label></div></details>`;
+  return `<details class="settings"><summary>${text('ui.settings')}</summary><div class="settings-grid">${(['autoFire', 'aimAssist', 'hitboxes', 'reduceMotion', 'highContrast'] as const).map((key) => `<label class="check"><input type="checkbox" data-setting="${key}" ${settings[key] ? 'checked' : ''}>${text('ui.' + key)}</label>`).join('')}<label>${text('ui.effectsVolume')}<input data-setting="volume" type="range" min="0" max="1" step="0.05" value="${settings.volume}"></label><label>${text('ui.musicVolume')}<input data-setting="music" type="range" min="0" max="1" step="0.05" value="${settings.music}"></label><label>${text('ui.textSize')}<input data-setting="textScale" type="range" min="0.9" max="1.4" step="0.1" value="${settings.textScale}"></label></div>${controlsMarkup(inputOptions)}</details>`;
 }
 function bindSettings() {
+  const root = document.querySelector<HTMLElement>('[data-controls]');
+  if (root)
+    bindControlSettings(
+      root,
+      () => inputOptions,
+      (next) => {
+        changeProfile(localStorage, (p) => {
+          p.controls = structuredClone(next);
+        });
+        inputOptions = next;
+        applySettings();
+      },
+    );
+
   document.querySelectorAll<HTMLInputElement>('[data-setting]').forEach((input) =>
     input.addEventListener('input', () => {
       const key = input.dataset.setting as keyof typeof settings;
@@ -104,7 +121,7 @@ function bindSettings() {
   );
 }
 function notice(value: string) {
-  const e = $('notice');
+  const e = $('notice') ?? $('status');
   if (e) {
     e.textContent = value;
     e.hidden = !value;
@@ -119,10 +136,22 @@ async function menu() {
     launch: (online, opts, join, visibility) => {
       void begin(online, join, visibility, opts);
     },
+    profileChanged: async () => {
+      const p = loadProfile(localStorage);
+      Object.assign(settings, p.settings);
+      inputOptions = p.controls;
+      selectedCosmetic = p.selectedCosmetic;
+      await setLanguage(p.locale);
+      applySettings();
+    },
     settingsHTML: settingsMarkup,
     bindSettings,
   });
   applySettings();
+  if (profileError) {
+    notice(t('ui.errorProfile'));
+    profileError = false;
+  }
 }
 function options(): ConnectionOptions {
   return setupOptions();
@@ -217,7 +246,7 @@ function setupGame(online: boolean) {
   uiKey = '';
   lastPhase = '';
   prediction = new Prediction();
-  app.innerHTML = `<div id="stage" dir="ltr"></div><section class="hud" aria-label="${text('ui.health')}"><div class="topline"><div><strong id="encounter"></strong><small id="status" role="status"></small></div><div id="boss-panel"><strong>${text('boss.constable.name')}</strong><span id="deadline"></span><progress id="boss-health" max="1" value="1" aria-label="${text('ui.boss')}"></progress></div><button id="pause-button">Ⅱ <span>${text('ui.pause')}</span></button></div><div id="accord" class="accord" hidden></div><p id="signature-help" class="signature-help" role="status" aria-live="polite" hidden></p><div class="bottomline"><div class="vitals"><strong id="player-name"></strong><progress id="health" max="1" value="1" aria-label="${text('ui.health')}"></progress><span id="health-text"></span><span id="ammo"></span><span id="currency"></span></div><div id="abilities" class="ability-list"></div><div id="squad" class="squad"></div></div></section><div id="modal" class="overlay" hidden></div><div id="pause-menu" class="overlay" hidden><section class="dialog"><h2>${text('ui.paused')}</h2><p>${text(online ? 'ui.onlinePause' : 'ui.offlineNotice')}</p>${settingsMarkup()}<div class="actions"><button id="resume" class="primary">${text('ui.continue')}</button><button id="leave">${text('ui.leaveRoom')}</button></div></section></div><div class="touch-buttons"><button data-action="Space">${text('ui.dodge')}</button><button data-action="KeyQ">Q</button><button data-action="KeyE">E</button><button data-action="KeyX">${text('ui.ultimate')}</button><button data-action="interact">${text('ui.revive')}</button><button data-action="KeyR">${text('ui.reload')}</button></div><div class="portrait-note">${text('ui.portraitHint')}</div>`;
+  app.innerHTML = `<div id="stage" dir="ltr"></div><section class="hud" aria-label="${text('ui.health')}"><div class="topline"><div><strong id="encounter"></strong><small id="status" role="status"></small></div><div id="boss-panel"><strong>${text('boss.constable.name')}</strong><span id="deadline"></span><progress id="boss-health" max="1" value="1" aria-label="${text('ui.boss')}"></progress></div><button id="pause-button">Ⅱ <span>${text('ui.pause')}</span></button></div><div id="accord" class="accord" hidden></div><p id="signature-help" class="signature-help" role="status" aria-live="polite" hidden></p><div class="bottomline"><div class="vitals"><strong id="player-name">${insignia(selectedCosmetic)}<span id="player-name-label"></span></strong><progress id="health" max="1" value="1" aria-label="${text('ui.health')}"></progress><span id="health-text"></span><span id="ammo"></span><span id="currency"></span></div><div id="abilities" class="ability-list"></div><div id="squad" class="squad"></div></div></section><div id="modal" class="overlay" hidden></div><div id="pause-menu" class="overlay" hidden><section class="dialog"><h2>${text('ui.paused')}</h2><p>${text(online ? 'ui.onlinePause' : 'ui.offlineNotice')}</p>${settingsMarkup()}<div class="actions"><button id="resume" class="primary">${text('ui.continue')}</button><button id="leave">${text('ui.leaveRoom')}</button></div></section></div><div class="touch-buttons"><button data-action="dodge">${text('ui.dodge')}</button><button data-action="q">Q</button><button data-action="e">E</button><button data-action="ultimate">${text('ui.ultimate')}</button><button data-action="interact">${text('ui.revive')}</button><button data-action="reload">${text('ui.reload')}</button></div><div class="portrait-note">${text('ui.portraitHint')}</div>`;
   const supplyBar = document.createElement('div');
   const checkpointNotice = document.createElement('small');
   checkpointNotice.id = 'checkpoint-notice';
@@ -229,7 +258,7 @@ function setupGame(online: boolean) {
   supplyBar.innerHTML = Array.from(
     { length: 3 },
     (_, i) =>
-      `<button data-supply-slot="${i}" data-action="Digit${i + 1}" disabled><b>${i + 1}</b><span data-supply-glyph>${icon('ability')}</span><small data-supply-count>—</small><small data-supply-time></small></button>`,
+      `<button data-supply-slot="${i}" data-action="supply${i + 1}" disabled><b>${i + 1}</b><span data-supply-glyph>${icon('ability')}</span><small data-supply-count>—</small><small data-supply-time></small></button>`,
   ).join('');
   $('squad').before(supplyBar);
   controls = new Controls($('stage'));
@@ -289,7 +318,7 @@ function update(view: View) {
   $('encounter').textContent = t('ui.encounter', {
     number: view.encounter + 1,
   });
-  $('player-name').textContent =
+  $('player-name-label').textContent =
     p.name +
     ' · ' +
     t('class.' + p.classId + '.name') +
@@ -335,8 +364,20 @@ function update(view: View) {
       paused;
     button.setAttribute('aria-label', `${number(index + 1)} · ${name} ×${number(slot.count)}`);
     button.title = item
-      ? name + '\n' + supplyText(item.id) + '\n' + t('ui.supplyHelp')
-      : t('ui.supplyHelp');
+      ? name +
+        '\n' +
+        supplyText(item.id) +
+        '\n' +
+        t('ui.supplyHelp', {
+          bindings: [1, 2, 3]
+            .map((n) => bindingLabel(inputOptions.bindings[('supply' + n) as 'supply1'][0]))
+            .join(' / '),
+        })
+      : t('ui.supplyHelp', {
+          bindings: [1, 2, 3]
+            .map((n) => bindingLabel(inputOptions.bindings[('supply' + n) as 'supply1'][0]))
+            .join(' / '),
+        });
     if (button.dataset.item !== slot.id) {
       button.dataset.item = slot.id;
       button.querySelector('[data-supply-glyph]')!.innerHTML =
@@ -344,6 +385,9 @@ function update(view: View) {
           ? `<img class="supply-art" src="${assets.items['supply/' + item.id]}" alt="" aria-hidden="true">`
           : icon(item ? supplyGlyph(item.effect) : 'ability');
     }
+    button.querySelector('b')!.textContent = bindingLabel(
+      inputOptions.bindings[('supply' + (index + 1)) as 'supply1'][0],
+    );
     button.querySelector('[data-supply-count]')!.textContent = item
       ? '×' + number(slot.count)
       : '—';
@@ -371,15 +415,15 @@ function update(view: View) {
   const cl = data.classes.find((c) => c.id === p.classId)!;
   const abilityList = $('abilities');
   for (const [key, label, at, name] of [
-    ['Space', t('ui.dodge'), p.dodgeAt, ''],
-    ['Q', t('ui.abilityQ'), p.qAt, t('ability.' + cl.abilities[0].id + '.name')],
+    ['dodge', t('ui.dodge'), p.dodgeAt, ''],
+    ['q', t('ui.abilityQ'), p.qAt, t('ability.' + cl.abilities[0].id + '.name')],
     [
-      'E',
+      'e',
       t('ui.abilityE') + (p.kit.stepCharges > 0 ? ' ×' + number(p.kit.stepCharges) : ''),
       p.kit.stepCharges > 0 ? 0 : p.eAt,
       t('ability.' + cl.abilities[1].id + '.name'),
     ],
-    ['X', t('ui.ultimate'), p.ultimateAt, t('ability.' + cl.ultimate.id + '.name')],
+    ['ultimate', t('ui.ultimate'), p.ultimateAt, t('ability.' + cl.ultimate.id + '.name')],
   ] as const) {
     let e = abilityList.querySelector<HTMLElement>('[data-ability="' + key + '"]');
     if (!e) {
@@ -390,7 +434,11 @@ function update(view: View) {
     e.className = at <= view.combatTick ? 'ability ready' : 'ability';
     e.title = name;
     const value =
-      key + ' · ' + label + ' ' + (at > view.combatTick ? clock((at - view.combatTick) / 30) : '✓');
+      bindingLabel(inputOptions.bindings[key][0]) +
+      ' · ' +
+      label +
+      ' ' +
+      (at > view.combatTick ? clock((at - view.combatTick) / 30) : '✓');
     if (e.textContent !== value) e.textContent = value;
   }
   $('squad').textContent =
@@ -406,9 +454,28 @@ function update(view: View) {
         seconds: Math.max(0, Math.ceil((p.downUntil - view.combatTick) / 30)),
       }) +
       ' · ' +
-      t('ui.revivePrompt', { binding: 'F / B', player: p.name });
+      (inputOptions.interactMode === 'toggle'
+        ? profileText(locale, 'toggleRevive', {
+            binding:
+              bindingLabel(inputOptions.bindings.interact[0]) +
+              ' / ' +
+              profileText(locale, 'pad') +
+              ' ' +
+              inputOptions.gamepad.interact,
+            player: p.name,
+          })
+        : t('ui.revivePrompt', {
+            binding:
+              bindingLabel(inputOptions.bindings.interact[0]) +
+              ' / ' +
+              profileText(locale, 'pad') +
+              ' ' +
+              inputOptions.gamepad.interact,
+            player: p.name,
+          }));
   else if (p.status === 'waiting') $('status').textContent = t('ui.lateJoin');
   else if (p.status === 'eliminated') $('status').textContent = t('ui.eliminated');
+  else if (session.status === 'ui.errorSave') $('status').textContent = t('ui.errorSave');
   else if (!['ui.reconnecting', 'ui.errorNetwork'].includes(session.status))
     $('status').textContent = '';
   if (view.phase !== lastPhase) {
@@ -498,7 +565,7 @@ function renderOverlay(view: View, p: PlayerView) {
     body = `<p>${text('ui.tutorialTeam')}</p>`;
   } else {
     title = t(view.phase === 'victory' ? 'ui.victory' : 'ui.defeat');
-    body = `${view.campaignBank && ['cleared', 'failed'].includes(view.secretStatus) ? '<p>' + esc(extensionText(locale, view.secretStatus === 'cleared' ? 'cleared' : 'failed')) + '</p>' : ''}<p>${text(session?.online ? 'ui.practiceNotice' : 'ui.offlineNotice')}</p><button id="return-menu" class="primary">${text('ui.mainMenu')}</button>`;
+    body = `<p>${text('ui.mastery')} · ${number(p.progress.clears)} ${esc(profileText(locale, 'clears'))} · ${number(p.progress.rescues)} ${esc(profileText(locale, 'rescues'))} · <bdi>${number(p.progress.clears * 100)} XP</bdi></p>${view.campaignBank && ['cleared', 'failed'].includes(view.secretStatus) ? '<p>' + esc(extensionText(locale, view.secretStatus === 'cleared' ? 'cleared' : 'failed')) + '</p>' : ''}<p>${text(session?.online ? 'ui.practiceNotice' : 'ui.offlineNotice')}</p><button id="return-menu" class="primary">${text('ui.mainMenu')}</button>`;
   }
   const previous =
     document.activeElement instanceof HTMLElement && overlay.contains(document.activeElement)
@@ -511,7 +578,7 @@ function renderOverlay(view: View, p: PlayerView) {
   overlay.dataset.phase = view.phase;
   overlay.innerHTML = `<section class="dialog ${view.phase === 'lobby' || view.phase === 'shop' ? 'wide' : ''}" role="dialog" aria-modal="true" aria-labelledby="phase-heading"><div class="section-heading"><h2 id="phase-heading" tabindex="-1">${esc(title)}</h2><span id="phase-time"></span></div>${body}</section>`;
   if (['lobby', 'shop'].includes(view.phase))
-    bindShop(overlay, p, (request) => session?.purchase(request));
+    bindShop(overlay, p, (request) => session?.purchase(request), supplyBindings());
   overlay.querySelectorAll<HTMLButtonElement>('[data-vote]').forEach(
     (button) =>
       (button.onclick = () => {
@@ -539,8 +606,10 @@ function renderOverlay(view: View, p: PlayerView) {
       overlay.querySelector<HTMLElement>('#phase-heading')!.focus({ preventScroll: true });
   }
 }
+const supplyBindings = () =>
+  [1, 2, 3].map((n) => bindingLabel(inputOptions.bindings[('supply' + n) as 'supply1'][0]));
 function shop(p: PlayerView) {
-  return '<div class="loadout-editor">' + shopMarkup(p) + '</div>';
+  return '<div class="loadout-editor">' + shopMarkup(p, supplyBindings()) + '</div>';
 }
 async function leave() {
   controls?.clear();

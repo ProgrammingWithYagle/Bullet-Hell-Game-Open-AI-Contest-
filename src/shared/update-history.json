@@ -1,15 +1,45 @@
 {
-  "buildId": "2026.10.24-endless-secret",
+  "buildId": "2026.10.24-profile",
   "snapshot": {
     "bosses": 60,
     "classes": 7,
     "skills": 378,
     "weapons": 28,
     "maps": 6,
-    "modes": ["short", "standard", "long", "raid", "endless"],
-    "protocol": 12
+    "modes": [
+      "short",
+      "standard",
+      "long",
+      "raid",
+      "endless"
+    ],
+    "protocol": 13
   },
   "entries": [
+    {
+      "id": "profiles-and-controls",
+      "date": "2026-10-24",
+      "title": "Persistent profiles, mastery and remappable controls",
+      "groups": [
+        {
+          "title": "Progress that survives a run",
+          "items": [
+            "Added a local ProfileV1 menu with seven class mastery records, 100 XP per completed encounter, separate teammate rescue counts, discovered boss codex entries and personal/squad Endless bests by difficulty. Progress banks after each clear and remains after defeat or voluntary departure.",
+            "Six clean ink insignia unlock through completed encounters or an earned Uncounted memorial. They appear beside the local survivor name and never change health, damage, coins, weapons or skills.",
+            "Completing any full timed campaign on Hard unlocks Insane and Hellish in setup. Personal participation is recorded from deployment; a late join plus the optional secret cannot substitute for a missed campaign encounter. All six difficulties now execute online with server-owned coefficients.",
+            "Profiles export/import as bounded, validated JSON and retain exact previous bytes before replacement. Repeated views and stale restored boundaries cannot double-award mastery or remove a memorial. Older campaign-only records are retained separately because they lack personal participation evidence."
+          ]
+        },
+        {
+          "title": "Input, accessibility and compatibility",
+          "items": [
+            "Keyboard/mouse actions and standard gamepad buttons can be remapped. Duplicate and reserved bindings are rejected; movement retains two optional keyboard bindings. Fire and interaction each offer Hold or Toggle, and blur/pause clears latched input. Touch and gamepad actions remain independent of keyboard key codes.",
+            "The profile also carries locale, audio, display and accessibility settings. Profile navigation and control messages cover all fifteen locales. Existing boss mechanic descriptions remain localized; the newly surfaced background histories are explicitly marked English pending translation and native review.",
+            "Protocol 13 adds opaque run IDs and personal progress to replicated state and saved boundaries. Local Practice saves from protocols 4 through 12 migrate with bounded validation; protocol-12 secret offers and Endless history are preserved. Signed online checkpoints stay strict. Seeded future schedules remain concealed."
+          ]
+        }
+      ]
+    },
     {
       "id": "endless-and-uncounted",
       "date": "2026-10-24",

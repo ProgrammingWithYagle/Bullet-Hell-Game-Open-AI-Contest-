@@ -18,7 +18,7 @@ Soldier provides ranged fire and rally support. Heavy suppresses and braces. Tan
 
 Each class has three parent branches with three six-node paths each. A path's depths cost 1, 2, 3, 4, 5 and 6 SP, for 21 total. Prerequisites must be owned in order. Only one capstone may be active. Quarantine, Midnight and Pilgrimage start with 3 SP and reach 27 before the finale. Grand Raid uses 12, 20 and 27 SP before its three fights. Endless reaches the normal build ceiling rather than accumulating unlimited player power.
 
-Weapon purchases are class-compatible. Skills and weapons reset with the run. Ultimate cooldowns advance in combat, start ready and have a maximum 40% cooldown reduction. Permanent mastery and cosmetics are planned; they are not a working persistence feature.
+Weapon purchases are class-compatible. Skills and weapons reset with the run. Ultimate cooldowns advance in combat, start ready and have a maximum 40% cooldown reduction. Local [mastery and cosmetic insignia](Profiles) now persist independently of purchased run power.
 
 The class completion package includes 124 approved run poses and 52 item illustrations. Earlier Heavy/Warden motion is also connected. Full firing, dodge, hurt, downed and defeat libraries for every facing still require production and rendered review. Four consistent Engineer north poses are selected; four failed poses remain excluded and preserved in provenance.
 
