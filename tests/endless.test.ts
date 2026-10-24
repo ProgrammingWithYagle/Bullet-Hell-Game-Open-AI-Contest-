@@ -19,7 +19,7 @@ import type { SignatureContext } from '../src/shared/boss-director.ts';
 import { Game, data } from '../src/shared/game.ts';
 import { idleInput, PROTOCOL, type BossId, type Shot } from '../src/shared/protocol.ts';
 import { Prediction } from '../src/client/prediction.ts';
-import { viewOf } from '../src/shared/view.ts';
+import { viewOf, personalView } from '../src/shared/view.ts';
 import { recordPracticeCampaign, practiceRecords } from '../src/client/progress.ts';
 import { signatureHelp, extensionText } from '../src/client/extension-ui.ts';
 import messages from '../src/client/extension-ui.json';
@@ -505,20 +505,54 @@ test('three actual solo Accord holds satisfy the optional-finale condition witho
   }
   assert.equal(g.accords, 3);
 });
-test('every connected survivor must consent; declining and offer expiry preserve the saved victory', () => {
+test('each survivor may bank and leave while willing allies continue; only consenting entrants scale the secret', () => {
   const g = finish(campaign('normal', 2)),
     bank = structuredClone(g.campaignBank);
   assert(g.vote('p0', 1));
   assert.equal(g.phase, 'secretOffer');
   assert(g.vote('p1', 0));
-  assert.equal(g.phase, 'victory');
-  assert.equal(g.secretStatus, 'declined');
+  assert.equal(g.phase, 'loading');
+  assert.deepEqual(g.extensionParticipants, ['p0']);
+  assert.equal(personalView(viewOf(g, 'p1'), 'p1').phase, 'victory');
+  assert.equal(personalView(viewOf(g, 'p1'), 'p1').secretStatus, 'declined');
+  g.phaseEnds = g.tick;
+  g.step();
+  assert.equal(g.players.get('p1')!.status, 'waiting');
+  const base = new Game({ maxPlayers: 1, openingBossId: 'uncounted' });
+  base.addPlayer('p', 'Baseline', 'soldier');
+  base.start();
+  const healthModifiers = g.mutations.reduce(
+    (n, a) =>
+      n *
+      Number(
+        (data.mutations.find((m) => m.id === a.id)!.modifiers as Record<string, unknown>)
+          .bossHealth ?? 1,
+      ),
+    1,
+  );
+  assert(Math.abs(g.boss.maxHealth - base.boss.maxHealth * healthModifiers) < 1e-8);
   assert.deepEqual(g.campaignBank, bank);
   const timeout = finish(campaign());
   timeout.phaseEnds = timeout.tick;
   timeout.step();
   assert.equal(timeout.phase, 'victory');
   assert(timeout.campaignBank);
+});
+test('an unanswered offer expires into the accepted subset, and all-declined offers preserve a terminal victory', () => {
+  const accepted = finish(campaign('normal', 2));
+  accepted.vote('p0', 1);
+  accepted.phaseEnds = accepted.tick;
+  accepted.step();
+  assert.equal(accepted.phase, 'loading');
+  assert.deepEqual(accepted.extensionParticipants, ['p0']);
+  assert.equal(personalView(viewOf(accepted, 'p1'), 'p1').phase, 'victory');
+  const declined = finish(campaign('normal', 2));
+  declined.vote('p0', 0);
+  assert.equal(declined.phase, 'secretOffer');
+  assert.equal(personalView(viewOf(declined, 'p0'), 'p0').phase, 'victory');
+  declined.vote('p1', 0);
+  assert.equal(declined.phase, 'victory');
+  assert.equal(declined.secretStatus, 'declined');
 });
 test('offer, acceptance and loading restore exactly; extension defeat retains the campaign bank and never auto-rewards a memorial', () => {
   let g = finish(campaign());

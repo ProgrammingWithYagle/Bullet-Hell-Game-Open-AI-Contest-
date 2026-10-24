@@ -141,3 +141,26 @@ export function viewOf(g: Game, owner: string): View {
     accord: g.accord ? structuredClone(g.accord) : null,
   };
 }
+
+/** A survivor who banks and leaves sees their secured victory while willing allies continue. */
+export function personalView(view: View, id: string): View {
+  const p = view.players.find((p) => p.id === id);
+  if (
+    view.campaignBank &&
+    p?.eligible &&
+    ((view.phase === 'secretOffer' && view.votes[id] === 0) ||
+      (['active', 'cleared', 'failed'].includes(view.secretStatus) &&
+        !view.extensionParticipants.includes(id)))
+  )
+    return {
+      ...view,
+      phase: 'victory',
+      phaseEnds: view.tick,
+      secretStatus: 'declined',
+      bossCues: [],
+      minions: [],
+      warnings: [],
+      fields: [],
+    };
+  return view;
+}

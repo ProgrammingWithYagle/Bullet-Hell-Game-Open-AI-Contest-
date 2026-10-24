@@ -11,7 +11,7 @@ import {
   type Phase,
   type CheckpointStatus,
 } from '../shared/protocol.ts';
-import type { View, PlayerView } from '../shared/view.ts';
+import { personalView, type View, type PlayerView } from '../shared/view.ts';
 import { decodeEvents, type WireEvent } from '../shared/wire-events.ts';
 import { savedBoundary, storeBoundary } from './storage.ts';
 import { recordPracticeCampaign } from './progress.ts';
@@ -266,6 +266,7 @@ export class Session {
   private recordedCampaign = '';
   private receive(view: View) {
     if (this.closed) return;
+    view = personalView(view, this.id);
     const recordKey = view.campaignBank?.runId + ':' + view.secretStatus;
     if (view.campaignBank && recordKey !== this.recordedCampaign) {
       this.recordedCampaign = recordKey;

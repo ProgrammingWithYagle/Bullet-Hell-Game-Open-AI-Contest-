@@ -57,7 +57,7 @@ test(
   },
 );
 test(
-  'network campaign banks its victory before unanimous secret consent; decline and extension defeat retain it',
+  'network survivors independently bank or enter the secret, and extension defeat preserves every campaign clear',
   { timeout: 45000 },
   async () => {
     const { server, httpServer } = createGameServer();
@@ -103,17 +103,21 @@ test(
           await until(() => g.votes.get(host.id) === 1);
           assert.equal(g.phase, 'secretOffer');
           guest.vote(accept ? 1 : 0);
+          await until(() => g.phase === 'loading');
+          assert.deepEqual(g.extensionParticipants, accept ? [host.id, guest.id] : [host.id]);
           if (!accept) {
-            await until(() => host.view?.phase === 'victory');
-            assert.equal(host.view!.secretStatus, 'declined');
-          } else {
-            await until(() => g.phase === 'loading');
-            g.phaseEnds = g.tick;
-            await until(() => host.view?.boss.id === 'uncounted' && host.view?.phase === 'combat');
-            g.boss.deadline = g.combatTick;
-            await until(() => host.view?.phase === 'victory');
-            assert.equal(host.view!.secretStatus, 'failed');
+            await until(() => guest.view?.phase === 'victory');
+            assert.equal(guest.view!.secretStatus, 'declined');
           }
+          g.phaseEnds = g.tick;
+          await until(() => host.view?.boss.id === 'uncounted' && host.view?.phase === 'combat');
+          if (!accept) {
+            assert.equal(g.players.get(guest.id)!.status, 'waiting');
+            assert.equal(guest.view!.phase, 'victory');
+          }
+          g.boss.deadline = g.combatTick;
+          await until(() => host.view?.phase === 'victory');
+          assert.equal(host.view!.secretStatus, 'failed');
           assert.deepEqual(host.view!.campaignBank, bank);
           assert.deepEqual(guest.view!.campaignBank, bank);
         } finally {

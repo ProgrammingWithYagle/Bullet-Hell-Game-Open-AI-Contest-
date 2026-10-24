@@ -617,31 +617,7 @@ export class Game {
       if (!p?.connected || !p.eligible || p.status === 'waiting' || (index !== 0 && index !== 1))
         return false;
       this.votes.set(id, index);
-      if (index === 0) {
-        this.secretStatus = 'declined';
-        this.phase = 'victory';
-        this.votes.clear();
-      } else if (
-        this.roster()
-          .filter((p) => p.connected && p.eligible)
-          .every((p) => this.votes.get(p.id) === 1)
-      ) {
-        this.extensionParticipants = this.roster()
-          .filter((p) => p.connected && p.eligible && this.votes.get(p.id) === 1)
-          .map((p) => p.id);
-        this.secretStatus = 'active';
-        this.selectedContract = {
-          id: 'uncounted-extension',
-          bossId: 'uncounted',
-          threat: 11,
-          risk: 0,
-          bounty: 1,
-          recommendedRating: 1,
-          variant: 'normal',
-        };
-        this.boss.id = 'uncounted';
-        this.changePhase('loading', rule.deploymentSeconds);
-      }
+      this.resolveSecretOffer(false);
       return true;
     }
 
@@ -656,6 +632,31 @@ export class Game {
       return false;
     this.votes.set(id, index);
     return true;
+  }
+  private resolveSecretOffer(expired: boolean) {
+    const eligible = this.roster().filter((p) => p.connected && p.eligible);
+    if (!expired && eligible.some((p) => !this.votes.has(p.id))) return;
+    this.extensionParticipants = eligible
+      .filter((p) => this.votes.get(p.id) === 1)
+      .map((p) => p.id);
+    if (!this.extensionParticipants.length) {
+      this.secretStatus = 'declined';
+      this.phase = 'victory';
+      this.votes.clear();
+      return;
+    }
+    this.secretStatus = 'active';
+    this.selectedContract = {
+      id: 'uncounted-extension',
+      bossId: 'uncounted',
+      threat: 11,
+      risk: 0,
+      bounty: 1,
+      recommendedRating: 1,
+      variant: 'normal',
+    };
+    this.boss.id = 'uncounted';
+    this.changePhase('loading', rule.deploymentSeconds);
   }
   private winningVote() {
     const counts = [0, 0, 0];
@@ -692,7 +693,9 @@ export class Game {
       rule.bossHealthBase *
       rule.bossHealthThreatGrowth ** (Math.min(10, contract.threat) - 1) *
       this.bossDefinition(contract).healthFactor *
-      (this.settings.mode === 'raid' ? 1.25 : 1) *
+      (this.settings.mode === 'raid' && this.bossDefinition(contract).route !== 'secret'
+        ? 1.25
+        : 1) *
       this.difficulty.health *
       (1 + 0.7 * Math.max(0, n - 1)) *
       this.modifier('bossHealth') *
@@ -763,7 +766,7 @@ export class Game {
       p.oldY = p.y;
       p.invulnerableUntil = this.combatTick + ticks(1);
     }
-    const health = this.healthForRoster(this.players.size),
+    const health = this.healthForRoster(this.roster().length),
       deadline =
         this.combatTick +
         ticks(
@@ -892,13 +895,11 @@ export class Game {
     this.changePhase('mutationVote', rule.mutationVoteSeconds);
   }
   private intermission() {
-    if (this.tick < this.phaseEnds) return;
     if (this.phase === 'secretOffer') {
-      this.secretStatus = 'declined';
-      this.phase = 'victory';
-      this.votes.clear();
+      this.resolveSecretOffer(this.tick >= this.phaseEnds);
       return;
     }
+    if (this.tick < this.phaseEnds) return;
     if (this.phase === 'mutationVote') {
       const id = this.mutationCards[this.winningVote()];
       this.mutations.push({ id, remaining: 3 });
