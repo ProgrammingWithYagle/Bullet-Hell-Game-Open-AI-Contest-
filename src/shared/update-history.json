@@ -1,5 +1,5 @@
 {
-  "buildId": "2026.10.24-balance-collision",
+  "buildId": "2026.10.24-audio-delivery",
   "snapshot": {
     "bosses": 60,
     "classes": 7,
@@ -16,6 +16,21 @@
     "protocol": 13
   },
   "entries": [
+    {
+      "id": "compressed-music-delivery",
+      "date": "2026-10-24",
+      "title": "Smaller music downloads with original PCM fallback",
+      "groups": [
+        {
+          "title": "Audio delivery",
+          "items": [
+            "Added audited 192 kbps music delivery copies for all sixty boss themes and City Wake. Preferred transfers total 64,351,596 bytes instead of 472,276,236 PCM bytes; original compositions, scores and WAV hashes remain unchanged.",
+            "The audio engine checks decoded duration before looping. Unsupported compressed decoding or unexpected padding uses the original WAV, retains warning ducking and keeps the three-buffer music cache bound. Original masters remain bundled for fallback, so this reduces preferred transfers rather than the total offline package.",
+            "Independent FFmpeg decoding verifies exact frame counts, signal fidelity, levels, clipping and loop sample-step bounds across all 61 copies. Browser/device decoding and human listening remain open; signal checks are not perceptual approval."
+          ]
+        }
+      ]
+    },
     {
       "id": "balance-and-projectiles",
       "date": "2026-10-24",

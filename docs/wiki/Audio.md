@@ -66,3 +66,7 @@ All sixty executable bosses have an individual original composition and synthesi
 | The Uncounted | Names Beyond the Bell |
 
 Editable scores, PCM and machine audits remain in the repository. Adding ten Endless/secret tracks preserved the previous fifty masters. Music crossfades, warning ducking and bounded decoded audio caches are connected. Objective checks cover clipping, DC offset, mono compatibility and loop continuity. Human listening and headphone, speaker, phone and crowded online mix acceptance remain open. [Audio sources](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/tree/feat/first-playable-loop/assets/production/audio/boss-themes).
+
+## Compressed delivery, 2026-10-24
+
+All sixty boss themes and City Wake have 192 kbps delivery copies: 64,351,596 bytes versus 472,276,236 PCM bytes. Original WAV masters and scores remain unchanged and bundled as fallback. The runtime checks decoded frame duration before looping and falls back on decode failure or unexpected padding. FFmpeg decode/frame/SNR/headroom/DC/seam checks pass for 61 copies; browser/device decoding and human listening remain unreviewed. The full pipeline now passes 272 tests. See the [delivery audit](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/reviews/audio-delivery-2026-10-24.json). Encoder details follow the [FFmpeg MP3 format documentation](https://ffmpeg.org/ffmpeg-formats.html#mp3). The encoder is a development tool and is not shipped with the game.

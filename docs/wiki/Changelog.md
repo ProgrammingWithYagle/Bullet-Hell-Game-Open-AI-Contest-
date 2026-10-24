@@ -1,6 +1,14 @@
 # Changelog
 
-Development build **2026.10.24-balance-collision**, protocol 13. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.24-audio-delivery**, protocol 13. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-24 — Smaller music downloads with original PCM fallback
+
+### Audio delivery
+
+- Added audited 192 kbps music delivery copies for all sixty boss themes and City Wake. Preferred transfers total 64,351,596 bytes instead of 472,276,236 PCM bytes; original compositions, scores and WAV hashes remain unchanged.
+- The audio engine checks decoded duration before looping. Unsupported compressed decoding or unexpected padding uses the original WAV, retains warning ducking and keeps the three-buffer music cache bound. Original masters remain bundled for fallback, so this reduces preferred transfers rather than the total offline package.
+- Independent FFmpeg decoding verifies exact frame counts, signal fidelity, levels, clipping and loop sample-step bounds across all 61 copies. Browser/device decoding and human listening remain open; signal checks are not perceptual approval.
 
 ## 2026-10-24 — Boss health correction, destructible buildings and collision performance
 

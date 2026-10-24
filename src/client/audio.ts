@@ -1,3 +1,10 @@
+import deliveryLibrary from '../../assets/production/audio/delivery/library.json';
+import { chooseMusicBuffer } from './audio-delivery.ts';
+const delivery = import.meta.glob('../../assets/production/audio/delivery/*.mp3', {
+  query: '?url',
+  import: 'default',
+  eager: true,
+}) as Record<string, string>;
 import type { BossId } from '../shared/protocol.ts';
 import { musicIdentity } from './boss-music.ts';
 const sfx = import.meta.glob('../../assets/audio/sfx/*.wav', {
@@ -20,6 +27,7 @@ export class AudioBus {
   private active = 0;
   private last = new Map<string, number>();
   private loopRevision = 0;
+  private failedDelivery = new Set<string>();
   private duckUntil = 0;
   volume = 0.45;
   musicVolume = 0.3;
@@ -87,10 +95,20 @@ export class AudioBus {
     if (!this.context) return;
     const revision = ++this.loopRevision,
       id = musicIdentity(combat, boss);
-    const url = combat ? themes['../../assets/production/audio/boss-themes/' + id + '.wav'] : city;
-    if (!url) return;
+    const track = deliveryLibrary.tracks.find((t) => t.id === id);
+    if (!track) return;
+    const compressed = delivery['../../' + track.deliveryPath],
+      master = combat ? themes['../../' + track.masterPath] : city;
+    if (!compressed || !master) return;
     try {
-      const buffer = await this.buffer(url);
+      const { buffer, url } = await chooseMusicBuffer(
+        { compressed, master, frames: track.frames, rate: track.sampleRate },
+        (url) => this.buffer(url),
+        this.failedDelivery,
+        (url) => {
+          this.buffers.delete(url);
+        },
+      );
       if (revision !== this.loopRevision || this.music?.buffer === buffer) return;
       const now = this.context.currentTime;
       for (const [old, gain] of this.voices) {
@@ -118,7 +136,10 @@ export class AudioBus {
       this.music = source;
       // Decoded music is larger than PCM. Keep at most three old theme buffers.
       const musicKeys = [...this.buffers.keys()].filter(
-        (key) => key === city || Object.values(themes).includes(key),
+        (key) =>
+          key === city ||
+          Object.values(themes).includes(key) ||
+          Object.values(delivery).includes(key),
       );
       for (const key of musicKeys
         .filter((key) => key !== url)
