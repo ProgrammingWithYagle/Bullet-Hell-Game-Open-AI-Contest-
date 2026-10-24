@@ -16,7 +16,7 @@ Soldier provides ranged fire and rally support. Heavy suppresses and braces. Tan
 
 ## Buying a build
 
-Each class has three parent branches with three six-node paths each. A path's depths cost 1, 2, 3, 4, 5 and 6 SP, for 21 total. Prerequisites must be owned in order. Only one capstone may be active. The campaigns start with 3 SP and reach 27 before the finale. Endless reaches the normal build ceiling rather than accumulating unlimited player power.
+Each class has three parent branches with three six-node paths each. A path's depths cost 1, 2, 3, 4, 5 and 6 SP, for 21 total. Prerequisites must be owned in order. Only one capstone may be active. Quarantine, Midnight and Pilgrimage start with 3 SP and reach 27 before the finale. Grand Raid uses 12, 20 and 27 SP before its three fights. Endless reaches the normal build ceiling rather than accumulating unlimited player power.
 
 Weapon purchases are class-compatible. Skills and weapons reset with the run. Ultimate cooldowns advance in combat, start ready and have a maximum 40% cooldown reduction. Permanent mastery and cosmetics are planned; they are not a working persistence feature.
 

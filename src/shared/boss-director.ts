@@ -1,3 +1,9 @@
+import {
+  EndlessDirector,
+  endlessSolids,
+  type EndlessCue,
+  type EndlessProp,
+} from './endless-director.ts';
 import { RaidDirector, type RaidCue } from './raid-director.ts';
 import { DistrictDirector, type DistrictCue, type DistrictProp } from './district-director.ts';
 import { ServiceDirector, type ServiceCue } from './service-director.ts';
@@ -12,6 +18,7 @@ export type BossCue =
   | ServiceCue
   | DistrictCue
   | RaidCue
+  | EndlessCue
   | {
       kind: 'charge' | 'scent';
       id: number;
@@ -114,8 +121,9 @@ export class BossDirector {
   readonly services = new ServiceDirector();
   readonly district = new DistrictDirector();
   readonly raids = new RaidDirector();
+  readonly endless = new EndlessDirector();
   solids(tick: number) {
-    return this.civic.solids(tick);
+    return [...this.civic.solids(tick), ...endlessSolids(this.endless.cues(), tick)];
   }
   weakPoints() {
     return [
@@ -124,6 +132,7 @@ export class BossDirector {
       ...this.services.weakPoints(),
       ...this.district.weakPoints(),
       ...this.raids.weakPoints(),
+      ...this.endless.weakPoints(),
     ];
   }
   private lanes: Lane[] = [];
@@ -163,6 +172,7 @@ export class BossDirector {
     this.services.reset(kind, encounter);
     this.district.reset(kind, encounter);
     this.raids.reset(kind, encounter);
+    this.endless.reset(kind, encounter);
     if (encounter) this.civic.resetEncounter(kind);
     else this.civic.reset(kind);
     this.kind = kind;
@@ -195,6 +205,8 @@ export class BossDirector {
       : null;
   }
   weakContact(from: Vec, to: Vec, weak: Vec & { kind: string; radius: number }, radius: number) {
+    if (weak.kind === 'endless-prop')
+      return this.endless.weakContact(from, to, weak as EndlessProp, radius);
     if (weak.kind === 'raid-prop') {
       const p = weak as import('./raid-director.ts').RaidProp;
       return segmentCircle(
@@ -209,6 +221,15 @@ export class BossDirector {
       : segmentCircle(from, to, weak, radius + weak.radius);
   }
   weakInRadius(point: Vec, radius: number, weak: Vec & { kind: string; radius: number }) {
+    if (weak.kind === 'endless-prop' && (weak as EndlessProp).role === 'block') {
+      const p = weak as EndlessProp;
+      return (
+        Math.hypot(
+          Math.max(0, Math.abs(point.x - p.x) - p.width / 2),
+          Math.max(0, Math.abs(point.y - p.y) - p.height / 2),
+        ) <= radius
+      );
+    }
     if (weak.kind === 'district-prop') {
       const prop = weak as DistrictProp;
       if (prop.width > 0)
@@ -225,6 +246,7 @@ export class BossDirector {
     return this.kind === 'choir' || this.raids.independentBodies();
   }
   damageTransfer(id: number) {
+    if (this.endless.transfersDamage(id)) return { multiplier: 1.5, bypassArmor: true };
     const raid = this.raids.transfer(id);
     if (raid) return { multiplier: raid, bypassArmor: true };
     if (this.district.transfersDamage(id)) return { multiplier: 1.6, bypassArmor: true };
@@ -232,12 +254,19 @@ export class BossDirector {
     return null;
   }
   coreContact(from: Vec, to: Vec, radius: number) {
+    if (
+      this.endless
+        .weakPoints()
+        .some((p) => p.role === 'core' && this.endless.weakContact(from, to, p, radius) !== null)
+    )
+      return true;
     if (this.raids.coreContact(from, to, radius)) return true;
     return this.district
       .weakPoints()
       .some((p) => p.role === 'core' && this.district.weakContact(from, to, p, radius) !== null);
   }
   hitWeakPoint(amount: number, tick: number, id?: number) {
+    if (id !== undefined && this.endless.handles(this.kind)) return this.endless.hit(id, amount);
     if (id !== undefined && this.raids.handles(this.kind)) return this.raids.hit(id, amount, tick);
     if (id !== undefined && this.district.handles(this.kind))
       return this.district.hit(id, amount, tick);
@@ -402,6 +431,7 @@ export class BossDirector {
       ...this.services.cues(),
       ...this.district.cues(),
       ...this.raids.cues(),
+      ...this.endless.cues(),
       ...this.lanes,
       ...this.trails.map((t) => t.cue),
       ...this.stamps,
@@ -495,6 +525,7 @@ export class BossDirector {
     this.services.step(context);
     this.district.step(context);
     this.raids.step(context);
+    this.endless.step(context);
     for (const trail of this.trails) {
       if (context.tick >= trail.cue.until) continue;
       const retired = Math.min(

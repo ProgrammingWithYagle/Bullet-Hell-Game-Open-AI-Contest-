@@ -1,3 +1,5 @@
+import { EndlessPresentation } from './endless-presentation.ts';
+import type { EndlessCue } from '../shared/endless-director.ts';
 import { RaidPresentation } from './raid-presentation.ts';
 import type { RaidCue } from '../shared/raid-director.ts';
 import { DistrictPresentation } from './district-presentation.ts';
@@ -42,6 +44,7 @@ export class CombatScene extends Phaser.Scene {
   private arenaGround!: Phaser.GameObjects.Graphics;
   private lastArenaId = '';
   private serviceArt!: ServicePresentation;
+  private endlessArt!: EndlessPresentation;
   private raidArt!: RaidPresentation;
   private districtArt!: DistrictPresentation;
   private coverImages: Phaser.GameObjects.Image[] = [];
@@ -83,6 +86,8 @@ export class CombatScene extends Phaser.Scene {
     for (const [id, url] of Object.entries(assets.environment))
       this.load.image('environment-' + id, url);
     this.load.image('tollkeeper-wheel', assets.wheel);
+    for (const [id, url] of Object.entries(assets.endlessProps))
+      this.load.image('endless-prop-' + id, url);
     for (const [id, url] of Object.entries(assets.raidProps))
       this.load.image('raid-prop-' + id, url);
     for (const [id, url] of Object.entries(assets.pilgrimageProps))
@@ -141,6 +146,7 @@ export class CombatScene extends Phaser.Scene {
   create() {
     this.serviceArt = new ServicePresentation(this);
     this.raidArt = new RaidPresentation(this);
+    this.endlessArt = new EndlessPresentation(this);
     this.districtArt = new DistrictPresentation(this, (id) => this.people.get(id));
     this.arenaImage = this.add
       .image(800, 500, 'gatehouse')
@@ -609,6 +615,14 @@ export class CombatScene extends Phaser.Scene {
         );
       }
     }
+    this.endlessArt.draw(
+      h,
+      f,
+      view.bossCues.filter((c): c is EndlessCue => c.kind.startsWith('endless-')),
+      now,
+      this.reduceMotion,
+      this.hitboxes,
+    );
     this.raidArt.draw(
       h,
       f,

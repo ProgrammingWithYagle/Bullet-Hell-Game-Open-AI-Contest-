@@ -1,3 +1,4 @@
+import { endlessSolids, leaveMovingBlocks } from '../shared/endless-director.ts';
 import { raidMovement } from '../shared/raid-director.ts';
 import { districtMovement } from '../shared/district-director.ts';
 import { serviceMovement } from '../shared/service-director.ts';
@@ -34,7 +35,12 @@ export class Prediction {
       my = len > 1 ? i.moveY / len : i.moveY;
     p.aim = i.aim;
     const gates = gateObstacles(view.bossCues, now);
-    const clear = leaveClosingGates(p, gates, data.rules.playerRadius);
+    const blocks = endlessSolids(view.bossCues, now);
+    const clear = leaveClosingGates(
+      leaveMovingBlocks(p, blocks, runtimeArena(view.arenaId).obstacles, data.rules.playerRadius),
+      gates,
+      data.rules.playerRadius,
+    );
     p.x = clear.x;
     p.y = clear.y;
     if (i.dodge && now >= p.dodgeAt) {
@@ -77,7 +83,7 @@ export class Prediction {
         y: ((dash ? p.dashY : my) * speed + environment.y + terrain.y + raidForce.y) * DT,
       },
       data.rules.playerRadius,
-      [...runtimeArena(view.arenaId).obstacles, ...gates],
+      [...runtimeArena(view.arenaId).obstacles, ...gates, ...blocks],
     );
     p.x = next.x;
     p.y = next.y;

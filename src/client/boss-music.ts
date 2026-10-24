@@ -50,6 +50,16 @@ export const bossThemes = {
   'crown-procession': 'borrowed-crown',
   'city-eater': 'arch-without-door',
   'last-breath-saint': 'last-exhalation',
+  'hourglass-widow': 'sand-twice',
+  'unlit-astronomer': 'dark-meridian',
+  'folded-man': 'paper-angle',
+  'red-comet': 'three-arrivals',
+  'memory-taxer': 'empty-portrait',
+  'choir-of-moths': 'ivory-night',
+  'zero-hour-conductor': 'four-empty-beats',
+  'walking-district': 'streets-on-shoulders',
+  'last-knocker': 'one-door-left',
+  uncounted: 'names-beyond-the-bell',
 } satisfies Record<BossId, string>;
 export function musicIdentity(combat: boolean, boss: BossId = 'constable') {
   return combat ? bossThemes[boss] : 'city-wake';

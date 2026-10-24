@@ -8,6 +8,7 @@ import civicMotion from '../assets/production/motion/civic-library.json' with { 
 import serviceMotion from '../assets/production/motion/service-library.json' with { type: 'json' };
 import districtMotion from '../assets/production/motion/district-library.json' with { type: 'json' };
 import raidMotion from '../assets/production/motion/raid-library.json' with { type: 'json' };
+import endlessMotion from '../assets/production/motion/endless-library.json' with { type: 'json' };
 const motion = {
   entries: [
     ...historicMotion.entries,
@@ -15,6 +16,7 @@ const motion = {
     ...serviceMotion.entries,
     ...districtMotion.entries,
     ...raidMotion.entries,
+    ...endlessMotion.entries,
   ],
 };
 import music from '../assets/production/audio/boss-themes/library.json' with { type: 'json' };
@@ -50,11 +52,11 @@ test('illustrations cover every playable weapon, supply, specialization path and
     assert.equal(bytes[25], 6, 'PNG must preserve RGBA');
   }
 });
-test('fifty-four drawn boss/part/minion action atlases retain 432 distinct frames, common action scale and exact source hashes', () => {
-  assert.equal(motion.entries.length, 54);
+test('sixty-five drawn boss/part/minion action atlases retain 520 distinct frames, common action scale and exact source hashes', () => {
+  assert.equal(motion.entries.length, 65);
   assert.equal(
     motion.entries.reduce((sum, e) => sum + e.frames, 0),
-    432,
+    520,
   );
   for (const id of implementedBossIds.filter((id) => id !== 'constable' && id !== 'lantern-warden'))
     assert(

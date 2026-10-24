@@ -6,6 +6,7 @@ import type { BossCue } from './boss-director.ts';
 import type { WardenSample } from './warden-signature.ts';
 import type { ClassId, Phase, Warning, Field, Contract, SupplySlot } from './protocol.ts';
 export type PlayerView = {
+  eligible: boolean;
   terrain: TerrainStatus;
   kit: KitStatus;
   id: string;
@@ -46,6 +47,9 @@ export type PlayerView = {
   dodgeCooldown: number;
 };
 export type View = {
+  secretStatus: Game['secretStatus'];
+  extensionParticipants: string[];
+  campaignBank: Game['campaignBank'];
   tick: number;
   combatTick: number;
   phase: Phase;
@@ -69,6 +73,9 @@ export type View = {
 };
 export function viewOf(g: Game, owner: string): View {
   return {
+    secretStatus: g.secretStatus,
+    extensionParticipants: [...g.extensionParticipants],
+    campaignBank: g.campaignBank ? { ...g.campaignBank } : null,
     tick: g.tick,
     combatTick: g.combatTick,
     phase: g.phase,
@@ -78,6 +85,7 @@ export function viewOf(g: Game, owner: string): View {
     owner,
     players: [...g.players.values()].map((p) => ({
       id: p.id,
+      eligible: p.eligible,
       kit: g.classKits.status(p.id, g.combatTick),
       terrain: structuredClone(p.terrain),
       name: p.name,

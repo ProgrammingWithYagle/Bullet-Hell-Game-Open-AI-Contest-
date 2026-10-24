@@ -207,7 +207,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       id: client.sessionId,
       code: this.privateCode,
       practice: true,
-      prototype: 'three-class-five-boss-practice',
+      prototype: 'grave-accord-development',
       protocolVersion: PROTOCOL,
       contentRevision: CONTENT_REVISION,
       checkpointStatus: this.journal.status,
@@ -356,6 +356,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       view.reviveProgress = Math.floor(p.reviveProgress);
       view.reviveTarget = p.reviveTarget;
       view.build = JSON.stringify({
+        eligible: p.eligible,
         weapon: p.weapon,
         skills: p.skills,
         upgrades: p.upgrades,
@@ -409,6 +410,9 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       arenaId: g.arena.id,
     });
     s.intermission = JSON.stringify({
+      secretStatus: g.secretStatus,
+      campaignBank: g.campaignBank,
+      extensionParticipants: g.extensionParticipants,
       mutations: g.mutations,
       mutationCards: g.mutationCards,
       contractCards: g.contractCards.map(({ bossId: _concealed, ...card }) => card),

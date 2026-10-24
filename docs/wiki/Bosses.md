@@ -1,6 +1,6 @@
 # Bosses
 
-Fifty bosses are playable in the current source. Each has its own signature, phases, normal/Brutal variant, presentation and music. A signature table describes practical counterplay; supplemental attacks still require ordinary bullet-hell movement.
+Sixty bosses are executable in the current source. Each has its own signature, phases, normal/Brutal variant, presentation and music. A signature table describes practical counterplay; supplemental attacks still require ordinary bullet-hell movement.
 
 **Threat is encounter danger, separate from selected difficulty.** The tables show the authored minimum threat for each identity. Actual contracts follow the route's threat progression. A Brutal contract appends **+** to that threat, retains the same boss identity and signature, and adds its stronger variant behavior.
 
@@ -82,4 +82,21 @@ At marked transitions, survivors have eight seconds to coordinate a two-second h
 
 Pylon, keeper interrupt and attendant durability scales with party size and Brutal rules. Neutral valve holds remain usable by every class.
 
-The remaining 10 identities are authored designs. Their presence in the catalog does not make them playable. [Full numerical roster](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/content/bosses.json) · [Current boss implementation and verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/MIDNIGHT_CIRCUIT_RUNTIME.md)
+All sixty authored identities now execute. Native art and automated combat checks do not establish final human balance, complete directional/action animation or full device acceptance. [Full numerical roster](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/content/bosses.json) · [Current boss implementation and verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/MIDNIGHT_CIRCUIT_RUNTIME.md)
+
+## Endless exclusives and The Uncounted
+
+| Boss | Counterplay |
+| --- | --- |
+| The Uncounted | Use the persistent echo warnings and wide final ring gap, clear nearby summons and treat the extension as a separate challenge. |
+| Hourglass Widow | Remember the dashed replay paths or use the persistent safe flank. |
+| Unlit Astronomer | Follow the clear hollow safe marker; visual paths remain readable without glow. |
+| Folded Man | Use the permanently unreflected side; predicted paths show both entry and exit directions. |
+| Red Comet | Follow the numbered path and cross the oldest faded trail. |
+| Memory Taxer | Use the numbered visual history that stays on the HUD; memorization is optional and accessible. |
+| Choir of Moths | Cross at the broken ribbon and ignore decorative wing dust, which is not generated. |
+| Zero-Hour Conductor | Read the persistent beat pips and safe lane marker; audio rhythm is never required. |
+| Walking District | Use the broad outer bypass or the cleared central path after the blocks settle. |
+| The Last Knocker | Follow the three visible knocks and move behind the hinge; attack during the open-door recovery. |
+
+Numbered history, beat pips, safe lane markers and knock counts remain visible. Sound, color distinction and unaided memorization are not required.

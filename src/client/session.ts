@@ -14,6 +14,7 @@ import {
 import type { View, PlayerView } from '../shared/view.ts';
 import { decodeEvents, type WireEvent } from '../shared/wire-events.ts';
 import { savedBoundary, storeBoundary } from './storage.ts';
+import { recordPracticeCampaign } from './progress.ts';
 import { productionGameServer } from './deployment.ts';
 export type ConnectionOptions = {
   name: string;
@@ -262,8 +263,18 @@ export class Session {
     this.recovering = false;
     if (!this.closed) this.notify('ui.errorNetwork');
   }
+  private recordedCampaign = '';
   private receive(view: View) {
     if (this.closed) return;
+    const recordKey = view.campaignBank?.runId + ':' + view.secretStatus;
+    if (view.campaignBank && recordKey !== this.recordedCampaign) {
+      this.recordedCampaign = recordKey;
+      if (
+        typeof localStorage !== 'undefined' &&
+        !recordPracticeCampaign(view, this.id, localStorage)
+      )
+        this.notify('ui.errorSave');
+    }
     this.view = view;
     this.onView(view);
   }
@@ -342,6 +353,7 @@ function networkView(s: WorldState): View {
     maxHealth: p.maxHealth,
     shield: p.shield,
     status: p.status,
+    eligible: false,
     connected: p.connected,
     ack: p.ack,
     ammo: p.ammo,
@@ -416,6 +428,9 @@ function networkView(s: WorldState): View {
     arenaId: hazards.arenaId ?? 'gatehouse',
     warnings: hazards.warnings ?? [],
     fields: hazards.fields ?? [],
+    secretStatus: intermission.secretStatus ?? 'locked',
+    extensionParticipants: intermission.extensionParticipants ?? [],
+    campaignBank: intermission.campaignBank ?? null,
     mutations: intermission.mutations ?? [],
     mutationCards: intermission.mutationCards ?? [],
     contractCards: intermission.contractCards ?? [],

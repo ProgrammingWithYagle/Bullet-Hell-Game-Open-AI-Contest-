@@ -4,7 +4,7 @@ import { CONTENT_REVISION, PROTOCOL } from './protocol.ts';
 export function migratePracticeBoundary(value: unknown): unknown {
   if (!value || typeof value !== 'object' || Array.isArray(value)) return value;
   const legacy = value as Record<string, unknown>;
-  if (![4, 5, 6, 7, 8, 9, 10].includes(legacy.protocolVersion as number)) return value;
+  if (![4, 5, 6, 7, 8, 9, 10, 11].includes(legacy.protocolVersion as number)) return value;
   const version = legacy.protocolVersion as number;
   const previousServiceBosses = [
     'matron',
@@ -44,6 +44,15 @@ export function migratePracticeBoundary(value: unknown): unknown {
     'regent',
     'salt-patriarch',
   ];
+  const previousRaidBosses = [
+    'chain-colossus',
+    'ossuary-leviathan',
+    'bell-triplets',
+    'quarantine-heart',
+    'crown-procession',
+    'city-eater',
+    'last-breath-saint',
+  ];
   const bosses =
     version >= 7
       ? [
@@ -57,7 +66,8 @@ export function migratePracticeBoundary(value: unknown): unknown {
           'gate-widow',
           'black-ambulance',
           ...(version >= 9 ? previousServiceBosses : []),
-          ...(version === 10 ? previousDistrictBosses : []),
+          ...(version >= 10 ? previousDistrictBosses : []),
+          ...(version === 11 ? previousRaidBosses : []),
         ]
       : version === 4
         ? ['constable']
@@ -69,11 +79,13 @@ export function migratePracticeBoundary(value: unknown): unknown {
     !oldSettings ||
     typeof oldSettings !== 'object' ||
     !(
-      version === 10
-        ? ['short', 'standard', 'long', 'endless']
-        : version === 9
-          ? ['short', 'standard', 'endless']
-          : ['short', 'endless']
+      version === 11
+        ? ['short', 'standard', 'long', 'raid', 'endless']
+        : version === 10
+          ? ['short', 'standard', 'long', 'endless']
+          : version === 9
+            ? ['short', 'standard', 'endless']
+            : ['short', 'endless']
     ).includes(oldSettings.mode as string) ||
     (oldSettings.openingBossId !== undefined &&
       !bosses.includes(oldSettings.openingBossId as string)) ||
@@ -123,6 +135,18 @@ export function migratePracticeBoundary(value: unknown): unknown {
   return {
     ...legacy,
     protocolVersion: PROTOCOL,
+    timeouts: 0,
+    secretStatus: 'locked',
+    campaignBank: null,
+    extensionParticipants: [],
+    endlessHistory: {
+      recent:
+        oldSettings.mode === 'endless' && Array.isArray(legacy.completedBossIds)
+          ? legacy.completedBossIds.slice(-12)
+          : [],
+      routeBag: [],
+      exclusiveBag: [],
+    },
     completedBossIds:
       version !== 4
         ? legacy.completedBossIds

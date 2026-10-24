@@ -2,13 +2,13 @@
 
 Cooperative gothic zombie bullet hell. Choose a survivor, clear a boss contract, vote on mutations, buy a build and survive the next encounter.
 
-**Current development source: version 0.3.0, build `2026.10.24-raid`, protocol 11, updated 2026-10-24.** The game is still in development. [Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains the playable feature branch; protected `main` is a separate release boundary.
+**Current development source: version 0.3.0, build `2026.10.24-endless-secret`, protocol 12, updated 2026-10-24.** The game is still in development. [Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains the playable feature branch; protected `main` is a separate release boundary.
 
 | Playable now in that source | Contents |
 | --- | --- |
 | Survivors | All seven classes; two abilities and one ultimate per class |
 | Builds | 378 skills, 63 specialization paths, 28 weapons, eight supplies, 24 mutations |
-| Bosses and music | 50 distinct executable encounters, each with an original theme |
+| Bosses and music | 60 distinct executable encounters, each with an original theme |
 | Routes | Five-fight Quarantine Run, ten-fight Midnight Circuit, sixteen-fight Black Bell Pilgrimage, three-fight Grand Raid, uncapped Endless Vigil |
 | Maps | Six actual layouts with different cover, spawns and playable dimensions |
 | Sessions | Offline solo, public/private online rooms, boundary saves, process-live reconnect |
@@ -16,14 +16,14 @@ Cooperative gothic zombie bullet hell. Choose a survivor, clear a boss contract,
 
 The [public browser playtest](https://grave-accord-playtest.ivoryflame12.chatgpt.site/) remains the **older protocol-4 build with two classes and one boss**. Source and Wiki publication does not redeploy it. Run from source for the current build; see [Getting Started](Getting-Started).
 
-Ten further boss identities, the full Endless schedule and the secret extension remain unfinished. Persistent mastery/cosmetics, verified leaderboards, durable online recovery and a portable Windows/LAN release are also unfinished. Automated evidence does not establish final rendered, human, device, language or balance acceptance.
+All sixty identities execute, including nine scheduled Endless exclusives and an optional Uncounted campaign extension. Complete action/facing animation and final encounter tuning remain unfinished. Persistent mastery/cosmetics, verified leaderboards, durable online recovery and a portable Windows/LAN release are also unfinished. Automated evidence does not establish final rendered, human, device, language or balance acceptance.
 
 ## Player reference
 
 - [Getting Started](Getting-Started): controls, installation and saving.
 - [Classes and Skills](Classes-and-Skills): the seven kits and build rules.
 - [Modes](Modes) and [Gauntlets](Gauntlets): playable routes, map sizes and boss selection.
-- [Bosses](Bosses): all 23 current signatures and counterplay.
+- [Bosses](Bosses): all 60 executable signatures and counterplay.
 - [Economy and Mutations](Economy-and-Mutations): rewards, shops and team voting.
 - [Audio](Audio) and [Accessibility and Languages](Accessibility-and-Languages).
 - [Changelog](Changelog): dated changes, also available inside the game's main menu.
@@ -35,3 +35,5 @@ Ten further boss identities, the full Endless schedule and the secret extension 
 [Full acceptance backlog](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/IMPLEMENTATION_BACKLOG.md) · [Latest automated verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/reviews/runtime-verification.json) · [Midnight implementation evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/MIDNIGHT_CIRCUIT_RUNTIME.md)
 
 [Black Bell Pilgrimage implementation and evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/PILGRIMAGE_RUNTIME.md).
+
+[Grand Raid implementation](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/GRAND_RAID_RUNTIME.md) · [Endless and Uncounted implementation](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/ENDLESS_AND_UNCOUNTED_RUNTIME.md).

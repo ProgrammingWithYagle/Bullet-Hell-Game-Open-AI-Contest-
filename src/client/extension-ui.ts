@@ -1,0 +1,40 @@
+import messages from './extension-ui.json';
+import type { View } from '../shared/view.ts';
+export type ExtensionMessage = keyof typeof messages.en;
+export function extensionText(
+  locale: string,
+  key: ExtensionMessage,
+  values: Record<string, string | number> = {},
+) {
+  let text = (messages[locale as keyof typeof messages] ?? messages.en)[key];
+  for (const [k, v] of Object.entries(values)) text = text.replaceAll('{' + k + '}', String(v));
+  return text;
+}
+export function signatureHelp(view: View, locale: string) {
+  const now = view.combatTick,
+    number = (n: number) => new Intl.NumberFormat(locale).format(n);
+  const memory = view.bossCues.find(
+    (c) => c.kind === 'endless-state' && c.style === 'memory' && now < c.until,
+  );
+  if (memory?.kind === 'endless-state')
+    return extensionText(locale, 'history', {
+      history: memory.history.map((i) => number(i + 1)).join(' → '),
+      first: number(memory.index + 1),
+    });
+  const beat = view.bossCues
+    .filter((c) => c.kind === 'endless-state' && c.style === 'beat' && now < c.until)
+    .sort((a, b) => ('at' in a ? a.at : 0) - ('at' in b ? b.at : 0))[0];
+  if (beat?.kind === 'endless-state')
+    return extensionText(locale, 'beat', {
+      beat: number(beat.index + 1),
+      lane: number(beat.history[0] + 1),
+    });
+  const knock = view.bossCues.find(
+    (c) => c.kind === 'endless-state' && c.style === 'knock' && now < c.until,
+  );
+  if (knock?.kind === 'endless-state')
+    return extensionText(locale, 'knock', {
+      count: number(Math.min(3, Math.max(1, knock.progress))),
+    });
+  return '';
+}

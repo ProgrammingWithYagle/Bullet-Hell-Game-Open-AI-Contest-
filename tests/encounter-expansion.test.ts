@@ -42,7 +42,7 @@ function shot(game: Game, definition: Partial<Shot> & Pick<Shot, 'x' | 'y'>) {
 }
 
 test('five-fight Quarantine keeps five distinct bosses for every opening identity and saved vote', () => {
-  for (const openingBossId of implementedBossIds)
+  for (const openingBossId of implementedBossIds.filter((id) => id !== 'uncounted'))
     for (const seed of [1, 19, 871]) {
       let game = new Game({ openingBossId, seed, maxPlayers: 1 });
       game.addPlayer('solo', 'Mara', 'soldier');
@@ -69,11 +69,16 @@ test('five-fight Quarantine keeps five distinct bosses for every opening identit
     }
 });
 
-test('Endless only repeats after the complete pool, marks repeats Brutal and avoids consecutive identical bosses', () => {
+test('Endless marks previously defeated candidates Brutal and excludes the last twelve identities', () => {
   const game = encounter('constable');
-  for (let fight = 0; fight < implementedBossIds.length + 3; fight++) {
+  const seen = new Set<BossId>(),
+    recent: BossId[] = [];
+  for (let fight = 0; fight < 100; fight++) {
     const last = game.boss.id;
-    assert.equal(game.boss.variant, fight < implementedBossIds.length ? 'normal' : 'brutal');
+    assert.equal(game.boss.variant, seen.has(game.boss.id) ? 'brutal' : 'normal');
+    assert(!recent.slice(-12).includes(game.boss.id));
+    seen.add(game.boss.id);
+    recent.push(game.boss.id);
     game.boss.health = 0;
     game.step();
     while (game.phase !== 'contractVote') game.step();

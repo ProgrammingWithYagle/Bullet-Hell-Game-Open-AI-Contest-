@@ -2,13 +2,14 @@
 
 Local source runs the Vite frontend on port 5173 and the Colyseus service on loopback port 2567. Health is `/api/health`. Offline solo requires only the client and worker. Public room discovery, private six-character codes and reconnect reservations are implemented.
 
-The existing public Site remains the earlier protocol-4 frontend and gameplay. Source pushes, Wiki updates and draft PR changes do not redeploy that Site. The current protocol-11 source must use a matching backend. A public Site owned by a different account must not be replaced without the appropriate authorized deployment path.
+The existing public Site remains the earlier protocol-4 frontend and gameplay. Source pushes, Wiki updates and draft PR changes do not redeploy that Site. The current protocol-12 source must use a matching backend. A public Site owned by a different account must not be replaced without the appropriate authorized deployment path.
 
 ## Capacity and recovery status
 
 | Feature | Actual state |
 | --- | --- |
-| Campaign room admission | Up to 8 slots in current source |
+| Quarantine / Midnight / Pilgrimage admission | Up to 8 slots in current source |
+| Grand Raid admission | Up to 16 slots; real 16-client admission checked, final WAN/device/endurance acceptance open |
 | Endless room admission | Up to 50 slots in source; full rendered/hosting acceptance pending |
 | Public playtest admission | Earlier eight-slot configuration |
 | Reconnect reservation | 60 seconds while the same server process survives |

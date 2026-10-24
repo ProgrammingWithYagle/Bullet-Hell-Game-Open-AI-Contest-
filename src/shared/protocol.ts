@@ -1,5 +1,5 @@
 import revision from '../../content/revision.json' with { type: 'json' };
-export const PROTOCOL = 11;
+export const PROTOCOL = 12;
 export const CONTENT_REVISION = revision.sha256;
 export const HZ = 30,
   DT = 1 / HZ;
@@ -65,11 +65,29 @@ export type BossId =
   | 'quarantine-heart'
   | 'crown-procession'
   | 'city-eater'
-  | 'last-breath-saint';
+  | 'last-breath-saint'
+  | 'hourglass-widow'
+  | 'unlit-astronomer'
+  | 'folded-man'
+  | 'red-comet'
+  | 'memory-taxer'
+  | 'choir-of-moths'
+  | 'zero-hour-conductor'
+  | 'walking-district'
+  | 'last-knocker'
+  | 'uncounted';
 export type CheckpointStatus =
   'disabled' | 'pending' | 'acknowledged' | 'unavailable' | 'finalized';
 export type Phase =
-  'lobby' | 'combat' | 'mutationVote' | 'contractVote' | 'shop' | 'loading' | 'victory' | 'defeat';
+  | 'lobby'
+  | 'combat'
+  | 'mutationVote'
+  | 'contractVote'
+  | 'shop'
+  | 'loading'
+  | 'secretOffer'
+  | 'victory'
+  | 'defeat';
 export type InputFrame = {
   sequence: number;
   clientTick: number;

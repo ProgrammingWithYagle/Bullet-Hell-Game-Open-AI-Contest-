@@ -1,6 +1,21 @@
 # Changelog
 
-Development build **2026.10.24-raid**, protocol 11. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.24-endless-secret**, protocol 12. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-24 — Nine Endless exclusives and The Uncounted
+
+### Playable content
+
+- Added Hourglass Widow, Unlit Astronomer, Folded Man, Red Comet, Memory Taxer, Choir of Moths, Zero-Hour Conductor, Walking District and The Last Knocker, plus the optional Uncounted finale. All sixty authored identities now execute; fifty-nine participate in ordinary Endless selection.
+- Endless guarantees three exclusive candidates before every fourth fight, uses readable opening candidates for its first three fights and keeps twelve completed encounters of identity repeat protection. Seeded bags retain unchosen candidates; previous clears become Brutal when selected again. The Uncounted never appears as a surprise Endless draw.
+- New signatures use exact delayed fan replays, two dangerous orbits and a hollow safe orbit, one actual projectile reflection, three ordered dash trails, persistent numbered symbol history, curved physical moth ribbons, four visible beat-marked lane pulses, moving solid buildings with an exposed core, and a three-knock door sweep.
+- A Normal-or-higher campaign with three Accord Breaks and no timeout records its victory before offering The Uncounted. Every connected eligible survivor must consent. Declining, waiting or losing the extension keeps that victory. Local Practice records preserve the clear and optional memorial; rehearsal launches and reward-time arrivals cannot claim the memorial.
+
+### Art, audio and compatibility
+
+- Connected 88 drawn boss/moth poses and eight props, including cleaner blank paper for The Uncounted and consistent empty hands for Folded Man. All nineteen native returns and exact requests remain preserved, including seven superseded whole sheets. Independent audits reconstruct the shipped pixels and verify transparent padding.
+- Composed ten additional original themes, bringing the individual boss-theme library to sixty. All fifty previous music masters remain unchanged. Final human listening and physical-device mix approval remain open.
+- Protocol 12 serializes seeded selection history, campaign banks, secret consent and participation. It shares analytical moving-block collision with prediction, publishes reflected projectile velocity under the same identity and migrates bounded local protocol-11 saves. Secret consent and visible symbol/beat instructions cover all fifteen locales; native-speaker review remains open.
 
 ## 2026-10-24 — Seven more bosses and Grand Raid
 
@@ -116,7 +131,7 @@ Development build **2026.10.24-raid**, protocol 11. These entries describe the f
 
 ## Still in development
 
-- Ten authored boss identities, the full Endless-exclusive schedule and the secret extension still need implementation.
+- All sixty identities execute, but complete directional/action libraries, final encounter tuning and full visual/device acceptance remain unfinished.
 - Complete action/facing art, balance, final rendered playtests, physical-device and native-language review remain in progress.
 - Persistent mastery/cosmetics, verified rankings, durable online recovery and the Windows/offline/LAN release are not complete.
 

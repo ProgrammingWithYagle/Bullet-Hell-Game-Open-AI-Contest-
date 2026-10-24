@@ -40,6 +40,11 @@ const survivorRuns = import.meta.glob('../../assets/production/motion/*-run-*-v1
   import: 'default',
   eager: true,
 }) as Record<string, string>;
+const endlessProps = import.meta.glob('../../assets/production/endless-props/*.png', {
+  query: '?url',
+  import: 'default',
+  eager: true,
+}) as Record<string, string>;
 const raidProps = import.meta.glob('../../assets/production/raid-props/*.png', {
   query: '?url',
   import: 'default',
@@ -76,6 +81,9 @@ const encounterMotion = import.meta.glob('../../assets/production/motion/*-actio
   eager: true,
 }) as Record<string, string>;
 export const assets = {
+  endlessProps: Object.fromEntries(
+    Object.entries(endlessProps).map(([p, u]) => [p.split('/').at(-1)!.replace('.png', ''), u]),
+  ),
   raidProps: Object.fromEntries(
     Object.entries(raidProps).map(([p, u]) => [p.split('/').at(-1)!.replace('.png', ''), u]),
   ),

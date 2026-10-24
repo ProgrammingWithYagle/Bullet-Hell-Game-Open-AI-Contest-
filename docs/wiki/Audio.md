@@ -1,6 +1,6 @@
 # Audio and boss themes
 
-All 50 playable bosses have an individual original composition and synthesized PCM master. Melodies, harmonic routes, phrasing and arrangements vary; no sampled commercial music is used.
+All sixty executable bosses have an individual original composition and synthesized PCM master. Melodies, harmonic routes, phrasing and arrangements vary. No sampled commercial music is used.
 
 | Boss | Theme |
 | --- | --- |
@@ -54,7 +54,15 @@ All 50 playable bosses have an individual original composition and synthesized P
 | Crown Procession | Borrowed Crown |
 | City Eater | Arch Without Door |
 | Saint of the Last Breath | Last Exhalation |
+| Hourglass Widow | Sand Twice |
+| Unlit Astronomer | Dark Meridian |
+| Folded Man | Paper Angle |
+| Red Comet | Three Arrivals |
+| Memory Taxer | Empty Portrait |
+| Choir of Moths | Ivory Night |
+| Zero-Hour Conductor | Four Empty Beats |
+| Walking District | Streets on Shoulders |
+| The Last Knocker | One Door Left |
+| The Uncounted | Names Beyond the Bell |
 
-The editable scores, native PCM and machine audit are retained in the repository. The prior 43 music masters were preserved when the seven Raid tracks were added. The mixer crossfades boss themes, ducks warnings and bounds decoded music memory.
-
-Objective checks cover format, clipping, DC offset, mono compatibility and loop continuity. Final human listening and headphone, speaker, phone and crowded online mix acceptance remain open. [Audio sources and listening worksheet](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/tree/feat/first-playable-loop/assets/production/audio/boss-themes).
+Editable scores, PCM and machine audits remain in the repository. Adding ten Endless/secret tracks preserved the previous fifty masters. Music crossfades, warning ducking and bounded decoded audio caches are connected. Objective checks cover clipping, DC offset, mono compatibility and loop continuity. Human listening and headphone, speaker, phone and crowded online mix acceptance remain open. [Audio sources](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/tree/feat/first-playable-loop/assets/production/audio/boss-themes).

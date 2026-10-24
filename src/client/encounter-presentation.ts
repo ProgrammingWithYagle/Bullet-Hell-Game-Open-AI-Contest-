@@ -1,3 +1,5 @@
+import endings from '../../assets/production/motion/endless-library.json';
+import { finalBossIds } from '../shared/endless-director.ts';
 import raids from '../../assets/production/motion/raid-library.json';
 import { raidBossIds } from '../shared/raid-director.ts';
 import districts from '../../assets/production/motion/district-library.json';
@@ -14,16 +16,22 @@ export const encounterArt = [
   ...services.entries,
   ...districts.entries,
   ...raids.entries,
+  ...endings.entries,
 ];
 export function encounterFrame(boss: Boss, now: number, cues: BossCue[], reduced = false) {
-  if ([...serviceBossIds, ...districtBossIds, ...raidBossIds].some((id) => id === boss.id)) {
+  if (
+    [...serviceBossIds, ...districtBossIds, ...raidBossIds, ...finalBossIds].some(
+      (id) => id === boss.id,
+    )
+  ) {
     if (boss.health <= 0) return 7;
     if (reduced || now < boss.staggerUntil) return 0;
     const shapes = cues.filter(
       (c) =>
         (c.kind.startsWith('service-') ||
           c.kind.startsWith('district-') ||
-          c.kind.startsWith('raid-')) &&
+          c.kind.startsWith('raid-') ||
+          c.kind.startsWith('endless-')) &&
         'at' in c &&
         'until' in c &&
         c.until > now &&

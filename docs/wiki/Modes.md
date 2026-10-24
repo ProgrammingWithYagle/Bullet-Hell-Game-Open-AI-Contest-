@@ -4,7 +4,7 @@
 | --- | --- | --- | --- |
 | Quarantine Run | Playable | 5: four unique regulars and a reserved finale | 8 |
 | Midnight Circuit | Playable | 10: nine unique regulars and a reserved finale | 8 |
-| Endless Vigil | Playable | No final round; current pool has 50 identities | 50 |
+| Endless Vigil | Playable | No final round; current pool has 59 ordinary identities | 50 |
 | Black Bell Pilgrimage | Playable | 16: fifteen unique regulars and a reserved finale | 8 |
 | Grand Raid | Playable | 3: two unique regulars and a reserved finale | 16 |
 
@@ -27,4 +27,4 @@ Grand Raid begins at 12 skill points and 600 nominal coins, reaches 20/1,400 bef
 
 All maps share a 1600 × 1000 camera coordinate space; solids outside each footprint restrict actual movement. Cover, spawns, collision and prediction follow the selected layout. Route progression rotates maps. Reachability checks cover fifty player spawn positions, boss access and five Accord pads on every map.
 
-The secret Uncounted extension and its victory banking are authored future behavior. They are not currently playable. See [Gauntlets](Gauntlets), [Bosses](Bosses) and [actual arena geometry](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/src/shared/arena-layouts.ts).
+The optional Uncounted extension is playable after a Normal-or-higher campaign clear with at least three successful Accord Breaks and no timeout. Campaign victory is recorded before the offer; all connected eligible survivors must consent. Declining, waiting or losing preserves the campaign clear. Local Practice records retain the clear and optional memorial. A direct rehearsal launch grants no campaign memorial. See [Gauntlets](Gauntlets), [Bosses](Bosses) and [actual arena geometry](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/src/shared/arena-layouts.ts).

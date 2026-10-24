@@ -1,3 +1,4 @@
+import { extensionText, signatureHelp } from './extension-ui.ts';
 import Phaser from 'phaser';
 import './style.css';
 import './ui/polish.css';
@@ -216,7 +217,7 @@ function setupGame(online: boolean) {
   uiKey = '';
   lastPhase = '';
   prediction = new Prediction();
-  app.innerHTML = `<div id="stage" dir="ltr"></div><section class="hud" aria-label="${text('ui.health')}"><div class="topline"><div><strong id="encounter"></strong><small id="status" role="status"></small></div><div id="boss-panel"><strong>${text('boss.constable.name')}</strong><span id="deadline"></span><progress id="boss-health" max="1" value="1" aria-label="${text('ui.boss')}"></progress></div><button id="pause-button">Ⅱ <span>${text('ui.pause')}</span></button></div><div id="accord" class="accord" hidden></div><div class="bottomline"><div class="vitals"><strong id="player-name"></strong><progress id="health" max="1" value="1" aria-label="${text('ui.health')}"></progress><span id="health-text"></span><span id="ammo"></span><span id="currency"></span></div><div id="abilities" class="ability-list"></div><div id="squad" class="squad"></div></div></section><div id="modal" class="overlay" hidden></div><div id="pause-menu" class="overlay" hidden><section class="dialog"><h2>${text('ui.paused')}</h2><p>${text(online ? 'ui.onlinePause' : 'ui.offlineNotice')}</p>${settingsMarkup()}<div class="actions"><button id="resume" class="primary">${text('ui.continue')}</button><button id="leave">${text('ui.leaveRoom')}</button></div></section></div><div class="touch-buttons"><button data-action="Space">${text('ui.dodge')}</button><button data-action="KeyQ">Q</button><button data-action="KeyE">E</button><button data-action="KeyX">${text('ui.ultimate')}</button><button data-action="interact">${text('ui.revive')}</button><button data-action="KeyR">${text('ui.reload')}</button></div><div class="portrait-note">${text('ui.portraitHint')}</div>`;
+  app.innerHTML = `<div id="stage" dir="ltr"></div><section class="hud" aria-label="${text('ui.health')}"><div class="topline"><div><strong id="encounter"></strong><small id="status" role="status"></small></div><div id="boss-panel"><strong>${text('boss.constable.name')}</strong><span id="deadline"></span><progress id="boss-health" max="1" value="1" aria-label="${text('ui.boss')}"></progress></div><button id="pause-button">Ⅱ <span>${text('ui.pause')}</span></button></div><div id="accord" class="accord" hidden></div><p id="signature-help" class="signature-help" role="status" aria-live="polite" hidden></p><div class="bottomline"><div class="vitals"><strong id="player-name"></strong><progress id="health" max="1" value="1" aria-label="${text('ui.health')}"></progress><span id="health-text"></span><span id="ammo"></span><span id="currency"></span></div><div id="abilities" class="ability-list"></div><div id="squad" class="squad"></div></div></section><div id="modal" class="overlay" hidden></div><div id="pause-menu" class="overlay" hidden><section class="dialog"><h2>${text('ui.paused')}</h2><p>${text(online ? 'ui.onlinePause' : 'ui.offlineNotice')}</p>${settingsMarkup()}<div class="actions"><button id="resume" class="primary">${text('ui.continue')}</button><button id="leave">${text('ui.leaveRoom')}</button></div></section></div><div class="touch-buttons"><button data-action="Space">${text('ui.dodge')}</button><button data-action="KeyQ">Q</button><button data-action="KeyE">E</button><button data-action="KeyX">${text('ui.ultimate')}</button><button data-action="interact">${text('ui.revive')}</button><button data-action="KeyR">${text('ui.reload')}</button></div><div class="portrait-note">${text('ui.portraitHint')}</div>`;
   const supplyBar = document.createElement('div');
   const checkpointNotice = document.createElement('small');
   checkpointNotice.id = 'checkpoint-notice';
@@ -354,6 +355,10 @@ function update(view: View) {
   boss.value = view.boss.health;
   $('boss-panel').hidden = view.phase !== 'combat';
   $('deadline').textContent = clock((view.boss.deadline - view.combatTick) / 30);
+  const help = $('signature-help'),
+    helpText = signatureHelp(view, locale);
+  help.hidden = !helpText;
+  if (help.textContent !== helpText) help.textContent = helpText;
   const accord = $('accord');
   accord.hidden = !view.accord;
   if (view.accord)
@@ -368,7 +373,12 @@ function update(view: View) {
   for (const [key, label, at, name] of [
     ['Space', t('ui.dodge'), p.dodgeAt, ''],
     ['Q', t('ui.abilityQ'), p.qAt, t('ability.' + cl.abilities[0].id + '.name')],
-    ['E', t('ui.abilityE') + (p.kit.stepCharges>0 ? ' ×'+number(p.kit.stepCharges) : ''), p.kit.stepCharges>0 ? 0 : p.eAt, t('ability.' + cl.abilities[1].id + '.name')],
+    [
+      'E',
+      t('ui.abilityE') + (p.kit.stepCharges > 0 ? ' ×' + number(p.kit.stepCharges) : ''),
+      p.kit.stepCharges > 0 ? 0 : p.eAt,
+      t('ability.' + cl.abilities[1].id + '.name'),
+    ],
     ['X', t('ui.ultimate'), p.ultimateAt, t('ability.' + cl.ultimate.id + '.name')],
   ] as const) {
     let e = abilityList.querySelector<HTMLElement>('[data-ability="' + key + '"]');
@@ -407,6 +417,7 @@ function update(view: View) {
   }
   const key = JSON.stringify([
     view.phase,
+    view.secretStatus,
     p.coins,
     p.sp,
     p.weapon,
@@ -479,12 +490,15 @@ function renderOverlay(view: View, p: PlayerView) {
       (view.phase === 'lobby'
         ? `<div class="actions"><button id="start" class="primary" ${view.owner !== session!.id ? 'disabled' : ''}>${text('ui.start')}</button><button id="return-menu">${text('ui.leaveRoom')}</button></div>`
         : '');
+  } else if (view.phase === 'secretOffer') {
+    title = extensionText(locale, 'offerTitle');
+    body = `<p>${esc(extensionText(locale, 'offerBody'))}</p><div class="actions"><button data-vote="1" class="primary">${esc(extensionText(locale, 'enter'))} <span data-vote-count="1">0</span></button><button data-vote="0">${esc(extensionText(locale, 'decline'))}</button></div>`;
   } else if (view.phase === 'loading') {
     title = t('ui.deploying');
     body = `<p>${text('ui.tutorialTeam')}</p>`;
   } else {
     title = t(view.phase === 'victory' ? 'ui.victory' : 'ui.defeat');
-    body = `<p>${text(session?.online ? 'ui.practiceNotice' : 'ui.offlineNotice')}</p><button id="return-menu" class="primary">${text('ui.mainMenu')}</button>`;
+    body = `${view.campaignBank && ['cleared', 'failed'].includes(view.secretStatus) ? '<p>' + esc(extensionText(locale, view.secretStatus === 'cleared' ? 'cleared' : 'failed')) + '</p>' : ''}<p>${text(session?.online ? 'ui.practiceNotice' : 'ui.offlineNotice')}</p><button id="return-menu" class="primary">${text('ui.mainMenu')}</button>`;
   }
   const previous =
     document.activeElement instanceof HTMLElement && overlay.contains(document.activeElement)

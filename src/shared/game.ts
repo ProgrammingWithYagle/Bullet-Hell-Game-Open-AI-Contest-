@@ -1,3 +1,5 @@
+import { finalBossIds, endlessSolids, leaveMovingBlocks } from './endless-director.ts';
+import { EndlessSchedule, validEndlessHistory } from './endless-schedule.ts';
 import { raidBossIds, raidMovement } from './raid-director.ts';
 import {
   districtMovement,
@@ -83,6 +85,7 @@ export const implementedBossIds: readonly BossId[] = [
   'vesper-judge',
   ...districtBossIds,
   ...raidBossIds,
+  ...finalBossIds,
 ];
 export type Settings = {
   seed: number;
@@ -211,6 +214,20 @@ export class Game {
   encounter = 0;
   peakPlayers = 0;
   accords = 0;
+  timeouts = 0;
+  readonly endless = new EndlessSchedule();
+  extensionParticipants: string[] = [];
+  secretStatus: 'locked' | 'offered' | 'declined' | 'active' | 'cleared' | 'failed' = 'locked';
+  campaignBank: null | {
+    runId: string;
+    mode: ModeId;
+    difficulty: string;
+    encounters: number;
+    accords: number;
+    combatTick: number;
+    timeouts: number;
+    bankedAt: number;
+  } = null;
   boss: Boss = {
     id: 'constable',
     hurtAt: -100,
@@ -297,9 +314,15 @@ export class Game {
     }
     this.selectedContract.bossId = this.settings.openingBossId;
     this.boss.id = this.settings.openingBossId;
+    if (this.boss.id === 'uncounted') {
+      this.secretStatus = 'active';
+      this.selectedContract.threat = 11;
+      this.boss.threat = 11;
+    }
     this.rng = new Random(this.settings.seed);
   }
   get arena() {
+    if (this.secretStatus === 'active' && this.campaignBank) return runtimeArena('crown-crypt');
     if (this.encounter === 0) return runtimeArena(this.settings.openingArenaId);
     const mode = data.modes.find((m) => m.id === this.settings.mode)!;
     const index =
@@ -322,6 +345,8 @@ export class Game {
     return this.nextId++;
   }
   addPlayer(id: string, name: string, classId: ClassId): Player {
+    if (['secretOffer', 'victory', 'defeat'].includes(this.phase))
+      throw Error('Expedition has ended');
     if (this.players.has(id)) throw Error('Duplicate player');
     this.pruneExpired();
     if (this.players.size >= this.settings.maxPlayers) throw Error('Room full');
@@ -428,6 +453,7 @@ export class Game {
     return data.modes.find((m) => m.id === this.settings.mode)!.encounters ?? Infinity;
   }
   private skillBudget(j: number) {
+    if (this.secretStatus === 'active' && this.boss.id === 'uncounted') return 27;
     if (this.settings.mode === 'raid')
       return data.modes.find((m) => m.id === 'raid')!.skillBudgets![Math.min(j, 2)];
     return this.settings.mode === 'endless'
@@ -586,6 +612,39 @@ export class Game {
     return { ok: true };
   }
   vote(id: string, index: number): boolean {
+    if (this.phase === 'secretOffer') {
+      const p = this.players.get(id);
+      if (!p?.connected || !p.eligible || p.status === 'waiting' || (index !== 0 && index !== 1))
+        return false;
+      this.votes.set(id, index);
+      if (index === 0) {
+        this.secretStatus = 'declined';
+        this.phase = 'victory';
+        this.votes.clear();
+      } else if (
+        this.roster()
+          .filter((p) => p.connected && p.eligible)
+          .every((p) => this.votes.get(p.id) === 1)
+      ) {
+        this.extensionParticipants = this.roster()
+          .filter((p) => p.connected && p.eligible && this.votes.get(p.id) === 1)
+          .map((p) => p.id);
+        this.secretStatus = 'active';
+        this.selectedContract = {
+          id: 'uncounted-extension',
+          bossId: 'uncounted',
+          threat: 11,
+          risk: 0,
+          bounty: 1,
+          recommendedRating: 1,
+          variant: 'normal',
+        };
+        this.boss.id = 'uncounted';
+        this.changePhase('loading', rule.deploymentSeconds);
+      }
+      return true;
+    }
+
     const p = this.players.get(id),
       cards =
         this.phase === 'mutationVote'
@@ -631,7 +690,7 @@ export class Game {
         : 0;
     return (
       rule.bossHealthBase *
-      rule.bossHealthThreatGrowth ** (contract.threat - 1) *
+      rule.bossHealthThreatGrowth ** (Math.min(10, contract.threat) - 1) *
       this.bossDefinition(contract).healthFactor *
       (this.settings.mode === 'raid' ? 1.25 : 1) *
       this.difficulty.health *
@@ -656,6 +715,14 @@ export class Game {
     for (const [i, p] of [...this.players.values()].entries()) {
       p.coins += Math.max(0, this.incomeBudget(this.encounter) - p.incomeGranted);
       p.incomeGranted = this.incomeBudget(this.encounter);
+      if (
+        this.secretStatus === 'active' &&
+        this.campaignBank &&
+        !this.extensionParticipants.includes(p.id)
+      ) {
+        p.status = 'waiting';
+        continue;
+      }
       p.status = 'active';
       p.eligible = true;
       p.totalSp = Math.max(p.totalSp, this.skillBudget(this.encounter));
@@ -728,6 +795,7 @@ export class Game {
     this.director.services.prepare(this.signatureContext());
     this.director.district.prepare(this.signatureContext());
     this.director.raids.prepare(this.signatureContext());
+    this.director.endless.prepare(this.signatureContext());
     for (const p of this.roster()) p.terrain = freshTerrain();
     this.bossPrevious = { x: this.boss.x, y: this.boss.y };
     this.events.push({ type: 'sound', id: 'boss-phase' });
@@ -755,6 +823,7 @@ export class Game {
   private victory() {
     this.classKits.clear();
     this.completedBossIds.add(this.boss.id);
+    if (this.settings.mode === 'endless') this.endless.record(this.boss.id);
     this.boss.health = 0;
     this.boss.defeatedAt = this.tick;
     this.director.reset('constable');
@@ -783,7 +852,35 @@ export class Game {
     for (const m of this.mutations) m.remaining--;
     for (let i = this.mutations.length - 1; i >= 0; i--)
       if (this.mutations[i].remaining <= 0) this.mutations.splice(i, 1);
+    if (this.boss.id === 'uncounted') {
+      this.secretStatus = 'cleared';
+      this.phase = 'victory';
+      this.events.push({ type: 'sound', id: 'accord-success' });
+      return;
+    }
     if (this.settings.mode !== 'endless' && this.encounter >= this.routeLength) {
+      this.campaignBank = {
+        runId:
+          this.settings.mode + '-' + this.settings.seed.toString(36) + '-' + this.tick.toString(36),
+        mode: this.settings.mode,
+        difficulty: this.settings.difficulty,
+        encounters: this.routeLength,
+        accords: this.accords,
+        combatTick: this.combatTick,
+        timeouts: this.timeouts,
+        bankedAt: this.tick,
+      };
+      if (
+        ['normal', 'hard', 'insane', 'hellish'].includes(this.settings.difficulty) &&
+        this.accords >= rule.secret.minimumAccordBreaks &&
+        this.timeouts <= rule.secret.maximumTimeouts
+      ) {
+        this.secretStatus = 'offered';
+        this.changePhase('secretOffer', 30);
+        this.events.push({ type: 'sound', id: 'accord-success' });
+        return;
+      }
+
       this.phase = 'victory';
       this.events.push({ type: 'sound', id: 'accord-success' });
       return;
@@ -796,6 +893,12 @@ export class Game {
   }
   private intermission() {
     if (this.tick < this.phaseEnds) return;
+    if (this.phase === 'secretOffer') {
+      this.secretStatus = 'declined';
+      this.phase = 'victory';
+      this.votes.clear();
+      return;
+    }
     if (this.phase === 'mutationVote') {
       const id = this.mutationCards[this.winningVote()];
       this.mutations.push({ id, remaining: 3 });
@@ -825,9 +928,12 @@ export class Game {
       const uncleared = routePool.filter((id) => !this.completedBossIds.has(id as BossId));
       // Before any repeat, exhaust the implemented identity pool. Concealed
       // choices use the saved RNG, so restoring a vote never rerolls it.
-      const pool = this.rng.shuffle(
-        uncleared.length ? uncleared : implementedBossIds.filter((id) => id !== this.boss.id),
-      );
+      const pool =
+        this.settings.mode === 'endless'
+          ? this.endless.offer(this.encounter, this.rng)
+          : this.rng.shuffle(
+              uncleared.length ? uncleared : routePool.filter((id) => id !== this.boss.id),
+            );
       this.contractCards = [0, 1, 2].map((i) => {
         const bossId = pool[i % pool.length] as BossId;
         const variant =
@@ -864,7 +970,7 @@ export class Game {
     for (const p of this.players.values())
       if (!p.connected && this.tick - p.lastSeen >= ticks(rule.reconnectSeconds)) p.expired = true;
     if (this.phase !== 'combat') {
-      if (['mutationVote', 'contractVote', 'shop', 'loading'].includes(this.phase))
+      if (['mutationVote', 'contractVote', 'shop', 'loading', 'secretOffer'].includes(this.phase))
         this.intermission();
       return;
     }
@@ -922,7 +1028,11 @@ export class Game {
       this.combatTick >= this.boss.deadline ||
       (!roster.some((p) => p.status === 'active') && !soloCanRecover)
     ) {
-      this.phase = 'defeat';
+      if (this.combatTick >= this.boss.deadline) this.timeouts++;
+      if (this.secretStatus === 'active') {
+        this.secretStatus = 'failed';
+        this.phase = this.campaignBank ? 'victory' : 'defeat';
+      } else this.phase = 'defeat';
       this.classKits.clear();
       this.director.reset('constable');
       this.minions.clear();
@@ -937,7 +1047,13 @@ export class Game {
       stats = this.stats(p),
       i = p.input;
     p.aim = i.aim;
-    const clear = leaveClosingGates(p, this.director.solids(now), rule.playerRadius);
+    const moving = leaveMovingBlocks(
+      p,
+      endlessSolids(this.director.endless.cues(), now),
+      this.arena.obstacles,
+      rule.playerRadius,
+    );
+    const clear = leaveClosingGates(moving, this.director.civic.solids(now), rule.playerRadius);
     p.x = clear.x;
     p.y = clear.y;
     if (p.status === 'downed') {
@@ -1381,7 +1497,8 @@ export class Game {
         (bypassArmor
           ? 1
           : this.director.district.bodyMultiplier(p, this.boss, this.combatTick) *
-            this.director.raids.bodyMultiplier(this.combatTick)),
+            this.director.raids.bodyMultiplier(this.combatTick) *
+            this.director.endless.bodyMultiplier(this.combatTick)),
     );
     this.boss.health -= actual;
     if (actual > 0 && this.combatTick - this.boss.hurtAt >= ticks(0.3))
@@ -1704,6 +1821,8 @@ export class Game {
       this.attackAt[0] = Math.max(this.attackAt[0] ?? now, this.director.district.nextSignatureAt);
     if (this.director.raids.handles(this.boss.id))
       this.attackAt[0] = Math.max(this.attackAt[0] ?? now, this.director.raids.nextSignatureAt);
+    if (this.director.endless.handles(this.boss.id))
+      this.attackAt[0] = Math.max(this.attackAt[0] ?? now, this.director.endless.nextSignatureAt);
     const attacks = this.bossPhases()[this.boss.phase].attacks;
     for (let index = 0; index < attacks.length; index++)
       if (
@@ -1750,6 +1869,11 @@ export class Game {
             (1 + cycle * rule.endless.damageGrowthPerCycle) *
             (this.boss.variant === 'brutal' ? rule.brutal.damageMultiplier : 1);
         if (
+          index === 0 &&
+          this.director.endless.cast(this.signatureContext(), target, { ...attack, speed, count })
+        ) {
+          this.attackAt[index] = this.director.endless.nextSignatureAt;
+        } else if (
           index === 0 &&
           this.director.raids.cast(this.signatureContext(), target, { ...attack, speed, count })
         ) {
@@ -1825,7 +1949,7 @@ export class Game {
             });
         } else
           for (let n = 0; n < count; n++) {
-            const t = targets[n % targets.length];
+            const t = targets[n % targets.length] ?? target;
             this.warnings.push({
               id: this.id(),
               kind: 'zone',
@@ -2002,6 +2126,8 @@ export class Game {
       old.y = s.y;
       next.x = s.x + s.vx * DT;
       next.y = s.y + s.vy * DT;
+      if (this.director.endless.reflectShot(s, old, next, this.combatTick))
+        this.spawns.push({ ...s, x: next.x, y: next.y });
       const effect = this.shotEffects.get(s.id);
       if (effect) {
         const distance = Math.hypot(next.x - old.x, next.y - old.y);
@@ -2152,7 +2278,9 @@ export class Game {
   offlineCheckpoint() {
     if (
       this.players.size !== 1 ||
-      !['lobby', 'mutationVote', 'contractVote', 'shop', 'loading'].includes(this.phase)
+      !['lobby', 'mutationVote', 'contractVote', 'shop', 'loading', 'secretOffer'].includes(
+        this.phase,
+      )
     )
       return null;
     const p = [...this.players.values()][0];
@@ -2168,6 +2296,11 @@ export class Game {
       phaseEnds: this.phaseEnds,
       encounter: this.encounter,
       accords: this.accords,
+      timeouts: this.timeouts,
+      endlessHistory: structuredClone(this.endless.state),
+      secretStatus: this.secretStatus,
+      extensionParticipants: [...this.extensionParticipants],
+      campaignBank: this.campaignBank ? { ...this.campaignBank } : null,
       completedBossIds: [...this.completedBossIds],
       rng: this.rng.state >>> 0,
       nextId: this.nextId,
@@ -2177,6 +2310,7 @@ export class Game {
       contractCards: structuredClone(this.contractCards),
       votes: Object.fromEntries(this.votes),
       player: {
+        id: p.id,
         name: p.name,
         classId: p.classId,
         weapon: p.weapon,
@@ -2230,13 +2364,62 @@ export class Game {
       !int(save.accords) ||
       !int(save.rng) ||
       !int(save.nextId, 1) ||
-      !['lobby', 'mutationVote', 'contractVote', 'shop', 'loading'].includes(save.phase) ||
+      !['lobby', 'mutationVote', 'contractVote', 'shop', 'loading', 'secretOffer'].includes(
+        save.phase,
+      ) ||
       !int(save.phaseEnds) ||
       (save.phase !== 'lobby' && (save.phaseEnds < save.tick || save.phaseEnds - save.tick > 1800))
     )
       throw Error('invalidCheckpoint');
     const g = new Game(save.settings),
       p = save.player;
+    if (
+      !validEndlessHistory(save.endlessHistory) ||
+      !int(save.timeouts, 0, 1000000) ||
+      !['locked', 'offered', 'declined', 'active', 'cleared', 'failed'].includes(save.secretStatus)
+    )
+      throw Error('invalidRunHistory');
+    if (
+      !Array.isArray(save.extensionParticipants) ||
+      save.extensionParticipants.length > 50 ||
+      new Set(save.extensionParticipants).size !== save.extensionParticipants.length ||
+      !save.extensionParticipants.every(
+        (id) => typeof id === 'string' && /^[a-zA-Z0-9_-]{1,64}$/.test(id),
+      )
+    )
+      throw Error('invalidSecretRoster');
+    g.endless.state = structuredClone(save.endlessHistory);
+    g.timeouts = save.timeouts;
+    g.secretStatus = save.secretStatus;
+    g.extensionParticipants = save.extensionParticipants.map((id) => (id === p?.id ? 'solo' : id));
+    if (save.campaignBank !== null) {
+      const b = save.campaignBank;
+      if (
+        !b ||
+        typeof b.runId !== 'string' ||
+        !/^[a-z0-9-]{1,100}$/.test(b.runId) ||
+        !implementedModeIds.includes(b.mode) ||
+        b.mode === 'endless' ||
+        b.mode !== g.settings.mode ||
+        b.difficulty !== g.settings.difficulty ||
+        b.encounters !== g.routeLength ||
+        !int(b.accords) ||
+        !int(b.combatTick) ||
+        b.combatTick > save.combatTick ||
+        !int(b.timeouts, 0, 1000000) ||
+        !int(b.bankedAt) ||
+        b.bankedAt > save.tick
+      )
+        throw Error('invalidCampaignBank');
+      g.campaignBank = { ...b };
+    }
+    if (
+      (save.phase === 'secretOffer') !== (save.secretStatus === 'offered') ||
+      (save.secretStatus === 'offered' &&
+        (!g.campaignBank || save.accords < 3 || save.timeouts !== 0))
+    )
+      throw Error('invalidSecretOffer');
+
     if (
       !Array.isArray(save.completedBossIds) ||
       save.completedBossIds.length > implementedBossIds.length ||
@@ -2333,7 +2516,7 @@ export class Game {
       c &&
       typeof c.id === 'string' &&
       /^[a-z0-9-]{1,64}$/.test(c.id) &&
-      int(c.threat, 1, 10) &&
+      int(c.threat, 1, c.bossId === 'uncounted' ? 11 : 10) &&
       int(c.risk, 0, 2) &&
       finite(c.bounty, 1, 3) &&
       implementedBossIds.includes(c.bossId as BossId) &&
@@ -2401,7 +2584,9 @@ export class Game {
   // Snapshot is for first-playable rendering and boundary saves, never a trusted online combat result.
   authoritativeCheckpoint() {
     if (
-      !['lobby', 'mutationVote', 'contractVote', 'shop', 'loading'].includes(this.phase) ||
+      !['lobby', 'mutationVote', 'contractVote', 'shop', 'loading', 'secretOffer'].includes(
+        this.phase,
+      ) ||
       !this.players.size
     )
       return null;
@@ -2417,6 +2602,11 @@ export class Game {
       phaseEnds: this.phaseEnds,
       encounter: this.encounter,
       accords: this.accords,
+      timeouts: this.timeouts,
+      endlessHistory: structuredClone(this.endless.state),
+      secretStatus: this.secretStatus,
+      extensionParticipants: [...this.extensionParticipants],
+      campaignBank: this.campaignBank ? { ...this.campaignBank } : null,
       completedBossIds: [...this.completedBossIds],
       peakPlayers: this.peakPlayers,
       rng: this.rng.state >>> 0,
@@ -2510,7 +2700,13 @@ export class Game {
       'nextId',
     ] as const)
       Object.assign(g, { [key]: base[key] });
+    if (!save.extensionParticipants.every((id) => ids.has(id))) throw Error('invalidSecretRoster');
+    g.extensionParticipants = [...save.extensionParticipants];
     g.peakPlayers = save.peakPlayers;
+    g.endless.state = structuredClone(base.endless.state);
+    g.secretStatus = base.secretStatus;
+    g.campaignBank = base.campaignBank ? { ...base.campaignBank } : null;
+    g.timeouts = base.timeouts;
     for (const id of base.completedBossIds) g.completedBossIds.add(id);
     g.rng.state = base.rng.state;
     g.selectedContract = { ...base.selectedContract };
@@ -2603,6 +2799,11 @@ export class Game {
       votes: Object.fromEntries(this.votes),
       accord: this.accord ? structuredClone(this.accord) : null,
       accords: this.accords,
+      timeouts: this.timeouts,
+      endlessHistory: structuredClone(this.endless.state),
+      secretStatus: this.secretStatus,
+      extensionParticipants: [...this.extensionParticipants],
+      campaignBank: this.campaignBank ? { ...this.campaignBank } : null,
     };
   }
 }
