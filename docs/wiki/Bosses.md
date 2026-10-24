@@ -8,6 +8,11 @@ Brutal uses twice the health and damage, a 1.5× deadline, 1.75× bounty and fou
 
 ## Quarantine Run
 
+![Quarantine Run boss identities with names](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/bosses-short.jpg)
+
+*Quarantine Run — representative first poses from the current runtime atlases.*
+
+
 | Boss | Minimum threat | Signature and response |
 | --- | --- | --- |
 | Hollow Constable | 1 | Watch the fan tells and leave marked arrest zones; gaps and open lanes remain. |
@@ -21,6 +26,11 @@ Brutal uses twice the health and damage, a 1.5× deadline, 1.75× bounty and fou
 | Black Ambulance | 1 | Sidestep the locked charge; the driver is exposed for three seconds afterward and takes bonus damage. |
 
 ## Midnight Circuit
+
+![Midnight Circuit boss identities with names](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/bosses-standard.jpg)
+
+*Midnight Circuit — representative first poses from the current runtime atlases.*
+
 
 | Boss | Minimum threat | Signature and response |
 | --- | --- | --- |
@@ -40,6 +50,11 @@ Brutal uses twice the health and damage, a 1.5× deadline, 1.75× bounty and fou
 | Vesper Judge | 1 | Move into the other arena half before the alternating 1.7-second verdict tell resolves. |
 
 ## Black Bell Pilgrimage
+
+![Black Bell Pilgrimage boss identities with names](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/bosses-long.jpg)
+
+*Black Bell Pilgrimage — representative first poses from the current runtime atlases.*
+
 
 | Boss | Minimum threat | Signature and response |
 | --- | --- | --- |
@@ -70,6 +85,11 @@ At marked transitions, survivors have eight seconds to coordinate a two-second h
 
 ## Grand Raid
 
+![Grand Raid boss identities with names](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/bosses-raid.jpg)
+
+*Grand Raid — representative first poses from the current runtime atlases.*
+
+
 | Boss | Counterplay |
 | --- | --- |
 | Chain Colossus | Break any 110-HP anchor pylon to stop the three-second pull and open four seconds of vulnerability. Outer lanes remain clear. |
@@ -85,6 +105,11 @@ Pylon, keeper interrupt and attendant durability scales with party size and Brut
 All sixty authored identities now execute. Native art and automated combat checks do not establish final human balance, complete directional/action animation or full device acceptance. [Full numerical roster](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/content/bosses.json) · [Current boss implementation and verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/MIDNIGHT_CIRCUIT_RUNTIME.md)
 
 ## Endless exclusives and The Uncounted
+
+![The nine Endless-exclusive bosses and The Uncounted](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/bosses-endless.jpg)
+
+*Nine Endless identities plus the optional campaign secret. Sprite contact sheet; full action/facing acceptance continues.*
+
 
 | Boss | Counterplay |
 | --- | --- |

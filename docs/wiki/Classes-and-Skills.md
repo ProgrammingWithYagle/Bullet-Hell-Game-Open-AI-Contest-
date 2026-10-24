@@ -2,6 +2,11 @@
 
 All seven classes are selectable and execute their two abilities and ultimate offline and online. There are 54 skill nodes, nine specialization paths and four weapons per class: **378 nodes, 63 paths and 28 weapons total**.
 
+![The seven survivors: Soldier, Heavy, Tank, Medic, Mage, Engineer and Assassin](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/survivors.jpg)
+
+*Original survivor identity reference. Class mechanics and current production sprites are documented below.*
+
+
 | Class | Survivor | Q | E | Ultimate |
 | --- | --- | --- | --- | --- |
 | Soldier | Mara Rook | Rally Field | Precision Burst | Last Roll Call |

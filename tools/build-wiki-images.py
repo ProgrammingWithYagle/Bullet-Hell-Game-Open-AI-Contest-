@@ -1,0 +1,78 @@
+#!/usr/bin/env python3
+"""Technical documentation thumbnails/contact sheets from existing game pixels and runtime geometry."""
+from pathlib import Path
+import argparse,datetime,hashlib,json,subprocess,textwrap
+from PIL import Image,ImageDraw,ImageFont
+ROOT=Path(__file__).resolve().parent.parent
+OUT=ROOT/'docs/wiki/images'
+BG='#19372f';FG='#eee1c2';MUTED='#bacbb8';LINE='#536d59'
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def font(size):
+    for path in [Path('C:/Windows/Fonts/segoeui.ttf'),Path('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf')]:
+        if path.exists():return ImageFont.truetype(str(path),size)
+    return ImageFont.load_default(size=size)
+def read(p):return json.loads((ROOT/p).read_text(encoding='utf-8'))
+def main():
+    args=argparse.ArgumentParser();args.add_argument('--node',default='node');arg=args.parse_args()
+    OUT.mkdir(parents=True,exist_ok=True);catalog=read('content/catalog.json');sources={};files=[]
+    def source(path):
+        p=ROOT/path;sources[path]={'path':path,'sha256':sha(p)};return Image.open(p).convert('RGBA')
+    def save(im,name,caption):
+        p=OUT/name;im.convert('RGB').save(p,quality=90,optimize=True,subsampling=0)
+        files.append({'path':'images/'+name,'sha256':sha(p),'bytes':p.stat().st_size,'width':im.width,'height':im.height,'caption':caption})
+    def fit(im,w,h):
+        im=im.copy();im.thumbnail((w,h),Image.Resampling.LANCZOS);return im
+    cover=fit(source('assets/proofs/cover-v1.png'),1200,700);save(cover,'cover.jpg','Original Grave Accord cover illustration.')
+    lineup=fit(source('assets/proofs/survivors-v3.png'),1400,600);save(lineup,'survivors.jpg','Seven original survivor identities; production reference, not a gameplay screenshot.')
+    entries={}
+    for p in sorted((ROOT/'assets/production/motion').glob('*library.json')):
+        for e in json.loads(p.read_text(encoding='utf-8')).get('entries',[]):
+            if e.get('bossId') in {b['id'] for b in catalog['bosses']}:entries[e['bossId']]=e
+    entries['constable']={'atlas':'assets/proofs/animation/boss-attack-atlas.png','cellSize':512}
+    entries['lantern-warden']={'atlas':'assets/production/motion/lantern-warden-idle-v1-atlas.png','cellSize':512}
+    groups=[('short','Quarantine Run'),('standard','Midnight Circuit'),('long','Black Bell Pilgrimage'),('raid','Grand Raid'),('endless','Endless Vigil and The Uncounted')]
+    used=[]
+    for route,title in groups:
+        bosses=[b for b in catalog['bosses'] if b['route']==route or (route=='endless' and b['secret'])]
+        assert bosses
+        im=Image.new('RGB',(1000,92+300*((len(bosses)+3)//4)),BG);d=ImageDraw.Draw(im)
+        d.text((22,15),title,font=font(28),fill=FG)
+        d.text((22,57),'Representative runtime sprite poses · original artwork · full action/facing work continues',font=font(15),fill=MUTED)
+        for i,b in enumerate(bosses):
+            e=entries[b['id']];atlas=source(e['atlas']);size=e['cellSize'];cell=atlas.crop((0,0,size,size));bbox=cell.getchannel('A').getbbox();assert bbox
+            sprite=fit(cell.crop(bbox),220,205);x=(i%4)*250;y=92+(i//4)*300
+            im.paste(sprite,(x+(250-sprite.width)//2,y+210-sprite.height),sprite)
+            d.line((x+12,y+225,x+238,y+225),fill=LINE,width=1)
+            for n,line in enumerate(textwrap.wrap(b['name'],23)):
+                d.text((x+12,y+236+n*22),line,font=font(18),fill=FG)
+            used.append({'id':b['id'],'atlas':e['atlas'],'frame':0,'cellSize':size,'gallery':'images/bosses-'+route+'.jpg'})
+        save(im,'bosses-'+route+'.jpg',title+' boss identity gallery from current runtime atlases.')
+    assert len(used)==60 and len({b['id'] for b in used})==60
+    # Source geometry, not an invented map illustration or rendered capture.
+    code="import {runtimeArenas} from './src/shared/arena-layouts.ts';process.stdout.write(JSON.stringify(runtimeArenas))"
+    arenas=json.loads(subprocess.check_output([arg.node,'--import','tsx','--input-type=module','-e',code],cwd=ROOT,text=True,encoding='utf-8'))
+    im=Image.new('RGB',(1260,820),BG);d=ImageDraw.Draw(im);d.text((20,14),'Six different playable map layouts',font=font(28),fill=FG)
+    for i,a in enumerate(arenas):
+        x=20+(i%3)*415;y=66+(i//3)*355;s=.245
+        d.text((x,y),a['name'],font=font(21),fill=FG);d.text((x,y+31),f"{a['width']} × {a['height']}",font=font(16),fill=MUTED);y+=63
+        d.rectangle((x,y,x+1600*s,y+1000*s),fill='#0f241f')
+        b=a['bounds'];d.rectangle((x+b['x']*s,y+b['y']*s,x+(b['x']+b['width'])*s,y+(b['y']+b['height'])*s),fill=a['floor'],outline=FG,width=1)
+        for o in a.get('cover',a['obstacles']):d.rectangle((x+o['x']*s,y+o['y']*s,x+(o['x']+o['width'])*s,y+(o['y']+o['height'])*s),fill='#8e8060',outline='#d6c6a0',width=1)
+        for key,color in [('bossSpawn','#ee8270'),('playerSpawn','#9de3ce')]:
+            p=a[key];cx=x+p['x']*s;cy=y+p['y']*s;d.ellipse((cx-5,cy-5,cx+5,cy+5),fill=color)
+    d.text((20,785),'Same scale · Coral: boss spawn · Mint: survivor spawn · Diagram of actual collision geometry',font=font(17),fill=MUTED)
+    save(im,'maps.jpg','Actual traversable footprints, cover and spawn geometry, drawn to one scale.')
+    p=ROOT/'src/shared/arena-layouts.ts';sources['src/shared/arena-layouts.ts']={'path':'src/shared/arena-layouts.ts','sha256':sha(p)}
+    # A readable representative selection from the implemented shops.
+    choices=[('weapon',w['id'],w['name']) for w in catalog['weapons']]
+    choices += [('supply',s['id'],s['name']) for s in catalog['supplies']]
+    im=Image.new('RGB',(1120,80+150*((len(choices)+6)//7)),BG);d=ImageDraw.Draw(im);d.text((20,15),'Class weapons and carried supplies',font=font(28),fill=FG)
+    for i,(kind,id,name) in enumerate(choices):
+        p=f'assets/production/items/icons/{kind}/{id}.png';art=source(p);bbox=art.getchannel('A').getbbox();art=fit(art.crop(bbox),132,90);x=(i%7)*160;y=78+(i//7)*150
+        im.paste(art,(x+(160-art.width)//2,y+90-art.height),art)
+        for n,line in enumerate(textwrap.wrap(name,19)):d.text((x+8,y+100+n*18),line,font=font(13),fill=FG)
+    save(im,'equipment.jpg','All twenty-eight class weapon icons and eight carried supplies, taken from the implemented shop art.')
+    manifest={'schemaVersion':1,'createdAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'sourceTool':'tools/build-wiki-images.py','sourceToolSha256':sha(Path(__file__)),'method':'Technical first-cell crop, proportional resize and documentation contact-sheet composition; source artwork unchanged. Map is directly derived from runtime geometry.','bosses':used,'sources':list(sources.values()),'files':files,'limits':['Contact sheets and geometry diagrams are documentation, not new rendered gameplay or full animation acceptance.','Text labels are English, matching the Wiki editorial language.']}
+    (ROOT/'docs/wiki-images.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n',encoding='utf-8',newline='\n')
+    print(json.dumps({'images':len(files),'bosses':60,'bytes':sum(f['bytes'] for f in files)},indent=2))
+if __name__=='__main__':main()

@@ -2,6 +2,14 @@
 
 Development build **2026.10.24-audio-delivery**, protocol 13. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
 
+## 2026-10-24 — Illustrated game Wiki
+
+### Player documentation
+
+- Added a cover, seven-survivor reference, five labelled boss galleries covering all sixty identities, a comparison of all six runtime map layouts, and the twenty-eight weapon/eight supply icon sheet.
+- The images appear alongside the Home, Classes, Bosses, Modes and Economy guides, with a dedicated Art Gallery. Source artwork and its hashes remain preserved; contact sheets and collision diagrams are explicitly distinguished from gameplay captures.
+- Wiki publication verifies every Markdown/image Git blob and all nine public image responses. Documentation images do not establish new rendered game or animation acceptance.
+
 ## 2026-10-24 — Smaller music downloads with original PCM fallback
 
 ### Audio delivery

@@ -21,3 +21,7 @@ Native-speaker, device, final rendered and subjective listening reviews remain s
 [Black Bell Pilgrimage implementation and evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/PILGRIMAGE_RUNTIME.md).
 
 [Grand Raid implementation](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/GRAND_RAID_RUNTIME.md) · [Endless and Uncounted implementation](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/ENDLESS_AND_UNCOUNTED_RUNTIME.md).
+
+## Wiki image editions
+
+The [Art Gallery](Art-Gallery) and illustrated guides use nine optimized images built from the game's existing cover, survivor reference, current boss atlases and shop icons. Technical crops preserve proportions and source artwork; no character art is redrawn. Map diagrams use current authority geometry. Source hashes and all sixty boss-to-frame bindings are retained in [the image manifest](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/wiki-images.json).

@@ -1,5 +1,10 @@
 # Grave Accord
 
+![Grave Accord cover: survivors approach the dead watch captain beneath the city bells](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/cover.jpg)
+
+*Original game cover. [Art gallery](Art-Gallery) · [Boss galleries](Bosses) · [Map comparison](Modes#six-different-playable-layouts).*
+
+
 Cooperative gothic zombie bullet hell. Choose a survivor, clear a boss contract, vote on mutations, buy a build and survive the next encounter.
 
 **Current development source: version 0.3.0, build `2026.10.24-audio-delivery`, protocol 13, updated 2026-10-24.** The game is still in development. [Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains the playable feature branch; protected `main` is a separate release boundary.

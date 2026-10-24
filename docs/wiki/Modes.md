@@ -16,6 +16,11 @@ Grand Raid begins at 12 skill points and 600 nominal coins, reaches 20/1,400 bef
 
 ## Six different playable layouts
 
+![Six maps at the same scale, showing different sizes, cover and spawns](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/maps.jpg)
+
+*Diagram generated from actual runtime collision geometry. Coral marks the boss spawn; mint marks the survivor spawn.*
+
+
 | Map | Traversable size | Layout |
 | --- | --- | --- |
 | Gatehouse | 1600 × 1000 | Original walled courtyard |
