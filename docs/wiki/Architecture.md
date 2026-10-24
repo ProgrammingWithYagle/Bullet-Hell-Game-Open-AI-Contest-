@@ -1,12 +1,16 @@
 # Architecture
 
-TypeScript, Phaser, Vite, Colyseus and Electron. Shared authoritative simulation rules support online and offline play. 30 Hz simulation, initially 20 Hz state patches, independent rendering. Predict movement and reconcile; validate all economy and combat on the server.
+Current source: all seven classes, 378 nodes, 28 weapons, nine bosses/themes and six different map sizes/layouts. Protocol 8 includes authoritative class kit state. The class art package adds 124 approved motion poses and 52 item illustrations; final rendered/human/device acceptance is open.
 
-| Interface | Contract |
-| --- | --- |
-| RoomSettings | mode, difficulty, visibility, seed, contentRevision, protocolVersion. Route is represented by the selected campaign mode. |
-| PublicRoomSummary | public room ID, name, mode, difficulty, connected players, maximum players, phase and capacity state. Never a private code, checkpoint signature or reconnect token. |
-| InputFrame | sequence, client tick, normalized movement, aim angle, fire, reload, dodge, Q/E, ultimate and interact actions. Reject non-finite, oversized, stale and rate-exceeding inputs. |
-| ContentCatalog | Versioned definitions for classes, abilities, weapons, upgrades, supplies, skills, bosses, attacks, difficulties, mutations, modes and arenas. |
-| ProfileV1 | Locale, controls, display/audio/accessibility settings, mastery, cosmetics, lore, difficulty unlocks and local best streaks. No purchased online power. |
-| CheckpointV1 | Room ID, intermission sequence, seed, mode, difficulty, roster/builds, earned rewards, mutation lifetimes, recovery credentials, issue/expiry times, protocol/content revisions and HMAC signature. Never broadcast the signing key. |
+
+The development runtime uses TypeScript, Phaser 4.2.1, Vite 8.3.5 and Colyseus 0.18. A deterministic shared simulation owns combat, progression, purchases, votes and timers. It advances at 30 Hz; Schema patches initially run at 20 Hz. Phaser renders independently and pools projectile images. Movement uses prediction/reconciliation with the same masonry collision rules as authority.
+
+Offline solo runs those rules in a worker. Online rooms run on the official gameplay server, validate bounded/finite inputs and reject stale sequences. The server owns currency, class compatibility, skill prerequisites, duplicate purchase replies and damage. Public and private discovery, capacity admission and sixty-second reconnect reservations are implemented. Private codes and reconnect credentials do not belong in public room listings.
+
+Protocol 6 adds shared signature cues and field-patched ordinary actors. Exact-value binary projectile waves retain five float64 values per shot and common attributes once per wave. Three classes and five bosses execute source gameplay. Local protocol-4/5 Practice boundaries migrate with original identity/history constraints; online boundaries remain strict. Full-precision authority is separate from render-state patches. [Current encounter/art/music implementation](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/BOSS_ENCOUNTERS_ITEMS_AND_MUSIC.md).
+
+Recovery components live under src/server/: checkpoints.ts, run-store.ts, run-auth.ts, run-service.ts, run-client.ts and run-journal.ts. SQL changes use transactional compare-and-set plus event insertion. HMAC covers documented method/path/time/nonce/body-digest bytes; SQL stores expiring nonces. The server journal validates acknowledgments, renews leases and handles owner claims. Its local HTTP/SQLite process-restart tests do not constitute deployed D1 or a recovered rendered match; a server-only GraveRoom factory now freezes safe transitions until acknowledgement and reports latched outage status. Normal/public execution leaves that factory disabled, with participant bindings and deployed recovery still pending.
+
+The latest local gate passes 124 rules, real-WebSocket, HTTP and SQL checks, TypeScript, content/localization validation and a production build. Exact CI publication identities are recorded after the source push. Short separate-process server throughput, failed shared-process pilots, saved-pixel audits and audio signal checks remain separate from rendered/device/human/listening acceptance.
+
+Electron is the approved portable Windows target and is not packaged yet. Versioned full profiles/mastery/unlocks, live durable rankings, historical rosters and the complete class/boss/arena/route library remain future implementation work. Current settings/language selection persist locally; they are not a finished ProfileV1 system.

@@ -72,3 +72,7 @@ Edition 0.1.0 remains a sealed historical packet. Edition 0.2.0 must regenerate 
 The first gameplay milestone remains Soldier and Medic, Gatehouse and Hollow Constable, both votes, shopping, revives, offline/public/private play and the active fifty-player feasibility test. Produce the full sixty-boss art/animation library after that architecture passes. Reusable simulation primitives are encouraged; unique signature behaviors and actual tests establish a distinct boss.
 
 Every shipped boss needs: three-phase combat smoke test, signature/counterplay check, solo and party objective check, deadline/uptime measurement, all fifteen launch locales complete, source-art identity and motion review, and matching codex/release notes. The numerical target does not justify recording unimplemented content as released.
+
+## Later production instruction — 2026-10-23
+
+The user explicitly asked to stop browser troubleshooting and develop character/boss art and concepts now. That later instruction permits art work before the open first-loop architecture gate; it does not mark that gate passed. Five survivor turnarounds and three individual opening-route boss pose studies are now assistant-reviewed static references. See ART_PRODUCTION_PROGRESS.md. Runtime completion still requires the signatures, animation and gameplay evidence listed above.

@@ -17,21 +17,24 @@ const unique=(items,label)=>assert.equal(new Set(items.map(x=>x.id)).size,items.
 const finiteTree=value=>{if(typeof value==='number')assert(Number.isFinite(value));else if(Array.isArray(value))value.forEach(finiteTree);else if(value&&typeof value==='object')Object.values(value).forEach(finiteTree);};
 check('Complete finite versioned content',()=>{
   finiteTree(c);assert.equal(c.rules.schemaVersion,1);assert.equal(c.rules.simulationHz,30);assert.equal(c.rules.patchHz,20);
-  for(const [key,count] of Object.entries({classes:7,skills:126,weapons:28,bosses:60,mutations:24,arenas:6,modes:5,difficulties:6,locales:15,grades:18}))assert.equal(c[key].length,count,key);
+  for(const [key,count] of Object.entries({classes:7,skills:378,weapons:28,bosses:60,mutations:24,arenas:6,modes:5,difficulties:6,locales:15,grades:18}))assert.equal(c[key].length,count,key);
   for(const [key,value] of Object.entries(c))if(Array.isArray(value)&&value[0]?.id)unique(value,key);
   assert(!/\bTBD\b|TODO|FIXME/.test(JSON.stringify(c)),'Unresolved content placeholder');
   assert.equal(read('content/revision.json').sha256,crypto.createHash('sha256').update(JSON.stringify(c)).digest('hex'));
   for(const [key,value] of Object.entries(c))assert.deepEqual(read('content/'+key+'.json'),value,'Split catalog '+key);
 });
-check('Seven classes, 126 prerequisite nodes and ultimates',()=>{
+check('Seven classes, 378 specialization nodes, all eighteen grades and ultimates',()=>{
   for(const cl of c.classes){
     assert.equal(cl.abilities.length,2);assert.equal(cl.branches.length,3);assert(cl.health>0&&cl.speed>0);
     assert.equal(cl.ultimate.slot,'ultimate');assert(cl.ultimate.cooldown>=60&&cl.ultimate.cooldown<=120);assert(cl.ultimate.description.length>30);
-    const sk=c.skills.filter(s=>s.classId===cl.id);assert.equal(sk.length,18);assert.equal(c.weapons.filter(w=>w.classId===cl.id).length,4);
+    const sk=c.skills.filter(s=>s.classId===cl.id);assert.equal(sk.length,54);assert.equal(c.weapons.filter(w=>w.classId===cl.id).length,4);
     for(const branch of cl.branches){
-      const nodes=sk.filter(s=>s.branchId===branch.id).sort((a,b)=>a.depth-b.depth);
+      assert.equal(branch.subbranches.length,3);const all=sk.filter(s=>s.branchId===branch.id);assert.equal(all.length,18);assert.deepEqual([...new Set(all.map(s=>s.grade))].sort(),[...c.grades].sort());
+      for(const subbranch of branch.subbranches){
+      const nodes=all.filter(s=>s.subbranchId===subbranch.id).sort((a,b)=>a.depth-b.depth);
       assert.equal(nodes.length,6);assert.deepEqual(nodes.map(s=>s.cost),[1,2,3,4,5,6]);assert.equal(nodes.reduce((n,s)=>n+s.cost,0),21);
       for(let i=0;i<6;i++){const n=nodes[i];assert.equal(n.depth,i+1);assert.equal(n.prerequisite,i?nodes[i-1].id:null);assert.equal(n.capstone,i===5);assert(c.grades.includes(n.grade));assert(Object.keys(n.effects).length);}
+      }
     }
     assert(sk.some(s=>s.effects.ultimateCooldownReduction));assert(sk.some(s=>Object.keys(s.effects).some(k=>k.startsWith('ultimate')&&k!=='ultimateCooldownReduction')));
     assert(c.weapons.some(w=>w.id===cl.weapon&&w.classId===cl.id&&w.price===0));
@@ -73,6 +76,11 @@ check('Boss attack contracts, transitions, arenas and deadlines',()=>{
   for(const b of c.bosses){assert(b.timer>=60&&b.timer<=240);assert(b.healthFactor>0&&b.radius>0);assert.deepEqual(b.phases.map(p=>p.healthThreshold),[1,0.75,0.4]);assert.deepEqual(b.phases.map(p=>p.accordBreak),[false,true,true]);
     for(const p of b.phases)for(const a of p.attacks){assert(kinds.has(a.kind),'Unknown attack '+a.kind);assert(a.count>0&&a.count<=200);assert(a.speed>=0&&a.damage>=0&&a.interval>0&&a.telegraph>=0.45);assert(a.telegraph<a.interval);}
     assert(b.arenaIds.every(id=>c.arenas.some(a=>a.id===id)));
+    assert.equal(b.variants.normal.healthMultiplier,1);assert.equal(b.variants.normal.damageMultiplier,1);
+    const brutal=b.variants.brutal;assert.equal(brutal.healthMultiplier,2);assert.equal(brutal.damageMultiplier,2);assert.equal(brutal.identity,b.id+'-brutal');assert.equal(brutal.signature,b.signature.id);
+    assert.deepEqual(brutal.phases.map(p=>p.healthThreshold),c.rules.brutal.phaseThresholds);
+    assert.deepEqual(brutal.phases.map(p=>p.accordBreak),[false,true,true,true]);
+    for(const phase of brutal.phases)for(const attack of phase.attacks){assert(kinds.has(attack.kind));assert(attack.count>0&&attack.count<=200);assert(attack.telegraph>=c.rules.brutal.minimumTelegraphSeconds&&attack.telegraph<attack.interval);}
   }
   for(const a of c.arenas){assert.equal(a.width,1600);assert.equal(a.height,1000);for(const o of a.obstacles){assert(o.x>=0&&o.y>=0&&o.x+o.width<=a.width&&o.y+o.height<=a.height);assert(!(a.playerSpawn.x>o.x&&a.playerSpawn.x<o.x+o.width&&a.playerSpawn.y>o.y&&a.playerSpawn.y<o.y+o.height));}}
 });

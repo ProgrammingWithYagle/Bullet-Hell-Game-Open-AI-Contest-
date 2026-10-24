@@ -1,5 +1,14 @@
 # Grave Accord — audio bible
 
+> Current source continuation: nine playable bosses, six connected collision layouts and separate boss themes. Quarantine now ends with Chain Marshal, Gate Widow or Black Ambulance after its regular encounters. Protocol 7; 133 checks pass. Four further classes, full environment/action art, additional routes/bosses and final release acceptance remain open. See the repository document `docs/QUARANTINE_RUNTIME.md` for exact mechanics and evidence.
+
+
+## Current runtime boss themes
+
+Five playable bosses now each have a separately composed sixteen-bar theme: Hollow Muster, Last Light, Undelivered, Crooked Procession and Final Entry. They use different melodies, instruments and meters, automatic 0.75-second crossfades and warning ducking. [Current source and exact evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/BOSS_ENCOUNTERS_ITEMS_AND_MUSIC.md); editable scores/masters and signal checks are in assets/production/audio/boss-themes and reviews/boss-themes-review.json. Human/device listening, final mix, adaptive stems and themes for future bosses remain open.
+
+## Earlier Stage 1 proof library
+
 Edition 0.1.0 · Stage 1 original composition and sound design · 2026-10-22
 
 ## Delivered audio and evidence

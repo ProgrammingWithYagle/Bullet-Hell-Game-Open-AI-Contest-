@@ -5,6 +5,10 @@ import path from 'node:path';
 import { english } from './source/en.mjs';
 import additional from './source/additional.mjs';
 import { expansionMessages } from './source/boss-expansion.mjs';
+import { interfaceMessages } from './source/interface-expansion.mjs';
+import { contractMessages } from './source/contract-ui.mjs';
+import { suppliesMessages } from './source/supplies-ui.mjs';
+import { capacityMessages, playtestMessages } from './source/capacity-ui.mjs';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const catalog = JSON.parse(await readFile(path.join(root, 'content/catalog.json'), 'utf8'));
 const ids = ['en','zh-Hans','zh-Hant','ja','es','fr','de','pt-BR','ru','hi','ar','bn','id','ur','ko'];
@@ -22,6 +26,18 @@ for (const id of ids) {
   }
   Object.assign(messages, additional[id]);
   Object.assign(messages, expansionMessages(id));
+  Object.assign(messages, interfaceMessages(id));
+  Object.assign(messages, contractMessages(id));
+  Object.assign(messages, suppliesMessages(id));
+  Object.assign(messages, capacityMessages(id));
+  Object.assign(messages, playtestMessages(id));
+  // Added specialization nodes reuse the approved localized base names plus an already
+  // localized focus label. Numerical effect text is formatted from the authored values.
+  for(const skill of catalog.skills)if(skill.sourceSkillId&&skill.sourceSkillId!==skill.id){
+    const base=messages[`skill.${skill.sourceSkillId}.name`],focus=messages[skill.subbranchNameKey];
+    if(!base||!focus)throw Error(`${id}: missing specialization name ${skill.id}`);
+    messages[`skill.${skill.id}.name`]=base+' · '+focus;
+  }
   const generic = key => messages[`template.${key}`];
   for (const x of catalog.weapons) messages[`weapon.${x.id}.description`] = generic('weapon');
   for (const x of catalog.skills) messages[`skill.${x.id}.description`] = generic('skill');

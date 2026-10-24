@@ -1,11 +1,25 @@
 # Implementation backlog and contest acceptance map
 
+Current checkpoint: all seven classes are playable with 378 skill nodes, 63 specialization paths and 28 weapons. Six maps have distinct layouts and actual playable sizes. Nine bosses each have an original theme. Protocol 8 carries class kit state. Class art adds 124 approved run poses, 52 item illustrations and 16 environment/construct props; Engineer north uses four consistent poses, with its other four retained as rejected. See [class and arena runtime](CLASS_AND_ARENA_RUNTIME.md). Full-game, final rendered, human/device and release acceptance remain open.
+
+The older checkpoint descriptions below are historical; this paragraph supersedes their current-state counts.
+
+
+**Current continuation:** [QUARANTINE_RUNTIME.md](QUARANTINE_RUNTIME.md) adds Tollkeeper and three Quarantine finales: nine playable bosses, a regular/finale short-route pool, six connected arena layouts, 32 more drawn poses, nine boss themes, protocol 7 and 133 passing tests. Full class/route/art/device/release work continues.
+
+
+**Current continuation:** [BOSS_ENCOUNTERS_ITEMS_AND_MUSIC.md](BOSS_ENCOUNTERS_ITEMS_AND_MUSIC.md) adds Carrion Courier, Ratcatcher and Quarantine Clerk: five distinct playable bosses, no repeat in five-fight Practice, 71 new item illustrations, 32 action frames, five individual boss themes, protocol 6 and 124 passing tests. Older two-boss/protocol-5 statements below describe earlier checkpoints. Public hosting remains the earlier protocol-4 deployment. Rendered/device/human and listening acceptance remain open.
+
+**Latest continuation:** [WARDEN_SIGNATURE_REHEARSAL.md](WARDEN_SIGNATURE_REHEARSAL.md) adds eight drawn idle/channel frames (sixteen Warden motion frames total), measured lantern attachments and a separate local Phaser signature rehearsal. Nine new automated checks bring the full suite to 83. The room shares warning/active/rest geometry between rendering and collision; full encounter, network integration and final Phaser motion acceptance remain open. Browser troubleshooting was not repeated. Read current Git status and the exact verification/publication evidence before continuing.
+
 The approved scope includes genuine endless play, fifteen locales, changelogs, team leaderboards, original music/SFX, seven upgradeable ultimates, sixty distinct bosses and the clean-detail art standard. Items become complete only with the listed evidence. All stages are authorized; later gates do not require an additional request for already approved work.
+
+Latest partial S2-08/UI progress: 29 poses normalized at common identity scales, five native setup portraits integrated, one eight-frame Warden attack study and a local art-room tool with browser evidence. Full states/attachments, in-engine boss motion and gameplay remain pending; all five preview classes stay locked. The full 74-test/type/content/build suite passes. Browser control worked for the saved checks and later regressed, so the new offline-match/performance/device gates stay open. See [exact evidence and continuation](ART_NORMALIZATION_AND_MOTION.md).
 
 | ID | Stage | Subsystem | Priority | Deliverable and acceptance evidence | Rubric |
 | --- | --- | --- | --- | --- | --- |
 | S1-01 | Stage 1 | Design | P0 | Versioned complete catalog; unique IDs, units and no unresolved entries; content validator | Execution |
-| S1-02 | Stage 1 | Balance | P0 | 126 skills, route-normalized budgets, bounded modifiers; analytical uptime report and CSV | Execution, value |
+| S1-02 | Stage 1 | Balance | P0 | 378 skills, route-normalized budgets, bounded modifiers; analytical uptime report and CSV | Execution, value |
 | S1-03 | Stage 1 | Art | P0 | Eight proof sets; original references, provenance, frame/pivot review and gameplay-size animation preview | Creativity, polish |
 | S1-04 | Stage 1 | Audio | P0 | Two arranged original loops, editable stems, 25 SFX, PCM/seam/hash/summation report | Creativity, polish |
 | S1-05 | Stage 1 | Localization | P0 | Fifteen complete catalogs, placeholder parity and explicit translation-review status | Value, polish |
@@ -43,3 +57,13 @@ The approved scope includes genuine endless play, fifteen locales, changelogs, t
 | S3-06 | Stage 3 | Contest | P0 | Title/cover/description/controls/credits/URL/evidence packet; actual Handshake submission recorded separately | All four |
 
 The four rubric categories are equally important. This matrix is a production guide, not an assertion of a judge's score. Physical-device, human playtesting and native-speaker checks require actual people or devices; simulated evidence is labeled as simulated.
+
+## Current first-loop evidence
+
+74 automated tests, strict TypeScript and production build pass. Eight supplies, three slots, bounded queue/cold-start UX and limited two-class north/south walks are implemented. Desktop assistant review exists. The current local 49+1 server stress passes p99 at 19.772 ms with fifty active players/4,000 hostiles; current foreground FPS is unestablished because the preview was throttled. Signed-boundary/HTTP/SQL/lease journal components pass local tests, including separate-process restart. The new server-only room integration is disabled in normal execution; public rooms and hosted D1 do not use it. An anonymous eight-slot Practice browser playtest is published, with bounded eight-SDK-client hosting evidence; full capacity, physical devices, human review and full-content/release gates remain open. Current supported browser and saved-Site connector access are unavailable despite a working public URL. No row above becomes complete merely from these partial results.
+
+## Art production completed this round
+
+Five four-direction survivor references and three new individual boss pose studies are saved: 20 views/nine poses, selected from seventeen preserved generated natives. Heavy/Tank/Mage/Engineer/Assassin and Lantern Warden/Ratcatcher/Quarantine Clerk have assistant native and 1x/2x static readability review on quiet ground and an explicitly illustrative hazard overlay. Exact prompts, generated originals, revision decisions, workspace copies and hashes are recorded. These are static references, not completed animation, implemented gameplay, browser/device evidence or human approval. See [ART_PRODUCTION_PROGRESS.md](ART_PRODUCTION_PROGRESS.md) and reviews/art-production-2026-10-23/inventory.json.
+
+The user prioritized this work and asked to stop browser troubleshooting. Continue art/animation and content work in the same folder; keep unverified first-loop/device/recovery gates open. No new playable class or boss is claimed from these sheets. The runtime checkpoint f194746 passed both GitHub verify checks and local 74-test verification; newer art-only changes do not alter runtime source.

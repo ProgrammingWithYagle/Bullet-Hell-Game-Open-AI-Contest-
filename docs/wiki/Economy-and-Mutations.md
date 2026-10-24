@@ -1,5 +1,7 @@
 # Economy and mutations
 
+Current source adds unique artwork for all 24 mutation choices, twelve playable weapon tiers, eight supplies and 27 specialization paths shared by 162 playable nodes. The five existing upgrade paintings remain; grade/owned indicators and translated accessible names remain distinct.
+
 Personal completion rewards prevent kill stealing. Class-compatible shops use server-owned purchase validation. Power resets per run. Every mutation lasts three upcoming encounters; at most three are active.
 
 | Mutation | Effect |

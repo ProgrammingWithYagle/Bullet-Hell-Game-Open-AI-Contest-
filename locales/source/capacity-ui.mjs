@@ -1,0 +1,36 @@
+const rows = {
+  en: ['Connecting to the server; it may be starting. You can leave from Pause.', 'Waiting for server capacity · queue {position}'],
+  'zh-Hans': ['正在连接服务器，服务器可能正在启动。可在暂停菜单中离开。', '等待服务器空位 · 队列 {position}'],
+  'zh-Hant': ['正在連線至伺服器，伺服器可能正在啟動。可在暫停選單中離開。', '等待伺服器空位 · 佇列 {position}'],
+  ja: ['サーバーに接続中です。起動に時間がかかる場合があります。ポーズから退出できます。', 'サーバーの空きを待っています · 順番 {position}'],
+  es: ['Conectando al servidor; puede estar iniciándose. Puedes salir desde Pausa.', 'Esperando espacio en el servidor · cola {position}'],
+  fr: ['Connexion au serveur ; il démarre peut-être. Vous pouvez quitter depuis Pause.', 'En attente de place sur le serveur · file {position}'],
+  de: ['Verbindung zum Server; er startet möglicherweise. Verlassen ist über Pause möglich.', 'Warten auf Serverkapazität · Warteschlange {position}'],
+  'pt-BR': ['Conectando ao servidor; ele pode estar iniciando. Saia pelo menu de pausa.', 'Aguardando vaga no servidor · fila {position}'],
+  ru: ['Подключение к серверу; возможно, он запускается. Выйти можно через меню паузы.', 'Ожидание места на сервере · очередь {position}'],
+  hi: ['सर्वर से जुड़ रहे हैं; वह शुरू हो रहा हो सकता है। विराम मेन्यू से बाहर जा सकते हैं।', 'सर्वर में जगह की प्रतीक्षा · कतार {position}'],
+  ar: ['جارٍ الاتصال بالخادم؛ ربما يبدأ تشغيله. يمكنك المغادرة من قائمة الإيقاف.', 'انتظار سعة الخادم · الطابور {position}'],
+  bn: ['সার্ভারে সংযোগ হচ্ছে; এটি চালু হতে পারে। বিরতি মেনু থেকে বের হতে পারবেন।', 'সার্ভারে জায়গার অপেক্ষা · সারি {position}'],
+  id: ['Menghubungkan ke server; server mungkin sedang dimulai. Keluar lewat Jeda.', 'Menunggu kapasitas server · antrean {position}'],
+  ur: ['سرور سے رابطہ ہو رہا ہے؛ شاید شروع ہو رہا ہو۔ وقفے کے مینو سے نکل سکتے ہیں۔', 'سرور میں جگہ کا انتظار · قطار {position}'],
+  ko: ['서버에 연결 중입니다. 시작 중일 수 있습니다. 일시 정지 메뉴에서 나갈 수 있습니다.', '서버 자리 대기 중 · 대기열 {position}'],
+};
+export const capacityMessages = id => ({ 'ui.serverWaking': rows[id][0], 'ui.waitingCapacity': rows[id][1] });
+const playtestRows = {
+  en: ['Online playtest: up to {count} players on this service.', 'Practice run. Verified online rankings are not available in this playtest.'],
+  'zh-Hans': ['在线试玩：此服务器最多支持 {count} 名玩家。', '练习对局。此试玩版暂不提供已验证的在线排名。'],
+  'zh-Hant': ['線上試玩：此伺服器最多支援 {count} 名玩家。', '練習對局。此試玩版暫不提供已驗證的線上排名。'],
+  ja: ['オンライン試遊：このサーバーでは最大{count}人です。', '練習ランです。この試遊版では認証済みオンラインランキングを利用できません。'],
+  es: ['Prueba en línea: hasta {count} jugadores en este servidor.', 'Partida de práctica. Esta prueba no ofrece clasificaciones en línea verificadas.'],
+  fr: ['Test en ligne : jusqu’à {count} joueurs sur ce serveur.', 'Partie d’entraînement. Ce test ne propose pas de classement en ligne vérifié.'],
+  de: ['Online-Spieltest: bis zu {count} Spieler auf diesem Server.', 'Übungsrunde. Verifizierte Online-Ranglisten sind in diesem Spieltest nicht verfügbar.'],
+  'pt-BR': ['Teste on-line: até {count} jogadores neste servidor.', 'Partida de treino. Este teste não oferece classificações on-line verificadas.'],
+  ru: ['Сетевая тестовая версия: до {count} игроков на этом сервере.', 'Тренировочный забег. Подтверждённые сетевые рейтинги в этой версии недоступны.'],
+  hi: ['ऑनलाइन परीक्षण: इस सर्वर पर अधिकतम {count} खिलाड़ी।', 'अभ्यास रन। इस परीक्षण में सत्यापित ऑनलाइन रैंकिंग उपलब्ध नहीं है।'],
+  ar: ['اختبار اللعب عبر الإنترنت: حتى {count} لاعبين على هذا الخادم.', 'جولة تدريبية. التصنيفات الموثّقة عبر الإنترنت غير متاحة في هذا الاختبار.'],
+  bn: ['অনলাইন পরীক্ষামূলক খেলা: এই সার্ভারে সর্বোচ্চ {count} জন খেলোয়াড়।', 'অনুশীলন পর্ব। এই পরীক্ষায় যাচাইকৃত অনলাইন র‍্যাঙ্কিং নেই।'],
+  id: ['Uji coba daring: hingga {count} pemain di server ini.', 'Ronde latihan. Peringkat daring terverifikasi belum tersedia dalam uji coba ini.'],
+  ur: ['آن لائن آزمائشی کھیل: اس سرور پر زیادہ سے زیادہ {count} کھلاڑی۔', 'مشق کا رن۔ اس آزمائشی کھیل میں تصدیق شدہ آن لائن درجہ بندی دستیاب نہیں ہے۔'],
+  ko: ['온라인 플레이테스트: 이 서버는 최대 {count}명입니다.', '연습 경기입니다. 이 플레이테스트에서는 검증된 온라인 순위를 사용할 수 없습니다.'],
+};
+export const playtestMessages = id => ({'ui.playtestCapacity':playtestRows[id][0],'ui.practiceNotice':playtestRows[id][1]});

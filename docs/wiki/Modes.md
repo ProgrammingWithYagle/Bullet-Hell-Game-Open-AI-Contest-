@@ -1,5 +1,7 @@
 # Modes and endless play
 
+The table describes the full authored target. The public protocol-4 prototype uses Constable variants; the source protocol-6 Practice subset completes five different implemented bosses and Endless exhausts that pool before Brutal repeats. The official Free service remains capped at eight slots. Full routes/finale pools and Raid remain in production.
+
 | Mode | Players | Encounters | Minutes |
 | --- | --- | --- | --- |
 | Quarantine Run | 1-8 | 5 | 10-20 |

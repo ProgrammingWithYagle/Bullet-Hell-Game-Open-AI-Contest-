@@ -5,6 +5,11 @@ import assert from 'node:assert/strict';
 import { english } from '../locales/source/en.mjs';
 import additional from '../locales/source/additional.mjs';
 import { bossExpansionIds, expansionMessages } from '../locales/source/boss-expansion.mjs';
+import { interfaceMessages } from '../locales/source/interface-expansion.mjs';
+import { contractMessages } from '../locales/source/contract-ui.mjs';
+import { suppliesMessages } from '../locales/source/supplies-ui.mjs';
+import { capacityMessages, playtestMessages } from '../locales/source/capacity-ui.mjs';
+import { recoveryMessages } from '../locales/source/recovery-ui.mjs';
 
 const defaultRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 export const launchLocales = ['en','zh-Hans','zh-Hant','ja','es','fr','de','pt-BR','ru','hi','ar','bn','id','ur','ko'];
@@ -18,7 +23,7 @@ const tokens = value => kind(value) === 'text' ? placeholders(value) : kind(valu
 const commonEnglishKeys = new Set(['ui.brand','template.effect','template.effectFlat','template.effectMultiplier','template.effectPercent','template.percent','template.perSecond','template.seconds']);
 // Explicit cognates and loanwords. An unlisted verbatim English message is an error.
 const cognates = {
-  es:['branch.control','difficulty.normal','threat.1','ui.audio','ui.no'],
+  es:['ui.variantBrutal','branch.control','difficulty.normal','threat.1','ui.audio','ui.no'],
   fr:['attack.charge.name','branch.bastion','branch.endurance','branch.protection','branch.suppression','branch.triage','class.assassin.name','class.mage.name','class.tank.name','difficulty.normal','stat.grade','supply.antidote.name','threat.1','threat.2','threat.4','threat.8','ui.audio','ui.boss','ui.leaderboardScore','ui.pause','ui.phase','ui.version'],
   de:['branch.triage','difficulty.baby','difficulty.normal','stat.radius','threat.1','ui.audio','ui.boss','ui.pause','ui.phase','ui.region','ui.version','ui.vibration'],
   'pt-BR':['difficulty.normal','threat.1'],
@@ -77,6 +82,13 @@ export function validateOne(document, canonical, content, locale) {
       ...Object.entries(english).flatMap(([group,rows])=>Object.keys(rows).map(k=>`${group}.${k}`)),
       ...Object.keys(additional.en),
       ...Object.keys(expansionMessages('en')),
+      ...Object.keys(interfaceMessages('en')),
+      ...Object.keys(contractMessages('en')),
+      ...Object.keys(suppliesMessages('en')),
+      ...Object.keys(capacityMessages('en')),
+      ...Object.keys(playtestMessages('en')),
+      ...Object.keys(recoveryMessages('en')),
+      ...content.skills.filter(x=>x.sourceSkillId&&x.sourceSkillId!==x.id).map(x=>`skill.${x.id}.name`),
       ...['players','encounters','seconds'].map(k=>`count.${k}`),
       ...['weapons','skills','mutations','upgrades'].flatMap(group=>{
         const prefix={weapons:'weapon',skills:'skill',mutations:'mutation',upgrades:'upgrade'}[group];
@@ -95,6 +107,9 @@ export function validateOne(document, canonical, content, locale) {
   }
   const expectedCategories = new Intl.PluralRules(locale).resolvedOptions().pluralCategories.slice().sort();
   const expandedSource = expansionMessages(locale);
+  for (const [key,text] of Object.entries(recoveryMessages(locale))) {
+    if (messages[key] !== text) fail(`recovery UI source mismatch at ${key}`);
+  }
   for (const [key,text] of Object.entries(expandedSource)) {
     if (messages[key] !== text) fail(`boss expansion source mismatch at ${key}`);
   }
