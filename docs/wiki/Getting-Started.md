@@ -8,7 +8,7 @@ The Free multiplayer service currently reserves at most eight slots and one room
 
 ## Current source build
 
-The source branch additionally offers Heavy and Lantern Warden, protocol 5. Choose the opening boss at Review; use the matching local server for online play. The public link remains the older protocol-4 build. [Current implementation and review limits](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/WARDEN_AND_HEAVY_RUNTIME.md). Source Practice alternates two bosses and tracks each identity before Brutal repeats. Four other classes and the full roster/routes remain unfinished.
+The source branch offers three classes and five bosses, protocol 6. Choose any opening boss at Review; use the matching local server for online play. Source Practice completes five different identities; Endless only repeats after the pool, then marks the repeat Brutal with a + threat level. Shops/skill paths/supplies/mutations have illustrated items, and each current boss selects its own original music. [Current implementation and limits](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/BOSS_ENCOUNTERS_ITEMS_AND_MUSIC.md). The public Site remains the older protocol-4 build; four classes and the full roster/routes remain unfinished.
 
 ## Controls
 

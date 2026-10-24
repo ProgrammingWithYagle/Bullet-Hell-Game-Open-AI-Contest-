@@ -3,10 +3,23 @@ export type Rect = { x: number; y: number; width: number; height: number };
 export const clamp = (n: number, a: number, b: number) => Math.min(b, Math.max(a, n));
 export const distance = (a: Vec, b: Vec) => Math.hypot(a.x - b.x, a.y - b.y);
 export function segmentCircle(a: Vec, b: Vec, c: Vec, r: number): number | null {
-  const dx = b.x - a.x,
-    dy = b.y - a.y,
-    fx = a.x - c.x,
-    fy = a.y - c.y;
+  return segmentCircleXY(a.x, a.y, b.x, b.y, c.x, c.y, r);
+}
+// Scalar form shares the exact sweep arithmetic without allocating temporary
+// relative-position objects for thousands of projectile/body checks.
+export function segmentCircleXY(
+  ax: number,
+  ay: number,
+  bx: number,
+  by: number,
+  cx: number,
+  cy: number,
+  r: number,
+): number | null {
+  const dx = bx - ax,
+    dy = by - ay,
+    fx = ax - cx,
+    fy = ay - cy;
   const cc = fx * fx + fy * fy - r * r;
   if (cc <= 0) return 0;
   const aa = dx * dx + dy * dy;
@@ -79,6 +92,8 @@ export function moveBody(pos: Vec, delta: Vec, radius: number, obstacles: Rect[]
 }
 export class SpatialGrid<T extends { x: number; y: number }> {
   private cells = new Map<string, T[]>();
+  private querySeen = new WeakMap<T, number>();
+  private querySerial = 0;
   clear() {
     this.cells.clear();
   }
@@ -100,7 +115,19 @@ export class SpatialGrid<T extends { x: number; y: number }> {
       }
   }
   query(a: Vec, b: Vec, radius: number): T[] {
-    const values = new Set<T>();
+    const values: T[] = [];
+    this.queryInto(a, b, radius, values);
+    return values;
+  }
+  // Callers may reuse their output array. Returned query() arrays stay owned by
+  // their callers; no shared scratch result can be overwritten by a later query.
+  queryInto(a: Vec, b: Vec, radius: number, values: T[]): void {
+    values.length = 0;
+    if (this.querySerial >= Number.MAX_SAFE_INTEGER) {
+      this.querySeen = new WeakMap();
+      this.querySerial = 0;
+    }
+    const serial = ++this.querySerial;
     for (
       let x = Math.floor((Math.min(a.x, b.x) - radius) / 128);
       x <= Math.floor((Math.max(a.x, b.x) + radius) / 128);
@@ -110,8 +137,14 @@ export class SpatialGrid<T extends { x: number; y: number }> {
         let y = Math.floor((Math.min(a.y, b.y) - radius) / 128);
         y <= Math.floor((Math.max(a.y, b.y) + radius) / 128);
         y++
-      )
-        for (const p of this.cells.get(x + ':' + y) ?? []) values.add(p);
-    return [...values];
+      ) {
+        const cell = this.cells.get(x + ':' + y);
+        if (!cell) continue;
+        for (const p of cell)
+          if (this.querySeen.get(p) !== serial) {
+            this.querySeen.set(p, serial);
+            values.push(p);
+          }
+      }
   }
 }

@@ -46,11 +46,16 @@ test(
       );
       await owner.connect(options);
       await guest.connect(
-        { ...options, name: 'Iona', classId: 'medic', openingBossId: 'constable' },
+        {
+          ...options,
+          name: 'Iona',
+          classId: 'medic',
+          openingBossId: 'constable',
+        },
         { roomId: owner.room!.roomId },
       );
       await until(() => owner.view?.players.length === 2);
-      assert.equal(PROTOCOL, 5);
+      assert.equal(PROTOCOL, 6);
       owner.start();
       await until(() => owner.view?.phase === 'combat' && guest.view?.signatures.length === 1);
       assert.equal(owner.view!.boss.id, 'lantern-warden');
@@ -72,7 +77,7 @@ test(
       await until(() => owner.view?.phase === 'contractVote');
       assert(
         room.game.contractCards.every(
-          (card) => card.bossId === 'constable' && card.variant === 'normal',
+          (card) => card.bossId !== 'lantern-warden' && card.variant === 'normal',
         ),
       );
       assert(owner.view!.contractCards.every((card) => !('bossId' in card)));

@@ -1,8 +1,8 @@
 # Bosses
 
-Constable and Lantern Warden now execute source encounters. Warden is selectable as the opening boss and has the warning/rotating cone/rest, trailing interior, fan/zones, phases, Accord interrupt, Brutal delayed sweep and five motion clips (27 frames), including hurt/defeat. Actual offline/network tests pass; final rendered transitions remain open. [Current evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/WARDEN_AND_HEAVY_RUNTIME.md). The public deployment remains Constable/protocol 4.
+Five bosses execute source encounters: Hollow Constable, Lantern Warden, Carrion Courier, Ratcatcher and Quarantine Clerk. Their actual signatures include the lantern sweep, charge/trail, three rat packs/breakable sack and numbered stamps/reopened safe interior, with phases, Accord and Brutal behavior. [Current evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/BOSS_ENCOUNTERS_ITEMS_AND_MUSIC.md). Each current boss has an original theme; final rendered/action and listening acceptance remain open. The public deployment remains Constable/protocol 4.
 
-Sixty identities are authored: fifty in separate timed-route pools, nine exclusive to Endless and The Uncounted. Fifty-eight remain unimplemented. This source subset alternates Constable and Warden; completed-identity history makes an Endless repeat Brutal only after that identity is cleared. It does not implement the complete gauntlet pool. See [Gauntlets](Gauntlets).
+Sixty identities are authored; 55 remain unimplemented. Practice uses five distinct implemented identities, and Endless exhausts that pool before Brutal repeats while avoiding consecutive identical bosses. All five current bosses have minimum threat 1 (Normal); the encounter scales threat independently. A + means Brutal, not another identity. The full campaign/finale pools remain in production. See [Gauntlets](Gauntlets).
 
 Contract cards show threat, bounty and recommended build strength, never the next boss identity.
 

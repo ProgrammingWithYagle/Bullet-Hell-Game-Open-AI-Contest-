@@ -1,7 +1,7 @@
 // Server-owned ordinary actors. Bosses deliberately do not use this slow state.
 import catalog from '../../content/catalog.json' with { type: 'json' };
 import { DT, HZ, type Vec } from './protocol.ts';
-import { distance, moveBody, type Rect } from './geometry.ts';
+import { distance, moveBody, segmentCircle, type Rect } from './geometry.ts';
 
 export type Minion = {
   id: number;
@@ -15,6 +15,8 @@ export type Minion = {
   speed: number;
   radius: number;
   damage: number;
+  goalX?: number;
+  goalY?: number;
   expires: number;
   attackAt: number;
   slowUntil: number;
@@ -29,13 +31,26 @@ export type MinionSpawn = {
   radius: number;
   damage: number;
   lifeSeconds?: number;
+  goalX?: number;
+  goalY?: number;
 };
-type Target = Vec & { id: string };
+type Target = Vec & { id: string; oldX?: number; oldY?: number };
 
 export class Minions {
   readonly actors = new Map<number, Minion>();
   spawn(id: number, definition: MinionSpawn, tick: number): Minion | null {
     const lifetime = definition.lifeSeconds ?? 60;
+    if (
+      (definition.goalX === undefined) !== (definition.goalY === undefined) ||
+      (definition.goalX !== undefined &&
+        (!Number.isFinite(definition.goalX) ||
+          !Number.isFinite(definition.goalY) ||
+          definition.goalX < 0 ||
+          definition.goalX > 1600 ||
+          definition.goalY! < 0 ||
+          definition.goalY! > 1000))
+    )
+      throw Error('Invalid ordinary enemy goal');
     if (
       !Number.isSafeInteger(id) ||
       id < 1 ||
@@ -129,28 +144,56 @@ export class Minions {
         undefined,
       );
       if (!target) continue;
-      const dx = target.x - actor.x,
-        dy = target.y - actor.y,
+      if (actor.goalX !== undefined && distance(actor, { x: actor.goalX, y: actor.goalY! }) < 24) {
+        actor.goalX = actor.goalY = undefined;
+      }
+      const destination = actor.goalX === undefined ? target : { x: actor.goalX, y: actor.goalY! };
+      const dx = destination.x - actor.x,
+        dy = destination.y - actor.y,
         length = Math.hypot(dx, dy);
       const speed = actor.speed * actor.slowMultiplier;
       const travel = Math.min(
         speed * DT,
-        Math.max(0, length - actor.radius - catalog.rules.playerRadius),
+        Math.max(
+          0,
+          length - (actor.goalX === undefined ? actor.radius + catalog.rules.playerRadius : 0),
+        ),
       );
       const next = moveBody(
         actor,
-        { x: length ? (dx / length) * travel : 0, y: length ? (dy / length) * travel : 0 },
+        {
+          x: length ? (dx / length) * travel : 0,
+          y: length ? (dy / length) * travel : 0,
+        },
         actor.radius,
         obstacles,
       );
+      if (actor.goalX !== undefined && distance(actor, next) < 0.01)
+        actor.goalX = actor.goalY = undefined;
       actor.x = next.x;
       actor.y = next.y;
-      if (
-        distance(actor, target) <= actor.radius + catalog.rules.playerRadius + 0.1 &&
-        tick >= actor.attackAt
-      ) {
-        contact(target, actor.damage);
-        actor.attackAt = tick + Math.ceil(0.5 * HZ);
+      if (tick >= actor.attackAt) {
+        let victim: Target | undefined,
+          first = Infinity;
+        for (const candidate of targets) {
+          const time = segmentCircle(
+            {
+              x: actor.oldX - (candidate.oldX ?? candidate.x),
+              y: actor.oldY - (candidate.oldY ?? candidate.y),
+            },
+            { x: actor.x - candidate.x, y: actor.y - candidate.y },
+            { x: 0, y: 0 },
+            actor.radius + catalog.rules.playerRadius + 0.1,
+          );
+          if (time !== null && time < first) {
+            first = time;
+            victim = candidate;
+          }
+        }
+        if (victim) {
+          contact(victim, actor.damage);
+          actor.attackAt = tick + Math.ceil(0.5 * HZ);
+        }
       }
     }
   }

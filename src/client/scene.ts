@@ -6,6 +6,7 @@ import { arena, data } from '../shared/game.ts';
 import { FrameMeter } from './frame-meter.ts';
 import { wardenArt, wardenCombatPose, type WardenCombatClipId } from './warden-presentation.ts';
 import { heavyArt, heavyPose } from './heavy-presentation.ts';
+import { encounterArt, encounterFrame } from './encounter-presentation.ts';
 import type { Sector } from '../shared/warden-signature.ts';
 export class CombatScene extends Phaser.Scene {
   private resolveReady!: () => void;
@@ -21,6 +22,7 @@ export class CombatScene extends Phaser.Scene {
   highContrast = false;
   reduceMotion = false;
   private people = new Map<string, Phaser.GameObjects.Sprite>();
+  private actors = new Map<number, Phaser.GameObjects.Sprite>();
   private facings = new Map<string, string>();
   private shadows!: Phaser.GameObjects.Graphics;
   private hazards!: Phaser.GameObjects.Graphics;
@@ -59,8 +61,14 @@ export class CombatScene extends Phaser.Scene {
   preload() {
     this.load.on('loaderror', () => this.rejectReady(Error('ui.errorServer')));
     this.load.image('gatehouse', assets.arena);
-    this.load.spritesheet('soldier', assets.soldier, { frameWidth: 256, frameHeight: 256 });
-    this.load.spritesheet('constable', assets.boss, { frameWidth: 512, frameHeight: 512 });
+    this.load.spritesheet('soldier', assets.soldier, {
+      frameWidth: 256,
+      frameHeight: 256,
+    });
+    this.load.spritesheet('constable', assets.boss, {
+      frameWidth: 512,
+      frameHeight: 512,
+    });
     this.load.image('medic', assets.medic);
     for (const [direction, url] of Object.entries(assets.heavy)) {
       const size =
@@ -74,9 +82,17 @@ export class CombatScene extends Phaser.Scene {
         { frameWidth: size, frameHeight: size },
       );
     }
+    for (const clip of encounterArt)
+      this.load.spritesheet(clip.bossId + '-action', assets.encounters[clip.bossId], {
+        frameWidth: clip.cellSize,
+        frameHeight: clip.cellSize,
+      });
     for (const [clip, url] of Object.entries(assets.warden)) {
       const size = wardenArt.clips[clip as WardenCombatClipId].cellSize;
-      this.load.spritesheet('warden-' + clip, url, { frameWidth: size, frameHeight: size });
+      this.load.spritesheet('warden-' + clip, url, {
+        frameWidth: size,
+        frameHeight: size,
+      });
     }
     for (const [key, url] of Object.entries(assets.directions)) {
       if (key.endsWith('North') || key.endsWith('South'))
@@ -110,7 +126,10 @@ export class CombatScene extends Phaser.Scene {
     });
     this.anims.create({
       key: 'constable-attack',
-      frames: this.anims.generateFrameNumbers('constable', { start: 0, end: 7 }),
+      frames: this.anims.generateFrameNumbers('constable', {
+        start: 0,
+        end: 7,
+      }),
       frameRate: 10,
       repeat: 0,
     });
@@ -257,6 +276,102 @@ export class CombatScene extends Phaser.Scene {
         h.lineStyle(2, color, 0.7).strokePoints(points, true);
       }
     }
+    for (const cue of view.bossCues) {
+      if (cue.kind === 'charge' || cue.kind === 'scent' || cue.kind === 'trail') {
+        const dx = cue.x2 - cue.x1,
+          dy = cue.y2 - cue.y1,
+          length = Math.hypot(dx, dy) || 1;
+        const nx = ((-dy / length) * cue.width) / 2,
+          ny = ((dx / length) * cue.width) / 2;
+        const interrupted = 'interrupted' in cue && cue.interrupted;
+        const color = interrupted
+          ? 0x9ac7ad
+          : cue.kind === 'trail'
+            ? 0xdf7957
+            : cue.kind === 'scent'
+              ? 0xc7ab72
+              : 0xf7c176;
+        const points = [
+          new Phaser.Math.Vector2(cue.x1 + nx, cue.y1 + ny),
+          new Phaser.Math.Vector2(cue.x2 + nx, cue.y2 + ny),
+          new Phaser.Math.Vector2(cue.x2 - nx, cue.y2 - ny),
+          new Phaser.Math.Vector2(cue.x1 - nx, cue.y1 - ny),
+        ];
+        h.fillStyle(color, cue.kind === 'trail' ? 0.23 : 0.12).fillPoints(points, true);
+        h.lineStyle(interrupted ? 1 : 3, color, 0.95).strokePoints(points, true);
+        if (cue.kind !== 'trail')
+          h.lineStyle(2, color, 1).lineBetween(
+            cue.x2 - nx * 0.7,
+            cue.y2 - ny * 0.7,
+            cue.x2 + nx * 0.7,
+            cue.y2 + ny * 0.7,
+          );
+      } else if (cue.kind === 'stamp') {
+        const safe = cue.safeAt > 0 && now >= cue.safeAt,
+          active = now >= cue.at;
+        const color = safe ? 0x9be6c9 : active ? 0xe77e61 : 0xe7c583;
+        h.fillStyle(color, safe ? 0.13 : active ? 0.23 : 0.07).fillCircle(cue.x, cue.y, cue.radius);
+        h.lineStyle(safe ? 5 : 3, color, 1).strokeCircle(cue.x, cue.y, cue.radius);
+        // Roman marks give the order without relying on color or font shaping.
+        for (let mark = 0; mark < cue.index; mark++)
+          h.lineStyle(4, color, 1).lineBetween(
+            cue.x + (mark - (cue.index - 1) / 2) * 12,
+            cue.y - 12,
+            cue.x + (mark - (cue.index - 1) / 2) * 12,
+            cue.y + 12,
+          );
+        if (safe)
+          h.lineStyle(4, color, 1)
+            .lineBetween(cue.x - 18, cue.y + 25, cue.x - 3, cue.y + 38)
+            .lineBetween(cue.x - 3, cue.y + 38, cue.x + 24, cue.y + 10);
+      } else if (cue.kind === 'sack') {
+        f.lineStyle(2, cue.health > 0 ? 0xe4d291 : 0x94c6ad, 0.85).strokeCircle(
+          cue.x,
+          cue.y,
+          cue.radius,
+        );
+        f.fillStyle(0x102a24, 0.9).fillRect(cue.x - 25, cue.y - 36, 50, 5);
+        f.fillStyle(cue.health > 0 ? 0xe4d291 : 0x94c6ad, 1).fillRect(
+          cue.x - 25,
+          cue.y - 36,
+          (50 * cue.health) / cue.maxHealth,
+          5,
+        );
+      }
+    }
+    const actorIds = new Set(view.minions.map((a) => a.id));
+    for (const actor of view.minions) {
+      let sprite = this.actors.get(actor.id);
+      if (!sprite) {
+        sprite = this.add.sprite(actor.x, actor.y, 'rat-action', 0);
+        this.actors.set(actor.id, sprite);
+      }
+      const clip = encounterArt.find((entry) => entry.bossId === 'rat')!;
+      sprite
+        .setPosition(actor.x, actor.y)
+        .setOrigin(0.5, 0.5)
+        .setDisplaySize(clip.displayCell, clip.displayCell)
+        .setDepth(5 + actor.y / 1000);
+      const dx = actor.x - actor.oldX,
+        dy = actor.y - actor.oldY;
+      if (Math.hypot(dx, dy) > 0.01) sprite.setRotation(Math.atan2(dy, dx) + Math.PI / 2);
+      sprite
+        .setFrame(this.reduceMotion ? 0 : Math.floor(now / 3) % 8)
+        .setTint(now < actor.slowUntil ? 0x9dd8ce : 0xffffff);
+      if (this.hitboxes) f.lineStyle(1, 0xe7c583, 0.9).strokeCircle(actor.x, actor.y, actor.radius);
+      f.fillStyle(0x18352f, 0.9).fillRect(actor.x - 12, actor.y + 18, 24, 3);
+      f.fillStyle(0xe4c08b, 1).fillRect(
+        actor.x - 12,
+        actor.y + 18,
+        (24 * actor.health) / actor.maxHealth,
+        3,
+      );
+    }
+    for (const [id, sprite] of this.actors)
+      if (!actorIds.has(id)) {
+        sprite.destroy();
+        this.actors.delete(id);
+      }
     if (view.accord) {
       const a = view.accord;
       for (const point of a.points) {
@@ -272,7 +387,7 @@ export class CombatScene extends Phaser.Scene {
     this.bossSprite.setVisible(
       view.phase === 'combat' || (warden && view.boss.defeatedAt > 0 && view.boss.health <= 0),
     );
-    this.bossSprite.setPosition(view.boss.x, view.boss.y + (warden ? 0 : 65));
+    this.bossSprite.setPosition(view.boss.x, view.boss.y + (view.boss.id === 'constable' ? 65 : 0));
     this.bossSprite.setAlpha(now < view.boss.staggerUntil ? 0.55 : 1);
     if (warden) {
       const pose = wardenCombatPose(view.boss, view.tick, now, view.signatures, this.reduceMotion);
@@ -280,6 +395,16 @@ export class CombatScene extends Phaser.Scene {
       this.bossSprite.anims.stop();
       this.bossSprite
         .setTexture('warden-' + pose.clip, pose.frame)
+        .setOrigin(clip.origin[0], clip.origin[1])
+        .setDisplaySize(clip.displayCell, clip.displayCell);
+    } else if (view.boss.id !== 'constable') {
+      const clip = encounterArt.find((entry) => entry.bossId === view.boss.id)!;
+      this.bossSprite.anims.stop();
+      this.bossSprite
+        .setTexture(
+          view.boss.id + '-action',
+          encounterFrame(view.boss, now, view.bossCues, this.reduceMotion),
+        )
         .setOrigin(clip.origin[0], clip.origin[1])
         .setDisplaySize(clip.displayCell, clip.displayCell);
     } else {

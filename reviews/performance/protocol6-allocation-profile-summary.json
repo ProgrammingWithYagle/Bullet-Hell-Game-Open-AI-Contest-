@@ -1,0 +1,250 @@
+{
+  "profile": "reviews/performance/raw/protocol6-ratcatcher-allocation.cpuprofile",
+  "sha256": "4b21a5eacfd2cec7b7e1fb65a01ca47554eb7c09cc2dbf040ce566554661f9ee",
+  "condition": "Earlier shared-process Ratcatcher stress before actor field patches; naturally summoned rats were cancelled, peak zero.",
+  "topSelfTime": [
+    {
+      "milliseconds": 5913.14,
+      "function": {
+        "functionName": "(idle)",
+        "scriptId": "0",
+        "url": "",
+        "lineNumber": -1,
+        "columnNumber": -1
+      }
+    },
+    {
+      "milliseconds": 1082.181,
+      "function": {
+        "functionName": "stepShots",
+        "scriptId": "351",
+        "url": "file:///C:/Users/yigal/OneDrive/Documents/ChatGPT/OpenAI%20Multiplayer%20Game%20Contest%20(Bullet%20Hell)/src/shared/game.ts",
+        "lineNumber": 0,
+        "columnNumber": 37325
+      }
+    },
+    {
+      "milliseconds": 670.567,
+      "function": {
+        "functionName": "(garbage collector)",
+        "scriptId": "0",
+        "url": "",
+        "lineNumber": -1,
+        "columnNumber": -1
+      }
+    },
+    {
+      "milliseconds": 420.482,
+      "function": {
+        "functionName": "(program)",
+        "scriptId": "0",
+        "url": "",
+        "lineNumber": -1,
+        "columnNumber": -1
+      }
+    },
+    {
+      "milliseconds": 357.262,
+      "function": {
+        "functionName": "writeBuffer",
+        "scriptId": "0",
+        "url": "",
+        "lineNumber": -1,
+        "columnNumber": -1
+      }
+    },
+    {
+      "milliseconds": 305.28,
+      "function": {
+        "functionName": "decodeSchemaOperation",
+        "scriptId": "199",
+        "url": "file:///C:/Users/yigal/OneDrive/Documents/ChatGPT/OpenAI%20Multiplayer%20Game%20Contest%20(Bullet%20Hell)/node_modules/.pnpm/@colyseus+schema@5.0.42_typescript@7.0.2/node_modules/@colyseus/schema/build/index.mjs",
+        "lineNumber": 4073,
+        "columnNumber": 39
+      }
+    },
+    {
+      "milliseconds": 253.925,
+      "function": {
+        "functionName": "query",
+        "scriptId": "355",
+        "url": "file:///C:/Users/yigal/OneDrive/Documents/ChatGPT/OpenAI%20Multiplayer%20Game%20Contest%20(Bullet%20Hell)/src/shared/geometry.ts",
+        "lineNumber": 0,
+        "columnNumber": 2302
+      }
+    },
+    {
+      "milliseconds": 251.184,
+      "function": {
+        "functionName": "writev",
+        "scriptId": "0",
+        "url": "",
+        "lineNumber": -1,
+        "columnNumber": -1
+      }
+    },
+    {
+      "milliseconds": 247.422,
+      "function": {
+        "functionName": "writev",
+        "scriptId": "0",
+        "url": "",
+        "lineNumber": -1,
+        "columnNumber": -1
+      }
+    },
+    {
+      "milliseconds": 204.195,
+      "function": {
+        "functionName": "segmentRect",
+        "scriptId": "355",
+        "url": "file:///C:/Users/yigal/OneDrive/Documents/ChatGPT/OpenAI%20Multiplayer%20Game%20Contest%20(Bullet%20Hell)/src/shared/geometry.ts",
+        "lineNumber": 0,
+        "columnNumber": 602
+      }
+    },
+    {
+      "milliseconds": 176.649,
+      "function": {
+        "functionName": "syncState",
+        "scriptId": "349",
+        "url": "file:///C:/Users/yigal/OneDrive/Documents/ChatGPT/OpenAI%20Multiplayer%20Game%20Contest%20(Bullet%20Hell)/src/server/GraveRoom.ts",
+        "lineNumber": 0,
+        "columnNumber": 7791
+      }
+    },
+    {
+      "milliseconds": 166.155,
+      "function": {
+        "functionName": "step",
+        "scriptId": "351",
+        "url": "file:///C:/Users/yigal/OneDrive/Documents/ChatGPT/OpenAI%20Multiplayer%20Game%20Contest%20(Bullet%20Hell)/src/shared/game.ts",
+        "lineNumber": 0,
+        "columnNumber": 16318
+      }
+    },
+    {
+      "milliseconds": 132.805,
+      "function": {
+        "functionName": "decodeSchemaOperation",
+        "scriptId": "199",
+        "url": "file:///C:/Users/yigal/OneDrive/Documents/ChatGPT/OpenAI%20Multiplayer%20Game%20Contest%20(Bullet%20Hell)/node_modules/.pnpm/@colyseus+schema@5.0.42_typescript@7.0.2/node_modules/@colyseus/schema/build/index.mjs",
+        "lineNumber": 4073,
+        "columnNumber": 39
+      }
+    },
+    {
+      "milliseconds": 113.622,
+      "function": {
+        "functionName": "writev",
+        "scriptId": "0",
+        "url": "",
+        "lineNumber": -1,
+        "columnNumber": -1
+      }
+    },
+    {
+      "milliseconds": 110.904,
+      "function": {
+        "functionName": "writev",
+        "scriptId": "0",
+        "url": "",
+        "lineNumber": -1,
+        "columnNumber": -1
+      }
+    },
+    {
+      "milliseconds": 101.458,
+      "function": {
+        "functionName": "decodeSchemaOperation",
+        "scriptId": "199",
+        "url": "file:///C:/Users/yigal/OneDrive/Documents/ChatGPT/OpenAI%20Multiplayer%20Game%20Contest%20(Bullet%20Hell)/node_modules/.pnpm/@colyseus+schema@5.0.42_typescript@7.0.2/node_modules/@colyseus/schema/build/index.mjs",
+        "lineNumber": 4073,
+        "columnNumber": 39
+      }
+    },
+    {
+      "milliseconds": 95.91,
+      "function": {
+        "functionName": "decodeSchemaOperation",
+        "scriptId": "199",
+        "url": "file:///C:/Users/yigal/OneDrive/Documents/ChatGPT/OpenAI%20Multiplayer%20Game%20Contest%20(Bullet%20Hell)/node_modules/.pnpm/@colyseus+schema@5.0.42_typescript@7.0.2/node_modules/@colyseus/schema/build/index.mjs",
+        "lineNumber": 4073,
+        "columnNumber": 39
+      }
+    },
+    {
+      "milliseconds": 87.473,
+      "function": {
+        "functionName": "writev",
+        "scriptId": "0",
+        "url": "",
+        "lineNumber": -1,
+        "columnNumber": -1
+      }
+    },
+    {
+      "milliseconds": 86.218,
+      "function": {
+        "functionName": "string",
+        "scriptId": "199",
+        "url": "file:///C:/Users/yigal/OneDrive/Documents/ChatGPT/OpenAI%20Multiplayer%20Game%20Contest%20(Bullet%20Hell)/node_modules/.pnpm/@colyseus+schema@5.0.42_typescript@7.0.2/node_modules/@colyseus/schema/build/index.mjs",
+        "lineNumber": 535,
+        "columnNumber": 15
+      }
+    },
+    {
+      "milliseconds": 76.355,
+      "function": {
+        "functionName": "nextTick",
+        "scriptId": "32",
+        "url": "node:internal/process/task_queues",
+        "lineNumber": 112,
+        "columnNumber": 17
+      }
+    },
+    {
+      "milliseconds": 62.707,
+      "function": {
+        "functionName": "decodeSchemaOperation",
+        "scriptId": "199",
+        "url": "file:///C:/Users/yigal/OneDrive/Documents/ChatGPT/OpenAI%20Multiplayer%20Game%20Contest%20(Bullet%20Hell)/node_modules/.pnpm/@colyseus+schema@5.0.42_typescript@7.0.2/node_modules/@colyseus/schema/build/index.mjs",
+        "lineNumber": 4073,
+        "columnNumber": 39
+      }
+    },
+    {
+      "milliseconds": 59.438,
+      "function": {
+        "functionName": "friendlyCollision",
+        "scriptId": "351",
+        "url": "file:///C:/Users/yigal/OneDrive/Documents/ChatGPT/OpenAI%20Multiplayer%20Game%20Contest%20(Bullet%20Hell)/src/shared/game.ts",
+        "lineNumber": 0,
+        "columnNumber": 35591
+      }
+    },
+    {
+      "milliseconds": 58.676,
+      "function": {
+        "functionName": "writev",
+        "scriptId": "0",
+        "url": "",
+        "lineNumber": -1,
+        "columnNumber": -1
+      }
+    },
+    {
+      "milliseconds": 57.954,
+      "function": {
+        "functionName": "#onMessage",
+        "scriptId": "289",
+        "url": "node:internal/deps/undici/undici",
+        "lineNumber": 15706,
+        "columnNumber": 16
+      }
+    }
+  ],
+  "limits": [
+    "Diagnostic CPU sampling, not a final throughput gate."
+  ]
+}

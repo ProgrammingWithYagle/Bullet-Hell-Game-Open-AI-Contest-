@@ -22,10 +22,19 @@ import {
   type Result,
   type SupplySlot,
 } from './protocol.ts';
-import { moveBody, segmentCircle, segmentRect, distance, clamp, SpatialGrid } from './geometry.ts';
+import {
+  moveBody,
+  segmentCircle,
+  segmentCircleXY,
+  segmentRect,
+  distance,
+  clamp,
+  SpatialGrid,
+} from './geometry.ts';
 import { Random } from './random.ts';
 import { migratePracticeBoundary } from './practice-migration.ts';
 import { Minions, type MinionSpawn } from './minions.ts';
+import { BossDirector, type SignatureContext } from './boss-director.ts';
 import {
   WardenClock,
   WARDEN_SIGNATURE,
@@ -36,7 +45,13 @@ export const data = catalog;
 const ticks = (s: number) => Math.ceil(s * HZ);
 const rule = data.rules;
 export const arena = data.arenas.find((x) => x.id === 'gatehouse')!;
-export const implementedBossIds: readonly BossId[] = ['constable', 'lantern-warden'];
+export const implementedBossIds: readonly BossId[] = [
+  'constable',
+  'lantern-warden',
+  'courier',
+  'ratcatcher',
+  'quarantine-clerk',
+];
 export type Settings = {
   seed: number;
   mode: 'short' | 'endless';
@@ -143,6 +158,8 @@ export class Game {
   readonly players = new Map<string, Player>();
   readonly shots = new Map<number, Shot>();
   readonly minions = new Minions();
+  readonly director = new BossDirector();
+  private bossPrevious = { x: 800, y: 250 };
   private shotEffects = new Map<
     number,
     { slowTicks: number; slowMultiplier: number; rangeRemaining: number }
@@ -193,6 +210,7 @@ export class Game {
   private removals: number[] = [];
   private events: Event[] = [];
   private grid = new SpatialGrid<Player>();
+  private projectilePlayers: Player[] = [];
   private attackAt = [0, 0];
   readonly completedBossIds = new Set<BossId>();
   signatures: WardenSample[] = [];
@@ -626,6 +644,8 @@ export class Game {
     };
     this.attackAt = this.bossPhases()[0].attacks.map((_, i) => this.combatTick + ticks(2 + i * 2));
     this.resetWarden();
+    this.director.reset(this.boss.id, this.boss.variant === 'brutal');
+    this.bossPrevious = { x: this.boss.x, y: this.boss.y };
     this.events.push({ type: 'sound', id: 'boss-phase' });
   }
   private pruneExpired() {
@@ -652,6 +672,7 @@ export class Game {
     this.completedBossIds.add(this.boss.id);
     this.boss.health = 0;
     this.boss.defeatedAt = this.tick;
+    this.director.reset('constable');
     this.signatures = [];
     this.wardenClocks = [];
     for (const p of this.roster())
@@ -703,12 +724,14 @@ export class Game {
         .filter((w) => w.price === 0)
         .map((w) => w.baselineSustainedDps)
         .toSorted((a, b) => a - b)[3];
+      const uncleared = implementedBossIds.filter((id) => !this.completedBossIds.has(id));
+      // Before any repeat, exhaust the implemented identity pool. Concealed
+      // choices use the saved RNG, so restoring a vote never rerolls it.
+      const pool = this.rng.shuffle(
+        uncleared.length ? uncleared : implementedBossIds.filter((id) => id !== this.boss.id),
+      );
       this.contractCards = [0, 1, 2].map((i) => {
-        const bossId =
-          implementedBossIds[
-            (this.encounter + implementedBossIds.indexOf(this.settings.openingBossId)) %
-              implementedBossIds.length
-          ];
+        const bossId = pool[i % pool.length];
         const variant =
           this.settings.mode === 'endless' && this.completedBossIds.has(bossId)
             ? ('brutal' as const)
@@ -775,6 +798,7 @@ export class Game {
       this.victory();
       return;
     }
+    this.bossPrevious = { x: this.boss.x, y: this.boss.y };
     this.stepBoss();
     this.minions.step(
       this.combatTick,
@@ -797,6 +821,7 @@ export class Game {
       (!roster.some((p) => p.status === 'active') && !soloCanRecover)
     ) {
       this.phase = 'defeat';
+      this.director.reset('constable');
       this.minions.clear();
       this.signatures = [];
       this.warnings.length = 0;
@@ -854,7 +879,10 @@ export class Game {
         : this.movementSpeed(p) * (now < p.slowUntil ? 0.65 : 1) * (1 + rally);
     const next = moveBody(
       p,
-      { x: (dash ? p.dashX : mx) * speed * DT, y: (dash ? p.dashY : my) * speed * DT },
+      {
+        x: (dash ? p.dashX : mx) * speed * DT,
+        y: (dash ? p.dashY : my) * speed * DT,
+      },
       rule.playerRadius,
       arena.obstacles,
     );
@@ -942,7 +970,13 @@ export class Game {
     slot.count--;
     if (!slot.count) slot.id = '';
     p.supplyAt = now + ticks(item.cooldown);
-    this.events.push({ type: 'sound', id: 'ui-confirm', owner: p.id, x: p.x, y: p.y });
+    this.events.push({
+      type: 'sound',
+      id: 'ui-confirm',
+      owner: p.id,
+      x: p.x,
+      y: p.y,
+    });
   }
   private emitShot(
     owner: string,
@@ -1160,7 +1194,12 @@ export class Game {
     source.healing += Math.max(0, healed);
   }
   damage(p: Player, amount: number) {
-    if (p.status !== 'active' || this.combatTick < p.invulnerableUntil) return;
+    if (
+      p.status !== 'active' ||
+      this.combatTick < p.invulnerableUntil ||
+      this.director.isSafe(p, this.combatTick)
+    )
+      return;
     const s = this.stats(p),
       armor = clamp(
         1 -
@@ -1276,6 +1315,39 @@ export class Game {
       }
     }
   }
+  private signatureContext(): SignatureContext {
+    return {
+      tick: this.combatTick,
+      bossId: this.boss.id,
+      boss: this.boss,
+      radius: this.bossDefinition().radius,
+      obstacles: arena.obstacles,
+      targets: this.roster().filter((p) => p.status === 'active'),
+      damageScale: this.bossDamageScale(),
+      brutal: this.boss.variant === 'brutal',
+      phase: this.boss.phase,
+      id: () => this.id(),
+      damage: (id, amount) => {
+        const p = this.players.get(id);
+        if (p) this.damage(p, amount);
+      },
+      spawnRat: (position, goal, speed, health, damage, maximum) => {
+        if ([...this.minions.actors.values()].filter((a) => a.kind === 'rat').length >= maximum)
+          return;
+        this.spawnMinion({
+          kind: 'rat',
+          ...position,
+          goalX: goal.x,
+          goalY: goal.y,
+          speed,
+          health: health * (this.boss.variant === 'brutal' ? 2 : 1),
+          damage,
+          radius: 12,
+          lifeSeconds: 30,
+        });
+      },
+    };
+  }
   private stepBoss() {
     const now = this.combatTick;
     const fraction = this.boss.health / this.boss.maxHealth,
@@ -1299,6 +1371,11 @@ export class Game {
       );
       this.rescaleDepartures();
       this.resetWarden();
+      this.director.reset(this.boss.id, this.boss.variant === 'brutal');
+      if (['courier', 'ratcatcher', 'quarantine-clerk'].includes(this.boss.id)) {
+        this.warnings.length = 0;
+        for (const shot of this.shots.values()) if (shot.owner === 'hostile') this.removeShot(shot);
+      }
       const count = this.roster().length;
       this.accord = {
         until: now + ticks(8),
@@ -1330,6 +1407,9 @@ export class Game {
         this.warnings.length = 0;
         for (let i = this.fields.length - 1; i >= 0; i--)
           if (this.fields[i].owner === 'hostile') this.fields.splice(i, 1);
+        this.director.reset(this.boss.id, this.boss.variant === 'brutal');
+        this.minions.clear();
+        this.boss.castAt = this.boss.castReleaseAt = this.boss.castEndsAt = 0;
         this.boss.staggerUntil = now + ticks(4);
         this.boss.vulnerableUntil = now + ticks(4);
         for (const p of this.roster())
@@ -1383,16 +1463,36 @@ export class Game {
             this.modifier('bossDamage') *
             (1 + cycle * rule.endless.damageGrowthPerCycle) *
             (this.boss.variant === 'brutal' ? rule.brutal.damageMultiplier : 1);
-        if (attack.kind === 'fan' || attack.kind === 'ring' || attack.kind === 'lanes') {
-          const origins = attack.kind === 'lanes' ? [-130, 130] : [0];
+        if (attack.kind === 'charge') {
+          this.director.startCharge(this.signatureContext(), target, {
+            ...attack,
+            speed,
+          });
+        } else if (attack.kind === 'summon') {
+          this.director.startPacks(this.signatureContext(), target, {
+            ...attack,
+            speed,
+          });
+        } else if (attack.kind === 'zone' && this.boss.id === 'quarantine-clerk') {
+          this.director.startStamps(this.signatureContext(), target, {
+            ...attack,
+            speed,
+          });
+        } else if (
+          attack.kind === 'fan' ||
+          attack.kind === 'ring' ||
+          attack.kind === 'lanes' ||
+          attack.kind === 'cross'
+        ) {
+          const origins = attack.kind === 'lanes' || attack.kind === 'cross' ? [-130, 130] : [0];
           for (const offset of origins)
             this.warnings.push({
               id: this.id(),
               kind: attack.kind === 'ring' ? 'ring' : 'fan',
               x: this.boss.x + offset,
               y: this.boss.y,
-              aim: Math.atan2(target.y - this.boss.y, target.x - this.boss.x),
-              count,
+              aim: Math.atan2(target.y - this.boss.y, target.x - (this.boss.x + offset)),
+              count: attack.kind === 'cross' ? Math.ceil(count / 2) : count,
               arc:
                 ((attack.kind === 'ring'
                   ? 'gap' in attack
@@ -1429,8 +1529,14 @@ export class Game {
                 ticks(attack.telegraph + ('duration' in attack ? Number(attack.duration) : 3)),
             });
           }
-        this.events.push({ type: 'sound', id: 'warning', x: this.boss.x, y: this.boss.y });
+        this.events.push({
+          type: 'sound',
+          id: 'warning',
+          x: this.boss.x,
+          y: this.boss.y,
+        });
       }
+    this.director.step(this.signatureContext());
     for (let i = this.warnings.length - 1; i >= 0; i--) {
       const w = this.warnings[i];
       if (now < w.at) continue;
@@ -1494,12 +1600,17 @@ export class Game {
     wall: number,
   ) {
     const bossTime = segmentCircle(
-      old,
-      next,
-      this.boss,
+      { x: old.x - this.bossPrevious.x, y: old.y - this.bossPrevious.y },
+      { x: next.x - this.boss.x, y: next.y - this.boss.y },
+      { x: 0, y: 0 },
       this.bossDefinition().radius + shot.radius,
     );
-    const hits: { time: number; minionId?: number }[] = [];
+    const hits: { time: number; minionId?: number; sack?: boolean }[] = [];
+    const sack = this.director.weakPoint();
+    if (sack && sack.health > 0) {
+      const time = segmentCircle(old, next, sack, sack.radius + shot.radius);
+      if (time !== null && time < wall) hits.push({ time, sack: true });
+    }
     if (bossTime !== null && bossTime < wall) hits.push({ time: bossTime });
     for (const actor of this.minions.actors.values()) {
       if (this.shotHits.get(shot.id)?.has(actor.id)) continue;
@@ -1513,6 +1624,13 @@ export class Game {
     }
     hits.sort((a, b) => a.time - b.time || (a.minionId ?? 0) - (b.minionId ?? 0));
     for (const hit of hits) {
+      if (hit.sack) {
+        this.creditHit(
+          this.players.get(shot.owner),
+          this.director.hitWeakPoint(shot.damage, this.combatTick),
+        );
+        return true;
+      }
       if (hit.minionId === undefined) {
         this.hitBoss(this.players.get(shot.owner), shot.damage);
         return true;
@@ -1549,9 +1667,14 @@ export class Game {
     for (const s of this.shots.values()) this.removeShot(s);
   }
   private stepShots() {
+    const safeZones = this.director.safeZones(this.combatTick);
+    const old = { x: 0, y: 0 },
+      next = { x: 0, y: 0 };
     for (const s of this.shots.values()) {
-      const old = { x: s.x, y: s.y },
-        next = { x: s.x + s.vx * DT, y: s.y + s.vy * DT };
+      old.x = s.x;
+      old.y = s.y;
+      next.x = s.x + s.vx * DT;
+      next.y = s.y + s.vy * DT;
       const effect = this.shotEffects.get(s.id);
       if (effect) {
         const distance = Math.hypot(next.x - old.x, next.y - old.y);
@@ -1568,26 +1691,41 @@ export class Game {
       let player: Player | undefined,
         barrier: Field | undefined,
         hitTime = wall,
-        friendlyHit = false;
+        friendlyHit = false,
+        safeHit = false;
       if (s.owner === 'hostile') {
+        // The reopened stamp absorbs hostile shots at its visible boundary.
+        for (const zone of safeZones) {
+          const time = segmentCircle(old, next, zone, zone.radius + s.radius);
+          if (time !== null && time < hitTime) {
+            hitTime = time;
+            safeHit = true;
+          }
+        }
         for (const field of this.fields) {
           if (field.kind !== 'barrier' || field.potency <= 0) continue;
           const t = segmentCircle(old, next, field, field.radius + s.radius);
           if (t !== null && t < hitTime) {
             hitTime = t;
             barrier = field;
+            safeHit = false;
           }
         }
-        for (const p of this.grid.query(old, next, s.radius + rule.playerRadius)) {
+        this.grid.queryInto(old, next, s.radius + rule.playerRadius, this.projectilePlayers);
+        for (const p of this.projectilePlayers) {
           if (p.status !== 'active') continue;
-          const t = segmentCircle(
-            { x: old.x - p.oldX, y: old.y - p.oldY },
-            { x: next.x - p.x, y: next.y - p.y },
-            { x: 0, y: 0 },
+          const t = segmentCircleXY(
+            old.x - p.oldX,
+            old.y - p.oldY,
+            next.x - p.x,
+            next.y - p.y,
+            0,
+            0,
             s.radius + rule.playerRadius,
           );
           if (t !== null && t < hitTime) {
             player = p;
+            safeHit = false;
             barrier = undefined;
             hitTime = t;
           }
@@ -1602,6 +1740,7 @@ export class Game {
         player ||
         barrier ||
         friendlyHit ||
+        safeHit ||
         effect?.rangeRemaining === 0 ||
         wall < 1 ||
         this.combatTick >= s.expires ||
@@ -1942,7 +2081,10 @@ export class Game {
       contractCards: structuredClone(this.contractCards),
       votes: Object.fromEntries(this.votes),
       players: this.snapshot().players,
-      transactions: [...this.transactions].map(([id, history]) => ({ id, history: [...history] })),
+      transactions: [...this.transactions].map(([id, history]) => ({
+        id,
+        history: [...history],
+      })),
     };
   }
   // Server code must verify the signature AND obtain a durable owner claim first.
@@ -2082,7 +2224,10 @@ export class Game {
         const request = JSON.parse(entry.request);
         if (!validCommand(request) || request.id !== id || history.has(id))
           throw Error('invalidTransactions');
-        history.set(id, { request: entry.request, result: { ...entry.result } });
+        history.set(id, {
+          request: entry.request,
+          result: { ...entry.result },
+        });
       }
       g.transactions.set(item.id, history);
     }

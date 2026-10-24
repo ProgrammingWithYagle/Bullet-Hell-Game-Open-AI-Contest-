@@ -7,6 +7,7 @@ import { CombatScene } from './scene.ts';
 import { Session, type ConnectionOptions } from './session.ts';
 import { Controls } from './controls.ts';
 import { Prediction } from './prediction.ts';
+import { assets } from './assets.ts';
 import { AudioBus } from './audio.ts';
 import { initialLanguage, locale, number, setLanguage, t } from './i18n.ts';
 import { prototypeNotice } from './runtime-messages.ts';
@@ -300,7 +301,10 @@ function update(view: View) {
     bossTitle.textContent =
       t('boss.' + view.boss.id + '.name') +
       ' · ' +
-      t(view.boss.variant === 'brutal' ? 'ui.variantBrutal' : 'ui.variantNormal') +
+      t('ui.threat') +
+      ' ' +
+      number(view.boss.threat) +
+      (view.boss.variant === 'brutal' ? '+ · ' + t('ui.variantBrutal') : '') +
       ' · ' +
       t('ui.phase', { number: view.boss.phase + 1 });
   const hp = $<HTMLProgressElement>('health');
@@ -334,9 +338,10 @@ function update(view: View) {
       : t('ui.supplyHelp');
     if (button.dataset.item !== slot.id) {
       button.dataset.item = slot.id;
-      button.querySelector('[data-supply-glyph]')!.innerHTML = icon(
-        item ? supplyGlyph(item.effect) : 'ability',
-      );
+      button.querySelector('[data-supply-glyph]')!.innerHTML =
+        item && assets.items['supply/' + item.id]
+          ? `<img class="supply-art" src="${assets.items['supply/' + item.id]}" alt="" aria-hidden="true">`
+          : icon(item ? supplyGlyph(item.effect) : 'ability');
     }
     button.querySelector('[data-supply-count]')!.textContent = item
       ? '×' + number(slot.count)
@@ -398,7 +403,7 @@ function update(view: View) {
     $('status').textContent = '';
   if (view.phase !== lastPhase) {
     lastPhase = view.phase;
-    void audio.loop(view.phase === 'combat');
+    void audio.loop(view.phase === 'combat', view.boss.id);
   }
   const key = JSON.stringify([
     view.phase,

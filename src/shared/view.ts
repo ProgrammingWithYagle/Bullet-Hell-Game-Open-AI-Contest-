@@ -1,5 +1,6 @@
 import type { Game, Boss } from './game.ts';
 import type { Minion } from './minions.ts';
+import type { BossCue } from './boss-director.ts';
 import type { WardenSample } from './warden-signature.ts';
 import type { ClassId, Phase, Warning, Field, Contract, SupplySlot } from './protocol.ts';
 export type PlayerView = {
@@ -51,6 +52,7 @@ export type View = {
   boss: Boss;
   signatures: WardenSample[];
   minions: Minion[];
+  bossCues: BossCue[];
   warnings: Warning[];
   fields: Field[];
   mutations: { id: string; remaining: number }[];
@@ -108,6 +110,7 @@ export function viewOf(g: Game, owner: string): View {
     boss: { ...g.boss },
     signatures: structuredClone(g.signatures),
     minions: g.minions.snapshot(),
+    bossCues: g.director.cues(),
     warnings: g.warnings.map((w) => ({ ...w })),
     fields: g.fields.map((f) => ({ ...f })),
     mutations: g.mutations.map((m) => ({ ...m })),

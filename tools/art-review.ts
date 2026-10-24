@@ -1,5 +1,7 @@
 import libraryData from '../assets/production/normalized/library.json';
 import heavyMotion from '../assets/production/motion/heavy-library.json';
+import encounters from '../assets/production/motion/encounter-library.json';
+import items from '../assets/production/items/library.json';
 import './art-review.css';
 
 interface ArtEntry {
@@ -23,7 +25,12 @@ interface ArtEntry {
   frameDurationsMs?: number[];
   notes?: string;
 }
-const entries = [...(libraryData as { entries: ArtEntry[] }).entries, ...heavyMotion.entries];
+const entries: ArtEntry[] = [
+  ...(libraryData as { entries: ArtEntry[] }).entries,
+  ...heavyMotion.entries,
+  ...encounters.entries,
+  ...items.entries,
+];
 const images = new Map<string, HTMLImageElement>();
 const element = <T extends HTMLElement = HTMLElement>(id: string) =>
   document.getElementById(id) as T;

@@ -8,8 +8,14 @@ import { icon, effectIcon } from './icons.ts';
 import { assets } from '../assets.ts';
 type Kind = Command['kind'];
 const itemArt = (kind: Kind, id: string, glyph: string) =>
-  kind === 'upgrade' && assets.upgrades[id]
-    ? `<img class="item-art" src="${assets.upgrades[id]}" alt="" aria-hidden="true">`
+  (
+    kind === 'upgrade'
+      ? assets.upgrades[id]
+      : assets.items[
+          kind + '/' + (kind === 'skill' ? data.skills.find((s) => s.id === id)?.subbranchId : id)
+        ]
+  )
+    ? `<img class="item-art" src="${kind === 'upgrade' ? assets.upgrades[id] : assets.items[kind + '/' + (kind === 'skill' ? data.skills.find((s) => s.id === id)?.subbranchId : id)]}" alt="" aria-hidden="true">`
     : icon(glyph);
 let tab: 'gear' | 'tree' = 'tree',
   branchId = '',
@@ -28,11 +34,17 @@ function canBuy(
     if (node.prerequisite && !p.skills.includes(node.prerequisite))
       return {
         allowed: false,
-        reason: t('ui.prerequisite', { name: t('skill.' + node.prerequisite + '.name') }),
+        reason: t('ui.prerequisite', {
+          name: t('skill.' + node.prerequisite + '.name'),
+        }),
         price: node.cost,
       };
     if (node.capstone && p.skills.some((id) => data.skills.find((s) => s.id === id)?.capstone))
-      return { allowed: false, reason: t('ui.capstoneLimit'), price: node.cost };
+      return {
+        allowed: false,
+        reason: t('ui.capstoneLimit'),
+        price: node.cost,
+      };
     return {
       allowed: p.sp >= node.cost,
       reason:
@@ -229,7 +241,10 @@ export function bindShop(
   };
   host.querySelectorAll<HTMLButtonElement>('[data-inspect]').forEach((button) => {
     button.onclick = () => {
-      chosen = { kind: button.dataset.itemKind as Kind, id: button.dataset.inspect! };
+      chosen = {
+        kind: button.dataset.itemKind as Kind,
+        id: button.dataset.inspect!,
+      };
       host.querySelectorAll('[data-inspect]').forEach((node) => {
         const active = (node as HTMLElement).dataset.inspect === chosen!.id;
         node.classList.toggle('inspected', active);

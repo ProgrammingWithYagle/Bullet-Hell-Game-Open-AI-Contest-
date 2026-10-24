@@ -1,6 +1,6 @@
 # Modes and endless play
 
-The table describes the full authored target. The public prototype offers five-fight Quarantine Practice and uncapped Endless using Constable variants; source protocol 5 alternates Constable/Warden with per-boss Brutal history; the official Free service is capped at eight slots. The other routes and Raid are In production.
+The table describes the full authored target. The public protocol-4 prototype uses Constable variants; the source protocol-6 Practice subset completes five different implemented bosses and Endless exhausts that pool before Brutal repeats. The official Free service remains capped at eight slots. Full routes/finale pools and Raid remain in production.
 
 | Mode | Players | Encounters | Minutes |
 | --- | --- | --- | --- |

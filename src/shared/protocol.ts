@@ -1,11 +1,11 @@
 import revision from '../../content/revision.json' with { type: 'json' };
-export const PROTOCOL = 5;
+export const PROTOCOL = 6;
 export const CONTENT_REVISION = revision.sha256;
 export const HZ = 30,
   DT = 1 / HZ;
 export const implementedClassIds = ['soldier', 'medic', 'heavy'] as const;
 export type ClassId = (typeof implementedClassIds)[number];
-export type BossId = 'constable' | 'lantern-warden';
+export type BossId = 'constable' | 'lantern-warden' | 'courier' | 'ratcatcher' | 'quarantine-clerk';
 export type CheckpointStatus =
   'disabled' | 'pending' | 'acknowledged' | 'unavailable' | 'finalized';
 export type Phase =

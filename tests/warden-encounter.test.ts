@@ -186,31 +186,36 @@ test('concealed contracts retain server identity and completed-appearance histor
   game.step();
   while ((game.phase as string) === 'mutationVote') game.step();
   assert(
-    game.contractCards.every(
-      (card) => card.bossId === 'lantern-warden' && card.variant === 'normal',
-    ),
+    game.contractCards.every((card) => card.bossId !== 'constable' && card.variant === 'normal'),
   );
   assert(viewOf(game, 'solo').contractCards.every((card) => !('bossId' in card)));
   const restored = Game.restoreOffline(game.offlineCheckpoint());
   assert.deepEqual([...restored.completedBossIds], ['constable']);
   assert.deepEqual(restored.contractCards, game.contractCards);
+  const offered = game.contractCards.map((c) => c.bossId);
   while (game.phase !== 'combat') game.step();
-  assert.equal(game.boss.id, 'lantern-warden');
+  const chosen = game.boss.id;
+  assert(offered.includes(chosen));
   assert.equal(
     game.boss.deadline - game.combatTick,
-    data.bosses.find((boss) => boss.id === 'lantern-warden')!.timer * 30,
+    data.bosses.find((boss) => boss.id === chosen)!.timer * 30,
   );
   game.boss.health = 0;
   game.step();
   while ((game.phase as string) === 'mutationVote') game.step();
   assert(
-    game.contractCards.every((card) => card.bossId === 'constable' && card.variant === 'brutal'),
+    game.contractCards.every(
+      (card) => !game.completedBossIds.has(card.bossId!) && card.variant === 'normal',
+    ),
   );
   assert.throws(() =>
-    Game.restoreOffline({ ...game.offlineCheckpoint()!, completedBossIds: ['unimplemented'] }),
+    Game.restoreOffline({
+      ...game.offlineCheckpoint()!,
+      completedBossIds: ['unimplemented'],
+    }),
   );
-  assert.equal(Game.restoreOffline(game.offlineCheckpoint()).boss.id, 'lantern-warden');
-  assert.equal(Game.restoreAuthoritative(game.authoritativeCheckpoint()).boss.id, 'lantern-warden');
+  assert.equal(Game.restoreOffline(game.offlineCheckpoint()).boss.id, chosen);
+  assert.equal(Game.restoreAuthoritative(game.authoritativeCheckpoint()).boss.id, chosen);
 });
 
 test('protocol-4 local Practice saves migrate without granting new boss history; online state stays strict', () => {
@@ -231,7 +236,10 @@ test('protocol-4 local Practice saves migrate without granting new boss history;
   assert.equal(restored.players.get('solo')!.coins, game.players.get('solo')!.coins);
   assert.throws(() => Game.restoreOffline({ ...legacy, serverOnly: true }));
   assert.throws(() =>
-    Game.restoreAuthoritative({ ...game.authoritativeCheckpoint()!, protocolVersion: 4 }),
+    Game.restoreAuthoritative({
+      ...game.authoritativeCheckpoint()!,
+      protocolVersion: 4,
+    }),
   );
   assert.throws(() => Game.restoreOffline({ ...legacy, player: { ...legacy.player, coins: -1 } }));
 });

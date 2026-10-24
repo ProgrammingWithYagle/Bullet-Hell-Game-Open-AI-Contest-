@@ -6,6 +6,8 @@ import { randomUUID } from 'node:crypto';
 import { Client, type Room } from '@colyseus/sdk';
 import { createGameServer } from '../src/server/index.ts';
 import { liveRooms } from '../src/server/GraveRoom.ts';
+import { implementedBossIds } from '../src/shared/game.ts';
+import type { BossId } from '../src/shared/protocol.ts';
 import { WorldState } from '../src/shared/network-state.ts';
 import {
   CONTENT_REVISION,
@@ -21,6 +23,8 @@ if (!/^reviews\/performance\/[a-z0-9-]+\.json$/.test(output) || existsSync(outpu
   throw Error('Choose a new JSON filename under reviews/performance; prior evidence is preserved.');
 if (![8, 16, 50].includes(players) || seconds < 5 || seconds > 120)
   throw Error('Use 8, 16 or 50 players and 5-120 seconds per measured phase');
+const openingBossId = process.argv[5] as BossId | undefined;
+if (openingBossId && !implementedBossIds.includes(openingBossId)) throw Error('Unknown pilot boss');
 const { server, httpServer } = createGameServer(),
   rooms: Room<WorldState>[] = [];
 let timer: ReturnType<typeof setInterval> | undefined;
@@ -40,6 +44,7 @@ try {
   if (!address || typeof address === 'string') throw Error('No server address');
   const client = new Client('http://127.0.0.1:' + address.port);
   const settings = {
+    openingBossId: openingBossId ?? 'constable',
     mode: 'endless',
     difficulty: 'normal',
     visibility: 'public',
@@ -108,7 +113,11 @@ try {
         const key = live.game.encounter + 'shop';
         if (actions.get(p.id) !== key) {
           actions.set(p.id, key);
-          const request = { id: 'pilot-' + live.game.encounter, kind: 'upgrade', item: 'damage' };
+          const request = {
+            id: 'pilot-' + live.game.encounter,
+            kind: 'upgrade',
+            item: 'damage',
+          };
           room.send('purchase', request);
           room.send('purchase', request);
         }
@@ -119,6 +128,19 @@ try {
   const fixture = () => {
     for (const p of live.game.players.values()) p.invulnerableUntil = 1e9;
     live.game.boss.health = live.game.boss.maxHealth = 1e9;
+    if (openingBossId === 'ratcatcher' && live.game.boss.id === 'ratcatcher') {
+      for (let i = 0; i < 12; i++)
+        live.game.spawnMinion({
+          kind: 'rat',
+          x: 550 + i * 40,
+          y: 450,
+          health: 1e6,
+          speed: 125,
+          radius: 12,
+          damage: 8,
+          lifeSeconds: 60,
+        });
+    }
   };
   fixture();
   async function measure(stress: boolean) {
@@ -127,6 +149,8 @@ try {
       start = performance.now();
     delay.reset();
     delay.enable();
+    let peakMinions = 0,
+      peakBossCues = 0;
     let peak = 0,
       spawned = 0;
     while (performance.now() - start < seconds * 1000) {
@@ -144,6 +168,8 @@ try {
           [...live.game.shots.values()].filter((s) => s.owner === 'hostile').length,
         );
       }
+      peakMinions = Math.max(peakMinions, live.game.minions.actors.size);
+      peakBossCues = Math.max(peakBossCues, live.game.director.cues().length);
       await new Promise((r) => setTimeout(r, 50));
     }
     delay.disable();
@@ -151,9 +177,13 @@ try {
       elapsed = (performance.now() - start) / 1000;
     return {
       scenario: stress ? '4000-hostile stress' : 'active combat',
+      peakMinions,
+      peakBossCues,
       bossId: live.game.boss.id,
       durationSeconds: elapsed,
       samples: ticks.length,
+      tickSamplesMs: ticks,
+      overBudgetTicks: ticks.filter((tick) => tick > 1000 / 30).length,
       tickP50Ms: percentile(ticks, 0.5),
       tickP99Ms: percentile(ticks, 0.99),
       tickMaxMs: Math.max(...ticks),
@@ -167,6 +197,8 @@ try {
     };
   }
   const baseline = await measure(false);
+  // An explicit boss pilot measures the same live encounter before intermission.
+  const requestedBossStress = openingBossId ? await measure(true) : undefined;
   live.game.boss.health = 0;
   await wait(() => live.game.phase === 'mutationVote');
   // Shorten intermission clocks only in the imported pilot fixture; production clocks stay unchanged.
@@ -177,7 +209,7 @@ try {
   }
   await wait(() => live.game.phase === 'combat');
   fixture();
-  const stress = await measure(true);
+  const stress = requestedBossStress ?? (await measure(true));
   const report = {
     createdAt: new Date().toISOString(),
     contentRevision: CONTENT_REVISION,
@@ -209,8 +241,13 @@ try {
     },
     limitations: [
       'All clients are scripted; no rendered-client FPS measurement.',
-      'The Warden extinguishes hostile shots at signature release; 4000 is the measured peak, not a continuous-every-frame guarantee.',
+      'Signatures and phase changes may retire hostile shots; 4000 is a measured peak, not a continuous-every-frame guarantee.',
       'Server and bot clients share this process; memory is combined.',
+      ...(openingBossId === 'ratcatcher'
+        ? [
+            'Explicit Ratcatcher fixture adds twelve 1e6-HP rats to keep ordinary actors alive throughout both phases; natural 12-HP summons and sack interruption have separate rules/network tests.',
+          ]
+        : []),
       'Invulnerability and extended boss health isolate throughput; stress projectiles and short intermissions are test fixtures.',
       'Localhost pilot does not establish WAN performance, free-host capacity, device performance, reconnection endurance or human play quality.',
     ],

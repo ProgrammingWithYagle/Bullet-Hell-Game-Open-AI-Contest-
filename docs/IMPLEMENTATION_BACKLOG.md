@@ -1,6 +1,6 @@
 # Implementation backlog and contest acceptance map
 
-**Current continuation:** [WARDEN_AND_HEAVY_RUNTIME.md](WARDEN_AND_HEAVY_RUNTIME.md) integrates the actual Warden encounter and playable Heavy, protocol 5, 59 drawn motion frames, exact-value binary projectile batches and 108 passing tests. Earlier rehearsal-only/two-class statements below are dated history. The public deployment remains protocol 4. Final rendered/device/human review remains open.
+**Current continuation:** [BOSS_ENCOUNTERS_ITEMS_AND_MUSIC.md](BOSS_ENCOUNTERS_ITEMS_AND_MUSIC.md) adds Carrion Courier, Ratcatcher and Quarantine Clerk: five distinct playable bosses, no repeat in five-fight Practice, 71 new item illustrations, 32 action frames, five individual boss themes, protocol 6 and 124 passing tests. Older two-boss/protocol-5 statements below describe earlier checkpoints. Public hosting remains the earlier protocol-4 deployment. Rendered/device/human and listening acceptance remain open.
 
 **Latest continuation:** [WARDEN_SIGNATURE_REHEARSAL.md](WARDEN_SIGNATURE_REHEARSAL.md) adds eight drawn idle/channel frames (sixteen Warden motion frames total), measured lantern attachments and a separate local Phaser signature rehearsal. Nine new automated checks bring the full suite to 83. The room shares warning/active/rest geometry between rendering and collision; full encounter, network integration and final Phaser motion acceptance remain open. Browser troubleshooting was not repeated. Read current Git status and the exact verification/publication evidence before continuing.
 

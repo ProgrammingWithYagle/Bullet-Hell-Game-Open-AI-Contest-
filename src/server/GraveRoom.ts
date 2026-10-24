@@ -11,7 +11,7 @@ import {
   type ClassId,
   type Event,
 } from '../shared/protocol.ts';
-import { WorldState, PlayerState } from '../shared/network-state.ts';
+import { WorldState, PlayerState, ActorState } from '../shared/network-state.ts';
 import { capacity } from './capacity.ts';
 import { RoomJournal } from './room-journal.ts';
 import type { RunJournal } from './run-journal.ts';
@@ -95,7 +95,10 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
     this.journal = new RoomJournal(this.game, this.createRunJournal(), (status) => {
       for (const client of this.clients)
         if (this.readyAt.has(client))
-          client.send('checkpointStatus', { status, recoveryAvailable: false });
+          client.send('checkpointStatus', {
+            status,
+            recoveryAvailable: false,
+          });
     });
     await this.setMetadata({
       mode: options.mode,
@@ -200,7 +203,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       id: client.sessionId,
       code: this.privateCode,
       practice: true,
-      prototype: 'three-class-two-boss-practice',
+      prototype: 'three-class-five-boss-practice',
       protocolVersion: PROTOCOL,
       contentRevision: CONTENT_REVISION,
       checkpointStatus: this.journal.status,
@@ -358,11 +361,40 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       view.dodgeCooldown = g.stats(p).dodgeCooldown;
     }
     for (const id of s.players.keys()) if (!g.players.has(id)) s.players.delete(id);
+    for (const actor of g.minions.actors.values()) {
+      const key = String(actor.id);
+      let view = s.actors.get(key);
+      if (!view) {
+        view = new ActorState();
+        s.actors.set(key, view);
+      }
+      view.kind = actor.kind;
+      for (const field of [
+        'id',
+        'x',
+        'y',
+        'oldX',
+        'oldY',
+        'health',
+        'maxHealth',
+        'speed',
+        'radius',
+        'damage',
+        'expires',
+        'attackAt',
+        'slowUntil',
+        'slowMultiplier',
+      ] as const)
+        view[field] = actor[field];
+      view.goalX = actor.goalX ?? -1;
+      view.goalY = actor.goalY ?? -1;
+    }
+    for (const key of s.actors.keys()) if (!g.minions.actors.has(Number(key))) s.actors.delete(key);
     s.hazards = JSON.stringify({
       warnings: g.warnings,
       fields: g.fields,
       signatures: g.signatures,
-      minions: g.minions.snapshot(),
+      bossCues: g.director.cues(),
     });
     s.intermission = JSON.stringify({
       mutations: g.mutations,

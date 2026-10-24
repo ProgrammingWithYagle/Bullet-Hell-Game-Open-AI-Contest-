@@ -4,6 +4,14 @@ Meaningful implemented changes are recorded here. Planned work belongs in the Pr
 
 ## Unreleased
 
+### Five bosses, item artwork and individual themes — 2026-10-23
+
+- Added executable Carrion Courier charge/trail, Ratcatcher packs/breakable sack and Quarantine Clerk ordered stamps/reopened safe interior. Five-fight Practice no longer repeats identities; Endless exhausts the implemented pool before Brutal repeats and avoids consecutive identical bosses. HUD/contracts append + to Brutal threat.
+- Connected 71 new item illustrations to weapons, supplies, 27 specialization paths and 24 mutations. Added 32 action frames for the three bosses and ordinary rats. Preserved all 23 returned natives, 25 requests, reference inputs and superseded haze attempts; independent pixel/RGBA audit passes.
+- Composed five separate boss themes with original editable scores, different melodies/meters, loop checks, automatic crossfades and warning ducking. Listening/device mix approval remains open.
+- Moved to protocol 6, with actor field patches, retained exact suppression multiplier, compatible local protocol-4/5 Practice saves and strict online state. Reused projectile collision/query buffers without changing swept arithmetic. Preserved failed shared-process stress runs and measured separate server/client processes with explicit fixture limits.
+- Full 124-test/content/locale/type/build verification passes. Current source has three classes/five bosses; four classes, 55 identities and full routes/action art/release services remain unfinished. Public hosting remains protocol 4. See docs/BOSS_ENCOUNTERS_ITEMS_AND_MUSIC.md.
+
 ### Runtime continuation — 2026-10-23
 
 - Integrated Lantern Warden into real offline/online encounters: selectable opening boss, signature/fan/zones, phases/Accord/Brutal echo, per-boss clear history, concealed future contracts and hurt/defeat presentation. Added eleven drawn hurt/defeat frames, for 27 Warden frames total.

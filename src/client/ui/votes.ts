@@ -24,6 +24,7 @@ export function voteMarkup(view: View) {
           );
           const key = entries[0]?.[0] ?? 'damage';
           const art =
+            assets.items['mutation/' + id] ??
             assets.upgrades[
               /Health|armor|Shield|healing/.test(key)
                 ? 'health'
@@ -45,7 +46,7 @@ export function voteMarkup(view: View) {
       .map((c, i) => {
         const examples = equivalentBuilds(c.recommendedRating, party.length);
         const choices = examples.filter((x, i) => !i || x.count !== examples[i - 1].count);
-        return `<button class="accord-card contract-card ${c.variant === 'brutal' ? 'brutal-contract' : ''}" data-vote="${i}" aria-pressed="false"><span class="card-edition">${e(t('ui.sealedContract'))}<b>${seal(i)}</b></span><span class="contract-seal">${icon('bell')}<b>${number(c.threat)}</b></span><strong class="vote-title">${e(t('threat.' + c.threat))}</strong><span class="contract-variant">${e(t(c.variant === 'brutal' ? 'ui.variantBrutal' : 'ui.variantNormal'))}</span><span class="contract-bounty">${icon('coins')}${e(t('ui.bounty'))} ×${number(c.bounty, 2)}</span><span class="contract-recommendation"><small>${e(t('ui.recommended'))}</small>${choices.map((x) => `<strong>${e(t('ui.gradeRequirement', { players: t('count.players', { count: x.count }), grade: x.grade }))}</strong>`).join('')}</span><span class="strength-fit ${capacity >= c.recommendedRating ? 'within' : 'above'}">${e(t(capacity >= c.recommendedRating ? 'ui.withinStrength' : 'ui.aboveStrength'))}</span>${c.variant === 'brutal' ? `<span class="brutal-note">${e(t('ui.brutalInfo'))}</span>` : ''}<span class="concealed-label">${icon('lock')}${e(t('ui.bossConcealed'))}</span>${footer(i)}</button>`;
+        return `<button class="accord-card contract-card ${c.variant === 'brutal' ? 'brutal-contract' : ''}" data-vote="${i}" aria-pressed="false"><span class="card-edition">${e(t('ui.sealedContract'))}<b>${seal(i)}</b></span><span class="contract-seal">${icon('bell')}<b>${number(c.threat)}${c.variant === 'brutal' ? '+' : ''}</b></span><strong class="vote-title">${e(t('threat.' + c.threat))}</strong><span class="contract-variant">${e(t(c.variant === 'brutal' ? 'ui.variantBrutal' : 'ui.variantNormal'))}</span><span class="contract-bounty">${icon('coins')}${e(t('ui.bounty'))} ×${number(c.bounty, 2)}</span><span class="contract-recommendation"><small>${e(t('ui.recommended'))}</small>${choices.map((x) => `<strong>${e(t('ui.gradeRequirement', { players: t('count.players', { count: x.count }), grade: x.grade }))}</strong>`).join('')}</span><span class="strength-fit ${capacity >= c.recommendedRating ? 'within' : 'above'}">${e(t(capacity >= c.recommendedRating ? 'ui.withinStrength' : 'ui.aboveStrength'))}</span>${c.variant === 'brutal' ? `<span class="brutal-note">${e(t('ui.brutalInfo'))}</span>` : ''}<span class="concealed-label">${icon('lock')}${e(t('ui.bossConcealed'))}</span>${footer(i)}</button>`;
       })
       .join('')}</div>`
   );

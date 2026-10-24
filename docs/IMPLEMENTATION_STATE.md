@@ -1,31 +1,28 @@
 # Grave Accord implementation state
 
-**Current continuation:** [WARDEN_AND_HEAVY_RUNTIME.md](WARDEN_AND_HEAVY_RUNTIME.md) integrates the actual Warden encounter and playable Heavy, protocol 5, 59 drawn motion frames, exact-value binary projectile batches and 108 passing tests. Earlier rehearsal-only/two-class statements below are dated history. The public deployment remains protocol 4. Final rendered/device/human review remains open.
+**Current continuation:** [BOSS_ENCOUNTERS_ITEMS_AND_MUSIC.md](BOSS_ENCOUNTERS_ITEMS_AND_MUSIC.md) adds Carrion Courier, Ratcatcher and Quarantine Clerk: five distinct playable bosses, no repeat in five-fight Practice, 71 new item illustrations, 32 action frames, five individual boss themes, protocol 6 and 124 passing tests. Older two-boss/protocol-5 statements below describe earlier checkpoints. Public hosting remains the earlier protocol-4 deployment. Rendered/device/human and listening acceptance remain open.
 
 ## Source now
 
-- Existing local folder: C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell). Branch feat/first-playable-loop, existing draft PR 14. Read actual Git HEAD/status and exact publication evidence rather than treating an older SHA as current.
-- Version 0.3.0, protocol 5, unchanged authored-content fingerprint b8d9fb6918c854f3eed38b327ed0cb3026e071e6fe24932e50beed36943db241. Authored seven classes, 378 nodes, 28 weapons, 24 mutations, six arenas and sixty bosses.
-- Playable in source: Soldier, Medic, Heavy; Gatehouse; Constable and Warden. Opening boss selection, five-fight Practice and alternating prototype Endless. Per-boss clear history controls Brutal repeats. Four classes and fifty-eight bosses remain unimplemented.
-- Warden: warning/cone/rest and safe trailing interior, fan/zones, phases, Accord interrupt, Brutal echo sweep, hurt/defeat, real networking, saved identity/history and concealed future contracts. Five clips/27 frames are wired to actual state; final rendered motion acceptance remains open.
-- Heavy: primary/four weapon tiers, Q suppression, E brace, X overdrive, 54 skills, compatible shops/saves/networking and four directional eight-frame run clips (32 frames) with original facing idles. Firing/hurt/dodge/downed animation remains unfinished.
-- Bounded ordinary-actor foundation: movement, cover collision, damage, expiry, contact, slow and piercing. Current bosses do not spawn ordinary adds; Ratcatcher and ordinary-enemy artwork/presentation remain unfinished.
-- Source protocol 5 adds boss/buff/actor state and exact-value compact binary projectile waves. Local protocol-4 Soldier/Medic Practice saves migrate; signed online state stays strict. Offline and network clients share gameplay; server-only journal foundations remain disabled in normal execution and are not deployed D1 player recovery or rankings.
+- Existing local folder: C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell). Branch feat/first-playable-loop; existing draft PR 14. Inspect actual Git HEAD/status and publication receipts before continuing.
+- Source v0.3.0 / protocol 6; authored-content fingerprint remains b8d9fb6918c854f3eed38b327ed0cb3026e071e6fe24932e50beed36943db241.
+- Playable: Soldier, Medic, Heavy; Gatehouse; five bosses. Practice uses five different identities; Endless exhausts the pool before Brutal repeats and avoids consecutive identical bosses. Opening selection is on Review. Threat uses a + for Brutal.
+- Courier charge/trail, Ratcatcher real packs/breakable sack and Clerk stamp/safe interior join Warden and Constable. All use phases, Accord, deadlines, rewards and networking. Twelve live rats maximum; bounded ordinary actors support slow, cover, swept contact and piercing.
+- 71 new item paintings cover 12 weapon tiers, eight supplies, 27 paths / 162 playable skill nodes and 24 mutations. Five prior upgrade paintings remain. Four new action clips / 32 frames bring production motion to 91 Warden/Heavy/new-encounter frames. New Courier action is one view; remaining full action/directional/hurt/defeat libraries are unfinished.
+- Five separately composed boss themes select automatically, crossfade and duck for warning cues. Original score/PCM/synthesis retained. Objective signal checks pass; listening/device/mix acceptance remains open.
+- Protocol 6 patches actor fields rather than resending complete actor JSON. Server retains full-precision physics; render position/health fields use float32 and suppression multiplier stays exact float64. Compact projectile transport remains exact-value. Local protocol-4/5 Practice boundaries migrate; signed online state stays strict.
 
-## Evidence
+## Evidence and limits
 
-- reviews/runtime-verification.json: 108 automated rule/WebSocket/HTTP/SQL tests, strict TypeScript, content/fifteen-locale validation and production build; exact source snapshot/build hashes. All 27 playable specialization paths are exercised. AI-authored translations remain unapproved by native speakers.
-- reviews/warden-encounter-2026-10-23 and reviews/heavy-2026-10-23: preserved native requests, exact packed transforms, complete RGBA reconstruction, unchanged older inputs, contact sheets and independent audit receipts. Six Heavy natives include two rejected west attempts. Final Phaser motion, physical-device and human acceptance are false/pending.
-- reviews/performance/protocol5-three-classes-compact-waves-2026-10-23.json: 50 scripted clients, peak 4,000 hostile projectiles, normal-combat p99 9.549 ms and stress p99 23.521 ms (maximum 38.623 ms). Failed 42.301 ms and intermediate/diagnostic runs remain preserved. Five-second local phases do not establish foreground FPS, continuous 4,000-count, endurance or hosting capacity.
-- Prior art-room/portrait browser evidence remains in reviews/art-normalization-2026-10-23/browser-review.json. Its earlier 1280x900/390x844 observations do not approve this new combat build. Browser troubleshooting was not repeated.
-- GitHub publication/CI and matching fifteen-page native Wiki receipts must be checked after the final source commit; see reviews/wiki-runtime-publication.json and the latest continuation publication receipt. PR stays draft; main stays protected.
+- reviews/runtime-verification.json: 124 passing rules/WebSocket/HTTP/SQL checks, strict TypeScript, content/fifteen-locale checks and production build; exact source/build hashes.
+- reviews/encounter-items-2026-10-23: 71 items / 32 frames match source transforms; 25 requests / 23 natives preserved; independent RGBA/pixel/hash audit and static size sheet. Earlier production/Warden/Heavy art audits still pass. Final rendered motion acceptance remains pending.
+- reviews/boss-themes-review.json: five distinct original loops pass PCM/clipping/DC/mono/seam checks. No human listening claim.
+- Final separate-process 50-client reports and preserved failed shared-process samples are under reviews/performance. Read [BOSS_ENCOUNTERS_ITEMS_AND_MUSIC.md](BOSS_ENCOUNTERS_ITEMS_AND_MUSIC.md) for conditions and actual values. Short, zero-rendered-client fixtures do not establish final 49+1, WAN, hosting or endurance acceptance.
+- Browser troubleshooting is not repeated. Prior browser evidence covers earlier builds only. Physical device/controller, human/native-language/listening and final rendered gates stay open.
+- PR/CI/Wiki receipts are updated after source publication. PR stays draft; main stays protected.
 
-## Public deployment
+## Public deployment and continuation
 
-The existing anonymous eight-slot Practice Site remains https://grave-accord-playtest.ivoryflame12.chatgpt.site/. Recorded frontend/gameplay identities are 33b36bc/dfade88, protocol 4, Soldier/Medic/Constable. It belongs to another ChatGPT account; preserve its ID/audience and require legitimate owner/editor access for deployment. Do not publish a protocol-5 backend alone against the old frontend. Source/Wiki publication is separate from public game deployment.
+The existing anonymous eight-slot Site remains https://grave-accord-playtest.ivoryflame12.chatgpt.site/ at recorded frontend/gameplay 33b36bc/dfade88, protocol 4, Soldier/Medic/Constable. It belongs to another ChatGPT account. Source/Wiki pushes do not redeploy it; require legitimate owner/editor access and a matching frontend/backend for a later deployment.
 
-## Continue
-
-All previously approved implementation/publication stages remain authorized. Use this same folder and preserve uncommitted work; no new clone/worktree, subagent delegation or paid provisioning is authorized. Do not repeat browser permission troubleshooting. Continue unfinished action art, the next playable kit/boss, routes/arenas and the broader backlog. Keep rendered 49+1, physical phone/controller, human/native-language, durable recovery/rankings, full profiles, Windows/offline/LAN and final release gates open until individually verified. The current snapshot is substantial source progress, not the finished game.
-
-Full scope and requirements: [HANDOFF_NEXT_CHAT.md](HANDOFF_NEXT_CHAT.md), [IMPLEMENTATION_BACKLOG.md](IMPLEMENTATION_BACKLOG.md), [GAME_BIBLE.md](GAME_BIBLE.md). Historical art checkpoints: [WARDEN_SIGNATURE_REHEARSAL.md](WARDEN_SIGNATURE_REHEARSAL.md), [ART_NORMALIZATION_AND_MOTION.md](ART_NORMALIZATION_AND_MOTION.md).
+Continue the authorized implementation in this same folder. Four classes, 55 boss identities, route/finale gauntlets, arenas, complete action art and future boss themes remain. Durable recovery/rankings/profiles and Windows/offline/LAN release remain unfinished. No new clone/worktree, delegation, paid provisioning or repeated browser permission troubleshooting is authorized. Full requirements remain in HANDOFF_NEXT_CHAT.md, IMPLEMENTATION_BACKLOG.md and GAME_BIBLE.md.

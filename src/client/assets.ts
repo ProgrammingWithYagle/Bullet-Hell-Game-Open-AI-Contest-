@@ -30,14 +30,43 @@ import heavyRunNorth from '../../assets/production/motion/heavy-run-north-v1-atl
 import heavyRunSouth from '../../assets/production/motion/heavy-run-south-v1-atlas.png?url';
 import heavyRunEast from '../../assets/production/motion/heavy-run-east-v1-atlas.png?url';
 import heavyRunWest from '../../assets/production/motion/heavy-run-west-v1-atlas.png?url';
+const items = import.meta.glob('../../assets/production/items/icons/*/*.png', {
+  query: '?url',
+  import: 'default',
+  eager: true,
+}) as Record<string, string>;
+const encounterMotion = import.meta.glob('../../assets/production/motion/*-action-v1-atlas.png', {
+  query: '?url',
+  import: 'default',
+  eager: true,
+}) as Record<string, string>;
 export const assets = {
+  items: Object.fromEntries(
+    Object.entries(items).map(([path, url]) => [
+      path.split('/icons/')[1].replace(/\.png$/, ''),
+      url,
+    ]),
+  ) as Record<string, string>,
+  encounters: Object.fromEntries(
+    Object.entries(encounterMotion).map(([path, url]) => [
+      path.split('/').at(-1)!.replace('-action-v1-atlas.png', ''),
+      url,
+    ]),
+  ) as Record<string, string>,
   arena,
   cover,
   soldier,
   boss,
   medic,
   lineup,
-  directions: { soldierNorth, soldierSouth, medicNorth, medicSouth, medicEast, medicWest },
+  directions: {
+    soldierNorth,
+    soldierSouth,
+    medicNorth,
+    medicSouth,
+    medicEast,
+    medicWest,
+  },
   warden: {
     idle: wardenIdle,
     attack: wardenAttack,

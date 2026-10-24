@@ -39,6 +39,31 @@ export const PlayerState = schema(
   'GravePlayer',
 );
 export type PlayerState = SchemaType<typeof PlayerState>;
+// Render-only ordinary-actor state is patched by field instead of resending a
+// complete changing JSON actor list to every client at every simulation tick.
+export const ActorState = schema(
+  {
+    id: t.uint32().default(0),
+    kind: t.string().default('rat'),
+    x: t.float32().default(0),
+    y: t.float32().default(0),
+    oldX: t.float32().default(0),
+    oldY: t.float32().default(0),
+    health: t.float32().default(0),
+    maxHealth: t.float32().default(0),
+    speed: t.float32().default(0),
+    radius: t.uint8().default(12),
+    damage: t.float32().default(0),
+    expires: t.uint32().default(0),
+    attackAt: t.uint32().default(0),
+    slowUntil: t.uint32().default(0),
+    slowMultiplier: t.float64().default(1),
+    goalX: t.float32().default(-1),
+    goalY: t.float32().default(-1),
+  },
+  'GraveActor',
+);
+export type ActorState = SchemaType<typeof ActorState>;
 export const WorldState = schema(
   {
     tick: t.uint32().default(0),
@@ -64,6 +89,7 @@ export const WorldState = schema(
     deadline: t.uint32().default(0),
     staggerUntil: t.uint32().default(0),
     players: t.map(PlayerState),
+    actors: t.map(ActorState),
     hazards: t.string().default('{}'),
     intermission: t.string().default('{}'),
     accord: t.string().default('null'),
