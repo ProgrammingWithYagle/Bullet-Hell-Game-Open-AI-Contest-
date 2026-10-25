@@ -6,14 +6,25 @@ import numpy as np
 
 ROOT=Path(__file__).resolve().parents[1]
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
-def verify_class(name,provenance,review_path,native_count):
- library=json.loads((ROOT/'assets/production/motion/survivor-actions/library.json').read_text(encoding='utf-8'))
+def verify_class(name,provenance,review_path,native_count,library_file='assets/production/motion/survivor-actions/library.json',expected_clips=20,expected_frames=88,allow_prior=False):
+ library=json.loads((ROOT/library_file).read_text(encoding='utf-8'))
  batch=json.loads((ROOT/provenance).read_text(encoding='utf-8'));library['entries']=[e for e in library['entries']if e['classId']==name]
  review=ROOT/review_path;packing=json.loads((review/'packing.json').read_text(encoding='utf-8'))
- assert len(library['entries'])==20 and len(batch['requests'])==native_count and len(packing['clips'])==20
+ assert len(library['entries'])==expected_clips and len(batch['requests'])==native_count and len(packing['clips'])==expected_clips
  for request in batch['requests']:
-  assert sha(ROOT/request['file'])==request['sha256'] and sha(ROOT/request['request'])==request['requestSha256']
-  for binding in request['inputBindings']:assert sha(ROOT/binding['projectPath'])==binding['sha256']
+  assert sha(ROOT/request['file'])==request['sha256']
+  if request.get('request'):
+   assert sha(ROOT/request['request'])==request['requestSha256']
+   for binding in request['inputBindings']:assert sha(ROOT/binding['projectPath'])==binding['sha256']
+  else:
+   assert allow_prior and sha(ROOT/request['priorProvenance'])==request['priorProvenanceSha256']
+   prior=json.loads((ROOT/request['priorProvenance']).read_text())
+   issued=next(e for e in prior['entries']if e['classId']==name and e['direction']==request['direction'])
+   assert issued['source']==request['file']and issued['sourceSha256']==request['sha256']
+ for failure in batch.get('toolErrors',[]):
+  assert failure['noNativeReturned']and not failure['countsAsRejectedArt']
+  assert sha(ROOT/failure['request'])==failure['requestSha256']and sha(ROOT/failure['errorFile'])==failure['errorSha256']
+  for binding in failure['inputBindings']:assert sha(ROOT/binding['projectPath'])==binding['sha256']
  count=0;results=[];whole_pose_count=0
  for entry in library['entries']:
   receipt=next(c for c in packing['clips']if c['id']==entry['id'])
@@ -67,14 +78,19 @@ def verify_class(name,provenance,review_path,native_count):
   result={'id':entry['id'],'frames':entry['frames'],'minimumAlpha16Padding':min(padding),'calibratedWorldHeight':world_height,'sourceRgbaPartitionExact':True,'packedRgbaReconstructed':True,'singleScale':True}
   if owners is not None:result['allConnectedSourceFiguresUnsplit']=True
   results.append(result)
- assert count==88
- report={'passed':True,'clips':20,'drawnFrames':count,'nativeReturns':native_count,'creativePixelEditsPerformed':False,'mirroringPerformed':False,'alphaErasurePerformed':False,'results':results,'limits':['Independent native-byte/atlas reconstruction and geometric checks only.','Assistant native/contact-sheet candidates; rendered Phaser transitions, device and human acceptance remain open.']}
+ assert count==expected_frames
+ report={'passed':True,'clips':expected_clips,'drawnFrames':count,'nativeReturns':native_count,'creativePixelEditsPerformed':False,'mirroringPerformed':False,'alphaErasurePerformed':False,'results':results,'limits':['Independent native-byte/atlas reconstruction and geometric checks only.','Assistant native/contact-sheet candidates; rendered Phaser transitions, device and human acceptance remain open.']}
  if whole_pose_count:report['wholePoseOwnershipMasks']=whole_pose_count;report['wholePoseNote']='Whole-figure extraction assigns every nonzero-alpha source pixel once and proves connected source figures remain intact. Original alpha-zero RGB remains preserved in immutable natives; no source alpha is erased.'
  (review/'verification.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n')
- print(json.dumps({'passed':True,'clips':20,'drawnFrames':88,'nativeReturns':native_count,'renderedAccepted':False,'wholePoseOwnershipMasks':whole_pose_count}))
+ print(json.dumps({'passed':True,'clips':expected_clips,'drawnFrames':expected_frames,'nativeReturns':native_count,'renderedAccepted':False,'wholePoseOwnershipMasks':whole_pose_count}))
 if __name__=='__main__':
  verify_class('tank','docs/survivor-actions-2026-10-24.json','reviews/survivor-actions-2026-10-24',25)
  verify_class('engineer','docs/engineer-actions-2026-10-24.json','reviews/engineer-actions-2026-10-24',23)
  verify_class('mage','docs/mage-actions-2026-10-24.json','reviews/mage-actions-2026-10-24',25)
  verify_class('heavy','docs/heavy-actions-2026-10-24.json','reviews/heavy-actions-2026-10-24',20)
  verify_class('assassin','docs/assassin-actions-2026-10-24.json','reviews/assassin-actions-2026-10-24',23)
+
+ verify_class('soldier','docs/soldier-actions-2026-10-24.json','reviews/soldier-actions-2026-10-24',20)
+ verify_class('medic','docs/medic-actions-2026-10-24.json','reviews/medic-actions-2026-10-24',21)
+ for name in ['soldier','medic']:
+  verify_class(name,f'docs/{name}-runs-2026-10-25.json',f'reviews/{name}-runs-2026-10-25',4,library_file='assets/production/motion/legacy-survivor-library.json',expected_clips=4,expected_frames=24,allow_prior=True)

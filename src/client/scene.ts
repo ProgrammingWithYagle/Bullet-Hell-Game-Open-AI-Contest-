@@ -14,7 +14,12 @@ import { runtimeArena } from '../shared/arena-layouts.ts';
 import { data } from '../shared/game.ts';
 import { FrameMeter } from './frame-meter.ts';
 import { wardenArt, wardenCombatPose, type WardenCombatClipId } from './warden-presentation.ts';
-import { survivorArt, survivorPose, additionalSurvivors } from './survivor-presentation.ts';
+import {
+  survivorArt,
+  survivorPose,
+  additionalSurvivors,
+  legacySurvivors,
+} from './survivor-presentation.ts';
 import { survivorActionArt, SurvivorActionClock } from './survivor-action-presentation.ts';
 import { heavyArt, heavyPose } from './heavy-presentation.ts';
 import { encounterArt, encounterFrame } from './encounter-presentation.ts';
@@ -35,7 +40,6 @@ export class CombatScene extends Phaser.Scene {
   private people = new Map<string, Phaser.GameObjects.Sprite>();
   private survivorActions = new SurvivorActionClock();
   private actors = new Map<number, Phaser.GameObjects.Sprite>();
-  private facings = new Map<string, string>();
   private shadows!: Phaser.GameObjects.Graphics;
   private hazards!: Phaser.GameObjects.Graphics;
   private bulletImages = new Map<number, Phaser.GameObjects.Image>();
@@ -791,7 +795,10 @@ export class CombatScene extends Phaser.Scene {
           .setFlipX(false)
           .setOrigin(actionPose.origin[0], actionPose.origin[1])
           .setDisplaySize(actionPose.displayCell, actionPose.displayCell);
-      } else if (additionalSurvivors.some((id) => id === p.classId)) {
+      } else if (
+        additionalSurvivors.some((id) => id === p.classId) ||
+        legacySurvivors.some((id) => id === p.classId)
+      ) {
         const pose = survivorPose(p.classId, p.aim, moving, p.status, now, this.reduceMotion);
         sprite.anims.stop();
         sprite
@@ -807,31 +814,6 @@ export class CombatScene extends Phaser.Scene {
           .setFlipX(false)
           .setOrigin(pose.origin[0], pose.origin[1])
           .setDisplaySize(pose.displayCell, pose.displayCell);
-      } else {
-        const vertical = Math.abs(Math.sin(p.aim)) > Math.abs(Math.cos(p.aim));
-        const facing = vertical
-          ? Math.sin(p.aim) < 0
-            ? 'North'
-            : 'South'
-          : Math.cos(p.aim) < 0
-            ? 'West'
-            : 'East';
-        const key = vertical || p.classId === 'medic' ? p.classId + facing : 'soldier';
-        if (this.facings.get(p.id) !== facing) {
-          sprite.anims.stop();
-          sprite.setTexture(key, 0);
-          this.facings.set(p.id, facing);
-        }
-        sprite.setOrigin(0.5, key === 'soldier' ? 0.86 : 232 / 256).setDisplaySize(128, 128);
-        sprite.setFlipX(key === 'soldier' && facing === 'West');
-        if (vertical || p.classId === 'soldier') {
-          if (moving && !this.reduceMotion && p.status === 'active')
-            sprite.play(vertical ? key + '-walk' : 'soldier-run', true);
-          else {
-            sprite.anims.stop();
-            sprite.setFrame(0);
-          }
-        }
       }
       sprite.setAlpha(
         p.status === 'waiting'
@@ -876,7 +858,6 @@ export class CombatScene extends Phaser.Scene {
       if (!existing.has(id)) {
         sprite.destroy();
         this.people.delete(id);
-        this.facings.delete(id);
       }
     this.renderedHostiles = 0;
     for (const [id, s] of this.shots) {

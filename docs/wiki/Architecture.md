@@ -22,7 +22,7 @@ Passing automated checks does not imply full rendered FPS, human playtest, devic
 
 [Shared authority](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/src/shared/game.ts) · [Live protocol](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/src/shared/protocol.ts) · [Latest full verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/reviews/runtime-verification.json)
 
-[Latest balance, collision and local throughput evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/BALANCE_AND_COLLISION_RUNTIME.md): 298 full-pipeline tests, 210 progression combinations and 1,740 health/deadline deployments. Longer local 50-client Moths/Walking District and 16-client City Eater probes keep stress p99 below 25 ms; occasional slower ticks remain. Zero rendered clients means this is not final capacity acceptance.
+[Latest balance, collision and local throughput evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/BALANCE_AND_COLLISION_RUNTIME.md): 304 full-pipeline tests, 210 progression combinations and 1,740 health/deadline deployments. Longer local 50-client Moths/Walking District and 16-client City Eater probes keep stress p99 below 25 ms; occasional slower ticks remain. Zero rendered clients means this is not final capacity acceptance.
 
 ## One-hour local combat observation
 

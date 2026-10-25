@@ -14,7 +14,7 @@ Source uses the MIT license. Dependency and bundled Fontsource license notices a
 - [Independent source/atlas/pixel audit](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/reviews/midnight-2026-10-24/independent-art-audit.json).
 - [All 60 original boss compositions](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/assets/production/audio/boss-themes/library.json).
 
-Exact prompts, reference hashes, returned natives and superseded attempts remain available. Technical cropping/resampling/padding is documented separately from drawing. Selected motion currently totals 1,143 frames across bosses, classes, parts and minions; complete action/facing libraries are not finished. Native/proof inspection is not full in-engine or human motion acceptance.
+Exact prompts, reference hashes, returned natives and superseded attempts remain available. Technical cropping/resampling/padding is documented separately from drawing. Selected motion currently totals 1,367 frames across bosses, classes, parts and minions; complete action/facing libraries are not finished. Native/proof inspection is not full in-engine or human motion acceptance.
 
 Native-speaker, device, final rendered and subjective listening reviews remain separate from automated evidence. Historical records retain their checkpoint counts; [Changelog](Changelog) and [Home](Home) describe the current source.
 
@@ -24,4 +24,4 @@ Native-speaker, device, final rendered and subjective listening reviews remain s
 
 ## Wiki image editions
 
-The [Art Gallery](Art-Gallery) and illustrated guides use nine optimized images built from the game's existing cover, survivor reference, current boss atlases and shop icons. Technical crops preserve proportions and source artwork; no character art is redrawn. Map diagrams use current authority geometry. Source hashes and all sixty boss-to-frame bindings are retained in [the image manifest](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/wiki-images.json).
+The [Art Gallery](Art-Gallery) and illustrated guides use seventeen optimized images: the cover, survivor identity lineup, five boss galleries, actual map geometry, shop equipment, seven survivor action references and an actual-measurement endurance chart. Technical crops preserve proportions and source artwork; no character art is redrawn. Map diagrams use current authority geometry. Source hashes and all sixty boss-to-frame bindings are retained in [the image manifest](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/wiki-images.json).

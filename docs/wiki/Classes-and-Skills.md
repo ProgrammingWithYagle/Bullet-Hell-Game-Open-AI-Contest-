@@ -25,7 +25,7 @@ Each class has three parent branches with three six-node paths each. A path's de
 
 Weapon purchases are class-compatible. Skills and weapons reset with the run. Ultimate cooldowns advance in combat, start ready and have a maximum 40% cooldown reduction. Local [mastery and cosmetic insignia](Profiles) now persist independently of purchased run power.
 
-The class completion package includes 124 approved run poses and 52 item illustrations. Earlier Heavy/Warden motion is also connected. Full firing, dodge, hurt, downed and defeat libraries for every facing still require production and rendered review. Four consistent Engineer north poses are selected; four failed poses remain excluded and preserved in provenance.
+All seven classes now have independently drawn directional runs, idle, primary attack, hurt, dodge and downed clips: 204 selected run poses and 616 action poses. Soldier and Medic keep their four approved north/south frames per direction and gain eight-frame independent east/west runs. Four consistent Engineer north poses remain selected; four failed poses stay excluded. Special-ability and remaining boss action sets, rendered transitions and human/device acceptance remain open.
 
 [Class and map implementation evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/CLASS_AND_ARENA_RUNTIME.md) · [All numerical skill definitions](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/content/skills.json)
 
@@ -58,3 +58,15 @@ Twenty clips add 88 poses alongside the existing runs. Representative frames ret
 ![Assassin idle, firearm attack, hurt, dodge and downed poses in four directions](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/assassin-actions.jpg)
 
 Twenty clips add 88 poses alongside the existing runs. Representative frames retain one world scale; this is a sprite reference. [Production and independent reconstruction](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/HEAVY_AND_ASSASSIN_ACTION_MOTION.md). Rendered/device/human acceptance remains open.
+
+## Soldier action reference
+
+![Soldier idle, primary attack, hurt, dodge and downed poses in four directions](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/soldier-actions.jpg)
+
+Twenty action clips add 88 poses, alongside eight independently drawn side-run poses per direction and the retained north/south originals. Shared scale keeps the body consistent between actions and directions. Representative sprite frames are separate from gameplay captures or rendered acceptance. [Production, provenance and verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/SOLDIER_MEDIC_ACTION_MOTION.md).
+
+## Medic action reference
+
+![Medic idle, primary attack, hurt, dodge and downed poses in four directions](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/medic-actions.jpg)
+
+Twenty action clips add 88 poses, alongside eight independently drawn side-run poses per direction and the retained north/south originals. Shared scale keeps the body consistent between actions and directions. Representative sprite frames are separate from gameplay captures or rendered acceptance. [Production, provenance and verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/SOLDIER_MEDIC_ACTION_MOTION.md).

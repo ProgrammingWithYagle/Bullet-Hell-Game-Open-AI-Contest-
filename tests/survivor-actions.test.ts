@@ -15,6 +15,8 @@ import engineerProvenance from '../docs/engineer-actions-2026-10-24.json';
 import mageProvenance from '../docs/mage-actions-2026-10-24.json';
 import heavyProvenance from '../docs/heavy-actions-2026-10-24.json';
 import assassinProvenance from '../docs/assassin-actions-2026-10-24.json';
+import soldierProvenance from '../docs/soldier-actions-2026-10-24.json';
+import medicProvenance from '../docs/medic-actions-2026-10-24.json';
 const tankLibrary = library.entries.filter((entry) => entry.classId === 'tank');
 
 function fixture() {
@@ -68,7 +70,7 @@ test('Tank actions retain twenty distinct directional clips, 88 drawn poses and 
     for (const binding of request.inputBindings)
       assert.equal(sha(binding.projectPath), binding.sha256);
   }
-  assert.equal(survivorActionArt.entries.length, 100);
+  assert.equal(survivorActionArt.entries.length, 140);
 });
 
 test('actual weapon shots trigger a complete stationary firing cycle without repeated snapshots restarting it', () => {
@@ -204,7 +206,7 @@ test('late observers of an existing fall, reduced motion, waiting participants a
   s.player.status = 'waiting';
   s.update(1);
   assert.equal(s.pose(), undefined);
-  assert.equal(s.clock.pose(view.players[1], view, false), undefined);
+  assert.equal(s.clock.pose(view.players[1], view, false)!.action, 'idle');
 });
 
 test('new runs, encounter boundaries, backward clocks and removed participants cannot inherit action state', () => {
@@ -363,6 +365,8 @@ test('real Mage primary casts select the corresponding independent staff clip in
 for (const [classId, natives, expected] of [
   ['heavy', heavyProvenance, 20],
   ['assassin', assassinProvenance, 23],
+  ['soldier', soldierProvenance, 20],
+  ['medic', medicProvenance, 21],
 ] as const) {
   test(
     classId +

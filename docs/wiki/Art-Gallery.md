@@ -93,3 +93,15 @@ Twenty clips add 88 poses alongside the existing runs. Representative frames ret
 ![One hour of actual simulation tick and process heap measurements for fifty scripted clients](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/endurance-50-clients.jpg)
 
 Fifty active SDK clients and 4,000 maintained hostile projectiles: 21.41 ms p99, 112.11 ms worst, 236 ticks over 33.33 ms. The graph uses actual frozen-source measurements, with zero rendered clients and invulnerable fixture players. It is separate from hosted/WAN capacity, normal progression and rendered acceptance. [Exact scope, source and raw evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/ONE_HOUR_ENDURANCE.md).
+
+## Soldier action reference
+
+![Soldier idle, primary attack, hurt, dodge and downed poses in four directions](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/soldier-actions.jpg)
+
+Twenty action clips add 88 poses, alongside eight independently drawn side-run poses per direction and the retained north/south originals. Shared scale keeps the body consistent between actions and directions. Representative sprite frames are separate from gameplay captures or rendered acceptance. [Production, provenance and verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/SOLDIER_MEDIC_ACTION_MOTION.md).
+
+## Medic action reference
+
+![Medic idle, primary attack, hurt, dodge and downed poses in four directions](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/medic-actions.jpg)
+
+Twenty action clips add 88 poses, alongside eight independently drawn side-run poses per direction and the retained north/south originals. Shared scale keeps the body consistent between actions and directions. Representative sprite frames are separate from gameplay captures or rendered acceptance. [Production, provenance and verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/SOLDIER_MEDIC_ACTION_MOTION.md).

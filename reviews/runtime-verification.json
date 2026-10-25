@@ -1,33 +1,33 @@
 {
-  "createdAt": "2026-10-25T03:42:30.566Z",
+  "createdAt": "2026-10-25T04:59:16.885Z",
   "passed": true,
-  "sourceSnapshotSha256": "e1bc3fb20418ea2d1e2a05a7414052f7de8593d73bc0e748a717723cae81f933",
-  "runtimeSourceSha256": "c99a399f61ae4c21e9b54aea2a6153b83661ae6d866a09a417114663c8e6ee37",
+  "sourceSnapshotSha256": "f423a97462d28913bf99a434f9c1b9d4a824f4a746b242fe6fa63d6542b020f5",
+  "runtimeSourceSha256": "221df6e7be7675c2bb28f7228e6907bbbfb6d54d4a948c741943f3f2b86a7575",
   "contentRevision": "b8d9fb6918c854f3eed38b327ed0cb3026e071e6fe24932e50beed36943db241",
   "checks": [
     {
       "name": "Stage 1 authored content",
       "passed": true,
-      "elapsedMs": 1031
+      "elapsedMs": 1131
     },
     {
       "name": "TypeScript",
       "passed": true,
-      "elapsedMs": 1253
+      "elapsedMs": 1624
     },
     {
       "name": "Headless rules and real-network integration",
       "passed": true,
-      "elapsedMs": 43794
+      "elapsedMs": 43889
     },
     {
       "name": "Production client build",
       "passed": true,
-      "elapsedMs": 6221
+      "elapsedMs": 4903
     }
   ],
-  "outputFiles": 1534,
-  "outputBytes": 642797450,
+  "outputFiles": 1582,
+  "outputBytes": 651693945,
   "artifacts": [
     {
       "path": "dist/assets/0-Bw4fnU8q.png",
@@ -1425,9 +1425,9 @@
       "sha256": "97bc99bc880f3884812b04266a62d6a896f5879053848bbf94e3f4f904f52f83"
     },
     {
-      "path": "dist/assets/index-CiRYABbZ.js",
-      "bytes": 2514864,
-      "sha256": "578e1b29b9ece18bfb9887716df8eb2c110077136907dbd50077d08d39217d10"
+      "path": "dist/assets/index-CncYTDIS.js",
+      "bytes": 2567274,
+      "sha256": "32fde344f62f53e08d1bd2af02b019ad75f1a40599729c65830bbae9b4b145ba"
     },
     {
       "path": "dist/assets/index-DHGW8PJU.css",
@@ -1780,9 +1780,129 @@
       "sha256": "bc80b47d321c3ff5a35ccb91e6aac43220553939948e0eb680c2d36fafc93101"
     },
     {
+      "path": "dist/assets/medic-attack-east-v1-atlas-DdbIkowL.png",
+      "bytes": 175430,
+      "sha256": "60d7fd4084c894506079bfd87c00ad672f88c1b87900ca5e571af10f0f1a7d8d"
+    },
+    {
+      "path": "dist/assets/medic-attack-north-v1-atlas-CpOJxBB0.png",
+      "bytes": 169969,
+      "sha256": "99c0c507a86ea20d9e0a6ba3e97862c96edf36beeff6ec439f0325a29e30f6c9"
+    },
+    {
+      "path": "dist/assets/medic-attack-south-v1-atlas-wKQeHDyx.png",
+      "bytes": 164547,
+      "sha256": "6f4bf51002c66b6478c91c7cb1233f8a206443abb96e099cb61cf2290a503368"
+    },
+    {
+      "path": "dist/assets/medic-attack-west-v1-atlas-DwAQp4Zp.png",
+      "bytes": 179879,
+      "sha256": "6a0800a314671046fc5577d2ce51599013cf2a1d409c407ebb29bd0b6d4cc822"
+    },
+    {
+      "path": "dist/assets/medic-dash-east-v1-atlas-JESIcOp4.png",
+      "bytes": 275583,
+      "sha256": "796dfdce93a950a3997fe225eb91903648cb3a553eea6ee53979067bf3498954"
+    },
+    {
+      "path": "dist/assets/medic-dash-north-v1-atlas-CUXR3q7i.png",
+      "bytes": 249574,
+      "sha256": "dcbd07977cc830f48be550f647e317fdea8233e5a19e6ede1368bf57061c37cb"
+    },
+    {
+      "path": "dist/assets/medic-dash-south-v1-atlas-CEXjaD60.png",
+      "bytes": 250567,
+      "sha256": "6ec763388e4c99a6ad8eb2ef7d1d9359fbdc74e987e4df17a8d0c77aece6fd8b"
+    },
+    {
+      "path": "dist/assets/medic-dash-west-v1-atlas-tgodS0a6.png",
+      "bytes": 265344,
+      "sha256": "cffbb65da098711aac7c14eca485a5548950e769b2dbffd4dc421ea507271bca"
+    },
+    {
+      "path": "dist/assets/medic-downed-east-v1-atlas-BnX406-N.png",
+      "bytes": 211292,
+      "sha256": "7d7dd46cc91bae59ab1cfdcc26d76946c1f998117bdadf16e53cfa7df839711a"
+    },
+    {
+      "path": "dist/assets/medic-downed-north-v1-atlas-797a9g1v.png",
+      "bytes": 207286,
+      "sha256": "7ceb19bbee73ea9e3ba1ac0d79d0dbe2cc4a9f55d4c9b836cab22d9e11506d6c"
+    },
+    {
+      "path": "dist/assets/medic-downed-south-v1-atlas-DR73xX31.png",
+      "bytes": 211678,
+      "sha256": "e39eb78c7aa1b4b1035eed955b54a08f7483e381ac1719f691c04946167b2280"
+    },
+    {
+      "path": "dist/assets/medic-downed-west-v1-atlas-BiV01H_Z.png",
+      "bytes": 222871,
+      "sha256": "004f94e316b21ce63664b62dd5e0d61621bf5b4db907bba0a6814a9c2e6c04b8"
+    },
+    {
       "path": "dist/assets/medic-east-seed-D3_dpiWd.png",
       "bytes": 55851,
       "sha256": "ffd84a08c1748098c12ee490ffe5edfcbad1a25348ee99cd91ba3667b9d656a5"
+    },
+    {
+      "path": "dist/assets/medic-hurt-east-v1-atlas-DR17toa8.png",
+      "bytes": 90068,
+      "sha256": "83da92de43912d3fee2a292d6136bf7251889b9ac4b685dbd1c37ad019022889"
+    },
+    {
+      "path": "dist/assets/medic-hurt-north-v1-atlas-BDtQDjS2.png",
+      "bytes": 83918,
+      "sha256": "f7413fefba64cd526c8fe06ab4cf7c4f886d5cb8ef0aa7d1478724cfba2c6b10"
+    },
+    {
+      "path": "dist/assets/medic-hurt-south-v1-atlas-DVU30yUo.png",
+      "bytes": 81036,
+      "sha256": "fc3177405ed9345e80e56b9818ceed780fbdb2c679f691612c3d23974b01daba"
+    },
+    {
+      "path": "dist/assets/medic-hurt-west-v1-atlas-CyHuccDg.png",
+      "bytes": 92237,
+      "sha256": "5a289529ebdd2cbbbadb41bf706387005fb43d3429dcca1c4b8c70d6a33feaa5"
+    },
+    {
+      "path": "dist/assets/medic-idle-east-v1-atlas-Cfkz4BVW.png",
+      "bytes": 173895,
+      "sha256": "6f55b4b1c6bb5edde8e9b97aa6c5d00877162a16aafd379081602382a8a7de93"
+    },
+    {
+      "path": "dist/assets/medic-idle-north-v1-atlas-Cyub2Qz1.png",
+      "bytes": 168249,
+      "sha256": "0b7153b72bc1eaf5a02384b5e843bf967edb685c6370df7dfd9bb9ba6ee8b85c"
+    },
+    {
+      "path": "dist/assets/medic-idle-south-v1-atlas-D1BQobAV.png",
+      "bytes": 164480,
+      "sha256": "2b7375055ca9af77174e2a824d6d678405755c1f62621455d2636c8016d725a1"
+    },
+    {
+      "path": "dist/assets/medic-idle-west-v1-atlas-3UgSgIHF.png",
+      "bytes": 178729,
+      "sha256": "426db4a4cca4e028d5de0a0d5c24b60a5232c7f7acb23c176e065d8fc7b3f8ba"
+    },
+    {
+      "path": "dist/assets/medic-run-east-v1-atlas-CQq2zYUD.png",
+      "bytes": 403042,
+      "sha256": "f5d5cee023187ae3c1ccb78c1eb9e9aad6376060b991c3edddaf4bf83595579c"
+    },
+    {
+      "path": "dist/assets/medic-run-north-v1-atlas-CgQhVSOd.png",
+      "bytes": 135524,
+      "sha256": "a0d7eb349d683670d1bd239b4aa4d8eaf6bdd0d3ddfc3a9ae4c577db9ff59387"
+    },
+    {
+      "path": "dist/assets/medic-run-south-v1-atlas-CaTYMTk0.png",
+      "bytes": 138846,
+      "sha256": "83713b5992592cbdd3f425a41cc4448d85337bc9b1adf72bbe911f37f8f0c507"
+    },
+    {
+      "path": "dist/assets/medic-run-west-v1-atlas-CvY6u9s6.png",
+      "bytes": 400706,
+      "sha256": "5aadca3514b273a7d194fae0dad32fdedc452a0d3f04227a749aa0599d4da506"
     },
     {
       "path": "dist/assets/medic-source-v2-D0ZPeSSk.png",
@@ -7115,9 +7235,129 @@
       "sha256": "217a44af8ed93192547ee22741c5ab0c445e87c165351f742d17acfaac96aa9d"
     },
     {
+      "path": "dist/assets/soldier-attack-east-v1-atlas-C8mSsy9j.png",
+      "bytes": 154920,
+      "sha256": "e30e70a39749c7dae08a82988036acb774c1a1c8c0218e53875b12e084bc9d94"
+    },
+    {
+      "path": "dist/assets/soldier-attack-north-v1-atlas-Cfna3_zT.png",
+      "bytes": 155087,
+      "sha256": "b6ccfd7b4ed0e7b5ea8e5babb04be45b55c32cdb54fc452b56f6ee104a235d69"
+    },
+    {
+      "path": "dist/assets/soldier-attack-south-v1-atlas-DMkwDIpn.png",
+      "bytes": 151265,
+      "sha256": "682880a61853d6d83865c35f4cfb6d0fe832d73a76e8c60a6c556e6d6743077a"
+    },
+    {
+      "path": "dist/assets/soldier-attack-west-v1-atlas-Bq1v-wUG.png",
+      "bytes": 166596,
+      "sha256": "9c7e8fd5276e15684f265f787d9cfb28298c6c0bc02e4c888edd2e1f8589349e"
+    },
+    {
+      "path": "dist/assets/soldier-dash-east-v1-atlas-VejTIcUX.png",
+      "bytes": 225291,
+      "sha256": "92b72f0b43350de33e293cdff74296205b30bc545f1f9e66f28b410cf844a5e6"
+    },
+    {
+      "path": "dist/assets/soldier-dash-north-v1-atlas-BXXFhqCe.png",
+      "bytes": 216990,
+      "sha256": "bb207308e8871bf7d49fd6d92a14fd5dffd58b83109a60162505c7db0134024a"
+    },
+    {
+      "path": "dist/assets/soldier-dash-south-v1-atlas-ZYSg_8cL.png",
+      "bytes": 217700,
+      "sha256": "8b6be8dc181013adb9d9ad767d48fbf51d7a52f1c2d23b7364d5ec4893602b77"
+    },
+    {
+      "path": "dist/assets/soldier-dash-west-v1-atlas-D7Q4zQUN.png",
+      "bytes": 226178,
+      "sha256": "5ae3bf2d48fc99028ea5092f4384c1acf69ee88cf9e647eafad2c49c7e9c9c8a"
+    },
+    {
+      "path": "dist/assets/soldier-downed-east-v1-atlas-BSfooZy7.png",
+      "bytes": 200586,
+      "sha256": "083e6bd6d96548ba74257a2afbcb732c9f4191a6249e7a95f1b68db54ce01427"
+    },
+    {
+      "path": "dist/assets/soldier-downed-north-v1-atlas-igBPzzce.png",
+      "bytes": 190515,
+      "sha256": "5e260c76e2309bf1d32fb00d025ffdc2dcbac081f17332eec6368d4a80ab91f7"
+    },
+    {
+      "path": "dist/assets/soldier-downed-south-v1-atlas-B_IIxIul.png",
+      "bytes": 175351,
+      "sha256": "d2c24553e237302d85f8decdd12cff15da0bbb8e0aa2dfd0a339dd206adaabc6"
+    },
+    {
+      "path": "dist/assets/soldier-downed-west-v1-atlas-BblzFB12.png",
+      "bytes": 201137,
+      "sha256": "389fd86e0d232529e4a9f728b3ba495d0a2f82b22b6ebe7a11c53064cc486bfe"
+    },
+    {
+      "path": "dist/assets/soldier-hurt-east-v1-atlas-BrRRfFH8.png",
+      "bytes": 80889,
+      "sha256": "b44aab165a326a438d11039bb4c8bb667fe4403b735e78989908b99b3c057576"
+    },
+    {
+      "path": "dist/assets/soldier-hurt-north-v1-atlas-Ce_Y-7QB.png",
+      "bytes": 74694,
+      "sha256": "6e7f238cdf08af09a62bb5f75fac064062d619aa680add3121199a1bf424f8e4"
+    },
+    {
+      "path": "dist/assets/soldier-hurt-south-v1-atlas-BT19tERi.png",
+      "bytes": 76212,
+      "sha256": "02b7661cbdb73be7c06c091739fa9abc120c1d98198fb6e153207217abeca7d2"
+    },
+    {
+      "path": "dist/assets/soldier-hurt-west-v1-atlas-DAxK5ASq.png",
+      "bytes": 81791,
+      "sha256": "f1561842347b7505045b567639416920725bd688033a94f0217ea56877027008"
+    },
+    {
+      "path": "dist/assets/soldier-idle-east-v1-atlas-CG1mxcBu.png",
+      "bytes": 157475,
+      "sha256": "cfd933e83361b09aab2d24d89d78888bb21ccc88ec1d78bc8f3e0cf9b6d2af4c"
+    },
+    {
+      "path": "dist/assets/soldier-idle-north-v1-atlas-_WIUvnda.png",
+      "bytes": 151982,
+      "sha256": "c0a5e883b0a81e9e1060459ee51aa9e38f4e0fe72309f161660112be9d543018"
+    },
+    {
+      "path": "dist/assets/soldier-idle-south-v1-atlas-CT3bxlJ5.png",
+      "bytes": 151807,
+      "sha256": "70488cb29ac4525160295246631a1080a4463b31f23245b1d9fee25ac4057067"
+    },
+    {
+      "path": "dist/assets/soldier-idle-west-v1-atlas-Cx2dJque.png",
+      "bytes": 160874,
+      "sha256": "de4bf495a6bd2169571e96a37e72e17901bbeb59bac669117f6483d84f3e97b7"
+    },
+    {
       "path": "dist/assets/soldier-run-atlas-CG8EL05E.png",
       "bytes": 330552,
       "sha256": "78e29795a3f84cbe718ad970f539d560acba6fbcb667ef7c0074c78fa5d25051"
+    },
+    {
+      "path": "dist/assets/soldier-run-east-v1-atlas-CEB-dhWe.png",
+      "bytes": 331429,
+      "sha256": "e45d053acced899e495a4f5ed41ad6781b3c5686c92fc23bf2bfbfcfe7f614cd"
+    },
+    {
+      "path": "dist/assets/soldier-run-north-v1-atlas-DA8VHtiz.png",
+      "bytes": 132070,
+      "sha256": "3cf96b9897a3050bfa50cf52823d660750ba69b6395e94037086748876812b29"
+    },
+    {
+      "path": "dist/assets/soldier-run-south-v1-atlas-DmNIuaMv.png",
+      "bytes": 140341,
+      "sha256": "67ef54a52d9369d1ef2453a30e8829109d91e0900fa6f1c8527eddf457bf344c"
+    },
+    {
+      "path": "dist/assets/soldier-run-west-v1-atlas-Cni48yyN.png",
+      "bytes": 328155,
+      "sha256": "7dbe370311cb8c94a9d7f3e106afbc4578abb4489ca5281996e1d91cfc7d4c67"
     },
     {
       "path": "dist/assets/south-walk-B6jKW-xQ.png",
@@ -7697,7 +7937,7 @@
     {
       "path": "dist/index.html",
       "bytes": 540,
-      "sha256": "da989b19b57f9a1668aa418f14ca05ed2fa2bdd3919ac5b8da1cdbe183aa615e"
+      "sha256": "cf26573d1878dc1505b259ca6f8720e3482a7c8349f937bafde966e3bb909e5b"
     }
   ],
   "limits": [

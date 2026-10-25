@@ -1,6 +1,20 @@
 # Changelog
 
-Development build **2026.10.24-heavy-assassin-actions**, protocol 13. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.25-soldier-medic-actions**, protocol 13. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-25 — Soldier and Medic actions complete the seven-survivor basic motion set
+
+### Drawn actions and independent runs
+
+- Added twenty Soldier and twenty Medic clips: 176 new idle, primary-fire, hurt, dodge and downed poses across four independent directions. All seven survivors now have those five actions alongside directional runs.
+- Added four independently drawn side runs with 32 new poses, replacing mirrored Soldier running and static Medic side views. The sixteen approved north/south poses retain their original native pixels and are repacked at the same 56-pixel body scale as other directions and actions.
+- Preserved all 45 new native returns and exact prompts. A connected Medic fall was replaced whole. A separate movement request returned no image; its error/request remain recorded, and the replacement succeeds without inventing a native return.
+
+### Verification and illustrated Wiki
+
+- Independent reconstruction covers all 140 action clips, 616 action poses and eight Soldier/Medic run clips. Authority-fired primary shots, authored run timing, stable reduced motion and retained north/south sources have regression coverage.
+- Added Soldier and Medic action references to the Wiki, for seventeen images. The in-game and repository changelogs describe the same source stage.
+- Native/contact-sheet and software checks remain separate from rendered, human and device acceptance. Special-ability animations, many boss action sets and final game/release work remain unfinished. The issued Windows archive retains its earlier exact source.
 
 ## 2026-10-24 — Heavy and Assassin actions, illustrated Wiki and one-hour local combat probe
 
@@ -256,8 +270,8 @@ Development build **2026.10.24-heavy-assassin-actions**, protocol 13. These entr
 
 ## Still in development
 
-- All sixty boss identities execute; full directional/action animation, final encounter tuning and rendered/device acceptance remain unfinished.
-- Local mastery, cosmetics, profiles and remappable controls are implemented. Native-language, physical-device, human listening/gameplay, endurance and full capacity acceptance remain open.
+- All sixty boss identities execute and all seven survivors have basic directional runs/idle/primary/hurt/dodge/downed art. Special-ability/boss action production, final encounter tuning and rendered/device acceptance remain unfinished.
+- Local mastery, cosmetics, profiles and remappable controls are implemented. Native-language, physical-device, human listening/gameplay, full-progression endurance and full capacity acceptance remain open.
 - An unsigned Windows/offline/LAN development download is published with exact artifact evidence. Physical second-machine LAN and final coordinated browser/Windows release acceptance remain open.
 - Verified public rankings and durable deployed recovery remain unfinished. Bounded compressed transfer passes a fifty-build local HTTP/restart fixture; maximum-entropy histories still require paging.
 
