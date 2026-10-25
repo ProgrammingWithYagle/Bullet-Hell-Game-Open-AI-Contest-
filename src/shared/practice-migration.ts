@@ -5,8 +5,21 @@ import { classifiedContract } from './boss-threat.ts';
 /** Bounded local migrations preserve old Practice saves. Online signatures stay strict. */
 export function migratePracticeBoundary(value: unknown): unknown {
   if (!value || typeof value !== 'object' || Array.isArray(value)) return value;
-  const legacy = value as Record<string, unknown>;
-  if (![4, 5, 6, 7, 8, 9, 10, 11, 12, 13].includes(legacy.protocolVersion as number)) return value;
+  const issued = value as Record<string, unknown>;
+  // This issued revision differs only in Constable encounter authoring. Carry local
+  // boundaries forward, then run the existing version-specific and full restore validation.
+  // Current-version cards never pass through legacy reclassification.
+  const compatibleRevision =
+    issued.contentRevision === 'b8d9fb6918c854f3eed38b327ed0cb3026e071e6fe24932e50beed36943db241' &&
+    [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, PROTOCOL].includes(issued.protocolVersion as number) &&
+    issued.schemaVersion === 1 &&
+    issued.practiceOnly === true &&
+    issued.serverOnly !== true &&
+    issued.players === undefined &&
+    issued.transactions === undefined &&
+    JSON.stringify(issued).length <= 32768;
+  const legacy = compatibleRevision ? { ...issued, contentRevision: CONTENT_REVISION } : issued;
+  if (![4, 5, 6, 7, 8, 9, 10, 11, 12, 13].includes(legacy.protocolVersion as number)) return legacy;
   const version = legacy.protocolVersion as number;
   const previousServiceBosses = [
     'matron',

@@ -9,6 +9,7 @@ import type { ServiceCue } from '../shared/service-director.ts';
 import Phaser from 'phaser';
 import { assets } from './assets.ts';
 import { arenaCoverPlan } from './arena-covers.ts';
+import { BossVisualMotion } from './boss-visual-motion.ts';
 import { SurvivorVisualMotion } from './survivor-visual-motion.ts';
 import { bossDefeatFrame } from './boss-defeat-presentation.ts';
 import { courierCombatFrame } from './courier-presentation.ts';
@@ -58,6 +59,7 @@ export class CombatScene extends Phaser.Scene {
   highContrast = false;
   reduceMotion = false;
   private visualMotion = new SurvivorVisualMotion();
+  private bossMotion = new BossVisualMotion();
   private people = new Map<string, Phaser.GameObjects.Sprite>();
   private bossTextures?: BossTextureCache;
   private bossTextureAlive = false;
@@ -775,6 +777,14 @@ export class CombatScene extends Phaser.Scene {
         )) ||
         (view.boss.defeatedAt > 0 && view.boss.health <= 0),
     );
+    const movingConstable = this.bossMotion.sample(
+      view.boss,
+      animationTime.tick,
+      view.phase === 'combat' &&
+        view.boss.id === 'constable' &&
+        now >= view.boss.staggerUntil &&
+        now >= view.boss.castEndsAt,
+    );
     this.bossSprite.setPosition(
       view.boss.x,
       view.boss.y + (view.boss.id === 'constable' ? constableArt.groundOffsetY : 0),
@@ -811,7 +821,14 @@ export class CombatScene extends Phaser.Scene {
         .setOrigin(texturePose.origin[0], texturePose.origin[1])
         .setDisplaySize(texturePose.displayWidth, texturePose.displayHeight);
     } else {
-      const pose = constableCombatPose(view.boss, view.tick, now, this.reduceMotion, animationTime);
+      const pose = constableCombatPose(
+        view.boss,
+        view.tick,
+        now,
+        this.reduceMotion,
+        animationTime,
+        movingConstable,
+      );
       const clip = constableArt.clips[pose.clip];
       this.bossSprite.anims.stop();
       this.bossSprite

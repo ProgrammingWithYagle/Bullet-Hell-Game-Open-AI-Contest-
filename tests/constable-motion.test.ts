@@ -22,13 +22,13 @@ function fixture(variant: 'normal' | 'brutal' = 'normal') {
   return game;
 }
 
-test('Constable retains all four native sheets, nineteen complete poses and the original eight attack frames', () => {
+test('Constable retains the original four motion sheets and eight attack frames alongside the four-pose shuffle', () => {
   const sha = (path: string) => createHash('sha256').update(readFileSync(path)).digest('hex');
   assert.equal(provenance.requests.length, 4);
-  assert.equal(constableArt.entries.length, 5);
+  assert.equal(constableArt.entries.length, 6);
   assert.equal(
     constableArt.entries.reduce((n, clip) => n + clip.frames, 0),
-    27,
+    31,
   );
   for (const request of provenance.requests) {
     assert.equal(sha(request.file), request.sha256);

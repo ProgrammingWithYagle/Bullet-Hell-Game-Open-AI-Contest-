@@ -1,4 +1,5 @@
 import serviceMotion from '../assets/production/motion/service-library.json';
+import constableShuffle from '../assets/production/motion/constable-shuffle-library.json';
 import constableMotion from '../assets/production/motion/constable-library.json';
 import openingDefeats from '../assets/production/motion/opening-defeats-library.json';
 import courierMotion from '../assets/production/motion/courier-library.json';
@@ -61,6 +62,7 @@ const entries: ArtEntry[] = [
   })),
   ...serviceMotion.entries,
   ...constableMotion.entries,
+  ...constableShuffle.entries,
   ...survivors.entries,
   ...survivorActions.entries,
   ...legacyRuns.entries,

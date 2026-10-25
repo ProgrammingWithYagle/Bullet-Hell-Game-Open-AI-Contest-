@@ -1,3 +1,4 @@
+import { constablePhaseName } from './constable-phase-text.ts';
 import { bossThreat } from '../shared/boss-threat.ts';
 import { classifiedThreatCode } from './threat-text.ts';
 import { loadProfile, changeProfile, type CosmeticId } from './profile.ts';
@@ -338,7 +339,8 @@ function update(view: View) {
       classifiedThreatCode(view.boss.threat, bossThreat(view.boss.id).subtier, view.boss.variant) +
       (view.boss.variant === 'brutal' ? ' · ' + t('ui.variantBrutal') : '') +
       ' · ' +
-      t('ui.phase', { number: view.boss.phase + 1 });
+      t('ui.phase', { number: view.boss.phase + 1 }) +
+      (view.boss.id === 'constable' ? ' · ' + constablePhaseName(view.boss.phase, locale) : '');
   const hp = $<HTMLProgressElement>('health');
   hp.max = p.maxHealth;
   hp.value = p.health;

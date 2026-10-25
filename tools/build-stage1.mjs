@@ -4,6 +4,7 @@ import crypto from 'node:crypto';
 import { expandBosses, bossPools } from '../content/source/boss-expansion.mjs';
 import { expandSkills } from '../content/source/skill-expansion.mjs';
 import { gatehouseObstacles } from '../content/source/arena-geometry.mjs';
+import { reviseConstable } from '../content/source/constable-encounter.mjs';
 import { addBossVariants, brutalRules } from '../content/source/boss-variants.mjs';
 
 // Authored design data and document production only. No gameplay implementation.
@@ -194,6 +195,7 @@ const originalBosses = bossSpecs.map(([id,name,lore,minThreat,timer,healthFactor
 }));
 const bosses=expandBosses(originalBosses,modes);
 addBossVariants(bosses);
+reviseConstable(bosses);
 
 const mutationSpecs = [
   ['glass-pact','Glass Pact','Half maximum health; triple weapon damage.',{maxHealth:0.5,damage:3},['salt-circle']],

@@ -1,3 +1,4 @@
+import { constablePattern, moveConstable } from './constable-signature.ts';
 import { freshProgress, validProgress, type RunProgress } from './run-progress.ts';
 import {
   bossThreat,
@@ -1797,9 +1798,14 @@ export class Game {
       this.rescaleDepartures();
       this.resetWarden();
       this.director.reset(this.boss.id, this.boss.variant === 'brutal');
-      if (this.boss.id !== 'constable' && this.boss.id !== 'lantern-warden') {
+      if (this.boss.id !== 'lantern-warden') {
         this.warnings.length = 0;
         for (const shot of this.shots.values()) if (shot.owner === 'hostile') this.removeShot(shot);
+        if (this.boss.id === 'constable') {
+          this.boss.castAt = this.boss.castReleaseAt = this.boss.castEndsAt = 0;
+          for (let i = this.fields.length - 1; i >= 0; i--)
+            if (this.fields[i].owner === 'hostile') this.fields.splice(i, 1);
+        }
       }
       const count = this.roster().length;
       this.accord = {
@@ -1859,6 +1865,7 @@ export class Game {
     for (let index = 0; index < attacks.length; index++)
       if (
         now >= this.attackAt[index] &&
+        (this.boss.id !== 'constable' || now >= this.boss.castEndsAt) &&
         (this.boss.id !== 'lantern-warden' ||
           this.signatures.every((sample) => sample.phase === 'rest'))
       ) {
@@ -1896,7 +1903,18 @@ export class Game {
             (1 +
               Math.min(rule.endless.maximumSpeedGrowth, cycle * rule.endless.speedGrowthPerCycle)),
           damage = attack.damage * this.bossDamageScale();
-        if (
+        if (this.boss.id === 'constable') {
+          const pattern = constablePattern({
+            boss: this.boss,
+            now,
+            target,
+            bounds: this.arena.bounds,
+            obstacles: this.obstacles,
+            attack: { ...attack, count, speed, damage },
+          });
+          this.warnings.push(...pattern.warnings.map((w) => ({ ...w, id: this.id() })));
+          this.boss.castEndsAt = pattern.lastReleaseAt + ticks(0.66);
+        } else if (
           index === 0 &&
           this.director.endless.cast(this.signatureContext(), target, { ...attack, speed, count })
         ) {
@@ -2003,6 +2021,17 @@ export class Game {
         });
       }
     this.director.step(this.signatureContext());
+    if (this.boss.id === 'constable')
+      moveConstable(
+        this.boss,
+        now,
+        this.arena.bounds,
+        this.obstacles,
+        this.roster().filter(
+          (p) => p.status === 'active' && !this.classKits.untargetable(p.id, now),
+        ),
+        !!this.accord,
+      );
     for (let i = this.warnings.length - 1; i >= 0; i--) {
       const w = this.warnings[i];
       if (now < w.at) continue;

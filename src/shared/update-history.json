@@ -1,15 +1,46 @@
 {
-  "buildId": "2026.10.25-fixed-threats",
+  "buildId": "2026.10.25-constable-patrol",
   "snapshot": {
     "bosses": 60,
     "classes": 7,
     "skills": 378,
     "weapons": 28,
     "maps": 6,
-    "modes": ["short", "standard", "long", "raid", "endless"],
+    "modes": [
+      "short",
+      "standard",
+      "long",
+      "raid",
+      "endless"
+    ],
     "protocol": 14
   },
   "entries": [
+    {
+      "id": "constable-patrol-cordon-lockdown",
+      "date": "2026-10-25",
+      "title": "Hollow Constable patrol, crossing cordons and moving lockdown",
+      "groups": [
+        {
+          "title": "Different phases and counterplay",
+          "items": [
+            "Patrol shuffles between two locked aimed volleys. Cordon fires crossing fans from two flanks. Lockdown pursues between staggered gapped rings, with a shared escape wedge. Brutal adds a third ring in Curfew.",
+            "Warnings lock origin and aim when created. Each delayed volley is warned from the start; casting plants the feet through the final release and recovery. Spaced arrest stamps replace overlapping random disks.",
+            "Phase changes clear outgoing volleys, arrest fields and stale cast poses. Successful Accords interrupt pending attacks and keep their full stagger window. The HUD names all four Constable phases in fifteen languages.",
+            "The Constable keeps his fixed 1+ rating, with B reserved for Brutal. This is a quality pass on an existing identity; the roster remains 60."
+          ]
+        },
+        {
+          "title": "Motion and evidence",
+          "items": [
+            "Four complete shuffling poses use one upright-calibrated scale and the original world anchor. All 27 earlier Constable poses and their native sources remain intact. Movement observation holds between position updates rather than flashing idle.",
+            "Eleven new regressions cover actual phase emissions, escape geometry, real arrest damage, map collision, warning locks, phase cleanup, motion timing, exact art reconstruction locale coverage and bounded save migration. Rendered and human balance review remain open.",
+            "The Wiki removes an older contradictory variable-rating/Brutal-plus introduction and shows current fixed grades throughout the boss tables.",
+            "Local boundaries from the issued pre-patrol content revision migrate without losing run identity, coins, upgrades or history. Current-version threat cards still receive strict validation; unknown revisions and online records are rejected."
+          ]
+        }
+      ]
+    },
     {
       "id": "fixed-boss-threat-classifications",
       "date": "2026-10-25",

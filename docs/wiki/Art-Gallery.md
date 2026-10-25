@@ -147,3 +147,9 @@ Soldier and Medic now use three-quarter resting poses. All seven selection portr
 Every implemented boss now keeps its authored grade across encounters. Five subtiers use --, -, no sign, + and ++; Brutal uses B, and >10 is reserved for secrets. Contracts derive actual health/pressure/reward from that grade. There are still 60 identities: 59 ordinary plus one secret. Filling all fifty ordinary subtiers with three distinct bosses needs 91 more ordinary identities; this chart shows current coverage, not completed future content. Final phase/mobility and human balance work continues.
 
 ![Fixed boss classification and coverage reference](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/fixed-threats.jpg)
+
+## Hollow Constable patrol
+
+Four complete shuffling poses extend the unchanged 27-pose library. One upright-calibrated scale and the original ground anchor preserve body size; the 448-pixel cells retain faint edge pixels without clipping. Footwork follows authoritative patrol positions and holds between network updates. Named Patrol, Cordon, Lockdown and Brutal Curfew phases have distinct attack geometry. Rendered and human balance review remain open.
+
+![Constable shuffle at a common world scale](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/constable-patrol.jpg)

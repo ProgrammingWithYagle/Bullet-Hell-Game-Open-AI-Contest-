@@ -7,6 +7,7 @@ const arenaGroundImages = import.meta.glob('../../assets/production/arenas/*-gro
 }) as Record<string, string>;
 import cover from '../../assets/proofs/cover-v1.png?url';
 import boss from '../../assets/proofs/animation/boss-attack-atlas.png?url';
+import constableShuffle from '../../assets/production/motion/constable-shuffle-v1-atlas.png?url';
 import constableIdle from '../../assets/production/motion/constable-idle-v1-atlas.png?url';
 import constableHurt from '../../assets/production/motion/constable-hurt-v1-atlas.png?url';
 import constableStagger from '../../assets/production/motion/constable-stagger-v1-atlas.png?url';
@@ -174,6 +175,7 @@ export const assets = {
   cover,
   boss,
   constable: {
+    shuffle: constableShuffle,
     idle: constableIdle,
     hurt: constableHurt,
     stagger: constableStagger,

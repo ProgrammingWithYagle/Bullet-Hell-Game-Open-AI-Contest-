@@ -1,10 +1,15 @@
 // The server chooses state boundaries; the bounded drawing clock only advances frames within them.
 import contract from '../../assets/production/motion/constable-library.json';
+import shuffle from '../../assets/production/motion/constable-shuffle-library.json';
 import type { Boss } from '../shared/game.ts';
 import { HZ } from '../shared/protocol.ts';
 
-export const constableArt = contract;
-export type ConstableClipId = keyof typeof contract.clips;
+export const constableArt = {
+  ...contract,
+  clips: { ...contract.clips, ...shuffle.clips },
+  entries: [...contract.entries, ...shuffle.entries],
+};
+export type ConstableClipId = keyof typeof constableArt.clips;
 type DrawingTime = { tick: number; combatTick: number };
 
 function frameAt(elapsedTicks: number, fps: number, frames: number, loop = false) {
@@ -18,6 +23,7 @@ export function constableCombatPose(
   combatTick: number,
   reducedMotion = false,
   drawing: DrawingTime = { tick: worldTick, combatTick },
+  moving = false,
 ): { clip: ConstableClipId; frame: number } {
   const world = Number.isFinite(drawing.tick) ? Math.max(worldTick, drawing.tick) : worldTick;
   const combat = Number.isFinite(drawing.combatTick)
@@ -60,6 +66,13 @@ export function constableCombatPose(
       frame: reducedMotion
         ? 4
         : 4 + frameAt(combat - boss.castReleaseAt, contract.clips.attack.fps, 4),
+    };
+  }
+  if (moving) {
+    const clip = shuffle.clips.shuffle;
+    return {
+      clip: 'shuffle',
+      frame: reducedMotion ? 0 : frameAt(combat, clip.fps, clip.frames, true),
     };
   }
   const hurt = contract.clips.hurt;

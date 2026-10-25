@@ -49,3 +49,10 @@ reviews/map-layouts-2026-10-25/issued-ground-geometry.ts.txt -text -whitespace
 
 # Preserve exact classified-threat verification output.
 reviews/fixed-threats-2026-10-25/*.log -text -whitespace
+
+reviews/constable-pressure-2026-10-25/*.log -text -whitespace
+assets/production/generated/constable-pressure-2026-10-25/*.request.json -text -whitespace
+tools/*constable-shuffle.py text eol=lf
+assets/production/motion/constable*library.json text eol=lf
+docs/constable-pressure-2026-10-25.json text eol=lf
+reviews/constable-pressure-2026-10-25/*.json text eol=lf

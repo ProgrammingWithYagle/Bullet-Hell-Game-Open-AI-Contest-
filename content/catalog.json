@@ -10539,7 +10539,11 @@
       ],
       "mechanics": {
         "arrestZoneSlow": 0.35,
-        "zoneDuration": 3
+        "zoneDuration": 2.4,
+        "patrolSpeed": 56,
+        "cordonSpeed": 76,
+        "lockdownSpeed": 96,
+        "curfewSpeed": 108
       },
       "secret": false,
       "radius": 58,
@@ -10564,8 +10568,8 @@
               "damage": 10,
               "interval": 7,
               "telegraph": 1.2,
-              "radius": 75,
-              "duration": 3,
+              "radius": 65,
+              "duration": 2.4,
               "slow": 0.35
             }
           ]
@@ -10575,33 +10579,24 @@
           "accordBreak": true,
           "attacks": [
             {
-              "kind": "fan",
+              "kind": "cross",
               "count": 9,
-              "speed": 173,
+              "speed": 170,
               "damage": 12,
-              "interval": 2.88,
-              "telegraph": 0.85,
-              "arc": 90
+              "interval": 3.8,
+              "telegraph": 1.05,
+              "arc": 60
             },
             {
               "kind": "zone",
-              "count": 4,
+              "count": 3,
               "speed": 0,
               "damage": 10,
-              "interval": 6.3,
+              "interval": 6.5,
               "telegraph": 1.2,
-              "radius": 75,
-              "duration": 3,
+              "radius": 60,
+              "duration": 2.2,
               "slow": 0.35
-            },
-            {
-              "kind": "lanes",
-              "count": 7,
-              "speed": 150,
-              "damage": 10,
-              "interval": 8.5,
-              "telegraph": 1.1,
-              "arc": 65
             }
           ]
         },
@@ -10610,33 +10605,24 @@
           "accordBreak": true,
           "attacks": [
             {
-              "kind": "fan",
-              "count": 11,
-              "speed": 186,
+              "kind": "ring",
+              "count": 22,
+              "speed": 150,
               "damage": 12,
-              "interval": 2.56,
-              "telegraph": 0.85,
-              "arc": 90
+              "interval": 4.4,
+              "telegraph": 1.15,
+              "gap": 95
             },
             {
               "kind": "zone",
-              "count": 6,
+              "count": 3,
               "speed": 0,
               "damage": 10,
-              "interval": 5.6,
-              "telegraph": 1.2,
-              "radius": 75,
-              "duration": 3,
+              "interval": 6.2,
+              "telegraph": 1.4,
+              "radius": 60,
+              "duration": 2,
               "slow": 0.35
-            },
-            {
-              "kind": "ring",
-              "count": 18,
-              "speed": 130,
-              "damage": 10,
-              "interval": 8.2,
-              "telegraph": 1.25,
-              "gap": 70
             }
           ]
         }
@@ -10647,11 +10633,15 @@
       "damageWindowFraction": 1,
       "signature": {
         "id": "constable",
-        "behavior": "Lock aimed volleys at the warned target position and stamp arrest zones that slow survivors before expiring.",
-        "counterplay": "Move after the volley locks, cross between the fan shots and leave outlined arrest zones before they activate.",
+        "behavior": "Patrol shuffles between locked double volleys; Cordon fires crossing flank fans and a line of arrest stamps; Lockdown pursues while releasing staggered rings with a shared escape wedge. Brutal adds a third ring in Curfew.",
+        "counterplay": "Move after aim locks. Cross between the Cordon fans, leave the arrest outlines, and follow the overlapping open wedge in the Lockdown rings. Casting plants his feet; successful Accords interrupt pending volleys and give a full stagger window.",
         "parameters": {
           "arrestZoneSlow": 0.35,
-          "zoneDuration": 3
+          "zoneDuration": 2.4,
+          "patrolSpeed": 56,
+          "cordonSpeed": 76,
+          "lockdownSpeed": 96,
+          "curfewSpeed": 108
         }
       },
       "artBrief": "A dead watch captain remembers every order except whom it was meant to protect. One dominant silhouette and one signature prop; quiet matte fabric masses, restrained surface detail.",
@@ -10673,7 +10663,6 @@
             {
               "healthThreshold": 1,
               "accordBreak": false,
-              "signatureRepeatOffsetSeconds": 0,
               "attacks": [
                 {
                   "kind": "fan",
@@ -10692,90 +10681,71 @@
                   "damage": 10,
                   "interval": 6.3,
                   "telegraph": 1.2,
-                  "radius": 75,
-                  "duration": 3,
+                  "radius": 65,
+                  "duration": 2.4,
                   "slow": 0.35,
                   "comboOffsetSeconds": 0
                 }
-              ]
+              ],
+              "signatureRepeatOffsetSeconds": 0
             },
             {
               "healthThreshold": 0.75,
               "accordBreak": true,
-              "signatureRepeatOffsetSeconds": 0,
               "attacks": [
                 {
-                  "kind": "fan",
+                  "kind": "cross",
                   "count": 9,
-                  "speed": 173,
+                  "speed": 170,
                   "damage": 12,
-                  "interval": 2.592,
-                  "telegraph": 0.85,
-                  "arc": 90,
+                  "interval": 3.42,
+                  "telegraph": 1.05,
+                  "arc": 60,
                   "comboOffsetSeconds": 0
                 },
                 {
                   "kind": "zone",
-                  "count": 4,
+                  "count": 3,
                   "speed": 0,
                   "damage": 10,
-                  "interval": 5.67,
+                  "interval": 5.8500000000000005,
                   "telegraph": 1.2,
-                  "radius": 75,
-                  "duration": 3,
+                  "radius": 60,
+                  "duration": 2.2,
                   "slow": 0.35,
                   "comboOffsetSeconds": 0
-                },
-                {
-                  "kind": "lanes",
-                  "count": 7,
-                  "speed": 150,
-                  "damage": 10,
-                  "interval": 7.65,
-                  "telegraph": 1.1,
-                  "arc": 65,
-                  "comboOffsetSeconds": 0
                 }
-              ]
+              ],
+              "signatureRepeatOffsetSeconds": 0
             },
             {
               "healthThreshold": 0.5,
               "accordBreak": true,
-              "signatureRepeatOffsetSeconds": 0,
               "attacks": [
                 {
-                  "kind": "fan",
-                  "count": 11,
-                  "speed": 186,
+                  "kind": "ring",
+                  "count": 22,
+                  "speed": 150,
                   "damage": 12,
-                  "interval": 2.3040000000000003,
-                  "telegraph": 0.85,
-                  "arc": 90,
+                  "interval": 3.9600000000000004,
+                  "telegraph": 1.15,
+                  "gap": 95,
                   "comboOffsetSeconds": 0
                 },
                 {
                   "kind": "zone",
-                  "count": 6,
+                  "count": 3,
                   "speed": 0,
                   "damage": 10,
-                  "interval": 5.04,
-                  "telegraph": 1.2,
-                  "radius": 75,
-                  "duration": 3,
+                  "interval": 5.58,
+                  "telegraph": 1.4,
+                  "radius": 60,
+                  "duration": 2,
                   "slow": 0.35,
                   "comboOffsetSeconds": 0
-                },
-                {
-                  "kind": "ring",
-                  "count": 18,
-                  "speed": 130,
-                  "damage": 10,
-                  "interval": 7.38,
-                  "telegraph": 1.25,
-                  "gap": 70,
-                  "comboOffsetSeconds": 0
                 }
-              ]
+              ],
+              "signatureRepeatOffsetSeconds": 0
             },
             {
               "healthThreshold": 0.25,
@@ -10783,35 +10753,26 @@
               "signatureRepeatOffsetSeconds": 1.25,
               "attacks": [
                 {
-                  "kind": "lanes",
-                  "count": 9,
-                  "speed": 160,
-                  "damage": 12,
-                  "interval": 7.5,
-                  "telegraph": 1.1,
-                  "arc": 70,
-                  "comboOffsetSeconds": 0
-                },
-                {
                   "kind": "ring",
-                  "count": 22,
-                  "speed": 145,
-                  "damage": 11,
-                  "interval": 9,
-                  "telegraph": 1.25,
-                  "gap": 65,
-                  "comboOffsetSeconds": 1.25
+                  "count": 26,
+                  "speed": 165,
+                  "damage": 12,
+                  "interval": 4.1,
+                  "telegraph": 1.15,
+                  "gap": 85,
+                  "comboOffsetSeconds": 0
                 },
                 {
                   "kind": "zone",
                   "count": 4,
                   "speed": 0,
                   "damage": 10,
-                  "interval": 8.5,
+                  "interval": 6,
                   "telegraph": 1.4,
-                  "radius": 75,
-                  "duration": 3,
-                  "comboOffsetSeconds": 2.5
+                  "radius": 60,
+                  "duration": 2,
+                  "slow": 0.35,
+                  "comboOffsetSeconds": 1.25
                 }
               ]
             }

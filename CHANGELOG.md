@@ -1,6 +1,22 @@
 # Changelog
 
-Development build **2026.10.25-fixed-threats**, protocol 14. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.25-constable-patrol**, protocol 14. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-25 — Hollow Constable patrol, crossing cordons and moving lockdown
+
+### Different phases and counterplay
+
+- Patrol shuffles between two locked aimed volleys. Cordon fires crossing fans from two flanks. Lockdown pursues between staggered gapped rings, with a shared escape wedge. Brutal adds a third ring in Curfew.
+- Warnings lock origin and aim when created. Each delayed volley is warned from the start; casting plants the feet through the final release and recovery. Spaced arrest stamps replace overlapping random disks.
+- Phase changes clear outgoing volleys, arrest fields and stale cast poses. Successful Accords interrupt pending attacks and keep their full stagger window. The HUD names all four Constable phases in fifteen languages.
+- The Constable keeps his fixed 1+ rating, with B reserved for Brutal. This is a quality pass on an existing identity; the roster remains 60.
+
+### Motion and evidence
+
+- Four complete shuffling poses use one upright-calibrated scale and the original world anchor. All 27 earlier Constable poses and their native sources remain intact. Movement observation holds between position updates rather than flashing idle.
+- Eleven new regressions cover actual phase emissions, escape geometry, real arrest damage, map collision, warning locks, phase cleanup, motion timing, exact art reconstruction locale coverage and bounded save migration. Rendered and human balance review remain open.
+- The Wiki removes an older contradictory variable-rating/Brutal-plus introduction and shows current fixed grades throughout the boss tables.
+- Local boundaries from the issued pre-patrol content revision migrate without losing run identity, coins, upgrades or history. Current-version threat cards still receive strict validation; unknown revisions and online records are rejected.
 
 ## 2026-10-25 — Fixed boss ratings, five subtiers and a separate Brutal marker
 
