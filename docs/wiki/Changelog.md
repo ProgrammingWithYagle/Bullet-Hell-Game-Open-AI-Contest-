@@ -1,6 +1,20 @@
 # Changelog
 
-Development build **2026.10.25-constable-patrol**, protocol 14. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.25-boss-practice**, protocol 14. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-25 — Choose Standard or Brutal for the first solo boss
+
+### Direct boss testing
+
+- The final solo setup review now has a Boss form selector: Standard form or Brutal. The opening-boss list shows the matching fixed grade and B marker.
+- Global difficulty remains a separate selection. Boss form applies to the first encounter; later contracts follow their usual progression. Any implemented class or map can be used.
+- A useful comparison is Soldier, Quarantine Run, Gatehouse and Normal difficulty, with Hollow Constable selected on the review screen. Compare Standard form against Brutal while keeping those other choices the same.
+
+### Authority and verification
+
+- Offline startup uses the existing validated boundary path for the chosen variant. Saved boundaries preserve the selected form. Online room creation excludes this local Practice option.
+- Five new regressions cover all seven classes across all six maps, actual offline-worker message startup, invalid options, boundary restore, subsequent contracts, real online room creation and fifteen-locale accessible controls.
+- Rendered controls, physical devices, native-language review and human Normal/Brutal balance comparison remain open.
 
 ## 2026-10-25 — Hollow Constable patrol, crossing cordons and moving lockdown
 

@@ -1,3 +1,4 @@
+import { practiceVariantMarkup } from './practice-variant.ts';
 import { desktopBridge } from '../desktop.ts';
 import { mountLan, desktopText } from './lan.ts';
 import { mountProfile } from './profile.ts';
@@ -37,6 +38,7 @@ let selected: ConnectionOptions = {
   mode: 'short',
   difficulty: 'normal',
   openingBossId: 'constable',
+  practiceVariant: 'normal',
 };
 let arenaId = 'gatehouse',
   visibility: 'offline' | 'public' | 'private' = 'offline';
@@ -112,7 +114,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks) {
     if (page === 'difficulty')
       content.innerHTML = `<div class="setup-heading"><h1>${e(t(labels[page]))}</h1></div><div class="difficulty-cards">${data.difficulties.map((d, i) => `<button data-difficulty="${d.id}" class="difficulty-pick ${d.id === selected.difficulty ? 'selected' : ''}" ${!difficultyAvailable(d.id) ? 'disabled' : ''} aria-pressed="${d.id === selected.difficulty}"><span class="difficulty-bells">${Array.from({ length: i + 1 }, () => icon('bell')).join('')}</span><h2>${e(t('difficulty.' + d.id))}</h2><span>${e(t('stat.health'))} ×${number(d.health, 2)}</span><span>${e(t('stat.damage'))} ×${number(d.damage, 2)}</span><span>${e(t('stat.bossSpeed'))} ×${number(d.speed, 2)}</span>${!difficultyAvailable(d.id) ? `<small>${e(t('ui.hardUnlock'))}</small>` : ''}</button>`).join('')}</div>${navigation(false)}`;
     if (page === 'review')
-      content.innerHTML = `<div class="setup-heading"><h1>${e(t(labels[page]))}</h1></div><div class="review-composition"><div class="review-portrait">${portrait(selected.classId)}</div><section><h2>${e(t('class.' + selected.classId + '.name'))} · ${e(t('mode.' + selected.mode + '.name'))}</h2><p>${e(t('arena.' + arenaId + '.name'))} · ${e(t('difficulty.' + selected.difficulty))}</p>${selected.serverEndpoint ? `<p class="prototype-note">${e(desktopText('target'))}: <bdi>${e(selected.serverEndpoint)}</bdi></p>` : ''}<label class="name-label">${e(t('ui.boss'))}<select id="opening-boss">${implementedBossIds.map((id) => `<option value="${id}" ${id === selected.openingBossId ? 'selected' : ''}>${e(t('boss.' + id + '.name'))} · ${e(bossClassification(id))}</option>`).join('')}</select></label><label class="name-label">${e(t('ui.displayName'))}<input id="name" value="${e(selected.name)}" maxlength="24" autocomplete="nickname"></label><div class="connection-choices" role="group" aria-label="${e(t('ui.roomSettings'))}">${[
+      content.innerHTML = `<div class="setup-heading"><h1>${e(t(labels[page]))}</h1></div><div class="review-composition"><div class="review-portrait">${portrait(selected.classId)}</div><section><h2>${e(t('class.' + selected.classId + '.name'))} · ${e(t('mode.' + selected.mode + '.name'))}</h2><p>${e(t('arena.' + arenaId + '.name'))} · ${e(t('difficulty.' + selected.difficulty))}</p>${selected.serverEndpoint ? `<p class="prototype-note">${e(desktopText('target'))}: <bdi>${e(selected.serverEndpoint)}</bdi></p>` : ''}<label class="name-label">${e(t('ui.boss'))}<select id="opening-boss">${implementedBossIds.map((id) => `<option value="${id}" ${id === selected.openingBossId ? 'selected' : ''}>${e(t('boss.' + id + '.name'))} · ${e(bossClassification(id, visibility === 'offline' ? selected.practiceVariant : 'normal'))}</option>`).join('')}</select></label>${visibility === 'offline' ? practiceVariantMarkup(locale, selected.practiceVariant ?? 'normal', t('ui.variantNormal'), t('ui.variantBrutal')) : ''}<label class="name-label">${e(t('ui.displayName'))}<input id="name" value="${e(selected.name)}" maxlength="24" autocomplete="nickname"></label><div class="connection-choices" role="group" aria-label="${e(t('ui.roomSettings'))}">${[
         ['offline', 'ui.solo', 'soldier'],
         ['public', 'ui.publicRooms', 'rescue'],
         ['private', 'ui.privateRoom', 'lock'],
@@ -205,6 +207,16 @@ export function mountSetup(host: HTMLElement, hooks: Hooks) {
     if (openingBoss)
       openingBoss.onchange = () => {
         selected.openingBossId = openingBoss.value as BossId;
+      };
+    const practiceVariant = host.querySelector<HTMLSelectElement>('#practice-variant');
+    if (practiceVariant)
+      practiceVariant.onchange = () => {
+        selected.practiceVariant = practiceVariant.value === 'brutal' ? 'brutal' : 'normal';
+        for (const option of openingBoss?.options ?? [])
+          option.textContent =
+            t('boss.' + option.value + '.name') +
+            ' · ' +
+            bossClassification(option.value, selected.practiceVariant);
       };
     byId('launch', () => {
       selected.name = host.querySelector<HTMLInputElement>('#name')!.value.trim() || 'Survivor';

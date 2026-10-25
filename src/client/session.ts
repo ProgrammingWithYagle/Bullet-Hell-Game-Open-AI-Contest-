@@ -25,6 +25,7 @@ export type ConnectionOptions = {
   difficulty: string;
   openingBossId?: BossId;
   openingArenaId?: string;
+  practiceVariant?: 'normal' | 'brutal';
 };
 export type RoomSummary = {
   roomId: string;
@@ -116,7 +117,11 @@ export class Session {
       if (!response.ok) throw Error(response.status === 429 ? 'ui.errorRate' : 'ui.errorCode');
       roomId = ((await response.json()) as { roomId: string }).roomId;
     }
-    const { serverEndpoint: _endpoint, ...roomOptions } = options;
+    const {
+      serverEndpoint: _endpoint,
+      practiceVariant: _practiceVariant,
+      ...roomOptions
+    } = options;
     const settings = {
       ...roomOptions,
       contentRevision: CONTENT_REVISION,

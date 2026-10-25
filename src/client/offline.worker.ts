@@ -1,3 +1,4 @@
+import { createPracticeGame } from '../shared/practice-start.ts';
 import { Game, type Settings } from '../shared/game.ts';
 import { viewOf } from '../shared/view.ts';
 import type { ClassId } from '../shared/protocol.ts';
@@ -39,8 +40,18 @@ self.onmessage = (e: MessageEvent) => {
     }
   }
   if (m.type === 'init') {
-    game = new Game(m.settings as Settings);
-    game.addPlayer('solo', m.name, m.classId as ClassId);
+    try {
+      game = createPracticeGame(
+        m.settings as Settings,
+        m.name,
+        m.classId as ClassId,
+        m.practiceVariant,
+      );
+    } catch {
+      game = null;
+      postMessage({ type: 'error', key: 'ui.errorServer' });
+      return;
+    }
     paused = false;
     last = performance.now();
     accumulator = 0;

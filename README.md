@@ -1,6 +1,6 @@
 # Grave Accord
 
-A cooperative gothic bullet-hell game in active development. Current feature branch: build **2026.10.25-constable-patrol**, protocol **14**, 60 distinct executable bosses with individual original themes, seven classes, 378 skills, 28 weapons and six different map layouts/sizes.
+A cooperative gothic bullet-hell game in active development. Current feature branch: build **2026.10.25-boss-practice**, protocol **14**, 60 distinct executable bosses with individual original themes, seven classes, 378 skills, 28 weapons and six different map layouts/sizes.
 
 All sixty identities execute, including nine scheduled Endless exclusives and the optional Uncounted finale. Five modes work offline and in local online rooms: five-fight Quarantine Run, ten-fight Midnight Circuit, sixteen-fight Black Bell Pilgrimage, three-fight Grand Raid and uncapped Endless Vigil. The in-game main menu has a dated changelog generated from the same history as [CHANGELOG.md](CHANGELOG.md) and the [GitHub Wiki changelog](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/wiki/Changelog).
 
@@ -19,3 +19,5 @@ The [Wiki](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Cont
 The source includes a sandboxed Electron 45 app and explicit LAN host/join menu. After `pnpm verify`, run `pnpm desktop:build` on Windows to produce a new portable folder under `release/`. The app bundles its own runtime and assets; offline solo requires no Node or network. LAN uses a separate authority only after Host is selected. [Desktop build and validation](docs/WINDOWS_DESKTOP.md). Issued artifact links and extraction/copy evidence are maintained separately from the protected-main release boundary.
 
 Hollow Constable now patrols between distinct double-volley, crossing-cordon and gapped-ring phases, with four new shuffling poses and named phase labels. [Behavior and evidence](docs/CONSTABLE_PATROL.md). This is the first qualitative boss-pressure pass; human balance review remains open.
+
+Solo setup now includes a **Boss form** selector for direct Standard/Brutal opener comparisons. [Exact playtest steps](docs/BOSS_PRACTICE.md).
