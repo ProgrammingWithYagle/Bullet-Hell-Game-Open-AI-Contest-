@@ -61,3 +61,15 @@ reviews/boss-practice-2026-10-25/*.log -text -whitespace
 
 reviews/phase-feedback-2026-10-25/*.log -text -whitespace
 assets/production/generated/early-watch-concepts-2026-10-25/*.request.json -text -whitespace
+
+# Preserve exact preproduction requests and issued preparation records.
+assets/production/generated/early-watch-motion-2026-10-25/requests/*.request.json -text -whitespace
+assets/production/generated/early-watch-motion-2026-10-25/*.issued.json -text -whitespace
+reviews/early-watch-motion-2026-10-25/*.log -text -whitespace
+
+# Byte-preserved checkpoint copies and partial packing history.
+assets/production/generated/early-watch-motion-2026-10-25/** -text -whitespace
+reviews/early-watch-motion-2026-10-25/** -text -whitespace
+docs/history/2026-10-25-checkpoint-cleanup/** -text -whitespace
+
+START_NEXT_CHAT.txt text eol=lf

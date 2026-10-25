@@ -1,5 +1,7 @@
 # Mage directional action production
 
+> Dated subsystem record: counts, source hashes and test totals below describe this page's recorded stage. For the current game and remaining work, use [implementation state](IMPLEMENTATION_STATE.md), [development progress](DEVELOPMENT_PROGRESS.md) and the [continuation checkpoint](CHECKPOINT_2026_10_25.md). Current [fixed-grade rules](FIXED_BOSS_THREATS.md) supersede older encounter-scaled ratings and the old Brutal-plus label.
+
 Current development build `2026.10.24-mage-actions`, protocol 13. Twenty complete Mage clips add 88 selected poses: idle, primary staff cast, hurt, directional dodge and downed in four independent facings. The existing 32 run poses remain separate. Tank and Mage each have 120 selected poses across the six action families; the Engineer has 116 because only four north run poses are accepted; selected production motion now totals 967 poses. Four other survivor action libraries and many boss action sets remain incomplete.
 
 The approved identity remains `assets/production/survivors/mage/four-view-v2.png` and its exact normalized facing seeds: indigo layered robe/cape, asymmetrical black haircut, a rigid brass sun-wheel staff in the physical left hand and a closed book tethered at the right hip. All action sheets use restrained ink and matte gouache without baked-in projectile or magic effects. Native, 56-pixel and 112-pixel contacts were inspected. These are assistant art candidates; rendered transitions, human animation acceptance and physical-device review remain open.

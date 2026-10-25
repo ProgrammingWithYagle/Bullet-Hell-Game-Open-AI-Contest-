@@ -1,5 +1,7 @@
 # Grave Accord — audio bible
 
+> Dated subsystem record: counts, source hashes and test totals below describe this page's recorded stage. For the current game and remaining work, use [implementation state](IMPLEMENTATION_STATE.md), [development progress](DEVELOPMENT_PROGRESS.md) and the [continuation checkpoint](CHECKPOINT_2026_10_25.md). Current [fixed-grade rules](FIXED_BOSS_THREATS.md) supersede older encounter-scaled ratings and the old Brutal-plus label.
+
 Edition 0.1.0 · Stage 1 original composition and sound design · 2026-10-22
 
 ## Delivered audio and evidence

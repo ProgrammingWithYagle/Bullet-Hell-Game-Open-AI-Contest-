@@ -12,6 +12,7 @@ Updated 2026-10-25 for **2026.10.25-brutal-signals**. These counts track specifi
 | Optional large branching skill-tree view | 0 / 1 | 1 | Requested settings toggle remains open; current classic view is retained. |
 | Secondary-map topology revamps | 5 / 5 | 0 | Five different layouts installed and collision/reachability checked. Detailed new-layout human acceptance remains open. |
 | Map ground-art deliveries | 6 / 6 | 0 | Six ground deliveries installed. Limited Normal/Constable readability feedback is positive. |
+| Early Watch art-only motion candidate sets | 1 / 3 | 2 | Toad has twelve technically normalized candidates; Usher/Kite sheets are unexecuted. All three encounters, music and rendered acceptance remain open. |
 
 ## Latest human feedback
 

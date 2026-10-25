@@ -23,3 +23,5 @@ Hollow Constable now patrols between distinct double-volley, crossing-cordon and
 Solo setup now includes a **Boss form** selector for direct Standard/Brutal opener comparisons. [Exact playtest steps](docs/BOSS_PRACTICE.md).
 
 [Current development progress](docs/DEVELOPMENT_PROGRESS.md) tracks boss additions, quality passes, class ability revamps, branching-tree work, map implementation and separate review gates. [Phase/Brutal feedback and musical intensity](docs/PHASE_AND_BRUTAL_FEEDBACK.md) describes the latest changes.
+
+Start a continuation with [the current checkpoint](docs/CHECKPOINT_2026_10_25.md) and `START_NEXT_CHAT.txt`. Three Early Watch concepts and twelve Toad motion candidates are preserved as art-only work; no additional boss is playable yet. Superseded handoffs/state/acceptance records are retained in dated history.

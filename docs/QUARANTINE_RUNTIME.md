@@ -1,5 +1,7 @@
 # Quarantine route and civic encounters
 
+> Dated subsystem record: counts, source hashes and test totals below describe this page's recorded stage. For the current game and remaining work, use [implementation state](IMPLEMENTATION_STATE.md), [development progress](DEVELOPMENT_PROGRESS.md) and the [continuation checkpoint](CHECKPOINT_2026_10_25.md). Current [fixed-grade rules](FIXED_BOSS_THREATS.md) supersede older encounter-scaled ratings and the old Brutal-plus label.
+
 This continuation makes nine boss identities playable. It adds The Tollkeeper, Chain Marshal, Gate Widow and Black Ambulance to Constable, Warden, Courier, Ratcatcher and Clerk. The short route selects uncleared regular bosses for its first four fights and an uncleared Quarantine finale for its fifth. Choosing a finale as the opening boss is an explicit rehearsal override; the fifth still selects a different finale. Concealed contract cards never expose their future identity.
 
 The Tollkeeper locks a two-segment wheel trajectory, including exactly one wall reflection. The wheel uses actual swept contact, retires after the second leg and never retargets during the tell. The Marshal has two independently breakable 90-HP anchors (180 Brutal), two 80-degree chain sweeps, visible sector tells and contact cooldowns. Damage to an anchor credits actual damage and cannot also hit the boss. Breaking one leaves the other active.

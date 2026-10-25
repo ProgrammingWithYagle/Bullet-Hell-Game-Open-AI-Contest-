@@ -1,5 +1,7 @@
 # Five new arena ground paintings
 
+> Dated subsystem record: counts, source hashes and test totals below describe this page's recorded stage. For the current game and remaining work, use [implementation state](IMPLEMENTATION_STATE.md), [development progress](DEVELOPMENT_PROGRESS.md) and the [continuation checkpoint](CHECKPOINT_2026_10_25.md). Current [fixed-grade rules](FIXED_BOSS_THREATS.md) supersede older encounter-scaled ratings and the old Brutal-plus label.
+
 Build `2026.10.25-arena-grounds`, protocol 13. All six maps now have painted ground. The existing Gatehouse painting stays byte-identical; five new opaque floor paintings replace the other maps' plain fills and repeated line grids. The live scene and setup map previews use these materials at the existing playable footprints. Cover props, cover outlines, boss/player spawns and collision are unchanged.
 
 | Arena | Existing playable dimensions | Ground identity |

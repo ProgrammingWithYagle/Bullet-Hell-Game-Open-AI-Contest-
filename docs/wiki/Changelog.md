@@ -2,6 +2,20 @@
 
 Development build **2026.10.25-brutal-signals**, protocol 14. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
 
+## 2026-10-25 — Art-only Toad motion checkpoint and current continuation guides
+
+### Production and provenance
+
+- Preserved four exact Brass Toad motion returns, selecting twelve complete idle/hop/defeat candidates. The first hop was rejected for tight padding; actual clipping was not established. No new encounter or theme is playable yet.
+- One upright-calibrated scale per clip and a shared readable anchor retain all faint edge pixels. An independent verifier reconstructs connected figure ownership, all alpha-bearing RGBA and the final candidate atlas. Wider art-only cells are outside the runtime index.
+- Six Ashen Usher/Kite requests remain prepared and unexecuted. The playable roster stays 60 and the ordinary-boss deficit stays 91; the twelve candidates do not increase the 1,466 runtime pose total.
+
+### Current documentation and handoff
+
+- Replaced stale protocol-6/five-boss continuation instructions and old implementation/acceptance pages with the current checkpoint. Exact old copies and partial packing evidence remain in dated history.
+- Updated the 150-ordinary-boss target, class upgrade/tree work and historical guide labels. The shared progress ledger now also records the Toad art-only candidate set, with Usher/Kite motion and all three encounters still open.
+- Added a twenty-seventh Wiki image and prepared an exact local/GitHub continuation handoff. The game, rendered/device acceptance and coordinated release remain unfinished.
+
 ## 2026-10-25 — Distinct Brutal sequences, clearer phases and a shared progress ledger
 
 ### Phase and variant identity

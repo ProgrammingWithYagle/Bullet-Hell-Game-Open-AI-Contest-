@@ -1,5 +1,7 @@
 # Endless Vigil and The Uncounted runtime
 
+> Dated subsystem record: counts, source hashes and test totals below describe this page's recorded stage. For the current game and remaining work, use [implementation state](IMPLEMENTATION_STATE.md), [development progress](DEVELOPMENT_PROGRESS.md) and the [continuation checkpoint](CHECKPOINT_2026_10_25.md). Current [fixed-grade rules](FIXED_BOSS_THREATS.md) supersede older encounter-scaled ratings and the old Brutal-plus label.
+
 Build 2026.10.24-endless-secret uses protocol 12. All sixty authored identities execute: fifty timed-route bosses, nine Endless exclusives and one optional secret. This is implementation coverage, not a claim of final animation, tuning, deadline/uptime, human or device acceptance.
 
 Endless guarantees three exclusive candidates for every fourth fight, beginning with fight four. The first three use readable opening candidates. Seeded route/exclusive bags retain unchosen candidates, exclude the last twelve completed identities and mark previously defeated selections Brutal. The Uncounted is never a random draw. History and bag state are bounded, validated and serialized. Purchased power remains capped at 27 SP and the standard nominal income budget.

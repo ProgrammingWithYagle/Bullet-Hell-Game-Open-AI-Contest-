@@ -1,5 +1,7 @@
 # Grand Raid runtime
 
+> Dated subsystem record: counts, source hashes and test totals below describe this page's recorded stage. For the current game and remaining work, use [implementation state](IMPLEMENTATION_STATE.md), [development progress](DEVELOPMENT_PROGRESS.md) and the [continuation checkpoint](CHECKPOINT_2026_10_25.md). Current [fixed-grade rules](FIXED_BOSS_THREATS.md) supersede older encounter-scaled ratings and the old Brutal-plus label.
+
 Build 2026.10.24-raid uses protocol 11. Seven Raid bosses bring the playable roster to 50. The route supports solo through sixteen players, two unique regulars and one reserved finale, threats 4/7/10, skill budgets 12/20/27, income budgets 600/1400/2400 and a 1.25 health multiplier. Maps rotate through Ossuary Works, Bell Foundry and Crown Crypt.
 
 - **Chain Colossus:** Break any 110-HP anchor pylon to stop the three-second pull and open four seconds of vulnerability. Outer lanes remain clear.

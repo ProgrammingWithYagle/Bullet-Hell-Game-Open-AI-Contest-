@@ -159,3 +159,11 @@ Four complete shuffling poses extend the unchanged 27-pose library. One upright-
 Ashen Usher, Brass Toad and Ragpicker's Kite are original concept references in production. They are not included in the 60 playable identities and do not reduce the 91-boss deficit. Exact generated natives and prompts are preserved; motion, distinct encounter implementation and individual themes remain to be completed.
 
 ![Three original Early Watch boss concepts, not yet playable](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/early-watch-concepts.jpg)
+
+## Brass Toad motion checkpoint — art only
+
+Twelve complete idle, hop and defeat candidates are technically normalized, with exact native/request preservation, connected-figure ownership and alpha-bearing RGBA/atlas reconstruction. The first tight hop sheet and partial packing attempts are retained. This static contact is not an engine capture; no Toad encounter, individual music or rendered acceptance is added. Usher/Kite motion requests remain unexecuted. The playable count is still 60, with 91 new ordinary bosses needed.
+
+![Brass Toad art-only motion candidates, not a playable encounter](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/brass-toad-motion-checkpoint.jpg)
+
+[Current continuation checkpoint](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/CHECKPOINT_2026_10_25.md) · [Exact motion provenance](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/early-watch-motion-checkpoint-2026-10-25.json).

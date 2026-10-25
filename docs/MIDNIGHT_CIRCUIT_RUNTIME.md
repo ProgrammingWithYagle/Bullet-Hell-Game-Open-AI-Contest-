@@ -1,5 +1,7 @@
 # Midnight Circuit — services of the dead
 
+> Dated subsystem record: counts, source hashes and test totals below describe this page's recorded stage. For the current game and remaining work, use [implementation state](IMPLEMENTATION_STATE.md), [development progress](DEVELOPMENT_PROGRESS.md) and the [continuation checkpoint](CHECKPOINT_2026_10_25.md). Current [fixed-grade rules](FIXED_BOSS_THREATS.md) supersede older encounter-scaled ratings and the old Brutal-plus label.
+
 The playable roster now contains 23 distinct bosses. Midnight Circuit adds fourteen identities in a separate pool: eleven regulars and three finales. A run completes nine different regular fights and a different route finale. Quarantine keeps its own disjoint nine-boss pool. Endless can draw all 23 implemented identities before repeats become Brutal. The larger Endless-exclusive schedule and the remaining 37 identities are still in development.
 
 All seven classes can play the ten-fight route locally and through authoritative Colyseus rooms. Skill income follows `3 + floor(24*j/9)` before fight `j+1`, reaching 27 before the finale. Base cumulative coin income reaches 2400 with the same total route budget as Quarantine. The authored ten-step threat and arena sequence now drive real encounters. Opening boss selection remains an explicit rehearsal override; ordinary contracts conceal future identities and reserve finales for the last vote.

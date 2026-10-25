@@ -1,5 +1,7 @@
 # Grave Accord production art — 2026-10-23
 
+> Dated subsystem record: counts, source hashes and test totals below describe this page's recorded stage. For the current game and remaining work, use [implementation state](IMPLEMENTATION_STATE.md), [development progress](DEVELOPMENT_PROGRESS.md) and the [continuation checkpoint](CHECKPOINT_2026_10_25.md). Current [fixed-grade rules](FIXED_BOSS_THREATS.md) supersede older encounter-scaled ratings and the old Brutal-plus label.
+
 This batch supplies five survivor turnarounds and three new individual boss pose studies: **20 directional views and nine boss poses**. They are accepted assistant-reviewed static references. They do not add playable classes, boss encounters or completed animations. Soldier/Medic and Hollow Constable remain the playable subset.
 
 The user explicitly prioritized art/concepts while the browser gate remains open. This is authorized production work, with no claim that performance, device or human gates passed. No further browser-permission investigation was performed after that direction.

@@ -1,0 +1,48 @@
+{
+  "stage": "Original early-watch boss expansion",
+  "status": "Design and art production only; not implemented or added to the current 60-boss count",
+  "sourceBase": "d68b10c14a4c5ab9e6695f76c24ac93fc1f12b11",
+  "ordinaryDeficitBefore": 91,
+  "bosses": [
+    {
+      "id": "ashen-usher",
+      "name": "Ashen Usher",
+      "level": 1,
+      "subtier": -2,
+      "lore": "Still seats visitors in a hall no one can find.",
+      "silhouette": "Tall, narrow, weathered theatre usher; one broad ticket rack is the sole prop.",
+      "signature": "Breakable ticket stands fire staggered, clearly warned aisle volleys; destroying the selected stand opens a reliable escape aisle.",
+      "phases": ["Seating: two alternating aisles", "Dismissal: crossing rows with an open aisle", "Final Call: walking usher and sweeping aisle pairs"],
+      "counterplay": "Read the aisle sequence, cross after a volley, or break the marked ticket stand to open a wider route."
+    },
+    {
+      "id": "brass-toad",
+      "name": "Brass Toad",
+      "level": 1,
+      "subtier": -1,
+      "lore": "The abandoned fountain learned to drink the rain.",
+      "silhouette": "Squat broad bronze fountain toad, four complete legs, one short pipe on its back; simple matte patina.",
+      "signature": "Locked, telegraphed hops land with real gapped ripple projectiles. Later phases add a second hop and a warned tongue lane; breaking the drain plug interrupts a jet.",
+      "phases": ["Drizzle: one hop and a ripple", "Downpour: two separated landings", "Dry Mouth: tongue lane and ripple pairs"],
+      "counterplay": "Leave the landing circle, cross the ripple gap, and sidestep the locked tongue lane; strike the drain plug for an interruption."
+    },
+    {
+      "id": "ragpicker-kite",
+      "name": "Ragpicker's Kite",
+      "level": 1,
+      "subtier": 0,
+      "lore": "Its tether still pulls above a deserted street.",
+      "silhouette": "One broad, weathered cloth kite shaped like a hunched bird; quiet stitched fabric masses and two readable pin tethers.",
+      "signature": "Floating orbit and warned wind corridors push survivors through bullet fans. Breakable cloth pins cut a corridor; server and prediction share the same bounded force.",
+      "phases": ["Draft: one wind corridor", "Crosswind: opposing corridors with a quiet center", "Unravelling: orbit, wind and staggered wing fans"],
+      "counterplay": "Follow corridor arrows, use the quiet lane or break a highlighted cloth pin to remove its wind."
+    }
+  ],
+  "requirements": [
+    "Fixed grades remain intrinsic across runs; Brutal is a separate B marker.",
+    "Each identity needs implemented distinct phases, movement or changing arena pressure, explicit telegraphs and actual counterplay.",
+    "Preserve exact requests and native outputs; only complete whole poses enter the packing pipeline.",
+    "Each boss receives an individual original theme and canonical Wiki/changelog coverage.",
+    "Roster becomes 63 only after all three are fully integrated and verified; ordinary deficit would then become 88."
+  ]
+}

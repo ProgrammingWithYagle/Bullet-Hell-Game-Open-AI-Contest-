@@ -1,5 +1,7 @@
 # Grave Accord - Stage 1 production bible
 
+> Current implementation/production authority: [state](IMPLEMENTATION_STATE.md), [progress](DEVELOPMENT_PROGRESS.md), [fixed threats](FIXED_BOSS_THREATS.md) and [continuation checkpoint](CHECKPOINT_2026_10_25.md). The expanded target is 150 ordinary bosses plus secrets; 60 are currently playable (59 ordinary, one secret). Earlier route tables below retain design history; shared fixed-grade campaign selection supersedes strict primary-route fences and encounter rerating.
+
 Edition 0.2.0 | 2026-10-22 | Expanded 60-boss design | Original cooperative gothic zombie bullet hell
 
 Status: design and preproduction. Balance values are explicit starting hypotheses. Gameplay, performance and human playtesting are not yet verified.
@@ -609,7 +611,7 @@ Expanded roster: 60 distinct identities, comprising fifty route-specific bosses 
 
 Threat labels: 1 Normal; 2 Aberrant; 3 Predator; 4 Brute; 5 Scourge; 6 Dread; 7 Disaster; 8 Catastrophe; 9 Cataclysm; 10 Calamity; 11 The Uncounted (secret classification above ten). Threat and selected difficulty are independent.
 
-Initial health formula: 1800 * 1.22^(threat-1) * (timer/120) * archetypeHealthFactor * (1 + 0.7*(roster-1)) * difficultyHealth * activeMutationHealth. Secret uses threat 10 health growth plus its authored health factor. Raid multiplies health by 1.25. This couples health to the encounter time budget without making longer timers synonymous with greater threat. Check all role builds against actual damage uptime before accepting the tuning.
+Current fixed-grade health starts with 1800 * 1.22^(min(level,10)-1) * (1 + 0.08*subtier) * (timer/120) * archetypeHealthFactor, then applies party, difficulty, mutation and mode/form/cycle modifiers. Use the shared runtime helper and [fixed-threat specification](FIXED_BOSS_THREATS.md) for exact rules. Secret uses threat 10 health growth plus its authored health factor. Raid multiplies health by 1.25. This couples health to the encounter time budget without making longer timers synonymous with greater threat. Check all role builds against actual damage uptime before accepting the tuning.
 
 The editable uptime-model.csv is an analytical feasibility check across every campaign/class/difficulty/fight/legal boss combination. It assumes 65% movement-and-aim uptime, 70% pellet hits for multi-pellet weapons, worst-phase armor duty cycle and affordable legal offensive builds. It excludes Q/E damage, ultimates, mutations and Accord Break bonuses. Passing this model is a preproduction calculation, not observed combat balance; measured attack uptime and human pacing remain gameplay gates.
 

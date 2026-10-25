@@ -1,0 +1,21 @@
+# Quarantine route and civic encounters
+
+This continuation makes nine boss identities playable. It adds The Tollkeeper, Chain Marshal, Gate Widow and Black Ambulance to Constable, Warden, Courier, Ratcatcher and Clerk. The short route selects uncleared regular bosses for its first four fights and an uncleared Quarantine finale for its fifth. Choosing a finale as the opening boss is an explicit rehearsal override; the fifth still selects a different finale. Concealed contract cards never expose their future identity.
+
+The Tollkeeper locks a two-segment wheel trajectory, including exactly one wall reflection. The wheel uses actual swept contact, retires after the second leg and never retargets during the tell. The Marshal has two independently breakable 90-HP anchors (180 Brutal), two 80-degree chain sweeps, visible sector tells and contact cooldowns. Damage to an anchor credits actual damage and cannot also hit the boss. Breaking one leaves the other active.
+
+The Widow marks three shutters, closes two for 3.5 seconds and rotates the open one on successive casts. Active shutters block players and projectiles, permit a clear open passage and eject a survivor caught inside newly solid geometry to the nearest clear side. Prediction uses the identical gate rectangles and ejection rule. The Ambulance patrols perimeter stations, stops for a locked charge tell, charges with swept contact, then exposes its driver for three seconds. That recovery grants an actual 25% damage bonus. It does not leave the Courier's trail.
+
+All four use three Normal/four Brutal phases, double Brutal health/damage, extended deadlines and the established Accord, rewards, voting, shops, saves and multiplayer authority. Phase changes and Accord cancel the relevant hazards; victory and timeout clear them. New hook attacks are narrow volleys and pulses are gapped rings rather than fallback circular pools.
+
+All six authored arena collision layouts are connected. Setup chooses the actual opening arena; following encounters use the route's arena sequence, including Endless rotation. This is a functional layout connection. Five non-Gatehouse arena presentations still use drawn geometry and need their final environment art and fuller layout production.
+
+Four new eight-pose native action sheets and one standalone wheel prop are preserved under assets/production/generated/quarantine-2026-10-23. Exact built-in imagegen requests are in docs/quarantine-art-2026-10-23.json. Packing only crops, uniformly resizes and pads the original RGBA; it does not paint, remove backgrounds or manufacture poses. Independent reconstruction/pixel/hash/padding checks cover all 32 frames and the prop. Native review and size proofs are assistant evidence; full directional/hurt/death motion, engine transitions and human/device acceptance remain open.
+
+Nine bosses now have individually scored original themes. New music: Copper Debt (94 BPM, 4/4 prepared keys and bronze answer), Iron Jurisdiction (88 BPM, 6/4 low brass and toms), Third Latch (66 BPM, 3/4 reed funeral waltz), and Last Carriage (156 BPM, 6/8 gallop, 32 bars). All scores, deterministic synthesis and PCM masters are editable. PCM/clipping/DC/mono/loop checks pass. Human listening and perceived mix remain open.
+
+Protocol 7 adds these identities and the arena view. Bounded local protocol-4/5/6 Practice boundaries migrate; signed online boundaries and obsolete clients remain strictly versioned. Normal runtime recovery/rankings remain disabled or unfinished as previously documented. Public hosting remains the earlier protocol-4 Site; a source push does not redeploy that account's Site.
+
+Validation: 133 rules, WebSocket, HTTP and SQL tests; strict TypeScript; authored-content and fifteen-catalog checks; production build. The new tests cover locked/reflected wheel geometry, moving-body contact, independently broken anchors, gate collision/prediction, the timed driver window, every new phase/variant, route/finale uniqueness, real network cues and local-save migration. Prior failed attempts remain in the development history. No new fifty-player/rendered/WAN/endurance performance claim is made.
+
+Next work continues with the other four class kits, their item/motion art, expanded arena presentation and remaining route/boss content. This checkpoint is not a complete-game claim.

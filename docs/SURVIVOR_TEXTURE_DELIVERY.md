@@ -1,5 +1,7 @@
 # Survivor texture delivery
 
+> Dated subsystem record: counts, source hashes and test totals below describe this page's recorded stage. For the current game and remaining work, use [implementation state](IMPLEMENTATION_STATE.md), [development progress](DEVELOPMENT_PROGRESS.md) and the [continuation checkpoint](CHECKPOINT_2026_10_25.md). Current [fixed-grade rules](FIXED_BOSS_THREATS.md) supersede older encounter-scaled ratings and the old Brutal-plus label.
+
 Development build `2026.10.25-survivor-delivery`, protocol 13. The game now loads smaller technical copies of the **168 survivor action/run atlases**, containing the same **820 selected poses**. Full production atlases, generated natives, exact requests, source hashes and original-resolution review paths remain unchanged. No character is redrawn, mirrored, cropped within a pose, sharpened or recolored.
 
 | Survivor animation set | Original production files | Runtime delivery copies |

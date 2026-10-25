@@ -12,8 +12,10 @@ Gameplay belongs in shared simulation modules. Keep Phaser and DOM presentation 
 
 Add concrete dated changes to `src/shared/update-history.json`, newest first. Update its playable snapshot when content changes. That file drives the in-game journal. Run `node tools/sync-changelog.mjs` to regenerate `CHANGELOG.md` and `docs/wiki/Changelog.md`; `--check` detects drift. Editorial notes are explicitly English; navigation follows the selected language.
 
-Keep all fifteen canonical Wiki pages in `docs/wiki/` consistent with the actual source. Mark planned systems clearly and preserve the older public playtest's deployment distinction. The native Wiki is a separate Git repository; publication must copy the reviewed canonical pages, push the authorized Wiki branch and verify committed text against all published blobs. A source PR alone does not publish the Wiki.
+Keep all eighteen canonical Wiki pages in `docs/wiki/` consistent with the actual source. Mark planned systems clearly and preserve the older public playtest's deployment distinction. The native Wiki is a separate Git repository; publication must copy the reviewed canonical pages, push the authorized Wiki branch and verify committed text against all published blobs. A source PR alone does not publish the Wiki.
 
 Preserve exact image/audio provenance, originals, rejected versions and license notices. Avoid rewriting sealed production history or representing technical normalization as newly drawn art. Document remaining acceptance work candidly.
 
 [Acceptance backlog](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/IMPLEMENTATION_BACKLOG.md) · [Architecture](Architecture) · [Credits](Credits)
+
+For a new chat, begin with the [current checkpoint](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/CHECKPOINT_2026_10_25.md). Preserve dated histories and exact issued art; current counts belong in the shared progress ledger.

@@ -1,5 +1,7 @@
 # Courier motion and survivor animation continuity
 
+> Dated subsystem record: counts, source hashes and test totals below describe this page's recorded stage. For the current game and remaining work, use [implementation state](IMPLEMENTATION_STATE.md), [development progress](DEVELOPMENT_PROGRESS.md) and the [continuation checkpoint](CHECKPOINT_2026_10_25.md). Current [fixed-grade rules](FIXED_BOSS_THREATS.md) supersede older encounter-scaled ratings and the old Brutal-plus label.
+
 Build `2026.10.25-motion-continuity`, protocol 13. Carrion Courier gains twelve complete idle, hit-recoil and Accord-stagger poses from three actual built-in whole-strip returns. Its original eight charge/action poses and eight defeat poses remain pixel-for-pixel unchanged. A single 384-pixel-cell, 28-frame atlas preserves the previous origin and world size. Exact prompts, complete natives, input references and independent reconstruction are preserved in the production/review folders.
 
 Defeat has highest priority and retains its world-clock one-shot. A successful four-second Accord plays one upright stagger entry, then only three weak poses loop until the authoritative end. Actual charge cues take priority over hit recoil; drawing lead cannot show release before the cue tick. Hurt completes four poses at twelve fps; breathing loops four poses at four fps. Reduced motion holds readable states. Original charge mechanics, damage and rewards are unchanged.

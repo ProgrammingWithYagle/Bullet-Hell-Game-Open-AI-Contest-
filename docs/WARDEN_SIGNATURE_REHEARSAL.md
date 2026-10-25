@@ -1,5 +1,7 @@
 # Lantern Warden signature rehearsal and additional motion
 
+> Dated subsystem record: counts, source hashes and test totals below describe this page's recorded stage. For the current game and remaining work, use [implementation state](IMPLEMENTATION_STATE.md), [development progress](DEVELOPMENT_PROGRESS.md) and the [continuation checkpoint](CHECKPOINT_2026_10_25.md). Current [fixed-grade rules](FIXED_BOSS_THREATS.md) supersede older encounter-scaled ratings and the old Brutal-plus label.
+
 **Current continuation:** [WARDEN_AND_HEAVY_RUNTIME.md](WARDEN_AND_HEAVY_RUNTIME.md) integrates the actual Warden encounter and playable Heavy, protocol 5, 59 drawn motion frames, exact-value binary projectile batches and 108 passing tests. Earlier rehearsal-only/two-class statements below are dated history. The public deployment remains protocol 4. Final rendered/device/human review remains open.
 
 2026-10-23 continuation in the same local project and `feat/first-playable-loop`, starting from clean source `7d308ac`. Local files, the latest art checkpoint and GitHub draft PR 14 were checked before changes. The baseline passed 74 tests, content checks, strict TypeScript and the production build. This checkpoint advances S2-08 and the Warden signature foundation; those acceptance rows remain open.

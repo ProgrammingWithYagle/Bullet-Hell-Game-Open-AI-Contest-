@@ -1,5 +1,7 @@
 # Heavy and Assassin directional actions
 
+> Dated subsystem record: counts, source hashes and test totals below describe this page's recorded stage. For the current game and remaining work, use [implementation state](IMPLEMENTATION_STATE.md), [development progress](DEVELOPMENT_PROGRESS.md) and the [continuation checkpoint](CHECKPOINT_2026_10_25.md). Current [fixed-grade rules](FIXED_BOSS_THREATS.md) supersede older encounter-scaled ratings and the old Brutal-plus label.
+
 Development build `2026.10.24-heavy-assassin-actions`, protocol 13. Heavy and Assassin each gain twenty clips and 88 new poses: idle, primary firearm attack, hurt, dodge and downed in four independent directions. Each keeps 32 existing run poses, giving 120 per class. Five classes now have all six action families drawn; Soldier and Medic still need action libraries and independent side runs. Selected production motion totals 1,143 poses. Rendered transitions and human/device acceptance remain open.
 
 Heavy retains his beard, mustard coat, physical left-shoulder to right-waist bandolier and single rotary firearm held by the right trigger hand and left forward cradle hand. Assassin retains his black hair, red face scarf, torn rust cape and single brass carbine held right at the trigger and left at the fore-end. Matte ink/gouache sheets avoid baked-in projectiles and effects. Native sheets and 56/112-pixel contacts were inspected as assistant art candidates.

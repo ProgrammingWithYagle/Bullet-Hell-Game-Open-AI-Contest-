@@ -1,5 +1,7 @@
 # Hollow Constable motion and cast timing
 
+> Dated subsystem record: counts, source hashes and test totals below describe this page's recorded stage. For the current game and remaining work, use [implementation state](IMPLEMENTATION_STATE.md), [development progress](DEVELOPMENT_PROGRESS.md) and the [continuation checkpoint](CHECKPOINT_2026_10_25.md). Current [fixed-grade rules](FIXED_BOSS_THREATS.md) supersede older encounter-scaled ratings and the old Brutal-plus label.
+
 Build `2026.10.25-constable-motion`, protocol 13. Hollow Constable now has idle, attack, hurt, stagger and defeat presentation. Nineteen new complete poses come from four whole-sheet returns: four idle, three hurt, four stagger and eight collapse poses. The eight-frame original attack atlas and metadata remain byte-identical. Current production contains 1,386 selected poses; the seven survivors retain their existing 820.
 
 | State | Frames | Timing | Runtime choice |

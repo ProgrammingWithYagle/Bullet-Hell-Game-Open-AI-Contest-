@@ -1,5 +1,7 @@
 # Opening-route boss defeat motion
 
+> Dated subsystem record: counts, source hashes and test totals below describe this page's recorded stage. For the current game and remaining work, use [implementation state](IMPLEMENTATION_STATE.md), [development progress](DEVELOPMENT_PROGRESS.md) and the [continuation checkpoint](CHECKPOINT_2026_10_25.md). Current [fixed-grade rules](FIXED_BOSS_THREATS.md) supersede older encounter-scaled ratings and the old Brutal-plus label.
+
 Build `2026.10.25-opening-defeats`, protocol 13. Carrion Courier, Ratcatcher, Quarantine Clerk, Tollkeeper, Chain Marshal, Gate Widow and Black Ambulance now have dedicated eight-pose defeat sequences. Alongside Constable and Warden, all nine opening-route identities have a settled defeat presentation. Fifty-six new complete poses are selected from seven whole sheets; eight actual native returns are preserved because the first Ambulance layout joined two complete groups and was regenerated in a roomier layout.
 
 | Boss | Defeat identity |

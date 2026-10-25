@@ -1,5 +1,7 @@
 # Black Bell Pilgrimage runtime checkpoint
 
+> Dated subsystem record: counts, source hashes and test totals below describe this page's recorded stage. For the current game and remaining work, use [implementation state](IMPLEMENTATION_STATE.md), [development progress](DEVELOPMENT_PROGRESS.md) and the [continuation checkpoint](CHECKPOINT_2026_10_25.md). Current [fixed-grade rules](FIXED_BOSS_THREATS.md) supersede older encounter-scaled ratings and the old Brutal-plus label.
+
 The feature-branch source adds twenty distinct encounters, all Normal/Brutal phases, the sixteen-fight Pilgrimage, twenty original themes, 168 native motion poses and sixteen props. Current totals: 43 executable bosses, seven classes, six distinct maps, four modes, protocol 10. Seventeen boss identities, Raid, the full Endless-exclusive schedule and the secret extension remain in development.
 
 The long route selects fifteen different regulars from seventeen and reserves one of three finales. Normalized SP and nominal base income reach 27 and 2400 before the finale. Local protocol-9 boundaries migrate within their old 23-boss/three-mode limits. Online and signed state remain strict.

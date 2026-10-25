@@ -1,5 +1,7 @@
 # Balance and collision corrections
 
+> Dated subsystem record: counts, source hashes and test totals below describe this page's recorded stage. For the current game and remaining work, use [implementation state](IMPLEMENTATION_STATE.md), [development progress](DEVELOPMENT_PROGRESS.md) and the [continuation checkpoint](CHECKPOINT_2026_10_25.md). Current [fixed-grade rules](FIXED_BOSS_THREATS.md) supersede older encounter-scaled ratings and the old Brutal-plus label.
+
 Build `2026.10.24-balance-collision`, protocol 13. The full pipeline passes 268 tests, content/fifteen-locale checks, TypeScript and production build. Source snapshot: `6497d3056a6a3608e0e1a9ae96513fa253bc43f139b2bb6cfb36e3cca85d679b`. Runtime-only digest: `51d65c0d11bfdb352f78247ca6633c9d787ba6b40e43b39d9d2a72ea66006c58`.
 
 ## Authored health and progression

@@ -1,5 +1,7 @@
 # Tank directional action production
 
+> Dated subsystem record: counts, source hashes and test totals below describe this page's recorded stage. For the current game and remaining work, use [implementation state](IMPLEMENTATION_STATE.md), [development progress](DEVELOPMENT_PROGRESS.md) and the [continuation checkpoint](CHECKPOINT_2026_10_25.md). Current [fixed-grade rules](FIXED_BOSS_THREATS.md) supersede older encounter-scaled ratings and the old Brutal-plus label.
+
 Current source build `2026.10.24-tank-actions`, game protocol 13. The Tank now uses twenty new drawn clips across four independent facings: idle (4 frames), stationary firearm attack (4), hurt (2), dodge (6) and downed (6). That adds 88 selected poses to its 32 existing run poses. Across current production the selected motion count rises from 703 to 791. Other survivors and bosses still have incomplete action libraries; this is not full-game art acceptance.
 
 ## Identity and production

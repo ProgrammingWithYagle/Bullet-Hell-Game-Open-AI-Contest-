@@ -1,5 +1,7 @@
 # Boss encounters, item illustration and individual themes
 
+> Dated subsystem record: counts, source hashes and test totals below describe this page's recorded stage. For the current game and remaining work, use [implementation state](IMPLEMENTATION_STATE.md), [development progress](DEVELOPMENT_PROGRESS.md) and the [continuation checkpoint](CHECKPOINT_2026_10_25.md). Current [fixed-grade rules](FIXED_BOSS_THREATS.md) supersede older encounter-scaled ratings and the old Brutal-plus label.
+
 ## Current source
 
 Version 0.3.0, protocol 6. Soldier, Medic and Heavy fight Hollow Constable, Lantern Warden, Carrion Courier, Ratcatcher and Quarantine Clerk in Gatehouse. Review can select any opening boss. Practice now completes five encounters without repeating an identity. Concealed contract choices use uncleared identities first and saved RNG; after the complete implemented pool, Endless repeats become Brutal and avoid the immediately previous boss. This is the five-boss Practice subset, not the full authored campaign/finale library.

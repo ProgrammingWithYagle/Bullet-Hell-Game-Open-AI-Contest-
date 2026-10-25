@@ -1,5 +1,7 @@
 # Warden encounter and playable Heavy
 
+> Dated subsystem record: counts, source hashes and test totals below describe this page's recorded stage. For the current game and remaining work, use [implementation state](IMPLEMENTATION_STATE.md), [development progress](DEVELOPMENT_PROGRESS.md) and the [continuation checkpoint](CHECKPOINT_2026_10_25.md). Current [fixed-grade rules](FIXED_BOSS_THREATS.md) supersede older encounter-scaled ratings and the old Brutal-plus label.
+
 Current source continuation, October 23, 2026 local time. This supersedes the gameplay-pending status in WARDEN_SIGNATURE_REHEARSAL.md and ART_NORMALIZATION_AND_MOTION.md. Their dated provenance and browser observations remain preserved.
 
 The source game now offers **Soldier, Medic and Heavy**, **Hollow Constable and Lantern Warden**, Gatehouse, five-fight Practice and prototype Endless. Warden can be chosen as the opening boss on the Review screen. The remaining four classes, other routes/maps and fifty-eight boss identities are unfinished. The public Site remains the earlier two-class/protocol-4 deployment; this source continuation does not redeploy it.

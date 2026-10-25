@@ -1,5 +1,7 @@
 # Bounded survivor animation timing
 
+> Dated subsystem record: counts, source hashes and test totals below describe this page's recorded stage. For the current game and remaining work, use [implementation state](IMPLEMENTATION_STATE.md), [development progress](DEVELOPMENT_PROGRESS.md) and the [continuation checkpoint](CHECKPOINT_2026_10_25.md). Current [fixed-grade rules](FIXED_BOSS_THREATS.md) supersede older encounter-scaled ratings and the old Brutal-plus label.
+
 Development build `2026.10.25-motion-timing`, protocol 13. Survivor runs and action poses can now advance between authority patches through a separate bounded drawing clock. The Colyseus room sends patches every 50 ms while the simulation runs at 30 Hz. Previously, six short-dodge poses were sampled only at those patches: a deterministic 60 Hz drawing fixture observed frames **0, 2, 3, 5**, skipping 1 and 4. The same fixture now observes **0, 1, 2, 3, 4, 5**. This is a software timing trace, not a measurement of actual device FPS.
 
 `PresentationClock` never leads the latest snapshot by more than 1.5 simulation ticks (50 ms). It stays monotonic between advancing patches, ignores duplicate observations without restarting their wall-time anchor, holds at the limit during a stall, rejects nonfinite wall-time advancement and resets on run, encounter, phase or backward authority boundaries. Noncombat combat time remains paused. Values are used only to select drawn frames; movement, hazards, damage, inputs, status and the authoritative view remain unchanged.

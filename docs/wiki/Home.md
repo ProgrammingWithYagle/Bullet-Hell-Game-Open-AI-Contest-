@@ -46,3 +46,5 @@ All sixty identities execute, including nine scheduled Endless exclusives and an
 [Grand Raid implementation](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/GRAND_RAID_RUNTIME.md) · [Endless and Uncounted implementation](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/ENDLESS_AND_UNCOUNTED_RUNTIME.md).
 
 [Current development progress](Development-Progress) tracks new bosses, existing-encounter quality passes, class ability revamps, skill-tree work and map revisions, with implementation separate from human review.
+
+The latest [continuation checkpoint](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/CHECKPOINT_2026_10_25.md) preserves the current source and art. Brass Toad has twelve art-only motion candidates; the three new concepts are still outside the playable roster. [View the motion contact](Art-Gallery#brass-toad-motion-checkpoint--art-only).

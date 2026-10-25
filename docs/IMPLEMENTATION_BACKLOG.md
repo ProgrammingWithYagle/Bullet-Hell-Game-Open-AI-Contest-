@@ -1,5 +1,7 @@
 # Implementation backlog and contest acceptance map
 
+[Current checkpoint](CHECKPOINT_2026_10_25.md) and [structured progress](DEVELOPMENT_PROGRESS.md) track 91 new ordinary identities, 59 existing-boss assessments/redesigns, seven class-upgrade revamps and the optional branching tree. Twelve new Toad motion candidates are art-only and excluded from the runtime pose total.
+
 Current source: build 2026.10.25-brutal-signals, protocol 14. All sixty authored boss identities execute across five modes, seven classes, 378 skills, twenty-eight weapons and six distinct map footprints. Every boss has an individual original theme; production motion totals 1,458 production-path animation frames, plus eight retained Constable proof-atlas frames (1,466 selected animation frames in total) across survivors, bosses, parts and minions. The in-game journal and Wiki have concrete synchronized updates. See [Endless and Uncounted runtime](ENDLESS_AND_UNCOUNTED_RUNTIME.md), [Raid](GRAND_RAID_RUNTIME.md) and [Pilgrimage](PILGRIMAGE_RUNTIME.md).
 
 ProfileV1 now stores validated import/export, mastery, rescues, lore discoveries, cosmetic insignia, preferences, remapping and full-Hard difficulty unlocks. See [ProfileV1](PROFILE_V1.md).
