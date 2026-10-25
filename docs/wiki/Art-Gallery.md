@@ -62,7 +62,7 @@ Original game art collected from the current development source. Boss sheets sho
 
 ![Tank idle, firearm attack, hurt, dash and downed poses in four directions](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/tank-actions.jpg)
 
-Twenty drawn clips add 88 poses to the Tank's existing runs. The image shows representative frames at one scale; it is not a gameplay capture. Runtime firing, hurt, dodge, downed holds and revival transitions are connected, with reduced-motion choices. Final rendered/human/device review and the remaining characters' full action libraries remain open. [Production and exact verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/TANK_ACTION_MOTION.md).
+Twenty drawn clips add 88 poses to the Tank's existing runs. The image shows representative frames at one scale; it is not a gameplay capture. Runtime firing, hurt, dodge, downed holds and revival transitions are connected, with reduced-motion choices. Special-ability and boss animation, plus final rendered/human/device review, remain open. [Production and exact verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/TANK_ACTION_MOTION.md).
 
 ## Engineer action reference
 
@@ -105,3 +105,9 @@ Twenty action clips add 88 poses, alongside eight independently drawn side-run p
 ![Medic idle, primary attack, hurt, dodge and downed poses in four directions](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/medic-actions.jpg)
 
 Twenty action clips add 88 poses, alongside eight independently drawn side-run poses per direction and the retained north/south originals. Shared scale keeps the body consistent between actions and directions. Representative sprite frames are separate from gameplay captures or rendered acceptance. [Production, provenance and verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/SOLDIER_MEDIC_ACTION_MOTION.md).
+
+## Hollow Constable motion
+
+![All twenty-seven Hollow Constable idle, attack, hurt, stagger and defeat poses at one world scale](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/constable-motion.jpg)
+
+Four new whole sheets add nineteen poses alongside the eight retained attack frames. Cast anticipation now holds until the authoritative release, successful Accord uses a visible stagger loop, and the world clock completes a collapse after combat stops. This is a sprite reference; rendered/device/human acceptance remains open. [Production, timing and independent reconstruction](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/CONSTABLE_MOTION.md).

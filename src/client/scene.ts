@@ -8,6 +8,11 @@ import { ServicePresentation } from './service-presentation.ts';
 import type { ServiceCue } from '../shared/service-director.ts';
 import Phaser from 'phaser';
 import { assets } from './assets.ts';
+import {
+  constableArt,
+  constableCombatPose,
+  type ConstableClipId,
+} from './constable-presentation.ts';
 import type { View, PlayerView } from '../shared/view.ts';
 import type { Event, Shot } from '../shared/protocol.ts';
 import { runtimeArena } from '../shared/arena-layouts.ts';
@@ -67,7 +72,6 @@ export class CombatScene extends Phaser.Scene {
   private bossSprite!: Phaser.GameObjects.Sprite;
   private shots = new Map<number, Shot>();
   private lastPhase = '';
-  private animatedWarning = 0;
   private lastFrameClock = 0;
   readonly frameMeter = new FrameMeter();
   ready = false;
@@ -110,10 +114,13 @@ export class CombatScene extends Phaser.Scene {
       this.load.image('pilgrimage-prop-' + id, url);
     for (const [id, url] of Object.entries(assets.midnightProps))
       this.load.image('midnight-prop-' + id, url);
-    this.load.spritesheet('constable', assets.boss, {
-      frameWidth: 512,
-      frameHeight: 512,
-    });
+    for (const [name, url] of Object.entries(assets.constable)) {
+      const clip = constableArt.clips[name as ConstableClipId];
+      this.load.spritesheet('constable-' + name, url, {
+        frameWidth: clip.cellSize,
+        frameHeight: clip.cellSize,
+      });
+    }
     for (const [direction, url] of Object.entries(assets.heavy)) {
       const size =
         direction === 'reference'
@@ -183,19 +190,10 @@ export class CombatScene extends Phaser.Scene {
       paint.destroy();
     }
     this.foreground = this.add.graphics().setDepth(30);
-    this.anims.create({
-      key: 'constable-attack',
-      frames: this.anims.generateFrameNumbers('constable', {
-        start: 0,
-        end: 7,
-      }),
-      frameRate: 10,
-      repeat: 0,
-    });
     this.bossSprite = this.add
-      .sprite(800, 315, 'constable', 0)
-      .setOrigin(0.5, 0.84)
-      .setDisplaySize(300, 300)
+      .sprite(800, 315, 'constable-idle', 0)
+      .setOrigin(constableArt.clips.idle.origin[0], constableArt.clips.idle.origin[1])
+      .setDisplaySize(constableArt.clips.idle.displayCell, constableArt.clips.idle.displayCell)
       .setDepth(5);
     this.bossTextureAlive = true;
     this.bossTextures = new BossTextureCache(
@@ -766,7 +764,10 @@ export class CombatScene extends Phaser.Scene {
         )) ||
         (view.boss.defeatedAt > 0 && view.boss.health <= 0),
     );
-    this.bossSprite.setPosition(view.boss.x, view.boss.y + (view.boss.id === 'constable' ? 65 : 0));
+    this.bossSprite.setPosition(
+      view.boss.x,
+      view.boss.y + (view.boss.id === 'constable' ? constableArt.groundOffsetY : 0),
+    );
     this.bossSprite.setAlpha(now < view.boss.staggerUntil ? 0.55 : 1);
     if (warden) {
       const pose = wardenCombatPose(view.boss, view.tick, now, view.signatures, this.reduceMotion);
@@ -789,14 +790,13 @@ export class CombatScene extends Phaser.Scene {
         .setOrigin(clip.origin[0], clip.origin[1])
         .setDisplaySize(clip.displayCell, clip.displayCell);
     } else {
-      if (this.bossSprite.texture.key !== 'constable')
-        this.bossSprite.setTexture('constable', 0).setOrigin(0.5, 0.84).setDisplaySize(300, 300);
-      const cast = view.warnings.find((warning) => warning.kind !== 'zone');
-      if (cast && cast.id !== this.animatedWarning && !this.reduceMotion) {
-        this.animatedWarning = cast.id;
-        this.bossSprite.play('constable-attack');
-      }
-      if (!cast && !this.bossSprite.anims.isPlaying) this.bossSprite.setFrame(0);
+      const pose = constableCombatPose(view.boss, view.tick, now, this.reduceMotion, animationTime);
+      const clip = constableArt.clips[pose.clip];
+      this.bossSprite.anims.stop();
+      this.bossSprite
+        .setTexture('constable-' + pose.clip, pose.frame)
+        .setOrigin(clip.origin[0], clip.origin[1])
+        .setDisplaySize(clip.displayCell, clip.displayCell);
     }
     if (view.phase === 'combat' && this.hitboxes)
       f.lineStyle(2, 0xf2c487, 0.65).strokeCircle(

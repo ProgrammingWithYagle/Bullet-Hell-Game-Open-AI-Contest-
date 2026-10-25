@@ -125,3 +125,9 @@ All sixty authored identities now execute. Native art and automated combat check
 | The Last Knocker | Follow the three visible knocks and move behind the hinge; attack during the open-door recovery. |
 
 Numbered history, beat pips, safe lane markers and knock counts remain visible. Sound, color distinction and unaided memorization are not required.
+
+## Hollow Constable motion
+
+![All twenty-seven Hollow Constable idle, attack, hurt, stagger and defeat poses at one world scale](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/constable-motion.jpg)
+
+Four new whole sheets add nineteen poses alongside the eight retained attack frames. Cast anticipation now holds until the authoritative release, successful Accord uses a visible stagger loop, and the world clock completes a collapse after combat stops. This is a sprite reference; rendered/device/human acceptance remains open. [Production, timing and independent reconstruction](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/CONSTABLE_MOTION.md).

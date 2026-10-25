@@ -1,6 +1,20 @@
 # Changelog
 
-Development build **2026.10.25-boss-texture-cache**, protocol 13. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.25-constable-motion**, protocol 13. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-25 — Hollow Constable gains idle, hurt, stagger and a complete collapse
+
+### Nineteen new drawn poses
+
+- Four whole sheets add four idle, three hurt, four stagger and eight defeat poses. The original eight attack frames stay unchanged.
+- A successful Accord now shows the stooped stagger loop. On defeat the Constable collapses once using world time, then holds the settled pose while rewards and votes continue.
+- One scale per clip preserves complete hands, coat, cap and chains. The stagger stays naturally stooped and the fallen poses stay naturally low and wide.
+
+### Cast timing and verification
+
+- Attack anticipation now holds until the replicated release tick. The former warning-start animation showed the first fan release fourteen ticks early; zone casts were also omitted by its filter.
+- Hurt cannot interrupt casts, stagger or defeat. Bounded drawing lead cannot release before authority; reduced motion keeps readable held states. Boss damage, telegraphs, rewards and encounter rules are unchanged.
+- Independent pixel reconstruction verifies all nineteen new poses and original attack hashes. Seven regressions cover normal/Brutal timing, actual Accord, one-time rewards, world-clock defeat and reduced motion. The Wiki gains a complete twenty-seven-pose motion reference; rendered/device/human acceptance remains open.
 
 ## 2026-10-25 — Boss animations load by encounter with a bounded texture cache
 
@@ -260,7 +274,7 @@ Development build **2026.10.25-boss-texture-cache**, protocol 13. These entries 
 ### Playable content
 
 - Added Tank, Mage, Engineer and Assassin alongside Soldier, Medic and Heavy. All seven kits execute their two abilities and ultimate, with 378 skill nodes, 63 specialization paths and 28 class weapons.
-- Added six distinct traversable layouts: Gatehouse 1,600 × 1,000; Triage Yard 1,600 × 900; Ossuary Works 1,300 × 1,000; Sunken Chapel 1,400 × 920; Bell Foundry 1,500 × 850; Crown Crypt 1,240 × 880. Cover and spawn positions change with each map.
+- Added six distinct traversable layouts: Gatehouse 1,600 Ã— 1,000; Triage Yard 1,600 Ã— 900; Ossuary Works 1,300 Ã— 1,000; Sunken Chapel 1,400 Ã— 920; Bell Foundry 1,500 Ã— 850; Crown Crypt 1,240 Ã— 880. Cover and spawn positions change with each map.
 - Connected 52 additional item illustrations, 124 approved class motion poses and sixteen environment/construct props. Weapons, supplies, all specialization paths and mutations now have individual item artwork.
 
 ### Rules and verification

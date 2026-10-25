@@ -93,13 +93,33 @@ def main():
                 action_selections.append({'id':entry['id'],'atlas':entry['atlas'],'frame':frame_index,'cellSize':size,'gallery':'images/'+identity+'-actions.jpg'})
         d.text((20,1000),'Native pixels retained; shared scale and foot origin. Existing runs remain separate. No game capture claimed.',font=font(16),fill=MUTED)
         save(im,identity+'-actions.jpg',identity.title()+' action reference: idle, primary attack, hurt, dash and downed in four independently drawn facings. Representative frames, not a game capture.')
+    # Full Constable clips at one shared world scale; no gameplay capture is implied.
+    constable_path='assets/production/motion/constable-library.json'
+    constable=read(constable_path);sources[constable_path]={'path':constable_path,'sha256':sha(ROOT/constable_path)}
+    im=Image.new('RGB',(1120,1952),BG);d=ImageDraw.Draw(im)
+    d.text((20,15),'Hollow Constable: five action states',font=font(28),fill=FG)
+    d.text((20,55),'27 complete poses at one world scale - sprite reference, not a game capture',font=font(16),fill=MUTED)
+    constable_selections=[];row_start=0
+    for action in ['idle','attack','hurt','stagger','defeat']:
+        entry=constable['clips'][action];atlas=source(entry['atlas']);size=entry['cellSize'];columns=entry['columns']
+        for n in range(entry['frames']):
+            x=(n%4)*280;y=96+(row_start+n//4)*260
+            d.text((x+12,y),action.title()+' '+str(n+1)+'/'+str(entry['frames']),font=font(18),fill=FG)
+            tile=atlas.crop((n%columns*size,n//columns*size,(n%columns+1)*size,(n//columns+1)*size))
+            span=round(entry['displayCell']*.8);sprite=tile.resize((span,span),Image.Resampling.LANCZOS)
+            im.paste(sprite,(round(x+140-span*entry['origin'][0]),round(y+240-span*entry['origin'][1])),sprite)
+            constable_selections.append({'id':entry['id'],'atlas':entry['atlas'],'frame':n,'cellSize':size,'worldScale':.8,'gallery':'images/constable-motion.jpg'})
+        row_start+=(entry['frames']+3)//4
+    assert row_start==7 and len(constable_selections)==27
+    d.text((20,1920),'Original attack retained. Complete collapse stays naturally low and wide. Rendered transition review remains open.',font=font(15),fill=MUTED)
+    save(im,'constable-motion.jpg','All twenty-seven Constable idle, attack, hurt, stagger and defeat poses at one world scale. Sprite reference, not a gameplay capture.')
     figure_receipt=read('reviews/performance/endurance-50-moths-20261024-2-figure-v2.json')
     assert sha(ROOT/figure_receipt['figure'])==figure_receipt['figureSha256']
     assert sha(ROOT/figure_receipt['source'])==figure_receipt['sourceSha256']
     save(source(figure_receipt['figure']).convert('RGB'),'endurance-50-clients.jpg','Actual one-hour frozen-source local combat timings and observed process heaps; fifty scripted clients, zero rendered clients.')
     for p in ['reviews/performance/endurance-50-moths-20261024-2-figure-v2.json',figure_receipt['source'],'tools/build-endurance-figure.py']:
         sources[p]={'path':p,'sha256':sha(ROOT/p)}
-    manifest={'schemaVersion':1,'createdAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'sourceTool':'tools/build-wiki-images.py','sourceToolSha256':sha(Path(__file__)),'method':'Technical representative-frame crop, proportional resize and documentation contact-sheet composition; source artwork unchanged. Map is directly derived from runtime geometry. Survivor action frames retain one shared world scale. Endurance chart is a standard Matplotlib plot of immutable raw measurements.','bosses':used,'survivorActions':action_selections,'sources':list(sources.values()),'files':files,'limits':['Contact sheets and geometry diagrams are documentation, not new rendered gameplay or full animation acceptance.','Text labels are English, matching the Wiki editorial language.']}
+    manifest={'schemaVersion':1,'createdAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'sourceTool':'tools/build-wiki-images.py','sourceToolSha256':sha(Path(__file__)),'method':'Technical representative-frame crop, proportional resize and documentation contact-sheet composition; source artwork unchanged. Map is directly derived from runtime geometry. Survivor action frames retain one shared world scale. Endurance chart is a standard Matplotlib plot of immutable raw measurements.','bosses':used,'survivorActions':action_selections,'constableMotion':constable_selections,'sources':list(sources.values()),'files':files,'limits':['Contact sheets and geometry diagrams are documentation, not new rendered gameplay or full animation acceptance.','Text labels are English, matching the Wiki editorial language.']}
     (ROOT/'docs/wiki-images.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n',encoding='utf-8',newline='\n')
     print(json.dumps({'images':len(files),'bosses':60,'bytes':sum(f['bytes'] for f in files)},indent=2))
 if __name__=='__main__':main()

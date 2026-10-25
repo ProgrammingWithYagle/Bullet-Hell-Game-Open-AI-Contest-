@@ -2,6 +2,10 @@ import wheel from '../../assets/production/motion/tollkeeper-wheel-v1.png?url';
 import arena from '../../assets/proofs/arena-v1.png?url';
 import cover from '../../assets/proofs/cover-v1.png?url';
 import boss from '../../assets/proofs/animation/boss-attack-atlas.png?url';
+import constableIdle from '../../assets/production/motion/constable-idle-v1-atlas.png?url';
+import constableHurt from '../../assets/production/motion/constable-hurt-v1-atlas.png?url';
+import constableStagger from '../../assets/production/motion/constable-stagger-v1-atlas.png?url';
+import constableDefeat from '../../assets/production/motion/constable-defeat-v1-atlas.png?url';
 import medic from '../../assets/proofs/directions/medic-south-seed.png?url';
 import soldierPortrait from '../../assets/proofs/directions/soldier-south-seed.png?url';
 import lineup from '../../assets/proofs/survivors-v3.png?url';
@@ -129,6 +133,13 @@ export const assets = {
   arena,
   cover,
   boss,
+  constable: {
+    idle: constableIdle,
+    hurt: constableHurt,
+    stagger: constableStagger,
+    defeat: constableDefeat,
+    attack: boss,
+  },
   medic,
   lineup,
   warden: {

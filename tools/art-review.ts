@@ -1,4 +1,5 @@
 import serviceMotion from '../assets/production/motion/service-library.json';
+import constableMotion from '../assets/production/motion/constable-library.json';
 import libraryData from '../assets/production/normalized/library.json';
 import heavyMotion from '../assets/production/motion/heavy-library.json';
 import encounters from '../assets/production/motion/encounter-library.json';
@@ -37,6 +38,7 @@ const entries: ArtEntry[] = [
   ...encounters.entries,
   ...civic.entries,
   ...serviceMotion.entries,
+  ...constableMotion.entries,
   ...survivors.entries,
   ...survivorActions.entries,
   ...legacyRuns.entries,
