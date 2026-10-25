@@ -1,6 +1,18 @@
 # Changelog
 
-Development build **2026.10.24-windows-lan**, protocol 13. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.24-recovery-transport**, protocol 13. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-24 — Bounded fifty-player checkpoint transfer
+
+### Recovery foundation
+
+- Large signed squad checkpoints now use authenticated bounded compression while keeping the existing HTTP message limit. Builds, inventory, votes, RNG and every retained purchase reply remain intact; small legacy checkpoints stay compatible.
+- A real file-backed HTTP restart fixture restores fifty developed builds across all seven classes, races two owners, rejects the stale owner and retries successful/failed purchases without double-spending. Ten forced clears and shortened intermissions are persistence fixtures, not human combat wins.
+- Expansion bombs, malformed/trailing streams, encoding changes, invalid clocks and maximum message headroom are checked. A state that cannot fit still latches recovery unavailable; no receipts are silently dropped.
+
+### Scope
+
+- The normal runtime remains Practice with no configured recovery writer. Participant credentials, paged worst-case transfers, durable departed-player history and hosted rankings/recovery remain unfinished. The published Windows development download retains its earlier exact source and verification record.
 
 ## 2026-10-24 — Windows portable app and opt-in LAN hosting
 
@@ -190,8 +202,9 @@ Development build **2026.10.24-windows-lan**, protocol 13. These entries describ
 
 ## Still in development
 
-- All sixty identities execute, but complete directional/action libraries, final encounter tuning and full visual/device acceptance remain unfinished.
-- Complete action/facing art, balance, final rendered playtests, physical-device and native-language review remain in progress.
-- Persistent mastery/cosmetics, verified rankings, durable online recovery and the Windows/offline/LAN release are not complete.
+- All sixty boss identities execute; full directional/action animation, final encounter tuning and rendered/device acceptance remain unfinished.
+- Local mastery, cosmetics, profiles and remappable controls are implemented. Native-language, physical-device, human listening/gameplay, endurance and full capacity acceptance remain open.
+- An unsigned Windows/offline/LAN development download is published with exact artifact evidence. Physical second-machine LAN and final coordinated browser/Windows release acceptance remain open.
+- Verified public rankings and durable deployed recovery remain unfinished. Bounded compressed transfer passes a fifty-build local HTTP/restart fixture; maximum-entropy histories still require paging.
 
 [Earlier production history](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/history/CHANGELOG-2026-10-24.md). Historical counts describe their own checkpoints.

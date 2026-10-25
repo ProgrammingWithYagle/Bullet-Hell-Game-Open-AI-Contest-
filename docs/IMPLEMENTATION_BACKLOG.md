@@ -1,16 +1,18 @@
 # Implementation backlog and contest acceptance map
 
-Current source: build 2026.10.24-windows-lan, protocol 13. All sixty authored boss identities execute across five modes, seven classes, 378 skills, twenty-eight weapons and six distinct map footprints. Every boss has an individual original theme; production motion totals 703 drawn frames across survivors, bosses, parts and minions. The in-game journal and Wiki have concrete synchronized updates. See [Endless and Uncounted runtime](ENDLESS_AND_UNCOUNTED_RUNTIME.md), [Raid](GRAND_RAID_RUNTIME.md) and [Pilgrimage](PILGRIMAGE_RUNTIME.md).
+Current source: build 2026.10.24-recovery-transport, protocol 13. All sixty authored boss identities execute across five modes, seven classes, 378 skills, twenty-eight weapons and six distinct map footprints. Every boss has an individual original theme; production motion totals 703 drawn frames across survivors, bosses, parts and minions. The in-game journal and Wiki have concrete synchronized updates. See [Endless and Uncounted runtime](ENDLESS_AND_UNCOUNTED_RUNTIME.md), [Raid](GRAND_RAID_RUNTIME.md) and [Pilgrimage](PILGRIMAGE_RUNTIME.md).
 
 ProfileV1 now stores validated import/export, mastery, rescues, lore discoveries, cosmetic insignia, preferences, remapping and full-Hard difficulty unlocks. See [ProfileV1](PROFILE_V1.md).
 
-The complete current pipeline passes 276 tests, authored-content/fifteen-locale checks, TypeScript and production build. Exact evidence is in reviews/runtime-verification.json. Native/audio audits and prior rendered samples are separate. Browser control was disabled in Work settings for the sixty-identity stage; no new rendered acceptance is claimed.
+The complete current pipeline passes 283 tests, authored-content/fifteen-locale checks, TypeScript and production build. Exact evidence is in reviews/runtime-verification.json. Native/audio audits and prior rendered samples are separate. Browser control was disabled in Work settings for the sixty-identity stage; no new rendered acceptance is claimed.
 
 Major remaining work includes boss-history translation; full directional/action animation; final encounter deadline/uptime and balance measurements; verified deployed rankings/recovery; active 8/16/50-player and endurance acceptance; final Windows artifact/release acceptance and the coordinated browser release. Physical-device, native-speaker and human review require actual evidence. The public Site remains its earlier protocol-4 build; protected main remains a separate release boundary.
 
 The latest [balance/collision correction and throughput evidence](BALANCE_AND_COLLISION_RUNTIME.md) records exact health math, 210 progression combinations, same-tick destructible buildings and longer localhost probes. Rendered/hosted/WAN/endurance capacity and human balance remain open.
 
 The [issued Windows development package](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/releases/tag/dev-windows-20261024-1) and opt-in LAN authority pass all six native fixtures across the original, fresh ZIP extraction and ordinary Windows copy. All 1,633 members match exactly; physical second-machine LAN, manual rendering/audio and signed/release acceptance remain distinct gates.
+
+[Bounded recovery transport](BOUNDED_RECOVERY_TRANSPORT.md) preserves fifty developed builds and 2,400 purchase replies through the existing 64-KiB HTTP interface and an actual file-backed process replacement/owner race. This local evidence does not enable public recovery. Maximum-entropy state paging, participant credentials, historical departures and hosted integration remain open.
 
 All implementation stages remain authorized. These rows are acceptance requirements, not completion claims. Historical checkpoint prose is preserved in [the archived backlog](history/IMPLEMENTATION_BACKLOG-before-60.md).
 

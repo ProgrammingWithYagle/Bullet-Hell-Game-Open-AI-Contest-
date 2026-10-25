@@ -15,12 +15,14 @@ The existing public Site remains the earlier protocol-4 frontend and gameplay. S
 | Reconnect reservation | 60 seconds while the same server process survives |
 | Offline resume | Validated encounter-boundary save with compatible local migrations |
 | Instance queue/cold-start logic | Tested foundation; live rollout depends on host configuration |
-| SQL/HTTP/journal recovery foundation | Tested modules; disabled in the normal runtime |
+| SQL/HTTP/journal recovery foundation | Real fifty-build bounded-transfer/restart fixture; disabled in the normal runtime |
 | Durable server-restart recovery | Not live |
 | Verified public rankings | Not live |
 | Windows portable runtime | [Unsigned development download](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/releases/tag/dev-windows-20261024-1); three matching package copies and six native software fixtures; physical LAN/manual acceptance pending |
 
 Server capacity and per-room capacity are separate constraints. Earlier scripted stress fixtures are not proof of physical-device FPS, WAN stability or a host's production capacity. Final 49+1, endurance and deployment acceptance remain open.
+
+Large private checkpoint transfers now use authenticated bounded compression. A real file-backed HTTP fixture preserves all fifty developed builds and cached purchase replies after a process replacement; one of two competing owners wins. Maximum-entropy histories still need paging, and participant recovery credentials/hosted acceptance remain open. [Exact transport evidence and remaining gates](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/BOUNDED_RECOVERY_TRANSPORT.md).
 
 Do not restart a local online service while active combat or reconnect reservations exist without coordinating with its players. Current development refreshes inspect health, admission and process identity first.
 

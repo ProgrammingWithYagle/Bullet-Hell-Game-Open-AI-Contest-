@@ -7,6 +7,9 @@ import { tmpdir } from 'node:os';
 import { basename, join, resolve, sep } from 'node:path';
 import { randomBytes } from 'node:crypto';
 import { Game } from '../src/shared/game.ts';
+import { recoveryBuild } from './helpers/recovery-build.ts';
+import { verifyBoundary } from '../src/server/checkpoints.ts';
+import { RUN_BODY_LIMIT } from '../src/server/run-auth.ts';
 import { RunJournal, type RunTransport } from '../src/server/run-journal.ts';
 import { RunStore } from '../src/server/run-store.ts';
 import { RunServiceClient } from '../src/server/run-client.ts';
@@ -306,6 +309,123 @@ test(
       assert.equal((await active.client.lookup(journal.runId)).ranked, 0);
       assert.equal(await restored.journal.checkpoint(restored.game), true);
       assert.equal((await active.client.lookup(journal.runId)).ranked, 0);
+    } finally {
+      if (active) await stop(active.child);
+      removeTestDirectory(directory);
+    }
+  },
+);
+
+test(
+  'fifty developed builds cross bounded real HTTP, survive process replacement and retain one-owner recovery with every receipt',
+  { timeout: 30000 },
+  async (t) => {
+    const directory = mkdtempSync(join(tmpdir(), 'grave-ledger-restart-fifty-'));
+    const key = randomBytes(32),
+      writerKey = randomBytes(32),
+      path = join(directory, 'run.sqlite');
+    let now = Date.now(),
+      active: Awaited<ReturnType<typeof launch>> | undefined;
+    try {
+      active = await launch(path, key, writerKey, now);
+      const { game, successful, replies } = recoveryBuild();
+      const journal = RunJournal.create(active.client, key, 'instance-a', () => now);
+      assert.equal(await journal.checkpoint(game), true);
+      const old = await active.client.lookup(journal.runId);
+      const checkpoint = JSON.parse(old.checkpoint);
+      assert.equal(checkpoint.encoding, 'deflate-raw-v1');
+      const registerBytes = Buffer.byteLength(
+        JSON.stringify({ runId: journal.runId, ownerId: 'instance-a', checkpoint, ranked: false }),
+      );
+      const lookupBytes = Buffer.byteLength(JSON.stringify(old));
+      assert(registerBytes < RUN_BODY_LIMIT);
+      assert(lookupBytes < RUN_BODY_LIMIT);
+      assert.equal(verifyBoundary(checkpoint, key, now).game.players.size, 50);
+      await stop(active.child);
+      active = undefined;
+      now += 90001;
+      active = await launch(path, key, writerKey, now);
+      const contenders = await Promise.allSettled(
+        ['instance-b', 'instance-c'].map((owner) =>
+          RunJournal.claim(active!.client, key, owner, journal.runId, false, () => now),
+        ),
+      );
+      assert.equal(contenders.filter((r) => r.status === 'fulfilled').length, 1);
+      const winner = contenders.find((r) => r.status === 'fulfilled');
+      assert(winner?.status === 'fulfilled');
+      const restored = winner.value;
+      assert.equal(restored.interruptedCombat, false);
+      assert.equal(restored.game.players.size, 50);
+      assert.equal(restored.game.peakPlayers, 50);
+      assert.equal(restored.game.phase, game.phase);
+      assert.deepEqual(restored.game.mutations, game.mutations);
+      assert.deepEqual(restored.game.contractCards, game.contractCards);
+      assert.deepEqual([...restored.game.votes], [...game.votes]);
+      assert.equal(restored.game.rng.state >>> 0, game.rng.state >>> 0);
+      assert.equal(restored.game.rng.next(), game.rng.next());
+      assert.deepEqual(
+        restored.game.authoritativeCheckpoint()!.transactions,
+        game.authoritativeCheckpoint()!.transactions,
+      );
+      for (const [id, original] of game.players) {
+        const p = restored.game.players.get(id)!;
+        assert.equal(p.connected, false);
+        for (const field of ['classId', 'weapon', 'coins', 'incomeGranted', 'totalSp'] as const)
+          assert.equal(p[field], original[field]);
+        assert.deepEqual(p.skills, original.skills);
+        assert.deepEqual(p.upgrades, original.upgrades);
+        assert.deepEqual(p.supplies, original.supplies);
+        assert.deepEqual(p.progress, original.progress);
+        restored.game.setConnected(id, true);
+        const coins = p.coins,
+          supplies = structuredClone(p.supplies);
+        assert(restored.game.transact(id, successful.get(id)!).ok);
+        assert.deepEqual(restored.game.transact(id, replies.get(id)!), {
+          ok: false,
+          reason: 'incompatibleItem',
+        });
+        assert.equal(p.coins, coins);
+        assert.deepEqual(p.supplies, supplies);
+      }
+      await assert.rejects(
+        active.client.apply({
+          runId: journal.runId,
+          eventId: 'stale-fifty-owner',
+          ownerId: 'instance-a',
+          ownerEpoch: 1,
+          expectedSequence: old.sequence,
+          previousDigest: old.digest,
+          kind: 'combat-start',
+        }),
+        /runConflict/,
+      );
+      assert.equal(await restored.journal.checkpoint(restored.game), true);
+      assert.equal(await restored.journal.finalize(), true);
+      const final = await active.client.lookup(journal.runId);
+      assert.equal(final.state, 'finalized');
+      assert.equal(final.owner_epoch, 2);
+      now += 90001;
+      await assert.rejects(
+        RunJournal.claim(active.client, key, 'instance-d', journal.runId, true, () => now),
+        /runNotRecoverable/,
+      );
+      t.diagnostic(
+        JSON.stringify({
+          participants: 50,
+          classes: 7,
+          syntheticClears: 10,
+          registrationBytes: registerBytes,
+          lookupBytes,
+          bodyLimit: RUN_BODY_LIMIT,
+          claimWinners: 1,
+          successfulReceiptsRetried: 50,
+          failedReceiptsRetried: 50,
+          fileBacked: true,
+          processRestart: true,
+          hostedD1: false,
+          renderedClients: 0,
+        }),
+      );
     } finally {
       if (active) await stop(active.child);
       removeTestDirectory(directory);
