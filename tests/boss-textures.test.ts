@@ -64,6 +64,12 @@ test('startup loads every boss identity and shared actor but no deferred full bo
     encounterArt.map((e) => [e.bossId + '-action', 'fixture/' + e.bossId]),
   );
   const identities = Object.fromEntries(ids.map((id) => [id, 'fixture/' + id]));
+  const settled = Object.fromEntries(
+    bossTextureReferences.settledReferences.map((entry) => [
+      entry.bossId,
+      'fixture/' + entry.bossId + '-settled',
+    ]),
+  );
   const loader = {
     image(key: string, _url: string) {
       calls.push({ kind: 'identity', key });
@@ -73,8 +79,8 @@ test('startup loads every boss identity and shared actor but no deferred full bo
       calls.push({ kind: 'atlas', key, size: options.frameWidth });
     },
   };
-  preloadBossTextureBase(loader, encounterArt, animations, identities);
-  assert.equal(calls.filter((c) => c.kind === 'identity').length, 57);
+  preloadBossTextureBase(loader, encounterArt, animations, identities, settled);
+  assert.equal(calls.filter((c) => c.kind === 'identity').length, 64);
   assert.equal(calls.filter((c) => c.kind === 'atlas').length, 8);
   assert(
     calls.some((c) => c.key === 'regent-action'),

@@ -22,7 +22,7 @@ Passing automated checks does not imply full rendered FPS, human playtest, devic
 
 [Shared authority](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/src/shared/game.ts) · [Live protocol](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/src/shared/protocol.ts) · [Latest full verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/reviews/runtime-verification.json)
 
-[Latest balance, collision and local throughput evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/BALANCE_AND_COLLISION_RUNTIME.md): 331 full-pipeline tests, 210 progression combinations and 1,740 health/deadline deployments. Longer local 50-client Moths/Walking District and 16-client City Eater probes keep stress p99 below 25 ms; occasional slower ticks remain. Zero rendered clients means this is not final capacity acceptance.
+[Latest balance, collision and local throughput evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/BALANCE_AND_COLLISION_RUNTIME.md): 336 full-pipeline tests, 210 progression combinations and 1,740 health/deadline deployments. Longer local 50-client Moths/Walking District and 16-client City Eater probes keep stress p99 below 25 ms; occasional slower ticks remain. Zero rendered clients means this is not final capacity acceptance.
 
 ## One-hour local combat observation
 
@@ -49,3 +49,7 @@ Five motion states now use replicated cast, stagger, hurt and defeat clocks. The
 ## Arena material layers
 
 All six maps bind ground textures to their existing exact playable bounds. Five new opaque paintings replace plain fills/grid lines; the original Gatehouse stays intact. A backdrop at depth -2 sits below material images at -1, while actual cover props/outlines, hazards and actors stay above. Setup previews combine the same material with the existing geometry. Full native returns and exact requests are preserved, and independent reconstruction verifies every delivered pixel. The five new floors imply 24.39 MiB decoded RGBA, separate from actual GPU/device budgets. [Ground artwork and scope](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/ARENA_GROUND_ART.md).
+
+## Opening boss defeat frames
+
+Seven current atlases retain their original eight live cells and append eight collapse cells. Authoritative defeat records select frames 8–15 once on world time, hold the final pose through reward/vote phases, and cannot create another reward. Reduced motion uses the settled pose. The cache remains two complete atlases with one load in flight; seven exact settled images supplement the 57 first-frame identities for load/retry and safe eviction. The current encounter-set estimate is 72.40625 MiB startup and at most 93.65625 MiB retained, separate from other textures, actual GPU memory and device/FPS acceptance. [Contract and current arithmetic](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/OPENING_BOSS_DEFEATS.md).

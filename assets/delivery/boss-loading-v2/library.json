@@ -1,0 +1,1220 @@
+{
+  "schemaVersion": 2,
+  "sourceTool": "tools/build-boss-loading-v2.py",
+  "sourceToolSha256": "eab8e2e604049b48f79e6716e732a4a7a9dbe7b86edd27389bb6fe8ebb151988",
+  "previousManifest": {
+    "path": "assets/delivery/boss-loading-v1/library.json",
+    "sha256": "663650c5736effeb0493b5c6053002ccc2b9f8b1898e7aefb8e9767bca80a002"
+  },
+  "inputLibraries": [
+    {
+      "path": "assets/production/motion/encounter-library.json",
+      "sha256": "22669a4829acd935811c13cf25727baee0d4ccd9665060ca060c57b2a09cafc5"
+    },
+    {
+      "path": "assets/production/motion/civic-library.json",
+      "sha256": "bd1c6536fda576e8a7b2bb66f677f797f8e5be4ea5aab4a58739428453946a8c"
+    },
+    {
+      "path": "assets/production/motion/service-library.json",
+      "sha256": "064dc25a15bb3f59999a9c6e5092086361ccf6d2f9bd3b57356278c3c172c24d"
+    },
+    {
+      "path": "assets/production/motion/district-library.json",
+      "sha256": "57c853b04de591b585cc5ec9702f0815b3d73b75673411c5f5861915c3a9379b"
+    },
+    {
+      "path": "assets/production/motion/raid-library.json",
+      "sha256": "53fe448dc29e5374e493d8223a7c24103ec7dc5dff279b106f1a3d1673faad43"
+    },
+    {
+      "path": "assets/production/motion/endless-library.json",
+      "sha256": "01c6994b153a5344f8a6a4490a6fc5ed7ad2a4e983346c95421a8586e04abaec"
+    },
+    {
+      "path": "assets/production/motion/opening-defeats-library.json",
+      "sha256": "3f672c3af90783f75ad6e3b507295c881ae133bf8dc96d9a7af1cf33080b0aba"
+    }
+  ],
+  "catalog": {
+    "path": "content/catalog.json",
+    "sha256": "4302c4ba6acbb0e540774c251a5e76d20bd7f41ec572c4b56dbbc460cfd01f9f"
+  },
+  "alwaysLoadedIds": [
+    "rat",
+    "infirmary-minion",
+    "choir-voice",
+    "regent",
+    "crow",
+    "bell-keeper",
+    "throne-attendant",
+    "moth"
+  ],
+  "lazyBossIds": [
+    "ratcatcher",
+    "quarantine-clerk",
+    "courier",
+    "tollkeeper",
+    "chain-marshal",
+    "gate-widow",
+    "black-ambulance",
+    "matron",
+    "alchemist",
+    "bellringer",
+    "stitchwright",
+    "glass-surgeon",
+    "ash-baker",
+    "stationmaster",
+    "lamplighter",
+    "anatomist",
+    "plague-gardener",
+    "choir",
+    "red-abbess",
+    "vesper-judge",
+    "sluice-keeper",
+    "wire-seamstress",
+    "spore-beekeeper",
+    "boiler-tender",
+    "chalk-magistrate",
+    "ledger-leech",
+    "engine",
+    "salt-patriarch",
+    "pallbearer",
+    "cinder-foreman",
+    "canal-diver",
+    "clockmender",
+    "gravedigger",
+    "ink-notary",
+    "ice-custodian",
+    "bridge-ferryman",
+    "porcelain-mourner",
+    "mirror-undertaker",
+    "wire-harpist",
+    "crow-shepherd",
+    "chain-colossus",
+    "bell-triplets",
+    "crown-procession",
+    "city-eater",
+    "last-breath-saint",
+    "quarantine-heart",
+    "ossuary-leviathan",
+    "unlit-astronomer",
+    "red-comet",
+    "memory-taxer",
+    "choir-of-moths",
+    "last-knocker",
+    "hourglass-widow",
+    "folded-man",
+    "zero-hour-conductor",
+    "walking-district",
+    "uncounted"
+  ],
+  "entries": [
+    {
+      "bossId": "ratcatcher",
+      "sourceAtlas": "assets/production/motion/ratcatcher-action-v2-atlas.png",
+      "sourceAtlasSha256": "9edc97bf52f98b866c1a3233b33ab7df332339ac4cd0f8d203b0725e9756650a",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 9437184,
+      "reference": "assets/delivery/boss-loading-v2/ratcatcher-reference-v2.png",
+      "referenceSha256": "197e5b582c530bfb3d488187f98da4e864ce51856f66b37e6dcf801cab4b5e5c",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 57251,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "quarantine-clerk",
+      "sourceAtlas": "assets/production/motion/quarantine-clerk-action-v2-atlas.png",
+      "sourceAtlasSha256": "cbfddac1c1fdcb68d543bd880021cd9b86bbdf9c8e5ee9bd5e459f27b50d1ec1",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 9437184,
+      "reference": "assets/delivery/boss-loading-v2/quarantine-clerk-reference-v2.png",
+      "referenceSha256": "ab6681b9a9576933ff5c8fd5fc257c73b6e3caa849e2b00eb6add5dc930e9b9b",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 35082,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "courier",
+      "sourceAtlas": "assets/production/motion/courier-action-v2-atlas.png",
+      "sourceAtlasSha256": "e7a46a8988e0096a1eda145683a82464ad452ac39df481ed0424708ecf427cb1",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 9437184,
+      "reference": "assets/delivery/boss-loading-v2/courier-reference-v2.png",
+      "referenceSha256": "483fba4f552c447e2c3a4a84ce011a93fd212322f3e5e8bea58269d3fe3d0047",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 32560,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "tollkeeper",
+      "sourceAtlas": "assets/production/motion/tollkeeper-action-v2-atlas.png",
+      "sourceAtlasSha256": "d36ba858f3dc83498df7c42020ec89ed23bd0f3304cb046964a0d622c0ffd799",
+      "sourceFrame": 0,
+      "sourceCellSize": 448,
+      "sourceFullDecodedBytes": 12845056,
+      "reference": "assets/delivery/boss-loading-v2/tollkeeper-reference-v2.png",
+      "referenceSha256": "1d0a38fb180f47caeed4024967d813cf5c37e8c6130039c0190e0580fe0d29a4",
+      "referenceDecodedBytes": 802816,
+      "referencePngBytes": 59795,
+      "origin": [
+        0.5,
+        0.7857142857142857
+      ],
+      "displayCell": 363.2432432432433
+    },
+    {
+      "bossId": "chain-marshal",
+      "sourceAtlas": "assets/production/motion/chain-marshal-action-v2-atlas.png",
+      "sourceAtlasSha256": "07179387b2e2ed2056034f25eea2c3f628e2b267c36fc080f32f2648b7f94e2b",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 9437184,
+      "reference": "assets/delivery/boss-loading-v2/chain-marshal-reference-v2.png",
+      "referenceSha256": "e8ad8f4d99b85f36e79dac81d5d18d1258b4d92a32ef5c59f2878dac5955efc7",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 44975,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "gate-widow",
+      "sourceAtlas": "assets/production/motion/gate-widow-action-v2-atlas.png",
+      "sourceAtlasSha256": "fd2370bd7308ebf9bfd7cc7f18a7d0cb7e5856f15e82902f8d1a248883ec00cb",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 9437184,
+      "reference": "assets/delivery/boss-loading-v2/gate-widow-reference-v2.png",
+      "referenceSha256": "eb5c22e3465147817c667f75cd060126d6e7d3561839612f37f429425935e858",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 32032,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "black-ambulance",
+      "sourceAtlas": "assets/production/motion/black-ambulance-action-v2-atlas.png",
+      "sourceAtlasSha256": "09eb28742a63123d10bb8d49c29125e22d57829f710f3accf007cab82ecc79ce",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 9437184,
+      "reference": "assets/delivery/boss-loading-v2/black-ambulance-reference-v2.png",
+      "referenceSha256": "0d46eaf35b55664c1255bf0f15ecaedc9e89e366c8bf16df9181eb79929d5d22",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 63986,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "matron",
+      "sourceAtlas": "assets/production/motion/matron-action-v1-atlas.png",
+      "sourceAtlasSha256": "cad2705cc109f05ee0ee24267ef2f448fc7807dd21208da80358c3e6c17e563b",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/matron-reference-v1.png",
+      "referenceSha256": "811b859c8329601b1c0872c44ef7b2960d6380fc700614989d2a7b8c42d0ef73",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 49097,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "alchemist",
+      "sourceAtlas": "assets/production/motion/alchemist-action-v1-atlas.png",
+      "sourceAtlasSha256": "83551def6cf54bb99e551f342316ba04f80cd12dc03c660c5f3fd857d4db0fc2",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/alchemist-reference-v1.png",
+      "referenceSha256": "b8e55c34ba4b055e3a7d7835d86ec6f4e3da42ef7568d32d1fd9f4be3e013503",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 51872,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 337.83783783783787
+    },
+    {
+      "bossId": "bellringer",
+      "sourceAtlas": "assets/production/motion/bellringer-action-v1-atlas.png",
+      "sourceAtlasSha256": "77b19ce98acc1c34e8fdf5c4e68938cb66ae9db50892e5460e50709c21d6f7f9",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/bellringer-reference-v1.png",
+      "referenceSha256": "a9b797dd863ac1928029377ea13c7ea5f63ea982a1b83da0abb4a8dff85430ae",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 47421,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "stitchwright",
+      "sourceAtlas": "assets/production/motion/stitchwright-action-v1-atlas.png",
+      "sourceAtlasSha256": "49aa43b3c4da91a9556ddfdaa9730538da124bbf2a0afd193080999b1a880a25",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/stitchwright-reference-v1.png",
+      "referenceSha256": "4002d362af8c70cac6dc659b37f5030372a0bcef514bbaad2f261ec77bb60d5e",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 45314,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "glass-surgeon",
+      "sourceAtlas": "assets/production/motion/glass-surgeon-action-v1-atlas.png",
+      "sourceAtlasSha256": "e7316672419658cfe56fec57fbea138ef78b704c50d9afca6b8494edba7e8472",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/glass-surgeon-reference-v1.png",
+      "referenceSha256": "df4b02835892cd2206b378849302c84a804ebf2752fe732b843c70a206af331a",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 28531,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "ash-baker",
+      "sourceAtlas": "assets/production/motion/ash-baker-action-v1-atlas.png",
+      "sourceAtlasSha256": "2102de418ba68d87f002d3996d3247b8aa4c762c8f2a946b5467dc0d033be8e5",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/ash-baker-reference-v1.png",
+      "referenceSha256": "85dcb92ad48b43ce0ab8d90c61be9137cbb1ac7b8b001dcfbca0914a41adfe7f",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 51951,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "stationmaster",
+      "sourceAtlas": "assets/production/motion/stationmaster-action-v1-atlas.png",
+      "sourceAtlasSha256": "0b18f12a7e2d685333d230d3fdc9377836b39ad134b3a137dcfaa59cc3d0ddeb",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/stationmaster-reference-v1.png",
+      "referenceSha256": "aa5f3e6247db94792fb7913dc54b4aa3cad412315692010c7f0c53a8c834ba08",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 29475,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "lamplighter",
+      "sourceAtlas": "assets/production/motion/lamplighter-action-v1-atlas.png",
+      "sourceAtlasSha256": "bf7e47819e4dd211a63050492345dfcea0a97b3fef3b2fb132281111420fd987",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/lamplighter-reference-v1.png",
+      "referenceSha256": "ebf4db3b4318011aa35dcfc3e9724b828c2e591f88259667f531d9b0d531a803",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 26880,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "anatomist",
+      "sourceAtlas": "assets/production/motion/anatomist-action-v1-atlas.png",
+      "sourceAtlasSha256": "965d7d3a7edf2c716647f1109860b75818e4c7b7834201bae61b4477d211016d",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/anatomist-reference-v1.png",
+      "referenceSha256": "24b0f5298e0e8b77a6ddd8e879976f71acd83cdb150e192e60abeb469dad2750",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 34367,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "plague-gardener",
+      "sourceAtlas": "assets/production/motion/plague-gardener-action-v1-atlas.png",
+      "sourceAtlasSha256": "2d60d02cd9c85cb71762306f555e6dc34ad12f821a47cfdacbc7d2367a14a503",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/plague-gardener-reference-v1.png",
+      "referenceSha256": "86a88da6dee73180a1ff525c267dc2b62c4debe53cdde4dfba347a993455bbb9",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 55864,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "choir",
+      "sourceAtlas": "assets/production/motion/choir-action-v1-atlas.png",
+      "sourceAtlasSha256": "40b90b698a56eda12c2326d48b79e3de4ee613fbbc42124a77317cef1e5cb98a",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/choir-reference-v1.png",
+      "referenceSha256": "bb8edec61022e064d14261566eed42684626a6a7170b6cf9453a55486a1335e3",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 55169,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "red-abbess",
+      "sourceAtlas": "assets/production/motion/red-abbess-action-v1-atlas.png",
+      "sourceAtlasSha256": "a32e1f8e4dca3226b886fe17034743a2211971956a80592953735128f1e85cd0",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/red-abbess-reference-v1.png",
+      "referenceSha256": "fcaef64ae922897364f6748b57b926fcb1249b442b2d1de5341afac109b74fb8",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 35264,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "vesper-judge",
+      "sourceAtlas": "assets/production/motion/vesper-judge-action-v1-atlas.png",
+      "sourceAtlasSha256": "61176eb4a889e4f97f80a1d2ff43fb355ca0b66b1e2dede2be4e16e0a6bb7b87",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/vesper-judge-reference-v1.png",
+      "referenceSha256": "36357036284b66922cae6aab27bb3ee3bca3fd0b309d30be32ad299982a3e1a2",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 45687,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "sluice-keeper",
+      "sourceAtlas": "assets/production/motion/sluice-keeper-action-v1-atlas.png",
+      "sourceAtlasSha256": "b80efc51562e54d621b8077b93b6f361de8380994ed9eab68a2ea86c89833110",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/sluice-keeper-reference-v1.png",
+      "referenceSha256": "26c0ae59c7c9e45778f19c9311acacbf33b6c73f4e7e197020826ad5ad818ba3",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 38362,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "wire-seamstress",
+      "sourceAtlas": "assets/production/motion/wire-seamstress-action-v1-atlas.png",
+      "sourceAtlasSha256": "a8ecb1dca34fdfc859bb7345e60de80f11fb747f37b6e28935eb9cd18f8bd07f",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/wire-seamstress-reference-v1.png",
+      "referenceSha256": "7ff2704ff365379819423bf9519620cdf743003bf743415db728c975f9a4ab6a",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 38577,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "spore-beekeeper",
+      "sourceAtlas": "assets/production/motion/spore-beekeeper-action-v1-atlas.png",
+      "sourceAtlasSha256": "111c2768a3f167fff879f20d801b262613c9c96032f9e6ea6378ed7bae68bca1",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/spore-beekeeper-reference-v1.png",
+      "referenceSha256": "6ab7335cf3399889e33b60e684758defe55a11134b860e489a8023556a334ae3",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 40459,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "boiler-tender",
+      "sourceAtlas": "assets/production/motion/boiler-tender-action-v1-atlas.png",
+      "sourceAtlasSha256": "2403fe536ddc87722a939f8f0b586d1e17d10dfb73ba6b28858d9d84358d58c7",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/boiler-tender-reference-v1.png",
+      "referenceSha256": "eb36a2fa189538d8291ea604136853c1ae704da950138e079364dd2adbdf5842",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 40933,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "chalk-magistrate",
+      "sourceAtlas": "assets/production/motion/chalk-magistrate-action-v1-atlas.png",
+      "sourceAtlasSha256": "68b7f235c2086ec4c19dc1dc839d850473912d43e2e291f4b5804dcb87a1c626",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/chalk-magistrate-reference-v1.png",
+      "referenceSha256": "ed443c0492690d9150c6148d2c2b45e6867e93b65909413a3e8b528ed04c1028",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 31615,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "ledger-leech",
+      "sourceAtlas": "assets/production/motion/ledger-leech-action-v1-atlas.png",
+      "sourceAtlasSha256": "9910162f1ea276da630852847d65728c327039ea8815dbd2b326335ea6c0ff15",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/ledger-leech-reference-v1.png",
+      "referenceSha256": "f51abd5da9347b463cef145c8e228f7e2324419d0d1c648947c9f40c0b06f8ae",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 34754,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "engine",
+      "sourceAtlas": "assets/production/motion/engine-action-v1-atlas.png",
+      "sourceAtlasSha256": "2c3c26fca994f0f61abc59a45c5ecd5561aa60465ed3c60b46c794ef66ec007f",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/engine-reference-v1.png",
+      "referenceSha256": "061d4fe2b392075ca2058b0b83ab9d25ef01f61127da7a09c494494046bae724",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 57716,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "salt-patriarch",
+      "sourceAtlas": "assets/production/motion/salt-patriarch-action-v1-atlas.png",
+      "sourceAtlasSha256": "5919d5f5669b37cf17ae85b4df45530c67012695e240d00b597231e4c6770692",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/salt-patriarch-reference-v1.png",
+      "referenceSha256": "51ca5c490bcd114e7e5d07336e9e7888830abff6322ee1fa7862ec32445ed3ce",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 41372,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "pallbearer",
+      "sourceAtlas": "assets/production/motion/pallbearer-action-v1-atlas.png",
+      "sourceAtlasSha256": "282a942f33d76c6d61a0192d7d48b537e439d4e86a99d748ba077a46cab38e0c",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/pallbearer-reference-v1.png",
+      "referenceSha256": "2d039bafb30f3b4eaacfad8f5fc8377951642243713b7224ac8195cf636cd723",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 47755,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.3513513513514
+    },
+    {
+      "bossId": "cinder-foreman",
+      "sourceAtlas": "assets/production/motion/cinder-foreman-action-v1-atlas.png",
+      "sourceAtlasSha256": "2ce97c87481c935eefc789d2c48bdab48584a14dc768dcaaceaee3d8ca93e885",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/cinder-foreman-reference-v1.png",
+      "referenceSha256": "b384d94e076ac61d9bf934a2e7cdee1d9c0f1a021839211ea7d415f227848436",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 45516,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "canal-diver",
+      "sourceAtlas": "assets/production/motion/canal-diver-action-v1-atlas.png",
+      "sourceAtlasSha256": "b25d67fe1994d0a6688d59666b01918d501a5778ae7c57dbe5f72d5484313e8a",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/canal-diver-reference-v1.png",
+      "referenceSha256": "672b6321aee374023a89ddf5ed8071c7fc046559f1111db0bcf82d26ed1d52ab",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 47308,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "clockmender",
+      "sourceAtlas": "assets/production/motion/clockmender-action-v1-atlas.png",
+      "sourceAtlasSha256": "6043f48801b318ad4e8bb1ad66ef1dc4655e33c9a923f3f3c10f2c80a5c9757d",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/clockmender-reference-v1.png",
+      "referenceSha256": "dc20ddc4368a32b1e5bf2ec0a45152433bbbbf12a7b28a840600d092bf51ae0c",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 41589,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "gravedigger",
+      "sourceAtlas": "assets/production/motion/gravedigger-action-v1-atlas.png",
+      "sourceAtlasSha256": "cdb9661e8d3089d4018338059f33b8765a334278831c802617a6f3563ab8c89f",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/gravedigger-reference-v1.png",
+      "referenceSha256": "bb43deda45d53572ea447b6c015820735fc30f5e3e480c235f805b58f9280fb9",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 45661,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "ink-notary",
+      "sourceAtlas": "assets/production/motion/ink-notary-action-v1-atlas.png",
+      "sourceAtlasSha256": "78564b6eda83095221fb68bba5f524064845056b3aadaa7aed49c47527a64151",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/ink-notary-reference-v1.png",
+      "referenceSha256": "7f3cb7e6d3194f61fa65f03e1d9913e37ac32d6e7025b7c13aa032cbe19404de",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 40469,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "ice-custodian",
+      "sourceAtlas": "assets/production/motion/ice-custodian-action-v1-atlas.png",
+      "sourceAtlasSha256": "4da79aba45c68b79b4e8b8eccd63a8c9e9fdb348eabf309eb05b497e9c6e37a5",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/ice-custodian-reference-v1.png",
+      "referenceSha256": "0fda8d7fbac2e5e10daeb26bc47c739502d3b39a051b2d2842f14717bb3ac392",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 45954,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "bridge-ferryman",
+      "sourceAtlas": "assets/production/motion/bridge-ferryman-action-v1-atlas.png",
+      "sourceAtlasSha256": "ace7263f14ac4012bbaf91e039e857b43df96467282fb71eef9e4a9dac86c068",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/bridge-ferryman-reference-v1.png",
+      "referenceSha256": "5ceba19414e3928eccd325fe8bf3a95e4c407f6d77d40a0eee1f4cc153e0efae",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 45532,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "porcelain-mourner",
+      "sourceAtlas": "assets/production/motion/porcelain-mourner-action-v1-atlas.png",
+      "sourceAtlasSha256": "93477e57a17768b373bb733475f861b2ae6fbf424d1a0193e589cf5ffd2ac536",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/porcelain-mourner-reference-v1.png",
+      "referenceSha256": "36521e939c54d073092c47cdba6965ef552120c8616678a4a315b9f0829d200d",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 39403,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.3513513513513
+    },
+    {
+      "bossId": "mirror-undertaker",
+      "sourceAtlas": "assets/production/motion/mirror-undertaker-action-v1-atlas.png",
+      "sourceAtlasSha256": "70640cb89eeab66a3e177a045d0df58576e3b9457b51fc5dccb4e9c151c23d90",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/mirror-undertaker-reference-v1.png",
+      "referenceSha256": "e389831a966ea11cca80feefd9cb1c99889700bdd09aef594af570d80551e3ae",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 41984,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "wire-harpist",
+      "sourceAtlas": "assets/production/motion/wire-harpist-action-v1-atlas.png",
+      "sourceAtlasSha256": "60e1d93e35fbd4cc0d9225a8f4574a183d0ce283ec30912732389055c37a0335",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/wire-harpist-reference-v1.png",
+      "referenceSha256": "3d81767e984fdd4106e01eac1e4325eb0e2a1a940f7f4e61762d3fdf5f3c678a",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 42922,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "crow-shepherd",
+      "sourceAtlas": "assets/production/motion/crow-shepherd-action-v1-atlas.png",
+      "sourceAtlasSha256": "5d3fd4193d57bfc809ea2f2f0fd4f184c12b023c005d94376722f77b6fd035e3",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/crow-shepherd-reference-v1.png",
+      "referenceSha256": "831dbfb3ca9d76379809a0f7371edf7261f08ed95d8e88ba0469ebc15e36735d",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 42250,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.3513513513513
+    },
+    {
+      "bossId": "chain-colossus",
+      "sourceAtlas": "assets/production/motion/chain-colossus-action-v1-atlas.png",
+      "sourceAtlasSha256": "8d7bb0204108ff382d9cf1ee1e7ea722d4349d47365e2d73dcb19b18871d060d",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/chain-colossus-reference-v1.png",
+      "referenceSha256": "ed3a5389846611f07dfdb55702fafd65113a302e68fa0c50a78ecd6c9d76d211",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 63600,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "bell-triplets",
+      "sourceAtlas": "assets/production/motion/bell-triplets-action-v1-atlas.png",
+      "sourceAtlasSha256": "6ec7d6426d74f3c0287ea5f3fdaa2a36a0f7fbe594e1cc1b6ff1f409f241d740",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/bell-triplets-reference-v1.png",
+      "referenceSha256": "d7f92e8d5cd4253b3de2d4d3426704e1fe12e344fcdf85c8cd6d1a070443bba9",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 82972,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "crown-procession",
+      "sourceAtlas": "assets/production/motion/crown-procession-action-v1-atlas.png",
+      "sourceAtlasSha256": "77a51f032635ae17b724256f409453324d111bccdf3eddd8568f72e761c39d0a",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/crown-procession-reference-v1.png",
+      "referenceSha256": "4b8a5f39e1f2321da339f288663a9a648c65e6251aa898ec2c9b203e3fdc9baf",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 54918,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "city-eater",
+      "sourceAtlas": "assets/production/motion/city-eater-action-v1-atlas.png",
+      "sourceAtlasSha256": "a238cf07f66cbc3e82dc421de3cb728daf3af0c106dd06b8a0228102644c22ad",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/city-eater-reference-v1.png",
+      "referenceSha256": "5d67a374347a242595aea1f716f8319a7c7153ce09ed5b5fe67144913647885d",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 55119,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "last-breath-saint",
+      "sourceAtlas": "assets/production/motion/last-breath-saint-action-v1-atlas.png",
+      "sourceAtlasSha256": "42af89b96c560f77bceb569879f1a9a08061356e279428d7e6f10b493baa6a47",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/last-breath-saint-reference-v1.png",
+      "referenceSha256": "07d91f635b9c719ce499247fedc8b968ad5a8be9cd9101f47c0a5065ff29cadb",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 38851,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "quarantine-heart",
+      "sourceAtlas": "assets/production/motion/quarantine-heart-action-v1-atlas.png",
+      "sourceAtlasSha256": "226476bad87c19f57d113fedb2d4599119e4b7834df85b93505be6dcef431a1b",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/quarantine-heart-reference-v1.png",
+      "referenceSha256": "d00a1b3bdbcdcccf00754ee5d3ca038358d6070b06750a3d792af3a4c26473b6",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 60988,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "ossuary-leviathan",
+      "sourceAtlas": "assets/production/motion/ossuary-leviathan-action-v1-atlas.png",
+      "sourceAtlasSha256": "001abf64b7ae131befe1ba540b1ba500b88eae5381a502dfbf2ce68e56746e80",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/ossuary-leviathan-reference-v1.png",
+      "referenceSha256": "eefa31f2523669fa44015e49bad2cd37a7e5437bfc11a39eee0eecae637dcc24",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 21876,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 585.8783911503635
+    },
+    {
+      "bossId": "unlit-astronomer",
+      "sourceAtlas": "assets/production/motion/unlit-astronomer-action-v1-atlas.png",
+      "sourceAtlasSha256": "12870c694d76002f31fa76e10d287c68b743d6ccda14c3645a07979568fbb621",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/unlit-astronomer-reference-v1.png",
+      "referenceSha256": "119ba365c9e151b2f20491d3588580f2bf651629de1e563832095c667eac1b64",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 33157,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "red-comet",
+      "sourceAtlas": "assets/production/motion/red-comet-action-v1-atlas.png",
+      "sourceAtlasSha256": "ef348b2aae825ce03617dcb01469f8c4b723a354c06ec4ffe41cc55ca8ea69cf",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/red-comet-reference-v1.png",
+      "referenceSha256": "b33c97700d108b9542dc18fd50f1654bebaa71e5da7cd1cfc2012fffa0a3cffe",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 33338,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "memory-taxer",
+      "sourceAtlas": "assets/production/motion/memory-taxer-action-v1-atlas.png",
+      "sourceAtlasSha256": "824f14ffb5227480ac858053dad9cebcf78c4985c3332f15339ec00528498d9c",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/memory-taxer-reference-v1.png",
+      "referenceSha256": "ec5680e1c278e168fa1f8579d184e1504f5350f02f6fb5634564c8f68cc6c971",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 33340,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "choir-of-moths",
+      "sourceAtlas": "assets/production/motion/choir-of-moths-action-v1-atlas.png",
+      "sourceAtlasSha256": "2f96e5d15e2ff9f80850fed1ea42f144644d17c5c594e2ab09f3855f3bee170b",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/choir-of-moths-reference-v1.png",
+      "referenceSha256": "836d35476c975aea35835c2def30a89a5c046071823ac4cc1a52dfe62e6b9ace",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 36367,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "last-knocker",
+      "sourceAtlas": "assets/production/motion/last-knocker-action-v1-atlas.png",
+      "sourceAtlasSha256": "3476b6eb92078d8f643aed7f59b3286f0af912258c804013e81654a33e3af33a",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/last-knocker-reference-v1.png",
+      "referenceSha256": "3cd72e8caf9f5182b9659edd3597f3d512ae1cc3f8e21a00b28a7ac9af5f157d",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 40756,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "hourglass-widow",
+      "sourceAtlas": "assets/production/motion/hourglass-widow-action-v1-atlas.png",
+      "sourceAtlasSha256": "a27d0be3247f84063723b4cf7b8366f1f5f6d341b7168be8acbc7e606bec90ef",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/hourglass-widow-reference-v1.png",
+      "referenceSha256": "9c5aa314628f19fffe2d3a366249ebf43030efad1b0610737c6f91b677ac4f11",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 37298,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.3513513513513
+    },
+    {
+      "bossId": "folded-man",
+      "sourceAtlas": "assets/production/motion/folded-man-action-v1-atlas.png",
+      "sourceAtlasSha256": "333d17258916c27624624ba5229a01c0f30d7551355e50c3c57d5312db09acc7",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/folded-man-reference-v1.png",
+      "referenceSha256": "fd7d56c444860b7cee59cda04c21b6d0f988c54d7deb6b07548ba5ff1cbeb406",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 39332,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "zero-hour-conductor",
+      "sourceAtlas": "assets/production/motion/zero-hour-conductor-action-v1-atlas.png",
+      "sourceAtlasSha256": "c48770a6ef0aef02fd3de24b76e70e7a7dfbd02fd84e74716f344935623e3edf",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/zero-hour-conductor-reference-v1.png",
+      "referenceSha256": "73364530494b912cd1f029b2228cf83884c7d40eed14fcf8b7323362e3a63296",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 39300,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.3513513513513
+    },
+    {
+      "bossId": "walking-district",
+      "sourceAtlas": "assets/production/motion/walking-district-action-v1-atlas.png",
+      "sourceAtlasSha256": "c3e9312b9db34d6793472ec1b8c9bef823670b465183324ad07e1ec8061fcf64",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/walking-district-reference-v1.png",
+      "referenceSha256": "29d6e98356f4349fab7585a3e540de1496da6711ddad96cdcf518d0435656aea",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 61536,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.3513513513513
+    },
+    {
+      "bossId": "uncounted",
+      "sourceAtlas": "assets/production/motion/uncounted-action-v1-atlas.png",
+      "sourceAtlasSha256": "00fc23b7e7050063ba99c12b7869ee1f91d8568e9d8fdf33288e2562fb3aa54d",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceFullDecodedBytes": 4718592,
+      "reference": "assets/delivery/boss-loading-v1/uncounted-reference-v1.png",
+      "referenceSha256": "a1c482595f66920f341e20232b79bf298041f07e9cb99a03681f2a952f17ef57",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 54071,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    }
+  ],
+  "settledReferences": [
+    {
+      "bossId": "ratcatcher",
+      "sourceAtlas": "assets/production/motion/ratcatcher-action-v2-atlas.png",
+      "sourceAtlasSha256": "9edc97bf52f98b866c1a3233b33ab7df332339ac4cd0f8d203b0725e9756650a",
+      "sourceFrame": 15,
+      "sourceCellSize": 384,
+      "reference": "assets/delivery/boss-loading-v2/ratcatcher-defeat-reference-v1.png",
+      "referenceSha256": "551a11e055dfc3dee624105aca2de408c285719a6e00513c79397ca7186569f6",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 33580,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "quarantine-clerk",
+      "sourceAtlas": "assets/production/motion/quarantine-clerk-action-v2-atlas.png",
+      "sourceAtlasSha256": "cbfddac1c1fdcb68d543bd880021cd9b86bbdf9c8e5ee9bd5e459f27b50d1ec1",
+      "sourceFrame": 15,
+      "sourceCellSize": 384,
+      "reference": "assets/delivery/boss-loading-v2/quarantine-clerk-defeat-reference-v1.png",
+      "referenceSha256": "93e08535c46ea4d532812771ec81d591be34def6f8ff28f40874ef7647eef9e5",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 17235,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "courier",
+      "sourceAtlas": "assets/production/motion/courier-action-v2-atlas.png",
+      "sourceAtlasSha256": "e7a46a8988e0096a1eda145683a82464ad452ac39df481ed0424708ecf427cb1",
+      "sourceFrame": 15,
+      "sourceCellSize": 384,
+      "reference": "assets/delivery/boss-loading-v2/courier-defeat-reference-v1.png",
+      "referenceSha256": "3e549cff9125b6ebb60f5c8e13e4dae6defd390f3ae9bda27609a0e60c822678",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 18281,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "tollkeeper",
+      "sourceAtlas": "assets/production/motion/tollkeeper-action-v2-atlas.png",
+      "sourceAtlasSha256": "d36ba858f3dc83498df7c42020ec89ed23bd0f3304cb046964a0d622c0ffd799",
+      "sourceFrame": 15,
+      "sourceCellSize": 448,
+      "reference": "assets/delivery/boss-loading-v2/tollkeeper-defeat-reference-v1.png",
+      "referenceSha256": "603840df0ac83fcac470d8fc94109b73aa2ea82844fabc3f3b55ea3eedbe219e",
+      "referenceDecodedBytes": 802816,
+      "referencePngBytes": 32423,
+      "origin": [
+        0.5,
+        0.7857142857142857
+      ],
+      "displayCell": 363.2432432432433
+    },
+    {
+      "bossId": "chain-marshal",
+      "sourceAtlas": "assets/production/motion/chain-marshal-action-v2-atlas.png",
+      "sourceAtlasSha256": "07179387b2e2ed2056034f25eea2c3f628e2b267c36fc080f32f2648b7f94e2b",
+      "sourceFrame": 15,
+      "sourceCellSize": 384,
+      "reference": "assets/delivery/boss-loading-v2/chain-marshal-defeat-reference-v1.png",
+      "referenceSha256": "528e7ad5b7be244d8119ae9a236f0773979d21c8664fbaefb1ffdccbe2cb259c",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 26240,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "gate-widow",
+      "sourceAtlas": "assets/production/motion/gate-widow-action-v2-atlas.png",
+      "sourceAtlasSha256": "fd2370bd7308ebf9bfd7cc7f18a7d0cb7e5856f15e82902f8d1a248883ec00cb",
+      "sourceFrame": 15,
+      "sourceCellSize": 384,
+      "reference": "assets/delivery/boss-loading-v2/gate-widow-defeat-reference-v1.png",
+      "referenceSha256": "2fbd12247ecdb8cbc5a4a003ed16f5f16fcd7a5fcc02bd046806fff4efa8a699",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 18772,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    },
+    {
+      "bossId": "black-ambulance",
+      "sourceAtlas": "assets/production/motion/black-ambulance-action-v2-atlas.png",
+      "sourceAtlasSha256": "09eb28742a63123d10bb8d49c29125e22d57829f710f3accf007cab82ecc79ce",
+      "sourceFrame": 15,
+      "sourceCellSize": 384,
+      "reference": "assets/delivery/boss-loading-v2/black-ambulance-defeat-reference-v1.png",
+      "referenceSha256": "1f418eab8fbfe6f1c43107d406595925f2b0d7b26097912c86af15a2ec19ee56",
+      "referenceDecodedBytes": 589824,
+      "referencePngBytes": 60191,
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayCell": 311.35135135135135
+    }
+  ],
+  "summary": {
+    "encounterAtlases": 65,
+    "alwaysLoadedAtlases": 8,
+    "lazyAtlases": 57,
+    "mainReferences": 57,
+    "settledReferences": 7,
+    "baselineDecodedBytes": 343146496,
+    "alwaysLoadedDecodedBytes": 37748736,
+    "mainReferenceDecodedBytes": 33832960,
+    "settledReferenceDecodedBytes": 4341760,
+    "referenceDecodedBytes": 38174720,
+    "startupDecodedBytes": 75923456,
+    "maximumTwoFullAtlasBytes": 22282240,
+    "maximumCachedDecodedBytes": 98205696,
+    "cachedReductionPercent": 71.38082505729564,
+    "referencePngBytes": 2726245
+  },
+  "limits": [
+    "Dimension-based four-channel estimates for this encounter atlas set only; not actual driver, CPU-cache, staging, mipmap or device/FPS measurements.",
+    "Constable, Warden, survivor, arena and other textures are outside this subtotal.",
+    "One atlas per current/recent boss remains in the two-entry cache; its sixteen frames include unchanged original actions and the new collapse.",
+    "Fifty-seven identity images and seven exact settled poses remain available during load/retry. Future concealed schedules are not prefetched."
+  ]
+}

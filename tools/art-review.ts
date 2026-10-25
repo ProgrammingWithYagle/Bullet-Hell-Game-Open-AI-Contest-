@@ -1,5 +1,6 @@
 import serviceMotion from '../assets/production/motion/service-library.json';
 import constableMotion from '../assets/production/motion/constable-library.json';
+import openingDefeats from '../assets/production/motion/opening-defeats-library.json';
 import libraryData from '../assets/production/normalized/library.json';
 import heavyMotion from '../assets/production/motion/heavy-library.json';
 import encounters from '../assets/production/motion/encounter-library.json';
@@ -32,11 +33,17 @@ interface ArtEntry {
   frameDurationsMs?: number[];
   notes?: string;
 }
+const updatedBossIds = new Set(openingDefeats.entries.map((entry) => entry.bossId));
 const entries: ArtEntry[] = [
   ...(libraryData as { entries: ArtEntry[] }).entries,
   ...heavyMotion.entries,
-  ...encounters.entries,
-  ...civic.entries,
+  ...encounters.entries.filter((entry) => !updatedBossIds.has(entry.bossId)),
+  ...civic.entries.filter((entry) => !updatedBossIds.has(entry.bossId)),
+  ...openingDefeats.entries.map((entry) => ({
+    ...entry,
+    source: entry.defeatSource,
+    sourceSha256: entry.defeatSourceSha256,
+  })),
   ...serviceMotion.entries,
   ...constableMotion.entries,
   ...survivors.entries,

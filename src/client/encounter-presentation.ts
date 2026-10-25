@@ -1,4 +1,5 @@
 import endings from '../../assets/production/motion/endless-library.json';
+import openingDefeats from '../../assets/production/motion/opening-defeats-library.json';
 import { finalBossIds } from '../shared/endless-director.ts';
 import raids from '../../assets/production/motion/raid-library.json';
 import { raidBossIds } from '../shared/raid-director.ts';
@@ -10,7 +11,7 @@ import library from '../../assets/production/motion/encounter-library.json';
 import civic from '../../assets/production/motion/civic-library.json';
 import type { Boss } from '../shared/game.ts';
 import type { BossCue } from '../shared/boss-director.ts';
-export const encounterArt = [
+const baseEncounterArt = [
   ...library.entries,
   ...civic.entries,
   ...services.entries,
@@ -18,6 +19,9 @@ export const encounterArt = [
   ...raids.entries,
   ...endings.entries,
 ];
+export const encounterArt = baseEncounterArt.map(
+  (entry) => openingDefeats.entries.find((clip) => clip.bossId === entry.bossId) ?? entry,
+);
 export function encounterFrame(boss: Boss, now: number, cues: BossCue[], reduced = false) {
   if (
     [...serviceBossIds, ...districtBossIds, ...raidBossIds, ...finalBossIds].some(

@@ -120,6 +120,12 @@ def main():
     save(source(ground_reference['image']).convert('RGB'),'arena-ground.jpg','Six arena ground paintings with actual footprint, cover and spawn geometry at one scale. Static artwork reference, not a game capture.')
     for path in ['reviews/arena-ground-2026-10-25/ground-layout-reference.json',ground_reference['sourceLibrary'],ground_reference['geometrySnapshot'],'tools/build-arena-ground-reference.py']:
         sources[path]={'path':path,'sha256':sha(ROOT/path)}
+    opening_reference=read('reviews/opening-defeats-2026-10-25/opening-defeats-reference.json')
+    assert sha(ROOT/opening_reference['image'])==opening_reference['imageSha256']
+    assert sha(ROOT/opening_reference['sourceLibrary'])==opening_reference['sourceLibrarySha256']
+    save(source(opening_reference['image']).convert('RGB'),'opening-defeats.jpg','Four key poses from each of seven eight-frame opening-boss defeat clips, at one world scale. Sprite reference, not a game capture.')
+    for path in ['reviews/opening-defeats-2026-10-25/opening-defeats-reference.json',opening_reference['sourceLibrary'],'tools/build-opening-defeat-reference.py']:
+        sources[path]={'path':path,'sha256':sha(ROOT/path)}
     figure_receipt=read('reviews/performance/endurance-50-moths-20261024-2-figure-v2.json')
     assert sha(ROOT/figure_receipt['figure'])==figure_receipt['figureSha256']
     assert sha(ROOT/figure_receipt['source'])==figure_receipt['sourceSha256']

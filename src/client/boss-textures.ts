@@ -1,10 +1,11 @@
 // A small atlas cache for the current replicated boss. Shared actors stay preloaded.
-import references from '../../assets/delivery/boss-loading-v1/library.json';
+import references from '../../assets/delivery/boss-loading-v2/library.json';
 export const bossTextureReferences = references;
 export const BOSS_ATLAS_CAPACITY = 2;
 export const BOSS_ATLAS_RETRY_MS = 5000;
 const dynamic = new Set(references.lazyBossIds);
 const support = new Set(references.alwaysLoadedIds);
+const settledIds = new Set(references.settledReferences.map((entry) => entry.bossId));
 export const isDeferredBoss = (id: string) => dynamic.has(id);
 export const isSharedEncounter = (id: string) => support.has(id);
 
@@ -21,6 +22,7 @@ export function preloadBossTextureBase(
   clips: { bossId: string; cellSize: number }[],
   animations: Record<string, string>,
   identities: Record<string, string>,
+  settledIdentities: Record<string, string> = {},
 ) {
   for (const clip of clips) {
     if (!support.has(clip.bossId)) continue;
@@ -35,12 +37,21 @@ export function preloadBossTextureBase(
     if (!url) throw new Error('Missing boss identity URL: ' + key);
     loader.image(key, url);
   }
+  for (const reference of references.settledReferences) {
+    const key = reference.bossId + '-defeat-reference',
+      url = settledIdentities[reference.bossId];
+    if (!url) throw new Error('Missing boss settled identity URL: ' + reference.bossId);
+    loader.image(key, url);
+  }
 }
 
 export function bossTexturePose(id: string, frame: number, fullAtlasReady: boolean) {
   return !dynamic.has(id) || fullAtlasReady
     ? { key: id + '-action', frame }
-    : { key: id + '-reference', frame: 0 };
+    : {
+        key: id + (settledIds.has(id) && frame >= 8 ? '-defeat-reference' : '-reference'),
+        frame: 0,
+      };
 }
 
 type Backend = { load(id: string): Promise<void>; evict(id: string): void };
@@ -139,6 +150,7 @@ export class BossTextureCache {
 }
 
 type TextureHolder = {
+  frame?: { name: number | string };
   texture?: { key: string };
   anims?: { stop(): unknown };
   setTexture(key: string, frame?: number | string): unknown;
@@ -152,7 +164,8 @@ export function retireBossTexture(
   // Phaser requires users to release the texture before its GPU resource is destroyed.
   if (holder?.texture?.key === key) {
     holder.anims?.stop();
-    holder.setTexture(id + '-reference', 0);
+    const settled = settledIds.has(id) && Number(holder.frame?.name) >= 8;
+    holder.setTexture(id + (settled ? '-defeat-reference' : '-reference'), 0);
   }
   if (textures.exists(key)) textures.remove(key);
 }

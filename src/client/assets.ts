@@ -80,19 +80,50 @@ const items = import.meta.glob('../../assets/production/items/icons/*/*.png', {
   import: 'default',
   eager: true,
 }) as Record<string, string>;
+const bossSettledIdentities = import.meta.glob(
+  '../../assets/delivery/boss-loading-v2/*-defeat-reference-v1.png',
+  { query: '?url', import: 'default', eager: true },
+) as Record<string, string>;
+const updatedBossIdentities = import.meta.glob(
+  '../../assets/delivery/boss-loading-v2/*-reference-v2.png',
+  { query: '?url', import: 'default', eager: true },
+) as Record<string, string>;
 const bossIdentities = import.meta.glob(
   '../../assets/delivery/boss-loading-v1/*-reference-v1.png',
   { query: '?url', import: 'default', eager: true },
 ) as Record<string, string>;
-const encounterMotion = import.meta.glob('../../assets/production/motion/*-action-v1-atlas.png', {
-  query: '?url',
-  import: 'default',
-  eager: true,
-}) as Record<string, string>;
+const encounterMotion = import.meta.glob(
+  [
+    '../../assets/production/motion/*-action-v1-atlas.png',
+    '../../assets/production/motion/*-action-v2-atlas.png',
+    '!../../assets/production/motion/courier-action-v1-atlas.png',
+    '!../../assets/production/motion/ratcatcher-action-v1-atlas.png',
+    '!../../assets/production/motion/quarantine-clerk-action-v1-atlas.png',
+    '!../../assets/production/motion/tollkeeper-action-v1-atlas.png',
+    '!../../assets/production/motion/chain-marshal-action-v1-atlas.png',
+    '!../../assets/production/motion/gate-widow-action-v1-atlas.png',
+    '!../../assets/production/motion/black-ambulance-action-v1-atlas.png',
+  ],
+  {
+    query: '?url',
+    import: 'default',
+    eager: true,
+  },
+) as Record<string, string>;
 export const assets = {
   bossIdentities: Object.fromEntries(
-    Object.entries(bossIdentities).map(([path, url]) => [
-      path.split('/').at(-1)!.replace('-reference-v1.png', ''),
+    Object.entries(bossIdentities)
+      .map(([path, url]) => [path.split('/').at(-1)!.replace('-reference-v1.png', ''), url])
+      .concat(
+        Object.entries(updatedBossIdentities).map(([path, url]) => [
+          path.split('/').at(-1)!.replace('-reference-v2.png', ''),
+          url,
+        ]),
+      ),
+  ) as Record<string, string>,
+  bossSettledIdentities: Object.fromEntries(
+    Object.entries(bossSettledIdentities).map(([path, url]) => [
+      path.split('/').at(-1)!.replace('-defeat-reference-v1.png', ''),
       url,
     ]),
   ) as Record<string, string>,
@@ -131,7 +162,10 @@ export const assets = {
   ) as Record<string, string>,
   encounters: Object.fromEntries(
     Object.entries(encounterMotion).map(([path, url]) => [
-      path.split('/').at(-1)!.replace('-action-v1-atlas.png', ''),
+      path
+        .split('/')
+        .at(-1)!
+        .replace(/-action-v[12]-atlas\.png$/, ''),
       url,
     ]),
   ) as Record<string, string>,

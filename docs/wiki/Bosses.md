@@ -131,3 +131,9 @@ Numbered history, beat pips, safe lane markers and knock counts remain visible. 
 ![All twenty-seven Hollow Constable idle, attack, hurt, stagger and defeat poses at one world scale](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/constable-motion.jpg)
 
 Four new whole sheets add nineteen poses alongside the eight retained attack frames. Cast anticipation now holds until the authoritative release, successful Accord uses a visible stagger loop, and the world clock completes a collapse after combat stops. This is a sprite reference; rendered/device/human acceptance remains open. [Production, timing and independent reconstruction](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/CONSTABLE_MOTION.md).
+
+## Opening-route defeats
+
+![Four representative poses from each of seven new opening-route boss defeat sequences](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/opening-defeats.jpg)
+
+Seven new eight-pose clips add 56 complete defeat poses. Constable and Warden already have dedicated defeats, so all nine opening identities now settle after victory. The renderer preserves original live action pixels, runs collapse once on authoritative world time, and holds the correct settled image during loading/retry. This is a sprite reference at one world scale; rendered/device/human transition review remains open. [Production, exact reconstruction and resource scope](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/OPENING_BOSS_DEFEATS.md).

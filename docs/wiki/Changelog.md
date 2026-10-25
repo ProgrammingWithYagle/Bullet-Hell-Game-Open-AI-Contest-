@@ -1,6 +1,21 @@
 # Changelog
 
-Development build **2026.10.25-arena-grounds**, protocol 13. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.25-opening-defeats**, protocol 13. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-25 — Seven opening bosses gain complete defeat sequences
+
+### Fifty-six new poses
+
+- Courier, Ratcatcher, Quarantine Clerk, Tollkeeper, Chain Marshal, Gate Widow and Black Ambulance each gain an eight-pose defeat clip. All nine opening-route identities now have settled defeats alongside Constable and Warden.
+- Original live action pixels and world scale are retained. One scale per new strip keeps fallen poses naturally short and wide, with equipment and complete silhouettes preserved.
+- Defeat begins only after the server records it, plays once on world time and holds the final pose through rewards and votes. Reduced motion holds the settled pose; stagger fading applies only to living bosses.
+
+### Loading and verification
+
+- Seven exact settled images are available during loading/retry. The current/recent atlas cache still retains at most two full boss atlases, with one load in flight and safe sprite release before eviction.
+- The expanded encounter set implies 72.40625 MiB at startup or at most 93.65625 MiB retained, versus 327.25 MiB without its cache. These dimension estimates exclude other textures, driver allocation and device FPS.
+- Independent native/atlas reconstruction preserves all 56 original live poses and verifies all 56 new poses. Five new regressions cover normal/Brutal kills, one-time rewards, paused combat/world clocks, stale cues, reduced motion, identity fallbacks and eviction.
+- Eight actual native returns are preserved, including the rejected first Ambulance layout. The Wiki adds a representative motion image. Final rendered/device/human transition review remains open.
 
 ## 2026-10-25 — Every map gains its own painted ground material
 

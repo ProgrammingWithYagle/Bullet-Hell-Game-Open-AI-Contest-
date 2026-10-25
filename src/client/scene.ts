@@ -8,6 +8,7 @@ import { ServicePresentation } from './service-presentation.ts';
 import type { ServiceCue } from '../shared/service-director.ts';
 import Phaser from 'phaser';
 import { assets } from './assets.ts';
+import { bossDefeatFrame } from './boss-defeat-presentation.ts';
 import {
   ARENA_BACKDROP_DEPTH,
   applyArenaGround,
@@ -161,6 +162,7 @@ export class CombatScene extends Phaser.Scene {
         Object.entries(assets.encounters).map(([id, url]) => [id + '-action', url]),
       ),
       assets.bossIdentities,
+      assets.bossSettledIdentities,
     );
     for (const [clip, url] of Object.entries(assets.warden)) {
       const size = wardenArt.clips[clip as WardenCombatClipId].cellSize;
@@ -772,7 +774,7 @@ export class CombatScene extends Phaser.Scene {
       view.boss.x,
       view.boss.y + (view.boss.id === 'constable' ? constableArt.groundOffsetY : 0),
     );
-    this.bossSprite.setAlpha(now < view.boss.staggerUntil ? 0.55 : 1);
+    this.bossSprite.setAlpha(view.boss.health > 0 && now < view.boss.staggerUntil ? 0.55 : 1);
     if (warden) {
       const pose = wardenCombatPose(view.boss, view.tick, now, view.signatures, this.reduceMotion);
       const clip = wardenArt.clips[pose.clip];
@@ -786,7 +788,8 @@ export class CombatScene extends Phaser.Scene {
       this.bossSprite.anims.stop();
       const texturePose = bossTexturePose(
         view.boss.id,
-        encounterFrame(view.boss, now, view.bossCues, this.reduceMotion),
+        bossDefeatFrame(view.boss, view.tick, this.reduceMotion, animationTime.tick) ??
+          encounterFrame(view.boss, now, view.bossCues, this.reduceMotion),
         this.textures.exists(view.boss.id + '-action'),
       );
       this.bossSprite
