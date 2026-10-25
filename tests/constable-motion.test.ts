@@ -1,11 +1,13 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
+import { execFileSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import { Game } from '../src/shared/game.ts';
 import { viewOf } from '../src/shared/view.ts';
 import { constableArt, constableCombatPose } from '../src/client/constable-presentation.ts';
 import provenance from '../docs/constable-motion-2026-10-25.json';
+import metadataBinding from '../reviews/constable-motion-2026-10-25/metadata-portability.json';
 
 function fixture(variant: 'normal' | 'brutal' = 'normal') {
   const lobby = new Game({ mode: 'endless', seed: 583, maxPlayers: 1 });
@@ -41,7 +43,18 @@ test('Constable retains all four native sheets, nineteen complete poses and the 
     assert.equal(png[25], 6);
   }
   assert.equal(sha(provenance.priorAttack.atlas), provenance.priorAttack.atlasSha256);
-  assert.equal(sha(provenance.priorAttack.metadata), provenance.priorAttack.metadataSha256);
+  assert.equal(sha(metadataBinding.issuedWindowsReference), provenance.priorAttack.metadataSha256);
+  assert(
+    [metadataBinding.issuedWindowsSha256, metadataBinding.canonicalGitBlobSha256].includes(
+      sha(provenance.priorAttack.metadata),
+    ),
+  );
+  assert.equal(
+    createHash('sha256')
+      .update(readFileSync(provenance.priorAttack.metadata, 'utf8').replaceAll('\r\n', '\n'))
+      .digest('hex'),
+    metadataBinding.canonicalGitBlobSha256,
+  );
   assert.equal(constableArt.clips.attack.displayCell, 300);
   assert.equal(constableArt.groundOffsetY, 65);
 });
@@ -217,4 +230,26 @@ test('reduced motion preserves every authoritative state with bounded readable f
     }).frame,
     0,
   );
+});
+
+test('Constable metadata binds both the exact committed LF blob and historical Windows CRLF bytes', () => {
+  const sha = (value: Buffer) => createHash('sha256').update(value).digest('hex');
+  const committed = execFileSync('git', [
+    '-c',
+    'core.bare=false',
+    'show',
+    'HEAD:' + metadataBinding.metadata,
+  ]);
+  const issued = readFileSync(metadataBinding.issuedWindowsReference);
+  assert.equal(sha(committed), metadataBinding.canonicalGitBlobSha256);
+  assert.equal(sha(issued), metadataBinding.issuedWindowsSha256);
+  assert.equal(
+    sha(readFileSync(metadataBinding.issuedProvenance)),
+    metadataBinding.issuedProvenanceSha256,
+  );
+  assert(issued.equals(Buffer.from(committed.toString('utf8').replaceAll('\n', '\r\n'))));
+  assert.deepEqual(JSON.parse(committed.toString()), JSON.parse(issued.toString()));
+  const allowed = [metadataBinding.canonicalGitBlobSha256, metadataBinding.issuedWindowsSha256];
+  assert(!allowed.includes(sha(Buffer.concat([committed, Buffer.from(' ')]))));
+  assert(!allowed.includes(sha(Buffer.from(committed.toString().replace('512', '513')))));
 });

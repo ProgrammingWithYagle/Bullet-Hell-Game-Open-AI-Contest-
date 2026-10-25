@@ -14,7 +14,8 @@ Development build **2026.10.25-constable-motion**, protocol 13. These entries de
 
 - Attack anticipation now holds until the replicated release tick. The former warning-start animation showed the first fan release fourteen ticks early; zone casts were also omitted by its filter.
 - Hurt cannot interrupt casts, stagger or defeat. Bounded drawing lead cannot release before authority; reduced motion keeps readable held states. Boss damage, telegraphs, rewards and encounter rules are unchanged.
-- Independent pixel reconstruction verifies all nineteen new poses and original attack hashes. Seven regressions cover normal/Brutal timing, actual Accord, one-time rewards, world-clock defeat and reduced motion. The Wiki gains a complete twenty-seven-pose motion reference; rendered/device/human acceptance remains open.
+- Independent pixel reconstruction verifies all nineteen new poses and original attack hashes. Eight regressions cover normal/Brutal timing, actual Accord, one-time rewards, world-clock defeat and reduced motion. The Wiki gains a complete twenty-seven-pose motion reference; rendered/device/human acceptance remains open.
+- Cross-platform provenance explicitly binds the historical Windows metadata and Git LF bytes. The first Ubuntu hash-check failure and issued receipts remain preserved; metadata values and artwork are unchanged.
 
 ## 2026-10-25 — Boss animations load by encounter with a bounded texture cache
 
@@ -274,7 +275,7 @@ Development build **2026.10.25-constable-motion**, protocol 13. These entries de
 ### Playable content
 
 - Added Tank, Mage, Engineer and Assassin alongside Soldier, Medic and Heavy. All seven kits execute their two abilities and ultimate, with 378 skill nodes, 63 specialization paths and 28 class weapons.
-- Added six distinct traversable layouts: Gatehouse 1,600 Ã— 1,000; Triage Yard 1,600 Ã— 900; Ossuary Works 1,300 Ã— 1,000; Sunken Chapel 1,400 Ã— 920; Bell Foundry 1,500 Ã— 850; Crown Crypt 1,240 Ã— 880. Cover and spawn positions change with each map.
+- Added six distinct traversable layouts: Gatehouse 1,600 Ãƒâ€” 1,000; Triage Yard 1,600 Ãƒâ€” 900; Ossuary Works 1,300 Ãƒâ€” 1,000; Sunken Chapel 1,400 Ãƒâ€” 920; Bell Foundry 1,500 Ãƒâ€” 850; Crown Crypt 1,240 Ãƒâ€” 880. Cover and spawn positions change with each map.
 - Connected 52 additional item illustrations, 124 approved class motion poses and sixteen environment/construct props. Weapons, supplies, all specialization paths and mutations now have individual item artwork.
 
 ### Rules and verification

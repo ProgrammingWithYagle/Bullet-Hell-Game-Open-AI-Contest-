@@ -47,6 +47,10 @@ for receipt in packing['clips']:
  scales[action]=receipt['uniformScale'];frames+=entry['frames'];results.append({'clip':action,'frames':entry['frames'],'everyNativeRgbaPixelConserved':True,'allPackedRgbaPixelsReconstructed':True,'oneScaleForWholeClip':True})
 assert scales['stagger']==scales['idle']
 old=provenance['priorAttack'];assert sha(ROOT/old['atlas'])==old['atlasSha256']==contract['clips']['attack']['atlasSha256']
-assert sha(ROOT/old['metadata'])==old['metadataSha256']
+binding=json.loads((review/'metadata-portability.json').read_text())
+assert sha(ROOT/binding['issuedWindowsReference'])==old['metadataSha256']==binding['issuedWindowsSha256']
+raw=(ROOT/old['metadata']).read_bytes();assert hashlib.sha256(raw).hexdigest()in[binding['issuedWindowsSha256'],binding['canonicalGitBlobSha256']]
+assert hashlib.sha256(raw.replace(b'\r\n',b'\n')).hexdigest()==binding['canonicalGitBlobSha256']
+assert sha(ROOT/binding['issuedProvenance'])==binding['issuedProvenanceSha256']
 report={'passed':True,'verifier':'tools/verify-constable-motion.py','verifierSha256':sha(Path(__file__)),'contractSha256':sha(ROOT/'assets/production/motion/constable-library.json'),'nativeReturns':4,'newCompletePoses':frames,'retainedAttackPoses':8,'clips':results,'staggerSharesUprightIdleSourceScale':True,'attackAtlasAndMetadataBytesUnchanged':True,'renderedAccepted':False,'limits':['Independent native and packed RGBA verification only.','Natural collapsed silhouettes retain one upright-calibrated scale and a fixed horizontal ground origin.','Assistant contact-sheet review is separate from rendered/device/human acceptance.']}
-(review/'reconstruction.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n');print(json.dumps({k:report[k]for k in ['passed','nativeReturns','newCompletePoses','retainedAttackPoses','attackAtlasAndMetadataBytesUnchanged']}))
+(review/'reconstruction-portable.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n');print(json.dumps({k:report[k]for k in ['passed','nativeReturns','newCompletePoses','retainedAttackPoses','attackAtlasAndMetadataBytesUnchanged']}))
