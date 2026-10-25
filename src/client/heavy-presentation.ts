@@ -1,6 +1,7 @@
 import motion from '../../assets/production/motion/heavy-library.json' with { type: 'json' };
 
-export const heavyArt = motion;
+import { deliveredSurvivorClip } from './survivor-delivery.ts';
+export const heavyArt = { ...motion, entries: motion.entries.map(deliveredSurvivorClip) };
 export type HeavyFacing = 'North' | 'South' | 'East' | 'West';
 export function heavyPose(
   aim: number,

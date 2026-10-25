@@ -1,6 +1,19 @@
 # Changelog
 
-Development build **2026.10.25-motion-timing**, protocol 13. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.25-survivor-delivery**, protocol 13. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-25 — Smaller survivor texture loads with original artwork retained
+
+### Runtime art delivery
+
+- Added runtime-sized copies for all 168 survivor action/run atlases and 820 selected poses. They retain frame order, animation speed, world size and foot origins, with at least two texture pixels per displayed pixel whenever the original provides it.
+- The survivor set now requires 211.09 MiB of decoded RGBA instead of 462.88 MiB by image dimensions, a 54.40 percent reduction. Preferred PNG bytes fall from 30,042,299 to 15,225,408. These estimates are separate from actual GPU/driver memory or device FPS.
+- Full production atlases, native returns and their hashes stay intact. Four excluded Engineer north poses remain absent from delivery. Removed obsolete mirrored/static survivor texture preloads and matched Soldier/Medic menu portraits to their approved identities.
+
+### Verification and review
+
+- Independent reconstruction checks every delivery RGBA cell against its original complete-frame resampling. Tests verify all live selectors, pixel-density bounds, original contract hashes and the decoded-storage budget.
+- Comparison sheets show production and delivery poses at 56/112-pixel body sizes for all seven classes. The local art room retains original-resolution review and includes Soldier/Medic runs. Final rendered/device/human review remains open.
 
 ## 2026-10-25 — Smoother survivor motion between network patches and complete Rescue Charge timing
 

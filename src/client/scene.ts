@@ -100,15 +100,10 @@ export class CombatScene extends Phaser.Scene {
       this.load.image('pilgrimage-prop-' + id, url);
     for (const [id, url] of Object.entries(assets.midnightProps))
       this.load.image('midnight-prop-' + id, url);
-    this.load.spritesheet('soldier', assets.soldier, {
-      frameWidth: 256,
-      frameHeight: 256,
-    });
     this.load.spritesheet('constable', assets.boss, {
       frameWidth: 512,
       frameHeight: 512,
     });
-    this.load.image('medic', assets.medic);
     for (const [direction, url] of Object.entries(assets.heavy)) {
       const size =
         direction === 'reference'
@@ -148,11 +143,6 @@ export class CombatScene extends Phaser.Scene {
         frameHeight: size,
       });
     }
-    for (const [key, url] of Object.entries(assets.directions)) {
-      if (key.endsWith('North') || key.endsWith('South'))
-        this.load.spritesheet(key, url, { frameWidth: 256, frameHeight: 256 });
-      else this.load.image(key, url);
-    }
   }
   create() {
     this.serviceArt = new ServicePresentation(this);
@@ -181,12 +171,6 @@ export class CombatScene extends Phaser.Scene {
     }
     this.foreground = this.add.graphics().setDepth(30);
     this.anims.create({
-      key: 'soldier-run',
-      frames: this.anims.generateFrameNumbers('soldier', { start: 0, end: 7 }),
-      frameRate: 10,
-      repeat: -1,
-    });
-    this.anims.create({
       key: 'constable-attack',
       frames: this.anims.generateFrameNumbers('constable', {
         start: 0,
@@ -195,13 +179,6 @@ export class CombatScene extends Phaser.Scene {
       frameRate: 10,
       repeat: 0,
     });
-    for (const key of ['soldierNorth', 'soldierSouth', 'medicNorth', 'medicSouth'])
-      this.anims.create({
-        key: key + '-walk',
-        frames: this.anims.generateFrameNumbers(key, { start: 0, end: 3 }),
-        frameRate: 8,
-        repeat: -1,
-      });
     this.bossSprite = this.add
       .sprite(800, 315, 'constable', 0)
       .setOrigin(0.5, 0.84)
@@ -770,13 +747,7 @@ export class CombatScene extends Phaser.Scene {
       let sprite = this.people.get(p.id);
       if (!sprite) {
         sprite = this.add
-          .sprite(
-            p.x,
-            p.y,
-            p.classId === 'heavy' || additionalSurvivors.some((id) => id === p.classId)
-              ? p.classId + '-reference'
-              : p.classId,
-          )
+          .sprite(p.x, p.y, p.classId + '-idle-south')
           .setOrigin(0.5, 0.86)
           .setDisplaySize(p.classId === 'medic' ? 72 : 128, p.classId === 'medic' ? 108 : 128);
         this.people.set(p.id, sprite);

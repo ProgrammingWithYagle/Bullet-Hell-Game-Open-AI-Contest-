@@ -22,7 +22,7 @@ Passing automated checks does not imply full rendered FPS, human playtest, devic
 
 [Shared authority](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/src/shared/game.ts) · [Live protocol](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/src/shared/protocol.ts) · [Latest full verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/reviews/runtime-verification.json)
 
-[Latest balance, collision and local throughput evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/BALANCE_AND_COLLISION_RUNTIME.md): 309 full-pipeline tests, 210 progression combinations and 1,740 health/deadline deployments. Longer local 50-client Moths/Walking District and 16-client City Eater probes keep stress p99 below 25 ms; occasional slower ticks remain. Zero rendered clients means this is not final capacity acceptance.
+[Latest balance, collision and local throughput evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/BALANCE_AND_COLLISION_RUNTIME.md): 312 full-pipeline tests, 210 progression combinations and 1,740 health/deadline deployments. Longer local 50-client Moths/Walking District and 16-client City Eater probes keep stress p99 below 25 ms; occasional slower ticks remain. Zero rendered clients means this is not final capacity acceptance.
 
 ## One-hour local combat observation
 
@@ -33,3 +33,7 @@ Fifty active SDK clients and 4,000 maintained hostile projectiles: 21.41 ms p99,
 ## Survivor animation between patches
 
 Survivor runs and action frames use a drawing clock with at most 50 ms of lead beyond the latest authoritative snapshot. Duplicate patches do not restart it, missing patches hold at the bound, and run/encounter/phase or backward-clock boundaries reset it. It changes sprite frames only. Tank Rescue Charge uses its existing ten-tick duration; ordinary dodge retains its seven-tick interval. A sixty-Hz software fixture fed twenty-Hz authority patches reproduces all six dodge frames. [Regression evidence and scope](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/SURVIVOR_MOTION_TIMING.md).
+
+## Survivor texture delivery
+
+The 168 survivor action/run atlases use technical runtime-sized copies with the same 820 poses, speed, display size and foot origin. Two-times display density is retained wherever the original supplies it. Exact image dimensions imply 211.09 MiB decoded RGBA instead of 462.88 MiB, and PNG transfers fall from 30,042,299 to 15,225,408 bytes. Original production/natives stay intact; the four excluded Engineer north frames remain excluded. These are storage estimates, not measured GPU/driver memory or FPS. [Policy, reconstruction and comparisons](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/SURVIVOR_TEXTURE_DELIVERY.md).

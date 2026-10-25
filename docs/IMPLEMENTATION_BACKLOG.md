@@ -1,10 +1,10 @@
 # Implementation backlog and contest acceptance map
 
-Current source: build 2026.10.25-motion-timing, protocol 13. All sixty authored boss identities execute across five modes, seven classes, 378 skills, twenty-eight weapons and six distinct map footprints. Every boss has an individual original theme; production motion totals 1,367 selected frames across survivors, bosses, parts and minions. The in-game journal and Wiki have concrete synchronized updates. See [Endless and Uncounted runtime](ENDLESS_AND_UNCOUNTED_RUNTIME.md), [Raid](GRAND_RAID_RUNTIME.md) and [Pilgrimage](PILGRIMAGE_RUNTIME.md).
+Current source: build 2026.10.25-survivor-delivery, protocol 13. All sixty authored boss identities execute across five modes, seven classes, 378 skills, twenty-eight weapons and six distinct map footprints. Every boss has an individual original theme; production motion totals 1,367 selected frames across survivors, bosses, parts and minions. The in-game journal and Wiki have concrete synchronized updates. See [Endless and Uncounted runtime](ENDLESS_AND_UNCOUNTED_RUNTIME.md), [Raid](GRAND_RAID_RUNTIME.md) and [Pilgrimage](PILGRIMAGE_RUNTIME.md).
 
 ProfileV1 now stores validated import/export, mastery, rescues, lore discoveries, cosmetic insignia, preferences, remapping and full-Hard difficulty unlocks. See [ProfileV1](PROFILE_V1.md).
 
-The complete current pipeline passes 309 tests, authored-content/fifteen-locale checks, TypeScript and production build. Exact evidence is in reviews/runtime-verification.json. Native/audio audits and prior rendered samples are separate. Browser control was disabled in Work settings for the sixty-identity stage; no new rendered acceptance is claimed.
+The complete current pipeline passes 312 tests, authored-content/fifteen-locale checks, TypeScript and production build. Exact evidence is in reviews/runtime-verification.json. Native/audio audits and prior rendered samples are separate. Browser control was disabled in Work settings for the sixty-identity stage; no new rendered acceptance is claimed.
 
 Major remaining work includes boss-history translation; full directional/action animation; final encounter deadline/uptime and balance measurements; verified deployed rankings/recovery; active 8/16/50-player and endurance acceptance; final Windows artifact/release acceptance and the coordinated browser release. Physical-device, native-speaker and human review require actual evidence. The public Site remains its earlier protocol-4 build; protected main remains a separate release boundary.
 
@@ -27,6 +27,8 @@ The [one-hour fifty-client probe](ONE_HOUR_ENDURANCE.md) passes local continuous
 The [Soldier/Medic action and independent run libraries](SOLDIER_MEDIC_ACTION_MOTION.md) complete the basic six-family drawn set across seven survivors: 616 action poses and 204 run poses. Special-ability animation, many boss action sets and rendered/device/human acceptance remain open.
 
 The [bounded survivor drawing clock](SURVIVOR_MOTION_TIMING.md) prevents patch-limited skipped poses and fits Rescue Charge to its existing ten-tick duration. Fifty-millisecond lead/stall/reset bounds remain separate from authoritative gameplay and rendered-FPS acceptance.
+
+[Survivor texture delivery](SURVIVOR_TEXTURE_DELIVERY.md) reduces the selected survivor atlases from 462.88 to 211.09 MiB by exact decoded RGBA dimensions, while preserving original production pixels and world size. Full boss/scene loading and actual device GPU/FPS budgets remain open.
 
 All implementation stages remain authorized. These rows are acceptance requirements, not completion claims. Historical checkpoint prose is preserved in [the archived backlog](history/IMPLEMENTATION_BACKLOG-before-60.md).
 

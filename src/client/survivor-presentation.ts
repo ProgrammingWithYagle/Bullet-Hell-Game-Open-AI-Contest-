@@ -3,6 +3,7 @@ import motion from '../../assets/production/motion/survivor-library.json';
 import legacyMotion from '../../assets/production/motion/legacy-survivor-library.json';
 import { HZ } from '../shared/protocol.ts';
 import type { ClassId } from '../shared/protocol.ts';
+import { deliveredSurvivorClip } from './survivor-delivery.ts';
 export const additionalSurvivors = ['tank', 'mage', 'engineer', 'assassin'] as const;
 export const legacySurvivors = ['soldier', 'medic'] as const;
 type RunClip = {
@@ -18,7 +19,7 @@ export const survivorArt = {
   entries: [
     ...(motion as { entries: RunClip[] }).entries,
     ...(legacyMotion as { entries: RunClip[] }).entries,
-  ],
+  ].map(deliveredSurvivorClip),
 };
 export function survivorPose(
   classId: ClassId,

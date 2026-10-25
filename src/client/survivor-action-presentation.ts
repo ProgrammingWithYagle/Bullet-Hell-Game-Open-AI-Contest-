@@ -5,6 +5,7 @@ import { HZ, type ClassId } from '../shared/protocol.ts';
 import type { View, PlayerView } from '../shared/view.ts';
 import { RESCUE_CHARGE_TICKS } from '../shared/class-kits.ts';
 import { PresentationClock } from './presentation-clock.ts';
+import { deliveredSurvivorClip } from './survivor-delivery.ts';
 
 type Facing = 'south' | 'east' | 'north' | 'west';
 type Action = 'idle' | 'attack' | 'hurt' | 'dash' | 'downed';
@@ -20,7 +21,9 @@ type Clip = {
   origin: number[];
   displayCell: number;
 };
-export const survivorActionArt = library as unknown as { entries: Clip[] };
+export const survivorActionArt = {
+  entries: (library as unknown as { entries: Clip[] }).entries.map(deliveredSurvivorClip),
+};
 const clips = new Map(survivorActionArt.entries.map((clip) => [clip.id, clip]));
 const classes = new Set(survivorActionArt.entries.map((clip) => clip.classId));
 const facingOf = (aim: number): Facing =>
