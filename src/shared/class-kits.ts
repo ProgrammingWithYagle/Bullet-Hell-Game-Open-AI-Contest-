@@ -4,6 +4,7 @@ import { distance, moveBody, segmentCircle, segmentRect, type Rect } from './geo
 import type { Player, Stats, Boss } from './game.ts';
 import type { Minions } from './minions.ts';
 const ticks = (seconds: number) => Math.ceil(seconds * HZ);
+export const RESCUE_CHARGE_TICKS = ticks(0.3) + 1;
 export type KitStatus = {
   chargeUntil: number;
   veilUntil: number;
@@ -203,7 +204,7 @@ export class ClassKits {
       else if (slot === 'e') {
         p.dashX = Math.cos(p.aim);
         p.dashY = Math.sin(p.aim);
-        p.dashUntil = now + ticks(0.3) + 1;
+        p.dashUntil = now + RESCUE_CHARGE_TICKS;
         p.invulnerableUntil = Math.max(p.invulnerableUntil, p.dashUntil);
         this.state(p.id).chargeUntil = p.dashUntil;
         this.charges.set(p.id, { until: p.dashUntil, damage: 50 * s.ability, touched: new Set() });

@@ -211,7 +211,7 @@ export class CombatScene extends Phaser.Scene {
     this.resolveReady();
   }
   apply(view: View) {
-    this.survivorActions.observe(view);
+    this.survivorActions.observe(view, performance.now());
     if (this.lastPhase && view.phase !== this.lastPhase) {
       for (const id of this.shots.keys()) this.recycleBullet(id);
       this.shots.clear();
@@ -267,7 +267,8 @@ export class CombatScene extends Phaser.Scene {
     this.lastFrameClock = frameNow;
     const view = this.view,
       dt = Math.min(delta, 100) / 1000,
-      now = view.combatTick;
+      now = view.combatTick,
+      animationTime = this.survivorActions.timeAt(frameNow);
     if (this.lastArenaId !== view.arenaId) {
       this.lastArenaId = view.arenaId;
       const map = runtimeArena(view.arenaId);
@@ -787,7 +788,7 @@ export class CombatScene extends Phaser.Scene {
       sprite.x += dx * blend;
       sprite.y += dy * blend;
       sprite.setDepth(5 + sprite.y / 1000);
-      const actionPose = this.survivorActions.pose(p, view, moving, this.reduceMotion);
+      const actionPose = this.survivorActions.pose(p, view, moving, this.reduceMotion, frameNow);
       if (actionPose) {
         sprite.anims.stop();
         sprite
@@ -799,7 +800,14 @@ export class CombatScene extends Phaser.Scene {
         additionalSurvivors.some((id) => id === p.classId) ||
         legacySurvivors.some((id) => id === p.classId)
       ) {
-        const pose = survivorPose(p.classId, p.aim, moving, p.status, now, this.reduceMotion);
+        const pose = survivorPose(
+          p.classId,
+          p.aim,
+          moving,
+          p.status,
+          animationTime.combatTick,
+          this.reduceMotion,
+        );
         sprite.anims.stop();
         sprite
           .setTexture(pose.texture, pose.frame)
@@ -807,7 +815,13 @@ export class CombatScene extends Phaser.Scene {
           .setOrigin(pose.origin[0], pose.origin[1])
           .setDisplaySize(pose.displayCell, pose.displayCell);
       } else if (p.classId === 'heavy') {
-        const pose = heavyPose(p.aim, moving, p.status, now, this.reduceMotion);
+        const pose = heavyPose(
+          p.aim,
+          moving,
+          p.status,
+          animationTime.combatTick,
+          this.reduceMotion,
+        );
         sprite.anims.stop();
         sprite
           .setTexture(pose.texture, pose.frame)

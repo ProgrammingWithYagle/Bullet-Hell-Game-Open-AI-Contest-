@@ -1,6 +1,19 @@
 # Changelog
 
-Development build **2026.10.25-soldier-medic-actions**, protocol 13. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.25-motion-timing**, protocol 13. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-25 — Smoother survivor motion between network patches and complete Rescue Charge timing
+
+### Presentation timing corrections
+
+- Survivor actions and runs now use a bounded drawing clock between authority updates. A sixty-Hz fixture supplied twenty-Hz patches and now displays all six short-dodge poses; the previous source skipped two.
+- Drawing can lead its latest snapshot by at most fifty milliseconds, holds during a stalled connection, ignores duplicate snapshots and resets at run, encounter, phase or backward-clock boundaries. Reduced motion stays stable.
+- Tank Rescue Charge now spreads its six poses over its actual ten-tick interval. It previously used the shorter ordinary dodge duration and held the opening pose too long. The existing combat duration and game rules stay the same.
+
+### Evidence
+
+- Preserved both failing pre-change regressions and passing tests for actual charge input, patch interpolation, bounds, revival and authority-state preservation.
+- The seventeen-image Wiki and in-game changelog document the same source. This software timing evidence does not establish rendered frame rate, human/device or hosted acceptance.
 
 ## 2026-10-25 — Soldier and Medic actions complete the seven-survivor basic motion set
 

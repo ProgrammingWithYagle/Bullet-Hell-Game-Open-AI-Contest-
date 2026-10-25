@@ -3,6 +3,8 @@ import library from '../../assets/production/motion/survivor-actions/library.jso
 import catalog from '../../content/catalog.json';
 import { HZ, type ClassId } from '../shared/protocol.ts';
 import type { View, PlayerView } from '../shared/view.ts';
+import { RESCUE_CHARGE_TICKS } from '../shared/class-kits.ts';
+import { PresentationClock } from './presentation-clock.ts';
 
 type Facing = 'south' | 'east' | 'north' | 'west';
 type Action = 'idle' | 'attack' | 'hurt' | 'dash' | 'downed';
@@ -42,12 +44,17 @@ type Memory = {
 };
 
 export class SurvivorActionClock {
+  private timeline = new PresentationClock();
+  timeAt(wallTimeMs: number) {
+    return this.timeline.sample(wallTimeMs);
+  }
   private people = new Map<string, Memory>();
   private run = '';
   private encounter = -1;
   private tick = -1;
   private phase = '';
-  observe(view: View) {
+  observe(view: View, wallTimeMs = 0) {
+    this.timeline.observe(view, wallTimeMs);
     const reset =
       view.run.id !== this.run || view.encounter !== this.encounter || view.tick < this.tick;
     if (reset) this.people.clear();
@@ -119,41 +126,45 @@ export class SurvivorActionClock {
     this.tick = view.tick;
     this.phase = view.phase;
   }
-  pose(player: PlayerView, view: View, moving: boolean, reduced = false) {
+  pose(player: PlayerView, view: View, moving: boolean, reduced = false, wallTimeMs?: number) {
     if (!classes.has(player.classId) || player.status === 'waiting') return undefined;
     const memory = this.people.get(player.id);
     if (!memory) return undefined;
+    const drawn = wallTimeMs === undefined ? view : this.timeline.sample(wallTimeMs);
     let facing = facingOf(player.aim),
       action: Action = 'idle',
-      elapsed = view.tick;
+      elapsed = drawn.tick;
     if (player.status === 'downed' || player.status === 'eliminated') {
       action = 'downed';
       facing = memory.downFacing;
       elapsed =
         player.status === 'eliminated' || view.phase !== 'combat'
           ? Infinity
-          : Math.max(0, view.tick - memory.downAt);
+          : Math.max(0, drawn.tick - memory.downAt);
     } else if (player.status === 'active') {
       if (view.combatTick < player.dashUntil && (player.dashX || player.dashY)) {
         action = 'dash';
         facing = facingOf(Math.atan2(player.dashY, player.dashX));
         const clip = clips.get(player.classId + '-dash-' + facing)!;
         // Fit the full strip to the actual authoritative dash interval.
-        const duration = Math.ceil(catalog.rules.dodgeDuration * HZ);
-        const remaining = Math.max(0, player.dashUntil - view.combatTick);
-        elapsed = ((1 - Math.min(1, remaining / duration)) * clip.frames * HZ) / clip.fps;
+        const duration =
+          player.classId === 'tank' && player.kit.chargeUntil === player.dashUntil
+            ? RESCUE_CHARGE_TICKS
+            : Math.ceil(catalog.rules.dodgeDuration * HZ);
+        const remaining = Math.min(duration, Math.max(0, player.dashUntil - drawn.combatTick));
+        elapsed = ((duration - remaining) * clip.frames * HZ) / (duration * clip.fps);
       } else {
         const hurt = clips.get(player.classId + '-hurt-' + facing)!;
         if (view.tick - memory.hurtAt < (hurt.frames * HZ) / hurt.fps) {
           action = 'hurt';
-          elapsed = view.tick - memory.hurtAt;
+          elapsed = drawn.tick - memory.hurtAt;
         } else if (moving)
           return undefined; // Existing independent directional run art.
         else {
           const attack = clips.get(player.classId + '-attack-' + facing)!;
           if (view.tick - memory.attackAt < (attack.frames * HZ) / attack.fps) {
             action = 'attack';
-            elapsed = view.tick - memory.attackAt;
+            elapsed = drawn.tick - memory.attackAt;
           }
         }
       }
