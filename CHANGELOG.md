@@ -1,6 +1,19 @@
 # Changelog
 
-Development build **2026.10.24-recovery-transport**, protocol 13. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.24-tank-actions**, protocol 13. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-24 — Tank idle, firing, hurt, dodge and downed motion
+
+### Drawn action library
+
+- Added twenty Tank clips in four independent directions: 88 new idle, firearm attack, hurt, dodge and downed poses. Existing runs remain unchanged. The shield and firearm retain their physical arms, with no horizontal mirroring or painted limb corrections.
+- Dodge follows actual movement, falls hold their resting pose and revives return to standing. Real ammo/health changes drive firing and hurt; repeated snapshots cannot restart every firing frame. Reduced motion uses stable representative poses.
+- Preserved all 25 native returns and exact requests, including a rejected sideways north attack and superseded edits. Independent reconstruction verifies every packed RGBA pixel, shared strip scales, reference hashes and transparent padding.
+
+### Documentation and validation
+
+- Added a Tank action reference image to the illustrated Wiki and clips to the local frame-step art room. Contact sheets show 56/112-pixel scale; they are not gameplay screenshots.
+- State tests cover actual firing/dodge, hit interruption, resting holds, revival, late observers and reset isolation. Rendered transitions, human/device acceptance and the remaining survivor/boss action libraries stay open. The issued Windows archive retains its earlier source.
 
 ## 2026-10-24 — Bounded fifty-player checkpoint transfer
 

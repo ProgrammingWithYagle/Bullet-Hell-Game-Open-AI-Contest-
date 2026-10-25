@@ -15,6 +15,7 @@ import { data } from '../shared/game.ts';
 import { FrameMeter } from './frame-meter.ts';
 import { wardenArt, wardenCombatPose, type WardenCombatClipId } from './warden-presentation.ts';
 import { survivorArt, survivorPose, additionalSurvivors } from './survivor-presentation.ts';
+import { survivorActionArt, SurvivorActionClock } from './survivor-action-presentation.ts';
 import { heavyArt, heavyPose } from './heavy-presentation.ts';
 import { encounterArt, encounterFrame } from './encounter-presentation.ts';
 import type { Sector } from '../shared/warden-signature.ts';
@@ -32,6 +33,7 @@ export class CombatScene extends Phaser.Scene {
   highContrast = false;
   reduceMotion = false;
   private people = new Map<string, Phaser.GameObjects.Sprite>();
+  private survivorActions = new SurvivorActionClock();
   private actors = new Map<number, Phaser.GameObjects.Sprite>();
   private facings = new Map<string, string>();
   private shadows!: Phaser.GameObjects.Graphics;
@@ -125,6 +127,11 @@ export class CombatScene extends Phaser.Scene {
         frameWidth: clip.cellSize,
         frameHeight: clip.cellSize,
       });
+    for (const clip of survivorActionArt.entries)
+      this.load.spritesheet(clip.id, assets.survivorActions[clip.id], {
+        frameWidth: clip.cellSize,
+        frameHeight: clip.cellSize,
+      });
     for (const clip of encounterArt)
       this.load.spritesheet(clip.bossId + '-action', assets.encounters[clip.bossId], {
         frameWidth: clip.cellSize,
@@ -200,6 +207,7 @@ export class CombatScene extends Phaser.Scene {
     this.resolveReady();
   }
   apply(view: View) {
+    this.survivorActions.observe(view);
     if (this.lastPhase && view.phase !== this.lastPhase) {
       for (const id of this.shots.keys()) this.recycleBullet(id);
       this.shots.clear();
@@ -775,7 +783,15 @@ export class CombatScene extends Phaser.Scene {
       sprite.x += dx * blend;
       sprite.y += dy * blend;
       sprite.setDepth(5 + sprite.y / 1000);
-      if (additionalSurvivors.some((id) => id === p.classId)) {
+      const actionPose = this.survivorActions.pose(p, view, moving, this.reduceMotion);
+      if (actionPose) {
+        sprite.anims.stop();
+        sprite
+          .setTexture(actionPose.texture, actionPose.frame)
+          .setFlipX(false)
+          .setOrigin(actionPose.origin[0], actionPose.origin[1])
+          .setDisplaySize(actionPose.displayCell, actionPose.displayCell);
+      } else if (additionalSurvivors.some((id) => id === p.classId)) {
         const pose = survivorPose(p.classId, p.aim, moving, p.status, now, this.reduceMotion);
         sprite.anims.stop();
         sprite

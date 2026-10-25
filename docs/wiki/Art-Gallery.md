@@ -57,3 +57,9 @@ Original game art collected from the current development source. Boss sheets sho
 *Twenty-eight class weapons and eight carried supplies.*
 
 [Boss counterplay](Bosses) · [Classes and skills](Classes-and-Skills) · [Modes and maps](Modes) · [Credits and provenance](Credits).
+
+## Tank action reference
+
+![Tank idle, firearm attack, hurt, dash and downed poses in four directions](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/tank-actions.jpg)
+
+Twenty drawn clips add 88 poses to the Tank's existing runs. The image shows representative frames at one scale; it is not a gameplay capture. Runtime firing, hurt, dodge, downed holds and revival transitions are connected, with reduced-motion choices. Final rendered/human/device review and the remaining characters' full action libraries remain open. [Production and exact verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/TANK_ACTION_MOTION.md).

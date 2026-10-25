@@ -41,6 +41,6 @@ const publicChecks=await Promise.all(['','/Getting-Started','/Art-Gallery','/Bos
   if(route==='/Art-Gallery'||route==='/Bosses')assert(html.includes('raw.githubusercontent.com/wiki/ProgrammingWithYagle/'),'Published gallery is missing image references');return result;
 }));
 const report={createdAt:new Date().toISOString(),passed:true,sourceCommit,publishedCommit,pages:evidence.length,files:evidence,images:imageFiles,imageChecks,publicChecks,
-  limits:['Canonical committed Markdown blobs match all seventeen published Git Wiki Markdown blobs and all nine image blobs; filesystem CRLF is normalized explicitly.','Four anonymous public HTTP pages and nine exact public image responses checked; no rendered Wiki browser or native-language review claimed.','Runtime PR remains draft and full-game release gates remain open.']};
+  limits:['Canonical committed Markdown blobs match all seventeen published Git Wiki Markdown blobs and all ten image blobs; filesystem CRLF is normalized explicitly.','Four anonymous public HTTP pages and ten exact public image responses checked; no rendered Wiki browser or native-language review claimed.','Runtime PR remains draft and full-game release gates remain open.']};
 writeFileSync('reviews/wiki-runtime-publication.json',JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify({passed:true,sourceCommit,publishedCommit,pages:evidence.length,images:imageFiles.length,publicChecks}));

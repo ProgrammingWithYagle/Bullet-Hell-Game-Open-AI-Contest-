@@ -1,0 +1,182 @@
+// Drawn action selection only. Combat state, damage and movement remain authoritative.
+import library from '../../assets/production/motion/survivor-actions/library.json';
+import catalog from '../../content/catalog.json';
+import { HZ, type ClassId } from '../shared/protocol.ts';
+import type { View, PlayerView } from '../shared/view.ts';
+
+type Facing = 'south' | 'east' | 'north' | 'west';
+type Action = 'idle' | 'attack' | 'hurt' | 'dash' | 'downed';
+type Clip = {
+  id: string;
+  classId: ClassId;
+  action: Action;
+  direction: Facing;
+  frames: number;
+  fps: number;
+  cellSize: number;
+  columns: number;
+  origin: number[];
+  displayCell: number;
+};
+export const survivorActionArt = library as unknown as { entries: Clip[] };
+const clips = new Map(survivorActionArt.entries.map((clip) => [clip.id, clip]));
+const classes = new Set(survivorActionArt.entries.map((clip) => clip.classId));
+const facingOf = (aim: number): Facing =>
+  Math.abs(Math.sin(aim)) > Math.abs(Math.cos(aim))
+    ? Math.sin(aim) < 0
+      ? 'north'
+      : 'south'
+    : Math.cos(aim) < 0
+      ? 'west'
+      : 'east';
+type Memory = {
+  classId: ClassId;
+  health: number;
+  ammo: number;
+  weapon: string;
+  status: string;
+  attackAt: number;
+  hurtAt: number;
+  downAt: number;
+  downFacing: Facing;
+};
+
+export class SurvivorActionClock {
+  private people = new Map<string, Memory>();
+  private run = '';
+  private encounter = -1;
+  private tick = -1;
+  private phase = '';
+  observe(view: View) {
+    const reset =
+      view.run.id !== this.run || view.encounter !== this.encounter || view.tick < this.tick;
+    if (reset) this.people.clear();
+    const continuingCombat = !reset && this.phase === 'combat' && view.phase === 'combat';
+    const present = new Set<string>();
+    for (const player of view.players) {
+      if (!classes.has(player.classId)) continue;
+      present.add(player.id);
+      let old = this.people.get(player.id);
+      if (old?.classId !== player.classId) old = undefined;
+      const memory: Memory = old ?? {
+        classId: player.classId,
+        health: player.health,
+        ammo: player.ammo,
+        weapon: player.weapon,
+        status: '',
+        attackAt: -Infinity,
+        hurtAt: -Infinity,
+        downAt: view.tick,
+        downFacing: facingOf(player.aim),
+      };
+      if (old && continuingCombat && old.status === 'active' && player.status === 'active') {
+        const attack = clips.get(player.classId + '-attack-south');
+        if (
+          player.weapon === old.weapon &&
+          player.ammo < old.ammo &&
+          attack &&
+          view.tick - memory.attackAt >= (attack.frames * HZ) / attack.fps
+        )
+          memory.attackAt = view.tick;
+        if (player.health < old.health) {
+          memory.hurtAt = view.tick;
+          memory.attackAt = -Infinity;
+        }
+      }
+      if (view.phase !== 'combat') {
+        memory.attackAt = -Infinity;
+        memory.hurtAt = -Infinity;
+      }
+      if (player.status === 'downed' && old?.status !== 'downed') {
+        // The replicated timer also handles a late observer of an existing fall.
+        const elapsed = Math.max(
+          0,
+          view.combatTick - (player.downUntil - Math.ceil(catalog.rules.downedSeconds * HZ)),
+        );
+        memory.downAt = view.tick - elapsed;
+        memory.downFacing = facingOf(player.aim);
+      } else if (
+        player.status === 'eliminated' &&
+        !['downed', 'eliminated'].includes(old?.status ?? '')
+      ) {
+        memory.downFacing = facingOf(player.aim);
+      }
+      if (player.status === 'active' && old && old.status !== 'active') {
+        memory.attackAt = -Infinity;
+        memory.hurtAt = -Infinity;
+      }
+      Object.assign(memory, {
+        health: player.health,
+        ammo: player.ammo,
+        weapon: player.weapon,
+        status: player.status,
+      });
+      this.people.set(player.id, memory);
+    }
+    for (const id of this.people.keys()) if (!present.has(id)) this.people.delete(id);
+    this.run = view.run.id;
+    this.encounter = view.encounter;
+    this.tick = view.tick;
+    this.phase = view.phase;
+  }
+  pose(player: PlayerView, view: View, moving: boolean, reduced = false) {
+    if (!classes.has(player.classId) || player.status === 'waiting') return undefined;
+    const memory = this.people.get(player.id);
+    if (!memory) return undefined;
+    let facing = facingOf(player.aim),
+      action: Action = 'idle',
+      elapsed = view.tick;
+    if (player.status === 'downed' || player.status === 'eliminated') {
+      action = 'downed';
+      facing = memory.downFacing;
+      elapsed =
+        player.status === 'eliminated' || view.phase !== 'combat'
+          ? Infinity
+          : Math.max(0, view.tick - memory.downAt);
+    } else if (player.status === 'active') {
+      if (view.combatTick < player.dashUntil && (player.dashX || player.dashY)) {
+        action = 'dash';
+        facing = facingOf(Math.atan2(player.dashY, player.dashX));
+        const clip = clips.get(player.classId + '-dash-' + facing)!;
+        // Fit the full strip to the actual authoritative dash interval.
+        const duration = Math.ceil(catalog.rules.dodgeDuration * HZ);
+        const remaining = Math.max(0, player.dashUntil - view.combatTick);
+        elapsed = ((1 - Math.min(1, remaining / duration)) * clip.frames * HZ) / clip.fps;
+      } else {
+        const hurt = clips.get(player.classId + '-hurt-' + facing)!;
+        if (view.tick - memory.hurtAt < (hurt.frames * HZ) / hurt.fps) {
+          action = 'hurt';
+          elapsed = view.tick - memory.hurtAt;
+        } else if (moving)
+          return undefined; // Existing independent directional run art.
+        else {
+          const attack = clips.get(player.classId + '-attack-' + facing)!;
+          if (view.tick - memory.attackAt < (attack.frames * HZ) / attack.fps) {
+            action = 'attack';
+            elapsed = view.tick - memory.attackAt;
+          }
+        }
+      }
+    } else return undefined;
+    const clip = clips.get(player.classId + '-' + action + '-' + facing)!;
+    const frame = reduced
+      ? action === 'downed'
+        ? clip.frames - 1
+        : action === 'dash'
+          ? Math.floor(clip.frames / 2)
+          : action === 'attack'
+            ? 1
+            : 0
+      : action === 'idle'
+        ? Math.floor((Math.max(0, elapsed) * clip.fps) / HZ) % clip.frames
+        : Math.min(clip.frames - 1, Math.floor((Math.max(0, elapsed) * clip.fps) / HZ));
+    return {
+      texture: clip.id,
+      frame,
+      origin: clip.origin,
+      displayCell: clip.displayCell,
+      action,
+      facing,
+    };
+  }
+}

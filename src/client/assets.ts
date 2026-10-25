@@ -75,12 +75,22 @@ const items = import.meta.glob('../../assets/production/items/icons/*/*.png', {
   import: 'default',
   eager: true,
 }) as Record<string, string>;
+const survivorActions = import.meta.glob(
+  '../../assets/production/motion/survivor-actions/*-v1-atlas.png',
+  { query: '?url', import: 'default', eager: true },
+) as Record<string, string>;
 const encounterMotion = import.meta.glob('../../assets/production/motion/*-action-v1-atlas.png', {
   query: '?url',
   import: 'default',
   eager: true,
 }) as Record<string, string>;
 export const assets = {
+  survivorActions: Object.fromEntries(
+    Object.entries(survivorActions).map(([path, url]) => [
+      path.split('/').at(-1)!.replace('-v1-atlas.png', ''),
+      url,
+    ]),
+  ) as Record<string, string>,
   endlessProps: Object.fromEntries(
     Object.entries(endlessProps).map(([p, u]) => [p.split('/').at(-1)!.replace('.png', ''), u]),
   ),
