@@ -2,7 +2,6 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
-import { execFileSync } from 'node:child_process';
 import { runtimeArenas, runtimeArena } from '../src/shared/arena-layouts.ts';
 import {
   ARENA_BACKDROP_DEPTH,
@@ -19,14 +18,7 @@ test('five opaque ground paintings bind their exact natives and all six existing
   assert.equal(arenaGroundArt.entries.length, 6);
   assert.equal(provenance.requests.length, 5);
   assert.equal(
-    sha(
-      execFileSync('git', [
-        '-c',
-        'core.bare=false',
-        'show',
-        '748bb5234c6ce31e53c8c19c8fca67134cb0ae17:' + arenaGroundArt.geometrySource,
-      ]),
-    ),
+    sha(readFileSync('reviews/map-layouts-2026-10-25/issued-ground-geometry.ts.txt')),
     arenaGroundArt.geometrySourceSha256,
   );
   let decoded = 0;
