@@ -111,3 +111,9 @@ Twenty action clips add 88 poses, alongside eight independently drawn side-run p
 ![All twenty-seven Hollow Constable idle, attack, hurt, stagger and defeat poses at one world scale](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/constable-motion.jpg)
 
 Four new whole sheets add nineteen poses alongside the eight retained attack frames. Cast anticipation now holds until the authoritative release, successful Accord uses a visible stagger loop, and the world clock completes a collapse after combat stops. This is a sprite reference; rendered/device/human acceptance remains open. [Production, timing and independent reconstruction](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/CONSTABLE_MOTION.md).
+
+## Arena ground paintings
+
+![Six different arena floor materials with actual map footprints, collision cover and spawn markers at one scale](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/arena-ground.jpg)
+
+The original Gatehouse and five new painted materials use the existing six layouts and dimensions. Triage stone, workshop iron, damp chapel slate, warmer foundry plates and darker crypt inlay give the maps distinct surfaces. Cover props and their collision remain separately placed. This is a static artwork/geometry reference; gameplay uses its configured alpha/tint and final rendered/device/human review remains open. [Production and exact reconstruction](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/ARENA_GROUND_ART.md).

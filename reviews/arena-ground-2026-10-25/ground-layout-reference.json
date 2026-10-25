@@ -1,0 +1,90 @@
+{
+  "sourceTool": "tools/build-arena-ground-reference.py",
+  "sourceToolSha256": "906537e91cfaceb2f38a73db34edf3af2b3b9f3cdb25c3f842aaa4bbb1d5b595",
+  "sourceLibrary": "assets/production/arenas/library.json",
+  "sourceLibrarySha256": "ca28880b94cf70b70b9792dffb9be3d6d2f6c6f75d6f1d857228dc2c82a34c77",
+  "geometrySnapshot": "reviews/arena-ground-2026-10-25/runtime-arenas.json",
+  "geometrySnapshotSha256": "1046279c88dcb6e4018f0226e8259ead2814906ac7561e33004215b37335e0e3",
+  "sources": [
+    {
+      "arenaId": "gatehouse",
+      "image": "assets/proofs/arena-v1.png",
+      "imageSha256": "b5edf920d23f7672895f18313e933e3b247b8a2271780d91d6bf66721184cc26",
+      "worldBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1600,
+        "height": 1000
+      },
+      "scale": 0.29
+    },
+    {
+      "arenaId": "triage-yard",
+      "image": "assets/production/arenas/triage-yard-ground-v1.png",
+      "imageSha256": "cbe465c6e08dc21304b7d8da18c721b93589b1df87f4b5adcf67639c058adb26",
+      "worldBounds": {
+        "x": 0,
+        "y": 50,
+        "width": 1600,
+        "height": 900
+      },
+      "scale": 0.29
+    },
+    {
+      "arenaId": "ossuary-works",
+      "image": "assets/production/arenas/ossuary-works-ground-v1.png",
+      "imageSha256": "340b3ce35b2700739731c7733f33c47755f3b51aa1aee95b74662641f9d10e1d",
+      "worldBounds": {
+        "x": 150,
+        "y": 0,
+        "width": 1300,
+        "height": 1000
+      },
+      "scale": 0.29
+    },
+    {
+      "arenaId": "sunken-chapel",
+      "image": "assets/production/arenas/sunken-chapel-ground-v1.png",
+      "imageSha256": "0f8903d2d22d64cb80cd6c57f9fe565030d3bc37adf4ee0896d2623a1a306ef6",
+      "worldBounds": {
+        "x": 100,
+        "y": 40,
+        "width": 1400,
+        "height": 920
+      },
+      "scale": 0.29
+    },
+    {
+      "arenaId": "bell-foundry",
+      "image": "assets/production/arenas/bell-foundry-ground-v1.png",
+      "imageSha256": "9b0d458c7d6f4d0a66469a238fb5e54039ed42cd36a54ee5b5a42d153296670b",
+      "worldBounds": {
+        "x": 50,
+        "y": 75,
+        "width": 1500,
+        "height": 850
+      },
+      "scale": 0.29
+    },
+    {
+      "arenaId": "crown-crypt",
+      "image": "assets/production/arenas/crown-crypt-ground-v1.png",
+      "imageSha256": "04835e0f7221643cb4c4f315123fa873a0e51ce6e29c3aad88cc0c8babaf3b92",
+      "worldBounds": {
+        "x": 180,
+        "y": 60,
+        "width": 1240,
+        "height": 880
+      },
+      "scale": 0.29
+    }
+  ],
+  "image": "reviews/arena-ground-2026-10-25/ground-layout-reference.png",
+  "imageSha256": "d4703b8b934fe8a380d60d5b80d1e514f60b536589985faba2d65852957dd07b",
+  "renderedAccepted": false,
+  "limits": [
+    "Static documentation contact sheet from production artwork and actual geometry.",
+    "Image shows the opaque source paintings; gameplay uses its configured alpha/tint and independently placed props.",
+    "This does not establish in-engine readability, frame rate or human acceptance."
+  ]
+}

@@ -9,6 +9,11 @@ import type { ServiceCue } from '../shared/service-director.ts';
 import Phaser from 'phaser';
 import { assets } from './assets.ts';
 import {
+  ARENA_BACKDROP_DEPTH,
+  applyArenaGround,
+  preloadArenaGrounds,
+} from './arena-presentation.ts';
+import {
   constableArt,
   constableCombatPose,
   type ConstableClipId,
@@ -62,6 +67,7 @@ export class CombatScene extends Phaser.Scene {
   private propImages = new Map<number, Phaser.GameObjects.Image>();
   private arenaImage!: Phaser.GameObjects.Image;
   private arenaGround!: Phaser.GameObjects.Graphics;
+  private arenaBackdrop!: Phaser.GameObjects.Graphics;
   private lastArenaId = '';
   private serviceArt!: ServicePresentation;
   private endlessArt!: EndlessPresentation;
@@ -100,7 +106,7 @@ export class CombatScene extends Phaser.Scene {
   }
   preload() {
     this.load.on('loaderror', () => this.rejectReady(Error('ui.errorServer')));
-    this.load.image('gatehouse', assets.arena);
+    preloadArenaGrounds(this.load, assets.arenaGrounds);
     for (const [id, url] of Object.entries(assets.constructs))
       this.load.image('construct-' + id, url);
     for (const [id, url] of Object.entries(assets.environment))
@@ -169,10 +175,9 @@ export class CombatScene extends Phaser.Scene {
     this.raidArt = new RaidPresentation(this);
     this.endlessArt = new EndlessPresentation(this);
     this.districtArt = new DistrictPresentation(this, (id) => this.people.get(id));
-    this.arenaImage = this.add
-      .image(800, 500, 'gatehouse')
-      .setDisplaySize(1600, 1000)
-      .setAlpha(0.8);
+    this.arenaImage = this.add.image(800, 500, 'arena-ground-gatehouse');
+    applyArenaGround(this.arenaImage, 'gatehouse');
+    this.arenaBackdrop = this.add.graphics().setDepth(ARENA_BACKDROP_DEPTH);
     this.arenaGround = this.add.graphics().setDepth(0);
     this.add.rectangle(800, 500, 1600, 1000, 0x172b29, 0.18);
     this.shadows = this.add.graphics().setDepth(1);
@@ -309,7 +314,8 @@ export class CombatScene extends Phaser.Scene {
     if (this.lastArenaId !== view.arenaId) {
       this.lastArenaId = view.arenaId;
       const map = runtimeArena(view.arenaId);
-      this.arenaImage.setVisible(map.id === 'gatehouse');
+      applyArenaGround(this.arenaImage, map.id);
+      this.arenaBackdrop.clear();
       const ground = this.arenaGround;
       ground.clear();
       this.coverImages.forEach((image) => image.destroy());
@@ -317,13 +323,11 @@ export class CombatScene extends Phaser.Scene {
       if (map.id !== 'gatehouse') {
         const color = Number.parseInt(map.floor.slice(1), 16),
           shade = Number.parseInt(map.shadow.slice(1), 16);
-        ground.fillStyle(0x101e1b, 1).fillRect(0, 0, 1600, 1000);
-        ground.fillStyle(color, 0.8).fillRect(map.bounds.x, map.bounds.y, map.width, map.height);
-        ground.lineStyle(2, shade, 0.25);
-        for (let y = map.bounds.y; y < map.bounds.y + map.height; y += 100)
-          ground.lineBetween(map.bounds.x, y, map.bounds.x + map.width, y);
-        for (let x = map.bounds.x; x < map.bounds.x + map.width; x += 160)
-          ground.lineBetween(x, map.bounds.y, x, map.bounds.y + map.height);
+        this.arenaBackdrop
+          .fillStyle(0x101e1b, 1)
+          .fillRect(0, 0, 1600, 1000)
+          .fillStyle(color, 1)
+          .fillRect(map.bounds.x, map.bounds.y, map.width, map.height);
         for (const obstacle of map.cover) {
           const image = this.add.image(
             obstacle.x + obstacle.width / 2,

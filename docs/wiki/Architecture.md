@@ -22,7 +22,7 @@ Passing automated checks does not imply full rendered FPS, human playtest, devic
 
 [Shared authority](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/src/shared/game.ts) · [Live protocol](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/src/shared/protocol.ts) · [Latest full verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/reviews/runtime-verification.json)
 
-[Latest balance, collision and local throughput evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/BALANCE_AND_COLLISION_RUNTIME.md): 328 full-pipeline tests, 210 progression combinations and 1,740 health/deadline deployments. Longer local 50-client Moths/Walking District and 16-client City Eater probes keep stress p99 below 25 ms; occasional slower ticks remain. Zero rendered clients means this is not final capacity acceptance.
+[Latest balance, collision and local throughput evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/BALANCE_AND_COLLISION_RUNTIME.md): 331 full-pipeline tests, 210 progression combinations and 1,740 health/deadline deployments. Longer local 50-client Moths/Walking District and 16-client City Eater probes keep stress p99 below 25 ms; occasional slower ticks remain. Zero rendered clients means this is not final capacity acceptance.
 
 ## One-hour local combat observation
 
@@ -45,3 +45,7 @@ Eight shared actor atlases stay preloaded. The other 57 bosses have exact first-
 ## Constable action states
 
 Five motion states now use replicated cast, stagger, hurt and defeat clocks. The original eight-frame attack remains unchanged, but anticipation stretches until actual release instead of finishing early. Bounded drawing lead stays within that observed state. Hurt cannot replace a cast or stagger; defeat advances once on world time through rewards/votes and holds the settled pose. Reduced motion preserves readable authority states. Four new whole sheets add nineteen intact poses; independent RGBA reconstruction and real normal/Brutal/Accord/reward regressions remain separate from rendered acceptance. [Motion contract and scope](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/CONSTABLE_MOTION.md).
+
+## Arena material layers
+
+All six maps bind ground textures to their existing exact playable bounds. Five new opaque paintings replace plain fills/grid lines; the original Gatehouse stays intact. A backdrop at depth -2 sits below material images at -1, while actual cover props/outlines, hazards and actors stay above. Setup previews combine the same material with the existing geometry. Full native returns and exact requests are preserved, and independent reconstruction verifies every delivered pixel. The five new floors imply 24.39 MiB decoded RGBA, separate from actual GPU/device budgets. [Ground artwork and scope](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/ARENA_GROUND_ART.md).

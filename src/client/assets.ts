@@ -1,5 +1,10 @@
 import wheel from '../../assets/production/motion/tollkeeper-wheel-v1.png?url';
 import arena from '../../assets/proofs/arena-v1.png?url';
+const arenaGroundImages = import.meta.glob('../../assets/production/arenas/*-ground-v1.png', {
+  query: '?url',
+  import: 'default',
+  eager: true,
+}) as Record<string, string>;
 import cover from '../../assets/proofs/cover-v1.png?url';
 import boss from '../../assets/proofs/animation/boss-attack-atlas.png?url';
 import constableIdle from '../../assets/production/motion/constable-idle-v1-atlas.png?url';
@@ -131,6 +136,15 @@ export const assets = {
     ]),
   ) as Record<string, string>,
   arena,
+  arenaGrounds: {
+    gatehouse: arena,
+    ...Object.fromEntries(
+      Object.entries(arenaGroundImages).map(([path, url]) => [
+        path.split('/').at(-1)!.replace('-ground-v1.png', ''),
+        url,
+      ]),
+    ),
+  } as Record<string, string>,
   cover,
   boss,
   constable: {

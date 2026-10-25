@@ -80,7 +80,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks) {
     const a = runtimeArena(id);
     return id === 'gatehouse'
       ? `<img class="arena-preview" src="${assets.arena}" alt="${e(t('arena.' + a.id + '.name'))}">`
-      : `<svg class="arena-preview arena-plan" viewBox="0 0 1600 1000" role="img" aria-label="${e(t('ui.map'))}"><rect x="${a.bounds.x}" y="${a.bounds.y}" width="${a.width}" height="${a.height}" rx="40" fill="${a.floor}" stroke="#c8c2a1" stroke-width="12"/>${a.obstacles.map((o) => `<rect x="${o.x}" y="${o.y}" width="${o.width}" height="${o.height}" fill="${a.shadow}" stroke="#ccc4a3" stroke-width="8"/>`).join('')}<circle cx="${a.bossSpawn.x}" cy="${a.bossSpawn.y}" r="60" fill="none" stroke="#e7a477" stroke-width="12"/><circle cx="${a.playerSpawn.x}" cy="${a.playerSpawn.y}" r="30" fill="#b7dec7"/></svg>`;
+      : `<svg class="arena-preview arena-plan" viewBox="0 0 1600 1000" role="img" aria-label="${e(t('ui.map'))}"><rect x="${a.bounds.x}" y="${a.bounds.y}" width="${a.width}" height="${a.height}" rx="40" fill="${a.floor}" stroke="#c8c2a1" stroke-width="12"/><image href="${e(assets.arenaGrounds[id])}" x="${a.bounds.x}" y="${a.bounds.y}" width="${a.width}" height="${a.height}" preserveAspectRatio="none" opacity="0.8"/>${a.obstacles.map((o) => `<rect x="${o.x}" y="${o.y}" width="${o.width}" height="${o.height}" fill="${a.shadow}" stroke="#ccc4a3" stroke-width="8"/>`).join('')}<circle cx="${a.bossSpawn.x}" cy="${a.bossSpawn.y}" r="60" fill="none" stroke="#e7a477" stroke-width="12"/><circle cx="${a.playerSpawn.x}" cy="${a.playerSpawn.y}" r="30" fill="#b7dec7"/></svg>`;
   };
   const difficultyAvailable = (id: string) => {
     try {

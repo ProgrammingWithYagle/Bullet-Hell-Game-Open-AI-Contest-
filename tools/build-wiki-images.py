@@ -113,6 +113,13 @@ def main():
     assert row_start==7 and len(constable_selections)==27
     d.text((20,1920),'Original attack retained. Complete collapse stays naturally low and wide. Rendered transition review remains open.',font=font(15),fill=MUTED)
     save(im,'constable-motion.jpg','All twenty-seven Constable idle, attack, hurt, stagger and defeat poses at one world scale. Sprite reference, not a gameplay capture.')
+    ground_reference=read('reviews/arena-ground-2026-10-25/ground-layout-reference.json')
+    assert sha(ROOT/ground_reference['image'])==ground_reference['imageSha256']
+    assert sha(ROOT/ground_reference['sourceLibrary'])==ground_reference['sourceLibrarySha256']
+    assert sha(ROOT/ground_reference['geometrySnapshot'])==ground_reference['geometrySnapshotSha256']
+    save(source(ground_reference['image']).convert('RGB'),'arena-ground.jpg','Six arena ground paintings with actual footprint, cover and spawn geometry at one scale. Static artwork reference, not a game capture.')
+    for path in ['reviews/arena-ground-2026-10-25/ground-layout-reference.json',ground_reference['sourceLibrary'],ground_reference['geometrySnapshot'],'tools/build-arena-ground-reference.py']:
+        sources[path]={'path':path,'sha256':sha(ROOT/path)}
     figure_receipt=read('reviews/performance/endurance-50-moths-20261024-2-figure-v2.json')
     assert sha(ROOT/figure_receipt['figure'])==figure_receipt['figureSha256']
     assert sha(ROOT/figure_receipt['source'])==figure_receipt['sourceSha256']

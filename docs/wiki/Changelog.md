@@ -1,6 +1,20 @@
 # Changelog
 
-Development build **2026.10.25-constable-motion**, protocol 13. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.25-arena-grounds**, protocol 13. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-25 — Every map gains its own painted ground material
+
+### Five new arena surfaces
+
+- Triage Yard gains worn grey-green flagstones; Ossuary Works combines limestone and flush iron plates; Sunken Chapel uses damp slate and faded mosaic; Bell Foundry has warmer oxidized plates; Crown Crypt has dark slabs and faint tarnished inlay.
+- The original Gatehouse artwork stays intact. All six floors use their existing playable footprints and dimensions. Cover props, collision outlines and spawns are unchanged.
+- Setup map previews use the new materials with actual layout geometry. In combat, a separate ground layer keeps the painting below cover and hazard cues.
+
+### Production and verification
+
+- Five complete opaque native paintings and exact prompts are preserved. One geometric aspect crop and proportional resize retains at least 98.0954% of each source area; independent reconstruction verifies every delivered pixel.
+- The five new grounds imply 24.39 MiB decoded RGBA by dimensions. This is separate from other textures, driver allocation and device FPS.
+- Three regressions cover committed geometry/native bindings, all map switches, unchanged collision/spawns and missing texture handling. The Wiki gains a six-map material/geometry reference; final rendered/device/human readability review remains open.
 
 ## 2026-10-25 — Hollow Constable gains idle, hurt, stagger and a complete collapse
 
