@@ -1,3 +1,4 @@
+import { classifiedContract } from '../src/shared/boss-threat.ts';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
@@ -16,7 +17,7 @@ function fixture(id: Boss['id'], variant: 'normal' | 'brutal' = 'normal') {
   const lobby = new Game({ mode: 'endless', maxPlayers: 1, seed: 583 });
   lobby.addPlayer('solo', 'Mara', 'soldier');
   const save = lobby.offlineCheckpoint()!;
-  save.selectedContract.bossId = id;
+  Object.assign(save.selectedContract, classifiedContract(id));
   save.selectedContract.variant = variant;
   const game = Game.restoreOffline(save);
   assert(game.start());

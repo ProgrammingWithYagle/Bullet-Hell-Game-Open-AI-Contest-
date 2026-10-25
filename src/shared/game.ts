@@ -1,6 +1,14 @@
 import { freshProgress, validProgress, type RunProgress } from './run-progress.ts';
+import {
+  bossThreat,
+  classifiedContract,
+  rankedThreatCandidates,
+  threatHealth,
+  threatPressure,
+  threatBounty,
+} from './boss-threat.ts';
 import { finalBossIds, endlessSolids, leaveMovingBlocks } from './endless-director.ts';
-import { EndlessSchedule, validEndlessHistory } from './endless-schedule.ts';
+import { EndlessSchedule, validEndlessHistory, routeBossIds } from './endless-schedule.ts';
 import { raidBossIds, raidMovement } from './raid-director.ts';
 import {
   districtMovement,
@@ -296,14 +304,7 @@ export class Game {
       difficulty: settings.difficulty ?? 'normal',
       maxPlayers: settings.maxPlayers ?? (settings.mode === 'raid' ? 16 : 8),
       openingBossId:
-        settings.openingBossId ??
-        (settings.mode === 'raid'
-          ? 'chain-colossus'
-          : settings.mode === 'long'
-            ? 'pallbearer'
-            : settings.mode === 'standard'
-              ? 'matron'
-              : 'constable'),
+        settings.openingBossId ?? (settings.mode === 'raid' ? 'chain-colossus' : 'constable'),
       openingArenaId:
         settings.openingArenaId ?? (settings.mode === 'raid' ? 'ossuary-works' : 'gatehouse'),
     };
@@ -319,11 +320,11 @@ export class Game {
       this.settings.maxPlayers > 50
     )
       throw Error('Invalid simulation settings');
-    if (this.settings.mode === 'raid') {
-      this.selectedContract.threat = 4;
-      this.boss.threat = 4;
-    }
-    this.selectedContract.bossId = this.settings.openingBossId;
+    this.selectedContract = {
+      ...this.selectedContract,
+      ...classifiedContract(this.settings.openingBossId),
+    };
+    this.boss.threat = bossThreat(this.settings.openingBossId).level;
     this.boss.id = this.settings.openingBossId;
     if (this.boss.id === 'uncounted') {
       this.secretStatus = 'active';
@@ -661,6 +662,7 @@ export class Game {
     this.selectedContract = {
       id: 'uncounted-extension',
       bossId: 'uncounted',
+      subtier: 0,
       threat: 11,
       risk: 0,
       bounty: 1,
@@ -703,7 +705,7 @@ export class Game {
         : 0;
     return (
       rule.bossHealthBase *
-      rule.bossHealthThreatGrowth ** (Math.min(10, contract.threat) - 1) *
+      threatHealth(contract.bossId ?? 'constable') *
       (this.bossDefinition(contract).timer / 120) *
       this.bossDefinition(contract).healthFactor *
       (this.settings.mode === 'raid' && this.bossDefinition(contract).route !== 'secret'
@@ -713,7 +715,6 @@ export class Game {
       (1 + rule.bossHealthAdditionalPlayer * Math.max(0, n - 1)) *
       this.modifier('bossHealth') *
       (1 + cycles * rule.endless.healthGrowthPerCycle) *
-      (1 + contract.risk * 0.08) *
       (contract.variant === 'brutal' ? rule.brutal.healthMultiplier : 1)
     );
   }
@@ -938,19 +939,34 @@ export class Game {
         .map((w) => w.baselineSustainedDps)
         .toSorted((a, b) => a - b)[3];
       const routePool =
-        this.settings.mode !== 'endless'
-          ? this.encounter === this.routeLength - 1
-            ? data.bossPools[this.settings.mode].finale
-            : data.bossPools[this.settings.mode].regular
-          : implementedBossIds;
-      const uncleared = routePool.filter((id) => !this.completedBossIds.has(id as BossId));
-      // Before any repeat, exhaust the implemented identity pool. Concealed
-      // choices use the saved RNG, so restoring a vote never rerolls it.
+        this.settings.mode === 'raid'
+          ? ((this.encounter === this.routeLength - 1
+              ? data.bossPools.raid.finale
+              : data.bossPools.raid.regular) as BossId[])
+          : routeBossIds.filter(
+              (id) =>
+                data.bosses.find((b) => b.id === id)!.finale ===
+                (this.encounter === this.routeLength - 1),
+            );
+      const uncleared = routePool.filter((id) => !this.completedBossIds.has(id));
+      if (uncleared.length < 3) {
+        const substitutes = routeBossIds.filter(
+          (id) =>
+            !this.completedBossIds.has(id) &&
+            !uncleared.includes(id) &&
+            data.bosses.find((b) => b.id === id)!.finale ===
+              (this.encounter === this.routeLength - 1),
+        );
+        uncleared.push(...substitutes);
+      }
       const pool =
         this.settings.mode === 'endless'
           ? this.endless.offer(this.encounter, this.rng)
-          : this.rng.shuffle(
-              uncleared.length ? uncleared : routePool.filter((id) => id !== this.boss.id),
+          : rankedThreatCandidates(
+              uncleared.length >= 3 ? uncleared : routePool.filter((id) => id !== this.boss.id),
+              threat,
+              this.rng,
+              this.settings.mode,
             );
       this.contractCards = [0, 1, 2].map((i) => {
         const bossId = pool[i % pool.length] as BossId;
@@ -960,10 +976,7 @@ export class Game {
             : ('normal' as const);
         const card = {
           id: 'watch-' + this.encounter + '-' + i,
-          bossId,
-          threat,
-          risk: i,
-          bounty: (1 + i * 0.15) * (variant === 'brutal' ? rule.brutal.bountyMultiplier : 1),
+          ...classifiedContract(bossId, variant),
           recommendedRating: 0,
           variant,
         };
@@ -1571,6 +1584,7 @@ export class Game {
         : 0;
     return (
       this.difficulty.damage *
+      threatPressure(this.boss.id).damage *
       this.modifier('bossDamage') *
       (1 + cycle * rule.endless.damageGrowthPerCycle) *
       (this.boss.variant === 'brutal' ? rule.brutal.damageMultiplier : 1)
@@ -1868,24 +1882,20 @@ export class Game {
               : 0,
           count = Math.min(
             80,
-            Math.ceil(attack.count * this.modifier('bossBulletCount')) +
+            Math.ceil(
+              attack.count * this.modifier('bossBulletCount') * threatPressure(this.boss.id).count,
+            ) +
               this.difficulty.extraPatterns * 2 +
-              this.selectedContract.risk * 2 +
               Math.min(8, cycle),
           ),
           speed =
             attack.speed *
             this.difficulty.speed *
             this.modifier('bossSpeed') *
-            (1 + this.selectedContract.risk * 0.06) *
+            threatPressure(this.boss.id).speed *
             (1 +
               Math.min(rule.endless.maximumSpeedGrowth, cycle * rule.endless.speedGrowthPerCycle)),
-          damage =
-            attack.damage *
-            this.difficulty.damage *
-            this.modifier('bossDamage') *
-            (1 + cycle * rule.endless.damageGrowthPerCycle) *
-            (this.boss.variant === 'brutal' ? rule.brutal.damageMultiplier : 1);
+          damage = attack.damage * this.bossDamageScale();
         if (
           index === 0 &&
           this.director.endless.cast(this.signatureContext(), target, { ...attack, speed, count })
@@ -2578,11 +2588,14 @@ export class Game {
       typeof c.id === 'string' &&
       /^[a-z0-9-]{1,64}$/.test(c.id) &&
       int(c.threat, 1, c.bossId === 'uncounted' ? 11 : 10) &&
-      int(c.risk, 0, 2) &&
+      c.risk === 0 &&
+      (c.subtier === undefined || int(c.subtier, -2, 2)) &&
       finite(c.bounty, 1, 3) &&
       implementedBossIds.includes(c.bossId as BossId) &&
       (c.variant === undefined || ['normal', 'brutal'].includes(c.variant)) &&
-      finite(c.recommendedRating, 0, 1000000);
+      finite(c.recommendedRating, 0, 1000000) &&
+      c.threat === bossThreat(c.bossId!).level &&
+      (c.subtier === undefined || c.subtier === bossThreat(c.bossId!).subtier);
     if (
       !validContract(save.selectedContract) ||
       !Array.isArray(save.contractCards) ||
@@ -2631,11 +2644,17 @@ export class Game {
     g.accords = save.accords;
     g.rng.state = save.rng;
     g.nextId = save.nextId;
-    g.selectedContract = { ...save.selectedContract };
+    g.selectedContract = {
+      ...save.selectedContract,
+      ...classifiedContract(save.selectedContract.bossId!, save.selectedContract.variant),
+    };
     g.boss.id = save.selectedContract.bossId!;
     g.mutations.push(...structuredClone(save.mutations));
     g.mutationCards = [...save.mutationCards];
-    g.contractCards = structuredClone(save.contractCards);
+    g.contractCards = save.contractCards.map((card) => ({
+      ...card,
+      ...classifiedContract(card.bossId!, card.variant),
+    }));
     for (const [id, index] of Object.entries(save.votes)) g.votes.set(id, index);
     g.statsCache.clear();
     player.maxHealth = g.stats(player).health;

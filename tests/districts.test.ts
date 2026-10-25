@@ -396,7 +396,12 @@ test('sixteen-fight Pilgrimage restores boundaries, never repeats and reaches th
       assert(!seen.has(g.boss.id));
       seen.add(g.boss.id);
       assert(
-        (n === 15 ? data.bossPools.long.finale : data.bossPools.long.regular).includes(g.boss.id),
+        data.bosses.some(
+          (b) =>
+            b.id === g.boss.id &&
+            ['short', 'standard', 'long', 'raid'].includes(b.route) &&
+            b.finale === (n === 15),
+        ),
       );
       const p = [...g.players.values()][0];
       assert.equal(p.totalSp, 3 + Math.floor((24 * n) / 15));

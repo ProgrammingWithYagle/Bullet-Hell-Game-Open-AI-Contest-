@@ -1,6 +1,7 @@
 import catalog from '../../content/catalog.json' with { type: 'json' };
 import { type BossId } from './protocol.ts';
 import { Random } from './random.ts';
+import { rankedThreatCandidates } from './boss-threat.ts';
 import { exclusiveBossIds } from './endless-director.ts';
 export const routeBossIds = catalog.bosses
   .filter((b) => ['short', 'standard', 'long', 'raid'].includes(b.route))
@@ -62,6 +63,15 @@ export class EndlessSchedule {
     }
     if (candidates.length < 3)
       throw Error('Endless schedule has fewer than three eligible identities');
-    return candidates.slice(0, 3);
+    const target = Math.min(10, completed + 1);
+    if (completed < 10) return rankedThreatCandidates(candidates, target, rng);
+    // Keep an age slot after the opening so fixed-grade preference cannot starve an old bag member.
+    const oldest = candidates[0];
+    const ranked = rankedThreatCandidates(
+      candidates.filter((id) => id !== oldest),
+      target,
+      rng,
+    );
+    return rng.shuffle([oldest, ...ranked.slice(0, 2)]);
   }
 }

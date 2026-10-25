@@ -1,3 +1,4 @@
+import { bossThreat, threatBounty } from '../src/shared/boss-threat.ts';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createGameServer } from '../src/server/index.ts';
@@ -51,6 +52,8 @@ test(
           await until(() => guest.view?.bossCues.some((c) => c.kind === kind) === true);
           assert.equal(guest.view!.boss.id, openingBossId);
           assert.equal(owner.view!.boss.id, openingBossId);
+          assert.equal(owner.view!.boss.threat, bossThreat(openingBossId).level);
+          assert.equal(guest.view!.boss.threat, bossThreat(openingBossId).level);
           assert(
             JSON.parse(room.state.hazards).bossCues.some((c: { kind: string }) => c.kind === kind),
           );
@@ -64,6 +67,18 @@ test(
           await until(() => guest.view?.phase === 'mutationVote');
           assert.equal(guest.view!.bossCues.length, 0);
           assert.equal(guest.view!.minions.length, 0);
+          room.game.phaseEnds = room.game.tick;
+          await until(() => guest.view?.phase === 'contractVote');
+          for (const card of guest.view!.contractCards) {
+            assert.equal(card.bossId, undefined);
+            assert(Number.isInteger(card.subtier));
+            assert.equal(card.risk, 0);
+          }
+          for (const card of room.game.contractCards) {
+            assert.equal(card.subtier, bossThreat(card.bossId!).subtier);
+            assert.equal(card.bounty, threatBounty(card.bossId!, card.variant));
+          }
+          assert.deepEqual(guest.view!.contractCards, owner.view!.contractCards);
         } finally {
           await Promise.allSettled([owner.close(), guest.close()]);
         }

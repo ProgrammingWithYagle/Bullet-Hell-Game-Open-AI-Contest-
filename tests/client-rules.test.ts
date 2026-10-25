@@ -30,20 +30,25 @@ test('prediction reconciles acknowledged input and replays only the pending move
   assert.equal(predictor.player!.x, p.x);
 });
 
-test('the first ten Endless encounters award exactly the normalized base power budget', () => {
+test('Endless keeps normalized base income while paying fixed-classification bounty premiums', () => {
   const g = new Game({ mode: 'endless' }),
     p = g.addPlayer('p', 'Mara', 'soldier');
   g.start();
+  let expectedCoins = 120;
   for (let encounter = 0; encounter < 9; encounter++) {
+    const beforeIncome = p.incomeGranted;
     g.boss.health = 0;
     g.step();
+    expectedCoins += Math.floor((p.incomeGranted - beforeIncome) * 1.12);
     g.phase = 'loading';
     g.phaseEnds = g.tick;
     g.step();
   }
   assert.equal(g.encounter, 9);
   assert.equal(p.totalSp, 27);
-  assert.equal(p.coins, 2400);
+  assert.equal(p.incomeGranted, 2400);
+  assert.equal(p.coins, expectedCoins);
+  assert(p.coins > p.incomeGranted);
 });
 
 test('late arrivals receive boundary income once and purchased coins are not refunded', () => {
@@ -57,12 +62,12 @@ test('late arrivals receive boundary income once and purchased coins are not ref
   g.boss.health = 0;
   g.step();
   assert.equal(late.coins, 120);
-  assert.equal(p.coins, 600);
+  assert.equal(p.coins, 668);
   g.phase = 'loading';
   g.phaseEnds = g.tick;
   g.step();
   assert.equal(late.coins, 690);
-  assert.equal(p.coins, 600);
+  assert.equal(p.coins, 668);
 });
 
 test('all shipped language plural forms format numbers without recursive substitution', () => {

@@ -1,3 +1,4 @@
+import { threatHealth } from '../src/shared/boss-threat.ts';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -46,13 +47,12 @@ test('every boss uses its authored base duration, with Brutal HP/deadline and Ra
     run.start();
     return run;
   };
-  assert.equal(fixture('constable').boss.maxHealth, 1800);
-  assert.equal(fixture('courier').boss.maxHealth, 1012.5);
+  assert(Math.abs(fixture('constable').boss.maxHealth - 1944) < 1e-9);
+  assert(Math.abs(fixture('courier').boss.maxHealth - 850.5) < 1e-9);
   for (const b of data.bosses) {
     const normal = fixture(b.id as BossId),
       brutal = fixture(b.id as BossId, true);
-    const expected =
-      1800 * 1.22 ** (Math.min(10, normal.boss.threat) - 1) * (b.timer / 120) * b.healthFactor;
+    const expected = 1800 * threatHealth(b.id) * (b.timer / 120) * b.healthFactor;
     assert(Math.abs(normal.boss.maxHealth - expected) < 1e-7, b.id);
     assert(Math.abs(brutal.boss.maxHealth / normal.boss.maxHealth - 2) < 1e-9, b.id + ' Brutal HP');
     assert.equal(brutal.boss.deadline, normal.boss.deadline * 1.5, b.id + ' Brutal duration');
@@ -60,7 +60,7 @@ test('every boss uses its authored base duration, with Brutal HP/deadline and Ra
   const raid = fixture('chain-colossus', false, 'raid');
   const raidExpected =
     1800 *
-    1.22 ** 3 *
+    threatHealth('chain-colossus') *
     (data.bosses.find((b) => b.id === 'chain-colossus')!.timer / 120) *
     data.bosses.find((b) => b.id === 'chain-colossus')!.healthFactor *
     1.25;

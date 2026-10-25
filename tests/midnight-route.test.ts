@@ -13,7 +13,7 @@ function finishIntermission(g: Game) {
   }
   assert(['combat', 'victory'].includes(g.phase));
 }
-test('Midnight Circuit completes ten distinct fights from its own pool with a reserved finale and normalized budgets', () => {
+test('Midnight Circuit completes ten distinct fixed-grade fights with a reserved finale and normalized base budgets', () => {
   for (const seed of [2, 19, 831]) {
     let g = new Game({ mode: 'standard', maxPlayers: 1, seed });
     g.addPlayer('p', 'Sable', 'mage');
@@ -26,8 +26,13 @@ test('Midnight Circuit completes ten distinct fights from its own pool with a re
       assert(!seen.has(g.boss.id));
       seen.add(g.boss.id);
       maps.add(g.arena.id);
-      const pool =
-        encounter === 9 ? data.bossPools.standard.finale : data.bossPools.standard.regular;
+      const pool = data.bosses
+        .filter(
+          (b) =>
+            ['short', 'standard', 'long', 'raid'].includes(b.route) &&
+            b.finale === (encounter === 9),
+        )
+        .map((b) => b.id);
       assert(pool.includes(g.boss.id));
       const p = [...g.players.values()][0];
       assert.equal(p.totalSp, 3 + Math.floor((24 * encounter) / 9));
@@ -53,10 +58,12 @@ test('Midnight Circuit completes ten distinct fights from its own pool with a re
       assert(g.contractCards.every((c) => !seen.has(c.bossId!)));
       assert(
         g.contractCards.every((c) =>
-          (encounter === 8
-            ? data.bossPools.standard.finale
-            : data.bossPools.standard.regular
-          ).includes(c.bossId!),
+          data.bosses.some(
+            (b) =>
+              b.id === c.bossId &&
+              ['short', 'standard', 'long', 'raid'].includes(b.route) &&
+              b.finale === (encounter === 8),
+          ),
         ),
       );
       finishIntermission(g);

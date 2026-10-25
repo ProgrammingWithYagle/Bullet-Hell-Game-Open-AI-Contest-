@@ -1,5 +1,5 @@
 {
-  "buildId": "2026.10.25-map-and-roster",
+  "buildId": "2026.10.25-fixed-threats",
   "snapshot": {
     "bosses": 60,
     "classes": 7,
@@ -7,9 +7,33 @@
     "weapons": 28,
     "maps": 6,
     "modes": ["short", "standard", "long", "raid", "endless"],
-    "protocol": 13
+    "protocol": 14
   },
   "entries": [
+    {
+      "id": "fixed-boss-threat-classifications",
+      "date": "2026-10-25",
+      "title": "Fixed boss ratings, five subtiers and a separate Brutal marker",
+      "groups": [
+        {
+          "title": "Stable classifications",
+          "items": [
+            "Every one of the 60 existing identities now has an explicit fixed level and subtier. Hollow Constable is 1+; Bell Triplets are 3--; Brutal uses B and the above-Calamity secret category displays >10.",
+            "Contracts derive health, projectile pressure and bounty from the identity. Hidden card-position risk is removed; global difficulty, party size and Endless pressure remain separate.",
+            "Ordinary campaigns choose suitable fixed grades across primary route affinities while retaining regular/finale roles. Endless keeps its repeat/exclusive rules and an age slot prevents older identities being starved by grade preference."
+          ]
+        },
+        {
+          "title": "Saves, budgets and remaining work",
+          "items": [
+            "Protocol-13 local Practice saves migrate to protocol 14 without losing money, run identity, personal progress or extension history. New boundaries reject forged grades and positional risk; concealed cards still omit boss IDs.",
+            "Base coin/SP budgets stay normalized, while earned classified bounties add premiums. Existing purchases are preserved and late arrivals receive only base catch-up.",
+            "Three distinct bosses in each of fifty ordinary subtiers needs 150 ordinary bosses. Current coverage is 59 ordinary plus one secret, with 91 additional ordinary identities still required. This stage adds no new identities.",
+            "Clearer phase changes, more movement and distinct attack pressure, ability-changing upgrades and an optional branching skill tree remain active work. Final human balance and rendered review remain open."
+          ]
+        }
+      ]
+    },
     {
       "id": "map-routes-and-selection-portraits",
       "date": "2026-10-25",
@@ -555,7 +579,7 @@
           "title": "Playable content",
           "items": [
             "Added Tank, Mage, Engineer and Assassin alongside Soldier, Medic and Heavy. All seven kits execute their two abilities and ultimate, with 378 skill nodes, 63 specialization paths and 28 class weapons.",
-            "Added six distinct traversable layouts: Gatehouse 1,600 \u00c3\u0192\u00e2\u20ac\u201d 1,000; Triage Yard 1,600 \u00c3\u0192\u00e2\u20ac\u201d 900; Ossuary Works 1,300 \u00c3\u0192\u00e2\u20ac\u201d 1,000; Sunken Chapel 1,400 \u00c3\u0192\u00e2\u20ac\u201d 920; Bell Foundry 1,500 \u00c3\u0192\u00e2\u20ac\u201d 850; Crown Crypt 1,240 \u00c3\u0192\u00e2\u20ac\u201d 880. Cover and spawn positions change with each map.",
+            "Added six distinct traversable layouts: Gatehouse 1,600 Ãƒâ€” 1,000; Triage Yard 1,600 Ãƒâ€” 900; Ossuary Works 1,300 Ãƒâ€” 1,000; Sunken Chapel 1,400 Ãƒâ€” 920; Bell Foundry 1,500 Ãƒâ€” 850; Crown Crypt 1,240 Ãƒâ€” 880. Cover and spawn positions change with each map.",
             "Connected 52 additional item illustrations, 124 approved class motion poses and sixteen environment/construct props. Weapons, supplies, all specialization paths and mutations now have individual item artwork."
           ]
         },

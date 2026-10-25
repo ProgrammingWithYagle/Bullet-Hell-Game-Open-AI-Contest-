@@ -1,3 +1,4 @@
+import { threatBounty, bossThreat } from '../src/shared/boss-threat.ts';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { Game, data } from '../src/shared/game.ts';
@@ -49,10 +50,13 @@ test('Brutal combat doubles health and attack damage, extends the deadline while
   while (normal.phase === 'mutationVote') normal.step();
   assert.equal(normal.phase, 'contractVote');
   assert.equal(normal.contractCards.length, 3);
-  for (const [risk, card] of normal.contractCards.entries()) {
+  for (const card of normal.contractCards) {
     assert.notEqual(card.bossId, 'constable');
     assert.equal(card.variant, 'normal');
-    assert.equal(card.bounty, 1 + risk * 0.15);
+    assert.equal(card.risk, 0);
+    assert.equal(card.threat, bossThreat(card.bossId!).level);
+    assert.equal(card.subtier, bossThreat(card.bossId!).subtier);
+    assert.equal(card.bounty, threatBounty(card.bossId!));
   }
 });
 

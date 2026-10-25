@@ -1,6 +1,21 @@
 # Changelog
 
-Development build **2026.10.25-map-and-roster**, protocol 13. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.25-fixed-threats**, protocol 14. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-25 — Fixed boss ratings, five subtiers and a separate Brutal marker
+
+### Stable classifications
+
+- Every one of the 60 existing identities now has an explicit fixed level and subtier. Hollow Constable is 1+; Bell Triplets are 3--; Brutal uses B and the above-Calamity secret category displays >10.
+- Contracts derive health, projectile pressure and bounty from the identity. Hidden card-position risk is removed; global difficulty, party size and Endless pressure remain separate.
+- Ordinary campaigns choose suitable fixed grades across primary route affinities while retaining regular/finale roles. Endless keeps its repeat/exclusive rules and an age slot prevents older identities being starved by grade preference.
+
+### Saves, budgets and remaining work
+
+- Protocol-13 local Practice saves migrate to protocol 14 without losing money, run identity, personal progress or extension history. New boundaries reject forged grades and positional risk; concealed cards still omit boss IDs.
+- Base coin/SP budgets stay normalized, while earned classified bounties add premiums. Existing purchases are preserved and late arrivals receive only base catch-up.
+- Three distinct bosses in each of fifty ordinary subtiers needs 150 ordinary bosses. Current coverage is 59 ordinary plus one secret, with 91 additional ordinary identities still required. This stage adds no new identities.
+- Clearer phase changes, more movement and distinct attack pressure, ability-changing upgrades and an optional branching skill tree remain active work. Final human balance and rendered review remain open.
 
 ## 2026-10-25 — More distinct map routes and consistent class portraits
 

@@ -1591,3 +1591,5 @@ Free hosting starts with a Render gameplay service and a static browser client. 
 - Bloody Hell official store page: https://store.steampowered.com/app/2056220/Bloody_Hell/ - Readable action and expressive gothic bullet-hell reference only. No copied assets.
 
 The supplied current official rules are an external requirement source. They do not authorize accepting terms or making eligibility declarations. The approved human plan authorizes the game, repository, Wiki, Project and branch protection. Art generation uses the available built-in OpenAI tool; backend names are recorded only if reported. Audio is authored by deterministic local synthesis with no sampled third-party material.
+
+Current runtime classification/offer rules are specified in [Fixed boss threats](FIXED_BOSS_THREATS.md). They supersede encounter-scaled boss ratings and strict primary-route fences for the three ordinary campaigns, while retaining finale roles. Fixed grade is separate from global difficulty and Brutal.

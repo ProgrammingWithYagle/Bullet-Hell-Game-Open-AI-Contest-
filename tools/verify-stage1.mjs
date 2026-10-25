@@ -53,6 +53,13 @@ check('Campaign, raid and uncapped endless budgets',()=>{
   assert.deepEqual(c.modes.find(m=>m.id==='raid').skillBudgets,[12,20,27]);assert.equal(c.modes.find(m=>m.id==='endless').encounters,null);assert.equal(c.modes.find(m=>m.id==='endless').maxPlayers,50);assert.equal(c.rules.endless.finalEncounter,null);assert(c.rules.endless.cappedPlayerPower);
   assert.equal(c.difficulties.filter(d=>d.locked).length,2);assert(c.difficulties.filter(d=>d.locked).every(d=>/Hard/.test(d.unlock)));
 });
+check('Fixed boss grades, independent variants and complete translated tier labels',()=>{
+  const profile=read('src/shared/boss-threats.json'),labels=read('src/client/threat-labels.json'),review=read('reviews/balance-model-review.json');
+  assert.equal(profile.entries.length,c.bosses.length);assert.equal(new Set(profile.entries.map(p=>p.bossId)).size,c.bosses.length);
+  for(const p of profile.entries){assert(c.bosses.some(b=>b.id===p.bossId));assert(Number.isInteger(p.level)&&p.level>=1&&p.level<=11);assert(Number.isInteger(p.subtier)&&p.subtier>=-2&&p.subtier<=2);assert.equal(p.level>10,p.bossId==='uncounted');}
+  assert.deepEqual(review.fixedThreatProfiles,profile.entries,'Stale fixed-grade analytical model');assert.equal(review.fixedThreatClassificationVersion,profile.classificationVersion);
+  assert.equal(Object.keys(labels).length,15);for(const words of Object.values(labels)){assert.equal(words.length,6);assert(words.every(word=>typeof word==='string'&&word.trim()));}
+});
 check('Weapon accounting, rates and finite cooldowns',()=>{
   for(const w of c.weapons){assert(w.damage>0&&w.fireRate>0&&w.magazine>0&&w.reloadTime>0&&w.projectileSpeed>0&&w.pellets>0&&w.price>=0);const dps=w.damage*w.pellets*w.magazine/(w.magazine/w.fireRate+w.reloadTime);assert(Math.abs(dps-w.baselineSustainedDps)<0.011);}
   for(const item of [...c.upgrades,...c.supplies])assert((item.price??item.basePrice)>=0);

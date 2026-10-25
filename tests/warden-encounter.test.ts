@@ -1,3 +1,4 @@
+import { classifiedContract } from '../src/shared/boss-threat.ts';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { Game, data } from '../src/shared/game.ts';
@@ -10,7 +11,7 @@ function encounter(variant: 'normal' | 'brutal' = 'normal', protectedPlayer = tr
   const lobby = new Game({ seed: 583, maxPlayers: 1, mode: 'endless' });
   lobby.addPlayer('solo', 'Mara', 'soldier');
   const save = lobby.offlineCheckpoint()!;
-  save.selectedContract.bossId = 'lantern-warden';
+  Object.assign(save.selectedContract, classifiedContract('lantern-warden'));
   save.selectedContract.variant = variant;
   const game = Game.restoreOffline(save);
   game.start();
@@ -79,7 +80,7 @@ test('Warden fan/zone casts use their own radius, duration, damage and rest wind
         zone = true;
         assert.equal(warning.radius, 60);
         assert.equal(warning.until - warning.at, 90);
-        assert.equal(warning.damage, 9);
+        assert(Math.abs(warning.damage - 9 * 0.975) < 1e-9);
       }
     }
     actualZone ||= game.fields.some((field) => field.kind === 'zone');

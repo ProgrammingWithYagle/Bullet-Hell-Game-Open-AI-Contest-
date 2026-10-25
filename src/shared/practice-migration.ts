@@ -1,11 +1,12 @@
 import catalog from '../../content/catalog.json';
-import { CONTENT_REVISION, PROTOCOL } from './protocol.ts';
+import { CONTENT_REVISION, PROTOCOL, type BossId } from './protocol.ts';
+import { classifiedContract } from './boss-threat.ts';
 
 /** Bounded local migrations preserve old Practice saves. Online signatures stay strict. */
 export function migratePracticeBoundary(value: unknown): unknown {
   if (!value || typeof value !== 'object' || Array.isArray(value)) return value;
   const legacy = value as Record<string, unknown>;
-  if (![4, 5, 6, 7, 8, 9, 10, 11, 12].includes(legacy.protocolVersion as number)) return value;
+  if (![4, 5, 6, 7, 8, 9, 10, 11, 12, 13].includes(legacy.protocolVersion as number)) return value;
   const version = legacy.protocolVersion as number;
   const previousServiceBosses = [
     'matron',
@@ -55,7 +56,7 @@ export function migratePracticeBoundary(value: unknown): unknown {
     'last-breath-saint',
   ];
   const bosses =
-    version === 12
+    version >= 12
       ? catalog.bosses.map((b) => b.id)
       : version >= 7
         ? [
@@ -126,37 +127,68 @@ export function migratePracticeBoundary(value: unknown): unknown {
     if (!candidate || typeof candidate !== 'object' || Array.isArray(candidate))
       throw Error('invalidCards');
     const card = candidate as Record<string, unknown>;
+    if (card.variant !== undefined && !['normal', 'brutal'].includes(String(card.variant)))
+      throw Error('invalidCards');
+    if (
+      !Number.isSafeInteger(card.risk) ||
+      Number(card.risk) < 0 ||
+      Number(card.risk) > 2 ||
+      !Number.isSafeInteger(card.threat) ||
+      Number(card.threat) < 1 ||
+      Number(card.threat) > 11 ||
+      typeof card.bounty !== 'number' ||
+      !Number.isFinite(card.bounty) ||
+      card.bounty < 1 ||
+      card.bounty > 3
+    )
+      throw Error('invalidCards');
     if (version !== 4) {
       if (!bosses.includes(card.bossId as string)) throw Error('invalidCards');
-      return { ...card };
+      return {
+        ...card,
+        ...classifiedContract(
+          card.bossId as BossId,
+          card.variant === 'brutal' ? 'brutal' : 'normal',
+        ),
+      };
     }
     if (card.bossId !== undefined && card.bossId !== 'constable') throw Error('invalidCards');
-    return { ...card, bossId: 'constable' };
+    return {
+      ...card,
+      ...classifiedContract('constable', card.variant === 'brutal' ? 'brutal' : 'normal'),
+    };
   };
   if (!Array.isArray(legacy.contractCards) || legacy.contractCards.length > 3)
     throw Error('invalidCards');
   return {
     ...legacy,
     protocolVersion: PROTOCOL,
-    settings: { ...oldSettings, runId: 'legacy-' + oldSettings.seed + '-' + oldSettings.mode },
+    settings: {
+      ...oldSettings,
+      runId:
+        version === 13 ? oldSettings.runId : 'legacy-' + oldSettings.seed + '-' + oldSettings.mode,
+    },
     player: {
       ...(legacy.player as object),
-      progress: {
-        clears: legacy.encounter,
-        rescues: 0,
-        campaignClears: legacy.campaignBank
-          ? (legacy.campaignBank as { encounters: number }).encounters
-          : 0,
-        firstEncounter: Number(legacy.encounter) > 0 ? 0 : -1,
-        clearedBossIds:
-          version === 4
-            ? Number(legacy.encounter) > 0
-              ? ['constable']
-              : []
-            : legacy.completedBossIds,
-      },
+      progress:
+        version === 13
+          ? (legacy.player as Record<string, unknown>).progress
+          : {
+              clears: legacy.encounter,
+              rescues: 0,
+              campaignClears: legacy.campaignBank
+                ? (legacy.campaignBank as { encounters: number }).encounters
+                : 0,
+              firstEncounter: Number(legacy.encounter) > 0 ? 0 : -1,
+              clearedBossIds:
+                version === 4
+                  ? Number(legacy.encounter) > 0
+                    ? ['constable']
+                    : []
+                  : legacy.completedBossIds,
+            },
     },
-    ...(version === 12
+    ...(version >= 12
       ? {
           timeouts: legacy.timeouts,
           secretStatus: legacy.secretStatus,

@@ -1,3 +1,5 @@
+import { bossThreat } from '../shared/boss-threat.ts';
+import { classifiedThreatCode } from './threat-text.ts';
 import { loadProfile, changeProfile, type CosmeticId } from './profile.ts';
 import { defaultPreferences } from './preferences.ts';
 import { defaultControls } from './input-bindings.ts';
@@ -333,8 +335,8 @@ function update(view: View) {
       ' · ' +
       t('ui.threat') +
       ' ' +
-      number(view.boss.threat) +
-      (view.boss.variant === 'brutal' ? '+ · ' + t('ui.variantBrutal') : '') +
+      classifiedThreatCode(view.boss.threat, bossThreat(view.boss.id).subtier, view.boss.variant) +
+      (view.boss.variant === 'brutal' ? ' · ' + t('ui.variantBrutal') : '') +
       ' · ' +
       t('ui.phase', { number: view.boss.phase + 1 });
   const hp = $<HTMLProgressElement>('health');

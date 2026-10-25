@@ -1,3 +1,4 @@
+import { bossThreat } from '../src/shared/boss-threat.ts';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
@@ -230,7 +231,7 @@ test('Raid completes two distinct regular bosses and one reserved finale with co
     for (let n = 0; n < 3; n++) {
       assert(!seen.has(g.boss.id));
       seen.add(g.boss.id);
-      assert.equal(g.boss.threat, [4, 7, 10][n]);
+      assert.equal(g.boss.threat, bossThreat(g.boss.id).level);
       assert.equal(g.arena.id, ['ossuary-works', 'bell-foundry', 'crown-crypt'][n]);
       const p = [...g.players.values()][0];
       assert.equal(p.totalSp, [12, 20, 27][n]);

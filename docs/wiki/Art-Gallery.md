@@ -141,3 +141,9 @@ Five secondary layouts now use diagonal crate lanes, factory chicanes, a horizon
 Soldier and Medic now use three-quarter resting poses. All seven selection portraits share a visible-body-height target and ground anchor, correcting the padded small front-facing seeds. Five existing identities/poses and all gameplay sprites remain unchanged; rendered menu review is pending.
 
 ![Seven class portraits at a shared body scale](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/selection-lineup.jpg)
+
+## Fixed classifications and roster coverage
+
+Every implemented boss now keeps its authored grade across encounters. Five subtiers use --, -, no sign, + and ++; Brutal uses B, and >10 is reserved for secrets. Contracts derive actual health/pressure/reward from that grade. There are still 60 identities: 59 ordinary plus one secret. Filling all fifty ordinary subtiers with three distinct bosses needs 91 more ordinary identities; this chart shows current coverage, not completed future content. Final phase/mobility and human balance work continues.
+
+![Fixed boss classification and coverage reference](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/fixed-threats.jpg)

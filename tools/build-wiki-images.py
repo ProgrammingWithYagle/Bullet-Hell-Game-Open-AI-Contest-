@@ -138,6 +138,11 @@ def main():
     save(source('reviews/selection-portraits-2026-10-25/selection-lineup.png').convert('RGB'),'selection-lineup.jpg','Seven class-selection portraits at one visible-body scale; two new three-quarter poses, five original identities retained. Static reference, not a menu capture.')
     for path in ['reviews/map-layouts-2026-10-25/layout-reference-v2.json','reviews/map-layouts-2026-10-25/runtime-arenas-v2.json','assets/delivery/selection-portraits-v1/library.json','reviews/selection-portraits-2026-10-25/selection-lineup.png']:
         sources[path]={'path':path,'sha256':sha(ROOT/path)}
+    fixed_reference=read('reviews/fixed-threats-2026-10-25/fixed-threat-reference.json')
+    assert sha(ROOT/fixed_reference['image'])==fixed_reference['imageSha256']
+    save(source(fixed_reference['image']).convert('RGB'),'fixed-threats.jpg','Fixed classifications and current coverage: 59 ordinary bosses and one secret; 91 more ordinary identities needed for three per subtier. Static roster reference.')
+    for path in ['reviews/fixed-threats-2026-10-25/fixed-threat-reference.json','reviews/fixed-threats-2026-10-25/roster-coverage.json','src/shared/boss-threats.json']:
+        sources[path]={'path':path,'sha256':sha(ROOT/path)}
     figure_receipt=read('reviews/performance/endurance-50-moths-20261024-2-figure-v2.json')
     assert sha(ROOT/figure_receipt['figure'])==figure_receipt['figureSha256']
     assert sha(ROOT/figure_receipt['source'])==figure_receipt['sourceSha256']

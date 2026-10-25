@@ -143,3 +143,72 @@ Seven new eight-pose clips add 56 complete defeat poses. Constable and Warden al
 Courier gains four breathing, four hit-recoil and four Accord-stagger poses. Original charge and defeat pixels remain unchanged. Survivor running no longer switches to idle between movement updates; stable directional selection and one-shot facing remain separate from authoritative aim. All 64 boss identity crops preserve exact original world geometry. Rendered/device/human review of these changes remains open.
 
 ![Courier living reactions and retained action/defeat poses](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/courier-motion.jpg)
+
+## Fixed classifications and roster coverage
+
+Every implemented boss now keeps its authored grade across encounters. Five subtiers use --, -, no sign, + and ++; Brutal uses B, and >10 is reserved for secrets. Contracts derive actual health/pressure/reward from that grade. There are still 60 identities: 59 ordinary plus one secret. Filling all fifty ordinary subtiers with three distinct bosses needs 91 more ordinary identities; this chart shows current coverage, not completed future content. Final phase/mobility and human balance work continues.
+
+![Fixed boss classification and coverage reference](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/fixed-threats.jpg)
+
+| Boss | Fixed code |
+| --- | --- |
+| Hollow Constable | 1+ |
+| Carrion Courier | 1-- |
+| Pallbearer | 5+ |
+| Cradle Matron | 2++ |
+| Mold Alchemist | 3-- |
+| Bellringer | 3- |
+| Stitchwright | 3 |
+| Grave Choir | 5-- |
+| Mortuary Engine | 9-- |
+| Drowned Regent | 9- |
+| The Uncounted | >10 |
+| The Tollkeeper | 1++ |
+| Lantern Warden | 2-- |
+| Ratcatcher | 1- |
+| Quarantine Clerk | 1 |
+| Chain Marshal | 2- |
+| Gate Widow | 2 |
+| Black Ambulance | 2+ |
+| Glass Surgeon | 3+ |
+| Ash Baker | 3++ |
+| Sluice Keeper | 4-- |
+| Last Stationmaster | 4- |
+| The Lamplighter | 4 |
+| The Anatomist | 4+ |
+| Plague Gardener | 4++ |
+| Red Abbess | 5- |
+| Vesper Judge | 5 |
+| Cinder Foreman | 5++ |
+| Canal Diver | 6-- |
+| Clockmender | 6- |
+| Seamstress of Wires | 6 |
+| Gravedigger | 6+ |
+| Ink Notary | 6++ |
+| Spore Beekeeper | 7-- |
+| Ice Custodian | 7- |
+| Bridge Ferryman | 7 |
+| Porcelain Mourner | 7+ |
+| Boiler Tender | 7++ |
+| Mirror Undertaker | 8-- |
+| Chalk Magistrate | 8- |
+| Wire Harpist | 8 |
+| Crow Shepherd | 8+ |
+| Ledger Leech | 8++ |
+| Salt Patriarch | 9 |
+| Chain Colossus | 4-- |
+| Ossuary Leviathan | 6++ |
+| Bell Triplets | 3-- |
+| Quarantine Heart | 7++ |
+| Crown Procession | 8++ |
+| City Eater | 10+ |
+| Saint of the Last Breath | 10++ |
+| Hourglass Widow | 3++ |
+| Unlit Astronomer | 8++ |
+| Folded Man | 4++ |
+| Red Comet | 5++ |
+| Memory Taxer | 6++ |
+| Choir of Moths | 7+ |
+| Zero-Hour Conductor | 9+ |
+| Walking District | 10 |
+| The Last Knocker | 10++ |

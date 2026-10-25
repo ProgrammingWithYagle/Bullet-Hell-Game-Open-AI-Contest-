@@ -45,3 +45,5 @@ The original Gatehouse and five new painted materials use the existing six layou
 Five secondary layouts now use diagonal crate lanes, factory chicanes, a horizontal chapel nave, furnace loops and a hooked crypt court. Beds are removed from secondary cover art. Footprints and ground paintings stay unchanged; all fifty spawns and Accord centers remain reachable. New-layout rendered/human review is pending.
 
 ![Current map route and cover reference](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/map-routes-v2.jpg)
+
+Ordinary campaigns now draw fixed-grade candidates from shared regular/finale roles near their intended ladder. Primary route is an affinity, rather than changing a boss's grade to match its encounter. Raid retains its regular/finale reservations; explicit Practice openers can consume a finale and require an uncleared substitute. Endless preserves seeded/exclusive/repeat rules, with an age slot preventing grade-preference starvation. Global difficulty and cycle pressure stay separate from the fixed boss grade.

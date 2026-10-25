@@ -182,7 +182,7 @@ test('votes, rewards and shop follow authoritative timers and late arrivals wait
   g.boss.health = 0;
   g.step();
   assert.equal(g.phase, 'mutationVote');
-  assert.equal(p.coins, 690);
+  assert.equal(p.coins, 758);
   assert.equal(p.totalSp, 9);
   assert.equal(new Set(g.mutationCards).size, 3);
   assert(g.vote(p.id, 1));
@@ -192,7 +192,12 @@ test('votes, rewards and shop follow authoritative timers and late arrivals wait
   g.step();
   assert.equal(g.phase, 'contractVote');
   assert.equal(g.mutations.length, 1);
-  assert(g.contractCards[2].recommendedRating > g.contractCards[0].recommendedRating);
+  assert(
+    g.contractCards.every(
+      (c) => Number.isFinite(c.recommendedRating) && c.recommendedRating > 0 && c.risk === 0,
+    ),
+  );
+  assert(new Set(g.contractCards.map((c) => c.threat + '/' + c.subtier)).size > 1);
   g.vote(p.id, 0);
   advance(g, 450);
   assert.equal(g.phase, 'shop');

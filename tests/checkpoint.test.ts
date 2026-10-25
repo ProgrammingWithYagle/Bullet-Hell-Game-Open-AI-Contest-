@@ -16,7 +16,7 @@ test('offline checkpoint round-trip preserves purchased power, rewards, voting t
   const original = boundary(),
     restored = Game.restoreOffline(serialize(original.offlineCheckpoint()));
   assert.equal(restored.phase, 'mutationVote');
-  assert.equal(restored.players.get('solo')!.coins, 600);
+  assert.equal(restored.players.get('solo')!.coins, 668);
   assert.equal(restored.players.get('solo')!.upgrades.damage, 1);
   assert.equal(restored.phaseEnds, original.phaseEnds);
   original.vote('solo', 2);
