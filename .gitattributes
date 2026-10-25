@@ -17,3 +17,6 @@
 *.zip binary
 # Preserve verbatim third-party license text, including upstream whitespace.
 docs/licenses/** -text -whitespace
+# Preserve newly issued reference-receipt bytes, including their original line endings.
+assets/production/generated/heavy-actions-2026-10-24/references/reference-receipt-issued.json -text
+assets/production/generated/assassin-actions-2026-10-24/references/reference-receipt-issued.json -text
