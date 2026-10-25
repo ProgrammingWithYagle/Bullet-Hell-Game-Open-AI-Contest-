@@ -8,6 +8,7 @@ import { ServicePresentation } from './service-presentation.ts';
 import type { ServiceCue } from '../shared/service-director.ts';
 import Phaser from 'phaser';
 import { assets } from './assets.ts';
+import { arenaCoverPlan } from './arena-covers.ts';
 import { SurvivorVisualMotion } from './survivor-visual-motion.ts';
 import { bossDefeatFrame } from './boss-defeat-presentation.ts';
 import { courierCombatFrame } from './courier-presentation.ts';
@@ -334,11 +335,11 @@ export class CombatScene extends Phaser.Scene {
           .fillRect(0, 0, 1600, 1000)
           .fillStyle(color, 1)
           .fillRect(map.bounds.x, map.bounds.y, map.width, map.height);
-        for (const obstacle of map.cover) {
+        for (const obstacle of arenaCoverPlan(map.id)) {
           const image = this.add.image(
             obstacle.x + obstacle.width / 2,
             obstacle.y + obstacle.height / 2,
-            'environment-' + map.prop,
+            obstacle.texture,
           );
           const fit = Math.min(obstacle.width / image.width, obstacle.height / image.height);
           image.setScale(fit).setDepth(1);

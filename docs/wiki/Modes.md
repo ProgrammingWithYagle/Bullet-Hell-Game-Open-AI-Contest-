@@ -39,3 +39,9 @@ The optional Uncounted extension is playable after a Normal-or-higher campaign c
 ![Six different arena floor materials with actual map footprints, collision cover and spawn markers at one scale](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/arena-ground.jpg)
 
 The original Gatehouse and five new painted materials use the existing six layouts and dimensions. Triage stone, workshop iron, damp chapel slate, warmer foundry plates and darker crypt inlay give the maps distinct surfaces. Cover props and their collision remain separately placed. This is a static artwork/geometry reference; gameplay uses its configured alpha/tint and final rendered/device/human review remains open. [Production and exact reconstruction](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/ARENA_GROUND_ART.md).
+
+## Distinct secondary-map routes
+
+Five secondary layouts now use diagonal crate lanes, factory chicanes, a horizontal chapel nave, furnace loops and a hooked crypt court. Beds are removed from secondary cover art. Footprints and ground paintings stay unchanged; all fifty spawns and Accord centers remain reachable. New-layout rendered/human review is pending.
+
+![Current map route and cover reference](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/map-routes-v2.jpg)

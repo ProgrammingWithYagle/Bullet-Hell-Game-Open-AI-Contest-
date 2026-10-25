@@ -12,24 +12,22 @@ import constableHurt from '../../assets/production/motion/constable-hurt-v1-atla
 import constableStagger from '../../assets/production/motion/constable-stagger-v1-atlas.png?url';
 import constableDefeat from '../../assets/production/motion/constable-defeat-v1-atlas.png?url';
 import medic from '../../assets/proofs/directions/medic-south-seed.png?url';
-import soldierPortrait from '../../assets/proofs/directions/soldier-south-seed.png?url';
 import lineup from '../../assets/proofs/survivors-v3.png?url';
 import damageIcon from '../../assets/icons/upgrades/damage.png?url';
 import rateIcon from '../../assets/icons/upgrades/fire-rate.png?url';
 import magazineIcon from '../../assets/icons/upgrades/magazine.png?url';
 import reloadIcon from '../../assets/icons/upgrades/reload.png?url';
 import healthIcon from '../../assets/icons/upgrades/health.png?url';
-import heavyPortrait from '../../assets/production/normalized/survivors/heavy/portrait-south-v1.png?url';
-import tankPortrait from '../../assets/production/normalized/survivors/tank/portrait-south-v1.png?url';
-import magePortrait from '../../assets/production/normalized/survivors/mage/portrait-south-v1.png?url';
-import engineerPortrait from '../../assets/production/normalized/survivors/engineer/portrait-south-v1.png?url';
-import assassinPortrait from '../../assets/production/normalized/survivors/assassin/portrait-south-v1.png?url';
 import wardenIdle from '../../assets/production/motion/lantern-warden-idle-v1-atlas.png?url';
 import wardenAttack from '../../assets/production/motion/lantern-warden-attack-v2-atlas.png?url';
 import wardenChannel from '../../assets/production/motion/lantern-warden-channel-v1-atlas.png?url';
 import wardenHurt from '../../assets/production/motion/lantern-warden-hurt-v1-atlas.png?url';
 import wardenDefeat from '../../assets/production/motion/lantern-warden-defeat-v1-atlas.png?url';
 import heavyReference from '../../assets/production/normalized/survivors/heavy/reference-atlas-v1.png?url';
+const selectionPortraits = import.meta.glob(
+  '../../assets/delivery/selection-portraits-v1/*-selection-v1.png',
+  { query: '?url', import: 'default', eager: true },
+) as Record<string, string>;
 const survivorReferences = import.meta.glob(
   '../../assets/production/normalized/survivors/*/reference-atlas-v1.png',
   { query: '?url', import: 'default', eager: true },
@@ -198,15 +196,12 @@ export const assets = {
     East: survivorMotionUrls['heavy-run-east'],
     West: survivorMotionUrls['heavy-run-west'],
   },
-  portraits: {
-    soldier: soldierPortrait,
-    medic,
-    heavy: heavyPortrait,
-    tank: tankPortrait,
-    mage: magePortrait,
-    engineer: engineerPortrait,
-    assassin: assassinPortrait,
-  } as Record<string, string>,
+  portraits: Object.fromEntries(
+    Object.entries(selectionPortraits).map(([path, url]) => [
+      path.split('/').at(-1)!.replace('-selection-v1.png', ''),
+      url,
+    ]),
+  ) as Record<string, string>,
   upgrades: {
     damage: damageIcon,
     'fire-rate': rateIcon,

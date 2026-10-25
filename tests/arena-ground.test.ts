@@ -24,7 +24,7 @@ test('five opaque ground paintings bind their exact natives and all six existing
         '-c',
         'core.bare=false',
         'show',
-        'HEAD:' + arenaGroundArt.geometrySource,
+        '748bb5234c6ce31e53c8c19c8fca67134cb0ae17:' + arenaGroundArt.geometrySource,
       ]),
     ),
     arenaGroundArt.geometrySourceSha256,

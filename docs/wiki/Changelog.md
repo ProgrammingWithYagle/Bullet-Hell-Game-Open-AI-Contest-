@@ -1,6 +1,20 @@
 # Changelog
 
-Development build **2026.10.25-motion-continuity**, protocol 13. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.25-map-and-roster**, protocol 13. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-25 — More distinct map routes and consistent class portraits
+
+### Five revised layouts
+
+- Secondary maps now use a diagonal crate promenade, alternating factory chicanes, a horizontal chapel nave, twin furnace loops and a hooked crypt court. Their starting axes differ as well as cover.
+- Bed props are removed from secondary-map cover. Server, prediction and art use the same rectangle plan. Original Gatehouse layout and all six painted ground footprints stay unchanged.
+- Fifty-player formations, boss spawns and every Accord objective pass reachability checks; predicted dodges and authority agree on each map.
+
+### Seven matching portrait scales
+
+- Soldier and Medic gain complete three-quarter resting portraits, preserving their existing identities. All seven menu portraits now have the same body-height target and ground anchor.
+- Five original poses and all gameplay sprites remain unchanged. Complete source/PNG reconstruction verifies the two new natives and seven deliveries. New rendered menu and map-layout review remains open.
+- Fixed threat ratings, separate Brutal labels, harder unique boss phases, ability-changing upgrades and an optional branching skill tree remain active work.
 
 ## 2026-10-25 — Steadier survivor motion and complete Courier reactions
 

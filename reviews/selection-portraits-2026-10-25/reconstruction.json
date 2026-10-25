@@ -1,0 +1,59 @@
+{
+  "passed": true,
+  "verifier": "tools/verify-selection-portraits.py",
+  "verifierSha256": "1c448a6c2d9523114b5143798be54c96662b94fd191aca497afb30643e9b5a52",
+  "manifestSha256": "a918a06a03f0d581991e61b6a434a9c3aef6e6d5961f4e34e130623de6c8dd6e",
+  "newNativeReturns": 2,
+  "completePortraits": 7,
+  "results": [
+    {
+      "classId": "soldier",
+      "completeRgbaReconstructed": true,
+      "visibleBodyHeight": 577,
+      "bottom": 608
+    },
+    {
+      "classId": "medic",
+      "completeRgbaReconstructed": true,
+      "visibleBodyHeight": 577,
+      "bottom": 608
+    },
+    {
+      "classId": "heavy",
+      "completeRgbaReconstructed": true,
+      "visibleBodyHeight": 576,
+      "bottom": 608
+    },
+    {
+      "classId": "tank",
+      "completeRgbaReconstructed": true,
+      "visibleBodyHeight": 576,
+      "bottom": 608
+    },
+    {
+      "classId": "mage",
+      "completeRgbaReconstructed": true,
+      "visibleBodyHeight": 575,
+      "bottom": 607
+    },
+    {
+      "classId": "engineer",
+      "completeRgbaReconstructed": true,
+      "visibleBodyHeight": 577,
+      "bottom": 609
+    },
+    {
+      "classId": "assassin",
+      "completeRgbaReconstructed": true,
+      "visibleBodyHeight": 577,
+      "bottom": 609
+    }
+  ],
+  "renderedAccepted": false,
+  "limits": [
+    "Two new built-in three-quarter portraits; other five complete portraits preserve their original identity and pose.",
+    "Only whole-figure crop, one uniform scale, and translation. No alpha erasure, rigging or mirroring.",
+    "Class selection only; gameplay sprites, shots, stats and kit behavior are unchanged.",
+    "Exact visible body-height normalization is separate from rendered menu/human acceptance."
+  ]
+}

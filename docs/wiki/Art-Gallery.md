@@ -129,3 +129,15 @@ Seven new eight-pose clips add 56 complete defeat poses. Constable and Warden al
 Courier gains four breathing, four hit-recoil and four Accord-stagger poses. Original charge and defeat pixels remain unchanged. Survivor running no longer switches to idle between movement updates; stable directional selection and one-shot facing remain separate from authoritative aim. All 64 boss identity crops preserve exact original world geometry. Rendered/device/human review of these changes remains open.
 
 ![Courier living reactions and retained action/defeat poses](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/courier-motion.jpg)
+
+## Distinct secondary-map routes
+
+Five secondary layouts now use diagonal crate lanes, factory chicanes, a horizontal chapel nave, furnace loops and a hooked crypt court. Beds are removed from secondary cover art. Footprints and ground paintings stay unchanged; all fifty spawns and Accord centers remain reachable. New-layout rendered/human review is pending.
+
+![Current map route and cover reference](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/map-routes-v2.jpg)
+
+## Consistent class-selection portraits
+
+Soldier and Medic now use three-quarter resting poses. All seven selection portraits share a visible-body-height target and ground anchor, correcting the padded small front-facing seeds. Five existing identities/poses and all gameplay sprites remain unchanged; rendered menu review is pending.
+
+![Seven class portraits at a shared body scale](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/selection-lineup.jpg)

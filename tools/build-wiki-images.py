@@ -132,6 +132,12 @@ def main():
     save(source(courier_reference['image']).convert('RGB'),'courier-motion.jpg','Courier idle, hit, Accord stagger and retained charge/defeat poses at one world scale; sprite reference, not a game capture.')
     for path in ['reviews/courier-actions-2026-10-25/courier-motion-reference.json',courier_reference['sourceLibrary']]:
         sources[path]={'path':path,'sha256':sha(ROOT/path)}
+    map_routes=read('reviews/map-layouts-2026-10-25/layout-reference-v2.json')
+    assert sha(ROOT/map_routes['image'])==map_routes['imageSha256']
+    save(source(map_routes['image']).convert('RGB'),'map-routes-v2.jpg','Current cover topologies and encounter axes across all six maps. Static layout reference, not a gameplay capture.')
+    save(source('reviews/selection-portraits-2026-10-25/selection-lineup.png').convert('RGB'),'selection-lineup.jpg','Seven class-selection portraits at one visible-body scale; two new three-quarter poses, five original identities retained. Static reference, not a menu capture.')
+    for path in ['reviews/map-layouts-2026-10-25/layout-reference-v2.json','reviews/map-layouts-2026-10-25/runtime-arenas-v2.json','assets/delivery/selection-portraits-v1/library.json','reviews/selection-portraits-2026-10-25/selection-lineup.png']:
+        sources[path]={'path':path,'sha256':sha(ROOT/path)}
     figure_receipt=read('reviews/performance/endurance-50-moths-20261024-2-figure-v2.json')
     assert sha(ROOT/figure_receipt['figure'])==figure_receipt['figureSha256']
     assert sha(ROOT/figure_receipt['source'])==figure_receipt['sourceSha256']

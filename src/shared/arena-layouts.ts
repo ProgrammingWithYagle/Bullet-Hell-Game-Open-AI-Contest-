@@ -11,6 +11,7 @@ type Layout = {
   bossSpawn: { x: number; y: number };
   playerSpawn: { x: number; y: number };
   prop: number;
+  props: number[];
   theme: string;
 };
 const layouts: Record<string, Layout> = {
@@ -19,15 +20,42 @@ const layouts: Record<string, Layout> = {
     height: 900,
     x: 0,
     y: 50,
-    prop: 0,
-    theme: 'Wide rescue promenade with staggered bed islands',
-    bossSpawn: { x: 800, y: 250 },
-    playerSpawn: { x: 800, y: 820 },
+    prop: 1,
+    props: [1],
+    theme: 'Diagonal rescue promenade: long crate screens and broad open flanks',
+    bossSpawn: {
+      x: 350,
+      y: 230,
+    },
+    playerSpawn: {
+      x: 1270,
+      y: 820,
+    },
     cover: [
-      { x: 400, y: 370, width: 170, height: 85 },
-      { x: 1050, y: 430, width: 170, height: 85 },
-      { x: 230, y: 660, width: 170, height: 70 },
-      { x: 1200, y: 680, width: 170, height: 70 },
+      {
+        x: 160,
+        y: 390,
+        width: 420,
+        height: 90,
+      },
+      {
+        x: 980,
+        y: 265,
+        width: 330,
+        height: 85,
+      },
+      {
+        x: 1120,
+        y: 615,
+        width: 270,
+        height: 100,
+      },
+      {
+        x: 275,
+        y: 760,
+        width: 200,
+        height: 80,
+      },
     ],
   },
   'ossuary-works': {
@@ -35,15 +63,42 @@ const layouts: Record<string, Layout> = {
     height: 1000,
     x: 150,
     y: 0,
-    prop: 1,
-    theme: 'Tall industrial S corridor between offset machine islands',
-    bossSpawn: { x: 800, y: 240 },
-    playerSpawn: { x: 800, y: 900 },
+    prop: 6,
+    props: [6, 1, 6, 1],
+    theme: 'Alternating factory chicanes with upper-right and lower-left passages',
+    bossSpawn: {
+      x: 390,
+      y: 195,
+    },
+    playerSpawn: {
+      x: 1210,
+      y: 880,
+    },
     cover: [
-      { x: 310, y: 340, width: 160, height: 140 },
-      { x: 1130, y: 510, width: 160, height: 150 },
-      { x: 650, y: 420, width: 200, height: 90 },
-      { x: 840, y: 780, width: 180, height: 70 },
+      {
+        x: 150,
+        y: 300,
+        width: 760,
+        height: 115,
+      },
+      {
+        x: 720,
+        y: 805,
+        width: 730,
+        height: 60,
+      },
+      {
+        x: 1000,
+        y: 395,
+        width: 300,
+        height: 90,
+      },
+      {
+        x: 310,
+        y: 580,
+        width: 150,
+        height: 180,
+      },
     ],
   },
   'sunken-chapel': {
@@ -52,15 +107,53 @@ const layouts: Record<string, Layout> = {
     x: 100,
     y: 40,
     prop: 2,
-    theme: 'Central altar, side chapels and a clear nave around the water margins',
-    bossSpawn: { x: 800, y: 250 },
-    playerSpawn: { x: 800, y: 830 },
+    props: [2, 2, 7, 7, 7, 7],
+    theme: 'Open cruciform nave: horizontal encounter axis between paired shrine piers',
+    bossSpawn: {
+      x: 1230,
+      y: 500,
+    },
+    playerSpawn: {
+      x: 350,
+      y: 500,
+    },
     cover: [
-      { x: 710, y: 430, width: 180, height: 110 },
-      { x: 280, y: 350, width: 120, height: 220 },
-      { x: 1200, y: 350, width: 120, height: 220 },
-      { x: 250, y: 730, width: 160, height: 65 },
-      { x: 1190, y: 730, width: 160, height: 65 },
+      {
+        x: 660,
+        y: 150,
+        width: 280,
+        height: 150,
+      },
+      {
+        x: 680,
+        y: 790,
+        width: 240,
+        height: 100,
+      },
+      {
+        x: 360,
+        y: 285,
+        width: 100,
+        height: 100,
+      },
+      {
+        x: 1140,
+        y: 285,
+        width: 100,
+        height: 100,
+      },
+      {
+        x: 340,
+        y: 620,
+        width: 100,
+        height: 100,
+      },
+      {
+        x: 1160,
+        y: 640,
+        width: 100,
+        height: 100,
+      },
     ],
   },
   'bell-foundry': {
@@ -69,13 +162,41 @@ const layouts: Record<string, Layout> = {
     x: 50,
     y: 75,
     prop: 3,
-    theme: 'Short broad forge floor with two diagonal fire corridors',
-    bossSpawn: { x: 800, y: 250 },
-    playerSpawn: { x: 800, y: 815 },
+    props: [3, 3, 6, 6],
+    theme: 'Twin furnace loops: wide side circuits joined by a central cross aisle',
+    bossSpawn: {
+      x: 1260,
+      y: 230,
+    },
+    playerSpawn: {
+      x: 360,
+      y: 810,
+    },
     cover: [
-      { x: 300, y: 350, width: 180, height: 150 },
-      { x: 1120, y: 350, width: 180, height: 150 },
-      { x: 675, y: 425, width: 250, height: 100 },
+      {
+        x: 680,
+        y: 245,
+        width: 260,
+        height: 130,
+      },
+      {
+        x: 680,
+        y: 750,
+        width: 260,
+        height: 115,
+      },
+      {
+        x: 235,
+        y: 470,
+        width: 190,
+        height: 175,
+      },
+      {
+        x: 1190,
+        y: 480,
+        width: 160,
+        height: 140,
+      },
     ],
   },
   'crown-crypt': {
@@ -84,15 +205,47 @@ const layouts: Record<string, Layout> = {
     x: 180,
     y: 60,
     prop: 4,
-    theme: 'Compact asymmetric tomb court with a central vault and offset sarcophagi',
-    bossSpawn: { x: 800, y: 250 },
-    playerSpawn: { x: 800, y: 830 },
+    props: [4, 7, 4, 4, 7],
+    theme: 'Hooked vault court: L-shaped central monument and offset outer routes',
+    bossSpawn: {
+      x: 1210,
+      y: 270,
+    },
+    playerSpawn: {
+      x: 360,
+      y: 820,
+    },
     cover: [
-      { x: 320, y: 380, width: 150, height: 100 },
-      { x: 1130, y: 450, width: 150, height: 100 },
-      { x: 650, y: 400, width: 220, height: 95 },
-      { x: 300, y: 750, width: 170, height: 65 },
-      { x: 1130, y: 750, width: 170, height: 65 },
+      {
+        x: 700,
+        y: 345,
+        width: 205,
+        height: 150,
+      },
+      {
+        x: 875,
+        y: 345,
+        width: 80,
+        height: 220,
+      },
+      {
+        x: 220,
+        y: 240,
+        width: 260,
+        height: 85,
+      },
+      {
+        x: 1175,
+        y: 625,
+        width: 180,
+        height: 145,
+      },
+      {
+        x: 710,
+        y: 805,
+        width: 280,
+        height: 80,
+      },
     ],
   },
 };
@@ -112,9 +265,10 @@ export const runtimeArenas = catalog.arenas.map((original) => {
       bounds: { x: 0, y: 0, width: 1600, height: 1000 },
       cover: original.obstacles,
       prop: -1,
+      props: [] as number[],
       theme: 'Walled gate courtyard with fountain cover and outer-wall lanes',
     };
-  const { x, y, width, height, cover, bossSpawn, playerSpawn, prop, theme } = layout;
+  const { x, y, width, height, cover, bossSpawn, playerSpawn, prop, props, theme } = layout;
   return {
     ...original,
     width,
@@ -125,6 +279,7 @@ export const runtimeArenas = catalog.arenas.map((original) => {
     cover,
     obstacles: [...cover, ...borders(x, y, width, height)],
     prop,
+    props,
     theme,
   };
 });

@@ -70,3 +70,9 @@ Twenty action clips add 88 poses, alongside eight independently drawn side-run p
 ![Medic idle, primary attack, hurt, dodge and downed poses in four directions](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/medic-actions.jpg)
 
 Twenty action clips add 88 poses, alongside eight independently drawn side-run poses per direction and the retained north/south originals. Shared scale keeps the body consistent between actions and directions. Representative sprite frames are separate from gameplay captures or rendered acceptance. [Production, provenance and verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/SOLDIER_MEDIC_ACTION_MOTION.md).
+
+## Consistent class-selection portraits
+
+Soldier and Medic now use three-quarter resting poses. All seven selection portraits share a visible-body-height target and ground anchor, correcting the padded small front-facing seeds. Five existing identities/poses and all gameplay sprites remain unchanged; rendered menu review is pending.
+
+![Seven class portraits at a shared body scale](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/selection-lineup.jpg)
