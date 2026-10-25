@@ -52,20 +52,22 @@ test('Constable phases execute double volleys, crossing cordons and shared-gap l
       assert.equal(new Set(warnings.map((w) => w.id)).size, warnings.length);
       assert(warnings.every((w) => w.at - game.combatTick >= 25));
       if (stage === 0) {
-        assert.equal(warnings.length, 2);
+        assert.equal(warnings.length, variant === 'brutal' ? 4 : 2);
         assert(warnings.every((w) => w.kind === 'fan'));
         assert.equal(warnings[1].at - warnings[0].at, 12);
       } else if (stage === 1) {
-        assert.equal(warnings.length, 4);
-        assert(warnings.every((w) => w.kind === 'fan'));
-        assert.equal(new Set(warnings.map((w) => `${w.x},${w.y}`)).size, 2);
+        assert.equal(warnings.length, variant === 'brutal' ? 5 : 4);
+        const fans = warnings.filter((w) => w.kind === 'fan');
+        assert.equal(fans.length, 4);
+        assert.equal(new Set(fans.map((w) => `${w.x},${w.y}`)).size, 2);
         assert(warnings.reduce((n, w) => n + w.count, 0) >= 36);
       } else {
-        assert.equal(warnings.length, stage === 3 ? 3 : 2);
-        assert(warnings.every((w) => w.kind === 'ring'));
+        const rings = warnings.filter((w) => w.kind === 'ring');
+        assert.equal(rings.length, stage === 3 || variant === 'brutal' ? 3 : 2);
+        assert.equal(warnings.filter((w) => w.kind === 'fan').length, stage === 3 ? 2 : 0);
         const commonGap =
-          warnings[0].arc -
-          (Math.max(...warnings.map((w) => w.aim)) - Math.min(...warnings.map((w) => w.aim)));
+          rings[0].arc -
+          (Math.max(...rings.map((w) => w.aim)) - Math.min(...rings.map((w) => w.aim)));
         assert(commonGap > Math.PI / 4, 'Staggered rings retain a substantial common escape wedge');
         assert(warnings.reduce((n, w) => n + w.count, 0) >= 46);
       }

@@ -766,3 +766,10 @@ progress::-moz-progress-bar {
 .mutation-vignette img {
   object-fit: contain;
 }
+
+/* Phase entry is a static edge cue: reduced-motion and playfield visibility stay intact. */
+#boss-panel.phase-entry {border-inline-start:6px solid #e1bc75;background:#243b2aee;}
+#boss-panel[data-variant="brutal"] {border-color:#ce7567;}
+#boss-panel[data-variant="brutal"].phase-entry {border-inline-start-color:#f1a28c;background:#3b2625ee;}
+.boss-phase-note {margin:.35rem 0 .1rem;color:#f0dfb7;font-size:.84rem;line-height:1.35;}
+@media (max-width:700px) {.boss-phase-note {font-size:.75rem;} #boss-panel {max-width:63vw;}}

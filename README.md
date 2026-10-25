@@ -1,6 +1,6 @@
 # Grave Accord
 
-A cooperative gothic bullet-hell game in active development. Current feature branch: build **2026.10.25-boss-practice**, protocol **14**, 60 distinct executable bosses with individual original themes, seven classes, 378 skills, 28 weapons and six different map layouts/sizes.
+A cooperative gothic bullet-hell game in active development. Current feature branch: build **2026.10.25-brutal-signals**, protocol **14**, 60 distinct executable bosses with individual original themes, seven classes, 378 skills, 28 weapons and six different map layouts/sizes.
 
 All sixty identities execute, including nine scheduled Endless exclusives and the optional Uncounted finale. Five modes work offline and in local online rooms: five-fight Quarantine Run, ten-fight Midnight Circuit, sixteen-fight Black Bell Pilgrimage, three-fight Grand Raid and uncapped Endless Vigil. The in-game main menu has a dated changelog generated from the same history as [CHANGELOG.md](CHANGELOG.md) and the [GitHub Wiki changelog](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/wiki/Changelog).
 
@@ -21,3 +21,5 @@ The source includes a sandboxed Electron 45 app and explicit LAN host/join menu.
 Hollow Constable now patrols between distinct double-volley, crossing-cordon and gapped-ring phases, with four new shuffling poses and named phase labels. [Behavior and evidence](docs/CONSTABLE_PATROL.md). This is the first qualitative boss-pressure pass; human balance review remains open.
 
 Solo setup now includes a **Boss form** selector for direct Standard/Brutal opener comparisons. [Exact playtest steps](docs/BOSS_PRACTICE.md).
+
+[Current development progress](docs/DEVELOPMENT_PROGRESS.md) tracks boss additions, quality passes, class ability revamps, branching-tree work, map implementation and separate review gates. [Phase/Brutal feedback and musical intensity](docs/PHASE_AND_BRUTAL_FEEDBACK.md) describes the latest changes.

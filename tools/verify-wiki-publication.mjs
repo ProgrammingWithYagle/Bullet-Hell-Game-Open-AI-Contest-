@@ -11,7 +11,7 @@ assert.equal(text('.wiki-checkout','remote','get-url','origin'),'https://github.
 const publishedCommit=text('.wiki-checkout','ls-remote','origin','refs/heads/master').split(/\s+/)[0];
 assert.equal(text('.wiki-checkout','rev-parse','HEAD'),publishedCommit,'Remote Wiki head differs from the inspected checkout');
 const files=readdirSync('docs/wiki').filter(n=>n.endsWith('.md')).sort();
-assert.equal(files.length,17);
+assert.equal(files.length,18);
 const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
 const evidence=files.map(file=>{
   const source=git('.','show',sourceCommit+':docs/wiki/'+file),published=git('.wiki-checkout','show',publishedCommit+':'+file);

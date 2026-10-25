@@ -124,7 +124,7 @@ export function constablePattern({
     }
   } else {
     const gap = radians(a.gap ?? 95);
-    const waves = boss.phase >= 3 ? 3 : 2;
+    const waves = boss.phase >= 3 || boss.variant === 'brutal' ? 3 : 2;
     for (let wave = 0; wave < waves; wave++)
       volley(
         'ring',
@@ -134,6 +134,28 @@ export function constablePattern({
         gap,
         release + ticks(wave * 0.45),
       );
+  }
+  if (boss.variant === 'brutal' && a.kind !== 'zone') {
+    if (boss.phase === 1) {
+      // A new delayed ring changes the follow-up response from crossing to a shared open wedge.
+      volley('ring', boss, aim, Math.max(12, a.count + 4), radians(110), release + ticks(0.85));
+    } else if (boss.phase === 0 || boss.phase === 3) {
+      const last = Math.max(...warnings.map((w) => w.at));
+      for (const flank of [-1, 1]) {
+        const origin = openOrigin({
+          x: boss.x + Math.cos(aim + Math.PI / 2) * flank * 170,
+          y: boss.y + Math.sin(aim + Math.PI / 2) * flank * 170,
+        });
+        volley(
+          'fan',
+          origin,
+          Math.atan2(target.y - origin.y, target.x - origin.x),
+          Math.max(4, Math.ceil(a.count * 0.5)),
+          radians(38),
+          last + ticks(0.35),
+        );
+      }
+    }
   }
   return { warnings, lastReleaseAt: Math.max(release, ...warnings.map((w) => w.at)) };
 }
@@ -165,6 +187,11 @@ export function moveConstable(
     x: center.x + Math.cos(theta) * bounds.width * 0.27,
     y: center.y - Math.sin(theta) * bounds.height * 0.23,
   };
+  if (boss.phase === 1 && target) {
+    const flank = Math.floor(now / (HZ * 4)) % 2 ? 1 : -1;
+    const angle = Math.atan2(target.y - boss.y, target.x - boss.x) + (flank * Math.PI) / 2;
+    goal = { x: target.x + Math.cos(angle) * 340, y: target.y + Math.sin(angle) * 340 };
+  }
   if (boss.phase >= 2 && target) {
     const away = Math.atan2(boss.y - target.y, boss.x - target.x);
     goal = {

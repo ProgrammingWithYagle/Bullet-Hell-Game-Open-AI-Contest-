@@ -1,3 +1,5 @@
+import { CombatRhythm } from './combat-rhythm.ts';
+import tempos from './music-tempos.json';
 import deliveryLibrary from '../../assets/production/audio/delivery/library.json';
 import { chooseMusicBuffer } from './audio-delivery.ts';
 const delivery = import.meta.glob('../../assets/production/audio/delivery/*.mp3', {
@@ -29,6 +31,9 @@ export class AudioBus {
   private loopRevision = 0;
   private failedDelivery = new Set<string>();
   private duckUntil = 0;
+  private rhythm = new CombatRhythm(() => !document.hidden);
+  private encounterPhase = 0;
+  private encounterBrutal = false;
   volume = 0.45;
   musicVolume = 0.3;
   async unlock() {
@@ -56,7 +61,18 @@ export class AudioBus {
       this.loading.delete(url);
     }
   }
+  setEncounterIntensity(phase: number, variant: string) {
+    this.encounterPhase = phase;
+    this.encounterBrutal = variant === 'brutal';
+    this.rhythm.configure(phase, this.encounterBrutal, this.musicVolume, this.duckUntil);
+  }
   private musicLevel(gain: GainNode, now: number) {
+    this.rhythm.configure(
+      this.encounterPhase,
+      this.encounterBrutal,
+      this.musicVolume,
+      this.duckUntil,
+    );
     gain.gain.cancelScheduledValues(now);
     gain.gain.setTargetAtTime(this.musicVolume * (now < this.duckUntil ? 0.55 : 1), now, 0.025);
     if (now < this.duckUntil) gain.gain.setTargetAtTime(this.musicVolume, this.duckUntil, 0.18);
@@ -133,6 +149,17 @@ export class AudioBus {
       };
       this.voices.set(source, gain);
       source.start();
+      this.rhythm.stop();
+      if (combat) {
+        const tempo = tempos[boss];
+        this.rhythm.configure(
+          this.encounterPhase,
+          this.encounterBrutal,
+          this.musicVolume,
+          this.duckUntil,
+        );
+        this.rhythm.start(this.context, tempo.bpm, tempo.beatsPerBar, now);
+      }
       this.music = source;
       // Decoded music is larger than PCM. Keep at most three old theme buffers.
       const musicKeys = [...this.buffers.keys()].filter(
@@ -154,6 +181,7 @@ export class AudioBus {
     if (gain && this.context) this.musicLevel(gain, this.context.currentTime);
   }
   stop() {
+    this.rhythm.stop();
     this.loopRevision++;
     for (const source of this.voices.keys()) source.stop();
     this.music = undefined;

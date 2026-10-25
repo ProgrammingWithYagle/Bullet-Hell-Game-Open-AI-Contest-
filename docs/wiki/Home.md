@@ -7,7 +7,7 @@
 
 Cooperative gothic zombie bullet hell. Choose a survivor, clear a boss contract, vote on mutations, buy a build and survive the next encounter.
 
-**Current development source: version 0.3.0, build `2026.10.25-boss-practice`, protocol 14, updated 2026-10-25.** The game is still in development. [Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains the playable feature branch; protected `main` is a separate release boundary.
+**Current development source: version 0.3.0, build `2026.10.25-brutal-signals`, protocol 14, updated 2026-10-25.** The game is still in development. [Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains the playable feature branch; protected `main` is a separate release boundary.
 
 | Playable now in that source | Contents |
 | --- | --- |
@@ -44,3 +44,5 @@ All sixty identities execute, including nine scheduled Endless exclusives and an
 [Black Bell Pilgrimage implementation and evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/PILGRIMAGE_RUNTIME.md).
 
 [Grand Raid implementation](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/GRAND_RAID_RUNTIME.md) · [Endless and Uncounted implementation](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/ENDLESS_AND_UNCOUNTED_RUNTIME.md).
+
+[Current development progress](Development-Progress) tracks new bosses, existing-encounter quality passes, class ability revamps, skill-tree work and map revisions, with implementation separate from human review.

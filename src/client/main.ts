@@ -1,3 +1,4 @@
+import { BossPhaseFeedback, constablePhaseHint } from './boss-phase-feedback.ts';
 import { constablePhaseName } from './constable-phase-text.ts';
 import { bossThreat } from '../shared/boss-threat.ts';
 import { classifiedThreatCode } from './threat-text.ts';
@@ -30,7 +31,8 @@ import { rateBuild, buildGrade } from '../shared/build-rating.ts';
 import { data } from '../shared/game.ts';
 import type { View, PlayerView } from '../shared/view.ts';
 const app = document.querySelector<HTMLElement>('#app')!,
-  audio = new AudioBus();
+  audio = new AudioBus(),
+  bossPhaseFeedback = new BossPhaseFeedback();
 let session: Session | undefined,
   game: Phaser.Game | undefined,
   scene: CombatScene | undefined,
@@ -249,7 +251,7 @@ function setupGame(online: boolean) {
   uiKey = '';
   lastPhase = '';
   prediction = new Prediction();
-  app.innerHTML = `<div id="stage" dir="ltr"></div><section class="hud" aria-label="${text('ui.health')}"><div class="topline"><div><strong id="encounter"></strong><small id="status" role="status"></small></div><div id="boss-panel"><strong>${text('boss.constable.name')}</strong><span id="deadline"></span><progress id="boss-health" max="1" value="1" aria-label="${text('ui.boss')}"></progress></div><button id="pause-button">Ⅱ <span>${text('ui.pause')}</span></button></div><div id="accord" class="accord" hidden></div><p id="signature-help" class="signature-help" role="status" aria-live="polite" hidden></p><div class="bottomline"><div class="vitals"><strong id="player-name">${insignia(selectedCosmetic)}<span id="player-name-label"></span></strong><progress id="health" max="1" value="1" aria-label="${text('ui.health')}"></progress><span id="health-text"></span><span id="ammo"></span><span id="currency"></span></div><div id="abilities" class="ability-list"></div><div id="squad" class="squad"></div></div></section><div id="modal" class="overlay" hidden></div><div id="pause-menu" class="overlay" hidden><section class="dialog"><h2>${text('ui.paused')}</h2><p>${text(online ? 'ui.onlinePause' : 'ui.offlineNotice')}</p>${settingsMarkup()}<div class="actions"><button id="resume" class="primary">${text('ui.continue')}</button><button id="leave">${text('ui.leaveRoom')}</button></div></section></div><div class="touch-buttons"><button data-action="dodge">${text('ui.dodge')}</button><button data-action="q">Q</button><button data-action="e">E</button><button data-action="ultimate">${text('ui.ultimate')}</button><button data-action="interact">${text('ui.revive')}</button><button data-action="reload">${text('ui.reload')}</button></div><div class="portrait-note">${text('ui.portraitHint')}</div>`;
+  app.innerHTML = `<div id="stage" dir="ltr"></div><section class="hud" aria-label="${text('ui.health')}"><div class="topline"><div><strong id="encounter"></strong><small id="status" role="status"></small></div><div id="boss-panel"><strong>${text('boss.constable.name')}</strong><span id="deadline"></span><progress id="boss-health" max="1" value="1" aria-label="${text('ui.boss')}"></progress><p id="boss-phase-note" class="boss-phase-note" role="status" aria-live="polite" hidden></p></div><button id="pause-button">Ⅱ <span>${text('ui.pause')}</span></button></div><div id="accord" class="accord" hidden></div><p id="signature-help" class="signature-help" role="status" aria-live="polite" hidden></p><div class="bottomline"><div class="vitals"><strong id="player-name">${insignia(selectedCosmetic)}<span id="player-name-label"></span></strong><progress id="health" max="1" value="1" aria-label="${text('ui.health')}"></progress><span id="health-text"></span><span id="ammo"></span><span id="currency"></span></div><div id="abilities" class="ability-list"></div><div id="squad" class="squad"></div></div></section><div id="modal" class="overlay" hidden></div><div id="pause-menu" class="overlay" hidden><section class="dialog"><h2>${text('ui.paused')}</h2><p>${text(online ? 'ui.onlinePause' : 'ui.offlineNotice')}</p>${settingsMarkup()}<div class="actions"><button id="resume" class="primary">${text('ui.continue')}</button><button id="leave">${text('ui.leaveRoom')}</button></div></section></div><div class="touch-buttons"><button data-action="dodge">${text('ui.dodge')}</button><button data-action="q">Q</button><button data-action="e">E</button><button data-action="ultimate">${text('ui.ultimate')}</button><button data-action="interact">${text('ui.revive')}</button><button data-action="reload">${text('ui.reload')}</button></div><div class="portrait-note">${text('ui.portraitHint')}</div>`;
   const supplyBar = document.createElement('div');
   const checkpointNotice = document.createElement('small');
   checkpointNotice.id = 'checkpoint-notice';
@@ -401,6 +403,23 @@ function update(view: View) {
   const boss = $<HTMLProgressElement>('boss-health');
   boss.max = view.boss.maxHealth;
   boss.value = view.boss.health;
+  const phaseNote = $('boss-phase-note');
+  const phaseEntry = bossPhaseFeedback.sample(
+    view.encounter,
+    view.boss.id,
+    view.boss.phase,
+    view.boss.variant,
+    view.tick,
+    view.phase === 'combat',
+  );
+  $('boss-panel').dataset.variant = view.boss.variant;
+  $('boss-panel').classList.toggle('phase-entry', phaseEntry);
+  const noteText =
+    view.boss.id === 'constable'
+      ? constablePhaseHint(view.boss.phase, view.boss.variant, locale)
+      : '';
+  phaseNote.hidden = !noteText;
+  if (phaseNote.textContent !== noteText) phaseNote.textContent = noteText;
   $('boss-panel').hidden = view.phase !== 'combat';
   $('deadline').textContent = clock((view.boss.deadline - view.combatTick) / 30);
   const help = $('signature-help'),
@@ -482,6 +501,7 @@ function update(view: View) {
   else if (session.status === 'ui.errorSave') $('status').textContent = t('ui.errorSave');
   else if (!['ui.reconnecting', 'ui.errorNetwork'].includes(session.status))
     $('status').textContent = '';
+  audio.setEncounterIntensity(view.boss.phase, view.boss.variant);
   if (view.phase !== lastPhase) {
     lastPhase = view.phase;
     void audio.loop(view.phase === 'combat', view.boss.id);

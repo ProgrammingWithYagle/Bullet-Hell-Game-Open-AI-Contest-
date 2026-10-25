@@ -9,6 +9,7 @@ import type { ServiceCue } from '../shared/service-director.ts';
 import Phaser from 'phaser';
 import { assets } from './assets.ts';
 import { arenaCoverPlan } from './arena-covers.ts';
+import { bossVariantAppearance } from './boss-variant-appearance.ts';
 import { BossVisualMotion } from './boss-visual-motion.ts';
 import { SurvivorVisualMotion } from './survivor-visual-motion.ts';
 import { bossDefeatFrame } from './boss-defeat-presentation.ts';
@@ -789,6 +790,17 @@ export class CombatScene extends Phaser.Scene {
       view.boss.x,
       view.boss.y + (view.boss.id === 'constable' ? constableArt.groundOffsetY : 0),
     );
+    const variantAppearance = bossVariantAppearance(view.boss.variant, view.boss.health > 0);
+    this.bossSprite.setTint(variantAppearance.tint);
+    if (view.phase === 'combat' && variantAppearance.marks) {
+      f.lineStyle(2, variantAppearance.ring, variantAppearance.ringAlpha);
+      for (let n = 0; n < variantAppearance.marks; n++) {
+        const angle = (n * Math.PI) / 2;
+        f.beginPath()
+          .arc(view.boss.x, view.boss.y, 70, angle + 0.12, angle + 0.62)
+          .strokePath();
+      }
+    }
     this.bossSprite.setAlpha(view.boss.health > 0 && now < view.boss.staggerUntil ? 0.55 : 1);
     if (warden) {
       const pose = wardenCombatPose(view.boss, view.tick, now, view.signatures, this.reduceMotion);

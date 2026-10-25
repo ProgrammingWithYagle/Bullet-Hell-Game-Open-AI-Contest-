@@ -153,3 +153,9 @@ Every implemented boss now keeps its authored grade across encounters. Five subt
 Four complete shuffling poses extend the unchanged 27-pose library. One upright-calibrated scale and the original ground anchor preserve body size; the 448-pixel cells retain faint edge pixels without clipping. Footwork follows authoritative patrol positions and holds between network updates. Named Patrol, Cordon, Lockdown and Brutal Curfew phases have distinct attack geometry. Rendered and human balance review remain open.
 
 ![Constable shuffle at a common world scale](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/constable-patrol.jpg)
+
+## Early Watch identity concepts — art only
+
+Ashen Usher, Brass Toad and Ragpicker's Kite are original concept references in production. They are not included in the 60 playable identities and do not reduce the 91-boss deficit. Exact generated natives and prompts are preserved; motion, distinct encounter implementation and individual themes remain to be completed.
+
+![Three original Early Watch boss concepts, not yet playable](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/early-watch-concepts.jpg)

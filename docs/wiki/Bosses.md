@@ -220,3 +220,7 @@ Patrol fires two locked volleys while shuffling between casts. Cordon crosses fa
 ![Four complete Constable shuffle poses at a common world scale](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/constable-patrol.jpg)
 
 [Exact behaviors, production and verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/CONSTABLE_PATROL.md). Native/contact review and automated geometry checks are complete; rendered/device/human balance review remains open.
+
+[Current development progress](Development-Progress) tracks new bosses, existing-encounter quality passes, class ability revamps, skill-tree work and map revisions, with implementation separate from human review.
+
+The latest Constable Brutal pass adds an opening Patrol pincer, a Cordon ring follow-up, triple Lockdown rings and a Curfew pincer. Short persistent phase instructions explain the response. Brutal bosses now have a muted red sprite treatment and broken red ground mark. Fixed grade remains unchanged. [Current behavior and evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/PHASE_AND_BRUTAL_FEEDBACK.md).
