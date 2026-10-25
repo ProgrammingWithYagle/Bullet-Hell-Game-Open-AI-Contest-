@@ -123,3 +123,9 @@ The original Gatehouse and five new painted materials use the existing six layou
 ![Four representative poses from each of seven new opening-route boss defeat sequences](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/opening-defeats.jpg)
 
 Seven new eight-pose clips add 56 complete defeat poses. Constable and Warden already have dedicated defeats, so all nine opening identities now settle after victory. The renderer preserves original live action pixels, runs collapse once on authoritative world time, and holds the correct settled image during loading/retry. This is a sprite reference at one world scale; rendered/device/human transition review remains open. [Production, exact reconstruction and resource scope](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/OPENING_BOSS_DEFEATS.md).
+
+## Courier living motion and survivor continuity
+
+Courier gains four breathing, four hit-recoil and four Accord-stagger poses. Original charge and defeat pixels remain unchanged. Survivor running no longer switches to idle between movement updates; stable directional selection and one-shot facing remain separate from authoritative aim. All 64 boss identity crops preserve exact original world geometry. Rendered/device/human review of these changes remains open.
+
+![Courier living reactions and retained action/defeat poses](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/courier-motion.jpg)

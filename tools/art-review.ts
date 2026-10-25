@@ -1,6 +1,7 @@
 import serviceMotion from '../assets/production/motion/service-library.json';
 import constableMotion from '../assets/production/motion/constable-library.json';
 import openingDefeats from '../assets/production/motion/opening-defeats-library.json';
+import courierMotion from '../assets/production/motion/courier-library.json';
 import libraryData from '../assets/production/normalized/library.json';
 import heavyMotion from '../assets/production/motion/heavy-library.json';
 import encounters from '../assets/production/motion/encounter-library.json';
@@ -32,6 +33,13 @@ interface ArtEntry {
   status: string;
   frameDurationsMs?: number[];
   notes?: string;
+  motionSources?: {
+    motion: string;
+    file: string;
+    sha256: string;
+    startFrame: number;
+    frames: number;
+  }[];
 }
 const updatedBossIds = new Set(openingDefeats.entries.map((entry) => entry.bossId));
 const entries: ArtEntry[] = [
@@ -39,10 +47,17 @@ const entries: ArtEntry[] = [
   ...heavyMotion.entries,
   ...encounters.entries.filter((entry) => !updatedBossIds.has(entry.bossId)),
   ...civic.entries.filter((entry) => !updatedBossIds.has(entry.bossId)),
-  ...openingDefeats.entries.map((entry) => ({
+  ...openingDefeats.entries
+    .filter((entry) => entry.bossId !== 'courier')
+    .map((entry) => ({
+      ...entry,
+      source: entry.defeatSource,
+      sourceSha256: entry.defeatSourceSha256,
+    })),
+  ...courierMotion.entries.map((entry) => ({
     ...entry,
-    source: entry.defeatSource,
-    sourceSha256: entry.defeatSourceSha256,
+    source: entry.motionSources[0].file,
+    sourceSha256: entry.motionSources[0].sha256,
   })),
   ...serviceMotion.entries,
   ...constableMotion.entries,
@@ -162,6 +177,10 @@ function select(entry: ArtEntry) {
     ],
     ['Source SHA-256', escape(entry.sourceSha256)],
     ['Atlas SHA-256', escape(entry.atlasSha256)],
+    ...(entry.motionSources?.map((source) => [
+      source.motion + ' native',
+      `<a href="${url(source.file)}" target="_blank" rel="noopener">${escape(source.file)}</a> (${escape(source.sha256)})`,
+    ]) ?? []),
   ]
     .map(([key, value]) => `<dt>${key}</dt><dd>${value}</dd>`)
     .join('');

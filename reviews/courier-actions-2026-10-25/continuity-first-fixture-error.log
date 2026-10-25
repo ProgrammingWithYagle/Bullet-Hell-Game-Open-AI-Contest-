@@ -1,0 +1,38 @@
+✔ a real Rescue Charge spreads its six drawn poses across the complete ten-tick charge interval (22.4872ms)
+✔ sixty-Hz rendering between twenty-Hz authority patches exposes every short-dodge pose without changing authority state (1.4279ms)
+✔ the drawing clock is monotonic between patches, ignores duplicate observations and stops at one patch of lead (0.7595ms)
+✔ run, encounter, phase and backward authority boundaries reset drawing time while noncombat clocks stay paused (0.7491ms)
+✔ interpolated action frames keep authority-selected status and reduced motion stable through a stalled patch (0.6887ms)
+✖ sixty-Hz drawing over actual thirty-Hz movement no longer alternates run and idle between movement updates for any class (16.8344ms)
+✔ twenty-Hz movement patches retain a run between frames but stop at a bounded grace period and reset on encounter, departure and death (1.1337ms)
+✔ small diagonal aim jitter does not flip sprite sheets while deliberate direction changes remain immediate and finite (0.8392ms)
+✔ one-shot attack and hurt directions remain at their authoritative onset instead of flipping with later aim changes (3.4956ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 8
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 574.0567
+
+✖ failing tests:
+
+test at tests\survivor-continuity.test.ts:1:512
+✖ sixty-Hz drawing over actual thirty-Hz movement no longer alternates run and idle between movement updates for any class (16.8344ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(motion.sample(last, 1000 + 1000 / 60 + MOVEMENT_GRACE_MS - 1).moving)
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\survivor-continuity.test.ts:63:5)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

@@ -5,6 +5,7 @@ import { HZ, type ClassId } from '../shared/protocol.ts';
 import type { View, PlayerView } from '../shared/view.ts';
 import { RESCUE_CHARGE_TICKS } from '../shared/class-kits.ts';
 import { PresentationClock } from './presentation-clock.ts';
+import type { SurvivorFacing } from './survivor-visual-motion.ts';
 import { deliveredSurvivorClip } from './survivor-delivery.ts';
 
 type Facing = 'south' | 'east' | 'north' | 'west';
@@ -44,6 +45,8 @@ type Memory = {
   hurtAt: number;
   downAt: number;
   downFacing: Facing;
+  attackFacing: Facing;
+  hurtFacing: Facing;
 };
 
 export class SurvivorActionClock {
@@ -78,6 +81,8 @@ export class SurvivorActionClock {
         hurtAt: -Infinity,
         downAt: view.tick,
         downFacing: facingOf(player.aim),
+        attackFacing: facingOf(player.aim),
+        hurtFacing: facingOf(player.aim),
       };
       if (old && continuingCombat && old.status === 'active' && player.status === 'active') {
         const attack = clips.get(player.classId + '-attack-south');
@@ -86,10 +91,13 @@ export class SurvivorActionClock {
           player.ammo < old.ammo &&
           attack &&
           view.tick - memory.attackAt >= (attack.frames * HZ) / attack.fps
-        )
+        ) {
           memory.attackAt = view.tick;
+          memory.attackFacing = facingOf(player.aim);
+        }
         if (player.health < old.health) {
           memory.hurtAt = view.tick;
+          memory.hurtFacing = facingOf(player.aim);
           memory.attackAt = -Infinity;
         }
       }
@@ -129,12 +137,19 @@ export class SurvivorActionClock {
     this.tick = view.tick;
     this.phase = view.phase;
   }
-  pose(player: PlayerView, view: View, moving: boolean, reduced = false, wallTimeMs?: number) {
+  pose(
+    player: PlayerView,
+    view: View,
+    moving: boolean,
+    reduced = false,
+    wallTimeMs?: number,
+    visualFacing?: SurvivorFacing,
+  ) {
     if (!classes.has(player.classId) || player.status === 'waiting') return undefined;
     const memory = this.people.get(player.id);
     if (!memory) return undefined;
     const drawn = wallTimeMs === undefined ? view : this.timeline.sample(wallTimeMs);
-    let facing = facingOf(player.aim),
+    let facing = visualFacing ?? facingOf(player.aim),
       action: Action = 'idle',
       elapsed = drawn.tick;
     if (player.status === 'downed' || player.status === 'eliminated') {
@@ -160,6 +175,7 @@ export class SurvivorActionClock {
         const hurt = clips.get(player.classId + '-hurt-' + facing)!;
         if (view.tick - memory.hurtAt < (hurt.frames * HZ) / hurt.fps) {
           action = 'hurt';
+          facing = memory.hurtFacing;
           elapsed = drawn.tick - memory.hurtAt;
         } else if (moving)
           return undefined; // Existing independent directional run art.
@@ -167,6 +183,7 @@ export class SurvivorActionClock {
           const attack = clips.get(player.classId + '-attack-' + facing)!;
           if (view.tick - memory.attackAt < (attack.frames * HZ) / attack.fps) {
             action = 'attack';
+            facing = memory.attackFacing;
             elapsed = drawn.tick - memory.attackAt;
           }
         }

@@ -1,11 +1,22 @@
 // A small atlas cache for the current replicated boss. Shared actors stay preloaded.
-import references from '../../assets/delivery/boss-loading-v2/library.json';
+import references from '../../assets/delivery/boss-loading-v3/library.json';
 export const bossTextureReferences = references;
 export const BOSS_ATLAS_CAPACITY = 2;
 export const BOSS_ATLAS_RETRY_MS = 5000;
 const dynamic = new Set(references.lazyBossIds);
 const support = new Set(references.alwaysLoadedIds);
-const settledIds = new Set(references.settledReferences.map((entry) => entry.bossId));
+const mainReferences = new Map(references.entries.map((entry) => [entry.bossId, entry]));
+const settledReferences = new Map(
+  references.settledReferences.map((entry) => [entry.bossId, entry]),
+);
+function fallbackReference(id: string, frame: number) {
+  const settled = settledReferences.get(id);
+  return settled &&
+    frame >= settled.defeatStartFrame &&
+    frame < settled.defeatStartFrame + settled.defeatFrames
+    ? settled
+    : mainReferences.get(id);
+}
 export const isDeferredBoss = (id: string) => dynamic.has(id);
 export const isSharedEncounter = (id: string) => support.has(id);
 
@@ -49,9 +60,29 @@ export function bossTexturePose(id: string, frame: number, fullAtlasReady: boole
   return !dynamic.has(id) || fullAtlasReady
     ? { key: id + '-action', frame }
     : {
-        key: id + (settledIds.has(id) && frame >= 8 ? '-defeat-reference' : '-reference'),
+        key:
+          id +
+          (fallbackReference(id, frame) === settledReferences.get(id)
+            ? '-defeat-reference'
+            : '-reference'),
         frame: 0,
       };
+}
+
+export function bossTexturePresentation(
+  id: string,
+  frame: number,
+  fullAtlasReady: boolean,
+  clip: { origin: number[]; displayCell: number },
+) {
+  const pose = bossTexturePose(id, frame, fullAtlasReady);
+  const reference = dynamic.has(id) && !fullAtlasReady ? fallbackReference(id, frame) : undefined;
+  return {
+    ...pose,
+    origin: reference?.origin ?? clip.origin,
+    displayWidth: reference?.displayWidth ?? clip.displayCell,
+    displayHeight: reference?.displayHeight ?? clip.displayCell,
+  };
 }
 
 type Backend = { load(id: string): Promise<void>; evict(id: string): void };
@@ -154,6 +185,8 @@ type TextureHolder = {
   texture?: { key: string };
   anims?: { stop(): unknown };
   setTexture(key: string, frame?: number | string): unknown;
+  setOrigin?(x: number, y: number): unknown;
+  setDisplaySize?(width: number, height: number): unknown;
 };
 export function retireBossTexture(
   id: string,
@@ -164,8 +197,11 @@ export function retireBossTexture(
   // Phaser requires users to release the texture before its GPU resource is destroyed.
   if (holder?.texture?.key === key) {
     holder.anims?.stop();
-    const settled = settledIds.has(id) && Number(holder.frame?.name) >= 8;
-    holder.setTexture(id + (settled ? '-defeat-reference' : '-reference'), 0);
+    const frame = Number(holder.frame?.name);
+    const reference = fallbackReference(id, frame)!;
+    holder.setTexture(bossTexturePose(id, frame, false).key, 0);
+    holder.setOrigin?.(reference.origin[0], reference.origin[1]);
+    holder.setDisplaySize?.(reference.displayWidth, reference.displayHeight);
   }
   if (textures.exists(key)) textures.remove(key);
 }

@@ -4,6 +4,7 @@ import legacyMotion from '../../assets/production/motion/legacy-survivor-library
 import { HZ } from '../shared/protocol.ts';
 import type { ClassId } from '../shared/protocol.ts';
 import { deliveredSurvivorClip } from './survivor-delivery.ts';
+import type { SurvivorFacing } from './survivor-visual-motion.ts';
 export const additionalSurvivors = ['tank', 'mage', 'engineer', 'assassin'] as const;
 export const legacySurvivors = ['soldier', 'medic'] as const;
 type RunClip = {
@@ -28,15 +29,17 @@ export function survivorPose(
   status: string,
   tick: number,
   reduced = false,
+  visualFacing?: SurvivorFacing,
 ) {
   const facing =
-    Math.abs(Math.sin(aim)) > Math.abs(Math.cos(aim))
+    visualFacing ??
+    (Math.abs(Math.sin(aim)) > Math.abs(Math.cos(aim))
       ? Math.sin(aim) < 0
         ? 'north'
         : 'south'
       : Math.cos(aim) < 0
         ? 'west'
-        : 'east';
+        : 'east');
   const running = moving && status === 'active' && !reduced;
   const legacy = legacySurvivors.some((id) => id === classId);
   const run =

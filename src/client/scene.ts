@@ -8,7 +8,9 @@ import { ServicePresentation } from './service-presentation.ts';
 import type { ServiceCue } from '../shared/service-director.ts';
 import Phaser from 'phaser';
 import { assets } from './assets.ts';
+import { SurvivorVisualMotion } from './survivor-visual-motion.ts';
 import { bossDefeatFrame } from './boss-defeat-presentation.ts';
+import { courierCombatFrame } from './courier-presentation.ts';
 import {
   ARENA_BACKDROP_DEPTH,
   applyArenaGround,
@@ -37,7 +39,7 @@ import { encounterArt, encounterFrame } from './encounter-presentation.ts';
 import type { Sector } from '../shared/warden-signature.ts';
 import {
   BossTextureCache,
-  bossTexturePose,
+  bossTexturePresentation,
   preloadBossTextureBase,
   retireBossTexture,
 } from './boss-textures.ts';
@@ -54,6 +56,7 @@ export class CombatScene extends Phaser.Scene {
   hitboxes = true;
   highContrast = false;
   reduceMotion = false;
+  private visualMotion = new SurvivorVisualMotion();
   private people = new Map<string, Phaser.GameObjects.Sprite>();
   private bossTextures?: BossTextureCache;
   private bossTextureAlive = false;
@@ -222,6 +225,7 @@ export class CombatScene extends Phaser.Scene {
   }
   apply(view: View) {
     this.survivorActions.observe(view, performance.now());
+    this.visualMotion.observe(view);
     if (this.lastPhase && view.phase !== this.lastPhase) {
       for (const id of this.shots.keys()) this.recycleBullet(id);
       this.shots.clear();
@@ -786,16 +790,25 @@ export class CombatScene extends Phaser.Scene {
     } else if (view.boss.id !== 'constable') {
       const clip = encounterArt.find((entry) => entry.bossId === view.boss.id)!;
       this.bossSprite.anims.stop();
-      const texturePose = bossTexturePose(
+      const texturePose = bossTexturePresentation(
         view.boss.id,
-        bossDefeatFrame(view.boss, view.tick, this.reduceMotion, animationTime.tick) ??
+        courierCombatFrame(
+          view.boss,
+          view.tick,
+          now,
+          view.bossCues,
+          this.reduceMotion,
+          animationTime,
+        ) ??
+          bossDefeatFrame(view.boss, view.tick, this.reduceMotion, animationTime.tick) ??
           encounterFrame(view.boss, now, view.bossCues, this.reduceMotion),
         this.textures.exists(view.boss.id + '-action'),
+        clip,
       );
       this.bossSprite
         .setTexture(texturePose.key, texturePose.frame)
-        .setOrigin(clip.origin[0], clip.origin[1])
-        .setDisplaySize(clip.displayCell, clip.displayCell);
+        .setOrigin(texturePose.origin[0], texturePose.origin[1])
+        .setDisplaySize(texturePose.displayWidth, texturePose.displayHeight);
     } else {
       const pose = constableCombatPose(view.boss, view.tick, now, this.reduceMotion, animationTime);
       const clip = constableArt.clips[pose.clip];
@@ -825,12 +838,20 @@ export class CombatScene extends Phaser.Scene {
       }
       const dx = p.x - sprite.x,
         dy = p.y - sprite.y,
-        moving = Math.hypot(dx, dy) > 0.35,
+        visualMotion = this.visualMotion.sample(p, frameNow),
+        moving = visualMotion.moving,
         blend = p.id === this.localId ? 1 : Math.min(1, wallDelta / 65);
       sprite.x += dx * blend;
       sprite.y += dy * blend;
       sprite.setDepth(5 + sprite.y / 1000);
-      const actionPose = this.survivorActions.pose(p, view, moving, this.reduceMotion, frameNow);
+      const actionPose = this.survivorActions.pose(
+        p,
+        view,
+        moving,
+        this.reduceMotion,
+        frameNow,
+        visualMotion.facing,
+      );
       if (actionPose) {
         sprite.anims.stop();
         sprite
@@ -849,6 +870,7 @@ export class CombatScene extends Phaser.Scene {
           p.status,
           animationTime.combatTick,
           this.reduceMotion,
+          visualMotion.facing,
         );
         sprite.anims.stop();
         sprite
@@ -863,6 +885,7 @@ export class CombatScene extends Phaser.Scene {
           p.status,
           animationTime.combatTick,
           this.reduceMotion,
+          visualMotion.facing,
         );
         sprite.anims.stop();
         sprite

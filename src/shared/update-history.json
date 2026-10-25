@@ -1,5 +1,5 @@
 {
-  "buildId": "2026.10.25-opening-defeats",
+  "buildId": "2026.10.25-motion-continuity",
   "snapshot": {
     "bosses": 60,
     "classes": 7,
@@ -10,6 +10,28 @@
     "protocol": 13
   },
   "entries": [
+    {
+      "id": "survivor-continuity-and-courier-motion",
+      "date": "2026-10-25",
+      "title": "Steadier survivor motion and complete Courier reactions",
+      "groups": [
+        {
+          "title": "Survivor continuity",
+          "items": [
+            "Running now stays active between movement updates instead of flashing to idle on intervening draw frames. A bounded 100-ms stop grace also covers ordinary remote patch cadence.",
+            "Small aim changes near diagonals no longer flip directional sheets; deliberate turns stay immediate. Attack and hurt clips keep their onset facing. Movement, aim, hit tests and input are unchanged."
+          ]
+        },
+        {
+          "title": "Courier motion and texture delivery",
+          "items": [
+            "Twelve complete new Courier poses add breathing, hit recoil and an Accord stagger with one upright entry then a weak loop. Original eight charge and eight defeat poses stay unchanged.",
+            "Sixty-four cropped boss identities preserve exact complete RGBA cells and world anchors through loading and eviction. Reference decoded area is 64.8128% smaller; the encounter-only cache subtotal is at most 76.81033 MiB despite the larger Courier atlas.",
+            "Independent pixel/anchor reconstruction and ten new regressions accompany the change. Human perception, rendered transitions and device FPS still need review. Map layouts, unwanted beds, class portraits and threat/boss/skill-tree feedback remain active work."
+          ]
+        }
+      ]
+    },
     {
       "id": "opening-route-defeat-motion",
       "date": "2026-10-25",
@@ -510,7 +532,7 @@
           "title": "Playable content",
           "items": [
             "Added Tank, Mage, Engineer and Assassin alongside Soldier, Medic and Heavy. All seven kits execute their two abilities and ultimate, with 378 skill nodes, 63 specialization paths and 28 class weapons.",
-            "Added six distinct traversable layouts: Gatehouse 1,600 Ãƒâ€” 1,000; Triage Yard 1,600 Ãƒâ€” 900; Ossuary Works 1,300 Ãƒâ€” 1,000; Sunken Chapel 1,400 Ãƒâ€” 920; Bell Foundry 1,500 Ãƒâ€” 850; Crown Crypt 1,240 Ãƒâ€” 880. Cover and spawn positions change with each map.",
+            "Added six distinct traversable layouts: Gatehouse 1,600 \u00c3\u0192\u00e2\u20ac\u201d 1,000; Triage Yard 1,600 \u00c3\u0192\u00e2\u20ac\u201d 900; Ossuary Works 1,300 \u00c3\u0192\u00e2\u20ac\u201d 1,000; Sunken Chapel 1,400 \u00c3\u0192\u00e2\u20ac\u201d 920; Bell Foundry 1,500 \u00c3\u0192\u00e2\u20ac\u201d 850; Crown Crypt 1,240 \u00c3\u0192\u00e2\u20ac\u201d 880. Cover and spawn positions change with each map.",
             "Connected 52 additional item illustrations, 124 approved class motion poses and sixteen environment/construct props. Weapons, supplies, all specialization paths and mutations now have individual item artwork."
           ]
         },

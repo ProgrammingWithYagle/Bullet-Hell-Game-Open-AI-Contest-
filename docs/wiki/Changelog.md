@@ -1,6 +1,19 @@
 # Changelog
 
-Development build **2026.10.25-opening-defeats**, protocol 13. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.25-motion-continuity**, protocol 13. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-25 — Steadier survivor motion and complete Courier reactions
+
+### Survivor continuity
+
+- Running now stays active between movement updates instead of flashing to idle on intervening draw frames. A bounded 100-ms stop grace also covers ordinary remote patch cadence.
+- Small aim changes near diagonals no longer flip directional sheets; deliberate turns stay immediate. Attack and hurt clips keep their onset facing. Movement, aim, hit tests and input are unchanged.
+
+### Courier motion and texture delivery
+
+- Twelve complete new Courier poses add breathing, hit recoil and an Accord stagger with one upright entry then a weak loop. Original eight charge and eight defeat poses stay unchanged.
+- Sixty-four cropped boss identities preserve exact complete RGBA cells and world anchors through loading and eviction. Reference decoded area is 64.8128% smaller; the encounter-only cache subtotal is at most 76.81033 MiB despite the larger Courier atlas.
+- Independent pixel/anchor reconstruction and ten new regressions accompany the change. Human perception, rendered transitions and device FPS still need review. Map layouts, unwanted beds, class portraits and threat/boss/skill-tree feedback remain active work.
 
 ## 2026-10-25 — Seven opening bosses gain complete defeat sequences
 

@@ -126,6 +126,12 @@ def main():
     save(source(opening_reference['image']).convert('RGB'),'opening-defeats.jpg','Four key poses from each of seven eight-frame opening-boss defeat clips, at one world scale. Sprite reference, not a game capture.')
     for path in ['reviews/opening-defeats-2026-10-25/opening-defeats-reference.json',opening_reference['sourceLibrary'],'tools/build-opening-defeat-reference.py']:
         sources[path]={'path':path,'sha256':sha(ROOT/path)}
+    courier_reference=read('reviews/courier-actions-2026-10-25/courier-motion-reference.json')
+    assert sha(ROOT/courier_reference['image'])==courier_reference['imageSha256']
+    assert sha(ROOT/courier_reference['sourceLibrary'])==courier_reference['sourceLibrarySha256']
+    save(source(courier_reference['image']).convert('RGB'),'courier-motion.jpg','Courier idle, hit, Accord stagger and retained charge/defeat poses at one world scale; sprite reference, not a game capture.')
+    for path in ['reviews/courier-actions-2026-10-25/courier-motion-reference.json',courier_reference['sourceLibrary']]:
+        sources[path]={'path':path,'sha256':sha(ROOT/path)}
     figure_receipt=read('reviews/performance/endurance-50-moths-20261024-2-figure-v2.json')
     assert sha(ROOT/figure_receipt['figure'])==figure_receipt['figureSha256']
     assert sha(ROOT/figure_receipt['source'])==figure_receipt['sourceSha256']

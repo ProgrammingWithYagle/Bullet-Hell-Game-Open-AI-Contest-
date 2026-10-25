@@ -1,10 +1,10 @@
 # Implementation backlog and contest acceptance map
 
-Current source: build 2026.10.25-opening-defeats, protocol 13. All sixty authored boss identities execute across five modes, seven classes, 378 skills, twenty-eight weapons and six distinct map footprints. Every boss has an individual original theme; production motion totals 1,442 production-path animation frames, plus eight retained Constable proof-atlas frames (1,450 selected animation frames in total) across survivors, bosses, parts and minions. The in-game journal and Wiki have concrete synchronized updates. See [Endless and Uncounted runtime](ENDLESS_AND_UNCOUNTED_RUNTIME.md), [Raid](GRAND_RAID_RUNTIME.md) and [Pilgrimage](PILGRIMAGE_RUNTIME.md).
+Current source: build 2026.10.25-motion-continuity, protocol 13. All sixty authored boss identities execute across five modes, seven classes, 378 skills, twenty-eight weapons and six distinct map footprints. Every boss has an individual original theme; production motion totals 1,454 production-path animation frames, plus eight retained Constable proof-atlas frames (1,462 selected animation frames in total) across survivors, bosses, parts and minions. The in-game journal and Wiki have concrete synchronized updates. See [Endless and Uncounted runtime](ENDLESS_AND_UNCOUNTED_RUNTIME.md), [Raid](GRAND_RAID_RUNTIME.md) and [Pilgrimage](PILGRIMAGE_RUNTIME.md).
 
 ProfileV1 now stores validated import/export, mastery, rescues, lore discoveries, cosmetic insignia, preferences, remapping and full-Hard difficulty unlocks. See [ProfileV1](PROFILE_V1.md).
 
-The complete current pipeline passes 336 tests, authored-content/fifteen-locale checks, TypeScript and production build. Exact evidence is in reviews/runtime-verification.json. Native/audio audits and prior rendered samples are separate. Browser control was disabled in Work settings for the sixty-identity stage; no new rendered acceptance is claimed.
+The complete current pipeline passes 346 tests, authored-content/fifteen-locale checks, TypeScript and production build. Exact evidence is in reviews/runtime-verification.json. Native/audio audits and prior rendered samples are separate. Browser control was disabled in Work settings for the sixty-identity stage; no new rendered acceptance is claimed.
 
 Major remaining work includes boss-history translation; full directional/action animation; final encounter deadline/uptime and balance measurements; verified deployed rankings/recovery; active 8/16/50-player and endurance acceptance; final Windows artifact/release acceptance and the coordinated browser release. Physical-device, native-speaker and human review require actual evidence. The public Site remains its earlier protocol-4 build; protected main remains a separate release boundary.
 
@@ -37,6 +37,8 @@ The [bounded survivor drawing clock](SURVIVOR_MOTION_TIMING.md) prevents patch-l
 [Arena ground artwork](ARENA_GROUND_ART.md) gives every map its own painted floor while keeping actual bounds, cover and spawns. Five new materials and the original Gatehouse have exact native/pixel/geometry bindings; final rendered scene readability and device budgets remain open.
 
 [Opening boss defeats](OPENING_BOSS_DEFEATS.md) add 56 complete poses and preserve 56 original live poses/world transforms. All nine opening-route identities now settle on defeat. Exact v2 references, updated cache arithmetic and real normal/Brutal reward/clock regressions remain separate from rendered/device/human acceptance.
+
+[Motion continuity](MOTION_CONTINUITY.md) fixes patch-cadence run/idle flashing, stabilizes facing, adds twelve Courier poses and reduces static reference texture area with exact world anchors. Human map/threat/portrait/boss/skill-tree feedback remains active.
 
 All implementation stages remain authorized. These rows are acceptance requirements, not completion claims. Historical checkpoint prose is preserved in [the archived backlog](history/IMPLEMENTATION_BACKLOG-before-60.md).
 

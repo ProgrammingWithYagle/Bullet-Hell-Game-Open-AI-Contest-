@@ -81,21 +81,19 @@ const items = import.meta.glob('../../assets/production/items/icons/*/*.png', {
   eager: true,
 }) as Record<string, string>;
 const bossSettledIdentities = import.meta.glob(
-  '../../assets/delivery/boss-loading-v2/*-defeat-reference-v1.png',
-  { query: '?url', import: 'default', eager: true },
-) as Record<string, string>;
-const updatedBossIdentities = import.meta.glob(
-  '../../assets/delivery/boss-loading-v2/*-reference-v2.png',
+  '../../assets/delivery/boss-loading-v3/*-defeat-reference-v2.png',
   { query: '?url', import: 'default', eager: true },
 ) as Record<string, string>;
 const bossIdentities = import.meta.glob(
-  '../../assets/delivery/boss-loading-v1/*-reference-v1.png',
+  '../../assets/delivery/boss-loading-v3/*-reference-v3.png',
   { query: '?url', import: 'default', eager: true },
 ) as Record<string, string>;
 const encounterMotion = import.meta.glob(
   [
     '../../assets/production/motion/*-action-v1-atlas.png',
     '../../assets/production/motion/*-action-v2-atlas.png',
+    '../../assets/production/motion/*-action-v3-atlas.png',
+    '!../../assets/production/motion/courier-action-v2-atlas.png',
     '!../../assets/production/motion/courier-action-v1-atlas.png',
     '!../../assets/production/motion/ratcatcher-action-v1-atlas.png',
     '!../../assets/production/motion/quarantine-clerk-action-v1-atlas.png',
@@ -112,18 +110,14 @@ const encounterMotion = import.meta.glob(
 ) as Record<string, string>;
 export const assets = {
   bossIdentities: Object.fromEntries(
-    Object.entries(bossIdentities)
-      .map(([path, url]) => [path.split('/').at(-1)!.replace('-reference-v1.png', ''), url])
-      .concat(
-        Object.entries(updatedBossIdentities).map(([path, url]) => [
-          path.split('/').at(-1)!.replace('-reference-v2.png', ''),
-          url,
-        ]),
-      ),
+    Object.entries(bossIdentities).map(([path, url]) => [
+      path.split('/').at(-1)!.replace('-reference-v3.png', ''),
+      url,
+    ]),
   ) as Record<string, string>,
   bossSettledIdentities: Object.fromEntries(
     Object.entries(bossSettledIdentities).map(([path, url]) => [
-      path.split('/').at(-1)!.replace('-defeat-reference-v1.png', ''),
+      path.split('/').at(-1)!.replace('-defeat-reference-v2.png', ''),
       url,
     ]),
   ) as Record<string, string>,
@@ -165,7 +159,7 @@ export const assets = {
       path
         .split('/')
         .at(-1)!
-        .replace(/-action-v[12]-atlas\.png$/, ''),
+        .replace(/-action-v[123]-atlas\.png$/, ''),
       url,
     ]),
   ) as Record<string, string>,

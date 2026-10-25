@@ -109,11 +109,11 @@ test('all 57 exact identity references keep their original atlas, dimensions, or
     assert.equal(sha(entry.sourceAtlas), entry.sourceAtlasSha256);
     assert.equal(original.atlasSha256, entry.sourceAtlasSha256);
     assert.equal(sha(entry.reference), entry.referenceSha256);
-    assert.deepEqual(entry.origin, original.origin);
-    assert.equal(entry.displayCell, original.displayCell);
+    assert.deepEqual(entry.sourceOrigin, original.origin);
+    assert.equal(entry.sourceDisplayCell, original.displayCell);
     const png = readFileSync(entry.reference);
-    assert.equal(png.readUInt32BE(16), original.cellSize);
-    assert.equal(png.readUInt32BE(20), original.cellSize);
+    assert.equal(png.readUInt32BE(16), entry.referenceWidth);
+    assert.equal(png.readUInt32BE(20), entry.referenceHeight);
     assert.equal(png[25], 6);
   }
   assert(

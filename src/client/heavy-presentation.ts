@@ -1,6 +1,7 @@
 import motion from '../../assets/production/motion/heavy-library.json' with { type: 'json' };
 
 import { deliveredSurvivorClip } from './survivor-delivery.ts';
+import type { SurvivorFacing } from './survivor-visual-motion.ts';
 export const heavyArt = { ...motion, entries: motion.entries.map(deliveredSurvivorClip) };
 export type HeavyFacing = 'North' | 'South' | 'East' | 'West';
 export function heavyPose(
@@ -9,15 +10,18 @@ export function heavyPose(
   status: string,
   combatTick: number,
   reduceMotion = false,
+  visualFacing?: SurvivorFacing,
 ) {
   const vertical = Math.abs(Math.sin(aim)) > Math.abs(Math.cos(aim));
-  const facing: HeavyFacing = vertical
-    ? Math.sin(aim) < 0
-      ? 'North'
-      : 'South'
-    : Math.cos(aim) < 0
-      ? 'West'
-      : 'East';
+  const facing: HeavyFacing = visualFacing
+    ? ((visualFacing[0].toUpperCase() + visualFacing.slice(1)) as HeavyFacing)
+    : vertical
+      ? Math.sin(aim) < 0
+        ? 'North'
+        : 'South'
+      : Math.cos(aim) < 0
+        ? 'West'
+        : 'East';
   const walking = moving && status === 'active' && !reduceMotion;
   const art = walking
     ? heavyArt.entries.find((entry) => entry.id === 'heavy-run-' + facing.toLowerCase())!
