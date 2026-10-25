@@ -77,22 +77,23 @@ def main():
     action_library=read(action_library_path)
     sources[action_library_path]={'path':action_library_path,'sha256':sha(ROOT/action_library_path)}
     action_selections=[]
-    im=Image.new('RGB',(1120,1030),BG);d=ImageDraw.Draw(im)
-    d.text((20,15),'Tank: four directions and five new actions',font=font(28),fill=FG)
-    d.text((20,55),'Representative drawn poses at one scale · Full clips: 88 new poses · Engine transition review pending',font=font(16),fill=MUTED)
-    for row,(action,frame_index) in enumerate([('idle',0),('attack',1),('hurt',0),('dash',3),('downed',5)]):
-        for col,direction in enumerate(['south','east','north','west']):
-            entry=next(e for e in action_library['entries']if e['id']==f'tank-{action}-{direction}')
-            atlas=source(entry['atlas']);size=entry['cellSize'];columns=entry['columns']
-            x=col*280;y=92+row*180
-            d.text((x+12,y),action.title()+' · '+direction.title(),font=font(18),fill=FG)
-            tile=atlas.crop((frame_index%columns*size,frame_index//columns*size,(frame_index%columns+1)*size,(frame_index//columns+1)*size))
-            span=round(entry['displayCell']*2.2);sprite=tile.resize((span,span),Image.Resampling.LANCZOS)
-            im.paste(sprite,(round(x+140-span*.5),round(y+158-span*entry['origin'][1])),sprite)
-            action_selections.append({'id':entry['id'],'atlas':entry['atlas'],'frame':frame_index,'cellSize':size,'gallery':'images/tank-actions.jpg'})
-    d.text((20,1000),'Native pixels retained; shared scale and foot origin. Existing runs remain separate. No game capture claimed.',font=font(16),fill=MUTED)
-    save(im,'tank-actions.jpg','Tank action reference: idle, firearm attack, hurt, dash and downed in four independently drawn facings. Representative frames, not a game capture.')
-    manifest={'schemaVersion':1,'createdAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'sourceTool':'tools/build-wiki-images.py','sourceToolSha256':sha(Path(__file__)),'method':'Technical representative-frame crop, proportional resize and documentation contact-sheet composition; source artwork unchanged. Map is directly derived from runtime geometry. Tank action frames retain one shared world scale.','bosses':used,'survivorActions':action_selections,'sources':list(sources.values()),'files':files,'limits':['Contact sheets and geometry diagrams are documentation, not new rendered gameplay or full animation acceptance.','Text labels are English, matching the Wiki editorial language.']}
+    for identity in ['tank','engineer']:
+        im=Image.new('RGB',(1120,1030),BG);d=ImageDraw.Draw(im)
+        d.text((20,15),identity.title()+': four directions and five new actions',font=font(28),fill=FG)
+        d.text((20,55),'Representative drawn poses at one scale · Full clips: 88 new poses · Engine transition review pending',font=font(16),fill=MUTED)
+        for row,(action,frame_index) in enumerate([('idle',0),('attack',1),('hurt',0),('dash',3),('downed',5)]):
+            for col,direction in enumerate(['south','east','north','west']):
+                entry=next(e for e in action_library['entries']if e['id']==f'{identity}-{action}-{direction}')
+                atlas=source(entry['atlas']);size=entry['cellSize'];columns=entry['columns']
+                x=col*280;y=92+row*180
+                d.text((x+12,y),action.title()+' · '+direction.title(),font=font(18),fill=FG)
+                tile=atlas.crop((frame_index%columns*size,frame_index//columns*size,(frame_index%columns+1)*size,(frame_index//columns+1)*size))
+                span=round(entry['displayCell']*2.2);sprite=tile.resize((span,span),Image.Resampling.LANCZOS)
+                im.paste(sprite,(round(x+140-span*.5),round(y+158-span*entry['origin'][1])),sprite)
+                action_selections.append({'id':entry['id'],'atlas':entry['atlas'],'frame':frame_index,'cellSize':size,'gallery':'images/'+identity+'-actions.jpg'})
+        d.text((20,1000),'Native pixels retained; shared scale and foot origin. Existing runs remain separate. No game capture claimed.',font=font(16),fill=MUTED)
+        save(im,identity+'-actions.jpg',identity.title()+' action reference: idle, firearm attack, hurt, dash and downed in four independently drawn facings. Representative frames, not a game capture.')
+    manifest={'schemaVersion':1,'createdAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'sourceTool':'tools/build-wiki-images.py','sourceToolSha256':sha(Path(__file__)),'method':'Technical representative-frame crop, proportional resize and documentation contact-sheet composition; source artwork unchanged. Map is directly derived from runtime geometry. Tank and Engineer action frames retain one shared world scale.','bosses':used,'survivorActions':action_selections,'sources':list(sources.values()),'files':files,'limits':['Contact sheets and geometry diagrams are documentation, not new rendered gameplay or full animation acceptance.','Text labels are English, matching the Wiki editorial language.']}
     (ROOT/'docs/wiki-images.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n',encoding='utf-8',newline='\n')
     print(json.dumps({'images':len(files),'bosses':60,'bytes':sum(f['bytes'] for f in files)},indent=2))
 if __name__=='__main__':main()

@@ -5,11 +5,12 @@ import hashlib,json,math,sys
 
 ROOT=Path(__file__).resolve().parents[1]
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
-def main():
+def verify_class(name,provenance,review_path,native_count):
  library=json.loads((ROOT/'assets/production/motion/survivor-actions/library.json').read_text(encoding='utf-8'))
- batch=json.loads((ROOT/'docs/survivor-actions-2026-10-24.json').read_text(encoding='utf-8'))
- review=ROOT/'reviews/survivor-actions-2026-10-24';packing=json.loads((review/'packing.json').read_text(encoding='utf-8'))
- assert len(library['entries'])==20 and len(batch['requests'])==25 and len(packing['clips'])==20
+ batch=json.loads((ROOT/provenance).read_text(encoding='utf-8'))
+ library['entries']=[entry for entry in library['entries']if entry['classId']==name]
+ review=ROOT/review_path;packing=json.loads((review/'packing.json').read_text(encoding='utf-8'))
+ assert len(library['entries'])==20 and len(batch['requests'])==native_count and len(packing['clips'])==20
  for request in batch['requests']:
   assert sha(ROOT/request['file'])==request['sha256']
   assert sha(ROOT/request['request'])==request['requestSha256']
@@ -46,7 +47,9 @@ def main():
   assert abs(world_height-56)<1 and entry['origin']==[.5,320/384]
   results.append({'id':entry['id'],'frames':entry['frames'],'minimumAlpha16Padding':min(padding),'calibratedWorldHeight':world_height,'sourceRgbaPartitionExact':True,'packedRgbaReconstructed':True,'singleScale':True})
  assert count==88
- report={'passed':True,'clips':20,'drawnFrames':count,'nativeReturns':25,'creativePixelEditsPerformed':False,'mirroringPerformed':False,'alphaErasurePerformed':False,'results':results,'limits':['Independent native-byte/atlas reconstruction and geometric checks only.','Assistant native/contact-sheet candidates; rendered Phaser transitions, device and human acceptance remain open.']}
+ report={'passed':True,'clips':20,'drawnFrames':count,'nativeReturns':native_count,'creativePixelEditsPerformed':False,'mirroringPerformed':False,'alphaErasurePerformed':False,'results':results,'limits':['Independent native-byte/atlas reconstruction and geometric checks only.','Assistant native/contact-sheet candidates; rendered Phaser transitions, device and human acceptance remain open.']}
  (review/'verification.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n')
- print(json.dumps({'passed':True,'clips':20,'drawnFrames':88,'nativeReturns':25,'renderedAccepted':False}))
-if __name__=='__main__':main()
+ print(json.dumps({'passed':True,'clips':20,'drawnFrames':88,'nativeReturns':native_count,'renderedAccepted':False}))
+if __name__=='__main__':
+ verify_class('tank','docs/survivor-actions-2026-10-24.json','reviews/survivor-actions-2026-10-24',25)
+ verify_class('engineer','docs/engineer-actions-2026-10-24.json','reviews/engineer-actions-2026-10-24',23)

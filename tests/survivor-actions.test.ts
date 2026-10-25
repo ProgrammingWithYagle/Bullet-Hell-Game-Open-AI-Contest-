@@ -11,6 +11,8 @@ import {
 } from '../src/client/survivor-action-presentation.ts';
 import library from '../assets/production/motion/survivor-actions/library.json';
 import provenance from '../docs/survivor-actions-2026-10-24.json';
+import engineerProvenance from '../docs/engineer-actions-2026-10-24.json';
+const tankLibrary = library.entries.filter((entry) => entry.classId === 'tank');
 
 function fixture() {
   const game = new Game({ maxPlayers: 2, seed: 714, mode: 'endless' });
@@ -34,22 +36,22 @@ function fixture() {
 }
 
 test('Tank actions retain twenty distinct directional clips, 88 drawn poses and every immutable native/request binding', () => {
-  assert.equal(library.entries.length, 20);
+  assert.equal(tankLibrary.length, 20);
   assert.equal(
-    library.entries.reduce((n, clip) => n + clip.frames, 0),
+    tankLibrary.reduce((n, clip) => n + clip.frames, 0),
     88,
   );
   assert.equal(provenance.requests.length, 25);
   for (const action of ['idle', 'attack', 'hurt', 'dash', 'downed'])
     assert.deepEqual(
-      library.entries
+      tankLibrary
         .filter((e) => e.action === action)
         .map((e) => e.direction)
         .sort(),
       ['east', 'north', 'south', 'west'],
     );
   const sha = (path: string) => createHash('sha256').update(readFileSync(path)).digest('hex');
-  for (const entry of library.entries) {
+  for (const entry of tankLibrary) {
     assert.equal(sha(entry.source), entry.sourceSha256);
     assert.equal(sha(entry.atlas), entry.atlasSha256);
     const png = readFileSync(entry.atlas);
@@ -63,7 +65,7 @@ test('Tank actions retain twenty distinct directional clips, 88 drawn poses and 
     for (const binding of request.inputBindings)
       assert.equal(sha(binding.projectPath), binding.sha256);
   }
-  assert.equal(survivorActionArt.entries.length, 20);
+  assert.equal(survivorActionArt.entries.length, 40);
 });
 
 test('actual weapon shots trigger a complete stationary firing cycle without repeated snapshots restarting it', () => {
@@ -224,4 +226,76 @@ test('new runs, encounter boundaries, backward clocks and removed participants c
   assert.equal(s.clock.pose(s.view().players[0], absent, false), undefined);
   s.clock.observe(s.view());
   assert.equal(s.pose()!.action, 'idle');
+});
+
+test('Engineer actions preserve twenty independent clips, all 23 returns and their exact input bindings', () => {
+  const clips = library.entries.filter((entry) => entry.classId === 'engineer');
+  assert.equal(clips.length, 20);
+  assert.equal(
+    clips.reduce((n, e) => n + e.frames, 0),
+    88,
+  );
+  assert.equal(engineerProvenance.requests.length, 23);
+  const sha = (path: string) => createHash('sha256').update(readFileSync(path)).digest('hex');
+  for (const action of ['idle', 'attack', 'hurt', 'dash', 'downed'])
+    assert.deepEqual(
+      clips
+        .filter((e) => e.action === action)
+        .map((e) => e.direction)
+        .sort(),
+      ['east', 'north', 'south', 'west'],
+    );
+  for (const clip of clips) {
+    assert.equal(sha(clip.source), clip.sourceSha256);
+    assert.equal(sha(clip.atlas), clip.atlasSha256);
+  }
+  for (const native of engineerProvenance.requests) {
+    assert.equal(sha(native.file), native.sha256);
+    assert.equal(sha(native.request), native.requestSha256);
+    for (const binding of native.inputBindings)
+      assert.equal(sha(binding.projectPath), binding.sha256);
+  }
+});
+
+test('Engineer and Tank presentation cues stay independent through fire, fall, revive and a class identity change', () => {
+  const game = new Game({ maxPlayers: 2, seed: 715 });
+  const engineer = game.addPlayer('engineer', 'Nell', 'engineer'),
+    tank = game.addPlayer('tank', 'Bastion', 'tank');
+  assert(game.start());
+  engineer.aim = 0;
+  tank.aim = Math.PI;
+  const clock = new SurvivorActionClock();
+  const update = () => {
+    const view = viewOf(game, engineer.id);
+    clock.observe(view);
+    return view;
+  };
+  let view = update();
+  assert.equal(clock.pose(view.players[0], view, false)!.texture, 'engineer-idle-east');
+  assert.equal(clock.pose(view.players[1], view, false)!.texture, 'tank-idle-west');
+  assert(game.submitInput(engineer.id, { ...idleInput(), sequence: 1, fire: true, aim: 0 }));
+  assert(game.submitInput(tank.id, { ...idleInput(), sequence: 1, aim: Math.PI }));
+  game.step();
+  view = update();
+  assert.equal(clock.pose(view.players[0], view, false)!.texture, 'engineer-attack-east');
+  assert.equal(clock.pose(view.players[1], view, false)!.action, 'idle');
+  tank.status = 'downed';
+  tank.downUntil = game.combatTick + 20 * HZ;
+  view = update();
+  assert.equal(clock.pose(view.players[1], view, false)!.texture, 'tank-downed-west');
+  assert.equal(clock.pose(view.players[0], view, false)!.action, 'attack');
+  engineer.health -= 5;
+  game.tick++;
+  game.combatTick++;
+  view = update();
+  assert.equal(clock.pose(view.players[0], view, false)!.texture, 'engineer-hurt-east');
+  tank.status = 'active';
+  tank.health = tank.maxHealth;
+  view = update();
+  assert.equal(clock.pose(view.players[1], view, false)!.action, 'idle');
+  const changed = structuredClone(view);
+  changed.players[0].classId = 'tank';
+  changed.players[0].ammo--;
+  clock.observe(changed);
+  assert.equal(clock.pose(changed.players[0], changed, false)!.texture, 'tank-idle-east');
 });

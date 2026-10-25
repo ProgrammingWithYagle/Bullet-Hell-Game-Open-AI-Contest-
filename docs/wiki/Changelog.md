@@ -1,6 +1,19 @@
 # Changelog
 
-Development build **2026.10.24-tank-actions**, protocol 13. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.24-engineer-actions**, protocol 13. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-24 — Engineer idle, firing, hurt, dodge and downed motion
+
+### Drawn action library
+
+- Added twenty Engineer clips with 88 new independently drawn poses across four directions. Her existing runs, teal coat, bun/goggles, backpack and right-hand brass firearm retain their identities.
+- Preserved all 23 exact returns and prompts, including three rejected falls that changed the weapon hand or facing. Corrected whole sheets keep the weapon arm consistent; no mirrored poses, painted limb corrections or alpha removal are used.
+- The shared presentation clock now selects Engineer actions from existing authority state. Separate participants keep independent firing, hurt and downed cues; reduced motion remains stable.
+
+### Verification and Wiki
+
+- Independent native reconstruction now covers 40 Tank/Engineer atlases and 176 new action poses. The Wiki adds an Engineer action reference and the in-game changelog records this stage.
+- Software tests cover Engineer/Tank cue isolation and class changes. Native and 56/112-pixel contact review are separate from rendered Phaser/device/human acceptance, which remains open. Other survivor and boss action libraries remain unfinished.
 
 ## 2026-10-24 — Tank idle, firing, hurt, dodge and downed motion
 
