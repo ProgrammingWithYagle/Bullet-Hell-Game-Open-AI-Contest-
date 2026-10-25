@@ -2,7 +2,7 @@
 
 Game direction and playtesting: ProgrammingWithYagle. Code, production tools, documentation and translation drafting: OpenAI coding assistant. Original raster artwork: built-in OpenAI image generation; a specific backend model is not claimed without returned metadata. Music and sounds: original deterministic local synthesis. No reference-game sprites, maps or recordings are copied into the game.
 
-Source uses the MIT license. Dependency and bundled Fontsource license notices are retained in [THIRD_PARTY_NOTICES.md](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/THIRD_PARTY_NOTICES.md). Final Windows packaging must carry its required notices and is still pending.
+Source uses the MIT license. Dependency and bundled Fontsource license notices are retained in [THIRD_PARTY_NOTICES.md](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/THIRD_PARTY_NOTICES.md). The [Windows development download](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/releases/tag/dev-windows-20261024-1) carries 80 collected runtime dependency license files, the full game license directory and Electron/Chromium notices. Its manifest records the exact issued members; the encoder and PE-editing tools are development dependencies.
 
 ## Current production records
 

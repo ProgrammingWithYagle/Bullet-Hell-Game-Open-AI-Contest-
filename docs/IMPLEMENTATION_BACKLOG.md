@@ -10,7 +10,7 @@ Major remaining work includes boss-history translation; full directional/action 
 
 The latest [balance/collision correction and throughput evidence](BALANCE_AND_COLLISION_RUNTIME.md) records exact health math, 210 progression combinations, same-tick destructible buildings and longer localhost probes. Rendered/hosted/WAN/endurance capacity and human balance remain open.
 
-The Windows shell and opt-in LAN authority now pass packaged offline and native utility-process fixtures. Portable artifact extraction/copy checks are recorded per build; physical second-machine LAN, manual rendering/audio and signed/release acceptance remain distinct gates.
+The [issued Windows development package](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/releases/tag/dev-windows-20261024-1) and opt-in LAN authority pass all six native fixtures across the original, fresh ZIP extraction and ordinary Windows copy. All 1,633 members match exactly; physical second-machine LAN, manual rendering/audio and signed/release acceptance remain distinct gates.
 
 All implementation stages remain authorized. These rows are acceptance requirements, not completion claims. Historical checkpoint prose is preserved in [the archived backlog](history/IMPLEMENTATION_BACKLOG-before-60.md).
 

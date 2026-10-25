@@ -18,7 +18,7 @@ The existing public Site remains the earlier protocol-4 frontend and gameplay. S
 | SQL/HTTP/journal recovery foundation | Tested modules; disabled in the normal runtime |
 | Durable server-restart recovery | Not live |
 | Verified public rankings | Not live |
-| Windows portable runtime | Implemented and locally packaged; per-artifact extraction/copy evidence and release links are recorded separately |
+| Windows portable runtime | [Unsigned development download](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/releases/tag/dev-windows-20261024-1); three matching package copies and six native software fixtures; physical LAN/manual acceptance pending |
 
 Server capacity and per-room capacity are separate constraints. Earlier scripted stress fixtures are not proof of physical-device FPS, WAN stability or a host's production capacity. Final 49+1, endurance and deployment acceptance remain open.
 

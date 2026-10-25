@@ -20,9 +20,9 @@ Cooperative gothic zombie bullet hell. Choose a survivor, clear a boss contract,
 | Interface | Remappable keyboard/mouse/gamepad, touch; Hold/Toggle options; fifteen language catalogs |
 | Profiles | Mastery, rescues, discovered codex, cosmetic insignia, settings, bests, validated import/export and Hard-completion unlocks |
 
-The [public browser playtest](https://grave-accord-playtest.ivoryflame12.chatgpt.site/) remains the **older protocol-4 build with two classes and one boss**. Source and Wiki publication does not redeploy it. Run from source for the current build; see [Getting Started](Getting-Started).
+The [public browser playtest](https://grave-accord-playtest.ivoryflame12.chatgpt.site/) remains the **older protocol-4 build with two classes and one boss**. Source and Wiki publication does not redeploy it. Use the [Windows development download](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/releases/tag/dev-windows-20261024-1) or run from source for the current build; see [Getting Started](Getting-Started).
 
-All sixty identities execute, including nine scheduled Endless exclusives and an optional Uncounted campaign extension. Complete action/facing animation and final encounter tuning remain unfinished. Verified leaderboards, durable online recovery and a portable Windows/LAN release are also unfinished. Automated evidence does not establish final rendered, human, device, language or balance acceptance.
+All sixty identities execute, including nine scheduled Endless exclusives and an optional Uncounted campaign extension. Complete action/facing animation and final encounter tuning remain unfinished. Verified leaderboards and durable online recovery remain unfinished. The unsigned Windows development package is published with extraction/copy and native fixture evidence; final manual/device release acceptance remains open. Automated evidence does not establish final rendered, human, device, language or balance acceptance.
 
 ## Player reference
 

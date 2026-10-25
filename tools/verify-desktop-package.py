@@ -34,7 +34,7 @@ def main():
  report=verify(folder,args.verification)
  if args.zip:
   archive=Path(args.zip).resolve();assert not archive.exists(),'Preserve existing archive';assert os.path.commonpath([str(folder.resolve()),str(archive)])!=str(folder.resolve()),'Archive must be outside source';archive.parent.mkdir(parents=True,exist_ok=True)
-  with zipfile.ZipFile(archive,'x',compression=zipfile.ZIP_DEFLATED,compresslevel=6,allowZip64=True)as z:
+  with zipfile.ZipFile(archive,'x',compression=zipfile.ZIP_DEFLATED,compresslevel=6,allowZip64=True,strict_timestamps=False)as z:
    for p in sorted(folder.rglob('*')):
     if p.is_file():z.write(p,folder.name+'/'+p.relative_to(folder).as_posix())
   report['archive']={'path':str(archive.resolve()),'bytes':archive.stat().st_size,'sha256':sha(archive)}

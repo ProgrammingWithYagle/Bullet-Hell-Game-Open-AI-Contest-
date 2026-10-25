@@ -2,6 +2,12 @@
 
 Build `2026.10.24-windows-lan`, protocol 13. This is a development playtest, separate from protected main and final contest/release acceptance.
 
+## Issued development download
+
+[Windows portable playtest, 2026-10-24](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/releases/tag/dev-windows-20261024-1). The ZIP is 741,136,155 bytes; SHA-256 `b2a87f08f002e35a23558ab9b4bcca3e997309fd5a567c7e014498a54fe7ae3c`. Its exact source is `52552c0d4465b918d7cde2ab3c2aa7f1d7eb045e`, with 276 passing source tests. All 1,633 package members match after fresh ZIP extraction and an independent ordinary Windows copy. All three copies passed the offline renderer/worker/codec fixture and separate bundled-authority LAN fixture. Companion manifest, checksums and verification JSON are attached to the release.
+
+The source package remains bound to that commit even as documentation and subsequent development advance. Public download-byte verification is recorded in `reviews/windows-prerelease-public-download.json`; native/copy evidence is in `reviews/windows-desktop-2026-10-24.json`.
+
 ## Run and host
 
 Extract the entire issued portable folder and run **Grave Accord.exe**. Electron, the shared offline worker, art, fonts and all music are bundled. Offline solo uses no multiplayer process or network. `GraveAccordData` beside the executable stores the local profile/settings when that location is writable; otherwise Electron uses its normal per-user location. Profile JSON export/import remains available.
