@@ -71,12 +71,22 @@ const items = import.meta.glob('../../assets/production/items/icons/*/*.png', {
   import: 'default',
   eager: true,
 }) as Record<string, string>;
+const bossIdentities = import.meta.glob(
+  '../../assets/delivery/boss-loading-v1/*-reference-v1.png',
+  { query: '?url', import: 'default', eager: true },
+) as Record<string, string>;
 const encounterMotion = import.meta.glob('../../assets/production/motion/*-action-v1-atlas.png', {
   query: '?url',
   import: 'default',
   eager: true,
 }) as Record<string, string>;
 export const assets = {
+  bossIdentities: Object.fromEntries(
+    Object.entries(bossIdentities).map(([path, url]) => [
+      path.split('/').at(-1)!.replace('-reference-v1.png', ''),
+      url,
+    ]),
+  ) as Record<string, string>,
   survivorActions: survivorMotionUrls,
   endlessProps: Object.fromEntries(
     Object.entries(endlessProps).map(([p, u]) => [p.split('/').at(-1)!.replace('.png', ''), u]),

@@ -24,6 +24,12 @@ import { survivorActionArt, SurvivorActionClock } from './survivor-action-presen
 import { heavyArt, heavyPose } from './heavy-presentation.ts';
 import { encounterArt, encounterFrame } from './encounter-presentation.ts';
 import type { Sector } from '../shared/warden-signature.ts';
+import {
+  BossTextureCache,
+  bossTexturePose,
+  preloadBossTextureBase,
+  retireBossTexture,
+} from './boss-textures.ts';
 export class CombatScene extends Phaser.Scene {
   private resolveReady!: () => void;
   private rejectReady!: (error: Error) => void;
@@ -38,6 +44,9 @@ export class CombatScene extends Phaser.Scene {
   highContrast = false;
   reduceMotion = false;
   private people = new Map<string, Phaser.GameObjects.Sprite>();
+  private bossTextures?: BossTextureCache;
+  private bossTextureAlive = false;
+  private cancelBossLoads = new Set<() => void>();
   private survivorActions = new SurvivorActionClock();
   private actors = new Map<number, Phaser.GameObjects.Sprite>();
   private shadows!: Phaser.GameObjects.Graphics;
@@ -65,6 +74,7 @@ export class CombatScene extends Phaser.Scene {
   diagnostics() {
     return {
       ...this.frameMeter.summary(),
+      bossTextureLoading: this.bossTextures?.diagnostics(),
       renderedProjectiles: this.bulletImages.size,
       renderedHostiles: this.renderedHostiles,
       environment: {
@@ -131,11 +141,14 @@ export class CombatScene extends Phaser.Scene {
         frameWidth: clip.cellSize,
         frameHeight: clip.cellSize,
       });
-    for (const clip of encounterArt)
-      this.load.spritesheet(clip.bossId + '-action', assets.encounters[clip.bossId], {
-        frameWidth: clip.cellSize,
-        frameHeight: clip.cellSize,
-      });
+    preloadBossTextureBase(
+      this.load,
+      encounterArt,
+      Object.fromEntries(
+        Object.entries(assets.encounters).map(([id, url]) => [id + '-action', url]),
+      ),
+      assets.bossIdentities,
+    );
     for (const [clip, url] of Object.entries(assets.warden)) {
       const size = wardenArt.clips[clip as WardenCombatClipId].cellSize;
       this.load.spritesheet('warden-' + clip, url, {
@@ -184,6 +197,21 @@ export class CombatScene extends Phaser.Scene {
       .setOrigin(0.5, 0.84)
       .setDisplaySize(300, 300)
       .setDepth(5);
+    this.bossTextureAlive = true;
+    this.bossTextures = new BossTextureCache(
+      {
+        load: (id) => this.loadBossAtlas(id),
+        evict: (id) =>
+          retireBossTexture(id, this.bossTextureAlive ? this.bossSprite : undefined, this.textures),
+      },
+      () => performance.now(),
+    );
+    this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
+      this.bossTextureAlive = false;
+      this.bossTextures?.dispose();
+      for (const cancel of [...this.cancelBossLoads]) cancel();
+    });
+    if (this.view) this.bossTextures.request(this.view.boss.id);
     this.ready = true;
     this.resolveReady();
   }
@@ -195,6 +223,40 @@ export class CombatScene extends Phaser.Scene {
     }
     this.lastPhase = view.phase;
     this.view = view;
+    if (this.ready) this.bossTextures?.request(view.boss.id);
+  }
+  private loadBossAtlas(id: string): Promise<void> {
+    const key = id + '-action';
+    if (this.textures.exists(key)) return Promise.resolve();
+    const clip = encounterArt.find((entry) => entry.bossId === id);
+    const url = assets.encounters[id];
+    if (!clip || !url) return Promise.reject(new Error('Missing boss atlas: ' + id));
+    return new Promise((resolve, reject) => {
+      const event = 'filecomplete-spritesheet-' + key;
+      const cleanup = () => {
+        this.load.off(event, complete);
+        this.load.off('loaderror', failed);
+        this.cancelBossLoads.delete(cancel);
+      };
+      const complete = () => {
+        cleanup();
+        resolve();
+      };
+      const failed = (file: Phaser.Loader.File) => {
+        if (file.key !== key) return;
+        cleanup();
+        reject(new Error('Boss atlas load failed: ' + id));
+      };
+      const cancel = () => {
+        cleanup();
+        reject(new Error('Scene shut down'));
+      };
+      this.cancelBossLoads.add(cancel);
+      this.load.once(event, complete);
+      this.load.on('loaderror', failed);
+      this.load.spritesheet(key, url, { frameWidth: clip.cellSize, frameHeight: clip.cellSize });
+      if (!this.load.isLoading()) this.load.start();
+    });
   }
   ingest(events: Event[]) {
     for (const event of events) {
@@ -717,11 +779,13 @@ export class CombatScene extends Phaser.Scene {
     } else if (view.boss.id !== 'constable') {
       const clip = encounterArt.find((entry) => entry.bossId === view.boss.id)!;
       this.bossSprite.anims.stop();
+      const texturePose = bossTexturePose(
+        view.boss.id,
+        encounterFrame(view.boss, now, view.bossCues, this.reduceMotion),
+        this.textures.exists(view.boss.id + '-action'),
+      );
       this.bossSprite
-        .setTexture(
-          view.boss.id + '-action',
-          encounterFrame(view.boss, now, view.bossCues, this.reduceMotion),
-        )
+        .setTexture(texturePose.key, texturePose.frame)
         .setOrigin(clip.origin[0], clip.origin[1])
         .setDisplaySize(clip.displayCell, clip.displayCell);
     } else {

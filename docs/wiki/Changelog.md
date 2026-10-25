@@ -1,6 +1,20 @@
 # Changelog
 
-Development build **2026.10.25-survivor-delivery**, protocol 13. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.25-boss-texture-cache**, protocol 13. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-25 — Boss animations load by encounter with a bounded texture cache
+
+### Smaller encounter startup
+
+- Boss startup now keeps eight shared actor atlases and exact first-frame references for 57 bosses. Full animations load for the current replicated boss instead of decoding the entire encounter atlas roster.
+- A maximum of two full boss atlases are retained, with one load in flight. Repeated requests coalesce, superseded completions are released, failures retry after five seconds, and scene shutdown cleans up pending/cached resources.
+- A boss keeps its own correct reference pose during loading or retries. Origins, displayed size, authoritative telegraphs, damage and encounter rules stay the same. Shared voices, keepers, attendants, moths, crows and minions remain available.
+
+### Verification and resource scope
+
+- The 65-atlas encounter set previously implied 292.5 MiB decoded RGBA. The new startup estimate is 68.06 MiB and the maximum retained-cache estimate 77.06 MiB. These dimension-based totals exclude other scene textures, driver allocations and device FPS.
+- Independent pixel checks verify all 57 reference crops against their original frame zero. Eight lifecycle tests cover initial preload, identity fallback, all-boss cache bounds, rapid switching, retry timing, shutdown and safe texture eviction.
+- Original production artwork, seventeen Wiki images, the issued Windows archive and frozen endurance source retain their separate identities. Rendered/network-delay/device/human acceptance remains open.
 
 ## 2026-10-25 — Smaller survivor texture loads with original artwork retained
 

@@ -22,7 +22,7 @@ Passing automated checks does not imply full rendered FPS, human playtest, devic
 
 [Shared authority](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/src/shared/game.ts) · [Live protocol](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/src/shared/protocol.ts) · [Latest full verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/reviews/runtime-verification.json)
 
-[Latest balance, collision and local throughput evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/BALANCE_AND_COLLISION_RUNTIME.md): 312 full-pipeline tests, 210 progression combinations and 1,740 health/deadline deployments. Longer local 50-client Moths/Walking District and 16-client City Eater probes keep stress p99 below 25 ms; occasional slower ticks remain. Zero rendered clients means this is not final capacity acceptance.
+[Latest balance, collision and local throughput evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/BALANCE_AND_COLLISION_RUNTIME.md): 320 full-pipeline tests, 210 progression combinations and 1,740 health/deadline deployments. Longer local 50-client Moths/Walking District and 16-client City Eater probes keep stress p99 below 25 ms; occasional slower ticks remain. Zero rendered clients means this is not final capacity acceptance.
 
 ## One-hour local combat observation
 
@@ -37,3 +37,7 @@ Survivor runs and action frames use a drawing clock with at most 50 ms of lead b
 ## Survivor texture delivery
 
 The 168 survivor action/run atlases use technical runtime-sized copies with the same 820 poses, speed, display size and foot origin. Two-times display density is retained wherever the original supplies it. Exact image dimensions imply 211.09 MiB decoded RGBA instead of 462.88 MiB, and PNG transfers fall from 30,042,299 to 15,225,408 bytes. Original production/natives stay intact; the four excluded Engineer north frames remain excluded. These are storage estimates, not measured GPU/driver memory or FPS. [Policy, reconstruction and comparisons](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/SURVIVOR_TEXTURE_DELIVERY.md).
+
+## Boss texture lifecycle
+
+Eight shared actor atlases stay preloaded. The other 57 bosses have exact first-frame identity references ready at startup, and their full animation atlases load only for the current replicated encounter. A two-entry cache reserves space before each load, coalesces rapid switches and releases stale completions. Failures use the same boss identity and retry after five seconds. Live sprites release an old texture before it is destroyed; scene shutdown cancels listeners and clears the cache. This encounter-set estimate falls from 292.5 MiB decoded RGBA to 68.06 MiB at startup or at most 77.06 MiB with two full atlases retained. It is separate from total scene/driver memory, network-delay/device and rendered-FPS acceptance. [Exact policy and tests](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/BOSS_TEXTURE_LOADING.md).
