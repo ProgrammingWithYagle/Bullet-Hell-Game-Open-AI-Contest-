@@ -40,3 +40,6 @@ reviews/courier-actions-2026-10-25/*.log -text -whitespace
 # Preserve map and portrait verification evidence exactly.
 reviews/map-layouts-2026-10-25/*.log -text -whitespace
 reviews/selection-portraits-2026-10-25/*.log -text -whitespace
+
+# Preserve the two exact issued portrait request bodies, including CRLF.
+assets/production/generated/selection-portraits-2026-10-25/*-v1.request.json -text -whitespace
