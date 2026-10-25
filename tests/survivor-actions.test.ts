@@ -12,6 +12,7 @@ import {
 import library from '../assets/production/motion/survivor-actions/library.json';
 import provenance from '../docs/survivor-actions-2026-10-24.json';
 import engineerProvenance from '../docs/engineer-actions-2026-10-24.json';
+import mageProvenance from '../docs/mage-actions-2026-10-24.json';
 const tankLibrary = library.entries.filter((entry) => entry.classId === 'tank');
 
 function fixture() {
@@ -65,7 +66,7 @@ test('Tank actions retain twenty distinct directional clips, 88 drawn poses and 
     for (const binding of request.inputBindings)
       assert.equal(sha(binding.projectPath), binding.sha256);
   }
-  assert.equal(survivorActionArt.entries.length, 40);
+  assert.equal(survivorActionArt.entries.length, 60);
 });
 
 test('actual weapon shots trigger a complete stationary firing cycle without repeated snapshots restarting it', () => {
@@ -298,4 +299,61 @@ test('Engineer and Tank presentation cues stay independent through fire, fall, r
   changed.players[0].ammo--;
   clock.observe(changed);
   assert.equal(clock.pose(changed.players[0], changed, false)!.texture, 'tank-idle-east');
+});
+
+test('Mage actions preserve twenty complete clips, all 25 native attempts and exact reference bindings', () => {
+  const clips = library.entries.filter((entry) => entry.classId === 'mage');
+  assert.equal(clips.length, 20);
+  assert.equal(
+    clips.reduce((sum, entry) => sum + entry.frames, 0),
+    88,
+  );
+  assert.equal(mageProvenance.requests.length, 25);
+  const sha = (path: string) => createHash('sha256').update(readFileSync(path)).digest('hex');
+  for (const action of ['idle', 'attack', 'hurt', 'dash', 'downed'])
+    assert.deepEqual(
+      clips
+        .filter((e) => e.action === action)
+        .map((e) => e.direction)
+        .sort(),
+      ['east', 'north', 'south', 'west'],
+    );
+  for (const clip of clips) {
+    assert.equal(sha(clip.source), clip.sourceSha256);
+    assert.equal(sha(clip.atlas), clip.atlasSha256);
+  }
+  for (const native of mageProvenance.requests) {
+    assert.equal(sha(native.file), native.sha256);
+    assert.equal(sha(native.request), native.requestSha256);
+    for (const binding of native.inputBindings)
+      assert.equal(sha(binding.projectPath), binding.sha256);
+  }
+});
+
+test('real Mage primary casts select the corresponding independent staff clip in all four aim directions', () => {
+  for (const [direction, aim] of [
+    ['east', 0],
+    ['south', Math.PI / 2],
+    ['west', Math.PI],
+    ['north', -Math.PI / 2],
+  ] as const) {
+    const game = new Game({ maxPlayers: 1, seed: 716, mode: 'endless' });
+    const player = game.addPlayer('mage', 'Arlen', 'mage');
+    assert(game.start());
+    const clock = new SurvivorActionClock();
+    clock.observe(viewOf(game, player.id));
+    const ammo = player.ammo;
+    assert(game.submitInput(player.id, { ...idleInput(), sequence: 1, aim, fire: true }));
+    game.step();
+    const view = viewOf(game, player.id);
+    clock.observe(view);
+    assert(player.ammo < ammo, 'An authority-fired staff shot must consume ammo');
+    assert.equal(clock.pose(view.players[0], view, false)!.texture, 'mage-attack-' + direction);
+    assert.equal(clock.pose(view.players[0], view, false, true)!.frame, 1);
+    assert.equal(
+      clock.pose(view.players[0], view, true),
+      undefined,
+      'Movement continues to use the independent run strip',
+    );
+  }
 });

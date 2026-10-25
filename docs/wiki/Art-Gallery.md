@@ -69,3 +69,9 @@ Twenty drawn clips add 88 poses to the Tank's existing runs. The image shows rep
 ![Engineer idle, firearm attack, hurt, dash and downed poses in four directions](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/engineer-actions.jpg)
 
 Twenty independent clips add 88 poses alongside the Engineer's existing runs. Representative frames share one world scale. The image is a sprite reference, not a game capture; final rendered/device/human acceptance remains open. [Production and verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/ENGINEER_ACTION_MOTION.md).
+
+## Mage action reference
+
+![Mage idle, staff cast, hurt, dash and downed poses in four directions](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/mage-actions.jpg)
+
+Twenty complete clips add 88 poses alongside the Mage's existing runs. The left-hand staff and right-hip book retain their identities. Representative frames share one world scale; this is a sprite reference, not a gameplay capture. [Production and exact reconstruction](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/MAGE_ACTION_MOTION.md). Rendered/device/human acceptance remains open.

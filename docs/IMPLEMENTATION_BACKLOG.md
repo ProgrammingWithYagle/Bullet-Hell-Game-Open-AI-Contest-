@@ -1,10 +1,10 @@
 # Implementation backlog and contest acceptance map
 
-Current source: build 2026.10.24-engineer-actions, protocol 13. All sixty authored boss identities execute across five modes, seven classes, 378 skills, twenty-eight weapons and six distinct map footprints. Every boss has an individual original theme; production motion totals 879 drawn frames across survivors, bosses, parts and minions. The in-game journal and Wiki have concrete synchronized updates. See [Endless and Uncounted runtime](ENDLESS_AND_UNCOUNTED_RUNTIME.md), [Raid](GRAND_RAID_RUNTIME.md) and [Pilgrimage](PILGRIMAGE_RUNTIME.md).
+Current source: build 2026.10.24-mage-actions, protocol 13. All sixty authored boss identities execute across five modes, seven classes, 378 skills, twenty-eight weapons and six distinct map footprints. Every boss has an individual original theme; production motion totals 967 drawn frames across survivors, bosses, parts and minions. The in-game journal and Wiki have concrete synchronized updates. See [Endless and Uncounted runtime](ENDLESS_AND_UNCOUNTED_RUNTIME.md), [Raid](GRAND_RAID_RUNTIME.md) and [Pilgrimage](PILGRIMAGE_RUNTIME.md).
 
 ProfileV1 now stores validated import/export, mastery, rescues, lore discoveries, cosmetic insignia, preferences, remapping and full-Hard difficulty unlocks. See [ProfileV1](PROFILE_V1.md).
 
-The complete current pipeline passes 292 tests, authored-content/fifteen-locale checks, TypeScript and production build. Exact evidence is in reviews/runtime-verification.json. Native/audio audits and prior rendered samples are separate. Browser control was disabled in Work settings for the sixty-identity stage; no new rendered acceptance is claimed.
+The complete current pipeline passes 294 tests, authored-content/fifteen-locale checks, TypeScript and production build. Exact evidence is in reviews/runtime-verification.json. Native/audio audits and prior rendered samples are separate. Browser control was disabled in Work settings for the sixty-identity stage; no new rendered acceptance is claimed.
 
 Major remaining work includes boss-history translation; full directional/action animation; final encounter deadline/uptime and balance measurements; verified deployed rankings/recovery; active 8/16/50-player and endurance acceptance; final Windows artifact/release acceptance and the coordinated browser release. Physical-device, native-speaker and human review require actual evidence. The public Site remains its earlier protocol-4 build; protected main remains a separate release boundary.
 
@@ -17,6 +17,8 @@ The [issued Windows development package](https://github.com/ProgrammingWithYagle
 The [Tank action library](TANK_ACTION_MOTION.md) adds 88 independently drawn poses across twenty clips, with source/atlas reconstruction and actual firing/dodge state tests. Complete rendered acceptance and the other characters' full libraries remain open.
 
 The [Engineer action library](ENGINEER_ACTION_MOTION.md) adds another twenty clips/88 poses and independent simultaneous-class presentation tests. Tank and Engineer each have all six directional action families drawn; rendered transition/human/device review and the other five survivor libraries remain open.
+
+The [Mage action library](MAGE_ACTION_MOTION.md) adds twenty clips/88 poses, whole-figure extraction with independent pixel reconstruction and four-direction authority-fired cast checks. Three classes now have the six directional action families drawn; the remaining four classes, many boss action sets and rendered/device/human acceptance stay open.
 
 All implementation stages remain authorized. These rows are acceptance requirements, not completion claims. Historical checkpoint prose is preserved in [the archived backlog](history/IMPLEMENTATION_BACKLOG-before-60.md).
 

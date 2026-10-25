@@ -1,6 +1,20 @@
 # Changelog
 
-Development build **2026.10.24-engineer-actions**, protocol 13. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.24-mage-actions**, protocol 13. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-24 — Mage idle, casting, hurt, dodge and downed motion
+
+### Drawn Mage actions
+
+- Added twenty Mage clips and 88 new poses across four directions, preserving the left-hand sun-wheel staff, right-hip book, indigo robe and independent existing runs.
+- Retained all 25 native attempts and exact prompts. Five whole-sheet replacements correct ambiguous casting swings, a mirrored haircut, a sideways south dodge and a west fall beginning in the wrong direction.
+- Five staggered sheets use lossless whole-figure ownership masks. Every original visible source pixel is conserved and connected figures remain intact; no mirrored directions, source alpha erasure or creative limb repairs are used.
+
+### Runtime and illustrated documentation
+
+- Real Mage primary shots select the correct cast clip in all four aim directions; reduced motion stays stable and movement uses the existing run strips.
+- Independent reconstruction now covers sixty action atlases, 264 new poses and 73 preserved native attempts across Tank, Engineer and Mage. The Wiki adds a Mage action reference.
+- Native/contact-sheet and software checks remain separate from rendered, human and device acceptance. Four survivor action libraries and many boss action sets remain unfinished; the issued Windows download retains its earlier source.
 
 ## 2026-10-24 — Engineer idle, firing, hurt, dodge and downed motion
 
