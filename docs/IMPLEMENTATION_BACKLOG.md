@@ -1,14 +1,14 @@
 # Implementation backlog and contest acceptance map
 
-Current source: build 2026.10.24-mage-actions, protocol 13. All sixty authored boss identities execute across five modes, seven classes, 378 skills, twenty-eight weapons and six distinct map footprints. Every boss has an individual original theme; production motion totals 967 drawn frames across survivors, bosses, parts and minions. The in-game journal and Wiki have concrete synchronized updates. See [Endless and Uncounted runtime](ENDLESS_AND_UNCOUNTED_RUNTIME.md), [Raid](GRAND_RAID_RUNTIME.md) and [Pilgrimage](PILGRIMAGE_RUNTIME.md).
+Current source: build 2026.10.24-heavy-assassin-actions, protocol 13. All sixty authored boss identities execute across five modes, seven classes, 378 skills, twenty-eight weapons and six distinct map footprints. Every boss has an individual original theme; production motion totals 1,143 drawn frames across survivors, bosses, parts and minions. The in-game journal and Wiki have concrete synchronized updates. See [Endless and Uncounted runtime](ENDLESS_AND_UNCOUNTED_RUNTIME.md), [Raid](GRAND_RAID_RUNTIME.md) and [Pilgrimage](PILGRIMAGE_RUNTIME.md).
 
 ProfileV1 now stores validated import/export, mastery, rescues, lore discoveries, cosmetic insignia, preferences, remapping and full-Hard difficulty unlocks. See [ProfileV1](PROFILE_V1.md).
 
-The complete current pipeline passes 294 tests, authored-content/fifteen-locale checks, TypeScript and production build. Exact evidence is in reviews/runtime-verification.json. Native/audio audits and prior rendered samples are separate. Browser control was disabled in Work settings for the sixty-identity stage; no new rendered acceptance is claimed.
+The complete current pipeline passes 298 tests, authored-content/fifteen-locale checks, TypeScript and production build. Exact evidence is in reviews/runtime-verification.json. Native/audio audits and prior rendered samples are separate. Browser control was disabled in Work settings for the sixty-identity stage; no new rendered acceptance is claimed.
 
 Major remaining work includes boss-history translation; full directional/action animation; final encounter deadline/uptime and balance measurements; verified deployed rankings/recovery; active 8/16/50-player and endurance acceptance; final Windows artifact/release acceptance and the coordinated browser release. Physical-device, native-speaker and human review require actual evidence. The public Site remains its earlier protocol-4 build; protected main remains a separate release boundary.
 
-The latest [balance/collision correction and throughput evidence](BALANCE_AND_COLLISION_RUNTIME.md) records exact health math, 210 progression combinations, same-tick destructible buildings and longer localhost probes. Rendered/hosted/WAN/endurance capacity and human balance remain open.
+The latest [balance/collision correction and throughput evidence](BALANCE_AND_COLLISION_RUNTIME.md) records exact health math, 210 progression combinations, same-tick destructible buildings and longer localhost probes. The completed one-hour local continuous-combat probe is documented separately below. Rendered/hosted/WAN capacity, full progression endurance and human balance remain open.
 
 The [issued Windows development package](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/releases/tag/dev-windows-20261024-1) and opt-in LAN authority pass all six native fixtures across the original, fresh ZIP extraction and ordinary Windows copy. All 1,633 members match exactly; physical second-machine LAN, manual rendering/audio and signed/release acceptance remain distinct gates.
 
@@ -19,6 +19,10 @@ The [Tank action library](TANK_ACTION_MOTION.md) adds 88 independently drawn pos
 The [Engineer action library](ENGINEER_ACTION_MOTION.md) adds another twenty clips/88 poses and independent simultaneous-class presentation tests. Tank and Engineer each have all six directional action families drawn; rendered transition/human/device review and the other five survivor libraries remain open.
 
 The [Mage action library](MAGE_ACTION_MOTION.md) adds twenty clips/88 poses, whole-figure extraction with independent pixel reconstruction and four-direction authority-fired cast checks. Three classes now have the six directional action families drawn; the remaining four classes, many boss action sets and rendered/device/human acceptance stay open.
+
+The [Heavy and Assassin action libraries](HEAVY_AND_ASSASSIN_ACTION_MOTION.md) add forty clips/176 poses; five classes now have all six families drawn. Soldier/Medic action libraries, side runs and many boss action sets remain open.
+
+The [one-hour fifty-client probe](ONE_HOUR_ENDURANCE.md) passes local continuous-combat p99 at 21.41 ms, with 112.11 ms worst and 236 over-budget ticks retained. It is frozen Engineer-era runtime evidence with zero rendered clients and fixture-only invulnerability, not the full mixed-progression, hosted or rendered capacity gate.
 
 All implementation stages remain authorized. These rows are acceptance requirements, not completion claims. Historical checkpoint prose is preserved in [the archived backlog](history/IMPLEMENTATION_BACKLOG-before-60.md).
 

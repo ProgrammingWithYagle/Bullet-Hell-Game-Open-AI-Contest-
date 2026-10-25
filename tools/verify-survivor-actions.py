@@ -40,7 +40,8 @@ def verify_class(name,provenance,review_path,native_count):
   assert len(receipt['frames'])==entry['frames']
   for n,frame in enumerate(receipt['frames']):
    assert frame['uniformScale']==receipt['uniformScale'] and frame['uniformScale']>0
-   assert frame['targetGroundAnchor']==[192,320]
+   extra=(size-384)/2;assert size>=384 and (size-384)%64==0
+   assert frame['targetGroundAnchor']==[192+extra,320+extra]
    x0,y0,x1,y1=frame['sourceRect'];assert 0<=x0<x1<=native.width and 0<=y0<y1<=native.height
    source=native.crop((x0,y0,x1,y1))
    if owners is None:
@@ -62,7 +63,7 @@ def verify_class(name,provenance,review_path,native_count):
   assert (owners is not None or all(coverage))and restored.tobytes()==native.tobytes(),'Native RGBA partition mismatch'
   assert predicted.tobytes()==actual.tobytes(),'Packed pixels differ from unflipped source reconstruction'
   calibration=receipt['frames'][receipt['calibrationFrame']]['targetAlpha16Bounds'];world_height=(calibration[3]-calibration[1])*entry['displayCell']/size
-  assert abs(world_height-56)<1 and entry['origin']==[.5,320/384]
+  assert abs(world_height-56)<1 and entry['origin']==[.5,(320+(size-384)/2)/size]
   result={'id':entry['id'],'frames':entry['frames'],'minimumAlpha16Padding':min(padding),'calibratedWorldHeight':world_height,'sourceRgbaPartitionExact':True,'packedRgbaReconstructed':True,'singleScale':True}
   if owners is not None:result['allConnectedSourceFiguresUnsplit']=True
   results.append(result)
@@ -75,3 +76,5 @@ if __name__=='__main__':
  verify_class('tank','docs/survivor-actions-2026-10-24.json','reviews/survivor-actions-2026-10-24',25)
  verify_class('engineer','docs/engineer-actions-2026-10-24.json','reviews/engineer-actions-2026-10-24',23)
  verify_class('mage','docs/mage-actions-2026-10-24.json','reviews/mage-actions-2026-10-24',25)
+ verify_class('heavy','docs/heavy-actions-2026-10-24.json','reviews/heavy-actions-2026-10-24',20)
+ verify_class('assassin','docs/assassin-actions-2026-10-24.json','reviews/assassin-actions-2026-10-24',23)

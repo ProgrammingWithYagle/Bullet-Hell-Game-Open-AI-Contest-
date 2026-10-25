@@ -93,7 +93,13 @@ def main():
                 action_selections.append({'id':entry['id'],'atlas':entry['atlas'],'frame':frame_index,'cellSize':size,'gallery':'images/'+identity+'-actions.jpg'})
         d.text((20,1000),'Native pixels retained; shared scale and foot origin. Existing runs remain separate. No game capture claimed.',font=font(16),fill=MUTED)
         save(im,identity+'-actions.jpg',identity.title()+' action reference: idle, primary attack, hurt, dash and downed in four independently drawn facings. Representative frames, not a game capture.')
-    manifest={'schemaVersion':1,'createdAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'sourceTool':'tools/build-wiki-images.py','sourceToolSha256':sha(Path(__file__)),'method':'Technical representative-frame crop, proportional resize and documentation contact-sheet composition; source artwork unchanged. Map is directly derived from runtime geometry. Survivor action frames retain one shared world scale.','bosses':used,'survivorActions':action_selections,'sources':list(sources.values()),'files':files,'limits':['Contact sheets and geometry diagrams are documentation, not new rendered gameplay or full animation acceptance.','Text labels are English, matching the Wiki editorial language.']}
+    figure_receipt=read('reviews/performance/endurance-50-moths-20261024-2-figure-v2.json')
+    assert sha(ROOT/figure_receipt['figure'])==figure_receipt['figureSha256']
+    assert sha(ROOT/figure_receipt['source'])==figure_receipt['sourceSha256']
+    save(source(figure_receipt['figure']).convert('RGB'),'endurance-50-clients.jpg','Actual one-hour frozen-source local combat timings and observed process heaps; fifty scripted clients, zero rendered clients.')
+    for p in ['reviews/performance/endurance-50-moths-20261024-2-figure-v2.json',figure_receipt['source'],'tools/build-endurance-figure.py']:
+        sources[p]={'path':p,'sha256':sha(ROOT/p)}
+    manifest={'schemaVersion':1,'createdAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'sourceTool':'tools/build-wiki-images.py','sourceToolSha256':sha(Path(__file__)),'method':'Technical representative-frame crop, proportional resize and documentation contact-sheet composition; source artwork unchanged. Map is directly derived from runtime geometry. Survivor action frames retain one shared world scale. Endurance chart is a standard Matplotlib plot of immutable raw measurements.','bosses':used,'survivorActions':action_selections,'sources':list(sources.values()),'files':files,'limits':['Contact sheets and geometry diagrams are documentation, not new rendered gameplay or full animation acceptance.','Text labels are English, matching the Wiki editorial language.']}
     (ROOT/'docs/wiki-images.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n',encoding='utf-8',newline='\n')
     print(json.dumps({'images':len(files),'bosses':60,'bytes':sum(f['bytes'] for f in files)},indent=2))
 if __name__=='__main__':main()

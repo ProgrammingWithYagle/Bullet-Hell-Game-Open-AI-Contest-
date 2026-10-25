@@ -1,6 +1,20 @@
 # Changelog
 
-Development build **2026.10.24-mage-actions**, protocol 13. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.24-heavy-assassin-actions**, protocol 13. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-24 — Heavy and Assassin actions, illustrated Wiki and one-hour local combat probe
+
+### Forty drawn action clips
+
+- Heavy and Assassin each gain twenty independently drawn directional clips and 88 poses for idle, primary fire, hurt, dodge and downed. Existing runs remain separate; all 43 native attempts and exact prompts are retained.
+- Transparent clip padding expands where needed without changing character scale or erasing native alpha. Three touching Assassin sheets were replaced whole. Independent reconstruction now covers 100 action atlases and 440 new poses across five classes.
+- Corrected the Engineer count to 28 accepted run poses plus 88 action poses, or 116 total. Four excluded north frames stay excluded; historical issued reports remain preserved.
+
+### Measured local endurance and Wiki images
+
+- Completed one hour with fifty active scripted clients and 4,000 maintained hostile projectiles: 108,001 ticks, 21.41 ms p99, 112.11 ms worst and 236 ticks above 33.33 ms. All raw timings and failed setup attempts remain available.
+- The probe accepted 4,286,000 inputs and encoded 15.53 GB outbound. It uses frozen Engineer-era source, invulnerable players and zero rendered clients; hosted/rendered capacity and normal progression remain separate gates.
+- The Wiki adds Heavy and Assassin action references and an actual-measurement chart, for fifteen images. Soldier/Medic action libraries, many boss action sets and rendered/device/human acceptance remain unfinished. The issued Windows archive keeps its original source.
 
 ## 2026-10-24 — Mage idle, casting, hurt, dodge and downed motion
 

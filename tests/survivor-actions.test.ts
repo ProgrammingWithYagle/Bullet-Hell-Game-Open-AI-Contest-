@@ -13,6 +13,8 @@ import library from '../assets/production/motion/survivor-actions/library.json';
 import provenance from '../docs/survivor-actions-2026-10-24.json';
 import engineerProvenance from '../docs/engineer-actions-2026-10-24.json';
 import mageProvenance from '../docs/mage-actions-2026-10-24.json';
+import heavyProvenance from '../docs/heavy-actions-2026-10-24.json';
+import assassinProvenance from '../docs/assassin-actions-2026-10-24.json';
 const tankLibrary = library.entries.filter((entry) => entry.classId === 'tank');
 
 function fixture() {
@@ -66,7 +68,7 @@ test('Tank actions retain twenty distinct directional clips, 88 drawn poses and 
     for (const binding of request.inputBindings)
       assert.equal(sha(binding.projectPath), binding.sha256);
   }
-  assert.equal(survivorActionArt.entries.length, 60);
+  assert.equal(survivorActionArt.entries.length, 100);
 });
 
 test('actual weapon shots trigger a complete stationary firing cycle without repeated snapshots restarting it', () => {
@@ -357,3 +359,79 @@ test('real Mage primary casts select the corresponding independent staff clip in
     );
   }
 });
+
+for (const [classId, natives, expected] of [
+  ['heavy', heavyProvenance, 20],
+  ['assassin', assassinProvenance, 23],
+] as const) {
+  test(
+    classId +
+      ' actions retain all native attempts, exact bindings and complete padded directional clips',
+    () => {
+      const clips = library.entries.filter((e) => e.classId === classId);
+      assert.equal(clips.length, 20);
+      assert.equal(
+        clips.reduce((sum, c) => sum + c.frames, 0),
+        88,
+      );
+      assert.equal(natives.requests.length, expected);
+      const sha = (path: string) => createHash('sha256').update(readFileSync(path)).digest('hex');
+      for (const action of ['idle', 'attack', 'hurt', 'dash', 'downed'])
+        assert.deepEqual(
+          clips
+            .filter((e) => e.action === action)
+            .map((e) => e.direction)
+            .sort(),
+          ['east', 'north', 'south', 'west'],
+        );
+      for (const clip of clips) {
+        assert.equal(sha(clip.source), clip.sourceSha256);
+        assert.equal(sha(clip.atlas), clip.atlasSha256);
+        const png = readFileSync(clip.atlas);
+        assert.equal(png.readUInt32BE(16), clip.cellSize * clip.columns);
+        assert.equal(png.readUInt32BE(20), clip.cellSize * Math.ceil(clip.frames / clip.columns));
+        assert(clip.cellSize >= 384 && clip.cellSize <= 640);
+        assert.equal((clip.cellSize - 384) % 64, 0);
+      }
+      for (const native of natives.requests) {
+        assert.equal(sha(native.file), native.sha256);
+        assert.equal(sha(native.request), native.requestSha256);
+        for (const binding of native.inputBindings)
+          assert.equal(sha(binding.projectPath), binding.sha256);
+      }
+    },
+  );
+  test(
+    classId + ' authority-fired primary shots select the correct independent attack facing',
+    () => {
+      for (const [direction, aim] of [
+        ['east', 0],
+        ['south', Math.PI / 2],
+        ['west', Math.PI],
+        ['north', -Math.PI / 2],
+      ] as const) {
+        const game = new Game({ maxPlayers: 1, seed: 717, mode: 'endless' });
+        const player = game.addPlayer(classId, classId, classId);
+        assert(game.start());
+        player.invulnerableUntil = 1e9;
+        const clock = new SurvivorActionClock();
+        clock.observe(viewOf(game, player.id));
+        const ammo = player.ammo;
+        let view = viewOf(game, player.id);
+        for (let sequence = 1; sequence <= 30 && player.ammo === ammo; sequence++) {
+          assert(game.submitInput(player.id, { ...idleInput(), sequence, aim, fire: true }));
+          game.step();
+          view = viewOf(game, player.id);
+          clock.observe(view);
+        }
+        assert(player.ammo < ammo);
+        assert.equal(
+          clock.pose(view.players[0], view, false)!.texture,
+          classId + '-attack-' + direction,
+        );
+        assert.equal(clock.pose(view.players[0], view, false, true)!.frame, 1);
+        assert.equal(clock.pose(view.players[0], view, true), undefined);
+      }
+    },
+  );
+}

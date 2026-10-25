@@ -75,3 +75,21 @@ Twenty independent clips add 88 poses alongside the Engineer's existing runs. Re
 ![Mage idle, staff cast, hurt, dash and downed poses in four directions](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/mage-actions.jpg)
 
 Twenty complete clips add 88 poses alongside the Mage's existing runs. The left-hand staff and right-hip book retain their identities. Representative frames share one world scale; this is a sprite reference, not a gameplay capture. [Production and exact reconstruction](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/MAGE_ACTION_MOTION.md). Rendered/device/human acceptance remains open.
+
+## Heavy action reference
+
+![Heavy idle, firearm attack, hurt, dodge and downed poses in four directions](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/heavy-actions.jpg)
+
+Twenty clips add 88 poses alongside the existing runs. Representative frames retain one world scale; this is a sprite reference. [Production and independent reconstruction](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/HEAVY_AND_ASSASSIN_ACTION_MOTION.md). Rendered/device/human acceptance remains open.
+
+## Assassin action reference
+
+![Assassin idle, firearm attack, hurt, dodge and downed poses in four directions](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/assassin-actions.jpg)
+
+Twenty clips add 88 poses alongside the existing runs. Representative frames retain one world scale; this is a sprite reference. [Production and independent reconstruction](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/HEAVY_AND_ASSASSIN_ACTION_MOTION.md). Rendered/device/human acceptance remains open.
+
+## One-hour local combat observation
+
+![One hour of actual simulation tick and process heap measurements for fifty scripted clients](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/endurance-50-clients.jpg)
+
+Fifty active SDK clients and 4,000 maintained hostile projectiles: 21.41 ms p99, 112.11 ms worst, 236 ticks over 33.33 ms. The graph uses actual frozen-source measurements, with zero rendered clients and invulnerable fixture players. It is separate from hosted/WAN capacity, normal progression and rendered acceptance. [Exact scope, source and raw evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/ONE_HOUR_ENDURANCE.md).

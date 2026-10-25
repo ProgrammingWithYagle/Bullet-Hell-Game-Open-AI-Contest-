@@ -46,3 +46,15 @@ Twenty independent clips add 88 poses alongside the Engineer's existing runs. Re
 ![Mage idle, staff cast, hurt, dash and downed poses in four directions](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/mage-actions.jpg)
 
 Twenty complete clips add 88 poses alongside the Mage's existing runs. The left-hand staff and right-hip book retain their identities. Representative frames share one world scale; this is a sprite reference, not a gameplay capture. [Production and exact reconstruction](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/MAGE_ACTION_MOTION.md). Rendered/device/human acceptance remains open.
+
+## Heavy action reference
+
+![Heavy idle, firearm attack, hurt, dodge and downed poses in four directions](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/heavy-actions.jpg)
+
+Twenty clips add 88 poses alongside the existing runs. Representative frames retain one world scale; this is a sprite reference. [Production and independent reconstruction](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/HEAVY_AND_ASSASSIN_ACTION_MOTION.md). Rendered/device/human acceptance remains open.
+
+## Assassin action reference
+
+![Assassin idle, firearm attack, hurt, dodge and downed poses in four directions](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/assassin-actions.jpg)
+
+Twenty clips add 88 poses alongside the existing runs. Representative frames retain one world scale; this is a sprite reference. [Production and independent reconstruction](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/HEAVY_AND_ASSASSIN_ACTION_MOTION.md). Rendered/device/human acceptance remains open.
