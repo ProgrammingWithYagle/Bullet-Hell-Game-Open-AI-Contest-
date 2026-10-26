@@ -1,6 +1,20 @@
 # Changelog
 
-Development build **2026.10.25-early-watch**, protocol 15. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.25-skill-map**, protocol 15. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-25 — Optional expanded skill map
+
+### One connected view of every class path
+
+- A new Expanded skill map setting shows all 54 existing skills for the chosen class: three parent branches, nine specialization paths and their actual prerequisites. The classic 18-node branch view remains the default. No extra skill, cost or power is invented.
+- The map has bounded 65–140% zoom, native two-axis scrolling, arrow-key path navigation, Home/End and one roving skill tab stop. Inspecting or moving focus never purchases. The existing detail panel, prerequisite checks, point budget and one-capstone rule remain authoritative.
+- Zoom preserves the visible center; horizontal/vertical position and selected-item focus survive shop updates. Automatic text direction retains localized labels within a stable dependency diagram. The map is confined to lobby/shop surfaces.
+
+### Preferences and continuity
+
+- The opt-in setting persists through the existing profile/settings path. Issued eight-field settings gain only the default-off toggle before full validation. Known issued local profile revisions migrate without losing run receipts, discoveries or controls; unknown revisions and corrupt values are rejected.
+- Names, map instructions and zoom controls cover all fifteen launch locales. Source-level shop/keyboard/layout/profile checks remain separate from browser rendering, physical-device and native-language acceptance.
+- The roster stays 63 (62 ordinary plus one secret); 88 ordinary identities, 59 original-boss quality passes and seven ability-changing class revamps remain. Frozen Constable 5178 and Early Watch 5179 stay unchanged.
 
 ## 2026-10-25 — Three original Early Watch encounters
 

@@ -1,6 +1,6 @@
 # Development progress
 
-Updated 2026-10-25 for **2026.10.25-early-watch**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
+Updated 2026-10-25 for **2026.10.25-skill-map**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
 
 63 playable identities: 62 ordinary and 1 secret. Three ordinary bosses in every one of fifty subtiers requires 150 ordinary identities, plus secrets; 88 additional ordinary bosses remain.
 
@@ -9,7 +9,7 @@ Updated 2026-10-25 for **2026.10.25-early-watch**. These counts track specific r
 | New ordinary bosses | 62 / 150 | 88 new identities | 0 unintegrated art-only concepts; three Early Watch identities are now implemented |
 | Existing-boss phase / mobility / Brutal quality passes | 1 / 60 | 59 | Constable implementation completed; second human review requested. Other 59 await assessment or redesign. |
 | Ability-changing class-upgrade revamps | 0 / 7 | 7 | Seven existing class kits are playable. This requested upgrade pass has not shipped. |
-| Optional large branching skill-tree view | 0 / 1 | 1 | Requested settings toggle remains open; current classic view is retained. |
+| Optional large branching skill-tree view | 1 / 1 | 0 | Optional all-54-skill map implemented for all seven classes with settings toggle, bounded zoom, scrolling and keyboard navigation. Classic remains the default; rendered/human/device/native-language review remains open. |
 | Secondary-map topology revamps | 5 / 5 | 0 | Five different layouts installed and collision/reachability checked. Detailed new-layout human acceptance remains open. |
 | Map ground-art deliveries | 6 / 6 | 0 | Six ground deliveries installed. Limited Normal/Constable readability feedback is positive. |
 | Early Watch motion and encounter integration | 3 / 3 | 0 | Three original encounters, 36 selected motion poses, individual themes and fifteen-locale help implemented. Rendered, human balance and listening review remain open. |
@@ -25,7 +25,7 @@ Updated 2026-10-25 for **2026.10.25-early-watch**. These counts track specific r
 
 - Create and verify 88 additional ordinary boss identities, with distinct mechanics, art and individual original music; the target is at least 150 ordinary plus secrets.
 - Assess or redesign the remaining 59 existing boss encounters for distinct phases, meaningful pressure and separate Brutal behavior.
-- Deliver ability-changing upgrades for seven classes and the optional branching skill-tree settings view.
+- Deliver ability-changing upgrades for seven classes; review the implemented optional skill map on actual rendered/device/native-language surfaces.
 - Complete remaining boss special/action art, class special-ability art and rendered animation transitions.
 - Complete final human balance, music/listening, native-language and physical-device acceptance.
 - Verify active 8/16/50-player mixed progression, WAN and full progression endurance; current headless and scoped local evidence is separate.

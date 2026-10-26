@@ -9,3 +9,7 @@ The in-game changelog keeps navigation in the selected language. Editorial devel
 Automated catalog, layout, collision and source checks are evidence for specific behavior. They do not replace final rendered game review, physical-device/controller testing, photosensitivity/comfort review, native-language review or human accessibility testing. [Getting Started](Getting-Started) lists actual bindings.
 
 [English runtime strings](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/locales/en.json) · [Font and dependency notices](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/THIRD_PARTY_NOTICES.md)
+
+## Optional expanded skill map
+
+Enable **Expanded skill map** in Settings to see all 54 existing skills for the chosen class: three branches and nine paths. Classic remains the default. Native scrolling, 65–140% zoom, arrow keys and Home/End navigate the map; Enter or click inspects a node. Purchasing still requires the existing Buy control and valid points/prerequisites. The setting survives local profile import/export, including bounded migration from issued settings. All fifteen locales have map/zoom instructions. Rendered, physical-device, native-language and human acceptance remain open.

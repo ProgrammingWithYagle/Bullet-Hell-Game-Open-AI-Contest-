@@ -1,6 +1,6 @@
 # Grave Accord
 
-A cooperative gothic bullet-hell game in active development. Current feature branch: build **2026.10.25-early-watch**, protocol **15**, 63 distinct executable bosses with individual original themes, seven classes, 378 skills, 28 weapons and six different map layouts/sizes.
+A cooperative gothic bullet-hell game in active development. Current feature branch: build **2026.10.25-skill-map**, protocol **15**, 63 distinct executable bosses with individual original themes, seven classes, 378 skills, 28 weapons and six different map layouts/sizes.
 
 All sixty-three identities execute, including nine scheduled Endless exclusives and the optional Uncounted finale. Five modes work offline and in local online rooms: five-fight Quarantine Run, ten-fight Midnight Circuit, sixteen-fight Black Bell Pilgrimage, three-fight Grand Raid and uncapped Endless Vigil. The in-game main menu has a dated changelog generated from the same history as [CHANGELOG.md](CHANGELOG.md) and the [GitHub Wiki changelog](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/wiki/Changelog).
 
@@ -25,3 +25,5 @@ Solo setup now includes a **Boss form** selector for direct Standard/Brutal open
 [Current development progress](docs/DEVELOPMENT_PROGRESS.md) tracks boss additions, quality passes, class ability revamps, branching-tree work, map implementation and separate review gates. [Phase/Brutal feedback and musical intensity](docs/PHASE_AND_BRUTAL_FEEDBACK.md) describes the latest changes.
 
 Start a continuation with [the current checkpoint](docs/CHECKPOINT_2026_10_25.md) and `START_NEXT_CHAT.txt`. [Early Watch](docs/EARLY_WATCH_RUNTIME.md) adds three original encounters, 36 selected poses, individual themes and fifteen-locale help; the roster is 63 and 88 ordinary identities remain. Superseded handoffs/state/acceptance records are retained in dated history.
+
+The optional [expanded skill map](docs/OPTIONAL_SKILL_MAP.md) shows all 54 skills per class with zoom, scrolling and keyboard navigation. Enable it in Settings; classic remains the default. This completes the requested optional view implementation, while rendered/device/human review remains open.

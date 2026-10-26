@@ -1,6 +1,6 @@
 {
   "updated": "2026-10-25",
-  "buildId": "2026.10.25-early-watch",
+  "buildId": "2026.10.25-skill-map",
   "playableBosses": 63,
   "ordinaryBosses": 62,
   "secretBosses": 1,
@@ -38,11 +38,13 @@
       "id": "branching-tree",
       "label": "Optional large branching skill-tree view",
       "target": 1,
-      "implemented": 0,
-      "remaining": 1,
+      "implemented": 1,
+      "remaining": 0,
       "humanAccepted": 0,
-      "completedIds": [],
-      "status": "Requested settings toggle remains open; current classic view is retained."
+      "completedIds": [
+        "expanded-skill-map"
+      ],
+      "status": "Optional all-54-skill map implemented for all seven classes with settings toggle, bounded zoom, scrolling and keyboard navigation. Classic remains the default; rendered/human/device/native-language review remains open."
     },
     {
       "id": "map-layout",
@@ -403,12 +405,12 @@
   "remainingReleaseWork": [
     "Create and verify 88 additional ordinary boss identities, with distinct mechanics, art and individual original music; the target is at least 150 ordinary plus secrets.",
     "Assess or redesign the remaining 59 existing boss encounters for distinct phases, meaningful pressure and separate Brutal behavior.",
-    "Deliver ability-changing upgrades for seven classes and the optional branching skill-tree settings view.",
+    "Deliver ability-changing upgrades for seven classes; review the implemented optional skill map on actual rendered/device/native-language surfaces.",
     "Complete remaining boss special/action art, class special-ability art and rendered animation transitions.",
     "Complete final human balance, music/listening, native-language and physical-device acceptance.",
     "Verify active 8/16/50-player mixed progression, WAN and full progression endurance; current headless and scoped local evidence is separate.",
     "Complete deployed rankings and durable recovery, including participant credentials, entropy histories/paging and hosted acceptance.",
     "Prepare and verify a new coordinated Windows/browser release; existing immutable Windows and older public builds remain separate."
   ],
-  "semanticInputsSha256": "b8deb792dccef8380902da9cfcaa43a25a9a7a02f84674b9b3f599a4cfe3b107"
+  "semanticInputsSha256": "41b567418e582f9de5140e653d207ef5e2f004971bc78ee938c07671576f043f"
 }

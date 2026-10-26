@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import assert from 'node:assert/strict';
 import { english } from '../locales/source/en.mjs';
 import additional from '../locales/source/additional.mjs';
+import { skillMapMessages } from '../locales/source/skill-map.mjs';
 import { earlyWatchMessages } from '../locales/source/early-watch.mjs';
 import { bossExpansionIds, expansionMessages } from '../locales/source/boss-expansion.mjs';
 import { interfaceMessages } from '../locales/source/interface-expansion.mjs';
@@ -84,6 +85,7 @@ export function validateOne(document, canonical, content, locale) {
       ...Object.keys(additional.en),
       ...Object.keys(expansionMessages('en')),
       ...Object.keys(earlyWatchMessages('en')),
+      ...Object.keys(skillMapMessages('en')),
       ...Object.keys(interfaceMessages('en')),
       ...Object.keys(contractMessages('en')),
       ...Object.keys(suppliesMessages('en')),
@@ -108,7 +110,7 @@ export function validateOne(document, canonical, content, locale) {
     if (!Object.hasOwn(messages,key)) fail(`missing feature coverage: ${key}`);
   }
   const expectedCategories = new Intl.PluralRules(locale).resolvedOptions().pluralCategories.slice().sort();
-  const expandedSource = {...expansionMessages(locale), ...earlyWatchMessages(locale)};
+  const expandedSource = {...expansionMessages(locale), ...earlyWatchMessages(locale),...skillMapMessages(locale)};
   for (const [key,text] of Object.entries(recoveryMessages(locale))) {
     if (messages[key] !== text) fail(`recovery UI source mismatch at ${key}`);
   }

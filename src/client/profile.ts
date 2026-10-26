@@ -1,4 +1,4 @@
-import catalog from '../../content/catalog.json';
+import catalog from "../../content/catalog.json";
 import {
   CONTENT_REVISION,
   PROTOCOL,
@@ -6,28 +6,32 @@ import {
   type ClassId,
   type ModeId,
   type BossId,
-} from '../shared/protocol.ts';
-import { validProgress } from '../shared/run-progress.ts';
-import type { View } from '../shared/view.ts';
-import { practiceRecords, type PracticeCampaignRecord } from './progress.ts';
-import { defaultControls, validControls, type ControlOptions } from './input-bindings.ts';
+} from "../shared/protocol.ts";
+import { validProgress } from "../shared/run-progress.ts";
+import type { View } from "../shared/view.ts";
+import { practiceRecords, type PracticeCampaignRecord } from "./progress.ts";
+import {
+  defaultControls,
+  validControls,
+  type ControlOptions,
+} from "./input-bindings.ts";
 import {
   defaultPreferences,
   migratePreferences,
   validPreferences,
   type Preferences,
-} from './preferences.ts';
-export const PROFILE_KEY = 'ga-profile-v1';
-export const PROFILE_BACKUP_KEY = 'ga-profile-v1-backup';
+} from "./preferences.ts";
+export const PROFILE_KEY = "ga-profile-v1";
+export const PROFILE_BACKUP_KEY = "ga-profile-v1-backup";
 export const MAX_PROFILE_BYTES = 2 * 1024 * 1024;
-export type ProfileStore = Pick<Storage, 'getItem' | 'setItem'>;
+export type ProfileStore = Pick<Storage, "getItem" | "setItem">;
 export const cosmeticIds = [
-  'field-mark',
-  'bronze-bell',
-  'silver-bell',
-  'gilded-bell',
-  'vigil-crown',
-  'remembered-bell',
+  "field-mark",
+  "bronze-bell",
+  "silver-bell",
+  "gilded-bell",
+  "vigil-crown",
+  "remembered-bell",
 ] as const;
 export type CosmeticId = (typeof cosmeticIds)[number];
 export const masteryThresholds = [0, 5, 15, 30, 60] as const;
@@ -60,9 +64,9 @@ export type ProfileV1 = {
   legacyCampaigns: PracticeCampaignRecord[];
 };
 const id = (s: unknown, maximum = 100): s is string =>
-  typeof s === 'string' && s.length <= maximum && /^[A-Za-z0-9_-]+$/.test(s);
+  typeof s === "string" && s.length <= maximum && /^[A-Za-z0-9_-]+$/.test(s);
 const integer = (n: unknown, maximum = 0xffffffff): n is number =>
-  typeof n === 'number' && Number.isSafeInteger(n) && n >= 0 && n <= maximum;
+  typeof n === "number" && Number.isSafeInteger(n) && n >= 0 && n <= maximum;
 const mode = (s: unknown) => catalog.modes.find((m) => m.id === s);
 const difficulty = (s: unknown) => catalog.difficulties.some((d) => d.id === s);
 export function freshProfile(): ProfileV1 {
@@ -71,18 +75,24 @@ export function freshProfile(): ProfileV1 {
     contentRevision: CONTENT_REVISION,
     practiceOnly: true,
     verified: false,
-    locale: 'en',
+    locale: "en",
     settings: defaultPreferences(),
     controls: defaultControls(),
-    selectedCosmetic: 'field-mark',
+    selectedCosmetic: "field-mark",
     runs: [],
     legacyCampaigns: [],
   };
 }
 export function summary(profile: ProfileV1) {
   const classes = Object.fromEntries(
-    implementedClassIds.map((id) => [id, { clears: 0, rescues: 0, xp: 0, tier: 0 }]),
-  ) as Record<ClassId, { clears: number; rescues: number; xp: number; tier: number }>;
+    implementedClassIds.map((id) => [
+      id,
+      { clears: 0, rescues: 0, xp: 0, tier: 0 },
+    ]),
+  ) as Record<
+    ClassId,
+    { clears: number; rescues: number; xp: number; tier: number }
+  >;
   const lore = new Set<BossId>(),
     streaks: Record<string, { personal: number; squad: number }> = {};
   let hardUnlocked = false,
@@ -91,9 +101,9 @@ export function summary(profile: ProfileV1) {
     classes[r.classId].clears += r.clears;
     classes[r.classId].rescues += r.rescues;
     for (const b of r.bossIds) lore.add(b);
-    hardUnlocked ||= r.fullCampaign && r.difficulty === 'hard';
+    hardUnlocked ||= r.fullCampaign && r.difficulty === "hard";
     memorial ||= r.memorial;
-    if (r.mode === 'endless') {
+    if (r.mode === "endless") {
       const best = (streaks[r.difficulty] ??= { personal: 0, squad: 0 });
       best.personal = Math.max(best.personal, r.clears);
       best.squad = Math.max(best.squad, r.teamClears);
@@ -123,7 +133,7 @@ export function summary(profile: ProfileV1) {
   };
 }
 function validReceipt(value: unknown): value is RunReceipt {
-  if (!value || typeof value !== 'object' || Array.isArray(value)) return false;
+  if (!value || typeof value !== "object" || Array.isArray(value)) return false;
   const r = value as RunReceipt,
     m = mode(r.mode);
   return (
@@ -149,16 +159,21 @@ function validReceipt(value: unknown): value is RunReceipt {
     r.bossIds.length <= catalog.bosses.length &&
     new Set(r.bossIds).size === r.bossIds.length &&
     r.bossIds.every((id) => catalog.bosses.some((b) => b.id === id)) &&
-    typeof r.fullCampaign === 'boolean' &&
-    typeof r.memorial === 'boolean' &&
+    typeof r.fullCampaign === "boolean" &&
+    typeof r.memorial === "boolean" &&
     (!r.fullCampaign ||
-      (r.mode !== 'endless' && r.firstEncounter === 0 && r.campaignClears === m!.encounters)) &&
+      (r.mode !== "endless" &&
+        r.firstEncounter === 0 &&
+        r.campaignClears === m!.encounters)) &&
     (!r.memorial ||
-      (r.mode !== 'endless' && r.bossIds.includes('uncounted') && r.clears > r.campaignClears))
+      (r.mode !== "endless" &&
+        r.bossIds.includes("uncounted") &&
+        r.clears > r.campaignClears))
   );
 }
 export function validateProfile(value: unknown): asserts value is ProfileV1 {
-  if (!value || typeof value !== 'object' || Array.isArray(value)) throw Error('ui.errorProfile');
+  if (!value || typeof value !== "object" || Array.isArray(value))
+    throw Error("ui.errorProfile");
   const p = value as ProfileV1;
   if (
     Object.keys(p).length !== 10 ||
@@ -172,51 +187,76 @@ export function validateProfile(value: unknown): asserts value is ProfileV1 {
     !Array.isArray(p.runs) ||
     p.runs.length > 10000 ||
     !p.runs.every(validReceipt) ||
-    new Set(p.runs.map((r) => r.runId + ':' + r.playerId)).size !== p.runs.length ||
+    new Set(p.runs.map((r) => r.runId + ":" + r.playerId)).size !==
+      p.runs.length ||
     !Array.isArray(p.legacyCampaigns) ||
     p.legacyCampaigns.length > 50
   )
-    throw Error('ui.errorProfile');
+    throw Error("ui.errorProfile");
   // Retained legacy clears have no personal participation proof and never award mastery/unlocks.
   const old = practiceRecords({
     getItem: () => JSON.stringify(p.legacyCampaigns),
     setItem: () => {},
   });
   const legacyKeys = new Set([
-    'schemaVersion',
-    'id',
-    'practiceOnly',
-    'verified',
-    'contentRevision',
-    'protocol',
-    'mode',
-    'difficulty',
-    'classId',
-    'completedEncounters',
-    'accords',
-    'combatTicks',
-    'secret',
-    'memorial',
+    "schemaVersion",
+    "id",
+    "practiceOnly",
+    "verified",
+    "contentRevision",
+    "protocol",
+    "mode",
+    "difficulty",
+    "classId",
+    "completedEncounters",
+    "accords",
+    "combatTicks",
+    "secret",
+    "memorial",
   ]);
   if (
     old.length !== p.legacyCampaigns.length ||
-    p.legacyCampaigns.some((r) => Object.keys(r).some((k) => !legacyKeys.has(k))) ||
+    p.legacyCampaigns.some((r) =>
+      Object.keys(r).some((k) => !legacyKeys.has(k)),
+    ) ||
     !summary(p).cosmetics.includes(p.selectedCosmetic)
   )
-    throw Error('ui.errorProfile');
+    throw Error("ui.errorProfile");
 }
 export function parseProfile(raw: string): ProfileV1 {
   if (
-    typeof raw !== 'string' ||
+    typeof raw !== "string" ||
     raw.length > MAX_PROFILE_BYTES ||
     new TextEncoder().encode(raw).byteLength > MAX_PROFILE_BYTES
   )
-    throw Error('ui.errorProfile');
+    throw Error("ui.errorProfile");
   let value: unknown;
   try {
     value = JSON.parse(raw);
   } catch {
-    throw Error('ui.errorProfile');
+    throw Error("ui.errorProfile");
+  }
+  if (value && typeof value === "object" && !Array.isArray(value)) {
+    const old = value as Record<string, unknown>;
+    if (
+      old.schemaVersion === 1 &&
+      old.practiceOnly === true &&
+      old.verified === false &&
+      [
+        "43b7b2848b50bbe56072bfa134e5775355a7faca28092624744bdae6a0d318bb",
+        "b8d9fb6918c854f3eed38b327ed0cb3026e071e6fe24932e50beed36943db241",
+      ].includes(String(old.contentRevision))
+    )
+      old.contentRevision = CONTENT_REVISION;
+    const prefs = old.settings;
+    if (
+      prefs &&
+      typeof prefs === "object" &&
+      !Array.isArray(prefs) &&
+      Object.keys(prefs).length === 8 &&
+      !Object.hasOwn(prefs, "branchingTree")
+    )
+      old.settings = { ...prefs, branchingTree: false };
   }
   validateProfile(value);
   return value;
@@ -225,10 +265,12 @@ export function loadProfile(store: ProfileStore): ProfileV1 {
   const raw = store.getItem(PROFILE_KEY);
   if (raw !== null) return parseProfile(raw);
   const p = freshProfile();
-  const locale = store.getItem('ga-language');
+  const locale = store.getItem("ga-language");
   if (catalog.locales.some((l) => l.id === locale)) p.locale = locale!;
   try {
-    p.settings = migratePreferences(JSON.parse(store.getItem('ga-settings') ?? '{}'));
+    p.settings = migratePreferences(
+      JSON.parse(store.getItem("ga-settings") ?? "{}"),
+    );
   } catch {}
   p.legacyCampaigns = practiceRecords(store);
   return p;
@@ -237,13 +279,17 @@ export function loadProfile(store: ProfileStore): ProfileV1 {
 export function saveProfile(store: ProfileStore, profile: ProfileV1) {
   validateProfile(profile);
   const raw = JSON.stringify(profile);
-  if (new TextEncoder().encode(raw).byteLength > MAX_PROFILE_BYTES) throw Error('ui.errorSave');
+  if (new TextEncoder().encode(raw).byteLength > MAX_PROFILE_BYTES)
+    throw Error("ui.errorSave");
   const previous = store.getItem(PROFILE_KEY);
   if (previous === raw) return;
   if (previous !== null) store.setItem(PROFILE_BACKUP_KEY, previous);
   store.setItem(PROFILE_KEY, raw);
 }
-export function changeProfile(store: ProfileStore, change: (p: ProfileV1) => void) {
+export function changeProfile(
+  store: ProfileStore,
+  change: (p: ProfileV1) => void,
+) {
   const p = loadProfile(store);
   change(p);
   saveProfile(store, p);
@@ -255,13 +301,17 @@ export function importProfile(store: ProfileStore, raw: string) {
   return next;
 }
 export function exportProfile(store: ProfileStore) {
-  return JSON.stringify(loadProfile(store), null, 2) + '\n';
+  return JSON.stringify(loadProfile(store), null, 2) + "\n";
 }
 export function difficultyUnlocked(profile: ProfileV1, difficultyId: string) {
   const d = catalog.difficulties.find((d) => d.id === difficultyId);
   return Boolean(d && (!d.locked || summary(profile).hardUnlocked));
 }
-export function recordProfileView(view: View, playerId: string, store: ProfileStore) {
+export function recordProfileView(
+  view: View,
+  playerId: string,
+  store: ProfileStore,
+) {
   const p = view.players.find((p) => p.id === playerId);
   if (
     !p ||
@@ -291,14 +341,16 @@ export function recordProfileView(view: View, playerId: string, store: ProfileSt
     ),
     memorial: Boolean(
       view.campaignBank &&
-      view.secretStatus === 'cleared' &&
+      view.secretStatus === "cleared" &&
       view.extensionParticipants.includes(playerId) &&
-      p.progress.clearedBossIds.includes('uncounted'),
+      p.progress.clearedBossIds.includes("uncounted"),
     ),
   };
-  if (!validReceipt(next)) throw Error('ui.errorProfile');
+  if (!validReceipt(next)) throw Error("ui.errorProfile");
   const profile = loadProfile(store),
-    old = profile.runs.find((r) => r.runId === next.runId && r.playerId === playerId);
+    old = profile.runs.find(
+      (r) => r.runId === next.runId && r.playerId === playerId,
+    );
   if (old) {
     if (
       old.classId !== next.classId ||
@@ -306,9 +358,15 @@ export function recordProfileView(view: View, playerId: string, store: ProfileSt
       old.difficulty !== next.difficulty ||
       old.firstEncounter !== next.firstEncounter
     )
-      throw Error('ui.errorProfile');
+      throw Error("ui.errorProfile");
     // Old checkpoint views must never erase already banked progress or duplicate its reward.
-    for (const k of ['clears', 'rescues', 'campaignClears', 'teamClears', 'combatTicks'] as const)
+    for (const k of [
+      "clears",
+      "rescues",
+      "campaignClears",
+      "teamClears",
+      "combatTicks",
+    ] as const)
       next[k] = Math.max(old[k], next[k]);
     next.bossIds = [...new Set([...old.bossIds, ...next.bossIds])];
     next.fullCampaign ||= old.fullCampaign;

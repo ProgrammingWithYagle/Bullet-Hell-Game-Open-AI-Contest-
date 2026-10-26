@@ -4,19 +4,19 @@ Updated October 25, 2026. [Current checkpoint and continuation](CHECKPOINT_2026_
 
 | Area | Current source state |
 | --- | --- |
-| Build / protocol | 2026.10.25-early-watch / 15 |
+| Build / protocol | 2026.10.25-skill-map / 15 |
 | Bosses | 63 playable: 62 ordinary, one secret; all have original themes |
 | Boss expansion | Target 150 ordinary plus secrets; 88 new ordinary identities remain |
 | Classes / skills / weapons | Seven playable kits, 378 skills / 63 paths, 28 weapons |
 | Maps / modes | Six installed layouts/sizes; Quarantine, Midnight, Pilgrimage, Raid and Endless |
 | Existing encounter quality | Latest Constable phase/mobility/Brutal pass implemented; 59 others await assessment/redesign |
-| New requested upgrades | Seven ability-changing class-upgrade revamps and one optional large branching-tree view remain |
+| New requested upgrades | Seven ability-changing class-upgrade revamps remain; optional all-54-skill map implemented, review open |
 | Map revisions | Five secondary topology changes and six ground deliveries installed; human/device acceptance remains separate |
 | Motion | 1,502 selected runtime poses; seven complete basic survivor sets; special/boss work remains |
 | Early Watch | Three original encounters; 36 selected poses, three original scores and fifteen-locale help; human/rendered review open |
 | Profile | Mastery, rescues, codex, cosmetic insignia, preferences/remaps, import/export and full-Hard unlocks implemented |
 | Recovery / rankings | Local bounded transport and process/owner fixtures exist; normal writer disabled; hosted durable service and credentials/history/departures remain open |
-| Verification | 394 automated tests plus content/fifteen locales, TypeScript and production build; exact checkpoint receipts are separate from rendered/human acceptance |
+| Verification | 402 automated tests plus content/fifteen locales, TypeScript and production build; exact checkpoint receipts are separate from rendered/human acceptance |
 | Publication | Feature branch and draft PR #14; 18-page/28-image Wiki; protected main and coordinated release remain separate |
 
 The fixed identity grade, five signs, separate B marker and >10 secret are authoritative. Global difficulty and squad scaling do not rerate identities. [Fixed classifications](FIXED_BOSS_THREATS.md), [latest phase/Brutal response](PHASE_AND_BRUTAL_FEEDBACK.md), [direct solo form selector](BOSS_PRACTICE.md), [map/selection fixes](MAP_ROUTES_AND_SELECTION.md) and [motion continuity](MOTION_CONTINUITY.md) document the current behavior.

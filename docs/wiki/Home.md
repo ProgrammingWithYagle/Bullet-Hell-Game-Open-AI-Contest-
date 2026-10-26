@@ -7,7 +7,7 @@
 
 Cooperative gothic zombie bullet hell. Choose a survivor, clear a boss contract, vote on mutations, buy a build and survive the next encounter.
 
-**Current development source: version 0.3.0, build `2026.10.25-early-watch`, protocol 15, updated 2026-10-25.** The game is still in development. [Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains the playable feature branch; protected `main` is a separate release boundary.
+**Current development source: version 0.3.0, build `2026.10.25-skill-map`, protocol 15, updated 2026-10-25.** The game is still in development. [Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains the playable feature branch; protected `main` is a separate release boundary.
 
 | Playable now in that source | Contents |
 | --- | --- |
@@ -48,3 +48,5 @@ All sixty-three identities execute, including nine scheduled Endless exclusives 
 [Current development progress](Development-Progress) tracks new bosses, existing-encounter quality passes, class ability revamps, skill-tree work and map revisions, with implementation separate from human review.
 
 The latest [continuation checkpoint](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/CHECKPOINT_2026_10_25.md) preserves the current source and art. Early Watch adds three original encounters with 36 selected motion poses, individual scores and fifteen-locale help. The roster is 63; 88 additional ordinary identities remain. [View the motion contact](Art-Gallery#early-watch-runtime-motion).
+
+The optional **Expanded skill map** setting shows all 54 skills per class, with zoom, scrolling and keyboard navigation. Classic remains the default. [Implementation and limits](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/OPTIONAL_SKILL_MAP.md).

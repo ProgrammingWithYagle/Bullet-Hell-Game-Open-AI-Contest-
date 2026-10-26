@@ -12,6 +12,7 @@ import { extensionText, signatureHelp } from './extension-ui.ts';
 import Phaser from 'phaser';
 import './style.css';
 import './ui/polish.css';
+import './ui/skill-map.css';
 import './fonts.css';
 import './ui/votes.css';
 import { CombatScene } from './scene.ts';
@@ -99,7 +100,7 @@ function applySettings() {
   audio.setVolume(settings.volume, settings.music);
 }
 function settingsMarkup() {
-  return `<details class="settings"><summary>${text('ui.settings')}</summary><div class="settings-grid">${(['autoFire', 'aimAssist', 'hitboxes', 'reduceMotion', 'highContrast'] as const).map((key) => `<label class="check"><input type="checkbox" data-setting="${key}" ${settings[key] ? 'checked' : ''}>${text('ui.' + key)}</label>`).join('')}<label>${text('ui.effectsVolume')}<input data-setting="volume" type="range" min="0" max="1" step="0.05" value="${settings.volume}"></label><label>${text('ui.musicVolume')}<input data-setting="music" type="range" min="0" max="1" step="0.05" value="${settings.music}"></label><label>${text('ui.textSize')}<input data-setting="textScale" type="range" min="0.9" max="1.4" step="0.1" value="${settings.textScale}"></label></div>${controlsMarkup(inputOptions)}</details>`;
+  return `<details class="settings"><summary>${text('ui.settings')}</summary><div class="settings-grid">${(['autoFire', 'aimAssist', 'hitboxes', 'reduceMotion', 'highContrast', 'branchingTree'] as const).map((key) => `<label class="check"><input type="checkbox" data-setting="${key}" ${settings[key] ? 'checked' : ''}>${text('ui.' + key)}</label>`).join('')}<label>${text('ui.effectsVolume')}<input data-setting="volume" type="range" min="0" max="1" step="0.05" value="${settings.volume}"></label><label>${text('ui.musicVolume')}<input data-setting="music" type="range" min="0" max="1" step="0.05" value="${settings.music}"></label><label>${text('ui.textSize')}<input data-setting="textScale" type="range" min="0.9" max="1.4" step="0.1" value="${settings.textScale}"></label></div>${controlsMarkup(inputOptions)}</details>`;
 }
 function bindSettings() {
   const root = document.querySelector<HTMLElement>('[data-controls]');
@@ -510,6 +511,7 @@ function update(view: View) {
   const key = JSON.stringify([
     view.phase,
     view.secretStatus,
+    settings.branchingTree,
     p.coins,
     p.sp,
     p.weapon,
@@ -598,12 +600,13 @@ function renderOverlay(view: View, p: PlayerView) {
       : null;
   const focusedId = previous?.id;
   const focusedItem = previous?.dataset.inspect;
-  const scroll = overlay.querySelector('.skill-scroll')?.scrollTop ?? 0;
+  const oldScroll=overlay.querySelector('.skill-scroll');
+  const scroll = oldScroll?.scrollTop ?? 0, scrollLeft=oldScroll?.scrollLeft ?? 0;
   const samePhase = overlay.dataset.phase === view.phase;
   overlay.dataset.phase = view.phase;
   overlay.innerHTML = `<section class="dialog ${view.phase === 'lobby' || view.phase === 'shop' ? 'wide' : ''}" role="dialog" aria-modal="true" aria-labelledby="phase-heading"><div class="section-heading"><h2 id="phase-heading" tabindex="-1">${esc(title)}</h2><span id="phase-time"></span></div>${body}</section>`;
   if (['lobby', 'shop'].includes(view.phase))
-    bindShop(overlay, p, (request) => session?.purchase(request), supplyBindings());
+    bindShop(overlay, p, (request) => session?.purchase(request), supplyBindings(), settings.branchingTree);
   overlay.querySelectorAll<HTMLButtonElement>('[data-vote]').forEach(
     (button) =>
       (button.onclick = () => {
@@ -617,7 +620,7 @@ function renderOverlay(view: View, p: PlayerView) {
   if (back) back.onclick = () => void leave();
   if (samePhase) {
     const scroller = overlay.querySelector('.skill-scroll');
-    if (scroller) scroller.scrollTop = scroll;
+    if (scroller) {scroller.scrollTop = scroll;scroller.scrollLeft=scrollLeft;}
   }
   if (!paused) {
     const target = focusedId
@@ -634,7 +637,7 @@ function renderOverlay(view: View, p: PlayerView) {
 const supplyBindings = () =>
   [1, 2, 3].map((n) => bindingLabel(inputOptions.bindings[('supply' + n) as 'supply1'][0]));
 function shop(p: PlayerView) {
-  return '<div class="loadout-editor">' + shopMarkup(p, supplyBindings()) + '</div>';
+  return '<div class="loadout-editor">' + shopMarkup(p, supplyBindings(), settings.branchingTree) + '</div>';
 }
 async function leave() {
   controls?.clear();

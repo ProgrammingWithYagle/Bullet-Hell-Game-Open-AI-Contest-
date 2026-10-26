@@ -6,7 +6,7 @@ Updated October 25, 2026. This is unfinished feature-branch development. Read th
 
 - Use `C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)`.
 - Repository: ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-. Branch `feat/first-playable-loop`; PR #14 stays draft. Inspect actual HEAD/status/origin and exact-head checks. Preserve history and working files; do not clone, create worktrees or switch to main.
-- Build **2026.10.25-early-watch**, protocol **15**. Read the exact current content digest from `content/revision.json`; source verification is under `reviews/early-watch-integration-2026-10-25/`.
+- Build **2026.10.25-skill-map**, protocol **15**. Read the exact current content digest from `content/revision.json`; source verification is under `reviews/early-watch-integration-2026-10-25/`.
 - Main remains protected and separate at `c3f60ca4125bea31d94c9d3f6ea0c9d3f0853df1`. No main merge, paid provisioning, replacement Site, mismatched backend deployment, contest submission or delegation is authorized.
 
 ## Completed continuation
@@ -25,9 +25,9 @@ One count authority: `docs/development-work-ledger.json`, derived by `tools/sync
 
 - **88 new ordinary identities** remain toward at least 150 ordinary bosses plus secrets. Recolors and harder forms do not count.
 - **59 existing-boss quality assessments/redesigns** remain. Constable is the one completed implementation pass on the original 60; human acceptance remains open.
-- **Seven ability-changing class-upgrade revamps** and **one optional large branching skill-tree settings view** remain. All seven current kits and 378 skills already work; preserve the classic view.
+- **Seven ability-changing class-upgrade revamps** remain. The optional all-54-skill map is implemented with a default-off setting, bounded zoom, scrolling and keyboard navigation; preserve the default classic view. Rendered/human/device/native-language review remains open. All seven current kits and 378 skills already work.
 - Five secondary-map layouts and six ground-art deliveries are installed. Detailed human/device layout review remains open.
-- Continue original encounter expansion, class ability-changing upgrades and the optional tree. Do not inflate counts from concepts or templates.
+- Continue original encounter expansion and class ability-changing upgrades; the optional tree now needs actual rendered/human review. Do not inflate counts from concepts or templates.
 
 ## Frozen previews and feedback
 
@@ -54,3 +54,7 @@ Earlier exact checkpoint: [historical issue](history/2026-10-25-early-watch-resu
 The separate preview at **http://127.0.0.1:5179/** serves exact runtime source `bbf909ade44e595f025956783a4babd868b1840c`, protocol 15/build `2026.10.25-early-watch`. Its 1,666 files / 684,857,534 bytes match the verified production artifacts. Seventeen raw HTTP asset checks pass; the older 5178 index hash remains unchanged. Root: `C:\Users\yigal\Documents\Codex\2026-10-25\continue-grave-accord-in-this-same\work\playtest-early-watch-bbf909a`. Process receipt is `reviews/early-watch-integration-2026-10-25/preview-process.json`; inspect actual port ownership before touching it. Preserve this preview alongside 5174–5178. No rendered or human acceptance is recorded.
 
 Choose New Run, any class/map, Solo and one Early Watch boss; keep global difficulty Normal and compare Standard/Brutal with equal choices. The 5178 Constable comparison remains independent.
+
+## Optional skill-map continuation
+
+The [expanded map](OPTIONAL_SKILL_MAP.md) is a settings-controlled view of all existing paths. It preserves classic purchasing and strictly migrates issued local profiles/settings. Current verification passes 402 tests plus content/fifteen locales, TypeScript and production build, with exact hashes under `reviews/skill-map-2026-10-25/`; the earlier Early Watch and Constable previews and receipts remain separate.
