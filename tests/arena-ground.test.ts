@@ -134,9 +134,10 @@ test('the actual floor preload planner queues every identity once and rejects mi
     },
   };
   const urls = Object.fromEntries(runtimeArenas.map((a) => [a.id, 'local/' + a.id + '.png']));
+  urls['gatehouse-half']='local/gatehouse-half.png';urls['gatehouse-open']='local/gatehouse-open.png';
   preloadArenaGrounds(loader, urls);
-  assert.equal(files.length, 6);
-  assert.equal(new Set(files.map((f) => f.key)).size, 6);
+  assert.equal(files.length, 8);
+  assert.equal(new Set(files.map((f) => f.key)).size, 8);
   for (const arena of runtimeArenas)
     assert(
       files.some(

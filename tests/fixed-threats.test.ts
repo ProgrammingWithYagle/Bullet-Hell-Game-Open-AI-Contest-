@@ -77,7 +77,7 @@ test('real opening encounters preserve the same boss grade across routes and dif
           (1 + p.subtier * 0.08) *
           (boss.timer / 120) *
           boss.healthFactor *
-          setting.health *
+          setting.health * (difficulty==='hellish'?data.rules.brutal.healthMultiplier:1) *
           (mode === 'raid' && p.level <= 10 ? 1.25 : 1);
         assert(Math.abs(game.boss.maxHealth - expected) < 1e-7);
         assert.equal(save, null);
@@ -162,7 +162,7 @@ test('protocol-thirteen Practice migration reclassifies boundary contracts witho
   const migrated = Game.restoreOffline(old).offlineCheckpoint()!;
   assert.equal(JSON.stringify(old), original);
   assert.equal(migrated.protocolVersion, PROTOCOL);
-  assert.equal(PROTOCOL, 15);
+  assert.equal(PROTOCOL, 16);
   assert.equal(migrated.settings.runId, old.settings.runId);
   assert.deepEqual(migrated.player.progress, old.player.progress);
   assert.equal(migrated.player.coins, old.player.coins);

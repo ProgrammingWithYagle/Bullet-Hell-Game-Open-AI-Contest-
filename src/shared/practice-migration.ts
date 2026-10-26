@@ -10,8 +10,8 @@ export function migratePracticeBoundary(value: unknown): unknown {
   // boundaries forward, then run the existing version-specific and full restore validation.
   // Current-version cards never pass through legacy reclassification.
   const compatibleRevision =
-    ['b8d9fb6918c854f3eed38b327ed0cb3026e071e6fe24932e50beed36943db241', '43b7b2848b50bbe56072bfa134e5775355a7faca28092624744bdae6a0d318bb'].includes(issued.contentRevision as string) &&
-    [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, PROTOCOL].includes(issued.protocolVersion as number) &&
+    ['b8d9fb6918c854f3eed38b327ed0cb3026e071e6fe24932e50beed36943db241', '43b7b2848b50bbe56072bfa134e5775355a7faca28092624744bdae6a0d318bb','cbb6b8e68c9fb6f3191a3f0ef4a6411c8a3d3e41e3aeca783c122b07ab73d546'].includes(issued.contentRevision as string) &&
+    [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, PROTOCOL].includes(issued.protocolVersion as number) &&
     issued.schemaVersion === 1 &&
     issued.practiceOnly === true &&
     issued.serverOnly !== true &&
@@ -19,6 +19,10 @@ export function migratePracticeBoundary(value: unknown): unknown {
     issued.transactions === undefined &&
     JSON.stringify(issued).length <= 32768;
   const legacy = compatibleRevision ? { ...issued, contentRevision: CONTENT_REVISION } : issued;
+  if (legacy.protocolVersion===15) {
+    if(legacy.schemaVersion!==1 || legacy.contentRevision!==CONTENT_REVISION || legacy.practiceOnly!==true || legacy.serverOnly===true || legacy.players!==undefined || legacy.transactions!==undefined || JSON.stringify(legacy).length>32768)throw Error('versionMismatch');
+    return {...legacy,protocolVersion:PROTOCOL};
+  }
   if (![4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].includes(legacy.protocolVersion as number)) return legacy;
   const version = legacy.protocolVersion as number;
   const previousServiceBosses = [

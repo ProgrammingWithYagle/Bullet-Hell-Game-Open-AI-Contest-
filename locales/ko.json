@@ -45,7 +45,7 @@
     "ability.medic-e.name": "정화 혈청",
     "ability.medic-q.description": "범위 안 아군의 체력을 초당 8 회복합니다.",
     "ability.medic-q.name": "치유장",
-    "ability.medic-ultimate.description": "1초 집중 후 주변 쓰러진 아군과 탈락한 아군을 체력 60%로 소생합니다. 생존자를 40 회복·정화하고 주변 적에게 35 피해를 줍니다. 혼자일 때 보호막 40도 얻습니다.",
+    "ability.medic-ultimate.description": "1초 시전 후 선택한 난이도의 부활 규칙에 따라 근처 쓰러지거나 탈락한 아군을 부활시킵니다. 살아 있는 아군 체력을 40 회복하고 효과를 정화하며 주변에 35 피해를 줍니다. 솔로는 보호막 40도 얻습니다.",
     "ability.medic-ultimate.name": "되찾은 이름",
     "ability.soldier-e.description": "조준 방향으로 정확한 관통탄 3발을 발사합니다.",
     "ability.soldier-e.name": "정밀 점사",
@@ -1545,6 +1545,21 @@
     "ui.skillMapHelp": "스킬 {count}개 전체입니다. 스크롤로 살펴보고 방향키로 이동하세요.",
     "ui.zoomIn": "확대",
     "ui.zoomOut": "축소",
-    "ui.resetZoom": "배율 초기화"
+    "ui.resetZoom": "배율 초기화",
+    "ui.phaseShieldOn": "단계 전환 보호막 파괴: 사용 (일반 형태만)",
+    "ui.phaseShieldOff": "단계 전환 보호막 파괴: 사용 안 함",
+    "ui.reviveFull": "전투 부활: 체력 100%",
+    "ui.reviveHalf": "전투 부활: 체력 50%",
+    "ui.reviveOff": "전투 부활 사용 불가",
+    "ui.brutalWaves": "브루탈: 단계 보호막 파괴 없음. 탄막 2회 (위협 5 이상은 3회).",
+    "ui.phaseCount": "단계 {number}/{total}",
+    "ui.phaseChanged": "단계 {number}/{total} — 공격 패턴 변경",
+    "ui.reviveRulesHelp": "솔로, 아군, 의무병, 보급품 부활에 모두 적용됩니다. 전투 사이에는 완전히 회복합니다.",
+    "ui.coverFull": "엄폐물 전부",
+    "ui.coverHalf": "엄폐물 절반",
+    "ui.coverNone": "엄폐물 없음",
+    "ui.coverLava": "엄폐물 없음. 용암에 닿으면 피해",
+    "ui.lavaHelp": "용암: 표시된 구덩이를 피하세요.",
+    "ui.allBrutal": "모든 보스가 브루탈 형태"
   }
 }

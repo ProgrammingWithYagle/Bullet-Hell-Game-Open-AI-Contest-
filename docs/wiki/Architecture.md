@@ -2,14 +2,14 @@
 
 The shared deterministic simulation runs at 30 Hz. Phaser presents its state; menus and HUD use a DOM overlay. Offline play hosts the same authority in a worker. Online play uses Colyseus rooms and a server-owned simulation, with client movement prediction and reconciliation.
 
-**Current runtime protocol: 14.** The immutable authored content revision is `43b7b2848b50bbe56072bfa134e5775355a7faca28092624744bdae6a0d318bb`. The content bible's historical protocol field is not the live transport protocol; `src/shared/protocol.ts` owns that value.
+**Current runtime protocol: 16.** The immutable authored content revision is `1ad00eee45a117a45929e56884c6a39a8c4eb614b0728ab31e847403fb8735bb`. The content bible's historical protocol field is not the live transport protocol; `src/shared/protocol.ts` owns that value.
 
 - Gameplay validates inputs, purchases, skill prerequisites, votes, rewards, collisions and boss transitions at the authority.
 - Projectile batches reuse weak-point/solid geometry with immediate refresh after destructive hits. Construct broad phases preserve rotated-wall contact and shield order; live Walking District buildings receive friendly weapon damage and block hostile shots.
 - Compact projectile waves and actor field patches retain exact gameplay values. Shared geometry handles swept shots and body contacts.
 - Class kits, minions and the civic/service boss directors keep rules separate from presentation. Prediction shares map geometry and environmental forces.
 - All six maps use one camera space with different traversable footprints. The same source feeds server collision, prediction and map previews.
-- JSON boundary saves retain run state. Local protocol-4 through protocol-13 saves have explicitly bounded migrations. Online clients and signed saves require the current protocol.
+- JSON boundary saves retain run state. Local protocol-4 through protocol-15 saves have explicitly bounded migrations. Online clients and signed saves require the current protocol.
 - Original image returns, exact requests, references and superseded attempts remain preserved; technical normalization does not invent animation frames.
 - Local ProfileV1 receipts record personal deployment/clears/rescues with opaque run IDs. Monotonic high-water counts prevent duplicate mastery across patches/restores; profile values never supply combat power. [Profiles](Profiles).
 - One structured update history drives the in-game journal and both Markdown changelogs. Tests reject stale published source text or playable-content counts.
@@ -59,3 +59,5 @@ Survivor visual motion uses observed-position continuity with a 100-ms stop boun
 Protocol 14 introduces explicit fixed boss classifications and subtier-bearing concealed cards; card-position risk is zero. Local protocol-13 Practice boundaries migrate while preserving progress/run identity. Boss grade drives health, pressure and bounty; base income remains separate from earned bounty premiums. Online signatures and version gates remain strict.
 
 Early Watch adds a separate shared director and a bounded wind helper used by both authority and prediction. Current test totals and exact source hashes are in the [Early Watch receipt](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/reviews/early-watch-integration-2026-10-25/runtime.json).
+
+Authority and prediction share difficulty-specific static geometry. Hellish lava and bounded Brutal repeat-volley warnings replicate with the existing cue stream. All revival sources and Hellish form enforcement share authority policies; clients cannot bypass them through a form choice or supply input. [Current rules](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/DIFFICULTY_AND_PHASES.md).

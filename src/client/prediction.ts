@@ -38,7 +38,7 @@ export class Prediction {
     const gates = gateObstacles(view.bossCues, now);
     const blocks = endlessSolids(view.bossCues, now);
     const clear = leaveClosingGates(
-      leaveMovingBlocks(p, blocks, runtimeArena(view.arenaId).obstacles, data.rules.playerRadius),
+      leaveMovingBlocks(p, blocks, runtimeArena(view.arenaId,view.run.difficulty).obstacles, data.rules.playerRadius),
       gates,
       data.rules.playerRadius,
     );
@@ -85,7 +85,7 @@ export class Prediction {
         y: ((dash ? p.dashY : my) * speed + environment.y + terrain.y + raidForce.y + earlyForce.y) * DT,
       },
       data.rules.playerRadius,
-      [...runtimeArena(view.arenaId).obstacles, ...gates, ...blocks],
+      [...runtimeArena(view.arenaId,view.run.difficulty).obstacles, ...gates, ...blocks],
     );
     p.x = next.x;
     p.y = next.y;

@@ -1,5 +1,7 @@
 import wheel from '../../assets/production/motion/tollkeeper-wheel-v1.png?url';
 import arena from '../../assets/proofs/arena-v1.png?url';
+import gatehouseHalf from '../../assets/production/arenas/gatehouse-half-v1.png?url';
+import gatehouseOpen from '../../assets/production/arenas/gatehouse-open-v1.png?url';
 const arenaGroundImages = import.meta.glob('../../assets/production/arenas/*-ground-v1.png', {
   query: '?url',
   import: 'default',
@@ -165,6 +167,8 @@ export const assets = {
   arena,
   arenaGrounds: {
     gatehouse: arena,
+    'gatehouse-half':gatehouseHalf,
+    'gatehouse-open':gatehouseOpen,
     ...Object.fromEntries(
       Object.entries(arenaGroundImages).map(([path, url]) => [
         path.split('/').at(-1)!.replace('-ground-v1.png', ''),

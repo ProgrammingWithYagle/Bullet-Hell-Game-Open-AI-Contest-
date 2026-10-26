@@ -14,10 +14,11 @@ export function preloadArenaGrounds(
     if (!url) throw new Error('Missing arena ground URL: ' + entry.id);
     return { key: entry.texture, url };
   });
+  for(const key of ['gatehouse-half','gatehouse-open']){if(!urls[key])throw Error('Missing difficulty ground '+key);files.push({key:'arena-ground-'+key,url:urls[key]});}
   for (const file of files) loader.image(file.key, file.url);
 }
 
-export function arenaGroundPlacement(id: string) {
+export function arenaGroundPlacement(id: string,difficulty='normal') {
   const arena = runtimeArena(id);
   const art = library.entries.find((entry) => entry.id === id);
   if (
@@ -29,7 +30,7 @@ export function arenaGroundPlacement(id: string) {
     throw new Error('Arena ground contract does not match the playable footprint: ' + id);
   }
   return {
-    texture: art.texture,
+    texture: id==='gatehouse' && ['hard','insane','hellish'].includes(difficulty) ? 'arena-ground-gatehouse-'+(difficulty==='hard'?'half':'open') : art.texture,
     x: arena.bounds.x + arena.bounds.width / 2,
     y: arena.bounds.y + arena.bounds.height / 2,
     width: arena.bounds.width,
@@ -50,8 +51,8 @@ type GroundImage = {
   setAlpha(alpha: number): GroundImage;
   setVisible(visible: boolean): GroundImage;
 };
-export function applyArenaGround(image: GroundImage, id: string) {
-  const placement = arenaGroundPlacement(id);
+export function applyArenaGround(image: GroundImage, id: string,difficulty='normal') {
+  const placement = arenaGroundPlacement(id,difficulty);
   image
     .setTexture(placement.texture)
     .setOrigin(placement.originX, placement.originY)

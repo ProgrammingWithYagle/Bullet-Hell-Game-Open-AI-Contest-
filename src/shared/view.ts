@@ -140,7 +140,7 @@ export function viewOf(g: Game, owner: string): View {
     boss: { ...g.boss },
     signatures: structuredClone(g.signatures),
     minions: g.minions.snapshot(),
-    bossCues: g.director.cues(),
+    bossCues: g.bossCues(),
     classCues: g.classKits.cues(),
     warnings: g.warnings.map((w) => ({ ...w })),
     fields: g.fields.map((f) => ({ ...f })),

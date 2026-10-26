@@ -14,7 +14,11 @@ import { CivicDirector, type CivicCue } from './civic-director.ts';
 import { DT, HZ, type BossId, type Vec } from './protocol.ts';
 import { clamp, distance, moveBody, segmentCircle, segmentRect, type Rect } from './geometry.ts';
 
+import type { EchoCue } from './brutal-volley.ts';
+import type { ArenaLavaCue } from './arena-layouts.ts';
 export type BossCue =
+  | EchoCue
+  | ArenaLavaCue
   | EarlyWatchCue
   | CivicCue
   | ServiceCue

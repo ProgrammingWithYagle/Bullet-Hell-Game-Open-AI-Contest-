@@ -80,13 +80,13 @@ check('Every legal one-, two- and three-mutation composition',()=>{
 check('Boss attack contracts, transitions, arenas and deadlines',()=>{
   const kinds=new Set(['fan','ring','charge','cross','summon','pool','beam','hook','spiral','armor','warp','zone','shield','trail','lanes','pulse']);
   assert.equal(c.bosses.filter(b=>b.secret).length,1);
-  for(const b of c.bosses){assert(b.timer>=60&&b.timer<=240);assert(b.healthFactor>0&&b.radius>0);assert.deepEqual(b.phases.map(p=>p.healthThreshold),[1,0.75,0.4]);assert.deepEqual(b.phases.map(p=>p.accordBreak),[false,true,true]);
+  for(const b of c.bosses){assert(b.timer>=60&&b.timer<=240);assert(b.healthFactor>0&&b.radius>0);const entry=read('src/shared/boss-threats.json').entries.find(p=>p.bossId===b.id).level<=c.rules.phasePacing.maximumEntryThreat;assert.deepEqual(b.phases.map(p=>p.healthThreshold),entry?[1,.5]:[1,.75,.4]);assert.deepEqual(b.phases.map(p=>p.accordBreak),b.phases.map((_,i)=>i>0));assert.deepEqual(b.phases.map(p=>p.patternPhase),entry?[0,2]:[0,1,2]);
     for(const p of b.phases)for(const a of p.attacks){assert(kinds.has(a.kind),'Unknown attack '+a.kind);assert(a.count>0&&a.count<=200);assert(a.speed>=0&&a.damage>=0&&a.interval>0&&a.telegraph>=0.45);assert(a.telegraph<a.interval);}
     assert(b.arenaIds.every(id=>c.arenas.some(a=>a.id===id)));
     assert.equal(b.variants.normal.healthMultiplier,1);assert.equal(b.variants.normal.damageMultiplier,1);
     const brutal=b.variants.brutal;assert.equal(brutal.healthMultiplier,2);assert.equal(brutal.damageMultiplier,2);assert.equal(brutal.identity,b.id+'-brutal');assert.equal(brutal.signature,b.signature.id);
-    assert.deepEqual(brutal.phases.map(p=>p.healthThreshold),c.rules.brutal.phaseThresholds);
-    assert.deepEqual(brutal.phases.map(p=>p.accordBreak),[false,true,true,true]);
+    assert.deepEqual(brutal.phases.map(p=>p.healthThreshold),entry?[1,.5]:c.rules.brutal.phaseThresholds);assert.deepEqual(brutal.phases.map(p=>p.patternPhase),entry?[0,3]:[0,1,2,3]);
+    assert(brutal.phases.every(p=>!p.accordBreak));
     for(const phase of brutal.phases)for(const attack of phase.attacks){assert(kinds.has(attack.kind));assert(attack.count>0&&attack.count<=200);assert(attack.telegraph>=c.rules.brutal.minimumTelegraphSeconds&&attack.telegraph<attack.interval);}
   }
   for(const a of c.arenas){assert.equal(a.width,1600);assert.equal(a.height,1000);for(const o of a.obstacles){assert(o.x>=0&&o.y>=0&&o.x+o.width<=a.width&&o.y+o.height<=a.height);assert(!(a.playerSpawn.x>o.x&&a.playerSpawn.x<o.x+o.width&&a.playerSpawn.y>o.y&&a.playerSpawn.y<o.y+o.height));}}

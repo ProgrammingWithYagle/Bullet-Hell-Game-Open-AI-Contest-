@@ -5,9 +5,9 @@ import { HZ, type BossId, type Shot } from '../src/shared/protocol.ts';
 import { viewOf } from '../src/shared/view.ts';
 import { encounterFrame } from '../src/client/encounter-presentation.ts';
 
-function encounter(id: BossId, brutal = false) {
+function encounter(id: BossId, brutal = false,difficulty='normal') {
   const lobby = new Game({
-    openingBossId: id,
+    openingBossId: id,difficulty,
     maxPlayers: 1,
     mode: 'endless',
     seed: 543,
@@ -64,7 +64,8 @@ test('five-fight Quarantine keeps five distinct bosses for every opening identit
         game = restored;
         while ((game.phase as string) !== 'combat') game.step();
       }
-      assert.equal(game.phase, 'victory');
+      if(game.phase==='secretOffer')for(const survivor of game.players.values())game.vote(survivor.id,0);
+        assert.equal(game.phase, 'victory');
       assert.equal(seen.size, 5);
     }
 });
@@ -215,7 +216,7 @@ test('Clerk stamps three non-overlapping zones in order and reopens the first as
   assert(p.health < before, 'safe interior must include the entire body');
 });
 
-test('new bosses have three Normal/four Brutal phases, stronger sacks/rats and the Clerk final echo', () => {
+test('early bosses have two phases retaining stronger Brutal sacks/rats and the Clerk final echo', () => {
   for (const id of ['courier', 'ratcatcher', 'quarantine-clerk'] as const) {
     const normal = encounter(id),
       brutal = encounter(id, true);
@@ -226,7 +227,7 @@ test('new bosses have three Normal/four Brutal phases, stronger sacks/rats and t
       brutal.step();
       if (brutal.director.cues().filter((c) => c.kind === 'stamp').length === 6) echoed = true;
     }
-    assert.equal(brutal.boss.phase, 3);
+    assert.equal(brutal.boss.phase, 1);
     assert.equal(brutal.phase, 'combat');
     if (id === 'quarantine-clerk') assert(echoed);
     if (id === 'ratcatcher') {
@@ -236,11 +237,11 @@ test('new bosses have three Normal/four Brutal phases, stronger sacks/rats and t
   }
 });
 
-test('Accord cancels signature hazards/adds and resumes with a full fresh warning', () => {
+test('Easy Standard Accord cancels signature hazards/adds and resumes with a full fresh warning', () => {
   for (const id of ['courier', 'ratcatcher', 'quarantine-clerk'] as const) {
-    const game = encounter(id),
+    const game = encounter(id,false,'easy'),
       p = game.players.get('solo')!;
-    game.boss.health = game.boss.maxHealth * 0.7;
+    game.boss.health = game.boss.maxHealth * 0.49;
     game.step();
     assert(game.accord);
     p.x = game.accord.points[0].x;

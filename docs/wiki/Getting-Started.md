@@ -1,6 +1,6 @@
 # Getting started
 
-The current feature-branch build supports seven classes, 60 bosses, six maps and five modes. The [public browser playtest](https://grave-accord-playtest.ivoryflame12.chatgpt.site/) is still its older two-class, one-boss protocol-4 deployment. These instructions distinguish that deployment from the current local source.
+The current feature-branch build supports seven classes, 63 bosses, six maps and five modes. The [public browser playtest](https://grave-accord-playtest.ivoryflame12.chatgpt.site/) is still its older two-class, one-boss protocol-4 deployment. These instructions distinguish that deployment from the current local source.
 
 ## Play the current source
 
@@ -54,3 +54,18 @@ The desktop **Local network** menu offers explicit Host and Join controls. Choos
 In current source, choose **New Run → Soldier → Quarantine Run → Gatehouse → Normal difficulty**. On the final review screen choose **Hollow Constable** and **Solo**, then set **Boss form** to **Standard form** or **Brutal** and press **Play**. Any class or map is valid; keeping them the same helps comparison. The Constable stays **1+**, with **B** added for Brutal. Global difficulty remains separate. This choice affects the opener; later contracts follow normal progression. The earlier frozen port-5176 build has no direct selector.
 
 [Source behavior and exact verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/BOSS_PRACTICE.md).
+
+## Difficulty, revival and cover
+
+| Difficulty | Phase shield-break event | Combat revival | Interior cover | Extra arena / form rule |
+| --- | --- | --- | --- | --- |
+| Baby | Standard only | 100% health | Full | Selected boss form |
+| Easy | Standard only | 50% health | Full | Selected boss form |
+| Normal | Off | 50% health | Full | Selected boss form |
+| Hard | Off | Disabled | Half, rounded down | Selected boss form |
+| Insane | Off | Disabled | None | Selected boss form |
+| Hellish | Off | Disabled | None | Marked lava; every boss Brutal |
+
+Brutal disables the phase shield event at every difficulty. Revival includes solo, teammates, Medic and supplies; full recovery between encounters remains. Boundary walls and temporary boss mechanics remain. Difficulty cards and final review display these rules in all fifteen locales. Hellish pits have a three-second opening tell and deal 24 contact damage per second in half-second intervals. Hellish effective boss health is 2.4× Normal after its forced Brutal multiplier. [Exact rules and verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/DIFFICULTY_AND_PHASES.md).
+
+Hellish locks the Solo form selector to Brutal. Other global difficulties retain the selected opener form.

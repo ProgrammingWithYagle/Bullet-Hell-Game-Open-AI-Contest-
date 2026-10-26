@@ -1,5 +1,7 @@
 # Direct solo boss-form practice
 
+Current continuation: [difficulty rules and phase pacing](DIFFICULTY_AND_PHASES.md), protocol 16. Historical build descriptions and frozen previews below retain their own issue state. Hellish now forces Brutal, including a selected Standard opener.
+
 Build `2026.10.25-boss-practice`, protocol 14. The final solo review screen provides **Boss form → Standard form / Brutal**. Standard form is the normal boss version. The earlier frozen `2026.10.25-constable-patrol` build on port 5176 has no direct form selector.
 
 For a clear Hollow Constable comparison:

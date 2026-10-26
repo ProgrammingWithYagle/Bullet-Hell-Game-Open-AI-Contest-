@@ -14,9 +14,10 @@ function fixture(
   variant: 'normal' | 'brutal' = 'normal',
   arenaId = 'gatehouse',
   invulnerable = true,
+  difficulty='normal',
 ) {
   const lobby = new Game({
-    seed: 415,
+    seed: 415,difficulty,
     mode: 'endless',
     maxPlayers: 1,
     openingBossId: 'constable',
@@ -31,18 +32,20 @@ function fixture(
   return game;
 }
 function phase(game: Game, index: number) {
-  game.boss.health = game.boss.maxHealth * [1, 0.74, 0.39, 0.24][index];
+  index=Math.min(1,index);
+  game.boss.health = game.boss.maxHealth * [1, 0.49][index];
   for (let n = 0; game.boss.phase < index; n++) {
     assert(n < 1000);
     game.step();
   }
 }
 
-test('Constable phases execute double volleys, crossing cordons and shared-gap lockdown rings in real games', () => {
+test('Constable two-phase schedule executes opening volleys and final shared-gap rings with Brutal pincers', () => {
   for (const variant of ['normal', 'brutal'] as const)
-    for (let stage = 0; stage < (variant === 'brutal' ? 4 : 3); stage++) {
+    for (let visible = 0; visible < 2; visible++) {
+      const stage=visible===0?0:variant==='brutal'?3:2;
       const game = fixture(variant);
-      phase(game, stage);
+      phase(game, visible);
       const start = game.combatTick;
       while (game.boss.castAt <= start || !game.warnings.some((w) => w.kind !== 'zone')) {
         game.step();
@@ -55,12 +58,6 @@ test('Constable phases execute double volleys, crossing cordons and shared-gap l
         assert.equal(warnings.length, variant === 'brutal' ? 4 : 2);
         assert(warnings.every((w) => w.kind === 'fan'));
         assert.equal(warnings[1].at - warnings[0].at, 12);
-      } else if (stage === 1) {
-        assert.equal(warnings.length, variant === 'brutal' ? 5 : 4);
-        const fans = warnings.filter((w) => w.kind === 'fan');
-        assert.equal(fans.length, 4);
-        assert.equal(new Set(fans.map((w) => `${w.x},${w.y}`)).size, 2);
-        assert(warnings.reduce((n, w) => n + w.count, 0) >= 36);
       } else {
         const rings = warnings.filter((w) => w.kind === 'ring');
         assert.equal(rings.length, stage === 3 || variant === 'brutal' ? 3 : 2);
@@ -79,7 +76,7 @@ test('Constable phases execute double volleys, crossing cordons and shared-gap l
 
 test('all maps keep walking Constable inside bounds and cover while casts, Accords and stagger plant his feet', () => {
   for (const map of data.arenas) {
-    const game = fixture('normal', map.id);
+    const game = fixture('normal', map.id,true,'easy');
     const start = { x: game.boss.x, y: game.boss.y };
     let traveled = 0;
     for (let n = 0; n < 700; n++) {
@@ -111,7 +108,7 @@ test('all maps keep walking Constable inside bounds and cover while casts, Accor
       assert.equal(distance(planted, game.boss), 0);
     }
     game.boss.staggerUntil = 0;
-    game.boss.health = game.boss.maxHealth * 0.74;
+    game.boss.health = game.boss.maxHealth * 0.49;
     game.step();
     assert(game.accord);
     const accordPosition = { ...game.boss };
@@ -268,9 +265,9 @@ test('named Constable phases cover all fifteen supported languages and retain th
   assert.equal(constablePhaseName(2, 'missing'), 'Lockdown');
 });
 
-test('real Constable phase transitions cancel outgoing volleys, arrest fields and stale cast poses', () => {
+test('Easy Standard shield transitions cancel outgoing volleys, arrest fields and stale cast poses', () => {
   for (const boundary of ['volley', 'arrest']) {
-    const game = fixture();
+    const game = fixture('normal','gatehouse',true,'easy');
     while (
       boundary === 'volley' ? !game.shots.size : !game.fields.some((f) => f.owner === 'hostile')
     ) {
@@ -279,7 +276,7 @@ test('real Constable phase transitions cancel outgoing volleys, arrest fields an
     }
     if (boundary === 'volley') assert(game.warnings.some((w) => w.kind === 'fan'));
     const origin = { ...game.boss };
-    game.boss.health = game.boss.maxHealth * 0.74;
+    game.boss.health = game.boss.maxHealth * 0.49;
     game.step();
     assert.equal(game.boss.phase, 1);
     assert(game.accord);

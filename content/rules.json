@@ -166,7 +166,14 @@
     ],
     "minimumTelegraphSeconds": 0.85,
     "endlessTrigger": "A boss is eligible after its first completed appearance. The first-loop Constable repeat is always Brutal.",
-    "projectileCapUnchanged": true
+    "projectileCapUnchanged": true,
+    "phaseShieldBreak": false,
+    "projectileWaves": 2,
+    "highThreatProjectileWaves": 3,
+    "tripleWaveMinimumThreat": 5,
+    "echoDelaySeconds": 1.05,
+    "maximumPendingEchoProjectiles": 768,
+    "maximumPendingEchoOrigins": 64
   },
   "endless": {
     "finalEncounter": null,
@@ -181,9 +188,54 @@
   },
   "secret": {
     "minimumDifficulty": "normal",
-    "minimumAccordBreaks": 3,
     "requireCampaignVictory": true,
     "maximumTimeouts": 0,
-    "bankVictoryBeforeOffer": true
+    "bankVictoryBeforeOffer": true,
+    "minimumClearedEncounters": 3
+  },
+  "encounterAssists": {
+    "baby": {
+      "phaseShieldBreak": true,
+      "revivedHealthFraction": 1
+    },
+    "easy": {
+      "phaseShieldBreak": true,
+      "revivedHealthFraction": 0.5
+    },
+    "normal": {
+      "phaseShieldBreak": false,
+      "revivedHealthFraction": 0.5
+    },
+    "hard": {
+      "phaseShieldBreak": false,
+      "revivedHealthFraction": 0
+    },
+    "insane": {
+      "phaseShieldBreak": false,
+      "revivedHealthFraction": 0
+    },
+    "hellish": {
+      "phaseShieldBreak": false,
+      "revivedHealthFraction": 0
+    }
+  },
+  "phasePacing": {
+    "maximumEntryThreat": 2,
+    "entryPhaseThresholds": [
+      1,
+      0.5
+    ]
+  },
+  "arenaDifficulty": {
+    "hardCoverFraction": 0.5,
+    "noCoverDifficulties": [
+      "insane",
+      "hellish"
+    ],
+    "lavaDifficulty": "hellish",
+    "lavaWarningSeconds": 3,
+    "lavaDamagePerSecond": 24,
+    "lavaHitIntervalSeconds": 0.5,
+    "hellishAllBossesBrutal": true
   }
 }

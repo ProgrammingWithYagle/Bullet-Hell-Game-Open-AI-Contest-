@@ -1,5 +1,7 @@
 # Fixed boss threat classifications
 
+Current continuation: [difficulty rules and phase pacing](DIFFICULTY_AND_PHASES.md), protocol 16. Historical build descriptions and frozen previews below retain their own issue state. Hellish now forces Brutal, including a selected Standard opener.
+
 Build `2026.10.25-fixed-threats`, protocol 14. Every one of the sixty existing identities has an explicit authored classification in `src/shared/boss-threats.json`. Hollow Constable is `1+`, high tier Normal; Bell Triplets are `3--`, bottom tier Predator. A boss keeps its classification across encounters, campaigns and saves. Future balancing can revise a versioned classification; it is never rerolled by card position or encounter number.
 
 | Suffix | Meaning |

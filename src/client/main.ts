@@ -1,3 +1,4 @@
+import {bossPatternPhase, encounterPhases, phaseMarkers, combatReviveFraction} from '../shared/encounter-policy.ts';
 import { BossPhaseFeedback, constablePhaseHint } from './boss-phase-feedback.ts';
 import { constablePhaseName } from './constable-phase-text.ts';
 import { bossThreat } from '../shared/boss-threat.ts';
@@ -252,7 +253,7 @@ function setupGame(online: boolean) {
   uiKey = '';
   lastPhase = '';
   prediction = new Prediction();
-  app.innerHTML = `<div id="stage" dir="ltr"></div><section class="hud" aria-label="${text('ui.health')}"><div class="topline"><div><strong id="encounter"></strong><small id="status" role="status"></small></div><div id="boss-panel"><strong>${text('boss.constable.name')}</strong><span id="deadline"></span><progress id="boss-health" max="1" value="1" aria-label="${text('ui.boss')}"></progress><p id="boss-phase-note" class="boss-phase-note" role="status" aria-live="polite" hidden></p></div><button id="pause-button">Ⅱ <span>${text('ui.pause')}</span></button></div><div id="accord" class="accord" hidden></div><p id="signature-help" class="signature-help" role="status" aria-live="polite" hidden></p><div class="bottomline"><div class="vitals"><strong id="player-name">${insignia(selectedCosmetic)}<span id="player-name-label"></span></strong><progress id="health" max="1" value="1" aria-label="${text('ui.health')}"></progress><span id="health-text"></span><span id="ammo"></span><span id="currency"></span></div><div id="abilities" class="ability-list"></div><div id="squad" class="squad"></div></div></section><div id="modal" class="overlay" hidden></div><div id="pause-menu" class="overlay" hidden><section class="dialog"><h2>${text('ui.paused')}</h2><p>${text(online ? 'ui.onlinePause' : 'ui.offlineNotice')}</p>${settingsMarkup()}<div class="actions"><button id="resume" class="primary">${text('ui.continue')}</button><button id="leave">${text('ui.leaveRoom')}</button></div></section></div><div class="touch-buttons"><button data-action="dodge">${text('ui.dodge')}</button><button data-action="q">Q</button><button data-action="e">E</button><button data-action="ultimate">${text('ui.ultimate')}</button><button data-action="interact">${text('ui.revive')}</button><button data-action="reload">${text('ui.reload')}</button></div><div class="portrait-note">${text('ui.portraitHint')}</div>`;
+  app.innerHTML = `<div id="stage" dir="ltr"></div><section class="hud" aria-label="${text('ui.health')}"><div class="topline"><div><strong id="encounter"></strong><small id="status" role="status"></small></div><div id="boss-panel"><strong>${text('boss.constable.name')}</strong><span id="deadline"></span><div class="boss-health-track" dir="ltr"><progress id="boss-health" max="1" value="1" aria-label="${text('ui.boss')}"></progress><div id="boss-phase-markers" aria-hidden="true"></div></div><p id="boss-phase-entry" class="boss-phase-entry" role="status" aria-live="polite" hidden></p><p id="boss-phase-note" class="boss-phase-note" role="status" aria-live="polite" hidden></p></div><button id="pause-button">Ⅱ <span>${text('ui.pause')}</span></button></div><div id="accord" class="accord" hidden></div><p id="signature-help" class="signature-help" role="status" aria-live="polite" hidden></p><div class="bottomline"><div class="vitals"><strong id="player-name">${insignia(selectedCosmetic)}<span id="player-name-label"></span></strong><progress id="health" max="1" value="1" aria-label="${text('ui.health')}"></progress><span id="health-text"></span><span id="ammo"></span><span id="currency"></span></div><div id="abilities" class="ability-list"></div><div id="squad" class="squad"></div></div></section><div id="modal" class="overlay" hidden></div><div id="pause-menu" class="overlay" hidden><section class="dialog"><h2>${text('ui.paused')}</h2><p>${text(online ? 'ui.onlinePause' : 'ui.offlineNotice')}</p>${settingsMarkup()}<div class="actions"><button id="resume" class="primary">${text('ui.continue')}</button><button id="leave">${text('ui.leaveRoom')}</button></div></section></div><div class="touch-buttons"><button data-action="dodge">${text('ui.dodge')}</button><button data-action="q">Q</button><button data-action="e">E</button><button data-action="ultimate">${text('ui.ultimate')}</button><button data-action="interact">${text('ui.revive')}</button><button data-action="reload">${text('ui.reload')}</button></div><div class="portrait-note">${text('ui.portraitHint')}</div>`;
   const supplyBar = document.createElement('div');
   const checkpointNotice = document.createElement('small');
   checkpointNotice.id = 'checkpoint-notice';
@@ -342,9 +343,9 @@ function update(view: View) {
       classifiedThreatCode(view.boss.threat, bossThreat(view.boss.id).subtier, view.boss.variant) +
       (view.boss.variant === 'brutal' ? ' · ' + t('ui.variantBrutal') : '') +
       ' · ' +
-      t('ui.phase', { number: view.boss.phase + 1 }) +
-      (view.boss.id === 'constable' ? ' · ' + constablePhaseName(view.boss.phase, locale) :
-        ['ashen-usher','brass-toad','ragpicker-kite'].includes(view.boss.id) ? ' · ' + t(`boss.${view.boss.id}.phase.${Math.min(2,view.boss.phase)}`) : '');
+      t('ui.phaseCount', { number: number(view.boss.phase + 1),total:number(encounterPhases(view.boss.id,view.boss.variant).length) }) +
+      (view.boss.id === 'constable' ? ' · ' + constablePhaseName(bossPatternPhase(view.boss.id,view.boss.variant,view.boss.phase), locale) :
+        ['ashen-usher','brass-toad','ragpicker-kite'].includes(view.boss.id) ? ' · ' + t(`boss.${view.boss.id}.phase.${Math.min(2,bossPatternPhase(view.boss.id,view.boss.variant,view.boss.phase))}`) : '');
   const hp = $<HTMLProgressElement>('health');
   hp.max = p.maxHealth;
   hp.value = p.health;
@@ -369,12 +370,13 @@ function update(view: View) {
       remaining > 0 ||
       p.status !== 'active' ||
       view.phase !== 'combat' ||
+      (item?.effect==='revive' && !combatReviveFraction(view.run.difficulty)) ||
       paused;
     button.setAttribute('aria-label', `${number(index + 1)} · ${name} ×${number(slot.count)}`);
     button.title = item
       ? name +
         '\n' +
-        supplyText(item.id) +
+        supplyText(item.id,view.run.difficulty) +
         '\n' +
         t('ui.supplyHelp', {
           bindings: [1, 2, 3]
@@ -405,6 +407,10 @@ function update(view: View) {
   const boss = $<HTMLProgressElement>('boss-health');
   boss.max = view.boss.maxHealth;
   boss.value = view.boss.health;
+  const phaseLabel=t('ui.phaseCount',{number:number(view.boss.phase+1),total:number(encounterPhases(view.boss.id,view.boss.variant).length)});
+  boss.setAttribute('aria-label',t('boss.'+view.boss.id+'.name')+' · '+phaseLabel);
+  const markers=$('boss-phase-markers'),markerKey=view.boss.id+':'+view.boss.variant;
+  if(markers.dataset.phaseKey!==markerKey){markers.dataset.phaseKey=markerKey;markers.innerHTML=phaseMarkers(view.boss.id,view.boss.variant).map(percent=>`<i style="left:${percent}%"></i>`).join('');}
   const phaseNote = $('boss-phase-note');
   const phaseEntry = bossPhaseFeedback.sample(
     view.encounter,
@@ -416,16 +422,19 @@ function update(view: View) {
   );
   $('boss-panel').dataset.variant = view.boss.variant;
   $('boss-panel').classList.toggle('phase-entry', phaseEntry);
+  const entry=$('boss-phase-entry');entry.hidden=!phaseEntry;
+  const entryText=t(view.boss.phase?'ui.phaseChanged':'ui.phaseCount',{number:number(view.boss.phase+1),total:number(encounterPhases(view.boss.id,view.boss.variant).length)});
+  if(entry.textContent!==entryText)entry.textContent=entryText;
   const noteText =
     view.boss.id === 'constable'
-      ? constablePhaseHint(view.boss.phase, view.boss.variant, locale)
+      ? constablePhaseHint(bossPatternPhase(view.boss.id,view.boss.variant,view.boss.phase), view.boss.variant, locale)
       : '';
   phaseNote.hidden = !noteText;
   if (phaseNote.textContent !== noteText) phaseNote.textContent = noteText;
   $('boss-panel').hidden = view.phase !== 'combat';
   $('deadline').textContent = clock((view.boss.deadline - view.combatTick) / 30);
   const help = $('signature-help'),
-    helpText = signatureHelp(view, locale);
+    helpText = [signatureHelp(view, locale),view.phase==='combat'&&view.run.difficulty==='hellish'?t('ui.lavaHelp'):''].filter(Boolean).join(' · ');
   help.hidden = !helpText;
   if (help.textContent !== helpText) help.textContent = helpText;
   const accord = $('accord');
@@ -479,7 +488,7 @@ function update(view: View) {
         seconds: Math.max(0, Math.ceil((p.downUntil - view.combatTick) / 30)),
       }) +
       ' · ' +
-      (inputOptions.interactMode === 'toggle'
+      (!combatReviveFraction(view.run.difficulty) ? t('ui.reviveOff') : inputOptions.interactMode === 'toggle'
         ? profileText(locale, 'toggleRevive', {
             binding:
               bindingLabel(inputOptions.bindings.interact[0]) +
@@ -503,7 +512,7 @@ function update(view: View) {
   else if (session.status === 'ui.errorSave') $('status').textContent = t('ui.errorSave');
   else if (!['ui.reconnecting', 'ui.errorNetwork'].includes(session.status))
     $('status').textContent = '';
-  audio.setEncounterIntensity(view.boss.phase, view.boss.variant);
+  audio.setEncounterIntensity(bossPatternPhase(view.boss.id,view.boss.variant,view.boss.phase), view.boss.variant);
   if (view.phase !== lastPhase) {
     lastPhase = view.phase;
     void audio.loop(view.phase === 'combat', view.boss.id);
@@ -606,7 +615,7 @@ function renderOverlay(view: View, p: PlayerView) {
   overlay.dataset.phase = view.phase;
   overlay.innerHTML = `<section class="dialog ${view.phase === 'lobby' || view.phase === 'shop' ? 'wide' : ''}" role="dialog" aria-modal="true" aria-labelledby="phase-heading"><div class="section-heading"><h2 id="phase-heading" tabindex="-1">${esc(title)}</h2><span id="phase-time"></span></div>${body}</section>`;
   if (['lobby', 'shop'].includes(view.phase))
-    bindShop(overlay, p, (request) => session?.purchase(request), supplyBindings(), settings.branchingTree);
+    bindShop(overlay, p, (request) => session?.purchase(request), supplyBindings(), settings.branchingTree,view.run.difficulty);
   overlay.querySelectorAll<HTMLButtonElement>('[data-vote]').forEach(
     (button) =>
       (button.onclick = () => {
@@ -637,7 +646,7 @@ function renderOverlay(view: View, p: PlayerView) {
 const supplyBindings = () =>
   [1, 2, 3].map((n) => bindingLabel(inputOptions.bindings[('supply' + n) as 'supply1'][0]));
 function shop(p: PlayerView) {
-  return '<div class="loadout-editor">' + shopMarkup(p, supplyBindings(), settings.branchingTree) + '</div>';
+  return '<div class="loadout-editor">' + shopMarkup(p, supplyBindings(), settings.branchingTree,session?.view?.run.difficulty??'normal') + '</div>';
 }
 async function leave() {
   controls?.clear();

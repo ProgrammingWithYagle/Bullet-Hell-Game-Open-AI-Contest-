@@ -1,3 +1,4 @@
+import {bossPatternPhase} from './encounter-policy.ts';
 import type { Boss } from './game.ts';
 import { DT, HZ, type Vec, type Warning } from './protocol.ts';
 import { clamp, distance, moveBody, segmentRect, type Rect } from './geometry.ts';
@@ -34,6 +35,7 @@ export function constablePattern({
   obstacles,
   attack: a,
 }: PatternContext) {
+  const phase=bossPatternPhase(boss.id,boss.variant,boss.phase);
   const warnings: PendingWarning[] = [];
   const aim = Math.atan2(target.y - boss.y, target.x - boss.x);
   const release = now + ticks(a.telegraph);
@@ -71,7 +73,7 @@ export function constablePattern({
     });
   }
   if (a.kind === 'zone') {
-    const count = Math.min(boss.phase >= 3 ? 5 : 4, a.count);
+    const count = Math.min(phase >= 3 ? 5 : 4, a.count);
     // A spaced line, rather than overlapping randomly placed disks. No arena-wide closure.
     for (let n = 0; n < count; n++) {
       const offset = (n - (count - 1) / 2) * 160;
@@ -101,10 +103,10 @@ export function constablePattern({
         until: release + ticks(a.duration ?? 2.4),
       });
     }
-  } else if (boss.phase === 0) {
+  } else if (phase === 0) {
     volley('fan', boss, aim, a.count, radians(a.arc ?? 90), release);
     volley('fan', boss, aim + side * radians(12), a.count, radians(72), release + ticks(0.4));
-  } else if (boss.phase === 1) {
+  } else if (phase === 1) {
     // Opposed flank origins make the trajectories cross at the warned target position.
     for (const flank of [-1, 1]) {
       const origin = openOrigin({
@@ -124,7 +126,7 @@ export function constablePattern({
     }
   } else {
     const gap = radians(a.gap ?? 95);
-    const waves = boss.phase >= 3 || boss.variant === 'brutal' ? 3 : 2;
+    const waves = phase >= 3 || boss.variant === 'brutal' ? 3 : 2;
     for (let wave = 0; wave < waves; wave++)
       volley(
         'ring',
@@ -136,10 +138,10 @@ export function constablePattern({
       );
   }
   if (boss.variant === 'brutal' && a.kind !== 'zone') {
-    if (boss.phase === 1) {
+    if (phase === 1) {
       // A new delayed ring changes the follow-up response from crossing to a shared open wedge.
       volley('ring', boss, aim, Math.max(12, a.count + 4), radians(110), release + ticks(0.85));
-    } else if (boss.phase === 0 || boss.phase === 3) {
+    } else if (phase === 0 || phase === 3) {
       const last = Math.max(...warnings.map((w) => w.at));
       for (const flank of [-1, 1]) {
         const origin = openOrigin({
@@ -177,6 +179,7 @@ export function moveConstable(
     (now >= boss.castAt && now < boss.castEndsAt)
   )
     return;
+  const phase=bossPatternPhase(boss.id,boss.variant,boss.phase);
   const center = { x: bounds.x + bounds.width / 2, y: bounds.y + bounds.height / 2 };
   const target = targets.reduce<Vec | undefined>(
     (best, p) => (!best || distance(boss, p) < distance(boss, best) ? p : best),
@@ -187,12 +190,12 @@ export function moveConstable(
     x: center.x + Math.cos(theta) * bounds.width * 0.27,
     y: center.y - Math.sin(theta) * bounds.height * 0.23,
   };
-  if (boss.phase === 1 && target) {
+  if (phase === 1 && target) {
     const flank = Math.floor(now / (HZ * 4)) % 2 ? 1 : -1;
     const angle = Math.atan2(target.y - boss.y, target.x - boss.x) + (flank * Math.PI) / 2;
     goal = { x: target.x + Math.cos(angle) * 340, y: target.y + Math.sin(angle) * 340 };
   }
-  if (boss.phase >= 2 && target) {
+  if (phase >= 2 && target) {
     const away = Math.atan2(boss.y - target.y, boss.x - target.x);
     goal = {
       x: target.x + Math.cos(away + Math.sin(theta) * 0.7) * 210,
@@ -204,7 +207,7 @@ export function moveConstable(
     x: clamp(goal.x, bounds.x + radius, bounds.x + bounds.width - radius),
     y: clamp(goal.y, bounds.y + radius, bounds.y + bounds.height - radius),
   };
-  const speed = [56, 76, 96, 108][Math.min(3, boss.phase)];
+  const speed = [56, 76, 96, 108][Math.min(3, phase)];
   const angle = Math.atan2(goal.y - boss.y, goal.x - boss.x);
   let best = { x: boss.x, y: boss.y },
     score = -Infinity;

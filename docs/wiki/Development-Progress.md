@@ -1,6 +1,6 @@
 # Development progress
 
-Updated 2026-10-25 for **2026.10.25-skill-map**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
+Updated 2026-10-25 for **2026.10.25-difficulty-pressure**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
 
 63 playable identities: 62 ordinary and 1 secret. Three ordinary bosses in every one of fifty subtiers requires 150 ordinary identities, plus secrets; 88 additional ordinary bosses remain.
 
@@ -10,12 +10,15 @@ Updated 2026-10-25 for **2026.10.25-skill-map**. These counts track specific req
 | Existing-boss phase / mobility / Brutal quality passes | 1 / 60 | 59 | Constable implementation completed; second human review requested. Other 59 await assessment or redesign. |
 | Ability-changing class-upgrade revamps | 0 / 7 | 7 | Seven existing class kits are playable. This requested upgrade pass has not shipped. |
 | Optional large branching skill-tree view | 1 / 1 | 0 | Optional all-54-skill map implemented for all seven classes with settings toggle, bounded zoom, scrolling and keyboard navigation. Classic remains the default; rendered/human/device/native-language review remains open. |
-| Secondary-map topology revamps | 5 / 5 | 0 | Five different layouts installed and collision/reachability checked. Detailed new-layout human acceptance remains open. |
+| Secondary-map topology revamps | 5 / 5 | 0 | Five layouts installed; difficulty-dependent cover and Hellish lava added across all six maps with shared collision/prediction. Detailed rendered/human/device acceptance remains open. |
 | Map ground-art deliveries | 6 / 6 | 0 | Six ground deliveries installed. Limited Normal/Constable readability feedback is positive. |
-| Early Watch motion and encounter integration | 3 / 3 | 0 | Three original encounters, 36 selected motion poses, individual themes and fifteen-locale help implemented. Rendered, human balance and listening review remain open. |
+| Early Watch motion and encounter integration | 3 / 3 | 0 | Three encounters, 36 selected poses, individual themes and fifteen-locale help implemented. Limited 5179 phase/pacing feedback informed the new two-phase/difficulty pass; its human comparison, rendered and listening review remain open. |
 
 ## Latest human feedback
 
+- Manual feedback on frozen 5179: Early Watch bosses defeated quickly; phase changes were only partly visible. Two longer entry phases, health-bar dividers and a separate transition banner are now implemented and await human comparison.
+- Requested phase shield-break only on Baby/Easy Standard, no shield event in Brutal, full-health Baby revival, half-health Easy/Normal revival, and no combat revives at Hard or above. One authority policy and fifteen-locale difficulty cards now implement these rules.
+- Requested stronger Brutal projectile sequences and harder arena rules: warned repeat volleys, half cover on Hard, no interior cover on Insane/Hellish, Hellish lava and all Hellish bosses Brutal are implemented. Rendered/human balance acceptance remains open.
 - Constable became slightly harder; being one of the easiest bosses is appropriate. Do not turn its Normal form into a high-threat encounter.
 - Phase transitions still felt subtle, and Brutal looked and played too similarly. The latest phase-cue, red treatment and extra-sequence implementation awaits another human check.
 - Music was acceptable but could be a little more intense. A quiet tempo-aligned percussion layer now responds to phase and Brutal; human listening review remains open.

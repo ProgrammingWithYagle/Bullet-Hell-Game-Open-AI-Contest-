@@ -1,10 +1,11 @@
+import {combatReviveFraction} from '../shared/encounter-policy.ts';
 import { t, number } from './i18n.ts';
 import { data } from '../shared/game.ts';
-export function supplyText(id: string) {
+export function supplyText(id: string,difficulty='normal') {
   const item = data.supplies.find((s) => s.id === id)!;
   return t('supply.' + id + '.description', {
     amount: ['moveSpeed', 'revive', 'abilityCooldown'].includes(item.effect)
-      ? t('template.percent', { value: number(item.amount * 100) })
+      ? t('template.percent', { value: number((item.effect==='revive'?combatReviveFraction(difficulty):item.amount) * 100) })
       : number(item.amount),
     duration: t('template.seconds', { value: number(item.duration) }),
     maximum: number(item.maximumStack),

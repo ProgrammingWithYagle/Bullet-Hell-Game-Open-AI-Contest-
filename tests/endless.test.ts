@@ -464,7 +464,7 @@ function finish(g: Game, accords = 3) {
   }
   return g;
 }
-test('Normal+ campaign unlock banks victory before offering, requires three Accords and keeps easy/endless locked', () => {
+test('Normal+ timeout-free campaign victory banks before the offer and keeps Easy locked without requiring removed Accords', () => {
   const yes = finish(campaign());
   assert.equal(yes.phase, 'secretOffer');
   assert.equal(yes.campaignBank!.encounters, 3);
@@ -475,35 +475,20 @@ test('Normal+ campaign unlock banks victory before offering, requires three Acco
     assert.equal(no.phase, 'victory');
     assert.equal(no.secretStatus, 'locked');
   }
-  assert.equal(finish(campaign(), 2).phase, 'victory');
+  assert.equal(finish(campaign(), 0).phase, 'secretOffer');
   const timeout = campaign();
   timeout.timeouts = 1;
   assert.equal(finish(timeout).phase, 'victory');
 });
-test('three actual solo Accord holds satisfy the optional-finale condition without a specific class', () => {
-  const g = new Game({ maxPlayers: 1 }),
-    p = g.addPlayer('p', 'Accord', 'assassin');
-  g.start();
-  p.invulnerableUntil = 1e9;
-  g.boss.deadline = 1e9;
-  for (let n = 0; n < 3; n++) {
-    if (n === 2) {
-      g.boss.health = 0;
-      g.step();
-      while (g.phase !== 'combat') {
-        g.phaseEnds = g.tick;
-        g.step();
-      }
-      p.invulnerableUntil = 1e9;
-    }
-    g.boss.health = g.boss.maxHealth * (n === 1 ? 0.38 : 0.74);
-    g.step();
-    assert(g.accord);
-    p.x = g.accord!.points[0].x;
-    p.y = g.accord!.points[0].y;
-    advance(g, 60);
+test('three actual Easy Standard shield holds still award genuine Accords across separate encounters', () => {
+  const g=new Game({difficulty:'easy',mode:'endless',maxPlayers:1}),p=g.addPlayer('p','Accord','assassin');g.start();
+  for(let n=0;n<3;n++) {
+    if(n){g.boss.health=0;g.step();while(g.phase!=='combat'){g.phaseEnds=g.tick;g.step();}}
+    p.invulnerableUntil=1e9;g.boss.deadline=1e9;
+    g.boss.health=g.boss.maxHealth*.49;g.step();assert(g.accord);
+    p.x=g.accord.points[0].x;p.y=g.accord.points[0].y;advance(g,60);
   }
-  assert.equal(g.accords, 3);
+  assert.equal(g.accords,3);
 });
 test('each survivor may bank and leave while willing allies continue; only consenting entrants scale the secret', () => {
   const g = finish(campaign('normal', 2)),
@@ -653,7 +638,7 @@ test('all ten bosses execute actual Normal and Brutal phases on real arena geome
             g.boss.maxHealth * (brutal ? [1, 0.74, 0.49, 0.24][phase] : [1, 0.74, 0.39][phase]);
           g.step();
           assert.equal(g.boss.phase, phase);
-          g.accord!.until = g.combatTick;
+          assert.equal(g.accord,null);
           g.step();
         }
         let seen = false;

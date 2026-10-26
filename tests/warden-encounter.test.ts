@@ -7,8 +7,8 @@ import { PROTOCOL } from '../src/shared/protocol.ts';
 import { sampleWarden, wrappedAngle } from '../src/shared/warden-signature.ts';
 import { wardenCombatPose, wardenArt } from '../src/client/warden-presentation.ts';
 
-function encounter(variant: 'normal' | 'brutal' = 'normal', protectedPlayer = true) {
-  const lobby = new Game({ seed: 583, maxPlayers: 1, mode: 'endless' });
+function encounter(variant: 'normal' | 'brutal' = 'normal', protectedPlayer = true,difficulty='normal') {
+  const lobby = new Game({ difficulty,seed: 583, maxPlayers: 1, mode: 'endless' });
   lobby.addPlayer('solo', 'Mara', 'soldier');
   const save = lobby.offlineCheckpoint()!;
   Object.assign(save.selectedContract, classifiedContract('lantern-warden'));
@@ -96,7 +96,7 @@ test('Warden fan/zone casts use their own radius, duration, damage and rest wind
   assert(fan && zone && actualZone && hostileShots);
 });
 
-test('Warden Brutal scales health/deadline/contact damage and fourth phase adds the authored delayed sweep', () => {
+test('Warden Brutal scales health/deadline/contact damage and second visible phase retains the authored delayed sweep', () => {
   const normal = encounter('normal', false),
     brutal = encounter('brutal', false);
   assert.equal(brutal.boss.maxHealth, normal.boss.maxHealth * 2);
@@ -112,8 +112,8 @@ test('Warden Brutal scales health/deadline/contact damage and fourth phase adds 
   );
   const game = encounter('brutal');
   game.boss.health = game.boss.maxHealth * 0.2;
-  for (let tick = 0; tick < 1000 && game.boss.phase < 3; tick++) game.step();
-  assert.equal(game.boss.phase, 3);
+  for (let tick = 0; tick < 1000 && game.boss.phase < 1; tick++) game.step();
+  assert.equal(game.boss.phase, 1);
   for (let tick = 0; tick < 75; tick++) game.step();
   assert.equal(game.signatures.length, 2);
   assert(game.signatures.every((sample) => sample.phase === 'active'));
@@ -125,10 +125,10 @@ test('Warden Brutal scales health/deadline/contact damage and fourth phase adds 
   );
 });
 
-test('a successful Accord removes the sweep and restarts with a complete new tell after stagger', () => {
-  const game = encounter(),
+test('an Easy Standard Accord removes the sweep and restarts with a complete new tell after stagger', () => {
+  const game = encounter('normal',true,'easy'),
     player = game.players.get('solo')!;
-  game.boss.health = game.boss.maxHealth * 0.7;
+  game.boss.health = game.boss.maxHealth * 0.49;
   player.x = 560;
   player.y = 550;
   for (let tick = 0; tick < 60; tick++) game.step();

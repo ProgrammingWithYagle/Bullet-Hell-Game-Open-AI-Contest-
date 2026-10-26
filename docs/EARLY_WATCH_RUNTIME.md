@@ -1,12 +1,12 @@
 # Early Watch implementation
 
-Build `2026.10.25-early-watch`, protocol 15. Ashen Usher **1--**, Brass Toad **1-** and Ragpicker's Kite **1** are original playable identities. The roster is **63 (62 ordinary, one secret)**; **88** new ordinary identities remain. Existing-boss quality work remains 59, class ability revamps seven and the optional branching view one. Counts come from the shared development ledger.
+Current build `2026.10.25-difficulty-pressure`, protocol 16. The original integration checkpoint was protocol 15. Ashen Usher **1--**, Brass Toad **1-** and Ragpicker's Kite **1** are original playable identities. The roster is **63 (62 ordinary, one secret)**; **88** new ordinary identities remain. Existing-boss quality work remains 59, class ability revamps seven and the optional branching view is implemented with review open. Counts come from the shared development ledger.
 
 | Identity | Ordinary phases and counterplay | Extra Brutal mechanics |
 | --- | --- | --- |
-| Ashen Usher | Seating alternates two ticket-stand volleys; Dismissal crosses the rows; Final Call repeats the sweep. The usher walks between calls. Destroying a stand cancels every delayed volley from it. | Third stand behind the target, delayed closing volley and final gapped-ring follow-up |
-| Brass Toad | Drizzle has one locked hop and a wide-gap projectile ripple; Downpour has two separated hops; Dry Mouth follows with a locked tongue lane. Landing circles deal actual damage. Destroying the drain plug cancels the tongue. | A delayed second ripple after each landing, tongue from the opener and three hops in the fourth phase |
-| Ragpicker's Kite | Draft has one wind corridor; Crosswind has opposing corridors with a quiet center; Unravelling has three staggered wing fans. The kite orbits between casts. Break a cloth pin to cancel its corridor. | Delayed diagonal wind corridor and a final gapped-ring volley |
+| Ashen Usher | Seating alternates two ticket-stand volleys; the final half-health phase combines crossed rows and repeated sweeps. The usher walks between calls. Destroying a stand cancels every delayed volley from it. | Third stand behind the target, delayed closing volley and final gapped-ring follow-up |
+| Brass Toad | Drizzle has one locked hop and a wide-gap projectile ripple; the final half-health phase adds separated hops and a locked tongue lane. Landing circles deal actual damage. Destroying the drain plug cancels the tongue. | A delayed second ripple after each landing, tongue from the opener and three hops in the final phase |
+| Ragpicker's Kite | Draft has one wind corridor; the final half-health phase has opposing corridors, a quiet center and staggered wing fans. The kite orbits between casts. Break a cloth pin to cancel its corridor. | Delayed diagonal wind corridor and a final gapped-ring volley |
 
 Warnings lock origins, landing positions and directions before release. Props are placed clear of masonry, the boss body and each other, so the body cannot absorb shots aimed at an overlapped weak point. Phase changes and successful Accords reset the director, clearing outgoing cues. The existing global hostile-projectile cap still applies. Global difficulty scales pressure/resources; identity grades stay fixed.
 
@@ -39,3 +39,5 @@ Frozen preview ports 5174–5178 remain separate. The protocol-14 Constable resp
 The separate preview at **http://127.0.0.1:5179/** serves exact runtime source `bbf909ade44e595f025956783a4babd868b1840c`, protocol 15/build `2026.10.25-early-watch`. Its 1,666 files / 684,857,534 bytes match the verified production artifacts. Seventeen raw HTTP asset checks pass; the older 5178 index hash remains unchanged. Root: `C:\Users\yigal\Documents\Codex\2026-10-25\continue-grave-accord-in-this-same\work\playtest-early-watch-bbf909a`. Process receipt is `reviews/early-watch-integration-2026-10-25/preview-process.json`; inspect actual port ownership before touching it. Preserve this preview alongside 5174–5178. No rendered or human acceptance is recorded.
 
 Choose New Run, any class/map, Solo and one Early Watch boss; keep global difficulty Normal and compare Standard/Brutal with equal choices. The 5178 Constable comparison remains independent.
+
+Current two-phase pacing, difficulty assistance restrictions, warned repeats and arena rules are specified in [Difficulty and phases](DIFFICULTY_AND_PHASES.md). Limited manual 5179 feedback informed this response; its rendered/human balance acceptance remains open.

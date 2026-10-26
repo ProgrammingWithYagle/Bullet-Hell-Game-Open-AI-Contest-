@@ -322,10 +322,10 @@ export class CombatScene extends Phaser.Scene {
       dt = Math.min(delta, 100) / 1000,
       now = view.combatTick,
       animationTime = this.survivorActions.timeAt(frameNow);
-    if (this.lastArenaId !== view.arenaId) {
-      this.lastArenaId = view.arenaId;
-      const map = runtimeArena(view.arenaId);
-      applyArenaGround(this.arenaImage, map.id);
+    if (this.lastArenaId !== view.arenaId+':'+view.run.difficulty) {
+      this.lastArenaId = view.arenaId+':'+view.run.difficulty;
+      const map = runtimeArena(view.arenaId,view.run.difficulty);
+      applyArenaGround(this.arenaImage, map.id,view.run.difficulty);
       this.arenaBackdrop.clear();
       const ground = this.arenaGround;
       ground.clear();
@@ -339,7 +339,7 @@ export class CombatScene extends Phaser.Scene {
           .fillRect(0, 0, 1600, 1000)
           .fillStyle(color, 1)
           .fillRect(map.bounds.x, map.bounds.y, map.width, map.height);
-        for (const obstacle of arenaCoverPlan(map.id)) {
+        for (const obstacle of arenaCoverPlan(map.id,view.run.difficulty)) {
           const image = this.add.image(
             obstacle.x + obstacle.width / 2,
             obstacle.y + obstacle.height / 2,
@@ -440,6 +440,26 @@ export class CombatScene extends Phaser.Scene {
       }
     }
     for (const cue of view.bossCues) {
+      if(cue.kind==='arena-lava') {
+        const active=now>=cue.at;
+        h.fillStyle(active?0x532818:0x3b3028,.92).fillCircle(cue.x,cue.y,cue.radius);
+        h.lineStyle(5,active?0xffc36a:0xe2cf92,1).strokeCircle(cue.x,cue.y,cue.radius);
+        h.lineStyle(2,0xf6ad55,.8);
+        for(let row=-.65;row<=.65;row+=.32){
+          const half=Math.sqrt(1-row*row)*cue.radius*.8;
+          h.lineBetween(cue.x-half,cue.y+row*cue.radius,cue.x+half,cue.y+row*cue.radius);
+        }
+        f.fillStyle(0xffddb0,1).fillTriangle(cue.x,cue.y-17,cue.x-11,cue.y+5,cue.x+11,cue.y+5);
+        f.fillStyle(0x43241c,1).fillRect(cue.x-1.5,cue.y-10,3,8);
+        continue;
+      }
+      if(cue.kind==='brutal-echo') {
+        const progress=Math.max(0,Math.min(1,(now-cue.beganAt)/(cue.at-cue.beganAt)));
+        h.lineStyle(2,0xf5bc72,.5);
+        for(const angle of cue.angles)h.lineBetween(cue.x+Math.cos(angle)*18,cue.y+Math.sin(angle)*18,cue.x+Math.cos(angle)*130,cue.y+Math.sin(angle)*130);
+        h.lineStyle(3,0xffd7a0,.95).strokeCircle(cue.x,cue.y,12+progress*10);
+        continue;
+      }
       if (cue.kind === 'charge' || cue.kind === 'scent' || cue.kind === 'trail') {
         const dx = cue.x2 - cue.x1,
           dy = cue.y2 - cue.y1,
@@ -709,7 +729,7 @@ export class CombatScene extends Phaser.Scene {
       f,
       view.bossCues.filter((c): c is ServiceCue => c.kind.startsWith('service-')),
       now,
-      runtimeArena(view.arenaId).bounds,
+      runtimeArena(view.arenaId,view.run.difficulty).bounds,
       this.reduceMotion,
       this.hitboxes,
     );

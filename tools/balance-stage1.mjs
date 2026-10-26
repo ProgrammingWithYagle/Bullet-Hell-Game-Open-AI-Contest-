@@ -34,18 +34,19 @@ for(const mode of c.modes.filter(m=>m.kind!=='endless'))for(let j=0;j<mode.encou
   const pool=c.bosses.filter(b=>ids.includes(b.id)&&(targetThreat===1?ratings.get(b.id).level===1:Math.abs(ratings.get(b.id).level-targetThreat)<=Math.max(1,nearest)));
   for(const boss of pool){
     const {level:threat,subtier}=ratings.get(boss.id);
-    const armorAttack=boss.phases[2].attacks.find(a=>a.kind==='armor');const armorUptime=armorAttack?(armorAttack.duration/armorAttack.interval)*armorAttack.resistance:0;
+    const armorAttack=boss.phases.at(-1).attacks.find(a=>a.kind==='armor');const armorUptime=armorAttack?(armorAttack.duration/armorAttack.interval)*armorAttack.resistance:0;
     // A declared analytical assumption, not measured player accuracy or playtest evidence.
     const attackUptime=0.65*(boss.damageWindowFraction??1),armorMultiplier=1-armorUptime;
-    const hp=c.rules.bossHealthBase*c.rules.bossHealthThreatGrowth**(Math.min(10,threat)-1)*(1+subtier*.08)*(boss.timer/120)*boss.healthFactor*difficulty.health*(mode.bossHealthMultiplier??1);
+    const variant=difficulty.id==='hellish'?'brutal':'normal',variantHealth=variant==='brutal'?c.rules.brutal.healthMultiplier:1,timer=boss.timer*(variant==='brutal'?c.rules.brutal.deadlineMultiplier:1);
+    const hp=variantHealth*c.rules.bossHealthBase*c.rules.bossHealthThreatGrowth**(Math.min(10,threat)-1)*(1+subtier*.08)*(boss.timer/120)*boss.healthFactor*difficulty.health*(mode.bossHealthMultiplier??1);
     const effectiveDps=build.dps*attackUptime*armorMultiplier,estimatedSeconds=hp/effectiveDps;
-    rows.push({mode:mode.id,fight:j+1,classId:cl.id,difficulty:difficulty.id,boss:boss.id,threat,subtier,sp,coins,weapon:build.weapon,depths:build.depths.join('/'),spentCoins:build.spentCoins,sustainedDps:+build.dps.toFixed(2),attackUptime,armorMultiplier:+armorMultiplier.toFixed(4),bossHealth:+hp.toFixed(2),estimatedSeconds:+estimatedSeconds.toFixed(2),timer:boss.timer,deadlineRatio:+(estimatedSeconds/boss.timer).toFixed(4)});
+    rows.push({mode:mode.id,fight:j+1,classId:cl.id,difficulty:difficulty.id,boss:boss.id,variant,threat,subtier,sp,coins,weapon:build.weapon,depths:build.depths.join('/'),spentCoins:build.spentCoins,sustainedDps:+build.dps.toFixed(2),attackUptime,armorMultiplier:+armorMultiplier.toFixed(4),bossHealth:+hp.toFixed(2),estimatedSeconds:+estimatedSeconds.toFixed(2),timer,deadlineRatio:+(estimatedSeconds/timer).toFixed(4)});
   }
 }
 const fields=Object.keys(rows[0]);fs.mkdirSync(path.join(root,'docs/balance'),{recursive:true});
 fs.writeFileSync(path.join(root,'docs/balance/uptime-model.csv'),[fields.join(','),...rows.map(r=>fields.map(k=>r[k]).join(','))].join('\n')+'\n');
 const misses=rows.filter(r=>r.deadlineRatio>1),worst=rows.toSorted((a,b)=>b.deadlineRatio-a.deadlineRatio).slice(0,20);
-const report={schemaVersion:1,kind:'Analytical design model; not gameplay measurement',assumptions:{movementAndAimUptime:0.65,shotgunPelletHitFraction:0.7,abilitiesAndUltimatesExcluded:true,accordBreakBenefitsExcluded:true,mutationsExcluded:true,optimization:'Conservative legal foundation-path prefixes with one capstone; class weapons and affordable damage/fire-rate upgrades. Specialization alternatives are excluded here and validated separately. This is an offensive feasibility witness, not exhaustive optimization or a recommendation for every build.',armor:'Worst-phase repeated armor duty cycle; ignores weak-point bonus. Boss health is solo; group scaling is sublinear.'},rows:rows.length,deadlineMisses:misses.length,worst,passed:misses.length===0};
+const report={schemaVersion:1,kind:'Analytical design model; not gameplay measurement',assumptions:{movementAndAimUptime:0.65,shotgunPelletHitFraction:0.7,abilitiesAndUltimatesExcluded:true,hellishForcedBrutalIncluded:true,accordBreakBenefitsExcluded:true,mutationsExcluded:true,optimization:'Conservative legal foundation-path prefixes with one capstone; class weapons and affordable damage/fire-rate upgrades. Specialization alternatives are excluded here and validated separately. This is an offensive feasibility witness, not exhaustive optimization or a recommendation for every build.',armor:'Worst-phase repeated armor duty cycle; ignores weak-point bonus. Boss health is solo; group scaling is sublinear.'},rows:rows.length,deadlineMisses:misses.length,worst,passed:misses.length===0};
 report.fixedThreatClassificationVersion=classifications.classificationVersion;
 report.fixedThreatProfiles=classifications.entries;
 report.contentRevision=JSON.parse(fs.readFileSync(path.join(root,'content/revision.json'),'utf8')).sha256;

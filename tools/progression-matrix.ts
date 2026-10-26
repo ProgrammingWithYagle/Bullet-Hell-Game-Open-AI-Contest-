@@ -145,7 +145,8 @@ export function progressionMatrix() {
           recordProfileView(viewOf(g, 'solo'), 'solo', store);
           assert.equal(summary(loadProfile(store)).classes[classId].clears, length);
         } else {
-          assert.equal(g.phase, 'victory');
+          if(g.phase==='secretOffer')for(const survivor of g.players.values())g.vote(survivor.id,0);
+        assert.equal(g.phase, 'victory');
           assert.equal(p.totalSp, 27);
           assert.equal(g.campaignBank!.encounters, length);
           assert.equal(s.campaigns, 1);

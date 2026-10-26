@@ -43,6 +43,7 @@ test('Midnight Circuit completes ten distinct fixed-grade fights with a reserved
       g.boss.health = 0;
       g.step();
       if (encounter === 9) {
+        if((g.phase as string)==='secretOffer')for(const survivor of g.players.values())g.vote(survivor.id,0);
         assert.equal(g.phase, 'victory');
         assert.equal(g.encounter, 10);
         assert.equal(g.completedBossIds.size, 10);
@@ -87,15 +88,16 @@ test('every Midnight identity executes all Normal/Brutal phases on actual maps a
       g.start();
       [...g.players.values()][0].invulnerableUntil = 1e9;
       g.boss.deadline = 1e9;
-      const phases = brutal ? 4 : 3;
+      const definition=data.bosses.find(b=>b.id===id)!;
+      const schedule=brutal?definition.variants.brutal.phases:definition.phases;
+      const phases = schedule.length;
       for (let phase = 0; phase < phases; phase++) {
         if (phase) {
           g.boss.health =
-            g.boss.maxHealth * (brutal ? [1, 0.74, 0.49, 0.24][phase] : [1, 0.74, 0.39][phase]);
+            g.boss.maxHealth * (schedule[phase].healthThreshold-.01);
           g.step();
           assert.equal(g.boss.phase, phase);
-          assert(g.accord);
-          g.accord!.until = g.combatTick;
+          assert.equal(g.accord,null);
           g.step();
         }
         let observed = false;

@@ -1,6 +1,6 @@
 import { runtimeArena } from '../shared/arena-layouts.ts';
-export function arenaCoverPlan(id: string) {
-  const arena = runtimeArena(id);
+export function arenaCoverPlan(id: string,difficulty='normal') {
+  const arena = runtimeArena(id,difficulty);
   if (id === 'gatehouse') return [];
   if (
     !arena.props.length ||

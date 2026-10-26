@@ -165,7 +165,7 @@ test('Medic ultimate channels, returns an eliminated ally and freezes its cooldo
   assert.equal(a.status, 'eliminated');
   advance(g, 30);
   assert.equal(a.status, 'active');
-  assert.equal(a.health, a.maxHealth * 0.6);
+  assert.equal(a.health, a.maxHealth * 0.5);
   const combat = g.combatTick,
     ready = m.ultimateAt;
   g.phase = 'shop';

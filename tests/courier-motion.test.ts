@@ -15,8 +15,8 @@ import {
 } from '../src/client/boss-textures.ts';
 import provenance from '../docs/courier-actions-2026-10-25.json';
 const sha = (file: string) => createHash('sha256').update(readFileSync(file)).digest('hex');
-function fixture(variant: 'normal' | 'brutal' = 'normal') {
-  const lobby = new Game({ openingBossId: 'courier', mode: 'endless', maxPlayers: 1, seed: 981 });
+function fixture(variant: 'normal' | 'brutal' = 'normal',difficulty='normal') {
+  const lobby = new Game({difficulty, openingBossId: 'courier', mode: 'endless', maxPlayers: 1, seed: 981 });
   lobby.addPlayer('solo', 'Mara', 'soldier');
   const save = lobby.offlineCheckpoint()!;
   save.selectedContract.variant = variant;
@@ -121,8 +121,8 @@ test('Courier idle shows all four breathing poses and a real friendly hit starts
 });
 
 test('a real successful Accord plays the upright entry once then loops three weak Courier poses for the full authoritative stagger', () => {
-  const game = fixture();
-  game.boss.health = game.boss.maxHealth * 0.7;
+  const game = fixture('normal','easy');
+  game.boss.health = game.boss.maxHealth * 0.49;
   const player = game.players.get('solo')!;
   player.x = 560;
   player.y = 550;

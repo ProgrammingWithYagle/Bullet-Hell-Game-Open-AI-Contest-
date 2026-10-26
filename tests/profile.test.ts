@@ -174,7 +174,7 @@ test('secret failure retains campaign mastery; a later stale view never removes 
   assert.equal(summary(loadProfile(store)).totalClears, 4);
 });
 test('teammate channel rescues count once and solo self-revival does not award cooperation', () => {
-  const g = campaign();
+  const g = campaign('normal');
   g.addPlayer('late', 'Late', 'medic');
   g.boss.health = 0;
   g.step();
@@ -192,7 +192,7 @@ test('teammate channel rescues count once and solo self-revival does not award c
   }
   assert.equal(a.progress.rescues, 1);
   assert.equal(b.status, 'active');
-  const solo = campaign();
+  const solo = campaign('normal');
   const p = solo.players.get('solo')!;
   p.status = 'downed';
   p.downUntil = 1e9;
@@ -212,7 +212,7 @@ test('protocol-12 Practice migration preserves the secret offer and personal sol
   delete save.settings.runId;
   delete save.player.progress;
   const restored = Game.restoreOffline(save);
-  assert.equal(PROTOCOL, 15);
+  assert.equal(PROTOCOL, 16);
   assert.equal(restored.phase, 'secretOffer');
   assert.deepEqual(restored.campaignBank, g.campaignBank);
   assert.deepEqual(restored.endless.state, g.endless.state);

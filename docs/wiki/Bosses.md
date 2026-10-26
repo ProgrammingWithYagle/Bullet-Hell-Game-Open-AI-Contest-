@@ -4,7 +4,7 @@ Sixty-three bosses are executable in the current source. Each has its own signat
 
 **Each boss has a fixed intrinsic threat grade.** Routes select suitable identities; they do not rerate a boss to match the encounter number. Subtiers use **--, -, no sign, +, ++** for bottom through top tier. Hollow Constable is **1+** and Bell Triplets are **3--**. Brutal uses a separate **B** marker, such as **1+ B**. Secrets display **>10**. Global difficulty and party scaling remain separate.
 
-Brutal uses twice the health and damage, a 1.5× deadline, 1.75× bounty and four phases instead of three. It does not lift the global projectile cap. Higher phase pressure still preserves the signature's counterplay.
+Brutal uses twice the health and damage, a 1.5× deadline and 1.75× bounty. Threat levels 1–2 use two half-health phases in both forms, retaining the final authored signature; higher threats keep three Standard/four Brutal phases. A segmented health bar, phase count and independent transition banner mark changes. Brutal repeats locked projectile volleys in two waves, or three from threat 5, with replicated warnings and bounded queues. Controlled projectiles retain their authored sequence. All Hellish encounters are Brutal. The 4,000-hostile cap remains. [Difficulty rules and scope](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/DIFFICULTY_AND_PHASES.md).
 
 ## Quarantine Run
 

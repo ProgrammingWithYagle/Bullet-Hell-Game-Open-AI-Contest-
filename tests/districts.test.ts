@@ -409,6 +409,7 @@ test('sixteen-fight Pilgrimage restores boundaries, never repeats and reaches th
       g.boss.health = 0;
       g.step();
       if (n === 15) {
+        if((g.phase as string)==='secretOffer')for(const survivor of g.players.values())g.vote(survivor.id,0);
         assert.equal(g.phase, 'victory');
         assert.equal(g.completedBossIds.size, 16);
         break;
@@ -544,8 +545,7 @@ test('every Pilgrimage identity executes all Normal/Brutal phases on actual maps
             g.boss.maxHealth * (brutal ? [1, 0.74, 0.49, 0.24][phase] : [1, 0.74, 0.39][phase]);
           g.step();
           assert.equal(g.boss.phase, phase);
-          assert(g.accord);
-          g.accord!.until = g.combatTick;
+          assert.equal(g.accord,null);
           g.step();
         }
         let observed = false;

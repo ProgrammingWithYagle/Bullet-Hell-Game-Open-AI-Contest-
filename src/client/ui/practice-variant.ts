@@ -6,7 +6,8 @@ export function practiceVariantMarkup(
   variant: string,
   standard: string,
   brutal: string,
+  forced=false,
 ) {
   const words = labels[language as keyof typeof labels] ?? labels.en;
-  return `<label class="name-label" for="practice-variant">${e(words[0])}<select id="practice-variant" aria-describedby="practice-variant-help"><option value="normal" ${variant !== 'brutal' ? 'selected' : ''}>${e(standard)}</option><option value="brutal" ${variant === 'brutal' ? 'selected' : ''}>${e(brutal)}</option></select></label><p class="muted" id="practice-variant-help">${e(words[1])}</p>`;
+  return `<label class="name-label" for="practice-variant">${e(words[0])}<select id="practice-variant" aria-describedby="practice-variant-help" ${forced?'disabled':''}><option value="normal" ${variant !== 'brutal' ? 'selected' : ''}>${e(standard)}</option><option value="brutal" ${variant === 'brutal' ? 'selected' : ''}>${e(brutal)}</option></select></label><p class="muted" id="practice-variant-help">${e(words[1])}</p>`;
 }

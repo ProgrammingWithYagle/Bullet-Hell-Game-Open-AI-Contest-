@@ -34,6 +34,7 @@ function game(
   phase = 0,
   map = "gatehouse",
 ) {
+  phase=Math.min(1,phase);
   const g = createPracticeGame(
     {
       seed: 223,
@@ -48,7 +49,7 @@ function game(
   );
   assert(g.start());
   g.players.get("solo")!.invulnerableUntil = 1e9;
-  g.boss.health = g.boss.maxHealth * [1, 0.74, 0.39, 0.24][phase];
+  g.boss.health = g.boss.maxHealth * [1, 0.49][phase];
   while (g.boss.phase < phase) {
     g.step();
     assert(g.combatTick < 500);
@@ -60,11 +61,12 @@ function game(
   }
   return g;
 }
-test("Early Watch grades, three ordinary phases and extra Brutal geometry execute through real Game casts", () => {
+test("Early Watch grades, two longer phases and late Brutal geometry execute through real Game casts", () => {
   for (const [i, id] of earlyWatchBossIds.entries()) {
     assert.deepEqual(bossThreat(id), { bossId: id, level: 1, subtier: i - 2 });
     for (const form of ["normal", "brutal"] as const)
-      for (let phase = 0; phase < (form === "brutal" ? 4 : 3); phase++) {
+      for (let phase = 0; phase < 2; phase++) {
+        const pattern=phase===0?0:form==='brutal'?3:2;
         const g = game(id, form, phase),
           cues = g.director.cues(),
           live = cues.filter((c) => c.kind !== "early-prop");
@@ -78,12 +80,12 @@ test("Early Watch grades, three ordinary phases and extra Brutal geometry execut
           );
           assert.equal(
             cues.filter((c) => c.kind === "early-volley").length,
-            (phase >= 2 ? 4 : 2) + (form === "brutal" ? 1 : 0),
+            (pattern >= 2 ? 4 : 2) + (form === "brutal" ? 1 : 0),
           );
         } else if (id === "brass-toad")
           assert.equal(
             cues.filter((c) => c.kind === "early-hop").length,
-            phase === 0 ? 1 : phase >= 3 ? 3 : 2,
+            pattern === 0 ? 1 : pattern >= 3 ? 3 : 2,
           );
         else {
           assert.equal(
@@ -249,7 +251,7 @@ test("phase changes cancel outgoing attack cues and every moving body respects a
             distance(weak, g.boss) >
               data.bosses.find((b) => b.id === id)!.radius + weak.radius + 19,
           );
-        g.boss.health = g.boss.maxHealth * 0.74;
+        g.boss.health = g.boss.maxHealth * 0.49;
         g.step();
         assert.equal(g.boss.phase, 1);
         assert(!g.director.cues().some((c) => oldIds.has(c.id)));

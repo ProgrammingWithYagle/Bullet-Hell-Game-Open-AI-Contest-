@@ -215,12 +215,14 @@ test('Ambulance patrols, locks and executes a charge, then exposes its driver fo
   assert(!g.director.cues().some((c) => c.kind === 'driver'));
 });
 
-test('each civic boss executes all normal and Brutal phases, cancels on Accord and cleans on victory/deadline', () => {
+test('each civic boss executes its tier-appropriate phases without a Normal shield event and cleans on victory/deadline', () => {
   for (const id of civicBossIds)
     for (const brutal of [false, true]) {
       const g = encounter(id, brutal);
       g.boss.health = g.boss.maxHealth * 0.2;
-      until(g, () => g.boss.phase === (brutal ? 3 : 2) && !g.accord, 1400);
+      const definition=data.bosses.find(b=>b.id===id)!;
+      const total=(brutal?definition.variants.brutal.phases:definition.phases).length;
+      until(g, () => g.boss.phase === total-1 && !g.accord, 1400);
       assert.equal(g.phase, 'combat');
       assert.equal(g.boss.variant, brutal ? 'brutal' : 'normal');
       g.boss.health = 0;
@@ -263,7 +265,8 @@ test('Quarantine has four nonrepeating regular choices then an actual route fina
       );
       while ((g.phase as string) !== 'combat') g.step();
     }
-    assert.equal(g.phase, 'victory');
+    if(g.phase==='secretOffer')for(const survivor of g.players.values())g.vote(survivor.id,0);
+        assert.equal(g.phase, 'victory');
     assert.equal(seen.size, 5);
   }
 });

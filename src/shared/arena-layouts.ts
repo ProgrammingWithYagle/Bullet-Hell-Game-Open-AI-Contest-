@@ -263,7 +263,7 @@ export const runtimeArenas = catalog.arenas.map((original) => {
     return {
       ...original,
       bounds: { x: 0, y: 0, width: 1600, height: 1000 },
-      cover: original.obstacles,
+      cover: original.id==='gatehouse' ? original.obstacles.slice(0,2) : original.obstacles,
       prop: -1,
       props: [] as number[],
       theme: 'Walled gate courtyard with fountain cover and outer-wall lanes',
@@ -283,8 +283,26 @@ export const runtimeArenas = catalog.arenas.map((original) => {
     theme,
   };
 });
-export function runtimeArena(id: string) {
+function baseArena(id: string) {
   const arena = runtimeArenas.find((a) => a.id === id);
   if (!arena) throw Error('Unknown arena');
   return arena;
+}
+
+export type ArenaLavaCue = {kind:'arena-lava';id:number;x:number;y:number;radius:number;at:number;until:number};
+type RuntimeArena = (typeof runtimeArenas)[number] & {lavaPits:{x:number;y:number;radius:number}[]};
+const difficultyArenas = new Map<string,RuntimeArena>();
+export function runtimeArena(id:string,difficulty='normal'):RuntimeArena {
+  const key=id+':'+difficulty, cached=difficultyArenas.get(key);
+  if(cached)return cached;
+  const arena=baseArena(id),rules=catalog.rules.arenaDifficulty;
+  const cover=rules.noCoverDifficulties.includes(difficulty)?[]:difficulty==='hard'
+    ?arena.cover.filter((_,i)=>i%2===0).slice(0,Math.floor(arena.cover.length*rules.hardCoverFraction))
+    :arena.cover;
+  const walls=arena.obstacles.filter(rect=>!arena.cover.includes(rect));
+  const lavaPits = difficulty===rules.lavaDifficulty ? [[.34,.38],[.66,.38],[.34,.67],[.66,.67]].map(([x,y])=>({
+    x:arena.bounds.x+arena.width*x,y:arena.bounds.y+arena.height*y,radius:Math.min(arena.width,arena.height)*.065,
+  })).filter(pit=>[arena.playerSpawn,arena.bossSpawn].every(spawn=>Math.hypot(spawn.x-pit.x,spawn.y-pit.y)>pit.radius+150)) : [];
+  const value={...arena,cover,obstacles:[...walls,...cover],lavaPits};
+  difficultyArenas.set(key,value);return value;
 }

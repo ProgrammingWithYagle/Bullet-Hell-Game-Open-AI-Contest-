@@ -1,5 +1,7 @@
 # Implementation backlog and contest acceptance map
 
+Latest implemented response: [difficulty and phase pacing](DIFFICULTY_AND_PHASES.md), build 2026.10.25-difficulty-pressure / protocol 16. Human acceptance of the new rules is open; roster and remaining quality/class targets are unchanged.
+
 [Current checkpoint](CHECKPOINT_2026_10_25.md) and [structured progress](DEVELOPMENT_PROGRESS.md) track 88 new ordinary identities, 59 existing-boss assessments/redesigns, seven class-upgrade revamps; the optional branching map is now implemented with review open. Early Watch is integrated with 36 selected poses, three original encounters/themes and fifteen-locale help.
 
 Current source: build 2026.10.25-skill-map, protocol 15. All sixty-three authored boss identities execute across five modes, seven classes, 378 skills, twenty-eight weapons and six distinct map footprints. Every boss has an individual original theme; production motion totals 1,494 production-path animation frames, plus eight retained Constable proof-atlas frames (1,502 selected animation frames in total) across survivors, bosses, parts and minions. The in-game journal and Wiki have concrete synchronized updates. See [Endless and Uncounted runtime](ENDLESS_AND_UNCOUNTED_RUNTIME.md), [Raid](GRAND_RAID_RUNTIME.md) and [Pilgrimage](PILGRIMAGE_RUNTIME.md).

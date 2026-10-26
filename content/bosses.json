@@ -48,36 +48,11 @@
             "duration": 2.4,
             "slow": 0.35
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
-        "healthThreshold": 0.75,
-        "accordBreak": true,
-        "attacks": [
-          {
-            "kind": "cross",
-            "count": 9,
-            "speed": 170,
-            "damage": 12,
-            "interval": 3.8,
-            "telegraph": 1.05,
-            "arc": 60
-          },
-          {
-            "kind": "zone",
-            "count": 3,
-            "speed": 0,
-            "damage": 10,
-            "interval": 6.5,
-            "telegraph": 1.2,
-            "radius": 60,
-            "duration": 2.2,
-            "slow": 0.35
-          }
-        ]
-      },
-      {
-        "healthThreshold": 0.4,
+        "healthThreshold": 0.5,
         "accordBreak": true,
         "attacks": [
           {
@@ -100,7 +75,8 @@
             "duration": 2,
             "slow": 0.35
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "route": "short",
@@ -163,69 +139,12 @@
                 "comboOffsetSeconds": 0
               }
             ],
-            "signatureRepeatOffsetSeconds": 0
-          },
-          {
-            "healthThreshold": 0.75,
-            "accordBreak": true,
-            "attacks": [
-              {
-                "kind": "cross",
-                "count": 9,
-                "speed": 170,
-                "damage": 12,
-                "interval": 3.42,
-                "telegraph": 1.05,
-                "arc": 60,
-                "comboOffsetSeconds": 0
-              },
-              {
-                "kind": "zone",
-                "count": 3,
-                "speed": 0,
-                "damage": 10,
-                "interval": 5.8500000000000005,
-                "telegraph": 1.2,
-                "radius": 60,
-                "duration": 2.2,
-                "slow": 0.35,
-                "comboOffsetSeconds": 0
-              }
-            ],
-            "signatureRepeatOffsetSeconds": 0
+            "signatureRepeatOffsetSeconds": 0,
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
-            "attacks": [
-              {
-                "kind": "ring",
-                "count": 22,
-                "speed": 150,
-                "damage": 12,
-                "interval": 3.9600000000000004,
-                "telegraph": 1.15,
-                "gap": 95,
-                "comboOffsetSeconds": 0
-              },
-              {
-                "kind": "zone",
-                "count": 3,
-                "speed": 0,
-                "damage": 10,
-                "interval": 5.58,
-                "telegraph": 1.4,
-                "radius": 60,
-                "duration": 2,
-                "slow": 0.35,
-                "comboOffsetSeconds": 0
-              }
-            ],
-            "signatureRepeatOffsetSeconds": 0
-          },
-          {
-            "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -250,7 +169,8 @@
                 "slow": 0.35,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -298,32 +218,11 @@
             "interval": 4,
             "telegraph": 0.9
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
-        "healthThreshold": 0.75,
-        "accordBreak": true,
-        "attacks": [
-          {
-            "kind": "charge",
-            "count": 1,
-            "speed": 454,
-            "damage": 18,
-            "interval": 4.5,
-            "telegraph": 1
-          },
-          {
-            "kind": "cross",
-            "count": 22,
-            "speed": 173,
-            "damage": 11,
-            "interval": 3.6,
-            "telegraph": 0.9
-          }
-        ]
-      },
-      {
-        "healthThreshold": 0.4,
+        "healthThreshold": 0.5,
         "accordBreak": true,
         "attacks": [
           {
@@ -342,7 +241,8 @@
             "interval": 3.2,
             "telegraph": 0.9
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "route": "short",
@@ -398,61 +298,12 @@
                 "telegraph": 0.9,
                 "comboOffsetSeconds": 0
               }
-            ]
-          },
-          {
-            "healthThreshold": 0.75,
-            "accordBreak": true,
-            "signatureRepeatOffsetSeconds": 0,
-            "attacks": [
-              {
-                "kind": "charge",
-                "count": 1,
-                "speed": 454,
-                "damage": 18,
-                "interval": 4.05,
-                "telegraph": 1,
-                "comboOffsetSeconds": 0
-              },
-              {
-                "kind": "cross",
-                "count": 22,
-                "speed": 173,
-                "damage": 11,
-                "interval": 3.24,
-                "telegraph": 0.9,
-                "comboOffsetSeconds": 0
-              }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
-            "signatureRepeatOffsetSeconds": 0,
-            "attacks": [
-              {
-                "kind": "charge",
-                "count": 1,
-                "speed": 487,
-                "damage": 18,
-                "interval": 3.6,
-                "telegraph": 1,
-                "comboOffsetSeconds": 0
-              },
-              {
-                "kind": "cross",
-                "count": 24,
-                "speed": 186,
-                "damage": 11,
-                "interval": 2.8800000000000003,
-                "telegraph": 0.9,
-                "comboOffsetSeconds": 0
-              }
-            ]
-          },
-          {
-            "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -473,7 +324,8 @@
                 "telegraph": 0.9,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -533,7 +385,8 @@
             "duration": 3,
             "resistance": 0.5
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -566,7 +419,8 @@
             "duration": 3,
             "resistance": 0.5
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -599,7 +453,8 @@
             "duration": 3,
             "resistance": 0.5
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "route": "long",
@@ -667,11 +522,12 @@
                 "resistance": 0.5,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -704,11 +560,12 @@
                 "resistance": 0.5,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -741,11 +598,12 @@
                 "resistance": 0.5,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -778,7 +636,8 @@
                 "resistance": 0.5,
                 "comboOffsetSeconds": 2.5
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -830,34 +689,11 @@
             "interval": 6,
             "telegraph": 1
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
-        "healthThreshold": 0.75,
-        "accordBreak": true,
-        "attacks": [
-          {
-            "kind": "summon",
-            "count": 6,
-            "speed": 86,
-            "damage": 9,
-            "interval": 7.2,
-            "telegraph": 1.2,
-            "health": 45,
-            "maximum": 18
-          },
-          {
-            "kind": "ring",
-            "count": 22,
-            "speed": 130,
-            "damage": 11,
-            "interval": 5.4,
-            "telegraph": 1
-          }
-        ]
-      },
-      {
-        "healthThreshold": 0.4,
+        "healthThreshold": 0.5,
         "accordBreak": true,
         "attacks": [
           {
@@ -878,7 +714,8 @@
             "interval": 4.8,
             "telegraph": 1
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "route": "standard",
@@ -937,65 +774,12 @@
                 "telegraph": 1,
                 "comboOffsetSeconds": 0
               }
-            ]
-          },
-          {
-            "healthThreshold": 0.75,
-            "accordBreak": true,
-            "signatureRepeatOffsetSeconds": 0,
-            "attacks": [
-              {
-                "kind": "summon",
-                "count": 6,
-                "speed": 86,
-                "damage": 9,
-                "interval": 6.48,
-                "telegraph": 1.2,
-                "health": 45,
-                "maximum": 18,
-                "comboOffsetSeconds": 0
-              },
-              {
-                "kind": "ring",
-                "count": 22,
-                "speed": 130,
-                "damage": 11,
-                "interval": 4.86,
-                "telegraph": 1,
-                "comboOffsetSeconds": 0
-              }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
-            "signatureRepeatOffsetSeconds": 0,
-            "attacks": [
-              {
-                "kind": "summon",
-                "count": 8,
-                "speed": 93,
-                "damage": 9,
-                "interval": 5.760000000000001,
-                "telegraph": 1.2,
-                "health": 45,
-                "maximum": 18,
-                "comboOffsetSeconds": 0
-              },
-              {
-                "kind": "ring",
-                "count": 24,
-                "speed": 139,
-                "damage": 11,
-                "interval": 4.32,
-                "telegraph": 1,
-                "comboOffsetSeconds": 0
-              }
-            ]
-          },
-          {
-            "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -1018,7 +802,8 @@
                 "telegraph": 1,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -1069,7 +854,8 @@
             "telegraph": 0.9,
             "arc": 110
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -1094,7 +880,8 @@
             "telegraph": 0.9,
             "arc": 110
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -1119,7 +906,8 @@
             "telegraph": 0.9,
             "arc": 110
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "route": "standard",
@@ -1177,11 +965,12 @@
                 "arc": 110,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -1205,11 +994,12 @@
                 "arc": 110,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -1233,11 +1023,12 @@
                 "arc": 110,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -1261,7 +1052,8 @@
                 "arc": 110,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -1310,7 +1102,8 @@
             "interval": 4,
             "telegraph": 0.8
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -1333,7 +1126,8 @@
             "interval": 3.6,
             "telegraph": 0.8
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -1356,7 +1150,8 @@
             "interval": 3.2,
             "telegraph": 0.8
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "route": "standard",
@@ -1412,11 +1207,12 @@
                 "telegraph": 0.85,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -1438,11 +1234,12 @@
                 "telegraph": 0.85,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -1464,11 +1261,12 @@
                 "telegraph": 0.85,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -1490,7 +1288,8 @@
                 "telegraph": 0.85,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -1542,7 +1341,8 @@
             "interval": 6,
             "telegraph": 1.1
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -1566,7 +1366,8 @@
             "interval": 5.4,
             "telegraph": 1.1
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -1590,7 +1391,8 @@
             "interval": 4.8,
             "telegraph": 1.1
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "route": "standard",
@@ -1649,11 +1451,12 @@
                 "telegraph": 1.1,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -1676,11 +1479,12 @@
                 "telegraph": 1.1,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -1703,11 +1507,12 @@
                 "telegraph": 1.1,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -1730,7 +1535,8 @@
                 "telegraph": 1.1,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -1782,7 +1588,8 @@
             "interval": 4,
             "telegraph": 0.9
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -1806,7 +1613,8 @@
             "interval": 3.6,
             "telegraph": 0.9
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -1830,7 +1638,8 @@
             "interval": 3.2,
             "telegraph": 0.9
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "route": "standard",
@@ -1889,11 +1698,12 @@
                 "telegraph": 0.9,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -1916,11 +1726,12 @@
                 "telegraph": 0.9,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -1943,11 +1754,12 @@
                 "telegraph": 0.9,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -1970,7 +1782,8 @@
                 "telegraph": 0.9,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -2031,7 +1844,8 @@
             "telegraph": 1,
             "arc": 150
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -2064,7 +1878,8 @@
             "telegraph": 1,
             "arc": 150
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -2097,7 +1912,8 @@
             "telegraph": 1,
             "arc": 150
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "route": "long",
@@ -2166,11 +1982,12 @@
                 "arc": 150,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -2203,11 +2020,12 @@
                 "arc": 150,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -2240,11 +2058,12 @@
                 "arc": 150,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -2277,7 +2096,8 @@
                 "arc": 150,
                 "comboOffsetSeconds": 2.5
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -2337,7 +2157,8 @@
             "radius": 70,
             "duration": 5
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -2369,7 +2190,8 @@
             "radius": 70,
             "duration": 5
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -2401,7 +2223,8 @@
             "radius": 70,
             "duration": 5
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "route": "long",
@@ -2469,11 +2292,12 @@
                 "duration": 5,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -2505,11 +2329,12 @@
                 "duration": 5,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -2541,11 +2366,12 @@
                 "duration": 5,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -2577,7 +2403,8 @@
                 "duration": 5,
                 "comboOffsetSeconds": 2.5
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -2641,7 +2468,8 @@
             "health": 60,
             "maximum": 20
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -2683,7 +2511,8 @@
             "health": 60,
             "maximum": 20
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -2725,7 +2554,8 @@
             "health": 60,
             "maximum": 20
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "route": "secret",
@@ -2803,11 +2633,12 @@
                 "maximum": 20,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -2850,11 +2681,12 @@
                 "maximum": 20,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -2897,11 +2729,12 @@
                 "maximum": 20,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -2944,7 +2777,8 @@
                 "maximum": 20,
                 "comboOffsetSeconds": 3.75
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -3011,32 +2845,11 @@
             "interval": 7,
             "telegraph": 1
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
-        "healthThreshold": 0.75,
-        "accordBreak": true,
-        "attacks": [
-          {
-            "kind": "lanes",
-            "count": 14,
-            "speed": 167,
-            "damage": 11,
-            "interval": 4.5,
-            "telegraph": 1.2
-          },
-          {
-            "kind": "ring",
-            "count": 16,
-            "speed": 135,
-            "damage": 10,
-            "interval": 6.3,
-            "telegraph": 1
-          }
-        ]
-      },
-      {
-        "healthThreshold": 0.4,
+        "healthThreshold": 0.5,
         "accordBreak": true,
         "attacks": [
           {
@@ -3055,7 +2868,8 @@
             "interval": 5.6,
             "telegraph": 1
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -3096,61 +2910,12 @@
                 "telegraph": 1,
                 "comboOffsetSeconds": 0
               }
-            ]
-          },
-          {
-            "healthThreshold": 0.75,
-            "accordBreak": true,
-            "signatureRepeatOffsetSeconds": 0,
-            "attacks": [
-              {
-                "kind": "lanes",
-                "count": 14,
-                "speed": 167,
-                "damage": 11,
-                "interval": 4.05,
-                "telegraph": 1.2,
-                "comboOffsetSeconds": 0
-              },
-              {
-                "kind": "ring",
-                "count": 16,
-                "speed": 135,
-                "damage": 10,
-                "interval": 5.67,
-                "telegraph": 1,
-                "comboOffsetSeconds": 0
-              }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
-            "signatureRepeatOffsetSeconds": 0,
-            "attacks": [
-              {
-                "kind": "lanes",
-                "count": 16,
-                "speed": 180,
-                "damage": 11,
-                "interval": 3.6,
-                "telegraph": 1.2,
-                "comboOffsetSeconds": 0
-              },
-              {
-                "kind": "ring",
-                "count": 18,
-                "speed": 145,
-                "damage": 10,
-                "interval": 5.04,
-                "telegraph": 1,
-                "comboOffsetSeconds": 0
-              }
-            ]
-          },
-          {
-            "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -3171,7 +2936,8 @@
                 "telegraph": 1,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -3241,35 +3007,11 @@
             "radius": 60,
             "duration": 3
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
-        "healthThreshold": 0.75,
-        "accordBreak": true,
-        "attacks": [
-          {
-            "kind": "fan",
-            "count": 9,
-            "speed": 157,
-            "damage": 11,
-            "interval": 3.6,
-            "telegraph": 1,
-            "arc": 80
-          },
-          {
-            "kind": "zone",
-            "count": 4,
-            "speed": 0,
-            "damage": 9,
-            "interval": 7.2,
-            "telegraph": 1.2,
-            "radius": 60,
-            "duration": 3
-          }
-        ]
-      },
-      {
-        "healthThreshold": 0.4,
+        "healthThreshold": 0.5,
         "accordBreak": true,
         "attacks": [
           {
@@ -3291,7 +3033,8 @@
             "radius": 60,
             "duration": 3
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -3335,67 +3078,12 @@
                 "duration": 3,
                 "comboOffsetSeconds": 0
               }
-            ]
-          },
-          {
-            "healthThreshold": 0.75,
-            "accordBreak": true,
-            "signatureRepeatOffsetSeconds": 0,
-            "attacks": [
-              {
-                "kind": "fan",
-                "count": 9,
-                "speed": 157,
-                "damage": 11,
-                "interval": 3.24,
-                "telegraph": 1,
-                "arc": 80,
-                "comboOffsetSeconds": 0
-              },
-              {
-                "kind": "zone",
-                "count": 4,
-                "speed": 0,
-                "damage": 9,
-                "interval": 6.48,
-                "telegraph": 1.2,
-                "radius": 60,
-                "duration": 3,
-                "comboOffsetSeconds": 0
-              }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
-            "signatureRepeatOffsetSeconds": 0,
-            "attacks": [
-              {
-                "kind": "fan",
-                "count": 11,
-                "speed": 168,
-                "damage": 11,
-                "interval": 2.8800000000000003,
-                "telegraph": 1,
-                "arc": 80,
-                "comboOffsetSeconds": 0
-              },
-              {
-                "kind": "zone",
-                "count": 6,
-                "speed": 0,
-                "damage": 9,
-                "interval": 5.760000000000001,
-                "telegraph": 1.2,
-                "radius": 60,
-                "duration": 3,
-                "comboOffsetSeconds": 0
-              }
-            ]
-          },
-          {
-            "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -3419,7 +3107,8 @@
                 "duration": 3,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -3490,34 +3179,11 @@
             "interval": 6,
             "telegraph": 1
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
-        "healthThreshold": 0.75,
-        "accordBreak": true,
-        "attacks": [
-          {
-            "kind": "summon",
-            "count": 5,
-            "speed": 108,
-            "damage": 8,
-            "interval": 7.2,
-            "telegraph": 1.2,
-            "health": 20,
-            "maximum": 12
-          },
-          {
-            "kind": "cross",
-            "count": 14,
-            "speed": 146,
-            "damage": 10,
-            "interval": 5.4,
-            "telegraph": 1
-          }
-        ]
-      },
-      {
-        "healthThreshold": 0.4,
+        "healthThreshold": 0.5,
         "accordBreak": true,
         "attacks": [
           {
@@ -3538,7 +3204,8 @@
             "interval": 4.8,
             "telegraph": 1
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -3581,65 +3248,12 @@
                 "telegraph": 1,
                 "comboOffsetSeconds": 0
               }
-            ]
-          },
-          {
-            "healthThreshold": 0.75,
-            "accordBreak": true,
-            "signatureRepeatOffsetSeconds": 0,
-            "attacks": [
-              {
-                "kind": "summon",
-                "count": 5,
-                "speed": 108,
-                "damage": 8,
-                "interval": 6.48,
-                "telegraph": 1.2,
-                "health": 20,
-                "maximum": 12,
-                "comboOffsetSeconds": 0
-              },
-              {
-                "kind": "cross",
-                "count": 14,
-                "speed": 146,
-                "damage": 10,
-                "interval": 4.86,
-                "telegraph": 1,
-                "comboOffsetSeconds": 0
-              }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
-            "signatureRepeatOffsetSeconds": 0,
-            "attacks": [
-              {
-                "kind": "summon",
-                "count": 7,
-                "speed": 116,
-                "damage": 8,
-                "interval": 5.760000000000001,
-                "telegraph": 1.2,
-                "health": 20,
-                "maximum": 12,
-                "comboOffsetSeconds": 0
-              },
-              {
-                "kind": "cross",
-                "count": 16,
-                "speed": 157,
-                "damage": 10,
-                "interval": 4.32,
-                "telegraph": 1,
-                "comboOffsetSeconds": 0
-              }
-            ]
-          },
-          {
-            "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -3662,7 +3276,8 @@
                 "telegraph": 1,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -3734,35 +3349,11 @@
             "telegraph": 1,
             "arc": 105
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
-        "healthThreshold": 0.75,
-        "accordBreak": true,
-        "attacks": [
-          {
-            "kind": "zone",
-            "count": 5,
-            "speed": 0,
-            "damage": 10,
-            "interval": 6.3,
-            "telegraph": 1.3,
-            "radius": 82,
-            "duration": 2.5
-          },
-          {
-            "kind": "fan",
-            "count": 11,
-            "speed": 162,
-            "damage": 11,
-            "interval": 4.5,
-            "telegraph": 1,
-            "arc": 105
-          }
-        ]
-      },
-      {
-        "healthThreshold": 0.4,
+        "healthThreshold": 0.5,
         "accordBreak": true,
         "attacks": [
           {
@@ -3784,7 +3375,8 @@
             "telegraph": 1,
             "arc": 105
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -3828,67 +3420,12 @@
                 "arc": 105,
                 "comboOffsetSeconds": 0
               }
-            ]
-          },
-          {
-            "healthThreshold": 0.75,
-            "accordBreak": true,
-            "signatureRepeatOffsetSeconds": 0,
-            "attacks": [
-              {
-                "kind": "zone",
-                "count": 5,
-                "speed": 0,
-                "damage": 10,
-                "interval": 5.67,
-                "telegraph": 1.3,
-                "radius": 82,
-                "duration": 2.5,
-                "comboOffsetSeconds": 0
-              },
-              {
-                "kind": "fan",
-                "count": 11,
-                "speed": 162,
-                "damage": 11,
-                "interval": 4.05,
-                "telegraph": 1,
-                "arc": 105,
-                "comboOffsetSeconds": 0
-              }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
-            "signatureRepeatOffsetSeconds": 0,
-            "attacks": [
-              {
-                "kind": "zone",
-                "count": 7,
-                "speed": 0,
-                "damage": 10,
-                "interval": 5.04,
-                "telegraph": 1.3,
-                "radius": 82,
-                "duration": 2.5,
-                "comboOffsetSeconds": 0
-              },
-              {
-                "kind": "fan",
-                "count": 13,
-                "speed": 174,
-                "damage": 11,
-                "interval": 3.6,
-                "telegraph": 1,
-                "arc": 105,
-                "comboOffsetSeconds": 0
-              }
-            ]
-          },
-          {
-            "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -3912,7 +3449,8 @@
                 "arc": 105,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -3986,35 +3524,11 @@
             "telegraph": 1,
             "arc": 150
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
-        "healthThreshold": 0.75,
-        "accordBreak": true,
-        "attacks": [
-          {
-            "kind": "hook",
-            "count": 4,
-            "speed": 205,
-            "damage": 14,
-            "interval": 5.4,
-            "telegraph": 1.2,
-            "slow": 0.3,
-            "duration": 1.5
-          },
-          {
-            "kind": "fan",
-            "count": 15,
-            "speed": 167,
-            "damage": 12,
-            "interval": 4.5,
-            "telegraph": 1,
-            "arc": 150
-          }
-        ]
-      },
-      {
-        "healthThreshold": 0.4,
+        "healthThreshold": 0.5,
         "accordBreak": true,
         "attacks": [
           {
@@ -4036,7 +3550,8 @@
             "telegraph": 1,
             "arc": 150
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -4080,67 +3595,12 @@
                 "arc": 150,
                 "comboOffsetSeconds": 0
               }
-            ]
-          },
-          {
-            "healthThreshold": 0.75,
-            "accordBreak": true,
-            "signatureRepeatOffsetSeconds": 0,
-            "attacks": [
-              {
-                "kind": "hook",
-                "count": 4,
-                "speed": 205,
-                "damage": 14,
-                "interval": 4.86,
-                "telegraph": 1.2,
-                "slow": 0.3,
-                "duration": 1.5,
-                "comboOffsetSeconds": 0
-              },
-              {
-                "kind": "fan",
-                "count": 15,
-                "speed": 167,
-                "damage": 12,
-                "interval": 4.05,
-                "telegraph": 1,
-                "arc": 150,
-                "comboOffsetSeconds": 0
-              }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
-            "signatureRepeatOffsetSeconds": 0,
-            "attacks": [
-              {
-                "kind": "hook",
-                "count": 6,
-                "speed": 220,
-                "damage": 14,
-                "interval": 4.32,
-                "telegraph": 1.2,
-                "slow": 0.3,
-                "duration": 1.5,
-                "comboOffsetSeconds": 0
-              },
-              {
-                "kind": "fan",
-                "count": 17,
-                "speed": 180,
-                "damage": 12,
-                "interval": 3.6,
-                "telegraph": 1,
-                "arc": 150,
-                "comboOffsetSeconds": 0
-              }
-            ]
-          },
-          {
-            "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -4164,7 +3624,8 @@
                 "arc": 150,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -4234,33 +3695,11 @@
             "telegraph": 1.2,
             "gap": 55
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
-        "healthThreshold": 0.75,
-        "accordBreak": true,
-        "attacks": [
-          {
-            "kind": "lanes",
-            "count": 20,
-            "speed": 157,
-            "damage": 13,
-            "interval": 5.4,
-            "telegraph": 1.4
-          },
-          {
-            "kind": "pulse",
-            "count": 24,
-            "speed": 135,
-            "damage": 12,
-            "interval": 6.3,
-            "telegraph": 1.2,
-            "gap": 55
-          }
-        ]
-      },
-      {
-        "healthThreshold": 0.4,
+        "healthThreshold": 0.5,
         "accordBreak": true,
         "attacks": [
           {
@@ -4280,7 +3719,8 @@
             "telegraph": 1.2,
             "gap": 55
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -4322,63 +3762,12 @@
                 "gap": 55,
                 "comboOffsetSeconds": 0
               }
-            ]
-          },
-          {
-            "healthThreshold": 0.75,
-            "accordBreak": true,
-            "signatureRepeatOffsetSeconds": 0,
-            "attacks": [
-              {
-                "kind": "lanes",
-                "count": 20,
-                "speed": 157,
-                "damage": 13,
-                "interval": 4.86,
-                "telegraph": 1.4,
-                "comboOffsetSeconds": 0
-              },
-              {
-                "kind": "pulse",
-                "count": 24,
-                "speed": 135,
-                "damage": 12,
-                "interval": 5.67,
-                "telegraph": 1.2,
-                "gap": 55,
-                "comboOffsetSeconds": 0
-              }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
-            "signatureRepeatOffsetSeconds": 0,
-            "attacks": [
-              {
-                "kind": "lanes",
-                "count": 22,
-                "speed": 168,
-                "damage": 13,
-                "interval": 4.32,
-                "telegraph": 1.4,
-                "comboOffsetSeconds": 0
-              },
-              {
-                "kind": "pulse",
-                "count": 26,
-                "speed": 145,
-                "damage": 12,
-                "interval": 5.04,
-                "telegraph": 1.2,
-                "gap": 55,
-                "comboOffsetSeconds": 0
-              }
-            ]
-          },
-          {
-            "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -4400,7 +3789,8 @@
                 "gap": 55,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -4467,32 +3857,11 @@
             "interval": 6,
             "telegraph": 1
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
-        "healthThreshold": 0.75,
-        "accordBreak": true,
-        "attacks": [
-          {
-            "kind": "charge",
-            "count": 1,
-            "speed": 410,
-            "damage": 18,
-            "interval": 9,
-            "telegraph": 1.4
-          },
-          {
-            "kind": "cross",
-            "count": 18,
-            "speed": 157,
-            "damage": 11,
-            "interval": 5.4,
-            "telegraph": 1
-          }
-        ]
-      },
-      {
-        "healthThreshold": 0.4,
+        "healthThreshold": 0.5,
         "accordBreak": true,
         "attacks": [
           {
@@ -4511,7 +3880,8 @@
             "interval": 4.8,
             "telegraph": 1
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -4552,61 +3922,12 @@
                 "telegraph": 1,
                 "comboOffsetSeconds": 0
               }
-            ]
-          },
-          {
-            "healthThreshold": 0.75,
-            "accordBreak": true,
-            "signatureRepeatOffsetSeconds": 0,
-            "attacks": [
-              {
-                "kind": "charge",
-                "count": 1,
-                "speed": 410,
-                "damage": 18,
-                "interval": 8.1,
-                "telegraph": 1.4,
-                "comboOffsetSeconds": 0
-              },
-              {
-                "kind": "cross",
-                "count": 18,
-                "speed": 157,
-                "damage": 11,
-                "interval": 4.86,
-                "telegraph": 1,
-                "comboOffsetSeconds": 0
-              }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
-            "signatureRepeatOffsetSeconds": 0,
-            "attacks": [
-              {
-                "kind": "charge",
-                "count": 1,
-                "speed": 441,
-                "damage": 18,
-                "interval": 7.2,
-                "telegraph": 1.4,
-                "comboOffsetSeconds": 0
-              },
-              {
-                "kind": "cross",
-                "count": 20,
-                "speed": 168,
-                "damage": 11,
-                "interval": 4.32,
-                "telegraph": 1,
-                "comboOffsetSeconds": 0
-              }
-            ]
-          },
-          {
-            "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -4627,7 +3948,8 @@
                 "telegraph": 1,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -4702,7 +4024,8 @@
             "telegraph": 1,
             "arc": 110
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -4727,7 +4050,8 @@
             "telegraph": 1,
             "arc": 110
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -4752,7 +4076,8 @@
             "telegraph": 1,
             "arc": 110
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -4796,11 +4121,12 @@
                 "arc": 110,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -4824,11 +4150,12 @@
                 "arc": 110,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -4852,11 +4179,12 @@
                 "arc": 110,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -4880,7 +4208,8 @@
                 "arc": 110,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -4953,7 +4282,8 @@
             "telegraph": 1,
             "arc": 90
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -4978,7 +4308,8 @@
             "telegraph": 1,
             "arc": 90
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -5003,7 +4334,8 @@
             "telegraph": 1,
             "arc": 90
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -5047,11 +4379,12 @@
                 "arc": 90,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -5075,11 +4408,12 @@
                 "arc": 90,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -5103,11 +4437,12 @@
                 "arc": 90,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -5131,7 +4466,8 @@
                 "arc": 90,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -5201,7 +4537,8 @@
             "interval": 7,
             "telegraph": 1
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -5223,7 +4560,8 @@
             "interval": 6.3,
             "telegraph": 1
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -5245,7 +4583,8 @@
             "interval": 5.6,
             "telegraph": 1
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -5286,11 +4625,12 @@
                 "telegraph": 1,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -5311,11 +4651,12 @@
                 "telegraph": 1,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -5336,11 +4677,12 @@
                 "telegraph": 1,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -5361,7 +4703,8 @@
                 "telegraph": 1,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -5429,7 +4772,8 @@
             "interval": 5,
             "telegraph": 1
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -5451,7 +4795,8 @@
             "interval": 4.5,
             "telegraph": 1
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -5473,7 +4818,8 @@
             "interval": 4,
             "telegraph": 1
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -5514,11 +4860,12 @@
                 "telegraph": 1,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -5539,11 +4886,12 @@
                 "telegraph": 1,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -5564,11 +4912,12 @@
                 "telegraph": 1,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -5589,7 +4938,8 @@
                 "telegraph": 1,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -5659,7 +5009,8 @@
             "telegraph": 1,
             "arc": 100
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -5683,7 +5034,8 @@
             "telegraph": 1,
             "arc": 100
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -5707,7 +5059,8 @@
             "telegraph": 1,
             "arc": 100
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -5750,11 +5103,12 @@
                 "arc": 100,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -5777,11 +5131,12 @@
                 "arc": 100,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -5804,11 +5159,12 @@
                 "arc": 100,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -5831,7 +5187,8 @@
                 "arc": 100,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -5904,7 +5261,8 @@
             "telegraph": 1,
             "arc": 135
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -5929,7 +5287,8 @@
             "telegraph": 1,
             "arc": 135
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -5954,7 +5313,8 @@
             "telegraph": 1,
             "arc": 135
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -5998,11 +5358,12 @@
                 "arc": 135,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -6026,11 +5387,12 @@
                 "arc": 135,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -6054,11 +5416,12 @@
                 "arc": 135,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -6082,7 +5445,8 @@
                 "arc": 135,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -6156,7 +5520,8 @@
             "interval": 6,
             "telegraph": 1
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -6180,7 +5545,8 @@
             "interval": 5.4,
             "telegraph": 1
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -6204,7 +5570,8 @@
             "interval": 4.8,
             "telegraph": 1
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -6247,11 +5614,12 @@
                 "telegraph": 1,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -6274,11 +5642,12 @@
                 "telegraph": 1,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -6301,11 +5670,12 @@
                 "telegraph": 1,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -6328,7 +5698,8 @@
                 "telegraph": 1,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -6401,7 +5772,8 @@
             "duration": 0.5,
             "width": 22
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -6426,7 +5798,8 @@
             "duration": 0.5,
             "width": 22
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -6451,7 +5824,8 @@
             "duration": 0.5,
             "width": 22
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -6495,11 +5869,12 @@
                 "width": 22,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -6523,11 +5898,12 @@
                 "width": 22,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -6551,11 +5927,12 @@
                 "width": 22,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -6579,7 +5956,8 @@
                 "width": 22,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -6648,7 +6026,8 @@
             "telegraph": 1.1,
             "arc": 155
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -6671,7 +6050,8 @@
             "telegraph": 1.1,
             "arc": 155
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -6694,7 +6074,8 @@
             "telegraph": 1.1,
             "arc": 155
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -6736,11 +6117,12 @@
                 "arc": 155,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -6762,11 +6144,12 @@
                 "arc": 155,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -6788,11 +6171,12 @@
                 "arc": 155,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -6814,7 +6198,8 @@
                 "arc": 155,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -6887,7 +6272,8 @@
             "telegraph": 1,
             "arc": 120
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -6912,7 +6298,8 @@
             "telegraph": 1,
             "arc": 120
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -6937,7 +6324,8 @@
             "telegraph": 1,
             "arc": 120
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -6981,11 +6369,12 @@
                 "arc": 120,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -7009,11 +6398,12 @@
                 "arc": 120,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -7037,11 +6427,12 @@
                 "arc": 120,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -7065,7 +6456,8 @@
                 "arc": 120,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -7135,7 +6527,8 @@
             "interval": 6,
             "telegraph": 1
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -7157,7 +6550,8 @@
             "interval": 5.4,
             "telegraph": 1
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -7179,7 +6573,8 @@
             "interval": 4.8,
             "telegraph": 1
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -7220,11 +6615,12 @@
                 "telegraph": 1,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -7245,11 +6641,12 @@
                 "telegraph": 1,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -7270,11 +6667,12 @@
                 "telegraph": 1,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -7295,7 +6693,8 @@
                 "telegraph": 1,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -7366,7 +6765,8 @@
             "telegraph": 1,
             "arc": 100
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -7389,7 +6789,8 @@
             "telegraph": 1,
             "arc": 100
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -7412,7 +6813,8 @@
             "telegraph": 1,
             "arc": 100
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -7454,11 +6856,12 @@
                 "arc": 100,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -7480,11 +6883,12 @@
                 "arc": 100,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -7506,11 +6910,12 @@
                 "arc": 100,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -7532,7 +6937,8 @@
                 "arc": 100,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -7608,7 +7014,8 @@
             "slow": 0.25,
             "duration": 1.5
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -7634,7 +7041,8 @@
             "slow": 0.25,
             "duration": 1.5
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -7660,7 +7068,8 @@
             "slow": 0.25,
             "duration": 1.5
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -7705,11 +7114,12 @@
                 "duration": 1.5,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -7734,11 +7144,12 @@
                 "duration": 1.5,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -7763,11 +7174,12 @@
                 "duration": 1.5,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -7792,7 +7204,8 @@
                 "duration": 1.5,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -7864,7 +7277,8 @@
             "radius": 70,
             "duration": 3
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -7888,7 +7302,8 @@
             "radius": 70,
             "duration": 3
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -7912,7 +7327,8 @@
             "radius": 70,
             "duration": 3
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -7955,11 +7371,12 @@
                 "duration": 3,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -7982,11 +7399,12 @@
                 "duration": 3,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -8009,11 +7427,12 @@
                 "duration": 3,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -8036,7 +7455,8 @@
                 "duration": 3,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -8108,7 +7528,8 @@
             "radius": 70,
             "duration": 3
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -8132,7 +7553,8 @@
             "radius": 70,
             "duration": 3
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -8156,7 +7578,8 @@
             "radius": 70,
             "duration": 3
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -8199,11 +7622,12 @@
                 "duration": 3,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -8226,11 +7650,12 @@
                 "duration": 3,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -8253,11 +7678,12 @@
                 "duration": 3,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -8280,7 +7706,8 @@
                 "duration": 3,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -8353,7 +7780,8 @@
             "telegraph": 1.4,
             "gap": 45
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -8378,7 +7806,8 @@
             "telegraph": 1.4,
             "gap": 45
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -8403,7 +7832,8 @@
             "telegraph": 1.4,
             "gap": 45
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -8447,11 +7877,12 @@
                 "gap": 45,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -8475,11 +7906,12 @@
                 "gap": 45,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -8503,11 +7935,12 @@
                 "gap": 45,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -8531,7 +7964,8 @@
                 "gap": 45,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -8604,7 +8038,8 @@
             "telegraph": 1,
             "arc": 110
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -8627,7 +8062,8 @@
             "telegraph": 1,
             "arc": 110
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -8650,7 +8086,8 @@
             "telegraph": 1,
             "arc": 110
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -8692,11 +8129,12 @@
                 "arc": 110,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -8718,11 +8156,12 @@
                 "arc": 110,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -8744,11 +8183,12 @@
                 "arc": 110,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -8770,7 +8210,8 @@
                 "arc": 110,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -8842,7 +8283,8 @@
             "interval": 6,
             "telegraph": 1.1
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -8866,7 +8308,8 @@
             "interval": 5.4,
             "telegraph": 1.1
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -8890,7 +8333,8 @@
             "interval": 4.8,
             "telegraph": 1.1
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -8933,11 +8377,12 @@
                 "telegraph": 1.1,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -8960,11 +8405,12 @@
                 "telegraph": 1.1,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -8987,11 +8433,12 @@
                 "telegraph": 1.1,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -9014,7 +8461,8 @@
                 "telegraph": 1.1,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -9087,7 +8535,8 @@
             "telegraph": 1,
             "arc": 100
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -9110,7 +8559,8 @@
             "telegraph": 1,
             "arc": 100
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -9133,7 +8583,8 @@
             "telegraph": 1,
             "arc": 100
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -9175,11 +8626,12 @@
                 "arc": 100,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -9201,11 +8653,12 @@
                 "arc": 100,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -9227,11 +8680,12 @@
                 "arc": 100,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -9253,7 +8707,8 @@
                 "arc": 100,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -9328,7 +8783,8 @@
             "duration": 0.5,
             "width": 20
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -9353,7 +8809,8 @@
             "duration": 0.5,
             "width": 20
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -9378,7 +8835,8 @@
             "duration": 0.5,
             "width": 20
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -9422,11 +8880,12 @@
                 "width": 20,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -9450,11 +8909,12 @@
                 "width": 20,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -9478,11 +8938,12 @@
                 "width": 20,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -9506,7 +8967,8 @@
                 "width": 20,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -9577,7 +9039,8 @@
             "telegraph": 1,
             "arc": 140
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -9600,7 +9063,8 @@
             "telegraph": 1,
             "arc": 140
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -9623,7 +9087,8 @@
             "telegraph": 1,
             "arc": 140
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -9665,11 +9130,12 @@
                 "arc": 140,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -9691,11 +9157,12 @@
                 "arc": 140,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -9717,11 +9184,12 @@
                 "arc": 140,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -9743,7 +9211,8 @@
                 "arc": 140,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -9819,7 +9288,8 @@
             "interval": 6,
             "telegraph": 1
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -9843,7 +9313,8 @@
             "interval": 5.4,
             "telegraph": 1
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -9867,7 +9338,8 @@
             "interval": 4.8,
             "telegraph": 1
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -9910,11 +9382,12 @@
                 "telegraph": 1,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -9937,11 +9410,12 @@
                 "telegraph": 1,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -9964,11 +9438,12 @@
                 "telegraph": 1,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -9991,7 +9466,8 @@
                 "telegraph": 1,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -10074,7 +9550,8 @@
             "telegraph": 1,
             "arc": 90
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -10099,7 +9576,8 @@
             "telegraph": 1,
             "arc": 90
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -10124,7 +9602,8 @@
             "telegraph": 1,
             "arc": 90
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -10168,11 +9647,12 @@
                 "arc": 90,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -10196,11 +9676,12 @@
                 "arc": 90,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -10224,11 +9705,12 @@
                 "arc": 90,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -10252,7 +9734,8 @@
                 "arc": 90,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -10323,7 +9806,8 @@
             "telegraph": 1,
             "arc": 120
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -10346,7 +9830,8 @@
             "telegraph": 1,
             "arc": 120
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -10369,7 +9854,8 @@
             "telegraph": 1,
             "arc": 120
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -10411,11 +9897,12 @@
                 "arc": 120,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -10437,11 +9924,12 @@
                 "arc": 120,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -10463,11 +9951,12 @@
                 "arc": 120,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -10489,7 +9978,8 @@
                 "arc": 120,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -10563,7 +10053,8 @@
             "interval": 6,
             "telegraph": 1
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -10587,7 +10078,8 @@
             "interval": 5.4,
             "telegraph": 1
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -10611,7 +10103,8 @@
             "interval": 4.8,
             "telegraph": 1
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -10654,11 +10147,12 @@
                 "telegraph": 1,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -10681,11 +10175,12 @@
                 "telegraph": 1,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -10708,11 +10203,12 @@
                 "telegraph": 1,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -10735,7 +10231,8 @@
                 "telegraph": 1,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -10808,7 +10305,8 @@
             "interval": 6,
             "telegraph": 1.2
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -10831,7 +10329,8 @@
             "interval": 5.4,
             "telegraph": 1.2
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -10854,7 +10353,8 @@
             "interval": 4.8,
             "telegraph": 1.2
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -10896,11 +10396,12 @@
                 "telegraph": 1.2,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -10922,11 +10423,12 @@
                 "telegraph": 1.2,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -10948,11 +10450,12 @@
                 "telegraph": 1.2,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -10974,7 +10477,8 @@
                 "telegraph": 1.2,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -11045,7 +10549,8 @@
             "interval": 7,
             "telegraph": 1.4
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -11069,7 +10574,8 @@
             "interval": 6.3,
             "telegraph": 1.4
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -11093,7 +10599,8 @@
             "interval": 5.6,
             "telegraph": 1.4
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -11136,11 +10643,12 @@
                 "telegraph": 1.4,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -11163,11 +10671,12 @@
                 "telegraph": 1.4,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -11190,11 +10699,12 @@
                 "telegraph": 1.4,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -11217,7 +10727,8 @@
                 "telegraph": 1.4,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -11287,7 +10798,8 @@
             "telegraph": 1.2,
             "arc": 160
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -11310,7 +10822,8 @@
             "telegraph": 1.2,
             "arc": 160
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -11333,7 +10846,8 @@
             "telegraph": 1.2,
             "arc": 160
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -11375,11 +10889,12 @@
                 "arc": 160,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -11401,11 +10916,12 @@
                 "arc": 160,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -11427,11 +10943,12 @@
                 "arc": 160,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -11453,7 +10970,8 @@
                 "arc": 160,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -11525,7 +11043,8 @@
             "telegraph": 1.4,
             "gap": 50
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -11550,7 +11069,8 @@
             "telegraph": 1.4,
             "gap": 50
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -11575,7 +11095,8 @@
             "telegraph": 1.4,
             "gap": 50
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -11619,11 +11140,12 @@
                 "gap": 50,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -11647,11 +11169,12 @@
                 "gap": 50,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -11675,11 +11198,12 @@
                 "gap": 50,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -11703,7 +11227,8 @@
                 "gap": 50,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -11774,7 +11299,8 @@
             "radius": 75,
             "duration": 4
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -11798,7 +11324,8 @@
             "radius": 75,
             "duration": 4
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -11822,7 +11349,8 @@
             "radius": 75,
             "duration": 4
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -11865,11 +11393,12 @@
                 "duration": 4,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -11892,11 +11421,12 @@
                 "duration": 4,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -11919,11 +11449,12 @@
                 "duration": 4,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -11946,7 +11477,8 @@
                 "duration": 4,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -12016,7 +11548,8 @@
             "interval": 9,
             "telegraph": 1.4
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -12039,7 +11572,8 @@
             "interval": 8.1,
             "telegraph": 1.4
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -12062,7 +11596,8 @@
             "interval": 7.2,
             "telegraph": 1.4
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -12104,11 +11639,12 @@
                 "telegraph": 1.4,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -12130,11 +11666,12 @@
                 "telegraph": 1.4,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -12156,11 +11693,12 @@
                 "telegraph": 1.4,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -12182,7 +11720,8 @@
                 "telegraph": 1.4,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -12252,7 +11791,8 @@
             "telegraph": 1.5,
             "gap": 65
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -12275,7 +11815,8 @@
             "telegraph": 1.5,
             "gap": 65
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -12298,7 +11839,8 @@
             "telegraph": 1.5,
             "gap": 65
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -12340,11 +11882,12 @@
                 "gap": 65,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -12366,11 +11909,12 @@
                 "gap": 65,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -12392,11 +11936,12 @@
                 "gap": 65,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -12418,7 +11963,8 @@
                 "gap": 65,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -12490,7 +12036,8 @@
             "duration": 0.5,
             "width": 26
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -12515,7 +12062,8 @@
             "duration": 0.5,
             "width": 26
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -12540,7 +12088,8 @@
             "duration": 0.5,
             "width": 26
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -12584,11 +12133,12 @@
                 "width": 26,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -12612,11 +12162,12 @@
                 "width": 26,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -12640,11 +12191,12 @@
                 "width": 26,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -12668,7 +12220,8 @@
                 "width": 26,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -12737,7 +12290,8 @@
             "interval": 8,
             "telegraph": 1.2
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -12760,7 +12314,8 @@
             "interval": 7.2,
             "telegraph": 1.2
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -12783,7 +12338,8 @@
             "interval": 6.4,
             "telegraph": 1.2
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -12825,11 +12381,12 @@
                 "telegraph": 1.2,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -12851,11 +12408,12 @@
                 "telegraph": 1.2,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -12877,11 +12435,12 @@
                 "telegraph": 1.2,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -12903,7 +12462,8 @@
                 "telegraph": 1.2,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -12983,7 +12543,8 @@
             "duration": 0.5,
             "width": 22
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -13007,7 +12568,8 @@
             "duration": 0.5,
             "width": 22
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -13031,7 +12593,8 @@
             "duration": 0.5,
             "width": 22
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -13074,11 +12637,12 @@
                 "width": 22,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -13101,11 +12665,12 @@
                 "width": 22,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -13128,11 +12693,12 @@
                 "width": 22,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -13155,7 +12721,8 @@
                 "width": 22,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -13226,7 +12793,8 @@
             "interval": 8,
             "telegraph": 1.2
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -13249,7 +12817,8 @@
             "interval": 7.2,
             "telegraph": 1.2
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -13272,7 +12841,8 @@
             "interval": 6.4,
             "telegraph": 1.2
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -13314,11 +12884,12 @@
                 "telegraph": 1.2,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -13340,11 +12911,12 @@
                 "telegraph": 1.2,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -13366,11 +12938,12 @@
                 "telegraph": 1.2,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -13392,7 +12965,8 @@
                 "telegraph": 1.2,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -13464,7 +13038,8 @@
             "interval": 6,
             "telegraph": 1.1
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -13486,7 +13061,8 @@
             "interval": 5.4,
             "telegraph": 1.1
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -13508,7 +13084,8 @@
             "interval": 4.8,
             "telegraph": 1.1
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -13549,11 +13126,12 @@
                 "telegraph": 1.1,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -13574,11 +13152,12 @@
                 "telegraph": 1.1,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -13599,11 +13178,12 @@
                 "telegraph": 1.1,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -13624,7 +13204,8 @@
                 "telegraph": 1.1,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -13697,7 +13278,8 @@
             "radius": 65,
             "duration": 3
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -13722,7 +13304,8 @@
             "radius": 65,
             "duration": 3
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -13747,7 +13330,8 @@
             "radius": 65,
             "duration": 3
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -13791,11 +13375,12 @@
                 "duration": 3,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -13819,11 +13404,12 @@
                 "duration": 3,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -13847,11 +13433,12 @@
                 "duration": 3,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -13875,7 +13462,8 @@
                 "duration": 3,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -13947,7 +13535,8 @@
             "duration": 0.5,
             "width": 20
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -13971,7 +13560,8 @@
             "duration": 0.5,
             "width": 20
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -13995,7 +13585,8 @@
             "duration": 0.5,
             "width": 20
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -14038,11 +13629,12 @@
                 "width": 20,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -14065,11 +13657,12 @@
                 "width": 20,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -14092,11 +13685,12 @@
                 "width": 20,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -14119,7 +13713,8 @@
                 "width": 20,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -14190,7 +13785,8 @@
             "telegraph": 1.4,
             "gap": 55
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -14213,7 +13809,8 @@
             "telegraph": 1.4,
             "gap": 55
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -14236,7 +13833,8 @@
             "telegraph": 1.4,
             "gap": 55
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -14278,11 +13876,12 @@
                 "gap": 55,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -14304,11 +13903,12 @@
                 "gap": 55,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -14330,11 +13930,12 @@
                 "gap": 55,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -14356,7 +13957,8 @@
                 "gap": 55,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -14430,7 +14032,8 @@
             "interval": 10,
             "telegraph": 1.4
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -14452,7 +14055,8 @@
             "interval": 9,
             "telegraph": 1.4
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -14474,7 +14078,8 @@
             "interval": 8,
             "telegraph": 1.4
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -14515,11 +14120,12 @@
                 "telegraph": 1.4,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -14540,11 +14146,12 @@
                 "telegraph": 1.4,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -14565,11 +14172,12 @@
                 "telegraph": 1.4,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -14590,7 +14198,8 @@
                 "telegraph": 1.4,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -14665,7 +14274,8 @@
             "duration": 0.5,
             "width": 24
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
         "healthThreshold": 0.75,
@@ -14690,7 +14300,8 @@
             "duration": 0.5,
             "width": 24
           }
-        ]
+        ],
+        "patternPhase": 1
       },
       {
         "healthThreshold": 0.4,
@@ -14715,7 +14326,8 @@
             "duration": 0.5,
             "width": 24
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -14759,11 +14371,12 @@
                 "width": 24,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.75,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -14787,11 +14400,12 @@
                 "width": 24,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 1
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
@@ -14815,11 +14429,12 @@
                 "width": 24,
                 "comboOffsetSeconds": 0
               }
-            ]
+            ],
+            "patternPhase": 2
           },
           {
             "healthThreshold": 0.25,
-            "accordBreak": true,
+            "accordBreak": false,
             "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
@@ -14843,7 +14458,8 @@
                 "width": 24,
                 "comboOffsetSeconds": 1.25
               }
-            ]
+            ],
+            "patternPhase": 3
           }
         ]
       }
@@ -14898,24 +14514,11 @@
             "interval": 8,
             "telegraph": 1.3
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
-        "healthThreshold": 0.75,
-        "accordBreak": true,
-        "attacks": [
-          {
-            "kind": "cross",
-            "count": 6,
-            "speed": 135,
-            "damage": 10,
-            "interval": 8,
-            "telegraph": 1.3
-          }
-        ]
-      },
-      {
-        "healthThreshold": 0.4,
+        "healthThreshold": 0.5,
         "accordBreak": true,
         "attacks": [
           {
@@ -14926,7 +14529,8 @@
             "interval": 8,
             "telegraph": 1.3
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -14958,27 +14562,12 @@
                 "comboOffsetSeconds": 0
               }
             ],
-            "signatureRepeatOffsetSeconds": 0
-          },
-          {
-            "healthThreshold": 0.75,
-            "accordBreak": true,
-            "attacks": [
-              {
-                "kind": "cross",
-                "count": 6,
-                "speed": 135,
-                "damage": 10,
-                "interval": 8,
-                "telegraph": 1.3,
-                "comboOffsetSeconds": 0
-              }
-            ],
-            "signatureRepeatOffsetSeconds": 0
+            "signatureRepeatOffsetSeconds": 0,
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "attacks": [
               {
                 "kind": "lanes",
@@ -14990,23 +14579,8 @@
                 "comboOffsetSeconds": 0
               }
             ],
-            "signatureRepeatOffsetSeconds": 0
-          },
-          {
-            "healthThreshold": 0.25,
-            "accordBreak": true,
-            "attacks": [
-              {
-                "kind": "lanes",
-                "count": 7,
-                "speed": 135,
-                "damage": 11,
-                "interval": 8,
-                "telegraph": 1.3,
-                "comboOffsetSeconds": 0
-              }
-            ],
-            "signatureRepeatOffsetSeconds": 1.25
+            "signatureRepeatOffsetSeconds": 1.25,
+            "patternPhase": 3
           }
         ]
       }
@@ -15063,24 +14637,11 @@
             "interval": 8,
             "telegraph": 1.3
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
-        "healthThreshold": 0.75,
-        "accordBreak": true,
-        "attacks": [
-          {
-            "kind": "ring",
-            "count": 14,
-            "speed": 120,
-            "damage": 10,
-            "interval": 8,
-            "telegraph": 1.3
-          }
-        ]
-      },
-      {
-        "healthThreshold": 0.4,
+        "healthThreshold": 0.5,
         "accordBreak": true,
         "attacks": [
           {
@@ -15091,7 +14652,8 @@
             "interval": 8,
             "telegraph": 1.3
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -15123,27 +14685,12 @@
                 "comboOffsetSeconds": 0
               }
             ],
-            "signatureRepeatOffsetSeconds": 0
-          },
-          {
-            "healthThreshold": 0.75,
-            "accordBreak": true,
-            "attacks": [
-              {
-                "kind": "ring",
-                "count": 14,
-                "speed": 120,
-                "damage": 10,
-                "interval": 8,
-                "telegraph": 1.3,
-                "comboOffsetSeconds": 0
-              }
-            ],
-            "signatureRepeatOffsetSeconds": 0
+            "signatureRepeatOffsetSeconds": 0,
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "attacks": [
               {
                 "kind": "hook",
@@ -15155,23 +14702,8 @@
                 "comboOffsetSeconds": 0
               }
             ],
-            "signatureRepeatOffsetSeconds": 0
-          },
-          {
-            "healthThreshold": 0.25,
-            "accordBreak": true,
-            "attacks": [
-              {
-                "kind": "hook",
-                "count": 16,
-                "speed": 120,
-                "damage": 11,
-                "interval": 8,
-                "telegraph": 1.3,
-                "comboOffsetSeconds": 0
-              }
-            ],
-            "signatureRepeatOffsetSeconds": 1.25
+            "signatureRepeatOffsetSeconds": 1.25,
+            "patternPhase": 3
           }
         ]
       }
@@ -15228,24 +14760,11 @@
             "interval": 8,
             "telegraph": 1.3
           }
-        ]
+        ],
+        "patternPhase": 0
       },
       {
-        "healthThreshold": 0.75,
-        "accordBreak": true,
-        "attacks": [
-          {
-            "kind": "cross",
-            "count": 6,
-            "speed": 135,
-            "damage": 10,
-            "interval": 8,
-            "telegraph": 1.3
-          }
-        ]
-      },
-      {
-        "healthThreshold": 0.4,
+        "healthThreshold": 0.5,
         "accordBreak": true,
         "attacks": [
           {
@@ -15256,7 +14775,8 @@
             "interval": 8,
             "telegraph": 1.3
           }
-        ]
+        ],
+        "patternPhase": 2
       }
     ],
     "variants": {
@@ -15288,27 +14808,12 @@
                 "comboOffsetSeconds": 0
               }
             ],
-            "signatureRepeatOffsetSeconds": 0
-          },
-          {
-            "healthThreshold": 0.75,
-            "accordBreak": true,
-            "attacks": [
-              {
-                "kind": "cross",
-                "count": 6,
-                "speed": 135,
-                "damage": 10,
-                "interval": 8,
-                "telegraph": 1.3,
-                "comboOffsetSeconds": 0
-              }
-            ],
-            "signatureRepeatOffsetSeconds": 0
+            "signatureRepeatOffsetSeconds": 0,
+            "patternPhase": 0
           },
           {
             "healthThreshold": 0.5,
-            "accordBreak": true,
+            "accordBreak": false,
             "attacks": [
               {
                 "kind": "lanes",
@@ -15320,23 +14825,8 @@
                 "comboOffsetSeconds": 0
               }
             ],
-            "signatureRepeatOffsetSeconds": 0
-          },
-          {
-            "healthThreshold": 0.25,
-            "accordBreak": true,
-            "attacks": [
-              {
-                "kind": "lanes",
-                "count": 7,
-                "speed": 135,
-                "damage": 11,
-                "interval": 8,
-                "telegraph": 1.3,
-                "comboOffsetSeconds": 0
-              }
-            ],
-            "signatureRepeatOffsetSeconds": 1.25
+            "signatureRepeatOffsetSeconds": 1.25,
+            "patternPhase": 3
           }
         ]
       }

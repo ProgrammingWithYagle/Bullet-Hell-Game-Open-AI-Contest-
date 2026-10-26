@@ -1,3 +1,4 @@
+import {combatReviveFraction} from '../../shared/encounter-policy.ts';
 import {
   skillMapLayout,
   skillMapMarkup,
@@ -15,6 +16,7 @@ import { icon, effectIcon } from "./icons.ts";
 import { assets } from "../assets.ts";
 type Kind = Command["kind"];
 let mapZoom = 1;
+let shopDifficulty = 'normal';
 const itemArt = (kind: Kind, id: string, glyph: string) =>
   (
     kind === "upgrade"
@@ -89,6 +91,7 @@ function canBuy(
   }
   if (kind === "supply") {
     const item = data.supplies.find((s) => s.id === id)!;
+    if(item.effect==='revive' && !combatReviveFraction(shopDifficulty))return {allowed:false,reason:t('ui.reviveOff'),price:item.price};
     const slot =
       p.supplies.find((s) => s.id === id) ?? p.supplies.find((s) => !s.count);
     const full = !slot || slot.count >= item.maximumStack;
@@ -137,7 +140,9 @@ export function shopMarkup(
   p: PlayerView,
   supplyBindings: readonly string[] = ["1", "2", "3"],
   expanded = false,
+  difficulty = 'normal',
 ) {
+  shopDifficulty=difficulty;
   const cl = data.classes.find((c) => c.id === p.classId)!;
   if (!cl.branches.some((b) => b.id === branchId)) branchId = cl.branches[0].id;
   if (
@@ -272,7 +277,7 @@ function details(p: PlayerView) {
     const item = data.supplies.find((s) => s.id === id)!;
     name = t("supply." + id + ".name");
     glyph = supplyGlyph(item.effect);
-    body = `<p>${e(supplyText(id))}</p><p>${e(t("ui.cooldown", { seconds: t("template.seconds", { value: number(item.cooldown) }) }))}</p><p>${number(p.supplies.find((s) => s.id === id)?.count ?? 0)} / ${number(item.maximumStack)}</p>`;
+    body = `<p>${e(supplyText(id,shopDifficulty))}</p><p>${e(t("ui.cooldown", { seconds: t("template.seconds", { value: number(item.cooldown) }) }))}</p><p>${number(p.supplies.find((s) => s.id === id)?.count ?? 0)} / ${number(item.maximumStack)}</p>`;
   } else {
     const u = data.upgrades.find((u) => u.id === id)!;
     name = t("upgrade." + id + ".name");
@@ -298,15 +303,17 @@ export function bindShop(
   purchase: (request: Omit<Command, "id">) => void,
   supplyBindings: readonly string[] = ["1", "2", "3"],
   expanded = false,
+  difficulty = 'normal',
 ) {
+  shopDifficulty=difficulty;
   const redraw = () => {
     const workspace = host.querySelector<HTMLElement>(".loadout-editor");
     if (!workspace) return;
     const oldScroll = host.querySelector<HTMLElement>(".skill-scroll");
     const scroll = oldScroll?.scrollTop ?? 0,
       left = oldScroll?.scrollLeft ?? 0;
-    workspace.innerHTML = shopMarkup(p, supplyBindings, expanded);
-    bindShop(host, p, purchase, supplyBindings, expanded);
+    workspace.innerHTML = shopMarkup(p, supplyBindings, expanded,difficulty);
+    bindShop(host, p, purchase, supplyBindings, expanded,difficulty);
     const scroller = host.querySelector<HTMLElement>(".skill-scroll");
     if (scroller) {
       scroller.scrollTop = scroll;

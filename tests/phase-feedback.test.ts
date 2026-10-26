@@ -21,8 +21,8 @@ function gameAt(phase: number, variant: 'normal' | 'brutal') {
   const game = createPracticeGame({ mode: 'endless', seed: 721 }, 'Mara', 'soldier', variant);
   assert(game.start());
   game.players.get('solo')!.invulnerableUntil = 1e9;
-  game.boss.health = game.boss.maxHealth * [1, 0.74, 0.39, 0.24][phase];
-  while (game.boss.phase < phase) {
+  game.boss.health = game.boss.maxHealth * [1, 0.49][Math.min(1,phase)];
+  while (game.boss.phase < Math.min(1,phase)) {
     game.step();
     assert(game.combatTick < 1000);
   }
@@ -34,7 +34,7 @@ function gameAt(phase: number, variant: 'normal' | 'brutal') {
   return game;
 }
 test('Brutal adds real pincer, ring and triple-ring responses from the opening phase while Normal keeps its calibrated patterns', () => {
-  for (let phase = 0; phase < 3; phase++) {
+  for (let phase = 0; phase < 2; phase++) {
     const normal = gameAt(phase, 'normal'),
       brutal = gameAt(phase, 'brutal');
     const nw = normal.warnings.filter((w) => w.kind !== 'zone'),
@@ -48,13 +48,9 @@ test('Brutal adds real pincer, ring and triple-ring responses from the opening p
       assert.equal(new Set(bw.map((w) => `${w.x},${w.y}`)).size, 3);
     }
     if (phase === 1) {
-      assert(nw.every((w) => w.kind === 'fan'));
-      assert(bw.some((w) => w.kind === 'ring'));
-    }
-    if (phase === 2) {
-      assert.equal(nw.length, 2);
-      assert.equal(bw.length, 3);
-      assert(bw.every((w) => w.kind === 'ring'));
+      assert.equal(nw.filter(w=>w.kind==='ring').length,2);
+      assert.equal(bw.filter(w=>w.kind==='ring').length,3);
+      assert.equal(bw.filter(w=>w.kind==='fan').length,2);
     }
     const locked = bw.map((w) => ({ ...w }));
     brutal.drainEvents();

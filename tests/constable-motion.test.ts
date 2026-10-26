@@ -10,8 +10,8 @@ import { constableArt, constableCombatPose } from '../src/client/constable-prese
 import provenance from '../docs/constable-motion-2026-10-25.json';
 import metadataBinding from '../reviews/constable-motion-2026-10-25/metadata-portability.json';
 
-function fixture(variant: 'normal' | 'brutal' = 'normal') {
-  const lobby = new Game({ mode: 'endless', seed: 583, maxPlayers: 1 });
+function fixture(variant: 'normal' | 'brutal' = 'normal',difficulty='normal') {
+  const lobby = new Game({difficulty, mode: 'endless', seed: 583, maxPlayers: 1 });
   lobby.addPlayer('solo', 'Mara', 'soldier');
   const checkpoint = lobby.offlineCheckpoint()!;
   Object.assign(checkpoint.selectedContract, classifiedContract('constable'));
@@ -135,8 +135,8 @@ test('hurt cannot replace a warning, recovery or stagger, and becomes its own pl
 });
 
 test('a real successful Accord replaces interrupted casts with the complete stagger interval', () => {
-  const game = fixture();
-  game.boss.health = game.boss.maxHealth * 0.7;
+  const game = fixture('normal','easy');
+  game.boss.health = game.boss.maxHealth * 0.49;
   const player = game.players.get('solo')!;
   player.x = 560;
   player.y = 550;

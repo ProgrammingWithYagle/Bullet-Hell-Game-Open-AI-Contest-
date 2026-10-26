@@ -1,5 +1,7 @@
 # Phase feedback, Brutal identity and musical intensity
 
+Current continuation: [difficulty rules and phase pacing](DIFFICULTY_AND_PHASES.md), protocol 16. Historical build descriptions and frozen previews below retain their own issue state. Hellish now forces Brutal, including a selected Standard opener.
+
 Build `2026.10.25-brutal-signals`, protocol 14. Human feedback found Hollow Constable slightly harder, which suits one of the easiest bosses, but phase changes and Brutal identity remained too subtle. This pass preserves Normal's early-boss role while distinguishing the form and explaining phase behavior.
 
 | Phase | Normal | Additional Brutal response |

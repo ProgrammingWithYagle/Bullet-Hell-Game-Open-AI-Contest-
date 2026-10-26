@@ -407,7 +407,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       warnings: g.warnings,
       fields: g.fields,
       signatures: g.signatures,
-      bossCues: g.director.cues(),
+      bossCues: g.bossCues(),
       classCues: g.classKits.cues(),
       arenaId: g.arena.id,
     });

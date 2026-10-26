@@ -6,14 +6,14 @@ Updated October 25, 2026. This is unfinished feature-branch development. Read th
 
 - Use `C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)`.
 - Repository: ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-. Branch `feat/first-playable-loop`; PR #14 stays draft. Inspect actual HEAD/status/origin and exact-head checks. Preserve history and working files; do not clone, create worktrees or switch to main.
-- Build **2026.10.25-skill-map**, protocol **15**. Read the exact current content digest from `content/revision.json`; source verification is under `reviews/early-watch-integration-2026-10-25/`.
+- Build **2026.10.25-difficulty-pressure**, protocol **16**. Read the exact current content digest from `content/revision.json`; source verification is under `reviews/early-watch-integration-2026-10-25/`.
 - Main remains protected and separate at `c3f60ca4125bea31d94c9d3f6ea0c9d3f0853df1`. No main merge, paid provisioning, replacement Site, mismatched backend deployment, contest submission or delegation is authorized.
 
 ## Completed continuation
 
 The source has **63 playable bosses: 62 ordinary and one secret**, seven classes, 378 skills/63 paths, 28 weapons, six maps and five modes. All 63 bosses have individual original themes, plus City Wake. There are **1,502 selected runtime motion poses**, including 36 Early Watch poses.
 
-Ashen Usher 1--, Brass Toad 1- and Ragpicker's Kite 1 now have shared-authority encounters with three distinct ordinary phases, additional Brutal mechanics/fourth phases, physical movement or changing arena pressure, locked warning/counterplay, original music and fifteen-locale help. Their original concept and art-only checkpoint records remain immutable historical issue records. Six successor version-2 requests were actually executed. [Exact behavior, preservation and tests](EARLY_WATCH_RUNTIME.md).
+Ashen Usher 1--, Brass Toad 1- and Ragpicker's Kite 1 now have shared-authority encounters with two visible half-health phases retaining late Standard/Brutal mechanics, physical movement or changing arena pressure, locked warning/counterplay, original music and fifteen-locale help. Their original concept and art-only checkpoint records remain immutable historical issue records. Six successor version-2 requests were actually executed. [Exact behavior, preservation and tests](EARLY_WATCH_RUNTIME.md).
 
 `tools/verify-early-watch-integration.py` independently checks all alpha-bearing source RGBA, complete component ownership, proportional normalization, atlases and loading-version-4 crops. Every old loading-v3 reference byte is retained. Four-frame defeats have explicit ranges and timings; Toad hop lift converts world drawing time to combat time. Breakable props now stay outside the boss body and masonry. Wind uses identical bounded authority/prediction logic and is suppressed during dodge.
 
@@ -39,7 +39,7 @@ Browser control is disabled. The user explicitly asked to stop troubleshooting i
 
 ## Publication and release gates
 
-Canonical Wiki is `docs/wiki/`; native checkout `.wiki-checkout`; **18 pages and 28 images**. Publish exact committed canonical pages/images after verifying the Wiki checkout and remote are clean/unchanged. `node tools/verify-wiki-publication.mjs <source SHA>` checks every Git blob, every public image hash and four public HTML responses. Source PR pushes do not publish the Wiki. Prefer the GitHub connector for supported metadata; the repository-scoped `tools/github-admin.mjs update-pr` fallback keeps credentials in process memory. Keep PR #14 draft and main protected.
+Canonical Wiki is `docs/wiki/`; native checkout `.wiki-checkout`; **18 pages and 29 images**. Publish exact committed canonical pages/images after verifying the Wiki checkout and remote are clean/unchanged. `node tools/verify-wiki-publication.mjs <source SHA>` checks every Git blob, every public image hash and four public HTML responses. Source PR pushes do not publish the Wiki. Prefer the GitHub connector for supported metadata; the repository-scoped `tools/github-admin.mjs update-pr` fallback keeps credentials in process memory. Keep PR #14 draft and main protected.
 
 The public Site stays at protocol 4 under its existing account. The Windows development ZIP at `dev-windows-20261024-1` stays immutable, source `52552c0d4465b918d7cde2ab3c2aa7f1d7eb045e`, protocol 13. A new coordinated release requires a new tag/name and full validation.
 
@@ -57,4 +57,10 @@ Choose New Run, any class/map, Solo and one Early Watch boss; keep global diffic
 
 ## Optional skill-map continuation
 
-The [expanded map](OPTIONAL_SKILL_MAP.md) is a settings-controlled view of all existing paths. It preserves classic purchasing and strictly migrates issued local profiles/settings. Current verification passes 402 tests plus content/fifteen locales, TypeScript and production build, with exact hashes under `reviews/skill-map-2026-10-25/`; the earlier Early Watch and Constable previews and receipts remain separate.
+The [expanded map](OPTIONAL_SKILL_MAP.md) is a settings-controlled view of all existing paths. It preserves classic purchasing and strictly migrates issued local profiles/settings. Current verification passes 419 tests plus content/fifteen locales, TypeScript and production build, with exact hashes under `reviews/skill-map-2026-10-25/`; the earlier Early Watch and Constable previews and receipts remain separate.
+
+## Current difficulty response
+
+See [difficulty rules and phase pacing](DIFFICULTY_AND_PHASES.md): Baby/Easy Standard shield events only; Baby full revival, Easy/Normal half revival, Hard+ none; two phases for threats 1–2, segmented health bar and independent phase banner; warned Brutal repeat volleys; half interior cover on Hard, none on Insane/Hellish, Hellish lava and every Hellish boss forcibly Brutal. Protocol 16 preserves issued local progress with strict online matching. The roster/remaining-work counts are unchanged. Human feedback on frozen 5179 is recorded in the ledger; the response awaits human comparison.
+
+Preserve the separate optional-map preview at http://127.0.0.1:5180/, source `deb489614d4fbf2a43686ea061e8d1cb544f0aea`, process 26480, root `C:\Users\yigal\Documents\Codex\2026-10-25\continue-grave-accord-in-this-same\work\playtest-skill-map-deb4896`. Its 1,666 files / 684,871,381 bytes match the runtime receipt; eight HTTP checks pass and 5178/5179 hashes remain unchanged. Both exact deb4896 CI checks passed. Receipts remain under `reviews/skill-map-2026-10-25/`.

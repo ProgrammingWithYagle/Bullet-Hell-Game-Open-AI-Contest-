@@ -1,5 +1,7 @@
 # Grave Accord - Stage 1 production bible
 
+Current runtime override: [difficulty rules and phase pacing](DIFFICULTY_AND_PHASES.md) supersedes the initial universal revive/Accord and three/four entry-phase assumptions below. The authored design history is retained; current source is protocol 16.
+
 > Current implementation/production authority: [state](IMPLEMENTATION_STATE.md), [progress](DEVELOPMENT_PROGRESS.md), [fixed threats](FIXED_BOSS_THREATS.md) and [continuation checkpoint](CHECKPOINT_2026_10_25.md). The expanded target is 150 ordinary bosses plus secrets; 60 are currently playable (59 ordinary, one secret). Earlier route tables below retain design history; shared fixed-grade campaign selection supersedes strict primary-route fences and encounter rerating.
 
 Edition 0.2.0 | 2026-10-22 | Expanded 60-boss design | Original cooperative gothic zombie bullet hell

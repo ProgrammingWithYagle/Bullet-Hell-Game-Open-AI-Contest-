@@ -14,7 +14,7 @@ function encounter(variant: 'normal' | 'brutal') {
   return game;
 }
 
-test('all sixty bosses retain their identity and gain four bounded Brutal phases', () => {
+test('all sixty-three bosses retain identity and the bounded tier-appropriate Brutal phases', () => {
   for (const boss of data.bosses) {
     const brutal = boss.variants.brutal;
     assert.equal(brutal.identity, boss.id + '-brutal');
@@ -23,7 +23,7 @@ test('all sixty bosses retain their identity and gain four bounded Brutal phases
     assert.equal(brutal.damageMultiplier, 2);
     assert.deepEqual(
       brutal.phases.map((phase) => phase.healthThreshold),
-      [1, 0.75, 0.5, 0.25],
+      bossThreat(boss.id).level<=2?[1,.5]:[1, 0.75, 0.5, 0.25],
     );
     for (const phase of brutal.phases)
       for (const attack of phase.attacks) {
@@ -60,7 +60,7 @@ test('Brutal combat doubles health and attack damage, extends the deadline while
   }
 });
 
-test('Constable transitions produce crossing volleys, gapped rings and a fourth Brutal phase', () => {
+test('Constable final transition retains gapped rings and additional Brutal pincer origins', () => {
   for (const variant of ['normal', 'brutal'] as const) {
     const game = encounter(variant),
       seen = new Set<string>();
@@ -72,8 +72,8 @@ test('Constable transitions produce crossing volleys, gapped rings and a fourth 
       const fans = game.warnings.filter((warning) => warning.kind === 'fan');
       if (fans.some((a) => fans.some((b) => a.at === b.at && a.x !== b.x))) sawCrossing = true;
     }
-    assert.equal(game.boss.phase, variant === 'brutal' ? 3 : 2);
-    assert(sawCrossing, variant + ' did not telegraph crossing volleys');
+    assert.equal(game.boss.phase,1);
+    if(variant==='brutal')assert(sawCrossing, 'Brutal did not telegraph pincer volleys');
     assert(seen.has('ring'), variant + ' did not telegraph a gapped ring');
     assert(seen.has('zone'), variant + ' did not telegraph arresting zones');
     assert.equal(game.phase, 'combat');

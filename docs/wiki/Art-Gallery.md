@@ -175,3 +175,9 @@ Ashen Usher 1--, Brass Toad 1- and Ragpicker's Kite 1 add three distinct shared-
 ![Thirty-six Early Watch selected poses, a static local composite rather than an engine capture](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/early-watch-motion.jpg)
 
 [Implementation and verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/EARLY_WATCH_RUNTIME.md).
+
+## Difficulty cover variants
+
+![Gatehouse full, half and open floor art](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/difficulty-cover.jpg)
+
+Two original built-in ImageGen edits remove only the appropriate painted fountain cover. The original native remains unchanged. This is a technical asset comparison, not a rendered gameplay capture. Insane/Hellish use the open floor; Hellish lava is drawn from the shared authority geometry. [Exact rules and preserved requests](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/DIFFICULTY_AND_PHASES.md).

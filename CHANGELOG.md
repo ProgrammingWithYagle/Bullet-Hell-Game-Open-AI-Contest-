@@ -1,6 +1,30 @@
 # Changelog
 
-Development build **2026.10.25-skill-map**, protocol 15. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.25-difficulty-pressure**, protocol 16. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-25 — Difficulty rules, clearer phases and Hellish arenas
+
+### Distinct assistance rules
+
+- The phase shield-break (Accord) event is offered only on Baby/Easy Standard. Every Brutal form and Normal or higher remove the event and its heal/stagger/vulnerability. Existing hostile projectiles and fields stay live through unassisted phase changes; pending outgoing casts reset.
+- All combat revival routes use one rule: Baby restores 100% health, Easy/Normal 50%, Hard/Insane/Hellish disable revival. This includes solo recovery, teammate channels, Medic resurrection and supplies. Disabled revive kits cannot be bought or consumed; recovery between encounters remains. Difficulty selection and final review display these distinctions in all fifteen locales.
+- A timeout-free Normal-or-higher campaign with at least three completed encounters can offer the consented secret challenge without requiring the now-removed Accord event. Campaign victory remains banked before the offer.
+
+### Phase pacing and Brutal pressure
+
+- Threat levels 1–2 now use two half-health phases in both forms. The final phase retains the late authored signature, including the former final Brutal combinations. Higher threats retain three Standard or four Brutal phases. A segmented boss health bar, current/total phase labels and a separate transition banner make changes visible without the shield event. Normal health is unchanged.
+- Brutal boss projectile volleys repeat locked origins and trajectories after 1.05 seconds: two total waves at lower threat, three from threat 5. Additional signature mechanics remain. Repeats have authoritative warnings and bounded queues, never recursively repeat, and preserve the 4,000-hostile cap. Controlled projectiles retain their authored control sequence; the Warden retains its safe sweep geometry.
+
+### Difficulty changes arena play
+
+- Hard retains half the static interior cover (rounded down); Insane and Hellish remove interior cover. Arena boundary walls and temporary boss mechanics remain. Authority, prediction, cover art and previews share the same selected geometry. Two original built-in ImageGen Gatehouse floor edits remove the corresponding painted fountains; the original floor is preserved.
+- Hellish adds marked contact-damaging lava pits with a three-second opening warning, safe spawns and 24 damage per second in half-second intervals. Every Hellish boss is forcibly Brutal, including fresh openers, future contracts and the secret. The difficulty menu and Solo selector make this automatic rule explicit.
+- Hellish global health is rebased to 1.2× before the forced 2× Brutal multiplier (2.4× overall); Brutal keeps its 1.5× deadline. The variant-aware analytical model has no deadline misses under its declared assumptions. Actual human balance, rendering, device and native-language acceptance remain open.
+
+### Continuity and remaining work
+
+- Protocol 16 keeps online revisions strict and migrates the known issued protocol-15 local Practice/profile revision without losing progress, run identity or purchases. Hellish contracts adopt the new forced-Brutal rule. The roster remains 63; 88 new ordinary identities, 59 original quality passes and seven ability-changing class revamps remain.
+- The optional complete skill map is already implemented. All frozen previews through 5180, protected main, the public protocol-4 Site and immutable protocol-13 Windows release remain separate. Simultaneous boss pairs are a future encounter design option; this pass does not add them.
 
 ## 2026-10-25 — Optional expanded skill map
 
