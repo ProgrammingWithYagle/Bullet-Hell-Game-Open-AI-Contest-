@@ -1,12 +1,14 @@
 // Rendering choices are derived from the signature clock, never the other way round.
 import contract from '../../assets/production/motion/warden-rehearsal.json';
+import patrol from '../../assets/production/motion/warden-patrol.json';
+import type {WardenPatrolCue} from '../shared/warden-patrol.ts';
 import { HZ } from '../shared/protocol.ts';
 import type { WardenSample } from '../shared/warden-signature.ts';
 import type { Boss } from '../shared/game.ts';
 
 export type WardenClipId = 'idle' | 'attack' | 'channel';
-export type WardenCombatClipId = keyof typeof contract.clips;
-export const wardenArt = contract;
+export const wardenArt = {...contract,clips:{...contract.clips,patrol}};
+export type WardenCombatClipId = keyof typeof wardenArt.clips;
 
 export function wardenCombatPose(
   boss: Boss,
@@ -14,6 +16,7 @@ export function wardenCombatPose(
   combatTick: number,
   signatures: WardenSample[],
   reducedMotion = false,
+  route?:WardenPatrolCue,
 ): { clip: WardenCombatClipId; frame: number } {
   if (boss.defeatedAt > 0 && boss.health <= 0)
     return {
@@ -24,6 +27,7 @@ export function wardenCombatPose(
         false,
       ),
     };
+  if(route&&combatTick>=route.moveAt&&combatTick<route.until)return {clip:'patrol',frame:reducedMotion?0:frameAt(wardenArt.clips.patrol.frameDurationsMs,(combatTick-route.moveAt)*1000/HZ,true)};
   const active = signatures.find((sample) => sample.phase === 'active');
   const warning = signatures.find((sample) => sample.phase === 'warning');
   if (active || warning) return wardenPose((active ?? warning)!, reducedMotion);

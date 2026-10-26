@@ -2959,14 +2959,18 @@
     "artBrief": "A tall dead lamplighter with one caged lantern and a clean triangular coat. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
     "signature": {
       "id": "lantern-warden",
-      "behavior": "Rotate a narrow cone of falling sparks around the lantern, with a clear trailing safe wedge.",
-      "counterplay": "Move behind the marked cone; its ground boundary remains visible with reduced effects.",
+      "behavior": "One locked-origin lantern sweep with a trailing safe wedge. At half health patrol between attacks; Brutal alternates direction and adds a fully warned sequential return sweep.",
+      "counterplay": "Read the sweep-direction arrow, move behind the cone, and follow the new ground origin after a patrol. The final Brutal return sweep has its own complete warning and never overlaps the first.",
       "parameters": {
         "coneDegrees": 55,
         "rotationDegreesPerSecond": 24,
         "warningSeconds": 1.2,
         "activeSeconds": 4,
-        "restSeconds": 4
+        "restSeconds": 4,
+        "patrolSpeed": 72,
+        "patrolDistance": 144,
+        "patrolTellSeconds": 0.6,
+        "returnPauseSeconds": 0.6
       }
     },
     "arenaIds": [
@@ -3008,7 +3012,10 @@
             "duration": 3
           }
         ],
-        "patternPhase": 0
+        "patternPhase": 0,
+        "phaseNameKey": "boss.lantern-warden.phase.0",
+        "sequentialSweeps": 1,
+        "patrol": false
       },
       {
         "healthThreshold": 0.5,
@@ -3034,7 +3041,10 @@
             "duration": 3
           }
         ],
-        "patternPhase": 2
+        "patternPhase": 2,
+        "phaseNameKey": "boss.lantern-warden.phase.1",
+        "sequentialSweeps": 1,
+        "patrol": true
       }
     ],
     "variants": {
@@ -3055,7 +3065,6 @@
           {
             "healthThreshold": 1,
             "accordBreak": false,
-            "signatureRepeatOffsetSeconds": 0,
             "attacks": [
               {
                 "kind": "fan",
@@ -3079,12 +3088,14 @@
                 "comboOffsetSeconds": 0
               }
             ],
-            "patternPhase": 0
+            "patternPhase": 0,
+            "phaseNameKey": "boss.lantern-warden.phase.0",
+            "sequentialSweeps": 1,
+            "patrol": false
           },
           {
             "healthThreshold": 0.5,
             "accordBreak": false,
-            "signatureRepeatOffsetSeconds": 1.25,
             "attacks": [
               {
                 "kind": "fan",
@@ -3108,7 +3119,10 @@
                 "comboOffsetSeconds": 1.25
               }
             ],
-            "patternPhase": 3
+            "patternPhase": 3,
+            "phaseNameKey": "boss.lantern-warden.phase.1",
+            "sequentialSweeps": 2,
+            "patrol": true
           }
         ]
       }

@@ -1,3 +1,4 @@
+import {WardenPatrol} from './warden-patrol.ts';
 import {AbilityTransforms,type TransformContext} from './ability-transforms.ts';
 import {hasTalent} from './class-talents.ts';
 import {fieldPosition} from './field-follow.ts';
@@ -224,7 +225,7 @@ export class Game {
     const lava = this.phase === 'combat' ? this.arena.lavaPits.map((pit,i)=>({
       ...pit,kind:'arena-lava' as const,id:-(i+1),at:this.arenaHazardAt,until:Number.MAX_SAFE_INTEGER,
     })) : [];
-    return [...this.director.cues(),...this.brutalVolley.cues(),...lava];
+    return [...this.director.cues(),...this.brutalVolley.cues(),...this.wardenPatrol.cues(),...lava];
   }
   readonly classKits = new ClassKits();
   readonly transforms = new AbilityTransforms();
@@ -305,8 +306,7 @@ export class Game {
   private attackAt = [0, 0];
   readonly completedBossIds = new Set<BossId>();
   signatures: WardenSample[] = [];
-  private wardenClocks: { clock: WardenClock; delay: number }[] = [];
-  private wardenEpoch = 0;
+  private readonly wardenPatrol = new WardenPatrol();
   private wardenHitAt = new Map<string, number>();
   private transactions = new Map<string, Map<string, { request: string; result: Result }>>();
   private statsCache = new Map<string, Stats>();
@@ -744,7 +744,7 @@ export class Game {
   }
   private startEncounter() {
     if(this.settings.difficulty==='hellish') Object.assign(this.selectedContract,classifiedContract(this.selectedContract.bossId??'constable','brutal'));
-    this.classKits.clear();this.transforms.clear();
+    this.classKits.clear();this.transforms.clear();this.wardenPatrol.clear();
     this.pruneExpired();
     this.phase = 'combat';
     this.phaseEnds = 0;
@@ -866,14 +866,14 @@ export class Game {
     this.votes.clear();
   }
   private victory() {
-    this.classKits.clear();this.transforms.clear();
+    this.classKits.clear();this.transforms.clear();this.wardenPatrol.clear();
     this.completedBossIds.add(this.boss.id);
     if (this.settings.mode === 'endless') this.endless.record(this.boss.id);
     this.boss.health = 0;
     this.boss.defeatedAt = this.tick;
     this.director.reset('constable');
     this.signatures = [];
-    this.wardenClocks = [];
+    this.wardenPatrol.clear();
     for (const p of this.roster())
       if (p.eligible) {
         p.progress.clears++;
@@ -1091,7 +1091,7 @@ export class Game {
         this.secretStatus = 'failed';
         this.phase = this.campaignBank ? 'victory' : 'defeat';
       } else this.phase = 'defeat';
-      this.classKits.clear();this.transforms.clear();
+      this.classKits.clear();this.transforms.clear();this.wardenPatrol.clear();
       this.director.reset('constable');
       this.minions.clear();
       this.signatures = [];
@@ -1596,22 +1596,12 @@ export class Game {
   private bossPhases() {
     return encounterPhases(this.boss.id,this.boss.variant);
   }
+  private wardenContext(){return {now:this.combatTick,boss:this.boss,phase:this.boss.phase,brutal:this.boss.variant==='brutal',target:this.aimTargets()[0]??{x:800,y:700},radius:this.bossDefinition().radius,obstacles:this.obstacles,id:()=>this.id()};}
   private resetWarden() {
-    this.signatures = [];
-    this.wardenClocks = [];
-    this.wardenHitAt.clear();
-    this.wardenEpoch = this.combatTick;
-    if (this.boss.id !== 'lantern-warden') return;
-    const target = this.aimTargets()[0] ?? { x: 800, y: 700 };
-    const origin = { x: this.boss.x + 55, y: this.boss.y };
-    const phase = this.bossPhases()[this.boss.phase];
-    const repeat =
-      'signatureRepeatOffsetSeconds' in phase ? Number(phase.signatureRepeatOffsetSeconds) : 0;
-    this.wardenClocks = [0, ...(repeat > 0 ? [ticks(repeat)] : [])].map((delay) => ({
-      clock: new WardenClock(origin, target),
-      delay,
-    }));
-    this.signatures = [this.wardenClocks[0].clock.sample()];
+    this.signatures=[];this.wardenPatrol.clear();this.wardenHitAt.clear();
+    if(this.boss.id!=='lantern-warden')return;
+    this.wardenPatrol.reset(this.wardenContext());
+    this.signatures=this.wardenPatrol.step(this.wardenContext());
   }
   private bossDamageScale() {
     const cycle =
@@ -1627,13 +1617,8 @@ export class Game {
     );
   }
   private stepWarden() {
-    if (!this.wardenClocks.length) this.resetWarden();
-    const target = this.aimTargets()[0] ?? { x: 800, y: 700 };
-    this.signatures = this.wardenClocks.flatMap(({ clock, delay }) => {
-      const elapsed = this.combatTick - this.wardenEpoch - delay;
-      if (elapsed < 0) return [];
-      return [elapsed > clock.tick ? clock.advance(target) : clock.sample()];
-    });
+    this.signatures=this.wardenPatrol.step(this.wardenContext());
+    if(this.signatures.some(s=>s.phase==='warning'&&s.phaseTick===0))this.events.push({type:'sound',id:'warning',x:this.boss.x,y:this.boss.y});
     // The lantern extinguishes earlier auxiliary hazards at release so its
     // outlined trailing space is clear throughout every active sweep.
     if (this.signatures.some((sample) => sample.phase === 'active' && sample.phaseTick === 0)) {
@@ -1883,7 +1868,7 @@ export class Game {
     }
     if (now < this.boss.staggerUntil) {
       this.signatures = [];
-      this.wardenClocks = [];
+      this.wardenPatrol.clear();
       return;
     }
     if (this.boss.id === 'lantern-warden') this.stepWarden();
@@ -1901,7 +1886,7 @@ export class Game {
         now >= this.attackAt[index] &&
         (this.boss.id !== 'constable' || now >= this.boss.castEndsAt) &&
         (this.boss.id !== 'lantern-warden' ||
-          this.signatures.every((sample) => sample.phase === 'rest'))
+          this.wardenPatrol.canCastAuxiliary)
       ) {
         const attack = attacks[index],
           targets = this.aimTargets();

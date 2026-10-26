@@ -1,3 +1,4 @@
+import {applyWardenPatrol} from '../content/source/warden-patrol.mjs';
 import {addClassTalents} from '../content/source/class-talents.mjs';
 import { applyEncounterPacing } from '../content/source/encounter-pacing.mjs';
 import { addEarlyWatch } from '../content/source/early-watch.mjs';
@@ -240,6 +241,7 @@ const arenas = [
 const leaderboards=JSON.parse(fs.readFileSync(path.join(root,'content/leaderboards.json'),'utf8'));
 const manifest = {rules,locales,difficulties,modes,classes,skills,weapons,upgrades,supplies,bosses,bossPools,mutations,arenas,grades,leaderboards,threats:['Normal','Aberrant','Predator','Brute','Scourge','Dread','Disaster','Catastrophe','Cataclysm','Calamity','The Uncounted']};
 applyEncounterPacing(manifest);addClassTalents(manifest);
+applyWardenPatrol(manifest);
 for(const [key,value] of Object.entries(manifest)) json('content/'+key+'.json',value);
 json('content/catalog.json',manifest);
 write('docs/balance/skills.csv',csv(['id','class','branch','subbranch','name','depth','cost','grade','prerequisite','capstone','effects'],skills.map(s=>[s.id,s.classId,s.branchName,s.subbranchName,s.name,s.depth,s.cost,s.grade,s.prerequisite??'',s.capstone,JSON.stringify(s.effects)])));

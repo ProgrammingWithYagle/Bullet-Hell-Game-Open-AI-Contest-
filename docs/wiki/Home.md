@@ -7,7 +7,7 @@
 
 Cooperative gothic zombie bullet hell. Choose a survivor, clear a boss contract, vote on mutations, buy a build and survive the next encounter.
 
-**Current development source: version 0.3.0, build `2026.10.25-class-talents`, protocol 18, updated 2026-10-25.** The game is still in development. [Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains the playable feature branch; protected `main` is a separate release boundary.
+**Current development source: version 0.3.0, build `2026.10.26-warden-patrol`, protocol 19, updated 2026-10-25.** The game is still in development. [Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains the playable feature branch; protected `main` is a separate release boundary.
 
 | Playable now in that source | Contents |
 | --- | --- |
@@ -54,3 +54,5 @@ The optional **Expanded skill map** setting shows all 54 skills per class, with 
 ## Class ability transformations
 
 The seven requested class-upgrade implementation passes now add 21 behavior changes at existing utility-path depth-three nodes (six cumulative SP each). Costs, prerequisites, node IDs and the single-capstone rule remain. Both skill views show fifteen-locale help. Shared authority, finite constructs, delayed attacks and moving fields replicate to offline/online clients. [Class behavior and tradeoffs](Classes-and-Skills#purchased-ability-transformations). Protocol 18 migrates known issued protocol-17 local saves/profiles; online remains strict. Latest Baby/Easy/Normal assistance and Hellish rules remain intact. Human/rendered/device/native-language acceptance remains open.
+
+[Lantern Warden quality pass](Bosses#roving-warden-quality-pass) adds rest-only patrols, directional sweeps and a fully warned sequential Brutal return. Two original-roster quality passes are implemented; 58 remain. Four complete poses bring selected runtime motion to 1,506. Human/rendered acceptance remains open.

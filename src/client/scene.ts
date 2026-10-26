@@ -395,6 +395,12 @@ export class CombatScene extends Phaser.Scene {
     }
     for (const sample of view.signatures) {
       if (sample.phase === 'rest') continue;
+      const turn=sample.direction??1,angle=sample.cone.aim+turn*.55,radius=sample.cone.radius*.7;
+      const ax=sample.cone.x+Math.cos(angle)*radius,ay=sample.cone.y+Math.sin(angle)*radius;
+      const tx=-Math.sin(angle)*turn,ty=Math.cos(angle)*turn;
+      h.lineStyle(3,0xf4d6a0,.95).lineBetween(ax-tx*15,ay-ty*15,ax+tx*15,ay+ty*15)
+       .lineBetween(ax+tx*15,ay+ty*15,ax+tx*3-ty*8,ay+ty*3+tx*8)
+       .lineBetween(ax+tx*15,ay+ty*15,ax+tx*3+ty*8,ay+ty*3-tx*8);
       this.paintSector(
         h,
         sample.cone,
@@ -753,6 +759,16 @@ export class CombatScene extends Phaser.Scene {
       this.hitboxes,
     );
     drawEarlyWatch(h, f, view.bossCues, now);
+    for(const cue of view.bossCues){
+      if(cue.kind==='warden-patrol'){
+        h.lineStyle(2,0xa5d7d2,.8).lineBetween(cue.x1,cue.y1,cue.x2,cue.y2).strokeCircle(cue.x2,cue.y2,14);
+        const angle=Math.atan2(cue.y2-cue.y1,cue.x2-cue.x1);
+        for(const side of [-1,1])h.lineBetween(cue.x2,cue.y2,cue.x2-Math.cos(angle+side*.5)*18,cue.y2-Math.sin(angle+side*.5)*18);
+      }else if(cue.kind==='warden-return'){
+        h.lineStyle(3,0xe8ad92,.9).strokeCircle(cue.x,cue.y,45);
+        h.lineBetween(cue.x-15,cue.y-8,cue.x+15,cue.y-8).lineBetween(cue.x-15,cue.y+8,cue.x+15,cue.y+8);
+      }
+    }
     const actorIds = new Set(view.minions.map((a) => a.id));
     for (const actor of view.minions) {
       let sprite = this.actors.get(actor.id);
@@ -844,7 +860,7 @@ export class CombatScene extends Phaser.Scene {
     }
     this.bossSprite.setAlpha(view.boss.health > 0 && now < view.boss.staggerUntil ? 0.55 : 1);
     if (warden) {
-      const pose = wardenCombatPose(view.boss, view.tick, now, view.signatures, this.reduceMotion);
+      const pose = wardenCombatPose(view.boss, view.tick, now, view.signatures, this.reduceMotion,view.bossCues.find(c=>c.kind==='warden-patrol'));
       const clip = wardenArt.clips[pose.clip];
       this.bossSprite.anims.stop();
       this.bossSprite

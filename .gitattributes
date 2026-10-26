@@ -76,3 +76,7 @@ START_NEXT_CHAT.txt text eol=lf
 
 # Preserve exact class-transformation verification output, including issued whitespace.
 reviews/class-talents-2026-10-25/*.txt -text -whitespace
+
+# Preserve exact Warden-patrol output/request bytes and issued whitespace.
+reviews/warden-patrol-2026-10-25/*.txt -text -whitespace
+assets/production/generated/warden-patrol-2026-10-25/*.request.json -text -whitespace

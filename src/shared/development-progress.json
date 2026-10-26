@@ -1,6 +1,6 @@
 {
-  "updated": "2026-10-25",
-  "buildId": "2026.10.25-class-talents",
+  "updated": "2026-10-26",
+  "buildId": "2026.10.26-warden-patrol",
   "playableBosses": 63,
   "ordinaryBosses": 62,
   "secretBosses": 1,
@@ -16,13 +16,14 @@
       "id": "boss-quality",
       "label": "Existing-boss phase / mobility / Brutal quality passes",
       "target": 60,
-      "implemented": 1,
-      "remaining": 59,
+      "implemented": 2,
+      "remaining": 58,
       "humanAccepted": 0,
       "completedIds": [
-        "constable"
+        "constable",
+        "lantern-warden"
       ],
-      "status": "Constable implementation completed; second human review requested. Other 59 await assessment or redesign."
+      "status": "Constable and Warden phase/mobility/Brutal implementation passes complete; human acceptance remains open. Other 58 original-roster encounters await assessment/redesign."
     },
     {
       "id": "class-abilities",
@@ -416,7 +417,7 @@
   ],
   "remainingReleaseWork": [
     "Create and verify 88 additional ordinary boss identities, with distinct mechanics, art and individual original music; the target is at least 150 ordinary plus secrets.",
-    "Assess or redesign the remaining 59 existing boss encounters for distinct phases, meaningful pressure and separate Brutal behavior.",
+    "Assess or redesign the remaining 58 existing boss encounters for distinct phases, meaningful pressure and separate Brutal behavior.",
     "Review and tune the 21 implemented ability-changing upgrades and optional skill map on actual rendered/human/device/native-language surfaces.",
     "Complete remaining boss special/action art, class special-ability art and rendered animation transitions.",
     "Complete final human balance, music/listening, native-language and physical-device acceptance.",
@@ -424,5 +425,5 @@
     "Complete deployed rankings and durable recovery, including participant credentials, entropy histories/paging and hosted acceptance.",
     "Prepare and verify a new coordinated Windows/browser release; existing immutable Windows and older public builds remain separate."
   ],
-  "semanticInputsSha256": "f407adfb416b3d9734e1a367b12acd79e7a4053b4521b57172907caab8c6b7be"
+  "semanticInputsSha256": "7ecda0c02b72b6b9f594a4675fbd38dc96139ad2258eee57b30845e30e789ccf"
 }

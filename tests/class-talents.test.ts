@@ -594,7 +594,7 @@ test('scheduled talent damage and cues stop when their owner is down or the enco
   assert.equal(b.g.transforms.cues().length, 0);
   assert.equal(b.g.shots.size, 0);
 });
-test('issued protocol-17 local saves retain skill node ownership and progression under protocol 18', () => {
+test('issued protocol-17 local saves retain skill node ownership and progression under protocol 19', () => {
   const { g, p } = fixture('soldier', 0);
   g.phase = 'lobby';
   g.encounter = 9;
@@ -605,7 +605,7 @@ test('issued protocol-17 local saves retain skill node ownership and progression
     'd4419d906f67286576ca3f6795e03a921269aff861b36e2e82ce68aa2e501775';
   const restored = Game.restoreOffline(save),
     after = [...restored.players.values()][0];
-  assert.equal(PROTOCOL, 18);
+  assert.equal(PROTOCOL, 19);
   assert.equal(after.coins, 901);
   assert.deepEqual(after.skills, p.skills);
   assert(hasTalent(after, 'breach-cadence'));

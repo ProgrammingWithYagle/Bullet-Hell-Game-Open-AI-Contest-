@@ -2937,6 +2937,14 @@
       "path": "images/difficulty-cover.jpg",
       "bytes": 498783,
       "sha256": "0d316d5286c7a0b856690332feed70d34b86746c5f634e3dc4ff2484a0382b09"
+    },
+    {
+      "path": "images/warden-patrol.jpg",
+      "bytes": 73692,
+      "sha256": "c20f9226a8f190fb75e62391acaec82be94c632cd16d7751374a0481001d5775",
+      "width": 1024,
+      "height": 1024,
+      "caption": "Four original Warden patrol poses at one physical scale; sprite reference, not gameplay capture."
     }
   ],
   "limits": [
@@ -2964,5 +2972,14 @@
     "verifier": "tools/verify-difficulty-floor.py",
     "verifierSha256": "a8c19f0f1972aca7455cfcaec19e89d71dab28cef8d102cd8d20c52b19df650b",
     "renderedAccepted": false
+  },
+  "wardenPatrol": {
+    "source": "assets/production/motion/warden-patrol.json",
+    "sourceSha256": "0dc9d5b3f5e66b69958322268da33a05ea076c9e1746d279627fe82d82b711d0",
+    "completePoses": 4,
+    "totalWardenPoses": 31,
+    "renderedCapture": false,
+    "sourceTool": "tools/build-warden-patrol-wiki.py",
+    "sourceToolSha256": "1f0926834c423a70f4936cb279f1600a397406fb2103bfb2ea8ee390648216bb"
   }
 }

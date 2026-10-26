@@ -9,6 +9,7 @@ import { defaultControls } from './input-bindings.ts';
 import { controlsMarkup, bindControlSettings, bindingLabel } from './ui/control-settings.ts';
 import { insignia } from './ui/insignia.ts';
 import { profileText } from './profile-text.ts';
+import {wardenPhaseName,wardenPhaseHint} from './warden-text.ts';
 import { extensionText, signatureHelp } from './extension-ui.ts';
 import Phaser from 'phaser';
 import './style.css';
@@ -345,7 +346,7 @@ function update(view: View) {
       ' · ' +
       t('ui.phaseCount', { number: number(view.boss.phase + 1),total:number(encounterPhases(view.boss.id,view.boss.variant).length) }) +
       (view.boss.id === 'constable' ? ' · ' + constablePhaseName(bossPatternPhase(view.boss.id,view.boss.variant,view.boss.phase), locale) :
-        ['ashen-usher','brass-toad','ragpicker-kite'].includes(view.boss.id) ? ' · ' + t(`boss.${view.boss.id}.phase.${Math.min(2,bossPatternPhase(view.boss.id,view.boss.variant,view.boss.phase))}`) : '');
+        view.boss.id==='lantern-warden'?' · '+wardenPhaseName(view.boss.phase,locale): ['ashen-usher','brass-toad','ragpicker-kite'].includes(view.boss.id) ? ' · ' + t(`boss.${view.boss.id}.phase.${Math.min(2,bossPatternPhase(view.boss.id,view.boss.variant,view.boss.phase))}`) : '');
   const hp = $<HTMLProgressElement>('health');
   hp.max = p.maxHealth;
   hp.value = p.health;
@@ -428,7 +429,7 @@ function update(view: View) {
   const noteText =
     view.boss.id === 'constable'
       ? constablePhaseHint(bossPatternPhase(view.boss.id,view.boss.variant,view.boss.phase), view.boss.variant, locale)
-      : '';
+      : view.boss.id==='lantern-warden'?wardenPhaseHint(view.boss.phase,view.boss.variant,locale): '';
   phaseNote.hidden = !noteText;
   if (phaseNote.textContent !== noteText) phaseNote.textContent = noteText;
   $('boss-panel').hidden = view.phase !== 'combat';

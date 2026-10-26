@@ -96,7 +96,7 @@ test('Warden fan/zone casts use their own radius, duration, damage and rest wind
   assert(fan && zone && actualZone && hostileShots);
 });
 
-test('Warden Brutal scales health/deadline/contact damage and second visible phase retains the authored delayed sweep', () => {
+test('Warden Brutal scales health/deadline/contact damage and second visible phase uses a fully warned sequential return sweep', () => {
   const normal = encounter('normal', false),
     brutal = encounter('brutal', false);
   assert.equal(brutal.boss.maxHealth, normal.boss.maxHealth * 2);
@@ -114,15 +114,13 @@ test('Warden Brutal scales health/deadline/contact damage and second visible pha
   game.boss.health = game.boss.maxHealth * 0.2;
   for (let tick = 0; tick < 1000 && game.boss.phase < 1; tick++) game.step();
   assert.equal(game.boss.phase, 1);
-  for (let tick = 0; tick < 75; tick++) game.step();
-  assert.equal(game.signatures.length, 2);
-  assert(game.signatures.every((sample) => sample.phase === 'active'));
-  const [first, echo] = game.signatures;
-  assert.equal(first.tick - echo.tick, 38);
-  assert(
-    Math.abs(wrappedAngle(first.cone.aim - echo.cone.aim) - (((38 * 24) / 30) * Math.PI) / 180) <
-      1e-9,
-  );
+  let active=0,returned=false;const directions:number[]=[];
+  for(let tick=0;tick<500;tick++){
+    game.step();assert(game.signatures.filter(s=>s.phase==='active').length<=1);
+    for(const sample of game.signatures){if(sample.phase==='warning'&&sample.phaseTick===0)directions.push(sample.direction);if(sample.phase==='active')active++;}
+    returned ||=game.bossCues().some(c=>c.kind==='warden-return');
+  }
+  assert(returned);assert(active>=240);assert.deepEqual(directions.slice(0,2),[1,-1]);
 });
 
 test('an Easy Standard Accord removes the sweep and restarts with a complete new tell after stagger', () => {
@@ -140,6 +138,7 @@ test('an Easy Standard Accord removes the sweep and restarts with a complete new
     assert.equal(game.signatures.length, 0);
   }
   game.step();
+  for(let n=0;n<100&&!game.signatures.length;n++)game.step();
   assert.equal(game.signatures[0].phaseTick, 0);
   for (let tick = 0; tick < 35; tick++) {
     game.step();

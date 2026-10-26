@@ -21,6 +21,7 @@ import rateIcon from '../../assets/icons/upgrades/fire-rate.png?url';
 import magazineIcon from '../../assets/icons/upgrades/magazine.png?url';
 import reloadIcon from '../../assets/icons/upgrades/reload.png?url';
 import healthIcon from '../../assets/icons/upgrades/health.png?url';
+import wardenPatrol from '../../assets/production/motion/lantern-warden-patrol-v1-atlas.png?url';
 import wardenIdle from '../../assets/production/motion/lantern-warden-idle-v1-atlas.png?url';
 import wardenAttack from '../../assets/production/motion/lantern-warden-attack-v2-atlas.png?url';
 import wardenChannel from '../../assets/production/motion/lantern-warden-channel-v1-atlas.png?url';
@@ -189,6 +190,7 @@ export const assets = {
   medic,
   lineup,
   warden: {
+    patrol:wardenPatrol,
     idle: wardenIdle,
     attack: wardenAttack,
     channel: wardenChannel,

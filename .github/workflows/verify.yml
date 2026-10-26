@@ -23,6 +23,11 @@ jobs:
         run: npm install --global pnpm@11.25.0
       - name: Install locked dependencies
         run: pnpm install --frozen-lockfile
+      - name: Install pinned image verification dependency
+        run: |
+          python -m venv .art-verify-venv
+          .art-verify-venv/bin/python -m pip install --disable-pip-version-check -r tools/art-verification-requirements.txt
+          echo "$PWD/.art-verify-venv/bin" >> "$GITHUB_PATH"
       - name: Verify content, rules, networking and client build
         run: pnpm verify
       - name: Preserve verification report

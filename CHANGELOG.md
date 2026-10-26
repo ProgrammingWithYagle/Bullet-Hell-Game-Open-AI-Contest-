@@ -1,6 +1,21 @@
 # Changelog
 
-Development build **2026.10.25-class-talents**, protocol 18. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.26-warden-patrol**, protocol 19. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-26 — Lantern Warden patrols and warned Brutal return sweeps
+
+### Two visible phases and a moving recovery
+
+- Still Watch retains the stationary 1.2-second warning, four-second sweep and four-second rest. At half health, Roving Vigil adds a marked 0.6-second patrol tell and grounded movement up to 144 pixels at 72 pixels/s before its first sweep and during recovery. The actual boss resolves movement against map collision; its lantern ground origin locks before every warning and stays fixed throughout danger.
+- Brutal alternates sweep direction between cycles. Its final phase replaces overlapping cones with a sequential reverse return sweep after a 0.6-second pause and a fresh full 1.2-second warning. Only one dangerous cone is active at a time. Existing warned projectile replays make recovery fans fire two locked-origin waves. Auxiliary hazards clear at sweep release, preserving the marked trailing interior.
+- Four new independently drawn patrol poses retain the Warden identity and physical-left lantern. The exact built-in ImageGen native, prompt, portable references, initial failed packing assumption and independently verified RGBA transforms are preserved. An unequal lower-row ownership boundary keeps the complete third-pose lantern. All alpha-bearing margins remain; compensated display scale retains the existing 150-pixel world body height. Earlier Warden natives/contracts/atlases are unchanged. Total selected motion poses rise to 1,506.
+
+### Readable response and continuity
+
+- Fifteen-locale phase names, persistent response hints and Brutal return help accompany static travel/sweep arrows. Reduced motion retains route and direction information while holding the patrol pose. Last Light remains the Warden's individual original 72-BPM theme, with the existing tempo-aligned phase/Brutal percussion response.
+- Normal Warden health, damage, sweep radius/width/rotation, warning, rest and deadline are unchanged. Fixed identity remains 2--, with B separate. All latest difficulty assistance, cover/lava and Hellish forced-Brutal rules remain. Protocol 19 migrates known issued protocol-18 local Practice saves/profiles and keeps online revisions strict.
+- Authority regressions cover all six maps and five cover rules, live safe-space damage, locked routes/origins/aim, two full Brutal warnings, real second projectile waves, cleanup, movement pose selection, fifteen-locale help and local migration. Real clients reject protocol 18 and replicate patrol/sweep state and defeat cleanup. The independent pixel verifier reconstructs the complete native and normalized atlas.
+- The roster remains 63 (62 ordinary plus one secret); 88 new ordinary identities remain. Two original-boss quality implementation passes are complete and 58 remain, with zero human acceptances. The 21 class transformations and optional skill map remain implemented. All frozen previews, protected main, draft PR and older public/Windows builds stay separate; rendered, physical-device, native-language, listening, final balance and release acceptance remain open.
 
 ## 2026-10-25 — Twenty-one ability-changing skill upgrades across all seven classes
 

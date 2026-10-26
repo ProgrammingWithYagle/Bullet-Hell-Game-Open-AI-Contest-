@@ -1,3 +1,4 @@
+import type {WardenCue} from './warden-patrol.ts';
 import { EarlyWatchDirector, type EarlyWatchCue } from './early-watch-director.ts';
 import {
   EndlessDirector,
@@ -17,6 +18,7 @@ import { clamp, distance, moveBody, segmentCircle, segmentRect, type Rect } from
 import type { EchoCue } from './brutal-volley.ts';
 import type { ArenaLavaCue } from './arena-layouts.ts';
 export type BossCue =
+  | WardenCue
   | EchoCue
   | ArenaLavaCue
   | EarlyWatchCue

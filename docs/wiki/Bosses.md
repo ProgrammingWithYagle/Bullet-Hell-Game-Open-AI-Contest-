@@ -235,3 +235,13 @@ Ashen Usher 1--, Brass Toad 1- and Ragpicker's Kite 1 add three distinct shared-
 ![Thirty-six Early Watch selected poses, a static local composite rather than an engine capture](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/early-watch-motion.jpg)
 
 [Implementation and verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/EARLY_WATCH_RUNTIME.md).
+
+## Roving Warden quality pass
+
+Lantern Warden retains fixed **2--** and Normal health/damage/deadline. **Still Watch** holds its lantern in place; the half-health **Roving Vigil** marks a route and patrols before the next locked-origin sweep. Movement resolves the actual 58-pixel boss against map cover. Its 1.2-second sweep warning stays complete and its marked trailing space remains clear.
+
+Brutal alternates sweep direction and repeats recovery fans in two warned locked-origin waves. The final phase adds a fully warned reverse return sweep after a brief pause; active cones never overlap. Persistent phase-response help and static direction/route arrows cover all fifteen locales. The original Last Light theme and tempo-aligned percussion remain.
+
+![Four original Warden patrol poses, a sprite reference rather than gameplay capture](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/warden-patrol.jpg)
+
+Four new poses preserve the exact native/request, whole lantern ownership and all source RGBA. Technical packing adjusts world scale to retain the established body height; earlier Warden artwork stays unchanged. [Actual authority, art and verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/WARDEN_PATROL.md). Rendered/human/device/native-language/listening acceptance remains open.
