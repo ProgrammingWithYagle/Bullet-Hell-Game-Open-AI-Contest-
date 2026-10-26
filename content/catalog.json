@@ -16,7 +16,7 @@
     "dodgeCooldown": 3.5,
     "reviveSeconds": 2,
     "downedSeconds": 20,
-    "revivedHealthFraction": 0.5,
+    "revivedHealthFraction": 0.25,
     "soloSelfRevives": 1,
     "reconnectSeconds": 60,
     "checkpointLifetimeHours": 24,
@@ -197,27 +197,39 @@
     "encounterAssists": {
       "baby": {
         "phaseShieldBreak": true,
-        "revivedHealthFraction": 1
+        "revivedHealthFraction": 1,
+        "shieldCircles": 6,
+        "shieldChannelSeconds": 2
       },
       "easy": {
         "phaseShieldBreak": true,
-        "revivedHealthFraction": 0.5
+        "revivedHealthFraction": 0.5,
+        "shieldCircles": 3,
+        "shieldChannelSeconds": 3
       },
       "normal": {
         "phaseShieldBreak": false,
-        "revivedHealthFraction": 0.5
+        "revivedHealthFraction": 0.25,
+        "shieldCircles": 0,
+        "shieldChannelSeconds": 0
       },
       "hard": {
         "phaseShieldBreak": false,
-        "revivedHealthFraction": 0
+        "revivedHealthFraction": 0,
+        "shieldCircles": 0,
+        "shieldChannelSeconds": 0
       },
       "insane": {
         "phaseShieldBreak": false,
-        "revivedHealthFraction": 0
+        "revivedHealthFraction": 0,
+        "shieldCircles": 0,
+        "shieldChannelSeconds": 0
       },
       "hellish": {
         "phaseShieldBreak": false,
-        "revivedHealthFraction": 0
+        "revivedHealthFraction": 0,
+        "shieldCircles": 0,
+        "shieldChannelSeconds": 0
       }
     },
     "phasePacing": {
@@ -228,6 +240,7 @@
       ]
     },
     "arenaDifficulty": {
+      "babyAdditionalCover": 2,
       "hardCoverFraction": 0.5,
       "noCoverDifficulties": [
         "insane",
@@ -1043,7 +1056,7 @@
         "radius": 240,
         "damage": 35,
         "effects": {
-          "reviveFraction": 0.5,
+          "reviveFraction": 0.25,
           "heal": 40,
           "cleanse": true,
           "soloShield": 40
@@ -10535,7 +10548,7 @@
       "price": 140,
       "cooldown": 8,
       "effect": "revive",
-      "amount": 0.5,
+      "amount": 0.25,
       "duration": 0,
       "maximumStack": 2,
       "inventorySlots": 3

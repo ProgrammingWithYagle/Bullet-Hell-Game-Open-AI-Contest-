@@ -131,7 +131,7 @@ test('an Easy Standard Accord removes the sweep and restarts with a complete new
   game.boss.health = game.boss.maxHealth * 0.49;
   player.x = 560;
   player.y = 550;
-  for (let tick = 0; tick < 60; tick++) game.step();
+  for (let tick = 0; tick < 90; tick++) game.step();
   assert.equal(game.accords, 1);
   assert.equal(game.signatures.length, 0);
   const until = game.boss.staggerUntil;

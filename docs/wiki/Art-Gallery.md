@@ -181,3 +181,5 @@ Ashen Usher 1--, Brass Toad 1- and Ragpicker's Kite 1 add three distinct shared-
 ![Gatehouse full, half and open floor art](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/difficulty-cover.jpg)
 
 Two original built-in ImageGen edits remove only the appropriate painted fountain cover. The original native remains unchanged. This is a technical asset comparison, not a rendered gameplay capture. Insane/Hellish use the open floor; Hellish lava is drawn from the shared authority geometry. [Exact rules and preserved requests](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/DIFFICULTY_AND_PHASES.md).
+
+Baby now draws two additional existing cover props above its unchanged floor art. The floor comparison above shows the shared background natives; it does not include those separate runtime props. [Rules and exact scope](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/ASSIST_LIMITS.md).

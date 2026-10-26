@@ -486,7 +486,7 @@ test('three actual Easy Standard shield holds still award genuine Accords across
     if(n){g.boss.health=0;g.step();while(g.phase!=='combat'){g.phaseEnds=g.tick;g.step();}}
     p.invulnerableUntil=1e9;g.boss.deadline=1e9;
     g.boss.health=g.boss.maxHealth*.49;g.step();assert(g.accord);
-    p.x=g.accord.points[0].x;p.y=g.accord.points[0].y;advance(g,60);
+    p.x=g.accord.points[0].x;p.y=g.accord.points[0].y;advance(g,90);
   }
   assert.equal(g.accords,3);
 });

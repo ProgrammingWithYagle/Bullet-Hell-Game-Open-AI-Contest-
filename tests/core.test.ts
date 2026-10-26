@@ -134,7 +134,7 @@ test('two-second teammate channel revives and interrupted channels reset', () =>
   g.submitInput(a.id, { ...idleInput(), sequence: 91, interact: true });
   g.step();
   assert.equal(b.status, 'active');
-  assert.equal(b.health, b.maxHealth * 0.5);
+  assert.equal(b.health, b.maxHealth * 0.25);
 });
 test('solo self-revive is available once per encounter, then defeat follows', () => {
   const g = quiet(),
@@ -165,7 +165,7 @@ test('Medic ultimate channels, returns an eliminated ally and freezes its cooldo
   assert.equal(a.status, 'eliminated');
   advance(g, 30);
   assert.equal(a.status, 'active');
-  assert.equal(a.health, a.maxHealth * 0.5);
+  assert.equal(a.health, a.maxHealth * 0.25);
   const combat = g.combatTick,
     ready = m.ultimateAt;
   g.phase = 'shop';

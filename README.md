@@ -1,10 +1,10 @@
 # Grave Accord
 
-A cooperative gothic bullet-hell game in active development. Current feature branch: build **2026.10.25-difficulty-pressure**, protocol **16**, 63 distinct executable bosses with individual original themes, seven classes, 378 skills, 28 weapons and six different map layouts/sizes.
+A cooperative gothic bullet-hell game in active development. Current feature branch: build **2026.10.25-assist-limits**, protocol **17**, 63 distinct executable bosses with individual original themes, seven classes, 378 skills, 28 weapons and six different map layouts/sizes.
 
 All sixty-three identities execute, including nine scheduled Endless exclusives and the optional Uncounted finale. Five modes work offline and in local online rooms: five-fight Quarantine Run, ten-fight Midnight Circuit, sixteen-fight Black Bell Pilgrimage, three-fight Grand Raid and uncapped Endless Vigil. The in-game main menu has a dated changelog generated from the same history as [CHANGELOG.md](CHANGELOG.md) and the [GitHub Wiki changelog](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/wiki/Changelog).
 
-Use Node 24 and pnpm 11.25.0. Run `pnpm install --frozen-lockfile`, `pnpm verify`, then `pnpm dev`. Open http://127.0.0.1:5173/. Offline solo requires only the frontend and worker. Run `pnpm server` in another terminal for matching protocol-16 local online rooms on port 2567. Local protocol-4 through protocol-15 saves have bounded migrations; signed/online state is strict.
+Use Node 24 and pnpm 11.25.0. Run `pnpm install --frozen-lockfile`, `pnpm verify`, then `pnpm dev`. Open http://127.0.0.1:5173/. Offline solo requires only the frontend and worker. Run `pnpm server` in another terminal for matching protocol-17 local online rooms on port 2567. Local protocol-4 through protocol-16 saves have bounded migrations; signed/online state is strict.
 
 [Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains the current source. Protected main is a separate release boundary. The [public playtest](https://grave-accord-playtest.ivoryflame12.chatgpt.site/) still serves its earlier two-class, one-boss protocol-4 deployment. Source/Wiki updates do not redeploy it.
 
@@ -28,4 +28,6 @@ Start a continuation with [the current checkpoint](docs/CHECKPOINT_2026_10_25.md
 
 The optional [expanded skill map](docs/OPTIONAL_SKILL_MAP.md) shows all 54 skills per class with zoom, scrolling and keyboard navigation. Enable it in Settings; classic remains the default. This completes the requested optional view implementation, while rendered/device/human review remains open.
 
-[Difficulty and phase rules](docs/DIFFICULTY_AND_PHASES.md): Baby/Easy Standard shield events; Baby full and Easy/Normal half combat revives; Hard+ no combat revives. Hard keeps half the interior cover, Insane removes it, and Hellish adds lava with every boss forced Brutal. Entry threats use two phases, segmented health and separate transition cues. Warned repeat volleys increase Brutal pressure; Normal health remains unchanged.
+[Difficulty and phase rules](docs/DIFFICULTY_AND_PHASES.md): Baby/Easy Standard shield events; Baby full and Easy half and Normal quarter combat revives; Hard+ no combat revives. Hard keeps half the interior cover, Insane removes it, and Hellish adds lava with every boss forced Brutal. Entry threats use two phases, segmented health and separate transition cues. Warned repeat volleys increase Brutal pressure; Normal health remains unchanged.
+
+Latest rules: docs/ASSIST_LIMITS.md — Normal revives at 25%; Baby/Easy use six/three shield circles and two/three-second channels; Baby adds two cover props per map. Preserve all prior frozen previews. Class-upgrade drafts are not integrated and do not change progress counts.

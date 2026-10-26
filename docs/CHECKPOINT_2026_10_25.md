@@ -6,7 +6,7 @@ Updated October 25, 2026. This is unfinished feature-branch development. Read th
 
 - Use `C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)`.
 - Repository: ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-. Branch `feat/first-playable-loop`; PR #14 stays draft. Inspect actual HEAD/status/origin and exact-head checks. Preserve history and working files; do not clone, create worktrees or switch to main.
-- Build **2026.10.25-difficulty-pressure**, protocol **16**. Read the exact current content digest from `content/revision.json`; source verification is under `reviews/early-watch-integration-2026-10-25/`.
+- Build **2026.10.25-assist-limits**, protocol **17**. Read the exact current content digest from `content/revision.json`; source verification is under `reviews/early-watch-integration-2026-10-25/`.
 - Main remains protected and separate at `c3f60ca4125bea31d94c9d3f6ea0c9d3f0853df1`. No main merge, paid provisioning, replacement Site, mismatched backend deployment, contest submission or delegation is authorized.
 
 ## Completed continuation
@@ -61,7 +61,7 @@ The [expanded map](OPTIONAL_SKILL_MAP.md) is a settings-controlled view of all e
 
 ## Current difficulty response
 
-See [difficulty rules and phase pacing](DIFFICULTY_AND_PHASES.md): Baby/Easy Standard shield events only; Baby full revival, Easy/Normal half revival, Hard+ none; two phases for threats 1–2, segmented health bar and independent phase banner; warned Brutal repeat volleys; half interior cover on Hard, none on Insane/Hellish, Hellish lava and every Hellish boss forcibly Brutal. Protocol 16 preserves issued local progress with strict online matching. The roster/remaining-work counts are unchanged. Human feedback on frozen 5179 is recorded in the ledger; the response awaits human comparison.
+See [difficulty rules and phase pacing](DIFFICULTY_AND_PHASES.md): Baby/Easy Standard shield events only; Baby full revival, Easy half and Normal quarter revival, Hard+ none; two phases for threats 1–2, segmented health bar and independent phase banner; warned Brutal repeat volleys; half interior cover on Hard, none on Insane/Hellish, Hellish lava and every Hellish boss forcibly Brutal. Protocol 16 preserves issued local progress with strict online matching. The roster/remaining-work counts are unchanged. Human feedback on frozen 5179 is recorded in the ledger; the response awaits human comparison.
 
 Preserve the separate optional-map preview at http://127.0.0.1:5180/, source `deb489614d4fbf2a43686ea061e8d1cb544f0aea`, process 26480, root `C:\Users\yigal\Documents\Codex\2026-10-25\continue-grave-accord-in-this-same\work\playtest-skill-map-deb4896`. Its 1,666 files / 684,871,381 bytes match the runtime receipt; eight HTTP checks pass and 5178/5179 hashes remain unchanged. Both exact deb4896 CI checks passed. Receipts remain under `reviews/skill-map-2026-10-25/`.
 
@@ -72,3 +72,7 @@ Use **http://127.0.0.1:5181/** for the latest rules. Runtime source `3355e92d9c8
 The gameplay source passes 419 automated tests plus content/fifteen locales, TypeScript and production build; both exact 3355e92 CI checks succeeded. Source snapshot `c4eb5da9f8c44c97fba2a123d94ab66a79cbc7805df5847d9b0ec40d4927ca43`; runtime source `345c116de6573845b6c9f50626fcfdccac74df6457bd3b8d19f278f88a07fc3d`; content revision `1ad00eee45a117a45929e56884c6a39a8c4eb614b0728ab31e847403fb8735bb`. Additional single-authority fixtures keep all fifty deployments clear of lava on each map and enforce the 4,000-hostile cap during queued repeats. Independent floor native/RGBA/opacity checks pass. Raw successful and failed attempts are preserved as committed text receipts.
 
 Canonical Wiki source 3355e92 is published at Wiki commit `fc83964b453644ca673a14d01e4ffc9edb3bcaf4`: all 18 committed page blobs and 29 images/public hashes match. Preview/Wiki receipts are under `reviews/difficulty-pressure-2026-10-25/`. None of these software checks establish rendered, physical-device, listening, native-language or human balance acceptance. Human comparison of this response remains open.
+
+Latest follow-up: [Baby/Easy assistance and Normal revival](ASSIST_LIMITS.md). Normal now revives at 25%; Baby/Easy have six/three shield circles and two/three-second channels; Baby adds two cover props per map. All earlier preview URLs retain their frozen behavior. Class-upgrade planning is unintegrated; seven requested revamps remain.
+
+The latest assistance follow-up passes 425 automated tests plus content/fifteen locales, TypeScript and production build. Exact source/artifact receipts and failed attempts are under `reviews/assist-limits-2026-10-25/`. The seven class-upgrade revamps remain unimplemented; optional draft notes/prototypes are in `C:\Users\yigal\Documents\Codex\2026-10-25\continue-grave-accord-in-this-same\work\CLASS_UPGRADE_PLAN.md` and are not runtime content. Continue that remaining work after the latest requested assist update.

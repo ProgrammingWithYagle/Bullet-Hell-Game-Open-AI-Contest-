@@ -1,12 +1,12 @@
 # Difficulty rules and phase pacing
 
-Current build **2026.10.25-difficulty-pressure**, protocol **16**. This pass responds to the user's manual observations of the separate frozen Early Watch preview on port 5179. It is implemented development content; human acceptance of the response remains open.
+Current build **2026.10.25-assist-limits**, protocol **17**. This pass responds to the user's manual observations of the separate frozen Early Watch preview on port 5179. It is implemented development content; human acceptance of the response remains open.
 
 | Global difficulty | Phase shield-break event | All combat revives | Static interior cover | Arena pressure / boss form |
 | --- | --- | --- | --- | --- |
-| Baby | Standard only | 100% maximum health | Full | Selected form |
-| Easy | Standard only | 50% maximum health | Full | Selected form |
-| Normal | Off | 50% maximum health | Full | Selected form |
+| Baby | Six circles, 2-second channel; Standard only | 100% maximum health | Original plus two props | Selected form |
+| Easy | Three circles, 3-second channel; Standard only | 50% maximum health | Full | Selected form |
+| Normal | Off | 25% maximum health | Full | Selected form |
 | Hard | Off | Disabled | Half, rounded down | Selected form |
 | Insane | Off | Disabled | None | Selected form |
 | Hellish | Off | Disabled | None | Lava; every boss is Brutal |
@@ -42,3 +42,5 @@ Protocol 16 changes online compatibility. Bounded local migration recognizes the
 The source still has 63 bosses (62 ordinary plus one secret), seven playable kits and the optional complete skill map. There are 88 new ordinary identities, 59 original quality passes and seven ability-changing class revamps left. Multiple simultaneous bosses are a future curated encounter option, not implemented by this pass. All prior frozen preview processes/roots, the public protocol-4 Site, protected main and immutable protocol-13 Windows archive remain separate. Browser control is disabled; no browser/device/listening/native-language or final balance acceptance is claimed.
 
 Verification receipts are under `reviews/difficulty-pressure-2026-10-25/`. The new two-client regression verifies forced Brutal, replicated echo/lava warnings, blocked revives and defeat cleanup; headless tests also cover all six difficulty rules, every opening identity, all map cover variants, prediction parity, actual lava damage, queue budgets and local save/profile continuity. Source verification and human review remain separate.
+
+The latest [assistance follow-up](ASSIST_LIMITS.md) specifies exact circle/channel rules and additional Baby cover. Known protocol-16 local boundaries also migrate to protocol 17.

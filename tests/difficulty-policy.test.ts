@@ -32,7 +32,7 @@ function input(g:Game,p:Player,values:Partial<ReturnType<typeof idleInput>>={}){
 function down(g:Game,p:Player){p.invulnerableUntil=0;g.damage(p,10000);assert.equal(p.status,'downed');}
 
 test('difficulty assist matrix separates phase shields, revival health and Brutal across every difficulty',()=>{
-  const fractions=[1,.5,.5,0,0,0];
+  const fractions=[1,.5,.25,0,0,0];
   for(const [i,d] of data.difficulties.entries()){
     assert.equal(combatReviveFraction(d.id),fractions[i]);
     assert.equal(phaseShieldBreak(d.id,'normal'),i<2);
@@ -41,7 +41,7 @@ test('difficulty assist matrix separates phase shields, revival health and Bruta
   assert.equal(combatReviveFraction('forged'),0);
   assert.equal(phaseShieldBreak('forged','normal'),false);
 });
-test('actual teammate channels restore full Baby or half Easy/Normal health and cannot revive at Hard+',()=>{
+test('actual teammate channels restore full Baby, half Easy or quarter Normal health and cannot revive at Hard+',()=>{
   for(const d of data.difficulties){
     const g=quiet(d.id),caster=g.players.get('p0')!,target=g.players.get('p1')!;
     down(g,target);
@@ -143,7 +143,7 @@ test('cover count, boundary walls and exact presentation agree on every map and 
   const before=JSON.stringify(runtimeArenas);
   for(const a of runtimeArenas)for(const d of data.difficulties){
     const map=runtimeArena(a.id,d.id),base=runtimeArena(a.id);
-    assert.equal(map.cover.length,['insane','hellish'].includes(d.id)?0:d.id==='hard'?Math.floor(base.cover.length/2):base.cover.length);
+    assert.equal(map.cover.length,['insane','hellish'].includes(d.id)?0:d.id==='hard'?Math.floor(base.cover.length/2):d.id==='baby'?base.cover.length+2:base.cover.length);
     const walls=base.obstacles.filter(r=>!base.cover.includes(r));
     for(const wall of walls)assert(map.obstacles.includes(wall));
     if(a.id!=='gatehouse')assert.deepEqual(arenaCoverPlan(a.id,d.id).map(({texture,...r})=>r),map.cover);
@@ -217,15 +217,15 @@ test('difficulty cards and phase cues have all fifteen source-backed translation
 
 test('actual difficulty-card markup presents shield, revive, cover and forced-Brutal distinctions for all six choices',async()=>{
   const bundle=await build({entryPoints:['src/client/ui/difficulty-rules.ts'],bundle:true,format:'esm',platform:'node',write:false,logLevel:'silent',plugins:[{
-    name:'localized-markup-fixture',setup(b){b.onResolve({filter:/i18n\.ts$/},()=>({path:'i18n',namespace:'fixture'}));b.onLoad({filter:/.*/,namespace:'fixture'},()=>({contents:"export const t=(key)=>key;",loader:'js'}));}
+    name:'localized-markup-fixture',setup(b){b.onResolve({filter:/i18n\.ts$/},()=>({path:'i18n',namespace:'fixture'}));b.onLoad({filter:/.*/,namespace:'fixture'},()=>({contents:"export const t=(key)=>key;export const number=(n)=>String(n);",loader:'js'}));}
   }]});
   const ui=await import('data:text/javascript;base64,'+Buffer.from(bundle.outputFiles[0].text).toString('base64'));
   for(const d of data.difficulties){
     const markup=ui.difficultyRulesMarkup(d.id),revive=combatReviveFraction(d.id);
     assert(markup.includes('ui.'+(phaseShieldBreak(d.id,'normal')?'phaseShieldOn':'phaseShieldOff')));
-    assert(markup.includes('ui.'+(revive===1?'reviveFull':revive?'reviveHalf':'reviveOff')));
+    assert(markup.includes('ui.'+(revive===1?'reviveFull':revive===.25?'reviveQuarter':revive?'reviveHalf':'reviveOff')));
     assert.equal(markup.includes('ui.allBrutal'),d.id==='hellish');
-    assert(markup.includes('ui.'+(d.id==='hellish'?'coverLava':d.id==='insane'?'coverNone':d.id==='hard'?'coverHalf':'coverFull')));
+    assert(markup.includes('ui.'+(d.id==='hellish'?'coverLava':d.id==='insane'?'coverNone':d.id==='hard'?'coverHalf':d.id==='baby'?'coverExtra':'coverFull')));
   }
 });
 test('real two-client Hellish room replicates forced Brutal, warned echoes/lava, rejects revive channels and cleans on defeat', {timeout:20000},async()=>{

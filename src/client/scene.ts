@@ -325,6 +325,7 @@ export class CombatScene extends Phaser.Scene {
     if (this.lastArenaId !== view.arenaId+':'+view.run.difficulty) {
       this.lastArenaId = view.arenaId+':'+view.run.difficulty;
       const map = runtimeArena(view.arenaId,view.run.difficulty);
+      const shade=Number.parseInt(map.shadow.slice(1),16);
       applyArenaGround(this.arenaImage, map.id,view.run.difficulty);
       this.arenaBackdrop.clear();
       const ground = this.arenaGround;
@@ -332,40 +333,39 @@ export class CombatScene extends Phaser.Scene {
       this.coverImages.forEach((image) => image.destroy());
       this.coverImages = [];
       if (map.id !== 'gatehouse') {
-        const color = Number.parseInt(map.floor.slice(1), 16),
-          shade = Number.parseInt(map.shadow.slice(1), 16);
+        const color = Number.parseInt(map.floor.slice(1), 16);
         this.arenaBackdrop
           .fillStyle(0x101e1b, 1)
           .fillRect(0, 0, 1600, 1000)
           .fillStyle(color, 1)
           .fillRect(map.bounds.x, map.bounds.y, map.width, map.height);
-        for (const obstacle of arenaCoverPlan(map.id,view.run.difficulty)) {
-          const image = this.add.image(
-            obstacle.x + obstacle.width / 2,
-            obstacle.y + obstacle.height / 2,
-            obstacle.texture,
-          );
-          const fit = Math.min(obstacle.width / image.width, obstacle.height / image.height);
-          image.setScale(fit).setDepth(1);
-          this.coverImages.push(image);
-          ground
-            .fillStyle(shade, 0.9)
-            .fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
-          ground
-            .lineStyle(4, 0xc4c5a5, 0.8)
-            .strokeRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
-          ground
-            .lineStyle(2, 0xc4c5a5, 0.45)
-            .lineBetween(
-              obstacle.x + 8,
-              obstacle.y + 10,
-              obstacle.x + obstacle.width - 8,
-              obstacle.y + 10,
-            );
-        }
         ground
           .lineStyle(5, shade, 0.8)
           .strokeRect(map.bounds.x + 3, map.bounds.y + 3, map.width - 6, map.height - 6);
+      }
+      for (const obstacle of arenaCoverPlan(map.id,view.run.difficulty)) {
+        const image = this.add.image(
+          obstacle.x + obstacle.width / 2,
+          obstacle.y + obstacle.height / 2,
+          obstacle.texture,
+        );
+        const fit = Math.min(obstacle.width / image.width, obstacle.height / image.height);
+        image.setScale(fit).setDepth(1);
+        this.coverImages.push(image);
+        ground
+          .fillStyle(shade, 0.9)
+          .fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
+        ground
+          .lineStyle(4, 0xc4c5a5, 0.8)
+          .strokeRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
+        ground
+          .lineStyle(2, 0xc4c5a5, 0.45)
+          .lineBetween(
+            obstacle.x + 8,
+            obstacle.y + 10,
+            obstacle.x + obstacle.width - 8,
+            obstacle.y + 10,
+          );
       }
     }
     this.shadows.clear();
@@ -781,7 +781,7 @@ export class CombatScene extends Phaser.Scene {
         h.lineStyle(4, 0x9ce0c8, 0.95).strokeCircle(point.x, point.y, 65);
         h.lineStyle(7, 0xf1e2aa, 1)
           .beginPath()
-          .arc(point.x, point.y, 58, -Math.PI / 2, -Math.PI / 2 + (Math.PI * 2 * a.progress) / 60)
+          .arc(point.x, point.y, 58, -Math.PI / 2, -Math.PI / 2 + (Math.PI * 2 * a.progress) / a.channelTicks)
           .strokePath();
         h.lineStyle(2, 0xf1e2aa, 0.8).strokeRect(point.x - 11, point.y - 11, 22, 22);
       }

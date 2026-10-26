@@ -1,6 +1,20 @@
 # Changelog
 
-Development build **2026.10.25-difficulty-pressure**, protocol 16. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.25-assist-limits**, protocol 17. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-25 — Quarter-health Normal revival and distinct Baby/Easy assistance
+
+### Revival and phase shield channels
+
+- Normal now restores 25% maximum health through every combat revival route: teammate channels, solo self-recovery, Medic resurrection and revive kits. Baby stays at 100%, Easy at 50%, and Hard/Insane/Hellish keep combat revival disabled.
+- Baby has six phase shield-break circles and a two-second channel. Easy has exactly three circles and a three-second channel, 1.5 times Baby. Only Baby/Easy Standard offer the event; every Brutal form keeps it disabled. Circle placement avoids colliders and large groups require at most three simultaneous occupants, so Easy remains completable.
+- The HUD, progress arcs, difficulty cards and final review use the actual circle counts and channel duration. Quarter-health wording, additional-cover labels and circle/channel details cover all fifteen locales.
+
+### Additional Baby cover and continuity
+
+- Baby adds two genuine 100×65 cover props on every map. Existing non-bed prop art, scene placement, setup diagrams, authority collision and client prediction share the same rectangles. The original Gatehouse floor stays unchanged; the extra props draw separately.
+- Placement preserves fifty survivor deployments, reachable phase-circle centers and large-boss engagement routes. Candidate positions that choke a route are rejected. New tests exercise actual projectile blocking and prediction against the new props.
+- Protocol 17 keeps online matching strict and migrates the known issued protocol-16 local content revision without losing run identity, money, purchases or progress. Frozen previews through 5181 remain unchanged. No new boss or class revamp is counted; the roster remains 63, with 88 new ordinary bosses and seven class ability-upgrade revamps still to implement.
 
 ## 2026-10-25 — Difficulty rules, clearer phases and Hellish arenas
 

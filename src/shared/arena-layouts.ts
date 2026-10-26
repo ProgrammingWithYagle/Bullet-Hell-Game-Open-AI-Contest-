@@ -1,3 +1,4 @@
+import {additionalBabyCover} from './baby-cover.ts';
 import catalog from '../../content/catalog.json' with { type: 'json' };
 import type { Rect } from './geometry.ts';
 // One fixed camera coordinate system, six genuinely different playable footprints.
@@ -296,7 +297,7 @@ export function runtimeArena(id:string,difficulty='normal'):RuntimeArena {
   const key=id+':'+difficulty, cached=difficultyArenas.get(key);
   if(cached)return cached;
   const arena=baseArena(id),rules=catalog.rules.arenaDifficulty;
-  const cover=rules.noCoverDifficulties.includes(difficulty)?[]:difficulty==='hard'
+  const cover=difficulty==='baby'?[...arena.cover,...additionalBabyCover(arena,rules.babyAdditionalCover)]:rules.noCoverDifficulties.includes(difficulty)?[]:difficulty==='hard'
     ?arena.cover.filter((_,i)=>i%2===0).slice(0,Math.floor(arena.cover.length*rules.hardCoverFraction))
     :arena.cover;
   const walls=arena.obstacles.filter(rect=>!arena.cover.includes(rect));

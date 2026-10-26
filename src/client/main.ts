@@ -443,7 +443,7 @@ function update(view: View) {
     accord.textContent =
       t('ui.accordBreak') +
       ' · ' +
-      t('ui.accordInstruction', { count: view.accord.required, seconds: 2 }) +
+      t('ui.accordInstruction', { count: view.accord.required, seconds: view.accord.channelTicks / 30 }) +
       ' ' +
       clock((view.accord.until - view.combatTick) / 30);
   const cl = data.classes.find((c) => c.id === p.classId)!;

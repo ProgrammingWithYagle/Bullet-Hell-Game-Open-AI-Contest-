@@ -119,7 +119,7 @@ test('revive kit requires a nearby downed teammate and never restores an elimina
   ally.y = p.y;
   use(g, p, 0);
   assert.equal(ally.status, 'active');
-  assert.equal(ally.health, ally.maxHealth * 0.5);
+  assert.equal(ally.health, ally.maxHealth * 0.25);
   ally.status = 'eliminated';
   p.supplyAt = 0;
   use(g, p, 0);

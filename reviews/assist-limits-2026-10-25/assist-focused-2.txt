@@ -1,0 +1,51 @@
+✔ Easy has exactly half Baby circles and a channel exactly 1.5 times as long in real solo and fifty-player encounters (54.062ms)
+✔ the longer Easy channel still resets when a participant leaves a circle (2.2686ms)
+✖ two additional Baby cover props match actual collision and keep fifty deployments, all six circles and boss routes reachable on every map (21.7282ms)
+✔ new Baby cover stops real projectiles and client prediction agrees with authority at the new collider (8.9278ms)
+✔ issued protocol-16 local boundaries retain progress under the revised assistance rules (2.9615ms)
+✔ real clients receive the exact Baby/Easy circle counts and channel duration and clear them at victory (603.7224ms)
+✔ difficulty assist matrix separates phase shields, revival health and Brutal across every difficulty (1.0879ms)
+✔ actual teammate channels restore full Baby, half Easy or quarter Normal health and cannot revive at Hard+ (19.25ms)
+✔ solo recovery obeys the same health rule and Hard+ has no hidden recovery grace (4.4318ms)
+✔ Medic resurrection and injected legacy revive supplies cannot bypass the difficulty rule (5.6776ms)
+✔ Hard+ rejects revive kit purchases atomically while other supplies remain available (0.8931ms)
+✔ actual phase transitions offer the shield event only on Baby/Easy Standard and retain in-flight hazards elsewhere (8.9189ms)
+✔ all entry identities have two half-health phases retaining late authored mechanics, while later threats keep three/four (1.2593ms)
+✔ Brutal repeats locked trajectories twice at entry threat and three times at high threat without recursive echoes (8.1853ms)
+✔ echo queues enforce finite group/projectile budgets and defeat removes future releases and cues (3.726ms)
+✔ cover count, boundary walls and exact presentation agree on every map and difficulty (1.4471ms)
+✔ client prediction and authority both traverse removed cover and stop at retained Hard cover (2.8685ms)
+✔ Hellish lava has a three-second tell, actual contact damage, a half-second interval and no damage on safe ground (3.6083ms)
+✔ Hellish forces Brutal for every opening identity, ignores Standard requests and offers only Brutal future contracts (15.9639ms)
+✔ issued protocol-15 local saves/profiles migrate without losing run progress while unknown revisions and online envelopes stay strict (4.5122ms)
+✔ difficulty cards and phase cues have all fifteen source-backed translations and both new floor natives retain their hashes (24.8741ms)
+✔ actual difficulty-card markup presents shield, revive, cover and forced-Brutal distinctions for all six choices (94.4866ms)
+✔ real two-client Hellish room replicates forced Brutal, warned echoes/lava, rejects revive channels and cleans on defeat (2515.2724ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 22
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4559.3533
+
+✖ failing tests:
+
+test at tests\assist-limits.test.ts:1:2759
+✖ two additional Baby cover props match actual collision and keep fifty deployments, all six circles and boss routes reachable on every map (21.7282ms)
+  AssertionError [ERR_ASSERTION]: ossuary-works boss engagement route
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\assist-limits.test.ts:68:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

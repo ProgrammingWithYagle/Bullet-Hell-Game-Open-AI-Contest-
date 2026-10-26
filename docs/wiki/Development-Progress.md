@@ -1,6 +1,6 @@
 # Development progress
 
-Updated 2026-10-25 for **2026.10.25-difficulty-pressure**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
+Updated 2026-10-25 for **2026.10.25-assist-limits**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
 
 63 playable identities: 62 ordinary and 1 secret. Three ordinary bosses in every one of fifty subtiers requires 150 ordinary identities, plus secrets; 88 additional ordinary bosses remain.
 
@@ -16,6 +16,7 @@ Updated 2026-10-25 for **2026.10.25-difficulty-pressure**. These counts track sp
 
 ## Latest human feedback
 
+- Latest requested refinement: Normal combat revival is now 25%; Baby/Easy shield events have six/three circles and two/three-second channels; Baby gains two additional cover props per map. Shared authority/prediction/UI and software checks implement the request; human comparison remains open.
 - Manual feedback on frozen 5179: Early Watch bosses defeated quickly; phase changes were only partly visible. Two longer entry phases, health-bar dividers and a separate transition banner are now implemented and await human comparison.
 - Requested phase shield-break only on Baby/Easy Standard, no shield event in Brutal, full-health Baby revival, half-health Easy/Normal revival, and no combat revives at Hard or above. One authority policy and fifteen-locale difficulty cards now implement these rules.
 - Requested stronger Brutal projectile sequences and harder arena rules: warned repeat volleys, half cover on Hard, no interior cover on Insane/Hellish, Hellish lava and all Hellish bosses Brutal are implemented. Rendered/human balance acceptance remains open.

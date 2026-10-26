@@ -6,12 +6,12 @@ import { classifiedContract } from './boss-threat.ts';
 export function migratePracticeBoundary(value: unknown): unknown {
   if (!value || typeof value !== 'object' || Array.isArray(value)) return value;
   const issued = value as Record<string, unknown>;
-  // This issued revision differs only in Constable encounter authoring. Carry local
-  // boundaries forward, then run the existing version-specific and full restore validation.
+  // Carry known issued local content revisions forward, preserving their identity and progress.
+  // The existing version-specific and full restore validation still apply.
   // Current-version cards never pass through legacy reclassification.
   const compatibleRevision =
-    ['b8d9fb6918c854f3eed38b327ed0cb3026e071e6fe24932e50beed36943db241', '43b7b2848b50bbe56072bfa134e5775355a7faca28092624744bdae6a0d318bb','cbb6b8e68c9fb6f3191a3f0ef4a6411c8a3d3e41e3aeca783c122b07ab73d546'].includes(issued.contentRevision as string) &&
-    [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, PROTOCOL].includes(issued.protocolVersion as number) &&
+    ['b8d9fb6918c854f3eed38b327ed0cb3026e071e6fe24932e50beed36943db241', '43b7b2848b50bbe56072bfa134e5775355a7faca28092624744bdae6a0d318bb','cbb6b8e68c9fb6f3191a3f0ef4a6411c8a3d3e41e3aeca783c122b07ab73d546','1ad00eee45a117a45929e56884c6a39a8c4eb614b0728ab31e847403fb8735bb'].includes(issued.contentRevision as string) &&
+    [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, PROTOCOL].includes(issued.protocolVersion as number) &&
     issued.schemaVersion === 1 &&
     issued.practiceOnly === true &&
     issued.serverOnly !== true &&
@@ -19,7 +19,7 @@ export function migratePracticeBoundary(value: unknown): unknown {
     issued.transactions === undefined &&
     JSON.stringify(issued).length <= 32768;
   const legacy = compatibleRevision ? { ...issued, contentRevision: CONTENT_REVISION } : issued;
-  if (legacy.protocolVersion===15) {
+  if (legacy.protocolVersion===15 || legacy.protocolVersion===16) {
     if(legacy.schemaVersion!==1 || legacy.contentRevision!==CONTENT_REVISION || legacy.practiceOnly!==true || legacy.serverOnly===true || legacy.players!==undefined || legacy.transactions!==undefined || JSON.stringify(legacy).length>32768)throw Error('versionMismatch');
     return {...legacy,protocolVersion:PROTOCOL};
   }

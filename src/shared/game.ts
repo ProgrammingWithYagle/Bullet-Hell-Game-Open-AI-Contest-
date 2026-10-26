@@ -1,5 +1,6 @@
+import {phaseBreakPoints} from './phase-break-layout.ts';
 import { BrutalVolley } from './brutal-volley.ts';
-import { combatReviveFraction, phaseShieldBreak, encounterPhases, bossPatternPhase, encounterVariant } from './encounter-policy.ts';
+import { encounterAssists, combatReviveFraction, phaseShieldBreak, encounterPhases, bossPatternPhase, encounterVariant } from './encounter-policy.ts';
 import { earlyWatchBossIds, earlyWatchMovement } from './early-watch-director.ts';
 import { constablePattern, moveConstable } from './constable-signature.ts';
 import { freshProgress, validProgress, type RunProgress } from './run-progress.ts';
@@ -276,6 +277,7 @@ export class Game {
     until: number;
     progress: number;
     required: number;
+    channelTicks: number;
     points: { x: number; y: number }[];
   } | null = null;
   mutationCards: string[] = [];
@@ -1840,14 +1842,9 @@ export class Game {
       this.accord = assist ? {
         until: now + ticks(8),
         progress: 0,
-        required: count === 1 ? 1 : count <= 8 ? 2 : count <= 24 ? 3 : 5,
-        points: [
-          { x: 560, y: 550 },
-          { x: 1040, y: 550 },
-          { x: 800, y: 650 },
-          { x: 570, y: 720 },
-          { x: 1030, y: 720 },
-        ],
+        required: count === 1 ? 1 : count <= 8 ? 2 : 3,
+        channelTicks:ticks(encounterAssists(this.settings.difficulty).shieldChannelSeconds),
+        points:phaseBreakPoints(this.arena,encounterAssists('baby').shieldCircles).filter((_,i)=>this.settings.difficulty!=='easy'||i%2===0),
       } : null;
       this.events.push({ type: 'sound', id: 'boss-phase' });
     }
@@ -1861,7 +1858,7 @@ export class Game {
         if (p) occupiers.add(p.id);
       }
       a.progress = occupiers.size >= a.required ? a.progress + 1 : 0;
-      if (a.progress >= ticks(2)) {
+      if (a.progress >= a.channelTicks) {
         this.accords++;
         this.clearShots();
         this.warnings.length = 0;
