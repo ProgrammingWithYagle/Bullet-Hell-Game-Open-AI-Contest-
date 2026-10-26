@@ -2,7 +2,7 @@
 
 Build `2026.10.25-skill-map`, protocol 15. In Settings, enable **Expanded skill map**. The option affects the lobby and intermission shop. Turn it off to restore the classic branch view, which remains the default.
 
-The expanded map displays all **54 existing skills** for the current class: three parent branches, nine specialization paths and six depths per path. It does not add new powers, alter skill costs, change prerequisites or relax the one-capstone rule. The seven ability-changing class-upgrade revamps remain separate unfinished work.
+The expanded map displays all **54 existing skills** for the current class: three parent branches, nine specialization paths and six depths per path. It does not add new powers, alter skill costs, change prerequisites or relax the one-capstone rule. The separate [21 ability transformations](CLASS_TALENTS.md) now retrofit existing depth-three nodes; both views show their names and behavioral help. Their implementation is complete, with rendered/human review open.
 
 ## Navigation and purchase behavior
 

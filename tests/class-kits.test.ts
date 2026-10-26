@@ -203,13 +203,8 @@ test('Silent Twelfth releases three timed pulses and clears only nearby hostile 
   const hp = upgraded.g.boss.health;
   press(upgraded.g, { ultimate: true });
   steps(upgraded.g, HZ * 3);
-  assert(
-    Math.abs(
-      hp -
-        upgraded.g.boss.health -
-        4 * 120 * (1 + (upgraded.g.stats(upgraded.p).effects.ultimatePotency ?? 0)),
-    ) < 1e-6,
-  );
+  const damage = hp - upgraded.g.boss.health;
+  assert(damage > 0 && damage <= 4 * 120 * (1 + (upgraded.g.stats(upgraded.p).effects.ultimatePotency ?? 0)), 'Orbital geometry retains the original maximum pulse budget');
 });
 
 test('Engineer deploys an 80-HP turret with real owned projectiles; cover still blocks its fire', () => {
@@ -327,7 +322,9 @@ test('new class-specific skills affect barrier health, sigil radius, veil durati
   const mage = game('mage');
   path(mage.g, 'control-path-2');
   press(mage.g, { q: true });
-  assert(mage.g.classKits.cues().find((c) => c.kind === 'sigil')!.radius > 120);
+  const sigils=mage.g.classKits.cues().filter(c=>c.kind==='sigil');
+  assert.equal(sigils.length,2);
+  assert(sigils.every(c=>c.radius>80), 'Twin Sigils retain the purchased radius modifier');
   const assassin = game('assassin');
   path(assassin.g, 'ambush-foundation');
   press(assassin.g, { q: true });

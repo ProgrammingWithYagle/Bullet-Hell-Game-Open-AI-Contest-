@@ -6,7 +6,7 @@ Updated October 25, 2026. This is unfinished feature-branch development. Read th
 
 - Use `C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)`.
 - Repository: ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-. Branch `feat/first-playable-loop`; PR #14 stays draft. Inspect actual HEAD/status/origin and exact-head checks. Preserve history and working files; do not clone, create worktrees or switch to main.
-- Build **2026.10.25-assist-limits**, protocol **17**. Read the exact current content digest from `content/revision.json`; source verification is under `reviews/assist-limits-2026-10-25/`.
+- Build **2026.10.25-class-talents**, protocol **18**. Read the exact current content digest from `content/revision.json`; source verification for the latest class checkpoint is under `reviews/class-talents-2026-10-25/`; earlier assistance receipts remain separate.
 - Main remains protected and separate at `c3f60ca4125bea31d94c9d3f6ea0c9d3f0853df1`. No main merge, paid provisioning, replacement Site, mismatched backend deployment, contest submission or delegation is authorized.
 
 ## Completed continuation
@@ -25,7 +25,7 @@ One count authority: `docs/development-work-ledger.json`, derived by `tools/sync
 
 - **88 new ordinary identities** remain toward at least 150 ordinary bosses plus secrets. Recolors and harder forms do not count.
 - **59 existing-boss quality assessments/redesigns** remain. Constable is the one completed implementation pass on the original 60; human acceptance remains open.
-- **Seven ability-changing class-upgrade revamps** remain. The optional all-54-skill map is implemented with a default-off setting, bounded zoom, scrolling and keyboard navigation; preserve the default classic view. Rendered/human/device/native-language review remains open. All seven current kits and 378 skills already work.
+- **Seven class-upgrade revamps / 21 ability transformations** are implemented, with human/rendered acceptance open. The optional all-54-skill map is implemented with a default-off setting, bounded zoom, scrolling and keyboard navigation; preserve the default classic view. Rendered/human/device/native-language review remains open. All seven current kits and 378 skills already work.
 - Five secondary-map layouts and six ground-art deliveries are installed. Detailed human/device layout review remains open.
 - Continue original encounter expansion and class ability-changing upgrades; the optional tree now needs actual rendered/human review. Do not inflate counts from concepts or templates.
 
@@ -82,3 +82,9 @@ The latest assistance follow-up passes 425 automated tests plus content/fifteen 
 Use **http://127.0.0.1:5182/** for Normal 25% revival, Baby/Easy six/three circles and two/three-second channels, and two additional Baby cover props per map. Frozen runtime source `fb78b70456314b122358979af77034a96b97d77a`, protocol 17/build `2026.10.25-assist-limits`; process 66892, root `C:\Users\yigal\Documents\Codex\2026-10-25\continue-grave-accord-in-this-same\work\playtest-assist-fb78b70`. All 1,668 files / 691,314,546 bytes match the production receipt. Sixteen HTTP checks pass and 5178–5181 index hashes remain unchanged. Preserve every earlier preview root/process.
 
 All 425 tests and the full content/fifteen-locale/TypeScript/production pipeline pass. Both exact fb78b70 CI checks succeeded. Source snapshot `c9ab85a8de47dd29c2731d328ef1dda0c1ccbbdf1f86f4e28fe306d089f5e4b5`; runtime source `9a930eb33500768073a08896914ed9a7517cec7389b2bd3ecd1f58fc35faa171`; content revision `d4419d906f67286576ca3f6795e03a921269aff861b36e2e82ce68aa2e501775`. The committed canonical 18-page/29-image Wiki is published at `8f5a66444d8b3d6abbdd6e4635444611a9625bc8`; every page blob and public image hash verifies. Exact receipts are under `reviews/assist-limits-2026-10-25/`. These software checks do not establish rendered, physical-device, native-language, listening or human balance acceptance.
+
+## Class ability transformation checkpoint
+
+Build `2026.10.25-class-talents`, protocol 18, integrates three purchased behavior changes per class (21 total), detailed in [Class transformations](CLASS_TALENTS.md). This supersedes the older unintegrated-draft statements above. Existing node IDs/costs/prerequisites and the one-capstone limit are retained. The single progress ledger now records seven implementation passes complete and zero human acceptances. Known issued protocol-17 local saves/profiles migrate; online remains strict. Full verification, exact source/artifacts and publication receipts belong under `reviews/class-talents-2026-10-25/`; earlier previews and their evidence remain separate. The game remains unfinished.
+
+The class checkpoint passes **457 automated tests**, authored content/fifteen locales, TypeScript and production build. The 32 new focused tests cover all 21 real transformations, capstone/cleanup invariants, both guarded shop views and actual owner/observer replication for every class. Source snapshot `b554b87544f9aba53f6623c524c0b4a4888bf7ac4b733160a48cd053c50eab2d`; runtime source `d45aa59d4e38ce3f0be04232363e4b9ec68be1192179a8594e486298dda958e0`; content revision `535eb34c7cdabce5ad2fe910ea0a792278a7cc08e360b4f5712d7ee2d9e767f6`. Failed and passing attempts are retained under `reviews/class-talents-2026-10-25/`.

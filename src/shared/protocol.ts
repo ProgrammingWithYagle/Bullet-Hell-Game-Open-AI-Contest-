@@ -1,5 +1,5 @@
 import revision from '../../content/revision.json' with { type: 'json' };
-export const PROTOCOL = 17;
+export const PROTOCOL = 18;
 export const CONTENT_REVISION = revision.sha256;
 export const HZ = 30,
   DT = 1 / HZ;
@@ -197,6 +197,7 @@ export type Field = {
   until: number;
   potency: number;
   movement?: number;
+  anchor?:string;
 };
 export type Event =
   | { type: 'shots'; shots: Shot[] }

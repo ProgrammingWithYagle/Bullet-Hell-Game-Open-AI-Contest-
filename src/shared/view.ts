@@ -141,7 +141,7 @@ export function viewOf(g: Game, owner: string): View {
     signatures: structuredClone(g.signatures),
     minions: g.minions.snapshot(),
     bossCues: g.bossCues(),
-    classCues: g.classKits.cues(),
+    classCues: g.classCues(),
     warnings: g.warnings.map((w) => ({ ...w })),
     fields: g.fields.map((f) => ({ ...f })),
     mutations: g.mutations.map((m) => ({ ...m })),

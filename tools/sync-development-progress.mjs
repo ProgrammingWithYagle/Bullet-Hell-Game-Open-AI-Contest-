@@ -35,4 +35,4 @@ for(const [file,text]of Object.entries(files)) {
  if(process.argv.includes('--check'))assert.equal(fs.readFileSync(file,'utf8').replaceAll('\r\n','\n'),text,'Stale progress surface '+file);
  else fs.writeFileSync(file,text);
 }
-console.log(JSON.stringify({passed:true,bosses:p.playableBosses,ordinaryRemaining:p.ordinaryBossesRemaining,qualityRemaining:p.items.find(i=>i.id==='boss-quality').remaining,classRevampsRemaining:7,mapImplementationRemaining:0}));
+console.log(JSON.stringify({passed:true,bosses:p.playableBosses,ordinaryRemaining:p.ordinaryBossesRemaining,qualityRemaining:p.items.find(i=>i.id==='boss-quality').remaining,classRevampsRemaining:p.items.find(i=>i.id==='class-abilities').remaining,mapImplementationRemaining:0}));

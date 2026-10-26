@@ -1,3 +1,4 @@
+import {fieldPosition} from '../shared/field-follow.ts';
 import { earlyWatchMovement } from '../shared/early-watch-director.ts';
 import { endlessSolids, leaveMovingBlocks } from '../shared/endless-director.ts';
 import { raidMovement } from '../shared/raid-director.ts';
@@ -65,7 +66,7 @@ export class Prediction {
     const rally = Math.max(
         0,
         ...view.fields
-          .filter((f) => f.kind === 'rally' && distance(p, f) <= f.radius)
+          .filter((f) => f.kind === 'rally' && distance(p, fieldPosition(f,view.players,p)) <= f.radius)
           .map((f) => f.movement ?? 0),
       ),
       dash = now < p.dashUntil,

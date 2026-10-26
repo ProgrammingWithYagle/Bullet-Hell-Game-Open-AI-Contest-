@@ -2,6 +2,7 @@ import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import assert from 'node:assert/strict';
+import { classTalentMessages } from '../locales/source/class-talents.mjs';
 import { english } from '../locales/source/en.mjs';
 import additional from '../locales/source/additional.mjs';
 import { difficultyRuleMessages } from '../locales/source/difficulty-rules.mjs';
@@ -86,6 +87,7 @@ export function validateOne(document, canonical, content, locale) {
       ...Object.keys(additional.en),
       ...Object.keys(expansionMessages('en')),
       ...Object.keys(earlyWatchMessages('en')),
+      ...Object.keys(classTalentMessages('en',content)),
       ...Object.keys(skillMapMessages('en')),
       ...Object.keys(difficultyRuleMessages('en')),
       ...Object.keys(interfaceMessages('en')),
@@ -112,7 +114,7 @@ export function validateOne(document, canonical, content, locale) {
     if (!Object.hasOwn(messages,key)) fail(`missing feature coverage: ${key}`);
   }
   const expectedCategories = new Intl.PluralRules(locale).resolvedOptions().pluralCategories.slice().sort();
-  const expandedSource = {...expansionMessages(locale), ...earlyWatchMessages(locale),...skillMapMessages(locale),...difficultyRuleMessages(locale)};
+  const expandedSource = {...expansionMessages(locale), ...earlyWatchMessages(locale),...skillMapMessages(locale),...difficultyRuleMessages(locale),...classTalentMessages(locale,content)};
   for (const [key,text] of Object.entries(recoveryMessages(locale))) {
     if (messages[key] !== text) fail(`recovery UI source mismatch at ${key}`);
   }

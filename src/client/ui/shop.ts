@@ -10,7 +10,7 @@ import { data } from "../../shared/game.ts";
 import type { Command } from "../../shared/protocol.ts";
 import type { PlayerView } from "../../shared/view.ts";
 import { t, number } from "../i18n.ts";
-import { effectText, supplyText } from "../content-text.ts";
+import { effectText, supplyText,skillBehavior } from "../content-text.ts";
 import { escape as e } from "./html.ts";
 import { icon, effectIcon } from "./icons.ts";
 import { assets } from "../assets.ts";
@@ -256,7 +256,7 @@ function details(p: PlayerView) {
     name = t("skill." + id + ".name");
     glyph = effectIcon(node.effects);
     grade = node.grade;
-    body = `<p class="eyebrow">${e(t("branch." + node.branchId))} · ${e(t(node.subbranchNameKey))}</p><p class="effect-list">${e(effectText(node.effects))}</p><p class="muted">${e(t("ui.ratingExplanation"))}</p>${node.prerequisite ? `<button class="prerequisite-link" data-prerequisite="${node.prerequisite}">${e(t("ui.prerequisite", { name: t("skill." + node.prerequisite + ".name") }))}</button>` : ""}${node.capstone ? `<p class="capstone-note">${icon("ultimate")}${e(t("ui.capstone"))} · ${e(t("ui.capstoneLimit"))}</p>` : ""}`;
+    body = `<p class="eyebrow">${e(t("branch." + node.branchId))} · ${e(t(node.subbranchNameKey))}</p><p class="effect-list">${e(effectText(node.effects))}</p>${skillBehavior(node.id)?`<p class="skill-behavior">${e(skillBehavior(node.id))}</p>`:""}<p class="muted">${e(t("ui.ratingExplanation"))}</p>${node.prerequisite ? `<button class="prerequisite-link" data-prerequisite="${node.prerequisite}">${e(t("ui.prerequisite", { name: t("skill." + node.prerequisite + ".name") }))}</button>` : ""}${node.capstone ? `<p class="capstone-note">${icon("ultimate")}${e(t("ui.capstone"))} · ${e(t("ui.capstoneLimit"))}</p>` : ""}`;
   } else if (kind === "weapon") {
     const w = data.weapons.find((w) => w.id === id)!;
     name = t("weapon." + id + ".name");

@@ -408,7 +408,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       fields: g.fields,
       signatures: g.signatures,
       bossCues: g.bossCues(),
-      classCues: g.classKits.cues(),
+      classCues: g.classCues(),
       arenaId: g.arena.id,
     });
     s.intermission = JSON.stringify({

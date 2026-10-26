@@ -1,3 +1,6 @@
+import {AbilityTransforms,type TransformContext} from './ability-transforms.ts';
+import {hasTalent} from './class-talents.ts';
+import {fieldPosition} from './field-follow.ts';
 import {phaseBreakPoints} from './phase-break-layout.ts';
 import { BrutalVolley } from './brutal-volley.ts';
 import { encounterAssists, combatReviveFraction, phaseShieldBreak, encounterPhases, bossPatternPhase, encounterVariant } from './encounter-policy.ts';
@@ -224,6 +227,10 @@ export class Game {
     return [...this.director.cues(),...this.brutalVolley.cues(),...lava];
   }
   readonly classKits = new ClassKits();
+  readonly transforms = new AbilityTransforms();
+  classCues(){return [...this.classKits.cues(),...this.transforms.cues()];}
+  private aimTargets(){const real=this.roster().filter(p=>p.status==='active'&&!this.classKits.untargetable(p.id,this.combatTick));return [...real,...this.classKits.decoyTargets(this.roster(),this.combatTick)];}
+  private hurtTarget(id:string,amount:number){const p=this.players.get(id);if(p)this.damage(p,amount);else this.classKits.hitDecoy(id,amount);}
   private bossPrevious = { x: 800, y: 250 };
   private shotEffects = new Map<
     number,
@@ -737,7 +744,7 @@ export class Game {
   }
   private startEncounter() {
     if(this.settings.difficulty==='hellish') Object.assign(this.selectedContract,classifiedContract(this.selectedContract.bossId??'constable','brutal'));
-    this.classKits.clear();
+    this.classKits.clear();this.transforms.clear();
     this.pruneExpired();
     this.phase = 'combat';
     this.phaseEnds = 0;
@@ -859,7 +866,7 @@ export class Game {
     this.votes.clear();
   }
   private victory() {
-    this.classKits.clear();
+    this.classKits.clear();this.transforms.clear();
     this.completedBossIds.add(this.boss.id);
     if (this.settings.mode === 'endless') this.endless.record(this.boss.id);
     this.boss.health = 0;
@@ -1057,14 +1064,13 @@ export class Game {
       this.emitShot('hostile',point.x,point.y,angle,speed,damage,radius));
     this.minions.step(
       this.combatTick,
-      this.roster().filter((player) => player.status === 'active'),
+      [...this.roster().filter((player) => player.status === 'active'),...this.classKits.decoyTargets(this.roster(),this.combatTick)],
       this.obstacles,
-      (target, damage) => this.damage(this.players.get(target.id)!, damage),
-      this.roster().filter(
-        (p) => p.status === 'active' && !this.classKits.untargetable(p.id, this.combatTick),
-      ),
+      (target, damage) => this.hurtTarget(target.id,damage),
+      this.aimTargets(),
     );
     this.classKits.step(this.kitContext());
+    this.transforms.step(this.transformContext());
     this.stepFields();
     this.stepLava();
     this.stepShots();
@@ -1085,7 +1091,7 @@ export class Game {
         this.secretStatus = 'failed';
         this.phase = this.campaignBank ? 'victory' : 'defeat';
       } else this.phase = 'defeat';
-      this.classKits.clear();
+      this.classKits.clear();this.transforms.clear();
       this.director.reset('constable');
       this.minions.clear();
       this.signatures = [];
@@ -1144,7 +1150,7 @@ export class Game {
     const rally = Math.max(
       0,
       ...this.fields
-        .filter((f) => f.kind === 'rally' && distance(f, p) <= f.radius)
+        .filter((f) => f.kind === 'rally' && distance(fieldPosition(f,this.roster()), p) <= f.radius)
         .map((f) => f.movement ?? 0),
     );
     const environment = this.director.services.movement(p, p.id, now);
@@ -1318,7 +1324,7 @@ export class Game {
     const rate = clamp(
       s.fireRate *
         (braced ? 1 + 0.3 * s.ability : 1) *
-        (overdrive ? 1 + 0.7 * (1 + (s.effects.ultimatePotency ?? 0)) : 1),
+        (overdrive ? 1 + (hasTalent(p,'furnace-vents')?.4:.7) * (1 + (s.effects.ultimatePotency ?? 0)) : 1),
       0.35,
       2.5,
     );
@@ -1328,7 +1334,7 @@ export class Game {
       field = Math.max(
         0,
         ...this.fields
-          .filter((f) => f.kind === 'rally' && distance(f, p) <= f.radius)
+          .filter((f) => f.kind === 'rally' && distance(fieldPosition(f,this.roster()), p) <= f.radius)
           .map((f) => f.potency),
       );
     const damage =
@@ -1385,6 +1391,8 @@ export class Game {
     else if (slot === 'e' && !this.classKits.freeStep(p.id, now))
       p.eAt = now + ticks(a.cooldown * s.cooldown);
     else if (slot === 'ultimate') p.ultimateAt = now + ticks(a.cooldown * s.ultimateCooldown);
+    const before={x:p.x,y:p.y},empowered=slot==='e'&&this.classKits.freeStep(p.id,now);
+    if(!this.transforms.cast(p,slot,this.transformContext())){
     if (['tank', 'mage', 'engineer', 'assassin'].includes(p.classId)) {
       this.classKits.cast(p, slot, this.kitContext());
     } else if (p.classId === 'heavy') {
@@ -1474,6 +1482,8 @@ export class Game {
           ally.slowUntil = 0;
         }
     } else p.channelUntil = now + ticks(1);
+    }
+    this.transforms.afterCast(p,slot,before,empowered,this.transformContext());
     this.events.push({
       type: 'sound',
       id:
@@ -1493,7 +1503,7 @@ export class Game {
     for (const ally of this.roster())
       if (distance(ally, p) <= radius) {
         if (ally.status === 'downed' || ally.status === 'eliminated') this.revive(ally, p);
-        else if (ally.status === 'active') this.heal(p, ally, 40 * potency);
+        else if (ally.status === 'active') this.heal(p, ally, (hasTalent(p,'second-breath')?24:40) * potency);
         ally.slowUntil = 0;
       }
     if (this.roster().length === 1) p.shield = Math.max(p.shield, 40 * potency);
@@ -1505,6 +1515,7 @@ export class Game {
       this.hitBoss(p, 35 * potency);
     for (const weak of this.director.weakPoints())
       if (this.director.weakInRadius(p, radius, weak)) this.hitWeak(p, 35 * potency, weak.id);
+    this.transforms.afterResurrection(p,this.transformContext());
   }
   private heal(source: Player, target: Player, amount: number) {
     const healed = Math.min(
@@ -1525,7 +1536,7 @@ export class Game {
       armor = clamp(
         1 -
           (1 - Math.min(0.65, s.armor + this.classKits.status(p.id, this.combatTick).armor)) *
-            (this.combatTick < p.braceUntil ? 1 - Math.min(0.8, 0.45 * s.ability) : 1),
+            (this.combatTick < p.braceUntil ? 1 - Math.min(0.8, (hasTalent(p,'shoulder-mantlet')?.25:.45) * s.ability) : 1),
         0,
         0.65,
       ),
@@ -1591,10 +1602,7 @@ export class Game {
     this.wardenHitAt.clear();
     this.wardenEpoch = this.combatTick;
     if (this.boss.id !== 'lantern-warden') return;
-    const target = this.roster().find(
-      (player) =>
-        player.status === 'active' && !this.classKits.untargetable(player.id, this.combatTick),
-    ) ?? { x: 800, y: 700 };
+    const target = this.aimTargets()[0] ?? { x: 800, y: 700 };
     const origin = { x: this.boss.x + 55, y: this.boss.y };
     const phase = this.bossPhases()[this.boss.phase];
     const repeat =
@@ -1620,10 +1628,7 @@ export class Game {
   }
   private stepWarden() {
     if (!this.wardenClocks.length) this.resetWarden();
-    const target = this.roster().find(
-      (player) =>
-        player.status === 'active' && !this.classKits.untargetable(player.id, this.combatTick),
-    ) ?? { x: 800, y: 700 };
+    const target = this.aimTargets()[0] ?? { x: 800, y: 700 };
     this.signatures = this.wardenClocks.flatMap(({ clock, delay }) => {
       const elapsed = this.combatTick - this.wardenEpoch - delay;
       if (elapsed < 0) return [];
@@ -1647,6 +1652,10 @@ export class Game {
       }
     }
   }
+  private transformContext():TransformContext{return {
+    tick:this.combatTick,players:this.roster(),fields:this.fields,kits:this.classKits,kit:this.kitContext(),id:()=>this.id(),stats:p=>this.stats(p),heal:(source,target,amount)=>this.heal(source,target,amount),
+    shot:(p,point,angle,speed,damage,pierce,life=12,slow=0)=>{const shot=this.emitShot(p.id,point.x,point.y,angle,speed,damage,4,pierce,life);if(shot&&slow>0)this.shotEffects.set(shot.id,{slowTicks:ticks(slow),slowMultiplier:.6,rangeRemaining:speed*life});},
+  };}
   private kitContext(): KitContext {
     return {
       tick: this.combatTick,
@@ -1775,16 +1784,13 @@ export class Game {
       bounds: this.arena.bounds,
       obstacles: this.obstacles,
       targets: this.roster().filter((p) => p.status === 'active'),
-      aimTargets: this.roster().filter(
-        (p) => p.status === 'active' && !this.classKits.untargetable(p.id, this.combatTick),
-      ),
+      aimTargets: this.aimTargets(),
       damageScale: this.bossDamageScale(),
       brutal: this.boss.variant === 'brutal',
       phase: bossPatternPhase(this.boss.id,this.boss.variant,this.boss.phase),
       id: () => this.id(),
       damage: (id, amount) => {
-        const p = this.players.get(id);
-        if (p) this.damage(p, amount);
+        this.hurtTarget(id,amount);
       },
       spawnRat: (position, goal, speed, health, damage, maximum) => {
         if ([...this.minions.actors.values()].filter((a) => a.kind === 'rat').length >= maximum)
@@ -1898,9 +1904,7 @@ export class Game {
           this.signatures.every((sample) => sample.phase === 'rest'))
       ) {
         const attack = attacks[index],
-          targets = this.roster().filter(
-            (p) => p.status === 'active' && !this.classKits.untargetable(p.id, now),
-          );
+          targets = this.aimTargets();
         const target = targets.length
           ? targets[Math.floor(this.rng.next() * targets.length)]
           : {
@@ -2058,9 +2062,7 @@ export class Game {
         now,
         this.arena.bounds,
         this.obstacles,
-        this.roster().filter(
-          (p) => p.status === 'active' && !this.classKits.untargetable(p.id, now),
-        ),
+        this.aimTargets(),
         !!this.accord,
       );
     for (let i = this.warnings.length - 1; i >= 0; i--) {
@@ -2106,6 +2108,7 @@ export class Game {
   private stepFields() {
     for (let i = this.fields.length - 1; i >= 0; i--) {
       const f = this.fields[i];
+      if(f.anchor){const owner=this.players.get(f.owner);if(owner?.status!=='active'){this.fields.splice(i,1);continue;}const point=fieldPosition(f,this.roster());f.x=point.x;f.y=point.y;}
       if (this.combatTick >= f.until || (f.kind === 'barrier' && f.potency <= 0)) {
         this.fields.splice(i, 1);
         continue;
@@ -2114,12 +2117,12 @@ export class Game {
         const source = this.players.get(f.owner);
         if (source)
           for (const p of this.roster())
-            if (p.status === 'active' && distance(f, p) <= f.radius)
+            if (p.status === 'active' && distance(fieldPosition(f,this.roster()), p) <= f.radius)
               this.heal(source, p, f.potency * DT);
       }
       if (f.kind === 'zone')
         for (const p of this.roster())
-          if (p.status === 'active' && distance(f, p) <= f.radius + rule.playerRadius) {
+          if (p.status === 'active' && distance(fieldPosition(f,this.roster()), p) <= f.radius + rule.playerRadius) {
             p.slowUntil = this.combatTick + ticks(0.1);
             if (this.combatTick % HZ === 0) this.damage(p, f.potency);
           }

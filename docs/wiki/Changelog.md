@@ -1,6 +1,22 @@
 # Changelog
 
-Development build **2026.10.25-assist-limits**, protocol 17. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.25-class-talents**, protocol 18. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-25 — Twenty-one ability-changing skill upgrades across all seven classes
+
+### Changed abilities within existing skill paths
+
+- Each class gains three actual ability transformations at depth three of its utility branch: E, ultimate and Q across its three paths. They require the same ordered 1+2+3 SP purchases. All 378 node IDs, 63 paths, prerequisites, numerical bonuses and the single-capstone rule remain. Classic and expanded shops display localized behavioral names and tradeoffs in all fifteen locales.
+- Soldier gains a locked-aim staggered burst, a midpoint supply refill and a moving rally. Heavy gains a finite moving front wall, short-range vent rings and split suppression cones. Tank gains a charge-departure wall, a moving once-per-entrant shield aura and angled half-length panels.
+- Medic gains chained cleansing, delayed healing pulses and a field following an injured ally. Mage gains a locked delayed ward echo, smaller orbiting pulse centers and twin sigils. Engineer gains an absorbed-damage barricade burst, a mobile siege body and paired near/far turrets. Assassin gains a delayed fixed-path slash, departure traps and a finite target-attracting decoy.
+- Transformations include explicit tradeoffs: lower fire-rate or brace reduction, reduced radius or duration, smaller finite health pools, fewer free steps, or divided damage. They execute in shared authority with collision, credit, target selection and encounter cleanup; visual cues use existing assets and restrained geometry. New special-ability raster art and rendered/human balance acceptance remain open.
+
+### Continuity, difficulty rules and verification
+
+- Normal combat revival remains 25%, Easy 50%, Baby 100%, Hard+ disabled. Medic transformation healing cannot revive on Hard. Baby/Easy Standard shield events remain six/three circles with two/three-second channels; all Brutal events remain off. Baby additional cover, Hard half-cover, Insane/Hellish no-cover, Hellish lava and forced Brutal are preserved.
+- Protocol 18 carries the known issued protocol-17 local save/profile revision forward while preserving existing skills, run identity, receipts and progression. Online state stays strict. Delayed jobs cancel when their owner is inactive or disconnected; reflection is capped, finite shields cannot refill through repeated entry, and decoys never enter the real player roster or progression scaling.
+- Dedicated authority fixtures exercise all 21 purchased behaviors, including actual timing, damage/healing, projectile and contact collision, prediction, capstone compatibility, bounded work and cleanup. Real owner/observer clients buy the upgrades and receive their replicated constructs/fields/cues for every class. Both shop views exercise actual help and guarded purchase handlers. Full validation and exact artifacts are recorded separately from human/device/rendered acceptance.
+- Seven requested class-upgrade implementation passes are complete with human acceptance still open. The roster remains 63: 62 ordinary plus one secret. Eighty-eight new ordinary identities and 59 original-boss quality passes remain; the optional full skill map is already implemented. Preserve every frozen preview, protected main, draft PR, public protocol-4 Site and immutable protocol-13 Windows development archive.
 
 ## 2026-10-25 — Quarter-health Normal revival and distinct Baby/Easy assistance
 
@@ -527,7 +543,7 @@ Development build **2026.10.25-assist-limits**, protocol 17. These entries descr
 
 ## Still in development
 
-- All sixty boss identities execute and all seven survivors have basic directional runs/idle/primary/hurt/dodge/downed art. Special-ability/boss action production, final encounter tuning and rendered/device acceptance remain unfinished.
+- All sixty-three boss identities execute and all seven survivors have basic directional runs/idle/primary/hurt/dodge/downed art. Special-ability/boss action production, final encounter tuning and rendered/device acceptance remain unfinished.
 - Local mastery, cosmetics, profiles and remappable controls are implemented. Native-language, physical-device, human listening/gameplay, full-progression endurance and full capacity acceptance remain open.
 - An unsigned Windows/offline/LAN development download is published with exact artifact evidence. Physical second-machine LAN and final coordinated browser/Windows release acceptance remain open.
 - Verified public rankings and durable deployed recovery remain unfinished. Bounded compressed transfer passes a fifty-build local HTTP/restart fixture; maximum-entropy histories still require paging.

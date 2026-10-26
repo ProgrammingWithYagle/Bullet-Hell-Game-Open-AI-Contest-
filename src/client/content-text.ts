@@ -1,3 +1,4 @@
+import {talentForSkill} from '../shared/class-talents.ts';
 import {combatReviveFraction} from '../shared/encounter-policy.ts';
 import { t, number } from './i18n.ts';
 import { data } from '../shared/game.ts';
@@ -60,3 +61,5 @@ export function effectText(
     })
     .join(' · ');
 }
+
+export function skillBehavior(id:string){const talent=talentForSkill(id);return talent?t('talent.'+talent+'.description'):'';}

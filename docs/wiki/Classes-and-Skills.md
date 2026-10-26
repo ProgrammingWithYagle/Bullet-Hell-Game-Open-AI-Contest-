@@ -19,6 +19,36 @@ All seven classes are selectable and execute their two abilities and ultimate of
 
 Soldier provides ranged fire and rally support. Heavy suppresses and braces. Tank protects and charges to rescue. Medic heals, cleanses and revives. Mage binds enemies and detonates wards. Engineer builds turrets and barricades. Assassin uses stealth, mobility and precision. Their constructs, control effects and targeting are actual simulation state, rather than menu-only descriptions.
 
+## Purchased ability transformations
+
+Twenty-one behavior changes now occupy existing utility-path depth-three nodes, costing the same six cumulative SP. Three transformations per class change Q, E and ultimate with explicit tradeoffs. The classic and expanded shops both display localized names/help. All costs, prerequisites and the one-capstone limit remain.
+
+| Class | Ability | Purchased transformation | Behavior and tradeoff |
+| --- | --- | --- | --- |
+| Soldier | Q | Marching Colors | Q follows you, with 25% less radius. |
+| Soldier | E | Breach Cadence | E fires three locked-aim shots 0.12 s apart; total damage stays the same. |
+| Soldier | Ultimate | Supply Line | Ultimate refills ammo again halfway through its field; its base damage bonus falls from 35% to 25%. |
+| Heavy | Q | Split Suppression | Q divides the same fourteen pellets into two narrow cones with a gap in front. |
+| Heavy | E | Shoulder Mantlet | E adds a moving 80-base-health front wall; base brace reduction falls from 45% to 25%. |
+| Heavy | Ultimate | Furnace Vents | Ultimate vents eight short-range shots every two seconds after the first second; base fire-rate bonus falls from 70% to 40%. |
+| Tank | Q | Cornerstone | Q splits its wall into two angled panels, each with half the original health and length. |
+| Tank | E | Wake Guard | Charge leaves an 80-base-health wall for two seconds at departure. |
+| Tank | Ultimate | Procession | Ultimate follows you and shields each entrant once for 90 base health instead of 120. |
+| Medic | Q | Field Triage | Q follows the most injured nearby ally, with 25% less radius. |
+| Medic | E | Serum Relay | E chains heals and cleansing to three distinct allies, within 140 per hop, instead of every nearby ally. |
+| Medic | Ultimate | Second Breath | Ultimate trades 40 instant base healing for 24 plus three healing pulses of 6. Difficulty revival rules still apply. |
+| Mage | Q | Twin Sigils | Q makes two separated smaller sigils, each dealing half damage. |
+| Mage | E | Ward Echo | E splits its 65 base damage into 40 now and 25 at the same ground point after 0.75 s. |
+| Mage | Ultimate | Orbit Requiem | Ultimate replaces its large fixed pulse with three smaller orbiting centers, each dealing one third of the pulse damage. |
+| Engineer | Q | Crossfire Pair | Q makes two turrets with half health and damage each; the second prefers a farther target. |
+| Engineer | E | Return Current | Barricade stores up to 120 absorbed damage; destruction or expiry releases 60% of it nearby. |
+| Engineer | Ultimate | Foundry Relay | Siege follows at 160 pixels per second; base health falls from 200 to 160. |
+| Assassin | Q | Decoy Veil | Q leaves a 60-health projectile-damageable decoy that attracts aim; base veil duration falls from 6 s to 4 s. |
+| Assassin | E | Aftercut | Step deals 60% damage now and 40% along its locked path after 0.45 s. |
+| Assassin | Ultimate | Unwritten Traps | Ultimate lasts 3.5 s with one fewer free step; empowered departures leave three damaging pulses. |
+
+[Exact behavior, authority and verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/CLASS_TALENTS.md). Human/rendered/device/native-language review remains open.
+
 ## Buying a build
 
 Each class has three parent branches with three six-node paths each. A path's depths cost 1, 2, 3, 4, 5 and 6 SP, for 21 total. Prerequisites must be owned in order. Only one capstone may be active. Quarantine, Midnight and Pilgrimage start with 3 SP and reach 27 before the finale. Grand Raid uses 12, 20 and 27 SP before its three fights. Endless reaches the normal build ceiling rather than accumulating unlimited player power.

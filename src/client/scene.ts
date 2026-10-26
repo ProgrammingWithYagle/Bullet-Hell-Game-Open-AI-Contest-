@@ -628,7 +628,7 @@ export class CombatScene extends Phaser.Scene {
         this.propImages.delete(id);
       }
     const constructIds = new Set(
-      view.classCues.filter((c) => c.kind === 'turret' || c.kind === 'siege').map((c) => c.id),
+      view.classCues.filter((c) => c.kind === 'turret' || c.kind === 'siege'||c.kind==='decoy').map((c) => c.id),
     );
     for (const [id, image] of this.constructImages)
       if (!constructIds.has(id)) {
@@ -636,6 +636,18 @@ export class CombatScene extends Phaser.Scene {
         this.constructImages.delete(id);
       }
     for (const cue of view.classCues) {
+      if(cue.kind==='talent-area'||cue.kind==='talent-link'){
+        const pending=now<cue.at,color=cue.talent==='aftercut'||cue.talent==='unwritten-traps'?0xb9a6df:cue.talent==='furnace-vents'?0xe9bc83:0x9ce0c8;
+        if(cue.kind==='talent-link'){
+          h.lineStyle(pending?2:5,color,pending?.55:.85).lineBetween(cue.x,cue.y,cue.x2,cue.y2);
+          h.lineStyle(2,color,.85).strokeCircle(cue.x2,cue.y2,7);
+        }else{
+          h.lineStyle(pending?2:3,color,.8).strokeCircle(cue.x,cue.y,cue.radius);
+          h.fillStyle(color,pending?.025:.07).fillCircle(cue.x,cue.y,cue.radius);
+          h.lineStyle(2,color,.6).strokeCircle(cue.x,cue.y,cue.radius*.65);
+        }
+        continue;
+      }
       const color =
         cue.kind === 'sigil' || cue.kind === 'requiem'
           ? 0xb9a6df
@@ -643,19 +655,26 @@ export class CombatScene extends Phaser.Scene {
             ? 0xe9c27a
             : 0x97d8c7;
       if (cue.kind === 'wall') {
+        const span=cue.halfSpan??110;
         const cosine = Math.cos(cue.aim),
           sine = Math.sin(cue.aim),
           points = [
-            [-12, -110],
-            [12, -110],
-            [12, 110],
-            [-12, 110],
+            [-12, -span],
+            [12, -span],
+            [12, span],
+            [-12, span],
           ].map(
             ([x, y]) =>
               new Phaser.Math.Vector2(cue.x + x * cosine - y * sine, cue.y + x * sine + y * cosine),
           );
         h.fillStyle(color, 0.28).fillPoints(points, true);
         h.lineStyle(4, color, 1).strokePoints(points, true);
+      } else if(cue.kind==='decoy'){
+        const owner=this.people.get(cue.owner);let ghost=this.constructImages.get(cue.id);
+        if(owner){if(!ghost){ghost=this.add.image(cue.x,cue.y,owner.texture.key,owner.frame.name);this.constructImages.set(cue.id,ghost);}
+          ghost.setTexture(owner.texture.key,owner.frame.name).setPosition(cue.x,cue.y).setDisplaySize(owner.displayWidth,owner.displayHeight).setAlpha(.38).setTint(0x9ccbd8).setDepth(5+cue.y/1000);
+        }
+        h.lineStyle(2,0x9ccbd8,.8).strokeCircle(cue.x,cue.y,cue.radius+4);
       } else if (cue.kind === 'turret' || cue.kind === 'siege') {
         const facing =
             Math.abs(Math.cos(cue.aim)) > Math.abs(Math.sin(cue.aim))
