@@ -16,6 +16,12 @@ Current build **2026.10.26-warden-patrol**, protocol **19**. Main remains protec
 - The [optional all-54-skill map](OPTIONAL_SKILL_MAP.md) is implemented with default-off setting, bounded zoom, scrolling and keyboard navigation. Five secondary-map topology revisions and six ground deliveries are installed. Rendered/human/device review stays open.
 - Profiles/mastery/cosmetics/remaps, all five modes, the seven base kits and bank-safe consented secret extension already work.
 
+## Warden quality pass
+
+[Lantern Warden](WARDEN_PATROL.md) is fixed **2--**, with unchanged Normal health/damage/deadline. Still Watch keeps the stationary warned sweep. Half-health Roving Vigil marks and executes collision-resolved patrols before the next warning and in recovery. Ground origin/aim stay locked for every warning and active sweep. Brutal alternates direction and adds a fully warned sequential reverse return instead of overlapping active cones; recovery fans fire two locked-origin warned waves. Four original patrol poses, route/direction cues, persistent phase responses and fifteen-locale help are integrated. The existing individual Last Light score and tempo-aligned percussion remain. Two original-roster quality passes are implemented, 58 remain, zero human acceptances.
+
+The exact built-in ImageGen native/request, portable bindings, failed equal-grid packing assumption and independent full-RGBA verifier are committed. The entire third-pose lantern and faint source alpha margins are retained, with world scale matching the previous Warden body. All prior Warden sources/contracts/atlases remain unchanged. Four new always-loaded 512-pixel cells add 4 MiB decoded RGBA beyond the earlier loading subtotal, separate from actual GPU/device memory or FPS.
+
 ## Latest user difficulty rules
 
 One policy covers every combat revival source: **Baby 100%, Easy 50%, Normal 25%, Hard/Insane/Hellish disabled**. Hard+ cannot buy/consume revive kits. Recovery between encounters remains. Medic transformation pulses heal living allies and cannot bypass revival restrictions.
@@ -38,7 +44,7 @@ Threats 1–2 have two half-health phases retaining late authored patterns; high
 
 ## Frozen previews and human evidence
 
-Preserve every root/process, including 5174–5183. The previous feedback was on 5177/5179: Constable slightly harder was appropriate but phase/Brutal changes subtle; Early Watch phases passed quickly and shield events gave too much relief. The new responses await human comparison. Keep Normal entry bosses easy.
+Preserve every root/process, including 5174–5184. The previous feedback was on 5177/5179: Constable slightly harder was appropriate but phase/Brutal changes subtle; Early Watch phases passed quickly and shield events gave too much relief. The new responses await human comparison. Keep Normal entry bosses easy.
 
 | Port | Frozen runtime source | Scope |
 | --- | --- | --- |
@@ -47,24 +53,21 @@ Preserve every root/process, including 5174–5183. The previous feedback was on
 | 5180 | deb4896 | Optional skill map; protocol 15 |
 | 5181 | 3355e92 | Difficulty pressure, lava, forced Hellish Brutal; protocol 16 |
 | 5182 | fb78b70 | Normal quarter revival, Baby/Easy circles/channel and additional Baby cover; protocol 17 |
-| 5183 | 9bee65b | Latest 21 class transformations plus all latest difficulty rules; protocol 18 |
+| 5183 | 9bee65b | 21 class transformations plus latest difficulty rules; protocol 18 |
+| 5184 | 81805fc | Warden patrol, sequential/reversing Brutal sweep and all prior rules/upgrades; protocol 19 |
 
 Exact roots/PIDs/file/HTTP receipts belong to each checkpoint's review directory. Inspect actual port ownership and command lines before touching processes; occupied 5173/2567 may serve other protocols. Browser control is disabled: do not retry or bypass it via CDP or another route. Do not claim rendered, physical-device, native-language, listening or final balance acceptance.
 
 ## Current verification and publication
 
-The current build passes **457 tests**, authored content/fifteen locales, TypeScript and production build. Both exact `9bee65b` GitHub CI checks succeeded. Source snapshot `b554b87544f9aba53f6623c524c0b4a4888bf7ac4b733160a48cd053c50eab2d`; runtime source `d45aa59d4e38ce3f0be04232363e4b9ec68be1192179a8594e486298dda958e0`; content revision `535eb34c7cdabce5ad2fe910ea0a792278a7cc08e360b4f5712d7ee2d9e767f6`. Receipts and failed attempts: `reviews/class-talents-2026-10-25/`.
+The current build passes **469 automated tests**, authored content/fifteen locales, TypeScript and production build. Both exact `81805fc` GitHub CI checks succeeded, including independent image verification with pinned Pillow 12.3.0 in an isolated CI environment. Source snapshot `5ed4b3a0e5dc8ce798e001caa647fe5303c9be339d594e31b42d79a0823ef000`; runtime source `8a291c2b81f2f72a3d021dbed597636cbb458b834007d2d70beadb5f25e0b4bd`; content revision `82763fd1f5288303f8170a798b656f5443fc8f5236b652786a9e3b27070c41af`. Exact artifacts and failed attempts: `reviews/warden-patrol-2026-10-25/`.
 
-The frozen class preview is **http://127.0.0.1:5183/**, runtime commit `9bee65b5219ebcb1cf12e15a4090a2460c26f198`, protocol 18, process **59400**, root `C:\Users\yigal\Documents\Codex\2026-10-25\continue-grave-accord-in-this-same\work\playtest-talents-9bee65b`. All **1,668 files / 691,392,897 bytes** match the production receipt. Sixteen HTTP asset checks pass; 5178–5182 index hashes remain unchanged. Existing 5174–5177 roots are untouched (they were not listening in the latest port inventory). Preserve all old roots/processes.
+The latest frozen preview is **http://127.0.0.1:5184/**, runtime commit `81805fc11fe052bf97872ea2934c61fac066101c`, protocol 19, process **28144**, root `C:\Users\yigal\Documents\Codex\2026-10-25\continue-grave-accord-in-this-same\work\playtest-warden-81805fc`. All **1,669 files / 691,760,079 bytes** match the production receipt. Eighteen raw HTTP checks pass, including the new patrol atlas, original Last Light delivery and selected locale bundles. 5178–5183 index hashes remain unchanged; 5174–5177 roots are untouched. Preserve every earlier root/process.
 
-The canonical Wiki remains **18 pages / 29 images**, published from committed source `9bee65b5219ebcb1cf12e15a4090a2460c26f198` at Wiki commit `63186b748db09c1628adccae144fc341edf2deb1`. Every page/image Git blob and public image SHA-256 matches; four public HTML responses pass. Publication does not update the public Site or Windows archive. These software checks do not prove rendered, physical-device, native-language, listening or final human balance acceptance.
+The canonical Wiki is **18 pages / 30 images**, published from committed source `81805fc11fe052bf97872ea2934c61fac066101c` at Wiki commit `af9b50fcc4f7213e155a2d96e0073d15fd6e194c`. Every committed page/image blob and public image SHA-256 matches; four public HTML responses pass. Source/Wiki publication does not update the public Site or Windows archive. These software checks do not prove rendered, physical-device, native-language, listening or final human balance acceptance.
 
 Use bundled Node 24 and pnpm 11.25.0. Node: `C:\Users\yigal\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin`; fallback pnpm: sibling `dependencies\bin\fallback`. `pnpm verify` checks authored content/locales, TypeScript, actual HTTP/WebSocket/SQL fixtures and production build. Use `python -X utf8` for technical RGBA/art work and `git -c core.bare=false`. Projectless chats need reviewed elevated writes/build/network access to this existing OneDrive folder.
 
-Canonical Wiki is `docs/wiki/`, existing native checkout `.wiki-checkout`; publish exact committed pages/images and run `node tools/verify-wiki-publication.mjs <source SHA>`. Source pushes alone do not publish the Wiki. Historical checkpoint records remain in Git and `docs/history/`; the current implementation/progress pages supersede older counts and unintegrated-draft notes.
+Canonical Wiki is `docs/wiki/`, existing native checkout `.wiki-checkout` (18 pages/30 images); publish exact committed pages/images and run `node tools/verify-wiki-publication.mjs <source SHA>`. Source pushes alone do not publish the Wiki. Historical checkpoint records remain in Git and `docs/history/`; the current implementation/progress pages supersede older counts and unintegrated-draft notes.
 
-## Latest Warden source
-
-[Warden patrols](WARDEN_PATROL.md), build `2026.10.26-warden-patrol`, protocol 19, implements the second original-roster quality pass. The roster remains 63 and 88 new ordinary identities remain. Four new patrol poses bring selected motion to 1,506. Normal health/damage/deadline stay unchanged; Brutal gets direction changes and a fully warned sequential return. All 21 class transformations and latest assistance/Hellish rules remain. Current exact verification/publication belongs to `reviews/warden-patrol-2026-10-25/`; earlier class-preview/hash/CI/Wiki records above describe their preserved frozen checkpoint. Human acceptance remains open.
-
-The Warden checkpoint passes **469 automated tests** plus authored content/fifteen locales, TypeScript and production build. Source snapshot `5ed4b3a0e5dc8ce798e001caa647fe5303c9be339d594e31b42d79a0823ef000`; runtime source `8a291c2b81f2f72a3d021dbed597636cbb458b834007d2d70beadb5f25e0b4bd`; content revision `82763fd1f5288303f8170a798b656f5443fc8f5236b652786a9e3b27070c41af`. Exact artifacts/failed attempts are in `reviews/warden-patrol-2026-10-25/`. Canonical Wiki now has **18 pages /30 images**, including the new motion reference. Earlier preview and Wiki receipts retain their own frozen source/counts.
+Full development verification also uses Python 3 with `tools/art-verification-requirements.txt` (Pillow 12.3.0). The game runtime itself needs no Python. Known issued protocol-18 local Practice/profile revision `535eb34c...` migrates to protocol 19 with identity/progress/purchases retained; online/signed state stays strict.

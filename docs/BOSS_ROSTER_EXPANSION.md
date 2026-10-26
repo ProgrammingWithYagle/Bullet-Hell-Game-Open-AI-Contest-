@@ -18,7 +18,7 @@ All three now have shared-authority implementation, distinct phases, extra Bruta
 
 ## Existing roster quality
 
-Constable has completed the first requested phase/mobility/Brutal implementation pass; latest human acceptance remains open. Other 59 existing encounters need assessment or redesign. Normal Constable should remain among the easiest bosses. Pressure should come from understandable movement and mechanics; blanket stat inflation does not establish a meaningful phase change. Brutal is the explicit form for extra attacks and visual identity, while global difficulty primarily scales stats/pressure/resources.
+Constable and Warden have completed the first two requested phase/mobility/Brutal implementation passes; human acceptance remains open. Other 58 original-roster encounters need assessment or redesign. Normal Constable should remain among the easiest bosses. Pressure should come from understandable movement and mechanics; blanket stat inflation does not establish a meaningful phase change. Brutal is the explicit form for extra attacks and visual identity, while global difficulty primarily scales stats/pressure/resources.
 
 ## Art and acceptance
 
