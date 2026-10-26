@@ -7,6 +7,9 @@ export const routeBossIds = catalog.bosses
   .filter((b) => ['short', 'standard', 'long', 'raid'].includes(b.route))
   .map((b) => b.id as BossId);
 export const openingBossIds = [
+  'ashen-usher',
+  'brass-toad',
+  'ragpicker-kite',
   'constable',
   'courier',
   'tollkeeper',
@@ -29,7 +32,7 @@ export function validEndlessHistory(value: unknown): value is EndlessHistory {
       (k) =>
         Array.isArray(s[k]) &&
         new Set(s[k]).size === s[k].length &&
-        s[k].length <= (k === 'recent' ? 12 : k === 'routeBag' ? 50 : 9) &&
+        s[k].length <= (k === 'recent' ? 12 : k === 'routeBag' ? routeBossIds.length : 9) &&
         s[k].every((id) =>
           k === 'exclusiveBag'
             ? exclusiveBossIds.some((x) => x === id)

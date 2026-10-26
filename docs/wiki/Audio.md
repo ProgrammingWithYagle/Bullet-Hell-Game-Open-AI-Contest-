@@ -1,9 +1,12 @@
 # Audio and boss themes
 
-All sixty executable bosses have an individual original composition and synthesized PCM master. Melodies, harmonic routes, phrasing and arrangements vary. No sampled commercial music is used.
+All sixty-three executable bosses have an individual original composition and synthesized PCM master. Melodies, harmonic routes, phrasing and arrangements vary. No sampled commercial music is used.
 
 | Boss | Theme |
 | --- | --- |
+| Ashen Usher | Empty Balcony |
+| Brass Toad | Rain in Bronze |
+| Ragpicker's Kite | Thread Above the Street |
 | Hollow Constable | Hollow Muster |
 | Lantern Warden | Last Light |
 | Carrion Courier | Undelivered |
@@ -71,4 +74,8 @@ Editable scores, PCM and machine audits remain in the repository. Adding ten End
 
 All sixty boss themes and City Wake have 192 kbps delivery copies: 64,351,596 bytes versus 472,276,236 PCM bytes. Original WAV masters and scores remain unchanged and bundled as fallback. The runtime checks decoded frame duration before looping and falls back on decode failure or unexpected padding. FFmpeg decode/frame/SNR/headroom/DC/seam checks pass for 61 copies; browser/device decoding and human listening remain unreviewed. The compressed-delivery checkpoint passed 272 tests; current full-suite totals are recorded in [Development Progress](Development-Progress) and the source verification receipt. See the [delivery audit](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/reviews/audio-delivery-2026-10-24.json). Encoder details follow the [FFmpeg MP3 format documentation](https://ffmpeg.org/ffmpeg-formats.html#mp3). The encoder is a development tool and is not shipped with the game.
 
-Current source adds a quiet original synthesized percussion layer aligned to each of the sixty boss scores. Later phases and Brutal add rhythmic accents. Music volume, warning ducking and lifecycle cleanup still apply; all original masters and compressed deliveries stay unchanged. Human listening review of the new layer remains open.
+Current source adds a quiet original synthesized percussion layer aligned to each of the sixty-three boss scores. Later phases and Brutal add rhythmic accents. Music volume, warning ducking and lifecycle cleanup still apply; all original masters and compressed deliveries stay unchanged. Human listening review of the new layer remains open.
+
+## Early Watch expansion
+
+Three new editable original scores use a theatre waltz, a 7/8 bronze hop and a suspended 5/4 cloth-reed phrase. The existing sixty PCM masters remain unchanged. There are now 64 verified compressed tracks including City Wake: 67,527,796 delivery bytes and 495,586,368 PCM bytes. All pass objective frame, SNR, clipping/DC and loop-seam checks; listening and browser/device decoding remain open. [Current audio audit](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/reviews/early-watch-integration-2026-10-25/audio-delivery.json).

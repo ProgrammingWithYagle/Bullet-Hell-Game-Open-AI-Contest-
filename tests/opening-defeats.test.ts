@@ -133,14 +133,14 @@ test('stale cast, hurt and stagger cues cannot restart a settled defeat; reduced
 });
 
 test('unavailable collapse atlases use their own exact settled image while live fallback identities stay unchanged', () => {
-  assert.equal(bossTextureReferences.settledReferences.length, 7);
+  assert.equal(bossTextureReferences.settledReferences.length, 10);
   for (const reference of bossTextureReferences.settledReferences) {
     assert.equal(sha(reference.reference), reference.referenceSha256);
     const png = readFileSync(reference.reference);
     assert.equal(png.readUInt32BE(16), reference.referenceWidth);
     assert.equal(png.readUInt32BE(20), reference.referenceHeight);
-    assert.equal(reference.sourceFrame, 15);
-    for (const frame of [8, 12, 15]) {
+    assert.equal(reference.sourceFrame, reference.defeatStartFrame + reference.defeatFrames - 1);
+    for (const frame of [reference.defeatStartFrame, reference.defeatStartFrame + Math.floor(reference.defeatFrames / 2), reference.sourceFrame]) {
       assert.deepEqual(bossTexturePose(reference.bossId, frame, false), {
         key: reference.bossId + '-defeat-reference',
         frame: 0,

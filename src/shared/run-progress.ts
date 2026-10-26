@@ -28,7 +28,7 @@ export function validProgress(value: unknown, encounter = 1000000): value is Run
     (p.firstEncounter >= 0 || (p.clears === 0 && p.rescues === 0)) &&
     (p.firstEncounter < 0 || p.clears <= encounter - p.firstEncounter) &&
     Array.isArray(p.clearedBossIds) &&
-    p.clearedBossIds.length <= Math.min(p.clears, 60) &&
+    p.clearedBossIds.length <= Math.min(p.clears, catalog.bosses.length) &&
     new Set(p.clearedBossIds).size === p.clearedBossIds.length &&
     p.clearedBossIds.every((id) => catalog.bosses.some((b) => b.id === id))
   );

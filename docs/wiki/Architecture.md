@@ -22,7 +22,7 @@ Passing automated checks does not imply full rendered FPS, human playtest, devic
 
 [Shared authority](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/src/shared/game.ts) · [Live protocol](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/src/shared/protocol.ts) · [Latest full verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/reviews/runtime-verification.json)
 
-[Latest balance, collision and local throughput evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/BALANCE_AND_COLLISION_RUNTIME.md): 382 full-pipeline tests, 210 progression combinations and 1,740 health/deadline deployments. Longer local 50-client Moths/Walking District and 16-client City Eater probes keep stress p99 below 25 ms; occasional slower ticks remain. Zero rendered clients means this is not final capacity acceptance.
+[Latest balance, collision and local throughput evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/BALANCE_AND_COLLISION_RUNTIME.md): the earlier 382-test pipeline, 210 progression combinations and 1,740 health/deadline deployments. Longer local 50-client Moths/Walking District and 16-client City Eater probes keep stress p99 below 25 ms; occasional slower ticks remain. Zero rendered clients means this is not final capacity acceptance.
 
 ## One-hour local combat observation
 
@@ -57,3 +57,5 @@ Seven current atlases retain their original eight live cells and append eight co
 Survivor visual motion uses observed-position continuity with a 100-ms stop bound and ten-degree facing hysteresis; one-shot attack/hurt facing stays at onset. Input/authority are unchanged. Current encounter-only static crops plus shared/two full atlas subtotal is 76.81033 MiB by PNG dimensions; every crop reconstructs the old cell and preserves world geometry. Device FPS remains unverified.
 
 Protocol 14 introduces explicit fixed boss classifications and subtier-bearing concealed cards; card-position risk is zero. Local protocol-13 Practice boundaries migrate while preserving progress/run identity. Boss grade drives health, pressure and bounty; base income remains separate from earned bounty premiums. Online signatures and version gates remain strict.
+
+Early Watch adds a separate shared director and a bounded wind helper used by both authority and prediction. Current test totals and exact source hashes are in the [Early Watch receipt](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/reviews/early-watch-integration-2026-10-25/runtime.json).

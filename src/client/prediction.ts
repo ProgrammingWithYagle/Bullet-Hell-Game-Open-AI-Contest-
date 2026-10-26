@@ -1,3 +1,4 @@
+import { earlyWatchMovement } from '../shared/early-watch-director.ts';
 import { endlessSolids, leaveMovingBlocks } from '../shared/endless-director.ts';
 import { raidMovement } from '../shared/raid-director.ts';
 import { districtMovement } from '../shared/district-director.ts';
@@ -60,6 +61,7 @@ export class Prediction {
       now < p.dashUntil,
     );
     const raidForce = raidMovement(view.bossCues, p, now);
+    const earlyForce = earlyWatchMovement(view.bossCues, p, now, now < p.dashUntil);
     const rally = Math.max(
         0,
         ...view.fields
@@ -79,8 +81,8 @@ export class Prediction {
     const next = moveBody(
       p,
       {
-        x: ((dash ? p.dashX : mx) * speed + environment.x + terrain.x + raidForce.x) * DT,
-        y: ((dash ? p.dashY : my) * speed + environment.y + terrain.y + raidForce.y) * DT,
+        x: ((dash ? p.dashX : mx) * speed + environment.x + terrain.x + raidForce.x + earlyForce.x) * DT,
+        y: ((dash ? p.dashY : my) * speed + environment.y + terrain.y + raidForce.y + earlyForce.y) * DT,
       },
       data.rules.playerRadius,
       [...runtimeArena(view.arenaId).obstacles, ...gates, ...blocks],

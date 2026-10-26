@@ -17,7 +17,7 @@ const unique=(items,label)=>assert.equal(new Set(items.map(x=>x.id)).size,items.
 const finiteTree=value=>{if(typeof value==='number')assert(Number.isFinite(value));else if(Array.isArray(value))value.forEach(finiteTree);else if(value&&typeof value==='object')Object.values(value).forEach(finiteTree);};
 check('Complete finite versioned content',()=>{
   finiteTree(c);assert.equal(c.rules.schemaVersion,1);assert.equal(c.rules.simulationHz,30);assert.equal(c.rules.patchHz,20);
-  for(const [key,count] of Object.entries({classes:7,skills:378,weapons:28,bosses:60,mutations:24,arenas:6,modes:5,difficulties:6,locales:15,grades:18}))assert.equal(c[key].length,count,key);
+  for(const [key,count] of Object.entries({classes:7,skills:378,weapons:28,bosses:63,mutations:24,arenas:6,modes:5,difficulties:6,locales:15,grades:18}))assert.equal(c[key].length,count,key);
   for(const [key,value] of Object.entries(c))if(Array.isArray(value)&&value[0]?.id)unique(value,key);
   assert(!/\bTBD\b|TODO|FIXME/.test(JSON.stringify(c)),'Unresolved content placeholder');
   assert.equal(read('content/revision.json').sha256,crypto.createHash('sha256').update(JSON.stringify(c)).digest('hex'));
@@ -91,14 +91,14 @@ check('Boss attack contracts, transitions, arenas and deadlines',()=>{
   }
   for(const a of c.arenas){assert.equal(a.width,1600);assert.equal(a.height,1000);for(const o of a.obstacles){assert(o.x>=0&&o.y>=0&&o.x+o.width<=a.width&&o.y+o.height<=a.height);assert(!(a.playerSpawn.x>o.x&&a.playerSpawn.x<o.x+o.width&&a.playerSpawn.y>o.y&&a.playerSpawn.y<o.y+o.height));}}
 });
-check('Sixty distinct bosses, route-specific gauntlets and Endless exclusives',()=>{
+check('Sixty-three distinct bosses, route-specific gauntlets and Endless exclusives',()=>{
   const allIds=new Set();
   for(const m of c.modes.filter(m=>m.kind!=='endless')){
     const pool=c.bossPools[m.id];assert.equal(pool.finale.length,3);assert(pool.regular.length>=m.encounters+1,'Insufficient nonrepeating three-card candidates '+m.id);
     for(const id of [...pool.regular,...pool.finale]){assert(!allIds.has(id),'Route pools overlap '+id);allIds.add(id);assert(c.bosses.some(b=>b.id===id&&b.route===m.id&&b.finale===pool.finale.includes(id)));}
   }
-  assert.equal(allIds.size,50);assert.equal(c.bossPools.endless.exclusive.length,9);for(const id of c.bossPools.endless.exclusive){assert(!allIds.has(id));allIds.add(id);assert(c.bosses.some(b=>b.id===id&&b.route==='endless'));}
-  assert.equal(allIds.size,59);assert(!allIds.has('uncounted'));assert.equal(new Set(c.bosses.map(b=>b.signature.id)).size,60);
+  assert.equal(allIds.size,53);assert.equal(c.bossPools.endless.exclusive.length,9);for(const id of c.bossPools.endless.exclusive){assert(!allIds.has(id));allIds.add(id);assert(c.bosses.some(b=>b.id===id&&b.route==='endless'));}
+  assert.equal(allIds.size,62);assert(!allIds.has('uncounted'));assert.equal(new Set(c.bosses.map(b=>b.signature.id)).size,63);
   for(const b of c.bosses){assert(b.signature.behavior.length>30&&b.signature.counterplay.length>25);assert(b.damageWindowFraction>0&&b.damageWindowFraction<=1);}
   const result=spawnSync(process.execPath,['tools/verify-gauntlets.mjs'],{cwd:root,encoding:'utf8'});assert.equal(result.status,0,result.stdout+'\n'+result.stderr);
 });

@@ -1,3 +1,4 @@
+import { EarlyWatchDirector, type EarlyWatchCue } from './early-watch-director.ts';
 import {
   EndlessDirector,
   endlessSolids,
@@ -14,6 +15,7 @@ import { DT, HZ, type BossId, type Vec } from './protocol.ts';
 import { clamp, distance, moveBody, segmentCircle, segmentRect, type Rect } from './geometry.ts';
 
 export type BossCue =
+  | EarlyWatchCue
   | CivicCue
   | ServiceCue
   | DistrictCue
@@ -65,6 +67,7 @@ export type BossCue =
 type Lane = Extract<BossCue, { kind: 'charge' | 'scent' }>;
 type Stamp = Extract<BossCue, { kind: 'stamp' }>;
 export type SignatureContext = {
+  paused?: boolean;
   hurtBoss?(amount: number, sourceId?: string): void;
   emitControlled?(
     position: Vec,
@@ -117,6 +120,7 @@ export type SignatureAttack = {
 const ticks = (seconds: number) => Math.ceil(seconds * HZ);
 
 export class BossDirector {
+  readonly earlyWatch = new EarlyWatchDirector();
   readonly civic = new CivicDirector();
   readonly services = new ServiceDirector();
   readonly district = new DistrictDirector();
@@ -128,6 +132,7 @@ export class BossDirector {
   weakPoints() {
     return [
       ...(this.weakPoint() ? [this.weakPoint()!] : []),
+      ...this.earlyWatch.weakPoints(),
       ...this.civic.weakPoints(),
       ...this.services.weakPoints(),
       ...this.district.weakPoints(),
@@ -169,6 +174,7 @@ export class BossDirector {
   private restoreAt = 0;
 
   reset(kind: BossId, brutal = false, encounter = false) {
+    this.earlyWatch.reset(kind, encounter);
     this.services.reset(kind, encounter);
     this.district.reset(kind, encounter);
     this.raids.reset(kind, encounter);
@@ -266,6 +272,7 @@ export class BossDirector {
       .some((p) => p.role === 'core' && this.district.weakContact(from, to, p, radius) !== null);
   }
   hitWeakPoint(amount: number, tick: number, id?: number) {
+    if (id !== undefined && this.earlyWatch.handles(this.kind)) return this.earlyWatch.hit(id, amount);
     if (id !== undefined && this.endless.handles(this.kind)) return this.endless.hit(id, amount);
     if (id !== undefined && this.raids.handles(this.kind)) return this.raids.hit(id, amount, tick);
     if (id !== undefined && this.district.handles(this.kind))
@@ -427,6 +434,7 @@ export class BossDirector {
   }
   cues(): BossCue[] {
     return [
+      ...this.earlyWatch.cues(),
       ...this.civic.cues(),
       ...this.services.cues(),
       ...this.district.cues(),
@@ -445,6 +453,7 @@ export class BossDirector {
     this.contacts.set(id, context.tick + ticks(0.5));
   }
   step(context: SignatureContext) {
+    this.earlyWatch.step(context);
     this.origin = { ...context.boss };
     if (this.kind === 'ratcatcher' && !this.sackId) this.sackId = context.id();
     if (this.restoreAt && context.tick >= this.restoreAt) {

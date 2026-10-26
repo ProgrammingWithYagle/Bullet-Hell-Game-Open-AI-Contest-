@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { english } from './source/en.mjs';
 import additional from './source/additional.mjs';
+import { earlyWatchMessages } from './source/early-watch.mjs';
 import { expansionMessages } from './source/boss-expansion.mjs';
 import { interfaceMessages } from './source/interface-expansion.mjs';
 import { contractMessages } from './source/contract-ui.mjs';
@@ -26,6 +27,7 @@ for (const id of ids) {
   }
   Object.assign(messages, additional[id]);
   Object.assign(messages, expansionMessages(id));
+  Object.assign(messages, earlyWatchMessages(id));
   Object.assign(messages, interfaceMessages(id));
   Object.assign(messages, contractMessages(id));
   Object.assign(messages, suppliesMessages(id));

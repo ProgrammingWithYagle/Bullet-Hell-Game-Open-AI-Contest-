@@ -342,7 +342,8 @@ function update(view: View) {
       (view.boss.variant === 'brutal' ? ' · ' + t('ui.variantBrutal') : '') +
       ' · ' +
       t('ui.phase', { number: view.boss.phase + 1 }) +
-      (view.boss.id === 'constable' ? ' · ' + constablePhaseName(view.boss.phase, locale) : '');
+      (view.boss.id === 'constable' ? ' · ' + constablePhaseName(view.boss.phase, locale) :
+        ['ashen-usher','brass-toad','ragpicker-kite'].includes(view.boss.id) ? ' · ' + t(`boss.${view.boss.id}.phase.${Math.min(2,view.boss.phase)}`) : '');
   const hp = $<HTMLProgressElement>('health');
   hp.max = p.maxHealth;
   hp.value = p.health;

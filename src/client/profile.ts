@@ -146,7 +146,7 @@ function validReceipt(value: unknown): value is RunReceipt {
       r.teamClears,
     ) &&
     Array.isArray(r.bossIds) &&
-    r.bossIds.length <= 60 &&
+    r.bossIds.length <= catalog.bosses.length &&
     new Set(r.bossIds).size === r.bossIds.length &&
     r.bossIds.every((id) => catalog.bosses.some((b) => b.id === id)) &&
     typeof r.fullCampaign === 'boolean' &&

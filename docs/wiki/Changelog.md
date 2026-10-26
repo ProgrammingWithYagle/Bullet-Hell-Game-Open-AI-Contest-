@@ -1,6 +1,24 @@
 # Changelog
 
-Development build **2026.10.25-brutal-signals**, protocol 14. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.25-early-watch**, protocol 15. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-25 — Three original Early Watch encounters
+
+### Encounter expansion
+
+- Ashen Usher 1-- uses breakable ticket stands, staggered aisle volleys and crossing rows. Brass Toad 1- makes warned physical hops and gapped ripple shots; its drain plug cancels the tongue jet. Ragpicker's Kite 1 orbits above opposing wind corridors; breaking a pin removes its wind.
+- Each has three distinct ordinary phases and additional Brutal mechanics, including a fourth phase. Wind uses shared bounded authority/prediction logic; dodge suppresses it. Every delayed attack is warned and phase/Accord cancellation clears pending cues.
+- The playable roster is 63: 62 ordinary and one secret. Eighty-eight additional ordinary identities remain toward the minimum 150 ordinary plus secrets.
+
+### Motion, music and help
+
+- Thirty-six selected complete poses use proportional whole-pose extraction and explicit four-frame defeat timing. A successor loading manifest preserves every version-3 reference byte. Native returns, requests, alpha ownership and portable bindings are retained.
+- Empty Balcony, Rain in Bronze and Thread Above the Street are individual original synthesized scores with editable events, preserved PCM masters and compressed delivery. New names, signature help and phase labels cover all fifteen launch locales.
+
+### Development and review
+
+- Protocol 15 separates this source from the frozen protocol-14 previews. Bounded offline Practice migration carries issued protocol-14 saves forward while preserving fixed-grade cards, progress and run identity; online revision checks stay strict.
+- Frozen preview ports 5174–5178, the public protocol-4 Site and issued protocol-13 Windows archive remain separate. Browser, device, native-language, listening and final human balance acceptance remain open. The game is unfinished.
 
 ## 2026-10-25 — Art-only Toad motion checkpoint and current continuation guides
 

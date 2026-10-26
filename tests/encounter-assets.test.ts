@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
+import earlyWatch from '../assets/production/motion/early-watch-library.json';
 import items from '../assets/production/items/library.json' with { type: 'json' };
 import historicMotion from '../assets/production/motion/encounter-library.json' with { type: 'json' };
 import civicMotion from '../assets/production/motion/civic-library.json' with { type: 'json' };
@@ -60,7 +61,7 @@ test('sixty-five drawn boss/part/minion action atlases retain 520 distinct frame
   );
   for (const id of implementedBossIds.filter((id) => id !== 'constable' && id !== 'lantern-warden'))
     assert(
-      motion.entries.some((e) => e.bossId === id),
+      [...motion.entries,...earlyWatch.entries].some((e) => e.bossId === id),
       id + ' lacks a drawn action atlas',
     );
   for (const entry of motion.entries) {

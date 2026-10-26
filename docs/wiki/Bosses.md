@@ -1,6 +1,6 @@
 # Bosses
 
-Sixty bosses are executable in the current source. Each has its own signature, phases, normal/Brutal variant, presentation and music. A signature table describes practical counterplay; supplemental attacks still require ordinary bullet-hell movement.
+Sixty-three bosses are executable in the current source. Each has its own signature, phases, normal/Brutal variant, presentation and music. A signature table describes practical counterplay; supplemental attacks still require ordinary bullet-hell movement.
 
 **Each boss has a fixed intrinsic threat grade.** Routes select suitable identities; they do not rerate a boss to match the encounter number. Subtiers use **--, -, no sign, +, ++** for bottom through top tier. Hollow Constable is **1+** and Bell Triplets are **3--**. Brutal uses a separate **B** marker, such as **1+ B**. Secrets display **>10**. Global difficulty and party scaling remain separate.
 
@@ -15,6 +15,9 @@ Brutal uses twice the health and damage, a 1.5× deadline, 1.75× bounty and fou
 
 | Boss | Fixed grade | Signature and response |
 | --- | --- | --- |
+| Ashen Usher | 1-- | Break a ticket stand to cancel its delayed aisle volleys; cross after the shots pass. |
+| Brass Toad | 1- | Leave warned landing circles, cross ripple gaps and break the drain plug to stop its tongue. |
+| Ragpicker's Kite | 1 | Use the quiet center or break a pin to remove a wind corridor; dodge briefly suppresses wind. |
 | Hollow Constable | 1+ | Watch the fan tells and leave marked arrest zones; gaps and open lanes remain. |
 | Lantern Warden | 2-- | Follow the rotating safe gap behind the lantern sweep; leave warned zones. |
 | Carrion Courier | 1-- | Leave the locked charge line and its damaging trail; punish the recovery. |
@@ -146,7 +149,7 @@ Courier gains four breathing, four hit-recoil and four Accord-stagger poses. Ori
 
 ## Fixed classifications and roster coverage
 
-Every implemented boss now keeps its authored grade across encounters. Five subtiers use --, -, no sign, + and ++; Brutal uses B, and >10 is reserved for secrets. Contracts derive actual health/pressure/reward from that grade. There are still 60 identities: 59 ordinary plus one secret. Filling all fifty ordinary subtiers with three distinct bosses needs 91 more ordinary identities; this chart shows current coverage, not completed future content. Final phase/mobility and human balance work continues.
+Every implemented boss now keeps its authored grade across encounters. Five subtiers use --, -, no sign, + and ++; Brutal uses B, and >10 is reserved for secrets. Contracts derive actual health/pressure/reward from that grade. There are now 63 identities: 62 ordinary plus one secret, with 88 more ordinary identities needed. This earlier chart records the sixty-identity snapshot; the three Early Watch additions are listed separately below. The structured progress page contains current coverage. Final phase/mobility and human balance work continues.
 
 ![Fixed boss classification and coverage reference](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/fixed-threats.jpg)
 
@@ -224,3 +227,11 @@ Patrol fires two locked volleys while shuffling between casts. Cordon crosses fa
 [Current development progress](Development-Progress) tracks new bosses, existing-encounter quality passes, class ability revamps, skill-tree work and map revisions, with implementation separate from human review.
 
 The latest Constable Brutal pass adds an opening Patrol pincer, a Cordon ring follow-up, triple Lockdown rings and a Curfew pincer. Short persistent phase instructions explain the response. Brutal bosses now have a muted red sprite treatment and broken red ground mark. Fixed grade remains unchanged. [Current behavior and evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/PHASE_AND_BRUTAL_FEEDBACK.md).
+
+## Early Watch runtime motion
+
+Ashen Usher 1--, Brass Toad 1- and Ragpicker's Kite 1 add three distinct shared-authority encounters, explicit Brutal follow-ups, 36 complete selected poses and individual original scores. All fifteen launch locales have names, signature help and phase labels. Native/request preservation, whole-pose RGBA reconstruction and real network/weapon counterplay tests remain separate from rendered/human acceptance.
+
+![Thirty-six Early Watch selected poses, a static local composite rather than an engine capture](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/early-watch-motion.jpg)
+
+[Implementation and verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/EARLY_WATCH_RUNTIME.md).

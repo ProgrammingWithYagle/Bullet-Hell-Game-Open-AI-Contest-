@@ -1,3 +1,4 @@
+import { earlyWatchBossIds, earlyWatchMovement } from './early-watch-director.ts';
 import { constablePattern, moveConstable } from './constable-signature.ts';
 import { freshProgress, validProgress, type RunProgress } from './run-progress.ts';
 import {
@@ -71,6 +72,7 @@ const ticks = (s: number) => Math.ceil(s * HZ);
 const rule = data.rules;
 export const arena = data.arenas.find((x) => x.id === 'gatehouse')!;
 export const implementedBossIds: readonly BossId[] = [
+  ...earlyWatchBossIds,
   'constable',
   'lantern-warden',
   'courier',
@@ -1138,6 +1140,7 @@ export class Game {
       now < p.dashUntil,
     );
     const raidForce = raidMovement(this.director.raids.cues(), p, now);
+    const earlyForce = earlyWatchMovement(this.director.earlyWatch.cues(), p, now, now < p.dashUntil);
     const dash = now < p.dashUntil,
       speed = dash
         ? (this.classKits.chargeSpeed(p.id, now) ?? rule.dodgeSpeed)
@@ -1149,8 +1152,8 @@ export class Game {
     const next = moveBody(
       p,
       {
-        x: ((dash ? p.dashX : mx) * speed + environment.x + terrain.x + raidForce.x) * DT,
-        y: ((dash ? p.dashY : my) * speed + environment.y + terrain.y + raidForce.y) * DT,
+        x: ((dash ? p.dashX : mx) * speed + environment.x + terrain.x + raidForce.x + earlyForce.x) * DT,
+        y: ((dash ? p.dashY : my) * speed + environment.y + terrain.y + raidForce.y + earlyForce.y) * DT,
       },
       rule.playerRadius,
       this.obstacles,
@@ -1689,6 +1692,7 @@ export class Game {
   }
   private signatureContext(): SignatureContext {
     return {
+      paused: !!this.accord,
       tick: this.combatTick,
       bossId: this.boss.id,
       bossMaximumHealth: this.boss.maxHealth,
@@ -1801,7 +1805,7 @@ export class Game {
       if (this.boss.id !== 'lantern-warden') {
         this.warnings.length = 0;
         for (const shot of this.shots.values()) if (shot.owner === 'hostile') this.removeShot(shot);
-        if (this.boss.id === 'constable') {
+        if (this.boss.id === 'constable' || this.director.earlyWatch.handles(this.boss.id)) {
           this.boss.castAt = this.boss.castReleaseAt = this.boss.castEndsAt = 0;
           for (let i = this.fields.length - 1; i >= 0; i--)
             if (this.fields[i].owner === 'hostile') this.fields.splice(i, 1);
@@ -1861,6 +1865,8 @@ export class Game {
       this.attackAt[0] = Math.max(this.attackAt[0] ?? now, this.director.raids.nextSignatureAt);
     if (this.director.endless.handles(this.boss.id))
       this.attackAt[0] = Math.max(this.attackAt[0] ?? now, this.director.endless.nextSignatureAt);
+    if (this.director.earlyWatch.handles(this.boss.id))
+      this.attackAt[0] = Math.max(this.attackAt[0] ?? now, this.director.earlyWatch.nextSignatureAt);
     const attacks = this.bossPhases()[this.boss.phase].attacks;
     for (let index = 0; index < attacks.length; index++)
       if (
@@ -1903,7 +1909,10 @@ export class Game {
             (1 +
               Math.min(rule.endless.maximumSpeedGrowth, cycle * rule.endless.speedGrowthPerCycle)),
           damage = attack.damage * this.bossDamageScale();
-        if (this.boss.id === 'constable') {
+        if (this.director.earlyWatch.cast(this.signatureContext(), target, { ...attack, speed, count })) {
+          this.attackAt[index] = this.director.earlyWatch.nextSignatureAt;
+          this.boss.castEndsAt = this.director.earlyWatch.lastReleaseAt + ticks(.35);
+        } else if (this.boss.id === 'constable') {
           const pattern = constablePattern({
             boss: this.boss,
             now,

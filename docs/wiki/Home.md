@@ -7,13 +7,13 @@
 
 Cooperative gothic zombie bullet hell. Choose a survivor, clear a boss contract, vote on mutations, buy a build and survive the next encounter.
 
-**Current development source: version 0.3.0, build `2026.10.25-brutal-signals`, protocol 14, updated 2026-10-25.** The game is still in development. [Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains the playable feature branch; protected `main` is a separate release boundary.
+**Current development source: version 0.3.0, build `2026.10.25-early-watch`, protocol 15, updated 2026-10-25.** The game is still in development. [Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains the playable feature branch; protected `main` is a separate release boundary.
 
 | Playable now in that source | Contents |
 | --- | --- |
 | Survivors | All seven classes; two abilities and one ultimate per class |
 | Builds | 378 skills, 63 specialization paths, 28 weapons, eight supplies, 24 mutations |
-| Bosses and music | 60 distinct executable encounters, each with an original theme |
+| Bosses and music | 63 distinct executable encounters, each with an original theme |
 | Routes | Five-fight Quarantine Run, ten-fight Midnight Circuit, sixteen-fight Black Bell Pilgrimage, three-fight Grand Raid, uncapped Endless Vigil |
 | Maps | Six actual layouts with different cover, spawns and playable dimensions |
 | Sessions | Offline solo, public/private online rooms, boundary saves, process-live reconnect |
@@ -22,7 +22,7 @@ Cooperative gothic zombie bullet hell. Choose a survivor, clear a boss contract,
 
 The [public browser playtest](https://grave-accord-playtest.ivoryflame12.chatgpt.site/) remains the **older protocol-4 build with two classes and one boss**. Source and Wiki publication does not redeploy it. Run from source for the latest artwork. The [Windows development download](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/releases/tag/dev-windows-20261024-1) is an earlier immutable source build; see [Getting Started](Getting-Started).
 
-All sixty identities execute, including nine scheduled Endless exclusives and an optional Uncounted campaign extension. Complete action/facing animation and final encounter tuning remain unfinished. Verified leaderboards and durable online recovery remain unfinished. The unsigned Windows development package is published with extraction/copy and native fixture evidence; final manual/device release acceptance remains open. Automated evidence does not establish final rendered, human, device, language or balance acceptance.
+All sixty-three identities execute, including nine scheduled Endless exclusives and an optional Uncounted campaign extension. Complete action/facing animation and final encounter tuning remain unfinished. Verified leaderboards and durable online recovery remain unfinished. The unsigned Windows development package is published with extraction/copy and native fixture evidence; final manual/device release acceptance remains open. Automated evidence does not establish final rendered, human, device, language or balance acceptance.
 
 ## Player reference
 
@@ -47,4 +47,4 @@ All sixty identities execute, including nine scheduled Endless exclusives and an
 
 [Current development progress](Development-Progress) tracks new bosses, existing-encounter quality passes, class ability revamps, skill-tree work and map revisions, with implementation separate from human review.
 
-The latest [continuation checkpoint](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/CHECKPOINT_2026_10_25.md) preserves the current source and art. Brass Toad has twelve art-only motion candidates; the three new concepts are still outside the playable roster. [View the motion contact](Art-Gallery#brass-toad-motion-checkpoint--art-only).
+The latest [continuation checkpoint](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/CHECKPOINT_2026_10_25.md) preserves the current source and art. Early Watch adds three original encounters with 36 selected motion poses, individual scores and fifteen-locale help. The roster is 63; 88 additional ordinary identities remain. [View the motion contact](Art-Gallery#early-watch-runtime-motion).

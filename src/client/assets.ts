@@ -80,11 +80,11 @@ const items = import.meta.glob('../../assets/production/items/icons/*/*.png', {
   eager: true,
 }) as Record<string, string>;
 const bossSettledIdentities = import.meta.glob(
-  '../../assets/delivery/boss-loading-v3/*-defeat-reference-v2.png',
+  ['../../assets/delivery/boss-loading-v3/*-defeat-reference-v2.png','../../assets/delivery/boss-loading-v4/*-defeat-reference-v2.png'],
   { query: '?url', import: 'default', eager: true },
 ) as Record<string, string>;
 const bossIdentities = import.meta.glob(
-  '../../assets/delivery/boss-loading-v3/*-reference-v3.png',
+  ['../../assets/delivery/boss-loading-v3/*-reference-v3.png','../../assets/delivery/boss-loading-v4/*-reference-v3.png'],
   { query: '?url', import: 'default', eager: true },
 ) as Record<string, string>;
 const encounterMotion = import.meta.glob(

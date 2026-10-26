@@ -1,5 +1,8 @@
 import type { BossId } from '../shared/protocol.ts';
 export const bossThemes = {
+  'ashen-usher': 'empty-balcony',
+  'brass-toad': 'rain-in-bronze',
+  'ragpicker-kite': 'thread-above-the-street',
   constable: 'hollow-muster',
   'lantern-warden': 'last-light',
   courier: 'undelivered',

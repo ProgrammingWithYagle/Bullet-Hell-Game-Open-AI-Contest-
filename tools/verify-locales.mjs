@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import assert from 'node:assert/strict';
 import { english } from '../locales/source/en.mjs';
 import additional from '../locales/source/additional.mjs';
+import { earlyWatchMessages } from '../locales/source/early-watch.mjs';
 import { bossExpansionIds, expansionMessages } from '../locales/source/boss-expansion.mjs';
 import { interfaceMessages } from '../locales/source/interface-expansion.mjs';
 import { contractMessages } from '../locales/source/contract-ui.mjs';
@@ -82,6 +83,7 @@ export function validateOne(document, canonical, content, locale) {
       ...Object.entries(english).flatMap(([group,rows])=>Object.keys(rows).map(k=>`${group}.${k}`)),
       ...Object.keys(additional.en),
       ...Object.keys(expansionMessages('en')),
+      ...Object.keys(earlyWatchMessages('en')),
       ...Object.keys(interfaceMessages('en')),
       ...Object.keys(contractMessages('en')),
       ...Object.keys(suppliesMessages('en')),
@@ -106,7 +108,7 @@ export function validateOne(document, canonical, content, locale) {
     if (!Object.hasOwn(messages,key)) fail(`missing feature coverage: ${key}`);
   }
   const expectedCategories = new Intl.PluralRules(locale).resolvedOptions().pluralCategories.slice().sort();
-  const expandedSource = expansionMessages(locale);
+  const expandedSource = {...expansionMessages(locale), ...earlyWatchMessages(locale)};
   for (const [key,text] of Object.entries(recoveryMessages(locale))) {
     if (messages[key] !== text) fail(`recovery UI source mismatch at ${key}`);
   }
@@ -150,7 +152,7 @@ export async function verifyLocales(root=defaultRoot) {
   const documents={};
   const errors=[];
   const originalBossIds = ['constable','courier','pallbearer','matron','alchemist','bellringer','stitchwright','choir','engine','regent','uncounted'];
-  if (!same(content.bosses.map(x=>x.id).sort(),[...originalBossIds,...bossExpansionIds].sort())) errors.push('boss localization roster differs from content roster');
+  if (!same(content.bosses.map(x=>x.id).sort(),[...originalBossIds,...bossExpansionIds,'ashen-usher','brass-toad','ragpicker-kite'].sort())) errors.push('boss localization roster differs from content roster');
   if (new Set(bossExpansionIds).size !== bossExpansionIds.length) errors.push('duplicate expansion boss ID');
   if (!same(content.locales.map(x=>x.id).sort(),[...launchLocales].sort())) errors.push('content launch locale list mismatch');
   for (const locale of launchLocales) {

@@ -1,3 +1,4 @@
+import { addEarlyWatch } from '../content/source/early-watch.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
@@ -196,6 +197,7 @@ const originalBosses = bossSpecs.map(([id,name,lore,minThreat,timer,healthFactor
 const bosses=expandBosses(originalBosses,modes);
 addBossVariants(bosses);
 reviseConstable(bosses);
+addEarlyWatch(bosses,bossPools);
 
 const mutationSpecs = [
   ['glass-pact','Glass Pact','Half maximum health; triple weapon damage.',{maxHealth:0.5,damage:3},['salt-circle']],

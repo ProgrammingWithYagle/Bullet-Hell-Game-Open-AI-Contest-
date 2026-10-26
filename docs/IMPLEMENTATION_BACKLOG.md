@@ -1,12 +1,12 @@
 # Implementation backlog and contest acceptance map
 
-[Current checkpoint](CHECKPOINT_2026_10_25.md) and [structured progress](DEVELOPMENT_PROGRESS.md) track 91 new ordinary identities, 59 existing-boss assessments/redesigns, seven class-upgrade revamps and the optional branching tree. Twelve new Toad motion candidates are art-only and excluded from the runtime pose total.
+[Current checkpoint](CHECKPOINT_2026_10_25.md) and [structured progress](DEVELOPMENT_PROGRESS.md) track 88 new ordinary identities, 59 existing-boss assessments/redesigns, seven class-upgrade revamps and the optional branching tree. Early Watch is integrated with 36 selected poses, three original encounters/themes and fifteen-locale help.
 
-Current source: build 2026.10.25-brutal-signals, protocol 14. All sixty authored boss identities execute across five modes, seven classes, 378 skills, twenty-eight weapons and six distinct map footprints. Every boss has an individual original theme; production motion totals 1,458 production-path animation frames, plus eight retained Constable proof-atlas frames (1,466 selected animation frames in total) across survivors, bosses, parts and minions. The in-game journal and Wiki have concrete synchronized updates. See [Endless and Uncounted runtime](ENDLESS_AND_UNCOUNTED_RUNTIME.md), [Raid](GRAND_RAID_RUNTIME.md) and [Pilgrimage](PILGRIMAGE_RUNTIME.md).
+Current source: build 2026.10.25-early-watch, protocol 15. All sixty-three authored boss identities execute across five modes, seven classes, 378 skills, twenty-eight weapons and six distinct map footprints. Every boss has an individual original theme; production motion totals 1,494 production-path animation frames, plus eight retained Constable proof-atlas frames (1,502 selected animation frames in total) across survivors, bosses, parts and minions. The in-game journal and Wiki have concrete synchronized updates. See [Endless and Uncounted runtime](ENDLESS_AND_UNCOUNTED_RUNTIME.md), [Raid](GRAND_RAID_RUNTIME.md) and [Pilgrimage](PILGRIMAGE_RUNTIME.md).
 
 ProfileV1 now stores validated import/export, mastery, rescues, lore discoveries, cosmetic insignia, preferences, remapping and full-Hard difficulty unlocks. See [ProfileV1](PROFILE_V1.md).
 
-The complete current pipeline passes 382 tests, authored-content/fifteen-locale checks, TypeScript and production build. Exact evidence is in reviews/runtime-verification.json. Native/audio audits and prior rendered samples are separate. Browser control was disabled in Work settings for the sixty-identity stage; no new rendered acceptance is claimed.
+The complete current pipeline passes 394 tests, authored-content/fifteen-locale checks, TypeScript and production build. Exact source/artifact hashes are preserved in the Early Watch verification receipt. Exact evidence is in reviews/runtime-verification.json. Native/audio audits and prior rendered samples are separate. Browser control was disabled in Work settings for the sixty-identity stage; no new rendered acceptance is claimed.
 
 Major remaining work includes boss-history translation; full directional/action animation; final encounter deadline/uptime and balance measurements; verified deployed rankings/recovery; active 8/16/50-player and endurance acceptance; final Windows artifact/release acceptance and the coordinated browser release. Physical-device, native-speaker and human review require actual evidence. The public Site remains its earlier protocol-4 build; protected main remains a separate release boundary.
 
@@ -63,7 +63,7 @@ All implementation stages remain authorized. These rows are acceptance requireme
 | S2-07 | Stage 2 | Capacity | P0 | Separate room/instance limits; measured free-host capacity, queue and cold-start messaging | Execution, value |
 | S2-08 | Stage 2 | Art production | P1 | Full survivor and boss atlas contracts, six arena kits, icons and effects; retain accepted style and review in motion | Creativity, polish |
 | S2-09 | Stage 2 | Classes | P0 | All seven kits and ultimates, compatible shops, full skill effects and capstone enforcement | Creativity, value |
-| S2-10 | Stage 2 | Bosses | P0 | 60 distinct identities: 50 in disjoint timed-route pools, 9 Endless exclusives and The Uncounted; unique signatures, counterplay, three phases, objective scaling and measured deadlines | Creativity, execution |
+| S2-10 | Stage 2 | Bosses | P0 | 63 distinct identities: 53 in disjoint timed-route pools, 9 Endless exclusives and The Uncounted; unique signatures, counterplay, three phases, objective scaling and measured deadlines | Creativity, execution |
 | S2-11 | Stage 2 | Routes | P0 | Five-, ten-, sixteen-fight routes, three-fight raid and uncapped endless with normalized budgets | Value, execution |
 | S2-12 | Stage 2 | Difficulty | P0 | Six independently tuned settings and Hard completion unlocks | Value, polish |
 | S2-13 | Stage 2 | Audio production | P1 | Authored soundtrack/ambient plan produced, adaptive cue scheduling and bounded 50-player mix | Creativity, polish |
@@ -91,6 +91,6 @@ The four rubric categories are equally important. This matrix is a production gu
 
 Current runtime classification/offer rules are specified in [Fixed boss threats](FIXED_BOSS_THREATS.md). They supersede encounter-scaled boss ratings and strict primary-route fences for the three ordinary campaigns, while retaining finale roles. Fixed grade is separate from global difficulty and Brutal.
 
-Constable quality pass: collision-resolved patrol, crossing Cordon fans, pursuit/Lockdown rings with a common escape wedge, phase cleanup, eleven actual-authority/motion/art/save regressions and four shuffling poses are implemented. The other boss phase/mobility passes, ability-changing upgrades, branching-tree setting and 91 new ordinary identities remain active. See [Constable patrol](CONSTABLE_PATROL.md).
+Constable quality pass: collision-resolved patrol, crossing Cordon fans, pursuit/Lockdown rings with a common escape wedge, phase cleanup, eleven actual-authority/motion/art/save regressions and four shuffling poses are implemented. The other boss phase/mobility passes, ability-changing upgrades, branching-tree setting and 88 new ordinary identities remain active. See [Constable patrol](CONSTABLE_PATROL.md).
 
 Direct solo boss-form practice is implemented on the final setup review: Standard form/Brutal for the opening encounter, fixed-grade B preview, separate global difficulty, validated boundary startup and five actual-authority/worker/network/locale regressions. See [Boss practice](BOSS_PRACTICE.md).

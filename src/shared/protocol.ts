@@ -1,5 +1,5 @@
 import revision from '../../content/revision.json' with { type: 'json' };
-export const PROTOCOL = 14;
+export const PROTOCOL = 15;
 export const CONTENT_REVISION = revision.sha256;
 export const HZ = 30,
   DT = 1 / HZ;
@@ -16,6 +16,9 @@ export type ClassId = (typeof implementedClassIds)[number];
 export const implementedModeIds = ['short', 'standard', 'long', 'raid', 'endless'] as const;
 export type ModeId = (typeof implementedModeIds)[number];
 export type BossId =
+  | 'ashen-usher'
+  | 'brass-toad'
+  | 'ragpicker-kite'
   | 'constable'
   | 'lantern-warden'
   | 'courier'

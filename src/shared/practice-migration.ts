@@ -10,8 +10,8 @@ export function migratePracticeBoundary(value: unknown): unknown {
   // boundaries forward, then run the existing version-specific and full restore validation.
   // Current-version cards never pass through legacy reclassification.
   const compatibleRevision =
-    issued.contentRevision === 'b8d9fb6918c854f3eed38b327ed0cb3026e071e6fe24932e50beed36943db241' &&
-    [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, PROTOCOL].includes(issued.protocolVersion as number) &&
+    ['b8d9fb6918c854f3eed38b327ed0cb3026e071e6fe24932e50beed36943db241', '43b7b2848b50bbe56072bfa134e5775355a7faca28092624744bdae6a0d318bb'].includes(issued.contentRevision as string) &&
+    [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, PROTOCOL].includes(issued.protocolVersion as number) &&
     issued.schemaVersion === 1 &&
     issued.practiceOnly === true &&
     issued.serverOnly !== true &&
@@ -19,7 +19,7 @@ export function migratePracticeBoundary(value: unknown): unknown {
     issued.transactions === undefined &&
     JSON.stringify(issued).length <= 32768;
   const legacy = compatibleRevision ? { ...issued, contentRevision: CONTENT_REVISION } : issued;
-  if (![4, 5, 6, 7, 8, 9, 10, 11, 12, 13].includes(legacy.protocolVersion as number)) return legacy;
+  if (![4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].includes(legacy.protocolVersion as number)) return legacy;
   const version = legacy.protocolVersion as number;
   const previousServiceBosses = [
     'matron',
@@ -70,7 +70,7 @@ export function migratePracticeBoundary(value: unknown): unknown {
   ];
   const bosses =
     version >= 12
-      ? catalog.bosses.map((b) => b.id)
+      ? catalog.bosses.filter(b => !['ashen-usher','brass-toad','ragpicker-kite'].includes(b.id)).map((b) => b.id)
       : version >= 7
         ? [
             'constable',
@@ -142,6 +142,10 @@ export function migratePracticeBoundary(value: unknown): unknown {
     const card = candidate as Record<string, unknown>;
     if (card.variant !== undefined && !['normal', 'brutal'].includes(String(card.variant)))
       throw Error('invalidCards');
+    if (version === 14) {
+      if (!bosses.includes(card.bossId as string)) throw Error('invalidCards');
+      return card; // Issued fixed-grade cards are validated unchanged by the full restore.
+    }
     if (
       !Number.isSafeInteger(card.risk) ||
       Number(card.risk) < 0 ||
@@ -179,12 +183,12 @@ export function migratePracticeBoundary(value: unknown): unknown {
     settings: {
       ...oldSettings,
       runId:
-        version === 13 ? oldSettings.runId : 'legacy-' + oldSettings.seed + '-' + oldSettings.mode,
+        version >= 13 ? oldSettings.runId : 'legacy-' + oldSettings.seed + '-' + oldSettings.mode,
     },
     player: {
       ...(legacy.player as object),
       progress:
-        version === 13
+        version >= 13
           ? (legacy.player as Record<string, unknown>).progress
           : {
               clears: legacy.encounter,

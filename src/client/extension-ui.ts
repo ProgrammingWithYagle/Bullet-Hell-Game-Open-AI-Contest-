@@ -1,3 +1,5 @@
+import earlyWatchHelp from './early-watch-help.json';
+import { earlyWatchBossIds } from '../shared/early-watch-director.ts';
 import messages from './extension-ui.json';
 import type { View } from '../shared/view.ts';
 export type ExtensionMessage = keyof typeof messages.en;
@@ -11,6 +13,10 @@ export function extensionText(
   return text;
 }
 export function signatureHelp(view: View, locale: string) {
+  if (earlyWatchBossIds.some(id=>id===view.boss.id)) {
+    const words = (earlyWatchHelp[locale as keyof typeof earlyWatchHelp] ?? earlyWatchHelp.en) as Record<string,string>;
+    return words[`boss.${view.boss.id}.description`] + (view.boss.variant === 'brutal' ? ' ' + words[`boss.${view.boss.id}.brutalHelp`] : '');
+  }
   const now = view.combatTick,
     number = (n: number) => new Intl.NumberFormat(locale).format(n);
   const memory = view.bossCues.find(

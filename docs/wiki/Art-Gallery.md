@@ -144,7 +144,7 @@ Soldier and Medic now use three-quarter resting poses. All seven selection portr
 
 ## Fixed classifications and roster coverage
 
-Every implemented boss now keeps its authored grade across encounters. Five subtiers use --, -, no sign, + and ++; Brutal uses B, and >10 is reserved for secrets. Contracts derive actual health/pressure/reward from that grade. There are still 60 identities: 59 ordinary plus one secret. Filling all fifty ordinary subtiers with three distinct bosses needs 91 more ordinary identities; this chart shows current coverage, not completed future content. Final phase/mobility and human balance work continues.
+Every implemented boss now keeps its authored grade across encounters. Five subtiers use --, -, no sign, + and ++; Brutal uses B, and >10 is reserved for secrets. Contracts derive actual health/pressure/reward from that grade. There are now 63 identities: 62 ordinary plus one secret, with 88 more ordinary identities needed. This earlier chart records the sixty-identity snapshot; the three Early Watch additions are listed separately below. The structured progress page contains current coverage. Final phase/mobility and human balance work continues.
 
 ![Fixed boss classification and coverage reference](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/fixed-threats.jpg)
 
@@ -154,16 +154,24 @@ Four complete shuffling poses extend the unchanged 27-pose library. One upright-
 
 ![Constable shuffle at a common world scale](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/constable-patrol.jpg)
 
-## Early Watch identity concepts — art only
+## Early Watch original concept issue
 
-Ashen Usher, Brass Toad and Ragpicker's Kite are original concept references in production. They are not included in the 60 playable identities and do not reduce the 91-boss deficit. Exact generated natives and prompts are preserved; motion, distinct encounter implementation and individual themes remain to be completed.
+These exact original concept references predate runtime integration. Their native/request bytes remain unchanged. All three identities now have implemented encounters, selected motion and individual themes; the source roster is 63, with 88 ordinary identities still needed.
 
-![Three original Early Watch boss concepts, not yet playable](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/early-watch-concepts.jpg)
+![Original Early Watch concept references before runtime admission](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/early-watch-concepts.jpg)
 
-## Brass Toad motion checkpoint — art only
+## Earlier Brass Toad art-only checkpoint
 
-Twelve complete idle, hop and defeat candidates are technically normalized, with exact native/request preservation, connected-figure ownership and alpha-bearing RGBA/atlas reconstruction. The first tight hop sheet and partial packing attempts are retained. This static contact is not an engine capture; no Toad encounter, individual music or rendered acceptance is added. Usher/Kite motion requests remain unexecuted. The playable count is still 60, with 91 new ordinary bosses needed.
+Twelve complete idle, hop and defeat candidates are technically normalized, with exact native/request preservation, connected-figure ownership and alpha-bearing RGBA/atlas reconstruction. The first tight hop sheet and partial packing attempts are retained. This static contact records the earlier art-only issue. Its original requests and partial attempts remain unchanged. Runtime integration now uses complete successor Usher/Kite sheets and these selected Toad poses; human/rendered acceptance remains open.
 
-![Brass Toad art-only motion candidates, not a playable encounter](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/brass-toad-motion-checkpoint.jpg)
+![Historical Brass Toad art-only motion contact](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/brass-toad-motion-checkpoint.jpg)
 
 [Current continuation checkpoint](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/CHECKPOINT_2026_10_25.md) · [Exact motion provenance](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/early-watch-motion-checkpoint-2026-10-25.json).
+
+## Early Watch runtime motion
+
+Ashen Usher 1--, Brass Toad 1- and Ragpicker's Kite 1 add three distinct shared-authority encounters, explicit Brutal follow-ups, 36 complete selected poses and individual original scores. All fifteen launch locales have names, signature help and phase labels. Native/request preservation, whole-pose RGBA reconstruction and real network/weapon counterplay tests remain separate from rendered/human acceptance.
+
+![Thirty-six Early Watch selected poses, a static local composite rather than an engine capture](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/early-watch-motion.jpg)
+
+[Implementation and verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/EARLY_WATCH_RUNTIME.md).

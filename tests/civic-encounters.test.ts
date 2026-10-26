@@ -282,5 +282,5 @@ test('all six arena choices launch real collision layouts and survive a local bo
   assert.equal(Game.restoreOffline(save).settings.openingBossId, 'courier');
   const online = g.authoritativeCheckpoint()!;
   assert.throws(() => Game.restoreAuthoritative({ ...online, protocolVersion: 6 }));
-  assert.equal(implementedBossIds.length, 60);
+  assert.equal(implementedBossIds.length, 63);
 });

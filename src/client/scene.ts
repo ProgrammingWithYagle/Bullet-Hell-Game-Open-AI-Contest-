@@ -1,3 +1,4 @@
+import { earlyWatchPose, drawEarlyWatch } from './early-watch-presentation.ts';
 import { EndlessPresentation } from './endless-presentation.ts';
 import type { EndlessCue } from '../shared/endless-director.ts';
 import { RaidPresentation } from './raid-presentation.ts';
@@ -712,6 +713,7 @@ export class CombatScene extends Phaser.Scene {
       this.reduceMotion,
       this.hitboxes,
     );
+    drawEarlyWatch(h, f, view.bossCues, now);
     const actorIds = new Set(view.minions.map((a) => a.id));
     for (const actor of view.minions) {
       let sprite = this.actors.get(actor.id);
@@ -811,11 +813,13 @@ export class CombatScene extends Phaser.Scene {
         .setOrigin(clip.origin[0], clip.origin[1])
         .setDisplaySize(clip.displayCell, clip.displayCell);
     } else if (view.boss.id !== 'constable') {
+      const early = earlyWatchPose(view.boss, view.tick, now, view.bossCues, this.reduceMotion, animationTime.tick);
+      if (early) this.bossSprite.setY(view.boss.y - early.lift);
       const clip = encounterArt.find((entry) => entry.bossId === view.boss.id)!;
       this.bossSprite.anims.stop();
       const texturePose = bossTexturePresentation(
         view.boss.id,
-        courierCombatFrame(
+        early?.frame ?? courierCombatFrame(
           view.boss,
           view.tick,
           now,

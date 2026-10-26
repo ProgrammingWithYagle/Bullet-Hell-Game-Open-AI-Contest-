@@ -126,8 +126,8 @@ test('Brutal has an explicit persistent red treatment and switching to Normal or
     assert.equal(appearance.ringAlpha, 0);
   }
 });
-test('all sixty theme pulse clocks match the issued composition tempos without changing theme masters', () => {
-  assert.equal(Object.keys(tempos).length, 60);
+test('all sixty-three theme pulse clocks match the issued composition tempos without changing theme masters', () => {
+  assert.equal(Object.keys(tempos).length, 63);
   for (const score of scores.tracks)
     assert.deepEqual(tempos[score.bossId as keyof typeof tempos], {
       bpm: score.bpm,
@@ -229,8 +229,8 @@ test('music pulse scheduler stays bounded, follows volume/ducking and never burs
 test('one progress ledger keeps local, Wiki and in-game counts aligned with executable content and pending review', () => {
   execFileSync(process.execPath, ['tools/sync-development-progress.mjs', '--check']);
   assert.equal(progress.playableBosses, data.bosses.length);
-  assert.equal(progress.ordinaryBossesRemaining, 91);
-  assert.equal(progress.generatedConcepts, 3);
+  assert.equal(progress.ordinaryBossesRemaining, 88);
+  assert.equal(progress.generatedConcepts, 0);
   assert.equal(progress.ordinaryTarget, 150);
   assert.equal(progress.items.find((i) => i.id === 'boss-quality')!.remaining, 59);
   assert.equal(progress.items.find((i) => i.id === 'class-abilities')!.remaining, 7);
@@ -244,7 +244,7 @@ test('the three original new-boss concepts preserve exact requests and native re
   for (const concept of concepts.concepts) {
     assert.equal(sha(concept.native), concept.nativeSha256);
     assert.equal(sha(concept.request), concept.requestSha256);
-    assert(!data.bosses.some((b) => b.id === concept.bossId));
+    assert(data.bosses.some((b) => b.id === concept.bossId)); // The issued concept remains immutable; admission is recorded separately.
     assert.equal(concept.renderedAccepted, false);
   }
 });
