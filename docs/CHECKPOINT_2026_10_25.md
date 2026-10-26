@@ -1,90 +1,64 @@
-# Grave Accord continuation checkpoint — Early Watch
+# Grave Accord continuation checkpoint
 
-Updated October 25, 2026. This is unfinished feature-branch development. Read this page, [development progress](DEVELOPMENT_PROGRESS.md) and [implementation state](IMPLEMENTATION_STATE.md) before editing. The user's continuation goal remains active.
+Updated October 25, 2026. This is unfinished feature-branch development. Read this page, [development progress](DEVELOPMENT_PROGRESS.md) and [implementation state](IMPLEMENTATION_STATE.md) first. The user's full continuation goal remains active.
 
-## Existing workspace and source
+## Existing workspace
 
-- Use `C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)`.
-- Repository: ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-. Branch `feat/first-playable-loop`; PR #14 stays draft. Inspect actual HEAD/status/origin and exact-head checks. Preserve history and working files; do not clone, create worktrees or switch to main.
-- Build **2026.10.25-class-talents**, protocol **18**. Read the exact current content digest from `content/revision.json`; source verification for the latest class checkpoint is under `reviews/class-talents-2026-10-25/`; earlier assistance receipts remain separate.
-- Main remains protected and separate at `c3f60ca4125bea31d94c9d3f6ea0c9d3f0853df1`. No main merge, paid provisioning, replacement Site, mismatched backend deployment, contest submission or delegation is authorized.
+Use `C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)` and `feat/first-playable-loop` in `ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-`. Inspect actual HEAD/status/origin and draft PR #14 before editing. Preserve all working files/history. No new clone, worktree, delegation, branch switch to main, paid provisioning, replacement Site, mismatched backend deployment, main merge or contest submission is authorized.
 
-## Completed continuation
+Current build **2026.10.25-class-talents**, protocol **18**. Main remains protected and separate at `c3f60ca4125bea31d94c9d3f6ea0c9d3f0853df1`; PR #14 stays open/draft. Use the GitHub connector for supported operations; the scoped `tools/github-admin.mjs` fallback keeps credentials in process memory.
 
-The source has **63 playable bosses: 62 ordinary and one secret**, seven classes, 378 skills/63 paths, 28 weapons, six maps and five modes. All 63 bosses have individual original themes, plus City Wake. There are **1,502 selected runtime motion poses**, including 36 Early Watch poses.
+## Actual implemented state
 
-Ashen Usher 1--, Brass Toad 1- and Ragpicker's Kite 1 now have shared-authority encounters with two visible half-health phases retaining late Standard/Brutal mechanics, physical movement or changing arena pressure, locked warning/counterplay, original music and fifteen-locale help. Their original concept and art-only checkpoint records remain immutable historical issue records. Six successor version-2 requests were actually executed. [Exact behavior, preservation and tests](EARLY_WATCH_RUNTIME.md).
+- **63 playable boss identities: 62 ordinary plus one secret**, seven classes, 378 skills / 63 paths, 28 weapons, six maps and five modes. Sixty-three individual boss themes plus City Wake; 1,502 selected runtime motion poses.
+- Early Watch (Ashen Usher 1--, Brass Toad 1-, Ragpicker's Kite 1) is integrated: 36 selected poses, distinct shared-authority phases/movement/pressure, warned counterplay, extra Brutal mechanics, original music and fifteen-locale help. The older art-only concepts/requests are historical, immutable records. See [implementation](EARLY_WATCH_RUNTIME.md).
+- [Twenty-one class transformations](CLASS_TALENTS.md), three per class, now change existing Q/E/ultimate behaviors through utility-path depth-three purchases. All node IDs, costs, prerequisites, numeric bonuses and one-capstone limit remain. Seven implementation passes complete, zero human acceptances. Both shop views have fifteen-locale behavioral help; shared simulation owns delayed effects, moving fields, finite walls/turrets/shields and a real projectile-damageable decoy.
+- The [optional all-54-skill map](OPTIONAL_SKILL_MAP.md) is implemented with default-off setting, bounded zoom, scrolling and keyboard navigation. Five secondary-map topology revisions and six ground deliveries are installed. Rendered/human/device review stays open.
+- Profiles/mastery/cosmetics/remaps, all five modes, the seven base kits and bank-safe consented secret extension already work.
 
-`tools/verify-early-watch-integration.py` independently checks all alpha-bearing source RGBA, complete component ownership, proportional normalization, atlases and loading-version-4 crops. Every old loading-v3 reference byte is retained. Four-frame defeats have explicit ranges and timings; Toad hop lift converts world drawing time to combat time. Breakable props now stay outside the boss body and masonry. Wind uses identical bounded authority/prediction logic and is suppressed during dodge.
+## Latest user difficulty rules
 
-Issued protocol-14 local Practice saves migrate with fixed-grade cards, player progress and run identity retained. Online state stays strict. Roster-dependent progress/profile bounds support more than sixty discoveries. Real two-client tests cover every new identity, break cancellation and defeat cleanup.
+One policy covers every combat revival source: **Baby 100%, Easy 50%, Normal 25%, Hard/Insane/Hellish disabled**. Hard+ cannot buy/consume revive kits. Recovery between encounters remains. Medic transformation pulses heal living allies and cannot bypass revival restrictions.
 
-## Continue next
+Phase shield-break event: **Baby/Easy Standard only**, disabled on Normal+ and every Brutal form. Baby has **six circles / two-second channel**; Easy **three circles / three-second channel** (half the circles, 1.5 times the channel). Larger squads require at most three occupants. Baby adds two actual cover props per map; Hard retains half interior cover, Insane/Hellish none. Boundary walls and boss-created mechanics remain. Hellish has marked lava after a three-second opening tell (24 damage/s in half-second hits) and forces **every encounter Brutal**, including the secret.
 
-One count authority: `docs/development-work-ledger.json`, derived by `tools/sync-development-progress.mjs` into local/Wiki/in-game progress. `src/shared/update-history.json` similarly drives both changelogs and the journal. Keep these synchronized at meaningful checkpoints.
+Threats 1–2 have two half-health phases retaining late authored patterns; higher threats retain three Standard/four Brutal phases. Health-bar dividers, phase count and independent entry banner clarify transitions. Normal health stays unchanged. Brutal repeats locked warned volleys for two total waves (three from threat 5), with bounded queues and 4,000-hostile cap; controlled shots/Warden safety stay authored. [Rules](DIFFICULTY_AND_PHASES.md), [latest assistance](ASSIST_LIMITS.md).
 
-- **88 new ordinary identities** remain toward at least 150 ordinary bosses plus secrets. Recolors and harder forms do not count.
-- **59 existing-boss quality assessments/redesigns** remain. Constable is the one completed implementation pass on the original 60; human acceptance remains open.
-- **Seven class-upgrade revamps / 21 ability transformations** are implemented, with human/rendered acceptance open. The optional all-54-skill map is implemented with a default-off setting, bounded zoom, scrolling and keyboard navigation; preserve the default classic view. Rendered/human/device/native-language review remains open. All seven current kits and 378 skills already work.
-- Five secondary-map layouts and six ground-art deliveries are installed. Detailed human/device layout review remains open.
-- Continue original encounter expansion and class ability-changing upgrades; the optional tree now needs actual rendered/human review. Do not inflate counts from concepts or templates.
+## Counts and next work
 
-## Frozen previews and feedback
+`docs/development-work-ledger.json` is the count authority; `tools/sync-development-progress.mjs` derives local/Wiki/in-game progress. `src/shared/update-history.json` drives both Markdown changelogs and the in-game journal. Keep these synchronized at meaningful checkpoints.
 
-Preserve all frozen preview roots and processes on ports **5174–5178**. The latest Constable human comparison remains **http://127.0.0.1:5178/**, frozen at `f1766fe9c41184df44c15902533aff0e2fd7ef2c`, protocol 14/build brutal-signals. The human feedback was on earlier 5177: slightly harder was appropriate, but phase/Brutal differences were subtle and music could be more intense. The completed 5178 pass adds pincer/ring sequences, lateral Cordon, persistent hints/entry cues, red treatment and tempo-aligned percussion; no human verdict is recorded. Keep Normal appropriately easy.
+- **88 new ordinary identities** remain toward at least 150 ordinary plus secrets (three per fixed level/subtier). Recolors and Brutal variants do not count.
+- **59 original-boss quality assessments/redesigns** remain. Constable is the completed original-roster implementation pass; its human acceptance remains open. Other current bosses are already playable.
+- Tune/review the implemented 21 class transformations and optional tree; no class implementation pass remains, but human/rendered/device/native-language acceptance does.
+- Complete special-ability/boss action art, actual rendered transitions, final human balance/music/listening, native-language and physical-device acceptance.
+- Finish active mixed-progression 8/16/50-player, WAN/full progression endurance and 49 scripted plus one rendered hostile-load gates. The older one-hour fifty-client probe is frozen-source local continuous combat with zero rendered clients.
+- Durable hosted recovery still requires participant credentials, entropy history/paging, departures, storage/owner acceptance and deployed rankings. The normal writer remains disabled.
+- A coordinated new Windows/browser release requires new tag/name and full validation. The public Site stays protocol 4. The issued Windows release `dev-windows-20261024-1` stays immutable, source `52552c0d4465b918d7cde2ab3c2aa7f1d7eb045e`, protocol 13.
 
-Use any class/map, Solo Hollow Constable, Normal global difficulty and equal choices for Standard/Brutal comparison. The old preview does not contain Early Watch. Historical 5178 root: `C:\Users\yigal\Documents\Codex\2026-10-23\can-you-continue-with-the-development\work\playtest-brutal-signals-f1766fe`. Inspect port ownership/command lines before touching any process; occupied 5173/2567 may use other protocols.
+## Frozen previews and human evidence
 
-Browser control is disabled. The user explicitly asked to stop troubleshooting it. Do not retry, bypass via CDP or claim rendered, physical-device, native-language, listening or final balance acceptance. Continue source/headless/HTTP/art work.
+Preserve every root/process, including 5174–5183. The previous feedback was on 5177/5179: Constable slightly harder was appropriate but phase/Brutal changes subtle; Early Watch phases passed quickly and shield events gave too much relief. The new responses await human comparison. Keep Normal entry bosses easy.
 
-## Publication and release gates
+| Port | Frozen runtime source | Scope |
+| --- | --- | --- |
+| 5178 | f1766fe | Constable pincer/ring, lateral Cordon, phase hints/cues, red treatment, tempo-aligned percussion; protocol 14; human verdict open |
+| 5179 | bbf909a | Integrated Early Watch; protocol 15; older human feedback informed latest difficulty rules |
+| 5180 | deb4896 | Optional skill map; protocol 15 |
+| 5181 | 3355e92 | Difficulty pressure, lava, forced Hellish Brutal; protocol 16 |
+| 5182 | fb78b70 | Normal quarter revival, Baby/Easy circles/channel and additional Baby cover; protocol 17 |
+| 5183 | 9bee65b | Latest 21 class transformations plus all latest difficulty rules; protocol 18 |
 
-Canonical Wiki is `docs/wiki/`; native checkout `.wiki-checkout`; **18 pages and 29 images**. Publish exact committed canonical pages/images after verifying the Wiki checkout and remote are clean/unchanged. `node tools/verify-wiki-publication.mjs <source SHA>` checks every Git blob, every public image hash and four public HTML responses. Source PR pushes do not publish the Wiki. Prefer the GitHub connector for supported metadata; the repository-scoped `tools/github-admin.mjs update-pr` fallback keeps credentials in process memory. Keep PR #14 draft and main protected.
+Exact roots/PIDs/file/HTTP receipts belong to each checkpoint's review directory. Inspect actual port ownership and command lines before touching processes; occupied 5173/2567 may serve other protocols. Browser control is disabled: do not retry or bypass it via CDP or another route. Do not claim rendered, physical-device, native-language, listening or final balance acceptance.
 
-The public Site stays at protocol 4 under its existing account. The Windows development ZIP at `dev-windows-20261024-1` stays immutable, source `52552c0d4465b918d7cde2ab3c2aa7f1d7eb045e`, protocol 13. A new coordinated release requires a new tag/name and full validation.
+## Current verification and publication
 
-Open gates: active mixed-progression 8/16/50-player, WAN/full progression endurance, 49 scripted plus one rendered under target hostile load, physical controller/phone, native-language/listening and human balance. The one-hour local fifty-client probe remains frozen-source continuous combat with zero rendered clients. Durable recovery still needs participant credentials, entropy history/paging, departures, hosted storage/owner acceptance and deployed rankings; the normal writer remains disabled. Profiles/cosmetics, five modes and bank-safe consented secret extension already exist.
+The current build passes **457 tests**, authored content/fifteen locales, TypeScript and production build. Both exact `9bee65b` GitHub CI checks succeeded. Source snapshot `b554b87544f9aba53f6623c524c0b4a4888bf7ac4b733160a48cd053c50eab2d`; runtime source `d45aa59d4e38ce3f0be04232363e4b9ec68be1192179a8594e486298dda958e0`; content revision `535eb34c7cdabce5ad2fe910ea0a792278a7cc08e360b4f5712d7ee2d9e767f6`. Receipts and failed attempts: `reviews/class-talents-2026-10-25/`.
 
-Use bundled Node 24 and pnpm 11.25.0. Node: `C:\Users\yigal\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin`; fallback pnpm: sibling `dependencies\bin\fallback`. `pnpm verify` performs authored-content/locales, TypeScript, actual HTTP/WebSocket/SQL tests and production build. Use `python -X utf8` with Pillow/NumPy for technical art checks. Use `git -c core.bare=false`; this existing project requires reviewed elevated writes/build/network access from projectless chats. Built-in image generation is authorized; no paid provider or subagent delegation.
+The frozen class preview is **http://127.0.0.1:5183/**, runtime commit `9bee65b5219ebcb1cf12e15a4090a2460c26f198`, protocol 18, process **59400**, root `C:\Users\yigal\Documents\Codex\2026-10-25\continue-grave-accord-in-this-same\work\playtest-talents-9bee65b`. All **1,668 files / 691,392,897 bytes** match the production receipt. Sixteen HTTP asset checks pass; 5178–5182 index hashes remain unchanged. Existing 5174–5177 roots are untouched (they were not listening in the latest port inventory). Preserve all old roots/processes.
 
-Earlier exact checkpoint: [historical issue](history/2026-10-25-early-watch-resume/CHECKPOINT_2026_10_25.md). It describes art-only state before this continuation and is superseded by current runtime/progress.
+The canonical Wiki remains **18 pages / 29 images**, published from committed source `9bee65b5219ebcb1cf12e15a4090a2460c26f198` at Wiki commit `63186b748db09c1628adccae144fc341edf2deb1`. Every page/image Git blob and public image SHA-256 matches; four public HTML responses pass. Publication does not update the public Site or Windows archive. These software checks do not prove rendered, physical-device, native-language, listening or final human balance acceptance.
 
-## Early Watch frozen development preview
+Use bundled Node 24 and pnpm 11.25.0. Node: `C:\Users\yigal\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin`; fallback pnpm: sibling `dependencies\bin\fallback`. `pnpm verify` checks authored content/locales, TypeScript, actual HTTP/WebSocket/SQL fixtures and production build. Use `python -X utf8` for technical RGBA/art work and `git -c core.bare=false`. Projectless chats need reviewed elevated writes/build/network access to this existing OneDrive folder.
 
-The separate preview at **http://127.0.0.1:5179/** serves exact runtime source `bbf909ade44e595f025956783a4babd868b1840c`, protocol 15/build `2026.10.25-early-watch`. Its 1,666 files / 684,857,534 bytes match the verified production artifacts. Seventeen raw HTTP asset checks pass; the older 5178 index hash remains unchanged. Root: `C:\Users\yigal\Documents\Codex\2026-10-25\continue-grave-accord-in-this-same\work\playtest-early-watch-bbf909a`. Process receipt is `reviews/early-watch-integration-2026-10-25/preview-process.json`; inspect actual port ownership before touching it. Preserve this preview alongside 5174–5178. No rendered or human acceptance is recorded.
-
-Choose New Run, any class/map, Solo and one Early Watch boss; keep global difficulty Normal and compare Standard/Brutal with equal choices. The 5178 Constable comparison remains independent.
-
-## Optional skill-map continuation
-
-The [expanded map](OPTIONAL_SKILL_MAP.md) is a settings-controlled view of all existing paths. It preserves classic purchasing and strictly migrates issued local profiles/settings. Current verification passes 419 tests plus content/fifteen locales, TypeScript and production build, with exact hashes under `reviews/skill-map-2026-10-25/`; the earlier Early Watch and Constable previews and receipts remain separate.
-
-## Current difficulty response
-
-See [difficulty rules and phase pacing](DIFFICULTY_AND_PHASES.md): Baby/Easy Standard shield events only; Baby full revival, Easy half and Normal quarter revival, Hard+ none; two phases for threats 1–2, segmented health bar and independent phase banner; warned Brutal repeat volleys; half interior cover on Hard, none on Insane/Hellish, Hellish lava and every Hellish boss forcibly Brutal. Protocol 16 preserves issued local progress with strict online matching. The roster/remaining-work counts are unchanged. Human feedback on frozen 5179 is recorded in the ledger; the response awaits human comparison.
-
-Preserve the separate optional-map preview at http://127.0.0.1:5180/, source `deb489614d4fbf2a43686ea061e8d1cb544f0aea`, process 26480, root `C:\Users\yigal\Documents\Codex\2026-10-25\continue-grave-accord-in-this-same\work\playtest-skill-map-deb4896`. Its 1,666 files / 684,871,381 bytes match the runtime receipt; eight HTTP checks pass and 5178/5179 hashes remain unchanged. Both exact deb4896 CI checks passed. Receipts remain under `reviews/skill-map-2026-10-25/`.
-
-## Preserved difficulty-pressure preview
-
-Use **http://127.0.0.1:5181/** for the latest rules. Runtime source `3355e92d9c8f4fa4c9496fbf07a7c51218b01c77`, protocol 16/build `2026.10.25-difficulty-pressure`; process 9124, root `C:\Users\yigal\Documents\Codex\2026-10-25\continue-grave-accord-in-this-same\work\playtest-difficulty-3355e92`. All 1,668 files / 691,304,889 bytes match the production receipt. Sixteen HTTP asset checks pass and older 5178, 5179 and 5180 index hashes remain unchanged. Preserve every earlier preview/root/process.
-
-The gameplay source passes 419 automated tests plus content/fifteen locales, TypeScript and production build; both exact 3355e92 CI checks succeeded. Source snapshot `c4eb5da9f8c44c97fba2a123d94ab66a79cbc7805df5847d9b0ec40d4927ca43`; runtime source `345c116de6573845b6c9f50626fcfdccac74df6457bd3b8d19f278f88a07fc3d`; content revision `1ad00eee45a117a45929e56884c6a39a8c4eb614b0728ab31e847403fb8735bb`. Additional single-authority fixtures keep all fifty deployments clear of lava on each map and enforce the 4,000-hostile cap during queued repeats. Independent floor native/RGBA/opacity checks pass. Raw successful and failed attempts are preserved as committed text receipts.
-
-Canonical Wiki source 3355e92 is published at Wiki commit `fc83964b453644ca673a14d01e4ffc9edb3bcaf4`: all 18 committed page blobs and 29 images/public hashes match. Preview/Wiki receipts are under `reviews/difficulty-pressure-2026-10-25/`. None of these software checks establish rendered, physical-device, listening, native-language or human balance acceptance. Human comparison of this response remains open.
-
-Latest follow-up: [Baby/Easy assistance and Normal revival](ASSIST_LIMITS.md). Normal now revives at 25%; Baby/Easy have six/three shield circles and two/three-second channels; Baby adds two cover props per map. All earlier preview URLs retain their frozen behavior. Class-upgrade planning is unintegrated; seven requested revamps remain.
-
-The latest assistance follow-up passes 425 automated tests plus content/fifteen locales, TypeScript and production build. Exact source/artifact receipts and failed attempts are under `reviews/assist-limits-2026-10-25/`. The seven class-upgrade revamps remain unimplemented; optional draft notes/prototypes are in `C:\Users\yigal\Documents\Codex\2026-10-25\continue-grave-accord-in-this-same\work\CLASS_UPGRADE_PLAN.md` and are not runtime content. Continue that remaining work after the latest requested assist update.
-
-## Latest assistance preview and verification
-
-Use **http://127.0.0.1:5182/** for Normal 25% revival, Baby/Easy six/three circles and two/three-second channels, and two additional Baby cover props per map. Frozen runtime source `fb78b70456314b122358979af77034a96b97d77a`, protocol 17/build `2026.10.25-assist-limits`; process 66892, root `C:\Users\yigal\Documents\Codex\2026-10-25\continue-grave-accord-in-this-same\work\playtest-assist-fb78b70`. All 1,668 files / 691,314,546 bytes match the production receipt. Sixteen HTTP checks pass and 5178–5181 index hashes remain unchanged. Preserve every earlier preview root/process.
-
-All 425 tests and the full content/fifteen-locale/TypeScript/production pipeline pass. Both exact fb78b70 CI checks succeeded. Source snapshot `c9ab85a8de47dd29c2731d328ef1dda0c1ccbbdf1f86f4e28fe306d089f5e4b5`; runtime source `9a930eb33500768073a08896914ed9a7517cec7389b2bd3ecd1f58fc35faa171`; content revision `d4419d906f67286576ca3f6795e03a921269aff861b36e2e82ce68aa2e501775`. The committed canonical 18-page/29-image Wiki is published at `8f5a66444d8b3d6abbdd6e4635444611a9625bc8`; every page blob and public image hash verifies. Exact receipts are under `reviews/assist-limits-2026-10-25/`. These software checks do not establish rendered, physical-device, native-language, listening or human balance acceptance.
-
-## Class ability transformation checkpoint
-
-Build `2026.10.25-class-talents`, protocol 18, integrates three purchased behavior changes per class (21 total), detailed in [Class transformations](CLASS_TALENTS.md). This supersedes the older unintegrated-draft statements above. Existing node IDs/costs/prerequisites and the one-capstone limit are retained. The single progress ledger now records seven implementation passes complete and zero human acceptances. Known issued protocol-17 local saves/profiles migrate; online remains strict. Full verification, exact source/artifacts and publication receipts belong under `reviews/class-talents-2026-10-25/`; earlier previews and their evidence remain separate. The game remains unfinished.
-
-The class checkpoint passes **457 automated tests**, authored content/fifteen locales, TypeScript and production build. The 32 new focused tests cover all 21 real transformations, capstone/cleanup invariants, both guarded shop views and actual owner/observer replication for every class. Source snapshot `b554b87544f9aba53f6623c524c0b4a4888bf7ac4b733160a48cd053c50eab2d`; runtime source `d45aa59d4e38ce3f0be04232363e4b9ec68be1192179a8594e486298dda958e0`; content revision `535eb34c7cdabce5ad2fe910ea0a792278a7cc08e360b4f5712d7ee2d9e767f6`. Failed and passing attempts are retained under `reviews/class-talents-2026-10-25/`.
+Canonical Wiki is `docs/wiki/`, existing native checkout `.wiki-checkout`; publish exact committed pages/images and run `node tools/verify-wiki-publication.mjs <source SHA>`. Source pushes alone do not publish the Wiki. Historical checkpoint records remain in Git and `docs/history/`; the current implementation/progress pages supersede older counts and unintegrated-draft notes.

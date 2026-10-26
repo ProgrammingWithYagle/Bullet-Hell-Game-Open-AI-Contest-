@@ -10,9 +10,9 @@ The original sixty-identity plan and its route-affinity lists are preserved in [
 
 | Identity | Fixed grade | Distinct mechanic | Current state |
 | --- | --- | --- | --- |
-| Ashen Usher | 1-- | Breakable ticket stands and staggered warned aisles | Three phases, extra Brutal, 12 motion poses and original theme integrated |
+| Ashen Usher | 1-- | Breakable ticket stands and staggered warned aisles | Two visible phases, extra Brutal, 12 motion poses and original theme integrated |
 | Brass Toad | 1- | Locked hops, gapped landing ripples, tongue lane and drain-plug interruption | Hops/ripples/tongue, extra Brutal, 12 poses and original theme integrated |
-| Ragpicker's Kite | 1 | Orbiting cloth kite, wind corridors and breakable pins | Three phases, extra Brutal, 12 motion poses and original theme integrated |
+| Ragpicker's Kite | 1 | Orbiting cloth kite, wind corridors and breakable pins | Two visible phases, extra Brutal, 12 motion poses and original theme integrated |
 
 All three now have shared-authority implementation, distinct phases, extra Brutal mechanics, warned counterplay, motion, fifteen-locale help and individual original music. The roster is 63/62 ordinary and the deficit is 88; rendered/human review remains separate. [Current art and integration handoff](CHECKPOINT_2026_10_25.md).
 
