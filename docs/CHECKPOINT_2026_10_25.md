@@ -48,3 +48,9 @@ Open gates: active mixed-progression 8/16/50-player, WAN/full progression endura
 Use bundled Node 24 and pnpm 11.25.0. Node: `C:\Users\yigal\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin`; fallback pnpm: sibling `dependencies\bin\fallback`. `pnpm verify` performs authored-content/locales, TypeScript, actual HTTP/WebSocket/SQL tests and production build. Use `python -X utf8` with Pillow/NumPy for technical art checks. Use `git -c core.bare=false`; this existing project requires reviewed elevated writes/build/network access from projectless chats. Built-in image generation is authorized; no paid provider or subagent delegation.
 
 Earlier exact checkpoint: [historical issue](history/2026-10-25-early-watch-resume/CHECKPOINT_2026_10_25.md). It describes art-only state before this continuation and is superseded by current runtime/progress.
+
+## Early Watch frozen development preview
+
+The separate preview at **http://127.0.0.1:5179/** serves exact runtime source `bbf909ade44e595f025956783a4babd868b1840c`, protocol 15/build `2026.10.25-early-watch`. Its 1,666 files / 684,857,534 bytes match the verified production artifacts. Seventeen raw HTTP asset checks pass; the older 5178 index hash remains unchanged. Root: `C:\Users\yigal\Documents\Codex\2026-10-25\continue-grave-accord-in-this-same\work\playtest-early-watch-bbf909a`. Process receipt is `reviews/early-watch-integration-2026-10-25/preview-process.json`; inspect actual port ownership before touching it. Preserve this preview alongside 5174–5178. No rendered or human acceptance is recorded.
+
+Choose New Run, any class/map, Solo and one Early Watch boss; keep global difficulty Normal and compare Standard/Brutal with equal choices. The 5178 Constable comparison remains independent.

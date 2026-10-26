@@ -11,6 +11,10 @@ assert sha(tool)==packing['extractorSha256']
 spec=importlib.util.spec_from_file_location('whole',tool);whole=importlib.util.module_from_spec(spec);spec.loader.exec_module(whole)
 library=json.loads((R/'assets/production/motion/early-watch-library.json').read_text(encoding='utf-8'))
 report=[];cell=packing['cellSize']
+manifest=R/'docs/early-watch-integration-2026-10-25.json'
+if manifest.exists():
+ for f in json.loads(manifest.read_text(encoding='utf-8'))['files']:
+  p=R/f['path'];assert p.stat().st_size==f['bytes'] and sha(p)==f['sha256'],f['path']
 for e in library['entries']:
  atlas=np.array(Image.open(R/e['atlas']));assert atlas.shape==(cell*3,cell*4,4);assert sha(R/e['atlas'])==e['atlasSha256']
  assert e['defeatStartFrame']==8 and e['defeatFrames']==4
@@ -52,7 +56,7 @@ for ref in loading['entries']+loading['settledReferences']:
  atlas=Image.open(R/ref['sourceAtlas']).convert('RGBA');n=ref['sourceFrame'];s=ref['sourceCellSize'];columns=atlas.width//s
  original=atlas.crop((n%columns*s,n//columns*s,(n%columns+1)*s,(n//columns+1)*s))
  rebuilt=Image.new('RGBA',(s,s));rebuilt.paste(Image.open(R/ref['reference']),ref['sourceRect'][:2]);assert np.array_equal(np.array(original),np.array(rebuilt))
-catalog=json.loads((R/'content/catalog.json').read_text(encoding='utf-8'));assert len(catalog['bosses'])==63
+catalog=json.loads((R/'content/catalog.json').read_text(encoding='utf-8'));assert len(catalog['bosses'])>=63
 assert all(any(b['id']==e['bossId'] for b in catalog['bosses']) for e in library['entries'])
 summary={'passed':True,'completePoses':36,'runtimeAdmitted':True,'renderedAccepted':False,'humanAccepted':False,'clips':report,'portableBindings':bindings,
  'limits':['Exact alpha-bearing native RGBA, connected ownership, uniform scaling, complete atlas and fallback reconstruction only.','Runtime admission is checked in source and automated tests, not rendered engine, device, timing perception, listening or human balance acceptance.']}

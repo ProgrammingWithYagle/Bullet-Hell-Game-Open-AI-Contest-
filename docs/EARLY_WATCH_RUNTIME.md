@@ -33,3 +33,9 @@ Protocol 15 keeps signed/online state strict. Local Practice can migrate only is
 Focused tests exercise all ordinary/Brutal phases, actual emissions and landing damage, weapon hits against all three weak-point roles, cancellation, all six map collisions, prediction parity, four-frame defeats, issued-save migration, real two-client replication and defeat cleanup. The full current pipeline and exact source/artifact hashes are in `reviews/early-watch-integration-2026-10-25/runtime.json` and `full-current.log`. Failed attempts remain in the same review directory. Automated evidence does not establish final balance.
 
 Frozen preview ports 5174–5178 remain separate. The protocol-14 Constable response at 5178 still awaits human review. The protocol-4 public Site and immutable protocol-13 Windows development release have not been redeployed or replaced. Browser control stays disabled. Hosted recovery/rankings, WAN, mixed-progression load/endurance, physical devices, native-language, listening and final release gates remain open.
+
+## Early Watch frozen development preview
+
+The separate preview at **http://127.0.0.1:5179/** serves exact runtime source `bbf909ade44e595f025956783a4babd868b1840c`, protocol 15/build `2026.10.25-early-watch`. Its 1,666 files / 684,857,534 bytes match the verified production artifacts. Seventeen raw HTTP asset checks pass; the older 5178 index hash remains unchanged. Root: `C:\Users\yigal\Documents\Codex\2026-10-25\continue-grave-accord-in-this-same\work\playtest-early-watch-bbf909a`. Process receipt is `reviews/early-watch-integration-2026-10-25/preview-process.json`; inspect actual port ownership before touching it. Preserve this preview alongside 5174–5178. No rendered or human acceptance is recorded.
+
+Choose New Run, any class/map, Solo and one Early Watch boss; keep global difficulty Normal and compare Standard/Brutal with equal choices. The 5178 Constable comparison remains independent.
