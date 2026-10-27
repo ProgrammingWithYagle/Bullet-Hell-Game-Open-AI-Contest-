@@ -351,7 +351,7 @@ test("fifteen locales and known protocol23 local saves preserve help, form/build
   old.contentRevision =
     "da37e2a0e2beb54343495ce39027211df254fa1c79ab42ec3f3360373ad792db";
   const after = Game.restoreOffline(old).offlineCheckpoint()!;
-  assert.equal(PROTOCOL, 24);
+  assert.equal(PROTOCOL, 25);
   assert.equal(after.contentRevision, CONTENT_REVISION);
   assert.deepEqual(after.player, save.player);
   assert.deepEqual(after.completedBossForms, save.completedBossForms);
@@ -441,6 +441,48 @@ test(
             s.view!.bossCues.find((v) => v.id === c.id),
             c,
           );
+      // New warnings and actual collision feedback use the same owner/observer wire path.
+      const volley = g.director.clerk
+        .cues()
+        .find((c) => c.kind === "clerk-volley");
+      assert(volley?.kind === "clerk-volley");
+      await until(() =>
+        [host, guest].every((s) =>
+          s.view?.bossCues.some((c) => c.id === volley.id),
+        ),
+      );
+      for (const client of [host, guest])
+        assert.deepEqual(
+          client.view!.bossCues.find((c) => c.id === volley.id),
+          volley,
+        );
+      const shelter = stamps(g.director.clerk).find((c) => c.safeAt > 0)!;
+      while (g.combatTick < shelter.safeAt) g.step();
+      Reflect.get(g, "emitShot").call(
+        g,
+        "hostile",
+        shelter.x + 90,
+        shelter.y,
+        Math.PI,
+        600,
+        8,
+        5,
+      );
+      g.step();
+      const block = g.director.clerk
+        .cues()
+        .find((c) => c.kind === "clerk-block");
+      assert(block?.kind === "clerk-block");
+      await until(() =>
+        [host, guest].every((s) =>
+          s.view?.bossCues.some((c) => c.id === block.id),
+        ),
+      );
+      for (const client of [host, guest])
+        assert.deepEqual(
+          client.view!.bossCues.find((c) => c.id === block.id),
+          block,
+        );
       g.boss.health = 0;
       await until(() => guest.view?.phase !== "combat");
       assert(!guest.view!.bossCues.length);

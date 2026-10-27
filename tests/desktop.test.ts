@@ -141,7 +141,13 @@ test(
         mode: 'short',
         difficulty: 'hard',
       });
-      assert.equal(client.view!.players[0].classId, 'mage');
+      // Joining acknowledges the room before its first schema patch is guaranteed.
+      const initialStateDeadline = Date.now() + 5000;
+      while (!client.view?.players.some((player) => player.id === client.id)) {
+        if (Date.now() > initialStateDeadline) throw Error('LAN initial state timeout');
+        await new Promise((resolve) => setTimeout(resolve, 20));
+      }
+      assert.equal(client.view!.players.find((player) => player.id === client.id)!.classId, 'mage');
       client.start();
       const end = Date.now() + 5000;
       while (client.view?.phase !== 'combat') {

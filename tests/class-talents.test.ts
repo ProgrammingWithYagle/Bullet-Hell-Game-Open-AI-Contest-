@@ -606,7 +606,7 @@ test('issued protocol-17 local saves retain skill node ownership and progression
     'd4419d906f67286576ca3f6795e03a921269aff861b36e2e82ce68aa2e501775';
   const restored = Game.restoreOffline(save),
     after = [...restored.players.values()][0];
-  assert.equal(PROTOCOL, 24);
+  assert.equal(PROTOCOL, 25);
   assert.equal(after.coins, 901);
   assert.deepEqual(after.skills, p.skills);
   assert(hasTalent(after, 'breach-cadence'));

@@ -1,10 +1,10 @@
 # Grave Accord
 
-A cooperative gothic bullet-hell game in active development. Current feature branch: build **2026.10.26-appeal-circuit**, protocol **24**, 66 distinct executable bosses with individual original themes, seven classes, 378 skills, 28 weapons and six different map layouts/sizes.
+A cooperative gothic bullet-hell game in active development. Current feature branch: build **2026.10.27-visible-shelter**, protocol **25**, 66 distinct executable bosses with individual original themes, seven classes, 378 skills, 28 weapons and six different map layouts/sizes.
 
 All sixty-six identities execute, including nine scheduled Endless exclusives and the optional Uncounted finale. Five modes work offline and in local online rooms: five-fight Quarantine Run, ten-fight Midnight Circuit, sixteen-fight Black Bell Pilgrimage, three-fight Grand Raid and uncapped Endless Vigil. The in-game main menu has a dated changelog generated from the same history as [CHANGELOG.md](CHANGELOG.md) and the [GitHub Wiki changelog](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/wiki/Changelog).
 
-Use Node 24 and pnpm 11.25.0. Run `pnpm install --frozen-lockfile`, `pnpm verify`, then `pnpm dev`. Open http://127.0.0.1:5173/. Offline solo requires only the frontend and worker. Run `pnpm server` in another terminal for matching protocol-24 local online rooms on port 2567. Local protocol-4 through protocol-23 saves have bounded migrations; signed/online state is strict.
+Use Node 24 and pnpm 11.25.0. Run `pnpm install --frozen-lockfile`, `pnpm verify`, then `pnpm dev`. Open http://127.0.0.1:5173/. Offline solo requires only the frontend and worker. Run `pnpm server` in another terminal for matching protocol-25 local online rooms on port 2567. Local protocol-4 through protocol-24 saves have bounded migrations; signed/online state is strict.
 
 [Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains the current source. Protected main is a separate release boundary. The [public playtest](https://grave-accord-playtest.ivoryflame12.chatgpt.site/) still serves its earlier two-class, one-boss protocol-4 deployment. Source/Wiki updates do not redeploy it.
 
@@ -43,3 +43,5 @@ Full verification also uses Python 3 with the pinned Pillow dependency: `python 
 [Ratcatcher Roving Muster](docs/RATCATCHER_MUSTER.md) adds a late patrol before new locked scent lanes, bounded rat routes around cover and one/two advanced warned whistle rings. Original Standard combat numbers and all artwork/music remain. Human review is open.
 
 [Clerk Appeal Circuit](docs/CLERK_APPEAL.md) fixes 61 missed stamp placements, relocates before late warnings, changes the reopened seal from I to III, and gives advanced late phases three distinct appeal positions. Original Standard combat numbers and all assets remain. Human review is open.
+
+[Visible Clerk shelter](docs/CLERK_SHELTER.md) pairs reopening with a warned volley, actual rim impacts and a closing ring. Development instructions stay visible; optional Baby-only instructions are a final-product gate.

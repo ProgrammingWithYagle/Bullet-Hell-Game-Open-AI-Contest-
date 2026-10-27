@@ -26,7 +26,7 @@ fs.writeFileSync(
         .createHash("sha256")
         .update(JSON.stringify(c))
         .digest("hex"),
-      authoredDate: "2026-10-26",
+      authoredDate: "2026-10-27",
     },
     null,
     2,

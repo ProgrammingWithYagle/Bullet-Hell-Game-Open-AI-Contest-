@@ -32,10 +32,34 @@ export type ClerkPatrol = {
   moveAt: number;
   until: number;
 };
-export type ClerkCue = ClerkStamp | ClerkPatrol;
+export type ClerkVolley = {
+  kind: "clerk-volley";
+  id: number;
+  x: number;
+  y: number;
+  targetX: number;
+  targetY: number;
+  angles: number[];
+  speed: number;
+  beganAt: number;
+  at: number;
+  until: number;
+};
+export type ClerkBlock = {
+  kind: "clerk-block";
+  id: number;
+  x: number;
+  y: number;
+  angle: number;
+  at: number;
+  until: number;
+};
+export type ClerkCue = ClerkStamp | ClerkPatrol | ClerkVolley | ClerkBlock;
 const ticks = (s: number) => Math.ceil(s * HZ);
 export class ClerkAppeal {
   private stamps: ClerkStamp[] = [];
+  private volleys: { cue: ClerkVolley; released: boolean }[] = [];
+  private blocks: ClerkBlock[] = [];
   private patrol: ClerkPatrol | null = null;
   private stage: "idle" | "patrol" | "stamps" | "rest" = "idle";
   private phase = 0;
@@ -50,6 +74,8 @@ export class ClerkAppeal {
   nextSignatureAt = 0;
   reset() {
     this.stamps = [];
+    this.volleys = [];
+    this.blocks = [];
     this.patrol = null;
     this.stage = "idle";
     this.cycle = 0;
@@ -65,6 +91,8 @@ export class ClerkAppeal {
   cues(): ClerkCue[] {
     return [
       ...this.stamps.map((s) => ({ ...s })),
+      ...this.volleys.map(({ cue }) => ({ ...cue, angles: [...cue.angles] })),
+      ...this.blocks.map((b) => ({ ...b })),
       ...(this.patrol ? [{ ...this.patrol }] : []),
     ];
   }
@@ -75,6 +103,23 @@ export class ClerkAppeal {
   }
   isSafe(p: Vec, now: number, radius = 9) {
     return this.safeZones(now).some((s) => distance(s, p) + radius <= s.radius);
+  }
+  /** Called only after the projectile sweep has chosen this seal as the first hit. */
+  recordBlock(zoneId: number, point: Vec, now: number, id: () => number) {
+    const seal = this.safeZones(now).find((s) => s.id === zoneId);
+    if (!seal) return;
+    const angle = Math.atan2(point.y - seal.y, point.x - seal.x);
+    this.blocks.push({
+      kind: "clerk-block",
+      id: id(),
+      x: seal.x + Math.cos(angle) * seal.radius,
+      y: seal.y + Math.sin(angle) * seal.radius,
+      angle,
+      at: now,
+      until: now + ticks(tuning.blockCueSeconds),
+    });
+    if (this.blocks.length > tuning.maximumBlockCues)
+      this.blocks.splice(0, this.blocks.length - tuning.maximumBlockCues);
   }
   cast(c: SignatureContext, target: Vec, attack: SignatureAttack) {
     if (this.busy || c.tick < this.nextSignatureAt) return false;
@@ -190,6 +235,37 @@ export class ClerkAppeal {
           ticks(tuning.activeSeconds),
         safeAt: index === safeIndex ? safeAt : 0,
       });
+    // The two red seals fire toward the green shelter. Warning origins and angles
+    // lock with the stamps; reopening precedes release, so its purpose is visible.
+    const shelter = centers[safeIndex],
+      releaseAt = safeAt + ticks(tuning.volleyAfterOpenSeconds);
+    for (const [index, origin] of centers.entries()) {
+      if (index === safeIndex) continue;
+      const aim = Math.atan2(shelter.y - origin.y, shelter.x - origin.x);
+      this.volleys.push({
+        released: false,
+        cue: {
+          kind: "clerk-volley",
+          id: c.id(),
+          ...origin,
+          targetX: shelter.x,
+          targetY: shelter.y,
+          angles: Array.from(
+            { length: tuning.volleyCount },
+            (_, n) =>
+              aim + (n / (tuning.volleyCount - 1) - 0.5) * tuning.volleyArc,
+          ),
+          speed: clamp(
+            distance(origin, shelter) / tuning.volleyTravelSeconds,
+            tuning.volleyMinimumSpeed,
+            tuning.volleyMaximumSpeed,
+          ),
+          beganAt: releaseAt - ticks(tuning.volleyWarningSeconds),
+          at: releaseAt,
+          until: releaseAt + ticks(tuning.volleyReleaseCueSeconds),
+        },
+      });
+    }
     this.batch++;
     this.repeatAt = this.advanced && this.phase && this.batch === 1 ? last : 0;
     this.stage = "stamps";
@@ -228,6 +304,20 @@ export class ClerkAppeal {
       this.repeatAt = 0;
       this.beginBatch(c, this.target(c));
     }
+    for (const volley of this.volleys) {
+      if (volley.released || c.tick < volley.cue.at) continue;
+      volley.released = true;
+      for (const angle of volley.cue.angles)
+        c.emitHostile?.(
+          volley.cue,
+          angle,
+          volley.cue.speed,
+          tuning.volleyDamage * c.damageScale,
+          tuning.volleyRadius,
+        );
+    }
+    this.volleys = this.volleys.filter(({ cue }) => c.tick < cue.until);
+    this.blocks = this.blocks.filter((b) => c.tick < b.until);
     for (const p of c.targets)
       if (
         c.tick >= (this.contacts.get(p.id) ?? 0) &&

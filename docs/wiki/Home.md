@@ -7,7 +7,7 @@
 
 Cooperative gothic zombie bullet hell. Choose a survivor, clear a boss contract, vote on mutations, buy a build and survive the next encounter.
 
-**Current development source: version 0.3.0, build `2026.10.26-appeal-circuit`, protocol 24, updated 2026-10-26.** The game is still in development. [Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains the playable feature branch; protected `main` is a separate release boundary.
+**Current development source: version 0.3.0, build `2026.10.27-visible-shelter`, protocol 25, updated 2026-10-27.** The game is still in development. [Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains the playable feature branch; protected `main` is a separate release boundary.
 
 | Playable now in that source | Contents |
 | --- | --- |
@@ -63,8 +63,10 @@ The seven requested class-upgrade implementation passes now add 21 behavior chan
 
 The earlier Crazed Horizon pass added purple Crazed/C forms to all 66 identities, forced Insane Brutal and Hellish Crazed, 2.5x/7.5x projectile budgets, warned pursuit/crossing patterns and persisted Endless form progression. Four spacious maps are smaller; the boss header separates name/grade/form/phase/timer and phase entry gains a distinct original cue plus reduced-motion-aware bar engraving. [Rules](Bosses) · [Modes and arenas](Modes). Roster remains 66; 85 new ordinary identities and 55 original quality passes remain. Human 5185 comparison confirmed clearer phase and Brutal differences but identified too much retreat space. Current changes await comparison.
 
-[Courier Return Address](Bosses) adds a distinct two-leg late phase with fresh warnings from actual stops. Advanced forms add a leg and a warned split fan. The Courier checkpoint used protocol 22. The Roving Muster checkpoint used protocol 23; current protocol 24 also preserves known issued protocol 23 local form/build history; online remains strict. Final rendered/device/native-language/listening/balance acceptance remains open.
+[Courier Return Address](Bosses) adds a distinct two-leg late phase with fresh warnings from actual stops. Advanced forms add a leg and a warned split fan. The Courier checkpoint used protocol 22. The Roving Muster checkpoint used protocol 23; current protocol 25 also preserves known issued protocol 24 local form/build history; online remains strict. Final rendered/device/native-language/listening/balance acceptance remains open.
 
 Ratcatcher now patrols before late-phase packs, rats route around cover, and advanced forms whistle fully warned gapped rings. Five individual quality passes are implemented; 55 remain. The roster stays 66; 85 new ordinary identities remain.
 
 Clerk now stamps reachable clear ground on every map, patrols before its late sequence and reopens notched seal III after its strike. Advanced late phases warn a distinct appeal set. Protocol 24 preserves known issued protocol 23 local form/build history; online remains strict.
+
+The latest Clerk follow-up makes shelter useful during a fully warned volley: shots break on its shield rim and the outer ring counts down to closure. Development instructions remain visible by human request; the final product must offer them only as a default-off Baby option. [Details](Bosses#visible-clerk-shelter).

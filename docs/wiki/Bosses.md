@@ -274,3 +274,9 @@ Finite anchors/valves are individual boss weak points, separate from the global 
 ![Mourning Kettle: original static identity reference](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/small-wakes-mourning-kettle.png)
 
 [Implementation, original art/audio and verification limits](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/SMALL_WAKES_RUNTIME.md). Rendered, human balance, native-language, listening and physical-device acceptance remain open.
+
+## Visible Clerk shelter
+
+After a notched seal reopens, the other two red seals fire locked seven-shot fans after 1.2-second warnings. The green shield opens 0.5 seconds before release, absorbs actual hostile shots at its rim and lets survivors keep shooting. Dodging outside remains possible. Its outer ring counts down the 2.5-second protection window; static broken-bullet marks show real interceptions. Each advanced appeal warns a fresh pair, using the existing 2.5x/7.5x projectile budgets. No offensive reward or health increase is added. [Implementation](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/CLERK_SHELTER.md).
+
+The human found the earlier order/notched safe III clear enough, but did not discover its purpose. This follow-up awaits comparison and grants no additional identity, individual-quality or human-acceptance credit. Instructions remain visible in development previews. Before the finished product they must be removed except for an optional default-off Baby-only setting; that future option is not implemented here.

@@ -2293,6 +2293,7 @@ export class Game {
         hitTime = wall,
         friendlyHit = false,
         safeHit = false;
+      let safeZone: (typeof safeZones)[number] | undefined;
       if (s.owner === 'hostile') {
         // The reopened stamp absorbs hostile shots at its visible boundary.
         for (const zone of safeZones) {
@@ -2300,6 +2301,7 @@ export class Game {
           if (time !== null && time < hitTime) {
             hitTime = time;
             safeHit = true;
+            safeZone = zone;
           }
         }
         for (const field of this.fields) {
@@ -2356,6 +2358,11 @@ export class Game {
           weakPoints = this.director.weakPoints();
         }
       }
+      if (safeHit && safeZone)
+        this.director.clerk.recordBlock(safeZone.id, {
+          x: old.x + (next.x - old.x) * hitTime,
+          y: old.y + (next.y - old.y) * hitTime,
+        }, this.combatTick, () => this.id());
       s.x = next.x;
       s.y = next.y;
       if (player) this.damage(player, s.damage);

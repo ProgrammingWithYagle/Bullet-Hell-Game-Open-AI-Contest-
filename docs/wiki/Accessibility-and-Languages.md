@@ -17,3 +17,7 @@ Enable **Expanded skill map** in Settings to see all 54 existing skills for the 
 ## Phase and form clarity
 
 Boss name, threat/form, phase/name and timer occupy separate slots with wrapping and RTL-isolated grade codes. A static phase banner and bar dividers remain; a short bar engraving is disabled by either the game reduced-motion option or system preference. Purple Crazed also has a C code and six perimeter marks; red Brutal has B/four marks. New form/help/difficulty messages cover all fifteen locales. Native-language, rendered layout and device acceptance remain open.
+
+## Development instructions and finished-product policy
+
+Boss instruction paragraphs stay visible during current development testing, as explicitly requested by the user. The finished product must hide automatic fight instructions and offer them only through an optional default-off Baby-only setting. This is a recorded release requirement, not a completed toggle. Learnable attack warnings, protection geometry, phase cues, health and timers remain available on every difficulty. The Clerk follow-up uses a shield shape, a retiring rim and actual interception marks without adding flashing or screen shake. Fifteen authored help catalogs explain its purpose; native-language and rendered acceptance remain open.

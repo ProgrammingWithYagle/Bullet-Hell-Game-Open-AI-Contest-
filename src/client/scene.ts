@@ -482,6 +482,41 @@ export class CombatScene extends Phaser.Scene {
         h.lineStyle(3,cue.crazed?0xe6caff:0xffd7a0,.95).strokeCircle(cue.x,cue.y,12+progress*10);
         continue;
       }
+      if (cue.kind === 'clerk-volley') {
+        if (now < cue.beganAt) continue;
+        const progress = Math.max(0, Math.min(1, (now - cue.beganAt) / Math.max(1, cue.at - cue.beganAt))),
+          length = Math.min(620, Math.hypot(cue.targetX - cue.x, cue.targetY - cue.y) + 110),
+          aim = Math.atan2(cue.targetY - cue.y, cue.targetX - cue.x);
+        h.lineStyle(1, 0xf1bf85, .5);
+        for (const angle of cue.angles)
+          h.lineBetween(cue.x + Math.cos(angle) * 26, cue.y + Math.sin(angle) * 26,
+            cue.x + Math.cos(angle) * length, cue.y + Math.sin(angle) * length);
+        h.lineStyle(3, 0xf1bf85, .95).strokeCircle(cue.x, cue.y, 19);
+        if (now < cue.at) {
+          const arc: Phaser.Math.Vector2[] = [];
+          for (let n = 0; n <= 24; n++) {
+            const a = -Math.PI / 2 + Math.PI * 2 * progress * n / 24;
+            arc.push(new Phaser.Math.Vector2(cue.x + Math.cos(a) * 27, cue.y + Math.sin(a) * 27));
+          }
+          h.lineStyle(4, 0xf1bf85, .9).strokePoints(arc, false);
+        }
+        const tipX = cue.x + Math.cos(aim) * 47, tipY = cue.y + Math.sin(aim) * 47;
+        h.lineStyle(3, 0xf1bf85, 1)
+          .lineBetween(tipX - Math.cos(aim) * 13 - Math.sin(aim) * 8, tipY - Math.sin(aim) * 13 + Math.cos(aim) * 8, tipX, tipY)
+          .lineBetween(tipX, tipY, tipX - Math.cos(aim) * 13 + Math.sin(aim) * 8, tipY - Math.sin(aim) * 13 - Math.cos(aim) * 8);
+        continue;
+      }
+      if (cue.kind === 'clerk-block') {
+        // A static broken-bullet mark comes from an actual authority interception.
+        // No flashing, screen shake or decorative particle shower is needed.
+        const nx = Math.cos(cue.angle), ny = Math.sin(cue.angle), tx = -ny, ty = nx;
+        h.lineStyle(3, 0xc0ffe0, .95)
+          .lineBetween(cue.x + tx * 11, cue.y + ty * 11, cue.x + nx * 7, cue.y + ny * 7)
+          .lineBetween(cue.x + nx * 7, cue.y + ny * 7, cue.x - tx * 11, cue.y - ty * 11)
+          .lineBetween(cue.x + nx * 13 + tx * 6, cue.y + ny * 13 + ty * 6, cue.x + nx * 21 + tx * 11, cue.y + ny * 21 + ty * 11)
+          .lineBetween(cue.x + nx * 13 - tx * 6, cue.y + ny * 13 - ty * 6, cue.x + nx * 21 - tx * 11, cue.y + ny * 21 - ty * 11);
+        continue;
+      }
       if(cue.kind==='clerk-patrol'){
         h.lineStyle(2,0xc6b8a0,.85).lineBetween(cue.x1,cue.y1,cue.x2,cue.y2);
         h.lineStyle(3,0xc6b8a0,1).strokeRect(cue.x2-12,cue.y2-12,24,24);
@@ -579,10 +614,22 @@ export class CombatScene extends Phaser.Scene {
             cue.y + 12,
           );
         if(cue.safeAt>0&&!safe)h.lineStyle(3,0xbddccb,.95).lineBetween(cue.x-16,cue.y+cue.radius-4,cue.x,cue.y+cue.radius+10).lineBetween(cue.x,cue.y+cue.radius+10,cue.x+16,cue.y+cue.radius-4);
-        if (safe)
-          h.lineStyle(4, color, 1)
-            .lineBetween(cue.x - 18, cue.y + 25, cue.x - 3, cue.y + 38)
-            .lineBetween(cue.x - 3, cue.y + 38, cue.x + 24, cue.y + 10);
+        if (safe) {
+          // Shield geometry and a retiring outer rim express protection and expiry.
+          const shield = [[-19, 20], [0, 13], [19, 20], [16, 39], [0, 51], [-16, 39]]
+            .map(([x, y]) => new Phaser.Math.Vector2(cue.x + x, cue.y + y));
+          h.lineStyle(3, color, 1).strokePoints(shield, true);
+          h.lineStyle(3, color, 1)
+            .lineBetween(cue.x - 9, cue.y + 31, cue.x - 1, cue.y + 38)
+            .lineBetween(cue.x - 1, cue.y + 38, cue.x + 11, cue.y + 25);
+          const remaining = Math.max(0, Math.min(1, (cue.until - now) / Math.max(1, cue.until - cue.safeAt))),
+            rim: Phaser.Math.Vector2[] = [];
+          for (let n = 0; n <= 48; n++) {
+            const angle = -Math.PI / 2 + Math.PI * 2 * remaining * n / 48;
+            rim.push(new Phaser.Math.Vector2(cue.x + Math.cos(angle) * (cue.radius + 8), cue.y + Math.sin(angle) * (cue.radius + 8)));
+          }
+          h.lineStyle(3, color, .85).strokePoints(rim, false);
+        }
       } else if (cue.kind === 'wheel') {
         h.lineStyle(now < cue.at ? 4 : 2, 0xe6bf72, now < cue.at ? 0.9 : 0.3);
         for (let i = 1; i < cue.path.length; i++) {

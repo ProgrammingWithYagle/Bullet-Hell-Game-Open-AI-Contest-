@@ -1,6 +1,21 @@
 # Changelog
 
-Development build **2026.10.26-appeal-circuit**, protocol 24. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.27-visible-shelter**, protocol 25. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-27 — Clerk shelter now stops a volley while it is open
+
+### A visible reason to enter the green seal
+
+- Each Clerk reopening is followed 0.5 seconds later by two locked seven-shot fans from the other red seals. Every fan has a 1.2-second warning with fixed origins and trajectories. Shelter is already open before release, and center shots reach its rim before it closes. Open-ground dodging remains possible; no offensive reward or health increase is added.
+- A shield outline marks active protection, an outer countdown rim shows its remaining time, and actual swept projectile interceptions produce bounded static broken-bullet marks. Earlier walls, class barriers, constructs and players retain collision priority. Warning and impact cues replicate to owner and observer; reduced-motion/flash settings need no added shake, flashing or particles.
+- Brutal/Crazed fans use the existing 2.5x/7.5x emission budgets and bounded warned echoes. Each later appeal warns its own pair. Phase changes, assistance, stagger and encounter exits clear queued seal volleys and impact cues. All prior art/audio and the other 65 complete boss definitions are preserved.
+
+### Testing instructions and continuity
+
+- Boss instructions remain visible for development testing, following the latest explicit human request. Fifteen help catalogs now explain the shelter benefit. The finished product must remove automatic fight instructions except for an optional default-off Baby-only setting; that option is a recorded future gate and is not claimed as implemented.
+- Protocol 25 migrates only the known issued protocol 24 local Practice/profile revision, preserving exact form/build/run history. Earlier bounded migrations remain; online/signed and unknown states stay strict.
+- A LAN integration-test race now waits for the first authoritative player patch after joining before reading class state. The previous metadata commit had one failed direct CI job and one passing PR job; the new checkpoint records fresh evidence instead of treating that failure as a gameplay pass.
+- Roster and individual-quality counts remain 66 identities (65 ordinary plus one secret), five of sixty original quality implementations, human accepted zero. Another 85 ordinary identities and 55 quality passes, plus the hosted/recovery/WAN/art/device/release gates, remain.
 
 ## 2026-10-26 — Clerk: reachable seals and a fresh appeal sequence
 

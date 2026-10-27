@@ -121,6 +121,26 @@ const rows = {
     "순서대로 찍히는 도장 셋은 도달 가능한 빈 바닥을 사용합니다. 홈이 있는 도장은 순서가 끝난 뒤 열립니다. 전반은 I, 후반은 잠깐 뒤 III입니다. 초록색을 기다리세요.",
   ],
 };
+const shelterHelp = {
+  en: "The green shield stops the warned volley from the two red seals, letting you keep firing. Bullets break on its rim; the outer ring counts down until shelter closes. You can also dodge outside.",
+  "zh-Hans":
+    "绿色护盾会挡住两个红色印记预警后的弹幕，让你继续射击。子弹会在边缘碎裂，外圈逐渐缩短，表示保护即将结束。你也可以在圈外闪避。",
+  "zh-Hant":
+    "綠色護盾會擋住兩個紅色印記預警後的彈幕，讓你繼續射擊。子彈會在邊緣碎裂，外圈逐漸縮短，表示保護即將結束。你也可以在圈外閃避。",
+  ja: "緑の盾は赤い二つの印から予告後に放たれる弾を防ぎ、攻撃を続けられる。弾は縁で砕け、外側の輪が減ると保護が終わる。外で避けることもできる。",
+  es: "El escudo verde detiene la descarga anunciada de los dos sellos rojos y te deja seguir disparando. Las balas se rompen en el borde; el anillo exterior marca cuánto dura el refugio. También puedes esquivar fuera.",
+  fr: "Le bouclier vert bloque la salve annoncée des deux sceaux rouges et permet de continuer à tirer. Les balles se brisent sur son bord ; le cercle extérieur indique le temps de protection restant. Vous pouvez aussi esquiver à l’extérieur.",
+  de: "Der grüne Schild fängt die angekündigte Salve der beiden roten Siegel ab, während du weiterfeuerst. Geschosse zerbrechen am Rand; der äußere Ring zeigt die verbleibende Schutzzeit. Du kannst auch außerhalb ausweichen.",
+  "pt-BR":
+    "O escudo verde bloqueia a rajada anunciada dos dois selos vermelhos e deixa você continuar atirando. As balas se quebram na borda; o anel externo mostra quanto tempo de proteção resta. Você também pode desviar fora.",
+  ru: "Зелёный щит останавливает залп двух красных печатей после предупреждения и позволяет продолжать стрелять. Пули разбиваются о край; внешнее кольцо показывает оставшееся время защиты. Можно уклоняться и снаружи.",
+  ar: "يصد الدرع الأخضر الرشقة المنذَر بها من الختمين الأحمرين، فيتيح لك مواصلة إطلاق النار. تتحطم الرصاصات عند حافته، وتوضح الحلقة الخارجية الوقت المتبقي للحماية. يمكنك أيضاً المراوغة في الخارج.",
+  hi: "हरा कवच दो लाल मुहरों की चेतावनी वाली बौछार रोकता है, जिससे आप गोली चलाते रह सकते हैं। गोलियाँ किनारे पर टूटती हैं; बाहरी घेरा सुरक्षा का बचा समय दिखाता है। आप बाहर भी बचकर निकल सकते हैं।",
+  bn: "সবুজ ঢাল দুটি লাল মোহরের সতর্ক করা গুলির ঝাঁক আটকে দেয়, তাই আপনি গুলি চালিয়ে যেতে পারেন। গুলি কিনারায় ভেঙে যায়; বাইরের বলয় সুরক্ষার বাকি সময় দেখায়। বাইরেও এড়িয়ে চলা যায়।",
+  id: "Perisai hijau menahan rentetan yang diperingatkan dari dua cap merah, sehingga kamu bisa terus menembak. Peluru pecah di tepinya; cincin luar menunjukkan sisa waktu perlindungan. Kamu juga bisa menghindar di luar.",
+  ur: "سبز ڈھال دو سرخ مہروں کی خبردار کردہ گولیوں کی بوچھاڑ روکتی ہے، تاکہ آپ فائر جاری رکھ سکیں۔ گولیاں کنارے پر ٹوٹتی ہیں؛ بیرونی دائرہ حفاظت کا باقی وقت دکھاتا ہے۔ آپ باہر بھی بچ سکتے ہیں۔",
+  ko: "초록 방패는 빨간 도장 두 곳에서 예고한 탄막을 막아 계속 사격할 수 있게 합니다. 탄환은 테두리에서 부서지고 바깥 고리는 남은 보호 시간을 보여 줍니다. 밖에서 회피해도 됩니다.",
+};
 export function clerkAppealMessages(locale) {
   const r = rows[locale];
   if (!r || r.length !== 6) throw Error("Missing Clerk help " + locale);
@@ -128,9 +148,9 @@ export function clerkAppealMessages(locale) {
   return {
     "boss.quarantine-clerk.phase.0": a,
     "boss.quarantine-clerk.phase.1": b,
-    "boss.quarantine-clerk.phaseHint.0": c,
-    "boss.quarantine-clerk.phaseHint.1": d,
+    "boss.quarantine-clerk.phaseHint.0": c + " " + shelterHelp[locale],
+    "boss.quarantine-clerk.phaseHint.1": d + " " + shelterHelp[locale],
     "boss.quarantine-clerk.brutalHelp": e,
-    "boss.quarantine-clerk.description": f,
+    "boss.quarantine-clerk.description": f + " " + shelterHelp[locale],
   };
 }

@@ -1,6 +1,6 @@
 # Development progress
 
-Updated 2026-10-26 for **2026.10.26-appeal-circuit**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
+Updated 2026-10-27 for **2026.10.27-visible-shelter**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
 
 66 playable identities: 65 ordinary and 1 secret. Three ordinary bosses in every one of fifty subtiers requires 150 ordinary identities, plus secrets; 85 additional ordinary bosses remain.
 
@@ -18,6 +18,8 @@ Updated 2026-10-26 for **2026.10.26-appeal-circuit**. These counts track specifi
 
 ## Latest human feedback
 
+- Human review of frozen 5189 found the Clerk seal order and later safe III clear enough, but the protective purpose was unclear. The old auxiliary fan waited until shelter expired. The follow-up now pairs each reopening with a fully warned fan from the two other seals and real rim interception cues; human comparison remains open.
+- Keep the current boss instruction text visible in development previews so the user can inspect encounter behavior. Final-product requirement: remove automatic fight instructions except for an optional, default-off Baby-only setting. This is a recorded release gate, not a shipped toggle; learnable visual boss behavior remains required.
 - Human comparison on frozen 5185: phase differences and Standard/Brutal difficulty are clearer, though these entry bosses remain easy. Large retreat corners let players disengage and reduce dash value. Requested smaller maps, a more atmospheric boss header, forced Insane Brutal, forced Hellish Crazed with purple/C treatment, higher projectile budgets and Standard-to-Brutal-to-Crazed Endless progression; phase sound and later bespoke animation were also requested.
 - Latest requested refinement: Normal combat revival is now 25%; Baby/Easy shield events have six/three circles and two/three-second channels; Baby gains two additional cover props per map. Shared authority/prediction/UI and software checks implement the request; human comparison remains open.
 - Manual feedback on frozen 5179: Early Watch bosses defeated quickly; phase changes were only partly visible. Two longer entry phases, health-bar dividers and a separate transition banner are now implemented and await human comparison.
@@ -30,6 +32,7 @@ Updated 2026-10-26 for **2026.10.26-appeal-circuit**. These counts track specifi
 
 ## Remaining release work
 
+- Before the finished product, remove automatic combat instruction paragraphs; expose them only through an optional default-off Baby-only setting. Keep instructions visible during current development testing, as explicitly requested. Teach mechanics through warned behavior and visible consequences, then obtain human acceptance.
 - Create and verify 85 additional ordinary boss identities, with distinct mechanics, art and individual original music; the target is at least 150 ordinary plus secrets.
 - Assess or redesign the remaining 55 existing boss encounters for distinct phases, meaningful pressure and separate Brutal behavior.
 - Review and tune the 21 implemented ability-changing upgrades and optional skill map on actual rendered/human/device/native-language surfaces.
