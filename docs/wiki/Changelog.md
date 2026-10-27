@@ -1,6 +1,23 @@
 # Changelog
 
-Development build **2026.10.27-last-dispatch**, protocol 30. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.27-cradle-relay**, protocol 31. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-27 — Cradle Matron: Hushed Ward and Cradle Relay
+
+### A moving ward and distinct second phase
+
+- Cradle Matron now follows a connected body-clear escort route to a marked new nest. Hushed Ward calls one gapped lullaby from that nest. At half health Cradle Relay changes flank and calls numbered lullabies in turn from surviving nests. Each wave warns for at least 1.6 seconds and locks its 86-degree gap before release. With no surviving nest the Matron calls alone. Base grade 2++, health, damage, deadline, authored attack definitions, selected art and individual theme remain.
+- Up to three nests call two early or four late minions after a full 1.2-second warning. The live cap stays eighteen. Matron brood explicitly uses obstacle navigation; other ordinary-enemy movement remains unchanged. Destroying a nest stops its future brood and unreleased needles; launched rings continue. Real map offsets, cover, body width and conservative Hellish lava footprints constrain escort and nest placement.
+
+### Advanced needle stitches
+
+- Brutal adds thirty actual controlled needles per calling nest from alternating ports. Crazed retains that exact thirty-shot prefix and extends each volley to ninety with extra crossing repeats. All distinct future rays are marked before release, alongside remaining-wave marks. The central opening remains inside the marked lullaby gap. Existing hostile limits and cancellation can reduce later releases.
+- Phase, pause, stagger, assistance and encounter exits clear pending owned work. A phase entry also clears the old brood before its replacement. Generic summon-slot exclusion keeps the owned sequence advancing after assistance. Existing service action poses follow authoritative clocks, with a static reduced-motion pose; dedicated walking art remains separate.
+
+### Continuity and remaining work
+
+- Fifteen locales include phase names, response hints and advanced help in the closed manual guide. Only exact known issued protocol-30 local Practice/profile content migrates to protocol 31; builds, form history, preferences and controls remain. Older known local migrations remain. Foreign revisions and online/signed boundaries stay strict. Testing/public choices and guide/tool/record policies remain.
+- This is original quality implementation ten of sixty; fifty remain and whole-boss human acceptance is open. Roster stays 66, with 85 new ordinary identities still needed. All earlier frozen clients and pinned backends remain separate. Browser access is disabled in Work settings; no new rendered, personal-clear, physical-device, native-language, listening or final balance acceptance is claimed.
 
 ## 2026-10-27 — Black Ambulance: Last Call and Second Dispatch
 

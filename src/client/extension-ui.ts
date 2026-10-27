@@ -1,3 +1,4 @@
+import {matronHelp} from './matron-text.ts';
 import {ambulanceHelp} from './ambulance-text.ts';
 import {widowHelp} from './widow-text.ts';
 import {marshalHelp} from './marshal-text.ts';
@@ -22,6 +23,7 @@ export function extensionText(
   return text;
 }
 export function signatureHelp(view: View, locale: string) {
+  if(view.boss.id==='matron')return matronHelp(view.boss.variant,locale);
   if(view.boss.id==='black-ambulance')return ambulanceHelp(view.boss.variant,locale);
   if(view.boss.id==='gate-widow')return widowHelp(view.boss.variant,locale);
   if(view.boss.id==='chain-marshal')return marshalHelp(view.boss.variant,locale);

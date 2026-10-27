@@ -1038,7 +1038,11 @@
             "telegraph": 1
           }
         ],
-        "patternPhase": 0
+        "patternPhase": 0,
+        "phaseNameKey": "boss.matron.phase.0",
+        "relayNestMaximum": 1,
+        "navigatingBrood": true,
+        "freshGapWarnings": true
       },
       {
         "healthThreshold": 0.5,
@@ -1063,7 +1067,11 @@
             "telegraph": 1
           }
         ],
-        "patternPhase": 2
+        "patternPhase": 2,
+        "phaseNameKey": "boss.matron.phase.1",
+        "relayNestMaximum": 3,
+        "navigatingBrood": true,
+        "freshGapWarnings": true
       }
     ],
     "route": "standard",
@@ -1072,13 +1080,50 @@
     "damageWindowFraction": 1,
     "signature": {
       "id": "matron",
-      "behavior": "Build destructible nests that continuously summon bounded packs while slow expanding rings divide the arena.",
-      "counterplay": "Destroy nests to control new arrivals, clear a path through the packs and cross each ring at its visible gap.",
+      "behavior": "Hushed Ward escorts a marked new nest along a connected body-clear route, then calls one gapped lullaby. Cradle Relay moves to the other flank and relays numbered lullabies through surviving nests. Early/late broods have two/four navigating minions, with the existing eighteen-actor cap. Brutal adds thirty separately warned alternating-port needles per calling nest. Crazed retains that prefix and adds sixty crossing needles.",
+      "counterplay": "Read the harmless pale escort path and the nest growth warning. Broods warn for at least 1.2 seconds; lullabies warn for at least 1.6 seconds and lock an 86-degree gap. Move through the numbered gaps. Destroy nests to stop their future brood and unreleased needles; active rings continue. No surviving nest makes the Matron call alone. All needle headings warn before release and repeated waves remain marked. Actual offset bounds, body width, cover and Hellish lava constrain escort and nest placement. Base combat, art and music remain.",
       "parameters": {
         "nestHealth": 100,
         "nestSpawnInterval": 6,
         "nestMaximum": 3,
-        "minionsPerNest": 2
+        "minionsPerNest": 2,
+        "cradleRelay": {
+          "gridSpacing": 32,
+          "bodyClearance": 8,
+          "minimumWalk": 96,
+          "maximumWalk": 320,
+          "walkWarningSeconds": 0.65,
+          "walkSpeed": 80,
+          "lateWalkSpeed": 100,
+          "nestRadius": 32,
+          "nestHealth": 100,
+          "nestMaximum": 3,
+          "broodWarningSeconds": 1.2,
+          "broodIntervalSeconds": 6,
+          "earlyBrood": 2,
+          "lateBrood": 4,
+          "minionMaximum": 18,
+          "minionHealth": 45,
+          "minionDamage": 9,
+          "pulseWarningSeconds": 1.6,
+          "relaySeconds": 0.9,
+          "pulseSpeed": 135,
+          "latePulseSpeed": 150,
+          "pulseWidth": 12,
+          "pulseDamage": 11,
+          "gapDegrees": 86,
+          "restSeconds": 2.5,
+          "needleBaseCount": 12,
+          "needleSpokes": 6,
+          "needleHalfGap": 0.96,
+          "needleStep": 0.22,
+          "needleWarningSeconds": 1.4,
+          "needleWaveSeconds": 0.25,
+          "needleSpeed": 175,
+          "needleDamage": 5,
+          "needleRadius": 5,
+          "crossingTurn": 0.18
+        }
       }
     },
     "artBrief": "An infirmary keeper shelters the dead beneath a dress sewn from bed linen. One dominant silhouette and one signature prop; quiet matte fabric masses, restrained surface detail.",
@@ -1123,7 +1168,11 @@
                 "comboOffsetSeconds": 0
               }
             ],
-            "patternPhase": 0
+            "patternPhase": 0,
+            "phaseNameKey": "boss.matron.phase.0",
+            "relayNestMaximum": 1,
+            "navigatingBrood": true,
+            "freshGapWarnings": true
           },
           {
             "healthThreshold": 0.5,
@@ -1151,7 +1200,11 @@
                 "comboOffsetSeconds": 1.25
               }
             ],
-            "patternPhase": 3
+            "patternPhase": 3,
+            "phaseNameKey": "boss.matron.phase.1",
+            "relayNestMaximum": 3,
+            "navigatingBrood": true,
+            "freshGapWarnings": true
           }
         ]
       },
@@ -1189,7 +1242,11 @@
                 "comboOffsetSeconds": 0
               }
             ],
-            "patternPhase": 0
+            "patternPhase": 0,
+            "phaseNameKey": "boss.matron.phase.0",
+            "relayNestMaximum": 1,
+            "navigatingBrood": true,
+            "freshGapWarnings": true
           },
           {
             "healthThreshold": 0.5,
@@ -1217,7 +1274,11 @@
                 "comboOffsetSeconds": 1.25
               }
             ],
-            "patternPhase": 3
+            "patternPhase": 3,
+            "phaseNameKey": "boss.matron.phase.1",
+            "relayNestMaximum": 3,
+            "navigatingBrood": true,
+            "freshGapWarnings": true
           }
         ],
         "additionalPatterns": [

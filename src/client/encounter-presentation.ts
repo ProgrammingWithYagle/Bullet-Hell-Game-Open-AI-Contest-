@@ -1,3 +1,4 @@
+import {matronFrame} from './matron-presentation.ts';
 import {ambulanceFrame} from './ambulance-presentation.ts';
 import smallWakes from '../../assets/production/motion/small-wakes-library.json';
 import earlyWatch from '../../assets/production/motion/early-watch-library.json';
@@ -32,6 +33,7 @@ export const encounterArt = baseEncounterArt.map(
     entry,
 );
 export function encounterFrame(boss: Boss, now: number, cues: BossCue[], reduced = false) {
+  if(boss.id==='matron'){if(boss.health<=0)return 7;if(now<boss.staggerUntil)return 0;return matronFrame(cues.filter((q):q is import('../shared/matron-ward.ts').MatronCue=>q.kind==='matron-walk'||q.kind==='matron-brood'||q.kind==='matron-pulse'||q.kind==='matron-needles'||(q.kind==='service-prop'&&q.role==='nest')),now,reduced);}
   if (
     [...serviceBossIds, ...districtBossIds, ...raidBossIds, ...finalBossIds].some(
       (id) => id === boss.id,

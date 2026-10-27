@@ -25,7 +25,7 @@ const wait = async (check: () => boolean) => {
     await new Promise((r) => setTimeout(r, 15));
   }
 };
-test("only exact known issued29 Practice/profile state migrates to30 while retaining builds, form history and optional settings", () => {
+test("only exact known issued29 Practice/profile state migrates to the current protocol while retaining builds, form history and optional settings", () => {
   const g = createPracticeGame(
       { mode: "endless", openingBossId: "black-ambulance", seed: 117 },
       "Mara",
@@ -37,8 +37,8 @@ test("only exact known issued29 Practice/profile state migrates to30 while retai
   old.protocolVersion = 29;
   old.contentRevision = issued;
   const restored = Game.restoreOffline(old).offlineCheckpoint()!;
-  assert.equal(PROTOCOL, 30);
-  assert.equal(restored.protocolVersion, 30);
+  assert.equal(PROTOCOL, 31);
+  assert.equal(restored.protocolVersion, PROTOCOL);
   assert.equal(restored.contentRevision, CONTENT_REVISION);
   assert.deepEqual(restored.player, save.player);
   assert.deepEqual(restored.completedBossForms, save.completedBossForms);

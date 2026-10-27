@@ -132,6 +132,7 @@ export class Minions {
     obstacles: Rect[],
     contact: (target: Target, damage: number) => void,
     aimTargets: Target[] = targets,
+    navigateOrdinary = false,
   ) {
     for (const actor of this.actors.values()) {
       if (actor.expires <= tick) {
@@ -150,7 +151,7 @@ export class Minions {
         actor.goalX = actor.goalY = undefined;
       }
       const intended = actor.goalX === undefined ? (target ?? actor) : { x: actor.goalX, y: actor.goalY! };
-      const destination=actor.kind==='rat'&&actor.goalX===undefined ? this.ratNavigator.waypoint(actor.id,actor,intended,obstacles,actor.radius,tick) : intended;
+      const destination=(actor.kind==='rat'||navigateOrdinary)&&actor.goalX===undefined ? this.ratNavigator.waypoint(actor.id,actor,intended,obstacles,actor.radius,tick) : intended;
       const dx = destination.x - actor.x,
         dy = destination.y - actor.y,
         length = Math.hypot(dx, dy);

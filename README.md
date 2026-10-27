@@ -32,7 +32,7 @@ The optional [expanded skill map](docs/OPTIONAL_SKILL_MAP.md) shows all 54 skill
 
 Latest rules: docs/ASSIST_LIMITS.md — Normal revives at 25%; Baby/Easy use six/three shield circles and two/three-second channels; Baby adds two cover props per map. Preserve all prior frozen previews. [Twenty-one class ability transformations](docs/CLASS_TALENTS.md) are now integrated at existing utility-path depth-three nodes, with all costs and prerequisites retained. Human/rendered review remains open.
 
-[Lantern Warden quality pass](docs/WARDEN_PATROL.md) adds rest-only patrols, directional sweeps and a fully warned sequential Brutal return. Nine original-roster quality passes are implemented (Constable, Warden, Courier, Ratcatcher, Clerk, Tollkeeper, Chain Marshal, Gate Widow and Black Ambulance); 51 remain. Its four patrol poses brought that checkpoint to 1,506; current selected runtime motion is 1,542. Human/rendered acceptance remains open.
+[Lantern Warden quality pass](docs/WARDEN_PATROL.md) adds rest-only patrols, directional sweeps and a fully warned sequential Brutal return. Ten original-roster quality passes are implemented (Constable, Warden, Courier, Ratcatcher, Clerk, Tollkeeper, Chain Marshal, Gate Widow, Black Ambulance and Cradle Matron); 50 remain. Its four patrol poses brought that checkpoint to 1,506; current selected runtime motion is 1,542. Human/rendered acceptance remains open.
 
 Full verification also uses Python 3 with the pinned Pillow dependency: `python -m pip install -r tools/art-verification-requirements.txt`. This is a development verification dependency; the game itself remains browser/Windows JavaScript. CI installs it in an isolated virtual environment.
 
@@ -55,3 +55,5 @@ Full verification also uses Python 3 with the pinned Pillow dependency: `python 
 [Crossed Threshold](docs/CROSSED_THRESHOLD.md) adds Gate Widow’s connected gate passages, moving late phase and floor palls. Clerk gains shelter damage bonuses and Crazed lasting domains. [Testing/public builds](docs/TESTING_AND_PUBLIC_BUILDS.md) now separate the opening selectors, guide availability and Solo tools. Optional overhead names/chat and a visible Leaderboards page are implemented; online verified ranks remain unfinished. Browser testing is now authorized; rendered and human acceptance are separate.
 
 [Last Dispatch](docs/LAST_DISPATCH.md) gives Black Ambulance connected patrols, distinct serial phase headings, three-second driver recovery and warned advanced door volleys. Full offset bounds replace dimension-only probe checks; the earlier outside claim was rejected. No new identity, art or audio is added. Current rendered/human/device/native-language/listening acceptance remains open.
+
+[Cradle Relay](docs/MATRON_WARD.md) gives Cradle Matron connected escort routes, two/four navigating broods, numbered gapped lullabies and warned advanced needle stitches. No new identity, art or audio is added; rendered/human acceptance remains open.

@@ -60,7 +60,7 @@ test('Matron nests obey their tell, summon bounded real packs and stop permanent
   const nest = of(f.director, 'service-prop')[0];
   assert.equal(nest.health, 100);
   assert.equal(f.spawned.length, 0);
-  f.step(nest.at - 1);
+  for(let tick=1;tick<nest.at;tick++)f.step(tick);
   assert.equal(f.spawned.length, 0);
   f.step(nest.at);
   assert.equal(f.spawned.length, 2);

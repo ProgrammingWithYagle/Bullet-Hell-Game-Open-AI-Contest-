@@ -1,3 +1,4 @@
+import {drawMatronCue} from './matron-cues.ts';
 import {drawAmbulanceCue} from './ambulance-cues.ts';
 import {drawWidowCue} from './widow-presentation.ts';
 import clerkRules from '../shared/clerk-appeal-rules.json';
@@ -454,7 +455,12 @@ export class CombatScene extends Phaser.Scene {
     }
     const drawnDomains=new Set<string>();
     const drawnAmbulanceBursts = new Set<string>();
+    const drawnMatronNeedles=new Set<number>();
     for (const cue of view.bossCues) {
+      if(cue.kind==='matron-walk'||cue.kind==='matron-brood'||cue.kind==='matron-pulse'||cue.kind==='matron-needles'){
+        if(cue.kind==='matron-needles'){if(drawnMatronNeedles.has(cue.sourceId))continue;drawnMatronNeedles.add(cue.sourceId);}
+        drawMatronCue(h,f,cue,now,view.bossCues.filter((q):q is import('../shared/matron-ward.ts').MatronCue=>q.kind==='matron-walk'||q.kind==='matron-brood'||q.kind==='matron-pulse'||q.kind==='matron-needles'||(q.kind==='service-prop'&&q.role==='nest')));continue;
+      }
       if(cue.kind==='ambulance-patrol'||cue.kind==='ambulance-lane'||cue.kind==='ambulance-stop'||cue.kind==='ambulance-burst'){
         if(cue.kind==='ambulance-burst'){const key=cue.x+':'+cue.y;if(drawnAmbulanceBursts.has(key))continue;drawnAmbulanceBursts.add(key);}
         drawAmbulanceCue(h,f,cue,now,view.bossCues.filter((q):q is import('../shared/ambulance-route.ts').AmbulanceCue=>q.kind==='ambulance-patrol'||q.kind==='ambulance-lane'||q.kind==='ambulance-stop'||q.kind==='ambulance-burst'||q.kind==='driver'));continue;

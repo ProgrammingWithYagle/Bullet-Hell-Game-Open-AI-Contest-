@@ -8,7 +8,7 @@ type Graph = {
 type Route = { next: number; target: Vec; points: Vec[] };
 const clear = (a: Vec, b: Vec, obstacles: Rect[], radius: number) =>
   !obstacles.some((o) => segmentRect(a, b, o, radius) !== null);
-/** Only rats use these paths after their fixed scent leg; graphs have at most 64 corners. */
+/** Rats after their fixed scent leg, plus the explicit Matron brood option; at most 64 corners. */
 export class RatNavigator {
   private graph?: Graph;
   private routes = new Map<number, Route>();

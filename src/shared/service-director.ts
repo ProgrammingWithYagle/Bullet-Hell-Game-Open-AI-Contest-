@@ -1,3 +1,4 @@
+import {MatronWard,type MatronCue} from './matron-ward.ts';
 import catalog from '../../content/catalog.json' with { type: 'json' };
 // Services of the dead: authoritative, readable signatures for Midnight Circuit.
 // Phaser consumes these exact shapes; current/tether movement is also shared with prediction.
@@ -135,6 +136,7 @@ type Spiral = Life &
     damage: number;
   };
 export type ServiceCue =
+  | MatronCue
   | ServiceProp
   | Pool
   | Ring
@@ -252,6 +254,7 @@ export function serviceRingContact(
   return false;
 }
 export class ServiceDirector {
+  readonly matron=new MatronWard();
   private kind = '';
   private castIndex = 0;
   nextSignatureAt = 0;
@@ -259,6 +262,7 @@ export class ServiceDirector {
   private contacts = new Map<string, number>();
   private once = new Set<string>();
   reset(kind: string, encounter = false) {
+    this.matron.reset(0,encounter||kind!==this.kind);
     const keepChoir = kind === this.kind && kind === 'choir' && !encounter;
     this.shapes = keepChoir
       ? this.shapes.filter((c) => c.kind === 'service-prop' && c.role === 'caster')
@@ -275,7 +279,7 @@ export class ServiceDirector {
     return serviceMovement(this.shapes, position, id, now);
   }
   cues(): ServiceCue[] {
-    return this.shapes.map((c) => {
+    return [...this.matron.cues(),...this.shapes.map((c) => {
       if (c.kind === 'service-sanctuary')
         return {
           ...c,
@@ -286,18 +290,19 @@ export class ServiceDirector {
         };
       if (c.kind === 'service-beam') return { ...c, dependencies: [...c.dependencies] };
       return { ...c };
-    });
+    })];
   }
   weakPoints() {
-    return this.shapes.filter(
+    return [...this.matron.weakPoints(),...this.shapes.filter(
       (c): c is ServiceProp | Tether =>
         (c.kind === 'service-prop' || c.kind === 'service-tether') && c.health > 0,
-    );
+    )];
   }
   transfersDamage(id: number) {
     return this.shapes.some((c) => c.id === id && c.kind === 'service-prop' && c.role === 'caster');
   }
   hit(id: number, damage: number, now: number) {
+    const matron=this.matron.hit(id,damage);if(matron)return matron;
     const prop = this.weakPoints().find((p) => p.id === id);
     if (!prop) return 0;
     const actual = Math.min(prop.health, Math.max(0, damage));
@@ -411,6 +416,7 @@ export class ServiceDirector {
   }
   cast(c: SignatureContext, target: Vec, attack: ServiceAttack) {
     if (!this.handles(c.bossId)) return false;
+    if(c.bossId==='matron')return this.matron.cast(c,target);
     const now = c.tick,
       at = now + ticks(attack.telegraph),
       index = this.castIndex++,
@@ -426,21 +432,6 @@ export class ServiceDirector {
           : (attack.interval ?? 8),
       );
     switch (c.bossId) {
-      case 'matron': {
-        const nests = this.weakPoints().filter(
-          (p) => p.kind === 'service-prop' && p.role === 'nest',
-        );
-        if (nests.length < 3)
-          this.prop(
-            c,
-            'nest',
-            { x: center.x + [-250, 250, 0][index % 3], y: center.y + [110, 110, -60][index % 3] },
-            100,
-            index,
-            at,
-          );
-        break;
-      }
       case 'alchemist': {
         for (let n = 0; n < Math.min(7, attack.count); n++) {
           const angle = index * 0.8 + (n * Math.PI * 2) / Math.max(3, attack.count);
@@ -822,6 +813,7 @@ export class ServiceDirector {
       );
   }
   step(c: SignatureContext) {
+    if(c.bossId==='matron'){this.matron.step(c);return;}
     this.prepare(c);
     const now = c.tick;
     for (const cue of this.shapes) {
