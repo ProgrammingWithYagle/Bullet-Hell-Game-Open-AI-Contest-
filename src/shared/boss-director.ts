@@ -1,3 +1,4 @@
+import {RatcatcherMuster,type RatMusterCue} from './ratcatcher-muster.ts';
 import {CourierRoute,type CourierCue} from './courier-route.ts';
 import {SmallWakesDirector, type SmallWakesCue} from './small-wakes-director.ts';
 import type {WardenCue} from './warden-patrol.ts';
@@ -21,6 +22,7 @@ import type { VariantPressureCue } from './variant-pressure.ts';
 import type { EchoCue } from './brutal-volley.ts';
 import type { ArenaLavaCue } from './arena-layouts.ts';
 export type BossCue =
+  | RatMusterCue
   | CourierCue
   | SmallWakesCue
   | WardenCue
@@ -134,6 +136,7 @@ const ticks = (seconds: number) => Math.ceil(seconds * HZ);
 
 export class BossDirector {
   readonly courier=new CourierRoute();
+  readonly ratcatcher=new RatcatcherMuster();
   readonly smallWakes = new SmallWakesDirector();
   readonly earlyWatch = new EarlyWatchDirector();
   readonly civic = new CivicDirector();
@@ -190,6 +193,7 @@ export class BossDirector {
   private restoreAt = 0;
 
   reset(kind: BossId, brutal = false, encounter = false) {
+    this.ratcatcher.reset(kind==='ratcatcher',brutal);
     this.courier.reset();
     this.smallWakes.reset(kind, encounter);
     this.earlyWatch.reset(kind, encounter);
@@ -216,19 +220,10 @@ export class BossDirector {
     return !!this.charge || this.courier.charging;
   }
   weakPoint(): Extract<BossCue, { kind: 'sack' }> | null {
-    return this.kind === 'ratcatcher'
-      ? {
-          kind: 'sack',
-          id: this.sackId,
-          x: this.origin.x + 42,
-          y: this.origin.y - 65,
-          radius: 24,
-          health: this.sackHealth,
-          maxHealth: this.sackMaximum,
-        }
-      : null;
+    return this.kind==='ratcatcher'?this.ratcatcher.sack():null;
   }
   weakContact(from: Vec, to: Vec, weak: Vec & { kind: string; radius: number }, radius: number) {
+    if(weak.kind==='sack'&&this.kind==='ratcatcher')return this.ratcatcher.weakContact(from,to,radius);
     if (weak.kind === 'endless-prop')
       return this.endless.weakContact(from, to, weak as EndlessProp, radius);
     if (weak.kind === 'raid-prop') {
@@ -290,6 +285,7 @@ export class BossDirector {
       .some((p) => p.role === 'core' && this.district.weakContact(from, to, p, radius) !== null);
   }
   hitWeakPoint(amount: number, tick: number, id?: number) {
+    if(this.kind==='ratcatcher')return this.ratcatcher.hit(amount,tick,id);
     if (id !== undefined && this.smallWakes.handles(this.kind)) return this.smallWakes.hit(id, amount);
     if (id !== undefined && this.earlyWatch.handles(this.kind)) return this.earlyWatch.hit(id, amount);
     if (id !== undefined && this.endless.handles(this.kind)) return this.endless.hit(id, amount);
@@ -298,22 +294,7 @@ export class BossDirector {
       return this.district.hit(id, amount, tick);
     if (id !== undefined && this.services.handles(this.kind))
       return this.services.hit(id, amount, tick);
-    if (id !== undefined && this.kind !== 'ratcatcher') return this.civic.hit(id, amount);
-    if (this.kind !== 'ratcatcher' || this.sackHealth <= 0) return 0;
-    const actual = Math.min(this.sackHealth, amount);
-    this.sackHealth -= actual;
-    if (this.sackHealth <= 0) {
-      const pending = this.packs.find((pack) => pack.lanes[0]?.at > tick && !pack.interrupted);
-      if (pending) {
-        pending.interrupted = true;
-        for (const lane of pending.lanes) lane.interrupted = true;
-        this.restoreAt = pending.lanes[0].at + ticks(3);
-      } else {
-        this.blockPack = true;
-        this.restoreAt = 0;
-      }
-    }
-    return actual;
+    return id!==undefined?this.civic.hit(id,amount):0;
   }
   private end(context: SignatureContext, target: Vec, extra: number): Vec {
     const from = context.boss,
@@ -365,6 +346,7 @@ export class BossDirector {
     return true;
   }
   startPacks(context: SignatureContext, target: Vec, attack: SignatureAttack) {
+    if(context.bossId==='ratcatcher')return this.ratcatcher.cast(context,target,attack);
     if (this.packs.length) return false;
     const aim = Math.atan2(target.y - context.boss.y, target.x - context.boss.x);
     const at = context.tick + ticks(attack.telegraph);
@@ -454,6 +436,7 @@ export class BossDirector {
   }
   cues(): BossCue[] {
     return [
+      ...this.ratcatcher.cues(),
       ...this.courier.cues(),
       ...this.smallWakes.cues(),
       ...this.earlyWatch.cues(),
@@ -475,6 +458,7 @@ export class BossDirector {
     this.contacts.set(id, context.tick + ticks(0.5));
   }
   step(context: SignatureContext) {
+    if(context.bossId==='ratcatcher'){this.ratcatcher.step(context);return;}
     if(context.bossId==='courier')this.courier.step(context);
     this.smallWakes.step(context);
     this.earlyWatch.step(context);

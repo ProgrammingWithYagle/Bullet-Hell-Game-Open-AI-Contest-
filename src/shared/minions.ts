@@ -1,4 +1,5 @@
 // Server-owned ordinary actors. Bosses deliberately do not use this slow state.
+import {RatNavigator} from './rat-navigation.ts';
 import catalog from '../../content/catalog.json' with { type: 'json' };
 import { DT, HZ, type Vec } from './protocol.ts';
 import { distance, moveBody, segmentCircle, type Rect } from './geometry.ts';
@@ -37,6 +38,7 @@ export type MinionSpawn = {
 type Target = Vec & { id: string; oldX?: number; oldY?: number };
 
 export class Minions {
+  private ratNavigator=new RatNavigator();
   readonly actors = new Map<number, Minion>();
   spawn(id: number, definition: MinionSpawn, tick: number): Minion | null {
     const lifetime = definition.lifeSeconds ?? 60;
@@ -121,7 +123,7 @@ export class Minions {
         ? Math.min(actor.slowMultiplier, slowMultiplier)
         : slowMultiplier;
     }
-    if (actor.health <= 0) this.actors.delete(id);
+    if (actor.health <= 0){this.actors.delete(id);this.ratNavigator.remove(id);}
     return actual;
   }
   step(
@@ -133,7 +135,7 @@ export class Minions {
   ) {
     for (const actor of this.actors.values()) {
       if (actor.expires <= tick) {
-        this.actors.delete(actor.id);
+        this.actors.delete(actor.id);this.ratNavigator.remove(actor.id);
         continue;
       }
       actor.oldX = actor.x;
@@ -147,8 +149,8 @@ export class Minions {
       if (actor.goalX !== undefined && distance(actor, { x: actor.goalX, y: actor.goalY! }) < 24) {
         actor.goalX = actor.goalY = undefined;
       }
-      const destination =
-        actor.goalX === undefined ? (target ?? actor) : { x: actor.goalX, y: actor.goalY! };
+      const intended = actor.goalX === undefined ? (target ?? actor) : { x: actor.goalX, y: actor.goalY! };
+      const destination=actor.kind==='rat'&&actor.goalX===undefined ? this.ratNavigator.waypoint(actor.id,actor,intended,obstacles,actor.radius,tick) : intended;
       const dx = destination.x - actor.x,
         dy = destination.y - actor.y,
         length = Math.hypot(dx, dy);
@@ -157,7 +159,7 @@ export class Minions {
         speed * DT,
         Math.max(
           0,
-          length - (actor.goalX === undefined ? actor.radius + catalog.rules.playerRadius : 0),
+          length - (actor.goalX === undefined && destination===intended ? actor.radius + catalog.rules.playerRadius : 0),
         ),
       );
       const next = moveBody(
@@ -202,6 +204,6 @@ export class Minions {
     return [...this.actors.values()].map((actor) => ({ ...actor }));
   }
   clear() {
-    this.actors.clear();
+    this.actors.clear();this.ratNavigator.clear();
   }
 }

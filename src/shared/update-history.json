@@ -1,5 +1,5 @@
 {
-  "buildId": "2026.10.26-return-address",
+  "buildId": "2026.10.26-roving-muster",
   "snapshot": {
     "bosses": 66,
     "classes": 7,
@@ -13,9 +13,33 @@
       "raid",
       "endless"
     ],
-    "protocol": 22
+    "protocol": 23
   },
   "entries": [
+    {
+      "id": "roving-muster",
+      "date": "2026-10-26",
+      "title": "Ratcatcher: a moving muster and rats that route around cover",
+      "groups": [
+        {
+          "title": "A different late-phase position",
+          "items": [
+            "Ratcatcher keeps fixed threat 1-, original Standard health/damage, two half-health phases, its 120-second deadline, sixteen selected poses and individual theme. Open Sack warns three fixed scent lanes. At half health, Roving Muster marks a short patrol, moves at 80 pixels per second, then locks a fresh 1.2-second pack warning from its actual stop.",
+            "Both boss and attached sack resolve against bounds/masonry. Pack spawns use locked lane origins. The moving sack uses relative swept contact and retains 65/130 health, next-pack cancellation and restoration three seconds after the cancelled release. Intrinsic sack counterplay stays separate from Baby/Easy phase circles.",
+            "Rats find bounded paths around cover after their fixed scent leg. Only rats use the cached 64-corner visibility graph; ordinary actors keep their movement. Routes refresh for changed targets/obstacles, close corners must be reached before turning, and death/expiry/clear removes navigation state. Rat health, damage, speed scaling and the twelve-live cap remain.",
+            "Advanced forms add one/two fully warned gapped whistle rings across the two phases. The late second gap turns. Breaking the sack cancels rats, not whistles. Projectiles use existing 2.5x/7.5x budgets, bounded repeats and the live cap. Unassisted phase changes cancel pending routes/rings/echoes while existing rats persist; successful assistance and encounter exits retain full cleanup.",
+            "Patrol marks, locked ring/gap geometry, existing warning/release poses, phase names and persistent response hints share the authority and fifteen locale catalogs. The phase bell and reduced-motion-aware entry animation remain. New walking/whistle art or audio recordings and rendered/native-language/device/listening/final balance acceptance remain open."
+          ]
+        },
+        {
+          "title": "Preserved history and remaining work",
+          "items": [
+            "Protocol 23 preserves known issued protocol 22 local Practice/profile state, including exact completed forms, builds and run identity. Protocol 21 and earlier bounded migrations remain; unknown and online/signed state stays strict.",
+            "This is the fourth individual original-roster quality implementation: 56 remain and human accepted 0. The roster stays 65 ordinary plus one secret. Another 85 ordinary identities and the documented hosted/recovery/WAN/capacity/art/device/release gates remain. Profiles, five modes, seven class kits, 21 ability transformations and the optional all-54 skill map are implemented."
+          ]
+        }
+      ]
+    },
     {
       "id": "return-address",
       "date": "2026-10-26",

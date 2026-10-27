@@ -1,3 +1,4 @@
+import {ratcatcherHelp} from './ratcatcher-text.ts';
 import {courierHelp} from './courier-text.ts';
 import smallWakesHelp from './small-wakes-help.json';
 import {smallWakesIds} from '../shared/small-wakes-director.ts';
@@ -16,6 +17,7 @@ export function extensionText(
   return text;
 }
 export function signatureHelp(view: View, locale: string) {
+  if(view.boss.id==='ratcatcher')return ratcatcherHelp(view.boss.variant,locale);
   if(view.boss.id==='courier')return courierHelp(view.boss.variant,locale);
   if(smallWakesIds.some(id=>id===view.boss.id)){
     const words=(smallWakesHelp[locale as keyof typeof smallWakesHelp]??smallWakesHelp.en) as Record<string,string>;

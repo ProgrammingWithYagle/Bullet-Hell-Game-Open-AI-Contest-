@@ -1,6 +1,8 @@
 # Bosses
 
-Carrion Courier now changes from one to two Standard deliveries at half health. Each leg warns from its actual previous stop; Brutal/Crazed add one leg and a fully warned split fan. Trails fade from the oldest end, with explicit recovery between routes. Its fixed1-- grade, health, damage, 28 poses and Undelivered theme remain. [Courier implementation](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/COURIER_ROUTE.md). Current original quality progress:3/60 implemented,57 remaining;human acceptance open.
+Ratcatcher changes from stationary Open Sack to a late Roving Muster. It marks a short patrol, stops, then warns new fixed scent lanes. Rats route around cover; advanced forms add one/two warned gapped whistle rings. The intrinsic sack cancels rat packs, not whistles. Health, damage, deadline, sixteen poses and the original score remain. [Implementation](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/RATCATCHER_MUSTER.md). Human review remains open.
+
+Carrion Courier now changes from one to two Standard deliveries at half health. Each leg warns from its actual previous stop; Brutal/Crazed add one leg and a fully warned split fan. Trails fade from the oldest end, with explicit recovery between routes. Its fixed1-- grade, health, damage, 28 poses and Undelivered theme remain. [Courier implementation](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/COURIER_ROUTE.md). Current original quality progress: 4/60 implemented, 56 remaining; human acceptance open.
 
 Sixty-six bosses are executable in the current source. Each has its own signature, phases, Standard/Brutal/Crazed forms, presentation and music. A signature table describes practical counterplay; supplemental attacks still require ordinary bullet-hell movement.
 

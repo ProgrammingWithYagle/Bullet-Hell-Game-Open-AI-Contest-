@@ -2,14 +2,14 @@
 
 The shared deterministic simulation runs at 30 Hz. Phaser presents its state; menus and HUD use a DOM overlay. Offline play hosts the same authority in a worker. Online play uses Colyseus rooms and a server-owned simulation, with client movement prediction and reconciliation.
 
-**Current runtime protocol: 22.** The immutable authored content revision is `9598869248912ad6a787d6e72791183acf4e12d38da92f2a677164f93e3f51c7`. The content bible's historical protocol field is not the live transport protocol; `src/shared/protocol.ts` owns that value.
+**Current runtime protocol: 23.** The immutable authored content revision is `da37e2a0e2beb54343495ce39027211df254fa1c79ab42ec3f3360373ad792db`. The content bible's historical protocol field is not the live transport protocol; `src/shared/protocol.ts` owns that value.
 
 - Gameplay validates inputs, purchases, skill prerequisites, votes, rewards, collisions and boss transitions at the authority.
 - Projectile batches reuse weak-point/solid geometry with immediate refresh after destructive hits. Construct broad phases preserve rotated-wall contact and shield order; live Walking District buildings receive friendly weapon damage and block hostile shots.
 - Compact projectile waves and actor field patches retain exact gameplay values. Shared geometry handles swept shots and body contacts.
 - Class kits, minions and the civic/service boss directors keep rules separate from presentation. Prediction shares map geometry and environmental forces.
 - All six maps use one camera space with different traversable footprints. The same source feeds server collision, prediction and map previews.
-- JSON boundary saves retain run state. Local protocol-4 through protocol-21 saves have explicitly bounded migrations. Online clients and signed saves require the current protocol.
+- JSON boundary saves retain run state. Local protocol-4 through protocol-22 saves have explicitly bounded migrations. Online clients and signed saves require the current protocol.
 - Original image returns, exact requests, references and superseded attempts remain preserved; technical normalization does not invent animation frames.
 - Local ProfileV1 receipts record personal deployment/clears/rescues with opaque run IDs. Monotonic high-water counts prevent duplicate mastery across patches/restores; profile values never supply combat power. [Profiles](Profiles).
 - One structured update history drives the in-game journal and both Markdown changelogs. Tests reject stale published source text or playable-content counts.

@@ -67,6 +67,11 @@ export function encounterFrame(boss: Boss, now: number, cues: BossCue[], reduced
     return 7;
   }
   if (boss.id === 'ratcatcher') {
+    const rings=cues.filter(c=>c.kind==='ratcatcher-whistle');
+    const released=rings.find(c=>now>=c.at && now<c.until);
+    if(released&&released.kind==='ratcatcher-whistle')return Math.min(7,4+Math.floor((now-released.at)/3));
+    const nextRing=rings.find(c=>now<c.at);
+    if(nextRing&&nextRing.kind==='ratcatcher-whistle')return Math.min(3,1+Math.floor(Math.max(0,now-nextRing.at+36)/12));
     const lane = cues.find((cue) => cue.kind === 'scent');
     if (lane && lane.kind === 'scent') {
       if (lane.interrupted) return 0;

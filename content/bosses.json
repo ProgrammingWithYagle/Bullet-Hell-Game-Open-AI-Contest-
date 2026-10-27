@@ -4752,15 +4752,48 @@
     "artBrief": "A hunched pest-control corpse with a large sack and hooked walking stick. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
     "signature": {
       "id": "ratcatcher",
-      "behavior": "Send three rat packs along visible scent lanes; striking the sack interrupts the next pack.",
-      "counterplay": "Break the outlined sack weak point or cross between the three trails.",
+      "behavior": "Three locked scent lanes release twelve bounded rats. At half health the Ratcatcher relocates before each new warning. Advanced forms finish with one/two fully warned gapped whistle rings.",
+      "counterplay": "Read the new ground origin after the patrol, cross between fixed scent lanes and shoot the sack to cancel a pack. Rats can navigate around cover. Follow the marked whistle gap in advanced forms; a broken sack does not silence the whistle.",
       "parameters": {
         "packs": 3,
         "ratsPerPack": 4,
         "ratHealthHP": 12,
         "packSpeedPxPerSecond": 125,
         "sackHealthHP": 65,
-        "spawnIntervalSeconds": 7
+        "spawnIntervalSeconds": 7,
+        "muster": {
+          "patrolDistance": 160,
+          "patrolSpeed": 80,
+          "patrolWarningSeconds": 0.65,
+          "packWarningSeconds": 1.2,
+          "packLanes": 3,
+          "ratsPerLane": 4,
+          "ratHealth": 12,
+          "maximumRats": 12,
+          "sackHealth": 65,
+          "sackRecoverySeconds": 3,
+          "sackOffset": {
+            "x": 42,
+            "y": -65
+          },
+          "sackRadius": 24,
+          "recoverySeconds": 0.75,
+          "advancedRecoverySeconds": 1.1,
+          "betweenMustersSeconds": 1.5,
+          "whistleWarningSeconds": 1.2,
+          "whistleCount": [
+            8,
+            12
+          ],
+          "whistlePasses": [
+            1,
+            2
+          ],
+          "whistleGapRadians": 1.4,
+          "whistleTurnRadians": 1.0471975511965976,
+          "whistleDamage": 7,
+          "whistleSpeed": 165
+        }
       }
     },
     "arenaIds": [
@@ -4802,7 +4835,9 @@
             "telegraph": 1
           }
         ],
-        "patternPhase": 0
+        "patternPhase": 0,
+        "phaseNameKey": "boss.ratcatcher.phase.0",
+        "relocatesBeforePack": false
       },
       {
         "healthThreshold": 0.5,
@@ -4827,7 +4862,9 @@
             "telegraph": 1
           }
         ],
-        "patternPhase": 2
+        "patternPhase": 2,
+        "phaseNameKey": "boss.ratcatcher.phase.1",
+        "relocatesBeforePack": true
       }
     ],
     "variants": {
@@ -4871,7 +4908,9 @@
                 "comboOffsetSeconds": 0
               }
             ],
-            "patternPhase": 0
+            "patternPhase": 0,
+            "phaseNameKey": "boss.ratcatcher.phase.0",
+            "relocatesBeforePack": false
           },
           {
             "healthThreshold": 0.5,
@@ -4899,7 +4938,9 @@
                 "comboOffsetSeconds": 1.25
               }
             ],
-            "patternPhase": 3
+            "patternPhase": 3,
+            "phaseNameKey": "boss.ratcatcher.phase.1",
+            "relocatesBeforePack": true
           }
         ]
       },
@@ -4937,7 +4978,9 @@
                 "comboOffsetSeconds": 0
               }
             ],
-            "patternPhase": 0
+            "patternPhase": 0,
+            "phaseNameKey": "boss.ratcatcher.phase.0",
+            "relocatesBeforePack": false
           },
           {
             "healthThreshold": 0.5,
@@ -4965,7 +5008,9 @@
                 "comboOffsetSeconds": 1.25
               }
             ],
-            "patternPhase": 3
+            "patternPhase": 3,
+            "phaseNameKey": "boss.ratcatcher.phase.1",
+            "relocatesBeforePack": true
           }
         ],
         "additionalPatterns": [

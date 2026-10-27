@@ -482,6 +482,24 @@ export class CombatScene extends Phaser.Scene {
         h.lineStyle(3,cue.crazed?0xe6caff:0xffd7a0,.95).strokeCircle(cue.x,cue.y,12+progress*10);
         continue;
       }
+      if(cue.kind==='ratcatcher-patrol'){
+        h.lineStyle(2,0xb8cba7,.8).lineBetween(cue.x1,cue.y1,cue.x2,cue.y2);
+        h.lineStyle(3,0xb8cba7,1).strokeCircle(cue.x2,cue.y2,14);
+        h.lineBetween(cue.x2-6,cue.y2,cue.x2+6,cue.y2).lineBetween(cue.x2,cue.y2-6,cue.x2,cue.y2+6);
+        continue;
+      }
+      if(cue.kind==='ratcatcher-whistle'){
+        if(now>=cue.at)continue;
+        const progress=this.reduceMotion?1:Math.max(0,Math.min(1,(now-cue.beganAt)/Math.max(1,cue.at-cue.beganAt)));
+        const start=cue.aim+cue.gap/2,arc=Math.PI*2-cue.gap,points=[];
+        for(let n=0;n<=48;n++){const a=start+arc*n/48;points.push(new Phaser.Math.Vector2(cue.x+Math.cos(a)*170,cue.y+Math.sin(a)*170));}
+        h.lineStyle(3,0xe6c88b,.8).strokePoints(points,false);
+        for(const angle of cue.angles)h.lineStyle(1,0xe6c88b,.55).lineBetween(cue.x+Math.cos(angle)*35,cue.y+Math.sin(angle)*35,cue.x+Math.cos(angle)*190,cue.y+Math.sin(angle)*190);
+        for(const side of [-1,1]){const a=cue.aim+side*cue.gap/2;h.lineStyle(3,0xadd4b4,1).lineBetween(cue.x+Math.cos(a)*55,cue.y+Math.sin(a)*55,cue.x+Math.cos(a)*215,cue.y+Math.sin(a)*215);}
+        for(let mark=0;mark<cue.passes;mark++)h.lineStyle(3,0xe6c88b,mark<cue.pass?1:.3).lineBetween(cue.x+(mark-(cue.passes-1)/2)*12,cue.y-85,cue.x+(mark-(cue.passes-1)/2)*12,cue.y-73);
+        h.lineStyle(3,0xe6c88b,.9).strokeCircle(cue.x,cue.y,18+progress*10);
+        continue;
+      }
       if(cue.kind==='courier-route'){
         const color=cue.state==='recovery'?0x9ac5ad:0xf7c176;
         for(let leg=0;leg<cue.legs;leg++){
