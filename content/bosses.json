@@ -5037,15 +5037,32 @@
     "artBrief": "A thin undead clerk carrying a broad folded ledger and red sealing stamp. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
     "signature": {
       "id": "quarantine-clerk",
-      "behavior": "Stamp three ground zones in sequence, then reopen the first zone as the guaranteed safe space.",
-      "counterplay": "Read the numbered outline sequence and move into the erased first stamp.",
+      "behavior": "Reachable arena-relative stamp centers replace the fixed fallback grid. Intake reopens stamp I; the late Appeal Circuit patrols first and reopens stamp III after its strike. Advanced late phases add a fresh fully warned three-stamp appeal at distinct positions.",
+      "counterplay": "Read the ordered marks and the notched future-safe seal. Wait for its green interior before entering. Follow the new ground origin after a late patrol; advanced appeals warn a fresh set while the old safe seal expires.",
       "parameters": {
         "zones": 3,
         "zoneRadiusPx": 82,
         "spacingSeconds": 0.65,
         "warningSeconds": 1.3,
         "activeSeconds": 2.5,
-        "safeZoneIndex": 0
+        "safeZoneIndex": 0,
+        "appeal": {
+          "stampRadius": 82,
+          "stampClearance": 10,
+          "stampSeparation": 20,
+          "gridSpacing": 32,
+          "warningSeconds": 1.3,
+          "spacingSeconds": 0.65,
+          "activeSeconds": 2.5,
+          "lateReopenDelaySeconds": 0.4,
+          "patrolDistance": 144,
+          "patrolSpeed": 72,
+          "patrolWarningSeconds": 0.65,
+          "recoverySeconds": 0.75,
+          "betweenSequencesSeconds": 1.5,
+          "stampDamage": 5,
+          "contactSeconds": 0.5
+        }
       }
     },
     "arenaIds": [
@@ -5088,7 +5105,10 @@
             "arc": 105
           }
         ],
-        "patternPhase": 0
+        "patternPhase": 0,
+        "phaseNameKey": "boss.quarantine-clerk.phase.0",
+        "reopensStamp": 1,
+        "relocatesBeforeStamps": false
       },
       {
         "healthThreshold": 0.5,
@@ -5114,7 +5134,10 @@
             "arc": 105
           }
         ],
-        "patternPhase": 2
+        "patternPhase": 2,
+        "phaseNameKey": "boss.quarantine-clerk.phase.1",
+        "reopensStamp": 3,
+        "relocatesBeforeStamps": true
       }
     ],
     "variants": {
@@ -5159,7 +5182,10 @@
                 "comboOffsetSeconds": 0
               }
             ],
-            "patternPhase": 0
+            "patternPhase": 0,
+            "phaseNameKey": "boss.quarantine-clerk.phase.0",
+            "reopensStamp": 1,
+            "relocatesBeforeStamps": false
           },
           {
             "healthThreshold": 0.5,
@@ -5188,7 +5214,10 @@
                 "comboOffsetSeconds": 1.25
               }
             ],
-            "patternPhase": 3
+            "patternPhase": 3,
+            "phaseNameKey": "boss.quarantine-clerk.phase.1",
+            "reopensStamp": 3,
+            "relocatesBeforeStamps": true
           }
         ]
       },
@@ -5227,7 +5256,10 @@
                 "comboOffsetSeconds": 0
               }
             ],
-            "patternPhase": 0
+            "patternPhase": 0,
+            "phaseNameKey": "boss.quarantine-clerk.phase.0",
+            "reopensStamp": 1,
+            "relocatesBeforeStamps": false
           },
           {
             "healthThreshold": 0.5,
@@ -5256,7 +5288,10 @@
                 "comboOffsetSeconds": 1.25
               }
             ],
-            "patternPhase": 3
+            "patternPhase": 3,
+            "phaseNameKey": "boss.quarantine-clerk.phase.1",
+            "reopensStamp": 3,
+            "relocatesBeforeStamps": true
           }
         ],
         "additionalPatterns": [

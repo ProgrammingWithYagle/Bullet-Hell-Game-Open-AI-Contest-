@@ -1,3 +1,4 @@
+import {clerkHelp} from './clerk-text.ts';
 import {ratcatcherHelp} from './ratcatcher-text.ts';
 import {courierHelp} from './courier-text.ts';
 import smallWakesHelp from './small-wakes-help.json';
@@ -17,6 +18,7 @@ export function extensionText(
   return text;
 }
 export function signatureHelp(view: View, locale: string) {
+  if(view.boss.id==='quarantine-clerk')return clerkHelp(view.boss.variant,locale);
   if(view.boss.id==='ratcatcher')return ratcatcherHelp(view.boss.variant,locale);
   if(view.boss.id==='courier')return courierHelp(view.boss.variant,locale);
   if(smallWakesIds.some(id=>id===view.boss.id)){

@@ -482,6 +482,11 @@ export class CombatScene extends Phaser.Scene {
         h.lineStyle(3,cue.crazed?0xe6caff:0xffd7a0,.95).strokeCircle(cue.x,cue.y,12+progress*10);
         continue;
       }
+      if(cue.kind==='clerk-patrol'){
+        h.lineStyle(2,0xc6b8a0,.85).lineBetween(cue.x1,cue.y1,cue.x2,cue.y2);
+        h.lineStyle(3,0xc6b8a0,1).strokeRect(cue.x2-12,cue.y2-12,24,24);
+        continue;
+      }
       if(cue.kind==='ratcatcher-patrol'){
         h.lineStyle(2,0xb8cba7,.8).lineBetween(cue.x1,cue.y1,cue.x2,cue.y2);
         h.lineStyle(3,0xb8cba7,1).strokeCircle(cue.x2,cue.y2,14);
@@ -573,6 +578,7 @@ export class CombatScene extends Phaser.Scene {
             cue.x + (mark - (cue.index - 1) / 2) * 12,
             cue.y + 12,
           );
+        if(cue.safeAt>0&&!safe)h.lineStyle(3,0xbddccb,.95).lineBetween(cue.x-16,cue.y+cue.radius-4,cue.x,cue.y+cue.radius+10).lineBetween(cue.x,cue.y+cue.radius+10,cue.x+16,cue.y+cue.radius-4);
         if (safe)
           h.lineStyle(4, color, 1)
             .lineBetween(cue.x - 18, cue.y + 25, cue.x - 3, cue.y + 38)

@@ -7,7 +7,7 @@
 
 Cooperative gothic zombie bullet hell. Choose a survivor, clear a boss contract, vote on mutations, buy a build and survive the next encounter.
 
-**Current development source: version 0.3.0, build `2026.10.26-roving-muster`, protocol 23, updated 2026-10-26.** The game is still in development. [Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains the playable feature branch; protected `main` is a separate release boundary.
+**Current development source: version 0.3.0, build `2026.10.26-appeal-circuit`, protocol 24, updated 2026-10-26.** The game is still in development. [Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains the playable feature branch; protected `main` is a separate release boundary.
 
 | Playable now in that source | Contents |
 | --- | --- |
@@ -55,14 +55,16 @@ The optional **Expanded skill map** setting shows all 54 skills per class, with 
 
 The seven requested class-upgrade implementation passes now add 21 behavior changes at existing utility-path depth-three nodes (six cumulative SP each). Costs, prerequisites, node IDs and the single-capstone rule remain. Both skill views show fifteen-locale help. Shared authority, finite constructs, delayed attacks and moving fields replicate to offline/online clients. [Class behavior and tradeoffs](Classes-and-Skills#purchased-ability-transformations). Protocol 18 migrates known issued protocol-17 local saves/profiles; online remains strict. Latest Baby/Easy/Normal assistance and Hellish rules remain intact. Human/rendered/device/native-language acceptance remains open.
 
-[Lantern Warden quality pass](Bosses#roving-warden-quality-pass) adds rest-only patrols, directional sweeps and a fully warned sequential Brutal return. Four original-roster quality passes are implemented (Constable, Warden, Courier and Ratcatcher); 56 remain. Its four patrol poses brought that checkpoint to 1,506 selected runtime poses; the newer Small Wakes total is 1,542. Human/rendered acceptance remains open.
+[Lantern Warden quality pass](Bosses#roving-warden-quality-pass) adds rest-only patrols, directional sweeps and a fully warned sequential Brutal return. Five original-roster quality passes are implemented (Constable, Warden, Courier, Ratcatcher and Clerk); 55 remain. Its four patrol poses brought that checkpoint to 1,506 selected runtime poses; the newer Small Wakes total is 1,542. Human/rendered acceptance remains open.
 
 [Small Wakes](Bosses#small-wakes-three-new-ordinary-encounters) adds Candle Snail, Cobble Crab and Mourning Kettle with 36 selected poses, three individual scores and fifteen-locale phase help. The source roster is 66; 85 further ordinary identities remain. Protocol 20 carries known issued protocol 19 local saves/profiles forward; online remains strict. Total selected runtime motion is 1,542.
 
 ## Current feedback pass: Crazed Horizon
 
-The earlier Crazed Horizon pass added purple Crazed/C forms to all 66 identities, forced Insane Brutal and Hellish Crazed, 2.5x/7.5x projectile budgets, warned pursuit/crossing patterns and persisted Endless form progression. Four spacious maps are smaller; the boss header separates name/grade/form/phase/timer and phase entry gains a distinct original cue plus reduced-motion-aware bar engraving. [Rules](Bosses) · [Modes and arenas](Modes). Roster remains 66; 85 new ordinary identities and 56 original quality passes remain. Human 5185 comparison confirmed clearer phase and Brutal differences but identified too much retreat space. Current changes await comparison.
+The earlier Crazed Horizon pass added purple Crazed/C forms to all 66 identities, forced Insane Brutal and Hellish Crazed, 2.5x/7.5x projectile budgets, warned pursuit/crossing patterns and persisted Endless form progression. Four spacious maps are smaller; the boss header separates name/grade/form/phase/timer and phase entry gains a distinct original cue plus reduced-motion-aware bar engraving. [Rules](Bosses) · [Modes and arenas](Modes). Roster remains 66; 85 new ordinary identities and 55 original quality passes remain. Human 5185 comparison confirmed clearer phase and Brutal differences but identified too much retreat space. Current changes await comparison.
 
-[Courier Return Address](Bosses) adds a distinct two-leg late phase with fresh warnings from actual stops. Advanced forms add a leg and a warned split fan. The Courier checkpoint used protocol 22. Current protocol 23 also preserves known issued protocol 22 local form/build history; online remains strict. Final rendered/device/native-language/listening/balance acceptance remains open.
+[Courier Return Address](Bosses) adds a distinct two-leg late phase with fresh warnings from actual stops. Advanced forms add a leg and a warned split fan. The Courier checkpoint used protocol 22. The Roving Muster checkpoint used protocol 23; current protocol 24 also preserves known issued protocol 23 local form/build history; online remains strict. Final rendered/device/native-language/listening/balance acceptance remains open.
 
-Ratcatcher now patrols before late-phase packs, rats route around cover, and advanced forms whistle fully warned gapped rings. Four individual quality passes are implemented; 56 remain. The roster stays 66; 85 new ordinary identities remain.
+Ratcatcher now patrols before late-phase packs, rats route around cover, and advanced forms whistle fully warned gapped rings. Five individual quality passes are implemented; 55 remain. The roster stays 66; 85 new ordinary identities remain.
+
+Clerk now stamps reachable clear ground on every map, patrols before its late sequence and reopens notched seal III after its strike. Advanced late phases warn a distinct appeal set. Protocol 24 preserves known issued protocol 23 local form/build history; online remains strict.

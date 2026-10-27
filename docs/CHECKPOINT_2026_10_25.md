@@ -1,6 +1,6 @@
 # Grave Accord continuation checkpoint
 
-Current build: **2026.10.26-roving-muster / protocol 23**. Read this page, [single-ledger progress](DEVELOPMENT_PROGRESS.md) and [implementation state](IMPLEMENTATION_STATE.md), then inspect actual Git/status/origin/PR #14 and exact current receipts. Earlier Return Address evidence is [archived unchanged](history/CHECKPOINT_RETURN_ADDRESS_2026_10_26.md). The full game remains unfinished and the goal stays active.
+Current candidate: **2026.10.26-appeal-circuit / protocol 24**. Read this page, [single-ledger progress](DEVELOPMENT_PROGRESS.md) and [implementation state](IMPLEMENTATION_STATE.md), then inspect actual Git/status/origin/PR #14 and exact current receipts. Earlier Roving Muster evidence is [archived unchanged](history/CHECKPOINT_ROVING_MUSTER_2026_10_26.md). The full game remains unfinished and the goal stays active.
 
 ## Same existing checkout
 
@@ -9,14 +9,14 @@ Continue only in `C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer G
 ## Current content
 
 - **66 playable identities: 65 ordinary plus one secret**. **85 new ordinary identities** remain toward 150 ordinary plus secrets, three in each fixed level/subtier. Forms and recolors never add identities.
-- Individual original-roster quality implementations: Constable, Warden, Courier and Ratcatcher, **4 of 60; 56 remain; human accepted 0**. Exact completed source/CI/publication evidence follows below. A common variant layer does not replace individual quality work.
+- Individual original-roster quality implementations: Constable, Warden, Courier, Ratcatcher and Clerk, **5 of 60; 55 remain; human accepted 0**. Exact completed source/CI/publication evidence must be recorded below after the candidate passes. A common variant layer does not replace individual quality work.
 - Seven classes, 378 skills/63 paths, 28 weapons, six maps and five modes. All 21 purchased ability transformations and the optional default-off all-54 skill map are implemented. Profiles/mastery/cosmetics/remaps and the bank-safe consented secret are implemented; do not describe them as missing.
 - Early Watch and Small Wakes are six original integrated encounters with 72 selected poses, six themes and fifteen-locale help. Their earlier art-only issue records remain immutable.
 - Selected motion remains 1,542 poses. There are 66 individual boss themes plus City Wake, with 67 MP3 deliveries. Ratcatcher reuses sixteen selected action/defeat poses and its original score. New walking/whistle artwork and bespoke transformation art remain future work.
 
 Ratcatcher's **Open Sack** holds three locked scent lanes. At half health, **Roving Muster** marks a short patrol, resolves both body and sack against masonry, stops, then gives a fresh complete pack warning from that position. Rats can navigate around cover after their initial fixed scent leg. Advanced forms add one/two fully warned gapped whistle rings. Intrinsic sack cancellation, rat health/damage and the twelve-live cap remain. Existing rats survive unassisted phase changes while pending muster geometry and echoes cancel. [Implementation](RATCATCHER_MUSTER.md).
 
-Courier retains one/two Standard and two/three advanced deliveries, actual-stop warnings, fading trails, recovery and split dispatch. Warden keeps its rest-only patrol and locked cones; Constable keeps its individual phase patterns. This Ratcatcher pass preserves the other 65 complete boss definitions, all previous native art/audio and all 34 Wiki images.
+Courier retains one/two Standard and two/three advanced deliveries, actual-stop warnings, fading trails, recovery and split dispatch. Warden keeps its rest-only patrol and locked cones; Constable keeps its individual phase patterns. This Clerk pass preserves the other 65 complete boss definitions, all previous native art/audio and all 34 Wiki images.
 
 ## User difficulty and presentation rules
 
@@ -31,7 +31,7 @@ Courier retains one/two Standard and two/three advanced deliveries, actual-stop 
 
 ## Verification and publication
 
-Current evidence is recorded under `reviews/ratcatcher-muster-2026-10-26/`. Exact completed source/CI/production/preview/publication/governance receipts follow below. The previous 510-test checkpoint is historical, not current proof. Browser control is disabled: do not retry or bypass it with CUA/CDP or another route. Raw HTTP/hash checks do not establish rendered, physical-device, native-language, listening or final human balance acceptance.
+Current evidence is recorded under `reviews/clerk-appeal-2026-10-26/`. Record exact source/CI/production/preview/publication/governance receipts below after verification. The previous 526-test checkpoint is historical, not current proof. Browser control is disabled: do not retry or bypass it with CUA/CDP or another route. Raw HTTP/hash checks do not establish rendered, physical-device, native-language, listening or final human balance acceptance.
 
 `docs/development-work-ledger.json` is the one progress authority. `tools/sync-development-progress.mjs` derives local/Wiki/in-game progress. `src/shared/update-history.json` drives all changelogs through `tools/sync-changelog.mjs`. Publish exactly 18 committed canonical Wiki pages and 34 images through the existing `.wiki-checkout`, then verify every Markdown/image blob and public image hash with `tools/verify-wiki-publication.mjs <sourceSHA>`.
 
@@ -59,30 +59,12 @@ Latest received human feedback remains the 5185 comparison: clearer phases and h
 
 ## Remaining goal and release gates
 
-- Create 85 new ordinary identities with distinct mechanics, art, individual original music and fifteen-locale help; complete 56 remaining individual quality passes.
+- Create 85 new ordinary identities with distinct mechanics, art, individual original music and fifteen-locale help; complete 55 remaining individual quality passes.
 - Complete special/action art, actual walking/transformation/ability presentation, and final human balance/listening/native-language/physical-device acceptance. Review and tune the 21 implemented transformations and optional tree.
 - Verify active mixed-progression 8/16/50-player, WAN/full progression endurance and 49-scripted-plus-one-rendered hostile-load gates. Historical one-hour 50-client evidence is frozen-source local continuous combat with zero rendered clients.
 - Durable hosted recovery still needs participant credentials, maximum-entropy histories/paging, departures, storage/owner acceptance and deployed rankings. Normal recovery writing remains disabled; read its detailed handoff before enabling it.
 - A coordinated Windows/browser release needs a new tag/name and full validation. The public Site remains protocol 4. Immutable `dev-windows-20261024-1` remains protocol 13/source `52552c0d4465b918d7cde2ab3c2aa7f1d7eb045e`. Source/Wiki pushes do not redeploy either. No final release, merge or submission is claimed.
 
-## Current local software evidence
+## Clerk Appeal Circuit
 
-The candidate passes **526 tests / 526 pass / 0 fail**, authored content/fifteen-locale checks, TypeScript and production build. Sixteen new Ratcatcher regressions cover actual patrol stops, warning locks, intrinsic sack cancellation and relative swept contact, bounded rat navigation, corner safety, advanced emission budgets, phase/exit cleanup, known local migration, casting clocks and real owner/observer replication. A separate actual-Game audit covers **216 map/difficulty/selected-form/phase samples**, 1,000 ticks each (216,000 total), requiring multiple musters. Peak observed counts are twelve rats and 211 hostile projectiles. This is not full-fight, progression-endurance, FPS, WAN or capacity acceptance.
-
-Exact local evidence is under `reviews/ratcatcher-muster-2026-10-26/`. The other 65 complete boss definitions and all other catalog fields remain unchanged. Ratcatcher retains its health, damage, deadline, authored attack definitions and grade. All 2,066 previous asset blobs and 34 Wiki image blobs are preserved; the two predecessor handoffs are archived byte for byte. The declared 15,834-row offensive model still has zero deadline misses. No rendered, device, native-language, listening or final human balance acceptance is inferred.
-
-## Completed Roving Muster checkpoint evidence
-
-Complete source **`53ad4f76622cf67b707e02231c6301d192d6bd1d`**, build **2026.10.26-roving-muster / protocol 23**. Local authored content/fifteen locales, TypeScript, **526 tests / 526 pass / 0 fail** and production build pass. Both exact GitHub checks succeeded: [direct source job 121994186819](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/40445043559/job/121994186819) and [PR merge job 121994228862](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/40445056239/job/121994228862). Downloaded logs show 526 tests/526 pass/0 fail, Node 24, Pillow 12.3.0 and successful production verification. The PR job checks this source against unchanged protected main `c3f60ca4125bea31d94c9d3f6ea0c9d3f0853df1`. Inspect later HEAD and its own checks separately.
-
-Local snapshot `17dbc47d3f55c0d97a8782422c2391abd68775de18147a5d8555f77d6d56dba3`; canonical committed snapshot `6f39760e70417db5d6c4a4a79a1e4c8663f60fb295e411b73634834a6f2da139`; runtime source `b878a1cf466ba6801e9ea347537ac7d9cf2ab6daaf499dfca364f2d973ec9d98`; content revision `da37e2a0e2beb54343495ce39027211df254fa1c79ab42ec3f3360373ad792db`. Production contains **1,685 files / 721,127,371 bytes**. Only pre-existing unchanged pnpm-workspace.yaml differs by its local CRLF/committed LF byte. All seven raw local logs match their committed bytes. All 2,066 previous asset blobs, all 34 Wiki image blobs, the other 65 complete boss definitions and all other catalog fields are preserved. Ratcatcher retains its Standard health, damage, deadline, attack definitions and grade. The two predecessor handoffs are archived byte for byte. The declared 15,834-row offensive model still has zero deadline misses; this does not establish final balance.
-
-Sixteen new Ratcatcher regressions cover actual patrol stops, fixed warning origins, intrinsic sack cancellation/relative swept collision, rat-only cover paths/corner safety, advanced 2.5x/7.5x emissions, cleanup, known local migration, casting clocks and real owner/observer replication. A separate actual-Game audit observes **216 combinations / 216,000 ticks**, with multiple musters per case, peak twelve rats and 211 hostile shots. Its optional Baby/Easy Standard circle event is removed only for those route samples; real assistance cleanup is separately tested. No full-fight, progression-endurance, FPS, WAN or capacity acceptance is inferred.
-
-Latest frozen Solo preview: **http://127.0.0.1:5188/**, source `53ad4f76622cf67b707e02231c6301d192d6bd1d`, PID **69068**, root `C:\Users\yigal\Documents\Codex\2026-10-25\continue-grave-accord-in-this-same\work\playtest-roving-muster-53ad4f7`. All **1,685 files / 721,127,371 bytes** match production, and **35 raw HTTP artifact checks** pass. All ten previous 5178–5187 roots remain unchanged: **16,710 files / 6,954,722,731 bytes**. All eleven listener command lines match their frozen roots. No previous process was stopped, replaced or restarted. Preserve all 5174–5188 roots/processes. Browser control remains disabled.
-
-The existing Wiki is published from exact committed canonical source **`53ad4f76622cf67b707e02231c6301d192d6bd1d`**, at Wiki commit **`0cf975d20cd6c85a3269424f93f0bf1c6352842a`**. All 18 Markdown blobs, 34 image blobs, 34 public image SHA256 responses and four anonymous HTML responses pass. Local/in-game/Wiki changelogs and the single progress ledger are synchronized. PR #14 remains open/draft; main stays protected at `c3f60ca4125bea31d94c9d3f6ea0c9d3f0853df1`. No public Site or Windows deployment, main merge or contest submission occurred.
-
-The earlier approval review interruption was resolved through the normal approval route after an account read reported usage available. The previously blocked command had not executed; there was no bypass, paid provisioning or purchased reset. Exact notes and failed software attempts are preserved in `reviews/ratcatcher-muster-2026-10-26/`.
-
-The full goal remains active: **85 new ordinary identities and 56 individual original quality passes remain**, plus special/action art, actual rendered/native-language/device/listening/final human balance, active mixed-progression/WAN/full endurance/capacity, hosted credentials/history/recovery/rankings/storage-owner acceptance and a coordinated new release. Latest received human comparison remains 5185; newer previews await review. Automated implementation does not grant human acceptance.
+Clerk placement now succeeds for all 289 valid target samples that previously produced 61 failed casts. Arena-relative reachable seals avoid cover, boundaries and lava. The late phase patrols before fresh warnings and reopens notched seal III after its own strike; advanced late phases add a fully warned distinct appeal set. Standard combat numbers, grade, existing artwork and music remain. [Full implementation](CLERK_APPEAL.md). Current candidate evidence is separate from the archived 526-test Ratcatcher checkpoint.

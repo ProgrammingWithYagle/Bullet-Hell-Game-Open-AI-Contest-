@@ -1,3 +1,4 @@
+import {ClerkAppeal,type ClerkCue} from './clerk-appeal.ts';
 import {RatcatcherMuster,type RatMusterCue} from './ratcatcher-muster.ts';
 import {CourierRoute,type CourierCue} from './courier-route.ts';
 import {SmallWakesDirector, type SmallWakesCue} from './small-wakes-director.ts';
@@ -22,6 +23,7 @@ import type { VariantPressureCue } from './variant-pressure.ts';
 import type { EchoCue } from './brutal-volley.ts';
 import type { ArenaLavaCue } from './arena-layouts.ts';
 export type BossCue =
+  | ClerkCue
   | RatMusterCue
   | CourierCue
   | SmallWakesCue
@@ -82,6 +84,7 @@ type Lane = Extract<BossCue, { kind: 'charge' | 'scent' }>;
 type Stamp = Extract<BossCue, { kind: 'stamp' }>;
 export type SignatureContext = {
   paused?: boolean;
+  hazardCircles?: {x:number;y:number;radius:number}[];
   hurtBoss?(amount: number, sourceId?: string): void;
   emitControlled?(
     position: Vec,
@@ -135,6 +138,7 @@ export type SignatureAttack = {
 const ticks = (seconds: number) => Math.ceil(seconds * HZ);
 
 export class BossDirector {
+  readonly clerk=new ClerkAppeal();
   readonly courier=new CourierRoute();
   readonly ratcatcher=new RatcatcherMuster();
   readonly smallWakes = new SmallWakesDirector();
@@ -193,6 +197,7 @@ export class BossDirector {
   private restoreAt = 0;
 
   reset(kind: BossId, brutal = false, encounter = false) {
+    this.clerk.reset();
     this.ratcatcher.reset(kind==='ratcatcher',brutal);
     this.courier.reset();
     this.smallWakes.reset(kind, encounter);
@@ -387,6 +392,7 @@ export class BossDirector {
     return true;
   }
   startStamps(context: SignatureContext, target: Vec, attack: SignatureAttack) {
+    if(context.bossId==='quarantine-clerk')return this.clerk.cast(context,target,attack);
     if (this.stamps.length) return false;
     const radius = 82,
       centers: Vec[] = [];
@@ -429,6 +435,7 @@ export class BossDirector {
     return true;
   }
   safeZones(tick: number) {
+    if(this.kind==='quarantine-clerk')return this.clerk.safeZones(tick);
     return this.stamps.filter((s) => s.safeAt > 0 && tick >= s.safeAt && tick < s.until);
   }
   isSafe(position: Vec, tick: number, bodyRadius = 9) {
@@ -436,6 +443,7 @@ export class BossDirector {
   }
   cues(): BossCue[] {
     return [
+      ...this.clerk.cues(),
       ...this.ratcatcher.cues(),
       ...this.courier.cues(),
       ...this.smallWakes.cues(),
@@ -458,6 +466,7 @@ export class BossDirector {
     this.contacts.set(id, context.tick + ticks(0.5));
   }
   step(context: SignatureContext) {
+    if(context.bossId==='quarantine-clerk'){this.clerk.step(context);return;}
     if(context.bossId==='ratcatcher'){this.ratcatcher.step(context);return;}
     if(context.bossId==='courier')this.courier.step(context);
     this.smallWakes.step(context);
