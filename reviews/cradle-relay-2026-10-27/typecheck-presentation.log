@@ -1,0 +1,7 @@
+$ tsc --noEmit
+tests/matron-ward.test.ts(49,8): error TS7034: Variable 'traces' implicitly has type 'any[]' in some locations where its type cannot be determined.
+tests/matron-ward.test.ts(49,317): error TS7022: 'frozen' implicitly has type 'any' because it does not have a type annotation and is referenced directly or indirectly in its own initializer.
+tests/matron-ward.test.ts(49,550): error TS7006: Parameter 'g' implicitly has an 'any' type.
+tests/matron-ward.test.ts(50,88): error TS7005: Variable 'traces' implicitly has an 'any[]' type.
+tests/matron-ward.test.ts(50,103): error TS7006: Parameter 'b' implicitly has an 'any' type.
+[ELIFECYCLE] Command failed with exit code 1.
