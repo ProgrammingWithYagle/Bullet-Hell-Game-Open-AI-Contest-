@@ -1,6 +1,20 @@
 # Changelog
 
-Development build **2026.10.26-crazed-horizon**, protocol 21. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.26-return-address**, protocol 22. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-26 — Carrion Courier: a warned return delivery
+
+### Different decisions at half health
+
+- Carrion Courier remains an entry boss at fixed threat 1-- with its existing health, damage, ninety-second Standard deadline, 28 selected poses and individual Undelivered score. Its first phase makes one delivery; at half health it makes two. Every return is planned from the actual previous stop, then locks for a full 1.1-second warning. Masonry still blocks charges; a blocked departure selects a clear fixed heading before warning it.
+- Brutal and Crazed add one delivery to each phase, making two then three. After the last stop they warn a split dispatch fan for 1.2 seconds. The fan has a marked central gap and uses the existing 2.5x Brutal / 7.5x Crazed projectile budgets. Shared pursuit/crosscut/weave pressure remains separate. No instant-kill attacks are added.
+- Narrow three-second trails follow actual collision-resolved movement and retire from the oldest end. Overlapping trails share a half-second contact budget; fast crossing movement uses swept collision. Explicit recovery and a separate between-route pause retain the existing cross volley between routes. Phase changes, successful stagger and encounter exits clear route geometry and delayed repeats.
+- Small geometric delivery marks, the current action poses, named phases and persistent response hints communicate the sequence. All fifteen locales share the new encounter help. The existing priority phase bell and reduced-motion-aware entry animation remain; new rendered, native-language, listening and final balance acceptance remain open.
+
+### Continuity and remaining work
+
+- Protocol 22 migrates only the known issued protocol21 local Practice revision, preserving its recorded Standard/Brutal/Crazed completion history, identity, money and build. Older bounded migrations remain. Unknown revisions and online/signed envelopes stay strict.
+- Courier is the third individual original-roster phase/mobility/advanced-form implementation pass, after Constable and Warden. Fifty-seven quality assessments/redesigns and 85 additional ordinary identities remain. The roster stays 65 ordinary plus one secret; all hosted recovery/rankings, WAN/capacity/device/rendered/human acceptance and coordinated release gates remain open.
 
 ## 2026-10-26 — Crazed forms, closer arenas and a clearer boss nameplate
 

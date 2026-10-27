@@ -1,5 +1,7 @@
 # Bosses
 
+Carrion Courier now changes from one to two Standard deliveries at half health. Each leg warns from its actual previous stop; Brutal/Crazed add one leg and a fully warned split fan. Trails fade from the oldest end, with explicit recovery between routes. Its fixed1-- grade, health, damage, 28 poses and Undelivered theme remain. [Courier implementation](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/COURIER_ROUTE.md). Current original quality progress:3/60 implemented,57 remaining;human acceptance open.
+
 Sixty-six bosses are executable in the current source. Each has its own signature, phases, Standard/Brutal/Crazed forms, presentation and music. A signature table describes practical counterplay; supplemental attacks still require ordinary bullet-hell movement.
 
 **Each boss has a fixed intrinsic threat grade.** Routes select suitable identities; they do not rerate a boss to match the encounter number. Subtiers use **--, -, no sign, +, ++** for bottom through top tier. Hollow Constable is **1+** and Bell Triplets are **3--**. Brutal uses a separate **B** marker, such as **1+ B**. Crazed uses a separate **C** marker and purple treatment. Secrets display **>10**, followed by the selected form marker. Global difficulty and party scaling remain separate.

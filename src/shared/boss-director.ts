@@ -1,3 +1,4 @@
+import {CourierRoute,type CourierCue} from './courier-route.ts';
 import {SmallWakesDirector, type SmallWakesCue} from './small-wakes-director.ts';
 import type {WardenCue} from './warden-patrol.ts';
 import { EarlyWatchDirector, type EarlyWatchCue } from './early-watch-director.ts';
@@ -20,6 +21,7 @@ import type { VariantPressureCue } from './variant-pressure.ts';
 import type { EchoCue } from './brutal-volley.ts';
 import type { ArenaLavaCue } from './arena-layouts.ts';
 export type BossCue =
+  | CourierCue
   | SmallWakesCue
   | WardenCue
   | EchoCue
@@ -131,6 +133,7 @@ export type SignatureAttack = {
 const ticks = (seconds: number) => Math.ceil(seconds * HZ);
 
 export class BossDirector {
+  readonly courier=new CourierRoute();
   readonly smallWakes = new SmallWakesDirector();
   readonly earlyWatch = new EarlyWatchDirector();
   readonly civic = new CivicDirector();
@@ -187,6 +190,7 @@ export class BossDirector {
   private restoreAt = 0;
 
   reset(kind: BossId, brutal = false, encounter = false) {
+    this.courier.reset();
     this.smallWakes.reset(kind, encounter);
     this.earlyWatch.reset(kind, encounter);
     this.services.reset(kind, encounter);
@@ -209,7 +213,7 @@ export class BossDirector {
     this.sackHealth = this.sackMaximum;
   }
   get charging() {
-    return !!this.charge;
+    return !!this.charge || this.courier.charging;
   }
   weakPoint(): Extract<BossCue, { kind: 'sack' }> | null {
     return this.kind === 'ratcatcher'
@@ -331,6 +335,7 @@ export class BossDirector {
     };
   }
   startCharge(context: SignatureContext, target: Vec, attack: SignatureAttack) {
+    if(context.bossId==='courier')return this.courier.cast(context,target,attack);
     if (this.charge || (context.bossId === 'black-ambulance' && this.civic.recovering))
       return false;
     const end = this.end(context, target, 100),
@@ -449,6 +454,7 @@ export class BossDirector {
   }
   cues(): BossCue[] {
     return [
+      ...this.courier.cues(),
       ...this.smallWakes.cues(),
       ...this.earlyWatch.cues(),
       ...this.civic.cues(),
@@ -469,6 +475,7 @@ export class BossDirector {
     this.contacts.set(id, context.tick + ticks(0.5));
   }
   step(context: SignatureContext) {
+    if(context.bossId==='courier')this.courier.step(context);
     this.smallWakes.step(context);
     this.earlyWatch.step(context);
     this.origin = { ...context.boss };

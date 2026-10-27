@@ -482,6 +482,30 @@ export class CombatScene extends Phaser.Scene {
         h.lineStyle(3,cue.crazed?0xe6caff:0xffd7a0,.95).strokeCircle(cue.x,cue.y,12+progress*10);
         continue;
       }
+      if(cue.kind==='courier-route'){
+        const color=cue.state==='recovery'?0x9ac5ad:0xf7c176;
+        for(let leg=0;leg<cue.legs;leg++){
+          const x=cue.x+(leg-(cue.legs-1)/2)*14,y=cue.y-72;
+          h.lineStyle(2,color,leg<cue.leg?1:.35).strokeRect(x-4,y-5,8,10);
+          if(leg<cue.leg)h.fillStyle(color,.8).fillRect(x-2,y-3,4,6);
+        }
+        if(cue.state==='recovery')h.lineStyle(2,color,.8).strokeCircle(cue.x,cue.y,22);
+        continue;
+      }
+      if(cue.kind==='courier-dispatch'){
+        const progress=Math.max(0,Math.min(1,(now-cue.beganAt)/Math.max(1,cue.at-cue.beganAt)));
+        for(const side of [-1,1]){
+          const a=cue.aim+side*cue.halfGap,b=a+side*cue.wingArc;
+          const points=[new Phaser.Math.Vector2(cue.x,cue.y)];
+          for(let n=0;n<=16;n++){const angle=a+(b-a)*n/16;points.push(new Phaser.Math.Vector2(cue.x+Math.cos(angle)*210,cue.y+Math.sin(angle)*210));}
+          h.fillStyle(0xf7c176,.07+progress*.07).fillPoints(points,true);
+          h.lineStyle(2,0xf7c176,.85).strokePoints(points,true);
+        }
+        for(const angle of cue.angles)h.lineStyle(1,0xf7c176,.45).lineBetween(cue.x+Math.cos(angle)*24,cue.y+Math.sin(angle)*24,cue.x+Math.cos(angle)*210,cue.y+Math.sin(angle)*210);
+        for(const side of [-1,1]){const a=cue.aim+side*cue.halfGap;h.lineStyle(3,0xadd4c5,.95).lineBetween(cue.x+Math.cos(a)*55,cue.y+Math.sin(a)*55,cue.x+Math.cos(a)*230,cue.y+Math.sin(a)*230);}
+        h.lineStyle(3,0xf7c176,.9).strokeCircle(cue.x,cue.y,18+progress*10);
+        continue;
+      }
       if (cue.kind === 'charge' || cue.kind === 'scent' || cue.kind === 'trail') {
         const dx = cue.x2 - cue.x1,
           dy = cue.y2 - cue.y1,
@@ -511,6 +535,12 @@ export class CombatScene extends Phaser.Scene {
             cue.x2 + nx * 0.7,
             cue.y2 + ny * 0.7,
           );
+        if(view.boss.id==='courier' && cue.kind==='charge' && length>30){
+          const ux=dx/length,uy=dy/length,tipX=cue.x1+dx*.6,tipY=cue.y1+dy*.6;
+          h.lineStyle(3,color,1)
+            .lineBetween(tipX-ux*16-uy*9,tipY-uy*16+ux*9,tipX,tipY)
+            .lineBetween(tipX,tipY,tipX-ux*16+uy*9,tipY-uy*16-ux*9);
+        }
       } else if (cue.kind === 'stamp') {
         const safe = cue.safeAt > 0 && now >= cue.safeAt,
           active = now >= cue.at;

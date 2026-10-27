@@ -1838,7 +1838,7 @@ export class Game {
       if (this.boss.id !== 'lantern-warden') {
         this.warnings.length = 0;
         if (assist) for (const shot of this.shots.values()) if (shot.owner === 'hostile') this.removeShot(shot);
-        if (this.boss.id === 'constable' || this.director.earlyWatch.handles(this.boss.id) || this.director.smallWakes.handles(this.boss.id)) {
+        if (this.boss.id === 'courier' || this.boss.id === 'constable' || this.director.earlyWatch.handles(this.boss.id) || this.director.smallWakes.handles(this.boss.id)) {
           this.boss.castAt = this.boss.castReleaseAt = this.boss.castEndsAt = 0;
           if (assist) for (let i = this.fields.length - 1; i >= 0; i--)
             if (this.fields[i].owner === 'hostile') this.fields.splice(i, 1);
@@ -1883,6 +1883,7 @@ export class Game {
     }
     if (now < this.boss.staggerUntil) {
       if(this.director.smallWakes.handles(this.boss.id)){this.director.smallWakes.reset(this.boss.id);this.brutalVolley.clear();}
+      if(this.boss.id==='courier'){this.director.courier.reset();this.brutalVolley.clear();}
       this.signatures = [];
       this.wardenPatrol.clear();
       return;
@@ -1902,6 +1903,7 @@ export class Game {
     for (let index = 0; index < attacks.length; index++)
       if (
         now >= this.attackAt[index] &&
+        (this.boss.id!=='courier' || (!this.director.courier.busy && (index!==0 || now>=this.director.courier.nextRouteAt))) &&
         (this.boss.id !== 'constable' || now >= this.boss.castEndsAt) &&
         (this.boss.id !== 'lantern-warden' ||
           this.wardenPatrol.canCastAuxiliary)

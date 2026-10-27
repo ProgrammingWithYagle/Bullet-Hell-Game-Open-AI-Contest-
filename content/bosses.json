@@ -294,7 +294,9 @@
             "telegraph": 0.9
           }
         ],
-        "patternPhase": 0
+        "patternPhase": 0,
+        "phaseNameKey": "boss.courier.phase.0",
+        "deliveryLegs": 1
       },
       {
         "healthThreshold": 0.5,
@@ -317,7 +319,9 @@
             "telegraph": 0.9
           }
         ],
-        "patternPhase": 2
+        "patternPhase": 2,
+        "phaseNameKey": "boss.courier.phase.1",
+        "deliveryLegs": 2
       }
     ],
     "route": "short",
@@ -326,12 +330,39 @@
     "damageWindowFraction": 1,
     "signature": {
       "id": "courier",
-      "behavior": "Charge through a locked straight lane, leaving a short damaging trail while crossing volleys divide the escape ground.",
-      "counterplay": "Step perpendicular to the marked charge and cross its trail only after its visible timer expires.",
+      "behavior": "A single locked delivery becomes a two-leg return route at half health. Every new leg warns from the actual stop. Advanced forms add one leg and a delayed split dispatch fan.",
+      "counterplay": "Step sideways from each fixed charge lane, read the next arrow after the stop, and punish recovery. Wait for fading trails; the advanced dispatch fan leaves its marked central wedge clear.",
       "parameters": {
         "chargeTrailWidth": 32,
         "chargeTrailDuration": 3,
-        "chargeTrailDamagePerSecond": 10
+        "chargeTrailDamagePerSecond": 10,
+        "deliveryRoute": {
+          "normalLegs": [
+            1,
+            2
+          ],
+          "advancedExtraLeg": 1,
+          "turnPauseSeconds": 0.2,
+          "turnWarningSeconds": 1.1,
+          "recoverySeconds": [
+            0.75,
+            1.1
+          ],
+          "advancedRecoverySeconds": [
+            1.1,
+            1.4
+          ],
+          "betweenRoutesSeconds": 1.5,
+          "dispatchWarningSeconds": 1.2,
+          "dispatchCount": [
+            8,
+            12
+          ],
+          "dispatchDamage": 7,
+          "dispatchHalfGapRadians": 0.32,
+          "dispatchWingArcRadians": 0.55,
+          "maximumTrails": 6
+        }
       }
     },
     "artBrief": "A messenger runs the same route after the streets and their names have disappeared. One dominant silhouette and one signature prop; quiet matte fabric masses, restrained surface detail.",
@@ -374,7 +405,9 @@
                 "comboOffsetSeconds": 0
               }
             ],
-            "patternPhase": 0
+            "patternPhase": 0,
+            "phaseNameKey": "boss.courier.phase.0",
+            "deliveryLegs": 2
           },
           {
             "healthThreshold": 0.5,
@@ -400,7 +433,9 @@
                 "comboOffsetSeconds": 1.25
               }
             ],
-            "patternPhase": 3
+            "patternPhase": 3,
+            "phaseNameKey": "boss.courier.phase.1",
+            "deliveryLegs": 3
           }
         ]
       },
@@ -436,7 +471,9 @@
                 "comboOffsetSeconds": 0
               }
             ],
-            "patternPhase": 0
+            "patternPhase": 0,
+            "phaseNameKey": "boss.courier.phase.0",
+            "deliveryLegs": 2
           },
           {
             "healthThreshold": 0.5,
@@ -462,7 +499,9 @@
                 "comboOffsetSeconds": 1.25
               }
             ],
-            "patternPhase": 3
+            "patternPhase": 3,
+            "phaseNameKey": "boss.courier.phase.1",
+            "deliveryLegs": 3
           }
         ],
         "additionalPatterns": [

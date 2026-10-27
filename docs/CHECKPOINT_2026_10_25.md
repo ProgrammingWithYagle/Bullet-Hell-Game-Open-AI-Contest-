@@ -1,5 +1,17 @@
 # Grave Accord continuation checkpoint
 
+## Current continuation: Return Address
+
+Current build **2026.10.26-return-address / protocol22**. Carrion Courier now has one/two Standard deliveries and two/three advanced deliveries, with fresh locked warnings from each actual stop, collision-resolved trails, explicit recovery and a fully warned advanced split fan. Its threat1--, health, damage, deadline, 28 poses and individual theme remain. The other65 identities and all previous native art/audio/Wiki image blobs remain unchanged. [Implementation](COURIER_ROUTE.md).
+
+The single ledger now records **3/60 original quality passes implemented;57 remain;human accepted0**. The roster remains **65 ordinary+1secret;85 new ordinary identities remain**. All already implemented classes, modes, optional tree and Crazed/difficulty rules remain. Known issued protocol21 local Practice/profile state migrates while preserving exact completed form history; older bounded migrations remain and online/signed recovery stays strict.
+
+The completed Crazed checkpoint and its497-test evidence below are historical. Current Return Address evidence must be read from `reviews/courier-route-2026-10-26/` and actual HEAD/CI, not inferred from those historical hashes. New frozen preview and publication receipts will be recorded after exact committed verification. Preserve all prior5174–5186 preview roots/processes. Browser control remains disabled. Latest human feedback is still the5185 comparison; no newer acceptance is invented.
+
+The overall goal remains active. Hosted recovery/rankings/credentials/history/departure/storage-owner acceptance, mixed-progression8/16/50/WAN/endurance,49scripted+1rendered hostile load, special/action art, native-language/listening/device/final balance and coordinated new release remain open. Public protocol4 Site and immutable protocol13 Windows archive remain separate. Keep PR14 draft and main protected; no clone/worktree/delegation/deployment/merge/submission.
+
+## Historical completed Crazed Horizon checkpoint
+
 Updated October 26, 2026. The user's full development goal remains active. Read this page, [development progress](DEVELOPMENT_PROGRESS.md) and [implementation state](IMPLEMENTATION_STATE.md) first, then inspect actual Git/status/origin/PR #14 and the exact current receipts.
 
 ## Same existing workspace

@@ -1,3 +1,4 @@
+import {courierRouteMessages} from '../locales/source/courier-route.mjs';
 import {crazedHorizonMessages} from '../locales/source/crazed-horizon.mjs';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
@@ -93,6 +94,7 @@ export function validateOne(document, canonical, content, locale) {
       ...Object.keys(earlyWatchMessages('en')),
       ...Object.keys(smallWakesMessages('en')),
       ...Object.keys(crazedHorizonMessages('en')),
+      ...Object.keys(courierRouteMessages('en')),
       ...Object.keys(classTalentMessages('en',content)),
       ...Object.keys(wardenMessages('en')),
       ...Object.keys(skillMapMessages('en')),
@@ -121,7 +123,7 @@ export function validateOne(document, canonical, content, locale) {
     if (!Object.hasOwn(messages,key)) fail(`missing feature coverage: ${key}`);
   }
   const expectedCategories = new Intl.PluralRules(locale).resolvedOptions().pluralCategories.slice().sort();
-  const expandedSource = {...smallWakesMessages(locale),...expansionMessages(locale), ...earlyWatchMessages(locale),...skillMapMessages(locale),...difficultyRuleMessages(locale),...classTalentMessages(locale,content),...wardenMessages(locale),...crazedHorizonMessages(locale)};
+  const expandedSource = {...smallWakesMessages(locale),...expansionMessages(locale), ...earlyWatchMessages(locale),...skillMapMessages(locale),...difficultyRuleMessages(locale),...classTalentMessages(locale,content),...wardenMessages(locale),...crazedHorizonMessages(locale),...courierRouteMessages(locale)};
   for (const [key,text] of Object.entries(recoveryMessages(locale))) {
     if (messages[key] !== text) fail(`recovery UI source mismatch at ${key}`);
   }
