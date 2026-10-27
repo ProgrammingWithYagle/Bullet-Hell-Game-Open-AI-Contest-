@@ -1,6 +1,26 @@
 # Changelog
 
-Development build **2026.10.27-clerk-venom**, protocol 27. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.27-shifting-writ**, protocol 28. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-27 — Pauseable boss guides and Chain Marshal’s Shifting Writ
+
+### A manual guide keeps the live field clear
+
+- Following frozen 5192 feedback, boss phase instructions and signature paragraphs move out of the live HUD into a closed-by-default Boss guide dialog. An in-game button and two close controls show/hide it; Escape closes it, focus returns to the opener, and long text scrolls within a bounded panel. All existing guide text remains available for current testing.
+- Solo freezes both the actual simulation worker and the drawing scene while the guide is open. Closing resumes without elapsed-time catchup or held movement/fire; pending input/prediction is cleared. Guide and manual-menu pause are independent, so closing one cannot resume the other. Online play continues with an explicit notice and neutral local input. Five controls/notices are authored in all fifteen locales.
+- The final optional Baby-only availability policy is encoded and tested, while the explicit all-difficulty testing switch remains enabled for the unfinished development build. Disable that switch only as part of the coordinated final release. Rendered, physical-device and native-language acceptance remains open.
+
+### Held Line and Shifting Writ
+
+- The existing Chain Marshal keeps fixed grade 2-, original base health/damage/deadline, 90/180 Standard/advanced anchor health, current art and Iron Jurisdiction score. Held Line plants two numbered reachable anchors and warns opposite locked 80-degree sweeps for 1.4 seconds. Bounded connected placement replaces fixed sockets; the baseline found nine cover overlaps, seven fully inside cover.
+- At half health, Shifting Writ marks a collision-resolved 168-pixel lateral move before a new pair. Arms begin 17 ticks apart. Each surviving anchor stops, locks a new target and gives a full 1.4-second reversed-return warning. A cut cancels only that arm, its return and its unreleased barbs; already flying shots remain. Explicit recovery separates signatures and retained auxiliary attacks.
+- Warning polygons and physical chains use real board bounds/masonry. A live wall can shorten a chain; removing cover cannot extend it beyond its locked warning. Matching sub-tick player/arm samples share one half-second target hit budget. Roman I/II, leg marks and static direction arrows identify the two anchors and new headings. Existing casting poses remain; new walking/action art is future work.
+
+### Advanced barbs and continuity
+
+- Brutal/Crazed add owned, independently warned gapped barb volleys. Opening pairs actually emit 40/120 shots, with 2.5x/7.5x Standard budgets applied once, not recaptured into the global queue. Later Crazed repeats add freshly warned crossing angles while retaining the Brutal sequence. Two anchors, 76 vertices per warning and at most 32 owned barb groups keep the state bounded; the shared 4,000-hostile cap remains.
+- Phase/stagger/assistance/encounter cleanup removes anchors, patrol paths and owned repeats. Fifteen authored phase guides and protocol 28 preserve known issued protocol 27 local Practice/profile form/build history; online/signed state stays strict. Other 65 complete boss definitions, all class/weapon/map definitions and every previous art/audio asset remain.
+- Roster stays 66 identities, 65 ordinary plus one secret, leaving 85 new ordinary identities. This is the seventh individual original-roster quality implementation, leaving 53; full human accepted remains zero. The full art/human/hosted/recovery/WAN/endurance/capacity/device/release gates stay open.
 
 ## 2026-10-27 — Clerk: lasting shelter, random safe numbers and purple venom
 

@@ -1,6 +1,6 @@
 {
   "updated": "2026-10-27",
-  "buildId": "2026.10.27-clerk-venom",
+  "buildId": "2026.10.27-shifting-writ",
   "playableBosses": 66,
   "ordinaryBosses": 65,
   "secretBosses": 1,
@@ -16,8 +16,8 @@
       "id": "boss-quality",
       "label": "Existing-boss phase / mobility / Brutal quality passes",
       "target": 60,
-      "implemented": 6,
-      "remaining": 54,
+      "implemented": 7,
+      "remaining": 53,
       "humanAccepted": 0,
       "completedIds": [
         "constable",
@@ -25,9 +25,10 @@
         "courier",
         "ratcatcher",
         "quarantine-clerk",
-        "tollkeeper"
+        "tollkeeper",
+        "chain-marshal"
       ],
-      "status": "Constable, Warden, Courier, Ratcatcher, Clerk and Tollkeeper individual phase/mobility/advanced-form implementation passes complete; human acceptance remains open. Other 54 original-roster encounters await assessment/redesign."
+      "status": "Constable, Warden, Courier, Ratcatcher, Clerk, Tollkeeper and Chain Marshal individual phase/mobility/advanced-form implementations complete; human acceptance remains open. Other 53 original-roster encounters await assessment/redesign."
     },
     {
       "id": "class-abilities",
@@ -501,10 +502,11 @@
     }
   ],
   "latestHumanFeedback": [
+    "Human testing at frozen 5192 is blocked by the large boss hint box obscuring the field. The guide is now closed by default and opens/closes manually during combat; in Solo it freezes the worker and presentation, then resumes without catchup or held input. Closing it preserves a separate manual pause. Online combat continues with an explicit notice. Text remains available on demand in every current testing difficulty. The final Baby-only policy is implemented behind an explicit testing switch; that switch must be disabled for a coordinated final release. Human comparison of the new guide remains open.",
     "Human comparison at frozen 5191 finds Clerk graded fields pretty good, while Crazed green shelter closes too soon. The requested follow-up extends advanced shelter through the final possible marked echo, adds once-per-seal 15% current-health loss plus poison and slow to purple, randomizes the safe seal number in Brutal phase two and all Crazed fields, and keeps Standard behavior. New timing/status/random-choice human comparison remains open; this is limited positive feedback, not whole-boss final acceptance.",
     "Human comparison on frozen 5190 liked the Clerk shelter purpose and rim effect. This is positive limited feedback, not final whole-boss acceptance. The requested follow-up uses 3/5/10 Standard/Brutal/Crazed seals, doubled-damage purple triangles and Crazed black skulls removing 75% of current health once per activation with a 1HP floor. Later 5191 feedback is recorded above; current follow-up acceptance remains open.",
     "Human review of frozen 5189 found the Clerk seal order and later safe III clear enough, but the protective purpose was unclear. The old auxiliary fan waited until shelter expired. The follow-up now pairs each reopening with a fully warned fan from the two other seals and real rim interception cues; human comparison remains open.",
-    "Keep the current boss instruction text visible in development previews so the user can inspect encounter behavior. Final-product requirement: remove automatic fight instructions except for an optional, default-off Baby-only setting. This is a recorded release gate, not a shipped toggle; learnable visual boss behavior remains required.",
+    "The earlier request retained boss instruction text during development. Latest frozen 5192 feedback supersedes automatic display: retain the text in a closed-by-default manual guide and pause Solo while reading. Finished-product availability remains optional Baby-only; current all-difficulty testing stays enabled until the coordinated release switch changes.",
     "Human comparison on frozen 5185: phase differences and Standard/Brutal difficulty are clearer, though these entry bosses remain easy. Large retreat corners let players disengage and reduce dash value. Requested smaller maps, a more atmospheric boss header, forced Insane Brutal, forced Hellish Crazed with purple/C treatment, higher projectile budgets and Standard-to-Brutal-to-Crazed Endless progression; phase sound and later bespoke animation were also requested.",
     "Latest requested refinement: Normal combat revival is now 25%; Baby/Easy shield events have six/three circles and two/three-second channels; Baby gains two additional cover props per map. Shared authority/prediction/UI and software checks implement the request; human comparison remains open.",
     "Manual feedback on frozen 5179: Early Watch bosses defeated quickly; phase changes were only partly visible. Two longer entry phases, health-bar dividers and a separate transition banner are now implemented and await human comparison.",
@@ -516,9 +518,9 @@
     "Earlier map bullets and warnings were readable on Normal with Hollow Constable. This is limited evidence, not full map/device acceptance."
   ],
   "remainingReleaseWork": [
-    "Before the finished product, remove automatic combat instruction paragraphs; expose them only through an optional default-off Baby-only setting. Keep instructions visible during current development testing, as explicitly requested. Teach mechanics through warned behavior and visible consequences, then obtain human acceptance.",
+    "Validate the new manual guide on rendered/human/device/language surfaces. It starts closed and pauses Solo; current testing exposes it on all difficulties. Disable the explicit testing availability switch for final release so only Baby offers the optional guide. No automatic boss paragraphs cover active combat.",
     "Create and verify 85 additional ordinary boss identities, with distinct mechanics, art and individual original music; the target is at least 150 ordinary plus secrets.",
-    "Assess or redesign the remaining 54 existing boss encounters for distinct phases, meaningful pressure and separate Brutal behavior.",
+    "Assess or redesign the remaining 53 existing boss encounters for distinct phases, meaningful pressure and separate Brutal behavior.",
     "Review and tune the 21 implemented ability-changing upgrades and optional skill map on actual rendered/human/device/native-language surfaces.",
     "Complete remaining boss special/action art, class special-ability art and rendered animation transitions.",
     "Complete final human balance, music/listening, native-language and physical-device acceptance.",
@@ -526,5 +528,5 @@
     "Complete deployed rankings and durable recovery, including participant credentials, entropy histories/paging and hosted acceptance.",
     "Prepare and verify a new coordinated Windows/browser release; existing immutable Windows and older public builds remain separate."
   ],
-  "semanticInputsSha256": "629f6da7cd0f8988b82798fd89cee06b9973e3c450721b8396bc177d02f6dcc7"
+  "semanticInputsSha256": "0a201ffb4017dfba919417ead3c8173f3ebb6e0bd45529b17a8781c45f2efbf3"
 }

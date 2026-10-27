@@ -102,7 +102,8 @@ export function encounterFrame(boss: Boss, now: number, cues: BossCue[], reduced
     return 7;
   }
   if (boss.id === 'chain-marshal') {
-    const chain = cues.find((c) => c.kind === 'chain' && c.health > 0);
+    if(cues.some(c=>c.kind==='marshal-patrol'))return 0;
+    const chain = cues.find((c) => c.kind === 'chain' && c.health > 0 && now < c.endsAt);
     if (chain?.kind === 'chain')
       return now < chain.at
         ? chain.at - now > 16

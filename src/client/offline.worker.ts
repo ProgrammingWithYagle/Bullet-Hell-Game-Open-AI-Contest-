@@ -1,7 +1,7 @@
 import { createPracticeGame } from '../shared/practice-start.ts';
 import { Game, type Settings } from '../shared/game.ts';
 import { viewOf } from '../shared/view.ts';
-import type { ClassId } from '../shared/protocol.ts';
+import {idleInput,type ClassId} from '../shared/protocol.ts';
 let game: Game | null = null,
   paused = false,
   last = performance.now(),
@@ -70,6 +70,12 @@ self.onmessage = (e: MessageEvent) => {
     emit(true);
   } else if (m.type === 'pause') {
     paused = Boolean(m.value);
+    if(paused){
+      const player=game.players.get('solo');
+      if(player){player.input={...idleInput(),sequence:player.ack,aim:player.aim};player.pending=[];player.wasFiring=false;}
+    }
+    postMessage({type:'pauseState',value:paused,tick:game.tick,combatTick:game.combatTick});
+    emit();
     last = performance.now();
     accumulator = 0;
   }

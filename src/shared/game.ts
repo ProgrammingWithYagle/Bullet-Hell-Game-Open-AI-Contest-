@@ -1897,13 +1897,14 @@ export class Game {
       this.resetWarden();
       this.director.reset(this.boss.id, this.boss.variant !== 'normal');
       if (this.boss.id === 'tollkeeper') this.director.civic.tollkeeper.reset(now + ticks(1.5));
+      if (this.boss.id === 'chain-marshal') this.director.civic.marshal.reset(now + ticks(1.5));
       this.variantPressure.reset(now);
       this.brutalVolley.clear();
       const assist = phaseShieldBreak(this.settings.difficulty,this.boss.variant);
       if (this.boss.id !== 'lantern-warden') {
         this.warnings.length = 0;
         if (assist) for (const shot of this.shots.values()) if (shot.owner === 'hostile') this.removeShot(shot);
-        if (this.boss.id === 'tollkeeper' || this.boss.id === 'quarantine-clerk' || this.boss.id === 'ratcatcher' || this.boss.id === 'courier' || this.boss.id === 'constable' || this.director.earlyWatch.handles(this.boss.id) || this.director.smallWakes.handles(this.boss.id)) {
+        if (this.boss.id === 'chain-marshal' || this.boss.id === 'tollkeeper' || this.boss.id === 'quarantine-clerk' || this.boss.id === 'ratcatcher' || this.boss.id === 'courier' || this.boss.id === 'constable' || this.director.earlyWatch.handles(this.boss.id) || this.director.smallWakes.handles(this.boss.id)) {
           this.boss.castAt = this.boss.castReleaseAt = this.boss.castEndsAt = 0;
           if (assist) for (let i = this.fields.length - 1; i >= 0; i--)
             if (this.fields[i].owner === 'hostile') this.fields.splice(i, 1);
@@ -1952,6 +1953,7 @@ export class Game {
       if(this.boss.id==='ratcatcher'){this.director.ratcatcher.clearCast();this.brutalVolley.clear();}
       if(this.boss.id==='quarantine-clerk'){this.director.clerk.reset();this.brutalVolley.clear();}
       if(this.boss.id==='tollkeeper'){this.director.civic.tollkeeper.reset();this.brutalVolley.clear();}
+      if(this.boss.id==='chain-marshal'){this.director.civic.marshal.reset();this.brutalVolley.clear();}
       this.signatures = [];
       this.wardenPatrol.clear();
       return;
@@ -1967,12 +1969,13 @@ export class Game {
       this.attackAt[0] = Math.max(this.attackAt[0] ?? now, this.director.earlyWatch.nextSignatureAt);
     if (this.director.smallWakes.handles(this.boss.id))
       this.attackAt[0] = Math.max(this.attackAt[0] ?? now, this.director.smallWakes.nextSignatureAt);
-    if (this.boss.id === 'tollkeeper') this.director.step(this.signatureContext());
+    if (this.boss.id === 'tollkeeper' || this.boss.id === 'chain-marshal') this.director.step(this.signatureContext());
     const attacks = this.bossPhases()[this.boss.phase].attacks;
     for (let index = 0; index < attacks.length; index++)
       if (
         now >= this.attackAt[index] &&
         (this.boss.id !== 'tollkeeper' || !this.director.civic.tollkeeper.busy) &&
+        (this.boss.id !== 'chain-marshal' || !this.director.civic.marshal.busy) &&
         (this.boss.id!=='quarantine-clerk' || (!this.director.clerk.busy && (index!==0 || (now>=this.director.clerk.nextSignatureAt&&!this.warnings.length)))) &&
         (this.boss.id!=='ratcatcher' || (!this.director.ratcatcher.busy && (index!==0 || (now>=this.director.ratcatcher.nextSignatureAt && !this.warnings.length)))) &&
         (this.boss.id!=='courier' || (!this.director.courier.busy && (index!==0 || now>=this.director.courier.nextRouteAt))) &&
@@ -2135,7 +2138,7 @@ export class Game {
           y: this.boss.y,
         });
       }
-    if (this.boss.id !== 'tollkeeper') this.director.step(this.signatureContext());
+    if (this.boss.id !== 'tollkeeper' && this.boss.id !== 'chain-marshal') this.director.step(this.signatureContext());
     if (this.boss.id === 'constable')
       moveConstable(
         this.boss,

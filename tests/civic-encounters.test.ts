@@ -124,7 +124,9 @@ test('Chain Marshal anchors absorb actual shots and breaking one cancels only it
   d.hit(first.id, 1000);
   const second = d.weakPoints()[0];
   c.tick = second.at;
-  c.targets[0] = { id: 'p', x: second.x, y: second.y + 200, oldX: second.x, oldY: second.y + 200 };
+  const arm=d.cues().find(q=>q.kind==='chain'&&q.id===second.id);assert(arm?.kind==='chain');
+  const px=arm.x+Math.cos(arm.startAngle)*Math.min(200,arm.length*.7),py=arm.y+Math.sin(arm.startAngle)*Math.min(200,arm.length*.7);
+  c.targets[0] = { id: 'p', x: px, y: py, oldX: px, oldY: py };
   d.step(c, false);
   assert(c.hits.length > 0, 'Unbroken anchor must still produce real contact damage');
   assert.equal(d.hit(first.id, 100), 0, 'Destroyed anchors never award repeated damage');

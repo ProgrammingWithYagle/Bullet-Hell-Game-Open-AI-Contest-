@@ -121,7 +121,7 @@
     "boss.canal-diver.name": "运河潜水员",
     "boss.chain-colossus.description": "三个柱点拉动标记地面。击破任一个可制造输出窗口，也可沿畅通外围移动。",
     "boss.chain-colossus.name": "锁链巨像",
-    "boss.chain-marshal.description": "两个墙锚将锁链扫过标记区域。躲入未扫象限，或摧毁锚点扩大缺口。",
+    "boss.chain-marshal.description": "两个编号锚点预警方向相反且锁定的扫击。离开涂色扇区、从扫过的锁链后方穿越，或击碎锚点切断对应锁链。实心墙体会挡住锁链。",
     "boss.chain-marshal.name": "锁链元帅",
     "boss.chalk-magistrate.description": "矩形三面墙将闪击，一面先被擦除。预警时从擦除面离开；墙体不会以碰撞困住玩家。",
     "boss.chalk-magistrate.name": "粉笔裁判官",
@@ -1662,6 +1662,17 @@
     "boss.quarantine-clerk.advancedDescription": "落印前，缺口就会标出将变绿的庇护印记。残酷第一阶段固定为I，第二阶段随机编号；狂乱每组都随机选择编号。",
     "boss.quarantine-clerk.advancedPhaseHint.0": "认清带缺口的印记，等它变绿。残酷开场是I；狂乱可以是任意编号。",
     "boss.quarantine-clerk.advancedPhaseHint.1": "书记员移动后，找到新一组带缺口的印记。残酷和狂乱的安全编号随机，等变绿再进入。",
-    "boss.quarantine-clerk.crazedHelp": "狂乱有十个印记。绿色庇护至少持续5秒，覆盖最后的预警回响。黑色骷髅每个印记每次激活仅扣除一次当前生命的75%，无视护甲和护盾，至少留下1点生命。 紫色三角的撞击伤害是红色的两倍。每个印记首次命中还会无视护甲和护盾扣除当前生命的15%，并施加3秒中毒（每半秒2点基础伤害）及35%步行减速。中毒只刷新、不叠加；净化可移除。绿色庇护和无敌可阻止施加及毒伤，冲刺速度不变。"
+    "boss.quarantine-clerk.crazedHelp": "狂乱有十个印记。绿色庇护至少持续5秒，覆盖最后的预警回响。黑色骷髅每个印记每次激活仅扣除一次当前生命的75%，无视护甲和护盾，至少留下1点生命。 紫色三角的撞击伤害是红色的两倍。每个印记首次命中还会无视护甲和护盾扣除当前生命的15%，并施加3秒中毒（每半秒2点基础伤害）及35%步行减速。中毒只刷新、不叠加；净化可移除。绿色庇护和无敌可阻止施加及毒伤，冲刺速度不变。",
+    "boss.chain-marshal.phase.0": "坚守阵线",
+    "boss.chain-marshal.phase.1": "移位令状",
+    "boss.chain-marshal.phaseHint.0": "第一轮扫击会锁定方向。尖刺弹幕的缺口不能防住锁链本体。",
+    "boss.chain-marshal.phaseHint.1": "按预警移动后，两条锁链依次启动。每个存活锚点都会重新瞄准并完整预警反向扫击；穿越前看清新扇区。",
+    "boss.chain-marshal.brutalHelp": "残酷会让每个存活锚点发射带缺口的尖刺弹幕。切断一个锚点可取消其回扫和未发射的重复弹；已飞出的子弹仍危险。趁明确的恢复期进攻。",
+    "boss.chain-marshal.crazedHelp": "狂乱保留残酷机制，尖刺弹量为其三倍。后续重复波加入单独预警的交叉角度，逐次观察预警。",
+    "ui.bossGuide": "首领指南",
+    "ui.closeBossGuide": "关闭指南",
+    "ui.bossGuidePaused": "指南打开期间，单人战斗已暂停。",
+    "ui.bossGuideResume": "关闭并继续",
+    "ui.bossGuideOnline": "在线战斗在阅读时仍会继续。"
   }
 }

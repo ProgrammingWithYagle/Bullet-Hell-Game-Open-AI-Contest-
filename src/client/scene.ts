@@ -502,6 +502,18 @@ export class CombatScene extends Phaser.Scene {
           h.lineStyle(2, 0xf2ca7e, .7).lineBetween(cue.x + Math.cos(angle) * 48, cue.y + Math.sin(angle) * 48, cue.x + Math.cos(angle) * 225, cue.y + Math.sin(angle) * 225);
         continue;
       }
+      if (cue.kind === 'marshal-patrol') {
+        h.lineStyle(2,0xe6b875,.85).lineBetween(cue.x1,cue.y1,cue.x2,cue.y2);
+        h.lineStyle(3,0xe6b875,1).strokeRect(cue.x2-18,cue.y2-15,36,30);
+        continue;
+      }
+      if (cue.kind === 'marshal-barbs') {
+        if(now<cue.beganAt)continue;
+        const color=cue.crossing?0xc9a0e5:0xe6b875;
+        for(const angle of cue.angles)h.lineStyle(2,color,.75).lineBetween(cue.x+Math.cos(angle)*31,cue.y+Math.sin(angle)*31,cue.x+Math.cos(angle)*200,cue.y+Math.sin(angle)*200);
+        if(cue.crossing)h.lineStyle(3,color,1).lineBetween(cue.x-10,cue.y-58,cue.x+10,cue.y-44).lineBetween(cue.x-10,cue.y-44,cue.x+10,cue.y-58);
+        continue;
+      }
       if (cue.kind === 'clerk-volley') {
         if (now < cue.beganAt) continue;
         const progress = Math.max(0, Math.min(1, (now - cue.beganAt) / Math.max(1, cue.at - cue.beganAt))),
@@ -686,46 +698,29 @@ export class CombatScene extends Phaser.Scene {
           .setRotation(this.reduceMotion ? 0 : cue.rotation);
         h.lineStyle(2, 0xe6bf72, 0.9).strokeCircle(cue.x, cue.y, cue.radius);
       } else if (cue.kind === 'chain') {
-        const active = now >= cue.at,
-          broken = cue.health <= 0,
-          color = broken ? 0x8bc9a7 : 0xe6b875;
-        if (!active && !broken)
-          this.paintSector(
-            h,
-            {
-              x: cue.x,
-              y: cue.y,
-              aim: cue.startAngle + cue.sweep / 2,
-              arc: cue.sweep,
-              radius: cue.length,
-            },
-            color,
-            0.07,
-            2,
-          );
-        if (active && !broken) {
-          const end = {
-            x: cue.x + Math.cos(cue.angle) * cue.length,
-            y: cue.y + Math.sin(cue.angle) * cue.length,
-          };
-          h.lineStyle(cue.width, color, 0.65).lineBetween(cue.x, cue.y, end.x, end.y);
-          for (let d = 30; d < cue.length; d += 26)
-            h.lineStyle(2, 0x302d26, 1).strokeCircle(
-              cue.x + Math.cos(cue.angle) * d,
-              cue.y + Math.sin(cue.angle) * d,
-              7,
-            );
+        const active=now>=cue.at&&now<cue.endsAt,broken=cue.health<=0,color=broken?0x8bc9a7:0xe6b875;
+        if(now<cue.at&&!broken){
+          const polygon=[new Phaser.Math.Vector2(cue.x,cue.y),...cue.edge.map(p=>new Phaser.Math.Vector2(p.x,p.y))];
+          h.fillStyle(color,.07).fillPoints(polygon,true);
+          h.lineStyle(cue.width,color,.12).strokePoints(polygon,true);
+          h.lineStyle(2,color,.85).strokePoints(polygon,true);
+          const middle=cue.startAngle+cue.sweep/2,sign=Math.sign(cue.sweep),edge=cue.edge[Math.floor(cue.edge.length/2)],
+            px=cue.x+(edge.x-cue.x)*.7,py=cue.y+(edge.y-cue.y)*.7,tx=-Math.sin(middle)*sign,ty=Math.cos(middle)*sign;
+          h.lineStyle(3,color,1).lineBetween(px-tx*15,py-ty*15,px+tx*15,py+ty*15)
+            .lineBetween(px+tx*15,py+ty*15,px+tx*6+ty*7,py+ty*6-tx*7)
+            .lineBetween(px+tx*15,py+ty*15,px+tx*6-ty*7,py+ty*6+tx*7);
         }
-        f.lineStyle(4, color, 1).strokeCircle(cue.x, cue.y, cue.radius);
-        f.fillStyle(0x142b27, 1).fillRect(cue.x - 30, cue.y - 42, 60, 6);
-        f.fillStyle(color, 1).fillRect(
-          cue.x - 30,
-          cue.y - 42,
-          (60 * cue.health) / cue.maxHealth,
-          6,
-        );
-        if (broken)
-          f.lineStyle(3, color, 1).lineBetween(cue.x - 14, cue.y - 14, cue.x + 14, cue.y + 14);
+        if(active&&!broken){
+          const end={x:cue.x+Math.cos(cue.angle)*cue.length,y:cue.y+Math.sin(cue.angle)*cue.length};
+          h.lineStyle(cue.width,color,.65).lineBetween(cue.x,cue.y,end.x,end.y);
+          for(let d=30;d<cue.length;d+=26)h.lineStyle(2,0x302d26,1).strokeCircle(cue.x+Math.cos(cue.angle)*d,cue.y+Math.sin(cue.angle)*d,7);
+        }
+        f.lineStyle(4,color,1).strokeCircle(cue.x,cue.y,cue.radius);
+        for(let n=0;n<cue.index;n++)f.lineStyle(3,color,1).lineBetween(cue.x+(n-(cue.index-1)/2)*10,cue.y-9,cue.x+(n-(cue.index-1)/2)*10,cue.y+9);
+        for(let n=1;n<=cue.legs;n++)f.lineStyle(2,color,n<=cue.leg?1:.35).strokeRect(cue.x+(n-(cue.legs+1)/2)*15-4,cue.y+35,8,8);
+        f.fillStyle(0x142b27,1).fillRect(cue.x-30,cue.y-42,60,6);
+        f.fillStyle(color,1).fillRect(cue.x-30,cue.y-42,60*cue.health/cue.maxHealth,6);
+        if(broken)f.lineStyle(3,color,1).lineBetween(cue.x-14,cue.y-14, cue.x+14,cue.y+14);
       } else if (cue.kind === 'gate') {
         const active = now >= cue.at,
           color = cue.open ? 0x9be6c9 : 0xe88664;

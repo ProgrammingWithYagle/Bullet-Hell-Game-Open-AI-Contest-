@@ -1,0 +1,36 @@
+✔ boss guide starts closed, pauses Solo only, and closing it preserves an independent manual pause (1.6444ms)
+✔ all fifteen guide dialogs default hidden, expose open/close controls and distinguish frozen Solo from continuing online play (1.0253ms)
+✔ Session never sends a global pause command for an online guide (1.4063ms)
+✔ the actual offline worker freezes combat clocks, deadlines, player state and warnings while reading, then resumes without catchup or held input (855.4208ms)
+✔ Tollkeeper locks both segments, reflects once at the wall and sweeps moving survivors only after its tell (4.5926ms)
+✔ Chain Marshal anchors absorb actual shots and breaking one cancels only its own sweep (46.1892ms)
+✔ Widow rotates the open gate, blocks shots and movement, and ejects a closing overlap without trapping (1.3891ms)
+✔ Widow collision prediction uses the same active shutters as the authoritative player step (16.0056ms)
+✔ Ambulance patrols, locks and executes a charge, then exposes its driver for exactly three seconds (24.0199ms)
+✔ each civic boss executes its tier-appropriate phases without a Normal shield event and cleans on victory/deadline (43.8333ms)
+✔ Quarantine has four nonrepeating regular choices then an actual route finale and 27 SP (20.884ms)
+✔ all six arena choices launch real collision layouts and survive a local boundary; old v6 stays Practice only (3.9685ms)
+✔ real clients receive all four civic signatures, selected map, breakable anchors and active gates (4658.9997ms)
+✔ Held Line keeps the body planted, gives two opposite locked80degree sweeps and preserves90/180anchor health (24.9604ms)
+✔ late Writ marks a collision-resolved body move, then staggers two fresh complete warnings and return legs (4.6696ms)
+✔ inserted cover stops the marked move early but the subsequent anchor field still receives a full new warning (7.6904ms)
+✔ surviving late anchors aim a reversed return only when a fresh warning starts and never track within that warning (14.2327ms)
+✔ cutting an anchor cancels only its own future sweep and owned barb repeats while the surviving anchor continues (11.663ms)
+✔ advanced opening barbs emit exactly40Brutal/120Crazed controlled shots with full separate warnings and extra crossing trajectories (10.0528ms)
+✔ actual Game emits the owned advanced barb budget once without recapturing it into the global echo queue (67.0395ms)
+✔ real sweep contact includes fast whole-body crossings, is harmless before activation and shares one half-second budget across both arms (5.8657ms)
+✔ new masonry clips the live arm immediately and the painted locked envelope prevents growth after original cover is removed (8.7868ms)
+✔ every actual map/difficulty provides clear separated anchors, bounded plain-geometry warning vertices and no buried socket (210.7133ms)
+✔ a full signature recovers explicitly, permits auxiliary casts only between sequences and reset/paused state cancels every owned future cue (7.8307ms)
+✔ phase stagger victory timeout and wipe clear real Marshal paths, anchors, owned repeats and pending global echoes (19.8347ms)
+✔ existing casting poses and fifteen authored phase guides follow the new warning/return clocks without claiming new walking art (29.6282ms)
+✔ only known protocol27 local Practice/profile state migrates while exact forms/build history remains and online/signed state stays strict (3.4592ms)
+✔ real owner and observer receive phase movement, clipped locked return geometry, source-specific cuts and cleanup (479.3668ms)
+ℹ tests 28
+ℹ suites 0
+ℹ pass 28
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6953.5136

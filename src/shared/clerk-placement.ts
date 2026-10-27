@@ -12,6 +12,7 @@ export function clerkStampCenters(
   radius = tuning.stampRadius,
   count = 3,
   previousSpacing = radius * 2 + tuning.stampSeparation,
+  accept: (point: Vec) => boolean = () => true,
 ) {
   if (!Number.isInteger(count) || count < 1 || count > 10) return [];
   const step = tuning.gridSpacing,
@@ -70,7 +71,7 @@ export function clerkStampCenters(
         excluded.every(
           (e) => distance(p, e) > radius + e.radius + tuning.stampClearance,
         ) &&
-        previous.every((e) => distance(p, e) > previousSpacing),
+        previous.every((e) => distance(p, e) > previousSpacing) && accept(p),
     )
     .toSorted(
       (a, b) =>

@@ -10,8 +10,8 @@ export function migratePracticeBoundary(value: unknown): unknown {
   // The existing version-specific and full restore validation still apply.
   // Current-version cards never pass through legacy reclassification.
   const compatibleRevision =
-    ['cc48fbf30b18e546d600b05f4c4648330cfd012631c53fd7a4fe57b734b7a97b','a36ec57bba4b76a595d42ac812c69bbda0ab2305ea22cf131b1770e03a57d9d2','27c4b2e298912b53f88b115654857f923966aeccdb80b730e449536a2045ef27','da37e2a0e2beb54343495ce39027211df254fa1c79ab42ec3f3360373ad792db','9598869248912ad6a787d6e72791183acf4e12d38da92f2a677164f93e3f51c7','312aa30276cffb7bb00cf9a303cc3b3461cce80d32e054afd5e91c08f76e2006','86ace79844ae1abe21b7fa54d18fa2de1f4316a2b5a0578c1878e6b27479ffdf','82763fd1f5288303f8170a798b656f5443fc8f5236b652786a9e3b27070c41af','b8d9fb6918c854f3eed38b327ed0cb3026e071e6fe24932e50beed36943db241', '43b7b2848b50bbe56072bfa134e5775355a7faca28092624744bdae6a0d318bb','cbb6b8e68c9fb6f3191a3f0ef4a6411c8a3d3e41e3aeca783c122b07ab73d546','1ad00eee45a117a45929e56884c6a39a8c4eb614b0728ab31e847403fb8735bb','d4419d906f67286576ca3f6795e03a921269aff861b36e2e82ce68aa2e501775','535eb34c7cdabce5ad2fe910ea0a792278a7cc08e360b4f5712d7ee2d9e767f6'].includes(issued.contentRevision as string) &&
-    [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, PROTOCOL].includes(issued.protocolVersion as number) &&
+    ['b6d1eca2e4cc89073c4e45a5007b4e39ff98bc30ba98337782777170210a0438','cc48fbf30b18e546d600b05f4c4648330cfd012631c53fd7a4fe57b734b7a97b','a36ec57bba4b76a595d42ac812c69bbda0ab2305ea22cf131b1770e03a57d9d2','27c4b2e298912b53f88b115654857f923966aeccdb80b730e449536a2045ef27','da37e2a0e2beb54343495ce39027211df254fa1c79ab42ec3f3360373ad792db','9598869248912ad6a787d6e72791183acf4e12d38da92f2a677164f93e3f51c7','312aa30276cffb7bb00cf9a303cc3b3461cce80d32e054afd5e91c08f76e2006','86ace79844ae1abe21b7fa54d18fa2de1f4316a2b5a0578c1878e6b27479ffdf','82763fd1f5288303f8170a798b656f5443fc8f5236b652786a9e3b27070c41af','b8d9fb6918c854f3eed38b327ed0cb3026e071e6fe24932e50beed36943db241', '43b7b2848b50bbe56072bfa134e5775355a7faca28092624744bdae6a0d318bb','cbb6b8e68c9fb6f3191a3f0ef4a6411c8a3d3e41e3aeca783c122b07ab73d546','1ad00eee45a117a45929e56884c6a39a8c4eb614b0728ab31e847403fb8735bb','d4419d906f67286576ca3f6795e03a921269aff861b36e2e82ce68aa2e501775','535eb34c7cdabce5ad2fe910ea0a792278a7cc08e360b4f5712d7ee2d9e767f6'].includes(issued.contentRevision as string) &&
+    [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, PROTOCOL].includes(issued.protocolVersion as number) &&
     issued.schemaVersion === 1 &&
     issued.practiceOnly === true &&
     issued.serverOnly !== true &&
@@ -19,6 +19,10 @@ export function migratePracticeBoundary(value: unknown): unknown {
     issued.transactions === undefined &&
     JSON.stringify(issued).length <= 32768;
   const legacy = compatibleRevision ? { ...issued, contentRevision: CONTENT_REVISION } : issued;
+  if (issued.protocolVersion === 27) {
+    if (issued.contentRevision !== 'b6d1eca2e4cc89073c4e45a5007b4e39ff98bc30ba98337782777170210a0438' || !compatibleRevision) throw Error('versionMismatch');
+    return { ...legacy, protocolVersion: PROTOCOL };
+  }
   if (issued.protocolVersion === 26) {
     if (issued.contentRevision !== 'cc48fbf30b18e546d600b05f4c4648330cfd012631c53fd7a4fe57b734b7a97b' || !compatibleRevision) throw Error('versionMismatch');
     return { ...legacy, protocolVersion: PROTOCOL };

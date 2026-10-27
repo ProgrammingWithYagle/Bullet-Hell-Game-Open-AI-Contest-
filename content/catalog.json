@@ -16116,8 +16116,8 @@
       "artBrief": "A dead gate marshal in a rectangular iron coat carrying two heavy chains. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
       "signature": {
         "id": "chain-marshal",
-        "behavior": "Anchor two chains to wall sockets and sweep the marked sectors once before the anchors break.",
-        "counterplay": "Stand in either unswept quadrant or destroy an anchor to widen the gap.",
+        "behavior": "Held Line plants two clear reachable anchors and warns opposite locked sweeps. At half health, Shifting Writ marks a lateral reposition before placing new anchors, staggers the arms and gives each surviving anchor a freshly aimed reverse sweep after a full new warning. Actual bounds and masonry clip the warned sweep envelope. Advanced anchors warn gapped barb volleys; Crazed later repeats add separately warned crossing angles.",
+        "counterplay": "Find the numbered anchors before the sweep. Leave the painted sweep, cross behind the passing arm or shoot an anchor to cut only its chain, return and unreleased barb repeats. In-flight shots remain. New phase-two headings lock only when the return warning appears. Every arm gets a complete 1.4-second tell, including the return. Clear masonry blocks the physical chain. Barbs have their own warning and gap; the chain still crosses that gap. Punish the explicit recovery. Anchor health remains 90 Standard/180 advanced; base boss health, damage, timer and grade remain.",
         "parameters": {
           "anchors": 2,
           "anchorHealthHP": 90,
@@ -16125,7 +16125,46 @@
           "sweepDegrees": 80,
           "sweepSeconds": 2.5,
           "warningSeconds": 1.4,
-          "cycleSeconds": 9
+          "cycleSeconds": 9,
+          "shiftingWrit": {
+            "anchorRadius": 27,
+            "anchorHealth": 90,
+            "advancedAnchorHealthMultiplier": 2,
+            "maximumReach": 610,
+            "chainWidth": 18,
+            "sweepDegrees": 80,
+            "warningSeconds": 1.4,
+            "activeSeconds": 2.5,
+            "contactDamage": 9,
+            "contactSeconds": 0.5,
+            "edgeSegments": 75,
+            "collisionSpacing": 6,
+            "maximumCollisionSteps": 256,
+            "anchorSeparation": 224,
+            "targetClearance": 72,
+            "bossClearance": 8,
+            "placementAttempts": 4,
+            "patrolDistance": 168,
+            "patrolSpeed": 78,
+            "patrolWarningSeconds": 0.7,
+            "lateArmSpacingSeconds": 0.55,
+            "returnPauseSeconds": 0.4,
+            "recoverySeconds": 0.8,
+            "advancedRecoverySeconds": 1.2,
+            "betweenSequencesSeconds": 1.5,
+            "retrySeconds": 1,
+            "brokenCueSeconds": 0.35,
+            "barbsPerWing": 4,
+            "barbHalfGap": 0.4,
+            "barbWingArc": 0.55,
+            "barbWarningSeconds": 1.2,
+            "barbSpeed": 190,
+            "barbDamage": 6,
+            "barbRadius": 5,
+            "barbCueSeconds": 0.2,
+            "crazedCrossingFromWave": 3,
+            "crazedCrossingTurn": 0.28
+          }
         }
       },
       "arenaIds": [
@@ -16169,7 +16208,12 @@
               "arc": 150
             }
           ],
-          "patternPhase": 0
+          "patternPhase": 0,
+          "phaseNameKey": "boss.chain-marshal.phase.0",
+          "relocatesBeforeChains": false,
+          "chainLegs": 1,
+          "reaimsReturn": false,
+          "staggersArms": false
         },
         {
           "healthThreshold": 0.5,
@@ -16195,7 +16239,12 @@
               "arc": 150
             }
           ],
-          "patternPhase": 2
+          "patternPhase": 2,
+          "phaseNameKey": "boss.chain-marshal.phase.1",
+          "relocatesBeforeChains": true,
+          "chainLegs": 2,
+          "reaimsReturn": true,
+          "staggersArms": true
         }
       ],
       "variants": {
@@ -16240,7 +16289,12 @@
                   "comboOffsetSeconds": 0
                 }
               ],
-              "patternPhase": 0
+              "patternPhase": 0,
+              "phaseNameKey": "boss.chain-marshal.phase.0",
+              "relocatesBeforeChains": false,
+              "chainLegs": 1,
+              "reaimsReturn": false,
+              "staggersArms": false
             },
             {
               "healthThreshold": 0.5,
@@ -16269,7 +16323,12 @@
                   "comboOffsetSeconds": 1.25
                 }
               ],
-              "patternPhase": 3
+              "patternPhase": 3,
+              "phaseNameKey": "boss.chain-marshal.phase.1",
+              "relocatesBeforeChains": true,
+              "chainLegs": 2,
+              "reaimsReturn": true,
+              "staggersArms": true
             }
           ]
         },
@@ -16308,7 +16367,12 @@
                   "comboOffsetSeconds": 0
                 }
               ],
-              "patternPhase": 0
+              "patternPhase": 0,
+              "phaseNameKey": "boss.chain-marshal.phase.0",
+              "relocatesBeforeChains": false,
+              "chainLegs": 1,
+              "reaimsReturn": false,
+              "staggersArms": false
             },
             {
               "healthThreshold": 0.5,
@@ -16337,7 +16401,12 @@
                   "comboOffsetSeconds": 1.25
                 }
               ],
-              "patternPhase": 3
+              "patternPhase": 3,
+              "phaseNameKey": "boss.chain-marshal.phase.1",
+              "relocatesBeforeChains": true,
+              "chainLegs": 2,
+              "reaimsReturn": true,
+              "staggersArms": true
             }
           ],
           "additionalPatterns": [

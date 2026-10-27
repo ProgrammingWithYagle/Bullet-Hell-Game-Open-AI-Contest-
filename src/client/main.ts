@@ -1,3 +1,6 @@
+import {BossGuideState,bossGuideMarkup,bossGuideAvailable} from './boss-guide.ts';
+import './ui/boss-guide.css';
+import {marshalPhaseName,marshalPhaseHint} from './marshal-text.ts';
 import {tollkeeperPhaseName,tollkeeperPhaseHint} from './tollkeeper-text.ts';
 import {clerkPhaseName,clerkPhaseHint} from './clerk-text.ts';
 import {ratcatcherPhaseName,ratcatcherPhaseHint} from './ratcatcher-text.ts';
@@ -41,7 +44,9 @@ import { data } from '../shared/game.ts';
 import type { View, PlayerView } from '../shared/view.ts';
 const app = document.querySelector<HTMLElement>('#app')!,
   audio = new AudioBus(),
-  bossPhaseFeedback = new BossPhaseFeedback();
+  bossPhaseFeedback = new BossPhaseFeedback(),
+  bossGuide = new BossGuideState();
+let guideReturnFocus: HTMLElement | null = null;
 let session: Session | undefined,
   game: Phaser.Game | undefined,
   scene: CombatScene | undefined,
@@ -197,7 +202,7 @@ async function begin(
       if (e) e.textContent = t(key, { seconds: 60, position: active.queuePosition });
       if (controls) {
         controls.blocked =
-          paused ||
+          bossGuide.blocksInput(paused) ||
           active.view?.phase !== 'combat' ||
           key === 'ui.reconnecting' ||
           key === 'ui.errorNetwork';
@@ -233,7 +238,7 @@ async function begin(
     else await active.offline(opts, resume);
     timer = setInterval(() => {
       const view = active.view;
-      if (!view || (paused && !active.online)) return;
+      if (!view || bossGuide.pausesSimulation(paused,active.online)) return;
       const p = prediction.player ?? view.players.find((p) => p.id === active.id);
       const frame = controls!.sample(view.tick, p, view.boss);
       active.input(frame);
@@ -258,10 +263,19 @@ async function begin(
 function setupGame(online: boolean) {
   document.body.classList.add('playing');
   paused = false;
+  bossGuide.set(false);
+  guideReturnFocus = null;
   uiKey = '';
   lastPhase = '';
   prediction = new Prediction();
   app.innerHTML = `<div id="stage" dir="ltr"></div><section class="hud" aria-label="${text('ui.health')}"><div class="topline"><div><strong id="encounter"></strong><small id="status" role="status"></small></div><div id="boss-panel">${bossHeaderMarkup()}<div class="boss-health-track" dir="ltr"><progress id="boss-health" max="1" value="1" aria-label="${text('ui.boss')}"></progress><div id="boss-phase-markers" aria-hidden="true"></div></div><p id="boss-phase-entry" class="boss-phase-entry" role="status" aria-live="polite" hidden></p><p id="boss-phase-note" class="boss-phase-note" role="status" aria-live="polite" hidden></p></div><button id="pause-button">Ⅱ <span>${text('ui.pause')}</span></button></div><div id="accord" class="accord" hidden></div><p id="signature-help" class="signature-help" role="status" aria-live="polite" hidden></p><div class="bottomline"><div class="vitals"><strong id="player-name">${insignia(selectedCosmetic)}<span id="player-name-label"></span></strong><progress id="health" max="1" value="1" aria-label="${text('ui.health')}"></progress><span id="health-text"></span><span id="ammo"></span><span id="currency"></span></div><div id="abilities" class="ability-list"></div><div id="squad" class="squad"></div></div></section><div id="modal" class="overlay" hidden></div><div id="pause-menu" class="overlay" hidden><section class="dialog"><h2>${text('ui.paused')}</h2><p>${text(online ? 'ui.onlinePause' : 'ui.offlineNotice')}</p>${settingsMarkup()}<div class="actions"><button id="resume" class="primary">${text('ui.continue')}</button><button id="leave">${text('ui.leaveRoom')}</button></div></section></div><div class="touch-buttons"><button data-action="dodge">${text('ui.dodge')}</button><button data-action="q">Q</button><button data-action="e">E</button><button data-action="ultimate">${text('ui.ultimate')}</button><button data-action="interact">${text('ui.revive')}</button><button data-action="reload">${text('ui.reload')}</button></div><div class="portrait-note">${text('ui.portraitHint')}</div>`;
+  const guideMount=document.createElement('div');
+  guideMount.innerHTML=bossGuideMarkup(locale,online);
+  $('pause-button').before(guideMount.querySelector('#boss-guide-button')!);
+  app.append(guideMount.querySelector('#boss-guide')!);
+  $('boss-guide-copy').append($('boss-phase-note'),$('signature-help'));
+  $('boss-guide-button').onclick=()=>setBossGuide(!bossGuide.open);
+  $('boss-guide-close').onclick=$('boss-guide-resume').onclick=()=>setBossGuide(false);
   const supplyBar = document.createElement('div');
   const checkpointNotice = document.createElement('small');
   checkpointNotice.id = 'checkpoint-notice';
@@ -308,17 +322,39 @@ function setupGame(online: boolean) {
     $('dev-metrics-stress').onclick = () => scene?.frameMeter.beginCapture(20000, 4000);
   }
 }
-function togglePause() {
-  paused = !paused;
-  $('pause-menu').hidden = !paused;
-  session?.pause(paused);
-  if (controls) {
-    controls.clear();
-    controls.blocked = paused || session?.view?.phase !== 'combat';
+function syncPauseState() {
+  const simulationPaused=bossGuide.pausesSimulation(paused,session?.online??false);
+  session?.pause(simulationPaused);
+  prediction=new Prediction();
+  if(session?.view)prediction.acknowledge(session.view,session.id);
+  if(scene)scene.predicted=prediction.player;
+  if(!session?.online&&scene?.scene){
+    if(simulationPaused&&!scene.scene.isPaused())scene.scene.pause();
+    else if(!simulationPaused&&scene.scene.isPaused())scene.scene.resume();
   }
+  if(controls){controls.clear();controls.blocked=bossGuide.blocksInput(paused)||session?.view?.phase!=='combat';}
+}
+function setBossGuide(value:boolean,restoreFocus=true) {
+  if(value&&(session?.view?.phase!=='combat'||!bossGuideAvailable(session.view.run.difficulty)))return;
+  if(value)guideReturnFocus=document.activeElement instanceof HTMLElement?document.activeElement:null;
+  bossGuide.set(value);
+  $('boss-guide').hidden=!value;
+  $('boss-guide-button').setAttribute('aria-expanded',String(value));
+  syncPauseState();
+  if(value)$('boss-guide-close').focus({preventScroll:true});
+  else if(restoreFocus)(guideReturnFocus?.isConnected?guideReturnFocus:$('boss-guide-button')).focus({preventScroll:true});
+}
+function togglePause() {
+  paused=!paused;
+  $('pause-menu').hidden=!paused;
+  syncPauseState();
 }
 function update(view: View) {
   if (!session || !scene) return;
+  if(view.phase!=='combat'&&bossGuide.open)setBossGuide(false,false);
+  $<HTMLButtonElement>('boss-guide-button').disabled=view.phase!=='combat';
+  $('boss-guide-button').hidden=!bossGuideAvailable(view.run.difficulty);
+  $('boss-guide-boss-name').textContent=t('boss.'+view.boss.id+'.name');
   scene.localId = session.id;
   scene.apply(view);
   prediction.acknowledge(view, session.id);
@@ -326,7 +362,7 @@ function update(view: View) {
   const p = view.players.find((p) => p.id === session!.id);
   if (!p) return;
   controls!.blocked =
-    paused ||
+    bossGuide.blocksInput(paused) ||
     view.phase !== 'combat' ||
     session.status === 'ui.reconnecting' ||
     session.status === 'ui.errorNetwork';
@@ -347,7 +383,7 @@ function update(view: View) {
   $('boss-form').textContent=t(view.boss.variant==='crazed'?'ui.variantCrazed':view.boss.variant==='brutal'?'ui.variantBrutal':'ui.variantNormal');
   $('boss-phase-label').textContent=t('ui.phaseCount',{number:number(view.boss.phase+1),total:number(encounterPhases(view.boss.id,view.boss.variant).length)});
   $('boss-phase-name').textContent=view.boss.id==='constable'?constablePhaseName(bossPatternPhase(view.boss.id,view.boss.variant,view.boss.phase),locale):
-    view.boss.id==='tollkeeper'?tollkeeperPhaseName(view.boss.phase,locale):view.boss.id==='quarantine-clerk'?clerkPhaseName(view.boss.phase,locale):view.boss.id==='ratcatcher'?ratcatcherPhaseName(view.boss.phase,locale):view.boss.id==='courier'?courierPhaseName(view.boss.phase,locale):smallWakesPhaseName(view.boss.id,view.boss.phase,locale)??(view.boss.id==='lantern-warden'?wardenPhaseName(view.boss.phase,locale):
+    view.boss.id==='chain-marshal'?marshalPhaseName(view.boss.phase,locale):view.boss.id==='tollkeeper'?tollkeeperPhaseName(view.boss.phase,locale):view.boss.id==='quarantine-clerk'?clerkPhaseName(view.boss.phase,locale):view.boss.id==='ratcatcher'?ratcatcherPhaseName(view.boss.phase,locale):view.boss.id==='courier'?courierPhaseName(view.boss.phase,locale):smallWakesPhaseName(view.boss.id,view.boss.phase,locale)??(view.boss.id==='lantern-warden'?wardenPhaseName(view.boss.phase,locale):
     ['ashen-usher','brass-toad','ragpicker-kite'].includes(view.boss.id)?t(`boss.${view.boss.id}.phase.${Math.min(2,bossPatternPhase(view.boss.id,view.boss.variant,view.boss.phase))}`):'');
   const hp = $<HTMLProgressElement>('health');
   hp.max = p.maxHealth;
@@ -374,7 +410,7 @@ function update(view: View) {
       p.status !== 'active' ||
       view.phase !== 'combat' ||
       (item?.effect==='revive' && !combatReviveFraction(view.run.difficulty)) ||
-      paused;
+      bossGuide.blocksInput(paused);
     button.setAttribute('aria-label', `${number(index + 1)} · ${name} ×${number(slot.count)}`);
     button.title = item
       ? name +
@@ -439,7 +475,7 @@ function update(view: View) {
   const noteText =
     view.boss.id === 'constable'
       ? constablePhaseHint(bossPatternPhase(view.boss.id,view.boss.variant,view.boss.phase), view.boss.variant, locale)
-      : view.boss.id==='tollkeeper'?tollkeeperPhaseHint(view.boss.phase,view.boss.variant,locale):view.boss.id==='quarantine-clerk'?clerkPhaseHint(view.boss.phase,view.boss.variant,locale):view.boss.id==='ratcatcher'?ratcatcherPhaseHint(view.boss.phase,view.boss.variant,locale):view.boss.id==='courier'?courierPhaseHint(view.boss.phase,view.boss.variant,locale):view.boss.id==='lantern-warden'?wardenPhaseHint(view.boss.phase,view.boss.variant,locale):smallWakesPhaseHint(view.boss.id,view.boss.phase,view.boss.variant,locale);
+      : view.boss.id==='chain-marshal'?marshalPhaseHint(view.boss.phase,view.boss.variant,locale):view.boss.id==='tollkeeper'?tollkeeperPhaseHint(view.boss.phase,view.boss.variant,locale):view.boss.id==='quarantine-clerk'?clerkPhaseHint(view.boss.phase,view.boss.variant,locale):view.boss.id==='ratcatcher'?ratcatcherPhaseHint(view.boss.phase,view.boss.variant,locale):view.boss.id==='courier'?courierPhaseHint(view.boss.phase,view.boss.variant,locale):view.boss.id==='lantern-warden'?wardenPhaseHint(view.boss.phase,view.boss.variant,locale):smallWakesPhaseHint(view.boss.id,view.boss.phase,view.boss.variant,locale);
   const formHint=view.boss.variant==='crazed'?t('ui.crazedHelp'):'';
   const completeNote=[noteText,formHint].filter(Boolean).join(' ');
   phaseNote.hidden = !completeNote;
@@ -644,7 +680,7 @@ function renderOverlay(view: View, p: PlayerView) {
     const scroller = overlay.querySelector('.skill-scroll');
     if (scroller) {scroller.scrollTop = scroll;scroller.scrollLeft=scrollLeft;}
   }
-  if (!paused) {
+  if (!bossGuide.blocksInput(paused)) {
     const target = focusedId
       ? overlay.querySelector<HTMLElement>('#' + CSS.escape(focusedId))
       : focusedItem
@@ -689,7 +725,13 @@ window.addEventListener('keydown', (e) => {
     }
     return;
   }
-  if (e.code === 'Escape' && session) togglePause();
+  if(bossGuide.open&&e.code==='Tab'){
+    const items=Array.from($('boss-guide').querySelectorAll<HTMLElement>('button,[tabindex="0"]'));
+    const index=items.indexOf(document.activeElement as HTMLElement);
+    if(e.shiftKey&&(index<=0)){e.preventDefault();items.at(-1)?.focus();}
+    else if(!e.shiftKey&&(index<0||index===items.length-1)){e.preventDefault();items[0]?.focus();}
+  }
+  if(e.code==='Escape'&&session){e.preventDefault();if(bossGuide.open)setBossGuide(false);else togglePause();}
 });
 document.addEventListener('visibilitychange', () => {
   if (document.hidden && session && !session.online && !paused) togglePause();

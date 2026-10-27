@@ -1,0 +1,84 @@
+#boss-guide {
+  z-index: 100;
+  padding: min(1.5rem, 3dvh);
+}
+#boss-guide .boss-guide-dialog {
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
+  gap: 0.7rem;
+  width: min(48rem, 94vw);
+  height: min(38rem, 90dvh);
+  max-height: 90dvh;
+  overflow: hidden;
+}
+.boss-guide-toolbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.boss-guide-toolbar h2 {
+  margin: 0;
+}
+.boss-guide-toolbar button {
+  flex: 0 0 auto;
+}
+#boss-guide-mode {
+  margin: 0;
+  color: #3d5747;
+}
+#boss-guide-copy {
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 0.3rem 0.5rem;
+  scrollbar-gutter: stable;
+  line-height: 1.55;
+}
+#boss-guide-copy .signature-help {
+  position: static;
+  inset: auto;
+  transform: none;
+  pointer-events: auto;
+  text-align: start;
+  color: inherit;
+  max-width: none;
+  width: auto;
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0.9rem 0;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+#boss-guide-copy .boss-phase-note {
+  color: inherit;
+  font-size: 1rem;
+  line-height: 1.55;
+  margin: 0.7rem 0;
+}
+#boss-guide-copy h3 {
+  margin: 0.2rem 0 0.7rem;
+}
+.boss-guide-toggle {
+  white-space: nowrap;
+}
+@media (max-width: 700px) {
+  .boss-guide-toggle {
+    padding: 0.45rem;
+  }
+  .boss-guide-toggle span {
+    display: none;
+  }
+  #boss-guide .boss-guide-dialog {
+    gap: 0.45rem;
+    padding: 0.8rem;
+    height: 90dvh;
+  }
+  .boss-guide-toolbar {
+    gap: 0.5rem;
+  }
+  .boss-guide-toolbar h2 {
+    font-size: 1.25rem;
+  }
+}

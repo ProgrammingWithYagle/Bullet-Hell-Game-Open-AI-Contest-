@@ -1,6 +1,6 @@
 # Grave Accord
 
-A cooperative gothic bullet-hell game in active development. Current feature branch: build **2026.10.27-clerk-venom**, protocol **27**, 66 distinct executable bosses with individual original themes, seven classes, 378 skills, 28 weapons and six different map layouts/sizes.
+A cooperative gothic bullet-hell game in active development. Current feature branch: build **2026.10.27-shifting-writ**, protocol **28**, 66 distinct executable bosses with individual original themes, seven classes, 378 skills, 28 weapons and six different map layouts/sizes.
 
 All sixty-six identities execute, including nine scheduled Endless exclusives and the optional Uncounted finale. Five modes work offline and in local online rooms: five-fight Quarantine Run, ten-fight Midnight Circuit, sixteen-fight Black Bell Pilgrimage, three-fight Grand Raid and uncapped Endless Vigil. The in-game main menu has a dated changelog generated from the same history as [CHANGELOG.md](CHANGELOG.md) and the [GitHub Wiki changelog](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/wiki/Changelog).
 
@@ -32,7 +32,7 @@ The optional [expanded skill map](docs/OPTIONAL_SKILL_MAP.md) shows all 54 skill
 
 Latest rules: docs/ASSIST_LIMITS.md — Normal revives at 25%; Baby/Easy use six/three shield circles and two/three-second channels; Baby adds two cover props per map. Preserve all prior frozen previews. [Twenty-one class ability transformations](docs/CLASS_TALENTS.md) are now integrated at existing utility-path depth-three nodes, with all costs and prerequisites retained. Human/rendered review remains open.
 
-[Lantern Warden quality pass](docs/WARDEN_PATROL.md) adds rest-only patrols, directional sweeps and a fully warned sequential Brutal return. Six original-roster quality passes are implemented (Constable, Warden, Courier, Ratcatcher, Clerk and Tollkeeper); 54 remain. Its four patrol poses brought that checkpoint to 1,506; current selected runtime motion is 1,542. Human/rendered acceptance remains open.
+[Lantern Warden quality pass](docs/WARDEN_PATROL.md) adds rest-only patrols, directional sweeps and a fully warned sequential Brutal return. Seven original-roster quality passes are implemented (Constable, Warden, Courier, Ratcatcher, Clerk, Tollkeeper and Chain Marshal); 53 remain. Its four patrol poses brought that checkpoint to 1,506; current selected runtime motion is 1,542. Human/rendered acceptance remains open.
 
 Full verification also uses Python 3 with the pinned Pillow dependency: `python -m pip install -r tools/art-verification-requirements.txt`. This is a development verification dependency; the game itself remains browser/Windows JavaScript. CI installs it in an isolated virtual environment.
 
@@ -44,8 +44,10 @@ Full verification also uses Python 3 with the pinned Pillow dependency: `python 
 
 [Clerk Appeal Circuit](docs/CLERK_APPEAL.md) fixes 61 missed stamp placements, relocates before late warnings, changes the Standard reopened seal from I to III; advanced forms use five/ten shifted positions, with the current follow-up randomizing the future green number in Brutal phase two and every Crazed field. Original Standard combat numbers and all assets remain. Human review is open.
 
-[Visible Clerk shelter](docs/CLERK_SHELTER.md) pairs reopening with a warned volley, actual rim impacts and a closing ring. Development instructions stay visible; optional Baby-only instructions are a final-product gate.
+[Visible Clerk shelter](docs/CLERK_SHELTER.md) pairs reopening with a warned volley, actual rim impacts and a closing ring. Development instructions are retained in the closed-by-default manual guide; final release must disable all-difficulty testing availability for optional Baby-only guides.
 
-[Banked returns and graded seals](docs/BANKED_VERDICTS.md) adds a distinct Tollkeeper late return and the requested Clerk 3/5/10 fields, purple severity and once-per-seal black current-health curse. Instructions stay visible during testing. Human balance/readability review remains open.
+[Banked returns and graded seals](docs/BANKED_VERDICTS.md) adds a distinct Tollkeeper late return and the requested Clerk 3/5/10 fields, purple severity and once-per-seal black current-health curse. Instructions remain available in the manual guide during testing. Human balance/readability review remains open.
 
 [Clerk venom and lasting shelter](docs/CLERK_VENOM.md) extends advanced green protection through the final marked echo, randomizes the warned safe number, and adds purple poison, slow and a once-per-seal 15% current-health hit. Standard retains its existing seal order/timing. Development instructions stay visible.
+
+[Pauseable boss guide and Shifting Writ](docs/SHIFTING_WRIT.md) moves long boss instructions into a closed-by-default manual guide, pauses Solo while reading, and gives Chain Marshal reachable anchors, a distinct late move/return, cover-clipped sweeps and owned advanced barb volleys. Current testing retains on-demand guides on every difficulty; final Baby-only availability uses an explicit release switch. Human/rendered/device comparison remains open.
