@@ -4,6 +4,7 @@ import { encounterArt } from './encounter-presentation.ts';
 
 /** Drawing only. Signature shape, timing, health and safe openings come from authority. */
 export class DistrictPresentation {
+  private variantTint=0xffffff;
   private images = new Map<string, Phaser.GameObjects.Image>();
   private alive = new Set<string>();
   constructor(
@@ -30,6 +31,7 @@ export class DistrictPresentation {
     }
     image
       .setTexture(key, frame)
+      .setTint(this.variantTint)
       .setPosition(x, y)
       .setOrigin(0.5, 0.5)
       .setDisplaySize(w, h)
@@ -44,7 +46,9 @@ export class DistrictPresentation {
     now: number,
     reduced: boolean,
     hitboxes: boolean,
+    variantTint=0xffffff,
   ) {
+    this.variantTint=variantTint;
     this.alive.clear();
     const circle = (x: number, y: number, r: number, color: number, fill = 0) => {
       h.lineStyle(3, color, 0.9).strokeCircle(x, y, r);

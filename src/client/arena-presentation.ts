@@ -1,5 +1,5 @@
 import library from '../../assets/production/arenas/library.json';
-import { runtimeArena } from '../shared/arena-layouts.ts';
+import { runtimeArena, authoredArenas } from '../shared/arena-layouts.ts';
 
 export const arenaGroundArt = library;
 export const ARENA_BACKDROP_DEPTH = -2;
@@ -24,7 +24,7 @@ export function arenaGroundPlacement(id: string,difficulty='normal') {
   if (
     !art ||
     (['x', 'y', 'width', 'height'] as const).some(
-      (key) => art.worldBounds[key] !== arena.bounds[key],
+      (key) => art.worldBounds[key] !== authoredArenas.find(a=>a.id===id)!.bounds[key],
     )
   ) {
     throw new Error('Arena ground contract does not match the playable footprint: ' + id);

@@ -7,15 +7,16 @@ export function encounterAssists(difficulty: string) {
 export const combatReviveFraction = (difficulty:string) =>
   encounterAssists(difficulty).revivedHealthFraction;
 export const phaseShieldBreak = (difficulty:string, variant:string) =>
-  variant !== 'brutal' && encounterAssists(difficulty).phaseShieldBreak;
-export const encounterVariant = (difficulty:string,variant:string='normal'):'normal'|'brutal' =>
-  difficulty==='hellish'||variant==='brutal'?'brutal':'normal';
+  variant === 'normal' && encounterAssists(difficulty).phaseShieldBreak;
+export const encounterVariant = (difficulty:string,variant:string='normal'):'normal'|'brutal'|'crazed' =>
+  difficulty==='hellish'?'crazed':difficulty==='insane'?'brutal':variant==='crazed'?'crazed':variant==='brutal'?'brutal':'normal';
+export const variantRules=(variant:string)=>variant==='crazed'?catalog.rules.crazed:variant==='brutal'?catalog.rules.brutal:{healthMultiplier:1,damageMultiplier:1,deadlineMultiplier:1,bountyMultiplier:1,projectileMultiplier:1};
 
 const bosses = new Map(catalog.bosses.map(b=>[b.id,b]));
 export function encounterPhases(id:string, variant:string) {
   const boss= bosses.get(id);
   if(!boss)throw Error('Unknown encounter '+id);
-  return variant==='brutal'?boss.variants.brutal.phases:boss.phases;
+  return variant==='crazed'?boss.variants.crazed.phases:variant==='brutal'?boss.variants.brutal.phases:boss.phases;
 }
 /** Visible phase number is separate from the retained authored pattern identity. */
 export function bossPatternPhase(id:string, variant:string, phase:number) {

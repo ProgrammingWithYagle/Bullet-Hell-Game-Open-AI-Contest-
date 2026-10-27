@@ -14,6 +14,7 @@ export class RaidPresentation {
     now: number,
     reduced: boolean,
     hitboxes: boolean,
+    variantTint=0xffffff,
   ) {
     const alive = new Set<number>(),
       labelled = new Set<number>();
@@ -35,6 +36,7 @@ export class RaidPresentation {
         this.images.set(id, im);
       }
       im.setTexture(key, frame)
+        .setTint(variantTint)
         .setPosition(x, y)
         .setOrigin(0.5, originY)
         .setDisplaySize(w, height)

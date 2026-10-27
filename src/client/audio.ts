@@ -1,3 +1,4 @@
+import phaseTurn from '../../assets/production/audio/cues/phase-turn-v1.wav?url';
 import { CombatRhythm } from './combat-rhythm.ts';
 import tempos from './music-tempos.json';
 import deliveryLibrary from '../../assets/production/audio/delivery/library.json';
@@ -63,7 +64,7 @@ export class AudioBus {
   }
   setEncounterIntensity(phase: number, variant: string) {
     this.encounterPhase = phase;
-    this.encounterBrutal = variant === 'brutal';
+    this.encounterBrutal = variant !== 'normal';
     this.rhythm.configure(phase, this.encounterBrutal, this.musicVolume, this.duckUntil);
   }
   private musicLevel(gain: GainNode, now: number) {
@@ -78,19 +79,19 @@ export class AudioBus {
     if (now < this.duckUntil) gain.gain.setTargetAtTime(this.musicVolume, this.duckUntil, 0.18);
   }
   async sound(id: string) {
-    if (!this.context || document.hidden || this.active >= 12) return;
+    if (!this.context || document.hidden || this.active >= (id==='boss-phase'?12:10)) return;
     const now = performance.now();
     if (now - (this.last.get(id) ?? -Infinity) < 60) return;
     this.last.set(id, now);
-    const url = sfx['../../assets/audio/sfx/' + id + '.wav'];
+    const url = id==='boss-phase'?phaseTurn:sfx['../../assets/audio/sfx/' + id + '.wav'];
     if (!url) return;
     try {
       const buffer = await this.buffer(url);
-      if (document.hidden || this.active >= 12) return;
+      if (document.hidden || this.active >= (id==='boss-phase'?12:10)) return;
       const source = this.context.createBufferSource(),
         gain = this.context.createGain();
       source.buffer = buffer;
-      gain.gain.value = this.volume;
+      gain.gain.value = this.volume*(id==='boss-phase'?1.15:1);
       source.connect(gain).connect(this.context.destination);
       this.active++;
       source.onended = () => {
@@ -100,7 +101,7 @@ export class AudioBus {
       };
       if (['warning', 'boss-phase', 'downed', 'accord-success'].includes(id) && this.volume > 0) {
         const time = this.context.currentTime;
-        this.duckUntil = time + 0.42;
+        this.duckUntil = time + (id==='boss-phase'?.9:.42);
         const musicGain = this.music && this.voices.get(this.music);
         if (musicGain) this.musicLevel(musicGain, time);
       }

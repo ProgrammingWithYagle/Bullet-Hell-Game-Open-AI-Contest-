@@ -126,7 +126,7 @@ export function constablePattern({
     }
   } else {
     const gap = radians(a.gap ?? 95);
-    const waves = phase >= 3 || boss.variant === 'brutal' ? 3 : 2;
+    const waves = phase >= 3 || boss.variant !== 'normal' ? 3 : 2;
     for (let wave = 0; wave < waves; wave++)
       volley(
         'ring',
@@ -137,7 +137,7 @@ export function constablePattern({
         release + ticks(wave * 0.45),
       );
   }
-  if (boss.variant === 'brutal' && a.kind !== 'zone') {
+  if (boss.variant !== 'normal' && a.kind !== 'zone') {
     if (phase === 1) {
       // A new delayed ring changes the follow-up response from crossing to a shared open wedge.
       volley('ring', boss, aim, Math.max(12, a.count + 4), radians(110), release + ticks(0.85));

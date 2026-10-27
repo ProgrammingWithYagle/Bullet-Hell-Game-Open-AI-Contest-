@@ -112,11 +112,12 @@ test('Tank charge moves its authored distance, stops on cover and hits a crossed
   assert.equal(before - g.boss.health, 50);
   assert(p.invulnerableUntil >= g.combatTick);
   const blocked = game('tank');
-  blocked.p.x = 400;
-  blocked.p.y = 650;
+  const cover=blocked.g.arena.cover[0];
+  blocked.p.x = cover.x+cover.width/2;
+  blocked.p.y = cover.y+cover.height+80;
   press(blocked.g, { e: true });
   steps(blocked.g, 9);
-  assert(blocked.p.y >= 594);
+  assert(blocked.p.y >= cover.y+cover.height+9);
 });
 
 test('The City Holds grants finite team shield and capped armor without stacking identical fields', () => {
@@ -186,8 +187,8 @@ test('Silent Twelfth releases three timed pulses and clears only nearby hostile 
   p.y = 500;
   const before = g.boss.health;
   const near = shot(g, { x: 800, y: 550 }),
-    far = shot(g, { x: 1000, y: 900 }),
-    friendly = shot(g, { owner: p.id, x: 1000, y: 850 });
+    far = shot(g, { x: 900, y: 820 }),
+    friendly = shot(g, { owner: p.id, x: 950, y: 770 });
   press(g, { ultimate: true });
   assert(!g.shots.has(near.id));
   assert(g.shots.has(far.id));
@@ -308,10 +309,11 @@ test('Assassin Shadow Step sweeps enemies, respects masonry and ultimate provide
   assert.equal(p.x, x);
   assert.equal(p.y, y, 'Spent free steps must respect regular cooldown');
   const blocked = game('assassin');
-  blocked.p.x = 400;
-  blocked.p.y = 650;
+  const cover=blocked.g.arena.cover[0];
+  blocked.p.x = cover.x+cover.width/2;
+  blocked.p.y = cover.y+cover.height+80;
   press(blocked.g, { e: true });
-  assert(blocked.p.y >= 594);
+  assert(blocked.p.y >= cover.y+cover.height+9);
 });
 
 test('new class-specific skills affect barrier health, sigil radius, veil duration and extra ultimate charges', () => {

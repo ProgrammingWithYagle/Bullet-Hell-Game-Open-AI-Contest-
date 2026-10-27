@@ -36,5 +36,5 @@ test('secondary maps have distinct encounter axes and a genuine factory chicane 
   assert(factory.cover.some((rect) => rect.x + rect.width === factory.bounds.x + factory.width));
   const chapel = runtimeArena('sunken-chapel');
   assert.equal(chapel.playerSpawn.y, chapel.bossSpawn.y);
-  assert(chapel.bossSpawn.x - chapel.playerSpawn.x > 800);
+  assert(chapel.bossSpawn.x - chapel.playerSpawn.x > 750);
 });

@@ -782,3 +782,31 @@ progress::-moz-progress-bar {
 #boss-panel[data-variant="brutal"] .boss-phase-entry {background:#532b27;border-color:#f4b493;}
 .difficulty-rules {display:grid;gap:.35rem;margin-block:.7rem;line-height:1.4;font-size:.85rem;}
 .difficulty-pick .difficulty-rules {border-top:1px solid #b8b09266;padding-top:.7rem;color:#f0dfbd;}
+
+/* Grave-stone nameplate: the identity keeps its own line at every text scale. */
+#boss-panel {--boss-accent:#e2b482;--boss-wash:#25382f;max-width:min(760px,62vw);min-width:0;padding:.55rem .85rem;border-radius:2px;border-color:var(--boss-accent);background:linear-gradient(115deg,#10251fef,var(--boss-wash));}
+.boss-heading {display:grid;grid-template-columns:minmax(52px,auto) minmax(0,1fr) auto;align-items:center;gap:.7rem;}
+.boss-grade {display:grid;justify-items:center;border-inline-end:1px solid #b9b18b55;padding-inline-end:.7rem;line-height:1.15;max-width:110px;}
+.boss-grade small {color:#d6cfb7;font-size:.65rem;letter-spacing:.06em;}
+#boss-threat-code {font:700 clamp(1.2rem,2.4vw,1.8rem)/1.1 'IM Fell English SC',serif;color:var(--boss-accent);white-space:nowrap;}
+#boss-form {font-size:.64rem;color:#f0e5ce;text-align:center;overflow-wrap:anywhere;}
+.boss-heading-main {text-align:center;min-width:0;}
+#boss-name {display:block;font:400 clamp(1.05rem,2.1vw,1.65rem)/1.08 'IM Fell English SC','Noto Sans',serif;letter-spacing:.035em;color:#fff0cf;overflow-wrap:anywhere;text-wrap:balance;}
+.boss-subtitle {display:flex;justify-content:center;flex-wrap:wrap;gap:.15rem .7rem;margin-block-start:.3rem;font-size:.72rem;line-height:1.25;color:#ded7bf;}
+#boss-phase-name:empty {display:none;}
+.boss-clock {display:flex;align-items:center;gap:.3rem;color:var(--boss-accent);font-size:.9rem;}
+#deadline {float:none;margin:0;direction:ltr;white-space:nowrap;}
+#boss-panel[data-variant="brutal"] {--boss-accent:#efa292;--boss-wash:#422725;}
+#boss-panel[data-variant="crazed"] {--boss-accent:#d8afff;--boss-wash:#352448;border-color:#b77fef;}
+#boss-panel[data-variant="crazed"] #boss-health::-webkit-progress-value {background:#c394e7;}
+#boss-panel[data-variant="crazed"] #boss-health::-moz-progress-bar {background:#c394e7;}
+#boss-panel[data-variant="crazed"].phase-entry {border-inline-start-color:#e0bcff;background:#352448f2;}
+#boss-panel[data-variant="crazed"] .boss-phase-entry {background:#432a58;border-color:#d8afff;}
+.crazed-contract {border-color:#b78bd6;background:linear-gradient(135deg,#2e263b,#172b26);}
+#boss-panel.phase-entry .boss-health-track::after {content:"";position:absolute;inset:-3px 0;border:1px solid var(--boss-accent);pointer-events:none;animation:phase-engraving .75s ease-out 1 both;}
+@keyframes phase-engraving {from {transform:scaleX(.15);opacity:.2;}to {transform:scaleX(1);opacity:1;}}
+@media (prefers-reduced-motion:reduce) {#boss-panel.phase-entry .boss-health-track::after {animation:none;}}
+body[data-reduce-motion="true"] #boss-panel.phase-entry .boss-health-track::after {animation:none;}
+@media(max-width:700px) {#boss-panel {max-width:66vw;padding:.4rem .5rem;}.boss-heading {gap:.35rem;grid-template-columns:auto minmax(0,1fr);}.boss-grade {max-width:72px;padding-inline-end:.35rem;}.boss-clock {grid-column:2;justify-content:center;font-size:.75rem;}.boss-subtitle {font-size:.66rem;}.boss-phase-note {font-size:.72rem;}}
+
+@media(max-width:700px) {.topline>div:first-child {min-width:0;max-width:19vw;flex:0 1 19vw;} #boss-panel {min-width:0;} #pause-button {padding:.45rem;flex:0 0 auto;} #pause-button span {display:none;}}

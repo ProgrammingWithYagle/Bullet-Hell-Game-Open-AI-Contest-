@@ -1,6 +1,23 @@
 # Changelog
 
-Development build **2026.10.26-small-wakes**, protocol 20. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.26-crazed-horizon**, protocol 21. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-26 — Crazed forms, closer arenas and a clearer boss nameplate
+
+### Three distinct encounter forms
+
+- Every one of the 66 existing identities now has a Crazed form with a persistent purple treatment and a separate C threat suffix. Insane forces Brutal; Hellish forces Crazed for opening encounters, future contracts and the consented secret. Difficulty unlocks and intrinsic grades remain separate.
+- Brutal ordinary projectile emissions use a 2.5x rational budget; Crazed uses 7.5x Standard, three times the Brutal budget. Complete warned repeat waves plus alternating half-waves keep the original aim/gaps. Controlled clock and drone shots increase inside their actual controller, preserving pause/resume and source cancellation. Queues remain finite and the 4,000-hostile cap stays in force.
+- Brutal adds locked pursuit marks and crosscuts. Crazed adds more frequent marks and a delayed perpendicular crossing weave. Every extra strike has a 1.8-second tell, bounded geometry, actual swept contact and cleanup; no instant-kill attack is introduced. Warden active cones retain their clear trailing space.
+- Endless records the highest actually cleared form of each identity. A Standard clear leads to Brutal, then a Brutal clear to Crazed. Seeded bags, twelve-identity repeat protection, exact offline/authoritative boundary restore and class purchases remain. Known issued protocol20 local saves/profiles migrate to protocol21; unknown/online envelopes stay strict.
+
+### Arena reach, phase sound and HUD
+
+- Gatehouse, Triage Yard, Sunken Chapel and Bell Foundry now have smaller real footprints: 1344x840, 1376x774, 1260x828 and 1350x765. Every painted floor, collider and spawn uses the same uniform world transform. Ossuary Works and Crown Crypt retain their existing footprints and narrow routes. Survivor speed, dash distance and hitboxes stay unchanged.
+- The boss name now has a dedicated heading. A separate threat/form seal, phase/name subtitle, segmented health bar and timer create a clear hierarchy, including purple Crazed styling, RTL-safe grade text and responsive wrapping. Phase entry adds a brief health-track engraving animation, disabled by either reduced-motion setting.
+- An original two-strike phase bell replaces the subtle phase playback delivery while preserving the old audio file. The cue has priority within the voice limit, follows effects volume and briefly ducks music. Objective PCM reconstruction and measurements remain separate from human listening acceptance.
+- Baby/Easy shield circles remain six/three with two/three-second holds and Standard-only eligibility. Combat revival stays Baby 100%, Easy 50%, Normal 25%, Hard+ disabled. Baby adds two cover props, Hard half cover, Insane/Hellish none; Hellish retains warned lava. Insane global health is 1.25x to keep a conservative Tank opening feasible after forced Brutal; Normal health remains unchanged.
+- This pass adds variants rather than new identities or individual original-roster quality credits. The roster remains 65 ordinary plus one secret: 85 new ordinary identities and 58 original quality passes remain. Human 5185 feedback confirms clearer phases and a harder Brutal comparison while identifying excessive retreat space; new balance, header, animation and listening review remains open.
 
 ## 2026-10-26 — Candle Snail, Cobble Crab and Mourning Kettle join the ordinary roster
 
@@ -578,7 +595,7 @@ Development build **2026.10.26-small-wakes**, protocol 20. These entries describ
 
 ## Still in development
 
-- All sixty-three boss identities execute and all seven survivors have basic directional runs/idle/primary/hurt/dodge/downed art. Special-ability/boss action production, final encounter tuning and rendered/device acceptance remain unfinished.
+- All sixty-six boss identities execute in Standard, Brutal and Crazed forms. Seven survivors have complete selected basic motion and 21 ability transformations. Bespoke special-ability/boss action production, transformation animation, final encounter tuning and rendered/device acceptance remain unfinished.
 - Local mastery, cosmetics, profiles and remappable controls are implemented. Native-language, physical-device, human listening/gameplay, full-progression endurance and full capacity acceptance remain open.
 - An unsigned Windows/offline/LAN development download is published with exact artifact evidence. Physical second-machine LAN and final coordinated browser/Windows release acceptance remain open.
 - Verified public rankings and durable deployed recovery remain unfinished. Bounded compressed transfer passes a fifty-build local HTTP/restart fixture; maximum-entropy histories still require paging.

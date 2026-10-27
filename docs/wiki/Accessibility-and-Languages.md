@@ -13,3 +13,7 @@ Automated catalog, layout, collision and source checks are evidence for specific
 ## Optional expanded skill map
 
 Enable **Expanded skill map** in Settings to see all 54 existing skills for the chosen class: three branches and nine paths. Classic remains the default. Native scrolling, 65–140% zoom, arrow keys and Home/End navigate the map; Enter or click inspects a node. Purchasing still requires the existing Buy control and valid points/prerequisites. The setting survives local profile import/export, including bounded migration from issued settings. All fifteen locales have map/zoom instructions. Rendered, physical-device, native-language and human acceptance remain open.
+
+## Phase and form clarity
+
+Boss name, threat/form, phase/name and timer occupy separate slots with wrapping and RTL-isolated grade codes. A static phase banner and bar dividers remain; a short bar engraving is disabled by either the game reduced-motion option or system preference. Purple Crazed also has a C code and six perimeter marks; red Brutal has B/four marks. New form/help/difficulty messages cover all fifteen locales. Native-language, rendered layout and device acceptance remain open.

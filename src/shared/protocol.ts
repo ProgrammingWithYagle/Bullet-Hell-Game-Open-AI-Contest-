@@ -1,5 +1,6 @@
 import revision from '../../content/revision.json' with { type: 'json' };
-export const PROTOCOL = 20;
+export const PROTOCOL = 21;
+export type BossVariant = 'normal' | 'brutal' | 'crazed';
 export const CONTENT_REVISION = revision.sha256;
 export const HZ = 30,
   DT = 1 / HZ;
@@ -215,6 +216,6 @@ export type Contract = {
   risk: number;
   bounty: number;
   recommendedRating: number;
-  variant?: 'normal' | 'brutal';
+  variant?: BossVariant;
 };
 export type Result = { ok: boolean; reason?: string };

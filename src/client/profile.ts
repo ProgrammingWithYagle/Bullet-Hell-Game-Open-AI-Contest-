@@ -248,6 +248,7 @@ export function parseProfile(raw: string): ProfileV1 {
         "1ad00eee45a117a45929e56884c6a39a8c4eb614b0728ab31e847403fb8735bb",
         "d4419d906f67286576ca3f6795e03a921269aff861b36e2e82ce68aa2e501775",
         "535eb34c7cdabce5ad2fe910ea0a792278a7cc08e360b4f5712d7ee2d9e767f6",
+        "86ace79844ae1abe21b7fa54d18fa2de1f4316a2b5a0578c1878e6b27479ffdf",
         "82763fd1f5288303f8170a798b656f5443fc8f5236b652786a9e3b27070c41af",
         "b8d9fb6918c854f3eed38b327ed0cb3026e071e6fe24932e50beed36943db241",
       ].includes(String(old.contentRevision))

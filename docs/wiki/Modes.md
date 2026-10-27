@@ -23,11 +23,11 @@ Grand Raid begins at 12 skill points and 600 nominal coins, reaches 20/1,400 bef
 
 | Map | Traversable size | Layout |
 | --- | --- | --- |
-| Gatehouse | 1600 × 1000 | Original walled courtyard |
-| Triage Yard | 1600 × 900 | Wide promenade, staggered bed islands |
+| Gatehouse | 1344 × 840 | Compact walled courtyard |
+| Triage Yard | 1376 × 774 | Wide promenade, staggered bed islands |
 | Ossuary Works | 1300 × 1000 | Tall, offset industrial S corridor |
-| Sunken Chapel | 1400 × 920 | Central altar, side chapels, clear nave |
-| Bell Foundry | 1500 × 850 | Broad forge floor and machine cover |
+| Sunken Chapel | 1260 × 828 | Central altar, side chapels, clear nave |
+| Bell Foundry | 1350 × 765 | Broad forge floor and machine cover |
 | Crown Crypt | 1240 × 880 | Compact asymmetric crypt |
 
 All maps share a 1600 × 1000 camera coordinate space; solids outside each footprint restrict actual movement. Cover, spawns, collision and prediction follow the selected layout. Route progression rotates maps. Reachability checks cover fifty player spawn positions, boss access and five Accord pads on every map.
@@ -57,8 +57,14 @@ Ordinary campaigns now draw fixed-grade candidates from shared regular/finale ro
 | Normal | Off | 25% health | Full | Selected boss form |
 | Hard | Off | Disabled | Half, rounded down | Selected boss form |
 | Insane | Off | Disabled | None | Selected boss form |
-| Hellish | Off | Disabled | None | Marked lava; every boss Brutal |
+| Hellish | Off | Disabled | None | Marked lava; every boss Crazed |
 
-Brutal disables the phase shield event at every difficulty. Revival includes solo, teammates, Medic and supplies; full recovery between encounters remains. Boundary walls and temporary boss mechanics remain. Difficulty cards and final review display these rules in all fifteen locales. Hellish pits have a three-second opening tell and deal 24 contact damage per second in half-second intervals. Hellish effective boss health is 2.4× Normal after its forced Brutal multiplier. [Exact rules and verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/DIFFICULTY_AND_PHASES.md).
+Brutal and Crazed disable the phase shield event at every difficulty. Revival includes solo, teammates, Medic and supplies; full recovery between encounters remains. Boundary walls and temporary boss mechanics remain. Difficulty cards and final review display these rules in all fifteen locales. Hellish pits have a three-second opening tell and deal 24 contact damage per second in half-second intervals. Hellish effective boss health is 2.4× Normal after its forced Crazed multiplier. [Exact rules and verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/DIFFICULTY_AND_PHASES.md).
 
 [Latest Baby/Easy assistance follow-up](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/ASSIST_LIMITS.md): Normal revival is 25%; Baby/Easy circles are six/three, channels two/three seconds, and Baby has two extra actual cover props on every map. Source/prediction/prop geometry agree; human/rendered balance review remains open.
+
+## Crazed Horizon follow-up
+
+Insane forces Brutal; Hellish forces purple Crazed with a C threat suffix. Brutal ordinary projectile budgets are 2.5x Standard; Crazed is 7.5x Standard plus additional warned pursuit/crossing pressure. The live cap remains 4,000. Endless advances each actually cleared identity from Standard to Brutal to Crazed, retaining that history at boundaries. Existing bag/repeat protection, builds, profile unlocks and consented secret rules remain.
+
+Four spacious maps have smaller real footprints. Paint, colliders and spawns scale together; player speed, dash distance and hitboxes do not. Ossuary and Crown retain their narrow route geometry. The map diagram below earlier art depicts its issued historical geometry; current dimensions above and actual setup diagrams use compact bounds. Human/rendered/device review remains open.

@@ -1,10 +1,12 @@
 # Bosses
 
-Sixty-six bosses are executable in the current source. Each has its own signature, phases, normal/Brutal variant, presentation and music. A signature table describes practical counterplay; supplemental attacks still require ordinary bullet-hell movement.
+Sixty-six bosses are executable in the current source. Each has its own signature, phases, Standard/Brutal/Crazed forms, presentation and music. A signature table describes practical counterplay; supplemental attacks still require ordinary bullet-hell movement.
 
-**Each boss has a fixed intrinsic threat grade.** Routes select suitable identities; they do not rerate a boss to match the encounter number. Subtiers use **--, -, no sign, +, ++** for bottom through top tier. Hollow Constable is **1+** and Bell Triplets are **3--**. Brutal uses a separate **B** marker, such as **1+ B**. Secrets display **>10**. Global difficulty and party scaling remain separate.
+**Each boss has a fixed intrinsic threat grade.** Routes select suitable identities; they do not rerate a boss to match the encounter number. Subtiers use **--, -, no sign, +, ++** for bottom through top tier. Hollow Constable is **1+** and Bell Triplets are **3--**. Brutal uses a separate **B** marker, such as **1+ B**. Crazed uses a separate **C** marker and purple treatment. Secrets display **>10**, followed by the selected form marker. Global difficulty and party scaling remain separate.
 
-Brutal uses twice the health and damage, a 1.5× deadline and 1.75× bounty. Threat levels 1–2 use two half-health phases in both forms, retaining the final authored signature; higher threats keep three Standard/four Brutal phases. A segmented health bar, phase count and independent transition banner mark changes. Brutal repeats locked projectile volleys in two waves, or three from threat 5, with replicated warnings and bounded queues. Controlled projectiles retain their authored sequence. All Hellish encounters are Brutal. The 4,000-hostile cap remains. [Difficulty rules and scope](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/DIFFICULTY_AND_PHASES.md).
+Brutal uses twice the health/damage, 1.5x deadline and 1.75x bounty. Crazed retains those health/damage factors and inherits the complete Brutal signature. Threats 1–2 use two half-health phases in every form; higher threats retain three Standard/four advanced phases. The nameplate separates the name, grade/form, phase and timer. A segmented bar, distinct phase sound and reduced-motion-aware bar engraving mark transitions.
+
+Brutal ordinary projectile budgets are 2.5x Standard; Crazed is 7.5x Standard, three times Brutal. Warned repeats retain aim/gaps; controlled clock/drone shots keep actual stop/resume and source cancellation. Brutal adds pursuit marks and crosscuts; Crazed adds more frequent marks and a delayed crossing weave. Move before the fixed tells finish. Queues and the 4,000-live-hostile cap remain; cancellation/safety can reduce actual releases. No instant-kill attacks are added. **Insane forces Brutal; Hellish forces Crazed**, including the secret. [Exact rules](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/DIFFICULTY_AND_PHASES.md).
 
 ## Quarantine Run
 
@@ -84,7 +86,7 @@ Brutal uses twice the health and damage, a 1.5× deadline and 1.75× bounty. Thr
 
 ## Accord breaks
 
-At marked transitions, survivors have eight seconds to coordinate a two-second hold on distinct Accord pads. Required participation scales 1, 2, 3 or 5 with party size. Success staggers the boss for four seconds, increases incoming boss damage by 25% and restores 15% party health. These are neutral team interactions, not purchases or class-exclusive actions.
+Only Baby/Easy Standard offer the global shield-circle event. Baby has six circles and a two-second hold; Easy has three circles and a three-second hold. Required occupants are one solo, two through eight players, and three for larger squads, within an eight-second event. Success grants the authored four-second stagger, vulnerability and party heal. Normal+, Brutal and Crazed disable the event. Individual encounter weak points and neutral signature interactions are separate counterplay.
 
 ## Grand Raid
 
@@ -105,7 +107,7 @@ At marked transitions, survivors have eight seconds to coordinate a two-second h
 
 Pylon, keeper interrupt and attendant durability scales with party size and Brutal rules. Neutral valve holds remain usable by every class.
 
-All sixty authored identities now execute. Native art and automated combat checks do not establish final human balance, complete directional/action animation or full device acceptance. [Full numerical roster](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/content/bosses.json) · [Current boss implementation and verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/MIDNIGHT_CIRCUIT_RUNTIME.md)
+All sixty-six identities now execute. Native art and automated combat checks do not establish final human balance, complete directional/action animation or full device acceptance. [Full numerical roster](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/content/bosses.json) · [Current boss implementation and verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/MIDNIGHT_CIRCUIT_RUNTIME.md)
 
 ## Endless exclusives and The Uncounted
 

@@ -1,46 +1,46 @@
-# Difficulty rules and phase pacing
+# Difficulty and encounter forms
 
-Current build **2026.10.25-assist-limits**, protocol **17**. This pass responds to the user's manual observations of the separate frozen Early Watch preview on port 5179. It is implemented development content; human acceptance of the response remains open.
+Updated October 26, 2026 for **2026.10.26-crazed-horizon**, protocol **21**. Global difficulty, intrinsic threat grade and boss form are separate. These are implemented rules; human balance/rendered/device acceptance remains open.
 
-| Global difficulty | Phase shield-break event | All combat revives | Static interior cover | Arena pressure / boss form |
+| Global difficulty | Phase shield event | Combat revival | Interior cover | Encounter form |
 | --- | --- | --- | --- | --- |
-| Baby | Six circles, 2-second channel; Standard only | 100% maximum health | Original plus two props | Selected form |
-| Easy | Three circles, 3-second channel; Standard only | 50% maximum health | Full | Selected form |
-| Normal | Off | 25% maximum health | Full | Selected form |
-| Hard | Off | Disabled | Half, rounded down | Selected form |
-| Insane | Off | Disabled | None | Selected form |
-| Hellish | Off | Disabled | None | Lava; every boss is Brutal |
+| Baby | Six circles, two-second hold; Standard only | 100% maximum health | Original plus two props | Selected opening form |
+| Easy | Three circles, three-second hold; Standard only | 50% | Original | Selected opening form |
+| Normal | Off | 25% | Original | Selected opening form |
+| Hard | Off | Disabled | Half, rounded down | Selected opening form |
+| Insane | Off | Disabled | None | Every boss Brutal |
+| Hellish | Off | Disabled | None; warned lava | Every boss Crazed |
 
-Every Brutal form disables the phase shield-break event even on Baby/Easy. The rule covers the Accord channel event, heal, stagger and vulnerability; individual encounter weak points retain their authored counterplay. Unassisted phase changes preserve already-emitted hostile projectiles and active fields, while cancelling obsolete pending casts. The Warden separately clears auxiliary attacks at sweep release to keep its announced safe trailing space valid.
+The form override applies to all openings, future offers, repeats and the consented Uncounted extension. Insane/Hellish retain their existing Hard-campaign unlock. Local Practice can choose any of the three forms on lower difficulties. Individual boss weak points remain separate from the global shield-circle event.
 
-Revival health and availability apply to teammate channels, solo self-recovery, the Medic ultimate and revive kits. Hard+ cannot buy a revive kit; an older carried kit cannot be consumed there. Medic healing, cleansing and other ultimate effects remain. Full between-encounter recovery is unchanged. Difficulty cards and final setup review state the revive, shield and cover rules in all fifteen locales; descriptions no longer promise the old Medic 60% or kit 65% fractions.
+Revival fractions cover teammate channels, solo recovery, Medic resurrection and kits. Hard+ cannot buy or consume revival kits. Between-encounter recovery remains. Shield channels require one occupant solo, two through eight players, or three for larger squads; the event lasts eight seconds. Every Brutal/Crazed form disables it even on Baby/Easy. Unassisted transitions preserve existing hostile shots/fields and cancel obsolete future casts.
 
-## Two longer entry phases
+## Forms and phases
 
-Intrinsic threat levels 1–2 have two phases divided at 50% health, in Standard and Brutal forms. The final visible phase maps to the old final authored pattern: Standard pattern 2, Brutal pattern 3. This preserves the final signature mechanics while removing short intermediate phases. Later threats keep their existing three/four-phase schedules. Boss identity grades, Normal maximum health and attack damage are unchanged.
+| Form | Marker / treatment | Health / damage | Deadline / bounty | Projectile budget |
+| --- | --- | --- | --- | --- |
+| Standard | Fixed intrinsic grade | 1x / 1x | 1x / 1x | 1x |
+| Brutal | B / red | 2x / 2x | 1.5x / 1.75x | 2.5x |
+| Crazed | C / purple | 2x / 2x | 1.5x / 1.75x | 7.5x Standard = 3x Brutal |
 
-The single boss health bar has a visible divider at every transition, displays phase number/total, and announces the new phase with an independent four-second banner and existing sound. Repeated patches do not restart the entry cue. Reduced motion does not remove its static text or bar markers. Constable/Early Watch names and hints use the retained authored pattern, while the visible ordinal matches the shorter schedule. Phase-dependent music intensity follows the retained pattern.
+Projectile budgets multiply each form's ordinary projectile emissions; authored signature differences and additional attacks make encounter totals vary. Delayed repeats retain the locked origin, aim, speed, damage and escape gaps. Brutal adds one full repeat and an alternating half-wave; Crazed adds six full repeats and an alternating half-wave. The first repeat is warned for 1.05 seconds; successive releases are 0.35 seconds apart. Even base-shot totals yield exact 2.5x/7.5x counts; odd totals carry their half-shot forward. Repeats never recurse. Pending work is capped at 3,072 projectiles/128 origin-time groups, each group at 200 angles, and live hostile projectiles at 4,000. Caps, cancellation and Warden safety can reduce actual releases.
 
-## Warned Brutal repeat volleys
+Controlled Clockmender and drone-linked shots scale inside their own controllers: full 24-shot rings become 60/180 before their authored gaps. Stops, restarts and source cancellation remain. Contact, beam and minion signatures retain their authored behavior; the added form pressure below also applies.
 
-Ordinary boss projectile emissions retain locked origins, angles, speed, damage and gaps. Brutal schedules a second wave after 1.05 seconds; fixed threat 5+ also receives a third after 2.10 seconds. The warning cue is replicated before each repeat and shows its origin/rays. Repeats use the original aim and never recursively create more repeats. The queue is bounded to 768 pending projectiles and 64 origin/time groups, and the unchanged global 4,000-hostile limit still applies. Controlled/recalled projectiles retain their authored control sequence, and contact-only signatures retain their explicit extra mechanics. Defeat, deadline, successful eligible Accord and phase reset clear future repeats.
+Threats 1–2 retain two half-health phases in every form. Higher threats use three Standard/four Brutal or Crazed phases. Crazed inherits each identity's complete Brutal signature. A separate boss nameplate, threat/form seal, phase subtitle, segmented bar and four-second entry cue identify changes. A dedicated original phase sound follows effects volume, briefly ducks music and has playback priority. A brief bar engraving respects both reduced-motion settings. Bespoke per-boss transformation animation remains future art work.
 
-## Cover and Hellish lava
+## Added form pressure
 
-Difficulty selection changes only static interior cover: Hard keeps an alternating half, rounded down; Insane/Hellish remove it. Boundary walls still define the playable footprint. Boss gates and other temporary signature structures remain encounter mechanics. The authority and client prediction call the same cached difficulty layout. Secondary cover art and setup geometry use that exact result. Gatehouse uses separate half/open floor natives so removed fountains are absent visually as well as physically; the original painted floor remains unchanged for Baby/Easy/Normal.
+Brutal alternates locked pursuit circles and full-board crosscuts. Crazed uses more frequent pursuit marks, wider cuts and a delayed perpendicular weave. Every extra strike has at least 1.8 seconds of warning and lasts 0.55 seconds. Only two/three separated targets are marked at once; targets rotate through the actual squad/decoy list. Marks freeze when announced. Crossing during the harmless tell, leaving a marked position or timing dash invulnerability supplies counterplay. Relative swept contact catches fast crossings. Phase reset, stagger, victory, deadline and wipe clear the pressure. Warden warning/active sweeps cancel auxiliary pressure to preserve their safe trailing sector. This pass introduces no instant-kill attacks.
 
-Hellish pits are fixed, edged and hatched circles, with a three-second harmless opening warning. They deal 12 contact damage per half-second (24 per second), respect existing defensive invulnerability and do not multiply with boss damage. Swept body contact prevents crossing a pit between steps from bypassing collision. Pits leave the central crossing lanes open and avoid boss and survivor deployment regions. Their state disappears between encounters. Final rendered/readability and human balance review remain open.
+## Arenas and progression
 
-Hellish forces Brutal at the authority for all opening identities, future contracts, repeats and the optional secret; choosing Standard cannot bypass it. Global Hellish health is 1.2×, then the Brutal 2× multiplier makes the effective health 2.4× Normal. The 1.5× Brutal deadline remains. The analytical model explicitly includes the forced variant and declares its aim/uptime/build assumptions; it is not a human balance verdict.
+Four spacious footprints are uniformly reduced in world space: Gatehouse 1344x840, Triage Yard 1376x774, Sunken Chapel 1260x828, Bell Foundry 1350x765. Ossuary Works 1300x1000 and Crown Crypt 1240x880 retain their existing chicanes/circuits. Paint, masonry, cover and spawns use the same transform, while player speed, body sizes and dash distance remain. The fixed 1600x1000 camera still frames the board. Original ground/native pixels and their issued reconstruction contracts remain unchanged; this is runtime placement scaling.
 
-## Secret offer and continuity
+Baby still adds two real cover props/map. Boundary walls and boss-created mechanisms remain on all difficulties. Hellish lava retains a three-second opening tell and 24 damage/second in half-second hits, with clear deployments. Insane global health is 1.25x before Brutal, avoiding a conservative Tank opening deadline miss; Hellish remains 1.2x before Crazed. Normal health is unchanged. Analytical feasibility is separate from gameplay balance acceptance.
 
-The optional Uncounted offer follows a timeout-free Normal-or-higher campaign with at least three completed encounters. Requiring three Accord breaks would make it unreachable after disabling that event on Normal+, so that obsolete gate is removed. Victory is banked before the offer and every player still independently chooses whether to enter. Losing/declining preserves the campaign clear. Hellish also forces this secret into Brutal.
+Endless tracks each identity's highest actually cleared form: Standard, then Brutal, then Crazed thereafter. Seeded bags, twelve-identity repeat protection, exclusive slots and capped build progression remain. Known issued protocol20 local Practice/profile revision 86ace798... migrates to protocol21, retaining identity, money, purchases and progress. Older bounded migrations remain; unproven old form history is conservatively Standard. Current form history is validated and retained by offline and authoritative boundary restore. Online/signed compatibility stays strict.
 
-Protocol 16 changes online compatibility. Bounded local migration recognizes the issued protocol-15 content revision `cbb6b8e68c9fb6f3191a3f0ef4a6411c8a3d3e41e3aeca783c122b07ab73d546`, retaining run identity, purchases, progress, discoveries and preferences. Existing earlier migrations remain. Unknown revisions and online/server envelopes are strict. Hellish saved contracts adopt the new forced form.
+The optional secret still requires a timeout-free Normal-or-higher completed campaign with at least three clears, banks victory before independent consent, and remains excluded from random Endless offers. The roster remains 66 (65 ordinary/one secret), with 85 ordinary identities and 58 original quality passes remaining. Multiple simultaneous bosses, bespoke transformation art and final acceptance remain open. Existing previews through 5185, protected main, draft PR14, public protocol4 Site and immutable protocol13 Windows development archive remain separate.
 
-The source still has 63 bosses (62 ordinary plus one secret), seven playable kits and the optional complete skill map. There are 88 new ordinary identities, 59 original quality passes and seven ability-changing class revamps left. Multiple simultaneous bosses are a future curated encounter option, not implemented by this pass. All prior frozen preview processes/roots, the public protocol-4 Site, protected main and immutable protocol-13 Windows archive remain separate. Browser control is disabled; no browser/device/listening/native-language or final balance acceptance is claimed.
-
-Verification receipts are under `reviews/difficulty-pressure-2026-10-25/`. The new two-client regression verifies forced Brutal, replicated echo/lava warnings, blocked revives and defeat cleanup; headless tests also cover all six difficulty rules, every opening identity, all map cover variants, prediction parity, actual lava damage, queue budgets and local save/profile continuity. Source verification and human review remain separate.
-
-The latest [assistance follow-up](ASSIST_LIMITS.md) specifies exact circle/channel rules and additional Baby cover. Known protocol-16 local boundaries also migrate to protocol 17.
+Current pass evidence belongs to reviews/crazed-horizon-2026-10-26/. Earlier difficulty-pressure/assist checkpoints remain historical evidence. See [current checkpoint](CHECKPOINT_2026_10_25.md), [single-ledger progress](DEVELOPMENT_PROGRESS.md) and [Crazed implementation](CRAZED_HORIZON.md).

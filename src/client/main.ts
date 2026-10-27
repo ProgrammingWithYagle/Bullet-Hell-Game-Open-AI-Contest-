@@ -1,3 +1,4 @@
+import {bossHeaderMarkup} from './ui/boss-header.ts';
 import {smallWakesPhaseName,smallWakesPhaseHint} from './small-wakes-text.ts';
 import {bossPatternPhase, encounterPhases, phaseMarkers, combatReviveFraction} from '../shared/encounter-policy.ts';
 import { BossPhaseFeedback, constablePhaseHint } from './boss-phase-feedback.ts';
@@ -89,6 +90,7 @@ const saveSettings = () => {
   applySettings();
 };
 function applySettings() {
+  document.body.dataset.reduceMotion=String(settings.reduceMotion);
   document.documentElement.style.setProperty('--text-scale', String(settings.textScale));
   if (controls) {
     controls.configure(inputOptions);
@@ -255,7 +257,7 @@ function setupGame(online: boolean) {
   uiKey = '';
   lastPhase = '';
   prediction = new Prediction();
-  app.innerHTML = `<div id="stage" dir="ltr"></div><section class="hud" aria-label="${text('ui.health')}"><div class="topline"><div><strong id="encounter"></strong><small id="status" role="status"></small></div><div id="boss-panel"><strong>${text('boss.constable.name')}</strong><span id="deadline"></span><div class="boss-health-track" dir="ltr"><progress id="boss-health" max="1" value="1" aria-label="${text('ui.boss')}"></progress><div id="boss-phase-markers" aria-hidden="true"></div></div><p id="boss-phase-entry" class="boss-phase-entry" role="status" aria-live="polite" hidden></p><p id="boss-phase-note" class="boss-phase-note" role="status" aria-live="polite" hidden></p></div><button id="pause-button">Ⅱ <span>${text('ui.pause')}</span></button></div><div id="accord" class="accord" hidden></div><p id="signature-help" class="signature-help" role="status" aria-live="polite" hidden></p><div class="bottomline"><div class="vitals"><strong id="player-name">${insignia(selectedCosmetic)}<span id="player-name-label"></span></strong><progress id="health" max="1" value="1" aria-label="${text('ui.health')}"></progress><span id="health-text"></span><span id="ammo"></span><span id="currency"></span></div><div id="abilities" class="ability-list"></div><div id="squad" class="squad"></div></div></section><div id="modal" class="overlay" hidden></div><div id="pause-menu" class="overlay" hidden><section class="dialog"><h2>${text('ui.paused')}</h2><p>${text(online ? 'ui.onlinePause' : 'ui.offlineNotice')}</p>${settingsMarkup()}<div class="actions"><button id="resume" class="primary">${text('ui.continue')}</button><button id="leave">${text('ui.leaveRoom')}</button></div></section></div><div class="touch-buttons"><button data-action="dodge">${text('ui.dodge')}</button><button data-action="q">Q</button><button data-action="e">E</button><button data-action="ultimate">${text('ui.ultimate')}</button><button data-action="interact">${text('ui.revive')}</button><button data-action="reload">${text('ui.reload')}</button></div><div class="portrait-note">${text('ui.portraitHint')}</div>`;
+  app.innerHTML = `<div id="stage" dir="ltr"></div><section class="hud" aria-label="${text('ui.health')}"><div class="topline"><div><strong id="encounter"></strong><small id="status" role="status"></small></div><div id="boss-panel">${bossHeaderMarkup()}<div class="boss-health-track" dir="ltr"><progress id="boss-health" max="1" value="1" aria-label="${text('ui.boss')}"></progress><div id="boss-phase-markers" aria-hidden="true"></div></div><p id="boss-phase-entry" class="boss-phase-entry" role="status" aria-live="polite" hidden></p><p id="boss-phase-note" class="boss-phase-note" role="status" aria-live="polite" hidden></p></div><button id="pause-button">Ⅱ <span>${text('ui.pause')}</span></button></div><div id="accord" class="accord" hidden></div><p id="signature-help" class="signature-help" role="status" aria-live="polite" hidden></p><div class="bottomline"><div class="vitals"><strong id="player-name">${insignia(selectedCosmetic)}<span id="player-name-label"></span></strong><progress id="health" max="1" value="1" aria-label="${text('ui.health')}"></progress><span id="health-text"></span><span id="ammo"></span><span id="currency"></span></div><div id="abilities" class="ability-list"></div><div id="squad" class="squad"></div></div></section><div id="modal" class="overlay" hidden></div><div id="pause-menu" class="overlay" hidden><section class="dialog"><h2>${text('ui.paused')}</h2><p>${text(online ? 'ui.onlinePause' : 'ui.offlineNotice')}</p>${settingsMarkup()}<div class="actions"><button id="resume" class="primary">${text('ui.continue')}</button><button id="leave">${text('ui.leaveRoom')}</button></div></section></div><div class="touch-buttons"><button data-action="dodge">${text('ui.dodge')}</button><button data-action="q">Q</button><button data-action="e">E</button><button data-action="ultimate">${text('ui.ultimate')}</button><button data-action="interact">${text('ui.revive')}</button><button data-action="reload">${text('ui.reload')}</button></div><div class="portrait-note">${text('ui.portraitHint')}</div>`;
   const supplyBar = document.createElement('div');
   const checkpointNotice = document.createElement('small');
   checkpointNotice.id = 'checkpoint-notice';
@@ -335,19 +337,14 @@ function update(view: View) {
     t('ui.buildRating') +
     ' ' +
     buildGrade(rating(p));
-  const bossTitle = $('boss-panel').querySelector('strong');
-  if (bossTitle)
-    bossTitle.textContent =
-      t('boss.' + view.boss.id + '.name') +
-      ' · ' +
-      t('ui.threat') +
-      ' ' +
-      classifiedThreatCode(view.boss.threat, bossThreat(view.boss.id).subtier, view.boss.variant) +
-      (view.boss.variant === 'brutal' ? ' · ' + t('ui.variantBrutal') : '') +
-      ' · ' +
-      t('ui.phaseCount', { number: number(view.boss.phase + 1),total:number(encounterPhases(view.boss.id,view.boss.variant).length) }) +
-      (view.boss.id === 'constable' ? ' · ' + constablePhaseName(bossPatternPhase(view.boss.id,view.boss.variant,view.boss.phase), locale) :
-        smallWakesPhaseName(view.boss.id,view.boss.phase,locale)?' · '+smallWakesPhaseName(view.boss.id,view.boss.phase,locale):view.boss.id==='lantern-warden'?' · '+wardenPhaseName(view.boss.phase,locale): ['ashen-usher','brass-toad','ragpicker-kite'].includes(view.boss.id) ? ' · ' + t(`boss.${view.boss.id}.phase.${Math.min(2,bossPatternPhase(view.boss.id,view.boss.variant,view.boss.phase))}`) : '');
+  $('boss-name').textContent=t('boss.'+view.boss.id+'.name');
+  $('boss-threat-label').textContent=t('ui.threat');
+  $('boss-threat-code').textContent=classifiedThreatCode(view.boss.threat,bossThreat(view.boss.id).subtier,view.boss.variant);
+  $('boss-form').textContent=t(view.boss.variant==='crazed'?'ui.variantCrazed':view.boss.variant==='brutal'?'ui.variantBrutal':'ui.variantNormal');
+  $('boss-phase-label').textContent=t('ui.phaseCount',{number:number(view.boss.phase+1),total:number(encounterPhases(view.boss.id,view.boss.variant).length)});
+  $('boss-phase-name').textContent=view.boss.id==='constable'?constablePhaseName(bossPatternPhase(view.boss.id,view.boss.variant,view.boss.phase),locale):
+    smallWakesPhaseName(view.boss.id,view.boss.phase,locale)??(view.boss.id==='lantern-warden'?wardenPhaseName(view.boss.phase,locale):
+    ['ashen-usher','brass-toad','ragpicker-kite'].includes(view.boss.id)?t(`boss.${view.boss.id}.phase.${Math.min(2,bossPatternPhase(view.boss.id,view.boss.variant,view.boss.phase))}`):'');
   const hp = $<HTMLProgressElement>('health');
   hp.max = p.maxHealth;
   hp.value = p.health;
@@ -423,20 +420,30 @@ function update(view: View) {
     view.phase === 'combat',
   );
   $('boss-panel').dataset.variant = view.boss.variant;
+  $('boss-panel').dataset.phase = String(view.boss.phase);
   $('boss-panel').classList.toggle('phase-entry', phaseEntry);
   const entry=$('boss-phase-entry');entry.hidden=!phaseEntry;
+  const visualKey=[view.encounter,view.boss.id,view.boss.variant,view.boss.phase].join(':');
+  if(phaseEntry && entry.dataset.entryKey!==visualKey){
+    entry.dataset.entryKey=visualKey;
+    for(const animation of entry.getAnimations())animation.cancel();
+    if(!settings.reduceMotion&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches)
+      entry.animate([{opacity:.4,transform:'translateY(-3px)'},{opacity:1,transform:'translateY(0)'}],{duration:480,easing:'ease-out'});
+  }
   const entryText=t(view.boss.phase?'ui.phaseChanged':'ui.phaseCount',{number:number(view.boss.phase+1),total:number(encounterPhases(view.boss.id,view.boss.variant).length)});
   if(entry.textContent!==entryText)entry.textContent=entryText;
   const noteText =
     view.boss.id === 'constable'
       ? constablePhaseHint(bossPatternPhase(view.boss.id,view.boss.variant,view.boss.phase), view.boss.variant, locale)
       : view.boss.id==='lantern-warden'?wardenPhaseHint(view.boss.phase,view.boss.variant,locale):smallWakesPhaseHint(view.boss.id,view.boss.phase,view.boss.variant,locale);
-  phaseNote.hidden = !noteText;
-  if (phaseNote.textContent !== noteText) phaseNote.textContent = noteText;
+  const formHint=view.boss.variant==='crazed'?t('ui.crazedHelp'):'';
+  const completeNote=[noteText,formHint].filter(Boolean).join(' ');
+  phaseNote.hidden = !completeNote;
+  if (phaseNote.textContent !== completeNote) phaseNote.textContent = completeNote;
   $('boss-panel').hidden = view.phase !== 'combat';
   $('deadline').textContent = clock((view.boss.deadline - view.combatTick) / 30);
   const help = $('signature-help'),
-    helpText = [signatureHelp(view, locale),view.phase==='combat'&&view.run.difficulty==='hellish'?t('ui.lavaHelp'):''].filter(Boolean).join(' · ');
+    helpText = [signatureHelp(view, locale),view.phase==='combat'&&view.bossCues.some(c=>c.kind==='variant-pressure')?t('ui.variantPressureHelp'):'',view.phase==='combat'&&view.run.difficulty==='hellish'?t('ui.lavaHelp'):''].filter(Boolean).join(' · ');
   help.hidden = !helpText;
   if (help.textContent !== helpText) help.textContent = helpText;
   const accord = $('accord');

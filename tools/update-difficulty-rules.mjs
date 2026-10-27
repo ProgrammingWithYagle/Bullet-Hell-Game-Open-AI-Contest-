@@ -1,9 +1,10 @@
+import {applyCrazedHorizon} from '../content/source/crazed-horizon.mjs';
 import fs from 'node:fs';
 import crypto from 'node:crypto';
 import {applyEncounterPacing} from '../content/source/encounter-pacing.mjs';
 import {difficultyRuleMessages} from '../locales/source/difficulty-rules.mjs';
 const c=JSON.parse(fs.readFileSync('content/catalog.json'));
-applyEncounterPacing(c);
+applyEncounterPacing(c);applyCrazedHorizon(c);
 for(const key of ['rules','bosses','classes','supplies','difficulties'])fs.writeFileSync('content/'+key+'.json',JSON.stringify(c[key],null,2)+'\n');
 fs.writeFileSync('content/catalog.json',JSON.stringify(c,null,2)+'\n');
 fs.writeFileSync('content/revision.json',JSON.stringify({version:c.rules.contentVersion,sha256:crypto.createHash('sha256').update(JSON.stringify(c)).digest('hex'),authoredDate:'2026-10-25'},null,2)+'\n');

@@ -10,8 +10,8 @@ export function migratePracticeBoundary(value: unknown): unknown {
   // The existing version-specific and full restore validation still apply.
   // Current-version cards never pass through legacy reclassification.
   const compatibleRevision =
-    ['82763fd1f5288303f8170a798b656f5443fc8f5236b652786a9e3b27070c41af','b8d9fb6918c854f3eed38b327ed0cb3026e071e6fe24932e50beed36943db241', '43b7b2848b50bbe56072bfa134e5775355a7faca28092624744bdae6a0d318bb','cbb6b8e68c9fb6f3191a3f0ef4a6411c8a3d3e41e3aeca783c122b07ab73d546','1ad00eee45a117a45929e56884c6a39a8c4eb614b0728ab31e847403fb8735bb','d4419d906f67286576ca3f6795e03a921269aff861b36e2e82ce68aa2e501775','535eb34c7cdabce5ad2fe910ea0a792278a7cc08e360b4f5712d7ee2d9e767f6'].includes(issued.contentRevision as string) &&
-    [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, PROTOCOL].includes(issued.protocolVersion as number) &&
+    ['86ace79844ae1abe21b7fa54d18fa2de1f4316a2b5a0578c1878e6b27479ffdf','82763fd1f5288303f8170a798b656f5443fc8f5236b652786a9e3b27070c41af','b8d9fb6918c854f3eed38b327ed0cb3026e071e6fe24932e50beed36943db241', '43b7b2848b50bbe56072bfa134e5775355a7faca28092624744bdae6a0d318bb','cbb6b8e68c9fb6f3191a3f0ef4a6411c8a3d3e41e3aeca783c122b07ab73d546','1ad00eee45a117a45929e56884c6a39a8c4eb614b0728ab31e847403fb8735bb','d4419d906f67286576ca3f6795e03a921269aff861b36e2e82ce68aa2e501775','535eb34c7cdabce5ad2fe910ea0a792278a7cc08e360b4f5712d7ee2d9e767f6'].includes(issued.contentRevision as string) &&
+    [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, PROTOCOL].includes(issued.protocolVersion as number) &&
     issued.schemaVersion === 1 &&
     issued.practiceOnly === true &&
     issued.serverOnly !== true &&
@@ -19,9 +19,9 @@ export function migratePracticeBoundary(value: unknown): unknown {
     issued.transactions === undefined &&
     JSON.stringify(issued).length <= 32768;
   const legacy = compatibleRevision ? { ...issued, contentRevision: CONTENT_REVISION } : issued;
-  if (legacy.protocolVersion===15 || legacy.protocolVersion===16 || legacy.protocolVersion===17 || legacy.protocolVersion===18 || legacy.protocolVersion===19) {
+  if (legacy.protocolVersion===15 || legacy.protocolVersion===16 || legacy.protocolVersion===17 || legacy.protocolVersion===18 || legacy.protocolVersion===19 || legacy.protocolVersion===20) {
     if(legacy.schemaVersion!==1 || legacy.contentRevision!==CONTENT_REVISION || legacy.practiceOnly!==true || legacy.serverOnly===true || legacy.players!==undefined || legacy.transactions!==undefined || JSON.stringify(legacy).length>32768)throw Error('versionMismatch');
-    return {...legacy,protocolVersion:PROTOCOL};
+    return {...legacy,protocolVersion:PROTOCOL,completedBossForms:Object.fromEntries(((legacy.completedBossIds??[]) as string[]).map(id=>[id,'normal']))};
   }
   if (![4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].includes(legacy.protocolVersion as number)) return legacy;
   const version = legacy.protocolVersion as number;
@@ -184,6 +184,7 @@ export function migratePracticeBoundary(value: unknown): unknown {
   return {
     ...legacy,
     protocolVersion: PROTOCOL,
+    completedBossForms:Object.fromEntries(((legacy.completedBossIds??[]) as string[]).map(id=>[id,'normal'])),
     settings: {
       ...oldSettings,
       runId:

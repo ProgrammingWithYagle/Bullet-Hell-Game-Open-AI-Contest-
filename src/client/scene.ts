@@ -333,7 +333,7 @@ export class CombatScene extends Phaser.Scene {
       ground.clear();
       this.coverImages.forEach((image) => image.destroy());
       this.coverImages = [];
-      if (map.id !== 'gatehouse') {
+      if (map.bounds.width < 1600 || map.bounds.height < 1000) {
         const color = Number.parseInt(map.floor.slice(1), 16);
         this.arenaBackdrop
           .fillStyle(0x101e1b, 1)
@@ -460,11 +460,26 @@ export class CombatScene extends Phaser.Scene {
         f.fillStyle(0x43241c,1).fillRect(cue.x-1.5,cue.y-10,3,8);
         continue;
       }
+      if(cue.kind==='variant-pressure') {
+        const active=now>=cue.at,color=cue.crazed?0xd7a1ff:0xffbf8a;
+        h.lineStyle(active?cue.width:2,color,active?.32:.9);
+        h.lineBetween(cue.x1,cue.y1,cue.x2,cue.y2);
+        h.lineStyle(3,color,1).strokeCircle(cue.x1,cue.y1,cue.width/2);
+        if(cue.style==='pursuit') {
+          const fraction=Math.max(0,Math.min(1,(now-cue.beganAt)/(cue.at-cue.beganAt)));
+          h.fillStyle(color,active?.4:.12).fillCircle(cue.x1,cue.y1,cue.width/2);
+          h.lineStyle(3,color,1).strokeCircle(cue.x1,cue.y1,(cue.width/2)*fraction);
+        } else {
+          const dx=cue.x2-cue.x1,dy=cue.y2-cue.y1,len=Math.hypot(dx,dy)||1,nx=-dy/len*cue.width/2,ny=dx/len*cue.width/2;
+          h.lineStyle(2,color,1).lineBetween(cue.x1+nx,cue.y1+ny,cue.x2+nx,cue.y2+ny).lineBetween(cue.x1-nx,cue.y1-ny,cue.x2-nx,cue.y2-ny);
+        }
+        continue;
+      }
       if(cue.kind==='brutal-echo') {
         const progress=Math.max(0,Math.min(1,(now-cue.beganAt)/(cue.at-cue.beganAt)));
-        h.lineStyle(2,0xf5bc72,.5);
+        h.lineStyle(2,cue.crazed?0xd8a4ff:0xf5bc72,.5);
         for(const angle of cue.angles)h.lineBetween(cue.x+Math.cos(angle)*18,cue.y+Math.sin(angle)*18,cue.x+Math.cos(angle)*130,cue.y+Math.sin(angle)*130);
-        h.lineStyle(3,0xffd7a0,.95).strokeCircle(cue.x,cue.y,12+progress*10);
+        h.lineStyle(3,cue.crazed?0xe6caff:0xffd7a0,.95).strokeCircle(cue.x,cue.y,12+progress*10);
         continue;
       }
       if (cue.kind === 'charge' || cue.kind === 'scent' || cue.kind === 'trail') {
@@ -726,6 +741,7 @@ export class CombatScene extends Phaser.Scene {
         );
       }
     }
+    const partTint=bossVariantAppearance(view.boss.variant,view.boss.health>0).tint;
     this.endlessArt.draw(
       h,
       f,
@@ -733,6 +749,7 @@ export class CombatScene extends Phaser.Scene {
       now,
       this.reduceMotion,
       this.hitboxes,
+      partTint,
     );
     this.raidArt.draw(
       h,
@@ -741,6 +758,7 @@ export class CombatScene extends Phaser.Scene {
       now,
       this.reduceMotion,
       this.hitboxes,
+      partTint,
     );
     this.districtArt.draw(
       h,
@@ -749,6 +767,7 @@ export class CombatScene extends Phaser.Scene {
       now,
       this.reduceMotion,
       this.hitboxes,
+      partTint,
     );
     this.serviceArt.draw(
       h,
@@ -758,6 +777,7 @@ export class CombatScene extends Phaser.Scene {
       runtimeArena(view.arenaId,view.run.difficulty).bounds,
       this.reduceMotion,
       this.hitboxes,
+      partTint,
     );
     drawSmallWakes(h, f, view.bossCues, now);
     drawEarlyWatch(h, f, view.bossCues, now);
@@ -854,7 +874,7 @@ export class CombatScene extends Phaser.Scene {
     if (view.phase === 'combat' && variantAppearance.marks) {
       f.lineStyle(2, variantAppearance.ring, variantAppearance.ringAlpha);
       for (let n = 0; n < variantAppearance.marks; n++) {
-        const angle = (n * Math.PI) / 2;
+        const angle = (n * Math.PI * 2) / variantAppearance.marks;
         f.beginPath()
           .arc(view.boss.x, view.boss.y, 70, angle + 0.12, angle + 0.62)
           .strokePath();

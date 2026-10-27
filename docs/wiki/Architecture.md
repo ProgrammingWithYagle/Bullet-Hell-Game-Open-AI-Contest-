@@ -65,3 +65,7 @@ Authority and prediction share difficulty-specific static geometry. Hellish lava
 ## Class ability transformations
 
 The seven requested class-upgrade implementation passes now add 21 behavior changes at existing utility-path depth-three nodes (six cumulative SP each). Costs, prerequisites, node IDs and the single-capstone rule remain. Both skill views show fifteen-locale help. Shared authority, finite constructs, delayed attacks and moving fields replicate to offline/online clients. [Class behavior and tradeoffs](Classes-and-Skills#purchased-ability-transformations). Protocol 18 migrates known issued protocol-17 local saves/profiles; online remains strict. Latest Baby/Easy/Normal assistance and Hellish rules remain intact. Human/rendered/device/native-language acceptance remains open.
+
+## Protocol 21 form and geometry follow-up
+
+Shared authority owns Crazed admission, rational projectile budgets, controlled-shot density, warned swept-contact form pressure and cleanup. Insane/Hellish override form in all entry/offer/secret paths. Per-identity cleared form history survives offline and authoritative boundaries. Known issued protocol 20 local revisions migrate; online/signed envelopes remain strict. Four uniform world transforms reduce actual map bounds while preserving issued native ground pixels. Phaser reads the same bounds/cues and adapts purple treatment and the structured DOM nameplate.

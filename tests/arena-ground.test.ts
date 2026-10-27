@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
-import { runtimeArenas, runtimeArena } from '../src/shared/arena-layouts.ts';
+import { runtimeArenas, runtimeArena, authoredArenas } from '../src/shared/arena-layouts.ts';
 import {
   ARENA_BACKDROP_DEPTH,
   ARENA_GROUND_DEPTH,
@@ -23,7 +23,7 @@ test('five opaque ground paintings bind their exact natives and all six existing
   );
   let decoded = 0;
   for (const entry of arenaGroundArt.entries) {
-    assert.deepEqual(entry.worldBounds, runtimeArena(entry.id).bounds);
+    assert.deepEqual(entry.worldBounds, authoredArenas.find(a=>a.id===entry.id)!.bounds);
     assert.equal(sha(readFileSync(entry.source)), entry.sourceSha256);
     const png = readFileSync(entry.image);
     assert.equal(sha(png), entry.imageSha256);
@@ -102,7 +102,8 @@ test('map switches reset the whole floor rectangle below cover without changing 
     'crown-crypt': [180, 60, 1240, 880],
   };
   for (const id of [...Object.keys(expected), ...Object.keys(expected).reverse(), 'gatehouse']) {
-    const [x, y, width, height] = expected[id as keyof typeof expected];
+    const {x,y,width,height}=runtimeArena(id).bounds;
+    assert.deepEqual(Object.values(authoredArenas.find(a=>a.id===id)!.bounds),expected[id as keyof typeof expected]);
     const placement = applyArenaGround(image, id);
     assert.deepEqual(
       [

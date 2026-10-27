@@ -25,7 +25,7 @@ export type ConnectionOptions = {
   difficulty: string;
   openingBossId?: BossId;
   openingArenaId?: string;
-  practiceVariant?: 'normal' | 'brutal';
+  practiceVariant?: 'normal' | 'brutal' | 'crazed';
 };
 export type RoomSummary = {
   roomId: string;
@@ -431,7 +431,7 @@ function networkView(s: WorldState): View {
       castReleaseAt: s.bossCastReleaseAt,
       castEndsAt: s.bossCastEndsAt,
       vulnerableUntil: s.bossVulnerableUntil,
-      variant: s.bossVariant as 'normal' | 'brutal',
+      variant: s.bossVariant as 'normal' | 'brutal' | 'crazed',
       x: s.bossX,
       y: s.bossY,
       health: s.bossHealth,

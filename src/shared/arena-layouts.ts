@@ -1,3 +1,4 @@
+import {compactArena} from './arena-footprint.ts';
 import {additionalBabyCover} from './baby-cover.ts';
 import catalog from '../../content/catalog.json' with { type: 'json' };
 import type { Rect } from './geometry.ts';
@@ -258,7 +259,7 @@ function borders(x: number, y: number, width: number, height: number): Rect[] {
     { x: x + width, y, width: 1600 - x - width, height },
   ].filter((r) => r.width > 0 && r.height > 0);
 }
-export const runtimeArenas = catalog.arenas.map((original) => {
+export const authoredArenas = catalog.arenas.map((original) => {
   const layout = layouts[original.id];
   if (!layout)
     return {
@@ -284,6 +285,7 @@ export const runtimeArenas = catalog.arenas.map((original) => {
     theme,
   };
 });
+export const runtimeArenas=authoredArenas.map(compactArena);
 function baseArena(id: string) {
   const arena = runtimeArenas.find((a) => a.id === id);
   if (!arena) throw Error('Unknown arena');

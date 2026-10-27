@@ -127,8 +127,10 @@ test('an Easy Standard Accord removes the sweep and restarts with a complete new
   const game = encounter('normal',true,'easy'),
     player = game.players.get('solo')!;
   game.boss.health = game.boss.maxHealth * 0.49;
-  player.x = 560;
-  player.y = 550;
+  game.step();
+  assert(game.accord);
+  player.x = game.accord.points[0].x;
+  player.y = game.accord.points[0].y;
   for (let tick = 0; tick < 90; tick++) game.step();
   assert.equal(game.accords, 1);
   assert.equal(game.signatures.length, 0);

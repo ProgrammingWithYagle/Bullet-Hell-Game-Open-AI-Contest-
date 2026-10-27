@@ -1,3 +1,4 @@
+import {crazedHorizonMessages} from './crazed-horizon.mjs';
 const rows={
 en:['Phase shield break: on (Standard only)','Phase shield break: off','Combat revive: 100% health','Combat revive: 50% health','Combat revives disabled','Brutal: no phase shield breaks; two projectile waves (three at threat 5+).','Phase {number}/{total}','Phase {number}/{total} — pattern changed','Revive rules include solo, teammate, Medic and supplies. Survivors recover fully between encounters.','Full cover','Half cover','No cover','No cover; lava pits deal contact damage','Lava: keep off the marked pits.'],
 'zh-Hans':['阶段破盾：开启（仅标准形态）','阶段破盾：关闭','战斗复活：恢复100%生命','战斗复活：恢复50%生命','战斗复活已禁用','残酷形态：无阶段破盾；弹幕两波（威胁5级以上三波）。','阶段 {number}/{total}','阶段 {number}/{total} — 攻击模式改变','复活规则适用于单人、队友、医护和补给。每场战斗之间完全恢复。','完整掩体','一半掩体','无掩体','无掩体；熔岩坑接触造成伤害','熔岩：远离标记的坑洞。'],
@@ -37,5 +38,5 @@ const babyExtras={"en": ["Additional cover", "{count} circles; hold for {seconds
 export function difficultyRuleMessages(locale){
   const keys=['phaseShieldOn','phaseShieldOff','reviveFull','reviveHalf','reviveOff','brutalWaves','phaseCount','phaseChanged','reviveRulesHelp','coverFull','coverHalf','coverNone','coverLava','lavaHelp'];
   if(!rows[locale]||!medic[locale])throw Error('Missing difficulty locale '+locale);
-  return {...Object.fromEntries(keys.map((key,i)=>['ui.'+key,rows[locale][i].normalize('NFC')])), 'ui.reviveQuarter':rows[locale][3].replace('50','25'),'ui.coverExtra':babyExtras[locale][0],'ui.shieldBreakDetails':babyExtras[locale][1],'ui.allBrutal':allBrutal[locale],'ability.medic-ultimate.description':medic[locale].normalize('NFC')};
+  return {...Object.fromEntries(keys.map((key,i)=>['ui.'+key,rows[locale][i].normalize('NFC')])), 'ui.reviveQuarter':rows[locale][3].replace('50','25'),'ui.coverExtra':babyExtras[locale][0],'ui.shieldBreakDetails':babyExtras[locale][1],'ui.allBrutal':allBrutal[locale],'ability.medic-ultimate.description':medic[locale].normalize('NFC'),...crazedHorizonMessages(locale)};
 }

@@ -165,15 +165,18 @@
       0.25
     ],
     "minimumTelegraphSeconds": 0.85,
-    "endlessTrigger": "A boss is eligible after its first completed appearance. The first-loop Constable repeat is always Brutal.",
+    "endlessTrigger": "A completed Standard identity returns Brutal; after a completed Brutal appearance it returns Crazed.",
     "projectileCapUnchanged": true,
     "phaseShieldBreak": false,
-    "projectileWaves": 2,
-    "highThreatProjectileWaves": 3,
-    "tripleWaveMinimumThreat": 5,
     "echoDelaySeconds": 1.05,
-    "maximumPendingEchoProjectiles": 768,
-    "maximumPendingEchoOrigins": 64
+    "maximumPendingEchoProjectiles": 3072,
+    "maximumPendingEchoOrigins": 128,
+    "projectileMultiplier": 2.5,
+    "echoWaveSpacingSeconds": 0.35,
+    "additionalPatterns": [
+      "pursuit",
+      "crosscut"
+    ]
   },
   "endless": {
     "finalEncounter": null,
@@ -249,6 +252,23 @@
     "lavaWarningSeconds": 3,
     "lavaDamagePerSecond": 24,
     "lavaHitIntervalSeconds": 0.5,
-    "hellishAllBossesBrutal": true
+    "hellishAllBossesBrutal": false,
+    "insaneAllBossesBrutal": true,
+    "hellishAllBossesCrazed": true
+  },
+  "crazed": {
+    "healthMultiplier": 2,
+    "damageMultiplier": 2,
+    "deadlineMultiplier": 1.5,
+    "bountyMultiplier": 1.75,
+    "projectileMultiplier": 7.5,
+    "relativeBrutalProjectileMultiplier": 3,
+    "phaseShieldBreak": false,
+    "additionalPatterns": [
+      "pursuit",
+      "crosscut",
+      "weave"
+    ],
+    "instantKillAttacks": false
   }
 }

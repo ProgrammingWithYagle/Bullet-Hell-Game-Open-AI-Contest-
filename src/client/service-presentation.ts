@@ -4,6 +4,7 @@ import type { Rect } from '../shared/geometry.ts';
 import { encounterArt } from './encounter-presentation.ts';
 /** Disposable art only: all timing, health, paths and danger geometry come from simulation. */
 export class ServicePresentation {
+  private variantTint=0xffffff;
   private images = new Map<number, Phaser.GameObjects.Image>();
   private alive = new Set<number>();
   constructor(private scene: Phaser.Scene) {}
@@ -27,6 +28,7 @@ export class ServicePresentation {
     }
     image
       .setTexture(key, frame)
+      .setTint(this.variantTint)
       .setPosition(x, y)
       .setOrigin(0.5, 0.5)
       .setDisplaySize(width, height)
@@ -42,7 +44,9 @@ export class ServicePresentation {
     bounds: Rect,
     reduceMotion: boolean,
     hitboxes: boolean,
+    variantTint=0xffffff,
   ) {
+    this.variantTint=variantTint;
     this.alive.clear();
     const arrow = (x: number, y: number, angle: number, color: number, length = 45) => {
       const c = Math.cos(angle),

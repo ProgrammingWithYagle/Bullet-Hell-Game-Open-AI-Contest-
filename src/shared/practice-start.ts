@@ -9,14 +9,14 @@ export function createPracticeGame(
   classId: ClassId,
   variant: unknown = 'normal',
 ) {
-  if (variant !== 'normal' && variant !== 'brutal') throw Error('Invalid Practice boss form');
+  if (variant !== 'normal' && variant !== 'brutal' && variant !== 'crazed') throw Error('Invalid Practice boss form');
   const game = new Game({ ...settings, maxPlayers: 1 });
   game.addPlayer('solo', name, classId);
   if (variant === 'normal') return game;
   const boundary = game.offlineCheckpoint()!;
   Object.assign(
     boundary.selectedContract,
-    classifiedContract(game.settings.openingBossId, 'brutal'),
+    classifiedContract(game.settings.openingBossId, variant),
   );
   return Game.restoreOffline(boundary);
 }

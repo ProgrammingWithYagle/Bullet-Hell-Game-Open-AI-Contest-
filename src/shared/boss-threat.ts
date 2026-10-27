@@ -22,7 +22,7 @@ export function threatCode(
 ) {
   return (
     (level > 10 ? '>10' : format(level) + subtierSuffix(subtier)) +
-    (variant === 'brutal' ? ' B' : '')
+    (variant === 'crazed' ? ' C' : variant === 'brutal' ? ' B' : '')
   );
 }
 export const subtierNameKey = (subtier: number) =>
@@ -51,11 +51,11 @@ export function threatBounty(id: string, variant: string = 'normal') {
   if (level > 10) return 1;
   const base = 1 + (level - 1) * 0.06 + (subtier + 2) * 0.04;
   return (
-    Math.round(base * (variant === 'brutal' ? catalog.rules.brutal.bountyMultiplier : 1) * 10000) /
+    Math.round(base * (variant === 'crazed' ? catalog.rules.crazed.bountyMultiplier : variant === 'brutal' ? catalog.rules.brutal.bountyMultiplier : 1) * 10000) /
     10000
   );
 }
-export function classifiedContract(id: BossId, variant: 'normal' | 'brutal' = 'normal') {
+export function classifiedContract(id: BossId, variant: 'normal' | 'brutal' | 'crazed' = 'normal') {
   const { level, subtier } = bossThreat(id);
   return {
     bossId: id,

@@ -1,35 +1,32 @@
 # Grave Accord implementation state
 
-Updated October 26, 2026. [Current checkpoint](CHECKPOINT_2026_10_25.md), [single-ledger progress](DEVELOPMENT_PROGRESS.md) and actual Git/CI are the continuation authorities. The game remains unfinished.
+Updated October 26, 2026. [Checkpoint](CHECKPOINT_2026_10_25.md), [single-ledger progress](DEVELOPMENT_PROGRESS.md) and actual Git/CI are the continuation authorities. The game remains unfinished.
 
 | Area | Current source state |
 | --- | --- |
-| Build / protocol | 2026.10.26-small-wakes / 20 |
-| Bosses | 66 playable: 65 ordinary, one secret; individual original themes |
-| Expansion target | 150 ordinary plus secrets; 85 additional ordinary identities remain |
-| Class upgrades | Seven implementation passes / 21 behavior transformations complete at existing utility-path depth three; human acceptance zero |
-| Classes / skills / weapons | Seven playable kits, 378 skills / 63 paths, 28 weapons |
-| Skill-map view | Optional default-off all-54 map with zoom/scroll/keyboard; classic retained; rendered/human review open |
-| Maps / modes | Six distinct layouts/sizes; five working modes; five secondary topology changes and six ground deliveries installed |
-| Original encounter quality | Constable/Warden implementation passes complete, human review open; 58 others await assessment/redesign |
-| Small Wakes | Three original two-phase encounters, 36 selected poses, three scores and fifteen-locale response help integrated |
-| Early Watch | Three distinct original encounters, 36 selected poses, three scores, fifteen-locale help integrated |
-| Motion | 1,542 selected runtime poses; seven complete basic survivor sets; special-ability/boss and rendered work remains |
-| Difficulty | Baby/Easy Standard shield events only; six/three circles, two/three seconds; Baby 100%, Easy 50%, Normal 25% combat revival, Hard+ disabled |
-| Arena / Brutal | Baby +2 props, Hard half cover, Insane/Hellish none; Hellish lava and every boss Brutal; warned repeat volleys and authored extra mechanics |
-| Profile / continuity | Mastery, rescues, codex, cosmetics, remaps/import/export and Hard unlocks work; known issued local protocol-19 migration preserves existing purchases/progress; online strict |
-| Recovery / rankings | Bounded local transport and owner/process fixtures exist; normal writer disabled; hosted credentials/history/departure/storage/rankings gates open |
-| Acceptance | Human balance/listening, rendered animation, native-language, physical-device, active mixed-progression/WAN/full endurance and coordinated release remain open |
-| Publication | Feature branch / draft PR #14; protected main separate; canonical Wiki 18 pages / 34 published images |
+| Build/protocol |2026.10.26-crazed-horizon / 21|
+| Bosses |66 playable: 65 ordinary, one secret;85 additional ordinary identities remain|
+| Forms |All 66 Standard/Brutal/Crazed;fixed grades, separate B/C markers;Insane forces Brutal, Hellish forces Crazed|
+| Projectile/extra pressure |2.5x Brutal/7.5x Crazed base-emission budgets, controlled density, pursuit/crosscuts and Crazed weaves;bounded queues/4,000 live cap|
+| Phases/HUD/audio |Two half-health entry phases;three/four later;separate name/grade/form/phase/timer;segmented bar, priority phase bell, reduced-motion-aware engraving/banner|
+| Classes/skills/weapons |Seven kits, 378 skills/63 paths, 28 weapons;21 purchased ability transformations complete, human acceptance open|
+| Optional skill map |Default-off all 54 view with bounded zoom/scroll/keyboard;human/rendered review open|
+| Maps/modes |Six layouts, five modes;four spacious maps compacted;Ossuary/Crown retain routes;paint/collision/prediction share transforms|
+| Original quality |Constable/Warden passes implemented, 58 others await individual assessment/redesign;human final acceptance zero|
+| Early Watch/Small Wakes |Six original integrated encounters, 72 selected poses, six scores, fifteen-locale help|
+| Selected motion/music |1,542 poses;66 individual boss themes plus City Wake/67 MP3 deliveries;one new original phase cue|
+| Assistance |Baby/Easy/Normal revivals 100%/50%/25%, Hard+ disabled;shield only Baby/Easy Standard, six/three circles, two/three seconds|
+| Arenas |Baby+2real props, Hard half, Insane/Hellish no interior cover;Hellish warned lava|
+| Endless/continuity |Per-identity cleared form progresses Standard→Brutal→Crazed;bags, repeat protection and build caps retained;known issued local protocol 20 migration, online strict|
+| Existing systems |Profiles/mastery/cosmetics/remaps, all five modes, seven base kits and bank-safe consented secret implemented|
+| Recovery/rankings |Normal writer disabled; hosted credentials/history paging/departure/storage-owner/ranking gates open|
+| Acceptance/release |Human balance/listening, rendered/native-language/device, mixed-progression/WAN/endurance/capacity / coordinated release remain open|
+| Governance |Same branch/draft PR #14/protected main;Wiki 18 pages / 34 images;older protocol 4 Site/protocol 13 Windows remain separate|
 
-[Class transformations](CLASS_TALENTS.md) documents all 21 effects and tradeoffs. [Difficulty/phase policy](DIFFICULTY_AND_PHASES.md) and [latest assistance](ASSIST_LIMITS.md) record the human-requested rules. Fixed identity grades use -- / - / no sign / + / ++, B separate, secret >10; global difficulty and squad size never rerate identities. Threats 1–2 have two visible phases, higher threats three/four; Normal health is unchanged.
+Local validation passes **497 automated tests**, authored content/fifteen locales, TypeScript and production build. The separate actual-Game audit covers **3,876 phase/form/map combinations**, 100 observed ticks per phase and 387,600 observed ticks total; it checks finite boss positions and the hostile cap around initial casts, not full fights or capacity. The conservative 15,834-row offensive model has zero deadline misses, with declared aim/build assumptions. Dedicated actual two-client rooms replicate Crazed admission, locked extra pressure, one additional sound per actual phase and cleanup. Controlled clock rings emit 24/60/180 unique projectile IDs across Standard/Brutal/Crazed and preserve stop/resume; drone-source destruction still cancels its linked shots.
 
-The current build passes **484 automated tests**, authored content/fifteen locales, TypeScript and production build. Both exact `5f71f73` GitHub CI checks succeeded. The new collision/prop/jaw audit covers **432 phase/form/map/difficulty combinations**; real owner/observer rooms replicate all three Brutal signatures, cancellation and cleanup. Pinned Pillow 12.3.0 independently reconstructs all 36 selected poses and all 91 immutable production files match committed blobs. Local verification snapshot `1eb4428d35dc534d8a9088ec1f6994ca173a11b2551b7f32147d53baa5716095`; committed canonical snapshot `25fb52f0158574d32f84e430ada44dbd34df5b1b6917a4b5aa75bdd21cc3237e`. The difference is only CRLF/LF in unchanged `pnpm-workspace.yaml` and `tests/class-kits.test.ts`. Runtime source matches committed bytes exactly: `ac16815222762f4df1f1e207f2483cfdaf1a590c9851abad08d43fcf2e4b0e46`. Content revision `86ace79844ae1abe21b7fa54d18fa2de1f4316a2b5a0578c1878e6b27479ffdf`. Exact files, failed attempts, local/CI/source/audio/production proofs: `reviews/small-wakes-2026-10-26/`.
+Local snapshot `a1729f860be4a1790f5bd1238fd156cfc2559a08b23e9895739a53964e821d3e`; runtime source `e48a9909c96b36954cffd1b7a4ae5ecce24b544115d5b3b9d3b4fa12cbb57fd4`; content revision `312aa30276cffb7bb00cf9a303cc3b3461cce80d32e054afd5e91c08f76e2006`. Production is **1,685 files / 721,046,341 bytes**. Exact files, failed attempts, geometry/content audit, current art verifier outputs and original phase-cue PCM reconstruction: `reviews/crazed-horizon-2026-10-26/`. All 66 previous Standard definitions, all 66 previous Brutal definitions, intrinsic grades, classes/skills/weapons/pools and authored maps remain unchanged; current map compaction is an explicit runtime transform. Existing native artwork, music masters/deliveries and all 34 Wiki images are preserved. New phase cue: 1.36 s, 59,976 stereo frames at 44,100 Hz, peak 0.8, RMS 0.15277, DC below 0.00001; listening acceptance remains open.
 
-The latest frozen preview is **http://127.0.0.1:5185/**, runtime commit `5f71f73a1de348df9ec8d42e9ae27a02300eb5d4`, build 2026.10.26-small-wakes/protocol 20, process **53512**, root `C:\Users\yigal\Documents\Codex\2026-10-25\continue-grave-accord-in-this-same\work\playtest-small-wakes-5f71f73`. All **1,684 files / 720,606,143 bytes** match the production receipt. **29 raw HTTP checks** pass, including all new atlases, live/settled references, individual music and selected locale bundles. Use Solo for this static preview; no mismatched permanent backend was deployed.
+Corresponding committed-source hashes, exact current GitHub CI, frozen Crazed preview and Wiki publication are recorded after the gameplay checkpoint is pushed. The preceding green hashes do not prove this new candidate. A metadata follow-up must install those receipts. No browser, physical-device, native-language, listening or final balance acceptance is inferred from these software checks.
 
-The seven previously recorded preview processes were already absent and their ports free. Every frozen member of 5178–5184 was verified unchanged: **11,656 files / 4,791,986,115 bytes**. Those exact directories were resumed with new hidden processes, with logs stored outside the frozen roots; no existing process was stopped or replaced and no frozen member changed. The 5178–5184 index responses remain unchanged. Original process receipts are preserved; current PIDs are in `previous-preview-resumed-processes.json`. Earlier 5174–5177 roots remain untouched.
-
-The canonical Wiki is **18 pages / 34 images**, published from exact committed source `5f71f73a1de348df9ec8d42e9ae27a02300eb5d4` at Wiki commit `f19a76026ecb9798aaca228cb97c677985fccc84`. All 18 page blobs, all 34 image blobs and public image SHA-256 responses match; four public HTML responses pass. Source/Wiki publication does not update the older public protocol-4 Site or immutable protocol-13 Windows archive. These software checks do not prove rendered, physical-device, native-language, listening or final human balance acceptance.
-
-The [Small Wakes implementation](SMALL_WAKES_RUNTIME.md) records mechanics, counterplay, original motion/audio, compatibility and exact verification limits. All21 class transformations, the optional skill map, Constable/Warden quality work and latest difficulty assistance remain. The single ledger records 85 new ordinary identities and 58 original quality passes remaining; human acceptance is zero. Hosted recovery/rankings, participant credentials/history paging/departures/storage-owner acceptance, active mixed-progression/WAN/full endurance,art/device/language/listening/final balance and coordinated release remain open.
+The latest completed frozen human comparison remains 5185/source5f71f73 until the Crazed gameplay checkpoint receives its own exact byte/process/HTTP receipts. All previous roots/processes remain untouched. Browser control is disabled. New software evidence does not grant human/device/listening acceptance or close any of the85 new-identity / 58 quality/recovery/WAN/release gates. [Current difficulty rules](DIFFICULTY_AND_PHASES.md), [Crazed implementation](CRAZED_HORIZON.md), [class transformations](CLASS_TALENTS.md), [optional tree](OPTIONAL_SKILL_MAP.md).

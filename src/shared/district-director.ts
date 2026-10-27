@@ -556,8 +556,9 @@ export class DistrictDirector {
       const stop = at + ticks(1.4),
         restart = stop + ticks(2);
       const clock = this.state(c, 'clock', at, restart + ticks(4));
-      for (let i = 0; i < 24; i++) {
-        const angle = (i * Math.PI * 2) / 24 + n * 0.13;
+      const density=Math.round(24*(c.projectileMultiplier??1));
+      for (let i = 0; i < density; i++) {
+        const angle = (i * Math.PI * 2) / density + n * 0.13;
         // Emit on the release tick, not while the warning is still visible.
         this.clockShots.push({
           id: -1,
@@ -1049,8 +1050,9 @@ export class DistrictDirector {
             const drones = this.shapes.filter(
               (p): p is DistrictProp => p.kind === 'district-prop' && p.role === 'drone',
             );
-            for (let i = 0; i < 24; i++) {
-              const angle = (i * Math.PI * 2) / 24;
+            const density=Math.round(24*(c.projectileMultiplier??1));
+            for (let i = 0; i < density; i++) {
+              const angle = (i * Math.PI * 2) / density;
               if (cue.gaps.some((g) => Math.abs(delta(angle, g.angle)) < g.width / 2)) continue;
               const drone = drones.toSorted(
                 (a, b) => Math.abs(delta(angle, a.angle)) - Math.abs(delta(angle, b.angle)),

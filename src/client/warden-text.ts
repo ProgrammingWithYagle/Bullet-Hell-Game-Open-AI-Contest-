@@ -17,6 +17,6 @@ export function wardenPhaseHint(
       phase > 0
         ? 'boss.lantern-warden.phaseHint.1'
         : 'boss.lantern-warden.phaseHint.0'
-    ] + (variant === 'brutal' ? ' ' + w['boss.lantern-warden.brutalHelp'] : '')
+    ] + (variant !== 'normal' ? ' ' + w['boss.lantern-warden.brutalHelp'] : '')
   );
 }

@@ -58,3 +58,7 @@ The seven requested class-upgrade implementation passes now add 21 behavior chan
 [Lantern Warden quality pass](Bosses#roving-warden-quality-pass) adds rest-only patrols, directional sweeps and a fully warned sequential Brutal return. Two original-roster quality passes are implemented; 58 remain. Its four patrol poses brought that checkpoint to 1,506 selected runtime poses; the newer Small Wakes total is 1,542. Human/rendered acceptance remains open.
 
 [Small Wakes](Bosses#small-wakes-three-new-ordinary-encounters) adds Candle Snail, Cobble Crab and Mourning Kettle with 36 selected poses, three individual scores and fifteen-locale phase help. The source roster is 66; 85 further ordinary identities remain. Protocol 20 carries known issued protocol 19 local saves/profiles forward; online remains strict. Total selected runtime motion is 1,542.
+
+## Current feedback pass: Crazed Horizon
+
+Build 2026.10.26-crazed-horizon/protocol 21 adds purple Crazed/C forms to all 66 identities, forced Insane Brutal and Hellish Crazed, 2.5x/7.5x projectile budgets, warned pursuit/crossing patterns and persisted Endless form progression. Four spacious maps are smaller; the boss header separates name/grade/form/phase/timer and phase entry gains a distinct original cue plus reduced-motion-aware bar engraving. [Rules](Bosses) · [Modes and arenas](Modes). Roster remains 66; 85 ordinary identities and 58 original quality passes remain. Human 5185 comparison confirmed clearer phase and Brutal differences but identified too much retreat space. Current changes await comparison.

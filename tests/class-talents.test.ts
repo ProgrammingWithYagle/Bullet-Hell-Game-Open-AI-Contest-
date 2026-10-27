@@ -157,13 +157,14 @@ test('Marching Colors follows authority and prediction beyond the original rally
   const prediction = new Prediction(),
     view = viewOf(g, p.id);
   prediction.acknowledge(view, p.id);
+  const originY=p.y;
   for (let i = 0; i < 60; i++) {
-    const input = { ...idleInput(), sequence: p.ack + 1, moveY: 1 };
+    const input = { ...idleInput(), sequence: p.ack + 1, moveY: -1 };
     prediction.submit(input, view);
     g.submitInput(p.id, input);
     g.step();
   }
-  assert(p.y > 950);
+  assert(Math.abs(p.y-originY)>field.radius);
   close(prediction.player!.y, p.y);
   close(field.y, p.y);
 });
@@ -605,7 +606,7 @@ test('issued protocol-17 local saves retain skill node ownership and progression
     'd4419d906f67286576ca3f6795e03a921269aff861b36e2e82ce68aa2e501775';
   const restored = Game.restoreOffline(save),
     after = [...restored.players.values()][0];
-  assert.equal(PROTOCOL, 20);
+  assert.equal(PROTOCOL, 21);
   assert.equal(after.coins, 901);
   assert.deepEqual(after.skills, p.skills);
   assert(hasTalent(after, 'breach-cadence'));

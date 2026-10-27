@@ -75,3 +75,7 @@ Hellish locks the Solo form selector to Brutal. Other global difficulties retain
 ## Class ability transformations
 
 The seven requested class-upgrade implementation passes now add 21 behavior changes at existing utility-path depth-three nodes (six cumulative SP each). Costs, prerequisites, node IDs and the single-capstone rule remain. Both skill views show fifteen-locale help. Shared authority, finite constructs, delayed attacks and moving fields replicate to offline/online clients. [Class behavior and tradeoffs](Classes-and-Skills#purchased-ability-transformations). Protocol 18 migrates known issued protocol-17 local saves/profiles; online remains strict. Latest Baby/Easy/Normal assistance and Hellish rules remain intact. Human/rendered/device/native-language acceptance remains open.
+
+## Three encounter forms
+
+Local setup offers Standard, Brutal and Crazed on lower difficulties. Insane fixes Brutal; Hellish fixes Crazed. Purple/C identifies Crazed, red/B Brutal. Difficulty cards state revival, shield, cover and forced-form rules. Normal revival remains 25%, Easy 50%, Baby 100%, Hard+ disabled. [Current rules](Modes#crazed-horizon-follow-up).

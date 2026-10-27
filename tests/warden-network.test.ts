@@ -55,7 +55,7 @@ test(
         { roomId: owner.room!.roomId },
       );
       await until(() => owner.view?.players.length === 2);
-      assert.equal(PROTOCOL, 20);
+      assert.equal(PROTOCOL, 21);
       owner.start();
       await until(() => owner.view?.phase === 'combat' && guest.view?.signatures.length === 1);
       assert.equal(owner.view!.boss.id, 'lantern-warden');

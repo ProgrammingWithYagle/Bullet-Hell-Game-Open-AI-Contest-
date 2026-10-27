@@ -112,24 +112,25 @@ test('all entry identities have two half-health phases retaining late authored m
     if(entry){assert.deepEqual(phases.map(p=>p.healthThreshold),[1,.5]);assert.equal(bossPatternPhase(b.id,form,1),smallWakesIds.some(id=>id===b.id)?1:form==='normal'?2:3);}
   }
 });
-test('Brutal repeats locked trajectories twice at entry threat and three times at high threat without recursive echoes',()=>{
-  for(const [id,waves] of [['ashen-usher',2],['engine',3]] as const){
-    const g=createPracticeGame({openingBossId:id,mode:'endless'},'Mara','soldier','brutal');assert(g.start());
+test('Brutal and Crazed retain exact 2.5x and 7.5x rational projectile budgets with warned non-recursive repeats',()=>{
+  for(const id of ['ashen-usher','engine'] as const)for(const [variant,multiplier] of [['brutal',2.5],['crazed',7.5]] as const){
+    const g=createPracticeGame({openingBossId:id,mode:'endless'},'Mara','soldier',variant);assert(g.start());
     g.boss.staggerUntil=g.boss.deadline=1e9;g.players.get('solo')!.invulnerableUntil=1e9;
     const cast=Reflect.get(g,'emitBossShot') as (...a:unknown[])=>void;
-    for(const angle of [-.6,0,.6])cast.call(g,800,600,angle,70,8,4);
+    const angles=[-.6,-.3,0,.2,.4,.6];
+    for(const angle of angles)cast.call(g,800,600,angle,70,8,4);
     const original=g.drainEvents().flatMap(e=>e.type==='shots'?e.shots:[]);
-    assert.equal(original.length,3);assert.equal(g.brutalVolley.queuedProjectiles,3*(waves-1));
+    assert.equal(original.length,6);assert.equal(g.brutalVolley.queuedProjectiles,6*(multiplier-1));
     const cues=viewOf(g,'solo').bossCues.filter(c=>c.kind==='brutal-echo');
-    assert.equal(cues.length,waves-1);
-    assert(cues.every(c=>c.at-g.combatTick>=Math.ceil(1.05*HZ)));
-    assert.deepEqual(cues[0].angles,[-.6,0,.6]);
+    assert(cues.length>0);assert(cues.every(c=>c.at-g.combatTick>=Math.ceil(1.05*HZ)));
+    assert.deepEqual(cues[0].angles,angles);assert(cues.every(c=>c.crazed===(variant==='crazed')));
     let emitted=original.length;
-    for(let n=0;n<3*HZ;n++){g.step();emitted+=g.drainEvents().flatMap(e=>e.type==='shots'?e.shots:[]).length;}
-    assert.equal(emitted,3*waves);assert.equal(g.brutalVolley.queuedProjectiles,0);
+    for(let n=0;n<4*HZ;n++){g.step();emitted+=g.drainEvents().flatMap(e=>e.type==='shots'?e.shots:[]).length;}
+    assert.equal(emitted,6*multiplier);assert.equal(g.brutalVolley.queuedProjectiles,0);
     assert(!g.bossCues().some(c=>c.kind==='brutal-echo'));
   }
 });
+
 test('echo queues enforce finite group/projectile budgets and defeat removes future releases and cues',()=>{
   const queue=new BrutalVolley();let id=0;
   for(let i=0;i<10000;i++)queue.capture(1,{x:i%100,y:400},i,70,5,4,10,()=>++id);
@@ -181,11 +182,11 @@ test('Hellish lava has a three-second tell, actual contact damage, a half-second
   p.x=800;p.y=730;for(let n=0;n<30;n++)g.step();assert.equal(p.health,p.maxHealth-24);
   g.boss.health=0;g.step();assert(!g.bossCues().some(c=>c.kind==='arena-lava'));
 });
-test('Hellish forces Brutal for every opening identity, ignores Standard requests and offers only Brutal future contracts',()=>{
-  for(const b of data.bosses){
-    const g=createPracticeGame({difficulty:'hellish',openingBossId:b.id as never,mode:'endless'},'Mara','soldier','normal');
-    assert(g.start());assert.equal(g.boss.variant,'brutal',b.id);assert.equal(g.director.cues().some(c=>c.kind==='brutal-echo'),false);
-    if(!b.secret){g.boss.health=0;g.step();g.phaseEnds=g.tick;g.step();assert.equal(g.phase,'contractVote');assert(g.contractCards.every(c=>c.variant==='brutal'));}
+test('Insane forces Brutal and Hellish Crazed for every opening identity, including future contracts',()=>{
+  for(const [difficulty,forced] of [['insane','brutal'],['hellish','crazed']] as const)for(const b of data.bosses){
+    const g=createPracticeGame({difficulty,openingBossId:b.id as never,mode:'endless'},'Mara','soldier','normal');
+    assert(g.start());assert.equal(g.boss.variant,forced,b.id);assert.equal(g.director.cues().some(c=>c.kind==='brutal-echo'),false);
+    if(!b.secret){g.boss.health=0;g.step();g.phaseEnds=g.tick;g.step();assert.equal(g.phase,'contractVote');assert(g.contractCards.every(c=>c.variant===forced));}
   }
 });
 test('issued protocol-15 local saves/profiles migrate without losing run progress while unknown revisions and online envelopes stay strict',()=>{
@@ -194,7 +195,7 @@ test('issued protocol-15 local saves/profiles migrate without losing run progres
   Object.assign(save.selectedContract,classifiedContract('constable','normal'));
   const restored=Game.restoreOffline(save),after=restored.offlineCheckpoint()!;
   assert.equal(after.protocolVersion,PROTOCOL);assert.equal(after.settings.runId,save.settings.runId);
-  assert.equal(after.player.coins,765);assert.deepEqual(after.player.progress,save.player.progress);assert.equal(after.selectedContract.variant,'brutal');
+  assert.equal(after.player.coins,765);assert.deepEqual(after.player.progress,save.player.progress);assert.equal(after.selectedContract.variant,'crazed');
   assert.throws(()=>Game.restoreOffline({...save,contentRevision:'0'.repeat(64)}),/versionMismatch/);
   assert.throws(()=>Game.restoreOffline({...save,serverOnly:true}),/versionMismatch/);
   assert.throws(()=>Game.restoreOffline({...save,contractCards:[{...save.selectedContract,bounty:999}]}));
@@ -225,11 +226,12 @@ test('actual difficulty-card markup presents shield, revive, cover and forced-Br
     const markup=ui.difficultyRulesMarkup(d.id),revive=combatReviveFraction(d.id);
     assert(markup.includes('ui.'+(phaseShieldBreak(d.id,'normal')?'phaseShieldOn':'phaseShieldOff')));
     assert(markup.includes('ui.'+(revive===1?'reviveFull':revive===.25?'reviveQuarter':revive?'reviveHalf':'reviveOff')));
-    assert.equal(markup.includes('ui.allBrutal'),d.id==='hellish');
+    assert.equal(markup.includes('ui.allBrutal'),d.id==='insane');
+    assert.equal(markup.includes('ui.allCrazed'),d.id==='hellish');
     assert(markup.includes('ui.'+(d.id==='hellish'?'coverLava':d.id==='insane'?'coverNone':d.id==='hard'?'coverHalf':d.id==='baby'?'coverExtra':'coverFull')));
   }
 });
-test('real two-client Hellish room replicates forced Brutal, warned echoes/lava, rejects revive channels and cleans on defeat', {timeout:20000},async()=>{
+test('real two-client Hellish room replicates forced Crazed, warned echoes/lava, rejects revive channels and cleans on defeat', {timeout:20000},async()=>{
   const {server,httpServer}=createGameServer();await server.listen(0,'127.0.0.1');
   const address=httpServer.address();assert(address&&typeof address==='object');
   const owner=new Session('http://127.0.0.1:'+address.port),guest=new Session('http://127.0.0.1:'+address.port);
@@ -244,7 +246,7 @@ test('real two-client Hellish room replicates forced Brutal, warned echoes/lava,
     for(const angle of [-.5,0,.5])cast.call(g,800,600,angle,70,8,4);
     await until(()=>!!guest.view?.bossCues.some(c=>c.kind==='brutal-echo'));
     for(const session of [owner,guest]){
-      assert.equal(session.view!.boss.variant,'brutal');assert.equal(session.view!.accord,null);
+      assert.equal(session.view!.boss.variant,'crazed');assert.equal(session.view!.accord,null);
       assert(session.view!.bossCues.some(c=>c.kind==='arena-lava'));
       const echo=session.view!.bossCues.find(c=>c.kind==='brutal-echo');assert(echo&&echo.kind==='brutal-echo');assert.deepEqual(echo.angles,[-.5,0,.5]);
     }
@@ -253,7 +255,7 @@ test('real two-client Hellish room replicates forced Brutal, warned echoes/lava,
     const end=g.combatTick+65;
     while(g.combatTick<end){owner.input({...idleInput(),sequence:rescuer.ack+1,interact:true});await new Promise(r=>setTimeout(r,35));}
     assert.equal(target.status,'downed');assert.equal(target.health,0);assert.equal(rescuer.progress.rescues,0);
-    assert.equal(g.brutalVolley.queuedProjectiles,0);
+    await until(()=>g.brutalVolley.queuedProjectiles===0);
     g.boss.health=0;await until(()=>guest.view?.phase!=='combat');
     assert(!guest.view!.bossCues.some(c=>c.kind==='brutal-echo'||c.kind==='arena-lava'));
   }finally{await Promise.allSettled([owner.close(),guest.close()]);await server.gracefullyShutdown(false);}

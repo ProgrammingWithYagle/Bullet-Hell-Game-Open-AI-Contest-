@@ -4,7 +4,7 @@ export const constablePhaseHints = hints;
 export function constablePhaseHint(phase: number, variant: string, language: string) {
   const words = hints[language as keyof typeof hints] ?? hints.en;
   const index = Math.max(0, Math.min(3, Math.floor(phase)));
-  return words[(variant === 'brutal' ? 4 : 0) + index];
+  return words[(variant !== 'normal' ? 4 : 0) + index];
 }
 // One entry highlight per actual encounter/phase; repeated patches never restart it.
 export class BossPhaseFeedback {

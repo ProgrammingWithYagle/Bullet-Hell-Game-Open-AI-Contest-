@@ -72,13 +72,13 @@ test('five-fight Quarantine keeps five distinct bosses for every opening identit
 
 test('Endless marks previously defeated candidates Brutal and excludes the last twelve identities', () => {
   const game = encounter('constable');
-  const seen = new Set<BossId>(),
+  const seen = new Map<BossId,number>(),
     recent: BossId[] = [];
   for (let fight = 0; fight < 100; fight++) {
     const last = game.boss.id;
-    assert.equal(game.boss.variant, seen.has(game.boss.id) ? 'brutal' : 'normal');
+    assert.equal(game.boss.variant,['normal','brutal','crazed'][Math.min(2,seen.get(game.boss.id)??0)]);
     assert(!recent.slice(-12).includes(game.boss.id));
-    seen.add(game.boss.id);
+    seen.set(game.boss.id,(seen.get(game.boss.id)??0)+1);
     recent.push(game.boss.id);
     game.boss.health = 0;
     game.step();

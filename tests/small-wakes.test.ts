@@ -544,7 +544,7 @@ test("issued protocol19 local Practice and profiles retain identity, money, disc
   save.contentRevision =
     "82763fd1f5288303f8170a798b656f5443fc8f5236b652786a9e3b27070c41af";
   const restored = Game.restoreOffline(save);
-  assert.equal(PROTOCOL, 20);
+  assert(PROTOCOL >= 21);
   assert.equal(restored.settings.runId, g.settings.runId);
   assert.equal(restored.players.get("solo")!.coins, 777);
   assert.deepEqual(restored.players.get("solo")!.skills, p.skills);
@@ -683,7 +683,7 @@ test(
               ) === true,
           );
           assert.equal(observer.view!.boss.id, id);
-          assert.equal(observer.view!.boss.variant, "brutal");
+          assert.equal(observer.view!.boss.variant, "crazed");
           assert(!g.accord);
           const weak = g.director.smallWakes.weakPoints()[0];
           if (weak) {

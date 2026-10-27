@@ -124,8 +124,10 @@ test('a real successful Accord plays the upright entry once then loops three wea
   const game = fixture('normal','easy');
   game.boss.health = game.boss.maxHealth * 0.49;
   const player = game.players.get('solo')!;
-  player.x = 560;
-  player.y = 550;
+  game.step();
+  assert(game.accord);
+  player.x = game.accord.points[0].x;
+  player.y = game.accord.points[0].y;
   while (!game.accords) {
     game.step();
     assert(game.combatTick < 100);

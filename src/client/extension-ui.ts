@@ -17,11 +17,11 @@ export function extensionText(
 export function signatureHelp(view: View, locale: string) {
   if(smallWakesIds.some(id=>id===view.boss.id)){
     const words=(smallWakesHelp[locale as keyof typeof smallWakesHelp]??smallWakesHelp.en) as Record<string,string>;
-    return words[`boss.${view.boss.id}.description`]+(view.boss.variant==='brutal'?' '+words[`boss.${view.boss.id}.brutalHelp`]:'');
+    return words[`boss.${view.boss.id}.description`]+(view.boss.variant!=='normal'?' '+words[`boss.${view.boss.id}.brutalHelp`]:'');
   }
   if (earlyWatchBossIds.some(id=>id===view.boss.id)) {
     const words = (earlyWatchHelp[locale as keyof typeof earlyWatchHelp] ?? earlyWatchHelp.en) as Record<string,string>;
-    return words[`boss.${view.boss.id}.description`] + (view.boss.variant === 'brutal' ? ' ' + words[`boss.${view.boss.id}.brutalHelp`] : '');
+    return words[`boss.${view.boss.id}.description`] + (view.boss.variant !== 'normal' ? ' ' + words[`boss.${view.boss.id}.brutalHelp`] : '');
   }
   const now = view.combatTick,
     number = (n: number) => new Intl.NumberFormat(locale).format(n);

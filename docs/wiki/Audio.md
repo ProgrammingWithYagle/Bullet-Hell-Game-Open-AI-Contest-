@@ -86,3 +86,7 @@ Three new editable original scores use a theatre waltz, a 7/8 bronze hop and a s
 ## Small Wakes original scores
 
 Slow Wick is a G-minor 9/8 plucked-droplet phrase at 88 BPM; Stones Remember is D-minor 5/4 struck keys with a low reed response at 104 BPM; Tea for the Absent is F-sharp-minor 6/8 descending reed/soft metal at 92 BPM. All 63 previous boss masters and score events stay unchanged. The current 66 boss themes plus City Wake have 67 MP3 deliveries: 70,569,830 bytes against 517,909,764 PCM bytes. Independent frame/SNR/headroom/DC/seam decode checks pass. The original masters remain bundled fallback. Listening, rendered/device playback and final mix acceptance stay open. [Exact delivery audit](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/reviews/small-wakes-2026-10-26/audio-delivery.json).
+
+## Phase-turn cue
+
+The current phase event uses a new original 1.36-second two-strike bell and short low impact. Effects volume controls it, priority reserves playback space and music briefly ducks. The earlier cue/master files remain unchanged. Exact synthesis/PCM/headroom/DC verification is separate from listening acceptance. Individual themes remain 66 boss themes plus City Wake.

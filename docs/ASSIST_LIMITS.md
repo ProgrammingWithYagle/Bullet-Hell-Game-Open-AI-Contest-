@@ -9,9 +9,9 @@ Build **2026.10.25-assist-limits**, protocol **17**. These are the latest reques
 | Normal | 25% | Off | — | Original cover |
 | Hard | Disabled | Off | — | Half original cover |
 | Insane | Disabled | Off | — | None |
-| Hellish | Disabled | Off | — | None; marked lava; every boss Brutal |
+| Hellish | Disabled | Off | — | None; marked lava; every boss Crazed |
 
-All four revival routes use the same authority policy. Baby and Easy keep their previous fractions, while Normal now restores a quarter of maximum health. Every Brutal form disables the phase shield event even on Baby/Easy. Between-encounter full recovery remains. Existing individual boss weak points keep their signature counterplay.
+All four revival routes use the same authority policy. Baby and Easy keep their previous fractions, while Normal now restores a quarter of maximum health. Every Brutal or Crazed form disables the phase shield event even on Baby/Easy. Between-encounter full recovery remains. Existing individual boss weak points keep their signature counterplay.
 
 Six Baby circles and three Easy circles give the requested exact one-half ratio. Baby channels for 60 simulation ticks; Easy for 90 ticks (1.5×). Losing the required simultaneous occupancy resets progress. Solo needs one occupant, squads up to eight need two, and larger groups need three; neither form can require more occupants than its available circles. Circle centers are collision-clear and separated. Easy keeps alternating choices from the same six-position layout. The eight-second event window remains.
 
@@ -26,3 +26,5 @@ Protocol 17 adds explicit channel timing to the cue state. The known issued prot
 The suite includes actual authority revival checks, solo/eight/sixteen/fifty-player circle timing, interruption reset, map routes, new collider/projectile/prediction behavior, issued-save migration and real two-client Baby/Easy metadata/cleanup. Receipts live under `reviews/assist-limits-2026-10-25/`. No browser control, rendered/device/native-language/listening or human balance acceptance is claimed.
 
 The game is unfinished. The roster stays 63 (62 ordinary plus one secret), with 88 new ordinary identities, 59 original-boss quality passes and seven ability-upgrade revamps remaining. The optional complete skill map is already implemented. All frozen preview roots/processes, protected main, draft PR #14, the protocol-4 public Site and immutable protocol-13 Windows archive remain separate.
+
+Current form/compact-map rules are in [Difficulty and phases](DIFFICULTY_AND_PHASES.md): Insane forces Brutal and Hellish Crazed. This assistance checkpoint retains its original numerical revive/circle rules.

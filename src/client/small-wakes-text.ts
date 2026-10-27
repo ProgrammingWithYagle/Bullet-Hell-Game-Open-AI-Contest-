@@ -17,6 +17,6 @@ export function smallWakesPhaseHint(
   const w = words(locale),
     hint = w[`boss.${bossId}.phaseHint.${phase > 0 ? 1 : 0}`];
   return hint
-    ? hint + (variant === "brutal" ? " " + w[`boss.${bossId}.brutalHelp`] : "")
+    ? hint + (variant !== "normal" ? " " + w[`boss.${bossId}.brutalHelp`] : "")
     : "";
 }

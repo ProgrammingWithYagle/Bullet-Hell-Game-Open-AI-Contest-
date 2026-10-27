@@ -1,10 +1,11 @@
+import {VariantPressure} from './variant-pressure.ts';
 import {WardenPatrol} from './warden-patrol.ts';
 import {AbilityTransforms,type TransformContext} from './ability-transforms.ts';
 import {hasTalent} from './class-talents.ts';
 import {fieldPosition} from './field-follow.ts';
 import {phaseBreakPoints} from './phase-break-layout.ts';
 import { BrutalVolley } from './brutal-volley.ts';
-import { encounterAssists, combatReviveFraction, phaseShieldBreak, encounterPhases, bossPatternPhase, encounterVariant } from './encounter-policy.ts';
+import { encounterAssists, combatReviveFraction, phaseShieldBreak, encounterPhases, bossPatternPhase, encounterVariant, variantRules } from './encounter-policy.ts';
 import {smallWakesIds} from './small-wakes-director.ts';
 import { earlyWatchBossIds, earlyWatchMovement } from './early-watch-director.ts';
 import { constablePattern, moveConstable } from './constable-signature.ts';
@@ -183,7 +184,7 @@ export type Boss = {
   castAt: number;
   castReleaseAt: number;
   castEndsAt: number;
-  variant: 'normal' | 'brutal';
+  variant: 'normal' | 'brutal' | 'crazed';
   x: number;
   y: number;
   health: number;
@@ -221,13 +222,15 @@ export class Game {
   readonly minions = new Minions();
   readonly director = new BossDirector();
   readonly brutalVolley = new BrutalVolley();
+  readonly variantPressure = new VariantPressure();
+  readonly completedBossForms = new Map<BossId, 'normal'|'brutal'|'crazed'>();
   private arenaHazardAt = 0;
   private lavaHitAt = new Map<string,number>();
   bossCues() {
     const lava = this.phase === 'combat' ? this.arena.lavaPits.map((pit,i)=>({
       ...pit,kind:'arena-lava' as const,id:-(i+1),at:this.arenaHazardAt,until:Number.MAX_SAFE_INTEGER,
     })) : [];
-    return [...this.director.cues(),...this.brutalVolley.cues(),...this.wardenPatrol.cues(),...lava];
+    return [...this.director.cues(),...this.brutalVolley.cues(),...this.variantPressure.cues(),...this.wardenPatrol.cues(),...lava];
   }
   readonly classKits = new ClassKits();
   readonly transforms = new AbilityTransforms();
@@ -698,6 +701,10 @@ export class Game {
     this.boss.id = 'uncounted';
     this.changePhase('loading', rule.deploymentSeconds);
   }
+  private nextEndlessForm(id:BossId):'normal'|'brutal'|'crazed' {
+    const done=this.completedBossForms.get(id);
+    return done==='brutal'||done==='crazed'?'crazed':done==='normal'||this.completedBossIds.has(id)?'brutal':'normal';
+  }
   private winningVote() {
     const counts = [0, 0, 0];
     for (const [id, index] of this.votes) if (this.players.get(id)?.connected) counts[index]++;
@@ -741,11 +748,12 @@ export class Game {
       (1 + rule.bossHealthAdditionalPlayer * Math.max(0, n - 1)) *
       this.modifier('bossHealth') *
       (1 + cycles * rule.endless.healthGrowthPerCycle) *
-      (contract.variant === 'brutal' ? rule.brutal.healthMultiplier : 1)
+      variantRules(contract.variant??'normal').healthMultiplier
     );
   }
   private startEncounter() {
-    if(this.settings.difficulty==='hellish') Object.assign(this.selectedContract,classifiedContract(this.selectedContract.bossId??'constable','brutal'));
+    Object.assign(this.selectedContract,classifiedContract(this.selectedContract.bossId??'constable',encounterVariant(this.settings.difficulty,this.selectedContract.variant)));
+    this.variantPressure.reset(this.combatTick);
     this.classKits.clear();this.transforms.clear();this.wardenPatrol.clear();
     this.pruneExpired();
     this.phase = 'combat';
@@ -814,7 +822,7 @@ export class Game {
         ticks(
           this.bossDefinition().timer *
             this.modifier('timer') *
-            (this.selectedContract.variant === 'brutal' ? rule.brutal.deadlineMultiplier : 1),
+            variantRules(this.selectedContract.variant??'normal').deadlineMultiplier,
         );
     this.boss = {
       id: this.selectedContract.bossId ?? 'constable',
@@ -838,7 +846,7 @@ export class Game {
     this.lavaHitAt.clear();
     this.attackAt = this.bossPhases()[0].attacks.map((_, i) => this.combatTick + ticks(2 + i * 2));
     this.resetWarden();
-    this.director.reset(this.boss.id, this.boss.variant === 'brutal', true);
+    this.director.reset(this.boss.id, this.boss.variant !== 'normal', true);
     this.director.services.prepare(this.signatureContext());
     this.director.district.prepare(this.signatureContext());
     this.director.raids.prepare(this.signatureContext());
@@ -870,6 +878,8 @@ export class Game {
   private victory() {
     this.classKits.clear();this.transforms.clear();this.wardenPatrol.clear();
     this.completedBossIds.add(this.boss.id);
+    const previous=this.completedBossForms.get(this.boss.id);
+    if(!previous||['normal','brutal','crazed'].indexOf(this.boss.variant)>['normal','brutal','crazed'].indexOf(previous))this.completedBossForms.set(this.boss.id,this.boss.variant);
     if (this.settings.mode === 'endless') this.endless.record(this.boss.id);
     this.boss.health = 0;
     this.boss.defeatedAt = this.tick;
@@ -1000,7 +1010,7 @@ export class Game {
       this.contractCards = [0, 1, 2].map((i) => {
         const bossId = pool[i % pool.length] as BossId;
         const variant = encounterVariant(this.settings.difficulty,
-          this.settings.mode === 'endless' && this.completedBossIds.has(bossId) ? 'brutal' : 'normal');
+          this.settings.mode === 'endless' ? this.nextEndlessForm(bossId) : 'normal');
         const card = {
           id: 'watch-' + this.encounter + '-' + i,
           ...classifiedContract(bossId, variant),
@@ -1011,7 +1021,7 @@ export class Game {
           this.healthForRoster(this.roster().length, card) /
           (this.bossDefinition(card).timer *
             this.modifier('timer') *
-            (variant === 'brutal' ? rule.brutal.deadlineMultiplier : 1) *
+            variantRules(variant).deadlineMultiplier *
             referenceDps *
             0.65);
         return card;
@@ -1062,6 +1072,7 @@ export class Game {
     }
     this.bossPrevious = { x: this.boss.x, y: this.boss.y };
     this.stepBoss();
+    this.variantPressure.step({now:this.combatTick,bossId:this.boss.id,variant:this.boss.variant,phase:this.boss.phase,bounds:this.arena.bounds,targets:this.aimTargets(),damageScale:this.bossDamageScale(),paused:!!this.accord||this.combatTick<this.boss.staggerUntil||(this.boss.id==='lantern-warden'&&!this.wardenPatrol.canCastAuxiliary),id:()=>this.id(),damage:(id,amount)=>this.hurtTarget(id,amount)});
     this.brutalVolley.release(this.combatTick,(point,angle,speed,damage,radius)=>
       this.emitShot('hostile',point.x,point.y,angle,speed,damage,radius));
     this.minions.step(
@@ -1279,8 +1290,8 @@ export class Game {
   }
   private emitBossShot(x:number,y:number,angle:number,speed:number,damage:number,radius=5) {
     const shot=this.emitShot('hostile',x,y,angle,speed,damage,radius);
-    if(shot && this.boss.variant==='brutal')
-      this.brutalVolley.capture(this.combatTick,{x,y},angle,speed,damage,radius,bossThreat(this.boss.id).level,()=>this.id());
+    if(shot && this.boss.variant!=='normal')
+      this.brutalVolley.capture(this.combatTick,{x,y},angle,speed,damage,radius,bossThreat(this.boss.id).level,()=>this.id(),this.boss.variant);
     return shot;
   }
   private emitShot(
@@ -1598,7 +1609,7 @@ export class Game {
   private bossPhases() {
     return encounterPhases(this.boss.id,this.boss.variant);
   }
-  private wardenContext(){return {now:this.combatTick,boss:this.boss,phase:this.boss.phase,brutal:this.boss.variant==='brutal',target:this.aimTargets()[0]??{x:800,y:700},radius:this.bossDefinition().radius,obstacles:this.obstacles,id:()=>this.id()};}
+  private wardenContext(){return {now:this.combatTick,boss:this.boss,phase:this.boss.phase,brutal:this.boss.variant!=='normal',target:this.aimTargets()[0]??{x:800,y:700},radius:this.bossDefinition().radius,obstacles:this.obstacles,id:()=>this.id()};}
   private resetWarden() {
     this.signatures=[];this.wardenPatrol.clear();this.wardenHitAt.clear();
     if(this.boss.id!=='lantern-warden')return;
@@ -1615,7 +1626,7 @@ export class Game {
       threatPressure(this.boss.id).damage *
       this.modifier('bossDamage') *
       (1 + cycle * rule.endless.damageGrowthPerCycle) *
-      (this.boss.variant === 'brutal' ? rule.brutal.damageMultiplier : 1)
+      variantRules(this.boss.variant).damageMultiplier
     );
   }
   private stepWarden() {
@@ -1760,7 +1771,7 @@ export class Game {
           kind: 'ordinary',
           ...point,
           speed,
-          health: health * (this.boss.variant === 'brutal' ? 2 : 1),
+          health: health * (this.boss.variant !== 'normal' ? 2 : 1),
           damage,
           radius: 12,
           lifeSeconds: 45,
@@ -1773,7 +1784,8 @@ export class Game {
       targets: this.roster().filter((p) => p.status === 'active'),
       aimTargets: this.aimTargets(),
       damageScale: this.bossDamageScale(),
-      brutal: this.boss.variant === 'brutal',
+      brutal: this.boss.variant !== 'normal',
+      projectileMultiplier:variantRules(this.boss.variant).projectileMultiplier,
       phase: bossPatternPhase(this.boss.id,this.boss.variant,this.boss.phase),
       id: () => this.id(),
       damage: (id, amount) => {
@@ -1788,7 +1800,7 @@ export class Game {
           goalX: goal.x,
           goalY: goal.y,
           speed,
-          health: health * (this.boss.variant === 'brutal' ? 2 : 1),
+          health: health * (this.boss.variant !== 'normal' ? 2 : 1),
           damage,
           radius: 12,
           lifeSeconds: 30,
@@ -1810,7 +1822,7 @@ export class Game {
           now +
           ticks(
             1.5 +
-              (this.boss.variant === 'brutal' &&
+              (this.boss.variant !== 'normal' &&
               bossPatternPhase(this.boss.id,this.boss.variant,this.boss.phase) === 3 &&
               'comboOffsetSeconds' in attack
                 ? Number(attack.comboOffsetSeconds)
@@ -1819,7 +1831,8 @@ export class Game {
       );
       this.rescaleDepartures();
       this.resetWarden();
-      this.director.reset(this.boss.id, this.boss.variant === 'brutal');
+      this.director.reset(this.boss.id, this.boss.variant !== 'normal');
+      this.variantPressure.reset(now);
       this.brutalVolley.clear();
       const assist = phaseShieldBreak(this.settings.difficulty,this.boss.variant);
       if (this.boss.id !== 'lantern-warden') {
@@ -1857,7 +1870,7 @@ export class Game {
         this.warnings.length = 0;
         for (let i = this.fields.length - 1; i >= 0; i--)
           if (this.fields[i].owner === 'hostile') this.fields.splice(i, 1);
-        this.director.reset(this.boss.id, this.boss.variant === 'brutal');
+        this.director.reset(this.boss.id, this.boss.variant !== 'normal');
         this.minions.clear();
         this.boss.castAt = this.boss.castReleaseAt = this.boss.castEndsAt = 0;
         this.boss.staggerUntil = now + ticks(4);
@@ -2217,6 +2230,7 @@ export class Game {
   }
   private clearShots() {
     this.brutalVolley.clear();
+    this.variantPressure.clear();
     for (const s of this.shots.values()) this.removeShot(s);
   }
   private stepShots() {
@@ -2444,6 +2458,7 @@ export class Game {
       extensionParticipants: [...this.extensionParticipants],
       campaignBank: this.campaignBank ? { ...this.campaignBank } : null,
       completedBossIds: [...this.completedBossIds],
+      completedBossForms: Object.fromEntries(this.completedBossForms),
       rng: this.rng.state >>> 0,
       nextId: this.nextId,
       selectedContract: { ...this.selectedContract },
@@ -2571,6 +2586,8 @@ export class Game {
     )
       throw Error('invalidBossHistory');
     for (const id of save.completedBossIds) g.completedBossIds.add(id as BossId);
+    if(!save.completedBossForms || typeof save.completedBossForms!=='object' || Array.isArray(save.completedBossForms) || Object.keys(save.completedBossForms).length>implementedBossIds.length || Object.entries(save.completedBossForms).some(([id,form])=>!g.completedBossIds.has(id as BossId)||!['normal','brutal','crazed'].includes(form)))throw Error('invalidBossHistory');
+    for(const [id,form] of Object.entries(save.completedBossForms))g.completedBossForms.set(id as BossId,form);
     if (
       !p ||
       !validProgress(p.progress, save.encounter) ||
@@ -2665,7 +2682,7 @@ export class Game {
       (c.subtier === undefined || int(c.subtier, -2, 2)) &&
       finite(c.bounty, 1, 3) &&
       implementedBossIds.includes(c.bossId as BossId) &&
-      (c.variant === undefined || ['normal', 'brutal'].includes(c.variant)) &&
+      (c.variant === undefined || ['normal', 'brutal', 'crazed'].includes(c.variant)) &&
       finite(c.recommendedRating, 0, 1000000) &&
       c.threat === bossThreat(c.bossId!).level &&
       (c.subtier === undefined || c.subtier === bossThreat(c.bossId!).subtier);
@@ -2762,6 +2779,7 @@ export class Game {
       extensionParticipants: [...this.extensionParticipants],
       campaignBank: this.campaignBank ? { ...this.campaignBank } : null,
       completedBossIds: [...this.completedBossIds],
+      completedBossForms: Object.fromEntries(this.completedBossForms),
       peakPlayers: this.peakPlayers,
       rng: this.rng.state >>> 0,
       nextId: this.nextId,
@@ -2862,6 +2880,7 @@ export class Game {
     g.campaignBank = base.campaignBank ? { ...base.campaignBank } : null;
     g.timeouts = base.timeouts;
     for (const id of base.completedBossIds) g.completedBossIds.add(id);
+    for(const [id,form] of base.completedBossForms)g.completedBossForms.set(id,form);
     g.rng.state = base.rng.state;
     g.selectedContract = { ...base.selectedContract };
     g.boss.id = base.selectedContract.bossId!;
@@ -2940,6 +2959,7 @@ export class Game {
       signatures: structuredClone(this.signatures),
       minions: this.minions.snapshot(),
       completedBossIds: [...this.completedBossIds],
+      completedBossForms: Object.fromEntries(this.completedBossForms),
       players: [...this.players.values()].map((p) => ({
         ...p,
         input: undefined,
