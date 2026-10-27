@@ -14915,14 +14915,46 @@
       "artBrief": "A corpse toll collector crouched behind one enormous coin wheel. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
       "signature": {
         "id": "tollkeeper",
-        "behavior": "Roll a coin wheel down a marked lane; it banks off one wall and returns along the reflected path.",
-        "counterplay": "Follow the two-segment floor arrow and cross after the wheel passes.",
+        "behavior": "Exact Fare warns a complete one-reflection wheel route. Closing Booth shifts position, rolls to a bank, stops, then locks a fresh return toward a survivor. Advanced forms warn side sprays at banks and add a third late leg.",
+        "counterplay": "Leave the locked wheel line and cross behind the passing wheel. In Closing Booth read the new arrow after its bank stop; it cannot track you after warning. Advanced side sprays warn separately from the wheel lane. Punish the clear recovery.",
         "parameters": {
           "wheelRadiusPx": 42,
           "wheelSpeedPxPerSecond": 260,
           "bounces": 1,
           "warningSeconds": 1.2,
-          "cycleSeconds": 7
+          "cycleSeconds": 7,
+          "bankedReturn": {
+            "wheelRadius": 42,
+            "wheelSpeed": 260,
+            "lateSpeedFactor": 1.07,
+            "wheelDamage": 15,
+            "warningSeconds": 1.2,
+            "contactSeconds": 0.5,
+            "patrolDistance": 168,
+            "patrolSpeed": 78,
+            "patrolWarningSeconds": 0.7,
+            "normalLegs": 2,
+            "advancedLateLegs": 3,
+            "recoverySeconds": [
+              0.8,
+              1.1
+            ],
+            "advancedRecoverySeconds": [
+              1.1,
+              1.4
+            ],
+            "betweenRoutesSeconds": 1.5,
+            "spokesPerWing": [
+              4,
+              6
+            ],
+            "spokeHalfGap": 0.4,
+            "spokeWingArc": 0.55,
+            "spokeSpeed": 190,
+            "spokeDamage": 7,
+            "spokeRadius": 5,
+            "bankReleaseCueSeconds": 0.2
+          }
         }
       },
       "arenaIds": [
@@ -14961,7 +14993,11 @@
               "telegraph": 1
             }
           ],
-          "patternPhase": 0
+          "patternPhase": 0,
+          "phaseNameKey": "boss.tollkeeper.phase.0",
+          "relocatesBeforeWheel": false,
+          "reaimsAtBank": false,
+          "wheelLegs": 2
         },
         {
           "healthThreshold": 0.5,
@@ -14984,7 +15020,11 @@
               "telegraph": 1
             }
           ],
-          "patternPhase": 2
+          "patternPhase": 2,
+          "phaseNameKey": "boss.tollkeeper.phase.1",
+          "relocatesBeforeWheel": true,
+          "reaimsAtBank": true,
+          "wheelLegs": 2
         }
       ],
       "variants": {
@@ -15026,7 +15066,11 @@
                   "comboOffsetSeconds": 0
                 }
               ],
-              "patternPhase": 0
+              "patternPhase": 0,
+              "phaseNameKey": "boss.tollkeeper.phase.0",
+              "relocatesBeforeWheel": false,
+              "reaimsAtBank": false,
+              "wheelLegs": 2
             },
             {
               "healthThreshold": 0.5,
@@ -15052,7 +15096,11 @@
                   "comboOffsetSeconds": 1.25
                 }
               ],
-              "patternPhase": 3
+              "patternPhase": 3,
+              "phaseNameKey": "boss.tollkeeper.phase.1",
+              "relocatesBeforeWheel": true,
+              "reaimsAtBank": true,
+              "wheelLegs": 3
             }
           ]
         },
@@ -15088,7 +15136,11 @@
                   "comboOffsetSeconds": 0
                 }
               ],
-              "patternPhase": 0
+              "patternPhase": 0,
+              "phaseNameKey": "boss.tollkeeper.phase.0",
+              "relocatesBeforeWheel": false,
+              "reaimsAtBank": false,
+              "wheelLegs": 2
             },
             {
               "healthThreshold": 0.5,
@@ -15114,7 +15166,11 @@
                   "comboOffsetSeconds": 1.25
                 }
               ],
-              "patternPhase": 3
+              "patternPhase": 3,
+              "phaseNameKey": "boss.tollkeeper.phase.1",
+              "relocatesBeforeWheel": true,
+              "reaimsAtBank": true,
+              "wheelLegs": 3
             }
           ],
           "additionalPatterns": [
@@ -15688,8 +15744,8 @@
       "artBrief": "A thin undead clerk carrying a broad folded ledger and red sealing stamp. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
       "signature": {
         "id": "quarantine-clerk",
-        "behavior": "Reachable arena-relative stamp centers replace the fixed fallback grid. Intake reopens stamp I; the late Appeal Circuit patrols first and reopens stamp III after its strike. Advanced late phases add a fresh fully warned three-stamp appeal at distinct positions. Each reopening precedes a locked, fully warned volley from the other two seals; the green seal visibly absorbs shots at its rim.",
-        "counterplay": "Read the ordered marks and the notched future-safe seal. Wait for its green interior before entering. Follow the new ground origin after a late patrol; advanced appeals warn a fresh set while the old safe seal expires. The shield outline and closing rim identify temporary shelter from the two red seals; use it to keep firing, or dodge the warned fan in open ground.",
+        "behavior": "Reachable arena-relative stamp centers replace the fixed fallback grid. Intake reopens stamp I; the late Appeal Circuit patrols first and reopens its final stamp after its strike (III/V/X by form). Standard uses three red/green stamps, Brutal five including doubled-damage purple stamps, and Crazed ten including black current-health curses. Advanced late appeals replace the expired set after a gap, keeping the live field capped at five/ten. Each reopening precedes a locked, fully warned volley from two/three/four marked origins by form; the green seal visibly absorbs shots at its rim.",
+        "counterplay": "Read the ordered marks and the notched future-safe seal. Wait for its green interior before entering. Follow the new ground origin after a late patrol; advanced appeals warn a fresh set after the old field expires. Purple stamps hit twice as hard as red; black stamps remove 75% of current health once per seal activation, bypassing armor/shields but respecting invulnerability and green protection, leaving at least one health. Shape markings distinguish hazards. The shield outline and closing rim identify temporary shelter from marked volleys; use it to keep firing, or dodge the warned fan in open ground.",
         "parameters": {
           "zones": 3,
           "zoneRadiusPx": 82,
@@ -15699,6 +15755,62 @@
           "safeZoneIndex": 0,
           "appeal": {
             "stampRadius": 82,
+            "stampCounts": {
+              "normal": 3,
+              "brutal": 5,
+              "crazed": 10
+            },
+            "stampSeverities": {
+              "normal": [
+                "red",
+                "red",
+                "red"
+              ],
+              "brutal": [
+                "red",
+                "purple",
+                "red",
+                "purple",
+                "red"
+              ],
+              "crazed": [
+                "red",
+                "purple",
+                "red",
+                "black",
+                "purple",
+                "red",
+                "black",
+                "purple",
+                "red",
+                "red"
+              ]
+            },
+            "volleyOrigins": {
+              "normal": 2,
+              "brutal": 3,
+              "crazed": 4
+            },
+            "stampRadii": {
+              "normal": 82,
+              "brutal": 72,
+              "crazed": 58
+            },
+            "stampWarnings": {
+              "normal": 1.3,
+              "brutal": 1.5,
+              "crazed": 1.8
+            },
+            "stampSpacing": {
+              "normal": 0.65,
+              "brutal": 0.3,
+              "crazed": 0.18
+            },
+            "advancedSetGapSeconds": 0.35,
+            "advancedPreviousCenterGap": 64,
+            "purpleStampDamage": 10,
+            "blackCurrentHealthFraction": 0.75,
+            "blackMinimumHealth": 1,
             "stampClearance": 10,
             "stampSeparation": 20,
             "gridSpacing": 32,
@@ -15771,7 +15883,9 @@
           "patternPhase": 0,
           "phaseNameKey": "boss.quarantine-clerk.phase.0",
           "reopensStamp": 1,
-          "relocatesBeforeStamps": false
+          "relocatesBeforeStamps": false,
+          "stampCount": 3,
+          "stampRadius": 82
         },
         {
           "healthThreshold": 0.5,
@@ -15800,7 +15914,9 @@
           "patternPhase": 2,
           "phaseNameKey": "boss.quarantine-clerk.phase.1",
           "reopensStamp": 3,
-          "relocatesBeforeStamps": true
+          "relocatesBeforeStamps": true,
+          "stampCount": 3,
+          "stampRadius": 82
         }
       ],
       "variants": {
@@ -15848,7 +15964,9 @@
               "patternPhase": 0,
               "phaseNameKey": "boss.quarantine-clerk.phase.0",
               "reopensStamp": 1,
-              "relocatesBeforeStamps": false
+              "relocatesBeforeStamps": false,
+              "stampCount": 5,
+              "stampRadius": 72
             },
             {
               "healthThreshold": 0.5,
@@ -15879,8 +15997,10 @@
               ],
               "patternPhase": 3,
               "phaseNameKey": "boss.quarantine-clerk.phase.1",
-              "reopensStamp": 3,
-              "relocatesBeforeStamps": true
+              "reopensStamp": 5,
+              "relocatesBeforeStamps": true,
+              "stampCount": 5,
+              "stampRadius": 72
             }
           ]
         },
@@ -15922,7 +16042,9 @@
               "patternPhase": 0,
               "phaseNameKey": "boss.quarantine-clerk.phase.0",
               "reopensStamp": 1,
-              "relocatesBeforeStamps": false
+              "relocatesBeforeStamps": false,
+              "stampCount": 10,
+              "stampRadius": 58
             },
             {
               "healthThreshold": 0.5,
@@ -15953,8 +16075,10 @@
               ],
               "patternPhase": 3,
               "phaseNameKey": "boss.quarantine-clerk.phase.1",
-              "reopensStamp": 3,
-              "relocatesBeforeStamps": true
+              "reopensStamp": 10,
+              "relocatesBeforeStamps": true,
+              "stampCount": 10,
+              "stampRadius": 58
             }
           ],
           "additionalPatterns": [

@@ -63,12 +63,12 @@ In current source, choose **New Run → Soldier → Quarantine Run → Gatehouse
 | Easy | Three circles, 3 s; Standard only | 50% health | Full | Selected boss form |
 | Normal | Off | 25% health | Full | Selected boss form |
 | Hard | Off | Disabled | Half, rounded down | Selected boss form |
-| Insane | Off | Disabled | None | Selected boss form |
-| Hellish | Off | Disabled | None | Marked lava; every boss Brutal |
+| Insane | Off | Disabled | None | Every boss Brutal |
+| Hellish | Off | Disabled | None | Marked lava; every boss Crazed |
 
-Brutal disables the phase shield event at every difficulty. Revival includes solo, teammates, Medic and supplies; full recovery between encounters remains. Boundary walls and temporary boss mechanics remain. Difficulty cards and final review display these rules in all fifteen locales. Hellish pits have a three-second opening tell and deal 24 contact damage per second in half-second intervals. Hellish effective boss health is 2.4× Normal after its forced Brutal multiplier. [Exact rules and verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/DIFFICULTY_AND_PHASES.md).
+Both Brutal and Crazed disable the phase shield event at every difficulty. Revival includes solo, teammates, Medic and supplies; full recovery between encounters remains. Boundary walls and temporary boss mechanics remain. Difficulty cards and final review display these rules in all fifteen locales. Hellish pits have a three-second opening tell and deal 24 contact damage per second in half-second intervals. Hellish effective boss health is 2.4× Normal after its forced Crazed multiplier. [Exact rules and verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/DIFFICULTY_AND_PHASES.md).
 
-Hellish locks the Solo form selector to Brutal. Other global difficulties retain the selected opener form.
+Insane fixes the form selector to Brutal; Hellish fixes Crazed. Lower global difficulties retain the selected opener form for rehearsal.
 
 [Latest Baby/Easy assistance follow-up](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/ASSIST_LIMITS.md): Normal revival is 25%; Baby/Easy circles are six/three, channels two/three seconds, and Baby has two extra actual cover props on every map. Source/prediction/prop geometry agree; human/rendered balance review remains open.
 

@@ -1,3 +1,4 @@
+import {tollkeeperPhaseName,tollkeeperPhaseHint} from './tollkeeper-text.ts';
 import {clerkPhaseName,clerkPhaseHint} from './clerk-text.ts';
 import {ratcatcherPhaseName,ratcatcherPhaseHint} from './ratcatcher-text.ts';
 import {courierPhaseName,courierPhaseHint} from './courier-text.ts';
@@ -346,7 +347,7 @@ function update(view: View) {
   $('boss-form').textContent=t(view.boss.variant==='crazed'?'ui.variantCrazed':view.boss.variant==='brutal'?'ui.variantBrutal':'ui.variantNormal');
   $('boss-phase-label').textContent=t('ui.phaseCount',{number:number(view.boss.phase+1),total:number(encounterPhases(view.boss.id,view.boss.variant).length)});
   $('boss-phase-name').textContent=view.boss.id==='constable'?constablePhaseName(bossPatternPhase(view.boss.id,view.boss.variant,view.boss.phase),locale):
-    view.boss.id==='quarantine-clerk'?clerkPhaseName(view.boss.phase,locale):view.boss.id==='ratcatcher'?ratcatcherPhaseName(view.boss.phase,locale):view.boss.id==='courier'?courierPhaseName(view.boss.phase,locale):smallWakesPhaseName(view.boss.id,view.boss.phase,locale)??(view.boss.id==='lantern-warden'?wardenPhaseName(view.boss.phase,locale):
+    view.boss.id==='tollkeeper'?tollkeeperPhaseName(view.boss.phase,locale):view.boss.id==='quarantine-clerk'?clerkPhaseName(view.boss.phase,locale):view.boss.id==='ratcatcher'?ratcatcherPhaseName(view.boss.phase,locale):view.boss.id==='courier'?courierPhaseName(view.boss.phase,locale):smallWakesPhaseName(view.boss.id,view.boss.phase,locale)??(view.boss.id==='lantern-warden'?wardenPhaseName(view.boss.phase,locale):
     ['ashen-usher','brass-toad','ragpicker-kite'].includes(view.boss.id)?t(`boss.${view.boss.id}.phase.${Math.min(2,bossPatternPhase(view.boss.id,view.boss.variant,view.boss.phase))}`):'');
   const hp = $<HTMLProgressElement>('health');
   hp.max = p.maxHealth;
@@ -438,7 +439,7 @@ function update(view: View) {
   const noteText =
     view.boss.id === 'constable'
       ? constablePhaseHint(bossPatternPhase(view.boss.id,view.boss.variant,view.boss.phase), view.boss.variant, locale)
-      : view.boss.id==='quarantine-clerk'?clerkPhaseHint(view.boss.phase,view.boss.variant,locale):view.boss.id==='ratcatcher'?ratcatcherPhaseHint(view.boss.phase,view.boss.variant,locale):view.boss.id==='courier'?courierPhaseHint(view.boss.phase,view.boss.variant,locale):view.boss.id==='lantern-warden'?wardenPhaseHint(view.boss.phase,view.boss.variant,locale):smallWakesPhaseHint(view.boss.id,view.boss.phase,view.boss.variant,locale);
+      : view.boss.id==='tollkeeper'?tollkeeperPhaseHint(view.boss.phase,view.boss.variant,locale):view.boss.id==='quarantine-clerk'?clerkPhaseHint(view.boss.phase,view.boss.variant,locale):view.boss.id==='ratcatcher'?ratcatcherPhaseHint(view.boss.phase,view.boss.variant,locale):view.boss.id==='courier'?courierPhaseHint(view.boss.phase,view.boss.variant,locale):view.boss.id==='lantern-warden'?wardenPhaseHint(view.boss.phase,view.boss.variant,locale):smallWakesPhaseHint(view.boss.id,view.boss.phase,view.boss.variant,locale);
   const formHint=view.boss.variant==='crazed'?t('ui.crazedHelp'):'';
   const completeNote=[noteText,formHint].filter(Boolean).join(' ');
   phaseNote.hidden = !completeNote;

@@ -1,6 +1,6 @@
 {
   "updated": "2026-10-27",
-  "buildId": "2026.10.27-visible-shelter",
+  "buildId": "2026.10.27-banked-verdicts",
   "playableBosses": 66,
   "ordinaryBosses": 65,
   "secretBosses": 1,
@@ -16,17 +16,18 @@
       "id": "boss-quality",
       "label": "Existing-boss phase / mobility / Brutal quality passes",
       "target": 60,
-      "implemented": 5,
-      "remaining": 55,
+      "implemented": 6,
+      "remaining": 54,
       "humanAccepted": 0,
       "completedIds": [
         "constable",
         "lantern-warden",
         "courier",
         "ratcatcher",
-        "quarantine-clerk"
+        "quarantine-clerk",
+        "tollkeeper"
       ],
-      "status": "Constable, Warden, Courier, Ratcatcher and Clerk individual phase/mobility/advanced-form implementation passes complete; human acceptance remains open. Other 55 original-roster encounters await assessment/redesign."
+      "status": "Constable, Warden, Courier, Ratcatcher, Clerk and Tollkeeper individual phase/mobility/advanced-form implementation passes complete; human acceptance remains open. Other 54 original-roster encounters await assessment/redesign."
     },
     {
       "id": "class-abilities",
@@ -500,6 +501,7 @@
     }
   ],
   "latestHumanFeedback": [
+    "Human comparison on frozen 5190 liked the Clerk shelter purpose and rim effect. This is positive limited feedback, not final whole-boss acceptance. The requested follow-up uses 3/5/10 Standard/Brutal/Crazed seals, doubled-damage purple triangles and Crazed black skulls removing 75% of current health once per activation with a 1HP floor. Human comparison of the new field remains open.",
     "Human review of frozen 5189 found the Clerk seal order and later safe III clear enough, but the protective purpose was unclear. The old auxiliary fan waited until shelter expired. The follow-up now pairs each reopening with a fully warned fan from the two other seals and real rim interception cues; human comparison remains open.",
     "Keep the current boss instruction text visible in development previews so the user can inspect encounter behavior. Final-product requirement: remove automatic fight instructions except for an optional, default-off Baby-only setting. This is a recorded release gate, not a shipped toggle; learnable visual boss behavior remains required.",
     "Human comparison on frozen 5185: phase differences and Standard/Brutal difficulty are clearer, though these entry bosses remain easy. Large retreat corners let players disengage and reduce dash value. Requested smaller maps, a more atmospheric boss header, forced Insane Brutal, forced Hellish Crazed with purple/C treatment, higher projectile budgets and Standard-to-Brutal-to-Crazed Endless progression; phase sound and later bespoke animation were also requested.",
@@ -515,7 +517,7 @@
   "remainingReleaseWork": [
     "Before the finished product, remove automatic combat instruction paragraphs; expose them only through an optional default-off Baby-only setting. Keep instructions visible during current development testing, as explicitly requested. Teach mechanics through warned behavior and visible consequences, then obtain human acceptance.",
     "Create and verify 85 additional ordinary boss identities, with distinct mechanics, art and individual original music; the target is at least 150 ordinary plus secrets.",
-    "Assess or redesign the remaining 55 existing boss encounters for distinct phases, meaningful pressure and separate Brutal behavior.",
+    "Assess or redesign the remaining 54 existing boss encounters for distinct phases, meaningful pressure and separate Brutal behavior.",
     "Review and tune the 21 implemented ability-changing upgrades and optional skill map on actual rendered/human/device/native-language surfaces.",
     "Complete remaining boss special/action art, class special-ability art and rendered animation transitions.",
     "Complete final human balance, music/listening, native-language and physical-device acceptance.",
@@ -523,5 +525,5 @@
     "Complete deployed rankings and durable recovery, including participant credentials, entropy histories/paging and hosted acceptance.",
     "Prepare and verify a new coordinated Windows/browser release; existing immutable Windows and older public builds remain separate."
   ],
-  "semanticInputsSha256": "fde2f778a620191e2a265ae97dfa220fd2cb6aa367ed7f611e7d23540c51913b"
+  "semanticInputsSha256": "4e0f48578033208ac3e680681206a8e7212e1b3769c204e56fee10f9e966a560"
 }

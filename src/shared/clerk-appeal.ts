@@ -12,6 +12,7 @@ import type { SignatureContext, SignatureAttack } from "./boss-director.ts";
 export const clerkAppealRules = tuning;
 export type ClerkStamp = {
   kind: "stamp";
+  severity: "red" | "purple" | "black";
   id: number;
   x: number;
   y: number;
@@ -64,6 +65,9 @@ export class ClerkAppeal {
   private stage: "idle" | "patrol" | "stamps" | "rest" = "idle";
   private phase = 0;
   private advanced = false;
+  private variant: "normal" | "brutal" | "crazed" = "normal";
+  private previousCenters: Vec[] = [];
+  private blackContacts = new Map<number, Set<string>>();
   private cycle = 0;
   private batch = 0;
   private repeatAt = 0;
@@ -83,6 +87,8 @@ export class ClerkAppeal {
     this.repeatAt = 0;
     this.attack = null;
     this.contacts.clear();
+    this.blackContacts.clear();
+    this.previousCenters = [];
     this.nextSignatureAt = 0;
   }
   get busy() {
@@ -124,7 +130,8 @@ export class ClerkAppeal {
   cast(c: SignatureContext, target: Vec, attack: SignatureAttack) {
     if (this.busy || c.tick < this.nextSignatureAt) return false;
     this.phase = c.phase > 0 ? 1 : 0;
-    this.advanced = c.brutal;
+    this.variant = c.variant ?? (c.brutal ? "brutal" : "normal");
+    this.advanced = this.variant !== "normal";
     this.attack = { ...attack };
     this.batch = 0;
     this.cycle++;
@@ -200,15 +207,22 @@ export class ClerkAppeal {
     );
   }
   private beginBatch(c: SignatureContext, target: Vec) {
+    const count = tuning.stampCounts[this.variant],
+      radius = tuning.stampRadii[this.variant];
     const bounds = c.bounds ?? { x: 0, y: 0, width: 1600, height: 1000 },
       centers = clerkStampCenters(
         bounds,
         c.obstacles,
         target,
         c.hazardCircles ?? [],
-        this.batch ? this.stamps : [],
+        this.batch ? this.previousCenters : [],
+        radius,
+        count,
+        this.advanced
+          ? tuning.advancedPreviousCenterGap
+          : radius * 2 + tuning.stampSeparation,
       );
-    if (centers.length !== 3) {
+    if (centers.length !== count) {
       this.stage = "idle";
       this.attack = null;
       this.patrol = null;
@@ -217,30 +231,46 @@ export class ClerkAppeal {
     }
     const first =
         c.tick +
-        ticks(Math.max(tuning.warningSeconds, this.attack?.telegraph ?? 0)),
-      spacing = ticks(tuning.spacingSeconds),
-      last = first + spacing * 2,
-      safeIndex = this.phase ? 2 : 0,
+        ticks(
+          Math.max(
+            tuning.stampWarnings[this.variant],
+            this.attack?.telegraph ?? 0,
+          ),
+        ),
+      spacing = ticks(tuning.stampSpacing[this.variant]),
+      last = first + spacing * (count - 1),
+      safeIndex = this.phase ? count - 1 : 0,
       safeAt = last + (this.phase ? ticks(tuning.lateReopenDelaySeconds) : 0);
     for (const [index, p] of centers.entries())
       this.stamps.push({
         kind: "stamp",
+        severity: tuning.stampSeverities[this.variant][
+          index
+        ] as ClerkStamp["severity"],
         id: c.id(),
         ...p,
-        radius: tuning.stampRadius,
+        radius,
         index: index + 1,
         at: first + spacing * index,
         until:
-          (index === safeIndex ? safeAt : first + spacing * index) +
-          ticks(tuning.activeSeconds),
+          (this.advanced || index === safeIndex
+            ? safeAt
+            : first + spacing * index) + ticks(tuning.activeSeconds),
         safeAt: index === safeIndex ? safeAt : 0,
       });
     // The two red seals fire toward the green shelter. Warning origins and angles
     // lock with the stamps; reopening precedes release, so its purpose is visible.
     const shelter = centers[safeIndex],
       releaseAt = safeAt + ticks(tuning.volleyAfterOpenSeconds);
+    let sourceCount = 0;
     for (const [index, origin] of centers.entries()) {
-      if (index === safeIndex) continue;
+      if (
+        index === safeIndex ||
+        tuning.stampSeverities[this.variant][index] === "black" ||
+        sourceCount >= tuning.volleyOrigins[this.variant]
+      )
+        continue;
+      sourceCount++;
       const aim = Math.atan2(shelter.y - origin.y, shelter.x - origin.x);
       this.volleys.push({
         released: false,
@@ -266,8 +296,12 @@ export class ClerkAppeal {
         },
       });
     }
+    this.previousCenters = centers.map((p) => ({ x: p.x, y: p.y }));
     this.batch++;
-    this.repeatAt = this.advanced && this.phase && this.batch === 1 ? last : 0;
+    this.repeatAt =
+      this.advanced && this.phase && this.batch === 1
+        ? safeAt + ticks(tuning.activeSeconds + tuning.advancedSetGapSeconds)
+        : 0;
     this.stage = "stamps";
     this.patrol = null;
     return true;
@@ -318,24 +352,46 @@ export class ClerkAppeal {
     }
     this.volleys = this.volleys.filter(({ cue }) => c.tick < cue.until);
     this.blocks = this.blocks.filter((b) => c.tick < b.until);
-    for (const p of c.targets)
-      if (
-        c.tick >= (this.contacts.get(p.id) ?? 0) &&
-        !this.isSafe(p, c.tick) &&
-        this.stamps.some(
-          (s) =>
-            c.tick >= s.at &&
-            c.tick < s.until &&
-            !(s.safeAt > 0 && c.tick >= s.safeAt) &&
-            segmentCircle({ x: p.oldX, y: p.oldY }, p, s, s.radius + 9) !==
-              null,
+    for (const p of c.targets) {
+      if (c.tick < (this.contacts.get(p.id) ?? 0) || this.isSafe(p, c.tick))
+        continue;
+      const hit = this.stamps.find(
+        (s) =>
+          c.tick >= s.at &&
+          c.tick < s.until &&
+          !(s.safeAt > 0 && c.tick >= s.safeAt) &&
+          !(
+            s.severity === "black" && this.blackContacts.get(s.id)?.has(p.id)
+          ) &&
+          segmentCircle({ x: p.oldX, y: p.oldY }, p, s, s.radius + 9) !== null,
+      );
+      if (!hit) continue;
+      if (hit.severity === "black") {
+        if (
+          !c.damageCurrentHealth?.(
+            p.id,
+            tuning.blackCurrentHealthFraction,
+            tuning.blackMinimumHealth,
+          )
         )
-      ) {
-        c.damage(p.id, tuning.stampDamage * c.damageScale);
-        this.contacts.set(p.id, c.tick + ticks(tuning.contactSeconds));
-      }
+          continue;
+        let hitPlayers = this.blackContacts.get(hit.id);
+        if (!hitPlayers)
+          this.blackContacts.set(hit.id, (hitPlayers = new Set()));
+        hitPlayers.add(p.id);
+      } else
+        c.damage(
+          p.id,
+          (hit.severity === "purple"
+            ? tuning.purpleStampDamage
+            : tuning.stampDamage) * c.damageScale,
+        );
+      this.contacts.set(p.id, c.tick + ticks(tuning.contactSeconds));
+    }
     this.stamps = this.stamps.filter((s) => c.tick < s.until);
-    if (this.stage === "stamps" && !this.stamps.length) {
+    for (const id of this.blackContacts.keys())
+      if (!this.stamps.some((s) => s.id === id)) this.blackContacts.delete(id);
+    if (this.stage === "stamps" && !this.stamps.length && !this.repeatAt) {
       this.stage = "rest";
       this.restUntil = c.tick + ticks(tuning.recoverySeconds);
     }

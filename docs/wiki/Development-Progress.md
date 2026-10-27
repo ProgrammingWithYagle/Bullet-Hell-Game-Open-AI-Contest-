@@ -1,13 +1,13 @@
 # Development progress
 
-Updated 2026-10-27 for **2026.10.27-visible-shelter**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
+Updated 2026-10-27 for **2026.10.27-banked-verdicts**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
 
 66 playable identities: 65 ordinary and 1 secret. Three ordinary bosses in every one of fifty subtiers requires 150 ordinary identities, plus secrets; 85 additional ordinary bosses remain.
 
 | Area | Implemented | Work remaining | Review status |
 | --- | --- | --- | --- |
 | New ordinary bosses | 65 / 150 | 85 new identities | 0 unintegrated art-only concepts; Early Watch and Small Wakes integrations are implemented |
-| Existing-boss phase / mobility / Brutal quality passes | 5 / 60 | 55 | Constable, Warden, Courier, Ratcatcher and Clerk individual phase/mobility/advanced-form implementation passes complete; human acceptance remains open. Other 55 original-roster encounters await assessment/redesign. |
+| Existing-boss phase / mobility / Brutal quality passes | 6 / 60 | 54 | Constable, Warden, Courier, Ratcatcher, Clerk and Tollkeeper individual phase/mobility/advanced-form implementation passes complete; human acceptance remains open. Other 54 original-roster encounters await assessment/redesign. |
 | Ability-changing class-upgrade revamps | 7 / 7 | 0 | Three actual ability transformations per class (21 total) implemented at existing utility-path depth three, with shared authority, cues and fifteen-locale help. Rendered/human balance/device/native-language acceptance remains open. |
 | Optional large branching skill-tree view | 1 / 1 | 0 | Optional all-54-skill map implemented for all seven classes with settings toggle, bounded zoom, scrolling and keyboard navigation. Classic remains the default; rendered/human/device/native-language review remains open. |
 | Secondary-map topology revamps | 5 / 5 | 0 | Five distinct secondary layouts installed. Four spacious maps now have compact real geometry; Ossuary/Crown routes retain their size. Difficulty cover/lava, movement and prediction remain shared. Human 5185 feedback motivated the compact pass; its rendered/human/device comparison remains open. |
@@ -18,6 +18,7 @@ Updated 2026-10-27 for **2026.10.27-visible-shelter**. These counts track specif
 
 ## Latest human feedback
 
+- Human comparison on frozen 5190 liked the Clerk shelter purpose and rim effect. This is positive limited feedback, not final whole-boss acceptance. The requested follow-up uses 3/5/10 Standard/Brutal/Crazed seals, doubled-damage purple triangles and Crazed black skulls removing 75% of current health once per activation with a 1HP floor. Human comparison of the new field remains open.
 - Human review of frozen 5189 found the Clerk seal order and later safe III clear enough, but the protective purpose was unclear. The old auxiliary fan waited until shelter expired. The follow-up now pairs each reopening with a fully warned fan from the two other seals and real rim interception cues; human comparison remains open.
 - Keep the current boss instruction text visible in development previews so the user can inspect encounter behavior. Final-product requirement: remove automatic fight instructions except for an optional, default-off Baby-only setting. This is a recorded release gate, not a shipped toggle; learnable visual boss behavior remains required.
 - Human comparison on frozen 5185: phase differences and Standard/Brutal difficulty are clearer, though these entry bosses remain easy. Large retreat corners let players disengage and reduce dash value. Requested smaller maps, a more atmospheric boss header, forced Insane Brutal, forced Hellish Crazed with purple/C treatment, higher projectile budgets and Standard-to-Brutal-to-Crazed Endless progression; phase sound and later bespoke animation were also requested.
@@ -34,7 +35,7 @@ Updated 2026-10-27 for **2026.10.27-visible-shelter**. These counts track specif
 
 - Before the finished product, remove automatic combat instruction paragraphs; expose them only through an optional default-off Baby-only setting. Keep instructions visible during current development testing, as explicitly requested. Teach mechanics through warned behavior and visible consequences, then obtain human acceptance.
 - Create and verify 85 additional ordinary boss identities, with distinct mechanics, art and individual original music; the target is at least 150 ordinary plus secrets.
-- Assess or redesign the remaining 55 existing boss encounters for distinct phases, meaningful pressure and separate Brutal behavior.
+- Assess or redesign the remaining 54 existing boss encounters for distinct phases, meaningful pressure and separate Brutal behavior.
 - Review and tune the 21 implemented ability-changing upgrades and optional skill map on actual rendered/human/device/native-language surfaces.
 - Complete remaining boss special/action art, class special-ability art and rendered animation transitions.
 - Complete final human balance, music/listening, native-language and physical-device acceptance.
@@ -44,6 +45,6 @@ Updated 2026-10-27 for **2026.10.27-visible-shelter**. These counts track specif
 
 ## Count definitions
 
-Boss quality counts a completed implementation of the requested phase/mobility/Brutal pass, followed by separate human review. The other 55 existing encounters await assessment or redesign; they are already playable. Class revamps count the newly requested ability-changing upgrade pass, separate from the seven existing class kits and 378 skills. Map layout counts the five requested secondary-map topology revisions; their implementation is complete, while detailed new-layout human acceptance remains pending.
+Boss quality counts a completed implementation of the requested phase/mobility/Brutal pass, followed by separate human review. The other 54 existing encounters await assessment or redesign; they are already playable. Class revamps count the newly requested ability-changing upgrade pass, separate from the seven existing class kits and 378 skills. Map layout counts the five requested secondary-map topology revisions; their implementation is complete, while detailed new-layout human acceptance remains pending.
 
 Ashen Usher, Brass Toad, Ragpicker's Kite, Candle Snail, Cobble Crab and Mourning Kettle have shared-authority encounters, complete selected motion, original themes and fifteen-locale help. Their original art-only issue records remain unchanged. The structured ledger, derived counts, in-game journal summary and this page update together. Progress does not equal final balance, rendered, device, language or release acceptance.

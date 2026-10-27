@@ -1,3 +1,4 @@
+import { clerkVerdictMessages } from "./clerk-verdicts.mjs";
 // AI-authored. Native-language and rendered acceptance remain pending.
 const rows = {
   en: [
@@ -152,5 +153,6 @@ export function clerkAppealMessages(locale) {
     "boss.quarantine-clerk.phaseHint.1": d + " " + shelterHelp[locale],
     "boss.quarantine-clerk.brutalHelp": e,
     "boss.quarantine-clerk.description": f + " " + shelterHelp[locale],
+    ...clerkVerdictMessages(locale),
   };
 }

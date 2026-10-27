@@ -482,6 +482,25 @@ export class CombatScene extends Phaser.Scene {
         h.lineStyle(3,cue.crazed?0xe6caff:0xffd7a0,.95).strokeCircle(cue.x,cue.y,12+progress*10);
         continue;
       }
+      if (cue.kind === 'tollkeeper-patrol') {
+        h.lineStyle(2, 0xdbbf8e, .85).lineBetween(cue.x1, cue.y1, cue.x2, cue.y2);
+        h.lineStyle(3, 0xdbbf8e, 1).strokeRect(cue.x2 - 16, cue.y2 - 12, 32, 24);
+        h.lineBetween(cue.x2 - 23, cue.y2 + 17, cue.x2 + 23, cue.y2 + 17);
+        continue;
+      }
+      if (cue.kind === 'tollkeeper-bank') {
+        const progress = Math.max(0, Math.min(1, (now - cue.beganAt) / Math.max(1, cue.at - cue.beganAt))), ring: Phaser.Math.Vector2[] = [];
+        for (let n = 0; n <= 32; n++) {
+          const angle = -Math.PI / 2 + Math.PI * 2 * progress * n / 32;
+          ring.push(new Phaser.Math.Vector2(cue.x + Math.cos(angle) * 51, cue.y + Math.sin(angle) * 51));
+        }
+        h.lineStyle(4, 0xf2ca7e, .95).strokePoints(ring, false);
+        for (let n = 1; n <= cue.legs; n++)
+          h.lineStyle(2, 0xf2ca7e, n <= cue.leg ? 1 : .35).strokeCircle(cue.x + (n - (cue.legs + 1) / 2) * 15, cue.y - 68, 5);
+        for (const angle of cue.angles)
+          h.lineStyle(2, 0xf2ca7e, .7).lineBetween(cue.x + Math.cos(angle) * 48, cue.y + Math.sin(angle) * 48, cue.x + Math.cos(angle) * 225, cue.y + Math.sin(angle) * 225);
+        continue;
+      }
       if (cue.kind === 'clerk-volley') {
         if (now < cue.beganAt) continue;
         const progress = Math.max(0, Math.min(1, (now - cue.beganAt) / Math.max(1, cue.at - cue.beganAt))),
@@ -602,17 +621,31 @@ export class CombatScene extends Phaser.Scene {
       } else if (cue.kind === 'stamp') {
         const safe = cue.safeAt > 0 && now >= cue.safeAt,
           active = now >= cue.at;
-        const color = safe ? 0x9be6c9 : active ? 0xe77e61 : 0xe7c583;
-        h.fillStyle(color, safe ? 0.13 : active ? 0.23 : 0.07).fillCircle(cue.x, cue.y, cue.radius);
+        const severity = cue.severity ?? 'red',
+          color = safe ? 0x9be6c9 : severity === 'black' ? 0xe6d4ed : severity === 'purple' ? (active ? 0xbf63df : 0xd3a9e7) : active ? 0xe77e61 : 0xe7c583;
+        h.fillStyle(!safe && severity === 'black' ? 0x14101d : color, safe ? 0.13 : active ? (severity === 'black' ? .8 : .23) : .07).fillCircle(cue.x, cue.y, cue.radius);
         h.lineStyle(safe ? 5 : 3, color, 1).strokeCircle(cue.x, cue.y, cue.radius);
-        // Roman marks give the order without relying on color or font shaping.
-        for (let mark = 0; mark < cue.index; mark++)
-          h.lineStyle(4, color, 1).lineBetween(
-            cue.x + (mark - (cue.index - 1) / 2) * 12,
-            cue.y - 12,
-            cue.x + (mark - (cue.index - 1) / 2) * 12,
-            cue.y + 12,
-          );
+        // Roman order and severity silhouettes remain readable without color alone.
+        const roman = ['I','II','III','IV','V','VI','VII','VIII','IX','X'][cue.index - 1] ?? 'X';
+        for (let n = 0; n < roman.length; n++) {
+          const x = cue.x + (n - (roman.length - 1) / 2) * 13;
+          h.lineStyle(3, color, 1);
+          if (roman[n] === 'I') h.lineBetween(x, cue.y - 13, x, cue.y + 5);
+          if (roman[n] === 'V') h.lineBetween(x - 5, cue.y - 13, x, cue.y + 5).lineBetween(x, cue.y + 5, x + 5, cue.y - 13);
+          if (roman[n] === 'X') h.lineBetween(x - 5, cue.y - 13, x + 5, cue.y + 5).lineBetween(x + 5, cue.y - 13, x - 5, cue.y + 5);
+        }
+        if (!safe && severity === 'purple') {
+          const triangle = [[0,17],[-14,41],[14,41]].map(([x,y]) => new Phaser.Math.Vector2(cue.x+x,cue.y+y));
+          h.lineStyle(3,color,1).strokePoints(triangle,true);
+          h.lineBetween(cue.x-4,cue.y+28,cue.x-4,cue.y+35).lineBetween(cue.x+4,cue.y+28,cue.x+4,cue.y+35);
+        }
+        if (!safe && severity === 'black') {
+          const diamond = [[0,13],[-18,31],[0,49],[18,31]].map(([x,y]) => new Phaser.Math.Vector2(cue.x+x,cue.y+y));
+          h.lineStyle(3,color,1).strokePoints(diamond,true);
+          h.strokeCircle(cue.x,cue.y+28,8);
+          h.lineBetween(cue.x-4,cue.y+27,cue.x-2,cue.y+29).lineBetween(cue.x+2,cue.y+29,cue.x+4,cue.y+27);
+          h.lineBetween(cue.x-7,cue.y+39,cue.x+7,cue.y+43).lineBetween(cue.x-7,cue.y+43,cue.x+7,cue.y+39);
+        }
         if(cue.safeAt>0&&!safe)h.lineStyle(3,0xbddccb,.95).lineBetween(cue.x-16,cue.y+cue.radius-4,cue.x,cue.y+cue.radius+10).lineBetween(cue.x,cue.y+cue.radius+10,cue.x+16,cue.y+cue.radius-4);
         if (safe) {
           // Shield geometry and a retiring outer rim express protection and expiry.
@@ -648,7 +681,7 @@ export class CombatScene extends Phaser.Scene {
         }
         image
           .setPosition(cue.x, cue.y)
-          .setVisible(now >= cue.at)
+          .setVisible(now >= cue.at || cue.banked)
           .setRotation(this.reduceMotion ? 0 : cue.rotation);
         h.lineStyle(2, 0xe6bf72, 0.9).strokeCircle(cue.x, cue.y, cue.radius);
       } else if (cue.kind === 'chain') {

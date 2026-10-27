@@ -222,10 +222,16 @@ test('early bosses have two phases retaining stronger Brutal sacks/rats and the 
       brutal = encounter(id, true);
     assert.equal(brutal.boss.maxHealth, normal.boss.maxHealth * 2);
     brutal.boss.health = brutal.boss.maxHealth * 0.2;
-    let echoed = false;
+    let echoed = false, patrolId = 0;
+    const seenInCast = new Set<number>();
     for (let n = 0; n < 1700; n++) {
       brutal.step();
-      if (brutal.director.cues().filter((c) => c.kind === 'stamp').length === 6) echoed = true;
+      const cues = brutal.director.cues(), patrol = cues.find(c=>c.kind==='clerk-patrol');
+      if (patrol && patrol.id !== patrolId) { patrolId=patrol.id;seenInCast.clear(); }
+      const field = cues.filter(c=>c.kind==='stamp');
+      assert(field.length <= 5);
+      for (const stamp of field) seenInCast.add(stamp.id);
+      if (seenInCast.size >= 10) echoed = true;
     }
     assert.equal(brutal.boss.phase, 1);
     assert.equal(brutal.phase, 'combat');

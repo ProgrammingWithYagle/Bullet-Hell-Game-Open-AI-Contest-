@@ -62,6 +62,7 @@ export type BossCue =
     }
   | {
       kind: 'stamp';
+      severity?: 'red' | 'purple' | 'black';
       id: number;
       x: number;
       y: number;
@@ -84,6 +85,9 @@ type Lane = Extract<BossCue, { kind: 'charge' | 'scent' }>;
 type Stamp = Extract<BossCue, { kind: 'stamp' }>;
 export type SignatureContext = {
   paused?: boolean;
+  auxiliaryBusy?: boolean;
+  variant?: 'normal' | 'brutal' | 'crazed';
+  damageCurrentHealth?(id: string, fraction: number, minimumHealth: number): boolean;
   hazardCircles?: {x:number;y:number;radius:number}[];
   hurtBoss?(amount: number, sourceId?: string): void;
   emitControlled?(

@@ -100,14 +100,14 @@ function emit(g: Game, x: number, y: number, vx: number) {
   );
 }
 
-test("each Clerk reopening precedes two locked seven-shot fans with a full warning and no tracking", () => {
+test("each Clerk reopening precedes its form-specific locked seven-shot fans with a full warning and no tracking", () => {
   for (const phase of [0, 1])
     for (const advanced of [false, true]) {
       const f = fixture(phase, advanced),
         s = stamps(f.d),
         green = s.find((s) => s.safeAt > 0)!,
         v = volleys(f.d);
-      assert.equal(v.length, 2);
+      assert.equal(v.length, advanced ? 3 : 2);
       for (const w of v) {
         assert.equal(w.at - green.safeAt, 15);
         assert.equal(w.at - w.beganAt, 36);
@@ -131,10 +131,10 @@ test("each Clerk reopening precedes two locked seven-shot fans with a full warni
         );
       }
       f.step();
-      assert.equal(f.fired.length, 14);
+      assert.equal(f.fired.length, v.length * 7);
       assert(f.fired.every((s) => s.tick === v[0].at && s.damage === 8));
       for (let n = 0; n < 5; n++) f.step();
-      assert.equal(f.fired.length, 14);
+      assert.equal(f.fired.length, v.length * 7);
     }
 });
 
@@ -150,8 +150,8 @@ test("shelter fans and their isolated cue arrays remain bounded through advanced
     peak = Math.max(peak, volleys(f.d).length);
     assert(f.c.tick < 800);
   }
-  assert(peak <= 4);
-  assert.equal(f.fired.length, 28);
+  assert(peak <= 3);
+  assert.equal(f.fired.length, 42);
   assert.deepEqual(f.d.cues(), []);
   const paused = fixture(1, true);
   paused.c.paused = true;
@@ -271,7 +271,7 @@ test("only the known protocol24 local Practice/profile revision migrates while e
   old.protocolVersion = 24;
   old.contentRevision = revision;
   const after = Game.restoreOffline(old).offlineCheckpoint()!;
-  assert.equal(PROTOCOL, 25);
+  assert.equal(PROTOCOL, 26);
   assert.equal(after.contentRevision, CONTENT_REVISION);
   assert.deepEqual(after.player, save.player);
   assert.deepEqual(after.completedBossForms, save.completedBossForms);

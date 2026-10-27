@@ -1,3 +1,4 @@
+import {tollkeeperReturnMessages} from '../locales/source/tollkeeper-return.mjs';
 import {clerkAppealMessages} from '../locales/source/clerk-appeal.mjs';
 import {ratcatcherMusterMessages} from '../locales/source/ratcatcher-muster.mjs';
 import {courierRouteMessages} from '../locales/source/courier-route.mjs';
@@ -99,6 +100,7 @@ export function validateOne(document, canonical, content, locale) {
       ...Object.keys(courierRouteMessages('en')),
       ...Object.keys(ratcatcherMusterMessages('en')),
       ...Object.keys(clerkAppealMessages('en')),
+      ...Object.keys(tollkeeperReturnMessages('en')),
       ...Object.keys(classTalentMessages('en',content)),
       ...Object.keys(wardenMessages('en')),
       ...Object.keys(skillMapMessages('en')),
@@ -127,7 +129,7 @@ export function validateOne(document, canonical, content, locale) {
     if (!Object.hasOwn(messages,key)) fail(`missing feature coverage: ${key}`);
   }
   const expectedCategories = new Intl.PluralRules(locale).resolvedOptions().pluralCategories.slice().sort();
-  const expandedSource = {...smallWakesMessages(locale),...expansionMessages(locale), ...earlyWatchMessages(locale),...skillMapMessages(locale),...difficultyRuleMessages(locale),...classTalentMessages(locale,content),...wardenMessages(locale),...crazedHorizonMessages(locale),...courierRouteMessages(locale),...ratcatcherMusterMessages(locale),...clerkAppealMessages(locale)};
+  const expandedSource = {...smallWakesMessages(locale),...expansionMessages(locale), ...earlyWatchMessages(locale),...skillMapMessages(locale),...difficultyRuleMessages(locale),...classTalentMessages(locale,content),...wardenMessages(locale),...crazedHorizonMessages(locale),...courierRouteMessages(locale),...ratcatcherMusterMessages(locale),...clerkAppealMessages(locale),...tollkeeperReturnMessages(locale)};
   for (const [key,text] of Object.entries(recoveryMessages(locale))) {
     if (messages[key] !== text) fail(`recovery UI source mismatch at ${key}`);
   }

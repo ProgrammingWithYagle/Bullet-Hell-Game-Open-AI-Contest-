@@ -1,10 +1,10 @@
 # Bosses
 
-Clerk placement now finds three reachable clear seals instead of losing casts on secondary maps. Its late phase patrols before warning and reopens notched seal III after a delay. Advanced late phases warn three fresh appeal positions. Standard health, damage, deadline, grade and all assets remain. [Implementation](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/CLERK_APPEAL.md). Human acceptance remains open.
+Clerk uses three/five/ten reachable seals in Standard/Brutal/Crazed. Late patrols reopen notched III/V/X; purple triangles hit harder and Crazed black skulls take 75% of current health once per activation with a 1 HP floor. Full warnings, green shelter and distinct shape cues provide counterplay. [Implementation](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/BANKED_VERDICTS.md). New field balance/readability awaits human review.
 
 Ratcatcher changes from stationary Open Sack to a late Roving Muster. It marks a short patrol, stops, then warns new fixed scent lanes. Rats route around cover; advanced forms add one/two warned gapped whistle rings. The intrinsic sack cancels rat packs, not whistles. Health, damage, deadline, sixteen poses and the original score remain. [Implementation](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/RATCATCHER_MUSTER.md). Human review remains open.
 
-Carrion Courier now changes from one to two Standard deliveries at half health. Each leg warns from its actual previous stop; Brutal/Crazed add one leg and a fully warned split fan. Trails fade from the oldest end, with explicit recovery between routes. Its fixed1-- grade, health, damage, 28 poses and Undelivered theme remain. [Courier implementation](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/COURIER_ROUTE.md). Current original quality progress: 5/60 implemented, 55 remaining; human acceptance open.
+Carrion Courier now changes from one to two Standard deliveries at half health. Each leg warns from its actual previous stop; Brutal/Crazed add one leg and a fully warned split fan. Trails fade from the oldest end, with explicit recovery between routes. Its fixed1-- grade, health, damage, 28 poses and Undelivered theme remain. [Courier implementation](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/COURIER_ROUTE.md). Current original quality progress: 6/60 implemented, 54 remaining; human acceptance open.
 
 Sixty-six bosses are executable in the current source. Each has its own signature, phases, Standard/Brutal/Crazed forms, presentation and music. A signature table describes practical counterplay; supplemental attacks still require ordinary bullet-hell movement.
 
@@ -31,7 +31,7 @@ Brutal ordinary projectile budgets are 2.5x Standard; Crazed is 7.5x Standard, t
 | Carrion Courier | 1-- | Leave the locked charge line and its damaging trail; punish the recovery. |
 | Ratcatcher | 1- | Shoot the breakable sack to stop replenishment; ordinary rat packs are bounded. |
 | Quarantine Clerk | 1 | Read the ordered stamps, then use the reopened safe interior. |
-| The Tollkeeper | 1++ | Avoid the locked two-segment wheel route; it reflects once and uses swept contact. |
+| The Tollkeeper | 1++ | Leave each wheel arrow; read the fresh return after its wall stop and punish recovery. |
 | Chain Marshal | 2- | Destroy either 90-HP chain anchor to remove its sweep; Brutal doubles anchor health. |
 | Gate Widow | 2 | Use the one open shutter lane; the other two physically close and block shots. |
 | Black Ambulance | 2+ | Sidestep the locked charge; the driver is exposed for three seconds afterward and takes bonus damage. |
@@ -265,7 +265,7 @@ Candle Snail **1--**, Cobble Crab **1-** and Mourning Kettle **1** bring the ros
 | Cobble Crab | Grate Clamp becomes alternating double Cross Streets closures. Exit the marked jaws or break their linked finite anchor. The body scuttles sideways. | Independent second anchor/closure and additional doubled volley. |
 | Mourning Kettle | Pressure Pour becomes two staggered Last Service lanes with a cold center. Sidestep steam, then crossing beads, or break a linked valve. The body waddles. | Delayed rear pour and real doubled bead waves. |
 
-Finite anchors/valves are individual boss weak points, separate from the global phase-circle shield event. That event remains Baby/Easy Standard only, absent on Normal+ and all Brutal. Already emitted projectiles and their warned repeat waves remain hazards when an object breaks. Hellish forces every new encounter Brutal and retains warned lava.
+Finite anchors/valves are individual boss weak points, separate from the global phase-circle shield event. That event remains Baby/Easy Standard only, absent on Normal+ and all advanced forms. Already emitted projectiles and their warned repeat waves remain hazards when an object breaks. Hellish forces every new encounter Crazed and retains warned lava.
 
 ![Candle Snail: original static identity reference](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/small-wakes-candle-snail.png)
 
@@ -277,6 +277,12 @@ Finite anchors/valves are individual boss weak points, separate from the global 
 
 ## Visible Clerk shelter
 
-After a notched seal reopens, the other two red seals fire locked seven-shot fans after 1.2-second warnings. The green shield opens 0.5 seconds before release, absorbs actual hostile shots at its rim and lets survivors keep shooting. Dodging outside remains possible. Its outer ring counts down the 2.5-second protection window; static broken-bullet marks show real interceptions. Each advanced appeal warns a fresh pair, using the existing 2.5x/7.5x projectile budgets. No offensive reward or health increase is added. [Implementation](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/CLERK_SHELTER.md).
+In Standard, after a notched seal reopens, the other two red seals fire locked seven-shot fans after 1.2-second warnings. The green shield opens 0.5 seconds before release, absorbs actual hostile shots at its rim and lets survivors keep shooting. Dodging outside remains possible. Its outer ring counts down the 2.5-second protection window; static broken-bullet marks show real interceptions. Brutal/Crazed now warn three/four marked origins under the existing 2.5x/7.5x projectile budgets; see the graded follow-up below. No offensive reward or health increase is added. [Implementation](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/CLERK_SHELTER.md).
 
-The human found the earlier order/notched safe III clear enough, but did not discover its purpose. This follow-up awaits comparison and grants no additional identity, individual-quality or human-acceptance credit. Instructions remain visible in development previews. Before the finished product they must be removed except for an optional default-off Baby-only setting; that future option is not implemented here.
+The human found the earlier order/notched safe III clear enough, but did not discover its purpose. The human liked the shelter purpose and rim effect at frozen 5190. This limited element feedback grants no additional identity, individual-quality or full whole-boss acceptance credit. Instructions remain visible in development previews. Before the finished product they must be removed except for an optional default-off Baby-only setting; that future option is not implemented here.
+
+## Banked returns and graded verdicts
+
+Tollkeeper keeps a complete reflected opening wheel. Closing Booth marks a lateral move, then stops the wheel at a wall before a freshly aimed 1.2-second return tell. Advanced forms add warned side coin sprays and a third late leg. One live wheel respects actual bounds/cover and moving survivor sweeps. Base health, deadline, grade, art and Copper Debt remain. [Implementation](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/BANKED_VERDICTS.md).
+
+Clerk now marks 3/5/10 simultaneous seals in Standard/Brutal/Crazed. Purple triangles deal double red base damage. Crazed black skulls remove 75% of current health once per seal activation, leaving at least 1 HP; armor and shield capacity do not reduce the curse, but invulnerability and green shelter prevent it. Smaller advanced footprints preserve movement gaps. Late sets replace expired fields, and notched III/V/X becomes green after its strike. The positively reviewed shield/rim effect remains. New field balance and readability await human review.

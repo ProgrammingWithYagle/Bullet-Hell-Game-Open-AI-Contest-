@@ -205,7 +205,7 @@
     "boss.stationmaster.name": "마지막 역장",
     "boss.stitchwright.description": "갈고리와 속박이 고립된 생존자를 노립니다. 구조 경로를 열어 두세요.",
     "boss.stitchwright.name": "봉합 장인",
-    "boss.tollkeeper.description": "동전 바퀴가 벽에 튕겨 돌아옵니다. 두 구간 화살표를 읽고 바퀴가 지난 뒤 건너세요.",
+    "boss.tollkeeper.description": "동전 바퀴가 벽까지 굴러갔다가 돌아옵니다. 일반 정확한 요금은 던지기 전에 반사 경로 전체를 고정합니다. 닫히는 요금소는 먼저 이동하고 벽에서 멈춘 뒤 귀환을 조준합니다. 새 방향마다 움직이기 전 예고가 있습니다.",
     "boss.tollkeeper.name": "통행세 징수자",
     "boss.uncounted.description": "종은 지워진 이름을 기억합니다. 나선, 광선, 소환, 순간이동의 비밀 시험을 견디세요.",
     "boss.uncounted.name": "헤아릴 수 없는 자들",
@@ -1653,6 +1653,15 @@
     "boss.quarantine-clerk.phase.1": "이의 제기 순회",
     "boss.quarantine-clerk.phaseHint.0": "도장 I, II, III의 순서를 읽으세요. III이 찍힌 뒤 홈이 있는 첫 도장의 초록색 안쪽으로 들어가세요. 초록 방패는 빨간 도장 두 곳에서 예고한 탄막을 막아 계속 사격할 수 있게 합니다. 탄환은 테두리에서 부서지고 바깥 고리는 남은 보호 시간을 보여 줍니다. 밖에서 회피해도 됩니다.",
     "boss.quarantine-clerk.phaseHint.1": "서기는 표시 전에 이동합니다. 홈이 있는 III이 초록색이 될 때까지 피하세요. 초록 방패는 빨간 도장 두 곳에서 예고한 탄막을 막아 계속 사격할 수 있게 합니다. 탄환은 테두리에서 부서지고 바깥 고리는 남은 보호 시간을 보여 줍니다. 밖에서 회피해도 됩니다.",
-    "boss.quarantine-clerk.brutalHelp": "상위 형태의 후반은 새 위치 세 곳을 예고합니다. 이전 안전 도장은 사라지므로 새 순서와 초록색 안쪽을 확인하세요."
+    "boss.quarantine-clerk.brutalHelp": "Brutal은 도장 다섯 개를 표시합니다. 보라색 삼각형은 빨간 도장의 두 배 피해를 줍니다. 초록 방패가 표시된 탄환을 막고 바깥 고리가 남은 시간을 보여 줍니다.",
+    "boss.tollkeeper.phase.0": "정확한 요금",
+    "boss.tollkeeper.phase.1": "닫히는 요금소",
+    "boss.tollkeeper.phaseHint.0": "바퀴 화살표를 읽고 선을 벗어난 뒤 바퀴 뒤로 건너세요. 회복 중에 공격하세요.",
+    "boss.tollkeeper.phaseHint.1": "요금소가 옮겨 간 뒤 던집니다. 바퀴는 벽에서 멈춘 후 새로 조준한 귀환을 예고합니다. 매번 새 화살표를 읽으세요.",
+    "boss.tollkeeper.brutalHelp": "상위 형태는 벽에서 멈춰 양옆 동전을 예고합니다. 후반에는 세 번째 구간이 추가됩니다. 바퀴는 표시된 길을 계속 차지하므로 동전 틈이 바퀴까지 막아 주지는 않습니다.",
+    "boss.quarantine-clerk.advancedDescription": "형태에 따라 도장이 늘어납니다. 홈은 접수에서 I, 이의 제기에서 마지막 도장을 가리킵니다. Brutal은 V, Crazed는 X입니다. 초록색을 기다리면 표시된 탄막을 막습니다. 이전 장판이 닫힌 뒤 새 이의 제기가 시작됩니다.",
+    "boss.quarantine-clerk.advancedPhaseHint.0": "마지막 도장이 찍힌 뒤 홈이 있는 I이 초록색이 되면 들어가세요. 색과 기호를 함께 읽으세요.",
+    "boss.quarantine-clerk.advancedPhaseHint.1": "서기가 옮겨 간 뒤 새 장판 전체를 읽으세요. 홈이 있는 마지막 V/X는 찍힌 후 열리므로 초록색을 기다리세요.",
+    "boss.quarantine-clerk.crazedHelp": "Crazed는 보라색 삼각형과 검은 해골을 포함한 도장 열 개를 표시합니다. 검은 도장은 활성화마다 한 번 현재 체력의 75%를 빼앗되 최소 1 HP를 남깁니다. 방어력과 보호막을 무시하지만 대시 무적과 초록 보호는 막아 줍니다."
   }
 }

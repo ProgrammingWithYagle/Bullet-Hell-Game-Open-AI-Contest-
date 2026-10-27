@@ -69,7 +69,18 @@ test("all 66 identities admit Crazed with their fixed grade, inherited full sign
     );
     assert.equal(b.variants.crazed.identity, b.id + "-crazed");
     assert.equal(b.variants.crazed.signature, b.signature.id);
-    assert.deepEqual(b.variants.crazed.phases, b.variants.brutal.phases);
+    const inherited = b.variants.crazed.phases.map((phase, index) => {
+      if (b.id !== 'quarantine-clerk') return phase;
+      const c = phase as Record<string, unknown>,
+        base = b.variants.brutal.phases[index] as Record<string, unknown>;
+      // The requested Crazed field adds ten smaller seals to the full Brutal
+      // phase. Every other phase/attack field must still inherit unchanged.
+      assert.equal(base.stampCount, 5); assert.equal(base.stampRadius, 72);
+      assert.equal(c.stampCount, 10); assert.equal(c.stampRadius, 58);
+      assert.equal(c.reopensStamp, index ? 10 : 1);
+      return {...phase, stampCount:base.stampCount, stampRadius:base.stampRadius, reopensStamp:base.reopensStamp};
+    });
+    assert.deepEqual(inherited, b.variants.brutal.phases);
     assert.equal(
       encounterPhases(b.id, "crazed").length,
       profile.level <= 2 ? 2 : 4,
