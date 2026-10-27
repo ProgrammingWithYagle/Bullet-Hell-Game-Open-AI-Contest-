@@ -32,7 +32,7 @@ test("only the known issued protocol28 local Practice boundary migrates to29 wit
     "39ca64136ddb477d344eb75408a22ed239af57efb1d3a3a4f5893ac33c13864d";
   const restored = Game.restoreOffline(old).offlineCheckpoint()!;
   assert.equal(restored.protocolVersion, PROTOCOL);
-  assert.equal(PROTOCOL, 29);
+  assert.equal(PROTOCOL, 30);
   assert.equal(restored.contentRevision, CONTENT_REVISION);
   assert.deepEqual(restored.player, save.player);
   assert.deepEqual(restored.completedBossForms, save.completedBossForms);

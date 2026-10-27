@@ -111,7 +111,7 @@
     "boss.bell-triplets.name": "鐘聲三胞胎",
     "boss.bellringer.description": "擴散彈環追隨鐘聲節奏，辨認安全缺口并避開匯合彈幕。",
     "boss.bellringer.name": "敲鐘人",
-    "boss.black-ambulance.description": "繞場移動，在標記站點停下後衝鋒。避開目標位置，在恢復時攻擊暴露的車夫。",
+    "boss.black-ambulance.description": "救護車沿可通行的外圈移動後，沿固定車道衝鋒。金色巡行線無害，寬車道在衝鋒開始後危險。掩體與實際場地邊界限制車身。最後出車後車夫暴露3秒，首領承受額外25%傷害。",
     "boss.black-ambulance.name": "黑色救護車",
     "boss.boiler-tender.description": "三個閥門積蓄壓力。站住任一中立閥門可打開安全扇區，也可走標記外圍缺口。",
     "boss.boiler-tender.name": "鍋爐看守",
@@ -1700,6 +1700,12 @@
     "ui.localPracticeRecords": "本機練習記錄",
     "ui.onlineBoards": "線上榜單",
     "ui.leaderboardOffline": "此開發版本尚未連接已驗證的線上榜單。下方本機記錄是練習，不是已驗證的隊伍排名。",
-    "ui.noLocalRecords": "沒有符合篩選的本機記錄。"
+    "ui.noLocalRecords": "沒有符合篩選的本機記錄。",
+    "boss.black-ambulance.phase.0": "最後呼叫",
+    "boss.black-ambulance.phase.1": "再次出車",
+    "boss.black-ambulance.phaseHint.0": "觀察金色巡行標記。衝鋒前離開鎖定車道。最後停車3秒時攻擊車夫，對首領傷害+25%。",
+    "boss.black-ambulance.phaseHint.1": "後半階段反向巡行並連續出車兩次。每條新車道都會完整預警。等待最後車夫暴露。",
+    "boss.black-ambulance.brutalHelp": "殘酷在兩個階段分別出車2/3次。每次停車都提前至少1.25秒預警有缺口的車門彈幕，實際發射40發。出車前觀察剩餘波次標記。",
+    "boss.black-ambulance.crazedHelp": "狂亂保留殘酷機制，後半階段增加第4次出車，每次停車發射120發並追加交叉波次。每條新車道仍完整預警。"
   }
 }

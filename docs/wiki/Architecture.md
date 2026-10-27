@@ -79,3 +79,5 @@ Protocol 28 adds locked clipped Marshal sweep polygons and source-owned advanced
 ## Build audience and optional room chat
 
 A compile-time audience constant reaches client and Solo worker. Public new-run settings ignore chosen openers; the public room server rejects explicit opening injection. Testing coin/SP editing is Solo-only and marks runs modified, disabling their boundary save/local records. Server-assigned chat identity, subscriber-only delivery, bounded plain text/history and per-sender limits are separate from currency authority. [Exact build and protocol policy](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/TESTING_AND_PUBLIC_BUILDS.md).
+
+Last Dispatch keeps vehicle patrol, fixed roads, relative swept contact, serial stops and controlled door emissions in shared authority; the client draws those clocks/paths and existing poses. The generic charge slot is excluded for this dedicated controller, preventing phantom casts from blocking later cycles. Full offset bounds and physical body width constrain route search and rays.

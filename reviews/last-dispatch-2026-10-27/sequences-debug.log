@@ -1,0 +1,11 @@
+C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tools\probe-ambulance.ts:22
+ driver=drivers.size;if(!ids.size||!driver||moved<32)throw Error('Sequence did not execute: '+map.id+'/'+difficulty.id+'/'+form+'/'+phase+' '+JSON.stringify({driver,lanes:ids.size,moved,gamePhase:g.phase,bossPhase:g.boss.phase,tick:g.combatTick,cues:g.bossCues()}));
+                                                           ^
+
+Error: Sequence did not execute: gatehouse/baby/normal/1 {"driver":0,"lanes":0,"moved":0,"gamePhase":"combat","bossPhase":1,"tick":1800,"cues":[]}
+    at <anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tools\probe-ambulance.ts:22:60)
+    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+    at async node:internal/modules/esm/loader:647:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.22.1

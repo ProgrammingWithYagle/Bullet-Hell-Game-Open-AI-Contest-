@@ -1,3 +1,4 @@
+import {drawAmbulanceCue} from './ambulance-cues.ts';
 import {drawWidowCue} from './widow-presentation.ts';
 import clerkRules from '../shared/clerk-appeal-rules.json';
 import {smallWakesPose,drawSmallWakes} from './small-wakes-presentation.ts';
@@ -452,7 +453,12 @@ export class CombatScene extends Phaser.Scene {
       }
     }
     const drawnDomains=new Set<string>();
+    const drawnAmbulanceBursts = new Set<string>();
     for (const cue of view.bossCues) {
+      if(cue.kind==='ambulance-patrol'||cue.kind==='ambulance-lane'||cue.kind==='ambulance-stop'||cue.kind==='ambulance-burst'){
+        if(cue.kind==='ambulance-burst'){const key=cue.x+':'+cue.y;if(drawnAmbulanceBursts.has(key))continue;drawnAmbulanceBursts.add(key);}
+        drawAmbulanceCue(h,f,cue,now,view.bossCues.filter((q):q is import('../shared/ambulance-route.ts').AmbulanceCue=>q.kind==='ambulance-patrol'||q.kind==='ambulance-lane'||q.kind==='ambulance-stop'||q.kind==='ambulance-burst'||q.kind==='driver'));continue;
+      }
       if(cue.kind==='arena-lava') {
         const active=now>=cue.at;
         h.fillStyle(active?0x532818:0x3b3028,.92).fillCircle(cue.x,cue.y,cue.radius);
@@ -741,6 +747,7 @@ export class CombatScene extends Phaser.Scene {
         if(broken)f.lineStyle(3,color,1).lineBetween(cue.x-14,cue.y-14, cue.x+14,cue.y+14);
       } else if (cue.kind === 'driver') {
         f.lineStyle(4, 0xf4d99c, 1).strokeCircle(cue.x, cue.y, cue.radius);
+        f.lineStyle(4,0x9eddb8,.9).lineBetween(cue.x-28,cue.y+42,cue.x-28+56*Math.max(0,(cue.until-now)/Math.max(1,cue.until-cue.beganAt)),cue.y+42);
         f.lineStyle(3, 0xf4d99c, 1)
           .lineBetween(cue.x - 12, cue.y - cue.radius - 15, cue.x, cue.y - cue.radius - 3)
           .lineBetween(cue.x, cue.y - cue.radius - 3, cue.x + 12, cue.y - cue.radius - 15);

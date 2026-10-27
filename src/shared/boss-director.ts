@@ -126,6 +126,7 @@ export type SignatureContext = {
   damageScale: number;
   brutal: boolean;
   projectileMultiplier?: number;
+  movementSpeedScale?: number;
   phase: number;
   id(): number;
   damage(id: string, amount: number): void;
@@ -230,7 +231,7 @@ export class BossDirector {
     this.sackHealth = this.sackMaximum;
   }
   get charging() {
-    return !!this.charge || this.courier.charging;
+    return !!this.charge || this.courier.charging || this.civic.ambulance.charging;
   }
   weakPoint(): Extract<BossCue, { kind: 'sack' }> | null {
     return this.kind==='ratcatcher'?this.ratcatcher.sack():null;
@@ -329,8 +330,9 @@ export class BossDirector {
     };
   }
   startCharge(context: SignatureContext, target: Vec, attack: SignatureAttack) {
+    if(context.bossId==='black-ambulance')return false; // Dedicated bounded route owns every dispatch.
     if(context.bossId==='courier')return this.courier.cast(context,target,attack);
-    if (this.charge || (context.bossId === 'black-ambulance' && this.civic.recovering))
+    if (this.charge)
       return false;
     const end = this.end(context, target, 100),
       at = context.tick + ticks(attack.telegraph);

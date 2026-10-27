@@ -193,9 +193,9 @@ test('Ambulance patrols, locks and executes a charge, then exposes its driver fo
   const start = { x: g.boss.x, y: g.boss.y };
   for (let n = 0; n < 20; n++) g.step();
   assert(Math.hypot(g.boss.x - start.x, g.boss.y - start.y) > 10);
-  until(g, () => g.director.cues().some((c) => c.kind === 'charge'));
-  const lane = g.director.cues().find((c) => c.kind === 'charge')!;
-  assert(lane.kind === 'charge');
+  until(g, () => g.director.cues().some((c) => c.kind === 'ambulance-lane'));
+  const lane = g.director.cues().find((c) => c.kind === 'ambulance-lane')!;
+  assert(lane.kind === 'ambulance-lane');
   const locked = { x: g.boss.x, y: g.boss.y };
   while (g.combatTick < lane.at - 1) g.step();
   assert.equal(g.boss.x, locked.x);

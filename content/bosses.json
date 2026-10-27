@@ -6109,14 +6109,38 @@
     "artBrief": "A horse-shaped mortuary ambulance fused to its skeletal driver and one bell. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
     "signature": {
       "id": "black-ambulance",
-      "behavior": "Circle the perimeter, stop at a marked station, then charge a straight rescue lane.",
-      "counterplay": "Avoid the telegraphed destination; the stationary recovery exposes the driver.",
+      "behavior": "Last Call follows a connected, body-clear perimeter route before one locked rescue-lane charge. At half health, Second Dispatch patrols in the other direction and gives two separately warned headings. Brutal adds one dispatch per sequence and warned gapped door volleys at every stop. Crazed keeps the full Brutal sequence and adds a fourth late dispatch with crossing door repeats.",
+      "counterplay": "The gold patrol route is harmless. Leave the marked road during its full 1.4-second warning; aim locks before the body moves. Each late heading is warned from its actual new stop. Advanced door fans warn for at least 1.25 seconds and mark all distinct repeat headings; move through their gaps and read the remaining-wave marks before the next departure. The last stop exposes the driver for three seconds and grants the existing 25% boss-damage bonus. Actual map offsets, body width, cover and Hellish lava constrain both route and charge. No instant-kill attack or new art is added.",
       "parameters": {
         "perimeterSpeedPxPerSecond": 140,
         "chargeSpeedPxPerSecond": 380,
         "chargeWarningSeconds": 1.4,
         "recoverySeconds": 3,
-        "cycleSeconds": 10
+        "cycleSeconds": 10,
+        "lastDispatch": {
+          "gridSpacing": 32,
+          "routeClearance": 8,
+          "minimumPatrol": 96,
+          "maximumPatrol": 420,
+          "patrolWarningSeconds": 0.5,
+          "patrolSpeed": 140,
+          "chargeOverrun": 100,
+          "minimumCharge": 64,
+          "betweenLegSeconds": 0.65,
+          "recoverySeconds": 3,
+          "betweenSequencesSeconds": 1.5,
+          "spokesPerWing": 4,
+          "halfGap": 0.42,
+          "wingArc": 0.7,
+          "burstWarningSeconds": 1.25,
+          "echoSeconds": 0.35,
+          "releaseCueSeconds": 0.2,
+          "departureGapSeconds": 0.5,
+          "crossingTurn": 0.3,
+          "shotSpeed": 200,
+          "shotDamage": 5,
+          "shotRadius": 5
+        }
       }
     },
     "arenaIds": [
@@ -6155,7 +6179,11 @@
             "telegraph": 1
           }
         ],
-        "patternPhase": 0
+        "patternPhase": 0,
+        "phaseNameKey": "boss.black-ambulance.phase.0",
+        "dispatchLegs": 1,
+        "connectedPatrol": true,
+        "freshHeadingWarnings": true
       },
       {
         "healthThreshold": 0.5,
@@ -6178,7 +6206,11 @@
             "telegraph": 1
           }
         ],
-        "patternPhase": 2
+        "patternPhase": 2,
+        "phaseNameKey": "boss.black-ambulance.phase.1",
+        "dispatchLegs": 2,
+        "connectedPatrol": true,
+        "freshHeadingWarnings": true
       }
     ],
     "variants": {
@@ -6220,7 +6252,11 @@
                 "comboOffsetSeconds": 0
               }
             ],
-            "patternPhase": 0
+            "patternPhase": 0,
+            "phaseNameKey": "boss.black-ambulance.phase.0",
+            "dispatchLegs": 2,
+            "connectedPatrol": true,
+            "freshHeadingWarnings": true
           },
           {
             "healthThreshold": 0.5,
@@ -6246,7 +6282,11 @@
                 "comboOffsetSeconds": 1.25
               }
             ],
-            "patternPhase": 3
+            "patternPhase": 3,
+            "phaseNameKey": "boss.black-ambulance.phase.1",
+            "dispatchLegs": 3,
+            "connectedPatrol": true,
+            "freshHeadingWarnings": true
           }
         ]
       },
@@ -6282,7 +6322,11 @@
                 "comboOffsetSeconds": 0
               }
             ],
-            "patternPhase": 0
+            "patternPhase": 0,
+            "phaseNameKey": "boss.black-ambulance.phase.0",
+            "dispatchLegs": 2,
+            "connectedPatrol": true,
+            "freshHeadingWarnings": true
           },
           {
             "healthThreshold": 0.5,
@@ -6308,7 +6352,11 @@
                 "comboOffsetSeconds": 1.25
               }
             ],
-            "patternPhase": 3
+            "patternPhase": 3,
+            "phaseNameKey": "boss.black-ambulance.phase.1",
+            "dispatchLegs": 4,
+            "connectedPatrol": true,
+            "freshHeadingWarnings": true
           }
         ],
         "additionalPatterns": [

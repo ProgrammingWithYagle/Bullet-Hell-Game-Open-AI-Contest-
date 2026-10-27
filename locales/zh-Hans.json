@@ -111,7 +111,7 @@
     "boss.bell-triplets.name": "钟声三胞胎",
     "boss.bellringer.description": "扩散弹环追随钟声节奏，辨认安全缺口并避开汇合弹幕。",
     "boss.bellringer.name": "敲钟人",
-    "boss.black-ambulance.description": "绕场移动，在标记站点停下后冲锋。避开目标位置，在恢复时攻击暴露的车夫。",
+    "boss.black-ambulance.description": "救护车沿可通行的外圈移动后，沿固定车道冲锋。金色巡行线无害，宽车道在冲锋开始后危险。掩体和实际场地边界限制车身。最后出车后车夫暴露3秒，首领承受额外25%伤害。",
     "boss.black-ambulance.name": "黑色救护车",
     "boss.boiler-tender.description": "三个阀门积蓄压力。站住任一中立阀门可打开安全扇区，也可走标记外围缺口。",
     "boss.boiler-tender.name": "锅炉看守",
@@ -1700,6 +1700,12 @@
     "ui.localPracticeRecords": "本地练习记录",
     "ui.onlineBoards": "在线榜单",
     "ui.leaderboardOffline": "此开发构建尚未连接经过验证的在线榜单。下方本地记录为练习，不是已验证的队伍排名。",
-    "ui.noLocalRecords": "没有符合筛选条件的本地记录。"
+    "ui.noLocalRecords": "没有符合筛选条件的本地记录。",
+    "boss.black-ambulance.phase.0": "最后呼叫",
+    "boss.black-ambulance.phase.1": "再次出车",
+    "boss.black-ambulance.phaseHint.0": "沿金色巡行标记观察。冲锋前离开锁定车道。最后停车3秒时攻击车夫，对首领伤害+25%。",
+    "boss.black-ambulance.phaseHint.1": "后半阶段反向巡行并连续出车两次。每条新车道都会完整预警。等待最后车夫暴露。",
+    "boss.black-ambulance.brutalHelp": "残酷在两个阶段分别出车2/3次。每次停车都会提前至少1.25秒预警带缺口的车门弹幕，实际发射40发。出车前观察剩余波次标记。",
+    "boss.black-ambulance.crazedHelp": "狂乱保留残酷机制，后半阶段增加第4次出车，每次停车发射120发并追加交叉波次。每条新车道仍完整预警。"
   }
 }

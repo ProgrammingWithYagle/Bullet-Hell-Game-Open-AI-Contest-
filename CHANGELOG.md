@@ -1,6 +1,24 @@
 # Changelog
 
-Development build **2026.10.27-crossed-threshold**, protocol 29. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.27-last-dispatch**, protocol 30. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-27 — Black Ambulance: Last Call and Second Dispatch
+
+### Connected patrols and fresh roads
+
+- Black Ambulance replaces fixed global stations with a bounded body-clear connected route on the actual offset arena. Gold patrol marks are harmless. Last Call warns one charge; Second Dispatch reverses patrol direction and gives two distinct headings, each freshly warned from the real stop. Cover, real borders and Hellish lava constrain both the marked road and actual moving body. Base health, damage, attack definitions, deadline, grade 2+, existing art and individual theme remain.
+- Driver exposure remains exactly three seconds after the last dispatch, with the existing 25% boss-damage bonus. A shared authority controller owns patrol, warnings, contact and cleanup; relative swept contact hits once per leg, the first active frame does not hit pre-warning player movement, and new cover interrupts travel safely. Generic empty charge casts cannot block the next cycle or recovery after Baby/Easy assistance.
+
+### Advanced dispatches and door volleys
+
+- Brutal dispatches twice early and three times late. Every stop warns a gapped door volley, with 40 actual projectiles under the 2.5x budget. Crazed keeps the full Brutal sequence, adds a fourth late dispatch and fires 120 per stop under the 7.5x budget, with extra crossing repeats. All distinct repeat headings are marked before release and remaining-wave marks count down. Controlled emissions avoid double amplification; existing global hostile limits still apply.
+- Phase/stagger/assistance/encounter exit clears unreleased owned cues; flying projectiles remain under normal cleanup policy. Existing casting/charge/driver poses follow authoritative state. Reduced motion retains a static pose. No new walking animation, artwork, music or identity is claimed.
+
+### Continuity and evidence
+
+- All fifteen locales include phase names, responses and advanced-form help in the closed manual guide. Known issued protocol 29 local Practice/profile state migrates to 30, preserving builds, form history, controls and optional name/chat settings; foreign hashes and online/signed state remain strict. The existing testing/public split and modified-run record isolation remain.
+- An initial patrol assessment compared width/height without the arena origin and falsely reported 99 out-of-bounds cases. That result is explicitly rejected and retained. The corrected 216-case/388800-tick baseline has zero actual boundary/masonry violations; it records patrol stalls up to 168 ticks. The redesign addresses those stalls and phase behavior. Headless probes are not played clears or final balance acceptance.
+- Roster remains 66:65 ordinary plus one secret, with 85 new ordinary identities remaining. This is the ninth original quality implementation;51 remain, with full human acceptance open. All frozen clients and pinned backends remain separate. Browser access is currently disabled in Work settings; rendered, physical-device, native-language, listening and final balance acceptance remain open.
 
 ## 2026-10-27 — Crossed Threshold, lasting verdicts and testing tools
 

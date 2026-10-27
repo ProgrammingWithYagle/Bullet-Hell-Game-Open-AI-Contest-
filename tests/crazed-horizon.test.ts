@@ -70,6 +70,7 @@ test("all 66 identities admit Crazed with their fixed grade, inherited full sign
     assert.equal(b.variants.crazed.identity, b.id + "-crazed");
     assert.equal(b.variants.crazed.signature, b.signature.id);
     const inherited = b.variants.crazed.phases.map((phase, index) => {
+      if(b.id==='black-ambulance'){const c=phase as Record<string,unknown>,base=b.variants.brutal.phases[index] as Record<string,unknown>;assert.equal(base.dispatchLegs,index?3:2);assert.equal(c.dispatchLegs,index?4:2);return {...phase,dispatchLegs:base.dispatchLegs};}
       if (b.id !== 'quarantine-clerk') return phase;
       const c = phase as Record<string, unknown>,
         base = b.variants.brutal.phases[index] as Record<string, unknown>;

@@ -47,7 +47,7 @@ test(
                 ? 'chain'
                 : openingBossId === 'gate-widow'
                   ? 'gate'
-                  : 'charge';
+                  : 'ambulance-lane';
           await until(() => guest.view?.bossCues.some((c) => c.kind === cue) === true);
           assert.equal(guest.view!.arenaId, 'crown-crypt');
           assert.equal(guest.view!.boss.id, openingBossId);

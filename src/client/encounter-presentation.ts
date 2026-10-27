@@ -1,3 +1,4 @@
+import {ambulanceFrame} from './ambulance-presentation.ts';
 import smallWakes from '../../assets/production/motion/small-wakes-library.json';
 import earlyWatch from '../../assets/production/motion/early-watch-library.json';
 import endings from '../../assets/production/motion/endless-library.json';
@@ -121,16 +122,6 @@ export function encounterFrame(boss: Boss, now: number, cues: BossCue[], reduced
           : 3
         : Math.min(6, 4 + Math.floor((now - gate.at) / 25));
   }
-  if (boss.id === 'black-ambulance') {
-    if (cues.some((c) => c.kind === 'driver')) return 7;
-    const charge = cues.find((c) => c.kind === 'charge');
-    if (charge?.kind === 'charge')
-      return now < charge.at
-        ? charge.at - now > 15
-          ? 1
-          : 2
-        : 3 + (Math.floor((now - charge.at) / 4) % 3);
-    return Math.floor(now / 6) % 2 ? 3 : 5;
-  }
+  if (boss.id === 'black-ambulance') return ambulanceFrame(cues.filter((q):q is import('../shared/ambulance-route.ts').AmbulanceCue=>q.kind==='ambulance-patrol'||q.kind==='ambulance-lane'||q.kind==='ambulance-stop'||q.kind==='ambulance-burst'||q.kind==='driver'),now,reduced);
   return 0;
 }
