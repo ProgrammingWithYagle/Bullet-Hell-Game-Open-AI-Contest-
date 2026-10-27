@@ -1,6 +1,24 @@
 # Changelog
 
-Development build **2026.10.27-banked-verdicts**, protocol 26. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.27-clerk-venom**, protocol 27. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-27 — Clerk: lasting shelter, random safe numbers and purple venom
+
+### A shelter that covers its volley
+
+- Human comparison at frozen 5191 found the graded fields promising, but the Crazed shelter closed too soon to be useful. The former 2.5-second window could end before the final echo even launched. Brutal now opens for at least 3.5 seconds and Crazed at least five seconds, extending for longer routes until half a second after the final possible marked echo reaches the shield rim. Standard keeps its existing 2.5-second window.
+- Standard still reopens I in phase one and III in phase two. Brutal retains I in phase one and chooses a random numbered seal in phase two. Crazed chooses a random number in both phases and every fresh field. The server seed chooses once per field; the notch, full warning and fan directions reveal and lock that choice before any strike. Late fresh fields wait for the old green shelter to close, keeping the five/ten cap. Other hazard durations and projectile budgets remain.
+
+### Purple now poisons and slows
+
+- Purple triangles retain double red impact damage. First successful contact per survivor per purple seal also removes 15% of current health through armor/shield capacity and applies three seconds of poison plus 35% walking slow. Poison deals two base damage per half-second, with ordinary difficulty/form scaling and armor/shield mitigation. Reentering the same seal cannot repeat the percentage hit or refresh the affliction; a different seal can refresh it without stacking damage rates.
+- Green shelter and existing invulnerability prevent application and poison damage. Skipped poison ticks never catch up and do not grant new hit invulnerability. Dash speed remains unchanged. Antidote supplies, ordinary Medic cleansing abilities and Serum Relay remove poison and its slow. Downing and encounter exits clear all poison clocks.
+- Shared authority, local prediction, owner/observer player state, a static purple status triangle/countdown and fifteen authored locale catalogs use the same status. Black remains a once-per-seal 75%-current-health curse with a 1 HP floor. All three/five/ten footprints, original health/damage/deadlines/grades and existing art/audio remain.
+
+### Continuity and remaining development
+
+- Protocol 27 migrates only the known issued protocol 26 local Practice/profile revision, preserving exact forms, builds and history; earlier bounded migrations remain. Unknown and online/signed state stays strict. All previous frozen preview files and any live processes are preserved.
+- The roster remains 66 identities, 65 ordinary plus one secret. This feedback follow-up adds no identity or quality credit: 85 new ordinary identities and 54 original quality passes remain. Instructions stay visible during development testing; optional default-off Baby-only instructions remain a finished-product gate. Rendered/device/native-language/listening/final balance, hosted/WAN/endurance/capacity/release acceptance remain open.
 
 ## 2026-10-27 — Banked wheel returns and graded Clerk seals
 

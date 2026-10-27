@@ -165,6 +165,7 @@ export class AbilityTransforms {
         used.add(ally.id);
         c.heal(p, ally, 20 * s.ability);
         ally.slowUntil = 0;
+        ally.poisonUntil = ally.poisonNextAt = ally.poisonDamage = 0;
         this.cue(
           p,
           'serum-relay',

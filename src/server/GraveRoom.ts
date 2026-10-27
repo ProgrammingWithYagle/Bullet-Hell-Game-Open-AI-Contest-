@@ -371,6 +371,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       view.dashX = p.dashX;
       view.dashY = p.dashY;
       view.slowUntil = p.slowUntil;
+      view.poisonUntil = p.poisonUntil;
       view.dodgeCooldown = g.stats(p).dodgeCooldown;
     }
     for (const id of s.players.keys()) if (!g.players.has(id)) s.players.delete(id);

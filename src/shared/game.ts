@@ -64,6 +64,7 @@ import {
 } from './geometry.ts';
 import { runtimeArena } from './arena-layouts.ts';
 import { Random } from './random.ts';
+import { clerkAppealRules } from './clerk-appeal.ts';
 import { migratePracticeBoundary } from './practice-migration.ts';
 import { Minions, type MinionSpawn } from './minions.ts';
 import { BossDirector, type SignatureContext } from './boss-director.ts';
@@ -156,6 +157,9 @@ export type Player = {
   ultimateAt: number;
   channelUntil: number;
   slowUntil: number;
+  poisonUntil: number;
+  poisonNextAt: number;
+  poisonDamage: number;
   downUntil: number;
   reviveTarget: string;
   reviveProgress: number;
@@ -433,6 +437,9 @@ export class Game {
       ultimateAt: 0,
       channelUntil: 0,
       slowUntil: 0,
+      poisonUntil: 0,
+      poisonNextAt: 0,
+      poisonDamage: 0,
       terrain: freshTerrain(),
       downUntil: 0,
       reviveTarget: '',
@@ -776,6 +783,7 @@ export class Game {
         continue;
       }
       p.status = 'active';
+      this.clearPoison(p);
       p.eligible = true;
       if (p.progress.firstEncounter < 0) p.progress.firstEncounter = this.encounter;
       p.totalSp = Math.max(p.totalSp, this.skillBudget(this.encounter));
@@ -876,6 +884,7 @@ export class Game {
     this.votes.clear();
   }
   private victory() {
+    for (const player of this.players.values()) this.clearPoison(player);
     this.classKits.clear();this.transforms.clear();this.wardenPatrol.clear();
     this.completedBossIds.add(this.boss.id);
     const previous=this.completedBossForms.get(this.boss.id);
@@ -1104,6 +1113,7 @@ export class Game {
         this.secretStatus = 'failed';
         this.phase = this.campaignBank ? 'victory' : 'defeat';
       } else this.phase = 'defeat';
+      for (const player of this.players.values()) this.clearPoison(player);
       this.classKits.clear();this.transforms.clear();this.wardenPatrol.clear();
       this.director.reset('constable');
       this.minions.clear();
@@ -1134,6 +1144,8 @@ export class Game {
     if (p.status !== 'active') return;
     if (now >= p.supplyShieldUntil) p.supplyShield = 0;
     if (i.supply >= 0) this.useSupply(p, i.supply);
+    this.stepPoison(p);
+    if (p.status !== 'active') return;
     if (stats.regen) p.health = Math.min(p.maxHealth, p.health + stats.regen * DT);
     if (p.reloadAt && now >= p.reloadAt) {
       p.ammo = stats.magazine;
@@ -1182,7 +1194,7 @@ export class Game {
       speed = dash
         ? (this.classKits.chargeSpeed(p.id, now) ?? rule.dodgeSpeed)
         : this.movementSpeed(p) *
-          (now < p.slowUntil ? 0.65 : 1) *
+          Math.min(now < p.slowUntil ? 0.65 : 1, now < p.poisonUntil ? clerkAppealRules.purpleSlowMultiplier : 1) *
           (1 + rally) *
           environment.multiplier *
           terrain.multiplier;
@@ -1239,8 +1251,9 @@ export class Game {
         p.supplyShieldUntil = now + ticks(item.duration);
         break;
       case 'cleanse':
-        if (p.health >= p.maxHealth && p.slowUntil <= now) return;
+        if (p.health >= p.maxHealth && p.slowUntil <= now && p.poisonUntil <= now) return;
         p.slowUntil = 0;
+        this.clearPoison(p);
         this.heal(p, p, item.amount);
         break;
       case 'revive': {
@@ -1493,6 +1506,7 @@ export class Game {
         if (ally.status === 'active' && distance(ally, p) <= a.radius) {
           this.heal(p, ally, 20 * s.ability);
           ally.slowUntil = 0;
+        this.clearPoison(ally);
         }
     } else p.channelUntil = now + ticks(1);
     }
@@ -1518,6 +1532,7 @@ export class Game {
         if (ally.status === 'downed' || ally.status === 'eliminated') this.revive(ally, p);
         else if (ally.status === 'active') this.heal(p, ally, (hasTalent(p,'second-breath')?24:40) * potency);
         ally.slowUntil = 0;
+          this.clearPoison(ally);
       }
     if (this.roster().length === 1) p.shield = Math.max(p.shield, 40 * potency);
     if (
@@ -1538,7 +1553,7 @@ export class Game {
     target.health += Math.max(0, healed);
     source.healing += Math.max(0, healed);
   }
-  damage(p: Player, amount: number) {
+  damage(p: Player, amount: number, grantInvulnerability = true) {
     if (
       p.status !== 'active' ||
       this.combatTick < p.invulnerableUntil ||
@@ -1562,8 +1577,9 @@ export class Game {
     const actual = Math.min(p.health, afterKit - blocked);
     p.health -= actual;
     p.damageTaken += actual;
-    p.invulnerableUntil = this.combatTick + ticks(0.2);
+    if (grantInvulnerability) p.invulnerableUntil = this.combatTick + ticks(0.2);
     if (p.health <= 0) {
+      this.clearPoison(p);
       p.status = 'downed';
       p.health = 0;
       p.downUntil = this.combatTick + ticks(rule.downedSeconds);
@@ -1571,6 +1587,34 @@ export class Game {
       p.channelUntil = 0;
       this.events.push({ type: 'sound', id: 'downed', x: p.x, y: p.y });
     }
+  }
+  private clearPoison(p:Player) {
+    p.poisonUntil = p.poisonNextAt = p.poisonDamage = 0;
+  }
+  private stepPoison(p:Player) {
+    if (!p.poisonUntil) return;
+    if (this.combatTick <= p.poisonUntil && this.combatTick >= p.poisonNextAt) {
+      p.poisonNextAt += ticks(clerkAppealRules.purplePoisonIntervalSeconds);
+      this.damage(p,p.poisonDamage,false);
+    }
+    if (this.combatTick >= p.poisonUntil) this.clearPoison(p);
+  }
+  private purpleStamp(p:Player,amount:number,first:boolean) {
+    if (p.status !== 'active' || this.combatTick < p.invulnerableUntil || this.director.isSafe(p,this.combatTick)) return false;
+    // The percentage and ordinary impact belong to one accepted contact.
+    if (first) {
+      const loss = p.health * clerkAppealRules.purpleCurrentHealthFraction;
+      p.health -= loss;
+      p.damageTaken += loss;
+    }
+    this.damage(p,amount);
+    if (first && p.status === 'active') {
+      const next = this.combatTick + ticks(clerkAppealRules.purplePoisonIntervalSeconds);
+      p.poisonNextAt = p.poisonUntil > this.combatTick ? Math.min(p.poisonNextAt,next) : next;
+      p.poisonUntil = Math.max(p.poisonUntil,this.combatTick + ticks(clerkAppealRules.purplePoisonSeconds));
+      p.poisonDamage = Math.max(p.poisonDamage,clerkAppealRules.purplePoisonDamage * this.bossDamageScale());
+    }
+    return true;
   }
   private damageCurrentHealth(p: Player, fraction: number, minimumHealth: number) {
     if (p.status !== 'active' || this.combatTick < p.invulnerableUntil || this.director.isSafe(p,this.combatTick))
@@ -1736,6 +1780,8 @@ export class Game {
   private signatureContext(): SignatureContext {
     return {
       paused: !!this.accord,
+      random: () => this.rng.next(),
+      purpleStamp: (id,amount,first) => { const p=this.players.get(id); return !!p && this.purpleStamp(p,amount,first); },
       variant: this.boss.variant,
       damageCurrentHealth: (id,fraction,minimumHealth) => {
         const player=this.players.get(id);
@@ -2413,6 +2459,7 @@ export class Game {
     if (source && source.id !== p.id && ['downed', 'eliminated'].includes(p.status))
       source.progress.rescues = Math.min(1000000, source.progress.rescues + 1);
     p.status = 'active';
+    this.clearPoison(p);
     p.health = p.maxHealth * fraction;
     p.reviveProgress = 0;
     p.downUntil = 0;

@@ -24,6 +24,13 @@ export const clerkAppealRules = {
   advancedSetGapSeconds: 0.35,
   advancedPreviousCenterGap: 64,
   purpleStampDamage: 10,
+  purpleCurrentHealthFraction: 0.15,
+  purplePoisonSeconds: 3,
+  purplePoisonIntervalSeconds: 0.5,
+  purplePoisonDamage: 2,
+  purpleSlowMultiplier: 0.65,
+  shelterSeconds: { normal: 2.5, brutal: 3.5, crazed: 5 },
+  shelterTailSeconds: 0.5,
   blackCurrentHealthFraction: 0.75,
   blackMinimumHealth: 1,
   stampClearance: 10,
@@ -57,9 +64,9 @@ export function applyClerkAppeal(catalog) {
   const b = catalog.bosses.find((b) => b.id === "quarantine-clerk");
   if (!b) throw Error("Clerk missing");
   b.signature.behavior =
-    "Reachable arena-relative stamp centers replace the fixed fallback grid. Intake reopens stamp I; the late Appeal Circuit patrols first and reopens its final stamp after its strike (III/V/X by form). Standard uses three red/green stamps, Brutal five including doubled-damage purple stamps, and Crazed ten including black current-health curses. Advanced late appeals replace the expired set after a gap, keeping the live field capped at five/ten. Each reopening precedes a locked, fully warned volley from two/three/four marked origins by form; the green seal visibly absorbs shots at its rim.";
+    "Reachable arena-relative stamp centers replace the fixed fallback grid. Standard reopens I early and III late. Brutal reopens I early and a randomly numbered seal late; Crazed chooses a randomly numbered seal in every field. The choice locks and warns with the full field, before any strike. The late Appeal Circuit patrols before marking. Standard uses three red/green stamps, Brutal five including doubled-damage purple stamps, and Crazed ten including black current-health curses. Advanced late appeals replace the expired set after a gap, keeping the live field capped at five/ten. Each reopening precedes a locked, fully warned volley from two/three/four marked origins by form; the green seal visibly absorbs shots at its rim.";
   b.signature.counterplay =
-    "Read the ordered marks and the notched future-safe seal. Wait for its green interior before entering. Follow the new ground origin after a late patrol; advanced appeals warn a fresh set after the old field expires. Purple stamps hit twice as hard as red; black stamps remove 75% of current health once per seal activation, bypassing armor/shields but respecting invulnerability and green protection, leaving at least one health. Shape markings distinguish hazards. The shield outline and closing rim identify temporary shelter from marked volleys; use it to keep firing, or dodge the warned fan in open ground.";
+    "Read the ordered marks and the notched future-safe seal. Wait for its green interior before entering. Follow the new ground origin after a late patrol; advanced appeals warn a fresh set after the old field expires. Purple stamps hit twice as hard as red. The first successful purple contact per player per seal also removes 15% of current health, bypassing armor/shield capacity, and applies three seconds of nonstacking poison (two base damage each half-second) and 35% walking slow; dash speed remains unchanged. Cleanse supplies and Medic cleansing abilities remove both. Green shelter and invulnerability prevent application and poison ticks. Brutal shelter lasts at least 3.5 seconds and Crazed at least five seconds, extending if needed until half a second after the final possible fan echo reaches the rim; black stamps remove 75% of current health once per seal activation, bypassing armor/shields but respecting invulnerability and green protection, leaving at least one health. Shape markings distinguish hazards. The shield outline and closing rim identify temporary shelter from marked volleys; use it to keep firing, or dodge the warned fan in open ground.";
   b.signature.parameters.appeal = structuredClone(clerkAppealRules);
   for (const [form, phases] of [
     ["normal", b.phases],
@@ -68,7 +75,12 @@ export function applyClerkAppeal(catalog) {
   ])
     for (const [i, p] of phases.entries()) {
       p.phaseNameKey = "boss.quarantine-clerk.phase." + i;
-      p.reopensStamp = i ? clerkAppealRules.stampCounts[form] : 1;
+      p.reopensStamp =
+        form === "crazed" || (form === "brutal" && i > 0)
+          ? "random"
+          : i
+            ? 3
+            : 1;
       p.stampCount = clerkAppealRules.stampCounts[form];
       p.stampRadius = clerkAppealRules.stampRadii[form];
       p.relocatesBeforeStamps = i > 0;

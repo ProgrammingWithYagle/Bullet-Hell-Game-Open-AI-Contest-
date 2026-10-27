@@ -1,3 +1,4 @@
+import clerkRules from '../shared/clerk-appeal-rules.json';
 import {fieldPosition} from '../shared/field-follow.ts';
 import { earlyWatchMovement } from '../shared/early-watch-director.ts';
 import { endlessSolids, leaveMovingBlocks } from '../shared/endless-director.ts';
@@ -75,7 +76,7 @@ export class Prediction {
           ? 600
           : data.rules.dodgeSpeed
         : p.speed *
-          (now < p.slowUntil ? 0.65 : 1) *
+          Math.min(now < p.slowUntil ? 0.65 : 1, now < p.poisonUntil ? clerkRules.purpleSlowMultiplier : 1) *
           (1 + rally) *
           environment.multiplier *
           terrain.multiplier;

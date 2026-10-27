@@ -106,9 +106,11 @@ test("Clerk forms create exactly3/5/10 separated stamps with red purple black se
       assert(s.every((b) => a.id === b.id || distance(a, b) > radius * 2 + 20));
     }
     const safe = s.find((s) => s.safeAt > 0)!;
-    assert.equal(safe.severity, "red");
+    assert(safe.index >= 1 && safe.index <= count);
+    if (form !== "crazed") assert.equal(safe.index,1);
     if (form !== "normal") {
-      assert(s.every((s) => s.until === safe.until));
+      assert(s.every((s) => s.until <= safe.until));
+      assert(safe.until - safe.safeAt >= Math.ceil(clerkAppealRules.shelterSeconds[form]*30));
       assert(s.every((s) => s.until > s.at));
     }
   }
@@ -129,11 +131,11 @@ test("Brutal/Crazed late appeals replace expired fields, keep caps5/10 and shift
       }
     }
     assert.equal(second.length, first.length);
-    assert(f.c.tick > first[0].until);
+    assert(f.c.tick > Math.max(...first.map(s=>s.until)));
     assert(second.every((s) => first.every((old) => distance(s, old) > 64)));
     const safe = second.find((s) => s.safeAt > 0)!;
-    assert.equal(safe.index, first.length);
-    assert.equal(safe.safeAt - safe.at, 12);
+    assert(safe.index >= 1 && safe.index <= first.length);
+    assert.equal(safe.safeAt - Math.max(...second.map(s=>s.at)),12);
   }
 });
 test("purple stamps deal exactly twice red base damage under the shared half-second contact budget", () => {
@@ -260,19 +262,21 @@ test("graded fields warn two three four bounded volley sources and preserve actu
       }
     }
 });
-test("fifteen-locale advanced help describes form counts V/X, purple severity and once-per-seal black health loss", () => {
+test("fifteen-locale advanced help describes randomized numbered shelter, purple affliction and once-per-seal black health loss", () => {
   for (const l of data.locales) {
     const b = clerkHelp("brutal", l.id),
       c = clerkHelp("crazed", l.id),
       hint = clerkPhaseHint(1, "crazed", l.id);
     assert.notEqual(b, c);
     assert(c.includes("75"));
-    assert(hint.includes("V/X") || hint.includes("V／X"));
+    assert.notEqual(hint,clerkPhaseHint(1,"normal",l.id));
+    assert(b.includes("15%") && c.includes("15%"));
+    assert(b.includes("35%") && c.includes("35%"));
     assert(clerkHelp("normal", l.id).length > 40);
   }
   assert(clerkHelp("brutal", "en").includes("five"));
   assert(clerkHelp("crazed", "en").includes("ten"));
-  assert(clerkHelp("crazed", "en").includes("once per activation"));
+  assert(clerkHelp("crazed", "en").includes("once per seal activation"));
 });
 
 test('all867sampled target/form placements fit complete separated fields and fresh late appeals on all maps',()=>{

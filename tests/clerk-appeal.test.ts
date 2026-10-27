@@ -222,7 +222,8 @@ test("advanced late appeal replaces the expired field with five shifted fully wa
   assert(f.c.tick > first[0].until);
   assert.equal(second[0].at - f.c.tick, 45);
   assert(second.every((s) => first.every((t) => distance(s, t) > 64)));
-  assert.equal(second[4].safeAt, second[4].at + 12);
+  const safe=second.find(s=>s.safeAt>0)!;
+  assert.equal(safe.safeAt,second[4].at+12);
   const locked = JSON.stringify(second);
   f.p.x = 200;
   f.p.y = 200;
@@ -366,7 +367,7 @@ test("fifteen locales and known protocol23 local saves preserve help, form/build
   old.contentRevision =
     "da37e2a0e2beb54343495ce39027211df254fa1c79ab42ec3f3360373ad792db";
   const after = Game.restoreOffline(old).offlineCheckpoint()!;
-  assert.equal(PROTOCOL, 26);
+  assert.equal(PROTOCOL, 27);
   assert.equal(after.contentRevision, CONTENT_REVISION);
   assert.deepEqual(after.player, save.player);
   assert.deepEqual(after.completedBossForms, save.completedBossForms);

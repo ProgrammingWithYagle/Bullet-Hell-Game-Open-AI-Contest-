@@ -1,0 +1,98 @@
+✔ Clerk fixes all289valid target placements and supplies three distinct later appeal positions on actual maps (601.151ms)
+✔ placement stays in the target reachable component rather than choosing through a sealed partition (1.9321ms)
+✔ first-phase stamps lock harmless ordered tells and reopen I exactly when III strikes (3.6472ms)
+✔ late phase marks collision-resolved movement then gives a complete new warning and reopens III after its strike (3.5059ms)
+✔ a newly inserted patrol obstacle changes the actual stop but never removes the complete stamp warning (1.9557ms)
+✔ advanced late appeal replaces the expired field with five shifted fully warned positions (4.0759ms)
+✔ stamp contact sweeps fast crossings, shares a half-second hit budget and expires with its visible geometry (1.9228ms)
+✔ actual Clerk retains damaging stamps, a whole-body safe interior and hostile projectile absorption (35.4776ms)
+✔ actual auxiliary fans occur between clear signature sequences and retain advanced echo density (769.8149ms)
+✔ phase/stagger/victory/timeout/wipe remove stamp protection, pending appeals, paths and echoes (71.3614ms)
+✔ existing stamp casting poses follow real strike order and reduced motion keeps its static authority pose (25.804ms)
+✔ fifteen locales and known protocol23 local saves preserve help, form/build history and strict boundaries (111.4649ms)
+✔ real owner/observer clients receive Clerk patrol, phase sound and independent appeal warnings then clear them on defeat (1250.3816ms)
+✔ Clerk forms create exactly3/5/10 separated stamps with red purple black severity and full warnings (12.5883ms)
+✔ Brutal/Crazed late appeals replace expired fields, keep caps5/10 and shift every new center (16.6284ms)
+✔ purple stamps deal exactly twice red base damage under the shared half-second contact budget (3.6148ms)
+✔ actual black seal removes75percent of current health once per activation while armor and shield capacity remain (42.2909ms)
+✔ black current-health loss is nonlethal down to1HP and never heals a pre-existing fractional health value (53.2947ms)
+✔ dash invulnerability delays a black seal hit without consuming its one-hit activation budget (7.5315ms)
+✔ reentering the same black seal cannot drain again but a different black seal has its own earned hit (7.3762ms)
+✔ green whole-body shelter prevents current-health curses as well as ordinary hostile damage (7.8617ms)
+✔ graded fields warn two three four bounded volley sources and preserve actual reopen-before-release clocks (6.8171ms)
+✖ fifteen-locale advanced help describes randomized numbered shelter, purple affliction and once-per-seal black health loss (15.6768ms)
+✔ all867sampled target/form placements fit complete separated fields and fresh late appeals on all maps (1682.9757ms)
+✔ each Clerk reopening precedes its form-specific locked seven-shot fans with a full warning and no tracking (23.6342ms)
+✔ shelter fans and their isolated cue arrays remain bounded through advanced repeats and reset (12.8707ms)
+✔ all289valid map targets and both seal sets leave time for a central fan shot to meet the open shelter (552.8297ms)
+✔ actual Normal Clerk fires while its seal is useful and real rim interceptions prevent injury (41.1079ms)
+✔ a wall encountered before a seal absorbs the shot without inventing a rim impact (12.7558ms)
+✔ actual interception cues are capped at48, sit on the rim, expire and cancel with the phase (11.8162ms)
+✔ only the known protocol24 local Practice/profile revision migrates while exact form and build history survives (19.8412ms)
+✔ an exposed survivor on a warned fan wing takes actual projectile damage outside both the seal and stamp (12.1092ms)
+✔ Standard preserves I then III, Brutal randomizes only phase two, and both Crazed phases can choose every numbered seal (1889.6896ms)
+✔ the randomly chosen shelter is locked before the first strike and each fresh late appeal chooses independently (14.8652ms)
+✔ every possible random shelter covers its last possible fan echo arrival plus a half-second exit margin (80.691ms)
+✔ actual Crazed green shelter absorbs late repeated shots after the former2.5second window and protects its occupant (232.9918ms)
+✔ real purple contact in both advanced forms removes15percent current health through armor and shield capacity and applies poison (82.6057ms)
+✖ reentering the same purple seal cannot take another percentage hit or refresh poison, while another purple seal can (51.6642ms)
+✔ invulnerability prevents purple affliction without consuming the once-per-seal budget (30.3559ms)
+✔ poison deals exactly six half-second ticks, expires after three seconds and grants no fresh damage invulnerability (32.1598ms)
+✔ fresh poison refreshes duration without stacking tick potency or postponing the next pending tick (21.4139ms)
+✔ green shelter prevents new purple affliction and ongoing poison ticks; invulnerable skipped ticks never accumulate (83.0434ms)
+✔ authoritative and predicted walking slow match at35percent, dash keeps full speed and poison expiry restores movement (34.6468ms)
+✔ an antidote consumes at full health to cleanse poison and slow; ordinary Medic cleanse removes it from nearby allies (14.4831ms)
+✔ downing victory timeout and wipe clear all poison timers before revival or another encounter (91.2517ms)
+✔ all fifteen source catalogs agree with runtime help on randomized shelter,15percent first hit and35percent slow (74.4057ms)
+✔ only known protocol26 local Practice and profile state migrates, preserving exact forms and build history (22.3816ms)
+✔ real owner and observer receive identical random shelter, poison deadline,15percent loss and subsequent antidote cleanse (672.3134ms)
+ℹ tests 48
+ℹ suites 0
+ℹ pass 46
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6699.687
+
+✖ failing tests:
+
+test at tests\clerk-grades.test.ts:1:7192
+✖ fifteen-locale advanced help describes randomized numbered shelter, purple affliction and once-per-seal black health loss (15.6768ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(clerkHelp("crazed", "en").includes("once per activation"))
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\clerk-grades.test.ts:279:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\clerk-venom.test.ts:1:6417
+✖ reentering the same purple seal cannot take another percentage hit or refresh poison, while another purple seal can (51.6642ms)
+  AssertionError [ERR_ASSERTION]: 85 != 72.25
+      at close (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\clerk-venom.test.ts:18:34)
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\clerk-venom.test.ts:114:2)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

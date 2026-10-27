@@ -359,6 +359,8 @@ test('Serum Relay heals and cleanses three unique targets through a chain beyond
     a.x = 800 - i * 120;
     a.health = 20;
     a.slowUntil = 1e9;
+    a.poisonUntil = a.poisonNextAt = 1e9;
+    a.poisonDamage = 4;
   }
   press(g, { e: true });
   const amount = 20 * g.stats(p).ability;
@@ -366,6 +368,9 @@ test('Serum Relay heals and cleanses three unique targets through a chain beyond
     const a = g.players.get('a' + i)!;
     close(a.health, 20 + amount);
     assert.equal(a.slowUntil, 0);
+    assert.equal(a.poisonUntil, 0);
+    assert.equal(a.poisonNextAt, 0);
+    assert.equal(a.poisonDamage, 0);
   }
   assert.equal(g.players.get('a4')!.health, 20);
   assert.equal(
@@ -606,7 +611,7 @@ test('issued protocol-17 local saves retain skill node ownership and progression
     'd4419d906f67286576ca3f6795e03a921269aff861b36e2e82ce68aa2e501775';
   const restored = Game.restoreOffline(save),
     after = [...restored.players.values()][0];
-  assert.equal(PROTOCOL, 26);
+  assert.equal(PROTOCOL, 27);
   assert.equal(after.coins, 901);
   assert.deepEqual(after.skills, p.skills);
   assert(hasTalent(after, 'breach-cadence'));

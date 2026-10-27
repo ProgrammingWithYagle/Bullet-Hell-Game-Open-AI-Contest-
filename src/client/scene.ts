@@ -1,3 +1,4 @@
+import clerkRules from '../shared/clerk-appeal-rules.json';
 import {smallWakesPose,drawSmallWakes} from './small-wakes-presentation.ts';
 import { earlyWatchPose, drawEarlyWatch } from './early-watch-presentation.ts';
 import { EndlessPresentation } from './endless-presentation.ts';
@@ -1150,7 +1151,13 @@ export class CombatScene extends Phaser.Scene {
                 ? 1
                 : 0.4,
       );
-      sprite.setTint(p.status === 'downed' ? 0xc58d7c : 0xffffff);
+      sprite.setTint(p.status === 'downed' ? 0xc58d7c : now < p.poisonUntil ? 0xd3a9e7 : 0xffffff);
+      if (p.status === 'active' && now < p.poisonUntil) {
+        const x=p.x+28,y=p.y-20;
+        f.lineStyle(2,0xd3a9e7,1).strokePoints([new Phaser.Math.Vector2(x,y-10),new Phaser.Math.Vector2(x-9,y+7),new Phaser.Math.Vector2(x+9,y+7)],true);
+        f.lineBetween(x-3,y-2,x-3,y+3).lineBetween(x+3,y-2,x+3,y+3);
+        f.lineStyle(3,0xd3a9e7,.9).lineBetween(x-10,y+12,x-10+20*Math.max(0,Math.min(1,(p.poisonUntil-now)/(clerkRules.purplePoisonSeconds*30))),y+12);
+      }
       this.shadows.fillStyle(0x10201d, 0.35).fillEllipse(p.x, p.y + 4, 38, 14);
       if (p.id === this.localId) f.lineStyle(2, 0xf5e6af, 0.9).strokeEllipse(p.x, p.y + 4, 42, 20);
       if (this.hitboxes)

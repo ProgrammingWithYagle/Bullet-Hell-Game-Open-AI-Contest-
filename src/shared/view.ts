@@ -46,6 +46,7 @@ export type PlayerView = {
   dashX: number;
   dashY: number;
   slowUntil: number;
+  poisonUntil: number;
   dodgeCooldown: number;
 };
 export type View = {
@@ -135,6 +136,7 @@ export function viewOf(g: Game, owner: string): View {
       dashX: p.dashX,
       dashY: p.dashY,
       slowUntil: p.slowUntil,
+      poisonUntil: p.poisonUntil,
       dodgeCooldown: g.stats(p).dodgeCooldown,
     })),
     boss: { ...g.boss },

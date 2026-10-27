@@ -86,6 +86,8 @@ type Stamp = Extract<BossCue, { kind: 'stamp' }>;
 export type SignatureContext = {
   paused?: boolean;
   auxiliaryBusy?: boolean;
+  random?(): number;
+  purpleStamp?(id:string, damage:number, first:boolean): boolean;
   variant?: 'normal' | 'brutal' | 'crazed';
   damageCurrentHealth?(id: string, fraction: number, minimumHealth: number): boolean;
   hazardCircles?: {x:number;y:number;radius:number}[];

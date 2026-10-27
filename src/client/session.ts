@@ -411,6 +411,7 @@ function networkView(s: WorldState): View {
     dashX: p.dashX,
     dashY: p.dashY,
     slowUntil: p.slowUntil,
+    poisonUntil: p.poisonUntil,
     dodgeCooldown: p.dodgeCooldown,
     ...JSON.parse(p.build),
   }));

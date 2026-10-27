@@ -1,4 +1,6 @@
 import tuning from "./clerk-appeal-rules.json";
+import catalog from "../../content/catalog.json";
+import { Random } from "./random.ts";
 import { clerkStampCenters } from "./clerk-placement.ts";
 import { DT, HZ, type Vec } from "./protocol.ts";
 import {
@@ -68,6 +70,8 @@ export class ClerkAppeal {
   private variant: "normal" | "brutal" | "crazed" = "normal";
   private previousCenters: Vec[] = [];
   private blackContacts = new Map<number, Set<string>>();
+  private purpleContacts = new Map<number, Set<string>>();
+  private readonly fallbackRandom = new Random(0xc1e4);
   private cycle = 0;
   private batch = 0;
   private repeatAt = 0;
@@ -88,6 +92,7 @@ export class ClerkAppeal {
     this.attack = null;
     this.contacts.clear();
     this.blackContacts.clear();
+    this.purpleContacts.clear();
     this.previousCenters = [];
     this.nextSignatureAt = 0;
   }
@@ -239,8 +244,65 @@ export class ClerkAppeal {
         ),
       spacing = ticks(tuning.stampSpacing[this.variant]),
       last = first + spacing * (count - 1),
-      safeIndex = this.phase ? count - 1 : 0,
+      safeIndex =
+        this.variant === "crazed" ||
+        (this.variant === "brutal" && this.phase > 0)
+          ? Math.min(
+              count - 1,
+              Math.floor((c.random?.() ?? this.fallbackRandom.next()) * count),
+            )
+          : this.phase
+            ? count - 1
+            : 0,
       safeAt = last + (this.phase ? ticks(tuning.lateReopenDelaySeconds) : 0);
+    const sources = centers
+        .map((p, index) => ({ p, index }))
+        .filter(
+          ({ index }) =>
+            index !== safeIndex &&
+            tuning.stampSeverities[this.variant][index] !== "black",
+        )
+        .slice(0, tuning.volleyOrigins[this.variant]),
+      speedFor = (p: Vec) =>
+        clamp(
+          distance(p, centers[safeIndex]) / tuning.volleyTravelSeconds,
+          tuning.volleyMinimumSpeed,
+          tuning.volleyMaximumSpeed,
+        ),
+      multiplier =
+        this.variant === "crazed"
+          ? catalog.rules.crazed.projectileMultiplier
+          : catalog.rules.brutal.projectileMultiplier,
+      echoTicks = this.advanced
+        ? ticks(
+            catalog.rules.brutal.echoDelaySeconds +
+              Math.max(0, Math.ceil(multiplier) - 2) *
+                catalog.rules.brutal.echoWaveSpacingSeconds,
+          )
+        : 0,
+      shelterUntil =
+        safeAt +
+        (this.advanced
+          ? Math.max(
+              ticks(tuning.shelterSeconds[this.variant]),
+              ...sources.map(
+                ({ p }) =>
+                  ticks(tuning.volleyAfterOpenSeconds) +
+                  echoTicks +
+                  Math.ceil(
+                    (Math.max(
+                      0,
+                      distance(p, centers[safeIndex]) -
+                        radius -
+                        tuning.volleyRadius,
+                    ) /
+                      speedFor(p)) *
+                      HZ,
+                  ) +
+                  ticks(tuning.shelterTailSeconds),
+              ),
+            )
+          : ticks(tuning.activeSeconds));
     for (const [index, p] of centers.entries())
       this.stamps.push({
         kind: "stamp",
@@ -253,24 +315,17 @@ export class ClerkAppeal {
         index: index + 1,
         at: first + spacing * index,
         until:
-          (this.advanced || index === safeIndex
-            ? safeAt
-            : first + spacing * index) + ticks(tuning.activeSeconds),
+          index === safeIndex
+            ? shelterUntil
+            : (this.advanced ? safeAt : first + spacing * index) +
+              ticks(tuning.activeSeconds),
         safeAt: index === safeIndex ? safeAt : 0,
       });
-    // The two red seals fire toward the green shelter. Warning origins and angles
+    // Marked nonblack seals fire toward the green shelter. Warning origins and angles
     // lock with the stamps; reopening precedes release, so its purpose is visible.
     const shelter = centers[safeIndex],
       releaseAt = safeAt + ticks(tuning.volleyAfterOpenSeconds);
-    let sourceCount = 0;
-    for (const [index, origin] of centers.entries()) {
-      if (
-        index === safeIndex ||
-        tuning.stampSeverities[this.variant][index] === "black" ||
-        sourceCount >= tuning.volleyOrigins[this.variant]
-      )
-        continue;
-      sourceCount++;
+    for (const { p: origin } of sources) {
       const aim = Math.atan2(shelter.y - origin.y, shelter.x - origin.x);
       this.volleys.push({
         released: false,
@@ -300,7 +355,7 @@ export class ClerkAppeal {
     this.batch++;
     this.repeatAt =
       this.advanced && this.phase && this.batch === 1
-        ? safeAt + ticks(tuning.activeSeconds + tuning.advancedSetGapSeconds)
+        ? shelterUntil + ticks(tuning.advancedSetGapSeconds)
         : 0;
     this.stage = "stamps";
     this.patrol = null;
@@ -379,18 +434,25 @@ export class ClerkAppeal {
         if (!hitPlayers)
           this.blackContacts.set(hit.id, (hitPlayers = new Set()));
         hitPlayers.add(p.id);
-      } else
-        c.damage(
-          p.id,
-          (hit.severity === "purple"
-            ? tuning.purpleStampDamage
-            : tuning.stampDamage) * c.damageScale,
-        );
+      } else if (hit.severity === "purple") {
+        const first = !this.purpleContacts.get(hit.id)?.has(p.id),
+          damage = tuning.purpleStampDamage * c.damageScale,
+          applied = c.purpleStamp
+            ? c.purpleStamp(p.id, damage, first)
+            : (c.damage(p.id, damage), true);
+        if (!applied) continue;
+        if (first) {
+          let players = this.purpleContacts.get(hit.id);
+          if (!players) this.purpleContacts.set(hit.id, (players = new Set()));
+          players.add(p.id);
+        }
+      } else c.damage(p.id, tuning.stampDamage * c.damageScale);
       this.contacts.set(p.id, c.tick + ticks(tuning.contactSeconds));
     }
     this.stamps = this.stamps.filter((s) => c.tick < s.until);
-    for (const id of this.blackContacts.keys())
-      if (!this.stamps.some((s) => s.id === id)) this.blackContacts.delete(id);
+    for (const contacts of [this.blackContacts, this.purpleContacts])
+      for (const id of contacts.keys())
+        if (!this.stamps.some((s) => s.id === id)) contacts.delete(id);
     if (this.stage === "stamps" && !this.stamps.length && !this.repeatAt) {
       this.stage = "rest";
       this.restUntil = c.tick + ticks(tuning.recoverySeconds);

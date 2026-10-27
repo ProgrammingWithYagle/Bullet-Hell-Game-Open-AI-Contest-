@@ -34,6 +34,7 @@ export const PlayerState = schema(
     dashX: t.float32().default(0),
     dashY: t.float32().default(-1),
     slowUntil: t.uint32().default(0),
+    poisonUntil: t.uint32().default(0),
     dodgeCooldown: t.float32().default(1),
   },
   'GravePlayer',

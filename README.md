@@ -1,6 +1,6 @@
 # Grave Accord
 
-A cooperative gothic bullet-hell game in active development. Current feature branch: build **2026.10.27-banked-verdicts**, protocol **26**, 66 distinct executable bosses with individual original themes, seven classes, 378 skills, 28 weapons and six different map layouts/sizes.
+A cooperative gothic bullet-hell game in active development. Current feature branch: build **2026.10.27-clerk-venom**, protocol **27**, 66 distinct executable bosses with individual original themes, seven classes, 378 skills, 28 weapons and six different map layouts/sizes.
 
 All sixty-six identities execute, including nine scheduled Endless exclusives and the optional Uncounted finale. Five modes work offline and in local online rooms: five-fight Quarantine Run, ten-fight Midnight Circuit, sixteen-fight Black Bell Pilgrimage, three-fight Grand Raid and uncapped Endless Vigil. The in-game main menu has a dated changelog generated from the same history as [CHANGELOG.md](CHANGELOG.md) and the [GitHub Wiki changelog](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/wiki/Changelog).
 
@@ -42,8 +42,10 @@ Full verification also uses Python 3 with the pinned Pillow dependency: `python 
 
 [Ratcatcher Roving Muster](docs/RATCATCHER_MUSTER.md) adds a late patrol before new locked scent lanes, bounded rat routes around cover and one/two advanced warned whistle rings. Original Standard combat numbers and all artwork/music remain. Human review is open.
 
-[Clerk Appeal Circuit](docs/CLERK_APPEAL.md) fixes 61 missed stamp placements, relocates before late warnings, changes the Standard reopened seal from I to III; the newer graded follow-up uses V/X and five/ten shifted advanced positions. Original Standard combat numbers and all assets remain. Human review is open.
+[Clerk Appeal Circuit](docs/CLERK_APPEAL.md) fixes 61 missed stamp placements, relocates before late warnings, changes the Standard reopened seal from I to III; advanced forms use five/ten shifted positions, with the current follow-up randomizing the future green number in Brutal phase two and every Crazed field. Original Standard combat numbers and all assets remain. Human review is open.
 
 [Visible Clerk shelter](docs/CLERK_SHELTER.md) pairs reopening with a warned volley, actual rim impacts and a closing ring. Development instructions stay visible; optional Baby-only instructions are a final-product gate.
 
 [Banked returns and graded seals](docs/BANKED_VERDICTS.md) adds a distinct Tollkeeper late return and the requested Clerk 3/5/10 fields, purple severity and once-per-seal black current-health curse. Instructions stay visible during testing. Human balance/readability review remains open.
+
+[Clerk venom and lasting shelter](docs/CLERK_VENOM.md) extends advanced green protection through the final marked echo, randomizes the warned safe number, and adds purple poison, slow and a once-per-seal 15% current-health hit. Standard retains its existing seal order/timing. Development instructions stay visible.
