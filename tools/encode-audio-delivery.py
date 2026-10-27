@@ -20,7 +20,7 @@ def main():
     city=next(f for f in proof['files'] if f['path'].endswith('/city-wake.wav'))
     sources=[{'id':t['id'],'bossId':t['bossId'],'path':t['path'],'sha256':t['sha256']} for t in boss['tracks']]
     sources.append({'id':'city-wake','bossId':None,'path':city['path'],'sha256':city['sha256']})
-    assert len(sources)==64 and len({t['id'] for t in sources})==64
+    assert len(sources)==len(boss['tracks'])+1 and len({t['id'] for t in sources})==len(sources)
     folder=ROOT/'assets/production/audio/delivery';folder.mkdir(parents=True,exist_ok=True)
     entries=[];audits=[]
     for source in sources:
@@ -51,7 +51,7 @@ def main():
     if args.verify_only:
         previous=json.loads(manifest_path.read_text(encoding='utf-8'));assert previous['tracks']==entries,'Delivered manifest differs from verified files'
     else:manifest_path.write_text(json.dumps(manifest,indent=2)+'\n',encoding='utf-8',newline='\n')
-    report={'createdAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'passed':True,'tracks':64,'masterBytes':sum(e['masterBytes'] for e in entries),'deliveryBytes':sum(e['deliveryBytes'] for e in entries),'sourceSha256':manifest['sourceSha256'],'encoder':manifest['encoder'],'humanListeningReviewed':False,'browserDecodeReviewed':False,'checks':audits,'limits':['FFmpeg decode verifies exact sample count, SNR, signal levels, no clipping and circular sample-step bounds. It does not establish browser/device decode behavior or perceptual listening approval.','Runtime validates decoded duration and retains the original PCM fallback whenever compressed decoding fails or has unexpected padding.','Original PCM masters remain bundled for fallback; this reduces preferred music transfers, not the total high-quality offline package size.']}
-    (ROOT/'reviews/early-watch-integration-2026-10-25/audio-delivery.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n')
-    print(json.dumps({'passed':True,'tracks':64,'masterBytes':report['masterBytes'],'deliveryBytes':report['deliveryBytes'],'reductionPercent':round(100*(1-report['deliveryBytes']/report['masterBytes']),2)}))
+    report={'createdAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'passed':True,'tracks':len(entries),'masterBytes':sum(e['masterBytes'] for e in entries),'deliveryBytes':sum(e['deliveryBytes'] for e in entries),'sourceSha256':manifest['sourceSha256'],'encoder':manifest['encoder'],'humanListeningReviewed':False,'browserDecodeReviewed':False,'checks':audits,'limits':['FFmpeg decode verifies exact sample count, SNR, signal levels, no clipping and circular sample-step bounds. It does not establish browser/device decode behavior or perceptual listening approval.','Runtime validates decoded duration and retains the original PCM fallback whenever compressed decoding fails or has unexpected padding.','Original PCM masters remain bundled for fallback; this reduces preferred music transfers, not the total high-quality offline package size.']}
+    (ROOT/'reviews/small-wakes-2026-10-26/audio-delivery.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n')
+    print(json.dumps({'passed':True,'tracks':len(entries),'masterBytes':report['masterBytes'],'deliveryBytes':report['deliveryBytes'],'reductionPercent':round(100*(1-report['deliveryBytes']/report['masterBytes']),2)}))
 if __name__=='__main__':main()

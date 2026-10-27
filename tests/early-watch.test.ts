@@ -436,14 +436,14 @@ test("real Soldier fire destroys each Early Watch weak point through the shared 
   }
 });
 
-test("personal profile export and import retain all sixty-two ordinary discoveries", () => {
+test("personal profile export and import retain all sixty-five ordinary discoveries", () => {
   const g = new Game({ mode: "endless", seed: 434, maxPlayers: 1 });
   g.addPlayer("solo", "Mara", "soldier");
   const ids = data.bosses.filter((b) => !b.secret).map((b) => b.id as BossId);
-  assert.equal(ids.length, 62);
-  g.encounter = 62;
+  assert.equal(ids.length, 65);
+  g.encounter = 65;
   g.players.get("solo")!.progress = {
-    clears: 62,
+    clears: 65,
     rescues: 0,
     firstEncounter: 0,
     campaignClears: 0,
@@ -458,6 +458,6 @@ test("personal profile export and import retain all sixty-two ordinary discoveri
     };
   recordProfileView(viewOf(g, "solo"), "solo", store);
   const profile = loadProfile(store);
-  assert.equal(profile.runs[0].bossIds.length, 62);
+  assert.equal(profile.runs[0].bossIds.length, 65);
   assert.deepEqual(parseProfile(exportProfile(store)).runs[0].bossIds, ids);
 });

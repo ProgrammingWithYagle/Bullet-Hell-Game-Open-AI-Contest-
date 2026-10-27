@@ -13,10 +13,10 @@ import { PROTOCOL, type BossId, type ModeId } from '../src/shared/protocol.ts';
 import { viewOf } from '../src/shared/view.ts';
 import labels from '../src/client/threat-labels.json';
 
-test('all sixty-three identities have one fixed classification and exactly one above-Calamity secret; the minimum ordinary roster needs eighty-eight more original bosses', () => {
+test('all sixty-six identities have one fixed classification and exactly one above-Calamity secret; the minimum ordinary roster needs eighty-five more original bosses', () => {
   const profiles = bossThreatProfiles.entries;
-  assert.equal(profiles.length, 63);
-  assert.equal(new Set(profiles.map((p) => p.bossId)).size, 63);
+  assert.equal(profiles.length, 66);
+  assert.equal(new Set(profiles.map((p) => p.bossId)).size, 66);
   assert.deepEqual(new Set(profiles.map((p) => p.bossId)), new Set(data.bosses.map((p) => p.id)));
   for (const p of profiles) {
     assert(Number.isInteger(p.level) && p.level >= 1 && p.level <= 11);
@@ -36,7 +36,7 @@ test('all sixty-three identities have one fixed classification and exactly one a
         0,
         3 - profiles.filter((p) => p.level === level && p.subtier === subtier).length,
       );
-  assert.equal(deficit, 88);
+  assert.equal(deficit, 85);
   assert.equal(10 * 5 * 3 + 1, 151);
 });
 test('five subtiers have unambiguous codes and Brutal uses its own B marker, with complete labels in every authored locale', () => {
@@ -162,7 +162,7 @@ test('protocol-thirteen Practice migration reclassifies boundary contracts witho
   const migrated = Game.restoreOffline(old).offlineCheckpoint()!;
   assert.equal(JSON.stringify(old), original);
   assert.equal(migrated.protocolVersion, PROTOCOL);
-  assert.equal(PROTOCOL, 19);
+  assert.equal(PROTOCOL, 20);
   assert.equal(migrated.settings.runId, old.settings.runId);
   assert.deepEqual(migrated.player.progress, old.player.progress);
   assert.equal(migrated.player.coins, old.player.coins);

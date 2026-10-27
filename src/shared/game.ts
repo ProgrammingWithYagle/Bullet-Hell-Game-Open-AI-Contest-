@@ -5,6 +5,7 @@ import {fieldPosition} from './field-follow.ts';
 import {phaseBreakPoints} from './phase-break-layout.ts';
 import { BrutalVolley } from './brutal-volley.ts';
 import { encounterAssists, combatReviveFraction, phaseShieldBreak, encounterPhases, bossPatternPhase, encounterVariant } from './encounter-policy.ts';
+import {smallWakesIds} from './small-wakes-director.ts';
 import { earlyWatchBossIds, earlyWatchMovement } from './early-watch-director.ts';
 import { constablePattern, moveConstable } from './constable-signature.ts';
 import { freshProgress, validProgress, type RunProgress } from './run-progress.ts';
@@ -79,6 +80,7 @@ const ticks = (s: number) => Math.ceil(s * HZ);
 const rule = data.rules;
 export const arena = data.arenas.find((x) => x.id === 'gatehouse')!;
 export const implementedBossIds: readonly BossId[] = [
+  ...smallWakesIds,
   ...earlyWatchBossIds,
   'constable',
   'lantern-warden',
@@ -1823,7 +1825,7 @@ export class Game {
       if (this.boss.id !== 'lantern-warden') {
         this.warnings.length = 0;
         if (assist) for (const shot of this.shots.values()) if (shot.owner === 'hostile') this.removeShot(shot);
-        if (this.boss.id === 'constable' || this.director.earlyWatch.handles(this.boss.id)) {
+        if (this.boss.id === 'constable' || this.director.earlyWatch.handles(this.boss.id) || this.director.smallWakes.handles(this.boss.id)) {
           this.boss.castAt = this.boss.castReleaseAt = this.boss.castEndsAt = 0;
           if (assist) for (let i = this.fields.length - 1; i >= 0; i--)
             if (this.fields[i].owner === 'hostile') this.fields.splice(i, 1);
@@ -1867,6 +1869,7 @@ export class Game {
       } else if (now >= a.until) this.accord = null;
     }
     if (now < this.boss.staggerUntil) {
+      if(this.director.smallWakes.handles(this.boss.id)){this.director.smallWakes.reset(this.boss.id);this.brutalVolley.clear();}
       this.signatures = [];
       this.wardenPatrol.clear();
       return;
@@ -1880,6 +1883,8 @@ export class Game {
       this.attackAt[0] = Math.max(this.attackAt[0] ?? now, this.director.endless.nextSignatureAt);
     if (this.director.earlyWatch.handles(this.boss.id))
       this.attackAt[0] = Math.max(this.attackAt[0] ?? now, this.director.earlyWatch.nextSignatureAt);
+    if (this.director.smallWakes.handles(this.boss.id))
+      this.attackAt[0] = Math.max(this.attackAt[0] ?? now, this.director.smallWakes.nextSignatureAt);
     const attacks = this.bossPhases()[this.boss.phase].attacks;
     for (let index = 0; index < attacks.length; index++)
       if (
@@ -1920,7 +1925,10 @@ export class Game {
             (1 +
               Math.min(rule.endless.maximumSpeedGrowth, cycle * rule.endless.speedGrowthPerCycle)),
           damage = attack.damage * this.bossDamageScale();
-        if (this.director.earlyWatch.cast(this.signatureContext(), target, { ...attack, speed, count })) {
+        if (this.director.smallWakes.cast(this.signatureContext(), target, { ...attack, speed, count })) {
+          this.attackAt[index] = this.director.smallWakes.nextSignatureAt;
+          this.boss.castEndsAt = this.director.smallWakes.lastReleaseAt + ticks(.35);
+        } else if (this.director.earlyWatch.cast(this.signatureContext(), target, { ...attack, speed, count })) {
           this.attackAt[index] = this.director.earlyWatch.nextSignatureAt;
           this.boss.castEndsAt = this.director.earlyWatch.lastReleaseAt + ticks(.35);
         } else if (this.boss.id === 'constable') {

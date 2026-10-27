@@ -3,6 +3,7 @@ import {createGameServer} from '../src/server/index.ts';
 import {liveRooms} from '../src/server/GraveRoom.ts';
 import {Session} from '../src/client/session.ts';
 import {parseProfile,exportProfile,recordProfileView,loadProfile} from '../src/client/profile.ts';
+import {smallWakesIds} from '../src/shared/small-wakes-director.ts';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {Game,data,type Player} from '../src/shared/game.ts';
@@ -108,7 +109,7 @@ test('all entry identities have two half-health phases retaining late authored m
     const phases=encounterPhases(b.id,form),entry=bossThreat(b.id).level<=2;
     assert.equal(phases.length,entry?2:form==='normal'?3:4);
     assert.deepEqual(phaseMarkers(b.id,form),phases.slice(1).map(p=>p.healthThreshold*100));
-    if(entry){assert.deepEqual(phases.map(p=>p.healthThreshold),[1,.5]);assert.equal(bossPatternPhase(b.id,form,1),form==='normal'?2:3);}
+    if(entry){assert.deepEqual(phases.map(p=>p.healthThreshold),[1,.5]);assert.equal(bossPatternPhase(b.id,form,1),smallWakesIds.some(id=>id===b.id)?1:form==='normal'?2:3);}
   }
 });
 test('Brutal repeats locked trajectories twice at entry threat and three times at high threat without recursive echoes',()=>{

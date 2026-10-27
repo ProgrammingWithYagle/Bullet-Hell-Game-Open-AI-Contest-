@@ -193,3 +193,9 @@ Brutal alternates sweep direction and repeats recovery fans in two warned locked
 ![Four original Warden patrol poses, a sprite reference rather than gameplay capture](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/warden-patrol.jpg)
 
 Four new poses preserve the exact native/request, whole lantern ownership and all source RGBA. Technical packing adjusts world scale to retain the established body height; earlier Warden artwork stays unchanged. [Actual authority, art and verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/WARDEN_PATROL.md). Rendered/human/device/native-language/listening acceptance remains open.
+
+## Small Wakes runtime motion
+
+![Thirty-six selected Small Wakes idle, attack and defeat poses; static composite](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/small-wakes-motion.jpg)
+
+Ten unchanged natives/requests preserve nine selected sheets and one superseded Kettle idle. One scale per identity and complete alpha-bearing RGBA ownership retain all readable connected figures and faint edges. The lower kettle attack bridge has an explicit ownership boundary; independent reconstruction checks every selected source pixel, anchor, atlas and fallback crop. Total selected runtime motion is 1,542 poses. This image is a static composite; rendered motion and human/device acceptance remain open.

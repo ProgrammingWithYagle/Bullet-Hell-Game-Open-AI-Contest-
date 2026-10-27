@@ -307,7 +307,7 @@ test('Uncounted bounds four ledger echoes, warns its relocation, creates offset 
   assert(f.summons.every((cap) => cap === 8));
 });
 test('seeded bags guarantee exclusive fights every fourth slot, readable openings and twelve-completion repeat protection', () => {
-  assert.equal(routeBossIds.length, 53);
+  assert.equal(routeBossIds.length, 56);
   for (let seed = 1; seed <= 16; seed++) {
     const s = new EndlessSchedule(),
       rng = new Random(seed),
@@ -333,7 +333,7 @@ test('seeded bags guarantee exclusive fights every fourth slot, readable opening
       s.record(id);
       assert(validEndlessHistory(s.state));
     }
-    assert.equal(seen.size, 62);
+    assert.equal(seen.size, 65);
   }
 });
 test('actual Endless route preserves bags, history, seeded choices and power caps across restored boundaries', () => {

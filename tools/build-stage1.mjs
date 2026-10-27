@@ -1,3 +1,4 @@
+import {addSmallWakes} from '../content/source/small-wakes.mjs';
 import {applyWardenPatrol} from '../content/source/warden-patrol.mjs';
 import {addClassTalents} from '../content/source/class-talents.mjs';
 import { applyEncounterPacing } from '../content/source/encounter-pacing.mjs';
@@ -201,6 +202,7 @@ const bosses=expandBosses(originalBosses,modes);
 addBossVariants(bosses);
 reviseConstable(bosses);
 addEarlyWatch(bosses,bossPools);
+addSmallWakes(bosses,bossPools);
 
 const mutationSpecs = [
   ['glass-pact','Glass Pact','Half maximum health; triple weapon damage.',{maxHealth:0.5,damage:3},['salt-circle']],

@@ -1,6 +1,26 @@
 # Changelog
 
-Development build **2026.10.26-warden-patrol**, protocol 19. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.26-small-wakes**, protocol 20. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-26 — Candle Snail, Cobble Crab and Mourning Kettle join the ordinary roster
+
+### Three individual two-phase encounters
+
+- Candle Snail 1-- lays warned wax rails while gliding; half-health Twin Wick leaves a quiet center between two rails. Brutal adds a delayed cross-cut and follow-up fan. Cobble Crab 1- physically closes warned jaws, scuttles sideways and alternates double closures after half health; a finite anchor cancels its linked clamps. Brutal adds an independent anchor and extra closure. Mourning Kettle 1 pours warned steam before crossing beads; Last Service staggers two cold-center lanes. Brutal adds a delayed rear pour.
+- Shared authority owns locked warnings, swept capsule/moving-jaw contact, real collision-resolved body movement and finite linked counterplay. Masonry stops wax/steam; complete jaws remain inside the board. The boss respects live prop footprints. Real weapon hits earn credit and cancel only their linked source. Defeat, timeout, wipe, phase change and stagger clear pressure. Existing bounded Brutal replays create real second waves under the 4,000-hostile cap.
+- Each new identity has two half-health phases, bar markers, a separate transition cue and persistent fifteen-locale response text. All 63 earlier boss definitions, health, damage, deadlines and fixed grades remain unchanged. The roster is now 66: 65 ordinary plus one secret; 85 additional ordinary identities remain toward 150 ordinary plus secrets.
+
+### Whole-pose motion, individual scores and continuity
+
+- Ten exact built-in ImageGen natives/requests preserve nine selected four-pose sheets and the superseded Kettle idle. Thirty-six selected idle/attack/defeat poses use complete alpha-bearing RGBA ownership, measured foot anchors and one scale per identity. The faint Kettle attack bridge and initial metadata failure remain recorded. Independent reconstruction checks every source pixel, atlas transform, preserved hash and complete fallback crop. Total selected runtime motion is 1,542 poses.
+- Slow Wick (G minor, 9/8, 88 BPM), Stones Remember (D minor, 5/4, 104 BPM) and Tea for the Absent (F-sharp minor, 6/8, 92 BPM) have original individual melodies, arrangements and scores. All 63 earlier boss masters and score events remain unchanged. All 67 music deliveries pass frame-count/SNR/headroom/DC/loop-seam decode checks; listening and browser/device decoding remain open.
+- Loading version 5 adds exact live/settled references and three lazy atlases while preserving every previous crop/master. The two-atlas cache bound remains. Protocol 20 carries only known issued protocol 19 local Practice/profile revisions forward with run identity, money, progress and purchases; online/signed state stays strict.
+- The focused suite covers all twelve phase/form combinations, all maps/difficulties, actual contact/emissions, real Soldier weak-point hits, linked cancellation, cleanup, language responses, motion/fallbacks, independent RGBA reconstruction, preserved scores, local migration and owner/observer replication of all three Brutal encounters. Current full-suite/CI/source hashes are recorded separately in the checkpoint; automated evidence does not establish rendered or human acceptance.
+
+### Latest human difficulty rules remain
+
+- Combat revival remains Baby 100%, Easy 50%, Normal 25%, Hard+ disabled through every source. Phase shield circles remain Baby/Easy Standard only: six/three circles and two/three-second channels, absent on Normal+ and all Brutal forms. Baby adds two cover props per map; Hard half, Insane/Hellish none. Hellish retains warned lava and forces every encounter Brutal.
+- The seven class revamps /21 transformations and optional skill map remain implemented. Original-roster quality remains two passes complete, 58 remaining, zero human acceptances. All frozen preview roots/processes, protected main, draft PR, older public Site and immutable Windows archive remain separate. Art, rendered animation, native-language, listening, physical-device, final balance, hosted recovery/rankings, active mixed-progression/WAN/full endurance and coordinated release gates remain open.
 
 ## 2026-10-26 — Lantern Warden patrols and warned Brutal return sweeps
 

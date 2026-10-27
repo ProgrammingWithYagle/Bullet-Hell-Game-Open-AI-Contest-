@@ -122,8 +122,8 @@ test('Brutal has an explicit persistent red treatment and switching to Normal or
     assert.equal(appearance.ringAlpha, 0);
   }
 });
-test('all sixty-three theme pulse clocks match the issued composition tempos without changing theme masters', () => {
-  assert.equal(Object.keys(tempos).length, 63);
+test('all sixty-six theme pulse clocks match the issued composition tempos without changing theme masters', () => {
+  assert.equal(Object.keys(tempos).length, 66);
   for (const score of scores.tracks)
     assert.deepEqual(tempos[score.bossId as keyof typeof tempos], {
       bpm: score.bpm,
@@ -225,7 +225,7 @@ test('music pulse scheduler stays bounded, follows volume/ducking and never burs
 test('one progress ledger keeps local, Wiki and in-game counts aligned with executable content and pending review', () => {
   execFileSync(process.execPath, ['tools/sync-development-progress.mjs', '--check']);
   assert.equal(progress.playableBosses, data.bosses.length);
-  assert.equal(progress.ordinaryBossesRemaining, 88);
+  assert.equal(progress.ordinaryBossesRemaining, 85);
   assert.equal(progress.generatedConcepts, 0);
   assert.equal(progress.ordinaryTarget, 150);
   assert.equal(progress.items.find((i) => i.id === 'boss-quality')!.remaining, 58);

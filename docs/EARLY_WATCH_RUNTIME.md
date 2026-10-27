@@ -1,6 +1,6 @@
 # Early Watch implementation
 
-Current build `2026.10.25-difficulty-pressure`, protocol 16. The original integration checkpoint was protocol 15. Ashen Usher **1--**, Brass Toad **1-** and Ragpicker's Kite **1** are original playable identities. The roster is **63 (62 ordinary, one secret)**; **88** new ordinary identities remain. Existing-boss quality work remains 59; the seven class revamps /21 ability transformations and optional branching view are implemented with rendered/human review open. Counts come from the shared development ledger.
+This page records the original Early Watch integration and its older frozen preview. Its later difficulty-pressure checkpoint was protocol16; current counts/rules/evidence are in [the continuation checkpoint](CHECKPOINT_2026_10_25.md). Build `2026.10.25-difficulty-pressure` used protocol16. The original integration checkpoint was protocol 15. Ashen Usher **1--**, Brass Toad **1-** and Ragpicker's Kite **1** are original playable identities. The roster is **63 (62 ordinary, one secret)**; **88** new ordinary identities remain. Existing-boss quality work remains 59; the seven class revamps /21 ability transformations and optional branching view are implemented with rendered/human review open. Counts come from the shared development ledger.
 
 | Identity | Ordinary phases and counterplay | Extra Brutal mechanics |
 | --- | --- | --- |

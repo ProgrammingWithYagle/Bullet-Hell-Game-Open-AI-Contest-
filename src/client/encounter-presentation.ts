@@ -1,3 +1,4 @@
+import smallWakes from '../../assets/production/motion/small-wakes-library.json';
 import earlyWatch from '../../assets/production/motion/early-watch-library.json';
 import endings from '../../assets/production/motion/endless-library.json';
 import openingDefeats from '../../assets/production/motion/opening-defeats-library.json';
@@ -14,6 +15,7 @@ import civic from '../../assets/production/motion/civic-library.json';
 import type { Boss } from '../shared/game.ts';
 import type { BossCue } from '../shared/boss-director.ts';
 const baseEncounterArt = [
+  ...smallWakes.entries,
   ...earlyWatch.entries,
   ...library.entries,
   ...civic.entries,

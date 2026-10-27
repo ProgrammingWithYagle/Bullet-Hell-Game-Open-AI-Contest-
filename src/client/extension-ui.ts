@@ -1,3 +1,5 @@
+import smallWakesHelp from './small-wakes-help.json';
+import {smallWakesIds} from '../shared/small-wakes-director.ts';
 import earlyWatchHelp from './early-watch-help.json';
 import { earlyWatchBossIds } from '../shared/early-watch-director.ts';
 import messages from './extension-ui.json';
@@ -13,6 +15,10 @@ export function extensionText(
   return text;
 }
 export function signatureHelp(view: View, locale: string) {
+  if(smallWakesIds.some(id=>id===view.boss.id)){
+    const words=(smallWakesHelp[locale as keyof typeof smallWakesHelp]??smallWakesHelp.en) as Record<string,string>;
+    return words[`boss.${view.boss.id}.description`]+(view.boss.variant==='brutal'?' '+words[`boss.${view.boss.id}.brutalHelp`]:'');
+  }
   if (earlyWatchBossIds.some(id=>id===view.boss.id)) {
     const words = (earlyWatchHelp[locale as keyof typeof earlyWatchHelp] ?? earlyWatchHelp.en) as Record<string,string>;
     return words[`boss.${view.boss.id}.description`] + (view.boss.variant === 'brutal' ? ' ' + words[`boss.${view.boss.id}.brutalHelp`] : '');

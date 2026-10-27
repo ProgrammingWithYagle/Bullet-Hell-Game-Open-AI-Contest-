@@ -2945,6 +2945,38 @@
       "width": 1024,
       "height": 1024,
       "caption": "Four original Warden patrol poses at one physical scale; sprite reference, not gameplay capture."
+    },
+    {
+      "path": "images/small-wakes-candle-snail.png",
+      "bytes": 61623,
+      "sha256": "b2d723beab984c46c607d1dcb76cbb052e48d2295db113b0c74a29f4c7c6fdfe",
+      "width": 321,
+      "height": 275,
+      "caption": "candle-snail original live identity crop; static art reference, not engine capture."
+    },
+    {
+      "path": "images/small-wakes-cobble-crab.png",
+      "bytes": 82495,
+      "sha256": "429705a44b095cf683d790be113826cb5bff01563d847860181a653127d530e2",
+      "width": 289,
+      "height": 319,
+      "caption": "cobble-crab original live identity crop; static art reference, not engine capture."
+    },
+    {
+      "path": "images/small-wakes-mourning-kettle.png",
+      "bytes": 87905,
+      "sha256": "b5cd84143ce024a52017b1579b1bebb638b3388437f808af93234b072dc91e96",
+      "width": 305,
+      "height": 307,
+      "caption": "mourning-kettle original live identity crop; static art reference, not engine capture."
+    },
+    {
+      "path": "images/small-wakes-motion.jpg",
+      "bytes": 230286,
+      "sha256": "536060e66fcc427d52346bc32680f8ec1ad3376e606c1891032b8301fd5b0f01",
+      "width": 1320,
+      "height": 1810,
+      "caption": "Thirty-six whole-pose Small Wakes motion frames; composite, not engine capture."
     }
   ],
   "limits": [
@@ -2981,5 +3013,54 @@
     "renderedCapture": false,
     "sourceTool": "tools/build-warden-patrol-wiki.py",
     "sourceToolSha256": "1f0926834c423a70f4936cb279f1600a397406fb2103bfb2ea8ee390648216bb"
+  },
+  "smallWakes": {
+    "sourceTool": "tools/build-small-wakes-wiki.py",
+    "sourceToolSha256": "6b8d3d3ce9909e7dacd2b8cb7f50d88168b1060e9f6c4adee5ed81157aef1fee",
+    "entries": [
+      {
+        "source": "assets/delivery/boss-loading-v5/candle-snail-reference-v3.png",
+        "sourceSha256": "b2d723beab984c46c607d1dcb76cbb052e48d2295db113b0c74a29f4c7c6fdfe",
+        "path": "images/small-wakes-candle-snail.png",
+        "bytes": 61623,
+        "sha256": "b2d723beab984c46c607d1dcb76cbb052e48d2295db113b0c74a29f4c7c6fdfe",
+        "width": 321,
+        "height": 275,
+        "caption": "candle-snail original live identity crop; static art reference, not engine capture."
+      },
+      {
+        "source": "assets/delivery/boss-loading-v5/cobble-crab-reference-v3.png",
+        "sourceSha256": "429705a44b095cf683d790be113826cb5bff01563d847860181a653127d530e2",
+        "path": "images/small-wakes-cobble-crab.png",
+        "bytes": 82495,
+        "sha256": "429705a44b095cf683d790be113826cb5bff01563d847860181a653127d530e2",
+        "width": 289,
+        "height": 319,
+        "caption": "cobble-crab original live identity crop; static art reference, not engine capture."
+      },
+      {
+        "source": "assets/delivery/boss-loading-v5/mourning-kettle-reference-v3.png",
+        "sourceSha256": "b5cd84143ce024a52017b1579b1bebb638b3388437f808af93234b072dc91e96",
+        "path": "images/small-wakes-mourning-kettle.png",
+        "bytes": 87905,
+        "sha256": "b5cd84143ce024a52017b1579b1bebb638b3388437f808af93234b072dc91e96",
+        "width": 305,
+        "height": 307,
+        "caption": "mourning-kettle original live identity crop; static art reference, not engine capture."
+      },
+      {
+        "source": "assets/production/generated/small-wakes-2026-10-26/normalized/small-wakes-motion.jpg",
+        "sourceSha256": "536060e66fcc427d52346bc32680f8ec1ad3376e606c1891032b8301fd5b0f01",
+        "path": "images/small-wakes-motion.jpg",
+        "bytes": 230286,
+        "sha256": "536060e66fcc427d52346bc32680f8ec1ad3376e606c1891032b8301fd5b0f01",
+        "width": 1320,
+        "height": 1810,
+        "caption": "Thirty-six whole-pose Small Wakes motion frames; composite, not engine capture."
+      }
+    ],
+    "selectedPoses": 36,
+    "renderedAccepted": false,
+    "humanAccepted": false
   }
 }

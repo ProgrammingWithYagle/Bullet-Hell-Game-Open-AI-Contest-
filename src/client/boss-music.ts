@@ -1,5 +1,8 @@
 import type { BossId } from '../shared/protocol.ts';
 export const bossThemes = {
+  'candle-snail':'slow-wick',
+  'cobble-crab':'stones-remember',
+  'mourning-kettle':'tea-for-the-absent',
   'ashen-usher': 'empty-balcony',
   'brass-toad': 'rain-in-bronze',
   'ragpicker-kite': 'thread-above-the-street',

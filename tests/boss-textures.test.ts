@@ -80,7 +80,7 @@ test('startup loads every boss identity and shared actor but no deferred full bo
     },
   };
   preloadBossTextureBase(loader, encounterArt, animations, identities, settled);
-  assert.equal(calls.filter((c) => c.kind === 'identity').length, 70);
+  assert.equal(calls.filter((c) => c.kind === 'identity').length, 76);
   assert.equal(calls.filter((c) => c.kind === 'atlas').length, 8);
   assert(
     calls.some((c) => c.key === 'regent-action'),
@@ -103,7 +103,7 @@ test('startup loads every boss identity and shared actor but no deferred full bo
   );
 });
 
-test('all 60 exact identity references keep their original atlas, dimensions, origin and world size', () => {
+test('all 63 exact identity references keep their original atlas, dimensions, origin and world size', () => {
   for (const entry of bossTextureReferences.entries) {
     const original = encounterArt.find((e) => e.bossId === entry.bossId)!;
     assert.equal(sha(entry.sourceAtlas), entry.sourceAtlasSha256);
@@ -166,7 +166,7 @@ test('cycling the full boss roster retains at most two decoded full atlases and 
     assert.equal(f.cache.diagnostics().loading, null);
   }
   assert.equal(BOSS_ATLAS_CAPACITY, 2);
-  assert.equal(f.calls.length, 60);
+  assert.equal(f.calls.length, 63);
   assert.deepEqual(f.cache.diagnostics().loaded, ids.slice(-2));
 });
 

@@ -7,6 +7,9 @@ export const routeBossIds = catalog.bosses
   .filter((b) => ['short', 'standard', 'long', 'raid'].includes(b.route))
   .map((b) => b.id as BossId);
 export const openingBossIds = [
+  'candle-snail',
+  'cobble-crab',
+  'mourning-kettle',
   'ashen-usher',
   'brass-toad',
   'ragpicker-kite',

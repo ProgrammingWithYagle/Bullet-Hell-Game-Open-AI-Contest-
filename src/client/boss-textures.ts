@@ -1,5 +1,5 @@
 // A small atlas cache for the current replicated boss. Shared actors stay preloaded.
-import references from '../../assets/delivery/boss-loading-v4/library.json';
+import references from '../../assets/delivery/boss-loading-v5/library.json';
 export const bossTextureReferences = references;
 export const BOSS_ATLAS_CAPACITY = 2;
 export const BOSS_ATLAS_RETRY_MS = 5000;

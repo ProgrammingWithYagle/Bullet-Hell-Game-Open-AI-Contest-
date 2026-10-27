@@ -1,3 +1,4 @@
+import {smallWakesIds} from '../content/source/small-wakes.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
@@ -17,7 +18,7 @@ const unique=(items,label)=>assert.equal(new Set(items.map(x=>x.id)).size,items.
 const finiteTree=value=>{if(typeof value==='number')assert(Number.isFinite(value));else if(Array.isArray(value))value.forEach(finiteTree);else if(value&&typeof value==='object')Object.values(value).forEach(finiteTree);};
 check('Complete finite versioned content',()=>{
   finiteTree(c);assert.equal(c.rules.schemaVersion,1);assert.equal(c.rules.simulationHz,30);assert.equal(c.rules.patchHz,20);
-  for(const [key,count] of Object.entries({classes:7,skills:378,weapons:28,bosses:63,mutations:24,arenas:6,modes:5,difficulties:6,locales:15,grades:18}))assert.equal(c[key].length,count,key);
+  for(const [key,count] of Object.entries({classes:7,skills:378,weapons:28,bosses:66,mutations:24,arenas:6,modes:5,difficulties:6,locales:15,grades:18}))assert.equal(c[key].length,count,key);
   for(const [key,value] of Object.entries(c))if(Array.isArray(value)&&value[0]?.id)unique(value,key);
   assert(!/\bTBD\b|TODO|FIXME/.test(JSON.stringify(c)),'Unresolved content placeholder');
   assert.equal(read('content/revision.json').sha256,crypto.createHash('sha256').update(JSON.stringify(c)).digest('hex'));
@@ -80,25 +81,25 @@ check('Every legal one-, two- and three-mutation composition',()=>{
 check('Boss attack contracts, transitions, arenas and deadlines',()=>{
   const kinds=new Set(['fan','ring','charge','cross','summon','pool','beam','hook','spiral','armor','warp','zone','shield','trail','lanes','pulse']);
   assert.equal(c.bosses.filter(b=>b.secret).length,1);
-  for(const b of c.bosses){assert(b.timer>=60&&b.timer<=240);assert(b.healthFactor>0&&b.radius>0);const entry=read('src/shared/boss-threats.json').entries.find(p=>p.bossId===b.id).level<=c.rules.phasePacing.maximumEntryThreat;assert.deepEqual(b.phases.map(p=>p.healthThreshold),entry?[1,.5]:[1,.75,.4]);assert.deepEqual(b.phases.map(p=>p.accordBreak),b.phases.map((_,i)=>i>0));assert.deepEqual(b.phases.map(p=>p.patternPhase),entry?[0,2]:[0,1,2]);
+  for(const b of c.bosses){assert(b.timer>=60&&b.timer<=240);assert(b.healthFactor>0&&b.radius>0);const entry=read('src/shared/boss-threats.json').entries.find(p=>p.bossId===b.id).level<=c.rules.phasePacing.maximumEntryThreat;assert.deepEqual(b.phases.map(p=>p.healthThreshold),entry?[1,.5]:[1,.75,.4]);assert.deepEqual(b.phases.map(p=>p.accordBreak),b.phases.map((_,i)=>i>0));assert.deepEqual(b.phases.map(p=>p.patternPhase),smallWakesIds.includes(b.id)?[0,1]:entry?[0,2]:[0,1,2]);
     for(const p of b.phases)for(const a of p.attacks){assert(kinds.has(a.kind),'Unknown attack '+a.kind);assert(a.count>0&&a.count<=200);assert(a.speed>=0&&a.damage>=0&&a.interval>0&&a.telegraph>=0.45);assert(a.telegraph<a.interval);}
     assert(b.arenaIds.every(id=>c.arenas.some(a=>a.id===id)));
     assert.equal(b.variants.normal.healthMultiplier,1);assert.equal(b.variants.normal.damageMultiplier,1);
     const brutal=b.variants.brutal;assert.equal(brutal.healthMultiplier,2);assert.equal(brutal.damageMultiplier,2);assert.equal(brutal.identity,b.id+'-brutal');assert.equal(brutal.signature,b.signature.id);
-    assert.deepEqual(brutal.phases.map(p=>p.healthThreshold),entry?[1,.5]:c.rules.brutal.phaseThresholds);assert.deepEqual(brutal.phases.map(p=>p.patternPhase),entry?[0,3]:[0,1,2,3]);
+    assert.deepEqual(brutal.phases.map(p=>p.healthThreshold),entry?[1,.5]:c.rules.brutal.phaseThresholds);assert.deepEqual(brutal.phases.map(p=>p.patternPhase),smallWakesIds.includes(b.id)?[0,1]:entry?[0,3]:[0,1,2,3]);
     assert(brutal.phases.every(p=>!p.accordBreak));
     for(const phase of brutal.phases)for(const attack of phase.attacks){assert(kinds.has(attack.kind));assert(attack.count>0&&attack.count<=200);assert(attack.telegraph>=c.rules.brutal.minimumTelegraphSeconds&&attack.telegraph<attack.interval);}
   }
   for(const a of c.arenas){assert.equal(a.width,1600);assert.equal(a.height,1000);for(const o of a.obstacles){assert(o.x>=0&&o.y>=0&&o.x+o.width<=a.width&&o.y+o.height<=a.height);assert(!(a.playerSpawn.x>o.x&&a.playerSpawn.x<o.x+o.width&&a.playerSpawn.y>o.y&&a.playerSpawn.y<o.y+o.height));}}
 });
-check('Sixty-three distinct bosses, route-specific gauntlets and Endless exclusives',()=>{
+check('Sixty-six distinct bosses, route-specific gauntlets and Endless exclusives',()=>{
   const allIds=new Set();
   for(const m of c.modes.filter(m=>m.kind!=='endless')){
     const pool=c.bossPools[m.id];assert.equal(pool.finale.length,3);assert(pool.regular.length>=m.encounters+1,'Insufficient nonrepeating three-card candidates '+m.id);
     for(const id of [...pool.regular,...pool.finale]){assert(!allIds.has(id),'Route pools overlap '+id);allIds.add(id);assert(c.bosses.some(b=>b.id===id&&b.route===m.id&&b.finale===pool.finale.includes(id)));}
   }
-  assert.equal(allIds.size,53);assert.equal(c.bossPools.endless.exclusive.length,9);for(const id of c.bossPools.endless.exclusive){assert(!allIds.has(id));allIds.add(id);assert(c.bosses.some(b=>b.id===id&&b.route==='endless'));}
-  assert.equal(allIds.size,62);assert(!allIds.has('uncounted'));assert.equal(new Set(c.bosses.map(b=>b.signature.id)).size,63);
+  assert.equal(allIds.size,56);assert.equal(c.bossPools.endless.exclusive.length,9);for(const id of c.bossPools.endless.exclusive){assert(!allIds.has(id));allIds.add(id);assert(c.bosses.some(b=>b.id===id&&b.route==='endless'));}
+  assert.equal(allIds.size,65);assert(!allIds.has('uncounted'));assert.equal(new Set(c.bosses.map(b=>b.signature.id)).size,66);
   for(const b of c.bosses){assert(b.signature.behavior.length>30&&b.signature.counterplay.length>25);assert(b.damageWindowFraction>0&&b.damageWindowFraction<=1);}
   const result=spawnSync(process.execPath,['tools/verify-gauntlets.mjs'],{cwd:root,encoding:'utf8'});assert.equal(result.status,0,result.stdout+'\n'+result.stderr);
 });

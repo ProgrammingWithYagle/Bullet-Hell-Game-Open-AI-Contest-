@@ -1,6 +1,6 @@
 # Bosses
 
-Sixty-three bosses are executable in the current source. Each has its own signature, phases, normal/Brutal variant, presentation and music. A signature table describes practical counterplay; supplemental attacks still require ordinary bullet-hell movement.
+Sixty-six bosses are executable in the current source. Each has its own signature, phases, normal/Brutal variant, presentation and music. A signature table describes practical counterplay; supplemental attacks still require ordinary bullet-hell movement.
 
 **Each boss has a fixed intrinsic threat grade.** Routes select suitable identities; they do not rerate a boss to match the encounter number. Subtiers use **--, -, no sign, +, ++** for bottom through top tier. Hollow Constable is **1+** and Bell Triplets are **3--**. Brutal uses a separate **B** marker, such as **1+ B**. Secrets display **>10**. Global difficulty and party scaling remain separate.
 
@@ -245,3 +245,24 @@ Brutal alternates sweep direction and repeats recovery fans in two warned locked
 ![Four original Warden patrol poses, a sprite reference rather than gameplay capture](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/warden-patrol.jpg)
 
 Four new poses preserve the exact native/request, whole lantern ownership and all source RGBA. Technical packing adjusts world scale to retain the established body height; earlier Warden artwork stays unchanged. [Actual authority, art and verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/WARDEN_PATROL.md). Rendered/human/device/native-language/listening acceptance remains open.
+
+
+## Small Wakes: three new ordinary encounters
+
+Candle Snail **1--**, Cobble Crab **1-** and Mourning Kettle **1** bring the roster to **66 (65 ordinary, one secret)**. Eighty-five further ordinary identities remain. Each has two half-health phases, divided health, an independent entry cue, persistent fifteen-locale response text, complete selected motion and an individual original score. All earlier boss health/damage/deadlines and fixed grades remain unchanged.
+
+| Boss | Phase change and counterplay | Extra Brutal mechanic |
+| --- | --- | --- |
+| Candle Snail | Waxwake becomes two separated Twin Wick rails with a quiet center. Leave the marked wax before it burns; masonry stops it. The body glides faster after half health. | Delayed cross-cut, follow-up fan and real second projectile waves. |
+| Cobble Crab | Grate Clamp becomes alternating double Cross Streets closures. Exit the marked jaws or break their linked finite anchor. The body scuttles sideways. | Independent second anchor/closure and additional doubled volley. |
+| Mourning Kettle | Pressure Pour becomes two staggered Last Service lanes with a cold center. Sidestep steam, then crossing beads, or break a linked valve. The body waddles. | Delayed rear pour and real doubled bead waves. |
+
+Finite anchors/valves are individual boss weak points, separate from the global phase-circle shield event. That event remains Baby/Easy Standard only, absent on Normal+ and all Brutal. Already emitted projectiles and their warned repeat waves remain hazards when an object breaks. Hellish forces every new encounter Brutal and retains warned lava.
+
+![Candle Snail: original static identity reference](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/small-wakes-candle-snail.png)
+
+![Cobble Crab: original static identity reference](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/small-wakes-cobble-crab.png)
+
+![Mourning Kettle: original static identity reference](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/small-wakes-mourning-kettle.png)
+
+[Implementation, original art/audio and verification limits](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/SMALL_WAKES_RUNTIME.md). Rendered, human balance, native-language, listening and physical-device acceptance remain open.

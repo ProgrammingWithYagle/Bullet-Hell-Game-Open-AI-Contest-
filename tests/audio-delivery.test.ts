@@ -5,7 +5,7 @@ import { createHash } from 'node:crypto';
 import { chooseMusicBuffer, validMusicDuration } from '../src/client/audio-delivery.ts';
 import library from '../assets/production/audio/delivery/library.json';
 import { bossThemes } from '../src/client/boss-music.ts';
-test('64 compressed tracks retain exact original master hashes and delivery hashes', () => {
+test('67 compressed tracks retain exact original master hashes and delivery hashes', () => {
   assert.deepEqual(
     library.tracks.map((t) => t.id).sort(),
     ['city-wake', ...Object.values(bossThemes)].sort(),

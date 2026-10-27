@@ -25476,6 +25476,381 @@
           ]
         }
       }
+    },
+    {
+      "id": "candle-snail",
+      "name": "Candle Snail",
+      "lore": "A single light still travels the cemetery path.",
+      "minThreat": 1,
+      "timer": 120,
+      "healthFactor": 0.78,
+      "radius": 50,
+      "secret": false,
+      "route": "short",
+      "finale": false,
+      "preferredArena": "gatehouse",
+      "arenaIds": [
+        "gatehouse",
+        "triage-yard",
+        "sunken-chapel",
+        "bell-foundry",
+        "crown-crypt"
+      ],
+      "damageWindowFraction": 1,
+      "mechanics": {
+        "warningSeconds": 1.3,
+        "waxWidth": 38,
+        "waxSeconds": 1.8,
+        "twinOffset": 105,
+        "glideSpeed": 20,
+        "finalGlideSpeed": 32,
+        "brutalCrossCutDelay": 2.2
+      },
+      "signature": {
+        "id": "candle-snail",
+        "behavior": "A slow collision-resolved glide lays locked warned wax rails. Twin Wick adds parallel rails with a quiet center and faster lateral movement.",
+        "counterplay": "Leave the marked wake before it burns, cross after it cools, or use the quiet center between twin rails. Masonry stops the wake.",
+        "parameters": {
+          "warningSeconds": 1.3,
+          "waxWidth": 38,
+          "waxSeconds": 1.8,
+          "twinOffset": 105,
+          "glideSpeed": 20,
+          "finalGlideSpeed": 32,
+          "brutalCrossCutDelay": 2.2
+        }
+      },
+      "artBrief": "A single light still travels the cemetery path. Preserve the selected original motion, permanent identity marks and complete defeat poses.",
+      "phases": [
+        {
+          "healthThreshold": 1,
+          "patternPhase": 0,
+          "accordBreak": false,
+          "attacks": [
+            {
+              "kind": "fan",
+              "count": 5,
+              "speed": 125,
+              "damage": 9,
+              "interval": 8,
+              "telegraph": 1.3
+            }
+          ]
+        },
+        {
+          "healthThreshold": 0.5,
+          "patternPhase": 1,
+          "accordBreak": true,
+          "attacks": [
+            {
+              "kind": "fan",
+              "count": 7,
+              "speed": 125,
+              "damage": 10,
+              "interval": 8,
+              "telegraph": 1.3
+            }
+          ]
+        }
+      ],
+      "variants": {
+        "normal": {
+          "healthMultiplier": 1,
+          "damageMultiplier": 1,
+          "deadlineMultiplier": 1,
+          "bountyMultiplier": 1
+        },
+        "brutal": {
+          "healthMultiplier": 2,
+          "damageMultiplier": 2,
+          "deadlineMultiplier": 1.5,
+          "bountyMultiplier": 1.75,
+          "identity": "candle-snail-brutal",
+          "signature": "candle-snail",
+          "phases": [
+            {
+              "healthThreshold": 1,
+              "patternPhase": 0,
+              "accordBreak": false,
+              "attacks": [
+                {
+                  "kind": "fan",
+                  "count": 5,
+                  "speed": 125,
+                  "damage": 9,
+                  "interval": 8,
+                  "telegraph": 1.3
+                }
+              ]
+            },
+            {
+              "healthThreshold": 0.5,
+              "patternPhase": 1,
+              "accordBreak": false,
+              "attacks": [
+                {
+                  "kind": "fan",
+                  "count": 7,
+                  "speed": 125,
+                  "damage": 10,
+                  "interval": 8,
+                  "telegraph": 1.3
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "cobble-crab",
+      "name": "Cobble Crab",
+      "lore": "The street gathers its loose stones at the sound of footsteps.",
+      "minThreat": 1,
+      "timer": 120,
+      "healthFactor": 0.86,
+      "radius": 45,
+      "secret": false,
+      "route": "short",
+      "finale": false,
+      "preferredArena": "gatehouse",
+      "arenaIds": [
+        "gatehouse",
+        "triage-yard",
+        "sunken-chapel",
+        "bell-foundry",
+        "crown-crypt"
+      ],
+      "damageWindowFraction": 1,
+      "mechanics": {
+        "anchorHealth": 38,
+        "warningSeconds": 1.3,
+        "closingSeconds": 0.65,
+        "openHalfGap": 180,
+        "closedHalfGap": 34,
+        "scuttleSpeed": 30,
+        "finalScuttleSpeed": 42
+      },
+      "signature": {
+        "id": "cobble-crab",
+        "behavior": "Warned stone pincers physically close toward a locked strip while the crab scuttles sideways. Cross Streets alternates axes and adds a second closure.",
+        "counterplay": "Leave the closing jaws or break their linked finite anchor stone. Pass through after a clamp; the outer lanes remain open.",
+        "parameters": {
+          "anchorHealth": 38,
+          "warningSeconds": 1.3,
+          "closingSeconds": 0.65,
+          "openHalfGap": 180,
+          "closedHalfGap": 34,
+          "scuttleSpeed": 30,
+          "finalScuttleSpeed": 42
+        }
+      },
+      "artBrief": "The street gathers its loose stones at the sound of footsteps. Preserve the selected original motion, permanent identity marks and complete defeat poses.",
+      "phases": [
+        {
+          "healthThreshold": 1,
+          "patternPhase": 0,
+          "accordBreak": false,
+          "attacks": [
+            {
+              "kind": "fan",
+              "count": 5,
+              "speed": 130,
+              "damage": 9,
+              "interval": 8,
+              "telegraph": 1.3
+            }
+          ]
+        },
+        {
+          "healthThreshold": 0.5,
+          "patternPhase": 1,
+          "accordBreak": true,
+          "attacks": [
+            {
+              "kind": "fan",
+              "count": 7,
+              "speed": 130,
+              "damage": 10,
+              "interval": 8,
+              "telegraph": 1.3
+            }
+          ]
+        }
+      ],
+      "variants": {
+        "normal": {
+          "healthMultiplier": 1,
+          "damageMultiplier": 1,
+          "deadlineMultiplier": 1,
+          "bountyMultiplier": 1
+        },
+        "brutal": {
+          "healthMultiplier": 2,
+          "damageMultiplier": 2,
+          "deadlineMultiplier": 1.5,
+          "bountyMultiplier": 1.75,
+          "identity": "cobble-crab-brutal",
+          "signature": "cobble-crab",
+          "phases": [
+            {
+              "healthThreshold": 1,
+              "patternPhase": 0,
+              "accordBreak": false,
+              "attacks": [
+                {
+                  "kind": "fan",
+                  "count": 5,
+                  "speed": 130,
+                  "damage": 9,
+                  "interval": 8,
+                  "telegraph": 1.3
+                }
+              ]
+            },
+            {
+              "healthThreshold": 0.5,
+              "patternPhase": 1,
+              "accordBreak": false,
+              "attacks": [
+                {
+                  "kind": "fan",
+                  "count": 7,
+                  "speed": 130,
+                  "damage": 10,
+                  "interval": 8,
+                  "telegraph": 1.3
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "mourning-kettle",
+      "name": "Mourning Kettle",
+      "lore": "It keeps the last tea warm for guests who never returned.",
+      "minThreat": 1,
+      "timer": 120,
+      "healthFactor": 0.94,
+      "radius": 44,
+      "secret": false,
+      "route": "short",
+      "finale": false,
+      "preferredArena": "gatehouse",
+      "arenaIds": [
+        "gatehouse",
+        "triage-yard",
+        "sunken-chapel",
+        "bell-foundry",
+        "crown-crypt"
+      ],
+      "damageWindowFraction": 1,
+      "mechanics": {
+        "valveHealth": 42,
+        "warningSeconds": 1.3,
+        "pourSeconds": 1.65,
+        "beadDelaySeconds": 0.7,
+        "twinOffset": 100,
+        "waddleSpeed": 16,
+        "finalWaddleSpeed": 24
+      },
+      "signature": {
+        "id": "mourning-kettle",
+        "behavior": "A marked steam lane pours before crossing condensation beads. Last Service staggers two separated lanes while the kettle waddles between casts.",
+        "counterplay": "Sidestep the warning, cross after steam ends or break a finite remote valve to cancel its linked pour and beads. Preserve a cold route.",
+        "parameters": {
+          "valveHealth": 42,
+          "warningSeconds": 1.3,
+          "pourSeconds": 1.65,
+          "beadDelaySeconds": 0.7,
+          "twinOffset": 100,
+          "waddleSpeed": 16,
+          "finalWaddleSpeed": 24
+        }
+      },
+      "artBrief": "It keeps the last tea warm for guests who never returned. Preserve the selected original motion, permanent identity marks and complete defeat poses.",
+      "phases": [
+        {
+          "healthThreshold": 1,
+          "patternPhase": 0,
+          "accordBreak": false,
+          "attacks": [
+            {
+              "kind": "fan",
+              "count": 4,
+              "speed": 118,
+              "damage": 9,
+              "interval": 8,
+              "telegraph": 1.3
+            }
+          ]
+        },
+        {
+          "healthThreshold": 0.5,
+          "patternPhase": 1,
+          "accordBreak": true,
+          "attacks": [
+            {
+              "kind": "fan",
+              "count": 5,
+              "speed": 118,
+              "damage": 10,
+              "interval": 8,
+              "telegraph": 1.3
+            }
+          ]
+        }
+      ],
+      "variants": {
+        "normal": {
+          "healthMultiplier": 1,
+          "damageMultiplier": 1,
+          "deadlineMultiplier": 1,
+          "bountyMultiplier": 1
+        },
+        "brutal": {
+          "healthMultiplier": 2,
+          "damageMultiplier": 2,
+          "deadlineMultiplier": 1.5,
+          "bountyMultiplier": 1.75,
+          "identity": "mourning-kettle-brutal",
+          "signature": "mourning-kettle",
+          "phases": [
+            {
+              "healthThreshold": 1,
+              "patternPhase": 0,
+              "accordBreak": false,
+              "attacks": [
+                {
+                  "kind": "fan",
+                  "count": 4,
+                  "speed": 118,
+                  "damage": 9,
+                  "interval": 8,
+                  "telegraph": 1.3
+                }
+              ]
+            },
+            {
+              "healthThreshold": 0.5,
+              "patternPhase": 1,
+              "accordBreak": false,
+              "attacks": [
+                {
+                  "kind": "fan",
+                  "count": 5,
+                  "speed": 118,
+                  "damage": 10,
+                  "interval": 8,
+                  "telegraph": 1.3
+                }
+              ]
+            }
+          ]
+        }
+      }
     }
   ],
   "bossPools": {
@@ -25489,7 +25864,10 @@
         "quarantine-clerk",
         "ashen-usher",
         "brass-toad",
-        "ragpicker-kite"
+        "ragpicker-kite",
+        "candle-snail",
+        "cobble-crab",
+        "mourning-kettle"
       ],
       "finale": [
         "chain-marshal",
@@ -25579,7 +25957,10 @@
         "stationmaster",
         "ashen-usher",
         "brass-toad",
-        "ragpicker-kite"
+        "ragpicker-kite",
+        "candle-snail",
+        "cobble-crab",
+        "mourning-kettle"
       ],
       "ordinaryRosterExcludes": [
         "uncounted"

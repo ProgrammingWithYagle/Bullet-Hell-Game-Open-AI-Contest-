@@ -51,6 +51,8 @@ THEMES += [{'bossId': 'hourglass-widow', 'id': 'sand-twice', 'title': 'Sand Twic
 
 THEMES += [{'bossId': 'ashen-usher', 'id': 'empty-balcony', 'title': 'Empty Balcony', 'bpm': 96, 'beatsPerBar': 3, 'meter': '3/4', 'root': 39, 'roots': [0, 3, -2, 0, 5, 1, 7, 0], 'motif': [0, 7, 3, 10, 2, -1, 7, 0], 'lead': 'keys', 'arrangement': 'early-usher', 'phrasing': [0, 0.33, 0.58, 0.83], 'answerEvery': 2, 'answerVoice': 'reed', 'phraseStride': 3, 'percussionAccent': [0, 0.66], 'intent': 'A deserted E-flat theatre waltz; clipped ticket-key calls and dry rim replies leave room for the aisle warnings.'}, {'bossId': 'brass-toad', 'id': 'rain-in-bronze', 'title': 'Rain in Bronze', 'bpm': 112, 'beatsPerBar': 3.5, 'bars': 24, 'meter': '7/8', 'root': 37, 'roots': [0, 0, 5, 3, -1, 3, 7, 0], 'motif': [0, 2, 7, 3, 10, 7, 1, -1], 'lead': 'brass', 'arrangement': 'early-toad', 'phrasing': [0, 0.14, 0.43, 0.71, 0.86], 'answerEvery': 3, 'answerVoice': 'pluck', 'phraseStride': 2, 'percussionAccent': [0, 0.57, 0.85], 'intent': 'A spring-loaded D-flat bronze call in 2+2+3; low tom landings and an ascending plucked drain reply.'}, {'bossId': 'ragpicker-kite', 'id': 'thread-above-the-street', 'title': 'Thread Above the Street', 'bpm': 84, 'beatsPerBar': 5, 'meter': '5/4', 'root': 45, 'roots': [0, -2, 3, 5, 0, 1, 7, 0], 'motif': [12, 7, 5, 2, 10, 3, 8, 0], 'lead': 'reed', 'arrangement': 'early-kite', 'phrasing': [0, 0.2, 0.5, 0.7, 0.9], 'answerEvery': 4, 'answerVoice': 'bells', 'phraseStride': 1, 'percussionAccent': [0, 0.6], 'intent': 'A suspended A-minor cloth-reed phrase in 3+2; broad bowed fifths and a sparse bell response keep the wind lanes legible.'}]
 
+THEMES += [{'bossId': 'candle-snail', 'id': 'slow-wick', 'title': 'Slow Wick', 'bpm': 88, 'beatsPerBar': 4.5, 'meter': '9/8', 'root': 43, 'roots': [0, 3, 0, -2, 5, 3, 7, 0], 'motif': [0, 2, 3, 7, 5, 3, 2, -2], 'lead': 'pluck', 'arrangement': 'small-wick', 'intent': 'An original G-minor three-part wick phrase in 9/8: sparse plucked droplets, a bowed pedal and a quiet high-metal answer. Each 1.5-beat group leaves space around the wax tell.'}, {'bossId': 'cobble-crab', 'id': 'stones-remember', 'title': 'Stones Remember', 'bpm': 104, 'beatsPerBar': 5, 'meter': '5/4', 'root': 38, 'roots': [0, 0, 3, -2, 5, 3, 7, 0], 'motif': [0, 0, 3, 2, -2, 5, 3, 0], 'lead': 'keys', 'arrangement': 'small-stones', 'intent': 'An original D-minor five-beat street pattern: dry struck keys step in unequal pairs, low reed answers and restrained rim sounds echo the closing cobbles. No sampled stones or commercial music.'}, {'bossId': 'mourning-kettle', 'id': 'tea-for-the-absent', 'title': 'Tea for the Absent', 'bpm': 92, 'beatsPerBar': 3, 'meter': '6/8', 'root': 42, 'roots': [0, 3, 5, 0, -2, 3, 7, 0], 'motif': [7, 3, 2, 0, -1, 2, 5, 3], 'lead': 'reed', 'arrangement': 'small-tea', 'intent': 'An original F-sharp-minor 6/8 mourning tea: a breathy descending reed, soft metal lid reply and a held final half-beat. A warm low pluck keeps the staggered pours apart.'}]
+
 def voice(kind,note,seconds):
  if kind=='bells':return base['bell'](note,max(1.8,seconds))
  if kind=='pluck':return base['pluck'](note,seconds)
@@ -127,6 +129,18 @@ def compose(theme):
    for b in (0,1.5):add('percussion',at+b,'kick',.4,.27)
    for b in (.5,1,2,2.5):add('percussion',at+b,'rim',.2,.15)
    if bar%4==0:add('lead',at,root+36,2.5,.12,.32,kind='bells')
+  elif theme['bossId']=='candle-snail':
+   for k,b in enumerate([0,1.5,3]):add('lead',at+b,root+24+theme['motif'][(bar*2+k)%8],.8,.23,[-.25,0,.25][k])
+   if bar%4==3:add('lead',at+3.75,root+36+theme['motif'][(bar+3)%8],.6,.09,.3,kind='bells')
+   if bar%2==0:add('percussion',at,'tom',.3,.09)
+  elif theme['bossId']=='cobble-crab':
+   for k,b in enumerate([0,.5,1.5,3,4]):add('lead',at+b,root+24+theme['motif'][(bar+k)%8],.35 if k%2 else .55,.23,-.22 if k%2 else .22)
+   for b in [0,1.5,3]:add('percussion',at+b,'rim',.2,.15)
+   if bar%2:add('lead',at+2,root+12+theme['motif'][(7-bar)%8],1.3,.13,.25,kind='reed')
+  elif theme['bossId']=='mourning-kettle':
+   for k,b in enumerate([0,.5,1.5,2]):add('lead',at+b,root+24+theme['motif'][(bar+k)%8],.55 if k<3 else .85,.22,-.2 if k%2 else .2)
+   if bar%2:add('lead',at+2.5,root+31,.8,.08,.3,kind='bells')
+   add('percussion',at,'tom',.3,.09)
   elif theme.get('arrangement','').startswith(('pilgrimage-','raid-','endless-','early-')):
    phrase=theme['motif'];stride=theme['phraseStride'];register=root+24
    for k,fraction in enumerate(theme['phrasing']):

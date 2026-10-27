@@ -1,18 +1,19 @@
 # Development progress
 
-Updated 2026-10-26 for **2026.10.26-warden-patrol**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
+Updated 2026-10-26 for **2026.10.26-small-wakes**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
 
-63 playable identities: 62 ordinary and 1 secret. Three ordinary bosses in every one of fifty subtiers requires 150 ordinary identities, plus secrets; 88 additional ordinary bosses remain.
+66 playable identities: 65 ordinary and 1 secret. Three ordinary bosses in every one of fifty subtiers requires 150 ordinary identities, plus secrets; 85 additional ordinary bosses remain.
 
 | Area | Implemented | Work remaining | Review status |
 | --- | --- | --- | --- |
-| New ordinary bosses | 62 / 150 | 88 new identities | 0 unintegrated art-only concepts; three Early Watch identities are now implemented |
+| New ordinary bosses | 65 / 150 | 85 new identities | 0 unintegrated art-only concepts; Early Watch and Small Wakes integrations are implemented |
 | Existing-boss phase / mobility / Brutal quality passes | 2 / 60 | 58 | Constable and Warden phase/mobility/Brutal implementation passes complete; human acceptance remains open. Other 58 original-roster encounters await assessment/redesign. |
 | Ability-changing class-upgrade revamps | 7 / 7 | 0 | Three actual ability transformations per class (21 total) implemented at existing utility-path depth three, with shared authority, cues and fifteen-locale help. Rendered/human balance/device/native-language acceptance remains open. |
 | Optional large branching skill-tree view | 1 / 1 | 0 | Optional all-54-skill map implemented for all seven classes with settings toggle, bounded zoom, scrolling and keyboard navigation. Classic remains the default; rendered/human/device/native-language review remains open. |
 | Secondary-map topology revamps | 5 / 5 | 0 | Five layouts installed; difficulty-dependent cover and Hellish lava added across all six maps with shared collision/prediction. Detailed rendered/human/device acceptance remains open. |
 | Map ground-art deliveries | 6 / 6 | 0 | Six ground deliveries installed. Limited Normal/Constable readability feedback is positive. |
 | Early Watch motion and encounter integration | 3 / 3 | 0 | Three encounters, 36 selected poses, individual themes and fifteen-locale help implemented. Limited 5179 phase/pacing feedback informed the new two-phase/difficulty pass; its human comparison, rendered and listening review remain open. |
+| Small Wakes motion and encounter integration | 3 / 3 | 0 | Three original two-phase encounters, 36 selected poses, individual scores and fifteen-locale help implemented. Rendered/human balance/device/native-language/listening acceptance remains open. |
 
 ## Latest human feedback
 
@@ -27,7 +28,7 @@ Updated 2026-10-26 for **2026.10.26-warden-patrol**. These counts track specific
 
 ## Remaining release work
 
-- Create and verify 88 additional ordinary boss identities, with distinct mechanics, art and individual original music; the target is at least 150 ordinary plus secrets.
+- Create and verify 85 additional ordinary boss identities, with distinct mechanics, art and individual original music; the target is at least 150 ordinary plus secrets.
 - Assess or redesign the remaining 58 existing boss encounters for distinct phases, meaningful pressure and separate Brutal behavior.
 - Review and tune the 21 implemented ability-changing upgrades and optional skill map on actual rendered/human/device/native-language surfaces.
 - Complete remaining boss special/action art, class special-ability art and rendered animation transitions.
@@ -40,4 +41,4 @@ Updated 2026-10-26 for **2026.10.26-warden-patrol**. These counts track specific
 
 Boss quality counts a completed implementation of the requested phase/mobility/Brutal pass, followed by separate human review. The other 58 existing encounters await assessment or redesign; they are already playable. Class revamps count the newly requested ability-changing upgrade pass, separate from the seven existing class kits and 378 skills. Map layout counts the five requested secondary-map topology revisions; their implementation is complete, while detailed new-layout human acceptance remains pending.
 
-Ashen Usher, Brass Toad and Ragpicker's Kite now have shared-authority encounters, complete selected motion, original themes and fifteen-locale help. Their original art-only issue records remain unchanged. The structured ledger, derived counts, in-game journal summary and this page update together. Progress does not equal final balance, rendered, device, language or release acceptance.
+Ashen Usher, Brass Toad, Ragpicker's Kite, Candle Snail, Cobble Crab and Mourning Kettle have shared-authority encounters, complete selected motion, original themes and fifteen-locale help. Their original art-only issue records remain unchanged. The structured ledger, derived counts, in-game journal summary and this page update together. Progress does not equal final balance, rendered, device, language or release acceptance.

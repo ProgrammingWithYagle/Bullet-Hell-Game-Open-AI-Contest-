@@ -5,7 +5,7 @@ import {readFileSync,writeFileSync,readdirSync} from 'node:fs';
 import assert from 'node:assert/strict';
 const sourceCommit=process.argv[2];
 assert(/^[a-f0-9]{40}$/.test(sourceCommit??''),'Supply the committed canonical Wiki source SHA');
-const git=(directory,...args)=>execFileSync('git',['-C',directory,...args],{encoding:null});
+const git=(directory,...args)=>execFileSync('git',['-c','core.bare=false','-C',directory,...args],{encoding:null});
 const text=(directory,...args)=>git(directory,...args).toString('utf8').trim();
 assert.equal(text('.wiki-checkout','remote','get-url','origin'),'https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-.wiki.git');
 const publishedCommit=text('.wiki-checkout','ls-remote','origin','refs/heads/master').split(/\s+/)[0];
@@ -19,9 +19,11 @@ const evidence=files.map(file=>{
   assert.equal(readFileSync('docs/wiki/'+file,'utf8').replaceAll('\r\n','\n'),source.toString('utf8'),'Canonical disk text differs from committed source: '+file);
   return {file,bytes:source.length,sha256:sha(source)};
 });
-const imageManifest=JSON.parse(readFileSync('docs/wiki-images.json','utf8'));
+const manifestSource=git('.','show',sourceCommit+':docs/wiki-images.json');
+assert.equal(readFileSync('docs/wiki-images.json','utf8').replaceAll('\r\n','\n'),manifestSource.toString('utf8'),'Canonical image manifest differs from the committed source');
+const imageManifest=JSON.parse(manifestSource.toString('utf8'));
 const imageFiles=imageManifest.files.map(file=>{
-  assert(/^images\/[a-z0-9-]+\.jpg$/.test(file.path));
+  assert(/^images\/[a-z0-9-]+\.(?:jpg|png)$/.test(file.path));
   const source=git('.','show',sourceCommit+':docs/wiki/'+file.path),published=git('.wiki-checkout','show',publishedCommit+':'+file.path);
   assert(source.equals(published),'Published image differs: '+file.path);assert.equal(sha(source),file.sha256);
   return {file:file.path,bytes:source.length,sha256:sha(source)};

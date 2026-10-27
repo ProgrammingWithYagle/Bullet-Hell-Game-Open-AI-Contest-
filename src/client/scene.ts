@@ -1,3 +1,4 @@
+import {smallWakesPose,drawSmallWakes} from './small-wakes-presentation.ts';
 import { earlyWatchPose, drawEarlyWatch } from './early-watch-presentation.ts';
 import { EndlessPresentation } from './endless-presentation.ts';
 import type { EndlessCue } from '../shared/endless-director.ts';
@@ -758,6 +759,7 @@ export class CombatScene extends Phaser.Scene {
       this.reduceMotion,
       this.hitboxes,
     );
+    drawSmallWakes(h, f, view.bossCues, now);
     drawEarlyWatch(h, f, view.bossCues, now);
     for(const cue of view.bossCues){
       if(cue.kind==='warden-patrol'){
@@ -874,7 +876,7 @@ export class CombatScene extends Phaser.Scene {
       this.bossSprite.anims.stop();
       const texturePose = bossTexturePresentation(
         view.boss.id,
-        early?.frame ?? courierCombatFrame(
+        smallWakesPose(view.boss, view.tick, now, view.bossCues, this.reduceMotion, animationTime.tick)?.frame ?? early?.frame ?? courierCombatFrame(
           view.boss,
           view.tick,
           now,

@@ -2,6 +2,8 @@ import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import assert from 'node:assert/strict';
+import {smallWakesIds} from '../content/source/small-wakes.mjs';
+import {smallWakesMessages} from '../locales/source/small-wakes.mjs';
 import { wardenMessages } from '../locales/source/warden-patrol.mjs';
 import { classTalentMessages } from '../locales/source/class-talents.mjs';
 import { english } from '../locales/source/en.mjs';
@@ -88,6 +90,7 @@ export function validateOne(document, canonical, content, locale) {
       ...Object.keys(additional.en),
       ...Object.keys(expansionMessages('en')),
       ...Object.keys(earlyWatchMessages('en')),
+      ...Object.keys(smallWakesMessages('en')),
       ...Object.keys(classTalentMessages('en',content)),
       ...Object.keys(wardenMessages('en')),
       ...Object.keys(skillMapMessages('en')),
@@ -116,7 +119,7 @@ export function validateOne(document, canonical, content, locale) {
     if (!Object.hasOwn(messages,key)) fail(`missing feature coverage: ${key}`);
   }
   const expectedCategories = new Intl.PluralRules(locale).resolvedOptions().pluralCategories.slice().sort();
-  const expandedSource = {...expansionMessages(locale), ...earlyWatchMessages(locale),...skillMapMessages(locale),...difficultyRuleMessages(locale),...classTalentMessages(locale,content),...wardenMessages(locale)};
+  const expandedSource = {...smallWakesMessages(locale),...expansionMessages(locale), ...earlyWatchMessages(locale),...skillMapMessages(locale),...difficultyRuleMessages(locale),...classTalentMessages(locale,content),...wardenMessages(locale)};
   for (const [key,text] of Object.entries(recoveryMessages(locale))) {
     if (messages[key] !== text) fail(`recovery UI source mismatch at ${key}`);
   }
@@ -160,7 +163,7 @@ export async function verifyLocales(root=defaultRoot) {
   const documents={};
   const errors=[];
   const originalBossIds = ['constable','courier','pallbearer','matron','alchemist','bellringer','stitchwright','choir','engine','regent','uncounted'];
-  if (!same(content.bosses.map(x=>x.id).sort(),[...originalBossIds,...bossExpansionIds,'ashen-usher','brass-toad','ragpicker-kite'].sort())) errors.push('boss localization roster differs from content roster');
+  if (!same(content.bosses.map(x=>x.id).sort(),[...originalBossIds,...bossExpansionIds,...smallWakesIds,'ashen-usher','brass-toad','ragpicker-kite'].sort())) errors.push('boss localization roster differs from content roster');
   if (new Set(bossExpansionIds).size !== bossExpansionIds.length) errors.push('duplicate expansion boss ID');
   if (!same(content.locales.map(x=>x.id).sort(),[...launchLocales].sort())) errors.push('content launch locale list mismatch');
   for (const locale of launchLocales) {
