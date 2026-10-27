@@ -1,0 +1,154 @@
+{
+  "passed": true,
+  "createdAt": "2026-10-27T23:57:30.677Z",
+  "sourceCommit": "2f144868b114befcc39460241239c33dffbb3a78",
+  "protocol": 31,
+  "backendBundleSha256": "5eed0ab5926db58f32d904912262a6ec5896c987f0a7f0149f490aabfe43ed48",
+  "publicHTTPChecks": [
+    {
+      "path": "index.html",
+      "status": 200,
+      "bytes": 540,
+      "sha256": "e81607a33a7486bc961c54d2f661964a428bfffe6b485faa9f63262de8f7865e",
+      "mime": "text/html;charset=utf-8"
+    },
+    {
+      "path": "assets/index-DwaIpMzA.js",
+      "status": 200,
+      "bytes": 3388896,
+      "sha256": "ea8d26a53a33321054c325586a9c12f6ac10eae7b2ed0b3da49e094e554eaf19",
+      "mime": "text/javascript"
+    },
+    {
+      "path": "assets/index-ByqqpBqG.css",
+      "status": 200,
+      "bytes": 458816,
+      "sha256": "8d0032f299cceabe511b2d6b0583eb06e9939f02052193e0ce33d38a9c2983b1",
+      "mime": "text/css"
+    },
+    {
+      "path": "assets/offline.worker-D02JV6oN.js",
+      "status": 200,
+      "bytes": 831231,
+      "sha256": "55e2fd6c55ed6d74ccbde198bd115476f77cda5a5e0b7c364bc22eafb55c5010",
+      "mime": "text/javascript"
+    },
+    {
+      "path": "assets/matron-action-v1-atlas-DPjuwTrB.png",
+      "status": 200,
+      "bytes": 384082,
+      "sha256": "cad2705cc109f05ee0ee24267ef2f448fc7807dd21208da80358c3e6c17e563b",
+      "mime": "image/png"
+    },
+    {
+      "path": "assets/quarantine-clerk-action-v2-atlas-BkOEnJl8.png",
+      "status": 200,
+      "bytes": 469844,
+      "sha256": "cbfddac1c1fdcb68d543bd880021cd9b86bbdf9c8e5ee9bd5e459f27b50d1ec1",
+      "mime": "image/png"
+    },
+    {
+      "path": "assets/cradle-ledger-CNVPUjw7.mp3",
+      "status": 200,
+      "bytes": 1116621,
+      "sha256": "0621ec0bc2ec6b470a009067b38bdec626ebee581eac344dca7d7777763a9309",
+      "mime": "audio/mpeg"
+    },
+    {
+      "path": "assets/ar-DEgsx2jC.js",
+      "status": 200,
+      "bytes": 179061,
+      "sha256": "fbdecb5f8a1f5efd23015817effe08e2d6aa9c256156370487372b58d300c589",
+      "mime": "text/javascript"
+    }
+  ],
+  "matchingSourceHealthAndCors": [
+    {
+      "endpoint": "http://127.0.0.1:2572",
+      "origin": "http://127.0.0.1:5198",
+      "cors": true,
+      "status": "ok",
+      "startedAt": "2026-10-27T23:56:17.559Z",
+      "uptimeSeconds": 68.943378,
+      "prototype": "grave-accord-development",
+      "playable": {
+        "bosses": 66,
+        "classes": 7,
+        "modes": [
+          "short",
+          "standard",
+          "long",
+          "raid",
+          "endless"
+        ]
+      },
+      "protocolVersion": 31,
+      "contentRevision": "90c1bd18708bffd5fab92a98490b9f173ba4cdb85956aabda8fef67c4cd6c28d",
+      "practiceOnly": true,
+      "audience": "testing",
+      "sourceCommit": "2f144868b114befcc39460241239c33dffbb3a78",
+      "capacity": {
+        "reservedSlots": 0,
+        "instanceLimit": 50,
+        "rooms": 0,
+        "roomLimit": 4,
+        "available": true,
+        "canJoin": true,
+        "canCreate": true,
+        "queued": 0,
+        "offeredSlots": 0
+      }
+    },
+    {
+      "endpoint": "http://127.0.0.1:2573",
+      "origin": "http://127.0.0.1:5199",
+      "cors": true,
+      "status": "ok",
+      "startedAt": "2026-10-27T23:56:18.510Z",
+      "uptimeSeconds": 67.6903902,
+      "prototype": "grave-accord-development",
+      "playable": {
+        "bosses": 66,
+        "classes": 7,
+        "modes": [
+          "short",
+          "standard",
+          "long",
+          "raid",
+          "endless"
+        ]
+      },
+      "protocolVersion": 31,
+      "contentRevision": "90c1bd18708bffd5fab92a98490b9f173ba4cdb85956aabda8fef67c4cd6c28d",
+      "practiceOnly": true,
+      "audience": "public",
+      "sourceCommit": "2f144868b114befcc39460241239c33dffbb3a78",
+      "capacity": {
+        "reservedSlots": 0,
+        "instanceLimit": 50,
+        "rooms": 0,
+        "roomLimit": 4,
+        "available": true,
+        "canJoin": true,
+        "canCreate": true,
+        "queued": 0,
+        "offeredSlots": 0
+      }
+    }
+  ],
+  "realFrozenBackendNetwork": {
+    "passed": true,
+    "testingBoss": "matron",
+    "players": 2,
+    "chatSenderMatchesServerIdentity": true,
+    "publicBoss": "lantern-warden",
+    "publicOpeningRequestSanitized": true,
+    "lockedPulseMatchesAcrossClients": true,
+    "headlessOnly": true
+  },
+  "limits": [
+    "Raw HTTP, source-pinned bundle and headless real-network smoke only.",
+    "Browser use remains disabled in Work settings; no retry/bypass.",
+    "No personal clear, final balance, WAN/capacity/device/listening/native-language or deployment acceptance."
+  ]
+}
