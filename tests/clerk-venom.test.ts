@@ -116,7 +116,7 @@ function purple(form: BossVariant = "brutal") {
   return { g, p, s };
 }
 
-test("Standard preserves I then III, Brutal randomizes only phase two, and both Crazed phases can choose every numbered seal", () => {
+test("Standard preserves I then III; both advanced forms can choose every numbered seal", () => {
   for (const form of ["normal", "brutal", "crazed"] as const)
     for (const phase of [0, 1]) {
       const seen = new Set<number>();
@@ -127,8 +127,7 @@ test("Standard preserves I then III, Brutal randomizes only phase two, and both 
         const identical = fixture(form, phase, seed);
         assert.deepEqual(identical.d.cues(), f.d.cues());
       }
-      const randomized =
-        form === "crazed" || (form === "brutal" && phase === 1);
+      const randomized = form !== "normal";
       if (randomized)
         assert.deepEqual(
           [...seen].sort((a, b) => a - b),
@@ -478,7 +477,7 @@ test("only known protocol26 local Practice and profile state migrates, preservin
   old.protocolVersion = 26;
   old.contentRevision = revision;
   const after = Game.restoreOffline(old).offlineCheckpoint()!;
-  assert.equal(PROTOCOL, 28);
+  assert.equal(PROTOCOL, 29);
   assert.equal(after.contentRevision, CONTENT_REVISION);
   assert.deepEqual(after.player, save.player);
   assert.deepEqual(after.completedBossForms, save.completedBossForms);

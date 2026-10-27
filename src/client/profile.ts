@@ -243,6 +243,7 @@ export function parseProfile(raw: string): ProfileV1 {
       old.practiceOnly === true &&
       old.verified === false &&
       [
+        "39ca64136ddb477d344eb75408a22ed239af57efb1d3a3a4f5893ac33c13864d",
         "43b7b2848b50bbe56072bfa134e5775355a7faca28092624744bdae6a0d318bb",
         "cbb6b8e68c9fb6f3191a3f0ef4a6411c8a3d3e41e3aeca783c122b07ab73d546",
         "1ad00eee45a117a45929e56884c6a39a8c4eb614b0728ab31e847403fb8735bb",
@@ -270,6 +271,8 @@ export function parseProfile(raw: string): ProfileV1 {
       !Object.hasOwn(prefs, "branchingTree")
     )
       old.settings = { ...prefs, branchingTree: false };
+    const current=old.settings;
+    if(current&&typeof current==='object'&&!Array.isArray(current)&&Object.keys(current).length===9&&!Object.hasOwn(current,'showNames')&&!Object.hasOwn(current,'roomChat'))old.settings={...current,showNames:true,roomChat:true};
   }
   validateProfile(value);
   return value;
@@ -325,6 +328,14 @@ export function recordProfileView(
   playerId: string,
   store: ProfileStore,
 ) {
+  if (view.run?.testingModified) {
+    changeProfile(store, (profile) => {
+      profile.runs = profile.runs.filter((r) => r.runId !== view.run.id || r.playerId !== playerId);
+      profile.legacyCampaigns = profile.legacyCampaigns.filter((r) => r.id !== view.run.id);
+      if (!summary(profile).cosmetics.includes(profile.selectedCosmetic)) profile.selectedCosmetic = "field-mark";
+    });
+    return;
+  }
   const p = view.players.find((p) => p.id === playerId);
   if (
     !p ||

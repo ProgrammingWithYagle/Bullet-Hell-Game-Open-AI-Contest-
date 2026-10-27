@@ -1,3 +1,4 @@
+import {drawWidowCue} from './widow-presentation.ts';
 import clerkRules from '../shared/clerk-appeal-rules.json';
 import {smallWakesPose,drawSmallWakes} from './small-wakes-presentation.ts';
 import { earlyWatchPose, drawEarlyWatch } from './early-watch-presentation.ts';
@@ -60,6 +61,9 @@ export class CombatScene extends Phaser.Scene {
   localId = 'solo';
   predicted: PlayerView | null = null;
   hitboxes = true;
+  showNames = true;
+  nameTextScale = 1;
+  private nameLabels = new Map<string,Phaser.GameObjects.Text>();
   highContrast = false;
   reduceMotion = false;
   private visualMotion = new SurvivorVisualMotion();
@@ -447,6 +451,7 @@ export class CombatScene extends Phaser.Scene {
         h.lineStyle(2, color, 0.7).strokePoints(points, true);
       }
     }
+    const drawnDomains=new Set<string>();
     for (const cue of view.bossCues) {
       if(cue.kind==='arena-lava') {
         const active=now>=cue.at;
@@ -502,6 +507,7 @@ export class CombatScene extends Phaser.Scene {
           h.lineStyle(2, 0xf2ca7e, .7).lineBetween(cue.x + Math.cos(angle) * 48, cue.y + Math.sin(angle) * 48, cue.x + Math.cos(angle) * 225, cue.y + Math.sin(angle) * 225);
         continue;
       }
+      if(drawWidowCue(h,f,cue,now))continue;
       if (cue.kind === 'marshal-patrol') {
         h.lineStyle(2,0xe6b875,.85).lineBetween(cue.x1,cue.y1,cue.x2,cue.y2);
         h.lineStyle(3,0xe6b875,1).strokeRect(cue.x2-18,cue.y2-15,36,30);
@@ -547,6 +553,18 @@ export class CombatScene extends Phaser.Scene {
           .lineBetween(cue.x + nx * 7, cue.y + ny * 7, cue.x - tx * 11, cue.y - ty * 11)
           .lineBetween(cue.x + nx * 13 + tx * 6, cue.y + ny * 13 + ty * 6, cue.x + nx * 21 + tx * 11, cue.y + ny * 21 + ty * 11)
           .lineBetween(cue.x + nx * 13 - tx * 6, cue.y + ny * 13 - ty * 6, cue.x + nx * 21 - tx * 11, cue.y + ny * 21 - ty * 11);
+        continue;
+      }
+      if(cue.kind==='clerk-domain'){
+        if(now<cue.beganAt)continue;
+        const key=cue.x+':'+cue.y+':'+cue.radius;
+        if(drawnDomains.has(key))continue;drawnDomains.add(key);
+        const active=now>=cue.at,color=0xffb63d;
+        h.fillStyle(0x7d4716,active?.32:.06).fillCircle(cue.x,cue.y,cue.radius);
+        h.lineStyle(active?4:2,color,1).strokeCircle(cue.x,cue.y,cue.radius);
+        const diamond=[[0,-cue.radius-5],[cue.radius+5,0],[0,cue.radius+5],[-cue.radius-5,0]].map(([x,y])=>new Phaser.Math.Vector2(cue.x+x,cue.y+y));
+        h.lineStyle(2,color,.9).strokePoints(diamond,true);
+        h.lineStyle(3,color,1).strokeCircle(cue.x-7,cue.y,8).strokeCircle(cue.x+7,cue.y,8);
         continue;
       }
       if(cue.kind==='clerk-patrol'){
@@ -721,38 +739,6 @@ export class CombatScene extends Phaser.Scene {
         f.fillStyle(0x142b27,1).fillRect(cue.x-30,cue.y-42,60,6);
         f.fillStyle(color,1).fillRect(cue.x-30,cue.y-42,60*cue.health/cue.maxHealth,6);
         if(broken)f.lineStyle(3,color,1).lineBetween(cue.x-14,cue.y-14, cue.x+14,cue.y+14);
-      } else if (cue.kind === 'gate') {
-        const active = now >= cue.at,
-          color = cue.open ? 0x9be6c9 : 0xe88664;
-        h.fillStyle(color, cue.open ? 0.05 : active ? 0.3 : 0.07).fillRect(
-          cue.x,
-          cue.y,
-          cue.width,
-          cue.height,
-        );
-        h.lineStyle(cue.open ? 4 : 3, color, 1).strokeRect(cue.x, cue.y, cue.width, cue.height);
-        if (cue.open)
-          h.lineStyle(4, color, 1).lineBetween(
-            cue.x + cue.width / 2,
-            cue.y + cue.height + 30,
-            cue.x + cue.width / 2,
-            cue.y - 30,
-          );
-        else
-          for (let x = cue.x + 14; x < cue.x + cue.width; x += 28)
-            h.lineStyle(active ? 7 : 2, color, active ? 0.85 : 0.5).lineBetween(
-              x,
-              cue.y,
-              x,
-              cue.y + cue.height,
-            );
-        for (let n = 0; n <= cue.lane; n++)
-          f.lineStyle(4, color, 1).lineBetween(
-            cue.x + cue.width / 2 + (n - cue.lane / 2) * 10,
-            cue.y + cue.height / 2 - 10,
-            cue.x + cue.width / 2 + (n - cue.lane / 2) * 10,
-            cue.y + cue.height / 2 + 10,
-          );
       } else if (cue.kind === 'driver') {
         f.lineStyle(4, 0xf4d99c, 1).strokeCircle(cue.x, cue.y, cue.radius);
         f.lineStyle(3, 0xf4d99c, 1)
@@ -1066,6 +1052,7 @@ export class CombatScene extends Phaser.Scene {
         data.bosses.find((boss) => boss.id === view.boss.id)!.radius,
       );
     const existing = new Set<string>();
+    const nameScale = Math.max(1, 1600 / Math.max(320, this.scale.displaySize.width)) * this.nameTextScale;
     for (const actual of view.players) {
       existing.add(actual.id);
       const p = actual.id === this.localId && this.predicted ? this.predicted : actual;
@@ -1153,6 +1140,12 @@ export class CombatScene extends Phaser.Scene {
         f.lineBetween(x-3,y-2,x-3,y+3).lineBetween(x+3,y-2,x+3,y+3);
         f.lineStyle(3,0xd3a9e7,.9).lineBetween(x-10,y+12,x-10+20*Math.max(0,Math.min(1,(p.poisonUntil-now)/(clerkRules.purplePoisonSeconds*30))),y+12);
       }
+      let nameLabel=this.nameLabels.get(p.id);
+      if(this.showNames&&!nameLabel){
+        nameLabel=this.add.text(p.x,p.y-76,p.name,{fontFamily:getComputedStyle(document.body).fontFamily,fontSize:'14px',color:'#f4ebd4',backgroundColor:'#10201d',padding:{left:4,right:4,top:2,bottom:2}}).setOrigin(.5,1);
+        this.nameLabels.set(p.id,nameLabel);
+      }
+      nameLabel?.setScale(nameScale).setText(p.name).setPosition(sprite.x,sprite.y-76).setDepth(8+sprite.y/1000).setVisible(this.showNames&&p.status!=='waiting');
       this.shadows.fillStyle(0x10201d, 0.35).fillEllipse(p.x, p.y + 4, 38, 14);
       if (p.id === this.localId) f.lineStyle(2, 0xf5e6af, 0.9).strokeEllipse(p.x, p.y + 4, 42, 20);
       if (this.hitboxes)
@@ -1184,6 +1177,7 @@ export class CombatScene extends Phaser.Scene {
       if (!existing.has(id)) {
         sprite.destroy();
         this.people.delete(id);
+        this.nameLabels.get(id)?.destroy();this.nameLabels.delete(id);
       }
     this.renderedHostiles = 0;
     for (const [id, s] of this.shots) {

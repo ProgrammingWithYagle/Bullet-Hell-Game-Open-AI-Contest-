@@ -15744,8 +15744,8 @@
       "artBrief": "A thin undead clerk carrying a broad folded ledger and red sealing stamp. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
       "signature": {
         "id": "quarantine-clerk",
-        "behavior": "Reachable arena-relative stamp centers replace the fixed fallback grid. Standard reopens I early and III late. Brutal reopens I early and a randomly numbered seal late; Crazed chooses a randomly numbered seal in every field. The choice locks and warns with the full field, before any strike. The late Appeal Circuit patrols before marking. Standard uses three red/green stamps, Brutal five including doubled-damage purple stamps, and Crazed ten including black current-health curses. Advanced late appeals replace the expired set after a gap, keeping the live field capped at five/ten. Each reopening precedes a locked, fully warned volley from two/three/four marked origins by form; the green seal visibly absorbs shots at its rim.",
-        "counterplay": "Read the ordered marks and the notched future-safe seal. Wait for its green interior before entering. Follow the new ground origin after a late patrol; advanced appeals warn a fresh set after the old field expires. Purple stamps hit twice as hard as red. The first successful purple contact per player per seal also removes 15% of current health, bypassing armor/shield capacity, and applies three seconds of nonstacking poison (two base damage each half-second) and 35% walking slow; dash speed remains unchanged. Cleanse supplies and Medic cleansing abilities remove both. Green shelter and invulnerability prevent application and poison ticks. Brutal shelter lasts at least 3.5 seconds and Crazed at least five seconds, extending if needed until half a second after the final possible fan echo reaches the rim; black stamps remove 75% of current health once per seal activation, bypassing armor/shields but respecting invulnerability and green protection, leaving at least one health. Shape markings distinguish hazards. The shield outline and closing rim identify temporary shelter from marked volleys; use it to keep firing, or dodge the warned fan in open ground.",
+        "behavior": "Reachable arena-relative stamp centers replace the fixed fallback grid. Standard reopens I early and III late. Brutal chooses one random green number at the start of phase one, holds it throughout that phase and chooses a new random number for each phase-two batch; Crazed chooses a randomly numbered seal in every field. The choice locks and warns with the full field, before any strike. The late Appeal Circuit patrols before marking. Standard uses three red/green stamps, Brutal five including doubled-damage purple stamps, and Crazed ten including black current-health curses. Advanced late appeals replace the expired set after a gap, keeping the live field capped at five/ten. Each reopening precedes a locked, fully warned volley from two/three/four marked origins by form; the green seal visibly absorbs shots at its rim.",
+        "counterplay": "Active green shelter also increases damage to the Clerk by 50%/35% in Standard, 40%/20% in Brutal and 25%/5% in Crazed (early/late). Crazed phase two leaves two amber infinity domains after each stamp batch. After a separate two-second warning, they remain for the rest of combat and remove 10% of maximum health per contact, bypassing armor and shield capacity, at most once per second across overlapping domains. Green shelter and invulnerability protect. Read the ordered marks and the notched future-safe seal. Wait for its green interior before entering. Follow the new ground origin after a late patrol; advanced appeals warn a fresh set after the old field expires. Purple stamps hit twice as hard as red. The first successful purple contact per player per seal also removes 15% of current health, bypassing armor/shield capacity, and applies three seconds of nonstacking poison (two base damage each half-second) and 35% walking slow; dash speed remains unchanged. Cleanse supplies and Medic cleansing abilities remove both. Green shelter and invulnerability prevent application and poison ticks. Brutal shelter lasts at least 3.5 seconds and Crazed at least five seconds, extending if needed until half a second after the final possible fan echo reaches the rim; black stamps remove 75% of current health once per seal activation, bypassing armor/shields but respecting invulnerability and green protection, leaving at least one health. Shape markings distinguish hazards. The shield outline and closing rim identify temporary shelter from marked volleys; use it to keep firing, or dodge the warned fan in open ground.",
         "parameters": {
           "zones": 3,
           "zoneRadiusPx": 82,
@@ -15755,6 +15755,26 @@
           "safeZoneIndex": 0,
           "appeal": {
             "stampRadius": 82,
+            "shelterBossBonus": {
+              "normal": [
+                0.5,
+                0.35
+              ],
+              "brutal": [
+                0.4,
+                0.2
+              ],
+              "crazed": [
+                0.25,
+                0.05
+              ]
+            },
+            "domainCount": 2,
+            "domainRadius": 32,
+            "domainWarningSeconds": 2,
+            "domainMaximumHealthFraction": 0.1,
+            "domainContactSeconds": 1,
+            "maximumDomains": 128,
             "stampCounts": {
               "normal": 3,
               "brutal": 5,
@@ -15974,7 +15994,7 @@
               ],
               "patternPhase": 0,
               "phaseNameKey": "boss.quarantine-clerk.phase.0",
-              "reopensStamp": 1,
+              "reopensStamp": "random",
               "relocatesBeforeStamps": false,
               "stampCount": 5,
               "stampRadius": 72
@@ -16433,15 +16453,49 @@
       "artBrief": "A mourning corpse whose veil is a single large gate-shaped iron frame. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
       "signature": {
         "id": "gate-widow",
-        "behavior": "Close two portcullis lanes while raising the third; rotate the open lane after each cast.",
-        "counterplay": "Use the plainly outlined open lane and wait for the next audible latch cue.",
+        "behavior": "Three Latches warns two closed lanes and an open numbered crossing. A moving floor pall sweeps the two closed-lane tracks toward the locked target side. At half health, Crossed Threshold marks a real reposition, then warns a vertical gate and a separate horizontal return. Brutal adds gapped latch needles; Crazed retains them, adds crossing needle repeats and one additional separately warned gate.",
+        "counterplay": "Follow the open numbered lane to cross the gate or avoid the moving floor pall; a timed dash can also cross the pall. The gap is not a bullet shield. Floor sweeps pass under masonry. Every gate gets a full 1.5-second tell, and the pall starts another 0.6 seconds later. Only one gate set can be solid at a time; the next orientation waits for the old set and an exit interval. Read each fresh locked warning and attack in recovery. Original boss health, damage, deadline, attack definitions, fixed grade, art and Third Latch score remain.",
         "parameters": {
           "lanes": 3,
           "openLanes": 1,
           "gateWidthPx": 150,
           "warningSeconds": 1.5,
           "closedSeconds": 3.5,
-          "cycleSeconds": 8
+          "cycleSeconds": 8,
+          "crossedThreshold": {
+            "gateThickness": 48,
+            "warningSeconds": 1.5,
+            "closedSeconds": 3.5,
+            "closingDamage": 14,
+            "minimumPassageWidth": 128,
+            "passageClearance": 22,
+            "ejectionSampleSpacing": 16,
+            "minimumPallTravel": 120,
+            "pallThickness": 24,
+            "pallSpeed": 175,
+            "pallDelaySeconds": 0.6,
+            "pallDamage": 14,
+            "exitSeconds": 0.3,
+            "patrolDistance": 160,
+            "patrolSpeed": 72,
+            "patrolWarningSeconds": 0.7,
+            "betweenGatesSeconds": 0.85,
+            "recoverySeconds": 0.9,
+            "betweenSequencesSeconds": 1.5,
+            "retrySeconds": 1,
+            "needlesPerWing": 3,
+            "needleHalfGap": 0.4,
+            "needleWingArc": 0.6,
+            "needleDelaySeconds": 0.45,
+            "needleWarningSeconds": 1.35,
+            "needleSpeed": 205,
+            "needleDamage": 5,
+            "needleRadius": 5,
+            "needleCueSeconds": 0.2,
+            "postSpacing": 32,
+            "crazedCrossingFromWave": 3,
+            "crazedCrossingTurn": 0.3
+          }
         }
       },
       "arenaIds": [
@@ -16482,7 +16536,13 @@
               "gap": 55
             }
           ],
-          "patternPhase": 0
+          "patternPhase": 0,
+          "phaseNameKey": "boss.gate-widow.phase.0",
+          "relocatesBeforeGates": false,
+          "gateAxes": [
+            "horizontal"
+          ],
+          "serialGateSets": 1
         },
         {
           "healthThreshold": 0.5,
@@ -16506,7 +16566,14 @@
               "gap": 55
             }
           ],
-          "patternPhase": 2
+          "patternPhase": 2,
+          "phaseNameKey": "boss.gate-widow.phase.1",
+          "relocatesBeforeGates": true,
+          "gateAxes": [
+            "vertical",
+            "horizontal"
+          ],
+          "serialGateSets": 2
         }
       ],
       "variants": {
@@ -16549,7 +16616,13 @@
                   "comboOffsetSeconds": 0
                 }
               ],
-              "patternPhase": 0
+              "patternPhase": 0,
+              "phaseNameKey": "boss.gate-widow.phase.0",
+              "relocatesBeforeGates": false,
+              "gateAxes": [
+                "horizontal"
+              ],
+              "serialGateSets": 1
             },
             {
               "healthThreshold": 0.5,
@@ -16576,7 +16649,14 @@
                   "comboOffsetSeconds": 1.25
                 }
               ],
-              "patternPhase": 3
+              "patternPhase": 3,
+              "phaseNameKey": "boss.gate-widow.phase.1",
+              "relocatesBeforeGates": true,
+              "gateAxes": [
+                "vertical",
+                "horizontal"
+              ],
+              "serialGateSets": 2
             }
           ]
         },
@@ -16613,7 +16693,13 @@
                   "comboOffsetSeconds": 0
                 }
               ],
-              "patternPhase": 0
+              "patternPhase": 0,
+              "phaseNameKey": "boss.gate-widow.phase.0",
+              "relocatesBeforeGates": false,
+              "gateAxes": [
+                "horizontal"
+              ],
+              "serialGateSets": 1
             },
             {
               "healthThreshold": 0.5,
@@ -16640,7 +16726,14 @@
                   "comboOffsetSeconds": 1.25
                 }
               ],
-              "patternPhase": 3
+              "patternPhase": 3,
+              "phaseNameKey": "boss.gate-widow.phase.1",
+              "relocatesBeforeGates": true,
+              "gateAxes": [
+                "vertical",
+                "horizontal"
+              ],
+              "serialGateSets": 2
             }
           ],
           "additionalPatterns": [

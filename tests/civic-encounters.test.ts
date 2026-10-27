@@ -146,16 +146,15 @@ test('Widow rotates the open gate, blocks shots and movement, and ejects a closi
   d.step(c, false);
   const solids = d.solids(c.tick);
   assert.equal(solids.length, 2);
-  assert(
-    segmentRect({ x: 800, y: 500 }, { x: 800, y: 750 }, solids[0], 3),
-    'Closed gate must absorb a swept shot',
-  );
-  const blocked = moveBody({ x: 800, y: 550 }, { x: 0, y: 200 }, 9, solids);
-  assert(blocked.y < 615);
-  const clear = leaveClosingGates({ x: 800, y: 630 }, solids, 9);
-  assert(clear.y < 606 || clear.y > 672);
-  const free = moveBody({ x: 400, y: 550 }, { x: 0, y: 200 }, 9, solids);
-  assert.equal(free.y, 750);
+  const slab=solids[0],x=slab.x+slab.width/2;
+  assert(segmentRect({x,y:slab.y-50},{x,y:slab.y+100},slab,3),'Closed gate absorbs swept shots');
+  const blocked=moveBody({x,y:slab.y-65},{x:0,y:200},9,solids);
+  assert(blocked.y<slab.y-9);
+  const clear=leaveClosingGates({x,y:slab.y+slab.height/2},solids,9);
+  assert(clear.y<slab.y-9||clear.y>slab.y+slab.height+9);
+  const opening=gates.find(g=>g.open)!;
+  const free=moveBody({x:opening.x+opening.width/2,y:slab.y-65},{x:0,y:200},9,solids);
+  assert.equal(free.y,slab.y+135);
   c.tick = gates[0].until + 1;
   d.step(c, false);
   d.reset(c.bossId);
@@ -171,8 +170,9 @@ test('Widow collision prediction uses the same active shutters as the authoritat
     p = g.players.get('solo')!;
   g.step();
   until(g, () => g.director.solids(g.combatTick).length === 2);
-  p.x = 800;
-  p.y = 570;
+  const slab=g.director.civic.solids(g.combatTick)[0];
+  p.x=slab.x+slab.width/2;
+  p.y=slab.y-40;
   p.oldX = p.x;
   p.oldY = p.y;
   const prediction = new Prediction();
@@ -185,7 +185,7 @@ test('Widow collision prediction uses the same active shutters as the authoritat
     assert(Math.abs(prediction.player!.x - p.x) < 1e-7);
     assert(Math.abs(prediction.player!.y - p.y) < 1e-7);
   }
-  assert(p.y < 615 - 9);
+  assert(p.y < slab.y - 9);
 });
 
 test('Ambulance patrols, locks and executes a charge, then exposes its driver for exactly three seconds', () => {

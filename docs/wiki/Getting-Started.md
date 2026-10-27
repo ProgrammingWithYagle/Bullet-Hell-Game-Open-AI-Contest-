@@ -79,3 +79,7 @@ The seven requested class-upgrade implementation passes now add 21 behavior chan
 ## Three encounter forms
 
 Local setup offers Standard, Brutal and Crazed on lower difficulties. Insane fixes Brutal; Hellish fixes Crazed. Purple/C identifies Crazed, red/B Brutal. Difficulty cards state revival, shield, cover and forced-form rules. Normal revival remains 25%, Easy 50%, Baby 100%, Hard+ disabled. [Current rules](Modes#crazed-horizon-follow-up).
+
+## Testing and public editions
+
+The testing target offers opening-boss/form selection, all-difficulty manual guides, a Solo paused coin/SP panel and tab-only difficulty unlock. The public target randomizes new openings, omits tools and offers optional guides only on Baby. Modified runs disable boundary saving and local records. These local build targets do not replace the old public Site. Settings toggle overhead names and room chat. Home Leaderboards shows actual local Practice records and an explicit unconnected Online boards status. [Build policy](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/TESTING_AND_PUBLIC_BUILDS.md).

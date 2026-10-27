@@ -1,5 +1,11 @@
+import {TESTING_BUILD} from './build-audience.ts';
+import {testingToolsMarkup,unlockTestingDifficulties} from './testing-ui.ts';
+import {RoomChatUI} from './room-chat-ui.ts';
+import {clerkShelterPower} from './clerk-shelter-power.ts';
+import './ui/runtime-extras.css';
 import {BossGuideState,bossGuideMarkup,bossGuideAvailable} from './boss-guide.ts';
 import './ui/boss-guide.css';
+import {widowPhaseName,widowPhaseHint} from './widow-text.ts';
 import {marshalPhaseName,marshalPhaseHint} from './marshal-text.ts';
 import {tollkeeperPhaseName,tollkeeperPhaseHint} from './tollkeeper-text.ts';
 import {clerkPhaseName,clerkPhaseHint} from './clerk-text.ts';
@@ -75,6 +81,7 @@ function rating(p: PlayerView) {
   }
   return cached!.value;
 }
+let roomChatUI:RoomChatUI|undefined;
 const settings = defaultPreferences();
 let inputOptions = defaultControls(),
   selectedCosmetic: CosmeticId = 'field-mark',
@@ -110,11 +117,14 @@ function applySettings() {
     scene.hitboxes = settings.hitboxes;
     scene.reduceMotion = settings.reduceMotion;
     scene.highContrast = settings.highContrast;
+    scene.showNames = settings.showNames;
+    scene.nameTextScale=settings.textScale;
   }
+  roomChatUI?.configure(settings.roomChat,session?.online??false);
   audio.setVolume(settings.volume, settings.music);
 }
 function settingsMarkup() {
-  return `<details class="settings"><summary>${text('ui.settings')}</summary><div class="settings-grid">${(['autoFire', 'aimAssist', 'hitboxes', 'reduceMotion', 'highContrast', 'branchingTree'] as const).map((key) => `<label class="check"><input type="checkbox" data-setting="${key}" ${settings[key] ? 'checked' : ''}>${text('ui.' + key)}</label>`).join('')}<label>${text('ui.effectsVolume')}<input data-setting="volume" type="range" min="0" max="1" step="0.05" value="${settings.volume}"></label><label>${text('ui.musicVolume')}<input data-setting="music" type="range" min="0" max="1" step="0.05" value="${settings.music}"></label><label>${text('ui.textSize')}<input data-setting="textScale" type="range" min="0.9" max="1.4" step="0.1" value="${settings.textScale}"></label></div>${controlsMarkup(inputOptions)}</details>`;
+  return `<details class="settings"><summary>${text('ui.settings')}</summary><div class="settings-grid">${(['autoFire', 'aimAssist', 'hitboxes', 'reduceMotion', 'highContrast', 'branchingTree', 'showNames', 'roomChat'] as const).map((key) => `<label class="check"><input type="checkbox" data-setting="${key}" ${settings[key] ? 'checked' : ''}>${text('ui.' + key)}</label>`).join('')}<label>${text('ui.effectsVolume')}<input data-setting="volume" type="range" min="0" max="1" step="0.05" value="${settings.volume}"></label><label>${text('ui.musicVolume')}<input data-setting="music" type="range" min="0" max="1" step="0.05" value="${settings.music}"></label><label>${text('ui.textSize')}<input data-setting="textScale" type="range" min="0.9" max="1.4" step="0.1" value="${settings.textScale}"></label></div>${controlsMarkup(inputOptions)}</details>`;
 }
 function bindSettings() {
   const root = document.querySelector<HTMLElement>('[data-controls]');
@@ -202,7 +212,7 @@ async function begin(
       if (e) e.textContent = t(key, { seconds: 60, position: active.queuePosition });
       if (controls) {
         controls.blocked =
-          bossGuide.blocksInput(paused) ||
+          (bossGuide.blocksInput(paused)||roomChatUI?.blocksInput===true) ||
           active.view?.phase !== 'combat' ||
           key === 'ui.reconnecting' ||
           key === 'ui.errorNetwork';
@@ -219,6 +229,7 @@ async function begin(
               ? t('ui.checkpointUnavailable')
               : '';
     };
+    active.onTestingResult=ok=>{const status=$('testing-status');if(status)status.textContent=t(ok?'ui.testingApplied':'ui.testingRejected');};
     active.onPurchase = (r) => {
       if (!r.ok) {
         $('status').textContent = t(
@@ -236,6 +247,7 @@ async function begin(
     await scene!.prepared;
     if (online) await active.connect(opts, join, visibility);
     else await active.offline(opts, resume);
+    roomChatUI?.configure(settings.roomChat,active.online);
     timer = setInterval(() => {
       const view = active.view;
       if (!view || bossGuide.pausesSimulation(paused,active.online)) return;
@@ -268,13 +280,22 @@ function setupGame(online: boolean) {
   uiKey = '';
   lastPhase = '';
   prediction = new Prediction();
-  app.innerHTML = `<div id="stage" dir="ltr"></div><section class="hud" aria-label="${text('ui.health')}"><div class="topline"><div><strong id="encounter"></strong><small id="status" role="status"></small></div><div id="boss-panel">${bossHeaderMarkup()}<div class="boss-health-track" dir="ltr"><progress id="boss-health" max="1" value="1" aria-label="${text('ui.boss')}"></progress><div id="boss-phase-markers" aria-hidden="true"></div></div><p id="boss-phase-entry" class="boss-phase-entry" role="status" aria-live="polite" hidden></p><p id="boss-phase-note" class="boss-phase-note" role="status" aria-live="polite" hidden></p></div><button id="pause-button">Ⅱ <span>${text('ui.pause')}</span></button></div><div id="accord" class="accord" hidden></div><p id="signature-help" class="signature-help" role="status" aria-live="polite" hidden></p><div class="bottomline"><div class="vitals"><strong id="player-name">${insignia(selectedCosmetic)}<span id="player-name-label"></span></strong><progress id="health" max="1" value="1" aria-label="${text('ui.health')}"></progress><span id="health-text"></span><span id="ammo"></span><span id="currency"></span></div><div id="abilities" class="ability-list"></div><div id="squad" class="squad"></div></div></section><div id="modal" class="overlay" hidden></div><div id="pause-menu" class="overlay" hidden><section class="dialog"><h2>${text('ui.paused')}</h2><p>${text(online ? 'ui.onlinePause' : 'ui.offlineNotice')}</p>${settingsMarkup()}<div class="actions"><button id="resume" class="primary">${text('ui.continue')}</button><button id="leave">${text('ui.leaveRoom')}</button></div></section></div><div class="touch-buttons"><button data-action="dodge">${text('ui.dodge')}</button><button data-action="q">Q</button><button data-action="e">E</button><button data-action="ultimate">${text('ui.ultimate')}</button><button data-action="interact">${text('ui.revive')}</button><button data-action="reload">${text('ui.reload')}</button></div><div class="portrait-note">${text('ui.portraitHint')}</div>`;
+  app.innerHTML = `<div id="stage" dir="ltr"></div><section class="hud" aria-label="${text('ui.health')}"><div class="topline"><div><strong id="encounter"></strong><small id="status" role="status"></small></div><div id="boss-panel">${bossHeaderMarkup()}<div class="boss-health-track" dir="ltr"><progress id="boss-health" max="1" value="1" aria-label="${text('ui.boss')}"></progress><div id="boss-phase-markers" aria-hidden="true"></div></div><p id="boss-phase-entry" class="boss-phase-entry" role="status" aria-live="polite" hidden></p><p id="boss-phase-note" class="boss-phase-note" role="status" aria-live="polite" hidden></p></div><button id="pause-button">Ⅱ <span>${text('ui.pause')}</span></button></div><div id="accord" class="accord" hidden></div><p id="signature-help" class="signature-help" role="status" aria-live="polite" hidden></p><div class="bottomline"><div class="vitals"><strong id="player-name">${insignia(selectedCosmetic)}<span id="player-name-label"></span></strong><progress id="health" max="1" value="1" aria-label="${text('ui.health')}"></progress><span id="health-text"></span><span id="ammo"></span><span id="currency"></span></div><div id="abilities" class="ability-list"></div><div id="squad" class="squad"></div></div></section><div id="modal" class="overlay" hidden></div><div id="pause-menu" class="overlay" hidden><section class="dialog"><h2>${text('ui.paused')}</h2><p id="pause-notice">${text(online ? 'ui.onlinePause' : 'ui.offlineNotice')}</p>${settingsMarkup()}<div class="actions"><button id="resume" class="primary">${text('ui.continue')}</button><button id="leave">${text('ui.leaveRoom')}</button></div></section></div><div class="touch-buttons"><button data-action="dodge">${text('ui.dodge')}</button><button data-action="q">Q</button><button data-action="e">E</button><button data-action="ultimate">${text('ui.ultimate')}</button><button data-action="interact">${text('ui.revive')}</button><button data-action="reload">${text('ui.reload')}</button></div><div class="portrait-note">${text('ui.portraitHint')}</div>`;
   const guideMount=document.createElement('div');
   guideMount.innerHTML=bossGuideMarkup(locale,online);
   $('pause-button').before(guideMount.querySelector('#boss-guide-button')!);
   app.append(guideMount.querySelector('#boss-guide')!);
   $('boss-guide-copy').append($('boss-phase-note'),$('signature-help'));
   $('boss-guide-button').onclick=()=>setBossGuide(!bossGuide.open);
+  const power=document.createElement('span');power.id='clerk-shelter-power';power.hidden=true;$('ammo').after(power);
+  roomChatUI=new RoomChatUI(session!,app,()=>syncPauseState());
+  roomChatUI.configure(settings.roomChat,online);
+  if(TESTING_BUILD){
+    const marker=document.createElement('small');marker.id='testing-run-marker';marker.hidden=true;marker.textContent=t('ui.testingTools')+' · '+t('ui.leaderboardUnranked');$('currency').after(marker);
+    const mount=document.createElement('div');mount.innerHTML=testingToolsMarkup(online);$('pause-menu').querySelector('.dialog')!.append(...Array.from(mount.childNodes));
+    $('testing-apply').onclick=()=>session?.testingCommand({coins:Number($<HTMLInputElement>('testing-coins').value),sp:Number($<HTMLInputElement>('testing-sp').value)});
+    $('testing-unlock').onclick=()=>{$('testing-status').textContent=t(unlockTestingDifficulties()?'ui.testingUnlocked':'ui.errorSave');};
+  }
   $('boss-guide-close').onclick=$('boss-guide-resume').onclick=()=>setBossGuide(false);
   const supplyBar = document.createElement('div');
   const checkpointNotice = document.createElement('small');
@@ -332,7 +353,7 @@ function syncPauseState() {
     if(simulationPaused&&!scene.scene.isPaused())scene.scene.pause();
     else if(!simulationPaused&&scene.scene.isPaused())scene.scene.resume();
   }
-  if(controls){controls.clear();controls.blocked=bossGuide.blocksInput(paused)||session?.view?.phase!=='combat';}
+  if(controls){controls.clear();controls.blocked=(bossGuide.blocksInput(paused)||roomChatUI?.blocksInput===true)||session?.view?.phase!=='combat';}
 }
 function setBossGuide(value:boolean,restoreFocus=true) {
   if(value&&(session?.view?.phase!=='combat'||!bossGuideAvailable(session.view.run.difficulty)))return;
@@ -351,6 +372,8 @@ function togglePause() {
 }
 function update(view: View) {
   if (!session || !scene) return;
+  $('pause-notice').textContent=t(view.run.testingModified?'ui.testingNoRecords':session.online?'ui.onlinePause':'ui.offlineNotice');
+  if(TESTING_BUILD)$('testing-run-marker').hidden=!view.run.testingModified;
   if(view.phase!=='combat'&&bossGuide.open)setBossGuide(false,false);
   $<HTMLButtonElement>('boss-guide-button').disabled=view.phase!=='combat';
   $('boss-guide-button').hidden=!bossGuideAvailable(view.run.difficulty);
@@ -362,13 +385,15 @@ function update(view: View) {
   const p = view.players.find((p) => p.id === session!.id);
   if (!p) return;
   controls!.blocked =
-    bossGuide.blocksInput(paused) ||
+    (bossGuide.blocksInput(paused)||roomChatUI?.blocksInput===true) ||
     view.phase !== 'combat' ||
     session.status === 'ui.reconnecting' ||
     session.status === 'ui.errorNetwork';
   $('encounter').textContent = t('ui.encounter', {
     number: view.encounter + 1,
   });
+  const power=clerkShelterPower(view,p),powerElement=$('clerk-shelter-power');
+  powerElement.hidden=power<=0;powerElement.textContent=power>0?t('ui.shelterPower',{percent:number(Math.round(power*100))}):'';
   $('player-name-label').textContent =
     p.name +
     ' · ' +
@@ -383,7 +408,7 @@ function update(view: View) {
   $('boss-form').textContent=t(view.boss.variant==='crazed'?'ui.variantCrazed':view.boss.variant==='brutal'?'ui.variantBrutal':'ui.variantNormal');
   $('boss-phase-label').textContent=t('ui.phaseCount',{number:number(view.boss.phase+1),total:number(encounterPhases(view.boss.id,view.boss.variant).length)});
   $('boss-phase-name').textContent=view.boss.id==='constable'?constablePhaseName(bossPatternPhase(view.boss.id,view.boss.variant,view.boss.phase),locale):
-    view.boss.id==='chain-marshal'?marshalPhaseName(view.boss.phase,locale):view.boss.id==='tollkeeper'?tollkeeperPhaseName(view.boss.phase,locale):view.boss.id==='quarantine-clerk'?clerkPhaseName(view.boss.phase,locale):view.boss.id==='ratcatcher'?ratcatcherPhaseName(view.boss.phase,locale):view.boss.id==='courier'?courierPhaseName(view.boss.phase,locale):smallWakesPhaseName(view.boss.id,view.boss.phase,locale)??(view.boss.id==='lantern-warden'?wardenPhaseName(view.boss.phase,locale):
+    view.boss.id==='gate-widow'?widowPhaseName(view.boss.phase,locale):view.boss.id==='chain-marshal'?marshalPhaseName(view.boss.phase,locale):view.boss.id==='tollkeeper'?tollkeeperPhaseName(view.boss.phase,locale):view.boss.id==='quarantine-clerk'?clerkPhaseName(view.boss.phase,locale):view.boss.id==='ratcatcher'?ratcatcherPhaseName(view.boss.phase,locale):view.boss.id==='courier'?courierPhaseName(view.boss.phase,locale):smallWakesPhaseName(view.boss.id,view.boss.phase,locale)??(view.boss.id==='lantern-warden'?wardenPhaseName(view.boss.phase,locale):
     ['ashen-usher','brass-toad','ragpicker-kite'].includes(view.boss.id)?t(`boss.${view.boss.id}.phase.${Math.min(2,bossPatternPhase(view.boss.id,view.boss.variant,view.boss.phase))}`):'');
   const hp = $<HTMLProgressElement>('health');
   hp.max = p.maxHealth;
@@ -410,7 +435,7 @@ function update(view: View) {
       p.status !== 'active' ||
       view.phase !== 'combat' ||
       (item?.effect==='revive' && !combatReviveFraction(view.run.difficulty)) ||
-      bossGuide.blocksInput(paused);
+      (bossGuide.blocksInput(paused)||roomChatUI?.blocksInput===true);
     button.setAttribute('aria-label', `${number(index + 1)} · ${name} ×${number(slot.count)}`);
     button.title = item
       ? name +
@@ -475,7 +500,7 @@ function update(view: View) {
   const noteText =
     view.boss.id === 'constable'
       ? constablePhaseHint(bossPatternPhase(view.boss.id,view.boss.variant,view.boss.phase), view.boss.variant, locale)
-      : view.boss.id==='chain-marshal'?marshalPhaseHint(view.boss.phase,view.boss.variant,locale):view.boss.id==='tollkeeper'?tollkeeperPhaseHint(view.boss.phase,view.boss.variant,locale):view.boss.id==='quarantine-clerk'?clerkPhaseHint(view.boss.phase,view.boss.variant,locale):view.boss.id==='ratcatcher'?ratcatcherPhaseHint(view.boss.phase,view.boss.variant,locale):view.boss.id==='courier'?courierPhaseHint(view.boss.phase,view.boss.variant,locale):view.boss.id==='lantern-warden'?wardenPhaseHint(view.boss.phase,view.boss.variant,locale):smallWakesPhaseHint(view.boss.id,view.boss.phase,view.boss.variant,locale);
+      : view.boss.id==='gate-widow'?widowPhaseHint(view.boss.phase,view.boss.variant,locale):view.boss.id==='chain-marshal'?marshalPhaseHint(view.boss.phase,view.boss.variant,locale):view.boss.id==='tollkeeper'?tollkeeperPhaseHint(view.boss.phase,view.boss.variant,locale):view.boss.id==='quarantine-clerk'?clerkPhaseHint(view.boss.phase,view.boss.variant,locale):view.boss.id==='ratcatcher'?ratcatcherPhaseHint(view.boss.phase,view.boss.variant,locale):view.boss.id==='courier'?courierPhaseHint(view.boss.phase,view.boss.variant,locale):view.boss.id==='lantern-warden'?wardenPhaseHint(view.boss.phase,view.boss.variant,locale):smallWakesPhaseHint(view.boss.id,view.boss.phase,view.boss.variant,locale);
   const formHint=view.boss.variant==='crazed'?t('ui.crazedHelp'):'';
   const completeNote=[noteText,formHint].filter(Boolean).join(' ');
   phaseNote.hidden = !completeNote;
@@ -580,6 +605,7 @@ function update(view: View) {
     view.contractCards,
     view.owner,
     session.id,
+    session.code,
   ]);
   if (uiKey !== key) {
     uiKey = key;
@@ -638,6 +664,7 @@ function renderOverlay(view: View, p: PlayerView) {
   } else if (view.phase === 'lobby' || view.phase === 'shop') {
     title = t(view.phase === 'lobby' ? 'ui.roomSettings' : 'ui.shop');
     body =
+      (view.phase==='lobby'&&session?.code ? `<p class="room-invite">${text('ui.roomCode')}: <strong><bdi>${esc(session.code)}</bdi></strong></p>` : '') +
       shop(p) +
       (view.phase === 'lobby'
         ? `<div class="actions"><button id="start" class="primary" ${view.owner !== session!.id ? 'disabled' : ''}>${text('ui.start')}</button><button id="return-menu">${text('ui.leaveRoom')}</button></div>`
@@ -650,7 +677,7 @@ function renderOverlay(view: View, p: PlayerView) {
     body = `<p>${text('ui.tutorialTeam')}</p>`;
   } else {
     title = t(view.phase === 'victory' ? 'ui.victory' : 'ui.defeat');
-    body = `<p>${text('ui.mastery')} · ${number(p.progress.clears)} ${esc(profileText(locale, 'clears'))} · ${number(p.progress.rescues)} ${esc(profileText(locale, 'rescues'))} · <bdi>${number(p.progress.clears * 100)} XP</bdi></p>${view.campaignBank && ['cleared', 'failed'].includes(view.secretStatus) ? '<p>' + esc(extensionText(locale, view.secretStatus === 'cleared' ? 'cleared' : 'failed')) + '</p>' : ''}<p>${text(session?.online ? 'ui.practiceNotice' : 'ui.offlineNotice')}</p><button id="return-menu" class="primary">${text('ui.mainMenu')}</button>`;
+    body = `<p>${text('ui.mastery')} · ${number(p.progress.clears)} ${esc(profileText(locale, 'clears'))} · ${number(p.progress.rescues)} ${esc(profileText(locale, 'rescues'))} · <bdi>${number(p.progress.clears * 100)} XP</bdi></p>${view.campaignBank && ['cleared', 'failed'].includes(view.secretStatus) ? '<p>' + esc(extensionText(locale, view.secretStatus === 'cleared' ? 'cleared' : 'failed')) + '</p>' : ''}<p>${text(view.run.testingModified ? 'ui.testingNoRecords' : session?.online ? 'ui.practiceNotice' : 'ui.offlineNotice')}</p><button id="return-menu" class="primary">${text('ui.mainMenu')}</button>`;
   }
   const previous =
     document.activeElement instanceof HTMLElement && overlay.contains(document.activeElement)
@@ -680,7 +707,7 @@ function renderOverlay(view: View, p: PlayerView) {
     const scroller = overlay.querySelector('.skill-scroll');
     if (scroller) {scroller.scrollTop = scroll;scroller.scrollLeft=scrollLeft;}
   }
-  if (!bossGuide.blocksInput(paused)) {
+  if (!(bossGuide.blocksInput(paused)||roomChatUI?.blocksInput===true)) {
     const target = focusedId
       ? overlay.querySelector<HTMLElement>('#' + CSS.escape(focusedId))
       : focusedItem
@@ -705,6 +732,7 @@ async function leave() {
   audio.stop();
 }
 function destroy() {
+  roomChatUI?.destroy();roomChatUI=undefined;
   if (timer) clearInterval(timer);
   timer = undefined;
   controls?.destroy();

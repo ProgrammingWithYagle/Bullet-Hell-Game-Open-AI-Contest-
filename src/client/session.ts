@@ -1,3 +1,6 @@
+import {TESTING_BUILD} from './build-audience.ts';
+import {isChatMessage,chatText,type ChatMessage} from '../shared/room-chat.ts';
+import type {TestingCommand} from './testing-command.ts';
 import { recordProfileView } from './profile.ts';
 import { Client, type Room } from '@colyseus/sdk';
 import { WorldState } from '../shared/network-state.ts';
@@ -49,6 +52,11 @@ export class Session {
   room?: Room<WorldState>;
   private closed = false;
   private recovering = false;
+  chatMessages: ChatMessage[] = [];
+  onChat: () => void = () => {};
+  private chatEnabled = false;
+  private serverAudience: 'testing'|'public' = 'testing';
+  onTestingResult: (ok:boolean) => void = () => {};
   onView: (view: View) => void = () => {};
   onEvents: (events: Event[]) => void = () => {};
   onStatus: (key: string) => void = () => {};
@@ -66,7 +74,8 @@ export class Session {
         if (m.type === 'view') {
           this.receive(m.view);
           resolve();
-        } else if (m.type === 'events') this.onEvents(m.events);
+        } else if(m.type==='testingResult')this.onTestingResult(m.ok===true);
+        else if (m.type === 'events') this.onEvents(m.events);
         else if (m.type === 'purchaseResult') this.onPurchase(m);
         else if (m.type === 'checkpoint') {
           if (!storeBoundary(m.value)) this.notify('ui.errorSave');
@@ -122,6 +131,7 @@ export class Session {
       practiceVariant: _practiceVariant,
       ...roomOptions
     } = options;
+    if(this.serverAudience==='public')delete roomOptions.openingBossId;
     const settings = {
       ...roomOptions,
       contentRevision: CONTENT_REVISION,
@@ -155,6 +165,7 @@ export class Session {
         });
         if (response.ok) {
           const health = await response.json();
+          this.serverAudience=health.audience==='public'?'public':'testing';
           if (health.protocolVersion !== PROTOCOL || health.contentRevision !== CONTENT_REVISION)
             throw Error('ui.errorVersion');
           break;
@@ -232,6 +243,8 @@ export class Session {
       this.onEvents(decoded);
     });
     room.onMessage('purchaseResult', (r) => this.onPurchase(r));
+    room.onMessage('chat',(m:unknown)=>this.receiveChat(m));
+    room.onMessage('chatHistory',(m:unknown)=>this.receiveChat(m,true));
     room.onStateChange((state) => this.receive(networkView(state)));
     room.onDrop(() => {
       void this.recover(client, room.reconnectionToken);
@@ -243,6 +256,7 @@ export class Session {
       if (!this.recovering) this.notify('ui.errorNetwork');
     });
     room.send('ready');
+    room.send('chatSettings',this.chatEnabled);
     if (room.state.players.size) this.receive(networkView(room.state));
   }
   private async recover(client: Client, token: string) {
@@ -281,6 +295,7 @@ export class Session {
     const player = view.players.find((p) => p.id === this.id);
     const progressKey = JSON.stringify([
       view.run?.id,
+      view.run?.testingModified === true,
       player?.progress,
       view.encounter,
       view.secretStatus,
@@ -292,6 +307,7 @@ export class Session {
       Date.now() >= this.profileRetryAt
     ) {
       try {
+        if (view.run.testingModified && !recordPracticeCampaign(view, this.id, localStorage)) throw Error("ui.errorSave");
         recordProfileView(view, this.id, localStorage);
         this.recordedProgress = progressKey;
         if (this.status === 'ui.errorSave') this.notify('');
@@ -302,7 +318,7 @@ export class Session {
     }
 
     const recordKey = view.campaignBank?.runId + ':' + view.secretStatus;
-    if (view.campaignBank && recordKey !== this.recordedCampaign) {
+    if (view.campaignBank && !view.run.testingModified && recordKey !== this.recordedCampaign) {
       this.recordedCampaign = recordKey;
       if (
         typeof localStorage !== 'undefined' &&
@@ -344,6 +360,27 @@ export class Session {
       if (this.room?.connection.isOpen) this.room.send('purchase', command);
       else this.notify('ui.errorNetwork');
     } else this.worker?.postMessage({ type: 'purchase', request: command });
+  }
+  testingCommand(value:TestingCommand){
+    if(TESTING_BUILD&&!this.online)this.worker?.postMessage({type:'testingCommand',value});
+  }
+  setChatEnabled(value:boolean){
+    if(this.chatEnabled===value)return;
+    this.chatEnabled=value;
+    if(!value){this.chatMessages=[];this.onChat();}
+    if(this.online&&this.room?.connection.isOpen)this.room.send('chatSettings',value);
+  }
+  sendChat(value:string){
+    const text=chatText(value);
+    if(!this.online||!this.chatEnabled||!text||!this.room?.connection.isOpen)return false;
+    this.room.send('chat',text);return true;
+  }
+  private receiveChat(value:unknown,history=false){
+    if(!this.chatEnabled)return;
+    const incoming=history?(Array.isArray(value)&&value.length<=50?value.filter(isChatMessage):[]):isChatMessage(value)?[value]:[];
+    if(!incoming.length)return;
+    const all=history?incoming:[...this.chatMessages,...incoming];
+    this.chatMessages=[...new Map(all.map(m=>[m.id,m])).values()].sort((a,b)=>a.id-b.id).slice(-50);this.onChat();
   }
   pause(value: boolean) {
     if (!this.online) this.worker?.postMessage({ type: 'pause', value });

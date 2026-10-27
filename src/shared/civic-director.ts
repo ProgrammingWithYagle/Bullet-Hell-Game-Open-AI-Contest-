@@ -1,3 +1,4 @@
+import {WidowGates,ejectClosingGates,type WidowCue} from './widow-gates.ts';
 import { MarshalChains, type MarshalCue } from './marshal-chains.ts';
 import { TollkeeperReturn, type TollkeeperCue } from './tollkeeper-return.ts';
 import { DT, HZ, type BossId, type Vec } from './protocol.ts';
@@ -7,18 +8,7 @@ import type { BossCue, SignatureContext } from './boss-director.ts';
 export type CivicCue =
   | TollkeeperCue
   | MarshalCue
-  | {
-      kind: 'gate';
-      id: number;
-      x: number;
-      y: number;
-      width: number;
-      height: number;
-      open: boolean;
-      lane: number;
-      at: number;
-      until: number;
-    }
+  | WidowCue
   | { kind: 'driver'; id: number; x: number; y: number; radius: number; at: number; until: number };
 type Gate = Extract<CivicCue, { kind: 'gate' }>;
 const ticks = (seconds: number) => Math.ceil(seconds * HZ);
@@ -35,33 +25,15 @@ export function gateObstacles(cues: BossCue[], now: number): Rect[] {
     .filter((c): c is Gate => c.kind === 'gate' && !c.open && now >= c.at && now < c.until)
     .map(({ x, y, width, height }) => ({ x, y, width, height }));
 }
-export function leaveClosingGates(position: Vec, gates: Rect[], radius: number): Vec {
-  let next = { ...position };
-  for (const gate of gates) {
-    if (
-      next.x <= gate.x - radius ||
-      next.x >= gate.x + gate.width + radius ||
-      next.y <= gate.y - radius ||
-      next.y >= gate.y + gate.height + radius
-    )
-      continue;
-    // Gates are horizontal shutters. Eject to the nearer clear side, preserving x;
-    // nobody is trapped inside newly solid geometry or teleported through cover.
-    const upper = gate.y - radius - 0.1,
-      lower = gate.y + gate.height + radius + 0.1;
-    next.y = Math.abs(next.y - upper) < Math.abs(next.y - lower) ? upper : lower;
-  }
-  return next;
+export function leaveClosingGates(position: Vec, gates: Rect[], radius: number, fixed: Rect[] = [], hazards: (Vec & {radius:number})[] = []): Vec {
+  return ejectClosingGates(position,gates,radius,fixed,hazards);
 }
 
 export class CivicDirector {
   private kind: BossId = 'constable';
   readonly tollkeeper = new TollkeeperReturn();
   readonly marshal = new MarshalChains();
-  private gates: Gate[] = [];
-  private nextAt = 0;
-  private openLane = 0;
-  private contacts = new Map<string, number>();
+  readonly widow = new WidowGates();
   private driving = false;
   private station = 0;
   private recoveryUntil = 0;
@@ -72,9 +44,7 @@ export class CivicDirector {
     this.kind = kind;
     this.tollkeeper.reset();
     this.marshal.reset();
-    this.gates = [];
-    this.nextAt = 0;
-    this.contacts.clear();
+    this.widow.reset();
     this.driving = false;
     this.recoveryUntil = 0;
     this.driverId = 0;
@@ -83,7 +53,7 @@ export class CivicDirector {
   }
   resetEncounter(kind: BossId) {
     this.reset(kind);
-    this.openLane = 0;
+    this.widow.resetEncounter();
     this.station = 0;
   }
   get recovering() {
@@ -99,7 +69,7 @@ export class CivicDirector {
     return [
       ...this.tollkeeper.cues(),
       ...this.marshal.cues(),
-      ...this.gates.map((c) => ({ ...c })),
+      ...this.widow.cues(),
       ...(this.recoveryUntil
         ? [
             {
@@ -116,32 +86,7 @@ export class CivicDirector {
     ];
   }
   solids(tick: number) {
-    return gateObstacles(this.gates, tick);
-  }
-  private touch(context: SignatureContext, id: string, key: string, amount: number) {
-    const contact = key + ':' + id;
-    if (context.tick < (this.contacts.get(contact) ?? 0)) return;
-    context.damage(id, amount * context.damageScale);
-    this.contacts.set(contact, context.tick + ticks(0.5));
-  }
-  private startGates(context: SignatureContext) {
-    if (this.gates.length) return;
-    const at = context.tick + ticks(1.5);
-    const bounds = context.bounds ?? { x: 200, y: 0, width: 1200, height: 1000 };
-    for (let lane = 0; lane < 3; lane++)
-      this.gates.push({
-        kind: 'gate',
-        id: context.id(),
-        x: bounds.x + (lane * bounds.width) / 3,
-        y: 615,
-        width: bounds.width / 3,
-        height: 48,
-        open: lane === this.openLane,
-        lane,
-        at,
-        until: at + ticks(3.5),
-      });
-    this.openLane = (this.openLane + 1) % 3;
+    return this.widow.solids(tick);
   }
   private drive(context: SignatureContext, charging: boolean) {
     if (this.driving && !charging) {
@@ -187,18 +132,8 @@ export class CivicDirector {
     if (!civicBossIds.includes(context.bossId as (typeof civicBossIds)[number])) return;
     if (context.bossId === 'tollkeeper') { this.tollkeeper.step(context); return; }
     if (context.bossId === 'chain-marshal') { this.marshal.step(context); return; }
+    if (context.bossId === 'gate-widow') { this.widow.step(context); return; }
     if (context.bossId === 'black-ambulance') this.drive(context, charging);
     this.origin = { ...context.boss };
-    if (context.targets.length && (!this.nextAt || context.tick >= this.nextAt)) {
-      if (context.bossId === 'gate-widow') this.startGates(context);
-      const cycle = 8;
-      this.nextAt = context.tick + ticks(cycle * (context.brutal ? 0.9 : 1));
-    }
-    for (const gate of this.gates)
-      if (!gate.open && context.tick === gate.at)
-        for (const target of context.targets)
-          if (segmentRect({ x: target.oldX, y: target.oldY }, target, gate, 9))
-            this.touch(context, target.id, 'gate-' + gate.id, 14);
-    this.gates = this.gates.filter((g) => context.tick < g.until);
   }
 }

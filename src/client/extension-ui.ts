@@ -1,3 +1,4 @@
+import {widowHelp} from './widow-text.ts';
 import {marshalHelp} from './marshal-text.ts';
 import {tollkeeperHelp} from './tollkeeper-text.ts';
 import {clerkHelp} from './clerk-text.ts';
@@ -20,6 +21,7 @@ export function extensionText(
   return text;
 }
 export function signatureHelp(view: View, locale: string) {
+  if(view.boss.id==='gate-widow')return widowHelp(view.boss.variant,locale);
   if(view.boss.id==='chain-marshal')return marshalHelp(view.boss.variant,locale);
   if(view.boss.id==='tollkeeper')return tollkeeperHelp(view.boss.variant,locale);
   if(view.boss.id==='quarantine-clerk')return clerkHelp(view.boss.variant,locale);

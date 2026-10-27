@@ -1,3 +1,6 @@
+import {TESTING_BUILD} from './build-audience.ts';
+import {applyTestingCommand} from './testing-command.ts';
+import {publicRunSettings} from '../shared/public-run.ts';
 import { createPracticeGame } from '../shared/practice-start.ts';
 import { Game, type Settings } from '../shared/game.ts';
 import { viewOf } from '../shared/view.ts';
@@ -42,10 +45,10 @@ self.onmessage = (e: MessageEvent) => {
   if (m.type === 'init') {
     try {
       game = createPracticeGame(
-        m.settings as Settings,
+        TESTING_BUILD ? m.settings as Settings : publicRunSettings(m.settings as Settings),
         m.name,
         m.classId as ClassId,
-        m.practiceVariant,
+        TESTING_BUILD ? m.practiceVariant : 'normal',
       );
     } catch {
       game = null;
@@ -58,6 +61,12 @@ self.onmessage = (e: MessageEvent) => {
     emit(true);
   }
   if (!game) return;
+  if(TESTING_BUILD&&m.type==='testingCommand'){
+    const ok=applyTestingCommand(game,m.value);
+    postMessage({type:'testingResult',ok});
+    if(ok){postMessage({type:'checkpoint',value:null});emit(true);}
+    return;
+  }
   if (m.type === 'input') game.submitInput('solo', m.input);
   else if (m.type === 'start') {
     game.start();

@@ -19,7 +19,9 @@
     "typecheck": "tsc --noEmit",
     "test": "node --import tsx --test tests/*.test.ts",
     "pilot": "tsx tools/measure-first-loop.ts",
-    "desktop:build": "node tools/build-desktop.mjs"
+    "desktop:build": "node tools/build-desktop.mjs",
+    "build:testing": "node tools/build-client.mjs testing",
+    "build:public": "node tools/build-client.mjs public"
   },
   "license": "MIT",
   "dependencies": {

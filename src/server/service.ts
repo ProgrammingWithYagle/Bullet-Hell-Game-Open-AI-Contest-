@@ -12,7 +12,7 @@ import {
 } from '../shared/protocol.ts';
 import type { RunJournal } from './run-journal.ts';
 export function createGameServer(
-  options: { createRunJournal?: () => RunJournal; clientOrigins?: string[] } = {},
+  options: { createRunJournal?: () => RunJournal; clientOrigins?: string[]; audience?: 'testing'|'public' } = {},
 ) {
   const startedAt = new Date().toISOString();
   const origins = new Set(
@@ -65,6 +65,7 @@ export function createGameServer(
           protocolVersion: PROTOCOL,
           contentRevision: CONTENT_REVISION,
           practiceOnly: true,
+          audience: options.audience??'testing',
           sourceCommit: process.env.RENDER_GIT_COMMIT ?? null,
           capacity: capacity.summary(),
         }),
@@ -195,13 +196,10 @@ export function createGameServer(
       });
     },
   });
-  const ServerRoom = options.createRunJournal
-    ? class extends GraveRoom {
-        protected override createRunJournal() {
-          return options.createRunJournal!();
-        }
-      }
-    : GraveRoom;
+  class ServerRoom extends GraveRoom {
+    protected override isTestingServer(){return options.audience!=='public';}
+    protected override createRunJournal(){return options.createRunJournal?.();}
+  }
   server.define('grave', ServerRoom).filterBy(['mode', 'difficulty', 'contentRevision']);
   return { server, httpServer };
 }

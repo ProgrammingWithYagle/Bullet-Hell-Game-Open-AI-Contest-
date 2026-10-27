@@ -107,7 +107,7 @@ test("Clerk forms create exactly3/5/10 separated stamps with red purple black se
     }
     const safe = s.find((s) => s.safeAt > 0)!;
     assert(safe.index >= 1 && safe.index <= count);
-    if (form !== "crazed") assert.equal(safe.index,1);
+    if (form === "normal") assert.equal(safe.index,1);
     if (form !== "normal") {
       assert(s.every((s) => s.until <= safe.until));
       assert(safe.until - safe.safeAt >= Math.ceil(clerkAppealRules.shelterSeconds[form]*30));

@@ -13,6 +13,8 @@ import {
 } from '../shared/protocol.ts';
 import { WorldState, PlayerState, ActorState } from '../shared/network-state.ts';
 import { capacity } from './capacity.ts';
+import {RoomChat} from '../shared/room-chat.ts';
+import {publicRunSettings} from '../shared/public-run.ts';
 import { RoomJournal } from './room-journal.ts';
 import type { RunJournal } from './run-journal.ts';
 // Bounded fifty-player builds can exceed Schema's 8 KiB initial encode buffer.
@@ -44,6 +46,8 @@ const alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
 const code = () => [...randomBytes(6)].map((n) => alphabet[n % alphabet.length]).join('');
 export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
   game!: Game;
+  private readonly roomChat = new RoomChat();
+  protected isTestingServer(){return true;}
   privateCode = '';
   private creatorKey = '';
   private creatorUsed = false;
@@ -64,6 +68,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
     peakProjectiles: 0,
   };
   async onCreate(options: Options) {
+    if(!this.isTestingServer()&&options.openingBossId!==undefined)throw new ServerError(400,'testingSelectionDisabled');
     if (options.protocolVersion !== PROTOCOL || options.contentRevision !== CONTENT_REVISION)
       throw new ServerError(409, 'versionMismatch');
     if (
@@ -87,7 +92,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
     this.maxClients = options.mode === 'endless' ? 50 : options.mode === 'raid' ? 16 : 8;
     this.maxMessagesPerSecond = 90;
     this.patchRate = 50;
-    this.game = new Game({
+    const settings: Partial<Settings> = {
       runId: this.roomId,
       seed: randomBytes(4).readUInt32LE(),
       mode: options.mode,
@@ -95,7 +100,8 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       maxPlayers: this.maxClients,
       openingBossId: options.openingBossId,
       openingArenaId: options.openingArenaId,
-    });
+    };
+    this.game = new Game(this.isTestingServer()?settings:publicRunSettings(settings));
     this.state = new WorldState();
     this.journal = new RoomJournal(this.game, this.createRunJournal(), (status) => {
       for (const client of this.clients)
@@ -120,6 +126,17 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       await this.setPrivate(true);
     }
     liveRooms.set(this.roomId, this);
+    this.onMessage('chatSettings',(client,value:unknown)=>{
+      if(typeof value!=='boolean'||!this.readyAt.has(client))return;
+      this.roomChat.subscribe(client.sessionId,value);
+      if(value&&this.roomChat.historyAllowed(client.sessionId,Date.now()))client.send('chatHistory',this.roomChat.history());
+    });
+    this.onMessage('chat',(client,value:unknown)=>{
+      if(!this.readyAt.has(client))return;
+      const p=this.game.players.get(client.sessionId);if(!p)return;
+      const message=this.roomChat.accept(client.sessionId,p.name,value,Date.now());if(!message)return;
+      for(const peer of this.clients)if(this.roomChat.receives(peer.sessionId))peer.send('chat',message);
+    });
     this.onMessage('input', (client, value: unknown) => {
       if (this.journal.blocked) return;
       if (this.game.submitInput(client.sessionId, value)) this.telemetry.acceptedInputs++;
@@ -163,6 +180,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
     }, 30);
   }
   onAuth(client: Client, options: Options) {
+    if(!this.isTestingServer()&&options.openingBossId!==undefined)throw new ServerError(400,'testingSelectionDisabled');
     if (options.protocolVersion !== PROTOCOL || options.contentRevision !== CONTENT_REVISION)
       throw new ServerError(409, 'versionMismatch');
     if (
@@ -237,6 +255,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
     this.syncState();
   }
   async onLeave(client: Client) {
+    this.roomChat.remove(client.sessionId);
     if (!(await this.journal.writable())) return;
     this.game.setConnected(client.sessionId, false);
     const p = this.game.players.get(client.sessionId);

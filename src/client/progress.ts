@@ -59,6 +59,13 @@ export function practiceRecords(store: Store): PracticeCampaignRecord[] {
   }
 }
 export function recordPracticeCampaign(view: View, playerId: string, store: Store) {
+  if (view.run.testingModified) {
+    try {
+      const previous = practiceRecords(store), kept = previous.filter((r) => r.id !== view.run.id);
+      if (kept.length !== previous.length) store.setItem(PRACTICE_RECORDS_KEY, JSON.stringify(kept));
+      return true;
+    } catch { return false; }
+  }
   const bank = view.campaignBank,
     p = view.players.find((p) => p.id === playerId);
   if (!bank || !p || !p.eligible) return true;

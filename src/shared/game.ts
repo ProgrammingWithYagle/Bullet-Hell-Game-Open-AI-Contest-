@@ -301,6 +301,7 @@ export class Game {
   contractCards: Contract[] = [];
   readonly votes = new Map<string, number>();
   private nextId = 1;
+  testingModified = false;
   private freeShots: Shot[] = [];
   private hostileShots = 0;
   private spawns: Shot[] = [];
@@ -1134,7 +1135,7 @@ export class Game {
       this.arena.obstacles,
       rule.playerRadius,
     );
-    const clear = leaveClosingGates(moving, this.director.civic.solids(now), rule.playerRadius);
+    const clear = leaveClosingGates(moving, this.director.civic.solids(now), rule.playerRadius, this.arena.obstacles, this.arena.lavaPits);
     p.x = clear.x;
     p.y = clear.y;
     if (p.status === 'downed') {
@@ -1553,7 +1554,7 @@ export class Game {
     target.health += Math.max(0, healed);
     source.healing += Math.max(0, healed);
   }
-  damage(p: Player, amount: number, grantInvulnerability = true) {
+  damage(p: Player, amount: number, grantInvulnerability = true, healthLossOnly = false) {
     if (
       p.status !== 'active' ||
       this.combatTick < p.invulnerableUntil ||
@@ -1568,10 +1569,10 @@ export class Game {
         0,
         0.65,
       ),
-      reduced = amount * (1 - armor),
-      plate = this.combatTick < p.supplyShieldUntil ? Math.min(p.supplyShield, reduced) : 0,
-      afterKit = this.classKits.shieldHit(p.id, reduced - plate, this.combatTick),
-      blocked = Math.min(p.shield, afterKit);
+      reduced = healthLossOnly ? amount : amount * (1 - armor),
+      plate = !healthLossOnly && this.combatTick < p.supplyShieldUntil ? Math.min(p.supplyShield, reduced) : 0,
+      afterKit = healthLossOnly ? reduced : this.classKits.shieldHit(p.id, reduced - plate, this.combatTick),
+      blocked = healthLossOnly ? 0 : Math.min(p.shield, afterKit);
     p.supplyShield -= plate;
     p.shield -= blocked;
     const actual = Math.min(p.health, afterKit - blocked);
@@ -1631,6 +1632,7 @@ export class Game {
     const actual = Math.min(
       this.boss.health,
       amount *
+        (p && this.boss.id==='quarantine-clerk' ? this.director.clerk.shelterMultiplier(p,this.combatTick,this.boss.phase,this.boss.variant) : 1) *
         (this.combatTick < this.boss.vulnerableUntil ? 1.25 : 1) *
         (this.boss.id === 'black-ambulance' && this.director.civic.recovering ? 1.25 : 1) *
         (bypassArmor
@@ -1780,6 +1782,12 @@ export class Game {
   private signatureContext(): SignatureContext {
     return {
       paused: !!this.accord,
+      warn: () => { this.events.push({type:'sound',id:'warning'}); },
+      damageMaximumHealth: (id,fraction) => {
+        const p=this.players.get(id);
+        if(!p||p.status!=='active'||this.combatTick<p.invulnerableUntil||this.director.isSafe(p,this.combatTick))return false;
+        this.damage(p,p.maxHealth*fraction,true,true);return true;
+      },
       random: () => this.rng.next(),
       purpleStamp: (id,amount,first) => { const p=this.players.get(id); return !!p && this.purpleStamp(p,amount,first); },
       variant: this.boss.variant,
@@ -1874,6 +1882,7 @@ export class Game {
   }
   private stepBoss() {
     const now = this.combatTick;
+    if(this.boss.id==='quarantine-clerk')this.director.clerk.stepDomains(this.signatureContext());
     const fraction = this.boss.health / this.boss.maxHealth,
       phase = this.bossPhases().reduce(
         (last, p, i) => (fraction <= p.healthThreshold ? i : last),
@@ -1895,16 +1904,17 @@ export class Game {
       );
       this.rescaleDepartures();
       this.resetWarden();
-      this.director.reset(this.boss.id, this.boss.variant !== 'normal');
+      this.director.reset(this.boss.id, this.boss.variant !== 'normal',false,this.boss.id==='quarantine-clerk');
       if (this.boss.id === 'tollkeeper') this.director.civic.tollkeeper.reset(now + ticks(1.5));
       if (this.boss.id === 'chain-marshal') this.director.civic.marshal.reset(now + ticks(1.5));
+      if (this.boss.id === 'gate-widow') this.director.civic.widow.reset(now + ticks(1.5));
       this.variantPressure.reset(now);
       this.brutalVolley.clear();
       const assist = phaseShieldBreak(this.settings.difficulty,this.boss.variant);
       if (this.boss.id !== 'lantern-warden') {
         this.warnings.length = 0;
         if (assist) for (const shot of this.shots.values()) if (shot.owner === 'hostile') this.removeShot(shot);
-        if (this.boss.id === 'chain-marshal' || this.boss.id === 'tollkeeper' || this.boss.id === 'quarantine-clerk' || this.boss.id === 'ratcatcher' || this.boss.id === 'courier' || this.boss.id === 'constable' || this.director.earlyWatch.handles(this.boss.id) || this.director.smallWakes.handles(this.boss.id)) {
+        if (this.boss.id === 'gate-widow' || this.boss.id === 'chain-marshal' || this.boss.id === 'tollkeeper' || this.boss.id === 'quarantine-clerk' || this.boss.id === 'ratcatcher' || this.boss.id === 'courier' || this.boss.id === 'constable' || this.director.earlyWatch.handles(this.boss.id) || this.director.smallWakes.handles(this.boss.id)) {
           this.boss.castAt = this.boss.castReleaseAt = this.boss.castEndsAt = 0;
           if (assist) for (let i = this.fields.length - 1; i >= 0; i--)
             if (this.fields[i].owner === 'hostile') this.fields.splice(i, 1);
@@ -1936,7 +1946,7 @@ export class Game {
         this.warnings.length = 0;
         for (let i = this.fields.length - 1; i >= 0; i--)
           if (this.fields[i].owner === 'hostile') this.fields.splice(i, 1);
-        this.director.reset(this.boss.id, this.boss.variant !== 'normal');
+        this.director.reset(this.boss.id, this.boss.variant !== 'normal',false,this.boss.id==='quarantine-clerk');
         this.minions.clear();
         this.boss.castAt = this.boss.castReleaseAt = this.boss.castEndsAt = 0;
         this.boss.staggerUntil = now + ticks(4);
@@ -1951,9 +1961,10 @@ export class Game {
       if(this.director.smallWakes.handles(this.boss.id)){this.director.smallWakes.reset(this.boss.id);this.brutalVolley.clear();}
       if(this.boss.id==='courier'){this.director.courier.reset();this.brutalVolley.clear();}
       if(this.boss.id==='ratcatcher'){this.director.ratcatcher.clearCast();this.brutalVolley.clear();}
-      if(this.boss.id==='quarantine-clerk'){this.director.clerk.reset();this.brutalVolley.clear();}
+      if(this.boss.id==='quarantine-clerk'){this.director.clerk.cancelCast();this.brutalVolley.clear();}
       if(this.boss.id==='tollkeeper'){this.director.civic.tollkeeper.reset();this.brutalVolley.clear();}
       if(this.boss.id==='chain-marshal'){this.director.civic.marshal.reset();this.brutalVolley.clear();}
+      if(this.boss.id==='gate-widow'){this.director.civic.widow.reset();this.brutalVolley.clear();}
       this.signatures = [];
       this.wardenPatrol.clear();
       return;
@@ -1969,13 +1980,14 @@ export class Game {
       this.attackAt[0] = Math.max(this.attackAt[0] ?? now, this.director.earlyWatch.nextSignatureAt);
     if (this.director.smallWakes.handles(this.boss.id))
       this.attackAt[0] = Math.max(this.attackAt[0] ?? now, this.director.smallWakes.nextSignatureAt);
-    if (this.boss.id === 'tollkeeper' || this.boss.id === 'chain-marshal') this.director.step(this.signatureContext());
+    if (this.boss.id === 'tollkeeper' || this.boss.id === 'chain-marshal' || this.boss.id === 'gate-widow') this.director.step(this.signatureContext());
     const attacks = this.bossPhases()[this.boss.phase].attacks;
     for (let index = 0; index < attacks.length; index++)
       if (
         now >= this.attackAt[index] &&
         (this.boss.id !== 'tollkeeper' || !this.director.civic.tollkeeper.busy) &&
         (this.boss.id !== 'chain-marshal' || !this.director.civic.marshal.busy) &&
+        (this.boss.id !== 'gate-widow' || !this.director.civic.widow.busy) &&
         (this.boss.id!=='quarantine-clerk' || (!this.director.clerk.busy && (index!==0 || (now>=this.director.clerk.nextSignatureAt&&!this.warnings.length)))) &&
         (this.boss.id!=='ratcatcher' || (!this.director.ratcatcher.busy && (index!==0 || (now>=this.director.ratcatcher.nextSignatureAt && !this.warnings.length)))) &&
         (this.boss.id!=='courier' || (!this.director.courier.busy && (index!==0 || now>=this.director.courier.nextRouteAt))) &&
@@ -2138,7 +2150,7 @@ export class Game {
           y: this.boss.y,
         });
       }
-    if (this.boss.id !== 'tollkeeper' && this.boss.id !== 'chain-marshal') this.director.step(this.signatureContext());
+    if (this.boss.id !== 'tollkeeper' && this.boss.id !== 'chain-marshal' && this.boss.id !== 'gate-widow') this.director.step(this.signatureContext());
     if (this.boss.id === 'constable')
       moveConstable(
         this.boss,
@@ -2517,6 +2529,7 @@ export class Game {
   }
   // Practice-only boundary saves never enter the online room or global rankings.
   offlineCheckpoint() {
+    if(this.testingModified)return null;
     if (
       this.players.size !== 1 ||
       !['lobby', 'mutationVote', 'contractVote', 'shop', 'loading', 'secretOffer'].includes(

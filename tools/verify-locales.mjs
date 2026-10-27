@@ -1,4 +1,6 @@
 import {bossGuideMessages} from '../locales/source/boss-guide.mjs';
+import {runtimeExtraMessages} from '../locales/source/runtime-extras.mjs';
+import {widowMessages} from '../locales/source/widow-gates.mjs';
 import {marshalMessages} from '../locales/source/marshal-chains.mjs';
 import {tollkeeperReturnMessages} from '../locales/source/tollkeeper-return.mjs';
 import {clerkAppealMessages} from '../locales/source/clerk-appeal.mjs';
@@ -104,6 +106,8 @@ export function validateOne(document, canonical, content, locale) {
       ...Object.keys(clerkAppealMessages('en')),
       ...Object.keys(tollkeeperReturnMessages('en')),
       ...Object.keys(marshalMessages('en')),
+      ...Object.keys(widowMessages('en')),
+      ...Object.keys(runtimeExtraMessages('en')),
       ...Object.keys(bossGuideMessages('en')),
       ...Object.keys(classTalentMessages('en',content)),
       ...Object.keys(wardenMessages('en')),
@@ -133,7 +137,7 @@ export function validateOne(document, canonical, content, locale) {
     if (!Object.hasOwn(messages,key)) fail(`missing feature coverage: ${key}`);
   }
   const expectedCategories = new Intl.PluralRules(locale).resolvedOptions().pluralCategories.slice().sort();
-  const expandedSource = {...smallWakesMessages(locale),...expansionMessages(locale), ...earlyWatchMessages(locale),...skillMapMessages(locale),...difficultyRuleMessages(locale),...classTalentMessages(locale,content),...wardenMessages(locale),...crazedHorizonMessages(locale),...courierRouteMessages(locale),...ratcatcherMusterMessages(locale),...clerkAppealMessages(locale),...tollkeeperReturnMessages(locale),...marshalMessages(locale),...bossGuideMessages(locale)};
+  const expandedSource = {...smallWakesMessages(locale),...expansionMessages(locale), ...earlyWatchMessages(locale),...skillMapMessages(locale),...difficultyRuleMessages(locale),...classTalentMessages(locale,content),...wardenMessages(locale),...crazedHorizonMessages(locale),...courierRouteMessages(locale),...ratcatcherMusterMessages(locale),...clerkAppealMessages(locale),...tollkeeperReturnMessages(locale),...marshalMessages(locale),...widowMessages(locale),...runtimeExtraMessages(locale),...bossGuideMessages(locale)};
   for (const [key,text] of Object.entries(recoveryMessages(locale))) {
     if (messages[key] !== text) fail(`recovery UI source mismatch at ${key}`);
   }

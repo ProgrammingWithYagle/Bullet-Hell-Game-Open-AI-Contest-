@@ -23,7 +23,7 @@ export function clerkPhaseHint(phase: number, variant: string, locale: string) {
               : "boss.quarantine-clerk.advancedPhaseHint.0"
           ];
   return (
-    base +
+    base + " " + w["boss.quarantine-clerk.shelterBonusHelp"] + (variant==="crazed"?" "+w["boss.quarantine-clerk.domainHelp"]:"") +
     (variant === "normal"
       ? ""
       : " " +
@@ -36,13 +36,9 @@ export function clerkPhaseHint(phase: number, variant: string, locale: string) {
 }
 export function clerkHelp(variant: string, locale: string) {
   const w = words(locale);
-  return variant === "normal"
+  return (variant === "normal"
     ? w["boss.quarantine-clerk.description"]
-    : w["boss.quarantine-clerk.advancedDescription"] +
-        " " +
-        w[
-          variant === "crazed"
-            ? "boss.quarantine-clerk.crazedHelp"
-            : "boss.quarantine-clerk.brutalHelp"
-        ];
+    : w["boss.quarantine-clerk.advancedDescription"] + " " + w[variant === "crazed" ? "boss.quarantine-clerk.crazedHelp" : "boss.quarantine-clerk.brutalHelp"])
+      + " " + w["boss.quarantine-clerk.shelterBonusHelp"]
+      + (variant==='crazed'?" "+w["boss.quarantine-clerk.domainHelp"]:"");
 }

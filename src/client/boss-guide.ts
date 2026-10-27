@@ -1,7 +1,7 @@
+import {TESTING_BUILD} from './build-audience.ts';
 import messages from "./boss-guide-messages.json";
-// Current unfinished builds retain all-difficulty guides for the user's testing.
-// The coordinated final-release gate must turn this off; Baby stays optional.
-export const BOSS_GUIDES_FOR_TESTING = true;
+// Testing retains all-difficulty guides; the public build keeps Baby optional.
+export const BOSS_GUIDES_FOR_TESTING = TESTING_BUILD;
 export const bossGuideAvailable = (difficulty: string, testing = BOSS_GUIDES_FOR_TESTING) => testing || difficulty === 'baby';
 export class BossGuideState {
   open = false;

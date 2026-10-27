@@ -84,6 +84,8 @@ export type BossCue =
 type Lane = Extract<BossCue, { kind: 'charge' | 'scent' }>;
 type Stamp = Extract<BossCue, { kind: 'stamp' }>;
 export type SignatureContext = {
+  warn?(): void;
+  damageMaximumHealth?(id:string,fraction:number): boolean;
   paused?: boolean;
   auxiliaryBusy?: boolean;
   random?(): number;
@@ -202,8 +204,8 @@ export class BossDirector {
   private blockPack = false;
   private restoreAt = 0;
 
-  reset(kind: BossId, brutal = false, encounter = false) {
-    this.clerk.reset();
+  reset(kind: BossId, brutal = false, encounter = false, preserveClerk = false) {
+    if(preserveClerk && !encounter && kind==='quarantine-clerk')this.clerk.cancelCast();else this.clerk.reset();
     this.ratcatcher.reset(kind==='ratcatcher',brutal);
     this.courier.reset();
     this.smallWakes.reset(kind, encounter);

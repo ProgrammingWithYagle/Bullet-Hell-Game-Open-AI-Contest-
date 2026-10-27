@@ -57,10 +57,16 @@ export type ClerkBlock = {
   at: number;
   until: number;
 };
-export type ClerkCue = ClerkStamp | ClerkPatrol | ClerkVolley | ClerkBlock;
+export type ClerkDomain = {kind:'clerk-domain';id:number;x:number;y:number;radius:number;beganAt:number;at:number;until:number};
+export type ClerkCue = ClerkStamp | ClerkPatrol | ClerkVolley | ClerkBlock | ClerkDomain;
 const ticks = (s: number) => Math.ceil(s * HZ);
 export class ClerkAppeal {
   private stamps: ClerkStamp[] = [];
+  private domains: ClerkDomain[] = [];
+  private pendingDomains: ClerkDomain[] = [];
+  private domainContacts = new Map<string,number>();
+  private earlySafeIndex: number | null = null;
+  private domainsSteppedAt=-1;
   private volleys: { cue: ClerkVolley; released: boolean }[] = [];
   private blocks: ClerkBlock[] = [];
   private patrol: ClerkPatrol | null = null;
@@ -81,6 +87,14 @@ export class ClerkAppeal {
   private contacts = new Map<string, number>();
   nextSignatureAt = 0;
   reset() {
+    this.cancelCast();
+    this.domains=[];
+    this.domainContacts.clear();
+    this.earlySafeIndex=null;
+    this.domainsSteppedAt=-1;
+  }
+  cancelCast() {
+    this.pendingDomains=[];
     this.stamps = [];
     this.volleys = [];
     this.blocks = [];
@@ -102,6 +116,7 @@ export class ClerkAppeal {
   cues(): ClerkCue[] {
     return [
       ...this.stamps.map((s) => ({ ...s })),
+      ...[...this.domains,...this.pendingDomains].map(s=>({...s})),
       ...this.volleys.map(({ cue }) => ({ ...cue, angles: [...cue.angles] })),
       ...this.blocks.map((b) => ({ ...b })),
       ...(this.patrol ? [{ ...this.patrol }] : []),
@@ -114,6 +129,9 @@ export class ClerkAppeal {
   }
   isSafe(p: Vec, now: number, radius = 9) {
     return this.safeZones(now).some((s) => distance(s, p) + radius <= s.radius);
+  }
+  shelterMultiplier(p:Vec,now:number,phase:number,variant:'normal'|'brutal'|'crazed') {
+    return this.isSafe(p,now) ? 1+tuning.shelterBossBonus[variant][phase>0?1:0] : 1;
   }
   /** Called only after the projectile sweep has chosen this seal as the first hit. */
   recordBlock(zoneId: number, point: Vec, now: number, id: () => number) {
@@ -244,16 +262,11 @@ export class ClerkAppeal {
         ),
       spacing = ticks(tuning.stampSpacing[this.variant]),
       last = first + spacing * (count - 1),
-      safeIndex =
-        this.variant === "crazed" ||
-        (this.variant === "brutal" && this.phase > 0)
-          ? Math.min(
-              count - 1,
-              Math.floor((c.random?.() ?? this.fallbackRandom.next()) * count),
-            )
-          : this.phase
-            ? count - 1
-            : 0,
+      safeIndex = this.variant==='brutal' && !this.phase
+        ? (this.earlySafeIndex ??= Math.min(count-1,Math.floor((c.random?.()??this.fallbackRandom.next())*count)))
+        : this.advanced
+          ? Math.min(count-1,Math.floor((c.random?.()??this.fallbackRandom.next())*count))
+          : this.phase ? count-1 : 0,
       safeAt = last + (this.phase ? ticks(tuning.lateReopenDelaySeconds) : 0);
     const sources = centers
         .map((p, index) => ({ p, index }))
@@ -321,6 +334,14 @@ export class ClerkAppeal {
               ticks(tuning.activeSeconds),
         safeAt: index === safeIndex ? safeAt : 0,
       });
+    if(this.variant==='crazed' && this.phase) {
+      const selected=centers.map((p,index)=>({p,index,d:distance(p,centers[safeIndex])})).filter(s=>s.index!==safeIndex).sort((a,b)=>b.d-a.d||a.index-b.index).slice(0,tuning.domainCount);
+      for(const {p,index} of selected) {
+        if(this.domains.length+this.pendingDomains.length>=tuning.maximumDomains)break;
+        const stamp=this.stamps.find(s=>s.index===index+1 && s.x===p.x && s.y===p.y)!;
+        this.pendingDomains.push({kind:'clerk-domain',id:c.id(),...p,radius:tuning.domainRadius,beganAt:stamp.until,at:stamp.until+ticks(tuning.domainWarningSeconds),until:Number.MAX_SAFE_INTEGER});
+      }
+    }
     // Marked nonblack seals fire toward the green shelter. Warning origins and angles
     // lock with the stamps; reopening precedes release, so its purpose is visible.
     const shelter = centers[safeIndex],
@@ -361,11 +382,22 @@ export class ClerkAppeal {
     this.patrol = null;
     return true;
   }
+  stepDomains(c:SignatureContext){
+    if(c.paused||this.domainsSteppedAt===c.tick)return;
+    this.domainsSteppedAt=c.tick;
+    this.domains.push(...this.pendingDomains.filter(d=>c.tick>=d.at));
+    this.pendingDomains=this.pendingDomains.filter(d=>c.tick<d.at);
+    for(const p of c.targets) {
+      if(c.tick<(this.domainContacts.get(p.id)??0)||this.isSafe(p,c.tick))continue;
+      if(this.domains.some(d=>c.tick>=d.at&&segmentCircle({x:p.oldX,y:p.oldY},p,d,d.radius+9)!==null)&&c.damageMaximumHealth?.(p.id,tuning.domainMaximumHealthFraction))this.domainContacts.set(p.id,c.tick+ticks(tuning.domainContactSeconds));
+    }
+  }
   step(c: SignatureContext) {
     if (c.paused) {
-      this.reset();
+      this.cancelCast();
       return;
     }
+    this.stepDomains(c);
     if (this.patrol && c.tick >= this.patrol.moveAt) {
       const old = { ...c.boss },
         end = { x: this.patrol.x2, y: this.patrol.y2 },

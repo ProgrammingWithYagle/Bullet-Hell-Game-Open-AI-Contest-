@@ -77,7 +77,7 @@ test("all 66 identities admit Crazed with their fixed grade, inherited full sign
       // phase. Every other phase/attack field must still inherit unchanged.
       assert.equal(base.stampCount, 5); assert.equal(base.stampRadius, 72);
       assert.equal(c.stampCount, 10); assert.equal(c.stampRadius, 58);
-      assert.equal(base.reopensStamp,index ? "random" : 1);
+      assert.equal(base.reopensStamp,"random");
       assert.equal(c.reopensStamp,"random");
       return {...phase, stampCount:base.stampCount, stampRadius:base.stampRadius, reopensStamp:base.reopensStamp};
     });

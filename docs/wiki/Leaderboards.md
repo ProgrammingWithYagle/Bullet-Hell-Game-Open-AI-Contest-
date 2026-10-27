@@ -1,5 +1,7 @@
 # Leaderboards
 
+Home now has a **Leaderboards** button. **Local Practice** lists actual validated local receipts, filtered by mode/difficulty, with clear counts, combat time and encountered bosses. Modified Solo-tool runs are removed from these records. The **Online boards** tab explicitly reports that verified rankings are not connected.
+
 **Verified online leaderboards are not implemented or deployed.** Current runs are practice runs. Local results and tested score fixtures do not constitute a public ranking service.
 
 The authored design ranks a **team run**, with one shared rank for everyone admitted to combat. It defines boards for Quarantine, Midnight, Pilgrimage, Raid and Endless, partitioned by mode, difficulty, peak squad-size band, rules version, content revision and season. Timed and Endless results use different ordering. Historical roster members remain represented after leaving; kills do not create an individual ranking inside the team.

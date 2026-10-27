@@ -5,6 +5,8 @@ export const defaultPreferences = () => ({
   reduceMotion: false,
   highContrast: false,
   branchingTree: false,
+  showNames: true,
+  roomChat: true,
   volume: 0.45,
   music: 0.3,
   textScale: 1,
@@ -17,13 +19,15 @@ const toggles = [
   "reduceMotion",
   "highContrast",
   "branchingTree",
+  "showNames",
+  "roomChat",
 ] as const;
 const ranges = ["volume", "music", "textScale"] as const;
 export function validPreferences(value: unknown): value is Preferences {
   if (!value || typeof value !== "object" || Array.isArray(value)) return false;
   const p = value as Preferences;
   return (
-    Object.keys(p).length === 9 &&
+    Object.keys(p).length === 11 &&
     toggles.every((k) => typeof p[k] === "boolean") &&
     ranges.every(
       (k) =>

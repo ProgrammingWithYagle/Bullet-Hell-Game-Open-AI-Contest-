@@ -1,3 +1,4 @@
+import {clerkDomainMessages} from './clerk-domains.mjs';
 import { clerkVerdictMessages } from "./clerk-verdicts.mjs";
 // AI-authored. Native-language and rendered acceptance remain pending.
 const rows = {
@@ -154,5 +155,6 @@ export function clerkAppealMessages(locale) {
     "boss.quarantine-clerk.brutalHelp": e,
     "boss.quarantine-clerk.description": f + " " + shelterHelp[locale],
     ...clerkVerdictMessages(locale),
+    ...clerkDomainMessages(locale),
   };
 }

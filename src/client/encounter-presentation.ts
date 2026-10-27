@@ -112,6 +112,7 @@ export function encounterFrame(boss: Boss, now: number, cues: BossCue[], reduced
         : Math.min(6, 4 + Math.floor((now - chain.at) / 25));
   }
   if (boss.id === 'gate-widow') {
+    if(cues.some(c=>c.kind==='widow-walk'))return 0;
     const gate = cues.find((c) => c.kind === 'gate');
     if (gate?.kind === 'gate')
       return now < gate.at

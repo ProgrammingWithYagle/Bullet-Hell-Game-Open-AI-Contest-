@@ -50,7 +50,7 @@ export type PlayerView = {
   dodgeCooldown: number;
 };
 export type View = {
-  run: { id: string; mode: Game['settings']['mode']; difficulty: string; practiceOnly: true };
+  run: { id: string; mode: Game['settings']['mode']; difficulty: string; practiceOnly: true; testingModified?: boolean };
   secretStatus: Game['secretStatus'];
   extensionParticipants: string[];
   campaignBank: Game['campaignBank'];
@@ -82,6 +82,7 @@ export function viewOf(g: Game, owner: string): View {
       mode: g.settings.mode,
       difficulty: g.settings.difficulty,
       practiceOnly: true,
+      ...(g.testingModified?{testingModified:true}:{}),
     },
     secretStatus: g.secretStatus,
     extensionParticipants: [...g.extensionParticipants],

@@ -1,6 +1,33 @@
 # Changelog
 
-Development build **2026.10.27-shifting-writ**, protocol 28. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.27-crossed-threshold**, protocol 29. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-27 — Crossed Threshold, lasting verdicts and testing tools
+
+### Gate Widow: an opening worth crossing
+
+- Three Latches warns one gate with a numbered open lane. At half health, Crossed Threshold marks a real lateral move and turns the gate sequence through both axes. A floor pall sweeps the two closed lanes; use the opening or a timed dash. Only one gate closes at a time, with an exit interval before the next. Clear connected layouts replace fixed sockets that buried passages in cover.
+- Brutal adds separately warned gapped needles from the posts. Crazed keeps that full sequence, adds one serial gate and later crossing repeats. Actual opening emissions are 30/90 Brutal/Crazed projectiles. Warning and damage geometry share clocks and collision-resolved placements. Phase, stagger and encounter cleanup cancel unreleased work. Existing grade 2, base health/damage/deadline, selected art and Third Latch music remain. This is the eighth original quality implementation; human balance review stays open.
+
+### Clerk: shelter power and lasting domains
+
+- Following frozen 5193 feedback, Brutal chooses one random green number I–V at phase-one entry and holds it through that phase. Phase two rerolls each batch; Crazed rerolls throughout. Active green shelter grants boss damage bonuses of 50%/35% Standard, 40%/20% Brutal and 25%/5% Crazed by phase. A compact live bonus label appears while the survivor is fully inside.
+- Crazed phase two leaves two amber infinity-marked domains per batch. Each warns for two seconds, lasts through the fight, and removes 10% maximum health on contact under one shared one-second survivor budget, so overlapping domains cannot stack instant hits. Green shelter and invulnerability prevent the loss; armor and shield capacity do not absorb it. Activated domains survive stagger and clear at encounter exit. Existing purple venom/slow, black current-health curse and extended green timing remain.
+
+### Explicit testing and public builds
+
+- Testing builds retain the chosen opening boss/form, all-difficulty manual guides, a Solo-only paused coin/SP panel and a tab-scoped Insane/Hellish unlock. Changing coin/SP marks that run modified, removes its local record and disables boundary saves. The room server exposes no currency command.
+- A separate public build removes the testing menu and command branch, selects new openings from the authored random pool, and offers the optional guide only on Baby. The public server rejects opening-boss injection. These are local source/build targets; the old public Site and immutable Windows development release are separate and unchanged.
+
+### Names, room chat and visible records
+
+- Settings can toggle survivor overhead names and room chat. Chat starts closed, uses server-assigned identity, bounded plain text, rate limits and opt-in delivery, and keeps only a bounded in-memory history. Opening chat blocks local combat input while online combat continues.
+- Leaderboards is now visible from the home menu. Local Practice records can be filtered by mode and difficulty; the Online boards tab states that verified rankings are not connected. No cheated, local or design-fixture score is presented as a verified public team rank. The hosted ranking finalizer and acceptance remain unfinished.
+
+### Review scope
+
+- The user confirmed the manual guide at frozen 5193 works and authorized browser testing. Prettier guide images remain a later polish task. Automated checks, actual browser play, human acceptance, listening, native-language and physical-device evidence are recorded separately.
+- Roster remains 66: 65 ordinary and one secret. At least 85 new ordinary identities and 52 original quality passes remain, alongside art, final balance, hosted recovery/rankings, WAN/capacity, device and coordinated-release gates. PR #14 stays draft and main protected.
 
 ## 2026-10-27 — Pauseable boss guides and Chain Marshal’s Shifting Writ
 

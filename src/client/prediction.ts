@@ -43,6 +43,8 @@ export class Prediction {
       leaveMovingBlocks(p, blocks, runtimeArena(view.arenaId,view.run.difficulty).obstacles, data.rules.playerRadius),
       gates,
       data.rules.playerRadius,
+      runtimeArena(view.arenaId,view.run.difficulty).obstacles,
+      runtimeArena(view.arenaId,view.run.difficulty).lavaPits,
     );
     p.x = clear.x;
     p.y = clear.y;
