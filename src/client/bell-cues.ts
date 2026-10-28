@@ -58,12 +58,31 @@ export function drawBellCue(
   q: BellCue,
   now: number,
 ) {
+  if(q.kind==='bell-clapper'){
+    const warning=now<q.at,c=q.echo?0xcbb1e8:0xe4ba80,active=now>=q.at&&now<q.until;
+    const segments=16;
+    for(let i=0;i<segments;i++){
+      const a=q.angle-q.halfAngle+2*q.halfAngle*i/segments,b=q.angle-q.halfAngle+2*q.halfAngle*(i+1)/segments;
+      const ax=q.x+Math.cos(a)*q.reach,ay=q.y+Math.sin(a)*q.reach,bx=q.x+Math.cos(b)*q.reach,by=q.y+Math.sin(b)*q.reach;
+      f.fillStyle(c,active?.13:.035).fillTriangle(q.x,q.y,ax,ay,bx,by);
+      if(active||i%2===0)h.lineStyle(active?5:2,c,active?.9:.65).lineBetween(ax,ay,bx,by);
+    }
+    h.lineStyle(active?4:2,c,.85);
+    for(const a of[q.angle-q.halfAngle,q.angle+q.halfAngle])h.lineBetween(q.x,q.y,q.x+Math.cos(a)*q.reach,q.y+Math.sin(a)*q.reach);
+    const t=warning?Math.max(0,Math.min(1,(now-q.beganAt)/Math.max(1,q.at-q.beganAt))):1;
+    h.lineStyle(5,c,.9).beginPath().arc(q.x,q.y,29,-Math.PI/2,-Math.PI/2+Math.PI*2*t).strokePath();
+    const a=q.angle+(warning?-q.halfAngle:q.halfAngle),x=q.x+Math.cos(a)*55,y=q.y+Math.sin(a)*55;
+    f.lineStyle(7,c,1).lineBetween(q.x,q.y,x,y).fillStyle(c,1).fillCircle(x,y,9);
+    return;
+  }
   if (q.kind === "bell-walk") {
     h.lineStyle(2, 0xc4bbb1, 0.55);
     for (let i = Math.max(1, q.index); i < q.path.length; i++)
       h.lineBetween(q.path[i - 1].x, q.path[i - 1].y, q.path[i].x, q.path[i].y);
     const p = q.path.at(-1)!;
     h.strokeCircle(p.x, p.y, 11);
+    h.lineStyle(1.5,0xc4bbb1,.45).strokeCircle(q.targetX,q.targetY,14);
+    h.lineBetween(p.x,p.y,q.targetX,q.targetY);
     return;
   }
   if (q.kind === "bell-resonator") {

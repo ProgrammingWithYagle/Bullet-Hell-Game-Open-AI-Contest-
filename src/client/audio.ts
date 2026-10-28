@@ -1,3 +1,4 @@
+import {isBellSound,playBellSound} from './bell-sound.ts';
 import phaseTurn from '../../assets/production/audio/cues/phase-turn-v1.wav?url';
 import { CombatRhythm } from './combat-rhythm.ts';
 import tempos from './music-tempos.json';
@@ -83,6 +84,12 @@ export class AudioBus {
     const now = performance.now();
     if (now - (this.last.get(id) ?? -Infinity) < 60) return;
     this.last.set(id, now);
+    if(isBellSound(id)){
+      if(this.volume<=0)return;
+      this.active++;
+      try{playBellSound(this.context,id,this.volume,()=>this.active--);}catch{this.active--;}
+      return;
+    }
     const url = id==='boss-phase'?phaseTurn:sfx['../../assets/audio/sfx/' + id + '.wav'];
     if (!url) return;
     try {

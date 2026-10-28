@@ -85,6 +85,7 @@ type Lane = Extract<BossCue, { kind: 'charge' | 'scent' }>;
 type Stamp = Extract<BossCue, { kind: 'stamp' }>;
 export type SignatureContext = {
   warn?(): void;
+  cueSound?(id: 'bell-toll' | 'bell-answer' | 'bell-clapper'): void;
   damageMaximumHealth?(id:string,fraction:number): boolean;
   paused?: boolean;
   auxiliaryBusy?: boolean;

@@ -2,6 +2,9 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import {
   BellCarillon,
+  bellClapperContact,
+  bellOpeningPoint,
+  type BellClapper,
   bellRoad,
   bellWalls,
   bellEchoPoint,
@@ -98,7 +101,11 @@ test("144 real map/difficulty/phase procession paths stay body-clear within actu
             );
           }
         }
-        assert(length <= 281 && length >= 140);
+        assert(length <= 341 && length >= 140);
+        assert(
+          distance(p.at(-1)!, c.targets[0]) < distance(c.boss, c.targets[0]),
+          "Approach did not close toward the marked survivor",
+        );
         const echo = bellEchoPoint(c, c.boss, phase, phase);
         assert(echo);
         assert(walls.every((o) => segmentRect(echo, echo, o, 30) === null));
@@ -107,33 +114,28 @@ test("144 real map/difficulty/phase procession paths stay body-clear within actu
     }
   assert.equal(cases, 144);
 });
-test("Single Toll locks origin and opening through a full 33-tick harmless tell and one travelling wave; only the next cast changes its bearing", () => {
+test("Paired Knell overlaps two independently warned outward fronts from one locked source and opening", () => {
   const f = fixture();
   f.step();
+  until(f, () => of(f, "bell-ring").length > 0);
   const first = of(f, "bell-ring")[0];
   assert.equal(first.at - first.beganAt, 33);
-  const locked = {
-    x: first.x,
-    y: first.y,
-    gap: first.gap,
-    gapAngle: first.gapAngle,
-  };
-  f.run(first.at - 1);
-  assert.equal(f.hurt.length, 0);
-  assert.equal(of(f, "bell-ring")[0].radius, 0);
-  while (of(f, "bell-ring").some((q) => q.id === first.id)) {
-    f.step();
-    const q = of(f, "bell-ring").find((q) => q.id === first.id);
-    if (q)
-      assert.deepEqual(
-        { x: q.x, y: q.y, gap: q.gap, gapAngle: q.gapAngle },
-        locked,
-      );
-  }
-  until(f, () => of(f, "bell-ring").some((q) => q.id !== first.id));
-  assert.equal(of(f, "bell-ring")[0].gapAngle, Math.PI / 6);
+  const lock = { x: first.x, y: first.y, gapAngle: first.gapAngle };
+  until(f, () => of(f, "bell-ring").some((q) => q.strike === 2));
+  const second = of(f, "bell-ring").find((q) => q.strike === 2)!;
+  assert.equal(second.beganAt - first.beganAt, 24);
+  assert.equal(second.at - second.beganAt, 33);
+  assert(!first.returning && !second.returning);
+  f.run(second.at + 1);
+  assert.equal(
+    of(f, "bell-ring").filter((q) => q.state === "travel").length,
+    2,
+  );
+  for (const q of of(f, "bell-ring"))
+    assert.deepEqual({ x: q.x, y: q.y, gapAngle: q.gapAngle }, lock);
   assert.equal(f.shots(), 0);
 });
+
 test("the extracted ring capsule contact preserves all existing service behavior, inward/outward sweeps and body-width opening edges", () => {
   assert.equal(serviceRingContact, gappedRingContact);
   const q = {
@@ -177,23 +179,34 @@ test("the extracted ring capsule contact preserves all existing service behavior
     ),
   );
 });
-test("first activation ignores pre-warning player motion and each front damages a crossing survivor once", () => {
+test("first ring activation ignores old player motion and each travelling front damages a survivor once", () => {
   const f = fixture();
   f.step();
+  until(f, () => of(f, "bell-ring").length > 0);
   const q = of(f, "bell-ring")[0];
   f.run(q.at - 1);
-  Object.assign(f.c.targets[0], { x: 1300, y: 250, oldX: 800, oldY: 250 });
+  Object.assign(f.c.targets[0], { x: q.x + 500, y: q.y, oldX: q.x, oldY: q.y });
   f.step(q.at);
-  assert.equal(f.hurt.length, 0);
-  Object.assign(f.c.targets[0], { x: 700, y: 250, oldX: 1300, oldY: 250 });
+  assert.equal(f.hurt.filter((h) => h.amount === 14).length, 0);
+  Object.assign(f.c.targets[0], {
+    x: q.x - 100,
+    y: q.y,
+    oldX: q.x + 500,
+    oldY: q.y,
+  });
   f.step();
-  assert.equal(f.hurt.length, 1);
-  f.c.targets[0].x = 800;
-  f.c.targets[0].oldX = 700;
+  assert.equal(f.hurt.filter((h) => h.amount === 14).length, 1);
+  Object.assign(f.c.targets[0], {
+    x: q.x - 500,
+    y: q.y,
+    oldX: q.x - 100,
+    oldY: q.y,
+  });
   f.run(f.c.tick + 10);
-  assert.equal(f.hurt.length, 1);
+  assert.equal(f.hurt.filter((h) => h.amount === 14).length, 1);
 });
-test("Procession moves only after its tell, uses all eight drawn gait frames, and locks the toll to its final source", () => {
+
+test("Procession moves only after its tell, uses all eight drawn gait frames, and closes toward the marked survivor and locks the toll to its final source", () => {
   const f = fixture("normal", 1);
   f.step();
   const w = of(f, "bell-walk")[0],
@@ -227,51 +240,55 @@ test("new cover safely stops the planned procession instead of teleporting throu
   assert.equal(of(f, "bell-walk").length, 0);
   assert.equal(of(f, "bell-ring").length, 0);
 });
-test("Counterstroke changes to inward then outward with independent full warnings and one locked source per score", () => {
+test("Counterstroke interleaves inward and outward fronts before the earlier wave finishes", () => {
   const f = fixture("normal", 2);
   f.step();
   until(f, () => of(f, "bell-ring").length > 0);
   const first = of(f, "bell-ring")[0];
-  assert(first.returning);
-  assert.equal(first.at - first.beganAt, 45);
-  assert.equal(first.radius, first.reach);
+  assert(!first.returning);
   until(f, () => of(f, "bell-ring").some((q) => q.strike === 2));
   const second = of(f, "bell-ring").find((q) => q.strike === 2)!;
-  assert(!second.returning);
-  assert.equal(second.at - second.beganAt, 33);
-  assert.deepEqual({ x: second.x, y: second.y }, { x: first.x, y: first.y });
-  assert(Math.abs(second.gapAngle - first.gapAngle - Math.PI / 3) < 1e-9);
+  assert(second.returning);
+  assert.equal(second.at - second.beganAt, 45);
+  assert.equal(second.radius, second.reach);
+  assert.deepEqual(
+    { x: second.x, y: second.y, gapAngle: second.gapAngle },
+    { x: first.x, y: first.y, gapAngle: first.gapAngle },
+  );
+  f.run(second.at + 1);
+  assert(of(f, "bell-ring").filter((q) => q.state === "travel").length >= 2);
 });
-test("Brutal has a genuine harmless hold, retunes sixty degrees, then gives a fresh complete reactivation warning", () => {
+
+test("Brutal layers four peals and two independent aimed clappers instead of the former exclusive silent hold", () => {
   const f = fixture("brutal");
   f.step();
-  until(f, () => of(f, "bell-ring").some((q) => q.state === "quiet"));
-  const q = of(f, "bell-ring")[0];
-  assert(q.held);
-  assert(Math.abs(q.gapAngle - q.initialGapAngle - Math.PI / 3) < 1e-9);
-  assert.equal(q.resumeAt - q.quietUntil, 36);
-  f.c.targets.push({
-    id: "new",
-    x: q.x - q.radius,
-    y: q.y,
-    oldX: q.x - q.radius,
-    oldY: q.y,
-  });
-  const hits = () => f.hurt.filter((h) => h.id === "new");
-  f.run(q.quietUntil - 1);
-  assert.equal(hits().length, 0);
-  f.run(q.resumeAt - 1);
-  assert.equal(hits().length, 0);
-  assert.equal(of(f, "bell-ring")[0].radius, q.radius);
-  f.step(q.resumeAt);
-  assert.equal(hits().length, 1);
-  f.run(q.resumeAt + 12);
-  assert.equal(hits().length, 1);
+  const peals = new Set(),
+    clappers = new Set();
+  let peak = 0;
+  until(f, () => of(f, "bell-ring").length > 0);
+  while (f.d.busy) {
+    for (const q of of(f, "bell-ring")) {
+      peals.add(q.id);
+      assert(!q.held);
+      assert(!["quiet", "rewarn"].includes(q.state));
+    }
+    for (const q of of(f, "bell-clapper")) clappers.add(q.id);
+    peak = Math.max(
+      peak,
+      of(f, "bell-ring").filter((q) => q.state === "travel").length,
+    );
+    f.step();
+  }
+  assert.equal(peals.size, 4);
+  assert.equal(clappers.size, 2);
+  assert(peak >= 3);
+  assert.equal(f.shots(), 0);
 });
-test("Crazed retains the Brutal hold and warns a second source; the primary cannot damage during the responding front", () => {
+
+test("Crazed primary and responding bell stay dangerous together, with fixed sources/openings and complete independent warnings", () => {
   const f = fixture("crazed");
   f.step();
-  until(f, () => of(f, "bell-resonator").length > 0);
+  until(f, () => of(f, "bell-ring").some((q) => q.echo));
   const marker = of(f, "bell-resonator")[0],
     echo = of(f, "bell-ring").find((q) => q.echo)!,
     primary = of(f, "bell-ring").find((q) => !q.echo)!;
@@ -279,34 +296,35 @@ test("Crazed retains the Brutal hold and warns a second source; the primary cann
   assert.equal(marker.ringId, echo.id);
   assert.equal(echo.respondTo, primary.id);
   assert(distance(echo, primary) >= 180);
-  assert(primary.resumeAt > echo.until + 36);
-  const lock = { x: echo.x, y: echo.y, gapAngle: echo.gapAngle };
-  while (f.c.tick < primary.resumeAt - 1) {
-    f.step();
-    const rings = of(f, "bell-ring");
-    assert(rings.filter((q) => q.state === "travel").length <= 1);
-    const p = rings.find((q) => q.id === primary.id);
-    assert(p && p.state !== "travel");
-    const e = rings.find((q) => q.id === echo.id);
-    if (e) assert.deepEqual({ x: e.x, y: e.y, gapAngle: e.gapAngle }, lock);
+  const locks = [primary, echo].map((q) => ({
+    id: q.id,
+    x: q.x,
+    y: q.y,
+    gapAngle: q.gapAngle,
+  }));
+  f.run(echo.at + 1);
+  assert(of(f, "bell-ring").some((q) => !q.echo && q.state === "travel"));
+  assert(of(f, "bell-ring").some((q) => q.echo && q.state === "travel"));
+  for (const lock of locks) {
+    const q = of(f, "bell-ring").find((q) => q.id === lock.id)!;
+    assert.deepEqual({ id: q.id, x: q.x, y: q.y, gapAngle: q.gapAngle }, lock);
   }
-  f.step();
-  assert.equal(
-    of(f, "bell-ring").find((q) => q.id === primary.id)!.state,
-    "travel",
-  );
   assert.equal(f.shots(), 0);
 });
-test("advanced Carillon uses a three-part outward/inward/outward score instead of another generic projectile spray", () => {
+
+test("advanced Carillon uses six overlapping alternating peals instead of another generic projectile spray", () => {
   const f = fixture("brutal", 3);
   f.step();
   const observed = new Map<number, boolean>();
-  for (let n = 0; n < 7000 && observed.size < 3; n++) {
+  for (let n = 0; n < 7000 && observed.size < 6; n++) {
     f.step();
     for (const q of of(f, "bell-ring"))
       if (!q.echo) observed.set(q.strike, q.returning);
   }
-  assert.deepEqual([...observed.values()], [false, true, false]);
+  assert.deepEqual(
+    [...observed.values()],
+    [false, true, false, true, false, true],
+  );
   assert.equal(f.shots(), 0);
 });
 test("rich actor data cannot overwrite numeric cue identities or leak into path points and snapshots cannot mutate the owner", () => {
@@ -322,7 +340,7 @@ test("rich actor data cannot overwrite numeric cue identities or leak into path 
   assert(f.d.cues().every((q) => Number.isSafeInteger(q.id)));
   assert.equal(new Set(f.d.cues().map((q) => q.id)).size, f.d.cues().length);
 });
-test("pause, phase and explicit reset remove all pending echoes/holds and preserve their fresh restart delay", () => {
+test("pause, phase and explicit reset remove all pending peals/clappers/responders and preserve their fresh restart delay", () => {
   const f = fixture("crazed");
   f.step();
   until(f, () => of(f, "bell-resonator").length > 0);
@@ -388,4 +406,130 @@ test("actual Game removes generic Bellringer bullets/lasers and clears owned fro
     g.step();
     assert.deepEqual(g.director.services.bellringer.cues(), []);
   }
+});
+
+test("clapper sector is harmless for its full 36-tick lock, ignores old motion on activation and hits once per swing", () => {
+  const f = fixture();
+  f.step();
+  until(f, () => of(f, "bell-clapper").length > 0);
+  const q = of(f, "bell-clapper")[0],
+    angle = q.angle;
+  assert.equal(q.at - q.beganAt, 36);
+  f.run(q.at - 1);
+  assert.equal(f.hurt.filter((h) => h.amount === 16).length, 0);
+  Object.assign(f.c.targets[0], {
+    x: q.x + Math.cos(angle) * 500,
+    y: q.y + Math.sin(angle) * 500,
+    oldX: q.x + Math.cos(angle) * 170,
+    oldY: q.y + Math.sin(angle) * 170,
+  });
+  f.step(q.at);
+  assert.equal(f.hurt.filter((h) => h.amount === 16).length, 0);
+  Object.assign(f.c.targets[0], {
+    x: q.x + Math.cos(angle) * 170,
+    y: q.y + Math.sin(angle) * 170,
+    oldX: q.x + Math.cos(angle) * 500,
+    oldY: q.y + Math.sin(angle) * 500,
+  });
+  f.step();
+  assert.equal(f.hurt.filter((h) => h.amount === 16).length, 1);
+  f.run(q.until - 1);
+  assert.equal(f.hurt.filter((h) => h.amount === 16).length, 1);
+  assert.equal(of(f, "bell-clapper")[0].angle, angle);
+});
+test("swept clapper geometry covers radial edges and caps but leaves a real sideways body-clear escape", () => {
+  const q: BellClapper = {
+    kind: "bell-clapper",
+    id: 1,
+    x: 0,
+    y: 0,
+    beganAt: 0,
+    at: 36,
+    until: 45,
+    angle: 0,
+    halfAngle: 0.72,
+    reach: 340,
+    damage: 16,
+    state: "swing",
+    echo: false,
+  };
+  assert(bellClapperContact({ x: -100, y: 0 }, { x: 500, y: 0 }, q));
+  assert(bellClapperContact({ x: 100, y: -300 }, { x: 100, y: 300 }, q));
+  assert(bellClapperContact({ x: 349, y: 0 }, { x: 349, y: 0 }, q));
+  assert(!bellClapperContact({ x: 351, y: 0 }, { x: 351, y: 0 }, q));
+  const at = (a: number) => ({ x: 280 * Math.cos(a), y: 280 * Math.sin(a) });
+  assert(bellClapperContact(at(0.74), at(0.74), q));
+  assert(!bellClapperContact(at(0.92), at(0.92), q));
+  assert(!bellClapperContact({ x: 0, y: 200 }, { x: 0, y: 300 }, q));
+});
+test("a new clapper locks the current survivor position rather than reusing the first aim, and strike/reply sounds come from actual activation", () => {
+  const f = fixture("crazed", 1),
+    sounds: string[] = [];
+  f.c.cueSound = (id) => sounds.push(id);
+  f.step();
+  until(f, () => of(f, "bell-clapper").some((q) => !q.echo));
+  const first = of(f, "bell-clapper").find((q) => !q.echo)!;
+  Object.assign(f.c.targets[0], {
+    x: first.x - 230,
+    y: first.y,
+    oldX: first.x - 230,
+    oldY: first.y,
+  });
+  until(f, () =>
+    of(f, "bell-clapper").some((q) => !q.echo && q.id !== first.id),
+  );
+  const next = of(f, "bell-clapper").find((q) => !q.echo && q.id !== first.id)!;
+  assert(Math.abs(Math.abs(next.angle) - Math.PI) < 1e-8);
+  assert.notEqual(next.angle, first.angle);
+  f.run(f.c.tick + 100);
+  assert(sounds.includes("bell-toll"));
+  assert(sounds.includes("bell-answer"));
+  assert(sounds.includes("bell-clapper"));
+});
+test("both simultaneous sources share a clear-floor opening outside the first clapper, including offset arenas and lava footprints", () => {
+  for (const map of runtimeArenas)
+    for (const difficulty of data.difficulties) {
+      const g = createPracticeGame(
+        {
+          mode: "endless",
+          openingBossId: "bellringer",
+          openingArenaId: map.id,
+          difficulty: difficulty.id,
+        },
+        "Mara",
+        "soldier",
+        "crazed",
+      );
+      g.start();
+      const c = (
+          g as unknown as { signatureContext(): SignatureContext }
+        ).signatureContext(),
+        target = c.targets[0],
+        echo = bellEchoPoint(
+          c,
+          c.boss,
+          Math.atan2(target.y - c.boss.y, target.x - c.boss.x),
+          1,
+          target,
+        )!;
+      assert(echo);
+      const p = bellOpeningPoint(c, c.boss, target, echo),
+        walls = bellWalls(c);
+      assert(walls.every((o) => segmentRect(p, p, o, 12) === null));
+      for (const origin of [c.boss, echo]) {
+        assert(distance(p, origin) >= 130);
+        const radius = distance(p, origin),
+          gapAngle = Math.atan2(p.y - origin.y, p.x - origin.x);
+        assert(
+          !gappedRingContact(p, p, {
+            ...origin,
+            oldRadius: radius - 8,
+            radius: radius + 8,
+            width: 12,
+            gap: (35 * Math.PI) / 180,
+            gapAngle,
+          }),
+        );
+      }
+    }
 });

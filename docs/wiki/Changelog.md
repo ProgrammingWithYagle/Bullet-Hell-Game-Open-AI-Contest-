@@ -1,6 +1,24 @@
 # Changelog
 
-Development build **2026.10.27-resonant-tolls**, protocol 34. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.28-bell-counterpoint**, protocol 35. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-28 — Bellringer: overlapping peals and aimed clapper counterpoint
+
+### Pressure at the right range
+
+- Bellringer now approaches a marked survivor instead of taking a lateral wandering route. The body-clear path is harmless and warns before walking. After arrival, Paired Knell uses two overlapping outward fronts and a separately warned aimed clapper sector. Procession uses three peals and two clappers; Counterstroke interleaves outward and inward fronts. Base grade3-, health, damage, deadline, individual theme and all existing art remain.
+- Clapper sectors lock their source, angle and reach for a full1.2-second tell, then swing for0.3seconds. Each swing and travelling ring hits once. Step out of the marked sector or dash; ring openings stay fixed. Newly aimed later clappers require movement rather than standing in one opening for the whole score.
+
+### Advanced forms play together
+
+- Brutal layers four to six peals with two or three clapper swings. The old exclusive silent hold is replaced by concurrent fronts. Crazed keeps that primary score and adds three or four reply fronts plus its own clapper from a deployed bell while the main boss continues attacking. Both sources receive full warnings and share a real clear-floor opening. This is a new interaction and timing burden, not a health increase.
+- Actual toll, reply and clapper activations now emit three distinct bounded metallic cues through the existing effects-volume/audio-unlock gate. The sixty-six existing boss themes remain unchanged. Native listening and rendered review are open.
+
+### Evidence and pending feedback
+
+- The actual-Game matrix completes408 scores/145894ticks across all maps/difficulties/forms/phases:3684full path vertices,21177active walk ticks/zero sampled stalls,2400body-clear opening witnesses,66088multi-front ticks,27692primary/reply overlap ticks and9396clapper/front overlap ticks. Peak10fronts/12cues andzero generic hostile projectiles. These stationary invulnerable samples do not prove personal clears, every human route, final balance, performance or device acceptance.
+- Known issued protocol34/content94552a80 local Practice/profile state migrates strictly to35. Other known migrations and strict online/signed boundaries remain. Roster66/ordinarydeficit85 and quality12/60 with48remaining are unchanged. The interrupted Stitchwright walk candidate is preserved in the workspace without integration or quality credit.
+- New human follow-ups remain pending: let already warned/released attacks finish across phase boundaries on every difficulty, and give Mold Alchemist a stronger themed Crazed step. The user praised Alchemist as the first truly unique encounter; Counterpoint leaves its current laboratory unchanged. This pass does not claim either follow-up is implemented.
 
 ## 2026-10-27 — Bellringer: procession, counterstrokes and responding bells
 

@@ -25,7 +25,7 @@ const wait = async (check: () => boolean) => {
     await new Promise((r) => setTimeout(r, 15));
   }
 };
-test("exact known issued33 local Practice/profile state migrates to34 without changing builds/form history/preferences; foreign or online state stays strict", () => {
+test("exact known issued33 local Practice/profile state migrates to35 without changing builds/form history/preferences; foreign or online state stays strict", () => {
   const g = createPracticeGame(
       { mode: "endless", openingBossId: "bellringer", seed: 117 },
       "Mara",
@@ -37,7 +37,7 @@ test("exact known issued33 local Practice/profile state migrates to34 without ch
   old.protocolVersion = 33;
   old.contentRevision = issued;
   const restored = Game.restoreOffline(old).offlineCheckpoint()!;
-  assert.equal(PROTOCOL, 34);
+  assert.equal(PROTOCOL, 35);
   assert.equal(restored.protocolVersion, PROTOCOL);
   assert.equal(restored.contentRevision, CONTENT_REVISION);
   assert.deepEqual(restored.player, save.player);
@@ -105,7 +105,7 @@ test("fifteen closed guides expose four distinct Bellringer phases and advanced 
   assert.equal(frames.size, 8);
 });
 test(
-  "real owner and observer replicate a silent primary, newly warned Crazed responding bell, locked geometry and encounter cleanup",
+  "real owner and observer replicate concurrent primary, newly warned Crazed responding bell, locked geometry and encounter cleanup",
   { timeout: 30000 },
   async () => {
     const { server, httpServer } = createGameServer();
@@ -141,7 +141,11 @@ test(
         primary = g
           .bossCues()
           .find(
-            (q) => q.kind === "bell-ring" && !q.echo && q.state === "quiet",
+            (q) =>
+              q.kind === "bell-ring" &&
+              !q.echo &&
+              q.state === "travel" &&
+              g.bossCues().some((e) => e.kind === "bell-ring" && e.echo),
           );
       }
       assert(primary && primary.kind === "bell-ring");
@@ -150,7 +154,31 @@ test(
       assert(echo && echo.kind === "bell-ring" && marker);
       assert.equal(echo.at - echo.beganAt, 48);
       assert.equal(echo.respondTo, primary.id);
-      assert(primary.resumeAt > echo.until);
+      for (
+        let i = 0;
+        i < 100 &&
+        !g
+          .bossCues()
+          .some(
+            (q) => q.kind === "bell-ring" && q.echo && q.state === "travel",
+          );
+        i++
+      )
+        g.step();
+      assert(
+        g
+          .bossCues()
+          .some(
+            (q) => q.kind === "bell-ring" && !q.echo && q.state === "travel",
+          ),
+      );
+      assert(
+        g
+          .bossCues()
+          .some(
+            (q) => q.kind === "bell-ring" && q.echo && q.state === "travel",
+          ),
+      );
       const locked = [primary, echo, marker];
       assert(locked.every((q) => Number.isSafeInteger(q.id)));
       await wait(() =>
@@ -159,11 +187,22 @@ test(
         ),
       );
       for (const session of [a, b])
-        for (const q of locked)
-          assert.deepEqual(
-            session.view!.bossCues.find((p) => p.id === q.id),
-            q,
-          );
+        for (const q of locked) {
+          const replicated = session.view!.bossCues.find((p) => p.id === q.id)!;
+          for (const key of [
+            "id",
+            "kind",
+            "x",
+            "y",
+            "at",
+            "gapAngle",
+            "gap",
+            "respondTo",
+            "ringId",
+          ] as const)
+            if (key in q)
+              assert.equal(Reflect.get(replicated, key), Reflect.get(q, key));
+        }
       assert.equal(
         [...g.shots.values()].filter((q) => q.owner === "hostile").length,
         0,
@@ -182,3 +221,31 @@ test(
     }
   },
 );
+
+test("known issued34 local state migrates exactly while a foreign34 revision and online-shaped data remain rejected", () => {
+  const g = createPracticeGame(
+      { mode: "endless", openingBossId: "bellringer" },
+      "Mara",
+      "soldier",
+      "crazed",
+    ),
+    save = g.offlineCheckpoint()!,
+    old = {
+      ...structuredClone(save),
+      protocolVersion: 34,
+      contentRevision:
+        "94552a8007ad25febb2f9c8e212ffdf28360bcb1df528a7c7ab226f7388ee675",
+    };
+  const after = Game.restoreOffline(old).offlineCheckpoint()!;
+  assert.equal(after.protocolVersion, 35);
+  assert.equal(after.contentRevision, CONTENT_REVISION);
+  assert.deepEqual(after.player, save.player);
+  assert.deepEqual(after.completedBossForms, save.completedBossForms);
+  for (const bad of [
+    { ...old, contentRevision: "f".repeat(64) },
+    { ...old, practiceOnly: false },
+    { ...old, serverOnly: true },
+    { ...old, players: [] },
+  ])
+    assert.throws(() => Game.restoreOffline(bad));
+});

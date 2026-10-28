@@ -10,6 +10,9 @@ export type BellWalk = Life & {
   path: Vec[];
   index: number;
   speed: number;
+  targetX: number;
+  targetY: number;
+  arrivalRange: number;
 };
 export type BellRing = Life &
   Vec & {
@@ -46,7 +49,7 @@ export type BellResonator = Life &
     ringId: number;
     respondTo: number;
   };
-export type BellCue = BellWalk | BellRing | BellResonator;
+export type BellCue = BellWalk | BellRing | BellResonator | BellClapper;
 const ticks = (s: number) => Math.ceil(s * HZ);
 export function bellWalls(c: SignatureContext): Rect[] {
   const b = c.bounds ?? { x: 0, y: 0, width: 1600, height: 1000 };
@@ -119,11 +122,17 @@ export function bellRoad(
       }
   }
   const a = Math.atan2(target.y - c.boss.y, target.x - c.boss.x),
+    far = distance(c.boss, target) > tuning.approachRange + 50,
     side = cycle % 2 ? 1 : -1,
-    goal = {
-      x: c.boss.x - Math.sin(a) * side * 230,
-      y: c.boss.y + Math.cos(a) * side * 230,
-    },
+    goal = far
+      ? {
+          x: target.x - Math.cos(a) * tuning.approachRange,
+          y: target.y - Math.sin(a) * tuning.approachRange,
+        }
+      : {
+          x: target.x - Math.sin(a) * side * tuning.approachRange,
+          y: target.y + Math.cos(a) * side * tuning.approachRange,
+        },
     candidates = queue
       .filter(
         (i) => cost[i] >= tuning.minimumWalk && cost[i] <= tuning.maximumWalk,
@@ -162,16 +171,24 @@ export function bellEchoPoint(
   origin: Vec,
   angle: number,
   cycle: number,
+  target?: Vec,
 ): Vec | undefined {
   const b = c.bounds ?? { x: 0, y: 0, width: 1600, height: 1000 },
     walls = bellWalls(c),
     radius = tuning.echoClearance,
-    goal = {
-      x:
-        origin.x + Math.cos(angle + ((cycle % 2 ? 1 : -1) * Math.PI) / 2) * 300,
-      y:
-        origin.y + Math.sin(angle + ((cycle % 2 ? 1 : -1) * Math.PI) / 2) * 300,
-    },
+    goal = target
+      ? {
+          x: target.x - Math.sin(angle) * (cycle % 2 ? 1 : -1) * 190,
+          y: target.y + Math.cos(angle) * (cycle % 2 ? 1 : -1) * 190,
+        }
+      : {
+          x:
+            origin.x +
+            Math.cos(angle + ((cycle % 2 ? 1 : -1) * Math.PI) / 2) * 300,
+          y:
+            origin.y +
+            Math.sin(angle + ((cycle % 2 ? 1 : -1) * Math.PI) / 2) * 300,
+        },
     points: Vec[] = [];
   for (let y = b.y + radius; y <= b.y + b.height - radius; y += 32)
     for (let x = b.x + radius; x <= b.x + b.width - radius; x += 32) {
@@ -186,20 +203,118 @@ export function bellEchoPoint(
     }
   return points.toSorted((a, b) => distance(a, goal) - distance(b, goal))[0];
 }
+export type BellClapper = Life &
+  Vec & {
+    kind: "bell-clapper";
+    angle: number;
+    halfAngle: number;
+    reach: number;
+    damage: number;
+    state: "warning" | "swing" | "done";
+    echo: boolean;
+  };
+/** Swept body against a fixed warned sector, including both straight edges. */
+export function bellClapperContact(
+  from: Vec,
+  to: Vec,
+  q: BellClapper,
+  body = 9,
+) {
+  const edgeDistance = (p: Vec, a: number) => {
+    const dx = Math.cos(a) * q.reach,
+      dy = Math.sin(a) * q.reach;
+    const t = Math.max(
+      0,
+      Math.min(1, ((p.x - q.x) * dx + (p.y - q.y) * dy) / (q.reach * q.reach)),
+    );
+    return Math.hypot(p.x - q.x - dx * t, p.y - q.y - dy * t);
+  };
+  const steps = Math.max(1, Math.ceil(distance(from, to) / 2));
+  for (let i = 0; i <= steps; i++) {
+    const p = {
+      x: from.x + ((to.x - from.x) * i) / steps,
+      y: from.y + ((to.y - from.y) * i) / steps,
+    };
+    const d = distance(p, q),
+      a = Math.atan2(p.y - q.y, p.x - q.x) - q.angle;
+    if (d <= body + 1) return true;
+    if (
+      d <= q.reach + body + 1 &&
+      Math.abs(Math.atan2(Math.sin(a), Math.cos(a))) <= q.halfAngle
+    )
+      return true;
+    if (
+      edgeDistance(p, q.angle - q.halfAngle) <= body + 1 ||
+      edgeDistance(p, q.angle + q.halfAngle) <= body + 1
+    )
+      return true;
+  }
+  return false;
+}
+/** One clear-floor point aligns the openings of both simultaneous sources. */
+export function bellOpeningPoint(
+  c: SignatureContext,
+  origin: Vec,
+  target: Vec,
+  echo?: Vec,
+): Vec {
+  const b = c.bounds ?? { x: 0, y: 0, width: 1600, height: 1000 },
+    walls = bellWalls(c);
+  const aim = Math.atan2(target.y - origin.y, target.x - origin.x),
+    turn = aim + Math.PI * 0.36;
+  const goal = {
+    x: origin.x + Math.cos(turn) * 300,
+    y: origin.y + Math.sin(turn) * 300,
+  };
+  const points: Vec[] = [];
+  for (let y = b.y + 20; y <= b.y + b.height - 20; y += 24)
+    for (let x = b.x + 20; x <= b.x + b.width - 20; x += 24) {
+      const p = { x, y };
+      if (
+        distance(p, origin) < 150 ||
+        (echo && distance(p, echo) < 130) ||
+        !clear(p, p, walls, 12)
+      )
+        continue;
+      const a = Math.atan2(p.y - origin.y, p.x - origin.x) - aim;
+      if (
+        distance(p, origin) <= tuning.clapperReach + 20 &&
+        Math.abs(Math.atan2(Math.sin(a), Math.cos(a))) <
+          tuning.clapperHalfAngle + 0.15
+      )
+        continue;
+      points.push(p);
+    }
+  return (
+    points.toSorted(
+      (a, b) =>
+        distance(a, goal) - distance(b, goal) ||
+        distance(a, target) - distance(b, target),
+    )[0] ?? { x: target.x, y: target.y }
+  );
+}
+type ScoreStep = {
+  due: number;
+  returning: boolean;
+  echo: boolean;
+  strike: number;
+  strikes: number;
+  clapper: boolean;
+};
 export class BellCarillon {
   private walk: BellWalk | null = null;
   private rings: BellRing[] = [];
   private bells: BellResonator[] = [];
+  private clappers: BellClapper[] = [];
   private hits = new Map<number, Set<string>>();
+  private queue: ScoreStep[] = [];
   private stage: "idle" | "walk" | "score" = "idle";
   private phase = -1;
   private cycle = 0;
-  private strike = 0;
-  private directions: boolean[] = [];
   private origin: Vec = { x: 0, y: 0 };
-  private gapAngle = 0;
-  private activeId = 0;
-  private nextAt = 0;
+  private opening: Vec = { x: 0, y: 0 };
+  private response: Vec | undefined;
+  private primaryId = 0;
   nextSignatureAt = 0;
   get busy() {
     return this.stage !== "idle";
@@ -208,13 +323,13 @@ export class BellCarillon {
     this.walk = null;
     this.rings = [];
     this.bells = [];
+    this.clappers = [];
     this.hits.clear();
+    this.queue = [];
     this.stage = "idle";
     this.phase = -1;
-    this.strike = 0;
-    this.directions = [];
-    this.activeId = 0;
-    this.nextAt = 0;
+    this.response = undefined;
+    this.primaryId = 0;
     this.nextSignatureAt = until;
     if (encounter) this.cycle = 0;
   }
@@ -230,6 +345,7 @@ export class BellCarillon {
         : []),
       ...this.rings.map((q) => ({ ...q })),
       ...this.bells.map((q) => ({ ...q })),
+      ...this.clappers.map((q) => ({ ...q })),
     ];
   }
   cast(c: SignatureContext, target: Vec) {
@@ -239,28 +355,16 @@ export class BellCarillon {
   }
   private begin(c: SignatureContext, target: Vec) {
     this.phase = c.phase;
-    this.gapAngle = (this.cycle * tuning.gapStepDegrees * Math.PI) / 180;
-    this.strike = 0;
-    this.directions =
-      c.phase >= 3
-        ? [false, true, false]
-        : c.phase === 2
-          ? [true, false]
-          : c.brutal
-            ? [false, true]
-            : [false];
-    const cycle = this.cycle++;
-    if (c.phase === 0) {
-      this.origin = { x: c.boss.x, y: c.boss.y };
-      this.startRing(c);
+    const path = bellRoad(c, target, this.cycle++),
+      length = path.slice(1).reduce((n, p, i) => n + distance(path[i], p), 0);
+    const speed =
+      (c.phase >= 2 ? tuning.lateWalkSpeed : tuning.walkSpeed) *
+      Math.min(1.75, Math.max(0.5, c.movementSpeedScale ?? 1));
+    if (length < 2) {
+      this.startScore(c, target);
       return;
     }
-    const path = bellRoad(c, target, cycle),
-      length = path.slice(1).reduce((n, p, i) => n + distance(path[i], p), 0),
-      speed =
-        (c.phase >= 2 ? tuning.lateWalkSpeed : tuning.walkSpeed) *
-        Math.min(1.75, Math.max(0.5, c.movementSpeedScale ?? 1)),
-      at = c.tick + ticks(tuning.walkWarning);
+    const at = c.tick + ticks(tuning.walkWarning);
     this.walk = {
       kind: "bell-walk",
       id: c.id(),
@@ -270,38 +374,151 @@ export class BellCarillon {
       path,
       index: 1,
       speed,
+      targetX: target.x,
+      targetY: target.y,
+      arrivalRange: tuning.approachRange,
     };
     this.stage = "walk";
     c.warn?.();
   }
-  private createRing(
-    c: SignatureContext,
-    origin: Vec,
-    returning: boolean,
-    echo: boolean,
-    respondTo = 0,
-  ): BellRing {
-    const b = c.bounds ?? { x: 0, y: 0, width: 1600, height: 1000 },
-      reach = bellReach(origin, b),
-      startRadius = returning ? reach : 0,
-      endRadius = returning ? 0 : reach,
-      speed =
-        tuning.ringSpeeds[Math.max(0, Math.min(3, c.phase))] *
-        Math.min(1.75, Math.max(0.5, c.movementSpeedScale ?? 1)),
-      at =
-        c.tick +
-        ticks(
-          echo
-            ? tuning.echoWarning
-            : returning
-              ? tuning.returnWarning
-              : tuning.ringWarning,
+  private startScore(c: SignatureContext, target: Vec) {
+    this.walk = null;
+    this.origin = { x: c.boss.x, y: c.boss.y };
+    this.stage = "score";
+    this.primaryId = 0;
+    const aim = Math.atan2(target.y - this.origin.y, target.x - this.origin.x);
+    this.response =
+      c.variant === "crazed"
+        ? bellEchoPoint(c, this.origin, aim, this.cycle, target)
+        : undefined;
+    this.opening = bellOpeningPoint(c, this.origin, target, this.response);
+    const normalOrders = [
+      [false, false],
+      [false, false, false],
+      [false, true, false, false],
+    ];
+    const advancedOrders = [
+      [false, false, true, false],
+      [false, true, false, true],
+      [false, true, false, true, false],
+      [false, true, false, true, false, true],
+    ];
+    const order = (c.brutal ? advancedOrders : normalOrders)[
+      Math.min(c.brutal ? 3 : 2, c.phase)
+    ];
+    const spacing = c.brutal ? tuning.brutalBeatSeconds : tuning.beatSeconds;
+    this.queue = order.map((returning, i) => ({
+      due: c.tick + ticks(i * spacing),
+      returning,
+      echo: false,
+      strike: i + 1,
+      strikes: order.length,
+      clapper: false,
+    }));
+    const claps = c.brutal ? (c.phase >= 3 ? 3 : 2) : c.phase >= 1 ? 2 : 1;
+    for (let i = 0; i < claps; i++)
+      this.queue.push({
+        due: c.tick + ticks(i * tuning.clapperBeatSeconds),
+        returning: false,
+        echo: false,
+        strike: i + 1,
+        strikes: claps,
+        clapper: true,
+      });
+    if (this.response) {
+      const count = c.phase >= 2 ? 4 : 3,
+        first = c.tick + ticks(tuning.echoOffsetSeconds);
+      for (let i = 0; i < count; i++)
+        this.queue.push({
+          due: first + ticks(i * tuning.echoBeatSeconds),
+          returning: c.phase >= 2 && i === count - 1,
+          echo: true,
+          strike: i + 1,
+          strikes: count,
+          clapper: false,
+        });
+      this.queue.push({
+        due: first + ticks(tuning.echoBeatSeconds),
+        returning: false,
+        echo: true,
+        strike: 1,
+        strikes: 1,
+        clapper: true,
+      });
+      this.bells.push({
+        kind: "bell-resonator",
+        id: c.id(),
+        x: this.response.x,
+        y: this.response.y,
+        radius: tuning.echoClearance,
+        fromX: this.origin.x,
+        fromY: this.origin.y,
+        ringId: 0,
+        respondTo: 0,
+        beganAt: c.tick,
+        at: first + ticks(tuning.echoWarning),
+        until: c.tick + ticks(25),
+      });
+    }
+    this.queue.sort(
+      (a, b) =>
+        a.due - b.due ||
+        Number(a.echo) - Number(b.echo) ||
+        Number(a.clapper) - Number(b.clapper),
+    );
+    this.emitDue(c);
+  }
+  private emitDue(c: SignatureContext) {
+    while (this.queue[0] && this.queue[0].due <= c.tick) {
+      const s = this.queue.shift()!,
+        origin = s.echo ? this.response! : this.origin;
+      if (s.clapper) {
+        const targets = c.aimTargets ?? c.targets,
+          target =
+            targets[(s.strike - 1) % Math.max(1, targets.length)] ??
+            this.opening;
+        const at = c.tick + ticks(tuning.clapperWarning),
+          q: BellClapper = {
+            kind: "bell-clapper",
+            id: c.id(),
+            x: origin.x,
+            y: origin.y,
+            beganAt: c.tick,
+            at,
+            until: at + ticks(tuning.clapperActiveSeconds),
+            angle: Math.atan2(target.y - origin.y, target.x - origin.x),
+            halfAngle: tuning.clapperHalfAngle,
+            reach: s.echo ? tuning.echoClapperReach : tuning.clapperReach,
+            damage: tuning.clapperDamage,
+            state: "warning",
+            echo: s.echo,
+          };
+        this.clappers.push(q);
+        this.hits.set(q.id, new Set());
+        c.warn?.();
+        continue;
+      }
+      const reach = bellReach(
+          origin,
+          c.bounds ?? { x: 0, y: 0, width: 1600, height: 1000 },
         ),
-      travel = Math.ceil(reach / (speed * DT)),
-      holdRadius = Math.min(tuning.holdRadius, reach * 0.4),
-      gapAngle =
-        this.gapAngle + (echo ? Math.PI : ((this.strike - 1) * Math.PI) / 3),
-      q: BellRing = {
+        speed =
+          tuning.ringSpeeds[Math.min(3, c.phase)] *
+          Math.min(1.75, Math.max(0.5, c.movementSpeedScale ?? 1));
+      const at =
+          c.tick +
+          ticks(
+            s.echo
+              ? tuning.echoWarning
+              : s.returning
+                ? tuning.returnWarning
+                : tuning.ringWarning,
+          ),
+        gapAngle = Math.atan2(
+          this.opening.y - origin.y,
+          this.opening.x - origin.x,
+        );
+      const q: BellRing = {
         kind: "bell-ring",
         id: c.id(),
         x: origin.x,
@@ -309,81 +526,44 @@ export class BellCarillon {
         beganAt: c.tick,
         at,
         motionAt: at,
-        until: at + travel + (c.brutal && !returning && !echo ? ticks(25) : 1),
-        radius: startRadius,
-        oldRadius: startRadius,
-        startRadius,
-        endRadius,
+        until: at + Math.ceil(reach / (speed * DT)) + 2,
+        radius: s.returning ? reach : 0,
+        oldRadius: s.returning ? reach : 0,
+        startRadius: s.returning ? reach : 0,
+        endRadius: s.returning ? 0 : reach,
         reach,
         gapAngle,
         initialGapAngle: gapAngle,
         gap: (tuning.gapDegrees * Math.PI) / 180,
         speed,
         width: tuning.ringWidth,
-        damage: echo ? tuning.echoDamage : tuning.ringDamage,
-        strike: this.strike,
-        strikes: this.directions.length,
-        returning,
-        echo,
-        respondTo,
+        damage: s.echo ? tuning.echoDamage : tuning.ringDamage,
+        strike: s.strike,
+        strikes: s.strikes,
+        returning: s.returning,
+        echo: s.echo,
+        respondTo: s.echo ? this.primaryId : 0,
         state: "warning",
         held: false,
-        holdRadius,
+        holdRadius: 0,
         quietUntil: 0,
         resumeAt: 0,
       };
-    this.rings.push(q);
-    this.hits.set(q.id, new Set());
-    return q;
-  }
-  private startRing(c: SignatureContext) {
-    this.strike++;
-    const q = this.createRing(
-      c,
-      this.origin,
-      this.directions[this.strike - 1],
-      false,
-    );
-    this.activeId = q.id;
-    this.walk = null;
-    this.stage = "score";
-    c.warn?.();
-  }
-  private hold(c: SignatureContext, q: BellRing) {
-    q.held = true;
-    q.state = "quiet";
-    q.gapAngle =
-      q.initialGapAngle + (tuning.resumeGapTurnDegrees * Math.PI) / 180;
-    q.quietUntil = c.tick + ticks(tuning.quietSeconds);
-    if (c.variant === "crazed") {
-      const p = bellEchoPoint(c, q, q.initialGapAngle, this.cycle);
-      if (p) {
-        const echo = this.createRing(c, p, false, true, q.id);
-        q.quietUntil = echo.until + 1;
-        this.bells.push({
-          kind: "bell-resonator",
-          id: c.id(),
-          x: p.x,
-          y: p.y,
-          radius: tuning.echoClearance,
-          fromX: q.x,
-          fromY: q.y,
-          ringId: echo.id,
-          respondTo: q.id,
-          beganAt: c.tick,
-          at: echo.at,
-          until: echo.until,
-        });
-        c.warn?.();
+      if (!s.echo && !this.primaryId) this.primaryId = q.id;
+      if (s.echo && this.bells[0]) {
+        if (!this.bells[0].ringId) this.bells[0].ringId = q.id;
+        this.bells[0].respondTo = this.primaryId;
       }
+      this.rings.push(q);
+      this.hits.set(q.id, new Set());
+      c.warn?.();
     }
-    q.resumeAt = q.quietUntil + ticks(tuning.resumeWarning);
-    q.until =
-      q.resumeAt + Math.ceil((q.endRadius - q.radius) / (q.speed * DT)) + 1;
   }
   private rest(now: number) {
     this.stage = "idle";
-    this.activeId = 0;
+    this.walk = null;
+    this.queue = [];
+    this.bells = [];
     this.nextSignatureAt = now + ticks(tuning.restSeconds);
   }
   step(c: SignatureContext) {
@@ -396,50 +576,57 @@ export class BellCarillon {
     this.phase = c.phase;
     const now = c.tick,
       walls = bellWalls(c);
-    this.rings = this.rings.filter((q) => {
-      if (q.until > now && q.state !== "done") return true;
-      this.hits.delete(q.id);
-      return false;
-    });
-    this.bells = this.bells.filter((q) => q.until > now);
+    if (this.stage === "score") this.emitDue(c);
     for (const q of this.rings) {
-      if (q.state === "warning" && now >= q.at) q.state = "travel";
-      if (q.state === "quiet" && now >= q.quietUntil) {
-        q.state = "rewarn";
-        c.warn?.();
-      }
-      if (q.state === "rewarn" && now >= q.resumeAt) {
+      if (q.state === "warning" && now >= q.at) {
         q.state = "travel";
-        q.motionAt = now;
+        c.cueSound?.(q.echo ? "bell-answer" : "bell-toll");
       }
       if (q.state !== "travel") continue;
       q.oldRadius = q.radius;
-      const budget = q.speed * DT,
-        hold = c.brutal && !q.echo && !q.returning && !q.held,
-        limit = hold ? q.holdRadius : q.endRadius;
       q.radius = q.returning
-        ? Math.max(limit, q.radius - budget)
-        : Math.min(limit, q.radius + budget);
+        ? Math.max(0, q.radius - q.speed * DT)
+        : Math.min(q.reach, q.radius + q.speed * DT);
       const hit = this.hits.get(q.id)!;
       for (const p of c.targets)
         if (
           !hit.has(p.id) &&
-          gappedRingContact(
-            now === q.motionAt ? p : { x: p.oldX, y: p.oldY },
-            p,
-            q,
-          )
+          gappedRingContact(now === q.at ? p : { x: p.oldX, y: p.oldY }, p, q)
         ) {
           hit.add(p.id);
           c.damage(p.id, q.damage * c.damageScale);
         }
-      if (hold && q.radius >= q.holdRadius - 0.001) this.hold(c, q);
-      else if (Math.abs(q.radius - q.endRadius) < 0.001) {
+      if (Math.abs(q.radius - q.endRadius) < 0.001) {
         q.state = "done";
         q.until = now;
       }
     }
+    for (const q of this.clappers) {
+      if (q.state === "warning" && now >= q.at) {
+        q.state = "swing";
+        c.cueSound?.("bell-clapper");
+      }
+      if (now >= q.until) {
+        q.state = "done";
+        continue;
+      }
+      if (q.state !== "swing") continue;
+      const hit = this.hits.get(q.id)!;
+      for (const p of c.targets)
+        if (
+          !hit.has(p.id) &&
+          bellClapperContact(now === q.at ? p : { x: p.oldX, y: p.oldY }, p, q)
+        ) {
+          hit.add(p.id);
+          c.damage(p.id, q.damage * c.damageScale);
+        }
+    }
     this.rings = this.rings.filter((q) => {
+      if (q.state !== "done" && now < q.until) return true;
+      this.hits.delete(q.id);
+      return false;
+    });
+    this.clappers = this.clappers.filter((q) => {
       if (q.state !== "done") return true;
       this.hits.delete(q.id);
       return false;
@@ -471,19 +658,22 @@ export class BellCarillon {
         this.walk = null;
         this.rest(now);
       } else if (w.index >= w.path.length) {
-        this.origin = { x: c.boss.x, y: c.boss.y };
-        this.startRing(c);
+        const targets = c.aimTargets ?? c.targets;
+        this.startScore(
+          c,
+          targets[(this.cycle - 1) % Math.max(1, targets.length)] ?? {
+            x: w.targetX,
+            y: w.targetY,
+          },
+        );
       }
-    } else if (this.stage === "score") {
-      if (this.activeId && !this.rings.some((q) => q.id === this.activeId)) {
-        this.activeId = 0;
-        this.nextAt = now + ticks(tuning.strikeGap);
-      }
-      if (!this.activeId && now >= this.nextAt) {
-        if (this.strike < this.directions.length) this.startRing(c);
-        else this.rest(now);
-      }
-    }
+    } else if (
+      this.stage === "score" &&
+      !this.queue.length &&
+      !this.rings.length &&
+      !this.clappers.length
+    )
+      this.rest(now);
     if (!this.busy && now >= this.nextSignatureAt && !c.auxiliaryBusy) {
       const targets = c.aimTargets ?? c.targets;
       if (targets.length) this.begin(c, targets[this.cycle % targets.length]);

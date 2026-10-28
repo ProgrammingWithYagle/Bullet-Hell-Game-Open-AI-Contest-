@@ -47,7 +47,7 @@ For projectile-bearing techniques, Brutal ordinary projectile budgets are 2.5x S
 | --- | --- | --- |
 | Cradle Matron | 2++ | Destroy 100-HP nests to stop patient production. At most three nests and eighteen patients remain active. |
 | Mold Alchemist | 3-- | Landing circles lock before the 1.3-second tell ends. Leave the five-second damaging, slowing mold. |
-| Bellringer | 3- | Read the locked gap and source; later phases walk and return inward. Brutal holds/retunes in silence; Crazed adds a separately warned responding bell. |
+| Bellringer | 3- | Approach, overlapping peals and aimed clappers. Brutal layers four to six fronts; Crazed adds a concurrent responding bell and its own clapper. |
 | Stitchwright | 3 | Shoot the 45-HP tether, rescue its target for one second, or leave its 350-pixel reach. Dodging still works. |
 | Glass Surgeon | 3+ | Use the missing polygon edge. Breaking a 35-HP needle removes only its adjacent sides. |
 | Ash Baker | 3++ | Loaves move slowly, stop on cover and split once after 1.5 seconds along announced directions. |
@@ -311,6 +311,12 @@ Cradle Matron follows body-clear escort routes toward marked nests. Hushed Ward 
 
 The latest human feedback replaced Reagent Road’s weak fronts and needle sprays with owned chemistry. Aimed acid/alkali flasks mark survivor landings; opposites mix into pale coolant. Distillation adds a full-field vapor bank that opens around coolant; Thermal Runaway adds pressure vessels that coolant can defuse; advanced Fractionation sends two separately warned banks. Brutal matching reagents couple into cancelable timed eruptions. Crazed adds violet catalysts with deliberate quench/eruption choices and more vessels. Alchemist no longer runs generic bullet/laser pressure. Eight newly drawn walk poses accompany eight pixel-exact retained action frames. Grade3--, base combat and individual theme remain. This revises quality implementation eleven and adds no extra credit. [Mechanics/evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/MOLD_MIXING.md), [encounter design](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/BOSS_ENCOUNTER_DESIGN.md). New human/rendered/balance acceptance remains open.
 
-## Resonant Tolls
+## Resonant Tolls (historical protocol34)
+
+Superseded by the Counterpoint revision below.
 
 Bellringer now uses Single Toll, Procession, Counterstroke and advanced Carillon. Outward/inward fronts lock their source and 35-degree gap while travelling. A connected procession has eight new drawn gait poses. Brutal holds outward waves in harmless silence, retunes the gap by sixty degrees and warns before resuming. Crazed adds a marked responding bell while the primary stays harmless, followed by a fresh primary release warning. At most one front is dangerous at a time. Generic Bellringer bullets/lasers are replaced by these acoustic techniques. Grade 3-, base combat, individual theme and original action pixels remain. This is quality implementation twelve; human acceptance is open. [Mechanics and evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/BELL_CARILLON.md).
+
+## Bell Counterpoint
+
+Human5204 found Bellringer too weak for grade3-. It now approaches a survivor, then overlaps peals with separately warned clapper sectors. Standard has two/three/four fronts across its phases; Brutal has four/four/five/six and multiple clappers. Crazed adds three/four concurrent reply fronts and a second clapper source while the primary keeps attacking. Openings stay fixed and share clear floor. Actual toll/reply/clapper sounds differ. All base combat, fixed grade, music and art remain; quality stays12/60,roster66. New human review is open. Mold Alchemist Crazed tuning and global committed-attack phase continuity are pending follow-ups. [Mechanics](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/BELL_COUNTERPOINT.md).

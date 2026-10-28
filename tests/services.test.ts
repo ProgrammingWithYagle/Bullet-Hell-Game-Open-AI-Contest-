@@ -81,10 +81,10 @@ test('Alchemist reagent flasks lock full landing warnings before actual harmful 
 });
 
 test('Bellringer owns a real gapped toll with full tell safety and preserves shared swept radial contact',()=>{
- const f=fixture('bellringer');f.cast();const ring=of(f.director,'bell-ring')[0];assert(ring);f.step(ring.at-1);assert.equal(f.hurt.length,0);
- assert(!serviceRingContact({x:930,y:250},{x:930,y:250},{...ring,oldRadius:120,radius:140}));
- assert(serviceRingContact({x:670,y:250},{x:670,y:250},{...ring,oldRadius:120,radius:140}));
- assert(serviceRingContact({x:800,y:20},{x:800,y:600},{...ring,oldRadius:130,radius:130}));
+ const f=fixture('bellringer');f.cast();for(let n=1;n<600&&!of(f.director,'bell-ring').length;n++)f.step(n);const ring=of(f.director,'bell-ring')[0];assert(ring);f.step(ring.at-1);assert.equal(f.hurt.length,0);
+ assert(!serviceRingContact({x:930,y:250},{x:930,y:250},{...ring,x:800,y:250,gapAngle:0,oldRadius:120,radius:140}));
+ assert(serviceRingContact({x:670,y:250},{x:670,y:250},{...ring,x:800,y:250,gapAngle:0,oldRadius:120,radius:140}));
+ assert(serviceRingContact({x:800,y:20},{x:800,y:600},{...ring,x:800,y:250,gapAngle:0,oldRadius:130,radius:130}));
  assert.equal(ring.gap,35*Math.PI/180);
 });
 

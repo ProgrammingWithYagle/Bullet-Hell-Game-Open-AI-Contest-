@@ -1784,6 +1784,7 @@ export class Game {
     return {
       paused: !!this.accord,
       warn: () => { this.events.push({type:'sound',id:'warning'}); },
+      cueSound: (id) => { this.events.push({type:'sound',id}); },
       damageMaximumHealth: (id,fraction) => {
         const p=this.players.get(id);
         if(!p||p.status!=='active'||this.combatTick<p.invulnerableUntil||this.director.isSafe(p,this.combatTick))return false;

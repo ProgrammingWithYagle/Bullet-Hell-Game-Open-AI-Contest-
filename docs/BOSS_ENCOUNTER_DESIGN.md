@@ -13,3 +13,5 @@ The user’s latest direction is that each boss must rely on its own themed tech
 Normal remains appropriate to the fixed threat grade. Global difficulty, form, assistance/revival rules, and final human review are separate. Keep one progress ledger, source-linked changelogs and honest release gates.
 
 Bellringer follows this direction with acoustic procession, inward counterstrokes, silence/retuning and sympathetic responses. Its generic spiral and common variant bullet/laser layer are replaced only after a complete owned alternative exists. The Alchemist laboratory implementation remains unchanged.
+
+Human5204 found the single-front Bellringer too weak and its lateral walks aimless. Counterpoint approaches survivor range and combines overlapping peals with separately aimed clappers; Crazed acts from two sources concurrently. Alchemist is the user’s first specifically praised unique encounter. Its stronger Crazed step and the global committed-attack continuity request remain separate pending work. Software completion does not replace this feedback.

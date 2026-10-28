@@ -1,3 +1,5 @@
+> Historical protocol34 mechanics and evidence. The current human-feedback revision is [Bell Counterpoint](BELL_COUNTERPOINT.md). The exclusive front/silent-response structure below is superseded.
+
 # Bellringer: Resonant Tolls
 
 Build2026.10.27-resonant-tolls /protocol34 gives the existing grade3- encounter an owned acoustic score. It retains base health/damage/deadline120, authored attack definitions, individual theme and original action pixels. The old generic spiral and shared variant bullet/laser layer are no longer used for Bellringer.

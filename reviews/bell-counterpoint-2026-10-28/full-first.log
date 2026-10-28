@@ -1,0 +1,74 @@
+$ node tools/verify.mjs
+
+Stage 1 authored content
+{
+  "schemaVersion": 1,
+  "stage": "Stage 1 source validation",
+  "passed": false,
+  "legalMutationSets": 2255,
+  "checks": [
+    {
+      "name": "Complete finite versioned content",
+      "passed": true
+    },
+    {
+      "name": "Seven classes, 378 specialization nodes, all eighteen grades and ultimates",
+      "passed": true
+    },
+    {
+      "name": "Campaign, raid and uncapped endless budgets",
+      "passed": true
+    },
+    {
+      "name": "Fixed boss grades, independent variants and complete translated tier labels",
+      "passed": true
+    },
+    {
+      "name": "Weapon accounting, rates and finite cooldowns",
+      "passed": true
+    },
+    {
+      "name": "Every legal one-, two- and three-mutation composition",
+      "passed": true
+    },
+    {
+      "name": "Boss attack contracts, transitions, arenas and deadlines",
+      "passed": true
+    },
+    {
+      "name": "Sixty-six distinct bosses, route-specific gauntlets and Endless exclusives",
+      "passed": true
+    },
+    {
+      "name": "Design bible and complete editable tables",
+      "passed": false,
+      "error": "Stale balance evidence\n+ actual - expected\n\n+ '94552a8007ad25febb2f9c8e212ffdf28360bcb1df528a7c7ab226f7388ee675'\n- '7266df2511e22b94f34915a97c0b4a61e2881778de5cfddff4011a41c2f29fe2'\n"
+    },
+    {
+      "name": "Bellringer eight drawn walking poses and exact retained action RGBA",
+      "passed": true
+    },
+    {
+      "name": "Alchemist eight drawn walking poses and exact retained action RGBA",
+      "passed": true
+    },
+    {
+      "name": "All fifteen translation catalogs and placeholder parity",
+      "passed": true
+    },
+    {
+      "name": "Eight reviewed art proof sets with original provenance",
+      "passed": true
+    },
+    {
+      "name": "Original music and SFX objective review",
+      "passed": true
+    },
+    {
+      "name": "Leaderboard fixtures and bounded score",
+      "passed": true
+    }
+  ]
+}
+Verification failed
+[ELIFECYCLE] Command failed with exit code 1.
