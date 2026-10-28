@@ -37,7 +37,7 @@ test(
           const room = liveRooms.get(client.room!.roomId)!;
           for (const p of room.game.players.values()) p.invulnerableUntil = 1e9;
           await until(
-            () => client.view?.bossCues.some((c) => c.kind.startsWith('service-')) === true,
+            () => client.view?.bossCues.some((c) => c.kind.startsWith(id==='alchemist'?'mold-':'service-')) === true,
           );
           const v = client.view!;
           assert.equal(v.boss.id, id);

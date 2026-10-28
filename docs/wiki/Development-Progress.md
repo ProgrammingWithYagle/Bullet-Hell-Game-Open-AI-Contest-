@@ -1,13 +1,13 @@
 # Development progress
 
-Updated 2026-10-27 for **2026.10.27-cradle-relay**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
+Updated 2026-10-27 for **2026.10.27-reagent-road**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
 
 66 playable identities: 65 ordinary and 1 secret. Three ordinary bosses in every one of fifty subtiers requires 150 ordinary identities, plus secrets; 85 additional ordinary bosses remain.
 
 | Area | Implemented | Work remaining | Review status |
 | --- | --- | --- | --- |
 | New ordinary bosses | 65 / 150 | 85 new identities | 0 unintegrated art-only concepts; Early Watch and Small Wakes integrations are implemented |
-| Existing-boss phase / mobility / Brutal quality passes | 10 / 60 | 50 | Constable, Warden, Courier, Ratcatcher, Clerk, Tollkeeper, Chain Marshal, Gate Widow, Black Ambulance and Cradle Matron phase/mobility/advanced-form implementations complete; human acceptance remains open. Other 50 original-roster encounters await assessment/redesign. |
+| Existing-boss phase / mobility / Brutal quality passes | 11 / 60 | 49 | Constable, Warden, Courier, Ratcatcher, Clerk, Tollkeeper, Chain Marshal, Gate Widow, Black Ambulance, Cradle Matron and Mold Alchemist phase/mobility/advanced-form implementations complete; human acceptance remains open. Other 49 original-roster encounters await assessment/redesign. |
 | Ability-changing class-upgrade revamps | 7 / 7 | 0 | Three actual ability transformations per class (21 total) implemented at existing utility-path depth three, with shared authority, cues and fifteen-locale help. Rendered/human balance/device/native-language acceptance remains open. |
 | Optional large branching skill-tree view | 1 / 1 | 0 | Optional all-54-skill map implemented for all seven classes with settings toggle, bounded zoom, scrolling and keyboard navigation. Classic remains the default; rendered/human/device/native-language review remains open. |
 | Secondary-map topology revamps | 5 / 5 | 0 | Five distinct secondary layouts installed. Four spacious maps now have compact real geometry; Ossuary/Crown routes retain their size. Difficulty cover/lava, movement and prediction remain shared. Human 5185 feedback motivated the compact pass; its rendered/human/device comparison remains open. |
@@ -18,7 +18,7 @@ Updated 2026-10-27 for **2026.10.27-cradle-relay**. These counts track specific 
 
 ## Latest human feedback
 
-- Earlier browser authorization remains recorded, but the supported CUA tool later reported access disabled in Work settings. No retry or alternate route is authorized while disabled. Saved scoped Crossed Threshold observations are separate; Last Dispatch and Cradle Relay have no rendered or personal-clear acceptance.
+- Personal browser testing is authorized, but supported CUA reports disabled access in Work settings. Do not retry or bypass. Earlier scoped observations remain separate; current Reagent Road has no rendered or personal-clear acceptance. The approval-review usage failure recovered and is recorded separately.
 - The user explicitly revoked the earlier browser-control restriction and authorized personal browser testing. Preserve historical evidence as issued; record actual browser observations separately from simulations and human/device/listening/native-language/final balance acceptance.
 - Latest 5193 request: hold one random Brutal phase-one green number, add form/phase-specific shelter damage bonuses, and leave two Crazed phase-two domains per batch. The user chose 10% maximum-health contact loss after discussion, with a shared one-second overlap budget. Testing/public separation, local coin/SP tools, difficulty unlock, optional names/chat and a visible records surface are implemented. New follow-up human comparison remains open.
 - Human testing at frozen 5193 confirms the closed manual guide works and leaves the field clear. Prettier guide images are deferred. Solo pauses while it is open; online peers continue. Testing retains all-difficulty guides; the separate public build offers the optional guide only on Baby. This is limited guide feedback, not whole-boss acceptance.
@@ -40,7 +40,7 @@ Updated 2026-10-27 for **2026.10.27-cradle-relay**. These counts track specific 
 
 - Complete rendered/human/device/native-language review of the testing/public split, Solo tools, optional names/chat and records UI. The manual guide works in limited 5193 human feedback; guide images are deferred polish. Public builds offer the optional guide only on Baby.
 - Create and verify 85 additional ordinary boss identities, with distinct mechanics, art and individual original music; the target is at least 150 ordinary plus secrets.
-- Assess or redesign the remaining 50 existing boss encounters for distinct phases, meaningful pressure and separate Brutal behavior.
+- Assess or redesign the remaining 49 existing boss encounters for distinct phases, meaningful pressure and separate Brutal behavior.
 - Review and tune the 21 implemented ability-changing upgrades and optional skill map on actual rendered/human/device/native-language surfaces.
 - Complete remaining boss special/action art, class special-ability art and rendered animation transitions.
 - Complete final human balance, music/listening, native-language and physical-device acceptance. Browser testing is authorized; a scripted or invulnerable sample is not a personally played clear.
@@ -50,6 +50,6 @@ Updated 2026-10-27 for **2026.10.27-cradle-relay**. These counts track specific 
 
 ## Count definitions
 
-Boss quality counts a completed implementation of the requested phase/mobility/Brutal pass, followed by separate human review. The other 50 existing encounters await assessment or redesign; they are already playable. Class revamps count the newly requested ability-changing upgrade pass, separate from the seven existing class kits and 378 skills. Map layout counts the five requested secondary-map topology revisions; their implementation is complete, while detailed new-layout human acceptance remains pending.
+Boss quality counts a completed implementation of the requested phase/mobility/Brutal pass, followed by separate human review. The other 49 existing encounters await assessment or redesign; they are already playable. Class revamps count the newly requested ability-changing upgrade pass, separate from the seven existing class kits and 378 skills. Map layout counts the five requested secondary-map topology revisions; their implementation is complete, while detailed new-layout human acceptance remains pending.
 
 Ashen Usher, Brass Toad, Ragpicker's Kite, Candle Snail, Cobble Crab and Mourning Kettle have shared-authority encounters, complete selected motion, original themes and fifteen-locale help. Their original art-only issue records remain unchanged. The structured ledger, derived counts, in-game journal summary and this page update together. Progress does not equal final balance, rendered, device, language or release acceptance.

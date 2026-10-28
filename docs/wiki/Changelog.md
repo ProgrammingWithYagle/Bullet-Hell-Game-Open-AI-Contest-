@@ -1,6 +1,24 @@
 # Changelog
 
-Development build **2026.10.27-cradle-relay**, protocol 31. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.27-reagent-road**, protocol 32. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-27 — Mold Alchemist: cultures, catalysts and decanting returns
+
+### Three distinct Standard reactions
+
+- Mold Alchemist now walks a connected body-clear mixing road and grows up to three numbered cultures. Pure Culture uses pools; Catalyst adds one moving reaction; Decant sends a separately warned return that drains reached cultures. Each reaction locks its full connected path and warns for 1.5 seconds. Drained circles stop damage and slow. Base grade 3--, health, damage, timer, authored attack definitions, existing art and individual theme remain.
+- Culture pools warn for 1.3 seconds and share one floor hit per survivor per half-second. Active mold keeps its 0.65 movement scale. Early pools last five seconds; Decant/Reflux pools persist up to twelve, allowing the returning catalyst to actually drain them. Body/pool width, real offset bounds, cover and conservative Hellish lava footprints constrain the road and culture placement. Pale walking lines are harmless; reaction orbs are dangerous.
+
+### Advanced Reflux and vial sprays
+
+- Brutal adds 30 actual controlled vial needles after each reaction sequence. Crazed retains the exact first 30 and extends the spray to 90 with extra crossing repeats. Every distinct heading is shown before release and remaining-wave marks count down. Advanced Reflux has three separately warned reaction legs; Crazed adds a fourth. Existing global caps and cancellation may reduce later releases.
+- Shared authority owns movement, swept relative reaction contact, pool damage/slow, draining and cancellation. First activation ignores earlier player movement; corner sweeps divide player movement by the actual substep. Phase/stagger/assistance/exit clears pending work. The generic summon/pool signature slot is excluded, keeping repeated cycles advancing. Existing eight-pose service art follows clocks, with a static reduced-motion pose; new walking art remains separate.
+
+### Continuity and verification scope
+
+- Fifteen locales contain all four phase names, response hints and advanced help in the closed manual guide. Exact known issued protocol-31/content-90c1bd18 local Practice/profile state migrates strictly to 32, preserving builds, form history, preferences and controls. Older known local migrations remain; foreign revisions and online/signed state stay strict. Testing/public guide/tools/record policies remain.
+- A full actual-Game probe caught rich boss metadata overwriting reaction numeric IDs. Position copies now take only x/y, and a dedicated regression checks numeric IDs and coordinate-only paths with actual rich actor data. Exact first-failure and corrected logs are retained. Scripted mechanics samples remain separate from played clears, rendered, final balance and device/listening/native-language review.
+- Roster stays 66, with 85 new ordinary identities still needed. This is original quality implementation eleven of sixty; 49 remain and full human acceptance is open. Preserve all frozen clients and pinned backends. The old public protocol-4 Site and immutable protocol-13 Windows development release remain separate.
 
 ## 2026-10-27 — Cradle Matron: Hushed Ward and Cradle Relay
 

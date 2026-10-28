@@ -1,3 +1,4 @@
+import {drawMoldCue} from './mold-cues.ts';
 import {drawMatronCue} from './matron-cues.ts';
 import {drawAmbulanceCue} from './ambulance-cues.ts';
 import {drawWidowCue} from './widow-presentation.ts';
@@ -456,7 +457,12 @@ export class CombatScene extends Phaser.Scene {
     const drawnDomains=new Set<string>();
     const drawnAmbulanceBursts = new Set<string>();
     const drawnMatronNeedles=new Set<number>();
+    let drawnMoldSprays=false;
     for (const cue of view.bossCues) {
+      if(cue.kind==='mold-walk'||cue.kind==='mold-pool'||cue.kind==='mold-front'||cue.kind==='mold-spray'){
+        if(cue.kind==='mold-spray'){if(drawnMoldSprays)continue;drawnMoldSprays=true;}
+        drawMoldCue(h,f,cue,now,view.bossCues.filter((q):q is import('../shared/mold-mixing.ts').MoldCue=>q.kind==='mold-walk'||q.kind==='mold-pool'||q.kind==='mold-front'||q.kind==='mold-spray'));continue;
+      }
       if(cue.kind==='matron-walk'||cue.kind==='matron-brood'||cue.kind==='matron-pulse'||cue.kind==='matron-needles'){
         if(cue.kind==='matron-needles'){if(drawnMatronNeedles.has(cue.sourceId))continue;drawnMatronNeedles.add(cue.sourceId);}
         drawMatronCue(h,f,cue,now,view.bossCues.filter((q):q is import('../shared/matron-ward.ts').MatronCue=>q.kind==='matron-walk'||q.kind==='matron-brood'||q.kind==='matron-pulse'||q.kind==='matron-needles'||(q.kind==='service-prop'&&q.role==='nest')));continue;

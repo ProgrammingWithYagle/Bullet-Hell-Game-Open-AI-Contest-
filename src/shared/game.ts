@@ -1912,13 +1912,14 @@ export class Game {
       if (this.boss.id === 'gate-widow') this.director.civic.widow.reset(now + ticks(1.5));
       if (this.boss.id === 'black-ambulance') this.director.civic.ambulance.reset(now + ticks(1.5));
       if (this.boss.id === 'matron') {this.director.services.matron.reset(now+ticks(1.5));this.minions.clear();}
+      if (this.boss.id === 'alchemist') this.director.services.alchemist.reset(now+ticks(1.5));
       this.variantPressure.reset(now);
       this.brutalVolley.clear();
       const assist = phaseShieldBreak(this.settings.difficulty,this.boss.variant);
       if (this.boss.id !== 'lantern-warden') {
         this.warnings.length = 0;
         if (assist) for (const shot of this.shots.values()) if (shot.owner === 'hostile') this.removeShot(shot);
-        if (this.boss.id === 'matron' || this.boss.id === 'black-ambulance' || this.boss.id === 'gate-widow' || this.boss.id === 'chain-marshal' || this.boss.id === 'tollkeeper' || this.boss.id === 'quarantine-clerk' || this.boss.id === 'ratcatcher' || this.boss.id === 'courier' || this.boss.id === 'constable' || this.director.earlyWatch.handles(this.boss.id) || this.director.smallWakes.handles(this.boss.id)) {
+        if (this.boss.id === 'alchemist' || this.boss.id === 'matron' || this.boss.id === 'black-ambulance' || this.boss.id === 'gate-widow' || this.boss.id === 'chain-marshal' || this.boss.id === 'tollkeeper' || this.boss.id === 'quarantine-clerk' || this.boss.id === 'ratcatcher' || this.boss.id === 'courier' || this.boss.id === 'constable' || this.director.earlyWatch.handles(this.boss.id) || this.director.smallWakes.handles(this.boss.id)) {
           this.boss.castAt = this.boss.castReleaseAt = this.boss.castEndsAt = 0;
           if (assist) for (let i = this.fields.length - 1; i >= 0; i--)
             if (this.fields[i].owner === 'hostile') this.fields.splice(i, 1);
@@ -1971,6 +1972,7 @@ export class Game {
       if(this.boss.id==='gate-widow'){this.director.civic.widow.reset();this.brutalVolley.clear();}
       if(this.boss.id==='black-ambulance'){this.director.civic.ambulance.reset();this.brutalVolley.clear();}
       if(this.boss.id==='matron'){this.director.services.matron.reset(now+ticks(1.5));this.brutalVolley.clear();}
+      if(this.boss.id==='alchemist'){this.director.services.alchemist.reset(now+ticks(1.5));this.brutalVolley.clear();}
       this.signatures = [];
       this.wardenPatrol.clear();
       return;
@@ -1986,7 +1988,7 @@ export class Game {
       this.attackAt[0] = Math.max(this.attackAt[0] ?? now, this.director.earlyWatch.nextSignatureAt);
     if (this.director.smallWakes.handles(this.boss.id))
       this.attackAt[0] = Math.max(this.attackAt[0] ?? now, this.director.smallWakes.nextSignatureAt);
-    if (this.boss.id === 'matron' || this.boss.id === 'black-ambulance' || this.boss.id === 'tollkeeper' || this.boss.id === 'chain-marshal' || this.boss.id === 'gate-widow') this.director.step(this.signatureContext());
+    if (this.boss.id === 'alchemist' || this.boss.id === 'matron' || this.boss.id === 'black-ambulance' || this.boss.id === 'tollkeeper' || this.boss.id === 'chain-marshal' || this.boss.id === 'gate-widow') this.director.step(this.signatureContext());
     const attacks = this.bossPhases()[this.boss.phase].attacks;
     for (let index = 0; index < attacks.length; index++)
       if (
@@ -1996,6 +1998,7 @@ export class Game {
         (this.boss.id !== 'gate-widow' || !this.director.civic.widow.busy) &&
         (this.boss.id !== 'black-ambulance' || (index !== 0 && !this.director.civic.ambulance.busy)) &&
         (this.boss.id !== 'matron' || (index !== 0 && !this.director.services.matron.busy)) &&
+        (this.boss.id !== 'alchemist' || (index !== 0 && !this.director.services.alchemist.busy)) &&
         (this.boss.id!=='quarantine-clerk' || (!this.director.clerk.busy && (index!==0 || (now>=this.director.clerk.nextSignatureAt&&!this.warnings.length)))) &&
         (this.boss.id!=='ratcatcher' || (!this.director.ratcatcher.busy && (index!==0 || (now>=this.director.ratcatcher.nextSignatureAt && !this.warnings.length)))) &&
         (this.boss.id!=='courier' || (!this.director.courier.busy && (index!==0 || now>=this.director.courier.nextRouteAt))) &&
@@ -2158,7 +2161,7 @@ export class Game {
           y: this.boss.y,
         });
       }
-    if (this.boss.id !== 'matron' && this.boss.id !== 'black-ambulance' && this.boss.id !== 'tollkeeper' && this.boss.id !== 'chain-marshal' && this.boss.id !== 'gate-widow') this.director.step(this.signatureContext());
+    if (this.boss.id !== 'alchemist' && this.boss.id !== 'matron' && this.boss.id !== 'black-ambulance' && this.boss.id !== 'tollkeeper' && this.boss.id !== 'chain-marshal' && this.boss.id !== 'gate-widow') this.director.step(this.signatureContext());
     if (this.boss.id === 'constable')
       moveConstable(
         this.boss,

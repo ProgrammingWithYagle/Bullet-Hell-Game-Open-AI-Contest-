@@ -72,25 +72,16 @@ test('Matron nests obey their tell, summon bounded real packs and stop permanent
   brutal.cast();
   assert.equal(of(brutal.director, 'service-prop')[0].health, 200);
 });
-test('Alchemist landing pools lock positions, remain harmless for 1.3 seconds and slow only on active mold', () => {
-  const f = fixture('alchemist');
-  f.cast();
-  const pool = of(f.director, 'service-pool')[0];
-  f.c.targets[0].x = pool.x;
-  f.c.targets[0].y = pool.y;
-  f.c.targets[0].oldX = pool.x;
-  f.c.targets[0].oldY = pool.y;
-  f.step(38);
-  assert.equal(f.hurt.length, 0);
-  assert.equal(serviceMovement(f.director.cues(), pool, 'a', 38).multiplier, 1);
-  f.step(39);
-  assert(f.hurt.some((h) => h.id === 'a'));
-  assert.equal(serviceMovement(f.director.cues(), pool, 'a', 39).multiplier, 0.65);
-  assert.equal(pool.at, 39);
-  f.c.targets[0].x = 100;
-  f.step(40);
-  assert.equal(of(f.director, 'service-pool')[0].x, pool.x);
+test('Alchemist culture pools lock positions, warn at least1.3 seconds and slow only while active', () => {
+  const f=fixture('alchemist');f.cast();
+  for(let tick=1;tick<500&&!f.director.cues().some(q=>q.kind==='mold-pool');tick++)f.step(tick);
+  const pool=f.director.cues().find(q=>q.kind==='mold-pool');assert(pool&&pool.kind==='mold-pool');
+  Object.assign(f.c.targets[0],{x:pool.x,y:pool.y,oldX:pool.x,oldY:pool.y});
+  assert(pool.at-pool.beganAt>=39);f.step(pool.at-1);assert.equal(f.hurt.length,0);assert.equal(serviceMovement(f.director.cues(),pool,'a',pool.at-1).multiplier,1);
+  f.step(pool.at);assert(f.hurt.some(h=>h.id==='a'));assert.equal(serviceMovement(f.director.cues(),pool,'a',pool.at).multiplier,.65);
+  f.c.targets[0].x=100;f.step(pool.at+1);const held=f.director.cues().find(q=>q.id===pool.id);assert(held&&held.kind==='mold-pool');assert.equal(held.x,pool.x);
 });
+
 test('Bellringer rings have a real rotating 35-degree gap, swept radial contact and no tell damage', () => {
   const f = fixture('bellringer');
   f.cast();

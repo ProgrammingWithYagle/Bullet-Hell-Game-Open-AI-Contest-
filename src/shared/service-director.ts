@@ -1,3 +1,4 @@
+import {MoldMixing,moldMovement,type MoldCue} from './mold-mixing.ts';
 import {MatronWard,type MatronCue} from './matron-ward.ts';
 import catalog from '../../content/catalog.json' with { type: 'json' };
 // Services of the dead: authoritative, readable signatures for Midnight Circuit.
@@ -136,6 +137,7 @@ type Spiral = Life &
     damage: number;
   };
 export type ServiceCue =
+  | MoldCue
   | MatronCue
   | ServiceProp
   | Pool
@@ -191,7 +193,7 @@ export function serviceMovement(
     if (cue.kind === 'service-tether' && cue.targetId === id && cue.attached && cue.health > 0)
       multiplier = Math.min(multiplier, 0.5);
   }
-  return { x, y, multiplier };
+  return { x, y, multiplier:Math.min(multiplier,moldMovement(cues,position,now)) };
 }
 /** Exact swept body against a line capsule, including its round endpoint caps. */
 export function serviceBeamContact(
@@ -255,6 +257,7 @@ export function serviceRingContact(
 }
 export class ServiceDirector {
   readonly matron=new MatronWard();
+  readonly alchemist=new MoldMixing();
   private kind = '';
   private castIndex = 0;
   nextSignatureAt = 0;
@@ -263,6 +266,7 @@ export class ServiceDirector {
   private once = new Set<string>();
   reset(kind: string, encounter = false) {
     this.matron.reset(0,encounter||kind!==this.kind);
+    this.alchemist.reset(0,encounter||kind!==this.kind);
     const keepChoir = kind === this.kind && kind === 'choir' && !encounter;
     this.shapes = keepChoir
       ? this.shapes.filter((c) => c.kind === 'service-prop' && c.role === 'caster')
@@ -276,10 +280,11 @@ export class ServiceDirector {
     return serviceBossIds.some((id) => id === kind);
   }
   movement(position: Vec, id: string, now: number) {
-    return serviceMovement(this.shapes, position, id, now);
+    const move=serviceMovement(this.shapes, position, id, now);
+    return {...move,multiplier:Math.min(move.multiplier,moldMovement(this.alchemist.cues(),position,now))};
   }
   cues(): ServiceCue[] {
-    return [...this.matron.cues(),...this.shapes.map((c) => {
+    return [...this.alchemist.cues(),...this.matron.cues(),...this.shapes.map((c) => {
       if (c.kind === 'service-sanctuary')
         return {
           ...c,
@@ -417,6 +422,7 @@ export class ServiceDirector {
   cast(c: SignatureContext, target: Vec, attack: ServiceAttack) {
     if (!this.handles(c.bossId)) return false;
     if(c.bossId==='matron')return this.matron.cast(c,target);
+    if(c.bossId==='alchemist')return this.alchemist.cast(c,target);
     const now = c.tick,
       at = now + ticks(attack.telegraph),
       index = this.castIndex++,
@@ -432,28 +438,6 @@ export class ServiceDirector {
           : (attack.interval ?? 8),
       );
     switch (c.bossId) {
-      case 'alchemist': {
-        for (let n = 0; n < Math.min(7, attack.count); n++) {
-          const angle = index * 0.8 + (n * Math.PI * 2) / Math.max(3, attack.count);
-          this.shapes.push({
-            kind: 'service-pool',
-            id: c.id(),
-            ...this.free(
-              c,
-              {
-                x: target.x + (n ? Math.cos(angle) * 150 : 0),
-                y: target.y + (n ? Math.sin(angle) * 130 : 0),
-              },
-              68,
-            ),
-            radius: 65,
-            damage: attack.damage,
-            at: now + ticks(1.3),
-            until: now + ticks(6.3),
-          });
-        }
-        break;
-      }
       case 'bellringer': {
         const max = Math.hypot(b.width, b.height);
         this.shapes.push({
@@ -814,6 +798,7 @@ export class ServiceDirector {
   }
   step(c: SignatureContext) {
     if(c.bossId==='matron'){this.matron.step(c);return;}
+    if(c.bossId==='alchemist'){this.alchemist.step(c);return;}
     this.prepare(c);
     const now = c.tick;
     for (const cue of this.shapes) {
