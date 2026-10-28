@@ -1,3 +1,4 @@
+import bellMotion from '../assets/production/motion/bellringer-lab-library.json';
 import {resolveEncounterAssetUrls} from '../src/client/encounter-asset-urls.ts';
 import alchemistLab from '../assets/production/motion/alchemist-lab-library.json';
 import test from 'node:test';
@@ -109,7 +110,8 @@ test('all 63 exact identity references retain their source pixels, dimensions, o
   for (const entry of bossTextureReferences.entries) {
     const original = encounterArt.find((e) => e.bossId === entry.bossId)!;
     assert.equal(sha(entry.sourceAtlas), entry.sourceAtlasSha256);
-    if(entry.bossId==='alchemist'){
+    if(entry.bossId==='bellringer'){assert.equal(bellMotion.preservedActionAtlas,entry.sourceAtlas);assert.equal(bellMotion.preservedActionAtlasSha256,entry.sourceAtlasSha256);assert.equal(bellMotion.preservedActionFrames,8);assert.equal(original.atlasSha256,bellMotion.entry.atlasSha256);assert.equal(sha(original.atlas),bellMotion.entry.atlasSha256);}
+    else if(entry.bossId==='alchemist'){
       assert.equal(alchemistLab.preservedActionAtlas,entry.sourceAtlas);
       assert.equal(alchemistLab.preservedActionAtlasSha256,entry.sourceAtlasSha256);
       assert.equal(alchemistLab.preservedActionFrames,8);

@@ -15,5 +15,6 @@ for(const e of encounterArt){
  checks.push({bossId:e.bossId,source:e.atlas,sha256:e.atlasSha256,frames:e.frames,...f});
 }
 const alchemist=checks.find(c=>c.bossId==='alchemist');assert(alchemist&&alchemist.frames===16&&alchemist.source.endsWith('alchemist-action-walk-v2-atlas.png'));
-const report={passed:true,target:dir,selectedAtlases:checks.length,alchemistWalkFrames:8,retainedAlchemistActionFrames:8,checks,scope:'Selected runtime pose metadata, actual emitted PNG bytes/dimensions and client URL references. No rendered acceptance.'};
-const out='reviews/alchemist-lab-2026-10-27/emitted-atlases-'+(dir==='dist'?'testing':'public')+'.json';fs.writeFileSync(out,JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({...report,checks:undefined}));
+const bell=checks.find(c=>c.bossId==='bellringer');assert(bell&&bell.frames===16&&bell.source.endsWith('bellringer-action-walk-v2-atlas.png'));
+const report={passed:true,target:dir,bellringerWalkFrames:8,retainedBellringerActionFrames:8,selectedAtlases:checks.length,alchemistWalkFrames:8,retainedAlchemistActionFrames:8,checks,scope:'Selected runtime pose metadata, actual emitted PNG bytes/dimensions and client URL references. No rendered acceptance.'};
+const out='reviews/resonant-tolls-2026-10-27/emitted-atlases-'+(dir==='dist'?'testing':'public')+'.json';fs.writeFileSync(out,JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({...report,checks:undefined}));

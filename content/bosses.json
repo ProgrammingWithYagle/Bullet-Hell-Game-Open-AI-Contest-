@@ -1818,7 +1818,14 @@
             "telegraph": 0.8
           }
         ],
-        "patternPhase": 0
+        "patternPhase": 0,
+        "phaseNameKey": "boss.bellringer.phase.0",
+        "tollOrder": [
+          "out"
+        ],
+        "connectedProcession": false,
+        "resonanceHold": false,
+        "sympatheticBell": false
       },
       {
         "healthThreshold": 0.75,
@@ -1842,7 +1849,14 @@
             "telegraph": 0.8
           }
         ],
-        "patternPhase": 1
+        "patternPhase": 1,
+        "phaseNameKey": "boss.bellringer.phase.1",
+        "tollOrder": [
+          "out"
+        ],
+        "connectedProcession": true,
+        "resonanceHold": false,
+        "sympatheticBell": false
       },
       {
         "healthThreshold": 0.4,
@@ -1866,7 +1880,15 @@
             "telegraph": 0.8
           }
         ],
-        "patternPhase": 2
+        "patternPhase": 2,
+        "phaseNameKey": "boss.bellringer.phase.2",
+        "tollOrder": [
+          "in",
+          "out"
+        ],
+        "connectedProcession": true,
+        "resonanceHold": false,
+        "sympatheticBell": false
       }
     ],
     "route": "standard",
@@ -1875,11 +1897,43 @@
     "damageWindowFraction": 1,
     "signature": {
       "id": "bellringer",
-      "behavior": "Release expanding rings with a rotating timed gap while a slower spiral punishes standing still.",
-      "counterplay": "Follow the hollow gap marker as it rotates and cross each ring rather than trying to outrun it.",
+      "behavior": "Single Toll uses one locked gapped sound front. Procession walks a body-clear route before tolling. Counterstroke begins inward and answers outward. Advanced Carillon uses outward/inward/outward. Brutal adds counterstrokes and silent resonance holds with a warned sixty-degree retuning before release. Crazed adds a marked responding bell while the primary remains silent, then gives the primary a fresh release warning. Generic bullets and shared laser pressure are replaced by these owned acoustic techniques.",
+      "counterplay": "Read the source, direction arrows and 35-degree opening. Openings stay locked during each travel. Stay far enough from a bell for body clearance or dash through a front. The pale procession line is harmless. During a Brutal silent hold, cross safely or follow the newly announced opening; it turns only while harmless and warns before resuming. A Crazed response comes from the separately marked bell and gets a full warning; the primary cannot damage until that response finishes and a fresh release tell expires. Each wave hits once. Base combat, grade, individual theme and old action pixels remain; eight drawn walk poses are added.",
       "parameters": {
         "ringGapDegrees": 35,
-        "gapRotationDegreesPerAttack": 30
+        "gapRotationDegreesPerAttack": 30,
+        "carillon": {
+          "gridSpacing": 32,
+          "clearance": 6,
+          "minimumWalk": 144,
+          "maximumWalk": 280,
+          "walkWarning": 0.65,
+          "walkSpeed": 90,
+          "lateWalkSpeed": 105,
+          "ringWarning": 1.1,
+          "returnWarning": 1.5,
+          "ringSpeeds": [
+            130,
+            140,
+            151,
+            151
+          ],
+          "ringDamage": 14,
+          "ringWidth": 12,
+          "gapDegrees": 35,
+          "gapStepDegrees": 30,
+          "strikeGap": 0.6,
+          "restSeconds": 1.6,
+          "holdRadius": 300,
+          "quietSeconds": 0.8,
+          "resumeWarning": 1.2,
+          "resumeGapTurnDegrees": 60,
+          "echoWarning": 1.6,
+          "echoDamage": 10,
+          "echoClearance": 30,
+          "echoMinimumDistance": 180,
+          "echoMaximumDistance": 430
+        }
       }
     },
     "artBrief": "Every note is a warning delivered too late. One dominant silhouette and one signature prop; quiet matte fabric masses, restrained surface detail.",
@@ -1923,7 +1977,15 @@
                 "comboOffsetSeconds": 0
               }
             ],
-            "patternPhase": 0
+            "patternPhase": 0,
+            "phaseNameKey": "boss.bellringer.phase.0",
+            "tollOrder": [
+              "out",
+              "in"
+            ],
+            "connectedProcession": false,
+            "resonanceHold": true,
+            "sympatheticBell": false
           },
           {
             "healthThreshold": 0.75,
@@ -1950,7 +2012,15 @@
                 "comboOffsetSeconds": 0
               }
             ],
-            "patternPhase": 1
+            "patternPhase": 1,
+            "phaseNameKey": "boss.bellringer.phase.1",
+            "tollOrder": [
+              "out",
+              "in"
+            ],
+            "connectedProcession": true,
+            "resonanceHold": true,
+            "sympatheticBell": false
           },
           {
             "healthThreshold": 0.5,
@@ -1977,7 +2047,15 @@
                 "comboOffsetSeconds": 0
               }
             ],
-            "patternPhase": 2
+            "patternPhase": 2,
+            "phaseNameKey": "boss.bellringer.phase.2",
+            "tollOrder": [
+              "in",
+              "out"
+            ],
+            "connectedProcession": true,
+            "resonanceHold": true,
+            "sympatheticBell": false
           },
           {
             "healthThreshold": 0.25,
@@ -2004,7 +2082,16 @@
                 "comboOffsetSeconds": 1.25
               }
             ],
-            "patternPhase": 3
+            "patternPhase": 3,
+            "phaseNameKey": "boss.bellringer.phase.3",
+            "tollOrder": [
+              "out",
+              "in",
+              "out"
+            ],
+            "connectedProcession": true,
+            "resonanceHold": true,
+            "sympatheticBell": false
           }
         ]
       },
@@ -2041,7 +2128,15 @@
                 "comboOffsetSeconds": 0
               }
             ],
-            "patternPhase": 0
+            "patternPhase": 0,
+            "phaseNameKey": "boss.bellringer.phase.0",
+            "tollOrder": [
+              "out",
+              "in"
+            ],
+            "connectedProcession": false,
+            "resonanceHold": true,
+            "sympatheticBell": true
           },
           {
             "healthThreshold": 0.75,
@@ -2068,7 +2163,15 @@
                 "comboOffsetSeconds": 0
               }
             ],
-            "patternPhase": 1
+            "patternPhase": 1,
+            "phaseNameKey": "boss.bellringer.phase.1",
+            "tollOrder": [
+              "out",
+              "in"
+            ],
+            "connectedProcession": true,
+            "resonanceHold": true,
+            "sympatheticBell": true
           },
           {
             "healthThreshold": 0.5,
@@ -2095,7 +2198,15 @@
                 "comboOffsetSeconds": 0
               }
             ],
-            "patternPhase": 2
+            "patternPhase": 2,
+            "phaseNameKey": "boss.bellringer.phase.2",
+            "tollOrder": [
+              "in",
+              "out"
+            ],
+            "connectedProcession": true,
+            "resonanceHold": true,
+            "sympatheticBell": true
           },
           {
             "healthThreshold": 0.25,
@@ -2122,13 +2233,21 @@
                 "comboOffsetSeconds": 1.25
               }
             ],
-            "patternPhase": 3
+            "patternPhase": 3,
+            "phaseNameKey": "boss.bellringer.phase.3",
+            "tollOrder": [
+              "out",
+              "in",
+              "out"
+            ],
+            "connectedProcession": true,
+            "resonanceHold": true,
+            "sympatheticBell": true
           }
         ],
         "additionalPatterns": [
-          "pursuit",
-          "crosscut",
-          "weave"
+          "resonance-hold",
+          "sympathetic-response"
         ]
       }
     }

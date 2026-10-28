@@ -11,3 +11,5 @@ The user’s latest direction is that each boss must rely on its own themed tech
 - Verify actual authority, body/arena geometry, warning locks, prediction where applicable, cleanup, multiplayer replication and every map/difficulty/form. Separate automatic stationary samples from deliberate action witnesses; neither is a personally played clear or final balance acceptance.
 
 Normal remains appropriate to the fixed threat grade. Global difficulty, form, assistance/revival rules, and final human review are separate. Keep one progress ledger, source-linked changelogs and honest release gates.
+
+Bellringer follows this direction with acoustic procession, inward counterstrokes, silence/retuning and sympathetic responses. Its generic spiral and common variant bullet/laser layer are replaced only after a complete owned alternative exists. The Alchemist laboratory implementation remains unchanged.

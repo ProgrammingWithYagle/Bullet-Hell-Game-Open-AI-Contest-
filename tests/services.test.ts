@@ -80,39 +80,14 @@ test('Alchemist reagent flasks lock full landing warnings before actual harmful 
   f.c.targets[0].x=100;f.step(pool.at+1);const held=f.director.cues().find(q=>q.id===pool.id);assert(held&&held.kind==='mold-pool');assert.equal(held.x,pool.x);
 });
 
-test('Bellringer rings have a real rotating 35-degree gap, swept radial contact and no tell damage', () => {
-  const f = fixture('bellringer');
-  f.cast();
-  let ring = of(f.director, 'service-ring')[0];
-  f.step(ring.at - 1);
-  assert.equal(f.hurt.length, 0);
-  assert(
-    !serviceRingContact(
-      { x: 930, y: 250 },
-      { x: 930, y: 250 },
-      { ...ring, oldRadius: 120, radius: 140 },
-    ),
-  );
-  assert(
-    serviceRingContact(
-      { x: 670, y: 250 },
-      { x: 670, y: 250 },
-      { ...ring, oldRadius: 120, radius: 140 },
-    ),
-  );
-  assert(
-    serviceRingContact(
-      { x: 800, y: 20 },
-      { x: 800, y: 600 },
-      { ...ring, oldRadius: 130, radius: 130 },
-    ),
-  );
-  f.c.tick = 200;
-  f.cast();
-  ring = of(f.director, 'service-ring')[1];
-  assert.equal(ring.gapAngle, Math.PI / 6);
-  assert.equal(ring.gap, (35 * Math.PI) / 180);
+test('Bellringer owns a real gapped toll with full tell safety and preserves shared swept radial contact',()=>{
+ const f=fixture('bellringer');f.cast();const ring=of(f.director,'bell-ring')[0];assert(ring);f.step(ring.at-1);assert.equal(f.hurt.length,0);
+ assert(!serviceRingContact({x:930,y:250},{x:930,y:250},{...ring,oldRadius:120,radius:140}));
+ assert(serviceRingContact({x:670,y:250},{x:670,y:250},{...ring,oldRadius:120,radius:140}));
+ assert(serviceRingContact({x:800,y:20},{x:800,y:600},{...ring,oldRadius:130,radius:130}));
+ assert.equal(ring.gap,35*Math.PI/180);
 });
+
 test('Stitchwright has destructible tethers, a one-second neutral rescue and a dodgeable attachment', () => {
   const f = fixture('stitchwright');
   f.cast();
@@ -340,7 +315,7 @@ test('Judge damages only its announced half, includes fast crossings and alterna
   assert.equal(of(f.director, 'service-verdict').at(-1)!.side, 1);
 });
 test('timed spiral emitters create a sequence of actual projectiles, not fallback pools', () => {
-  const f = fixture('bellringer');
+  const f = fixture('plague-gardener');
   assert(
     f.director.supplement(f.c, f.c.targets[0], {
       kind: 'spiral',

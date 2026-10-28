@@ -99,6 +99,7 @@ const encounterMotion = import.meta.glob(
     '../../assets/production/motion/*-action-v3-atlas.png',
     '../../assets/production/motion/*-action-walk-v2-atlas.png',
     '!../../assets/production/motion/alchemist-action-v1-atlas.png',
+    '!../../assets/production/motion/bellringer-action-v1-atlas.png',
     '!../../assets/production/motion/courier-action-v2-atlas.png',
     '!../../assets/production/motion/courier-action-v1-atlas.png',
     '!../../assets/production/motion/ratcatcher-action-v1-atlas.png',

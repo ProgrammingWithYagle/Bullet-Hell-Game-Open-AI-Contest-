@@ -32,7 +32,7 @@ The optional [expanded skill map](docs/OPTIONAL_SKILL_MAP.md) shows all 54 skill
 
 Latest rules: docs/ASSIST_LIMITS.md — Normal revives at 25%; Baby/Easy use six/three shield circles and two/three-second channels; Baby adds two cover props per map. Preserve all prior frozen previews. [Twenty-one class ability transformations](docs/CLASS_TALENTS.md) are now integrated at existing utility-path depth-three nodes, with all costs and prerequisites retained. Human/rendered review remains open.
 
-[Lantern Warden quality pass](docs/WARDEN_PATROL.md) adds rest-only patrols, directional sweeps and a fully warned sequential Brutal return. Eleven original-roster quality passes are implemented (Constable, Warden, Courier, Ratcatcher, Clerk, Tollkeeper, Chain Marshal, Gate Widow, Black Ambulance, Cradle Matron and Mold Alchemist); 49 remain. Its four patrol poses brought that checkpoint to 1,506; current selected runtime motion is 1,542. Human/rendered acceptance remains open.
+[Lantern Warden quality pass](docs/WARDEN_PATROL.md) adds rest-only patrols, directional sweeps and a fully warned sequential Brutal return. Twelve original-roster quality passes are implemented (Constable, Warden, Courier, Ratcatcher, Clerk, Tollkeeper, Chain Marshal, Gate Widow, Black Ambulance, Cradle Matron, Mold Alchemist and Bellringer); 48 remain. Its four patrol poses brought that checkpoint to 1,506; the Small Wakes checkpoint selected 1,542. Human/rendered acceptance remains open.
 
 Full verification also uses Python 3 with the pinned Pillow dependency: `python -m pip install -r tools/art-verification-requirements.txt`. This is a development verification dependency; the game itself remains browser/Windows JavaScript. CI installs it in an isolated virtual environment.
 

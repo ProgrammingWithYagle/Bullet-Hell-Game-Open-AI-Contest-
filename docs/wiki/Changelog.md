@@ -1,6 +1,24 @@
 # Changelog
 
-Development build **2026.10.27-alchemist-lab**, protocol 33. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.27-resonant-tolls**, protocol 34. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-27 — Bellringer: procession, counterstrokes and responding bells
+
+### Acoustic techniques define the phases
+
+- Single Toll sends one outward gapped sound front. Procession walks a connected body-clear route before tolling from a new locked origin. Counterstroke begins inward, then answers outward after a fresh tell. Advanced Carillon uses outward, inward and outward. Every travelling front locks its origin and 35-degree opening; each hits once. Base grade 3-, combat, 120-second deadline, authored attack definitions and individual theme remain.
+- The pale procession line is harmless. Read inward arrows, the opening marker and actual source. Keep enough distance for your whole body to fit, or dash across the front. Ring warnings are 1.1 seconds outward and 1.5 inward. Generic Bellringer spirals and common variant bullet/laser pressure are replaced by the owned acoustic sequence.
+
+### Advanced forms change resonance
+
+- Brutal adds counterstrokes and pauses outward waves in a harmless silent hold. The marked opening retunes by sixty degrees during silence; a fresh 1.2-second release warning precedes resumed motion. Cross during silence or follow the newly announced opening. Contact state and first-release timing remain authoritative.
+- Crazed retains that hold and adds a separately marked responding bell. Its origin and opening lock before a 1.6-second tell. The primary remains harmless until the response completes and its own fresh release warning expires; at most one front is dangerous at a time. This adds a source/response relationship rather than another generic projectile spray.
+
+### Drawn walking and verification
+
+- Eight newly drawn walking poses join the pixel-exact original eight action frames in a sibling atlas. The actual metadata-driven URL registry loads that sixteen-frame image. One scale and fixed row anchors preserve within-row gait shifts. Exact built-in imagegen request, native return, bindings and independent full-RGBA reconstruction are retained. Full directional, rendered and human gait acceptance remains open.
+- The actual-Game matrix completes 408 acoustic scores across every map/difficulty/requested form/effective phase, checking 2,073 full path vertices and 1,482 body-clear local opening crossings. It observes one dangerous front at a time, no generic hostile projectiles and no sampled walk stalls. Controlled/invulnerable samples and real-network tests remain separate from personally played clears and final balance.
+- Fifteen locales contain four phase names, response hints and advanced help. Exact known issued protocol-33/content-0d8d0df4 local Practice/profile state migrates strictly to34; older known migrations remain and online/signed boundaries stay strict. Roster stays66, ordinary deficit85. This is original quality implementation12/60, with48 remaining and whole-boss human acceptance open.
 
 ## 2026-10-27 — Alchemist laboratory: aim, mix, cool and quench
 

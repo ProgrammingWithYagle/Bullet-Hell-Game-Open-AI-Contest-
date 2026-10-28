@@ -1,3 +1,5 @@
+import bellMotion from '../../assets/production/motion/bellringer-lab-library.json';
+import {bellFrame,isBellCue} from './bell-presentation.ts';
 import alchemistLab from '../../assets/production/motion/alchemist-lab-library.json';
 import {moldFrame,isMoldCue} from './mold-presentation.ts';
 import {matronFrame} from './matron-presentation.ts';
@@ -30,12 +32,14 @@ const baseEncounterArt = [
 ];
 export const encounterArt = baseEncounterArt.map(
   (entry) =>
+    (entry.bossId==='bellringer'?bellMotion.entry:undefined) ??
     (entry.bossId==='alchemist'?alchemistLab.entry:undefined) ??
     courierMotion.entries.find((clip) => clip.bossId === entry.bossId) ??
     openingDefeats.entries.find((clip) => clip.bossId === entry.bossId) ??
     entry,
 );
 export function encounterFrame(boss: Boss, now: number, cues: BossCue[], reduced = false) {
+  if(boss.id==='bellringer'){if(boss.health<=0)return 7;if(now<boss.staggerUntil)return 0;return bellFrame(cues.filter(isBellCue),now,reduced);}
   if(boss.id==='alchemist'){if(boss.health<=0)return 7;if(now<boss.staggerUntil)return 0;return moldFrame(cues.filter(isMoldCue),now,reduced);}
   if(boss.id==='matron'){if(boss.health<=0)return 7;if(now<boss.staggerUntil)return 0;return matronFrame(cues.filter((q):q is import('../shared/matron-ward.ts').MatronCue=>q.kind==='matron-walk'||q.kind==='matron-brood'||q.kind==='matron-pulse'||q.kind==='matron-needles'||(q.kind==='service-prop'&&q.role==='nest')),now,reduced);}
   if (

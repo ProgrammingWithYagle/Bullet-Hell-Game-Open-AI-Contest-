@@ -1,20 +1,20 @@
 # Development progress
 
-Updated 2026-10-27 for **2026.10.27-alchemist-lab**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
+Updated 2026-10-27 for **2026.10.27-resonant-tolls**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
 
 66 playable identities: 65 ordinary and 1 secret. Three ordinary bosses in every one of fifty subtiers requires 150 ordinary identities, plus secrets; 85 additional ordinary bosses remain.
 
 | Area | Implemented | Work remaining | Review status |
 | --- | --- | --- | --- |
 | New ordinary bosses | 65 / 150 | 85 new identities | 0 unintegrated art-only concepts; Early Watch and Small Wakes integrations are implemented |
-| Existing-boss phase / mobility / Brutal quality passes | 11 / 60 | 49 | Constable, Warden, Courier, Ratcatcher, Clerk, Tollkeeper, Chain Marshal, Gate Widow, Black Ambulance, Cradle Matron and Mold Alchemist quality implementations exist. Latest 5200 feedback prompted a theme-first Alchemist laboratory revision with aimed reagents, real mixing/cooling, distinct advanced techniques and eight newly drawn walk poses; this revises implementation eleven and adds no extra credit. Human acceptance remains open. Other 49 original-roster encounters await assessment/redesign. |
+| Existing-boss phase / mobility / Brutal quality passes | 12 / 60 | 48 | Twelve original encounters have implemented phase/mobility/advanced quality passes: Constable, Warden, Courier, Ratcatcher, Clerk, Tollkeeper, Chain Marshal, Gate Widow, Black Ambulance, Cradle Matron, Mold Alchemist and Bellringer. Bellringer now uses owned toll/procession/counterstroke/carillon techniques, Brutal silent retuning, Crazed responding bells and eight drawn walk poses. Latest Alchemist laboratory revision remains implemented. Whole-boss human acceptance is open; 48 original encounters await assessment/redesign. |
 | Ability-changing class-upgrade revamps | 7 / 7 | 0 | Three actual ability transformations per class (21 total) implemented at existing utility-path depth three, with shared authority, cues and fifteen-locale help. Rendered/human balance/device/native-language acceptance remains open. |
 | Optional large branching skill-tree view | 1 / 1 | 0 | Optional all-54-skill map implemented for all seven classes with settings toggle, bounded zoom, scrolling and keyboard navigation. Classic remains the default; rendered/human/device/native-language review remains open. |
 | Secondary-map topology revamps | 5 / 5 | 0 | Five distinct secondary layouts installed. Four spacious maps now have compact real geometry; Ossuary/Crown routes retain their size. Difficulty cover/lava, movement and prediction remain shared. Human 5185 feedback motivated the compact pass; its rendered/human/device comparison remains open. |
 | Map ground-art deliveries | 6 / 6 | 0 | Six ground deliveries installed. Limited Normal/Constable readability feedback is positive. |
 | Early Watch motion and encounter integration | 3 / 3 | 0 | Three encounters, 36 selected poses, individual themes and fifteen-locale help implemented. Limited 5179 phase/pacing feedback informed the new two-phase/difficulty pass; its human comparison, rendered and listening review remain open. |
 | Small Wakes motion and encounter integration | 3 / 3 | 0 | Three original two-phase encounters, 36 selected poses, individual scores and fifteen-locale help implemented. Rendered/human balance/device/native-language/listening acceptance remains open. Limited 5185 human comparison confirms clearer phases and harder Brutal, with arena retreat feedback still requiring review. |
-| Crazed form integration | 66 / 66 | 0 | All 66 identities have purple C treatment, inherited Brutal signatures, forced Hellish and persisted Endless progression. Projectile-bearing techniques retain 2.5x/7.5x budgets. Alchemist now replaces common bullet/laser pressure with owned reagent, vapor, pressure, coupling and catalyst techniques; the other 65 retain their current common pressure pending individual quality work. No extra roster/quality credit; human balance/rendered/device acceptance remains open. |
+| Crazed form integration | 66 / 66 | 0 | All 66 identities have purple C treatment, inherited Brutal signatures, forced Hellish and persisted Endless progression. Projectile-bearing techniques retain 2.5x/7.5x budgets. Alchemist and Bellringer replace common bullet/laser pressure with their owned chemistry/acoustic techniques; the other 64 retain current common pressure pending individual quality work. No roster credit; human balance/rendered/device acceptance remains open. |
 
 ## Latest human feedback
 
@@ -42,7 +42,7 @@ Updated 2026-10-27 for **2026.10.27-alchemist-lab**. These counts track specific
 
 - Complete rendered/human/device/native-language review of the testing/public split, Solo tools, optional names/chat and records UI. The manual guide works in limited 5193 human feedback; guide images are deferred polish. Public builds offer the optional guide only on Baby.
 - Create and verify 85 additional ordinary boss identities, with distinct mechanics, art and individual original music; the target is at least 150 ordinary plus secrets.
-- Assess or redesign the remaining 49 existing boss encounters for distinct phases, meaningful pressure and separate Brutal behavior.
+- Assess or redesign the remaining 48 existing boss encounters for distinct phases, meaningful pressure and separate Brutal behavior.
 - Review and tune the 21 implemented ability-changing upgrades and optional skill map on actual rendered/human/device/native-language surfaces.
 - Complete remaining boss special/action art, class special-ability art and rendered animation transitions.
 - Complete final human balance, music/listening, native-language and physical-device acceptance. Browser testing is authorized; a scripted or invulnerable sample is not a personally played clear.
@@ -52,6 +52,6 @@ Updated 2026-10-27 for **2026.10.27-alchemist-lab**. These counts track specific
 
 ## Count definitions
 
-Boss quality counts a completed implementation of the requested phase/mobility/Brutal pass, followed by separate human review. The other 49 existing encounters await assessment or redesign; they are already playable. Class revamps count the newly requested ability-changing upgrade pass, separate from the seven existing class kits and 378 skills. Map layout counts the five requested secondary-map topology revisions; their implementation is complete, while detailed new-layout human acceptance remains pending.
+Boss quality counts a completed implementation of the requested phase/mobility/Brutal pass, followed by separate human review. The other 48 existing encounters await assessment or redesign; they are already playable. Class revamps count the newly requested ability-changing upgrade pass, separate from the seven existing class kits and 378 skills. Map layout counts the five requested secondary-map topology revisions; their implementation is complete, while detailed new-layout human acceptance remains pending.
 
 Ashen Usher, Brass Toad, Ragpicker's Kite, Candle Snail, Cobble Crab and Mourning Kettle have shared-authority encounters, complete selected motion, original themes and fifteen-locale help. Their original art-only issue records remain unchanged. The structured ledger, derived counts, in-game journal summary and this page update together. Progress does not equal final balance, rendered, device, language or release acceptance.

@@ -1,3 +1,6 @@
+import {gappedRingContact as serviceRingContact} from './ring-contact.ts';
+export {gappedRingContact as serviceRingContact} from './ring-contact.ts';
+import {BellCarillon,type BellCue} from './bell-carillon.ts';
 import {MoldMixing,moldMovement,type MoldCue} from './mold-mixing.ts';
 import {MatronWard,type MatronCue} from './matron-ward.ts';
 import catalog from '../../content/catalog.json' with { type: 'json' };
@@ -137,6 +140,7 @@ type Spiral = Life &
     damage: number;
   };
 export type ServiceCue =
+  | BellCue
   | MoldCue
   | MatronCue
   | ServiceProp
@@ -219,45 +223,10 @@ export function serviceBeamContact(
     segmentCircle(from, to, { x: beam.x2, y: beam.y2 }, r) !== null
   );
 }
-/** Conservative two-pixel sampling covers simultaneous radial and body motion. */
-export function serviceRingContact(
-  from: Vec,
-  to: Vec,
-  ring: {
-    x: number;
-    y: number;
-    oldRadius: number;
-    radius: number;
-    width: number;
-    gapAngle?: number;
-    gap?: number;
-  },
-  body = 9,
-) {
-  const steps = Math.max(
-    1,
-    Math.ceil((distance(from, to) + Math.abs(ring.radius - ring.oldRadius)) / 2),
-  );
-  for (let i = 0; i <= steps; i++) {
-    const t = i / steps,
-      x = from.x + (to.x - from.x) * t - ring.x,
-      y = from.y + (to.y - from.y) * t - ring.y,
-      r = ring.oldRadius + (ring.radius - ring.oldRadius) * t,
-      d = Math.hypot(x, y);
-    if (Math.abs(d - r) > ring.width / 2 + body + 2) continue;
-    const edgePad = Math.asin(Math.min(1, (body + 2) / Math.max(d, body + 2)));
-    if (
-      ring.gap &&
-      Math.abs(angleDelta(Math.atan2(y, x), ring.gapAngle ?? 0)) < ring.gap / 2 - edgePad
-    )
-      continue;
-    return true;
-  }
-  return false;
-}
 export class ServiceDirector {
   readonly matron=new MatronWard();
   readonly alchemist=new MoldMixing();
+  readonly bellringer=new BellCarillon();
   private kind = '';
   private castIndex = 0;
   nextSignatureAt = 0;
@@ -267,6 +236,7 @@ export class ServiceDirector {
   reset(kind: string, encounter = false) {
     this.matron.reset(0,encounter||kind!==this.kind);
     this.alchemist.reset(0,encounter||kind!==this.kind);
+    this.bellringer.reset(0,encounter||kind!==this.kind);
     const keepChoir = kind === this.kind && kind === 'choir' && !encounter;
     this.shapes = keepChoir
       ? this.shapes.filter((c) => c.kind === 'service-prop' && c.role === 'caster')
@@ -284,7 +254,7 @@ export class ServiceDirector {
     return {...move,multiplier:Math.min(move.multiplier,moldMovement(this.alchemist.cues(),position,now))};
   }
   cues(): ServiceCue[] {
-    return [...this.alchemist.cues(),...this.matron.cues(),...this.shapes.map((c) => {
+    return [...this.bellringer.cues(),...this.alchemist.cues(),...this.matron.cues(),...this.shapes.map((c) => {
       if (c.kind === 'service-sanctuary')
         return {
           ...c,
@@ -423,6 +393,7 @@ export class ServiceDirector {
     if (!this.handles(c.bossId)) return false;
     if(c.bossId==='matron')return this.matron.cast(c,target);
     if(c.bossId==='alchemist')return this.alchemist.cast(c,target);
+    if(c.bossId==='bellringer')return this.bellringer.cast(c,target);
     const now = c.tick,
       at = now + ticks(attack.telegraph),
       index = this.castIndex++,
@@ -438,25 +409,6 @@ export class ServiceDirector {
           : (attack.interval ?? 8),
       );
     switch (c.bossId) {
-      case 'bellringer': {
-        const max = Math.hypot(b.width, b.height);
-        this.shapes.push({
-          kind: 'service-ring',
-          id: c.id(),
-          x: c.boss.x,
-          y: c.boss.y,
-          radius: 0,
-          oldRadius: 0,
-          gapAngle: (index * Math.PI) / 6,
-          gap: (35 * Math.PI) / 180,
-          width: 12,
-          speed: attack.speed,
-          damage: attack.damage,
-          at,
-          until: at + ticks(max / Math.max(1, attack.speed) + 0.2),
-        });
-        break;
-      }
       case 'stitchwright': {
         const aimed = visible[index % Math.max(1, visible.length)];
         if (!aimed) break;
@@ -799,6 +751,7 @@ export class ServiceDirector {
   step(c: SignatureContext) {
     if(c.bossId==='matron'){this.matron.step(c);return;}
     if(c.bossId==='alchemist'){this.alchemist.step(c);return;}
+    if(c.bossId==='bellringer'){this.bellringer.step(c);return;}
     this.prepare(c);
     const now = c.tick;
     for (const cue of this.shapes) {
