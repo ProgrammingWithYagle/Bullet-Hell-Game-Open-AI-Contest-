@@ -1,0 +1,158 @@
+{
+  "passed": true,
+  "createdAt": "2026-10-28T15:54:09.150Z",
+  "sourceCommit": "ceeab7b93040e8f7acadd14a24a86e719cbfb163",
+  "protocol": 36,
+  "backendBundleSha256": "06cc60148320f967205fc979cea40f1b1d4b82806146f9f7f86c1b0d6c3136ca",
+  "publicHTTPChecks": [
+    {
+      "path": "index.html",
+      "status": 200,
+      "bytes": 540,
+      "sha256": "c98590d9ab7ffc4588279890b3ca5116994c7fd505240a227842b735eda52691",
+      "mime": "text/html;charset=utf-8"
+    },
+    {
+      "path": "assets/index-BcDuIUtV.js",
+      "status": 200,
+      "bytes": 3495218,
+      "sha256": "4d346e30ef67d0dd5058f38043bdb499380da66232b5e0943166464a8701ff8a",
+      "mime": "text/javascript"
+    },
+    {
+      "path": "assets/index-ByqqpBqG.css",
+      "status": 200,
+      "bytes": 458816,
+      "sha256": "8d0032f299cceabe511b2d6b0583eb06e9939f02052193e0ce33d38a9c2983b1",
+      "mime": "text/css"
+    },
+    {
+      "path": "assets/offline.worker-CABuIRmE.js",
+      "status": 200,
+      "bytes": 860885,
+      "sha256": "e96e3785f50b5e9ee6d00eff50178566e1455ead4e4b971d81fa8596f33f3faa",
+      "mime": "text/javascript"
+    },
+    {
+      "path": "assets/bellringer-action-walk-v2-atlas-Dl7IU3Aa.png",
+      "status": 200,
+      "bytes": 784549,
+      "sha256": "3f9e6ca972d9ba8187d9eff2c346960c893a1449d6764de0c8fafccee07e4ec5",
+      "mime": "image/png"
+    },
+    {
+      "path": "assets/quarantine-clerk-action-v2-atlas-BkOEnJl8.png",
+      "status": 200,
+      "bytes": 469844,
+      "sha256": "cbfddac1c1fdcb68d543bd880021cd9b86bbdf9c8e5ee9bd5e459f27b50d1ec1",
+      "mime": "image/png"
+    },
+    {
+      "path": "assets/late-warning-oa9t7D0A.mp3",
+      "status": 200,
+      "bytes": 1590586,
+      "sha256": "ea5e314ddc342a9571ec97d5414b300bcaf41fa69ad98bbf20d2ba126b2df669",
+      "mime": "audio/mpeg"
+    },
+    {
+      "path": "assets/ar-BMW-ALBj.js",
+      "status": 200,
+      "bytes": 182704,
+      "sha256": "b5de7dcda025f0f648d92f07f129ca95314132c7645b4524d662e1068db48a98",
+      "mime": "text/javascript"
+    }
+  ],
+  "matchingSourceHealthAndCors": [
+    {
+      "endpoint": "http://127.0.0.1:2582",
+      "origin": "http://127.0.0.1:5208",
+      "cors": true,
+      "status": "ok",
+      "startedAt": "2026-10-28T15:53:26.484Z",
+      "uptimeSeconds": 38.903329,
+      "prototype": "grave-accord-development",
+      "playable": {
+        "bosses": 66,
+        "classes": 7,
+        "modes": [
+          "short",
+          "standard",
+          "long",
+          "raid",
+          "endless"
+        ]
+      },
+      "protocolVersion": 36,
+      "contentRevision": "6f97c9a4f3aabc87e6875b99e18aba60f667335d501ec50e94d215a1f8bc806c",
+      "practiceOnly": true,
+      "audience": "testing",
+      "sourceCommit": "ceeab7b93040e8f7acadd14a24a86e719cbfb163",
+      "capacity": {
+        "reservedSlots": 0,
+        "instanceLimit": 50,
+        "rooms": 0,
+        "roomLimit": 4,
+        "available": true,
+        "canJoin": true,
+        "canCreate": true,
+        "queued": 0,
+        "offeredSlots": 0
+      }
+    },
+    {
+      "endpoint": "http://127.0.0.1:2583",
+      "origin": "http://127.0.0.1:5209",
+      "cors": true,
+      "status": "ok",
+      "startedAt": "2026-10-28T15:53:27.288Z",
+      "uptimeSeconds": 37.6482491,
+      "prototype": "grave-accord-development",
+      "playable": {
+        "bosses": 66,
+        "classes": 7,
+        "modes": [
+          "short",
+          "standard",
+          "long",
+          "raid",
+          "endless"
+        ]
+      },
+      "protocolVersion": 36,
+      "contentRevision": "6f97c9a4f3aabc87e6875b99e18aba60f667335d501ec50e94d215a1f8bc806c",
+      "practiceOnly": true,
+      "audience": "public",
+      "sourceCommit": "ceeab7b93040e8f7acadd14a24a86e719cbfb163",
+      "capacity": {
+        "reservedSlots": 0,
+        "instanceLimit": 50,
+        "rooms": 0,
+        "roomLimit": 4,
+        "available": true,
+        "canJoin": true,
+        "canCreate": true,
+        "queued": 0,
+        "offeredSlots": 0
+      }
+    }
+  ],
+  "realFrozenBackendNetwork": {
+    "passed": true,
+    "testingBoss": "bellringer",
+    "players": 2,
+    "chatSenderMatchesServerIdentity": true,
+    "publicBoss": "tollkeeper",
+    "publicOpeningRequestSanitized": true,
+    "lockedTollMatchesAcrossClients": true,
+    "concurrentReplyVerified": true,
+    "testingForm": "crazed",
+    "fullTollTellTicks": 33,
+    "numericCueId": true,
+    "headlessOnly": true
+  },
+  "limits": [
+    "Raw HTTP, source-pinned bundle and headless real-network smoke only.",
+    "Browser use remains disabled in Work settings; no retry/bypass.",
+    "No personal clear, final balance, WAN/capacity/device/listening/native-language or deployment acceptance."
+  ]
+}
