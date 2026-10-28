@@ -1,4 +1,4 @@
-import {bellCounterpointMessages as bellMessages} from '../locales/source/bell-counterpoint.mjs';
+import {bellReturnChainMessages as bellMessages} from '../locales/source/bell-return-chain.mjs';
 import {moldMessages} from '../locales/source/mold-mixing.mjs';
 import {matronMessages} from '../locales/source/matron-ward.mjs';
 import {ambulanceMessages} from '../locales/source/ambulance-route.mjs';

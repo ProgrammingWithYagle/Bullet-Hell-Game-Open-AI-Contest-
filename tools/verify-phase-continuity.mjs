@@ -289,7 +289,7 @@ assert.equal(
   runtimeSourceSha256,
   "Runtime source changed while the matrix ran",
 );
-const dest = path.join(
+const dest = process.argv[2] ? path.resolve(process.argv[2]) : path.join(
   root,
   "reviews/phase-continuity-2026-10-28",
   "matrix-" + run + ".json",

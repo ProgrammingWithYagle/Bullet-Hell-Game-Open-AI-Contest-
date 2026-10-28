@@ -6,7 +6,7 @@ import { PROTOCOL, CONTENT_REVISION } from "../src/shared/protocol.ts";
 import { freshProfile, parseProfile } from "../src/client/profile.ts";
 const issued =
   "7266df2511e22b94f34915a97c0b4a61e2881778de5cfddff4011a41c2f29fe2";
-test("exact issued35 Practice/profile state migrates to36 without changing builds, form history, resources or preferences", () => {
+test("exact issued35 Practice/profile state migrates to the current protocol without changing builds, form history, resources or preferences", () => {
   const g = createPracticeGame(
     { mode: "endless", openingBossId: "bellringer", seed: 829 },
     "Mara",
@@ -18,7 +18,7 @@ test("exact issued35 Practice/profile state migrates to36 without changing build
   old.protocolVersion = 35;
   old.contentRevision = issued;
   const restored = Game.restoreOffline(old).offlineCheckpoint()!;
-  assert.equal(PROTOCOL, 36);
+  assert.equal(PROTOCOL, 37);
   assert.notEqual(CONTENT_REVISION, issued);
   assert.equal(restored.protocolVersion, PROTOCOL);
   assert.equal(restored.contentRevision, CONTENT_REVISION);

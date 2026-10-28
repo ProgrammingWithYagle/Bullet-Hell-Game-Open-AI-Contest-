@@ -1,6 +1,22 @@
 # Changelog
 
-Development build **2026.10.28-unbroken-attacks**, protocol 36. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.28-returning-clapper**, protocol 37. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-28 — Bellringer: a thrown clapper and a warned return
+
+### Standard has more room to respond
+
+- Standard retains its two/three/four-front phase scores. The fixed opening widens from35to46degrees, beat spacing increases from0.8to1.05seconds and its primary clapper reach falls from340to260units. Standard clapper spacing increases from1.7to2.05seconds. Fixed grade3-, base health/damage/deadline, attack identities, music and selected art remain.
+
+### Advanced forms gain a physical decision
+
+- Brutal adds one chained-clapper throw during each primary score. Its real cover-clipped lane locks for a full1.3-second warning. Only the moving head hurts; the thin chain is harmless. After landing it rests, then gives a fresh1.2-second return warning. Shoot the white cracked head during that warning to break the return, or leave its returning path. Each travel leg hits a survivor at most once.
+- Crazed inherits the throw with65head health instead of45 and keeps its concurrent responding bell, reply fronts and separate clapper source. Already committed throws and returns keep their original geometry, damage and deadlines across phase entry. Genuine weak-point breaks, stagger, natural expiry and encounter cleanup retain their roles.
+
+### Evidence and remaining work
+
+- Complete-score samples cover all408map/difficulty/requested-form/legal-phase cases, with336advanced throws and10350return/peal overlap ticks. Shared contact/render geometry, actual Soldier projectile breaks, real two-peer head/return replication, strict local migration and all-boss phase carryover have separate checks. These are software evidence, with rendered/human balance acceptance still open.
+- Known issued protocol36/content6f97c9a4 local Practice/profile state migrates to37; foreign/online state remains strict. No new roster or quality credit:66identities,85ordinary additions and48original quality passes remain. Stronger themed Alchemist Crazed and the requested earned-SP General mobility branch (Double Dash/Sprint) are next work. Hosted recovery/rankings, WAN/endurance/device and coordinated release gates remain open.
 
 ## 2026-10-28 — Committed boss attacks survive phase changes
 

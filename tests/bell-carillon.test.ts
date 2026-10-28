@@ -123,7 +123,7 @@ test("Paired Knell overlaps two independently warned outward fronts from one loc
   const lock = { x: first.x, y: first.y, gapAngle: first.gapAngle };
   until(f, () => of(f, "bell-ring").some((q) => q.strike === 2));
   const second = of(f, "bell-ring").find((q) => q.strike === 2)!;
-  assert.equal(second.beganAt - first.beganAt, 24);
+  assert.equal(second.beganAt - first.beganAt, 32);
   assert.equal(second.at - second.beganAt, 33);
   assert(!first.returning && !second.returning);
   f.run(second.at + 1);

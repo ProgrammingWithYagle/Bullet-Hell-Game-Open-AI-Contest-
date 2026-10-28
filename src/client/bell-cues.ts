@@ -1,4 +1,6 @@
-import Phaser from "phaser";
+import type Phaser from "phaser";
+import { clamp } from "../shared/geometry.ts";
+import { drawBellChain } from "./bell-return-chain-cues.ts";
 import type { BellCue, BellRing } from "../shared/bell-carillon.ts";
 function arc(
   g: Phaser.GameObjects.Graphics,
@@ -58,21 +60,63 @@ export function drawBellCue(
   q: BellCue,
   now: number,
 ) {
-  if(q.kind==='bell-clapper'){
-    const warning=now<q.at,c=q.echo?0xcbb1e8:0xe4ba80,active=now>=q.at&&now<q.until;
-    const segments=16;
-    for(let i=0;i<segments;i++){
-      const a=q.angle-q.halfAngle+2*q.halfAngle*i/segments,b=q.angle-q.halfAngle+2*q.halfAngle*(i+1)/segments;
-      const ax=q.x+Math.cos(a)*q.reach,ay=q.y+Math.sin(a)*q.reach,bx=q.x+Math.cos(b)*q.reach,by=q.y+Math.sin(b)*q.reach;
-      f.fillStyle(c,active?.13:.035).fillTriangle(q.x,q.y,ax,ay,bx,by);
-      if(active||i%2===0)h.lineStyle(active?5:2,c,active?.9:.65).lineBetween(ax,ay,bx,by);
+  if (q.kind === "bell-chain") {
+    drawBellChain(h, f, q, now);
+    return;
+  }
+  if (q.kind === "bell-clapper") {
+    const warning = now < q.at,
+      c = q.echo ? 0xcbb1e8 : 0xe4ba80,
+      active = now >= q.at && now < q.until;
+    const segments = 16;
+    for (let i = 0; i < segments; i++) {
+      const a = q.angle - q.halfAngle + (2 * q.halfAngle * i) / segments,
+        b = q.angle - q.halfAngle + (2 * q.halfAngle * (i + 1)) / segments;
+      const ax = q.x + Math.cos(a) * q.reach,
+        ay = q.y + Math.sin(a) * q.reach,
+        bx = q.x + Math.cos(b) * q.reach,
+        by = q.y + Math.sin(b) * q.reach;
+      f.fillStyle(c, active ? 0.13 : 0.035).fillTriangle(
+        q.x,
+        q.y,
+        ax,
+        ay,
+        bx,
+        by,
+      );
+      if (active || i % 2 === 0)
+        h.lineStyle(active ? 5 : 2, c, active ? 0.9 : 0.65).lineBetween(
+          ax,
+          ay,
+          bx,
+          by,
+        );
     }
-    h.lineStyle(active?4:2,c,.85);
-    for(const a of[q.angle-q.halfAngle,q.angle+q.halfAngle])h.lineBetween(q.x,q.y,q.x+Math.cos(a)*q.reach,q.y+Math.sin(a)*q.reach);
-    const t=warning?Math.max(0,Math.min(1,(now-q.beganAt)/Math.max(1,q.at-q.beganAt))):1;
-    h.lineStyle(5,c,.9).beginPath().arc(q.x,q.y,29,-Math.PI/2,-Math.PI/2+Math.PI*2*t).strokePath();
-    const a=q.angle+(warning?-q.halfAngle:q.halfAngle),x=q.x+Math.cos(a)*55,y=q.y+Math.sin(a)*55;
-    f.lineStyle(7,c,1).lineBetween(q.x,q.y,x,y).fillStyle(c,1).fillCircle(x,y,9);
+    h.lineStyle(active ? 4 : 2, c, 0.85);
+    for (const a of [q.angle - q.halfAngle, q.angle + q.halfAngle])
+      h.lineBetween(
+        q.x,
+        q.y,
+        q.x + Math.cos(a) * q.reach,
+        q.y + Math.sin(a) * q.reach,
+      );
+    const t = warning
+      ? Math.max(
+          0,
+          Math.min(1, (now - q.beganAt) / Math.max(1, q.at - q.beganAt)),
+        )
+      : 1;
+    h.lineStyle(5, c, 0.9)
+      .beginPath()
+      .arc(q.x, q.y, 29, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * t)
+      .strokePath();
+    const a = q.angle + (warning ? -q.halfAngle : q.halfAngle),
+      x = q.x + Math.cos(a) * 55,
+      y = q.y + Math.sin(a) * 55;
+    f.lineStyle(7, c, 1)
+      .lineBetween(q.x, q.y, x, y)
+      .fillStyle(c, 1)
+      .fillCircle(x, y, 9);
     return;
   }
   if (q.kind === "bell-walk") {
@@ -81,8 +125,8 @@ export function drawBellCue(
       h.lineBetween(q.path[i - 1].x, q.path[i - 1].y, q.path[i].x, q.path[i].y);
     const p = q.path.at(-1)!;
     h.strokeCircle(p.x, p.y, 11);
-    h.lineStyle(1.5,0xc4bbb1,.45).strokeCircle(q.targetX,q.targetY,14);
-    h.lineBetween(p.x,p.y,q.targetX,q.targetY);
+    h.lineStyle(1.5, 0xc4bbb1, 0.45).strokeCircle(q.targetX, q.targetY, 14);
+    h.lineBetween(p.x, p.y, q.targetX, q.targetY);
     return;
   }
   if (q.kind === "bell-resonator") {
@@ -125,7 +169,7 @@ export function drawBellCue(
         : q.radius,
       until = initial ? q.at : q.resumeAt,
       began = initial ? q.beganAt : q.quietUntil,
-      t = Phaser.Math.Clamp((until - now) / Math.max(1, until - began), 0, 1);
+      t = clamp((until - now) / Math.max(1, until - began), 0, 1);
     arc(h, q, radius, c, 2, 0.65, true);
     gap(f, q, radius, c);
     h.lineStyle(2, c, 0.65).strokeCircle(q.x, q.y, 18 + 20 * t);

@@ -268,7 +268,7 @@ export class ServiceDirector {
     })];
   }
   weakPoints() {
-    return [...this.matron.weakPoints(),...this.shapes.filter(
+    return [...this.bellringer.weakPoints(),...this.matron.weakPoints(),...this.shapes.filter(
       (c): c is ServiceProp | Tether =>
         (c.kind === 'service-prop' || c.kind === 'service-tether') && c.health > 0,
     )];
@@ -277,6 +277,7 @@ export class ServiceDirector {
     return this.shapes.some((c) => c.id === id && c.kind === 'service-prop' && c.role === 'caster');
   }
   hit(id: number, damage: number, now: number) {
+    const bell=this.bellringer.hit(id,damage,now);if(bell)return bell;
     const matron=this.matron.hit(id,damage);if(matron)return matron;
     const prop = this.weakPoints().find((p) => p.id === id);
     if (!prop) return 0;

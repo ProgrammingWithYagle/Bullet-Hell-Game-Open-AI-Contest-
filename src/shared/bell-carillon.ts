@@ -1,4 +1,9 @@
 import tuning from "./bell-carillon-rules.json";
+import {
+  BellReturnChain,
+  bellChainRules,
+  type BellChain,
+} from "./bell-return-chain.ts";
 import { DT, HZ, type Vec } from "./protocol.ts";
 import { distance, segmentRect, type Rect } from "./geometry.ts";
 import { gappedRingContact } from "./ring-contact.ts";
@@ -49,7 +54,8 @@ export type BellResonator = Life &
     ringId: number;
     respondTo: number;
   };
-export type BellCue = BellWalk | BellRing | BellResonator | BellClapper;
+export type BellCue =
+  BellWalk | BellRing | BellResonator | BellClapper | BellChain;
 const ticks = (s: number) => Math.ceil(s * HZ);
 export function bellWalls(c: SignatureContext): Rect[] {
   const b = c.bounds ?? { x: 0, y: 0, width: 1600, height: 1000 };
@@ -294,6 +300,7 @@ export function bellOpeningPoint(
   );
 }
 type ScoreStep = {
+  chain?: boolean;
   due: number;
   returning: boolean;
   echo: boolean;
@@ -304,6 +311,7 @@ type ScoreStep = {
 export class BellCarillon {
   private walk: BellWalk | null = null;
   private rings: BellRing[] = [];
+  private chain = new BellReturnChain();
   private bells: BellResonator[] = [];
   private clappers: BellClapper[] = [];
   private hits = new Map<number, Set<string>>();
@@ -321,6 +329,7 @@ export class BellCarillon {
   }
   reset(until = 0, encounter = false) {
     this.walk = null;
+    this.chain.clear();
     this.rings = [];
     this.bells = [];
     this.clappers = [];
@@ -343,13 +352,25 @@ export class BellCarillon {
             },
           ]
         : []),
+      ...this.chain.cues(),
       ...this.rings.map((q) => ({ ...q })),
       ...this.bells.map((q) => ({ ...q })),
       ...this.clappers.map((q) => ({ ...q })),
     ];
   }
+  weakPoints() {
+    return this.chain.weakPoints();
+  }
+  hit(id: number, damage: number, now: number) {
+    return this.chain.hit(id, damage, now);
+  }
   cast(c: SignatureContext, target: Vec) {
-    if (!c.paused && !c.auxiliaryBusy && !this.busy && c.tick >= this.nextSignatureAt)
+    if (
+      !c.paused &&
+      !c.auxiliaryBusy &&
+      !this.busy &&
+      c.tick >= this.nextSignatureAt
+    )
       this.begin(c, target);
     return true;
   }
@@ -418,12 +439,29 @@ export class BellCarillon {
     const claps = c.brutal ? (c.phase >= 3 ? 3 : 2) : c.phase >= 1 ? 2 : 1;
     for (let i = 0; i < claps; i++)
       this.queue.push({
-        due: c.tick + ticks(i * tuning.clapperBeatSeconds),
+        due:
+          c.tick +
+          ticks(
+            i *
+              (c.brutal
+                ? tuning.clapperBeatSeconds
+                : tuning.standardClapperBeatSeconds),
+          ),
         returning: false,
         echo: false,
         strike: i + 1,
         strikes: claps,
         clapper: true,
+      });
+    if (c.brutal)
+      this.queue.push({
+        due: c.tick + ticks(bellChainRules.scoreDelaySeconds),
+        returning: false,
+        echo: false,
+        strike: 1,
+        strikes: 1,
+        clapper: false,
+        chain: true,
       });
     if (this.response) {
       const count = c.phase >= 2 ? 4 : 3,
@@ -472,6 +510,16 @@ export class BellCarillon {
     while (this.queue[0] && this.queue[0].due <= c.tick) {
       const s = this.queue.shift()!,
         origin = s.echo ? this.response! : this.origin;
+      if (s.chain) {
+        const targets = c.aimTargets ?? c.targets;
+        this.chain.start(
+          c,
+          origin,
+          targets[this.cycle % Math.max(1, targets.length)] ?? this.opening,
+          bellWalls(c),
+        );
+        continue;
+      }
       if (s.clapper) {
         const targets = c.aimTargets ?? c.targets,
           target =
@@ -488,7 +536,11 @@ export class BellCarillon {
             until: at + ticks(tuning.clapperActiveSeconds),
             angle: Math.atan2(target.y - origin.y, target.x - origin.x),
             halfAngle: tuning.clapperHalfAngle,
-            reach: s.echo ? tuning.echoClapperReach : tuning.clapperReach,
+            reach: s.echo
+              ? tuning.echoClapperReach
+              : c.brutal
+                ? tuning.clapperReach
+                : tuning.standardClapperReach,
             damage: tuning.clapperDamage,
             state: "warning",
             echo: s.echo,
@@ -534,7 +586,10 @@ export class BellCarillon {
         reach,
         gapAngle,
         initialGapAngle: gapAngle,
-        gap: (tuning.gapDegrees * Math.PI) / 180,
+        gap:
+          ((c.brutal ? tuning.gapDegrees : tuning.standardGapDegrees) *
+            Math.PI) /
+          180,
         speed,
         width: tuning.ringWidth,
         damage: s.echo ? tuning.echoDamage : tuning.ringDamage,
@@ -577,6 +632,7 @@ export class BellCarillon {
     const now = c.tick,
       walls = bellWalls(c);
     if (this.stage === "score") this.emitDue(c);
+    this.chain.step(c);
     for (const q of this.rings) {
       if (q.state === "warning" && now >= q.at) {
         q.state = "travel";
@@ -671,12 +727,14 @@ export class BellCarillon {
       this.stage === "score" &&
       !this.queue.length &&
       !this.rings.length &&
-      !this.clappers.length
+      !this.clappers.length &&
+      !this.chain.busy
     )
       this.rest(now);
     if (!this.busy && now >= this.nextSignatureAt && !c.auxiliaryBusy) {
       const targets = c.aimTargets ?? c.targets;
-      if (targets.length) this.begin(nextContext, targets[this.cycle % targets.length]);
+      if (targets.length)
+        this.begin(nextContext, targets[this.cycle % targets.length]);
     }
   }
 }

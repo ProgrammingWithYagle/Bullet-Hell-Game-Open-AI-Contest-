@@ -85,7 +85,7 @@ test('Bellringer owns a real gapped toll with full tell safety and preserves sha
  assert(!serviceRingContact({x:930,y:250},{x:930,y:250},{...ring,x:800,y:250,gapAngle:0,oldRadius:120,radius:140}));
  assert(serviceRingContact({x:670,y:250},{x:670,y:250},{...ring,x:800,y:250,gapAngle:0,oldRadius:120,radius:140}));
  assert(serviceRingContact({x:800,y:20},{x:800,y:600},{...ring,x:800,y:250,gapAngle:0,oldRadius:130,radius:130}));
- assert.equal(ring.gap,35*Math.PI/180);
+ assert.equal(ring.gap,46*Math.PI/180);
 });
 
 test('Stitchwright has destructible tethers, a one-second neutral rescue and a dodgeable attachment', () => {

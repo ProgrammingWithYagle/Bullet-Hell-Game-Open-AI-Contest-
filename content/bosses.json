@@ -1827,7 +1827,10 @@
         "connectedProcession": true,
         "resonanceHold": false,
         "sympatheticBell": false,
-        "clapperSwings": 1
+        "clapperSwings": 1,
+        "tetheredClapper": false,
+        "ringGapDegrees": 46,
+        "clapperReach": 260
       },
       {
         "healthThreshold": 0.75,
@@ -1861,7 +1864,10 @@
         "connectedProcession": true,
         "resonanceHold": false,
         "sympatheticBell": false,
-        "clapperSwings": 2
+        "clapperSwings": 2,
+        "tetheredClapper": false,
+        "ringGapDegrees": 46,
+        "clapperReach": 260
       },
       {
         "healthThreshold": 0.4,
@@ -1896,7 +1902,10 @@
         "connectedProcession": true,
         "resonanceHold": false,
         "sympatheticBell": false,
-        "clapperSwings": 2
+        "clapperSwings": 2,
+        "tetheredClapper": false,
+        "ringGapDegrees": 46,
+        "clapperReach": 260
       }
     ],
     "route": "standard",
@@ -1905,8 +1914,8 @@
     "damageWindowFraction": 1,
     "signature": {
       "id": "bellringer",
-      "behavior": "Paired Knell combines two overlapping outward fronts and a warned aimed clapper. Approach closes toward a survivor before three peals and two clapper swings. Counterstroke interleaves inward and outward fronts. Brutal layers four to six peals and multiple clappers without the old exclusive silent hold. Crazed deploys a second bell that plays three or four reply fronts and its own clapper while the primary continues.",
-      "counterplay": "The pale approach path is harmless and targets a survivor rather than wandering laterally. Every clapper sector locks with a complete warning; sidestep its marked arc or dash. Each front keeps its 35-degree opening and hits once. Primary and secondary openings share body-clear floor, but new aimed clappers require movement. All sources remain announced. Base grade3, combat, original theme, original eight action frames and eight drawn walking poses are retained. No generic bullet or laser layer is used.",
+      "behavior": "Approach a survivor, then perform paired, procession and counterstroke peals with independently aimed clappers. Standard uses wider fixed openings, slower spacing and a shorter clapper reach. Brutal adds one tethered clapper throw with a separately warned return. Crazed keeps the thrown clapper and concurrent responding bell.",
+      "counterplay": "The approach path is harmless. Standard has a46-degree wave opening; advanced forms retain35degrees. Leave each marked clapper sector. The thrown head follows a locked outbound lane; after landing, shoot its cracked white head during the fresh return warning to break it, or sidestep the returning head. The thin tether itself is harmless. Every peal, swing and throw leg has its own contact budget. Phase entry preserves the issued score; only earned counterplay or natural expiry interrupts it.",
       "parameters": {
         "ringGapDegrees": 35,
         "gapRotationDegreesPerAttack": 30,
@@ -1937,7 +1946,7 @@
           "quietSeconds": 0.8,
           "resumeWarning": 1.2,
           "resumeGapTurnDegrees": 60,
-          "beatSeconds": 0.8,
+          "beatSeconds": 1.05,
           "brutalBeatSeconds": 0.6,
           "echoBeatSeconds": 0.75,
           "echoOffsetSeconds": 0.55,
@@ -1952,7 +1961,26 @@
           "clapperHalfAngle": 0.72,
           "clapperReach": 340,
           "echoClapperReach": 250,
-          "clapperDamage": 16
+          "clapperDamage": 16,
+          "standardGapDegrees": 46,
+          "standardClapperReach": 260,
+          "standardClapperBeatSeconds": 2.05
+        },
+        "returnChain": {
+          "scoreDelaySeconds": 1.1,
+          "warningSeconds": 1.3,
+          "minimumReach": 100,
+          "maximumReach": 430,
+          "overshoot": 110,
+          "outwardSpeed": 260,
+          "returnSpeed": 330,
+          "settleSeconds": 0.55,
+          "returnWarningSeconds": 1.2,
+          "radius": 20,
+          "damage": 18,
+          "headHealth": 45,
+          "crazedHeadHealth": 65,
+          "brokenFadeSeconds": 0.45
         }
       }
     },
@@ -2008,7 +2036,10 @@
             "connectedProcession": true,
             "resonanceHold": false,
             "sympatheticBell": false,
-            "clapperSwings": 2
+            "clapperSwings": 2,
+            "tetheredClapper": true,
+            "ringGapDegrees": 35,
+            "clapperReach": 340
           },
           {
             "healthThreshold": 0.75,
@@ -2046,7 +2077,10 @@
             "connectedProcession": true,
             "resonanceHold": false,
             "sympatheticBell": false,
-            "clapperSwings": 2
+            "clapperSwings": 2,
+            "tetheredClapper": true,
+            "ringGapDegrees": 35,
+            "clapperReach": 340
           },
           {
             "healthThreshold": 0.5,
@@ -2085,7 +2119,10 @@
             "connectedProcession": true,
             "resonanceHold": false,
             "sympatheticBell": false,
-            "clapperSwings": 2
+            "clapperSwings": 2,
+            "tetheredClapper": true,
+            "ringGapDegrees": 35,
+            "clapperReach": 340
           },
           {
             "healthThreshold": 0.25,
@@ -2125,8 +2162,14 @@
             "connectedProcession": true,
             "resonanceHold": false,
             "sympatheticBell": false,
-            "clapperSwings": 3
+            "clapperSwings": 3,
+            "tetheredClapper": true,
+            "ringGapDegrees": 35,
+            "clapperReach": 340
           }
+        ],
+        "additionalPatterns": [
+          "tethered-clapper-return"
         ]
       },
       "crazed": {
@@ -2173,7 +2216,10 @@
             "connectedProcession": true,
             "resonanceHold": false,
             "sympatheticBell": true,
-            "clapperSwings": 2
+            "clapperSwings": 2,
+            "tetheredClapper": true,
+            "ringGapDegrees": 35,
+            "clapperReach": 340
           },
           {
             "healthThreshold": 0.75,
@@ -2211,7 +2257,10 @@
             "connectedProcession": true,
             "resonanceHold": false,
             "sympatheticBell": true,
-            "clapperSwings": 2
+            "clapperSwings": 2,
+            "tetheredClapper": true,
+            "ringGapDegrees": 35,
+            "clapperReach": 340
           },
           {
             "healthThreshold": 0.5,
@@ -2250,7 +2299,10 @@
             "connectedProcession": true,
             "resonanceHold": false,
             "sympatheticBell": true,
-            "clapperSwings": 2
+            "clapperSwings": 2,
+            "tetheredClapper": true,
+            "ringGapDegrees": 35,
+            "clapperReach": 340
           },
           {
             "healthThreshold": 0.25,
@@ -2290,13 +2342,17 @@
             "connectedProcession": true,
             "resonanceHold": false,
             "sympatheticBell": true,
-            "clapperSwings": 3
+            "clapperSwings": 3,
+            "tetheredClapper": true,
+            "ringGapDegrees": 35,
+            "clapperReach": 340
           }
         ],
         "additionalPatterns": [
           "overlapping-peals",
           "clapper-counterpoint",
-          "concurrent-responding-bell"
+          "concurrent-responding-bell",
+          "tethered-clapper-return"
         ]
       }
     }
