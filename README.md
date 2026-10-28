@@ -59,3 +59,5 @@ Full verification also uses Python 3 with the pinned Pillow dependency: `python 
 [Cradle Relay](docs/MATRON_WARD.md) gives Cradle Matron connected escort routes, two/four navigating broods, numbered gapped lullabies and warned advanced needle stitches. No new identity, art or audio is added; rendered/human acceptance remains open.
 
 [Reagent Road](docs/MOLD_MIXING.md) gives Mold Alchemist connected mixing walks, warned culture pools, catalyst/decant/reflux legs, actual pool draining and controlled advanced vial sprays. Base combat/art/music remain; rendered/human acceptance is open.
+
+[Alchemist laboratory](docs/MOLD_MIXING.md) replaces generic bullet/laser pressure with aimed chemistry, real mixing/cooling and form-specific reactions, with eight newly drawn walking poses. [Encounter design](docs/BOSS_ENCOUNTER_DESIGN.md) records the direction for unique themed boss techniques.

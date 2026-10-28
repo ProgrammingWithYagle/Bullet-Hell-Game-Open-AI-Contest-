@@ -1,6 +1,24 @@
 # Changelog
 
-Development build **2026.10.27-reagent-road**, protocol 32. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.27-alchemist-lab**, protocol 33. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-27 — Alchemist laboratory: aim, mix, cool and quench
+
+### Chemistry shapes the fight
+
+- Human comparison at frozen 5200 found the old reactions too weak and the green cleared vials purposeless; phase/form differences mostly looked like more bullets and lasers. Alchemist now targets survivors with fully marked acid/alkali flask landings while walking. Titration teaches mixing, Distillation adds a vapor bank, Thermal Runaway adds pressure vessels, and advanced Fractionation sends two independently warned vapor banks.
+- Acid amber triangles and alkali blue squares both harm and slow. Bait an opposite throw near an existing pool, then leave: mixing clears reagents into pale coolant. Coolant visibly opens a real gap in vapor and cools nearby pressure vessels before rupture. It is a reaction product rather than a pickup. Landings warn 1.4 seconds, vapor 2 seconds, and rupture has a separate 1.5-second tell. Shared pool damage remains one hit per half-second.
+
+### Brutal and Crazed change the reactions
+
+- Brutal matching-reagent pools couple into two timed eruptions. Neutralizing either endpoint before the first eruption cancels the pair. Crazed adds a violet catalyst: coolant quenches it and is spent after a short grace; unmixed reagents create a fresh warned eruption, while bare ground receives a catalyst pool. Advanced forms also have more pressure vessels, retaining the shared core techniques.
+- Alchemist no longer runs generic bullet fans, vial-needle sprays or shared Crazed laser pressure. Its danger comes from aimed chemical placement, vapor, pressure and reagent interactions. Projectile multipliers still apply to the game’s projectile-bearing techniques; every boss does not need to fire bullets. Future boss quality passes follow this theme-first principle.
+
+### Drawn walking and precise evidence
+
+- Eight actual walking poses are newly drawn from the existing Alchemist identity. A sibling sixteen-frame atlas preserves the original eight action frames pixel-for-pixel and adds the walk. One scale and fixed row anchors preserve gait offsets. Exact request, native return, portable bindings and an independent full-RGBA reconstruction verifier are included. Full directional, rendered and human gait acceptance remain open.
+- A full actual-Game matrix found an Ossuary/Baby vessel too far from the first neutralization because small-body cover placement and reagent placement differed. Vessels now reserve reagent-sized working clearance, with an actual-Game cooling regression. A separate stationary catalyst assumption was corrected: explicit baiting witnesses verify both quenching and eruption rather than expecting an automatic benefit. Failed and corrected evidence is preserved.
+- Fifteen-locale names/help, shared prediction and strict known issued protocol-32 local Practice/profile migration to33 are implemented. This revises quality implementation eleven, with no roster or extra quality credit: 66 identities, 85 ordinary additions and 49 original quality implementations remain. Human/device/native-language/listening/final balance and hosted/release gates stay open.
 
 ## 2026-10-27 — Mold Alchemist: cultures, catalysts and decanting returns
 

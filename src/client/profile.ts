@@ -243,6 +243,7 @@ export function parseProfile(raw: string): ProfileV1 {
       old.practiceOnly === true &&
       old.verified === false &&
       [
+        "b6cdeb5a0d7475f65192d16f26a91d31660e9593843704738e1ddf494f5191bb",
         "90c1bd18708bffd5fab92a98490b9f173ba4cdb85956aabda8fef67c4cd6c28d",
         "850f5e0dd38cfd283ff0dbf079892b3595ccc489a95c70586e4fd4a24505402b",
         "e6db0059a1510315047e400e2c135ca2fd3a0368cea21c035946ff6a877631b2",

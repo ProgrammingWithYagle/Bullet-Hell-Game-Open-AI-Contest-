@@ -1082,7 +1082,7 @@ export class Game {
     }
     this.bossPrevious = { x: this.boss.x, y: this.boss.y };
     this.stepBoss();
-    this.variantPressure.step({now:this.combatTick,bossId:this.boss.id,variant:this.boss.variant,phase:this.boss.phase,bounds:this.arena.bounds,targets:this.aimTargets(),damageScale:this.bossDamageScale(),paused:!!this.accord||this.combatTick<this.boss.staggerUntil||(this.boss.id==='lantern-warden'&&!this.wardenPatrol.canCastAuxiliary),id:()=>this.id(),damage:(id,amount)=>this.hurtTarget(id,amount)});
+    this.variantPressure.step({now:this.combatTick,bossId:this.boss.id,variant:this.boss.variant,phase:this.boss.phase,bounds:this.arena.bounds,targets:this.aimTargets(),damageScale:this.bossDamageScale(),paused:this.boss.id==='alchemist'||!!this.accord||this.combatTick<this.boss.staggerUntil||(this.boss.id==='lantern-warden'&&!this.wardenPatrol.canCastAuxiliary),id:()=>this.id(),damage:(id,amount)=>this.hurtTarget(id,amount)});
     this.brutalVolley.release(this.combatTick,(point,angle,speed,damage,radius)=>
       this.emitShot('hostile',point.x,point.y,angle,speed,damage,radius));
     this.minions.step(
@@ -1998,7 +1998,7 @@ export class Game {
         (this.boss.id !== 'gate-widow' || !this.director.civic.widow.busy) &&
         (this.boss.id !== 'black-ambulance' || (index !== 0 && !this.director.civic.ambulance.busy)) &&
         (this.boss.id !== 'matron' || (index !== 0 && !this.director.services.matron.busy)) &&
-        (this.boss.id !== 'alchemist' || (index !== 0 && !this.director.services.alchemist.busy)) &&
+        this.boss.id !== 'alchemist' &&
         (this.boss.id!=='quarantine-clerk' || (!this.director.clerk.busy && (index!==0 || (now>=this.director.clerk.nextSignatureAt&&!this.warnings.length)))) &&
         (this.boss.id!=='ratcatcher' || (!this.director.ratcatcher.busy && (index!==0 || (now>=this.director.ratcatcher.nextSignatureAt && !this.warnings.length)))) &&
         (this.boss.id!=='courier' || (!this.director.courier.busy && (index!==0 || now>=this.director.courier.nextRouteAt))) &&

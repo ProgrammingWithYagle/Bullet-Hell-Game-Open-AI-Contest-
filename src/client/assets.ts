@@ -1,3 +1,5 @@
+import {encounterArt} from './encounter-presentation.ts';
+import {resolveEncounterAssetUrls} from './encounter-asset-urls.ts';
 import wheel from '../../assets/production/motion/tollkeeper-wheel-v1.png?url';
 import arena from '../../assets/proofs/arena-v1.png?url';
 import gatehouseHalf from '../../assets/production/arenas/gatehouse-half-v1.png?url';
@@ -95,6 +97,8 @@ const encounterMotion = import.meta.glob(
     '../../assets/production/motion/*-action-v1-atlas.png',
     '../../assets/production/motion/*-action-v2-atlas.png',
     '../../assets/production/motion/*-action-v3-atlas.png',
+    '../../assets/production/motion/*-action-walk-v2-atlas.png',
+    '!../../assets/production/motion/alchemist-action-v1-atlas.png',
     '!../../assets/production/motion/courier-action-v2-atlas.png',
     '!../../assets/production/motion/courier-action-v1-atlas.png',
     '!../../assets/production/motion/ratcatcher-action-v1-atlas.png',
@@ -156,15 +160,7 @@ export const assets = {
       url,
     ]),
   ) as Record<string, string>,
-  encounters: Object.fromEntries(
-    Object.entries(encounterMotion).map(([path, url]) => [
-      path
-        .split('/')
-        .at(-1)!
-        .replace(/-action-v[123]-atlas\.png$/, ''),
-      url,
-    ]),
-  ) as Record<string, string>,
+  encounters: resolveEncounterAssetUrls(encounterArt,encounterMotion),
   arena,
   arenaGrounds: {
     gatehouse: arena,

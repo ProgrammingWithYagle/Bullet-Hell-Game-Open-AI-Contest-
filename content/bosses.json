@@ -1337,9 +1337,11 @@
         ],
         "patternPhase": 0,
         "phaseNameKey": "boss.alchemist.phase.0",
-        "reactionLegs": 0,
-        "drainingReturn": false,
-        "connectedMixingRoad": true
+        "chemicalTechnique": "titration",
+        "vaporSweeps": 0,
+        "pressureVessels": 0,
+        "coupledReagents": false,
+        "catalystThrows": 0
       },
       {
         "healthThreshold": 0.75,
@@ -1367,9 +1369,11 @@
         ],
         "patternPhase": 1,
         "phaseNameKey": "boss.alchemist.phase.1",
-        "reactionLegs": 1,
-        "drainingReturn": false,
-        "connectedMixingRoad": true
+        "chemicalTechnique": "distillation",
+        "vaporSweeps": 1,
+        "pressureVessels": 0,
+        "coupledReagents": false,
+        "catalystThrows": 0
       },
       {
         "healthThreshold": 0.4,
@@ -1397,9 +1401,11 @@
         ],
         "patternPhase": 2,
         "phaseNameKey": "boss.alchemist.phase.2",
-        "reactionLegs": 2,
-        "drainingReturn": true,
-        "connectedMixingRoad": true
+        "chemicalTechnique": "thermal-runaway",
+        "vaporSweeps": 1,
+        "pressureVessels": 1,
+        "coupledReagents": false,
+        "catalystThrows": 0
       }
     ],
     "route": "standard",
@@ -1408,12 +1414,12 @@
     "damageWindowFraction": 1,
     "signature": {
       "id": "alchemist",
-      "behavior": "Pure Culture walks a connected mixing road and grows up to three numbered culture pools. Catalyst sends one moving reaction along the locked road. Decant sends a separately warned return that drains reached cultures. Advanced Reflux runs three reaction legs; Crazed adds a fourth. Brutal adds thirty warned vial needles; Crazed retains the full prefix and extends the spray to ninety with crossing repeats.",
-      "counterplay": "The pale walking line is harmless. Leave the numbered culture circles during their full 1.3-second warning. Active mold slows and shares one floor hit per half-second. Every moving catalyst locks the full path and warns for 1.5 seconds; step to either side before it moves. Decant returns drain reached cultures, removing their damage and slow. Early pools last five seconds; Decant/Reflux pools persist for at most twelve unless drained. Every spray heading and remaining wave is marked before release. Actual offset bounds, body/pool widths, cover and conservative Hellish lava footprints constrain the mixing road. Base combat values, selected art and individual theme remain.",
+      "behavior": "The Alchemist aims acid and alkali flasks at survivors while walking. Opposite reagents neutralize into coolant. Distillation adds a full-field vapor bank; Thermal Runaway adds pressure vessels that coolant can defuse; advanced Fractionation sends two separately warned banks. Brutal matching reagents couple into cancelable timed eruptions. Crazed adds catalyst flasks that spend coolant or cause a freshly warned eruption in unmixed reagents. Generic bullet fans, vial-needle sprays and common Crazed laser pressure are replaced by owned chemistry techniques.",
+      "counterplay": "Amber triangles mark acid and blue squares mark alkali. Both harm and slow. Bait the opposite flask close to an existing pool, then leave; the mixture clears reagents and makes pale coolant. Coolant opens a visible gap in vapor and cools nearby pressure vessels before rupture. Dash across a vapor bank when coolant is unavailable. Neutralize either member of a Brutal coupled pair before its first eruption. Bait a Crazed catalyst into coolant to quench it, spending the coolant; unmixed reagents create a fresh warned blast. Every flask locks its landing for 1.4 seconds. Three Standard/four advanced phases, base combat, fixed grade, individual theme and old action art remain; eight newly drawn walking poses are added.",
       "parameters": {
         "poolSafeWindow": 1.3,
         "poolDuration": 5,
-        "reagentRoad": {
+        "chemistryLab": {
           "gridSpacing": 32,
           "clearance": 8,
           "minimumWalk": 160,
@@ -1421,29 +1427,36 @@
           "walkWarning": 0.65,
           "walkSpeed": 80,
           "lateWalkSpeed": 95,
-          "poolCount": 3,
-          "poolRadius": 65,
-          "poolWarning": 1.3,
-          "poolSeconds": 5,
-          "decantPoolSeconds": 12,
+          "flaskWarning": 1.4,
+          "throwGap": 0.6,
+          "poolRadius": 78,
+          "catalystRadius": 62,
+          "poolSeconds": 8,
+          "waterRadius": 140,
+          "waterSeconds": 9,
+          "quenchGrace": 0.9,
+          "neutralOverlap": 0.85,
           "poolDamage": 10,
           "poolContactSeconds": 0.5,
           "slowMultiplier": 0.65,
-          "frontWarning": 1.5,
-          "frontSpeed": 145,
-          "frontRadius": 26,
-          "frontDamage": 12,
-          "frontGap": 0.65,
-          "restSeconds": 2.2,
-          "sprayBase": 12,
-          "spraySpokes": 6,
-          "sprayWarning": 1.3,
-          "sprayWaveGap": 0.3,
-          "sprayHalfGap": 0.9,
-          "sprayStep": 0.23,
-          "sprayTurn": 0.2,
-          "spraySpeed": 185,
-          "sprayDamage": 5
+          "couplingRange": 270,
+          "couplingWarning": 2.6,
+          "couplingEcho": 0.6,
+          "couplingRadius": 150,
+          "catalystWarning": 1.5,
+          "catalystBlastRadius": 180,
+          "reactionDamage": 18,
+          "gasWarning": 2,
+          "gasWidth": 70,
+          "gasSpeed": 250,
+          "gasDamage": 10,
+          "reactorWarning": 1,
+          "reactorFuse": 6,
+          "reactorRuptureWarning": 1.5,
+          "reactorRadius": 24,
+          "reactorBlastRadius": 190,
+          "reactorDamage": 18,
+          "restSeconds": 2.2
         }
       }
     },
@@ -1492,9 +1505,11 @@
             ],
             "patternPhase": 0,
             "phaseNameKey": "boss.alchemist.phase.0",
-            "reactionLegs": 0,
-            "drainingReturn": false,
-            "connectedMixingRoad": true
+            "chemicalTechnique": "titration",
+            "vaporSweeps": 0,
+            "pressureVessels": 0,
+            "coupledReagents": true,
+            "catalystThrows": 0
           },
           {
             "healthThreshold": 0.75,
@@ -1525,9 +1540,11 @@
             ],
             "patternPhase": 1,
             "phaseNameKey": "boss.alchemist.phase.1",
-            "reactionLegs": 1,
-            "drainingReturn": false,
-            "connectedMixingRoad": true
+            "chemicalTechnique": "distillation",
+            "vaporSweeps": 1,
+            "pressureVessels": 0,
+            "coupledReagents": true,
+            "catalystThrows": 0
           },
           {
             "healthThreshold": 0.5,
@@ -1558,9 +1575,11 @@
             ],
             "patternPhase": 2,
             "phaseNameKey": "boss.alchemist.phase.2",
-            "reactionLegs": 2,
-            "drainingReturn": true,
-            "connectedMixingRoad": true
+            "chemicalTechnique": "thermal-runaway",
+            "vaporSweeps": 1,
+            "pressureVessels": 2,
+            "coupledReagents": true,
+            "catalystThrows": 0
           },
           {
             "healthThreshold": 0.25,
@@ -1591,9 +1610,11 @@
             ],
             "patternPhase": 3,
             "phaseNameKey": "boss.alchemist.phase.3",
-            "reactionLegs": 3,
-            "drainingReturn": true,
-            "connectedMixingRoad": true
+            "chemicalTechnique": "fractionation",
+            "vaporSweeps": 2,
+            "pressureVessels": 2,
+            "coupledReagents": true,
+            "catalystThrows": 0
           }
         ]
       },
@@ -1634,9 +1655,11 @@
             ],
             "patternPhase": 0,
             "phaseNameKey": "boss.alchemist.phase.0",
-            "reactionLegs": 0,
-            "drainingReturn": false,
-            "connectedMixingRoad": true
+            "chemicalTechnique": "titration",
+            "vaporSweeps": 0,
+            "pressureVessels": 0,
+            "coupledReagents": true,
+            "catalystThrows": 1
           },
           {
             "healthThreshold": 0.75,
@@ -1667,9 +1690,11 @@
             ],
             "patternPhase": 1,
             "phaseNameKey": "boss.alchemist.phase.1",
-            "reactionLegs": 1,
-            "drainingReturn": false,
-            "connectedMixingRoad": true
+            "chemicalTechnique": "distillation",
+            "vaporSweeps": 1,
+            "pressureVessels": 0,
+            "coupledReagents": true,
+            "catalystThrows": 1
           },
           {
             "healthThreshold": 0.5,
@@ -1700,9 +1725,11 @@
             ],
             "patternPhase": 2,
             "phaseNameKey": "boss.alchemist.phase.2",
-            "reactionLegs": 2,
-            "drainingReturn": true,
-            "connectedMixingRoad": true
+            "chemicalTechnique": "thermal-runaway",
+            "vaporSweeps": 1,
+            "pressureVessels": 3,
+            "coupledReagents": true,
+            "catalystThrows": 1
           },
           {
             "healthThreshold": 0.25,
@@ -1733,15 +1760,16 @@
             ],
             "patternPhase": 3,
             "phaseNameKey": "boss.alchemist.phase.3",
-            "reactionLegs": 4,
-            "drainingReturn": true,
-            "connectedMixingRoad": true
+            "chemicalTechnique": "fractionation",
+            "vaporSweeps": 2,
+            "pressureVessels": 3,
+            "coupledReagents": true,
+            "catalystThrows": 1
           }
         ],
         "additionalPatterns": [
-          "pursuit",
-          "crosscut",
-          "weave"
+          "catalyst-quench",
+          "catalytic-eruption"
         ]
       }
     }

@@ -72,13 +72,11 @@ test('Matron nests obey their tell, summon bounded real packs and stop permanent
   brutal.cast();
   assert.equal(of(brutal.director, 'service-prop')[0].health, 200);
 });
-test('Alchemist culture pools lock positions, warn at least1.3 seconds and slow only while active', () => {
-  const f=fixture('alchemist');f.cast();
-  for(let tick=1;tick<500&&!f.director.cues().some(q=>q.kind==='mold-pool');tick++)f.step(tick);
-  const pool=f.director.cues().find(q=>q.kind==='mold-pool');assert(pool&&pool.kind==='mold-pool');
-  Object.assign(f.c.targets[0],{x:pool.x,y:pool.y,oldX:pool.x,oldY:pool.y});
-  assert(pool.at-pool.beganAt>=39);f.step(pool.at-1);assert.equal(f.hurt.length,0);assert.equal(serviceMovement(f.director.cues(),pool,'a',pool.at-1).multiplier,1);
-  f.step(pool.at);assert(f.hurt.some(h=>h.id==='a'));assert.equal(serviceMovement(f.director.cues(),pool,'a',pool.at).multiplier,.65);
+test('Alchemist reagent flasks lock full landing warnings before actual harmful pools become active', () => {
+  const f=fixture('alchemist');f.cast();const flask=f.director.cues().find(q=>q.kind==='mold-flask');assert(flask&&flask.kind==='mold-flask');
+  Object.assign(f.c.targets[0],{x:flask.x,y:flask.y,oldX:flask.x,oldY:flask.y});
+  assert.equal(flask.at-flask.beganAt,42);f.step(flask.at-1);assert.equal(f.hurt.length,0);assert.equal(serviceMovement(f.director.cues(),flask,'a',flask.at-1).multiplier,1);
+  f.step(flask.at);const pool=f.director.cues().find(q=>q.kind==='mold-pool');assert(pool&&pool.kind==='mold-pool');assert(f.hurt.some(h=>h.id==='a'));assert.equal(serviceMovement(f.director.cues(),pool,'a',pool.at).multiplier,.65);
   f.c.targets[0].x=100;f.step(pool.at+1);const held=f.director.cues().find(q=>q.id===pool.id);assert(held&&held.kind==='mold-pool');assert.equal(held.x,pool.x);
 });
 

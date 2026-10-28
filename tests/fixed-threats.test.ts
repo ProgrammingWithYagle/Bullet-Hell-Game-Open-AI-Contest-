@@ -162,7 +162,7 @@ test('protocol-thirteen Practice migration reclassifies boundary contracts witho
   const migrated = Game.restoreOffline(old).offlineCheckpoint()!;
   assert.equal(JSON.stringify(old), original);
   assert.equal(migrated.protocolVersion, PROTOCOL);
-  assert.equal(PROTOCOL, 32);
+  assert.equal(PROTOCOL, 33);
   assert.equal(migrated.settings.runId, old.settings.runId);
   assert.deepEqual(migrated.player.progress, old.player.progress);
   assert.equal(migrated.player.coins, old.player.coins);

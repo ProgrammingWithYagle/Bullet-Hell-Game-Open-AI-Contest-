@@ -1,3 +1,5 @@
+import {resolveEncounterAssetUrls} from '../src/client/encounter-asset-urls.ts';
+import alchemistLab from '../assets/production/motion/alchemist-lab-library.json';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -103,11 +105,18 @@ test('startup loads every boss identity and shared actor but no deferred full bo
   );
 });
 
-test('all 63 exact identity references keep their original atlas, dimensions, origin and world size', () => {
+test('all 63 exact identity references retain their source pixels, dimensions, origin and world size through recorded atlas extensions', () => {
   for (const entry of bossTextureReferences.entries) {
     const original = encounterArt.find((e) => e.bossId === entry.bossId)!;
     assert.equal(sha(entry.sourceAtlas), entry.sourceAtlasSha256);
-    assert.equal(original.atlasSha256, entry.sourceAtlasSha256);
+    if(entry.bossId==='alchemist'){
+      assert.equal(alchemistLab.preservedActionAtlas,entry.sourceAtlas);
+      assert.equal(alchemistLab.preservedActionAtlasSha256,entry.sourceAtlasSha256);
+      assert.equal(alchemistLab.preservedActionFrames,8);
+      assert.equal(original.atlasSha256,alchemistLab.entry.atlasSha256);
+      assert.equal(sha(original.atlas),alchemistLab.entry.atlasSha256);
+      // The independent Stage1 RGBA gate reconstructs all eight preserved action frames.
+    }else assert.equal(original.atlasSha256, entry.sourceAtlasSha256);
     assert.equal(sha(entry.reference), entry.referenceSha256);
     assert.deepEqual(entry.sourceOrigin, original.origin);
     assert.equal(entry.sourceDisplayCell, original.displayCell);
@@ -116,6 +125,9 @@ test('all 63 exact identity references keep their original atlas, dimensions, or
     assert.equal(png.readUInt32BE(20), entry.referenceHeight);
     assert.equal(png[25], 6);
   }
+  const largest=encounterArt.filter(e=>ids.some(id=>id===e.bossId)).map(e=>{const png=readFileSync(e.atlas);return png.readUInt32BE(16)*png.readUInt32BE(20)*4;}).sort((a,b)=>b-a);
+  const currentDecodedMaximum=bossTextureReferences.summary.startupDecodedBytes+largest.slice(0,BOSS_ATLAS_CAPACITY).reduce((a,b)=>a+b,0);
+  assert(currentDecodedMaximum<bossTextureReferences.summary.baselineDecodedBytes*.3,'Current atlas dimensions exceed the bounded texture budget');
   assert(
     bossTextureReferences.summary.maximumCachedDecodedBytes <
       bossTextureReferences.summary.baselineDecodedBytes * 0.3,
@@ -237,4 +249,12 @@ test('a live boss sprite releases its old atlas for its own identity before the 
   };
   retireBossTexture(id, sprite, textures);
   assert.deepEqual(events, ['stop', id + '-reference', 'remove:' + id + '-action']);
+});
+
+test('selected pose metadata resolves exact runtime atlas URLs and rejects missing or duplicate bindings',()=>{
+ const urls=Object.fromEntries(encounterArt.map(e=>['../../'+e.atlas,'fixture/'+e.atlas]));
+ const resolved=resolveEncounterAssetUrls(encounterArt,urls);assert.equal(resolved.alchemist,'fixture/'+alchemistLab.entry.atlas);
+ assert.equal(Object.keys(resolved).length,encounterArt.length);
+ const missing={...urls};delete missing['../../'+alchemistLab.entry.atlas];assert.throws(()=>resolveEncounterAssetUrls(encounterArt,missing),/Missing selected encounter atlas URL: alchemist/);
+ assert.throws(()=>resolveEncounterAssetUrls([encounterArt[0],encounterArt[0]],urls),/Duplicate encounter atlas identity/);
 });

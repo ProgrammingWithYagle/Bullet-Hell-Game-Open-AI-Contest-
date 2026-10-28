@@ -1,20 +1,154 @@
-// Authored translations; native-language acceptance remains open.
-const rows={
- en:['Pure Culture','Catalyst','Decant','Reflux','The pale mixing path is harmless. Leave the three numbered culture circles before they fill.','A catalyst follows the marked mixing road after a fresh warning. Step to either side of its path.','A separately warned return drains the cultures it reaches. Emptied flasks no longer hurt or slow.','Read each new direction: Brutal runs three catalyst legs; Crazed adds a fourth. Each leg warns again.','The Alchemist walks a clear mixing road and marks up to three cultures. Pools warn for 1.3 seconds and share one hit per half-second; active mold slows. Early pools last five seconds. In Decant/Reflux they can last twelve seconds, but the returning catalyst drains them. Every catalyst locks its path and warns for 1.5 seconds. The pale walking line is harmless; the moving orb is dangerous.','Brutal adds 30 warned vial needles after the reaction. Their central gap and every direction are shown before release. Reflux has three fresh catalyst legs.','Crazed keeps the first 30 Brutal needles and extends the spray to 90 with extra crossing repeats. Reflux adds a fourth separately warned catalyst. Read the purple rays and remaining-wave marks.'],
- 'zh-Hans':['纯培养','催化','倾析','回流','浅色调配路线无害。三个编号培养圈填满前离开。','催化球在重新预警后沿标记路线移动。向路线任意一侧躲开。','单独预警的返程会排空沿途培养液。空瓶不再造成伤害或减速。','留意每次新方向：Brutal移动三段，Crazed增加第四段。每段重新预警。','炼金师沿畅通路线移动，标记最多三个培养圈。液池预警1.3秒，共享每半秒一次的伤害限制；活性霉液减速。前期液池持续5秒。倾析和回流阶段最长12秒，但返程催化球会排空它们。每次催化球锁定路线并预警1.5秒。浅色步行线无害，移动球有危险。','Brutal在反应后增加30枚预警瓶针弹。中央缺口与所有方向提前显示。回流阶段有三段新预警的催化移动。','Crazed保留Brutal前30枚针弹，并以额外交叉连射增至90枚。回流增加第四段独立预警。注意紫色射线和剩余波次。'],
- 'zh-Hant':['純培養','催化','傾析','回流','淺色調配路線無害。三個編號培養圈填滿前離開。','催化球在重新預警後沿標記路線移動。向路線任意一側躲開。','單獨預警的返程會排空沿途培養液。空瓶不再造成傷害或減速。','留意每次新方向：Brutal移動三段，Crazed增加第四段。每段重新預警。','鍊金師沿暢通路線移動，標記最多三個培養圈。液池預警1.3秒，共享每半秒一次的傷害限制；活性黴液減速。前期液池持續5秒。傾析和回流階段最長12秒，但返程催化球會排空它們。每次催化球鎖定路線並預警1.5秒。淺色步行線無害，移動球有危險。','Brutal在反應後增加30枚預警瓶針彈。中央缺口與所有方向提前顯示。回流階段有三段新預警的催化移動。','Crazed保留Brutal前30枚針彈，並以額外交叉連射增至90枚。回流增加第四段獨立預警。注意紫色射線與剩餘波次。'],
- ja:['純粋培養','触媒','傾瀉','還流','淡い調合線は無害。番号のある3つの培養円が満ちる前に離れよう。','新たな予告の後、触媒が印の道を進む。道の左右へ避けよう。','別の予告がある帰路は、触れた培養液を抜く。空の瓶はダメージも減速も与えない。','向きが変わるたびに確認。Brutalは3区間、Crazedは4区間。それぞれ再予告する。','錬金術師は通れる調合路を歩き、最大3つの培養円を示す。液だまりは1.3秒予告し、重なっても被弾は0.5秒に1回。活性のカビは減速させる。序盤は5秒持続。傾瀉と還流では最大12秒だが、戻る触媒が排液する。触媒は毎回道を固定し1.5秒予告。淡い歩行線は無害で、動く球は危険。','Brutalは反応後に予告付きの瓶針30発を追加。中央の隙間と全方向を先に示す。還流は新しい予告付きで3区間進む。','CrazedはBrutalの最初の30発を保ち、交差連射で90発に延長。還流には別予告の4区間目を追加。紫の線と残りの波数を見よう。'],
- es:['Cultivo puro','Catalizador','Decantación','Reflujo','La ruta pálida es inocua. Sal de los tres cultivos numerados antes de que se llenen.','Un catalizador sigue la ruta tras un nuevo aviso. Apártate hacia cualquier lado.','El regreso tiene su propio aviso y vacía los cultivos que alcanza. Los frascos vacíos no dañan ni ralentizan.','Lee cada nueva dirección: Brutal recorre tres tramos; Crazed añade un cuarto. Cada tramo vuelve a avisar.','El Alquimista camina por una ruta despejada y marca hasta tres cultivos. Los charcos avisan 1,3 s y comparten un impacto por medio segundo; el moho activo ralentiza. Los primeros duran cinco segundos. En Decantación/Reflujo pueden durar doce, pero el catalizador de regreso los vacía. Cada tramo fija su ruta y avisa 1,5 s. La línea pálida es inocua; el orbe móvil es peligroso.','Brutal añade 30 agujas de vial avisadas tras la reacción. El hueco central y todas las direcciones se muestran antes. Reflujo tiene tres tramos con avisos nuevos.','Crazed conserva las primeras 30 agujas de Brutal y amplía la ráfaga a 90 con repeticiones cruzadas. Reflujo añade un cuarto tramo avisado. Lee los rayos morados y las marcas restantes.'],
- fr:['Culture pure','Catalyseur','Décantation','Reflux alchimique','Le trajet pâle est inoffensif. Quitte les trois cultures numérotées avant qu’elles se remplissent.','Un catalyseur suit le trajet après un nouvel avertissement. Écarte-toi sur un côté.','Le retour a son propre signal et vide les cultures atteintes. Les fioles vides ne blessent ni ne ralentissent.','Lis chaque nouvelle direction : Brutal fait trois trajets, Crazed en ajoute un quatrième. Chacun est annoncé.','L’Alchimiste suit un trajet dégagé et marque jusqu’à trois cultures. Les flaques préviennent 1,3 s et partagent un seul impact par demi-seconde ; la moisissure active ralentit. Les premières durent cinq secondes. En Décantation/Reflux, elles durent au plus douze secondes, mais le retour les vide. Chaque catalyseur fixe sa route et prévient 1,5 s. La ligne pâle est inoffensive ; l’orbe mobile est dangereux.','Brutal ajoute 30 aiguilles de fiole annoncées après la réaction. L’ouverture centrale et toutes les directions sont montrées avant. Reflux compte trois trajets avec de nouveaux signaux.','Crazed garde les 30 premières aiguilles de Brutal et porte le jet à 90 avec des répétitions croisées. Reflux ajoute un quatrième trajet annoncé. Lis les rayons violets et les marques restantes.'],
- de:['Reinkultur','Katalysator','Abgießen','Rückfluss','Der helle Mischweg ist harmlos. Verlasse die drei nummerierten Kulturen, bevor sie sich füllen.','Ein Katalysator folgt dem Weg nach einer neuen Warnung. Weiche zur Seite aus.','Der Rückweg hat eine eigene Warnung und leert erreichte Kulturen. Leere Flaschen schaden und verlangsamen nicht mehr.','Lies jede neue Richtung: Brutal läuft drei Strecken, Crazed ergänzt eine vierte. Jede wird neu angekündigt.','Der Alchemist geht einen freien Mischweg und markiert bis zu drei Kulturen. Pfützen warnen 1,3 s und teilen sich einen Treffer je halbe Sekunde; aktiver Schimmel verlangsamt. Frühe Pfützen halten fünf Sekunden. Beim Abgießen/Rückfluss sind es höchstens zwölf, doch der Rückweg leert sie. Jeder Katalysator legt seine Route fest und warnt 1,5 s. Die helle Gehlinie ist harmlos, die bewegte Kugel gefährlich.','Brutal ergänzt 30 angekündigte Flaschennadeln nach der Reaktion. Mittellücke und alle Richtungen sind vorher sichtbar. Rückfluss hat drei neu angekündigte Strecken.','Crazed behält die ersten 30 Brutal-Nadeln und erweitert den Sprühstoß auf 90 mit Kreuzwiederholungen. Rückfluss ergänzt eine vierte Warnstrecke. Beachte violette Linien und übrige Wellenmarken.'],
- 'pt-BR':['Cultura pura','Catalisador','Decantação','Refluxo','A rota clara é inofensiva. Saia das três culturas numeradas antes que encham.','Um catalisador segue a rota após um novo aviso. Desvie para qualquer lado.','A volta tem aviso próprio e esvazia as culturas que alcança. Frascos vazios não ferem nem desaceleram.','Leia cada nova direção: Brutal faz três trajetos; Crazed adiciona um quarto. Cada um avisa de novo.','O Alquimista percorre uma rota livre e marca até três culturas. Poças avisam por 1,3 s e compartilham um acerto por meio segundo; mofo ativo desacelera. As primeiras duram cinco segundos. Em Decantação/Refluxo podem durar doze, mas o catalisador de volta as esvazia. Cada trajeto é fixo e avisa por 1,5 s. A linha clara é inofensiva; o orbe móvel é perigoso.','Brutal adiciona 30 agulhas de frasco avisadas após a reação. A abertura central e todas as direções aparecem antes. Refluxo tem três trajetos com novos avisos.','Crazed mantém as primeiras 30 agulhas de Brutal e amplia o jato para 90 com repetições cruzadas. Refluxo adiciona um quarto trajeto avisado. Leia os raios roxos e as marcas restantes.'],
- ru:['Чистая культура','Катализатор','Декантация','Рефлюкс','Светлый путь смешивания безопасен. Покинь три пронумерованные культуры до заполнения.','После нового предупреждения катализатор идёт по отмеченному пути. Отойди в любую сторону.','Возврат отдельно предупреждён и осушает достигнутые культуры. Пустые колбы не ранят и не замедляют.','Следи за каждым направлением: Brutal проходит три участка, Crazed добавляет четвёртый. Каждый снова предупреждён.','Алхимик идёт по свободному пути и отмечает до трёх культур. Лужи предупреждают 1,3 с и вместе наносят не более одного удара за полсекунды; активная плесень замедляет. Ранние лужи живут пять секунд. В Декантации/Рефлюксе — до двенадцати, но возвратный катализатор их осушает. Каждый путь фиксируется с предупреждением 1,5 с. Светлая линия безопасна; движущийся шар опасен.','Brutal добавляет 30 предупреждённых игл колбы после реакции. Центральный проход и все направления видны заранее. Рефлюкс имеет три заново предупреждённых участка.','Crazed сохраняет первые 30 игл Brutal и продлевает залп до 90 перекрёстными повторами. Рефлюкс добавляет четвёртый отдельно предупреждённый участок. Смотри на фиолетовые лучи и оставшиеся метки.'],
- hi:['शुद्ध संवर्धन','उत्प्रेरक','निथारना','वापसी चक्र','हल्का मिश्रण रास्ता सुरक्षित है। तीन अंक वाले संवर्धन घेरे भरने से पहले छोड़ें।','नई चेतावनी के बाद उत्प्रेरक चिह्नित रास्ते पर जाता है। रास्ते के किसी भी ओर हटें।','अलग चेतावनी वाली वापसी छुए संवर्धन को खाली करती है। खाली शीशियाँ नुकसान या धीमापन नहीं देतीं।','हर नई दिशा देखें: Brutal तीन चरण चलता है; Crazed चौथा जोड़ता है। हर चरण फिर चेतावनी देता है।','कीमियागर खाली मिश्रण रास्ते पर चलकर अधिकतम तीन संवर्धन चिह्नित करता है। कुंड 1.3 सेकंड चेतावनी देते हैं और सब मिलकर प्रति आधे सेकंड एक चोट देते हैं; सक्रिय फफूंद धीमा करती है। शुरुआती कुंड पाँच सेकंड रहते हैं। निथारना/वापसी चक्र में बारह तक रहते हैं, लेकिन लौटता उत्प्रेरक उन्हें खाली करता है। हर उत्प्रेरक 1.5 सेकंड चेतावनी देकर रास्ता तय करता है। हल्की रेखा सुरक्षित है; चलती गेंद खतरनाक है।','Brutal प्रतिक्रिया के बाद 30 चेतावनी वाली शीशी सुइयाँ जोड़ता है। बीच का खाली भाग और सभी दिशाएँ पहले दिखती हैं। वापसी चक्र में तीन नए चेतावनी वाले चरण हैं।','Crazed पहली 30 Brutal सुइयाँ रखकर अतिरिक्त तिरछे दोहराव से झड़ी 90 तक बढ़ाता है। वापसी चक्र चौथा अलग चेतावनी वाला चरण जोड़ता है। बैंगनी रेखाएँ और बचे निशान देखें।'],
- ar:['مزرعة نقية','المحفز','الترويق','الارتجاع','مسار الخلط الفاتح آمن. غادر دوائر المزارع الثلاث المرقمة قبل امتلائها.','يسلك المحفز المسار المحدد بعد تحذير جديد. تنح إلى أي من الجانبين.','للعودة تحذير مستقل وهي تفرغ المزارع التي تصلها. القوارير الفارغة لا تؤذي ولا تبطئ.','راقب كل اتجاه جديد: Brutal يقطع ثلاثة مقاطع وCrazed يضيف رابعا. كل مقطع يحذر مجددا.','يسير الخيميائي في طريق خال ويحدد حتى ثلاث مزارع. تحذر البرك 1.3 ثانية وتشترك في ضربة واحدة كل نصف ثانية؛ العفن النشط يبطئ. البرك المبكرة تدوم خمس ثوان. في الترويق والارتجاع قد تدوم اثنتي عشرة، لكن المحفز العائد يفرغها. كل محفز يثبت طريقه ويحذر 1.5 ثانية. خط المشي الفاتح آمن والكرة المتحركة خطرة.','يضيف Brutal ثلاثين إبرة قارورة محذرا منها بعد التفاعل. تظهر الفجوة الوسطى وكل الاتجاهات قبل الإطلاق. للارتجاع ثلاثة مقاطع بتحذيرات جديدة.','يبقي Crazed أول ثلاثين إبرة من Brutal ويمد الرش إلى تسعين بتكرارات متقاطعة. يضيف الارتجاع مقطعا رابعا بتحذير مستقل. راقب الأشعة البنفسجية وعلامات الموجات المتبقية.'],
- bn:['বিশুদ্ধ চাষ','অনুঘটক','তরল নিষ্কাশন','প্রত্যাবর্তন','হালকা মেশানোর পথ নিরাপদ। তিনটি নম্বরযুক্ত চাষের বৃত্ত ভরার আগে ছাড়ুন।','নতুন সতর্কতার পর অনুঘটক চিহ্নিত পথে যায়। পথের যেকোনো পাশে সরুন।','ফেরার আলাদা সতর্কতা থাকে এবং ছোঁয়া চাষ খালি করে। খালি শিশি ক্ষতি বা ধীরগতি দেয় না।','প্রতিটি নতুন দিক দেখুন: Brutal তিন ধাপ যায়, Crazed চতুর্থ যোগ করে। প্রতিটি আবার সতর্ক করে।','অ্যালকেমিস্ট বাধামুক্ত মেশানোর পথে চলে সর্বোচ্চ তিনটি চাষ চিহ্নিত করে। পুকুর 1.3 সেকেন্ড সতর্ক করে এবং সব মিলে আধা সেকেন্ডে একবার আঘাত দেয়; সক্রিয় ছাঁচ ধীর করে। প্রথম পুকুর পাঁচ সেকেন্ড থাকে। নিষ্কাশন/প্রত্যাবর্তনে বারো পর্যন্ত থাকতে পারে, তবে ফেরার অনুঘটক খালি করে। প্রতিটি পথ স্থির করে 1.5 সেকেন্ড সতর্ক করে। হালকা হাঁটার রেখা নিরাপদ; চলন্ত গোলা বিপজ্জনক।','Brutal বিক্রিয়ার পরে 30টি সতর্ক শিশির সূচ যোগ করে। মাঝের ফাঁক ও সব দিক আগে দেখায়। প্রত্যাবর্তনে তিনটি নতুন সতর্ক ধাপ আছে।','Crazed প্রথম 30টি Brutal সূচ রেখে বাড়তি আড়াআড়ি পুনরাবৃত্তিতে ঝাঁক 90টি করে। প্রত্যাবর্তনে চতুর্থ আলাদা সতর্ক ধাপ যোগ হয়। বেগুনি রেখা ও বাকি চিহ্ন দেখুন।'],
- id:['Kultur murni','Katalis','Dekantasi','Refluks','Jalur campur pucat tidak berbahaya. Tinggalkan tiga kultur bernomor sebelum terisi.','Katalis mengikuti jalur bertanda setelah peringatan baru. Menyingkirlah ke salah satu sisi.','Jalur balik memiliki peringatan sendiri dan mengosongkan kultur yang dicapai. Botol kosong tidak melukai atau memperlambat.','Baca tiap arah baru: Brutal menempuh tiga ruas; Crazed menambah ruas keempat. Setiap ruas memperingatkan ulang.','Alkemis berjalan di jalur bebas lalu menandai maksimal tiga kultur. Kolam memperingatkan 1,3 d dan berbagi satu benturan per setengah detik; jamur aktif memperlambat. Kolam awal bertahan lima detik. Dekantasi/Refluks bisa dua belas detik, tetapi katalis balik mengosongkannya. Tiap katalis mengunci jalur dan memperingatkan 1,5 d. Garis jalan pucat aman; bola bergerak berbahaya.','Brutal menambah 30 jarum botol berperingatan setelah reaksi. Celah tengah dan semua arah terlihat sebelum tembakan. Refluks memiliki tiga ruas berperingatan baru.','Crazed mempertahankan 30 jarum Brutal pertama dan memperluas semprotan ke 90 dengan ulangan menyilang. Refluks menambah ruas keempat berperingatan terpisah. Baca sinar ungu dan tanda gelombang tersisa.'],
- ur:['خالص افزائش','عمل انگیز','نچوڑ','واپسی چکر','ہلکا آمیزش راستہ محفوظ ہے۔ تین نمبر والے افزائشی دائرے بھرنے سے پہلے چھوڑیں۔','نئی تنبیہ کے بعد عمل انگیز نشان زد راستے پر جاتا ہے۔ راستے کے کسی بھی طرف ہٹیں۔','واپسی کی الگ تنبیہ ہے اور وہ پہنچنے والی افزائش خالی کرتی ہے۔ خالی شیشیاں نقصان یا سستی نہیں دیتیں۔','ہر نئی سمت دیکھیں: Brutal تین حصے چلتا ہے، Crazed چوتھا بڑھاتا ہے۔ ہر حصہ پھر تنبیہ کرتا ہے۔','کیمیاگر خالی آمیزش راستے پر چل کر زیادہ سے زیادہ تین افزائش نشان زد کرتا ہے۔ تالاب 1.3 سیکنڈ تنبیہ دیتے اور مشترکہ طور پر آدھے سیکنڈ میں ایک ضرب دیتے ہیں؛ فعال پھپھوندی سست کرتی ہے۔ ابتدائی تالاب پانچ سیکنڈ رہتے ہیں۔ نچوڑ/واپسی میں بارہ تک رہ سکتے ہیں، مگر لوٹتا عمل انگیز خالی کر دیتا ہے۔ ہر عمل انگیز راستہ مقرر کر کے 1.5 سیکنڈ تنبیہ دیتا ہے۔ ہلکی چلنے کی لکیر محفوظ اور چلتا گولا خطرناک ہے۔','Brutal ردعمل کے بعد 30 تنبیہ والی شیشی سوئیاں بڑھاتا ہے۔ درمیانی خلا اور سب سمتیں پہلے دکھتی ہیں۔ واپسی چکر کے تین نئے تنبیہ والے حصے ہیں۔','Crazed پہلی 30 Brutal سوئیاں برقرار رکھ کر مزید ترچھے دہراؤ سے چھڑکاؤ 90 تک بڑھاتا ہے۔ واپسی میں چوتھا الگ تنبیہ والا حصہ آتا ہے۔ جامنی شعاعیں اور باقی نشان دیکھیں۔'],
- ko:['순수 배양','촉매','따라내기','환류','옅은 혼합 경로는 안전합니다. 번호가 있는 세 배양 원이 차기 전에 벗어나세요.','새 경고 후 촉매가 표시된 길을 따라갑니다. 길의 양옆으로 피하세요.','별도로 경고하는 귀환은 닿은 배양액을 비웁니다. 빈 병은 피해나 감속을 주지 않습니다.','새 방향마다 확인하세요. Brutal은 세 구간, Crazed는 네 번째 구간을 추가합니다. 각 구간마다 다시 경고합니다.','연금술사는 통과할 수 있는 혼합 길을 걷고 최대 세 배양액을 표시합니다. 웅덩이는 1.3초 경고하고 모두 합쳐 0.5초당 한 번 피해를 주며, 활성 곰팡이는 감속시킵니다. 초반 웅덩이는 5초간 남습니다. 따라내기와 환류에서는 최대 12초지만 돌아오는 촉매가 비웁니다. 촉매는 매번 길을 고정하고 1.5초 경고합니다. 옅은 걷기 선은 안전하고 움직이는 구체는 위험합니다.','Brutal은 반응 뒤 경고된 병 바늘 30발을 추가합니다. 가운데 틈과 모든 방향이 발사 전에 보입니다. 환류는 새로 경고하는 세 구간입니다.','Crazed는 Brutal의 첫 30발을 유지하고 교차 반복으로 90발까지 늘립니다. 환류에는 별도로 경고하는 네 번째 구간을 추가합니다. 보라색 선과 남은 파동 표시를 보세요.']
+const keys=['phase.0','phase.1','phase.2','phase.3','phaseHint.0','phaseHint.1','phaseHint.2','phaseHint.3','description','brutalHelp','crazedHelp'];
+const L={
+en:[
+'Titration','Distillation','Thermal Runaway','Fractionation',
+'Amber triangles are acid; blue squares are alkali. Bait the opposite throw near a pool, then leave. Mixing them makes pale coolant.',
+'Vapor crosses the field. Dash through the bank or use coolant; the vapor opens around coolant.',
+'Pressure vessels swell before rupture. Make coolant beside a vessel to cool it before its marked burst.',
+'Two vapor banks cross in sequence, each with a fresh warning. Cool the vessels and keep a route through each bank.',
+'Flasks aim at survivors and mark their landing for 1.4 seconds. Acid and alkali both hurt and slow. Their mixture clears the reagents into coolant that absorbs vapor and cools vessels. Coolant is a reaction product, not a pickup.',
+'Brutal links matching reagents into two timed eruptions. Neutralize either pool before the first eruption to cancel the pair.',
+'Crazed adds a violet catalyst. Coolant quenches it and is spent; unmixed reagents cause a fresh warned eruption. A catalyst on bare ground leaves a hazardous pool.'
+],
+de:[
+'Säure-Basen-Titration','Heißdestillation','Thermisches Durchgehen','Fraktionierung',
+'Bernsteinfarbene Dreiecke sind Säure, blaue Quadrate Lauge. Locke den entgegengesetzten Wurf an eine Pfütze und weiche aus. Die Mischung wird zu hellem Kühlmittel.',
+'Dampf zieht über das Feld. Durchquere die Front mit einem Sprint oder nutze Kühlmittel; dort öffnet sich der Dampf.',
+'Druckbehälter schwellen vor dem Bersten an. Erzeuge daneben Kühlmittel, um sie vor dem markierten Ausbruch abzukühlen.',
+'Zwei Dampffronten folgen aufeinander, jeweils mit neuer Warnung. Kühle die Behälter und halte für jede Front einen Weg frei.',
+'Kolben zielen auf Überlebende und markieren die Landung 1,4 Sekunden lang. Säure und Lauge verletzen und verlangsamen. Ihre Mischung beseitigt beide Stoffe und erzeugt Kühlmittel, das Dampf abfängt und Behälter kühlt. Es ist ein Reaktionsprodukt, kein Sammelobjekt.',
+'Brutal verbindet gleiche Reagenzien zu zwei zeitversetzten Ausbrüchen. Neutralisiere eine Pfütze vor dem ersten Ausbruch, um beide abzusagen.',
+'Crazed ergänzt einen violetten Katalysator. Kühlmittel löscht ihn und wird verbraucht; ungemischte Reagenzien lösen einen neu gewarnten Ausbruch aus. Auf freiem Boden bleibt eine gefährliche Pfütze.'
+],
+es:[
+'Valoración ácido-base','Destilación','Descontrol térmico','Fraccionamiento',
+'Los triángulos ámbar son ácido; los cuadrados azules, álcali. Atrae el lanzamiento opuesto cerca de un charco y sal. La mezcla crea refrigerante pálido.',
+'El vapor atraviesa el campo. Cruza la nube con una esquiva o usa refrigerante: el vapor se abre a su alrededor.',
+'Los recipientes a presión se hinchan antes de romperse. Crea refrigerante junto a uno para enfriarlo antes del estallido marcado.',
+'Dos nubes de vapor cruzan sucesivamente, cada una con un aviso nuevo. Enfría los recipientes y conserva una ruta para cada nube.',
+'Los frascos apuntan a los supervivientes y marcan su caída durante 1,4 segundos. Ácido y álcali dañan y ralentizan. Mezclarlos elimina ambos y crea refrigerante que absorbe vapor y enfría recipientes. Es un producto de reacción, no un objeto recogible.',
+'Brutal enlaza reactivos iguales en dos erupciones programadas. Neutraliza cualquiera de los charcos antes de la primera para cancelar ambas.',
+'Crazed añade un catalizador violeta. El refrigerante lo apaga y se consume; los reactivos sin mezclar provocan una nueva erupción avisada. En suelo vacío deja un charco peligroso.'
+],
+fr:[
+'Titrage acide-base','Distillation chaude','Emballement thermique','Fractionnement',
+'Les triangles ambrés sont acides ; les carrés bleus sont alcalins. Attirez le jet opposé près d’une flaque, puis partez. Le mélange devient un liquide de refroidissement pâle.',
+'La vapeur traverse le terrain. Franchissez le front avec une esquive ou utilisez le liquide de refroidissement : la vapeur s’y ouvre.',
+'Les récipients sous pression gonflent avant de céder. Créez du liquide de refroidissement à côté pour les refroidir avant l’explosion annoncée.',
+'Deux fronts de vapeur se succèdent, chacun avec un nouvel avertissement. Refroidissez les récipients et gardez un passage pour chaque front.',
+'Les fioles visent les survivants et annoncent leur point de chute pendant 1,4 seconde. Acide et alcali blessent et ralentissent. Leur mélange élimine les réactifs et produit un liquide qui absorbe la vapeur et refroidit les récipients. Ce n’est pas un objet à ramasser.',
+'Brutal relie des réactifs identiques pour deux éruptions programmées. Neutralisez une flaque avant la première pour annuler les deux.',
+'Crazed ajoute un catalyseur violet. Le liquide de refroidissement l’éteint et se consume ; les réactifs non mélangés déclenchent une nouvelle éruption annoncée. Sur sol vide, il laisse une flaque dangereuse.'
+],
+'pt-BR':[
+'Titulação ácido-base','Destilação','Descontrole térmico','Fracionamento',
+'Triângulos âmbar são ácido; quadrados azuis são álcali. Atraia o arremesso oposto para perto de uma poça e saia. A mistura vira um líquido de resfriamento claro.',
+'O vapor cruza o campo. Atravesse a frente com uma esquiva ou use o líquido de resfriamento; o vapor abre espaço ao redor dele.',
+'Os vasos de pressão incham antes de romper. Crie líquido de resfriamento ao lado para esfriá-los antes da explosão marcada.',
+'Duas frentes de vapor passam em sequência, cada uma com um novo aviso. Resfrie os vasos e mantenha uma rota para cada frente.',
+'Os frascos miram nos sobreviventes e marcam o impacto por 1,4 segundo. Ácido e álcali causam dano e lentidão. Misturá-los elimina os reagentes e cria um líquido que absorve vapor e resfria vasos. Ele é produto da reação, não um item coletável.',
+'Brutal liga reagentes iguais em duas erupções programadas. Neutralize uma das poças antes da primeira para cancelar as duas.',
+'Crazed adiciona um catalisador violeta. O líquido de resfriamento o apaga e é consumido; reagentes não misturados causam uma nova erupção avisada. Em solo vazio, deixa uma poça perigosa.'
+],
+ru:[
+'Кислотно-щелочное титрование','Перегонка','Тепловой разгон','Фракционирование',
+'Янтарные треугольники — кислота, синие квадраты — щёлочь. Подманите противоположный бросок к луже и отойдите. Смесь станет светлым охладителем.',
+'Пар проходит через всё поле. Пройдите фронт рывком или используйте охладитель: вокруг него пар расступается.',
+'Сосуды под давлением раздуваются перед разрывом. Создайте рядом охладитель, чтобы остудить сосуд до отмеченного взрыва.',
+'Два паровых фронта идут по очереди, каждый с новым предупреждением. Охлаждайте сосуды и сохраняйте путь через каждый фронт.',
+'Колбы целятся в выживших и отмечают место падения за 1,4 секунды. Кислота и щёлочь ранят и замедляют. Их смесь убирает реагенты и создаёт охладитель, поглощающий пар и охлаждающий сосуды. Это продукт реакции, а не предмет для сбора.',
+'Brutal связывает одинаковые реагенты в два отложенных извержения. Нейтрализуйте любую лужу до первого извержения, чтобы отменить оба.',
+'Crazed добавляет фиолетовый катализатор. Охладитель гасит его и расходуется; несмешанные реагенты вызывают новое извержение с предупреждением. На пустом месте остаётся опасная лужа.'
+],
+ja:[
+'酸塩基滴定','蒸留','熱暴走','分留',
+'琥珀色の三角は酸、青い四角はアルカリ。反対の薬液を水たまりの近くへ誘導して離れよう。混ざると淡い冷却液になる。',
+'蒸気が戦場を横切る。ダッシュで前線を抜けるか冷却液を使おう。冷却液の周りでは蒸気が途切れる。',
+'圧力容器は破裂前に膨らむ。容器のそばで冷却液を作り、予告された爆発の前に冷やそう。',
+'二つの蒸気前線が順番に通り、それぞれ新たな予告が出る。容器を冷やし、各前線を抜ける道を確保しよう。',
+'フラスコは生存者を狙い、着地点を1.4秒間予告する。酸もアルカリもダメージと減速を与える。混ぜると薬液が消え、蒸気を吸収して容器を冷やす冷却液になる。反応生成物であり、拾うアイテムではない。',
+'Brutalでは同じ薬液が結ばれ、時間差で二度噴出する。最初の噴出前にどちらかを中和すれば両方を止められる。',
+'Crazedでは紫の触媒が加わる。冷却液は触媒を消して消費される。未混合の薬液に当たると、新たな予告後に噴出する。何もない床では危険な水たまりを残す。'
+],
+ko:[
+'산염기 적정','증류','열 폭주','분별 증류',
+'호박색 삼각형은 산, 파란 사각형은 알칼리다. 반대 약액 투척을 웅덩이 근처로 유도한 뒤 벗어나자. 섞이면 옅은 냉각액이 된다.',
+'증기가 전장을 가로지른다. 대시로 전선을 통과하거나 냉각액을 이용하자. 냉각액 주변에서는 증기가 갈라진다.',
+'압력 용기는 파열 전에 부푼다. 옆에서 냉각액을 만들어 예고된 폭발 전에 식히자.',
+'두 증기 전선이 차례로 지나가며 각각 새 경고가 나온다. 용기를 식히고 각 전선을 통과할 길을 확보하자.',
+'플라스크는 생존자를 겨냥하며 착지 지점을 1.4초 동안 예고한다. 산과 알칼리는 모두 피해와 감속을 준다. 섞으면 약액이 사라지고 증기를 흡수하며 용기를 식히는 냉각액이 된다. 주울 물건이 아니라 반응 생성물이다.',
+'Brutal은 같은 약액을 연결해 두 번의 시간차 분출을 일으킨다. 첫 분출 전에 어느 한 웅덩이든 중화하면 둘 다 취소된다.',
+'Crazed는 보라색 촉매를 추가한다. 냉각액이 촉매를 끄면 냉각액도 소모된다. 섞이지 않은 약액에서는 새 경고 후 분출이 발생한다. 빈 바닥에는 위험한 웅덩이를 남긴다.'
+],
+'zh-Hans':[
+'酸碱滴定','蒸馏','热失控','分馏',
+'琥珀色三角是酸，蓝色方块是碱。把相反药液的投掷引到积液旁再离开，混合后会生成浅色冷却液。',
+'蒸气会横穿战场。冲刺穿过蒸气带，或利用冷却液；蒸气会在冷却液周围让开。',
+'压力容器会在破裂前膨胀。在旁边制造冷却液，赶在标记的爆炸前将其冷却。',
+'两道蒸气带依次通过，每道都有新的预警。冷却容器，并为每道蒸气保留通路。',
+'烧瓶瞄准幸存者，并预警落点1.4秒。酸与碱都会伤害并减速。混合可清除药液，生成能吸收蒸气、冷却容器的冷却液。它是反应产物，不是拾取物。',
+'Brutal会连接同种药液，造成两次定时喷发。第一次喷发前中和任意一处积液，即可取消两次喷发。',
+'Crazed会加入紫色催化剂。冷却液可淬灭催化剂，但也会被消耗；未混合的药液会引发另一次有预警的喷发。落在空地上则留下危险积液。'
+],
+'zh-Hant':[
+'酸鹼滴定','蒸餾','熱失控','分餾',
+'琥珀色三角是酸，藍色方塊是鹼。把相反藥液的投擲引到積液旁再離開，混合後會生成淺色冷卻液。',
+'蒸氣會橫穿戰場。衝刺穿過蒸氣帶，或利用冷卻液；蒸氣會在冷卻液周圍讓開。',
+'壓力容器會在破裂前膨脹。在旁邊製造冷卻液，趕在標記的爆炸前將它冷卻。',
+'兩道蒸氣帶依序通過，每道都有新的預警。冷卻容器，並為每道蒸氣保留通路。',
+'燒瓶瞄準倖存者，並預警落點1.4秒。酸與鹼都會傷害並減速。混合可清除藥液，生成能吸收蒸氣、冷卻容器的冷卻液。它是反應產物，不是拾取物。',
+'Brutal會連接同種藥液，造成兩次定時噴發。第一次噴發前中和任意一處積液，即可取消兩次噴發。',
+'Crazed會加入紫色催化劑。冷卻液可淬滅催化劑，但也會被消耗；未混合的藥液會引發另一次有預警的噴發。落在空地上則留下危險積液。'
+],
+id:[
+'Titrasi asam-basa','Penyulingan','Pelarian termal','Fraksinasi',
+'Segitiga jingga adalah asam; kotak biru adalah basa. Pancing lemparan lawan ke dekat genangan lalu menjauh. Campurannya menjadi cairan pendingin pucat.',
+'Uap melintasi arena. Terobos dengan dasbor atau gunakan pendingin; uap membuka celah di sekitar pendingin.',
+'Bejana bertekanan mengembang sebelum pecah. Buat pendingin di dekatnya sebelum ledakan yang ditandai.',
+'Dua barisan uap melintas berurutan, masing-masing dengan peringatan baru. Dinginkan bejana dan sisakan jalur melewati tiap barisan.',
+'Labu membidik penyintas dan menandai titik jatuh selama 1,4 detik. Asam dan basa sama-sama melukai dan memperlambat. Campurannya menghapus pereaksi dan menghasilkan pendingin yang menyerap uap serta mendinginkan bejana. Ini hasil reaksi, bukan barang pungutan.',
+'Brutal menghubungkan pereaksi sejenis menjadi dua semburan terjadwal. Netralkan salah satu genangan sebelum semburan pertama untuk membatalkan keduanya.',
+'Crazed menambah katalis ungu. Pendingin memadamkannya lalu habis; pereaksi yang belum tercampur memicu semburan baru dengan peringatan. Tanah kosong menjadi genangan berbahaya.'
+],
+ar:[
+'معايرة حمض وقاعدة','التقطير','انفلات حراري','تقطير تجزيئي',
+'المثلثات الكهرمانية حمض، والمربعات الزرقاء قاعدة. استدرج الرمية المعاكسة قرب البركة ثم ابتعد. ينتج عن المزج سائل تبريد باهت.',
+'يعبر البخار الساحة. اندفع عبر جبهته أو استخدم سائل التبريد؛ ينفتح البخار حوله.',
+'تنتفخ أوعية الضغط قبل التمزق. كوّن سائل تبريد بجوار الوعاء لتبريده قبل الانفجار المحدد.',
+'تعبر جبهتا بخار بالتتابع، ولكل منهما تحذير جديد. برّد الأوعية واحتفظ بمسار لعبور كل جبهة.',
+'تستهدف القوارير الناجين وتحدد موضع السقوط لمدة 1.4 ثانية. يؤذي الحمض والقاعدة ويبطئان الحركة. يزيل مزجهما الكواشف ويكوّن سائل تبريد يمتص البخار ويبرد الأوعية. إنه ناتج تفاعل، وليس غرضًا يُلتقط.',
+'يربط Brutal الكواشف المتماثلة في ثورانين موقوتين. حيّد أي بركة قبل الثوران الأول لإلغاء الاثنين.',
+'يضيف Crazed محفزًا بنفسجيًا. يطفئه سائل التبريد ويُستهلك؛ وتسبب الكواشف غير الممزوجة ثورانًا جديدًا بتحذير. يترك على الأرض الخالية بركة خطرة.'
+],
+hi:[
+'अम्ल-क्षार अनुमापन','आसवन','तापीय अनियंत्रण','प्रभाजी आसवन',
+'अंबर त्रिकोण अम्ल हैं और नीले वर्ग क्षार। विपरीत बोतल को पोखर के पास गिरने का लालच दें, फिर हटें। मिश्रण हल्का शीतलक बनाता है।',
+'भाप मैदान पार करती है। डैश से उसकी पट्टी पार करें या शीतलक का उपयोग करें; उसके आसपास भाप हट जाती है।',
+'दबाव-पात्र फटने से पहले फूलते हैं। चिह्नित विस्फोट से पहले उनके पास शीतलक बनाकर ठंडा करें।',
+'भाप की दो पट्टियाँ क्रम से आती हैं और हर बार नई चेतावनी मिलती है। पात्रों को ठंडा करें और हर पट्टी के लिए रास्ता रखें।',
+'शीशियाँ जीवित बचे खिलाड़ियों को निशाना बनाती हैं और गिरने का स्थान 1.4 सेकंड पहले दिखाती हैं। अम्ल और क्षार दोनों क्षति पहुँचाकर धीमा करते हैं। उनका मिश्रण अभिकर्मक हटाकर भाप सोखने और पात्र ठंडे करने वाला शीतलक बनाता है। यह प्रतिक्रिया का उत्पाद है, उठाने की वस्तु नहीं।',
+'Brutal समान अभिकर्मकों को जोड़कर दो समयबद्ध विस्फोट करता है। पहले विस्फोट से पहले किसी भी पोखर को उदासीन करके दोनों रोकें।',
+'Crazed बैंगनी उत्प्रेरक जोड़ता है। शीतलक उसे बुझाकर खर्च हो जाता है; बिना मिले अभिकर्मक नई चेतावनी वाला विस्फोट करते हैं। खाली ज़मीन पर खतरनाक पोखर बनता है।'
+],
+bn:[
+'অম্ল-ক্ষার টাইট্রেশন','পাতন','তাপীয় নিয়ন্ত্রণহানি','আংশিক পাতন',
+'অ্যাম্বার ত্রিভুজ অম্ল, নীল বর্গ ক্ষার। বিপরীত তরলের নিক্ষেপ জমা তরলের কাছে টেনে এনে সরে যান। মিশ্রণে ফ্যাকাশে শীতলকারক তৈরি হয়।',
+'বাষ্প মাঠ পেরিয়ে যায়। ড্যাশ দিয়ে তার রেখা পার হন বা শীতলকারক ব্যবহার করুন; তার চারপাশে বাষ্প সরে যায়।',
+'চাপের পাত্র ফাটার আগে ফুলে ওঠে। চিহ্নিত বিস্ফোরণের আগে পাশে শীতলকারক তৈরি করে ঠান্ডা করুন।',
+'বাষ্পের দুটি রেখা পরপর আসে, প্রতিটির আগে নতুন সতর্কতা থাকে। পাত্র ঠান্ডা করুন এবং প্রতিটি রেখা পার হওয়ার পথ রাখুন।',
+'ফ্লাস্ক বেঁচে থাকা খেলোয়াড়কে নিশানা করে এবং পড়ার স্থান ১.৪ সেকেন্ড দেখায়। অম্ল ও ক্ষার দুটিই ক্ষতি করে ও গতি কমায়। মিশ্রণ বিকারক সরিয়ে বাষ্প শোষণকারী ও পাত্র ঠান্ডা করা শীতলকারক তৈরি করে। এটি বিক্রিয়ার ফল, সংগ্রহ করার বস্তু নয়।',
+'Brutal একই বিকারক জুড়ে দুটি সময়মতো বিস্ফোরণ ঘটায়। প্রথমটির আগে যেকোনো জমা তরল প্রশমিত করলে দুটিই বন্ধ হয়।',
+'Crazed বেগুনি অনুঘটক যোগ করে। শীতলকারক সেটি নেভিয়ে নিজেও শেষ হয়; না-মেশা বিকারক নতুন সতর্কতাসহ বিস্ফোরণ ঘটায়। খালি মাটিতে বিপজ্জনক তরল জমে।'
+],
+ur:[
+'تیزاب و اساس کی ٹائٹریشن','کشید','حرارتی بے قابو پن','جزوی کشید',
+'عنبر مثلث تیزاب ہیں، نیلے مربع اساس۔ مخالف محلول کی بوتل کو تالاب کے پاس گرنے پر آمادہ کریں، پھر ہٹ جائیں۔ آمیزش ہلکا ٹھنڈا محلول بناتی ہے۔',
+'بھاپ میدان پار کرتی ہے۔ ڈیش سے اس کی پٹی پار کریں یا ٹھنڈا محلول استعمال کریں؛ اس کے گرد بھاپ ہٹ جاتی ہے۔',
+'دباؤ کے برتن پھٹنے سے پہلے پھولتے ہیں۔ نشان زدہ دھماکے سے پہلے پاس ٹھنڈا محلول بنا کر انہیں ٹھنڈا کریں۔',
+'بھاپ کی دو پٹیاں باری باری آتی ہیں، ہر ایک سے پہلے نئی تنبیہ ہوتی ہے۔ برتن ٹھنڈے کریں اور ہر پٹی کے لیے راستہ رکھیں۔',
+'شیشیاں بچ جانے والوں کو نشانہ بناتی ہیں اور گرنے کی جگہ 1.4 سیکنڈ پہلے دکھاتی ہیں۔ تیزاب اور اساس دونوں نقصان اور سستی پیدا کرتے ہیں۔ آمیزش کیمیائی مادے ہٹا کر بھاپ جذب کرنے اور برتن ٹھنڈے کرنے والا محلول بناتی ہے۔ یہ تعامل کی پیداوار ہے، اٹھانے کی چیز نہیں۔',
+'Brutal یکساں مادوں کو جوڑ کر دو وقت بند دھماکے بناتا ہے۔ پہلے دھماکے سے پہلے کسی تالاب کو بے اثر کرکے دونوں روکیں۔',
+'Crazed بنفشی عمل انگیز شامل کرتا ہے۔ ٹھنڈا محلول اسے بجھا کر خرچ ہو جاتا ہے؛ غیر مخلوط مادے نئی تنبیہ والا دھماکا کرتے ہیں۔ خالی زمین پر خطرناک تالاب رہ جاتا ہے۔'
+]
 };
-const suffixes=['phase.0','phase.1','phase.2','phase.3','phaseHint.0','phaseHint.1','phaseHint.2','phaseHint.3','description','brutalHelp','crazedHelp'];
-export const moldMessages=locale=>Object.fromEntries(suffixes.map((key,i)=>['boss.alchemist.'+key,(rows[locale]??rows.en)[i]]));
+export function moldMessages(locale){const values=L[locale]??L.en;if(values.length!==keys.length)throw Error('Incomplete chemistry help '+locale);return Object.fromEntries(keys.map((k,i)=>['boss.alchemist.'+k,values[i]]));}

@@ -1,17 +1,28 @@
 import type { MoldCue } from "../shared/mold-mixing.ts";
+import { HZ } from "../shared/protocol.ts";
+export function isMoldCue(q: { kind: string }): q is MoldCue {
+  return [
+    "mold-walk",
+    "mold-flask",
+    "mold-pool",
+    "mold-gas",
+    "mold-reactor",
+    "mold-reaction",
+  ].includes(q.kind);
+}
 export function moldFrame(cues: MoldCue[], now: number, reduced = false) {
   if (reduced) return 0;
-  const walk = cues.find((c) => c.kind === "mold-walk");
-  if (walk) return now < walk.at ? 1 : 0;
-  const next = cues
-    .filter((q) => q.at > now)
-    .toSorted((a, b) => a.at - b.at)[0];
-  if (next) return next.at - now > 15 ? 2 : 3;
-  const front = cues.find((q) => q.kind === "mold-front");
-  if (front) return now - front.at < 8 ? 4 : 5;
-  const spray = cues.find(
-    (q) => q.kind === "mold-spray" && now >= q.at && now < q.until,
-  );
-  if (spray) return 4;
-  return cues.length ? 6 : 0;
+  const walk = cues.find((q) => q.kind === "mold-walk");
+  if (walk && walk.kind === "mold-walk")
+    return now < walk.at
+      ? 1
+      : 8 +
+          (Math.floor((Math.max(0, now - walk.at) * walk.speed) / (HZ * 10)) %
+            8);
+  const flask = cues.find((q) => q.kind === "mold-flask");
+  if (flask) return flask.at - now > 15 ? 2 : 3;
+  if (cues.some((q) => q.kind === "mold-pool" && now - q.at < 8)) return 4;
+  const gas = cues.find((q) => q.kind === "mold-gas");
+  if (gas) return now < gas.at ? 2 : 5;
+  return 0;
 }

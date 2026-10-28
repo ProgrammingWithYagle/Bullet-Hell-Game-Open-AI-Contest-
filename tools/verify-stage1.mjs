@@ -109,6 +109,7 @@ check('Design bible and complete editable tables',()=>{
   const balance=read('reviews/balance-model-review.json');assert(balance.passed,'Analytical build feasibility fails');assert.equal(balance.contentRevision,read('content/revision.json').sha256,'Stale balance evidence');
 });
 if(!contentOnly){
+  check('Alchemist eight drawn walking poses and exact retained action RGBA',()=>{const result=spawnSync('python',['-X','utf8','tools/verify-alchemist-lab-art.py'],{cwd:root,encoding:'utf8'});assert.equal(result.status,0,result.stdout+'\n'+result.stderr);});
   check('All fifteen translation catalogs and placeholder parity',()=>{const result=spawnSync(process.execPath,['tools/verify-locales.mjs'],{cwd:root,encoding:'utf8'});assert.equal(result.status,0,result.stdout+'\n'+result.stderr);});
   check('Eight reviewed art proof sets with original provenance',()=>{
     const contract=read('docs/art-contracts.json'),review=read('reviews/art-proof-review.json'),provenance=read('docs/art-provenance.json');assert.equal(contract.proofs.length,8);assert.equal(review.passed,true);assert.equal(review.proofs.length,8);
