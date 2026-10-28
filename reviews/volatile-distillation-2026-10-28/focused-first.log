@@ -1,0 +1,70 @@
+✔ all 144 actual map/difficulty/phase roads remain connected, body-clear and inside actual offset bounds and lava footprints (153.4311ms)
+✔ flasks lock survivor landings with a full warning and start away from the boss while walking has real bounded movement and drawn gait frames (7.2046ms)
+✔ opposite aimed reagents neutralize into real coolant, remove damage/slow, and do not require walking into the dangerous pool (3.4063ms)
+✔ a harmful pool ignores pre-landing motion, sweeps later movement, and shares one floor hit per half-second across overlapping reagents (2.402ms)
+✔ distillation warns a real full-field vapor bank; coolant protects its whole-body footprint and the bank continues around it (3.8395ms)
+✔ vapor relative sweeps catch crossing players, respect finite tangent bounds and only exempt the actual inset coolant footprint (0.2576ms)
+✔ thermal-runaway vessels are immediately visible, coolant actually defuses them, and ignored vessels receive a separate rupture warning and one burst (6.1075ms)
+✔ Brutal creates matching-reagent coupling with an achievable neutralization window, and cooling either endpoint cancels both pending eruptions (4.3567ms)
+✔ Ossuary Baby cover cannot isolate the primary pressure vessel from actual acid/alkali neutralization (67.8622ms)
+✔ an uncanceled coupled eruption waits for its own full warning and deals one timed blast, not repeated contact damage (2.3955ms)
+✔ Crazed adds a real catalyst interaction: coolant is spent to quench it, while unmixed reagents produce a freshly warned catalytic eruption (6.2508ms)
+✔ advanced Fractionation adds a second perpendicular vapor bank with its own fresh warning and distinct one/two/three pressure vessels (7.5152ms)
+✔ snapshot geometry is detached and numeric; explicit interruption/reset cancel chemistry while phase changes preserve it (5.1207ms)
+✔ new cover interrupts a procession safely without canceling the independently warned reagent throws (1.0784ms)
+✔ actual authority and local Prediction agree on reagent slow, coolant and expiration without adding vapor movement forces (16.8749ms)
+✔ actual Game uses distinct chemistry phases with zero generic hostile projectiles or common Crazed pressure, and cleans owned work on stagger and exit (49.6977ms)
+✔ distillation apparatus is Crazed-only, finite, cloned and bounded to one or two columns per cycle (3.4934ms)
+✔ phase zero keeps one fixed lane, phase one re-aims between full warnings, phase two crosses two sources and phase three ends in reflux (6.8401ms)
+✔ every aerosol locks its complete numeric route, damage and activation clock, independent of later target/phase/scale changes (0.6084ms)
+✔ warnings are harmless, activation ignores old motion, later relative sweeps hit once per player per cloud and movement slow follows the real cloud (0.5122ms)
+✔ coolant condenses a travelling aerosol before damage, is visibly spent with grace, and clears its slow and ownership at expiry (0.6299ms)
+✔ cooling apparatus cancels its pending releases with a condensation cue, but does not revoke an already released remote cloud (0.8216ms)
+✖ all actual Crazed phase/map/difficulty combinations place the requested apparatus on accessible reagent-sized clear floor and keep clouds inside bounds (244.431ms)
+✔ actual phase entry retains issued column/cloud clocks and explicit stagger/defeat clears all new ownership (14.9538ms)
+✔ the actual new-cue renderer uses shared routes, bounds its work, and remains visible on the hostile layer with reduced-motion pose support (1.5083ms)
+✔ alchemist: committed full scores retain their original phase, child attacks and damage through every legal form/phase change (106.9405ms)
+✔ bellringer: committed full scores retain their original phase, child attacks and damage through every legal form/phase change (129.2884ms)
+✔ matron: committed full scores retain their original phase, child attacks and damage through every legal form/phase change (47.3098ms)
+✔ already announced Matron brood retains its spawn speed/count even when its phase changes after the escort is idle (3.5576ms)
+✔ all six global difficulties retain warned constable fans and their actual locked-origin release across phase entry (53.3272ms)
+✔ phase entry preserves an issued zone, an in-flight projectile and its pending advanced echoes, with natural release and field expiry (25.2258ms)
+✔ common Brutal/Crazed arena pressure keeps its exact warning geometry and lifetime when the phase changes (61.7046ms)
+✔ old glass needles and garden roots remain shootable dependencies when the next phase places a fresh set, and expire after their own beams (6.5179ms)
+✔ Mold pool contact inflicts the same real health loss and keeps its hit budget across a Normal phase transition (12.8428ms)
+✔ retained pools, currents, gates, wind and moving blocks remain on the shared authority/prediction path (50.4842ms)
+✔ phase entry retains living Matron minions and old/new cues keep unique IDs (91.3364ms)
+✔ Baby/Easy phase entry keeps attacks, whereas completing the warned shield channel still earns an interruption (12.3628ms)
+✔ boss defeat clears carried cues, warnings, shots, minions and hit ownership for every executing identity (193.9167ms)
+✔ Matron nest replacement never revokes a warned brood/needle and retained spawn/hit records stay bounded over repeated cycles (123.8304ms)
+ℹ tests 39
+ℹ suites 0
+ℹ pass 38
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1482.5341
+
+✖ failing tests:
+
+test at tests\mold-still.test.ts:1:6622
+✖ all actual Crazed phase/map/difficulty combinations place the requested apparatus on accessible reagent-sized clear floor and keep clouds inside bounds (244.431ms)
+  AssertionError [ERR_ASSERTION]: gatehouse/insane/0
+  
+  0 !== 1
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\mold-still.test.ts:290:16)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

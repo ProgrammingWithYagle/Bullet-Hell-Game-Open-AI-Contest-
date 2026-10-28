@@ -1,6 +1,23 @@
 # Changelog
 
-Development build **2026.10.28-returning-clapper**, protocol 37. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.28-volatile-distillation**, protocol 38. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-28 — Mold Alchemist: Crazed distillation and reflux
+
+### Chemical apparatus changes the Crazed fight
+
+- Crazed adds conical distillation columns while its original acid/alkali/catalyst and vapor recipes continue. PhaseI sends two clouds down a fixed lane; phaseII re-aims three times. PhaseIII has two staggered columns with two clouds each. PhaseIV sends three each and draws the last cloud back toward its column as reflux. Each complete route receives a fresh1.8-second warning.
+- Aerosols pass above masonry, hurt a survivor at most once per cloud and apply a shared0.7movement multiplier while inside. Their analytic locked route drives authority, prediction and hostile drawing. Counts are bounded chemical structures, with no generic bullet/laser duplication, extra boss health, base damage increase or new instant-kill attack.
+
+### Mix coolant to control the apparatus
+
+- Actual acid/alkali neutralization beside a column cools it and stops future or still-pending releases. Already emitted clouds keep their own paths until natural expiry or coolant contact. Contact condenses a cloud, spending the coolant after0.9seconds of grace; repeated puffs make that shelter a finite resource. Columns are chemical apparatus and cannot be shot.
+- Existing warnings, original phase ownership and cleanup remain. Normal/Brutal chemistry, all base combat/phase orders, fixed grade3--, selected walking/action art and individual music remain. The closed manual guide includes all four Crazed stages and counterplay in fifteen authored locales, with native-language/rendered review open.
+
+### Evidence and next work
+
+- An issued/current owner comparison found identical Normal/Brutal movement, cue timing, recovery and damage over240legal non-Crazed cases/216000ticks. The first408-case actual-Game candidate sample completed734400ticks with1008columns/2252aerosols/235refluxclouds/723condensations/41cooledcolumns and73352recipe-overlap ticks; peak4aerosols and zero generic hostile shots. Exact current-runtime final probes and full local/CI evidence are recorded with the checkpoint. Controlled samples do not establish human clears, every route or final balance.
+- Known issued protocol37/content6bf9b3f3 local Practice/profile state migrates strictly to38. Roster66/ordinary deficit85 and original quality12of60/48remaining stay unchanged. The earned-SP General mobility branch with Double Dash/Sprint remains next work, alongside broader roster/quality, hosted recovery/rankings, WAN/endurance/device and coordinated release gates.
 
 ## 2026-10-28 — Bellringer: a thrown clapper and a warned return
 

@@ -72,7 +72,16 @@ test("all 66 identities admit Crazed with their fixed grade, inherited full sign
     const inherited = b.variants.crazed.phases.map((phase, index) => {
       if(b.id==='black-ambulance'){const c=phase as Record<string,unknown>,base=b.variants.brutal.phases[index] as Record<string,unknown>;assert.equal(base.dispatchLegs,index?3:2);assert.equal(c.dispatchLegs,index?4:2);return {...phase,dispatchLegs:base.dispatchLegs};}
       if(b.id==='bellringer'){const c=phase as Record<string,unknown>,base=b.variants.brutal.phases[index]as Record<string,unknown>;assert.equal(base.sympatheticBell,false);assert.equal(c.sympatheticBell,true);return {...phase,sympatheticBell:base.sympatheticBell};}
-      if(b.id==='alchemist'){const c=phase as Record<string,unknown>,base=b.variants.brutal.phases[index]as Record<string,unknown>;assert.equal(base.pressureVessels,index<2?0:2);assert.equal(c.pressureVessels,index<2?0:3);assert.equal(base.catalystThrows,0);assert.equal(c.catalystThrows,1);return {...phase,pressureVessels:base.pressureVessels,catalystThrows:base.catalystThrows};}
+      if(b.id==='alchemist'){
+        const c=phase as Record<string,unknown>,base=b.variants.brutal.phases[index]as Record<string,unknown>;
+        assert.equal(base.pressureVessels,index<2?0:2);assert.equal(c.pressureVessels,index<2?0:3);
+        assert.equal(base.catalystThrows,0);assert.equal(c.catalystThrows,1);
+        assert.equal(c.distillationColumns,[1,1,2,2][index]);assert.equal(c.aerosolsPerColumn,[2,3,2,3][index]);
+        assert.equal(c.freshAerosolAim,index>0);assert.equal(c.finalReflux,index===3);
+        const inherited:Record<string,unknown>={...phase,pressureVessels:base.pressureVessels,catalystThrows:base.catalystThrows};
+        for(const key of ['distillationColumns','aerosolsPerColumn','freshAerosolAim','finalReflux']){assert.equal(base[key],undefined);delete inherited[key];}
+        return inherited;
+      }
       if (b.id !== 'quarantine-clerk') return phase;
       const c = phase as Record<string, unknown>,
         base = b.variants.brutal.phases[index] as Record<string, unknown>;

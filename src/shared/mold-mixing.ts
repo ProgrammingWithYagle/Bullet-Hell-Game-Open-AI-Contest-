@@ -1,3 +1,9 @@
+import {
+  MoldStills,
+  aerosolMovement,
+  moldStillRules,
+  type MoldStillCue,
+} from "./mold-still.ts";
 import tuning from "./mold-mixing-rules.json";
 import { DT, HZ, type Vec } from "./protocol.ts";
 import {
@@ -67,7 +73,13 @@ export type MoldGas = Life &
     count: number;
   };
 export type MoldCue =
-  MoldWalk | MoldFlask | MoldPool | MoldReaction | MoldReactor | MoldGas;
+  | MoldWalk
+  | MoldFlask
+  | MoldPool
+  | MoldReaction
+  | MoldReactor
+  | MoldGas
+  | MoldStillCue;
 const ticks = (s: number) => Math.ceil(s * HZ);
 const bounds = (c: SignatureContext) =>
   c.bounds ?? { x: 0, y: 0, width: 1600, height: 1000 };
@@ -167,18 +179,21 @@ export function moldMovement(
   position: Vec,
   now: number,
 ) {
-  return cues.some((q) => {
-    if (q.kind !== "mold-pool") return false;
-    const p = q as MoldPool;
-    return (
-      p.reagent !== "water" &&
-      now >= p.at &&
-      now < p.until &&
-      distance(position, p) <= p.radius + 9
-    );
-  })
-    ? tuning.slowMultiplier
-    : 1;
+  return Math.min(
+    aerosolMovement(cues, position, now),
+    cues.some((q) => {
+      if (q.kind !== "mold-pool") return false;
+      const p = q as MoldPool;
+      return (
+        p.reagent !== "water" &&
+        now >= p.at &&
+        now < p.until &&
+        distance(position, p) <= p.radius + 9
+      );
+    })
+      ? tuning.slowMultiplier
+      : 1,
+  );
 }
 /** A whole-body location inside coolant; the edge remains visibly unsafe. */
 export function moldCoolant(
@@ -256,6 +271,7 @@ export function moldFree(
   return undefined;
 }
 export class MoldMixing {
+  private stills = new MoldStills();
   private walk: MoldWalk | null = null;
   private flasks: MoldFlask[] = [];
   private pools: MoldPool[] = [];
@@ -278,6 +294,7 @@ export class MoldMixing {
   }
   reset(until = 0, encounter = false) {
     this.walk = null;
+    this.stills.clear();
     this.flasks = [];
     this.pools = [];
     this.reactions = [];
@@ -305,6 +322,7 @@ export class MoldMixing {
             },
           ]
         : []),
+      ...this.stills.cues(),
       ...this.flasks.map((q) => ({ ...q })),
       ...this.pools.map((q) => ({ ...q })),
       ...this.reactions.map((q) => ({ ...q, sources: [...q.sources] })),
@@ -313,7 +331,12 @@ export class MoldMixing {
     ];
   }
   cast(c: SignatureContext, target: Vec) {
-    if (!c.paused && !c.auxiliaryBusy && !this.busy && c.tick >= this.nextSignatureAt)
+    if (
+      !c.paused &&
+      !c.auxiliaryBusy &&
+      !this.busy &&
+      c.tick >= this.nextSignatureAt
+    )
       this.begin(c, target);
     return true;
   }
@@ -349,6 +372,36 @@ export class MoldMixing {
     this.throwIndex = 0;
     this.gasIndex = 0;
     this.gasCount = c.phase === 0 ? 0 : c.phase >= 3 ? 2 : 1;
+    if (c.variant === "crazed" && !this.stills.busy) {
+      const target = this.target(c),
+        positions: Vec[] = [],
+        want = moldStillRules.columnsByPhase[Math.min(3, c.phase)];
+      for (let index = 0; index < want; index++) {
+        const facing =
+          Math.atan2(target.y - c.boss.y, target.x - c.boss.x) +
+          (index ? -0.8 : 0.8);
+        for (let turn = 0; turn < 16; turn++) {
+          const angle = facing + (turn * Math.PI) / 8,
+            p = moldFree(
+              c,
+              {
+                x: target.x + Math.cos(angle) * moldStillRules.placementRange,
+                y: target.y + Math.sin(angle) * moldStillRules.placementRange,
+              },
+              moldStillRules.clearance,
+            );
+          if (
+            p &&
+            distance(p, target) >= moldStillRules.minimumTargetDistance &&
+            positions.every((q) => distance(q, p) >= 200)
+          ) {
+            positions.push(p);
+            break;
+          }
+        }
+      }
+      this.stills.start(c, target, positions);
+    }
     if (c.phase >= 2) {
       const target = this.target(c),
         count = c.variant === "crazed" ? 3 : c.brutal ? 2 : 1;
@@ -659,6 +712,7 @@ export class MoldMixing {
     for (const q of this.flasks) if (now >= q.at) this.land(c, q);
     this.flasks = this.flasks.filter((q) => q.at > now);
     this.pools = this.pools.filter((q) => q.until > now);
+    this.stills.step(c, this.pools);
     for (const id of this.paired)
       if (!this.pools.some((p) => p.id === id)) this.paired.delete(id);
     this.reactions = this.reactions.filter(
@@ -783,7 +837,8 @@ export class MoldMixing {
     }
     if (!this.busy && now >= this.nextSignatureAt && !c.auxiliaryBusy) {
       const targets = c.aimTargets ?? c.targets;
-      if (targets.length) this.begin(nextContext, targets[this.cycle % targets.length]);
+      if (targets.length)
+        this.begin(nextContext, targets[this.cycle % targets.length]);
     }
   }
 }

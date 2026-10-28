@@ -1,4 +1,6 @@
-import Phaser from "phaser";
+import type Phaser from "phaser";
+import { clamp } from "../shared/geometry.ts";
+import { drawMoldStillCue } from "./mold-still-cues.ts";
 import type { MoldCue, MoldPool, Reagent } from "../shared/mold-mixing.ts";
 const colors: Record<Reagent, number> = {
   acid: 0xe7a15d,
@@ -110,6 +112,10 @@ export function drawMoldCue(
   now: number,
   cues: MoldCue[],
 ) {
+  if (q.kind === "mold-still" || q.kind === "mold-aerosol") {
+    drawMoldStillCue(h, q, now);
+    return;
+  }
   if (q.kind === "mold-walk") {
     h.lineStyle(2, 0xbac9c8, 0.55);
     for (let i = Math.max(1, q.index); i < q.path.length; i++)
@@ -119,11 +125,7 @@ export function drawMoldCue(
     return;
   }
   if (q.kind === "mold-flask") {
-    const t = Phaser.Math.Clamp(
-        (now - q.beganAt) / Math.max(1, q.at - q.beganAt),
-        0,
-        1,
-      ),
+    const t = clamp((now - q.beganAt) / Math.max(1, q.at - q.beganAt), 0, 1),
       x = q.fromX + (q.x - q.fromX) * t,
       y = q.fromY + (q.y - q.fromY) * t - Math.sin(t * Math.PI) * 100,
       c = colors[q.reagent];
@@ -167,7 +169,7 @@ export function drawMoldCue(
     if (!q.fired) {
       dashed(h, q.x, q.y, q.radius, c);
       h.fillStyle(c, 0.045).fillCircle(q.x, q.y, q.radius);
-      const t = Phaser.Math.Clamp((now - q.beganAt) / (q.at - q.beganAt), 0, 1);
+      const t = clamp((now - q.beganAt) / (q.at - q.beganAt), 0, 1);
       h.lineStyle(2, c, 0.65).strokeCircle(q.x, q.y, q.radius * (1 - t));
     } else h.fillStyle(c, 0.25).fillCircle(q.x, q.y, q.radius);
     const pools = cues.filter((p): p is MoldPool => p.kind === "mold-pool"),
@@ -193,7 +195,7 @@ export function drawMoldCue(
     h.lineStyle(3, c, 0.9).strokeRect(q.x - 18, q.y - 25, 36, 50);
     const pressure = cooled
       ? 0
-      : Phaser.Math.Clamp((now - q.at) / Math.max(1, q.ruptureAt - q.at), 0, 1);
+      : clamp((now - q.at) / Math.max(1, q.ruptureAt - q.at), 0, 1);
     for (let n = 0; n < 5; n++) {
       h.fillStyle(
         n < Math.ceil(pressure * 5) ? 0xe6ac61 : 0x696b61,
@@ -206,11 +208,7 @@ export function drawMoldCue(
         .lineBetween(q.x + 9, q.y - 8, q.x - 9, q.y + 8);
     } else if (q.state === "rupture") {
       dashed(h, q.x, q.y, q.blastRadius, 0xe2a56b);
-      const t = Phaser.Math.Clamp(
-        (q.burstAt - now) / (q.burstAt - q.ruptureAt),
-        0,
-        1,
-      );
+      const t = clamp((q.burstAt - now) / (q.burstAt - q.ruptureAt), 0, 1);
       h.lineStyle(3, 0xe2a56b, 0.65).strokeCircle(q.x, q.y, q.blastRadius * t);
     } else if (spent)
       h.fillStyle(0xe9b987, 0.25).fillCircle(q.x, q.y, q.blastRadius);

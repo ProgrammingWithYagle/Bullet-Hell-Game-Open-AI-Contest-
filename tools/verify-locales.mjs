@@ -1,5 +1,5 @@
 import {bellReturnChainMessages as bellMessages} from '../locales/source/bell-return-chain.mjs';
-import {moldMessages} from '../locales/source/mold-mixing.mjs';
+import {moldStillMessages as moldMessages} from '../locales/source/mold-still.mjs';
 import {matronMessages} from '../locales/source/matron-ward.mjs';
 import {ambulanceMessages} from '../locales/source/ambulance-route.mjs';
 import {bossGuideMessages} from '../locales/source/boss-guide.mjs';

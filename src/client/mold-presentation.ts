@@ -8,6 +8,8 @@ export function isMoldCue(q: { kind: string }): q is MoldCue {
     "mold-gas",
     "mold-reactor",
     "mold-reaction",
+    "mold-still",
+    "mold-aerosol",
   ].includes(q.kind);
 }
 export function moldFrame(cues: MoldCue[], now: number, reduced = false) {
@@ -24,5 +26,11 @@ export function moldFrame(cues: MoldCue[], now: number, reduced = false) {
   if (cues.some((q) => q.kind === "mold-pool" && now - q.at < 8)) return 4;
   const gas = cues.find((q) => q.kind === "mold-gas");
   if (gas) return now < gas.at ? 2 : 5;
+  const aerosol = cues.find(
+    (q) => q.kind === "mold-aerosol" && q.state !== "quenched",
+  );
+  if (aerosol) return now < aerosol.at ? 2 : 5;
+  if (cues.some((q) => q.kind === "mold-still" && q.state === "charging"))
+    return 2;
   return 0;
 }
