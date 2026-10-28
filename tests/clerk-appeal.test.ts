@@ -311,16 +311,22 @@ test("actual auxiliary fans occur between clear signature sequences and retain a
     assert.equal(repeat, form !== "normal");
   }
 });
-test("phase/stagger/victory/timeout/wipe remove stamp protection, pending appeals, paths and echoes", () => {
+test("phase retains Clerk appeals/protection; stagger and encounter exit clean them up", () => {
   for (const end of ["phase", "stagger", "victory", "timeout", "wipe"]) {
     const g = game("crazed");
     while (!stamps(g.director.clerk).length) g.step();
+    const committed = g.director.cues().filter(q => !("until" in q) || q.until > g.combatTick + 1).map(q => q.id);
     if (end === "phase") g.boss.health = g.boss.maxHealth * 0.49;
     if (end === "stagger") g.boss.staggerUntil = g.combatTick + 120;
     if (end === "victory") g.boss.health = 0;
     if (end === "timeout") g.boss.deadline = g.combatTick + 1;
     if (end === "wipe") g.players.get("solo")!.status = "eliminated";
     g.step();
+    if(end === "phase") {
+      assert(committed.length);
+      assert(committed.every(id => g.director.cues().some(q => q.id === id)));
+      continue;
+    }
     assert.equal(g.director.cues().length, 0, end);
     assert.equal(g.director.safeZones(g.combatTick).length, 0);
     assert(!g.bossCues().some((c) => c.kind === "brutal-echo"));
@@ -367,7 +373,7 @@ test("fifteen locales and known protocol23 local saves preserve help, form/build
   old.contentRevision =
     "da37e2a0e2beb54343495ce39027211df254fa1c79ab42ec3f3360373ad792db";
   const after = Game.restoreOffline(old).offlineCheckpoint()!;
-  assert.equal(PROTOCOL, 35);
+  assert.equal(PROTOCOL, 36);
   assert.equal(after.contentRevision, CONTENT_REVISION);
   assert.deepEqual(after.player, save.player);
   assert.deepEqual(after.completedBossForms, save.completedBossForms);

@@ -89,7 +89,7 @@ test('Hard+ rejects revive kit purchases atomically while other supplies remain 
     assert(g.transact('p',{id:'heal',kind:'supply',item:'medkit'}).ok);
   }
 });
-test('actual phase transitions offer the shield event only on Baby/Easy Standard and retain in-flight hazards elsewhere',()=>{
+test('actual phase transitions offer the shield event only on Baby/Easy Standard and retain in-flight hazards on every difficulty',()=>{
   for(const d of data.difficulties)for(const form of ['normal','brutal'] as const){
     const g=createPracticeGame({difficulty:d.id,mode:'endless'},'Mara','soldier',form);assert(g.start());
     g.players.get('solo')!.invulnerableUntil=1e9;
@@ -99,8 +99,8 @@ test('actual phase transitions offer the shield event only on Baby/Easy Standard
     g.boss.health=g.boss.maxHealth*.49;g.step();
     const assist=phaseShieldBreak(d.id,g.boss.variant);
     assert.equal(g.boss.phase,1);assert.equal(!!g.accord,assist,d.id+form);
-    assert.equal(g.shots.has(shot.id),!assist);
-    assert.equal(g.fields.some(f=>f.id===900001),!assist);
+    assert.equal(g.shots.has(shot.id),true);
+    assert.equal(g.fields.some(f=>f.id===900001),true);
     assert.equal(g.boss.staggerUntil,0);assert.equal(g.boss.vulnerableUntil,0);
   }
 });

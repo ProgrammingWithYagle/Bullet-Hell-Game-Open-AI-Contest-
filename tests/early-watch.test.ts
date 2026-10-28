@@ -240,7 +240,7 @@ test("wind is bounded, absent during tells and dodge, and authority/prediction s
     y: 0,
   });
 });
-test("phase changes cancel outgoing attack cues and every moving body respects all six arena layouts", () => {
+test("phase changes retain outgoing attack cues and every moving body respects all six arena layouts", () => {
   for (const id of earlyWatchBossIds)
     for (const form of ["normal", "brutal"] as const)
       for (const arena of data.arenas) {
@@ -254,7 +254,7 @@ test("phase changes cancel outgoing attack cues and every moving body respects a
         g.boss.health = g.boss.maxHealth * 0.49;
         g.step();
         assert.equal(g.boss.phase, 1);
-        assert(!g.director.cues().some((c) => oldIds.has(c.id)));
+        assert([...oldIds].every(id => g.director.cues().some(c => c.id === id)));
         for (let n = 0; n < 360; n++) {
           g.step();
           assert(

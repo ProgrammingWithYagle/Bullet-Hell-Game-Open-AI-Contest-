@@ -263,7 +263,7 @@ test("reset cancels every unreleased owned cue at any stage, preserves already e
     assert.equal(f.shots.length, emitted);
   }
 });
-test("actual Game cleanup cancels the Ambulance route on phase entry, stagger, victory and deadline", () => {
+test("phase entry retains the Ambulance route; stagger, victory and deadline clean it up", () => {
   for (const action of ["phase", "stagger", "victory", "deadline"]) {
     const g = createPracticeGame(
       {
@@ -279,11 +279,17 @@ test("actual Game cleanup cancels the Ambulance route on phase entry, stagger, v
     g.players.get("solo")!.invulnerableUntil = 1e9;
     g.step();
     assert(g.bossCues().some((q) => q.kind === "ambulance-patrol"));
+    const committed = g.director.cues().filter(q => !("until" in q) || q.until > g.combatTick + 1).map(q => q.id);
     if (action === "phase") g.boss.health = g.boss.maxHealth * 0.49;
     else if (action === "stagger") g.boss.staggerUntil = g.combatTick + 60;
     else if (action === "victory") g.boss.health = 0;
     else g.boss.deadline = g.combatTick + 1;
     g.step();
+    if(action === "phase") {
+      assert(committed.length);
+      assert(committed.every(id => g.director.cues().some(q => q.id === id)));
+      continue;
+    }
     assert(
       !g
         .bossCues()

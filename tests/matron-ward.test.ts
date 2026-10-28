@@ -286,7 +286,7 @@ test("destroying a nest cancels its unreleased needles and broods, while an alre
   assert.equal(f.spawns.length, count);
   assert(of(f.d, "matron-pulse").some((p) => p.id === pulse.id));
 });
-test("phase, pause and explicit resets cancel all owned pending work without delayed emissions", () => {
+test("explicit interruption/reset cancel pending work, while phase changes retain the warned escort", () => {
   const f = fixture("crazed");
   f.d.cast(f.c, f.c.targets[0]);
   f.run(100);
@@ -301,9 +301,10 @@ test("phase, pause and explicit resets cancel all owned pending work without del
   f.c.paused = false;
   f.run(1100);
   assert(of(f.d, "matron-walk").length);
-  f.c.phase = 3;
+  const committed = f.d.cues().map(q => q.id);
+  f.c.phase = 1;
   f.step(1101);
-  assert.deepEqual(f.d.cues(), []);
+  assert(committed.every(id => f.d.cues().some(q => q.id === id)));
 });
 test("only the explicit Matron ordinary-navigation option routes a brood around cover", () => {
   const target = { id: "p", x: 950, y: 500 },

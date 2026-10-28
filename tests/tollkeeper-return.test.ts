@@ -255,18 +255,24 @@ test("real bank spray emissions retain exact20Brutal and60Crazed projectile budg
     assert.equal(count, form === "brutal" ? 20 : 60);
   }
 });
-test("phase stagger victory timeout and wipe clear Tollkeeper wheels, banks, paths and delayed echoes", () => {
+test("phase retains Tollkeeper wheels and banks; stagger and encounter exit clear owned work", () => {
   for (const end of ["phase", "stagger", "victory", "timeout", "wipe"]) {
     const g = game("crazed");
     untilGame(g, () =>
       g.director.cues().some((c) => c.kind === "tollkeeper-bank"),
     );
+    const committed = g.director.cues().filter(q => !("until" in q) || q.until > g.combatTick + 1).map(q => q.id);
     if (end === "phase") g.boss.health = g.boss.maxHealth * 0.49;
     if (end === "stagger") g.boss.staggerUntil = g.combatTick + 120;
     if (end === "victory") g.boss.health = 0;
     if (end === "timeout") g.boss.deadline = g.combatTick + 1;
     if (end === "wipe") g.players.get("solo")!.status = "eliminated";
     g.step();
+    if(end === "phase") {
+      assert(committed.length);
+      assert(committed.every(id => g.director.cues().some(q => q.id === id)));
+      continue;
+    }
     assert.equal(g.director.cues().length, 0, end);
     assert(!g.bossCues().some((c) => c.kind === "brutal-echo"), end);
   }
@@ -317,7 +323,7 @@ test("known protocol25 local Practice and profile history migrates exactly while
   old.protocolVersion = 25;
   old.contentRevision = rev;
   const restored = Game.restoreOffline(old).offlineCheckpoint()!;
-  assert.equal(PROTOCOL, 35);
+  assert.equal(PROTOCOL, 36);
   assert.equal(restored.contentRevision, CONTENT_REVISION);
   assert.deepEqual(restored.player, save.player);
   assert.deepEqual(restored.completedBossForms, save.completedBossForms);

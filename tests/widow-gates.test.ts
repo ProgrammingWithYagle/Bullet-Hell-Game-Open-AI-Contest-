@@ -315,17 +315,23 @@ test("actual authoritative movement and local prediction agree across both gate 
     }
   }
 });
-test("actual Game cleanup removes gates and owned warnings on phase, stagger, defeat and victory", () => {
+test("phase entry retains Widow gates/warnings; stagger and encounter exit clean them up", () => {
   for (const end of ["phase", "stagger", "timeout", "wipe", "victory"]) {
     const g = game("crazed");
     g.step();
     assert(g.director.civic.widow.cues().length);
+    const committed = g.director.cues().filter(q => !("until" in q) || q.until > g.combatTick + 1).map(q => q.id);
     if (end === "phase") g.boss.health = g.boss.maxHealth * 0.49;
     if (end === "stagger") g.boss.staggerUntil = g.combatTick + 90;
     if (end === "timeout") g.boss.deadline = g.combatTick + 1;
     if (end === "wipe") g.players.get("solo")!.status = "eliminated";
     if (end === "victory") g.boss.health = 0;
     g.step();
+    if(end === "phase") {
+      assert(committed.length);
+      assert(committed.every(id => g.director.cues().some(q => q.id === id)));
+      continue;
+    }
     assert.equal(g.director.civic.widow.cues().length, 0, end);
   }
 });

@@ -120,7 +120,7 @@ test('Warden Brutal scales health/deadline/contact damage and second visible pha
     for(const sample of game.signatures){if(sample.phase==='warning'&&sample.phaseTick===0)directions.push(sample.direction);if(sample.phase==='active')active++;}
     returned ||=game.bossCues().some(c=>c.kind==='warden-return');
   }
-  assert(returned);assert(active>=240);assert.deepEqual(directions.slice(0,2),[1,-1]);
+  assert(returned);assert(active>=240);assert.deepEqual(directions.slice(0,2),[-1,1]);
 });
 
 test('an Easy Standard Accord removes the sweep and restarts with a complete new tell after stagger', () => {

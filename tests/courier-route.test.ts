@@ -384,16 +384,22 @@ test("the real advanced dispatch uses the shared 2.5x/7.5x projectile wave budge
   }
 });
 
-test("phase changes, successful stagger and every encounter exit cancel Courier lanes, trails, dispatch and echoes", () => {
+test("phase changes retain Courier work; successful stagger and encounter exit cancel it", () => {
   for (const end of ["phase", "stagger", "victory", "timeout", "wipe"]) {
     const g = game("crazed");
     while (!g.director.cues().some((c) => c.kind === "trail")) g.step();
+    const committed = g.director.cues().filter(q => !("until" in q) || q.until > g.combatTick + 1).map(q => q.id);
     if (end === "phase") g.boss.health = g.boss.maxHealth * 0.49;
     if (end === "stagger") g.boss.staggerUntil = g.combatTick + 4 * HZ;
     if (end === "victory") g.boss.health = 0;
     if (end === "timeout") g.boss.deadline = g.combatTick + 1;
     if (end === "wipe") g.players.get("solo")!.status = "eliminated";
     g.step();
+    if(end === "phase") {
+      assert(committed.length);
+      assert(committed.every(id => g.director.cues().some(q => q.id === id)));
+      continue;
+    }
     assert(!g.director.cues().length, end + " left route geometry");
     assert(
       !g.bossCues().some((c) => c.kind === "brutal-echo"),
@@ -456,7 +462,7 @@ test("issued protocol21 local saves preserve completed Crazed/Brutal forms exact
   old.contentRevision =
     "312aa30276cffb7bb00cf9a303cc3b3461cce80d32e054afd5e91c08f76e2006";
   const after = Game.restoreOffline(old).offlineCheckpoint()!;
-  assert.equal(PROTOCOL, 35);
+  assert.equal(PROTOCOL, 36);
   assert.equal(after.contentRevision, CONTENT_REVISION);
   assert.deepEqual(after.completedBossForms, save.completedBossForms);
   assert.deepEqual(after.player, save.player);

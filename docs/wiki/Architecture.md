@@ -91,3 +91,9 @@ Alchemist laboratory owns serializable flask, reagent, vapor, vessel, reaction a
 Bellringer owns explicit warning/travel/quiet/rewarn states, connected procession paths and responding-bell links. Pure shared ring contact retains its previous service behavior. The scene reads those cues and the exact selected sixteen-frame atlas; gameplay and collision stay outside Phaser. Phase, pause, stagger, assistance and exit cancel pending acoustic work.
 
 Counterpoint supersedes Bellringer’s exclusive quiet/response scheduling with a bounded score queue, locked clapper sectors and concurrently active primary/reply fronts. Its approach planner targets survivor range. Clear-floor opening and swept-sector authority remain outside Phaser. Current phase resets still cancel owned attacks; the newly requested phase-continuity authority pass remains pending.
+
+## Committed attacks across phase changes
+
+Development build **2026.10.28-unbroken-attacks / protocol36** keeps already warned or released attacks alive through phase entry on every difficulty. Custom owners retain the issuing phase for their children; weak points, terrain and summons stay authoritative. Fresh casts wait through the shared1.5-second grace or optional Baby/Easy assistance. Completing that channel still earns an interruption; natural expiry, genuine weak-point breaks and encounter cleanup remain. Software evidence and human/rendered balance acceptance are separate.
+
+Human5206 finds Bellringer pressure sufficient and possibly too high for Standard; calibration and a distinct Brutal mechanic remain pending. Stronger themed Alchemist Crazed and the requested shared General mobility branch (Double Dash/Sprint) are also pending. Roster66, ordinary deficit85 and quality12/60 with48remaining stay unchanged. The full game remains unfinished.

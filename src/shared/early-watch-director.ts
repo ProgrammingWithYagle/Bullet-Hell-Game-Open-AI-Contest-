@@ -276,11 +276,7 @@ export class EarlyWatchDirector {
   cast(c: SignatureContext, target: Vec, a: Attack) {
     if (!this.handles(c.bossId)) return false;
     if (c.tick < this.nextSignatureAt) return true;
-    this.props = [];
-    this.lanes = [];
-    this.volleys = [];
-    this.hops = [];
-    this.contacts.clear();
+    // Temporary cues expire individually, including work from the prior phase.
     this.cycle++;
     const now = c.tick,
       release = now + ticks(Math.max(1.25, a.telegraph));
@@ -596,5 +592,8 @@ export class EarlyWatchDirector {
     this.lanes = this.lanes.filter((p) => c.tick < p.until);
     this.volleys = this.volleys.filter((p) => c.tick < p.until);
     this.hops = this.hops.filter((p) => c.tick < p.until);
+    const live = new Set(this.lanes.map((q) => String(q.id)));
+    for (const key of this.contacts.keys())
+      if (!live.has(key.split(":")[0])) this.contacts.delete(key);
   }
 }

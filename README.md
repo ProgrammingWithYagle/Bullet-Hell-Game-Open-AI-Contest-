@@ -61,3 +61,5 @@ Full verification also uses Python 3 with the pinned Pillow dependency: `python 
 [Reagent Road](docs/MOLD_MIXING.md) gives Mold Alchemist connected mixing walks, warned culture pools, catalyst/decant/reflux legs, actual pool draining and controlled advanced vial sprays. Base combat/art/music remain; rendered/human acceptance is open.
 
 [Alchemist laboratory](docs/MOLD_MIXING.md) replaces generic bullet/laser pressure with aimed chemistry, real mixing/cooling and form-specific reactions, with eight newly drawn walking poses. [Encounter design](docs/BOSS_ENCOUNTER_DESIGN.md) records the direction for unique themed boss techniques.
+
+Current feature-branch checkpoint: **2026.10.28-unbroken-attacks / protocol36** preserves committed attacks across phase changes. See [phase continuity](docs/PHASE_CONTINUITY.md) and the [single progress ledger](docs/DEVELOPMENT_PROGRESS.md). Exact-source verification and matching frozen previews are recorded in the checkpoint; the game remains unfinished.

@@ -323,7 +323,7 @@ test("Brutal and Crazed add different real warned patterns, rotate targets and b
   }
 });
 
-test("real Crazed corner pressure reaches distant players and is removed by phase changes, stagger, victory, timeout and wipe", () => {
+test("real Crazed corner pressure reaches distant players and survives phase entry while interruptions/exits clear it", () => {
   for (const end of ["phase", "stagger", "victory", "timeout", "wipe"]) {
     const g = quiet(),
       p = g.players.get("solo")!;
@@ -350,7 +350,7 @@ test("real Crazed corner pressure reaches distant players and is removed by phas
       p.selfRevives = 0;
     }
     g.step();
-    assert(!g.bossCues().some((c) => c.kind === "variant-pressure"), end);
+    assert.equal(g.bossCues().some(c => c.kind === "variant-pressure" && c.id === cue.id),end === "phase",end);
   }
 });
 
@@ -623,7 +623,7 @@ test(
       });
       assert(
         [owner, observer].every(
-          (s) => !s.view!.bossCues.some((c) => c.id === mark.id),
+          (s) => s.view!.bossCues.some((c) => c.id === mark.id),
         ),
       );
       g.boss.health = 0;

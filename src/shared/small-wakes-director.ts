@@ -356,13 +356,10 @@ export class SmallWakesDirector {
   }
   cast(c: Context, target: Vec, a: Attack) {
     if (!this.handles(c.bossId)) return false;
+    if (c.tick < this.nextSignatureAt) return true;
     this.kind = c.bossId;
     this.cycle++;
-    this.props = [];
-    this.lanes = [];
-    this.volleys = [];
-    this.clamps = [];
-    this.contacts.clear();
+    // Temporary cues expire individually, including work from the prior phase.
     const now = c.tick,
       release = now + ticks(Math.max(1.3, a.telegraph)),
       final = c.phase > 0,

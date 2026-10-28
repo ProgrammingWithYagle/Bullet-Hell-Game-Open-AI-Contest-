@@ -395,17 +395,23 @@ test("a full signature recovers explicitly, permits auxiliary casts only between
   assert.deepEqual(f.d.cues(), []);
   assert(!f.d.busy);
 });
-test("phase stagger victory timeout and wipe clear real Marshal paths, anchors, owned repeats and pending global echoes", () => {
+test("phase retains Marshal paths and anchors; stagger and encounter exit clear owned work", () => {
   for (const end of ["phase", "stagger", "victory", "timeout", "wipe"]) {
     const g = game("crazed");
     g.step();
     assert(g.director.civic.marshal.cues().length);
+    const committed = g.director.cues().filter(q => !("until" in q) || q.until > g.combatTick + 1).map(q => q.id);
     if (end === "phase") g.boss.health = g.boss.maxHealth * 0.49;
     if (end === "stagger") g.boss.staggerUntil = g.combatTick + 90;
     if (end === "victory") g.boss.health = 0;
     if (end === "timeout") g.boss.deadline = g.combatTick + 1;
     if (end === "wipe") g.players.get("solo")!.status = "eliminated";
     g.step();
+    if(end === "phase") {
+      assert(committed.length);
+      assert(committed.every(id => g.director.cues().some(q => q.id === id)));
+      continue;
+    }
     assert.equal(g.director.civic.marshal.cues().length, 0, end);
     assert(!g.bossCues().some((c) => c.kind === "brutal-echo"), end);
   }
@@ -448,7 +454,7 @@ test("only known protocol27 local Practice/profile state migrates while exact fo
   old.protocolVersion = 27;
   old.contentRevision = revision;
   const after = Game.restoreOffline(old).offlineCheckpoint()!;
-  assert.equal(PROTOCOL, 35);
+  assert.equal(PROTOCOL, 36);
   assert.equal(after.contentRevision, CONTENT_REVISION);
   assert.deepEqual(after.player, save.player);
   assert.deepEqual(after.completedBossForms, save.completedBossForms);

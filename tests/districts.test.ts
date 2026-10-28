@@ -548,10 +548,14 @@ test('every Pilgrimage identity executes all Normal/Brutal phases on actual maps
           assert.equal(g.accord,null);
           g.step();
         }
+        // Existing scores finish naturally; require a fresh signature within its bounded recovery.
+        const prior = new Set(g.director.cues().map(c => c.id));
+        const budget = Math.max(180,g.director.district.nextSignatureAt-g.combatTick+90);
+        assert(budget<=3000,'Unbounded signature recovery');
         let observed = false;
-        for (let tick = 0; tick < 150; tick++) {
+        for (let tick = 0; tick < budget; tick++) {
           g.step();
-          observed ||= g.director.cues().some((c) => c.kind.startsWith('district-'));
+          observed ||= g.director.cues().some((c) => c.kind.startsWith('district-') && !prior.has(c.id));
         }
         assert(observed, id + ' did not execute its signature in phase ' + phase);
       }

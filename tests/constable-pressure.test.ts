@@ -265,7 +265,7 @@ test('named Constable phases cover all fifteen supported languages and retain th
   assert.equal(constablePhaseName(2, 'missing'), 'Lockdown');
 });
 
-test('Easy Standard shield transitions cancel outgoing volleys, arrest fields and stale cast poses', () => {
+test('Easy Standard phase assistance retains outgoing volleys, arrest fields and their cast clocks', () => {
   for (const boundary of ['volley', 'arrest']) {
     const game = fixture('normal','gatehouse',true,'easy');
     while (
@@ -276,14 +276,15 @@ test('Easy Standard shield transitions cancel outgoing volleys, arrest fields an
     }
     if (boundary === 'volley') assert(game.warnings.some((w) => w.kind === 'fan'));
     const origin = { ...game.boss };
+    const warnings = game.warnings.filter(w => w.at > game.combatTick+1).map(w => w.id);
+    const fields = game.fields.filter(f => f.owner === 'hostile' && f.until > game.combatTick+1).map(f => f.id);
     game.boss.health = game.boss.maxHealth * 0.49;
     game.step();
     assert.equal(game.boss.phase, 1);
     assert(game.accord);
-    assert.equal(game.warnings.length, 0);
-    assert.equal([...game.shots.values()].filter((s) => s.owner === 'hostile').length, 0);
-    assert.equal(game.fields.filter((f) => f.owner === 'hostile').length, 0);
-    assert.equal(game.boss.castReleaseAt, 0);
+    assert(warnings.every(id => game.warnings.some(w => w.id === id)));
+    assert(fields.every(id => game.fields.some(f => f.id === id)));
+    assert.equal(game.boss.castReleaseAt, origin.castReleaseAt);
     assert.equal(distance(origin, game.boss), 0);
   }
 });

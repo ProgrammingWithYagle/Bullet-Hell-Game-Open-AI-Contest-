@@ -228,6 +228,7 @@ export class Game {
   readonly brutalVolley = new BrutalVolley();
   readonly variantPressure = new VariantPressure();
   readonly completedBossForms = new Map<BossId, 'normal'|'brutal'|'crazed'>();
+  private phaseAttackReadyAt = 0;
   private arenaHazardAt = 0;
   private lavaHitAt = new Map<string,number>();
   bossCues() {
@@ -761,6 +762,7 @@ export class Game {
   }
   private startEncounter() {
     Object.assign(this.selectedContract,classifiedContract(this.selectedContract.bossId??'constable',encounterVariant(this.settings.difficulty,this.selectedContract.variant)));
+    this.phaseAttackReadyAt = 0;
     this.variantPressure.reset(this.combatTick);
     this.classKits.clear();this.transforms.clear();this.wardenPatrol.clear();
     this.pruneExpired();
@@ -1082,7 +1084,7 @@ export class Game {
     }
     this.bossPrevious = { x: this.boss.x, y: this.boss.y };
     this.stepBoss();
-    this.variantPressure.step({now:this.combatTick,bossId:this.boss.id,variant:this.boss.variant,phase:this.boss.phase,bounds:this.arena.bounds,targets:this.aimTargets(),damageScale:this.bossDamageScale(),paused:this.boss.id==='bellringer'||this.boss.id==='alchemist'||!!this.accord||this.combatTick<this.boss.staggerUntil||(this.boss.id==='lantern-warden'&&!this.wardenPatrol.canCastAuxiliary),id:()=>this.id(),damage:(id,amount)=>this.hurtTarget(id,amount)});
+    this.variantPressure.step({now:this.combatTick,bossId:this.boss.id,variant:this.boss.variant,phase:this.boss.phase,bounds:this.arena.bounds,targets:this.aimTargets(),damageScale:this.bossDamageScale(),blocked:this.bossCastBlocked(),paused:this.boss.id==='bellringer'||this.boss.id==='alchemist'||this.combatTick<this.boss.staggerUntil||(this.boss.id==='lantern-warden'&&!this.wardenPatrol.canCastAuxiliary),id:()=>this.id(),damage:(id,amount)=>this.hurtTarget(id,amount)});
     this.brutalVolley.release(this.combatTick,(point,angle,speed,damage,radius)=>
       this.emitShot('hostile',point.x,point.y,angle,speed,damage,radius));
     this.minions.step(
@@ -1667,7 +1669,10 @@ export class Game {
   private bossPhases() {
     return encounterPhases(this.boss.id,this.boss.variant);
   }
-  private wardenContext(){return {now:this.combatTick,boss:this.boss,phase:this.boss.phase,brutal:this.boss.variant!=='normal',target:this.aimTargets()[0]??{x:800,y:700},radius:this.bossDefinition().radius,obstacles:this.obstacles,id:()=>this.id()};}
+  private bossCastBlocked() {
+    return !!this.accord || this.combatTick < this.phaseAttackReadyAt;
+  }
+  private wardenContext(){return {blocked:this.bossCastBlocked(),now:this.combatTick,boss:this.boss,phase:this.boss.phase,brutal:this.boss.variant!=='normal',target:this.aimTargets()[0]??{x:800,y:700},radius:this.bossDefinition().radius,obstacles:this.obstacles,id:()=>this.id()};}
   private resetWarden() {
     this.signatures=[];this.wardenPatrol.clear();this.wardenHitAt.clear();
     if(this.boss.id!=='lantern-warden')return;
@@ -1782,7 +1787,8 @@ export class Game {
   }
   private signatureContext(): SignatureContext {
     return {
-      paused: !!this.accord,
+      // Phase assistance blocks fresh casts; it does not interrupt committed work.
+      paused: false,
       warn: () => { this.events.push({type:'sound',id:'warning'}); },
       cueSound: (id) => { this.events.push({type:'sound',id}); },
       damageMaximumHealth: (id,fraction) => {
@@ -1797,7 +1803,7 @@ export class Game {
         const player=this.players.get(id);
         return !!player && this.damageCurrentHealth(player,fraction,minimumHealth);
       },
-      auxiliaryBusy: this.warnings.length > 0 || this.combatTick < this.boss.castEndsAt,
+      auxiliaryBusy: this.bossCastBlocked() || this.warnings.length > 0 || this.combatTick < this.boss.castEndsAt,
       hazardCircles:this.arena.lavaPits,
       tick: this.combatTick,
       bossId: this.boss.id,
@@ -1897,7 +1903,7 @@ export class Game {
         (attack, i) =>
           now +
           ticks(
-            1.5 +
+            rule.phaseTransitionCastDelaySeconds +
               (this.boss.variant !== 'normal' &&
               bossPatternPhase(this.boss.id,this.boss.variant,this.boss.phase) === 3 &&
               'comboOffsetSeconds' in attack
@@ -1906,27 +1912,10 @@ export class Game {
           ),
       );
       this.rescaleDepartures();
-      this.resetWarden();
-      this.director.reset(this.boss.id, this.boss.variant !== 'normal',false,this.boss.id==='quarantine-clerk');
-      if (this.boss.id === 'tollkeeper') this.director.civic.tollkeeper.reset(now + ticks(1.5));
-      if (this.boss.id === 'chain-marshal') this.director.civic.marshal.reset(now + ticks(1.5));
-      if (this.boss.id === 'gate-widow') this.director.civic.widow.reset(now + ticks(1.5));
-      if (this.boss.id === 'black-ambulance') this.director.civic.ambulance.reset(now + ticks(1.5));
-      if (this.boss.id === 'matron') {this.director.services.matron.reset(now+ticks(1.5));this.minions.clear();}
-      if (this.boss.id === 'alchemist') this.director.services.alchemist.reset(now+ticks(1.5));
-      if (this.boss.id === 'bellringer') this.director.services.bellringer.reset(now+ticks(1.5));
-      this.variantPressure.reset(now);
-      this.brutalVolley.clear();
+      // Keep each owner, target lock, weak point and release clock alive. Only
+      // future casts use the new phase; phase entry is not an interruption.
+      this.phaseAttackReadyAt = now + ticks(rule.phaseTransitionCastDelaySeconds);
       const assist = phaseShieldBreak(this.settings.difficulty,this.boss.variant);
-      if (this.boss.id !== 'lantern-warden') {
-        this.warnings.length = 0;
-        if (assist) for (const shot of this.shots.values()) if (shot.owner === 'hostile') this.removeShot(shot);
-        if (this.boss.id === 'bellringer' || this.boss.id === 'alchemist' || this.boss.id === 'matron' || this.boss.id === 'black-ambulance' || this.boss.id === 'gate-widow' || this.boss.id === 'chain-marshal' || this.boss.id === 'tollkeeper' || this.boss.id === 'quarantine-clerk' || this.boss.id === 'ratcatcher' || this.boss.id === 'courier' || this.boss.id === 'constable' || this.director.earlyWatch.handles(this.boss.id) || this.director.smallWakes.handles(this.boss.id)) {
-          this.boss.castAt = this.boss.castReleaseAt = this.boss.castEndsAt = 0;
-          if (assist) for (let i = this.fields.length - 1; i >= 0; i--)
-            if (this.fields[i].owner === 'hostile') this.fields.splice(i, 1);
-        }
-      }
       const count = this.roster().length;
       this.accord = assist ? {
         until: now + ticks(8),
@@ -1995,7 +1984,9 @@ export class Game {
     const attacks = this.bossPhases()[this.boss.phase].attacks;
     for (let index = 0; index < attacks.length; index++)
       if (
+        !this.bossCastBlocked() &&
         now >= this.attackAt[index] &&
+        (attacks[index].kind !== 'charge' || !this.director.charging) &&
         (this.boss.id !== 'tollkeeper' || !this.director.civic.tollkeeper.busy) &&
         (this.boss.id !== 'chain-marshal' || !this.director.civic.marshal.busy) &&
         (this.boss.id !== 'gate-widow' || !this.director.civic.widow.busy) &&

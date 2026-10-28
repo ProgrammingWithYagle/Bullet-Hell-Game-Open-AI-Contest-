@@ -320,3 +320,9 @@ Bellringer now uses Single Toll, Procession, Counterstroke and advanced Carillon
 ## Bell Counterpoint
 
 Human5204 found Bellringer too weak for grade3-. It now approaches a survivor, then overlaps peals with separately warned clapper sectors. Standard has two/three/four fronts across its phases; Brutal has four/four/five/six and multiple clappers. Crazed adds three/four concurrent reply fronts and a second clapper source while the primary keeps attacking. Openings stay fixed and share clear floor. Actual toll/reply/clapper sounds differ. All base combat, fixed grade, music and art remain; quality stays12/60,roster66. New human review is open. Mold Alchemist Crazed tuning and global committed-attack phase continuity are pending follow-ups. [Mechanics](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/BELL_COUNTERPOINT.md).
+
+## Committed attacks across phase changes
+
+Development build **2026.10.28-unbroken-attacks / protocol36** keeps already warned or released attacks alive through phase entry on every difficulty. Custom owners retain the issuing phase for their children; weak points, terrain and summons stay authoritative. Fresh casts wait through the shared1.5-second grace or optional Baby/Easy assistance. Completing that channel still earns an interruption; natural expiry, genuine weak-point breaks and encounter cleanup remain. Software evidence and human/rendered balance acceptance are separate.
+
+Human5206 finds Bellringer pressure sufficient and possibly too high for Standard; calibration and a distinct Brutal mechanic remain pending. Stronger themed Alchemist Crazed and the requested shared General mobility branch (Double Dash/Sprint) are also pending. Roster66, ordinary deficit85 and quality12/60 with48remaining stay unchanged. The full game remains unfinished.

@@ -417,7 +417,7 @@ test("advanced Fractionation adds a second perpendicular vapor bank with its own
     assert.equal(f.emissions(), 0);
   }
 });
-test("snapshot geometry is detached and numeric with rich actor data; pause, phase and explicit reset cancel all chemistry and retained contact state", () => {
+test("snapshot geometry is detached and numeric; explicit interruption/reset cancel chemistry while phase changes preserve it", () => {
   const f = fixture("crazed", 3);
   Object.assign(f.c.boss, { id: "alchemist", health: 999 });
   f.step();
@@ -435,9 +435,10 @@ test("snapshot geometry is detached and numeric with rich actor data; pause, pha
   assert.deepEqual(f.d.cues(), []);
   f.step();
   assert(f.d.cues().length);
+  const committed = f.d.cues().map(q => q.id);
   f.c.phase = 0;
   f.step();
-  assert.deepEqual(f.d.cues(), []);
+  assert(committed.every(id => f.d.cues().some(q => q.id === id)));
   const end = f.c.tick + 90;
   f.d.reset(end);
   f.run(end - 1);

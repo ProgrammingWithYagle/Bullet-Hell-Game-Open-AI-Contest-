@@ -340,7 +340,7 @@ test("rich actor data cannot overwrite numeric cue identities or leak into path 
   assert(f.d.cues().every((q) => Number.isSafeInteger(q.id)));
   assert.equal(new Set(f.d.cues().map((q) => q.id)).size, f.d.cues().length);
 });
-test("pause, phase and explicit reset remove all pending peals/clappers/responders and preserve their fresh restart delay", () => {
+test("explicit interruption/reset clear peals with a fresh restart delay, while a phase change retains the committed score", () => {
   const f = fixture("crazed");
   f.step();
   until(f, () => of(f, "bell-resonator").length > 0);
@@ -352,9 +352,10 @@ test("pause, phase and explicit reset remove all pending peals/clappers/responde
   assert.deepEqual(f.d.cues(), []);
   f.step();
   assert(f.d.cues().length);
+  const committed = f.d.cues().map(q => q.id);
   f.c.phase = 1;
   f.step();
-  assert.deepEqual(f.d.cues(), []);
+  assert(committed.every(id => f.d.cues().some(q => q.id === id)));
   const end = f.c.tick + 80;
   f.d.reset(end);
   f.run(end - 1);

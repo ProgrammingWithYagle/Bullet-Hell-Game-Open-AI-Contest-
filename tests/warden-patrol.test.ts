@@ -51,7 +51,11 @@ function game(
   g.boss.deadline = 1e9;
   g.boss.maxHealth = 1e6;
   g.boss.health = phase ? 499999 : 1e6;
-  if (phase) g.step();
+  if (phase) {
+    g.step();
+    // Phase entry retains Still Watch. Test the following legal Roving patrol.
+    until(g, () => g.bossCues().some(c => c.kind === 'warden-patrol'));
+  }
   return g;
 }
 function until(g: Game, check: () => boolean, max = 1000) {
@@ -139,7 +143,7 @@ test('Brutal alternates direction and final pairs have two complete warnings wit
     returnCue ||= g.bossCues().some((c) => c.kind === 'warden-return');
   }
   assert(warnings >= 2);
-  assert.deepEqual(directions.slice(0, 2), [1, -1]);
+  assert.deepEqual(directions.slice(0, 2), [-1, 1]);
   assert(activeTicks >= 240);
   assert(returnCue);
   const first = game('brutal');
@@ -180,7 +184,7 @@ test('the live final Brutal pair clears auxiliary hazards and cannot damage its 
     damageCalls = 0;
   const original = g.damage.bind(g);
   g.damage = (player, amount) => {
-    damageCalls++;
+    if(g.signatures.some(s=>s.phase==='active'))damageCalls++;
     original(player, amount);
   };
   for (let i = 0; i < 530; i++) {
@@ -319,7 +323,7 @@ test('issued protocol18 Practice retains money, skills and identity under the ne
   save.contentRevision =
     '535eb34c7cdabce5ad2fe910ea0a792278a7cc08e360b4f5712d7ee2d9e767f6';
   const restored = Game.restoreOffline(save);
-  assert.equal(PROTOCOL, 35);
+  assert.equal(PROTOCOL, 36);
   assert.equal(restored.settings.runId, g.settings.runId);
   assert.equal(restored.players.get('solo')!.coins, 999);
   assert.deepEqual(restored.players.get('solo')!.skills, p.skills);
@@ -391,7 +395,11 @@ test(
       const g = liveRooms.get(owner.room!.roomId)!.game;
       for (const p of g.players.values()) p.invulnerableUntil = 1e9;
       g.boss.deadline = 1e9;
+      const priorTick = g.signatures[0].phaseTick;
       g.boss.health = g.boss.maxHealth * 0.49;
+      g.step();
+      assert.equal(g.signatures[0].phaseTick, priorTick + 1);
+      until(g, () => g.bossCues().some(c => c.kind === 'warden-patrol'));
       await wait(() =>
         guest.view!.bossCues.some((c) => c.kind === 'warden-patrol'),
       );
@@ -410,7 +418,7 @@ test(
       );
       const v = guest.view!;
       close(v.signatures[0].cone.x, v.boss.x + 55);
-      assert.equal(v.signatures[0].direction, 1);
+      assert.equal(v.signatures[0].direction, -1);
       steps(g, 37);
       await wait(() =>
         guest.view!.signatures.some((s) => s.phase === 'active'),

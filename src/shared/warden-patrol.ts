@@ -3,6 +3,7 @@ import { distance, moveBody, type Rect } from './geometry.ts';
 import {
   WardenClock,
   WARDEN_SIGNATURE,
+  WARDEN_CYCLE_TICKS,
   type WardenSample,
 } from './warden-signature.ts';
 export type WardenPatrolCue = {
@@ -30,6 +31,7 @@ type Context = {
   now: number;
   boss: Vec;
   phase: number;
+  blocked?: boolean;
   brutal: boolean;
   target: Vec;
   radius: number;
@@ -45,6 +47,8 @@ export class WardenPatrol {
   private lastTick = 0;
   private cycle = 0;
   private pass = 0;
+  private issuedPhase = 0;
+  private deferredRoute = false;
   private route?: WardenPatrolCue;
   private returning?: WardenEchoCue;
   private direction: 1 | -1 = 1;
@@ -58,6 +62,7 @@ export class WardenPatrol {
     this.returning = undefined;
     this.cycle = 0;
     this.pass = 0;
+    this.deferredRoute = false;
   }
   get ready() {
     return this.stage !== 'empty';
@@ -117,6 +122,7 @@ export class WardenPatrol {
       this.pass = 1;
       this.direction = this.direction === 1 ? -1 : 1;
     } else {
+      this.issuedPhase = c.phase;
       this.pass = 0;
       this.direction = c.brutal && this.cycle % 2 === 1 ? -1 : 1;
     }
@@ -135,6 +141,7 @@ export class WardenPatrol {
   }
   step(c: Context) {
     if (!this.ready) {
+      if (c.blocked) return this.samples;
       this.reset(c);
       return this.samples;
     }
@@ -169,7 +176,7 @@ export class WardenPatrol {
     }
     if (this.stage === 'route') {
       this.samples = [];
-      if (!this.route) this.beginSweep(c, false);
+      if (!this.route && !c.blocked) this.beginSweep(c, false);
       return this.samples;
     }
     if (this.stage === 'echo') {
@@ -183,7 +190,7 @@ export class WardenPatrol {
       this.samples = [sample];
       if (this.clock!.tick >= ACTIVE_END) {
         this.stageAt = c.now;
-        if (c.brutal && c.phase > 0 && this.pass === 0) {
+        if (c.brutal && this.issuedPhase > 0 && this.pass === 0) {
           this.stage = 'echo';
           this.samples = [];
           this.returning = {
@@ -198,13 +205,22 @@ export class WardenPatrol {
         } else {
           this.stage = 'rest';
           this.restUntil = c.now + WARDEN_SIGNATURE.restTicks;
-          if (c.phase > 0) this.planRoute(c);
+          this.deferredRoute = c.phase > 0 && !!c.blocked;
+          if (c.phase > 0 && !c.blocked) this.planRoute(c);
         }
       }
     } else if (this.stage === 'rest') {
       // Rest pose follows elapsed recovery, but there is no active moving socket.
-      this.samples = [this.clock!.advance(c.target)];
-      if (c.now >= this.restUntil) {
+      // Waiting for assistance or a deferred patrol cannot wrap a rest pose
+      // into a second invisible attack clock. Only beginSweep starts a tell.
+      this.samples = [this.clock!.tick < WARDEN_CYCLE_TICKS - 1
+        ? this.clock!.advance(c.target) : this.clock!.sample()];
+      if (this.deferredRoute && !c.blocked) {
+        this.planRoute(c);
+        this.restUntil = Math.max(this.restUntil, this.route!.until + 1);
+        this.deferredRoute = false;
+      }
+      if (c.now >= this.restUntil && !c.blocked) {
         this.route = undefined;
         this.cycle++;
         this.beginSweep(c, false);

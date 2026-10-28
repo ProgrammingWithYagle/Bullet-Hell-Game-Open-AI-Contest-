@@ -25,7 +25,7 @@ const wait = async (check: () => boolean) => {
     await new Promise((r) => setTimeout(r, 15));
   }
 };
-test("exact known issued33 local Practice/profile state migrates to35 without changing builds/form history/preferences; foreign or online state stays strict", () => {
+test("exact known issued33 local Practice/profile state migrates to the current protocol without changing builds/form history/preferences; foreign or online state stays strict", () => {
   const g = createPracticeGame(
       { mode: "endless", openingBossId: "bellringer", seed: 117 },
       "Mara",
@@ -37,7 +37,7 @@ test("exact known issued33 local Practice/profile state migrates to35 without ch
   old.protocolVersion = 33;
   old.contentRevision = issued;
   const restored = Game.restoreOffline(old).offlineCheckpoint()!;
-  assert.equal(PROTOCOL, 35);
+  assert.equal(PROTOCOL, 36);
   assert.equal(restored.protocolVersion, PROTOCOL);
   assert.equal(restored.contentRevision, CONTENT_REVISION);
   assert.deepEqual(restored.player, save.player);
@@ -237,7 +237,7 @@ test("known issued34 local state migrates exactly while a foreign34 revision and
         "94552a8007ad25febb2f9c8e212ffdf28360bcb1df528a7c7ab226f7388ee675",
     };
   const after = Game.restoreOffline(old).offlineCheckpoint()!;
-  assert.equal(after.protocolVersion, 35);
+  assert.equal(after.protocolVersion, PROTOCOL);
   assert.equal(after.contentRevision, CONTENT_REVISION);
   assert.deepEqual(after.player, save.player);
   assert.deepEqual(after.completedBossForms, save.completedBossForms);

@@ -349,7 +349,7 @@ export class BellCarillon {
     ];
   }
   cast(c: SignatureContext, target: Vec) {
-    if (!c.paused && !this.busy && c.tick >= this.nextSignatureAt)
+    if (!c.paused && !c.auxiliaryBusy && !this.busy && c.tick >= this.nextSignatureAt)
       this.begin(c, target);
     return true;
   }
@@ -571,9 +571,9 @@ export class BellCarillon {
       this.reset(c.tick + ticks(0.8));
       return;
     }
-    if (this.phase >= 0 && c.phase !== this.phase)
-      this.reset(c.tick + ticks(1.5));
-    this.phase = c.phase;
+    const nextContext = c;
+    // A committed walk/score retains the phase that issued its child attacks.
+    if (this.busy) c = { ...c, phase: this.phase };
     const now = c.tick,
       walls = bellWalls(c);
     if (this.stage === "score") this.emitDue(c);
@@ -676,7 +676,7 @@ export class BellCarillon {
       this.rest(now);
     if (!this.busy && now >= this.nextSignatureAt && !c.auxiliaryBusy) {
       const targets = c.aimTargets ?? c.targets;
-      if (targets.length) this.begin(c, targets[this.cycle % targets.length]);
+      if (targets.length) this.begin(nextContext, targets[this.cycle % targets.length]);
     }
   }
 }

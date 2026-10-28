@@ -641,10 +641,14 @@ test('all ten bosses execute actual Normal and Brutal phases on real arena geome
           assert.equal(g.accord,null);
           g.step();
         }
+        // Existing scores finish naturally; require a fresh signature within its bounded recovery.
+        const prior = new Set(g.director.cues().map(c => c.id));
+        const budget = Math.max(180,g.director.endless.nextSignatureAt-g.combatTick+90);
+        assert(budget<=3000,'Unbounded signature recovery');
         let seen = false;
-        for (let t = 0; t < 160; t++) {
+        for (let t = 0; t < budget; t++) {
           g.step();
-          seen ||= g.director.cues().some((c) => c.kind.startsWith('endless-'));
+          seen ||= g.director.cues().some((c) => c.kind.startsWith('endless-') && !prior.has(c.id));
         }
         assert(seen, id + ' phase ' + phase);
       }

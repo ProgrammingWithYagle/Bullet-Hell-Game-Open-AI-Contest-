@@ -393,16 +393,23 @@ test("all maps/difficulties admit a complete relocated muster with body and sack
   assert.equal(cases, 36);
 });
 
-test("phase/stagger cancel pending Ratcatcher cues without a free rat clear; encounter exits remove all rats", () => {
+test("phase retains Ratcatcher work; stagger cancels warnings without a free rat clear and exits remove rats", () => {
   for (const end of ["phase", "stagger", "victory", "timeout", "wipe"]) {
     const g = game("crazed");
     while (!whistle(g.director.ratcatcher)) g.step();
+    const committed = g.director.cues().filter(q => !("until" in q) || q.until > g.combatTick + 1).map(q => q.id);
     if (end === "phase") g.boss.health = g.boss.maxHealth * 0.49;
     if (end === "stagger") g.boss.staggerUntil = g.combatTick + 4 * HZ;
     if (end === "victory") g.boss.health = 0;
     if (end === "timeout") g.boss.deadline = g.combatTick + 1;
     if (end === "wipe") g.players.get("solo")!.status = "eliminated";
     g.step();
+    if(end === "phase") {
+      assert(committed.length);
+      assert(committed.every(id => g.director.cues().some(q => q.id === id)));
+      assert.equal(g.minions.actors.size,12);
+      continue;
+    }
     assert(!g.director.cues().some((c) => c.kind !== "sack"), end);
     assert(!g.bossCues().some((c) => c.kind === "brutal-echo"));
     assert.equal(
@@ -443,7 +450,7 @@ test("fifteen locales and known protocol22 saves/profiles preserve phase help an
   old.contentRevision =
     "9598869248912ad6a787d6e72791183acf4e12d38da92f2a677164f93e3f51c7";
   const migrated = Game.restoreOffline(old).offlineCheckpoint()!;
-  assert.equal(PROTOCOL, 35);
+  assert.equal(PROTOCOL, 36);
   assert.equal(migrated.contentRevision, CONTENT_REVISION);
   assert.deepEqual(migrated.completedBossForms, save.completedBossForms);
   assert.deepEqual(migrated.player, save.player);

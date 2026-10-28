@@ -433,13 +433,14 @@ export class ServiceDirector {
         break;
       }
       case 'glass-surgeon': {
-        this.shapes = this.shapes.filter((s) => s.kind !== 'service-prop' || s.role !== 'needle');
+        // Each set stays shootable until its own beams finish.
         const points = [
           { x: target.x - 190, y: target.y - 145 },
           { x: target.x + 190, y: target.y - 145 },
           { x: target.x + 190, y: target.y + 145 },
           { x: target.x - 190, y: target.y + 145 },
         ].map((p, n) => this.prop(c, 'needle', p, 35, n, at));
+        for (const point of points) point.until = now + ticks(3.9);
         for (let n = 0; n < 4; n++)
           if (n !== index % 4)
             this.beam(
@@ -592,7 +593,7 @@ export class ServiceDirector {
         break;
       }
       case 'plague-gardener': {
-        this.shapes = this.shapes.filter((s) => s.kind !== 'service-prop' || s.role !== 'root');
+        // Later roots do not erase dependencies of previously warned vines.
         for (let n = 0; n < 4; n++) {
           const angle = Math.PI / 4 + (n * Math.PI) / 2,
             root = this.prop(
@@ -615,6 +616,7 @@ export class ServiceDirector {
               [root.id],
               n,
             );
+          root.until = beam.until;
           if (n === index % 4) beam.cutAt = beam.at + ticks(3);
         }
         break;

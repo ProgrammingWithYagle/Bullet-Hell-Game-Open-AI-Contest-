@@ -236,7 +236,7 @@ test("a wall encountered before a seal absorbs the shot without inventing a rim 
   assert(!g.director.cues().some((c) => c.kind === "clerk-block"));
 });
 
-test("actual interception cues are capped at48, sit on the rim, expire and cancel with the phase", () => {
+test("actual interception cues are capped at48, sit on the rim, expire naturally and survive phase entry", () => {
   const { g, seal } = game();
   for (let n = 0; n < 80; n++) emit(g, seal.x + 90, seal.y, -600);
   Reflect.get(g, "stepShots").call(g);
@@ -251,13 +251,11 @@ test("actual interception cues are capped at48, sit on the rim, expire and cance
   emit(g, seal.x + 90, seal.y, -600);
   Reflect.get(g, "stepShots").call(g);
   assert(g.director.cues().some((c) => c.kind === "clerk-block"));
+  const continuing = g.director.cues().filter(c => c.kind === "clerk-block" || c.kind === "clerk-volley").filter(c => c.until > g.combatTick+1).map(c => c.id);
   g.boss.health = g.boss.maxHealth * 0.49;
   g.step();
-  assert(
-    !g.director
-      .cues()
-      .some((c) => c.kind === "clerk-block" || c.kind === "clerk-volley"),
-  );
+  assert(continuing.length);
+  assert(continuing.every(id => g.director.cues().some(c => c.id === id)));
 });
 
 test("only the known protocol24 local Practice/profile revision migrates while exact form and build history survives", () => {
@@ -271,7 +269,7 @@ test("only the known protocol24 local Practice/profile revision migrates while e
   old.protocolVersion = 24;
   old.contentRevision = revision;
   const after = Game.restoreOffline(old).offlineCheckpoint()!;
-  assert.equal(PROTOCOL, 35);
+  assert.equal(PROTOCOL, 36);
   assert.equal(after.contentRevision, CONTENT_REVISION);
   assert.deepEqual(after.player, save.player);
   assert.deepEqual(after.completedBossForms, save.completedBossForms);

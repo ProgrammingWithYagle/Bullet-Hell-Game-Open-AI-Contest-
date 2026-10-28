@@ -203,6 +203,7 @@ export class MatronWard {
   private pulses: MatronPulse[] = [];
   private needles: MatronNeedles[] = [];
   private emitted = new Set<number>();
+  private broodSpeeds = new Map<number, number>();
   private hits = new Map<number, Set<string>>();
   private stage: "idle" | "walk" | "relay" = "idle";
   private cycle = 0;
@@ -221,6 +222,7 @@ export class MatronWard {
     this.pulses = [];
     this.needles = [];
     this.emitted.clear();
+    this.broodSpeeds.clear();
     this.hits.clear();
     this.stage = "idle";
     this.nextSignatureAt = until;
@@ -277,13 +279,21 @@ export class MatronWard {
     );
   }
   cast(c: SignatureContext, target: Vec) {
-    if (this.busy || c.tick < this.nextSignatureAt || c.paused) return true;
-    this.late = c.phase > 0;
-    this.phase = c.phase;
+    if (this.busy || c.tick < this.nextSignatureAt || c.paused || c.auxiliaryBusy) return true;
     this.begin(c, target);
     return true;
   }
   private begin(c: SignatureContext, target: Vec) {
+    // Replacing a nest cannot revoke a brood/needle/relay that already warned.
+    // If every slot is committed, finish those releases before admitting a new walk.
+    const retirement = this.nests.find(n => ![...this.broods, ...this.needles, ...this.pulses]
+      .some(q => q.sourceId === n.id && q.at > c.tick));
+    if (this.nests.length >= tuning.nestMaximum && !retirement) {
+      this.nextSignatureAt = c.tick + 1;
+      return;
+    }
+    this.phase = c.phase;
+    this.late = c.phase > 0;
     const now = c.tick,
       path = matronPath(c, target, this.late, this.cycle++),
       length = path
@@ -307,8 +317,12 @@ export class MatronWard {
     this.stage = "walk";
     this.nests = this.nests.filter((n) => n.health > 0);
     if (this.nests.length >= tuning.nestMaximum) {
-      const old = this.nests.shift()!;
-      this.broods = this.broods.filter((q) => q.sourceId !== old.id);
+      const old = retirement!;
+      this.nests = this.nests.filter(n => n.id !== old.id);
+      this.broods = this.broods.filter(q => {
+        if(q.sourceId !== old.id)return true;
+        this.emitted.delete(q.id);this.broodSpeeds.delete(q.id);return false;
+      });
     }
     const point = this.nestPoint(c, path.at(-1)!);
     this.plannedNest = 0;
@@ -426,19 +440,19 @@ export class MatronWard {
       this.reset(c.tick + ticks(0.8));
       return;
     }
-    if (this.phase >= 0 && this.phase !== c.phase)
-      this.reset(c.tick + ticks(1.5));
-    this.phase = c.phase;
-    this.late = c.phase > 0;
+    const nextContext = c;
+    if (this.busy) c = { ...c, phase: this.phase };
     const now = c.tick,
       walls = matronWalls(c);
     this.nests = this.nests.filter(
       (n) => n.health > 0 && clear(n, n, walls, n.radius),
     );
     const live = new Set(this.nests.map((n) => n.id));
-    this.broods = this.broods.filter(
-      (q) => q.until > now && live.has(q.sourceId),
-    );
+    this.broods = this.broods.filter((q) => {
+      const keep = q.until > now && live.has(q.sourceId);
+      if (!keep) { this.emitted.delete(q.id); this.broodSpeeds.delete(q.id); }
+      return keep;
+    });
     this.needles = this.needles.filter((q) => {
       const keep = q.until > now && (!q.sourceId || live.has(q.sourceId));
       if (!keep) this.emitted.delete(q.id);
@@ -464,11 +478,12 @@ export class MatronWard {
           y: n.y,
           sourceId: n.id,
           index: n.index,
-          count: this.late ? tuning.lateBrood : tuning.earlyBrood,
+          count: c.phase > 0 ? tuning.lateBrood : tuning.earlyBrood,
           beganAt: now,
           at,
           until: at + 6,
         });
+        this.broodSpeeds.set(this.broods.at(-1)!.id, 80 + c.phase * 6);
       }
     }
     for (const q of this.broods)
@@ -486,7 +501,7 @@ export class MatronWard {
           const p = { x: n.x + spots[i][0], y: n.y + spots[i][1] };
           c.spawnOrdinary?.(
             p,
-            80 + c.phase * 6,
+            this.broodSpeeds.get(q.id)!,
             tuning.minionHealth,
             tuning.minionDamage * c.damageScale,
             tuning.minionMaximum,
@@ -565,7 +580,7 @@ export class MatronWard {
     ) {
       const targets = c.aimTargets ?? c.targets;
       this.begin(
-        c,
+        nextContext,
         targets[this.cycle % Math.max(1, targets.length)] ?? c.boss,
       );
     }

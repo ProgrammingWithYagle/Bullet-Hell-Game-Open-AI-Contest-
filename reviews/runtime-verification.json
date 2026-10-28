@@ -1,38 +1,38 @@
 {
-  "createdAt": "2026-10-28T03:44:05.776Z",
+  "createdAt": "2026-10-28T15:35:41.627Z",
   "passed": true,
-  "sourceSnapshotSha256": "7848593d11a244e5d8992bb94b39936fc73a4f9eae4a331b6b3240552bb1cdea",
-  "runtimeSourceSha256": "0c2b66a1bd29ed0c0f572934650b3c433463e2221caaf633103acfed7bfe0580",
-  "contentRevision": "7266df2511e22b94f34915a97c0b4a61e2881778de5cfddff4011a41c2f29fe2",
+  "sourceSnapshotSha256": "b815f868e4f4d951c7425531c78b27b641107605bc8ddcbf73c8c73c965cf724",
+  "runtimeSourceSha256": "2875e50f1d18d781f588cccac65f2213d7ef49b09faa0fbf03f561a7caa4a6f4",
+  "contentRevision": "6f97c9a4f3aabc87e6875b99e18aba60f667335d501ec50e94d215a1f8bc806c",
   "checks": [
     {
       "name": "Stage 1 authored content",
       "passed": true,
-      "elapsedMs": 1520
+      "elapsedMs": 1434
     },
     {
       "name": "TypeScript",
       "passed": true,
-      "elapsedMs": 1420
+      "elapsedMs": 1379
     },
     {
       "name": "Headless rules and real-network integration",
       "passed": true,
-      "elapsedMs": 53894
+      "elapsedMs": 51995
     },
     {
       "name": "Production client build",
       "passed": true,
-      "elapsedMs": 4269
+      "elapsedMs": 4972
     },
     {
       "name": "Emitted encounter atlas contracts",
       "passed": true,
-      "elapsedMs": 564
+      "elapsedMs": 540
     }
   ],
   "outputFiles": 1685,
-  "outputBytes": 722649767,
+  "outputBytes": 722654474,
   "artifacts": [
     {
       "path": "dist/assets/0-Bw4fnU8q.png",
@@ -1715,14 +1715,14 @@
       "sha256": "97bc99bc880f3884812b04266a62d6a896f5879053848bbf94e3f4f904f52f83"
     },
     {
-      "path": "dist/assets/index-BqI6TMpX.js",
-      "bytes": 3495413,
-      "sha256": "ae060a8d380931334da2ad0217842fd9d5cfb0bcad4b126649c4f855d40738fc"
-    },
-    {
       "path": "dist/assets/index-ByqqpBqG.css",
       "bytes": 458816,
       "sha256": "8d0032f299cceabe511b2d6b0583eb06e9939f02052193e0ce33d38a9c2983b1"
+    },
+    {
+      "path": "dist/assets/index-C4wn9Mli.js",
+      "bytes": 3500246,
+      "sha256": "cfab089af60423e25294468b98b4186e7f85e132a64de7c3753bb4098b69f434"
     },
     {
       "path": "dist/assets/infirmary-minion-action-v1-atlas-DQ4YVK8X.png",
@@ -7170,9 +7170,9 @@
       "sha256": "810c4f33639e2e7df436de2154aa921845dd56f5bccc301215bcd6791804b44a"
     },
     {
-      "path": "dist/assets/offline.worker-JFHAEtOr.js",
-      "bytes": 861338,
-      "sha256": "34e96149533a3402f99657127c5376ff99f54d79ec8ec1bbf347fe36a3269025"
+      "path": "dist/assets/offline.worker-B698LQfL.js",
+      "bytes": 861212,
+      "sha256": "6980e83943617c85a2fa2613315ed1e3b76dc1118553e1a19606d64858d52a18"
     },
     {
       "path": "dist/assets/one-door-left-CF84AdvY.wav",
@@ -8457,12 +8457,18 @@
     {
       "path": "dist/index.html",
       "bytes": 540,
-      "sha256": "1aea89c727bf8130ec75d2e520d50cb965c55cee569df81e487088ea7b10563b"
+      "sha256": "9b5ff600da45273806d7474c672e802fa08f00aca29c308ba3e8c617734a9457"
     }
   ],
   "limits": [
     "Automated checks only; assistant browser observations and rendering samples are separate files under reviews/ui and reviews/performance.",
     "No physical-device or human playtest is claimed.",
     "All sixty-six boss identities execute; complete directional/action art, final balance, verified deployed leaderboards/recovery and final Windows/release acceptance remain open."
-  ]
+  ],
+  "matchingReviewBuilds": {
+    "testing": "http://127.0.0.1:2582",
+    "public": "http://127.0.0.1:2583",
+    "audienceEvidence": "reviews/phase-continuity-2026-10-28/build-audience.json",
+    "fullGateBeforeBinding": "reviews/phase-continuity-2026-10-28/full-suite-runtime.json"
+  }
 }

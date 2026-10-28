@@ -313,7 +313,7 @@ export class MoldMixing {
     ];
   }
   cast(c: SignatureContext, target: Vec) {
-    if (!c.paused && !this.busy && c.tick >= this.nextSignatureAt)
+    if (!c.paused && !c.auxiliaryBusy && !this.busy && c.tick >= this.nextSignatureAt)
       this.begin(c, target);
     return true;
   }
@@ -651,9 +651,9 @@ export class MoldMixing {
       this.reset(c.tick + ticks(0.8));
       return;
     }
-    if (this.phase >= 0 && this.phase !== c.phase)
-      this.reset(c.tick + ticks(1.5));
-    this.phase = c.phase;
+    const nextContext = c;
+    // A committed walk/score retains the phase that issued its child attacks.
+    if (this.busy) c = { ...c, phase: this.phase };
     const now = c.tick,
       walls = moldWalls(c);
     for (const q of this.flasks) if (now >= q.at) this.land(c, q);
@@ -783,7 +783,7 @@ export class MoldMixing {
     }
     if (!this.busy && now >= this.nextSignatureAt && !c.auxiliaryBusy) {
       const targets = c.aimTargets ?? c.targets;
-      if (targets.length) this.begin(c, targets[this.cycle % targets.length]);
+      if (targets.length) this.begin(nextContext, targets[this.cycle % targets.length]);
     }
   }
 }

@@ -38,7 +38,7 @@ test("only exact known issued32 Practice/profile state migrates to the current p
   old.protocolVersion = 32;
   old.contentRevision = issued;
   const restored = Game.restoreOffline(old).offlineCheckpoint()!;
-  assert.equal(PROTOCOL, 35);
+  assert.equal(PROTOCOL, 36);
   assert.equal(restored.protocolVersion, PROTOCOL);
   assert.equal(restored.contentRevision, CONTENT_REVISION);
   assert.deepEqual(restored.player, save.player);
@@ -157,10 +157,19 @@ test(
         p.oldX = point.x;
         p.oldY = point.y;
       }
+      // This test isolates a new Fractionation score; the separate continuity
+      // network test verifies the old score across the boundary. Let old reagents
+      // finish naturally so they cannot neutralize the newly aimed acid first.
+      while(g.boss.phase < 2)g.step();
+      Reflect.set(g,"phaseAttackReadyAt",1e9);
+      for(let i=0;i<2000&&(g.director.services.alchemist.busy||g.director.services.alchemist.cues().length);i++)g.step();
+      assert(!g.director.services.alchemist.busy);
+      assert.equal(g.director.services.alchemist.cues().length,0);
+      Reflect.set(g,"phaseAttackReadyAt",g.combatTick);
       let flask;
-      for (let i = 0; i < 250 && !flask; i++) {
+      for (let i = 0; i < 1500 && !flask; i++) {
         g.step();
-        if (g.boss.phase === 2)
+        if (g.boss.phase === 2 && Reflect.get(g.director.services.alchemist, "phase") === 2)
           flask = g
             .bossCues()
             .find((q) => q.kind === "mold-flask" && q.reagent === "acid");

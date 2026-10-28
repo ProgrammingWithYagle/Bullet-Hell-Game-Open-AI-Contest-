@@ -25,6 +25,7 @@ type Context = {
   targets: Target[];
   damageScale: number;
   paused: boolean;
+  blocked?: boolean;
   id(): number;
   damage(id: string, amount: number): void;
 };
@@ -60,7 +61,7 @@ export class VariantPressure {
       return;
     }
     const crazed = c.variant === "crazed";
-    if (c.now >= this.nextAt && c.targets.length) {
+    if (!c.blocked && c.now >= this.nextAt && c.targets.length) {
       const b = c.bounds,
         index = this.sequence++;
       const seed = [...c.bossId].reduce((n, char) => n + char.charCodeAt(0), 0);
