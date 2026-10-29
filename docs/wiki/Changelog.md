@@ -1,6 +1,24 @@
 # Changelog
 
-Development build **2026.10.29-interface-clarity**, protocol 41. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.29-chat-confirmation**, protocol 42. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-29 — Keep chat drafts until delivery is confirmed
+
+### Know whether a message was sent
+
+- The chat box keeps its text until the room server confirms the message. Sending, sent, short cooldown, unavailable/offline, invalid text and uncertain delivery have plain notices in all fifteen languages. Rejected or unconfirmed drafts stay editable. A confirmation never erases edits made while sending, even when the player edits back to the original wording.
+- Unfinished IME composition cannot submit the form, and Esc during composition leaves chat open. The native field no longer cuts Unicode text off at160UTF-16 code units; the existing160-grapheme/512-byte server policy still applies. Combat/menu placement, C toggle, Enter-to-type, Esc-to-close and custom gameplay bindings remain.
+
+### Retry without a second post
+
+- Each submitted message has one request identity. The room authority confirms success or gives an explicit rejection. Repeating the most recent unconfirmed request after a timeout or reserved reconnect returns its original confirmation without another broadcast. There is no automatic message resend.
+- The server keeps up to16accepted request receipts per participant alongside the existing50-message ephemeral room history and1.5-second sender limit. They are memory-only, removed when that participant leaves and never added to game saves or durable records. One client request may be awaiting confirmation at a time.
+- Turning room chat off and back on quickly now refreshes recent history once the existing five-second history limit permits it. One bounded retry is cancelled on disable, disconnect or leave; another player no longer has to post to make history return.
+
+### Compatibility and review limits
+
+- Protocol42 requires a matching backend. Known issued protocol41 local Practice saves pass the complete existing restore validator and retain map policy, equipment, economy and identity. Prior local migrations and strict server-checkpoint compatibility remain.
+- This pass is verified through native controller/rule and actual local transport fixtures, including deliberately dropping the confirmation for an already accepted message and retrying after reconnect. It is separate from human/browser, listening, native-language, device and WAN acceptance. Earlier previews and failed evidence remain preserved.
 
 ## 2026-10-29 — Clear player status, room invitations and password-protected rooms
 

@@ -90,7 +90,7 @@ Insane fixes the form selector to Brutal; Hellish fixes Crazed. Lower global dif
 
 ## Class ability transformations
 
-The seven requested class-upgrade implementation passes now add 21 behavior changes at existing utility-path depth-three nodes (six cumulative SP each). Costs, prerequisites, node IDs and the single-capstone rule remain. Both skill views show fifteen-locale help. Shared authority, finite constructs, delayed attacks and moving fields replicate to offline/online clients. [Class behavior and tradeoffs](Classes-and-Skills#purchased-ability-transformations). Current protocol41 retains bounded older local Practice/profile migrations, including protocol40 equipment, economy and map choices; online checkpoints remain strict. Latest Baby/Easy/Normal assistance and Hellish rules remain intact. Human/rendered/device/native-language acceptance remains open.
+The seven requested class-upgrade implementation passes now add 21 behavior changes at existing utility-path depth-three nodes (six cumulative SP each). Costs, prerequisites, node IDs and the single-capstone rule remain. Both skill views show fifteen-locale help. Shared authority, finite constructs, delayed attacks and moving fields replicate to offline/online clients. [Class behavior and tradeoffs](Classes-and-Skills#purchased-ability-transformations). Current protocol42 retains bounded older local Practice/profile migrations, including protocol40 equipment, economy and map choices; online checkpoints remain strict. Latest Baby/Easy/Normal assistance and Hellish rules remain intact. Human/rendered/device/native-language acceptance remains open.
 
 ## Three encounter forms
 
@@ -104,7 +104,7 @@ Reading the Tutorial keeps the gentle first-run preset available until the profi
 
 ## Chat and team results
 
-Room chat keeps its usual position while fighting. During upgrades, breaks and settings it sits beside the menu on wider screens and above it on smaller screens. Your draft stays in the same input as phases change. You can disable room chat in Settings.
+Room chat keeps its usual position while fighting. During upgrades, breaks and settings it sits beside the menu on wider screens and above it on smaller screens. Your draft stays in the same input as phases change. You can disable room chat in Settings. Sending waits for server confirmation, preserves edits and shows a clear notice for cooldowns or uncertain delivery. Retry the most recent unconfirmed message after reconnect without posting it twice. Quickly hiding/showing chat restores recent history automatically.
 
 Open **Leaderboards** for this device’s practice records or **Team records** from the selected server. Online public-authority runs share one team result; test runs do not enter the board. After a qualifying result, the Team records button opens the matching mode, difficulty and team size. During an Endless break, the host can expand **End this run** to finish and save.
 

@@ -1,6 +1,6 @@
 # Development progress
 
-Updated 2026-10-29 for **2026.10.29-interface-clarity**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
+Updated 2026-10-29 for **2026.10.29-chat-confirmation**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
 
 66 playable identities: 65 ordinary and 1 secret. Three ordinary bosses in every one of fifty subtiers requires 150 ordinary identities, plus secrets; 85 additional ordinary bosses remain.
 
@@ -58,10 +58,11 @@ Updated 2026-10-29 for **2026.10.29-interface-clarity**. These counts track spec
 - Base starting shield is recalculated each fight from the difficulty-adjusted capacity: Heavy 50%, Tank 100%, Soldier 15%, all other classes 0. Hellish gives everyone0. Existing starting-shield mutation bonuses can fill remaining capacity, and all sources respect the same cap. This adds no new branch or maximum-shield upgrade.
 - Current Medic recovery, shared shield capacity and class starting-shield implementation passes191focused checks, including actual seven-client ability replication and all42class/difficulty starting values. Full source validation and current browser/human balance acceptance remain pending. Future shield-cap branches and selective blocking are recorded only.
 - Public5233 feedback accepts the waiting-room/equipment distinction and basic map appearance. Requested clearer setup labels, better room-code placement, an in-bounds Cobble Crab, filled random-map imagery, separate HP/shield bars with character headshots, room passwords and a clear next-encounter preparation message. Current interface-clarity implementation is awaiting complete verification and a new human preview.
+- Chat delivery follow-up implements confirmed sends, explicit rejections and retained editable drafts, plus safe retry after timeout/reserved reconnect and IME composition guards. This is a software follow-up to the smooth multiplayer request; no new human acceptance is claimed.
 
 ## Remaining release work
 
-- Continue polishing current content for first-time players. The interface-clarity follow-up addresses5233 feedback on player status, room-code placement, password rooms, Crab floor bounds and boss-defeat preparation. Complete current-source verification and exact frozen previews, then obtain human/rendered/listening review. Chat delivery reliability remains a separate follow-up.
+- Continue polishing current content for first-time players. The interface-clarity source passes818local checks with frozen public5235/testing5234 previews. Its source push was rejected by automatic approval review and a direct publishing question remains pending. Chat confirmation now addresses silent draft loss and uncertain retries; complete its full current-source validation and new local previews. Browser/human and release gates remain separate.
 - Review Alchemist Crazed distillation columns, route warnings, coolant condensation and final reflux in the next matching frozen preview. The shared earned-SP General mobility branch remains deferred during public polish.
 - Review shared phase-attack continuity in the next matching frozen preview; software checks are separate from rendered/human/device/final balance acceptance.
 - Review Bellringer Standard calibration and the new Brutal/Crazed return-chain decision in the next exact-source frozen preview; fixed grade3- remains.

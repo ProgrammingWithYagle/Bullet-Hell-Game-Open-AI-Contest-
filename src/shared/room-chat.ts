@@ -1,3 +1,4 @@
+import {chatRequestId,type ChatReceipt} from './chat-delivery.ts';
 export type ChatMessage = {
   id: number;
   senderId: string;
@@ -41,6 +42,7 @@ export class RoomChat {
   private nextAt = new Map<string, number>();
   private serial = 0;
   private historyAt = new Map<string, number>();
+  private receipts=new Map<string,Map<string,ChatMessage>>();
   subscribe(id: string, enabled: boolean) {
     if (enabled) this.enabled.add(id);
     else this.enabled.delete(id);
@@ -52,6 +54,7 @@ export class RoomChat {
     this.enabled.delete(id);
     this.nextAt.delete(id);
     this.historyAt.delete(id);
+    this.receipts.delete(id);
   }
   history() {
     return this.messages.map((m) => ({ ...m }));
@@ -61,6 +64,7 @@ export class RoomChat {
     this.historyAt.set(id, now + 5000);
     return true;
   }
+  historyRetryAfter(id:string,now:number){return Math.max(1,Math.min(5000,Math.ceil((this.historyAt.get(id)??now)-now)));}
   accept(senderId: string, name: string, value: unknown, now: number) {
     const text = chatText(value);
     if (
@@ -80,5 +84,24 @@ export class RoomChat {
     this.messages.push(message);
     if (this.messages.length > 50) this.messages.shift();
     return message;
+  }
+  /** Retries acknowledge the original message without broadcasting it twice. */
+  deliver(senderId:string,name:string,value:unknown,now:number,ready=true):{receipt:ChatReceipt;message?:ChatMessage}|null{
+    if(!value||typeof value!=='object'||Array.isArray(value))return null;
+    const r=value as Record<string,unknown>;
+    if(!chatRequestId(r.requestId))return null;
+    const fail=(reason:'invalid'|'disabled'|'cooldown'|'unavailable',retryAfterMs=0)=>({receipt:{requestId:r.requestId as string,ok:false as const,reason,retryAfterMs}});
+    const text=chatText(r.text);
+    if(Object.keys(r).length!==2||!text)return fail('invalid');
+    const known=this.receipts.get(senderId),previous=known?.get(r.requestId);
+    if(previous)return previous.text===text?{receipt:{requestId:r.requestId,ok:true,message:{...previous}}}:fail('invalid');
+    if(!ready)return fail('unavailable');
+    if(!this.enabled.has(senderId))return fail('disabled');
+    if(now<(this.nextAt.get(senderId)??0))return fail('cooldown',Math.min(1500,Math.max(1,Math.ceil(this.nextAt.get(senderId)!-now))));
+    const message=this.accept(senderId,name,text,now)!;
+    const cache=known??new Map<string,ChatMessage>();cache.set(r.requestId,{...message});
+    while(cache.size>16)cache.delete(cache.keys().next().value!);
+    this.receipts.set(senderId,cache);
+    return {receipt:{requestId:r.requestId,ok:true,message:{...message}},message};
   }
 }

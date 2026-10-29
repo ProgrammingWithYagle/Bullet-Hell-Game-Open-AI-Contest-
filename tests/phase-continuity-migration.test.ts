@@ -18,7 +18,7 @@ test("exact issued35 Practice/profile state migrates to the current protocol wit
   old.protocolVersion = 35;
   old.contentRevision = issued;
   const restored = Game.restoreOffline(old).offlineCheckpoint()!;
-  assert.equal(PROTOCOL, 41);
+  assert.equal(PROTOCOL, 42);
   assert.notEqual(CONTENT_REVISION, issued);
   assert.equal(restored.protocolVersion, PROTOCOL);
   assert.equal(restored.contentRevision, CONTENT_REVISION);

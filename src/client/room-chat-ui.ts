@@ -1,4 +1,5 @@
 import type { Session } from "./session.ts";
+import type {ChatDeliveryState} from './chat-outbox.ts';
 export class RoomChatUI {
   private shell = document.createElement("aside");
   readonly button = document.createElement("button");
@@ -13,11 +14,16 @@ export class RoomChatUI {
   private shortcut = document.createElement('kbd');
   private shortcutEnabled = true;
   private opened = false;
+  private delivery = document.createElement('small');
+  private draftRevision=0;
+  private submittedRevision=0;
+  private activeRequest='';
+  private composing=false;
   constructor(
     private session: Session,
     private host: HTMLElement,
     private changed: () => void,
-    private words: { title: string; message: string; send: string; note: string; locale: string; keyboardHelp?: string },
+    private words: { title: string; message: string; send: string; note: string; locale: string; keyboardHelp?: string;delivery?:(state:ChatDeliveryState)=>string },
   ) {
     this.shell.className = "room-chat-shell";
     this.shell.dataset.placement = "combat";
@@ -38,14 +44,15 @@ export class RoomChatUI {
     title.textContent = words.title;
     this.list.setAttribute("role", "log");
     this.list.setAttribute("aria-live", "polite");
-    this.input.maxLength = 160;
+    this.input.maxLength = 1024;
     this.input.setAttribute("aria-label", words.message);
     this.input.autocomplete = "off";
     this.send.textContent = words.send;
     const note = document.createElement("small");
     note.textContent = words.note;
     this.form.append(this.input, this.send);
-    this.panel.append(title, this.list, this.form, note);
+    this.delivery.className='chat-delivery-status';this.delivery.hidden=true;this.delivery.setAttribute('role','status');this.delivery.setAttribute('aria-live','polite');
+    this.panel.append(title, this.list, this.form,this.delivery, note);
     if (words.keyboardHelp) {
       const help = document.createElement('small'); help.className = 'chat-keyboard-help';
       help.textContent = words.keyboardHelp; this.panel.append(help);
@@ -55,9 +62,22 @@ export class RoomChatUI {
     this.button.onclick = () => this.setOpen(!this.opened);
     this.form.onsubmit = (e) => {
       e.preventDefault();
-      if (this.session.sendChat(this.input.value)) this.input.value = "";
+      if(this.composing)return;
+      this.submittedRevision=this.draftRevision;
+      this.session.sendChat(this.input.value);
+    };
+    this.input.oninput=()=>{this.draftRevision++;};
+    this.input.addEventListener('compositionstart',()=>{this.composing=true;});
+    this.input.addEventListener('compositionend',()=>{this.composing=false;});
+    session.onChatDelivery=state=>{
+      if(state.status==='sending')this.activeRequest=state.requestId;
+      if(state.status==='sent'&&state.requestId===this.activeRequest&&this.input.value===state.draft&&this.draftRevision===this.submittedRevision)this.input.value='';
+      this.send.disabled=state.status==='sending'||state.status==='cooldown';
+      this.input.setAttribute('aria-busy',String(state.status==='sending'));
+      this.delivery.textContent=this.words.delivery?.(state)??'';this.delivery.hidden=!this.delivery.textContent;
     };
     this.input.onkeydown = (e) => {
+      if(e.isComposing)return;
       if (e.key === "Escape") {
         e.preventDefault();
         e.stopPropagation();
@@ -151,6 +171,7 @@ export class RoomChatUI {
   }
   destroy() {
     this.session.onChat = () => {};
+    this.session.onChatDelivery=()=>{};
     this.dock?.closest('.dialog-layout')?.classList.remove('with-chat');
     this.shell.remove();
   }

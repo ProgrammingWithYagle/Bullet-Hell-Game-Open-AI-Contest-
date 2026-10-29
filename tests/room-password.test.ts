@@ -62,7 +62,7 @@ test('real public/private password rooms reject missing/wrong passwords, prompt 
 test('protocol40 local saves keep equipment, economy, selected map and identity; server checkpoints stay strict',()=>{
   const g=new Game({maxPlayers:1,mode:'endless',arenaSelection:'randomRun',openingArenaId:'crown-crypt'});const p=g.addPlayer('solo','Mara','medic');p.coins=1983;
   const old=g.offlineCheckpoint()!;old.protocolVersion=40;const restored=Game.restoreOffline(old).offlineCheckpoint()!;
-  assert.equal(PROTOCOL,41);assert.equal(restored.protocolVersion,41);assert.equal(restored.contentRevision,CONTENT_REVISION);
+  assert.equal(PROTOCOL, 42);assert.equal(restored.protocolVersion,42);assert.equal(restored.contentRevision,CONTENT_REVISION);
   assert.deepEqual(restored.settings,old.settings);assert.deepEqual(restored.player,old.player);assert.equal(restored.arenaId,old.arenaId);
   assert.throws(()=>Game.restoreOffline({...old,contentRevision:'unknown'}),/versionMismatch/);
   assert.throws(()=>Game.restoreOffline({...old,serverOnly:true}),/versionMismatch/);

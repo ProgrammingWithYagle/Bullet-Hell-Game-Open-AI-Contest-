@@ -1,6 +1,8 @@
 import {TESTING_BUILD} from './build-audience.ts';
 import type { ArenaSelection } from '../shared/arena-selection.ts';
-import {isChatMessage,chatText,type ChatMessage} from '../shared/room-chat.ts';
+import {isChatMessage,type ChatMessage} from '../shared/room-chat.ts';
+import {ChatOutbox,type ChatDeliveryState} from './chat-outbox.ts';
+import {isChatReceipt} from '../shared/chat-delivery.ts';
 import type {TestingCommand} from './testing-command.ts';
 import { recordProfileView } from './profile.ts';
 import { Client, type Room } from '@colyseus/sdk';
@@ -62,7 +64,12 @@ export class Session {
   private recovering = false;
   chatMessages: ChatMessage[] = [];
   onChat: () => void = () => {};
+  onChatDelivery:(state:ChatDeliveryState)=>void=()=>{};
+  private chatOutbox=new ChatOutbox(request=>this.room!.send('chat',request));
+  get chatDelivery(){return this.chatOutbox.state;}
   private chatEnabled = false;
+  private chatHistoryRetry?:ReturnType<typeof setTimeout>;
+  private clearChatHistoryRetry(){if(this.chatHistoryRetry!==undefined)clearTimeout(this.chatHistoryRetry);this.chatHistoryRetry=undefined;}
   private serverAudience: 'testing'|'public' = 'testing';
   onTestingResult: (ok:boolean) => void = () => {};
   onView: (view: View) => void = () => {};
@@ -74,7 +81,7 @@ export class Session {
   onTeamRecord: () => void = () => {};
   constructor(
     readonly endpoint = defaultGameEndpoint,
-  ) {}
+  ) {this.chatOutbox.onChange=state=>this.onChatDelivery(state);}
   offline(options: ConnectionOptions, resume = false) {
     return new Promise<void>((resolve, reject) => {
       this.worker = new Worker(new URL('./offline.worker.ts', import.meta.url), { type: 'module' });
@@ -238,6 +245,7 @@ export class Session {
     if (!this.closed) this.onStatus(key);
   }
   private attach(room: Room<WorldState>, client: Client) {
+    this.clearChatHistoryRetry();
     this.room = room;
     this.id = room.sessionId;
     // Own the retry lifetime so leaving during a retry cannot reopen an old session.
@@ -262,16 +270,34 @@ export class Session {
     });
     room.onMessage('purchaseResult', (r) => this.onPurchase(r));
     room.onMessage('chat',(m:unknown)=>this.receiveChat(m));
+    room.onMessage('chatReceipt',(value:unknown)=>{
+      if(!isChatReceipt(value)||value.ok&&value.message.senderId!==this.id)return;
+      if(this.chatOutbox.receive(value)&&value.ok)this.receiveChat(value.message);
+    });
     room.onMessage('teamRecord', (m: unknown) => this.receiveTeamRecord(m));
-    room.onMessage('chatHistory',(m:unknown)=>this.receiveChat(m,true));
+    room.onMessage('chatHistory',(m:unknown)=>{if(this.room!==room)return;this.clearChatHistoryRetry();this.receiveChat(m,true);});
+    room.onMessage('chatHistoryRetry',(value:unknown)=>{
+      if(this.room!==room||this.closed||!this.chatEnabled||!value||typeof value!=='object'||Array.isArray(value))return;
+      const after=(value as {afterMs?:unknown}).afterMs;
+      if(Object.keys(value).length!==1||typeof after!=='number'||!Number.isInteger(after)||after<1||after>5000)return;
+      this.clearChatHistoryRetry();
+      this.chatHistoryRetry=setTimeout(()=>{this.chatHistoryRetry=undefined;if(!this.closed&&this.chatEnabled&&this.room===room&&room.connection.isOpen)room.send('chatSettings',true);},after+25);
+    });
     room.onStateChange((state) => this.receive(networkView(state)));
     room.onDrop(() => {
+      if(this.room!==room)return;
+      this.chatOutbox.disconnected();
+      this.clearChatHistoryRetry();
       void this.recover(client, room.reconnectionToken);
     });
     room.onLeave(() => {
+      if(this.room!==room)return;
+      this.chatOutbox.disconnected();
       if (!this.recovering) this.notify('ui.errorNetwork');
     });
     room.onError(() => {
+      if(this.room!==room)return;
+      this.chatOutbox.disconnected();
       if (!this.recovering) this.notify('ui.errorNetwork');
     });
     room.send('ready');
@@ -399,13 +425,12 @@ export class Session {
   setChatEnabled(value:boolean){
     if(this.chatEnabled===value)return;
     this.chatEnabled=value;
-    if(!value){this.chatMessages=[];this.onChat();}
+    if(!value)this.clearChatHistoryRetry();
+    if(!value){this.chatOutbox.disabled();this.chatMessages=[];this.onChat();}
     if(this.online&&this.room?.connection.isOpen)this.room.send('chatSettings',value);
   }
   sendChat(value:string){
-    const text=chatText(value);
-    if(!this.online||!this.chatEnabled||!text||!this.room?.connection.isOpen)return false;
-    this.room.send('chat',text);return true;
+    return this.chatOutbox.send(value,!this.closed&&this.online&&this.room?.connection.isOpen===true,this.chatEnabled);
   }
   private receiveChat(value:unknown,history=false){
     if(!this.chatEnabled)return;
@@ -419,6 +444,8 @@ export class Session {
   }
   async close() {
     this.closed = true;
+    this.chatOutbox.destroy();
+    this.clearChatHistoryRetry();
     await this.cancelAdmission();
     this.worker?.terminate();
     if (this.room) {

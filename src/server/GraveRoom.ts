@@ -150,13 +150,13 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
     this.onMessage('chatSettings',(client,value:unknown)=>{
       if(typeof value!=='boolean'||!this.readyAt.has(client))return;
       this.roomChat.subscribe(client.sessionId,value);
-      if(value&&this.roomChat.historyAllowed(client.sessionId,Date.now()))client.send('chatHistory',this.roomChat.history());
+      if(value){const now=Date.now();if(this.roomChat.historyAllowed(client.sessionId,now))client.send('chatHistory',this.roomChat.history());else client.send('chatHistoryRetry',{afterMs:this.roomChat.historyRetryAfter(client.sessionId,now)});}
     });
     this.onMessage('chat',(client,value:unknown)=>{
-      if(!this.readyAt.has(client))return;
       const p=this.game.players.get(client.sessionId);if(!p)return;
-      const message=this.roomChat.accept(client.sessionId,p.name,value,Date.now());if(!message)return;
-      for(const peer of this.clients)if(this.roomChat.receives(peer.sessionId))peer.send('chat',message);
+      const delivery=this.roomChat.deliver(client.sessionId,p.name,value,Date.now(),this.readyAt.has(client));if(!delivery)return;
+      if(delivery.message)for(const peer of this.clients)if(this.roomChat.receives(peer.sessionId))peer.send('chat',delivery.message);
+      client.send('chatReceipt',delivery.receipt);
     });
     this.onMessage('input', (client, value: unknown) => {
       if (this.journal.blocked) return;

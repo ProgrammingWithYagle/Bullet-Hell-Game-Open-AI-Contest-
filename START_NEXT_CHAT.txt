@@ -1,3 +1,13 @@
+# Current chat-confirmation source: local gate passed
+
+Build **2026.10.29-chat-confirmation / protocol42** passes **827tests /827passed /0failed**, TypeScript, authored content, fifteen locales, production build and71atlas contracts. Runtime SHA256 **54723b032322d0e209bf2a9b922802ef772476b5ebf1ca22a15327edba6a3069**; source snapshot **c8d66eedeb9157dd695dfeecb5229293cfb2e508af4d09b15908157ed7c9df62**. Current evidence is **reviews/chat-confirmation-2026-10-29**.
+
+The preceding goal turn made progress with the interface/password sourceac3a393 and metadata b312782. Current work fixes silent chat-draft loss, uncertain delivery/reconnect duplicates, edited-draft preservation, IME behavior and a reproduced rapid history-toggle gap. Fresh matching local previews use testing5236/backend2610 and public5237/backend2611, with new roots and listeners. Do not advertise them until launched and checked. Preserve the already verified5234/5235source41 and every earlier preview/package/raw report.
+
+The public GitHub publishing question remains unanswered. Automatic approval review rejected the source push twice and requires direct permission in this chat; do not retry or bypass it. Source CI has not run for either unpublished follow-up. Wiki sync is already authorized but must follow corresponding source upload. No hosted game deployment, main merge, new checkout, delegation, paid service or contest submission. Browser automation remains disabled. Human/rendered, language, listening, device, WAN/endurance/capacity and coordinated release acceptance remain open. Keep the broad polish goal active; future shield-cap branches/selective blocking remain notes only.
+
+## Preserved previous checkpoint
+
 # Current local checkpoint: clearer interface and password rooms
 
 Build **2026.10.29-interface-clarity / protocol41**, source **ac3a3936669ceba7275fd2203a090eba944328b6**, passes **818tests /818passed /0failed**, TypeScript, authored content, fifteen locales, native art, production build and71atlas contracts. Exact evidence is [the current checkpoint](../reviews/interface-clarity-2026-10-29/checkpoint-status.json).

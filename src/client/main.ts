@@ -3,6 +3,7 @@ import { showingBossDefeat } from '../shared/boss-defeat-flow.ts';
 import {expeditionText} from './expedition-text.ts';
 import {testingToolsMarkup,unlockTestingDifficulties} from './testing-ui.ts';
 import {RoomChatUI} from './room-chat-ui.ts';
+import {chatDeliveryText} from './chat-delivery-text.ts';
 import {RoomInviteUI,roomInvitePlacement} from './room-invite-ui.ts';
 import {waitingRoomMarkup,bindRoomCode} from './ui/waiting-room.ts';
 import {playerVitalsMarkup} from './ui/player-vitals.ts';
@@ -336,6 +337,7 @@ function setupGame(online: boolean,classId:string) {
   roomChatUI=new RoomChatUI(session!,app,()=>syncPauseState(), {
     title: t('ui.roomChat'), message: t('ui.chatMessage'), send: t('ui.chatSend'), note: t('ui.chatEphemeral'), locale,
     keyboardHelp: t('ui.chatKeyboardHelp'),
+    delivery:state=>chatDeliveryText(state,t),
   });
   roomChatUI.configure(settings.roomChat,online);
   roomChatUI.setShortcutEnabled(!Object.values(inputOptions.bindings).some(keys => keys.includes('KeyC')));

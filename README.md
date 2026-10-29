@@ -4,9 +4,9 @@
 
 A cooperative gothic bullet-hell game. Dodge attacks, defeat a boss, vote on the next contract and spend your rewards on a build. Play solo or with friends.
 
-The current feature branch uses **build 2026.10.29-interface-clarity / protocol 41**. [Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains this unfinished development work; protected main is a separate release boundary.
+The current feature branch uses **build 2026.10.29-chat-confirmation / protocol 42**. [Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains this unfinished development work; protected main is a separate release boundary.
 
-The current interface/password follow-up passes all818local software checks. It adds character headshots, separate health/shield bars, room-code controls within menus, optional room passwords, clearer boss-defeat preparation and the Crab floor-bound fix. Current source CI, frozen preview and Wiki receipts are tracked in [the review folder](reviews/interface-clarity-2026-10-29); rendered/human acceptance remains open.
+The current chat-confirmation follow-up passes all 827 local software checks. It adds character headshots, separate health/shield bars, room-code controls within menus, optional room passwords, clearer boss-defeat preparation and the Crab floor-bound fix. Chat now keeps drafts until server confirmation, handles explicit rejections and uncertain retries, and restores recent history after rapid toggles. [Current review evidence](reviews/chat-confirmation-2026-10-29) separates local software checks from rendered/human acceptance. GitHub source publishing and corresponding CI/Wiki synchronization await the pending direct permission question.
 
 After each boss clear, a five-second **Boss defeated** moment lets the existing fall or final pose finish with a preparation message and countdown before the next choices or results. Fifteen bosses have full falling sequences; fifty-one have final poses.
 
