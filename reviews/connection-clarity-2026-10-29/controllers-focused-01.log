@@ -1,0 +1,56 @@
+✔ leaving during delayed health aborts actual HTTP and settles the search promptly (120.462ms)
+✔ leaving during delayed rooms aborts actual HTTP and settles the search promptly (106.5138ms)
+✔ leaving during delayed code aborts actual HTTP and settles the search promptly (77.4409ms)
+✔ leaving during server startup cancels the retry delay and makes no later request (140.0213ms)
+✔ cancelled admission releases the known ticket once during its retry delay (17.0449ms)
+✔ cancelled admission releases the known ticket once during a pending poll (1043.2408ms)
+✔ room discovery keeps version, rate-limit and server errors distinct from an empty list (21.5524ms)
+✔ code lookup distinguishes missing, throttled and failing servers (17.7132ms)
+✔ closing offline startup settles before its first view and suppresses late worker events (5.2906ms)
+✔ an unresolved asset task can be cancelled without accepting its late completion (0.8456ms)
+✔ all fifteen catalogs contain source-backed plain connection progress and a Cancel action (54.7702ms)
+✔ Cancel keeps a newer load intact after the older join returns success (539.4847ms)
+✔ Cancel keeps a newer load intact after the older join returns error (404.1704ms)
+✔ Escape cancels before artwork or audio settles and late completions do not reopen the game (268.4289ms)
+✖ compiled room search shows the version error, retries, then aborts when the player goes back (467.522ms)
+✖ code lookup keeps actionable errors and disposal cancels without a late launch (249.1286ms)
+✔ leaving the online records tab aborts its real pending board request (209.5859ms)
+✔ existing rows still open after pagination and changing filters aborts roster requests (307.9797ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 16
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2390.3999
+
+✖ failing tests:
+
+test at tests\discovery-records-menu.test.ts:1:1435
+✖ compiled room search shows the version error, retries, then aborts when the player goes back (467.522ms)
+  Error: Dynamic require of "events" is not supported
+      at file:///C:/Users/yigal/AppData/Local/Temp/grave-native-menu-r25hYG/menu.mjs:11:9
+      at node_modules/.pnpm/ws@8.22.0/node_modules/ws/lib/websocket.js (file:///C:/Users/yigal/AppData/Local/Temp/grave-native-menu-r25hYG/menu.mjs:2841:25)
+      at __require2 (file:///C:/Users/yigal/AppData/Local/Temp/grave-native-menu-r25hYG/menu.mjs:15:52)
+      at node_modules/.pnpm/ws@8.22.0/node_modules/ws/lib/stream.js (file:///C:/Users/yigal/AppData/Local/Temp/grave-native-menu-r25hYG/menu.mjs:3750:22)
+      at __require2 (file:///C:/Users/yigal/AppData/Local/Temp/grave-native-menu-r25hYG/menu.mjs:15:52)
+      at file:///C:/Users/yigal/AppData/Local/Temp/grave-native-menu-r25hYG/menu.mjs:96057:30
+      at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async node:internal/modules/esm/loader:647:26
+      at async TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\discovery-records-menu.test.ts:21:11)
+
+test at tests\discovery-records-menu.test.ts:1:3290
+✖ code lookup keeps actionable errors and disposal cancels without a late launch (249.1286ms)
+  Error: Dynamic require of "events" is not supported
+      at file:///C:/Users/yigal/AppData/Local/Temp/grave-native-menu-qq7pwQ/menu.mjs:11:9
+      at node_modules/.pnpm/ws@8.22.0/node_modules/ws/lib/websocket.js (file:///C:/Users/yigal/AppData/Local/Temp/grave-native-menu-qq7pwQ/menu.mjs:2841:25)
+      at __require2 (file:///C:/Users/yigal/AppData/Local/Temp/grave-native-menu-qq7pwQ/menu.mjs:15:52)
+      at node_modules/.pnpm/ws@8.22.0/node_modules/ws/lib/stream.js (file:///C:/Users/yigal/AppData/Local/Temp/grave-native-menu-qq7pwQ/menu.mjs:3750:22)
+      at __require2 (file:///C:/Users/yigal/AppData/Local/Temp/grave-native-menu-qq7pwQ/menu.mjs:15:52)
+      at file:///C:/Users/yigal/AppData/Local/Temp/grave-native-menu-qq7pwQ/menu.mjs:95808:30
+      at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async node:internal/modules/esm/loader:647:26
+      at async TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\discovery-records-menu.test.ts:45:14)

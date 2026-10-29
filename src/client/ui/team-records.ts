@@ -16,6 +16,8 @@ export function teamResultMarkup(status?: TeamRecordStatus) {
 export function mountTeamRecords(host: HTMLElement, endpoint: string, initialMode: string, initialDifficulty: string, selection?: TeamBoardSelection) {
   let mode = initialMode, difficulty = initialDifficulty, sizeBand: string = selection?.sizeBand ?? 'solo', week = false;
   let nextOffset: number | null = 0, sequence = 0, controller: AbortController;
+  let disposed = false;
+  let rosterController = new AbortController(), rosterGeneration = 0;
   const rows = new Map<string, RankedTeamRecord>();
   host.innerHTML = `<div class="records-filters"><label>${e(t('ui.leaderboardMode'))}<select data-record-mode>${data.modes.map(m => `<option value="${m.id}" ${m.id === mode ? 'selected' : ''}>${e(t('mode.'+m.id+'.name'))}</option>`).join('')}</select></label><label>${e(t('ui.leaderboardDifficulty'))}<select data-record-difficulty>${data.difficulties.map(d => `<option value="${d.id}" ${d.id === difficulty ? 'selected' : ''}>${e(t('difficulty.'+d.id))}</option>`).join('')}</select></label><label>${e(t('ui.recordsSize'))}<select data-record-size></select></label></div><div class="records-tabs"><button data-record-all aria-pressed="true">${e(t('ui.recordsAllTime'))}</button><button data-record-week aria-pressed="false">${e(t('ui.recordsThisWeek'))}</button></div><p>${e(t('ui.leaderboardFilters'))} ${e(t('ui.leaderboardSharedRank'))}</p><p data-record-status role="status" aria-live="polite"></p><button data-record-retry hidden>${e(t('ui.retry'))}</button><div data-record-rows class="team-record-list"></div><button data-record-more hidden>${e(t('ui.recordsMore'))}</button>`;
   const get = <T extends HTMLElement>(selector: string) => host.querySelector<T>(selector)!;
@@ -40,15 +42,18 @@ export function mountTeamRecords(host: HTMLElement, endpoint: string, initialMod
       if (details.dataset.bound) return;
       details.dataset.bound = 'true';
       let loaded = false, rosterOffset: number | null = 0;
+      let rosterLoading = false;
+      const owner = rosterGeneration, signal = rosterController.signal;
       const roster = details.querySelector<HTMLElement>('.team-roster')!;
       const loadRoster = async () => {
-        if (rosterOffset === null) return;
+        if (rosterOffset === null || rosterLoading || disposed || signal.aborted) return;
+        rosterLoading = true;
         const offset = rosterOffset;
         roster.querySelector('button')?.remove();
         const status = document.createElement('p'); status.textContent = t('ui.loading'); roster.append(status);
         try {
-          const page = await fetchRoster(endpoint, details.dataset.teamRun!, offset);
-          if (!details.isConnected) return;
+          const page = await fetchRoster(endpoint, details.dataset.teamRun!, offset, signal);
+          if (disposed || signal.aborted || owner !== rosterGeneration || !details.isConnected) return;
           status.remove(); loaded = true; rosterOffset = page.nextOffset;
           if (offset === 0) {
             const facts = document.createElement('p');
@@ -60,18 +65,19 @@ export function mountTeamRecords(host: HTMLElement, endpoint: string, initialMod
           roster.append(list);
           if (rosterOffset !== null) { const more = document.createElement('button'); more.textContent = t('ui.recordsMore'); more.onclick = () => void loadRoster(); roster.append(more); }
         } catch {
-          if (!details.isConnected) return;
+          if (disposed || signal.aborted || owner !== rosterGeneration || !details.isConnected) return;
           status.textContent = t('ui.teamRecordUnavailable');
           const retry = document.createElement('button'); retry.textContent = t('ui.retry');
           retry.onclick = () => { status.remove(); void loadRoster(); }; roster.append(retry);
-        }
+        } finally { rosterLoading = false; }
       };
       details.ontoggle = () => { if (details.open && !loaded) { loaded = true; void loadRoster(); } };
     });
   }
   async function load(reset: boolean) {
+    if (disposed) return;
     controller?.abort(); controller = new AbortController(); const current = ++sequence;
-    if (reset) { rows.clear(); nextOffset = 0; get('[data-record-rows]').replaceChildren(); }
+    if (reset) { rosterController.abort(); rosterController = new AbortController(); rosterGeneration++; rows.clear(); nextOffset = 0; get('[data-record-rows]').replaceChildren(); }
     if (nextOffset === null) return;
     const status = get('[data-record-status]'); status.textContent = t('ui.loading');
     get('[data-record-retry]').hidden = true; get<HTMLButtonElement>('[data-record-more]').disabled = true;
@@ -119,4 +125,5 @@ export function mountTeamRecords(host: HTMLElement, endpoint: string, initialMod
   get('[data-record-all]').onclick = () => period(false); get('[data-record-week]').onclick = () => period(true);
   get('[data-record-more]').onclick = () => void load(false); get('[data-record-retry]').onclick = () => void load(rows.size === 0);
   bands(); void load(true);
+  return () => { disposed = true; sequence++; controller?.abort(); rosterController.abort(); };
 }

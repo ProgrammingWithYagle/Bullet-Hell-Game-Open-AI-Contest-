@@ -8,10 +8,13 @@ import { defaultGameEndpoint } from '../deployment.ts';
 import type { TeamBoardSelection } from '../team-records.ts';
 import { expeditionText } from '../expedition-text.ts';
 export function mountLeaderboards(host: HTMLElement, back: () => void, endpoint = defaultGameEndpoint, selection?: TeamBoardSelection) {
+  let disposed = false, boardCleanup: (() => void) | undefined;
   let mode: string = selection?.mode ?? "short",
     difficulty = selection?.difficulty ?? "normal",
     online = Boolean(selection);
   const render = () => {
+    if (disposed) return;
+    boardCleanup?.(); boardCleanup = undefined;
     const rows = localRecords(loadProfile(localStorage).runs, mode, difficulty);
     host.innerHTML =
       '<section class="records-page"><div class="section-heading"><h1 tabindex="-1">' +
@@ -108,8 +111,8 @@ export function mountLeaderboards(host: HTMLElement, back: () => void, endpoint 
               "</tbody></table></div>"
             : "<p>" + e(t("ui.noLocalRecords")) + "</p>")) +
       "</section>";
-    if (online) mountTeamRecords(host.querySelector<HTMLElement>('#team-records-content')!, endpoint, mode, difficulty, selection);
-    host.querySelector<HTMLButtonElement>("#records-back")!.onclick = back;
+    if (online) boardCleanup = mountTeamRecords(host.querySelector<HTMLElement>('#team-records-content')!, endpoint, mode, difficulty, selection);
+    host.querySelector<HTMLButtonElement>("#records-back")!.onclick = () => { boardCleanup?.(); boardCleanup = undefined; back(); };
     host.querySelector<HTMLButtonElement>("#records-local")!.onclick = () => {
       online = false;
       render();
@@ -132,4 +135,5 @@ export function mountLeaderboards(host: HTMLElement, back: () => void, endpoint 
       };
   };
   render();
+  return () => { disposed = true; boardCleanup?.(); boardCleanup = undefined; };
 }

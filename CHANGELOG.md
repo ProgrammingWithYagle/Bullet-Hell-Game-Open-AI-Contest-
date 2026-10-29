@@ -1,6 +1,23 @@
 # Changelog
 
-Development build **2026.10.29-chat-confirmation**, protocol 42. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.29-connection-clarity**, protocol 42. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-29 — Clear connection progress and a working Cancel action
+
+### Leave loading without getting stuck
+
+- Loading offers Cancel, and Esc returns home. Keyboard focus stays with the loading dialog. Cancelling stops asset/audio waiting, worker startup, server-health retries, room searches, queued admission and pending SDK join HTTP/socket work. An old connection or asset callback cannot replace or update a newer screen.
+- The server-waking notice uses plain progress text instead of directing players to a covered Pause menu. Search and code lookup show their current step. Version mismatch, request throttling, wrong server addresses, expired codes and full/closed rooms retain useful guidance. New notices are source-backed in all fifteen languages.
+
+### Keep room and records requests with their screen
+
+- Leaving Join Room closes its temporary searches and code lookups. Retry preserves name/class choices. A correct empty room list is distinct from a failed search; no error claims the server has zero rooms.
+- Leaving the online records tab, changing filters or leaving setup cancels pending board/roster requests. Loading another board page keeps earlier rows usable. Repeated opens cannot issue simultaneous duplicate roster pages. Scoring, server record storage and gameplay rules are unchanged.
+
+### Compatibility and review limits
+
+- The client remains protocol42; this pass does not change gameplay, save format, server rules or chat receipts. Existing frozen builds keep their exact source and remain available separately.
+- Actual delayed HTTP, stalled WebSocket, admission cleanup, closed-room and reconnect fixtures plus compiled native menu/controller checks verify software behavior. They are separate from rendered/human, listening, native-language, device, WAN and final balance acceptance.
 
 ## 2026-10-29 — Keep chat drafts until delivery is confirmed
 

@@ -65,6 +65,8 @@ export function portrait(classId: string, size = 'large') {
   return `<div class="survivor-portrait ${size} ${isolated ? 'isolated' : ''}" role="img" aria-label="${e(data.classes[index]?.survivor ?? '')}" style="--person:${index};background-image:url('${image}')"></div>`;
 }
 export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: TeamBoardSelection,retryJoin?:RoomJoinRetry) {
+  let disposed = false;
+  let pageCleanup = () => {};
   let hostPassword='';
   let page = retryJoin?'join':initialRecords ? 'leaderboards' : 'home',
     previewClass: string = selected.classId,
@@ -117,6 +119,10 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
     }
   };
   function render(focusSelector?: string) {
+    if (disposed) return;
+    pageCleanup();
+    const cleanups: (() => void)[] = [];
+    pageCleanup = () => { for (const cleanup of cleanups.splice(0)) cleanup(); };
     if (!difficultyAvailable(selected.difficulty)) selected.difficulty = 'normal';
     if(['insane','hellish'].includes(selected.difficulty))selected.practiceVariant=encounterVariant(selected.difficulty);
     const stage = steps.indexOf(page);
@@ -162,7 +168,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
       content.querySelector('.home-buttons')?.append(unlock);
       unlock.onclick=()=>{unlockTestingDifficulties();unlock.textContent=t('ui.testingUnlocked');};
     }
-    if(page==='leaderboards')mountLeaderboards(content,()=>go('home'),initialRecords?.endpoint ?? selected.serverEndpoint,initialRecords);
+    if(page==='leaderboards')cleanups.push(mountLeaderboards(content,()=>go('home'),initialRecords?.endpoint ?? selected.serverEndpoint,initialRecords));
     if (page === 'profile')
       mountProfile(
         content,
@@ -230,7 +236,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
     byId('profile', () => go('profile'));
     byId('leaderboards',()=>go('leaderboards'));
     byId('back-home', () => go('home'));
-    for (const id of ['guide', 'tutorial']) byId(id, () => tutorial(host, () => render('#' + id)));
+    for (const id of ['guide', 'tutorial']) byId(id, () => { pageCleanup(); tutorial(host, () => render('#' + id)); });
     byId('setup-back', () => go(stage <= 0 ? 'home' : steps[stage - 1]));
     byId('setup-next', () => {
       if (page === 'class') selected.classId = previewClass as ClassId;
@@ -339,6 +345,9 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
       hooks.bindSettings();
     }
     if (page === 'join') {
+      const queries = new Set<Session>();
+      cleanups.push(() => { for (const query of queries) void query.close().catch(() => {}); queries.clear(); });
+      host.querySelector<HTMLSelectElement>('#join-class')!.onchange = event => { selected.classId = (event.target as HTMLSelectElement).value as ClassId; };
       const capture = () => {
         selected.name = host.querySelector<HTMLInputElement>('#name')!.value.trim() || 'Survivor';
         selected.classId = host.querySelector<HTMLSelectElement>('#join-class')!.value as ClassId;
@@ -355,10 +364,14 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
           return;
         }
         const trigger=host.querySelector<HTMLButtonElement>('#join-code')!;trigger.disabled=true;
+        const notice=host.querySelector<HTMLElement>('#notice');if(notice)notice.hidden=true;
+        const query=new Session(selected.serverEndpoint);queries.add(query);
+        const status=document.createElement('p');status.className='room-search-status';status.setAttribute('role','status');trigger.closest('label')!.append(status);
+        query.onStatus=key=>{if(!disposed&&status.isConnected)status.textContent=t(key);};
         void(async()=>{
-          try{const room=await new Session(selected.serverEndpoint).lookupRoom(code);if(trigger.isConnected)launchJoin({roomId:room.roomId,code},room.hasPassword);}
-          catch(error){if(trigger.isConnected)showError(error instanceof Error&&error.message.startsWith('ui.')?error.message:'ui.errorNetwork');}
-          finally{if(trigger.isConnected)trigger.disabled=false;}
+          try{const room=await query.lookupRoom(code);if(!disposed&&trigger.isConnected)launchJoin({roomId:room.roomId,code},room.hasPassword);}
+          catch(error){if(!disposed&&trigger.isConnected)showError(error instanceof Error&&error.message.startsWith('ui.')?error.message:'ui.errorNetwork');}
+          finally{queries.delete(query);void query.close().catch(()=>{});status.remove();if(trigger.isConnected)trigger.disabled=false;}
         })();
       });
       host.querySelector<HTMLInputElement>('#code')!.onkeydown = event => {
@@ -370,11 +383,13 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
       byId('refresh', () => {
         const list=host.querySelector<HTMLElement>('#rooms'),refresh=host.querySelector<HTMLButtonElement>('#refresh');
         if(!list||!refresh||refresh.disabled)return;
-        refresh.disabled=true;list.textContent=t('ui.loading');
+        refresh.disabled=true;list.textContent=t('ui.serverWaking');list.setAttribute('aria-busy','true');
+        const query=new Session(selected.serverEndpoint);queries.add(query);
+        query.onStatus=key=>{if(!disposed&&list.isConnected)list.textContent=t(key);};
         void (async () => {
           try {
-            const rooms = await new Session(selected.serverEndpoint).rooms();
-            if (!list.isConnected) return;
+            const rooms = await query.rooms();
+            if (disposed || !list.isConnected) return;
             list.replaceChildren();
             if (!rooms.length) list.textContent = t('ui.noRooms');
             for (const room of rooms) {
@@ -396,9 +411,11 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
               };
               list.append(b);
             }
-          } catch {
-            if(list.isConnected){list.textContent=t('ui.errorNetwork');showError('ui.errorNetwork');}
+          } catch(error) {
+            if(!disposed&&list.isConnected){const key=error instanceof Error&&error.message.startsWith('ui.')?error.message:'ui.errorNetwork';list.textContent=t(key);}
           }finally{
+            queries.delete(query);void query.close().catch(()=>{});
+            if(list.isConnected)list.setAttribute('aria-busy','false');
             if(refresh.isConnected)refresh.disabled=false;
           }
         })();
@@ -430,4 +447,5 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
     }
   }
   render();
+  return () => { disposed = true; pageCleanup(); };
 }

@@ -1,0 +1,26 @@
+✔ leaving during delayed health aborts actual HTTP and settles the search promptly (108.1206ms)
+✔ leaving during delayed rooms aborts actual HTTP and settles the search promptly (105.8513ms)
+✔ leaving during delayed code aborts actual HTTP and settles the search promptly (78.9783ms)
+✔ leaving during server startup cancels the retry delay and makes no later request (138.2441ms)
+✔ cancelled admission releases the known ticket once during its retry delay (17.1748ms)
+✔ cancelled admission releases the known ticket once during a pending poll (1046.7875ms)
+✔ room discovery keeps version, rate-limit and server errors distinct from an empty list (29.7242ms)
+✔ code lookup distinguishes missing, throttled and failing servers (25.392ms)
+✔ closing offline startup settles before its first view and suppresses late worker events (4.6954ms)
+✔ an unresolved asset task can be cancelled without accepting its late completion (0.9947ms)
+✔ all fifteen catalogs contain source-backed plain connection progress and a Cancel action (54.9743ms)
+✔ Cancel keeps a newer load intact after the older join returns success (464.9676ms)
+✔ Cancel keeps a newer load intact after the older join returns error (336.7672ms)
+✔ Escape cancels before artwork or audio settles and late completions do not reopen the game (255.1828ms)
+✔ compiled room search shows the version error, retries, then aborts when the player goes back (518.4365ms)
+✔ code lookup keeps actionable errors and disposal cancels without a late launch (336.0182ms)
+✔ leaving the online records tab aborts its real pending board request (168.3764ms)
+✔ existing rows still open after pagination and changing filters aborts roster requests (232.7799ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2152.499

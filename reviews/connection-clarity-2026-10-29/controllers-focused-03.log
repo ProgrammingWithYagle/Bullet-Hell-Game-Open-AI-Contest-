@@ -1,0 +1,52 @@
+node:internal/modules/package_json_reader:331
+  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+        ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'ws' imported from C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\connection-lifetime.test.ts
+    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:331:9)
+    at packageResolve (node:internal/modules/esm/resolve:784:25)
+    at moduleResolve (node:internal/modules/esm/resolve:873:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+    at nextStep (node:internal/modules/customization_hooks:189:26)
+    at resolveBaseSync (file:///C:/Users/yigal/OneDrive/Documents/ChatGPT/OpenAI%20Multiplayer%20Game%20Contest%20(Bullet%20Hell)/node_modules/.pnpm/tsx@4.23.15/node_modules/tsx/dist/register-nyXW-TH3.mjs:2:11092)
+    at resolveDirectorySync (file:///C:/Users/yigal/OneDrive/Documents/ChatGPT/OpenAI%20Multiplayer%20Game%20Contest%20(Bullet%20Hell)/node_modules/.pnpm/tsx@4.23.15/node_modules/tsx/dist/register-nyXW-TH3.mjs:2:12398)
+    at resolveTsPathsSync (file:///C:/Users/yigal/OneDrive/Documents/ChatGPT/OpenAI%20Multiplayer%20Game%20Contest%20(Bullet%20Hell)/node_modules/.pnpm/tsx@4.23.15/node_modules/tsx/dist/register-nyXW-TH3.mjs:2:13605) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v24.22.1
+✖ tests\connection-lifetime.test.ts (838.7896ms)
+✔ Cancel keeps a newer load intact after the older join returns success (554.7747ms)
+✔ Cancel keeps a newer load intact after the older join returns error (329.2108ms)
+✔ Escape cancels before artwork or audio settles and late completions do not reopen the game (282.1269ms)
+✔ compiled room search shows the version error, retries, then aborts when the player goes back (650.2935ms)
+✔ code lookup keeps actionable errors and disposal cancels without a late launch (352.0823ms)
+✔ leaving the online records tab aborts its real pending board request (184.1044ms)
+✔ existing rows still open after pagination and changing filters aborts roster requests (264.4378ms)
+✔ explicit ready handshake delivers private codes after client handlers attach and permits a real guest join (207.0153ms)
+✔ real client supply state and capacity queue admit one slot, support cancellation and never reopen a closed session (1382.9469ms)
+✔ instance capacity reserves reconnect slots independently of room limits (1.1609ms)
+Room connection was closed unexpectedly (4002): 
+✔ real WebSocket clients enforce visibility, versions, authority, idempotence and reconnection (1133.5313ms)
+ℹ version rejection
+ℹ public room creation
+ℹ public guest joining
+ℹ interrupted connection
+ℹ private room creation
+ℹ client adapter recovers an early disconnect and closes during retry
+ℹ tests 12
+ℹ suites 0
+ℹ pass 11
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5632.7069
+
+✖ failing tests:
+
+test at tests\connection-lifetime.test.ts:1:1
+✖ tests\connection-lifetime.test.ts (838.7896ms)
+  'test failed'

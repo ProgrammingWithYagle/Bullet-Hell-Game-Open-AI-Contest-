@@ -4,7 +4,7 @@
 
 Dodge attacks, defeat bosses and spend your rewards between fights. Play Solo or team up with friends in this cooperative zombie bullet-hell game.
 
-**Current development build: 2026.10.29-chat-confirmation.** The game is still in development. The public demo and published Windows download below are older versions.
+**Current development build: 2026.10.29-connection-clarity.** The game is still in development. The public demo and published Windows download below are older versions.
 
 ## New here?
 
@@ -15,6 +15,8 @@ Choose **New here? → Start gently** for a prepared Soldier, Quarantine Run, Ga
 Create an open room or add an optional password. Protected public rooms show a lock; joining by listing or code asks for the password. Private rooms stay out of the public list and require their six-character code too. Chat keeps its fight position and has its own space during menus. **C** shows or hides the chat panel; **Enter** starts typing and **Esc** closes it while typing. You can also click the message field. Text stays until the server confirms delivery. If sending fails or is uncertain, the draft remains and a notice explains how to retry. If C already has a custom gameplay binding, that action keeps the key.
 
 Upgrades scroll above the separate **Start run / Leave room** row. Multiplayer continues while a menu is open; Solo pauses. [Hosting and Recovery](Hosting-and-Recovery) explains connections and server limits.
+
+While connecting or loading, **Cancel** or **Esc** returns home. Room search shows its progress and explains version, address or room errors. Back ends a pending search.
 
 ## Keep your records
 
@@ -45,7 +47,7 @@ Newer local Windows review packages have separate source, extraction/copy and na
 <details>
 <summary>Development and verification</summary>
 
-Current source is version 0.3.0, protocol 42 on [draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14). The [current publication and verification evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/tree/feat/first-playable-loop/reviews/publication-sync-2026-10-29) records source CI and Wiki synchronization. The game/Windows source passes827local software checks; its matching review passes six native offline/LAN diagnostics on three verified copies. Rendered/human acceptance remains separate. [Development Progress](Development-Progress) tracks remaining work; [Changelog](Changelog) records each update. [Architecture](Architecture), [Hosting and Recovery](Hosting-and-Recovery), [Contributing](Contributing) and [Credits](Credits) provide the technical and project references.
+Current source is version 0.3.0, protocol 42 on [draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14). The [current publication and verification evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/tree/feat/first-playable-loop/reviews/connection-clarity-2026-10-29) records source CI and Wiki synchronization. Current connection-clarity source passes849local software checks. The separately verified fe82c7e Windows review passes six native offline/LAN diagnostics on three copies. Rendered/human acceptance remains separate. [Development Progress](Development-Progress) tracks remaining work; [Changelog](Changelog) records each update. [Architecture](Architecture), [Hosting and Recovery](Hosting-and-Recovery), [Contributing](Contributing) and [Credits](Credits) provide the technical and project references.
 
 The latest [continuation checkpoint](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/CHECKPOINT_2026_10_25.md) distinguishes current source, frozen previews, CI, Wiki and the current local Windows review package. Protected main and external deployment remain separate boundaries.
 

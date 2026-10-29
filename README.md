@@ -4,9 +4,9 @@
 
 A cooperative gothic bullet-hell game. Dodge attacks, defeat a boss, vote on the next contract and spend your rewards on a build. Play solo or with friends.
 
-The current feature branch uses **build 2026.10.29-chat-confirmation / protocol 42**. [Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains this unfinished development work; protected main is a separate release boundary.
+The current feature branch uses **build 2026.10.29-connection-clarity / protocol 42**. [Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains this unfinished development work; protected main is a separate release boundary.
 
-The current chat-confirmation follow-up passes all 827 local software checks. It adds character headshots, separate health/shield bars, room-code controls within menus, optional room passwords, clearer boss-defeat preparation and the Crab floor-bound fix. Chat now keeps drafts until server confirmation, handles explicit rejections and uncertain retries, and restores recent history after rapid toggles. [Current review evidence](reviews/chat-confirmation-2026-10-29) separates local software checks from rendered/human acceptance. The verified source is published to the existing feature branch. [Publication and current verification](reviews/publication-sync-2026-10-29) records CI, Wiki and draft-PR synchronization; the current Windows review is described in [Windows development](docs/WINDOWS_DESKTOP.md).
+The current source passes all **849 local software checks**. Loading has Cancel/Esc, useful room-search/join errors and requests that end when their screen closes. Earlier chat, player-status, room-password, boss/map and recovery improvements remain. [Current review evidence](reviews/connection-clarity-2026-10-29) distinguishes software/transport checks from rendered/human acceptance. [Windows development](docs/WINDOWS_DESKTOP.md) identifies the separately verified native package.
 
 After each boss clear, a five-second **Boss defeated** moment lets the existing fall or final pose finish with a preparation message and countdown before the next choices or results. Fifteen bosses have full falling sequences; fifty-one have final poses.
 
@@ -62,7 +62,7 @@ The optional expanded skill map shows all 54 skills per class with zoom, scrolli
 
 ## Development status
 
-The current local software gate passes **827 tests,827 pass,0 fail**, plus authored content/fifteen locales/RGBA, TypeScript, production build and71atlas contracts. [Current checkpoint](docs/CHECKPOINT_2026_10_25.md) distinguishes source CI, frozen previews, package verification and Wiki evidence. Rendered/human/device acceptance remains open.
+The current local software gate passes **849 tests,849 pass,0 fail**, plus authored content/fifteen locales/RGBA, TypeScript, production build and71atlas contracts. [Current checkpoint](docs/CHECKPOINT_2026_10_25.md) distinguishes source CI, frozen previews, package verification and Wiki evidence. Rendered/human/device acceptance remains open.
 
 Twelve original encounters have implemented quality passes; 48 remain. Content expansion and the proposed General Double Dash/Sprint branch are deferred during public polish. Complete action/facing animation, final encounter tuning, verified hosted rankings and durable online recovery remain unfinished. Rendered, listening, native-language, physical-device, WAN, endurance, capacity and human balance acceptance remain open.
 

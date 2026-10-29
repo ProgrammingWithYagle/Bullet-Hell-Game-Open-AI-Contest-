@@ -2,10 +2,12 @@ import {TESTING_BUILD} from './build-audience.ts';
 import type { ArenaSelection } from '../shared/arena-selection.ts';
 import {isChatMessage,type ChatMessage} from '../shared/room-chat.ts';
 import {ChatOutbox,type ChatDeliveryState} from './chat-outbox.ts';
+import {RequestLifetime} from './request-lifetime.ts';
+import {SessionClient} from './session-client.ts';
 import {isChatReceipt} from '../shared/chat-delivery.ts';
 import type {TestingCommand} from './testing-command.ts';
 import { recordProfileView } from './profile.ts';
-import { Client, type Room } from '@colyseus/sdk';
+import { Client, ErrorCode, type Room } from '@colyseus/sdk';
 import { WorldState } from '../shared/network-state.ts';
 import {
   CONTENT_REVISION,
@@ -61,6 +63,9 @@ export class Session {
   worker?: Worker;
   room?: Room<WorldState>;
   private closed = false;
+  private readonly requests = new RequestLifetime();
+  private closing?: Promise<void>;
+  get signal() { return this.requests.signal; }
   private recovering = false;
   chatMessages: ChatMessage[] = [];
   onChat: () => void = () => {};
@@ -82,24 +87,36 @@ export class Session {
   constructor(
     readonly endpoint = defaultGameEndpoint,
   ) {this.chatOutbox.onChange=state=>this.onChatDelivery(state);}
-  offline(options: ConnectionOptions, resume = false) {
+  async offline(options: ConnectionOptions, resume = false) {
+    this.signal.throwIfAborted();
     return new Promise<void>((resolve, reject) => {
-      this.worker = new Worker(new URL('./offline.worker.ts', import.meta.url), { type: 'module' });
+      let settled = false;
+      const finish = (error?: unknown) => {
+        if (settled) return;
+        settled = true; this.signal.removeEventListener('abort', cancel);
+        error ? reject(error) : resolve();
+      };
+      const cancel = () => finish(this.signal.reason);
+      this.signal.addEventListener('abort', cancel, {once: true});
+      try { this.worker = new Worker(new URL('./offline.worker.ts', import.meta.url), { type: 'module' }); }
+      catch (error) { finish(error); return; }
       this.worker.onmessage = (e) => {
+        if (this.closed) return;
         const m = e.data;
         if (m.type === 'view') {
           this.receive(m.view);
-          resolve();
+          finish();
         } else if(m.type==='testingResult')this.onTestingResult(m.ok===true);
         else if (m.type === 'events') this.onEvents(m.events);
         else if (m.type === 'purchaseResult') this.onPurchase(m);
         else if (m.type === 'checkpoint') {
           if (!storeBoundary(m.value)) this.notify('ui.errorSave');
-        } else if (m.type === 'error') reject(Error(m.key));
+        } else if (m.type === 'error') finish(Error(m.key));
       };
       this.worker.onerror = () => {
+        if (this.closed) return;
         this.notify('ui.errorServer');
-        reject(Error('ui.errorServer'));
+        finish(Error('ui.errorServer'));
       };
       this.worker.postMessage(
         resume
@@ -119,11 +136,11 @@ export class Session {
   }
   async rooms(): Promise<RoomSummary[]> {
     await this.warmServer();
-    const response = await fetch(this.endpoint + '/api/rooms', {
-      signal: AbortSignal.timeout(10000),
-    });
-    if (!response.ok) throw Error('ui.errorServer');
-    return response.json();
+    this.notify('ui.searchingRooms');
+    const response = await this.requests.fetch(this.endpoint + '/api/rooms');
+    if (!response.ok) throw Error(response.status === 429 ? 'ui.errorRate' : 'ui.errorServer');
+    const rooms = await response.json(); this.signal.throwIfAborted();
+    return rooms;
   }
   async connect(
     options: ConnectionOptions,
@@ -131,9 +148,10 @@ export class Session {
     visibility: 'public' | 'private' = 'public',
     createPassword?:string,
   ) {
+    this.signal.throwIfAborted();
     this.online = true;
     await this.warmServer();
-    const client = new Client(this.endpoint);
+    const client = new SessionClient(this.endpoint, this.requests);
     let roomId = join?.roomId;
     if (join?.code&&!roomId)roomId=(await this.lookupRoom(join.code,false)).roomId;
     const {
@@ -160,6 +178,10 @@ export class Session {
     } catch(error){
       if(error instanceof Error&&['passwordRequired','invalidPassword'].includes(error.message))throw Error('ui.errorRoomPassword');
       if(error instanceof Error&&error.message==='invalidPasswordSetting')throw Error('ui.roomPasswordHelp');
+      if(error instanceof Error&&error.message==='versionMismatch')throw Error('ui.errorVersion');
+      if(error instanceof Error&&error.message==='capacity')throw Error('ui.errorCapacity');
+      if(error instanceof Error&&error.message==='invalidCode')throw Error('ui.errorCode');
+      if(error instanceof Error&&(error.message==='roomClosed'||'code' in error&&error.code===ErrorCode.MATCHMAKE_INVALID_ROOM_ID))throw Error('ui.errorRoomUnavailable');
       throw error;
     } finally {
       await this.cancelAdmission();
@@ -172,45 +194,51 @@ export class Session {
   }
   async lookupRoom(code:string,warm=true):Promise<{roomId:string;hasPassword:boolean}>{
     if(warm)await this.warmServer();
-    const response=await fetch(this.endpoint+'/api/rooms/code/'+encodeURIComponent(code.toUpperCase()),{signal:AbortSignal.timeout(10000)});
-    if(!response.ok)throw Error(response.status===429?'ui.errorRate':'ui.errorCode');
+    this.notify('ui.findingRoom');
+    const response=await this.requests.fetch(this.endpoint+'/api/rooms/code/'+encodeURIComponent(code.toUpperCase()));
+    if(!response.ok)throw Error(response.status===429?'ui.errorRate':[400,404].includes(response.status)?'ui.errorCode':'ui.errorServer');
     const value=await response.json();
+    this.signal.throwIfAborted();
     if(typeof value.roomId!=='string'||typeof value.hasPassword!=='boolean')throw Error('ui.errorServer');
     return {roomId:value.roomId,hasPassword:value.hasPassword};
   }
   private async warmServer() {
+    this.signal.throwIfAborted();
     this.notify('ui.serverWaking');
     const wakingDeadline = Date.now() + 75000;
     while (!this.closed) {
       try {
-        const response = await fetch(this.endpoint + '/api/health', {
-          signal: AbortSignal.timeout(10000),
-        });
+        const response = await this.requests.fetch(this.endpoint + '/api/health');
         if (response.ok) {
-          const health = await response.json();
+          const health = await response.json().catch(() => { throw Error('ui.errorServerAddress'); });
+          this.signal.throwIfAborted();
+          if (!health || typeof health !== 'object' || !Number.isInteger(health.protocolVersion) || typeof health.contentRevision !== 'string') throw Error('ui.errorServerAddress');
           this.serverAudience=health.audience==='public'?'public':'testing';
           if (health.protocolVersion !== PROTOCOL || health.contentRevision !== CONTENT_REVISION)
             throw Error('ui.errorVersion');
           break;
         }
+        if (response.status === 429) throw Error('ui.errorRate');
       } catch (error) {
-        if (error instanceof Error && error.message === 'ui.errorVersion') throw error;
+        this.signal.throwIfAborted();
+        if (error instanceof Error && ['ui.errorVersion','ui.errorServerAddress','ui.errorRate'].includes(error.message)) throw error;
       }
       if (Date.now() >= wakingDeadline) throw Error('ui.errorServer');
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      await this.requests.wait(1500);
     }
     if (this.closed) throw Error('ui.errorNetwork');
   }
   private async admit(kind: 'create' | 'join') {
-    const response = await fetch(this.endpoint + '/api/admission/' + kind, {
+    try {
+    const response = await this.requests.fetch(this.endpoint + '/api/admission/' + kind, {
       method: 'POST',
-      signal: AbortSignal.timeout(10000),
     });
     if (!response.ok) throw Error(response.status === 429 ? 'ui.errorRate' : 'ui.errorCapacity');
     let ticket = await response.json();
     if (typeof ticket.id !== 'string' || !/^[a-f0-9-]{36}$/.test(ticket.id))
       throw Error('ui.errorServer');
     this.admissionId = ticket.id;
+    this.signal.throwIfAborted();
     const deadline = Date.now() + 10 * 60000;
     while (!this.closed) {
       if (ticket.state === 'ready') {
@@ -220,16 +248,19 @@ export class Session {
       this.queuePosition = ticket.position;
       this.notify('ui.waitingCapacity');
       if (Date.now() >= deadline) break;
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      await this.requests.wait(1000);
       if (this.closed) break;
-      const poll = await fetch(this.endpoint + '/api/admission/' + this.admissionId, {
-        signal: AbortSignal.timeout(10000),
-      });
+      const poll = await this.requests.fetch(this.endpoint + '/api/admission/' + this.admissionId);
       if (!poll.ok) break;
       ticket = await poll.json();
     }
     await this.cancelAdmission();
     throw Error('ui.errorCapacity');
+    } catch (error) {
+      await this.cancelAdmission();
+      if (this.closed) throw new DOMException('ui.errorCapacity', 'AbortError');
+      throw error;
+    }
   }
   private async cancelAdmission() {
     const id = this.admissionId;
@@ -311,7 +342,8 @@ export class Session {
     const deadline = Date.now() + 60000;
     let attempt = 0;
     while (!this.closed && Date.now() < deadline) {
-      await new Promise((resolve) => setTimeout(resolve, Math.min(5000, 250 * 2 ** attempt++)));
+      try { await this.requests.wait(Math.min(5000, 250 * 2 ** attempt++)); }
+      catch { break; }
       if (this.closed) break;
       try {
         const room = await client.reconnect<WorldState>(token, WorldState);
@@ -442,12 +474,15 @@ export class Session {
   pause(value: boolean) {
     if (!this.online) this.worker?.postMessage({ type: 'pause', value });
   }
-  async close() {
+  close(): Promise<void> {
+    if (this.closing) return this.closing;
     this.closed = true;
+    this.requests.cancel();
     this.chatOutbox.destroy();
     this.clearChatHistoryRetry();
-    await this.cancelAdmission();
     this.worker?.terminate();
+    this.closing = (async () => {
+    await this.cancelAdmission();
     if (this.room) {
       this.room.reconnection.enabled = false;
       if (this.room.connection.isOpen) {
@@ -467,6 +502,8 @@ export class Session {
         });
       }
     }
+    })();
+    return this.closing;
   }
 }
 function networkView(s: WorldState): View {

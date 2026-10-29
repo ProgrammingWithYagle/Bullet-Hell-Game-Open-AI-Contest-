@@ -53,6 +53,7 @@ import './ui/waiting-room.css';
 import './ui/interface-clarity.css';
 import { CombatScene } from './scene.ts';
 import { Session, type ConnectionOptions,type RoomJoin,type RoomJoinRetry } from './session.ts';
+import {untilAborted} from './request-lifetime.ts';
 import { Controls } from './controls.ts';
 import { Prediction } from './prediction.ts';
 import { assets } from './assets.ts';
@@ -81,6 +82,8 @@ let session: Session | undefined,
   uiKey = '',
   lastPhase = '',
   busy = false;
+let setupCleanup: (() => void) | undefined;
+let launchSerial = 0;
 const esc = (v: unknown) =>
   String(v).replace(
     /[&<>"']/g,
@@ -180,8 +183,9 @@ function notice(value: string) {
   }
 }
 async function menu(initialRecords?: TeamBoardSelection,retryJoin?:RoomJoinRetry) {
+  setupCleanup?.();
   document.body.classList.remove('playing', 'preparing');
-  mountSetup(app, {
+  setupCleanup = mountSetup(app, {
     resume: () => {
       void begin(false, undefined, 'public', undefined, true);
     },
@@ -219,19 +223,24 @@ async function begin(
   if (busy) return;
   busy = true;
   const opts = prepared ?? options();
+  const serial = ++launchSerial;
   notice(t('ui.connecting'));
-  await audio.unlock().catch(() => {});
   session = new Session(opts.serverEndpoint);
   const active = session;
+  const current = () => launchSerial === serial && session === active;
   try {
+    const unlocked = audio.unlock().catch(() => {});
+    setupCleanup?.(); setupCleanup = undefined;
     setupGame(online,opts.classId);
-    active.onView = update;
+    active.onView = view => { if (current()) update(view); };
     active.onEvents = (events) => {
+      if (!current()) return;
       scene?.ingest(events);
       for (const e of events) if (e.type === 'sound') void audio.sound(e.id);
     };
-    active.onTeamRecord = () => { if (session === active && active.view) update(active.view); };
+    active.onTeamRecord = () => { if (current() && active.view) update(active.view); };
     active.onStatus = (key) => {
+      if (!current()) return;
       const e = $('status');
       if (e) e.textContent = t(key, { seconds: 60, position: active.queuePosition });
       const loadingStatus = $('load-state');
@@ -246,6 +255,7 @@ async function begin(
       }
     };
     active.onCheckpointStatus = (status) => {
+      if (!current()) return;
       const element = $('checkpoint-notice');
       if (element)
         element.textContent =
@@ -255,8 +265,9 @@ async function begin(
               ? t('ui.checkpointUnavailable')
               : '';
     };
-    active.onTestingResult=ok=>{const status=$('testing-status');if(status)status.textContent=t(ok?'ui.testingApplied':'ui.testingRejected');};
+    active.onTestingResult=ok=>{if(!current())return;const status=$('testing-status');if(status)status.textContent=t(ok?'ui.testingApplied':'ui.testingRejected');};
     active.onPurchase = (r) => {
+      if (!current()) return;
       if (!r.ok) {
         $('status').textContent = t(
           r.reason === 'checkpointPending'
@@ -270,9 +281,11 @@ async function begin(
       } else void audio.sound('ui-confirm');
     };
     $('status').textContent = t('ui.loading');
-    await scene!.prepared;
+    await untilAborted(Promise.all([scene!.prepared, unlocked]), active.signal);
+    if (!current()) return;
     if (online) await active.connect(opts, join, visibility,createPassword);
     else await active.offline(opts, resume);
+    if (!current()) return;
     roomChatUI?.configure(settings.roomChat,active.online);
     timer = setInterval(() => {
       const view = active.view;
@@ -285,6 +298,7 @@ async function begin(
     }, 1000 / 30);
   } catch (error) {
     await active.close().catch(() => {});
+    if (!current()) return;
     destroy();
     const retry=join&&error instanceof Error&&error.message==='ui.errorRoomPassword';
     await menu(undefined,retry?{roomId:join.roomId,code:join.code}:undefined);
@@ -297,10 +311,11 @@ async function begin(
         ),
     );
   } finally {
-    busy = false;
+    if (current()) busy = false;
   }
 }
 function setupGame(online: boolean,classId:string) {
+  const serial = launchSerial;
   lobbyPanel = online ? 'room' : 'equipment';
   document.body.classList.add('playing', 'preparing');
   paused = false;
@@ -311,6 +326,7 @@ function setupGame(online: boolean,classId:string) {
   prediction = new Prediction();
   app.innerHTML = `<div id="stage" dir="ltr"></div><section class="hud" aria-label="${text('ui.health')}"><div class="topline"><div><strong id="encounter"></strong><small id="status" role="status"></small></div><div id="boss-panel">${bossHeaderMarkup()}<div class="boss-health-track" dir="ltr"><progress id="boss-health" max="1" value="1" aria-label="${text('ui.boss')}"></progress><div id="boss-phase-markers" aria-hidden="true"></div></div><p id="boss-phase-entry" class="boss-phase-entry" role="status" aria-live="polite" hidden></p><p id="boss-phase-note" class="boss-phase-note" role="status" aria-live="polite" hidden></p></div><button id="pause-button">Ⅱ <span>${text('ui.pause')}</span></button></div><div id="accord" class="accord" hidden></div><p id="signature-help" class="signature-help" role="status" aria-live="polite" hidden></p><div class="bottomline">${playerVitalsMarkup(classId,assets.portraits[classId],selectedCosmetic==='field-mark'?'':insignia(selectedCosmetic),t)}<div id="abilities" class="ability-list"></div><div id="squad" class="squad"></div></div></section><div id="modal" class="overlay" hidden></div><div id="pause-menu" class="overlay" hidden><section class="dialog"><h2>${text('ui.paused')}</h2><p id="pause-notice">${text(online ? 'ui.onlinePause' : 'ui.offlineNotice')}</p>${settingsMarkup()}<div class="actions"><button id="resume" class="primary">${text('ui.continue')}</button><button id="leave">${text('ui.leaveRoom')}</button></div></section></div><div class="touch-buttons"><button data-action="dodge">${text('ui.dodge')}</button><button data-action="q">Q</button><button data-action="e">E</button><button data-action="ultimate">${text('ui.ultimate')}</button><button data-action="interact">${text('ui.revive')}</button><button data-action="reload">${text('ui.reload')}</button></div><div class="portrait-note">${text('ui.portraitHint')}</div>`;
   vitalsSizeObserver=new ResizeObserver(()=>{
+    if (serial !== launchSerial) return;
     const top=$('player-name-label').closest('.player-vitals')!.getBoundingClientRect().top;
     app.style.setProperty('--combat-chat-bottom',Math.ceil(window.innerHeight-top+8)+'px');
   });
@@ -318,8 +334,10 @@ function setupGame(online: boolean,classId:string) {
   const loading = document.createElement('section');
   loading.id = 'loading-expedition';
   loading.className = 'loading-expedition';
-  loading.innerHTML = `<div class="loading-card"><span class="eyebrow">GRAVE ACCORD</span><h1 id="loading-heading" tabindex="-1">${text('ui.loading')}</h1><p>${esc(expeditionText(locale, 'loadingHelp'))}</p><progress id="assets-progress" value="0" max="1" aria-label="${text('ui.loading')}"></progress><div class="loading-state"><span id="load-state" role="status">${text('ui.loading')}</span><output id="assets-percent" aria-hidden="true">${number(0)}%</output></div></div>`;
+  loading.setAttribute('role','dialog'); loading.setAttribute('aria-modal','true'); loading.setAttribute('aria-labelledby','loading-heading');
+  loading.innerHTML = `<div class="loading-card"><span class="eyebrow">GRAVE ACCORD</span><h1 id="loading-heading" tabindex="-1">${text('ui.loading')}</h1><p>${esc(expeditionText(locale, 'loadingHelp'))}</p><progress id="assets-progress" value="0" max="1" aria-label="${text('ui.loading')}"></progress><div class="loading-state"><span id="load-state" role="status">${text('ui.loading')}</span><output id="assets-percent" aria-hidden="true">${number(0)}%</output></div><button id="cancel-loading" type="button">${text('ui.cancel')}</button></div>`;
   app.append(loading);
+  $('cancel-loading').onclick = () => { if (serial === launchSerial) void leave(); };
   const defeatBanner = document.createElement('aside');
   defeatBanner.id = 'boss-defeated-banner'; defeatBanner.className = 'boss-defeated-banner'; defeatBanner.hidden = true;
   defeatBanner.setAttribute('role','status'); defeatBanner.setAttribute('aria-live','polite');
@@ -382,6 +400,7 @@ function setupGame(online: boolean,classId:string) {
   controls = new Controls($('stage'));
   scene = new CombatScene();
   scene.onLoadProgress = value => {
+    if (serial !== launchSerial) return;
     const progress = Math.max(0, Math.min(1, value));
     const bar = $<HTMLProgressElement>('assets-progress');
     const label = $('assets-percent');
@@ -839,16 +858,20 @@ function shop(p: PlayerView) {
   return '<div class="loadout-editor">' + shopMarkup(p, supplyBindings(), settings.branchingTree,session?.view?.run.difficulty??'normal') + '</div>';
 }
 async function leave(showTeamRecord = false) {
+  const active = session;
+  const serial = ++launchSerial;
   const record = session?.teamRecord?.status === 'saved' ? session.teamRecord.record : null;
   const initialRecords = showTeamRecord && record && session
     ? { endpoint: session.endpoint, mode: record.mode, difficulty: record.difficulty, sizeBand: record.sizeBand, runId: record.runId } : undefined;
   controls?.clear();
-  await session?.close().catch(() => {});
+  await active?.close().catch(() => {});
+  if (serial !== launchSerial || session !== active) return;
   destroy();
   await menu(initialRecords);
   audio.stop();
 }
 function destroy() {
+  launchSerial++; busy = false;
   vitalsSizeObserver?.disconnect();vitalsSizeObserver=undefined;
   app.style.removeProperty('--combat-chat-bottom');
   roomChatUI?.destroy();roomChatUI=undefined;
@@ -864,6 +887,11 @@ function destroy() {
   ratingCache.clear();
 }
 window.addEventListener('keydown', (e) => {
+  if ($('loading-expedition')) {
+    if (e.code === 'Escape' && session) { e.preventDefault(); void leave(); }
+    else if (e.code === 'Tab') { e.preventDefault(); $('cancel-loading').focus(); }
+    return;
+  }
   if (session && roomChatUI?.handleShortcut(e)) return;
   if (import.meta.env.DEV && e.code === 'F8' && scene) {
     e.preventDefault();
@@ -883,7 +911,7 @@ window.addEventListener('keydown', (e) => {
   if(e.code==='Escape'&&session){e.preventDefault();if(roomInviteUI?.open)roomInviteUI.close();else if(bossGuide.open)setBossGuide(false);else togglePause();}
 });
 document.addEventListener('visibilitychange', () => {
-  if (document.hidden && session && !session.online && !paused) togglePause();
+  if (document.hidden && session && !session.online && !paused && !$('loading-expedition')) togglePause();
 });
 await setLanguage(initialLanguage());
 await menu();

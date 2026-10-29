@@ -2,7 +2,7 @@
 
 Use [the current checkpoint](CHECKPOINT_2026_10_25.md) for exact source, preview, Windows, CI and Wiki identities. The human has authorized keeping verified source, draft PR #14, Wiki and local review files current. [Publication evidence](../reviews/publication-sync-2026-10-29) records this synchronization; earlier pending-permission reports remain historical.
 
-The current build is **2026.10.29-chat-confirmation / protocol 42**. The game contains seven classes, 378 skills, 28 weapons, 66 boss identities, six maps and five modes. Offline Solo, online public/private rooms, optional passwords, host-controlled waiting rooms, equipment preparation, confirmed chat, profiles, boundary saves and server-scoped persistent team records are implemented. Medic recovery, passive regeneration penalties, combined shield capacity and class starting shields follow [the current rules](MEDIC_RECOVERY.md).
+The current build is **2026.10.29-connection-clarity / protocol 42**. The game contains seven classes, 378 skills, 28 weapons, 66 boss identities, six maps and five modes. Offline Solo, online public/private rooms, optional passwords, host-controlled waiting rooms, equipment preparation, confirmed chat, profiles, boundary saves and server-scoped persistent team records are implemented. Medic recovery, passive regeneration penalties, combined shield capacity and class starting shields follow [the current rules](MEDIC_RECOVERY.md).
 
 Recent polish includes the first-run preset, plain setup labels, actual character headshots, separate health/shield/resource displays, menu room-code placement, filled random-map pictures, full-art Small Wakes floor bounds and five-second boss-defeat preparation. Public and testing builds share the presentation; testing retains rehearsal tools. Online matches continue while menus are open; Solo pauses.
 
@@ -13,3 +13,5 @@ The local Windows review is verified on its original folder, a fresh deep ZIP ex
 The existing public browser Site and published Windows download are older, separate releases. Source/Wiki synchronization does not replace them, merge main or deploy the game. The broad current-content polish goal remains active. The next inspected area is room search, warmup/cancellation and actionable connection errors; no fix is implemented yet.
 
 [The previous accumulating implementation state](history/2026-10-29-publication-sync/docs/IMPLEMENTATION_STATE.md) is preserved byte-for-byte. Current continuation instructions take precedence over its older counts and pending-publication notes.
+
+Connection clarity adds loading Cancel/Esc, keyboard focus and late-callback guards, abortable HTTP/SDK/worker lifetimes, plain room errors and menu-owned board/roster requests. [Current evidence](../reviews/connection-clarity-2026-10-29) includes the reproduced baseline and849-test full gate. Existing packages/frozen previews retain their exact issued source; new connection-clarity previews are recorded separately.
