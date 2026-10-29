@@ -1,0 +1,99 @@
+{
+  "passed": true,
+  "sourceCommit": "d10c9d378bfba98cab28875838636f4eecb17fee",
+  "buildId": "2026.10.29-boss-defeat",
+  "protocol": 38,
+  "localTests": 787,
+  "runtimeSourceSha256": "252f0f851ded2dc877d6cca112d2ed6c9923d07587d45a6fe4b17b9af3805e92",
+  "sourceSnapshotSha256": "4df8dc839fbcedbb434596204bd16dccdea94c040e423e34274a9155e1852305",
+  "committedSnapshotSha256": "eb83a462c3a17362777ed2af2fc19a4a5717c43da90e4c50c0fc769ed656fea0",
+  "sourceCi": [
+    {
+      "jobId": 123465911565,
+      "url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/40879213322/job/123465911565",
+      "sourceCommit": "d10c9d378bfba98cab28875838636f4eecb17fee",
+      "conclusion": "success",
+      "tests": 787,
+      "pass": 787,
+      "fail": 0,
+      "completeDecodedLog": "reviews/boss-defeat-2026-10-29/ci-123465911565.log",
+      "bytes": 152404,
+      "sha256": "260fef1ebf4f8472f59a90c84389ed26515b5c0e89ae71ca5f777f32083a2b47"
+    },
+    {
+      "jobId": 123465815481,
+      "url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/40879185517/job/123465815481",
+      "sourceCommit": "d10c9d378bfba98cab28875838636f4eecb17fee",
+      "conclusion": "success",
+      "tests": 787,
+      "pass": 787,
+      "fail": 0,
+      "completeDecodedLog": "reviews/boss-defeat-2026-10-29/ci-123465815481.log",
+      "bytes": 151774,
+      "sha256": "5fda5694372eaaef978ec39de574c7fc00c91390e56f542b55a45a75c843096d"
+    }
+  ],
+  "wikiCommit": "887aff3948e3287292da2a961a86440d6de93b01",
+  "wikiPages": 18,
+  "wikiImages": 34,
+  "defeatBeatSeconds": 2,
+  "fullFallingSequences": 15,
+  "finalDefeatPoses": 51,
+  "compiledClients": [
+    {
+      "audience": "testing",
+      "sourceCommit": "d10c9d378bfba98cab28875838636f4eecb17fee",
+      "entry": "assets/index-DLlfeT8R.js",
+      "sha256": "248bc59bcf25fd29a42c88a4c4dca883b9d4fc5d4d743413c2631146e97cb64f",
+      "bossDefeatMessagePresent": true,
+      "soloFallCheckpointPresent": true,
+      "reducedMotionStylePresent": true,
+      "renderedAccepted": false
+    },
+    {
+      "audience": "public",
+      "sourceCommit": "d10c9d378bfba98cab28875838636f4eecb17fee",
+      "entry": "assets/index-BHS_LemZ.js",
+      "sha256": "276a3eeab483ea25beec00b9af9f20a6717526b88c33aac61a5a3244b8cb043e",
+      "bossDefeatMessagePresent": true,
+      "soloFallCheckpointPresent": true,
+      "reducedMotionStylePresent": true,
+      "renderedAccepted": false
+    }
+  ],
+  "previews": [
+    {
+      "audience": "testing",
+      "url": "http://127.0.0.1:5230/",
+      "endpoint": "http://127.0.0.1:2604",
+      "root": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\playtest-boss-defeat-testing-d10c9d3-r01",
+      "backendSha256": "0341cf4fc152a0c3e4622f7eb127455f7295ca56556790b1fd414e432cfc8bda",
+      "sourceCommit": "d10c9d378bfba98cab28875838636f4eecb17fee",
+      "holdingExecSession": 37842,
+      "liveProbePassed": true
+    },
+    {
+      "audience": "public",
+      "url": "http://127.0.0.1:5231/",
+      "endpoint": "http://127.0.0.1:2605",
+      "root": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\playtest-boss-defeat-public-d10c9d3-r01",
+      "backendSha256": "0341cf4fc152a0c3e4622f7eb127455f7295ca56556790b1fd414e432cfc8bda",
+      "sourceCommit": "d10c9d378bfba98cab28875838636f4eecb17fee",
+      "holdingExecSession": 48448,
+      "liveProbePassed": true
+    }
+  ],
+  "bossDefeatHumanAccepted": false,
+  "assistantRenderedAccepted": false,
+  "wholeGameHumanAccepted": false,
+  "previousUiHumanAcceptance": "reviews/chat-toggle-2026-10-29/human-acceptance.json",
+  "priorWindowsSource": "a0c8c568bdf045c355af4605b3ccfc6d5faa49cf",
+  "priorWindowsEvidence": "reviews/smooth-rooms-2026-10-29/package-status.json",
+  "limits": [
+    "New boss-defeat pacing awaits human playtest; browser automation remains disabled.",
+    "Only fifteen authored multiframe falls; other fifty-one use their existing final pose.",
+    "Older frozen roots/processes and failed evidence remain preserved; no synthetic live leaderboard results.",
+    "Prior Windows review predates the newer chat and boss-defeat changes.",
+    "The polish goal remains active. Shared deployed global rankings/recovery, WAN/endurance, native-language/listening/device and coordinated release acceptance remain open."
+  ]
+}
