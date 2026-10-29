@@ -1,3 +1,19 @@
+# Current local checkpoint: confirmed chat and clearer interface
+
+Build **2026.10.29-chat-confirmation / protocol42**, source **5dfc6a8722ac137219d9eca68610d022e12f27c8**, passes **827tests /827passed /0failed**, TypeScript, authored content,15locales, native artwork, production build and71atlas contracts. [Complete current evidence](../reviews/chat-confirmation-2026-10-29/checkpoint-status.json) records exact identities and limits.
+
+Public **http://127.0.0.1:5237/** / backend2611 / holding session2002 and testing **http://127.0.0.1:5236/** / backend2610 / holding session77474 pass33served hashes each, matching source/audience, real confirmed chat and explicit cooldown/draft retention, locked-room rejection/join, host-only Start and persistent server-board reads. Own probe rooms closed; no fake qualifying scores. The browser open is queued only; no assistant browser observation is claimed.
+
+Chat drafts clear only on server confirmation, edits survive, uncertain retries preserve request identity and avoid duplicate broadcasts, unfinished IME text is not submitted, and recent history returns after a rapid off/on toggle. Actual lost-confirmation/reconnect and failing-then-passing history fixtures are preserved. Source41HUD/headshots, room-code placement, passwords, map-bound fix and boss preparation/countdown are included. Existing recovery/shield/gameplay policy and accepted C toggle/footer stay.
+
+Runtime SHA256 **54723b032322d0e209bf2a9b922802ef772476b5ebf1ca22a15327edba6a3069**; source snapshot **c8d66eedeb9157dd695dfeecb5229293cfb2e508af4d09b15908157ed7c9df62**. Both frozen backends are2712633bytes/SHA256875ef1c8b6d542ba7c2a6aa2f56cb68dc81158f07ef92a1769f4d8e8fe67b4de. Additional source binding **33f4c509cc5f4e550d5d5745e62580555d3d00211564777da61a8d04b0b63e37** covers108files/50366784bytes. Eight issued reports remain exact.
+
+**Publication remains pending.** No direct answer to the existing GitHub source-publishing question has arrived. Automatic approval review rejected two earlier source pushes and would not accept retrieved prior upload permission. Do not retry/bypass, claim current CI or upload new payloads without the direct reply. Wiki remains4919fc4;18canonical pages are prepared,6changed, and publication is already authorized after corresponding source upload. Both42and41local source/evidence commits are unpublished. Keep the broad polish goal active; this turn made progress.
+
+Same checkout/branch/draftPR14 and protected main. Preserve all previous roots/listeners/packages/raw reports. Browser automation remains disabled; no CUA/headless bypass. No delegation, new checkout, roster/skill branches, merge, hosted game deployment, paid service or contest submission. Future shield-cap branches/selective blocking stay notes only. Human/rendered, native-language, listening, device, WAN/endurance/capacity/shared-hosted recovery/rankings and coordinated release acceptance remain open. A matching Windows review package is a useful next independent local task.
+
+## Preserved previous checkpoint
+
 # Current chat-confirmation source: local gate passed
 
 Build **2026.10.29-chat-confirmation / protocol42** passes **827tests /827passed /0failed**, TypeScript, authored content, fifteen locales, production build and71atlas contracts. Runtime SHA256 **54723b032322d0e209bf2a9b922802ef772476b5ebf1ca22a15327edba6a3069**; source snapshot **c8d66eedeb9157dd695dfeecb5229293cfb2e508af4d09b15908157ed7c9df62**. Current evidence is **reviews/chat-confirmation-2026-10-29**.
