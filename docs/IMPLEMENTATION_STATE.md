@@ -41,3 +41,9 @@ Content remains66identities (65ordinary+1secret),7classes,378skills,21transforma
 ## Current exact-source follow-up
 
 Source **db9172c4db3da1936aa0a3b86cba43cd716bb973** passes both exact-source CI jobs123270340449/123270290993 with782/782/0; complete logs and hashes are under reviews/chat-space-2026-10-29/source-ci.json. Public5227/backend2601 and testing5226/backend2600 pass14asset hashes, source/audience/CORS, actual two-peer chat/combat and real persistent-board reads. Public holding session92626; testing74254. Compiled clients include C and exclude the old exact rankings notice. Wiki **daf5fa3f2529c2e7540f434f18bd329ab21448ed** matches18pages/34images/allpublichashes. Current human/rendered acceptance remains open. The older a0c8c56 Windows ZIP remains a separately verified predecessor.
+
+## Current exact-source follow-up
+
+Source **c3f239af7e02f014fa351770d159ae5eb4903f61** passes both exact-source CI jobs123443146245/123443072115 with782/782/0; complete logs and hashes are under reviews/chat-toggle-2026-10-29/source-ci.json. Public5229/backend2603 and testing5228/backend2602 pass14asset hashes, source/audience/CORS, actual two-peer chat/combat and real persistent-board reads. Public holding session75627; testing36200. Compiled clients include C and exclude the old exact rankings notice. Wiki **e1f322277f7865b61cf954b55a77a19f6e557738** matches18pages/34images/allpublichashes. Current human/rendered acceptance remains open. The older a0c8c56 Windows ZIP remains a separately verified predecessor.
+
+Human follow-up on5229 confirms both reported issues fixed: C toggles and Start/Leave stay clear. Exact scoped feedback is in reviews/chat-toggle-2026-10-29/human-acceptance.json. This gives no whole-game, boss-balance, physical-device or native-language acceptance.
