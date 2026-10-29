@@ -6,7 +6,7 @@ A cooperative gothic bullet-hell game. Dodge attacks, defeat a boss, vote on the
 
 The current feature branch uses **build 2026.10.29-chat-confirmation / protocol 42**. [Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains this unfinished development work; protected main is a separate release boundary.
 
-The current chat-confirmation follow-up passes all 827 local software checks. It adds character headshots, separate health/shield bars, room-code controls within menus, optional room passwords, clearer boss-defeat preparation and the Crab floor-bound fix. Chat now keeps drafts until server confirmation, handles explicit rejections and uncertain retries, and restores recent history after rapid toggles. [Current review evidence](reviews/chat-confirmation-2026-10-29) separates local software checks from rendered/human acceptance. GitHub source publishing and corresponding CI/Wiki synchronization await the pending direct permission question.
+The current chat-confirmation follow-up passes all 827 local software checks. It adds character headshots, separate health/shield bars, room-code controls within menus, optional room passwords, clearer boss-defeat preparation and the Crab floor-bound fix. Chat now keeps drafts until server confirmation, handles explicit rejections and uncertain retries, and restores recent history after rapid toggles. [Current review evidence](reviews/chat-confirmation-2026-10-29) separates local software checks from rendered/human acceptance. The verified source is published to the existing feature branch. [Publication and current verification](reviews/publication-sync-2026-10-29) records CI, Wiki and draft-PR synchronization; the current Windows review is described in [Windows development](docs/WINDOWS_DESKTOP.md).
 
 After each boss clear, a five-second **Boss defeated** moment lets the existing fall or final pose finish with a preparation message and countdown before the next choices or results. Fifteen bosses have full falling sequences; fifty-one have final poses.
 
@@ -41,7 +41,7 @@ pnpm verify
 pnpm dev
 ```
 
-Open [localhost:5173](http://127.0.0.1:5173/). Offline Solo runs in a worker and needs no multiplayer server. For matching protocol-39 local online rooms, run `pnpm server` in a second terminal; its default loopback port is 2567.
+Open [localhost:5173](http://127.0.0.1:5173/). Offline Solo runs in a worker and needs no multiplayer server. For matching protocol-42 local online rooms, run `pnpm server` in a second terminal; its default loopback port is 2567.
 
 Development and testing builds include rehearsal tools. Public builds omit the boss selector and currency tools. Use `pnpm build:testing` or `pnpm build:public` for the intended audience. [Public polish](docs/PUBLIC_POLISH.md) describes the current scope and review boundaries.
 
@@ -62,7 +62,7 @@ The optional expanded skill map shows all 54 skills per class with zoom, scrolli
 
 ## Development status
 
-The current smooth-rooms local gate passes **782 tests,782 pass,0 fail**, plus authored content/fifteen locales/RGBA, TypeScript, production build and71atlas contracts. [Current checkpoint](docs/CHECKPOINT_2026_10_25.md) distinguishes source CI, frozen previews, package verification and Wiki evidence. Rendered/human/device acceptance remains open.
+The current local software gate passes **827 tests,827 pass,0 fail**, plus authored content/fifteen locales/RGBA, TypeScript, production build and71atlas contracts. [Current checkpoint](docs/CHECKPOINT_2026_10_25.md) distinguishes source CI, frozen previews, package verification and Wiki evidence. Rendered/human/device acceptance remains open.
 
 Twelve original encounters have implemented quality passes; 48 remain. Content expansion and the proposed General Double Dash/Sprint branch are deferred during public polish. Complete action/facing animation, final encounter tuning, verified hosted rankings and durable online recovery remain unfinished. Rendered, listening, native-language, physical-device, WAN, endurance, capacity and human balance acceptance remain open.
 

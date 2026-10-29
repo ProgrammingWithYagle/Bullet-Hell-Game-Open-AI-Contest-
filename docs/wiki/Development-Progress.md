@@ -22,6 +22,8 @@ Updated 2026-10-29 for **2026.10.29-chat-confirmation**. These counts track spec
 
 ## Latest human feedback
 
+- Current follow-up: source fe82c7e includes the5233requested clearer labels, player headshots and independent health/shield/resource display, room-code menu placement, filled random-map imagery, Small Wakes artwork containment, enforced optional passwords and boss preparation/countdown. Confirmed chat retains drafts, avoids duplicate uncertain retries and restores recent history after rapid toggles. Local827software checks and six native Windows fixtures pass; source CI/Wiki publication evidence is separate. New human/rendered and balance acceptance remains open.
+- 2026-10-29: the human directly authorized keeping verified source and review evidence updated on the existing feature branch/draft PR, and asked that the repository, local files and everything stay up to date. Wiki publication was already authorized. Prior unanswered-permission states are historical; continue verified synchronization without repeating the question. Main merge, hosted game deployment and release replacement remain separate.
 - 5231: the defeat scene looks fine, but a possible boss/map shift, short duration, missing sound, changing selected maps, misleading Room settings title and an unclear multiplayer waiting stage were reported. The user also asks that all36map/difficulty combinations look polished, particularly Baby cover. Five-second pacing, fixed/random maps, waiting room and artwork need fresh human comparison.
 - 5229: both C toggle and action-row overlap are fixed. Follow-up request: let the boss falling animation play and show Boss defeated before the next round; abrupt transitions feel anticlimactic. Asset audit finds fifteen full falls and fifty-one final poses, not sixty-six full falling sequences.
 - 5227: added menu space is useful, but upgrades overlap Start run/Leave room. C opens chat but cannot close it. Fix both while preserving the accepted placement, expanded space, removed notice and unchanged pause behavior.
@@ -62,7 +64,7 @@ Updated 2026-10-29 for **2026.10.29-chat-confirmation**. These counts track spec
 
 ## Remaining release work
 
-- Continue polishing current content for first-time players. The interface-clarity source passes818local checks with frozen public5235/testing5234 previews. Its source push was rejected by automatic approval review and a direct publishing question remains pending. Chat confirmation now addresses silent draft loss and uncertain retries; complete its full current-source validation and new local previews. Browser/human and release gates remain separate.
+- Continue polishing current content for first-time players. The human has authorized ongoing updates to the existing feature branch, draft PR and Wiki. Interface/password/chat source is published; source fe82c7e has827passing local checks and the matching Windows review passes six native offline/LAN diagnostics on three verified copies. Record current source CI and Wiki evidence under reviews/publication-sync-2026-10-29. Fresh rendered/human comparison, final balance and coordinated release acceptance remain open.
 - Review Alchemist Crazed distillation columns, route warnings, coolant condensation and final reflux in the next matching frozen preview. The shared earned-SP General mobility branch remains deferred during public polish.
 - Review shared phase-attack continuity in the next matching frozen preview; software checks are separate from rendered/human/device/final balance acceptance.
 - Review Bellringer Standard calibration and the new Brutal/Crazed return-chain decision in the next exact-source frozen preview; fixed grade3- remains.
@@ -76,7 +78,6 @@ Updated 2026-10-29 for **2026.10.29-chat-confirmation**. These counts track spec
 - Verify active 8/16/50-player mixed progression, WAN and full progression endurance; current headless and scoped local evidence is separate.
 - Deploy and independently accept shared hosted global rankings and durable recovery. Current public authorities implement persistent server-scoped team records with exact scoring and real-network/restart evidence. Shared storage ownership, participant recovery credentials, entropy recovery histories and hosted acceptance remain open.
 - Prepare and verify a new coordinated Windows/browser release with a matching backend; existing immutable Windows and older public builds remain separate.
-- Player clarified Medic exceptions: Hard30% revival, Insane1HP, Hellish none; explicit lower values are Normal45%, Easy75%, Baby full health+20%shield. The authority, both audiences and fifteen-locale UI implement finite team/Solo Medic recovery and all-class passive regeneration penalties of25/50/100% on Hard/Insane/Hellish. Focused64software checks pass. Full verification and human balance/readability/listening acceptance remain pending; map/lobby source0feaf34 is preserved.
 
 ## Count definitions
 
