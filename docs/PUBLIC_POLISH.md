@@ -34,3 +34,11 @@ The broader polish goal remains active. Review the complete first-visit path, se
 Prepare coherent matching public client/backend and Windows review artifacts before a publication decision. The old hosted protocol-4 Site and immutable protocol-13 Windows development release remain older artifacts. Trusted public rankings/recovery, WAN/endurance/capacity and human/listening/native-language/device release acceptance remain open.
 
 No new bosses, General skills, class paths, weapons, maps or modes are authorized by this polish goal. Double Dash/Sprint and the old expansion backlog remain deferred. Do not merge main, provision paid hosting, replace a Site, deploy a mismatched backend or submit to the contest.
+
+## First Watch follow-up
+
+Build2026.10.28-first-watch-2 addresses human5214 feedback: the complete1672x941cover uses its natural ratio, the introduction is named Tutorial, and the home headline describes actual gameplay. Existing gear tiles display names/prices/equipped status, with clearer currencies and an explanatory sentence. The tutorial uses readable dark captions on parchment. Controls, purchases, progression and combat rules remain. This source requires its own full/CI/public/Wiki evidence; predecessor755 results retain sourcee6f3587. Human/native-language/rendered/device acceptance remains open.
+
+Reading the Tutorial keeps the gentle first-run preset available until the profile has a local run record.
+
+The follow-up passes its own full local gate with 756 tests, content/locales, TypeScript, production build and 71 atlas contracts. `reviews/public-polish-followup-2026-10-28/gate-03/` and `full-gate-03.log` bind the current source; all eight issued receipts are preserved. Its source CI and fresh public preview/Wiki evidence remain separate follow-up checks.

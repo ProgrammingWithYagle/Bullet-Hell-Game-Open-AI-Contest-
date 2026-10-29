@@ -123,5 +123,8 @@ if(!contentOnly){
 }
 if(delivery)check('Rendered PDF and portable packet',()=>{const r=read('reviews/stage1-delivery-review.json');assert(r.passed);assert.equal(r.contentRevision,read('content/revision.json').sha256,'Delivery evidence does not match current content revision');assert(r.pdf.rendered&&r.pdf.visualReviewPassed);assert(r.archive.freshExtractionPassed&&r.archive.normalCopyPassed);assert.equal(hash(r.pdf.path),r.pdf.sha256);});
 const report={schemaVersion:1,stage:contentOnly?'Stage 1 design-content checks only':delivery?'Stage 1 complete preproduction gate':'Stage 1 source validation',passed:checks.every(x=>x.passed),legalMutationSets,checks};
-fs.mkdirSync(path.join(root,'reviews'),{recursive:true});fs.writeFileSync(path.join(root,'reviews/stage1-validation.json'),JSON.stringify(report,null,2)+'\n');
+fs.mkdirSync(path.join(root,'reviews'),{recursive:true});
+const reportPath=path.join(root,'reviews/stage1-validation.json'),reportText=JSON.stringify(report,null,2)+'\n';
+// Preserve identical issued bytes and avoid reopening an unchanged OneDrive report for writing.
+if(!fs.existsSync(reportPath)||fs.readFileSync(reportPath,'utf8')!==reportText)fs.writeFileSync(reportPath,reportText);
 console.log(JSON.stringify(report,null,2));if(!report.passed)process.exitCode=1;

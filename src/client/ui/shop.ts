@@ -1,4 +1,4 @@
-import {combatReviveFraction} from '../../shared/encounter-policy.ts';
+import { combatReviveFraction } from "../../shared/encounter-policy.ts";
 import {
   skillMapLayout,
   skillMapMarkup,
@@ -10,13 +10,15 @@ import { data } from "../../shared/game.ts";
 import type { Command } from "../../shared/protocol.ts";
 import type { PlayerView } from "../../shared/view.ts";
 import { t, number } from "../i18n.ts";
-import { effectText, supplyText,skillBehavior } from "../content-text.ts";
+import { effectText, supplyText, skillBehavior } from "../content-text.ts";
 import { escape as e } from "./html.ts";
 import { icon, effectIcon } from "./icons.ts";
 import { assets } from "../assets.ts";
+import { expeditionText } from "../expedition-text.ts";
+import { locale } from "../i18n.ts";
 type Kind = Command["kind"];
 let mapZoom = 1;
-let shopDifficulty = 'normal';
+let shopDifficulty = "normal";
 const itemArt = (kind: Kind, id: string, glyph: string) =>
   (
     kind === "upgrade"
@@ -91,7 +93,8 @@ function canBuy(
   }
   if (kind === "supply") {
     const item = data.supplies.find((s) => s.id === id)!;
-    if(item.effect==='revive' && !combatReviveFraction(shopDifficulty))return {allowed:false,reason:t('ui.reviveOff'),price:item.price};
+    if (item.effect === "revive" && !combatReviveFraction(shopDifficulty))
+      return { allowed: false, reason: t("ui.reviveOff"), price: item.price };
     const slot =
       p.supplies.find((s) => s.id === id) ?? p.supplies.find((s) => !s.count);
     const full = !slot || slot.count >= item.maximumStack;
@@ -134,15 +137,25 @@ function nodeButton(
         : kind === "weapon"
           ? p.weapon === id
           : false;
-  return `<button type="button" class="item-node ${kind === "skill" ? "skill-node" : ""} ${owned ? "owned" : ""} ${state.allowed ? "available" : "unavailable"} ${chosen?.kind === kind && chosen.id === id ? "inspected" : ""}" data-inspect="${id}" data-item-kind="${kind}" aria-label="${e(name + (grade ? " · " + grade : ""))}" aria-pressed="${chosen?.kind === kind && chosen.id === id}" title="${e(name + (grade ? " · " + grade : ""))}">${itemArt(kind, id, glyph)}${grade ? `<span class="node-grade" aria-hidden="true">${e(grade)}</span>` : ""}${owned ? `<span class="node-status">${icon("check")}</span>` : ""}</button>`;
+  const cost = owned
+    ? t(kind === "weapon" ? "ui.equipped" : "ui.owned")
+    : number(state.price) +
+      " " +
+      t(kind === "skill" ? "ui.skillPoints" : "ui.coins");
+  const label = name + (grade ? " · " + grade : "") + " · " + cost;
+  const caption =
+    kind === "skill"
+      ? ""
+      : `<span class="gear-name">${e(name)}</span><span class="gear-cost">${e(cost)}</span>`;
+  return `<button type="button" class="item-node ${kind === "skill" ? "skill-node" : ""} ${owned ? "owned" : ""} ${state.allowed ? "available" : "unavailable"} ${chosen?.kind === kind && chosen.id === id ? "inspected" : ""}" data-inspect="${id}" data-item-kind="${kind}" aria-label="${e(label)}" aria-pressed="${chosen?.kind === kind && chosen.id === id}" title="${e(label + (state.reason && !owned ? " · " + state.reason : ""))}">${itemArt(kind, id, glyph)}${caption}${grade ? `<span class="node-grade" aria-hidden="true">${e(grade)}</span>` : ""}${owned ? `<span class="node-status">${icon("check")}</span>` : ""}</button>`;
 }
 export function shopMarkup(
   p: PlayerView,
   supplyBindings: readonly string[] = ["1", "2", "3"],
   expanded = false,
-  difficulty = 'normal',
+  difficulty = "normal",
 ) {
-  shopDifficulty=difficulty;
+  shopDifficulty = difficulty;
   const cl = data.classes.find((c) => c.id === p.classId)!;
   if (!cl.branches.some((b) => b.id === branchId)) branchId = cl.branches[0].id;
   if (
@@ -153,7 +166,7 @@ export function shopMarkup(
   )
     chosen = null;
   const branch = cl.branches.find((b) => b.id === branchId)!;
-  return `<div class="loadout-summary"><span>${icon("coins")}${number(p.coins)} ${e(t("ui.coins"))}</span><span>${icon("tree")}${number(p.sp)} ${e(t("ui.skillPoints"))}</span><small>${e(t("ui.capstoneLimit"))}</small></div><div class="loadout-tabs" role="tablist" aria-label="${e(t("ui.shop"))}"><button data-shop-tab="gear" role="tab" aria-selected="${tab === "gear"}">${icon("weapon")}${e(t("ui.equip"))} / ${e(t("ui.upgrade"))}</button><button data-shop-tab="tree" role="tab" aria-selected="${tab === "tree"}">${icon("tree")}${e(t("ui.skillTree"))}</button></div><div class="loadout-workspace"><div class="loadout-board">${
+  return `<p class="shop-introduction">${e(expeditionText(locale, "shopHelp"))}</p><div class="loadout-summary"><span>${icon("coins")}<b>${number(p.coins)}</b> ${e(t("ui.coins"))}</span><span>${icon("tree")}<b>${number(p.sp)}</b> ${e(t("ui.skillPoints"))}</span><small>${e(t("ui.capstoneLimit"))}</small></div><div class="loadout-tabs" role="tablist" aria-label="${e(t("ui.shop"))}"><button data-shop-tab="gear" role="tab" aria-selected="${tab === "gear"}">${icon("weapon")}${e(t("ui.equip"))} / ${e(t("ui.upgrade"))}</button><button data-shop-tab="tree" role="tab" aria-selected="${tab === "tree"}">${icon("tree")}${e(t("ui.skillTree"))}</button></div><div class="loadout-workspace"><div class="loadout-board">${
     tab === "gear"
       ? `<section class="armory"><h3>${e(t("ui.equip"))}</h3><div class="gear-icons">${data.weapons
           .filter((w) => w.classId === p.classId)
@@ -256,7 +269,7 @@ function details(p: PlayerView) {
     name = t("skill." + id + ".name");
     glyph = effectIcon(node.effects);
     grade = node.grade;
-    body = `<p class="eyebrow">${e(t("branch." + node.branchId))} · ${e(t(node.subbranchNameKey))}</p><p class="effect-list">${e(effectText(node.effects))}</p>${skillBehavior(node.id)?`<p class="skill-behavior">${e(skillBehavior(node.id))}</p>`:""}<p class="muted">${e(t("ui.ratingExplanation"))}</p>${node.prerequisite ? `<button class="prerequisite-link" data-prerequisite="${node.prerequisite}">${e(t("ui.prerequisite", { name: t("skill." + node.prerequisite + ".name") }))}</button>` : ""}${node.capstone ? `<p class="capstone-note">${icon("ultimate")}${e(t("ui.capstone"))} · ${e(t("ui.capstoneLimit"))}</p>` : ""}`;
+    body = `<p class="eyebrow">${e(t("branch." + node.branchId))} · ${e(t(node.subbranchNameKey))}</p><p class="effect-list">${e(effectText(node.effects))}</p>${skillBehavior(node.id) ? `<p class="skill-behavior">${e(skillBehavior(node.id))}</p>` : ""}<p class="muted">${e(t("ui.ratingExplanation"))}</p>${node.prerequisite ? `<button class="prerequisite-link" data-prerequisite="${node.prerequisite}">${e(t("ui.prerequisite", { name: t("skill." + node.prerequisite + ".name") }))}</button>` : ""}${node.capstone ? `<p class="capstone-note">${icon("ultimate")}${e(t("ui.capstone"))} · ${e(t("ui.capstoneLimit"))}</p>` : ""}`;
   } else if (kind === "weapon") {
     const w = data.weapons.find((w) => w.id === id)!;
     name = t("weapon." + id + ".name");
@@ -277,7 +290,7 @@ function details(p: PlayerView) {
     const item = data.supplies.find((s) => s.id === id)!;
     name = t("supply." + id + ".name");
     glyph = supplyGlyph(item.effect);
-    body = `<p>${e(supplyText(id,shopDifficulty))}</p><p>${e(t("ui.cooldown", { seconds: t("template.seconds", { value: number(item.cooldown) }) }))}</p><p>${number(p.supplies.find((s) => s.id === id)?.count ?? 0)} / ${number(item.maximumStack)}</p>`;
+    body = `<p>${e(supplyText(id, shopDifficulty))}</p><p>${e(t("ui.cooldown", { seconds: t("template.seconds", { value: number(item.cooldown) }) }))}</p><p>${number(p.supplies.find((s) => s.id === id)?.count ?? 0)} / ${number(item.maximumStack)}</p>`;
   } else {
     const u = data.upgrades.find((u) => u.id === id)!;
     name = t("upgrade." + id + ".name");
@@ -303,17 +316,17 @@ export function bindShop(
   purchase: (request: Omit<Command, "id">) => void,
   supplyBindings: readonly string[] = ["1", "2", "3"],
   expanded = false,
-  difficulty = 'normal',
+  difficulty = "normal",
 ) {
-  shopDifficulty=difficulty;
+  shopDifficulty = difficulty;
   const redraw = () => {
     const workspace = host.querySelector<HTMLElement>(".loadout-editor");
     if (!workspace) return;
     const oldScroll = host.querySelector<HTMLElement>(".skill-scroll");
     const scroll = oldScroll?.scrollTop ?? 0,
       left = oldScroll?.scrollLeft ?? 0;
-    workspace.innerHTML = shopMarkup(p, supplyBindings, expanded,difficulty);
-    bindShop(host, p, purchase, supplyBindings, expanded,difficulty);
+    workspace.innerHTML = shopMarkup(p, supplyBindings, expanded, difficulty);
+    bindShop(host, p, purchase, supplyBindings, expanded, difficulty);
     const scroller = host.querySelector<HTMLElement>(".skill-scroll");
     if (scroller) {
       scroller.scrollTop = scroll;

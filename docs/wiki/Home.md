@@ -7,9 +7,9 @@
 
 Cooperative gothic zombie bullet hell. Choose a survivor, clear a boss contract, vote on mutations, buy a build and survive the next encounter.
 
-**Current development source: version 0.3.0, build `2026.10.28-first-watch`, protocol 38, updated 2026-10-28.** The game is still in development. [Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains the playable feature branch; protected `main` is a separate release boundary.
+**Current development source: version 0.3.0, build `2026.10.28-first-watch-2`, protocol 38, updated 2026-10-28.** The game is still in development. [Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains the playable feature branch; protected `main` is a separate release boundary.
 
-First Watch polishes the existing public experience: an optional introduction and gentle Solo/Baby setup, clearer painted map previews and difficulty choices, visible artwork loading and a direct **Local Practice records** entry. The controls guide opens manually. Existing violet catalytic eruptions have a bounded burst shape with a static reduced-motion alternative. [Getting Started](Getting-Started) describes the flow; [Development Progress](Development-Progress) preserves the one implementation ledger. Content expansion and Double Dash/Sprint are deferred during polish. Rendered, human, listening, native-language and physical-device review remain open.
+First Watch polishes the existing public experience: an optional introduction and gentle Solo/Baby setup, clearer painted map previews and difficulty choices, visible artwork loading and a direct **Local Practice records** entry. The Tutorial opens manually. The full cover is framed without cropping, and the home headline explains the gameplay. Existing gear tiles show names and prices beside clearer coin/SP summaries. Existing violet catalytic eruptions have a bounded burst shape with a static reduced-motion alternative. [Getting Started](Getting-Started) describes the flow; [Development Progress](Development-Progress) preserves the one implementation ledger. Content expansion and Double Dash/Sprint are deferred during polish. Rendered, human, listening, native-language and physical-device review remain open.
 
 | Playable now in that source | Contents |
 | --- | --- |

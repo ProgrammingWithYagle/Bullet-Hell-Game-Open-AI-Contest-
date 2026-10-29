@@ -1,6 +1,19 @@
 # Changelog
 
-Development build **2026.10.28-first-watch**, protocol 38. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.28-first-watch-2**, protocol 38. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-28 — A full cover, a clear Tutorial and readable gear
+
+### Explain the first run
+
+- The home page now says what players do: dodge attacks, defeat bosses and grow stronger, solo or with friends. Hold the line. Remember their names. remains a small atmospheric brand line, with no name-memory mechanic or new story mode implied.
+- The complete original 1672-by-941 cover is framed at its natural ratio on desktop and compact screens. Fixed-height cropping and the fading overlay are removed; the illustration itself is unchanged. The home entry and manual tutorial are consistently named Tutorial in all fifteen locales.
+- Reading the Tutorial keeps the gentle preset available until a validated local run exists. This uses the existing profile records and adds no progress flag or profile schema change.
+
+### Read the existing loadout before spending
+
+- The loadout has clearer coin and skill-point summaries and a short explanation of what each currency buys. Weapon, upgrade and supply tiles expose their names and actual prices, while the equipped weapon is labeled. Skill node geometry, the default classic tree, balances, purchase guards and earned progression remain.
+- Tutorial control captions have readable dark text on the parchment panel. No control scheme, shop economy, combat authority, damage, skill, boss, map, mode, music or bitmap was added or changed. Native-language, rendered and physical-device review remain open; automated checks have their own exact source identities.
 
 ## 2026-10-28 — First Watch: a clearer public welcome
 

@@ -278,7 +278,7 @@ test("the actual shop switches between 18 and 54 skills and expanded inspection 
               contents:
                 args.path === "assets"
                   ? "export const assets={upgrades:{},items:{}};"
-                  : "export const t=(key,values={})=>key+JSON.stringify(values);export const number=(value)=>String(value);",
+                  : "export const locale='en';export const t=(key,values={})=>key+JSON.stringify(values);export const number=(value)=>String(value);",
             }),
           );
         },

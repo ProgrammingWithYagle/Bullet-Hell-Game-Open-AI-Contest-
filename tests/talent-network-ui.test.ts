@@ -150,7 +150,7 @@ test('both actual shop layouts show localized talent help and retain prerequisit
                 ? 'export const assets={upgrades:{},items:{}};'
                 : 'const messages=' +
                   JSON.stringify(messages) +
-                  ';export const t=k=>messages[k]??k;export const number=String;',
+                  ';export const locale="en";export const t=k=>messages[k]??k;export const number=String;',
           }));
         },
       },

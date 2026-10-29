@@ -6,6 +6,8 @@ import { build } from 'esbuild';
 import assert from 'node:assert/strict';
 const commit = process.argv[2];
 assert(/^[a-f0-9]{40}$/.test(commit ?? ''), 'Supply the source commit');
+const attempt = process.argv[3] ?? '02';
+assert(/^\d{2}$/.test(attempt), 'Supply a two-digit review attempt');
 const git = (...args) => execFileSync('git', ['-c', 'core.bare=false', ...args], { maxBuffer: 16 * 1024 * 1024 });
 assert.equal(git('rev-parse', 'HEAD').toString().trim(), commit, 'Freeze the current reviewed source commit');
 const walk = dir => fs.readdirSync(dir).sort().flatMap(name => {
@@ -43,7 +45,7 @@ const endpoint = 'http://127.0.0.1:2588', url = 'http://127.0.0.1:5214/';
 const built = spawnSync(process.execPath, ['node_modules/vite/bin/vite.js', 'build', '--outDir', candidate, '--logLevel', 'warn'], {
   encoding: 'utf8', maxBuffer: 8 * 1024 * 1024, env: { ...process.env, VITE_GAME_AUDIENCE: 'public', VITE_GAME_SERVER: endpoint },
 });
-fs.writeFileSync('reviews/public-polish-2026-10-28/public-build.log', (built.stdout ?? '') + (built.stderr ?? ''), { flag: 'wx' });
+fs.writeFileSync('reviews/public-polish-2026-10-28/public-build-' + attempt + '.log', (built.stdout ?? '') + (built.stderr ?? ''), { flag: 'wx' });
 assert.equal(built.status, 0, 'Public build failed');
 const afterBuildHash = createHash('sha256');
 for (const file of walk('src').sort()) afterBuildHash.update(file + '\0').update(fs.readFileSync(file));
@@ -59,10 +61,10 @@ assert(!fs.readFileSync(workers[0], 'utf8').includes('testingCommand'), 'Public 
 for (const required of ['id="gentle-start"', 'id="assets-progress"', 'arena-legend']) assert(main.includes(required), 'Missing public presentation: ' + required);
 const history = JSON.parse(fs.readFileSync('src/shared/update-history.json'));
 const content = JSON.parse(fs.readFileSync('content/revision.json')).sha256;
-const root = 'output/playtest-first-watch-public-' + commit.slice(0, 7), backendRoot = 'output/frozen-first-watch-' + commit.slice(0, 7);
+const root = 'output/playtest-first-watch-public-' + commit.slice(0, 7) + '-r' + attempt, backendRoot = 'output/frozen-first-watch-' + commit.slice(0, 7) + '-r' + attempt;
 const outputRoot = path.resolve('output') + path.sep;
 for (const dir of [root, backendRoot]) { assert(path.resolve(dir).startsWith(outputRoot)); assert(!fs.existsSync(dir), 'Refusing to overwrite frozen root: ' + dir); }
-fs.mkdirSync(root); fs.cpSync(candidate, root, { recursive: true, force: false, errorOnExist: true });
+fs.cpSync(candidate, root, { recursive: true, force: false, errorOnExist: true });
 fs.mkdirSync(backendRoot);
 const serverPath = backendRoot + '/server.mjs';
 await build({ entryPoints: ['src/server/index.ts'], bundle: true, platform: 'node', format: 'esm', packages: 'external', outfile: serverPath, logLevel: 'silent' });
@@ -74,6 +76,7 @@ const report = { passed: true, createdAt: new Date().toISOString(), ...identity,
   files: members.length, bytes: members.reduce((n, m) => n + m.bytes, 0), members,
   backend: { path: path.resolve(serverPath), bytes: fs.statSync(serverPath).size, sha256: sha(fs.readFileSync(serverPath)), externalProjectNodeModulesRequired: true },
   gate: { path: gatePath, sha256: sha(fs.readFileSync(gatePath)) }, publicMenuAndWorkerIsolation: true,
+  freezerSha256: sha(fs.readFileSync(import.meta.filename)), reviewAttempt: attempt,
   renderedAccepted: false, humanAccepted: false, notAPublicDeployment: true,
   limits: ['Exact committed runtime/test inputs and local native gate; static build and byte identity only. No rendered, human, audio, native-language, device or WAN acceptance.', 'Backend helper uses external pinned project node_modules and is not a portable Windows release. No earlier frozen root or service was replaced.'] };
 fs.writeFileSync('reviews/public-polish-2026-10-28/preview-public-bytes.json', JSON.stringify(report, null, 2) + '\n', { flag: 'wx' });

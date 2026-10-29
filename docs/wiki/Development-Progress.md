@@ -1,6 +1,6 @@
 # Development progress
 
-Updated 2026-10-28 for **2026.10.28-first-watch**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
+Updated 2026-10-28 for **2026.10.28-first-watch-2**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
 
 66 playable identities: 65 ordinary and 1 secret. Three ordinary bosses in every one of fifty subtiers requires 150 ordinary identities, plus secrets; 85 additional ordinary bosses remain.
 
@@ -22,6 +22,7 @@ Updated 2026-10-28 for **2026.10.28-first-watch**. These counts track specific r
 
 ## Latest human feedback
 
+- Human5214: the preconfigured first-time Solo world is liked. The home entry should say Tutorial, the cover is cropped, and controls/shop/most combat cues looked unchanged. The First Watch follow-up fixes the label/full cover, clarifies gameplay and exposes existing gear names/prices/currencies. It adds no control scheme or mechanics. Story mode/lore was discussed only as a possible post-contest direction; no new mode or lore production is authorized by that discussion. New rendered/human comparison remains open. Completing the Tutorial no longer removes the first-run preset before a local run exists.
 - 2026-10-28 priority: polish the existing game for people who have never played it. Content expansion, new bosses/maps/modes/weapons/class paths and General Double Dash/Sprint are deferred. The new public First Watch pass implements optional onboarding, a gentle confirmation preset, clearer maps/difficulty/records, loading feedback and bounded catalyst eruptions; human/rendered review remains open and implementation counts do not change.
 - The user praised Mold Alchemist as the first unique encounter and clarified its small Brutal-to-Crazed jump. Volatile Distillation implements a Crazed-only apparatus/finite-coolant interaction and phased reflux pressure while preserving the praised Normal/Brutal chemistry and fixed grade3--. Human comparison of the new technique remains open; no final balance or personal clear is claimed.
 - Human5206: Bellringer pressure is sufficient but may overshoot Alchemist, and Brutal needs a new mechanic. Returning Clapper implements wider/slower Standard and a physical outbound/return decision for advanced forms. Fixed grades remain Bellringer3- and Alchemist3--; relative balance needs new human comparison.

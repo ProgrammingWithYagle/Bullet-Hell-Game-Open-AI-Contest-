@@ -19,6 +19,9 @@ import words from "../src/client/expedition-messages.json";
 import { drawMoldCue, moldReactionVisual } from "../src/client/mold-cues.ts";
 import type { MoldReaction } from "../src/shared/mold-mixing.ts";
 import type Phaser from "phaser";
+import { createPracticeGame } from "../src/shared/practice-start.ts";
+import { viewOf } from "../src/shared/view.ts";
+import type { ClassId } from "../src/shared/protocol.ts";
 
 test("all six opening arenas show the real bounds, cover, spawns and difficulty hazards", () => {
   const before = JSON.stringify(data.arenas);
@@ -279,6 +282,127 @@ test("compiled public setup offers an optional gentle confirmation, preserves th
   assert.equal(options.coins, undefined);
   assert.equal(options.sp, undefined);
   assert.deepEqual([...saved.entries()], storageBefore);
+  saved.set("ga-tutorial-v1", "done");
+  host.querySelector("#brand-home")!.click();
+  assert(
+    host.querySelector("#gentle-start"),
+    "Reading the tutorial must not remove the first-run preset before a local run exists",
+  );
+});
+
+test("actual armory presents all seven classes' existing names and prices while inspection and unaffordable buys spend nothing", async (t) => {
+  const bundle = await build({
+    entryPoints: ["src/client/ui/shop.ts"],
+    bundle: true,
+    platform: "node",
+    format: "esm",
+    write: false,
+    logLevel: "silent",
+    loader: { ".css": "empty" },
+    plugins: [
+      {
+        name: "armory-fixture",
+        setup(builder) {
+          builder.onResolve({ filter: /(?:i18n|assets)\.ts$/ }, (args) => ({
+            path: args.path.endsWith("i18n.ts") ? "i18n" : "assets",
+            namespace: "armory-fixture",
+          }));
+          builder.onLoad(
+            { filter: /.*/, namespace: "armory-fixture" },
+            (args) => ({
+              loader: "js",
+              contents:
+                args.path === "i18n"
+                  ? "export const locale='en';export const t=key=>key;export const number=String;"
+                  : "export const assets={upgrades:{},items:{}};",
+            }),
+          );
+        },
+      },
+    ],
+  });
+  const directory = mkdtempSync(join(tmpdir(), "grave-armory-"));
+  const file = join(directory, "shop.mjs");
+  writeFileSync(file, bundle.outputFiles[0].text);
+  t.after(() => {
+    unlinkSync(file);
+    rmdirSync(directory);
+  });
+  const ui = await import(pathToFileURL(file).href);
+  for (const cl of data.classes) {
+    const g = createPracticeGame(
+      { mode: "short" },
+      "New player",
+      cl.id as ClassId,
+    );
+    const player = viewOf(g, "solo").players[0];
+    player.coins = 0;
+    const weapons = data.weapons.filter((w) => w.classId === cl.id);
+    const buttons = weapons.map((w) => ({
+      dataset: { inspect: w.id, itemKind: "weapon" },
+      onclick: undefined as undefined | (() => void),
+      classList: { toggle() {} },
+      setAttribute() {},
+    }));
+    const gear = {
+      dataset: { shopTab: "gear" },
+      onclick: undefined as undefined | (() => void),
+    };
+    const workspace = { innerHTML: "" },
+      details = { innerHTML: "" },
+      buy = { onclick: undefined as undefined | (() => void) };
+    const requests: unknown[] = [];
+    const host = {
+      querySelector: (selector: string) =>
+        selector === ".loadout-editor"
+          ? workspace
+          : selector === "#item-details"
+            ? details
+            : selector === "#buy-selected"
+              ? buy
+              : null,
+      querySelectorAll: (selector: string) =>
+        selector === "[data-shop-tab]"
+          ? [gear]
+          : selector === "[data-inspect]"
+            ? buttons
+            : [],
+    };
+    ui.bindShop(host, player, (request: unknown) => requests.push(request));
+    gear.onclick!();
+    const markup = workspace.innerHTML;
+    assert.equal(
+      (markup.match(/class="gear-name"/g) ?? []).length,
+      weapons.length + data.upgrades.length + data.supplies.length,
+    );
+    assert(markup.includes(words.en.shopHelp));
+    for (const weapon of weapons) {
+      const tile = markup
+        .split('data-inspect="' + weapon.id + '"')[1]
+        ?.split("</button>")[0];
+      assert(tile?.includes("weapon." + weapon.id + ".name"));
+      assert(
+        tile?.includes(
+          weapon.id === player.weapon
+            ? "ui.equipped"
+            : String(weapon.price) + " ui.coins",
+        ),
+      );
+    }
+    const premium = weapons.find((w) => w.price > 0)!;
+    buttons.find((b) => b.dataset.inspect === premium.id)!.onclick!();
+    assert.equal(
+      requests.length,
+      0,
+      "Inspection must not buy or spend currency",
+    );
+    buy.onclick!();
+    assert.equal(requests.length, 0, "An unaffordable item stays guarded");
+    assert(details.innerHTML.includes("ui.notEnoughCoins"));
+    player.coins = premium.price;
+    buy.onclick!();
+    assert.deepEqual(requests, [{ kind: "weapon", item: premium.id }]);
+  }
 });
 
 const reaction = (fired = false): MoldReaction => ({

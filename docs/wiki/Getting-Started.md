@@ -14,7 +14,7 @@ pnpm dev
 
 Open `http://127.0.0.1:5173/`. Offline solo runs its authority in a worker and needs no multiplayer server. For local online rooms, run `pnpm server` in a second terminal. The service normally binds loopback port 2567; health is at `http://127.0.0.1:2567/api/health`.
 
-For a gentle first run, **Start gently** prepares Soldier, Quarantine Run, Gatehouse, Baby difficulty and Solo, then opens a confirmation screen. **New run** lets you choose a class, mode, opening arena and difficulty before creating a Solo, public or private session. The map preview labels your start, the boss start, cover and any difficulty-specific lava. Difficulty cards explain the experience; the selected choice shows its exact assistance rules and multipliers. The controls guide is available from Home and the header.
+For a gentle first run, **Start gently** prepares Soldier, Quarantine Run, Gatehouse, Baby difficulty and Solo, then opens a confirmation screen. **New run** lets you choose a class, mode, opening arena and difficulty before creating a Solo, public or private session. The map preview labels your start, the boss start, cover and any difficulty-specific lava. Difficulty cards explain the experience; the selected choice shows its exact assistance rules and multipliers. The Tutorial is available from Home and the header. The home illustration is shown in full, and its headline explains the encounter loop.
 
 Private rooms use a six-character code; Enter submits the code. All seven classes, Quarantine Run, Midnight Circuit, Black Bell Pilgrimage, Grand Raid and Endless Vigil are available. Public builds choose bosses from their authored random opening pools and ordinary route progression reserves finales for the final encounter. The testing build has a separate rehearsal opener/form selector. Public Baby has an optional, closed-by-default boss guide; opening it pauses Solo. Artwork loading shows progress before the lobby appears.
 
@@ -39,7 +39,7 @@ Gamepad uses left/right sticks for movement/aim, right trigger to fire, A to dod
 
 ## Between encounters
 
-Completed fights lead to a 15-second mutation vote, 15-second concealed boss vote, 25-second shop and five-second deployment. Currency and build choices are validated by the authority. Purchased power resets each run. **Profile** preserves class mastery, rescues, discovered boss stories, cosmetic insignia and personal/squad Endless bests. Full participation in a Hard campaign unlocks Insane and Hellish. [Profiles](Profiles) covers portable JSON import/export and backups. Open **Changelog** in the main menu footer for the build identifier and dated updates.
+Completed fights lead to a 15-second mutation vote, 15-second concealed boss vote, 25-second shop and five-second deployment. Currency and build choices are validated by the authority. Gear tiles show names and prices; the loadout summarizes coins and skill points and explains their roles. Purchased power resets each run. **Profile** preserves class mastery, rescues, discovered boss stories, cosmetic insignia and personal/squad Endless bests. Full participation in a Hard campaign unlocks Insane and Hellish. [Profiles](Profiles) covers portable JSON import/export and backups. Open **Changelog** in the main menu footer for the build identifier and dated updates.
 
 Offline saves resume at encounter boundaries and retain the build, economy, votes and RNG state. Supported older local saves are migrated within explicit bounds; incompatible or malformed saves are rejected. Online reconnect reserves a slot for 60 seconds while the server process survives. Server-restart recovery is not yet live.
 
@@ -53,9 +53,9 @@ A portable Windows development app bundles Electron and the same offline worker,
 
 The desktop **Local network** menu offers explicit Host and Join controls. Choose a port, start hosting, then create a game through the ordinary class/mode/map/difficulty setup. Share the private IPv4 address with players on the same network and keep the host app open. Guests enter that address and port, then browse rooms or join by code. Stop hosting from the LAN menu. The game never changes firewall rules. Physical second-machine LAN and manual desktop acceptance remain open.
 
-## Compare a boss in Standard and Brutal forms
+## Developer rehearsal: testing builds only
 
-In current source, choose **New Run → Soldier → Quarantine Run → Gatehouse → Normal difficulty**. On the final review screen choose **Hollow Constable** and **Solo**, then set **Boss form** to **Standard form** or **Brutal** and press **Play**. Any class or map is valid; keeping them the same helps comparison. The Constable stays **1+**, with **B** added for Brutal. Global difficulty remains separate. This choice affects the opener; later contracts follow normal progression. The earlier frozen port-5176 build has no direct selector.
+Local testing builds include a boss selector for encounter review. Public builds choose bosses normally and do not show this selector. In a testing build, choose **New Run → Soldier → Quarantine Run → Gatehouse → Normal difficulty**. On the final review screen choose **Hollow Constable** and **Solo**, then set **Boss form** to **Standard form** or **Brutal** and press **Play**. Keeping the class and map the same helps comparison. The Constable stays **1+**, with **B** added for Brutal. Global difficulty remains separate. This choice affects the opener; later contracts follow normal progression.
 
 [Source behavior and exact verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/BOSS_PRACTICE.md).
 
@@ -87,3 +87,5 @@ Local setup offers Standard, Brutal and Crazed on lower difficulties. Insane fix
 ## Testing and public editions
 
 The testing target offers opening-boss/form selection, all-difficulty manual guides, a Solo paused coin/SP panel and tab-only difficulty unlock. The public target randomizes new openings, omits tools and offers optional guides only on Baby. Modified runs disable boundary saving and local records. These local build targets do not replace the old public Site. Settings toggle overhead names and room chat. Home Leaderboards shows actual local Practice records and an explicit unconnected Online boards status. [Build policy](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/TESTING_AND_PUBLIC_BUILDS.md).
+
+Reading the Tutorial keeps the gentle first-run preset available until the profile has a local run record.

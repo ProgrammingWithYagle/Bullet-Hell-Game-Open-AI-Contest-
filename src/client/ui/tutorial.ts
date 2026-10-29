@@ -46,7 +46,7 @@ export function tutorial(host: HTMLElement, done: () => void) {
     ],
     [
       "weapon",
-      "ui.tutorial",
+      "ui.howToPlay",
       expeditionText(locale, "combatBasics") + " " + t("ui.reviveRulesHelp"),
     ],
     [
@@ -86,7 +86,7 @@ export function tutorial(host: HTMLElement, done: () => void) {
             )
             .join("")}</dl>`
         : "";
-    panel.innerHTML = `<section class="tutorial-card" role="dialog" aria-modal="true" aria-labelledby="tutorial-title" tabindex="-1"><div class="section-heading"><span class="eyebrow">${e(t("ui.tutorial"))} · ${number(page + 1)} / ${number(slides.length)}</span><button id="tutorial-skip" class="text-button">${e(t("ui.skipTutorial"))}</button></div><div class="tutorial-glyph">${icon(glyph)}</div><h2 id="tutorial-title">${e(t(title))}</h2><p>${e(body)}</p>${combatBindings}<div class="tutorial-pips" aria-hidden="true">${slides.map((_, i) => `<span class="${i === page ? "active" : ""}"></span>`).join("")}</div><div class="actions">${page ? `<button id="tutorial-back">${e(t("ui.back"))}</button>` : ""}<button id="tutorial-next" class="primary">${e(t(page === slides.length - 1 ? "ui.confirm" : "ui.next"))}</button></div></section>`;
+    panel.innerHTML = `<section class="tutorial-card" role="dialog" aria-modal="true" aria-labelledby="tutorial-title" tabindex="-1"><div class="section-heading"><span class="eyebrow">${e(expeditionText(locale, "tutorial"))} · ${number(page + 1)} / ${number(slides.length)}</span><button id="tutorial-skip" class="text-button">${e(t("ui.skipTutorial"))}</button></div><div class="tutorial-glyph">${icon(glyph)}</div><h2 id="tutorial-title">${e(t(title))}</h2><p>${e(body)}</p>${combatBindings}<div class="tutorial-pips" aria-hidden="true">${slides.map((_, i) => `<span class="${i === page ? "active" : ""}"></span>`).join("")}</div><div class="actions">${page ? `<button id="tutorial-back">${e(t("ui.back"))}</button>` : ""}<button id="tutorial-next" class="primary">${e(t(page === slides.length - 1 ? "ui.confirm" : "ui.next"))}</button></div></section>`;
     panel.querySelector<HTMLButtonElement>("#tutorial-skip")!.onclick = finish;
     const back = panel.querySelector<HTMLButtonElement>("#tutorial-back");
     if (back)
