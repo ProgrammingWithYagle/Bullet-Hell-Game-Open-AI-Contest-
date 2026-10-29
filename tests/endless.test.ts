@@ -17,6 +17,7 @@ import {
 import { Random } from '../src/shared/random.ts';
 import type { SignatureContext } from '../src/shared/boss-director.ts';
 import { Game, data } from '../src/shared/game.ts';
+import { finishBossDefeat } from './helpers/boss-defeat.ts';
 import { idleInput, PROTOCOL, type BossId, type Shot } from '../src/shared/protocol.ts';
 import { Prediction } from '../src/client/prediction.ts';
 import { viewOf, personalView } from '../src/shared/view.ts';
@@ -350,6 +351,8 @@ test('actual Endless route preserves bags, history, seeded choices and power cap
     assert.equal(g.phase, 'mutationVote');
     const save = g.offlineCheckpoint()!,
       copy = Game.restoreOffline(save);
+    finishBossDefeat(g);
+    finishBossDefeat(copy);
     g.phaseEnds = g.tick;
     copy.phaseEnds = copy.tick;
     g.step();
@@ -456,6 +459,7 @@ function finish(g: Game, accords = 3) {
   for (let n = 0; n < 3; n++) {
     g.boss.health = 0;
     g.step();
+    finishBossDefeat(g);
     if (n < 2)
       while (g.phase !== 'combat') {
         g.phaseEnds = g.tick;
@@ -696,6 +700,7 @@ test('reward-time arrivals cannot claim a campaign or memorial, and reconnecting
   assert.deepEqual(pair.extensionParticipants, ['p0']);
   const restored = Game.restoreAuthoritative(pair.authoritativeCheckpoint()!);
   assert.deepEqual(restored.extensionParticipants, ['p0']);
+  finishBossDefeat(pair);
   pair.phaseEnds = pair.tick;
   pair.step();
   pair.setConnected('p1', true);

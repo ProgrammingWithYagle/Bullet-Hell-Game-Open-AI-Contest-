@@ -2,6 +2,7 @@
 import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
 import { Game, data } from '../../src/shared/game.ts';
+import { finishBossDefeat } from './boss-defeat.ts';
 import { implementedClassIds, type Command } from '../../src/shared/protocol.ts';
 
 export function recoveryBuild(size = 50) {
@@ -45,6 +46,7 @@ export function recoveryBuild(size = 50) {
     assert.equal(game.phase, 'combat');
     game.boss.health = 0;
     game.step();
+    finishBossDefeat(game);
     if (fight === 9) break;
     let phases = 0;
     while (game.phase !== 'combat') {

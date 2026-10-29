@@ -12,6 +12,7 @@ import {
 } from '../src/shared/district-director.ts';
 import type { SignatureContext } from '../src/shared/boss-director.ts';
 import { Game, data } from '../src/shared/game.ts';
+import { finishBossDefeat } from './helpers/boss-defeat.ts';
 import { idleInput, PROTOCOL, type BossId, type Shot } from '../src/shared/protocol.ts';
 import { viewOf } from '../src/shared/view.ts';
 import { Prediction } from '../src/client/prediction.ts';
@@ -415,6 +416,7 @@ test('sixteen-fight Pilgrimage restores boundaries, never repeats and reaches th
         break;
       }
       g = Game.restoreOffline(g.offlineCheckpoint()!);
+      finishBossDefeat(g);
       g.phaseEnds = g.tick;
       g.step();
       assert.equal(new Set(g.contractCards.map((c) => c.bossId)).size, 3);
@@ -608,6 +610,7 @@ test('new health mutations produce consistent live and restorable authoritative 
   g.boss.health = 0;
   g.step();
   g.mutationCards = ['glass-pact'];
+  finishBossDefeat(g);
   g.phaseEnds = g.tick;
   g.step();
   assert.equal(g.phase, 'contractVote');

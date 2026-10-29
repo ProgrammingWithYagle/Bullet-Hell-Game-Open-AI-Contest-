@@ -107,3 +107,5 @@ Open **Leaderboards** for this device’s practice records or **Team records** f
 Press **C** to open room chat when you are not typing in a field. If you already assigned C to a gameplay action in your saved controls, that action keeps the key. The chat button remains available. Menus use the remaining window height when chat is open. Multiplayer keeps running behind menus; Solo pauses.
 
 **C** now opens and closes the chat panel. Press **Enter** to start typing, or click the message field. **Esc** closes chat while typing. The lobby’s **Start run** and **Leave room** buttons occupy a separate row beneath the scrolling upgrades.
+
+After a clear, **Boss defeated** appears while the boss’s falling sequence or final defeat pose stays visible for two seconds. Then the next choices appear, with their full voting time. This short ending does not count as combat time. Fifteen bosses currently have full falling sequences; the other fifty-one use their existing final poses.

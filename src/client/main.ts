@@ -1,4 +1,5 @@
 import {TESTING_BUILD} from './build-audience.ts';
+import { showingBossDefeat } from '../shared/boss-defeat-flow.ts';
 import {expeditionText} from './expedition-text.ts';
 import {testingToolsMarkup,unlockTestingDifficulties} from './testing-ui.ts';
 import {RoomChatUI} from './room-chat-ui.ts';
@@ -41,6 +42,7 @@ import './fonts.css';
 import './ui/expedition.css';
 import './ui/votes.css';
 import './ui/runtime-extras.css';
+import './ui/boss-defeat.css';
 import { CombatScene } from './scene.ts';
 import { Session, type ConnectionOptions } from './session.ts';
 import { Controls } from './controls.ts';
@@ -299,6 +301,11 @@ function setupGame(online: boolean) {
   loading.className = 'loading-expedition';
   loading.innerHTML = `<div class="loading-card"><span class="eyebrow">GRAVE ACCORD</span><h1 id="loading-heading" tabindex="-1">${text('ui.loading')}</h1><p>${esc(expeditionText(locale, 'loadingHelp'))}</p><progress id="assets-progress" value="0" max="1" aria-label="${text('ui.loading')}"></progress><div class="loading-state"><span id="load-state" role="status">${text('ui.loading')}</span><output id="assets-percent" aria-hidden="true">${number(0)}%</output></div></div>`;
   app.append(loading);
+  const defeatBanner = document.createElement('aside');
+  defeatBanner.id = 'boss-defeated-banner'; defeatBanner.className = 'boss-defeated-banner'; defeatBanner.hidden = true;
+  defeatBanner.setAttribute('role','status'); defeatBanner.setAttribute('aria-live','polite');
+  defeatBanner.innerHTML = `<strong>${text('ui.bossDefeated')}</strong><span id="defeated-boss-name"></span>`;
+  app.append(defeatBanner);
   $('loading-heading').focus({ preventScroll: true });
   const guideMount=document.createElement('div');
   guideMount.innerHTML=bossGuideMarkup(locale,online);
@@ -402,7 +409,7 @@ function syncPauseState() {
 }
 function syncRoomChatPlacement() {
   const dock = paused ? $('pause-menu-chat-slot') : bossGuide.open
-    ? $('boss-guide-chat-slot') : session?.view?.phase !== 'combat'
+    ? $('boss-guide-chat-slot') : session?.view && session.view.phase !== 'combat' && !showingBossDefeat(session.view.boss,session.view.tick)
       ? $('phase-chat-slot') : undefined;
   roomChatUI?.place(dock ?? undefined);
 }
@@ -435,6 +442,13 @@ function update(view: View) {
   scene.predicted = prediction.player;
   const p = view.players.find((p) => p.id === session!.id);
   if (!p) return;
+  const defeated = showingBossDefeat(view.boss, view.tick), banner = $('boss-defeated-banner');
+  const defeatId = view.run.id + ':' + view.boss.defeatedAt;
+  if (defeated && banner.dataset.defeat !== defeatId) {
+    $('defeated-boss-name').textContent = t('boss.' + view.boss.id + '.name');
+    banner.dataset.defeat = defeatId;
+  }
+  banner.hidden = !defeated;
   $('loading-expedition')?.remove();
   document.body.classList.remove('preparing');
   controls!.blocked =
@@ -443,7 +457,7 @@ function update(view: View) {
     session.status === 'ui.reconnecting' ||
     session.status === 'ui.errorNetwork';
   $('encounter').textContent = t('ui.encounter', {
-    number: view.encounter + 1,
+    number: defeated ? view.encounter : view.encounter + 1,
   });
   const power=clerkShelterPower(view,p),powerElement=$('clerk-shelter-power');
   powerElement.hidden=power<=0;powerElement.textContent=power>0?t('ui.shelterPower',{percent:number(Math.round(power*100))}):'';
@@ -642,12 +656,14 @@ function update(view: View) {
   else if (!['ui.reconnecting', 'ui.errorNetwork'].includes(session.status))
     $('status').textContent = '';
   audio.setEncounterIntensity(bossPatternPhase(view.boss.id,view.boss.variant,view.boss.phase), view.boss.variant);
-  if (view.phase !== lastPhase) {
-    lastPhase = view.phase;
-    void audio.loop(view.phase === 'combat', view.boss.id);
+  const musicPhase = defeated ? 'bossDefeated' : view.phase;
+  if (musicPhase !== lastPhase) {
+    lastPhase = musicPhase;
+    void audio.loop(view.phase === 'combat' || defeated, view.boss.id);
   }
   const key = JSON.stringify([
     view.phase,
+    defeated,
     view.secretStatus,
     settings.branchingTree,
     p.coins,
@@ -707,7 +723,7 @@ function clock(seconds: number) {
 }
 function renderOverlay(view: View, p: PlayerView) {
   const overlay = $('modal');
-  overlay.hidden = view.phase === 'combat';
+  overlay.hidden = view.phase === 'combat' || showingBossDefeat(view.boss, view.tick);
   if (overlay.hidden) { syncRoomChatPlacement(); return; }
   let body = '',
     title = '', actions = '';

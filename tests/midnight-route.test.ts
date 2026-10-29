@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { Game, data } from '../src/shared/game.ts';
+import { finishBossDefeat } from './helpers/boss-defeat.ts';
 import { serviceBossIds } from '../src/shared/service-director.ts';
 import { HZ, idleInput, PROTOCOL, type Shot } from '../src/shared/protocol.ts';
 const advance = (g: Game, n: number) => {
@@ -52,6 +53,7 @@ test('Midnight Circuit completes ten distinct fixed-grade fights with a reserved
       assert.equal(g.phase, 'mutationVote');
       const save = g.offlineCheckpoint()!;
       g = Game.restoreOffline(save);
+      finishBossDefeat(g);
       g.phaseEnds = g.tick;
       g.step();
       assert.equal(g.phase, 'contractVote');

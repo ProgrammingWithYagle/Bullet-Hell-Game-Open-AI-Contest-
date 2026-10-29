@@ -1,3 +1,13 @@
+# Boss defeat follow-up
+
+Build **2026.10.29-boss-defeat / protocol 38**. The player accepted the C toggle and separate Start/Leave row in preview 5229, then requested a clear ending to each boss fight. A shared two-second beat keeps the existing fall or final pose visible with a top Boss defeated banner and the boss name before the next choices or results appear. Fifteen bosses have full authored falls; fifty-one have final poses. This does not claim new artwork.
+
+Combat stops, scores bank and rewards are granted once at the actual clear. The next vote/offer keeps its full time, reduced motion uses settled poses and a static banner, and both peers use the same server clock. Remaining fall time and position survive Solo and trusted room boundary saves, while older saves remain valid. Accepted chat/menu polish and the user's requested unchanged Pause behavior remain.
+
+The first two timing-fixture failures are preserved under reviews/boss-defeat-2026-10-29/gate-01 and gate-02. Timing fixtures now finish the real defeat beat before shortening later menus. The next exact-source gate, previews and Wiki receipts belong under reviews/boss-defeat-2026-10-29, using gate-03 and fresh testing 5230/backend 2604 and public 5231/backend 2605. Human/rendered pacing acceptance remains pending; browser automation is disabled. Keep the active goal and PR14 draft. Preserve every earlier root, process, package and raw report. The a0c8c56 Windows review predates these newer UI changes.
+
+## Preserved previous state
+
 # Current Grave Accord checkpoint
 
 Build **2026.10.29-chat-toggle / protocol38**. Latest5227feedback says the extra space helps, but upgrades overlap Start/Leave and C opens without closing. The current follow-up addresses both while retaining the accepted fight/menu placement, expanded height, removed rankings notice and unchanged pause labels/behavior.
@@ -47,3 +57,5 @@ Source **db9172c4db3da1936aa0a3b86cba43cd716bb973** passes both exact-source CI 
 Source **c3f239af7e02f014fa351770d159ae5eb4903f61** passes both exact-source CI jobs123443146245/123443072115 with782/782/0; complete logs and hashes are under reviews/chat-toggle-2026-10-29/source-ci.json. Public5229/backend2603 and testing5228/backend2602 pass14asset hashes, source/audience/CORS, actual two-peer chat/combat and real persistent-board reads. Public holding session75627; testing36200. Compiled clients include C and exclude the old exact rankings notice. Wiki **e1f322277f7865b61cf954b55a77a19f6e557738** matches18pages/34images/allpublichashes. Current human/rendered acceptance remains open. The older a0c8c56 Windows ZIP remains a separately verified predecessor.
 
 Human follow-up on5229 confirms both reported issues fixed: C toggles and Start/Leave stay clear. Exact scoped feedback is in reviews/chat-toggle-2026-10-29/human-acceptance.json. This gives no whole-game, boss-balance, physical-device or native-language acceptance.
+
+Current local gate passes 787/787/0, content/fifteen locales/RGBA, TypeScript, production client and 71 atlas contracts. Runtime SHA256 252f0f851ded2dc877d6cca112d2ed6c9923d07587d45a6fe4b17b9af3805e92; source snapshot 4df8dc839fbcedbb434596204bd16dccdea94c040e423e34274a9155e1852305. All eight issued receipts are restored exactly. Exact-source CI, frozen previews and Wiki verification follow the source commit. Human pacing acceptance remains open.

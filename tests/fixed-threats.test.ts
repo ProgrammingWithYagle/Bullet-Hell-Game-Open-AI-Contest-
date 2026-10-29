@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { Game, data } from '../src/shared/game.ts';
+import { finishBossDefeat } from './helpers/boss-defeat.ts';
 import {
   bossThreat,
   bossThreatProfiles,
@@ -117,6 +118,7 @@ test('actual campaign offers carry the concealed boss fixed grade and reward ins
         game.boss.health = 0;
         game.step();
         if (fight === route - 1) break;
+        finishBossDefeat(game);
         game.phaseEnds = game.tick;
         game.step();
         assert.equal(game.phase, 'contractVote');

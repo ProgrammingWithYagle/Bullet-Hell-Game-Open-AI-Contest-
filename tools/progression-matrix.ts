@@ -6,6 +6,7 @@ import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
 import { Game, data } from '../src/shared/game.ts';
+import { bossDefeatRemaining } from '../src/shared/boss-defeat-flow.ts';
 import {
   CONTENT_REVISION,
   PROTOCOL,
@@ -119,6 +120,7 @@ export function progressionMatrix() {
           assert.equal(restored.players.get('solo')!.coins, p.coins);
           assert.equal(restored.settings.runId, g.settings.runId);
           g = restored;
+          for (let remaining = bossDefeatRemaining(g.boss, g.tick); remaining > 0; remaining--) g.step();
           let phases = 0;
           while (g.phase !== 'combat') {
             assert(++phases <= 4, 'Finite intermission progression');

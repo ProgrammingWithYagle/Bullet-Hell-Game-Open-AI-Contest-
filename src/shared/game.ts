@@ -1,4 +1,5 @@
 import {VariantPressure} from './variant-pressure.ts';
+import { bossDefeatRemaining, showingBossDefeat } from './boss-defeat-flow.ts';
 import {WardenPatrol} from './warden-patrol.ts';
 import {AbilityTransforms,type TransformContext} from './ability-transforms.ts';
 import {hasTalent} from './class-talents.ts';
@@ -891,7 +892,7 @@ export class Game {
   }
   private changePhase(phase: Phase, seconds: number) {
     this.phase = phase;
-    this.phaseEnds = this.tick + ticks(seconds);
+    this.phaseEnds = this.tick + bossDefeatRemaining(this.boss, this.tick) + ticks(seconds);
     this.votes.clear();
   }
   private victory() {
@@ -973,6 +974,7 @@ export class Game {
     this.changePhase('mutationVote', rule.mutationVoteSeconds);
   }
   private intermission() {
+    if (showingBossDefeat(this.boss, this.tick)) return;
     if (this.phase === 'secretOffer') {
       this.resolveSecretOffer(this.tick >= this.phaseEnds);
       return;
@@ -2565,6 +2567,8 @@ export class Game {
       combatTick: this.combatTick,
       phase: this.phase,
       phaseEnds: this.phaseEnds,
+      defeatedBoss: showingBossDefeat(this.boss, this.tick)
+        ? { defeatedAt: this.boss.defeatedAt, x: this.boss.x, y: this.boss.y } : null,
       encounter: this.encounter,
       accords: this.accords,
       timeouts: this.timeouts,
@@ -2854,6 +2858,16 @@ export class Game {
       ...classifiedContract(save.selectedContract.bossId!, encounterVariant(g.settings.difficulty,save.selectedContract.variant)),
     };
     g.boss.id = save.selectedContract.bossId!;
+    if (save.defeatedBoss !== undefined && save.defeatedBoss !== null) {
+      const fall = save.defeatedBoss;
+      if (!fall || typeof fall !== 'object' || Array.isArray(fall) ||
+        !int(fall.defeatedAt, 1, save.tick) || !finite(fall.x, 0, 1600) || !finite(fall.y, 0, 1000) ||
+        !g.completedBossIds.has(g.boss.id) || save.encounter < 1 || save.phase === 'lobby' ||
+        !showingBossDefeat({ health: 0, defeatedAt: fall.defeatedAt }, save.tick))
+        throw Error('invalidBossDefeat');
+      Object.assign(g.boss, { defeatedAt: fall.defeatedAt, x: fall.x, y: fall.y,
+        health: 0, variant: g.selectedContract.variant, threat: g.selectedContract.threat });
+    }
     g.mutations.push(...structuredClone(save.mutations));
     g.mutationCards = [...save.mutationCards];
     g.contractCards = save.contractCards.map((card) => ({
@@ -2886,6 +2900,8 @@ export class Game {
       combatTick: this.combatTick,
       phase: this.phase,
       phaseEnds: this.phaseEnds,
+      defeatedBoss: showingBossDefeat(this.boss, this.tick)
+        ? { defeatedAt: this.boss.defeatedAt, x: this.boss.x, y: this.boss.y } : null,
       encounter: this.encounter,
       accords: this.accords,
       timeouts: this.timeouts,
@@ -2998,7 +3014,7 @@ export class Game {
     for(const [id,form] of base.completedBossForms)g.completedBossForms.set(id,form);
     g.rng.state = base.rng.state;
     g.selectedContract = { ...base.selectedContract };
-    g.boss.id = base.selectedContract.bossId!;
+    g.boss = { ...base.boss };
     g.mutations.push(...structuredClone(base.mutations));
     g.mutationCards = [...base.mutationCards];
     g.contractCards = structuredClone(base.contractCards);

@@ -5,6 +5,7 @@ import {Session} from '../src/client/session.ts';
 import {parseProfile,exportProfile,recordProfileView,loadProfile} from '../src/client/profile.ts';
 import {smallWakesIds} from '../src/shared/small-wakes-director.ts';
 import test from 'node:test';
+import { finishBossDefeat } from './helpers/boss-defeat.ts';
 import assert from 'node:assert/strict';
 import {Game,data,type Player} from '../src/shared/game.ts';
 import {combatReviveFraction,phaseShieldBreak,encounterPhases,bossPatternPhase,phaseMarkers} from '../src/shared/encounter-policy.ts';
@@ -186,7 +187,7 @@ test('Insane forces Brutal and Hellish Crazed for every opening identity, includ
   for(const [difficulty,forced] of [['insane','brutal'],['hellish','crazed']] as const)for(const b of data.bosses){
     const g=createPracticeGame({difficulty,openingBossId:b.id as never,mode:'endless'},'Mara','soldier','normal');
     assert(g.start());assert.equal(g.boss.variant,forced,b.id);assert.equal(g.director.cues().some(c=>c.kind==='brutal-echo'),false);
-    if(!b.secret){g.boss.health=0;g.step();g.phaseEnds=g.tick;g.step();assert.equal(g.phase,'contractVote');assert(g.contractCards.every(c=>c.variant===forced));}
+    if(!b.secret){g.boss.health=0;g.step();finishBossDefeat(g);g.phaseEnds=g.tick;g.step();assert.equal(g.phase,'contractVote');assert(g.contractCards.every(c=>c.variant===forced));}
   }
 });
 test('issued protocol-15 local saves/profiles migrate without losing run progress while unknown revisions and online envelopes stay strict',()=>{

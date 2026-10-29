@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { Game } from '../src/shared/game.ts';
+import { finishBossDefeat } from './helpers/boss-defeat.ts';
 import { viewOf } from '../src/shared/view.ts';
 import { idleInput } from '../src/shared/protocol.ts';
 import { Prediction } from '../src/client/prediction.ts';
@@ -40,6 +41,7 @@ test('Endless keeps normalized base income while paying fixed-classification bou
     g.boss.health = 0;
     g.step();
     expectedCoins += Math.floor((p.incomeGranted - beforeIncome) * 1.12);
+    finishBossDefeat(g);
     g.phase = 'loading';
     g.phaseEnds = g.tick;
     g.step();
@@ -63,6 +65,7 @@ test('late arrivals receive boundary income once and purchased coins are not ref
   g.step();
   assert.equal(late.coins, 120);
   assert.equal(p.coins, 668);
+  finishBossDefeat(g);
   g.phase = 'loading';
   g.phaseEnds = g.tick;
   g.step();

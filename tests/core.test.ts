@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { Game, data, arena } from '../src/shared/game.ts';
+import { finishBossDefeat } from './helpers/boss-defeat.ts';
 import { idleInput, validInput } from '../src/shared/protocol.ts';
 import { segmentCircle, moveBody } from '../src/shared/geometry.ts';
 const quiet = (count = 1) => {
@@ -187,6 +188,7 @@ test('votes, rewards and shop follow authoritative timers and late arrivals wait
   assert.equal(new Set(g.mutationCards).size, 3);
   assert(g.vote(p.id, 1));
   assert(!g.vote(p.id, 5));
+  finishBossDefeat(g);
   advance(g, 449);
   assert.equal(g.phase, 'mutationVote');
   g.step();

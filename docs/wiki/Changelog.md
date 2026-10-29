@@ -1,6 +1,20 @@
 # Changelog
 
-Development build **2026.10.29-chat-toggle**, protocol 38. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.29-boss-defeat**, protocol 38. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-29 — Let each boss defeat finish before the next choices
+
+### A clear ending to each fight
+
+- A shared two-second ending beat now keeps the boss visible before votes, the optional extra-fight offer or final results appear. The top banner says Boss defeated and names the defeated boss in the selected language. The current boss music continues through the beat.
+- The fifteen existing falling sequences complete within the beat; the other fifty-one bosses show their existing final defeat pose. No new fall artwork is claimed. Reduced motion keeps the settled pose and static banner.
+- Combat stops and rewards bank once at the real clear. The ending beat does not add to combat score time, and the next voting or offer window still receives its full duration. Both multiplayer peers follow the same server clock. Offline pause continues to freeze that clock.
+- Saving during a fall preserves its remaining time and position in Solo saves and trusted room checkpoints. Existing saves still load.
+
+### Preserve accepted polish
+
+- The player confirmed that C opens and closes chat and that Start run and Leave room stay clear of upgrades. Enter starts typing, Esc closes, and saved custom bindings, drafts and scroll position remain. The old rankings notice stays removed. Pause labels and behavior remain unchanged.
+- Current fall/pose coverage, final result banking and real two-peer timing have focused software checks. Full local/source-CI/frozen-preview/Wiki evidence remains scoped separately from human/rendered/device/language/listening acceptance. The older a0c8c56 Windows review remains separate.
 
 ## 2026-10-29 — Toggle chat and keep lobby actions clear
 

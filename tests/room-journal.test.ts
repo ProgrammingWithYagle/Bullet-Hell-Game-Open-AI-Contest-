@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { randomBytes } from 'node:crypto';
 import { Game } from '../src/shared/game.ts';
+import { BOSS_DEFEAT_TICKS } from '../src/shared/boss-defeat-flow.ts';
 import { RunJournal, type RunTransport } from '../src/server/run-journal.ts';
 import { RoomJournal } from '../src/server/room-journal.ts';
 import { RunStore } from '../src/server/run-store.ts';
@@ -140,6 +141,7 @@ test('room captures victory intermissions, pauses their clocks and guards automa
     assert.equal(row.state, 'intermission');
     assert.equal(verifyBoundary(JSON.parse(row.checkpoint), s.key).game.encounter, 1);
     delayBoundary = false;
+    for (let i = 0; i < BOSS_DEFEAT_TICKS; i++) s.room.step();
     for (const next of ['contractVote', 'shop', 'loading']) {
       s.game.phaseEnds = s.game.tick + 1;
       s.room.step();

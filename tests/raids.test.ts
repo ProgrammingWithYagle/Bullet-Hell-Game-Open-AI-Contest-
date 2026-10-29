@@ -10,6 +10,7 @@ import {
 } from '../src/shared/raid-director.ts';
 import type { SignatureContext } from '../src/shared/boss-director.ts';
 import { Game, data } from '../src/shared/game.ts';
+import { finishBossDefeat } from './helpers/boss-defeat.ts';
 import { PROTOCOL, idleInput, type BossId, type Shot } from '../src/shared/protocol.ts';
 import { Prediction } from '../src/client/prediction.ts';
 import { viewOf } from '../src/shared/view.ts';
@@ -246,6 +247,7 @@ test('Raid completes two distinct regular bosses and one reserved finale with co
         break;
       }
       g = Game.restoreOffline(g.offlineCheckpoint()!);
+      finishBossDefeat(g);
       g.phaseEnds = g.tick;
       g.step();
       assert(g.contractCards.every((c) => !seen.has(c.bossId!)));
