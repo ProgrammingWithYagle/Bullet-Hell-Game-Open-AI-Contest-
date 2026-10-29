@@ -55,7 +55,7 @@ The result screen shows bosses defeated, your credited boss clears when differen
 
 [Download the portable Windows development playtest](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/releases/tag/dev-windows-20261024-1) (706.8 MiB, unsigned). The release includes its per-file manifest, SHA-256 checksums and verification report. The original folder, a fresh ZIP extraction and an ordinary Windows copy all match and pass their separate offline/LAN software fixtures.
 
-Current packaging supports explicit public/testing audiences and validates the source report before compiling a fresh client; the bundled LAN authority has the same audience. This does not replace the older download linked above.
+Current packaging supports explicit public/testing audiences and validates the source report before compiling a fresh client; the bundled LAN authority has the same audience. This does not replace the older download linked above. The first new review archive passed file matching but failed its native font check in deeper copied folders; it is unaccepted while the file-loading fix is verified.
 
 A portable Windows development app bundles Electron and the same offline worker, art, music and fonts. Extract the entire issued folder and run `Grave Accord.exe`; no separate Node or internet connection is needed for solo. Profiles use `GraveAccordData` beside the app when writable and can always be exported from Profile.
 

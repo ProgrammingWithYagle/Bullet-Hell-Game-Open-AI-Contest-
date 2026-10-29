@@ -60,3 +60,7 @@ Run Recap source `26b76f64255a2036f8c5e6055f22dadea5f0bd94` now passes the full7
 ## Current Windows review preparation
 
 Portable packaging now requires a current passing source report and a clean commit, compiles a fresh explicit-audience client, matches LAN/native diagnostics to that audience and embeds separate source/client verification. Nine focused desktop checks and TypeScript/Python syntax pass. Full source/CI, actual package/native/archive/extraction/copy and Wiki evidence belong in reviews/portable-review-2026-10-28/. The existing download is preserved; no replacement release is published.
+
+## Deep-folder correction
+
+The first current Windows review archive passes bytes/copy/source/CI checks but is unaccepted: its original native check passes while two deeper copies fail font loading. All three LAN checks pass. The follow-up streams contained files directly from Node, preserving MIME/CSP/nosniff/HEAD. Long-path/response tests pass; full source and replacement original/extraction/copy native verification remain in progress under reviews/portable-paths-2026-10-28/. Prior failed artifacts/receipts remain immutable.

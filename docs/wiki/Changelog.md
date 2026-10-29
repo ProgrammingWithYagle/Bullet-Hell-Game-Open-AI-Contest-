@@ -1,6 +1,14 @@
 # Changelog
 
-Development build **2026.10.28-portable-review**, protocol 38. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.28-portable-paths**, protocol 38. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-28 — Load portable files from deeper folders
+
+### Keep copied Windows builds usable
+
+- The first current Windows review package matched every file after ZIP extraction and ordinary copying, but its native offline test could not load a font at the deeper paths. The original passed, and all three LAN checks passed. That package remains preserved and is not accepted as portable.
+- Packaged local files now stream from Node filesystem reads through the existing secure protocol. This avoids the failing Chromium file-URL path while retaining resolved-path containment, method restrictions, content security policy, correct module/font/media MIME types and nosniff. HEAD responses keep their byte count and have no body.
+- Tests read exact font bytes past260characters and check module/style/JSON MIME, security headers and HEAD. The replacement still needs its own native original/extraction/copy checks; software checks do not establish rendered, listening, physical-device or human acceptance. Gameplay, controls, rewards, economy, saves, art and music remain.
 
 ## 2026-10-28 — Matching Windows client and LAN builds
 

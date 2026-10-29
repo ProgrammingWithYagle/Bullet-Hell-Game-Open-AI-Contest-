@@ -1,6 +1,6 @@
 # Development progress
 
-Updated 2026-10-28 for **2026.10.28-portable-review**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
+Updated 2026-10-28 for **2026.10.28-portable-paths**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
 
 66 playable identities: 65 ordinary and 1 secret. Three ordinary bosses in every one of fifty subtiers requires 150 ordinary identities, plus secrets; 85 additional ordinary bosses remain.
 
@@ -54,7 +54,7 @@ Updated 2026-10-28 for **2026.10.28-portable-review**. These counts track specif
 
 ## Remaining release work
 
-- Polish and review the current first-visit, setup, loading, HUD and results experience. Clear Choices and Run Recap are implemented with separate software evidence. Windows review preparation now binds a fresh client and matching LAN audience to exact current source verification; native/copy/archive and manual device review remain separate. Continue compact/large-text/RTL/reduced-motion, human/audio/native-language/device/final-balance review and coordinated release preparation.
+- Continue public polish and coordinated release preparation. Clear Choices/Run Recap are implemented with separate software evidence. Current Windows packaging binds source/client/LAN audience, but its first review archive is unaccepted: original native passed and deeper extracted/copied font loading failed despite identical files. Direct filesystem streaming is the follow-up; re-run actual native and copy/archive checks before accepting a replacement. Human/rendered/listening/native-language/device review remains open.
 - Review Alchemist Crazed distillation columns, route warnings, coolant condensation and final reflux in the next matching frozen preview. The shared earned-SP General mobility branch remains deferred during public polish.
 - Review shared phase-attack continuity in the next matching frozen preview; software checks are separate from rendered/human/device/final balance acceptance.
 - Review Bellringer Standard calibration and the new Brutal/Crazed return-chain decision in the next exact-source frozen preview; fixed grade3- remains.

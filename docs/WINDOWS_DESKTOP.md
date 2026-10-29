@@ -1,6 +1,6 @@
 # Windows portable development app
 
-The issued download remains `2026.10.24-windows-lan`, protocol 13. Current source is preparing `2026.10.28-portable-review`, protocol 38. These are separate development artifacts; no replacement release is published by packaging work.
+The issued download remains `2026.10.24-windows-lan`, protocol 13. Current source is preparing `2026.10.28-portable-paths`, protocol 38. These are separate development artifacts; no replacement release is published by packaging work.
 
 ## Issued development download
 
@@ -39,6 +39,12 @@ The desktop renderer has Node integration disabled, context isolation and Chromi
 `--lan-report=ABSOLUTE.json --profile-dir=ABSOLUTE_FOLDER` tests the actual bundled utility authority. It holds a port, checks the occupied-port error without disturbing that listener, releases it, starts hosting, joins two real SDK clients, observes combat replication, leaves and verifies shutdown. The test never substitutes a separately installed Node process for the bundled authority. It is a localhost fixture, not a physical second-computer LAN test.
 
 The profile-directory override isolates diagnostic data from the user's real profile. Diagnostic modes require explicit command-line flags; default startup opens the game and creates no authority. Final packages are checked after fresh ZIP extraction and an independent ordinary Windows folder copy. Evidence includes per-member size/SHA-256 comparisons and the native fixtures on each copy. A manifest by itself is not a successful launch.
+
+## Deep-folder follow-up
+
+The first protocol-38 public review package, source `3362324`, passed all 1,886 file checks after fresh extraction and ordinary copying. Its original native offline check passed 210 starts, save/profile/font checks and all 67 music decodes. Both deeper copies then failed local font loading; all three native LAN checks passed. The font paths are 222, 265 and 262 characters. The archive is preserved and unaccepted, and the published older download remains unchanged.
+
+The follow-up serves already-contained local files through Node filesystem streams instead of Chromium file-URL loading. MIME, CSP, nosniff, method/path checks and empty HEAD behavior remain. Long-path and response-header tests pass; a replacement still needs the full original/extraction/copy native checks.
 
 ## Remaining acceptance
 

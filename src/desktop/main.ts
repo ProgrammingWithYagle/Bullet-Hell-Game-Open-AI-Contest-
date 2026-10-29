@@ -8,7 +8,6 @@ import {
   app,
   BrowserWindow,
   protocol,
-  net,
   session,
   ipcMain,
   utilityProcess,
@@ -16,14 +15,13 @@ import {
 } from 'electron';
 import { join, dirname, relative, isAbsolute, resolve } from 'node:path';
 import { mkdirSync, existsSync, writeFileSync, readFileSync, realpathSync } from 'node:fs';
-import { pathToFileURL } from 'node:url';
+import { localFileResponse } from './static-response.ts';
 import { networkInterfaces } from 'node:os';
 import {
   APP_ORIGIN,
   localDocument,
   staticPath,
   allowedExternal,
-  contentSecurityPolicy,
 } from './security.ts';
 import { validLanPort, privateIPv4, type LanState } from '../shared/lan.ts';
 protocol.registerSchemesAsPrivileged([
@@ -314,14 +312,7 @@ app
         part = relative(smokePath ? root : client, real);
       if (part.startsWith('..') || isAbsolute(part))
         return new Response('Not found', { status: 404 });
-      const original = await net.fetch(pathToFileURL(real).href);
-      const headers = new Headers(original.headers);
-      headers.set('Content-Security-Policy', contentSecurityPolicy);
-      headers.set('X-Content-Type-Options', 'nosniff');
-      return new Response(request.method === 'HEAD' ? null : original.body, {
-        status: original.status,
-        headers,
-      });
+      return localFileResponse(real, request.method);
     });
     main = new BrowserWindow({
       width: 1280,
