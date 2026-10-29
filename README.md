@@ -1,65 +1,63 @@
 # Grave Accord
 
-A cooperative gothic bullet-hell game in active development. Current feature branch: build **2026.10.27-shifting-writ**, protocol **28**, 66 distinct executable bosses with individual original themes, seven classes, 378 skills, 28 weapons and six different map layouts/sizes.
+![Grave Accord cover](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/cover.jpg)
 
-All sixty-six identities execute, including nine scheduled Endless exclusives and the optional Uncounted finale. Five modes work offline and in local online rooms: five-fight Quarantine Run, ten-fight Midnight Circuit, sixteen-fight Black Bell Pilgrimage, three-fight Grand Raid and uncapped Endless Vigil. The in-game main menu has a dated changelog generated from the same history as [CHANGELOG.md](CHANGELOG.md) and the [GitHub Wiki changelog](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/wiki/Changelog).
+A cooperative gothic bullet-hell game. Dodge attacks, defeat a boss, vote on the next contract and spend your rewards on a build. Play solo or with friends.
 
-Use Node 24 and pnpm 11.25.0. Run `pnpm install --frozen-lockfile`, `pnpm verify`, then `pnpm dev`. Open http://127.0.0.1:5173/. Offline solo requires only the frontend and worker. Run `pnpm server` in another terminal for matching protocol-26 local online rooms on port 2567. Local protocol-4 through protocol-25 saves have bounded migrations; signed/online state is strict.
+The current feature branch uses **build 2026.10.28-first-watch-2 / protocol 38**. [Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains this unfinished development work; protected main is a separate release boundary.
 
-[Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains the current source. Protected main is a separate release boundary. The [public playtest](https://grave-accord-playtest.ivoryflame12.chatgpt.site/) still serves its earlier two-class, one-boss protocol-4 deployment. Source/Wiki updates do not redeploy it.
+## Your first run
 
-The [Wiki](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/wiki), [Raid implementation](docs/GRAND_RAID_RUNTIME.md), [Pilgrimage implementation](docs/PILGRIMAGE_RUNTIME.md), [game bible](docs/GAME_BIBLE.md) and [authored roster](docs/BOSS_ROSTER_EXPANSION.md) distinguish working behavior from planned content. The implemented roster has sixty-six identities; the expanded target is 150 ordinary bosses plus secrets, with 85 additional ordinary identities still required. Profiles now preserve class mastery, rescues, codex discoveries, cosmetic insignia, personal/squad Endless bests, settings and control mappings; a full Hard campaign unlocks Insane/Hellish. [Profile details](docs/PROFILE_V1.md). Complete directional/action animation, final encounter tuning, verified rankings and durable online recovery remain unfinished. The Windows development package is issued; its final manual/device acceptance remains open. Full rendered animation, listening, physical-device/native-language, WAN, full progression endurance, capacity and balance acceptance remain open. The [one-hour localhost observation](docs/ONE_HOUR_ENDURANCE.md) records scoped continuous-combat timings separately.
+Choose **Start gently** to prepare Soldier, Quarantine Run, Gatehouse, Baby difficulty and Solo. Review the settings, then press Play. The preset remains available after reading the optional **Tutorial**, until a local run is recorded. **New run** offers the full class, mode, map and difficulty selection.
 
-[Bounded recovery transport](docs/BOUNDED_RECOVERY_TRANSPORT.md) now passes a real fifty-build HTTP/file-backed restart and competing-owner fixture. The normal runtime still has no configured recovery writer; maximum-entropy histories, participant credentials and hosted acceptance remain open.
+Between fights, coins buy equipment, supplies and stat upgrades; skill points buy class skills. Inspect an item before buying it. Gear tiles show names, prices and equipped status. The optional boss guide is available on Baby difficulty and pauses Solo while open. **Local Practice records** shows runs stored on this device.
 
-## Windows development build
+[Getting Started and controls](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/wiki/Getting-Started) · [Accessibility and languages](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/wiki/Accessibility-and-Languages)
 
-[Download the portable Windows development playtest](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/releases/tag/dev-windows-20261024-1) (706.8 MiB, unsigned). Extract the entire ZIP and run **Grave Accord.exe**. All 1,633 members match after fresh extraction and an ordinary Windows copy; all three copies passed separate offline and LAN software fixtures. The release includes the exact manifest, SHA-256 checksums and verification report.
+## Choose a build
 
-The source includes a sandboxed Electron 45 app and explicit LAN host/join menu. After `pnpm verify`, run `pnpm desktop:build` on Windows to produce a new portable folder under `release/`. The app bundles its own runtime and assets; offline solo requires no Node or network. LAN uses a separate authority only after Host is selected. [Desktop build and validation](docs/WINDOWS_DESKTOP.md). Issued artifact links and extraction/copy evidence are maintained separately from the protected-main release boundary.
+| Version | What it contains |
+| --- | --- |
+| Current source, below | Latest content and presentation; offline Solo and matching local online rooms |
+| [Public browser playtest](https://grave-accord-playtest.ivoryflame12.chatgpt.site/) | Earlier protocol-4 build with two classes and one boss |
+| [Portable Windows development download](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/releases/tag/dev-windows-20261024-1) | Earlier immutable protocol-13 build; unsigned, 706.8 MiB |
 
-Hollow Constable now has two longer visible phases with opening double volleys and final gapped rings, extra Brutal pincers, four new shuffling poses and named pattern labels. [Behavior and evidence](docs/CONSTABLE_PATROL.md). This is the first qualitative boss-pressure pass; human balance review remains open.
+Source and Wiki updates do not redeploy the hosted playtest or replace the Windows download. Extract the entire Windows ZIP and run **Grave Accord.exe**. Its manifest, checksums and extraction/copy evidence ship with the download. Manual and physical-device acceptance remain open. See [Windows development](docs/WINDOWS_DESKTOP.md) for local packaging and LAN hosting.
 
-Solo setup now includes a **Boss form** selector for direct Standard/Brutal opener comparisons. [Exact playtest steps](docs/BOSS_PRACTICE.md).
+## Run the current source
 
-[Current development progress](docs/DEVELOPMENT_PROGRESS.md) tracks boss additions, quality passes, class ability revamps, branching-tree work, map implementation and separate review gates. [Phase/Brutal feedback and musical intensity](docs/PHASE_AND_BRUTAL_FEEDBACK.md) describes the latest changes.
+Use Node 24 or newer and the pinned pnpm 11.25.0. Full development verification also requires Python 3 and the [pinned Pillow dependency](tools/art-verification-requirements.txt).
 
-Start a continuation with [the current checkpoint](docs/CHECKPOINT_2026_10_25.md) and `START_NEXT_CHAT.txt`. [Early Watch](docs/EARLY_WATCH_RUNTIME.md) adds three original encounters, 36 selected poses, individual themes and fifteen-locale help; its original integration roster was 63; Small Wakes now brings the source to 66, with 85 ordinary identities remaining. Superseded handoffs/state/acceptance records are retained in dated history.
+```powershell
+pnpm install --frozen-lockfile
+python -m pip install -r tools/art-verification-requirements.txt
+pnpm verify
+pnpm dev
+```
 
-The optional [expanded skill map](docs/OPTIONAL_SKILL_MAP.md) shows all 54 skills per class with zoom, scrolling and keyboard navigation. Enable it in Settings; classic remains the default. This completes the requested optional view implementation, while rendered/device/human review remains open.
+Open [localhost:5173](http://127.0.0.1:5173/). Offline Solo runs in a worker and needs no multiplayer server. For matching protocol-38 local online rooms, run `pnpm server` in a second terminal; its default loopback port is 2567.
 
-[Difficulty and phase rules](docs/DIFFICULTY_AND_PHASES.md): Baby/Easy Standard shield events; Baby full and Easy half and Normal quarter combat revives; Hard+ no combat revives. Hard keeps half the interior cover, Insane removes it, and Hellish adds lava with every boss forced Crazed; Insane forces Brutal. Entry threats use two phases, segmented health and separate transition cues. Warned repeat volleys increase Brutal pressure; Normal health remains unchanged.
+Development and testing builds include rehearsal tools. Public builds omit the boss selector and currency tools. Use `pnpm build:testing` or `pnpm build:public` for the intended audience. [Public polish](docs/PUBLIC_POLISH.md) describes the current scope and review boundaries.
 
-Latest rules: docs/ASSIST_LIMITS.md — Normal revives at 25%; Baby/Easy use six/three shield circles and two/three-second channels; Baby adds two cover props per map. Preserve all prior frozen previews. [Twenty-one class ability transformations](docs/CLASS_TALENTS.md) are now integrated at existing utility-path depth-three nodes, with all costs and prerequisites retained. Human/rendered review remains open.
+## Current game
 
-[Lantern Warden quality pass](docs/WARDEN_PATROL.md) adds rest-only patrols, directional sweeps and a fully warned sequential Brutal return. Twelve original-roster quality passes are implemented (Constable, Warden, Courier, Ratcatcher, Clerk, Tollkeeper, Chain Marshal, Gate Widow, Black Ambulance, Cradle Matron, Mold Alchemist and Bellringer); 48 remain. Its four patrol poses brought that checkpoint to 1,506; the Small Wakes checkpoint selected 1,542. Human/rendered acceptance remains open.
+| Part | Implemented content |
+| --- | --- |
+| Survivors | Seven classes, each with two abilities and an ultimate |
+| Builds | 378 class skills, 63 specialization paths, 21 ability transformations and 28 weapons |
+| Encounters | 66 executable identities, including nine scheduled Endless exclusives and an optional Uncounted finale; individual original themes |
+| Routes | Quarantine Run, Midnight Circuit, Black Bell Pilgrimage, Grand Raid and Endless Vigil |
+| Arenas | Six different playable layouts with difficulty-specific cover and hazards |
+| Sessions | Offline Solo, public/private online rooms, boundary saves and process-live reconnect |
+| Preferences | Remappable keyboard/mouse/gamepad, touch controls, reduced motion, text scaling and fifteen language catalogs |
+| Profiles | Class mastery, rescues, discoveries, cosmetics, records and validated JSON import/export |
 
-Full verification also uses Python 3 with the pinned Pillow dependency: `python -m pip install -r tools/art-verification-requirements.txt`. This is a development verification dependency; the game itself remains browser/Windows JavaScript. CI installs it in an isolated virtual environment.
+The optional expanded skill map shows all 54 skills per class with zoom, scrolling and keyboard navigation; classic remains the default. A full Hard campaign unlocks Insane and Hellish. [Difficulty and phase rules](docs/DIFFICULTY_AND_PHASES.md), [profiles](docs/PROFILE_V1.md), [class transformations](docs/CLASS_TALENTS.md) and the [optional skill map](docs/OPTIONAL_SKILL_MAP.md) explain the details.
 
-[Small Wakes](docs/SMALL_WAKES_RUNTIME.md) adds Candle Snail 1--, Cobble Crab 1- and Mourning Kettle 1 with two phases, 36 selected motion poses, three individual scores and fifteen-locale response help. The source has 66 bosses and 1,542 selected runtime poses. The Small Wakes checkpoint used 484 tests; read the current checkpoint for latest content, locale, TypeScript, full-suite, build, preview, CI and publication evidence. Human/rendered/device/native-language/listening/final balance acceptance remains open.
+## Development status
 
-[Courier Return Address](docs/COURIER_ROUTE.md) changes one Standard delivery into two at half health; advanced forms add one leg and a warned split fan. Locked warnings start at actual stops, trails fade, and recovery leaves time to counterattack. Standard health/damage remains. Current build includes all66 Crazed forms, 2.5x/7.5x projectile budgets, compact maps and a distinct phase bell/entry animation.
+The First Watch follow-up source `cebaae2` passes the complete local gate and both exact-source CI runs: **756 tests, 756 pass, 0 fail**, plus authored content/locales/RGBA, TypeScript, production build and 71 emitted atlas contracts. [Current checkpoint](docs/CHECKPOINT_2026_10_25.md) binds the source, frozen preview, CI logs and Wiki publication evidence.
 
-[Ratcatcher Roving Muster](docs/RATCATCHER_MUSTER.md) adds a late patrol before new locked scent lanes, bounded rat routes around cover and one/two advanced warned whistle rings. Original Standard combat numbers and all artwork/music remain. Human review is open.
+Twelve original encounters have implemented quality passes; 48 remain. Content expansion and the proposed General Double Dash/Sprint branch are deferred during public polish. Complete action/facing animation, final encounter tuning, verified hosted rankings and durable online recovery remain unfinished. Rendered, listening, native-language, physical-device, WAN, endurance, capacity and human balance acceptance remain open.
 
-[Clerk Appeal Circuit](docs/CLERK_APPEAL.md) fixes 61 missed stamp placements, relocates before late warnings, changes the Standard reopened seal from I to III; advanced forms use five/ten shifted positions, with the current follow-up randomizing the future green number in Brutal phase two and every Crazed field. Original Standard combat numbers and all assets remain. Human review is open.
-
-[Visible Clerk shelter](docs/CLERK_SHELTER.md) pairs reopening with a warned volley, actual rim impacts and a closing ring. Development instructions are retained in the closed-by-default manual guide; the separate public build uses optional Baby-only guides.
-
-[Banked returns and graded seals](docs/BANKED_VERDICTS.md) adds a distinct Tollkeeper late return and the requested Clerk 3/5/10 fields, purple severity and once-per-seal black current-health curse. Instructions remain available in the manual guide during testing. Human balance/readability review remains open.
-
-[Clerk venom and lasting shelter](docs/CLERK_VENOM.md) extends advanced green protection through the final marked echo, randomizes the warned safe number, and adds purple poison, slow and a once-per-seal 15% current-health hit. Standard retains its existing seal order/timing. Development instructions stay visible.
-
-[Pauseable boss guide and Shifting Writ](docs/SHIFTING_WRIT.md) moves long boss instructions into a closed-by-default manual guide, pauses Solo while reading, and gives Chain Marshal reachable anchors, a distinct late move/return, cover-clipped sweeps and owned advanced barb volleys. Current testing retains on-demand guides on every difficulty; the separate public build uses optional Baby-only availability. Human/rendered/device comparison remains open.
-
-[Crossed Threshold](docs/CROSSED_THRESHOLD.md) adds Gate Widow’s connected gate passages, moving late phase and floor palls. Clerk gains shelter damage bonuses and Crazed lasting domains. [Testing/public builds](docs/TESTING_AND_PUBLIC_BUILDS.md) now separate the opening selectors, guide availability and Solo tools. Optional overhead names/chat and a visible Leaderboards page are implemented; online verified ranks remain unfinished. Browser testing is now authorized; rendered and human acceptance are separate.
-
-[Last Dispatch](docs/LAST_DISPATCH.md) gives Black Ambulance connected patrols, distinct serial phase headings, three-second driver recovery and warned advanced door volleys. Full offset bounds replace dimension-only probe checks; the earlier outside claim was rejected. No new identity, art or audio is added. Current rendered/human/device/native-language/listening acceptance remains open.
-
-[Cradle Relay](docs/MATRON_WARD.md) gives Cradle Matron connected escort routes, two/four navigating broods, numbered gapped lullabies and warned advanced needle stitches. No new identity, art or audio is added; rendered/human acceptance remains open.
-
-[Reagent Road](docs/MOLD_MIXING.md) gives Mold Alchemist connected mixing walks, warned culture pools, catalyst/decant/reflux legs, actual pool draining and controlled advanced vial sprays. Base combat/art/music remain; rendered/human acceptance is open.
-
-[Alchemist laboratory](docs/MOLD_MIXING.md) replaces generic bullet/laser pressure with aimed chemistry, real mixing/cooling and form-specific reactions, with eight newly drawn walking poses. [Encounter design](docs/BOSS_ENCOUNTER_DESIGN.md) records the direction for unique themed boss techniques.
-
-Current feature-branch checkpoint: **2026.10.28-unbroken-attacks / protocol36** preserves committed attacks across phase changes. See [phase continuity](docs/PHASE_CONTINUITY.md) and the [single progress ledger](docs/DEVELOPMENT_PROGRESS.md). Exact-source verification and matching frozen previews are recorded in the checkpoint; the game remains unfinished.
+[Development Progress](docs/DEVELOPMENT_PROGRESS.md) is generated from the single implementation ledger. [Changelog](CHANGELOG.md) and the in-game journal share one update history. The [Wiki](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/wiki) covers playing and the [game bible](docs/GAME_BIBLE.md) preserves the design. Continue development from the [current checkpoint](docs/CHECKPOINT_2026_10_25.md) and `START_NEXT_CHAT.txt`; dated history retains predecessor evidence.

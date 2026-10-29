@@ -42,3 +42,5 @@ Build2026.10.28-first-watch-2 addresses human5214 feedback: the complete1672x941
 Reading the Tutorial keeps the gentle first-run preset available until the profile has a local run record.
 
 The follow-up passes its own full local gate with 756 tests, content/locales, TypeScript, production build and 71 atlas contracts. `reviews/public-polish-followup-2026-10-28/gate-03/` and `full-gate-03.log` bind the current source; all eight issued receipts are preserved. Its source CI and fresh public preview/Wiki evidence remain separate follow-up checks.
+
+Source `cebaae2620d04434f5ed2da28e9c84f02e9f5c57` now has both 756-test source CI logs, a fresh frozen public 5215/2589 pair with 13 HTTP and real two-peer checks, and exact Wiki publication `6e647e0c6c605dfdfbf9eeeecbf28a9c2089bc0c`. These records live in the follow-up review directory. Earlier 5214 and all older frozen artifacts are preserved. This closes the source checkpoint; the broad polish goal and human/rendered/device review remain open.
