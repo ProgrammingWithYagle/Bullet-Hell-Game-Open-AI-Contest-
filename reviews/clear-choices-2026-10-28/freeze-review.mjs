@@ -58,7 +58,7 @@ const workers = jsFiles.filter(file => path.basename(file).startsWith('offline.w
 assert.equal(workers.length, 1);
 assert(main.includes(endpoint), 'Candidate does not bind to the selected review backend');
 const workerText = fs.readFileSync(workers[0], 'utf8');
-for (const markup of ['<select id="opening-boss"', 'id="testing-coins"', 'id="testing-apply"', 'id="testing-unlock-home"'])
+for (const markup of ['<select id="opening-boss"', 'id="testing-coins"', 'id="testing-apply"', 'testing-unlock-home'])
   assert.equal(main.includes(markup), audience === 'testing', 'Wrong audience menu branch: ' + markup);
 assert.equal(workerText.includes('testingCommand'), audience === 'testing', 'Wrong audience worker branch');
 assert.equal(main.includes('class="setup-build"'), audience === 'testing', 'Wrong audience development footer');

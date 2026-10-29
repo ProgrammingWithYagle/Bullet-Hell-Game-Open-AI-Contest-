@@ -56,7 +56,7 @@ The optional expanded skill map shows all 54 skills per class with zoom, scrolli
 
 ## Development status
 
-The verified First Watch follow-up predecessor `cebaae2` passes the complete local gate and both exact-source CI runs: **756 tests, 756 pass, 0 fail**, plus authored content/locales/RGBA, TypeScript, production build and 71 emitted atlas contracts. [Current checkpoint](docs/CHECKPOINT_2026_10_25.md) binds the source, frozen preview, CI logs and Wiki publication evidence.
+Clear Choices source `18b602a` passes the complete local gate and both exact-source CI runs: **758 tests, 758 pass, 0 fail**, plus authored content/locales/RGBA, TypeScript, production build and 71 emitted atlas contracts. [Current checkpoint](docs/CHECKPOINT_2026_10_25.md) binds the source, frozen preview, CI logs and Wiki publication evidence.
 
 Twelve original encounters have implemented quality passes; 48 remain. Content expansion and the proposed General Double Dash/Sprint branch are deferred during public polish. Complete action/facing animation, final encounter tuning, verified hosted rankings and durable online recovery remain unfinished. Rendered, listening, native-language, physical-device, WAN, endurance, capacity and human balance acceptance remain open.
 

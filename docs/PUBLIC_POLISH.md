@@ -48,3 +48,5 @@ Source `cebaae2620d04434f5ed2da28e9c84f02e9f5c57` now has both 756-test source C
 ## Clear Choices follow-up
 
 User5215 reports the full artwork, shop and direct headline clearer. The next source uses New here?, familiar menu icons, five actual fight-count/duration diagrams, plain mode descriptions, six difficulty symbols, and testing-only development details. Public and testing share the improvements. Seven focused checks and TypeScript pass; complete local/CI/fresh paired previews/Wiki evidence belongs under reviews/clear-choices-2026-10-28/. No content or authority expansion.
+
+Clear Choices source `18b602ae3e87094d0811c8187eaa586d470d5d5a` passes758local and both exact-source CI tests,14HTTP samples and real two-peer combat for both new testing5216/2590 and public5217/2591 pairs, and exact Wiki publication `29ca9f98befdf859d33def6470d8ef159a2c64b7`. The prior global Wiki receipt and all eight gate receipts are preserved. Current manifests/CI logs/live checks/publication evidence live in the Clear Choices review directory. All older frozen roots/services remain preserved.
