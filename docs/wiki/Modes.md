@@ -8,6 +8,8 @@
 | Black Bell Pilgrimage | Playable | 16: fifteen unique regulars and a reserved finale | 8 |
 | Grand Raid | Playable | 3: two unique regulars and a reserved finale | 16 |
 
+The mode menu shows a fight-count diagram instead of an arena. Its estimated time guides are 10–20 minutes for Quarantine Run and Grand Raid, 25–35 for Midnight Circuit, and 45–60 for Black Bell Pilgrimage. Endless has no fixed duration or final fight. Actual length depends on play. The starting map is selected on the next step.
+
 Source room limits are admission rules, not a claim that the current hosted service or physical devices have passed full-capacity acceptance. The older public playtest is capped at eight slots. Final rendered/WAN/endurance and 49+1 scale acceptance remain open.
 
 Quarantine, Midnight, Pilgrimage and Raid use their authored threat and arena sequences and normalized progression budgets. All playable modes support offline solo and public/private rooms. Baby, Easy, Normal and Hard are selectable. Insane and Hellish unlock after a full campaign on Hard, using recorded personal participation. See [Profiles](Profiles).

@@ -1,6 +1,18 @@
 # Changelog
 
-Development build **2026.10.28-first-watch-2**, protocol 38. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.28-clear-choices**, protocol 38. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-28 — Plain words and clearer choices
+
+### Know what to choose
+
+- The first-run prompt now says New here? and explains the ready-made gentle Solo settings in plain words. Tutorial uses an open book, Join room uses a doorway and arrow, and Profile, records, resume and local network use matching familiar icons. The small header now says Play solo or with friends; the old motto remains in the language files for possible later story use.
+- Choosing a mode shows the actual five, ten, sixteen or three boss fights, or an endless loop, with the authored estimated duration. Fight counts mark the mode buttons; the map preview stays on the map step. Mode descriptions explain run length and starting coins/skill points directly in all fifteen locales.
+
+### Keep the menu clear
+
+- Baby, Easy, Normal, Hard, Insane and Hellish each have a distinct drawn icon alongside their names and existing assistance descriptions. Earned difficulty unlocks and all combat rules remain.
+- The public setup footer no longer shows development-build details, and the public mode screen omits its development notice. Testing builds keep their build information and tools. Both builds share the same presentation improvements. No new boss, map, mode, weapon, skill, bitmap or music is added.
 
 ## 2026-10-28 — A full cover, a clear Tutorial and readable gear
 

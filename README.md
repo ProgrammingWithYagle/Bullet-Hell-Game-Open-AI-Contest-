@@ -4,11 +4,11 @@
 
 A cooperative gothic bullet-hell game. Dodge attacks, defeat a boss, vote on the next contract and spend your rewards on a build. Play solo or with friends.
 
-The current feature branch uses **build 2026.10.28-first-watch-2 / protocol 38**. [Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains this unfinished development work; protected main is a separate release boundary.
+The current feature branch uses **build 2026.10.28-clear-choices / protocol 38**. [Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains this unfinished development work; protected main is a separate release boundary.
 
 ## Your first run
 
-Choose **Start gently** to prepare Soldier, Quarantine Run, Gatehouse, Baby difficulty and Solo. Review the settings, then press Play. The preset remains available after reading the optional **Tutorial**, until a local run is recorded. **New run** offers the full class, mode, map and difficulty selection.
+Under **New here?**, choose **Start gently** to prepare Soldier, Quarantine Run, Gatehouse, Baby difficulty and Solo. Review the settings, then press Play. The preset remains available after reading the optional **Tutorial**, until a local run is recorded. **New run** offers the full class, mode, map and difficulty selection. Modes show fight counts and estimated duration; map geometry stays on the map step. Difficulty icons are unique, with names and help beside them. Public menus hide development-build details, and testing builds share the same polish.
 
 Between fights, coins buy equipment, supplies and stat upgrades; skill points buy class skills. Inspect an item before buying it. Gear tiles show names, prices and equipped status. The optional boss guide is available on Baby difficulty and pauses Solo while open. **Local Practice records** shows runs stored on this device.
 
@@ -56,7 +56,7 @@ The optional expanded skill map shows all 54 skills per class with zoom, scrolli
 
 ## Development status
 
-The First Watch follow-up source `cebaae2` passes the complete local gate and both exact-source CI runs: **756 tests, 756 pass, 0 fail**, plus authored content/locales/RGBA, TypeScript, production build and 71 emitted atlas contracts. [Current checkpoint](docs/CHECKPOINT_2026_10_25.md) binds the source, frozen preview, CI logs and Wiki publication evidence.
+The verified First Watch follow-up predecessor `cebaae2` passes the complete local gate and both exact-source CI runs: **756 tests, 756 pass, 0 fail**, plus authored content/locales/RGBA, TypeScript, production build and 71 emitted atlas contracts. [Current checkpoint](docs/CHECKPOINT_2026_10_25.md) binds the source, frozen preview, CI logs and Wiki publication evidence.
 
 Twelve original encounters have implemented quality passes; 48 remain. Content expansion and the proposed General Double Dash/Sprint branch are deferred during public polish. Complete action/facing animation, final encounter tuning, verified hosted rankings and durable online recovery remain unfinished. Rendered, listening, native-language, physical-device, WAN, endurance, capacity and human balance acceptance remain open.
 

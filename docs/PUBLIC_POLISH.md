@@ -44,3 +44,7 @@ Reading the Tutorial keeps the gentle first-run preset available until the profi
 The follow-up passes its own full local gate with 756 tests, content/locales, TypeScript, production build and 71 atlas contracts. `reviews/public-polish-followup-2026-10-28/gate-03/` and `full-gate-03.log` bind the current source; all eight issued receipts are preserved. Its source CI and fresh public preview/Wiki evidence remain separate follow-up checks.
 
 Source `cebaae2620d04434f5ed2da28e9c84f02e9f5c57` now has both 756-test source CI logs, a fresh frozen public 5215/2589 pair with 13 HTTP and real two-peer checks, and exact Wiki publication `6e647e0c6c605dfdfbf9eeeecbf28a9c2089bc0c`. These records live in the follow-up review directory. Earlier 5214 and all older frozen artifacts are preserved. This closes the source checkpoint; the broad polish goal and human/rendered/device review remain open.
+
+## Clear Choices follow-up
+
+User5215 reports the full artwork, shop and direct headline clearer. The next source uses New here?, familiar menu icons, five actual fight-count/duration diagrams, plain mode descriptions, six difficulty symbols, and testing-only development details. Public and testing share the improvements. Seven focused checks and TypeScript pass; complete local/CI/fresh paired previews/Wiki evidence belongs under reviews/clear-choices-2026-10-28/. No content or authority expansion.

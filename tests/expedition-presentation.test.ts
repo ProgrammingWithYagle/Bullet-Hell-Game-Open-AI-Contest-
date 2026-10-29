@@ -22,6 +22,8 @@ import type Phaser from "phaser";
 import { createPracticeGame } from "../src/shared/practice-start.ts";
 import { viewOf } from "../src/shared/view.ts";
 import type { ClassId } from "../src/shared/protocol.ts";
+import { modePreviewMarkup } from "../src/client/ui/mode-preview.ts";
+import { icon } from "../src/client/ui/icons.ts";
 
 test("all six opening arenas show the real bounds, cover, spawns and difficulty hazards", () => {
   const before = JSON.stringify(data.arenas);
@@ -97,7 +99,32 @@ test("welcome, map legends and difficulty explanations cover all fifteen support
   assert.equal(expeditionText("unknown", "firstWatch"), words.en.firstWatch);
 });
 
-test("compiled public setup offers an optional gentle confirmation, preserves the profile and never shows an opener or currency tools", async (t) => {
+test("mode previews describe all five authored run lengths and each difficulty has a distinct non-fallback symbol", () => {
+  for (const mode of data.modes) {
+    const markup = modePreviewMarkup(mode, {
+      progression: words.en.modeProgression,
+      fights: words.en.bossFights,
+      estimatedTime: words.en.estimatedTime,
+      minutes: words.en.minutes,
+      noFinalFight: words.en.noFinalFight,
+      endlessTime: words.en.endlessTime,
+      number: String,
+    });
+    assert.equal((markup.match(/data-encounter=/g) ?? []).length, mode.encounters ?? 0);
+    assert.equal(markup.includes('mode-finale"'), mode.encounters !== null);
+    assert(!markup.includes('arena-preview') && !markup.includes('<image'));
+    if (mode.targetMinutes) assert(markup.includes(mode.targetMinutes.join('–') + ' min'));
+    else assert(markup.includes(words.en.noFinalFight) && markup.includes(words.en.endlessTime));
+  }
+  const symbols = data.difficulties.map(d => icon('difficulty-' + d.id));
+  assert.equal(new Set(symbols).size, 6);
+  assert(symbols.every(s => s !== icon('missing')));
+  assert.notEqual(icon('tutorial'), icon('tree'));
+  assert.notEqual(icon('join'), icon('rescue'));
+});
+
+for (const testing of [false, true])
+test(`compiled ${testing ? 'testing' : 'public'} setup shares the clear first-run flow and preserves its audience boundary`, async (t) => {
   const bundle = await build({
     entryPoints: ["src/client/ui/setup.ts"],
     bundle: true,
@@ -105,7 +132,7 @@ test("compiled public setup offers an optional gentle confirmation, preserves th
     format: "esm",
     write: false,
     logLevel: "silent",
-    define: { __GA_TESTING_BUILD__: "false" },
+    define: { __GA_TESTING_BUILD__: String(testing) },
     loader: { ".css": "empty" },
     plugins: [
       {
@@ -155,6 +182,11 @@ test("compiled public setup offers an optional gentle confirmation, preserves th
     onclick?: () => void;
     oninput?: () => void;
     focused = false;
+    textContent = "";
+    get id() { return this.attrs.id ?? ""; }
+    set id(value: string) { this.attrs.id = value; }
+    get className() { return this.attrs.class ?? ""; }
+    set className(value: string) { this.attrs.class = value; }
     constructor(
       public tag = "main",
       public attrs: Record<string, string> = {},
@@ -185,6 +217,7 @@ test("compiled public setup offers an optional gentle confirmation, preserves th
     }
     matches(selector: string) {
       if (selector.startsWith("#")) return this.attrs.id === selector.slice(1);
+      if (selector.startsWith(".")) return this.className.split(/\s+/).includes(selector.slice(1));
       if (selector.startsWith("[")) {
         const match = selector.match(/^\[([^=\]]+)(?:="([^"]*)")?\]$/)!;
         return (
@@ -210,12 +243,15 @@ test("compiled public setup offers an optional gentle confirmation, preserves th
     click() {
       this.onclick?.();
     }
+    append(...nodes: Element[]) { this.nodes.push(...nodes); }
+    prepend(...nodes: Element[]) { this.nodes.unshift(...nodes); }
   }
   const previousStorage = Object.getOwnPropertyDescriptor(
     globalThis,
     "localStorage",
   );
   const previousWindow = Object.getOwnPropertyDescriptor(globalThis, "window");
+  const previousDocument = Object.getOwnPropertyDescriptor(globalThis, "document");
   const saved = new Map<string, string>();
   Object.defineProperty(globalThis, "localStorage", {
     configurable: true,
@@ -229,10 +265,15 @@ test("compiled public setup offers an optional gentle confirmation, preserves th
     configurable: true,
     value: { scrollTo() {} },
   });
+  Object.defineProperty(globalThis, "document", {
+    configurable: true,
+    value: { createElement: (tag: string) => new Element(tag) },
+  });
   t.after(() => {
     for (const [key, descriptor] of [
       ["localStorage", previousStorage],
       ["window", previousWindow],
+      ["document", previousDocument],
     ] as const)
       if (descriptor) Object.defineProperty(globalThis, key, descriptor);
       else Reflect.deleteProperty(globalThis, key);
@@ -248,6 +289,9 @@ test("compiled public setup offers an optional gentle confirmation, preserves th
   });
   const content = () => host.querySelector("#setup-content")!;
   assert(content().innerHTML.includes("first-watch"));
+  assert(content().innerHTML.includes(words.en.firstWatch));
+  assert.equal(host.innerHTML.includes('class="setup-build"'), testing);
+  assert.equal(Boolean(host.querySelector('#testing-unlock-home')), testing);
   assert.equal(host.querySelectorAll("dialog").length, 0);
   assert(!content().innerHTML.includes("tutorial-overlay"));
   assert(host.querySelector("#gentle-start"));
@@ -258,7 +302,7 @@ test("compiled public setup offers an optional gentle confirmation, preserves th
     0,
     "gentle preset must wait for the player to confirm",
   );
-  assert(!host.querySelector("#opening-boss"));
+  assert.equal(Boolean(host.querySelector("#opening-boss")), testing);
   assert(!host.querySelector("#testing-unlock-home"));
   assert(!content().innerHTML.includes("testing-coins"));
   const name = host.querySelector("#name")!;
@@ -288,6 +332,18 @@ test("compiled public setup offers an optional gentle confirmation, preserves th
     host.querySelector("#gentle-start"),
     "Reading the tutorial must not remove the first-run preset before a local run exists",
   );
+  host.querySelector('#new-run')!.click();
+  host.querySelector('#setup-next')!.click();
+  for (const mode of data.modes) {
+    host.querySelector(`[data-mode="${mode.id}"]`)!.click();
+    assert(content().innerHTML.includes(`data-mode-preview="${mode.id}"`));
+    assert(!content().innerHTML.includes('arena-preview'));
+  }
+  host.querySelector('#setup-next')!.click();
+  assert(content().innerHTML.includes('arena-preview'), 'Actual arena geometry belongs on the map step');
+  host.querySelector('#setup-next')!.click();
+  assert.equal((content().innerHTML.match(/class="difficulty-emblem"/g) ?? []).length, 6);
+  assert(!content().innerHTML.includes('difficulty-bells'));
 });
 
 test("actual armory presents all seven classes' existing names and prices while inspection and unaffordable buys spend nothing", async (t) => {

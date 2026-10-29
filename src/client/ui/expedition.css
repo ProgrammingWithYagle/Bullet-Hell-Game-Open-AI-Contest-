@@ -218,6 +218,80 @@
   font-size: 0.92rem;
   line-height: 1.7;
 }
+.mode-preview {
+  margin: 0;
+  padding: 1.15rem clamp(1rem, 3vw, 2rem) 1.5rem;
+  border-block-end: 1px solid var(--expedition-line);
+  background: radial-gradient(ellipse at center, #49644544, transparent 75%), #18352b;
+}
+.mode-preview figcaption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--expedition-muted);
+  font-size: 0.8rem;
+}
+.route-pick > .mode-count {
+  flex: none;
+  display: grid;
+  place-items: center;
+  min-width: 2.25rem;
+  min-height: 2.25rem;
+  border: 1px solid var(--expedition-line);
+  border-radius: 50%;
+  color: #ecdfb8;
+  font-size: 1.1rem;
+  font-variant-numeric: tabular-nums;
+}
+.mode-preview .mode-route {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 215px;
+  margin-block: 0.3rem;
+  overflow: visible;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.mode-track {
+  stroke: #819779;
+  stroke-width: 3;
+}
+.mode-stop {
+  fill: #233f30;
+  stroke: #d9c997;
+  stroke-width: 2;
+}
+.mode-stop-center,
+.mode-finale {
+  fill: #d9c997;
+}
+.mode-direction { stroke: #d9c997; stroke-width: 3; }
+.mode-summary {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 1.5rem;
+}
+.mode-summary > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
+}
+.mode-summary strong {
+  color: #ecdfb8;
+  font-family: var(--display-font);
+  font-weight: 500;
+  font-size: 2.2rem;
+  line-height: 1.25;
+}
+.mode-summary .mode-duration strong { font-size: 1.5rem; }
+.mode-summary span {
+  color: var(--expedition-muted);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
 .arena-atlas {
   margin: 0;
   padding: 1rem 1.2rem 0.9rem;
@@ -364,13 +438,27 @@
   font-size: 0.72rem;
   line-height: 1.5;
 }
-.difficulty-pick .difficulty-bells {
-  opacity: 0.8;
+.difficulty-emblem {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  margin-block-end: 0.4rem;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  color: #e2d29e;
+  background: #10251d66;
 }
-.difficulty-pick .difficulty-bells .ink-icon {
-  width: 17px;
-  height: 17px;
+.difficulty-emblem .ink-icon {
+  width: 42px;
+  height: 42px;
 }
+[data-difficulty="baby"] .difficulty-emblem { color: #c4dda4; }
+[data-difficulty="easy"] .difficulty-emblem { color: #bed9cd; }
+[data-difficulty="normal"] .difficulty-emblem { color: #e2d29e; }
+[data-difficulty="hard"] .difficulty-emblem { color: #f0bb8f; }
+[data-difficulty="insane"] .difficulty-emblem { color: #e2b0c2; }
+[data-difficulty="hellish"] .difficulty-emblem { color: #d3b8f3; }
 .difficulty-pick small {
   display: flex;
   align-items: flex-start;
