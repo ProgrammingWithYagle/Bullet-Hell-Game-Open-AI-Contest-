@@ -1,0 +1,65 @@
+{
+  "checkedAt": "2026-10-29T22:32:14.959Z",
+  "passed": true,
+  "previews": [
+    {
+      "audience": "testing",
+      "url": "http://127.0.0.1:5236/",
+      "endpoint": "http://127.0.0.1:2610",
+      "sourceCommit": "5dfc6a8722ac137219d9eca68610d022e12f27c8",
+      "startedAt": "2026-10-29T21:31:41.401Z",
+      "protocol": 42,
+      "checks": [
+        {
+          "path": "index.html",
+          "status": 200,
+          "bytes": 540,
+          "sha256": "3fae07c5577da5baac14b98e09eac563a256fbb419f77977ed20105a46824658"
+        },
+        {
+          "path": "preview-build.json",
+          "status": 200,
+          "bytes": 863,
+          "sha256": "bfb6adb1e3caaf3ceb6d494b0e3865a097358f69a12322683982f8c100eea085"
+        }
+      ],
+      "teamRecords": {
+        "available": true,
+        "scope": "server",
+        "persistent": true
+      },
+      "persistentOwnerUnchanged": true
+    },
+    {
+      "audience": "public",
+      "url": "http://127.0.0.1:5237/",
+      "endpoint": "http://127.0.0.1:2611",
+      "sourceCommit": "5dfc6a8722ac137219d9eca68610d022e12f27c8",
+      "startedAt": "2026-10-29T21:32:04.984Z",
+      "protocol": 42,
+      "checks": [
+        {
+          "path": "index.html",
+          "status": 200,
+          "bytes": 540,
+          "sha256": "8f5568ea6a790c96d9d92353ec2a94857565177a5d1c0e40807bc9e14ad440e5"
+        },
+        {
+          "path": "preview-build.json",
+          "status": 200,
+          "bytes": 862,
+          "sha256": "c9bc6093dcc9112a221a5a18b49d631b94cc0a0e7f5b625c1d0ecd6aece48ff8"
+        }
+      ],
+      "teamRecords": {
+        "available": true,
+        "scope": "server",
+        "persistent": true
+      },
+      "persistentOwnerUnchanged": true
+    }
+  ],
+  "limits": [
+    "Read-only index/metadata hashes and backend health/owner checks. No rooms created or stopped, no records submitted, and no new gameplay or rendered/human review."
+  ]
+}
