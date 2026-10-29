@@ -1,5 +1,6 @@
 // One reviewed history drives the local menu and both public Markdown surfaces.
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync } from 'node:fs';
+import {writeTextAtomic as writeFileSync} from './write-text-atomic.mjs';
 const h = JSON.parse(readFileSync('src/shared/update-history.json', 'utf8'));
 const repo = 'https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-';
 const body =

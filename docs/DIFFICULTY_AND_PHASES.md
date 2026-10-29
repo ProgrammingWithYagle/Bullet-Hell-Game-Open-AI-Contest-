@@ -2,7 +2,7 @@
 
 Updated October 26, 2026 for **2026.10.26-crazed-horizon**, protocol **21**. Global difficulty, intrinsic threat grade and boss form are separate. These are implemented rules; human balance/rendered/device acceptance remains open.
 
-| Global difficulty | Phase shield event | Combat revival | Interior cover | Encounter form |
+| Global difficulty | Phase shield event | Revival by other classes | Interior cover | Encounter form |
 | --- | --- | --- | --- | --- |
 | Baby | Six circles, two-second hold; Standard only | 100% maximum health | Original plus two props | Selected opening form |
 | Easy | Three circles, three-second hold; Standard only | 50% | Original | Selected opening form |
@@ -13,7 +13,7 @@ Updated October 26, 2026 for **2026.10.26-crazed-horizon**, protocol **21**. Glo
 
 The form override applies to all openings, future offers, repeats and the consented Uncounted extension. Insane/Hellish retain their existing Hard-campaign unlock. Local Practice can choose any of the three forms on lower difficulties. Individual boss weak points remain separate from the global shield-circle event.
 
-Revival fractions cover teammate channels, solo recovery, Medic resurrection and kits. Hard+ cannot buy or consume revival kits. Between-encounter recovery remains. Shield channels require one occupant solo, two through eight players, or three for larger squads; the event lasts eight seconds. Every Brutal/Crazed form disables it even on Baby/Easy. Unassisted transitions preserve existing hostile shots/fields and cancel obsolete future casts.
+The table’s revival fractions describe ordinary classes. Medic now uses the distinct current policy in [Medic recovery](MEDIC_RECOVERY.md): Baby full health plus a 20% maximum-health shield, Easy75%, Normal45%, Hard30%, Insane1HP and Hellish none. Hard/Insane revive kits are Medic-only; Hellish blocks every combat revive. Passive HP regeneration falls by25%/50%/100% on Hard/Insane/Hellish for all classes. Between-encounter recovery remains. Shield channels require one occupant solo, two through eight players, or three for larger squads; the event lasts eight seconds. Every Brutal/Crazed form disables it even on Baby/Easy. Unassisted transitions preserve existing hostile shots/fields and cancel obsolete future casts.
 
 ## Forms and phases
 

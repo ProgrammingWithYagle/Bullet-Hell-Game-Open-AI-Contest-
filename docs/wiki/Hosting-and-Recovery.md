@@ -2,7 +2,7 @@
 
 Local source runs the Vite frontend on port 5173 and the Colyseus service on loopback port 2567. Health is `/api/health`. Offline solo requires only the client and worker. Public room discovery, private six-character codes and reconnect reservations are implemented.
 
-The existing public Site remains the earlier protocol-4 frontend and gameplay. Source pushes, Wiki updates and draft PR changes do not redeploy that Site. Current development source is protocol 39 and requires a matching backend. The issued Windows development archive remains immutable protocol 13; it is a separate build. A public Site owned by a different account must not be replaced without the appropriate authorized deployment path.
+The existing public Site remains the earlier protocol-4 frontend and gameplay. Source pushes, Wiki updates and draft PR changes do not redeploy that Site. Current development source is protocol 40 and requires a matching backend. The issued Windows development archive remains immutable protocol 13; it is a separate build. A public Site owned by a different account must not be replaced without the appropriate authorized deployment path.
 
 ## Capacity and recovery status
 
@@ -36,4 +36,4 @@ Build2026.10.29-smooth-rooms adds authority-written team records, exact scores/t
 
 ## Waiting room and invites
 
-Public and private rooms both have a six-character code. The Waiting room displays the team, host and chosen rules; Prepare equipment opens the upgrade area. Only the current host starts the run. Codes remain usable for late arrivals and can be shown or copied during play. A private code is the invite secret; there is no additional host-password control. Private rooms remain absent from the public list. Protocol39 adds the map-selection contract; older online clients need their matching build. Exact issued protocol38 local Practice saves still migrate.
+Public and private rooms both have a six-character code. The Waiting room displays the team, host and chosen rules; Prepare equipment opens the upgrade area. Only the current host starts the run. Codes remain usable for late arrivals and can be shown or copied during play. A private code is the invite secret; there is no additional host-password control. Private rooms remain absent from the public list. Protocol40 adds distinct Medic revival rules and synchronized recovery charges, retaining the protocol39 map-selection contract. Older online clients need their matching build. Exact issued protocol38/39 local Practice saves still migrate, preserving their selected map and progress.

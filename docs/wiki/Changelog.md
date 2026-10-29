@@ -1,6 +1,28 @@
 # Changelog
 
-Development build **2026.10.29-room-lobby**, protocol 39. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.29-medic-recovery**, protocol 40. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-29 — Distinct Medic revivals and clear difficulty recovery rules
+
+### Medic has a recovery role in Solo and teams
+
+- Revival health depends on the rescuer. Medic returns players at full health plus a non-stacking shield worth 20% of the revived player’s maximum health on Baby, 75% health on Easy, 45% on Normal, 30% on Hard and exactly 1 HP on Insane. Other classes retain Baby 100%, Easy 50% and Normal 25%, with no revives on Hard or Insane. Hellish forbids every combat revival, including Medic abilities and injected old supplies.
+- Medic can spend a self-revival charge in a team as well as Solo. The base allowance is one per encounter; purchased extra-charge effects still apply. Self-revival needs a complete two-second channel, resets when released and consumes one charge on success. An all-downed team stays in the fight only while someone actually has an eligible recovery. Ordinary classes keep Solo-only self-revival. The next fight resets the allowance.
+
+### Difficulty reduces passive regeneration for every class
+
+- Hard reduces passive HP regeneration by 25%; Insane by 50%; Hellish disables it. Baby, Easy and Normal retain their existing rates. Deliberate healing abilities and consumables remain separate and retain their existing difficulty healing modifiers. Medic does not receive a special exemption from regeneration penalties.
+- Difficulty cards state the ordinary and Medic revival values and regeneration penalty. Downed players receive an accurate self-recovery or wait-for-a-teammate/Medic message, with remaining self-revival charges synchronized to both peers. Revive-kit availability and descriptions match the current class and difficulty, including literal 1 HP on Insane.
+
+### One personal shield limit
+
+- Personal shields now share one combined capacity across starting shields, ability shields and armor plates: Baby/Easy/Normal 100% of maximum health, Hard 75%, Insane 50%, Hellish 0, rounded down. Excess shield cannot absorb damage. Hellish cannot buy or consume shield items; deployed walls remain physical cover. The HUD shows current shield/capacity. Future Tank/Heavy cap upgrades and selective attack blocking are recorded separately and are not implemented.
+- Base starting shield is recalculated each fight from the difficulty-adjusted capacity: Heavy 50%, Tank 100%, Soldier 15%, all other classes 0. Hellish gives everyone0. Existing starting-shield mutation bonuses can fill remaining capacity, and all sources respect the same cap. This adds no new branch or maximum-shield upgrade.
+
+### Current review boundaries
+
+- Protocol40 requires a matching backend. Exact known protocol39 local Practice saves keep their map choice and progress; trusted online checkpoints remain strict. The preceding 0feaf34 map/lobby checkpoint passed 795 software checks. Its map artwork, stable map choice, five-second defeat moment and waiting-room changes are included in this build.
+- These are starting balance values under the player’s requested policy. Automated rule/network checks do not establish final class balance, human combat readability, native-language quality, sound or physical-device acceptance. Earlier previews, original art and failed evidence are preserved.
 
 ## 2026-10-29 — Clear waiting rooms, stable map choices and painted arenas
 

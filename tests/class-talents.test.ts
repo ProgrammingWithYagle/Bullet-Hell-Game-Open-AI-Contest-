@@ -60,6 +60,8 @@ function fixture(
   purchase(g, p, lane, depth);
   for (let i = 1; i < party; i++) g.addPlayer('a' + i, 'Ally ' + i, 'soldier');
   g.start();
+  // Isolate attack/ability effects; class starting shields have their own full matrix test.
+  for(const member of g.players.values())member.shield=0;
   g.boss.staggerUntil = g.boss.deadline = 1e9;
   g.boss.maxHealth = g.boss.health = 1e6;
   g.boss.x = 800;
@@ -378,7 +380,7 @@ test('Serum Relay heals and cleanses three unique targets through a chain beyond
     3,
   );
 });
-test('Second Breath spreads healing into three pulses and still gives Normal 25% revival with none on Hard', () => {
+test('Second Breath retains its three later pulses after the distinct Normal and Hard Medic revivals', () => {
   for (const difficulty of ['normal', 'hard']) {
     const { g, p } = fixture('medic', 1, 3, difficulty),
       alive = g.players.get('a1')!,
@@ -392,11 +394,11 @@ test('Second Breath spreads healing into three pulses and still gives Normal 25%
     const potency = 1 + (g.stats(p).effects.ultimatePotency ?? 0),
       heal = g.difficulty.healing;
     close(alive.health, 10 + 24 * potency * heal);
-    assert.equal(down.status, difficulty === 'normal' ? 'active' : 'downed');
-    if (difficulty === 'normal') close(down.health, down.maxHealth * 0.25);
+    assert.equal(down.status,'active');
+    close(down.health,down.maxHealth*(difficulty==='normal'?.45:.3));
     steps(g, 3 * HZ);
     close(alive.health, 10 + 42 * potency * heal);
-    if (difficulty === 'hard') assert.equal(down.status, 'downed');
+    close(down.health,down.maxHealth*(difficulty==='normal'?.45:.3)+18*potency*heal);
   }
 });
 test('Ward Echo delivers 40 then 25 at a locked point while keeping the finite allied shield', () => {
@@ -611,7 +613,7 @@ test('issued protocol-17 local saves retain skill node ownership and progression
     'd4419d906f67286576ca3f6795e03a921269aff861b36e2e82ce68aa2e501775';
   const restored = Game.restoreOffline(save),
     after = [...restored.players.values()][0];
-  assert.equal(PROTOCOL, 39);
+  assert.equal(PROTOCOL, 40);
   assert.equal(after.coins, 901);
   assert.deepEqual(after.skills, p.skills);
   assert(hasTalent(after, 'breach-cadence'));

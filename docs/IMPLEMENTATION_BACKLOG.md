@@ -1,5 +1,7 @@
 # Implementation backlog and contest acceptance map
 
+Player ideas for later class shield-cap progression and selective attack blocking are recorded separately in [Future design ideas](FUTURE_DESIGN_IDEAS.md). They are deferred and do not authorize new feature work now.
+
 Latest implemented response: [Crazed forms, compact arenas and phase clarity](CRAZED_HORIZON.md), build **2026.10.26-crazed-horizon / protocol 21**. [Current checkpoint](CHECKPOINT_2026_10_25.md), [single ledger](development-work-ledger.json) and [derived progress](DEVELOPMENT_PROGRESS.md) are authoritative. The game remains unfinished.
 
 Current source has **66 playable identities: 65 ordinary plus one secret**, with **85 additional ordinary identities** remaining toward at least 150 ordinary plus secrets. Two original-roster quality passes are implemented (Constable/Warden); 58 individual assessments/redesigns remain. The common Crazed form layer adds no new identity or individual quality credit. Seven class implementation passes/21 ability transformations and the optional all 54 skill map are implemented; human/rendered/native-language/device acceptance remains open.

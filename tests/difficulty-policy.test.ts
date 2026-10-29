@@ -11,7 +11,7 @@ import {Game,data,type Player} from '../src/shared/game.ts';
 import {combatReviveFraction,phaseShieldBreak,encounterPhases,bossPatternPhase,phaseMarkers} from '../src/shared/encounter-policy.ts';
 import {bossThreat,classifiedContract} from '../src/shared/boss-threat.ts';
 import {createPracticeGame} from '../src/shared/practice-start.ts';
-import {idleInput,HZ,PROTOCOL} from '../src/shared/protocol.ts';
+import {idleInput,HZ,PROTOCOL,type ClassId} from '../src/shared/protocol.ts';
 import {runtimeArena,runtimeArenas} from '../src/shared/arena-layouts.ts';
 import {viewOf} from '../src/shared/view.ts';
 import {Prediction} from '../src/client/prediction.ts';
@@ -21,9 +21,9 @@ import {arenaCoverPlan} from '../src/client/arena-covers.ts';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 
-function quiet(difficulty='normal',count=2){
+function quiet(difficulty='normal',count=2,classId:ClassId='medic'){
   const g=new Game({difficulty,maxPlayers:Math.max(count,2),mode:'endless'});
-  for(let n=0;n<count;n++)g.addPlayer('p'+n,'Survivor '+n,n===0?'medic':'soldier');
+  for(let n=0;n<count;n++)g.addPlayer('p'+n,'Survivor '+n,n===0?classId:'soldier');
   assert(g.start());g.boss.staggerUntil=g.boss.deadline=1e9;
   for(const p of g.players.values()){p.invulnerableUntil=1e9;p.x=800;p.y=730;}
   return g;
@@ -43,42 +43,44 @@ test('difficulty assist matrix separates phase shields, revival health and Bruta
   assert.equal(combatReviveFraction('forged'),0);
   assert.equal(phaseShieldBreak('forged','normal'),false);
 });
-test('actual teammate channels restore full Baby, half Easy or quarter Normal health and cannot revive at Hard+',()=>{
-  for(const d of data.difficulties){
-    const g=quiet(d.id),caster=g.players.get('p0')!,target=g.players.get('p1')!;
+test('actual teammate channels distinguish all seven rescuers, Medic health and the Baby shield across six difficulties',()=>{
+  for(const cl of data.classes)for(const [i,d] of data.difficulties.entries()){
+    const g=quiet(d.id,2,cl.id as ClassId),caster=g.players.get('p0')!,target=g.players.get('p1')!;
     down(g,target);
     for(let n=0;n<62;n++)input(g,caster,{interact:true});
-    const fraction=combatReviveFraction(d.id);
-    assert.equal(target.status,fraction?'active':'downed',d.id);
-    assert.equal(target.health,target.maxHealth*fraction,d.id);
-    assert.equal(caster.progress.rescues,fraction?1:0);
-    if(!fraction){assert.equal(caster.reviveProgress,0);assert.equal(caster.reviveTarget,'');}
+    const health=cl.id==='medic'?[target.maxHealth,target.maxHealth*.75,target.maxHealth*.45,target.maxHealth*.3,1,0][i]:target.maxHealth*[1,.5,.25,0,0,0][i];
+    assert.equal(target.status,health?'active':'downed',d.id+cl.id);
+    assert.equal(target.health,health,d.id+cl.id);
+    assert.equal(target.shield,cl.id==='medic'&&d.id==='baby'?target.maxHealth*.2:0);
+    assert.equal(caster.progress.rescues,health?1:0);
+    if(!health){assert.equal(caster.reviveProgress,0);assert.equal(caster.reviveTarget,'');}
   }
 });
-test('solo recovery obeys the same health rule and Hard+ has no hidden recovery grace',()=>{
-  for(const d of data.difficulties){
-    const g=quiet(d.id,1),p=g.players.get('p0')!;down(g,p);
+test('solo recovery gives Medic its explicit health values while other classes retain the ordinary restrictions',()=>{
+  for(const cl of data.classes)for(const [i,d] of data.difficulties.entries()){
+    const g=quiet(d.id,1,cl.id as ClassId),p=g.players.get('p0')!;down(g,p);
     for(let n=0;n<60&&g.phase==='combat';n++)input(g,p,{interact:true});
-    const fraction=combatReviveFraction(d.id);
-    assert.equal(g.phase,fraction?'combat':'defeat');
-    assert.equal(p.health,p.maxHealth*fraction);
+    const health=cl.id==='medic'?[p.maxHealth,p.maxHealth*.75,p.maxHealth*.45,p.maxHealth*.3,1,0][i]:p.maxHealth*[1,.5,.25,0,0,0][i];
+    assert.equal(g.phase,health?'combat':'defeat');
+    assert.equal(p.health,health);
+    assert.equal(p.shield,cl.id==='medic'&&d.id==='baby'?p.maxHealth*.2:0);
     assert.equal(p.selfRevives,0);
   }
 });
-test('Medic resurrection and injected legacy revive supplies cannot bypass the difficulty rule',()=>{
-  for(const d of data.difficulties){
+test('Medic resurrection and revive kits use the same exact health and remain entirely blocked on Hellish',()=>{
+  for(const [i,d] of data.difficulties.entries()){
     const g=quiet(d.id),caster=g.players.get('p0')!,target=g.players.get('p1')!;
     target.status='eliminated';target.health=0;
     input(g,caster,{ultimate:true});for(let n=0;n<31;n++)g.step();
-    const fraction=combatReviveFraction(d.id);
-    assert.equal(target.status,fraction?'active':'eliminated');
-    assert.equal(target.health,target.maxHealth*fraction);
+    const health=[target.maxHealth,target.maxHealth*.75,target.maxHealth*.45,target.maxHealth*.3,1,0][i];
+    assert.equal(target.status,health?'active':'eliminated');
+    assert.equal(target.health,health);
     target.health=0;target.status='downed';target.downUntil=1e9;
     caster.supplies[0]={id:'revive-kit',count:1};caster.supplyAt=0;
     input(g,caster,{supply:0});
-    assert.equal(target.status,fraction?'active':'downed');
-    assert.equal(target.health,target.maxHealth*fraction);
-    assert.equal(caster.supplies[0].count,fraction?0:1);
+    assert.equal(target.status,health?'active':'downed');
+    assert.equal(target.health,health);
+    assert.equal(caster.supplies[0].count,health?0:1);
   }
 });
 test('Hard+ rejects revive kit purchases atomically while other supplies remain available',()=>{
@@ -226,7 +228,10 @@ test('actual difficulty-card markup presents shield, revive, cover and forced-Br
   for(const d of data.difficulties){
     const markup=ui.difficultyRulesMarkup(d.id),revive=combatReviveFraction(d.id);
     assert(markup.includes('ui.'+(phaseShieldBreak(d.id,'normal')?'phaseShieldOn':'phaseShieldOff')));
-    assert(markup.includes('ui.'+(revive===1?'reviveFull':revive===.25?'reviveQuarter':revive?'reviveHalf':'reviveOff')));
+    assert(markup.includes('ui.'+(d.id==='hellish'?'reviveNobody':revive?'ordinaryReviveHealth':'reviveMedicOnly')));
+    if(d.id!=='hellish')assert(markup.includes('ui.'+(d.id==='baby'?'medicReviveBaby':d.id==='insane'?'medicReviveOne':'medicReviveHealth')));
+    assert(markup.includes('ui.'+(d.id==='hellish'?'regenOff':['hard','insane'].includes(d.id)?'regenReduced':'regenUnchanged')));
+    assert(markup.includes('ui.'+(d.id==='hellish'?'shieldsDisabled':'shieldLimit')));
     assert.equal(markup.includes('ui.allBrutal'),d.id==='insane');
     assert.equal(markup.includes('ui.allCrazed'),d.id==='hellish');
     assert(markup.includes('ui.'+(d.id==='hellish'?'coverLava':d.id==='insane'?'coverNone':d.id==='hard'?'coverHalf':d.id==='baby'?'coverExtra':'coverFull')));

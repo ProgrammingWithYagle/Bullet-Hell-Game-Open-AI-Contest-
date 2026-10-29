@@ -15,6 +15,7 @@ import { WorldState, PlayerState, ActorState } from '../shared/network-state.ts'
 import { capacity } from './capacity.ts';
 import {RoomChat} from '../shared/room-chat.ts';
 import { arenaSelections } from '../shared/arena-selection.ts';
+import {maximumPersonalShield} from '../shared/recovery-policy.ts';
 import {publicRunSettings} from '../shared/public-run.ts';
 import { RoomJournal } from './room-journal.ts';
 import type { RunJournal } from './run-journal.ts';
@@ -372,6 +373,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       view.aim = Math.round(p.aim * 1000);
       view.health = Math.round(p.health * 10) / 10;
       view.maxHealth = Math.ceil(p.maxHealth);
+      view.maxShield = maximumPersonalShield(g.settings.difficulty,p.maxHealth);
       view.shield = Math.ceil(
         p.shield +
           (g.combatTick < p.supplyShieldUntil ? p.supplyShield : 0) +
@@ -394,6 +396,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       view.downUntil = p.downUntil;
       view.reviveProgress = Math.floor(p.reviveProgress);
       view.reviveTarget = p.reviveTarget;
+      view.selfRevives = p.selfRevives;
       view.build = JSON.stringify({
         progress: p.progress,
         eligible: p.eligible,

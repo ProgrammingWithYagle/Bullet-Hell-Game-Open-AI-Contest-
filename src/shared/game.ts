@@ -7,7 +7,8 @@ import {hasTalent} from './class-talents.ts';
 import {fieldPosition} from './field-follow.ts';
 import {phaseBreakPoints} from './phase-break-layout.ts';
 import { BrutalVolley } from './brutal-volley.ts';
-import { encounterAssists, combatReviveFraction, phaseShieldBreak, encounterPhases, bossPatternPhase, encounterVariant, variantRules } from './encounter-policy.ts';
+import { encounterAssists, phaseShieldBreak, encounterPhases, bossPatternPhase, encounterVariant, variantRules } from './encounter-policy.ts';
+import {combatReviveAllowed,revivedHealth,revivalShield,passiveRegenerationMultiplier,selfReviveAllowed,selfReviveCharges,maximumPersonalShield,startingShieldFraction} from './recovery-policy.ts';
 import {smallWakesIds} from './small-wakes-director.ts';
 import { earlyWatchBossIds, earlyWatchMovement } from './early-watch-director.ts';
 import { constablePattern, moveConstable } from './constable-signature.ts';
@@ -447,7 +448,7 @@ export class Game {
       downUntil: 0,
       reviveTarget: '',
       reviveProgress: 0,
-      selfRevives: combatReviveFraction(this.settings.difficulty) ? 1 : 0,
+      selfRevives: selfReviveCharges(this.settings.difficulty,classId),
       coins: this.incomeBudget(this.encounter),
       incomeGranted: this.incomeBudget(this.encounter),
       totalSp: this.skillBudget(this.encounter),
@@ -549,7 +550,7 @@ export class Game {
       crit: clamp(0.05 + (effects.criticalChance ?? 0), 0, 1),
       critMultiplier: 1.5 + (effects.criticalMultiplier ?? 0),
       pierce: w.pierce + Math.floor(effects.pierce ?? 0),
-      regen: effects.regeneration ?? 0,
+      regen: (effects.regeneration ?? 0)*passiveRegenerationMultiplier(this.settings.difficulty),
       reviveRate: 1 + (effects.reviveRate ?? 0),
       dodgeCooldown: 1 + (effects.dodgeCooldown ?? 0),
       extraShots: Math.floor(effects.extraShots ?? 0),
@@ -638,7 +639,8 @@ export class Game {
     } else if (r.kind === 'supply') {
       const supply = data.supplies.find((s) => s.id === r.item);
       if (!supply) return { ok: false, reason: 'incompatibleItem' };
-      if (supply.effect==='revive' && !combatReviveFraction(this.settings.difficulty)) return {ok:false,reason:'revivesDisabled'};
+      if (supply.effect==='revive' && !combatReviveAllowed(this.settings.difficulty,p.classId)) return {ok:false,reason:'revivesDisabled'};
+      if (supply.effect==='shield' && !maximumPersonalShield(this.settings.difficulty,p.maxHealth)) return {ok:false,reason:'shieldsDisabled'};
       const slot = p.supplies.find((s) => s.id === supply.id) ?? p.supplies.find((s) => !s.count);
       if (!slot || slot.count >= supply.maximumStack) return { ok: false, reason: 'inventoryFull' };
       price = supply.price;
@@ -801,7 +803,7 @@ export class Game {
       p.maxHealth = this.stats(p).health;
       p.health = p.maxHealth;
       p.shield = clamp(
-        this.mutations.reduce(
+        Math.floor(maximumPersonalShield(this.settings.difficulty,p.maxHealth)*startingShieldFraction(p.classId))+this.mutations.reduce(
           (n, m) =>
             n +
             Number(
@@ -815,11 +817,11 @@ export class Game {
           0,
         ),
         0,
-        100,
+        maximumPersonalShield(this.settings.difficulty,p.maxHealth),
       );
       p.ammo = this.stats(p).magazine;
       p.reloadAt = 0;
-      p.selfRevives = combatReviveFraction(this.settings.difficulty) ? 1 + (this.stats(p).effects.selfRevives ?? 0) : 0;
+      p.selfRevives = selfReviveCharges(this.settings.difficulty,p.classId,this.stats(p).effects.selfRevives);
       p.reviveProgress = 0;
       p.downUntil = 0;
       p.channelUntil = 0;
@@ -829,6 +831,7 @@ export class Game {
       p.overdriveUntil = 0;
       p.supplyShield = 0;
       p.supplyShieldUntil = 0;
+      this.limitPersonalShield(p);
       p.x = this.arena.playerSpawn.x + ((i % 8) - 3.5) * 30;
       p.y = this.arena.playerSpawn.y + Math.floor(i / 8) * 15;
       p.oldX = p.x;
@@ -987,6 +990,7 @@ export class Game {
       for (const player of this.roster()) {
         player.maxHealth = this.stats(player).health;
         player.health = Math.min(player.health, player.maxHealth);
+        this.limitPersonalShield(player);
       }
       const threat =
         this.settings.mode === 'endless'
@@ -1085,8 +1089,10 @@ export class Game {
       p.input.supply = -1;
     }
     this.grid.clear();
-    for (const p of this.players.values())
+    for (const p of this.players.values()){
+      this.limitPersonalShield(p);
       if (p.status === 'active') this.grid.insert(p, 9 + Math.hypot(p.x - p.oldX, p.y - p.oldY));
+    }
     if (this.boss.health <= 0) {
       this.victory();
       return;
@@ -1110,16 +1116,16 @@ export class Game {
     this.stepLava();
     this.stepShots();
     this.stepRevives();
+    for(const p of this.players.values())this.limitPersonalShield(p);
     if (this.boss.health <= 0) {
       this.victory();
       return;
     }
     const roster = this.roster(),
-      soloCanRecover =
-        combatReviveFraction(this.settings.difficulty)>0 && roster.length === 1 && roster[0].status === 'downed' && roster[0].selfRevives > 0;
+      canRecover = roster.some(p=>p.connected&&p.status==='downed'&&p.selfRevives>0&&selfReviveAllowed(this.settings.difficulty,p.classId,roster.length));
     if (
       this.combatTick >= this.boss.deadline ||
-      (!roster.some((p) => p.status === 'active') && !soloCanRecover)
+      (!roster.some((p) => p.status === 'active') && !canRecover)
     ) {
       if (this.combatTick >= this.boss.deadline) this.timeouts++;
       if (this.secretStatus === 'active') {
@@ -1260,7 +1266,9 @@ export class Game {
         p.adrenalineUntil = now + ticks(item.duration);
         break;
       case 'shield':
-        p.supplyShield = item.amount;
+        this.limitPersonalShield(p);
+        p.supplyShield = Math.min(item.amount,Math.max(0,maximumPersonalShield(this.settings.difficulty,p.maxHealth)-p.shield-this.classKits.status(p.id,now).shield));
+        if(!p.supplyShield)return;
         p.supplyShieldUntil = now + ticks(item.duration);
         break;
       case 'cleanse':
@@ -1270,7 +1278,7 @@ export class Game {
         this.heal(p, p, item.amount);
         break;
       case 'revive': {
-        if (!combatReviveFraction(this.settings.difficulty)) return;
+        if (!combatReviveAllowed(this.settings.difficulty,p.classId)) return;
         const ally = this.roster()
           .filter((a) => a.status === 'downed' && distance(p, a) <= 100)
           .sort((a, b) => distance(p, a) - distance(p, b) || a.id.localeCompare(b.id))[0];
@@ -1567,6 +1575,7 @@ export class Game {
     source.healing += Math.max(0, healed);
   }
   damage(p: Player, amount: number, grantInvulnerability = true, healthLossOnly = false) {
+    this.limitPersonalShield(p);
     if (
       p.status !== 'active' ||
       this.combatTick < p.invulnerableUntil ||
@@ -2486,33 +2495,36 @@ export class Game {
     }
   }
   private revive(p: Player, source?: Player) {
-    const fraction=combatReviveFraction(this.settings.difficulty);
-    if(!fraction || !['downed','eliminated'].includes(p.status))return;
+    const reviver=source??p,health=revivedHealth(this.settings.difficulty,p.maxHealth,reviver.classId);
+    if(!health || !['downed','eliminated'].includes(p.status))return;
     if (source && source.id !== p.id && ['downed', 'eliminated'].includes(p.status))
       source.progress.rescues = Math.min(1000000, source.progress.rescues + 1);
     p.status = 'active';
     this.clearPoison(p);
-    p.health = p.maxHealth * fraction;
+    p.health = health;
+    p.shield = Math.max(p.shield,revivalShield(this.settings.difficulty,p.maxHealth,reviver.classId));
+    this.limitPersonalShield(p);
     p.reviveProgress = 0;
     p.downUntil = 0;
     p.invulnerableUntil = this.combatTick + ticks(1);
     this.events.push({ type: 'sound', id: 'revive', x: p.x, y: p.y });
   }
   private stepRevives() {
-    if(!combatReviveFraction(this.settings.difficulty)) {
+    if(this.settings.difficulty==='hellish') {
       for(const p of this.roster()){p.reviveTarget='';p.reviveProgress=0;}
       return;
     }
     for (const p of this.roster()) {
-      if (p.status === 'downed' && this.roster().length === 1 && p.selfRevives > 0) {
+      if (p.status === 'downed' && selfReviveAllowed(this.settings.difficulty,p.classId,this.roster().length) && p.selfRevives > 0) {
         p.reviveProgress = p.input.interact ? p.reviveProgress + 1 : 0;
         if (p.reviveProgress >= ticks(2)) {
           p.selfRevives--;
-          this.revive(p);
+          this.revive(p,p);
         }
         continue;
       }
       if (p.status !== 'active') continue;
+      if(!combatReviveAllowed(this.settings.difficulty,p.classId)){p.reviveTarget='';p.reviveProgress=0;continue;}
       const target = p.input.interact
         ? this.roster().find((t) => t.status === 'downed' && distance(p, t) <= 55)
         : undefined;
@@ -2530,6 +2542,14 @@ export class Game {
         p.reviveProgress = 0;
       }
     }
+  }
+  /** One budget covers permanent, ability and temporary personal shield pools. */
+  private limitPersonalShield(p:Player){
+    const maximum=maximumPersonalShield(this.settings.difficulty,p.maxHealth);
+    p.shield=clamp(p.shield,0,maximum);
+    this.classKits.limitShield(p.id,maximum-p.shield,this.combatTick);
+    p.supplyShield=this.combatTick<p.supplyShieldUntil
+      ?clamp(p.supplyShield,0,maximum-p.shield-this.classKits.status(p.id,this.combatTick).shield):0;
   }
   drainEvents(): Event[] {
     const out = this.events;
@@ -2883,6 +2903,7 @@ export class Game {
     player.maxHealth = g.stats(player).health;
     player.health = player.maxHealth;
     player.ammo = g.stats(player).magazine;
+    g.limitPersonalShield(player);
     return g;
   }
   // Snapshot is for first-playable rendering and boundary saves, never a trusted online combat result.
@@ -3083,6 +3104,7 @@ export class Game {
       }
       g.transactions.set(item.id, history);
     }
+    for(const player of g.players.values())g.limitPersonalShield(player);
     return g;
   }
   snapshot() {

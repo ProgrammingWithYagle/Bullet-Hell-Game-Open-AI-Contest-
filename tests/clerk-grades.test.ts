@@ -164,15 +164,16 @@ test("actual black seal removes75percent of current health once per activation w
   p.x = p.oldX = s.x;
   p.y = p.oldY = s.y;
   p.health = 40;
-  p.shield = 200;
-  p.supplyShield = 200;
+  const legalShield=p.maxHealth/2;
+  p.shield = legalShield;
+  p.supplyShield = legalShield;
   p.supplyShieldUntil = 1e9;
   p.braceUntil = 1e9;
   p.invulnerableUntil = 0;
   for (let n = 0; n < 20 && p.health === 40; n++) g.step();
   assert.equal(p.health, 10);
-  assert.equal(p.shield, 200);
-  assert.equal(p.supplyShield, 200);
+  assert.equal(p.shield, legalShield);
+  assert.equal(p.supplyShield, legalShield);
   const taken = p.damageTaken;
   for (let n = 0; n < 35; n++) {
     p.invulnerableUntil = 0;

@@ -49,6 +49,7 @@ test(
         p.oldX = p.x;
         p.oldY = p.y;
         p.invulnerableUntil = 1e9;
+        p.shield=0; // The seven-class ability fixture isolates temporary protection from base starting shields.
       }
       for (const client of clients)
         client.input({ ...idleInput(), sequence: 1, aim: -Math.PI / 2, q: true, ultimate: true });
@@ -71,11 +72,12 @@ test(
       assert(room.game.classKits.untargetable(assassin.id, room.game.combatTick));
       assassin.invulnerableUntil = 0;
       room.game.damage(assassin, 100);
+      const remainingShield=Math.min(120,assassin.maxHealth)-65;
       await until(
         () =>
-          observer.view?.players.some((p) => p.id === assassin.id && p.kit.shield === 55) === true,
+          observer.view?.players.some((p) => p.id === assassin.id && p.kit.shield === remainingShield) === true,
       );
-      assert.equal(observer.view!.players.find((p) => p.id === assassin.id)!.shield, 55);
+      assert.equal(observer.view!.players.find((p) => p.id === assassin.id)!.shield, remainingShield);
       room.game.boss.health = 0;
       await until(() => observer.view?.phase === 'mutationVote');
       assert.equal(observer.view!.classCues.length, 0);

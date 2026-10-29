@@ -17,6 +17,8 @@ function encounter(id: BossId, brutal = false,difficulty='normal') {
   save.selectedContract.variant = brutal ? 'brutal' : 'normal';
   const game = Game.restoreOffline(save);
   game.start();
+  // Isolate attack/ability effects; class starting shields have their own full matrix test.
+  for(const member of game.players.values())member.shield=0;
   game.players.get('solo')!.invulnerableUntil = 1e9;
   game.boss.deadline = 1e9;
   return game;

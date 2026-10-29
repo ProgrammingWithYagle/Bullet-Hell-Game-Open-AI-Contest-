@@ -18,7 +18,7 @@ Under **New here?**, **Start gently** prepares Soldier, Quarantine Run, Gatehous
 
 Private rooms use a six-character code; Enter submits the code. All seven classes, Quarantine Run, Midnight Circuit, Black Bell Pilgrimage, Grand Raid and Endless Vigil are available. Public builds choose bosses from their authored random opening pools and ordinary route progression reserves finales for the final encounter. The testing build has a separate rehearsal opener/form selector. Public Baby has an optional, closed-by-default boss guide; opening it pauses Solo. Artwork loading shows progress before the lobby appears.
 
-Home's **Local Practice records** entry shows validated runs saved on this device, filtered by mode and difficulty. The Online boards tab reports the unavailable verified-ranking service. Names entered during setup survive returning to an earlier step, and selection keeps keyboard focus.
+Home’s **Leaderboards** entry shows this device’s Practice records and **Team records** from the selected server. Server boards use actual public-authority results, filtered by mode, difficulty, team size and week. Names entered during setup survive returning to an earlier step, and selection keeps keyboard focus.
 
 The same presentation improvements apply to public and testing builds. Development-build details and rehearsal tools remain visible only in testing builds; public menus keep the ordinary play options.
 
@@ -55,7 +55,7 @@ The result screen shows bosses defeated, your credited boss clears when differen
 
 [Download the portable Windows development playtest](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/releases/tag/dev-windows-20261024-1) (706.8 MiB, unsigned). The release includes its per-file manifest, SHA-256 checksums and verification report. The original folder, a fresh ZIP extraction and an ordinary Windows copy all match and pass their separate offline/LAN software fixtures.
 
-Current packaging supports explicit public/testing audiences and validates the source report before compiling a fresh client; the bundled LAN authority has the same audience. This does not replace the older download linked above. The first new review archive passed file matching but failed its native font check in deeper copied folders; it is unaccepted while the file-loading fix is verified.
+Current packaging supports explicit public/testing audiences and validates the source report before compiling a fresh client; the bundled LAN authority has the same audience. This does not replace the older download linked above. The separately verified a0c8c56 local Windows review passes all three package copies and native offline/LAN/storage fixtures, including deeper copied paths. It predates the newer chat, map, waiting-room and Medic changes; the old failed font-check evidence is preserved.
 
 A portable Windows development app bundles Electron and the same offline worker, art, music and fonts. Extract the entire issued folder and run `Grave Accord.exe`; no separate Node or internet connection is needed for solo. Profiles use `GraveAccordData` beside the app when writable and can always be exported from Profile.
 
@@ -69,7 +69,7 @@ Local testing builds include a boss selector for encounter review. Public builds
 
 ## Difficulty, revival and cover
 
-| Difficulty | Phase shield-break event | Combat revival | Interior cover | Extra arena / form rule |
+| Difficulty | Phase shield-break event | Revival by other classes | Interior cover | Extra arena / form rule |
 | --- | --- | --- | --- | --- |
 | Baby | Six circles, 2 s; Standard only | 100% health | Original plus two props | Selected boss form |
 | Easy | Three circles, 3 s; Standard only | 50% health | Full | Selected boss form |
@@ -78,23 +78,27 @@ Local testing builds include a boss selector for encounter review. Public builds
 | Insane | Off | Disabled | None | Every boss Brutal |
 | Hellish | Off | Disabled | None | Marked lava; every boss Crazed |
 
-Both Brutal and Crazed disable the phase shield event at every difficulty. Revival includes solo, teammates, Medic and supplies; full recovery between encounters remains. Boundary walls and temporary boss mechanics remain. Difficulty cards and final review display these rules in all fifteen locales. Hellish pits have a three-second opening tell and deal 24 contact damage per second in half-second intervals. Hellish effective boss health is 2.4× Normal after its forced Crazed multiplier. [Exact rules and verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/DIFFICULTY_AND_PHASES.md).
+Medic revivals restore **full health + a non-stacking 20% maximum-health shield on Baby, 75% on Easy, 45% on Normal, 30% on Hard and exactly 1 HP on Insane**. Hellish forbids every revival, including Medic abilities and items. Other classes use the health values in the table. Medic can spend a self-revival charge in a team as well as Solo; other classes can self-revive only in Solo. The base allowance is one per fight plus purchased extra-charge effects, with a full two-second channel.
+
+Passive health regeneration is reduced for every class: **25% less on Hard, 50% less on Insane, disabled on Hellish**. Deliberate healing abilities/items remain separate. [Complete current revival rules and balance limits](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/MEDIC_RECOVERY.md).
+
+Both Brutal and Crazed disable the phase shield event at every difficulty. Revival uses the rescuer’s class as described above; full recovery between encounters remains. Boundary walls and temporary boss mechanics remain. Difficulty cards and final review display these rules in all fifteen locales. Hellish pits have a three-second opening tell and deal 24 contact damage per second in half-second intervals. Hellish effective boss health is 2.4× Normal after its forced Crazed multiplier. [Exact rules and verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/DIFFICULTY_AND_PHASES.md).
 
 Insane fixes the form selector to Brutal; Hellish fixes Crazed. Lower global difficulties retain the selected opener form for rehearsal.
 
-[Latest Baby/Easy assistance follow-up](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/ASSIST_LIMITS.md): Normal revival is 25%; Baby/Easy circles are six/three, channels two/three seconds, and Baby has two extra actual cover props on every map. Source/prediction/prop geometry agree; human/rendered balance review remains open.
+[Earlier Baby/Easy assistance work](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/ASSIST_LIMITS.md): ordinary Normal revival is 25%; Baby/Easy circles are six/three, channels two/three seconds, and Baby has two extra actual cover props on every map. Source/prediction/prop geometry agree; human/rendered balance review remains open.
 
 ## Class ability transformations
 
-The seven requested class-upgrade implementation passes now add 21 behavior changes at existing utility-path depth-three nodes (six cumulative SP each). Costs, prerequisites, node IDs and the single-capstone rule remain. Both skill views show fifteen-locale help. Shared authority, finite constructs, delayed attacks and moving fields replicate to offline/online clients. [Class behavior and tradeoffs](Classes-and-Skills#purchased-ability-transformations). Protocol 18 migrates known issued protocol-17 local saves/profiles; online remains strict. Latest Baby/Easy/Normal assistance and Hellish rules remain intact. Human/rendered/device/native-language acceptance remains open.
+The seven requested class-upgrade implementation passes now add 21 behavior changes at existing utility-path depth-three nodes (six cumulative SP each). Costs, prerequisites, node IDs and the single-capstone rule remain. Both skill views show fifteen-locale help. Shared authority, finite constructs, delayed attacks and moving fields replicate to offline/online clients. [Class behavior and tradeoffs](Classes-and-Skills#purchased-ability-transformations). Current protocol40 retains bounded older local Practice/profile migrations, including protocol39 map choices; online checkpoints remain strict. Latest Baby/Easy/Normal assistance and Hellish rules remain intact. Human/rendered/device/native-language acceptance remains open.
 
 ## Three encounter forms
 
-Local setup offers Standard, Brutal and Crazed on lower difficulties. Insane fixes Brutal; Hellish fixes Crazed. Purple/C identifies Crazed, red/B Brutal. Difficulty cards state revival, shield, cover and forced-form rules. Normal revival remains 25%, Easy 50%, Baby 100%, Hard+ disabled. [Current rules](Modes#crazed-horizon-follow-up).
+Local setup offers Standard, Brutal and Crazed on lower difficulties. Insane fixes Brutal; Hellish fixes Crazed. Purple/C identifies Crazed, red/B Brutal. Difficulty cards state revival, shield, cover and forced-form rules. Ordinary revivals restore Normal 25%, Easy 50% and Baby 100%; only Medic can revive on Hard and Insane. Hellish blocks everyone. [Current rules](Modes#crazed-horizon-follow-up).
 
 ## Testing and public editions
 
-The testing target offers opening-boss/form selection, all-difficulty manual guides, a Solo paused coin/SP panel and tab-only difficulty unlock. The public target randomizes new openings, omits tools and offers optional guides only on Baby. Modified runs disable boundary saving and local records. These local build targets do not replace the old public Site. Settings toggle overhead names and room chat. Home Leaderboards shows actual local Practice records and an explicit unconnected Online boards status. [Build policy](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/TESTING_AND_PUBLIC_BUILDS.md).
+The testing target offers opening-boss/form selection, all-difficulty manual guides, a Solo paused coin/SP panel and tab-only difficulty unlock. The public target randomizes new openings, omits tools and offers optional guides only on Baby. Modified runs disable boundary saving and local records. These local build targets do not replace the old public Site. Settings toggle overhead names and room chat. Home Leaderboards shows actual local Practice records and Team records from the selected server. [Build policy](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/TESTING_AND_PUBLIC_BUILDS.md).
 
 Reading the Tutorial keeps the gentle first-run preset available until the profile has a local run record.
 
@@ -117,3 +121,9 @@ Choose Public or Private and press **Create room**. The waiting room shows the c
 ## Map choices
 
 Choose one of the six named maps to keep it for the whole run. **Random map for this run** chooses once; **Random map each fight** chooses before each deployment and may repeat. Maps stay still while a boss falls and through the between-fight choices. The selected rule survives a boundary save.
+
+
+Personal shields now share one combined capacity across starting shields, ability shields and armor plates: Baby/Easy/Normal 100% of maximum health, Hard 75%, Insane 50%, Hellish 0, rounded down. Excess shield cannot absorb damage. Hellish cannot buy or consume shield items; deployed walls remain physical cover. The HUD shows current shield/capacity. Future Tank/Heavy cap upgrades and selective attack blocking are recorded separately and are not implemented.
+
+
+Base starting shield is recalculated each fight from the difficulty-adjusted capacity: Heavy 50%, Tank 100%, Soldier 15%, all other classes 0. Hellish gives everyone0. Existing starting-shield mutation bonuses can fill remaining capacity, and all sources respect the same cap. This adds no new branch or maximum-shield upgrade.

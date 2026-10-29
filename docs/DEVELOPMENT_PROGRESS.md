@@ -1,6 +1,6 @@
 # Development progress
 
-Updated 2026-10-29 for **2026.10.29-room-lobby**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
+Updated 2026-10-29 for **2026.10.29-medic-recovery**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
 
 66 playable identities: 65 ordinary and 1 secret. Three ordinary bosses in every one of fifty subtiers requires 150 ordinary identities, plus secrets; 85 additional ordinary bosses remain.
 
@@ -54,6 +54,9 @@ Updated 2026-10-29 for **2026.10.29-room-lobby**. These counts track specific re
 - Phase transitions still felt subtle, and Brutal looked and played too similarly. The latest phase-cue, red treatment and extra-sequence implementation awaits another human check.
 - Music was acceptable but could be a little more intense. A quiet tempo-aligned percussion layer now responds to phase and Brutal; human listening review remains open.
 - Earlier map bullets and warnings were readable on Normal with Hollow Constable. This is limited evidence, not full map/device acceptance.
+- Personal shields now share one combined capacity across starting shields, ability shields and armor plates: Baby/Easy/Normal 100% of maximum health, Hard 75%, Insane 50%, Hellish 0, rounded down. Excess shield cannot absorb damage. Hellish cannot buy or consume shield items; deployed walls remain physical cover. The HUD shows current shield/capacity. Future Tank/Heavy cap upgrades and selective attack blocking are recorded separately and are not implemented.
+- Base starting shield is recalculated each fight from the difficulty-adjusted capacity: Heavy 50%, Tank 100%, Soldier 15%, all other classes 0. Hellish gives everyone0. Existing starting-shield mutation bonuses can fill remaining capacity, and all sources respect the same cap. This adds no new branch or maximum-shield upgrade.
+- Current Medic recovery, shared shield capacity and class starting-shield implementation passes191focused checks, including actual seven-client ability replication and all42class/difficulty starting values. Full source validation and current browser/human balance acceptance remain pending. Future shield-cap branches and selective blocking are recorded only.
 
 ## Remaining release work
 
@@ -71,6 +74,7 @@ Updated 2026-10-29 for **2026.10.29-room-lobby**. These counts track specific re
 - Verify active 8/16/50-player mixed progression, WAN and full progression endurance; current headless and scoped local evidence is separate.
 - Deploy and independently accept shared hosted global rankings and durable recovery. Current public authorities implement persistent server-scoped team records with exact scoring and real-network/restart evidence. Shared storage ownership, participant recovery credentials, entropy recovery histories and hosted acceptance remain open.
 - Prepare and verify a new coordinated Windows/browser release with a matching backend; existing immutable Windows and older public builds remain separate.
+- Player clarified Medic exceptions: Hard30% revival, Insane1HP, Hellish none; explicit lower values are Normal45%, Easy75%, Baby full health+20%shield. The authority, both audiences and fifteen-locale UI implement finite team/Solo Medic recovery and all-class passive regeneration penalties of25/50/100% on Hard/Insane/Hellish. Focused64software checks pass. Full verification and human balance/readability/listening acceptance remain pending; map/lobby source0feaf34 is preserved.
 
 ## Count definitions
 

@@ -12,7 +12,7 @@ The mode menu shows a fight-count diagram instead of an arena. Its estimated tim
 
 Source room limits are admission rules, not a claim that the current hosted service or physical devices have passed full-capacity acceptance. The older public playtest is capped at eight slots. Final rendered/WAN/endurance and 49+1 scale acceptance remain open.
 
-Quarantine, Midnight, Pilgrimage and Raid use their authored threat and arena sequences and normalized progression budgets. All playable modes support offline solo and public/private rooms. Baby, Easy, Normal and Hard are selectable. Insane and Hellish unlock after a full campaign on Hard, using recorded personal participation. See [Profiles](Profiles).
+Quarantine, Midnight, Pilgrimage and Raid use their authored threat sequences with the chosen fixed or random map rule and normalized progression budgets. All playable modes support offline solo and public/private rooms. Baby, Easy, Normal and Hard are selectable. Insane and Hellish unlock after a full campaign on Hard, using recorded personal participation. See [Profiles](Profiles).
 
 Grand Raid begins at 12 skill points and 600 nominal coins, reaches 20/1,400 before its second fight and 27/2,400 before its finale. It uses threats 4/7/10 and a 1.25 boss-health multiplier. Its objectives require no particular class. Boss health now includes each authored base duration divided by 120, matching the game bible. Brutal independently doubles HP and multiplies the deadline by 1.5; the extended deadline does not multiply HP a second time.
 
@@ -52,18 +52,22 @@ Ordinary campaigns now draw fixed-grade candidates from shared regular/finale ro
 
 ## Difficulty, revival and cover
 
-| Difficulty | Phase shield-break event | Combat revival | Interior cover | Extra arena / form rule |
+| Difficulty | Phase shield-break event | Revival by other classes | Interior cover | Extra arena / form rule |
 | --- | --- | --- | --- | --- |
 | Baby | Six circles, 2 s; Standard only | 100% health | Original plus two props | Selected boss form |
 | Easy | Three circles, 3 s; Standard only | 50% health | Full | Selected boss form |
 | Normal | Off | 25% health | Full | Selected boss form |
 | Hard | Off | Disabled | Half, rounded down | Selected boss form |
-| Insane | Off | Disabled | None | Selected boss form |
+| Insane | Off | Disabled | None | Every boss Brutal |
 | Hellish | Off | Disabled | None | Marked lava; every boss Crazed |
 
-Brutal and Crazed disable the phase shield event at every difficulty. Revival includes solo, teammates, Medic and supplies; full recovery between encounters remains. Boundary walls and temporary boss mechanics remain. Difficulty cards and final review display these rules in all fifteen locales. Hellish pits have a three-second opening tell and deal 24 contact damage per second in half-second intervals. Hellish effective boss health is 2.4× Normal after its forced Crazed multiplier. [Exact rules and verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/DIFFICULTY_AND_PHASES.md).
+Medic revivals restore **full health + a non-stacking 20% maximum-health shield on Baby, 75% on Easy, 45% on Normal, 30% on Hard and exactly 1 HP on Insane**. Hellish forbids every revival, including Medic abilities and items. Other classes use the health values in the table. Medic can spend a self-revival charge in a team as well as Solo; other classes can self-revive only in Solo. The base allowance is one per fight plus purchased extra-charge effects, with a full two-second channel.
 
-[Latest Baby/Easy assistance follow-up](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/ASSIST_LIMITS.md): Normal revival is 25%; Baby/Easy circles are six/three, channels two/three seconds, and Baby has two extra actual cover props on every map. Source/prediction/prop geometry agree; human/rendered balance review remains open.
+Passive health regeneration is reduced for every class: **25% less on Hard, 50% less on Insane, disabled on Hellish**. Deliberate healing abilities/items remain separate. [Complete current revival rules and balance limits](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/MEDIC_RECOVERY.md).
+
+Brutal and Crazed disable the phase shield event at every difficulty. Revival uses the rescuer’s class as described above; full recovery between encounters remains. Boundary walls and temporary boss mechanics remain. Difficulty cards and final review display these rules in all fifteen locales. Hellish pits have a three-second opening tell and deal 24 contact damage per second in half-second intervals. Hellish effective boss health is 2.4× Normal after its forced Crazed multiplier. [Exact rules and verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/DIFFICULTY_AND_PHASES.md).
+
+[Earlier Baby/Easy assistance work](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/ASSIST_LIMITS.md): ordinary Normal revival is 25%; Baby/Easy circles are six/three, channels two/three seconds, and Baby has two extra actual cover props on every map. Source/prediction/prop geometry agree; human/rendered balance review remains open.
 
 ## Crazed Horizon follow-up
 
@@ -76,3 +80,9 @@ Four spacious maps have smaller real footprints. Paint, colliders and spawns sca
 A named map stays fixed for the whole run. Random map for this run picks one map once. Random map each fight chooses at deployment, and repeats are possible. The map does not change while a boss falls or while players vote or shop. Saved runs retain the selection rule and current map.
 
 Current scenery and cover use painted art on all36map/difficulty combinations, including Baby’s extra cover and Hellish lava. The collision footprints, cover counts and hazard timing remain unchanged. The current [static layout review](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/reviews/room-lobby-2026-10-29/maps-06/contact-sheet.png) is asset composition rather than a browser or human playtest.
+
+
+Personal shields now share one combined capacity across starting shields, ability shields and armor plates: Baby/Easy/Normal 100% of maximum health, Hard 75%, Insane 50%, Hellish 0, rounded down. Excess shield cannot absorb damage. Hellish cannot buy or consume shield items; deployed walls remain physical cover. The HUD shows current shield/capacity. Future Tank/Heavy cap upgrades and selective attack blocking are recorded separately and are not implemented.
+
+
+Base starting shield is recalculated each fight from the difficulty-adjusted capacity: Heavy 50%, Tank 100%, Soldier 15%, all other classes 0. Hellish gives everyone0. Existing starting-shield mutation bonuses can fill remaining capacity, and all sources respect the same cap. This adds no new branch or maximum-shield upgrade.

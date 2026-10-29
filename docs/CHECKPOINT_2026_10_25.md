@@ -1,3 +1,11 @@
+# Medic recovery follow-up in progress
+
+Build2026.10.29-medic-recovery/protocol40 includes the verified map/lobby source0feaf34b9a4221346157fb0d7a50798290bd9205 (795checks). The player’s explicit Medic revival values are Baby100%health+20%shield, Easy75%, Normal45%, Hard30%, Insane1HP, Hellishnone. Medic self-recovery works in teams, remains finite and needs two full seconds. Ordinary lower-difficulty revivals remain100/50/25%; Hard/Insane are Medic-only. Passive regeneration is reduced25/50/100% for all classes on Hard/Insane/Hellish, with active healing separate.
+
+Focused64checks pass, including real two-peer Hard/Insane recovery. Full exact-source gate, CI, fresh previews and authorized Wiki publication are pending under reviews/medic-recovery-2026-10-29. Fresh unused ports: testing5232/backend2606, public5233/backend2607. No map/lobby preview on these ports has been issued yet. The older5229/5231previews remain preserved. Browser automation stays disabled; no bypass. No delegation, new checkout, merge, hosted deployment, paid service or contest submission. Keep the broad goal active and PR14draft.
+
+## Preserved previous state
+
 # Room-lobby follow-up in progress
 
 Build2026.10.29-room-lobby/protocol39. Current source implements five-second defeat timing with one sound, active-map stability, explicit fixed/random map choices, public/private waiting room and on-demand codes, and painted cover/scenery across36combinations. The player accepted only the basic prior5231scene; new pacing, sound, layout and art still need human/rendered review. Source checks and static artwork compositions are separate from browser/human/device/language/listening evidence.

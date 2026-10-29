@@ -477,7 +477,7 @@ test("only known protocol26 local Practice and profile state migrates, preservin
   old.protocolVersion = 26;
   old.contentRevision = revision;
   const after = Game.restoreOffline(old).offlineCheckpoint()!;
-  assert.equal(PROTOCOL, 39);
+  assert.equal(PROTOCOL, 40);
   assert.equal(after.contentRevision, CONTENT_REVISION);
   assert.deepEqual(after.player, save.player);
   assert.deepEqual(after.completedBossForms, save.completedBossForms);
@@ -550,7 +550,9 @@ test(
       p.shield = 2000;
       p.invulnerableUntil = 0;
       for (let n = 0; n < 20 && !p.poisonUntil; n++) g.step();
-      assert.equal(p.health, 85);
+      const expectedHealth=100*(1-r.purpleCurrentHealthFraction)-r.purpleStampDamage*g.difficulty.damage*data.rules.crazed.damageMultiplier;
+      assert.equal(p.health, expectedHealth);
+      assert.equal(p.shield,0,'Hellish removes an injected illegal shield before the ordinary impact');
       const deadline = p.poisonUntil;
       p.invulnerableUntil = 1e9;
       await until(() =>
@@ -562,7 +564,8 @@ test(
       );
       for (const client of [owner, observer]) {
         const v = client.view!.players.find((v) => v.id === owner.id)!;
-        assert.equal(v.health, 85);
+        assert.equal(v.health, expectedHealth);
+        assert.equal(v.shield,0);
         assert.deepEqual(
           client.view!.bossCues.find((c) => c.id === safe.id),
           safe,

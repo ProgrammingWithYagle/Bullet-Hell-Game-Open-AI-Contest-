@@ -1,0 +1,54 @@
+{
+  "passed": true,
+  "receipts": [
+    {
+      "path": "reviews/resonant-tolls-2026-10-27/art-verification.json",
+      "issuedAndRestoredSha256": "9097860a723322f04214cfbc4fee897d38751f1ac681eac20cc8c200706b7c9b",
+      "observedSha256": "9097860a723322f04214cfbc4fee897d38751f1ac681eac20cc8c200706b7c9b",
+      "changed": false
+    },
+    {
+      "path": "reviews/alchemist-lab-2026-10-27/art-verification.json",
+      "issuedAndRestoredSha256": "1a34801387c735f1fa36eeeebd11b7493d6adc50dc4adc4dd6b5f0e26c1c74ea",
+      "observedSha256": "1a34801387c735f1fa36eeeebd11b7493d6adc50dc4adc4dd6b5f0e26c1c74ea",
+      "changed": false
+    },
+    {
+      "path": "reviews/warden-patrol-2026-10-25/art-verification.json",
+      "issuedAndRestoredSha256": "abf1b97cf81c99f619d19def80a83d0d2bbe8098d924e5287328d8702dd0813f",
+      "observedSha256": "abf1b97cf81c99f619d19def80a83d0d2bbe8098d924e5287328d8702dd0813f",
+      "changed": false
+    },
+    {
+      "path": "reviews/small-wakes-2026-10-26/art-verification.json",
+      "issuedAndRestoredSha256": "c06f2b3d1584d70e71407e4b4a238a210a442685e829ac424fb356bcbab2e77d",
+      "observedSha256": "092924a6bafa8cb50673901c0996faa4387658b9b7c23d3282876576346818a1",
+      "changed": true
+    },
+    {
+      "path": "reviews/resonant-tolls-2026-10-27/emitted-atlases-testing.json",
+      "issuedAndRestoredSha256": "3e1480a6a9549fc9be87b90acdbfb5694fc6d625a6e5f2cd1a7277a3bbabc6c0",
+      "observedSha256": "3e1480a6a9549fc9be87b90acdbfb5694fc6d625a6e5f2cd1a7277a3bbabc6c0",
+      "changed": false
+    },
+    {
+      "path": "reviews/resonant-tolls-2026-10-27/emitted-atlases-public.json",
+      "issuedAndRestoredSha256": "2cf44dc5d75919502d02ba95432c046fba6601aeac88c687b097ddb7d097094f",
+      "observedSha256": "2cf44dc5d75919502d02ba95432c046fba6601aeac88c687b097ddb7d097094f",
+      "changed": false
+    },
+    {
+      "path": "reviews/stage1-validation.json",
+      "issuedAndRestoredSha256": "835fe8e4f703f759e8a38479506f02f027ed2ff85b01ceb137bab498797d9dbb",
+      "observedSha256": "835fe8e4f703f759e8a38479506f02f027ed2ff85b01ceb137bab498797d9dbb",
+      "changed": false
+    },
+    {
+      "path": "reviews/runtime-verification.json",
+      "issuedAndRestoredSha256": "e695292cda68a98ee45ed07b6f638a0a02af7193b5b4e1077a80ae448267454b",
+      "observedSha256": "e695292cda68a98ee45ed07b6f638a0a02af7193b5b4e1077a80ae448267454b",
+      "changed": false
+    }
+  ],
+  "finding": "The focused Small Wakes test regenerated only the timestamp in its old global art receipt before gate03. Its fresh receipt is archived here and the exact pre-task issued bytes are restored. Complete current gate05 receipts remain unchanged. Runtime, tests and additional bound source inputs are unchanged."
+}

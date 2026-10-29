@@ -1,16 +1,18 @@
 import {talentForSkill} from '../shared/class-talents.ts';
-import {combatReviveFraction} from '../shared/encounter-policy.ts';
+import {revivedHealth} from '../shared/recovery-policy.ts';
 import { t, number } from './i18n.ts';
 import { data } from '../shared/game.ts';
-export function supplyText(id: string,difficulty='normal') {
+export function supplyText(id: string,difficulty='normal',classId='soldier') {
   const item = data.supplies.find((s) => s.id === id)!;
-  return t('supply.' + id + '.description', {
+  if(item.effect==='revive'&&difficulty==='insane'&&classId==='medic')return t('ui.reviveKitOneHealth',{maximum:number(item.maximumStack)});
+  const description=t('supply.' + id + '.description', {
     amount: ['moveSpeed', 'revive', 'abilityCooldown'].includes(item.effect)
-      ? t('template.percent', { value: number((item.effect==='revive'?combatReviveFraction(difficulty):item.amount) * 100) })
+      ? t('template.percent', { value: number(item.effect==='revive'?revivedHealth(difficulty,100,classId):item.amount*100) })
       : number(item.amount),
     duration: t('template.seconds', { value: number(item.duration) }),
     maximum: number(item.maximumStack),
   });
+  return description+(item.effect==='revive'&&difficulty==='baby'&&classId==='medic'?' '+t('ui.medicBabyShield'):'');
 }
 const flat = new Set([
   'maxHealth',

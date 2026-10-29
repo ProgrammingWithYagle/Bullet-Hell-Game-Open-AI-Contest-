@@ -18,6 +18,8 @@ function game(classId: ClassId, party = false) {
   const p = g.addPlayer('p', 'Survivor', classId);
   if (party) g.addPlayer('ally', 'Ally', 'soldier');
   g.start();
+  // Isolate attack/ability effects; class starting shields have their own full matrix test.
+  for(const member of g.players.values())member.shield=0;
   g.boss.staggerUntil = 1e9;
   g.boss.deadline = 1e9;
   p.x = 800;
@@ -127,14 +129,15 @@ test('The City Holds grants finite team shield and capped armor without stacking
   ally.y = 750;
   ally.invulnerableUntil = 0;
   press(g, { ultimate: true });
-  assert.equal(viewOf(g, 'p').players.find((p) => p.id === 'ally')!.shield, 120);
+  const capacity=ally.maxHealth;
+  assert.equal(viewOf(g, 'p').players.find((p) => p.id === 'ally')!.shield, capacity);
   assert.equal(g.classKits.status(ally.id, g.combatTick).armor, 0.35);
   g.damage(ally, 100);
   assert.equal(ally.health, ally.maxHealth);
-  assert.equal(g.classKits.status(ally.id, g.combatTick).shield, 55);
+  assert.equal(g.classKits.status(ally.id, g.combatTick).shield, capacity-65);
   steps(g, 7);
   g.damage(ally, 100);
-  assert.equal(ally.health, ally.maxHealth - 10);
+  assert.equal(ally.health, ally.maxHealth - (130-capacity));
   assert.equal(g.classKits.status(ally.id, g.combatTick).shield, 0);
   steps(g, HZ * 8);
   assert.equal(g.classKits.status(ally.id, g.combatTick).armor, 0);

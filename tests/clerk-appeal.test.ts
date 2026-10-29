@@ -72,6 +72,8 @@ function game(form: BossVariant = "normal", phase = 0, difficulty = "normal") {
     form,
   );
   g.start();
+  // Isolate attack/ability effects; class starting shields have their own full matrix test.
+  for(const member of g.players.values())member.shield=0;
   g.players.get("solo")!.invulnerableUntil = 1e9;
   g.boss.deadline = 1e9;
   if (phase) {
@@ -373,7 +375,7 @@ test("fifteen locales and known protocol23 local saves preserve help, form/build
   old.contentRevision =
     "da37e2a0e2beb54343495ce39027211df254fa1c79ab42ec3f3360373ad792db";
   const after = Game.restoreOffline(old).offlineCheckpoint()!;
-  assert.equal(PROTOCOL, 39);
+  assert.equal(PROTOCOL, 40);
   assert.equal(after.contentRevision, CONTENT_REVISION);
   assert.deepEqual(after.player, save.player);
   assert.deepEqual(after.completedBossForms, save.completedBossForms);

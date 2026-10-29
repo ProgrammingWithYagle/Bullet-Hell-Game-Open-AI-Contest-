@@ -11,6 +11,8 @@ function setup(items: string[], teammates = 0) {
     assert(g.transact(p.id, { id: 'buy-' + n, kind: 'supply', item }).ok);
   for (let n = 0; n < teammates; n++) g.addPlayer('ally-' + n, 'Iona', 'medic');
   g.start();
+  // Isolate attack/ability effects; class starting shields have their own full matrix test.
+  for(const member of g.players.values())member.shield=0;
   for (const player of g.players.values()) player.invulnerableUntil = 1e9;
   g.boss.health = g.boss.maxHealth = 1e9;
   g.boss.deadline = 1e9;

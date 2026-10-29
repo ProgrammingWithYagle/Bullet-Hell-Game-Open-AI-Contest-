@@ -4,7 +4,7 @@
 
 A cooperative gothic bullet-hell game. Dodge attacks, defeat a boss, vote on the next contract and spend your rewards on a build. Play solo or with friends.
 
-The current feature branch uses **build 2026.10.29-room-lobby / protocol 39**. [Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains this unfinished development work; protected main is a separate release boundary.
+The current feature branch uses **build 2026.10.29-medic-recovery / protocol 40**. [Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains this unfinished development work; protected main is a separate release boundary.
 
 After each boss clear, a five-second **Boss defeated** moment lets the existing fall or final pose finish before the next choices. Fifteen bosses have full falling sequences; fifty-one have final poses.
 
@@ -67,3 +67,12 @@ Twelve original encounters have implemented quality passes; 48 remain. Content e
 [Development Progress](docs/DEVELOPMENT_PROGRESS.md) is generated from the single implementation ledger. [Changelog](CHANGELOG.md) and the in-game journal share one update history. The [Wiki](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/wiki) covers playing and the [game bible](docs/GAME_BIBLE.md) preserves the design. Continue development from the [current checkpoint](docs/CHECKPOINT_2026_10_25.md) and `START_NEXT_CHAT.txt`; dated history retains predecessor evidence.
 
 Online rooms open a **Waiting room** with the player list and a copyable code. Use **Prepare equipment** while waiting; the host presses **Start run**. The **Room code** button remains available during play. Selecting a specific map keeps it for the run; the two random options choose once or before each fight. Painted cover and themed scenery apply across all thirty-six map/difficulty combinations. New rendered/human acceptance remains open.
+
+
+Medic recovery now has explicit class/difficulty rules: Baby full health plus20% shield, Easy75%, Normal45%, Hard 30%, Insane 1HP, and no revival on Hellish. Medic can spend a self-revival charge in a team; ordinary classes retain Solo-only self-recovery. Passive regeneration is reduced for everyone on Hard/Insane and disabled on Hellish. [Exact rules and balance limits](docs/MEDIC_RECOVERY.md).
+
+
+Personal shields now share one combined capacity across starting shields, ability shields and armor plates: Baby/Easy/Normal 100% of maximum health, Hard 75%, Insane 50%, Hellish 0, rounded down. Excess shield cannot absorb damage. Hellish cannot buy or consume shield items; deployed walls remain physical cover. The HUD shows current shield/capacity. Future Tank/Heavy cap upgrades and selective attack blocking are recorded separately and are not implemented. [Future design ideas](docs/FUTURE_DESIGN_IDEAS.md).
+
+
+Base starting shield is recalculated each fight from the difficulty-adjusted capacity: Heavy 50%, Tank 100%, Soldier 15%, all other classes 0. Hellish gives everyone0. Existing starting-shield mutation bonuses can fill remaining capacity, and all sources respect the same cap. This adds no new branch or maximum-shield upgrade.

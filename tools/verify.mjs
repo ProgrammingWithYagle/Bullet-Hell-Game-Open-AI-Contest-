@@ -1,5 +1,6 @@
 import {spawnSync} from 'node:child_process';
-import {readFileSync,readdirSync,writeFileSync,statSync} from 'node:fs';
+import {readFileSync,readdirSync,statSync} from 'node:fs';
+import {writeTextAtomic as writeFileSync} from './write-text-atomic.mjs';
 import {createHash} from 'node:crypto';
 const walk=dir=>readdirSync(dir).sort().flatMap(name=>{const path=dir+'/'+name;return statSync(path).isDirectory()?walk(path):[path];});
 const tests=readdirSync('tests').filter(n=>n.endsWith('.test.ts')).sort().map(n=>'tests/'+n);

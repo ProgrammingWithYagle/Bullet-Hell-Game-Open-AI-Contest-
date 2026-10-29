@@ -5,7 +5,8 @@ import { randomUUID } from 'node:crypto';
 import { createGameServer } from '../src/server/index.ts';
 import { liveRooms } from '../src/server/GraveRoom.ts';
 import { Session } from '../src/client/session.ts';
-import { PROTOCOL, CONTENT_REVISION } from '../src/shared/protocol.ts';
+import { PROTOCOL, CONTENT_REVISION,HZ } from '../src/shared/protocol.ts';
+import {BOSS_DEFEAT_TICKS} from '../src/shared/boss-defeat-flow.ts';
 
 const until = async (check: () => boolean, timeout = 5000) => {
   const start = Date.now();
@@ -55,7 +56,7 @@ test(
         { roomId: owner.room!.roomId },
       );
       await until(() => owner.view?.players.length === 2);
-      assert.equal(PROTOCOL, 39);
+      assert.equal(PROTOCOL, 40);
       owner.start();
       await until(() => owner.view?.phase === 'combat' && guest.view?.signatures.length === 1);
       assert.equal(owner.view!.boss.id, 'lantern-warden');
@@ -74,7 +75,7 @@ test(
       room.game.boss.health = 0;
       await until(() => owner.view?.phase === 'mutationVote' && guest.view?.boss.defeatedAt! > 0);
       room.game.phaseEnds = room.game.tick;
-      await until(() => owner.view?.phase === 'contractVote');
+      await until(() => owner.view?.phase === 'contractVote',BOSS_DEFEAT_TICKS/HZ*1000+2500);
       assert(
         room.game.contractCards.every(
           (card) => card.bossId !== 'lantern-warden' && card.variant === 'normal',

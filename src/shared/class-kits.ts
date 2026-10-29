@@ -196,6 +196,10 @@ export class ClassKits {
     s.shield -= taken;
     return damage - taken;
   }
+  limitShield(id:string,maximum:number,tick:number){
+    const s=this.statuses.get(id);if(!s)return;
+    s.shield=tick<s.shieldUntil?Math.min(s.shield,Math.max(0,maximum)):0;
+  }
   private shield(id: string, amount: number, until: number, now: number) {
     const s = this.state(id);
     if (now >= s.shieldUntil || amount >= s.shield) {

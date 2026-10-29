@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import {writeTextAtomic} from './write-text-atomic.mjs';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 const read=file=>JSON.parse(fs.readFileSync(file,'utf8'));
@@ -33,6 +34,6 @@ const files={'docs/DEVELOPMENT_PROGRESS.md':body,'docs/wiki/Development-Progress
  'src/shared/development-progress.json':JSON.stringify(p,null,2)+'\n'};
 for(const [file,text]of Object.entries(files)) {
  if(process.argv.includes('--check'))assert.equal(fs.readFileSync(file,'utf8').replaceAll('\r\n','\n'),text,'Stale progress surface '+file);
- else fs.writeFileSync(file,text);
+ else writeTextAtomic(file,text);
 }
 console.log(JSON.stringify({passed:true,bosses:p.playableBosses,ordinaryRemaining:p.ordinaryBossesRemaining,qualityRemaining:p.items.find(i=>i.id==='boss-quality').remaining,classRevampsRemaining:p.items.find(i=>i.id==='class-abilities').remaining,mapImplementationRemaining:0}));

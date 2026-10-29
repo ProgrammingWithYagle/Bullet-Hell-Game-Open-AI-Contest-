@@ -6,6 +6,12 @@ import { classifiedContract } from './boss-threat.ts';
 export function migratePracticeBoundary(value: unknown): unknown {
   if (!value || typeof value !== 'object' || Array.isArray(value)) return value;
   const issued = value as Record<string, unknown>;
+  if(issued.protocolVersion===39){
+    if(issued.schemaVersion!==1||issued.contentRevision!==CONTENT_REVISION||issued.practiceOnly!==true||
+      issued.serverOnly===true||issued.players!==undefined||issued.transactions!==undefined||JSON.stringify(issued).length>32768)
+      throw Error('versionMismatch');
+    return {...issued,protocolVersion:PROTOCOL};
+  }
   if (issued.protocolVersion === 38) {
     if (issued.schemaVersion !== 1 || issued.contentRevision !== CONTENT_REVISION ||
       issued.practiceOnly !== true || issued.serverOnly === true || issued.players !== undefined ||

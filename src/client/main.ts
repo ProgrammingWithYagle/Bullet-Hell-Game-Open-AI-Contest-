@@ -23,7 +23,8 @@ import {courierPhaseName,courierPhaseHint} from './courier-text.ts';
 import {bossHeaderMarkup} from './ui/boss-header.ts';
 import { phaseCountdownMarkup, runResultsMarkup } from './ui/run-results.ts';
 import {smallWakesPhaseName,smallWakesPhaseHint} from './small-wakes-text.ts';
-import {bossPatternPhase, encounterPhases, phaseMarkers, combatReviveFraction} from '../shared/encounter-policy.ts';
+import {bossPatternPhase, encounterPhases, phaseMarkers} from '../shared/encounter-policy.ts';
+import {combatReviveAllowed,selfReviveAllowed} from '../shared/recovery-policy.ts';
 import { BossPhaseFeedback, constablePhaseHint } from './boss-phase-feedback.ts';
 import { constablePhaseName } from './constable-phase-text.ts';
 import { bossThreat } from '../shared/boss-threat.ts';
@@ -493,7 +494,7 @@ function update(view: View) {
     number(Math.ceil(p.health)) +
     ' / ' +
     number(p.maxHealth) +
-    (p.shield ? ' + ' + number(p.shield) : '');
+    (p.maxShield ? ' · '+t('stat.shield')+' '+number(p.shield)+' / '+number(p.maxShield) : '');
   $('ammo').textContent =
     t(p.reloadAt > view.combatTick ? 'ui.reloading' : 'ui.ammo') + ' ' + number(p.ammo);
   $('currency').textContent =
@@ -510,13 +511,14 @@ function update(view: View) {
       remaining > 0 ||
       p.status !== 'active' ||
       view.phase !== 'combat' ||
-      (item?.effect==='revive' && !combatReviveFraction(view.run.difficulty)) ||
+      (item?.effect==='revive' && !combatReviveAllowed(view.run.difficulty,p.classId)) ||
+      (item?.effect==='shield' && !p.maxShield) ||
       (bossGuide.blocksInput(paused)||roomChatUI?.blocksInput===true||roomInviteUI?.open===true);
     button.setAttribute('aria-label', `${number(index + 1)} · ${name} ×${number(slot.count)}`);
     button.title = item
       ? name +
         '\n' +
-        supplyText(item.id,view.run.difficulty) +
+        supplyText(item.id,view.run.difficulty,p.classId) +
         '\n' +
         t('ui.supplyHelp', {
           bindings: [1, 2, 3]
@@ -639,25 +641,12 @@ function update(view: View) {
         seconds: Math.max(0, Math.ceil((p.downUntil - view.combatTick) / 30)),
       }) +
       ' · ' +
-      (!combatReviveFraction(view.run.difficulty) ? t('ui.reviveOff') : inputOptions.interactMode === 'toggle'
-        ? profileText(locale, 'toggleRevive', {
-            binding:
-              bindingLabel(inputOptions.bindings.interact[0]) +
-              ' / ' +
-              profileText(locale, 'pad') +
-              ' ' +
-              inputOptions.gamepad.interact,
-            player: p.name,
-          })
-        : t('ui.revivePrompt', {
-            binding:
-              bindingLabel(inputOptions.bindings.interact[0]) +
-              ' / ' +
-              profileText(locale, 'pad') +
-              ' ' +
-              inputOptions.gamepad.interact,
-            player: p.name,
-          }));
+      (view.run.difficulty==='hellish'?t('ui.reviveNobody'):
+        selfReviveAllowed(view.run.difficulty,p.classId,view.players.length)&&p.selfRevives>0
+          ?t(inputOptions.interactMode==='toggle'?'ui.selfReviveToggleHelp':'ui.selfReviveHelp',{
+            binding:bindingLabel(inputOptions.bindings.interact[0])+' / '+profileText(locale,'pad')+' '+inputOptions.gamepad.interact,
+            count:number(p.selfRevives)})
+          :t(['hard','insane'].includes(view.run.difficulty)?'ui.waitMedicRevive':'ui.waitTeammateRevive'));
   else if (p.status === 'waiting') $('status').textContent = t('ui.lateJoin');
   else if (p.status === 'eliminated') $('status').textContent = t('ui.eliminated');
   else if (session.status === 'ui.errorSave') $('status').textContent = t('ui.errorSave');

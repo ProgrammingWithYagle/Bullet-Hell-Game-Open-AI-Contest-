@@ -75,6 +75,8 @@ function game() {
     "soldier",
   );
   g.start();
+  // Isolate attack/ability effects; class starting shields have their own full matrix test.
+  for(const member of g.players.values())member.shield=0;
   g.boss.deadline = 1e9;
   const p = g.players.get("solo")!;
   p.invulnerableUntil = 1e9;
@@ -269,7 +271,7 @@ test("only the known protocol24 local Practice/profile revision migrates while e
   old.protocolVersion = 24;
   old.contentRevision = revision;
   const after = Game.restoreOffline(old).offlineCheckpoint()!;
-  assert.equal(PROTOCOL, 39);
+  assert.equal(PROTOCOL, 40);
   assert.equal(after.contentRevision, CONTENT_REVISION);
   assert.deepEqual(after.player, save.player);
   assert.deepEqual(after.completedBossForms, save.completedBossForms);

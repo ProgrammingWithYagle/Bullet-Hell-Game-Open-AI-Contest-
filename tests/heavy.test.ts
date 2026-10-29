@@ -20,6 +20,8 @@ function setup() {
 }
 function start(game: Game, player: Player) {
   game.start();
+  // Isolate attack/ability effects; class starting shields have their own full matrix test.
+  for(const member of game.players.values())member.shield=0;
   game.boss.staggerUntil = 1e9;
   game.boss.deadline = 1e9;
   game.boss.health = game.boss.maxHealth = 1e9;

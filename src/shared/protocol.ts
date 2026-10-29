@@ -1,5 +1,5 @@
 import revision from '../../content/revision.json' with { type: 'json' };
-export const PROTOCOL = 39;
+export const PROTOCOL = 40;
 export type BossVariant = 'normal' | 'brutal' | 'crazed';
 export const CONTENT_REVISION = revision.sha256;
 export const HZ = 30,

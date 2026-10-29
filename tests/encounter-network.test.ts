@@ -5,8 +5,10 @@ import { createGameServer } from '../src/server/index.ts';
 import { liveRooms } from '../src/server/GraveRoom.ts';
 import { Session } from '../src/client/session.ts';
 import type { BossId } from '../src/shared/protocol.ts';
-const until = async (check: () => boolean) => {
-  const end = Date.now() + 5000;
+import {BOSS_DEFEAT_TICKS} from '../src/shared/boss-defeat-flow.ts';
+import {HZ} from '../src/shared/protocol.ts';
+const until = async (check: () => boolean,timeout=5000) => {
+  const end = Date.now() + timeout;
   while (!check()) {
     if (Date.now() > end) throw Error('New encounter replication timed out');
     await new Promise((r) => setTimeout(r, 20));
@@ -14,7 +16,7 @@ const until = async (check: () => boolean) => {
 };
 test(
   'real clients receive charge, rat and stamp cues from each new boss with shared authoritative actor state',
-  { timeout: 25000 },
+  { timeout: 35000 },
   async () => {
     const { server, httpServer } = createGameServer();
     await server.listen(0, '127.0.0.1');
@@ -68,7 +70,8 @@ test(
           assert.equal(guest.view!.bossCues.length, 0);
           assert.equal(guest.view!.minions.length, 0);
           room.game.phaseEnds = room.game.tick;
-          await until(() => guest.view?.phase === 'contractVote');
+          // The presentation beat intentionally precedes the next choices.
+          await until(() => guest.view?.phase === 'contractVote',BOSS_DEFEAT_TICKS/HZ*1000+2500);
           for (const card of guest.view!.contractCards) {
             assert.equal(card.bossId, undefined);
             assert(Number.isInteger(card.subtier));

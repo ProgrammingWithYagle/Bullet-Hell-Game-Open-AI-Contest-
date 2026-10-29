@@ -1,5 +1,6 @@
 import {smallWakesIds} from '../content/source/small-wakes.mjs';
 import fs from 'node:fs';
+import {writeTextAtomic} from './write-text-atomic.mjs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import assert from 'node:assert/strict';
@@ -128,5 +129,5 @@ const report={schemaVersion:1,stage:contentOnly?'Stage 1 design-content checks o
 fs.mkdirSync(path.join(root,'reviews'),{recursive:true});
 const reportPath=path.join(root,'reviews/stage1-validation.json'),reportText=JSON.stringify(report,null,2)+'\n';
 // Preserve identical issued bytes and avoid reopening an unchanged OneDrive report for writing.
-if(!fs.existsSync(reportPath)||fs.readFileSync(reportPath,'utf8')!==reportText)fs.writeFileSync(reportPath,reportText);
+if(!fs.existsSync(reportPath)||fs.readFileSync(reportPath,'utf8')!==reportText)writeTextAtomic(reportPath,reportText);
 console.log(JSON.stringify(report,null,2));if(!report.passed)process.exitCode=1;

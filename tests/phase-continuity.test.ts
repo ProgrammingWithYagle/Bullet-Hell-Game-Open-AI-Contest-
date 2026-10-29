@@ -36,6 +36,8 @@ function game(
     form,
   );
   g.start();
+  // Isolate attack/ability effects; class starting shields have their own full matrix test.
+  for(const member of g.players.values())member.shield=0;
   g.boss.deadline = 1e9;
   for (const p of g.players.values()) p.invulnerableUntil = 1e9;
   return g;

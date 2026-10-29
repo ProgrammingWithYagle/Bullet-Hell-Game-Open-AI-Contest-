@@ -199,3 +199,8 @@ Four new poses preserve the exact native/request, whole lantern ownership and al
 ![Thirty-six selected Small Wakes idle, attack and defeat poses; static composite](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/small-wakes-motion.jpg)
 
 Ten unchanged natives/requests preserve nine selected sheets and one superseded Kettle idle. One scale per identity and complete alpha-bearing RGBA ownership retain all readable connected figures and faint edges. The lower kettle attack bridge has an explicit ownership boundary; independent reconstruction checks every selected source pixel, anchor, atlas and fallback crop. Total selected runtime motion is 1,542 poses. This image is a static composite; rendered motion and human/device acceptance remain open.
+
+
+## Current map and difficulty artwork
+
+The new source replaces generic cover blocks and lava discs with painted art and adds themed surroundings to five maps while retaining the original floors and physical footprints. Baby’s additional cover receives the same treatment. [All 36 selected source-layout compositions](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/reviews/room-lobby-2026-10-29/maps-06/contact-sheet.png) and [complete native images, final prompts and review limits](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/reviews/room-lobby-2026-10-29/ART.md) are preserved. This sheet is a static asset composition, not a browser capture or human gameplay acceptance.
