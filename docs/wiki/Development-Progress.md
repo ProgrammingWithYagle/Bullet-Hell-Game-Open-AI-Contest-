@@ -1,6 +1,6 @@
 # Development progress
 
-Updated 2026-10-29 for **2026.10.29-smooth-rooms**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
+Updated 2026-10-29 for **2026.10.29-chat-space**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
 
 66 playable identities: 65 ordinary and 1 secret. Three ordinary bosses in every one of fifty subtiers requires 150 ordinary identities, plus secrets; 85 additional ordinary bosses remain.
 
@@ -54,7 +54,7 @@ Updated 2026-10-29 for **2026.10.29-smooth-rooms**. These counts track specific 
 
 ## Remaining release work
 
-- Continue public polish and coordinated release preparation. Current chat/records/endless controls have focused software checks; full source CI and rendered/human/device review remain separate. The corrected c0a6d9b local Windows review passes all three copies and six native fixtures; its earlier failed archive remains preserved.
+- Continue public polish and coordinated release preparation. Latest5225human feedback accepts the chat position, requests C and fuller upgrade height, and clarifies expected continuing multiplayer menus; pause labels remain unchanged at user request. C/layout/obsolete-notice follow-up is implemented and awaiting its exact-source software/preview review. The a0c8c56 Windows review passes all copies and six native fixtures and remains a separate source.
 - Review Alchemist Crazed distillation columns, route warnings, coolant condensation and final reflux in the next matching frozen preview. The shared earned-SP General mobility branch remains deferred during public polish.
 - Review shared phase-attack continuity in the next matching frozen preview; software checks are separate from rendered/human/device/final balance acceptance.
 - Review Bellringer Standard calibration and the new Brutal/Crazed return-chain decision in the next exact-source frozen preview; fixed grade3- remains.

@@ -36,6 +36,12 @@ assert.equal(health.sourceCommit, manifest.sourceCommit);
 assert.equal(health.protocolVersion, manifest.protocol);
 assert.equal(health.contentRevision, manifest.contentRevision);
 assert.equal(health.audience, audience);
+assert.equal(health.teamRecords?.available, true);
+assert.equal(health.teamRecords?.persistent, true);
+const boardResponse = await fetch(manifest.endpoint + '/api/leaderboards?mode=short&difficulty=normal&sizeBand=solo');
+assert.equal(boardResponse.status, 200);
+const board = await boardResponse.json();
+assert.equal(board.scope, 'server'); assert.equal(board.total, 0);
 assert.equal(health.playable.bosses, 66); assert.equal(health.playable.classes, 7);
 assert(Math.abs(Date.parse(health.startedAt) - Date.parse(processes.backend.startedAt)) < 10000);
 const denied = await fetch(manifest.endpoint + '/api/health', { headers: { Origin: 'http://127.0.0.1:5213' } });
@@ -60,11 +66,15 @@ assert.equal(before.rooms, 0, 'Dedicated review server already has a room; do no
 const owner = new Session(manifest.endpoint), observer = new Session(manifest.endpoint);
 let peerSample: unknown;
 try {
+  owner.setChatEnabled(true); observer.setChatEnabled(true);
   const options = { name: 'Review probe', classId: 'soldier' as const, mode: 'short' as const,
     difficulty: 'baby', openingArenaId: 'gatehouse', openingBossId: 'gate-widow' as const };
   await owner.connect(options);
   await observer.connect({ ...options, name: 'Review observer', classId: 'medic' }, { roomId: owner.room!.roomId });
   await wait(() => owner.view?.players.length === 2 && observer.view?.players.length === 2);
+  assert(owner.sendChat('Ready for a quick room check?'));
+  await wait(() => observer.chatMessages.length === 1);
+  assert.equal(observer.chatMessages[0].name, 'Review probe');
   owner.start(); await wait(() => observer.view?.phase === 'combat' && owner.view?.phase === 'combat');
   const a = owner.view!, b = observer.view!;
   assert.equal(a.boss.id, b.boss.id);
@@ -75,7 +85,7 @@ try {
   assert(!b.run.testingModified);
   peerSample = { peers: 2, phase: b.phase, bossId: b.boss.id, form: b.boss.variant, difficulty: b.run.difficulty,
     mode: b.run.mode, sameBoss: true, chosenRehearsalOpenerIgnored: audience === 'public', chosenRehearsalOpenerRetained: audience === 'testing', testingModified: false,
-    noPersonalClearClaimed: true };
+    roomChatDelivered: true, noPersonalClearClaimed: true };
 } finally {
   await Promise.allSettled([owner.close(), observer.close()]);
 }
@@ -88,6 +98,8 @@ const report = { passed: true, checkedAt: new Date().toISOString(), sourceCommit
   health, cors: { matchingOriginAllowed: true, otherOriginHealthHeaderObserved: otherHealthOrigin,
     wrongOriginSocketUpgradeStatus: deniedUpgradeStatus },
   backendBundleSha256: manifest.backend.sha256, peerSample, probeRoomsClosed: true,
+  teamRecords: { available: true, persistent: true, readStatus: boardResponse.status, scope: board.scope,
+    qualifyingRowsBeforeProbe: board.total, noSyntheticScoresSubmitted: true },
   renderedAccepted: false, humanAccepted: false,
   limits: ['Native HTTP/hash/CORS and real owner/observer transport only. No browser, personal clear, human balance, audio, native-language or physical-device acceptance.', 'No existing frozen service was stopped or replaced; the smoke room used only this newly created review backend.'] };
 fs.writeFileSync('reviews/smooth-rooms-2026-10-29/preview-' + audience + '-live-check.json', JSON.stringify(report, null, 2) + '\n', { flag: 'wx' });

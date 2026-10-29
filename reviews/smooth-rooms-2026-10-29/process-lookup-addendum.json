@@ -1,0 +1,7 @@
+{
+  "sourceCommit": "a0c8c568bdf045c355af4605b3ccfc6d5faa49cf",
+  "observation": "PowerShell Get-Process returned no rows for the four fresh preview PIDs, while all four corresponding HTTP endpoints returned200 and both preserved launcher sessions remained running.",
+  "meaning": "A missing process-enumeration row in this environment does not establish that an issued preview owner exited. Use direct HTTP/source identity and the preserved exec session as liveness evidence.",
+  "previousReceiptClarification": "The portable-paths follow-up recorded actual ECONNREFUSED for testing5222. Its observedOwnerPidsAbsent field describes the empty lookup output; it does not independently prove every listed PID or the corresponding public preview had exited.",
+  "preservation": "Earlier raw receipts remain unchanged. No old preview port, root or process was stopped, restarted or replaced."
+}

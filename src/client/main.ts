@@ -48,7 +48,6 @@ import { Prediction } from './prediction.ts';
 import { assets } from './assets.ts';
 import { AudioBus } from './audio.ts';
 import { initialLanguage, locale, number, setLanguage, t } from './i18n.ts';
-import { prototypeNotice } from './runtime-messages.ts';
 import { mountSetup, setupOptions } from './ui/setup.ts';
 import { shopMarkup, bindShop, supplyGlyph } from './ui/shop.ts';
 import { icon } from './ui/icons.ts';
@@ -130,6 +129,7 @@ function applySettings() {
     scene.nameTextScale=settings.textScale;
   }
   roomChatUI?.configure(settings.roomChat,session?.online??false);
+  roomChatUI?.setShortcutEnabled(!Object.values(inputOptions.bindings).some(keys => keys.includes('KeyC')));
   audio.setVolume(settings.volume, settings.music);
 }
 function settingsMarkup() {
@@ -311,6 +311,7 @@ function setupGame(online: boolean) {
     title: t('ui.roomChat'), message: t('ui.chatMessage'), send: t('ui.chatSend'), note: t('ui.chatEphemeral'), locale,
   });
   roomChatUI.configure(settings.roomChat,online);
+  roomChatUI.setShortcutEnabled(!Object.values(inputOptions.bindings).some(keys => keys.includes('KeyC')));
   for (const id of ['pause-menu', 'boss-guide']) {
     const dialog = $(id).querySelector<HTMLElement>('.dialog')!;
     const layout = document.createElement('div');
@@ -812,6 +813,7 @@ function destroy() {
   ratingCache.clear();
 }
 window.addEventListener('keydown', (e) => {
+  if (session && roomChatUI?.handleShortcut(e)) return;
   if (import.meta.env.DEV && e.code === 'F8' && scene) {
     e.preventDefault();
     const panel = $('dev-metrics');

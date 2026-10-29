@@ -15,8 +15,9 @@ class Element {
   append(...nodes:Element[]){for(const node of nodes){if(node.parentElement){if(node.contains(this.doc.activeElement))this.doc.activeElement=null;node.remove();}node.parentElement=this;this.children.push(node);}}
   remove(){if(this.parentElement)this.parentElement.children=this.parentElement.children.filter(c=>c!==this);this.parentElement=null;}
   replaceChildren(...nodes:Element[]){this.children.forEach(c=>c.parentElement=null);this.children=[];this.append(...nodes);}
-  closest(selector:string):Element|null{return this.className.split(' ').includes(selector.slice(1))?this:this.parentElement?.closest(selector)??null;}
+  closest(selector:string):Element|null{return selector.split(',').some(s => s === this.tagName || s[0] === '.' && this.className.split(' ').includes(s.slice(1))) ? this : this.parentElement?.closest(selector)??null;}
   setAttribute(key:string,value:string){this.attributes.set(key,value);}
+  removeAttribute(key:string){this.attributes.delete(key);}
   focus(){this.doc.activeElement=this;}
   find(tag:string):Element|undefined{return this.tagName===tag?this:this.children.map(c=>c.find(tag)).find(Boolean);}
 }
@@ -53,5 +54,16 @@ test('chat history refresh and menu replacement keep the draft; successful send 
     f.ui.configure(false,true);f.ui.setOpen(true);assert.equal(f.ui.blocksInput,false);assert(!next.layout.className.includes('with-chat'));
     f.ui.configure(true,false);f.ui.setOpen(true);assert.equal(f.ui.blocksInput,false);
     f.ui.destroy();assert.equal(f.host.find('input'),undefined);
+  }finally{f.restore();}
+});
+test('C opens and focuses chat without stealing typed text, copy shortcuts, repeats or an existing custom gameplay binding',()=>{
+  const f=setup();try{
+    f.ui.configure(true,true);
+    const key=(overrides:Record<string,unknown>={})=>({code:'KeyC',target:f.host,repeat:false,isComposing:false,ctrlKey:false,metaKey:false,altKey:false,preventDefault(){},...overrides}) as unknown as KeyboardEvent;
+    assert(f.ui.handleShortcut(key()));assert.equal(f.ui.blocksInput,true);const input=f.host.find('input')!;assert.equal(f.doc.activeElement,input);
+    input.value='contains c';assert(!f.ui.handleShortcut(key({target:input})));assert.equal(input.value,'contains c');
+    f.ui.setOpen(false);assert(!f.ui.handleShortcut(key({ctrlKey:true})));assert(!f.ui.handleShortcut(key({repeat:true})));assert(!f.ui.handleShortcut(key({isComposing:true})));
+    f.ui.setShortcutEnabled(false);assert(!f.ui.handleShortcut(key()));assert.equal(f.ui.blocksInput,false);
+    f.ui.setShortcutEnabled(true);f.ui.configure(true,false);assert(!f.ui.handleShortcut(key()));
   }finally{f.restore();}
 });

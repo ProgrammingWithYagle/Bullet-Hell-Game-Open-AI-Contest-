@@ -1,6 +1,23 @@
 # Changelog
 
-Development build **2026.10.29-smooth-rooms**, protocol 38. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.29-chat-space**, protocol 38. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-29 — Open chat with C and give upgrades the available space
+
+### Chat and upgrade space
+
+- Press C to open and focus room chat during multiplayer play or between fights. A small C hint appears on the chat button. Typing in fields, copy shortcuts, repeated keydown and IME input are left alone. An existing custom gameplay binding to C keeps its assigned action.
+- When chat opens above the upgrade menu on a narrow screen, the menu now fills the actual remaining window height. The upgrade and skill areas can grow with it instead of using a fixed fraction that left unused space. Wider screens retain chat beside the menu and fights retain the accepted chat position.
+
+### Remove the old rankings message
+
+- The old message saying verified online rankings are unavailable is removed from the active menu flow. The records page explains that team results belong to the selected game server; local records say they are saved on this device. Testing-only details use the existing testing-build label.
+- The multiplayer pause report was clarified with the player: shared matches continue while menus are open, as the notice says. At the player’s request, Pause/Paused labels and multiplayer pause behavior remain unchanged. Actual public and testing Solo workers freeze their clocks/state and resume without catchup in focused checks.
+
+### Keep the reviewed checkpoint separate
+
+- The preceding a0c8c56 smooth-rooms source passes780local tests and both exact-source CI runs, with Wiki18pages/34images/public hashes verified. All three Windows package copies and six actual native offline/LAN/storage fixtures pass, including273/270character copied font paths. Its ZIP is preserved and does not contain this newer C/layout/notice follow-up.
+- Current follow-up source needs its own full gate, exact-source CI, frozen public/testing previews and Wiki receipt. Rendered/human/device/native-language/listening, shared hosted global rankings/recovery and coordinated release acceptance remain open.
 
 ## 2026-10-29 — Clear chat placement and working team records
 

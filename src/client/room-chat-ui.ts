@@ -10,6 +10,8 @@ export class RoomChatUI {
   private enabled = true;
   private online = false;
   private dock?: HTMLElement;
+  private shortcut = document.createElement('kbd');
+  private shortcutEnabled = true;
   private opened = false;
   constructor(
     private session: Session,
@@ -22,6 +24,9 @@ export class RoomChatUI {
     this.button.id = "room-chat-toggle";
     this.button.className = "room-chat-toggle";
     this.button.textContent = words.title;
+    this.shortcut.textContent = 'C';
+    this.button.append(this.shortcut);
+    this.button.setAttribute('aria-keyshortcuts','C');
     this.button.setAttribute("aria-controls", "room-chat");
     this.button.setAttribute("aria-expanded", "false");
     this.panel.id = "room-chat";
@@ -58,6 +63,21 @@ export class RoomChatUI {
   }
   get blocksInput() {
     return this.enabled && this.online && this.opened;
+  }
+  setShortcutEnabled(value: boolean) {
+    this.shortcutEnabled = value;
+    this.shortcut.hidden = !value;
+    if (value) this.button.setAttribute('aria-keyshortcuts','C');
+    else this.button.removeAttribute('aria-keyshortcuts');
+  }
+  handleShortcut(event: KeyboardEvent) {
+    if (!this.enabled || !this.online || !this.shortcutEnabled || event.code !== 'KeyC'
+      || event.repeat || event.isComposing || event.ctrlKey || event.metaKey || event.altKey) return false;
+    const target = event.target as HTMLElement | null;
+    if (target?.closest?.('input,select,textarea,[contenteditable="true"]')) return false;
+    event.preventDefault();
+    this.setOpen(true);
+    return true;
   }
   // Keep the same form, draft and history when menus rebuild after a purchase.
   place(dock?: HTMLElement) {

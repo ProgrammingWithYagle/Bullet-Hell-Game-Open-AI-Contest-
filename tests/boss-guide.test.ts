@@ -97,8 +97,8 @@ test("Session never sends a global pause command for an online guide", () => {
     { type: "pause", value: false },
   ]);
 });
-test(
-  "the actual offline worker freezes combat clocks, deadlines, player state and warnings while reading, then resumes without catchup or held input",
+for (const testing of [false, true]) test(
+  `the actual ${testing ? 'testing' : 'public'} offline worker freezes combat clocks, deadlines, player state and warnings while reading, then resumes without catchup or held input`,
   { timeout: 15000 },
   async () => {
     const bundle = await build({
@@ -107,6 +107,7 @@ test(
       platform: "node",
       format: "esm",
       write: false,
+      define: { __GA_TESTING_BUILD__: String(testing) },
       logLevel: "silent",
     });
     const shim =

@@ -103,3 +103,5 @@ Reading the Tutorial keeps the gentle first-run preset available until the profi
 Room chat keeps its usual position while fighting. During upgrades, breaks and settings it sits beside the menu on wider screens and above it on smaller screens. Your draft stays in the same input as phases change. You can disable room chat in Settings.
 
 Open **Leaderboards** for this device’s practice records or **Team records** from the selected server. Online public-authority runs share one team result; test runs do not enter the board. After a qualifying result, the Team records button opens the matching mode, difficulty and team size. During an Endless break, the host can expand **End this run** to finish and save.
+
+Press **C** to open room chat when you are not typing in a field. If you already assigned C to a gameplay action in your saved controls, that action keeps the key. The chat button remains available. Menus use the remaining window height when chat is open. Multiplayer keeps running behind menus; Solo pauses.

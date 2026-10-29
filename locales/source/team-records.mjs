@@ -21,5 +21,5 @@ export function teamRecordMessages(locale) {
   const row = rows[locale];
   if (!row || row.length !== keys.length) throw Error('Missing team-record locale ' + locale);
   return { ...Object.fromEntries(keys.map((key,i) => ['ui.'+key,row[i].normalize('NFC')])),
-    'ui.onlineBoards': row[0], 'ui.leaderboardOffline': row[2] };
+    'ui.onlineBoards': row[0], 'ui.leaderboardOffline': row[2], 'ui.practiceNotice': row[1] };
 }

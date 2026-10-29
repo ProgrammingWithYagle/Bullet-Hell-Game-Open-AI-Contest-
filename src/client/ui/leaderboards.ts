@@ -6,6 +6,7 @@ import { escape as e } from "./html.ts";
 import { mountTeamRecords } from './team-records.ts';
 import { defaultGameEndpoint } from '../deployment.ts';
 import type { TeamBoardSelection } from '../team-records.ts';
+import { expeditionText } from '../expedition-text.ts';
 export function mountLeaderboards(host: HTMLElement, back: () => void, endpoint = defaultGameEndpoint, selection?: TeamBoardSelection) {
   let mode: string = selection?.mode ?? "short",
     difficulty = selection?.difficulty ?? "normal",
@@ -26,7 +27,7 @@ export function mountLeaderboards(host: HTMLElement, back: () => void, endpoint 
       '">' +
       e(t("ui.onlineBoards")) +
       '</button></div><p class="prototype-note">' +
-      e(t(online ? "ui.teamRecordScope" : "ui.practiceNotice")) +
+      e(online ? t("ui.teamRecordScope") : expeditionText(locale,'deviceRecords')) +
       "</p>" +
       (online
         ? '<div id="team-records-content"></div>'
