@@ -4,7 +4,7 @@
 
 Dodge attacks, defeat bosses and spend your rewards between fights. Play Solo or team up with friends in this cooperative zombie bullet-hell game.
 
-**Current development build: 2026.10.29-medic-recovery.** The game is still in development. The public demo and published Windows download below are older versions.
+**Current development build: 2026.10.29-interface-clarity.** The game is still in development. The public demo and published Windows download below are older versions.
 
 ## New here?
 
@@ -12,7 +12,7 @@ Choose **New here? → Start gently** for a prepared Soldier, Quarantine Run, Ga
 
 ## Play with others
 
-Join a public room or share a private room code. Chat keeps its fight position and has its own space during menus. **C** shows or hides the chat panel; **Enter** starts typing and **Esc** closes it while typing. You can also click the message field. If C already has a custom gameplay binding, that action keeps the key.
+Create an open room or add an optional password. Protected public rooms show a lock; joining by listing or code asks for the password. Private rooms stay out of the public list and require their six-character code too. Chat keeps its fight position and has its own space during menus. **C** shows or hides the chat panel; **Enter** starts typing and **Esc** closes it while typing. You can also click the message field. If C already has a custom gameplay binding, that action keeps the key.
 
 Upgrades scroll above the separate **Start run / Leave room** row. Multiplayer continues while a menu is open; Solo pauses. [Hosting and Recovery](Hosting-and-Recovery) explains connections and server limits.
 
@@ -45,12 +45,12 @@ Newer local Windows review packages have separate source, extraction/copy and na
 <details>
 <summary>Development and verification</summary>
 
-Current source is version 0.3.0, protocol 40 on [draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14). The [current local software gate](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/reviews/medic-recovery-2026-10-29/gate-05/runtime-verification.json) is separate from rendered/human acceptance. [Development Progress](Development-Progress) tracks remaining work; [Changelog](Changelog) records each update. [Architecture](Architecture), [Hosting and Recovery](Hosting-and-Recovery), [Contributing](Contributing) and [Credits](Credits) provide the technical and project references.
+Current source is version 0.3.0, protocol 41 on [draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14). The [current local software gate](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/reviews/interface-clarity-2026-10-29/gate-02/runtime-verification.json) is separate from rendered/human acceptance. [Development Progress](Development-Progress) tracks remaining work; [Changelog](Changelog) records each update. [Architecture](Architecture), [Hosting and Recovery](Hosting-and-Recovery), [Contributing](Contributing) and [Credits](Credits) provide the technical and project references.
 
 The latest [continuation checkpoint](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/CHECKPOINT_2026_10_25.md) distinguishes current source, frozen previews, CI, Wiki and older Windows review packages. Protected main and external deployment remain separate boundaries.
 
 </details>
 
-After each clear, a short **Boss defeated** moment lets the existing fall or final pose stay visible before the next choices appear. Fifteen bosses currently have full falling sequences; fifty-one have final defeat poses. The next vote keeps its full time.
+After each clear, a five-second **Boss defeated** moment lets the existing fall or final pose stay visible. **Preparing the next encounter…** and a countdown explain the pause; the final fight prepares results. Fifteen bosses currently have full falling sequences; fifty-one have final defeat poses. The next vote keeps its full time.
 
-Online rooms open a **Waiting room** with the player list and a copyable code. Use **Prepare equipment** while waiting; the host presses **Start run**. The **Room code** button remains available during play. Selecting a specific map keeps it for the run; the two random options choose once or before each fight. Painted cover and themed scenery apply across all thirty-six map/difficulty combinations. New rendered/human acceptance remains open.
+Online rooms open a **Waiting room** with the player list and a copyable code. Use **Prepare equipment** while waiting; the host presses **Start run**. The **Room code** button remains available during play. Selecting a specific map keeps it for the run; the two random options choose once or before each fight. Painted cover and themed scenery apply across all thirty-six map/difficulty combinations. Random-map options show a filled picture of the six maps. The player card uses actual character headshots, separate health/shield bars and clear coins, skill points and ammo. New rendered/human acceptance remains open.

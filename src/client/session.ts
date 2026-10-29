@@ -42,11 +42,15 @@ export type RoomSummary = {
   players: number;
   maximumPlayers: number;
   phase: string;
+  hasPassword:boolean;
 };
+export type RoomJoin={roomId?:string;code?:string;password?:string};
+export type RoomJoinRetry=Omit<RoomJoin,'password'>;
 export class Session {
   view: View | null = null;
   id = 'solo';
   code = '';
+  hasPassword=false;
   online = false;
   status = '';
   queuePosition = 0;
@@ -116,21 +120,15 @@ export class Session {
   }
   async connect(
     options: ConnectionOptions,
-    join?: { roomId?: string; code?: string },
+    join?: RoomJoin,
     visibility: 'public' | 'private' = 'public',
+    createPassword?:string,
   ) {
     this.online = true;
     await this.warmServer();
     const client = new Client(this.endpoint);
     let roomId = join?.roomId;
-    if (join?.code) {
-      const response = await fetch(
-        this.endpoint + '/api/rooms/code/' + encodeURIComponent(join.code.toUpperCase()),
-        { signal: AbortSignal.timeout(10000) },
-      );
-      if (!response.ok) throw Error(response.status === 429 ? 'ui.errorRate' : 'ui.errorCode');
-      roomId = ((await response.json()) as { roomId: string }).roomId;
-    }
+    if (join?.code&&!roomId)roomId=(await this.lookupRoom(join.code,false)).roomId;
     const {
       serverEndpoint: _endpoint,
       practiceVariant: _practiceVariant,
@@ -144,6 +142,7 @@ export class Session {
       createKey: crypto.randomUUID(),
       visibility,
       code: join?.code?.toUpperCase(),
+      password:roomId?join?.password:createPassword,
       admissionId: await this.admit(roomId ? 'join' : 'create'),
     };
     let room: Room<WorldState>;
@@ -151,6 +150,10 @@ export class Session {
       room = roomId
         ? await client.joinById<WorldState>(roomId, settings, WorldState)
         : await client.create<WorldState>('grave', settings, WorldState);
+    } catch(error){
+      if(error instanceof Error&&['passwordRequired','invalidPassword'].includes(error.message))throw Error('ui.errorRoomPassword');
+      if(error instanceof Error&&error.message==='invalidPasswordSetting')throw Error('ui.roomPasswordHelp');
+      throw error;
     } finally {
       await this.cancelAdmission();
     }
@@ -159,6 +162,14 @@ export class Session {
       throw Error('ui.errorNetwork');
     }
     this.attach(room, client);
+  }
+  async lookupRoom(code:string,warm=true):Promise<{roomId:string;hasPassword:boolean}>{
+    if(warm)await this.warmServer();
+    const response=await fetch(this.endpoint+'/api/rooms/code/'+encodeURIComponent(code.toUpperCase()),{signal:AbortSignal.timeout(10000)});
+    if(!response.ok)throw Error(response.status===429?'ui.errorRate':'ui.errorCode');
+    const value=await response.json();
+    if(typeof value.roomId!=='string'||typeof value.hasPassword!=='boolean')throw Error('ui.errorServer');
+    return {roomId:value.roomId,hasPassword:value.hasPassword};
   }
   private async warmServer() {
     this.notify('ui.serverWaking');
@@ -231,8 +242,9 @@ export class Session {
     this.id = room.sessionId;
     // Own the retry lifetime so leaving during a retry cannot reopen an old session.
     room.reconnection.enabled = false;
-    room.onMessage('welcome', (m: { code: string; checkpointStatus?: CheckpointStatus; teamRecord?: TeamRecordStatus }) => {
+    room.onMessage('welcome', (m: { code: string;hasPassword?:boolean; checkpointStatus?: CheckpointStatus; teamRecord?: TeamRecordStatus }) => {
       this.code = m.code;
+      this.hasPassword=m.hasPassword===true;
       this.receiveCheckpointStatus(m.checkpointStatus);
       if (m.teamRecord) this.receiveTeamRecord(m.teamRecord);
       this.notify('ui.ready');

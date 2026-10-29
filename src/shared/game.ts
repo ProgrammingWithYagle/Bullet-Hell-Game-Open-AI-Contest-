@@ -10,6 +10,7 @@ import { BrutalVolley } from './brutal-volley.ts';
 import { encounterAssists, phaseShieldBreak, encounterPhases, bossPatternPhase, encounterVariant, variantRules } from './encounter-policy.ts';
 import {combatReviveAllowed,revivedHealth,revivalShield,passiveRegenerationMultiplier,selfReviveAllowed,selfReviveCharges,maximumPersonalShield,startingShieldFraction} from './recovery-policy.ts';
 import {smallWakesIds} from './small-wakes-director.ts';
+import {smallWakesSpawn} from './small-wakes-body-bounds.ts';
 import { earlyWatchBossIds, earlyWatchMovement } from './early-watch-director.ts';
 import { constablePattern, moveConstable } from './constable-signature.ts';
 import { freshProgress, validProgress, type RunProgress } from './run-progress.ts';
@@ -864,6 +865,7 @@ export class Game {
       staggerUntil: 0,
       vulnerableUntil: 0,
     };
+    Object.assign(this.boss,smallWakesSpawn(this.boss.id,this.boss,this.bossDefinition().radius,this.arena.bounds,this.obstacles));
     this.arenaHazardAt=this.combatTick+ticks(rule.arenaDifficulty.lavaWarningSeconds);
     this.lavaHitAt.clear();
     this.attackAt = this.bossPhases()[0].attacks.map((_, i) => this.combatTick + ticks(2 + i * 2));

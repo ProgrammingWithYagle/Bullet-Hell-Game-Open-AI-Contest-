@@ -339,6 +339,10 @@ Build **2026.10.28-volatile-distillation** adds Crazed-only conical columns whil
 
 Normal/Brutal chemistry, base combat, fixed3--grade, selected art and individual music remain. A240-case issued/current owner comparison checks unaffected movement, cues, clocks and damage. Separate actual-Game map/phase, real recipe/health/prediction and owner/observer tests exercise the new chemistry. Current full-suite/CI and exact-runtime evidence are recorded with the checkpoint; software samples are not human clears or final balance. Roster66/ordinary deficit85/original quality12of60/48remaining stay unchanged. The shared earned-SP General mobility branch is deferred during public polish. [Mechanics and limits](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/VOLATILE_DISTILLATION.md).
 
+## Current encounter presentation (protocol 41)
+
+Boss defeated keeps the existing fall or final pose visible for five seconds and adds a preparation message and countdown before choices or results. Cobble Crab and the other two Small Wakes bosses now keep their full painted footprint within the selected map’s floor, using all animation-frame bounds. Their collision radius stays the same, and the final pose retains its last actual position. This addresses visible Crab artwork crossing Triage Yard’s edge. Native software/asset evidence is separate from rendered and human acceptance.
+
 ## First Watch visual polish (protocol 38)
 
 In `2026.10.28-first-watch`, a violet catalytic reaction has an angular warning center, followed by a local shock ring and starburst inside its existing damage radius. Reduced motion retains a static burst and boundary. Pale mixed coolant keeps its separate water mark and purpose. This changes presentation only: reaction damage, warning/lifetime, chemical authority and all phase ownership remain. The prior software balance samples retain their own source identities; human combat readability and final balance review remain open.

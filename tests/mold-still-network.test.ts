@@ -40,7 +40,7 @@ test("exact issued37 local Practice/profile progress migrates to38 with strict r
       contentRevision: issued,
     };
   const after = Game.restoreOffline(old).offlineCheckpoint()!;
-  assert.equal(PROTOCOL, 40);
+  assert.equal(PROTOCOL, 41);
   assert.notEqual(CONTENT_REVISION, issued);
   assert.equal(after.protocolVersion, PROTOCOL);
   assert.equal(after.contentRevision, CONTENT_REVISION);

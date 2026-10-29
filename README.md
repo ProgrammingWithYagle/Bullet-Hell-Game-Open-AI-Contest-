@@ -4,11 +4,11 @@
 
 A cooperative gothic bullet-hell game. Dodge attacks, defeat a boss, vote on the next contract and spend your rewards on a build. Play solo or with friends.
 
-The current feature branch uses **build 2026.10.29-medic-recovery / protocol 40**. [Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains this unfinished development work; protected main is a separate release boundary.
+The current feature branch uses **build 2026.10.29-interface-clarity / protocol 41**. [Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains this unfinished development work; protected main is a separate release boundary.
 
-Current source **fe13d84** passes 808 local checks and both exact-source CI jobs. It includes the map/lobby and Medic/shield rules; current human balance and rendered acceptance remain open. [Exact checkpoint evidence](reviews/medic-recovery-2026-10-29/checkpoint-status.json).
+The current interface/password follow-up passes all818local software checks. It adds character headshots, separate health/shield bars, room-code controls within menus, optional room passwords, clearer boss-defeat preparation and the Crab floor-bound fix. Current source CI, frozen preview and Wiki receipts are tracked in [the review folder](reviews/interface-clarity-2026-10-29); rendered/human acceptance remains open.
 
-After each boss clear, a five-second **Boss defeated** moment lets the existing fall or final pose finish before the next choices. Fifteen bosses have full falling sequences; fifty-one have final poses.
+After each boss clear, a five-second **Boss defeated** moment lets the existing fall or final pose finish with a preparation message and countdown before the next choices or results. Fifteen bosses have full falling sequences; fifty-one have final poses.
 
 Server team records now save real shared results and offer filters and team history. Chat has its own space during menus and keeps its fight position. The matching local previews include these changes; hosted global rankings still need coordinated deployment.
 

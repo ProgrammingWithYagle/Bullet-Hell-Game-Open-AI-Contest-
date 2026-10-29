@@ -90,7 +90,7 @@ test('known protocol39 local Practice saves retain map choices and progress; ser
   const g=new Game({difficulty:'hard',arenaSelection:'randomRun',maxPlayers:1});
   const p=g.addPlayer('solo','Iona','medic');p.coins=643;
   const old=g.offlineCheckpoint()!;old.protocolVersion=39;
-  const copy=Game.restoreOffline(old);assert.equal(PROTOCOL,40);assert.equal(copy.arena.id,g.arena.id);
+  const copy=Game.restoreOffline(old);assert.equal(PROTOCOL, 41);assert.equal(copy.arena.id,g.arena.id);
   assert.equal(copy.players.get('solo')!.coins,643);assert.equal(copy.settings.arenaSelection,'randomRun');
   assert.throws(()=>Game.restoreOffline({...old,serverOnly:true}),/versionMismatch/);
   assert.throws(()=>Game.restoreOffline({...old,contentRevision:'0'.repeat(64)}),/versionMismatch/);

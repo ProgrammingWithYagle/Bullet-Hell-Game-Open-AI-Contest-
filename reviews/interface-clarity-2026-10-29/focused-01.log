@@ -1,0 +1,60 @@
+✔ an explicitly selected map stays fixed in every mode, through falls, choices, saves and later fights (98.7846ms)
+✔ random-run maps stay fixed and random-each-fight changes only on deployment, reproducibly across saves (15.189ms)
+✖ authored route floors remain still throughout a fall; one defeat cue is emitted and old local saves retain the chosen map (5.5233ms)
+✔ waiting-room names, classes, host status, map choice and counts are readable and escaped in all fifteen catalogs (34.8287ms)
+✔ public and private rooms wait for their host, accept their code during play and retain one map and defeat position for both peers (1166.3906ms)
+✔ room passwords use separate salted verifiers, bounded Unicode text and exact case/space matching (189.2812ms)
+Room connection was closed unexpectedly (4002): 
+Room connection was closed unexpectedly (4002): 
+Room connection was closed unexpectedly (4002): 
+✖ real public/private password rooms reject missing/wrong passwords, prompt lookup safely, reconnect and keep host authority (8635.2468ms)
+✔ protocol40 local saves keep equipment, economy, selected map and identity; server checkpoints stay strict (6.9711ms)
+✔ independent native-alpha derivation matches every visible Small Wakes pose and anchor (274.821ms)
+✔ actual Crab movement and every possible pose stay on every map/difficulty floor in both phases (2188.4335ms)
+✔ all three Small Wakes identities deploy with their complete painted footprint and physical body clear of cover (10.509ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 9
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 11393.969
+
+✖ failing tests:
+
+test at tests\room-lobby.test.ts:1:2638
+✖ authored route floors remain still throughout a fall; one defeat cue is emitted and old local saves retain the chosen map (5.5233ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  41 !== 40
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\room-lobby.test.ts:49:105)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 41,
+    expected: 40,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\room-password.test.ts:1:1896
+✖ real public/private password rooms reject missing/wrong passwords, prompt lookup safely, reconnect and keep host authority (8635.2468ms)
+  AssertionError [ERR_ASSERTION]: Password room state timed out
+      at until (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\room-password.test.ts:13:82)
+      at async TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\room-password.test.ts:51:7)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

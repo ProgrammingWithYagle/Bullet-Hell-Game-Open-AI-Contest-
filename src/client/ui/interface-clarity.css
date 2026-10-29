@@ -1,0 +1,36 @@
+/* Legible paper menus and a compact, independent player-status card. */
+.setup-steps button{font-size:.83rem;font-weight:600;color:#d5dfca}
+.setup-steps button:disabled{opacity:1;color:#bbcbbd;background:#1b342d}
+.setup-steps button[aria-current=step]{background:#344d3b;color:#fff0c4;border-color:#b3a572}
+.setup-heading h1{color:#f4ebd1;font-weight:600}.setup-heading p{color:#d5dfcc}
+.room-run-settings dt{color:#435b49;font-weight:600}.room-run-settings dd{color:#18382c;font-weight:600}
+.waiting-room-help{color:#203f30}.room-player-list li{background:#e2e8cf;border-color:#8b9d83;align-items:center;justify-content:flex-start}
+.room-player-list small{color:#3f5745}.room-player-list bdi{font-weight:600;color:#163829}.room-player-list .room-connection{margin-inline-start:auto;flex:none}
+.room-connection.connected{color:#235c36}.room-connection.disconnected{color:#795020}.room-host{background:#304c38;color:#fff0c8;border-color:#64764e}
+.room-player-portrait{width:3rem;height:3rem;flex:none;border:1px solid #71846c;border-radius:.35rem;overflow:hidden;background:#233d32}
+.character-headshot{display:block;width:100%;height:100%;overflow:hidden}
+.room-code-card{background:#173b30;color:#f3e9cd;border-color:#617e66}.room-code-card>strong{color:#ffe1a1}.room-code-card>small{color:#f4e7c3}
+.dialog .room-code-card button{background:#d9d6b7;color:#18392b}
+.menu-room-invite-slot:empty{display:none}.room-invite-hud[data-placement=menu]{position:static;max-width:none;width:100%;margin-block:.35rem .7rem}
+.room-invite-hud[data-placement=menu]>summary{margin-inline-start:0;background:#d2d9bd;color:#183d2c;border-color:#809576;font-size:.85rem}
+.room-invite-hud[data-placement=menu]>div{position:static;max-width:none;background:#173b30;color:#f4e9cb}
+.dialog-layout.with-chat>.dialog:has(>.menu-room-invite-slot){grid-template-rows:auto auto minmax(0,1fr) auto}
+.random-map-detail{position:relative;overflow:hidden;min-height:18rem;display:block}.map-collage{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:2px;width:100%;height:100%;overflow:hidden;background:#142b25}
+.map-collage>img{width:100%;height:100%;min-width:0;min-height:0;object-fit:cover;display:block}.random-map-detail>.map-collage{position:absolute;inset:0}.map-thumbnail>.map-collage{position:absolute;inset:0}.map-thumbnail{position:relative;overflow:hidden}
+.player-vitals{display:grid;gap:.6rem;width:clamp(15rem,27vw,21rem);max-width:calc(100vw - 2.4rem);min-width:0;flex:0 0 auto;padding:.8rem;background:#142b25f5;border-color:#a5ac83;border-radius:.65rem;box-shadow:0 .35rem 1.5rem #071a1566}
+.player-vitals span,.player-vitals strong,.player-vitals small,.player-vitals output{white-space:normal;min-width:0;overflow-wrap:anywhere;width:auto}
+.vitals-heading{display:flex;gap:.75rem;align-items:center;min-width:0}.player-headshot{position:relative;display:block;width:3.6rem;height:3.6rem;flex:none;background:#2d493c;border:1px solid #b9b184;border-radius:.4rem;overflow:hidden}
+.player-cosmetic{position:absolute;bottom:0;inset-inline-end:0;background:#142b25d9;border-radius:.2rem}.player-cosmetic .ink-icon{width:1rem;height:1rem}
+.vitals-identity{display:grid;gap:.15rem;min-width:0;flex:1}.vitals-identity strong{font-size:1rem;line-height:1.2;color:#fff0d0}.vitals-identity>span{font-size:.8rem;color:#d5dfc4}.vitals-identity small{font-size:.72rem;color:#e1c78d}
+.vital-meter-label{display:flex;justify-content:space-between;align-items:baseline;gap:.75rem;font-size:.76rem;line-height:1.25}.vital-meter-label>span{font-size:inherit;color:#e4e8d2}.vital-meter-label>output{font-variant-numeric:tabular-nums;text-align:end;flex:none;color:#fff1d0}
+.player-vitals progress{height:.7rem;width:100%;margin:.25rem 0 0;border:1px solid #63816a;background:#071c17}.player-vitals progress::-webkit-progress-bar{background:#071c17}.health-meter progress::-webkit-progress-value{background:#a4d291}.health-meter progress::-moz-progress-bar{background:#a4d291}.shield-meter progress::-webkit-progress-value{background:#83c5d6}.shield-meter progress::-moz-progress-bar{background:#83c5d6}.shield-meter[data-unavailable=true]{opacity:.65}
+.vitals-resources{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.4rem;padding-top:.45rem;border-top:1px solid #68816d88}.vital-resource{display:grid;grid-template-columns:auto minmax(0,1fr);gap:.15rem .25rem;align-items:center;min-width:0;padding:.25rem;background:#223f3380;border-radius:.25rem}.vital-resource .ink-icon{width:1rem;height:1rem;color:#d8c38b}.vital-resource>span{font-size:.65rem;color:#d9dfc5;line-height:1.15}.vital-resource>strong{grid-column:1/-1;font-size:1rem;line-height:1.1;color:#fff1d0;font-variant-numeric:tabular-nums}
+.bottomline{align-items:flex-end}.bottomline .ability-list{min-width:0;flex:1 1 auto}.bottomline .squad{min-width:0;max-width:9rem;overflow-wrap:anywhere}
+.boss-defeated-banner .boss-defeated-next{font-size:.85rem;color:#f0dfad;line-height:1.35}.boss-defeated-countdown{font-variant-numeric:tabular-nums;margin-inline-start:.45rem}
+@media(max-height:560px),(max-width:760px){.player-vitals{width:15rem;padding:.55rem;gap:.35rem}.player-headshot{width:2.5rem;height:2.5rem}.vitals-heading{gap:.5rem}.vitals-identity strong{font-size:.85rem}.vitals-identity small{font-size:.65rem}.vital-meter-label{font-size:.67rem}.player-vitals progress{height:.5rem;margin-top:.15rem}.vital-resource>strong{font-size:.85rem}.vital-resource>span{font-size:.6rem}.vitals-resources{padding-top:.3rem}.bottomline{gap:.5rem}.room-run-settings{gap:.7rem 1.2rem}}
+@media(pointer:coarse){.playing .player-vitals{max-width:calc(100vw - 2.4rem)}}
+.room-password-dialog{width:min(29rem,calc(100vw - 2rem));max-height:calc(100dvh - 2rem);overflow:auto;background:#e3dcc3;color:#1a322a;border:1px solid #668368;border-radius:.6rem;padding:1.3rem;box-shadow:0 1rem 5rem #001c16cc}
+.room-password-dialog::backdrop{background:#071c17bd}.room-password-dialog form{display:grid;gap:.85rem}.room-password-dialog h2,.room-password-dialog p{margin:0}.room-password-dialog label{display:grid;gap:.4rem}.room-password-dialog input{width:100%;box-sizing:border-box}.room-password-dialog .actions{justify-content:flex-end}.room-password-dialog [role=alert]{color:#822e22;font-weight:600}.room-password-help{font-size:.8rem;color:#ced9c5;max-width:38rem;line-height:1.5}.room-password-status{color:#294d34;font-weight:600}.room-list-lock{display:inline-flex;margin-inline-end:.5rem;vertical-align:middle}.room-list-lock .ink-icon{width:1.2rem;height:1.2rem}
+.lobby-navigation [aria-pressed=true]{color:#fff0ce}.room-player-list li>div{min-width:0;flex:1}.room-player-list .room-connection{max-width:36%;overflow-wrap:anywhere}
+.room-chat-shell[data-placement=combat] .room-chat-toggle{bottom:var(--combat-chat-bottom,16rem)}.room-chat-shell[data-placement=combat] .room-chat{bottom:calc(var(--combat-chat-bottom,16rem) + 3rem);max-height:max(8rem,calc(100dvh - var(--combat-chat-bottom,16rem) - 9rem))}
+.room-list-host{display:block;margin-bottom:.3rem;overflow-wrap:anywhere;font-size:1rem}

@@ -212,7 +212,7 @@ test('protocol-12 Practice migration preserves the secret offer and personal sol
   delete save.settings.runId;
   delete save.player.progress;
   const restored = Game.restoreOffline(save);
-  assert.equal(PROTOCOL, 40);
+  assert.equal(PROTOCOL, 41);
   assert.equal(restored.phase, 'secretOffer');
   assert.deepEqual(restored.campaignBank, g.campaignBank);
   assert.deepEqual(restored.endless.state, g.endless.state);

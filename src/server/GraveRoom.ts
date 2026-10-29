@@ -1,5 +1,6 @@
 import { Room, ServerError, type Client, type ISendOptions } from '@colyseus/core';
 import { randomBytes } from 'node:crypto';
+import {createRoomPassword,matchesRoomPassword} from './room-password.ts';
 import { performance } from 'node:perf_hooks';
 import { Encoder } from '@colyseus/schema';
 import { encodeEvents } from '../shared/wire-events.ts';
@@ -29,6 +30,7 @@ type Metadata = {
   visibility: string;
   contentRevision: string;
   phase: string;
+  hasPassword:boolean;
 };
 type Options = {
   mode: 'short' | 'standard' | 'long' | 'raid' | 'endless';
@@ -44,6 +46,7 @@ type Options = {
   name: string;
   classId: ClassId;
   admissionId?: string;
+  password?:string;
 };
 export const privateRooms = new Map<string, string>();
 export const roomCodes = new Map<string, string>();
@@ -58,6 +61,8 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
   roomCode = '';
   private creatorKey = '';
   private creatorUsed = false;
+  private passwordVerifier:Awaited<ReturnType<typeof createRoomPassword>>=null;
+  get hasPassword(){return this.passwordVerifier!==null;}
   private shotOwners = new Map<number, string>();
   private instrumented = new WeakSet<Client>();
   private readyAt = new WeakMap<Client, number>();
@@ -93,6 +98,8 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       throw new ServerError(400, 'invalidSettings');
     if (typeof options.createKey !== 'string' || !/^[a-f0-9-]{36}$/.test(options.createKey))
       throw new ServerError(400, 'invalidCreateKey');
+    try{this.passwordVerifier=await createRoomPassword(options.password);}
+    catch{throw new ServerError(400,'invalidPasswordSetting');}
     try {
       capacity.addRoom(this.roomId, options.admissionId);
     } catch {
@@ -130,6 +137,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       visibility: options.visibility,
       contentRevision: CONTENT_REVISION,
       phase: 'lobby',
+      hasPassword:this.hasPassword,
     });
     do { this.roomCode = code(); } while (roomCodes.has(this.roomCode));
     roomCodes.set(this.roomCode, this.roomId);
@@ -196,7 +204,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       );
     }, 30);
   }
-  onAuth(client: Client, options: Options) {
+  async onAuth(client: Client, options: Options) {
     if(!this.isTestingServer()&&options.openingBossId!==undefined)throw new ServerError(400,'testingSelectionDisabled');
     if (options.protocolVersion !== PROTOCOL || options.contentRevision !== CONTENT_REVISION)
       throw new ServerError(409, 'versionMismatch');
@@ -209,6 +217,8 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
     const creator = !this.creatorUsed && options.createKey === this.creatorKey;
     if (this.privateCode && !creator && options.code !== this.privateCode)
       throw new ServerError(403, 'invalidCode');
+    if(!creator&&this.passwordVerifier&&!await matchesRoomPassword(this.passwordVerifier,options.password))
+      throw new ServerError(403,options.password===undefined||options.password===''?'passwordRequired':'invalidPassword');
     if (creator) this.creatorUsed = true;
     return true;
   }
@@ -242,6 +252,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
     client.send('welcome', {
       id: client.sessionId,
       code: this.roomCode,
+      hasPassword:this.hasPassword,
       practice: true,
       prototype: 'grave-accord-development',
       protocolVersion: PROTOCOL,

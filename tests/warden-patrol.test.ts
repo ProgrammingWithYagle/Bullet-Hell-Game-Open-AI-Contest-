@@ -323,7 +323,7 @@ test('issued protocol18 Practice retains money, skills and identity under the ne
   save.contentRevision =
     '535eb34c7cdabce5ad2fe910ea0a792278a7cc08e360b4f5712d7ee2d9e767f6';
   const restored = Game.restoreOffline(save);
-  assert.equal(PROTOCOL, 40);
+  assert.equal(PROTOCOL, 41);
   assert.equal(restored.settings.runId, g.settings.runId);
   assert.equal(restored.players.get('solo')!.coins, 999);
   assert.deepEqual(restored.players.get('solo')!.skills, p.skills);

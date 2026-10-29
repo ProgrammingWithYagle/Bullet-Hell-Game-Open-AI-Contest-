@@ -1,6 +1,28 @@
 # Changelog
 
-Development build **2026.10.29-medic-recovery**, protocol 40. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.29-interface-clarity**, protocol 41. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-29 — Clear player status, room invitations and password-protected rooms
+
+### Know what happens after a boss falls
+
+- The five-second Boss defeated beat now says Preparing the next encounter with a visible countdown. The final fight says Preparing your results, and an optional extra-fight decision says Preparing the next choice. The existing fall, sound cue, reward timing and full vote duration remain.
+- Cobble Crab and the two other Small Wakes bosses now deploy and move within bounds derived from every painted animation frame. Their existing collision radius remains unchanged, and the defeat pose keeps the actual final position. This addresses Crab artwork crossing Triage Yard’s floor edge while its collision anchor was still inside.
+
+### Read the team and your character at a glance
+
+- The lower-left player card uses actual character headshots, independent health and shield bars, separate coins/skill-points/ammo counts and wrapping name/class/build text. Combat chat sits above the measured card height. Waiting-room setting labels and roster colors receive stronger contrast; the accepted Waiting room / Prepare equipment distinction stays.
+- Room-code controls move into normal menu flow during equipment, threat/mutation choices, the shop and Settings, keeping countdowns and action buttons separate. The random-map options use a filled six-map picture collage in both the option and large preview.
+
+### Choose an optional room password
+
+- Hosts can set a case-sensitive 4–64-character password when creating a public or private room. Protected public rooms show a lock, and entering by listing or code prompts for the password. Wrong-password retry preserves the chosen name/class and asks again without retaining the old secret. Public rooms can still be open; private rooms require their code as well as any configured password.
+- The authority enforces passwords with independent salted scrypt verifiers. Only the protected/open flag appears in listings and welcome messages; plaintext and verifiers stay out of game state, metadata, saves and the application’s browser storage. A reserved reconnect uses its existing identity without asking again.
+
+### Review boundaries
+
+- Protocol41 requires a matching backend. Exact known protocol40 local Practice saves preserve equipment, economy, map policy and run identity; signed server checkpoints remain strict. Both public and testing builds share these changes.
+- Software, transport and native-asset checks are separate from rendered/human, physical-device, listening and native-language acceptance. Earlier previews, original artwork and failed evidence remain preserved. Future shield-cap branches and selective blocking remain notes only.
 
 ## 2026-10-29 — Distinct Medic revivals and clear difficulty recovery rules
 

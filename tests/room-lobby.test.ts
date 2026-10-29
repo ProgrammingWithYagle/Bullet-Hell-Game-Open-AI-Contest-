@@ -46,7 +46,7 @@ test('authored route floors remain still throughout a fall; one defeat cue is em
   finishBossDefeat(g);assert.equal(g.arena.id,before);assert(!g.drainEvents().some(e=>e.type==='sound'&&e.id==='boss-defeated'));
   const old=g.offlineCheckpoint()! as unknown as Record<string,unknown>;old.protocolVersion=38;
   delete old.arenaId;delete (old.settings as Record<string,unknown>).arenaSelection;
-  const restored=Game.restoreOffline(old);assert.equal(restored.settings.arenaSelection,'fixed');assert.equal(PROTOCOL, 40);
+  const restored=Game.restoreOffline(old);assert.equal(restored.settings.arenaSelection,'fixed');assert.equal(PROTOCOL, 41);
   assert.throws(()=>Game.restoreOffline({...old,serverOnly:true}),/versionMismatch/);
   assert.throws(()=>Game.restoreAuthoritative({...g.authoritativeCheckpoint(),protocolVersion:38}),/versionMismatch/);
   assert.equal(restored.offlineCheckpoint()!.contentRevision,CONTENT_REVISION);

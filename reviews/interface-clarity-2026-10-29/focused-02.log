@@ -1,0 +1,47 @@
+✔ the defeat status counts actual remaining ticks and distinguishes the next fight, extra choice and results in all catalogs (129.5525ms)
+✔ all seven actual portraits have bounded headshots; player status and room roster keep resources independent and text escaped (5.5655ms)
+✔ room-code placement puts every menu in flow, hides only the duplicate waiting-room card and gives Settings priority (0.2252ms)
+✔ the actual room-code controller retains one open control and focus across menu rebuilds without stealing another field’s focus (0.5631ms)
+✔ the real chat form retains its draft, focus and input guard as it moves through upgrades, settings and combat (1.7373ms)
+✔ chat history refresh and menu replacement keep the draft; successful send clears it and disabled/offline chat cannot block controls (101.1487ms)
+✔ C toggles chat, Enter starts typing, and text/copy/custom gameplay bindings remain usable (0.998ms)
+✔ an explicitly selected map stays fixed in every mode, through falls, choices, saves and later fights (81.6924ms)
+✔ random-run maps stay fixed and random-each-fight changes only on deployment, reproducibly across saves (12.3086ms)
+✔ authored route floors remain still throughout a fall; one defeat cue is emitted and old local saves retain the chosen map (1.8972ms)
+✔ waiting-room names, classes, host status, map choice and counts are readable and escaped in all fifteen catalogs (22.3931ms)
+✔ public and private rooms wait for their host, accept their code during play and retain one map and defeat position for both peers (1217.6835ms)
+✔ room passwords use separate salted verifiers, bounded Unicode text and exact case/space matching (174.6078ms)
+Room connection was closed unexpectedly (4002): 
+Room connection was closed unexpectedly (4002): 
+Room connection was closed unexpectedly (4002): 
+Room connection was closed unexpectedly (4002): 
+Room connection was closed unexpectedly (4002): 
+Room connection was closed unexpectedly (4002): 
+Room connection was closed unexpectedly (4002): 
+✔ real public/private password rooms reject missing/wrong passwords, prompt lookup safely, reconnect and keep host authority (1857.6719ms)
+✖ protocol40 local saves keep equipment, economy, selected map and identity; server checkpoints stay strict (3.1907ms)
+✔ independent native-alpha derivation matches every visible Small Wakes pose and anchor (260.9578ms)
+✔ actual Crab movement and every possible pose stay on every map/difficulty floor in both phases (2094.1825ms)
+✔ all three Small Wakes identities deploy with their complete painted footprint and physical body clear of cover (9.5481ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 17
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4295
+
+✖ failing tests:
+
+test at tests\room-password.test.ts:1:5666
+✖ protocol40 local saves keep equipment, economy, selected map and identity; server checkpoints stay strict (3.1907ms)
+  Error: invalidBuild
+      at Game.restoreOffline (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\src\shared\game.ts:2748:13)
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\room-password.test.ts:64:79)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)

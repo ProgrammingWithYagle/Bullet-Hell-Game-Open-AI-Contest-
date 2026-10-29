@@ -18,12 +18,15 @@ import { arenaPreviewMarkup, arenaPreviewModel } from '../arena-preview.ts';
 import { expeditionText, type ExpeditionMessage } from '../expedition-text.ts';
 import { data, implementedBossIds } from '../../shared/game.ts';
 import { implementedClassIds, type ClassId, type BossId } from '../../shared/protocol.ts';
-import { Session, type ConnectionOptions } from '../session.ts';
+import { Session, type ConnectionOptions,type RoomJoin,type RoomJoinRetry } from '../session.ts';
+import {promptRoomPassword} from './room-password.ts';
+import {validRoomPassword} from '../../shared/room-password-policy.ts';
 import { assets } from '../assets.ts';
 import { bossClassification } from '../threat-text.ts';
 import { languages, locale, number, setLanguage, t } from '../i18n.ts';
 import { icon } from './icons.ts';
 import { modePreviewMarkup } from './mode-preview.ts';
+import {mapCollage} from './map-collage.ts';
 import { escape as e } from './html.ts';
 import { tutorial } from './tutorial.ts';
 import { savedBoundary } from '../storage.ts';
@@ -33,8 +36,9 @@ type Hooks = {
   launch: (
     online: boolean,
     options: ConnectionOptions,
-    join?: { roomId?: string; code?: string },
+    join?: RoomJoin,
     visibility?: 'public' | 'private',
+    createPassword?:string,
   ) => void;
   profileChanged: () => Promise<void>;
   settingsHTML: () => string;
@@ -60,8 +64,9 @@ export function portrait(classId: string, size = 'large') {
   const image = productionPortrait ?? (classId === 'medic' ? assets.medic : assets.lineup);
   return `<div class="survivor-portrait ${size} ${isolated ? 'isolated' : ''}" role="img" aria-label="${e(data.classes[index]?.survivor ?? '')}" style="--person:${index};background-image:url('${image}')"></div>`;
 }
-export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: TeamBoardSelection) {
-  let page = initialRecords ? 'leaderboards' : 'home',
+export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: TeamBoardSelection,retryJoin?:RoomJoinRetry) {
+  let hostPassword='';
+  let page = retryJoin?'join':initialRecords ? 'leaderboards' : 'home',
     previewClass: string = selected.classId,
     previewMode: string = selected.mode,
     previewMap = arenaId;
@@ -100,6 +105,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
     boss: expeditionText(locale, 'boss'), cover: expeditionText(locale, 'cover'),
     lava: expeditionText(locale, 'lava'),
   }, assets.arenaCovers, assets.arenaWorlds);
+  const randomMapImages=()=>mapCollage(Object.fromEntries(data.arenas.map(a=>[a.id,assets.arenaWorlds[a.id]??assets.arenaGrounds[arenaPreviewModel(a.id,selected.difficulty).groundKey]])));
   const randomMap = (id: string) => id === 'randomRun' || id === 'randomEncounter';
   const mapChoiceName = (id: string) => t(randomMap(id) ? 'ui.' + (id === 'randomRun' ? 'randomMapRun' : 'randomMapEncounter') : 'arena.' + id + '.name');
   const difficultyCaption = (id: string) => copy(id as ExpeditionMessage);
@@ -130,9 +136,9 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
       const random = randomMap(previewMap);
       const choices = [...data.arenas.map(a => a.id), 'randomRun', 'randomEncounter'];
       const detail = random
-        ? `<div class="random-map-detail" aria-hidden="true">${icon(previewMap)}</div><div><h2>${e(mapChoiceName(previewMap))}</h2><p>${e(t(previewMap === 'randomRun' ? 'ui.randomMapRunHelp' : 'ui.randomMapEncounterHelp'))}</p><p class="setup-helper">${copy('mapDifficulty')}</p></div>`
+        ? `<div class="random-map-detail" aria-hidden="true">${randomMapImages()}</div><div><h2>${e(mapChoiceName(previewMap))}</h2><p>${e(t(previewMap === 'randomRun' ? 'ui.randomMapRunHelp' : 'ui.randomMapEncounterHelp'))}</p><p class="setup-helper">${copy('mapDifficulty')}</p></div>`
         : `${mapPreview(previewMap)}<div><h2>${e(mapChoiceName(previewMap))}</h2><p>${e(t('arena.' + previewMap + '.description'))}</p><p>${e(t('ui.fixedMapHelp'))}</p><p class="setup-helper">${copy('mapDifficulty')}</p></div>`;
-      content.innerHTML = `<div class="setup-heading"><h1>${e(t('ui.map'))}</h1><p>${copy('mapIntro')}</p></div><div class="map-composition"><div class="map-strip" role="group" aria-label="${e(t('ui.map'))}">${choices.map(id => `<button data-map="${id}" class="map-pick ${id === previewMap ? 'selected' : ''}" aria-pressed="${id === previewMap}"><span class="map-thumbnail" aria-hidden="true">${randomMap(id) ? icon(id) : `<img src="${e(assets.arenaWorlds[id] ?? assets.arenaGrounds[arenaPreviewModel(id, selected.difficulty).groundKey])}" alt="" loading="lazy" decoding="async">`}</span><span>${e(mapChoiceName(id))}</span></button>`).join('')}</div><article class="map-detail">${detail}</article></div>${navigation(false)}`;
+      content.innerHTML = `<div class="setup-heading"><h1>${e(t('ui.map'))}</h1><p>${copy('mapIntro')}</p></div><div class="map-composition"><div class="map-strip" role="group" aria-label="${e(t('ui.map'))}">${choices.map(id => `<button data-map="${id}" class="map-pick ${id === previewMap ? 'selected' : ''}" aria-pressed="${id === previewMap}"><span class="map-thumbnail" aria-hidden="true">${randomMap(id) ? randomMapImages() : `<img src="${e(assets.arenaWorlds[id] ?? assets.arenaGrounds[arenaPreviewModel(id, selected.difficulty).groundKey])}" alt="" loading="lazy" decoding="async">`}</span><span>${e(mapChoiceName(id))}</span></button>`).join('')}</div><article class="map-detail">${detail}</article></div>${navigation(false)}`;
     }
     if (page === 'difficulty')
       content.innerHTML = `<div class="setup-heading"><h1>${e(t(labels[page]))}</h1><p>${copy('difficultyIntro')}</p></div><div class="difficulty-cards" role="group" aria-label="${e(t(labels[page]))}">${data.difficulties.map((d) => `<button data-difficulty="${d.id}" class="difficulty-pick ${d.id === selected.difficulty ? 'selected' : ''}" ${!difficultyAvailable(d.id) ? 'disabled' : ''} aria-pressed="${d.id === selected.difficulty}"><span class="difficulty-emblem" aria-hidden="true">${icon('difficulty-' + d.id)}</span><span class="difficulty-name">${e(t('difficulty.' + d.id))}</span>${d.id === 'baby' ? `<span class="difficulty-recommendation">${copy('recommended')}</span>` : ''}<span class="difficulty-description">${difficultyCaption(d.id)}</span>${!difficultyAvailable(d.id) ? `<small>${icon('lock')}${e(t('ui.hardUnlock'))}</small>` : ''}</button>`).join('')}</div><section class="difficulty-summary" aria-live="polite" aria-atomic="true"><div><h2>${e(t('difficulty.' + selected.difficulty))}</h2><p>${e(t('ui.reviveRulesHelp'))}</p>${difficultyRulesMarkup(selected.difficulty)}</div><dl class="difficulty-stats">${(() => {const d = data.difficulties.find(d => d.id === selected.difficulty)!; return [['stat.health', d.health], ['stat.damage', d.damage], ['stat.bossSpeed', d.speed]].map(([key, value]) => `<div><dt>${e(t(String(key)))}</dt><dd>×${number(Number(value), 2)}</dd></div>`).join('');})()}</dl></section>${navigation(false)}`;
@@ -148,7 +154,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
         )
         .join(
           '',
-        )}</div><p class="muted">${e(t(visibility === 'offline' ? 'ui.offlineNotice' : 'ui.practiceNotice'))}</p>${visibility !== 'offline' ? `<p class="muted">${e(t('ui.leaderboardPrivacy'))}</p>` : ''}${capacityNotice()}${button('launch', t(visibility === 'offline' ? 'ui.play' : 'ui.createRoom'), 'play', 'class="primary launch"')}</section></div>${navigation(false, true)}`;
+        )}</div><p class="muted">${e(t(visibility === 'offline' ? 'ui.offlineNotice' : 'ui.practiceNotice'))}</p>${visibility !== 'offline' ? `<p class="muted">${e(t('ui.leaderboardPrivacy'))}</p>` : ''}${visibility!=='offline'?`<label class="name-label room-password-label">${e(t('ui.roomPasswordOptional'))}<input id="host-room-password" type="password" autocomplete="new-password" maxlength="128" aria-describedby="host-password-help"></label><p id="host-password-help" class="room-password-help">${e(t('ui.roomPasswordHelp'))}</p>`:''}${capacityNotice()}${button('launch', t(visibility === 'offline' ? 'ui.play' : 'ui.createRoom'), 'play', 'class="primary launch"')}</section></div>${navigation(false, true)}`;
     if(TESTING_BUILD&&page==='home'){
       const banner=document.createElement('p');banner.className='testing-banner';banner.textContent=t('ui.testingBuild');
       content.prepend(banner);
@@ -261,13 +267,18 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
             ' · ' +
             bossClassification(option.value, selected.practiceVariant);
       };
+    const hostPasswordInput=host.querySelector<HTMLInputElement>('#host-room-password');
+    if(hostPasswordInput){hostPasswordInput.value=hostPassword;hostPasswordInput.oninput=()=>{hostPassword=hostPasswordInput.value;};}
     byId('launch', () => {
+      if(visibility!=='offline'&&!validRoomPassword(hostPassword,true)){showError('ui.roomPasswordHelp');hostPasswordInput?.focus();return;}
+      const password=visibility==='offline'?undefined:hostPassword;hostPassword='';if(hostPasswordInput)hostPasswordInput.value='';
       selected.name = host.querySelector<HTMLInputElement>('#name')!.value.trim() || 'Survivor';
       hooks.launch(
         visibility !== 'offline',
         { ...selected },
         undefined,
         visibility === 'private' ? 'private' : 'public',
+        password,
       );
     });
     host.querySelector<HTMLSelectElement>('#language')!.onchange = async (event) => {
@@ -332,6 +343,10 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
         selected.name = host.querySelector<HTMLInputElement>('#name')!.value.trim() || 'Survivor';
         selected.classId = host.querySelector<HTMLSelectElement>('#join-class')!.value as ClassId;
       };
+      const launchJoin=(join:RoomJoinRetry,locked:boolean,retry=false)=>{
+        if(locked)promptRoomPassword(host,t,password=>hooks.launch(true,{...selected},{...join,password}),retry);
+        else hooks.launch(true,{...selected},join);
+      };
       byId('join-code', () => {
         capture();
         const code = host.querySelector<HTMLInputElement>('#code')!.value.trim().toUpperCase();
@@ -339,7 +354,12 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
           showError('ui.errorCode');
           return;
         }
-        hooks.launch(true, { ...selected }, { code });
+        const trigger=host.querySelector<HTMLButtonElement>('#join-code')!;trigger.disabled=true;
+        void(async()=>{
+          try{const room=await new Session(selected.serverEndpoint).lookupRoom(code);if(trigger.isConnected)launchJoin({roomId:room.roomId,code},room.hasPassword);}
+          catch(error){if(trigger.isConnected)showError(error instanceof Error&&error.message.startsWith('ui.')?error.message:'ui.errorNetwork');}
+          finally{if(trigger.isConnected)trigger.disabled=false;}
+        })();
       });
       host.querySelector<HTMLInputElement>('#code')!.onkeydown = event => {
         if (event.key === 'Enter') {
@@ -348,11 +368,13 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
         }
       };
       byId('refresh', () => {
+        const list=host.querySelector<HTMLElement>('#rooms'),refresh=host.querySelector<HTMLButtonElement>('#refresh');
+        if(!list||!refresh||refresh.disabled)return;
+        refresh.disabled=true;list.textContent=t('ui.loading');
         void (async () => {
           try {
-            const rooms = await new Session(selected.serverEndpoint).rooms(),
-              list = host.querySelector<HTMLElement>('#rooms');
-            if (!list) return;
+            const rooms = await new Session(selected.serverEndpoint).rooms();
+            if (!list.isConnected) return;
             list.replaceChildren();
             if (!rooms.length) list.textContent = t('ui.noRooms');
             for (const room of rooms) {
@@ -365,18 +387,24 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
                 number(room.players) +
                 '/' +
                 number(room.maximumPlayers);
+              const hostName=document.createElement('strong');hostName.className='room-list-host';hostName.textContent=t('ui.lobbyHost')+': '+room.name;b.prepend(hostName);
+              if(room.hasPassword){const lock=document.createElement('span');lock.className='room-list-lock';lock.innerHTML=icon('lock');const label=document.createElement('span');label.className='sr-only';label.textContent=t('ui.roomPasswordProtected');lock.append(label);b.prepend(lock);}
               b.disabled = room.players >= room.maximumPlayers;
               b.onclick = () => {
                 capture();
-                hooks.launch(true, { ...selected }, { roomId: room.roomId });
+                launchJoin({roomId:room.roomId},room.hasPassword);
               };
               list.append(b);
             }
           } catch {
-            showError('ui.errorNetwork');
+            if(list.isConnected){list.textContent=t('ui.errorNetwork');showError('ui.errorNetwork');}
+          }finally{
+            if(refresh.isConnected)refresh.disabled=false;
           }
         })();
       });
+      host.querySelector<HTMLButtonElement>('#refresh')!.click();
+      if(retryJoin){const target=retryJoin;retryJoin=undefined;launchJoin(target,true,true);}
     }
     if (focusSelector) host.querySelector<HTMLElement>(focusSelector)?.focus({ preventScroll: true });
   }
@@ -385,6 +413,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
   }
   function go(next: string) {
     page = next;
+    if(next==='home')hostPassword='';
     render();
     window.scrollTo({ top: 0, behavior: 'auto' });
     const heading = host.querySelector<HTMLElement>('#setup-content h1');

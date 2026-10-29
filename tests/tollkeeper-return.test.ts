@@ -323,7 +323,7 @@ test("known protocol25 local Practice and profile history migrates exactly while
   old.protocolVersion = 25;
   old.contentRevision = rev;
   const restored = Game.restoreOffline(old).offlineCheckpoint()!;
-  assert.equal(PROTOCOL, 40);
+  assert.equal(PROTOCOL, 41);
   assert.equal(restored.contentRevision, CONTENT_REVISION);
   assert.deepEqual(restored.player, save.player);
   assert.deepEqual(restored.completedBossForms, save.completedBossForms);

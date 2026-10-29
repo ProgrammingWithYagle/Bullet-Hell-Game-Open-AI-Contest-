@@ -1,3 +1,13 @@
+# Interface clarity follow-up: source ready for publication
+
+Build **2026.10.29-interface-clarity / protocol41** passes the complete818/818/0 native software gate, TypeScript, fifteen locales, production build and71atlas contracts. Review authority is **reviews/interface-clarity-2026-10-29**. Source CI, fresh frozen previews and authorized Wiki synchronization are next; do not claim them complete yet. New unused ports are testing5234/backend2608 and public5235/backend2609.
+
+Current changes implement5233 feedback: stronger labels, real character headshots and separate HP/shield/resource display, room-code controls inside menus, filled random-map imagery, actual Crab footprint containment and optional enforced room passwords. Boss defeated has a next-encounter preparation message/countdown, with accurate final-results/extra-choice wording. Existing Medic/shield policy, accepted C toggle/footer and online menu behavior remain. Future shield-cap branches/selective blocking are notes only.
+
+The preceding goal turn made progress; the broad current-content polish goal stays active. Preserve every prior preview/backend/package/raw report, including failed current checks. Browser automation remains disabled; no CUA or headless bypass. Keep PR14draft/protected main separate, use the same checkout, no delegation, new checkout, merge, hosted game deployment, paid service or contest submission. Human/rendered, native-language, device, listening, WAN/endurance/capacity and coordinated release acceptance remain open. Wiki publication is already authorized.
+
+## Preserved previous checkpoint
+
 # Current checkpoint: Medic recovery, shields and map polish
 
 Build **2026.10.29-medic-recovery / protocol 40**, source **fe13d84c570f0eb91f67c5af07e4034943af2142**. The local gate and both CI jobs for this source pass **808 tests, 808 passed, 0 failed**, plus TypeScript, authored content, fifteen locales, native RGBA, production build and 71 atlas contracts. Focused checks pass 191/191. [Complete evidence](../reviews/medic-recovery-2026-10-29/checkpoint-status.json) records exact hashes and limits.

@@ -450,7 +450,7 @@ test("fifteen locales and known protocol22 saves/profiles preserve phase help an
   old.contentRevision =
     "9598869248912ad6a787d6e72791183acf4e12d38da92f2a677164f93e3f51c7";
   const migrated = Game.restoreOffline(old).offlineCheckpoint()!;
-  assert.equal(PROTOCOL, 40);
+  assert.equal(PROTOCOL, 41);
   assert.equal(migrated.contentRevision, CONTENT_REVISION);
   assert.deepEqual(migrated.completedBossForms, save.completedBossForms);
   assert.deepEqual(migrated.player, save.player);

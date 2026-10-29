@@ -1,5 +1,6 @@
 import type { View } from '../../shared/view.ts';
 import { escape as e } from './html.ts';
+import {characterHeadshot} from './character-headshot.ts';
 type Translate = (key: string, args?: Record<string, string | number>) => string;
 
 export function mapChoiceLabel(view: View, t: Translate) {
@@ -30,8 +31,8 @@ export function bindRoomCode(host: HTMLElement, code: string, t: Translate) {
     }
   };
 }
-export function waitingRoomMarkup(view: View, me: string, code: string, t: Translate, number: (value: number) => string) {
+export function waitingRoomMarkup(view: View, me: string, code: string, t: Translate, number: (value: number) => string,portraits?:Record<string,string>,hasPassword=false) {
   const host = view.owner === me;
   const maximum = view.run.maximumPlayers ?? (view.run.mode === 'endless' ? 50 : view.run.mode === 'raid' ? 16 : 8);
-  return `<div class="waiting-room"><p class="waiting-room-help">${e(t(host ? 'ui.lobbyHostHint' : 'ui.lobbyGuestHint'))}</p>${roomCodeMarkup(code,t)}<dl class="room-run-settings"><div><dt>${e(t('ui.chooseMode'))}</dt><dd>${e(t('mode.'+view.run.mode+'.name'))}</dd></div><div><dt>${e(t('ui.map'))}</dt><dd>${e(mapChoiceLabel(view,t))}</dd></div><div><dt>${e(t('ui.chooseDifficulty'))}</dt><dd>${e(t('difficulty.'+view.run.difficulty))}</dd></div></dl><h3>${e(t('ui.lobbyPlayers',{count:number(view.players.filter(p=>p.connected).length),maximum:number(maximum)}))}</h3><ul class="room-player-list">${view.players.map(p=>`<li><div><bdi>${e(p.name)}</bdi>${p.id===view.owner?`<span class="room-host">${e(t('ui.lobbyHost'))}</span>`:''}<small>${e(t('class.'+p.classId+'.name'))}</small></div><span class="room-connection ${p.connected?'connected':'disconnected'}">${e(t(p.connected?'ui.lobbyConnected':'ui.lobbyDisconnected'))}</span></li>`).join('')}</ul></div>`;
+  return `<div class="waiting-room"><p class="waiting-room-help">${e(t(host ? 'ui.lobbyHostHint' : 'ui.lobbyGuestHint'))}</p>${roomCodeMarkup(code,t)}${hasPassword?`<p class="room-password-status">${e(t('ui.roomPasswordProtected'))}</p>`:''}<dl class="room-run-settings"><div><dt>${e(t('ui.chooseMode'))}</dt><dd>${e(t('mode.'+view.run.mode+'.name'))}</dd></div><div><dt>${e(t('ui.map'))}</dt><dd>${e(mapChoiceLabel(view,t))}</dd></div><div><dt>${e(t('ui.chooseDifficulty'))}</dt><dd>${e(t('difficulty.'+view.run.difficulty))}</dd></div></dl><h3>${e(t('ui.lobbyPlayers',{count:number(view.players.filter(p=>p.connected).length),maximum:number(maximum)}))}</h3><ul class="room-player-list">${view.players.map(p=>`<li>${portraits?`<span class="room-player-portrait">${characterHeadshot(p.classId,portraits[p.classId])}</span>`:''}<div><bdi>${e(p.name)}</bdi>${p.id===view.owner?`<span class="room-host">${e(t('ui.lobbyHost'))}</span>`:''}<small>${e(t('class.'+p.classId+'.name'))}</small></div><span class="room-connection ${p.connected?'connected':'disconnected'}">${e(t(p.connected?'ui.lobbyConnected':'ui.lobbyDisconnected'))}</span></li>`).join('')}</ul></div>`;
 }

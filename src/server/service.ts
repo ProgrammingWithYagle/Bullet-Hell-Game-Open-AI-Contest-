@@ -200,12 +200,13 @@ export function createGameServer(
             .filter((r) => !r.privateCode)
             .map((r) => ({
               roomId: r.roomId,
-              name: 'Gatehouse Vigil',
+              name: r.game.players.get(r.state.owner)?.name??'',
               mode: r.metadata.mode,
               difficulty: r.metadata.difficulty,
               players: r.clients.length,
               maximumPlayers: Math.min(r.maxClients, capacity.limit),
               phase: r.game.phase,
+              hasPassword:r.hasPassword,
               contentRevision: CONTENT_REVISION,
             })),
         ),
@@ -235,7 +236,7 @@ export function createGameServer(
           res.status(404).json({ error: 'invalidCode' });
           return;
         }
-        res.json({ roomId });
+        res.json({ roomId,hasPassword:liveRooms.get(roomId)?.hasPassword??false });
       });
     },
   });

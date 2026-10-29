@@ -375,7 +375,7 @@ test("fifteen locales and known protocol23 local saves preserve help, form/build
   old.contentRevision =
     "da37e2a0e2beb54343495ce39027211df254fa1c79ab42ec3f3360373ad792db";
   const after = Game.restoreOffline(old).offlineCheckpoint()!;
-  assert.equal(PROTOCOL, 40);
+  assert.equal(PROTOCOL, 41);
   assert.equal(after.contentRevision, CONTENT_REVISION);
   assert.deepEqual(after.player, save.player);
   assert.deepEqual(after.completedBossForms, save.completedBossForms);

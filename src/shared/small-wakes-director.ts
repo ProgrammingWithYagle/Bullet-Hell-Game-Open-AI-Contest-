@@ -9,6 +9,7 @@ import {
   type Rect,
 } from "./geometry.ts";
 import type { SignatureContext } from "./boss-director.ts";
+import {smallWakesBorderObstacles} from './small-wakes-body-bounds.ts';
 export const smallWakesIds = [
   "candle-snail",
   "cobble-crab",
@@ -608,6 +609,7 @@ export class SmallWakesDirector {
               : 16;
       const bossObstacles = [
         ...c.obstacles,
+        ...smallWakesBorderObstacles(this.kind,c.bounds??{x:0,y:0,width:1600,height:1000},c.radius),
         ...this.props
           .filter((p) => p.health > 0)
           .map((p) => ({
