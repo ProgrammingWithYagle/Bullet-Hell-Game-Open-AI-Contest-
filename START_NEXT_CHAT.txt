@@ -1,3 +1,17 @@
+# Current checkpoint: Medic recovery, shields and map polish
+
+Build **2026.10.29-medic-recovery / protocol 40**, source **fe13d84c570f0eb91f67c5af07e4034943af2142**. The local gate and both CI jobs for this source pass **808 tests, 808 passed, 0 failed**, plus TypeScript, authored content, fifteen locales, native RGBA, production build and 71 atlas contracts. Focused checks pass 191/191. [Complete evidence](../reviews/medic-recovery-2026-10-29/checkpoint-status.json) records exact hashes and limits.
+
+The frozen public preview is **http://127.0.0.1:5233/**, backend 2607, holding session **44033**. Testing is **http://127.0.0.1:5232/**, backend 2606, holding session **21157**. Each passes 26 served-asset hashes, matching source/audience, room-code join, host-only Start, chat delivery and persistent server-board reads. No fake qualifying scores were posted. The public browser open is queued; this is not a browser observation. Wiki **4919fc4291039733956b49025b3e99c295fbc0d2** matches all 18 pages, 34 images and public hashes.
+
+Current rules are in **docs/MEDIC_RECOVERY.md**: distinct Medic revivals, finite self-recovery in teams, passive regeneration penalties, one combined personal shield cap, and starting shields of Tank 100%, Heavy 50%, Soldier 15%, others zero of the difficulty-adjusted cap. Hellish has no revives, personal shields or passive regeneration. Deliberate healing remains separate. Future Tank/Heavy cap upgrades and selective attack blocking are notes only in **docs/FUTURE_DESIGN_IDEAS.md**.
+
+Included map/lobby source **0feaf34** adds painted cover/lava and surroundings across all 36 layouts, stable fixed-map selection, random once or per fight, a five-second boss ending with one sound, waiting rooms and room codes during play. The current artwork, recovery, shields, sound and balance still need human/rendered review. Prior acceptance covers only the 5229 chat toggle/footer and the basic 5231 ending scene.
+
+Runtime SHA-256 **c41db777e01007ed6a0b99e748d9ac9affe421e9878eb8ee75b960d33665afa4**; local snapshot **504b7d217a584b6c11a3f82d007b90224ea4fba34523295edaff38c027f54bd9**. Preserve all earlier preview roots/listeners, packages, original art and raw receipts, including failures. Browser automation remains disabled; no CUA or headless bypass. Keep the broad polish goal active, PR 14 draft and protected main separate. Wiki sync is authorized. No delegation, new checkout, paid provisioning, merge, hosted deployment or contest submission. The verified a0c8c56 Windows review predates these changes; shared hosted boards/recovery, WAN/endurance/capacity, native-language, listening and device acceptance remain open.
+
+## Preserved previous state
+
 # Medic recovery follow-up in progress
 
 Build2026.10.29-medic-recovery/protocol40 includes the verified map/lobby source0feaf34b9a4221346157fb0d7a50798290bd9205 (795checks). The player’s explicit Medic revival values are Baby100%health+20%shield, Easy75%, Normal45%, Hard30%, Insane1HP, Hellishnone. Medic self-recovery works in teams, remains finite and needs two full seconds. Ordinary lower-difficulty revivals remain100/50/25%; Hard/Insane are Medic-only. Passive regeneration is reduced25/50/100% for all classes on Hard/Insane/Hellish, with active healing separate.
