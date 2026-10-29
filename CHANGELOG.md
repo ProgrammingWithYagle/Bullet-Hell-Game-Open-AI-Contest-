@@ -1,6 +1,18 @@
 # Changelog
 
-Development build **2026.10.28-clear-choices**, protocol 38. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.28-run-recap**, protocol 38. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-28 — A readable recap and named abilities
+
+### Understand how the run ended
+
+- The end screen separates bosses defeated, personally credited clears when they differ, rescues, combat time and class experience from this run. It explains a timeout or a solo/squad defeat in plain words and identifies the mode, difficulty and class.
+- Testing-modified runs show zero class experience and explain that they do not count toward saved progress or records. A survivor who banks a campaign and leaves the optional extension sees the secured campaign count/time. Existing rewards, saving, eligible participation and secret-extension rules remain.
+
+### Show the right hint at the right time
+
+- Countdowns appear only on automatic timed votes, shop, deployment and the secret offer, with a Time left label. Lobby and end screens no longer show a misleading 0:00.
+- Keyboard HUD hints name the actual class abilities beside saved bindings and cooldowns. Touch actions show those same names instead of Q/E letters. Existing input actions, ability timing and charge counts remain. New recap copy covers all fifteen locales, and shared presentation applies to public and testing builds. Rendered, human, native-language and physical-device review remains open.
 
 ## 2026-10-28 — Plain words and clearer choices
 

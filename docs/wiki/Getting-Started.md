@@ -35,7 +35,7 @@ The same presentation improvements apply to public and testing builds. Developme
 | Revive, Accord or neutral interaction | Hold F in range |
 | Use carried supply | 1, 2 or 3 |
 
-These are defaults. **Settings → Controls** remaps keyboard/mouse actions and standard gamepad buttons, with two keyboard bindings per action and independent Hold/Toggle options for firing and interaction. Duplicate/reserved mappings are rejected; touch actions keep their own identity. HUD/tutorial hints follow the chosen keys.
+These are defaults. **Settings → Controls** remaps keyboard/mouse actions and standard gamepad buttons, with two keyboard bindings per action and independent Hold/Toggle options for firing and interaction. Duplicate/reserved mappings are rejected; touch actions keep their own identity. HUD/tutorial hints follow the chosen keys. The HUD and touch buttons name the actual class abilities.
 
 Gamepad uses left/right sticks for movement/aim, right trigger to fire, A to dodge, X to reload, bumpers for abilities, Y for ultimate, B for interaction, and D-pad for supplies. Touch uses twin sticks and action buttons. Physical controller/device acceptance remains open.
 
@@ -46,6 +46,10 @@ Completed fights lead to a 15-second mutation vote, 15-second concealed boss vot
 Offline saves resume at encounter boundaries and retain the build, economy, votes and RNG state. Supported older local saves are migrated within explicit bounds; incompatible or malformed saves are rejected. Online reconnect reserves a slot for 60 seconds while the server process survives. Server-restart recovery is not yet live.
 
 [Current implementation details](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/MIDNIGHT_CIRCUIT_RUNTIME.md) · [Accessibility and Languages](Accessibility-and-Languages)
+
+## At the end of a run
+
+The result screen shows bosses defeated, your credited boss clears when different, rescues, time in combat and class experience from the run. It explains whether time ran out or the survivor/squad could no longer fight. Testing-modified runs show zero experience and do not count toward saved progress or records. A secured campaign result stays tied to its banked count/time when you leave the optional extension. Progress and local records are available from the main menu; a save failure remains a visible error. Lobby and result screens have no countdown. Votes, shop, deployment and the secret offer retain their actual timer under **Time left**.
 
 ## Windows and local network
 

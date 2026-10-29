@@ -17,6 +17,7 @@ import {clerkPhaseName,clerkPhaseHint} from './clerk-text.ts';
 import {ratcatcherPhaseName,ratcatcherPhaseHint} from './ratcatcher-text.ts';
 import {courierPhaseName,courierPhaseHint} from './courier-text.ts';
 import {bossHeaderMarkup} from './ui/boss-header.ts';
+import { phaseCountdownMarkup, runResultsMarkup } from './ui/run-results.ts';
 import {smallWakesPhaseName,smallWakesPhaseHint} from './small-wakes-text.ts';
 import {bossPatternPhase, encounterPhases, phaseMarkers, combatReviveFraction} from '../shared/encounter-policy.ts';
 import { BossPhaseFeedback, constablePhaseHint } from './boss-phase-feedback.ts';
@@ -548,14 +549,14 @@ function update(view: View) {
   const abilityList = $('abilities');
   for (const [key, label, at, name] of [
     ['dodge', t('ui.dodge'), p.dodgeAt, ''],
-    ['q', t('ui.abilityQ'), p.qAt, t('ability.' + cl.abilities[0].id + '.name')],
+    ['q', t('ability.' + cl.abilities[0].id + '.name'), p.qAt, t('ability.' + cl.abilities[0].id + '.name')],
     [
       'e',
-      t('ui.abilityE') + (p.kit.stepCharges > 0 ? ' ×' + number(p.kit.stepCharges) : ''),
+      t('ability.' + cl.abilities[1].id + '.name') + (p.kit.stepCharges > 0 ? ' ×' + number(p.kit.stepCharges) : ''),
       p.kit.stepCharges > 0 ? 0 : p.eAt,
       t('ability.' + cl.abilities[1].id + '.name'),
     ],
-    ['ultimate', t('ui.ultimate'), p.ultimateAt, t('ability.' + cl.ultimate.id + '.name')],
+    ['ultimate', t('ability.' + cl.ultimate.id + '.name'), p.ultimateAt, t('ability.' + cl.ultimate.id + '.name')],
   ] as const) {
     let e = abilityList.querySelector<HTMLElement>('[data-ability="' + key + '"]');
     if (!e) {
@@ -564,7 +565,9 @@ function update(view: View) {
       abilityList.append(e);
     }
     e.className = at <= view.combatTick ? 'ability ready' : 'ability';
-    e.title = name;
+    e.title = name || label;
+    const touch = document.querySelector<HTMLElement>('.touch-buttons [data-action="' + key + '"]');
+    if (touch && touch.textContent !== label) touch.textContent = label;
     const value =
       bindingLabel(inputOptions.bindings[key][0]) +
       ' · ' +
@@ -700,8 +703,11 @@ function renderOverlay(view: View, p: PlayerView) {
     title = t('ui.deploying');
     body = `<p>${text('ui.tutorialTeam')}</p>`;
   } else {
-    title = t(view.phase === 'victory' ? 'ui.victory' : 'ui.defeat');
-    body = `<p>${text('ui.mastery')} · ${number(p.progress.clears)} ${esc(profileText(locale, 'clears'))} · ${number(p.progress.rescues)} ${esc(profileText(locale, 'rescues'))} · <bdi>${number(p.progress.clears * 100)} XP</bdi></p>${view.campaignBank && ['cleared', 'failed'].includes(view.secretStatus) ? '<p>' + esc(extensionText(locale, view.secretStatus === 'cleared' ? 'cleared' : 'failed')) + '</p>' : ''}<p>${text(view.run.testingModified ? 'ui.testingNoRecords' : session?.online ? 'ui.practiceNotice' : 'ui.offlineNotice')}</p><button id="return-menu" class="primary">${text('ui.mainMenu')}</button>`;
+    title = expeditionText(locale, view.phase === 'victory' ? 'resultComplete' : 'resultEnded');
+    body = runResultsMarkup(view, p, {
+      language: locale, mode: t('mode.' + view.run.mode + '.name'), difficulty: t('difficulty.' + view.run.difficulty),
+      className: t('class.' + p.classId + '.name'), number, clock,
+    }) + `${view.campaignBank && ['cleared', 'failed'].includes(view.secretStatus) ? '<p>' + esc(extensionText(locale, view.secretStatus === 'cleared' ? 'cleared' : 'failed')) + '</p>' : ''}${session?.status === 'ui.errorSave' ? `<p role="alert">${text('ui.errorSave')}</p>` : ''}${view.run.testingModified ? '' : `<p>${text(session?.online ? 'ui.practiceNotice' : 'ui.offlineNotice')}</p>`}<button id="return-menu" class="primary">${text('ui.mainMenu')}</button>`;
   }
   const previous =
     document.activeElement instanceof HTMLElement && overlay.contains(document.activeElement)
@@ -713,7 +719,7 @@ function renderOverlay(view: View, p: PlayerView) {
   const scroll = oldScroll?.scrollTop ?? 0, scrollLeft=oldScroll?.scrollLeft ?? 0;
   const samePhase = overlay.dataset.phase === view.phase;
   overlay.dataset.phase = view.phase;
-  overlay.innerHTML = `<section class="dialog ${view.phase === 'lobby' || view.phase === 'shop' ? 'wide' : ''}" role="dialog" aria-modal="true" aria-labelledby="phase-heading"><div class="section-heading"><h2 id="phase-heading" tabindex="-1">${esc(title)}</h2><span id="phase-time"></span></div>${body}</section>`;
+  overlay.innerHTML = `<section class="dialog ${view.phase === 'lobby' || view.phase === 'shop' ? 'wide' : ''}" role="dialog" aria-modal="true" aria-labelledby="phase-heading"><div class="section-heading"><h2 id="phase-heading" tabindex="-1">${esc(title)}</h2>${phaseCountdownMarkup(view.phase, locale)}</div>${body}</section>`;
   if (['lobby', 'shop'].includes(view.phase))
     bindShop(overlay, p, (request) => session?.purchase(request), supplyBindings(), settings.branchingTree,view.run.difficulty);
   overlay.querySelectorAll<HTMLButtonElement>('[data-vote]').forEach(

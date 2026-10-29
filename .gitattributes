@@ -148,3 +148,8 @@ reviews/clear-choices-2026-10-28/**/*.log -text -whitespace
 reviews/clear-choices-2026-10-28/*.mts text eol=lf
 reviews/clear-choices-2026-10-28/*.ps1 text eol=lf
 reviews/clear-choices-2026-10-28/*.svg text eol=lf
+
+# Preserve exact run-recap test/build output and helper source line endings.
+reviews/run-results-2026-10-28/**/*.log -text -whitespace
+reviews/run-results-2026-10-28/*.mts text eol=lf
+reviews/run-results-2026-10-28/*.ps1 text eol=lf

@@ -1,6 +1,6 @@
 # Development progress
 
-Updated 2026-10-28 for **2026.10.28-clear-choices**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
+Updated 2026-10-28 for **2026.10.28-run-recap**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
 
 66 playable identities: 65 ordinary and 1 secret. Three ordinary bosses in every one of fifty subtiers requires 150 ordinary identities, plus secrets; 85 additional ordinary bosses remain.
 
@@ -54,7 +54,7 @@ Updated 2026-10-28 for **2026.10.28-clear-choices**. These counts track specific
 
 ## Remaining release work
 
-- Polish the current public first-visit, setup, loading, combat readability and results experience. Review the matching First Watch public artifact; keep browser/audio/native-language/device/final-balance acceptance explicit. Further presentation and coordinated release preparation remain in progress.
+- Polish and review the current public first-visit, setup, loading, combat readability and results experience. Clear Choices implements plain prompts/mode summaries/difficulty icons shared by both builds. The Run Recap follow-up presents existing results and named abilities and removes untimed countdowns; its own current checks are separate. Keep rendered/human/audio/native-language/device/final-balance acceptance explicit. Coordinated release preparation remains in progress.
 - Review Alchemist Crazed distillation columns, route warnings, coolant condensation and final reflux in the next matching frozen preview. The shared earned-SP General mobility branch remains deferred during public polish.
 - Review shared phase-attack continuity in the next matching frozen preview; software checks are separate from rendered/human/device/final balance acceptance.
 - Review Bellringer Standard calibration and the new Brutal/Crazed return-chain decision in the next exact-source frozen preview; fixed grade3- remains.
