@@ -6,6 +6,7 @@ import { practiceVariantMarkup } from './practice-variant.ts';
 import { desktopBridge } from '../desktop.ts';
 import { mountLan, desktopText } from './lan.ts';
 import {mountLeaderboards} from './leaderboards.ts';
+import type { TeamBoardSelection } from '../team-records.ts';
 import { mountProfile } from './profile.ts';
 import { loadProfile, changeProfile, difficultyUnlocked } from '../profile.ts';
 import history from '../../shared/update-history.json';
@@ -58,8 +59,8 @@ export function portrait(classId: string, size = 'large') {
   const image = productionPortrait ?? (classId === 'medic' ? assets.medic : assets.lineup);
   return `<div class="survivor-portrait ${size} ${isolated ? 'isolated' : ''}" role="img" aria-label="${e(data.classes[index]?.survivor ?? '')}" style="--person:${index};background-image:url('${image}')"></div>`;
 }
-export function mountSetup(host: HTMLElement, hooks: Hooks) {
-  let page = 'home',
+export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: TeamBoardSelection) {
+  let page = initialRecords ? 'leaderboards' : 'home',
     previewClass: string = selected.classId,
     previewMode: string = selected.mode,
     previewMap = arenaId;
@@ -113,7 +114,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks) {
     host.innerHTML = `<div class="expedition-shell ${page === 'home' ? 'at-home' : ''}"><header class="masthead"><button id="brand-home" class="brand">${icon('bell')}<span>GRAVE ACCORD<small>${copy('brandHint')}</small></span></button><div class="masthead-controls"><label class="sr-only" for="language">${e(t('ui.language'))}</label><select id="language" aria-label="${e(t('ui.language'))}">${languages.map(([id, label]) => `<option value="${id}" ${id === locale ? 'selected' : ''}>${e(label)}</option>`).join('')}</select><button id="guide" class="icon-button" aria-label="${e(t('ui.playTutorial'))}" title="${e(t('ui.playTutorial'))}">${icon('tutorial')}</button><button id="settings" class="icon-button" aria-label="${e(t('ui.settings'))}">${icon('engineer')}</button></div></header>${stage >= 0 ? `<nav class="setup-steps" aria-label="${e(t('ui.chooseSetup'))}">${steps.map((step, i) => `<button data-page="${step}" class="${i === stage ? 'current' : ''}" ${i === stage ? 'aria-current="step"' : ''} ${i > stage ? 'disabled' : ''}><b>${number(i + 1)}</b><span>${e(t(labels[step]))}</span></button>`).join('')}</nav>` : ''}<section id="setup-content" class="setup-content"></section><p id="notice" class="setup-notice" role="status" hidden></p><footer class="setup-footer">${TESTING_BUILD ? `<details class="setup-build"><summary><bdi>Grave Accord · ${e(revision.version)}</bdi></summary><p>${e(prototypeNotice[locale])}</p><p>${e(t('ui.translationNotice'))}</p><small><bdi>${e(history.buildId)}</bdi></small></details>` : ''}<a href="https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/wiki" target="_blank" rel="noopener">${e(t('ui.howToPlay'))}</a><button id="changelog" class="footer-link">${e(t('ui.changelog'))}</button></footer></div>`;
     const content = host.querySelector<HTMLElement>('#setup-content')!;
     if (page === 'home')
-      content.innerHTML = `<div class="home-composition"><div class="home-art"><img src="${assets.cover}" alt="Grave Accord" width="1672" height="941" fetchpriority="high"></div><div class="home-actions"><p class="eyebrow">${e(t('ui.chooseSetup'))}</p><h1>${copy('headline')}</h1><p class="home-pitch">${copy('pitch')}</p>${firstWatch() ? `<aside class="first-watch"><h2>${copy('firstWatch')}</h2><p>${copy('welcome')}</p><button id="gentle-start">${icon('play')}<span>${copy('gentleStart')}<small>${e(t('ui.solo'))} · ${e(t('mode.short.name'))} · ${e(t('difficulty.baby'))}</small></span></button></aside>` : ''}<div class="home-buttons">${button('new-run', t('ui.newRun'), 'play', 'class="primary"')}${savedBoundary() ? button('resume-boundary', t('ui.resumeCheckpoint'), 'resume') : ''}${button('join', t('ui.joinRoom'), 'join')}${desktopBridge() ? button('lan', desktopText('title'), 'network') : ''}${button('profile', t('ui.profile'), 'profile')}<button id="leaderboards">${icon('records')}<span>${e(t('ui.localPracticeRecords'))}<small>${copy('deviceRecords')}</small></span></button>${button('tutorial', expeditionText(locale, 'tutorial'), 'tutorial')}</div><p class="setup-helper">${copy('controlsHint')}</p>${capacityNotice()}</div></div>`;
+      content.innerHTML = `<div class="home-composition"><div class="home-art"><img src="${assets.cover}" alt="Grave Accord" width="1672" height="941" fetchpriority="high"></div><div class="home-actions"><p class="eyebrow">${e(t('ui.chooseSetup'))}</p><h1>${copy('headline')}</h1><p class="home-pitch">${copy('pitch')}</p>${firstWatch() ? `<aside class="first-watch"><h2>${copy('firstWatch')}</h2><p>${copy('welcome')}</p><button id="gentle-start">${icon('play')}<span>${copy('gentleStart')}<small>${e(t('ui.solo'))} · ${e(t('mode.short.name'))} · ${e(t('difficulty.baby'))}</small></span></button></aside>` : ''}<div class="home-buttons">${button('new-run', t('ui.newRun'), 'play', 'class="primary"')}${savedBoundary() ? button('resume-boundary', t('ui.resumeCheckpoint'), 'resume') : ''}${button('join', t('ui.joinRoom'), 'join')}${desktopBridge() ? button('lan', desktopText('title'), 'network') : ''}${button('profile', t('ui.profile'), 'profile')}<button id="leaderboards">${icon('records')}<span>${e(t('ui.leaderboards'))}<small>${e(t('ui.localPracticeRecords'))} · ${e(t('ui.teamRecords'))}</small></span></button>${button('tutorial', expeditionText(locale, 'tutorial'), 'tutorial')}</div><p class="setup-helper">${copy('controlsHint')}</p>${capacityNotice()}</div></div>`;
     if (page === 'class') {
       const c = data.classes.find((c) => c.id === previewClass)!;
       content.innerHTML = `<div class="setup-heading"><h1>${e(t(labels[page]))}</h1><p>${e(t('ui.tutorialTeam'))}</p></div><div class="class-composition"><div class="character-roster" role="group" aria-label="${e(t('ui.chooseClass'))}">${data.classes.map((cl) => `<button data-class="${cl.id}" aria-pressed="${cl.id === previewClass}" class="character-pick ${cl.id === previewClass ? 'selected' : ''}">${portrait(cl.id, 'small')}<span>${e(t('class.' + cl.id + '.name'))}<small>${e(cl.survivor)}</small></span>${availableClass(cl.id) ? '' : icon('lock')}</button>`).join('')}</div><div class="character-reveal">${portrait(c.id)}<span class="character-sigil">${icon(c.id)}</span></div><article class="character-story"><span class="eyebrow">${e(c.survivor)}</span><h2>${e(t('class.' + c.id + '.name'))}</h2><p>${e(t('class.' + c.id + '.role'))}</p><p class="lore">${e(t('class.' + c.id + '.lore'))}</p><div class="stat-ribbon"><span>${icon('health')}${number(c.health)} ${e(t('stat.health'))}</span><span>${icon('move')}${number(c.speed)} ${e(t('stat.moveSpeed'))}</span></div><div class="starting-abilities">${[...c.abilities, c.ultimate].map((a) => `<article>${icon(a.slot === 'ultimate' ? 'ultimate' : 'ability')}<div><h3>${e(t('ability.' + a.id + '.name'))}</h3><p>${e(t('ability.' + a.id + '.description'))}</p><small>${e(t('ui.cooldown', { seconds: t('template.seconds', { value: number(a.cooldown) }) }))}</small></div></article>`).join('')}</div>${availableClass(c.id) ? '' : `<p class="availability">${e(t('ui.inProduction'))}</p>`}</article></div>${navigation(!availableClass(c.id))}`;
@@ -140,7 +141,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks) {
         )
         .join(
           '',
-        )}</div><p class="muted">${e(t(visibility === 'offline' ? 'ui.offlineNotice' : 'ui.practiceNotice'))}</p>${capacityNotice()}${button('launch', t('ui.play'), 'play', 'class="primary launch"')}</section></div>${navigation(false, true)}`;
+        )}</div><p class="muted">${e(t(visibility === 'offline' ? 'ui.offlineNotice' : 'ui.practiceNotice'))}</p>${visibility !== 'offline' ? `<p class="muted">${e(t('ui.leaderboardPrivacy'))}</p>` : ''}${capacityNotice()}${button('launch', t('ui.play'), 'play', 'class="primary launch"')}</section></div>${navigation(false, true)}`;
     if(TESTING_BUILD&&page==='home'){
       const banner=document.createElement('p');banner.className='testing-banner';banner.textContent=t('ui.testingBuild');
       content.prepend(banner);
@@ -148,7 +149,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks) {
       content.querySelector('.home-buttons')?.append(unlock);
       unlock.onclick=()=>{unlockTestingDifficulties();unlock.textContent=t('ui.testingUnlocked');};
     }
-    if(page==='leaderboards')mountLeaderboards(content,()=>go('home'));
+    if(page==='leaderboards')mountLeaderboards(content,()=>go('home'),initialRecords?.endpoint ?? selected.serverEndpoint,initialRecords);
     if (page === 'profile')
       mountProfile(
         content,

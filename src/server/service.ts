@@ -11,8 +11,11 @@ import {
   implementedModeIds,
 } from '../shared/protocol.ts';
 import type { RunJournal } from './run-journal.ts';
+import { TeamRun } from './team-run.ts';
+import type { TeamRecordStore, BoardFilter } from './team-record-store.ts';
+import type { TeamRecordStatus } from '../shared/team-records.ts';
 export function createGameServer(
-  options: { createRunJournal?: () => RunJournal; clientOrigins?: string[]; audience?: 'testing'|'public' } = {},
+  options: { createRunJournal?: () => RunJournal; clientOrigins?: string[]; audience?: 'testing'|'public'; records?: TeamRecordStore } = {},
 ) {
   const startedAt = new Date().toISOString();
   const origins = new Set(
@@ -66,10 +69,50 @@ export function createGameServer(
           contentRevision: CONTENT_REVISION,
           practiceOnly: true,
           audience: options.audience??'testing',
+          teamRecords: { available: Boolean(options.records), scope: 'server', persistent: options.records?.persistent ?? false },
           sourceCommit: process.env.RENDER_GIT_COMMIT ?? null,
           capacity: capacity.summary(),
         }),
       );
+      app.use('/api/leaderboards', (req, res, next) => {
+        const key = 'records:' + (req.ip ?? 'local'), now = Date.now();
+        let slot = requests.get(key);
+        if (!slot || slot.reset < now) { slot = { reset: now + 60000, count: 0 }; requests.set(key, slot); }
+        if (++slot.count > 120) { res.setHeader('Retry-After','60'); res.status(429).json({ error:'rateLimited' }); return; }
+        if (requests.size > 10000) for (const [id, old] of requests) if (old.reset < now) requests.delete(id);
+        next();
+      });
+      const boardRead = (read: () => unknown, res: import('express').Response) => {
+        res.setHeader('Cache-Control', 'no-store');
+        if (!options.records) { res.status(503).json({ error: 'boardsUnavailable' }); return; }
+        try {
+          const result = read();
+          if (!result) res.status(404).json({ error: 'recordNotFound' });
+          else res.json(result);
+        } catch (error) {
+          res.status(error instanceof Error && error.name === 'BoardQueryError' ? 400 : 503)
+            .json({ error: error instanceof Error && error.name === 'BoardQueryError' ? 'invalidBoardQuery' : 'boardsUnavailable' });
+        }
+      };
+      app.get('/api/leaderboards', (req, res) => boardRead(() => {
+        const keys = ['mode','difficulty','sizeBand','offset','limit','week'];
+        if (Object.keys(req.query).some(k => !keys.includes(k))
+          || Object.values(req.query).some(v => typeof v !== 'string')) {
+          const error = Error('Invalid query'); error.name = 'BoardQueryError'; throw error;
+        }
+        return options.records!.board({ mode: (req.query.mode ?? 'short') as BoardFilter['mode'],
+          difficulty: String(req.query.difficulty ?? 'normal'), sizeBand: String(req.query.sizeBand ?? 'solo'),
+          offset: req.query.offset === undefined ? 0 : Number(req.query.offset),
+          limit: req.query.limit === undefined ? 10 : Number(req.query.limit),
+          week: req.query.week as string | undefined });
+      }, res));
+      app.get('/api/leaderboards/:runId', (req, res) => boardRead(() => {
+        if (Object.keys(req.query).some(k => k !== 'offset') || Object.values(req.query).some(v => typeof v !== 'string')) {
+          const error = Error('Invalid query'); error.name = 'BoardQueryError'; throw error;
+        }
+        return options.records!.roster(req.params.runId, req.query.offset === undefined ? 0 : Number(req.query.offset));
+      }, res));
+      app.post('/api/leaderboards', (_req, res) => { res.status(405).json({ error: 'serverResultsOnly' }); });
       // Aggregate operational data only: no names, private codes or room IDs.
       // A short cache bounds percentile work when multiple clients inspect it.
       let metricsAt = 0;
@@ -199,6 +242,9 @@ export function createGameServer(
   class ServerRoom extends GraveRoom {
     protected override isTestingServer(){return options.audience!=='public';}
     protected override createRunJournal(){return options.createRunJournal?.();}
+    protected override createTeamRun(changed: (status: TeamRecordStatus) => void) {
+      return options.records && options.audience === 'public' ? new TeamRun(options.records, changed) : undefined;
+    }
   }
   server.define('grave', ServerRoom).filterBy(['mode', 'difficulty', 'contentRevision']);
   return { server, httpServer };

@@ -1,6 +1,6 @@
 # Development progress
 
-Updated 2026-10-28 for **2026.10.28-portable-paths**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
+Updated 2026-10-29 for **2026.10.29-smooth-rooms**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
 
 66 playable identities: 65 ordinary and 1 secret. Three ordinary bosses in every one of fifty subtiers requires 150 ordinary identities, plus secrets; 85 additional ordinary bosses remain.
 
@@ -54,7 +54,7 @@ Updated 2026-10-28 for **2026.10.28-portable-paths**. These counts track specifi
 
 ## Remaining release work
 
-- Continue public polish and coordinated release preparation. Clear Choices/Run Recap are implemented with separate software evidence. Current Windows packaging binds source/client/LAN audience, but its first review archive is unaccepted: original native passed and deeper extracted/copied font loading failed despite identical files. Direct filesystem streaming is the follow-up; re-run actual native and copy/archive checks before accepting a replacement. Human/rendered/listening/native-language/device review remains open.
+- Continue public polish and coordinated release preparation. Current chat/records/endless controls have focused software checks; full source CI and rendered/human/device review remain separate. The corrected c0a6d9b local Windows review passes all three copies and six native fixtures; its earlier failed archive remains preserved.
 - Review Alchemist Crazed distillation columns, route warnings, coolant condensation and final reflux in the next matching frozen preview. The shared earned-SP General mobility branch remains deferred during public polish.
 - Review shared phase-attack continuity in the next matching frozen preview; software checks are separate from rendered/human/device/final balance acceptance.
 - Review Bellringer Standard calibration and the new Brutal/Crazed return-chain decision in the next exact-source frozen preview; fixed grade3- remains.
@@ -66,7 +66,7 @@ Updated 2026-10-28 for **2026.10.28-portable-paths**. These counts track specifi
 - Complete remaining boss special/action art, class special-ability art and rendered animation transitions.
 - Complete final human balance, music/listening, native-language and physical-device acceptance. Browser testing is authorized; a scripted or invulnerable sample is not a personally played clear.
 - Verify active 8/16/50-player mixed progression, WAN and full progression endurance; current headless and scoped local evidence is separate.
-- Complete verified hosted team rankings and durable recovery, including participant credentials, entropy histories/paging, storage ownership and hosted acceptance. The visible local Practice records page is not a trusted ranking service.
+- Deploy and independently accept shared hosted global rankings and durable recovery. Current public authorities implement persistent server-scoped team records with exact scoring and real-network/restart evidence. Shared storage ownership, participant recovery credentials, entropy recovery histories and hosted acceptance remain open.
 - Prepare and verify a new coordinated Windows/browser release with a matching backend; existing immutable Windows and older public builds remain separate.
 
 ## Count definitions

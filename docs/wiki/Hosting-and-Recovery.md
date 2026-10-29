@@ -2,7 +2,7 @@
 
 Local source runs the Vite frontend on port 5173 and the Colyseus service on loopback port 2567. Health is `/api/health`. Offline solo requires only the client and worker. Public room discovery, private six-character codes and reconnect reservations are implemented.
 
-The existing public Site remains the earlier protocol-4 frontend and gameplay. Source pushes, Wiki updates and draft PR changes do not redeploy that Site. Current development source is protocol 24 and requires a matching backend. The issued Windows development archive remains immutable protocol 13; it is a separate build. A public Site owned by a different account must not be replaced without the appropriate authorized deployment path.
+The existing public Site remains the earlier protocol-4 frontend and gameplay. Source pushes, Wiki updates and draft PR changes do not redeploy that Site. Current development source is protocol 38 and requires a matching backend. The issued Windows development archive remains immutable protocol 13; it is a separate build. A public Site owned by a different account must not be replaced without the appropriate authorized deployment path.
 
 ## Capacity and recovery status
 
@@ -29,3 +29,7 @@ Do not restart a local online service while active combat or reconnect reservati
 [Getting Started](Getting-Started) · [Architecture](Architecture) · [Recovery design and gates](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/RECOVERY_IMPLEMENTATION.md) · [Hosting capacity](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/HOSTING_CAPACITY.md)
 
 The Electron desktop app contains its own runtime/assets and starts no server for offline solo. The desktop LAN menu explicitly launches a separate bundled authority; it reports an occupied port without replacing that listener. Automated native fixtures cover two local SDK clients and shutdown. Physical second-machine LAN and manual rendered/audio/device acceptance remain open. [Windows implementation](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/WINDOWS_DESKTOP.md).
+
+## Current server records
+
+Build2026.10.29-smooth-rooms adds authority-written team records, exact scores/ties, filtered/paged reads, retained participant history and process-restart persistence in SQLite. `GRAVE_RECORDS_DB` selects the server file; the default is `data/team-records.sqlite`. Preserve that file across process replacement. A host with ephemeral storage must provide retained storage before promising deployment durability. Desktop LAN uses the app data folder. Testing servers may read boards but never write test results. These server-scoped records do not establish shared deployed global rankings or deployed match recovery.

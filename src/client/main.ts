@@ -2,8 +2,9 @@ import {TESTING_BUILD} from './build-audience.ts';
 import {expeditionText} from './expedition-text.ts';
 import {testingToolsMarkup,unlockTestingDifficulties} from './testing-ui.ts';
 import {RoomChatUI} from './room-chat-ui.ts';
+import { teamResultMarkup } from './ui/team-records.ts';
+import type { TeamBoardSelection } from './team-records.ts';
 import {clerkShelterPower} from './clerk-shelter-power.ts';
-import './ui/runtime-extras.css';
 import {BossGuideState,bossGuideMarkup,bossGuideAvailable} from './boss-guide.ts';
 import './ui/boss-guide.css';
 import {bellPhaseName,bellPhaseHint} from './bell-text.ts';
@@ -39,6 +40,7 @@ import './ui/skill-map.css';
 import './fonts.css';
 import './ui/expedition.css';
 import './ui/votes.css';
+import './ui/runtime-extras.css';
 import { CombatScene } from './scene.ts';
 import { Session, type ConnectionOptions } from './session.ts';
 import { Controls } from './controls.ts';
@@ -164,7 +166,7 @@ function notice(value: string) {
     e.hidden = !value;
   }
 }
-async function menu() {
+async function menu(initialRecords?: TeamBoardSelection) {
   document.body.classList.remove('playing', 'preparing');
   mountSetup(app, {
     resume: () => {
@@ -183,7 +185,7 @@ async function menu() {
     },
     settingsHTML: settingsMarkup,
     bindSettings,
-  });
+  }, initialRecords);
   applySettings();
   if (profileError) {
     notice(t('ui.errorProfile'));
@@ -214,6 +216,7 @@ async function begin(
       scene?.ingest(events);
       for (const e of events) if (e.type === 'sound') void audio.sound(e.id);
     };
+    active.onTeamRecord = () => { if (session === active && active.view) update(active.view); };
     active.onStatus = (key) => {
       const e = $('status');
       if (e) e.textContent = t(key, { seconds: 60, position: active.queuePosition });
@@ -304,8 +307,24 @@ function setupGame(online: boolean) {
   $('boss-guide-copy').append($('boss-phase-note'),$('signature-help'));
   $('boss-guide-button').onclick=()=>setBossGuide(!bossGuide.open);
   const power=document.createElement('span');power.id='clerk-shelter-power';power.hidden=true;$('ammo').after(power);
-  roomChatUI=new RoomChatUI(session!,app,()=>syncPauseState());
+  roomChatUI=new RoomChatUI(session!,app,()=>syncPauseState(), {
+    title: t('ui.roomChat'), message: t('ui.chatMessage'), send: t('ui.chatSend'), note: t('ui.chatEphemeral'), locale,
+  });
   roomChatUI.configure(settings.roomChat,online);
+  for (const id of ['pause-menu', 'boss-guide']) {
+    const dialog = $(id).querySelector<HTMLElement>('.dialog')!;
+    const layout = document.createElement('div');
+    layout.className = 'dialog-layout';
+    for (const name of ['role','aria-modal','aria-labelledby','aria-label']) {
+      const value = dialog.getAttribute(name);
+      if (value !== null) { layout.setAttribute(name,value); dialog.removeAttribute(name); }
+    }
+    const slot = document.createElement('div');
+    slot.id = id + '-chat-slot';
+    slot.className = 'dialog-chat-slot';
+    dialog.before(layout);
+    layout.append(dialog, slot);
+  }
   if(TESTING_BUILD){
     const marker=document.createElement('small');marker.id='testing-run-marker';marker.hidden=true;marker.textContent=t('ui.testingTools')+' · '+t('ui.leaderboardUnranked');$('currency').after(marker);
     const mount=document.createElement('div');mount.innerHTML=testingToolsMarkup(online);$('pause-menu').querySelector('.dialog')!.append(...Array.from(mount.childNodes));
@@ -367,6 +386,7 @@ function setupGame(online: boolean) {
   }
 }
 function syncPauseState() {
+  syncRoomChatPlacement();
   const simulationPaused=bossGuide.pausesSimulation(paused,session?.online??false);
   session?.pause(simulationPaused);
   prediction=new Prediction();
@@ -377,6 +397,12 @@ function syncPauseState() {
     else if(!simulationPaused&&scene.scene.isPaused())scene.scene.resume();
   }
   if(controls){controls.clear();controls.blocked=(bossGuide.blocksInput(paused)||roomChatUI?.blocksInput===true)||session?.view?.phase!=='combat';}
+}
+function syncRoomChatPlacement() {
+  const dock = paused ? $('pause-menu-chat-slot') : bossGuide.open
+    ? $('boss-guide-chat-slot') : session?.view?.phase !== 'combat'
+      ? $('phase-chat-slot') : undefined;
+  roomChatUI?.place(dock ?? undefined);
 }
 function setBossGuide(value:boolean,restoreFocus=true) {
   if(value&&(session?.view?.phase!=='combat'||!bossGuideAvailable(session.view.run.difficulty)))return;
@@ -633,6 +659,7 @@ function update(view: View) {
     view.owner,
     session.id,
     session.code,
+    session.teamRecord,
   ]);
   if (uiKey !== key) {
     uiKey = key;
@@ -679,7 +706,7 @@ function clock(seconds: number) {
 function renderOverlay(view: View, p: PlayerView) {
   const overlay = $('modal');
   overlay.hidden = view.phase === 'combat';
-  if (overlay.hidden) return;
+  if (overlay.hidden) { syncRoomChatPlacement(); return; }
   let body = '',
     title = '';
   if (view.phase === 'mutationVote') {
@@ -713,13 +740,19 @@ function renderOverlay(view: View, p: PlayerView) {
     document.activeElement instanceof HTMLElement && overlay.contains(document.activeElement)
       ? document.activeElement
       : null;
+  if (['victory','defeat'].includes(view.phase)) body += teamResultMarkup(session?.teamRecord)
+    + (session?.teamRecord?.status === 'saved' ? `<button id="view-team-record">${text('ui.teamRecords')}</button>` : '');
+  if (view.run.mode === 'endless' && view.encounter > 0 && ['mutationVote','contractVote','shop','loading'].includes(view.phase))
+    body += `<details class="end-run"><summary>${text('ui.endRun')}</summary><p>${text('ui.endRunHelp')}</p><button id="end-run" ${session?.online && view.owner !== session.id ? 'disabled' : ''}>${text('ui.endRun')}</button></details>`;
   const focusedId = previous?.id;
   const focusedItem = previous?.dataset.inspect;
   const oldScroll=overlay.querySelector('.skill-scroll');
   const scroll = oldScroll?.scrollTop ?? 0, scrollLeft=oldScroll?.scrollLeft ?? 0;
   const samePhase = overlay.dataset.phase === view.phase;
   overlay.dataset.phase = view.phase;
-  overlay.innerHTML = `<section class="dialog ${view.phase === 'lobby' || view.phase === 'shop' ? 'wide' : ''}" role="dialog" aria-modal="true" aria-labelledby="phase-heading"><div class="section-heading"><h2 id="phase-heading" tabindex="-1">${esc(title)}</h2>${phaseCountdownMarkup(view.phase, locale)}</div>${body}</section>`;
+  roomChatUI?.place();
+  overlay.innerHTML = `<div class="dialog-layout" role="dialog" aria-modal="true" aria-labelledby="phase-heading"><section class="dialog ${view.phase === 'lobby' || view.phase === 'shop' ? 'wide' : ''}"><div class="section-heading"><h2 id="phase-heading" tabindex="-1">${esc(title)}</h2>${phaseCountdownMarkup(view.phase, locale)}</div>${body}</section><div id="phase-chat-slot" class="dialog-chat-slot"></div></div>`;
+  syncRoomChatPlacement();
   if (['lobby', 'shop'].includes(view.phase))
     bindShop(overlay, p, (request) => session?.purchase(request), supplyBindings(), settings.branchingTree,view.run.difficulty);
   overlay.querySelectorAll<HTMLButtonElement>('[data-vote]').forEach(
@@ -730,6 +763,8 @@ function renderOverlay(view: View, p: PlayerView) {
       }),
   );
   const start = $('start');
+  const endRun = $('end-run'); if (endRun) endRun.onclick = () => session?.endRun();
+  const records = $('view-team-record'); if (records) records.onclick = () => void leave(true);
   if (start) start.onclick = () => session?.start();
   const back = $('return-menu');
   if (back) back.onclick = () => void leave();
@@ -754,11 +789,14 @@ const supplyBindings = () =>
 function shop(p: PlayerView) {
   return '<div class="loadout-editor">' + shopMarkup(p, supplyBindings(), settings.branchingTree,session?.view?.run.difficulty??'normal') + '</div>';
 }
-async function leave() {
+async function leave(showTeamRecord = false) {
+  const record = session?.teamRecord?.status === 'saved' ? session.teamRecord.record : null;
+  const initialRecords = showTeamRecord && record && session
+    ? { endpoint: session.endpoint, mode: record.mode, difficulty: record.difficulty, sizeBand: record.sizeBand, runId: record.runId } : undefined;
   controls?.clear();
   await session?.close().catch(() => {});
   destroy();
-  await menu();
+  await menu(initialRecords);
   audio.stop();
 }
 function destroy() {

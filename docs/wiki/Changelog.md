@@ -1,6 +1,26 @@
 # Changelog
 
-Development build **2026.10.28-portable-paths**, protocol 38. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.29-smooth-rooms**, protocol 38. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-29 — Clear chat placement and working team records
+
+### Keep chat out of the menus
+
+- During fights, chat keeps its established position. During upgrades, voting, deployment, results, settings and the boss guide, chat has its own space beside the menu on wider screens and above it on smaller screens.
+- The same chat form moves between views, preserving its draft, message history and keyboard focus across purchases, settings and phase changes. Disabling chat or playing offline cannot leave movement blocked.
+
+### Replace the empty online-board page
+
+- Team records now come from the game server, with one shared team rank, filters for all five modes, difficulty, peak squad size and week, expandable participant history, and bounded pages. Records use a persistent SQLite file; room IDs, private codes, reconnect tokens and session IDs never enter public records.
+- Only the public game authority can write results. Solo practice, testing servers, modified runs, zero-duration clears and deadline violations cannot enter these boards. Scoring uses exact integer arithmetic and competition ties. Departed participants retain credit; survival is measured before victory healing. The normal campaign result freezes before the optional secret fight.
+- Endless results rank completed bosses, last-clear combat time and the exact last-clear damage ratio. Failed-fight duration remains visible without improving rank. During a break the host can choose End this run; guests and combat-time requests cannot end it.
+- A failed save leaves the game playable and retries the same frozen result while the room stays open. The results screen links directly to the matching team board; loading failures offer Retry. Expanding a record or loading more keeps existing details in place. Desktop LAN hosting uses its own local persistent records file.
+
+### Verification and publication boundaries
+
+- Focused scoring, persistence, deep-path, history paging, chat DOM and real two-peer/restart checks pass, as do the broader joining/reconnecting/authority/purchase/chat regression checks. The full local gate and exact-source CI remain separate recorded checks.
+- The corrected c0a6d9b Windows review package now passes all original/fresh-deep-extraction/ordinary-deep-copy member hashes and six native offline/LAN fixtures, at277/274character copied font paths. Its earlier failed portable-review archive remains preserved and unaccepted.
+- Team boards are scoped to the selected game server. Shared hosted global rankings, hosted recovery, WAN/endurance/capacity and rendered/human/device/native-language/listening acceptance remain open. The existing protocol4Site and immutable protocol13Windows download are unchanged. No main merge or contest submission is claimed.
 
 ## 2026-10-28 — Load portable files from deeper folders
 

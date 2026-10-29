@@ -17,6 +17,8 @@ import {RoomChat} from '../shared/room-chat.ts';
 import {publicRunSettings} from '../shared/public-run.ts';
 import { RoomJournal } from './room-journal.ts';
 import type { RunJournal } from './run-journal.ts';
+import type { TeamRun } from './team-run.ts';
+import type { TeamRecordStatus } from '../shared/team-records.ts';
 // Bounded fifty-player builds can exceed Schema's 8 KiB initial encode buffer.
 Encoder.BUFFER_SIZE = 64 * 1024;
 type Metadata = {
@@ -55,6 +57,8 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
   private instrumented = new WeakSet<Client>();
   private readyAt = new WeakMap<Client, number>();
   private journal!: RoomJournal;
+  private teamRun?: TeamRun;
+  protected createTeamRun(_changed: (status: TeamRecordStatus) => void): TeamRun | undefined { return undefined; }
   // Only server construction can supply a writer. Matchmaking options and
   // browser requests never provide keys, endpoints or a journal factory.
   protected createRunJournal(): RunJournal | undefined {
@@ -102,6 +106,8 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       openingArenaId: options.openingArenaId,
     };
     this.game = new Game(this.isTestingServer()?settings:publicRunSettings(settings));
+    this.teamRun = this.createTeamRun(status => this.broadcast('teamRecord', status));
+    this.game.scoreObserver = this.teamRun;
     this.state = new WorldState();
     this.journal = new RoomJournal(this.game, this.createRunJournal(), (status) => {
       for (const client of this.clients)
@@ -145,6 +151,9 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
     this.onMessage('start', (client) => {
       if (client.sessionId === this.state.owner) this.journal.start();
     });
+    this.onMessage('endRun', client => {
+      if (client.sessionId === this.state.owner && !this.journal.blocked && this.game.endEndless()) this.teamRun?.finish(this.game);
+    });
     this.onMessage('vote', (client, index: unknown) => {
       if (!this.journal.blocked && typeof index === 'number')
         this.game.vote(client.sessionId, index);
@@ -169,6 +178,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
     this.setFixedTimestep(() => {
       const start = performance.now();
       this.journal.step();
+      this.teamRun?.observe(this.game);
       this.flushEvents();
       this.syncState();
       this.telemetry.ticks.push(performance.now() - start);
@@ -231,6 +241,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       contentRevision: CONTENT_REVISION,
       checkpointStatus: this.journal.status,
       recoveryAvailable: false,
+      teamRecord: this.teamRun?.status,
     });
     const shots = [...this.game.shots.values()].filter(
       (s) => s.owner === 'hostile' || s.owner === client.sessionId,
@@ -264,6 +275,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
     this.transferOwner();
   }
   onDispose() {
+    if (this.game && [...this.game.players.values()].every(p => !p.connected || p.expired)) this.teamRun?.finish(this.game);
     this.journal?.dispose();
     if (this.privateCode) privateRooms.delete(this.privateCode);
     for (const p of this.game?.players.values() ?? []) capacity.release(p.id);

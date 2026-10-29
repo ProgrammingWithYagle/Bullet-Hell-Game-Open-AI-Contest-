@@ -6,4 +6,27 @@
 .room-chat ol{min-height:4rem;max-height:22vh;overflow:auto;margin:0;padding:0;list-style:none;font-size:.85rem}.room-chat li{overflow-wrap:anywhere;margin:.3rem 0}.room-chat time{font-size:.72rem;color:#a8b9ad;margin-inline-end:.4rem}.room-chat bdi{font-weight:bold}.room-chat form{display:flex;gap:.35rem}.room-chat input{min-width:0;flex:1}.room-chat small{font-size:.7rem;color:#b6c7bb}
 @media(max-width:700px){.room-chat-toggle{bottom:13rem;font-size:.75rem}.room-chat{bottom:16rem;max-height:35vh;width:min(20rem,88vw)}}
 
+.dialog-layout{display:grid;grid-template-columns:minmax(0,1fr);gap:1rem;width:min(900px,100%);min-width:0;align-items:start}
+.dialog-layout:has(>.dialog.wide){width:min(1160px,100%)}
+.dialog-layout>.dialog{width:100%;min-width:0}
+.dialog-chat-slot{display:none;min-width:0}
+.dialog-layout.with-chat{width:min(1520px,100%);grid-template-columns:minmax(0,1fr) minmax(16rem,21rem)}
+.dialog-layout.with-chat:has(>.dialog.wide){width:min(1520px,100%)}
+.dialog-layout.with-chat>.dialog-chat-slot{display:block}
+.room-chat-shell[data-placement=menu]{display:grid;gap:.5rem;min-width:0}
+.room-chat-shell[data-placement=menu] .room-chat-toggle{position:static;width:100%;font-size:.9rem}
+.room-chat-shell[data-placement=menu] .room-chat{position:static;width:100%;max-height:calc(100dvh - 8rem)}
+.room-chat-shell[data-placement=menu] .room-chat ol{max-height:min(45dvh,26rem)}
+@media(max-width:1000px){
+  .overlay:has(>.dialog-layout.with-chat){align-items:flex-start}
+  .dialog-layout.with-chat{grid-template-columns:minmax(0,1fr);gap:.6rem}
+  .dialog-layout.with-chat>.dialog-chat-slot{grid-row:1}
+  .dialog-layout.with-chat>.dialog{max-height:max(10rem,calc(100dvh - 7rem))}
+  .dialog-layout.with-chat:has(.room-chat:not([hidden]))>.dialog{max-height:max(10rem,calc(65dvh - 7rem))}
+  .room-chat-shell[data-placement=menu] .room-chat{max-height:max(12rem,30dvh);gap:.25rem}
+  .room-chat-shell[data-placement=menu] .room-chat ol{min-height:2rem;max-height:14dvh}
+}
+
 .records-page{max-width:76rem;margin:auto}.records-tabs,.records-filters{display:flex;flex-wrap:wrap;gap:.7rem;margin:1rem 0}.records-filters label{display:grid;gap:.4rem;min-width:14rem}.records-scroll{overflow:auto} .records-page table{width:100%;border-collapse:collapse;text-align:start}.records-page th,.records-page td{padding:.7rem;border-bottom:1px solid #708c7b66;vertical-align:top}.records-page th{font-size:.8rem;color:#c8d5c5}.records-page details p{max-width:30rem}.records-tabs [aria-pressed=true]{border-color:#d8c18b;background:#4e6250}
+.team-record-list{display:grid;gap:.8rem;margin-block:1rem}.team-record-row{padding:1rem;border:1px solid #789a8677;border-radius:.5rem;background:#10251f44;min-width:0}.team-record-row.your-team-record{border-color:#e6cd8a;box-shadow:inset .25rem 0 #e6cd8a}.team-record-rank{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}.team-record-rank strong{font-size:1.6rem}.team-record-row dl{display:flex;flex-wrap:wrap;gap:1rem 2rem}.team-record-row dt{font-size:.85rem;color:#bcc8b5}.team-record-row dd{margin:0;font-size:1.25rem;font-variant-numeric:tabular-nums}.team-roster{overflow-wrap:anywhere}.team-roster ul{padding-inline-start:1.2rem}.team-roster li{margin-block:.4rem}.team-result{border:1px solid #6e8763;background:#c9d2b5;padding:.85rem;margin-block:1rem}.team-result p{margin-block:.4rem}.end-run{margin-top:1rem;padding-top:.8rem;border-top:1px solid #81987866}
+@media(max-width:600px){.records-filters label{min-width:0;flex:1 1 100%}.team-record-row dl{gap:.7rem 1.1rem}.team-record-row dd{font-size:1.1rem}.records-tabs button{flex:1 1 8rem}}

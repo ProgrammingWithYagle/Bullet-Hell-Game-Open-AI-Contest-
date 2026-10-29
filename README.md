@@ -4,7 +4,9 @@
 
 A cooperative gothic bullet-hell game. Dodge attacks, defeat a boss, vote on the next contract and spend your rewards on a build. Play solo or with friends.
 
-The current feature branch uses **build 2026.10.28-portable-paths / protocol 38**. [Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains this unfinished development work; protected main is a separate release boundary.
+The current feature branch uses **build 2026.10.29-smooth-rooms / protocol 38**. [Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains this unfinished development work; protected main is a separate release boundary.
+
+Server team records now save real shared results and offer filters and team history. Chat has its own space during menus and keeps its fight position. The matching local previews include these changes; hosted global rankings still need coordinated deployment.
 
 ## Your first run
 
@@ -56,7 +58,7 @@ The optional expanded skill map shows all 54 skills per class with zoom, scrolli
 
 ## Development status
 
-The verified Run Recap predecessor `26b76f6` passes the complete local gate and both exact-source CI runs: **761 tests, 761 pass, 0 fail**, plus authored content/locales/RGBA, TypeScript, production build and 71 emitted atlas contracts. [Current checkpoint](docs/CHECKPOINT_2026_10_25.md) binds the source, frozen preview, CI logs and Wiki publication evidence.
+The current smooth-rooms local gate passes **780 tests,780 pass,0 fail**, plus authored content/fifteen locales/RGBA, TypeScript, production build and71atlas contracts. [Current checkpoint](docs/CHECKPOINT_2026_10_25.md) distinguishes source CI, frozen previews, package verification and Wiki evidence. Rendered/human/device acceptance remains open.
 
 Twelve original encounters have implemented quality passes; 48 remain. Content expansion and the proposed General Double Dash/Sprint branch are deferred during public polish. Complete action/facing animation, final encounter tuning, verified hosted rankings and durable online recovery remain unfinished. Rendered, listening, native-language, physical-device, WAN, endurance, capacity and human balance acceptance remain open.
 

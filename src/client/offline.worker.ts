@@ -71,6 +71,8 @@ self.onmessage = (e: MessageEvent) => {
   else if (m.type === 'start') {
     game.start();
     emit();
+  } else if (m.type === 'endRun') {
+    game.endEndless(); emit(true);
   } else if (m.type === 'vote') {
     game.vote('solo', m.index);
     emit(true);

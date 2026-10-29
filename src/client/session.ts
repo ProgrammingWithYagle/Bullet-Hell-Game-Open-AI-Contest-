@@ -19,7 +19,9 @@ import { personalView, type View, type PlayerView } from '../shared/view.ts';
 import { decodeEvents, type WireEvent } from '../shared/wire-events.ts';
 import { savedBoundary, storeBoundary } from './storage.ts';
 import { recordPracticeCampaign } from './progress.ts';
-import { productionGameServer } from './deployment.ts';
+import { defaultGameEndpoint } from './deployment.ts';
+import type { TeamRecordStatus } from '../shared/team-records.ts';
+import { isRankedTeamRecord, rememberTeamRecord } from './team-records.ts';
 export type ConnectionOptions = {
   serverEndpoint?: string;
   name: string;
@@ -62,9 +64,10 @@ export class Session {
   onStatus: (key: string) => void = () => {};
   onPurchase: (result: { ok: boolean; reason?: string }) => void = () => {};
   onCheckpointStatus: (status: CheckpointStatus) => void = () => {};
+  teamRecord?: TeamRecordStatus;
+  onTeamRecord: () => void = () => {};
   constructor(
-    readonly endpoint = import.meta.env?.VITE_GAME_SERVER ??
-      (import.meta.env?.PROD ? productionGameServer : 'http://localhost:2567'),
+    readonly endpoint = defaultGameEndpoint,
   ) {}
   offline(options: ConnectionOptions, resume = false) {
     return new Promise<void>((resolve, reject) => {
@@ -226,9 +229,10 @@ export class Session {
     this.id = room.sessionId;
     // Own the retry lifetime so leaving during a retry cannot reopen an old session.
     room.reconnection.enabled = false;
-    room.onMessage('welcome', (m: { code: string; checkpointStatus?: CheckpointStatus }) => {
+    room.onMessage('welcome', (m: { code: string; checkpointStatus?: CheckpointStatus; teamRecord?: TeamRecordStatus }) => {
       this.code = m.code;
       this.receiveCheckpointStatus(m.checkpointStatus);
+      if (m.teamRecord) this.receiveTeamRecord(m.teamRecord);
       this.notify('ui.ready');
     });
     room.onMessage('checkpointStatus', (m) => this.receiveCheckpointStatus(m?.status));
@@ -244,6 +248,7 @@ export class Session {
     });
     room.onMessage('purchaseResult', (r) => this.onPurchase(r));
     room.onMessage('chat',(m:unknown)=>this.receiveChat(m));
+    room.onMessage('teamRecord', (m: unknown) => this.receiveTeamRecord(m));
     room.onMessage('chatHistory',(m:unknown)=>this.receiveChat(m,true));
     room.onStateChange((state) => this.receive(networkView(state)));
     room.onDrop(() => {
@@ -287,6 +292,15 @@ export class Session {
     if (!this.closed) this.notify('ui.errorNetwork');
   }
   private recordedProgress = '';
+  private receiveTeamRecord(value: unknown) {
+    if (!value || typeof value !== 'object' || !('status' in value)) return;
+    const record = value as TeamRecordStatus;
+    if (!['saved','unavailable','ineligible'].includes(record.status)) return;
+    if (record.status === 'saved' && !isRankedTeamRecord(record.record)) return;
+    if (record.status === 'saved') rememberTeamRecord(this.endpoint, record.record);
+    this.teamRecord = record;
+    this.onTeamRecord();
+  }
   private profileRetryAt = 0;
   private recordedCampaign = '';
   private receive(view: View) {
@@ -353,6 +367,10 @@ export class Session {
     if (this.online) {
       if (this.room?.connection.isOpen) this.room.send('vote', index);
     } else this.worker?.postMessage({ type: 'vote', index });
+  }
+  endRun() {
+    if (this.online) { if (this.room?.connection.isOpen) this.room.send('endRun'); }
+    else this.worker?.postMessage({ type: 'endRun' });
   }
   purchase(request: Omit<Command, 'id'>) {
     const command = { ...request, id: crypto.randomUUID() };

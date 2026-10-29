@@ -1,6 +1,8 @@
 # Grave Accord — team leaderboards
 
-Stage 1 specification, rules version 1, authored 2026-10-22. This document and `content/leaderboards.json` define intended behavior. The arithmetic and ordering fixtures in `reviews/leaderboard-score-fixtures.json` verify the design; they do not establish that an online service, game integration, or public rankings have been implemented.
+Current source implements server-scoped team records with authority-only simulation hooks, SQLite persistence, exact scores/ties, mode/difficulty/size/week filters, paged participant histories, save retries and real multiplayer/restart evidence. The player page is [Records](wiki/Leaderboards.md). Shared deployed global rankings and deployed recovery are separate unfinished hosting gates.
+
+The original Stage1 design below (rules version1, authored2026-10-22) remains the full global-service target. Its D1 HTTP writer/restore/season/cursor requirements are not all provided by the current single-server SQLite implementation. Original arithmetic fixtures are design evidence; current implementation tests are tests/team-records*.test.ts.
 
 ## One rank for one team run
 
@@ -157,3 +159,11 @@ The installed Sites skill's storage and identity references establish D1 binding
 - [Cloudflare Workers Web Crypto](https://developers.cloudflare.com/workers/runtime-apis/web-crypto/): verify HMAC in the hosted HTTP service.
 
 Sources checked 2026-10-22. Hosted configuration, migrations, performance, and live traffic remain later implementation evidence.
+
+## Current server implementation
+
+`TeamRun` receives start/damage/clear events from the authority before victory heals players. It retains opaque run-scoped participant history through departures, counts peak concurrent admitted slots, freezes the timed base result and last-clear Endless tuple, and retries an immutable final snapshot after a write outage. Test authorities never create this writer. Clients cannot submit scores.
+
+`TeamRecordStore` stores immutable competitive counters and paged participant rows in one SQLite transaction. Repeated finalization is idempotent; only the secret-clear badge may increase. Exact BigInt fractions and 49digit damage keys preserve shared competition ranks. GET `/api/leaderboards` accepts mode/difficulty/sizeBand/offset/limit/week; GET `/api/leaderboards/:runId` pages fifty participants. Public client POSTs receive405. Reads are bounded and rate limited. Current-content partitions remain strict; older rows stay on disk and are not silently mixed.
+
+Set `GRAVE_RECORDS_DB` to a retained file; default `data/team-records.sqlite`, `disabled` explicitly disables records. The current server entry point opens it; LAN hosts use `team-records.sqlite` in the app data directory. Current server health still says Practice relative to the unfinished global-service/recovery contract. These boards explicitly say server records. No deployment, storage purchase, shared global acceptance or release is claimed by local tests.

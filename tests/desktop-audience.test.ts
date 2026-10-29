@@ -28,6 +28,9 @@ test(`compiled ${audience} desktop LAN authority reports the matching audience a
     const endpoint = 'http://127.0.0.1:' + port;
     const health = await fetch(endpoint + '/api/health').then(r => r.json());
     assert.equal(health.audience, audience); assert.equal(health.protocolVersion, PROTOCOL); assert.equal(health.contentRevision, CONTENT_REVISION);
+    assert.equal(health.teamRecords.available,true);
+    const board = await fetch(endpoint + '/api/leaderboards?mode=short&difficulty=normal&sizeBand=solo').then(r=>r.json());
+    assert.equal(board.scope,'server'); assert.equal(board.total,0);
     if (audience === 'public') {
       await assert.rejects(new Client(endpoint).create('grave', { openingBossId: 'constable' }), /testingSelectionDisabled/);
     }

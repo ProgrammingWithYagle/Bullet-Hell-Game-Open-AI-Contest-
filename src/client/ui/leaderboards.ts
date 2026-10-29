@@ -3,10 +3,13 @@ import { data } from "../../shared/game.ts";
 import { loadProfile } from "../profile.ts";
 import { locale, number, t } from "../i18n.ts";
 import { escape as e } from "./html.ts";
-export function mountLeaderboards(host: HTMLElement, back: () => void) {
-  let mode = "short",
-    difficulty = "normal",
-    online = false;
+import { mountTeamRecords } from './team-records.ts';
+import { defaultGameEndpoint } from '../deployment.ts';
+import type { TeamBoardSelection } from '../team-records.ts';
+export function mountLeaderboards(host: HTMLElement, back: () => void, endpoint = defaultGameEndpoint, selection?: TeamBoardSelection) {
+  let mode: string = selection?.mode ?? "short",
+    difficulty = selection?.difficulty ?? "normal",
+    online = Boolean(selection);
   const render = () => {
     const rows = localRecords(loadProfile(localStorage).runs, mode, difficulty);
     host.innerHTML =
@@ -23,12 +26,10 @@ export function mountLeaderboards(host: HTMLElement, back: () => void) {
       '">' +
       e(t("ui.onlineBoards")) +
       '</button></div><p class="prototype-note">' +
-      e(t(online ? "ui.leaderboardOffline" : "ui.practiceNotice")) +
+      e(t(online ? "ui.teamRecordScope" : "ui.practiceNotice")) +
       "</p>" +
       (online
-        ? '<a href="https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/wiki/Leaderboards" target="_blank" rel="noopener">' +
-          e(t("ui.leaderboardDetails")) +
-          "</a>"
+        ? '<div id="team-records-content"></div>'
         : '<div class="records-filters"><label>' +
           e(t("ui.leaderboardMode")) +
           '<select id="records-mode">' +
@@ -106,6 +107,7 @@ export function mountLeaderboards(host: HTMLElement, back: () => void) {
               "</tbody></table></div>"
             : "<p>" + e(t("ui.noLocalRecords")) + "</p>")) +
       "</section>";
+    if (online) mountTeamRecords(host.querySelector<HTMLElement>('#team-records-content')!, endpoint, mode, difficulty, selection);
     host.querySelector<HTMLButtonElement>("#records-back")!.onclick = back;
     host.querySelector<HTMLButtonElement>("#records-local")!.onclick = () => {
       online = false;

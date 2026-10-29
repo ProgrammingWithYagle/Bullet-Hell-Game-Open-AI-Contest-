@@ -303,6 +303,7 @@ export class Game {
   readonly votes = new Map<string, number>();
   private nextId = 1;
   testingModified = false;
+  scoreObserver?: { start(game: Game): void; damage(id: string, hp: number): void; clear(game: Game): void };
   private freeShots: Shot[] = [];
   private hostileShots = 0;
   private spawns: Shot[] = [];
@@ -725,6 +726,12 @@ export class Game {
     this.startEncounter();
     return true;
   }
+  endEndless(): boolean {
+    if (this.settings.mode !== 'endless' || this.encounter < 1
+      || !['mutationVote','contractVote','shop','loading'].includes(this.phase)) return false;
+    this.phase = 'victory'; this.phaseEnds = 0; this.votes.clear();
+    return true;
+  }
   private modifier(key: string) {
     let value = 1;
     for (const a of this.mutations) {
@@ -865,6 +872,7 @@ export class Game {
     for (const p of this.roster()) p.terrain = freshTerrain();
     this.bossPrevious = { x: this.boss.x, y: this.boss.y };
     this.events.push({ type: 'sound', id: 'boss-phase' });
+    this.scoreObserver?.start(this);
   }
   private pruneExpired() {
     for (const [id, p] of this.players)
@@ -887,6 +895,7 @@ export class Game {
     this.votes.clear();
   }
   private victory() {
+    this.scoreObserver?.clear(this);
     for (const player of this.players.values()) this.clearPoison(player);
     this.classKits.clear();this.transforms.clear();this.wardenPatrol.clear();
     this.completedBossIds.add(this.boss.id);
@@ -1581,6 +1590,7 @@ export class Game {
     const actual = Math.min(p.health, afterKit - blocked);
     p.health -= actual;
     p.damageTaken += actual;
+    this.scoreObserver?.damage(p.id, actual);
     if (grantInvulnerability) p.invulnerableUntil = this.combatTick + ticks(0.2);
     if (p.health <= 0) {
       this.clearPoison(p);
@@ -1610,6 +1620,7 @@ export class Game {
       const loss = p.health * clerkAppealRules.purpleCurrentHealthFraction;
       p.health -= loss;
       p.damageTaken += loss;
+      this.scoreObserver?.damage(p.id, loss);
     }
     this.damage(p,amount);
     if (first && p.status === 'active') {
@@ -1628,6 +1639,7 @@ export class Game {
     const actual = Math.min(p.health * fraction, Math.max(0,p.health-minimumHealth));
     p.health -= actual;
     p.damageTaken += actual;
+    this.scoreObserver?.damage(p.id, actual);
     p.invulnerableUntil = this.combatTick + ticks(0.2);
     return true;
   }

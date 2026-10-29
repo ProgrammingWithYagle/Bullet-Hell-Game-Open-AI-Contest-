@@ -2,6 +2,7 @@
 import { createGameServer } from '../server/service.ts';
 import { validLanPort } from '../shared/lan.ts';
 import { BUILD_AUDIENCE } from '../client/build-audience.ts';
+import { TeamRecordStore } from '../server/team-record-store.ts';
 const port = Number(process.argv[2]);
 type ParentPort = {
   postMessage(value: unknown): void;
@@ -12,11 +13,14 @@ const send = (message: unknown) => (parent ? parent.postMessage(message) : proce
 let closing = false;
 async function start() {
   if (!validLanPort(port)) throw Error('invalidPort');
-  const { server, httpServer } = createGameServer({ clientOrigins: ['grave://app'], audience: BUILD_AUDIENCE });
+  let records: TeamRecordStore | undefined;
+  try { records = new TeamRecordStore(process.argv[3] ?? ':memory:'); } catch { /* Room play remains available if storage cannot open. */ }
+  const { server, httpServer } = createGameServer({ clientOrigins: ['grave://app'], audience: BUILD_AUDIENCE, records });
   const stop = async () => {
     if (closing) return;
     closing = true;
     await server.gracefullyShutdown(false);
+    records?.close();
     process.exit(0);
   };
   parent?.on('message', (message) => {

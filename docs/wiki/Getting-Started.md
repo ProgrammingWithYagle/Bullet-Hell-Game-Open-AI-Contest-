@@ -97,3 +97,9 @@ Local setup offers Standard, Brutal and Crazed on lower difficulties. Insane fix
 The testing target offers opening-boss/form selection, all-difficulty manual guides, a Solo paused coin/SP panel and tab-only difficulty unlock. The public target randomizes new openings, omits tools and offers optional guides only on Baby. Modified runs disable boundary saving and local records. These local build targets do not replace the old public Site. Settings toggle overhead names and room chat. Home Leaderboards shows actual local Practice records and an explicit unconnected Online boards status. [Build policy](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/TESTING_AND_PUBLIC_BUILDS.md).
 
 Reading the Tutorial keeps the gentle first-run preset available until the profile has a local run record.
+
+## Chat and team results
+
+Room chat keeps its usual position while fighting. During upgrades, breaks and settings it sits beside the menu on wider screens and above it on smaller screens. Your draft stays in the same input as phases change. You can disable room chat in Settings.
+
+Open **Leaderboards** for this device’s practice records or **Team records** from the selected server. Online public-authority runs share one team result; test runs do not enter the board. After a qualifying result, the Team records button opens the matching mode, difficulty and team size. During an Endless break, the host can expand **End this run** to finish and save.

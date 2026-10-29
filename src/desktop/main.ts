@@ -100,7 +100,7 @@ async function startLan(port: number): Promise<LanState> {
   }
   if (starting) return starting;
   starting = new Promise<LanState>((resolve, reject) => {
-    const child = utilityProcess.fork(join(root, 'lan.cjs'), [String(port)], {
+    const child = utilityProcess.fork(join(root, 'lan.cjs'), [String(port), join(app.getPath('userData'), 'team-records.sqlite')], {
       stdio: 'pipe',
       serviceName: 'Grave Accord LAN',
       env: {
@@ -205,6 +205,7 @@ app
         const health = await (await fetch(endpoint + '/api/health')).json();
         if (health.protocolVersion !== PROTOCOL || health.contentRevision !== CONTENT_REVISION || health.audience !== BUILD_AUDIENCE)
           throw Error('LAN protocol, content or audience mismatch');
+        if (!health.teamRecords?.available || !health.teamRecords.persistent) throw Error('LAN team record storage unavailable');
         const client = new Client(endpoint),
           settings = {
             protocolVersion: PROTOCOL,

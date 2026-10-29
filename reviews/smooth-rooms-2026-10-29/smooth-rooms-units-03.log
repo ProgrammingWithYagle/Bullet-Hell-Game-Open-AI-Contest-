@@ -1,0 +1,18 @@
+✔ the real chat form retains its draft, focus and input guard as it moves through upgrades, settings and combat (2.0155ms)
+✔ chat history refresh and menu replacement keep the draft; successful send clears it and disabled/offline chat cannot block controls (21.3969ms)
+✔ team score rounds exact fractions once and damage keys retain safe-integer ratio order (1.8135ms)
+✔ real simulation hooks retain departed entrants, admit waiting players at the next fight and freeze survivors before healing (15.839ms)
+✔ testing changes, zero-duration clears and individual deadline violations never receive team ranks (8.7576ms)
+✔ persistent boards preserve shared competition ranks, exact filters, weekly boundaries and immutable idempotent results (84.1603ms)
+✔ endless ranks use only completed clears and last-clear time/ratio; final failed-fight duration is display only (1.6354ms)
+✔ a failed record write never stops combat and can retry the exact banked result without duplicating it (2.8225ms)
+✔ file-backed records work beyond 300-character paths and historical rosters page past fifty without losing members (60.3039ms)
+✔ the browser accepts only matching board identities and safe display counters; weeks start on Monday in UTC (2.001ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 669.7833
