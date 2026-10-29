@@ -47,7 +47,17 @@ const additional=additionalSourceBinding();
 const preservation=JSON.parse(fs.readFileSync('reviews/connection-clarity-2026-10-29/gate-02/gate-preservation.json'));
 assert(preservation.passed,'Verification and preservation of issued reports must both pass');
 assert.equal(additional.sha256,preservation.additionalSourceBinding.sha256);
-for(const member of additional.members)assert.equal(sha(git('show',commit+':'+member.path)),member.sha256,'Uncommitted art/locale/check input: '+member.path);
+const additionalLineEndingOnlyDifferences = [], committedAdditionalHash = createHash('sha256');
+for(const member of additional.members) {
+  const committed = git('show',commit+':'+member.path), local = fs.readFileSync(member.path);
+  committedAdditionalHash.update(member.path+'\0').update(committed);
+  if(!local.equals(committed)) {
+    assert.equal(member.path,'LICENSE','Uncommitted art/locale/check input: '+member.path);
+    assert(Buffer.from(local.toString().replaceAll('\r\n','\n')).equals(committed),'Unexpected license text change');
+    additionalLineEndingOnlyDifferences.push({file:member.path,localBytes:local.length,committedBytes:committed.length,localSha256:sha(local),committedSha256:sha(committed)});
+  }
+}
+const committedAdditionalSourceSha256 = committedAdditionalHash.digest('hex');
 const candidate = 'output/candidate-connection-clarity-' + audience;
 const endpoint = 'http://127.0.0.1:' + (audience === 'testing' ? 2612 : 2613), url = 'http://127.0.0.1:' + (audience === 'testing' ? 5238 : 5239) + '/';
 const built = spawnSync(process.execPath, ['node_modules/vite/bin/vite.js', 'build', '--outDir', candidate, '--logLevel', 'warn'], {
@@ -87,7 +97,7 @@ fs.mkdirSync(backendRoot);
 const serverPath = backendRoot + '/server.mjs';
 await build({ entryPoints: ['src/server/index.ts'], bundle: true, platform: 'node', format: 'esm', packages: 'external', outfile: serverPath, logLevel: 'silent' });
 const identity = { sourceCommit: commit, buildId: history.buildId, protocol: history.snapshot.protocol, contentRevision: content,
-  audience, additionalSourceBinding: {sha256:additional.sha256,files:additional.files,bytes:additional.bytes}, runtimeSourceSha256, sourceSnapshotSha256, committedSnapshotSha256: committedHash.digest('hex'), lineEndingOnlyDifferences: endings, endpoint };
+  audience, additionalSourceBinding: {sha256:additional.sha256,files:additional.files,bytes:additional.bytes}, committedAdditionalSourceSha256, additionalLineEndingOnlyDifferences, runtimeSourceSha256, sourceSnapshotSha256, committedSnapshotSha256: committedHash.digest('hex'), lineEndingOnlyDifferences: endings, endpoint };
 fs.writeFileSync(root + '/preview-build.json', JSON.stringify(identity, null, 2) + '\n', { flag: 'wx' });
 const members = walk(root).map(file => ({ path: file.slice(root.length + 1), bytes: fs.statSync(file).size, sha256: sha(fs.readFileSync(file)) }));
 const report = { passed: true, createdAt: new Date().toISOString(), ...identity, root: path.resolve(root), url,
