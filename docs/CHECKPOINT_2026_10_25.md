@@ -1,3 +1,19 @@
+# Current local checkpoint: clearer interface and password rooms
+
+Build **2026.10.29-interface-clarity / protocol41**, source **ac3a3936669ceba7275fd2203a090eba944328b6**, passes **818tests /818passed /0failed**, TypeScript, authored content, fifteen locales, native art, production build and71atlas contracts. Exact evidence is [the current checkpoint](../reviews/interface-clarity-2026-10-29/checkpoint-status.json).
+
+Public **http://127.0.0.1:5235/** / backend2609 / holding session14668 and testing **http://127.0.0.1:5234/** / backend2608 / holding session39758 pass33served hashes each, exact source/audience, incorrect-password rejection/correct code join, host-only Start, actual chat and persistent server-board reads. Own probe rooms closed; no fake qualifying scores submitted. Source/art/native evidence remains distinct from rendered/human acceptance. Selected headshot framing is native inspection02.
+
+The player-facing changes are separate health/shield bars and actual character headshots, clearer resources and waiting-room labels, room-code controls inside menu flow, filled random-map pictures, Crab full-footprint floor containment, optional enforced room passwords, and accurate preparation text/countdown during Boss defeated. Existing Medic/shield policy, accepted C toggle/footer, fixed/random map choices and online menu behavior remain. Future shield-cap branches/selective blocking remain notes only.
+
+**Publication is pending.** Automatic approval review rejected two attempts to push the source to the existing public feature branch. The connected repository is verified public/admin-controlled and prior upload authorization was found, but the reviewer requires direct permission in this chat. The pending approval question asks to keep verified game changes/review evidence synchronized, beginning withac3a393. Do not bypass the rejection or claim this source/CI/Wiki published. Wiki remains4919fc4; six committed canonical page updates are prepared and already authorized, to publish after source upload. Preserve both rejected-action facts.
+
+Runtime SHA256 **96daf8afbc18cc9a700ccb164c63fe210d895b99b9528b488e2300bbf70622b6**, local snapshot **337e816f86adca116e24bb7fc8f4d37d00c307ed2b8c6ba1c4a11a8fd90b291c**. Both frozen backends are2710627bytes, SHA256364c7ff3e224893b5133ae19f11bb9f261326a2d46dc6117b7d95ca9192e88df. Additional source binding809429917ef893b748f990ce39149c01cad9ae04e5720d199771c9e0a45b10a8 covers107files/50346618bytes.
+
+This goal turn made progress; keep the broad polish goal active. Same checkout, branch and draftPR14; protected main stays separate. No delegation, new checkout, merge, hosted game deployment, paid service or contest submission. Preserve all older preview roots/listeners/packages/raw receipts. Browser automation remains disabled. Current human/rendered, native-language, listening, device, WAN/endurance/capacity/shared-hosted recovery/rankings and coordinated release acceptance remain open. The next independent software follow-up is reliable chat acknowledgement and draft retention; it has only been inspected.
+
+## Preserved previous checkpoint
+
 # Interface clarity follow-up: source ready for publication
 
 Build **2026.10.29-interface-clarity / protocol41** passes the complete818/818/0 native software gate, TypeScript, fifteen locales, production build and71atlas contracts. Review authority is **reviews/interface-clarity-2026-10-29**. Source CI, fresh frozen previews and authorized Wiki synchronization are next; do not claim them complete yet. New unused ports are testing5234/backend2608 and public5235/backend2609.
