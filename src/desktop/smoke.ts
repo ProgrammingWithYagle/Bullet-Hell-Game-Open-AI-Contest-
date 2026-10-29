@@ -83,6 +83,10 @@ async function run() {
         worker.postMessage({ type: 'start' });
         await until(() => view?.phase === 'combat');
         assert(view.players[0].classId === classId && view.boss.health > 0, 'Deployed class/boss');
+        const player=view.players[0],capFactor=difficulty.id==='hellish'?0:difficulty.id==='insane'?.5:difficulty.id==='hard'?.75:1;
+        const expectedCap=Math.floor(player.maxHealth*capFactor),startFactor=classId==='tank'?1:classId==='heavy'?.5:classId==='soldier'?.15:0;
+        assert(player.maxShield===expectedCap,'Difficulty shield cap: '+classId+'/'+difficulty.id);
+        assert(player.shield===Math.floor(expectedCap*startFactor),'Starting shield: '+classId+'/'+difficulty.id);
         worker.postMessage({ type: 'pause', value: true });
       }
   assert(cases === 210, 'Seven classes, five modes and six difficulties');
@@ -123,6 +127,7 @@ async function run() {
     audience: BUILD_AUDIENCE,
     contentRevision: CONTENT_REVISION,
     workerCases: cases,
+    startingShieldCases:cases,
     fixedStepMovement: true,
     weaponShotMessages: shots,
     profileRoundTrip: true,

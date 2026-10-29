@@ -216,25 +216,51 @@ app
             mode: 'short',
             difficulty: 'hard',
             visibility: 'public',
+            password: 'Native fixture only',
           };
         const host = await client.create<WorldState>('grave', settings, WorldState);
         rooms.push(host);
         host.onMessage('*', () => {});
         host.reconnection.enabled = false;
+        let roomCode='',protectedWelcome=false;
+        const receipts:{requestId:string;ok:boolean;message?:{id:number;text:string}}[]=[];
+        host.onMessage('welcome',(value:{code:string;hasPassword:boolean})=>{
+          protectedWelcome=value.hasPassword===true;roomCode=value.code;
+        });
+        host.onMessage('chatReceipt',(value:typeof receipts[number])=>receipts.push(value));
+        host.send('ready');host.send('chatSettings',true);
+        const until=async(check:()=>boolean)=>{const deadline=Date.now()+7000;while(!check()){if(Date.now()>deadline)throw Error('Native LAN state timed out');await new Promise(r=>setTimeout(r,20));}};
+        await until(()=>/^[ABCDEFGHJKLMNPQRSTUVWXYZ23456789]{6}$/.test(roomCode));
+        if(!protectedWelcome)throw Error('Native protected-room welcome missing');
+        const lookup=await(await fetch(endpoint+'/api/rooms/code/'+roomCode)).json();
+        if(lookup.roomId!==host.roomId||lookup.hasPassword!==true)throw Error('Native code lookup');
+        const listing=await(await fetch(endpoint+'/api/rooms')).json();
+        const listed=listing.find((r:{roomId:string})=>r.roomId===host.roomId);
+        if(!listed?.hasPassword||JSON.stringify(listed).includes(settings.password))throw Error('Native protected listing');
+        let passwordRejected=false;
+        try{const unexpected=await client.joinById<WorldState>(host.roomId,{...settings,password:'Wrong fixture value'},WorldState);rooms.push(unexpected);}
+        catch(error){passwordRejected=error instanceof Error&&error.message==='invalidPassword';}
+        if(!passwordRejected)throw Error('Native wrong password accepted');
         const guest = await client.joinById<WorldState>(
-          host.roomId,
-          { ...settings, classId: 'medic' },
+          lookup.roomId,
+          { ...settings, classId: 'medic',code:roomCode },
           WorldState,
         );
         rooms.push(guest);
         guest.onMessage('*', () => {});
         guest.reconnection.enabled = false;
+        const messages:{id:number;text:string}[]=[];
+        guest.onMessage('chat',(value:typeof messages[number])=>messages.push(value));
+        guest.send('ready');guest.send('chatSettings',true);
+        guest.send('start');await new Promise(r=>setTimeout(r,150));
+        if(host.state.phase!=='lobby'||guest.state.phase!=='lobby')throw Error('Native guest started room');
+        const request={requestId:randomUUID(),text:'Native package chat confirmation'};
+        host.send('chat',request);await until(()=>receipts.length===1&&messages.length===1);
+        if(!receipts[0].ok||receipts[0].requestId!==request.requestId||messages[0].text!==request.text)throw Error('Native chat confirmation');
+        host.send('chat',request);await until(()=>receipts.length===2);await new Promise(r=>setTimeout(r,100));
+        if(!receipts[1].ok||receipts[1].message?.id!==receipts[0].message?.id||messages.length!==1)throw Error('Native duplicate chat broadcast');
         host.send('start');
-        const end = Date.now() + 5000;
-        while (host.state.phase !== 'combat' || guest.state.phase !== 'combat') {
-          if (Date.now() > end) throw Error('Native LAN combat timed out');
-          await new Promise((r) => setTimeout(r, 20));
-        }
+        await until(()=>host.state.phase==='combat'&&guest.state.phase==='combat');
         if (host.state.players.size !== 2 || host.state.bossHealth <= 0)
           throw Error('Native LAN roster');
         await Promise.all(rooms.map((r) => r.leave()));
@@ -260,6 +286,12 @@ app
               bundledUtilityAuthority: true,
               realWebSocketClients: 2,
               combatReplicated: true,
+              protectedRoomCodeJoined:true,
+              wrongPasswordRejected:true,
+              passwordAbsentFromListing:true,
+              hostStartRequired:true,
+              chatServerConfirmed:true,
+              duplicateChatSuppressed:true,
               gracefulStop: true,
               addresses: state.endpoints,
               physicalLanReviewed: false,
