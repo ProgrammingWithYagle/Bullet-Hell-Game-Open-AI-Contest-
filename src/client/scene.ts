@@ -57,6 +57,7 @@ import {
   retireBossTexture,
 } from './boss-textures.ts';
 export class CombatScene extends Phaser.Scene {
+  onLoadProgress?: (progress: number) => void;
   private resolveReady!: () => void;
   private rejectReady!: (error: Error) => void;
   readonly prepared = new Promise<void>((resolve, reject) => {
@@ -126,7 +127,8 @@ export class CombatScene extends Phaser.Scene {
     super('combat');
   }
   preload() {
-    this.load.on('loaderror', () => this.rejectReady(Error('ui.errorServer')));
+    this.load.on('progress', (progress: number) => this.onLoadProgress?.(progress));
+    this.load.on('loaderror', () => this.rejectReady(Error('assetsUnavailable')));
     preloadArenaGrounds(this.load, assets.arenaGrounds);
     for (const [id, url] of Object.entries(assets.constructs))
       this.load.image('construct-' + id, url);
@@ -463,7 +465,7 @@ export class CombatScene extends Phaser.Scene {
 
     for (const cue of view.bossCues) {
       if(isBellCue(cue)){drawBellCue(h,f,cue,now);continue;}
-      if(isMoldCue(cue)){drawMoldCue(h,f,cue,now,view.bossCues.filter(isMoldCue));continue;}
+      if(isMoldCue(cue)){drawMoldCue(h,f,cue,now,view.bossCues.filter(isMoldCue),this.reduceMotion);continue;}
       if(cue.kind==='matron-walk'||cue.kind==='matron-brood'||cue.kind==='matron-pulse'||cue.kind==='matron-needles'){
         if(cue.kind==='matron-needles'){if(drawnMatronNeedles.has(cue.sourceId))continue;drawnMatronNeedles.add(cue.sourceId);}
         drawMatronCue(h,f,cue,now,view.bossCues.filter((q):q is import('../shared/matron-ward.ts').MatronCue=>q.kind==='matron-walk'||q.kind==='matron-brood'||q.kind==='matron-pulse'||q.kind==='matron-needles'||(q.kind==='service-prop'&&q.role==='nest')));continue;

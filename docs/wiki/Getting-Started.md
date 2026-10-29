@@ -14,7 +14,11 @@ pnpm dev
 
 Open `http://127.0.0.1:5173/`. Offline solo runs its authority in a worker and needs no multiplayer server. For local online rooms, run `pnpm server` in a second terminal. The service normally binds loopback port 2567; health is at `http://127.0.0.1:2567/api/health`.
 
-Choose a class, mode, map and difficulty, review the setup, then start offline or create a public/private room. Private rooms use a six-character code. All seven classes, Quarantine Run, Midnight Circuit, Black Bell Pilgrimage, Grand Raid and Endless Vigil are available. The opening-boss selector is an explicit rehearsal override; ordinary route progression reserves finales for the final encounter.
+For a gentle first run, **Start gently** prepares Soldier, Quarantine Run, Gatehouse, Baby difficulty and Solo, then opens a confirmation screen. **New run** lets you choose a class, mode, opening arena and difficulty before creating a Solo, public or private session. The map preview labels your start, the boss start, cover and any difficulty-specific lava. Difficulty cards explain the experience; the selected choice shows its exact assistance rules and multipliers. The controls guide is available from Home and the header.
+
+Private rooms use a six-character code; Enter submits the code. All seven classes, Quarantine Run, Midnight Circuit, Black Bell Pilgrimage, Grand Raid and Endless Vigil are available. Public builds choose bosses from their authored random opening pools and ordinary route progression reserves finales for the final encounter. The testing build has a separate rehearsal opener/form selector. Public Baby has an optional, closed-by-default boss guide; opening it pauses Solo. Artwork loading shows progress before the lobby appears.
+
+Home's **Local Practice records** entry shows validated runs saved on this device, filtered by mode and difficulty. The Online boards tab reports the unavailable verified-ranking service. Names entered during setup survive returning to an earlier step, and selection keeps keyboard focus.
 
 ## Controls
 

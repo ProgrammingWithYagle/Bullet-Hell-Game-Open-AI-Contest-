@@ -1,13 +1,87 @@
 import type Phaser from "phaser";
 import { clamp } from "../shared/geometry.ts";
 import { drawMoldStillCue } from "./mold-still-cues.ts";
-import type { MoldCue, MoldPool, Reagent } from "../shared/mold-mixing.ts";
+import type {
+  MoldCue,
+  MoldPool,
+  MoldReaction,
+  Reagent,
+} from "../shared/mold-mixing.ts";
 const colors: Record<Reagent, number> = {
   acid: 0xe7a15d,
   alkali: 0x8ab6de,
   catalyst: 0xb990e2,
   water: 0xd4e5e1,
 };
+/** Uses the issued reaction lifetime; drawing never adds an attack or changes its radius. */
+export function moldReactionVisual(
+  q: MoldReaction,
+  now: number,
+  reduced = false,
+) {
+  const fired = q.fired || now >= q.at;
+  const progress = fired
+    ? clamp((now - q.at) / Math.max(1, q.until - q.at), 0, 1)
+    : clamp((now - q.beganAt) / Math.max(1, q.at - q.beganAt), 0, 1);
+  return {
+    fired,
+    progress,
+    ringRadius: q.radius * (fired ? (reduced ? 1 : 0.3 + 0.7 * progress) : 1),
+    alpha: fired ? 0.95 - progress * 0.45 : 0.85,
+  };
+}
+
+function reactionBurst(
+  g: Phaser.GameObjects.Graphics,
+  q: MoldReaction,
+  now: number,
+  reduced: boolean,
+) {
+  const visual = moldReactionVisual(q, now, reduced);
+  const catalytic = q.type === "catalytic";
+  const color = catalytic ? 0xd4a5ff : 0xf0bf7b;
+  // A local shock ring and starburst stay inside the real hit footprint.
+  g.fillStyle(color, 0.13 * (1 - visual.progress)).fillCircle(
+    q.x,
+    q.y,
+    q.radius,
+  );
+  g.lineStyle(3, color, visual.alpha).strokeCircle(q.x, q.y, q.radius);
+  if (!reduced)
+    g.lineStyle(4, color, visual.alpha).strokeCircle(
+      q.x,
+      q.y,
+      visual.ringRadius,
+    );
+  const inner = q.radius * 0.18;
+  const outer = q.radius * (reduced ? 0.63 : 0.34 + 0.36 * visual.progress);
+  const points = Array.from({ length: 16 }, (_, i) => {
+    const radius = i % 2 ? outer * 0.48 : outer;
+    const angle = (i * Math.PI) / 8 - Math.PI / 2;
+    return {
+      x: q.x + Math.cos(angle) * radius,
+      y: q.y + Math.sin(angle) * radius,
+    };
+  });
+  g.fillStyle(color, 0.16 * (1 - visual.progress))
+    .beginPath()
+    .moveTo(points[0].x, points[0].y);
+  for (const point of points.slice(1)) g.lineTo(point.x, point.y);
+  g.closePath().fillPath();
+  g.lineStyle(catalytic ? 3 : 2, color, visual.alpha).strokePath();
+  for (let i = 0; i < 4; i++) {
+    const angle = (i * Math.PI) / 2 + Math.PI / 8;
+    g.lineBetween(
+      q.x + Math.cos(angle) * q.radius * 0.78,
+      q.y + Math.sin(angle) * q.radius * 0.78,
+      q.x + Math.cos(angle) * q.radius * 0.92,
+      q.y + Math.sin(angle) * q.radius * 0.92,
+    );
+  }
+  if (catalytic) {
+    g.lineStyle(2, 0xf5deff, visual.alpha).strokeCircle(q.x, q.y, inner);
+  }
+}
 function mark(
   g: Phaser.GameObjects.Graphics,
   x: number,
@@ -111,6 +185,7 @@ export function drawMoldCue(
   q: MoldCue,
   now: number,
   cues: MoldCue[],
+  reduced = false,
 ) {
   if (q.kind === "mold-still" || q.kind === "mold-aerosol") {
     drawMoldStillCue(h, q, now);
@@ -166,12 +241,29 @@ export function drawMoldCue(
   }
   if (q.kind === "mold-reaction") {
     const c = q.type === "coupled" ? 0xe5b26d : 0xc3a0e6;
-    if (!q.fired) {
+    const visual = moldReactionVisual(q, now, reduced);
+    if (!visual.fired) {
       dashed(h, q.x, q.y, q.radius, c);
       h.fillStyle(c, 0.045).fillCircle(q.x, q.y, q.radius);
-      const t = clamp((now - q.beganAt) / (q.at - q.beganAt), 0, 1);
-      h.lineStyle(2, c, 0.65).strokeCircle(q.x, q.y, q.radius * (1 - t));
-    } else h.fillStyle(c, 0.25).fillCircle(q.x, q.y, q.radius);
+      h.lineStyle(2.5, c, 0.9).strokeCircle(q.x, q.y, q.radius);
+      if (!reduced)
+        h.lineStyle(2, c, 0.65).strokeCircle(
+          q.x,
+          q.y,
+          q.radius * (1 - visual.progress),
+        );
+      if (q.type === "catalytic") {
+        // An angular center distinguishes the violet eruption from pale mixed coolant.
+        h.lineStyle(2, c, 0.95).strokeTriangle(
+          q.x,
+          q.y - 22,
+          q.x - 20,
+          q.y + 15,
+          q.x + 20,
+          q.y + 15,
+        );
+      }
+    } else reactionBurst(h, q, now, reduced);
     const pools = cues.filter((p): p is MoldPool => p.kind === "mold-pool"),
       a = pools.find((p) => p.id === q.sources[0]),
       b = pools.find((p) => p.id === q.sources[1]);

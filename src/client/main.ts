@@ -1,4 +1,5 @@
 import {TESTING_BUILD} from './build-audience.ts';
+import {expeditionText} from './expedition-text.ts';
 import {testingToolsMarkup,unlockTestingDifficulties} from './testing-ui.ts';
 import {RoomChatUI} from './room-chat-ui.ts';
 import {clerkShelterPower} from './clerk-shelter-power.ts';
@@ -35,6 +36,7 @@ import './style.css';
 import './ui/polish.css';
 import './ui/skill-map.css';
 import './fonts.css';
+import './ui/expedition.css';
 import './ui/votes.css';
 import { CombatScene } from './scene.ts';
 import { Session, type ConnectionOptions } from './session.ts';
@@ -162,7 +164,7 @@ function notice(value: string) {
   }
 }
 async function menu() {
-  document.body.classList.remove('playing');
+  document.body.classList.remove('playing', 'preparing');
   mountSetup(app, {
     resume: () => {
       void begin(false, undefined, 'public', undefined, true);
@@ -214,6 +216,8 @@ async function begin(
     active.onStatus = (key) => {
       const e = $('status');
       if (e) e.textContent = t(key, { seconds: 60, position: active.queuePosition });
+      const loadingStatus = $('load-state');
+      if (loadingStatus) loadingStatus.textContent = t(key, { seconds: 60, position: active.queuePosition });
       if (controls) {
         controls.blocked =
           (bossGuide.blocksInput(paused)||roomChatUI?.blocksInput===true) ||
@@ -266,18 +270,19 @@ async function begin(
     destroy();
     await menu();
     notice(
-      t(
-        error instanceof Error && error.message.startsWith('ui.')
-          ? error.message
-          : 'ui.errorNetwork',
-      ),
+      error instanceof Error && error.message === 'assetsUnavailable'
+        ? expeditionText(locale, 'loadError') : t(
+          error instanceof Error && error.message.startsWith('ui.')
+            ? error.message
+            : 'ui.errorNetwork',
+        ),
     );
   } finally {
     busy = false;
   }
 }
 function setupGame(online: boolean) {
-  document.body.classList.add('playing');
+  document.body.classList.add('playing', 'preparing');
   paused = false;
   bossGuide.set(false);
   guideReturnFocus = null;
@@ -285,6 +290,12 @@ function setupGame(online: boolean) {
   lastPhase = '';
   prediction = new Prediction();
   app.innerHTML = `<div id="stage" dir="ltr"></div><section class="hud" aria-label="${text('ui.health')}"><div class="topline"><div><strong id="encounter"></strong><small id="status" role="status"></small></div><div id="boss-panel">${bossHeaderMarkup()}<div class="boss-health-track" dir="ltr"><progress id="boss-health" max="1" value="1" aria-label="${text('ui.boss')}"></progress><div id="boss-phase-markers" aria-hidden="true"></div></div><p id="boss-phase-entry" class="boss-phase-entry" role="status" aria-live="polite" hidden></p><p id="boss-phase-note" class="boss-phase-note" role="status" aria-live="polite" hidden></p></div><button id="pause-button">Ⅱ <span>${text('ui.pause')}</span></button></div><div id="accord" class="accord" hidden></div><p id="signature-help" class="signature-help" role="status" aria-live="polite" hidden></p><div class="bottomline"><div class="vitals"><strong id="player-name">${insignia(selectedCosmetic)}<span id="player-name-label"></span></strong><progress id="health" max="1" value="1" aria-label="${text('ui.health')}"></progress><span id="health-text"></span><span id="ammo"></span><span id="currency"></span></div><div id="abilities" class="ability-list"></div><div id="squad" class="squad"></div></div></section><div id="modal" class="overlay" hidden></div><div id="pause-menu" class="overlay" hidden><section class="dialog"><h2>${text('ui.paused')}</h2><p id="pause-notice">${text(online ? 'ui.onlinePause' : 'ui.offlineNotice')}</p>${settingsMarkup()}<div class="actions"><button id="resume" class="primary">${text('ui.continue')}</button><button id="leave">${text('ui.leaveRoom')}</button></div></section></div><div class="touch-buttons"><button data-action="dodge">${text('ui.dodge')}</button><button data-action="q">Q</button><button data-action="e">E</button><button data-action="ultimate">${text('ui.ultimate')}</button><button data-action="interact">${text('ui.revive')}</button><button data-action="reload">${text('ui.reload')}</button></div><div class="portrait-note">${text('ui.portraitHint')}</div>`;
+  const loading = document.createElement('section');
+  loading.id = 'loading-expedition';
+  loading.className = 'loading-expedition';
+  loading.innerHTML = `<div class="loading-card"><span class="eyebrow">GRAVE ACCORD</span><h1 id="loading-heading" tabindex="-1">${text('ui.loading')}</h1><p>${esc(expeditionText(locale, 'loadingHelp'))}</p><progress id="assets-progress" value="0" max="1" aria-label="${text('ui.loading')}"></progress><div class="loading-state"><span id="load-state" role="status">${text('ui.loading')}</span><output id="assets-percent" aria-hidden="true">${number(0)}%</output></div></div>`;
+  app.append(loading);
+  $('loading-heading').focus({ preventScroll: true });
   const guideMount=document.createElement('div');
   guideMount.innerHTML=bossGuideMarkup(locale,online);
   $('pause-button').before(guideMount.querySelector('#boss-guide-button')!);
@@ -317,6 +328,13 @@ function setupGame(online: boolean) {
   $('squad').before(supplyBar);
   controls = new Controls($('stage'));
   scene = new CombatScene();
+  scene.onLoadProgress = value => {
+    const progress = Math.max(0, Math.min(1, value));
+    const bar = $<HTMLProgressElement>('assets-progress');
+    const label = $('assets-percent');
+    if (bar) bar.value = progress;
+    if (label) label.textContent = new Intl.NumberFormat(locale, { style: 'percent', maximumFractionDigits: 0 }).format(progress);
+  };
   game = new Phaser.Game({
     type: Phaser.AUTO,
     parent: 'stage',
@@ -388,6 +406,8 @@ function update(view: View) {
   scene.predicted = prediction.player;
   const p = view.players.find((p) => p.id === session!.id);
   if (!p) return;
+  $('loading-expedition')?.remove();
+  document.body.classList.remove('preparing');
   controls!.blocked =
     (bossGuide.blocksInput(paused)||roomChatUI?.blocksInput===true) ||
     view.phase !== 'combat' ||

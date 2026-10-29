@@ -1,0 +1,36 @@
+# Public polish
+
+The current goal is to make existing Grave Accord content approachable, legible and enjoyable for people playing for the first time. This document records the review requirements; implementation counts remain in the single [development ledger](development-work-ledger.json), synchronized with [Development progress](DEVELOPMENT_PROGRESS.md).
+
+## First Watch presentation pass
+
+Implemented in `2026.10.28-first-watch`, protocol 38:
+
+- Home introduces the encounter loop and offers **Start gently**. That prepares Soldier, Quarantine Run, Gatehouse, Baby and Solo, then asks the player to confirm. **New run** retains the complete setup. The four-page controls guide opens manually.
+- Map previews show actual selected-difficulty bounds, cover and lava, painted thumbnails, two distinct spawn markers and a translated legend. Copy explains that the selected arena opens the run and later arenas follow the route.
+- Difficulty cards describe the experience. The selected card exposes actual revive, cover, shield and forced-form rules alongside the numerical multipliers. Baby is suggested for learning; earned difficulty unlocks stay in force.
+- **Local Practice records** is visible on Home and labeled as stored on this device. Online rankings remain unavailable.
+- Keyboard focus follows selection and setup navigation; names survive backtracking and room codes accept Enter.
+- The manual controls guide shows saved fire/reload/ability bindings and labels controller button indices. Its combat introduction defers revive rules to the selected difficulty, and the card scrolls within short viewports.
+- Artwork loading shows real loader progress. Asset failure returns to the menu with a specific connection/retry message.
+- Existing violet catalytic reactions show an angular warning, a local shock ring and a starburst. Their original damage, radius and lifetime remain. Reduced motion retains a static shape and danger boundary.
+
+New interface text is authored in all fifteen supported locales. Native-language review remains pending. Existing settings, profiles, remapped inputs, public random boss progression, optional Baby-only boss guide and Solo guide pause remain.
+
+## Evidence requirements
+
+Use `reviews/public-polish-2026-10-28/` for checkpoint evidence, with raw working logs under `output/public-polish-2026-10-28/`. Tests must cover actual difficulty geometry, complete language keys, the compiled public setup and its confirmation/profile/name/focus behavior, reduced-motion drawing and the existing compiled-worker/room audience boundaries. TypeScript, authored content/RGBA, full rules/network tests, production builds and emitted atlas checks are required for checkpoint closure.
+
+Static map SVG rasters and recorded Graphics samples inspect component geometry and color. They do not verify browser CSS layout, Phaser playback, audio, real playability, physical-device performance or human acceptance. Browser control is disabled in Work settings and must not be retried or bypassed.
+
+The First Watch local gate passes **755 tests / 755 pass / 0 fail**, authored content/fifteen locales and RGBA, TypeScript, the production testing build and 71 emitted atlas contracts. The complete log is `reviews/public-polish-2026-10-28/host-full-gate-02.log`; its own runtime report is `host-gate-02/runtime-verification.json`. Runtime source SHA-256 is `c0b09facc8596a7d4c9e50fb80d8a5fc37814ec14c3f9547bc27fd43b8a2dff5`; local source snapshot is `5fd8bfa66d8fe6af5eb825a904519c9f7b56c34ebc06c8225b96bedd64006565`. A sandbox attempt failed because loopback returned EACCES. One host attempt stopped on a transient OneDrive report-open error; the next complete gate passed. Its cleanup wrapper then failed on redundant report restoration, which was completed separately with all eight issued receipts verified byte-for-byte. Failure, success and correction remain distinct evidence.
+
+Before sharing a review URL, verify the actual listener, client root/hash, source/build/protocol/content/audience, matching backend health and CORS. Create new review roots/ports; preserve all earlier frozen owners and issued manifests. Check both emitted public menu and Solo worker boundaries. Publish changed canonical Wiki pages exactly from the source commit and verify all page/image/public-image hashes.
+
+## Continuing review
+
+The broader polish goal remains active. Review the complete first-visit path, setup, lobby/shop comprehension, controls, loading/errors/reconnect, combat/HUD readability, phase audiovisual cues and run results/records. Check desktop and compact layouts, enlarged text, RTL scripts and reduced motion with real rendered evidence when available. Existing phase transitions already have health separators, a four-second entry banner and a distinct sound with music ducking; start by reviewing that behavior.
+
+Prepare coherent matching public client/backend and Windows review artifacts before a publication decision. The old hosted protocol-4 Site and immutable protocol-13 Windows development release remain older artifacts. Trusted public rankings/recovery, WAN/endurance/capacity and human/listening/native-language/device release acceptance remain open.
+
+No new bosses, General skills, class paths, weapons, maps or modes are authorized by this polish goal. Double Dash/Sprint and the old expansion backlog remain deferred. Do not merge main, provision paid hosting, replace a Site, deploy a mismatched backend or submit to the contest.
