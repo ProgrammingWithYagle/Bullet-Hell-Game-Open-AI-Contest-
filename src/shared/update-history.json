@@ -1,5 +1,5 @@
 {
-  "buildId": "2026.10.28-run-recap",
+  "buildId": "2026.10.28-portable-review",
   "snapshot": {
     "bosses": 66,
     "classes": 7,
@@ -16,6 +16,27 @@
     "protocol": 38
   },
   "entries": [
+    {
+      "id": "portable-review",
+      "date": "2026-10-28",
+      "title": "Matching Windows client and LAN builds",
+      "groups": [
+        {
+          "title": "Build from the verified source",
+          "items": [
+            "Windows packaging requires a passing report that matches the current runtime and source/test snapshot. It refuses a dirty checkout, builds a fresh public or testing client, verifies its menu/worker audience and records the exact source and client reports inside the new package. Older packages remain preserved.",
+            "The package verifier checks every client member against its own embedded report, separately from the original source gate. The default package audience is public; testing packages must be chosen explicitly. This prepares review artifacts and does not replace the existing Windows download or hosted browser game."
+          ]
+        },
+        {
+          "title": "Keep local network play consistent",
+          "items": [
+            "The bundled LAN authority uses the same public/testing audience as the client. Public LAN rooms reject direct rehearsal-opener requests, while testing LAN retains its selector. Existing input, combat, save, economic and admission rules remain.",
+            "The portable read-me uses plain first-run, shop and local-network instructions. Native package, archive/extraction/copy and actual utility-process fixtures are separate evidence from manual rendered, human, listening, language, device and physical second-computer LAN acceptance."
+          ]
+        }
+      ]
+    },
     {
       "id": "run-recap",
       "date": "2026-10-28",

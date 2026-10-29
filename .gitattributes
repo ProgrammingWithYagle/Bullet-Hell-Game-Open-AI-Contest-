@@ -153,3 +153,8 @@ reviews/clear-choices-2026-10-28/*.svg text eol=lf
 reviews/run-results-2026-10-28/**/*.log -text -whitespace
 reviews/run-results-2026-10-28/*.mts text eol=lf
 reviews/run-results-2026-10-28/*.ps1 text eol=lf
+
+# Preserve current portable-review verification and native diagnostic output.
+reviews/portable-review-2026-10-28/**/*.log -text -whitespace
+reviews/portable-review-2026-10-28/*.mts text eol=lf
+reviews/portable-review-2026-10-28/*.ps1 text eol=lf

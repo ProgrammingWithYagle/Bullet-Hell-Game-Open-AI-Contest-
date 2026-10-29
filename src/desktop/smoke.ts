@@ -1,4 +1,5 @@
 import type {} from '../client/desktop.ts';
+import { BUILD_AUDIENCE } from '../client/build-audience.ts';
 import {
   PROTOCOL,
   CONTENT_REVISION,
@@ -119,6 +120,7 @@ async function run() {
   await window.graveSmoke.finish({
     passed: true,
     protocol: PROTOCOL,
+    audience: BUILD_AUDIENCE,
     contentRevision: CONTENT_REVISION,
     workerCases: cases,
     fixedStepMovement: true,

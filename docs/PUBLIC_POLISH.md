@@ -56,3 +56,7 @@ Clear Choices source `18b602ae3e87094d0811c8187eaa586d470d5d5a` passes758local a
 The working run-recap presentation separates actual results and defeat reasons, keeps banked personal results scoped, shows zero XP for modified testing runs, removes untimed countdowns and names the existing HUD/touch abilities. TypeScript and ten focused checks pass. Complete local/source-CI/fresh audience previews and Wiki evidence belong under reviews/run-results-2026-10-28/. Authority, rewards, saving, economy and all content remain.
 
 Run Recap source `26b76f64255a2036f8c5e6055f22dadea5f0bd94` now passes the full761-test local and both exact-source CI gates, both new testing5218/public5219 HTTP/audience/two-peer checks, and exact Wiki publication `d4b82209041dc878e6363072aedff75055d48be4`. Own logs, manifests and receipts are in the Run Recap review directory. The broad polish and coordinated Windows/browser/backend review goal remains active.
+
+## Current Windows review preparation
+
+Portable packaging now requires a current passing source report and a clean commit, compiles a fresh explicit-audience client, matches LAN/native diagnostics to that audience and embeds separate source/client verification. Nine focused desktop checks and TypeScript/Python syntax pass. Full source/CI, actual package/native/archive/extraction/copy and Wiki evidence belong in reviews/portable-review-2026-10-28/. The existing download is preserved; no replacement release is published.

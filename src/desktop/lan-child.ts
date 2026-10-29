@@ -1,6 +1,7 @@
 // Only the desktop main process launches this authority, following an explicit Host action.
 import { createGameServer } from '../server/service.ts';
 import { validLanPort } from '../shared/lan.ts';
+import { BUILD_AUDIENCE } from '../client/build-audience.ts';
 const port = Number(process.argv[2]);
 type ParentPort = {
   postMessage(value: unknown): void;
@@ -11,7 +12,7 @@ const send = (message: unknown) => (parent ? parent.postMessage(message) : proce
 let closing = false;
 async function start() {
   if (!validLanPort(port)) throw Error('invalidPort');
-  const { server, httpServer } = createGameServer({ clientOrigins: ['grave://app'] });
+  const { server, httpServer } = createGameServer({ clientOrigins: ['grave://app'], audience: BUILD_AUDIENCE });
   const stop = async () => {
     if (closing) return;
     closing = true;

@@ -1,6 +1,18 @@
 # Changelog
 
-Development build **2026.10.28-run-recap**, protocol 38. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.28-portable-review**, protocol 38. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-28 — Matching Windows client and LAN builds
+
+### Build from the verified source
+
+- Windows packaging requires a passing report that matches the current runtime and source/test snapshot. It refuses a dirty checkout, builds a fresh public or testing client, verifies its menu/worker audience and records the exact source and client reports inside the new package. Older packages remain preserved.
+- The package verifier checks every client member against its own embedded report, separately from the original source gate. The default package audience is public; testing packages must be chosen explicitly. This prepares review artifacts and does not replace the existing Windows download or hosted browser game.
+
+### Keep local network play consistent
+
+- The bundled LAN authority uses the same public/testing audience as the client. Public LAN rooms reject direct rehearsal-opener requests, while testing LAN retains its selector. Existing input, combat, save, economic and admission rules remain.
+- The portable read-me uses plain first-run, shop and local-network instructions. Native package, archive/extraction/copy and actual utility-process fixtures are separate evidence from manual rendered, human, listening, language, device and physical second-computer LAN acceptance.
 
 ## 2026-10-28 — A readable recap and named abilities
 

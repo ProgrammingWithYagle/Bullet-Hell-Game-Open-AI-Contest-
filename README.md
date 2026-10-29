@@ -4,7 +4,7 @@
 
 A cooperative gothic bullet-hell game. Dodge attacks, defeat a boss, vote on the next contract and spend your rewards on a build. Play solo or with friends.
 
-The current feature branch uses **build 2026.10.28-run-recap / protocol 38**. [Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains this unfinished development work; protected main is a separate release boundary.
+The current feature branch uses **build 2026.10.28-portable-review / protocol 38**. [Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains this unfinished development work; protected main is a separate release boundary.
 
 ## Your first run
 
@@ -56,7 +56,7 @@ The optional expanded skill map shows all 54 skills per class with zoom, scrolli
 
 ## Development status
 
-Run Recap source `26b76f6` passes the complete local gate and both exact-source CI runs: **761 tests, 761 pass, 0 fail**, plus authored content/locales/RGBA, TypeScript, production build and 71 emitted atlas contracts. [Current checkpoint](docs/CHECKPOINT_2026_10_25.md) binds the source, frozen preview, CI logs and Wiki publication evidence.
+The verified Run Recap predecessor `26b76f6` passes the complete local gate and both exact-source CI runs: **761 tests, 761 pass, 0 fail**, plus authored content/locales/RGBA, TypeScript, production build and 71 emitted atlas contracts. [Current checkpoint](docs/CHECKPOINT_2026_10_25.md) binds the source, frozen preview, CI logs and Wiki publication evidence.
 
 Twelve original encounters have implemented quality passes; 48 remain. Content expansion and the proposed General Double Dash/Sprint branch are deferred during public polish. Complete action/facing animation, final encounter tuning, verified hosted rankings and durable online recovery remain unfinished. Rendered, listening, native-language, physical-device, WAN, endurance, capacity and human balance acceptance remain open.
 

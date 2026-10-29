@@ -20,15 +20,35 @@ def verify(folder,verification=None):
   assert required in expected,required
  assert not m['sourceDirty'],'Final package must be built from a clean committed source checkout'
  client_files=0
+ if m.get('schemaVersion',1)>=2:
+  assert m['audience'] in ['public','testing']
+  for key in ['sourceVerification','clientVerification']:
+   ref=m[key];assert ref['path'] in expected;assert expected[ref['path']]['sha256']==ref['sha256']
+  source=json.loads((folder/m['sourceVerification']['path']).read_text(encoding='utf-8'))
+  client=json.loads((folder/m['clientVerification']['path']).read_text(encoding='utf-8'))
+  assert source['passed'] and client['passed']
+  assert client['sourceCommit']==m['sourceCommit'] and client['audience']==m['audience'] and client['buildId']==m['buildId']
+  assert source['sourceSnapshotSha256']==client['sourceSnapshotSha256']==m['sourceSnapshot']
+  assert source['runtimeSourceSha256']==client['runtimeSourceSha256']==m['runtimeSourceSha256']
+  assert client['sourceVerificationSha256']==m['sourceVerification']['sha256']
+  client_paths=set()
+  for f in client['artifacts']:
+   pure=PurePosixPath(f['path']);assert not pure.is_absolute() and all(p not in ['..','.',''] for p in pure.parts)
+   path='resources/app/client/'+f['path'];assert path not in client_paths;client_paths.add(path)
+   assert expected[path]['sha256']==f['sha256'] and expected[path]['bytes']==f['bytes'];client_files+=1
+  assert client_paths=={p for p in expected if p.startswith('resources/app/client/')},'Client verification has missing or extra members'
  if verification:
   v=json.loads(Path(verification).read_text(encoding='utf-8'));assert v['passed'] and m['sourceSnapshot']==v['sourceSnapshotSha256']
-  for f in v['artifacts']:
-   path='resources/app/client/'+f['path'].removeprefix('dist/');assert expected[path]['sha256']==f['sha256'];assert expected[path]['bytes']==f['bytes'];client_files+=1
+  if m.get('schemaVersion',1)>=2:
+   assert sha(Path(verification))==m['sourceVerification']['sha256'],'Source verification report differs from the packaged receipt'
+  else:
+   for f in v['artifacts']:
+    path='resources/app/client/'+f['path'].removeprefix('dist/');assert expected[path]['sha256']==f['sha256'];assert expected[path]['bytes']==f['bytes'];client_files+=1
  licenses=json.loads((folder/'RUNTIME-LICENSES.json').read_text(encoding='utf-8'));assert licenses
  for dependency in licenses:
   assert dependency['files'],dependency['name']+' has no copied license text'
   assert all(f in expected for f in dependency['files'])
- return {'passed':True,'folder':str(folder),'buildId':m['buildId'],'sourceCommit':m['sourceCommit'],'sourceSnapshot':m['sourceSnapshot'],'files':len(expected),'bytes':sum(f['bytes']for f in expected.values()),'clientFilesMatched':client_files,'runtimeLicenses':len(licenses),'manifestSha256':sha(folder/'BUILD-MANIFEST.json')}
+ return {'passed':True,'folder':str(folder),'buildId':m['buildId'],'sourceCommit':m['sourceCommit'],'sourceSnapshot':m['sourceSnapshot'],'audience':m.get('audience','historical-unspecified'),'files':len(expected),'bytes':sum(f['bytes']for f in expected.values()),'clientFilesMatched':client_files,'runtimeLicenses':len(licenses),'manifestSha256':sha(folder/'BUILD-MANIFEST.json')}
 def main():
  parser=argparse.ArgumentParser();parser.add_argument('folder');parser.add_argument('--verification');parser.add_argument('--report');parser.add_argument('--zip');parser.add_argument('--extract');args=parser.parse_args();folder=Path(args.folder)
  report=verify(folder,args.verification)

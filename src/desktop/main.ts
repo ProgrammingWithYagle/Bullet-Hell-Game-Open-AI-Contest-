@@ -3,6 +3,7 @@ import { randomUUID } from 'node:crypto';
 import { Client } from '@colyseus/sdk';
 import { WorldState } from '../shared/network-state.ts';
 import { PROTOCOL, CONTENT_REVISION } from '../shared/protocol.ts';
+import { BUILD_AUDIENCE } from '../client/build-audience.ts';
 import {
   app,
   BrowserWindow,
@@ -204,7 +205,8 @@ app
         const state = await startLan(address.port),
           endpoint = 'http://127.0.0.1:' + address.port;
         const health = await (await fetch(endpoint + '/api/health')).json();
-        if (health.protocolVersion !== PROTOCOL) throw Error('Wrong protocol');
+        if (health.protocolVersion !== PROTOCOL || health.contentRevision !== CONTENT_REVISION || health.audience !== BUILD_AUDIENCE)
+          throw Error('LAN protocol, content or audience mismatch');
         const client = new Client(endpoint),
           settings = {
             protocolVersion: PROTOCOL,
@@ -254,6 +256,7 @@ app
               electron: process.versions.electron,
               node: process.versions.node,
               protocol: PROTOCOL,
+              audience: BUILD_AUDIENCE,
               occupiedPortPreserved: true,
               bundledUtilityAuthority: true,
               realWebSocketClients: 2,

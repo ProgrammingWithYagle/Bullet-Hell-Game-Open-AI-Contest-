@@ -1,6 +1,6 @@
 # Windows portable development app
 
-Build `2026.10.24-windows-lan`, protocol 13. This is a development playtest, separate from protected main and final contest/release acceptance.
+The issued download remains `2026.10.24-windows-lan`, protocol 13. Current source is preparing `2026.10.28-portable-review`, protocol 38. These are separate development artifacts; no replacement release is published by packaging work.
 
 ## Issued development download
 
@@ -18,9 +18,17 @@ An occupied port produces the existing localized error. It never terminates or r
 
 ## Build
 
-Use the pinned Node/package-manager versions from the repository. Run `pnpm install --frozen-lockfile`, `pnpm verify`, then `pnpm desktop:build` on Windows. Build output uses a new directory under `release/`; existing packages are preserved. `tools/build-desktop.mjs` bundles main/preload/LAN code without shipping a source checkout or separately required Node installation. It copies the verified production frontend, bundled Electron distribution, required runtime package license files, Electron/Chromium notices and the game changelog/license.
+Use the pinned Node/package-manager versions. The desktop builder requires a clean committed checkout and a passing verification report whose runtime and source/test fingerprints match the actual files. It compiles a fresh client instead of trusting an existing dist folder. The default audience is public; the optional fourth argument chooses testing.
 
-`BUILD-MANIFEST.json` records source identity, whether the source checkout was dirty, the pipeline snapshot and every file's size/hash. The native executable receives the existing bell emblem, product metadata and game version. Customizing the binary produces an **unsigned development executable**; no code-signing approval is claimed. The encoder and PE-resource development tools are not shipped as runtime dependencies.
+For an ordinary local workflow, run `pnpm verify`, commit the verified changes, then `pnpm desktop:build`. If the generic receipt was preserved as an older issued record, pass the current scoped report explicitly:
+
+```powershell
+node tools/build-desktop.mjs release/Grave-Accord-current-public-win32-x64 reviews/portable-review-2026-10-28/gate-01/runtime-verification.json public
+```
+
+Choose a new output directory; the builder refuses to replace an existing one. It produces separate embedded `SOURCE-VERIFICATION.json` and `CLIENT-VERIFICATION.json` receipts. The manifest records source commit, source/runtime fingerprints, audience, build tools and every package member's size/hash. The package verifier checks all client members against the embedded client report, while retaining compatibility with earlier manifests. The bundled LAN authority and diagnostic code receive the same audience definition as the client.
+
+The source contains the pinned Electron distribution, main/preload/LAN bundles, all art/fonts/music and verbatim dependency/Chromium/game notices. The native executable keeps the existing bell emblem and product metadata. Customizing the binary produces an unsigned development executable; no signing approval is claimed. Source/client identity is checked again after compilation and packaging. Native fixture, fresh ZIP extraction and independent ordinary Windows copy verification remain required before describing a new package as verified. The current preparation has focused source/audience checks; a new package has not yet been issued.
 
 The desktop renderer has Node integration disabled, context isolation and Chromium sandbox enabled. Its small preload exposes only LAN status/start/stop. Main-frame identity and origin are validated for IPC. A standard secure custom protocol serves only the bundled client root; decoded traversal and symlinks outside the root are rejected. CSP, navigation and permission handling remain active. External links are restricted to the game repository on GitHub. The LAN utility receives a minimal environment and no cloud signing keys or repository credentials.
 
