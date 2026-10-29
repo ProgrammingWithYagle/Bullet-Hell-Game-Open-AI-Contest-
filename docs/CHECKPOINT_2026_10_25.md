@@ -1,5 +1,17 @@
 # Current Grave Accord checkpoint
 
+Build **2026.10.29-chat-toggle / protocol38**. Latest5227feedback says the extra space helps, but upgrades overlap Start/Leave and C opens without closing. The current follow-up addresses both while retaining the accepted fight/menu placement, expanded height, removed rankings notice and unchanged pause labels/behavior.
+
+The lobby now has a separate footer row outside the scrollable phase content. The upgrade/skill area clips its own overflow, preserves scroll across purchases, and cannot occupy the action row. Short windows can scroll the outer overlay instead of squeezing controls beneath overflowing content. C toggles a focused chat panel; Enter starts typing, and Esc closes it while typing, preserving typed C and copy shortcuts. Pointer opening still focuses the input. Fifteen-language help explains the keys.
+
+Full current local gate passes **782tests /782pass /0fail**, authored content/fifteen locales/RGBA, TypeScript, production build and71atlas contracts. Focused chat/actual public-testing Solo pause checks pass9/9. Runtime SHA256 af4a61691f6d83024864e9356503a37146d483fa5a2521c010ed80fff1a23816; snapshot SHA256 afd3e35061e316653a0624fd755f2c1e2d06aa3df42db36a0bca13b094a653a6. Eight issued receipts remain exact. Current source CI/new frozen previews/Wiki receipts belong under reviews/chat-toggle-2026-10-29. New ports: testing5228/backend2602 and public5229/backend2603. Human/rendered acceptance of these fixes remains pending; browser control stays disabled, with no CUA/headless bypass.
+
+The earlier metadata scan temporarily reused chat-space's source scan filename. The exact db9172c source receipt is restored, the metadata scan is retained separately, and export-receipt-preservation.json records both hashes. New scan tools refuse existing receipt paths and use distinct metadata labels. Do not overwrite issued reports.
+
+## Preserved previous checkpoint
+
+# Current Grave Accord checkpoint
+
 Build **2026.10.29-chat-space / protocol38**. Continue the active public-polish goal in this same checkout and feat/first-playable-loop. Keep PR14 draft and protected main separate.
 
 ## Current user follow-up

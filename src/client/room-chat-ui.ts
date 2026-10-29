@@ -17,7 +17,7 @@ export class RoomChatUI {
     private session: Session,
     private host: HTMLElement,
     private changed: () => void,
-    private words: { title: string; message: string; send: string; note: string; locale: string },
+    private words: { title: string; message: string; send: string; note: string; locale: string; keyboardHelp?: string },
   ) {
     this.shell.className = "room-chat-shell";
     this.shell.dataset.placement = "combat";
@@ -33,6 +33,7 @@ export class RoomChatUI {
     this.panel.className = "room-chat";
     this.panel.hidden = true;
     this.panel.setAttribute("aria-label", words.title);
+    this.panel.tabIndex = -1;
     const title = document.createElement("strong");
     title.textContent = words.title;
     this.list.setAttribute("role", "log");
@@ -45,6 +46,10 @@ export class RoomChatUI {
     note.textContent = words.note;
     this.form.append(this.input, this.send);
     this.panel.append(title, this.list, this.form, note);
+    if (words.keyboardHelp) {
+      const help = document.createElement('small'); help.className = 'chat-keyboard-help';
+      help.textContent = words.keyboardHelp; this.panel.append(help);
+    }
     this.shell.append(this.button, this.panel);
     host.append(this.shell);
     this.button.onclick = () => this.setOpen(!this.opened);
@@ -57,6 +62,13 @@ export class RoomChatUI {
         e.preventDefault();
         e.stopPropagation();
         this.setOpen(false);
+      }
+    };
+    this.panel.onkeydown = e => {
+      if (e.key === 'Escape') {
+        e.preventDefault(); e.stopPropagation(); this.setOpen(false);
+      } else if (e.key === 'Enter' && e.target === this.panel) {
+        e.preventDefault(); e.stopPropagation(); this.input.focus();
       }
     };
     session.onChat = () => this.render();
@@ -76,7 +88,8 @@ export class RoomChatUI {
     const target = event.target as HTMLElement | null;
     if (target?.closest?.('input,select,textarea,[contenteditable="true"]')) return false;
     event.preventDefault();
-    this.setOpen(true);
+    event.stopImmediatePropagation();
+    this.setOpen(!this.opened, 'panel');
     return true;
   }
   // Keep the same form, draft and history when menus rebuild after a purchase.
@@ -91,13 +104,13 @@ export class RoomChatUI {
     dock?.closest('.dialog-layout')?.classList.toggle('with-chat', this.enabled && this.online);
     if (focused) focused.focus({ preventScroll: true });
   }
-  setOpen(value: boolean) {
+  setOpen(value: boolean, focus: 'input'|'panel' = 'input') {
     if (value && (!this.enabled || !this.online)) return;
     this.opened = value;
     this.panel.hidden = !value;
     this.button.setAttribute("aria-expanded", String(value));
     this.changed();
-    if (value) this.input.focus();
+    if (value) (focus === 'panel' ? this.panel : this.input).focus();
     else this.button.focus();
   }
   configure(enabled: boolean, online: boolean) {

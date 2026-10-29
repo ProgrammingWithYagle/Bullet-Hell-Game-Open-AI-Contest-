@@ -1,6 +1,23 @@
 # Changelog
 
-Development build **2026.10.29-chat-space**, protocol 38. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.29-chat-toggle**, protocol 38. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-29 — Toggle chat and keep lobby actions clear
+
+### Keep upgrades above Start and Leave
+
+- The lobby now has a separate action row outside the scrolling upgrade area. Upgrade content is clipped to its own scroll region, and its scroll position survives purchases. Start run and Leave room keep their own space. The menu still uses the remaining screen height.
+- Very short windows allow outer scrolling instead of forcing the game controls beneath an overflowing upgrade area. The accepted fight chat placement remains unchanged.
+
+### C opens and closes the panel
+
+- C now toggles room chat. Opening it with C focuses the panel, so pressing C again closes it. Enter puts the cursor in the message field; Esc closes chat while typing. Clicking the chat button still focuses the message field directly. A short keyboard hint is translated in all fifteen languages.
+- Typed C, copy shortcuts, IME composition, repeated keydown and existing custom C gameplay bindings keep their normal behavior. Drafts, history and focus stay in the same chat instance across phase changes. Pause labels and behavior stay unchanged at the player’s request; the old rankings-unavailable message stays removed.
+
+### Evidence and scope
+
+- The preceding db9172c chat-space source passed782local tests, both exact-source CI runs, two frozen preview transport checks and the exact Wiki18page/34image verification. Human feedback accepted the expanded space but found overlap with the lobby actions and requested C close as well as open; this follow-up addresses both.
+- This follow-up has separate local/source-CI/preview/Wiki receipts under reviews/chat-toggle-2026-10-29. Rendered/human/device/native-language acceptance remains separate. The sealed a0c8c56 Windows review predates these later chat fixes. No hosted deployment, global-ranking acceptance, main merge or contest submission is claimed.
 
 ## 2026-10-29 — Open chat with C and give upgrades the available space
 

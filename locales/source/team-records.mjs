@@ -17,9 +17,27 @@ const rows = {
  ur: ['ٹیم ریکارڈ','اس گیم سرور پر ٹیموں کے نتائج۔ اکیلے مشق اور آزمائشی کھیل ان فہرستوں میں شامل نہیں ہوتے۔','ٹیم ریکارڈ لوڈ نہیں ہو سکے۔ رابطہ چیک کریں اور دوبارہ کوشش کریں۔','ٹیم کا نتیجہ محفوظ ہو گیا','ٹیم کا نتیجہ ابھی محفوظ نہیں ہوا۔ اس کمرے میں رہنے تک دوبارہ کوشش ہوتی رہے گی۔','یہ کھیل ٹیم ریکارڈ کے لیے اہل نہیں ہے۔','مزید دکھائیں','اب تک','اس ہفتے','ٹیم کا سب سے بڑا حجم','ان ترتیبات کے ساتھ ابھی کسی ٹیم نے کھیل مکمل نہیں کیا۔','یہ کھیل ختم کریں','وقفے کے دوران میزبان لامتناہی کھیل ختم کر کے ٹیم کا نتیجہ محفوظ کر سکتا ہے۔'],
  ko: ['팀 기록','이 게임 서버의 팀 결과입니다. 혼자 연습한 런과 테스트 런은 포함되지 않습니다.','팀 기록을 불러오지 못했습니다. 연결을 확인하고 다시 시도하세요.','팀 결과 저장됨','팀 결과가 아직 저장되지 않았습니다. 이 방에 있는 동안 다시 시도합니다.','이 런은 팀 기록 조건을 충족하지 않습니다.','더 보기','전체 기간','이번 주','최대 팀 인원','이 설정으로 완료한 팀이 아직 없습니다.','이 런 종료','쉬는 시간에 호스트가 무한 런을 종료하고 팀 결과를 저장할 수 있습니다.'],
 };
+const chatKeyboardHelp = {
+ en: 'C shows or hides chat. Enter to type; Esc to close.',
+ 'zh-Hans': 'C 显示或隐藏聊天。按 Enter 输入，按 Esc 关闭。',
+ 'zh-Hant': 'C 顯示或隱藏聊天。按 Enter 輸入，按 Esc 關閉。',
+ ja: 'Cでチャットを開閉。Enterで入力、Escで閉じます。',
+ es: 'C abre o cierra el chat. Enter para escribir; Esc para cerrar.',
+ fr: 'C affiche ou masque le chat. Entrée pour écrire, Échap pour fermer.',
+ de: 'C öffnet oder schließt den Chat. Enter zum Schreiben, Esc zum Schließen.',
+ 'pt-BR': 'C abre ou fecha o chat. Enter para escrever; Esc para fechar.',
+ ru: 'C открывает или скрывает чат. Enter — ввод, Esc — закрыть.',
+ hi: 'C से चैट दिखाएँ या छिपाएँ। लिखने के लिए Enter, बंद करने के लिए Esc।',
+ ar: 'C لإظهار المحادثة أو إخفائها. Enter للكتابة، وEsc للإغلاق.',
+ bn: 'C দিয়ে চ্যাট দেখান বা লুকান। লিখতে Enter, বন্ধ করতে Esc।',
+ id: 'C menampilkan atau menutup chat. Enter untuk mengetik; Esc untuk menutup.',
+ ur: 'C سے چیٹ دکھائیں یا چھپائیں۔ لکھنے کے لیے Enter، بند کرنے کے لیے Esc۔',
+ ko: 'C로 채팅을 열고 닫습니다. Enter로 입력, Esc로 닫기.',
+};
 export function teamRecordMessages(locale) {
   const row = rows[locale];
   if (!row || row.length !== keys.length) throw Error('Missing team-record locale ' + locale);
   return { ...Object.fromEntries(keys.map((key,i) => ['ui.'+key,row[i].normalize('NFC')])),
-    'ui.onlineBoards': row[0], 'ui.leaderboardOffline': row[2], 'ui.practiceNotice': row[1] };
+    'ui.onlineBoards': row[0], 'ui.leaderboardOffline': row[2], 'ui.practiceNotice': row[1],
+    'ui.chatKeyboardHelp': chatKeyboardHelp[locale].normalize('NFC') };
 }

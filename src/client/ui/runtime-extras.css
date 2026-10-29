@@ -13,24 +13,29 @@
 .dialog-layout.with-chat{width:min(1520px,100%);height:calc(100dvh - 3rem);grid-template-columns:minmax(0,1fr) minmax(16rem,21rem);align-items:stretch;min-height:0}
 .dialog-layout.with-chat:has(>.dialog.wide){width:min(1520px,100%)}
 .dialog-layout.with-chat>.dialog{height:100%;max-height:none;min-height:0}
-.dialog-layout.with-chat>.dialog.wide{display:flex;flex-direction:column}
-.dialog-layout.with-chat .loadout-editor{flex:1 1 auto;min-height:12rem;display:flex;flex-direction:column}
+.dialog-layout.with-chat>.dialog:has(>.phase-content){display:grid;grid-template-rows:auto minmax(0,1fr) auto;overflow:hidden}
+.phase-content{min-height:0;overflow:auto}
+.phase-content:has(>.loadout-editor){display:flex;flex-direction:column}
+.phase-content:has(>.loadout-editor)>:not(.loadout-editor){flex:none}
+.phase-actions{position:relative;margin-bottom:0;padding-top:.5rem;border-top:1px solid #81987866}
+.dialog-layout.with-chat .loadout-editor{flex:1 0 auto;min-height:0;display:flex;flex-direction:column}
 .dialog-layout.with-chat .loadout-editor>:not(.loadout-workspace){flex:none}
-.dialog-layout.with-chat .loadout-workspace{flex:1 1 auto;min-height:12rem;overflow:auto;grid-template-rows:minmax(0,1fr)}
+.dialog-layout.with-chat .loadout-workspace{flex:1 1 0;min-height:12rem;overflow:auto;grid-template-rows:minmax(0,1fr)}
 .dialog-layout.with-chat .loadout-board{min-height:0;display:flex;flex-direction:column}
-.dialog-layout.with-chat .skill-scroll{flex:1 1 auto;min-height:12rem;max-height:none}
+.dialog-layout.with-chat .skill-scroll{flex:1 1 0;min-height:12rem;max-height:none}
 .dialog-layout.with-chat .branch-tabs{flex:none}
 .dialog-layout.with-chat>.dialog-chat-slot{display:block}
 .room-chat-toggle kbd{margin-inline-start:.6rem;padding:.1rem .35rem;border:1px solid #789a86;border-radius:.2rem;font-size:.75em;font-family:system-ui,sans-serif}
+.room-chat:focus-visible{outline:2px solid #e6cd8a;outline-offset:3px}
 .room-chat-shell[data-placement=menu]{display:grid;gap:.5rem;min-width:0}
 .room-chat-shell[data-placement=menu] .room-chat-toggle{position:static;width:100%;font-size:.9rem}
 .room-chat-shell[data-placement=menu] .room-chat{position:static;width:100%;max-height:calc(100dvh - 8rem)}
 .room-chat-shell[data-placement=menu] .room-chat ol{max-height:min(45dvh,26rem)}
 @media(max-width:1000px){
   .overlay:has(>.dialog-layout.with-chat){align-items:flex-start}
-  .dialog-layout.with-chat{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);gap:.6rem}
+  .dialog-layout.with-chat{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(14rem,1fr);gap:.6rem}
   .dialog-layout.with-chat>.dialog-chat-slot{grid-row:1}
-  .room-chat-shell[data-placement=menu] .room-chat{max-height:max(12rem,30dvh);gap:.25rem}
+  .room-chat-shell[data-placement=menu] .room-chat{max-height:max(14rem,30dvh);gap:.25rem}
   .room-chat-shell[data-placement=menu] .room-chat ol{min-height:2rem;max-height:14dvh}
 }
 @media(max-width:700px){.dialog-layout.with-chat .loadout-workspace{grid-template-rows:minmax(12rem,1fr) auto}}

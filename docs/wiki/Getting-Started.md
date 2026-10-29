@@ -105,3 +105,5 @@ Room chat keeps its usual position while fighting. During upgrades, breaks and s
 Open **Leaderboards** for this device’s practice records or **Team records** from the selected server. Online public-authority runs share one team result; test runs do not enter the board. After a qualifying result, the Team records button opens the matching mode, difficulty and team size. During an Endless break, the host can expand **End this run** to finish and save.
 
 Press **C** to open room chat when you are not typing in a field. If you already assigned C to a gameplay action in your saved controls, that action keeps the key. The chat button remains available. Menus use the remaining window height when chat is open. Multiplayer keeps running behind menus; Solo pauses.
+
+**C** now opens and closes the chat panel. Press **Enter** to start typing, or click the message field. **Esc** closes chat while typing. The lobby’s **Start run** and **Leave room** buttons occupy a separate row beneath the scrolling upgrades.

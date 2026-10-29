@@ -309,6 +309,7 @@ function setupGame(online: boolean) {
   const power=document.createElement('span');power.id='clerk-shelter-power';power.hidden=true;$('ammo').after(power);
   roomChatUI=new RoomChatUI(session!,app,()=>syncPauseState(), {
     title: t('ui.roomChat'), message: t('ui.chatMessage'), send: t('ui.chatSend'), note: t('ui.chatEphemeral'), locale,
+    keyboardHelp: t('ui.chatKeyboardHelp'),
   });
   roomChatUI.configure(settings.roomChat,online);
   roomChatUI.setShortcutEnabled(!Object.values(inputOptions.bindings).some(keys => keys.includes('KeyC')));
@@ -709,7 +710,7 @@ function renderOverlay(view: View, p: PlayerView) {
   overlay.hidden = view.phase === 'combat';
   if (overlay.hidden) { syncRoomChatPlacement(); return; }
   let body = '',
-    title = '';
+    title = '', actions = '';
   if (view.phase === 'mutationVote') {
     title = t('ui.mutationVote');
     body = voteMarkup(view);
@@ -720,10 +721,8 @@ function renderOverlay(view: View, p: PlayerView) {
     title = t(view.phase === 'lobby' ? 'ui.roomSettings' : 'ui.shop');
     body =
       (view.phase==='lobby'&&session?.code ? `<p class="room-invite">${text('ui.roomCode')}: <strong><bdi>${esc(session.code)}</bdi></strong></p>` : '') +
-      shop(p) +
-      (view.phase === 'lobby'
-        ? `<div class="actions"><button id="start" class="primary" ${view.owner !== session!.id ? 'disabled' : ''}>${text('ui.start')}</button><button id="return-menu">${text('ui.leaveRoom')}</button></div>`
-        : '');
+      shop(p);
+    if (view.phase === 'lobby') actions = `<button id="start" class="primary" ${view.owner !== session!.id ? 'disabled' : ''}>${text('ui.start')}</button><button id="return-menu">${text('ui.leaveRoom')}</button>`;
   } else if (view.phase === 'secretOffer') {
     title = extensionText(locale, 'offerTitle');
     body = `<p>${esc(extensionText(locale, 'offerBody'))}</p><div class="actions"><button data-vote="1" class="primary">${esc(extensionText(locale, 'enter'))} <span data-vote-count="1">0</span></button><button data-vote="0">${esc(extensionText(locale, 'decline'))}</button></div>`;
@@ -748,11 +747,12 @@ function renderOverlay(view: View, p: PlayerView) {
   const focusedId = previous?.id;
   const focusedItem = previous?.dataset.inspect;
   const oldScroll=overlay.querySelector('.skill-scroll');
+  const contentScroll = overlay.querySelector('.phase-content')?.scrollTop ?? 0;
   const scroll = oldScroll?.scrollTop ?? 0, scrollLeft=oldScroll?.scrollLeft ?? 0;
   const samePhase = overlay.dataset.phase === view.phase;
   overlay.dataset.phase = view.phase;
   roomChatUI?.place();
-  overlay.innerHTML = `<div class="dialog-layout" role="dialog" aria-modal="true" aria-labelledby="phase-heading"><section class="dialog ${view.phase === 'lobby' || view.phase === 'shop' ? 'wide' : ''}"><div class="section-heading"><h2 id="phase-heading" tabindex="-1">${esc(title)}</h2>${phaseCountdownMarkup(view.phase, locale)}</div>${body}</section><div id="phase-chat-slot" class="dialog-chat-slot"></div></div>`;
+  overlay.innerHTML = `<div class="dialog-layout" role="dialog" aria-modal="true" aria-labelledby="phase-heading"><section class="dialog ${view.phase === 'lobby' || view.phase === 'shop' ? 'wide' : ''}"><div class="section-heading"><h2 id="phase-heading" tabindex="-1">${esc(title)}</h2>${phaseCountdownMarkup(view.phase, locale)}</div><div class="phase-content">${body}</div>${actions ? `<footer class="actions phase-actions">${actions}</footer>` : ''}</section><div id="phase-chat-slot" class="dialog-chat-slot"></div></div>`;
   syncRoomChatPlacement();
   if (['lobby', 'shop'].includes(view.phase))
     bindShop(overlay, p, (request) => session?.purchase(request), supplyBindings(), settings.branchingTree,view.run.difficulty);
@@ -770,6 +770,7 @@ function renderOverlay(view: View, p: PlayerView) {
   const back = $('return-menu');
   if (back) back.onclick = () => void leave();
   if (samePhase) {
+    const content = overlay.querySelector('.phase-content'); if (content) content.scrollTop = contentScroll;
     const scroller = overlay.querySelector('.skill-scroll');
     if (scroller) {scroller.scrollTop = scroll;scroller.scrollLeft=scrollLeft;}
   }

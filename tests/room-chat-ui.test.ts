@@ -56,11 +56,13 @@ test('chat history refresh and menu replacement keep the draft; successful send 
     f.ui.destroy();assert.equal(f.host.find('input'),undefined);
   }finally{f.restore();}
 });
-test('C opens and focuses chat without stealing typed text, copy shortcuts, repeats or an existing custom gameplay binding',()=>{
+test('C toggles chat, Enter starts typing, and text/copy/custom gameplay bindings remain usable',()=>{
   const f=setup();try{
     f.ui.configure(true,true);
-    const key=(overrides:Record<string,unknown>={})=>({code:'KeyC',target:f.host,repeat:false,isComposing:false,ctrlKey:false,metaKey:false,altKey:false,preventDefault(){},...overrides}) as unknown as KeyboardEvent;
-    assert(f.ui.handleShortcut(key()));assert.equal(f.ui.blocksInput,true);const input=f.host.find('input')!;assert.equal(f.doc.activeElement,input);
+    const key=(overrides:Record<string,unknown>={})=>({code:'KeyC',target:f.host,repeat:false,isComposing:false,ctrlKey:false,metaKey:false,altKey:false,preventDefault(){},stopImmediatePropagation(){},...overrides}) as unknown as KeyboardEvent;
+    assert(f.ui.handleShortcut(key()));assert.equal(f.ui.blocksInput,true);const input=f.host.find('input')!,panel=f.host.find('section')!;assert.equal(f.doc.activeElement,panel);
+    assert(f.ui.handleShortcut(key({target:panel})));assert.equal(f.ui.blocksInput,false);
+    assert(f.ui.handleShortcut(key()));panel.onkeydown?.({key:'Enter',target:panel,preventDefault(){},stopPropagation(){}});assert.equal(f.doc.activeElement,input);
     input.value='contains c';assert(!f.ui.handleShortcut(key({target:input})));assert.equal(input.value,'contains c');
     f.ui.setOpen(false);assert(!f.ui.handleShortcut(key({ctrlKey:true})));assert(!f.ui.handleShortcut(key({repeat:true})));assert(!f.ui.handleShortcut(key({isComposing:true})));
     f.ui.setShortcutEnabled(false);assert(!f.ui.handleShortcut(key()));assert.equal(f.ui.blocksInput,false);
