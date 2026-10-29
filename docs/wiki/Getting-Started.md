@@ -127,3 +127,7 @@ Personal shields now share one combined capacity across starting shields, abilit
 
 
 Base starting shield is recalculated each fight from the difficulty-adjusted capacity: Heavy 50%, Tank 100%, Soldier 15%, all other classes 0. Hellish gives everyone0. Existing starting-shield mutation bonuses can fill remaining capacity, and all sources respect the same cap. This adds no new branch or maximum-shield upgrade.
+
+## Latest local Windows review
+
+The current local Windows review includes the map, waiting-room, Medic/shield, player-status, password and confirmed-chat updates. Source **fe82c7e38c8fa73804678b6637815b23aceb0ce5**, build **2026.10.29-chat-confirmation**, protocol42, passes827local source checks. All1899package files match on original, fresh deep extraction and an independent Windows copy, with six actual native offline/LAN diagnostics passing, including a Japanese deep folder. It has not replaced the older published download. [Current package evidence and acceptance limits](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/reviews/windows-current-2026-10-29/package-status.json).

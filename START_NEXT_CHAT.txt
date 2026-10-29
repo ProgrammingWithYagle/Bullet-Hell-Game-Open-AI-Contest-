@@ -1,3 +1,17 @@
+# Current local checkpoint: matching Windows review verified
+
+Source **fe82c7e38c8fa73804678b6637815b23aceb0ce5**, build **2026.10.29-chat-confirmation / protocol42**, passes827/827/0local tests plus TypeScript,15locales, native artwork, production build and71atlas contracts. The only changes after browser gameplay source5dfc6a8 are stronger packaged diagnostics: actual password/code/host/chat checks and210starting-shield cases. Frozen public5237/backend2611/session2002 and testing5236/backend2610/session77474 remain preserved; their exact source stays5dfc6a8.
+
+The new local download is **release/Grave_Accord_2026.10.29_Chat_Confirmation_Public_Review.zip**, 842864638bytes/SHA256 **f58cc4acb3c7b60c4c3606987cd88b169b67c5c7c9bbc415a8529eb8ae9cc30e**. [Complete Windows evidence](../reviews/windows-current-2026-10-29/package-status.json) proves all1899files on original/fresh deep extraction/ordinary Windows copy,1697client members,80runtime-license packages, six actual native offline/LAN diagnostics and post-native hashes. All copies pass210starts/shield values, save/profile/font handling and67music decodes. LAN checks cover wrong-password rejection, code join, host-only Start, confirmed/deduplicated chat, combat and stop. The independent copy uses a Japanese path; font paths233/281/282characters pass. Companions include manifest, verification, checksums and a short start guide. No synthetic qualifying result was posted.
+
+Runtime SHA256 **a510cf4cabd70dabfa871f31bc7e5ce528158d4c727e2400f004ae6dae6f0967**; source/test snapshot **43a25d7c9836de507f4a15ffcc896ab193d9f0a6c2a84c5034ff51eb48f00620**. The full native report, original/extracted/copied folders, build logs, copy command and all raw earlier evidence remain under reviews/windows-current-2026-10-29 and output/windows-current-2026-10-29. Software portability is accepted; rendered/human/device/language/listening/physical second-machine LAN and final balance remain open.
+
+**Publication remains pending.** The existing direct GitHub source-publishing question has no answer. Automatic approval review rejected prior source pushes and requires a current direct reply; do not retry/bypass or ask it again needlessly. Source CI has not run for these unpublished follow-ups. Wiki synchronization is already authorized after corresponding source upload. No hosted Windows/browser release was replaced, no game deployed or main merged, and no contest entry submitted.
+
+This goal turn made progress; the broad polish goal stays active. Preserve all prior preview/backends/packages/raw reports. Same checkout/branch/draftPR14; no delegation, new checkout, paid service or expansion roster/branches. Browser automation stays disabled; native packaged diagnostics are software fixtures, not a browser/rendered review. Future shield-cap branches/selective blocking remain notes only. Continue current-content polish and human review without claiming shared hosted rankings/recovery, WAN/endurance/capacity, device/language/listening or coordinated release complete.
+
+## Preserved previous checkpoint
+
 # Current local checkpoint: confirmed chat and clearer interface
 
 Build **2026.10.29-chat-confirmation / protocol42**, source **5dfc6a8722ac137219d9eca68610d022e12f27c8**, passes **827tests /827passed /0failed**, TypeScript, authored content,15locales, native artwork, production build and71atlas contracts. [Complete current evidence](../reviews/chat-confirmation-2026-10-29/checkpoint-status.json) records exact identities and limits.
