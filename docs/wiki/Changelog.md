@@ -1,6 +1,28 @@
 # Changelog
 
-Development build **2026.10.29-boss-defeat**, protocol 38. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.29-room-lobby**, protocol 39. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-29 — Clear waiting rooms, stable map choices and painted arenas
+
+### Give each boss clear time to finish
+
+- The Boss defeated moment now lasts five seconds and plays a clear sound cue once. Fifteen authored falls and fifty-one final poses retain their existing coverage. Full voting time, combat scores and once-only rewards remain.
+- The active map now stays in place through the fall and every intermission, until the next encounter actually begins. This fixes the floor changing underneath a fallen boss. The defeated boss keeps its authority position.
+
+### Choose a map and know what happens next
+
+- An explicitly selected map stays fixed for the whole run, including the optional extra fight. Random map for this run picks once; Random map each fight picks on deployment and may repeat. These choices survive saves and remain synchronized online.
+- All thirty-six map/difficulty combinations receive painted cover matching their actual collision rectangles. Baby’s additional props no longer sit inside flat outlined blocks. Hellish lava uses stone-and-ember art with its existing warning and damage timing. Five maps gain themed painted surroundings; the original readable floors and all physical footprints remain.
+
+### Meet the team before the run
+
+- Public and private rooms open a Waiting room with player names, classes, connection status, host marking, chosen rules and a copyable room code. Prepare equipment is a separate tab. The host alone presses Start run; guests can prepare while waiting. Solo preparation has a clear equipment heading.
+- Both public and private room codes work during play. Room code opens a small disclosure with copy support and a manual-copy fallback. Opening it blocks gameplay input; online simulation keeps running under the existing notice.
+
+### Compatibility and review
+
+- Protocol39 requires a matching backend. Exact known protocol38 local Practice saves migrate with the originally chosen map, while online checkpoints remain strict. Existing controls, chat placement and toggle, and Pause labels remain.
+- Native art, alpha, packing and geometry checks and a thirty-six-layout static composition review are separate from browser, human, device, language and listening acceptance. Earlier candidates and their evidence remain preserved. Chat delivery confirmation is a separate follow-up.
 
 ## 2026-10-29 — Let each boss defeat finish before the next choices
 

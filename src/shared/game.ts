@@ -1,5 +1,6 @@
 import {VariantPressure} from './variant-pressure.ts';
 import { bossDefeatRemaining, showingBossDefeat } from './boss-defeat-flow.ts';
+import { arenaSelections, selectedArenaId, type ArenaSelection } from './arena-selection.ts';
 import {WardenPatrol} from './warden-patrol.ts';
 import {AbilityTransforms,type TransformContext} from './ability-transforms.ts';
 import {hasTalent} from './class-talents.ts';
@@ -120,6 +121,7 @@ export type Settings = {
   maxPlayers: number;
   openingBossId: BossId;
   openingArenaId: string;
+  arenaSelection: ArenaSelection;
 };
 export type Player = {
   progress: RunProgress;
@@ -332,6 +334,7 @@ export class Game {
     bounty: 1,
     recommendedRating: 1,
   };
+  private currentArenaId: string;
   constructor(settings: Partial<Settings> = {}) {
     this.settings = {
       runId: settings.runId ?? 'simulation-' + (settings.seed ?? 1).toString(36),
@@ -343,6 +346,7 @@ export class Game {
         settings.openingBossId ?? (settings.mode === 'raid' ? 'chain-colossus' : 'constable'),
       openingArenaId:
         settings.openingArenaId ?? (settings.mode === 'raid' ? 'ossuary-works' : 'gatehouse'),
+      arenaSelection: settings.arenaSelection ?? (settings.openingArenaId ? 'fixed' : 'route'),
     };
     if (
       typeof this.settings.runId !== 'string' ||
@@ -350,6 +354,7 @@ export class Game {
       !implementedBossIds.includes(this.settings.openingBossId) ||
       !implementedModeIds.includes(this.settings.mode) ||
       !data.arenas.some((a) => a.id === this.settings.openingArenaId) ||
+      !arenaSelections.includes(this.settings.arenaSelection) ||
       !data.difficulties.some((d) => d.id === this.settings.difficulty) ||
       !Number.isInteger(this.settings.maxPlayers) ||
       this.settings.maxPlayers < 1 ||
@@ -368,16 +373,10 @@ export class Game {
       this.boss.threat = 11;
     }
     this.rng = new Random(this.settings.seed);
+    this.currentArenaId = selectedArenaId(this.settings, 0);
   }
   get arena() {
-    if (this.secretStatus === 'active' && this.campaignBank) return runtimeArena('crown-crypt',this.settings.difficulty);
-    if (this.encounter === 0) return runtimeArena(this.settings.openingArenaId,this.settings.difficulty);
-    const mode = data.modes.find((m) => m.id === this.settings.mode)!;
-    const index =
-      this.settings.mode === 'endless'
-        ? this.encounter % mode.arenas.length
-        : Math.min(this.encounter, mode.arenas.length - 1);
-    return runtimeArena(mode.arenas[index],this.settings.difficulty);
+    return runtimeArena(this.currentArenaId, this.settings.difficulty);
   }
   get obstacles() {
     const gates = this.director.solids(this.combatTick);
@@ -769,6 +768,7 @@ export class Game {
     );
   }
   private startEncounter() {
+    this.currentArenaId = selectedArenaId(this.settings, this.encounter, this.secretStatus === 'active' && Boolean(this.campaignBank));
     Object.assign(this.selectedContract,classifiedContract(this.selectedContract.bossId??'constable',encounterVariant(this.settings.difficulty,this.selectedContract.variant)));
     this.phaseAttackReadyAt = 0;
     this.variantPressure.reset(this.combatTick);
@@ -905,6 +905,7 @@ export class Game {
     if (this.settings.mode === 'endless') this.endless.record(this.boss.id);
     this.boss.health = 0;
     this.boss.defeatedAt = this.tick;
+    this.events.push({ type: 'sound', id: 'boss-defeated' });
     this.director.reset('constable');
     this.signatures = [];
     this.wardenPatrol.clear();
@@ -937,7 +938,6 @@ export class Game {
     if (this.boss.id === 'uncounted') {
       this.secretStatus = 'cleared';
       this.phase = 'victory';
-      this.events.push({ type: 'sound', id: 'accord-success' });
       return;
     }
     if (this.settings.mode !== 'endless' && this.encounter >= this.routeLength) {
@@ -959,12 +959,10 @@ export class Game {
       ) {
         this.secretStatus = 'offered';
         this.changePhase('secretOffer', 30);
-        this.events.push({ type: 'sound', id: 'accord-success' });
         return;
       }
 
       this.phase = 'victory';
-      this.events.push({ type: 'sound', id: 'accord-success' });
       return;
     }
     const eligible = data.mutations.filter(
@@ -2563,6 +2561,7 @@ export class Game {
       contentRevision: CONTENT_REVISION,
       practiceOnly: true,
       settings: { ...this.settings, maxPlayers: 1 },
+      arenaId: this.currentArenaId,
       tick: this.tick,
       combatTick: this.combatTick,
       phase: this.phase,
@@ -2853,6 +2852,11 @@ export class Game {
     g.accords = save.accords;
     g.rng.state = save.rng;
     g.nextId = save.nextId;
+    const previousArena = selectedArenaId(g.settings, Math.max(0, save.encounter - 1));
+    if (save.arenaId !== undefined && (!data.arenas.some(a => a.id === save.arenaId) ||
+      (g.settings.arenaSelection !== 'route' && save.arenaId !== previousArena)))
+      throw Error('invalidArenaSelection');
+    g.currentArenaId = save.arenaId ?? previousArena;
     g.selectedContract = {
       ...save.selectedContract,
       ...classifiedContract(save.selectedContract.bossId!, encounterVariant(g.settings.difficulty,save.selectedContract.variant)),
@@ -2896,6 +2900,7 @@ export class Game {
       contentRevision: CONTENT_REVISION,
       serverOnly: true,
       settings: { ...this.settings },
+      arenaId: this.currentArenaId,
       tick: this.tick,
       combatTick: this.combatTick,
       phase: this.phase,
@@ -3015,6 +3020,7 @@ export class Game {
     g.rng.state = base.rng.state;
     g.selectedContract = { ...base.selectedContract };
     g.boss = { ...base.boss };
+    g.currentArenaId = base.currentArenaId;
     g.mutations.push(...structuredClone(base.mutations));
     g.mutationCards = [...base.mutationCards];
     g.contractCards = structuredClone(base.contractCards);

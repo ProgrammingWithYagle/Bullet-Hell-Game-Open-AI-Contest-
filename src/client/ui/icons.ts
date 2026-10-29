@@ -23,6 +23,8 @@ const paths: Record<string, string> = {
   extra: 'M6 25l10-19 10 19 M5 17h22 M10 25h12',
   tree: 'M16 3v8 M6 17v-6h20v6 M6 22v6 M26 22v6 M16 11v17',
   map: 'M3 7l9-4 9 4 8-4v22l-8 4-9-4-9 4z M12 3v22 M21 7v22',
+  randomRun: 'M5 4h18v19H5z M10 9h.1 M18 18h.1 M10 18h.1 M18 9h.1 M23 21h6v9h-9v-9z M22 21v-3a2 2 0 0 1 4 0v3',
+  randomEncounter: 'M6 8h18v18H6z M11 13h.1 M19 21h.1 M11 21h.1 M19 13h.1 M3 5h21l-3-3 M29 29H8l3 3',
   bell: 'M6 23h20l-4-5v-7a6 6 0 0 0-12 0v7z M13 27h6 M16 3V1',
   infinity: 'M16 16c-12-16-17 10-6 5L22 11c11-5 6 21-6 5z',
   check: 'M6 16l7 8L27 7',

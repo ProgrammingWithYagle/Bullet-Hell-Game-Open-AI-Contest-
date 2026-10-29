@@ -4,6 +4,10 @@ import wheel from '../../assets/production/motion/tollkeeper-wheel-v1.png?url';
 import arena from '../../assets/proofs/arena-v1.png?url';
 import gatehouseHalf from '../../assets/production/arenas/gatehouse-half-v1.png?url';
 import gatehouseOpen from '../../assets/production/arenas/gatehouse-open-v1.png?url';
+const worldImages = import.meta.glob('../../assets/production/arena-worlds/*-v1.png', {query:'?url',import:'default',eager:true}) as Record<string,string>;
+const coverSurfaceImages = import.meta.glob(['../../assets/production/arena-cover-surfaces/*-v2.png','../../assets/production/arena-cover-surfaces/lava-pit-v1.png'], {
+  query: '?url', import: 'default', eager: true,
+}) as Record<string,string>;
 const arenaGroundImages = import.meta.glob('../../assets/production/arenas/*-ground-v1.png', {
   query: '?url',
   import: 'default',
@@ -163,6 +167,8 @@ export const assets = {
   ) as Record<string, string>,
   encounters: resolveEncounterAssetUrls(encounterArt,encounterMotion),
   arena,
+  arenaWorlds: Object.fromEntries(Object.entries(worldImages).map(([path,url])=>[path.split('/').at(-1)!.replace('-v1.png',''),url])) as Record<string,string>,
+  arenaCovers: Object.fromEntries(Object.entries(coverSurfaceImages).map(([path,url])=>[path.split('/').at(-1)!.replace(/-v[12]\.png$/,''),url])) as Record<string,string>,
   arenaGrounds: {
     gatehouse: arena,
     'gatehouse-half':gatehouseHalf,

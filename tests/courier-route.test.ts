@@ -462,7 +462,7 @@ test("issued protocol21 local saves preserve completed Crazed/Brutal forms exact
   old.contentRevision =
     "312aa30276cffb7bb00cf9a303cc3b3461cce80d32e054afd5e91c08f76e2006";
   const after = Game.restoreOffline(old).offlineCheckpoint()!;
-  assert.equal(PROTOCOL, 38);
+  assert.equal(PROTOCOL, 39);
   assert.equal(after.contentRevision, CONTENT_REVISION);
   assert.deepEqual(after.completedBossForms, save.completedBossForms);
   assert.deepEqual(after.player, save.player);

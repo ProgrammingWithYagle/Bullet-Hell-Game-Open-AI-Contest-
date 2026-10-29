@@ -80,7 +80,7 @@ export class AudioBus {
     if (now < this.duckUntil) gain.gain.setTargetAtTime(this.musicVolume, this.duckUntil, 0.18);
   }
   async sound(id: string) {
-    if (!this.context || document.hidden || this.active >= (id==='boss-phase'?12:10)) return;
+    if (!this.context || document.hidden || this.active >= (id==='boss-phase'||id==='boss-defeated'?12:10)) return;
     const now = performance.now();
     if (now - (this.last.get(id) ?? -Infinity) < 60) return;
     this.last.set(id, now);
@@ -90,11 +90,11 @@ export class AudioBus {
       try{playBellSound(this.context,id,this.volume,()=>this.active--);}catch{this.active--;}
       return;
     }
-    const url = id==='boss-phase'?phaseTurn:sfx['../../assets/audio/sfx/' + id + '.wav'];
+    const url = id==='boss-phase'?phaseTurn:sfx['../../assets/audio/sfx/' + (id==='boss-defeated'?'accord-success':id) + '.wav'];
     if (!url) return;
     try {
       const buffer = await this.buffer(url);
-      if (document.hidden || this.active >= (id==='boss-phase'?12:10)) return;
+      if (document.hidden || this.active >= (id==='boss-phase'||id==='boss-defeated'?12:10)) return;
       const source = this.context.createBufferSource(),
         gain = this.context.createGain();
       source.buffer = buffer;
@@ -106,9 +106,9 @@ export class AudioBus {
         source.disconnect();
         gain.disconnect();
       };
-      if (['warning', 'boss-phase', 'downed', 'accord-success'].includes(id) && this.volume > 0) {
+      if (['warning', 'boss-phase', 'downed', 'accord-success', 'boss-defeated'].includes(id) && this.volume > 0) {
         const time = this.context.currentTime;
-        this.duckUntil = time + (id==='boss-phase'?.9:.42);
+        this.duckUntil = time + (id==='boss-phase'||id==='boss-defeated'?.9:.42);
         const musicGain = this.music && this.voices.get(this.music);
         if (musicGain) this.musicLevel(musicGain, time);
       }

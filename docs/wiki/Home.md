@@ -4,7 +4,7 @@
 
 Dodge attacks, defeat bosses and spend your rewards between fights. Play Solo or team up with friends in this cooperative zombie bullet-hell game.
 
-**Current development build: 2026.10.29-boss-defeat.** The game is still in development. The public demo and published Windows download below are older versions.
+**Current development build: 2026.10.29-room-lobby.** The game is still in development. The public demo and published Windows download below are older versions.
 
 ## New here?
 
@@ -45,10 +45,12 @@ Newer local Windows review packages have separate source, extraction/copy and na
 <details>
 <summary>Development and verification</summary>
 
-Current source is version 0.3.0, protocol 38 on [draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14). The [current local software gate](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/reviews/boss-defeat-2026-10-29/gate-02/runtime-verification.json) is separate from rendered/human acceptance. [Development Progress](Development-Progress) tracks remaining work; [Changelog](Changelog) records each update. [Architecture](Architecture), [Hosting and Recovery](Hosting-and-Recovery), [Contributing](Contributing) and [Credits](Credits) provide the technical and project references.
+Current source is version 0.3.0, protocol 39 on [draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14). The [current local software gate](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/reviews/boss-defeat-2026-10-29/gate-02/runtime-verification.json) is separate from rendered/human acceptance. [Development Progress](Development-Progress) tracks remaining work; [Changelog](Changelog) records each update. [Architecture](Architecture), [Hosting and Recovery](Hosting-and-Recovery), [Contributing](Contributing) and [Credits](Credits) provide the technical and project references.
 
 The latest [continuation checkpoint](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/CHECKPOINT_2026_10_25.md) distinguishes current source, frozen previews, CI, Wiki and older Windows review packages. Protected main and external deployment remain separate boundaries.
 
 </details>
 
 After each clear, a short **Boss defeated** moment lets the existing fall or final pose stay visible before the next choices appear. Fifteen bosses currently have full falling sequences; fifty-one have final defeat poses. The next vote keeps its full time.
+
+Online rooms open a **Waiting room** with the player list and a copyable code. Use **Prepare equipment** while waiting; the host presses **Start run**. The **Room code** button remains available during play. Selecting a specific map keeps it for the run; the two random options choose once or before each fight. Painted cover and themed scenery apply across all thirty-six map/difficulty combinations. New rendered/human acceptance remains open.

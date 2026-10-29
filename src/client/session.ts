@@ -1,4 +1,5 @@
 import {TESTING_BUILD} from './build-audience.ts';
+import type { ArenaSelection } from '../shared/arena-selection.ts';
 import {isChatMessage,chatText,type ChatMessage} from '../shared/room-chat.ts';
 import type {TestingCommand} from './testing-command.ts';
 import { recordProfileView } from './profile.ts';
@@ -30,6 +31,7 @@ export type ConnectionOptions = {
   difficulty: string;
   openingBossId?: BossId;
   openingArenaId?: string;
+  arenaSelection?: ArenaSelection;
   practiceVariant?: 'normal' | 'brutal' | 'crazed';
 };
 export type RoomSummary = {

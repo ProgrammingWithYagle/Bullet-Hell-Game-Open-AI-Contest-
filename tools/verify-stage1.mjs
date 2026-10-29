@@ -109,6 +109,8 @@ check('Design bible and complete editable tables',()=>{
   const balance=read('reviews/balance-model-review.json');assert(balance.passed,'Analytical build feasibility fails');assert.equal(balance.contentRevision,read('content/revision.json').sha256,'Stale balance evidence');
 });
 if(!contentOnly){
+  check('Painted arena cover and lava native pixels, transparency and provenance',()=>{const result=spawnSync('python',['-X','utf8','tools/verify-arena-surface-art.py'],{cwd:root,encoding:'utf8'});assert.equal(result.status,0,result.stdout+'\n'+result.stderr);});
+  check('Painted arena worlds match exact normalized native pixels and floor-fit metadata',()=>{const result=spawnSync('python',['-X','utf8','tools/verify-arena-world-art.py'],{cwd:root,encoding:'utf8'});assert.equal(result.status,0,result.stdout+'\n'+result.stderr);});
   check('Bellringer eight drawn walking poses and exact retained action RGBA',()=>{const result=spawnSync('python',['-X','utf8','tools/verify-bellringer-art.py'],{cwd:root,encoding:'utf8'});assert.equal(result.status,0,result.stdout+'\n'+result.stderr);});
   check('Alchemist eight drawn walking poses and exact retained action RGBA',()=>{const result=spawnSync('python',['-X','utf8','tools/verify-alchemist-lab-art.py'],{cwd:root,encoding:'utf8'});assert.equal(result.status,0,result.stdout+'\n'+result.stderr);});
   check('All fifteen translation catalogs and placeholder parity',()=>{const result=spawnSync(process.execPath,['tools/verify-locales.mjs'],{cwd:root,encoding:'utf8'});assert.equal(result.status,0,result.stdout+'\n'+result.stderr);});

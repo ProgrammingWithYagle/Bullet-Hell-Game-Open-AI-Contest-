@@ -13,7 +13,6 @@ import history from '../../shared/update-history.json';
 import revision from '../../../content/revision.json';
 import changelogNotices from '../changelog-notices.json';
 import { changelogHTML } from './changelog.ts';
-import { runtimeArena } from '../../shared/arena-layouts.ts';
 import { arenaPreviewMarkup, arenaPreviewModel } from '../arena-preview.ts';
 import { expeditionText, type ExpeditionMessage } from '../expedition-text.ts';
 import { data, implementedBossIds } from '../../shared/game.ts';
@@ -47,6 +46,8 @@ let selected: ConnectionOptions = {
   difficulty: 'normal',
   openingBossId: 'constable',
   practiceVariant: 'normal',
+  openingArenaId: 'gatehouse',
+  arenaSelection: 'fixed',
 };
 let arenaId = 'gatehouse',
   visibility: 'offline' | 'public' | 'private' = 'offline';
@@ -97,7 +98,9 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
     overview: expeditionText(locale, 'overview'), start: expeditionText(locale, 'start'),
     boss: expeditionText(locale, 'boss'), cover: expeditionText(locale, 'cover'),
     lava: expeditionText(locale, 'lava'),
-  });
+  }, assets.arenaCovers, assets.arenaWorlds);
+  const randomMap = (id: string) => id === 'randomRun' || id === 'randomEncounter';
+  const mapChoiceName = (id: string) => t(randomMap(id) ? 'ui.' + (id === 'randomRun' ? 'randomMapRun' : 'randomMapEncounter') : 'arena.' + id + '.name');
   const difficultyCaption = (id: string) => copy(id as ExpeditionMessage);
   const difficultyAvailable = (id: string) => {
     try {
@@ -123,13 +126,17 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
       content.innerHTML = `<div class="setup-heading"><h1>${e(t(labels[page]))}</h1><p>${copy('modeIntro')}</p></div><div class="route-composition"><div class="route-list">${data.modes.map((m) => `<button data-mode="${m.id}" class="route-pick ${m.id === previewMode ? 'selected' : ''}" aria-pressed="${m.id === previewMode}"><bdi class="mode-count" aria-hidden="true">${m.encounters === null ? '∞' : number(m.encounters)}</bdi><span>${e(t('mode.' + m.id + '.name'))}<small>${number(modeCapacity(m.id, m.maxPlayers))} ${e(t('ui.players'))}</small></span>${availableMode(m.id) ? '' : icon('lock')}</button>`).join('')}</div><article class="route-detail">${modePreviewMarkup(m, { progression: expeditionText(locale, 'modeProgression'), fights: expeditionText(locale, 'bossFights'), estimatedTime: expeditionText(locale, 'estimatedTime'), minutes: expeditionText(locale, 'minutes'), noFinalFight: expeditionText(locale, 'noFinalFight'), endlessTime: expeditionText(locale, 'endlessTime'), number })}<div><p class="eyebrow">${e(t('ui.chooseMode'))}</p><h2>${e(t('mode.' + m.id + '.name'))}</h2><p>${copy(('mode_' + m.id) as ExpeditionMessage)}</p><div class="stat-ribbon"><span>${icon('group')}${number(m.minPlayers)}–${number(modeCapacity(m.id, m.maxPlayers))} ${e(t('ui.players'))}</span></div>${TESTING_BUILD ? `<p class="prototype-note">${availableMode(m.id) ? e(t("ui.testingBuild")) : e(t('ui.inProduction'))}</p>` : ''}</div></article></div>${navigation(!availableMode(m.id))}`;
     }
     if (page === 'map') {
-      const a = runtimeArena(previewMap);
-      content.innerHTML = `<div class="setup-heading"><h1>${e(t('ui.map'))}</h1><p>${copy('mapIntro')}</p></div><div class="map-composition"><div class="map-strip" role="group" aria-label="${e(t('ui.map'))}">${data.arenas.map((a) => `<button data-map="${a.id}" class="map-pick ${a.id === previewMap ? 'selected' : ''}" aria-pressed="${a.id === previewMap}"><span class="map-thumbnail" aria-hidden="true"><img src="${e(assets.arenaGrounds[arenaPreviewModel(a.id, selected.difficulty).groundKey])}" alt="" loading="lazy" decoding="async"></span><span>${e(t('arena.' + a.id + '.name'))}</span></button>`).join('')}</div><article class="map-detail">${mapPreview(a.id)}<div><h2>${e(t('arena.' + a.id + '.name'))}</h2><p>${e(t('arena.' + a.id + '.description'))}</p><p class="setup-helper">${copy('mapDifficulty')}</p></div></article></div>${navigation(false)}`;
+      const random = randomMap(previewMap);
+      const choices = [...data.arenas.map(a => a.id), 'randomRun', 'randomEncounter'];
+      const detail = random
+        ? `<div class="random-map-detail" aria-hidden="true">${icon(previewMap)}</div><div><h2>${e(mapChoiceName(previewMap))}</h2><p>${e(t(previewMap === 'randomRun' ? 'ui.randomMapRunHelp' : 'ui.randomMapEncounterHelp'))}</p><p class="setup-helper">${copy('mapDifficulty')}</p></div>`
+        : `${mapPreview(previewMap)}<div><h2>${e(mapChoiceName(previewMap))}</h2><p>${e(t('arena.' + previewMap + '.description'))}</p><p>${e(t('ui.fixedMapHelp'))}</p><p class="setup-helper">${copy('mapDifficulty')}</p></div>`;
+      content.innerHTML = `<div class="setup-heading"><h1>${e(t('ui.map'))}</h1><p>${copy('mapIntro')}</p></div><div class="map-composition"><div class="map-strip" role="group" aria-label="${e(t('ui.map'))}">${choices.map(id => `<button data-map="${id}" class="map-pick ${id === previewMap ? 'selected' : ''}" aria-pressed="${id === previewMap}"><span class="map-thumbnail" aria-hidden="true">${randomMap(id) ? icon(id) : `<img src="${e(assets.arenaWorlds[id] ?? assets.arenaGrounds[arenaPreviewModel(id, selected.difficulty).groundKey])}" alt="" loading="lazy" decoding="async">`}</span><span>${e(mapChoiceName(id))}</span></button>`).join('')}</div><article class="map-detail">${detail}</article></div>${navigation(false)}`;
     }
     if (page === 'difficulty')
       content.innerHTML = `<div class="setup-heading"><h1>${e(t(labels[page]))}</h1><p>${copy('difficultyIntro')}</p></div><div class="difficulty-cards" role="group" aria-label="${e(t(labels[page]))}">${data.difficulties.map((d) => `<button data-difficulty="${d.id}" class="difficulty-pick ${d.id === selected.difficulty ? 'selected' : ''}" ${!difficultyAvailable(d.id) ? 'disabled' : ''} aria-pressed="${d.id === selected.difficulty}"><span class="difficulty-emblem" aria-hidden="true">${icon('difficulty-' + d.id)}</span><span class="difficulty-name">${e(t('difficulty.' + d.id))}</span>${d.id === 'baby' ? `<span class="difficulty-recommendation">${copy('recommended')}</span>` : ''}<span class="difficulty-description">${difficultyCaption(d.id)}</span>${!difficultyAvailable(d.id) ? `<small>${icon('lock')}${e(t('ui.hardUnlock'))}</small>` : ''}</button>`).join('')}</div><section class="difficulty-summary" aria-live="polite" aria-atomic="true"><div><h2>${e(t('difficulty.' + selected.difficulty))}</h2><p>${e(t('ui.reviveRulesHelp'))}</p>${difficultyRulesMarkup(selected.difficulty)}</div><dl class="difficulty-stats">${(() => {const d = data.difficulties.find(d => d.id === selected.difficulty)!; return [['stat.health', d.health], ['stat.damage', d.damage], ['stat.bossSpeed', d.speed]].map(([key, value]) => `<div><dt>${e(t(String(key)))}</dt><dd>×${number(Number(value), 2)}</dd></div>`).join('');})()}</dl></section>${navigation(false)}`;
     if (page === 'review')
-      content.innerHTML = `<div class="setup-heading"><h1>${e(t(labels[page]))}</h1></div><div class="review-composition"><div class="review-portrait">${portrait(selected.classId)}</div><section><h2>${e(t('class.' + selected.classId + '.name'))} · ${e(t('mode.' + selected.mode + '.name'))}</h2><p>${e(t('arena.' + arenaId + '.name'))} · ${e(t('difficulty.' + selected.difficulty))}</p>${difficultyRulesMarkup(selected.difficulty)}${selected.serverEndpoint ? `<p class="prototype-note">${e(desktopText('target'))}: <bdi>${e(selected.serverEndpoint)}</bdi></p>` : ''}${TESTING_BUILD ? `<label class="name-label">${e(t('ui.boss'))}<select id="opening-boss">${implementedBossIds.map((id) => `<option value="${id}" ${id === selected.openingBossId ? 'selected' : ''}>${e(t('boss.' + id + '.name'))} · ${e(bossClassification(id, visibility === 'offline' ? selected.practiceVariant : 'normal'))}</option>`).join('')}</select></label>${visibility === 'offline' ? practiceVariantMarkup(locale, encounterVariant(selected.difficulty,selected.practiceVariant), t('ui.variantNormal'), t('ui.variantBrutal'),['insane','hellish'].includes(selected.difficulty),t('ui.variantCrazed'),t('ui.forcedFormHelp')) : ''}` : ''}<label class="name-label">${e(t('ui.displayName'))}<input id="name" value="${e(selected.name)}" maxlength="24" autocomplete="nickname"></label><div class="connection-choices" role="group" aria-label="${e(t('ui.roomSettings'))}">${[
+      content.innerHTML = `<div class="setup-heading"><h1>${e(t(labels[page]))}</h1></div><div class="review-composition"><div class="review-portrait">${portrait(selected.classId)}</div><section><h2>${e(t('class.' + selected.classId + '.name'))} · ${e(t('mode.' + selected.mode + '.name'))}</h2><p>${e(mapChoiceName(arenaId))} · ${e(t('difficulty.' + selected.difficulty))}</p>${difficultyRulesMarkup(selected.difficulty)}${selected.serverEndpoint ? `<p class="prototype-note">${e(desktopText('target'))}: <bdi>${e(selected.serverEndpoint)}</bdi></p>` : ''}${TESTING_BUILD ? `<label class="name-label">${e(t('ui.boss'))}<select id="opening-boss">${implementedBossIds.map((id) => `<option value="${id}" ${id === selected.openingBossId ? 'selected' : ''}>${e(t('boss.' + id + '.name'))} · ${e(bossClassification(id, visibility === 'offline' ? selected.practiceVariant : 'normal'))}</option>`).join('')}</select></label>${visibility === 'offline' ? practiceVariantMarkup(locale, encounterVariant(selected.difficulty,selected.practiceVariant), t('ui.variantNormal'), t('ui.variantBrutal'),['insane','hellish'].includes(selected.difficulty),t('ui.variantCrazed'),t('ui.forcedFormHelp')) : ''}` : ''}<label class="name-label">${e(t('ui.displayName'))}<input id="name" value="${e(selected.name)}" maxlength="24" autocomplete="nickname"></label><div class="connection-choices" role="group" aria-label="${e(t('ui.roomSettings'))}">${[
         ['offline', 'ui.solo', 'soldier'],
         ['public', 'ui.publicRooms', 'group'],
         ['private', 'ui.privateRoom', 'lock'],
@@ -140,7 +147,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
         )
         .join(
           '',
-        )}</div><p class="muted">${e(t(visibility === 'offline' ? 'ui.offlineNotice' : 'ui.practiceNotice'))}</p>${visibility !== 'offline' ? `<p class="muted">${e(t('ui.leaderboardPrivacy'))}</p>` : ''}${capacityNotice()}${button('launch', t('ui.play'), 'play', 'class="primary launch"')}</section></div>${navigation(false, true)}`;
+        )}</div><p class="muted">${e(t(visibility === 'offline' ? 'ui.offlineNotice' : 'ui.practiceNotice'))}</p>${visibility !== 'offline' ? `<p class="muted">${e(t('ui.leaderboardPrivacy'))}</p>` : ''}${capacityNotice()}${button('launch', t(visibility === 'offline' ? 'ui.play' : 'ui.createRoom'), 'play', 'class="primary launch"')}</section></div>${navigation(false, true)}`;
     if(TESTING_BUILD&&page==='home'){
       const banner=document.createElement('p');banner.className='testing-banner';banner.textContent=t('ui.testingBuild');
       content.prepend(banner);
@@ -198,7 +205,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
     byId('resume-boundary', hooks.resume);
     byId('gentle-start', () => {
       selected = { ...selected, classId: 'soldier', mode: 'short', difficulty: 'baby',
-        openingBossId: 'constable', openingArenaId: 'gatehouse', practiceVariant: 'normal',
+        openingBossId: 'constable', openingArenaId: 'gatehouse', arenaSelection: 'fixed', practiceVariant: 'normal',
         serverEndpoint: undefined };
       previewClass = selected.classId;
       previewMode = selected.mode;
@@ -233,7 +240,8 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
       }
       if (page === 'map') {
         arenaId = previewMap;
-        selected.openingArenaId = previewMap;
+        selected.arenaSelection = previewMap === 'randomRun' ? 'randomRun' : previewMap === 'randomEncounter' ? 'randomEncounter' : 'fixed';
+        if (!randomMap(previewMap)) selected.openingArenaId = previewMap;
       }
       go(steps[stage + 1]);
     });

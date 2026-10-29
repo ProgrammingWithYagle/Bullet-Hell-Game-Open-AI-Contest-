@@ -7,6 +7,7 @@ import { tmpdir } from "node:os";
 import { pathToFileURL } from "node:url";
 import { data } from "../src/shared/game.ts";
 import { runtimeArena } from "../src/shared/arena-layouts.ts";
+import { arenaCoverPlan } from '../src/client/arena-covers.ts';
 import {
   arenaPreviewModel,
   arenaPreviewMarkup,
@@ -44,12 +45,13 @@ test("all six opening arenas show the real bounds, cover, spawns and difficulty 
         boss: "Boss start",
         cover: "Cover",
         lava: "Lava",
-      });
+      }, Object.fromEntries([...data.arenas.map(a=>[a.id,'/'+a.id+'-cover.png']),['lava-pit','/lava.png']]),
+      Object.fromEntries(data.arenas.map(a=>[a.id,'/world.png'])));
       assert(!html.includes("<unsafe>"));
       assert(html.includes("Map &lt;unsafe&gt;"));
       assert.equal(
-        (html.match(/class="arena-cover"/g) ?? []).length,
-        arena.cover.length,
+        (html.match(/class="arena-cover-painted"/g) ?? []).length,
+        arenaCoverPlan(map.id,difficulty.id).length,
       );
       assert.equal(
         (html.match(/class="arena-lava"/g) ?? []).length,
@@ -70,7 +72,7 @@ test("all six opening arenas show the real bounds, cover, spawns and difficulty 
     "gatehouse-open",
   );
   assert.throws(
-    () => arenaPreviewMarkup("gatehouse", "normal", {}, {} as never),
+    () => arenaPreviewMarkup("gatehouse", "normal", {}, {} as never, {}, {}),
     /Missing arena preview ground/,
   );
 });
@@ -158,7 +160,7 @@ test(`compiled ${testing ? 'testing' : 'public'} setup shares the clear first-ru
                   ? "export const locale='en';export const languages=[['en','English']];export const number=String;export const t=key=>key;export const setLanguage=async()=>{};"
                   : args.path === "session"
                     ? "export class Session { async rooms() { return []; } }"
-                    : `export const assets={cover:'/cover.png',portraits:{},medic:'/medic.png',lineup:'/lineup.png',arenaGrounds:${JSON.stringify(Object.fromEntries([...data.arenas.map((a) => a.id), "gatehouse-half", "gatehouse-open"].map((id) => [id, "/" + id + ".png"])))}};`,
+                    : `export const assets={cover:'/cover.png',portraits:{},medic:'/medic.png',lineup:'/lineup.png',arenaWorlds:${JSON.stringify(Object.fromEntries(data.arenas.map(a=>[a.id,'/world.png'])))},arenaCovers:${JSON.stringify(Object.fromEntries(data.arenas.map(a=>[a.id,'/cover-'+a.id+'.png'])))},arenaGrounds:${JSON.stringify(Object.fromEntries([...data.arenas.map((a) => a.id), "gatehouse-half", "gatehouse-open"].map((id) => [id, "/" + id + ".png"])))}};`,
             }),
           );
         },

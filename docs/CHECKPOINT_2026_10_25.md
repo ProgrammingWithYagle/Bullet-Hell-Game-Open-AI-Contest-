@@ -1,3 +1,11 @@
+# Room-lobby follow-up in progress
+
+Build2026.10.29-room-lobby/protocol39. Current source implements five-second defeat timing with one sound, active-map stability, explicit fixed/random map choices, public/private waiting room and on-demand codes, and painted cover/scenery across36combinations. The player accepted only the basic prior5231scene; new pacing, sound, layout and art still need human/rendered review. Source checks and static artwork compositions are separate from browser/human/device/language/listening evidence.
+
+Use reviews/room-lobby-2026-10-29 for the new exact-source gate, CI, Wiki and frozen preview evidence. Fresh ports: testing5232/backend2606 and public5233/backend2607. Preserve every earlier root/listener/package/raw report, including superseded art candidates. Browser automation stays disabled; no CUA/headless bypass. Keep the broad goal active, PR14draft/main separate. Wiki sync is authorized; no repeat approval. No delegation, new checkout, merge, hosted deployment, paid service or contest submission. The earlier a0c8c56Windows review predates newer UI.
+
+## Preserved previous state
+
 # Current boss defeat checkpoint
 
 Build **2026.10.29-boss-defeat / protocol 38**, source **d10c9d378bfba98cab28875838636f4eecb17fee**. Boss clears now hold the existing fall or final pose for two seconds beneath a top **Boss defeated** message and boss name, before the next choices or results appear. Fifteen bosses have full multiframe falls; fifty-one have final poses. Reduced motion uses a settled pose and static banner. Combat scores and rewards bank once at the real clear, votes keep their full time, both peers share the server clock, and remaining fall time/position survive saves.

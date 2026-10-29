@@ -4,9 +4,9 @@
 
 A cooperative gothic bullet-hell game. Dodge attacks, defeat a boss, vote on the next contract and spend your rewards on a build. Play solo or with friends.
 
-The current feature branch uses **build 2026.10.29-boss-defeat / protocol 38**. [Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains this unfinished development work; protected main is a separate release boundary.
+The current feature branch uses **build 2026.10.29-room-lobby / protocol 39**. [Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains this unfinished development work; protected main is a separate release boundary.
 
-After each boss clear, a two-second **Boss defeated** moment lets the existing fall or final pose finish before the next choices. Fifteen bosses have full falling sequences; fifty-one have final poses.
+After each boss clear, a five-second **Boss defeated** moment lets the existing fall or final pose finish before the next choices. Fifteen bosses have full falling sequences; fifty-one have final poses.
 
 Server team records now save real shared results and offer filters and team history. Chat has its own space during menus and keeps its fight position. The matching local previews include these changes; hosted global rankings still need coordinated deployment.
 
@@ -39,7 +39,7 @@ pnpm verify
 pnpm dev
 ```
 
-Open [localhost:5173](http://127.0.0.1:5173/). Offline Solo runs in a worker and needs no multiplayer server. For matching protocol-38 local online rooms, run `pnpm server` in a second terminal; its default loopback port is 2567.
+Open [localhost:5173](http://127.0.0.1:5173/). Offline Solo runs in a worker and needs no multiplayer server. For matching protocol-39 local online rooms, run `pnpm server` in a second terminal; its default loopback port is 2567.
 
 Development and testing builds include rehearsal tools. Public builds omit the boss selector and currency tools. Use `pnpm build:testing` or `pnpm build:public` for the intended audience. [Public polish](docs/PUBLIC_POLISH.md) describes the current scope and review boundaries.
 
@@ -65,3 +65,5 @@ The current smooth-rooms local gate passes **782 tests,782 pass,0 fail**, plus a
 Twelve original encounters have implemented quality passes; 48 remain. Content expansion and the proposed General Double Dash/Sprint branch are deferred during public polish. Complete action/facing animation, final encounter tuning, verified hosted rankings and durable online recovery remain unfinished. Rendered, listening, native-language, physical-device, WAN, endurance, capacity and human balance acceptance remain open.
 
 [Development Progress](docs/DEVELOPMENT_PROGRESS.md) is generated from the single implementation ledger. [Changelog](CHANGELOG.md) and the in-game journal share one update history. The [Wiki](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/wiki) covers playing and the [game bible](docs/GAME_BIBLE.md) preserves the design. Continue development from the [current checkpoint](docs/CHECKPOINT_2026_10_25.md) and `START_NEXT_CHAT.txt`; dated history retains predecessor evidence.
+
+Online rooms open a **Waiting room** with the player list and a copyable code. Use **Prepare equipment** while waiting; the host presses **Start run**. The **Room code** button remains available during play. Selecting a specific map keeps it for the run; the two random options choose once or before each fight. Painted cover and themed scenery apply across all thirty-six map/difficulty combinations. New rendered/human acceptance remains open.

@@ -1,6 +1,6 @@
 # Development progress
 
-Updated 2026-10-29 for **2026.10.29-boss-defeat**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
+Updated 2026-10-29 for **2026.10.29-room-lobby**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
 
 66 playable identities: 65 ordinary and 1 secret. Three ordinary bosses in every one of fifty subtiers requires 150 ordinary identities, plus secrets; 85 additional ordinary bosses remain.
 
@@ -22,6 +22,7 @@ Updated 2026-10-29 for **2026.10.29-boss-defeat**. These counts track specific r
 
 ## Latest human feedback
 
+- 5231: the defeat scene looks fine, but a possible boss/map shift, short duration, missing sound, changing selected maps, misleading Room settings title and an unclear multiplayer waiting stage were reported. The user also asks that all36map/difficulty combinations look polished, particularly Baby cover. Five-second pacing, fixed/random maps, waiting room and artwork need fresh human comparison.
 - 5229: both C toggle and action-row overlap are fixed. Follow-up request: let the boss falling animation play and show Boss defeated before the next round; abrupt transitions feel anticlimactic. Asset audit finds fifteen full falls and fifty-one final poses, not sixty-six full falling sequences.
 - 5227: added menu space is useful, but upgrades overlap Start run/Leave room. C opens chat but cannot close it. Fix both while preserving the accepted placement, expanded space, removed notice and unchanged pause behavior.
 - Human 5215: full home artwork and shop are clearer overall, especially the shop; the direct headline is also liked. This is limited positive menu feedback, not whole-boss acceptance. The user requests a plain New here? prompt, sensible Tutorial/Join icons, mode information instead of a map, testing-only development details, shared public/testing polish and six unique difficulty icons. Plain words and familiar symbols take priority; more poetic language can wait for possible post-contest story/lore. Clear Choices implements this interface follow-up; new rendered/human/native-language/device comparison remains open.
@@ -56,7 +57,7 @@ Updated 2026-10-29 for **2026.10.29-boss-defeat**. These counts track specific r
 
 ## Remaining release work
 
-- Continue public polish and coordinated release preparation. Human feedback on preview 5229 confirms the C toggle and clear Start/Leave actions. The latest request adds a shared two-second Boss defeated moment before intermission/results, showing the fifteen existing falls and fifty-one final poses. Remaining fall time survives saves. Track software evidence separately from human/rendered acceptance and incomplete falling-art production.
+- Continue public polish and coordinated release preparation. Latest feedback on5231 accepts the basic defeat scene but asks for a longer beat/sound, stable chosen maps with two random options, a clear waiting room/equipment heading, room-code access and polished art in all36map/difficulty combinations. The current room-lobby follow-up implements these; new human/rendered/listening acceptance remains open. Chat delivery feedback remains a separate follow-up.
 - Review Alchemist Crazed distillation columns, route warnings, coolant condensation and final reflux in the next matching frozen preview. The shared earned-SP General mobility branch remains deferred during public polish.
 - Review shared phase-attack continuity in the next matching frozen preview; software checks are separate from rendered/human/device/final balance acceptance.
 - Review Bellringer Standard calibration and the new Brutal/Crazed return-chain decision in the next exact-source frozen preview; fixed grade3- remains.

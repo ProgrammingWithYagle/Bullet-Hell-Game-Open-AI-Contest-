@@ -6,6 +6,16 @@ import { classifiedContract } from './boss-threat.ts';
 export function migratePracticeBoundary(value: unknown): unknown {
   if (!value || typeof value !== 'object' || Array.isArray(value)) return value;
   const issued = value as Record<string, unknown>;
+  if (issued.protocolVersion === 38) {
+    if (issued.schemaVersion !== 1 || issued.contentRevision !== CONTENT_REVISION ||
+      issued.practiceOnly !== true || issued.serverOnly === true || issued.players !== undefined ||
+      issued.transactions !== undefined || JSON.stringify(issued).length > 32768)
+      throw Error('versionMismatch');
+    const settings = issued.settings;
+    if (!settings || typeof settings !== 'object' || Array.isArray(settings)) throw Error('invalidCheckpoint');
+    return { ...issued, protocolVersion: PROTOCOL,
+      settings: { ...settings, arenaSelection: 'fixed' } };
+  }
   // Carry known issued local content revisions forward, preserving their identity and progress.
   // The existing version-specific and full restore validation still apply.
   // Current-version cards never pass through legacy reclassification.

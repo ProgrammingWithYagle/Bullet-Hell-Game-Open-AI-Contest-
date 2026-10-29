@@ -1,6 +1,6 @@
 import { HZ } from './protocol.ts';
-// The longest currently authored fall is one second. Leave another second at rest.
-export const BOSS_DEFEAT_TICKS = 2 * HZ;
+// The longest authored fall is one second. Hold the settled pose before choices.
+export const BOSS_DEFEAT_TICKS = 5 * HZ;
 type DefeatedBoss = { health: number; defeatedAt: number };
 export function bossDefeatRemaining(boss: DefeatedBoss, tick: number) {
   if (boss.health > 0 || boss.defeatedAt <= 0 || tick < boss.defeatedAt) return 0;

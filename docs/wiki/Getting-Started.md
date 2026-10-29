@@ -108,4 +108,12 @@ Press **C** to open room chat when you are not typing in a field. If you already
 
 **C** now opens and closes the chat panel. Press **Enter** to start typing, or click the message field. **Esc** closes chat while typing. The lobby’s **Start run** and **Leave room** buttons occupy a separate row beneath the scrolling upgrades.
 
-After a clear, **Boss defeated** appears while the boss’s falling sequence or final defeat pose stays visible for two seconds. Then the next choices appear, with their full voting time. This short ending does not count as combat time. Fifteen bosses currently have full falling sequences; the other fifty-one use their existing final poses.
+After a clear, **Boss defeated** appears while the boss’s falling sequence or final defeat pose stays visible for five seconds. Then the next choices appear, with their full voting time. This short ending does not count as combat time. Fifteen bosses currently have full falling sequences; the other fifty-one use their existing final poses.
+
+## Waiting for players
+
+Choose Public or Private and press **Create room**. The waiting room shows the code and each player’s name, class and connection status. Share the code, prepare equipment in its own tab, and let the host press **Start run** when the group is ready. Guests cannot start the room. Both kinds of room have a code, and private rooms stay out of public discovery. During play, **Room code** opens the code and a copy button; online matches continue while it is open.
+
+## Map choices
+
+Choose one of the six named maps to keep it for the whole run. **Random map for this run** chooses once; **Random map each fight** chooses before each deployment and may repeat. Maps stay still while a boss falls and through the between-fight choices. The selected rule survives a boundary save.

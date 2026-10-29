@@ -2,7 +2,7 @@ import { implementedBossIds } from '../shared/game.ts';
 import { Server } from '@colyseus/core';
 import { WebSocketTransport } from '@colyseus/ws-transport';
 import { createServer } from 'node:http';
-import { GraveRoom, privateRooms, liveRooms } from './GraveRoom.ts';
+import { GraveRoom, roomCodes, liveRooms } from './GraveRoom.ts';
 import { capacity } from './capacity.ts';
 import {
   CONTENT_REVISION,
@@ -230,7 +230,7 @@ export function createGameServer(
           res.status(404).json({ error: 'invalidCode' });
           return;
         }
-        const roomId = privateRooms.get(code);
+        const roomId = roomCodes.get(code);
         if (!roomId) {
           res.status(404).json({ error: 'invalidCode' });
           return;

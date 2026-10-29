@@ -18,7 +18,8 @@ import { ServicePresentation } from './service-presentation.ts';
 import type { ServiceCue } from '../shared/service-director.ts';
 import Phaser from 'phaser';
 import { assets } from './assets.ts';
-import { arenaCoverPlan } from './arena-covers.ts';
+import { arenaCoverPlan, arenaCoverPlacement, preloadArenaCovers } from './arena-covers.ts';
+import {arenaWorldPlacement,arenaWorldTiles,preloadArenaWorlds} from './arena-worlds.ts';
 import { bossVariantAppearance } from './boss-variant-appearance.ts';
 import { BossVisualMotion } from './boss-visual-motion.ts';
 import { SurvivorVisualMotion } from './survivor-visual-motion.ts';
@@ -26,6 +27,7 @@ import { bossDefeatFrame } from './boss-defeat-presentation.ts';
 import { courierCombatFrame } from './courier-presentation.ts';
 import {
   ARENA_BACKDROP_DEPTH,
+  ARENA_GROUND_DEPTH,
   applyArenaGround,
   preloadArenaGrounds,
 } from './arena-presentation.ts';
@@ -95,7 +97,9 @@ export class CombatScene extends Phaser.Scene {
   private endlessArt!: EndlessPresentation;
   private raidArt!: RaidPresentation;
   private districtArt!: DistrictPresentation;
-  private coverImages: Phaser.GameObjects.Image[] = [];
+  private coverImages: Phaser.GameObjects.NineSlice[] = [];
+  private lavaImages: {image:Phaser.GameObjects.Image;x:number;y:number}[] = [];
+  private sceneryImages: Phaser.GameObjects.Image[] = [];
   private constructImages = new Map<number, Phaser.GameObjects.Image>();
   private bossSprite!: Phaser.GameObjects.Sprite;
   private shots = new Map<number, Shot>();
@@ -130,6 +134,9 @@ export class CombatScene extends Phaser.Scene {
     this.load.on('progress', (progress: number) => this.onLoadProgress?.(progress));
     this.load.on('loaderror', () => this.rejectReady(Error('assetsUnavailable')));
     preloadArenaGrounds(this.load, assets.arenaGrounds);
+    preloadArenaCovers(this.load, assets.arenaCovers);
+    preloadArenaWorlds(this.load,assets.arenaWorlds);
+    this.load.image('arena-lava-pit',assets.arenaCovers['lava-pit']);
     for (const [id, url] of Object.entries(assets.constructs))
       this.load.image('construct-' + id, url);
     for (const [id, url] of Object.entries(assets.environment))
@@ -346,7 +353,21 @@ export class CombatScene extends Phaser.Scene {
       ground.clear();
       this.coverImages.forEach((image) => image.destroy());
       this.coverImages = [];
-      if (map.bounds.width < 1600 || map.bounds.height < 1000) {
+      this.sceneryImages.forEach(image=>image.destroy());this.sceneryImages=[];
+      const world=arenaWorldPlacement(map.id);
+      this.arenaImage.setVisible(true);
+      if(world){
+        const texture=this.textures.get(world.entry.texture);
+        for(const tile of arenaWorldTiles(map.id)){
+          const s=tile.source;if(!texture.has(tile.frame))texture.add(tile.frame,0,s.x,s.y,s.width,s.height);
+          this.sceneryImages.push(this.add.image(tile.x+tile.width/2,tile.y+tile.height/2,world.entry.texture,tile.frame)
+            .setDisplaySize(tile.width,tile.height).setFlip(tile.flipX,tile.flipY).setDepth(ARENA_GROUND_DEPTH).setAlpha(.8));
+        }
+      }
+      this.lavaImages.forEach(pit=>pit.image.destroy());
+      this.lavaImages = map.lavaPits.map(pit=>({x:pit.x,y:pit.y,image:this.add.image(pit.x,pit.y,'arena-lava-pit')
+        .setDisplaySize(pit.radius*2,pit.radius*2).setDepth(.5)}));
+      if (!world && (map.bounds.width < 1600 || map.bounds.height < 1000)) {
         const color = Number.parseInt(map.floor.slice(1), 16);
         this.arenaBackdrop
           .fillStyle(0x101e1b, 1)
@@ -358,29 +379,17 @@ export class CombatScene extends Phaser.Scene {
           .strokeRect(map.bounds.x + 3, map.bounds.y + 3, map.width - 6, map.height - 6);
       }
       for (const obstacle of arenaCoverPlan(map.id,view.run.difficulty)) {
-        const image = this.add.image(
-          obstacle.x + obstacle.width / 2,
-          obstacle.y + obstacle.height / 2,
-          obstacle.texture,
-        );
-        const fit = Math.min(obstacle.width / image.width, obstacle.height / image.height);
-        image.setScale(fit).setDepth(1);
-        this.coverImages.push(image);
-        ground
-          .fillStyle(shade, 0.9)
-          .fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
-        ground
-          .lineStyle(4, 0xc4c5a5, 0.8)
-          .strokeRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
-        ground
-          .lineStyle(2, 0xc4c5a5, 0.45)
-          .lineBetween(
-            obstacle.x + 8,
-            obstacle.y + 10,
-            obstacle.x + obstacle.width - 8,
-            obstacle.y + 10,
-          );
+        const placement = arenaCoverPlacement(map.id,obstacle);
+        const surface = this.add.nineslice(placement.x,placement.y,placement.texture,undefined,
+          placement.width,placement.height,placement.cap,placement.cap,0,0);
+        surface.setScale(placement.scale).setRotation(placement.rotation).setDepth(1);
+        this.coverImages.push(surface);
       }
+    }
+    for(const pit of this.lavaImages){
+      const cue=view.bossCues.find(c=>c.kind==='arena-lava'&&c.x===pit.x&&c.y===pit.y);
+      const active=cue?.kind==='arena-lava'&&now>=cue.at;
+      pit.image.setAlpha(active?1:cue?.5:.23).setTint(active?0xffffff:0x65736b);
     }
     this.shadows.clear();
     this.hazards.clear();
@@ -476,15 +485,11 @@ export class CombatScene extends Phaser.Scene {
       }
       if(cue.kind==='arena-lava') {
         const active=now>=cue.at;
-        h.fillStyle(active?0x532818:0x3b3028,.92).fillCircle(cue.x,cue.y,cue.radius);
-        h.lineStyle(5,active?0xffc36a:0xe2cf92,1).strokeCircle(cue.x,cue.y,cue.radius);
-        h.lineStyle(2,0xf6ad55,.8);
-        for(let row=-.65;row<=.65;row+=.32){
-          const half=Math.sqrt(1-row*row)*cue.radius*.8;
-          h.lineBetween(cue.x-half,cue.y+row*cue.radius,cue.x+half,cue.y+row*cue.radius);
+        h.lineStyle(active?3:2,active?0xffc36a:0xe2cf92,.9).strokeCircle(cue.x,cue.y,cue.radius);
+        if(!active){
+          f.fillStyle(0xffddb0,1).fillTriangle(cue.x,cue.y-17,cue.x-11,cue.y+5,cue.x+11,cue.y+5);
+          f.fillStyle(0x43241c,1).fillRect(cue.x-1.5,cue.y-10,3,8);
         }
-        f.fillStyle(0xffddb0,1).fillTriangle(cue.x,cue.y-17,cue.x-11,cue.y+5,cue.x+11,cue.y+5);
-        f.fillStyle(0x43241c,1).fillRect(cue.x-1.5,cue.y-10,3,8);
         continue;
       }
       if(cue.kind==='variant-pressure') {

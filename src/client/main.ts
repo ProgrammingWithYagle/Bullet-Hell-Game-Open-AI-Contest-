@@ -3,6 +3,8 @@ import { showingBossDefeat } from '../shared/boss-defeat-flow.ts';
 import {expeditionText} from './expedition-text.ts';
 import {testingToolsMarkup,unlockTestingDifficulties} from './testing-ui.ts';
 import {RoomChatUI} from './room-chat-ui.ts';
+import {RoomInviteUI} from './room-invite-ui.ts';
+import {waitingRoomMarkup,bindRoomCode} from './ui/waiting-room.ts';
 import { teamResultMarkup } from './ui/team-records.ts';
 import type { TeamBoardSelection } from './team-records.ts';
 import {clerkShelterPower} from './clerk-shelter-power.ts';
@@ -43,6 +45,7 @@ import './ui/expedition.css';
 import './ui/votes.css';
 import './ui/runtime-extras.css';
 import './ui/boss-defeat.css';
+import './ui/waiting-room.css';
 import { CombatScene } from './scene.ts';
 import { Session, type ConnectionOptions } from './session.ts';
 import { Controls } from './controls.ts';
@@ -92,6 +95,8 @@ function rating(p: PlayerView) {
   return cached!.value;
 }
 let roomChatUI:RoomChatUI|undefined;
+let roomInviteUI:RoomInviteUI|undefined;
+let lobbyPanel: 'room'|'equipment' = 'room';
 const settings = defaultPreferences();
 let inputOptions = defaultControls(),
   selectedCosmetic: CosmeticId = 'field-mark',
@@ -226,7 +231,7 @@ async function begin(
       if (loadingStatus) loadingStatus.textContent = t(key, { seconds: 60, position: active.queuePosition });
       if (controls) {
         controls.blocked =
-          (bossGuide.blocksInput(paused)||roomChatUI?.blocksInput===true) ||
+          (bossGuide.blocksInput(paused)||roomChatUI?.blocksInput===true||roomInviteUI?.open===true) ||
           active.view?.phase !== 'combat' ||
           key === 'ui.reconnecting' ||
           key === 'ui.errorNetwork';
@@ -288,6 +293,7 @@ async function begin(
   }
 }
 function setupGame(online: boolean) {
+  lobbyPanel = online ? 'room' : 'equipment';
   document.body.classList.add('playing', 'preparing');
   paused = false;
   bossGuide.set(false);
@@ -314,6 +320,7 @@ function setupGame(online: boolean) {
   $('boss-guide-copy').append($('boss-phase-note'),$('signature-help'));
   $('boss-guide-button').onclick=()=>setBossGuide(!bossGuide.open);
   const power=document.createElement('span');power.id='clerk-shelter-power';power.hidden=true;$('ammo').after(power);
+  if(online)roomInviteUI=new RoomInviteUI(app,t,()=>syncPauseState());
   roomChatUI=new RoomChatUI(session!,app,()=>syncPauseState(), {
     title: t('ui.roomChat'), message: t('ui.chatMessage'), send: t('ui.chatSend'), note: t('ui.chatEphemeral'), locale,
     keyboardHelp: t('ui.chatKeyboardHelp'),
@@ -405,7 +412,7 @@ function syncPauseState() {
     if(simulationPaused&&!scene.scene.isPaused())scene.scene.pause();
     else if(!simulationPaused&&scene.scene.isPaused())scene.scene.resume();
   }
-  if(controls){controls.clear();controls.blocked=(bossGuide.blocksInput(paused)||roomChatUI?.blocksInput===true)||session?.view?.phase!=='combat';}
+  if(controls){controls.clear();controls.blocked=(bossGuide.blocksInput(paused)||roomChatUI?.blocksInput===true||roomInviteUI?.open===true)||session?.view?.phase!=='combat';}
 }
 function syncRoomChatPlacement() {
   const dock = paused ? $('pause-menu-chat-slot') : bossGuide.open
@@ -436,6 +443,8 @@ function update(view: View) {
   $<HTMLButtonElement>('boss-guide-button').disabled=view.phase!=='combat';
   $('boss-guide-button').hidden=!bossGuideAvailable(view.run.difficulty);
   $('boss-guide-boss-name').textContent=t('boss.'+view.boss.id+'.name');
+  roomInviteUI?.update(session.code);
+  if(roomInviteUI)roomInviteUI.root.hidden=!session.code||view.phase==='lobby';
   scene.localId = session.id;
   scene.apply(view);
   prediction.acknowledge(view, session.id);
@@ -452,7 +461,7 @@ function update(view: View) {
   $('loading-expedition')?.remove();
   document.body.classList.remove('preparing');
   controls!.blocked =
-    (bossGuide.blocksInput(paused)||roomChatUI?.blocksInput===true) ||
+    (bossGuide.blocksInput(paused)||roomChatUI?.blocksInput===true||roomInviteUI?.open===true) ||
     view.phase !== 'combat' ||
     session.status === 'ui.reconnecting' ||
     session.status === 'ui.errorNetwork';
@@ -502,7 +511,7 @@ function update(view: View) {
       p.status !== 'active' ||
       view.phase !== 'combat' ||
       (item?.effect==='revive' && !combatReviveFraction(view.run.difficulty)) ||
-      (bossGuide.blocksInput(paused)||roomChatUI?.blocksInput===true);
+      (bossGuide.blocksInput(paused)||roomChatUI?.blocksInput===true||roomInviteUI?.open===true);
     button.setAttribute('aria-label', `${number(index + 1)} · ${name} ×${number(slot.count)}`);
     button.title = item
       ? name +
@@ -623,8 +632,7 @@ function update(view: View) {
     ' ' +
     view.players.filter((p) => p.status === 'active').length +
     '/' +
-    view.players.length +
-    (session.code ? ' · ' + t('ui.roomCode') + ' ' + session.code : '');
+    view.players.length;
   if (p.status === 'downed')
     $('status').textContent =
       t('ui.bleedout', {
@@ -664,6 +672,8 @@ function update(view: View) {
   const key = JSON.stringify([
     view.phase,
     defeated,
+    lobbyPanel,
+    view.phase==='lobby'?view.players.map(p=>[p.id,p.name,p.classId,p.connected]):null,
     view.secretStatus,
     settings.branchingTree,
     p.coins,
@@ -734,10 +744,10 @@ function renderOverlay(view: View, p: PlayerView) {
     title = t('ui.bossVote');
     body = voteMarkup(view);
   } else if (view.phase === 'lobby' || view.phase === 'shop') {
-    title = t(view.phase === 'lobby' ? 'ui.roomSettings' : 'ui.shop');
-    body =
-      (view.phase==='lobby'&&session?.code ? `<p class="room-invite">${text('ui.roomCode')}: <strong><bdi>${esc(session.code)}</bdi></strong></p>` : '') +
-      shop(p);
+    title = t(view.phase === 'shop' ? 'ui.shop' : session?.online && lobbyPanel === 'room' ? 'ui.lobbyTitle' : 'ui.prepareEquipment');
+    const navigation = view.phase==='lobby'&&session?.online ? `<nav class="lobby-navigation"><button id="lobby-room" aria-pressed="${lobbyPanel==='room'}">${text('ui.lobbyTitle')}</button><button id="lobby-equipment" aria-pressed="${lobbyPanel==='equipment'}">${text('ui.prepareEquipment')}</button></nav>` : '';
+    body = navigation + (view.phase==='lobby'&&session?.online&&lobbyPanel==='room'
+      ? waitingRoomMarkup(view,session.id,session.code,t,number) : shop(p));
     if (view.phase === 'lobby') actions = `<button id="start" class="primary" ${view.owner !== session!.id ? 'disabled' : ''}>${text('ui.start')}</button><button id="return-menu">${text('ui.leaveRoom')}</button>`;
   } else if (view.phase === 'secretOffer') {
     title = extensionText(locale, 'offerTitle');
@@ -779,6 +789,12 @@ function renderOverlay(view: View, p: PlayerView) {
         void audio.sound('ui-confirm');
       }),
   );
+  if(view.phase==='lobby'&&session?.online){
+    bindRoomCode(overlay,session.code,t);
+    for(const [id,panel] of [['lobby-room','room'],['lobby-equipment','equipment']] as const){
+      const button=$(id);if(button)button.onclick=()=>{lobbyPanel=panel;uiKey='';if(session?.view)update(session.view);};
+    }
+  }
   const start = $('start');
   const endRun = $('end-run'); if (endRun) endRun.onclick = () => session?.endRun();
   const records = $('view-team-record'); if (records) records.onclick = () => void leave(true);
@@ -790,7 +806,7 @@ function renderOverlay(view: View, p: PlayerView) {
     const scroller = overlay.querySelector('.skill-scroll');
     if (scroller) {scroller.scrollTop = scroll;scroller.scrollLeft=scrollLeft;}
   }
-  if (!(bossGuide.blocksInput(paused)||roomChatUI?.blocksInput===true)) {
+  if (!(bossGuide.blocksInput(paused)||roomChatUI?.blocksInput===true||roomInviteUI?.open===true)) {
     const target = focusedId
       ? overlay.querySelector<HTMLElement>('#' + CSS.escape(focusedId))
       : focusedItem
@@ -819,6 +835,7 @@ async function leave(showTeamRecord = false) {
 }
 function destroy() {
   roomChatUI?.destroy();roomChatUI=undefined;
+  roomInviteUI?.destroy();roomInviteUI=undefined;
   if (timer) clearInterval(timer);
   timer = undefined;
   controls?.destroy();
@@ -846,7 +863,7 @@ window.addEventListener('keydown', (e) => {
     if(e.shiftKey&&(index<=0)){e.preventDefault();items.at(-1)?.focus();}
     else if(!e.shiftKey&&(index<0||index===items.length-1)){e.preventDefault();items[0]?.focus();}
   }
-  if(e.code==='Escape'&&session){e.preventDefault();if(bossGuide.open)setBossGuide(false);else togglePause();}
+  if(e.code==='Escape'&&session){e.preventDefault();if(roomInviteUI?.open)roomInviteUI.close();else if(bossGuide.open)setBossGuide(false);else togglePause();}
 });
 document.addEventListener('visibilitychange', () => {
   if (document.hidden && session && !session.online && !paused) togglePause();

@@ -14,6 +14,7 @@ import {
 import { WorldState, PlayerState, ActorState } from '../shared/network-state.ts';
 import { capacity } from './capacity.ts';
 import {RoomChat} from '../shared/room-chat.ts';
+import { arenaSelections } from '../shared/arena-selection.ts';
 import {publicRunSettings} from '../shared/public-run.ts';
 import { RoomJournal } from './room-journal.ts';
 import type { RunJournal } from './run-journal.ts';
@@ -36,6 +37,7 @@ type Options = {
   protocolVersion: number;
   openingBossId?: Settings['openingBossId'];
   openingArenaId?: string;
+  arenaSelection?: Settings['arenaSelection'];
   createKey: string;
   code?: string;
   name: string;
@@ -43,6 +45,7 @@ type Options = {
   admissionId?: string;
 };
 export const privateRooms = new Map<string, string>();
+export const roomCodes = new Map<string, string>();
 export const liveRooms = new Map<string, GraveRoom>();
 const alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
 const code = () => [...randomBytes(6)].map((n) => alphabet[n % alphabet.length]).join('');
@@ -51,6 +54,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
   private readonly roomChat = new RoomChat();
   protected isTestingServer(){return true;}
   privateCode = '';
+  roomCode = '';
   private creatorKey = '';
   private creatorUsed = false;
   private shotOwners = new Map<number, string>();
@@ -78,6 +82,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
     if (
       (options.openingArenaId !== undefined &&
         !data.arenas.some((a) => a.id === options.openingArenaId)) ||
+      (options.arenaSelection !== undefined && !arenaSelections.includes(options.arenaSelection)) ||
       (options.openingBossId !== undefined &&
         !implementedBossIds.includes(options.openingBossId)) ||
       !['short', 'standard', 'long', 'raid', 'endless'].includes(options.mode) ||
@@ -104,6 +109,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       maxPlayers: this.maxClients,
       openingBossId: options.openingBossId,
       openingArenaId: options.openingArenaId,
+      arenaSelection: options.arenaSelection,
     };
     this.game = new Game(this.isTestingServer()?settings:publicRunSettings(settings));
     this.teamRun = this.createTeamRun(status => this.broadcast('teamRecord', status));
@@ -124,10 +130,10 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       contentRevision: CONTENT_REVISION,
       phase: 'lobby',
     });
+    do { this.roomCode = code(); } while (roomCodes.has(this.roomCode));
+    roomCodes.set(this.roomCode, this.roomId);
     if (options.visibility === 'private') {
-      do {
-        this.privateCode = code();
-      } while (privateRooms.has(this.privateCode));
+      this.privateCode = this.roomCode;
       privateRooms.set(this.privateCode, this.roomId);
       await this.setPrivate(true);
     }
@@ -234,7 +240,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
   private welcome(client: Client) {
     client.send('welcome', {
       id: client.sessionId,
-      code: this.privateCode,
+      code: this.roomCode,
       practice: true,
       prototype: 'grave-accord-development',
       protocolVersion: PROTOCOL,
@@ -278,6 +284,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
     if (this.game && [...this.game.players.values()].every(p => !p.connected || p.expired)) this.teamRun?.finish(this.game);
     this.journal?.dispose();
     if (this.privateCode) privateRooms.delete(this.privateCode);
+    if (this.roomCode) roomCodes.delete(this.roomCode);
     for (const p of this.game?.players.values() ?? []) capacity.release(p.id);
     capacity.removeRoom(this.roomId);
     liveRooms.delete(this.roomId);
@@ -449,6 +456,9 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
         mode: g.settings.mode,
         difficulty: g.settings.difficulty,
         practiceOnly: true,
+        arenaSelection: g.settings.arenaSelection,
+        selectedArenaId: g.settings.openingArenaId,
+        maximumPlayers: Math.min(g.settings.maxPlayers, capacity.limit),
       },
       secretStatus: g.secretStatus,
       campaignBank: g.campaignBank,

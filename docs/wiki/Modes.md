@@ -70,3 +70,9 @@ Brutal and Crazed disable the phase shield event at every difficulty. Revival in
 Insane forces Brutal; Hellish forces purple Crazed with a C threat suffix. Brutal ordinary projectile budgets are 2.5x Standard; Crazed is 7.5x Standard plus additional warned pursuit/crossing pressure. The live cap remains 4,000. Endless advances each actually cleared identity from Standard to Brutal to Crazed, retaining that history at boundaries. Existing bag/repeat protection, builds, profile unlocks and consented secret rules remain.
 
 Four spacious maps have smaller real footprints. Paint, colliders and spawns scale together; player speed, dash distance and hitboxes do not. Ossuary and Crown retain their narrow route geometry. The map diagram below earlier art depicts its issued historical geometry; current dimensions above and actual setup diagrams use compact bounds. Human/rendered/device review remains open.
+
+## Keeping or randomizing the map
+
+A named map stays fixed for the whole run. Random map for this run picks one map once. Random map each fight chooses at deployment, and repeats are possible. The map does not change while a boss falls or while players vote or shop. Saved runs retain the selection rule and current map.
+
+Current scenery and cover use painted art on all36map/difficulty combinations, including Baby’s extra cover and Hellish lava. The collision footprints, cover counts and hazard timing remain unchanged. The current [static layout review](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/reviews/room-lobby-2026-10-29/maps-06/contact-sheet.png) is asset composition rather than a browser or human playtest.

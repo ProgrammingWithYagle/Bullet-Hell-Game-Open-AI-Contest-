@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { runtimeArenas, runtimeArena } from '../src/shared/arena-layouts.ts';
-import { arenaCoverPlan } from '../src/client/arena-covers.ts';
+import { arenaCoverPlan, arenaCoverArt } from '../src/client/arena-covers.ts';
 import { segmentRect } from '../src/shared/geometry.ts';
 test('every secondary map uses non-bed art bound to its exact authoritative cover rectangle', () => {
   assert.deepEqual(arenaCoverPlan('gatehouse'), []);
@@ -10,12 +10,11 @@ test('every secondary map uses non-bed art bound to its exact authoritative cove
     const plan = arenaCoverPlan(map.id);
     assert.equal(plan.length, map.cover.length);
     for (const [index, cover] of plan.entries()) {
-      assert.notEqual(cover.texture, 'environment-0');
+      assert(cover.texture.startsWith('arena-cover-'));
       const { texture, ...rect } = cover;
       assert.deepEqual(rect, map.cover[index]);
-      const png = readFileSync(
-        'assets/production/environment/' + texture.replace('environment-', '') + '.png',
-      );
+      const surface=arenaCoverArt.entries.find(e=>e.texture===texture);assert(surface);
+      const png = readFileSync(surface.image);
       assert.equal(png[25], 6);
     }
   }
