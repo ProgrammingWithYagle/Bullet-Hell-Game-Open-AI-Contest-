@@ -1,6 +1,13 @@
 # Changelog
 
-Development build **2026.10.30-welcome-finish**, protocol 43. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.30-equipment-navigation**, protocol 43. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-30 — Keep your place while preparing equipment
+
+### Keyboard navigation and readable purchase errors
+
+- Switching equipment or skill-branch tabs keeps focus on the current selected tab. Arrow keys, Home and End navigate tabs, with horizontal direction following right-to-left languages. Prerequisite links focus the real skill and preserve scrolling.
+- Purchase errors stay in the equipment panel until a new item or tab is chosen. Leaving the panel ends its handlers; hidden, paused or old detached controls cannot buy items or redraw a newer panel. The existing costs, skill requirements, progression and multiplayer authority are unchanged.
 
 ## 2026-10-30 — A cleaner first language screen
 

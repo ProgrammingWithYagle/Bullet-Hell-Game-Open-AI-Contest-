@@ -1,5 +1,5 @@
 {
-  "buildId": "2026.10.30-welcome-finish",
+  "buildId": "2026.10.30-equipment-navigation",
   "snapshot": {
     "bosses": 66,
     "classes": 7,
@@ -16,6 +16,20 @@
     "protocol": 43
   },
   "entries": [
+    {
+      "id": "equipment-navigation",
+      "date": "2026-10-30",
+      "title": "Keep your place while preparing equipment",
+      "groups": [
+        {
+          "title": "Keyboard navigation and readable purchase errors",
+          "items": [
+            "Switching equipment or skill-branch tabs keeps focus on the current selected tab. Arrow keys, Home and End navigate tabs, with horizontal direction following right-to-left languages. Prerequisite links focus the real skill and preserve scrolling.",
+            "Purchase errors stay in the equipment panel until a new item or tab is chosen. Leaving the panel ends its handlers; hidden, paused or old detached controls cannot buy items or redraw a newer panel. The existing costs, skill requirements, progression and multiplayer authority are unchanged."
+          ]
+        }
+      ]
+    },
     {
       "id": "welcome-finish",
       "date": "2026-10-30",

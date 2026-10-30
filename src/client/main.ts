@@ -90,6 +90,7 @@ let session: Session | undefined,
   busy = false;
 let setupCleanup: (() => void) | undefined;
 let settingsCleanup: (() => void) | undefined;
+let shopBinding: ReturnType<typeof bindShop> | undefined;
 let controlSettings: ReturnType<typeof bindControlSettings> | undefined;
 let firstVisitLanguage = !hasLanguagePreference(localStorage);
 let launchSerial = 0;
@@ -295,6 +296,7 @@ async function begin(
     active.onTestingResult=ok=>{if(!current())return;const status=$('testing-status');if(status)status.textContent=t(ok?'ui.testingApplied':'ui.testingRejected');};
     active.onPurchase = (r) => {
       if (!current()) return;
+      shopBinding?.reportPurchase(r);
       if (!r.ok) {
         $('status').textContent = t(
           r.reason === 'matchPaused'
@@ -807,6 +809,8 @@ function clock(seconds: number) {
   return number(Math.floor(value / 60)) + ':' + String(value % 60).padStart(2, '0');
 }
 function renderOverlay(view: View, p: PlayerView) {
+  shopBinding?.dispose();
+  shopBinding = undefined;
   const overlay = $('modal');
   overlay.hidden = view.phase === 'combat' || showingBossDefeat(view.boss, view.tick);
   if (overlay.hidden) { syncRoomChatPlacement(); return; }
@@ -859,7 +863,7 @@ function renderOverlay(view: View, p: PlayerView) {
   const phaseContent = overlay.querySelector<HTMLElement>('.phase-content');
   if (phaseContent) phaseContent.inert = view.matchPaused === true;
   if (['lobby', 'shop'].includes(view.phase))
-    bindShop(overlay, p, (request) => session?.purchase(request), supplyBindings(), settings.branchingTree,view.run.difficulty);
+    shopBinding = bindShop(overlay, p, (request) => session?.purchase(request), supplyBindings(), settings.branchingTree,view.run.difficulty);
   overlay.querySelectorAll<HTMLButtonElement>('[data-vote]').forEach(
     (button) =>
       (button.onclick = () => {
@@ -916,6 +920,7 @@ async function leave(showTeamRecord = false) {
   audio.stop();
 }
 function destroy() {
+  shopBinding?.dispose();shopBinding=undefined;
   settingsCleanup?.();settingsCleanup=undefined;
   launchSerial++; busy = false;
   vitalsSizeObserver?.disconnect();vitalsSizeObserver=undefined;

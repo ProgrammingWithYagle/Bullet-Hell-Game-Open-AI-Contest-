@@ -1,3 +1,4 @@
+import { menuEnvironment } from './helpers/menu-fixture.ts';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -126,7 +127,23 @@ test(
     }
   },
 );
-test('both actual shop layouts show localized talent help and retain prerequisite and affordability guards', async () => {
+test('both actual shop layouts show localized talent help and retain prerequisite and affordability guards', async (t) => {
+  const env = menuEnvironment(t);
+  const cssDescriptor = Object.getOwnPropertyDescriptor(globalThis, 'CSS');
+  Object.defineProperty(globalThis, 'CSS', {
+    configurable: true,
+    value: {
+      escape: (value: string) => {
+        assert.match(value, /^[\w-]+$/);
+        return value;
+      },
+    },
+  });
+  t.after(() =>
+    cssDescriptor
+      ? Object.defineProperty(globalThis, 'CSS', cssDescriptor)
+      : Reflect.deleteProperty(globalThis, 'CSS'),
+  );
   const messages = JSON.parse(readFileSync('locales/en.json', 'utf8')).messages;
   const bundle = await build({
     entryPoints: ['src/client/ui/shop.ts'],
@@ -167,28 +184,33 @@ test('both actual shop layouts show localized talent help and retain prerequisit
     p.totalSp = 27;
     const v = viewOf(g, p.id).players[0];
     for (const expanded of [false, true]) {
-      shop.shopMarkup(v, [], expanded);
-      const button: any = {
-        dataset: { inspect: node.id, itemKind: 'skill' },
-        classList: { toggle() {} },
-        setAttribute() {},
-        onclick: null,
+      const requests: unknown[] = [];
+      let binding: ReturnType<typeof shop.bindShop> | undefined;
+      const render = () => {
+        binding?.dispose();
+        env.host.innerHTML =
+          '<div class="loadout-editor">' +
+          shop.shopMarkup(v, [], expanded) +
+          '</div>';
+        const viewport = env.host.querySelector('.skill-map-viewport');
+        if (viewport)
+          Object.assign(viewport, { clientWidth: 600, clientHeight: 400 });
+        binding = shop.bindShop(
+          env.host,
+          v,
+          (r: unknown) => requests.push(r),
+          [],
+          expanded,
+        );
+        env.host.querySelector('[data-shop-tab="tree"]')!.click();
+        if (!expanded)
+          env.host
+            .querySelector('[data-branch="' + node.branchId + '"]')!
+            .click();
+        env.host.querySelector('[data-inspect="' + node.id + '"]')!.click();
       };
-      const details: any = { innerHTML: '' },
-        buy: any = {},
-        requests: unknown[] = [];
-      const host: any = {
-        querySelector: (key: string) =>
-          key === '#buy-selected'
-            ? buy
-            : key === '#item-details'
-              ? details
-              : null,
-        querySelectorAll: (key: string) =>
-          key === '[data-inspect]' ? [button] : [],
-      };
-      shop.bindShop(host, v, (r: unknown) => requests.push(r), [], expanded);
-      button.onclick();
+      render();
+      const details = env.host.querySelector('#item-details')!;
       assert.equal(requests.length, 0);
       assert(
         details.innerHTML.includes(
@@ -199,17 +221,20 @@ test('both actual shop layouts show localized talent help and retain prerequisit
           ],
         ),
       );
-      buy.onclick();
+      env.host.querySelector('#buy-selected')!.click();
       assert.equal(requests.length, 0);
       v.skills = [node.prerequisite!];
       v.sp = 2;
-      buy.onclick();
+      render();
+      env.host.querySelector('#buy-selected')!.click();
       assert.equal(requests.length, 0);
       v.sp = 3;
-      buy.onclick();
+      render();
+      env.host.querySelector('#buy-selected')!.click();
       assert.equal(requests.length, 1);
       assert.deepEqual(requests[0], { kind: 'skill', item: node.id });
       v.skills = [];
+      binding?.dispose();
     }
   }
 });

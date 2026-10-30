@@ -47,3 +47,7 @@ In **Settings → Controls**, select an action and press the key or mouse button
 ## Game title and language messages
 
 The game keeps the name **Grave Accord** in every display language. Interface text and automatic names use the chosen language under the setup rules above. The first language screen uses a plain status line for real loading or error messages; its empty status area has no warning frame. Human testing at 5252 found the chooser clear and the automatic names consistent in that trial. The human confirmed at testing 5256 that the empty orange strip is gone. This is limited feedback on that screen, separate from full game, device or language acceptance.
+
+## Equipment keyboard navigation
+
+Equipment and skill-branch tabs keep focus when selected. Use left/right arrows, Home or End to change tabs; horizontal direction follows right-to-left languages. A prerequisite link focuses the real skill while preserving the scroll position. Purchase errors remain in the equipment panel until you select a new item or tab. Closing or hiding the panel ends its controls. Existing purchase costs, skill requirements and host authority remain. Human, rendered and device comparison of this change is still open.

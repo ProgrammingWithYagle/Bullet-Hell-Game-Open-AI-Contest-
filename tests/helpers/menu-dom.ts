@@ -7,6 +7,7 @@ export class MenuElement {
  disabled = false; hidden = false; open = false; checked = false; onclick?: (event: any) => unknown; onchange?: (event: any) => unknown; oninput?: (event: any) => unknown; onkeydown?: (event: any) => unknown; ontoggle?: () => unknown;
  selectionStart: number | null = 0; selectionEnd: number | null = 0;
  get type() {return this.attrs.type ?? ''; } set type(value: string) {this.attrs.type=value;}
+ get tabIndex() {return Number(this.attrs.tabindex??(['button','input','select','textarea'].includes(this.tag)?0:-1));} set tabIndex(value:number) {this.attrs.tabindex=String(value);}
  setSelectionRange(start:number,end:number) {this.selectionStart=start;this.selectionEnd=end;}
  showModal() {this.open=true;}
  close() {if(!this.open)return;this.open=false;this.dispatch('close');}
