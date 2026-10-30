@@ -151,7 +151,7 @@ The view leaves space for full bosses and survivors near the map edges, with the
 
 ## Current local Windows review
 
-The matching camera-clearance review is source 6f397a5, protocol 43. All 1,899 files match across original, fresh ZIP extraction and an independent Japanese-path Windows copy, with six actual native offline/LAN diagnostics. [Exact package and delivery evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/tree/feat/first-playable-loop/reviews/windows-camera-clearance-2026-10-29) identifies this local review; the published Windows download remains the older October24 version. Human/rendered/device/listening/native-language and physical second-machine LAN acceptance remain separate.
+Local Windows reviews are bound to their exact source commit. [The Windows guide](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/WINDOWS_DESKTOP.md) identifies the latest completed package and preserves earlier reviews. Completed reviews compare every file across the original, fresh ZIP extraction and an independent Japanese-path Windows copy, then run offline and LAN diagnostics on all three. The published download remains the older October24 version. These software checks remain separate from human, rendered, device, listening, native-language and physical second-computer LAN acceptance.
 
 ## Browse the artwork
 
