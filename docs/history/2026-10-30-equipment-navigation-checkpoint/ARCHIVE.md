@@ -1,0 +1,3 @@
+# Archived equipment checkpoint
+
+These eight guides are exact copies from before the records-navigation update. Their original relative links are preserved, so use the original paths at the prior records commit when following them: [checkpoint](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/7d01e6dd0370c6368f2f712e633229cbbc27f5db/docs/CHECKPOINT_2026_10_25.md) and [handoff](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/7d01e6dd0370c6368f2f712e633229cbbc27f5db/docs/HANDOFF_NEXT_CHAT.md). The manifest records the archived bytes and hashes. The active continuation entry is [the current checkpoint](../../CHECKPOINT_2026_10_25.md).

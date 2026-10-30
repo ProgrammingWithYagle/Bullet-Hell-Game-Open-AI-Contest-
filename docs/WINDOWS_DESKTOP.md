@@ -1,6 +1,6 @@
 # Windows portable development app
 
-The current source is **2026.10.30-equipment-navigation / protocol 43**, exact product source **9ae3bb92ef201dcc179379815b3bc6f650d24dc3**. Equipment and skill tabs retain keyboard focus after switching. Arrow keys, Home/End and mirrored horizontal direction select tabs. Prerequisite links focus the actual skill and preserve scrolling. Existing translated purchase errors remain visible inside the equipment panel. Controls belong to their live panel and stop when it closes. Prices, prerequisites, progression and multiplayer rules are unchanged. [Current source review](../reviews/equipment-navigation-2026-10-30/checkpoint-source-review.json) and [matching Windows review](../reviews/windows-equipment-navigation-2026-10-30/package-status.json) identify their separate evidence.
+The current source is **2026.10.30-records-navigation / protocol 43**, exact product source **4742adabb5ff56ae0bf1012fa6fbe2fd8a698a62**. Device and online records retain separate filter choices while you compare them. The online tab remembers mode, difficulty, team-size band and All time/This week. Switching to a smaller mode keeps team-size choices valid. Tabs and device filters retain keyboard focus after changes. Back cancels unfinished requests, and controls from an old or closed page cannot replace the current view. Scoring, saved results and multiplayer rules are unchanged. [Current source review](../reviews/records-navigation-2026-10-30/checkpoint-source-review.json) and [matching Windows review](../reviews/windows-records-navigation-2026-10-30/package-status.json) identify their separate evidence.
 
 The [published Windows download](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/releases/tag/dev-windows-20261024-1) remains the immutable October24 protocol13 build. Source, Wiki and local package work do not replace it. Its741136155-byte archive has SHA256 **b2a87f08f002e35a23558ab9b4bcca3e997309fd5a567c7e014498a54fe7ae3c**, source52552c0d4465b918d7cde2ab3c2aa7f1d7eb045e. [Exact public-byte evidence](../reviews/windows-prerelease-public-download.json) remains separate.
 
@@ -73,5 +73,11 @@ The matching local Windows review passes all 1899 files on original, fresh verif
 ## Verified equipment-navigation package
 
 The matching local Windows review verifies all 1,899 files on the original, fresh complete ZIP extraction and independent Japanese-path Windows copy, before and after six packaged offline/LAN diagnostics. Its **842973815-byte ZIP** has SHA256 **412313533ae68c02ab8df986610f81cf29aa17f197be615634a99cdfe6f8ca73**. Font paths 227/288/289 characters pass. [Package status](../reviews/windows-equipment-navigation-2026-10-30/package-status.json) and [delivery guide](../reviews/windows-equipment-navigation-2026-10-30/DELIVERY.md) bind the local archive and sidecars. These software checks do not establish rendered, human, physical-device, listening or native-language acceptance.
+
+Earlier native packages remain immutable. The public download is unchanged.
+
+## Verified records-navigation package
+
+The matching local Windows review verifies all 1,899 files on the original, fresh complete ZIP extraction and independent Japanese-path Windows copy, before and after six packaged offline/LAN diagnostics. Its **842967160-byte ZIP** has SHA256 **f30515009fc6e7432f2227e392118e219a7aab5782f98a3f77970c8f3affdbc2**. Font paths 225/284/285 characters pass. [Package status](../reviews/windows-records-navigation-2026-10-30/package-status.json) and [delivery guide](../reviews/windows-records-navigation-2026-10-30/DELIVERY.md) bind the local archive and sidecars. These software checks do not establish rendered, human, physical-device, listening or native-language acceptance.
 
 Earlier native packages remain immutable. The public download is unchanged.
