@@ -1,6 +1,13 @@
 # Changelog
 
-Development build **2026.10.30-first-language**, protocol 43. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.30-control-settings**, protocol 43. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-30 — Change controls without losing your place
+
+### Reliable control settings
+
+- Changing a key keeps keyboard focus on that action and confirms when the controls save. A failed save restores the values that are actually stored and leaves a focused retry. Closing settings, leaving the page, switching away from the window or resuming play cancels an unfinished key choice.
+- Held-key repeats and unfinished text composition cannot choose a new key. Tab cancels and keeps normal keyboard navigation; Escape cancels the choice. Conflicting controls stay unchanged. Mouse buttons, Space and the left stick now have readable labels in all fifteen languages, shared by public and testing builds.
 
 ## 2026-10-30 — Choose a language before your first game
 

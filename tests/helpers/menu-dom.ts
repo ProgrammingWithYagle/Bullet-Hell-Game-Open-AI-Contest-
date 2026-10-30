@@ -24,6 +24,7 @@ export class MenuElement {
  get textContent(): string {return this.content+this.children.map(c=>c.textContent).join('');}
  set textContent(value: string) {this.replaceChildren();this.content=String(value);}
  get innerHTML() {return this.html;}
+ set outerHTML(value:string) {if(!this.parentElement)return;const fragment=new MenuElement('div',this.document);fragment.innerHTML=value;this.before(...fragment.children);this.remove();}
  set innerHTML(value: string) {
   this.replaceChildren();this.content='';this.html=value;
   const stack: MenuElement[]=[this];

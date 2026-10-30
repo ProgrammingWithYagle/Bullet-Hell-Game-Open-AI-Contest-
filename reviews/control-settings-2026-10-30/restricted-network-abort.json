@@ -1,0 +1,153 @@
+{
+  "checkedAt": "2026-10-30T18:19:12.5392191Z",
+  "reason": "Restricted-network full gate has repeated loopback transport timeouts; isolated unsandboxed chat transport checks pass. Stop only this owned test subtree so the gate wrapper can preserve its failure and restore issued reports.",
+  "runnerPid": 63188,
+  "verificationPid": 71316,
+  "processes": [
+    {
+      "ProcessId": 63188,
+      "ParentProcessId": 71316,
+      "CommandLine": "C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe --import tsx --test tests/ambulance-network.test.ts tests/ambulance-route.test.ts tests/arena-camera.test.ts tests/arena-cover-art.test.ts tests/arena-ground.test.ts tests/arena-layouts.test.ts tests/arena-surface-polish.test.ts tests/assist-limits.test.ts tests/audio-delivery.test.ts tests/bell-carillon.test.ts tests/bell-network.test.ts tests/bell-return-chain-network.test.ts tests/bell-return-chain.test.ts tests/bell-sound.test.ts tests/boss-body-bounds.test.ts tests/boss-defeat-flow.test.ts tests/boss-guide.test.ts tests/boss-practice.test.ts tests/boss-textures.test.ts tests/boss-variants.test.ts tests/capacity-queue.test.ts tests/changelog.test.ts tests/chat-confirmation-migration.test.ts tests/chat-delivery.test.ts tests/chat-history-retry.test.ts tests/checkpoint-transport.test.ts tests/checkpoint.test.ts tests/civic-encounters.test.ts tests/civic-network.test.ts tests/class-kits.test.ts tests/class-network.test.ts tests/class-talents.test.ts tests/clerk-appeal.test.ts tests/clerk-domains.test.ts tests/clerk-grades.test.ts tests/clerk-shelter.test.ts tests/clerk-venom.test.ts tests/client-rules.test.ts tests/collision-allocation.test.ts tests/connection-lifetime.test.ts tests/connection-menu.test.ts tests/constable-motion.test.ts tests/constable-pressure.test.ts tests/control-settings-lifecycle.test.ts tests/controls.test.ts tests/core.test.ts tests/courier-motion.test.ts tests/courier-route.test.ts tests/crazed-horizon.test.ts tests/crossed-threshold-network.test.ts tests/desktop-audience.test.ts tests/desktop-response.test.ts tests/desktop-source.test.ts tests/desktop.test.ts tests/difficulty-policy.test.ts tests/discovery-records-menu.test.ts tests/district-network.test.ts tests/districts.test.ts tests/early-watch.test.ts tests/encounter-assets.test.ts tests/encounter-expansion.test.ts tests/encounter-network.test.ts tests/endless-network.test.ts tests/endless.test.ts tests/expedition-presentation.test.ts tests/first-language.test.ts tests/fixed-threats.test.ts tests/frame-meter.test.ts tests/heavy-network.test.ts tests/heavy.test.ts tests/home-gallery.test.ts tests/host-controls-ui.test.ts tests/host-match-network.test.ts tests/interface-clarity.test.ts tests/lan-menu-lifecycle.test.ts tests/language-navigation.test.ts tests/marshal-chains.test.ts tests/matron-network.test.ts tests/matron-ward.test.ts tests/medic-recovery.test.ts tests/midnight-network.test.ts tests/midnight-route.test.ts tests/mold-mixing.test.ts tests/mold-network.test.ts tests/mold-still-network.test.ts tests/mold-still.test.ts tests/network.test.ts tests/opening-defeats.test.ts tests/phase-continuity-migration.test.ts tests/phase-continuity-network.test.ts tests/phase-continuity.test.ts tests/phase-feedback.test.ts tests/presentation-timing.test.ts tests/profile-menu-lifecycle.test.ts tests/profile-network.test.ts tests/profile.test.ts tests/progression-matrix.test.ts tests/projectile-hotpath.test.ts tests/raid-network.test.ts tests/raids.test.ts tests/ratcatcher-muster.test.ts tests/rating-and-walls.test.ts tests/replacement.test.ts tests/room-chat-ui.test.ts tests/room-journal-network.test.ts tests/room-journal.test.ts tests/room-lobby.test.ts tests/room-password.test.ts tests/run-journal.test.ts tests/run-results.test.ts tests/run-service.test.ts tests/run-store.test.ts tests/selection-portraits.test.ts tests/services.test.ts tests/signed-boundary.test.ts tests/skill-map.test.ts tests/skills.test.ts tests/small-wakes-bounds.test.ts tests/small-wakes.test.ts tests/supplies.test.ts tests/survivor-actions.test.ts tests/survivor-art.test.ts tests/survivor-continuity.test.ts tests/survivor-delivery.test.ts tests/swept-bounds.test.ts tests/talent-network-ui.test.ts tests/team-records-network.test.ts tests/team-records.test.ts tests/testing-social.test.ts tests/tollkeeper-return.test.ts tests/warden-encounter.test.ts tests/warden-network.test.ts tests/warden-patrol.test.ts tests/warden-rehearsal.test.ts tests/warden-signature.test.ts tests/widow-gates.test.ts tests/wire-events.test.ts"
+    },
+    {
+      "ProcessId": 60644,
+      "ParentProcessId": 63188,
+      "CommandLine": "C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe --use-largepages=off --trace-event-file-pattern=node_trace.${rotation}.log --v8-pool-size=4 --node-snapshot --cpu-prof-interval=1000 --report-signal=SIGUSR2 --tls-cipher-list=TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA384:DHE-RSA-AES256-SHA384:ECDHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA256:HIGH:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!SRP:!CAMELLIA --secure-heap=0 --secure-heap-min=2 --stack-trace-limit=10 --test-isolation=process --network-family-autoselection-attempt-timeout=250 --experimental-addon-modules --heapsnapshot-near-heap-limit=0 --heap-prof-interval=524288 --max-http-header-size=16384 --test-concurrency=0 --test-timeout=0 --test-coverage-branches=0 --test-coverage-functions=0 --test-coverage-lines=0 --watch-kill-signal=SIGTERM --import=tsx --inspect-port=127.0.0.1:9229 --inspect-publish-uid=stderr,http --import tsx tests\\endless-network.test.ts"
+    },
+    {
+      "ProcessId": 33796,
+      "ParentProcessId": 60644,
+      "CommandLine": "\"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.2\\node_modules\\@esbuild\\win32-x64\\esbuild.exe\" --service=0.28.2 --ping"
+    },
+    {
+      "ProcessId": 23752,
+      "ParentProcessId": 63188,
+      "CommandLine": "C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe --use-largepages=off --trace-event-file-pattern=node_trace.${rotation}.log --v8-pool-size=4 --node-snapshot --cpu-prof-interval=1000 --report-signal=SIGUSR2 --tls-cipher-list=TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA384:DHE-RSA-AES256-SHA384:ECDHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA256:HIGH:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!SRP:!CAMELLIA --secure-heap=0 --secure-heap-min=2 --stack-trace-limit=10 --test-isolation=process --network-family-autoselection-attempt-timeout=250 --experimental-addon-modules --heapsnapshot-near-heap-limit=0 --heap-prof-interval=524288 --max-http-header-size=16384 --test-concurrency=0 --test-timeout=0 --test-coverage-branches=0 --test-coverage-functions=0 --test-coverage-lines=0 --watch-kill-signal=SIGTERM --import=tsx --inspect-port=127.0.0.1:9229 --inspect-publish-uid=stderr,http --import tsx tests\\host-match-network.test.ts"
+    },
+    {
+      "ProcessId": 33600,
+      "ParentProcessId": 23752,
+      "CommandLine": "\"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.2\\node_modules\\@esbuild\\win32-x64\\esbuild.exe\" --service=0.28.2 --ping"
+    },
+    {
+      "ProcessId": 57260,
+      "ParentProcessId": 63188,
+      "CommandLine": "C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe --use-largepages=off --trace-event-file-pattern=node_trace.${rotation}.log --v8-pool-size=4 --node-snapshot --cpu-prof-interval=1000 --report-signal=SIGUSR2 --tls-cipher-list=TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA384:DHE-RSA-AES256-SHA384:ECDHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA256:HIGH:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!SRP:!CAMELLIA --secure-heap=0 --secure-heap-min=2 --stack-trace-limit=10 --test-isolation=process --network-family-autoselection-attempt-timeout=250 --experimental-addon-modules --heapsnapshot-near-heap-limit=0 --heap-prof-interval=524288 --max-http-header-size=16384 --test-concurrency=0 --test-timeout=0 --test-coverage-branches=0 --test-coverage-functions=0 --test-coverage-lines=0 --watch-kill-signal=SIGTERM --import=tsx --inspect-port=127.0.0.1:9229 --inspect-publish-uid=stderr,http --import tsx tests\\network.test.ts"
+    },
+    {
+      "ProcessId": 53192,
+      "ParentProcessId": 57260,
+      "CommandLine": "\"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.2\\node_modules\\@esbuild\\win32-x64\\esbuild.exe\" --service=0.28.2 --ping"
+    },
+    {
+      "ProcessId": 71376,
+      "ParentProcessId": 63188,
+      "CommandLine": "C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe --use-largepages=off --trace-event-file-pattern=node_trace.${rotation}.log --v8-pool-size=4 --node-snapshot --cpu-prof-interval=1000 --report-signal=SIGUSR2 --tls-cipher-list=TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA384:DHE-RSA-AES256-SHA384:ECDHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA256:HIGH:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!SRP:!CAMELLIA --secure-heap=0 --secure-heap-min=2 --stack-trace-limit=10 --test-isolation=process --network-family-autoselection-attempt-timeout=250 --experimental-addon-modules --heapsnapshot-near-heap-limit=0 --heap-prof-interval=524288 --max-http-header-size=16384 --test-concurrency=0 --test-timeout=0 --test-coverage-branches=0 --test-coverage-functions=0 --test-coverage-lines=0 --watch-kill-signal=SIGTERM --import=tsx --inspect-port=127.0.0.1:9229 --inspect-publish-uid=stderr,http --import tsx tests\\profile-network.test.ts"
+    },
+    {
+      "ProcessId": 68380,
+      "ParentProcessId": 71376,
+      "CommandLine": "\"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.2\\node_modules\\@esbuild\\win32-x64\\esbuild.exe\" --service=0.28.2 --ping"
+    },
+    {
+      "ProcessId": 1076,
+      "ParentProcessId": 63188,
+      "CommandLine": "C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe --use-largepages=off --trace-event-file-pattern=node_trace.${rotation}.log --v8-pool-size=4 --node-snapshot --cpu-prof-interval=1000 --report-signal=SIGUSR2 --tls-cipher-list=TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA384:DHE-RSA-AES256-SHA384:ECDHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA256:HIGH:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!SRP:!CAMELLIA --secure-heap=0 --secure-heap-min=2 --stack-trace-limit=10 --test-isolation=process --network-family-autoselection-attempt-timeout=250 --experimental-addon-modules --heapsnapshot-near-heap-limit=0 --heap-prof-interval=524288 --max-http-header-size=16384 --test-concurrency=0 --test-timeout=0 --test-coverage-branches=0 --test-coverage-functions=0 --test-coverage-lines=0 --watch-kill-signal=SIGTERM --import=tsx --inspect-port=127.0.0.1:9229 --inspect-publish-uid=stderr,http --import tsx tests\\raid-network.test.ts"
+    },
+    {
+      "ProcessId": 58520,
+      "ParentProcessId": 1076,
+      "CommandLine": "\"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.2\\node_modules\\@esbuild\\win32-x64\\esbuild.exe\" --service=0.28.2 --ping"
+    },
+    {
+      "ProcessId": 11972,
+      "ParentProcessId": 63188,
+      "CommandLine": "C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe --use-largepages=off --trace-event-file-pattern=node_trace.${rotation}.log --v8-pool-size=4 --node-snapshot --cpu-prof-interval=1000 --report-signal=SIGUSR2 --tls-cipher-list=TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA384:DHE-RSA-AES256-SHA384:ECDHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA256:HIGH:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!SRP:!CAMELLIA --secure-heap=0 --secure-heap-min=2 --stack-trace-limit=10 --test-isolation=process --network-family-autoselection-attempt-timeout=250 --experimental-addon-modules --heapsnapshot-near-heap-limit=0 --heap-prof-interval=524288 --max-http-header-size=16384 --test-concurrency=0 --test-timeout=0 --test-coverage-branches=0 --test-coverage-functions=0 --test-coverage-lines=0 --watch-kill-signal=SIGTERM --import=tsx --inspect-port=127.0.0.1:9229 --inspect-publish-uid=stderr,http --import tsx tests\\ratcatcher-muster.test.ts"
+    },
+    {
+      "ProcessId": 22016,
+      "ParentProcessId": 11972,
+      "CommandLine": "\"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.2\\node_modules\\@esbuild\\win32-x64\\esbuild.exe\" --service=0.28.2 --ping"
+    },
+    {
+      "ProcessId": 10256,
+      "ParentProcessId": 63188,
+      "CommandLine": "C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe --use-largepages=off --trace-event-file-pattern=node_trace.${rotation}.log --v8-pool-size=4 --node-snapshot --cpu-prof-interval=1000 --report-signal=SIGUSR2 --tls-cipher-list=TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA384:DHE-RSA-AES256-SHA384:ECDHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA256:HIGH:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!SRP:!CAMELLIA --secure-heap=0 --secure-heap-min=2 --stack-trace-limit=10 --test-isolation=process --network-family-autoselection-attempt-timeout=250 --experimental-addon-modules --heapsnapshot-near-heap-limit=0 --heap-prof-interval=524288 --max-http-header-size=16384 --test-concurrency=0 --test-timeout=0 --test-coverage-branches=0 --test-coverage-functions=0 --test-coverage-lines=0 --watch-kill-signal=SIGTERM --import=tsx --inspect-port=127.0.0.1:9229 --inspect-publish-uid=stderr,http --import tsx tests\\room-journal-network.test.ts"
+    },
+    {
+      "ProcessId": 55484,
+      "ParentProcessId": 10256,
+      "CommandLine": "\"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.2\\node_modules\\@esbuild\\win32-x64\\esbuild.exe\" --service=0.28.2 --ping"
+    },
+    {
+      "ProcessId": 55832,
+      "ParentProcessId": 63188,
+      "CommandLine": "C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe --use-largepages=off --trace-event-file-pattern=node_trace.${rotation}.log --v8-pool-size=4 --node-snapshot --cpu-prof-interval=1000 --report-signal=SIGUSR2 --tls-cipher-list=TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA384:DHE-RSA-AES256-SHA384:ECDHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA256:HIGH:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!SRP:!CAMELLIA --secure-heap=0 --secure-heap-min=2 --stack-trace-limit=10 --test-isolation=process --network-family-autoselection-attempt-timeout=250 --experimental-addon-modules --heapsnapshot-near-heap-limit=0 --heap-prof-interval=524288 --max-http-header-size=16384 --test-concurrency=0 --test-timeout=0 --test-coverage-branches=0 --test-coverage-functions=0 --test-coverage-lines=0 --watch-kill-signal=SIGTERM --import=tsx --inspect-port=127.0.0.1:9229 --inspect-publish-uid=stderr,http --import tsx tests\\room-lobby.test.ts"
+    },
+    {
+      "ProcessId": 6932,
+      "ParentProcessId": 63188,
+      "CommandLine": "C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe --use-largepages=off --trace-event-file-pattern=node_trace.${rotation}.log --v8-pool-size=4 --node-snapshot --cpu-prof-interval=1000 --report-signal=SIGUSR2 --tls-cipher-list=TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA384:DHE-RSA-AES256-SHA384:ECDHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA256:HIGH:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!SRP:!CAMELLIA --secure-heap=0 --secure-heap-min=2 --stack-trace-limit=10 --test-isolation=process --network-family-autoselection-attempt-timeout=250 --experimental-addon-modules --heapsnapshot-near-heap-limit=0 --heap-prof-interval=524288 --max-http-header-size=16384 --test-concurrency=0 --test-timeout=0 --test-coverage-branches=0 --test-coverage-functions=0 --test-coverage-lines=0 --watch-kill-signal=SIGTERM --import=tsx --inspect-port=127.0.0.1:9229 --inspect-publish-uid=stderr,http --import tsx tests\\room-password.test.ts"
+    },
+    {
+      "ProcessId": 19564,
+      "ParentProcessId": 55832,
+      "CommandLine": "\"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.2\\node_modules\\@esbuild\\win32-x64\\esbuild.exe\" --service=0.28.2 --ping"
+    },
+    {
+      "ProcessId": 69924,
+      "ParentProcessId": 6932,
+      "CommandLine": "\"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.2\\node_modules\\@esbuild\\win32-x64\\esbuild.exe\" --service=0.28.2 --ping"
+    },
+    {
+      "ProcessId": 6316,
+      "ParentProcessId": 63188,
+      "CommandLine": "C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe --use-largepages=off --trace-event-file-pattern=node_trace.${rotation}.log --v8-pool-size=4 --node-snapshot --cpu-prof-interval=1000 --report-signal=SIGUSR2 --tls-cipher-list=TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA384:DHE-RSA-AES256-SHA384:ECDHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA256:HIGH:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!SRP:!CAMELLIA --secure-heap=0 --secure-heap-min=2 --stack-trace-limit=10 --test-isolation=process --network-family-autoselection-attempt-timeout=250 --experimental-addon-modules --heapsnapshot-near-heap-limit=0 --heap-prof-interval=524288 --max-http-header-size=16384 --test-concurrency=0 --test-timeout=0 --test-coverage-branches=0 --test-coverage-functions=0 --test-coverage-lines=0 --watch-kill-signal=SIGTERM --import=tsx --inspect-port=127.0.0.1:9229 --inspect-publish-uid=stderr,http --import tsx tests\\talent-network-ui.test.ts"
+    },
+    {
+      "ProcessId": 47360,
+      "ParentProcessId": 63188,
+      "CommandLine": "C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe --use-largepages=off --trace-event-file-pattern=node_trace.${rotation}.log --v8-pool-size=4 --node-snapshot --cpu-prof-interval=1000 --report-signal=SIGUSR2 --tls-cipher-list=TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA384:DHE-RSA-AES256-SHA384:ECDHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA256:HIGH:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!SRP:!CAMELLIA --secure-heap=0 --secure-heap-min=2 --stack-trace-limit=10 --test-isolation=process --network-family-autoselection-attempt-timeout=250 --experimental-addon-modules --heapsnapshot-near-heap-limit=0 --heap-prof-interval=524288 --max-http-header-size=16384 --test-concurrency=0 --test-timeout=0 --test-coverage-branches=0 --test-coverage-functions=0 --test-coverage-lines=0 --watch-kill-signal=SIGTERM --import=tsx --inspect-port=127.0.0.1:9229 --inspect-publish-uid=stderr,http --import tsx tests\\team-records-network.test.ts"
+    },
+    {
+      "ProcessId": 62248,
+      "ParentProcessId": 6316,
+      "CommandLine": "\"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.2\\node_modules\\@esbuild\\win32-x64\\esbuild.exe\" --service=0.28.2 --ping"
+    },
+    {
+      "ProcessId": 572,
+      "ParentProcessId": 47360,
+      "CommandLine": "\"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.2\\node_modules\\@esbuild\\win32-x64\\esbuild.exe\" --service=0.28.2 --ping"
+    },
+    {
+      "ProcessId": 28516,
+      "ParentProcessId": 63188,
+      "CommandLine": "C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe --use-largepages=off --trace-event-file-pattern=node_trace.${rotation}.log --v8-pool-size=4 --node-snapshot --cpu-prof-interval=1000 --report-signal=SIGUSR2 --tls-cipher-list=TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA384:DHE-RSA-AES256-SHA384:ECDHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA256:HIGH:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!SRP:!CAMELLIA --secure-heap=0 --secure-heap-min=2 --stack-trace-limit=10 --test-isolation=process --network-family-autoselection-attempt-timeout=250 --experimental-addon-modules --heapsnapshot-near-heap-limit=0 --heap-prof-interval=524288 --max-http-header-size=16384 --test-concurrency=0 --test-timeout=0 --test-coverage-branches=0 --test-coverage-functions=0 --test-coverage-lines=0 --watch-kill-signal=SIGTERM --import=tsx --inspect-port=127.0.0.1:9229 --inspect-publish-uid=stderr,http --import tsx tests\\testing-social.test.ts"
+    },
+    {
+      "ProcessId": 19292,
+      "ParentProcessId": 28516,
+      "CommandLine": "\"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.2\\node_modules\\@esbuild\\win32-x64\\esbuild.exe\" --service=0.28.2 --ping"
+    },
+    {
+      "ProcessId": 33996,
+      "ParentProcessId": 28516,
+      "CommandLine": "\"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.2\\node_modules\\@esbuild\\win32-x64\\esbuild.exe\" --service=0.28.2 --ping"
+    },
+    {
+      "ProcessId": 33772,
+      "ParentProcessId": 63188,
+      "CommandLine": "C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe --use-largepages=off --trace-event-file-pattern=node_trace.${rotation}.log --v8-pool-size=4 --node-snapshot --cpu-prof-interval=1000 --report-signal=SIGUSR2 --tls-cipher-list=TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA384:DHE-RSA-AES256-SHA384:ECDHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA256:HIGH:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!SRP:!CAMELLIA --secure-heap=0 --secure-heap-min=2 --stack-trace-limit=10 --test-isolation=process --network-family-autoselection-attempt-timeout=250 --experimental-addon-modules --heapsnapshot-near-heap-limit=0 --heap-prof-interval=524288 --max-http-header-size=16384 --test-concurrency=0 --test-timeout=0 --test-coverage-branches=0 --test-coverage-functions=0 --test-coverage-lines=0 --watch-kill-signal=SIGTERM --import=tsx --inspect-port=127.0.0.1:9229 --inspect-publish-uid=stderr,http --import tsx tests\\tollkeeper-return.test.ts"
+    },
+    {
+      "ProcessId": 39620,
+      "ParentProcessId": 33772,
+      "CommandLine": "\"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.2\\node_modules\\@esbuild\\win32-x64\\esbuild.exe\" --service=0.28.2 --ping"
+    },
+    {
+      "ProcessId": 34092,
+      "ParentProcessId": 6316,
+      "CommandLine": "\"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.2\\node_modules\\@esbuild\\win32-x64\\esbuild.exe\" --service=0.28.2 --ping"
+    }
+  ]
+}

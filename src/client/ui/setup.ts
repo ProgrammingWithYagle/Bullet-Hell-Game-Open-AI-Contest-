@@ -48,7 +48,7 @@ type Hooks = {
   ) => void;
   profileChanged: (applyPreferences?: boolean) => Promise<void>;
   settingsHTML: () => string;
-  bindSettings: () => void;
+  bindSettings: () => void | (() => void);
 };
 let selected: ConnectionOptions = {
   name: 'Survivor',
@@ -394,7 +394,8 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
     if (nameInput) nameInput.oninput = () => { displayName.edit(nameInput.value); selected.name = nameInput.value; };
     if (page === 'settings') {
       host.querySelector<HTMLDetailsElement>('details')!.open = true;
-      hooks.bindSettings();
+      const cleanup = hooks.bindSettings();
+      if(cleanup)cleanups.push(cleanup);
     }
     if (page === 'join') {
       const queries = new Set<Session>();

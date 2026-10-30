@@ -1,0 +1,13 @@
+✔ authority confirms delivery/rejections, binds sender identity and acknowledges duplicate requests without duplicate posts (3.5093ms)
+✔ outbox waits for confirmation, retains a request after timeout/drop and permits a safe explicit retry or a genuinely new message (37.016ms)
+✔ late success still confirms the pending text; cooldown, disable, send failure and destroyed lifetimes preserve bounded state (93.3042ms)
+✔ actual peers receive explicit cooldown and reconnect retry acknowledges a lost confirmation without a duplicate broadcast (3879.9939ms)
+✔ quickly hiding and showing chat restores its recent history without another player needing to post (5178.5463ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8028.3114

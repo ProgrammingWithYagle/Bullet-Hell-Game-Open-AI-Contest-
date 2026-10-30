@@ -39,3 +39,7 @@ Cosmetic choices update appearance only. Importing a profile applies its prefere
 The first visit offers all fifteen languages by their native names. Choose one, then press **Continue**. Previewing does not save an automatic suggestion; Continue saves the choice. Returning players with a valid saved preference go straight to the menu. A failed download can be retried, and a saving failure still allows play with a notice.
 
 A fresh New run, Start gently or Join room setup gives an automatic display name in the current language. Once setup has started, changing language keeps that established name. Going back through setup and switching Solo/public/private also keep it. An empty name uses the same setup’s original automatic fallback. Names you type are never translated. Returning home and starting a fresh setup updates only an automatic name to the new language.
+
+## Changing controls
+
+In **Settings → Controls**, select an action and press the key or mouse button you want. A saved notice confirms the change and focus stays on the action. If saving fails, the displayed controls return to their saved values so you can retry. Duplicate or reserved bindings stay unchanged. **Tab** or **Escape** cancels a key choice; closing settings, returning to play, leaving the page or switching away from the window also cancels it. Mouse buttons, Space and the left stick use written labels in all fifteen languages.

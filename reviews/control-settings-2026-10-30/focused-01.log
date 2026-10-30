@@ -1,0 +1,34 @@
+✔ a successful key change keeps its owning controls and keyboard focus with a saved notice (241.3689ms)
+✔ a failed control-mode save restores the displayed value and allows a focused retry (46.4703ms)
+✔ held-key repeats and IME composition cannot accidentally choose a new control (37.2975ms)
+✔ disposed settings ignore detached and still-connected old actions and release captured events (29.4963ms)
+✖ closing a settings disclosure or losing focus cancels capture before the next key (28.7124ms)
+✔ leaving the actual setup settings page disposes its capture without waiting for a key or timer (487.4546ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 5
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2044.1869
+
+✖ failing tests:
+
+test at tests\control-settings-lifecycle.test.ts:1:4599
+✖ closing a settings disclosure or losing focus cancels capture before the next key (28.7124ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  2 !== 0
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\control-settings-lifecycle.test.ts:46:77)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

@@ -89,6 +89,8 @@ let session: Session | undefined,
   lastPhase = '',
   busy = false;
 let setupCleanup: (() => void) | undefined;
+let settingsCleanup: (() => void) | undefined;
+let controlSettings: ReturnType<typeof bindControlSettings> | undefined;
 let firstVisitLanguage = !hasLanguagePreference(localStorage);
 let launchSerial = 0;
 const esc = (v: unknown) =>
@@ -161,9 +163,11 @@ function settingsMarkup() {
   return `<details class="settings"><summary>${text('ui.settings')}</summary><div class="settings-grid">${(['autoFire', 'aimAssist', 'hitboxes', 'reduceMotion', 'highContrast', 'branchingTree', 'showNames', 'roomChat'] as const).map((key) => `<label class="check"><input type="checkbox" data-setting="${key}" ${settings[key] ? 'checked' : ''}>${text('ui.' + key)}</label>`).join('')}<label>${text('ui.effectsVolume')}<input data-setting="volume" type="range" min="0" max="1" step="0.05" value="${settings.volume}"></label><label>${text('ui.musicVolume')}<input data-setting="music" type="range" min="0" max="1" step="0.05" value="${settings.music}"></label><label>${text('ui.textSize')}<input data-setting="textScale" type="range" min="0.9" max="1.4" step="0.1" value="${settings.textScale}"></label></div>${controlsMarkup(inputOptions)}</details>`;
 }
 function bindSettings() {
+  settingsCleanup?.();
+  const lifetime = new AbortController();
   const root = document.querySelector<HTMLElement>('[data-controls]');
-  if (root)
-    bindControlSettings(
+  const binding = root
+    ? bindControlSettings(
       root,
       () => inputOptions,
       (next) => {
@@ -173,7 +177,9 @@ function bindSettings() {
         inputOptions = next;
         applySettings();
       },
-    );
+      )
+    : undefined;
+  controlSettings = binding;
 
   document.querySelectorAll<HTMLInputElement>('[data-setting]').forEach((input) =>
     input.addEventListener('input', () => {
@@ -181,8 +187,15 @@ function bindSettings() {
       (settings as Record<string, boolean | number>)[key] =
         input.type === 'checkbox' ? input.checked : Number(input.value);
       saveSettings();
-    }),
+    }, { signal: lifetime.signal }),
   );
+  const cleanup = () => {
+    lifetime.abort();
+    binding?.dispose();
+    if (controlSettings === binding) controlSettings = undefined;
+  };
+  settingsCleanup = cleanup;
+  return cleanup;
 }
 function notice(value: string) {
   const e = $('notice') ?? $('status');
@@ -497,6 +510,7 @@ function setBossGuide(value:boolean,restoreFocus=true) {
   else if(restoreFocus)(guideReturnFocus?.isConnected?guideReturnFocus:$('boss-guide-button')).focus({preventScroll:true});
 }
 function togglePause() {
+  controlSettings?.cancelCapture();
   paused=!paused;
   $('pause-menu').hidden=!paused;
   syncPauseState();
@@ -902,6 +916,7 @@ async function leave(showTeamRecord = false) {
   audio.stop();
 }
 function destroy() {
+  settingsCleanup?.();settingsCleanup=undefined;
   launchSerial++; busy = false;
   vitalsSizeObserver?.disconnect();vitalsSizeObserver=undefined;
   app.style.removeProperty('--combat-chat-bottom');
