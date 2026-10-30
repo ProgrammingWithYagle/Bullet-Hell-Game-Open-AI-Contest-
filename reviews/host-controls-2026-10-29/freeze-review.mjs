@@ -84,7 +84,8 @@ for(const required of ['lobby-navigation','room-invite-hud','randomRun','randomE
   assert(main.includes(required),'Missing room/map follow-up presentation: '+required);
 for(const required of ['room-password-dialog','player-vitals','map-collage','ui.preparingNextEncounter','ui.preparingResults','menu-room-invite-slot','chatReceipt','chat-delivery-status','ui.chatDeliveryUncertain'])
   assert(main.includes(required),'Missing interface clarity presentation: '+required);
-for(const required of ['id="host-pause-match"','data-host-pause','data-host-end','data-password-toggle','invite-room-password','ui.matchEndedByHost','matchPaused']) assert(main.includes(required),'Missing host controls: '+required);
+for(const required of ['host-pause-match','data-host-pause','data-host-end','data-password-toggle','invite-room-password','ui.matchEndedByHost','matchPaused']) assert(main.includes(required),'Missing host controls: '+required);
+assert(/\.pauseButton\.id\s*=\s*(['"\x60])host-pause-match\1/.test(main),'Missing imperative host pause button assignment');
 for(const required of ['id="cancel-loading"','ui.searchingRooms','ui.findingRoom','ui.errorServerAddress','ui.errorRoomUnavailable']) assert(main.includes(required),'Missing connection clarity: '+required);
 for(const required of ['ui.medicReviveHealth','ui.medicReviveOne','ui.selfReviveHelp','ui.regenOff'])
   assert(main.includes(required),'Missing recovery follow-up presentation: '+required);
