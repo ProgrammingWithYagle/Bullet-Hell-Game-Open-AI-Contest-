@@ -1,6 +1,6 @@
 # Windows portable development app
 
-The current source build is **2026.10.30-menu-reliability / protocol43**. It fixes local-network menu ownership, late responses, typed-input preservation and failed-request retries. [The current source review](../reviews/menu-reliability-2026-10-30) records exact verification. The prior gallery review below is sealed; the matching reliability package follows separately.
+The current source build is **2026.10.30-menu-reliability / protocol43**. It fixes local-network menu ownership, late responses, typed-input preservation and failed-request retries. [The current source review](../reviews/menu-reliability-2026-10-30) records exact verification. The matching reliability package below passes three-copy byte verification and six packaged diagnostics. Earlier reviews remain sealed.
 
 The [published Windows download](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/releases/tag/dev-windows-20261024-1) remains the immutable October24 protocol13 build. Source, Wiki and local package work do not replace it. Its741136155-byte archive has SHA256 **b2a87f08f002e35a23558ab9b4bcca3e997309fd5a567c7e014498a54fe7ae3c**, source52552c0d4465b918d7cde2ab3c2aa7f1d7eb045e. [Exact public-byte evidence](../reviews/windows-prerelease-public-download.json) remains separate.
 
@@ -49,3 +49,7 @@ Source6987362f4169eefadca357841fea8a8c8809b705, build2026.10.29-arena-edge-polis
 ## Verified home-gallery review
 
 Source d46eb13c4c92cffa0bf4c9fcad2e3a89907c5af8, build2026.10.29-home-gallery/protocol43, has its own sealed local Windows archive: Grave_Accord_2026.10.29_Home_Gallery_Public_Review.zip,842930950bytes,SHA256 **af8e21deee9d4702dfe74310c61e72b2085b5e9779ca8554435c1ede5d0b0280**. [Exact review](../reviews/windows-home-gallery-2026-10-29/package-status.json) verifies all1899files before/after six native offline/LAN fixtures across original/extraction/independent Japanese-path Windows copy. Browser gallery feedback is accepted for now; it is not native rendered or whole-game acceptance.
+
+## Matching menu-reliability review
+
+**Grave_Accord_2026.10.30_Menu_Reliability_Public_Review.zip**, source **c80974226cfc30ad466a4856ff651455eb97c02b**, 842947347bytes, SHA256 **acdb4cffa075de04acad2ba0aa40f374881c3016e20faa720f5163b8df27bd1a**. [Exact package status](../reviews/windows-menu-reliability-2026-10-30/package-status.json) and [delivery details](../reviews/windows-menu-reliability-2026-10-30/DELIVERY.md) bind all1899files on three copies, six actual native diagnostics and post-native rehashes. The six LAN-menu regressions, current gallery, camera/lava and host controls are included. Native human/rendered/device/physical-second-machine acceptance remains open.

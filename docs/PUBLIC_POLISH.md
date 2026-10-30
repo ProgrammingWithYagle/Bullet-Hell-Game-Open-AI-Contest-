@@ -20,7 +20,7 @@ Only the host explicitly pauses/continues an online match; Settings/chat alone a
 
 ## Matching artifacts and remaining review
 
-The prior source d46eb13 [gallery Windows review](../reviews/windows-home-gallery-2026-10-29/package-status.json) remains sealed with all 1899 files and six packaged diagnostics verified across three copies. It is separate from the new menu-reliability package. The [delivery guide](../reviews/windows-home-gallery-2026-10-29/DELIVERY.md) identifies its exact ZIP. Source/Wiki updates do not replace the published protocol 13 Windows download or protocol 4 Site.
+The matching source c809742 [menu-reliability Windows review](../reviews/windows-menu-reliability-2026-10-30/package-status.json) is sealed with all1899files before/after six packaged diagnostics across three copies. The [delivery guide](../reviews/windows-menu-reliability-2026-10-30/DELIVERY.md) identifies its exact ZIP. The earlier gallery, camera and all older packages remain immutable. Source/Wiki updates do not replace the published protocol 13 Windows download or protocol 4 Site.
 
 The human authorized ongoing verified source, draft PR, Wiki and local-file updates. Keep all 18 canonical Wiki pages and 34 images synchronized and preserve earlier publication receipts, raw reports, roots, services, artwork and archives. Main merge, hosted deployment, release replacement, paid provisioning and contest submission remain separate.
 
