@@ -4,9 +4,9 @@
 
 A cooperative gothic bullet-hell game. Dodge attacks, defeat a boss, vote on the next contract and spend your rewards on a build. Play solo or with friends.
 
-The current feature branch uses **build 2026.10.29-home-gallery / protocol 43**. [Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains this unfinished development work; protected main is a separate release boundary.
+The current feature branch uses **build 2026.10.30-menu-reliability / protocol 43**. [Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains this unfinished development work; protected main is a separate release boundary.
 
-The current home-gallery pass has 873 passing local software checks. Manual arrows show the full cover, seven survivors and six maps. Full boss and survivor artwork stays visible near borders while upper floor routes remain usable. Host controls retain explicit Pause/Continue, private password reveal and a confirmed end-for-everyone action. [The current review](reviews/home-gallery-2026-10-29) records exact software/transport evidence and limits. Loading has Cancel/Esc, useful room-search/join errors and requests that end when their screen closes. Earlier chat, player-status, room-password, boss/map and recovery improvements remain. [Earlier connection evidence](reviews/connection-clarity-2026-10-29) distinguishes software/transport checks from rendered/human acceptance. [Windows development](docs/WINDOWS_DESKTOP.md) identifies the separately verified native package.
+The current menu-reliability pass fixes stale local-network responses, lost typed input and failed-request retries; verification is recorded in its scoped review. Manual arrows show the full cover, seven survivors and six maps. Full boss and survivor artwork stays visible near borders while upper floor routes remain usable. Host controls retain explicit Pause/Continue, private password reveal and a confirmed end-for-everyone action. [The current review](reviews/menu-reliability-2026-10-30) records exact software/transport evidence and limits. Loading has Cancel/Esc, useful room-search/join errors and requests that end when their screen closes. Earlier chat, player-status, room-password, boss/map and recovery improvements remain. [Earlier connection evidence](reviews/connection-clarity-2026-10-29) distinguishes software/transport checks from rendered/human acceptance. [Windows development](docs/WINDOWS_DESKTOP.md) identifies the separately verified native package.
 
 After each boss clear, a five-second **Boss defeated** moment lets the existing fall or final pose finish with a preparation message and countdown before the next choices or results. Fifteen bosses have full falling sequences; fifty-one have final poses.
 
@@ -62,7 +62,7 @@ The optional expanded skill map shows all 54 skills per class with zoom, scrolli
 
 ## Development status
 
-The current local software gate passes **873 tests, 873 pass, 0 fail**, plus authored content/fifteen locales/RGBA, TypeScript, production build and71atlas contracts. [Current checkpoint](docs/CHECKPOINT_2026_10_25.md) distinguishes source CI, frozen previews, package verification and Wiki evidence. Rendered/human/device acceptance remains open.
+The current local software gate passes **879 tests, 879 pass, 0 fail**, plus authored content/fifteen locales/RGBA, TypeScript, production build and71atlas contracts. [Current checkpoint](docs/CHECKPOINT_2026_10_25.md) distinguishes source CI, frozen previews, package verification and Wiki evidence. Rendered/human/device acceptance remains open.
 
 Twelve original encounters have implemented quality passes; 48 remain. Content expansion and the proposed General Double Dash/Sprint branch are deferred during public polish. Complete action/facing animation, final encounter tuning, verified hosted rankings and durable online recovery remain unfinished. Rendered, listening, native-language, physical-device, WAN, endurance, capacity and human balance acceptance remain open.
 

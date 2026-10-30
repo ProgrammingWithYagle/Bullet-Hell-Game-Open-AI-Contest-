@@ -1,5 +1,5 @@
 {
-  "buildId": "2026.10.29-home-gallery",
+  "buildId": "2026.10.30-menu-reliability",
   "snapshot": {
     "bosses": 66,
     "classes": 7,
@@ -16,6 +16,27 @@
     "protocol": 43
   },
   "entries": [
+    {
+      "id": "menu-reliability",
+      "date": "2026-10-30",
+      "title": "Keep local-network setup responsive",
+      "groups": [
+        {
+          "title": "Move between pages without surprises",
+          "items": [
+            "Leaving Local network now ends that page’s controls and ignores its delayed responses. A slow initial status cannot replace a newer successful Host or Stop action, or redraw a page you have left.",
+            "Your typed host address, port and cursor position survive status updates. Failed hosting requests leave the controls available to retry; pending requests prevent conflicting Host, Stop, New run and Join actions while Back stays available."
+          ]
+        },
+        {
+          "title": "Keep the accepted presentation",
+          "items": [
+            "The existing manual home gallery remains in place. The intended later idea is alternate illustrated covers like the first image; the current gallery is accepted for now. Camera clearance, pit-only lava art and the accepted corner controls remain.",
+            "Six compiled native menu regressions reproduce the earlier failures, including the actual setup lifecycle. Local network protocols, scoring, gameplay rules and room authority are unchanged. Software checks remain separate from human multiplayer, rendered, device and second-computer LAN acceptance."
+          ]
+        }
+      ]
+    },
     {
       "id": "home-gallery",
       "date": "2026-10-29",

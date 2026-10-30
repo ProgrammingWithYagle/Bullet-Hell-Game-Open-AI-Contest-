@@ -183,7 +183,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
         },
       );
     if (page === 'lan')
-      mountLan(
+      cleanups.push(mountLan(
         content,
         (endpoint) => {
           selected.serverEndpoint = endpoint;
@@ -195,7 +195,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
           go('join');
         },
         () => go('home'),
-      );
+      ));
     if (page === 'changelog')
       content.innerHTML = changelogHTML(
         {

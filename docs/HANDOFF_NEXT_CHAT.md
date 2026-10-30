@@ -1,5 +1,3 @@
-# Grave Accord — start here
+# Continue current-content polish
 
-Read [the current checkpoint](CHECKPOINT_2026_10_25.md), [development progress](DEVELOPMENT_PROGRESS.md) and [current home-gallery evidence](../reviews/home-gallery-2026-10-29). The human authorized ongoing verified source, draft PR #14, Wiki and local-file synchronization. Continue the broad current-content polish work.
-
-Use the same checkout and branch. Preserve older guides in Git/history, frozen previews, raw reports and packages. The checkpoint distinguishes locally verified source from published source, preview and Wiki receipts. Browser automation remains disabled; native/software fixtures do not establish rendered or human acceptance.
+Read [the current checkpoint](CHECKPOINT_2026_10_25.md), [development progress](DEVELOPMENT_PROGRESS.md) and [current review](../reviews/menu-reliability-2026-10-30). Continue in the same checkout and feature branch. Verified source, draft PR14, Wiki and local synchronization remain authorized. The manual gallery is accepted for now; alternate illustrated covers remain a future idea. Focus on reliability and the first-time flow. Preserve every issued receipt, earlier build and archive, and keep software checks distinct from human/device/rendered acceptance. The broad polish goal remains active.

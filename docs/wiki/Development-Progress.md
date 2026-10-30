@@ -1,6 +1,6 @@
 # Development progress
 
-Updated 2026-10-29 for **2026.10.29-home-gallery**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
+Updated 2026-10-30 for **2026.10.30-menu-reliability**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
 
 66 playable identities: 65 ordinary and 1 secret. Three ordinary bosses in every one of fifty subtiers requires 150 ordinary identities, plus secrets; 85 additional ordinary bosses remain.
 
@@ -22,6 +22,7 @@ Updated 2026-10-29 for **2026.10.29-home-gallery**. These counts track specific 
 
 ## Latest human feedback
 
+- Testing5246: the present home gallery is fine for now, but the intended later idea is multiple alternate full-cover illustrations like image1. Continue existing-content polish and reliability now. The menu-reliability follow-up prevents stale LAN callbacks, retains typed input/focus and allows retries after failed Stop requests. Six baseline regressions reproduce the faults; read reviews/menu-reliability-2026-10-30 for final gate/source/CI/Wiki/fresh-preview evidence. Matching gallery Windows review d46eb13 is sealed; new native changes need their own matching review.
 - Testing5244: lava pits look better and characters did not get stuck at the top in the human trial. Limited positive camera/lava feedback, not full map/device/multiplayer acceptance. Requested a home-screen image gallery with arrows, similar to a Roblox game page. Implement a manual gallery using existing cover, seven-survivor and map art, with clear labels, keyboard/RTL support and shared public/testing presentation. Continue polishing current content during the remaining day.
 - 5243/testing5242: Pause/Settings stay correctly in the corner during defeat. Brass Toad could not reach upper Baby Ossuary Works cover routes, and survivors also clipped near edges; full boss-edge acceptance was not possible. Requested removing the orange lava-pit circle. Camera headroom, physical boss clearance, blocked-target Toad detours and pit-only art are implemented in the current follow-up; rendered/human comparison remains open. One day remains, so prioritize current-content reliability, presentation and matching deliverables; bots/story remain deferred.
 - 5241: password eyes and host Pause/Continue feel not bad; multiple human players are still needed for acceptance. Reported a boss clipped above the top border, probably Ossuary Works on Normal/Hard, and Pause moving toward the top center during defeat. Requested checking every map/difficulty combination. Optional ally bots belong after the contest; the idea is saved only.

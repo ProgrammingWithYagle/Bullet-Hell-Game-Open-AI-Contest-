@@ -10,3 +10,7 @@ The current implementation remains the shared personal shield cap and difficulty
 ## Ally bots after the contest
 
 Human idea, 2026-10-29: optional automated teammates when no friends are available. Consider following players, avoiding attacks, fighting and reviving, with clear bot labels and difficulty-appropriate behavior. Decide how bot-assisted runs appear in records before shipping. Future design only; no ally bots or production matchmaking changes are implemented for the contest. Native multi-peer test clients remain software fixtures.
+
+## Alternate illustrated home covers
+
+Human feedback on 2026-10-30: the intended gallery idea is multiple illustrated variations like the main full cover, rather than a cover/characters/maps tour. The present manual gallery is acceptable for now. Keep alternate full-cover compositions for a later art pass; continue current-content reliability and polish now.

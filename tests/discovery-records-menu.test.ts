@@ -19,7 +19,7 @@ test('compiled room search shows the version error, retries, then aborts when th
  });
  const launches:unknown[][]=[];
  // The LAN selection supplies a real temporary endpoint; it is not a public game server.
- const lanStubs={'lan.ts':`export const desktopText=key=>key;export function mountLan(host,back,connected){host.innerHTML='<button id="fixture-server">Server</button>';host.querySelector('#fixture-server').onclick=()=>connected(${JSON.stringify(endpoint)});}`,'desktop.ts':`export const desktopBridge=()=>({});`};
+ const lanStubs={'lan.ts':`export const desktopText=key=>key;export function mountLan(host,back,connected){host.innerHTML='<button id="fixture-server">Server</button>';host.querySelector('#fixture-server').onclick=()=>connected(${JSON.stringify(endpoint)});return ()=>{};}`,'desktop.ts':`export const desktopBridge=()=>({});`};
  const setup=await menuBundle(t,'src/client/ui/setup.ts',lanStubs);
  const dispose=setup.mountSetup(env.host,hooks(launches));env.cleanup.push(dispose);
  env.host.querySelector('#lan')!.click();env.host.querySelector('#fixture-server')!.click();
@@ -41,7 +41,7 @@ test('code lookup keeps actionable errors and disposal cancels without a late la
   if(hold){pending=true;response.on('close',()=>{aborted=true;});return;}
   response.writeHead(codeStatus).end('{}');
  });
- const setup=await menuBundle(t,'src/client/ui/setup.ts',{'lan.ts':`export const desktopText=key=>key;export function mountLan(host,back,connected){host.innerHTML='<button id="fixture-server">Server</button>';host.querySelector('#fixture-server').onclick=()=>connected(${JSON.stringify(endpoint)});}`,'desktop.ts':`export const desktopBridge=()=>({});`});
+ const setup=await menuBundle(t,'src/client/ui/setup.ts',{'lan.ts':`export const desktopText=key=>key;export function mountLan(host,back,connected){host.innerHTML='<button id="fixture-server">Server</button>';host.querySelector('#fixture-server').onclick=()=>connected(${JSON.stringify(endpoint)});return ()=>{};}`,'desktop.ts':`export const desktopBridge=()=>({});`});
  const launches:unknown[][]=[],dispose=setup.mountSetup(env.host,hooks(launches));env.cleanup.push(dispose);
  env.host.querySelector('#lan')!.click();env.host.querySelector('#fixture-server')!.click();await until(()=>env.host.querySelector('#rooms')?.textContent==='ui.noRooms');
  env.host.querySelector('#code')!.value='ABCDEF';env.host.querySelector('#join-code')!.click();await until(()=>env.host.querySelector('#notice')?.textContent==='ui.errorServer');

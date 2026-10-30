@@ -1,6 +1,18 @@
 # Changelog
 
-Development build **2026.10.29-home-gallery**, protocol 43. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.30-menu-reliability**, protocol 43. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-30 — Keep local-network setup responsive
+
+### Move between pages without surprises
+
+- Leaving Local network now ends that page’s controls and ignores its delayed responses. A slow initial status cannot replace a newer successful Host or Stop action, or redraw a page you have left.
+- Your typed host address, port and cursor position survive status updates. Failed hosting requests leave the controls available to retry; pending requests prevent conflicting Host, Stop, New run and Join actions while Back stays available.
+
+### Keep the accepted presentation
+
+- The existing manual home gallery remains in place. The intended later idea is alternate illustrated covers like the first image; the current gallery is accepted for now. Camera clearance, pit-only lava art and the accepted corner controls remain.
+- Six compiled native menu regressions reproduce the earlier failures, including the actual setup lifecycle. Local network protocols, scoring, gameplay rules and room authority are unchanged. Software checks remain separate from human multiplayer, rendered, device and second-computer LAN acceptance.
 
 ## 2026-10-29 — Browse the home-screen artwork
 

@@ -90,7 +90,7 @@ Insane fixes the form selector to Brutal; Hellish fixes Crazed. Lower global dif
 
 ## Class ability transformations
 
-The seven requested class-upgrade implementation passes now add 21 behavior changes at existing utility-path depth-three nodes (six cumulative SP each). Costs, prerequisites, node IDs and the single-capstone rule remain. Both skill views show fifteen-locale help. Shared authority, finite constructs, delayed attacks and moving fields replicate to offline/online clients. [Class behavior and tradeoffs](Classes-and-Skills#purchased-ability-transformations). Current protocol 42 retains bounded older local Practice/profile migrations, including protocol 40 equipment, economy and map choices; online checkpoints remain strict. Latest Baby/Easy/Normal assistance and Hellish rules remain intact. Human/rendered/device/native-language acceptance remains open.
+The seven requested class-upgrade implementation passes now add 21 behavior changes at existing utility-path depth-three nodes (six cumulative SP each). Costs, prerequisites, node IDs and the single-capstone rule remain. Both skill views show fifteen-locale help. Shared authority, finite constructs, delayed attacks and moving fields replicate to offline/online clients. [Class behavior and tradeoffs](Classes-and-Skills#purchased-ability-transformations). Current protocol 43 retains bounded older local Practice/profile migrations, including protocol 40 equipment, economy and map choices; online checkpoints remain strict. Latest Baby/Easy/Normal assistance and Hellish rules remain intact. Human/rendered/device/native-language acceptance remains open.
 
 ## Three encounter forms
 
@@ -156,3 +156,7 @@ The matching camera-clearance review is source 6f397a5, protocol 43. All 1,899 f
 ## Browse the artwork
 
 Use the left and right arrows on the home screen to switch between the main cover, the seven survivors and six map paintings. The small page buttons jump to an image. Keyboard arrows, Home and End work while the gallery has focus. Pictures switch only when you choose, and returning from setup remembers your image for that menu session. The same gallery appears in public and testing builds.
+
+## Local-network setup stays on your current page
+
+While Host or Stop hosting is in progress, wait for it to finish or use Back. Conflicting actions are disabled during that request. Errors leave the controls available to retry. A delayed status keeps your typed address, port and editing position. Leaving the page keeps it from changing the next screen; it does not automatically stop a local server you chose to host.
