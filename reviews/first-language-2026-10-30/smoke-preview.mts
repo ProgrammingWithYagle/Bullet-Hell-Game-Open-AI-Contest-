@@ -83,16 +83,18 @@ const owner = new Session(manifest.endpoint), observer = new Session(manifest.en
 let peerSample: unknown;
 try {
   owner.setChatEnabled(true); observer.setChatEnabled(true);
-  const options = { name: 'Review probe', classId: 'soldier' as const, mode: 'short' as const,
+  const ownerName=JSON.parse(fs.readFileSync('locales/ja.json','utf8')).messages['ui.defaultDisplayName'];
+  const observerName=JSON.parse(fs.readFileSync('locales/ar.json','utf8')).messages['ui.defaultDisplayName'];
+  const options = { name: ownerName, classId: 'soldier' as const, mode: 'short' as const,
     difficulty: 'baby', openingArenaId: 'gatehouse', arenaSelection:'fixed' as const, openingBossId: 'gate-widow' as const };
   const probePassword='Preview-only lock';
   await owner.connect(options,undefined,'public',probePassword);
   await wait(()=>owner.code.length===6);
   assert(owner.hasPassword);
   const lookup=await observer.lookupRoom(owner.code);assert.equal(lookup.hasPassword,true);
-  const listing=(await observer.rooms()).find(room=>room.roomId===owner.room!.roomId);assert(listing?.hasPassword);assert.equal(listing.name,'Review probe');assert(!JSON.stringify(listing).includes(probePassword));
-  await assert.rejects(()=>observer.connect({...options,name:'Review observer',classId:'medic'},{roomId:lookup.roomId,code:owner.code,password:'Incorrect fixture value'}),/ui.errorRoomPassword/);
-  await observer.connect({ ...options, name: 'Review observer', classId: 'medic' }, { roomId:lookup.roomId,code: owner.code,password:probePassword });
+  const listing=(await observer.rooms()).find(room=>room.roomId===owner.room!.roomId);assert(listing?.hasPassword);assert.equal(listing.name,ownerName);assert(!JSON.stringify(listing).includes(probePassword));
+  await assert.rejects(()=>observer.connect({...options,name:observerName,classId:'medic'},{roomId:lookup.roomId,code:owner.code,password:'Incorrect fixture value'}),/ui.errorRoomPassword/);
+  await observer.connect({ ...options, name: observerName, classId: 'medic' }, { roomId:lookup.roomId,code: owner.code,password:probePassword });
   await wait(() => owner.view?.players.length === 2 && observer.view?.players.length === 2&&observer.code===owner.code);
   observer.start();await new Promise(r=>setTimeout(r,250));
   assert.equal(owner.view!.phase,'lobby');assert.equal(observer.view!.phase,'lobby');
@@ -101,7 +103,8 @@ try {
   assert(owner.sendChat('Keep this draft for a retry'));
   await wait(()=>owner.chatDelivery.status==='cooldown');
   assert.equal(owner.chatDelivery.draft,'Keep this draft for a retry');assert.equal(observer.chatMessages.length,1);
-  assert.equal(observer.chatMessages[0].name, 'Review probe');
+  assert.equal(observer.chatMessages[0].name, ownerName);
+  for(const view of [owner.view!,observer.view!]){assert.equal(view.players.find(player=>player.id===owner.id)!.name,ownerName);assert.equal(view.players.find(player=>player.id===observer.id)!.name,observerName);}
   owner.start(); await wait(() => observer.view?.phase === 'combat' && owner.view?.phase === 'combat');
   const a = owner.view!, b = observer.view!;
   assert.equal(a.boss.id, b.boss.id);
@@ -123,7 +126,7 @@ try {
   assert.equal(observer.view!.encounter,0);
   peerSample = { peers: 2, phase: b.phase, bossId: b.boss.id, form: b.boss.variant, difficulty: b.run.difficulty,
     mode: b.run.mode, sameBoss: true, chosenRehearsalOpenerIgnored: audience === 'public', chosenRehearsalOpenerRetained: audience === 'testing', testingModified: false,
-    roomChatDelivered: true,chatServerConfirmed:true,chatCooldownExplicit:true,chatRejectedDraftRetained:true, roomCodeJoined:true, hostStartRequired:true, selectedMapRetained:true,
+    localizedDefaultNamesReplicated:true, roomChatDelivered: true,chatServerConfirmed:true,chatCooldownExplicit:true,chatRejectedDraftRetained:true, roomCodeJoined:true, hostStartRequired:true, selectedMapRetained:true,
     passwordProtected:true,incorrectPasswordRejected:true,roomListingLockFlag:true,noPasswordInListing:true,
     hostPasswordRetainedPrivately:true,guestPasswordNotExposed:true,hostPauseAuthoritative:true,guestPauseRejected:true,pausedClockFrozen:true,manualContinueWorks:true,hostLeaveContinues:true,promotedHostInviteAvailable:true,hostEndAllExplained:true,noManufacturedClear:true,
     noPersonalClearClaimed: true };

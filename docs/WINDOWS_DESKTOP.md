@@ -57,3 +57,7 @@ Source d46eb13c4c92cffa0bf4c9fcad2e3a89907c5af8, build2026.10.29-home-gallery/pr
 ## Verified preceding profile/navigation review
 
 Source8368410eee06efeee698ee3c1360060b4db5bc0f/build2026.10.30-profile-navigation/protocol43 has a sealed local Windows review, **Grave_Accord_2026.10.30_Profile_Navigation_Public_Review.zip**,842973204bytes,SHA256 **3646208a9fd768209e60a274a29b516fe623b7b11227e8267bb117d85f5e63d8**. [Exact review](../reviews/windows-profile-navigation-2026-10-30-r02/package-status.json) verifies all1899files before/after6native offline/LAN diagnostics on3copies, including Japanese paths beyond280characters. It precedes the first-visit/name follow-up.
+
+## Matching first-language review
+
+**Grave_Accord_2026.10.30_First_Language_Public_Review.zip**, source **402727baaf854a3dce67baadcc0d90f5e0a780e3**, **842946128bytes**, SHA256 **18c91ea04604be068c46be7efca4b1eb1ac67369bed54d26adbfe07947d48c36**. [Exact native status](../reviews/windows-first-language-2026-10-30/package-status.json) and [delivery guide](../reviews/windows-first-language-2026-10-30/DELIVERY.md) verify1899files on original, fresh verified extraction-r02 and independent Japanese-path copy, plus6native diagnostics and post-native rehashes. First-visit choice and setup-bound automatic names are included. The failed first extraction is preserved and excluded from acceptance. This remains an unsigned local review; the published download is unchanged.
