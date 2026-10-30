@@ -10,7 +10,7 @@ import { BrutalVolley } from './brutal-volley.ts';
 import { encounterAssists, phaseShieldBreak, encounterPhases, bossPatternPhase, encounterVariant, variantRules } from './encounter-policy.ts';
 import {combatReviveAllowed,revivedHealth,revivalShield,passiveRegenerationMultiplier,selfReviveAllowed,selfReviveCharges,maximumPersonalShield,startingShieldFraction} from './recovery-policy.ts';
 import {smallWakesIds} from './small-wakes-director.ts';
-import {smallWakesSpawn} from './small-wakes-body-bounds.ts';
+import {bossBorderObstacles,bossFloorPosition,bossMovementBounds} from './boss-body-bounds.ts';
 import { earlyWatchBossIds, earlyWatchMovement } from './early-watch-director.ts';
 import { constablePattern, moveConstable } from './constable-signature.ts';
 import { freshProgress, validProgress, type RunProgress } from './run-progress.ts';
@@ -383,6 +383,9 @@ export class Game {
   get obstacles() {
     const gates = this.director.solids(this.combatTick);
     return gates.length ? [...this.arena.obstacles, ...gates] : this.arena.obstacles;
+  }
+  private get bossObstacles() {
+    return [...this.obstacles,...bossBorderObstacles(this.boss.id,this.arena.bounds,this.bossDefinition().radius)];
   }
   get difficulty() {
     return data.difficulties.find((d) => d.id === this.settings.difficulty)!;
@@ -879,7 +882,7 @@ export class Game {
       staggerUntil: 0,
       vulnerableUntil: 0,
     };
-    Object.assign(this.boss,smallWakesSpawn(this.boss.id,this.boss,this.bossDefinition().radius,this.arena.bounds,this.obstacles));
+    Object.assign(this.boss,bossFloorPosition(this.boss.id,this.boss,this.bossDefinition().radius,this.arena.bounds,this.obstacles,this.arena.playerSpawn));
     this.arenaHazardAt=this.combatTick+ticks(rule.arenaDifficulty.lavaWarningSeconds);
     this.lavaHitAt.clear();
     this.attackAt = this.bossPhases()[0].attacks.map((_, i) => this.combatTick + ticks(2 + i * 2));
@@ -1709,7 +1712,7 @@ export class Game {
   private bossCastBlocked() {
     return !!this.accord || this.combatTick < this.phaseAttackReadyAt;
   }
-  private wardenContext(){return {blocked:this.bossCastBlocked(),now:this.combatTick,boss:this.boss,phase:this.boss.phase,brutal:this.boss.variant!=='normal',target:this.aimTargets()[0]??{x:800,y:700},radius:this.bossDefinition().radius,obstacles:this.obstacles,id:()=>this.id()};}
+  private wardenContext(){return {blocked:this.bossCastBlocked(),now:this.combatTick,boss:this.boss,phase:this.boss.phase,brutal:this.boss.variant!=='normal',target:this.aimTargets()[0]??{x:800,y:700},radius:this.bossDefinition().radius,obstacles:this.bossObstacles,id:()=>this.id()};}
   private resetWarden() {
     this.signatures=[];this.wardenPatrol.clear();this.wardenHitAt.clear();
     if(this.boss.id!=='lantern-warden')return;
@@ -1865,9 +1868,10 @@ export class Game {
         if (shot?.owner === 'hostile') this.removeShot(shot);
       },
       relocateBoss: (point) => {
-        this.boss.x = point.x;
-        this.boss.y = point.y;
-        this.bossPrevious = { ...point };
+        const landing=bossFloorPosition(this.boss.id,point,this.bossDefinition().radius,this.arena.bounds,this.obstacles);
+        this.boss.x = landing.x;
+        this.boss.y = landing.y;
+        this.bossPrevious = { ...landing };
       },
       interactors: this.roster()
         .filter((p) => p.status === 'active' && p.input.interact)
@@ -1898,6 +1902,7 @@ export class Game {
       radius: this.bossDefinition().radius,
       bounds: this.arena.bounds,
       obstacles: this.obstacles,
+      bodyObstacles: this.bossObstacles,
       targets: this.roster().filter((p) => p.status === 'active'),
       aimTargets: this.aimTargets(),
       damageScale: this.bossDamageScale(),
@@ -2198,10 +2203,14 @@ export class Game {
         this.boss,
         now,
         this.arena.bounds,
-        this.obstacles,
+        this.bossObstacles,
         this.aimTargets(),
         !!this.accord,
       );
+    // Also cover direct scripted placements, independent of movement style.
+    const body=bossMovementBounds(this.boss.id,this.arena.bounds,this.bossDefinition().radius);
+    if(this.boss.x<body.x||this.boss.x>body.x+body.width||this.boss.y<body.y||this.boss.y>body.y+body.height)
+      Object.assign(this.boss,bossFloorPosition(this.boss.id,this.boss,this.bossDefinition().radius,this.arena.bounds,this.obstacles));
     for (let i = this.warnings.length - 1; i >= 0; i--) {
       const w = this.warnings[i];
       if (now < w.at) continue;

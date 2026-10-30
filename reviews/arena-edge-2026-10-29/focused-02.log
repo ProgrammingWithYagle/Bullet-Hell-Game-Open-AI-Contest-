@@ -1,0 +1,85 @@
+✔ only exact known issued29 Practice/profile state migrates to the current protocol while retaining builds, form history and optional settings (7.2619ms)
+✔ all fifteen manual guides route distinct Ambulance phases and form help, with existing action poses and static reduced motion (102.7869ms)
+✔ real owner and observer replicate locked second-dispatch geometry, door repeat budgets and complete encounter cleanup (399.2318ms)
+✖ 144 real map/difficulty/phase procession paths stay body-clear within actual offset bounds, masonry and conservative lava footprints (58.7659ms)
+✔ Paired Knell overlaps two independently warned outward fronts from one locked source and opening (7.6997ms)
+✔ the extracted ring capsule contact preserves all existing service behavior, inward/outward sweeps and body-width opening edges (0.231ms)
+✔ first ring activation ignores old player motion and each travelling front damages a survivor once (7.1015ms)
+✔ Procession moves only after its tell, uses all eight drawn gait frames, and closes toward the marked survivor and locks the toll to its final source (4.852ms)
+✔ new cover safely stops the planned procession instead of teleporting through it or releasing from an unreached source (1.8558ms)
+✔ Counterstroke interleaves inward and outward fronts before the earlier wave finishes (5.6165ms)
+✔ Brutal layers four peals and two independent aimed clappers instead of the former exclusive silent hold (7.0938ms)
+✔ Crazed primary and responding bell stay dangerous together, with fixed sources/openings and complete independent warnings (6.6053ms)
+✔ advanced Carillon uses six overlapping alternating peals instead of another generic projectile spray (3.2254ms)
+✔ rich actor data cannot overwrite numeric cue identities or leak into path points and snapshots cannot mutate the owner (8.7991ms)
+✔ explicit interruption/reset clear peals with a fresh restart delay, while a phase change retains the committed score (9.6003ms)
+✔ completed rings and repeated assistance cycles do not retain hit sets, responders or stale owned cues (0.4768ms)
+✔ actual Game removes generic Bellringer bullets/lasers and clears owned fronts during stagger, assistance and encounter exit (76.0097ms)
+✔ clapper sector is harmless for its full 36-tick lock, ignores old motion on activation and hits once per swing (4.2698ms)
+✔ swept clapper geometry covers radial edges and caps but leaves a real sideways body-clear escape (1.761ms)
+✔ a new clapper locks the current survivor position rather than reusing the first aim, and strike/reply sounds come from actual activation (5.1236ms)
+✔ both simultaneous sources share a clear-floor opening outside the first clapper, including offset arenas and lava footprints (83.6119ms)
+✔ all runtime boss art, loading references, ground anchors and lifts match native alpha (2067.5608ms)
+✔ all 66 bosses deploy fully on every map/difficulty with physical bodies clear of masonry (243.1026ms)
+✔ whole-body route walls and scripted placement guard every edge on all 2376 boss/map/difficulty combinations (1351.7025ms)
+✖ actual moving encounters retain complete art on six maps at Normal/Hard and keep their final defeat position (2885.6913ms)
+✔ leaving during delayed health aborts actual HTTP and settles the search promptly (113.0085ms)
+✔ leaving during delayed rooms aborts actual HTTP and settles the search promptly (91.7965ms)
+✔ leaving during delayed code aborts actual HTTP and settles the search promptly (78.446ms)
+✔ leaving during server startup cancels the retry delay and makes no later request (139.8948ms)
+✔ cancelled admission releases the known ticket once during its retry delay (17.4551ms)
+✔ cancelled admission releases the known ticket once during a pending poll (1025.8636ms)
+✔ room discovery keeps version, rate-limit and server errors distinct from an empty list (11.4018ms)
+✔ code lookup distinguishes missing, throttled and failing servers (8.6976ms)
+✔ an incompatible HTTP address and startup throttling fail promptly with useful errors (6.8267ms)
+✔ Cancel aborts the actual SDK matchmaking POST and releases admission (20.0448ms)
+Room connection was closed unexpectedly (4000): 
+✔ Cancel closes an actual SDK socket whose server never sends the room handshake (27.6444ms)
+✔ a room that closed after listing gives useful guidance and releases its join ticket (67.4306ms)
+✔ closing offline startup settles before its first view and suppresses late worker events (1.4902ms)
+✔ an unresolved asset task can be cancelled without accepting its late completion (0.1829ms)
+✔ all fifteen catalogs contain source-backed plain connection progress and a Cancel action (29.9058ms)
+ℹ tests 40
+ℹ suites 0
+ℹ pass 38
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7265.7595
+
+✖ failing tests:
+
+test at tests\bell-carillon.test.ts:1:1699
+✖ 144 real map/difficulty/phase procession paths stay body-clear within actual offset bounds, masonry and conservative lava footprints (58.7659ms)
+  AssertionError [ERR_ASSERTION]: Approach did not close toward the marked survivor
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\bell-carillon.test.ts:105:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\boss-body-bounds.test.ts:1:2870
+✖ actual moving encounters retain complete art on six maps at Normal/Hard and keep their final defeat position (2885.6913ms)
+  AssertionError [ERR_ASSERTION]: Whole-body limits must retain movement: ratcatchergatehousenormal
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\boss-body-bounds.test.ts:53:93)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

@@ -1,4 +1,8 @@
-# Current checkpoint: explicit host controls
+# Current follow-up: arena edges and stable controls
+
+Build **2026.10.29-arena-edge-polish / protocol43** extends complete native-art body limits to all66bosses on all36map/difficulty combinations, and groups HUD controls at the corner. [Current scope](../reviews/arena-edge-2026-10-29) preserves the2376-start baseline, implementation and fresh verification. The full local gate04 passes863/863/0, TypeScript, authored content/fifteen locales/native artwork, production build and71atlas contracts. Eight issued reports remain unchanged. Exact source publication/CI, fresh public5243/testing5242 and Wiki/PR closure require their separate receipts. Ally bots remain a post-contest note only. The b108b5f native folder is unsealed after its original offline fixture passed; finish a new matching Windows review after these fixes pass.
+
+## Previous verified host-control checkpoint
 
 Current local build **2026.10.29-host-controls / protocol 43** passes **859 tests, 859 passed, 0 failed**, TypeScript, authored content, fifteen locales/native artwork, production build and 71 atlas contracts. [Local verification](../reviews/host-controls-2026-10-29/local-verification.json) binds runtime SHA256 **770d087c83f9d6fa5b6b3d7392ff4c2b6ecf5f71928c47d752601686c320b4fd** and source/test snapshot **5ca55f6d677e222bfe041442b6fa34339d54b981a4545611f9c5987abd82bce3**, with eight issued reports preserved. Verified gameplay source **3991fdae3cc8aaddaea00be8d43ec668e15533e9** is published; both exact-source CI jobs pass859/859/0. Wiki **3efbf50fa3444cd9452a35383888182f32bbde07** matches all18pages/34images and public hashes. [Current closure](../reviews/host-controls-2026-10-29/checkpoint-status.json) binds previews, complete CI logs, Wiki and matching draft PR notes.
 

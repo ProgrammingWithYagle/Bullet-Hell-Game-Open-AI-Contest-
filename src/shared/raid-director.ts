@@ -566,7 +566,7 @@ export class RaidDirector {
         // Check the entire horizontal body, including both ends, against cover.
         for (const offset of [-120, 0, 120]) {
           const base = { x: c.boss.x + offset, y: c.boss.y };
-          const probe = moveBody(base, delta, 38, c.obstacles);
+          const probe = moveBody(base, delta, 38, c.bodyObstacles ?? c.obstacles);
           delta.x =
             Math.sign(delta.x) *
             Math.min(Math.abs(delta.x), Math.max(0, (probe.x - base.x) * Math.sign(delta.x)));
@@ -609,7 +609,7 @@ export class RaidDirector {
               c.boss,
               { x: (dx / d) * 65 * DT, y: (dy / d) * 65 * DT },
               58,
-              c.obstacles,
+              c.bodyObstacles ?? c.obstacles,
             );
             c.boss.x = v.x;
             c.boss.y = v.y;

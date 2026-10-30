@@ -319,7 +319,7 @@ export class TollkeeperReturn {
             y: length ? ((end.y - old.y) / length) * travel : 0,
           },
           c.radius,
-          c.obstacles,
+          c.bodyObstacles ?? c.obstacles,
         );
       c.boss.x = next.x;
       c.boss.y = next.y;

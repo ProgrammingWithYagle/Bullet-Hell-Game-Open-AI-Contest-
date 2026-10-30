@@ -1,6 +1,18 @@
 # Changelog
 
-Development build **2026.10.29-host-controls**, protocol 43. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.29-arena-edge-polish**, protocol 43. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-29 — Keep bosses on the floor and controls in the corner
+
+### Complete boss artwork stays inside the map
+
+- Arena limits now include the complete artwork, ground anchor, defeat poses and loading reference for all66bosses. Their spawn, routes and scripted placements use the same floor limits across all six maps and six difficulties. Ordinary player and projectile walls keep their actual map geometry.
+- Independent native-alpha checks cover152art sources and758frames. The software baseline exposed726starting combinations with artwork extending beyond the floor; regression checks cover all2376boss/map/difficulty starts and edges, plus actual movement and defeat positions. This does not establish rendered or human acceptance.
+
+### Stable game controls
+
+- Pause/Continue, Settings and the boss guide stay together at the top corner when the boss header disappears during the defeat scene. Both public and testing share the fix.
+- Limited positive5241feedback accepts the basic host controls and password eyes; multiplayer human testing remains open. Optional ally bots are saved as an idea for after the contest and are not implemented. Earlier source, Wiki, frozen previews and native packages remain preserved.
 
 ## 2026-10-29 — Host passwords and explicit match controls
 

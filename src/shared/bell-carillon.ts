@@ -84,7 +84,7 @@ export function bellRoad(
   const b = c.bounds ?? { x: 0, y: 0, width: 1600, height: 1000 },
     pad = c.radius + tuning.clearance,
     step = tuning.gridSpacing,
-    walls = bellWalls(c),
+      walls = bellWalls({...c,obstacles:c.bodyObstacles??c.obstacles}),
     nx = Math.floor((b.width - 2 * pad) / step) + 1,
     ny = Math.floor((b.height - 2 * pad) / step) + 1;
   if (nx < 1 || ny < 1 || nx * ny > 2000) return [{ x: c.boss.x, y: c.boss.y }];
@@ -701,7 +701,7 @@ export class BellCarillon {
                 y: c.boss.y + ((p.y - c.boss.y) * travel) / length,
               }
             : { x: p.x, y: p.y };
-        if (!clear(c.boss, next, walls, c.radius)) {
+        if (!clear(c.boss, next, [...walls,...(c.bodyObstacles??[])], c.radius)) {
           blocked = true;
           break;
         }

@@ -237,3 +237,17 @@ reviews/host-controls-2026-10-29/**/*.json -text -whitespace
 reviews/host-controls-2026-10-29/**/*.log -text -whitespace
 reviews/host-controls-2026-10-29/*.mts text eol=lf
 reviews/host-controls-2026-10-29/*.ps1 text eol=lf
+
+# Matching host-controls Windows package evidence.
+reviews/windows-host-controls-2026-10-29/**/*.json -text -whitespace
+reviews/windows-host-controls-2026-10-29/**/*.log -text -whitespace
+reviews/windows-host-controls-2026-10-29/*.ps1 text eol=lf
+
+# Exact arena-edge source and review evidence.
+reviews/arena-edge-2026-10-29/**/*.json -text -whitespace
+reviews/arena-edge-2026-10-29/**/*.log -text -whitespace
+reviews/arena-edge-2026-10-29/*.mts text eol=lf
+reviews/arena-edge-2026-10-29/*.ps1 text eol=lf
+
+# Preserve the native-alpha input tool hash on every checkout.
+tools/boss-body-art-inputs.mts text eol=lf

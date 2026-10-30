@@ -1,6 +1,6 @@
 # Development progress
 
-Updated 2026-10-29 for **2026.10.29-host-controls**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
+Updated 2026-10-29 for **2026.10.29-arena-edge-polish**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
 
 66 playable identities: 65 ordinary and 1 secret. Three ordinary bosses in every one of fifty subtiers requires 150 ordinary identities, plus secrets; 85 additional ordinary bosses remain.
 
@@ -22,6 +22,7 @@ Updated 2026-10-29 for **2026.10.29-host-controls**. These counts track specific
 
 ## Latest human feedback
 
+- 5241: password eyes and host Pause/Continue feel not bad; multiple human players are still needed for acceptance. Reported a boss clipped above the top border, probably Ossuary Works on Normal/Hard, and Pause moving toward the top center during defeat. Requested checking every map/difficulty combination. Optional ally bots belong after the contest; the idea is saved only.
 - 5239: moving between Join Room, a room and the main menu feels pretty clear. Requested host-visible room password/code, eye buttons for password entry, explicit host-only Pause/Continue, no pause from menus/chat, continued play when the host leaves, and a separate choice to end for everyone. This is limited positive connection/menu feedback, not whole-game acceptance. Host controls implement the follow-up with protocol43 and private Session-memory credentials; current source and human comparison remain separately recorded.
 - Connection clarity follow-up: source inspection and an actual delayed-HTTP baseline reproduced searches outliving close. Cancel/Esc, session-bound HTTP/retry/worker/SDK socket lifetimes, guarded late callbacks, actionable search/join errors and record-request cleanup are implemented.43focused checks include actual local HTTP/SDK/WebSocket and compiled menu controllers; full source/CI/fresh previews/Wiki evidence belongs in reviews/connection-clarity-2026-10-29. This is software progress, not new human/rendered acceptance.
 - Current follow-up: source fe82c7e includes the5233requested clearer labels, player headshots and independent health/shield/resource display, room-code menu placement, filled random-map imagery, Small Wakes artwork containment, enforced optional passwords and boss preparation/countdown. Confirmed chat retains drafts, avoids duplicate uncertain retries and restores recent history after rapid toggles. Local827software checks and six native Windows fixtures pass; source CI/Wiki publication evidence is separate. New human/rendered and balance acceptance remains open.
@@ -66,7 +67,7 @@ Updated 2026-10-29 for **2026.10.29-host-controls**. These counts track specific
 
 ## Remaining release work
 
-- Continue polishing existing content for first-time players. Host/password controls now provide private revealable invites, explicit authoritative Pause/Continue, clean host departure/transfer and confirmed end-for-everyone without manufactured clears. Current source/CI/frozen-preview/Wiki evidence is recorded under reviews/host-controls-2026-10-29; read its exact closure before making acceptance claims. Human/rendered/final balance and coordinated release acceptance remain open. The earlier849-check connection source and all earlier packages/previews remain preserved.
+- Continue polishing existing content for first-time players. The current arena-edge follow-up extends measured full-body floor limits to all66bosses across all36map/difficulty combinations and anchors game controls together. Read reviews/arena-edge-2026-10-29 for exact local/source/CI/preview/Wiki evidence. Human/rendered/final balance and coordinated release acceptance remain open. Bring the Windows review forward only after this follow-up is verified; the b108b5f intermediate native folder is unsealed and preserves its passing original offline diagnostic.
 - Review Alchemist Crazed distillation columns, route warnings, coolant condensation and final reflux in the next matching frozen preview. The shared earned-SP General mobility branch remains deferred during public polish.
 - Review shared phase-attack continuity in the next matching frozen preview; software checks are separate from rendered/human/device/final balance acceptance.
 - Review Bellringer Standard calibration and the new Brutal/Crazed return-chain decision in the next exact-source frozen preview; fixed grade3- remains.

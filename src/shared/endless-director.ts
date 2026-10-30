@@ -696,7 +696,7 @@ export class EndlessDirector {
               c.boss,
               { x: desired.x - c.boss.x, y: desired.y - c.boss.y },
               58,
-              c.obstacles,
+              c.bodyObstacles ?? c.obstacles,
             );
           c.boss.x = next.x;
           c.boss.y = next.y;

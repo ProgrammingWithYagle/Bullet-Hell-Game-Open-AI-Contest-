@@ -1082,7 +1082,7 @@ export class DistrictDirector {
       } else if (cue.kind === 'district-state') {
         if (cue.style === 'warp' && cue.index === -1 && now >= cue.at && now < cue.until) {
           const from = { ...c.boss },
-            dest = moveBody(c.boss, { x: cue.endX * DT, y: cue.endY * DT }, c.radius, c.obstacles);
+            dest = moveBody(c.boss, { x: cue.endX * DT, y: cue.endY * DT }, c.radius, c.bodyObstacles ?? c.obstacles);
           c.boss.x = dest.x;
           c.boss.y = dest.y;
           for (const p of c.targets)

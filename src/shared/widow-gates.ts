@@ -714,7 +714,7 @@ export class WidowGates {
             y: ((w.y2 - c.boss.y) / Math.max(d, 1e-9)) * step,
           },
           c.radius,
-          c.obstacles,
+          c.bodyObstacles ?? c.obstacles,
         ),
         moved = distance(c.boss, p);
       if (c.relocateBoss) c.relocateBoss(p);

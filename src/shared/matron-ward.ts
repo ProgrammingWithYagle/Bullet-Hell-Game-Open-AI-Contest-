@@ -84,7 +84,7 @@ export function matronPath(
   const b = bounds(c),
     pad = c.radius + tuning.bodyClearance,
     step = tuning.gridSpacing,
-    walls = matronWalls(c),
+    walls = matronWalls({...c,obstacles:c.bodyObstacles??c.obstacles}),
     nx = Math.floor((b.width - pad * 2) / step) + 1,
     ny = Math.floor((b.height - pad * 2) / step) + 1;
   if (nx < 1 || ny < 1 || nx * ny > 2000) return [{ ...c.boss }];
@@ -554,7 +554,7 @@ export class MatronWard {
                 y: c.boss.y + ((point.y - c.boss.y) * travel) / length,
               }
             : { ...point };
-        if (!clear(c.boss, next, walls, c.radius)) {
+        if (!clear(c.boss, next, [...walls,...(c.bodyObstacles??[])], c.radius)) {
           interrupted = true;
           break;
         }

@@ -296,7 +296,7 @@ test('Raid weak hit transfers one 1.5 projectile hit without body double credit'
     id: 900000,
     owner: p.id,
     x: rib.x,
-    y: rib.y + 100,
+    y: rib.y + rib.radius + 8,
     vx: 0,
     vy: -12000,
     radius: 3,

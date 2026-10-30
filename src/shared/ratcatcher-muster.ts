@@ -395,7 +395,7 @@ export class RatcatcherMuster {
           c.boss,
           { x: clipped.x - c.boss.x, y: clipped.y - c.boss.y },
           c.radius,
-          c.obstacles,
+          c.bodyObstacles ?? c.obstacles,
         );
       c.boss.x = next.x;
       c.boss.y = next.y;

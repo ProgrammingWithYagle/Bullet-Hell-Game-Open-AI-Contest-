@@ -1,5 +1,5 @@
 {
-  "buildId": "2026.10.29-host-controls",
+  "buildId": "2026.10.29-arena-edge-polish",
   "snapshot": {
     "bosses": 66,
     "classes": 7,
@@ -16,6 +16,27 @@
     "protocol": 43
   },
   "entries": [
+    {
+      "id": "arena-edge-polish",
+      "date": "2026-10-29",
+      "title": "Keep bosses on the floor and controls in the corner",
+      "groups": [
+        {
+          "title": "Complete boss artwork stays inside the map",
+          "items": [
+            "Arena limits now include the complete artwork, ground anchor, defeat poses and loading reference for all66bosses. Their spawn, routes and scripted placements use the same floor limits across all six maps and six difficulties. Ordinary player and projectile walls keep their actual map geometry.",
+            "Independent native-alpha checks cover152art sources and758frames. The software baseline exposed726starting combinations with artwork extending beyond the floor; regression checks cover all2376boss/map/difficulty starts and edges, plus actual movement and defeat positions. This does not establish rendered or human acceptance."
+          ]
+        },
+        {
+          "title": "Stable game controls",
+          "items": [
+            "Pause/Continue, Settings and the boss guide stay together at the top corner when the boss header disappears during the defeat scene. Both public and testing share the fix.",
+            "Limited positive5241feedback accepts the basic host controls and password eyes; multiplayer human testing remains open. Optional ally bots are saved as an idea for after the contest and are not implemented. Earlier source, Wiki, frozen previews and native packages remain preserved."
+          ]
+        }
+      ]
+    },
     {
       "id": "host-controls",
       "date": "2026-10-29",

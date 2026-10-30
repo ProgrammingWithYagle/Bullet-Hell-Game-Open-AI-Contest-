@@ -122,6 +122,8 @@ export type SignatureContext = {
   radius: number;
   targets: (Vec & { id: string; oldX: number; oldY: number })[];
   obstacles: Rect[];
+  /** Full-art constraints apply to boss motion only; hazards use actual arena walls. */
+  bodyObstacles?: Rect[];
   bounds?: Rect;
   aimTargets?: (Vec & { id: string; oldX: number; oldY: number })[];
   damageScale: number;
@@ -501,7 +503,7 @@ export class BossDirector {
           y: length ? ((end.y - old.y) / length) * travel : 0,
         },
         context.radius,
-        context.obstacles,
+        context.bodyObstacles ?? context.obstacles,
       );
       context.boss.x = next.x;
       context.boss.y = next.y;

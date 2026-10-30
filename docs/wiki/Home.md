@@ -4,7 +4,7 @@
 
 Dodge attacks, defeat bosses and spend your rewards between fights. Play Solo or team up with friends in this cooperative zombie bullet-hell game.
 
-**Current development build: 2026.10.29-host-controls.** The game is still in development. The public demo and published Windows download below are older versions.
+**Current development build: 2026.10.29-arena-edge-polish.** The game is still in development. The public demo and published Windows download below are older versions.
 
 ## New here?
 
@@ -47,7 +47,7 @@ Newer local Windows review packages have separate source, extraction/copy and na
 <details>
 <summary>Development and verification</summary>
 
-Current source is version 0.3.0, protocol 43 on [draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14). The [current publication and verification evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/tree/feat/first-playable-loop/reviews/host-controls-2026-10-29) records source CI and Wiki synchronization. Current host-control source passes859local software checks. The separately verified fe82c7e Windows review passes six native offline/LAN diagnostics on three copies. Rendered/human acceptance remains separate. [Development Progress](Development-Progress) tracks remaining work; [Changelog](Changelog) records each update. [Architecture](Architecture), [Hosting and Recovery](Hosting-and-Recovery), [Contributing](Contributing) and [Credits](Credits) provide the technical and project references.
+Current source is version 0.3.0, protocol 43 on [draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14). The [current publication and verification evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/tree/feat/first-playable-loop/reviews/arena-edge-2026-10-29) records source CI and Wiki synchronization. Current boss-edge and corner-control source passes863local software checks. The separately verified fe82c7e Windows review passes six native offline/LAN diagnostics on three copies. Rendered/human acceptance remains separate. [Development Progress](Development-Progress) tracks remaining work; [Changelog](Changelog) records each update. [Architecture](Architecture), [Hosting and Recovery](Hosting-and-Recovery), [Contributing](Contributing) and [Credits](Credits) provide the technical and project references.
 
 The latest [continuation checkpoint](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/CHECKPOINT_2026_10_25.md) distinguishes current source, frozen previews, CI, Wiki and the current local Windows review package. Protected main and external deployment remain separate boundaries.
 
@@ -64,3 +64,7 @@ The host can reveal the room password beside the code, both in the waiting room 
 Opening settings, chat or a guide does not pause an online match. Only the current host can press **Pause match** or **Continue match**. The pause freezes the simulation and countdowns while chat remains available. If a paused host leaves or disconnects, play resumes and a connected teammate becomes host. Returning does not automatically reclaim host controls.
 
 **Leave room** keeps remaining teammates playing. **End game for everyone** is a separate host action in Settings and requires confirmation. Everyone sees that the host ended the match; only already-completed encounters count. Protocol43 needs a matching backend, with a bounded local Practice migration from42. [Exact source and review evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/tree/feat/first-playable-loop/reviews/host-controls-2026-10-29).
+
+## Boss edges and stable controls
+
+Bosses now use their complete measured artwork and ground anchors to stay within the floor on all six maps and six difficulties, including Ossuary Works. This includes loading references and the existing defeat poses. Game controls stay together at the corner when the boss header is hidden. [Exact current verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/tree/feat/first-playable-loop/reviews/arena-edge-2026-10-29) distinguishes software checks from rendered/human acceptance. Ally bots remain a post-contest idea.

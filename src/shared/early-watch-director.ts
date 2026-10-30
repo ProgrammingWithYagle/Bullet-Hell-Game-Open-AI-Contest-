@@ -355,7 +355,7 @@ export class EarlyWatchDirector {
           from,
           { x: free.x - from.x, y: free.y - from.y },
           c.radius,
-          c.obstacles,
+          c.bodyObstacles ?? c.obstacles,
         );
         const at = release + ticks(n * 1.5),
           landAt = at + ticks(0.65);
@@ -583,7 +583,7 @@ export class EarlyWatchDirector {
         c.boss,
         { x: Math.cos(angle) * speed * DT, y: Math.sin(angle) * speed * DT },
         c.radius,
-        c.obstacles,
+        c.bodyObstacles ?? c.obstacles,
       );
       c.boss.x = clamp(p.x, b.x + c.radius, b.x + b.width - c.radius);
       c.boss.y = clamp(p.y, b.y + c.radius, b.y + b.height - c.radius);

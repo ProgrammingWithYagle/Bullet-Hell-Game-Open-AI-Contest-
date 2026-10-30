@@ -79,7 +79,7 @@ const bounds = (c: SignatureContext) =>
 function walls(c: SignatureContext): Rect[] {
   const b = bounds(c);
   return [
-    ...c.obstacles,
+    ...(c.bodyObstacles ?? c.obstacles),
     ...(c.hazardCircles ?? []).map((p) => ({
       x: p.x - p.radius,
       y: p.y - p.radius,

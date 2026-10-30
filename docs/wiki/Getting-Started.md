@@ -130,7 +130,7 @@ Base starting shield is recalculated each fight from the difficulty-adjusted cap
 
 ## Latest local Windows review
 
-The current local Windows review includes the map, waiting-room, Medic/shield, player-status, password and confirmed-chat updates. Source **fe82c7e38c8fa73804678b6637815b23aceb0ce5**, build **2026.10.29-chat-confirmation**, protocol42, passes827local source checks. All1899package files match on original, fresh deep extraction and an independent Windows copy, with six actual native offline/LAN diagnostics passing, including a Japanese deep folder. It has not replaced the older published download. [Current package evidence and acceptance limits](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/reviews/windows-current-2026-10-29/package-status.json).
+The earlier verified local Windows review includes the map, waiting-room, Medic/shield, player-status, password and confirmed-chat updates. Source **fe82c7e38c8fa73804678b6637815b23aceb0ce5**, build **2026.10.29-chat-confirmation**, protocol42, passes827local source checks. All1899package files match on original, fresh deep extraction and an independent Windows copy, with six actual native offline/LAN diagnostics passing, including a Japanese deep folder. It has not replaced the older published download. [Current package evidence and acceptance limits](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/reviews/windows-current-2026-10-29/package-status.json).
 
 ## Connection progress and cancellation
 
@@ -143,3 +143,7 @@ The host can reveal the room password beside the code, both in the waiting room 
 Opening settings, chat or a guide does not pause an online match. Only the current host can press **Pause match** or **Continue match**. The pause freezes the simulation and countdowns while chat remains available. If a paused host leaves or disconnects, play resumes and a connected teammate becomes host. Returning does not automatically reclaim host controls.
 
 **Leave room** keeps remaining teammates playing. **End game for everyone** is a separate host action in Settings and requires confirmation. Everyone sees that the host ended the match; only already-completed encounters count. Protocol43 needs a matching backend, with a bounded local Practice migration from42. [Exact source and review evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/tree/feat/first-playable-loop/reviews/host-controls-2026-10-29).
+
+## Boss edges and stable controls
+
+Bosses now use their complete measured artwork and ground anchors to stay within the floor on all six maps and six difficulties, including Ossuary Works. This includes loading references and the existing defeat poses. Game controls stay together at the corner when the boss header is hidden. [Exact current verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/tree/feat/first-playable-loop/reviews/arena-edge-2026-10-29) distinguishes software checks from rendered/human acceptance. Ally bots remain a post-contest idea.
