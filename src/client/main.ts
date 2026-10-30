@@ -203,7 +203,7 @@ async function menu(initialRecords?: TeamBoardSelection,retryJoin?:RoomJoinRetry
       Object.assign(settings, p.settings);
       inputOptions = p.controls;
       selectedCosmetic = p.selectedCosmetic;
-      try { await setLanguage(p.locale); }
+      try { if (p.locale !== locale) await setLanguage(p.locale); }
       catch { throw Error('ui.errorLanguage'); }
       applySettings();
     },

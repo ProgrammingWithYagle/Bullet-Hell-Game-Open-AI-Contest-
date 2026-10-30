@@ -30,6 +30,13 @@ for(const name of ['soldier','heavy','tank','medic','mage','engineer','assassin'
   const member=manifest.members.find((m:{path:string})=>m.path.startsWith('assets/'+name+'-selection-v1-')&&m.path.endsWith('.png'));
   assert(member,'Missing actual character portrait: '+name);files.add(member.path);
 }
+const catalogFiles: {locale:string;path:string}[]=[];
+const localeIds=JSON.parse(fs.readFileSync('content/catalog.json','utf8')).locales.map((item:{id:string})=>item.id);
+assert.equal(localeIds.length,15);
+for(const id of localeIds){
+ const candidates=manifest.members.filter((m:{path:string})=>m.path.startsWith('assets/'+id+'-')&&m.path.endsWith('.js')).filter((m:{path:string})=>{const text=fs.readFileSync(path.join(manifest.root,m.path),'utf8');return ['ui.errorLanguage','ui.loadingLanguage','ui.applyingProfile'].every(key=>text.includes(key));});
+ assert.equal(candidates.length,1,'Expected one emitted source-backed catalog for '+id);files.add(candidates[0].path);catalogFiles.push({locale:id,path:candidates[0].path});
+}
 for (const file of files) {
   const response = await fetch(new URL(file, manifest.url), { signal: AbortSignal.timeout(10000) });
   assert.equal(response.status, 200, file);
@@ -130,7 +137,7 @@ const boardAfter=await fetch(manifest.endpoint+'/api/leaderboards?mode=short&dif
 const report = { passed: true, checkedAt: new Date().toISOString(), sourceCommit: manifest.sourceCommit,
   buildId: manifest.buildId, protocol: manifest.protocol, contentRevision: manifest.contentRevision, audience,
   url: manifest.url, root: manifest.root, endpoint: manifest.endpoint, httpChecks: checked,
-  health, cors: { matchingOriginAllowed: true, otherOriginHealthHeaderObserved: otherHealthOrigin,
+  servedCatalogs:catalogFiles, health, cors: { matchingOriginAllowed: true, otherOriginHealthHeaderObserved: otherHealthOrigin,
     wrongOriginSocketUpgradeStatus: deniedUpgradeStatus },
   backendBundleSha256: manifest.backend.sha256, peerSample, probeRoomsClosed: true,
   teamRecords: { available: true, persistent: true, readStatus: boardResponse.status, scope: board.scope,

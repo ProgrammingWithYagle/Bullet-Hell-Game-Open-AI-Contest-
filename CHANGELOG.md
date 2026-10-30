@@ -13,6 +13,7 @@ Development build **2026.10.30-profile-navigation**, protocol 43. These entries 
 
 - The latest language choice wins, including switching back to English while another language loads. Leaving a page cancels its pending selection. Failed or obsolete downloads cannot replace the active catalog, reverse text direction or save an older preference.
 - Language changes keep typed fields, cursor selection and focus. Loading and retry notices are translated in all fifteen languages. If the saved language cannot load at startup, the English menu stays usable with a clear notice. A failed preference save still leaves the displayed menu consistent.
+- Changing a profile cosmetic no longer restarts the current language or cancels a different language choice that is still loading. A compiled integration case covers the actual menu hook and catalog loader together.
 
 ## 2026-10-30 — Keep local-network setup responsive
 

@@ -31,3 +31,5 @@ See [Getting Started](Getting-Started) for default controls, [Accessibility and 
 Applying a profile blocks conflicting imports and cosmetic changes until it finishes. Back and Export remain available. If you leave while the selected file is still being read, it is not imported. A finished response from an old Profile page cannot replace a newer page or put a notice into another profile view.
 
 Invalid files and saving failures have different messages. Saving failures keep the previous profile bytes and a usable retry; the existing exact backup and validation rules remain. A successful import keeps its confirmation and places keyboard focus on the current import control, including when it changes the menu language.
+
+Cosmetic changes leave an unrelated pending language choice active.

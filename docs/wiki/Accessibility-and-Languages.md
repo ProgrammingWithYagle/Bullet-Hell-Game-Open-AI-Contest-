@@ -29,3 +29,5 @@ Latest 5192 feedback moves boss instruction paragraphs out of the live HUD into 
 A loading notice explains a pending language choice. The latest selection takes priority even if an older download finishes later. Leaving the page cancels that selection; an old failure cannot replace a newer choice or reverse the text direction. A completed change keeps typed fields, focus and cursor selection.
 
 A failed download leaves the current language selected and shows a retry notice. If a saved language cannot load when the app starts, the English menu remains usable. Saving preferences can fail separately: the translated menu stays consistent and the notice explains that saving failed. The notices are authored in all fifteen languages; human language and layout review remain ongoing.
+
+Choosing a cosmetic while a language is loading keeps that language request active.
