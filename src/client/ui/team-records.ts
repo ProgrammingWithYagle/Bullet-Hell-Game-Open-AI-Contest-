@@ -13,13 +13,17 @@ export function teamResultMarkup(status?: TeamRecordStatus) {
   const r = status.record;
   return `<aside class="team-result" role="status"><strong>${e(t('ui.teamRecordSaved'))} · <bdi>#${number(r.rank)}</bdi></strong><p>${e(t('ui.leaderboardSharedRank'))}</p><p>${e(t(r.mode === 'endless' ? 'ui.leaderboardEncounters' : 'ui.leaderboardScore'))}: ${number(r.mode === 'endless' ? r.clears : r.score)} · ${e(t('ui.leaderboardTime'))}: <bdi>${time(r.lastClearTicks)}</bdi></p></aside>`;
 }
-export function mountTeamRecords(host: HTMLElement, endpoint: string, initialMode: string, initialDifficulty: string, selection?: TeamBoardSelection) {
-  let mode = initialMode, difficulty = initialDifficulty, sizeBand: string = selection?.sizeBand ?? 'solo', week = false;
+export type TeamRecordFilters = { mode: string; difficulty: string; sizeBand: string; week: boolean };
+export function mountTeamRecords(host: HTMLElement, endpoint: string, initialMode: string, initialDifficulty: string, selection?: TeamBoardSelection,
+  options: {filters?: TeamRecordFilters; onChange?: (filters: TeamRecordFilters) => void} = {}) {
+  let mode = options.filters?.mode ?? initialMode, difficulty = options.filters?.difficulty ?? initialDifficulty,
+    sizeBand: string = options.filters?.sizeBand ?? selection?.sizeBand ?? 'solo', week = options.filters?.week ?? false;
+  const remember = () => options.onChange?.({mode, difficulty, sizeBand, week});
   let nextOffset: number | null = 0, sequence = 0, controller: AbortController;
   let disposed = false;
   let rosterController = new AbortController(), rosterGeneration = 0;
   const rows = new Map<string, RankedTeamRecord>();
-  host.innerHTML = `<div class="records-filters"><label>${e(t('ui.leaderboardMode'))}<select data-record-mode>${data.modes.map(m => `<option value="${m.id}" ${m.id === mode ? 'selected' : ''}>${e(t('mode.'+m.id+'.name'))}</option>`).join('')}</select></label><label>${e(t('ui.leaderboardDifficulty'))}<select data-record-difficulty>${data.difficulties.map(d => `<option value="${d.id}" ${d.id === difficulty ? 'selected' : ''}>${e(t('difficulty.'+d.id))}</option>`).join('')}</select></label><label>${e(t('ui.recordsSize'))}<select data-record-size></select></label></div><div class="records-tabs"><button data-record-all aria-pressed="true">${e(t('ui.recordsAllTime'))}</button><button data-record-week aria-pressed="false">${e(t('ui.recordsThisWeek'))}</button></div><p>${e(t('ui.leaderboardFilters'))} ${e(t('ui.leaderboardSharedRank'))}</p><p data-record-status role="status" aria-live="polite"></p><button data-record-retry hidden>${e(t('ui.retry'))}</button><div data-record-rows class="team-record-list"></div><button data-record-more hidden>${e(t('ui.recordsMore'))}</button>`;
+  host.innerHTML = `<div class="records-filters"><label>${e(t('ui.leaderboardMode'))}<select data-record-mode>${data.modes.map(m => `<option value="${m.id}" ${m.id === mode ? 'selected' : ''}>${e(t('mode.'+m.id+'.name'))}</option>`).join('')}</select></label><label>${e(t('ui.leaderboardDifficulty'))}<select data-record-difficulty>${data.difficulties.map(d => `<option value="${d.id}" ${d.id === difficulty ? 'selected' : ''}>${e(t('difficulty.'+d.id))}</option>`).join('')}</select></label><label>${e(t('ui.recordsSize'))}<select data-record-size></select></label></div><div class="records-tabs"><button data-record-all aria-pressed="${!week}">${e(t('ui.recordsAllTime'))}</button><button data-record-week aria-pressed="${week}">${e(t('ui.recordsThisWeek'))}</button></div><p>${e(t('ui.leaderboardFilters'))} ${e(t('ui.leaderboardSharedRank'))}</p><p data-record-status role="status" aria-live="polite"></p><button data-record-retry hidden>${e(t('ui.retry'))}</button><div data-record-rows class="team-record-list"></div><button data-record-more hidden>${e(t('ui.recordsMore'))}</button>`;
   const get = <T extends HTMLElement>(selector: string) => host.querySelector<T>(selector)!;
   function bands() {
     const max = data.modes.find(m => m.id === mode)!.maxPlayers;
@@ -118,12 +122,12 @@ export function mountTeamRecords(host: HTMLElement, endpoint: string, initialMod
       if (current === sequence) { host.setAttribute('aria-busy','false'); get('[data-record-more]').hidden = nextOffset === null || !rows.size; get<HTMLButtonElement>('[data-record-more]').disabled = false; }
     }
   }
-  get<HTMLSelectElement>('[data-record-mode]').onchange = event => { mode = (event.target as HTMLSelectElement).value; bands(); void load(true); };
-  get<HTMLSelectElement>('[data-record-difficulty]').onchange = event => { difficulty = (event.target as HTMLSelectElement).value; void load(true); };
-  get<HTMLSelectElement>('[data-record-size]').onchange = event => { sizeBand = (event.target as HTMLSelectElement).value; void load(true); };
-  const period = (value: boolean) => { week = value; get('[data-record-all]').setAttribute('aria-pressed',String(!value)); get('[data-record-week]').setAttribute('aria-pressed',String(value)); void load(true); };
+  get<HTMLSelectElement>('[data-record-mode]').onchange = event => { if (disposed) return; mode = (event.target as HTMLSelectElement).value; bands(); remember(); void load(true); };
+  get<HTMLSelectElement>('[data-record-difficulty]').onchange = event => { if (disposed) return; difficulty = (event.target as HTMLSelectElement).value; remember(); void load(true); };
+  get<HTMLSelectElement>('[data-record-size]').onchange = event => { if (disposed) return; sizeBand = (event.target as HTMLSelectElement).value; remember(); void load(true); };
+  const period = (value: boolean) => { if (disposed) return; week = value; remember(); get('[data-record-all]').setAttribute('aria-pressed',String(!value)); get('[data-record-week]').setAttribute('aria-pressed',String(value)); void load(true); };
   get('[data-record-all]').onclick = () => period(false); get('[data-record-week]').onclick = () => period(true);
   get('[data-record-more]').onclick = () => void load(false); get('[data-record-retry]').onclick = () => void load(rows.size === 0);
-  bands(); void load(true);
+  bands(); remember(); void load(true);
   return () => { disposed = true; sequence++; controller?.abort(); rosterController.abort(); };
 }

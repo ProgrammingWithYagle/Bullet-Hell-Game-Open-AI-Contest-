@@ -2,6 +2,8 @@
 
 Current source implements server-scoped team records with authority-only simulation hooks, SQLite persistence, exact scores/ties, mode/difficulty/size/week filters, paged participant histories, save retries and real multiplayer/restart evidence. The player page is [Records](wiki/Leaderboards.md). Shared deployed global rankings and deployed recovery are separate unfinished hosting gates.
 
+The records screen retains separate device/online filters for the current visit. Online mode, difficulty, team-size band and All time/This week survive tab switches. Switching to a smaller mode normalizes an incompatible band. Tab and device-filter changes keep keyboard focus, and Back cancels unfinished requests.
+
 The original Stage1 design below (rules version1, authored2026-10-22) remains the full global-service target. Its D1 HTTP writer/restore/season/cursor requirements are not all provided by the current single-server SQLite implementation. Original arithmetic fixtures are design evidence; current implementation tests are tests/team-records*.test.ts.
 
 ## One rank for one team run

@@ -51,3 +51,6 @@ The game keeps the name **Grave Accord** in every display language. Interface te
 ## Equipment keyboard navigation
 
 Equipment and skill-branch tabs keep focus when selected. Use left/right arrows, Home or End to change tabs; horizontal direction follows right-to-left languages. A prerequisite link focuses the real skill while preserving the scroll position. Purchase errors remain in the equipment panel until you select a new item or tab. Closing or hiding the panel ends its controls. Existing purchase costs, skill requirements and host authority remain. Human, rendered and device comparison of this change is still open.
+
+
+Records tabs keep their separate choices while you compare device and server results. The online tab remembers mode, difficulty, peak team size and All time or This week. Tab changes and device-filter changes keep keyboard focus. Back ends unfinished requests.

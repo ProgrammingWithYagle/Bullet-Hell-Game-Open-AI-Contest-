@@ -3,17 +3,19 @@ import { data } from "../../shared/game.ts";
 import { loadProfile } from "../profile.ts";
 import { locale, number, t } from "../i18n.ts";
 import { escape as e } from "./html.ts";
-import { mountTeamRecords } from './team-records.ts';
+import { mountTeamRecords, type TeamRecordFilters } from './team-records.ts';
 import { defaultGameEndpoint } from '../deployment.ts';
 import type { TeamBoardSelection } from '../team-records.ts';
 import { expeditionText } from '../expedition-text.ts';
 export function mountLeaderboards(host: HTMLElement, back: () => void, endpoint = defaultGameEndpoint, selection?: TeamBoardSelection) {
   let disposed = false, boardCleanup: (() => void) | undefined;
+  let onlineFilters: TeamRecordFilters | undefined;
   let mode: string = selection?.mode ?? "short",
     difficulty = selection?.difficulty ?? "normal",
     online = Boolean(selection);
-  const render = () => {
-    if (disposed) return;
+  const dispose = () => { disposed = true; boardCleanup?.(); boardCleanup = undefined; };
+  const render = (focusSelector?: string) => {
+    if (disposed || !host.isConnected) return;
     boardCleanup?.(); boardCleanup = undefined;
     const rows = localRecords(loadProfile(localStorage).runs, mode, difficulty);
     host.innerHTML =
@@ -111,29 +113,47 @@ export function mountLeaderboards(host: HTMLElement, back: () => void, endpoint 
               "</tbody></table></div>"
             : "<p>" + e(t("ui.noLocalRecords")) + "</p>")) +
       "</section>";
-    if (online) boardCleanup = mountTeamRecords(host.querySelector<HTMLElement>('#team-records-content')!, endpoint, mode, difficulty, selection);
-    host.querySelector<HTMLButtonElement>("#records-back")!.onclick = () => { boardCleanup?.(); boardCleanup = undefined; back(); };
-    host.querySelector<HTMLButtonElement>("#records-local")!.onclick = () => {
-      online = false;
-      render();
+    const page = host.querySelector<HTMLElement>('.records-page')!;
+    const active = (control: HTMLElement) => {
+      if (disposed || !page.isConnected || !page.contains(control)) return false;
+      for (let node: HTMLElement | null = control; node; node = node.parentElement)
+        if (node.hidden || node.inert) return false;
+      return true;
     };
-    host.querySelector<HTMLButtonElement>("#records-online")!.onclick = () => {
+    if (online) boardCleanup = mountTeamRecords(host.querySelector<HTMLElement>('#team-records-content')!, endpoint, mode, difficulty, selection, {
+      filters: onlineFilters,
+      onChange: filters => { if (!disposed && page.isConnected) onlineFilters = filters; },
+    });
+    const backButton = host.querySelector<HTMLButtonElement>("#records-back")!;
+    backButton.onclick = () => { if (active(backButton)) { dispose(); back(); } };
+    const localTab = host.querySelector<HTMLButtonElement>("#records-local")!;
+    localTab.onclick = () => {
+      if (!active(localTab)) return;
+      online = false;
+      render('#records-local');
+    };
+    const onlineTab = host.querySelector<HTMLButtonElement>("#records-online")!;
+    onlineTab.onclick = () => {
+      if (!active(onlineTab)) return;
       online = true;
-      render();
+      render('#records-online');
     };
     const m = host.querySelector<HTMLSelectElement>("#records-mode");
     if (m)
       m.onchange = () => {
+        if (!active(m)) return;
         mode = m.value;
-        render();
+        render('#records-mode');
       };
     const d = host.querySelector<HTMLSelectElement>("#records-difficulty");
     if (d)
       d.onchange = () => {
+        if (!active(d)) return;
         difficulty = d.value;
-        render();
+        render('#records-difficulty');
       };
+    if (focusSelector) host.querySelector<HTMLElement>(focusSelector)?.focus({preventScroll: true});
   };
   render();
-  return () => { disposed = true; boardCleanup?.(); boardCleanup = undefined; };
+  return dispose;
 }

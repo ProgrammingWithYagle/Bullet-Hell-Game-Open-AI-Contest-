@@ -1,6 +1,13 @@
 # Changelog
 
-Development build **2026.10.30-equipment-navigation**, protocol 43. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.30-records-navigation**, protocol 43. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-30 — Compare records without losing your filters
+
+### Remember choices and keyboard focus
+
+- Device and online records keep separate filter choices while you switch tabs. Online records remember mode, difficulty, team size and All time or This week. Choosing a smaller mode still limits the team-size choices correctly.
+- Changing a device-record filter or switching records tabs keeps keyboard focus on that control. Back cancels unfinished results requests, and controls from a closed or replaced page cannot navigate over the current screen. Existing scoring, saved results and multiplayer rules are unchanged.
 
 ## 2026-10-30 — Keep your place while preparing equipment
 
