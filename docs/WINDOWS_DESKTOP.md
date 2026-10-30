@@ -1,6 +1,6 @@
 # Windows portable development app
 
-The current source is **2026.10.30-welcome-finish / protocol 43**, exact source **e639047fdb494f4cfb2b7d6738d5b08f8d14916e**. It removes the empty orange frame from the first language screen while retaining real status messages and the accepted automatic-name policy. [Current source review](../reviews/welcome-finish-2026-10-30/checkpoint-source-review.json) and [matching Windows review](../reviews/windows-welcome-finish-2026-10-30/package-status.json) identify their separate evidence.
+The current source is **2026.10.30-equipment-navigation / protocol 43**, exact product source **9ae3bb92ef201dcc179379815b3bc6f650d24dc3**. Equipment and skill tabs retain keyboard focus after switching. Arrow keys, Home/End and mirrored horizontal direction select tabs. Prerequisite links focus the actual skill and preserve scrolling. Existing translated purchase errors remain visible inside the equipment panel. Controls belong to their live panel and stop when it closes. Prices, prerequisites, progression and multiplayer rules are unchanged. [Current source review](../reviews/equipment-navigation-2026-10-30/checkpoint-source-review.json) and [matching Windows review](../reviews/windows-equipment-navigation-2026-10-30/package-status.json) identify their separate evidence.
 
 The [published Windows download](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/releases/tag/dev-windows-20261024-1) remains the immutable October24 protocol13 build. Source, Wiki and local package work do not replace it. Its741136155-byte archive has SHA256 **b2a87f08f002e35a23558ab9b4bcca3e997309fd5a567c7e014498a54fe7ae3c**, source52552c0d4465b918d7cde2ab3c2aa7f1d7eb045e. [Exact public-byte evidence](../reviews/windows-prerelease-public-download.json) remains separate.
 
@@ -69,3 +69,9 @@ The matching local Windows review verifies all **1899 files** before and after s
 ## Current welcome-finish review
 
 The matching local Windows review passes all 1899 files on original, fresh verified extraction and independent Japanese-path Windows copy before/after six packaged offline/LAN diagnostics. Its **842949729-byte ZIP** has SHA-256 **92ae18e057860f1d90f289a3087910b9cc69a5d7e968be26cff507435138d148**. Font paths of 221, 276 and 277 characters pass. [Package status](../reviews/windows-welcome-finish-2026-10-30/package-status.json) and [delivery guide](../reviews/windows-welcome-finish-2026-10-30/DELIVERY.md) bind the local archive and sidecars. This does not establish native rendered, human, physical-device, listening or native-language acceptance. Human browser feedback confirms the strip fix only; packaged native rendered/device acceptance remains separate. The published download is unchanged.
+
+## Verified equipment-navigation package
+
+The matching local Windows review verifies all 1,899 files on the original, fresh complete ZIP extraction and independent Japanese-path Windows copy, before and after six packaged offline/LAN diagnostics. Its **842973815-byte ZIP** has SHA256 **412313533ae68c02ab8df986610f81cf29aa17f197be615634a99cdfe6f8ca73**. Font paths 227/288/289 characters pass. [Package status](../reviews/windows-equipment-navigation-2026-10-30/package-status.json) and [delivery guide](../reviews/windows-equipment-navigation-2026-10-30/DELIVERY.md) bind the local archive and sidecars. These software checks do not establish rendered, human, physical-device, listening or native-language acceptance.
+
+Earlier native packages remain immutable. The public download is unchanged.
