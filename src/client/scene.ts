@@ -7,6 +7,7 @@ import {drawAmbulanceCue} from './ambulance-cues.ts';
 import {drawWidowCue} from './widow-presentation.ts';
 import clerkRules from '../shared/clerk-appeal-rules.json';
 import {smallWakesPose,drawSmallWakes} from './small-wakes-presentation.ts';
+import {applyArenaCamera,arenaCamera,arenaCameraZoom} from './arena-camera.ts';
 import { earlyWatchPose, drawEarlyWatch } from './early-watch-presentation.ts';
 import { EndlessPresentation } from './endless-presentation.ts';
 import type { EndlessCue } from '../shared/endless-director.ts';
@@ -202,6 +203,7 @@ export class CombatScene extends Phaser.Scene {
     }
   }
   create() {
+    applyArenaCamera(this.cameras.main);
     this.serviceArt = new ServicePresentation(this);
     this.raidArt = new RaidPresentation(this);
     this.endlessArt = new EndlessPresentation(this);
@@ -349,6 +351,7 @@ export class CombatScene extends Phaser.Scene {
       const shade=Number.parseInt(map.shadow.slice(1),16);
       applyArenaGround(this.arenaImage, map.id,view.run.difficulty);
       this.arenaBackdrop.clear();
+      this.arenaBackdrop.fillStyle(0x101e1b,1).fillRect(arenaCamera.x,arenaCamera.y,arenaCamera.width,arenaCamera.height);
       const ground = this.arenaGround;
       ground.clear();
       this.coverImages.forEach((image) => image.destroy());
@@ -484,12 +487,6 @@ export class CombatScene extends Phaser.Scene {
         drawAmbulanceCue(h,f,cue,now,view.bossCues.filter((q):q is import('../shared/ambulance-route.ts').AmbulanceCue=>q.kind==='ambulance-patrol'||q.kind==='ambulance-lane'||q.kind==='ambulance-stop'||q.kind==='ambulance-burst'||q.kind==='driver'));continue;
       }
       if(cue.kind==='arena-lava') {
-        const active=now>=cue.at;
-        h.lineStyle(active?3:2,active?0xffc36a:0xe2cf92,.9).strokeCircle(cue.x,cue.y,cue.radius);
-        if(!active){
-          f.fillStyle(0xffddb0,1).fillTriangle(cue.x,cue.y-17,cue.x-11,cue.y+5,cue.x+11,cue.y+5);
-          f.fillStyle(0x43241c,1).fillRect(cue.x-1.5,cue.y-10,3,8);
-        }
         continue;
       }
       if(cue.kind==='variant-pressure') {
@@ -1079,7 +1076,7 @@ export class CombatScene extends Phaser.Scene {
         data.bosses.find((boss) => boss.id === view.boss.id)!.radius,
       );
     const existing = new Set<string>();
-    const nameScale = Math.max(1, 1600 / Math.max(320, this.scale.displaySize.width)) * this.nameTextScale;
+    const nameScale = Math.max(1, 1600 / Math.max(320, this.scale.displaySize.width)) * this.nameTextScale / arenaCameraZoom;
     for (const actual of view.players) {
       existing.add(actual.id);
       const p = actual.id === this.localId && this.predicted ? this.predicted : actual;

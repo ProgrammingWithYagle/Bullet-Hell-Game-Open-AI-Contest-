@@ -4,7 +4,7 @@ Make the existing game clear and enjoyable for someone playing for the first tim
 
 ## Current implementation
 
-Build **2026.10.29-arena-edge-polish / protocol 43** includes character headshots, separate health/shield bars and resources, stronger waiting-room labels, room codes within menu flow, optional enforced passwords, confirmed chat with retained drafts, filled random-map pictures and full-art Small Wakes floor bounds. The accepted C toggle and scrolling upgrade footer remain. A five-second boss-defeat moment retains the actual position/floor and explains preparation with a countdown. Fifteen bosses have complete falling sequences; fifty-one have final defeat poses.
+Build **2026.10.29-camera-clearance / protocol 43** includes character headshots, separate health/shield bars and resources, stronger waiting-room labels, room codes within menu flow, optional enforced passwords, confirmed chat with retained drafts, filled random-map pictures and full-art Small Wakes floor bounds. The accepted C toggle and scrolling upgrade footer remain. A five-second boss-defeat moment retains the actual position/floor and explains preparation with a countdown. Fifteen bosses have complete falling sequences; fifty-one have final defeat poses.
 
 Hosts wait with their players and start manually. A chosen map remains fixed; the two random options choose once per run or before each encounter. Medic recovery, difficulty penalties and class starting shields follow [the current rules](MEDIC_RECOVERY.md). Online matches continue with menus open; Solo pauses. Current team records are server-scoped and authority-written; shared deployed global rankings remain release work.
 

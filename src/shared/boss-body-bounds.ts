@@ -3,10 +3,11 @@ import {clamp,segmentRect,type Rect} from './geometry.ts';
 import type {Vec} from './protocol.ts';
 const entries=new Map(footprints.entries.map(entry=>[entry.bossId,entry]));
 
-/** Bounds for the ground anchor, including full poses, loading references and drawn lifts. */
+/** Ground-body bounds. The camera provides headroom for upright and airborne art. */
 export function bossMovementBounds(id:string,bounds:Rect,radius:number):Rect {
   const entry=entries.get(id);if(!entry)throw Error('Missing boss body footprint: '+id);
-  const margin=(amount:number)=>Math.max(radius+footprints.padding,Math.ceil(amount)+footprints.padding);
+  const keepPaintedFloor=['candle-snail','cobble-crab','mourning-kettle'].includes(id);
+  const margin=(amount:number)=>keepPaintedFloor?Math.max(radius+footprints.padding,Math.ceil(amount)+footprints.padding):radius+footprints.padding;
   const left=margin(entry.extents.left),right=margin(entry.extents.right),top=margin(entry.extents.top),bottom=margin(entry.extents.bottom);
   if(bounds.width<=left+right||bounds.height<=top+bottom)throw Error('Arena too small for complete boss body: '+id);
   return {x:bounds.x+left,y:bounds.y+top,width:bounds.width-left-right,height:bounds.height-top-bottom};

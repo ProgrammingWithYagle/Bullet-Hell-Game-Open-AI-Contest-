@@ -29,7 +29,7 @@ export class Controls {
   private lastButtons: boolean[] = [];
   private angle = -Math.PI / 2;
   private listeners = new AbortController();
-  constructor(readonly element: HTMLElement) {
+  constructor(readonly element: HTMLElement,private toWorld=(point:{x:number;y:number})=>point) {
     const on = <K extends keyof WindowEventMap>(
       target: EventTarget,
       type: K,
@@ -120,10 +120,10 @@ export class Controls {
   private setPointer(e: PointerEvent) {
     const r = this.element.getBoundingClientRect(),
       scale = Math.min(r.width / 1600, r.height / 1000);
-    this.pointer = {
+    this.pointer = this.toWorld({
       x: (e.clientX - r.left - (r.width - 1600 * scale) / 2) / scale,
       y: (e.clientY - r.top - (r.height - 1000 * scale) / 2) / scale,
-    };
+    });
   }
   clear() {
     this.keys.clear();

@@ -6,6 +6,7 @@ import {RoomChatUI} from './room-chat-ui.ts';
 import {chatDeliveryText} from './chat-delivery-text.ts';
 import {RoomInviteUI,roomInvitePlacement} from './room-invite-ui.ts';
 import {HostMatchUI} from './host-match-ui.ts';
+import {arenaCanvasToWorld} from './arena-camera.ts';
 import {bindPasswordVisibility} from './ui/password-visibility.ts';
 import {waitingRoomMarkup,bindRoomCode} from './ui/waiting-room.ts';
 import {playerVitalsMarkup} from './ui/player-vitals.ts';
@@ -409,7 +410,7 @@ function setupGame(online: boolean,classId:string) {
       `<button data-supply-slot="${i}" data-action="supply${i + 1}" disabled><b>${i + 1}</b><span data-supply-glyph>${icon('ability')}</span><small data-supply-count>—</small><small data-supply-time></small></button>`,
   ).join('');
   $('squad').before(supplyBar);
-  controls = new Controls($('stage'));
+  controls = new Controls($('stage'),arenaCanvasToWorld);
   scene = new CombatScene();
   scene.onLoadProgress = value => {
     if (serial !== launchSerial) return;

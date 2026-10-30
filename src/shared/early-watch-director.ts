@@ -8,6 +8,7 @@ import {
   type Rect,
 } from "./geometry.ts";
 import type { BossCue, SignatureContext } from "./boss-director.ts";
+import {bossHopRoute} from './boss-hop-route.ts';
 
 export const earlyWatchBossIds = [
   "ashen-usher",
@@ -351,12 +352,13 @@ export class EarlyWatchDirector {
           y: from.y + Math.sin(angle) * Math.min(280, distance(from, target)),
         };
         const free = this.open(c, wanted, c.radius);
-        const end = moveBody(
-          from,
-          { x: free.x - from.x, y: free.y - from.y },
-          c.radius,
-          c.bodyObstacles ?? c.obstacles,
-        );
+        const walls=c.bodyObstacles??c.obstacles;
+        const blocked=walls.some(o=>segmentRect(from,free,o,c.radius+1)!==null)
+          || walls.some(o=>segmentRect(from,target,o,c.radius+1)!==null)
+          || distance(from,free)<8 || distance(free,target)>=distance(from,target);
+        const end = blocked
+          ? bossHopRoute(from,target,c.radius,c.bounds??{x:0,y:0,width:1600,height:1000},walls)
+          : moveBody(from,{x:free.x-from.x,y:free.y-from.y},c.radius,walls);
         const at = release + ticks(n * 1.5),
           landAt = at + ticks(0.65);
         this.hops.push({

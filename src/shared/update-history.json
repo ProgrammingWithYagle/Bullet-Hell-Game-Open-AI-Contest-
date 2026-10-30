@@ -1,5 +1,5 @@
 {
-  "buildId": "2026.10.29-arena-edge-polish",
+  "buildId": "2026.10.29-camera-clearance",
   "snapshot": {
     "bosses": 66,
     "classes": 7,
@@ -16,6 +16,34 @@
     "protocol": 43
   },
   "entries": [
+    {
+      "id": "camera-clearance",
+      "date": "2026-10-29",
+      "title": "Keep characters visible and routes open",
+      "groups": [
+        {
+          "title": "See full characters near the edges",
+          "items": [
+            "A fixed camera now leaves space around the floor for tall boss and survivor artwork, with the same framing on every map and through every phase. Cursor aim uses the same camera transform; names keep their screen size. The existing corner control group stays in place.",
+            "Bosses use physical ground clearance so the upper passages remain reachable. The three previously measured Small Wakes bodies retain their established footprint limits. Full pose/reference bounds for all66bosses and172survivor clips are checked against the camera on all36map/difficulty combinations."
+          ]
+        },
+        {
+          "title": "Brass Toad gets around cover",
+          "items": [
+            "When cover blocks the target, Brass Toad takes short clear hops along a connected route and keeps the detour until the target is visible. Every landing still locks before its warning, each hop keeps its existing duration and maximum distance, and the boss never tunnels through cover. Actual encounters reach the upper floor on all36map/difficulty combinations, including Baby Ossuary Works.",
+            "The orange outline and extra marker around lava pits are removed in the fight and map preview. The painted pit and existing activation timing/damage stay."
+          ]
+        },
+        {
+          "title": "Keep review evidence distinct",
+          "items": [
+            "5243feedback accepts the stable Pause/Settings corner, while reporting survivor clipping and restricted Brass Toad access. This follow-up addresses those reports; new human comparison remains open. Ally bots stay on the after-contest ideas list.",
+            "The older source6987362Windows review passes all1899files across original, deep ZIP extraction and an independent Windows copy, plus six native offline/LAN diagnostics. It remains an exact earlier review; these later camera/route changes need a new matching package. No release replacement or deployment is implied."
+          ]
+        }
+      ]
+    },
     {
       "id": "arena-edge-polish",
       "date": "2026-10-29",

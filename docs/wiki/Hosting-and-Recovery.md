@@ -53,3 +53,7 @@ Opening settings, chat or a guide does not pause an online match. Only the curre
 ## Boss edges and stable controls
 
 Bosses now use their complete measured artwork and ground anchors to stay within the floor on all six maps and six difficulties, including Ossuary Works. This includes loading references and the existing defeat poses. Game controls stay together at the corner when the boss header is hidden. [Exact current verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/tree/feat/first-playable-loop/reviews/arena-edge-2026-10-29) distinguishes software checks from rendered/human acceptance. Ally bots remain a post-contest idea.
+
+## Clear edges and open routes
+
+The view leaves space for full bosses and survivors near the map edges, with the same framing between fights and during defeat. Aiming follows the displayed position. Bosses can use the upper passages again; Brass Toad takes clear hops around cover when it cannot see the target. The painted lava pit keeps its normal activation, with the extra circle removed. [Current verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/tree/feat/first-playable-loop/reviews/camera-clearance-2026-10-29) separates software checks from human review.

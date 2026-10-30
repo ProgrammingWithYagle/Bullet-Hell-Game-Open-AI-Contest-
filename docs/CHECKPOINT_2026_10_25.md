@@ -1,4 +1,10 @@
-# Current follow-up: arena edges and stable controls
+# Current follow-up: camera clearance and upper routes
+
+Build **2026.10.29-camera-clearance / protocol43** replaces the broad upright-art floor inset with fixed camera headroom, keeps full bosses/survivors visible, restores upper passages, adds connected Brass Toad detours and removes the orange lava outline. [Current review](../reviews/camera-clearance-2026-10-29) binds the local/source/CI/fresh-preview/Wiki checks separately. The six added regressions cover all66bosses/all172survivor clips on36map/difficulty combinations, the camera/cursor adapter and actual Toad access on36combinations. The full local gate01 passes869/869/0, TypeScript, authored content/fifteen locales/native artwork, production build and71atlas contracts. Eight issued reports remain unchanged. Source CI and new public5245/testing5244 need their separate exact receipts.
+
+5243feedback accepts the corner controls but does not accept complete boss-edge visibility; survivors and Toad cover access prompted this follow-up. The prior6987362Windows ZIP now passes all1899files on three copies and six native fixtures, with sourceCI and Wiki84bb7ad. It is an exact earlier review, preserved separately, not current-camera acceptance. Bots/story remain after-contest ideas; focus the remaining day on current-content reliability and clarity.
+
+## Prior arena-edge checkpoint
 
 Build **2026.10.29-arena-edge-polish / protocol43** extends complete native-art body limits to all66bosses on all36map/difficulty combinations, and groups HUD controls at the corner. [Current scope](../reviews/arena-edge-2026-10-29) preserves the2376-start baseline, implementation and fresh verification. The full local gate04 passes863/863/0, TypeScript, authored content/fifteen locales/native artwork, production build and71atlas contracts. Eight issued reports remain unchanged. Exact source publication/CI, fresh public5243/testing5242 and Wiki/PR closure require their separate receipts. Ally bots remain a post-contest note only. The b108b5f native folder is unsealed after its original offline fixture passed; finish a new matching Windows review after these fixes pass.
 

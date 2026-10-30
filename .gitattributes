@@ -251,3 +251,14 @@ reviews/arena-edge-2026-10-29/*.ps1 text eol=lf
 
 # Preserve the native-alpha input tool hash on every checkout.
 tools/boss-body-art-inputs.mts text eol=lf
+
+# Matching arena-edge Windows review evidence.
+reviews/windows-arena-edge-2026-10-29/**/*.json -text -whitespace
+reviews/windows-arena-edge-2026-10-29/**/*.log -text -whitespace
+reviews/windows-arena-edge-2026-10-29/*.ps1 text eol=lf
+
+# Exact camera clearance and upper-route review evidence.
+reviews/camera-clearance-2026-10-29/**/*.json -text -whitespace
+reviews/camera-clearance-2026-10-29/**/*.log -text -whitespace
+reviews/camera-clearance-2026-10-29/*.mts text eol=lf
+reviews/camera-clearance-2026-10-29/*.ps1 text eol=lf

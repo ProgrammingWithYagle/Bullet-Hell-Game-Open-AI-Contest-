@@ -7,9 +7,10 @@ import {bossBorderObstacles,bossMovementBounds} from '../src/shared/boss-body-bo
 import {moveBody,segmentRect} from '../src/shared/geometry.ts';
 import footprints from '../src/shared/boss-body-bounds.json';
 import type {BossId} from '../src/shared/protocol.ts';
+import {arenaCamera} from '../src/client/arena-camera.ts';
 
 function visible(game:ReturnType<typeof createPracticeGame>) {
-  const e=footprints.entries.find(e=>e.bossId===game.boss.id)!.extents,b=game.arena.bounds,p=game.boss;
+  const e=footprints.entries.find(e=>e.bossId===game.boss.id)!.extents,b=arenaCamera,p=game.boss;
   assert(p.x-e.left>=b.x&&p.y-e.top>=b.y&&p.x+e.right<=b.x+b.width&&p.y+e.bottom<=b.y+b.height,
     JSON.stringify({boss:p.id,map:game.arena.id,difficulty:game.settings.difficulty,point:{x:p.x,y:p.y},e,b}));
 }
@@ -19,11 +20,12 @@ test('all runtime boss art, loading references, ground anchors and lifts match n
   assert.equal(derived.status,0,derived.stdout+derived.stderr);assert.equal(footprints.entries.length,data.bosses.length);
 });
 
-test('all 66 bosses deploy fully on every map/difficulty with physical bodies clear of masonry',()=>{
+test('all 66 bosses deploy fully in view on every map/difficulty with physical bodies clear of masonry',()=>{
   let cases=0;
   for(const boss of data.bosses)for(const arena of data.arenas)for(const difficulty of data.difficulties){
     const g=createPracticeGame({openingBossId:boss.id as BossId,openingArenaId:arena.id,arenaSelection:'fixed',difficulty:difficulty.id,mode:'endless'},'Probe','soldier');g.start();visible(g);
     assert(!g.arena.obstacles.some(o=>segmentRect(g.boss,g.boss,o,boss.radius-1)!==null),boss.id+arena.id+difficulty.id);
+    const floor=g.arena.bounds;assert(g.boss.x-boss.radius>=floor.x&&g.boss.y-boss.radius>=floor.y&&g.boss.x+boss.radius<=floor.x+floor.width&&g.boss.y+boss.radius<=floor.y+floor.height);
     assert.equal(g.arena.id,arena.id);cases++;
   }
   assert.equal(cases,2376);

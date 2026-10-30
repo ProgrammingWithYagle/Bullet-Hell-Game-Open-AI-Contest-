@@ -1,6 +1,6 @@
 # Development progress
 
-Updated 2026-10-29 for **2026.10.29-arena-edge-polish**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
+Updated 2026-10-29 for **2026.10.29-camera-clearance**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
 
 66 playable identities: 65 ordinary and 1 secret. Three ordinary bosses in every one of fifty subtiers requires 150 ordinary identities, plus secrets; 85 additional ordinary bosses remain.
 
@@ -22,6 +22,7 @@ Updated 2026-10-29 for **2026.10.29-arena-edge-polish**. These counts track spec
 
 ## Latest human feedback
 
+- 5243/testing5242: Pause/Settings stay correctly in the corner during defeat. Brass Toad could not reach upper Baby Ossuary Works cover routes, and survivors also clipped near edges; full boss-edge acceptance was not possible. Requested removing the orange lava-pit circle. Camera headroom, physical boss clearance, blocked-target Toad detours and pit-only art are implemented in the current follow-up; rendered/human comparison remains open. One day remains, so prioritize current-content reliability, presentation and matching deliverables; bots/story remain deferred.
 - 5241: password eyes and host Pause/Continue feel not bad; multiple human players are still needed for acceptance. Reported a boss clipped above the top border, probably Ossuary Works on Normal/Hard, and Pause moving toward the top center during defeat. Requested checking every map/difficulty combination. Optional ally bots belong after the contest; the idea is saved only.
 - 5239: moving between Join Room, a room and the main menu feels pretty clear. Requested host-visible room password/code, eye buttons for password entry, explicit host-only Pause/Continue, no pause from menus/chat, continued play when the host leaves, and a separate choice to end for everyone. This is limited positive connection/menu feedback, not whole-game acceptance. Host controls implement the follow-up with protocol43 and private Session-memory credentials; current source and human comparison remain separately recorded.
 - Connection clarity follow-up: source inspection and an actual delayed-HTTP baseline reproduced searches outliving close. Cancel/Esc, session-bound HTTP/retry/worker/SDK socket lifetimes, guarded late callbacks, actionable search/join errors and record-request cleanup are implemented.43focused checks include actual local HTTP/SDK/WebSocket and compiled menu controllers; full source/CI/fresh previews/Wiki evidence belongs in reviews/connection-clarity-2026-10-29. This is software progress, not new human/rendered acceptance.
@@ -67,7 +68,7 @@ Updated 2026-10-29 for **2026.10.29-arena-edge-polish**. These counts track spec
 
 ## Remaining release work
 
-- Continue polishing existing content for first-time players. The current arena-edge follow-up extends measured full-body floor limits to all66bosses across all36map/difficulty combinations and anchors game controls together. Read reviews/arena-edge-2026-10-29 for exact local/source/CI/preview/Wiki evidence. Human/rendered/final balance and coordinated release acceptance remain open. Bring the Windows review forward only after this follow-up is verified; the b108b5f intermediate native folder is unsealed and preserves its passing original offline diagnostic.
+- Continue first-time-player polish during the remaining day. Current camera-clearance follow-up restores upper routes while keeping full boss/survivor art in view, preserves corner controls and removes added lava outlines. Read reviews/camera-clearance-2026-10-29 for exact local/source/CI/preview/Wiki evidence. The fully checked6987362Windows ZIP remains an older native-software review; package the camera follow-up after it is stable. Human/rendered/final balance and coordinated hosted release remain open.
 - Review Alchemist Crazed distillation columns, route warnings, coolant condensation and final reflux in the next matching frozen preview. The shared earned-SP General mobility branch remains deferred during public polish.
 - Review shared phase-attack continuity in the next matching frozen preview; software checks are separate from rendered/human/device/final balance acceptance.
 - Review Bellringer Standard calibration and the new Brutal/Crazed return-chain decision in the next exact-source frozen preview; fixed grade3- remains.

@@ -1,6 +1,23 @@
 # Changelog
 
-Development build **2026.10.29-arena-edge-polish**, protocol 43. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.29-camera-clearance**, protocol 43. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-29 — Keep characters visible and routes open
+
+### See full characters near the edges
+
+- A fixed camera now leaves space around the floor for tall boss and survivor artwork, with the same framing on every map and through every phase. Cursor aim uses the same camera transform; names keep their screen size. The existing corner control group stays in place.
+- Bosses use physical ground clearance so the upper passages remain reachable. The three previously measured Small Wakes bodies retain their established footprint limits. Full pose/reference bounds for all66bosses and172survivor clips are checked against the camera on all36map/difficulty combinations.
+
+### Brass Toad gets around cover
+
+- When cover blocks the target, Brass Toad takes short clear hops along a connected route and keeps the detour until the target is visible. Every landing still locks before its warning, each hop keeps its existing duration and maximum distance, and the boss never tunnels through cover. Actual encounters reach the upper floor on all36map/difficulty combinations, including Baby Ossuary Works.
+- The orange outline and extra marker around lava pits are removed in the fight and map preview. The painted pit and existing activation timing/damage stay.
+
+### Keep review evidence distinct
+
+- 5243feedback accepts the stable Pause/Settings corner, while reporting survivor clipping and restricted Brass Toad access. This follow-up addresses those reports; new human comparison remains open. Ally bots stay on the after-contest ideas list.
+- The older source6987362Windows review passes all1899files across original, deep ZIP extraction and an independent Windows copy, plus six native offline/LAN diagnostics. It remains an exact earlier review; these later camera/route changes need a new matching package. No release replacement or deployment is implied.
 
 ## 2026-10-29 — Keep bosses on the floor and controls in the corner
 
