@@ -40,7 +40,7 @@ The human authorized ongoing verified source, draft PR, Wiki and local-file upda
 
 ## Verified earlier arena-edge package
 
-Source6987362f4169eefadca357841fea8a8c8809b705, build2026.10.29-arena-edge-polish/protocol43 has a separately verified local ZIP, **Grave_Accord_2026.10.29_Arena_Edge_Public_Review.zip**,842941181bytes,SHA256 **611b83af60f391b1dad8abeb2963936ec081d80e3bc850b6846bfe630c2c8cbf**. [Its package receipt](../reviews/windows-arena-edge-2026-10-29/package-status.json) covers all1899files on original, fresh deep extraction and an independent Japanese-path Windows copy, with six actual native diagnostics passing. It predates the camera/survivor/Toad/lava follow-up; human feedback did not accept it as visually final. The ZIP and sidecars remain immutable. Prepare a fresh matching camera package after current source closure.
+Source6987362f4169eefadca357841fea8a8c8809b705, build2026.10.29-arena-edge-polish/protocol43 has a separately verified local ZIP, **Grave_Accord_2026.10.29_Arena_Edge_Public_Review.zip**,842941181bytes,SHA256 **611b83af60f391b1dad8abeb2963936ec081d80e3bc850b6846bfe630c2c8cbf**. [Its package receipt](../reviews/windows-arena-edge-2026-10-29/package-status.json) covers all1899files on original, fresh deep extraction and an independent Japanese-path Windows copy, with six actual native diagnostics passing. It predates the camera/survivor/Toad/lava follow-up; human feedback did not accept it as visually final. The ZIP and sidecars remain immutable. That earlier archive stays preserved; the matching camera-clearance review below is current.
 
 ## Matching camera-clearance review
 

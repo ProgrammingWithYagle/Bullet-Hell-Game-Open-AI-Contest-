@@ -90,7 +90,7 @@ Insane fixes the form selector to Brutal; Hellish fixes Crazed. Lower global dif
 
 ## Class ability transformations
 
-The seven requested class-upgrade implementation passes now add 21 behavior changes at existing utility-path depth-three nodes (six cumulative SP each). Costs, prerequisites, node IDs and the single-capstone rule remain. Both skill views show fifteen-locale help. Shared authority, finite constructs, delayed attacks and moving fields replicate to offline/online clients. [Class behavior and tradeoffs](Classes-and-Skills#purchased-ability-transformations). Current protocol42 retains bounded older local Practice/profile migrations, including protocol40 equipment, economy and map choices; online checkpoints remain strict. Latest Baby/Easy/Normal assistance and Hellish rules remain intact. Human/rendered/device/native-language acceptance remains open.
+The seven requested class-upgrade implementation passes now add 21 behavior changes at existing utility-path depth-three nodes (six cumulative SP each). Costs, prerequisites, node IDs and the single-capstone rule remain. Both skill views show fifteen-locale help. Shared authority, finite constructs, delayed attacks and moving fields replicate to offline/online clients. [Class behavior and tradeoffs](Classes-and-Skills#purchased-ability-transformations). Current protocol 42 retains bounded older local Practice/profile migrations, including protocol 40 equipment, economy and map choices; online checkpoints remain strict. Latest Baby/Easy/Normal assistance and Hellish rules remain intact. Human/rendered/device/native-language acceptance remains open.
 
 ## Three encounter forms
 
@@ -130,7 +130,7 @@ Base starting shield is recalculated each fight from the difficulty-adjusted cap
 
 ## Latest local Windows review
 
-The earlier verified local Windows review includes the map, waiting-room, Medic/shield, player-status, password and confirmed-chat updates. Source **fe82c7e38c8fa73804678b6637815b23aceb0ce5**, build **2026.10.29-chat-confirmation**, protocol42, passes827local source checks. All1899package files match on original, fresh deep extraction and an independent Windows copy, with six actual native offline/LAN diagnostics passing, including a Japanese deep folder. It has not replaced the older published download. [Current package evidence and acceptance limits](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/reviews/windows-current-2026-10-29/package-status.json).
+The earlier verified local Windows review includes the map, waiting-room, Medic/shield, player-status, password and confirmed-chat updates. Source **fe82c7e38c8fa73804678b6637815b23aceb0ce5**, build **2026.10.29-chat-confirmation**, protocol 42, passes 827 local source checks. All 1899package files match on original, fresh deep extraction and an independent Windows copy, with six actual native offline/LAN diagnostics passing, including a Japanese deep folder. It has not replaced the older published download. [Current package evidence and acceptance limits](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/reviews/windows-current-2026-10-29/package-status.json).
 
 ## Connection progress and cancellation
 
@@ -144,10 +144,11 @@ Opening settings, chat or a guide does not pause an online match. Only the curre
 
 **Leave room** keeps remaining teammates playing. **End game for everyone** is a separate host action in Settings and requires confirmation. Everyone sees that the host ended the match; only already-completed encounters count. Protocol43 needs a matching backend, with a bounded local Practice migration from42. [Exact source and review evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/tree/feat/first-playable-loop/reviews/host-controls-2026-10-29).
 
-## Boss edges and stable controls
-
-Bosses now use their complete measured artwork and ground anchors to stay within the floor on all six maps and six difficulties, including Ossuary Works. This includes loading references and the existing defeat poses. Game controls stay together at the corner when the boss header is hidden. [Exact current verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/tree/feat/first-playable-loop/reviews/arena-edge-2026-10-29) distinguishes software checks from rendered/human acceptance. Ally bots remain a post-contest idea.
 
 ## Clear edges and open routes
 
 The view leaves space for full bosses and survivors near the map edges, with the same framing between fights and during defeat. Aiming follows the displayed position. Bosses can use the upper passages again; Brass Toad takes clear hops around cover when it cannot see the target. The painted lava pit keeps its normal activation, with the extra circle removed. [Current verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/tree/feat/first-playable-loop/reviews/camera-clearance-2026-10-29) separates software checks from human review.
+
+## Current local Windows review
+
+The matching camera-clearance review is source 6f397a5, protocol 43. All 1,899 files match across original, fresh ZIP extraction and an independent Japanese-path Windows copy, with six actual native offline/LAN diagnostics. [Exact package and delivery evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/tree/feat/first-playable-loop/reviews/windows-camera-clearance-2026-10-29) identifies this local review; the published Windows download remains the older October24 version. Human/rendered/device/listening/native-language and physical second-machine LAN acceptance remain separate.
