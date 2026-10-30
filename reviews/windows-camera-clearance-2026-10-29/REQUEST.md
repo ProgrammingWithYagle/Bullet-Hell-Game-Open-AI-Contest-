@@ -1,0 +1,3 @@
+# Matching camera-clearance Windows review
+
+New public build **2026.10.29-camera-clearance / protocol43**, exact clean source **6f397a5173c69d1b710d7c02d8772f3a5f5e19b7**, bound to the passing869-test gate01. Includes camera headroom/cursor mapping for full boss/survivor visibility, usable upper passages, connected Toad hops, pit-only lava presentation and accepted corner controls. The six native/extraction/copy checks must finish before software-portable acceptance. Preserve all older ZIPs/sidecars/reports. No main merge, deployment, hosted-release replacement or contest submission. Human/rendered/device/listening/native-language/physical second-machine LAN/WAN acceptance remains separate.

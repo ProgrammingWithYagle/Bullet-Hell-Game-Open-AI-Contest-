@@ -1,6 +1,6 @@
 # Windows portable development app
 
-The current source build is **2026.10.29-camera-clearance / protocol43**. It includes connection cleanup, host password visibility and explicit Pause/Continue, plus complete boss floor bounds and stable corner controls. [The current source review](../reviews/arena-edge-2026-10-29) records its exact verification. A matching Windows ZIP needs its own completed native/extraction/copy evidence before it is described as ready.
+The current source build is **2026.10.29-camera-clearance / protocol43**. It includes connection cleanup, host password visibility and explicit Pause/Continue, plus complete boss floor bounds and stable corner controls. [The current source review](../reviews/arena-edge-2026-10-29) records its exact verification. The matching local Windows ZIP now passes its original/extraction/copy byte checks and six native diagnostics; see the exact current review below.
 
 The [published Windows download](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/releases/tag/dev-windows-20261024-1) remains the immutable October24 protocol13 build. Source, Wiki and local package work do not replace it. Its741136155-byte archive has SHA256 **b2a87f08f002e35a23558ab9b4bcca3e997309fd5a567c7e014498a54fe7ae3c**, source52552c0d4465b918d7cde2ab3c2aa7f1d7eb045e. [Exact public-byte evidence](../reviews/windows-prerelease-public-download.json) remains separate.
 
@@ -41,3 +41,7 @@ The human authorized ongoing verified source, draft PR, Wiki and local-file upda
 ## Verified earlier arena-edge package
 
 Source6987362f4169eefadca357841fea8a8c8809b705, build2026.10.29-arena-edge-polish/protocol43 has a separately verified local ZIP, **Grave_Accord_2026.10.29_Arena_Edge_Public_Review.zip**,842941181bytes,SHA256 **611b83af60f391b1dad8abeb2963936ec081d80e3bc850b6846bfe630c2c8cbf**. [Its package receipt](../reviews/windows-arena-edge-2026-10-29/package-status.json) covers all1899files on original, fresh deep extraction and an independent Japanese-path Windows copy, with six actual native diagnostics passing. It predates the camera/survivor/Toad/lava follow-up; human feedback did not accept it as visually final. The ZIP and sidecars remain immutable. Prepare a fresh matching camera package after current source closure.
+
+## Matching camera-clearance review
+
+**Grave_Accord_2026.10.29_Camera_Clearance_Public_Review.zip**, source6f397a5173c69d1b710d7c02d8772f3a5f5e19b7,842941714bytes,SHA256 **d00c2db1ee7859aea9aa49fe362d7325f39f4692fc53864f3a76cbd5b0c23f04**. [Exact current package status](../reviews/windows-camera-clearance-2026-10-29/package-status.json) and [delivery guide](../reviews/windows-camera-clearance-2026-10-29/DELIVERY.md) verify all1899files across original, fresh ZIP extraction and an independent Japanese-path Windows copy, six actual native diagnostics and post-native rehashes. This is the matching camera/survivor/Toad/lava build. Human comparison is pending in testing5244; current public5245has the same fixes. The older archives and published download remain unchanged.

@@ -1,0 +1,15 @@
+# Camera clearance — verified source checkpoint
+
+Source **6f397a5173c69d1b710d7c02d8772f3a5f5e19b7**, build **2026.10.29-camera-clearance / protocol43**, passes **869/869/0** locally and in both exact-source CI jobs. [Complete checkpoint](checkpoint-status.json), [current local gate](gate-01/runtime-verification.json), [complete CI logs](source-ci.json) and [implementation/failures](IMPLEMENTATION.md) distinguish the evidence and review limits.
+
+Use testing **http://127.0.0.1:5244/** / backend2618 / holding42770 for direct Hellish, lava and selected-boss checks. The human requested testing links because public progression makes those checks slow. Public **http://127.0.0.1:5245/** / backend2619 / holding70298 has the same presentation. Both pass33served hashes and actual protected room/code/host-only Start, confirmed chat, pause/resume/transfer/end and server-record checks. Own probe rooms closed; no synthetic qualifying score. Current and previous5242/5243roots/owners verify unchanged.
+
+The fixed camera provides headroom for all66bosses and172survivor clips across36map/difficulty combinations. Actual pointer events share its transform. Physical boss clearance restores upper passages, and a connected Toad route keeps its detour until the target is visible. Actual Toad encounters reach upper floors on36combinations, including Baby Ossuary Works. The extra lava outline/marker is removed; the pit art and activation/damage remain. Accepted corner controls remain.
+
+Focused01passes21checks. The added actual Baby/Ossuary Toad progression test exposed a detour reversal; two failed reports and a full cast trace remain. Focused03passes six camera/route/input checks. The complete gate01passes869/869/0, production build and71atlas contracts, preserving eight issued reports. Native alpha/source tools and exact prior version evidence are retained. No browser/rendered observation is claimed.
+
+Wiki **57030abda3632dad094ed582d394f409cccfba4c** matches all18canonical pages and34images plus public responses/hashes. The old issued Wiki receipt is unchanged. The draft PR body matches local configuration and main remains unchanged.
+
+The matching [Windows review](../windows-camera-clearance-2026-10-29/package-status.json) passes all1899files on original, fresh deep extraction and an independent Japanese-path Windows copy after six actual native offline/LAN diagnostics. ZIP842941714bytes,SHA256 **d00c2db1ee7859aea9aa49fe362d7325f39f4692fc53864f3a76cbd5b0c23f04**, source6f397a5. It remains an unsigned local software review; the published older download is unchanged.
+
+Human5243feedback accepts the stable Pause/Settings corner but prompted survivor-edge, Toad and lava changes; testing5244human comparison is pending. The broad current-content polish work continues. Human multiplayer/balance, rendered/device/listening/native-language, complete action art, physical second-machine LAN, WAN/endurance/capacity and shared hosted rankings/recovery acceptance remain open. Browser automation stays disabled. No main merge, game deployment, hosted release replacement or contest submission.
