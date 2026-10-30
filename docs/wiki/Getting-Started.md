@@ -152,3 +152,7 @@ The view leaves space for full bosses and survivors near the map edges, with the
 ## Current local Windows review
 
 The matching camera-clearance review is source 6f397a5, protocol 43. All 1,899 files match across original, fresh ZIP extraction and an independent Japanese-path Windows copy, with six actual native offline/LAN diagnostics. [Exact package and delivery evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/tree/feat/first-playable-loop/reviews/windows-camera-clearance-2026-10-29) identifies this local review; the published Windows download remains the older October24 version. Human/rendered/device/listening/native-language and physical second-machine LAN acceptance remain separate.
+
+## Browse the artwork
+
+Use the left and right arrows on the home screen to switch between the main cover, the seven survivors and six map paintings. The small page buttons jump to an image. Keyboard arrows, Home and End work while the gallery has focus. Pictures switch only when you choose, and returning from setup remembers your image for that menu session. The same gallery appears in public and testing builds.

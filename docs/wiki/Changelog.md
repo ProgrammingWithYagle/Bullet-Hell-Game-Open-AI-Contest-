@@ -1,6 +1,18 @@
 # Changelog
 
-Development build **2026.10.29-camera-clearance**, protocol 43. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.29-home-gallery**, protocol 43. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-29 — Browse the home-screen artwork
+
+### Three pictures, simple controls
+
+- Use the left and right arrows on the home screen to see the full cover, meet the seven survivors, or view the six map paintings. Page buttons jump directly to an image. The gallery changes only when you choose; it does not rotate automatically.
+- Keyboard arrows, Home and End work while the gallery has focus. Arrow direction follows right-to-left languages, button names and image counts are translated in all fifteen languages, and changing pictures keeps focus and setup choices. Returning from setup remembers the selected image for that menu session. Existing cover artwork stays fully visible.
+
+### Keep first-time play straightforward
+
+- The main cover loads first; other existing artwork uses lazy loading. Gallery controls are removed when their menu closes, so an old page cannot change the new one. Public and testing have the same presentation. These are actual existing game illustrations, not claimed gameplay screenshots.
+- Testing5244feedback says the lava looks better and characters did not get stuck near the top in that trial. This is limited positive human feedback for camera clearance, separate from complete map/device/multiplayer acceptance. The human requested testing links for direct difficulty/boss checks. Bots/story and new gameplay content remain deferred.
 
 ## 2026-10-29 — Keep characters visible and routes open
 

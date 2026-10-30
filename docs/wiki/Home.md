@@ -4,7 +4,7 @@
 
 Dodge attacks, defeat bosses and spend your rewards between fights. Play Solo or team up with friends in this cooperative zombie bullet-hell game.
 
-**Current development build: 2026.10.29-camera-clearance.** The game is still in development. The public demo and published Windows download below are older versions.
+**Current development build: 2026.10.29-home-gallery.** The game is still in development. The public demo and published Windows download below are older versions.
 
 ## New here?
 
@@ -47,7 +47,7 @@ Newer local Windows review packages have separate source, extraction/copy and na
 <details>
 <summary>Development and verification</summary>
 
-Current source is version 0.3.0, protocol 43 on [draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14). The [current publication and verification evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/tree/feat/first-playable-loop/reviews/camera-clearance-2026-10-29) records source CI and Wiki synchronization. Current camera and route source passes 869 local software checks. The matching 6f397a5 Windows review passes all 1,899 files and six native offline/LAN diagnostics across three copies; its local package evidence is linked from Getting Started. Rendered/human acceptance remains separate. [Development Progress](Development-Progress) tracks remaining work; [Changelog](Changelog) records each update. [Architecture](Architecture), [Hosting and Recovery](Hosting-and-Recovery), [Contributing](Contributing) and [Credits](Credits) provide the technical and project references.
+Current source is version 0.3.0, protocol 43 on [draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14). The [current publication and verification evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/tree/feat/first-playable-loop/reviews/home-gallery-2026-10-29) records source CI and Wiki synchronization. Current home-gallery source passes 873 local software checks. The matching 6f397a5 Windows review passes all 1,899 files and six native offline/LAN diagnostics across three copies; its local package evidence is linked from Getting Started. Rendered/human acceptance remains separate. [Development Progress](Development-Progress) tracks remaining work; [Changelog](Changelog) records each update. [Architecture](Architecture), [Hosting and Recovery](Hosting-and-Recovery), [Contributing](Contributing) and [Credits](Credits) provide the technical and project references.
 
 The latest [continuation checkpoint](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/CHECKPOINT_2026_10_25.md) distinguishes current source, frozen previews, CI, Wiki and the current local Windows review package. Protected main and external deployment remain separate boundaries.
 
@@ -69,3 +69,7 @@ Opening settings, chat or a guide does not pause an online match. Only the curre
 ## Clear edges and open routes
 
 The view leaves space for full bosses and survivors near the map edges, with the same framing between fights and during defeat. Aiming follows the displayed position. Bosses can use the upper passages again; Brass Toad takes clear hops around cover when it cannot see the target. The painted lava pit keeps its normal activation, with the extra circle removed. [Current verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/tree/feat/first-playable-loop/reviews/camera-clearance-2026-10-29) separates software checks from human review.
+
+## Browse the artwork
+
+Use the left and right arrows on the home screen to switch between the main cover, the seven survivors and six map paintings. The small page buttons jump to an image. Keyboard arrows, Home and End work while the gallery has focus. Pictures switch only when you choose, and returning from setup remembers your image for that menu session. The same gallery appears in public and testing builds.

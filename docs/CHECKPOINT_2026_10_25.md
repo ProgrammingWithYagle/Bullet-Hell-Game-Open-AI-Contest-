@@ -1,4 +1,10 @@
-# Current checkpoint: camera clearance and upper routes
+# Current follow-up: manual home artwork gallery
+
+Build **2026.10.29-home-gallery / protocol43** adds the requested three-image home gallery: existing full cover, seven-survivor illustration and six map paintings. Manual arrows/page buttons, translated keyboard/RTL navigation, focus/cleanup and remembered menu state are implemented. [Current review](../reviews/home-gallery-2026-10-29) binds focused/full source checks, then exact CI/fresh previews/Wiki separately. Planned testing5246/backend2620 and public5247/backend2621 preserve all older roots/services.
+
+Human testing5244feedback accepts improved lava and reports no top-edge sticking in their trial; it is limited positive evidence, not full map/device/multiplayer acceptance. They asked for gallery arrows and prefer testing links. The earlier6f397a5camera Windows ZIP remains the matching earlier native-software review; package the gallery once stable. Runtime source CI6f397a5and metadata4982139both pass; guide Wiki ea683fe is preserved.
+
+## Previous verified camera checkpoint
 
 Latest guide-only Wiki refresh **ea683fe3668cf7cf7ec899957093cf0c80841065** matches all18pages/34images from source **0a0366497ab87a93a757b692faf17ae2330f9331**. [Guide-sync evidence](../reviews/camera-clearance-2026-10-29/guide-sync/wiki-publication.json) supersedes the initial57030abpublication identity below; runtime/test bytes remain exact6f397a5.
 

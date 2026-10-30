@@ -1,3 +1,4 @@
+import {menuEnvironment} from './helpers/menu-fixture.ts';
 import test from "node:test";
 import assert from "node:assert/strict";
 import { build } from "esbuild";
@@ -175,112 +176,8 @@ test(`compiled ${testing ? 'testing' : 'public'} setup shares the clear first-ru
     rmdirSync(directory);
   });
   const ui = await import(pathToFileURL(bundlePath).href);
-  // A deliberately small DOM fixture exercises handlers and generated markup, not layout or browser rendering.
-  class Element {
-    nodes: Element[] = [];
-    html = "";
-    value = "";
-    dataset: Record<string, string> = {};
-    onclick?: () => void;
-    oninput?: () => void;
-    focused = false;
-    textContent = "";
-    get id() { return this.attrs.id ?? ""; }
-    set id(value: string) { this.attrs.id = value; }
-    get className() { return this.attrs.class ?? ""; }
-    set className(value: string) { this.attrs.class = value; }
-    constructor(
-      public tag = "main",
-      public attrs: Record<string, string> = {},
-    ) {
-      this.value = attrs.value ?? "";
-      for (const [key, value] of Object.entries(attrs))
-        if (key.startsWith("data-"))
-          this.dataset[
-            key.slice(5).replace(/-([a-z])/g, (_, c: string) => c.toUpperCase())
-          ] = value;
-    }
-    set innerHTML(html: string) {
-      this.html = html;
-      this.nodes = [...html.matchAll(/<([a-z][\w-]*)\b([^>]*)>/gi)].map(
-        (match) => {
-          const attrs = Object.fromEntries(
-            [...match[2].matchAll(/([\w-]+)="([^"]*)"/g)].map((a) => [
-              a[1],
-              a[2],
-            ]),
-          );
-          return new Element(match[1], attrs);
-        },
-      );
-    }
-    get innerHTML() {
-      return this.html;
-    }
-    matches(selector: string) {
-      if (selector.startsWith("#")) return this.attrs.id === selector.slice(1);
-      if (selector.startsWith(".")) return this.className.split(/\s+/).includes(selector.slice(1));
-      if (selector.startsWith("[")) {
-        const match = selector.match(/^\[([^=\]]+)(?:="([^"]*)")?\]$/)!;
-        return (
-          Object.hasOwn(this.attrs, match[1]) &&
-          (match[2] === undefined || this.attrs[match[1]] === match[2])
-        );
-      }
-      return this.tag === selector;
-    }
-    querySelectorAll(selector: string): Element[] {
-      return this.nodes
-        .flatMap((n) => [n, ...n.querySelectorAll("*")])
-        .filter((n) => selector === "*" || n.matches(selector));
-    }
-    querySelector(selector: string): Element | undefined {
-      if (selector === "#setup-content h1")
-        return this.querySelector("#setup-content")?.querySelector("h1");
-      return this.querySelectorAll(selector)[0];
-    }
-    focus() {
-      this.focused = true;
-    }
-    click() {
-      this.onclick?.();
-    }
-    append(...nodes: Element[]) { this.nodes.push(...nodes); }
-    prepend(...nodes: Element[]) { this.nodes.unshift(...nodes); }
-  }
-  const previousStorage = Object.getOwnPropertyDescriptor(
-    globalThis,
-    "localStorage",
-  );
-  const previousWindow = Object.getOwnPropertyDescriptor(globalThis, "window");
-  const previousDocument = Object.getOwnPropertyDescriptor(globalThis, "document");
-  const saved = new Map<string, string>();
-  Object.defineProperty(globalThis, "localStorage", {
-    configurable: true,
-    value: {
-      getItem: (key: string) => saved.get(key) ?? null,
-      setItem: (key: string, value: string) => saved.set(key, value),
-      removeItem: (key: string) => saved.delete(key),
-    },
-  });
-  Object.defineProperty(globalThis, "window", {
-    configurable: true,
-    value: { scrollTo() {} },
-  });
-  Object.defineProperty(globalThis, "document", {
-    configurable: true,
-    value: { createElement: (tag: string) => new Element(tag) },
-  });
-  t.after(() => {
-    for (const [key, descriptor] of [
-      ["localStorage", previousStorage],
-      ["window", previousWindow],
-      ["document", previousDocument],
-    ] as const)
-      if (descriptor) Object.defineProperty(globalThis, key, descriptor);
-      else Reflect.deleteProperty(globalThis, key);
-  });
-  const host = new Element();
+  // Shared native DOM controller fixture; no browser or layout engine.
+  const env=menuEnvironment(t),host=env.host,saved=env.saved;
   const launches: unknown[][] = [];
   ui.mountSetup(host, {
     resume() {},
@@ -309,10 +206,10 @@ test(`compiled ${testing ? 'testing' : 'public'} setup shares the clear first-ru
   assert(!content().innerHTML.includes("testing-coins"));
   const name = host.querySelector("#name")!;
   name.value = "New survivor";
-  name.oninput!();
+  name.dispatch('input');
   host.querySelector("#setup-back")!.click();
   host.querySelector('[data-difficulty="easy"]')!.click();
-  assert(host.querySelector('[data-difficulty="easy"]')!.focused);
+  assert.equal(env.document.activeElement,host.querySelector('[data-difficulty="easy"]'));
   host.querySelector("#setup-next")!.click();
   assert.equal(host.querySelector("#name")!.value, "New survivor");
   host.querySelector("#launch")!.click();

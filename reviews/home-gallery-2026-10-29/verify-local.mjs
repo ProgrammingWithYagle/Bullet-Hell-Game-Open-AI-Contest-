@@ -1,0 +1,15 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+import {verifyDesktopSource} from '../../tools/desktop-source.mjs';
+import {additionalSourceBinding} from './review-inputs.mjs';
+const root='reviews/home-gallery-2026-10-29',sha=bytes=>createHash('sha256').update(bytes).digest('hex');
+const gate=JSON.parse(fs.readFileSync(root+'/gate-04/runtime-verification.json'));
+const fingerprints=verifyDesktopSource(process.cwd(),gate);
+const preservation=JSON.parse(fs.readFileSync(root+'/gate-04/gate-preservation.json'));
+assert(preservation.passed);assert.equal(preservation.receipts.length,8);
+for(const item of preservation.receipts)assert.equal(sha(fs.readFileSync(item.file)),item.issuedSha256);
+const binding=additionalSourceBinding();assert.equal(binding.sha256,preservation.additionalSourceBinding.sha256);
+const log=fs.readFileSync(root+'/full-gate-04.log','utf8');for(const term of ['tests 873','pass 873','fail 0','Verification passed; evidence:'])assert(log.includes(term),term);
+fs.writeFileSync(root+'/local-verification.json',JSON.stringify({createdAt:new Date().toISOString(),passed:true,buildId:'2026.10.29-home-gallery',protocol:43,tests:873,pass:873,fail:0,fingerprints,additionalSourceBinding:{sha256:binding.sha256,files:binding.files,bytes:binding.bytes},gateReportSha256:sha(fs.readFileSync(root+'/gate-04/runtime-verification.json')),issuedReportsPreserved:8,limits:['Final local software gate; current source CI and fresh audience previews/Wiki need separate post-commit evidence.','No browser/rendered/human/device/listening/native-language/WAN acceptance.']},null,2)+'\n',{flag:'wx'});
+console.log(JSON.stringify({passed:true,tests:873,fingerprints,additionalSourceBinding:{sha256:binding.sha256,files:binding.files,bytes:binding.bytes}}));

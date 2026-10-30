@@ -54,6 +54,7 @@ import './ui/runtime-extras.css';
 import './ui/boss-defeat.css';
 import './ui/waiting-room.css';
 import './ui/interface-clarity.css';
+import './ui/home-gallery.css';
 import { CombatScene } from './scene.ts';
 import { Session, type ConnectionOptions,type RoomJoin,type RoomJoinRetry } from './session.ts';
 import {untilAborted} from './request-lifetime.ts';

@@ -17,7 +17,7 @@ export function menuEnvironment(t: TestContext) {
 }
 const common: Record<string,string> = {
  'i18n.ts': "export const locale='en',languages=[['en','English']];export const number=String,t=key=>key,initialLanguage=()=> 'en',setLanguage=async()=>{};",
- 'assets.ts': "export const assets={cover:'/cover.png',portraits:Object.fromEntries(['soldier','medic','heavy','tank','mage','engineer','assassin'].map(id=>[id,'/portrait-'+id+'.png'])),medic:'/medic.png',lineup:'/lineup.png',arenaWorlds:{},arenaCovers:{},arenaGrounds:{}};",
+ 'assets.ts': "export const assets={cover:'/cover.png',portraits:Object.fromEntries(['soldier','medic','heavy','tank','mage','engineer','assassin'].map(id=>[id,'/portrait-'+id+'.png'])),medic:'/medic.png',lineup:'/lineup.png',arenaWorlds:{},arenaCovers:{},arenaGrounds:Object.fromEntries(['gatehouse','triage-yard','ossuary-works','sunken-chapel','bell-foundry','crown-crypt'].map(id=>[id,'/map-'+id+'.png']))};",
 };
 export async function menuBundle(t:TestContext,entry:string,extra:Record<string,string>={},exports='') {
  const stubs={...common,...extra};
