@@ -31,3 +31,5 @@ A loading notice explains a pending language choice. The latest selection takes 
 A failed download leaves the current language selected and shows a retry notice. If a saved language cannot load when the app starts, the English menu remains usable. Saving preferences can fail separately: the translated menu stays consistent and the notice explains that saving failed. The notices are authored in all fifteen languages; human language and layout review remain ongoing.
 
 Choosing a cosmetic while a language is loading keeps that language request active.
+
+Cosmetic choices update appearance only. Importing a profile applies its preferences, so an appearance change cannot restore an older saved language after a startup download failed.

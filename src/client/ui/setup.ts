@@ -42,7 +42,7 @@ type Hooks = {
     visibility?: 'public' | 'private',
     createPassword?:string,
   ) => void;
-  profileChanged: () => Promise<void>;
+  profileChanged: (applyPreferences?: boolean) => Promise<void>;
   settingsHTML: () => string;
   bindSettings: () => void;
 };
@@ -177,9 +177,9 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
       cleanups.push(mountProfile(
         content,
         () => go('home'),
-        async () => {
+        async (applyPreferences) => {
           const previousLocale = locale;
-          await hooks.profileChanged();
+          await hooks.profileChanged(applyPreferences);
           if (disposed || page !== 'profile' || !content.isConnected) return;
           if (locale === previousLocale) return;
           render();

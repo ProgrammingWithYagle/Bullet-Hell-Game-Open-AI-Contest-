@@ -198,13 +198,15 @@ async function menu(initialRecords?: TeamBoardSelection,retryJoin?:RoomJoinRetry
     launch: (online, opts, join, visibility,password) => {
       void begin(online, join, visibility, opts,false,password);
     },
-    profileChanged: async () => {
+    profileChanged: async (applyPreferences = true) => {
       const p = loadProfile(localStorage);
-      Object.assign(settings, p.settings);
-      inputOptions = p.controls;
       selectedCosmetic = p.selectedCosmetic;
-      try { if (p.locale !== locale) await setLanguage(p.locale); }
-      catch { throw Error('ui.errorLanguage'); }
+      if (applyPreferences) {
+        Object.assign(settings, p.settings);
+        inputOptions = p.controls;
+        try { await setLanguage(p.locale); }
+        catch { throw Error('ui.errorLanguage'); }
+      }
       applySettings();
     },
     settingsHTML: settingsMarkup,

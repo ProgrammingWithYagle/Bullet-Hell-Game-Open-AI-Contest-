@@ -168,3 +168,5 @@ Profile shows when it is applying a change. You can use Back or export your exis
 For language selection, the latest choice wins. Leaving its page cancels a pending choice, and failed downloads leave the current language available to retry. Typed fields and keyboard position survive a completed change. If the saved language cannot load at startup, the English menu stays usable with an explanation.
 
 Changing a profile cosmetic keeps a language choice that is still loading; it does not reset that choice to the profile’s current language.
+
+Cosmetic choices update appearance only. Importing a profile applies its preferences, so an appearance change cannot restore an older saved language after a startup download failed.

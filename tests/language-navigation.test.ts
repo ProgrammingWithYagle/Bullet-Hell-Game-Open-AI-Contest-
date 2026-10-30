@@ -7,7 +7,7 @@ import {join,dirname} from 'node:path';
 import {pathToFileURL} from 'node:url';
 import english from '../locales/en.json';
 import {menuEnvironment,menuBundle} from './helpers/menu-fixture.ts';
-import {PROFILE_KEY} from '../src/client/profile.ts';
+import {PROFILE_KEY,freshProfile} from '../src/client/profile.ts';
 function deferred<T>(){let resolve!:(value:T)=>void,reject!:(error:Error)=>void;const promise=new Promise<T>((yes,no)=>{resolve=yes;reject=no;});return {promise,resolve,reject};}
 const catalog=(id:string)=>({...english,meta:{...english.meta,locale:id,direction:id==='ar'?'rtl':'ltr'},messages:{...english.messages,'ui.profile':'profile-'+id}});
 async function languages(t:TestContext,loaders:Record<string,()=>Promise<unknown>>){
@@ -74,16 +74,18 @@ test('a working language change reports a storage error without reverting to an 
   const select=env.host.querySelector('#language')!;select.value='fr';await select.onchange!({target:select});assert.equal(env.host.querySelector('#language')!.value,'fr');assert.equal(env.host.querySelector('#notice')!.textContent,'ui.errorSave');assert(env.host.querySelector('#new-run'));
 });
 
-test('a cosmetic profile refresh keeps an unrelated pending language choice active',async t=>{
-  const french=deferred<unknown>(),env=await languages(t,{fr:()=>french.promise});(globalThis as any).__profileLanguageCore=env.ui;
-  t.after(()=>{for(const key of ['__profileLanguageCore','__profileMenuHooks','__requestProfileLanguage'])Reflect.deleteProperty(globalThis,key);});
+for(const storedLocale of ['en','fr'])
+test(`a cosmetic profile refresh keeps the pending language choice after startup from ${storedLocale}`,async t=>{
+  const german=deferred<unknown>();let frenchLoads=0;
+  const env=await languages(t,{fr:async()=>{if(storedLocale==='fr'&&++frenchLoads===1)throw Error('saved catalog unavailable');return catalog('fr');},de:()=>german.promise});
+  const saved=freshProfile();saved.locale=storedLocale;env.saved.set(PROFILE_KEY,JSON.stringify(saved));(globalThis as any).__profileLanguageCore=env.ui;t.after(()=>Reflect.deleteProperty(globalThis,'__profileLanguageCore'));
   const ui=await menuBundle(t,'src/client/main.ts',{
-    'setup.ts':"export const setupOptions=()=>({name:'Mara',classId:'soldier',mode:'short',difficulty:'baby'});export function mountSetup(host,hooks){globalThis.__profileMenuHooks=hooks;host.innerHTML='<p id=\"notice\"></p>';return ()=>{};}",
     'scene.ts':"export class CombatScene {}",
     phaser:"export default {AUTO:0,Scale:{FIT:0,CENTER_BOTH:0}};",
     'audio.ts':"export class AudioBus {setVolume(){}stop(){}}",
-    'i18n.ts':"export let locale='en';export const languages=[['en','English'],['fr','Français']],number=(...args)=>globalThis.__profileLanguageCore.number(...args),t=(...args)=>globalThis.__profileLanguageCore.t(...args),initialLanguage=()=> 'en';export async function setLanguage(...args){const result=await globalThis.__profileLanguageCore.setLanguage(...args);locale=globalThis.__profileLanguageCore.locale;return result;}globalThis.__requestProfileLanguage=setLanguage;",
+    'i18n.ts':"export let locale='en';export const languages=globalThis.__profileLanguageCore.languages,number=(...args)=>globalThis.__profileLanguageCore.number(...args),t=(...args)=>globalThis.__profileLanguageCore.t(...args),initialLanguage=()=>globalThis.__profileLanguageCore.initialLanguage();export async function setLanguage(...args){const result=await globalThis.__profileLanguageCore.setLanguage(...args);locale=globalThis.__profileLanguageCore.locale;return result;}",
   },'export {leave};');env.cleanup.push(()=>ui.leave());
-  const pending=(globalThis as any).__requestProfileLanguage('fr');await (globalThis as any).__profileMenuHooks.profileChanged();french.resolve(catalog('fr'));await pending;
-  assert.equal(env.ui.locale,'fr');assert.equal(env.saved.get('ga-language'),'fr');assert.equal(env.ui.t('ui.profile'),'profile-fr');
+  env.host.querySelector('#profile')!.click();const select=env.host.querySelector('#language')!;select.value='de';const pending=select.onchange!({target:select}) as Promise<void>;
+  env.host.querySelector('[data-cosmetic="field-mark"]')!.click();await new Promise<void>(resolve=>setImmediate(resolve));german.resolve(catalog('de'));await pending;
+  assert.equal(env.ui.locale,'de');assert.equal(env.saved.get('ga-language'),'de');assert.equal(JSON.parse(env.saved.get(PROFILE_KEY)!).locale,'de');assert.equal(env.host.querySelector('#language')!.value,'de');
 });

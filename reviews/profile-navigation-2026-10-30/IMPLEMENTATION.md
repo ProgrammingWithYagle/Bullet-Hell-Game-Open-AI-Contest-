@@ -9,3 +9,7 @@ Twelve baseline regressions fail. Initial diagnostic attempts tried to format en
 ## Cross-component language priority
 
 Source9b2ec99passes895checks, both remote jobs and its original packaged smoke/LAN diagnostics, but a later integration case shows that the main cosmetic refresh redundantly selects the current language and cancels a different pending user choice. The actual catalog and main hook reproduce en replacing fr. Skipping that redundant request fixes the interaction; focused03passes20/20. The first frozen testing root and original native folder remain unsealed intermediates and were never launched/shared as the final preview. Gate02and fresh source/attempt02receipts are final. Existing gate01/local/CI/Wiki receipts are preserved.
+
+## Preference intent after startup fallback
+
+The first locale-equality fix passes896checks but a stronger real-main/setup/Profile/catalog case still fails after the saved French download fails at startup. Clicking a cosmetic reloads that saved French preference and cancels the newer German selection. The final callback carries explicit appearance-only or imported-preference intent: cosmetics update only the selected cosmetic, while imports apply settings, controls and locale. Both normal English and actual failed-French-startup paths pass with the real header selector and Profile button. Focused04passes21/21; gate03and attempt03previews bind897checks. Both previous gates, reproductions, native intermediate and Wiki receipt remain preserved.

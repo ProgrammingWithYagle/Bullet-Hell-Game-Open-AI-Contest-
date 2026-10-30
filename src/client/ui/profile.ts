@@ -28,7 +28,7 @@ const hasBackup = () => {
     return false;
   }
 };
-export function mountProfile(host: HTMLElement, back: () => void, changed: () => Promise<void | HTMLElement>) {
+export function mountProfile(host: HTMLElement, back: () => void, changed: (applyPreferences: boolean) => Promise<void | HTMLElement>) {
   let disposed = false, pending = false;
   const blocked = new Map<HTMLButtonElement | HTMLInputElement, boolean>();
   const alive = () => !disposed && host.isConnected;
@@ -56,9 +56,9 @@ export function mountProfile(host: HTMLElement, back: () => void, changed: () =>
     pending = true; busy(); show(t('ui.applyingProfile')); return true;
   };
   const finish = () => { pending = false; busy(); };
-  const refresh = async (message = '', focusSelector = '') => {
+  const refresh = async (message = '', focusSelector = '', applyPreferences = false) => {
     try {
-      const replacement = await changed();
+      const replacement = await changed(applyPreferences);
       if (replacement?.isConnected) {
         const status = replacement.querySelector<HTMLElement>('[data-profile-status]');
         if (status) status.textContent = message;
@@ -79,7 +79,7 @@ export function mountProfile(host: HTMLElement, back: () => void, changed: () =>
     if (!alive()) return;
     try { saveProfile(localStorage, next); }
     catch { show(t('ui.errorSave')); return; }
-    await refresh(p('imported'), '[data-import-profile]');
+    await refresh(p('imported'), '[data-import-profile]', true);
   };
   function render() {
     if (!alive()) return;

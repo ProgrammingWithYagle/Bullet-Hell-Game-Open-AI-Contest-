@@ -62,7 +62,7 @@ The optional expanded skill map shows all 54 skills per class with zoom, scrolli
 
 ## Development status
 
-The current local software gate passes **896 tests, 896 pass, 0 fail**, plus authored content/fifteen locales/RGBA, TypeScript, production build and71atlas contracts. [Current checkpoint](docs/CHECKPOINT_2026_10_25.md) distinguishes source CI, frozen previews, package verification and Wiki evidence. Rendered/human/device acceptance remains open.
+The current local software gate passes **897 tests, 897 pass, 0 fail**, plus authored content/fifteen locales/RGBA, TypeScript, production build and71atlas contracts. [Current checkpoint](docs/CHECKPOINT_2026_10_25.md) distinguishes source CI, frozen previews, package verification and Wiki evidence. Rendered/human/device acceptance remains open.
 
 Twelve original encounters have implemented quality passes; 48 remain. Content expansion and the proposed General Double Dash/Sprint branch are deferred during public polish. Complete action/facing animation, final encounter tuning, verified hosted rankings and durable online recovery remain unfinished. Rendered, listening, native-language, physical-device, WAN, endurance, capacity and human balance acceptance remain open.
 

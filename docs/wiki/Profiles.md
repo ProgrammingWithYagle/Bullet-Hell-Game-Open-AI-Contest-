@@ -33,3 +33,5 @@ Applying a profile blocks conflicting imports and cosmetic changes until it fini
 Invalid files and saving failures have different messages. Saving failures keep the previous profile bytes and a usable retry; the existing exact backup and validation rules remain. A successful import keeps its confirmation and places keyboard focus on the current import control, including when it changes the menu language.
 
 Cosmetic changes leave an unrelated pending language choice active.
+
+Cosmetic choices update appearance only. Importing a profile applies its preferences, so an appearance change cannot restore an older saved language after a startup download failed.
