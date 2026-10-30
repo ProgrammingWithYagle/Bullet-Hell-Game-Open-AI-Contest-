@@ -1,6 +1,6 @@
 # Windows portable development app
 
-The current source build is **2026.10.30-menu-reliability / protocol43**. It fixes local-network menu ownership, late responses, typed-input preservation and failed-request retries. [The current source review](../reviews/menu-reliability-2026-10-30) records exact verification. The matching reliability package below passes three-copy byte verification and six packaged diagnostics. Earlier reviews remain sealed.
+The current source build is **2026.10.30-profile-navigation / protocol43**. It guards profile imports and language changes, preserves editing position and improves error/startup handling. [The current source review](../reviews/profile-navigation-2026-10-30) records exact verification. The prior menu-reliability package below is sealed; a matching profile-navigation package follows separately.
 
 The [published Windows download](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/releases/tag/dev-windows-20261024-1) remains the immutable October24 protocol13 build. Source, Wiki and local package work do not replace it. Its741136155-byte archive has SHA256 **b2a87f08f002e35a23558ab9b4bcca3e997309fd5a567c7e014498a54fe7ae3c**, source52552c0d4465b918d7cde2ab3c2aa7f1d7eb045e. [Exact public-byte evidence](../reviews/windows-prerelease-public-download.json) remains separate.
 

@@ -43,3 +43,10 @@ test('Escape cancels before artwork or audio settles and late completions do not
  env.key('Escape');await beginning;await until(()=>f.menus===2);
  f.audio.resolve();f.scenes[0].assets.resolve();await tick();assert.equal(f.menus,2);assert(!f.sessions[0].connected);assert(env.host.querySelector('#home-marker'));
 });
+
+test('a saved language that fails to load still reaches the usable English menu with a retry notice',{timeout:10000},async t=>{
+ const env=menuEnvironment(t),f:any={menus:0,menuDisposals:0,sessions:[],scenes:[],games:[],deferred,audio:deferred()};
+ (globalThis as any).__launchFixture=f;env.cleanup.push(()=>Reflect.deleteProperty(globalThis,'__launchFixture'));f.audio.resolve();
+ const ui=await menuBundle(t,'src/client/main.ts',{...mainStubs,'i18n.ts':"export const locale='en',languages=[['en','English']],number=String,t=key=>key,initialLanguage=()=> 'fr';export async function setLanguage(id){if(id!=='en')throw Error('catalog unavailable');return true;}"},'export {leave};');env.cleanup.push(()=>ui.leave());
+ assert.equal(f.menus,1);assert(env.host.querySelector('#home-marker'));assert.equal(env.host.querySelector('#notice')!.textContent,'ui.errorLanguage');
+});

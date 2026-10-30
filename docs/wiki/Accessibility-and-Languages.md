@@ -23,3 +23,9 @@ Boss name, threat/form, phase/name and timer occupy separate slots with wrapping
 ## Development instructions and finished-product policy
 
 Latest 5192 feedback moves boss instruction paragraphs out of the live HUD into a closed-by-default manual Boss guide. Solo pauses simulation and drawing while it is open, then resumes without catchup/held input; a separate manual pause remains. The dialog has close controls, Escape handling, focus containment and bounded scrolling. Online combat continues with a notice. Testing builds keep guides available on all difficulties; the separate public build permits only optional Baby guides. Overhead survivor names and room chat have independent settings toggles. Chat starts closed and uses plain text with server identity and bounded in-memory history. Guide illustrations are deferred polish. Fifteen authored control/phase catalogs remain subject to native-language/rendered/device acceptance.
+
+## Language loading and navigation
+
+A loading notice explains a pending language choice. The latest selection takes priority even if an older download finishes later. Leaving the page cancels that selection; an old failure cannot replace a newer choice or reverse the text direction. A completed change keeps typed fields, focus and cursor selection.
+
+A failed download leaves the current language selected and shows a retry notice. If a saved language cannot load when the app starts, the English menu remains usable. Saving preferences can fail separately: the translated menu stays consistent and the notice explains that saving failed. The notices are authored in all fifteen languages; human language and layout review remain ongoing.

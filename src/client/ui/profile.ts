@@ -9,7 +9,7 @@ import {
   summary,
   cosmeticIds,
   masteryThresholds,
-  importProfile,
+  parseProfile,
   exportProfile,
   PROFILE_BACKUP_KEY,
   MAX_PROFILE_BYTES,
@@ -28,26 +28,61 @@ const hasBackup = () => {
     return false;
   }
 };
-export function mountProfile(host: HTMLElement, back: () => void, changed: () => Promise<void>) {
+export function mountProfile(host: HTMLElement, back: () => void, changed: () => Promise<void | HTMLElement>) {
+  let disposed = false, pending = false;
+  const blocked = new Map<HTMLButtonElement | HTMLInputElement, boolean>();
+  const alive = () => !disposed && host.isConnected;
+  const dispose = () => { disposed = true; blocked.clear(); host.removeAttribute('aria-busy'); };
   const show = (message: string) => {
+    if (!alive()) return;
     const status = host.querySelector<HTMLElement>('[data-profile-status]');
     if (status) status.textContent = message;
   };
-  const refresh = async (message = '') => {
-    try {
-      await changed();
-      if (host.isConnected) {
-        render();
-        show(message);
-      } else {
-        const status = document.querySelector<HTMLElement>('[data-profile-status]');
-        if (status) status.textContent = message;
+  const busy = () => {
+    if (!alive()) return;
+    host.setAttribute('aria-busy', String(pending));
+    if (pending) {
+      for (const input of host.querySelectorAll<HTMLButtonElement | HTMLInputElement>('[data-cosmetic],[data-import-profile],[data-restore-profile]')) {
+        if (!blocked.has(input)) blocked.set(input, input.disabled);
+        input.disabled = true;
       }
-    } catch {
-      show(t('ui.errorSave'));
+    } else {
+      for (const [input, disabled] of blocked) if (input.isConnected) input.disabled = disabled;
+      blocked.clear();
     }
   };
+  const begin = () => {
+    if (!alive() || pending) return false;
+    pending = true; busy(); show(t('ui.applyingProfile')); return true;
+  };
+  const finish = () => { pending = false; busy(); };
+  const refresh = async (message = '', focusSelector = '') => {
+    try {
+      const replacement = await changed();
+      if (replacement?.isConnected) {
+        const status = replacement.querySelector<HTMLElement>('[data-profile-status]');
+        if (status) status.textContent = message;
+        if (focusSelector) replacement.querySelector<HTMLElement>(focusSelector)?.focus();
+      } else if (alive()) {
+        render();
+        show(message);
+        if (focusSelector) host.querySelector<HTMLElement>(focusSelector)?.focus();
+      }
+    } catch (error) {
+      show(t(error instanceof Error && error.message === 'ui.errorLanguage' ? 'ui.errorLanguage' : 'ui.errorSave'));
+    }
+  };
+  const applyImport = async (raw: string) => {
+    let next;
+    try { next = parseProfile(raw); }
+    catch { show(t('ui.errorProfile')); return; }
+    if (!alive()) return;
+    try { saveProfile(localStorage, next); }
+    catch { show(t('ui.errorSave')); return; }
+    await refresh(p('imported'), '[data-import-profile]');
+  };
   function render() {
+    if (!alive()) return;
     try {
       const profile = loadProfile(localStorage),
         s = summary(profile);
@@ -91,17 +126,20 @@ export function mountProfile(host: HTMLElement, back: () => void, changed: () =>
       host.querySelectorAll<HTMLButtonElement>('[data-cosmetic]').forEach(
         (button) =>
           (button.onclick = () => {
+            if (!begin()) return;
             try {
               const current = loadProfile(localStorage);
               current.selectedCosmetic = button.dataset.cosmetic as CosmeticId;
               saveProfile(localStorage, current);
-              void refresh();
+              void refresh('', '[data-cosmetic="' + button.dataset.cosmetic + '"]').finally(finish);
             } catch {
               show(t('ui.errorSave'));
+              finish();
             }
           }),
       );
       host.querySelector<HTMLButtonElement>('[data-export-profile]')!.onclick = () => {
+        if (!alive()) return;
         try {
           const blob = new Blob([exportProfile(localStorage)], { type: 'application/json' }),
             url = URL.createObjectURL(blob),
@@ -118,35 +156,41 @@ export function mountProfile(host: HTMLElement, back: () => void, changed: () =>
     } catch {
       host.innerHTML = `<section class="profile-page"><h1>${e(t('ui.profile'))}</h1><p role="alert">${e(t('ui.errorProfile'))}</p><p>${e(p('importHelp'))}</p><label class="file-button">${e(t('ui.importProfile'))}<input data-import-profile type="file" accept="application/json,.json"></label>${hasBackup() ? `<button data-restore-profile>${e(p('restore'))}</button>` : ''}<button data-profile-back>${e(t('ui.back'))}</button><p data-profile-status role="status"></p></section>`;
     }
-    host.querySelector<HTMLButtonElement>('[data-profile-back]')!.onclick = back;
+    host.querySelector<HTMLButtonElement>('[data-profile-back]')!.onclick = () => { if (alive()) { dispose(); back(); } };
     const file = host.querySelector<HTMLInputElement>('[data-import-profile]')!;
     file.onchange = () =>
       void (async () => {
         const selected = file.files?.[0];
-        if (!selected) return;
+        if (!selected || !begin()) return;
         try {
           if (selected.size > MAX_PROFILE_BYTES) throw Error('oversized');
-          importProfile(localStorage, await selected.text());
-          await refresh(p('imported'));
+          const raw = await selected.text();
+          if (!alive()) return;
+          await applyImport(raw);
         } catch {
           show(t('ui.errorProfile'));
         } finally {
-          file.value = '';
+          if (file.isConnected) file.value = '';
+          finish();
         }
       })();
     const restore = host.querySelector<HTMLButtonElement>('[data-restore-profile]');
     if (restore)
       restore.onclick = () =>
         void (async () => {
+          if (!begin()) return;
           try {
             const raw = localStorage.getItem(PROFILE_BACKUP_KEY);
             if (!raw) throw Error('missing');
-            importProfile(localStorage, raw);
-            await refresh(p('imported'));
+            await applyImport(raw);
           } catch {
             show(t('ui.errorProfile'));
+          } finally {
+            finish();
           }
         })();
+    busy();
   }
   render();
+  return dispose;
 }

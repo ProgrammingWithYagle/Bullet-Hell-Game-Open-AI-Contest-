@@ -1,0 +1,20 @@
+✔ the latest language choice wins even when the older download finishes later (273.4618ms)
+✔ choosing English cancels an older RTL language result without reversing document direction (89.498ms)
+✔ an aborted language request never changes the catalog, page direction or saved preference (89.7714ms)
+✔ obsolete language failures are ignored while a current failure preserves the working language and can retry (93.4538ms)
+✔ leaving a setup page aborts its pending language choice without saving or redrawing the next page (544.423ms)
+✔ a language load error remains on the current page with a retry and the current selection (459.1777ms)
+✔ leaving Profile while a file is read prevents a late import from replacing saved progress (392.1493ms)
+✔ a pending profile import ignores conflicting file and cosmetic actions and remains usable afterwards (248.7862ms)
+✔ valid profile files report storage failures accurately and keep the previous bytes available to export (233.429ms)
+✔ a disposed profile cannot save from its detached cosmetic or file controls (219.0957ms)
+✔ a successful profile import keeps its notice and returns focus to the current import control (223.4661ms)
+✔ actual setup ignores an older profile refresh after moving to a different page (442.5691ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3692.3081

@@ -203,7 +203,8 @@ async function menu(initialRecords?: TeamBoardSelection,retryJoin?:RoomJoinRetry
       Object.assign(settings, p.settings);
       inputOptions = p.controls;
       selectedCosmetic = p.selectedCosmetic;
-      await setLanguage(p.locale);
+      try { await setLanguage(p.locale); }
+      catch { throw Error('ui.errorLanguage'); }
       applySettings();
     },
     settingsHTML: settingsMarkup,
@@ -937,5 +938,9 @@ window.addEventListener('keydown', (e) => {
 document.addEventListener('visibilitychange', () => {
   if (document.hidden && session && !session.online && !paused && !$('loading-expedition')) togglePause();
 });
-await setLanguage(initialLanguage());
+let startupLanguageError = false;
+try { await setLanguage(initialLanguage()); }
+catch { startupLanguageError = true; await setLanguage('en'); }
+const startupProfileError = profileError;
 await menu();
+if (startupLanguageError && !startupProfileError) notice(t('ui.errorLanguage'));

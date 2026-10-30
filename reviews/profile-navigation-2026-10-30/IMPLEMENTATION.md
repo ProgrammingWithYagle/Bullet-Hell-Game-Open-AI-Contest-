@@ -1,0 +1,7 @@
+# Profile and language navigation
+
+Profile owns disposal, pending write guards and explicit replacement hosts from setup. File reads are checked before saving; old callbacks cannot overwrite progress or redraw another page. Validation and exact backups stay in the existing profile layer. Storage failure is distinguished from invalid file input, with Back/Export available and a retry. Successful imports retain status and focus, including language-based setup replacement.
+
+Language changes commit only the latest active catalog. Leaving a setup page aborts its request. Stale downloads/errors cannot change catalog, direction or persistence. Successful changes retain typed fields, focus and text selection; failed saves still leave a consistent translated menu. Startup falls back to usable English when the saved catalog fails. Three status messages are authored in all15catalogs.
+
+Twelve baseline regressions fail. Initial diagnostic attempts tried to format entire cyclic DOM objects and exhausted memory; those issued logs are preserved. Both owned test sessions were terminal before retry. Boolean identity assertions preserve the same condition without formatting the graph; reproduction02finishes with12failures. Focused02passes19/19, including16new cases and3existing loading-cancellation cases. Vite’s generated glob map is replaced by controlled catalog loaders in native tests; the actual catalog, formatting and persistence implementation is compiled. No browser/rendered/human/device/listening/native-language/WAN acceptance is claimed.

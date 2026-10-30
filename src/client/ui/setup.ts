@@ -174,14 +174,18 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
     }
     if(page==='leaderboards')cleanups.push(mountLeaderboards(content,()=>go('home'),initialRecords?.endpoint ?? selected.serverEndpoint,initialRecords));
     if (page === 'profile')
-      mountProfile(
+      cleanups.push(mountProfile(
         content,
         () => go('home'),
         async () => {
+          const previousLocale = locale;
           await hooks.profileChanged();
+          if (disposed || page !== 'profile' || !content.isConnected) return;
+          if (locale === previousLocale) return;
           render();
+          return host.querySelector<HTMLElement>('#setup-content')!;
         },
-      );
+      ));
     if (page === 'lan')
       cleanups.push(mountLan(
         content,
@@ -291,16 +295,37 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
         password,
       );
     });
+    let languageRequest: AbortController | undefined;
+    cleanups.push(() => languageRequest?.abort());
     host.querySelector<HTMLSelectElement>('#language')!.onchange = async (event) => {
-      await setLanguage((event.target as HTMLSelectElement).value);
+      const select = event.target as HTMLSelectElement;
+      languageRequest?.abort();
+      const request = languageRequest = new AbortController();
+      select.setAttribute('aria-busy', 'true');
+      showError('ui.loadingLanguage');
       try {
-        changeProfile(localStorage, (p) => {
-          p.locale = locale;
-        });
+        const applied = await setLanguage(select.value, request.signal);
+        if (applied === false || request.signal.aborted || disposed || !content.isConnected) return;
       } catch {
-        showError('ui.errorSave');
+        if (request.signal.aborted || disposed || !content.isConnected) return;
+        select.value = locale;
+        showError('ui.errorLanguage');
+        return;
+      } finally {
+        if (languageRequest === request && select.isConnected) select.removeAttribute('aria-busy');
       }
-      render('#language');
+      let saveFailed = false;
+      try { changeProfile(localStorage, p => { p.locale = locale; }); }
+      catch { saveFailed = true; }
+      const drafts = Array.from(host.querySelectorAll<HTMLInputElement | HTMLSelectElement>('input[id],select[id]')).filter(input => input.id !== 'language' && input.type !== 'file').map(input => ({id: input.id, value: input.value}));
+      const active = document.activeElement as (HTMLElement & Partial<HTMLInputElement>) | null;
+      const focus = active?.id && host.contains(active) ? '#' + active.id : '#language';
+      const selection = active && typeof active.selectionStart === 'number' && typeof active.selectionEnd === 'number' ? [active.selectionStart, active.selectionEnd] : null;
+      render(focus);
+      for (const draft of drafts) { const input = host.querySelector<HTMLInputElement | HTMLSelectElement>('#' + draft.id); if (input) input.value = draft.value; }
+      const current = host.querySelector<HTMLInputElement>(focus);
+      if (selection && current && typeof current.setSelectionRange === 'function') current.setSelectionRange(selection[0], selection[1]);
+      if (saveFailed) showError('ui.errorSave');
     };
     host
       .querySelectorAll<HTMLButtonElement>('[data-page]')

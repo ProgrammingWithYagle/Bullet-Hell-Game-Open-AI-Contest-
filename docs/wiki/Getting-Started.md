@@ -160,3 +160,9 @@ Use the left and right arrows on the home screen to switch between the main cove
 ## Local-network setup stays on your current page
 
 While Host or Stop hosting is in progress, wait for it to finish or use Back. Conflicting actions are disabled during that request. Errors leave the controls available to retry. A delayed status keeps your typed address, port and editing position. Leaving the page keeps it from changing the next screen; it does not automatically stop a local server you chose to host.
+
+## Profile and language changes
+
+Profile shows when it is applying a change. You can use Back or export your existing data while a change is pending. Leaving while an import file is still being read cancels that import before it replaces your saved profile. A valid file that cannot be saved shows a saving error and leaves a retry. Successful imports return focus to the current import control.
+
+For language selection, the latest choice wins. Leaving its page cancels a pending choice, and failed downloads leave the current language available to retry. Typed fields and keyboard position survive a completed change. If the saved language cannot load at startup, the English menu stays usable with an explanation.

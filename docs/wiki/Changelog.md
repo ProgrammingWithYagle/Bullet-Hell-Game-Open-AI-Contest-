@@ -1,6 +1,18 @@
 # Changelog
 
-Development build **2026.10.30-menu-reliability**, protocol 43. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.30-profile-navigation**, protocol 43. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-30 — Keep profile and language changes on the right page
+
+### Profile imports you can leave safely
+
+- Leaving Profile while a file is being read cancels that import before it changes saved progress. Old buttons and finished requests cannot redraw another page or place messages in a newer profile. Applying a profile blocks conflicting changes while Back and Export remain available.
+- Valid profile files now report storage problems as saving failures, keeping the earlier bytes and a usable retry. Existing validation, exact backups, progression and unlock rules remain. Successful imports keep their notice and return focus to the current import control.
+
+### Choose a language without losing your place
+
+- The latest language choice wins, including switching back to English while another language loads. Leaving a page cancels its pending selection. Failed or obsolete downloads cannot replace the active catalog, reverse text direction or save an older preference.
+- Language changes keep typed fields, cursor selection and focus. Loading and retry notices are translated in all fifteen languages. If the saved language cannot load at startup, the English menu stays usable with a clear notice. A failed preference save still leaves the displayed menu consistent.
 
 ## 2026-10-30 — Keep local-network setup responsive
 

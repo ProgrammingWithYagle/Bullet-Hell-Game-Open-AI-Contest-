@@ -22,15 +22,27 @@ export const languages = [
 ];
 let catalog: Catalog = english;
 export let locale = 'en';
-export async function setLanguage(id: string) {
+let languageRequest = 0;
+export async function setLanguage(id: string, signal?: AbortSignal) {
+  if (signal?.aborted) return false;
+  const request = ++languageRequest;
   if (!languages.some(([code]) => code === id)) id = 'en';
-  catalog = id === 'en' ? english : await loaders['../../locales/' + id + '.json']();
+  let next: Catalog;
+  try {
+    next = id === 'en' ? english : await loaders['../../locales/' + id + '.json']();
+  } catch (error) {
+    if (request !== languageRequest || signal?.aborted) return false;
+    throw error;
+  }
+  if (request !== languageRequest || signal?.aborted) return false;
+  catalog = next;
   locale = id;
   document.documentElement.lang = id;
   document.documentElement.dir = catalog.meta.direction;
   try {
     localStorage.setItem('ga-language', id);
   } catch {}
+  return true;
 }
 export function initialLanguage() {
   let saved = '';
