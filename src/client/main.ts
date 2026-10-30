@@ -5,6 +5,8 @@ import {testingToolsMarkup,unlockTestingDifficulties} from './testing-ui.ts';
 import {RoomChatUI} from './room-chat-ui.ts';
 import {chatDeliveryText} from './chat-delivery-text.ts';
 import {RoomInviteUI,roomInvitePlacement} from './room-invite-ui.ts';
+import {HostMatchUI} from './host-match-ui.ts';
+import {bindPasswordVisibility} from './ui/password-visibility.ts';
 import {waitingRoomMarkup,bindRoomCode} from './ui/waiting-room.ts';
 import {playerVitalsMarkup} from './ui/player-vitals.ts';
 import {bossDefeatStatus} from './ui/boss-defeat-status.ts';
@@ -104,6 +106,8 @@ function rating(p: PlayerView) {
 }
 let roomChatUI:RoomChatUI|undefined;
 let roomInviteUI:RoomInviteUI|undefined;
+let hostMatchUI:HostMatchUI|undefined;
+let lastMatchPaused = false;
 let vitalsSizeObserver:ResizeObserver|undefined;
 let lobbyPanel: 'room'|'equipment' = 'room';
 const settings = defaultPreferences();
@@ -248,7 +252,7 @@ async function begin(
       if (controls) {
         controls.blocked =
           (bossGuide.blocksInput(paused)||roomChatUI?.blocksInput===true||roomInviteUI?.open===true) ||
-          active.view?.phase !== 'combat' ||
+          active.view?.phase !== 'combat' || active.view.matchPaused === true ||
           key === 'ui.reconnecting' ||
           key === 'ui.errorNetwork';
         if (controls.blocked) controls.clear();
@@ -270,7 +274,8 @@ async function begin(
       if (!current()) return;
       if (!r.ok) {
         $('status').textContent = t(
-          r.reason === 'checkpointPending'
+          r.reason === 'matchPaused'
+            ? 'ui.matchPaused' : r.reason === 'checkpointPending'
             ? 'ui.checkpointSaving'
             : r.reason === 'insufficientCoins'
               ? 'ui.notEnoughCoins'
@@ -289,7 +294,7 @@ async function begin(
     roomChatUI?.configure(settings.roomChat,active.online);
     timer = setInterval(() => {
       const view = active.view;
-      if (!view || bossGuide.pausesSimulation(paused,active.online)) return;
+      if (!view || view.matchPaused || bossGuide.pausesSimulation(paused,active.online)) return;
       const p = prediction.player ?? view.players.find((p) => p.id === active.id);
       const frame = controls!.sample(view.tick, p, view.boss);
       active.input(frame);
@@ -319,6 +324,7 @@ function setupGame(online: boolean,classId:string) {
   lobbyPanel = online ? 'room' : 'equipment';
   document.body.classList.add('playing', 'preparing');
   paused = false;
+  lastMatchPaused = false;
   bossGuide.set(false);
   guideReturnFocus = null;
   uiKey = '';
@@ -338,6 +344,12 @@ function setupGame(online: boolean,classId:string) {
   loading.innerHTML = `<div class="loading-card"><span class="eyebrow">GRAVE ACCORD</span><h1 id="loading-heading" tabindex="-1">${text('ui.loading')}</h1><p>${esc(expeditionText(locale, 'loadingHelp'))}</p><progress id="assets-progress" value="0" max="1" aria-label="${text('ui.loading')}"></progress><div class="loading-state"><span id="load-state" role="status">${text('ui.loading')}</span><output id="assets-percent" aria-hidden="true">${number(0)}%</output></div><button id="cancel-loading" type="button">${text('ui.cancel')}</button></div>`;
   app.append(loading);
   $('cancel-loading').onclick = () => { if (serial === launchSerial) void leave(); };
+  if (online) {
+    $('pause-button').innerHTML = `${icon('settings')} <span>${text('ui.settings')}</span>`;
+    $('pause-menu').querySelector('h2')!.textContent = t('ui.settings');
+    $('resume').textContent = t('ui.back');
+    hostMatchUI = new HostMatchUI(session!,app,$('pause-button'),$('pause-menu').querySelector('.dialog')!,t);
+  }
   const defeatBanner = document.createElement('aside');
   defeatBanner.id = 'boss-defeated-banner'; defeatBanner.className = 'boss-defeated-banner'; defeatBanner.hidden = true;
   defeatBanner.setAttribute('role','status'); defeatBanner.setAttribute('aria-live','polite');
@@ -439,16 +451,16 @@ function setupGame(online: boolean,classId:string) {
 }
 function syncPauseState() {
   syncRoomChatPlacement();
-  const simulationPaused=bossGuide.pausesSimulation(paused,session?.online??false);
+  const simulationPaused=session?.view?.matchPaused===true||bossGuide.pausesSimulation(paused,session?.online??false);
   session?.pause(simulationPaused);
   prediction=new Prediction();
   if(session?.view)prediction.acknowledge(session.view,session.id);
   if(scene)scene.predicted=prediction.player;
-  if(!session?.online&&scene?.scene){
+  if(scene?.scene){
     if(simulationPaused&&!scene.scene.isPaused())scene.scene.pause();
     else if(!simulationPaused&&scene.scene.isPaused())scene.scene.resume();
   }
-  if(controls){controls.clear();controls.blocked=(bossGuide.blocksInput(paused)||roomChatUI?.blocksInput===true||roomInviteUI?.open===true)||session?.view?.phase!=='combat';}
+  if(controls){controls.clear();controls.blocked=simulationPaused||(bossGuide.blocksInput(paused)||roomChatUI?.blocksInput===true||roomInviteUI?.open===true)||session?.view?.phase!=='combat';}
 }
 function syncRoomChatPlacement() {
   const dock = paused ? $('pause-menu-chat-slot') : bossGuide.open
@@ -487,10 +499,14 @@ function update(view: View) {
   $<HTMLButtonElement>('boss-guide-button').disabled=view.phase!=='combat';
   $('boss-guide-button').hidden=!bossGuideAvailable(view.run.difficulty);
   $('boss-guide-boss-name').textContent=t('boss.'+view.boss.id+'.name');
-  roomInviteUI?.update(session.code);
+  roomInviteUI?.update(session.code,session.hostPassword);
+  hostMatchUI?.update();
   syncRoomInvitePlacement();
   scene.localId = session.id;
   scene.apply(view);
+  if (lastMatchPaused !== (view.matchPaused === true)) {
+    lastMatchPaused = view.matchPaused === true; syncPauseState();
+  }
   prediction.acknowledge(view, session.id);
   scene.predicted = prediction.player;
   const p = view.players.find((p) => p.id === session!.id);
@@ -512,7 +528,7 @@ function update(view: View) {
   document.body.classList.remove('preparing');
   controls!.blocked =
     (bossGuide.blocksInput(paused)||roomChatUI?.blocksInput===true||roomInviteUI?.open===true) ||
-    view.phase !== 'combat' ||
+    view.phase !== 'combat' || view.matchPaused === true ||
     session.status === 'ui.reconnecting' ||
     session.status === 'ui.errorNetwork';
   $('encounter').textContent = t('ui.encounter', {
@@ -554,7 +570,7 @@ function update(view: View) {
       !slot.count ||
       remaining > 0 ||
       p.status !== 'active' ||
-      view.phase !== 'combat' ||
+      view.phase !== 'combat' || view.matchPaused === true ||
       (item?.effect==='revive' && !combatReviveAllowed(view.run.difficulty,p.classId)) ||
       (item?.effect==='shield' && !p.maxShield) ||
       (bossGuide.blocksInput(paused)||roomChatUI?.blocksInput===true||roomInviteUI?.open===true);
@@ -718,6 +734,8 @@ function update(view: View) {
     view.mutationCards,
     view.contractCards,
     view.owner,
+    view.matchPaused,
+    view.endedByHost,
     session.id,
     session.code,
     session.teamRecord,
@@ -780,7 +798,7 @@ function renderOverlay(view: View, p: PlayerView) {
     title = t(view.phase === 'shop' ? 'ui.shop' : session?.online && lobbyPanel === 'room' ? 'ui.lobbyTitle' : 'ui.prepareEquipment');
     const navigation = view.phase==='lobby'&&session?.online ? `<nav class="lobby-navigation"><button id="lobby-room" aria-pressed="${lobbyPanel==='room'}">${text('ui.lobbyTitle')}</button><button id="lobby-equipment" aria-pressed="${lobbyPanel==='equipment'}">${text('ui.prepareEquipment')}</button></nav>` : '';
     body = navigation + (view.phase==='lobby'&&session?.online&&lobbyPanel==='room'
-      ? waitingRoomMarkup(view,session.id,session.code,t,number,assets.portraits,session.hasPassword) : shop(p));
+      ? waitingRoomMarkup(view,session.id,session.code,t,number,assets.portraits,session.hasPassword,session.hostPassword) : shop(p));
     if (view.phase === 'lobby') actions = `<button id="start" class="primary" ${view.owner !== session!.id ? 'disabled' : ''}>${text('ui.start')}</button><button id="return-menu">${text('ui.leaveRoom')}</button>`;
   } else if (view.phase === 'secretOffer') {
     title = extensionText(locale, 'offerTitle');
@@ -790,7 +808,7 @@ function renderOverlay(view: View, p: PlayerView) {
     body = `<p>${text('ui.tutorialTeam')}</p>`;
   } else {
     title = expeditionText(locale, view.phase === 'victory' ? 'resultComplete' : 'resultEnded');
-    body = runResultsMarkup(view, p, {
+    body = (view.endedByHost ? `<p class="result-reason">${text('ui.matchEndedByHost')}</p>` : '') + runResultsMarkup(view, p, {
       language: locale, mode: t('mode.' + view.run.mode + '.name'), difficulty: t('difficulty.' + view.run.difficulty),
       className: t('class.' + p.classId + '.name'), number, clock,
     }) + `${view.campaignBank && ['cleared', 'failed'].includes(view.secretStatus) ? '<p>' + esc(extensionText(locale, view.secretStatus === 'cleared' ? 'cleared' : 'failed')) + '</p>' : ''}${session?.status === 'ui.errorSave' ? `<p role="alert">${text('ui.errorSave')}</p>` : ''}${view.run.testingModified ? '' : `<p>${text(session?.online ? 'ui.practiceNotice' : 'ui.offlineNotice')}</p>`}<button id="return-menu" class="primary">${text('ui.mainMenu')}</button>`;
@@ -814,6 +832,8 @@ function renderOverlay(view: View, p: PlayerView) {
   roomInviteUI?.place();
   overlay.innerHTML = `<div class="dialog-layout" role="dialog" aria-modal="true" aria-labelledby="phase-heading"><section class="dialog ${view.phase === 'lobby' || view.phase === 'shop' ? 'wide' : ''}"><div class="section-heading"><h2 id="phase-heading" tabindex="-1">${esc(title)}</h2>${phaseCountdownMarkup(view.phase, locale)}</div><div id="phase-room-invite-slot" class="menu-room-invite-slot"></div><div class="phase-content">${body}</div>${actions ? `<footer class="actions phase-actions">${actions}</footer>` : ''}</section><div id="phase-chat-slot" class="dialog-chat-slot"></div></div>`;
   syncRoomChatPlacement();
+  const phaseContent = overlay.querySelector<HTMLElement>('.phase-content');
+  if (phaseContent) phaseContent.inert = view.matchPaused === true;
   if (['lobby', 'shop'].includes(view.phase))
     bindShop(overlay, p, (request) => session?.purchase(request), supplyBindings(), settings.branchingTree,view.run.difficulty);
   overlay.querySelectorAll<HTMLButtonElement>('[data-vote]').forEach(
@@ -825,6 +845,7 @@ function renderOverlay(view: View, p: PlayerView) {
   );
   if(view.phase==='lobby'&&session?.online){
     bindRoomCode(overlay,session.code,t);
+    bindPasswordVisibility(overlay,t);
     for(const [id,panel] of [['lobby-room','room'],['lobby-equipment','equipment']] as const){
       const button=$(id);if(button)button.onclick=()=>{lobbyPanel=panel;uiKey='';if(session?.view)update(session.view);};
     }
@@ -840,7 +861,7 @@ function renderOverlay(view: View, p: PlayerView) {
     const scroller = overlay.querySelector('.skill-scroll');
     if (scroller) {scroller.scrollTop = scroll;scroller.scrollLeft=scrollLeft;}
   }
-  if (!(bossGuide.blocksInput(paused)||roomChatUI?.blocksInput===true||roomInviteUI?.open===true)) {
+  if (!view.matchPaused && !(bossGuide.blocksInput(paused)||roomChatUI?.blocksInput===true||roomInviteUI?.open===true)) {
     const target = focusedId
       ? overlay.querySelector<HTMLElement>('#' + CSS.escape(focusedId))
       : focusedItem
@@ -876,6 +897,7 @@ function destroy() {
   app.style.removeProperty('--combat-chat-bottom');
   roomChatUI?.destroy();roomChatUI=undefined;
   roomInviteUI?.destroy();roomInviteUI=undefined;
+  hostMatchUI?.destroy();hostMatchUI=undefined;
   if (timer) clearInterval(timer);
   timer = undefined;
   controls?.destroy();

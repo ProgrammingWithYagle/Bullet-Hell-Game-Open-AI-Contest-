@@ -20,7 +20,7 @@ export function runResultModel(view: View, player: PlayerView) {
     experience: view.run.testingModified ? 0 : player.progress.clears * 100,
     combatSeconds: (bank?.combatTick ?? view.combatTick) / HZ,
     showPersonalClears: view.players.length > 1 || view.encounter !== player.progress.clears,
-    reason: view.phase !== 'defeat' ? null
+    reason: view.phase !== 'defeat' || view.endedByHost ? null
       : view.combatTick >= view.boss.deadline ? 'resultTimeout'
       : view.players.length > 1 ? 'resultTeamDown' : 'resultSoloDown',
   } as const;

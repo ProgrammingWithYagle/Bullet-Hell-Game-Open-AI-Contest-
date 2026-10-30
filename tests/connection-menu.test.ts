@@ -20,7 +20,7 @@ test(`Cancel keeps a newer load intact after the older join returns ${late}`,{ti
  const env=menuEnvironment(t),f:any={menus:0,menuDisposals:0,sessions:[],scenes:[],games:[],deferred,audio:deferred()};
  (globalThis as any).__launchFixture=f;env.cleanup.push(()=>Reflect.deleteProperty(globalThis,'__launchFixture'));f.audio.resolve();
  const ui=await menuBundle(t,'src/client/main.ts',mainStubs,'export {begin,leave};');env.cleanup.push(()=>ui.leave());
- const first=ui.begin(true,undefined,'public',opts);assert(env.host.querySelector('#cancel-loading'));
+ const first=ui.begin(true,undefined,'public',opts);assert(env.host.querySelector('#cancel-loading'));assert.equal(env.host.querySelector('#resume')!.textContent,'ui.back');
  f.scenes[0].assets.resolve();await until(()=>f.sessions[0].connected);
  const oldCancel=env.host.querySelector('#cancel-loading')!;oldCancel.click();await until(()=>f.menus===2);
  const second=ui.begin(true,undefined,'public',opts);assert.equal(f.scenes.length,2);

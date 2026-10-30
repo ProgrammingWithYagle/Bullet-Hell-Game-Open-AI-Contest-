@@ -75,6 +75,8 @@ export const WorldState = schema(
     phaseEnds: t.uint32().default(0),
     encounter: t.uint32().default(0),
     owner: t.string().default(''),
+    matchPaused: t.boolean().default(false),
+    endedByHost: t.boolean().default(false),
     bossId: t.string().default('constable'),
     bossX: t.int16().default(800),
     bossY: t.int16().default(250),

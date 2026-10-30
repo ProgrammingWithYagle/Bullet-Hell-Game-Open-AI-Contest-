@@ -110,8 +110,13 @@ export class RoomJournal {
       this.write(() => this.journal!.refreshLease(), false);
     }
   }
-  step() {
+  step(paused = false) {
     if (this.closed || this.frozen) return;
+    if (paused) {
+      if (this.usable && !this.work && this.now() >= this.nextLeaseAt)
+        this.write(() => this.journal!.refreshLease(), false);
+      return;
+    }
     if (!this.journal) {
       this.game.step();
       return;

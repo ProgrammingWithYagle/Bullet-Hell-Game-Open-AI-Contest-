@@ -65,6 +65,8 @@ export type View = {
   encounter: number;
   arenaId: string;
   owner: string;
+  matchPaused?: boolean;
+  endedByHost?: boolean;
   players: PlayerView[];
   boss: Boss;
   signatures: WardenSample[];

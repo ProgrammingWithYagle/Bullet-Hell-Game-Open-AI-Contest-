@@ -135,3 +135,11 @@ The current local Windows review includes the map, waiting-room, Medic/shield, p
 ## Connection progress and cancellation
 
 Loading offers **Cancel**; **Esc** also returns home. Tab keeps keyboard focus on the loading action. Room search and code lookup show what is happening, with specific version, busy-server, wrong-address, expired-code and full/closed-room errors. Back cancels pending searches. Returning to another screen cannot let an old connection overwrite it. Leaving online records or changing filters cancels its requests, while paging keeps earlier rows usable. Protocol42 and gameplay/record rules remain. [Current source evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/tree/feat/first-playable-loop/reviews/connection-clarity-2026-10-29) separates software and transport checks from rendered/human review.
+
+## Host controls and passwords
+
+The host can reveal the room password beside the code, both in the waiting room and from **Room code** during play. Eye buttons show or hide passwords while entering them. The current Session retains its entered password privately until leaving; ordinary guests do not receive it in room details.
+
+Opening settings, chat or a guide does not pause an online match. Only the current host can press **Pause match** or **Continue match**. The pause freezes the simulation and countdowns while chat remains available. If a paused host leaves or disconnects, play resumes and a connected teammate becomes host. Returning does not automatically reclaim host controls.
+
+**Leave room** keeps remaining teammates playing. **End game for everyone** is a separate host action in Settings and requires confirmation. Everyone sees that the host ended the match; only already-completed encounters count. Protocol43 needs a matching backend, with a bounded local Practice migration from42. [Exact source and review evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/tree/feat/first-playable-loop/reviews/host-controls-2026-10-29).

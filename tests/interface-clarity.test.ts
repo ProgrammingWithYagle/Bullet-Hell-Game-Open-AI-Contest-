@@ -53,6 +53,8 @@ class NodeFixture{
   contains(other:unknown):boolean{return this===other||this.children.some(c=>c.contains(other));}
   remove(){if(this.parentElement)this.parentElement.children=this.parentElement.children.filter(n=>n!==this);this.parentElement=null;}
   focus(){this.doc.activeElement=this;}setAttribute(){}addEventListener(){}querySelector(){return null;}
+  querySelectorAll(){return [];}
+  replaceChildren(){for(const child of [...this.children])child.remove();this.innerHTML='';}
 }
 test('the actual room-code controller retains one open control and focus across menu rebuilds without stealing another field’s focus',()=>{
   const previous=Object.getOwnPropertyDescriptor(globalThis,'document'),previousElement=Object.getOwnPropertyDescriptor(globalThis,'HTMLElement');

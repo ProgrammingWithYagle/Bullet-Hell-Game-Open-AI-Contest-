@@ -5,6 +5,12 @@ export class MenuElement {
  children: MenuElement[] = []; parentElement?: MenuElement; connectedRoot = false;
  attrs: Record<string,string> = {}; dataset: Record<string,string> = {}; html = ''; private content = ''; private selectedValue?: string;
  disabled = false; hidden = false; open = false; checked = false; onclick?: (event: any) => unknown; onchange?: (event: any) => unknown; oninput?: (event: any) => unknown; onkeydown?: (event: any) => unknown; ontoggle?: () => unknown;
+ selectionStart: number | null = 0; selectionEnd: number | null = 0;
+ get type() {return this.attrs.type ?? ''; } set type(value: string) {this.attrs.type=value;}
+ setSelectionRange(start:number,end:number) {this.selectionStart=start;this.selectionEnd=end;}
+ showModal() {this.open=true;}
+ close() {if(!this.open)return;this.open=false;this.dispatch('close');}
+ contains(element:MenuElement) {return element===this||this.querySelectorAll('*').includes(element);}
  listeners = new Map<string, ((event: any) => unknown)[]>();
  style = {setProperty: (_name: string, _value: string) => {}, removeProperty: (_name: string) => {}, cssText: ''};
  constructor(public tag = 'div', public document?: MenuDocument) {}

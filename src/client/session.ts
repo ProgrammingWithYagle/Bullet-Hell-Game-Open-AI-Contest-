@@ -55,6 +55,9 @@ export class Session {
   id = 'solo';
   code = '';
   hasPassword=false;
+  #invitationPassword = '';
+  get isHost() { return this.online && this.view?.owner === this.id; }
+  get hostPassword() { return !this.closed && this.isHost && this.hasPassword ? this.#invitationPassword : undefined; }
   online = false;
   status = '';
   queuePosition = 0;
@@ -190,6 +193,7 @@ export class Session {
       if (room.connection.isOpen) await room.leave();
       throw Error('ui.errorNetwork');
     }
+    this.#invitationPassword = (roomId ? join?.password : createPassword) ?? '';
     this.attach(room, client);
   }
   async lookupRoom(code:string,warm=true):Promise<{roomId:string;hasPassword:boolean}>{
@@ -444,6 +448,12 @@ export class Session {
     if (this.online) { if (this.room?.connection.isOpen) this.room.send('endRun'); }
     else this.worker?.postMessage({ type: 'endRun' });
   }
+  setMatchPaused(value: boolean) {
+    if (this.isHost && this.room?.connection.isOpen) this.room.send('pauseMatch', value);
+  }
+  endMatch() {
+    if (this.isHost && this.room?.connection.isOpen) this.room.send('endMatch');
+  }
   purchase(request: Omit<Command, 'id'>) {
     const command = { ...request, id: crypto.randomUUID() };
     if (this.online) {
@@ -477,6 +487,7 @@ export class Session {
   close(): Promise<void> {
     if (this.closing) return this.closing;
     this.closed = true;
+    this.#invitationPassword = '';
     this.requests.cancel();
     this.chatOutbox.destroy();
     this.clearChatHistoryRetry();
@@ -558,6 +569,8 @@ function networkView(s: WorldState): View {
     phaseEnds: s.phaseEnds,
     encounter: s.encounter,
     owner: s.owner,
+    matchPaused: s.matchPaused,
+    endedByHost: s.endedByHost,
     players,
     boss: {
       id: s.bossId as View['boss']['id'],

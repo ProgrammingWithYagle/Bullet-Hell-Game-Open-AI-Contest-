@@ -159,22 +159,35 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       client.send('chatReceipt',delivery.receipt);
     });
     this.onMessage('input', (client, value: unknown) => {
-      if (this.journal.blocked) return;
+      if (this.journal.blocked || this.state.matchPaused) return;
       if (this.game.submitInput(client.sessionId, value)) this.telemetry.acceptedInputs++;
       else this.telemetry.rejectedInputs++;
     });
     this.onMessage('start', (client) => {
-      if (client.sessionId === this.state.owner) this.journal.start();
+      if (client.sessionId === this.state.owner && !this.state.matchPaused) this.journal.start();
+    });
+    this.onMessage('pauseMatch', (client, value: unknown) => {
+      if (typeof value !== 'boolean' || client.sessionId !== this.state.owner || !this.readyAt.has(client)
+        || ['lobby','victory','defeat'].includes(this.game.phase) || this.journal.blocked) return;
+      if (this.state.matchPaused === value) return;
+      this.game.clearInputs(); this.state.matchPaused = value; this.syncState();
+    });
+    this.onMessage('endMatch', client => {
+      if (client.sessionId !== this.state.owner || !this.readyAt.has(client) || this.journal.blocked) return;
+      if (!this.game.endByHost()) return;
+      this.state.matchPaused = false; this.state.endedByHost = true;
+      void this.lock();
+      this.teamRun?.finish(this.game); this.syncState();
     });
     this.onMessage('endRun', client => {
-      if (client.sessionId === this.state.owner && !this.journal.blocked && this.game.endEndless()) this.teamRun?.finish(this.game);
+      if (client.sessionId === this.state.owner && !this.journal.blocked && !this.state.matchPaused && this.game.endEndless()) this.teamRun?.finish(this.game);
     });
     this.onMessage('vote', (client, index: unknown) => {
-      if (!this.journal.blocked && typeof index === 'number')
+      if (!this.journal.blocked && !this.state.matchPaused && typeof index === 'number')
         this.game.vote(client.sessionId, index);
     });
     this.onMessage('purchase', (client, request: unknown) => {
-      const result = this.journal.blocked
+      const result = this.state.matchPaused ? {ok:false,reason:'matchPaused'} : this.journal.blocked
         ? { ok: false, reason: 'checkpointPending' }
         : this.game.transact(client.sessionId, request);
       client.send('purchaseResult', {
@@ -192,7 +205,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
     });
     this.setFixedTimestep(() => {
       const start = performance.now();
-      this.journal.step();
+      this.journal.step(this.state.matchPaused);
       this.teamRun?.observe(this.game);
       this.flushEvents();
       this.syncState();
@@ -205,6 +218,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
     }, 30);
   }
   async onAuth(client: Client, options: Options) {
+    if (this.state.endedByHost) throw new ServerError(503,'roomClosed');
     if(!this.isTestingServer()&&options.openingBossId!==undefined)throw new ServerError(400,'testingSelectionDisabled');
     if (options.protocolVersion !== PROTOCOL || options.contentRevision !== CONTENT_REVISION)
       throw new ServerError(409, 'versionMismatch');
@@ -302,8 +316,10 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
     liveRooms.delete(this.roomId);
   }
   private transferOwner() {
-    if (!this.game.players.get(this.state.owner)?.connected)
+    if (!this.game.players.get(this.state.owner)?.connected) {
+      this.state.matchPaused = false; this.game.clearInputs();
       this.state.owner = [...this.game.players.values()].find((p) => p.connected)?.id ?? '';
+    }
   }
   private flushEvents() {
     const shared: Event[] = [];

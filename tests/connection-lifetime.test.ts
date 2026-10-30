@@ -120,7 +120,7 @@ test('Cancel aborts the actual SDK matchmaking POST and releases admission', {ti
 });
 
 test('Cancel closes an actual SDK socket whose server never sends the room handshake', {timeout: 6000}, async t => {
- const sockets = new Set<import('node:stream').Duplex>();let connected = false, closed = false, deletes = 0;
+ const sockets = new Set<import('node:stream').Duplex>();let connected = false, closed = false, deletes = 0, unexpectedSocketError: Error | undefined;
  const server = createServer((request,response)=>{
   response.setHeader('Content-Type','application/json');
   if(request.url==='/api/health')return response.end(JSON.stringify(health));
@@ -134,13 +134,14 @@ test('Cancel closes an actual SDK socket whose server never sends the room hands
   socket.write('HTTP/1.1 101 Switching Protocols\r\nUpgrade: websocket\r\nConnection: Upgrade\r\nSec-WebSocket-Accept: '+accept+'\r\n\r\n');
   connected=true;
   socket.on('data',data=>{if((data[0]&15)===8)socket.end(Buffer.from([0x88,0x02,0x0f,0xa0]));});
+  socket.on('error',error=>{if((error as NodeJS.ErrnoException).code!=='ECONNRESET')unexpectedSocketError=error;});
   socket.on('close',()=>{closed=true;sockets.delete(socket);});
  });
  await new Promise<void>(resolve=>server.listen(0,'127.0.0.1',resolve));const address=server.address();assert(address&&typeof address!=='string');
  const s=new Session('http://127.0.0.1:'+address.port);
  t.after(async()=>{await s.close();for(const socket of sockets)socket.destroy();server.closeAllConnections();await new Promise<void>(resolve=>server.close(()=>resolve()));});
  const rejection=assert.rejects(s.connect(opts),abort);await until(()=>connected);await s.close();await rejection;await until(()=>closed);
- assert.equal(deletes,1);assert.equal(s.room,undefined);
+ assert.equal(deletes,1);assert.equal(s.room,undefined);assert.equal(unexpectedSocketError,undefined);
 });
 
 test('a room that closed after listing gives useful guidance and releases its join ticket', {timeout: 10000}, async () => {

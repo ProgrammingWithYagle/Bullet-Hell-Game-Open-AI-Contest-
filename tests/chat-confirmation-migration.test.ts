@@ -8,7 +8,7 @@ import {formatMessage,type Message} from '../src/shared/messages.ts';
 test('issued41local saves retain exact map/economy/build identity while unknown and authoritative envelopes stay strict',()=>{
  const g=new Game({mode:'endless',maxPlayers:1,openingArenaId:'triage-yard',arenaSelection:'randomRun'});g.addPlayer('solo','Mara','medic').coins=837;
  const old=g.offlineCheckpoint()!;old.protocolVersion=41;const copy=Game.restoreOffline(old).offlineCheckpoint()!;
- assert.equal(PROTOCOL,42);assert.equal(copy.protocolVersion,42);assert.deepEqual(copy.settings,old.settings);assert.deepEqual(copy.player,old.player);assert.equal(copy.arenaId,old.arenaId);
+ assert.equal(copy.protocolVersion,PROTOCOL);assert.deepEqual(copy.settings,old.settings);assert.deepEqual(copy.player,old.player);assert.equal(copy.arenaId,old.arenaId);
  assert.throws(()=>Game.restoreOffline({...old,contentRevision:'unknown'}),/versionMismatch/);assert.throws(()=>Game.restoreOffline({...old,serverOnly:true}),/versionMismatch/);
  assert.throws(()=>Game.restoreAuthoritative({...g.authoritativeCheckpoint(),protocolVersion:41}),/versionMismatch/);
 });

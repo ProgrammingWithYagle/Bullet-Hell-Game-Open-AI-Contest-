@@ -1,0 +1,38 @@
+✔ Cancel keeps a newer load intact after the older join returns success (452.611ms)
+✔ Cancel keeps a newer load intact after the older join returns error (294.8821ms)
+✔ Escape cancels before artwork or audio settles and late completions do not reopen the game (232.9805ms)
+✔ password eye buttons reveal exact typed text without submitting or changing it; cancel clears the form (4.1042ms)
+✔ host invite and waiting-room password controls render only the authorized value and clear it on owner change (5.0796ms)
+✔ explicit host buttons send Pause/Continue, menu state alone sends nothing, and ending needs confirmation (5.631ms)
+✔ ending an encounter clears queued actions without inventing a clear or a player-down reason (1.2437ms)
+✔ issued42local Practice keeps build/map/economy identity while server checkpoints remain strict (3.3294ms)
+✔ all fifteen catalogs include the exact authored host-control and password notices (24.6619ms)
+✔ host-only pause freezes real peers, chat stays live, leaving resumes and transfers private invite access, end reaches everyone (1139.1439ms)
+✔ explicit pause holds the real intermission clock, rejects transactions, and Continue restores the same remaining time (511.1662ms)
+✖ a dropped paused host reconnects without taking host control back or stopping the remaining player (6378.1645ms)
+✔ a manually paused journal renews its lease without stepping the game or its timers (4.6898ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 12
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10245.6369
+
+✖ failing tests:
+
+test at tests\host-match-network.test.ts:1:6139
+✖ a dropped paused host reconnects without taking host control back or stopping the remaining player (6378.1645ms)
+  AssertionError [ERR_ASSERTION]: Host state timed out
+      at until (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\host-match-network.test.ts:14:82)
+      at async TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\host-match-network.test.ts:70:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

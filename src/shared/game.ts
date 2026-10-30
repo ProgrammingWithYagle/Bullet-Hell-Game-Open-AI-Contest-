@@ -487,6 +487,13 @@ export class Game {
       p.lastInputAt = this.tick;
     }
   }
+  clearInputs() {
+    for (const p of this.players.values()) {
+      p.ack = p.pending.at(-1)?.sequence ?? p.ack;
+      p.pending = []; p.input = {...idleInput(), sequence: p.ack, aim: p.aim}; p.wasFiring = false;
+      p.lastInputAt = this.tick; p.reviveProgress = 0; p.reviveTarget = '';
+    }
+  }
   submitInput(id: string, input: unknown): boolean {
     const p = this.players.get(id);
     if (
@@ -733,6 +740,13 @@ export class Game {
     if (this.settings.mode !== 'endless' || this.encounter < 1
       || !['mutationVote','contractVote','shop','loading'].includes(this.phase)) return false;
     this.phase = 'victory'; this.phaseEnds = 0; this.votes.clear();
+    return true;
+  }
+  endByHost(): boolean {
+    if (this.phase === 'victory' || this.phase === 'defeat') return false;
+    this.clearInputs(); this.votes.clear();
+    if (this.secretStatus === 'active') this.secretStatus = 'failed';
+    this.phase = 'defeat'; this.phaseEnds = 0; this.boss.defeatedAt = 0;
     return true;
   }
   private modifier(key: string) {

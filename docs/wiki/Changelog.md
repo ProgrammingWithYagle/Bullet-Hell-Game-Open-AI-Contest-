@@ -1,6 +1,23 @@
 # Changelog
 
-Development build **2026.10.29-connection-clarity**, protocol 42. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.29-host-controls**, protocol 43. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-29 — Host passwords and explicit match controls
+
+### See the password when you need it
+
+- Password entry has an eye button to show or hide the exact text being typed. The host can also reveal the room password beside the code in the waiting room and during play. Reveal buttons have translated accessible names and never submit a form.
+- A successful room join keeps the entered invitation password only in that Session’s private memory until leaving. Only the current host’s UI receives the value. A newly promoted host may reveal the password they already entered; ordinary participants do not see it in room details. Plaintext stays out of shared state, listings, metadata, saves, application browser storage and logs. Server verification remains independently salted scrypt.
+
+### Pause the match deliberately
+
+- Online settings, chat and guides keep the match running. Only the current host has explicit Pause match and Continue match buttons. The authority rejects guest pause commands. An actual pause freezes simulation ticks, combat time, warnings, effects and intermission countdowns, and clears queued inputs. Chat and connections still work; journal leases can renew without advancing the game.
+- If a paused host leaves or disconnects, play resumes automatically and host controls pass to a connected teammate. A returning former host does not take control back automatically. Solo keeps its existing menu pause behavior.
+
+### Choose whether to leave or end for everyone
+
+- Leaving a room keeps remaining teammates playing. The host may instead choose End game for everyone and confirm it. All connected players receive an explicit host-ended results screen, the pause is cleared and new joins are closed. No boss clear or campaign victory is invented; only already-earned results can qualify.
+- Protocol43 requires matching clients and server. Known issued protocol42 local Practice saves retain map/build/economy identity through the complete restore validator; authoritative server checkpoints stay version-strict. Prior frozen previews, packages and raw reports remain preserved. Software/transport checks are separate from human/rendered, device, listening, native-language and WAN acceptance.
 
 ## 2026-10-29 — Clear connection progress and a working Cancel action
 

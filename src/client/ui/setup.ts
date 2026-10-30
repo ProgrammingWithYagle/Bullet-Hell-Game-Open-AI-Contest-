@@ -20,6 +20,7 @@ import { data, implementedBossIds } from '../../shared/game.ts';
 import { implementedClassIds, type ClassId, type BossId } from '../../shared/protocol.ts';
 import { Session, type ConnectionOptions,type RoomJoin,type RoomJoinRetry } from '../session.ts';
 import {promptRoomPassword} from './room-password.ts';
+import {passwordToggleMarkup,bindPasswordVisibility} from './password-visibility.ts';
 import {validRoomPassword} from '../../shared/room-password-policy.ts';
 import { assets } from '../assets.ts';
 import { bossClassification } from '../threat-text.ts';
@@ -160,7 +161,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
         )
         .join(
           '',
-        )}</div><p class="muted">${e(t(visibility === 'offline' ? 'ui.offlineNotice' : 'ui.practiceNotice'))}</p>${visibility !== 'offline' ? `<p class="muted">${e(t('ui.leaderboardPrivacy'))}</p>` : ''}${visibility!=='offline'?`<label class="name-label room-password-label">${e(t('ui.roomPasswordOptional'))}<input id="host-room-password" type="password" autocomplete="new-password" maxlength="128" aria-describedby="host-password-help"></label><p id="host-password-help" class="room-password-help">${e(t('ui.roomPasswordHelp'))}</p>`:''}${capacityNotice()}${button('launch', t(visibility === 'offline' ? 'ui.play' : 'ui.createRoom'), 'play', 'class="primary launch"')}</section></div>${navigation(false, true)}`;
+        )}</div><p class="muted">${e(t(visibility === 'offline' ? 'ui.offlineNotice' : 'ui.practiceNotice'))}</p>${visibility !== 'offline' ? `<p class="muted">${e(t('ui.leaderboardPrivacy'))}</p>` : ''}${visibility!=='offline'?`<label class="name-label room-password-label">${e(t('ui.roomPasswordOptional'))}<span class="password-field"><input id="host-room-password" type="password" autocomplete="new-password" maxlength="128" aria-describedby="host-password-help">${passwordToggleMarkup('host-room-password',t)}</span></label><p id="host-password-help" class="room-password-help">${e(t('ui.roomPasswordHelp'))}</p>`:''}${capacityNotice()}${button('launch', t(visibility === 'offline' ? 'ui.play' : 'ui.createRoom'), 'play', 'class="primary launch"')}</section></div>${navigation(false, true)}`;
     if(TESTING_BUILD&&page==='home'){
       const banner=document.createElement('p');banner.className='testing-banner';banner.textContent=t('ui.testingBuild');
       content.prepend(banner);
@@ -274,7 +275,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
             bossClassification(option.value, selected.practiceVariant);
       };
     const hostPasswordInput=host.querySelector<HTMLInputElement>('#host-room-password');
-    if(hostPasswordInput){hostPasswordInput.value=hostPassword;hostPasswordInput.oninput=()=>{hostPassword=hostPasswordInput.value;};}
+    if(hostPasswordInput){hostPasswordInput.value=hostPassword;hostPasswordInput.oninput=()=>{hostPassword=hostPasswordInput.value;};bindPasswordVisibility(host,t);}
     byId('launch', () => {
       if(visibility!=='offline'&&!validRoomPassword(hostPassword,true)){showError('ui.roomPasswordHelp');hostPasswordInput?.focus();return;}
       const password=visibility==='offline'?undefined:hostPassword;hostPassword='';if(hostPasswordInput)hostPasswordInput.value='';
