@@ -33,3 +33,9 @@ A failed download leaves the current language selected and shows a retry notice.
 Choosing a cosmetic while a language is loading keeps that language request active.
 
 Cosmetic choices update appearance only. Importing a profile applies its preferences, so an appearance change cannot restore an older saved language after a startup download failed.
+
+## First visit and automatic names
+
+The first visit offers all fifteen languages by their native names. Choose one, then press **Continue**. Previewing does not save an automatic suggestion; Continue saves the choice. Returning players with a valid saved preference go straight to the menu. A failed download can be retried, and a saving failure still allows play with a notice.
+
+A fresh New run, Start gently or Join room setup gives an automatic display name in the current language. Once setup has started, changing language keeps that established name. Going back through setup and switching Solo/public/private also keep it. An empty name uses the same setup’s original automatic fallback. Names you type are never translated. Returning home and starting a fresh setup updates only an automatic name to the new language.

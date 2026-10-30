@@ -29,11 +29,15 @@ import { icon } from './icons.ts';
 import { modePreviewMarkup } from './mode-preview.ts';
 import {mapCollage} from './map-collage.ts';
 import {homeGalleryMarkup,bindHomeGallery} from './home-gallery.ts';
+import {mountLanguageWelcome} from './language-welcome.ts';
+import {SetupDisplayName} from '../display-name.ts';
 import { escape as e } from './html.ts';
 import { tutorial } from './tutorial.ts';
 import { savedBoundary } from '../storage.ts';
 import { onlinePlaytestSlots } from '../deployment.ts';
 type Hooks = {
+  firstVisitLanguage?: boolean;
+  languageChosen?: () => void;
   resume: () => void;
   launch: (
     online: boolean,
@@ -56,6 +60,12 @@ let selected: ConnectionOptions = {
   openingArenaId: 'gatehouse',
   arenaSelection: 'fixed',
 };
+const displayName = new SetupDisplayName();
+const beginName = () => { selected.name = displayName.start(t('ui.defaultDisplayName')); };
+const captureName = (host:HTMLElement) => {
+  const value = host.querySelector<HTMLInputElement>('#name')!.value;
+  selected.name = displayName.commit(value);
+};
 let arenaId = 'gatehouse',
   visibility: 'offline' | 'public' | 'private' = 'offline';
 export const setupOptions = () => ({ ...selected });
@@ -71,7 +81,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
   let pageCleanup = () => {};
   let hostPassword='';
   let homeGalleryIndex=0;
-  let page = retryJoin?'join':initialRecords ? 'leaderboards' : 'home',
+  let page = hooks.firstVisitLanguage?'language':retryJoin?'join':initialRecords ? 'leaderboards' : 'home',
     previewClass: string = selected.classId,
     previewMode: string = selected.mode,
     previewMap = arenaId;
@@ -126,6 +136,14 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
     pageCleanup();
     const cleanups: (() => void)[] = [];
     pageCleanup = () => { for (const cleanup of cleanups.splice(0)) cleanup(); };
+    if (page === 'language') {
+      cleanups.push(mountLanguageWelcome(host,saved=>{
+        hooks.languageChosen?.();page='home';render();
+        (host.querySelector<HTMLElement>('#gentle-start')??host.querySelector<HTMLElement>('#new-run'))?.focus();
+        if(!saved)showError('ui.errorSave');
+      }));
+      return;
+    }
     if (!difficultyAvailable(selected.difficulty)) selected.difficulty = 'normal';
     if(['insane','hellish'].includes(selected.difficulty))selected.practiceVariant=encounterVariant(selected.difficulty);
     const stage = steps.indexOf(page);
@@ -190,11 +208,13 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
       cleanups.push(mountLan(
         content,
         (endpoint) => {
+          beginName();
           selected.serverEndpoint = endpoint;
           visibility = 'public';
           go('class');
         },
         (endpoint) => {
+          beginName();
           selected.serverEndpoint = endpoint;
           go('join');
         },
@@ -219,12 +239,14 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
     };
     byId('brand-home', () => go('home'));
     byId('new-run', () => {
+      beginName();
       selected.serverEndpoint = undefined;
       visibility = 'offline';
       go('class');
     });
     byId('resume-boundary', hooks.resume);
     byId('gentle-start', () => {
+      beginName();
       selected = { ...selected, classId: 'soldier', mode: 'short', difficulty: 'baby',
         openingBossId: 'constable', openingArenaId: 'gatehouse', arenaSelection: 'fixed', practiceVariant: 'normal',
         serverEndpoint: undefined };
@@ -235,6 +257,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
       go('review');
     });
     byId('join', () => {
+      beginName();
       selected.serverEndpoint = undefined;
       go('join');
     });
@@ -286,7 +309,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
     byId('launch', () => {
       if(visibility!=='offline'&&!validRoomPassword(hostPassword,true)){showError('ui.roomPasswordHelp');hostPasswordInput?.focus();return;}
       const password=visibility==='offline'?undefined:hostPassword;hostPassword='';if(hostPasswordInput)hostPasswordInput.value='';
-      selected.name = host.querySelector<HTMLInputElement>('#name')!.value.trim() || 'Survivor';
+      captureName(host);
       hooks.launch(
         visibility !== 'offline',
         { ...selected },
@@ -362,13 +385,13 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
     host.querySelectorAll<HTMLButtonElement>('[data-visibility]').forEach(
       (b) =>
         (b.onclick = () => {
-          selected.name = host.querySelector<HTMLInputElement>('#name')!.value.trim() || 'Survivor';
+          captureName(host);
           visibility = b.dataset.visibility as typeof visibility;
           render(`[data-visibility="${visibility}"]`);
         }),
     );
     const nameInput = host.querySelector<HTMLInputElement>('#name');
-    if (nameInput) nameInput.oninput = () => { selected.name = nameInput.value; };
+    if (nameInput) nameInput.oninput = () => { displayName.edit(nameInput.value); selected.name = nameInput.value; };
     if (page === 'settings') {
       host.querySelector<HTMLDetailsElement>('details')!.open = true;
       hooks.bindSettings();
@@ -378,7 +401,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
       cleanups.push(() => { for (const query of queries) void query.close().catch(() => {}); queries.clear(); });
       host.querySelector<HTMLSelectElement>('#join-class')!.onchange = event => { selected.classId = (event.target as HTMLSelectElement).value as ClassId; };
       const capture = () => {
-        selected.name = host.querySelector<HTMLInputElement>('#name')!.value.trim() || 'Survivor';
+        captureName(host);
         selected.classId = host.querySelector<HTMLSelectElement>('#join-class')!.value as ClassId;
       };
       const launchJoin=(join:RoomJoinRetry,locked:boolean,retry=false)=>{

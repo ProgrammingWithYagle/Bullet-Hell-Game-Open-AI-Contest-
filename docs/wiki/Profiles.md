@@ -35,3 +35,9 @@ Invalid files and saving failures have different messages. Saving failures keep 
 Cosmetic changes leave an unrelated pending language choice active.
 
 Cosmetic choices update appearance only. Importing a profile applies its preferences, so an appearance change cannot restore an older saved language after a startup download failed.
+
+## First visit and automatic names
+
+Before your first visit to the home menu, choose a language and press **Continue**. Existing valid saved preferences are kept, and the menu language selector remains available later.
+
+A fresh New run, Start gently or Join room setup gives an automatic display name in the current language. Once setup has started, changing language keeps that established name. Going back through setup and switching Solo/public/private also keep it. An empty name uses the same setup’s original automatic fallback. Names you type are never translated. Returning home and starting a fresh setup updates only an automatic name to the new language.

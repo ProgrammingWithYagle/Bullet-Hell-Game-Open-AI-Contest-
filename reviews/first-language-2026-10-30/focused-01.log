@@ -1,0 +1,45 @@
+✔ Cancel keeps a newer load intact after the older join returns success (621.3907ms)
+✔ Cancel keeps a newer load intact after the older join returns error (343.7962ms)
+✔ Escape cancels before artwork or audio settles and late completions do not reopen the game (252.7939ms)
+✔ a saved language that fails to load still reaches the usable English menu with a retry notice (205.8739ms)
+✔ all six opening arenas show the real bounds, cover, spawns and difficulty hazards (31.7639ms)
+✔ welcome, map legends and difficulty explanations cover all fifteen supported locales (2.7737ms)
+✔ mode previews describe all five authored run lengths and each difficulty has a distinct non-fallback symbol (1.164ms)
+✔ compiled public setup shares the clear first-run flow and preserves its audience boundary (873.5046ms)
+✔ compiled testing setup shares the clear first-run flow and preserves its audience boundary (366.0654ms)
+✔ actual armory presents all seven classes' existing names and prices while inspection and unaffordable buys spend nothing (131.7896ms)
+✔ catalytic warnings retain their real radius and produce a bounded local eruption with a static reduced-motion alternative (5.9815ms)
+✔ first-visit detection retains valid existing preferences and recovers from missing or corrupt ones (2.9165ms)
+✔ automatic names change at new setup boundaries while typed names and mid-setup fallbacks stay fixed (0.3006ms)
+✔ the welcome page precedes setup, previews without saving, and Continue saves once then focuses first-time play (834.0275ms)
+✔ welcome language failures keep Continue usable and newer choices cancel older downloads (263.7594ms)
+✔ closing an unfinished welcome page cancels its download and does not invent a saved choice (237.0744ms)
+✔ a blocked preference save still allows play and explains the save failure (294.4538ms)
+✔ real setup seeds its automatic name only on new setup and join boundaries, retaining all choices mid-setup (430.6439ms)
+✔ first startup requires an explicit language choice once and does not store a detected suggestion (428.9644ms)
+✔ all fifteen languages provide a short game-safe default name and source-backed welcome text (31.5872ms)
+✔ the latest language choice wins even when the older download finishes later (198.352ms)
+✔ choosing English cancels an older RTL language result without reversing document direction (90.412ms)
+✔ an aborted language request never changes the catalog, page direction or saved preference (73.1648ms)
+✔ obsolete language failures are ignored while a current failure preserves the working language and can retry (79.4987ms)
+✔ leaving a setup page aborts its pending language choice without saving or redrawing the next page (369.6231ms)
+✔ a language load error remains on the current page with a retry and the current selection (291.9483ms)
+✔ a completed language change keeps the current text draft, cursor and focused field (297.2486ms)
+✔ a working language change reports a storage error without reverting to an inconsistent menu (274.6374ms)
+✔ a cosmetic profile refresh keeps the pending language choice after startup from en (451.9328ms)
+✔ a cosmetic profile refresh keeps the pending language choice after startup from fr (687.2671ms)
+✔ leaving Profile while a file is read prevents a late import from replacing saved progress (495.3229ms)
+✔ a pending profile import ignores conflicting file and cosmetic actions and remains usable afterwards (167.2642ms)
+✔ valid profile files report storage failures accurately and keep the previous bytes available to export (167.025ms)
+✔ a disposed profile cannot save from its detached cosmetic or file controls (130.8573ms)
+✔ a successful profile import keeps its notice and returns focus to the current import control (191.4515ms)
+✔ actual setup ignores an older profile refresh after moving to a different page (347.6994ms)
+✔ an imported language refreshes its owning setup and keeps the success notice and import focus (288.1254ms)
+ℹ tests 37
+ℹ suites 0
+ℹ pass 37
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6463.3205

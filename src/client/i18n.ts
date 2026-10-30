@@ -23,7 +23,7 @@ export const languages = [
 let catalog: Catalog = english;
 export let locale = 'en';
 let languageRequest = 0;
-export async function setLanguage(id: string, signal?: AbortSignal) {
+export async function setLanguage(id: string, signal?: AbortSignal, persist = true) {
   if (signal?.aborted) return false;
   const request = ++languageRequest;
   if (!languages.some(([code]) => code === id)) id = 'en';
@@ -40,7 +40,7 @@ export async function setLanguage(id: string, signal?: AbortSignal) {
   document.documentElement.lang = id;
   document.documentElement.dir = catalog.meta.direction;
   try {
-    localStorage.setItem('ga-language', id);
+    if (persist) localStorage.setItem('ga-language', id);
   } catch {}
   return true;
 }

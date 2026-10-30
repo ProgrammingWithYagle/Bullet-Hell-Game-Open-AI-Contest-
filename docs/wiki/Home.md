@@ -4,7 +4,7 @@
 
 Dodge attacks, defeat bosses and spend your rewards between fights. Play Solo or team up with friends in this cooperative zombie bullet-hell game.
 
-**Current development build: 2026.10.30-profile-navigation.** The game is still in development. The public demo and published Windows download below are older versions.
+**Current development build: 2026.10.30-first-language.** The game is still in development. The public demo and published Windows download below are older versions.
 
 ## New here?
 
@@ -47,7 +47,7 @@ Newer local Windows review packages have separate source, extraction/copy and na
 <details>
 <summary>Development and verification</summary>
 
-Current source is version 0.3.0, protocol 43 on [draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14). The [current publication and verification evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/tree/feat/first-playable-loop/reviews/profile-navigation-2026-10-30) records source CI and Wiki synchronization. Current development source passes 897 local software checks. Local Windows reviews have separate source, file-copy and native-runtime evidence; Getting Started links the completed packages. Rendered/human acceptance remains separate. [Development Progress](Development-Progress) tracks remaining work; [Changelog](Changelog) records each update. [Architecture](Architecture), [Hosting and Recovery](Hosting-and-Recovery), [Contributing](Contributing) and [Credits](Credits) provide the technical and project references.
+Current source is version 0.3.0, protocol 43 on [draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14). The [current publication and verification evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/tree/feat/first-playable-loop/reviews/first-language-2026-10-30) records source CI and Wiki synchronization. Current development source passes 906 local software checks. Local Windows reviews have separate source, file-copy and native-runtime evidence; Getting Started links the completed packages. Rendered/human acceptance remains separate. [Development Progress](Development-Progress) tracks remaining work; [Changelog](Changelog) records each update. [Architecture](Architecture), [Hosting and Recovery](Hosting-and-Recovery), [Contributing](Contributing) and [Credits](Credits) provide the technical and project references.
 
 The latest [continuation checkpoint](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/CHECKPOINT_2026_10_25.md) distinguishes current source, frozen previews, CI, Wiki and the current local Windows review package. Protected main and external deployment remain separate boundaries.
 
@@ -73,3 +73,9 @@ The view leaves space for full bosses and survivors near the map edges, with the
 ## Browse the artwork
 
 Use the left and right arrows on the home screen to switch between the main cover, the seven survivors and six map paintings. The small page buttons jump to an image. Keyboard arrows, Home and End work while the gallery has focus. Pictures switch only when you choose, and returning from setup remembers your image for that menu session. The same gallery appears in public and testing builds.
+
+## First visit and automatic names
+
+On your first visit, choose a display language and press **Continue** before the home menu. Existing saved language choices are kept. You can change language later from the menu.
+
+A fresh New run, Start gently or Join room setup gives an automatic display name in the current language. Once setup has started, changing language keeps that established name. Going back through setup and switching Solo/public/private also keep it. An empty name uses the same setup’s original automatic fallback. Names you type are never translated. Returning home and starting a fresh setup updates only an automatic name to the new language.

@@ -1,6 +1,6 @@
 # Windows portable development app
 
-The current source build is **2026.10.30-profile-navigation / protocol43**. It guards profile imports and language changes, preserves editing position and improves error/startup handling. [The current source review](../reviews/profile-navigation-2026-10-30) records exact verification. The prior menu-reliability package below is sealed; a matching profile-navigation package follows separately.
+The current source build is **2026.10.30-first-language / protocol43**. It guards profile imports and language changes, preserves editing position and improves error/startup handling. [The current source review](../reviews/first-language-2026-10-30) records exact verification. The prior menu-reliability package below is sealed; a matching profile-navigation package follows separately.
 
 The [published Windows download](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/releases/tag/dev-windows-20261024-1) remains the immutable October24 protocol13 build. Source, Wiki and local package work do not replace it. Its741136155-byte archive has SHA256 **b2a87f08f002e35a23558ab9b4bcca3e997309fd5a567c7e014498a54fe7ae3c**, source52552c0d4465b918d7cde2ab3c2aa7f1d7eb045e. [Exact public-byte evidence](../reviews/windows-prerelease-public-download.json) remains separate.
 
@@ -53,3 +53,7 @@ Source d46eb13c4c92cffa0bf4c9fcad2e3a89907c5af8, build2026.10.29-home-gallery/pr
 ## Matching menu-reliability review
 
 **Grave_Accord_2026.10.30_Menu_Reliability_Public_Review.zip**, source **c80974226cfc30ad466a4856ff651455eb97c02b**, 842947347bytes, SHA256 **acdb4cffa075de04acad2ba0aa40f374881c3016e20faa720f5163b8df27bd1a**. [Exact package status](../reviews/windows-menu-reliability-2026-10-30/package-status.json) and [delivery details](../reviews/windows-menu-reliability-2026-10-30/DELIVERY.md) bind all1899files on three copies, six actual native diagnostics and post-native rehashes. The six LAN-menu regressions, current gallery, camera/lava and host controls are included. Native human/rendered/device/physical-second-machine acceptance remains open.
+
+## Verified preceding profile/navigation review
+
+Source8368410eee06efeee698ee3c1360060b4db5bc0f/build2026.10.30-profile-navigation/protocol43 has a sealed local Windows review, **Grave_Accord_2026.10.30_Profile_Navigation_Public_Review.zip**,842973204bytes,SHA256 **3646208a9fd768209e60a274a29b516fe623b7b11227e8267bb117d85f5e63d8**. [Exact review](../reviews/windows-profile-navigation-2026-10-30-r02/package-status.json) verifies all1899files before/after6native offline/LAN diagnostics on3copies, including Japanese paths beyond280characters. It precedes the first-visit/name follow-up.

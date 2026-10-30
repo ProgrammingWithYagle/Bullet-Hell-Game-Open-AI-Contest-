@@ -170,3 +170,9 @@ For language selection, the latest choice wins. Leaving its page cancels a pendi
 Changing a profile cosmetic keeps a language choice that is still loading; it does not reset that choice to the profile’s current language.
 
 Cosmetic choices update appearance only. Importing a profile applies its preferences, so an appearance change cannot restore an older saved language after a startup download failed.
+
+## First visit and automatic names
+
+Before your first visit to the home menu, choose a language and press **Continue**. Existing valid saved preferences are kept, and the menu language selector remains available later.
+
+A fresh New run, Start gently or Join room setup gives an automatic display name in the current language. Once setup has started, changing language keeps that established name. Going back through setup and switching Solo/public/private also keep it. An empty name uses the same setup’s original automatic fallback. Names you type are never translated. Returning home and starting a fresh setup updates only an automatic name to the new language.

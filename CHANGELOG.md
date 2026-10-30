@@ -1,6 +1,18 @@
 # Changelog
 
-Development build **2026.10.30-profile-navigation**, protocol 43. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.30-first-language**, protocol 43. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-30 — Choose a language before your first game
+
+### A clear first visit
+
+- New players choose from all fifteen languages before the home menu. Native language names make the choices readable before selection. Continue saves the choice; returning players with an existing valid preference go straight to the menu. The language selector remains available later.
+- Previewing a language does not save a detected suggestion. Leaving an unfinished chooser cancels its request. Loading errors allow retry; a save failure still allows play with a notice. The same page appears in public and testing builds.
+
+### Names stay consistent during setup
+
+- A fresh New run, Start gently or Join room setup gives an automatic display name in the current language. Changing language during that setup keeps the established name, even when switching online/private choices or going back through setup. An empty name uses that setup’s original automatic fallback.
+- Names typed by a player are never translated, including when they match an automatic name. Returning home and beginning a fresh setup updates only an automatic name to the new language. The language policy, profile cancellation and multiplayer authority rules stay intact.
 
 ## 2026-10-30 — Keep profile and language changes on the right page
 

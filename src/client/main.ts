@@ -55,6 +55,7 @@ import './ui/boss-defeat.css';
 import './ui/waiting-room.css';
 import './ui/interface-clarity.css';
 import './ui/home-gallery.css';
+import './ui/language-welcome.css';
 import { CombatScene } from './scene.ts';
 import { Session, type ConnectionOptions,type RoomJoin,type RoomJoinRetry } from './session.ts';
 import {untilAborted} from './request-lifetime.ts';
@@ -63,6 +64,7 @@ import { Prediction } from './prediction.ts';
 import { assets } from './assets.ts';
 import { AudioBus } from './audio.ts';
 import { initialLanguage, locale, number, setLanguage, t } from './i18n.ts';
+import {hasLanguagePreference} from './language-preference.ts';
 import { mountSetup, setupOptions } from './ui/setup.ts';
 import { shopMarkup, bindShop, supplyGlyph } from './ui/shop.ts';
 import { icon } from './ui/icons.ts';
@@ -87,6 +89,7 @@ let session: Session | undefined,
   lastPhase = '',
   busy = false;
 let setupCleanup: (() => void) | undefined;
+let firstVisitLanguage = !hasLanguagePreference(localStorage);
 let launchSerial = 0;
 const esc = (v: unknown) =>
   String(v).replace(
@@ -192,6 +195,8 @@ async function menu(initialRecords?: TeamBoardSelection,retryJoin?:RoomJoinRetry
   setupCleanup?.();
   document.body.classList.remove('playing', 'preparing');
   setupCleanup = mountSetup(app, {
+    firstVisitLanguage,
+    languageChosen: () => { firstVisitLanguage = false; },
     resume: () => {
       void begin(false, undefined, 'public', undefined, true);
     },
@@ -941,8 +946,8 @@ document.addEventListener('visibilitychange', () => {
   if (document.hidden && session && !session.online && !paused && !$('loading-expedition')) togglePause();
 });
 let startupLanguageError = false;
-try { await setLanguage(initialLanguage()); }
-catch { startupLanguageError = true; await setLanguage('en'); }
+try { await setLanguage(initialLanguage(),undefined,!firstVisitLanguage); }
+catch { startupLanguageError = true; await setLanguage('en',undefined,!firstVisitLanguage); }
 const startupProfileError = profileError;
 await menu();
 if (startupLanguageError && !startupProfileError) notice(t('ui.errorLanguage'));
