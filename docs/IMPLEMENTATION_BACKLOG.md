@@ -1,60 +1,24 @@
 # Implementation backlog and contest acceptance map
 
-Player ideas for later class shield-cap progression and selective attack blocking are recorded separately in [Future design ideas](FUTURE_DESIGN_IDEAS.md). They are deferred and do not authorize new feature work now.
+Current product source is **2026.10.30-welcome-finish / protocol 43**. The [current checkpoint](CHECKPOINT_2026_10_25.md), [single implementation ledger](development-work-ledger.json) and [derived progress](DEVELOPMENT_PROGRESS.md) distinguish implementation from human and release acceptance. Current-content polish for first-time players is the priority; substantial new content stays deferred.
 
-Latest implemented response: [Crazed forms, compact arenas and phase clarity](CRAZED_HORIZON.md), build **2026.10.26-crazed-horizon / protocol 21**. [Current checkpoint](CHECKPOINT_2026_10_25.md), [single ledger](development-work-ledger.json) and [derived progress](DEVELOPMENT_PROGRESS.md) are authoritative. The game remains unfinished.
+There are66 playable identities:65 ordinary and1 secret. The original expansion target remains150 ordinary plus secrets, with85 ordinary identities remaining. Twelve of 60 original-boss quality passes are implemented;48 remain, with final whole-boss human acceptance open. Seven class revamps / 21 ability transformations,378 skills / 63 paths, 28 weapons, six maps, five modes and fifteen catalogs are implemented. The optional 54-skill map and five secondary topology revisions remain distinct from final visual/device/balance acceptance. [Future design ideas](FUTURE_DESIGN_IDEAS.md) records deferred bots/story, shield-cap branches and selective blocking.
 
-Current source has **66 playable identities: 65 ordinary plus one secret**, with **85 additional ordinary identities** remaining toward at least 150 ordinary plus secrets. Two original-roster quality passes are implemented (Constable/Warden); 58 individual assessments/redesigns remain. The common Crazed form layer adds no new identity or individual quality credit. Seven class implementation passes/21 ability transformations and the optional all 54 skill map are implemented; human/rendered/native-language/device acceptance remains open.
+## Current polish and evidence
 
-Early Watch and Small Wakes are six integrated original encounters with 72 selected poses, six original scores and fifteen-locale help. Every boss has Standard/Brutal/Crazed admission and an individual original theme. Seven classes, 378 skills / 63 paths, 28 weapons, six maps and five modes are implemented. Selected motion totals 1,542 poses, including all seven basic survivor sets; special-ability/boss action production and bespoke transformation animation remain. Four spacious maps are compacted; the other two retain their narrow routes. Insane forces Brutal and Hellish Crazed; assistance rules remain as documented in the current checkpoint.
+The first-visit language chooser and stable automatic-name policy have limited positive human feedback at testing at 5252. Controls retain focus, cancel capture and present save outcomes. The follow-up removes an empty orange warning frame without removing actual language-loading/error messages. Current source verification and the matching previews/Windows package are recorded separately in the checkpoint; the preceding controls source passes 915 tests and both complete source/records CI jobs.
 
-The complete current pipeline passes **497 tests**, authored content/fifteen locales, TypeScript and production build. Both complete gameplay-source 6b28eb3 CI logs show 497/497/0. The separate actual-Game audit samples 3,876 phase/form/map combinations around initial casts. Exact current hashes, CI, frozen 5186 preview, Wiki publication and failed attempts are in `reviews/crazed-horizon-2026-10-26/`; always inspect actual current HEAD rather than treating an older green hash as current.
+[Current larger-team progression checks](../reviews/multiplayer-progression-2026-10-30/verification-01.json) cover an 8-player campaign, private 16-player Raid and 50-player Endless sample, all seven classes, earned purchases, equal-count votes, active input, host changes/reconnect, shared results, historical roster pagination and restart persistence. They use protected QA players and accelerated clears/deadlines. One initial 50-client join timeout remains preserved; standalone 50 and exact 16-then-50 instrumented repeats pass with unchanged game code and timeouts. Its cause is unproven. This does not complete rendered, ordinary balance, long endurance or WAN/hosted capacity acceptance.
 
-Major remaining work is the 85 new ordinary identities and 58 individual quality passes; remaining special/action art and rendered transitions; final balance/music/listening/native-language/device review; durable hosted recovery/rankings; active mixed-progression 8/16/50-player, WAN/full endurance and 49 scripted plus one rendered capacity acceptance; and a coordinated new Windows/browser release. The public Site remains protocol 4. The issued Windows archive remains immutable protocol 13. Current development requires a matching protocol 21 backend; no backend deployment is implied by these source/Wiki changes.
+## Remaining work and release boundaries
 
-The historical milestone paragraphs below retain their stage-local counts and evidence limits. They do not override the current ledger or imply that the already implemented profiles, modes, classes, basic survivor motion or skill map are absent.
+Human first-visit/compact/enlarged-text/RTL/controller/device review; final encounter and class balance; complete action art; listening and native-language review remain. Real mixed progression over full campaign/endurance windows, 49 scripted plus one rendered capacity, physical second-computer LAN and WAN/hosted measurements remain. Durable authority-written server records are implemented; globally deployed shared rankings and restart recovery still require coordinated hosting work. The older one-hour continuous-combat50-client measurement has a separately frozen Engineer-era runtime and remains historical.
 
-ProfileV1 now stores validated import/export, mastery, rescues, lore discoveries, cosmetic insignia, preferences, remapping and full-Hard difficulty unlocks. See [ProfileV1](PROFILE_V1.md).
+The published Site remains protocol 4 and the issued public Windows download protocol 13. Current local reviews, source, Wiki and draft PR updates do not replace those releases. Merging main, deployment/release replacement, paid provisioning and contest submission remain separate. Browser automation stays disabled. [Historical backlog and stage-local evidence](history/2026-10-30-backlog-before-multiplayer-review.md) preserves the former protocol 21 / 497-test snapshot unchanged.
 
-The complete current pipeline passes 484 tests, authored-content/fifteen-locale checks, TypeScript and production build. Exact source/artifact hashes are preserved in reviews/small-wakes-2026-10-26/runtime.json. Exact evidence is in reviews/runtime-verification.json. Native/audio audits and prior rendered samples are separate. Browser control was disabled in Work settings for the sixty-identity stage; no new rendered acceptance is claimed.
+## Original requested deliverables
 
-Major remaining work includes boss-history translation; full directional/action animation; final encounter deadline/uptime and balance measurements; verified deployed rankings/recovery; active 8/16/50-player and endurance acceptance; final Windows artifact/release acceptance and the coordinated browser release. Physical-device, native-speaker and human review require actual evidence. The public Site remains its earlier protocol-4 build; protected main remains a separate release boundary.
-
-The latest [balance/collision correction and throughput evidence](BALANCE_AND_COLLISION_RUNTIME.md) records exact health math, 210 progression combinations, same-tick destructible buildings and longer localhost probes. The completed one-hour local continuous-combat probe is documented separately below. Rendered/hosted/WAN capacity, full progression endurance and human balance remain open.
-
-The [issued Windows development package](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/releases/tag/dev-windows-20261024-1) and opt-in LAN authority pass all six native fixtures across the original, fresh ZIP extraction and ordinary Windows copy. All 1,633 members match exactly; physical second-machine LAN, manual rendering/audio and signed/release acceptance remain distinct gates.
-
-[Bounded recovery transport](BOUNDED_RECOVERY_TRANSPORT.md) preserves fifty developed builds and 2,400 purchase replies through the existing 64-KiB HTTP interface and an actual file-backed process replacement/owner race. This local evidence does not enable public recovery. Maximum-entropy state paging, participant credentials, historical departures and hosted integration remain open.
-
-The [Tank action library](TANK_ACTION_MOTION.md) adds 88 independently drawn poses across twenty clips, with source/atlas reconstruction and actual firing/dodge state tests. Complete rendered acceptance and the other characters' full libraries remain open.
-
-The [Engineer action library](ENGINEER_ACTION_MOTION.md) adds another twenty clips/88 poses and independent simultaneous-class presentation tests. Tank and Engineer each have all six directional action families drawn; rendered transition/human/device review and the other five survivor libraries remain open.
-
-The [Mage action library](MAGE_ACTION_MOTION.md) adds twenty clips/88 poses, whole-figure extraction with independent pixel reconstruction and four-direction authority-fired cast checks. This was the third completed basic class motion set; the later Soldier/Medic stage below completes all seven. Many boss action sets, special abilities and rendered/device/human acceptance stay open.
-
-The [Heavy and Assassin action libraries](HEAVY_AND_ASSASSIN_ACTION_MOTION.md) add forty clips/176 poses; this was the fifth completed basic class set. Soldier/Medic are completed in the later stage below; many boss action sets remain open.
-
-The [one-hour fifty-client probe](ONE_HOUR_ENDURANCE.md) passes local continuous-combat p99 at 21.41 ms, with 112.11 ms worst and 236 over-budget ticks retained. It is frozen Engineer-era runtime evidence with zero rendered clients and fixture-only invulnerability, not the full mixed-progression, hosted or rendered capacity gate.
-
-The [Soldier/Medic action and independent run libraries](SOLDIER_MEDIC_ACTION_MOTION.md) complete the basic six-family drawn set across seven survivors: 616 action poses and 204 run poses. Special-ability animation, many boss action sets and rendered/device/human acceptance remain open.
-
-The [bounded survivor drawing clock](SURVIVOR_MOTION_TIMING.md) prevents patch-limited skipped poses and fits Rescue Charge to its existing ten-tick duration. Fifty-millisecond lead/stall/reset bounds remain separate from authoritative gameplay and rendered-FPS acceptance.
-
-[Survivor texture delivery](SURVIVOR_TEXTURE_DELIVERY.md) reduces the selected survivor atlases from 462.88 to 211.09 MiB by exact decoded RGBA dimensions, while preserving original production pixels and world size. Boss atlas startup is bounded separately below; the complete scene and actual device GPU/FPS budgets remain open.
-
-[Boss texture loading](BOSS_TEXTURE_LOADING.md) keeps eight shared atlases, exact identities and two full current/recent boss atlases. This reduces that encounter set from 292.5 to at most 77.06 MiB by PNG dimensions. Real rendered delay/device/driver behavior remains an acceptance gate.
-
-[Hollow Constable motion](CONSTABLE_MOTION.md) adds nineteen complete idle/hurt/stagger/defeat poses while retaining the eight original attack frames. Cast presentation now holds anticipation until authoritative release; defeat settles once on world time. Exact reconstruction and seven authority/reward tests pass separately from rendered acceptance.
-
-[Arena ground artwork](ARENA_GROUND_ART.md) gives every map its own painted floor while keeping actual bounds, cover and spawns. Five new materials and the original Gatehouse have exact native/pixel/geometry bindings; final rendered scene readability and device budgets remain open.
-
-[Opening boss defeats](OPENING_BOSS_DEFEATS.md) add 56 complete poses and preserve 56 original live poses/world transforms. All nine opening-route identities now settle on defeat. Exact v2 references, updated cache arithmetic and real normal/Brutal reward/clock regressions remain separate from rendered/device/human acceptance.
-
-[Motion continuity](MOTION_CONTINUITY.md) fixes patch-cadence run/idle flashing, stabilizes facing, adds twelve Courier poses and reduces static reference texture area with exact world anchors. Human map/threat/portrait/boss/skill-tree feedback remains active.
-
-[Map routes and roster portraits](MAP_ROUTES_AND_SELECTION.md) remove secondary-map beds, vary cover topology/start axes and give Soldier/Medic three-quarter portraits at the same visible body height as the other classes. Fixed threats, stronger boss patterns, ability-changing talents and the optional branching tree remain active.
-
-All implementation stages remain authorized. These rows are acceptance requirements, not completion claims. Historical checkpoint prose is preserved in [the archived backlog](history/IMPLEMENTATION_BACKLOG-before-60.md).
+The following inventory preserves the original identifiers and requested acceptance scope. Its stage-local status wording is historical; use the current ledger/checkpoint above for implementation and verification.
 
 | ID | Stage | Subsystem | Priority | Deliverable and acceptance evidence | Rubric |
 | --- | --- | --- | --- | --- | --- |
@@ -95,16 +59,3 @@ All implementation stages remain authorized. These rows are acceptance requireme
 | S3-04 | Stage 3 | Main protection | P0 | Passing verify registered, PR/up-to-date/resolved/linear/deletion/force-push protection, zero approvals and no bypass actors | Execution |
 | S3-05 | Stage 3 | Release audit | P0 | SHA-256 manifest, fresh archive extraction, normal Windows copy, release/download/Wiki links | Execution, polish |
 | S3-06 | Stage 3 | Contest | P0 | Title/cover/description/controls/credits/URL/evidence packet; actual Handshake submission recorded separately | All four |
-
-The four rubric categories are equally important. This matrix is a production guide, not an assertion of a judge's score. Physical-device, human playtesting and native-speaker checks require actual people or devices; simulated evidence is labeled as simulated.
-
-
-Current runtime classification/offer rules are specified in [Fixed boss threats](FIXED_BOSS_THREATS.md). They supersede encounter-scaled boss ratings and strict primary-route fences for the three ordinary campaigns, while retaining finale roles. Fixed grade is separate from global difficulty and Brutal.
-
-Constable quality pass: collision-resolved patrol, crossing Cordon fans, pursuit/Lockdown rings with a common escape wedge, phase cleanup, eleven actual-authority/motion/art/save regressions and four shuffling poses are implemented. The other boss phase/mobility passes, ability-changing upgrades, implemented branching-tree view awaiting review and 88 new ordinary identities remain active. See [Constable patrol](CONSTABLE_PATROL.md).
-
-Direct solo boss-form practice is implemented on the final setup review: Standard form/Brutal for the opening encounter, fixed-grade B preview, separate global difficulty, validated boundary startup and five actual-authority/worker/network/locale regressions. See [Boss practice](BOSS_PRACTICE.md).
-
-[Optional expanded skill map](OPTIONAL_SKILL_MAP.md): all 54 existing skills for each class in one connected view, default-off setting, bounded zoom, keyboard navigation and strict local profile migration. Implementation is complete; rendered/human/device/native-language acceptance remains open. Ability-changing upgrades are a separate pending pass.
-
-Latest roster expansion: [Small Wakes](SMALL_WAKES_RUNTIME.md), three original integrated encounters. Current 66 bosses/65 ordinary leave 85 ordinary identities; quality work remains 58 original passes, human acceptance zero. See the single ledger for exact current counts.

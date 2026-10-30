@@ -1,0 +1,26 @@
+✔ a successful key change keeps its owning controls and keyboard focus with a saved notice (358.9165ms)
+✔ a failed control-mode save restores the displayed value and allows a focused retry (63.6522ms)
+✔ held-key repeats and IME composition cannot accidentally choose a new control (50.702ms)
+✔ disposed settings ignore detached and still-connected old actions and release captured events (41.3971ms)
+✔ closing a settings disclosure or losing focus cancels capture before the next key (45.6862ms)
+✔ leaving the actual setup settings page disposes its capture without waiting for a key or timer (686.77ms)
+✔ a conflicting binding stays unchanged and Tab or Escape can cancel capture without saving (43.0228ms)
+✔ mouse buttons, Space and the left stick have source-backed readable labels in all fifteen languages (98.8911ms)
+✔ clicking another menu control cancels capture without swallowing navigation or rebinding the mouse (50.6817ms)
+✔ first-visit detection retains valid existing preferences and recovers from missing or corrupt ones (2.0718ms)
+✔ automatic names change at new setup boundaries while typed names and mid-setup fallbacks stay fixed (0.2798ms)
+✔ the welcome page precedes setup, previews without saving, and Continue saves once then focuses first-time play (635.9356ms)
+✔ welcome language failures keep Continue usable and newer choices cancel older downloads (383.8821ms)
+✔ closing an unfinished welcome page cancels its download and does not invent a saved choice (356.855ms)
+✔ a blocked preference save still allows play and explains the save failure (360.8198ms)
+✔ real setup seeds its automatic name only on new setup and join boundaries, retaining all choices mid-setup (464.1856ms)
+✔ first startup requires an explicit language choice once and does not store a detected suggestion (647.9758ms)
+✔ all fifteen languages provide a short game-safe default name and source-backed welcome text (75.5806ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5008.9143

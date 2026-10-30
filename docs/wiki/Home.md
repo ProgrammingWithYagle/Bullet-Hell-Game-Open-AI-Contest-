@@ -4,7 +4,7 @@
 
 Dodge attacks, defeat bosses and spend your rewards between fights. Play Solo or team up with friends in this cooperative zombie bullet-hell game.
 
-**Current development build: 2026.10.30-control-settings.** The game is still in development. The public demo and published Windows download below are older versions.
+**Current development build: 2026.10.30-welcome-finish.** The game is still in development. The public demo and published Windows download below are older versions.
 
 ## New here?
 
@@ -47,7 +47,7 @@ Newer local Windows review packages have separate source, extraction/copy and na
 <details>
 <summary>Development and verification</summary>
 
-Current source is version 0.3.0, protocol 43 on [draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14). The [current publication and verification evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/tree/feat/first-playable-loop/reviews/control-settings-2026-10-30) records source CI and Wiki synchronization. Current development source passes 915 local software checks. Local Windows reviews have separate source, file-copy and native-runtime evidence; Getting Started links the completed packages. Rendered/human acceptance remains separate. [Development Progress](Development-Progress) tracks remaining work; [Changelog](Changelog) records each update. [Architecture](Architecture), [Hosting and Recovery](Hosting-and-Recovery), [Contributing](Contributing) and [Credits](Credits) provide the technical and project references.
+Current source is version 0.3.0, protocol 43 on [draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14). The [current publication and verification evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/tree/feat/first-playable-loop/reviews/welcome-finish-2026-10-30) records source CI and Wiki synchronization. Current development source passes 915 local software checks. Local Windows reviews have separate source, file-copy and native-runtime evidence; Getting Started links the completed packages. Rendered/human acceptance remains separate. [Development Progress](Development-Progress) tracks remaining work; [Changelog](Changelog) records each update. [Architecture](Architecture), [Hosting and Recovery](Hosting-and-Recovery), [Contributing](Contributing) and [Credits](Credits) provide the technical and project references.
 
 The latest [continuation checkpoint](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/CHECKPOINT_2026_10_25.md) distinguishes current source, frozen previews, CI, Wiki and the current local Windows review package. Protected main and external deployment remain separate boundaries.
 

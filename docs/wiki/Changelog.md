@@ -1,6 +1,13 @@
 # Changelog
 
-Development build **2026.10.30-control-settings**, protocol 43. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.30-welcome-finish**, protocol 43. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-30 — A cleaner first language screen
+
+### Choose a language without an empty warning box
+
+- The first language screen no longer gives its empty status area an orange warning frame. Actual language-loading and error messages remain readable and available to screen readers.
+- The game keeps the name Grave Accord in every language. The interface and automatic setup names follow the selected language; names stay consistent once setup begins, and typed names remain exact.
 
 ## 2026-10-30 — Change controls without losing your place
 

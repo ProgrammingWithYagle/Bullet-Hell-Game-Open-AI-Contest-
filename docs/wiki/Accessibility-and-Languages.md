@@ -43,3 +43,7 @@ A fresh New run, Start gently or Join room setup gives an automatic display name
 ## Changing controls
 
 In **Settings → Controls**, select an action and press the key or mouse button you want. A saved notice confirms the change and focus stays on the action. If saving fails, the displayed controls return to their saved values so you can retry. Duplicate or reserved bindings stay unchanged. **Tab** or **Escape** cancels a key choice; closing settings, returning to play, leaving the page or switching away from the window also cancels it. Mouse buttons, Space and the left stick use written labels in all fifteen languages.
+
+## Game title and language messages
+
+The game keeps the name **Grave Accord** in every display language. Interface text and automatic names use the chosen language under the setup rules above. The first language screen uses a plain status line for real loading or error messages; its empty status area has no warning frame. Human testing at 5252 found the chooser clear and the automatic names consistent in that trial. The styling follow-up still needs human comparison.
