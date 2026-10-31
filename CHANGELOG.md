@@ -1,6 +1,14 @@
 # Changelog
 
-Development build **2026.10.31-baker-oven**, protocol 46. The current contest Site uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.10.31-story-journal**, protocol 46. The current contest Site uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-10-31 — Story paths join the Field Journal
+
+### Twenty-two goals and sixty-six cosmetic stamps
+
+- Three new personal goals follow Story campaign clears, acts completed and the three recovered endings. The journal now has22goals and66cosmetic stamps; existing survivor letters and goals remain.
+- Act milestones use the best run started at the gate, with thresholds at5,10and15clears. Fragments and late arrivals do not inherit earlier acts. Endings use the first banked route per personal run, keeping old views and rewinds from multiplying credit.
+- All fifteen languages include new act/ending guidance. Preparing a Story goal opens the existing setup review with its canonical opening and choice-driven maps, and waits for an explicit launch. No profile write or combat power is granted by preparation.
 
 ## 2026-10-31 — Ash Baker opens a different oven
 

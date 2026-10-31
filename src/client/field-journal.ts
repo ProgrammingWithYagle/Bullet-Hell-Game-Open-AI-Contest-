@@ -1,3 +1,4 @@
+import { storyProgress } from "./story-progress.ts";
 import catalog from "../../content/catalog.json";
 import {
   implementedClassIds,
@@ -18,7 +19,15 @@ export type JournalPlan = {
 export type JournalGoal = {
   id: string;
   category: JournalCategory;
-  kind: "class" | "route" | "collection" | "endless" | "rescues" | "ensemble";
+  kind:
+    | "class"
+    | "route"
+    | "collection"
+    | "endless"
+    | "rescues"
+    | "ensemble"
+    | "storyActs"
+    | "storyEndings";
   classId?: ClassId;
   mode?: ModeId;
   progress: number;
@@ -38,11 +47,22 @@ const uniqueRuns = (profile: ProfileV1) => {
     else if (
       old.classId === r.classId &&
       old.mode === r.mode &&
-      old.difficulty === r.difficulty
+      old.difficulty === r.difficulty &&
+      old.firstEncounter === r.firstEncounter
     ) {
       old.clears = Math.max(old.clears, r.clears);
       old.rescues = Math.max(old.rescues, r.rescues);
       old.bossIds = [...new Set([...old.bossIds, ...r.bossIds])];
+      if (
+        old.mode === "story" &&
+        !old.fullCampaign &&
+        (r.fullCampaign ||
+          (r.storyChoices?.length ?? 0) > (old.storyChoices?.length ?? 0))
+      )
+        old.storyChoices = [...(r.storyChoices ?? [])];
+      old.campaignClears = Math.max(old.campaignClears, r.campaignClears);
+      old.teamClears = Math.max(old.teamClears, r.teamClears);
+      old.combatTicks = Math.max(old.combatTicks, r.combatTicks);
       old.fullCampaign ||= r.fullCampaign;
     }
   }
@@ -80,7 +100,7 @@ export function fieldJournal(profile: ProfileV1) {
         thresholds: [5, 15, 30],
       }),
     );
-  for (const mode of modes)
+  for (const mode of [...modes, "story"] as const)
     goals.push(
       goal({
         id: "route-" + mode,
@@ -145,6 +165,27 @@ export function fieldJournal(profile: ProfileV1) {
         runs.filter((r) => r.fullCampaign).map((r) => r.classId),
       ).size,
       thresholds: [3, 5, 7],
+    }),
+  );
+  const story = storyProgress({ ...profile, runs });
+  goals.push(
+    goal({
+      id: "story-acts",
+      category: "routes",
+      kind: "storyActs",
+      mode: "story",
+      progress: story.acts,
+      thresholds: [1, 2, 3],
+    }),
+  );
+  goals.push(
+    goal({
+      id: "story-endings",
+      category: "discoveries",
+      kind: "storyEndings",
+      mode: "story",
+      progress: story.endings.size,
+      thresholds: [1, 2, 3],
     }),
   );
   const leastPlayed = implementedClassIds.toSorted(

@@ -1,3 +1,4 @@
+import { storyJournalMessages } from "./story-journal.mjs";
 // Personal journal labels, authored in all launch languages. Native review pending.
 const keys = [
   "title",
@@ -565,5 +566,8 @@ export function fieldJournalMessages(locale) {
   const row = rows[locale];
   if (!row || row.length !== keys.length)
     throw Error("Field journal locale mismatch: " + locale);
-  return Object.fromEntries(keys.map((key, i) => ["journal." + key, row[i]]));
+  return {
+    ...Object.fromEntries(keys.map((key, i) => ["journal." + key, row[i]])),
+    ...storyJournalMessages(locale),
+  };
 }

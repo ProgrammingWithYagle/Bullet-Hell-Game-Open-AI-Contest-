@@ -41,12 +41,12 @@ function receipt(id: string, extra: Partial<RunReceipt> = {}): RunReceipt {
     ...extra,
   };
 }
-test("new profiles have nineteen attainable goals, 57 stamps, seven locked letters and no automatic launch or power", () => {
+test("new profiles have twenty-two attainable goals, 66 stamps, seven locked letters and no automatic launch or power", () => {
   const p = freshProfile(),
     m = fieldJournal(p);
-  assert.equal(m.goals.length, 19);
-  assert.equal(new Set(m.goals.map((g) => g.id)).size, 19);
-  assert.equal(m.maximumStamps, 57);
+  assert.equal(m.goals.length, 22);
+  assert.equal(new Set(m.goals.map((g) => g.id)).size, 22);
+  assert.equal(m.maximumStamps, 66);
   assert.equal(m.stamps, 0);
   assert.equal(m.letters.length, 0);
   for (const g of m.goals) {
@@ -219,9 +219,10 @@ test("all class letters, three-stamp route goals and ordinary discoveries can co
           campaignClears: catalog.modes.find((m) => m.id === mode)!.encounters!,
         }),
       );
+  for(let i=0;i<7;i++)p.runs.push(receipt('story-journal-full-'+i,{mode:'story',clears:15,teamClears:15,campaignClears:15,storyChoices:Array(14).fill(i%3)}));
   const before = JSON.stringify(p),
     m = fieldJournal(parseProfile(before));
-  assert.equal(m.stamps, 57);
+  assert.equal(m.stamps, 66);
   assert.equal(m.letters.length, 7);
   assert(m.goals.every((g) => g.complete));
   assert.equal(JSON.stringify(p), before);
@@ -262,7 +263,7 @@ test("journal controller filters without writes, keeps focus, hides locked lette
     (p: unknown) => plans.push(p),
   );
   context.after(dispose);
-  assert.equal(env.host.querySelectorAll("[data-journal-goal]").length, 19);
+  assert.equal(env.host.querySelectorAll("[data-journal-goal]").length, 22);
   assert.equal(env.host.querySelectorAll(".journal-letter").length, 0);
   const classes = env.host.querySelector('[data-journal-filter="classes"]')!;
   classes.click();

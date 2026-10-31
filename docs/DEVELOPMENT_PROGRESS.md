@@ -1,6 +1,6 @@
 # Development progress
 
-Updated 2026-10-31 for **2026.10.31-baker-oven**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
+Updated 2026-10-31 for **2026.10.31-story-journal**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
 
 66 playable identities: 65 ordinary and 1 secret. Three ordinary bosses in every one of fifty subtiers requires 150 ordinary identities, plus secrets; 85 additional ordinary bosses remain.
 
@@ -83,6 +83,7 @@ Updated 2026-10-31 for **2026.10.31-baker-oven**. These counts track specific re
 - The fresh replay-value instruction also authorizes Glass Surgeon’s next original-boss quality pass and recovered Oren Pell story. This records implementation direction, not human acceptance of the new encounter.
 - The user explicitly says to keep developing, retain the full goal across turns and let them decide completion. This authorizes the playable Story campaign; no final acceptance is inferred from software checks.
 - The active continued-development instruction also authorizes Ash Baker’s next encounter pass. Software evidence is separate from user acceptance, and the full-game goal continues across turns.
+- Continued replay-value development connects the implemented Story campaign to personal journal acts, completion and recovered endings. The journal now22goals/66cosmetic stamps is implementation evidence; final acceptance remains the user’s decision.
 
 ## Remaining release work
 

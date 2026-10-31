@@ -198,8 +198,8 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
     }
     if(page==='journal')cleanups.push(mountFieldJournal(content,()=>go('home'),plan=>{
       beginName();
-      selected={...selected,classId:plan.classId,mode:plan.mode,difficulty:plan.difficulty,practiceVariant:'normal',openingBossId:plan.mode==='raid'?'chain-colossus':'constable',openingArenaId:'gatehouse',arenaSelection:'randomEncounter',serverEndpoint:undefined};
-      previewClass=selected.classId;previewMode=selected.mode;arenaId=previewMap='randomEncounter';visibility=plan.team?'private':'offline';
+      selected={...selected,classId:plan.classId,mode:plan.mode,difficulty:plan.difficulty,practiceVariant:'normal',openingBossId:plan.mode==='raid'?'chain-colossus':'constable',openingArenaId:'gatehouse',arenaSelection:plan.mode==='story'?'route':'randomEncounter',serverEndpoint:undefined};
+      previewClass=selected.classId;previewMode=selected.mode;arenaId=previewMap=plan.mode==='story'?'gatehouse':'randomEncounter';visibility=plan.team?'private':'offline';
       journalSuggested=plan.team?'preparedTeam':'prepared';go('review');
     },()=>go('profile')));
     if(page==='leaderboards')cleanups.push(mountLeaderboards(content,()=>go('home'),initialRecords?.endpoint ?? selected.serverEndpoint,initialRecords));
