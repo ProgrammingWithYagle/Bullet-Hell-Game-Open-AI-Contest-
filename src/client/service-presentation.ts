@@ -207,19 +207,22 @@ export class ServicePresentation {
           (48 * cue.health) / cue.maxHealth,
           5,
         );
-      } else if (cue.kind === 'service-loaf') {
-        h.lineStyle(2, 0xe6c48c, 0.6).lineBetween(cue.x, cue.y, cue.endX, cue.endY);
-        for (const turn of [-Math.PI / 3, Math.PI / 3])
-          arrow(
-            cue.endX + Math.cos(cue.angle + turn) * 45,
-            cue.endY + Math.sin(cue.angle + turn) * 45,
-            cue.angle + turn,
-            0xe6c48c,
-            50,
-          );
-        h.lineStyle(2, color, 0.8).strokeCircle(cue.endX, cue.endY, 26);
-        this.image(cue.id, 'midnight-prop-4', cue.x, cue.y, 58, 58, cue.angle);
-        if (hitboxes) h.lineStyle(1, 0xeddfbe, 1).strokeCircle(cue.x, cue.y, cue.radius);
+      } else if (cue.kind === 'service-baker-loaf' || cue.kind === 'service-baker-crumb') {
+        const loaf=cue.kind==='service-baker-loaf',resting=loaf&&cue.landed&&now<cue.splitAt&&cue.health>0;
+        const ink=resting?0x97decb:now<cue.at?0xe6c48c:0xf19a77;
+        h.lineStyle(2,ink,now<cue.at?.8:.35).lineBetween(cue.x,cue.y,cue.endX,cue.endY);
+        if(now<cue.at){
+          h.lineStyle(1,ink,.8).strokeCircle(cue.endX,cue.endY,cue.radius+4);
+          arrow((cue.originX+cue.endX)/2,(cue.originY+cue.endY)/2,Math.atan2(cue.endY-cue.originY,cue.endX-cue.originX),ink,32);
+        }
+        const broken=loaf&&cue.brokenAt>0;
+        this.image(cue.id,'midnight-prop-4',cue.x,cue.y,loaf?58:18,loaf?58:18,loaf?cue.angle:Math.atan2(cue.endY-cue.originY,cue.endX-cue.originX),0,broken?.25:1);
+        if(resting){
+          h.lineStyle(3,0x97decb,.9).strokeCircle(cue.x,cue.y,cue.radius+7);
+          f.fillStyle(0x101b19,.9).fillRect(cue.x-25,cue.y-38,50,5);
+          f.fillStyle(0x97decb,1).fillRect(cue.x-25,cue.y-38,50*cue.health/cue.maxHealth,5);
+        }
+        if(hitboxes)h.lineStyle(1,0xeddfbe,1).strokeCircle(cue.x,cue.y,cue.radius);
       } else if (cue.kind === 'service-current') {
         h.fillStyle(0x83c9ce, active ? 0.12 : 0.04).fillRect(cue.x, cue.y, cue.width, cue.height);
         h.lineStyle(2, 0x9dd3d1, 0.75).strokeRect(cue.x, cue.y, cue.width, cue.height);

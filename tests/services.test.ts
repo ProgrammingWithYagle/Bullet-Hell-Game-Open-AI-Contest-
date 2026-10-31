@@ -121,21 +121,14 @@ test('Glass Surgeon locks a bent ray and a shootable lens cuts both upstream and
   assert(of(f.director,'service-beam').every(b=>b.disabled));
   assert(serviceBeamContact({x:10,y:-100},{x:10,y:100},{x1:0,y1:0,x2:100,y2:0,width:14}));
 });
-test('Ash Baker loaves split exactly once into two real crumbs per loaf and show their split directions first', () => {
-  const f = fixture('ash-baker', true);
-  f.cast();
-  const loaves = of(f.director, 'service-loaf');
-  assert.equal(loaves.length, 3);
-  assert(loaves.every((l) => l.splitAt > l.at));
-  f.step(loaves[0].at - 1);
-  assert.equal(f.shots.length, 0);
-  f.step(loaves[0].splitAt);
-  assert.equal(f.shots.length, 6);
-  assert(f.shots.every((s) => s.speed === 165 && s.damage === 18));
-  f.step(loaves[0].splitAt + 1);
-  assert.equal(f.shots.length, 6);
-  assert.equal(of(f.director, 'service-loaf').length, 0);
+test('Ash Baker casts a locked roll with a fresh landed-crumb warning and a finite shootable crust', () => {
+ const f=fixture('ash-baker',true);f.cast();const loaf=of(f.director,'service-baker-loaf')[0];assert.equal(loaf.at,54);
+ for(let tick=1;tick<=loaf.landAt;tick++)f.step(tick);
+ const crumbs=of(f.director,'service-baker-crumb');assert.equal(crumbs.length,2);assert(crumbs.every(q=>q.at-q.beganAt===48));
+ assert(f.director.weakPoints().some(q=>q.id===loaf.id));assert.equal(f.director.hit(loaf.id,999,loaf.landAt),30);
+ assert.equal(of(f.director,'service-baker-crumb').length,0);assert.equal(f.shots.length,0);
 });
+
 test('Sluice currents push without damage and prediction uses exactly the same force and dry strips', () => {
   const f = fixture('sluice-keeper');
   f.cast();

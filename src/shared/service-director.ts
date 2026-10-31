@@ -1,3 +1,4 @@
+import {BakerOven,type BakerCue} from './baker-oven.ts';
 import {glassPlan,glassRayEnd,moveGlassSurgeon} from './glass-surgery.ts';
 import {gappedRingContact as serviceRingContact} from './ring-contact.ts';
 export {gappedRingContact as serviceRingContact} from './ring-contact.ts';
@@ -78,21 +79,6 @@ type Tether = Life &
     checked: boolean;
     damage: number;
   };
-type Loaf = Life &
-  Vec & {
-    kind: 'service-loaf';
-    oldX: number;
-    oldY: number;
-    originX: number;
-    originY: number;
-    endX: number;
-    endY: number;
-    angle: number;
-    radius: number;
-    speed: number;
-    splitAt: number;
-    damage: number;
-  };
 type Current = Life & Rect & { kind: 'service-current'; forceX: number; forceY: number };
 type Rail = Life & {
   kind: 'service-rail';
@@ -151,7 +137,7 @@ export type ServiceCue =
   | Ring
   | Beam
   | Tether
-  | Loaf
+  | BakerCue
   | Current
   | Rail
   | Sanctuary
@@ -227,6 +213,7 @@ export function serviceBeamContact(
   );
 }
 export class ServiceDirector {
+  readonly baker = new BakerOven();
   readonly matron=new MatronWard();
   readonly alchemist=new MoldMixing();
   readonly bellringer=new BellCarillon();
@@ -239,6 +226,7 @@ export class ServiceDirector {
   private contacts = new Map<string, number>();
   private once = new Set<string>();
   reset(kind: string, encounter = false) {
+    this.baker.reset(0,encounter||kind!==this.kind);
     this.stitchwright.reset(0, encounter || kind !== this.kind);
     this.matron.reset(0,encounter||kind!==this.kind);
     this.alchemist.reset(0,encounter||kind!==this.kind);
@@ -261,7 +249,7 @@ export class ServiceDirector {
     return {...move,multiplier:Math.min(move.multiplier,moldMovement(this.alchemist.cues(),position,now))};
   }
   cues(): ServiceCue[] {
-    return [...this.stitchwright.cues(),...this.bellringer.cues(),...this.alchemist.cues(),...this.matron.cues(),...this.shapes.map((c) => {
+    return [...this.baker.cues(),...this.stitchwright.cues(),...this.bellringer.cues(),...this.alchemist.cues(),...this.matron.cues(),...this.shapes.map((c) => {
       if (c.kind === 'service-sanctuary')
         return {
           ...c,
@@ -275,7 +263,7 @@ export class ServiceDirector {
     })];
   }
   weakPoints() {
-    return [...this.stitchwright.weakPoints(),...this.bellringer.weakPoints(),...this.matron.weakPoints(),...this.shapes.filter(
+    return [...this.baker.weakPoints(),...this.stitchwright.weakPoints(),...this.bellringer.weakPoints(),...this.matron.weakPoints(),...this.shapes.filter(
       (c): c is ServiceProp | Tether =>
         (c.kind === 'service-prop' || c.kind === 'service-tether') && c.health > 0,
     )];
@@ -284,6 +272,7 @@ export class ServiceDirector {
     return this.shapes.some((c) => c.id === id && c.kind === 'service-prop' && c.role === 'caster');
   }
   hit(id: number, damage: number, now: number) {
+    const baker=this.baker.hit(id,damage,now);if(baker)return baker;
     const stitch = this.stitchwright.hit(id, damage, now); if (stitch) return stitch;
     const bell=this.bellringer.hit(id,damage,now);if(bell)return bell;
     const matron=this.matron.hit(id,damage);if(matron)return matron;
@@ -400,6 +389,7 @@ export class ServiceDirector {
   }
   cast(c: SignatureContext, target: Vec, attack: ServiceAttack) {
     if (!this.handles(c.bossId)) return false;
+    if(c.bossId==='ash-baker'){const handled=this.baker.cast(c,target);this.nextSignatureAt=this.baker.nextSignatureAt;return handled;}
     if(c.bossId==='matron')return this.matron.cast(c,target);
     if(c.bossId==='alchemist')return this.alchemist.cast(c,target);
     if(c.bossId==='bellringer')return this.bellringer.cast(c,target);
@@ -464,39 +454,6 @@ export class ServiceDirector {
         }
         for(const lens of lenses)lens.until=last;
         this.nextSignatureAt=Math.max(now+ticks(plan.cycle),last+ticks(1));
-        break;
-      }
-      case 'ash-baker': {
-        const aim = Math.atan2(target.y - c.boss.y, target.x - c.boss.x);
-        for (let n = 0; n < 3; n++) {
-          const angle = aim + (n - 1) * 0.55,
-            end = this.end(
-              c,
-              c.boss,
-              { x: c.boss.x + Math.cos(angle), y: c.boss.y + Math.sin(angle) },
-              150,
-              22,
-            );
-          this.shapes.push({
-            kind: 'service-loaf',
-            id: c.id(),
-            x: c.boss.x,
-            y: c.boss.y,
-            oldX: c.boss.x,
-            oldY: c.boss.y,
-            originX: c.boss.x,
-            originY: c.boss.y,
-            endX: end.x,
-            endY: end.y,
-            angle,
-            radius: 22,
-            speed: 100,
-            splitAt: at + ticks(1.5),
-            damage: attack.damage,
-            at,
-            until: at + ticks(1.5),
-          });
-        }
         break;
       }
       case 'sluice-keeper': {
@@ -764,6 +721,7 @@ export class ServiceDirector {
     if (c.bossId === 'stitchwright') this.stitchwright.step(c, target => {
       this.cast(c, target, {kind:'hook', count:1, speed:0, damage:12, telegraph:1.4});
     });
+    if(c.bossId==='ash-baker'){this.baker.step(c);this.nextSignatureAt=this.baker.nextSignatureAt;return;}
     if(c.bossId==='matron'){this.matron.step(c);return;}
     if(c.bossId==='alchemist'){this.alchemist.step(c);return;}
     if(c.bossId==='bellringer'){this.bellringer.step(c);return;}
@@ -795,7 +753,7 @@ export class ServiceDirector {
           y: cue.starts[i].y + (p.y - cue.starts[i].y) * t,
         }));
       }
-      if (now < cue.at || (now >= cue.until && cue.kind !== 'service-loaf')) continue;
+      if (now < cue.at || now >= cue.until) continue;
       if (
         cue.kind === 'service-prop' &&
         cue.role === 'nest' &&
@@ -861,28 +819,6 @@ export class ServiceDirector {
           for (const p of c.targets)
             if (serviceBeamContact({ x: p.oldX, y: p.oldY }, p, cue))
               this.touch(c, cue, p, cue.damage, true);
-      } else if (cue.kind === 'service-loaf') {
-        cue.oldX = cue.x;
-        cue.oldY = cue.y;
-        const length = Math.hypot(cue.endX - cue.originX, cue.endY - cue.originY),
-          travel = length ? Math.min(1, ((now - cue.at) * DT * cue.speed) / length) : 1;
-        cue.x = cue.originX + (cue.endX - cue.originX) * travel;
-        cue.y = cue.originY + (cue.endY - cue.originY) * travel;
-        for (const p of c.targets)
-          if (
-            segmentCircle(
-              { x: p.oldX - cue.oldX, y: p.oldY - cue.oldY },
-              { x: p.x - cue.x, y: p.y - cue.y },
-              { x: 0, y: 0 },
-              cue.radius + 9,
-            ) !== null
-          )
-            this.touch(c, cue, p, cue.damage);
-        if (now >= cue.splitAt) {
-          for (const turn of [-Math.PI / 3, Math.PI / 3])
-            c.emitHostile?.(cue, cue.angle + turn, 165, cue.damage * c.damageScale, 5);
-          cue.until = now;
-        }
       } else if (cue.kind === 'service-rail' && !cue.open) {
         cue.oldTrainY = cue.trainY;
         cue.trainY = cue.y - 150 + (now - cue.at) * DT * cue.speed;

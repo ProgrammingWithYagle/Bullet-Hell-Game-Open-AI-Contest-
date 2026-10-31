@@ -242,6 +242,7 @@ export function parseProfile(raw: string): ProfileV1 {
   }
   if (value && typeof value === "object" && !Array.isArray(value)) {
     const old = value as Record<string, unknown>;
+    if(old.schemaVersion===1&&old.practiceOnly===true&&old.verified===false&&old.contentRevision==="22f660b0d378316283eb081b458adcc4cd827f7465d9089ed9146ab2ac242c9c")old.contentRevision=CONTENT_REVISION;
     if (
       old.schemaVersion === 1 &&
       old.practiceOnly === true &&

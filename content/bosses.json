@@ -7239,19 +7239,25 @@
     "damageWindowFraction": 1,
     "finale": false,
     "secret": false,
-    "lore": "A broad dead baker with a shovel and a single round brick-oven torso. The quarantine left its work unfinished.",
+    "lore": "Edda Marr baked for the night shift before the council counted flour as furnace fuel. She fed the people outside the cordon from a second set of books, recording portions instead of debts. The order to keep the ovens hot outlived her. The oven in her chest still measures a batch by the number of names waiting for it.",
     "artBrief": "A broad dead baker with a shovel and a single round brick-oven torso. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
     "signature": {
       "id": "ash-baker",
-      "behavior": "Eject slow loaves that split once into two clearly announced crumbs after landing.",
-      "counterplay": "Step away from the landing circles and the two marked split directions.",
+      "behavior": "Locked rolling batches land as shootable crusts. Freshly warned crumbs open forked or scored routes; the fourth advanced phase leaves an open center before its three-way split. Brutal and Crazed add independently warned later batches.",
+      "counterplay": "Leave the rolling body path during its full warning. Shoot a landed crust before its timer ends to cancel its crumbs, or follow the newly warned gaps. One batch can hit each survivor once. Short harmless approaches happen only between complete batches.",
       "parameters": {
-        "loaves": 3,
-        "loafSpeedPxPerSecond": 100,
-        "splitAfterSeconds": 1.5,
-        "crumbsPerLoaf": 2,
-        "crumbSpeedPxPerSecond": 165,
-        "warningSeconds": 1.2
+        "rollingWarningSeconds": 1.8,
+        "rollingSeconds": 1.8,
+        "crumbWarningSeconds": 1.6,
+        "crumbTravelSeconds": 1.6,
+        "rollingReachPx": 300,
+        "crumbReachPx": 225,
+        "loafRadiusPx": 22,
+        "crumbRadiusPx": 6,
+        "crustHealthHP": 25,
+        "brutalBatchDelaySeconds": 4.3,
+        "crazedBatchDelaySeconds": 7.2,
+        "walkingSpeedPxPerSecond": 60
       }
     },
     "arenaIds": [
@@ -7263,91 +7269,67 @@
       "crown-crypt"
     ],
     "mechanics": {
-      "loaves": 3,
-      "loafSpeedPxPerSecond": 100,
-      "splitAfterSeconds": 1.5,
-      "crumbsPerLoaf": 2,
-      "crumbSpeedPxPerSecond": 165,
-      "warningSeconds": 1.2
+      "rollingWarningSeconds": 1.8,
+      "rollingSeconds": 1.8,
+      "crumbWarningSeconds": 1.6,
+      "crumbTravelSeconds": 1.6,
+      "rollingReachPx": 300,
+      "crumbReachPx": 225,
+      "loafRadiusPx": 22,
+      "crumbRadiusPx": 6,
+      "crustHealthHP": 25,
+      "brutalBatchDelaySeconds": 4.3,
+      "crazedBatchDelaySeconds": 7.2,
+      "walkingSpeedPxPerSecond": 60
     },
     "phases": [
       {
         "healthThreshold": 1,
         "accordBreak": false,
+        "patternPhase": 0,
         "attacks": [
           {
-            "kind": "pool",
-            "count": 3,
-            "speed": 0,
-            "damage": 9,
-            "interval": 7,
-            "telegraph": 1.2,
-            "radius": 55,
-            "duration": 2
-          },
-          {
             "kind": "fan",
-            "count": 6,
-            "speed": 145,
-            "damage": 11,
-            "interval": 5,
-            "telegraph": 1,
-            "arc": 90
+            "count": 1,
+            "speed": 0,
+            "damage": 18,
+            "interval": 8,
+            "telegraph": 1.8,
+            "arc": 0
           }
-        ],
-        "patternPhase": 0
+        ]
       },
       {
         "healthThreshold": 0.75,
         "accordBreak": true,
+        "patternPhase": 1,
         "attacks": [
           {
-            "kind": "pool",
-            "count": 5,
-            "speed": 0,
-            "damage": 9,
-            "interval": 6.3,
-            "telegraph": 1.2,
-            "radius": 55,
-            "duration": 2
-          },
-          {
             "kind": "fan",
-            "count": 8,
-            "speed": 157,
-            "damage": 11,
-            "interval": 4.5,
-            "telegraph": 1,
-            "arc": 90
+            "count": 3,
+            "speed": 0,
+            "damage": 18,
+            "interval": 8,
+            "telegraph": 1.8,
+            "arc": 75
           }
-        ],
-        "patternPhase": 1
+        ]
       },
       {
         "healthThreshold": 0.4,
         "accordBreak": true,
+        "patternPhase": 2,
         "attacks": [
           {
-            "kind": "pool",
-            "count": 7,
-            "speed": 0,
-            "damage": 9,
-            "interval": 5.6,
-            "telegraph": 1.2,
-            "radius": 55,
-            "duration": 2
-          },
-          {
             "kind": "fan",
-            "count": 10,
-            "speed": 168,
-            "damage": 11,
-            "interval": 4,
-            "telegraph": 1,
-            "arc": 90
+            "count": 5,
+            "speed": 0,
+            "damage": 18,
+            "interval": 8,
+            "telegraph": 1.8,
+            "arc": 120
           }
-        ],
-        "patternPhase": 2
+        ]
       }
     ],
     "variants": {
@@ -7368,118 +7350,74 @@
           {
             "healthThreshold": 1,
             "accordBreak": false,
-            "signatureRepeatOffsetSeconds": 0,
+            "patternPhase": 0,
             "attacks": [
               {
-                "kind": "pool",
-                "count": 3,
-                "speed": 0,
-                "damage": 9,
-                "interval": 6.3,
-                "telegraph": 1.2,
-                "radius": 55,
-                "duration": 2,
-                "comboOffsetSeconds": 0
-              },
-              {
                 "kind": "fan",
-                "count": 6,
-                "speed": 145,
-                "damage": 11,
-                "interval": 4.5,
-                "telegraph": 1,
-                "arc": 90,
+                "count": 1,
+                "speed": 0,
+                "damage": 18,
+                "interval": 13,
+                "telegraph": 1.8,
+                "arc": 0,
                 "comboOffsetSeconds": 0
               }
             ],
-            "patternPhase": 0
+            "signatureRepeatOffsetSeconds": 0
           },
           {
             "healthThreshold": 0.75,
             "accordBreak": false,
-            "signatureRepeatOffsetSeconds": 0,
+            "patternPhase": 1,
             "attacks": [
               {
-                "kind": "pool",
-                "count": 5,
-                "speed": 0,
-                "damage": 9,
-                "interval": 5.67,
-                "telegraph": 1.2,
-                "radius": 55,
-                "duration": 2,
-                "comboOffsetSeconds": 0
-              },
-              {
                 "kind": "fan",
-                "count": 8,
-                "speed": 157,
-                "damage": 11,
-                "interval": 4.05,
-                "telegraph": 1,
-                "arc": 90,
+                "count": 3,
+                "speed": 0,
+                "damage": 18,
+                "interval": 13,
+                "telegraph": 1.8,
+                "arc": 75,
                 "comboOffsetSeconds": 0
               }
             ],
-            "patternPhase": 1
+            "signatureRepeatOffsetSeconds": 0
           },
           {
             "healthThreshold": 0.5,
             "accordBreak": false,
-            "signatureRepeatOffsetSeconds": 0,
+            "patternPhase": 2,
             "attacks": [
               {
-                "kind": "pool",
-                "count": 7,
-                "speed": 0,
-                "damage": 9,
-                "interval": 5.04,
-                "telegraph": 1.2,
-                "radius": 55,
-                "duration": 2,
-                "comboOffsetSeconds": 0
-              },
-              {
                 "kind": "fan",
-                "count": 10,
-                "speed": 168,
-                "damage": 11,
-                "interval": 3.6,
-                "telegraph": 1,
-                "arc": 90,
+                "count": 5,
+                "speed": 0,
+                "damage": 18,
+                "interval": 13,
+                "telegraph": 1.8,
+                "arc": 120,
                 "comboOffsetSeconds": 0
               }
             ],
-            "patternPhase": 2
+            "signatureRepeatOffsetSeconds": 0
           },
           {
             "healthThreshold": 0.25,
             "accordBreak": false,
-            "signatureRepeatOffsetSeconds": 1.25,
+            "patternPhase": 3,
             "attacks": [
               {
-                "kind": "pool",
-                "count": 7,
-                "speed": 0,
-                "damage": 9,
-                "interval": 5.04,
-                "telegraph": 1.2,
-                "radius": 55,
-                "duration": 2,
-                "comboOffsetSeconds": 0
-              },
-              {
                 "kind": "fan",
-                "count": 10,
-                "speed": 168,
-                "damage": 11,
-                "interval": 3.6,
-                "telegraph": 1,
-                "arc": 90,
-                "comboOffsetSeconds": 1.25
+                "count": 4,
+                "speed": 0,
+                "damage": 18,
+                "interval": 13,
+                "telegraph": 1.8,
+                "arc": 120,
+                "comboOffsetSeconds": 0
               }
             ],
-            "patternPhase": 3
+            "signatureRepeatOffsetSeconds": 0
           }
         ]
       },
@@ -7494,118 +7432,74 @@
           {
             "healthThreshold": 1,
             "accordBreak": false,
-            "signatureRepeatOffsetSeconds": 0,
+            "patternPhase": 0,
             "attacks": [
               {
-                "kind": "pool",
-                "count": 3,
-                "speed": 0,
-                "damage": 9,
-                "interval": 6.3,
-                "telegraph": 1.2,
-                "radius": 55,
-                "duration": 2,
-                "comboOffsetSeconds": 0
-              },
-              {
                 "kind": "fan",
-                "count": 6,
-                "speed": 145,
-                "damage": 11,
-                "interval": 4.5,
-                "telegraph": 1,
-                "arc": 90,
+                "count": 1,
+                "speed": 0,
+                "damage": 18,
+                "interval": 13,
+                "telegraph": 1.8,
+                "arc": 0,
                 "comboOffsetSeconds": 0
               }
             ],
-            "patternPhase": 0
+            "signatureRepeatOffsetSeconds": 0
           },
           {
             "healthThreshold": 0.75,
             "accordBreak": false,
-            "signatureRepeatOffsetSeconds": 0,
+            "patternPhase": 1,
             "attacks": [
               {
-                "kind": "pool",
-                "count": 5,
-                "speed": 0,
-                "damage": 9,
-                "interval": 5.67,
-                "telegraph": 1.2,
-                "radius": 55,
-                "duration": 2,
-                "comboOffsetSeconds": 0
-              },
-              {
                 "kind": "fan",
-                "count": 8,
-                "speed": 157,
-                "damage": 11,
-                "interval": 4.05,
-                "telegraph": 1,
-                "arc": 90,
+                "count": 3,
+                "speed": 0,
+                "damage": 18,
+                "interval": 13,
+                "telegraph": 1.8,
+                "arc": 75,
                 "comboOffsetSeconds": 0
               }
             ],
-            "patternPhase": 1
+            "signatureRepeatOffsetSeconds": 0
           },
           {
             "healthThreshold": 0.5,
             "accordBreak": false,
-            "signatureRepeatOffsetSeconds": 0,
+            "patternPhase": 2,
             "attacks": [
               {
-                "kind": "pool",
-                "count": 7,
-                "speed": 0,
-                "damage": 9,
-                "interval": 5.04,
-                "telegraph": 1.2,
-                "radius": 55,
-                "duration": 2,
-                "comboOffsetSeconds": 0
-              },
-              {
                 "kind": "fan",
-                "count": 10,
-                "speed": 168,
-                "damage": 11,
-                "interval": 3.6,
-                "telegraph": 1,
-                "arc": 90,
+                "count": 5,
+                "speed": 0,
+                "damage": 18,
+                "interval": 13,
+                "telegraph": 1.8,
+                "arc": 120,
                 "comboOffsetSeconds": 0
               }
             ],
-            "patternPhase": 2
+            "signatureRepeatOffsetSeconds": 0
           },
           {
             "healthThreshold": 0.25,
             "accordBreak": false,
-            "signatureRepeatOffsetSeconds": 1.25,
+            "patternPhase": 3,
             "attacks": [
               {
-                "kind": "pool",
-                "count": 7,
-                "speed": 0,
-                "damage": 9,
-                "interval": 5.04,
-                "telegraph": 1.2,
-                "radius": 55,
-                "duration": 2,
-                "comboOffsetSeconds": 0
-              },
-              {
                 "kind": "fan",
-                "count": 10,
-                "speed": 168,
-                "damage": 11,
-                "interval": 3.6,
-                "telegraph": 1,
-                "arc": 90,
-                "comboOffsetSeconds": 1.25
+                "count": 4,
+                "speed": 0,
+                "damage": 18,
+                "interval": 13,
+                "telegraph": 1.8,
+                "arc": 120,
+                "comboOffsetSeconds": 0
               }
             ],
-            "patternPhase": 3
+            "signatureRepeatOffsetSeconds": 0
           }
         ],
         "additionalPatterns": [

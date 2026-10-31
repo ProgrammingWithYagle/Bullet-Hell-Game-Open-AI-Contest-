@@ -1,6 +1,16 @@
 # Changelog
 
-Development build **2026.10.31-open-ledger**, protocol 46. The current contest Site uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.10.31-baker-oven**, protocol 46. The current contest Site uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-10-31 — Ash Baker opens a different oven
+
+### Locked rolls, shootable crusts and fresh crumbs
+
+- Single, three-tray, scored five-loaf and advanced open-center batches give each phase a distinct floor pattern. Every roll has a full1.8second warning; only the travelling body hurts.
+- A landed crust opens a1.6second shooting window while its actual crumb paths warn. Breaking it cancels only its own crumbs. Each entire batch shares one hit per survivor, including parent bodies and all their crumbs.
+- Brutal warns a second batch4.3seconds later; Crazed adds a third at7.2seconds. Each locks a current visible target and keeps the phase that issued it. Stagger cancels visible and queued baking.
+- Short harmless approaches happen between complete batches. Paths stop before actual walls, cover and lava. Existing art/music and fixed grade remain; no new drawn walking cycle is claimed.
+- All fifteen catalogs include baking phase/form help and recovered Edda Marr lore. Known issued Story boundaries and personal endings migrate exactly; online content matching remains strict. Original-boss quality passes are now15/60, with45remaining.
 
 ## 2026-10-31 — The Open Ledger story campaign
 
