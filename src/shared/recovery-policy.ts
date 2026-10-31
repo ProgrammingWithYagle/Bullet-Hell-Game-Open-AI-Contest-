@@ -1,3 +1,4 @@
+import catalog from '../../content/catalog.json';
 import {combatReviveFraction} from './encounter-policy.ts';
 
 /** Revival is decided by the rescuer's class, never by the recipient's class. */
@@ -27,9 +28,14 @@ export function selfReviveAllowed(difficulty:string,classId:string,players:numbe
 export function selfReviveCharges(difficulty:string,classId:string,extra=0) {
   return combatReviveAllowed(difficulty,classId)?1+Math.max(0,Math.floor(extra)):0;
 }
-export function maximumPersonalShield(difficulty:string,maximumHealth:number) {
+export function shieldCapacityBonus(classId:string,bonus:number) {
+  const limits=catalog.rules.personalShieldCapacity.classBonusLimits;
+  const maximum=classId==='heavy'?limits.heavy:classId==='tank'?limits.tank:0;
+  return Number.isFinite(bonus)?Math.max(0,Math.min(maximum,bonus)):0;
+}
+export function maximumPersonalShield(difficulty:string,maximumHealth:number,classId='soldier',bonus=0) {
   const multiplier=difficulty==='hellish'?0:difficulty==='insane'?.5:difficulty==='hard'?.75:1;
-  return Math.max(0,Math.floor(maximumHealth*multiplier));
+  return Math.max(0,Math.floor(maximumHealth*multiplier*(1+shieldCapacityBonus(classId,bonus))));
 }
 export function startingShieldFraction(classId:string){
   return classId==='tank'?1:classId==='heavy'?.5:classId==='soldier'?.15:0;

@@ -1,5 +1,7 @@
 # Medic revival and difficulty recovery
 
+Current override: [shield-cap specializations](SHIELD_SPECIALIZATIONS.md) add bounded Heavy/Tank multipliers to the base difficulty limits below. Hellish stays0; revival and regeneration rules are unchanged.
+
 Build 2026.10.29-medic-recovery / protocol 40. Revival is determined by the rescuer's class, including when the rescuer and recipient are the same player.
 
 | Difficulty | Revival by other classes | Revival by Medic | Passive HP regeneration, every class |
@@ -24,7 +26,7 @@ Difficulty cards display both revival columns and the regeneration penalty. Down
 Exact known protocol 39 local Practice saves preserve selected map, progress and economy under protocol 40; server checkpoints and unknown revisions remain strict. Content catalog revision is unchanged because the revised simulation policy is versioned by the protocol. Map/lobby checkpoint 0feaf34 passed 795 software checks and is included. Current recovery tests cover the real authority and two-client transport. This does not establish browser rendering, listening, native-language, device, WAN or final balance acceptance.
 
 
-Personal shields now share one combined capacity across starting shields, ability shields and armor plates: Baby/Easy/Normal 100% of maximum health, Hard 75%, Insane 50%, Hellish 0, rounded down. Excess shield cannot absorb damage. Hellish cannot buy or consume shield items; deployed walls remain physical cover. The HUD shows current shield/capacity. Future Tank/Heavy cap upgrades and selective attack blocking are recorded separately and are not implemented.
+Personal shields now share one combined capacity across starting shields, ability shields and armor plates: Baby/Easy/Normal 100% of maximum health, Hard 75%, Insane 50%, Hellish 0, rounded down. Excess shield cannot absorb damage. Hellish cannot buy or consume shield items; deployed walls remain physical cover. The HUD shows current shield/capacity. Tank/Heavy capacity specializations are implemented in the current development branch; selective attack blocking remains deferred.
 
 
 Base starting shield is recalculated each fight from the difficulty-adjusted capacity: Heavy 50%, Tank 100%, Soldier 15%, all other classes 0. Hellish gives everyone0. Existing starting-shield mutation bonuses can fill remaining capacity, and all sources respect the same cap. This adds no new branch or maximum-shield upgrade.

@@ -1,3 +1,4 @@
+import {shieldSpecializationMessages} from '../locales/source/shield-specializations.mjs';
 import {fieldJournalMessages} from '../locales/source/field-journal.mjs';
 import {stitchworkMessages} from '../locales/source/stitchwork.mjs';
 import {bellReturnChainMessages as bellMessages} from '../locales/source/bell-return-chain.mjs';
@@ -121,6 +122,7 @@ export function validateOne(document, canonical, content, locale) {
       ...Object.keys(bossGuideMessages('en')),
       ...Object.keys(stitchworkMessages('en')),
       ...Object.keys(fieldJournalMessages('en')),
+      ...Object.keys(shieldSpecializationMessages('en')),
       ...Object.keys(classTalentMessages('en',content)),
       ...Object.keys(wardenMessages('en')),
       ...Object.keys(skillMapMessages('en')),
@@ -149,7 +151,7 @@ export function validateOne(document, canonical, content, locale) {
     if (!Object.hasOwn(messages,key)) fail(`missing feature coverage: ${key}`);
   }
   const expectedCategories = new Intl.PluralRules(locale).resolvedOptions().pluralCategories.slice().sort();
-  const expandedSource = {...smallWakesMessages(locale),...expansionMessages(locale), ...earlyWatchMessages(locale),...skillMapMessages(locale),...difficultyRuleMessages(locale),...classTalentMessages(locale,content),...wardenMessages(locale),...crazedHorizonMessages(locale),...courierRouteMessages(locale),...ratcatcherMusterMessages(locale),...clerkAppealMessages(locale),...tollkeeperReturnMessages(locale),...marshalMessages(locale),...widowMessages(locale),...ambulanceMessages(locale),...matronMessages(locale),...moldMessages(locale),...bellMessages(locale),...runtimeExtraMessages(locale),...bossGuideMessages(locale),...stitchworkMessages(locale),...fieldJournalMessages(locale)};
+  const expandedSource = {...smallWakesMessages(locale),...expansionMessages(locale), ...earlyWatchMessages(locale),...skillMapMessages(locale),...difficultyRuleMessages(locale),...classTalentMessages(locale,content),...wardenMessages(locale),...crazedHorizonMessages(locale),...courierRouteMessages(locale),...ratcatcherMusterMessages(locale),...clerkAppealMessages(locale),...tollkeeperReturnMessages(locale),...marshalMessages(locale),...widowMessages(locale),...ambulanceMessages(locale),...matronMessages(locale),...moldMessages(locale),...bellMessages(locale),...runtimeExtraMessages(locale),...bossGuideMessages(locale),...stitchworkMessages(locale),...fieldJournalMessages(locale),...shieldSpecializationMessages(locale)};
   for (const [key,text] of Object.entries(recoveryMessages(locale))) {
     if (messages[key] !== text) fail(`recovery UI source mismatch at ${key}`);
   }

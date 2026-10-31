@@ -1,5 +1,8 @@
 # Current implementation state
 
+Latest development continuation: **2026.10.31-shield-specializations** adds [Tank/Heavy shield-cap paths](SHIELD_SPECIALIZATIONS.md). Wire protocol44 remains, with a new content revision; use matching clients and servers. Current new-build evidence is in `reviews/shield-specializations-2026-10-31/`. Earlier checkpoints below retain their source and preview identities.
+
+
 Current development continuation: **2026.10.31-field-journal / protocol 44** adds [the Stitchwright sewing room](STITCHWORK.md). The same 66-boss roster now has 13 implemented original-boss quality passes, with 47 remaining. Public Site version 4 and its protocol 43 backend remain separate, unchanged releases. Current expansion review manifests live in `reviews/field-journal-2026-10-31/`; read [the current handoff](../handoff/NEXT_CHAT.md) for launch and verification identities. The new [Field Journal](FIELD_JOURNAL.md) adds 19 replay goals, 57 cosmetic stamps, seven survivor letters and goal-based setup suggestions. The combined local gate passes **982 tests with 0 failures**. Matching local review: testing http://127.0.0.1:5274/ (backend 2650), public http://127.0.0.1:5275/ (backend 2651), game source `5c5ebd05484616a11af3253925606a5e84a41f9d`. Each audience passed 52 served-file/catalog checks and real two-peer room/chat/host controls. The earlier contest details below describe their checkpoint.
 
 

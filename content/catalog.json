@@ -272,7 +272,15 @@
       ],
       "instantKillAttacks": false
     },
-    "phaseTransitionCastDelaySeconds": 1.5
+    "phaseTransitionCastDelaySeconds": 1.5,
+    "personalShieldCapacity": {
+      "classBonusLimits": {
+        "heavy": 0.5,
+        "tank": 0.75
+      },
+      "effect": "shieldCapacity",
+      "calculation": "Floor maximum health times difficulty capacity fraction times one plus the bounded class bonus. Hellish always zero. Capacity purchases do not refill shields."
+    }
   },
   "locales": [
     {
@@ -805,8 +813,8 @@
             },
             {
               "id": "endurance-path-2",
-              "nameKey": "stat.reviveRate",
-              "name": "reviveRate"
+              "nameKey": "shieldPath.heavy.name",
+              "name": "Reserve Plating"
             }
           ]
         }
@@ -922,8 +930,8 @@
             },
             {
               "id": "bastion-path-2",
-              "nameKey": "stat.reviveRate",
-              "name": "reviveRate"
+              "nameKey": "shieldPath.tank.name",
+              "name": "Citadel Lining"
             }
           ]
         }
@@ -3751,7 +3759,7 @@
       "classId": "heavy",
       "branchId": "endurance",
       "branchName": "Endurance",
-      "name": "Padded Harness · reviveRate",
+      "name": "Padded Harness · Reserve Plating",
       "depth": 1,
       "cost": 1,
       "grade": "D+",
@@ -3762,11 +3770,11 @@
         "regeneration": 0.05,
         "reviveRate": 0.02
       },
-      "description": "maxHealth: +5 HP; regeneration: +0.05 HP/s; reviveRate: +0.02 ratio. Additive bonuses; shared modifier limits apply.",
+      "description": "maxHealth: +5; regeneration: +0.05; reviveRate: +0.02. Capacity is a bounded class-specific multiplier of the difficulty limit; it grants no refill and cannot override Hellish.",
       "sourceSkillId": "heavy-endurance-1",
       "subbranchId": "endurance-path-2",
-      "subbranchName": "reviveRate",
-      "subbranchNameKey": "stat.reviveRate",
+      "subbranchName": "Reserve Plating",
+      "subbranchNameKey": "shieldPath.heavy.name",
       "lane": 2
     },
     {
@@ -3774,7 +3782,7 @@
       "classId": "heavy",
       "branchId": "endurance",
       "branchName": "Endurance",
-      "name": "Deep Breath · reviveRate",
+      "name": "Deep Breath · Reserve Plating",
       "depth": 2,
       "cost": 2,
       "grade": "C+",
@@ -3785,11 +3793,11 @@
         "regeneration": 0.06,
         "reviveRate": 0.03
       },
-      "description": "maxHealth: +6 HP; regeneration: +0.06 HP/s; reviveRate: +0.03 ratio. Additive bonuses; shared modifier limits apply.",
+      "description": "maxHealth: +6; regeneration: +0.06; reviveRate: +0.03. Capacity is a bounded class-specific multiplier of the difficulty limit; it grants no refill and cannot override Hellish.",
       "sourceSkillId": "heavy-endurance-2",
       "subbranchId": "endurance-path-2",
-      "subbranchName": "reviveRate",
-      "subbranchNameKey": "stat.reviveRate",
+      "subbranchName": "Reserve Plating",
+      "subbranchNameKey": "shieldPath.heavy.name",
       "lane": 2
     },
     {
@@ -3797,7 +3805,7 @@
       "classId": "heavy",
       "branchId": "endurance",
       "branchName": "Endurance",
-      "name": "Steel Shoulders · reviveRate",
+      "name": "Steel Shoulders · Reserve Plating",
       "depth": 3,
       "cost": 3,
       "grade": "B+",
@@ -3806,13 +3814,14 @@
       "effects": {
         "maxHealth": 8,
         "regeneration": 0.08,
-        "reviveRate": 0.04
+        "reviveRate": 0.04,
+        "shieldCapacity": 0.15
       },
-      "description": "maxHealth: +8 HP; regeneration: +0.08 HP/s; reviveRate: +0.04 ratio. Additive bonuses; shared modifier limits apply.",
+      "description": "maxHealth: +8; regeneration: +0.08; reviveRate: +0.04; shieldCapacity: +0.15. Capacity is a bounded class-specific multiplier of the difficulty limit; it grants no refill and cannot override Hellish.",
       "sourceSkillId": "heavy-endurance-3",
       "subbranchId": "endurance-path-2",
-      "subbranchName": "reviveRate",
-      "subbranchNameKey": "stat.reviveRate",
+      "subbranchName": "Reserve Plating",
+      "subbranchNameKey": "shieldPath.heavy.name",
       "lane": 2
     },
     {
@@ -3820,7 +3829,7 @@
       "classId": "heavy",
       "branchId": "endurance",
       "branchName": "Endurance",
-      "name": "Unshaken · reviveRate",
+      "name": "Unshaken · Reserve Plating",
       "depth": 4,
       "cost": 4,
       "grade": "A+",
@@ -3831,11 +3840,11 @@
         "regeneration": 0.1,
         "reviveRate": 0.06
       },
-      "description": "maxHealth: +10 HP; regeneration: +0.1 HP/s; reviveRate: +0.06 ratio. Additive bonuses; shared modifier limits apply.",
+      "description": "maxHealth: +10; regeneration: +0.1; reviveRate: +0.06. Capacity is a bounded class-specific multiplier of the difficulty limit; it grants no refill and cannot override Hellish.",
       "sourceSkillId": "heavy-endurance-4",
       "subbranchId": "endurance-path-2",
-      "subbranchName": "reviveRate",
-      "subbranchNameKey": "stat.reviveRate",
+      "subbranchName": "Reserve Plating",
+      "subbranchNameKey": "shieldPath.heavy.name",
       "lane": 2
     },
     {
@@ -3843,7 +3852,7 @@
       "classId": "heavy",
       "branchId": "endurance",
       "branchName": "Endurance",
-      "name": "Long Haul · reviveRate",
+      "name": "Long Haul · Reserve Plating",
       "depth": 5,
       "cost": 5,
       "grade": "S+",
@@ -3852,13 +3861,14 @@
       "effects": {
         "maxHealth": 12,
         "regeneration": 0.14,
-        "reviveRate": 0.08
+        "reviveRate": 0.08,
+        "shieldCapacity": 0.15
       },
-      "description": "maxHealth: +12 HP; regeneration: +0.14 HP/s; reviveRate: +0.08 ratio. Additive bonuses; shared modifier limits apply.",
+      "description": "maxHealth: +12; regeneration: +0.14; reviveRate: +0.08; shieldCapacity: +0.15. Capacity is a bounded class-specific multiplier of the difficulty limit; it grants no refill and cannot override Hellish.",
       "sourceSkillId": "heavy-endurance-5",
       "subbranchId": "endurance-path-2",
-      "subbranchName": "reviveRate",
-      "subbranchNameKey": "stat.reviveRate",
+      "subbranchName": "Reserve Plating",
+      "subbranchNameKey": "shieldPath.heavy.name",
       "lane": 2
     },
     {
@@ -3866,7 +3876,7 @@
       "classId": "heavy",
       "branchId": "endurance",
       "branchName": "Endurance",
-      "name": "Still Standing · reviveRate",
+      "name": "Still Standing · Reserve Plating",
       "depth": 6,
       "cost": 6,
       "grade": "SS+",
@@ -3876,13 +3886,14 @@
         "maxHealth": 18,
         "regeneration": 0.22,
         "reviveRate": 0.12,
-        "selfRevives": 1
+        "selfRevives": 1,
+        "shieldCapacity": 0.2
       },
-      "description": "maxHealth: +18 HP; regeneration: +0.22 HP/s; reviveRate: +0.12 ratio; selfRevives: +1 count. Additive bonuses; shared modifier limits apply.",
+      "description": "maxHealth: +18; regeneration: +0.22; reviveRate: +0.12; selfRevives: +1; shieldCapacity: +0.2. Capacity is a bounded class-specific multiplier of the difficulty limit; it grants no refill and cannot override Hellish.",
       "sourceSkillId": "heavy-endurance-6",
       "subbranchId": "endurance-path-2",
-      "subbranchName": "reviveRate",
-      "subbranchNameKey": "stat.reviveRate",
+      "subbranchName": "Reserve Plating",
+      "subbranchNameKey": "shieldPath.heavy.name",
       "lane": 2
     },
     {
@@ -4975,7 +4986,7 @@
       "classId": "tank",
       "branchId": "bastion",
       "branchName": "Bastion",
-      "name": "Riveted Coat · reviveRate",
+      "name": "Riveted Coat · Citadel Lining",
       "depth": 1,
       "cost": 1,
       "grade": "D+",
@@ -4986,11 +4997,11 @@
         "regeneration": 0.05,
         "reviveRate": 0.02
       },
-      "description": "maxHealth: +5 HP; regeneration: +0.05 HP/s; reviveRate: +0.02 ratio. Additive bonuses; shared modifier limits apply.",
+      "description": "maxHealth: +5; regeneration: +0.05; reviveRate: +0.02. Capacity is a bounded class-specific multiplier of the difficulty limit; it grants no refill and cannot override Hellish.",
       "sourceSkillId": "tank-bastion-1",
       "subbranchId": "bastion-path-2",
-      "subbranchName": "reviveRate",
-      "subbranchNameKey": "stat.reviveRate",
+      "subbranchName": "Citadel Lining",
+      "subbranchNameKey": "shieldPath.tank.name",
       "lane": 2
     },
     {
@@ -4998,7 +5009,7 @@
       "classId": "tank",
       "branchId": "bastion",
       "branchName": "Bastion",
-      "name": "Grounded Stance · reviveRate",
+      "name": "Grounded Stance · Citadel Lining",
       "depth": 2,
       "cost": 2,
       "grade": "C+",
@@ -5009,11 +5020,11 @@
         "regeneration": 0.06,
         "reviveRate": 0.03
       },
-      "description": "maxHealth: +6 HP; regeneration: +0.06 HP/s; reviveRate: +0.03 ratio. Additive bonuses; shared modifier limits apply.",
+      "description": "maxHealth: +6; regeneration: +0.06; reviveRate: +0.03. Capacity is a bounded class-specific multiplier of the difficulty limit; it grants no refill and cannot override Hellish.",
       "sourceSkillId": "tank-bastion-2",
       "subbranchId": "bastion-path-2",
-      "subbranchName": "reviveRate",
-      "subbranchNameKey": "stat.reviveRate",
+      "subbranchName": "Citadel Lining",
+      "subbranchNameKey": "shieldPath.tank.name",
       "lane": 2
     },
     {
@@ -5021,7 +5032,7 @@
       "classId": "tank",
       "branchId": "bastion",
       "branchName": "Bastion",
-      "name": "Impact Bracing · reviveRate",
+      "name": "Impact Bracing · Citadel Lining",
       "depth": 3,
       "cost": 3,
       "grade": "B+",
@@ -5030,13 +5041,14 @@
       "effects": {
         "maxHealth": 8,
         "regeneration": 0.08,
-        "reviveRate": 0.04
+        "reviveRate": 0.04,
+        "shieldCapacity": 0.25
       },
-      "description": "maxHealth: +8 HP; regeneration: +0.08 HP/s; reviveRate: +0.04 ratio. Additive bonuses; shared modifier limits apply.",
+      "description": "maxHealth: +8; regeneration: +0.08; reviveRate: +0.04; shieldCapacity: +0.25. Capacity is a bounded class-specific multiplier of the difficulty limit; it grants no refill and cannot override Hellish.",
       "sourceSkillId": "tank-bastion-3",
       "subbranchId": "bastion-path-2",
-      "subbranchName": "reviveRate",
-      "subbranchNameKey": "stat.reviveRate",
+      "subbranchName": "Citadel Lining",
+      "subbranchNameKey": "shieldPath.tank.name",
       "lane": 2
     },
     {
@@ -5044,7 +5056,7 @@
       "classId": "tank",
       "branchId": "bastion",
       "branchName": "Bastion",
-      "name": "Deep Reserve · reviveRate",
+      "name": "Deep Reserve · Citadel Lining",
       "depth": 4,
       "cost": 4,
       "grade": "A+",
@@ -5055,11 +5067,11 @@
         "regeneration": 0.1,
         "reviveRate": 0.06
       },
-      "description": "maxHealth: +10 HP; regeneration: +0.1 HP/s; reviveRate: +0.06 ratio. Additive bonuses; shared modifier limits apply.",
+      "description": "maxHealth: +10; regeneration: +0.1; reviveRate: +0.06. Capacity is a bounded class-specific multiplier of the difficulty limit; it grants no refill and cannot override Hellish.",
       "sourceSkillId": "tank-bastion-4",
       "subbranchId": "bastion-path-2",
-      "subbranchName": "reviveRate",
-      "subbranchNameKey": "stat.reviveRate",
+      "subbranchName": "Citadel Lining",
+      "subbranchNameKey": "shieldPath.tank.name",
       "lane": 2
     },
     {
@@ -5067,7 +5079,7 @@
       "classId": "tank",
       "branchId": "bastion",
       "branchName": "Bastion",
-      "name": "Stone Resolve · reviveRate",
+      "name": "Stone Resolve · Citadel Lining",
       "depth": 5,
       "cost": 5,
       "grade": "S+",
@@ -5076,13 +5088,14 @@
       "effects": {
         "maxHealth": 12,
         "regeneration": 0.14,
-        "reviveRate": 0.08
+        "reviveRate": 0.08,
+        "shieldCapacity": 0.25
       },
-      "description": "maxHealth: +12 HP; regeneration: +0.14 HP/s; reviveRate: +0.08 ratio. Additive bonuses; shared modifier limits apply.",
+      "description": "maxHealth: +12; regeneration: +0.14; reviveRate: +0.08; shieldCapacity: +0.25. Capacity is a bounded class-specific multiplier of the difficulty limit; it grants no refill and cannot override Hellish.",
       "sourceSkillId": "tank-bastion-5",
       "subbranchId": "bastion-path-2",
-      "subbranchName": "reviveRate",
-      "subbranchNameKey": "stat.reviveRate",
+      "subbranchName": "Citadel Lining",
+      "subbranchNameKey": "shieldPath.tank.name",
       "lane": 2
     },
     {
@@ -5090,7 +5103,7 @@
       "classId": "tank",
       "branchId": "bastion",
       "branchName": "Bastion",
-      "name": "Unfallen · reviveRate",
+      "name": "Unfallen · Citadel Lining",
       "depth": 6,
       "cost": 6,
       "grade": "SS+",
@@ -5100,13 +5113,14 @@
         "maxHealth": 18,
         "regeneration": 0.22,
         "reviveRate": 0.12,
-        "selfRevives": 1
+        "selfRevives": 1,
+        "shieldCapacity": 0.25
       },
-      "description": "maxHealth: +18 HP; regeneration: +0.22 HP/s; reviveRate: +0.12 ratio; selfRevives: +1 count. Additive bonuses; shared modifier limits apply.",
+      "description": "maxHealth: +18; regeneration: +0.22; reviveRate: +0.12; selfRevives: +1; shieldCapacity: +0.25. Capacity is a bounded class-specific multiplier of the difficulty limit; it grants no refill and cannot override Hellish.",
       "sourceSkillId": "tank-bastion-6",
       "subbranchId": "bastion-path-2",
-      "subbranchName": "reviveRate",
-      "subbranchNameKey": "stat.reviveRate",
+      "subbranchName": "Citadel Lining",
+      "subbranchNameKey": "shieldPath.tank.name",
       "lane": 2
     },
     {

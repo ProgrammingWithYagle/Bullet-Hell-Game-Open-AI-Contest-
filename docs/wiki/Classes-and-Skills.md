@@ -120,7 +120,7 @@ Passive health regeneration is reduced for every class: **25% less on Hard, 50% 
 Medic retains its healing, cleansing, nearby damage and existing Solo ultimate shield. Only its ultimate can revive an eliminated teammate; ordinary channels and kits require a nearby downed teammate. Current values are a starting balance policy pending human combat review.
 
 
-Personal shields now share one combined capacity across starting shields, ability shields and armor plates: Baby/Easy/Normal 100% of maximum health, Hard 75%, Insane 50%, Hellish 0, rounded down. Excess shield cannot absorb damage. Hellish cannot buy or consume shield items; deployed walls remain physical cover. The HUD shows current shield/capacity. Future Tank/Heavy cap upgrades and selective attack blocking are recorded separately and are not implemented.
+Personal shields now share one combined capacity across starting shields, ability shields and armor plates: Baby/Easy/Normal 100% of maximum health, Hard 75%, Insane 50%, Hellish 0, rounded down. Excess shield cannot absorb damage. Hellish cannot buy or consume shield items; deployed walls remain physical cover. The HUD shows current shield/capacity. Tank/Heavy capacity specializations are implemented in the current development branch; selective attack blocking remains deferred.
 
 
 Base starting shield is recalculated each fight from the difficulty-adjusted capacity: Heavy 50%, Tank 100%, Soldier 15%, all other classes 0. Hellish gives everyone0. Existing starting-shield mutation bonuses can fill remaining capacity, and all sources respect the same cap. This adds no new branch or maximum-shield upgrade.

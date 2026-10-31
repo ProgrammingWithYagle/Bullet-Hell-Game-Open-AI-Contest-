@@ -1,6 +1,6 @@
 {
   "updated": "2026-10-31",
-  "buildId": "2026.10.31-field-journal",
+  "buildId": "2026.10.31-shield-specializations",
   "playableBosses": 66,
   "ordinaryBosses": 65,
   "secretBosses": 1,
@@ -261,6 +261,19 @@
         "field-journal"
       ],
       "status": "19 local personal goals,57 cosmetic stamps,seven survivor letters and goal-based setup suggestions are implemented. Progress derives from existing personal receipts; legacy claims award nothing. Rendered/human/language acceptance remains open."
+    },
+    {
+      "id": "shield-specializations",
+      "label": "Tank and Heavy shield-cap specializations",
+      "target": 2,
+      "implemented": 2,
+      "remaining": 0,
+      "humanAccepted": 0,
+      "completedIds": [
+        "heavy-reserve-plating",
+        "tank-citadel-lining"
+      ],
+      "status": "Two existing defensive paths now raise capacity at6/15/21SP without adding shield, nodes or permanent power. Shared difficulty scaling and Hellish zero remain; human survivability balance and rendered/native-language review remain open."
     }
   ],
   "coverage": [
@@ -617,7 +630,8 @@
     "Base starting shield is recalculated each fight from the difficulty-adjusted capacity: Heavy 50%, Tank 100%, Soldier 15%, all other classes 0. Hellish gives everyone0. Existing starting-shield mutation bonuses can fill remaining capacity, and all sources respect the same cap. This adds no new branch or maximum-shield upgrade.",
     "Current Medic recovery, shared shield capacity and class starting-shield implementation passes191focused checks, including actual seven-client ability replication and all42class/difficulty starting values. Full source validation and current browser/human balance acceptance remain pending. Future shield-cap branches and selective blocking are recorded only.",
     "Public5233 feedback accepts the waiting-room/equipment distinction and basic map appearance. Requested clearer setup labels, better room-code placement, an in-bounds Cobble Crab, filled random-map imagery, separate HP/shield bars with character headshots, room passwords and a clear next-encounter preparation message. Current interface-clarity implementation is awaiting complete verification and a new human preview.",
-    "Chat delivery follow-up implements confirmed sends, explicit rejections and retained editable drafts, plus safe retry after timeout/reserved reconnect and IME composition guards. This is a software follow-up to the smooth multiplayer request; no new human acceptance is claimed."
+    "Chat delivery follow-up implements confirmed sends, explicit rejections and retained editable drafts, plus safe retry after timeout/reserved reconnect and IME composition guards. This is a software follow-up to the smooth multiplayer request; no new human acceptance is claimed.",
+    "Fresh2026-10-31 expansion direction authorized the selected-class shield-cap idea. Its implementation now supersedes older deferred-only shield-cap notes; selective attack blocking is still future work."
   ],
   "remainingReleaseWork": [
     "Continue current-content polish for first-time players during the remaining day. The home-gallery follow-up adds manual arrows/page buttons and keyboard/RTL navigation over existing artwork, retaining menu state and accepted camera/lava/controls. Read reviews/home-gallery-2026-10-29 for exact local/source/CI/fresh-preview/Wiki evidence. Testing links are preferred for human comparison. Matching Windows packaging should follow a stable gallery pass; older6f397a5camera review remains immutable. Full human/rendered/multiplayer balance and coordinated release acceptance remain open.",
@@ -635,5 +649,5 @@
     "Deploy and independently accept shared hosted global rankings and durable recovery. Current public authorities implement persistent server-scoped team records with exact scoring and real-network/restart evidence. Shared storage ownership, participant recovery credentials, entropy recovery histories and hosted acceptance remain open.",
     "Prepare and verify a new coordinated Windows/browser release with a matching backend; existing immutable Windows and older public builds remain separate."
   ],
-  "semanticInputsSha256": "79e5cc7f91c9d5c9a19bfddfe362def1e8230a569b28f49426109862f467df50"
+  "semanticInputsSha256": "031e4b176bc9585570c6064ea1fe7c63be889ffacde0fe12aa7d940a82980ae2"
 }

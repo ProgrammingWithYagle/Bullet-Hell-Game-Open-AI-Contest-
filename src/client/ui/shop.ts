@@ -1,6 +1,5 @@
 import {
   combatReviveAllowed,
-  maximumPersonalShield,
 } from '../../shared/recovery-policy.ts';
 import {
   skillMapLayout,
@@ -112,7 +111,7 @@ function canBuy(
       };
     if (
       item.effect === 'shield' &&
-      !maximumPersonalShield(shopDifficulty, p.maxHealth)
+      !p.maxShield
     )
       return {
         allowed: false,

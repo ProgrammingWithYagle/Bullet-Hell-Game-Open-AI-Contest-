@@ -271,5 +271,13 @@
     ],
     "instantKillAttacks": false
   },
-  "phaseTransitionCastDelaySeconds": 1.5
+  "phaseTransitionCastDelaySeconds": 1.5,
+  "personalShieldCapacity": {
+    "classBonusLimits": {
+      "heavy": 0.5,
+      "tank": 0.75
+    },
+    "effect": "shieldCapacity",
+    "calculation": "Floor maximum health times difficulty capacity fraction times one plus the bounded class bonus. Hellish always zero. Capacity purchases do not refill shields."
+  }
 }

@@ -1,6 +1,16 @@
 # Changelog
 
-Development build **2026.10.31-field-journal**, protocol 44. The current contest Site uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.10.31-shield-specializations**, protocol 44. The current contest Site uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-10-31 — Tank and Heavy build larger personal shields
+
+### Two defensive specializations
+
+- Heavy’s Reserve Plating and Tank’s Citadel Lining retrofit the existing third defensive paths. Node IDs, prices, prerequisites and the 378-skill roster remain.
+- At six, fifteen and twenty-one total path points, Heavy raises capacity by 15%, 30% and 50%; Tank raises it by 25%, 50% and 75%. Existing node bonuses remain.
+- Capacity multiplies the difficulty-based personal shield limit. It does not refill shields. Starting shields and all shared shield pools respect the new cap.
+- Hellish still forbids every personal shield. Other classes retain their original limits, and deployed walls remain separate cover.
+- Both skill views show localized specialization names, effects and explicit limit/refill help. Known prior local profiles, records and Practice saves carry forward.
 
 ## 2026-10-31 — A Field Journal for the next expedition
 

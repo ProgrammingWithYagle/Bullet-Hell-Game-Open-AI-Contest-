@@ -1,20 +1,20 @@
 // AI-authored translations; native-language acceptance remains open.
 const rows={
-  en:['Combined personal shield cap: {percent}% of maximum health.','Personal shields are disabled on Hellish.'],
-  'zh-Hans':['个人护盾总上限：最大生命的{percent}%。','Hellish难度禁用个人护盾。'],
-  'zh-Hant':['個人護盾總上限：最大生命的{percent}%。','Hellish難度停用個人護盾。'],
-  ja:['個人シールドの合計上限：最大体力の{percent}%。','Hellishでは個人シールドは無効です。'],
-  es:['Límite total de escudo personal: {percent}% de la salud máxima.','Los escudos personales están desactivados en Hellish.'],
-  fr:['Plafond cumulé des boucliers personnels : {percent}% de la vie maximale.','Les boucliers personnels sont désactivés en Hellish.'],
-  de:['Gemeinsame Obergrenze persönlicher Schilde: {percent}% der maximalen Gesundheit.','Persönliche Schilde sind auf Hellish deaktiviert.'],
-  'pt-BR':['Limite total de escudo pessoal: {percent}% da vida máxima.','Escudos pessoais estão desativados no Hellish.'],
-  ru:['Общий предел личных щитов: {percent}% максимального здоровья.','На Hellish личные щиты отключены.'],
-  hi:['व्यक्तिगत ढाल की कुल सीमा: अधिकतम स्वास्थ्य का {percent}%।','Hellish में व्यक्तिगत ढाल बंद हैं।'],
-  ar:['الحد الإجمالي للدروع الشخصية: {percent}% من أقصى صحة.','الدروع الشخصية معطلة في Hellish.'],
-  bn:['ব্যক্তিগত ঢালের মোট সীমা: সর্বোচ্চ স্বাস্থ্যের {percent}%।','Hellish-এ ব্যক্তিগত ঢাল বন্ধ।'],
-  id:['Batas gabungan perisai pribadi: {percent}% kesehatan maksimum.','Perisai pribadi dinonaktifkan di Hellish.'],
-  ur:['ذاتی ڈھال کی مجموعی حد: زیادہ سے زیادہ صحت کا {percent}%۔','Hellish میں ذاتی ڈھال بند ہیں۔'],
-  ko:['개인 보호막 총한도: 최대 체력의 {percent}%.','Hellish에서는 개인 보호막을 사용할 수 없습니다.']
+  en:['Base personal shield cap: {percent}% of maximum health.','Personal shields are disabled on Hellish.'],
+  'zh-Hans':['个人护盾基础上限：最大生命的{percent}%。','Hellish难度禁用个人护盾。'],
+  'zh-Hant':['個人護盾基礎上限：最大生命的{percent}%。','Hellish難度停用個人護盾。'],
+  ja:['個人シールドの基本上限：最大体力の{percent}%。','Hellishでは個人シールドは無効です。'],
+  es:['Límite base de escudo personal: {percent}% de la salud máxima.','Los escudos personales están desactivados en Hellish.'],
+  fr:['Plafond de base des boucliers personnels : {percent}% de la vie maximale.','Les boucliers personnels sont désactivés en Hellish.'],
+  de:['Basisobergrenze persönlicher Schilde: {percent}% der maximalen Gesundheit.','Persönliche Schilde sind auf Hellish deaktiviert.'],
+  'pt-BR':['Limite base de escudo pessoal: {percent}% da vida máxima.','Escudos pessoais estão desativados no Hellish.'],
+  ru:['Базовый предел личных щитов: {percent}% максимального здоровья.','На Hellish личные щиты отключены.'],
+  hi:['व्यक्तिगत ढाल की मूल सीमा: अधिकतम स्वास्थ्य का {percent}%।','Hellish में व्यक्तिगत ढाल बंद हैं।'],
+  ar:['الحد الأساسي للدروع الشخصية: {percent}% من أقصى صحة.','الدروع الشخصية معطلة في Hellish.'],
+  bn:['ব্যক্তিগত ঢালের মূল সীমা: সর্বোচ্চ স্বাস্থ্যের {percent}%।','Hellish-এ ব্যক্তিগত ঢাল বন্ধ।'],
+  id:['Batas dasar perisai pribadi: {percent}% kesehatan maksimum.','Perisai pribadi dinonaktifkan di Hellish.'],
+  ur:['ذاتی ڈھال کی بنیادی حد: زیادہ سے زیادہ صحت کا {percent}%۔','Hellish میں ذاتی ڈھال بند ہیں۔'],
+  ko:['개인 보호막 기본 한도: 최대 체력의 {percent}%.','Hellish에서는 개인 보호막을 사용할 수 없습니다.']
 };
 const starting={
   en:'Starting shield each fight: {percent}% of your maximum shield.',

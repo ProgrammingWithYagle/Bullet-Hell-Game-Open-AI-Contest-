@@ -1,5 +1,8 @@
 # Grave Accord
 
+Latest development continuation: **2026.10.31-shield-specializations** adds [Tank/Heavy shield-cap paths](docs/SHIELD_SPECIALIZATIONS.md). Wire protocol44 remains, with a new content revision; use matching clients and servers. Current new-build evidence is in `reviews/shield-specializations-2026-10-31/`. Earlier checkpoints below retain their source and preview identities.
+
+
 Current development continuation: **2026.10.31-field-journal / protocol 44** adds [the Stitchwright sewing room](docs/STITCHWORK.md). The same 66-boss roster now has 13 implemented original-boss quality passes, with 47 remaining. Public Site version 4 and its protocol 43 backend remain separate, unchanged releases. Current expansion review manifests live in `reviews/field-journal-2026-10-31/`; read [the current handoff](handoff/NEXT_CHAT.md) for launch and verification identities. The new [Field Journal](docs/FIELD_JOURNAL.md) adds 19 replay goals, 57 cosmetic stamps, seven survivor letters and goal-based setup suggestions. The combined local gate passes **982 tests with 0 failures**. Matching local review: testing http://127.0.0.1:5274/ (backend 2650), public http://127.0.0.1:5275/ (backend 2651), game source `5c5ebd05484616a11af3253925606a5e84a41f9d`. Each audience passed 52 served-file/catalog checks and real two-peer room/chat/host controls. The earlier contest details below describe their checkpoint.
 
 
@@ -84,7 +87,7 @@ Online rooms open a **Waiting room** with the player list and a copyable code. U
 Medic recovery now has explicit class/difficulty rules: Baby full health plus20% shield, Easy75%, Normal45%, Hard 30%, Insane 1HP, and no revival on Hellish. Medic can spend a self-revival charge in a team; ordinary classes retain Solo-only self-recovery. Passive regeneration is reduced for everyone on Hard/Insane and disabled on Hellish. [Exact rules and balance limits](docs/MEDIC_RECOVERY.md).
 
 
-Personal shields now share one combined capacity across starting shields, ability shields and armor plates: Baby/Easy/Normal 100% of maximum health, Hard 75%, Insane 50%, Hellish 0, rounded down. Excess shield cannot absorb damage. Hellish cannot buy or consume shield items; deployed walls remain physical cover. The HUD shows current shield/capacity. Future Tank/Heavy cap upgrades and selective attack blocking are recorded separately and are not implemented. [Future design ideas](docs/FUTURE_DESIGN_IDEAS.md).
+Personal shields now share one combined capacity across starting shields, ability shields and armor plates: Baby/Easy/Normal 100% of maximum health, Hard 75%, Insane 50%, Hellish 0, rounded down. Excess shield cannot absorb damage. Hellish cannot buy or consume shield items; deployed walls remain physical cover. The HUD shows current shield/capacity. Tank/Heavy capacity specializations are implemented in the current development branch; selective attack blocking remains deferred. [Future design ideas](docs/FUTURE_DESIGN_IDEAS.md).
 
 
 Base starting shield is recalculated each fight from the difficulty-adjusted capacity: Heavy 50%, Tank 100%, Soldier 15%, all other classes 0. Hellish gives everyone0. Existing starting-shield mutation bonuses can fill remaining capacity, and all sources respect the same cap. This adds no new branch or maximum-shield upgrade.

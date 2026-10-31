@@ -64,7 +64,7 @@ export function effectIcon(effects: Record<string, number | undefined>) {
     [/rally|ability|cooldown|sigil|turret|barrier|veil|suppression/, 'ability'],
     [/revive|selfRevive/, 'rescue'],
     [/dodge|moveSpeed/, 'move'],
-    [/armor/, 'armor'],
+    [/shieldCapacity|armor/, 'armor'],
     [/Health|regeneration/, 'health'],
     [/magazine/, 'magazine'],
     [/reload/, 'reload'],

@@ -64,4 +64,4 @@ export function effectText(
     .join(' · ');
 }
 
-export function skillBehavior(id:string){const talent=talentForSkill(id);return talent?t('talent.'+talent+'.description'):'';}
+export function skillBehavior(id:string){const talent=talentForSkill(id);if(talent)return t('talent.'+talent+'.description');const skill=data.skills.find(s=>s.id===id);return skill?.subbranchNameKey==='shieldPath.'+skill?.classId+'.name'?t('shieldPath.help'):'';}

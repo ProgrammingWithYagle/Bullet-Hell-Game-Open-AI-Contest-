@@ -597,6 +597,7 @@ export class Game {
     this.statsCache.set(p.id, s);
     return s;
   }
+  maximumShield(p:Player){return maximumPersonalShield(this.settings.difficulty,p.maxHealth,p.classId,this.stats(p).effects.shieldCapacity??0);}
   movementSpeed(p: Player) {
     const base = data.classes.find((c) => c.id === p.classId)!.speed;
     const braced = this.combatTick < p.braceUntil;
@@ -651,7 +652,7 @@ export class Game {
       const supply = data.supplies.find((s) => s.id === r.item);
       if (!supply) return { ok: false, reason: 'incompatibleItem' };
       if (supply.effect==='revive' && !combatReviveAllowed(this.settings.difficulty,p.classId)) return {ok:false,reason:'revivesDisabled'};
-      if (supply.effect==='shield' && !maximumPersonalShield(this.settings.difficulty,p.maxHealth)) return {ok:false,reason:'shieldsDisabled'};
+      if (supply.effect==='shield' && !this.maximumShield(p)) return {ok:false,reason:'shieldsDisabled'};
       const slot = p.supplies.find((s) => s.id === supply.id) ?? p.supplies.find((s) => !s.count);
       if (!slot || slot.count >= supply.maximumStack) return { ok: false, reason: 'inventoryFull' };
       price = supply.price;
@@ -674,6 +675,7 @@ export class Game {
     p.health = p.maxHealth;
     p.ammo = this.stats(p).magazine;
     p.reloadAt = 0;
+    this.limitPersonalShield(p);
     return { ok: true };
   }
   vote(id: string, index: number): boolean {
@@ -821,7 +823,7 @@ export class Game {
       p.maxHealth = this.stats(p).health;
       p.health = p.maxHealth;
       p.shield = clamp(
-        Math.floor(maximumPersonalShield(this.settings.difficulty,p.maxHealth)*startingShieldFraction(p.classId))+this.mutations.reduce(
+        Math.floor(this.maximumShield(p)*startingShieldFraction(p.classId))+this.mutations.reduce(
           (n, m) =>
             n +
             Number(
@@ -835,7 +837,7 @@ export class Game {
           0,
         ),
         0,
-        maximumPersonalShield(this.settings.difficulty,p.maxHealth),
+        this.maximumShield(p),
       );
       p.ammo = this.stats(p).magazine;
       p.reloadAt = 0;
@@ -1286,7 +1288,7 @@ export class Game {
         break;
       case 'shield':
         this.limitPersonalShield(p);
-        p.supplyShield = Math.min(item.amount,Math.max(0,maximumPersonalShield(this.settings.difficulty,p.maxHealth)-p.shield-this.classKits.status(p.id,now).shield));
+        p.supplyShield = Math.min(item.amount,Math.max(0,this.maximumShield(p)-p.shield-this.classKits.status(p.id,now).shield));
         if(!p.supplyShield)return;
         p.supplyShieldUntil = now + ticks(item.duration);
         break;
@@ -2571,7 +2573,7 @@ export class Game {
   }
   /** One budget covers permanent, ability and temporary personal shield pools. */
   private limitPersonalShield(p:Player){
-    const maximum=maximumPersonalShield(this.settings.difficulty,p.maxHealth);
+    const maximum=this.maximumShield(p);
     p.shield=clamp(p.shield,0,maximum);
     this.classKits.limitShield(p.id,maximum-p.shield,this.combatTick);
     p.supplyShield=this.combatTick<p.supplyShieldUntil
@@ -2984,7 +2986,8 @@ export class Game {
     if (
       !value ||
       typeof value !== 'object' ||
-      (value as { protocolVersion?: unknown }).protocolVersion !== PROTOCOL
+      ((value as { protocolVersion?: unknown }).protocolVersion !== PROTOCOL ||
+       (value as {contentRevision?: unknown}).contentRevision !== CONTENT_REVISION)
     )
       throw Error('versionMismatch');
     if (

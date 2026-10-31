@@ -1,5 +1,4 @@
 import type { RunProgress } from './run-progress.ts';
-import {maximumPersonalShield} from './recovery-policy.ts';
 import type { TerrainStatus } from './district-director.ts';
 import type { KitCue, KitStatus } from './class-kits.ts';
 import type { Game, Boss } from './game.ts';
@@ -116,7 +115,7 @@ export function viewOf(g: Game, owner: string): View {
       aim: p.aim,
       health: p.health,
       maxHealth: p.maxHealth,
-      maxShield: maximumPersonalShield(g.settings.difficulty,p.maxHealth),
+      maxShield: g.maximumShield(p),
       shield:
         p.shield +
         (g.combatTick < p.supplyShieldUntil ? p.supplyShield : 0) +
