@@ -1,5 +1,8 @@
 # Grave Accord
 
+Current development continuation: **2026.10.31-stitchwork / protocol44** adds [the Stitchwright sewing room](docs/STITCHWORK.md). The same66-boss roster now has13 implemented original-boss quality passes, with47remaining. Public Site version4 and its protocol43 backend remain separate, unchanged releases. Current expansion review manifests live in `reviews/stitchwork-2026-10-31/`; read [the current handoff](handoff/NEXT_CHAT.md) for launch and verification identities. The earlier contest details below describe their checkpoint.
+
+
 ![Grave Accord cover](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/cover.jpg)
 
 A cooperative gothic bullet-hell game. Dodge attacks, defeat a boss, vote on the next contract and spend your rewards on a build. Play solo or with friends.

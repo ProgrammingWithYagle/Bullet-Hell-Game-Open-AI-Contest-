@@ -39,7 +39,7 @@ export function practiceRecords(store: Store): PracticeCampaignRecord[] {
         r.id.length <= 100 &&
         r.practiceOnly === true &&
         r.verified === false &&
-        r.contentRevision === CONTENT_REVISION &&
+        (r.contentRevision === CONTENT_REVISION || (r.contentRevision === '1ae4988671b4316e028ed42c6a9cd63c2efa26f046debad2fb75b8e1fc8e7f6d' && r.protocol <= 43)) &&
         Number.isSafeInteger(r.protocol) &&
         implementedClassIds.includes(r.classId) &&
         catalog.modes.some(

@@ -1,6 +1,17 @@
 # Changelog
 
-Development build **2026.10.30-shared-network**, protocol 43. The current contest Site uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.10.31-stitchwork**, protocol 44. The current contest Site uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-10-31 — The Stitchwright opens the sewing room
+
+### Cut the thread
+
+- The Stitchwright now lays destructible needle seams, returns with a freshly warned backstitch and closes three sides of a moving hem while leaving a marked escape.
+- Breaking a needle cuts every connected thread, including its pending return. Existing tethers can still be shot or released with a one-second rescue.
+- Brutal uses returning stitches from the start. Crazed adds separately warned crossing stitches; its hem follow-up waits until the open-side escape has finished.
+- A short harmless approach replaces stationary generic volleys. Each phase has its own technique and help in all fifteen languages. The original illustrations and score remain.
+- Recover Elian Vey’s story and the button jar in the profile after clearing the encounter. This update advances one existing encounter quality pass; the roster stays at 66.
+- Known public-version-4 local saves, profiles and records carry forward. Online play requires a matching updated server. Public version 4 remains a separate published build.
 
 ## 2026-10-31 — Cleaner fight controls
 

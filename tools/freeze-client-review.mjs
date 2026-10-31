@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+const protocol=Number(fs.readFileSync('src/shared/protocol.ts','utf8').match(/export const PROTOCOL = (\d+)/)[1]);
 import path from 'node:path';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
@@ -35,7 +36,7 @@ assert.equal(fs.readFileSync(worker,'utf8').includes('testingCommand'),audience=
 for(const marker of['combat-action-dock','hud-actions','room-invite-hud','data-password-toggle','host-pause-match'])assert(main.includes(marker),marker);
 const backend='output/frozen-'+label+'-'+commit.slice(0,7)+'.mjs';
 if(!fs.existsSync(backend))await build({entryPoints:['src/server/index.ts'],bundle:true,platform:'node',format:'esm',packages:'external',outfile:backend,logLevel:'silent'});
-const identity={sourceCommit:commit,buildId:JSON.parse(fs.readFileSync('src/shared/update-history.json')).buildId,protocol:43,contentRevision:JSON.parse(fs.readFileSync('content/revision.json')).sha256,audience,...before,endpoint};
+const identity={sourceCommit:commit,buildId:JSON.parse(fs.readFileSync('src/shared/update-history.json')).buildId,protocol,contentRevision:JSON.parse(fs.readFileSync('content/revision.json')).sha256,audience,...before,endpoint};
 fs.writeFileSync(root+'/preview-build.json',JSON.stringify(identity,null,2)+'\n');
 const members=walk(root).map(f=>({path:f.slice(root.length+1),bytes:fs.statSync(f).size,sha256:sha(fs.readFileSync(f))}));
 const manifest={passed:true,...identity,root:path.resolve(root),url,files:members.length,bytes:members.reduce((n,m)=>n+m.bytes,0),members,backend:{path:path.resolve(backend),bytes:fs.statSync(backend).size,sha256:sha(fs.readFileSync(backend)),externalProjectNodeModulesRequired:true}};

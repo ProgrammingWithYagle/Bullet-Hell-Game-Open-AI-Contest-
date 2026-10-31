@@ -240,6 +240,10 @@ export class BossDirector {
     return this.kind==='ratcatcher'?this.ratcatcher.sack():null;
   }
   weakContact(from: Vec, to: Vec, weak: Vec & { kind: string; radius: number }, radius: number) {
+    if (weak.kind === 'stitch-pin') {
+      const pin = weak as import('./stitchwork.ts').StitchPin;
+      return segmentCircle({x:from.x-pin.oldX,y:from.y-pin.oldY},{x:to.x-pin.x,y:to.y-pin.y},{x:0,y:0},radius+pin.radius);
+    }
     if(weak.kind==='sack'&&this.kind==='ratcatcher')return this.ratcatcher.weakContact(from,to,radius);
     if (weak.kind === 'endless-prop')
       return this.endless.weakContact(from, to, weak as EndlessProp, radius);

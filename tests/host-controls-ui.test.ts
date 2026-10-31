@@ -62,8 +62,8 @@ test('ending an encounter clears queued actions without inventing a clear or a p
 });
 
 test('issued42local Practice keeps build/map/economy identity while server checkpoints remain strict',()=>{
- assert.equal(PROTOCOL,43);const g=new Game({mode:'endless',arenaSelection:'randomRun',openingArenaId:'triage-yard'});g.addPlayer('solo','Mara','medic').coins=731;
- const old=g.offlineCheckpoint()!;old.protocolVersion=42;const current=Game.restoreOffline(old).offlineCheckpoint()!;assert.equal(current.protocolVersion,43);assert.deepEqual(current.player,old.player);assert.deepEqual(current.settings,old.settings);assert.equal(current.arenaId,old.arenaId);
+ assert.equal(PROTOCOL,44);const g=new Game({mode:'endless',arenaSelection:'randomRun',openingArenaId:'triage-yard'});g.addPlayer('solo','Mara','medic').coins=731;
+ const old=g.offlineCheckpoint()!;old.protocolVersion=42;const current=Game.restoreOffline(old).offlineCheckpoint()!;assert.equal(current.protocolVersion,PROTOCOL);assert.deepEqual(current.player,old.player);assert.deepEqual(current.settings,old.settings);assert.equal(current.arenaId,old.arenaId);
  assert.throws(()=>Game.restoreOffline({...old,contentRevision:'unknown'}),/versionMismatch/);assert.throws(()=>Game.restoreOffline({...old,serverOnly:true}),/versionMismatch/);assert.throws(()=>Game.restoreAuthoritative({...g.authoritativeCheckpoint(),protocolVersion:42}),/versionMismatch/);assert.equal(old.contentRevision,CONTENT_REVISION);
 });
 

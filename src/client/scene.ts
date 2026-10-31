@@ -1,3 +1,4 @@
+import {drawStitchCue, isStitchCue} from './stitch-cues.ts';
 import {isBellCue} from './bell-presentation.ts';
 import {drawBellCue} from './bell-cues.ts';
 import {isMoldCue} from './mold-presentation.ts';
@@ -485,6 +486,7 @@ export class CombatScene extends Phaser.Scene {
     const drawnMatronNeedles=new Set<number>();
 
     for (const cue of view.bossCues) {
+      if(isStitchCue(cue)){drawStitchCue(h,f,cue,now);continue;}
       if(isBellCue(cue)){drawBellCue(h,f,cue,now);continue;}
       if(isMoldCue(cue)){drawMoldCue(h,f,cue,now,view.bossCues.filter(isMoldCue),this.reduceMotion);continue;}
       if(cue.kind==='matron-walk'||cue.kind==='matron-brood'||cue.kind==='matron-pulse'||cue.kind==='matron-needles'){

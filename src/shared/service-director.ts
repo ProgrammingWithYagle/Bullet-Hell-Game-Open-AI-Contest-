@@ -1,5 +1,6 @@
 import {gappedRingContact as serviceRingContact} from './ring-contact.ts';
 export {gappedRingContact as serviceRingContact} from './ring-contact.ts';
+import {Stitchwork, type StitchCue} from './stitchwork.ts';
 import {BellCarillon,type BellCue} from './bell-carillon.ts';
 import {MoldMixing,moldMovement,type MoldCue} from './mold-mixing.ts';
 import {MatronWard,type MatronCue} from './matron-ward.ts';
@@ -140,6 +141,7 @@ type Spiral = Life &
     damage: number;
   };
 export type ServiceCue =
+  | StitchCue
   | BellCue
   | MoldCue
   | MatronCue
@@ -229,11 +231,13 @@ export class ServiceDirector {
   readonly bellringer=new BellCarillon();
   private kind = '';
   private castIndex = 0;
+  readonly stitchwright = new Stitchwork();
   nextSignatureAt = 0;
   private shapes: ServiceCue[] = [];
   private contacts = new Map<string, number>();
   private once = new Set<string>();
   reset(kind: string, encounter = false) {
+    this.stitchwright.reset(0, encounter || kind !== this.kind);
     this.matron.reset(0,encounter||kind!==this.kind);
     this.alchemist.reset(0,encounter||kind!==this.kind);
     this.bellringer.reset(0,encounter||kind!==this.kind);
@@ -254,7 +258,7 @@ export class ServiceDirector {
     return {...move,multiplier:Math.min(move.multiplier,moldMovement(this.alchemist.cues(),position,now))};
   }
   cues(): ServiceCue[] {
-    return [...this.bellringer.cues(),...this.alchemist.cues(),...this.matron.cues(),...this.shapes.map((c) => {
+    return [...this.stitchwright.cues(),...this.bellringer.cues(),...this.alchemist.cues(),...this.matron.cues(),...this.shapes.map((c) => {
       if (c.kind === 'service-sanctuary')
         return {
           ...c,
@@ -268,7 +272,7 @@ export class ServiceDirector {
     })];
   }
   weakPoints() {
-    return [...this.bellringer.weakPoints(),...this.matron.weakPoints(),...this.shapes.filter(
+    return [...this.stitchwright.weakPoints(),...this.bellringer.weakPoints(),...this.matron.weakPoints(),...this.shapes.filter(
       (c): c is ServiceProp | Tether =>
         (c.kind === 'service-prop' || c.kind === 'service-tether') && c.health > 0,
     )];
@@ -277,6 +281,7 @@ export class ServiceDirector {
     return this.shapes.some((c) => c.id === id && c.kind === 'service-prop' && c.role === 'caster');
   }
   hit(id: number, damage: number, now: number) {
+    const stitch = this.stitchwright.hit(id, damage, now); if (stitch) return stitch;
     const bell=this.bellringer.hit(id,damage,now);if(bell)return bell;
     const matron=this.matron.hit(id,damage);if(matron)return matron;
     const prop = this.weakPoints().find((p) => p.id === id);
@@ -752,6 +757,9 @@ export class ServiceDirector {
       );
   }
   step(c: SignatureContext) {
+    if (c.bossId === 'stitchwright') this.stitchwright.step(c, target => {
+      this.cast(c, target, {kind:'hook', count:1, speed:0, damage:12, telegraph:1.4});
+    });
     if(c.bossId==='matron'){this.matron.step(c);return;}
     if(c.bossId==='alchemist'){this.alchemist.step(c);return;}
     if(c.bossId==='bellringer'){this.bellringer.step(c);return;}

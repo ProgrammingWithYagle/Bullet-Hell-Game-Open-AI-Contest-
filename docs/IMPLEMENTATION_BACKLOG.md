@@ -1,5 +1,8 @@
 # Implementation backlog and contest acceptance map
 
+Current development continuation: **2026.10.31-stitchwork / protocol44** adds [the Stitchwright sewing room](STITCHWORK.md). The same66-boss roster now has13 implemented original-boss quality passes, with47remaining. Public Site version4 and its protocol43 backend remain separate, unchanged releases. Current expansion review manifests live in `reviews/stitchwork-2026-10-31/`; read [the current handoff](../handoff/NEXT_CHAT.md) for launch and verification identities. The earlier contest details below describe their checkpoint.
+
+
 Current product source is **2026.10.30-shared-network / protocol 43**. The [current checkpoint](CHECKPOINT_2026_10_25.md), [single implementation ledger](development-work-ledger.json) and [derived progress](DEVELOPMENT_PROGRESS.md) distinguish implementation from human and release acceptance. Current-content polish for first-time players is the priority; substantial new content stays deferred.
 
 Current source contains 66 playable encounters: 65 ordinary and one secret. The original expansion plan targets 150 ordinary encounters; its remaining 85 are deferred during current-content polish. Twelve of 60 original-boss quality passes are implemented; 48 remain, with final whole-boss human acceptance open. Seven class revamps, 21 ability transformations, 378 skills, 63 specialization paths, 28 weapons, six maps, five modes and fifteen catalogs are implemented. The optional 54-skill map and five secondary topology revisions remain separate from final visual, device and balance acceptance. [Future design ideas](FUTURE_DESIGN_IDEAS.md) records deferred bots/story, shield-cap branches and selective blocking.

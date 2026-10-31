@@ -2,7 +2,17 @@
 
 Continue in this SAME checkout: C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell). Use feat/first-playable-loop and draft PR #14. Read this note, inspect Git status and verify the live services before treating saved ports or remote state as current. Do not create another game clone or worktree.
 
-## Checkpoint
+## Post-contest continuation — 2026-10-31
+
+The user gave fresh direction to expand the game, superseding the feature-work pause below. The same checkout and `feat/first-playable-loop` now contain **2026.10.31-stitchwork / protocol 44**. [The Stitchwright sewing room](../docs/STITCHWORK.md) is the next completed implementation: destructible needle seams, fully re-warned backstitches, moving open hems, bounded approaches, retained rescue tethers, independent advanced forms, fifteen-locale help and recovered Elian Vey lore. Original-boss quality passes are now13/60, with47remaining; no new boss/class count is claimed.
+
+Public Site **version4** remains the protocol43 contest checkpoint recorded below, and the live Render backend remains source71fc34c. The new local runtime requires a matching protocol44 backend. Do not connect a newly built client to the older server and mistake the expected version mismatch for an outage. Known v4 local saves, profiles and campaign records are preserved through bounded local migration; online checkpoint compatibility remains strict.
+
+Current local expansion preview identities and verification are recorded in `reviews/stitchwork-2026-10-31/`. Read its preview manifests before using a port. The prior5272/5273 contest previews remain older builds. Testing can select Stitchwright and a Solo form explicitly; public opener/guide restrictions stay intact. No browser automation, portrait-sizing work, production deployment, Windows replacement, main merge or capacity change is authorized by this implementation record. The user’s existing separate publication authorization remains recorded below; a protocol44 online release would require coordinated backend and client work.
+
+The sewing module reuses existing action artwork and music. New walking artwork, rendered/human encounter acceptance, listening, native-language review, devices/WAN/endurance and final balance remain open. This is one implemented quality pass, not independent human acceptance.
+
+## Published version 4 checkpoint
 
 Public Site **version 4**: https://grave-accord.yigallin0423.chatgpt.site/ . Game source **366c12d0830b53d03b0e5f3b302803ad863c65fc**, build2026.10.30-shared-network, protocol43. Exact-source GitHub CI [41228803719](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/41228803719), job124618465054, passed956 tests with0 failures, as did the complete local gate. [Publication receipt](../reviews/hud-alignment-2026-10-31/publication.json) records the exact saved version, deployment, source snapshot, archive and unchanged backend. Metadata commits after the game source document the same runtime. The final PR comment could not be posted because the connector denied permission and GitHub CLI is unavailable; the branch and committed review evidence are current. The [Wiki receipt](../reviews/hud-alignment-2026-10-31/wiki-publication.json) verifies all18 pages and34 images at published commit855a6381b47e53ac4f628f2b72147591ab1c62c4.
 
@@ -16,7 +26,7 @@ The user confirmed that Together / Separate panels in Settings combine and separ
 
 The narrow ChatGPT preview still makes the landscape arena look small. Per-map framing and explicit fractional viewport fitting passed geometry/input checks, but the user did not observe a meaningful size improvement. On2026-10-31 they explicitly asked to defer portrait sizing, stop spending time on it, wrap up, clean and organize, and prepare this next-chat handoff. Do not claim that issue solved. Different map geometry for different players could affect multiplayer fairness; any later camera or portrait-map design needs a deliberate shared-world decision.
 
-This contest polishing pass is closed. Wait for fresh post-contest direction before major features. Deferred ideas: portrait presentation, story/lore, companion bots, shield-cap class branches for Tank/Heavy, blocking selected attacks, General mobility, durable online records and larger hosted capacity. None of those ideas is implemented by this checkpoint.
+The contest polishing pass is closed; fresh expansion direction was received on2026-10-31 and is recorded above. Remaining deferred ideas: portrait presentation, story/lore, companion bots, shield-cap class branches for Tank/Heavy, blocking selected attacks, General mobility, durable online records and larger hosted capacity. None of those ideas is implemented by this checkpoint.
 
 ## Preserve these decisions
 

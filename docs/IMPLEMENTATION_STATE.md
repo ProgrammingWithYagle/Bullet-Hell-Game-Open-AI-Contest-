@@ -1,5 +1,8 @@
 # Current implementation state
 
+Current development continuation: **2026.10.31-stitchwork / protocol44** adds [the Stitchwright sewing room](STITCHWORK.md). The same66-boss roster now has13 implemented original-boss quality passes, with47remaining. Public Site version4 and its protocol43 backend remain separate, unchanged releases. Current expansion review manifests live in `reviews/stitchwork-2026-10-31/`; read [the current handoff](../handoff/NEXT_CHAT.md) for launch and verification identities. The earlier contest details below describe their checkpoint.
+
+
 Public Site **version4** is live at [Grave Accord](https://grave-accord.yigallin0423.chatgpt.site/), from game source366c12d0830b53d03b0e5f3b302803ad863c65fc. Build2026.10.30-shared-network / protocol43. The full local gate and [exact-source CI](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/41228803719) pass956 tests. [Publication and archive identity](../reviews/hud-alignment-2026-10-31/publication.json) records the saved native version and unchanged compatible backend.
 
 Settings can keep equipment and abilities together or in separate panels; the choice persists without losing existing profiles. The user confirmed both choices work at their resolution. The HUD shares aligned edges and fixed corner controls. Boss information stays centered; the browser audio fallback switches from equipment to boss music. Per-map camera fitting preserves complete art and inverse aiming through resize events.

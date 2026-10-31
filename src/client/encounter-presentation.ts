@@ -1,3 +1,4 @@
+import {isStitchCue} from './stitch-cues.ts';
 import bellMotion from '../../assets/production/motion/bellringer-lab-library.json';
 import {bellFrame,isBellCue} from './bell-presentation.ts';
 import alchemistLab from '../../assets/production/motion/alchemist-lab-library.json';
@@ -39,6 +40,14 @@ export const encounterArt = baseEncounterArt.map(
     entry,
 );
 export function encounterFrame(boss: Boss, now: number, cues: BossCue[], reduced = false) {
+  if (boss.id==='stitchwright') {
+    if(boss.health<=0)return 7;
+    if(reduced||now<boss.staggerUntil)return 0;
+    const sewing=cues.filter(isStitchCue).filter(q=>q.kind==='stitch-seam'&&!q.disabled&&now>=q.beganAt&&now<q.until);
+    if(sewing.some(q=>now>=q.at))return 5;
+    const next=sewing.toSorted((a,b)=>a.at-b.at)[0];
+    return next ? next.at-now>15?2:3 : 0;
+  }
   if(boss.id==='bellringer'){if(boss.health<=0)return 7;if(now<boss.staggerUntil)return 0;return bellFrame(cues.filter(isBellCue),now,reduced);}
   if(boss.id==='alchemist'){if(boss.health<=0)return 7;if(now<boss.staggerUntil)return 0;return moldFrame(cues.filter(isMoldCue),now,reduced);}
   if(boss.id==='matron'){if(boss.health<=0)return 7;if(now<boss.staggerUntil)return 0;return matronFrame(cues.filter((q):q is import('../shared/matron-ward.ts').MatronCue=>q.kind==='matron-walk'||q.kind==='matron-brood'||q.kind==='matron-pulse'||q.kind==='matron-needles'||(q.kind==='service-prop'&&q.role==='nest')),now,reduced);}

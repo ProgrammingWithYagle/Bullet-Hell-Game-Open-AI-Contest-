@@ -2409,7 +2409,7 @@
   {
     "id": "stitchwright",
     "name": "Stitchwright",
-    "lore": "A surgeon of uniforms now mends the people who wore them.",
+    "lore": "A surgeon of uniforms now mends the people who wore them. Before the quarantine, Elian Vey kept a tailoring stall beside the infirmary. People who could not pay left a button in a jar. Vey remembered their names by the cloth they brought: the courier’s blue cuff, the watchwoman’s coat, the little yellow sleeve that needed lengthening each spring.\n\nWhen the council ordered every household sewn into the civic register, the stall became a checkpoint. Vey was told to stitch numbered tags into evacuation clothes. Those without a number were turned back. On the final night, Vey cut the tags from a basket of children’s coats and sewed the doors shut behind the fleeing families. The bells found a person still holding a needle.\n\nNow the Stitchwright tries to repair every gap, even the spaces living people need to breathe. A cut thread briefly breaks the old command. Under the last hem lies the button jar, its lid marked in a cramped hand: No account required. Iona recognizes the yellow sleeve. She takes it to the gate, where there is still someone waiting for it.",
     "minThreat": 1,
     "timer": 120,
     "healthFactor": 0.9,
@@ -2453,7 +2453,9 @@
             "telegraph": 1.1
           }
         ],
-        "patternPhase": 0
+        "patternPhase": 0,
+        "phaseNameKey": "boss.stitchwright.phase.0",
+        "signatureOwner": "stitchwork"
       },
       {
         "healthThreshold": 0.75,
@@ -2478,7 +2480,9 @@
             "telegraph": 1.1
           }
         ],
-        "patternPhase": 1
+        "patternPhase": 1,
+        "phaseNameKey": "boss.stitchwright.phase.1",
+        "signatureOwner": "stitchwork"
       },
       {
         "healthThreshold": 0.4,
@@ -2503,7 +2507,9 @@
             "telegraph": 1.1
           }
         ],
-        "patternPhase": 2
+        "patternPhase": 2,
+        "phaseNameKey": "boss.stitchwright.phase.2",
+        "signatureOwner": "stitchwork"
       }
     ],
     "route": "standard",
@@ -2512,13 +2518,20 @@
     "damageWindowFraction": 1,
     "signature": {
       "id": "stitchwright",
-      "behavior": "Catch survivors with destructible rescue tethers while hooks and crossing lanes pressure their teammates.",
-      "counterplay": "Shoot the outlined tether or channel its short rescue interaction; the bound survivor can still dodge and contribute.",
+      "behavior": "A harmless short approach leads to locked, destructible needle seams. Basting Line lays one thread; Backstitch returns along surviving needles after a fresh warning and adds the existing rescue tether. Closing Hem contracts three sides around a clear patch with one permanently open escape side. Last Alteration uses two sequential hems. Crazed adds its own warned crossing stitch; it never closes the hem escape while the hem is active.",
+      "counterplay": "Leave dashed thread warnings before they become solid; each stroke can hit once. Shoot either needle to sever all threads attached to it, including pending backstitches. Escape a closing hem through the hollow arrow or destroy a needle. Existing tethers can still be shot or released by one second of interaction. The original art and theme remain; these are new shared-authority techniques, not new directional animation.",
       "parameters": {
         "tetherHealth": 45,
         "tetherDuration": 4,
         "tetherRange": 350,
-        "rescueChannelSeconds": 1
+        "rescueChannelSeconds": 1,
+        "stitchwork": {
+          "module": "src/shared/stitchwork.ts",
+          "rules": "src/shared/stitchwork-rules.json",
+          "maximumSequencePins": 12,
+          "needleSevering": true,
+          "hemOpenSides": 1
+        }
       }
     },
     "artBrief": "A surgeon of uniforms now mends the people who wore them. One dominant silhouette and one signature prop; quiet matte fabric masses, restrained surface detail.",
@@ -2563,7 +2576,9 @@
                 "comboOffsetSeconds": 0
               }
             ],
-            "patternPhase": 0
+            "patternPhase": 0,
+            "phaseNameKey": "boss.stitchwright.phase.0",
+            "signatureOwner": "stitchwork"
           },
           {
             "healthThreshold": 0.75,
@@ -2591,7 +2606,9 @@
                 "comboOffsetSeconds": 0
               }
             ],
-            "patternPhase": 1
+            "patternPhase": 1,
+            "phaseNameKey": "boss.stitchwright.phase.1",
+            "signatureOwner": "stitchwork"
           },
           {
             "healthThreshold": 0.5,
@@ -2619,7 +2636,9 @@
                 "comboOffsetSeconds": 0
               }
             ],
-            "patternPhase": 2
+            "patternPhase": 2,
+            "phaseNameKey": "boss.stitchwright.phase.2",
+            "signatureOwner": "stitchwork"
           },
           {
             "healthThreshold": 0.25,
@@ -2647,7 +2666,9 @@
                 "comboOffsetSeconds": 1.25
               }
             ],
-            "patternPhase": 3
+            "patternPhase": 3,
+            "phaseNameKey": "boss.stitchwright.phase.3",
+            "signatureOwner": "stitchwork"
           }
         ]
       },
@@ -2685,7 +2706,9 @@
                 "comboOffsetSeconds": 0
               }
             ],
-            "patternPhase": 0
+            "patternPhase": 0,
+            "phaseNameKey": "boss.stitchwright.phase.0",
+            "signatureOwner": "stitchwork"
           },
           {
             "healthThreshold": 0.75,
@@ -2713,7 +2736,9 @@
                 "comboOffsetSeconds": 0
               }
             ],
-            "patternPhase": 1
+            "patternPhase": 1,
+            "phaseNameKey": "boss.stitchwright.phase.1",
+            "signatureOwner": "stitchwork"
           },
           {
             "healthThreshold": 0.5,
@@ -2741,7 +2766,9 @@
                 "comboOffsetSeconds": 0
               }
             ],
-            "patternPhase": 2
+            "patternPhase": 2,
+            "phaseNameKey": "boss.stitchwright.phase.2",
+            "signatureOwner": "stitchwork"
           },
           {
             "healthThreshold": 0.25,
@@ -2769,13 +2796,15 @@
                 "comboOffsetSeconds": 1.25
               }
             ],
-            "patternPhase": 3
+            "patternPhase": 3,
+            "phaseNameKey": "boss.stitchwright.phase.3",
+            "signatureOwner": "stitchwork"
           }
         ],
         "additionalPatterns": [
-          "pursuit",
-          "crosscut",
-          "weave"
+          "warned-cross-stitch",
+          "surviving-needle-backstitch",
+          "open-hem-followup"
         ]
       }
     }
