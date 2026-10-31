@@ -29,7 +29,7 @@ export class Controls {
   private lastButtons: boolean[] = [];
   private angle = -Math.PI / 2;
   private listeners = new AbortController();
-  constructor(readonly element: HTMLElement,private toWorld=(point:{x:number;y:number})=>point) {
+  constructor(readonly element: HTMLElement,private toWorld=(point:{x:number;y:number})=>point,private viewport=()=>({width:1600,height:1000})) {
     const on = <K extends keyof WindowEventMap>(
       target: EventTarget,
       type: K,
@@ -118,11 +118,12 @@ export class Controls {
     this.clear();
   }
   private setPointer(e: PointerEvent) {
-    const r = this.element.getBoundingClientRect(),
-      scale = Math.min(r.width / 1600, r.height / 1000);
+    const r = (this.element.querySelector?.('canvas') ?? this.element).getBoundingClientRect(),
+      {width,height} = this.viewport(), scale = Math.min(r.width / width, r.height / height);
+    if (!Number.isFinite(scale) || scale <= 0) return;
     this.pointer = this.toWorld({
-      x: (e.clientX - r.left - (r.width - 1600 * scale) / 2) / scale,
-      y: (e.clientY - r.top - (r.height - 1000 * scale) / 2) / scale,
+      x: (e.clientX - r.left - (r.width - width * scale) / 2) / scale,
+      y: (e.clientY - r.top - (r.height - height * scale) / 2) / scale,
     });
   }
   clear() {

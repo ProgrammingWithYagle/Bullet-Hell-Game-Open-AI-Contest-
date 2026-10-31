@@ -7,7 +7,7 @@ import {drawAmbulanceCue} from './ambulance-cues.ts';
 import {drawWidowCue} from './widow-presentation.ts';
 import clerkRules from '../shared/clerk-appeal-rules.json';
 import {smallWakesPose,drawSmallWakes} from './small-wakes-presentation.ts';
-import {applyArenaCamera,arenaCamera,arenaCameraZoom} from './arena-camera.ts';
+import {trackArenaViewport,arenaCamera} from './arena-camera.ts';
 import { earlyWatchPose, drawEarlyWatch } from './early-watch-presentation.ts';
 import { EndlessPresentation } from './endless-presentation.ts';
 import type { EndlessCue } from '../shared/endless-director.ts';
@@ -108,6 +108,9 @@ export class CombatScene extends Phaser.Scene {
   private lastFrameClock = 0;
   readonly frameMeter = new FrameMeter();
   ready = false;
+  viewport() {
+    return {width:this.scale?.gameSize.width ?? 1600,height:this.scale?.gameSize.height ?? 1000};
+  }
   diagnostics() {
     return {
       ...this.frameMeter.summary(),
@@ -120,6 +123,7 @@ export class CombatScene extends Phaser.Scene {
         pixelRatio: devicePixelRatio,
         renderer: this.game.renderer.type,
         internalCanvas: [this.game.canvas.width, this.game.canvas.height],
+        arenaZoom: this.cameras.main.zoom,
         displayedCanvas: [
           this.game.canvas.getBoundingClientRect().width,
           this.game.canvas.getBoundingClientRect().height,
@@ -203,7 +207,8 @@ export class CombatScene extends Phaser.Scene {
     }
   }
   create() {
-    applyArenaCamera(this.cameras.main);
+    const stopFitting = trackArenaViewport(this.cameras.main,this.scale);
+    this.events.once(Phaser.Scenes.Events.SHUTDOWN,stopFitting);
     this.serviceArt = new ServicePresentation(this);
     this.raidArt = new RaidPresentation(this);
     this.endlessArt = new EndlessPresentation(this);
@@ -1076,7 +1081,7 @@ export class CombatScene extends Phaser.Scene {
         data.bosses.find((boss) => boss.id === view.boss.id)!.radius,
       );
     const existing = new Set<string>();
-    const nameScale = Math.max(1, 1600 / Math.max(320, this.scale.displaySize.width)) * this.nameTextScale / arenaCameraZoom;
+    const nameScale = Math.max(1, this.scale.gameSize.width / Math.max(320, this.scale.displaySize.width)) * this.nameTextScale / this.cameras.main.zoom;
     for (const actual of view.players) {
       existing.add(actual.id);
       const p = actual.id === this.localId && this.predicted ? this.predicted : actual;

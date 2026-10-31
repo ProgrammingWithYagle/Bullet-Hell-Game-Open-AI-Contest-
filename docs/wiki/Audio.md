@@ -90,3 +90,7 @@ Slow Wick is a G-minor 9/8 plucked-droplet phrase at 88 BPM; Stones Remember is 
 ## Phase-turn cue
 
 The current phase event uses a new original 1.36-second two-strike bell and short low impact. Effects volume controls it, priority reserves playback space and music briefly ducks. The earlier cue/master files remain unchanged. Exact synthesis/PCM/headroom/DC verification is separate from listening acceptance. Individual themes remain 66 boss themes plus City Wake.
+
+## Browser playback repair
+
+Equipment music fades to the current boss's individual theme when combat begins and returns between encounters. Browsers that lack the audio hold method use a scheduled-value fallback. Native controller tests cover all66bosses with the method present, absent or throwing, plus leaving during a pending decode. These tests do not claim listening acceptance in Firefox, Safari or on a physical device.

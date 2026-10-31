@@ -1,6 +1,13 @@
 # Changelog
 
-Development build **2026.10.30-shared-network**, protocol 43. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.30-shared-network**, protocol 43. The current contest Site uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-10-30 — Browser sizing and boss music
+
+- The arena canvas now follows the available window. Its camera keeps the complete arena and tall characters visible without stretching, and aiming updates with resize or orientation changes.
+- The boss health panel and name stay centered independently of the encounter text and host buttons. Narrow windows put the nameplate on its own centered row; controls remain in the corner during the defeat scene.
+- Music transitions use a compatible fallback when the browser lacks the audio hold method, so equipment music can change to each boss theme.
+- Game rules, protocol43 and the hosted eight-slot capacity are unchanged.
 
 ## 2026-10-30 — Clearer equipment and easier group joins
 

@@ -22,12 +22,26 @@ export const arenaCamera={
 };
 export const arenaCameraZoom=Math.min(1600/arenaCamera.width,1000/arenaCamera.height);
 const center={x:arenaCamera.x+arenaCamera.width/2,y:arenaCamera.y+arenaCamera.height/2};
-export function arenaCanvasToWorld(point:Vec):Vec {
-  return {x:center.x+(point.x-800)/arenaCameraZoom,y:center.y+(point.y-500)/arenaCameraZoom};
+export type ArenaViewport = {width:number;height:number};
+const defaultViewport={width:1600,height:1000};
+export function arenaProjection(viewport:ArenaViewport=defaultViewport) {
+  const width=Number.isFinite(viewport.width)&&viewport.width>0?viewport.width:defaultViewport.width;
+  const height=Number.isFinite(viewport.height)&&viewport.height>0?viewport.height:defaultViewport.height;
+  return {width,height,zoom:Math.min(width/arenaCamera.width,height/arenaCamera.height)};
 }
-export function arenaWorldToCanvas(point:Vec):Vec {
-  return {x:800+(point.x-center.x)*arenaCameraZoom,y:500+(point.y-center.y)*arenaCameraZoom};
+export function arenaCanvasToWorld(point:Vec,viewport:ArenaViewport=defaultViewport):Vec {
+  const {width,height,zoom}=arenaProjection(viewport);
+  return {x:center.x+(point.x-width/2)/zoom,y:center.y+(point.y-height/2)/zoom};
 }
-export function applyArenaCamera(camera:{setZoom(value:number):unknown;centerOn(x:number,y:number):unknown}) {
-  camera.setZoom(arenaCameraZoom);camera.centerOn(center.x,center.y);
+export function arenaWorldToCanvas(point:Vec,viewport:ArenaViewport=defaultViewport):Vec {
+  const {width,height,zoom}=arenaProjection(viewport);
+  return {x:width/2+(point.x-center.x)*zoom,y:height/2+(point.y-center.y)*zoom};
+}
+export function applyArenaCamera(camera:{setZoom(value:number):unknown;centerOn(x:number,y:number):unknown},viewport:ArenaViewport=defaultViewport) {
+  camera.setZoom(arenaProjection(viewport).zoom);camera.centerOn(center.x,center.y);
+}
+export function trackArenaViewport(camera:Parameters<typeof applyArenaCamera>[0],scale:{gameSize:ArenaViewport;on(event:'resize',listener:()=>void):unknown;off(event:'resize',listener:()=>void):unknown}) {
+  const fit=()=>applyArenaCamera(camera,scale.gameSize);
+  fit();scale.on('resize',fit);
+  return ()=>scale.off('resize',fit);
 }

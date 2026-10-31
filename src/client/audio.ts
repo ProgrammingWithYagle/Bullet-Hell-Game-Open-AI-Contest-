@@ -22,6 +22,17 @@ const themes = import.meta.glob('../../assets/production/audio/boss-themes/*.wav
   eager: true,
 }) as Record<string, string>;
 import city from '../../assets/audio/music/city-wake.wav?url';
+
+// Firefox and older WebKit do not consistently expose cancelAndHoldAtTime.
+// Sample before cancellation so interrupting a fade does not jump to its endpoint.
+function holdGain(param: AudioParam, now: number) {
+  if (typeof param.cancelAndHoldAtTime === 'function') {
+    try { param.cancelAndHoldAtTime(now); return; } catch {}
+  }
+  const value = param.value;
+  param.cancelScheduledValues(now);
+  param.setValueAtTime(value, now);
+}
 export class AudioBus {
   private context?: AudioContext;
   private buffers = new Map<string, AudioBuffer>();
@@ -136,7 +147,7 @@ export class AudioBus {
       if (revision !== this.loopRevision || this.music?.buffer === buffer) return;
       const now = this.context.currentTime;
       for (const [old, gain] of this.voices) {
-        gain.gain.cancelAndHoldAtTime(now);
+        holdGain(gain.gain, now);
         gain.gain.linearRampToValueAtTime(0, now + 0.75);
         old.stop(now + 0.76);
       }
@@ -144,7 +155,7 @@ export class AudioBus {
         gain = this.context.createGain();
       source.buffer = buffer;
       source.loop = true;
-      gain.gain.value = 0;
+      gain.gain.setValueAtTime(0, now);
       source.connect(gain).connect(this.context.destination);
       gain.gain.linearRampToValueAtTime(
         this.musicVolume * (now < this.duckUntil ? 0.55 : 1),

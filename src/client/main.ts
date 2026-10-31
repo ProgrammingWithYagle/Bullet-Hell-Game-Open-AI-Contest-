@@ -56,6 +56,7 @@ import './ui/waiting-room.css';
 import './ui/interface-clarity.css';
 import './ui/home-gallery.css';
 import './ui/language-welcome.css';
+import './ui/game-viewport.css';
 import { CombatScene } from './scene.ts';
 import { Session, type ConnectionOptions,type RoomJoin,type RoomJoinRetry } from './session.ts';
 import {untilAborted} from './request-lifetime.ts';
@@ -434,8 +435,8 @@ function setupGame(online: boolean,classId:string) {
       `<button data-supply-slot="${i}" data-action="supply${i + 1}" disabled><b>${i + 1}</b><span data-supply-glyph>${icon('ability')}</span><small data-supply-count>—</small><small data-supply-time></small></button>`,
   ).join('');
   $('squad').before(supplyBar);
-  controls = new Controls($('stage'),arenaCanvasToWorld);
   scene = new CombatScene();
+  controls = new Controls($('stage'),point=>arenaCanvasToWorld(point,scene!.viewport()),()=>scene!.viewport());
   scene.onLoadProgress = value => {
     if (serial !== launchSerial) return;
     const progress = Math.max(0, Math.min(1, value));
@@ -451,7 +452,7 @@ function setupGame(online: boolean,classId:string) {
     height: 1000,
     backgroundColor: '#142a27',
     render: { antialias: true, roundPixels: false },
-    scale: { mode: Phaser.Scale.FIT, autoCenter: Phaser.Scale.CENTER_BOTH },
+    scale: { mode: Phaser.Scale.RESIZE, autoCenter: Phaser.Scale.NO_CENTER },
     scene: [scene],
     audio: { noAudio: true },
   });
