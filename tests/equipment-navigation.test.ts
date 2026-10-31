@@ -3,10 +3,19 @@ import assert from 'node:assert/strict';
 import { menuBundle, menuEnvironment } from './helpers/menu-fixture.ts';
 import { Game } from '../src/shared/game.ts';
 import { viewOf } from '../src/shared/view.ts';
-async function fixture(t: TestContext) {
+async function fixture(t: TestContext, painted = false) {
   const env = menuEnvironment(t),
     ui = await menuBundle(t, 'src/client/ui/shop.ts', {
-      'assets.ts': 'export const assets={items:{},upgrades:{}};',
+      'assets.ts':
+        'export const assets={items:{},upgrades:{},resourceIcons:' +
+        (painted
+          ? JSON.stringify({
+              equipment: '/equipment-case.png',
+              coins: '/coins.png',
+              skills: '/skill-manual.png',
+            })
+          : '{}') +
+        '};',
     });
   const descriptor = Object.getOwnPropertyDescriptor(globalThis, 'CSS');
   Object.defineProperty(globalThis, 'CSS', {
@@ -150,4 +159,68 @@ test('hidden or inert equipment cannot spend currency and a disposed result cann
     f.host.querySelector('[data-shop-status]')!.textContent,
     'New panel',
   );
+});
+
+test('empty equipment and skill details show their own painted image while currency keeps text labels', async (t) => {
+  const f = await fixture(t, true);
+  assert.equal(
+    f.host.querySelector('.inspect-empty img')!.dataset.resourceArt,
+    'skills',
+  );
+  f.host.querySelector('[data-shop-tab="gear"]')!.click();
+  assert.equal(
+    f.host.querySelector('.inspect-empty img')!.dataset.resourceArt,
+    'equipment',
+  );
+  assert.equal(
+    f.host.querySelector('[data-shop-tab="gear"] img')!.getAttribute('src'),
+    '/equipment-case.png',
+  );
+  const summary = f.host.querySelector('.loadout-summary')!;
+  assert(summary.textContent.includes('ui.coins'));
+  assert(summary.textContent.includes('ui.skillPoints'));
+  assert.equal(
+    summary.querySelector('[data-resource-art="coins"]')!.getAttribute('src'),
+    '/coins.png',
+  );
+  assert.equal(
+    summary.querySelector('[data-resource-art="skills"]')!.getAttribute('src'),
+    '/skill-manual.png',
+  );
+  f.host.querySelector('[data-shop-tab="tree"]')!.click();
+  assert.equal(
+    f.host.querySelector('.inspect-empty img')!.dataset.resourceArt,
+    'skills',
+  );
+  for (const image of f.host.querySelectorAll('[data-resource-art]')) {
+    assert.equal(image.getAttribute('alt'), '');
+    assert.equal(image.getAttribute('aria-hidden'), 'true');
+  }
+});
+
+test('player resources use the same painted coins and manual without removing accessible labels or values', async (t) => {
+  const f = menuEnvironment(t),
+    ui = await menuBundle(t, 'src/client/ui/player-vitals.ts', {
+      'assets.ts':
+        'export const assets={resourceIcons:{coins:"/coins.png",skills:"/skill-manual.png"}};',
+    });
+  f.host.innerHTML = ui.playerVitalsMarkup(
+    'soldier',
+    '/soldier.png',
+    '',
+    String,
+    { coins: '/coins.png', skills: '/skill-manual.png' },
+  );
+  assert.equal(
+    f.host.querySelector('[data-resource-art="coins"]')!.getAttribute('src'),
+    '/coins.png',
+  );
+  assert.equal(
+    f.host.querySelector('[data-resource-art="skills"]')!.getAttribute('src'),
+    '/skill-manual.png',
+  );
+  assert(f.host.querySelector('#coins-value'));
+  assert(f.host.querySelector('#skill-points-value'));
+  assert(f.host.textContent.includes('ui.coins'));
+  assert(f.host.textContent.includes('ui.skillPoints'));
 });

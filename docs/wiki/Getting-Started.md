@@ -191,3 +191,7 @@ Equipment and skill-branch tabs keep focus when selected. Use left/right arrows,
 
 
 Records tabs keep their separate choices while you compare device and server results. The online tab remembers mode, difficulty, peak team size and All time or This week. Tab changes and device-filter changes keep keyboard focus. Back ends unfinished requests.
+
+## Equipment and resource pictures
+
+The equipment tab shows a field case when no item is selected; the skills tab shows an open manual. The tabs, coins and skill points use matching painted artwork. Text labels stay beside the pictures, including in the player status panel. Public and testing builds use the same presentation. Human testing5258 found the preceding tab flow fine and requested this image distinction; the new pictures await comparison.

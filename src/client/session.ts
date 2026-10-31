@@ -521,7 +521,7 @@ function networkView(s: WorldState): View {
   const hazards = JSON.parse(s.hazards || '{}'),
     intermission = JSON.parse(s.intermission || '{}');
   const players: PlayerView[] = [...s.players.values()].map((p) => ({
-    ...p.toJSON(),
+    build: p.build,
     id: p.id,
     name: p.name,
     classId: p.classId as ClassId,

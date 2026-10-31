@@ -17,6 +17,7 @@ import { effectText, supplyText, skillBehavior } from '../content-text.ts';
 import { escape as e } from './html.ts';
 import { icon, effectIcon } from './icons.ts';
 import { assets } from '../assets.ts';
+import { resourceArt } from './resource-art.ts';
 import { expeditionText } from '../expedition-text.ts';
 import { locale } from '../i18n.ts';
 type Kind = Command['kind'];
@@ -189,7 +190,7 @@ export function shopMarkup(
   )
     chosen = null;
   const branch = cl.branches.find((b) => b.id === branchId)!;
-  return `<p data-shop-status class="shop-purchase-status" role="status" aria-live="polite" hidden></p><p class="shop-introduction">${e(expeditionText(locale, 'shopHelp'))}</p><div class="loadout-summary"><span>${icon('coins')}<b>${number(p.coins)}</b> ${e(t('ui.coins'))}</span><span>${icon('tree')}<b>${number(p.sp)}</b> ${e(t('ui.skillPoints'))}</span><small>${e(t('ui.capstoneLimit'))}</small></div><div class="loadout-tabs" role="tablist" aria-label="${e(t('ui.shop'))}"><button data-shop-tab="gear" role="tab" aria-selected="${tab === 'gear'}">${icon('weapon')}${e(t('ui.equip'))} / ${e(t('ui.upgrade'))}</button><button data-shop-tab="tree" role="tab" aria-selected="${tab === 'tree'}">${icon('tree')}${e(t('ui.skillTree'))}</button></div><div class="loadout-workspace"><div class="loadout-board">${
+  return `<p data-shop-status class="shop-purchase-status" role="status" aria-live="polite" hidden></p><p class="shop-introduction">${e(expeditionText(locale, 'shopHelp'))}</p><div class="loadout-summary"><span>${resourceArt('coins', assets.resourceIcons)}<b>${number(p.coins)}</b> ${e(t('ui.coins'))}</span><span>${resourceArt('skills', assets.resourceIcons)}<b>${number(p.sp)}</b> ${e(t('ui.skillPoints'))}</span><small>${e(t('ui.capstoneLimit'))}</small></div><div class="loadout-tabs" role="tablist" aria-label="${e(t('ui.shop'))}"><button data-shop-tab="gear" role="tab" aria-selected="${tab === 'gear'}">${resourceArt('equipment', assets.resourceIcons)}${e(t('ui.equip'))} / ${e(t('ui.upgrade'))}</button><button data-shop-tab="tree" role="tab" aria-selected="${tab === 'tree'}">${resourceArt('skills', assets.resourceIcons)}${e(t('ui.skillTree'))}</button></div><div class="loadout-workspace"><div class="loadout-board">${
     tab === 'gear'
       ? `<section class="armory"><h3>${e(t('ui.equip'))}</h3><div class="gear-icons">${data.weapons
           .filter((w) => w.classId === p.classId)
@@ -280,7 +281,7 @@ function expandedMap(p: PlayerView) {
 
 function details(p: PlayerView) {
   if (!chosen)
-    return `<div class="inspect-empty">${icon('tree')}<p>${e(t('ui.selectItem'))}</p></div>`;
+    return `<div class="inspect-empty">${resourceArt(tab === 'gear' ? 'equipment' : 'skills', assets.resourceIcons)}<p>${e(t('ui.selectItem'))}</p></div>`;
   const { kind, id } = chosen,
     state = canBuy(p, kind, id);
   let name = '',

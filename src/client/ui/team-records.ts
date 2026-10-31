@@ -1,7 +1,7 @@
 import { data } from '../../shared/game.ts';
 import { squadBands, type RankedTeamRecord } from '../../shared/team-records.ts';
 import { fetchBoard, fetchRoster, recentRecords, mondayUTC } from '../team-records.ts';
-import type { TeamBoardSelection } from '../team-records.ts';
+import type { TeamBoardSelection, TeamRosterPage } from '../team-records.ts';
 import { locale, number, t } from '../i18n.ts';
 import { escape as e } from './html.ts';
 import type { TeamRecordStatus } from '../../shared/team-records.ts';
@@ -23,6 +23,7 @@ export function mountTeamRecords(host: HTMLElement, endpoint: string, initialMod
   let disposed = false;
   let rosterController = new AbortController(), rosterGeneration = 0;
   const rows = new Map<string, RankedTeamRecord>();
+  const prefetchedRosters = new Map<string, TeamRosterPage>();
   host.innerHTML = `<div class="records-filters"><label>${e(t('ui.leaderboardMode'))}<select data-record-mode>${data.modes.map(m => `<option value="${m.id}" ${m.id === mode ? 'selected' : ''}>${e(t('mode.'+m.id+'.name'))}</option>`).join('')}</select></label><label>${e(t('ui.leaderboardDifficulty'))}<select data-record-difficulty>${data.difficulties.map(d => `<option value="${d.id}" ${d.id === difficulty ? 'selected' : ''}>${e(t('difficulty.'+d.id))}</option>`).join('')}</select></label><label>${e(t('ui.recordsSize'))}<select data-record-size></select></label></div><div class="records-tabs"><button data-record-all aria-pressed="${!week}">${e(t('ui.recordsAllTime'))}</button><button data-record-week aria-pressed="${week}">${e(t('ui.recordsThisWeek'))}</button></div><p>${e(t('ui.leaderboardFilters'))} ${e(t('ui.leaderboardSharedRank'))}</p><p data-record-status role="status" aria-live="polite"></p><button data-record-retry hidden>${e(t('ui.retry'))}</button><div data-record-rows class="team-record-list"></div><button data-record-more hidden>${e(t('ui.recordsMore'))}</button>`;
   const get = <T extends HTMLElement>(selector: string) => host.querySelector<T>(selector)!;
   function bands() {
@@ -56,8 +57,10 @@ export function mountTeamRecords(host: HTMLElement, endpoint: string, initialMod
         roster.querySelector('button')?.remove();
         const status = document.createElement('p'); status.textContent = t('ui.loading'); roster.append(status);
         try {
-          const page = await fetchRoster(endpoint, details.dataset.teamRun!, offset, signal);
+          const cached = offset === 0 ? prefetchedRosters.get(details.dataset.teamRun!) : undefined;
+          const page = cached ?? await fetchRoster(endpoint, details.dataset.teamRun!, offset, signal);
           if (disposed || signal.aborted || owner !== rosterGeneration || !details.isConnected) return;
+          if (cached) prefetchedRosters.delete(details.dataset.teamRun!);
           status.remove(); loaded = true; rosterOffset = page.nextOffset;
           if (offset === 0) {
             const facts = document.createElement('p');
@@ -81,7 +84,7 @@ export function mountTeamRecords(host: HTMLElement, endpoint: string, initialMod
   async function load(reset: boolean) {
     if (disposed) return;
     controller?.abort(); controller = new AbortController(); const current = ++sequence;
-    if (reset) { rosterController.abort(); rosterController = new AbortController(); rosterGeneration++; rows.clear(); nextOffset = 0; get('[data-record-rows]').replaceChildren(); }
+    if (reset) { rosterController.abort(); rosterController = new AbortController(); rosterGeneration++; rows.clear(); prefetchedRosters.clear(); nextOffset = 0; get('[data-record-rows]').replaceChildren(); }
     if (nextOffset === null) return;
     const status = get('[data-record-status]'); status.textContent = t('ui.loading');
     get('[data-record-retry]').hidden = true; get<HTMLButtonElement>('[data-record-more]').disabled = true;
@@ -102,7 +105,10 @@ export function mountTeamRecords(host: HTMLElement, endpoint: string, initialMod
           const own = await fetchRoster(endpoint,recentId,0,controller.signal).catch(() => null);
           if (current !== sequence || !host.isConnected) return;
           const weekStart = Date.parse(mondayUTC()+'T00:00:00Z');
-          if (own && (!week || own.record.endedAt >= weekStart && own.record.endedAt < weekStart + 7 * 86400000)) {
+          if (own && own.record.mode === mode && own.record.difficulty === difficulty && own.record.sizeBand === sizeBand
+            && (!week || own.record.endedAt >= weekStart && own.record.endedAt < weekStart + 7 * 86400000)) {
+            rows.set(own.record.runId, own.record);
+            prefetchedRosters.set(own.record.runId, own);
             get('[data-record-rows]').insertAdjacentHTML('afterbegin',card(own.record));
             renderRows();
           }
@@ -129,5 +135,5 @@ export function mountTeamRecords(host: HTMLElement, endpoint: string, initialMod
   get('[data-record-all]').onclick = () => period(false); get('[data-record-week]').onclick = () => period(true);
   get('[data-record-more]').onclick = () => void load(false); get('[data-record-retry]').onclick = () => void load(rows.size === 0);
   bands(); remember(); void load(true);
-  return () => { disposed = true; sequence++; controller?.abort(); rosterController.abort(); };
+  return () => { disposed = true; sequence++; controller?.abort(); rosterController.abort(); prefetchedRosters.clear(); };
 }

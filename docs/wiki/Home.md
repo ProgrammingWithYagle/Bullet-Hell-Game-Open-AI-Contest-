@@ -4,7 +4,7 @@
 
 Dodge attacks, defeat bosses and spend your rewards between fights. Play Solo or team up with friends in this cooperative zombie bullet-hell game.
 
-**Current development build: 2026.10.30-records-navigation.** The game is still in development. The public demo and published Windows download below are older versions.
+**Current development build: 2026.10.30-shared-network.** The game is still in development. The public demo and published Windows download below are older versions.
 
 ## New here?
 
@@ -79,3 +79,7 @@ Use the left and right arrows on the home screen to switch between the main cove
 On your first visit, choose a display language and press **Continue** before the home menu. Existing saved language choices are kept. You can change language later from the menu.
 
 A fresh New run, Start gently or Join room setup gives an automatic display name in the current language. Once setup has started, changing language keeps that established name. Going back through setup and switching Solo/public/private also keep it. An empty name uses the same setup’s original automatic fallback. Names you type are never translated. Returning home and starting a fresh setup updates only an automatic name to the new language.
+
+## Equipment and resource pictures
+
+The equipment tab shows a field case when no item is selected; the skills tab shows an open manual. The tabs, coins and skill points use matching painted artwork. Text labels stay beside the pictures, including in the player status panel. Public and testing builds use the same presentation. Human testing5258 found the preceding tab flow fine and requested this image distinction; the new pictures await comparison.

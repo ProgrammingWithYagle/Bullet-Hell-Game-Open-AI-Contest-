@@ -35,6 +35,19 @@ export function createGameServer(
     },
   });
   const requests = new Map<string, { reset: number; count: number }>();
+  // One public IP can represent a full group. Failed code guesses have their own budget.
+  const permit = (key: string, limit: number) => {
+    const now = Date.now();
+    let entry = requests.get(key);
+    if (!entry || entry.reset <= now) {
+      entry = { reset: now + 60000, count: 0 };
+      requests.set(key, entry);
+    }
+    entry.count++;
+    if (requests.size > 10000)
+      for (const [id, old] of requests) if (old.reset <= now) requests.delete(id);
+    return entry.count <= limit;
+  };
   const server = new Server({
     transport,
     greet: false,
@@ -75,11 +88,7 @@ export function createGameServer(
         }),
       );
       app.use('/api/leaderboards', (req, res, next) => {
-        const key = 'records:' + (req.ip ?? 'local'), now = Date.now();
-        let slot = requests.get(key);
-        if (!slot || slot.reset < now) { slot = { reset: now + 60000, count: 0 }; requests.set(key, slot); }
-        if (++slot.count > 120) { res.setHeader('Retry-After','60'); res.status(429).json({ error:'rateLimited' }); return; }
-        if (requests.size > 10000) for (const [id, old] of requests) if (old.reset < now) requests.delete(id);
+        if (!permit('records:' + (req.ip ?? 'local'), 360)) { res.setHeader('Retry-After','60'); res.status(429).json({ error:'rateLimited' }); return; }
         next();
       });
       const boardRead = (read: () => unknown, res: import('express').Response) => {
@@ -162,14 +171,7 @@ export function createGameServer(
           res.status(400).json({ error: 'invalidRequest' });
           return;
         }
-        const key = 'admission:' + (req.ip ?? 'local'),
-          now = Date.now();
-        let entry = requests.get(key);
-        if (!entry || entry.reset < now) {
-          entry = { reset: now + 60000, count: 0 };
-          requests.set(key, entry);
-        }
-        if (++entry.count > 60) {
+        if (!permit('admission:' + (req.ip ?? 'local'), 120)) {
           res.setHeader('Retry-After', '60');
           res.status(429).json({ error: 'rateLimited' });
           return;
@@ -212,26 +214,14 @@ export function createGameServer(
         ),
       );
       app.get('/api/rooms/code/:code', (req, res) => {
-        const now = Date.now(),
-          key = req.ip ?? 'local';
-        let entry = requests.get(key);
-        if (!entry || entry.reset < now) {
-          entry = { reset: now + 60000, count: 0 };
-          requests.set(key, entry);
-        }
-        if (++entry.count > 30) {
+        const code = req.params.code.toUpperCase();
+        const roomId = /^[ABCDEFGHJKLMNPQRSTUVWXYZ23456789]{6}$/.test(code) ? roomCodes.get(code) : undefined;
+        const known = Boolean(roomId);
+        if (!permit((known ? 'known-code:' : 'unknown-code:') + (req.ip ?? 'local'), known ? 120 : 30)) {
           res.setHeader('Retry-After', '60');
           res.status(429).json({ error: 'rateLimited' });
           return;
         }
-        if (requests.size > 10000)
-          for (const [id, slot] of requests) if (slot.reset < now) requests.delete(id);
-        const code = req.params.code.toUpperCase();
-        if (!/^[ABCDEFGHJKLMNPQRSTUVWXYZ23456789]{6}$/.test(code)) {
-          res.status(404).json({ error: 'invalidCode' });
-          return;
-        }
-        const roomId = roomCodes.get(code);
         if (!roomId) {
           res.status(404).json({ error: 'invalidCode' });
           return;

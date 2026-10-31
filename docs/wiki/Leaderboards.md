@@ -20,3 +20,9 @@ Current local checks use real SDK clients with all seven classes: a full campaig
 
 
 Records tabs keep their separate choices while you compare device and server results. The online tab remembers mode, difficulty, peak team size and All time or This week. Tab changes and device-filter changes keep keyboard focus. Back ends unfinished requests.
+
+## Groups sharing one connection
+
+Current source gives valid room-code lookups and join attempts separate shared-IP budgets from wrong-code guesses. A full fifty-person group can join by code and retry without the previous thirty-lookup block. Wrong-code guesses remain limited to30 per minute; valid lookups and admissions allow120 each, and results reads allow360. These limits use the connection address rather than a submitted forwarding header.
+
+Your own result reuses its first downloaded team-history page. Loading more results keeps it listed once, and changing filters clears that temporary reuse. A result from a different difficulty cannot appear through the recent-run shortcut. [Current software evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/tree/feat/first-playable-loop/reviews/shared-network-2026-10-30) keeps actual loopback SDK/HTTP tests and the fresh full progression check separate from physical Wi-Fi, WAN, hosted capacity or human acceptance. The historical fifty-client timeout still has no proven cause.

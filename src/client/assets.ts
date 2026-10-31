@@ -88,6 +88,14 @@ const items = import.meta.glob('../../assets/production/items/icons/*/*.png', {
   import: 'default',
   eager: true,
 }) as Record<string, string>;
+const resourceIcons = import.meta.glob(
+  "../../assets/production/ui/resources/*.png",
+  {
+    query: "?url",
+    import: "default",
+    eager: true,
+  },
+) as Record<string, string>;
 const bossSettledIdentities = import.meta.glob(
   ['../../assets/delivery/boss-loading-v3/*-defeat-reference-v2.png','../../assets/delivery/boss-loading-v4/*-defeat-reference-v2.png','../../assets/delivery/boss-loading-v5/*-defeat-reference-v2.png'],
   { query: '?url', import: 'default', eager: true },
@@ -120,6 +128,17 @@ const encounterMotion = import.meta.glob(
   },
 ) as Record<string, string>;
 export const assets = {
+  resourceIcons: Object.fromEntries(
+    Object.entries(resourceIcons).map(([path, url]) => [
+      path.endsWith("equipment-case-v1.png")
+        ? "equipment"
+        : path.endsWith("skill-manual-v1.png")
+          ? "skills"
+          : "coins",
+      url,
+    ]),
+  ) as Record<string, string>,
+
   bossIdentities: Object.fromEntries(
     Object.entries(bossIdentities).map(([path, url]) => [
       path.split('/').at(-1)!.replace('-reference-v3.png', ''),

@@ -1,6 +1,18 @@
 # Changelog
 
-Development build **2026.10.30-records-navigation**, protocol 43. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+Development build **2026.10.30-shared-network**, protocol 43. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.
+
+## 2026-10-30 — Clearer equipment and easier group joins
+
+### Recognizable equipment and resources
+
+- Equipment and skills now have distinct painted images when no item is selected. The shop tabs, coins and skill points use matching equipment-case, coin and field-manual artwork, with text labels kept beside the pictures.
+
+### Joining and viewing team results
+
+- Players sharing one connection have more room to join a lobby and retry. Wrong room-code guesses remain limited separately from valid room-code lookups.
+- Opening your own team result reuses its downloaded first roster page. Loading more results keeps your run listed once, and a recent result from a different difficulty cannot appear in the selected board.
+- The online client does less repeated work when updating larger teams, while keeping the same player, build and recovery information.
 
 ## 2026-10-30 — Compare records without losing your filters
 
