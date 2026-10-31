@@ -105,13 +105,14 @@ test("known issued profiles migrate name/chat defaults and preserve explicit off
     "39ca64136ddb477d344eb75408a22ed239af57efb1d3a3a4f5893ac33c13864d";
   delete old.settings.showNames;
   delete old.settings.roomChat;
+  delete old.settings.combatLayout;
   const migrated = parseProfile(JSON.stringify(old));
   assert(migrated.settings.showNames && migrated.settings.roomChat);
   assert.equal(migrated.contentRevision, CONTENT_REVISION);
   p.settings.showNames = false;
   p.settings.roomChat = false;
   assert.deepEqual(parseProfile(JSON.stringify(p)).settings, p.settings);
-  assert.equal(Object.keys(defaultPreferences()).length, 11);
+  assert.equal(Object.keys(defaultPreferences()).length, 12);
 });
 test("room chat normalizes plain text, rejects markup/control payloads, enforces opt-in/rate limits and retains only fifty messages", () => {
   assert.equal(chatText("  Cafe\u0301  "), "Café");

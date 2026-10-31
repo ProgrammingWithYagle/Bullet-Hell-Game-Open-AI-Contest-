@@ -7,6 +7,7 @@ export const defaultPreferences = () => ({
   branchingTree: false,
   showNames: true,
   roomChat: true,
+  combatLayout: 'grouped' as 'grouped'|'separate',
   volume: 0.45,
   music: 0.3,
   textScale: 1,
@@ -27,7 +28,8 @@ export function validPreferences(value: unknown): value is Preferences {
   if (!value || typeof value !== "object" || Array.isArray(value)) return false;
   const p = value as Preferences;
   return (
-    Object.keys(p).length === 11 &&
+    Object.keys(p).length === 12 &&
+    (p.combatLayout === 'grouped' || p.combatLayout === 'separate') &&
     toggles.every((k) => typeof p[k] === "boolean") &&
     ranges.every(
       (k) =>
@@ -40,6 +42,7 @@ export function validPreferences(value: unknown): value is Preferences {
 export function migratePreferences(value: unknown): Preferences {
   const result = defaultPreferences(),
     p = value as Partial<Preferences> | null;
+  if(p?.combatLayout==='grouped'||p?.combatLayout==='separate')result.combatLayout=p.combatLayout;
   for (const k of toggles) if (typeof p?.[k] === "boolean") result[k] = p[k];
   for (const k of ranges)
     if (typeof p?.[k] === "number" && Number.isFinite(p[k]))

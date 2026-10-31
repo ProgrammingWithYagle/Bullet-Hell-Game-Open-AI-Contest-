@@ -2,7 +2,8 @@ import fs from 'node:fs';
 import { createHash } from 'node:crypto';
 import assert from 'node:assert/strict';
 const base = 'https://grave-accord.yigallin0423.chatgpt.site/';
-const root = 'output/sites-contest-2026-10-30/build', scope = 'reviews/browser-release-fixes-2026-10-30';
+const root = 'output/sites-contest-2026-10-30/build', scope = process.argv[2];
+assert(/^reviews\/[a-z0-9-]+$/.test(scope??''));
 const manifest = JSON.parse(fs.readFileSync(root + '/contest-build.json'));
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 const selected = new Set(['index.html', 'contest-build.json']);
@@ -38,6 +39,6 @@ assert(!fs.readFileSync(root + '/' + worker.path, 'utf8').includes('testingComma
 const response = await fetch(manifest.endpoint + '/api/health', { headers: { Origin: base.slice(0, -1) } });
 assert.equal(response.status, 200); assert.equal(response.headers.get('access-control-allow-origin'), base.slice(0, -1));
 const health = await response.json(); assert.equal(health.sourceCommit, manifest.backendSourceCommit); assert.equal(health.protocolVersion, manifest.protocol); assert.equal(health.audience, 'public');
-const report = { checkedAt: new Date().toISOString(), passed: true, url: base, gameSourceCommit: manifest.gameSourceCommit, siteSourceCommit: 'f7fce353f2f187646b20c05e5fed7e13bc99e59f', checked, publicAudienceOnly: true, matchingBackend: health, originalMasterFallbacksPinned: 67, currentRenderedAccepted: false, limits: ['Native successful publication plus exact deployed asset bytes/MIME and exact HTML after removing at most one specifically identified Cloudflare JSD injection. No current browser/rendered/human/device/listening acceptance.'] };
-fs.writeFileSync(scope + '/live-verification-final.json', JSON.stringify(report, null, 2) + '\n', { flag: 'wx' });
+const report = { checkedAt: new Date().toISOString(), passed: true, url: base, gameSourceCommit: manifest.gameSourceCommit, siteSourceCommit: JSON.parse(fs.readFileSync(scope+'/publication.json')).site.sourceCommit, checked, publicAudienceOnly: true, matchingBackend: health, originalMasterFallbacksPinned: 67, currentRenderedAccepted: false, limits: ['Native successful publication plus exact deployed asset bytes/MIME and exact HTML after removing at most one specifically identified Cloudflare JSD injection. No current browser/rendered/human/device/listening acceptance.'] };
+fs.writeFileSync(scope + '/live.json', JSON.stringify(report, null, 2) + '\n');
 console.log(JSON.stringify({ passed: true, url: base, files: checked.length, bytes: checked.reduce((n, c) => n + c.bytes, 0), protocol: health.protocolVersion }));

@@ -202,6 +202,7 @@ test('classic is the default and issued eight-field profiles retain progress whi
   delete issued.settings.branchingTree;
   delete issued.settings.showNames;
   delete issued.settings.roomChat;
+  delete issued.settings.combatLayout;
   const serialized = JSON.stringify(issued),
     migrated = parseProfile(serialized);
   assert.equal(migrated.contentRevision, CONTENT_REVISION);

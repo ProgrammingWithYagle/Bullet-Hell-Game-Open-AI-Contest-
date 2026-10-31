@@ -62,3 +62,9 @@
   .bottomline>.squad {display:none}
 }
 @media(max-height:560px) {.bottomline>.player-vitals {width:min(100%,15rem)}.combat-action-dock {padding:.3rem;gap:.3rem}}
+
+.settings-grid select {width:100%;min-width:0;max-width:100%}
+#app[data-combat-layout=separate] .combat-action-dock {flex-direction:row;flex-wrap:wrap;justify-content:center;align-items:flex-end;padding:0;border:0;background:none;gap:.5rem}
+#app[data-combat-layout=separate] .combat-action-dock>.ability-list {width:auto;flex:1 1 13rem;padding:.4rem;border:1px solid #80907180;border-radius:.5rem;background:#10281fee}
+#app[data-combat-layout=separate] .combat-action-dock>#supply-bar {flex:0 1 auto;padding:.4rem;border:1px solid #80907180;border-radius:.5rem;background:#10281fee}
+#app[data-combat-layout=separate] .combat-action-dock>.touch-buttons {padding:.4rem;border:1px solid #80907180;border-radius:.5rem;background:#10281fee}

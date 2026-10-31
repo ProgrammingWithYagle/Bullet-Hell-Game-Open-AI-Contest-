@@ -1,42 +1,62 @@
 {
-  "checkedAt": "2026-10-31T17:15:05.823Z",
+  "checkedAt": "2026-10-31T18:17:56.094Z",
   "passed": true,
-  "tests": 951,
+  "tests": 956,
   "failed": 0,
-  "runtimeSourceSha256": "63ee71fc8e4fdd0a0f2c98ed8ef36caa24b50fc6ea7f7406a31320ef1ad3d19d",
-  "sourceSnapshotSha256": "99827a295d0cc503286295280f278a64e4417672a79afa951120d2d3c1118524",
+  "runtimeSourceSha256": "43314fe504e1471f4cbb71b673119f39adff44d7fafe4e7afe24d9eece6bb4e4",
+  "sourceSnapshotSha256": "d224c4a8985bdf4e80e9d8cb6def98d016e8db515a25d729d1bfdc88bc7fc80b",
   "contentRevision": "1ae4988671b4316e028ed42c6a9cd63c2efa26f046debad2fb75b8e1fc8e7f6d",
   "checks": [
     {
       "name": "Stage 1 authored content",
       "passed": true,
-      "elapsedMs": 4201
+      "elapsedMs": 5102
     },
     {
       "name": "TypeScript",
       "passed": true,
-      "elapsedMs": 2256
+      "elapsedMs": 2550
     },
     {
       "name": "Headless rules and real-network integration",
       "passed": true,
-      "elapsedMs": 71407
+      "elapsedMs": 75570
     },
     {
       "name": "Production client build",
       "passed": true,
-      "elapsedMs": 3596
+      "elapsedMs": 6605
     },
     {
       "name": "Emitted encounter atlas contracts",
       "passed": true,
-      "elapsedMs": 815
+      "elapsedMs": 793
     }
   ],
   "fullReport": "reviews/runtime-verification.json",
-  "scope": "Shared HUD grouping, invite focus/placement, all existing rules/network/audio/geometry tests and production assets. No new artwork or gameplay rules.",
-  "limits": [
-    "Software/controller/build checks only; current HUD rendering and physical devices need separate human confirmation."
+  "scope": "Saved grouped/separate equipment and ability panels; exact legacy profile migration; map-specific camera framing and inverse aiming; all existing rules/network/audio tests and production assets.",
+  "geometry": {
+    "maps": 6,
+    "difficulties": 6,
+    "bosses": 66,
+    "survivorClips": 172,
+    "viewports": 14,
+    "inputScaleFactors": 6,
+    "fractionalResizeLifecycle": true,
+    "neverSmallerThanPriorFrame": true
+  },
+  "localization": {
+    "locales": 15,
+    "keysPerLocale": 1807,
+    "existingMessagesPreserved": 27060,
+    "addedMessages": 45
+  },
+  "priorUserFeedback": "The grouped HUD looks fine; user requests a saved separate-panel choice and larger arena presentation in the narrow ChatGPT preview. Prior Firefox boss header/music feedback retained in handoff.",
+  "failedAttempts": [
+    "output/final-layout-verification-sandbox-failed.log",
+    "output/final-layout-verification-profile-fixtures.log"
   ],
-  "fixedCornerSlots": true
+  "limits": [
+    "Software/controller/build/network checks; current map framing and layout alternatives are not rendered or human-device acceptance."
+  ]
 }

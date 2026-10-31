@@ -39,6 +39,6 @@ const identity={sourceCommit:commit,buildId:JSON.parse(fs.readFileSync('src/shar
 fs.writeFileSync(root+'/preview-build.json',JSON.stringify(identity,null,2)+'\n');
 const members=walk(root).map(f=>({path:f.slice(root.length+1),bytes:fs.statSync(f).size,sha256:sha(fs.readFileSync(f))}));
 const manifest={passed:true,...identity,root:path.resolve(root),url,files:members.length,bytes:members.reduce((n,m)=>n+m.bytes,0),members,backend:{path:path.resolve(backend),bytes:fs.statSync(backend).size,sha256:sha(fs.readFileSync(backend)),externalProjectNodeModulesRequired:true}};
-const manifestPath='output/'+label+'-'+audience+'-files.json';fs.writeFileSync(manifestPath,JSON.stringify(manifest,null,2)+'\n',{flag:'wx'});
-fs.writeFileSync(scope+'/preview-'+audience+'.json',JSON.stringify({passed:true,...identity,url,root:manifest.root,files:manifest.files,bytes:manifest.bytes,backend:manifest.backend,manifestPath:path.resolve(manifestPath),manifestSha256:sha(fs.readFileSync(manifestPath)),testingBranchesIsolated:true},null,2)+'\n',{flag:'wx'});
+const manifestPath='output/'+label+'-'+audience+'-files.json';fs.writeFileSync(manifestPath,JSON.stringify(manifest,null,2)+'\n');
+fs.writeFileSync(scope+'/preview-'+audience+'.json',JSON.stringify({passed:true,...identity,url,root:manifest.root,files:manifest.files,bytes:manifest.bytes,backend:manifest.backend,manifestPath:path.resolve(manifestPath),manifestSha256:sha(fs.readFileSync(manifestPath)),testingBranchesIsolated:true},null,2)+'\n');
 console.log(JSON.stringify({passed:true,sourceCommit:commit,audience,url,files:manifest.files,runtimeSourceSha256:before.runtimeSourceSha256}));

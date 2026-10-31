@@ -7,7 +7,7 @@ import {drawAmbulanceCue} from './ambulance-cues.ts';
 import {drawWidowCue} from './widow-presentation.ts';
 import clerkRules from '../shared/clerk-appeal-rules.json';
 import {smallWakesPose,drawSmallWakes} from './small-wakes-presentation.ts';
-import {trackArenaViewport,arenaCamera} from './arena-camera.ts';
+import {trackArenaViewport,applyArenaCamera,arenaCamera,arenaCameraForBounds,arenaCanvasToWorld} from './arena-camera.ts';
 import { earlyWatchPose, drawEarlyWatch } from './early-watch-presentation.ts';
 import { EndlessPresentation } from './endless-presentation.ts';
 import type { EndlessCue } from '../shared/endless-director.ts';
@@ -108,9 +108,11 @@ export class CombatScene extends Phaser.Scene {
   private lastFrameClock = 0;
   readonly frameMeter = new FrameMeter();
   ready = false;
+  private cameraFrame = arenaCamera;
   viewport() {
     return {width:this.scale?.gameSize.width ?? 1600,height:this.scale?.gameSize.height ?? 1000};
   }
+  canvasToWorld(point:{x:number;y:number}) {return arenaCanvasToWorld(point,this.viewport(),this.cameraFrame);}
   diagnostics() {
     return {
       ...this.frameMeter.summary(),
@@ -207,7 +209,7 @@ export class CombatScene extends Phaser.Scene {
     }
   }
   create() {
-    const stopFitting = trackArenaViewport(this.cameras.main,this.scale);
+    const stopFitting = trackArenaViewport(this.cameras.main,this.scale,()=>this.cameraFrame);
     this.events.once(Phaser.Scenes.Events.SHUTDOWN,stopFitting);
     this.serviceArt = new ServicePresentation(this);
     this.raidArt = new RaidPresentation(this);
@@ -353,6 +355,8 @@ export class CombatScene extends Phaser.Scene {
     if (this.lastArenaId !== view.arenaId+':'+view.run.difficulty) {
       this.lastArenaId = view.arenaId+':'+view.run.difficulty;
       const map = runtimeArena(view.arenaId,view.run.difficulty);
+      this.cameraFrame=arenaCameraForBounds(map.bounds);
+      applyArenaCamera(this.cameras.main,this.viewport(),this.cameraFrame);
       const shade=Number.parseInt(map.shadow.slice(1),16);
       applyArenaGround(this.arenaImage, map.id,view.run.difficulty);
       this.arenaBackdrop.clear();

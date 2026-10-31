@@ -13,7 +13,7 @@ $launchSaved=@{}
 foreach($launchName in @('PORT','HOST','CLIENT_ORIGINS','RENDER_GIT_COMMIT','GRAVE_TESTING_SERVER','GRAVE_RECORDS_DB')){$launchSaved[$launchName]=[Environment]::GetEnvironmentVariable($launchName,'Process')}
 try {
  $env:PORT=[string]$launchServerPort;$env:HOST='127.0.0.1';$env:CLIENT_ORIGINS=$launchManifest.url.TrimEnd('/');$env:RENDER_GIT_COMMIT=$launchManifest.sourceCommit
- $env:GRAVE_TESTING_SERVER=if($Audience -eq 'testing'){'1'}else{'0'};$env:GRAVE_RECORDS_DB=Join-Path $launchRoot ('output/'+$launchLabel+'-'+$Audience+'-records.sqlite')
+ $env:GRAVE_TESTING_SERVER=if($Audience -eq 'testing'){'1'}else{'0'};$env:GRAVE_RECORDS_DB=Join-Path $launchRoot ('output/'+$launchLabel+'-'+$Audience+'-'+$launchManifest.sourceCommit.Substring(0,7)+'-records.sqlite')
  $launchNode=(Get-Command node).Source
  $launchBackend=Start-Process -FilePath $launchNode -ArgumentList @(('"'+$launchManifest.backend.path+'"')) -WorkingDirectory $launchRoot -WindowStyle Hidden -PassThru -RedirectStandardOutput ('output/'+$launchLabel+'-'+$Audience+'-server.log') -RedirectStandardError ('output/'+$launchLabel+'-'+$Audience+'-server-errors.log')
  $launchRelative=[IO.Path]::GetRelativePath($launchRoot,$launchManifest.root)

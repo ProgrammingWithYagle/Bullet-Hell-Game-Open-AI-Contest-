@@ -1,4 +1,4 @@
-// Stage 1 data authoring utility. This does not implement the game runtime.
+// Rebuild all runtime catalogs from their authored sources.
 import { readFile, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
@@ -11,6 +11,24 @@ import { interfaceMessages } from './source/interface-expansion.mjs';
 import { contractMessages } from './source/contract-ui.mjs';
 import { suppliesMessages } from './source/supplies-ui.mjs';
 import { capacityMessages, playtestMessages } from './source/capacity-ui.mjs';
+import { recoveryMessages } from './source/recovery-ui.mjs';
+import { smallWakesMessages } from './source/small-wakes.mjs';
+import { difficultyRuleMessages } from './source/difficulty-rules.mjs';
+import { classTalentMessages } from './source/class-talents.mjs';
+import { wardenMessages } from './source/warden-patrol.mjs';
+import { crazedHorizonMessages } from './source/crazed-horizon.mjs';
+import { courierRouteMessages } from './source/courier-route.mjs';
+import { ratcatcherMusterMessages } from './source/ratcatcher-muster.mjs';
+import { clerkAppealMessages } from './source/clerk-appeal.mjs';
+import { tollkeeperReturnMessages } from './source/tollkeeper-return.mjs';
+import { marshalMessages } from './source/marshal-chains.mjs';
+import { widowMessages } from './source/widow-gates.mjs';
+import { ambulanceMessages } from './source/ambulance-route.mjs';
+import { matronMessages } from './source/matron-ward.mjs';
+import { moldStillMessages } from './source/mold-still.mjs';
+import { bellReturnChainMessages } from './source/bell-return-chain.mjs';
+import { runtimeExtraMessages } from './source/runtime-extras.mjs';
+import { bossGuideMessages } from './source/boss-guide.mjs';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const catalog = JSON.parse(await readFile(path.join(root, 'content/catalog.json'), 'utf8'));
 const ids = ['en','zh-Hans','zh-Hant','ja','es','fr','de','pt-BR','ru','hi','ar','bn','id','ur','ko'];
@@ -50,6 +68,14 @@ for (const id of ids) {
   // Plurals are separate typed messages, selected through Intl.PluralRules, never English-only suffixes.
   const plurals = (await import(`./source/plurals.mjs`)).default[id];
   for (const [key, forms] of Object.entries(plurals)) messages[`count.${key}`] = { plural: 'count', forms };
+  // Later gameplay and interface providers also replace older generic text.
+  // Keep them after the base descriptions so a rebuild preserves those replacements.
+  Object.assign(messages, recoveryMessages(id), smallWakesMessages(id), expansionMessages(id),
+    earlyWatchMessages(id), skillMapMessages(id), difficultyRuleMessages(id), classTalentMessages(id, catalog),
+    wardenMessages(id), crazedHorizonMessages(id), courierRouteMessages(id), ratcatcherMusterMessages(id),
+    clerkAppealMessages(id), tollkeeperReturnMessages(id), marshalMessages(id), widowMessages(id),
+    ambulanceMessages(id), matronMessages(id), moldStillMessages(id), bellReturnChainMessages(id),
+    runtimeExtraMessages(id), bossGuideMessages(id));
   const info = catalog.locales.find(x => x.id === id);
   const output = {
     meta: { schemaVersion: 1, locale: id, nativeName: info.name, direction: info.direction,

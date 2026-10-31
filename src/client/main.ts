@@ -6,7 +6,6 @@ import {RoomChatUI} from './room-chat-ui.ts';
 import {chatDeliveryText} from './chat-delivery-text.ts';
 import {RoomInviteUI,roomInvitePlacement} from './room-invite-ui.ts';
 import {HostMatchUI} from './host-match-ui.ts';
-import {arenaCanvasToWorld} from './arena-camera.ts';
 import {bindPasswordVisibility} from './ui/password-visibility.ts';
 import {waitingRoomMarkup,bindRoomCode} from './ui/waiting-room.ts';
 import {playerVitalsMarkup} from './ui/player-vitals.ts';
@@ -143,6 +142,7 @@ const saveSettings = () => {
   applySettings();
 };
 function applySettings() {
+  app.dataset.combatLayout=settings.combatLayout;
   document.body.dataset.reduceMotion=String(settings.reduceMotion);
   document.documentElement.style.setProperty('--text-scale', String(settings.textScale));
   if (controls) {
@@ -162,7 +162,7 @@ function applySettings() {
   audio.setVolume(settings.volume, settings.music);
 }
 function settingsMarkup() {
-  return `<details class="settings"><summary>${text('ui.settings')}</summary><div class="settings-grid">${(['autoFire', 'aimAssist', 'hitboxes', 'reduceMotion', 'highContrast', 'branchingTree', 'showNames', 'roomChat'] as const).map((key) => `<label class="check"><input type="checkbox" data-setting="${key}" ${settings[key] ? 'checked' : ''}>${text('ui.' + key)}</label>`).join('')}<label>${text('ui.effectsVolume')}<input data-setting="volume" type="range" min="0" max="1" step="0.05" value="${settings.volume}"></label><label>${text('ui.musicVolume')}<input data-setting="music" type="range" min="0" max="1" step="0.05" value="${settings.music}"></label><label>${text('ui.textSize')}<input data-setting="textScale" type="range" min="0.9" max="1.4" step="0.1" value="${settings.textScale}"></label></div>${controlsMarkup(inputOptions)}</details>`;
+  return `<details class="settings"><summary>${text('ui.settings')}</summary><div class="settings-grid">${(['autoFire', 'aimAssist', 'hitboxes', 'reduceMotion', 'highContrast', 'branchingTree', 'showNames', 'roomChat'] as const).map((key) => `<label class="check"><input type="checkbox" data-setting="${key}" ${settings[key] ? 'checked' : ''}>${text('ui.' + key)}</label>`).join('')}<label>${text('ui.equipmentAbilityPanels')}<select data-setting="combatLayout"><option value="grouped" ${settings.combatLayout==='grouped'?'selected':''}>${text('ui.panelsTogether')}</option><option value="separate" ${settings.combatLayout==='separate'?'selected':''}>${text('ui.panelsSeparate')}</option></select></label><label>${text('ui.effectsVolume')}<input data-setting="volume" type="range" min="0" max="1" step="0.05" value="${settings.volume}"></label><label>${text('ui.musicVolume')}<input data-setting="music" type="range" min="0" max="1" step="0.05" value="${settings.music}"></label><label>${text('ui.textSize')}<input data-setting="textScale" type="range" min="0.9" max="1.4" step="0.1" value="${settings.textScale}"></label></div>${controlsMarkup(inputOptions)}</details>`;
 }
 function bindSettings() {
   settingsCleanup?.();
@@ -183,11 +183,12 @@ function bindSettings() {
     : undefined;
   controlSettings = binding;
 
-  document.querySelectorAll<HTMLInputElement>('[data-setting]').forEach((input) =>
+  document.querySelectorAll<HTMLInputElement|HTMLSelectElement>('[data-setting]').forEach((input) =>
     input.addEventListener('input', () => {
       const key = input.dataset.setting as keyof typeof settings;
-      (settings as Record<string, boolean | number>)[key] =
-        input.type === 'checkbox' ? input.checked : Number(input.value);
+      if(key==='combatLayout')settings.combatLayout=input.value==='separate'?'separate':'grouped';
+      else (settings as unknown as Record<string, boolean | number | string>)[key] =
+        input.type === 'checkbox' ? (input as HTMLInputElement).checked : Number(input.value);
       saveSettings();
     }, { signal: lifetime.signal }),
   );
@@ -439,7 +440,7 @@ function setupGame(online: boolean,classId:string) {
   $('abilities').before(actionDock);
   actionDock.append($('abilities'), supplyBar, app.querySelector('.touch-buttons')!);
   scene = new CombatScene();
-  controls = new Controls($('stage'),point=>arenaCanvasToWorld(point,scene!.viewport()),()=>scene!.viewport());
+  controls = new Controls($('stage'),point=>scene!.canvasToWorld(point),()=>scene!.viewport());
   scene.onLoadProgress = value => {
     if (serial !== launchSerial) return;
     const progress = Math.max(0, Math.min(1, value));

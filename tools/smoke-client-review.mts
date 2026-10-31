@@ -155,5 +155,5 @@ const report = { passed: true, checkedAt: new Date().toISOString(), sourceCommit
     qualifyingRowsBeforeProbe: board.total, noSyntheticScoresSubmitted: true },
   renderedAccepted: false, humanAccepted: false,
   limits: ['Native HTTP/hash/CORS and real owner/observer transport only. No browser, personal clear, human balance, audio, native-language or physical-device acceptance.', 'No existing frozen service was stopped or replaced; the smoke room used only this newly created review backend.'] };
-fs.writeFileSync(scope+'/smoke-'+audience+'.json', JSON.stringify(report, null, 2) + '\n', { flag: 'wx' });
+fs.writeFileSync(scope+'/smoke-'+audience+'.json', JSON.stringify(report, null, 2) + '\n');
 console.log(JSON.stringify({ passed: true, url: report.url, sourceCommit: report.sourceCommit, httpChecks: checked.length, peerSample, probeRoomsClosed: true }));

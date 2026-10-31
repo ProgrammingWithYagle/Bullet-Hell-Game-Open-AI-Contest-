@@ -1,13 +1,36 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {EventEmitter} from 'node:events';
-import {arenaCamera,arenaProjection,arenaWorldToCanvas,arenaCanvasToWorld,trackArenaViewport,survivorCameraClips} from '../src/client/arena-camera.ts';
+import {arenaCamera,arenaCameraForBounds,arenaProjection,arenaWorldToCanvas,arenaCanvasToWorld,trackArenaViewport,survivorCameraClips} from '../src/client/arena-camera.ts';
 import {Controls} from '../src/client/controls.ts';
 import {data} from '../src/shared/game.ts';
 import {runtimeArena} from '../src/shared/arena-layouts.ts';
 import footprints from '../src/shared/boss-body-bounds.json';
 
 const sizes=[[320,568],[360,640],[390,844],[568,320],[844,390],[768,1024],[1024,768],[1280,720],[1366,768],[1536,864],[1920,1080],[2560,1440],[3440,1440],[3840,2160]];
+
+test('each map fills narrow previews more closely, never shrinks versus the full frame, and keeps every complete pose visible',()=>{
+  for(const map of data.arenas)for(const difficulty of data.difficulties){
+    const b=runtimeArena(map.id,difficulty.id).bounds,frame=arenaCameraForBounds(b);
+    assert(frame.x>=arenaCamera.x&&frame.y>=arenaCamera.y&&frame.x+frame.width<=arenaCamera.x+arenaCamera.width&&frame.y+frame.height<=arenaCamera.y+arenaCamera.height);
+    assert(arenaProjection({width:480,height:800},frame).zoom>arenaProjection({width:480,height:800}).zoom,'narrow preview improves: '+map.id);
+    for(const[width,height]of sizes){
+      const viewport={width,height};assert(arenaProjection(viewport,frame).zoom>=arenaProjection(viewport).zoom);
+      const inside=(x:number,y:number)=>{const p=arenaWorldToCanvas({x,y},viewport,frame);assert(p.x>=-1e-8&&p.y>=-1e-8&&p.x<=width+1e-8&&p.y<=height+1e-8);};
+      for(const boss of data.bosses){const e=footprints.entries.find(e=>e.bossId===boss.id)!.extents;for(const x of[b.x+boss.radius,b.x+b.width-boss.radius])for(const y of[b.y+boss.radius,b.y+b.height-boss.radius]){inside(x-e.left,y-e.top);inside(x+e.right,y+e.bottom);}}
+      for(const c of survivorCameraClips){const r=data.rules.playerRadius;for(const x of[b.x+r,b.x+b.width-r])for(const y of[b.y+r,b.y+b.height-r]){inside(x-c.displayCell*c.origin[0],y-c.displayCell*c.origin[1]);inside(x+c.displayCell*(1-c.origin[0]),y+c.displayCell*(1-c.origin[1]));}}
+    }
+  }
+});
+
+test('the camera explicitly follows fractional pane sizes and a stable map frame through repeated resize events',()=>{
+  class Scale extends EventEmitter {gameSize={width:641.5,height:812.25};}
+  const scale=new Scale(),frame=arenaCameraForBounds(runtimeArena('gatehouse','baby').bounds),calls:{viewport:number[];zoom:number;center:number[]}={viewport:[],zoom:0,center:[]};
+  const stop=trackArenaViewport({setViewport:(...v)=>calls.viewport=v,setZoom:z=>calls.zoom=z,centerOn:(...p)=>calls.center=p},scale,()=>frame);
+  const center=[...calls.center];
+  for(const [width,height]of [[641.5,812.25],[483.75,607.5],[1366,768],[483.75,607.5]]){scale.gameSize={width,height};scale.emit('resize');assert.deepEqual(calls.viewport,[0,0,width,height]);assert.deepEqual(calls.center,center);assert.equal(calls.zoom,arenaProjection(scale.gameSize,frame).zoom);}
+  stop();assert.equal(scale.listenerCount('resize'),0);
+});
 
 test('all boss and survivor poses fit every map/difficulty border from phone portrait to4K without stretching',()=>{
   for(const [width,height]of sizes) {
@@ -42,7 +65,7 @@ test('actual scale events refit the camera after fullscreen, orientation and win
 });
 
 test('real pointer routing follows the current canvas after zoom, DPI, resize and temporary hidden bounds',t=>{
-  let viewport={width:1600,height:1000},rect={left:13.5,top:27.25,width:1600,height:1000};
+  let viewport={width:1600,height:1000},rect={left:13.5,top:27.25,width:1600,height:1000},frame=arenaCamera;
   const canvas={getBoundingClientRect:()=>rect};
   class Element extends EventTarget {
     querySelector(){return canvas;}setPointerCapture(){}closest(){return null;}
@@ -51,12 +74,13 @@ test('real pointer routing follows the current canvas after zoom, DPI, resize an
   const win=new EventTarget(),stage=new Element(),keys=['window','document','HTMLElement'];
   const descriptors=keys.map(k=>[k,Object.getOwnPropertyDescriptor(globalThis,k)]as const);
   Object.defineProperties(globalThis,{window:{configurable:true,value:win},document:{configurable:true,value:{querySelectorAll:()=>[]}},HTMLElement:{configurable:true,value:Element}});
-  const controls=new Controls(stage as unknown as HTMLElement,p=>arenaCanvasToWorld(p,viewport),()=>viewport);controls.blocked=false;
+  const controls=new Controls(stage as unknown as HTMLElement,p=>arenaCanvasToWorld(p,viewport,frame),()=>viewport);controls.blocked=false;
   t.after(()=>{controls.destroy();for(const[k,d]of descriptors)d?Object.defineProperty(globalThis,k,d):Reflect.deleteProperty(globalThis,k);});
-  for(const[width,height]of sizes)for(const scale of [.5,.8,1,1.25,1.5,2]) {
+  for(const map of data.arenas)for(const difficulty of data.difficulties)for(const[width,height]of sizes)for(const scale of [.5,.8,1,1.25,1.5,2]) {
+    frame=arenaCameraForBounds(runtimeArena(map.id,difficulty.id).bounds);
     viewport={width,height};rect={...rect,width:width*scale,height:height*scale};
     for(const world of [{x:42,y:70},{x:800,y:500},{x:1530,y:920}]) {
-      const p=arenaWorldToCanvas(world,viewport),event=new Event('pointermove');Object.assign(event,{clientX:rect.left+p.x*scale,clientY:rect.top+p.y*scale,pointerId:1});stage.dispatchEvent(event);
+      const p=arenaWorldToCanvas(world,viewport,frame),event=new Event('pointermove');Object.assign(event,{clientX:rect.left+p.x*scale,clientY:rect.top+p.y*scale,pointerId:1});stage.dispatchEvent(event);
       assert(Math.abs(controls.pointer.x-world.x)<1e-8&&Math.abs(controls.pointer.y-world.y)<1e-8);
     }
   }

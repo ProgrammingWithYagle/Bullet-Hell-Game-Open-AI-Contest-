@@ -281,6 +281,8 @@ export function parseProfile(raw: string): ProfileV1 {
       old.settings = { ...prefs, branchingTree: false };
     const current=old.settings;
     if(current&&typeof current==='object'&&!Array.isArray(current)&&Object.keys(current).length===9&&!Object.hasOwn(current,'showNames')&&!Object.hasOwn(current,'roomChat'))old.settings={...current,showNames:true,roomChat:true};
+    const layout=old.settings;
+    if(layout&&typeof layout==='object'&&!Array.isArray(layout)&&Object.keys(layout).length===11&&!Object.hasOwn(layout,'combatLayout'))old.settings={...layout,combatLayout:'grouped'};
   }
   validateProfile(value);
   return value;
