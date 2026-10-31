@@ -113,24 +113,13 @@ test('Stitchwright has destructible tethers, a one-second neutral rescue and a d
   assert.equal(of(missed.director, 'service-tether').length, 0);
   assert.equal(missed.hurt.length, 0);
 });
-test('Glass Surgeon leaves an actual missing edge and breaking one needle cancels only its connected sides', () => {
-  const f = fixture('glass-surgeon');
-  f.cast();
-  const needles = of(f.director, 'service-prop'),
-    beams = of(f.director, 'service-beam');
-  assert.equal(needles.length, 4);
-  assert.equal(beams.length, 3);
-  const midpoint = { x: (needles[0].x + needles[1].x) / 2, y: (needles[0].y + needles[1].y) / 2 };
-  assert(beams.every((b) => !serviceBeamContact(midpoint, midpoint, b)));
-  assert.equal(f.director.hit(needles[2].id, 999, 1), 35);
-  assert.equal(of(f.director, 'service-beam').filter((b) => !b.disabled).length, 1);
-  assert(
-    serviceBeamContact(
-      { x: 10, y: -100 },
-      { x: 10, y: 100 },
-      { x1: 0, y1: 0, x2: 100, y2: 0, width: 14 },
-    ),
-  );
+test('Glass Surgeon locks a bent ray and a shootable lens cuts both upstream and downstream segments', () => {
+  const f=fixture('glass-surgeon');f.cast();const lens=of(f.director,'service-prop')[0],beams=of(f.director,'service-beam');
+  assert.equal(of(f.director,'service-prop').length,1);assert.equal(beams.length,2);
+  assert(beams.every(b=>b.at===60&&b.dependencies.includes(lens.id)));
+  assert.equal(f.director.hit(lens.id,999,1),30);
+  assert(of(f.director,'service-beam').every(b=>b.disabled));
+  assert(serviceBeamContact({x:10,y:-100},{x:10,y:100},{x1:0,y1:0,x2:100,y2:0,width:14}));
 });
 test('Ash Baker loaves split exactly once into two real crumbs per loaf and show their split directions first', () => {
   const f = fixture('ash-baker', true);

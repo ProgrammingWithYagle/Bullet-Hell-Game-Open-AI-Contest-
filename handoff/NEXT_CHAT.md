@@ -2,7 +2,15 @@
 
 Continue in this SAME checkout: C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell). Use feat/first-playable-loop and draft PR #14. Read this note, inspect Git status and verify the live services before treating saved ports or remote state as current. Do not create another game clone or worktree.
 
-## General mobility continuation — 2026-10-31
+## Glass Surgeon continuation — 2026-10-31
+
+Current build **2026.10.31-glass-surgery / protocol45** adds [the refraction theatre](../docs/GLASS_SURGERY.md): shootable mirror lenses, locked bent/relay/fork paths, fresh advanced return warnings, a later independent Crazed incision, once-per-pulse hit budgets and slow harmless approaches. Existing art/music, fixed threat and boss/class counts remain. Oren Pell lore is recovered in the codex, with localized text alongside its English history. Original-boss quality passes are now **14/60**, with **46** remaining.
+
+The full local gate passes **1,010 tests,0 failures**, TypeScript, all15 catalogs, artwork, production build and71 atlas contracts. Current review identities belong in `reviews/glass-surgery-2026-10-31/`; read preview/CI receipts before using ports. Wire fields stay protocol45, but the exact content revision is now `fd77a95b869f368f49ce988f613db276385c45843e0152c69c3c67e13683a97b`. Known General-mobility saves/profiles migrate locally; online restore remains exact. Older5276/5278 reviews below have different content and remain available while the user may be playing. Public Site version4 and its backend remain unchanged.
+
+The latest user direction continues until a successor chat is needed and reserves full-game completion for the user. This is an implementation checkpoint, not100% completion or human acceptance. Continue from this same checkout/branch and the recorded unfinished work. No new clone/worktree, browser automation, portrait-sizing work, production redeploy or main merge is part of this pass.
+
+## Previous General mobility checkpoint — 2026-10-31
 
 Current build **2026.10.31-general-mobility / protocol 45**, game source `55cc82da4b67448cdb3f3385ac2e59638055398f`, implements the shared [General Sprint/Double Dash branch](../docs/GENERAL_MOBILITY.md). Sprint costs 3 earned SP and Double Dash 6 from the existing run budget. The 378 class nodes remain, with two independent shared purchases beside both skill views. Sprint uses bounded stamina and hold/toggle/remappable keyboard, gamepad and touch controls. Double Dash recharges sequentially and cannot overlap an existing dash. Known old profiles gain unused Sprint bindings without losing their prior choices.
 

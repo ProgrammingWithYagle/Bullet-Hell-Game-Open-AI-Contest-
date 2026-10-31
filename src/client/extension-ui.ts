@@ -1,3 +1,4 @@
+import {glassHelp} from './glass-text.ts';
 import {stitchHelp} from './stitch-text.ts';
 import {bellHelp} from './bell-text.ts';
 import {moldHelp} from './mold-text.ts';
@@ -26,6 +27,7 @@ export function extensionText(
   return text;
 }
 export function signatureHelp(view: View, locale: string) {
+  if(view.boss.id==='glass-surgeon')return glassHelp(view.boss.variant,locale);
   if(view.boss.id==='stitchwright')return stitchHelp(view.boss.variant,locale);
   if(view.boss.id==='bellringer')return bellHelp(view.boss.variant,locale);
   if(view.boss.id==='alchemist')return moldHelp(view.boss.variant,locale);

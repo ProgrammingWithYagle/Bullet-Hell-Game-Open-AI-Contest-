@@ -1,6 +1,16 @@
 # Changelog
 
-Development build **2026.10.31-general-mobility**, protocol 45. The current contest Site uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.10.31-glass-surgery**, protocol 45. The current contest Site uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-10-31 — Glass Surgeon performs a different examination
+
+### Cut a lens or read the refraction
+
+- Diagnostic rays, two-lens relays and forked paths replace the old polygon. Targets lock during a full two-second warning; light passes through cover.
+- Shootable lenses cut downstream paths. Every segment of a pulse shares one hit per survivor, so a crossing cannot multiply its damage.
+- Brutal returns through a changed optical path after a fresh warning. Crazed adds a later, separately warned incision. Broken lenses stay broken, and stagger cancels queued children.
+- The surgeon makes short harmless approaches between complete casts while retaining existing art/music. Original-boss quality passes now14/60, with46 remaining.
+- All fifteen catalogs include phase/form help and recovered Dr. Oren Pell lore. Known General-mobility local saves and custom controls carry forward; online content compatibility stays exact.
 
 ## 2026-10-31 — Every survivor can invest in Sprint and Double Dash
 

@@ -1,3 +1,4 @@
+import {glassPlan,glassRayEnd,moveGlassSurgeon} from './glass-surgery.ts';
 import {gappedRingContact as serviceRingContact} from './ring-contact.ts';
 export {gappedRingContact as serviceRingContact} from './ring-contact.ts';
 import {Stitchwork, type StitchCue} from './stitchwork.ts';
@@ -234,6 +235,7 @@ export class ServiceDirector {
   readonly stitchwright = new Stitchwork();
   nextSignatureAt = 0;
   private shapes: ServiceCue[] = [];
+  private opticalQueue:{warnAt:number;at:number;until:number;from:Vec;to:Vec;width:number;damage:number;dependencies:number[];index:number}[]=[];
   private contacts = new Map<string, number>();
   private once = new Set<string>();
   reset(kind: string, encounter = false) {
@@ -245,8 +247,9 @@ export class ServiceDirector {
     this.shapes = keepChoir
       ? this.shapes.filter((c) => c.kind === 'service-prop' && c.role === 'caster')
       : [];
-    if (kind !== this.kind || encounter) this.castIndex = 0;
+    if (kind !== this.kind || encounter) {this.castIndex = 0;this.nextSignatureAt=0;}
     this.kind = kind;
+    this.opticalQueue=[];
     this.contacts.clear();
     this.once.clear();
   }
@@ -439,28 +442,28 @@ export class ServiceDirector {
         break;
       }
       case 'glass-surgeon': {
-        // Each set stays shootable until its own beams finish.
-        const points = [
-          { x: target.x - 190, y: target.y - 145 },
-          { x: target.x + 190, y: target.y - 145 },
-          { x: target.x + 190, y: target.y + 145 },
-          { x: target.x - 190, y: target.y + 145 },
-        ].map((p, n) => this.prop(c, 'needle', p, 35, n, at));
-        for (const point of points) point.until = now + ticks(3.9);
-        for (let n = 0; n < 4; n++)
-          if (n !== index % 4)
-            this.beam(
-              c,
-              points[n],
-              points[(n + 1) % 4],
-              'glass',
-              now + ticks(1.4),
-              2.5,
-              14,
-              attack.damage,
-              [points[n].id, points[(n + 1) % 4].id],
-              n,
-            );
+        const plan=glassPlan(c,target,index),lenses=plan.lenses.map((p,n)=>this.prop(c,'needle',p,plan.health,n,now));
+        let last=now;const emitted=new Set<string>();
+        const optical=(from:Vec,to:Vec,at:number,dependencies:number[],group:number)=>{
+          const key=[group,from.x,from.y,to.x,to.y].join(':');if(emitted.has(key)||distance(from,to)<=2)return;emitted.add(key);
+          const warnAt=at-ticks(plan.warning);
+          if(warnAt<=now)this.beam(c,from,to,'glass',at,plan.active,plan.width,attack.damage,[...dependencies],group);
+          else this.opticalQueue.push({warnAt,at,until:at+ticks(plan.active),from:{...from},to:{...to},width:plan.width,damage:attack.damage,dependencies:[...dependencies],index:group});
+        };
+        for(const [pulse,route] of plan.routes.entries()){
+          const at=now+ticks(plan.warning+route.delay),until=at+ticks(plan.active),group=index*10+(route.delay===0?0:pulse);
+          let from:Vec={...c.boss};const dependencies:number[]=[];
+          for(const n of route.lenses){
+            const lens=lenses[n];dependencies.push(lens.id);
+            optical(from,lens,at,dependencies,group);
+            from=lens;
+          }
+          const end=glassRayEnd(from,route.aim,b);
+          optical(from,end,at,dependencies,group);
+          last=Math.max(last,until);
+        }
+        for(const lens of lenses)lens.until=last;
+        this.nextSignatureAt=Math.max(now+ticks(plan.cycle),last+ticks(1));
         break;
       }
       case 'ash-baker': {
@@ -727,8 +730,9 @@ export class ServiceDirector {
     damage: number,
     repeat = false,
   ) {
-    const key = cue.id + ':' + target.id;
-    if (repeat) {
+    const optical=c.bossId==='glass-surgeon'&&cue.kind==='service-beam'&&cue.style==='glass';
+    const key = (optical?'glass:'+cue.index:cue.id) + ':' + target.id;
+    if (repeat&&!optical) {
       if (c.tick < (this.contacts.get(key) ?? 0)) return;
       this.contacts.set(key, c.tick + ticks(0.5));
     } else {
@@ -765,6 +769,16 @@ export class ServiceDirector {
     if(c.bossId==='bellringer'){this.bellringer.step(c);return;}
     this.prepare(c);
     const now = c.tick;
+    if(c.bossId==='glass-surgeon'){
+      const alive=new Set(this.weakPoints().filter(p=>p.health>0).map(p=>p.id));let warned=false;
+      this.opticalQueue=this.opticalQueue.filter(q=>{
+        if(q.until<=now||q.dependencies.some(id=>!alive.has(id)))return false;
+        if(q.warnAt>now)return true;
+        this.beam(c,q.from,q.to,'glass',q.at,(q.until-q.at)/HZ,q.width,q.damage,q.dependencies,q.index);warned=true;return false;
+      });
+      if(warned)c.warn?.();
+      moveGlassSurgeon(c,this.castIndex,this.opticalQueue.length>0||this.shapes.some(q=>q.kind==='service-beam'&&q.style==='glass'&&q.until>now));
+    }
     for (const cue of this.shapes) {
       if (cue.kind === 'service-caliper' && now <= cue.lockAt) {
         const p = c.targets.find((p) => p.id === cue.targetId);
@@ -932,7 +946,8 @@ export class ServiceDirector {
     const live = new Set(this.shapes.map((c) => String(c.id)));
     for (const key of this.contacts.keys())
       if (!live.has(key.split(':')[0])) this.contacts.delete(key);
+    const opticalGroups=new Set(this.shapes.flatMap(q=>q.kind==='service-beam'&&q.style==='glass'?[String(q.index)]:[]));
     for (const key of this.once)
-      if (!live.has(key.split(':')[key.startsWith('heal:') ? 1 : 0])) this.once.delete(key);
+      if (key.startsWith('glass:')?!opticalGroups.has(key.split(':')[1]):!live.has(key.split(':')[key.startsWith('heal:') ? 1 : 0])) this.once.delete(key);
   }
 }

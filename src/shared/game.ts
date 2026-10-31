@@ -2023,6 +2023,7 @@ export class Game {
       if(this.boss.id==='matron'){this.director.services.matron.reset(now+ticks(1.5));this.brutalVolley.clear();}
       if(this.boss.id==='alchemist'){this.director.services.alchemist.reset(now+ticks(1.5));this.brutalVolley.clear();}
       if(this.boss.id==='bellringer'){this.director.services.bellringer.reset(now+ticks(1.5));this.brutalVolley.clear();}
+      if(this.boss.id==='glass-surgeon'){this.director.services.reset('glass-surgeon');this.brutalVolley.clear();}
       if(this.boss.id==='stitchwright'){this.director.services.reset('stitchwright');this.director.services.stitchwright.reset(now);this.brutalVolley.clear();}
       this.signatures = [];
       this.wardenPatrol.clear();
@@ -2031,6 +2032,7 @@ export class Game {
     if (this.boss.id === 'lantern-warden') this.stepWarden();
     if (this.director.district.handles(this.boss.id))
       this.attackAt[0] = Math.max(this.attackAt[0] ?? now, this.director.district.nextSignatureAt);
+    if(this.boss.id==='glass-surgeon')this.attackAt[0]=Math.max(this.attackAt[0]??now,this.director.services.nextSignatureAt);
     if (this.director.raids.handles(this.boss.id))
       this.attackAt[0] = Math.max(this.attackAt[0] ?? now, this.director.raids.nextSignatureAt);
     if (this.director.endless.handles(this.boss.id))

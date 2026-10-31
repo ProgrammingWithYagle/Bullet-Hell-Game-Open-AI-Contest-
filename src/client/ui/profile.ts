@@ -1,3 +1,4 @@
+import {glassLore} from '../glass-text.ts';
 import type { BossId } from '../../shared/protocol.ts';
 import { data } from '../../shared/game.ts';
 import { assets } from '../assets.ts';
@@ -119,7 +120,7 @@ export function mountProfile(host: HTMLElement, back: () => void, changed: (appl
           .filter((b) => s.lore.has(b.id as BossId))
           .map(
             (b) =>
-              `<details class="codex-entry"><summary>${assets.encounters[b.id] ? `<span class="codex-art" style="background-image:url('${assets.encounters[b.id]}')" aria-hidden="true"></span>` : icon('bell')}<span>${e(t('boss.' + b.id + '.name'))}</span></summary><p>${e(t('boss.' + b.id + '.description'))}</p><p lang="en" dir="ltr" class="boss-history">${e(b.lore)}</p></details>`,
+              `<details class="codex-entry"><summary>${assets.encounters[b.id] ? `<span class="codex-art" style="background-image:url('${assets.encounters[b.id]}')" aria-hidden="true"></span>` : icon('bell')}<span>${e(t('boss.' + b.id + '.name'))}</span></summary><p>${e(t('boss.' + b.id + '.description'))}</p><p lang="en" dir="ltr" class="boss-history">${e(b.lore)}</p>${b.id==='glass-surgeon'&&locale!=='en'?`<p lang="${e(locale)}" dir="auto" class="boss-history">${e(glassLore(locale))}</p>`:''}</details>`,
           )
           .join('') || `<p>${e(p('empty'))}</p>`
       }</div></section>${profile.legacyCampaigns.length ? `<p class="muted">${e(p('legacy', { count: number(profile.legacyCampaigns.length) }))}</p>` : ''}<section class="profile-files"><p>${e(p('importHelp'))}</p><div class="actions"><button data-export-profile>${icon('map')}${e(t('ui.exportProfile'))}</button><label class="file-button">${e(t('ui.importProfile'))}<input data-import-profile type="file" accept="application/json,.json"></label>${hasBackup() ? `<button data-restore-profile>${e(p('restore'))}</button>` : ''}</div></section><p data-profile-status role="status" aria-live="polite"></p></section>`;
