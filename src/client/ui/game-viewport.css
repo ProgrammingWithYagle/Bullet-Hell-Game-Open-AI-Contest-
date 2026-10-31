@@ -37,7 +37,11 @@
 .topline>.hud-actions {position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:minmax(2.75rem,auto);align-items:stretch;justify-self:end;max-width:22rem}
 .hud-actions>button,.hud-actions>.room-invite-hud>summary {display:flex;align-items:center;justify-content:center;gap:.35rem;width:100%;height:100%;min-height:2.75rem;padding:.5rem .6rem;border-radius:.4rem;line-height:1.3;text-align:center}
 .hud-actions>#host-pause-match {max-width:none}
+.hud-actions>#pause-button {grid-column:2;grid-row:1}
+.hud-actions>#host-pause-match,.hud-actions>#boss-guide-button {grid-column:1;grid-row:1}
+.hud-actions>#host-pause-match:not([hidden])~#boss-guide-button {grid-row:2}
 .hud-actions>.room-invite-hud[data-placement=combat] {position:static;grid-column:2;width:100%;max-width:none;margin:0}
+.hud-actions>.room-invite-hud[data-placement=combat] {grid-row:2}
 .hud-actions>.room-invite-hud[data-placement=combat]>summary {margin:0;background:#142b25ed}
 .hud-actions>.room-invite-hud[data-placement=combat]>div {position:absolute;inset-inline-end:0;top:calc(100% + .45rem);width:min(25rem,calc(100vw - 2*var(--hud-edge)));max-height:calc(100dvh - 11rem);overflow:auto;margin:0;box-shadow:0 .5rem 2rem #06181299}
 .bottomline {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,min(48vw,38rem)) minmax(0,1fr);align-items:end;gap:.75rem}

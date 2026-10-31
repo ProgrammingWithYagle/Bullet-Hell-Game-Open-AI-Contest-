@@ -1,41 +1,42 @@
 {
-  "checkedAt": "2026-10-31T16:56:35.913Z",
+  "checkedAt": "2026-10-31T17:15:05.823Z",
   "passed": true,
   "tests": 951,
   "failed": 0,
-  "runtimeSourceSha256": "eed4a58dba7e98293ac5b8023f9ba96d7128c118117bd83c0b691d94cc001843",
-  "sourceSnapshotSha256": "fe46c2a2e4b9ceda71a58cd1ec08f9747cb5a4b1435db9c9d492fd193ec71d07",
+  "runtimeSourceSha256": "63ee71fc8e4fdd0a0f2c98ed8ef36caa24b50fc6ea7f7406a31320ef1ad3d19d",
+  "sourceSnapshotSha256": "99827a295d0cc503286295280f278a64e4417672a79afa951120d2d3c1118524",
   "contentRevision": "1ae4988671b4316e028ed42c6a9cd63c2efa26f046debad2fb75b8e1fc8e7f6d",
   "checks": [
     {
       "name": "Stage 1 authored content",
       "passed": true,
-      "elapsedMs": 6761
+      "elapsedMs": 4201
     },
     {
       "name": "TypeScript",
       "passed": true,
-      "elapsedMs": 2654
+      "elapsedMs": 2256
     },
     {
       "name": "Headless rules and real-network integration",
       "passed": true,
-      "elapsedMs": 71926
+      "elapsedMs": 71407
     },
     {
       "name": "Production client build",
       "passed": true,
-      "elapsedMs": 6324
+      "elapsedMs": 3596
     },
     {
       "name": "Emitted encounter atlas contracts",
       "passed": true,
-      "elapsedMs": 1415
+      "elapsedMs": 815
     }
   ],
   "fullReport": "reviews/runtime-verification.json",
   "scope": "Shared HUD grouping, invite focus/placement, all existing rules/network/audio/geometry tests and production assets. No new artwork or gameplay rules.",
   "limits": [
     "Software/controller/build checks only; current HUD rendering and physical devices need separate human confirmation."
-  ]
+  ],
+  "fixedCornerSlots": true
 }

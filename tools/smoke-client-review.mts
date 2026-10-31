@@ -3,11 +3,13 @@ import path from 'node:path';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { request } from 'node:http';
-import { Session } from '../../src/client/session.ts';
+import { Session } from '../src/client/session.ts';
 const audience = process.argv[2];
 assert(audience === 'public' || audience === 'testing');
-const manifest = JSON.parse(fs.readFileSync('reviews/browser-release-fixes-2026-10-30/preview-' + audience + '-bytes-final.json', 'utf8'));
-const processes = JSON.parse(fs.readFileSync('reviews/browser-release-fixes-2026-10-30/preview-' + audience + '-processes-final.json', 'utf8'));
+const scope=process.argv[3];assert(/^reviews\/[a-z0-9-]+$/.test(scope??''));
+const summary=JSON.parse(fs.readFileSync(scope+'/preview-'+audience+'.json','utf8'));
+const manifest=JSON.parse(fs.readFileSync(summary.manifestPath,'utf8'));
+const processes=JSON.parse(fs.readFileSync(scope+'/processes-'+audience+'.json','utf8'));
 const sha = (bytes: Buffer) => createHash('sha256').update(bytes).digest('hex');
 const expected = (name: string) => manifest.members.find((m: { path: string }) => m.path === name);
 const checked: unknown[] = [];
@@ -145,13 +147,13 @@ assert.equal(after.rooms, 0); assert.equal(after.connections, 0);
 const boardAfter=await fetch(manifest.endpoint+'/api/leaderboards?mode=short&difficulty=normal&sizeBand=solo').then(r=>r.json());assert.equal(boardAfter.total,board.total);
 const report = { passed: true, checkedAt: new Date().toISOString(), sourceCommit: manifest.sourceCommit,
   buildId: manifest.buildId, protocol: manifest.protocol, contentRevision: manifest.contentRevision, audience,
-  url: manifest.url, root: manifest.root, endpoint: manifest.endpoint, httpChecks: checked,
-  servedCatalogs:catalogFiles, health, cors: { matchingOriginAllowed: true, otherOriginHealthHeaderObserved: otherHealthOrigin,
+  url: manifest.url, root: manifest.root, endpoint: manifest.endpoint, httpChecks: checked.length,
+  servedCatalogs:catalogFiles.length, health, cors: { matchingOriginAllowed: true, otherOriginHealthHeaderObserved: otherHealthOrigin,
     wrongOriginSocketUpgradeStatus: deniedUpgradeStatus },
   backendBundleSha256: manifest.backend.sha256, peerSample, probeRoomsClosed: true,
   teamRecords: { available: true, persistent: true, readStatus: boardResponse.status, scope: board.scope,
     qualifyingRowsBeforeProbe: board.total, noSyntheticScoresSubmitted: true },
   renderedAccepted: false, humanAccepted: false,
   limits: ['Native HTTP/hash/CORS and real owner/observer transport only. No browser, personal clear, human balance, audio, native-language or physical-device acceptance.', 'No existing frozen service was stopped or replaced; the smoke room used only this newly created review backend.'] };
-fs.writeFileSync('reviews/browser-release-fixes-2026-10-30/preview-' + audience + '-live-check-final.json', JSON.stringify(report, null, 2) + '\n', { flag: 'wx' });
+fs.writeFileSync(scope+'/smoke-'+audience+'.json', JSON.stringify(report, null, 2) + '\n', { flag: 'wx' });
 console.log(JSON.stringify({ passed: true, url: report.url, sourceCommit: report.sourceCommit, httpChecks: checked.length, peerSample, probeRoomsClosed: true }));
