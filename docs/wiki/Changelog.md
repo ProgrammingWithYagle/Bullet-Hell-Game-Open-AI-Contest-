@@ -1,6 +1,13 @@
 # Changelog
 
-Development build **2026.10.31-glass-surgery**, protocol 45. The current contest Site uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.10.31-general-sp-sync**, protocol 45. The current contest Site uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-10-31 — Online skill points include General purchases
+
+### One earned budget for every skill
+
+- The multiplayer roster and shop now show the real remaining SP after Sprint and Double Dash purchases. The purchase authority already charged their costs; the replicated display now uses the same calculation.
+- Real owner/observer checks verify Raid12SP becomes3 after both General purchases and9 after Sprint alone. No free points, prices or combat rules changed.
 
 ## 2026-10-31 — Glass Surgeon performs a different examination
 

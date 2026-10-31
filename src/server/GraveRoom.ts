@@ -1,3 +1,4 @@
+import {data} from '../shared/game.ts';
 import { Room, ServerError, type Client, type ISendOptions } from '@colyseus/core';
 import { randomBytes } from 'node:crypto';
 import {createRoomPassword,matchesRoomPassword} from './room-password.ts';
@@ -410,7 +411,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       view.ack = p.ack;
       view.ammo = p.ammo;
       view.coins = p.coins;
-      view.sp = p.totalSp - p.skills.reduce((n, id) => n + GameSkillCost(id), 0);
+      view.sp = p.totalSp - p.skills.reduce((n, id) => n + g.skillCost(id), 0);
       view.qAt = p.qAt;
       view.eAt = p.eAt;
       view.ultimateAt = p.ultimateAt;
@@ -503,6 +504,3 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       void this.setMetadata({ ...this.metadata, phase: g.phase });
   }
 }
-import { data } from '../shared/game.ts';
-const costBySkill = new Map(data.skills.map((s) => [s.id, s.cost]));
-const GameSkillCost = (id: string) => costBySkill.get(id) ?? 0;

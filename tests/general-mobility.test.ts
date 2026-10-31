@@ -418,6 +418,7 @@ test("both skill views expose shared purchases with written costs and localized 
       assert(typeof m[key] === "string" && m[key].length > 0);
   }
 });
+const genericUnspent=(s:Session)=>s.view!.players.find(p=>p.id===s.id)!.sp;
 const wait = async (check: () => boolean) => {
   const end = Date.now() + 7000;
   while (!check()) {
@@ -461,6 +462,9 @@ test(
       await purchase(a, "general-sprint");
       await purchase(a, "general-double-dash");
       await purchase(b, "general-sprint");
+    await wait(()=>[a,b].every(s=>s.view?.players.find(p=>p.id===a.id)?.sp===3&&s.view?.players.find(p=>p.id===b.id)?.sp===9));
+    assert.equal(genericUnspent(a),3);
+
       a.start();
       await wait(() => b.view?.phase === "combat");
       const g = liveRooms.get(a.room!.roomId)!.game;

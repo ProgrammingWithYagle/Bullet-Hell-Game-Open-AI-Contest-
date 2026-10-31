@@ -2,6 +2,12 @@
 
 Continue in this SAME checkout: `C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)`. Use `feat/first-playable-loop` and draft PR #14. Inspect Git status and current services before using saved identities. Do not create another game clone or worktree.
 
+## Ongoing continuation — General SP display repair
+
+The active user goal is now **“This time don’t stop, there is a lot of work to be done, keep developing and continue improving the game.”** Keep that full objective active across turns; do not redefine it as another bounded checkpoint or mark it complete because a chat is long. Work is continuing toward playable Story progression.
+
+A room-serialization bug showed unspent SP without charging General purchases in the replicated display. The purchase authority was already correct. The serializer now uses the same shared Game.skillCost; real owner/observer Raid peers verify3SP after both General purchases and9SP after Sprint alone. Build2026.10.31-general-sp-sync passed the full1,010-test gate. Existing frozen previews below retain their earlier source; the next cumulative review will include the repair. See reviews/general-sp-sync-2026-10-31/validation.json.
+
 ## Current verified development checkpoint — 2026-10-31
 
 Build **2026.10.31-glass-surgery / protocol 45**, game source **517472b3e1efda13500d35e0351b3a7fdb565b92**. Metadata commits after this source describe the same runtime. The full local gate passed **1,010 tests, 0 failures**, TypeScript, all fifteen catalogs, artwork, production build and 71 atlas contracts. [Exact-source CI 41242002286](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/41242002286) and every job step passed.
