@@ -367,3 +367,53 @@ test("earned letters render only for their survivor, remain collapsed, and keep 
   assert.equal(original.getAttribute("dir"), "ltr");
   assert.equal(JSON.stringify([...env.saved]), before);
 });
+
+test("unreadable profiles keep exact bytes and offer Profile recovery without granting empty replacement progress", async (context) => {
+  const env = menuEnvironment(context);
+  env.saved.set("ga-profile-v1", "{broken");
+  const before = JSON.stringify([...env.saved]);
+  const ui = await menuBundle(context, "src/client/ui/field-journal.ts");
+  let backs = 0,
+    recoveries = 0,
+    plans = 0;
+  context.after(
+    ui.mountFieldJournal(
+      env.host,
+      () => backs++,
+      () => plans++,
+      () => recoveries++,
+    ),
+  );
+  assert(env.host.querySelector('[role="alert"]'));
+  assert.equal(env.host.querySelectorAll("[data-journal-goal]").length, 0);
+  env.host.querySelector("[data-journal-profile]")!.click();
+  assert.equal(recoveries, 1);
+  env.host.querySelector("[data-journal-back]")!.click();
+  assert.equal(backs, 1);
+  assert.equal(plans, 0);
+  assert.equal(JSON.stringify([...env.saved]), before);
+});
+test("detached filter actions cannot prepare a run, and a profile changed to invalid data during a journal visit has a recovery path", async (context) => {
+  const env = menuEnvironment(context),
+    ui = await menuBundle(context, "src/client/ui/field-journal.ts");
+  let plans = 0;
+  context.after(
+    ui.mountFieldJournal(
+      env.host,
+      () => {},
+      () => plans++,
+    ),
+  );
+  const old = env.host.querySelector('[data-journal-prepare="class-medic"]')!;
+  env.host.querySelector('[data-journal-filter="routes"]')!.click();
+  old.click();
+  assert.equal(plans, 0);
+  const active = env.host.querySelector(
+    '[data-journal-prepare="route-short"]',
+  )!;
+  env.saved.set("ga-profile-v1", '{"unknown":true}');
+  active.click();
+  assert.equal(plans, 0);
+  assert(env.host.querySelector('[role="alert"]'));
+  assert.equal(env.saved.get("ga-profile-v1"), '{"unknown":true}');
+});

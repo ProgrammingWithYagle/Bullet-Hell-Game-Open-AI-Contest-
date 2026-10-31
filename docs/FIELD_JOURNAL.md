@@ -2,7 +2,7 @@
 
 Development build **2026.10.31-field-journal**, protocol **44**. Open **Field Journal** from Home. It is a menu page; no journal panel covers combat.
 
-Nineteen personal goals offer three cosmetic stamps each, for57stamps. They give reasons to change class, finish another route, recover new boss identities, help teammates or extend an Endless run. None changes starting health, weapons, skills, currency, difficulty unlocks or verified online rank.
+Nineteen personal goals offer three cosmetic stamps each, for 57 stamps. They give reasons to change class, finish another route, recover new boss identities, help teammates or extend an Endless run. None changes starting health, weapons, skills, currency, difficulty unlocks or verified online rank.
 
 | Goals | First / second / third stamp | What counts |
 | --- | --- | --- |
@@ -24,3 +24,5 @@ Progress is derived from existing validated personal profile receipts. It has no
 `src/client/field-journal.ts` owns accounting and suggested plans. `src/client/ui/field-journal.ts` owns disposable DOM controls. `locales/source/field-journal.mjs` is the canonical label provider; run `tools/update-field-journal.mjs` and `locales/build-catalogs.mjs` after changing it. `src/client/survivor-letters.json` contains the stories. The original complete-art, map and aiming rules remain intact.
 
 Native controller and rule checks cover all goals, achievable completion, import round trips, no double credit, late joins, old claims, modified-run removal, safe preparation, private rescue setup, focus, disposal and catalog parity. The full project gate also runs. No browser automation or rendered/human/device/balance acceptance is claimed. Current local testing/public review identities live in `reviews/field-journal-2026-10-31/`; the published public Site remains version4/protocol43.
+
+Unreadable profiles receive an explicit error and a route to the existing Profile import/backup controls. Reading or preparing a goal never replaces corrupt bytes with a fresh profile. Controls detached by filtering cannot trigger a later preparation.
