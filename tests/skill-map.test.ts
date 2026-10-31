@@ -301,10 +301,11 @@ test('the actual shop switches between 18 and 54 skills and expanded inspection 
     const p = viewOf(g, 'solo').players[0];
     assert.equal(
       (shop.shopMarkup(p, [], false).match(/data-inspect=/g) ?? []).length,
-      18,
+      18 + catalog.generalSkills.length,
     );
     const expanded = shop.shopMarkup(p, [], true);
-    assert.equal((expanded.match(/data-inspect=/g) ?? []).length, 54);
+    assert.equal((expanded.match(/data-inspect=/g) ?? []).length, 54 + catalog.generalSkills.length);
+    assert.equal((expanded.match(/data-map-cell=/g) ?? []).length,54,'The class map retains all54 nodes; General purchases sit beside it');
     assert.equal((expanded.match(/data-from=/g) ?? []).length, 45);
     const first = catalog.skills.find(
       (s) => s.classId === cl.id && s.lane === 0 && s.depth === 1,

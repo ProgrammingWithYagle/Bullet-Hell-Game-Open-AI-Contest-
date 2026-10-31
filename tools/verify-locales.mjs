@@ -1,3 +1,4 @@
+import {generalMobilityMessages} from '../locales/source/general-mobility.mjs';
 import {shieldSpecializationMessages} from '../locales/source/shield-specializations.mjs';
 import {fieldJournalMessages} from '../locales/source/field-journal.mjs';
 import {stitchworkMessages} from '../locales/source/stitchwork.mjs';
@@ -46,9 +47,9 @@ const tokens = value => kind(value) === 'text' ? placeholders(value) : kind(valu
 const commonEnglishKeys = new Set(['ui.brand','template.effect','template.effectFlat','template.effectMultiplier','template.effectPercent','template.percent','template.perSecond','template.seconds']);
 // Explicit cognates and loanwords. An unlisted verbatim English message is an error.
 const cognates = {
-  es:['ui.variantBrutal','branch.control','difficulty.normal','threat.1','ui.audio','ui.no'],
-  fr:["journal.classes",'attack.charge.name','branch.bastion','branch.endurance','branch.protection','branch.suppression','branch.triage','class.assassin.name','class.mage.name','class.tank.name','difficulty.normal','stat.grade','supply.antidote.name','threat.1','threat.2','threat.4','threat.8','ui.audio','ui.boss','ui.leaderboardScore','ui.pause','ui.phase','ui.version'],
-  de:['branch.triage','difficulty.baby','difficulty.normal','stat.radius','threat.1','ui.audio','ui.boss','ui.pause','ui.phase','ui.region','ui.version','ui.vibration'],
+  es:['branch.general','ui.variantBrutal','branch.control','difficulty.normal','threat.1','ui.audio','ui.no'],
+  fr:['skill.general-sprint.name','ui.sprint',"journal.classes",'attack.charge.name','branch.bastion','branch.endurance','branch.protection','branch.suppression','branch.triage','class.assassin.name','class.mage.name','class.tank.name','difficulty.normal','stat.grade','supply.antidote.name','threat.1','threat.2','threat.4','threat.8','ui.audio','ui.boss','ui.leaderboardScore','ui.pause','ui.phase','ui.version'],
+  de:['skill.general-sprint.name','ui.sprint','branch.triage','difficulty.baby','difficulty.normal','stat.radius','threat.1','ui.audio','ui.boss','ui.pause','ui.phase','ui.region','ui.version','ui.vibration'],
   'pt-BR':["journal.classes",'difficulty.normal','threat.1'],
   id:['attack.spiral.name','difficulty.normal','stat.radius','threat.1','ui.abstain','ui.audio']
 };
@@ -58,6 +59,7 @@ function expectedContentKeys(content) {
   for (const [field, prefix] of [['weapons','weapon'],['skills','skill'],['mutations','mutation'],['bosses','boss'],['arenas','arena'],['supplies','supply'],['upgrades','upgrade'],['modes','mode']]) {
     for (const item of content[field]) keys.push(`${prefix}.${item.id}.name`,`${prefix}.${item.id}.description`);
   }
+  for(const item of content.generalSkills)keys.push(`skill.${item.id}.name`,`skill.${item.id}.description`,item.subbranchNameKey);
   for (const item of content.classes) {
     keys.push(`class.${item.id}.name`,`class.${item.id}.role`,`class.${item.id}.lore`);
     for (const branch of item.branches) keys.push(`branch.${branch.id}`);
@@ -66,7 +68,7 @@ function expectedContentKeys(content) {
   for (const item of content.difficulties) keys.push(`difficulty.${item.id}`);
   for (let n=1;n<=content.threats.length;n++) keys.push(`threat.${n}`);
   const effects = new Set([
-    ...content.skills.flatMap(x=>Object.keys(x.effects)), ...content.mutations.flatMap(x=>Object.keys(x.modifiers)),
+    ...content.skills.flatMap(x=>Object.keys(x.effects)),...content.generalSkills.flatMap(x=>Object.keys(x.effects)), ...content.mutations.flatMap(x=>Object.keys(x.modifiers)),
     ...content.upgrades.map(x=>x.effect)
   ]);
   for (const effect of effects) keys.push(`stat.${effect}`);
@@ -122,7 +124,7 @@ export function validateOne(document, canonical, content, locale) {
       ...Object.keys(bossGuideMessages('en')),
       ...Object.keys(stitchworkMessages('en')),
       ...Object.keys(fieldJournalMessages('en')),
-      ...Object.keys(shieldSpecializationMessages('en')),
+      ...Object.keys(shieldSpecializationMessages('en')), ...Object.keys(generalMobilityMessages('en')),
       ...Object.keys(classTalentMessages('en',content)),
       ...Object.keys(wardenMessages('en')),
       ...Object.keys(skillMapMessages('en')),
@@ -151,7 +153,7 @@ export function validateOne(document, canonical, content, locale) {
     if (!Object.hasOwn(messages,key)) fail(`missing feature coverage: ${key}`);
   }
   const expectedCategories = new Intl.PluralRules(locale).resolvedOptions().pluralCategories.slice().sort();
-  const expandedSource = {...smallWakesMessages(locale),...expansionMessages(locale), ...earlyWatchMessages(locale),...skillMapMessages(locale),...difficultyRuleMessages(locale),...classTalentMessages(locale,content),...wardenMessages(locale),...crazedHorizonMessages(locale),...courierRouteMessages(locale),...ratcatcherMusterMessages(locale),...clerkAppealMessages(locale),...tollkeeperReturnMessages(locale),...marshalMessages(locale),...widowMessages(locale),...ambulanceMessages(locale),...matronMessages(locale),...moldMessages(locale),...bellMessages(locale),...runtimeExtraMessages(locale),...bossGuideMessages(locale),...stitchworkMessages(locale),...fieldJournalMessages(locale),...shieldSpecializationMessages(locale)};
+  const expandedSource = {...smallWakesMessages(locale),...expansionMessages(locale), ...earlyWatchMessages(locale),...skillMapMessages(locale),...difficultyRuleMessages(locale),...classTalentMessages(locale,content),...wardenMessages(locale),...crazedHorizonMessages(locale),...courierRouteMessages(locale),...ratcatcherMusterMessages(locale),...clerkAppealMessages(locale),...tollkeeperReturnMessages(locale),...marshalMessages(locale),...widowMessages(locale),...ambulanceMessages(locale),...matronMessages(locale),...moldMessages(locale),...bellMessages(locale),...runtimeExtraMessages(locale),...bossGuideMessages(locale),...stitchworkMessages(locale),...fieldJournalMessages(locale),...shieldSpecializationMessages(locale),...generalMobilityMessages(locale)};
   for (const [key,text] of Object.entries(recoveryMessages(locale))) {
     if (messages[key] !== text) fail(`recovery UI source mismatch at ${key}`);
   }

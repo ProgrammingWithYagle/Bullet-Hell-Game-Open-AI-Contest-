@@ -1,3 +1,4 @@
+import {advanceMobility,takeDodge,sprintUnlocked,mobilityRules} from '../shared/mobility.ts';
 import clerkRules from '../shared/clerk-appeal-rules.json';
 import {fieldPosition} from '../shared/field-follow.ts';
 import { earlyWatchMovement } from '../shared/early-watch-director.ts';
@@ -48,11 +49,13 @@ export class Prediction {
     );
     p.x = clear.x;
     p.y = clear.y;
-    if (i.dodge && now >= p.dodgeAt) {
+    const dodgePeriod=Math.ceil(data.rules.dodgeCooldown*p.dodgeCooldown*HZ);
+    advanceMobility(p,i,now,dodgePeriod,sprintUnlocked(p.skills),now<p.reloadAt);
+    if (i.dodge && takeDodge(p,now,dodgePeriod)) {
       p.dashX = len ? mx : Math.cos(i.aim);
       p.dashY = len ? my : Math.sin(i.aim);
       p.dashUntil = now + Math.ceil(data.rules.dodgeDuration * HZ);
-      p.dodgeAt = now + Math.ceil(data.rules.dodgeCooldown * p.dodgeCooldown * HZ);
+
     }
     const environment = serviceMovement(view.bossCues, p, p.id, now);
     const terrain = districtMovement(
@@ -77,7 +80,7 @@ export class Prediction {
         ? now < p.kit.chargeUntil
           ? 600
           : data.rules.dodgeSpeed
-        : p.speed *
+        : p.speed * (p.sprinting?mobilityRules.sprintMultiplier:1) *
           Math.min(now < p.slowUntil ? 0.65 : 1, now < p.poisonUntil ? clerkRules.purpleSlowMultiplier : 1) *
           (1 + rally) *
           environment.multiplier *

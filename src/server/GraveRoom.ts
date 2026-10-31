@@ -415,6 +415,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       view.eAt = p.eAt;
       view.ultimateAt = p.ultimateAt;
       view.dodgeAt = p.dodgeAt;
+      view.dodgeCharges=p.dodgeCharges;view.dodgeMaximum=p.dodgeMaximum;view.sprintStamina=p.sprintStamina;view.sprintRecoveryAt=p.sprintRecoveryAt;view.sprintExhausted=p.sprintExhausted;view.sprinting=p.sprinting&&g.phase==='combat'&&p.status==='active';
       view.reloadAt = p.reloadAt;
       view.supplyAt = p.supplyAt;
       view.braceUntil = p.braceUntil;

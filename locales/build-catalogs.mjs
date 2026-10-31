@@ -1,3 +1,4 @@
+import {generalMobilityMessages} from './source/general-mobility.mjs';
 // Rebuild all runtime catalogs from their authored sources.
 import { readFile, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
@@ -48,7 +49,7 @@ for (const id of ids) {
     keys.forEach((key, index) => { messages[`${group}.${key}`] = values[index]; });
   }
   Object.assign(messages, additional[id]);
-  Object.assign(messages, expansionMessages(id), shieldSpecializationMessages(id));
+  Object.assign(messages, expansionMessages(id), shieldSpecializationMessages(id),generalMobilityMessages(id));
   Object.assign(messages, earlyWatchMessages(id));
   Object.assign(messages, skillMapMessages(id));
   Object.assign(messages, interfaceMessages(id));
@@ -78,7 +79,7 @@ for (const id of ids) {
     wardenMessages(id), crazedHorizonMessages(id), courierRouteMessages(id), ratcatcherMusterMessages(id),
     clerkAppealMessages(id), tollkeeperReturnMessages(id), marshalMessages(id), widowMessages(id),
     ambulanceMessages(id), matronMessages(id), moldStillMessages(id), bellReturnChainMessages(id),
-    runtimeExtraMessages(id), bossGuideMessages(id), stitchworkMessages(id), fieldJournalMessages(id), shieldSpecializationMessages(id));
+    runtimeExtraMessages(id), bossGuideMessages(id), stitchworkMessages(id), fieldJournalMessages(id), shieldSpecializationMessages(id),generalMobilityMessages(id));
   const info = catalog.locales.find(x => x.id === id);
   const output = {
     meta: { schemaVersion: 1, locale: id, nativeName: info.name, direction: info.direction,

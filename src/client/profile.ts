@@ -12,6 +12,7 @@ import type { View } from "../shared/view.ts";
 import { practiceRecords, type PracticeCampaignRecord } from "./progress.ts";
 import {
   defaultControls,
+  migrateMobilityControls,
   validControls,
   type ControlOptions,
 } from "./input-bindings.ts";
@@ -243,6 +244,7 @@ export function parseProfile(raw: string): ProfileV1 {
       old.practiceOnly === true &&
       old.verified === false &&
       [
+        "39fd34dfd7530860d0ecfad5d7e86361438fae9bd3ac93881ec4fe51a3974322",
         "15da4f590d2f2041f065732e48498551543beab9818f1f187df710d5de521d34",
         "1ae4988671b4316e028ed42c6a9cd63c2efa26f046debad2fb75b8e1fc8e7f6d",
         "6bf9b3f3f87c98e2e552b99e4dbf6ae856b57b3aba032d03a72bcc97c8367cdd",
@@ -271,7 +273,7 @@ export function parseProfile(raw: string): ProfileV1 {
         "b8d9fb6918c854f3eed38b327ed0cb3026e071e6fe24932e50beed36943db241",
       ].includes(String(old.contentRevision))
     )
-      old.contentRevision = CONTENT_REVISION;
+      {old.controls=migrateMobilityControls(old.controls);old.contentRevision = CONTENT_REVISION;}
     const prefs = old.settings;
     if (
       prefs &&

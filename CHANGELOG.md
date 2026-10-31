@@ -1,6 +1,16 @@
 # Changelog
 
-Development build **2026.10.31-shield-specializations**, protocol 44. The current contest Site uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.10.31-general-mobility**, protocol 45. The current contest Site uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-10-31 — Every survivor can invest in Sprint and Double Dash
+
+### Movement choices share the existing skill budget
+
+- The General section is available beside both class-skill views. Sprint costs 3 earned SP; Double Dash costs 6. The existing 378 class nodes remain, with two separate shared purchases and no free points or permanent power.
+- Sprint moves 35% faster with weapons lowered, uses 100 stamina at 30 per second, and recovers 25 per second after a second of rest. Exhaustion requires 35 before restarting; terrain slows and collision still apply.
+- Double Dash adds a second ordinary dodge charge. Charges recharge sequentially; a new dodge waits for the current one to finish. The existing invulnerability window is retained.
+- Authority and prediction share mobility rules. The HUD, touch button, remappable keyboard/gamepad input and hold/toggle accessibility expose the same state.
+- Known old profiles retain bindings and choose an unused Sprint key/button. Local save migration is bounded; protocol45 online clients and servers must match the exact new content revision. All fifteen catalogs include written labels and help.
 
 ## 2026-10-31 — Tank and Heavy build larger personal shields
 

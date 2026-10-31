@@ -1,3 +1,4 @@
+import {allSkills,skillFor,advanceMobility,takeDodge,resetMobility,dodgeMaximum,sprintUnlocked,mobilityRules} from './mobility.ts';
 import {VariantPressure} from './variant-pressure.ts';
 import { bossDefeatRemaining, showingBossDefeat } from './boss-defeat-flow.ts';
 import { arenaSelections, selectedArenaId, type ArenaSelection } from './arena-selection.ts';
@@ -153,6 +154,12 @@ export type Player = {
   fireAt: number;
   wasFiring: boolean;
   dodgeAt: number;
+  dodgeCharges:number;
+  dodgeMaximum:number;
+  sprintStamina:number;
+  sprintRecoveryAt:number;
+  sprintExhausted:boolean;
+  sprinting:boolean;
   dashUntil: number;
   invulnerableUntil: number;
   dashX: number;
@@ -391,7 +398,7 @@ export class Game {
     return data.difficulties.find((d) => d.id === this.settings.difficulty)!;
   }
   skillCost(id: string) {
-    return data.skills.find((s) => s.id === id)?.cost ?? 0;
+    return allSkills.find((s) => s.id === id)?.cost ?? 0;
   }
   private id() {
     return this.nextId++;
@@ -436,6 +443,7 @@ export class Game {
       fireAt: 0,
       wasFiring: false,
       dodgeAt: 0,
+      dodgeCharges:1,dodgeMaximum:1,sprintStamina:100,sprintRecoveryAt:0,sprintExhausted:false,sprinting:false,
       dashUntil: 0,
       invulnerableUntil: 0,
       dashX: 0,
@@ -542,7 +550,7 @@ export class Game {
       w = data.weapons.find((w) => w.id === p.weapon)!;
     const effects: Record<string, number> = {};
     for (const id of p.skills) {
-      const sk = data.skills.find((s) => s.id === id)!;
+      const sk = skillFor(id,p.classId)!;
       for (const [k, v] of Object.entries(sk.effects)) effects[k] = (effects[k] ?? 0) + v;
     }
     for (const u of data.upgrades)
@@ -660,12 +668,12 @@ export class Game {
       slot.id = supply.id;
       slot.count++;
     } else {
-      const s = data.skills.find((s) => s.id === r.item && s.classId === p.classId);
+      const s = skillFor(r.item,p.classId);
       if (!s || p.skills.includes(s.id) || (s.prerequisite && !p.skills.includes(s.prerequisite)))
         return { ok: false, reason: 'prerequisite' };
-      if (s.capstone && p.skills.some((id) => data.skills.find((x) => x.id === id)!.capstone))
+      if (s.capstone && p.skills.some((id) => allSkills.find((x) => x.id === id)!.capstone))
         return { ok: false, reason: 'capstoneMaximum' };
-      const spent = p.skills.reduce((n, id) => n + data.skills.find((s) => s.id === id)!.cost, 0);
+      const spent = p.skills.reduce((n, id) => n + allSkills.find((s) => s.id === id)!.cost, 0);
       if (spent + s.cost > p.totalSp) return { ok: false, reason: 'insufficientPoints' };
       p.skills.push(s.id);
     }
@@ -676,6 +684,7 @@ export class Game {
     p.ammo = this.stats(p).magazine;
     p.reloadAt = 0;
     this.limitPersonalShield(p);
+    p.dodgeMaximum=dodgeMaximum(p.skills);
     return { ok: true };
   }
   vote(id: string, index: number): boolean {
@@ -847,6 +856,7 @@ export class Game {
       p.channelUntil = 0;
       p.adrenalineUntil = 0;
       p.wasFiring = false;
+      resetMobility(p,p.skills);
       p.braceUntil = 0;
       p.overdriveUntil = 0;
       p.supplyShield = 0;
@@ -1168,6 +1178,7 @@ export class Game {
       stats = this.stats(p),
       i = p.input;
     p.aim = i.aim;
+    p.sprinting=false;
     const moving = leaveMovingBlocks(
       p,
       endlessSolids(this.director.endless.cues(), now),
@@ -1204,12 +1215,15 @@ export class Game {
       mx /= len;
       my /= len;
     }
-    if (i.dodge && now >= p.dodgeAt) {
+    p.dodgeMaximum=dodgeMaximum(p.skills);
+    const dodgePeriod=ticks(rule.dodgeCooldown*stats.dodgeCooldown);
+    advanceMobility(p,i,now,dodgePeriod,sprintUnlocked(p.skills),now<p.reloadAt);
+    if (i.dodge && takeDodge(p,now,dodgePeriod)) {
       p.dashX = len ? mx : Math.cos(i.aim);
       p.dashY = len ? my : Math.sin(i.aim);
       p.dashUntil = now + ticks(rule.dodgeDuration);
       p.invulnerableUntil = now + ticks(rule.dodgeInvulnerability);
-      p.dodgeAt = now + ticks(rule.dodgeCooldown * stats.dodgeCooldown);
+
       this.events.push({ type: 'sound', id: 'dodge', x: p.x, y: p.y });
     }
     const rally = Math.max(
@@ -1233,7 +1247,7 @@ export class Game {
     const dash = now < p.dashUntil,
       speed = dash
         ? (this.classKits.chargeSpeed(p.id, now) ?? rule.dodgeSpeed)
-        : this.movementSpeed(p) *
+        : this.movementSpeed(p) * (p.sprinting?mobilityRules.sprintMultiplier:1) *
           Math.min(now < p.slowUntil ? 0.65 : 1, now < p.poisonUntil ? clerkAppealRules.purpleSlowMultiplier : 1) *
           (1 + rally) *
           environment.multiplier *
@@ -2801,7 +2815,7 @@ export class Game {
       capstones = 0;
     const owned = new Set<string>();
     for (const id of p.skills) {
-      const node = data.skills.find((s) => s.id === id && s.classId === p.classId);
+      const node = skillFor(id,p.classId);
       if (!node || (node.prerequisite && !owned.has(node.prerequisite)))
         throw Error('invalidBuild');
       spent += node.cost;
@@ -2892,6 +2906,8 @@ export class Game {
       input: idleInput(),
       eligible: true,
     });
+    player.dodgeMaximum=dodgeMaximum(player.skills);
+    player.dodgeCharges=save.combatTick>=player.dodgeAt?player.dodgeMaximum:0;
     g.tick = save.tick;
     g.combatTick = save.combatTick;
     g.phase = save.phase;

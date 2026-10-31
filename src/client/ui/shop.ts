@@ -8,6 +8,7 @@ import {
   clampMapZoom,
   mapZoomScroll,
 } from './skill-map.ts';
+import {allSkills,generalSkills} from '../../shared/mobility.ts';
 import { data } from '../../shared/game.ts';
 import type { Command } from '../../shared/protocol.ts';
 import type { PlayerView } from '../../shared/view.ts';
@@ -30,17 +31,17 @@ const itemArt = (kind: Kind, id: string, glyph: string) =>
           kind +
             '/' +
             (kind === 'skill'
-              ? data.skills.find((s) => s.id === id)?.subbranchId
+              ? allSkills.find((s) => s.id === id)?.subbranchId
               : id)
         ]
   )
-    ? `<img class="item-art" src="${kind === 'upgrade' ? assets.upgrades[id] : assets.items[kind + '/' + (kind === 'skill' ? data.skills.find((s) => s.id === id)?.subbranchId : id)]}" alt="" aria-hidden="true">`
+    ? `<img class="item-art" src="${kind === 'upgrade' ? assets.upgrades[id] : assets.items[kind + '/' + (kind === 'skill' ? allSkills.find((s) => s.id === id)?.subbranchId : id)]}" alt="" aria-hidden="true">`
     : icon(glyph);
 let tab: 'gear' | 'tree' = 'tree',
   branchId = '',
   chosen: { kind: Kind; id: string } | null = null;
 function skillsOf(p: PlayerView) {
-  return data.skills.filter((s) => s.classId === p.classId);
+  return allSkills.filter((s) => s.classId === p.classId||s.classId==='general');
 }
 function canBuy(
   p: PlayerView,
@@ -61,7 +62,7 @@ function canBuy(
       };
     if (
       node.capstone &&
-      p.skills.some((id) => data.skills.find((s) => s.id === id)?.capstone)
+      p.skills.some((id) => allSkills.find((s) => s.id === id)?.capstone)
     )
       return {
         allowed: false,
@@ -189,7 +190,7 @@ export function shopMarkup(
   )
     chosen = null;
   const branch = cl.branches.find((b) => b.id === branchId)!;
-  return `<p data-shop-status class="shop-purchase-status" role="status" aria-live="polite" hidden></p><p class="shop-introduction">${e(expeditionText(locale, 'shopHelp'))}</p><div class="loadout-summary"><span>${resourceArt('coins', assets.resourceIcons)}<b>${number(p.coins)}</b> ${e(t('ui.coins'))}</span><span>${resourceArt('skills', assets.resourceIcons)}<b>${number(p.sp)}</b> ${e(t('ui.skillPoints'))}</span><small>${e(t('ui.capstoneLimit'))}</small></div><div class="loadout-tabs" role="tablist" aria-label="${e(t('ui.shop'))}"><button data-shop-tab="gear" role="tab" aria-selected="${tab === 'gear'}">${resourceArt('equipment', assets.resourceIcons)}${e(t('ui.equip'))} / ${e(t('ui.upgrade'))}</button><button data-shop-tab="tree" role="tab" aria-selected="${tab === 'tree'}">${resourceArt('skills', assets.resourceIcons)}${e(t('ui.skillTree'))}</button></div><div class="loadout-workspace"><div class="loadout-board">${
+  return `<p data-shop-status class="shop-purchase-status" role="status" aria-live="polite" hidden></p><p class="shop-introduction">${e(expeditionText(locale, 'shopHelp'))}</p><div class="loadout-summary"><span>${resourceArt('coins', assets.resourceIcons)}<b>${number(p.coins)}</b> ${e(t('ui.coins'))}</span><span>${resourceArt('skills', assets.resourceIcons)}<b>${number(p.sp)}</b> ${e(t('ui.skillPoints'))}</span><small>${e(t('ui.capstoneLimit'))}</small></div><div class="loadout-tabs" role="tablist" aria-label="${e(t('ui.shop'))}"><button data-shop-tab="gear" role="tab" aria-selected="${tab === 'gear'}">${resourceArt('equipment', assets.resourceIcons)}${e(t('ui.equip'))} / ${e(t('ui.upgrade'))}</button><button data-shop-tab="tree" role="tab" aria-selected="${tab === 'tree'}">${resourceArt('skills', assets.resourceIcons)}${e(t('ui.skillTree'))}</button></div><div class="loadout-workspace"><div class="loadout-board">${tab==='tree'?generalMarkup(p):''}${
     tab === 'gear'
       ? `<section class="armory"><h3>${e(t('ui.equip'))}</h3><div class="gear-icons">${data.weapons
           .filter((w) => w.classId === p.classId)
@@ -253,6 +254,9 @@ export function shopMarkup(
   }</div><aside id="item-details" class="item-details" aria-live="polite">${details(p)}</aside></div>`;
 }
 
+function generalMarkup(p:PlayerView){
+ return `<section class="general-mobility" aria-label="${e(t('branch.general'))}"><h3>${e(t('branch.general'))}</h3><p>${e(t('ui.generalMobilityHelp'))}</p><div class="general-purchases">${generalSkills.map(s=>`<div>${nodeButton(p,'skill',s.id,'speed',t(s.nameKey))}<span>${e(t(s.nameKey))} · ${number(s.cost)} ${e(t('ui.skillPoints'))}</span></div>`).join('')}</div></section>`;
+}
 function expandedMap(p: PlayerView) {
   const layout = skillMapLayout(p.classId);
   return (
@@ -263,7 +267,7 @@ function expandedMap(p: PlayerView) {
       mapZoom,
       (key) => t(key),
       (id) => {
-        const s = data.skills.find((s) => s.id === id)!;
+        const s = allSkills.find((s) => s.id === id)!;
         return nodeButton(
           p,
           'skill',
@@ -291,8 +295,9 @@ function details(p: PlayerView) {
     const node = skillsOf(p).find((s) => s.id === id)!;
     name = t('skill.' + id + '.name');
     glyph = effectIcon(node.effects);
-    grade = node.grade;
+    grade = node.classId==='general'?'':node.grade;
     body = `<p class="eyebrow">${e(t('branch.' + node.branchId))} · ${e(t(node.subbranchNameKey))}</p><p class="effect-list">${e(effectText(node.effects))}</p>${skillBehavior(node.id) ? `<p class="skill-behavior">${e(skillBehavior(node.id))}</p>` : ''}<p class="muted">${e(t('ui.ratingExplanation'))}</p>${node.prerequisite ? `<button class="prerequisite-link" data-prerequisite="${node.prerequisite}">${e(t('ui.prerequisite', { name: t('skill.' + node.prerequisite + '.name') }))}</button>` : ''}${node.capstone ? `<p class="capstone-note">${icon('ultimate')}${e(t('ui.capstone'))} · ${e(t('ui.capstoneLimit'))}</p>` : ''}`;
+    if(node.classId==='general')body=`<p>${e(t('ui.generalMobilityHelp'))}</p><p class="skill-behavior">${e(skillBehavior(node.id))}</p>`;
   } else if (kind === 'weapon') {
     const w = data.weapons.find((w) => w.id === id)!;
     name = t('weapon.' + id + '.name');

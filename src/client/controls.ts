@@ -15,6 +15,9 @@ export class Controls {
   private options = defaultControls();
   private fireLatch = new ActionLatch();
   private interactLatch = new ActionLatch();
+  private sprintLatch=new ActionLatch();
+  private sprintButton?:HTMLButtonElement;
+  private virtualHeld=new Set<Action>();
   private suppressPad = true;
   move = { x: 0, y: 0 };
   aim = { x: 0, y: 0 };
@@ -96,17 +99,20 @@ export class Controls {
     on(element, 'pointerup', release);
     on(element, 'pointercancel', release);
     for (const button of document.querySelectorAll<HTMLButtonElement>('[data-action]')) {
+      if(button.dataset.action==='sprint')this.sprintButton=button;
       on(button, 'pointerdown', (e) => {
         e.preventDefault();
         if (this.blocked || button.disabled) return;
         const action = button.dataset.action as Action;
         if (!actions.includes(action)) return;
         if (action === 'interact') this.interacting = true;
+        if(action==='sprint')this.virtualHeld.add(action);
         this.virtualPressed.add(action);
         button.setPointerCapture(e.pointerId);
       });
       const up = () => {
         if (button.dataset.action === 'interact') this.interacting = false;
+        if(button.dataset.action==='sprint')this.virtualHeld.delete('sprint');
       };
       on(button, 'pointerup', up);
       on(button, 'pointercancel', up);
@@ -136,6 +142,8 @@ export class Controls {
     this.firing = this.interacting = false;
     this.fireLatch.clear();
     this.interactLatch.clear();
+    this.sprintLatch.clear();this.virtualHeld.clear();
+    this.sprintButton?.setAttribute('aria-pressed','false');
     this.suppressPad = true;
   }
   destroy() {
@@ -164,7 +172,7 @@ export class Controls {
     if (Math.hypot(this.aim.x, this.aim.y) > 0.15) this.angle = Math.atan2(this.aim.y, this.aim.x);
     const pad = navigator.getGamepads?.().find((p) => p?.connected);
     let padFire = false,
-      padInteract = false;
+      padInteract = false, padSprint=false;
     if (pad) {
       const dead = (n: number) => (Math.abs(n) > 0.18 ? n : 0);
       input.moveX += dead(pad.axes[0] ?? 0);
@@ -181,6 +189,7 @@ export class Controls {
         }
         padFire = Boolean(down[this.options.gamepad.fire]);
         padInteract = Boolean(down[this.options.gamepad.interact]);
+        padSprint=Boolean(down[this.options.gamepad.sprint]);
       }
       this.lastButtons = down;
     } else {
@@ -201,6 +210,8 @@ export class Controls {
         pulse('fire'),
         this.options.fireMode,
       ) || this.autoFire;
+    input.sprint=this.sprintLatch.sample(held('sprint')||this.virtualHeld.has('sprint')||padSprint,pulse('sprint'),this.options.sprintMode);
+    this.sprintButton?.setAttribute('aria-pressed',String(input.sprint));
     input.interact = this.interactLatch.sample(
       held('interact') || this.interacting || padInteract,
       pulse('interact'),

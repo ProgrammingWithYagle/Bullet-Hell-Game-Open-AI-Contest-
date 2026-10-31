@@ -12,6 +12,7 @@ import { changelogHTML } from '../src/client/ui/changelog.ts';
 test('journal snapshot agrees with actual playable content rather than authored future content', () => {
   assert.deepEqual(history.snapshot, {
     bosses: implementedBossIds.length,
+    sharedSkills: catalog.generalSkills.length,
     classes: implementedClassIds.length,
     skills: catalog.skills.filter((x) => implementedClassIds.some((id) => id === x.classId)).length,
     weapons: catalog.weapons.filter((x) => implementedClassIds.some((id) => id === x.classId))

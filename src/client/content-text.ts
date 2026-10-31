@@ -1,3 +1,4 @@
+import {generalSkills} from '../shared/mobility.ts';
 import {talentForSkill} from '../shared/class-talents.ts';
 import {revivedHealth} from '../shared/recovery-policy.ts';
 import { t, number } from './i18n.ts';
@@ -64,4 +65,4 @@ export function effectText(
     .join(' · ');
 }
 
-export function skillBehavior(id:string){const talent=talentForSkill(id);if(talent)return t('talent.'+talent+'.description');const skill=data.skills.find(s=>s.id===id);return skill?.subbranchNameKey==='shieldPath.'+skill?.classId+'.name'?t('shieldPath.help'):'';}
+export function skillBehavior(id:string){if(generalSkills.some(s=>s.id===id))return t('skill.'+id+'.description');const talent=talentForSkill(id);if(talent)return t('talent.'+talent+'.description');const skill=data.skills.find(s=>s.id===id);return skill?.subbranchNameKey==='shieldPath.'+skill?.classId+'.name'?t('shieldPath.help'):'';}

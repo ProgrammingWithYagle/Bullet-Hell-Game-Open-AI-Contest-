@@ -1,5 +1,5 @@
 {
-  "buildId": "2026.10.31-shield-specializations",
+  "buildId": "2026.10.31-general-mobility",
   "snapshot": {
     "bosses": 66,
     "classes": 7,
@@ -13,9 +13,27 @@
       "raid",
       "endless"
     ],
-    "protocol": 44
+    "protocol": 45,
+    "sharedSkills": 2
   },
   "entries": [
+    {
+      "id": "general-mobility",
+      "date": "2026-10-31",
+      "title": "Every survivor can invest in Sprint and Double Dash",
+      "groups": [
+        {
+          "title": "Movement choices share the existing skill budget",
+          "items": [
+            "The General section is available beside both class-skill views. Sprint costs 3 earned SP; Double Dash costs 6. The existing 378 class nodes remain, with two separate shared purchases and no free points or permanent power.",
+            "Sprint moves 35% faster with weapons lowered, uses 100 stamina at 30 per second, and recovers 25 per second after a second of rest. Exhaustion requires 35 before restarting; terrain slows and collision still apply.",
+            "Double Dash adds a second ordinary dodge charge. Charges recharge sequentially; a new dodge waits for the current one to finish. The existing invulnerability window is retained.",
+            "Authority and prediction share mobility rules. The HUD, touch button, remappable keyboard/gamepad input and hold/toggle accessibility expose the same state.",
+            "Known old profiles retain bindings and choose an unused Sprint key/button. Local save migration is bounded; protocol45 online clients and servers must match the exact new content revision. All fifteen catalogs include written labels and help."
+          ]
+        }
+      ]
+    },
     {
       "id": "shield-specializations",
       "date": "2026-10-31",

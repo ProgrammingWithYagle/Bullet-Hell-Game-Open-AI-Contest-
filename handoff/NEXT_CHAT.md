@@ -2,7 +2,15 @@
 
 Continue in this SAME checkout: C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell). Use feat/first-playable-loop and draft PR #14. Read this note, inspect Git status and verify the live services before treating saved ports or remote state as current. Do not create another game clone or worktree.
 
-## Shield specialization continuation — 2026-10-31
+## General mobility continuation — 2026-10-31
+
+Current build **2026.10.31-general-mobility / protocol45** implements the formerly deferred shared General branch. [Sprint and Double Dash](../docs/GENERAL_MOBILITY.md) cost3/6 earned SP from the existing run budget. All378 class nodes remain; two independent shared purchases sit beside both skill views. Sprint uses bounded stamina with hold/toggle/remappable keyboard, gamepad and touch input. Double Dash recharges sequentially and cannot overlap an existing dash. Terrain, shared collision and Hellish recovery restrictions remain. Known old controls gain unused Sprint bindings without losing prior choices.
+
+The complete local gate passes **999 tests,0 failures**, TypeScript, all15 catalogs, artwork, production build and71 atlas contracts. Current evidence belongs in `reviews/general-mobility-2026-10-31/`; read its preview/CI manifests for source and launch identities. Older5276/5277 reviews below remain source810d9dc/protocol44 and are retained while the user may be playing5276. Public Site version4 and its backend remain unchanged. Online development clients require protocol45 and content revision `5a4ffd871d1880ccb681aee1faa5e51a664385752977fa7a136b50d44c7c6927`. Browser automation and portrait sizing remain deferred.
+
+The latest user direction requests ongoing work across bosses, builds, story and polish, with completion decided by the user. The game is **not100% complete**:47 original-boss quality passes,85 new ordinary identities, larger story work and other recorded features/review remain. General mobility is one implemented feature, not whole-game acceptance. Continue from the same checkout/branch; do not make a new clone or worktree.
+
+## Previous shield specialization checkpoint — 2026-10-31
 
 Current development build is **2026.10.31-shield-specializations**. [Heavy Reserve Plating and Tank Citadel Lining](../docs/SHIELD_SPECIALIZATIONS.md) retrofit the existing third defensive paths and raise the personal shield limit at 6/15/21 SP. Heavy tops out at +50%, Tank at +75%; the bonus multiplies the difficulty limit and grants no shield refill. Hellish remains zero. Other class caps, combined-pool limits, revive/regeneration rules, node IDs and the total of 378 skills remain.
 

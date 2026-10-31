@@ -22,6 +22,7 @@ export const PlayerState = schema(
     eAt: t.uint32().default(0),
     ultimateAt: t.uint32().default(0),
     dodgeAt: t.uint32().default(0),
+    dodgeCharges:t.uint8().default(1),dodgeMaximum:t.uint8().default(1),sprintStamina:t.float32().default(100),sprintRecoveryAt:t.uint32().default(0),sprintExhausted:t.boolean().default(false),sprinting:t.boolean().default(false),
     reloadAt: t.uint32().default(0),
     supplyAt: t.uint32().default(0),
     braceUntil: t.uint32().default(0),
