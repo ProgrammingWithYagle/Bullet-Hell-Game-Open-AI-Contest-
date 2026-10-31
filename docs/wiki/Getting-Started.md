@@ -2,11 +2,11 @@
 
 ## Public contest version
 
-[Play Grave Accord](https://grave-accord.yigallin0423.chatgpt.site/). Public Site version2 includes the browser sizing, centered boss information and compatible boss-music repair from game source8c75bb8 (build2026.10.30-shared-network/protocol43). Testing tools remain local. The older Site under the other account and the published Windows download are separate.
+[Play Grave Accord](https://grave-accord.yigallin0423.chatgpt.site/). Public Site **version4** uses game source366c12d (build2026.10.30-shared-network/protocol43). Settings can keep equipment and abilities together or in separate panels, with a saved choice. Testing and public share the same game fixes; testing tools remain local.
 
-The source passes950local tests and exact-source CI job124410029967. Both fresh local audiences pass52served hashes and real two-peer room/password/chat/host/result checks. The deployed Site passes35HTTP/hash/MIME checks. Current rendered Firefox, physical-device, listening, native-language, balance and full endurance acceptance remain open unless separately confirmed. [Repair handoff and exact evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/handoff/NEXT_CHAT.md).
+The complete local gate and [exact-source CI](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/41228803719) pass956 tests. Both local audiences pass52 served-file and real two-client room/chat/host checks; the public Site passes35 HTTP/hash/MIME checks. The user confirmed the layout choice at their resolution and the Firefox boss header fix, and said boss music seems fixed. Portrait arena presentation remains deferred. These results do not certify every browser, device, listening condition or balance scenario. [Current handoff and evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/handoff/NEXT_CHAT.md).
 
-The compatible live server remains https://grave-accord-contest.onrender.com at source71fc34c. Its Free deployment has eight total player slots and one room. Local SQLite scores are lost on sleep/restart/redeploy; durable global records remain future work.
+The compatible Free server remains source71fc34c at https://grave-accord-contest.onrender.com with eight total slots, one room and ephemeral SQLite records. The older account's Site and Windows downloads are separate.
 
 The current feature-branch build supports seven classes, 66 bosses, six maps and five modes. [Play the current public browser version](https://grave-accord.yigallin0423.chatgpt.site/). The older two-class, one-boss protocol-4 Site under the other account remains separate.
 

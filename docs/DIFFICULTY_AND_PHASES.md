@@ -1,6 +1,6 @@
 # Difficulty and encounter forms
 
-Updated October 26, 2026 for **2026.10.26-crazed-horizon**, protocol **21**. Global difficulty, intrinsic threat grade and boss form are separate. These are implemented rules; human balance/rendered/device acceptance remains open.
+Current rule summary for **2026.10.30-shared-network**, protocol **43**. Global difficulty, intrinsic threat grade and boss form are separate. These are implemented rules; human balance/rendered/device acceptance remains open.
 
 | Global difficulty | Phase shield event | Revival by other classes | Interior cover | Encounter form |
 | --- | --- | --- | --- | --- |

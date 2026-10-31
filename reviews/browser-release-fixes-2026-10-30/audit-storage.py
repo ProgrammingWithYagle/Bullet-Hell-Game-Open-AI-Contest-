@@ -34,7 +34,9 @@ report = {'auditedAt': datetime.datetime.now(datetime.timezone.utc).isoformat(),
 name = sys.argv[1] if len(sys.argv) > 1 else 'storage-audit-before.json'
 assert re.fullmatch(r'[a-z0-9-]+\.json', name)
 target = root / 'reviews/browser-release-fixes-2026-10-30' / name
-with target.open('x', encoding='utf-8', newline='\n') as output:
+replace = len(sys.argv) > 2 and sys.argv[2] == '--replace'
+assert len(sys.argv) <= 3 and (len(sys.argv) < 3 or replace)
+with target.open('w' if replace else 'x', encoding='utf-8', newline='\n') as output:
     json.dump(report, output, indent=2)
     output.write('\n')
 print(json.dumps({'logicalGiB': round(report['logicalBytes'] / 1024**3, 2), 'files': files, 'elapsedSeconds': report['elapsedSeconds'], 'largest': rows[:32], 'errors': len(errors)}))

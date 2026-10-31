@@ -1,6 +1,6 @@
 # Windows portable development app
 
-The browser-only repair is source8c75bb8 and Site version2. The following native package is retained at71fc34c and does not include the new browser fixes. No public Windows download was replaced. [Current browser state](BROWSER_REPAIR_2026_10_30.md).
+The current browser build is source366c12d and Site version4. The following native package is retained at71fc34c and does not include the new browser fixes. No public Windows download was replaced. [Current browser state](BROWSER_REPAIR_2026_10_30.md).
 
 The retained native review source is **2026.10.30-shared-network / protocol 43**, exact product source **71fc34cfd88a245d7003f16df7a7dc5e90986410**. Equipment and skills show different painted images when no item is selected. The shop and player status use matching equipment-case, coin and field-manual artwork with written labels. Valid room-code lookups and admissions allow a full group sharing one connection to join and retry, while wrong-code guesses keep their separate limit. Opening your own result reuses its first roster page; loading more results keeps one own row, and a mismatched difficulty cannot inject a recent result. [Current source review](../reviews/shared-network-2026-10-30/checkpoint-source-review.json) and [matching Windows review](../reviews/windows-shared-network-2026-10-30/package-status.json) identify their separate evidence.
 

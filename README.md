@@ -14,7 +14,7 @@ Server team records save shared results and offer filters and team history. Devi
 
 ## Public contest checkpoint
 
-Browser repair **version2** is published from source8c75bb8. Arena sizing follows the window, boss information stays centered and music changes to each boss theme on browsers without the audio hold method. Testing and public share the fixes. [Exact repair state](docs/BROWSER_REPAIR_2026_10_30.md).
+Public Site **version4** uses source366c12d. Equipment and abilities can share a panel or use separate panels, with the choice saved in Settings. Boss information stays centered and music changes to each boss theme. Testing and public share these fixes. Portrait arena presentation remains deferred. [Current state](docs/IMPLEMENTATION_STATE.md).
 
 [Play Grave Accord](https://grave-accord.yigallin0423.chatgpt.site/). Only the public audience is published; testing tools remain local. Multiplayer uses the matching Free service at https://grave-accord-contest.onrender.com with an eight-player, one-room limit. Server team records work while its local SQLite storage is retained; durable storage across host sleep/restart is future work. [New-chat handoff](handoff/NEXT_CHAT.md) records exact versions, lessons and remaining verification limits.
 
@@ -69,9 +69,9 @@ The optional expanded skill map shows all 54 skills per class with zoom, scrolli
 
 ## Development status
 
-The current local software gate passes **950 tests, 950 pass, 0 fail**, plus authored content/fifteen locales/RGBA, TypeScript, production build and71atlas contracts. [Current checkpoint](docs/CHECKPOINT_2026_10_25.md) distinguishes source CI, frozen previews, package verification and Wiki evidence. Rendered/human/device acceptance remains open.
+The current local software gate passes **956 tests, 956 pass, 0 fail**, plus authored content/fifteen locales/RGBA, TypeScript, production build and71atlas contracts. [Current checkpoint](docs/CHECKPOINT_2026_10_25.md) distinguishes source CI, frozen previews, package verification and Wiki evidence. Rendered/human/device acceptance remains open.
 
-Twelve original encounters have implemented quality passes; 48 remain. Content expansion and the proposed General Double Dash/Sprint branch are deferred during public polish. Complete action/facing animation, final encounter tuning, verified hosted rankings and durable online recovery remain unfinished. Rendered, listening, native-language, physical-device, WAN, endurance, capacity and human balance acceptance remain open.
+The implementation ledger records the completed encounter quality passes and remaining work. Content expansion and the proposed General Double Dash/Sprint branch are deferred during public polish. Complete action/facing animation, final encounter tuning, verified hosted rankings and durable online recovery remain unfinished. Rendered, listening, native-language, physical-device, WAN, endurance, capacity and human balance acceptance remain open.
 
 [Development Progress](docs/DEVELOPMENT_PROGRESS.md) is generated from the single implementation ledger. [Changelog](CHANGELOG.md) and the in-game journal share one update history. The [Wiki](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/wiki) covers playing and the [game bible](docs/GAME_BIBLE.md) preserves the design. Continue development from the [current checkpoint](docs/CHECKPOINT_2026_10_25.md) and `START_NEXT_CHAT.txt`; dated history retains predecessor evidence.
 

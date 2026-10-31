@@ -93,4 +93,4 @@ The current phase event uses a new original 1.36-second two-strike bell and shor
 
 ## Browser playback repair
 
-Equipment music fades to the current boss's individual theme when combat begins and returns between encounters. Browsers that lack the audio hold method use a scheduled-value fallback. Native controller tests cover all66bosses with the method present, absent or throwing, plus leaving during a pending decode. These tests do not claim listening acceptance in Firefox, Safari or on a physical device.
+Equipment music fades to the current boss's individual theme when combat begins and returns between encounters. Browsers that lack the audio hold method use a scheduled-value fallback. Native controller tests cover all66bosses with the method present, absent or throwing, plus leaving during a pending decode. The user reported that equipment-to-boss music seems fixed on their Firefox laptop. The tests and that feedback do not certify every browser, listening condition or physical device.
