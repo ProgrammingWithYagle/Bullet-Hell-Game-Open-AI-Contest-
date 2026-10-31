@@ -22,7 +22,7 @@ export class RoomInviteUI {
   }
   get open(){return !this.root.hidden&&this.root.open;}
   place(dock?:HTMLElement){
-    const parent=dock??this.host;
+    const parent=dock??this.host.querySelector<HTMLElement>('.hud-actions')??this.host;
     this.root.dataset.placement=dock?'menu':'combat';
     if(this.root.parentElement===parent)return;
     const active=document.activeElement instanceof HTMLElement&&this.root.contains(document.activeElement)?document.activeElement:null;

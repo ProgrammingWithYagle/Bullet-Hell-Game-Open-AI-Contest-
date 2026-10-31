@@ -1,4 +1,4 @@
-import os, pathlib, json, datetime, time
+import os, pathlib, json, datetime, time, sys, re
 
 root = pathlib.Path.cwd().resolve()
 started = time.time()
@@ -31,7 +31,9 @@ while stack:
         errors.append({'path': str(directory), 'error': str(error)})
 rows = [{'path': path, **values} for path, values in sorted(totals.items(), key=lambda x: -x[1]['bytes'])]
 report = {'auditedAt': datetime.datetime.now(datetime.timezone.utc).isoformat(), 'root': str(root), 'logicalBytes': sum(v['bytes'] for v in totals.values()), 'files': files, 'elapsedSeconds': round(time.time() - started, 2), 'directories': rows, 'errors': errors, 'limits': ['Logical file sizes; sparse/cloud residency, hard links and filesystem allocation may differ. Symlinks skipped. No files deleted by this inventory.']}
-target = root / 'reviews/browser-release-fixes-2026-10-30/storage-audit-before.json'
+name = sys.argv[1] if len(sys.argv) > 1 else 'storage-audit-before.json'
+assert re.fullmatch(r'[a-z0-9-]+\.json', name)
+target = root / 'reviews/browser-release-fixes-2026-10-30' / name
 with target.open('x', encoding='utf-8', newline='\n') as output:
     json.dump(report, output, indent=2)
     output.write('\n')

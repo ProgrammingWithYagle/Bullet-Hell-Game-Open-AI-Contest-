@@ -16,7 +16,7 @@ Server team records save shared results and offer filters and team history. Devi
 
 Browser repair **version2** is published from source8c75bb8. Arena sizing follows the window, boss information stays centered and music changes to each boss theme on browsers without the audio hold method. Testing and public share the fixes. [Exact repair state](docs/BROWSER_REPAIR_2026_10_30.md).
 
-[Play Grave Accord](https://grave-accord.yigallin0423.chatgpt.site/). Only the public audience is published; testing tools remain local. Multiplayer uses the matching Free service at https://grave-accord-contest.onrender.com with an eight-player, one-room limit. Server team records work while its local SQLite storage is retained; durable storage across host sleep/restart is future work. [New-chat handoff](handoff/browser-repair-2026-10-30/README.md) records exact versions, lessons and remaining verification limits.
+[Play Grave Accord](https://grave-accord.yigallin0423.chatgpt.site/). Only the public audience is published; testing tools remain local. Multiplayer uses the matching Free service at https://grave-accord-contest.onrender.com with an eight-player, one-room limit. Server team records work while its local SQLite storage is retained; durable storage across host sleep/restart is future work. [New-chat handoff](handoff/NEXT_CHAT.md) records exact versions, lessons and remaining verification limits.
 
 ## Your first run
 

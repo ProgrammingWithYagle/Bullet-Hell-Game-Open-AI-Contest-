@@ -4,7 +4,7 @@ Updated October 25, 2026. The user's expanded minimum is **three original ordina
 
 Bosses retain intrinsic grades. Signs --, -, no sign, + and ++ mean bottom through top tier. Brutal adds a separate B; >10 is above Calamity. Ratings can be revised by a deliberate versioned balance change, never by card position or encounter number. [Authoritative classification and selection](FIXED_BOSS_THREATS.md).
 
-The original sixty-identity plan and its route-affinity lists are preserved in [dated history](history/2026-10-25-checkpoint-cleanup/docs/BOSS_ROSTER_EXPANSION.md). Those lists describe primary authoring affinities. Current five/ten/sixteen-fight campaign offers select suitable fixed grades from shared authored ordinary identities and retain regular/finale roles. Raid and Endless keep their documented reserved/exclusive schedules. Do not silently rescale a small route roster to impersonate the whole grade range.
+The original sixty-identity plan and its route-affinity lists are preserved in [dated history](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/d7044b7490c226ba25aa9083007271a7b5336eba/docs/history/2026-10-25-checkpoint-cleanup/docs/BOSS_ROSTER_EXPANSION.md). Those lists describe primary authoring affinities. Current five/ten/sixteen-fight campaign offers select suitable fixed grades from shared authored ordinary identities and retain regular/finale roles. Raid and Endless keep their documented reserved/exclusive schedules. Do not silently rescale a small route roster to impersonate the whole grade range.
 
 ## Integrated Early Watch identities
 

@@ -46,6 +46,15 @@ test('explicit host buttons send Pause/Continue, menu state alone sends nothing,
  session.isHost=false;ui.update();assert.equal(env.host.querySelector('#host-pause-match')!.hidden,true);assert.equal(env.host.querySelector('.host-match-controls')!.hidden,true);
 });
 
+test('room invite docks with combat controls and returns from a menu without losing password focus or open state',context=>{
+ const env=menuEnvironment(context),actions=env.document.createElement('div'),slot=env.document.createElement('div');actions.className='hud-actions';env.host.append(actions,slot);
+ const invite=new RoomInviteUI(env.host as unknown as HTMLElement,t,()=>{});context.after(()=>invite.destroy());invite.update('ABCDEF','Private password');invite.place();
+ assert(Object.is(invite.root.parentElement,actions));assert.equal(invite.root.dataset.placement,'combat');invite.root.open=true;
+ const field=env.host.querySelector('#invite-room-password')!;field.focus();invite.place(slot as unknown as HTMLElement);
+ assert(Object.is(invite.root.parentElement,slot));assert(env.document.activeElement===field);assert.equal(invite.root.open,true);assert.equal(invite.root.dataset.placement,'menu');
+ invite.place();assert(Object.is(invite.root.parentElement,actions));assert(env.document.activeElement===field);assert.equal(invite.root.open,true);assert.equal(field.value,'Private password');
+});
+
 test('ending an encounter clears queued actions without inventing a clear or a player-down reason',()=>{
  const g=new Game(),p=g.addPlayer('host','Mara','soldier');g.start();g.submitInput(p.id,{...idleInput(),sequence:1,fire:true,moveX:1});g.clearInputs();assert.equal(p.pending.length,0);assert.equal(p.ack,1);assert.equal(p.input.fire,false);assert.equal(g.encounter,0);
  const health=p.health;assert(g.endByHost());assert.equal(g.phase,'defeat');assert.equal(g.encounter,0);assert.equal(p.progress.clears,0);assert.equal(p.health,health);assert.equal(g.endByHost(),false);

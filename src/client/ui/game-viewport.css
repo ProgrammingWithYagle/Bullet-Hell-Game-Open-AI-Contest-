@@ -30,3 +30,31 @@
   .boss-grade small,.boss-grade #boss-form {display:inline;text-align:start}
   .boss-clock {grid-column:2;grid-row:2;align-self:end;justify-content:flex-end}
 }
+
+/* Shared edges and one bottom action dock keep the HUD on a consistent grid. */
+#app {--hud-inline:1.2rem;--hud-block:1rem;--hud-edge:max(var(--hud-inline),env(safe-area-inset-left),env(safe-area-inset-right))}
+.hud {padding:var(--hud-block) var(--hud-edge);padding-block-start:max(var(--hud-block),env(safe-area-inset-top));padding-block-end:max(var(--hud-block),env(safe-area-inset-bottom))}
+.topline>.hud-actions {position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:minmax(2.75rem,auto);align-items:stretch;justify-self:end;max-width:22rem}
+.hud-actions>button,.hud-actions>.room-invite-hud>summary {display:flex;align-items:center;justify-content:center;gap:.35rem;width:100%;height:100%;min-height:2.75rem;padding:.5rem .6rem;border-radius:.4rem;line-height:1.3;text-align:center}
+.hud-actions>#host-pause-match {max-width:none}
+.hud-actions>.room-invite-hud[data-placement=combat] {position:static;grid-column:2;width:100%;max-width:none;margin:0}
+.hud-actions>.room-invite-hud[data-placement=combat]>summary {margin:0;background:#142b25ed}
+.hud-actions>.room-invite-hud[data-placement=combat]>div {position:absolute;inset-inline-end:0;top:calc(100% + .45rem);width:min(25rem,calc(100vw - 2*var(--hud-edge)));max-height:calc(100dvh - 11rem);overflow:auto;margin:0;box-shadow:0 .5rem 2rem #06181299}
+.bottomline {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,min(48vw,38rem)) minmax(0,1fr);align-items:end;gap:.75rem}
+.bottomline>.player-vitals {grid-column:1;width:min(100%,21rem);max-width:none}
+.combat-action-dock {grid-column:2;justify-self:center;display:flex;flex-direction:column;align-items:center;gap:.4rem;width:100%;min-width:0;padding:.45rem;background:#10281fee;border:1px solid #80907180;border-radius:.5rem}
+.combat-action-dock>.ability-list {width:100%;max-width:none;align-self:auto;gap:.4rem}
+.combat-action-dock .ability {flex:1 1 5rem;min-width:0;min-height:2.75rem;padding:.45rem .55rem;text-align:center;overflow-wrap:anywhere;border-radius:.35rem}
+.combat-action-dock>#supply-bar {justify-content:center;gap:.4rem}
+.combat-action-dock>.touch-buttons {position:static;width:min(100%,18rem);pointer-events:auto}
+.bottomline>.squad {grid-column:3;justify-self:end;width:min(100%,10rem);max-width:none;max-height:min(24vh,14rem);overflow:auto;pointer-events:auto;border:1px solid #80907180;border-radius:.5rem}
+.bottomline>.squad:empty {display:none}
+.room-chat-shell[data-placement=combat] .room-chat-toggle,.room-chat-shell[data-placement=combat] .room-chat {left:auto;right:auto;inset-inline-start:var(--hud-edge)}
+@media(max-width:76rem) {#app {--hud-inline:.5rem;--hud-block:.5rem}}
+@media(max-width:60rem) {
+  .bottomline {grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:.5rem}
+  .bottomline>.player-vitals {grid-column:1;grid-row:1;width:min(100%,15rem)}
+  .combat-action-dock {grid-column:2;grid-row:1;justify-self:end;width:min(100%,23rem)}
+  .bottomline>.squad {display:none}
+}
+@media(max-height:560px) {.bottomline>.player-vitals {width:min(100%,15rem)}.combat-action-dock {padding:.3rem;gap:.3rem}}

@@ -434,7 +434,10 @@ function setupGame(online: boolean,classId:string) {
     (_, i) =>
       `<button data-supply-slot="${i}" data-action="supply${i + 1}" disabled><b>${i + 1}</b><span data-supply-glyph>${icon('ability')}</span><small data-supply-count>—</small><small data-supply-time></small></button>`,
   ).join('');
-  $('squad').before(supplyBar);
+  const actionDock = document.createElement('div');
+  actionDock.className = 'combat-action-dock';
+  $('abilities').before(actionDock);
+  actionDock.append($('abilities'), supplyBar, app.querySelector('.touch-buttons')!);
   scene = new CombatScene();
   controls = new Controls($('stage'),point=>arenaCanvasToWorld(point,scene!.viewport()),()=>scene!.viewport());
   scene.onLoadProgress = value => {

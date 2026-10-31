@@ -2,6 +2,14 @@
 
 Development build **2026.10.30-shared-network**, protocol 43. The current contest Site uses protocol43; the older Site under the other account is a separate historical publication.
 
+## 2026-10-31 — Cleaner fight controls
+
+### Consistent screen layout
+
+- Abilities, supplies and touch buttons now share one bottom panel with consistent spacing.
+- Room Code sits with the other corner controls. Opening the code keeps those buttons in place.
+- Chat lines up with the status panel, and long team lists scroll inside their own box.
+
 ## 2026-10-30 — Browser sizing and boss music
 
 ### Fit the window

@@ -8,7 +8,7 @@ The arena canvas resizes with the window; one uniform camera fits the complete a
 
 The compatible live backend stays at source71fc34c, https://grave-accord-contest.onrender.com . Game rules, protocol and content revision are unchanged; only journal metadata differs in shared files. Its Free deployment allows eight total slots and one room, with ephemeral SQLite records. Mode limits remain campaigns8, Raid16 and Endless50. Raising hosted capacity requires an explicit deployment change and load testing.
 
-[Repair evidence](../reviews/browser-release-fixes-2026-10-30) and [new-chat handoff](../handoff/browser-repair-2026-10-30/README.md) record exact publication, archive and remaining limits. The original contest packet is preserved. Current scope ends after these repairs; major post-contest features need a fresh direction.
+[Repair evidence](../reviews/browser-release-fixes-2026-10-30) and [new-chat handoff](../handoff/NEXT_CHAT.md) record exact publication, archive and remaining limits. The original contest packet is preserved. Current scope ends after these repairs; major post-contest features need a fresh direction.
 
 
 Latest user feedback from Firefox confirms the boss name/health alignment is fixed and says the equipment-to-boss music switch seems fixed. Arena sizing improved, with extra empty border remaining. The user now prioritizes cleaner overall HUD alignment. A further HUD pass and authorized storage cleanup are in progress; this published version2 checkpoint stays preserved.

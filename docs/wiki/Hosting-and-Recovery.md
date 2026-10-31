@@ -4,7 +4,7 @@
 
 [Play Grave Accord](https://grave-accord.yigallin0423.chatgpt.site/). Public Site version2 includes the browser sizing, centered boss information and compatible boss-music repair from game source8c75bb8 (build2026.10.30-shared-network/protocol43). Testing tools remain local. The older Site under the other account and the published Windows download are separate.
 
-The source passes950local tests and exact-source CI job124410029967. Both fresh local audiences pass52served hashes and real two-peer room/password/chat/host/result checks. The deployed Site passes35HTTP/hash/MIME checks. Current rendered Firefox, physical-device, listening, native-language, balance and full endurance acceptance remain open unless separately confirmed. [Repair handoff and exact evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/tree/feat/first-playable-loop/handoff/browser-repair-2026-10-30).
+The source passes950local tests and exact-source CI job124410029967. Both fresh local audiences pass52served hashes and real two-peer room/password/chat/host/result checks. The deployed Site passes35HTTP/hash/MIME checks. Current rendered Firefox, physical-device, listening, native-language, balance and full endurance acceptance remain open unless separately confirmed. [Repair handoff and exact evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/handoff/NEXT_CHAT.md).
 
 The compatible live server remains https://grave-accord-contest.onrender.com at source71fc34c. Its Free deployment has eight total player slots and one room. Local SQLite scores are lost on sleep/restart/redeploy; durable global records remain future work.
 
