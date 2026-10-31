@@ -1,5 +1,7 @@
 # Grave Accord — team leaderboards
 
+Current source **2026.10.30-shared-network/protocol 43**: Equipment and skills show different painted images when no item is selected. The shop and player status use matching equipment-case, coin and field-manual artwork with written labels. Valid room-code lookups and admissions allow a full group sharing one connection to join and retry, while wrong-code guesses keep their separate limit. Opening your own result reuses its first roster page; loading more results keeps one own row, and a mismatched difficulty cannot inject a recent result. [Current review](../reviews/shared-network-2026-10-30/checkpoint-source-review.json). Testing5262/public5263 and the matching native review are separate from the older hosted releases.
+
 Current source implements server-scoped team records with authority-only simulation hooks, SQLite persistence, exact scores/ties, mode/difficulty/size/week filters, paged participant histories, save retries and real multiplayer/restart evidence. The player page is [Records](wiki/Leaderboards.md). Shared deployed global rankings and deployed recovery are separate unfinished hosting gates.
 
 The records screen retains separate device/online filters for the current visit. Online mode, difficulty, team-size band and All time/This week survive tab switches. Switching to a smaller mode normalizes an incompatible band. Tab and device-filter changes keep keyboard focus, and Back cancels unfinished requests.

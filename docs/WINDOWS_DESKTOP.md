@@ -1,6 +1,6 @@
 # Windows portable development app
 
-The current source is **2026.10.30-records-navigation / protocol 43**, exact product source **4742adabb5ff56ae0bf1012fa6fbe2fd8a698a62**. Device and online records retain separate filter choices while you compare them. The online tab remembers mode, difficulty, team-size band and All time/This week. Switching to a smaller mode keeps team-size choices valid. Tabs and device filters retain keyboard focus after changes. Back cancels unfinished requests, and controls from an old or closed page cannot replace the current view. Scoring, saved results and multiplayer rules are unchanged. [Current source review](../reviews/records-navigation-2026-10-30/checkpoint-source-review.json) and [matching Windows review](../reviews/windows-records-navigation-2026-10-30/package-status.json) identify their separate evidence.
+The current source is **2026.10.30-shared-network / protocol 43**, exact product source **71fc34cfd88a245d7003f16df7a7dc5e90986410**. Equipment and skills show different painted images when no item is selected. The shop and player status use matching equipment-case, coin and field-manual artwork with written labels. Valid room-code lookups and admissions allow a full group sharing one connection to join and retry, while wrong-code guesses keep their separate limit. Opening your own result reuses its first roster page; loading more results keeps one own row, and a mismatched difficulty cannot inject a recent result. [Current source review](../reviews/shared-network-2026-10-30/checkpoint-source-review.json) and [matching Windows review](../reviews/windows-shared-network-2026-10-30/package-status.json) identify their separate evidence.
 
 The [published Windows download](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/releases/tag/dev-windows-20261024-1) remains the immutable October24 protocol13 build. Source, Wiki and local package work do not replace it. Its741136155-byte archive has SHA256 **b2a87f08f002e35a23558ab9b4bcca3e997309fd5a567c7e014498a54fe7ae3c**, source52552c0d4465b918d7cde2ab3c2aa7f1d7eb045e. [Exact public-byte evidence](../reviews/windows-prerelease-public-download.json) remains separate.
 
@@ -81,3 +81,16 @@ Earlier native packages remain immutable. The public download is unchanged.
 The matching local Windows review verifies all 1,899 files on the original, fresh complete ZIP extraction and independent Japanese-path Windows copy, before and after six packaged offline/LAN diagnostics. Its **842967160-byte ZIP** has SHA256 **f30515009fc6e7432f2227e392118e219a7aab5782f98a3f77970c8f3affdbc2**. Font paths 225/284/285 characters pass. [Package status](../reviews/windows-records-navigation-2026-10-30/package-status.json) and [delivery guide](../reviews/windows-records-navigation-2026-10-30/DELIVERY.md) bind the local archive and sidecars. These software checks do not establish rendered, human, physical-device, listening or native-language acceptance.
 
 Earlier native packages remain immutable. The public download is unchanged.
+
+## Verified shared-network package
+
+The matching local Windows review verifies all 1,902 files on the original, fresh complete ZIP extraction and independent Japanese-path Windows copy, before and after six packaged offline/LAN diagnostics. Its **848387334-byte ZIP** has SHA256 **4a8f24625c3e8d39327156c6fd9198e67a0341ad8ad509bfab52e8691c7eb0a0**. Font paths 221/276/277 characters pass. [Package status](../reviews/windows-shared-network-2026-10-30/package-status.json) and [delivery guide](../reviews/windows-shared-network-2026-10-30/DELIVERY.md) bind the archive and sidecars. These software checks do not establish rendered, human, physical-device, listening or native-language acceptance.
+
+Earlier packages remain immutable. The public download is unchanged.
+
+
+## Contest checkpoint and next chat
+
+The public-only contest version is live at https://grave-accord.yigallin0423.chatgpt.site (Site version 1, deployment appgdep_6ae53e3b91b481918641a344774aea2d). Its matching Free service is https://grave-accord-contest.onrender.com, with eight slots and one room. See the new-chat packet at [handoff/contest-checkpoint-2026-10-30](../handoff/contest-checkpoint-2026-10-30/README.md). Only the browser public audience was published; testing and the Windows public download were not published/replaced. The old Site under the other account remains separate.
+
+This final request is a checkpoint boundary. Stop contest feature work after sealing the handoff. Start post-contest story, bots, classes or other major work only when the user gives the next chat a fresh direction. Preserve all original art, failed receipts, frozen services and packages. Browser automation remains disabled; recorded rendered/human/device/listening/native-language, balance, endurance and durable global storage limits remain explicit.

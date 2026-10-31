@@ -1,0 +1,50 @@
+{
+  "recordedAt": "2026-10-31T00:52:16.378Z",
+  "gameSourceCommit": "71fc34cfd88a245d7003f16df7a7dc5e90986410",
+  "newSite": {
+    "id": "appgprj_6ae537873538819199dd558c63949b10",
+    "url": "https://grave-accord.yigallin0423.chatgpt.site",
+    "access": "public",
+    "sourceFolder": "output/sites-contest-2026-10-30",
+    "sourceCommit": "14b3bea4db593edc9c3561d07cb5c4e866547e09",
+    "publicationPending": true
+  },
+  "newBackend": {
+    "serviceId": "srv-dbijilvlk1mc73et90ng",
+    "deploymentId": "dep-dbijimflk1mc73et928g",
+    "url": "https://grave-accord-contest.onrender.com",
+    "workspace": "tea-d574jver433s73eg4mhg",
+    "plan": "free",
+    "autoDeploy": false,
+    "playerLimit": 8,
+    "roomLimit": 1,
+    "sourceCommit": "71fc34cfd88a245d7003f16df7a7dc5e90986410",
+    "buildCommand": "corepack pnpm install --frozen-lockfile --prod=false",
+    "runtime": "node24.22.1",
+    "hostedSmoke": "reviews/shared-network-2026-10-30/hosted-smoke-01.json",
+    "ephemeralServerRecords": true
+  },
+  "olderSite": {
+    "id": "appgprj_6adba24c54c4819197768bbc03f2997e",
+    "untouched": true
+  },
+  "olderBackend": {
+    "id": "srv-dbdqn62vcj2c738ic86g",
+    "lastLiveSource": "dfade8834e81cfd324eeb124d22ec3b7bd68c245",
+    "failedUpdates": [
+      "dep-dbijgns9v7es73fp9pjg",
+      "dep-dbijgp29249c73fuacp0"
+    ],
+    "cause": "Old build command corepack enable cannot unlink read-only /usr/bin/pnpm; both failed, leaving old live source.",
+    "environmentChanges": [
+      "Added new CORS origin; kept old origins",
+      "NODE_VERSION24.22.1",
+      "HOST0.0.0.0",
+      "Public audience"
+    ]
+  },
+  "noPaidResources": true,
+  "noMainMerge": true,
+  "noTestingPublication": true,
+  "noPublishedWindowsReplacement": true
+}

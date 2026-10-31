@@ -1,5 +1,7 @@
 # Testing and public builds
 
+Current source **2026.10.30-shared-network/protocol 43**: Equipment and skills show different painted images when no item is selected. The shop and player status use matching equipment-case, coin and field-manual artwork with written labels. Valid room-code lookups and admissions allow a full group sharing one connection to join and retry, while wrong-code guesses keep their separate limit. Opening your own result reuses its first roster page; loading more results keeps one own row, and a mismatched difficulty cannot inject a recent result. [Current review](../reviews/shared-network-2026-10-30/checkpoint-source-review.json). Testing5262/public5263 and the matching native review are separate from the older hosted releases.
+
 Both are development build targets. This distinction does not publish a new Site, change the immutable Windows build, or establish final release acceptance. Use `pnpm build:testing` for `dist/`; use `pnpm build:public` for `dist-public/`. The ordinary `pnpm build`/verification target defaults to testing. `VITE_GAME_AUDIENCE` accepts only `testing` or `public`; the compile-time constant reaches the main client and Solo worker. Build a matching room backend for online testing, with `GRAVE_TESTING_SERVER=1` only for local testing servers. The server defaults to public. The form selector is hidden for online rooms, where encounter/difficulty policy controls forms. Private lobby codes stay visible inside the lobby on compact views.
 
 | Behavior | Testing | Public |
@@ -22,3 +24,10 @@ Overhead display names are optional and use plain rendered text. Local Practice 
 The First Watch presentation pass offers an optional gentle preset on Home. It prepares the existing Soldier/short/Gatehouse/Baby/Solo choices, stops at confirmation and spends no progression currency. New run retains full setup. The controls tutorial opens manually. Map previews follow selected-difficulty geometry; difficulty cards explain the experience and expose exact selected rules. Public boss selection and guide restrictions remain enforced by the compiled worker and room authority. See [Public polish](PUBLIC_POLISH.md).
 
 The user confirmed the manual guide at 5193 works and has authorized browser testing. Guide illustrations remain future polish. Keep rendered/browser, headless, human, listening, native-language, physical-device and final balance evidence separate. Existing public protocol-4 Site and immutable protocol-13 Windows development release remain separate and unchanged.
+
+
+## Contest checkpoint and next chat
+
+The public-only contest version is live at https://grave-accord.yigallin0423.chatgpt.site (Site version 1, deployment appgdep_6ae53e3b91b481918641a344774aea2d). Its matching Free service is https://grave-accord-contest.onrender.com, with eight slots and one room. See the new-chat packet at [handoff/contest-checkpoint-2026-10-30](../handoff/contest-checkpoint-2026-10-30/README.md). Only the browser public audience was published; testing and the Windows public download were not published/replaced. The old Site under the other account remains separate.
+
+This final request is a checkpoint boundary. Stop contest feature work after sealing the handoff. Start post-contest story, bots, classes or other major work only when the user gives the next chat a fresh direction. Preserve all original art, failed receipts, frozen services and packages. Browser automation remains disabled; recorded rendered/human/device/listening/native-language, balance, endurance and durable global storage limits remain explicit.

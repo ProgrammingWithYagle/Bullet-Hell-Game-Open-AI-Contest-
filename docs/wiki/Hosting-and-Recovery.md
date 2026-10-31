@@ -1,5 +1,11 @@
 # Hosting and recovery
 
+## Public contest version
+
+[Play Grave Accord](https://grave-accord.yigallin0423.chatgpt.site/). Published October30,2026 as public Site version1, build2026.10.30-shared-network/protocol43. The game source is71fc34c; its matching server at https://grave-accord-contest.onrender.com supports public/private rooms, codes/passwords, chat, host controls and server records. The Free-host cap is eight players and one room. Its local SQLite data is lost on sleep/restart/redeploy; durable global records remain future work. Testing tools are not published. The older Site and Windows download remain separate.
+
+The source passes943local tests and both exact-source CI jobs. Actual hosted room/password/chat/host/record smoke passes. Current rendered, device, native-language, listening, balance and full endurance acceptance remain open. [Handoff and exact evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/tree/feat/first-playable-loop/handoff/contest-checkpoint-2026-10-30).
+
 Local source runs the Vite frontend on port 5173 and the Colyseus service on loopback port 2567. Health is `/api/health`. Offline solo requires only the client and worker. Public room discovery, private six-character codes and reconnect reservations are implemented.
 
 The existing public Site remains the earlier protocol-4 frontend and gameplay. Source pushes, Wiki updates and draft PR changes do not redeploy that Site. Current development source is protocol 43 and requires a matching backend. The issued Windows development archive remains immutable protocol 13; it is a separate build. A public Site owned by a different account must not be replaced without the appropriate authorized deployment path.

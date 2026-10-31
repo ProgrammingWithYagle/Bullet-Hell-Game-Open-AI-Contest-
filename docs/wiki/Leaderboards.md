@@ -1,5 +1,11 @@
 # Records
 
+## Public contest version
+
+[Play Grave Accord](https://grave-accord.yigallin0423.chatgpt.site/). Published October30,2026 as public Site version1, build2026.10.30-shared-network/protocol43. The game source is71fc34c; its matching server at https://grave-accord-contest.onrender.com supports public/private rooms, codes/passwords, chat, host controls and server records. The Free-host cap is eight players and one room. Its local SQLite data is lost on sleep/restart/redeploy; durable global records remain future work. Testing tools are not published. The older Site and Windows download remain separate.
+
+The source passes943local tests and both exact-source CI jobs. Actual hosted room/password/chat/host/record smoke passes. Current rendered, device, native-language, listening, balance and full endurance acceptance remain open. [Handoff and exact evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/tree/feat/first-playable-loop/handoff/contest-checkpoint-2026-10-30).
+
 Open **Leaderboards** from the home menu. **Local Practice records** lists runs saved on this device. **Team records** loads results from the selected game server. Choose a mode, difficulty and peak team size; all-time and weekly views stay separate. Expand a row to see everyone who joined combat. **Show more** loads another page; connection errors offer **Retry**.
 
 A completed public-authority run receives one shared team rank. Leaving or disconnecting does not remove earlier combat credit. Solo practice, testing-server runs and modified runs do not enter team boards. Private room codes, connection IDs and reconnect credentials are never public record fields. Display names appear in the team history.

@@ -308,3 +308,15 @@ reviews/first-language-2026-10-30/*.ps1 text eol=lf
 reviews/windows-first-language-2026-10-30/**/*.json -text -whitespace
 reviews/windows-first-language-2026-10-30/**/*.log -text -whitespace
 reviews/windows-first-language-2026-10-30/*.ps1 text eol=lf
+
+# Preserve exact final contest receipts and sealed handoff bytes.
+reviews/shared-network-2026-10-30/**/*.json -text -whitespace
+reviews/shared-network-2026-10-30/**/*.log -text -whitespace
+reviews/shared-network-2026-10-30/*.mts text eol=lf
+reviews/shared-network-2026-10-30/*.ps1 text eol=lf
+reviews/contest-publication-2026-10-30/**/*.json -text -whitespace
+reviews/contest-publication-2026-10-30/**/*.log -text -whitespace
+reviews/windows-shared-network-2026-10-30/**/*.json -text -whitespace
+reviews/windows-shared-network-2026-10-30/**/*.log -text -whitespace
+reviews/windows-shared-network-2026-10-30/*.ps1 text eol=lf
+handoff/contest-checkpoint-2026-10-30/** -text -whitespace

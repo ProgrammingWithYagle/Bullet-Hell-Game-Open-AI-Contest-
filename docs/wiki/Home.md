@@ -1,10 +1,16 @@
 # Grave Accord
 
+## Public contest version
+
+[Play Grave Accord](https://grave-accord.yigallin0423.chatgpt.site/). Published October30,2026 as public Site version1, build2026.10.30-shared-network/protocol43. The game source is71fc34c; its matching server at https://grave-accord-contest.onrender.com supports public/private rooms, codes/passwords, chat, host controls and server records. The Free-host cap is eight players and one room. Its local SQLite data is lost on sleep/restart/redeploy; durable global records remain future work. Testing tools are not published. The older Site and Windows download remain separate.
+
+The source passes943local tests and both exact-source CI jobs. Actual hosted room/password/chat/host/record smoke passes. Current rendered, device, native-language, listening, balance and full endurance acceptance remain open. [Handoff and exact evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/tree/feat/first-playable-loop/handoff/contest-checkpoint-2026-10-30).
+
 ![Grave Accord cover](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/cover.jpg)
 
 Dodge attacks, defeat bosses and spend your rewards between fights. Play Solo or team up with friends in this cooperative zombie bullet-hell game.
 
-**Current development build: 2026.10.30-shared-network.** The game is still in development. The public demo and published Windows download below are older versions.
+**Current development build: 2026.10.30-shared-network.** The game is still in development. The current public browser version is linked below; the published Windows download remains older.
 
 ## New here?
 
