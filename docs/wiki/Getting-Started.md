@@ -2,9 +2,11 @@
 
 ## Public contest version
 
-[Play Grave Accord](https://grave-accord.yigallin0423.chatgpt.site/). Published October30,2026 as public Site version1, build2026.10.30-shared-network/protocol43. The game source is71fc34c; its matching server at https://grave-accord-contest.onrender.com supports public/private rooms, codes/passwords, chat, host controls and server records. The Free-host cap is eight players and one room. Its local SQLite data is lost on sleep/restart/redeploy; durable global records remain future work. Testing tools are not published. The older Site and Windows download remain separate.
+[Play Grave Accord](https://grave-accord.yigallin0423.chatgpt.site/). Public Site version2 includes the browser sizing, centered boss information and compatible boss-music repair from game source8c75bb8 (build2026.10.30-shared-network/protocol43). Testing tools remain local. The older Site under the other account and the published Windows download are separate.
 
-The source passes943local tests and both exact-source CI jobs. Actual hosted room/password/chat/host/record smoke passes. Current rendered, device, native-language, listening, balance and full endurance acceptance remain open. [Handoff and exact evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/tree/feat/first-playable-loop/handoff/contest-checkpoint-2026-10-30).
+The source passes950local tests and exact-source CI job124410029967. Both fresh local audiences pass52served hashes and real two-peer room/password/chat/host/result checks. The deployed Site passes35HTTP/hash/MIME checks. Current rendered Firefox, physical-device, listening, native-language, balance and full endurance acceptance remain open unless separately confirmed. [Repair handoff and exact evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/tree/feat/first-playable-loop/handoff/browser-repair-2026-10-30).
+
+The compatible live server remains https://grave-accord-contest.onrender.com at source71fc34c. Its Free deployment has eight total player slots and one room. Local SQLite scores are lost on sleep/restart/redeploy; durable global records remain future work.
 
 The current feature-branch build supports seven classes, 66 bosses, six maps and five modes. [Play the current public browser version](https://grave-accord.yigallin0423.chatgpt.site/). The older two-class, one-boss protocol-4 Site under the other account remains separate.
 

@@ -1,0 +1,20 @@
+# Continue current-content polish
+
+Read [the current checkpoint](CHECKPOINT_2026_10_25.md), [development progress](DEVELOPMENT_PROGRESS.md) and [source review](../reviews/shared-network-2026-10-30/checkpoint-source-review.json).
+
+Exact product source **71fc34cfd88a245d7003f16df7a7dc5e90986410**, build **2026.10.30-shared-network / protocol 43**, passes **943 tests, 943 pass, 0 fail** locally and in both complete source CI jobs **124387637908** and **124387593747**. TypeScript, content/all fifteen catalogs/native artwork, production build and 71 atlas contracts pass. Testing **http://127.0.0.1:5262/** / backend2636 and public **http://127.0.0.1:5263/** / backend2637 each pass 52 served hashes, all 15 catalogs and actual two-peer room/password/code/localized-name/chat/host/record flows. Wiki **26efe7fffad29a10ec3363330faaea15f9cd3fa0** matches 18 canonical pages and 34 images.
+
+Equipment and skills show different painted images when no item is selected. The shop and player status use matching equipment-case, coin and field-manual artwork with written labels. Valid room-code lookups and admissions allow a full group sharing one connection to join and retry, while wrong-code guesses keep their separate limit. Opening your own result reuses its first roster page; loading more results keeps one own row, and a mismatched difficulty cannot inject a recent result.
+
+Human testing5258 finds the preceding equipment/skills flow fine, with no noticeable visual change, and requests different unselected equipment artwork plus painted equipment/coin/skill-point pictures. This is limited feedback for product9ae3bb9, not acceptance of the later records or current images/network changes. Earlier5256 feedback confirms the empty language-screen strip is gone. Current rendered/human comparison remains open.
+
+A [fresh larger-team software run](../reviews/shared-network-2026-10-30/progression-verification-01.json) exercises the changed authority with an eight-player five-fight campaign, private sixteen-player three-fight Raid and fifty-player three-clear Endless sample. All seven classes use earned mixed builds, active input/abilities, votes, host pause/chat/departure/transfer, replacement players and reconnect. Team results survive restart; turnover retains 9/17/51 historical participants, with the 51-person roster in two pages. Separate real same-IP tests cover fifty code joins and a sixteen-then-fifty lobby retry in one minute. Protected QA players, accelerated clears/deadlines, isolated records and zero rendered clients keep this separate from ordinary qualifying scores, balance, full endurance, physical Wi-Fi, WAN/hosted/device acceptance. The historical fifty-client join timeout remains preserved with cause unproven.
+
+The contest publication is the current stop boundary; use the new-chat handoff before beginning further development.
+
+
+## Contest checkpoint and next chat
+
+The public-only contest version is live at https://grave-accord.yigallin0423.chatgpt.site (Site version 1, deployment appgdep_6ae53e3b91b481918641a344774aea2d). Its matching Free service is https://grave-accord-contest.onrender.com, with eight slots and one room. See the new-chat packet at [handoff/contest-checkpoint-2026-10-30](../handoff/contest-checkpoint-2026-10-30/README.md). Only the browser public audience was published; testing and the Windows public download were not published/replaced. The old Site under the other account remains separate.
+
+This final request is a checkpoint boundary. Stop contest feature work after sealing the handoff. Start post-contest story, bots, classes or other major work only when the user gives the next chat a fresh direction. Preserve all original art, failed receipts, frozen services and packages. Browser automation remains disabled; recorded rendered/human/device/listening/native-language, balance, endurance and durable global storage limits remain explicit.

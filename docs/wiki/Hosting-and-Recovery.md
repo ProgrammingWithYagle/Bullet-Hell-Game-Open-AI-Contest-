@@ -2,13 +2,15 @@
 
 ## Public contest version
 
-[Play Grave Accord](https://grave-accord.yigallin0423.chatgpt.site/). Published October30,2026 as public Site version1, build2026.10.30-shared-network/protocol43. The game source is71fc34c; its matching server at https://grave-accord-contest.onrender.com supports public/private rooms, codes/passwords, chat, host controls and server records. The Free-host cap is eight players and one room. Its local SQLite data is lost on sleep/restart/redeploy; durable global records remain future work. Testing tools are not published. The older Site and Windows download remain separate.
+[Play Grave Accord](https://grave-accord.yigallin0423.chatgpt.site/). Public Site version2 includes the browser sizing, centered boss information and compatible boss-music repair from game source8c75bb8 (build2026.10.30-shared-network/protocol43). Testing tools remain local. The older Site under the other account and the published Windows download are separate.
 
-The source passes943local tests and both exact-source CI jobs. Actual hosted room/password/chat/host/record smoke passes. Current rendered, device, native-language, listening, balance and full endurance acceptance remain open. [Handoff and exact evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/tree/feat/first-playable-loop/handoff/contest-checkpoint-2026-10-30).
+The source passes950local tests and exact-source CI job124410029967. Both fresh local audiences pass52served hashes and real two-peer room/password/chat/host/result checks. The deployed Site passes35HTTP/hash/MIME checks. Current rendered Firefox, physical-device, listening, native-language, balance and full endurance acceptance remain open unless separately confirmed. [Repair handoff and exact evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/tree/feat/first-playable-loop/handoff/browser-repair-2026-10-30).
+
+The compatible live server remains https://grave-accord-contest.onrender.com at source71fc34c. Its Free deployment has eight total player slots and one room. Local SQLite scores are lost on sleep/restart/redeploy; durable global records remain future work.
 
 Local source runs the Vite frontend on port 5173 and the Colyseus service on loopback port 2567. Health is `/api/health`. Offline solo requires only the client and worker. Public room discovery, private six-character codes and reconnect reservations are implemented.
 
-The existing public Site remains the earlier protocol-4 frontend and gameplay. Source pushes, Wiki updates and draft PR changes do not redeploy that Site. Current development source is protocol 43 and requires a matching backend. The issued Windows development archive remains immutable protocol 13; it is a separate build. A public Site owned by a different account must not be replaced without the appropriate authorized deployment path.
+The older Site under the other account remains a separate protocol-4 publication. The current contest Site uses protocol43 and its compatible server. A source push or Wiki edit alone does not publish a new Site version. The issued Windows development archive remains immutable protocol 13; it is a separate build. A public Site owned by a different account must not be replaced without the appropriate authorized deployment path.
 
 ## Capacity and recovery status
 
@@ -70,3 +72,7 @@ Current local checks use real SDK clients with all seven classes: a full campaig
 Current source gives valid room-code lookups and join attempts separate shared-IP budgets from wrong-code guesses. A full fifty-person group can join by code and retry without the previous thirty-lookup block. Wrong-code guesses remain limited to30 per minute; valid lookups and admissions allow120 each, and results reads allow360. These limits use the connection address rather than a submitted forwarding header.
 
 Your own result reuses its first downloaded team-history page. Loading more results keeps it listed once, and changing filters clears that temporary reuse. A result from a different difficulty cannot appear through the recent-run shortcut. [Current software evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/tree/feat/first-playable-loop/reviews/shared-network-2026-10-30) keeps actual loopback SDK/HTTP tests and the fresh full progression check separate from physical Wi-Fi, WAN, hosted capacity or human acceptance. The historical fifty-client timeout still has no proven cause.
+
+## Increasing hosted capacity
+
+The current hosted process uses INSTANCE_PLAYER_LIMIT=8 and INSTANCE_ROOM_LIMIT=1. Raising the first setting can allow larger Raid or Endless groups, subject to the mode cap and a successful backend redeployment. More simultaneous rooms also need an appropriate room limit. Campaign rooms still cap at8, Raid at16 and Endless at50; increasing a campaign beyond8 requires a reviewed game-rule change too. Load-test any higher configuration before promising performance. This browser repair did not change capacity or restart the live service.
