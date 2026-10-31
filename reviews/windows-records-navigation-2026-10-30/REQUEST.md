@@ -1,0 +1,3 @@
+# Matching records Windows review
+
+Build the public package from a clean committed records-navigation source and complete scoped gate. Verify original, fresh ZIP extraction and independent ordinary Japanese-path Windows copy before/after six native offline/LAN diagnostics. Wait for successful extraction and all-member verification before launching the extracted executable. Preserve every older artifact and failed report. Seal only after exact-source CI and canonical Wiki publication pass. No main merge, deployment/release replacement, contest submission or rendered/human/device acceptance is implied.

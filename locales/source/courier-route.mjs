@@ -1,0 +1,137 @@
+// AI-authored. Native-language and rendered layout acceptance remain pending.
+const rows = {
+  en: [
+    "First Delivery",
+    "Return Address",
+    "Dodge the fixed charge lane, then punish the stop. The narrow trail fades behind the Courier.",
+    "A second charge warns from the first stop. Read each new arrow; attack after the final delivery.",
+    "Advanced forms add one charge and a delayed split fan. Every leg has a full warning; the fan leaves a marked gap down its center.",
+    "A single delivery becomes two charges at half health. Dodge each fixed lane sideways, avoid fading trails, and punish the final stop.",
+  ],
+  "zh-Hans": [
+    "首次投递",
+    "退回地址",
+    "横向躲开固定冲锋路线，趁停顿反击。信使身后的狭窄轨迹会逐渐消退。",
+    "第二次冲锋从第一次停下的位置发出预警。看清每个新箭头，最后一次投递后再进攻。",
+    "进阶形态增加一次冲锋和延迟扇形齐射。每段都有完整预警，扇形中央留有标记缺口。",
+    "半血后，单次投递变为两次冲锋。横向避开固定路线，绕过消退的轨迹，趁最终停顿反击。",
+  ],
+  "zh-Hant": [
+    "首次投遞",
+    "退回地址",
+    "橫向躲開固定衝鋒路線，趁停頓反擊。信使身後的狹窄軌跡會逐漸消退。",
+    "第二次衝鋒從第一次停下的位置發出預警。看清每個新箭頭，最後一次投遞後再進攻。",
+    "進階形態增加一次衝鋒和延遲扇形齊射。每段都有完整預警，扇形中央留有標記缺口。",
+    "半血後，單次投遞變為兩次衝鋒。橫向避開固定路線，繞過消退的軌跡，趁最終停頓反擊。",
+  ],
+  ja: [
+    "最初の配達",
+    "返送先",
+    "固定された突進経路を横に避け、停止中に反撃しよう。配達人の細い足跡は後ろから消えていく。",
+    "最初の停止地点から二度目の突進が予告される。新しい矢印を読み、最後の配達後に攻撃しよう。",
+    "上位形態は突進が一回増え、遅れて左右の扇状弾を放つ。毎回十分な予告があり、扇の中央には印つきの隙間がある。",
+    "体力半分で一度の配達が二連続突進になる。固定経路を横に避け、消えていく足跡に注意し、最後の停止中に反撃しよう。",
+  ],
+  es: [
+    "Primera entrega",
+    "Dirección de devolución",
+    "Esquiva de lado la carga fija y ataca al detenerse. El rastro estrecho se desvanece detrás del mensajero.",
+    "La segunda carga se anuncia desde la primera parada. Lee cada flecha nueva y ataca tras la última entrega.",
+    "Las formas avanzadas añaden una carga y un abanico dividido con retraso. Cada tramo tiene un aviso completo; el abanico deja un hueco central marcado.",
+    "A media salud, una entrega se convierte en dos cargas. Esquiva de lado cada ruta fija, evita los rastros y aprovecha la última parada.",
+  ],
+  fr: [
+    "Première livraison",
+    "Adresse de retour",
+    "Esquivez de côté la charge fixée, puis frappez à l’arrêt. La trace étroite s’efface derrière le messager.",
+    "La seconde charge est annoncée depuis le premier arrêt. Lisez chaque nouvelle flèche et attaquez après la dernière livraison.",
+    "Les formes avancées ajoutent une charge et un éventail divisé retardé. Chaque trajet a un avertissement complet ; un passage central est marqué dans l’éventail.",
+    "À mi-vie, une livraison devient deux charges. Esquivez chaque trajet fixé de côté, évitez les traces et profitez du dernier arrêt.",
+  ],
+  de: [
+    "Erste Zustellung",
+    "Rücksendeadresse",
+    "Weiche der festen Sturmspur seitlich aus und greife beim Halt an. Die schmale Spur verblasst hinter dem Kurier.",
+    "Der zweite Ansturm wird vom ersten Halt aus angekündigt. Lies jeden neuen Pfeil und greife nach der letzten Zustellung an.",
+    "Höhere Formen erhalten einen weiteren Ansturm und einen verzögerten geteilten Fächer. Jeder Abschnitt wird vollständig angekündigt; der Fächer lässt eine markierte Lücke in der Mitte.",
+    "Bei halber Gesundheit wird eine Zustellung zu zwei Anstürmen. Weiche festen Spuren seitlich aus, meide die verblassenden Spuren und nutze den letzten Halt.",
+  ],
+  "pt-BR": [
+    "Primeira entrega",
+    "Endereço de devolução",
+    "Desvie de lado da carga fixa e ataque na parada. O rastro estreito desaparece atrás do mensageiro.",
+    "A segunda carga é avisada a partir da primeira parada. Leia cada nova seta e ataque depois da última entrega.",
+    "As formas avançadas ganham uma carga e um leque dividido com atraso. Cada trecho tem aviso completo; o leque deixa uma abertura central marcada.",
+    "Com metade da vida, uma entrega vira duas cargas. Desvie de lado das rotas fixas, evite os rastros e aproveite a última parada.",
+  ],
+  ru: [
+    "Первая доставка",
+    "Обратный адрес",
+    "Уклоняйтесь вбок от закреплённой линии рывка и атакуйте на остановке. Узкий след за курьером постепенно исчезает.",
+    "Второй рывок предупреждается с места первой остановки. Читайте каждую новую стрелку и атакуйте после последней доставки.",
+    "Усиленные формы добавляют рывок и отложенный разделённый веер. У каждого участка полное предупреждение; в центре веера отмечен просвет.",
+    "На половине здоровья одна доставка становится двумя рывками. Уходите вбок с закреплённых линий, избегайте следов и используйте последнюю остановку.",
+  ],
+  hi: [
+    "पहली डिलीवरी",
+    "वापसी का पता",
+    "तय धावा-रेखा से बगल में हटें और रुकने पर वार करें। कूरियर के पीछे की पतली लकीर धीरे मिटती है।",
+    "पहले ठहराव से दूसरे धावे की चेतावनी आती है। हर नया तीर पढ़ें और आखिरी डिलीवरी के बाद हमला करें।",
+    "उन्नत रूपों में एक और धावा तथा देर से खुलने वाली दोतरफा गोलीबारी जुड़ती है। हर धावे की पूरी चेतावनी मिलती है; गोलीबारी के बीच चिह्नित रास्ता खुला रहता है।",
+    "आधे स्वास्थ्य पर एक डिलीवरी दो धावों में बदलती है। तय रेखाओं से बगल में हटें, मिटती लकीरों से बचें और अंतिम ठहराव पर वार करें।",
+  ],
+  ar: [
+    "التسليم الأول",
+    "عنوان الإرجاع",
+    "تفاد مسار الاندفاع الثابت جانبياً ثم هاجم عند التوقف. يتلاشى الأثر الضيق خلف الساعي.",
+    "يصدر تحذير الاندفاع الثاني من موضع التوقف الأول. اقرأ كل سهم جديد وهاجم بعد التسليم الأخير.",
+    "تضيف الأشكال المتقدمة اندفاعاً ومروحة رصاص منقسمة متأخرة. لكل اندفاع تحذير كامل، وتترك المروحة فجوة وسطية محددة.",
+    "عند نصف الصحة يتحول التسليم الواحد إلى اندفاعين. تفاد المسارات الثابتة جانبياً، وتجنب الآثار المتلاشية، وهاجم عند التوقف الأخير.",
+  ],
+  bn: [
+    "প্রথম সরবরাহ",
+    "ফেরত ঠিকানা",
+    "স্থির ধাবনের রেখা থেকে পাশে সরে থামলে আঘাত করুন। দূতের পেছনের সরু দাগ ধীরে মিলিয়ে যায়।",
+    "প্রথম থামার স্থান থেকে দ্বিতীয় ধাবনের সতর্কতা আসে। প্রতিটি নতুন তীর দেখুন, শেষ সরবরাহের পরে আক্রমণ করুন।",
+    "উন্নত রূপে আরও একটি ধাবন ও দেরিতে ছোড়া দুই ভাগের গুলি যোগ হয়। প্রতিটি ধাবনের পূর্ণ সতর্কতা থাকে; গুলির মাঝখানে চিহ্নিত ফাঁক খোলা থাকে।",
+    "অর্ধেক স্বাস্থ্যে এক সরবরাহ দুই ধাবন হয়। স্থির রেখা থেকে পাশে সরুন, মিলিয়ে যাওয়া দাগ এড়ান এবং শেষ থামায় আঘাত করুন।",
+  ],
+  id: [
+    "Kiriman Pertama",
+    "Alamat Pengembalian",
+    "Hindari jalur serbuan tetap ke samping, lalu serang saat berhenti. Jejak sempit memudar di belakang kurir.",
+    "Serbuan kedua diperingatkan dari titik berhenti pertama. Baca setiap panah baru dan serang setelah kiriman terakhir.",
+    "Wujud lanjutan menambah satu serbuan dan kipas terbelah yang tertunda. Tiap serbuan mendapat peringatan penuh; kipas menyisakan celah tengah bertanda.",
+    "Pada separuh nyawa, satu kiriman menjadi dua serbuan. Hindari tiap jalur tetap ke samping, jauhi jejak yang memudar, dan manfaatkan perhentian terakhir.",
+  ],
+  ur: [
+    "پہلی ترسیل",
+    "واپسی کا پتہ",
+    "طے شدہ یلغار کی لکیر سے پہلو میں ہٹیں اور رکنے پر وار کریں۔ قاصد کے پیچھے باریک نشان آہستہ مٹتا ہے۔",
+    "دوسری یلغار کی تنبیہ پہلے ٹھہراؤ کی جگہ سے آتی ہے۔ ہر نیا تیر پڑھیں اور آخری ترسیل کے بعد حملہ کریں۔",
+    "اعلیٰ صورتوں میں ایک مزید یلغار اور تاخیر سے دو حصوں میں گولیوں کی بوچھاڑ آتی ہے۔ ہر یلغار کی پوری تنبیہ ہوتی ہے؛ بوچھاڑ کے بیچ نشان زدہ خلا کھلا رہتا ہے۔",
+    "آدھی صحت پر ایک ترسیل دو یلغار بن جاتی ہے۔ طے شدہ لکیروں سے پہلو میں ہٹیں، مٹتے نشانوں سے بچیں اور آخری ٹھہراؤ پر وار کریں۔",
+  ],
+  ko: [
+    "첫 배달",
+    "반송 주소",
+    "고정된 돌진 경로를 옆으로 피하고 멈출 때 공격하세요. 배달부 뒤의 좁은 흔적은 차츰 사라집니다.",
+    "첫 정지 지점에서 두 번째 돌진이 예고됩니다. 새 화살표마다 확인하고 마지막 배달 뒤에 공격하세요.",
+    "상위 형태는 돌진 한 번과 지연된 양쪽 부채꼴 탄막을 더합니다. 모든 돌진에 충분한 예고가 있으며 탄막 중앙에는 표시된 틈이 남습니다.",
+    "체력이 절반이면 한 번의 배달이 두 번의 돌진으로 바뀝니다. 고정 경로를 옆으로 피하고 사라지는 흔적을 피해 마지막 정지 때 공격하세요.",
+  ],
+};
+export function courierRouteMessages(locale) {
+  const row = rows[locale];
+  if (!row || row.length !== 6)
+    throw Error("Missing Courier route help " + locale);
+  const [a, b, c, d, e, f] = row.map((s) => s.normalize("NFC"));
+  return {
+    "boss.courier.phase.0": a,
+    "boss.courier.phase.1": b,
+    "boss.courier.phaseHint.0": c,
+    "boss.courier.phaseHint.1": d,
+    "boss.courier.brutalHelp": e,
+    "boss.courier.description": f,
+  };
+}

@@ -1,0 +1,18 @@
+✔ connected Ambulance patrol paths honor every actual offset map, cover difficulty and lava footprint (71.8999ms)
+✔ normal early and late dispatches have one/two independently warned headings; advanced forms add distinct stops (20.8126ms)
+✔ a dispatch locks real origin/destination throughout the full warning and cannot hit before release (2.0447ms)
+✔ moving Ambulance body and moving survivor use relative swept contact, once per dispatch (1.5593ms)
+✔ the first active frame never sweeps player movement that finished before charge activation (1.3814ms)
+✔ body-radius rays clip to offset bounds and cover, while new masonry cancels actual travel before it (2.9904ms)
+✔ first stop emits exactly40 Brutal or120 Crazed shots with full fresh tells, retained Brutal prefix and crossing repeats (6.0054ms)
+✔ driver exposure remains a stationary exactly-three-second real recovery window (1.8631ms)
+✔ reset cancels every unreleased owned cue at any stage, preserves already emitted shots and supports a delayed next phase (4.9565ms)
+✔ actual Game cleanup cancels the Ambulance route on phase entry, stagger, victory and deadline (23.5557ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 875.7222

@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "verifier": "tools/verify-courier-actions.py",
+  "verifierSha256": "554ab490119454d68f9cca48a49b99c315dfb8b6f4c90d254de92c03b4969c16",
+  "librarySha256": "8771c12376edb64e46b9c8cca5fe572373a945ea21c0559d5fe27702c38416fb",
+  "nativeReturns": 3,
+  "newCompletePoses": 12,
+  "preservedEarlierActionAndDefeatPoses": 16,
+  "originalWorldTransformUnchanged": true,
+  "results": [
+    {
+      "motion": "idle",
+      "completePoses": 4,
+      "wholeNativeRgbaPartitionExact": true,
+      "oneUprightCalibratedScale": true,
+      "allDeliveredPixelsReconstructed": true
+    },
+    {
+      "motion": "hurt",
+      "completePoses": 4,
+      "wholeNativeRgbaPartitionExact": true,
+      "oneUprightCalibratedScale": true,
+      "allDeliveredPixelsReconstructed": true
+    },
+    {
+      "motion": "stagger",
+      "completePoses": 4,
+      "wholeNativeRgbaPartitionExact": true,
+      "oneUprightCalibratedScale": true,
+      "allDeliveredPixelsReconstructed": true
+    }
+  ],
+  "renderedAccepted": false,
+  "limits": [
+    "Independent complete-native, packed-pixel and original-prefix reconstruction.",
+    "Native/contact-sheet inspection is separate from rendered/device/human anatomy and transition review."
+  ]
+}

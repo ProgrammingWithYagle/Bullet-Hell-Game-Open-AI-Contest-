@@ -1,0 +1,315 @@
+- main:
+  - region "Health":
+    - strong: Encounter 1
+    - status
+    - status
+    - generic: Threat
+    - generic: "2"
+    - generic: Standard form
+    - strong: Gate Widow
+    - generic: Phase 1/2
+    - generic: Three Latches
+    - generic: ◷
+    - time: 2:05
+    - progressbar "Gate Widow · Phase 1/2"
+    - button "?"
+    - button "Ⅱ"
+    - strong:
+      - generic: QA Mara · Soldier · Build strength D-
+    - progressbar "Health"
+    - generic: 27 / 110
+    - generic: Magazine 8
+    - generic: Coins 777 · Skill points 12
+    - generic: Space · Dodge ✓
+    - generic "Rally Field": Q · Ability Q 0:09
+    - generic "Precision Burst": E · Ability E 0:02
+    - generic "Last Roll Call": X · Ultimate 1:20
+    - generic "Supplies":
+      - button "1 · Supplies ×0" [disabled]:
+        - generic: "1"
+        - text: —
+      - button "2 · Supplies ×0" [disabled]:
+        - generic: "2"
+        - text: —
+      - button "3 · Supplies ×0" [disabled]:
+        - generic: "3"
+        - text: —
+  - heading "Paused" [level=2]
+  - paragraph: Offline runs save locally and do not enter verified online rankings.
+  - generic "Settings"
+  - checkbox "Auto-fire" [checked]
+  - text: Auto-fire
+  - checkbox "Aim assist" [checked]
+  - text: Aim assist
+  - checkbox "Show hitboxes"
+  - text: Show hitboxes
+  - checkbox "Reduce motion"
+  - text: Reduce motion
+  - checkbox "High contrast hazards"
+  - text: High contrast hazards
+  - checkbox "Expanded skill map"
+  - text: Expanded skill map
+  - checkbox "Survivor names" [checked]
+  - text: Survivor names
+  - checkbox "Room chat" [checked]
+  - text: Room chat
+  - text: Sound effects volume
+  - slider "Sound effects volume": "0.45"
+  - text: Music volume
+  - slider "Music volume": "0.3"
+  - text: Text size
+  - slider "Text size": "1"
+  - heading "Controls" [level=3]
+  - button "Reset"
+  - text: Fire
+  - combobox "Fire":
+    - option "Hold" [selected]
+    - option "Toggle"
+  - text: Interact
+  - combobox "Interact":
+    - option "Hold" [selected]
+    - option "Toggle"
+  - generic: Keyboard / mouse
+  - generic: Gamepad button
+  - generic: Move up
+  - button "Move up · Keyboard / mouse 1": W
+  - button "Move up · Keyboard / mouse 2": ↑
+  - button "Clear alternate": ×
+  - generic: LS
+  - generic: Move down
+  - button "Move down · Keyboard / mouse 1": S
+  - button "Move down · Keyboard / mouse 2": ↓
+  - button "Clear alternate": ×
+  - generic: LS
+  - generic: Move left
+  - button "Move left · Keyboard / mouse 1": A
+  - button "Move left · Keyboard / mouse 2": ←
+  - button "Clear alternate": ×
+  - generic: LS
+  - generic: Move right
+  - button "Move right · Keyboard / mouse 1": D
+  - button "Move right · Keyboard / mouse 2": →
+  - button "Clear alternate": ×
+  - generic: LS
+  - generic: Fire
+  - button "Fire · Keyboard / mouse 1": 🖱1
+  - button "Fire · Keyboard / mouse 2": —
+  - combobox "Fire · Gamepad button":
+    - option "0"
+    - option "1"
+    - option "2"
+    - option "3"
+    - option "4"
+    - option "5"
+    - option "6"
+    - option "7" [selected]
+    - option "8"
+    - option "9"
+    - option "10"
+    - option "11"
+    - option "12"
+    - option "13"
+    - option "14"
+    - option "15"
+    - option "16"
+  - generic: Dodge
+  - button "Dodge · Keyboard / mouse 1": Space
+  - button "Dodge · Keyboard / mouse 2": —
+  - combobox "Dodge · Gamepad button":
+    - option "0" [selected]
+    - option "1"
+    - option "2"
+    - option "3"
+    - option "4"
+    - option "5"
+    - option "6"
+    - option "7"
+    - option "8"
+    - option "9"
+    - option "10"
+    - option "11"
+    - option "12"
+    - option "13"
+    - option "14"
+    - option "15"
+    - option "16"
+  - generic: Reload
+  - button "Reload · Keyboard / mouse 1": R
+  - button "Reload · Keyboard / mouse 2": —
+  - combobox "Reload · Gamepad button":
+    - option "0"
+    - option "1"
+    - option "2" [selected]
+    - option "3"
+    - option "4"
+    - option "5"
+    - option "6"
+    - option "7"
+    - option "8"
+    - option "9"
+    - option "10"
+    - option "11"
+    - option "12"
+    - option "13"
+    - option "14"
+    - option "15"
+    - option "16"
+  - generic: Ability Q
+  - button "Ability Q · Keyboard / mouse 1": Q
+  - button "Ability Q · Keyboard / mouse 2": —
+  - combobox "Ability Q · Gamepad button":
+    - option "0"
+    - option "1"
+    - option "2"
+    - option "3"
+    - option "4" [selected]
+    - option "5"
+    - option "6"
+    - option "7"
+    - option "8"
+    - option "9"
+    - option "10"
+    - option "11"
+    - option "12"
+    - option "13"
+    - option "14"
+    - option "15"
+    - option "16"
+  - generic: Ability E
+  - button "Ability E · Keyboard / mouse 1": E
+  - button "Ability E · Keyboard / mouse 2": —
+  - combobox "Ability E · Gamepad button":
+    - option "0"
+    - option "1"
+    - option "2"
+    - option "3"
+    - option "4"
+    - option "5" [selected]
+    - option "6"
+    - option "7"
+    - option "8"
+    - option "9"
+    - option "10"
+    - option "11"
+    - option "12"
+    - option "13"
+    - option "14"
+    - option "15"
+    - option "16"
+  - generic: Ultimate
+  - button "Ultimate · Keyboard / mouse 1": X
+  - button "Ultimate · Keyboard / mouse 2": —
+  - combobox "Ultimate · Gamepad button":
+    - option "0"
+    - option "1"
+    - option "2"
+    - option "3" [selected]
+    - option "4"
+    - option "5"
+    - option "6"
+    - option "7"
+    - option "8"
+    - option "9"
+    - option "10"
+    - option "11"
+    - option "12"
+    - option "13"
+    - option "14"
+    - option "15"
+    - option "16"
+  - generic: Interact
+  - button "Interact · Keyboard / mouse 1": F
+  - button "Interact · Keyboard / mouse 2": —
+  - combobox "Interact · Gamepad button":
+    - option "0"
+    - option "1" [selected]
+    - option "2"
+    - option "3"
+    - option "4"
+    - option "5"
+    - option "6"
+    - option "7"
+    - option "8"
+    - option "9"
+    - option "10"
+    - option "11"
+    - option "12"
+    - option "13"
+    - option "14"
+    - option "15"
+    - option "16"
+  - generic: Supplies 1
+  - button "Supplies 1 · Keyboard / mouse 1": "1"
+  - button "Supplies 1 · Keyboard / mouse 2": —
+  - combobox "Supplies 1 · Gamepad button":
+    - option "0"
+    - option "1"
+    - option "2"
+    - option "3"
+    - option "4"
+    - option "5"
+    - option "6"
+    - option "7"
+    - option "8"
+    - option "9"
+    - option "10"
+    - option "11"
+    - option "12" [selected]
+    - option "13"
+    - option "14"
+    - option "15"
+    - option "16"
+  - generic: Supplies 2
+  - button "Supplies 2 · Keyboard / mouse 1": "2"
+  - button "Supplies 2 · Keyboard / mouse 2": —
+  - combobox "Supplies 2 · Gamepad button":
+    - option "0"
+    - option "1"
+    - option "2"
+    - option "3"
+    - option "4"
+    - option "5"
+    - option "6"
+    - option "7"
+    - option "8"
+    - option "9"
+    - option "10"
+    - option "11"
+    - option "12"
+    - option "13" [selected]
+    - option "14"
+    - option "15"
+    - option "16"
+  - generic: Supplies 3
+  - button "Supplies 3 · Keyboard / mouse 1": "3"
+  - button "Supplies 3 · Keyboard / mouse 2": —
+  - combobox "Supplies 3 · Gamepad button":
+    - option "0"
+    - option "1"
+    - option "2"
+    - option "3"
+    - option "4"
+    - option "5"
+    - option "6"
+    - option "7"
+    - option "8"
+    - option "9"
+    - option "10"
+    - option "11"
+    - option "12"
+    - option "13"
+    - option "14" [selected]
+    - option "15"
+    - option "16"
+  - status
+  - button "Continue run"
+  - button "Leave room"
+  - generic "Testing tools"
+  - paragraph: Applying changes disables saving and records for this run. Start a new run to return to ordinary play.
+  - text: Coins
+  - spinbutton "Coins": "777"
+  - text: Skill points
+  - spinbutton "Skill points": "12"
+  - button "Apply test values"
+  - button "Unlock Insane and Hellish for testing" [active]
+  - status: Testing difficulties unlocked for new runs in this tab.

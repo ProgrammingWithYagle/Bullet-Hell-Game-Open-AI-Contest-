@@ -29,4 +29,6 @@ for(let seed=1;seed<=200;seed++){
 }
 const report={schemaVersion:1,passed:true,kind:'Deterministic design acceptance model; not playable runtime evidence',timedRoutes:routes,concealedCardsValidated:contractCards,endlessEncounters,guaranteedExclusiveEncounters:exclusiveEncounters,seeds:{timed:1000,endless:200},repeatProtectionEncounters:12,limits:['The model checks pool arithmetic, uniqueness and selected sequence constraints. Actual vote/reconnect/server integration remains a gameplay check.','An exclusive slot offers three exclusive identities, so any vote result produces an exclusive boss.']};
 report.contentRevision=JSON.parse(fs.readFileSync('content/revision.json','utf8')).sha256;
-fs.writeFileSync('reviews/gauntlet-model-review.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));
+const reportPath='reviews/gauntlet-model-review.json',reportText=JSON.stringify(report,null,2)+'\n';
+if(!fs.existsSync(reportPath)||fs.readFileSync(reportPath,'utf8')!==reportText)fs.writeFileSync(reportPath,reportText);
+console.log(JSON.stringify(report,null,2));

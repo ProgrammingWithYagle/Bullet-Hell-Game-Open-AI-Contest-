@@ -1,0 +1,508 @@
+import { Room, ServerError, type Client, type ISendOptions } from '@colyseus/core';
+import { randomBytes } from 'node:crypto';
+import {createRoomPassword,matchesRoomPassword} from './room-password.ts';
+import { performance } from 'node:perf_hooks';
+import { Encoder } from '@colyseus/schema';
+import { encodeEvents } from '../shared/wire-events.ts';
+import { Game, implementedBossIds, type Settings } from '../shared/game.ts';
+import {
+  CONTENT_REVISION,
+  PROTOCOL,
+  implementedClassIds,
+  type ClassId,
+  type Event,
+} from '../shared/protocol.ts';
+import { WorldState, PlayerState, ActorState } from '../shared/network-state.ts';
+import { capacity } from './capacity.ts';
+import {RoomChat} from '../shared/room-chat.ts';
+import { arenaSelections } from '../shared/arena-selection.ts';
+import {maximumPersonalShield} from '../shared/recovery-policy.ts';
+import {publicRunSettings} from '../shared/public-run.ts';
+import { RoomJournal } from './room-journal.ts';
+import type { RunJournal } from './run-journal.ts';
+import type { TeamRun } from './team-run.ts';
+import type { TeamRecordStatus } from '../shared/team-records.ts';
+// Bounded fifty-player builds can exceed Schema's 8 KiB initial encode buffer.
+Encoder.BUFFER_SIZE = 64 * 1024;
+type Metadata = {
+  mode: string;
+  difficulty: string;
+  visibility: string;
+  contentRevision: string;
+  phase: string;
+  hasPassword:boolean;
+};
+type Options = {
+  mode: 'short' | 'standard' | 'long' | 'raid' | 'endless';
+  difficulty: string;
+  visibility: 'public' | 'private';
+  contentRevision: string;
+  protocolVersion: number;
+  openingBossId?: Settings['openingBossId'];
+  openingArenaId?: string;
+  arenaSelection?: Settings['arenaSelection'];
+  createKey: string;
+  code?: string;
+  name: string;
+  classId: ClassId;
+  admissionId?: string;
+  password?:string;
+};
+export const privateRooms = new Map<string, string>();
+export const roomCodes = new Map<string, string>();
+export const liveRooms = new Map<string, GraveRoom>();
+const alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+const code = () => [...randomBytes(6)].map((n) => alphabet[n % alphabet.length]).join('');
+export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
+  game!: Game;
+  private readonly roomChat = new RoomChat();
+  protected isTestingServer(){return true;}
+  privateCode = '';
+  roomCode = '';
+  private creatorKey = '';
+  private creatorUsed = false;
+  private passwordVerifier:Awaited<ReturnType<typeof createRoomPassword>>=null;
+  get hasPassword(){return this.passwordVerifier!==null;}
+  private shotOwners = new Map<number, string>();
+  private instrumented = new WeakSet<Client>();
+  private readyAt = new WeakMap<Client, number>();
+  private journal!: RoomJournal;
+  private teamRun?: TeamRun;
+  protected createTeamRun(_changed: (status: TeamRecordStatus) => void): TeamRun | undefined { return undefined; }
+  // Only server construction can supply a writer. Matchmaking options and
+  // browser requests never provide keys, endpoints or a journal factory.
+  protected createRunJournal(): RunJournal | undefined {
+    return undefined;
+  }
+  readonly telemetry = {
+    ticks: [] as number[],
+    encodedOutboundBytes: 0,
+    acceptedInputs: 0,
+    rejectedInputs: 0,
+    peakProjectiles: 0,
+  };
+  async onCreate(options: Options) {
+    if(!this.isTestingServer()&&options.openingBossId!==undefined)throw new ServerError(400,'testingSelectionDisabled');
+    if (options.protocolVersion !== PROTOCOL || options.contentRevision !== CONTENT_REVISION)
+      throw new ServerError(409, 'versionMismatch');
+    if (
+      (options.openingArenaId !== undefined &&
+        !data.arenas.some((a) => a.id === options.openingArenaId)) ||
+      (options.arenaSelection !== undefined && !arenaSelections.includes(options.arenaSelection)) ||
+      (options.openingBossId !== undefined &&
+        !implementedBossIds.includes(options.openingBossId)) ||
+      !['short', 'standard', 'long', 'raid', 'endless'].includes(options.mode) ||
+      !data.difficulties.some((d) => d.id === options.difficulty) ||
+      !['public', 'private'].includes(options.visibility)
+    )
+      throw new ServerError(400, 'invalidSettings');
+    if (typeof options.createKey !== 'string' || !/^[a-f0-9-]{36}$/.test(options.createKey))
+      throw new ServerError(400, 'invalidCreateKey');
+    try{this.passwordVerifier=await createRoomPassword(options.password);}
+    catch{throw new ServerError(400,'invalidPasswordSetting');}
+    try {
+      capacity.addRoom(this.roomId, options.admissionId);
+    } catch {
+      throw new ServerError(503, 'capacity');
+    }
+    this.creatorKey = options.createKey;
+    this.maxClients = options.mode === 'endless' ? 50 : options.mode === 'raid' ? 16 : 8;
+    this.maxMessagesPerSecond = 90;
+    this.patchRate = 50;
+    const settings: Partial<Settings> = {
+      runId: this.roomId,
+      seed: randomBytes(4).readUInt32LE(),
+      mode: options.mode,
+      difficulty: options.difficulty,
+      maxPlayers: this.maxClients,
+      openingBossId: options.openingBossId,
+      openingArenaId: options.openingArenaId,
+      arenaSelection: options.arenaSelection,
+    };
+    this.game = new Game(this.isTestingServer()?settings:publicRunSettings(settings));
+    this.teamRun = this.createTeamRun(status => this.broadcast('teamRecord', status));
+    this.game.scoreObserver = this.teamRun;
+    this.state = new WorldState();
+    this.journal = new RoomJournal(this.game, this.createRunJournal(), (status) => {
+      for (const client of this.clients)
+        if (this.readyAt.has(client))
+          client.send('checkpointStatus', {
+            status,
+            recoveryAvailable: false,
+          });
+    });
+    await this.setMetadata({
+      mode: options.mode,
+      difficulty: options.difficulty,
+      visibility: options.visibility,
+      contentRevision: CONTENT_REVISION,
+      phase: 'lobby',
+      hasPassword:this.hasPassword,
+    });
+    do { this.roomCode = code(); } while (roomCodes.has(this.roomCode));
+    roomCodes.set(this.roomCode, this.roomId);
+    if (options.visibility === 'private') {
+      this.privateCode = this.roomCode;
+      privateRooms.set(this.privateCode, this.roomId);
+      await this.setPrivate(true);
+    }
+    liveRooms.set(this.roomId, this);
+    this.onMessage('chatSettings',(client,value:unknown)=>{
+      if(typeof value!=='boolean'||!this.readyAt.has(client))return;
+      this.roomChat.subscribe(client.sessionId,value);
+      if(value){const now=Date.now();if(this.roomChat.historyAllowed(client.sessionId,now))client.send('chatHistory',this.roomChat.history());else client.send('chatHistoryRetry',{afterMs:this.roomChat.historyRetryAfter(client.sessionId,now)});}
+    });
+    this.onMessage('chat',(client,value:unknown)=>{
+      const p=this.game.players.get(client.sessionId);if(!p)return;
+      const delivery=this.roomChat.deliver(client.sessionId,p.name,value,Date.now(),this.readyAt.has(client));if(!delivery)return;
+      if(delivery.message)for(const peer of this.clients)if(this.roomChat.receives(peer.sessionId))peer.send('chat',delivery.message);
+      client.send('chatReceipt',delivery.receipt);
+    });
+    this.onMessage('input', (client, value: unknown) => {
+      if (this.journal.blocked || this.state.matchPaused) return;
+      if (this.game.submitInput(client.sessionId, value)) this.telemetry.acceptedInputs++;
+      else this.telemetry.rejectedInputs++;
+    });
+    this.onMessage('start', (client) => {
+      if (client.sessionId === this.state.owner && !this.state.matchPaused) this.journal.start();
+    });
+    this.onMessage('pauseMatch', (client, value: unknown) => {
+      if (typeof value !== 'boolean' || client.sessionId !== this.state.owner || !this.readyAt.has(client)
+        || ['lobby','victory','defeat'].includes(this.game.phase) || this.journal.blocked) return;
+      if (this.state.matchPaused === value) return;
+      this.game.clearInputs(); this.state.matchPaused = value; this.syncState();
+    });
+    this.onMessage('endMatch', client => {
+      if (client.sessionId !== this.state.owner || !this.readyAt.has(client) || this.journal.blocked) return;
+      if (!this.game.endByHost()) return;
+      this.state.matchPaused = false; this.state.endedByHost = true;
+      void this.lock();
+      this.teamRun?.finish(this.game); this.syncState();
+    });
+    this.onMessage('endRun', client => {
+      if (client.sessionId === this.state.owner && !this.journal.blocked && !this.state.matchPaused && this.game.endEndless()) this.teamRun?.finish(this.game);
+    });
+    this.onMessage('vote', (client, index: unknown) => {
+      if (!this.journal.blocked && !this.state.matchPaused && typeof index === 'number')
+        this.game.vote(client.sessionId, index);
+    });
+    this.onMessage('purchase', (client, request: unknown) => {
+      const result = this.state.matchPaused ? {ok:false,reason:'matchPaused'} : this.journal.blocked
+        ? { ok: false, reason: 'checkpointPending' }
+        : this.game.transact(client.sessionId, request);
+      client.send('purchaseResult', {
+        ...(request && typeof request === 'object' && 'id' in request
+          ? { id: String(request.id).slice(0, 64) }
+          : {}),
+        ...result,
+      });
+    });
+    this.onMessage('ready', (client) => {
+      const now = performance.now();
+      if (now - (this.readyAt.get(client) ?? -Infinity) < 5000) return;
+      this.readyAt.set(client, now);
+      this.welcome(client);
+    });
+    this.setFixedTimestep(() => {
+      const start = performance.now();
+      this.journal.step(this.state.matchPaused);
+      this.teamRun?.observe(this.game);
+      this.flushEvents();
+      this.syncState();
+      this.telemetry.ticks.push(performance.now() - start);
+      if (this.telemetry.ticks.length > 18000) this.telemetry.ticks.shift();
+      this.telemetry.peakProjectiles = Math.max(
+        this.telemetry.peakProjectiles,
+        this.game.shots.size,
+      );
+    }, 30);
+  }
+  async onAuth(client: Client, options: Options) {
+    if (this.state.endedByHost) throw new ServerError(503,'roomClosed');
+    if(!this.isTestingServer()&&options.openingBossId!==undefined)throw new ServerError(400,'testingSelectionDisabled');
+    if (options.protocolVersion !== PROTOCOL || options.contentRevision !== CONTENT_REVISION)
+      throw new ServerError(409, 'versionMismatch');
+    if (
+      !implementedClassIds.includes(options.classId) ||
+      typeof options.name !== 'string' ||
+      options.name.length > 100
+    )
+      throw new ServerError(400, 'invalidPlayer');
+    const creator = !this.creatorUsed && options.createKey === this.creatorKey;
+    if (this.privateCode && !creator && options.code !== this.privateCode)
+      throw new ServerError(403, 'invalidCode');
+    if(!creator&&this.passwordVerifier&&!await matchesRoomPassword(this.passwordVerifier,options.password))
+      throw new ServerError(403,options.password===undefined||options.password===''?'passwordRequired':'invalidPassword');
+    if (creator) this.creatorUsed = true;
+    return true;
+  }
+  async onJoin(client: Client, options: Options) {
+    if (!(await this.journal.writable())) throw new ServerError(503, 'roomClosed');
+    try {
+      capacity.reserve(client.sessionId, options.admissionId);
+      this.game.addPlayer(client.sessionId, options.name, options.classId);
+    } catch (error) {
+      capacity.release(client.sessionId);
+      throw new ServerError(503, error instanceof Error ? error.message : 'capacity');
+    }
+    this.instrument(client);
+    if (!this.state.owner) this.state.owner = client.sessionId;
+    this.syncState();
+  }
+  private instrument(client: Client) {
+    if (this.instrumented.has(client)) return;
+    this.instrumented.add(client);
+    const original = client.raw.bind(client);
+    client.raw = (
+      bytes: Uint8Array | Buffer,
+      opts?: ISendOptions,
+      callback?: (error?: Error) => void,
+    ) => {
+      this.telemetry.encodedOutboundBytes += bytes.byteLength;
+      return original(bytes, opts, callback);
+    };
+  }
+  private welcome(client: Client) {
+    client.send('welcome', {
+      id: client.sessionId,
+      code: this.roomCode,
+      hasPassword:this.hasPassword,
+      practice: true,
+      prototype: 'grave-accord-development',
+      protocolVersion: PROTOCOL,
+      contentRevision: CONTENT_REVISION,
+      checkpointStatus: this.journal.status,
+      recoveryAvailable: false,
+      teamRecord: this.teamRun?.status,
+    });
+    const shots = [...this.game.shots.values()].filter(
+      (s) => s.owner === 'hostile' || s.owner === client.sessionId,
+    );
+    for (let i = 0; i < shots.length; i += 128)
+      client.send('events', encodeEvents([{ type: 'shots', shots: shots.slice(i, i + 128) }]));
+  }
+  async onDrop(client: Client) {
+    if (!(await this.journal.writable())) return;
+    this.game.setConnected(client.sessionId, false);
+    this.transferOwner();
+    try {
+      await this.allowReconnection(client, 60);
+    } catch {
+      /* onLeave releases the expired reservation. */
+    }
+  }
+  async onReconnect(client: Client) {
+    if (!(await this.journal.writable())) throw new ServerError(503, 'roomClosed');
+    this.game.setConnected(client.sessionId, true);
+    this.instrument(client);
+    this.syncState();
+  }
+  async onLeave(client: Client) {
+    this.roomChat.remove(client.sessionId);
+    if (!(await this.journal.writable())) return;
+    this.game.setConnected(client.sessionId, false);
+    const p = this.game.players.get(client.sessionId);
+    if (p) p.expired = true;
+    capacity.release(client.sessionId);
+    this.transferOwner();
+  }
+  onDispose() {
+    if (this.game && [...this.game.players.values()].every(p => !p.connected || p.expired)) this.teamRun?.finish(this.game);
+    this.journal?.dispose();
+    if (this.privateCode) privateRooms.delete(this.privateCode);
+    if (this.roomCode) roomCodes.delete(this.roomCode);
+    for (const p of this.game?.players.values() ?? []) capacity.release(p.id);
+    capacity.removeRoom(this.roomId);
+    liveRooms.delete(this.roomId);
+  }
+  private transferOwner() {
+    if (!this.game.players.get(this.state.owner)?.connected) {
+      this.state.matchPaused = false; this.game.clearInputs();
+      this.state.owner = [...this.game.players.values()].find((p) => p.connected)?.id ?? '';
+    }
+  }
+  private flushEvents() {
+    const shared: Event[] = [];
+    const personal = new Map<string, Event[]>();
+    const add = (id: string, event: Event) => {
+      const list = personal.get(id) ?? [];
+      list.push(event);
+      personal.set(id, list);
+    };
+    for (const event of this.game.drainEvents()) {
+      if (event.type === 'shots') {
+        const hostile = event.shots.filter((s) => s.owner === 'hostile');
+        if (hostile.length) shared.push({ type: 'shots', shots: hostile });
+        for (const shot of event.shots) {
+          this.shotOwners.set(shot.id, shot.owner);
+          if (shot.owner !== 'hostile') add(shot.owner, { type: 'shots', shots: [shot] });
+        }
+      } else if (event.type === 'remove') {
+        const hostile: number[] = [];
+        const own = new Map<string, number[]>();
+        for (const id of event.ids) {
+          const owner = this.shotOwners.get(id);
+          if (owner === 'hostile') hostile.push(id);
+          else if (owner) {
+            const ids = own.get(owner) ?? [];
+            ids.push(id);
+            own.set(owner, ids);
+          }
+          this.shotOwners.delete(id);
+        }
+        if (hostile.length) shared.push({ type: 'remove', ids: hostile });
+        for (const [owner, ids] of own) add(owner, { type: 'remove', ids });
+      } else if (event.type === 'sound' && event.id.startsWith('weapon-')) {
+        if (event.owner) add(event.owner, event);
+      } else shared.push(event);
+    }
+    if (shared.length) this.broadcast('events', encodeEvents(shared));
+    for (const client of this.clients) {
+      const events = personal.get(client.sessionId);
+      if (events?.length) client.send('events', encodeEvents(events));
+    }
+  }
+  private syncState() {
+    const g = this.game,
+      s = this.state;
+    s.tick = g.tick;
+    s.combatTick = g.combatTick;
+    s.phase = g.phase;
+    s.phaseEnds = g.phaseEnds;
+    s.encounter = g.encounter;
+    s.bossId = g.boss.id;
+    s.bossX = g.boss.x;
+    s.bossY = g.boss.y;
+    s.bossHurtAt = g.boss.hurtAt;
+    s.bossDefeatedAt = g.boss.defeatedAt;
+    s.bossCastAt = g.boss.castAt;
+    s.bossCastReleaseAt = g.boss.castReleaseAt;
+    s.bossCastEndsAt = g.boss.castEndsAt;
+    s.bossVulnerableUntil = g.boss.vulnerableUntil;
+    s.bossHealth = Math.max(0, g.boss.health);
+    s.bossMaxHealth = g.boss.maxHealth;
+    s.bossPhase = g.boss.phase;
+    s.bossVariant = g.boss.variant;
+    s.threat = g.boss.threat;
+    s.deadline = g.boss.deadline;
+    s.staggerUntil = g.boss.staggerUntil;
+    for (const p of g.players.values()) {
+      let view = s.players.get(p.id);
+      if (!view) {
+        view = new PlayerState();
+        s.players.set(p.id, view);
+      }
+      view.id = p.id;
+      view.name = p.name;
+      view.classId = p.classId;
+      view.x = Math.round(p.x * 4);
+      view.y = Math.round(p.y * 4);
+      view.aim = Math.round(p.aim * 1000);
+      view.health = Math.round(p.health * 10) / 10;
+      view.maxHealth = Math.ceil(p.maxHealth);
+      view.maxShield = maximumPersonalShield(g.settings.difficulty,p.maxHealth);
+      view.shield = Math.ceil(
+        p.shield +
+          (g.combatTick < p.supplyShieldUntil ? p.supplyShield : 0) +
+          g.classKits.status(p.id, g.combatTick).shield,
+      );
+      view.status = p.status;
+      view.connected = p.connected;
+      view.ack = p.ack;
+      view.ammo = p.ammo;
+      view.coins = p.coins;
+      view.sp = p.totalSp - p.skills.reduce((n, id) => n + GameSkillCost(id), 0);
+      view.qAt = p.qAt;
+      view.eAt = p.eAt;
+      view.ultimateAt = p.ultimateAt;
+      view.dodgeAt = p.dodgeAt;
+      view.reloadAt = p.reloadAt;
+      view.supplyAt = p.supplyAt;
+      view.braceUntil = p.braceUntil;
+      view.overdriveUntil = p.overdriveUntil;
+      view.downUntil = p.downUntil;
+      view.reviveProgress = Math.floor(p.reviveProgress);
+      view.reviveTarget = p.reviveTarget;
+      view.selfRevives = p.selfRevives;
+      view.build = JSON.stringify({
+        progress: p.progress,
+        eligible: p.eligible,
+        weapon: p.weapon,
+        skills: p.skills,
+        upgrades: p.upgrades,
+        supplies: p.supplies,
+        kit: g.classKits.status(p.id, g.combatTick),
+        terrain: p.terrain,
+      });
+      view.speed = g.movementSpeed(p);
+      view.dashUntil = p.dashUntil;
+      view.dashX = p.dashX;
+      view.dashY = p.dashY;
+      view.slowUntil = p.slowUntil;
+      view.poisonUntil = p.poisonUntil;
+      view.dodgeCooldown = g.stats(p).dodgeCooldown;
+    }
+    for (const id of s.players.keys()) if (!g.players.has(id)) s.players.delete(id);
+    for (const actor of g.minions.actors.values()) {
+      const key = String(actor.id);
+      let view = s.actors.get(key);
+      if (!view) {
+        view = new ActorState();
+        s.actors.set(key, view);
+      }
+      view.kind = actor.kind;
+      for (const field of [
+        'id',
+        'x',
+        'y',
+        'oldX',
+        'oldY',
+        'health',
+        'maxHealth',
+        'speed',
+        'radius',
+        'damage',
+        'expires',
+        'attackAt',
+        'slowUntil',
+        'slowMultiplier',
+      ] as const)
+        view[field] = actor[field];
+      view.goalX = actor.goalX ?? -1;
+      view.goalY = actor.goalY ?? -1;
+    }
+    for (const key of s.actors.keys()) if (!g.minions.actors.has(Number(key))) s.actors.delete(key);
+    s.hazards = JSON.stringify({
+      warnings: g.warnings,
+      fields: g.fields,
+      signatures: g.signatures,
+      bossCues: g.bossCues(),
+      classCues: g.classCues(),
+      arenaId: g.arena.id,
+    });
+    s.intermission = JSON.stringify({
+      run: {
+        id: g.settings.runId,
+        mode: g.settings.mode,
+        difficulty: g.settings.difficulty,
+        practiceOnly: true,
+        arenaSelection: g.settings.arenaSelection,
+        selectedArenaId: g.settings.openingArenaId,
+        maximumPlayers: Math.min(g.settings.maxPlayers, capacity.limit),
+      },
+      secretStatus: g.secretStatus,
+      campaignBank: g.campaignBank,
+      extensionParticipants: g.extensionParticipants,
+      mutations: g.mutations,
+      mutationCards: g.mutationCards,
+      contractCards: g.contractCards.map(({ bossId: _concealed, ...card }) => card),
+      votes: Object.fromEntries(g.votes),
+    });
+    s.accord = JSON.stringify(g.accord);
+    if (this.metadata.phase !== g.phase)
+      void this.setMetadata({ ...this.metadata, phase: g.phase });
+  }
+}
+import { data } from '../shared/game.ts';
+const costBySkill = new Map(data.skills.map((s) => [s.id, s.cost]));
+const GameSkillCost = (id: string) => costBySkill.get(id) ?? 0;

@@ -1,0 +1,36 @@
+✔ public new runs ignore chosen opening bosses and use a varied authored entry pool (1.7247ms)
+✔ bounded Solo test values change actual available points and coins, reject malformed requests and disable checkpoint saving (3.1983ms)
+✔ a run modified by testing tools is removed from local records rather than awarding profile progress (5.7107ms)
+✔ known issued profiles migrate name/chat defaults and preserve explicit off choices (1.0017ms)
+✔ room chat normalizes plain text, rejects markup/control payloads, enforces opt-in/rate limits and retains only fifty messages (1.1081ms)
+✔ local leaderboard records partition mode/difficulty and show actual clears without inventing verified scores (0.243ms)
+✔ the compiled public Solo worker removes testing commands and overrides chosen boss/form while testing worker changes real state (409.1193ms)
+✖ real room peers receive bounded server-named chat, opt out, and cannot submit currency commands (1942.494ms)
+✔ public room construction rejects explicit boss injection and ordinary clients receive a random authored opening (115.9165ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 8
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4646.5499
+
+✖ failing tests:
+
+test at tests\testing-social.test.ts:1:7069
+✖ real room peers receive bounded server-named chat, opt out, and cannot submit currency commands (1942.494ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(a.sendChat('After the warning'))
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\testing-social.test.ts:71:68)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

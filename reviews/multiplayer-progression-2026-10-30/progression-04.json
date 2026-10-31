@@ -1,0 +1,153 @@
+{
+  "startedAt": "2026-10-30T19:01:32.613Z",
+  "finishedAt": "2026-10-30T19:01:34.968Z",
+  "passed": false,
+  "freeze": {
+    "createdAt": "2026-10-30T19:00:05.288Z",
+    "reviewedHead": "71e47d255b3a84e75c496eb105c61fbc31aa15db",
+    "runtimeSourceCommit": "cb0ca6d3c27d32c0930381334d0dedbb14d4cc7f",
+    "buildId": "2026.10.30-control-settings",
+    "protocol": 43,
+    "runtimeSourceSha256": "ac091876ad5f0453f454800396f7b94aa47b3daf9bb98315d479dbf815dc1671",
+    "sourceSnapshotSha256": "c3ebeab32a7cd8e841e94cc841cf9887c26206886630b6920473e08ff4c52e04",
+    "additionalSourceBinding": {
+      "sha256": "22ce80d5e0aebde23967278d2f6ecf90fea27a4122d29deef77a3eb512df8de5",
+      "files": 160,
+      "bytes": 56210340
+    },
+    "bundles": [
+      {
+        "name": "server.mjs",
+        "bytes": 2890951,
+        "sha256": "579ea66a571a39703a370af08f28c264552cb5e4c1bcff5637d10b5c4bed4756"
+      },
+      {
+        "name": "probe.mjs",
+        "bytes": 2383732,
+        "sha256": "546a6e285b0780ceaddaba28b40c990d0102a7d93c0464e0cc6a238d9e8246ab"
+      }
+    ],
+    "harnessSources": [
+      {
+        "path": "reviews/multiplayer-progression-2026-10-30/freeze.mjs",
+        "sha256": "8b69d414a7b190a73884d6bb183747437984007dd0e891cac2a638872e3fd732"
+      },
+      {
+        "path": "reviews/multiplayer-progression-2026-10-30/server.mts",
+        "sha256": "3df99175fba3bdd8b1d0add015afc1863cc810c98ea6a980074c612de9b2d834"
+      },
+      {
+        "path": "reviews/multiplayer-progression-2026-10-30/probe.mts",
+        "sha256": "10892d983f778e90b54990a6ea7e049de0d6f4821e0d11195e95ab103467f5df"
+      }
+    ],
+    "root": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\multiplayer-progression-2026-10-30\\frozen-r03",
+    "limits": [
+      "External pinned project node_modules required; IPC-only QA authority. No production entry point or preview changed."
+    ]
+  },
+  "cases": [
+    {
+      "size": 16,
+      "mode": "raid",
+      "visibility": "private",
+      "difficulty": "normal",
+      "serverPid": 39016,
+      "sourceCommit": "cb0ca6d3c27d32c0930381334d0dedbb14d4cc7f",
+      "reviewedHead": "71e47d255b3a84e75c496eb105c61fbc31aa15db",
+      "passed": false,
+      "steps": [],
+      "encounters": [],
+      "syntheticQAClears": true,
+      "fixtureProtection": true,
+      "phaseDeadlinesAccelerated": true,
+      "renderedClients": 0,
+      "network": "loopback",
+      "error": "Error: ui.errorCode\n    at Session.connect (file:///C:/Users/yigal/OneDrive/Documents/ChatGPT/OpenAI%20Multiplayer%20Game%20Contest%20(Bullet%20Hell)/output/multiplayer-progression-2026-10-30/frozen-r03/probe.mjs:38317:76)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///C:/Users/yigal/OneDrive/Documents/ChatGPT/OpenAI%20Multiplayer%20Game%20Contest%20(Bullet%20Hell)/output/multiplayer-progression-2026-10-30/frozen-r03/probe.mjs:83779:11\n    at async Promise.all (index 1)\n    at async run (file:///C:/Users/yigal/OneDrive/Documents/ChatGPT/OpenAI%20Multiplayer%20Game%20Contest%20(Bullet%20Hell)/output/multiplayer-progression-2026-10-30/frozen-r03/probe.mjs:83776:7)\n    at async file:///C:/Users/yigal/OneDrive/Documents/ChatGPT/OpenAI%20Multiplayer%20Game%20Contest%20(Bullet%20Hell)/output/multiplayer-progression-2026-10-30/frozen-r03/probe.mjs:84170:40",
+      "failureSnapshot": {
+        "phase": "lobby",
+        "tick": 3,
+        "combatTick": 0,
+        "phaseEnds": 0,
+        "encounter": 0,
+        "seed": 1111539877,
+        "owner": "leQkcbYO1",
+        "paused": false,
+        "clients": 1,
+        "capacity": {
+          "reservedSlots": 1,
+          "instanceLimit": 50,
+          "rooms": 1,
+          "roomLimit": 4,
+          "available": true,
+          "canJoin": true,
+          "canCreate": true,
+          "queued": 0,
+          "offeredSlots": 3
+        },
+        "arena": "ossuary-works",
+        "boss": {
+          "id": "quarantine-heart",
+          "health": 1,
+          "maxHealth": 1,
+          "defeatedAt": 0
+        },
+        "mutations": [],
+        "mutationCards": [],
+        "contractCards": [],
+        "votes": [],
+        "players": [
+          {
+            "id": "leQkcbYO1",
+            "name": "QA 日本語 0",
+            "classId": "soldier",
+            "status": "active",
+            "connected": true,
+            "expired": false,
+            "coins": 600,
+            "skills": [],
+            "upgrades": {},
+            "supplies": [
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 0,
+            "health": 110,
+            "shield": 0,
+            "x": 1105,
+            "y": 880,
+            "qAt": 0,
+            "eAt": 0
+          }
+        ],
+        "telemetry": {
+          "acceptedInputs": 0,
+          "rejectedInputs": 0,
+          "encodedOutboundBytes": 2558,
+          "peakProjectiles": 0,
+          "tickSamples": [
+            0.6533000000000584,
+            0.08740000000000236,
+            0.1634999999999991
+          ]
+        }
+      },
+      "stderr": ""
+    }
+  ],
+  "limits": [
+    "Separate-process loopback software evidence with real SDK Sessions and isolated SQLite results. Zero rendered or human players.",
+    "Fixture-only invulnerability and boss health clears; intermission deadlines accelerated after a real five-second defeat interval. These are not legitimate qualifying scores or encounter-balance/endurance/WAN/device acceptance.",
+    "No active preview, player room, hosted service, personal save, deployment or published release is modified."
+  ]
+}

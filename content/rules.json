@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "0.2.0",
-  "protocolVersion": 1,
+  "contentVersion": "0.3.0",
+  "protocolVersion": 3,
   "simulationHz": 30,
   "patchHz": 20,
   "worldWidth": 1600,
@@ -15,7 +15,7 @@
   "dodgeCooldown": 3.5,
   "reviveSeconds": 2,
   "downedSeconds": 20,
-  "revivedHealthFraction": 0.5,
+  "revivedHealthFraction": 0.25,
   "soloSelfRevives": 1,
   "reconnectSeconds": 60,
   "checkpointLifetimeHours": 24,
@@ -153,6 +153,31 @@
     "gradeGrowth": 1.1,
     "scope": "Equipment and purchased build power, not player skill. Normalize each role against its own baseline."
   },
+  "brutal": {
+    "healthMultiplier": 2,
+    "damageMultiplier": 2,
+    "deadlineMultiplier": 1.5,
+    "bountyMultiplier": 1.75,
+    "phaseThresholds": [
+      1,
+      0.75,
+      0.5,
+      0.25
+    ],
+    "minimumTelegraphSeconds": 0.85,
+    "endlessTrigger": "A completed Standard identity returns Brutal; after a completed Brutal appearance it returns Crazed.",
+    "projectileCapUnchanged": true,
+    "phaseShieldBreak": false,
+    "echoDelaySeconds": 1.05,
+    "maximumPendingEchoProjectiles": 3072,
+    "maximumPendingEchoOrigins": 128,
+    "projectileMultiplier": 2.5,
+    "echoWaveSpacingSeconds": 0.35,
+    "additionalPatterns": [
+      "pursuit",
+      "crosscut"
+    ]
+  },
   "endless": {
     "finalEncounter": null,
     "fullBuildByEncounter": 10,
@@ -166,9 +191,85 @@
   },
   "secret": {
     "minimumDifficulty": "normal",
-    "minimumAccordBreaks": 3,
     "requireCampaignVictory": true,
     "maximumTimeouts": 0,
-    "bankVictoryBeforeOffer": true
-  }
+    "bankVictoryBeforeOffer": true,
+    "minimumClearedEncounters": 3
+  },
+  "encounterAssists": {
+    "baby": {
+      "phaseShieldBreak": true,
+      "revivedHealthFraction": 1,
+      "shieldCircles": 6,
+      "shieldChannelSeconds": 2
+    },
+    "easy": {
+      "phaseShieldBreak": true,
+      "revivedHealthFraction": 0.5,
+      "shieldCircles": 3,
+      "shieldChannelSeconds": 3
+    },
+    "normal": {
+      "phaseShieldBreak": false,
+      "revivedHealthFraction": 0.25,
+      "shieldCircles": 0,
+      "shieldChannelSeconds": 0
+    },
+    "hard": {
+      "phaseShieldBreak": false,
+      "revivedHealthFraction": 0,
+      "shieldCircles": 0,
+      "shieldChannelSeconds": 0
+    },
+    "insane": {
+      "phaseShieldBreak": false,
+      "revivedHealthFraction": 0,
+      "shieldCircles": 0,
+      "shieldChannelSeconds": 0
+    },
+    "hellish": {
+      "phaseShieldBreak": false,
+      "revivedHealthFraction": 0,
+      "shieldCircles": 0,
+      "shieldChannelSeconds": 0
+    }
+  },
+  "phasePacing": {
+    "maximumEntryThreat": 2,
+    "entryPhaseThresholds": [
+      1,
+      0.5
+    ]
+  },
+  "arenaDifficulty": {
+    "babyAdditionalCover": 2,
+    "hardCoverFraction": 0.5,
+    "noCoverDifficulties": [
+      "insane",
+      "hellish"
+    ],
+    "lavaDifficulty": "hellish",
+    "lavaWarningSeconds": 3,
+    "lavaDamagePerSecond": 24,
+    "lavaHitIntervalSeconds": 0.5,
+    "hellishAllBossesBrutal": false,
+    "insaneAllBossesBrutal": true,
+    "hellishAllBossesCrazed": true
+  },
+  "crazed": {
+    "healthMultiplier": 2,
+    "damageMultiplier": 2,
+    "deadlineMultiplier": 1.5,
+    "bountyMultiplier": 1.75,
+    "projectileMultiplier": 7.5,
+    "relativeBrutalProjectileMultiplier": 3,
+    "phaseShieldBreak": false,
+    "additionalPatterns": [
+      "pursuit",
+      "crosscut",
+      "weave"
+    ],
+    "instantKillAttacks": false
+  },
+  "phaseTransitionCastDelaySeconds": 1.5
 }

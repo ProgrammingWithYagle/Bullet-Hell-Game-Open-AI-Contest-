@@ -1,0 +1,225 @@
+{
+  "savedAt": "2026-10-31T00:49:19.474Z",
+  "objectiveComplete": false,
+  "sourceCommit": "71fc34cfd88a245d7003f16df7a7dc5e90986410",
+  "buildId": "2026.10.30-shared-network",
+  "protocol": 43,
+  "localGate": {
+    "tests": 943,
+    "pass": 943,
+    "fail": 0,
+    "runtimeSourceSha256": "3257d49e22d0c134c9255e3af6b2ca7d04f003e889e41ba057cbfd1c3831a27a",
+    "sourceSnapshotSha256": "78e5b7a8aa7e0702fbc542eef3eb76a6f03ef125756fb3d96841cb4a860ce910"
+  },
+  "additionalSourceBinding": {
+    "sha256": "b6a65f2dd4f6fec3466880a2ca7f697401b865b42a043e5e18729255e62f3f74",
+    "files": 178,
+    "bytes": 64963519
+  },
+  "sourceCI": {
+    "capturedAt": "2026-10-31T00:44:09.373Z",
+    "passed": true,
+    "sourceCommit": "71fc34cfd88a245d7003f16df7a7dc5e90986410",
+    "jobs": [
+      {
+        "id": 124387637908,
+        "headRevision": "71fc34cfd88a245d7003f16df7a7dc5e90986410",
+        "conclusion": "success",
+        "url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/41151126962/job/124387637908",
+        "path": "reviews/shared-network-2026-10-30/ci-124387637908.log",
+        "tests": 943,
+        "pass": 943,
+        "fail": 0,
+        "bytes": 175846,
+        "sha256": "07411928c5f24a31aef1f33322ef86ff2adc33184f2e2a6cc7b5c1589b368666"
+      },
+      {
+        "id": 124387593747,
+        "headRevision": "71fc34cfd88a245d7003f16df7a7dc5e90986410",
+        "conclusion": "success",
+        "url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/41151112899/job/124387593747",
+        "path": "reviews/shared-network-2026-10-30/ci-124387593747.log",
+        "tests": 943,
+        "pass": 943,
+        "fail": 0,
+        "bytes": 175115,
+        "sha256": "5af8fcd682e6ebf6365492c8d001fc7da5457bcfdbe31f088002686fbd371b0c"
+      }
+    ],
+    "limits": [
+      "Complete exact-source software CI; no rendered/human/device/listening/WAN acceptance."
+    ]
+  },
+  "wiki": {
+    "sourceCommit": "71fc34cfd88a245d7003f16df7a7dc5e90986410",
+    "publishedCommit": "26efe7fffad29a10ec3363330faaea15f9cd3fa0",
+    "pages": 18,
+    "images": 34,
+    "path": "reviews/shared-network-2026-10-30/wiki-publication.json",
+    "sha256": "883e0ec4f515a5ff3f5022b29f7df25e4c6c41eff85b57c5319f1a346200c66f"
+  },
+  "previews": [
+    {
+      "audience": "testing",
+      "url": "http://127.0.0.1:5262/",
+      "endpoint": "http://127.0.0.1:2636",
+      "sourceCommit": "71fc34cfd88a245d7003f16df7a7dc5e90986410",
+      "servedHashes": 52,
+      "catalogs": 15,
+      "passed": true,
+      "peerSample": {
+        "peers": 2,
+        "phase": "combat",
+        "bossId": "gate-widow",
+        "form": "normal",
+        "difficulty": "baby",
+        "mode": "short",
+        "sameBoss": true,
+        "chosenRehearsalOpenerIgnored": false,
+        "chosenRehearsalOpenerRetained": true,
+        "testingModified": false,
+        "localizedDefaultNamesReplicated": true,
+        "roomChatDelivered": true,
+        "chatServerConfirmed": true,
+        "chatCooldownExplicit": true,
+        "chatRejectedDraftRetained": true,
+        "roomCodeJoined": true,
+        "hostStartRequired": true,
+        "selectedMapRetained": true,
+        "passwordProtected": true,
+        "incorrectPasswordRejected": true,
+        "roomListingLockFlag": true,
+        "noPasswordInListing": true,
+        "hostPasswordRetainedPrivately": true,
+        "guestPasswordNotExposed": true,
+        "hostPauseAuthoritative": true,
+        "guestPauseRejected": true,
+        "pausedClockFrozen": true,
+        "manualContinueWorks": true,
+        "hostLeaveContinues": true,
+        "promotedHostInviteAvailable": true,
+        "hostEndAllExplained": true,
+        "noManufacturedClear": true,
+        "noPersonalClearClaimed": true
+      },
+      "bytesReceipt": "reviews/shared-network-2026-10-30/preview-testing-bytes.json",
+      "httpReceipt": "reviews/shared-network-2026-10-30/preview-testing-live-check.json",
+      "processes": {
+        "createdAt": "2026-10-31T00:42:49.7853038Z",
+        "sourceCommit": "71fc34cfd88a245d7003f16df7a7dc5e90986410",
+        "protocol": 43,
+        "audience": "testing",
+        "launcherPid": 24072,
+        "node": "C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "backend": {
+          "pid": 24524,
+          "startedAt": "2026-10-31T00:42:49.7295173Z",
+          "script": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-shared-network-testing-71fc34c-r01\\server.mjs",
+          "sha256": "2a84272e344bb9026ea9c4515a35debcfc1c069967e865759fbf82f7d26a2812",
+          "port": 2636
+        },
+        "client": {
+          "pid": 23192,
+          "startedAt": "2026-10-31T00:42:49.7660520Z",
+          "root": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\playtest-shared-network-testing-71fc34c-r01",
+          "port": 5262,
+          "command": "vite preview --outDir output\\playtest-shared-network-testing-71fc34c-r01 --host 127.0.0.1 --port 5262 --strictPort"
+        }
+      }
+    },
+    {
+      "audience": "public",
+      "url": "http://127.0.0.1:5263/",
+      "endpoint": "http://127.0.0.1:2637",
+      "sourceCommit": "71fc34cfd88a245d7003f16df7a7dc5e90986410",
+      "servedHashes": 52,
+      "catalogs": 15,
+      "passed": true,
+      "peerSample": {
+        "peers": 2,
+        "phase": "combat",
+        "bossId": "constable",
+        "form": "normal",
+        "difficulty": "baby",
+        "mode": "short",
+        "sameBoss": true,
+        "chosenRehearsalOpenerIgnored": true,
+        "chosenRehearsalOpenerRetained": false,
+        "testingModified": false,
+        "localizedDefaultNamesReplicated": true,
+        "roomChatDelivered": true,
+        "chatServerConfirmed": true,
+        "chatCooldownExplicit": true,
+        "chatRejectedDraftRetained": true,
+        "roomCodeJoined": true,
+        "hostStartRequired": true,
+        "selectedMapRetained": true,
+        "passwordProtected": true,
+        "incorrectPasswordRejected": true,
+        "roomListingLockFlag": true,
+        "noPasswordInListing": true,
+        "hostPasswordRetainedPrivately": true,
+        "guestPasswordNotExposed": true,
+        "hostPauseAuthoritative": true,
+        "guestPauseRejected": true,
+        "pausedClockFrozen": true,
+        "manualContinueWorks": true,
+        "hostLeaveContinues": true,
+        "promotedHostInviteAvailable": true,
+        "hostEndAllExplained": true,
+        "noManufacturedClear": true,
+        "noPersonalClearClaimed": true
+      },
+      "bytesReceipt": "reviews/shared-network-2026-10-30/preview-public-bytes.json",
+      "httpReceipt": "reviews/shared-network-2026-10-30/preview-public-live-check.json",
+      "processes": {
+        "createdAt": "2026-10-31T00:44:43.4789621Z",
+        "sourceCommit": "71fc34cfd88a245d7003f16df7a7dc5e90986410",
+        "protocol": 43,
+        "audience": "public",
+        "launcherPid": 19144,
+        "node": "C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "backend": {
+          "pid": 65748,
+          "startedAt": "2026-10-31T00:44:42.8410710Z",
+          "script": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-shared-network-public-71fc34c-r01\\server.mjs",
+          "sha256": "2a84272e344bb9026ea9c4515a35debcfc1c069967e865759fbf82f7d26a2812",
+          "port": 2637
+        },
+        "client": {
+          "pid": 32592,
+          "startedAt": "2026-10-31T00:44:43.0139749Z",
+          "root": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\playtest-shared-network-public-71fc34c-r01",
+          "port": 5263,
+          "command": "vite preview --outDir output\\playtest-shared-network-public-71fc34c-r01 --host 127.0.0.1 --port 5263 --strictPort"
+        }
+      }
+    }
+  ],
+  "native": {
+    "path": "reviews/windows-shared-network-2026-10-30/package-status.json",
+    "sha256": "c5c80ea4a0c1b326d1acc99c6357c08bf7ea681daf0e43c6eac94a4bed849cdf",
+    "archive": {
+      "path": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\release\\Grave_Accord_2026.10.30_Shared_Network_Public_Review.zip",
+      "bytes": 848387334,
+      "sha256": "4a8f24625c3e8d39327156c6fd9198e67a0341ad8ad509bfab52e8691c7eb0a0"
+    },
+    "totalFiles": 1902,
+    "fixtures": 6,
+    "softwarePortableAccepted": true,
+    "renderedAccepted": false,
+    "humanAccepted": false
+  },
+  "multiplayerProgression": {
+    "path": "reviews/shared-network-2026-10-30/progression-verification-01.json",
+    "sha256": "6919c56221e89e0287a3f0251acb9811debd95d56dca60a1ef95bd8feb2d85d3",
+    "freshChangedAuthority": true
+  },
+  "limitedPreviousHumanFeedback": "reviews/shared-network-2026-10-30/human-feedback-01.json",
+  "currentHumanAccepted": false,
+  "mainMerged": false,
+  "gameDeployed": false,
+  "hostedReleaseReplaced": false,
+  "contestSubmitted": false,
+  "remaining": "Broad polish goal and recorded human/rendered/balance/device/language/listening/art/endurance/WAN acceptance remain open."
+}

@@ -9,9 +9,320 @@
 *.csv text eol=lf
 *.html text eol=lf
 *.yml text eol=lf
+*.yaml text eol=lf
+*.css text eol=lf
 *.png binary
 *.wav binary
 *.pdf binary
 *.zip binary
 # Preserve verbatim third-party license text, including upstream whitespace.
 docs/licenses/** -text -whitespace
+# Preserve newly issued reference-receipt bytes, including their original line endings.
+assets/production/generated/heavy-actions-2026-10-24/references/reference-receipt-issued.json -text
+assets/production/generated/assassin-actions-2026-10-24/references/reference-receipt-issued.json -text
+
+# Preserve the exact historical Windows metadata bound by the Constable portability receipt.
+assets/production/generated/constable-motion-2026-10-25/references/attack-metadata-issued-crlf.json -text
+
+reviews/boss-texture-loading-2026-10-25/issued-logs/*.log -text
+
+reviews/constable-motion-2026-10-25/issued-logs/*.log -text
+
+# Preserve exact ground-art verification output before publication.
+reviews/arena-ground-2026-10-25/*.log -text
+
+# Keep exact new boss-defeat verification output bytes.
+reviews/opening-defeats-2026-10-25/*.log -text -whitespace
+
+# Preserve exact motion-continuity verification evidence.
+reviews/courier-actions-2026-10-25/*.log -text -whitespace
+
+# Preserve map and portrait verification evidence exactly.
+reviews/map-layouts-2026-10-25/*.log -text -whitespace
+reviews/selection-portraits-2026-10-25/*.log -text -whitespace
+
+# Preserve the two exact issued portrait request bodies, including CRLF.
+assets/production/generated/selection-portraits-2026-10-25/*-v1.request.json -text -whitespace
+
+# Exact issued geometry text for shallow source checkouts.
+reviews/map-layouts-2026-10-25/issued-ground-geometry.ts.txt -text -whitespace
+
+# Preserve exact classified-threat verification output.
+reviews/fixed-threats-2026-10-25/*.log -text -whitespace
+
+reviews/constable-pressure-2026-10-25/*.log -text -whitespace
+assets/production/generated/constable-pressure-2026-10-25/*.request.json -text -whitespace
+tools/*constable-shuffle.py text eol=lf
+assets/production/motion/constable*library.json text eol=lf
+docs/constable-pressure-2026-10-25.json text eol=lf
+reviews/constable-pressure-2026-10-25/*.json text eol=lf
+
+reviews/boss-practice-2026-10-25/*.log -text -whitespace
+
+reviews/phase-feedback-2026-10-25/*.log -text -whitespace
+assets/production/generated/early-watch-concepts-2026-10-25/*.request.json -text -whitespace
+
+# Preserve exact preproduction requests and issued preparation records.
+assets/production/generated/early-watch-motion-2026-10-25/requests/*.request.json -text -whitespace
+assets/production/generated/early-watch-motion-2026-10-25/*.issued.json -text -whitespace
+reviews/early-watch-motion-2026-10-25/*.log -text -whitespace
+
+# Byte-preserved checkpoint copies and partial packing history.
+assets/production/generated/early-watch-motion-2026-10-25/** -text -whitespace
+reviews/early-watch-motion-2026-10-25/** -text -whitespace
+docs/history/2026-10-25-checkpoint-cleanup/** -text -whitespace
+
+START_NEXT_CHAT.txt text eol=lf
+
+# Preserve exact class-transformation verification output, including issued whitespace.
+reviews/class-talents-2026-10-25/*.txt -text -whitespace
+
+# Preserve exact Warden-patrol output/request bytes and issued whitespace.
+reviews/warden-patrol-2026-10-25/*.txt -text -whitespace
+assets/production/generated/warden-patrol-2026-10-25/*.request.json -text -whitespace
+
+# Preserve exact Small Wakes requests and verification output.
+assets/production/generated/small-wakes-2026-10-26/*.request.json -text -whitespace
+reviews/small-wakes-2026-10-26/*.log -text -whitespace
+
+# Preserve exact Crazed Horizon verification output and issued whitespace.
+reviews/crazed-horizon-2026-10-26/*.log -text -whitespace
+
+reviews/courier-route-2026-10-26/*.log -text -whitespace
+
+reviews/ratcatcher-muster-2026-10-26/*.log -text -whitespace
+
+reviews/clerk-appeal-2026-10-26/*.log -text -whitespace
+
+reviews/clerk-shelter-2026-10-27/*.log -text -whitespace
+
+reviews/banked-verdicts-2026-10-27/*.log -text -whitespace
+
+reviews/clerk-venom-2026-10-27/*.log -text -whitespace
+
+reviews/shifting-writ-2026-10-27/*.log -text -whitespace
+
+# Preserve exact Crossed Threshold verification output and correction history.
+reviews/crossed-threshold-2026-10-27/*.log -text -whitespace
+
+# Preserve exact Last Dispatch verification output and correction history.
+reviews/last-dispatch-2026-10-27/*.log -text -whitespace
+
+# Preserve exact Cradle Relay verification output and correction history.
+reviews/cradle-relay-2026-10-27/*.log -text -whitespace
+
+# Preserve exact original Cradle Relay helper launch receipts after confirmed process exits.
+reviews/cradle-relay-2026-10-27/issued-launch-records/*.json -text -whitespace
+
+# Preserve exact Reagent Road verification output and first-failure/correction evidence.
+reviews/reagent-road-2026-10-27/*.log -text -whitespace
+
+# Preserve exact Alchemist laboratory first-failure, corrected and CI output.
+reviews/alchemist-lab-2026-10-27/*.log -text -whitespace
+
+# Preserve exact Resonant Tolls local failure/correction and source-CI output.
+reviews/resonant-tolls-2026-10-27/*.log -text -whitespace
+
+# Preserve exact Counterpoint local failures/corrections and source-CI logs.
+reviews/bell-counterpoint-2026-10-28/*.log -text -whitespace
+
+# Preserve exact phase-continuity failures, diagnostics, current gates and CI logs.
+reviews/phase-continuity-2026-10-28/*.log -text -whitespace
+reviews/returning-clapper-2026-10-28/*.log -text -whitespace
+reviews/volatile-distillation-2026-10-28/*.log -text -whitespace
+reviews/volatile-distillation-2026-10-28/*.raw -text
+
+# Preserve exact First Watch verification logs and diagnostic archives.
+reviews/public-polish-2026-10-28/**/*.log -text -whitespace
+reviews/public-polish-2026-10-28/*.log.gz -text
+
+# Preserve the exact First Watch follow-up gate and CI output.
+reviews/public-polish-followup-2026-10-28/**/*.log -text -whitespace
+reviews/public-polish-followup-2026-10-28/*.mts text eol=lf
+reviews/public-polish-followup-2026-10-28/*.ps1 text eol=lf
+reviews/public-polish-2026-10-28/*.mts text eol=lf
+reviews/public-polish-2026-10-28/wiki-prepared.diff -text -whitespace
+
+# Preserve exact Clear Choices verification output and helper source line endings.
+reviews/clear-choices-2026-10-28/**/*.log -text -whitespace
+reviews/clear-choices-2026-10-28/*.mts text eol=lf
+reviews/clear-choices-2026-10-28/*.ps1 text eol=lf
+reviews/clear-choices-2026-10-28/*.svg text eol=lf
+
+# Preserve exact run-recap test/build output and helper source line endings.
+reviews/run-results-2026-10-28/**/*.log -text -whitespace
+reviews/run-results-2026-10-28/*.mts text eol=lf
+reviews/run-results-2026-10-28/*.ps1 text eol=lf
+
+# Preserve current portable-review verification and native diagnostic output.
+reviews/portable-review-2026-10-28/**/*.log -text -whitespace
+reviews/portable-review-2026-10-28/*.mts text eol=lf
+reviews/portable-review-2026-10-28/*.ps1 text eol=lf
+
+# Preserve exact long-path correction evidence.
+reviews/portable-paths-2026-10-28/**/*.log -text -whitespace
+reviews/portable-paths-2026-10-28/*.mts text eol=lf
+reviews/portable-paths-2026-10-28/*.ps1 text eol=lf
+
+# Exact smooth-rooms verification evidence.
+reviews/smooth-rooms-2026-10-29/**/*.log -text -whitespace
+reviews/smooth-rooms-2026-10-29/*.mts text eol=lf
+reviews/smooth-rooms-2026-10-29/*.ps1 text eol=lf
+reviews/portable-paths-2026-10-28/package-*.json -text -whitespace
+reviews/portable-paths-2026-10-28/preview-*-processes.json -text -whitespace
+reviews/smooth-rooms-2026-10-29/package-*.json -text -whitespace
+reviews/smooth-rooms-2026-10-29/preview-*-processes.json -text -whitespace
+
+# Preserve exact chat-space software evidence.
+reviews/chat-space-2026-10-29/**/*.log -text -whitespace
+reviews/chat-space-2026-10-29/**/*.json -text -whitespace
+reviews/chat-space-2026-10-29/*.mts text eol=lf
+
+# Exact chat-toggle follow-up evidence.
+reviews/chat-toggle-2026-10-29/**/*.log -text -whitespace
+reviews/chat-toggle-2026-10-29/**/*.json -text -whitespace
+reviews/chat-toggle-2026-10-29/*.mts text eol=lf
+
+# Exact boss-defeat timing and coverage evidence.
+reviews/boss-defeat-2026-10-29/**/*.log -text -whitespace
+reviews/boss-defeat-2026-10-29/**/*.json -text -whitespace
+reviews/boss-defeat-2026-10-29/*.mts text eol=lf
+
+# Preserve exact room-lobby source-art metadata and review receipts.
+reviews/room-lobby-2026-10-29/**/*.json -text -whitespace
+reviews/room-lobby-2026-10-29/**/*.log -text -whitespace
+reviews/room-lobby-2026-10-29/**/*.txt -text -whitespace
+reviews/room-lobby-2026-10-29/*.mts text eol=lf
+reviews/room-lobby-2026-10-29/*.ps1 text eol=lf
+assets/production/arena-cover-surfaces/*.json -text -whitespace
+assets/production/arena-perimeters/*.json -text -whitespace
+assets/production/arena-worlds/*.json -text -whitespace
+
+# Exact Medic recovery validation and helper source.
+reviews/medic-recovery-2026-10-29/**/*.json -text -whitespace
+reviews/medic-recovery-2026-10-29/**/*.log -text -whitespace
+reviews/medic-recovery-2026-10-29/*.mts text eol=lf
+reviews/medic-recovery-2026-10-29/*.ps1 text eol=lf
+
+# Exact interface-clarity validation and helper source.
+reviews/interface-clarity-2026-10-29/**/*.json -text -whitespace
+reviews/interface-clarity-2026-10-29/**/*.log -text -whitespace
+reviews/interface-clarity-2026-10-29/*.mts text eol=lf
+reviews/interface-clarity-2026-10-29/*.ps1 text eol=lf
+
+# Exact confirmed-chat validation and helper source.
+reviews/chat-confirmation-2026-10-29/**/*.json -text -whitespace
+reviews/chat-confirmation-2026-10-29/**/*.log -text -whitespace
+reviews/chat-confirmation-2026-10-29/*.mts text eol=lf
+reviews/chat-confirmation-2026-10-29/*.ps1 text eol=lf
+
+# Exact current Windows package and native diagnostic evidence.
+reviews/windows-current-2026-10-29/**/*.json -text -whitespace
+reviews/windows-current-2026-10-29/**/*.log -text -whitespace
+reviews/windows-current-2026-10-29/*.ps1 text eol=lf
+
+# Exact source/Wiki publication evidence and archived active guides.
+reviews/publication-sync-2026-10-29/**/*.json -text -whitespace
+reviews/publication-sync-2026-10-29/**/*.log -text -whitespace
+docs/history/2026-10-29-publication-sync/** -text -whitespace
+
+# Exact connection cancellation, menu and transport evidence.
+reviews/connection-clarity-2026-10-29/**/*.json -text -whitespace
+reviews/connection-clarity-2026-10-29/**/*.log -text -whitespace
+reviews/connection-clarity-2026-10-29/*.mts text eol=lf
+reviews/connection-clarity-2026-10-29/*.ps1 text eol=lf
+
+# Exact host controls, password privacy and current-source review evidence.
+reviews/host-controls-2026-10-29/**/*.json -text -whitespace
+reviews/host-controls-2026-10-29/**/*.log -text -whitespace
+reviews/host-controls-2026-10-29/*.mts text eol=lf
+reviews/host-controls-2026-10-29/*.ps1 text eol=lf
+
+# Matching host-controls Windows package evidence.
+reviews/windows-host-controls-2026-10-29/**/*.json -text -whitespace
+reviews/windows-host-controls-2026-10-29/**/*.log -text -whitespace
+reviews/windows-host-controls-2026-10-29/*.ps1 text eol=lf
+
+# Exact arena-edge source and review evidence.
+reviews/arena-edge-2026-10-29/**/*.json -text -whitespace
+reviews/arena-edge-2026-10-29/**/*.log -text -whitespace
+reviews/arena-edge-2026-10-29/*.mts text eol=lf
+reviews/arena-edge-2026-10-29/*.ps1 text eol=lf
+
+# Preserve the native-alpha input tool hash on every checkout.
+tools/boss-body-art-inputs.mts text eol=lf
+
+# Matching arena-edge Windows review evidence.
+reviews/windows-arena-edge-2026-10-29/**/*.json -text -whitespace
+reviews/windows-arena-edge-2026-10-29/**/*.log -text -whitespace
+reviews/windows-arena-edge-2026-10-29/*.ps1 text eol=lf
+
+# Exact camera clearance and upper-route review evidence.
+reviews/camera-clearance-2026-10-29/**/*.json -text -whitespace
+reviews/camera-clearance-2026-10-29/**/*.log -text -whitespace
+reviews/camera-clearance-2026-10-29/*.mts text eol=lf
+reviews/camera-clearance-2026-10-29/*.ps1 text eol=lf
+
+# Matching camera-clearance Windows review evidence.
+reviews/windows-camera-clearance-2026-10-29/**/*.json -text -whitespace
+reviews/windows-camera-clearance-2026-10-29/**/*.log -text -whitespace
+reviews/windows-camera-clearance-2026-10-29/*.ps1 text eol=lf
+
+# Exact home gallery source and review evidence.
+reviews/home-gallery-2026-10-29/**/*.json -text -whitespace
+reviews/home-gallery-2026-10-29/**/*.log -text -whitespace
+reviews/home-gallery-2026-10-29/*.mts text eol=lf
+reviews/home-gallery-2026-10-29/*.ps1 text eol=lf
+
+# Exact menu reliability and matching native review evidence.
+reviews/menu-reliability-2026-10-30/**/*.json -text -whitespace
+reviews/menu-reliability-2026-10-30/**/*.log -text -whitespace
+reviews/menu-reliability-2026-10-30/*.mts text eol=lf
+reviews/menu-reliability-2026-10-30/*.ps1 text eol=lf
+reviews/windows-home-gallery-2026-10-29/**/*.json -text -whitespace
+reviews/windows-home-gallery-2026-10-29/**/*.log -text -whitespace
+reviews/windows-home-gallery-2026-10-29/*.ps1 text eol=lf
+reviews/windows-menu-reliability-2026-10-30/**/*.json -text -whitespace
+reviews/windows-menu-reliability-2026-10-30/**/*.log -text -whitespace
+reviews/windows-menu-reliability-2026-10-30/*.ps1 text eol=lf
+
+# Exact profile/language navigation and native review evidence.
+reviews/profile-navigation-2026-10-30/**/*.json -text -whitespace
+reviews/profile-navigation-2026-10-30/**/*.log -text -whitespace
+reviews/profile-navigation-2026-10-30/*.mts text eol=lf
+reviews/profile-navigation-2026-10-30/*.ps1 text eol=lf
+reviews/windows-profile-navigation-2026-10-30/**/*.json -text -whitespace
+reviews/windows-profile-navigation-2026-10-30/**/*.log -text -whitespace
+reviews/windows-profile-navigation-2026-10-30/*.ps1 text eol=lf
+
+# Corrected profile/navigation native review, attempt02.
+reviews/windows-profile-navigation-2026-10-30-r02/**/*.json -text -whitespace
+reviews/windows-profile-navigation-2026-10-30-r02/**/*.log -text -whitespace
+reviews/windows-profile-navigation-2026-10-30-r02/*.ps1 text eol=lf
+
+# First-visit language choice, names and matching native review evidence.
+reviews/first-language-2026-10-30/**/*.json -text -whitespace
+reviews/first-language-2026-10-30/**/*.log -text -whitespace
+reviews/first-language-2026-10-30/*.mts text eol=lf
+reviews/first-language-2026-10-30/*.ps1 text eol=lf
+reviews/windows-first-language-2026-10-30/**/*.json -text -whitespace
+reviews/windows-first-language-2026-10-30/**/*.log -text -whitespace
+reviews/windows-first-language-2026-10-30/*.ps1 text eol=lf
+
+# Preserve exact final contest receipts and sealed handoff bytes.
+reviews/shared-network-2026-10-30/**/*.json -text -whitespace
+reviews/shared-network-2026-10-30/**/*.log -text -whitespace
+reviews/shared-network-2026-10-30/*.mts text eol=lf
+reviews/shared-network-2026-10-30/*.ps1 text eol=lf
+reviews/contest-publication-2026-10-30/**/*.json -text -whitespace
+reviews/contest-publication-2026-10-30/**/*.log -text -whitespace
+reviews/windows-shared-network-2026-10-30/**/*.json -text -whitespace
+reviews/windows-shared-network-2026-10-30/**/*.log -text -whitespace
+reviews/windows-shared-network-2026-10-30/*.ps1 text eol=lf
+handoff/contest-checkpoint-2026-10-30/** -text -whitespace
+
+# Preserve the issued browser-repair evidence.
+reviews/browser-release-fixes-2026-10-30/**/*.json -text -whitespace
+reviews/browser-release-fixes-2026-10-30/**/*.log -text -whitespace
+reviews/browser-release-fixes-2026-10-30/*.mts text eol=lf
+reviews/browser-release-fixes-2026-10-30/*.ps1 text eol=lf

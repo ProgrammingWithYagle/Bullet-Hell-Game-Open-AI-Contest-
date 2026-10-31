@@ -1,0 +1,24 @@
+# Public polish
+
+Make the existing game clear and enjoyable for first-time players. Use plain words, familiar controls and the same presentation in public and testing.
+
+Equipment and skills show different painted images when no item is selected. The shop and player status use matching equipment-case, coin and field-manual artwork with written labels. Valid room-code lookups and admissions allow a full group sharing one connection to join and retry, while wrong-code guesses keep their separate limit. Opening your own result reuses its first roster page; loading more results keeps one own row, and a mismatched difficulty cannot inject a recent result.
+
+Exact product source **71fc34cfd88a245d7003f16df7a7dc5e90986410**, build **2026.10.30-shared-network / protocol 43**, passes **943 tests, 943 pass, 0 fail** locally and in both complete source CI jobs **124387637908** and **124387593747**. TypeScript, content/all fifteen catalogs/native artwork, production build and 71 atlas contracts pass. Testing **http://127.0.0.1:5262/** / backend2636 and public **http://127.0.0.1:5263/** / backend2637 each pass 52 served hashes, all 15 catalogs and actual two-peer room/password/code/localized-name/chat/host/record flows. Wiki **26efe7fffad29a10ec3363330faaea15f9cd3fa0** matches 18 canonical pages and 34 images.
+
+The matching local Windows review verifies all 1,902 files on the original, fresh complete ZIP extraction and independent Japanese-path Windows copy, before and after six packaged offline/LAN diagnostics. Its **848387334-byte ZIP** has SHA256 **4a8f24625c3e8d39327156c6fd9198e67a0341ad8ad509bfab52e8691c7eb0a0**. Font paths 221/276/277 characters pass. [Package status](../reviews/windows-shared-network-2026-10-30/package-status.json) and [delivery guide](../reviews/windows-shared-network-2026-10-30/DELIVERY.md) bind the archive and sidecars. These software checks do not establish rendered, human, physical-device, listening or native-language acceptance.
+
+Human testing5258 finds the preceding equipment/skills flow fine, with no noticeable visual change, and requests different unselected equipment artwork plus painted equipment/coin/skill-point pictures. This is limited feedback for product9ae3bb9, not acceptance of the later records or current images/network changes. Earlier5256 feedback confirms the empty language-screen strip is gone. Current rendered/human comparison remains open.
+
+A [fresh larger-team software run](../reviews/shared-network-2026-10-30/progression-verification-01.json) exercises the changed authority with an eight-player five-fight campaign, private sixteen-player three-fight Raid and fifty-player three-clear Endless sample. All seven classes use earned mixed builds, active input/abilities, votes, host pause/chat/departure/transfer, replacement players and reconnect. Team results survive restart; turnover retains 9/17/51 historical participants, with the 51-person roster in two pages. Separate real same-IP tests cover fifty code joins and a sixteen-then-fifty lobby retry in one minute. Protected QA players, accelerated clears/deadlines, isolated records and zero rendered clients keep this separate from ordinary qualifying scores, balance, full endurance, physical Wi-Fi, WAN/hosted/device acceptance. The historical fifty-client join timeout remains preserved with cause unproven.
+
+Keep New here? → Start gently, optional Tutorial, clear mode/map/difficulty choices, named equipment, character headshots and separate health/shield/resource bars. Waiting room and Prepare equipment remain separate. Chat retains its accepted positions, C toggle, drafts and confirmed delivery. Personal settings/chat do not pause online matches; explicit host Pause/Continue and confirmed End for everyone remain.
+
+The contest publication is the current stop boundary; use the new-chat handoff before beginning further development.
+
+
+## Contest checkpoint and next chat
+
+The public-only contest version is live at https://grave-accord.yigallin0423.chatgpt.site (Site version 1, deployment appgdep_6ae53e3b91b481918641a344774aea2d). Its matching Free service is https://grave-accord-contest.onrender.com, with eight slots and one room. See the new-chat packet at [handoff/contest-checkpoint-2026-10-30](../handoff/contest-checkpoint-2026-10-30/README.md). Only the browser public audience was published; testing and the Windows public download were not published/replaced. The old Site under the other account remains separate.
+
+This final request is a checkpoint boundary. Stop contest feature work after sealing the handoff. Start post-contest story, bots, classes or other major work only when the user gives the next chat a fresh direction. Preserve all original art, failed receipts, frozen services and packages. Browser automation remains disabled; recorded rendered/human/device/listening/native-language, balance, endurance and durable global storage limits remain explicit.

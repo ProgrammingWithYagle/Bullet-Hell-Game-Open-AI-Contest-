@@ -1,0 +1,36 @@
+✔ Cancel keeps a newer load intact after the older join returns success (433.6863ms)
+✔ Cancel keeps a newer load intact after the older join returns error (297.2373ms)
+✔ Escape cancels before artwork or audio settles and late completions do not reopen the game (240.3749ms)
+✔ password eye buttons reveal exact typed text without submitting or changing it; cancel clears the form (4.1874ms)
+✔ host invite and waiting-room password controls render only the authorized value and clear it on owner change (4.9912ms)
+✔ explicit host buttons send Pause/Continue, menu state alone sends nothing, and ending needs confirmation (6.0297ms)
+✔ ending an encounter clears queued actions without inventing a clear or a player-down reason (1.2418ms)
+✔ issued42local Practice keeps build/map/economy identity while server checkpoints remain strict (3.4965ms)
+✔ all fifteen catalogs include the exact authored host-control and password notices (24.6584ms)
+✔ host-only pause freezes real peers, chat stays live, leaving resumes and transfers private invite access, end reaches everyone (1189.7656ms)
+✔ explicit pause holds the real intermission clock, rejects transactions, and Continue restores the same remaining time (498.3309ms)
+✖ a dropped paused host reconnects without taking host control back or stopping the remaining player (247.5751ms)
+✔ a manually paused journal renews its lease without stepping the game or its timers (6.2804ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 12
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4118.6625
+
+✖ failing tests:
+
+test at tests\host-match-network.test.ts:1:6139
+✖ a dropped paused host reconnects without taking host control back or stopping the remaining player (247.5751ms)
+  InvalidAccessError: invalid code
+      at new DOMException (node:internal/per_context/domexception:76:18)
+      at validateCloseCodeAndReason (node:internal/deps/undici/undici:14616:17)
+      at closeWebSocketConnection (node:internal/deps/undici/undici:14879:21)
+      at WebSocket.close (node:internal/deps/undici/undici:15634:9)
+      at WebSocketTransport.close (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\node_modules\.pnpm\@colyseus+sdk@0.18.6_@colyseus+core@0.18.21_typescript@7.0.2\node_modules\@colyseus\sdk\src\transport\WebSocketTransport.ts:79:17)
+      at Connection.close (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\node_modules\.pnpm\@colyseus+sdk@0.18.6_@colyseus+core@0.18.21_typescript@7.0.2\node_modules\@colyseus\sdk\src\Connection.ts:89:24)
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\host-match-network.test.ts:69:25)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)

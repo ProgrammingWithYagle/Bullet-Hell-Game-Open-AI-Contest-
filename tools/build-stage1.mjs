@@ -1,7 +1,28 @@
+import {applyBellCounterpoint} from '../content/source/bell-counterpoint.mjs';
+import {applyBellCarillon} from '../content/source/bell-carillon.mjs';
+import {applyMoldMixing} from '../content/source/mold-mixing.mjs';
+import {applyMatronWard} from '../content/source/matron-ward.mjs';
+import {applyAmbulanceRoute} from '../content/source/ambulance-route.mjs';
+import {applyWidowGates} from '../content/source/widow-gates.mjs';
+import {applyMarshalChains} from '../content/source/marshal-chains.mjs';
+import {applyTollkeeperReturn} from '../content/source/tollkeeper-return.mjs';
+import {applyClerkAppeal} from '../content/source/clerk-appeal.mjs';
+import {applyRatcatcherMuster} from '../content/source/ratcatcher-muster.mjs';
+import {applyCourierRoute} from '../content/source/courier-route.mjs';
+import {applyCrazedHorizon} from '../content/source/crazed-horizon.mjs';
+import {addSmallWakes} from '../content/source/small-wakes.mjs';
+import {applyWardenPatrol} from '../content/source/warden-patrol.mjs';
+import {addClassTalents} from '../content/source/class-talents.mjs';
+import { applyEncounterPacing } from '../content/source/encounter-pacing.mjs';
+import { addEarlyWatch } from '../content/source/early-watch.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { expandBosses, bossPools } from '../content/source/boss-expansion.mjs';
+import { expandSkills } from '../content/source/skill-expansion.mjs';
+import { gatehouseObstacles } from '../content/source/arena-geometry.mjs';
+import { reviseConstable } from '../content/source/constable-encounter.mjs';
+import { addBossVariants, brutalRules } from '../content/source/boss-variants.mjs';
 
 // Authored design data and document production only. No gameplay implementation.
 const root = path.resolve(import.meta.dirname, '..');
@@ -12,7 +33,7 @@ const table = (headers, rows) => [ '| ' + headers.join(' | ') + ' |', '| ' + hea
 const csv = (headers, rows) => [headers, ...rows].map(row => row.map(value => '"' + String(value).replaceAll('"', '""') + '"').join(',')).join('\n') + '\n';
 
 const rules = {
-  schemaVersion: 1, contentVersion: '0.2.0', protocolVersion: 1,
+  schemaVersion: 1, contentVersion: '0.3.0', protocolVersion: 3,
   simulationHz: 30, patchHz: 20, worldWidth: 1600, worldHeight: 1000,
   playerRadius: 9, bossRadius: 58, bulletRadius: 5,
   dodgeDuration: 0.22, dodgeInvulnerability: 0.16, dodgeSpeed: 800, dodgeCooldown: 3.5,
@@ -29,6 +50,7 @@ const rules = {
   friendlyFire: false, playerCollision: false, healingAtEncounterStart: true,
   modifierLimits: { damage: [0.35,4], maxHealth: [0.3,2.5], fireRate: [0.35,2.5], moveSpeed: [0.55,1.65], reloadTime: [0.4,2], cooldown: [0.4,1.6], healing: [0.3,2], armor: [0,0.65], bossBulletCount: [0.7,2], bossSpeed: [0.65,1.6], bossHealth:[0.6,2.5], bossDamage:[0.5,2.5], coins:[0.5,4], timer:[0.75,1.25], barrierHealth:[0.4,2], spread:[0.3,1.75], magazine:[0.5,2], dodgeCooldown:[0.4,1.6], reviveTime:[0.4,1.6], abilityPotency:[0.5,2], extraShots:[0,3], startShield:[0,100] },
   buildRating: { weights: { offense:0.5, survival:0.25, support:0.25 }, gradeGrowth:1.1, scope:'Equipment and purchased build power, not player skill. Normalize each role against its own baseline.' },
+  brutal: brutalRules,
   endless: { finalEncounter:null, fullBuildByEncounter:10, cycleEncounters:10, healthGrowthPerCycle:0.15, damageGrowthPerCycle:0.12, speedGrowthPerCycle:0.025, maximumSpeedGrowth:0.5, cappedPlayerPower:true, rewards:'Completed-encounter mastery, cosmetics and local streak records. Power purchases stop at their normal caps.' },
   secret: { minimumDifficulty:'normal', minimumAccordBreaks:3, requireCampaignVictory:true, maximumTimeouts:0, bankVictoryBeforeOffer:true },
 };
@@ -90,7 +112,7 @@ const ultimateSpecs = {
 };
 const grades = ['D-','D','D+','C-','C','C+','B-','B','B+','A-','A','A+','S-','S','S+','SS-','SS','SS+'];
 const classes = classSpecs.map(({q,e,branches,...value}) => ({...value,branches:branches.map(([name])=>({id:slug(name),name})),abilities:[q,e].map(([kind,name,cooldown,duration,radius,damage],i)=>({id:value.id+'-'+(i?'e':'q'),slot:i?'e':'q',kind,name,cooldown,duration,radius,damage,description:(i?e:q)[6]})),ultimate:{id:value.id+'-ultimate',slot:'ultimate',...ultimateSpecs[value.id]}}));
-const skills = [];
+const baseSkills = [];
 const capstoneExtras = {
   soldier:[{extraShots:1},{rallyRadius:0.5},{selfRevives:1}],
   heavy:[{pierce:2},{suppressionDuration:0.5},{selfRevives:1}],
@@ -115,8 +137,9 @@ classSpecs.forEach((klass,classIndex) => klass.branches.forEach(([branch,names],
     medic:{ultimateRadius:80},mage:{ultimatePulses:1},engineer:{ultimateDuration:6},assassin:{ultimateCharges:1},
   }[klass.id]);
   const formatEffects = Object.entries(effects).map(([key,amount]) => key+': +'+amount+(key==='maxHealth'||key==='healOnHit'?' HP':key==='regeneration'?' HP/s':'')).join('; ');
-  skills.push({id:klass.id+'-'+slug(branch)+'-'+depth,classId:klass.id,branchId:slug(branch),branchName:branch,name,depth,cost:depth,grade:grades[index*3+(classIndex+branchIndex)%3],prerequisite:depth===1?null:klass.id+'-'+slug(branch)+'-'+index,capstone:depth===6,effects,description:formatEffects+'. Effects add to the purchased build; global modifier limits apply.'});
+  baseSkills.push({id:klass.id+'-'+slug(branch)+'-'+depth,classId:klass.id,branchId:slug(branch),branchName:branch,name,depth,cost:depth,grade:grades[index*3+(classIndex+branchIndex)%3],prerequisite:depth===1?null:klass.id+'-'+slug(branch)+'-'+index,capstone:depth===6,effects,description:formatEffects+'. Effects add to the purchased build; global modifier limits apply.'});
 })));
+const skills=expandSkills(baseSkills,classes,grades);
 
 const weaponSpecs = {
   soldier:[['Service Pistol',16,3.3,10,1.3,760,1,3,0,0],['Watch Carbine',13,5.5,24,1.6,850,1,4,0,240],['Threefold Rifle',12,8,24,1.8,900,1,2,1,460],['Last Watch',38,3.2,12,1.6,1150,1,0.5,2,720]],
@@ -188,6 +211,10 @@ const originalBosses = bossSpecs.map(([id,name,lore,minThreat,timer,healthFactor
   })),
 }));
 const bosses=expandBosses(originalBosses,modes);
+addBossVariants(bosses);
+reviseConstable(bosses);
+addEarlyWatch(bosses,bossPools);
+addSmallWakes(bosses,bossPools);
 
 const mutationSpecs = [
   ['glass-pact','Glass Pact','Half maximum health; triple weapon damage.',{maxHealth:0.5,damage:3},['salt-circle']],
@@ -223,13 +250,15 @@ const arenas = [
   ['sunken-chapel','Sunken Chapel','#667b78','#223331','A flooded chapel with exposed stone walks and a cracked altar.',['Altar cover','Clearly marked water margins']],
   ['bell-foundry','Bell Foundry','#8b735b','#342a24','Cold brass bells and immense foundry molds.',['Mold islands','Four broad exits']],
   ['crown-crypt','Crown Crypt','#75758a','#242936','The drowned council chamber under a hollow crown of bells.',['Council dais','Open outer ring']],
-].map(([id,name,floor,shadow,description,features],index)=>({id,name,floor,shadow,description,features,width:1600,height:1000,playerSpawn:{x:800,y:800},bossSpawn:{x:800,y:300},obstacles:id==='gatehouse'?[{x:315,y:435,width:180,height:150},{x:1120,y:435,width:180,height:150}]:[{x:390+(index%2)*60,y:440,width:110,height:85},{x:1100-(index%2)*60,y:440,width:110,height:85}],minimumClearLane:170}));
+].map(([id,name,floor,shadow,description,features],index)=>({id,name,floor,shadow,description,features,width:1600,height:1000,playerSpawn:{x:800,y:800},bossSpawn:{x:800,y:300},obstacles:id==='gatehouse'?gatehouseObstacles:[{x:390+(index%2)*60,y:440,width:110,height:85},{x:1100-(index%2)*60,y:440,width:110,height:85}],minimumClearLane:170}));
 
 const leaderboards=JSON.parse(fs.readFileSync(path.join(root,'content/leaderboards.json'),'utf8'));
 const manifest = {rules,locales,difficulties,modes,classes,skills,weapons,upgrades,supplies,bosses,bossPools,mutations,arenas,grades,leaderboards,threats:['Normal','Aberrant','Predator','Brute','Scourge','Dread','Disaster','Catastrophe','Cataclysm','Calamity','The Uncounted']};
+applyEncounterPacing(manifest);addClassTalents(manifest);
+applyWardenPatrol(manifest);applyCrazedHorizon(manifest);applyCourierRoute(manifest);applyRatcatcherMuster(manifest);applyClerkAppeal(manifest);applyTollkeeperReturn(manifest);applyMarshalChains(manifest);applyWidowGates(manifest);applyAmbulanceRoute(manifest);applyMatronWard(manifest);applyMoldMixing(manifest);applyBellCarillon(manifest);applyBellCounterpoint(manifest);
 for(const [key,value] of Object.entries(manifest)) json('content/'+key+'.json',value);
 json('content/catalog.json',manifest);
-write('docs/balance/skills.csv',csv(['id','class','branch','name','depth','cost','grade','prerequisite','capstone','effects'],skills.map(s=>[s.id,s.classId,s.branchName,s.name,s.depth,s.cost,s.grade,s.prerequisite??'',s.capstone,JSON.stringify(s.effects)])));
+write('docs/balance/skills.csv',csv(['id','class','branch','subbranch','name','depth','cost','grade','prerequisite','capstone','effects'],skills.map(s=>[s.id,s.classId,s.branchName,s.subbranchName,s.name,s.depth,s.cost,s.grade,s.prerequisite??'',s.capstone,JSON.stringify(s.effects)])));
 write('docs/balance/weapons.csv',csv(['id','class','name','damageHP','shotsPerSecond','magazine','reloadSeconds','projectilePixelsPerSecond','pellets','spreadDegrees','pierce','priceCoins','baselineDPS'],weapons.map(w=>[w.id,w.classId,w.name,w.damage,w.fireRate,w.magazine,w.reloadTime,w.projectileSpeed,w.pellets,w.spreadDegrees,w.pierce,w.price,w.baselineSustainedDps])));
 write('docs/balance/difficulties.csv',csv(['id','health','damage','speed','extraPatterns','coins','healing','locked'],difficulties.map(d=>[d.id,d.health,d.damage,d.speed,d.extraPatterns,d.coins,d.healing,d.locked])));
 write('docs/balance/mutations.csv',csv(['id','name','durationEncounters','description','modifiers','excludes'],mutations.map(m=>[m.id,m.name,m.durationEncounters,m.description,JSON.stringify(m.modifiers),m.excludes.join(';')])));
@@ -323,10 +352,10 @@ const parts=[
   ...classes.flatMap(c=>['### '+c.name+' - '+c.survivor,c.lore,...c.abilities.map(a=>a.name+' ['+a.slot.toUpperCase()+']: '+a.description+' Cooldown '+a.cooldown+' s; duration '+a.duration+' s; radius/range '+a.radius+' px; base damage '+a.damage+' HP.'),'Ultimate '+c.ultimate.name+' [X]: '+c.ultimate.description+' Cooldown '+c.ultimate.cooldown+' s; duration '+c.ultimate.duration+' s; range '+c.ultimate.radius+' px.']),
   'Ultimates begin ready and advance cooldown only during active combat. Intermissions and solo pause do not recharge them. The utility branch upgrades ultimate cooldown at depths 3 and 5, potency at depth 5, and a unique ultimate mechanic at its capstone. Ultimate cooldown reduction is capped at 40%; Focus Tonic affects Q/E only. Identical ally auras use the strongest magnitude and longest remaining duration rather than multiplying. Keyboard X and gamepad east face button activate the ultimate; a separate labeled touch control displays ready state and remaining cooldown.',
   '## Skill tree and build budget',
-  'Every class has three six-node branches. Depth costs are 1,2,3,4,5,6 SP; a full branch costs 21 SP. Only one capstone can be active. Start campaigns at 3 SP and award 24 more before the final boss. Before fight j+1 of R fights, cumulative SP = 3 + floor(24*j/(R-1)). All three campaign lengths therefore arrive at 27 SP, allowing a capstone and six complementary points. A free pre-encounter respec is available in the first shop; later respec costs 90 coins and cannot occur during combat.',
+  'Every class has three parent branches, each with three six-node specialization paths: 54 nodes per class and 378 overall. Every parent branch covers all eighteen grades from D- through SS+. Grades describe investment bands and specialization complexity; same-cost alternatives provide different benefits rather than strict dominance. Depth costs are 1,2,3,4,5,6 SP; one full specialization costs 21 SP. Paths may be mixed, but prerequisites stay within their path and only one capstone can be active. Start campaigns at 3 SP and award 24 more before the final boss. Before fight j+1 of R fights, cumulative SP = 3 + floor(24*j/(R-1)). All campaigns arrive at 27 SP, allowing a capstone and six complementary points. A free pre-encounter respec is available in the first shop; later respec costs 90 coins and cannot occur during combat.',
   'Grand Raid pre-fight skill budgets are 12,20,27. Endless follows the standard ten-encounter ramp and caps purchased skill power at 27; later rewards are mastery and streak progress. Do not award unspendable infinite skill points.',
   'Effect units: weaponDamage, fireRate, cooldownReduction, ultimateCooldownReduction, abilityPotency, ultimatePotency, armor, criticalChance and named ability modifiers are additive fractions; maxHealth/healOnHit/ultimateShield are HP; regeneration is HP/s; ultimateDuration is seconds; ultimateRadius is pixels; pierce, extraShots, selfRevives, extraTurrets, ultimatePulses and ultimateCharges are integers. Apply modifier limits after combining purchased effects. Armor cannot exceed 65%; weapon cooldown and reload duration remain positive.',
-  table(['Class','Branch','Node','SP','Grade','Effects'],skills.map(s=>[s.classId,s.branchName,s.name,s.cost,s.grade,Object.entries(s.effects).map(([k,v])=>k+' +'+v).join('; ')])),
+  table(['Class','Branch','Specialization','Node','SP','Grade','Effects'],skills.map(s=>[s.classId,s.branchName,s.subbranchName,s.name,s.cost,s.grade,Object.entries(s.effects).map(([k,v])=>k+' '+v).join('; ')])),
   '## Weapons and class shops',
   'All classes begin with their tier-zero weapon. Reserve ammunition is infinite; magazines and timed reload/refocus cycles preserve meaningful fire rhythm without hard ammunition soft locks. Pellets are individual projectiles. Spread is total cone width in degrees, speed is world px/s, damage is HP per hit, and pierce is additional targets after the first.',
   table(['Class / weapon','Price','Damage x pellets','Rate /s','Magazine','Reload s'],weapons.map(w=>[w.classId+' / '+w.name,w.price,w.damage+' x '+w.pellets,w.fireRate,w.magazine,w.reloadTime])),
@@ -386,7 +415,7 @@ const parts=[
   'Free hosting starts with a Render gameplay service and a static browser client. Inspect shared usage and bandwidth before tests or deployment. Free services sleep, can restart, and have shared allowances. No paid provisioning or overage exposure without a concrete approved proposal. Keep cold-start connection progress understandable. Do not present free hosting as an always-on production guarantee.',
   '## Gates and evidence',
   table(['Gate','Required evidence'],[
-    ['Stage 1','Complete definitions; 126 skills, 28 weapons, 24 mutations, 6 arenas, 60 bosses; eight visually reviewed art proof sets; animation previews; measured audio proofs; rendered PDF; verified packet and hashes.'],
+    ['Stage 1','Complete definitions; 378 specialization skills, 28 weapons, 24 mutations, 6 arenas, 60 bosses; eight visually reviewed art proof sets; animation previews; measured audio proofs; rendered PDF; verified packet and hashes.'],
     ['First playable','Soldier/Medic, one arena/boss, combat/revive, both votes, shops, offline and public/private networking; 49 active scripted clients plus one rendered client; 4000-hostile-projectile stress case.'],
     ['Performance','99th percentile server tick below 25 ms; documented desktop target 60 FPS, phone target 30 FPS; memory and encoded traffic measured; free-host capacity verified separately.'],
     ['Full implementation','All specified content, routes, difficulties, endless loop, localization and recovery implemented; no roadmap items silently presented as released features.'],
@@ -403,7 +432,7 @@ write('docs/wiki/Home.md','# Grave Accord\n\nOriginal cooperative zombie bullet 
 write('docs/wiki/Gauntlets.md',fs.readFileSync(path.join(root,'docs/BOSS_ROSTER_EXPANSION.md'),'utf8'));
 write('docs/wiki/Getting-Started.md','# Getting started\n\nStatus: preproduction. Playable download and hosted URL will be added only after release verification.\n\n'+table(['Flow','Behavior'],uiFlows)+'\n');
 write('docs/wiki/Modes.md','# Modes and endless play\n\n'+table(['Mode','Players','Encounters','Minutes'],modes.map(m=>[m.name,'1-'+m.maxPlayers,m.encounters??'No final round',m.targetMinutes?.join('-')??'Until defeat']))+'\n\nEndless Vigil continues indefinitely. Every boss victory is followed by rewards, mutation voting, boss voting and shopping. Player purchases cap at their normal limits; bosses grow per vigil cycle. Bank completed progress on extraction or defeat.\n');
-write('docs/wiki/Classes-and-Skills.md','# Classes and skills\n\n'+table(['Class','Survivor','Role'],classes.map(c=>[c.name,c.survivor,c.role]))+'\n\nEvery class has 18 nodes across three branches. Campaigns reach 27 SP before the final boss; a full branch costs 21. Purchased power resets between runs. Mastery and cosmetics persist. All seven classes are available immediately.\n\n'+table(['Class','Branch','Skill','Cost','Grade'],skills.map(s=>[s.classId,s.branchName,s.name,s.cost,s.grade]))+'\n');
+write('docs/wiki/Classes-and-Skills.md','# Classes and skills\n\n'+table(['Class','Survivor','Role'],classes.map(c=>[c.name,c.survivor,c.role]))+'\n\nEvery class has 54 nodes across three parent branches and nine specialization paths. Every parent branch includes all 18 grades. Campaigns reach 27 SP before the final boss; a complete specialization costs 21. Purchased power resets between runs. Mastery and cosmetics persist. All seven classes are available immediately.\n\n'+table(['Class','Branch','Skill','Cost','Grade'],skills.map(s=>[s.classId,s.branchName,s.name,s.cost,s.grade]))+'\n');
 write('docs/wiki/Bosses.md','# Bosses\n\nSixty identities are authored: fifty in separate timed-route pools, nine exclusive to Endless and The Uncounted. The original eleven-boss sheet is an early identity proof. See [Gauntlets](Gauntlets) for route ownership and production gates. Gameplay implementation is pending.\n\nContract cards show threat, bounty and recommended build strength, never the next boss identity.\n\n'+table(['Boss','Route','Deadline seconds','Counterplay'],bosses.map(b=>[b.name,b.route,b.timer,b.signature.counterplay]))+'\n');
 write('docs/wiki/Economy-and-Mutations.md','# Economy and mutations\n\nPersonal completion rewards prevent kill stealing. Class-compatible shops use server-owned purchase validation. Power resets per run. Every mutation lasts three upcoming encounters; at most three are active.\n\n'+table(['Mutation','Effect'],mutations.map(m=>[m.name,m.description]))+'\n');
 write('docs/wiki/Accessibility-and-Languages.md','# Accessibility and languages\n\n'+fs.readFileSync(path.join(root,'docs/LOCALIZATION.md'),'utf8').replace(/^# Localization contract\n/,'')+'\n\nAdditional options: remappable controls, touch/gamepad support, optional aim assistance and auto-fire, reduced effects and motion, text scaling, independent audio volume, and shape-based danger cues.\n');
@@ -415,7 +444,7 @@ write('docs/wiki/Audio.md',fs.readFileSync(path.join(root,'docs/AUDIO_BIBLE.md')
 write('docs/wiki/Credits.md','# Credits and provenance\n\nGame direction: ProgrammingWithYagle. Code, production tools, documentation and translation drafting: OpenAI coding assistant. Original visual art: built-in OpenAI image generation; backend identifier is unreported unless tool metadata says otherwise. Music and sounds: original deterministic local synthesis. No copied sprites, music or maps from reference games.\n\nMIT source license is preserved. Third-party runtime and font notices will accompany the game build. Native-speaker review and human playtesting are separate, explicitly recorded verification steps.\n');
 write('docs/wiki/Contributing.md','# Contributing\n\nWork on feature branches and open a pull request. Keep CHANGELOG.md current for player-visible changes. Maintain catalog keys and placeholder parity for all launch locales. Run npm run verify. Required game checks will be added as runtime code is introduced. Do not commit secrets, node_modules, executables or unverified release claims.\n');
 if(!fs.existsSync(path.join(root,'docs/ACCEPTANCE.md')))write('docs/ACCEPTANCE.md','# Acceptance ledger\n\nThe implementation plan is approved. Status entries represent observed completion only.\n\n'+table(['Area','Target','State'],[
-  ['Design content','7 classes / 126 skills / 28 weapons / 24 mutations / 6 arenas / 60 bosses','Authored; validation pending'],
+  ['Design content','7 classes / 378 skills / 28 weapons / 24 mutations / 6 arenas / 60 bosses','Authored; validation pending'],
   ['Endless','No final round; solo/private/public to 50; ongoing votes/shop','Specified; runtime pending'],
   ['Localization','15 locales, complete text, RTL, fonts, layout checks','Specified; runtime and catalogs pending'],
   ['Art','Eight proof sets and animation inspection','In progress'],
@@ -428,5 +457,5 @@ if(!fs.existsSync(path.join(root,'docs/ACCEPTANCE.md')))write('docs/ACCEPTANCE.m
   ['Delivery','Windows + public URL + GitHub release + Wiki + Project + ruleset','Pending'],
 ])+'\n');
 const fingerprint=crypto.createHash('sha256').update(JSON.stringify(manifest)).digest('hex');
-json('content/revision.json',{version:rules.contentVersion,sha256:fingerprint,authoredDate:'2026-10-22'});
+json('content/revision.json',{version:rules.contentVersion,sha256:fingerprint,authoredDate:'2026-10-23'});
 console.log(JSON.stringify({classes:classes.length,skills:skills.length,weapons:weapons.length,bosses:bosses.length,mutations:mutations.length,arenas:arenas.length,locales:locales.length,revision:fingerprint}));

@@ -1,0 +1,9 @@
+# Current local Windows review
+
+**2026.10.29-camera-clearance / public / protocol43**, exact source **6f397a5173c69d1b710d7c02d8772f3a5f5e19b7**. Includes the fixed camera and world aiming, full survivor/boss edge visibility, upper routes/Toad detours, pit-only lava art and accepted corner controls, along with host/password/chat/Medic/shield changes.
+
+Local ZIP **release/Grave_Accord_2026.10.29_Camera_Clearance_Public_Review.zip**,842941714bytes,SHA256 **d00c2db1ee7859aea9aa49fe362d7325f39f4692fc53864f3a76cbd5b0c23f04**. Matching manifest, verification, START_HERE and SHA256SUMS sidecars share that prefix. Extract the whole ZIP and open Grave Accord.exe. For Solo choose New here? → Start gently → Play. For friends use Local network → Host, then New run within that page. Guests enter the host's private IPv4/port before browsing or joining by code/password. Internet rooms still need a matching deployed server.
+
+[Exact package evidence](package-status.json) covers1898listed files plus the manifest,1697client members and80runtime-license packages on original, fresh ZIP extraction and independent Windows copy. All three pass offline and bundled-authority LAN diagnostics, including210starts/shields,67music decodes, profile/font/save, password/code/host/chat/combat/shutdown. All package bytes match after diagnostics. Font paths223/280/281characters pass; the independent copy contains Japanese text.
+
+Both exact-source CI jobs pass869checks. Wiki57030abmatches18pages/34images. Native software acceptance is distinct from human/rendered/device/listening/native-language and physical second-machine LAN/WAN acceptance. Testing5244is preferred for current human feedback; public5245has the same fixes. Older ZIPs, previews and raw reports stay preserved. No deployment, main merge, hosted release replacement or contest submission.

@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tools\verify-desktop-package.py", line 72, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tools\verify-desktop-package.py", line 68, in main
+    report['extracted']=verify(target/folder.name,args.verification)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tools\verify-desktop-package.py", line 17, in verify
+    actual={p.relative_to(folder).as_posix() for p in folder.rglob('*') if p.is_file()};assert actual==set(expected)|{'BUILD-MANIFEST.json'},'Unexpected or missing package members'
+                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Unexpected or missing package members

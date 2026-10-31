@@ -1,4 +1,6 @@
+import {smallWakesIds} from '../content/source/small-wakes.mjs';
 import fs from 'node:fs';
+import {writeTextAtomic} from './write-text-atomic.mjs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import assert from 'node:assert/strict';
@@ -17,21 +19,24 @@ const unique=(items,label)=>assert.equal(new Set(items.map(x=>x.id)).size,items.
 const finiteTree=value=>{if(typeof value==='number')assert(Number.isFinite(value));else if(Array.isArray(value))value.forEach(finiteTree);else if(value&&typeof value==='object')Object.values(value).forEach(finiteTree);};
 check('Complete finite versioned content',()=>{
   finiteTree(c);assert.equal(c.rules.schemaVersion,1);assert.equal(c.rules.simulationHz,30);assert.equal(c.rules.patchHz,20);
-  for(const [key,count] of Object.entries({classes:7,skills:126,weapons:28,bosses:60,mutations:24,arenas:6,modes:5,difficulties:6,locales:15,grades:18}))assert.equal(c[key].length,count,key);
+  for(const [key,count] of Object.entries({classes:7,skills:378,weapons:28,bosses:66,mutations:24,arenas:6,modes:5,difficulties:6,locales:15,grades:18}))assert.equal(c[key].length,count,key);
   for(const [key,value] of Object.entries(c))if(Array.isArray(value)&&value[0]?.id)unique(value,key);
   assert(!/\bTBD\b|TODO|FIXME/.test(JSON.stringify(c)),'Unresolved content placeholder');
   assert.equal(read('content/revision.json').sha256,crypto.createHash('sha256').update(JSON.stringify(c)).digest('hex'));
   for(const [key,value] of Object.entries(c))assert.deepEqual(read('content/'+key+'.json'),value,'Split catalog '+key);
 });
-check('Seven classes, 126 prerequisite nodes and ultimates',()=>{
+check('Seven classes, 378 specialization nodes, all eighteen grades and ultimates',()=>{
   for(const cl of c.classes){
     assert.equal(cl.abilities.length,2);assert.equal(cl.branches.length,3);assert(cl.health>0&&cl.speed>0);
     assert.equal(cl.ultimate.slot,'ultimate');assert(cl.ultimate.cooldown>=60&&cl.ultimate.cooldown<=120);assert(cl.ultimate.description.length>30);
-    const sk=c.skills.filter(s=>s.classId===cl.id);assert.equal(sk.length,18);assert.equal(c.weapons.filter(w=>w.classId===cl.id).length,4);
+    const sk=c.skills.filter(s=>s.classId===cl.id);assert.equal(sk.length,54);assert.equal(c.weapons.filter(w=>w.classId===cl.id).length,4);
     for(const branch of cl.branches){
-      const nodes=sk.filter(s=>s.branchId===branch.id).sort((a,b)=>a.depth-b.depth);
+      assert.equal(branch.subbranches.length,3);const all=sk.filter(s=>s.branchId===branch.id);assert.equal(all.length,18);assert.deepEqual([...new Set(all.map(s=>s.grade))].sort(),[...c.grades].sort());
+      for(const subbranch of branch.subbranches){
+      const nodes=all.filter(s=>s.subbranchId===subbranch.id).sort((a,b)=>a.depth-b.depth);
       assert.equal(nodes.length,6);assert.deepEqual(nodes.map(s=>s.cost),[1,2,3,4,5,6]);assert.equal(nodes.reduce((n,s)=>n+s.cost,0),21);
       for(let i=0;i<6;i++){const n=nodes[i];assert.equal(n.depth,i+1);assert.equal(n.prerequisite,i?nodes[i-1].id:null);assert.equal(n.capstone,i===5);assert(c.grades.includes(n.grade));assert(Object.keys(n.effects).length);}
+      }
     }
     assert(sk.some(s=>s.effects.ultimateCooldownReduction));assert(sk.some(s=>Object.keys(s.effects).some(k=>k.startsWith('ultimate')&&k!=='ultimateCooldownReduction')));
     assert(c.weapons.some(w=>w.id===cl.weapon&&w.classId===cl.id&&w.price===0));
@@ -49,6 +54,13 @@ check('Campaign, raid and uncapped endless budgets',()=>{
   }
   assert.deepEqual(c.modes.find(m=>m.id==='raid').skillBudgets,[12,20,27]);assert.equal(c.modes.find(m=>m.id==='endless').encounters,null);assert.equal(c.modes.find(m=>m.id==='endless').maxPlayers,50);assert.equal(c.rules.endless.finalEncounter,null);assert(c.rules.endless.cappedPlayerPower);
   assert.equal(c.difficulties.filter(d=>d.locked).length,2);assert(c.difficulties.filter(d=>d.locked).every(d=>/Hard/.test(d.unlock)));
+});
+check('Fixed boss grades, independent variants and complete translated tier labels',()=>{
+  const profile=read('src/shared/boss-threats.json'),labels=read('src/client/threat-labels.json'),review=read('reviews/balance-model-review.json');
+  assert.equal(profile.entries.length,c.bosses.length);assert.equal(new Set(profile.entries.map(p=>p.bossId)).size,c.bosses.length);
+  for(const p of profile.entries){assert(c.bosses.some(b=>b.id===p.bossId));assert(Number.isInteger(p.level)&&p.level>=1&&p.level<=11);assert(Number.isInteger(p.subtier)&&p.subtier>=-2&&p.subtier<=2);assert.equal(p.level>10,p.bossId==='uncounted');}
+  assert.deepEqual(review.fixedThreatProfiles,profile.entries,'Stale fixed-grade analytical model');assert.equal(review.fixedThreatClassificationVersion,profile.classificationVersion);
+  assert.equal(Object.keys(labels).length,15);for(const words of Object.values(labels)){assert.equal(words.length,6);assert(words.every(word=>typeof word==='string'&&word.trim()));}
 });
 check('Weapon accounting, rates and finite cooldowns',()=>{
   for(const w of c.weapons){assert(w.damage>0&&w.fireRate>0&&w.magazine>0&&w.reloadTime>0&&w.projectileSpeed>0&&w.pellets>0&&w.price>=0);const dps=w.damage*w.pellets*w.magazine/(w.magazine/w.fireRate+w.reloadTime);assert(Math.abs(dps-w.baselineSustainedDps)<0.011);}
@@ -70,20 +82,25 @@ check('Every legal one-, two- and three-mutation composition',()=>{
 check('Boss attack contracts, transitions, arenas and deadlines',()=>{
   const kinds=new Set(['fan','ring','charge','cross','summon','pool','beam','hook','spiral','armor','warp','zone','shield','trail','lanes','pulse']);
   assert.equal(c.bosses.filter(b=>b.secret).length,1);
-  for(const b of c.bosses){assert(b.timer>=60&&b.timer<=240);assert(b.healthFactor>0&&b.radius>0);assert.deepEqual(b.phases.map(p=>p.healthThreshold),[1,0.75,0.4]);assert.deepEqual(b.phases.map(p=>p.accordBreak),[false,true,true]);
+  for(const b of c.bosses){assert(b.timer>=60&&b.timer<=240);assert(b.healthFactor>0&&b.radius>0);const entry=read('src/shared/boss-threats.json').entries.find(p=>p.bossId===b.id).level<=c.rules.phasePacing.maximumEntryThreat;assert.deepEqual(b.phases.map(p=>p.healthThreshold),entry?[1,.5]:[1,.75,.4]);assert.deepEqual(b.phases.map(p=>p.accordBreak),b.phases.map((_,i)=>i>0));assert.deepEqual(b.phases.map(p=>p.patternPhase),smallWakesIds.includes(b.id)?[0,1]:entry?[0,2]:[0,1,2]);
     for(const p of b.phases)for(const a of p.attacks){assert(kinds.has(a.kind),'Unknown attack '+a.kind);assert(a.count>0&&a.count<=200);assert(a.speed>=0&&a.damage>=0&&a.interval>0&&a.telegraph>=0.45);assert(a.telegraph<a.interval);}
     assert(b.arenaIds.every(id=>c.arenas.some(a=>a.id===id)));
+    assert.equal(b.variants.normal.healthMultiplier,1);assert.equal(b.variants.normal.damageMultiplier,1);
+    const brutal=b.variants.brutal;assert.equal(brutal.healthMultiplier,2);assert.equal(brutal.damageMultiplier,2);assert.equal(brutal.identity,b.id+'-brutal');assert.equal(brutal.signature,b.signature.id);
+    assert.deepEqual(brutal.phases.map(p=>p.healthThreshold),entry?[1,.5]:c.rules.brutal.phaseThresholds);assert.deepEqual(brutal.phases.map(p=>p.patternPhase),smallWakesIds.includes(b.id)?[0,1]:entry?[0,3]:[0,1,2,3]);
+    assert(brutal.phases.every(p=>!p.accordBreak));
+    for(const phase of brutal.phases)for(const attack of phase.attacks){assert(kinds.has(attack.kind));assert(attack.count>0&&attack.count<=200);assert(attack.telegraph>=c.rules.brutal.minimumTelegraphSeconds&&attack.telegraph<attack.interval);}
   }
   for(const a of c.arenas){assert.equal(a.width,1600);assert.equal(a.height,1000);for(const o of a.obstacles){assert(o.x>=0&&o.y>=0&&o.x+o.width<=a.width&&o.y+o.height<=a.height);assert(!(a.playerSpawn.x>o.x&&a.playerSpawn.x<o.x+o.width&&a.playerSpawn.y>o.y&&a.playerSpawn.y<o.y+o.height));}}
 });
-check('Sixty distinct bosses, route-specific gauntlets and Endless exclusives',()=>{
+check('Sixty-six distinct bosses, route-specific gauntlets and Endless exclusives',()=>{
   const allIds=new Set();
   for(const m of c.modes.filter(m=>m.kind!=='endless')){
     const pool=c.bossPools[m.id];assert.equal(pool.finale.length,3);assert(pool.regular.length>=m.encounters+1,'Insufficient nonrepeating three-card candidates '+m.id);
     for(const id of [...pool.regular,...pool.finale]){assert(!allIds.has(id),'Route pools overlap '+id);allIds.add(id);assert(c.bosses.some(b=>b.id===id&&b.route===m.id&&b.finale===pool.finale.includes(id)));}
   }
-  assert.equal(allIds.size,50);assert.equal(c.bossPools.endless.exclusive.length,9);for(const id of c.bossPools.endless.exclusive){assert(!allIds.has(id));allIds.add(id);assert(c.bosses.some(b=>b.id===id&&b.route==='endless'));}
-  assert.equal(allIds.size,59);assert(!allIds.has('uncounted'));assert.equal(new Set(c.bosses.map(b=>b.signature.id)).size,60);
+  assert.equal(allIds.size,56);assert.equal(c.bossPools.endless.exclusive.length,9);for(const id of c.bossPools.endless.exclusive){assert(!allIds.has(id));allIds.add(id);assert(c.bosses.some(b=>b.id===id&&b.route==='endless'));}
+  assert.equal(allIds.size,65);assert(!allIds.has('uncounted'));assert.equal(new Set(c.bosses.map(b=>b.signature.id)).size,66);
   for(const b of c.bosses){assert(b.signature.behavior.length>30&&b.signature.counterplay.length>25);assert(b.damageWindowFraction>0&&b.damageWindowFraction<=1);}
   const result=spawnSync(process.execPath,['tools/verify-gauntlets.mjs'],{cwd:root,encoding:'utf8'});assert.equal(result.status,0,result.stdout+'\n'+result.stderr);
 });
@@ -93,6 +110,10 @@ check('Design bible and complete editable tables',()=>{
   const balance=read('reviews/balance-model-review.json');assert(balance.passed,'Analytical build feasibility fails');assert.equal(balance.contentRevision,read('content/revision.json').sha256,'Stale balance evidence');
 });
 if(!contentOnly){
+  check('Painted arena cover and lava native pixels, transparency and provenance',()=>{const result=spawnSync('python',['-X','utf8','tools/verify-arena-surface-art.py'],{cwd:root,encoding:'utf8'});assert.equal(result.status,0,result.stdout+'\n'+result.stderr);});
+  check('Painted arena worlds match exact normalized native pixels and floor-fit metadata',()=>{const result=spawnSync('python',['-X','utf8','tools/verify-arena-world-art.py'],{cwd:root,encoding:'utf8'});assert.equal(result.status,0,result.stdout+'\n'+result.stderr);});
+  check('Bellringer eight drawn walking poses and exact retained action RGBA',()=>{const result=spawnSync('python',['-X','utf8','tools/verify-bellringer-art.py'],{cwd:root,encoding:'utf8'});assert.equal(result.status,0,result.stdout+'\n'+result.stderr);});
+  check('Alchemist eight drawn walking poses and exact retained action RGBA',()=>{const result=spawnSync('python',['-X','utf8','tools/verify-alchemist-lab-art.py'],{cwd:root,encoding:'utf8'});assert.equal(result.status,0,result.stdout+'\n'+result.stderr);});
   check('All fifteen translation catalogs and placeholder parity',()=>{const result=spawnSync(process.execPath,['tools/verify-locales.mjs'],{cwd:root,encoding:'utf8'});assert.equal(result.status,0,result.stdout+'\n'+result.stderr);});
   check('Eight reviewed art proof sets with original provenance',()=>{
     const contract=read('docs/art-contracts.json'),review=read('reviews/art-proof-review.json'),provenance=read('docs/art-provenance.json');assert.equal(contract.proofs.length,8);assert.equal(review.passed,true);assert.equal(review.proofs.length,8);
@@ -105,5 +126,8 @@ if(!contentOnly){
 }
 if(delivery)check('Rendered PDF and portable packet',()=>{const r=read('reviews/stage1-delivery-review.json');assert(r.passed);assert.equal(r.contentRevision,read('content/revision.json').sha256,'Delivery evidence does not match current content revision');assert(r.pdf.rendered&&r.pdf.visualReviewPassed);assert(r.archive.freshExtractionPassed&&r.archive.normalCopyPassed);assert.equal(hash(r.pdf.path),r.pdf.sha256);});
 const report={schemaVersion:1,stage:contentOnly?'Stage 1 design-content checks only':delivery?'Stage 1 complete preproduction gate':'Stage 1 source validation',passed:checks.every(x=>x.passed),legalMutationSets,checks};
-fs.mkdirSync(path.join(root,'reviews'),{recursive:true});fs.writeFileSync(path.join(root,'reviews/stage1-validation.json'),JSON.stringify(report,null,2)+'\n');
+fs.mkdirSync(path.join(root,'reviews'),{recursive:true});
+const reportPath=path.join(root,'reviews/stage1-validation.json'),reportText=JSON.stringify(report,null,2)+'\n';
+// Preserve identical issued bytes and avoid reopening an unchanged OneDrive report for writing.
+if(!fs.existsSync(reportPath)||fs.readFileSync(reportPath,'utf8')!==reportText)writeTextAtomic(reportPath,reportText);
 console.log(JSON.stringify(report,null,2));if(!report.passed)process.exitCode=1;

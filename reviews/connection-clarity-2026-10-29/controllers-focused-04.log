@@ -1,0 +1,41 @@
+✔ leaving during delayed health aborts actual HTTP and settles the search promptly (104.5279ms)
+✔ leaving during delayed rooms aborts actual HTTP and settles the search promptly (123.2133ms)
+✔ leaving during delayed code aborts actual HTTP and settles the search promptly (76.4695ms)
+✔ leaving during server startup cancels the retry delay and makes no later request (136.2612ms)
+✔ cancelled admission releases the known ticket once during its retry delay (17.6832ms)
+✔ cancelled admission releases the known ticket once during a pending poll (1029.2177ms)
+✔ room discovery keeps version, rate-limit and server errors distinct from an empty list (10.4389ms)
+✔ code lookup distinguishes missing, throttled and failing servers (8.5264ms)
+✔ an incompatible HTTP address and startup throttling fail promptly with useful errors (5.3342ms)
+✔ Cancel aborts the actual SDK matchmaking POST and releases admission (22.6643ms)
+Room connection was closed unexpectedly (4000): 
+✔ Cancel closes an actual SDK socket whose server never sends the room handshake (28.8989ms)
+✔ closing offline startup settles before its first view and suppresses late worker events (1.6031ms)
+✔ an unresolved asset task can be cancelled without accepting its late completion (0.2018ms)
+✔ all fifteen catalogs contain source-backed plain connection progress and a Cancel action (29.849ms)
+✔ Cancel keeps a newer load intact after the older join returns success (571.082ms)
+✔ Cancel keeps a newer load intact after the older join returns error (361.0988ms)
+✔ Escape cancels before artwork or audio settles and late completions do not reopen the game (286.7339ms)
+✔ compiled room search shows the version error, retries, then aborts when the player goes back (743.4942ms)
+✔ code lookup keeps actionable errors and disposal cancels without a late launch (396.6966ms)
+✔ leaving the online records tab aborts its real pending board request (199.3132ms)
+✔ existing rows still open after pagination and changing filters aborts roster requests (203.2569ms)
+✔ explicit ready handshake delivers private codes after client handlers attach and permits a real guest join (234.1432ms)
+✔ real client supply state and capacity queue admit one slot, support cancellation and never reopen a closed session (1278.3953ms)
+✔ instance capacity reserves reconnect slots independently of room limits (0.5038ms)
+Room connection was closed unexpectedly (4002): 
+✔ real WebSocket clients enforce visibility, versions, authority, idempotence and reconnection (1157.3677ms)
+ℹ version rejection
+ℹ public room creation
+ℹ public guest joining
+ℹ interrupted connection
+ℹ private room creation
+ℹ client adapter recovers an early disconnect and closes during retry
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5173.9079

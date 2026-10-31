@@ -1,0 +1,156 @@
+✖ opening an own result reuses its downloaded first roster page and loads all fifty-one members once (544.6388ms)
+✖ roster reuse ends with the filter generation and cannot show an old result in this week (258.503ms)
+✔ a failed own-result prefetch is retried normally when its row arrives through pagination (198.7698ms)
+✖ fifty real peers can join a private room by code from one IP and wait for the host (1995.3437ms)
+✖ a shared group can leave a sixteen-player lobby and rejoin a fifty-player lobby within one minute (1644.1815ms)
+✖ failed room-code guesses remain limited without locking out a known valid code (114.5827ms)
+✖ known room-code lookups have a bounded shared-network budget and cannot be reset with forwarded headers (105.0765ms)
+✖ admission allows two full join attempts per group while remaining bounded after tickets are cancelled (98.0725ms)
+✖ records reads allow a full group to browse results and roster pages while retaining a shared-IP limit (200.0796ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 1
+ℹ fail 8
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6982.7409
+
+✖ failing tests:
+
+test at tests\record-roster-reuse.test.ts:1:3408
+✖ opening an own result reuses its downloaded first roster page and loads all fifty-one members once (544.6388ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      0,
+  +   0
+    ]
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\record-roster-reuse.test.ts:38:89)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 0, 0 ],
+    expected: [ 0 ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\record-roster-reuse.test.ts:1:3904
+✖ roster reuse ends with the filter generation and cannot show an old result in this week (258.503ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      0,
+      0,
+      0,
+  +   0,
+  +   0
+    ]
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\record-roster-reuse.test.ts:47:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 0, 0, 0, 0, 0 ],
+    expected: [ 0, 0, 0 ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\shared-network.test.ts:1:2058
+✖ fifty real peers can join a private room by code from one IP and wait for the host (1995.3437ms)
+  Error: ui.errorRate
+      at Session.lookupRoom (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\src\client\session.ts:203:27)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Object.join (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\shared-network.test.ts:17:74)
+      at async TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\shared-network.test.ts:24:23)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+
+test at tests\shared-network.test.ts:1:2575
+✖ a shared group can leave a sixteen-player lobby and rejoin a fifty-player lobby within one minute (1644.1815ms)
+  Error: ui.errorRate
+      at Session.lookupRoom (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\src\client\session.ts:203:27)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Object.join (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\shared-network.test.ts:17:74)
+      at async TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\shared-network.test.ts:34:51)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests\shared-network.test.ts:1:3107
+✖ failed room-code guesses remain limited without locking out a known valid code (114.5827ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  429 !== 200
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\shared-network.test.ts:42:82)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 429,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\shared-network.test.ts:1:3898
+✖ known room-code lookups have a bounded shared-network budget and cannot be reset with forwarded headers (105.0765ms)
+  AssertionError [ERR_ASSERTION]: Known-code request 31
+  
+  429 !== 200
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\shared-network.test.ts:48:87)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 429,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\shared-network.test.ts:1:4626
+✖ admission allows two full join attempts per group while remaining bounded after tickets are cancelled (98.0725ms)
+  AssertionError [ERR_ASSERTION]: Admission 61
+  
+  429 !== 200
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\shared-network.test.ts:55:95)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 429,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\shared-network.test.ts:1:5377
+✖ records reads allow a full group to browse results and roster pages while retaining a shared-IP limit (200.0796ms)
+  AssertionError [ERR_ASSERTION]: Records read 121
+  
+  429 !== 200
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\shared-network.test.ts:62:62)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 429,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

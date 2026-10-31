@@ -1,0 +1,96 @@
+✔ all sixty bosses retain their identity and gain four bounded Brutal phases (1.8219ms)
+✔ Brutal combat doubles health and attack damage, extends the deadline while uncleared boss contracts remain Normal (16.7156ms)
+✔ Constable transitions produce crossing volleys, gapped rings and a fourth Brutal phase (110.9423ms)
+✔ Constable retains the original four motion sheets and eight attack frames alongside the four-pose shuffle (23.2521ms)
+✔ normal and Brutal Constable casts hold anticipation until actual authority release and never mutate game state (100.0163ms)
+✔ drawing lead cannot release early and the old ten-fps warning-start release would be fourteen ticks early (4.4957ms)
+✔ hurt cannot replace a warning, recovery or stagger, and becomes its own planted three-pose response at rest (3.4499ms)
+✔ a real successful Accord replaces interrupted casts with the complete stagger interval (6.3882ms)
+✔ Constable defeat plays on world time after combat stops, settles once and retains the banked reward (1.2195ms)
+✔ reduced motion preserves every authoritative state with bounded readable frames (2.2836ms)
+✔ Constable metadata binds both the exact committed LF blob and historical Windows CRLF bytes (80.1059ms)
+✔ Constable phases execute double volleys, crossing cordons and shared-gap lockdown rings in real games (104.3022ms)
+✔ all maps keep walking Constable inside bounds and cover while casts, Accords and stagger plant his feet (124.6385ms)
+✖ warning origins and aim remain locked through both volley releases and movement resumes afterwards (5.9459ms)
+✖ actual lockdown projectiles preserve the announced overlapping escape wedge (11.1785ms)
+✖ stationary survivors take real arrest damage while leaving the locked zone avoids that field (3.5775ms)
+✔ boss locomotion holds between 30 Hz positions at 60 Hz draw and resets at cast boundaries (0.9391ms)
+✔ four shuffle frames reconstruct exactly and preserve the complete original 27-pose contract (341.9382ms)
+✔ named Constable phases cover all fifteen supported languages and retain the ordinary phase number (0.5512ms)
+✔ all sixty identities have one fixed classification and exactly one above-Calamity secret; the minimum ordinary roster needs ninety-one more original bosses (2.5507ms)
+✔ five subtiers have unambiguous codes and Brutal uses its own B marker, with complete labels in every authored locale (0.2343ms)
+✔ real opening encounters preserve the same boss grade across routes and difficulties while graded health, difficulty and party size remain separate (111.549ms)
+✔ the high-tier Constable classification produces its declared projectile pressure without changing its telegraph (9.5828ms)
+✔ actual campaign offers carry the concealed boss fixed grade and reward instead of a hidden card-position risk, including after a saved vote (41.2886ms)
+✔ protocol-thirteen Practice migration reclassifies boundary contracts without losing player progress, money, run identity or extension history (0.9151ms)
+✔ current boundaries reject forged fixed grades, hidden positional risk and nonfinite subtiers rather than changing a boss classification (0.8282ms)
+ℹ tests 26
+ℹ suites 0
+ℹ pass 23
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1170.4889
+
+✖ failing tests:
+
+test at tests\constable-pressure.test.ts:1:3983
+✖ warning origins and aim remain locked through both volley releases and movement resumes afterwards (5.9459ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  16 !== 8
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\constable-pressure.test.ts:140:16)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 16,
+    expected: 8,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\constable-pressure.test.ts:1:4839
+✖ actual lockdown projectiles preserve the announced overlapping escape wedge (11.1785ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  95 !== 23
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\constable-pressure.test.ts:162:16)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 95,
+    expected: 23,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\constable-pressure.test.ts:1:5728
+✖ stationary survivors take real arrest damage while leaving the locked zone avoids that field (3.5775ms)
+  AssertionError [ERR_ASSERTION]: An occupied arrest field really damages the survivor
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\constable-pressure.test.ts:189:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

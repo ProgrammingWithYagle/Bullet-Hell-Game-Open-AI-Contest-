@@ -1,0 +1,46 @@
+✔ Constable phases execute double volleys, crossing cordons and shared-gap lockdown rings in real games (82.6607ms)
+✔ all maps keep walking Constable inside bounds and cover while casts, Accords and stagger plant his feet (117.8949ms)
+✔ warning origins and aim remain locked through both volley releases and movement resumes afterwards (3.562ms)
+✔ actual lockdown projectiles preserve the announced overlapping escape wedge (11.1098ms)
+✔ stationary survivors take real arrest damage while leaving the locked zone avoids that field (11.0088ms)
+✔ boss locomotion holds between 30 Hz positions at 60 Hz draw and resets at cast boundaries (1.1818ms)
+✔ the selected four-pose atlas binds exact independent reconstruction and the original 27-pose contract (4.2294ms)
+✔ named Constable phases cover all fifteen supported languages and retain the ordinary phase number (0.383ms)
+✔ real Constable phase transitions cancel outgoing volleys, arrest fields and stale cast poses (7.4884ms)
+✔ issued map/fixed-grade Practice boundaries preserve identity and progress through the Constable content revision (0.9777ms)
+✖ content-only migration still rejects unknown revisions, online records and forged current-version threat cards (4.3287ms)
+✔ all sixty identities have one fixed classification and exactly one above-Calamity secret; the minimum ordinary roster needs ninety-one more original bosses (2.5796ms)
+✔ five subtiers have unambiguous codes and Brutal uses its own B marker, with complete labels in every authored locale (0.3036ms)
+✔ real opening encounters preserve the same boss grade across routes and difficulties while graded health, difficulty and party size remain separate (92.4073ms)
+✔ the high-tier Constable classification produces its declared projectile pressure without changing its telegraph (8.0765ms)
+✔ actual campaign offers carry the concealed boss fixed grade and reward instead of a hidden card-position risk, including after a saved vote (38.6905ms)
+✔ protocol-thirteen Practice migration reclassifies boundary contracts without losing player progress, money, run identity or extension history (1.4702ms)
+✔ current boundaries reject forged fixed grades, hidden positional risk and nonfinite subtiers rather than changing a boss classification (0.8198ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 17
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 610.094
+
+✖ failing tests:
+
+test at tests\constable-pressure.test.ts:1:10980
+✖ content-only migration still rejects unknown revisions, online records and forged current-version threat cards (4.3287ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\constable-pressure.test.ts:329:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'throws',
+    diff: 'simple'
+  }

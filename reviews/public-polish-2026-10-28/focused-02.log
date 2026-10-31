@@ -1,0 +1,37 @@
+✔ five opaque ground paintings bind their exact natives and all six existing map footprints (97.4435ms)
+✔ map switches reset the whole floor rectangle below cover without changing collision, bounds or spawns (1.1836ms)
+✔ the actual floor preload planner queues every identity once and rejects missing URLs before queuing (0.6393ms)
+✔ six maps have six distinct footprints and cover layouts with reachable spawns and all Accord pads (37.8341ms)
+✔ prediction and authoritative movement agree on every new footprint, including fast dodges against cover (61.5793ms)
+✔ all six opening arenas show the real bounds, cover, spawns and difficulty hazards (24.083ms)
+✔ welcome, map legends and difficulty explanations cover all fifteen supported locales (1.456ms)
+✖ compiled public setup offers an optional gentle confirmation, preserves the profile and never shows an opener or currency tools (247.7687ms)
+✔ catalytic warnings retain their real radius and produce a bounded local eruption with a static reduced-motion alternative (2.6998ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 8
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1311.2319
+
+✖ failing tests:
+
+test at tests\expedition-presentation.test.ts:1:2832
+✖ compiled public setup offers an optional gentle confirmation, preserves the profile and never shows an opener or currency tools (247.7687ms)
+  Error: Build failed with 1 error:
+  src/client/ui/profile.ts:21:7: ERROR: Cannot import "src/client/ui/profile.css" into a JavaScript file without an output path configured
+      at failureErrorWithLog (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\node_modules\.pnpm\esbuild@0.28.2\node_modules\esbuild\lib\main.js:1752:15)
+      at C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\node_modules\.pnpm\esbuild@0.28.2\node_modules\esbuild\lib\main.js:1211:25
+      at runOnEndCallbacks (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\node_modules\.pnpm\esbuild@0.28.2\node_modules\esbuild\lib\main.js:1592:45)
+      at buildResponseToResult (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\node_modules\.pnpm\esbuild@0.28.2\node_modules\esbuild\lib\main.js:1209:7)
+      at C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\node_modules\.pnpm\esbuild@0.28.2\node_modules\esbuild\lib\main.js:1236:16
+      at responseCallbacks.<computed> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\node_modules\.pnpm\esbuild@0.28.2\node_modules\esbuild\lib\main.js:886:9)
+      at handleIncomingPacket (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\node_modules\.pnpm\esbuild@0.28.2\node_modules\esbuild\lib\main.js:941:12)
+      at Socket.readFromStdout (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\node_modules\.pnpm\esbuild@0.28.2\node_modules\esbuild\lib\main.js:864:7)
+      at Socket.emit (node:events:514:28)
+      at addChunk (node:internal/streams/readable:569:12) {
+    errors: [ { detail: undefined, id: '', location: [Object], notes: [], pluginName: '', text: 'Cannot import "src/client/ui/profile.css" into a JavaScript file without an output path configured' } ],
+    warnings: []
+  }

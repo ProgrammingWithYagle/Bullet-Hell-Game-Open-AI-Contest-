@@ -1,74 +1,27 @@
-# Expanded boss production plan - edition 0.2.0
+# Boss production plan — current expansion
 
-The revised target is **60 distinct bosses**, including The Uncounted. The original eleven images are an early reference proof, not the final roster. A boss counts toward sixty only when its identity, silhouette, signature mechanic, counterplay, phases, audio warning and acceptance evidence are implemented. A recolor, threat multiplier or repeated champion phase does not count as a new boss.
+Updated October 25, 2026. The user's expanded minimum is **three original ordinary bosses in each of ten levels and five subtiers: 150 ordinary identities, plus secrets**. The current game has **65 ordinary bosses and The Uncounted**, leaving **85 additional ordinary identities**. Stronger forms/recolors do not count as new identities. [Derived coverage and other work](DEVELOPMENT_PROGRESS.md).
 
-The target is sixty because it supports route variety while leaving enough production and testing attention for each encounter. One hundred would add a substantial animation, translation, balance and playtesting burden. Additional bosses can follow in dated updates after the first complete release; the changelog must distinguish delivered content from a target.
+Bosses retain intrinsic grades. Signs --, -, no sign, + and ++ mean bottom through top tier. Brutal adds a separate B; >10 is above Calamity. Ratings can be revised by a deliberate versioned balance change, never by card position or encounter number. [Authoritative classification and selection](FIXED_BOSS_THREATS.md).
 
-| Experience | Distinct route identities | Regular / finale pool | Fights in one run | Selection |
-| --- | --- | --- | --- | --- |
-| Quarantine Run | 9 | 6 / 3 | 5 | Four unique regulars and one finale |
-| Midnight Circuit | 14 | 11 / 3 | 10 | Nine unique regulars and one finale |
-| Black Bell Pilgrimage | 20 | 17 / 3 | 16 | Fifteen unique regulars and one finale |
-| Grand Raid | 7 | 4 / 3 | 3 | Two unique extended regulars and one finale |
-| Endless Vigil | All 50 route identities plus 9 exclusives | 59 ordinary identities | Unlimited | Seeded bags, twelve-encounter repeat protection, regular exclusive slots |
-| Secret extension | 1 | The Uncounted | Optional | Existing Normal+, Accord Break and no-timeout campaign unlock |
+The original sixty-identity plan and its route-affinity lists are preserved in [dated history](history/2026-10-25-checkpoint-cleanup/docs/BOSS_ROSTER_EXPANSION.md). Those lists describe primary authoring affinities. Current five/ten/sixteen-fight campaign offers select suitable fixed grades from shared authored ordinary identities and retain regular/finale roles. Raid and Endless keep their documented reserved/exclusive schedules. Do not silently rescale a small route roster to impersonate the whole grade range.
 
-The four route pools are disjoint. Their counts ensure there are still three unused regular candidates at the last regular vote, plus three reserved finales for the final vote. Players see threat, bounty and build recommendations; identities remain concealed. All fifty route bosses have threat-scaled versions, with complete opening tells and difficulty-bounded complexity. Mode duration and progression budgets stay unchanged.
+## Integrated Early Watch identities
 
-The six arena kits are reusable places within these routes. A map theme and a route's encounter pool are separate concepts: each timed experience has its own gauntlet even when its path visits the same district. Boss-specific props and hazard layouts vary within collision-safe arena boundaries.
+| Identity | Fixed grade | Distinct mechanic | Current state |
+| --- | --- | --- | --- |
+| Ashen Usher | 1-- | Breakable ticket stands and staggered warned aisles | Two visible phases, extra Brutal, 12 motion poses and original theme integrated |
+| Brass Toad | 1- | Locked hops, gapped landing ripples, tongue lane and drain-plug interruption | Hops/ripples/tongue, extra Brutal, 12 poses and original theme integrated |
+| Ragpicker's Kite | 1 | Orbiting cloth kite, wind corridors and breakable pins | Two visible phases, extra Brutal, 12 motion poses and original theme integrated |
 
-## Quarantine Run - the broken cordon
+All three now have shared-authority implementation, distinct phases, extra Brutal mechanics, warned counterplay, motion, fifteen-locale help and individual original music. The roster is 63/65 ordinary and the deficit is 88; rendered/human review remains separate. [Current art and integration handoff](CHECKPOINT_2026_10_25.md).
 
-Regulars: Hollow Constable, Carrion Courier, The Tollkeeper, Lantern Warden, Ratcatcher, Quarantine Clerk.
+## Existing roster quality
 
-Finales: Chain Marshal, Gate Widow, Black Ambulance.
+Constable and Warden have completed the first two requested phase/mobility/Brutal implementation passes; human acceptance remains open. Other 58 original-roster encounters need assessment or redesign. Normal Constable should remain among the easiest bosses. Pressure should come from understandable movement and mechanics; blanket stat inflation does not establish a meaningful phase change. Brutal is the explicit form for extra attacks and visual identity, while global difficulty primarily scales stats/pressure/resources.
 
-This route teaches aimed volleys, locked target positions, scent trails, reflected wheel lanes and temporary gate openings. The finale resolves the evacuation cordon rather than reusing the Pilgrimage's council ending.
+## Art and acceptance
 
-## Midnight Circuit - services of the dead
+Preserve a readable silhouette, restrained dry-ink/matte-gouache surfaces, one signature prop and quiet effects. Avoid noisy all-over detail and unexplained decorative particles. Generate complete clips in a single edit from preserved identity references, normalize with one physical scale and a shared anchor, and keep every native/request/rejected attempt. Native/contact QA, runtime integration, rendered animation and human balance/listening are separate gates. [Exact current progress](DEVELOPMENT_PROGRESS.md) is the authority for counts.
 
-Regulars: Cradle Matron, Mold Alchemist, Bellringer, Stitchwright, Glass Surgeon, Ash Baker, Sluice Keeper, Last Stationmaster, The Lamplighter, The Anatomist, Plague Gardener.
-
-Finales: Grave Choir, Red Abbess, Vesper Judge.
-
-This route uses hospital summons, safe ground, timed gaps, rescue tethers, broken polygons, split projectiles, controlled currents and alternating verdicts. Its ending restores the infirmary and chapel network.
-
-## Black Bell Pilgrimage - industry and memory
-
-Regulars: Pallbearer, Cinder Foreman, Canal Diver, Clockmender, Seamstress of Wires, Gravedigger, Ink Notary, Spore Beekeeper, Ice Custodian, Bridge Ferryman, Porcelain Mourner, Boiler Tender, Mirror Undertaker, Chalk Magistrate, Wire Harpist, Crow Shepherd, Ledger Leech.
-
-Finales: Mortuary Engine, Drowned Regent, Salt Patriarch.
-
-This route has enough identities for sixteen fights without repeating one. It explores moving cover, bounded terrain motion, readable replays, removable anchors, pressure valves and guarded weak points. Its ending severs the council command.
-
-## Grand Raid - city-scale horrors
-
-Regulars: Chain Colossus, Ossuary Leviathan, Bell Triplets, Quarantine Heart.
-
-Finales: Crown Procession, City Eater, Saint of the Last Breath.
-
-Raid bosses use longer authored encounters and larger shared opportunities. Objectives scale down to one player and never require a particular class. Weak points and neutral valves create cooperation without making damage depend on simultaneous specialized roles.
-
-## Endless exclusives - the city after midnight
-
-Hourglass Widow, Unlit Astronomer, Folded Man, Red Comet, Memory Taxer, Choir of Moths, Zero-Hour Conductor, Walking District, The Last Knocker.
-
-These introduce delayed path replays, orbital gaps, reflected bullet directions, ordered dash trails, accessible symbol history, curved ribbons, beat-marked lanes, moving building blocks and a counted door sweep. They do not rewind player inputs, invent invisible hazards or require sound, color perception or unaided memorization.
-
-From encounter four, every fourth encounter offers three exclusive boss candidates, guaranteeing an exclusive fight regardless of vote. The other encounters draw from the fifty route identities. The first three encounters use a readable opening subset. Keep a twelve-encounter identity cooldown; prefer unseen bag entries before reshuffling eligible identities. The Uncounted retains the existing optional campaign unlock and is not a surprise random Endless spawn.
-
-## Clean detail art standard
-
-Use three readable value groups, one dominant silhouette, and one signature prop. Concentrate fine detail on the face, hands and prop. Most clothing panels and body masses have broad matte color fields. Avoid all-over crackle, dense filigree, dozens of tiny hanging objects, dust clouds and glowing outlines. Internal lines must merge gracefully at gameplay size rather than creating speckled noise.
-
-Review survivor art at 56 world pixels and boss art at 150, on both quiet arena ground and a crowded hostile pattern. At those sizes, a player must recognize the class or boss and its attack pose. Hostile projectiles retain clear high-contrast shapes and hitboxes; decorative detail never competes with them. High-detail source art alone is insufficient evidence.
-
-Treat the original proof set as identity/palette reference. Generate cleaner finish references before new animation frames. Do not repaint or simplify images with ad hoc procedural drawing; generated revisions preserve original tool files, prompts and review decisions. Atlas slicing, common-scale resampling and transparent padding remain deterministic asset processing.
-
-## Gates and evidence
-
-Edition 0.1.0 remains a sealed historical packet. Edition 0.2.0 must regenerate the full catalog, route selection, analytical balance, all fifteen boss catalogs, asset manifest, illustrated bible and portable verification. Existing Stage 1 evidence does not establish that the expanded runtime is complete.
-
-The first gameplay milestone remains Soldier and Medic, Gatehouse and Hollow Constable, both votes, shopping, revives, offline/public/private play and the active fifty-player feasibility test. Produce the full sixty-boss art/animation library after that architecture passes. Reusable simulation primitives are encouraged; unique signature behaviors and actual tests establish a distinct boss.
-
-Every shipped boss needs: three-phase combat smoke test, signature/counterplay check, solo and party objective check, deadline/uptime measurement, all fifteen launch locales complete, source-art identity and motion review, and matching codex/release notes. The numerical target does not justify recording unimplemented content as released.
+Small Wakes adds Candle Snail 1--,Cobble Crab 1- and Mourning Kettle 1 with two phases, 36 selected poses, original scores and fifteen-locale help. [Exact implementation/limits](SMALL_WAKES_RUNTIME.md). The first three subtiers now have three ordinary identities each; the overall 150 ordinary-plus-secrets target remains.

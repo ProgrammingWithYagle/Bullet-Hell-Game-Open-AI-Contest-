@@ -1,0 +1,2399 @@
+{
+  "schemaVersion": 3,
+  "sourceTool": "tools/build-boss-loading-v3.py",
+  "sourceToolSha256": "3232f95b52ba8f81efa7aca077b3d9b986d530b33eeb099b5ba1f28679bb1b7b",
+  "previousManifest": {
+    "path": "assets/delivery/boss-loading-v2/library.json",
+    "sha256": "efeefad875239a2fe38c23f4fcb6c85acccf8c3b8239f3df0396ed1896679198"
+  },
+  "inputLibraries": [
+    {
+      "path": "assets/production/motion/encounter-library.json",
+      "sha256": "22669a4829acd935811c13cf25727baee0d4ccd9665060ca060c57b2a09cafc5"
+    },
+    {
+      "path": "assets/production/motion/civic-library.json",
+      "sha256": "bd1c6536fda576e8a7b2bb66f677f797f8e5be4ea5aab4a58739428453946a8c"
+    },
+    {
+      "path": "assets/production/motion/service-library.json",
+      "sha256": "064dc25a15bb3f59999a9c6e5092086361ccf6d2f9bd3b57356278c3c172c24d"
+    },
+    {
+      "path": "assets/production/motion/district-library.json",
+      "sha256": "57c853b04de591b585cc5ec9702f0815b3d73b75673411c5f5861915c3a9379b"
+    },
+    {
+      "path": "assets/production/motion/raid-library.json",
+      "sha256": "53fe448dc29e5374e493d8223a7c24103ec7dc5dff279b106f1a3d1673faad43"
+    },
+    {
+      "path": "assets/production/motion/endless-library.json",
+      "sha256": "01c6994b153a5344f8a6a4490a6fc5ed7ad2a4e983346c95421a8586e04abaec"
+    },
+    {
+      "path": "assets/production/motion/opening-defeats-library.json",
+      "sha256": "3f672c3af90783f75ad6e3b507295c881ae133bf8dc96d9a7af1cf33080b0aba"
+    },
+    {
+      "path": "assets/production/motion/courier-library.json",
+      "sha256": "8771c12376edb64e46b9c8cca5fe572373a945ea21c0559d5fe27702c38416fb"
+    }
+  ],
+  "catalog": {
+    "path": "content/catalog.json",
+    "sha256": "4302c4ba6acbb0e540774c251a5e76d20bd7f41ec572c4b56dbbc460cfd01f9f"
+  },
+  "alwaysLoadedIds": [
+    "rat",
+    "infirmary-minion",
+    "choir-voice",
+    "regent",
+    "crow",
+    "bell-keeper",
+    "throne-attendant",
+    "moth"
+  ],
+  "lazyBossIds": [
+    "ratcatcher",
+    "quarantine-clerk",
+    "courier",
+    "tollkeeper",
+    "chain-marshal",
+    "gate-widow",
+    "black-ambulance",
+    "matron",
+    "alchemist",
+    "bellringer",
+    "stitchwright",
+    "glass-surgeon",
+    "ash-baker",
+    "stationmaster",
+    "lamplighter",
+    "anatomist",
+    "plague-gardener",
+    "choir",
+    "red-abbess",
+    "vesper-judge",
+    "sluice-keeper",
+    "wire-seamstress",
+    "spore-beekeeper",
+    "boiler-tender",
+    "chalk-magistrate",
+    "ledger-leech",
+    "engine",
+    "salt-patriarch",
+    "pallbearer",
+    "cinder-foreman",
+    "canal-diver",
+    "clockmender",
+    "gravedigger",
+    "ink-notary",
+    "ice-custodian",
+    "bridge-ferryman",
+    "porcelain-mourner",
+    "mirror-undertaker",
+    "wire-harpist",
+    "crow-shepherd",
+    "chain-colossus",
+    "bell-triplets",
+    "crown-procession",
+    "city-eater",
+    "last-breath-saint",
+    "quarantine-heart",
+    "ossuary-leviathan",
+    "unlit-astronomer",
+    "red-comet",
+    "memory-taxer",
+    "choir-of-moths",
+    "last-knocker",
+    "hourglass-widow",
+    "folded-man",
+    "zero-hour-conductor",
+    "walking-district",
+    "uncounted"
+  ],
+  "entries": [
+    {
+      "bossId": "ratcatcher",
+      "sourceAtlas": "assets/production/motion/ratcatcher-action-v2-atlas.png",
+      "sourceAtlasSha256": "9edc97bf52f98b866c1a3233b33ab7df332339ac4cd0f8d203b0725e9756650a",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        88,
+        116,
+        311,
+        341
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 9437184,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v2/ratcatcher-reference-v2.png",
+        "sha256": "197e5b582c530bfb3d488187f98da4e864ce51856f66b37e6dcf801cab4b5e5c"
+      },
+      "reference": "assets/delivery/boss-loading-v3/ratcatcher-reference-v3.png",
+      "referenceSha256": "5a94ca78bfb0b99215a5062a6f1c79ff46231a98deea8ddd98bd0676459c06fe",
+      "referenceWidth": 223,
+      "referenceHeight": 225,
+      "referenceDecodedBytes": 200700,
+      "referencePngBytes": 54665,
+      "origin": [
+        0.4663677130044843,
+        0.9066666666666666
+      ],
+      "displayWidth": 180.8108108108108,
+      "displayHeight": 182.43243243243242
+    },
+    {
+      "bossId": "quarantine-clerk",
+      "sourceAtlas": "assets/production/motion/quarantine-clerk-action-v2-atlas.png",
+      "sourceAtlasSha256": "cbfddac1c1fdcb68d543bd880021cd9b86bbdf9c8e5ee9bd5e459f27b50d1ec1",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        126,
+        90,
+        320,
+        339
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 9437184,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v2/quarantine-clerk-reference-v2.png",
+        "sha256": "ab6681b9a9576933ff5c8fd5fc257c73b6e3caa849e2b00eb6add5dc930e9b9b"
+      },
+      "reference": "assets/delivery/boss-loading-v3/quarantine-clerk-reference-v3.png",
+      "referenceSha256": "7cc28b34fbe16fe5aa3c31920859b68f8651831ea3311a3e4a25a1dce65606ef",
+      "referenceWidth": 194,
+      "referenceHeight": 249,
+      "referenceDecodedBytes": 193224,
+      "referencePngBytes": 32848,
+      "origin": [
+        0.3402061855670103,
+        0.9236947791164659
+      ],
+      "displayWidth": 157.2972972972973,
+      "displayHeight": 201.8918918918919
+    },
+    {
+      "bossId": "courier",
+      "sourceAtlas": "assets/production/motion/courier-action-v3-atlas.png",
+      "sourceAtlasSha256": "60b850cc6206049cafe5ba0ec44580bcf81d2e961e9d3b620d62da2b5a43fb2c",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        128,
+        117,
+        305,
+        336
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 16515072,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v2/courier-reference-v2.png",
+        "sha256": "483fba4f552c447e2c3a4a84ce011a93fd212322f3e5e8bea58269d3fe3d0047"
+      },
+      "reference": "assets/delivery/boss-loading-v3/courier-reference-v3.png",
+      "referenceSha256": "70e35cfb7ad4612a87ff94ae43b49dc3e9cfb6f59890c557fadd5222bff1c543",
+      "referenceWidth": 177,
+      "referenceHeight": 219,
+      "referenceDecodedBytes": 155052,
+      "referencePngBytes": 30309,
+      "origin": [
+        0.3615819209039548,
+        0.9269406392694064
+      ],
+      "displayWidth": 143.51351351351352,
+      "displayHeight": 177.56756756756758
+    },
+    {
+      "bossId": "tollkeeper",
+      "sourceAtlas": "assets/production/motion/tollkeeper-action-v2-atlas.png",
+      "sourceAtlasSha256": "d36ba858f3dc83498df7c42020ec89ed23bd0f3304cb046964a0d622c0ffd799",
+      "sourceFrame": 0,
+      "sourceCellSize": 448,
+      "sourceRect": [
+        99,
+        149,
+        331,
+        371
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.7857142857142857
+      ],
+      "sourceDisplayCell": 363.2432432432433,
+      "sourceFullDecodedBytes": 12845056,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v2/tollkeeper-reference-v2.png",
+        "sha256": "1d0a38fb180f47caeed4024967d813cf5c37e8c6130039c0190e0580fe0d29a4"
+      },
+      "reference": "assets/delivery/boss-loading-v3/tollkeeper-reference-v3.png",
+      "referenceSha256": "b25697bcff5845abca0474c86987b426fb99446a66f5e970677c52a964980be3",
+      "referenceWidth": 232,
+      "referenceHeight": 222,
+      "referenceDecodedBytes": 206016,
+      "referencePngBytes": 56239,
+      "origin": [
+        0.5387931034482759,
+        0.9144144144144144
+      ],
+      "displayWidth": 188.10810810810813,
+      "displayHeight": 180.00000000000003
+    },
+    {
+      "bossId": "chain-marshal",
+      "sourceAtlas": "assets/production/motion/chain-marshal-action-v2-atlas.png",
+      "sourceAtlasSha256": "07179387b2e2ed2056034f25eea2c3f628e2b267c36fc080f32f2648b7f94e2b",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        57,
+        117,
+        287,
+        339
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 9437184,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v2/chain-marshal-reference-v2.png",
+        "sha256": "e8ad8f4d99b85f36e79dac81d5d18d1258b4d92a32ef5c59f2878dac5955efc7"
+      },
+      "reference": "assets/delivery/boss-loading-v3/chain-marshal-reference-v3.png",
+      "referenceSha256": "b24b812f57e13383e5ea58d4a6fd435d7d91694546913b406a9cbc55976fa938",
+      "referenceWidth": 230,
+      "referenceHeight": 222,
+      "referenceDecodedBytes": 204240,
+      "referencePngBytes": 42595,
+      "origin": [
+        0.5869565217391305,
+        0.9144144144144144
+      ],
+      "displayWidth": 186.48648648648648,
+      "displayHeight": 180.0
+    },
+    {
+      "bossId": "gate-widow",
+      "sourceAtlas": "assets/production/motion/gate-widow-action-v2-atlas.png",
+      "sourceAtlasSha256": "fd2370bd7308ebf9bfd7cc7f18a7d0cb7e5856f15e82902f8d1a248883ec00cb",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        83,
+        114,
+        308,
+        339
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 9437184,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v2/gate-widow-reference-v2.png",
+        "sha256": "eb5c22e3465147817c667f75cd060126d6e7d3561839612f37f429425935e858"
+      },
+      "reference": "assets/delivery/boss-loading-v3/gate-widow-reference-v3.png",
+      "referenceSha256": "d1b8f55fb08cd830f464179bfa8b86a81970b83c369007d6157e0d8677be62fc",
+      "referenceWidth": 225,
+      "referenceHeight": 225,
+      "referenceDecodedBytes": 202500,
+      "referencePngBytes": 30031,
+      "origin": [
+        0.48444444444444446,
+        0.9155555555555556
+      ],
+      "displayWidth": 182.43243243243242,
+      "displayHeight": 182.43243243243242
+    },
+    {
+      "bossId": "black-ambulance",
+      "sourceAtlas": "assets/production/motion/black-ambulance-action-v2-atlas.png",
+      "sourceAtlasSha256": "09eb28742a63123d10bb8d49c29125e22d57829f710f3accf007cab82ecc79ce",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        42,
+        116,
+        304,
+        363
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 9437184,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v2/black-ambulance-reference-v2.png",
+        "sha256": "0d46eaf35b55664c1255bf0f15ecaedc9e89e366c8bf16df9181eb79929d5d22"
+      },
+      "reference": "assets/delivery/boss-loading-v3/black-ambulance-reference-v3.png",
+      "referenceSha256": "9b718278b4bbb7b2529c97beb51a080d067f184e5650b599737b1ea23a1ac119",
+      "referenceWidth": 262,
+      "referenceHeight": 247,
+      "referenceDecodedBytes": 258856,
+      "referencePngBytes": 61803,
+      "origin": [
+        0.5725190839694656,
+        0.8259109311740891
+      ],
+      "displayWidth": 212.43243243243242,
+      "displayHeight": 200.2702702702703
+    },
+    {
+      "bossId": "matron",
+      "sourceAtlas": "assets/production/motion/matron-action-v1-atlas.png",
+      "sourceAtlasSha256": "cad2705cc109f05ee0ee24267ef2f448fc7807dd21208da80358c3e6c17e563b",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        109,
+        114,
+        304,
+        339
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/matron-reference-v1.png",
+        "sha256": "811b859c8329601b1c0872c44ef7b2960d6380fc700614989d2a7b8c42d0ef73"
+      },
+      "reference": "assets/delivery/boss-loading-v3/matron-reference-v3.png",
+      "referenceSha256": "65943ebcf31bf53239fc57381e8a5db4dc06256e5465cf5166955f2292cc02f5",
+      "referenceWidth": 195,
+      "referenceHeight": 225,
+      "referenceDecodedBytes": 175500,
+      "referencePngBytes": 46772,
+      "origin": [
+        0.4256410256410256,
+        0.9155555555555556
+      ],
+      "displayWidth": 158.1081081081081,
+      "displayHeight": 182.43243243243242
+    },
+    {
+      "bossId": "alchemist",
+      "sourceAtlas": "assets/production/motion/alchemist-action-v1-atlas.png",
+      "sourceAtlasSha256": "83551def6cf54bb99e551f342316ba04f80cd12dc03c660c5f3fd857d4db0fc2",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        79,
+        88,
+        315,
+        339
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 337.83783783783787,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/alchemist-reference-v1.png",
+        "sha256": "b8e55c34ba4b055e3a7d7835d86ec6f4e3da42ef7568d32d1fd9f4be3e013503"
+      },
+      "reference": "assets/delivery/boss-loading-v3/alchemist-reference-v3.png",
+      "referenceSha256": "7e71817060e207dab2ec25f4c3beb3a5a82a54803b791f977bb0fc757d5f649d",
+      "referenceWidth": 236,
+      "referenceHeight": 251,
+      "referenceDecodedBytes": 236944,
+      "referencePngBytes": 50305,
+      "origin": [
+        0.4788135593220339,
+        0.9243027888446215
+      ],
+      "displayWidth": 207.62950450450452,
+      "displayHeight": 220.82629504504507
+    },
+    {
+      "bossId": "bellringer",
+      "sourceAtlas": "assets/production/motion/bellringer-action-v1-atlas.png",
+      "sourceAtlasSha256": "77b19ce98acc1c34e8fdf5c4e68938cb66ae9db50892e5460e50709c21d6f7f9",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        113,
+        116,
+        319,
+        341
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/bellringer-reference-v1.png",
+        "sha256": "a9b797dd863ac1928029377ea13c7ea5f63ea982a1b83da0abb4a8dff85430ae"
+      },
+      "reference": "assets/delivery/boss-loading-v3/bellringer-reference-v3.png",
+      "referenceSha256": "fce7b065b8bdab9ad9a9cce6c1ea3fa3fde530e344cacdf2783f925acef6f458",
+      "referenceWidth": 206,
+      "referenceHeight": 225,
+      "referenceDecodedBytes": 185400,
+      "referencePngBytes": 45056,
+      "origin": [
+        0.38349514563106796,
+        0.9066666666666666
+      ],
+      "displayWidth": 167.02702702702703,
+      "displayHeight": 182.43243243243242
+    },
+    {
+      "bossId": "stitchwright",
+      "sourceAtlas": "assets/production/motion/stitchwright-action-v1-atlas.png",
+      "sourceAtlasSha256": "49aa43b3c4da91a9556ddfdaa9730538da124bbf2a0afd193080999b1a880a25",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        89,
+        114,
+        314,
+        345
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/stitchwright-reference-v1.png",
+        "sha256": "4002d362af8c70cac6dc659b37f5030372a0bcef514bbaad2f261ec77bb60d5e"
+      },
+      "reference": "assets/delivery/boss-loading-v3/stitchwright-reference-v3.png",
+      "referenceSha256": "b7f0735b215bbe8677c3d336a9d65c147d857ee2570533f404873fa58ceb9367",
+      "referenceWidth": 225,
+      "referenceHeight": 231,
+      "referenceDecodedBytes": 207900,
+      "referencePngBytes": 43359,
+      "origin": [
+        0.4577777777777778,
+        0.8917748917748918
+      ],
+      "displayWidth": 182.43243243243242,
+      "displayHeight": 187.2972972972973
+    },
+    {
+      "bossId": "glass-surgeon",
+      "sourceAtlas": "assets/production/motion/glass-surgeon-action-v1-atlas.png",
+      "sourceAtlasSha256": "e7316672419658cfe56fec57fbea138ef78b704c50d9afca6b8494edba7e8472",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        139,
+        116,
+        306,
+        338
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/glass-surgeon-reference-v1.png",
+        "sha256": "df4b02835892cd2206b378849302c84a804ebf2752fe732b843c70a206af331a"
+      },
+      "reference": "assets/delivery/boss-loading-v3/glass-surgeon-reference-v3.png",
+      "referenceSha256": "eddcd0c782654c51959c30d975f9fcd973954bf79bb7e59e4119d4a38bff0dd5",
+      "referenceWidth": 167,
+      "referenceHeight": 222,
+      "referenceDecodedBytes": 148296,
+      "referencePngBytes": 26185,
+      "origin": [
+        0.31736526946107785,
+        0.918918918918919
+      ],
+      "displayWidth": 135.4054054054054,
+      "displayHeight": 180.0
+    },
+    {
+      "bossId": "ash-baker",
+      "sourceAtlas": "assets/production/motion/ash-baker-action-v1-atlas.png",
+      "sourceAtlasSha256": "2102de418ba68d87f002d3996d3247b8aa4c762c8f2a946b5467dc0d033be8e5",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        97,
+        113,
+        326,
+        340
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/ash-baker-reference-v1.png",
+        "sha256": "85dcb92ad48b43ce0ab8d90c61be9137cbb1ac7b8b001dcfbca0914a41adfe7f"
+      },
+      "reference": "assets/delivery/boss-loading-v3/ash-baker-reference-v3.png",
+      "referenceSha256": "ab731c80995666b44340754f7df77b566ebf4136eec4f9eb177d3bf12c7759d9",
+      "referenceWidth": 229,
+      "referenceHeight": 227,
+      "referenceDecodedBytes": 207932,
+      "referencePngBytes": 49590,
+      "origin": [
+        0.4148471615720524,
+        0.9118942731277533
+      ],
+      "displayWidth": 185.6756756756757,
+      "displayHeight": 184.05405405405406
+    },
+    {
+      "bossId": "stationmaster",
+      "sourceAtlas": "assets/production/motion/stationmaster-action-v1-atlas.png",
+      "sourceAtlasSha256": "0b18f12a7e2d685333d230d3fdc9377836b39ad134b3a137dcfaa59cc3d0ddeb",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        87,
+        117,
+        300,
+        336
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/stationmaster-reference-v1.png",
+        "sha256": "aa5f3e6247db94792fb7913dc54b4aa3cad412315692010c7f0c53a8c834ba08"
+      },
+      "reference": "assets/delivery/boss-loading-v3/stationmaster-reference-v3.png",
+      "referenceSha256": "79e78c53a3765b08051c84239463f02ec7e8ba5ac07f36c452be259a3c14ff0e",
+      "referenceWidth": 213,
+      "referenceHeight": 219,
+      "referenceDecodedBytes": 186588,
+      "referencePngBytes": 27634,
+      "origin": [
+        0.49295774647887325,
+        0.9269406392694064
+      ],
+      "displayWidth": 172.7027027027027,
+      "displayHeight": 177.56756756756758
+    },
+    {
+      "bossId": "lamplighter",
+      "sourceAtlas": "assets/production/motion/lamplighter-action-v1-atlas.png",
+      "sourceAtlasSha256": "bf7e47819e4dd211a63050492345dfcea0a97b3fef3b2fb132281111420fd987",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        89,
+        115,
+        299,
+        336
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/lamplighter-reference-v1.png",
+        "sha256": "ebf4db3b4318011aa35dcfc3e9724b828c2e591f88259667f531d9b0d531a803"
+      },
+      "reference": "assets/delivery/boss-loading-v3/lamplighter-reference-v3.png",
+      "referenceSha256": "b80401d22489fd589d55e053c3c6769dd0b594f0311b6c2ad7b0d81adbb591da",
+      "referenceWidth": 210,
+      "referenceHeight": 221,
+      "referenceDecodedBytes": 185640,
+      "referencePngBytes": 25041,
+      "origin": [
+        0.49047619047619045,
+        0.9276018099547512
+      ],
+      "displayWidth": 170.2702702702703,
+      "displayHeight": 179.1891891891892
+    },
+    {
+      "bossId": "anatomist",
+      "sourceAtlas": "assets/production/motion/anatomist-action-v1-atlas.png",
+      "sourceAtlasSha256": "965d7d3a7edf2c716647f1109860b75818e4c7b7834201bae61b4477d211016d",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        89,
+        116,
+        301,
+        338
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/anatomist-reference-v1.png",
+        "sha256": "24b0f5298e0e8b77a6ddd8e879976f71acd83cdb150e192e60abeb469dad2750"
+      },
+      "reference": "assets/delivery/boss-loading-v3/anatomist-reference-v3.png",
+      "referenceSha256": "42b5f677ec0ad90acfb95ff4f029b00f865786df1d796489a99bbc4c6b1f78c7",
+      "referenceWidth": 212,
+      "referenceHeight": 222,
+      "referenceDecodedBytes": 188256,
+      "referencePngBytes": 32616,
+      "origin": [
+        0.4858490566037736,
+        0.918918918918919
+      ],
+      "displayWidth": 171.8918918918919,
+      "displayHeight": 180.0
+    },
+    {
+      "bossId": "plague-gardener",
+      "sourceAtlas": "assets/production/motion/plague-gardener-action-v1-atlas.png",
+      "sourceAtlasSha256": "2d60d02cd9c85cb71762306f555e6dc34ad12f821a47cfdacbc7d2367a14a503",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        100,
+        115,
+        315,
+        341
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/plague-gardener-reference-v1.png",
+        "sha256": "86a88da6dee73180a1ff525c267dc2b62c4debe53cdde4dfba347a993455bbb9"
+      },
+      "reference": "assets/delivery/boss-loading-v3/plague-gardener-reference-v3.png",
+      "referenceSha256": "efb0e8a7032873a07c59a5638b1d3a92e9221bd722567aa746cee6faa17004db",
+      "referenceWidth": 215,
+      "referenceHeight": 226,
+      "referenceDecodedBytes": 194360,
+      "referencePngBytes": 52968,
+      "origin": [
+        0.42790697674418604,
+        0.9070796460176991
+      ],
+      "displayWidth": 174.32432432432435,
+      "displayHeight": 183.24324324324323
+    },
+    {
+      "bossId": "choir",
+      "sourceAtlas": "assets/production/motion/choir-action-v1-atlas.png",
+      "sourceAtlasSha256": "40b90b698a56eda12c2326d48b79e3de4ee613fbbc42124a77317cef1e5cb98a",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        104,
+        117,
+        303,
+        343
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/choir-reference-v1.png",
+        "sha256": "bb8edec61022e064d14261566eed42684626a6a7170b6cf9453a55486a1335e3"
+      },
+      "reference": "assets/delivery/boss-loading-v3/choir-reference-v3.png",
+      "referenceSha256": "4ca861b099193876144ee09cbf82a63af723652d1b69ae980ba889a3a849cfd4",
+      "referenceWidth": 199,
+      "referenceHeight": 226,
+      "referenceDecodedBytes": 179896,
+      "referencePngBytes": 52502,
+      "origin": [
+        0.44221105527638194,
+        0.8982300884955752
+      ],
+      "displayWidth": 161.35135135135135,
+      "displayHeight": 183.24324324324323
+    },
+    {
+      "bossId": "red-abbess",
+      "sourceAtlas": "assets/production/motion/red-abbess-action-v1-atlas.png",
+      "sourceAtlasSha256": "a32e1f8e4dca3226b886fe17034743a2211971956a80592953735128f1e85cd0",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        102,
+        115,
+        302,
+        338
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/red-abbess-reference-v1.png",
+        "sha256": "fcaef64ae922897364f6748b57b926fcb1249b442b2d1de5341afac109b74fb8"
+      },
+      "reference": "assets/delivery/boss-loading-v3/red-abbess-reference-v3.png",
+      "referenceSha256": "041c7987c599c0fae0e46fd70a049e08783ee79e058dfd61d16923a82feaecf1",
+      "referenceWidth": 200,
+      "referenceHeight": 223,
+      "referenceDecodedBytes": 178400,
+      "referencePngBytes": 32719,
+      "origin": [
+        0.45,
+        0.9192825112107623
+      ],
+      "displayWidth": 162.16216216216216,
+      "displayHeight": 180.8108108108108
+    },
+    {
+      "bossId": "vesper-judge",
+      "sourceAtlas": "assets/production/motion/vesper-judge-action-v1-atlas.png",
+      "sourceAtlasSha256": "61176eb4a889e4f97f80a1d2ff43fb355ca0b66b1e2dede2be4e16e0a6bb7b87",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        91,
+        118,
+        298,
+        343
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/vesper-judge-reference-v1.png",
+        "sha256": "36357036284b66922cae6aab27bb3ee3bca3fd0b309d30be32ad299982a3e1a2"
+      },
+      "reference": "assets/delivery/boss-loading-v3/vesper-judge-reference-v3.png",
+      "referenceSha256": "757dbd354406ba3f6c036d98ecdb27fc3faf1713c77adabc1dcfbea590d13da2",
+      "referenceWidth": 207,
+      "referenceHeight": 225,
+      "referenceDecodedBytes": 186300,
+      "referencePngBytes": 42950,
+      "origin": [
+        0.48792270531400966,
+        0.8977777777777778
+      ],
+      "displayWidth": 167.83783783783784,
+      "displayHeight": 182.43243243243242
+    },
+    {
+      "bossId": "sluice-keeper",
+      "sourceAtlas": "assets/production/motion/sluice-keeper-action-v1-atlas.png",
+      "sourceAtlasSha256": "b80efc51562e54d621b8077b93b6f361de8380994ed9eab68a2ea86c89833110",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        73,
+        116,
+        292,
+        338
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/sluice-keeper-reference-v1.png",
+        "sha256": "26c0ae59c7c9e45778f19c9311acacbf33b6c73f4e7e197020826ad5ad818ba3"
+      },
+      "reference": "assets/delivery/boss-loading-v3/sluice-keeper-reference-v3.png",
+      "referenceSha256": "72164d4fd3cfb43fdd5044a3eed72d800d35d518f4b1b8655dbdab7ec614d4aa",
+      "referenceWidth": 219,
+      "referenceHeight": 222,
+      "referenceDecodedBytes": 194472,
+      "referencePngBytes": 36458,
+      "origin": [
+        0.54337899543379,
+        0.918918918918919
+      ],
+      "displayWidth": 177.56756756756758,
+      "displayHeight": 180.0
+    },
+    {
+      "bossId": "wire-seamstress",
+      "sourceAtlas": "assets/production/motion/wire-seamstress-action-v1-atlas.png",
+      "sourceAtlasSha256": "a8ecb1dca34fdfc859bb7345e60de80f11fb747f37b6e28935eb9cd18f8bd07f",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        85,
+        116,
+        301,
+        339
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/wire-seamstress-reference-v1.png",
+        "sha256": "7ff2704ff365379819423bf9519620cdf743003bf743415db728c975f9a4ab6a"
+      },
+      "reference": "assets/delivery/boss-loading-v3/wire-seamstress-reference-v3.png",
+      "referenceSha256": "80826b6ddcfa4d5d63b1dd32635145b77db19f2f9a0240584d24a1222d49bd41",
+      "referenceWidth": 216,
+      "referenceHeight": 223,
+      "referenceDecodedBytes": 192672,
+      "referencePngBytes": 36478,
+      "origin": [
+        0.49537037037037035,
+        0.9147982062780269
+      ],
+      "displayWidth": 175.13513513513513,
+      "displayHeight": 180.8108108108108
+    },
+    {
+      "bossId": "spore-beekeeper",
+      "sourceAtlas": "assets/production/motion/spore-beekeeper-action-v1-atlas.png",
+      "sourceAtlasSha256": "111c2768a3f167fff879f20d801b262613c9c96032f9e6ea6378ed7bae68bca1",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        89,
+        115,
+        308,
+        342
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/spore-beekeeper-reference-v1.png",
+        "sha256": "6ab7335cf3399889e33b60e684758defe55a11134b860e489a8023556a334ae3"
+      },
+      "reference": "assets/delivery/boss-loading-v3/spore-beekeeper-reference-v3.png",
+      "referenceSha256": "188c2c516031bb01f5082305c861338b09a572047dbf918a5ef5c31acec3d67d",
+      "referenceWidth": 219,
+      "referenceHeight": 227,
+      "referenceDecodedBytes": 198852,
+      "referencePngBytes": 38604,
+      "origin": [
+        0.4703196347031963,
+        0.9030837004405287
+      ],
+      "displayWidth": 177.56756756756758,
+      "displayHeight": 184.05405405405406
+    },
+    {
+      "bossId": "boiler-tender",
+      "sourceAtlas": "assets/production/motion/boiler-tender-action-v1-atlas.png",
+      "sourceAtlasSha256": "2403fe536ddc87722a939f8f0b586d1e17d10dfb73ba6b28858d9d84358d58c7",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        78,
+        117,
+        305,
+        339
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/boiler-tender-reference-v1.png",
+        "sha256": "eb36a2fa189538d8291ea604136853c1ae704da950138e079364dd2adbdf5842"
+      },
+      "reference": "assets/delivery/boss-loading-v3/boiler-tender-reference-v3.png",
+      "referenceSha256": "97c4ac8bbc5c6d8eede33d14b6c0ea3f0d4361013521023814cc34bf80bae2e8",
+      "referenceWidth": 227,
+      "referenceHeight": 222,
+      "referenceDecodedBytes": 201576,
+      "referencePngBytes": 38879,
+      "origin": [
+        0.5022026431718062,
+        0.9144144144144144
+      ],
+      "displayWidth": 184.05405405405406,
+      "displayHeight": 180.0
+    },
+    {
+      "bossId": "chalk-magistrate",
+      "sourceAtlas": "assets/production/motion/chalk-magistrate-action-v1-atlas.png",
+      "sourceAtlasSha256": "68b7f235c2086ec4c19dc1dc839d850473912d43e2e291f4b5804dcb87a1c626",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        85,
+        117,
+        302,
+        339
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/chalk-magistrate-reference-v1.png",
+        "sha256": "ed443c0492690d9150c6148d2c2b45e6867e93b65909413a3e8b528ed04c1028"
+      },
+      "reference": "assets/delivery/boss-loading-v3/chalk-magistrate-reference-v3.png",
+      "referenceSha256": "96f03d2bfdb7f386dd2b3998cf608b7d5a4f94bc99a228437ce1fa1a71a4334d",
+      "referenceWidth": 217,
+      "referenceHeight": 222,
+      "referenceDecodedBytes": 192696,
+      "referencePngBytes": 29544,
+      "origin": [
+        0.4930875576036866,
+        0.9144144144144144
+      ],
+      "displayWidth": 175.94594594594594,
+      "displayHeight": 180.0
+    },
+    {
+      "bossId": "ledger-leech",
+      "sourceAtlas": "assets/production/motion/ledger-leech-action-v1-atlas.png",
+      "sourceAtlasSha256": "9910162f1ea276da630852847d65728c327039ea8815dbd2b326335ea6c0ff15",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        118,
+        116,
+        294,
+        338
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/ledger-leech-reference-v1.png",
+        "sha256": "f51abd5da9347b463cef145c8e228f7e2324419d0d1c648947c9f40c0b06f8ae"
+      },
+      "reference": "assets/delivery/boss-loading-v3/ledger-leech-reference-v3.png",
+      "referenceSha256": "1bce9d850f9671d1b5872ed0179807a2e314f0cb02c41c8449102c55ed64a8dc",
+      "referenceWidth": 176,
+      "referenceHeight": 222,
+      "referenceDecodedBytes": 156288,
+      "referencePngBytes": 32012,
+      "origin": [
+        0.42045454545454547,
+        0.918918918918919
+      ],
+      "displayWidth": 142.7027027027027,
+      "displayHeight": 180.0
+    },
+    {
+      "bossId": "engine",
+      "sourceAtlas": "assets/production/motion/engine-action-v1-atlas.png",
+      "sourceAtlasSha256": "2c3c26fca994f0f61abc59a45c5ecd5561aa60465ed3c60b46c794ef66ec007f",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        102,
+        116,
+        303,
+        338
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/engine-reference-v1.png",
+        "sha256": "061d4fe2b392075ca2058b0b83ab9d25ef01f61127da7a09c494494046bae724"
+      },
+      "reference": "assets/delivery/boss-loading-v3/engine-reference-v3.png",
+      "referenceSha256": "aa396dda2b1dc4668857dd5853d92dd3db4050f762bd982b1b9f90ca3a7b88ce",
+      "referenceWidth": 201,
+      "referenceHeight": 222,
+      "referenceDecodedBytes": 178488,
+      "referencePngBytes": 55090,
+      "origin": [
+        0.44776119402985076,
+        0.918918918918919
+      ],
+      "displayWidth": 162.97297297297297,
+      "displayHeight": 180.0
+    },
+    {
+      "bossId": "salt-patriarch",
+      "sourceAtlas": "assets/production/motion/salt-patriarch-action-v1-atlas.png",
+      "sourceAtlasSha256": "5919d5f5669b37cf17ae85b4df45530c67012695e240d00b597231e4c6770692",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        115,
+        118,
+        306,
+        339
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/salt-patriarch-reference-v1.png",
+        "sha256": "51ca5c490bcd114e7e5d07336e9e7888830abff6322ee1fa7862ec32445ed3ce"
+      },
+      "reference": "assets/delivery/boss-loading-v3/salt-patriarch-reference-v3.png",
+      "referenceSha256": "8e03b97a389d5256ceec91e9903e6a5c0ba6d8134c48fa9c8591b98a8312b18c",
+      "referenceWidth": 191,
+      "referenceHeight": 221,
+      "referenceDecodedBytes": 168844,
+      "referencePngBytes": 38661,
+      "origin": [
+        0.4031413612565445,
+        0.9140271493212669
+      ],
+      "displayWidth": 154.86486486486487,
+      "displayHeight": 179.1891891891892
+    },
+    {
+      "bossId": "pallbearer",
+      "sourceAtlas": "assets/production/motion/pallbearer-action-v1-atlas.png",
+      "sourceAtlasSha256": "282a942f33d76c6d61a0192d7d48b537e439d4e86a99d748ba077a46cab38e0c",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        61,
+        97,
+        310,
+        338
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.3513513513514,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/pallbearer-reference-v1.png",
+        "sha256": "2d039bafb30f3b4eaacfad8f5fc8377951642243713b7224ac8195cf636cd723"
+      },
+      "reference": "assets/delivery/boss-loading-v3/pallbearer-reference-v3.png",
+      "referenceSha256": "0dec33d485cee4048f0593d63bd394dbb440c522881008c565f56d5da0b4f9da",
+      "referenceWidth": 249,
+      "referenceHeight": 241,
+      "referenceDecodedBytes": 240036,
+      "referencePngBytes": 46050,
+      "origin": [
+        0.5261044176706827,
+        0.9253112033195021
+      ],
+      "displayWidth": 201.89189189189196,
+      "displayHeight": 195.40540540540545
+    },
+    {
+      "bossId": "cinder-foreman",
+      "sourceAtlas": "assets/production/motion/cinder-foreman-action-v1-atlas.png",
+      "sourceAtlasSha256": "2ce97c87481c935eefc789d2c48bdab48584a14dc768dcaaceaee3d8ca93e885",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        25,
+        41,
+        308,
+        336
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/cinder-foreman-reference-v1.png",
+        "sha256": "b384d94e076ac61d9bf934a2e7cdee1d9c0f1a021839211ea7d415f227848436"
+      },
+      "reference": "assets/delivery/boss-loading-v3/cinder-foreman-reference-v3.png",
+      "referenceSha256": "239053c28952ed17b9a2a14188d9a0bc4219b2967bb42222fccf8d0a9977823e",
+      "referenceWidth": 283,
+      "referenceHeight": 295,
+      "referenceDecodedBytes": 333940,
+      "referencePngBytes": 44204,
+      "origin": [
+        0.5901060070671378,
+        0.9457627118644067
+      ],
+      "displayWidth": 229.45945945945945,
+      "displayHeight": 239.1891891891892
+    },
+    {
+      "bossId": "canal-diver",
+      "sourceAtlas": "assets/production/motion/canal-diver-action-v1-atlas.png",
+      "sourceAtlasSha256": "b25d67fe1994d0a6688d59666b01918d501a5778ae7c57dbe5f72d5484313e8a",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        61,
+        105,
+        311,
+        338
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/canal-diver-reference-v1.png",
+        "sha256": "672b6321aee374023a89ddf5ed8071c7fc046559f1111db0bcf82d26ed1d52ab"
+      },
+      "reference": "assets/delivery/boss-loading-v3/canal-diver-reference-v3.png",
+      "referenceSha256": "14b2f68afc402d6a2f152505766faf4cdf669726fae165890a3bcde5691e701f",
+      "referenceWidth": 250,
+      "referenceHeight": 233,
+      "referenceDecodedBytes": 233000,
+      "referencePngBytes": 45726,
+      "origin": [
+        0.524,
+        0.9227467811158798
+      ],
+      "displayWidth": 202.7027027027027,
+      "displayHeight": 188.91891891891893
+    },
+    {
+      "bossId": "clockmender",
+      "sourceAtlas": "assets/production/motion/clockmender-action-v1-atlas.png",
+      "sourceAtlasSha256": "6043f48801b318ad4e8bb1ad66ef1dc4655e33c9a923f3f3c10f2c80a5c9757d",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        122,
+        117,
+        264,
+        336
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/clockmender-reference-v1.png",
+        "sha256": "dc20ddc4368a32b1e5bf2ec0a45152433bbbbf12a7b28a840600d092bf51ae0c"
+      },
+      "reference": "assets/delivery/boss-loading-v3/clockmender-reference-v3.png",
+      "referenceSha256": "50ef6395d2babc48cd4120cc1f2b15137a486d92526c893626ba3da30e711f13",
+      "referenceWidth": 142,
+      "referenceHeight": 219,
+      "referenceDecodedBytes": 124392,
+      "referencePngBytes": 38856,
+      "origin": [
+        0.49295774647887325,
+        0.9269406392694064
+      ],
+      "displayWidth": 115.13513513513514,
+      "displayHeight": 177.56756756756758
+    },
+    {
+      "bossId": "gravedigger",
+      "sourceAtlas": "assets/production/motion/gravedigger-action-v1-atlas.png",
+      "sourceAtlasSha256": "cdb9661e8d3089d4018338059f33b8765a334278831c802617a6f3563ab8c89f",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        46,
+        64,
+        310,
+        344
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/gravedigger-reference-v1.png",
+        "sha256": "bb43deda45d53572ea447b6c015820735fc30f5e3e480c235f805b58f9280fb9"
+      },
+      "reference": "assets/delivery/boss-loading-v3/gravedigger-reference-v3.png",
+      "referenceSha256": "3c5551168cbbff754e4697574c6899233af9066ff4f13f67e8c19f6da4834cfc",
+      "referenceWidth": 264,
+      "referenceHeight": 280,
+      "referenceDecodedBytes": 295680,
+      "referencePngBytes": 44283,
+      "origin": [
+        0.553030303030303,
+        0.9142857142857143
+      ],
+      "displayWidth": 214.05405405405406,
+      "displayHeight": 227.027027027027
+    },
+    {
+      "bossId": "ink-notary",
+      "sourceAtlas": "assets/production/motion/ink-notary-action-v1-atlas.png",
+      "sourceAtlasSha256": "78564b6eda83095221fb68bba5f524064845056b3aadaa7aed49c47527a64151",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        69,
+        105,
+        315,
+        342
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/ink-notary-reference-v1.png",
+        "sha256": "7f3cb7e6d3194f61fa65f03e1d9913e37ac32d6e7025b7c13aa032cbe19404de"
+      },
+      "reference": "assets/delivery/boss-loading-v3/ink-notary-reference-v3.png",
+      "referenceSha256": "00d6c84575d89948f57cc874a8fad77e5817d3c3bbbf2e589f63468bac87662c",
+      "referenceWidth": 246,
+      "referenceHeight": 237,
+      "referenceDecodedBytes": 233208,
+      "referencePngBytes": 38762,
+      "origin": [
+        0.5,
+        0.9071729957805907
+      ],
+      "displayWidth": 199.45945945945945,
+      "displayHeight": 192.16216216216216
+    },
+    {
+      "bossId": "ice-custodian",
+      "sourceAtlas": "assets/production/motion/ice-custodian-action-v1-atlas.png",
+      "sourceAtlasSha256": "4da79aba45c68b79b4e8b8eccd63a8c9e9fdb348eabf309eb05b497e9c6e37a5",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        73,
+        116,
+        289,
+        340
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/ice-custodian-reference-v1.png",
+        "sha256": "0fda8d7fbac2e5e10daeb26bc47c739502d3b39a051b2d2842f14717bb3ac392"
+      },
+      "reference": "assets/delivery/boss-loading-v3/ice-custodian-reference-v3.png",
+      "referenceSha256": "7c742b963e54937c473e6fd0b7f2524aadadea8cc86ca13502685312cfea057f",
+      "referenceWidth": 216,
+      "referenceHeight": 224,
+      "referenceDecodedBytes": 193536,
+      "referencePngBytes": 43875,
+      "origin": [
+        0.5509259259259259,
+        0.9107142857142857
+      ],
+      "displayWidth": 175.13513513513513,
+      "displayHeight": 181.62162162162164
+    },
+    {
+      "bossId": "bridge-ferryman",
+      "sourceAtlas": "assets/production/motion/bridge-ferryman-action-v1-atlas.png",
+      "sourceAtlasSha256": "ace7263f14ac4012bbaf91e039e857b43df96467282fb71eef9e4a9dac86c068",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        108,
+        65,
+        328,
+        348
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/bridge-ferryman-reference-v1.png",
+        "sha256": "5ceba19414e3928eccd325fe8bf3a95e4c407f6d77d40a0eee1f4cc153e0efae"
+      },
+      "reference": "assets/delivery/boss-loading-v3/bridge-ferryman-reference-v3.png",
+      "referenceSha256": "3d7e706f45491ce30c473e97d6591b572513abc2d0d254ad8bef8ca2fd4ebc8c",
+      "referenceWidth": 220,
+      "referenceHeight": 283,
+      "referenceDecodedBytes": 249040,
+      "referencePngBytes": 43509,
+      "origin": [
+        0.38181818181818183,
+        0.901060070671378
+      ],
+      "displayWidth": 178.37837837837836,
+      "displayHeight": 229.45945945945945
+    },
+    {
+      "bossId": "porcelain-mourner",
+      "sourceAtlas": "assets/production/motion/porcelain-mourner-action-v1-atlas.png",
+      "sourceAtlasSha256": "93477e57a17768b373bb733475f861b2ae6fbf424d1a0193e589cf5ffd2ac536",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        76,
+        84,
+        311,
+        342
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.3513513513513,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/porcelain-mourner-reference-v1.png",
+        "sha256": "36521e939c54d073092c47cdba6965ef552120c8616678a4a315b9f0829d200d"
+      },
+      "reference": "assets/delivery/boss-loading-v3/porcelain-mourner-reference-v3.png",
+      "referenceSha256": "052999c55ebcbd0006d8d1918fa78514523e6bbd800eb7760dba5b6535b1919d",
+      "referenceWidth": 235,
+      "referenceHeight": 258,
+      "referenceDecodedBytes": 242520,
+      "referencePngBytes": 37437,
+      "origin": [
+        0.49361702127659574,
+        0.9147286821705426
+      ],
+      "displayWidth": 190.54054054054052,
+      "displayHeight": 209.18918918918916
+    },
+    {
+      "bossId": "mirror-undertaker",
+      "sourceAtlas": "assets/production/motion/mirror-undertaker-action-v1-atlas.png",
+      "sourceAtlasSha256": "70640cb89eeab66a3e177a045d0df58576e3b9457b51fc5dccb4e9c151c23d90",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        83,
+        116,
+        272,
+        337
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/mirror-undertaker-reference-v1.png",
+        "sha256": "e389831a966ea11cca80feefd9cb1c99889700bdd09aef594af570d80551e3ae"
+      },
+      "reference": "assets/delivery/boss-loading-v3/mirror-undertaker-reference-v3.png",
+      "referenceSha256": "133b5268d8357aee1121c881e7a56520e2c84537d0e1eb64778669013b57ebfa",
+      "referenceWidth": 189,
+      "referenceHeight": 221,
+      "referenceDecodedBytes": 167076,
+      "referencePngBytes": 39255,
+      "origin": [
+        0.5767195767195767,
+        0.9230769230769231
+      ],
+      "displayWidth": 153.24324324324326,
+      "displayHeight": 179.1891891891892
+    },
+    {
+      "bossId": "wire-harpist",
+      "sourceAtlas": "assets/production/motion/wire-harpist-action-v1-atlas.png",
+      "sourceAtlasSha256": "60e1d93e35fbd4cc0d9225a8f4574a183d0ce283ec30912732389055c37a0335",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        115,
+        100,
+        311,
+        336
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/wire-harpist-reference-v1.png",
+        "sha256": "3d81767e984fdd4106e01eac1e4325eb0e2a1a940f7f4e61762d3fdf5f3c678a"
+      },
+      "reference": "assets/delivery/boss-loading-v3/wire-harpist-reference-v3.png",
+      "referenceSha256": "ef50dba6f9a896cde68e0ac7e2ad01599e1ce35ecd15989762f5a8505d3ce1bd",
+      "referenceWidth": 196,
+      "referenceHeight": 236,
+      "referenceDecodedBytes": 185024,
+      "referencePngBytes": 40852,
+      "origin": [
+        0.39285714285714285,
+        0.9322033898305084
+      ],
+      "displayWidth": 158.91891891891893,
+      "displayHeight": 191.35135135135135
+    },
+    {
+      "bossId": "crow-shepherd",
+      "sourceAtlas": "assets/production/motion/crow-shepherd-action-v1-atlas.png",
+      "sourceAtlasSha256": "5d3fd4193d57bfc809ea2f2f0fd4f184c12b023c005d94376722f77b6fd035e3",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        60,
+        117,
+        317,
+        336
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.3513513513513,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/crow-shepherd-reference-v1.png",
+        "sha256": "831dbfb3ca9d76379809a0f7371edf7261f08ed95d8e88ba0469ebc15e36735d"
+      },
+      "reference": "assets/delivery/boss-loading-v3/crow-shepherd-reference-v3.png",
+      "referenceSha256": "42e99c0aaa2cb726b4fb3d52eaf3427658d01a95d3338e411dd89ad8b3f88898",
+      "referenceWidth": 257,
+      "referenceHeight": 219,
+      "referenceDecodedBytes": 225132,
+      "referencePngBytes": 40491,
+      "origin": [
+        0.5136186770428015,
+        0.9269406392694064
+      ],
+      "displayWidth": 208.37837837837833,
+      "displayHeight": 177.56756756756752
+    },
+    {
+      "bossId": "chain-colossus",
+      "sourceAtlas": "assets/production/motion/chain-colossus-action-v1-atlas.png",
+      "sourceAtlasSha256": "8d7bb0204108ff382d9cf1ee1e7ea722d4349d47365e2d73dcb19b18871d060d",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        103,
+        113,
+        320,
+        345
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/chain-colossus-reference-v1.png",
+        "sha256": "ed3a5389846611f07dfdb55702fafd65113a302e68fa0c50a78ecd6c9d76d211"
+      },
+      "reference": "assets/delivery/boss-loading-v3/chain-colossus-reference-v3.png",
+      "referenceSha256": "985bfd2f7a32118a2ebccc80521eca785b552fe23dc8c9f035b44a671153cfe4",
+      "referenceWidth": 217,
+      "referenceHeight": 232,
+      "referenceDecodedBytes": 201376,
+      "referencePngBytes": 61014,
+      "origin": [
+        0.41013824884792627,
+        0.8922413793103449
+      ],
+      "displayWidth": 175.94594594594594,
+      "displayHeight": 188.10810810810813
+    },
+    {
+      "bossId": "bell-triplets",
+      "sourceAtlas": "assets/production/motion/bell-triplets-action-v1-atlas.png",
+      "sourceAtlasSha256": "6ec7d6426d74f3c0287ea5f3fdaa2a36a0f7fbe594e1cc1b6ff1f409f241d740",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        39,
+        81,
+        324,
+        357
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/bell-triplets-reference-v1.png",
+        "sha256": "d7f92e8d5cd4253b3de2d4d3426704e1fe12e344fcdf85c8cd6d1a070443bba9"
+      },
+      "reference": "assets/delivery/boss-loading-v3/bell-triplets-reference-v3.png",
+      "referenceSha256": "856fb4dbfa12ff416a393cca1cb3d0f20fe1ce543ded3e48c2fe0006916f1a2f",
+      "referenceWidth": 285,
+      "referenceHeight": 276,
+      "referenceDecodedBytes": 314640,
+      "referencePngBytes": 80868,
+      "origin": [
+        0.5368421052631579,
+        0.8659420289855072
+      ],
+      "displayWidth": 231.08108108108107,
+      "displayHeight": 223.78378378378378
+    },
+    {
+      "bossId": "crown-procession",
+      "sourceAtlas": "assets/production/motion/crown-procession-action-v1-atlas.png",
+      "sourceAtlasSha256": "77a51f032635ae17b724256f409453324d111bccdf3eddd8568f72e761c39d0a",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        22,
+        78,
+        336,
+        380
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/crown-procession-reference-v1.png",
+        "sha256": "4b8a5f39e1f2321da339f288663a9a648c65e6251aa898ec2c9b203e3fdc9baf"
+      },
+      "reference": "assets/delivery/boss-loading-v3/crown-procession-reference-v3.png",
+      "referenceSha256": "06e8a55f6e185a6e888f9b104d7a52845583ad70079a5ed4c9d449cefb941e0f",
+      "referenceWidth": 314,
+      "referenceHeight": 302,
+      "referenceDecodedBytes": 379312,
+      "referencePngBytes": 53619,
+      "origin": [
+        0.5414012738853503,
+        0.8013245033112583
+      ],
+      "displayWidth": 254.59459459459458,
+      "displayHeight": 244.86486486486487
+    },
+    {
+      "bossId": "city-eater",
+      "sourceAtlas": "assets/production/motion/city-eater-action-v1-atlas.png",
+      "sourceAtlasSha256": "a238cf07f66cbc3e82dc421de3cb728daf3af0c106dd06b8a0228102644c22ad",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        101,
+        116,
+        311,
+        341
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/city-eater-reference-v1.png",
+        "sha256": "5d67a374347a242595aea1f716f8319a7c7153ce09ed5b5fe67144913647885d"
+      },
+      "reference": "assets/delivery/boss-loading-v3/city-eater-reference-v3.png",
+      "referenceSha256": "985ffedb2ee3443ccee1f39f1deff66199dd981fa20962da5263771e33f329ab",
+      "referenceWidth": 210,
+      "referenceHeight": 225,
+      "referenceDecodedBytes": 189000,
+      "referencePngBytes": 51911,
+      "origin": [
+        0.43333333333333335,
+        0.9066666666666666
+      ],
+      "displayWidth": 170.2702702702703,
+      "displayHeight": 182.43243243243242
+    },
+    {
+      "bossId": "last-breath-saint",
+      "sourceAtlas": "assets/production/motion/last-breath-saint-action-v1-atlas.png",
+      "sourceAtlasSha256": "42af89b96c560f77bceb569879f1a9a08061356e279428d7e6f10b493baa6a47",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        102,
+        118,
+        309,
+        343
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/last-breath-saint-reference-v1.png",
+        "sha256": "07d91f635b9c719ce499247fedc8b968ad5a8be9cd9101f47c0a5065ff29cadb"
+      },
+      "reference": "assets/delivery/boss-loading-v3/last-breath-saint-reference-v3.png",
+      "referenceSha256": "f4bfe7b4f21453a5a266a45c543edf1dd9d2f9f1a0ac051a46488a43b80ae6be",
+      "referenceWidth": 207,
+      "referenceHeight": 225,
+      "referenceDecodedBytes": 186300,
+      "referencePngBytes": 36581,
+      "origin": [
+        0.43478260869565216,
+        0.8977777777777778
+      ],
+      "displayWidth": 167.83783783783784,
+      "displayHeight": 182.43243243243242
+    },
+    {
+      "bossId": "quarantine-heart",
+      "sourceAtlas": "assets/production/motion/quarantine-heart-action-v1-atlas.png",
+      "sourceAtlasSha256": "226476bad87c19f57d113fedb2d4599119e4b7834df85b93505be6dcef431a1b",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        49,
+        91,
+        323,
+        363
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/quarantine-heart-reference-v1.png",
+        "sha256": "d00a1b3bdbcdcccf00754ee5d3ca038358d6070b06750a3d792af3a4c26473b6"
+      },
+      "reference": "assets/delivery/boss-loading-v3/quarantine-heart-reference-v3.png",
+      "referenceSha256": "46f258b33c6e8ff46ef4124165c221ac7a62c5a6578d97d62f8cd6a8c3cd6b42",
+      "referenceWidth": 274,
+      "referenceHeight": 272,
+      "referenceDecodedBytes": 298112,
+      "referencePngBytes": 59289,
+      "origin": [
+        0.5218978102189781,
+        0.8419117647058824
+      ],
+      "displayWidth": 222.16216216216216,
+      "displayHeight": 220.54054054054055
+    },
+    {
+      "bossId": "ossuary-leviathan",
+      "sourceAtlas": "assets/production/motion/ossuary-leviathan-action-v1-atlas.png",
+      "sourceAtlasSha256": "001abf64b7ae131befe1ba540b1ba500b88eae5381a502dfbf2ce68e56746e80",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        67,
+        228,
+        261,
+        339
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 585.8783911503635,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/ossuary-leviathan-reference-v1.png",
+        "sha256": "eefa31f2523669fa44015e49bad2cd37a7e5437bfc11a39eee0eecae637dcc24"
+      },
+      "reference": "assets/delivery/boss-loading-v3/ossuary-leviathan-reference-v3.png",
+      "referenceSha256": "06d283bd4cf4656fad7d61333f305122b19e9d822670ac4f9663e23c56ec62e9",
+      "referenceWidth": 194,
+      "referenceHeight": 111,
+      "referenceDecodedBytes": 86136,
+      "referencePngBytes": 20248,
+      "origin": [
+        0.6443298969072165,
+        0.8288288288288288
+      ],
+      "displayWidth": 295.99064552908993,
+      "displayHeight": 169.35547244190195
+    },
+    {
+      "bossId": "unlit-astronomer",
+      "sourceAtlas": "assets/production/motion/unlit-astronomer-action-v1-atlas.png",
+      "sourceAtlasSha256": "12870c694d76002f31fa76e10d287c68b743d6ccda14c3645a07979568fbb621",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        127,
+        117,
+        284,
+        339
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/unlit-astronomer-reference-v1.png",
+        "sha256": "119ba365c9e151b2f20491d3588580f2bf651629de1e563832095c667eac1b64"
+      },
+      "reference": "assets/delivery/boss-loading-v3/unlit-astronomer-reference-v3.png",
+      "referenceSha256": "e4f6dfcd3dc123f2bbfecdb0b777b05d810bd53782a3a2fe96ae9602b9c05888",
+      "referenceWidth": 157,
+      "referenceHeight": 222,
+      "referenceDecodedBytes": 139416,
+      "referencePngBytes": 30373,
+      "origin": [
+        0.4140127388535032,
+        0.9144144144144144
+      ],
+      "displayWidth": 127.29729729729729,
+      "displayHeight": 180.0
+    },
+    {
+      "bossId": "red-comet",
+      "sourceAtlas": "assets/production/motion/red-comet-action-v1-atlas.png",
+      "sourceAtlasSha256": "ef348b2aae825ce03617dcb01469f8c4b723a354c06ec4ffe41cc55ca8ea69cf",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        87,
+        115,
+        312,
+        348
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/red-comet-reference-v1.png",
+        "sha256": "b33c97700d108b9542dc18fd50f1654bebaa71e5da7cd1cfc2012fffa0a3cffe"
+      },
+      "reference": "assets/delivery/boss-loading-v3/red-comet-reference-v3.png",
+      "referenceSha256": "495797a379749853bb7148f157b969618b36bca2088360abd7ed9840d89e6aef",
+      "referenceWidth": 225,
+      "referenceHeight": 233,
+      "referenceDecodedBytes": 209700,
+      "referencePngBytes": 31749,
+      "origin": [
+        0.4666666666666667,
+        0.8798283261802575
+      ],
+      "displayWidth": 182.43243243243242,
+      "displayHeight": 188.91891891891893
+    },
+    {
+      "bossId": "memory-taxer",
+      "sourceAtlas": "assets/production/motion/memory-taxer-action-v1-atlas.png",
+      "sourceAtlasSha256": "824f14ffb5227480ac858053dad9cebcf78c4985c3332f15339ec00528498d9c",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        67,
+        116,
+        297,
+        341
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/memory-taxer-reference-v1.png",
+        "sha256": "ec5680e1c278e168fa1f8579d184e1504f5350f02f6fb5634564c8f68cc6c971"
+      },
+      "reference": "assets/delivery/boss-loading-v3/memory-taxer-reference-v3.png",
+      "referenceSha256": "f0583fbcb292e8f6a9f337066c21efb15061561e2d47421416b533c588d15046",
+      "referenceWidth": 230,
+      "referenceHeight": 225,
+      "referenceDecodedBytes": 207000,
+      "referencePngBytes": 31328,
+      "origin": [
+        0.5434782608695652,
+        0.9066666666666666
+      ],
+      "displayWidth": 186.48648648648648,
+      "displayHeight": 182.43243243243242
+    },
+    {
+      "bossId": "choir-of-moths",
+      "sourceAtlas": "assets/production/motion/choir-of-moths-action-v1-atlas.png",
+      "sourceAtlasSha256": "2f96e5d15e2ff9f80850fed1ea42f144644d17c5c594e2ab09f3855f3bee170b",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        48,
+        84,
+        331,
+        356
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/choir-of-moths-reference-v1.png",
+        "sha256": "836d35476c975aea35835c2def30a89a5c046071823ac4cc1a52dfe62e6b9ace"
+      },
+      "reference": "assets/delivery/boss-loading-v3/choir-of-moths-reference-v3.png",
+      "referenceSha256": "a48b67dd71bcf108081c389cdc0b016c2ad5399d5098218d79ae47d400605b9d",
+      "referenceWidth": 283,
+      "referenceHeight": 272,
+      "referenceDecodedBytes": 307904,
+      "referencePngBytes": 35273,
+      "origin": [
+        0.508833922261484,
+        0.8676470588235294
+      ],
+      "displayWidth": 229.45945945945945,
+      "displayHeight": 220.54054054054055
+    },
+    {
+      "bossId": "last-knocker",
+      "sourceAtlas": "assets/production/motion/last-knocker-action-v1-atlas.png",
+      "sourceAtlasSha256": "3476b6eb92078d8f643aed7f59b3286f0af912258c804013e81654a33e3af33a",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        66,
+        116,
+        267,
+        341
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/last-knocker-reference-v1.png",
+        "sha256": "3cd72e8caf9f5182b9659edd3597f3d512ae1cc3f8e21a00b28a7ac9af5f157d"
+      },
+      "reference": "assets/delivery/boss-loading-v3/last-knocker-reference-v3.png",
+      "referenceSha256": "4d877c0cd511b01984f52126696d8585082e3be816d35792c6fea67cb3990f49",
+      "referenceWidth": 201,
+      "referenceHeight": 225,
+      "referenceDecodedBytes": 180900,
+      "referencePngBytes": 38352,
+      "origin": [
+        0.6268656716417911,
+        0.9066666666666666
+      ],
+      "displayWidth": 162.97297297297297,
+      "displayHeight": 182.43243243243242
+    },
+    {
+      "bossId": "hourglass-widow",
+      "sourceAtlas": "assets/production/motion/hourglass-widow-action-v1-atlas.png",
+      "sourceAtlasSha256": "a27d0be3247f84063723b4cf7b8366f1f5f6d341b7168be8acbc7e606bec90ef",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        58,
+        116,
+        322,
+        338
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.3513513513513,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/hourglass-widow-reference-v1.png",
+        "sha256": "9c5aa314628f19fffe2d3a366249ebf43030efad1b0610737c6f91b677ac4f11"
+      },
+      "reference": "assets/delivery/boss-loading-v3/hourglass-widow-reference-v3.png",
+      "referenceSha256": "84e2704ac5dddd83c2ef97a34df97fccac1da0f79fcf19419f7ed1aee977bbac",
+      "referenceWidth": 264,
+      "referenceHeight": 222,
+      "referenceDecodedBytes": 234432,
+      "referencePngBytes": 35416,
+      "origin": [
+        0.5075757575757576,
+        0.918918918918919
+      ],
+      "displayWidth": 214.05405405405403,
+      "displayHeight": 179.99999999999997
+    },
+    {
+      "bossId": "folded-man",
+      "sourceAtlas": "assets/production/motion/folded-man-action-v1-atlas.png",
+      "sourceAtlasSha256": "333d17258916c27624624ba5229a01c0f30d7551355e50c3c57d5312db09acc7",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        64,
+        86,
+        335,
+        363
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/folded-man-reference-v1.png",
+        "sha256": "fd7d56c444860b7cee59cda04c21b6d0f988c54d7deb6b07548ba5ff1cbeb406"
+      },
+      "reference": "assets/delivery/boss-loading-v3/folded-man-reference-v3.png",
+      "referenceSha256": "51c4c82dafd294531b011a93768bde28105bf627026996dc6c009fecac65c5c3",
+      "referenceWidth": 271,
+      "referenceHeight": 277,
+      "referenceDecodedBytes": 300268,
+      "referencePngBytes": 37889,
+      "origin": [
+        0.47232472324723246,
+        0.8447653429602888
+      ],
+      "displayWidth": 219.7297297297297,
+      "displayHeight": 224.59459459459458
+    },
+    {
+      "bossId": "zero-hour-conductor",
+      "sourceAtlas": "assets/production/motion/zero-hour-conductor-action-v1-atlas.png",
+      "sourceAtlasSha256": "c48770a6ef0aef02fd3de24b76e70e7a7dfbd02fd84e74716f344935623e3edf",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        6,
+        52,
+        334,
+        357
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.3513513513513,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/zero-hour-conductor-reference-v1.png",
+        "sha256": "73364530494b912cd1f029b2228cf83884c7d40eed14fcf8b7323362e3a63296"
+      },
+      "reference": "assets/delivery/boss-loading-v3/zero-hour-conductor-reference-v3.png",
+      "referenceSha256": "7bcffcf0a833f30d08703e3d4247c6819480156016b355fd4bd3f312ac73d2ca",
+      "referenceWidth": 328,
+      "referenceHeight": 305,
+      "referenceDecodedBytes": 400160,
+      "referencePngBytes": 38394,
+      "origin": [
+        0.5670731707317073,
+        0.8786885245901639
+      ],
+      "displayWidth": 265.9459459459459,
+      "displayHeight": 247.29729729729726
+    },
+    {
+      "bossId": "walking-district",
+      "sourceAtlas": "assets/production/motion/walking-district-action-v1-atlas.png",
+      "sourceAtlasSha256": "c3e9312b9db34d6793472ec1b8c9bef823670b465183324ad07e1ec8061fcf64",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        63,
+        95,
+        345,
+        343
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.3513513513513,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/walking-district-reference-v1.png",
+        "sha256": "29d6e98356f4349fab7585a3e540de1496da6711ddad96cdcf518d0435656aea"
+      },
+      "reference": "assets/delivery/boss-loading-v3/walking-district-reference-v3.png",
+      "referenceSha256": "7b6c4504c6f3c7ac77c722c5a2b501821cf17d5b775cf937a52100d474526140",
+      "referenceWidth": 282,
+      "referenceHeight": 248,
+      "referenceDecodedBytes": 279744,
+      "referencePngBytes": 59969,
+      "origin": [
+        0.4574468085106383,
+        0.907258064516129
+      ],
+      "displayWidth": 228.64864864864862,
+      "displayHeight": 201.08108108108104
+    },
+    {
+      "bossId": "uncounted",
+      "sourceAtlas": "assets/production/motion/uncounted-action-v1-atlas.png",
+      "sourceAtlasSha256": "00fc23b7e7050063ba99c12b7869ee1f91d8568e9d8fdf33288e2562fb3aa54d",
+      "sourceFrame": 0,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        62,
+        87,
+        332,
+        353
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 4718592,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v1/uncounted-reference-v1.png",
+        "sha256": "a1c482595f66920f341e20232b79bf298041f07e9cb99a03681f2a952f17ef57"
+      },
+      "reference": "assets/delivery/boss-loading-v3/uncounted-reference-v3.png",
+      "referenceSha256": "6b7b59f06dfc69d84e07912057d3fb27fe99d22cb97ba9d7f3d27217826b6950",
+      "referenceWidth": 270,
+      "referenceHeight": 266,
+      "referenceDecodedBytes": 287280,
+      "referencePngBytes": 52376,
+      "origin": [
+        0.48148148148148145,
+        0.8759398496240601
+      ],
+      "displayWidth": 218.91891891891893,
+      "displayHeight": 215.6756756756757
+    }
+  ],
+  "settledReferences": [
+    {
+      "bossId": "ratcatcher",
+      "sourceAtlas": "assets/production/motion/ratcatcher-action-v2-atlas.png",
+      "sourceAtlasSha256": "9edc97bf52f98b866c1a3233b33ab7df332339ac4cd0f8d203b0725e9756650a",
+      "sourceFrame": 15,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        48,
+        153,
+        318,
+        338
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 9437184,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v2/ratcatcher-defeat-reference-v1.png",
+        "sha256": "551a11e055dfc3dee624105aca2de408c285719a6e00513c79397ca7186569f6"
+      },
+      "reference": "assets/delivery/boss-loading-v3/ratcatcher-defeat-reference-v2.png",
+      "referenceSha256": "522333610b45f4ee0b1d33f624f5612d8e3a8e0714130af8245580313c0ce42e",
+      "referenceWidth": 270,
+      "referenceHeight": 185,
+      "referenceDecodedBytes": 199800,
+      "referencePngBytes": 31891,
+      "origin": [
+        0.5333333333333333,
+        0.9027027027027027
+      ],
+      "displayWidth": 218.91891891891893,
+      "displayHeight": 150.0,
+      "defeatStartFrame": 8,
+      "defeatFrames": 8
+    },
+    {
+      "bossId": "quarantine-clerk",
+      "sourceAtlas": "assets/production/motion/quarantine-clerk-action-v2-atlas.png",
+      "sourceAtlasSha256": "cbfddac1c1fdcb68d543bd880021cd9b86bbdf9c8e5ee9bd5e459f27b50d1ec1",
+      "sourceFrame": 15,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        73,
+        178,
+        266,
+        340
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 9437184,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v2/quarantine-clerk-defeat-reference-v1.png",
+        "sha256": "93e08535c46ea4d532812771ec81d591be34def6f8ff28f40874ef7647eef9e5"
+      },
+      "reference": "assets/delivery/boss-loading-v3/quarantine-clerk-defeat-reference-v2.png",
+      "referenceSha256": "d02b80d4c5c9bdd6b12f093786c19b338fe7ffeb1c545825e4c2c81a37036c8e",
+      "referenceWidth": 193,
+      "referenceHeight": 162,
+      "referenceDecodedBytes": 125064,
+      "referencePngBytes": 15708,
+      "origin": [
+        0.616580310880829,
+        0.8765432098765432
+      ],
+      "displayWidth": 156.48648648648648,
+      "displayHeight": 131.35135135135135,
+      "defeatStartFrame": 8,
+      "defeatFrames": 8
+    },
+    {
+      "bossId": "courier",
+      "sourceAtlas": "assets/production/motion/courier-action-v3-atlas.png",
+      "sourceAtlasSha256": "60b850cc6206049cafe5ba0ec44580bcf81d2e961e9d3b620d62da2b5a43fb2c",
+      "sourceFrame": 15,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        81,
+        183,
+        272,
+        339
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 16515072,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v2/courier-defeat-reference-v1.png",
+        "sha256": "3e549cff9125b6ebb60f5c8e13e4dae6defd390f3ae9bda27609a0e60c822678"
+      },
+      "reference": "assets/delivery/boss-loading-v3/courier-defeat-reference-v2.png",
+      "referenceSha256": "d9e2e3b8f7f4c27b1909c5e7e3438bcf769a7328080fef6e888a796c302ab03a",
+      "referenceWidth": 191,
+      "referenceHeight": 156,
+      "referenceDecodedBytes": 119184,
+      "referencePngBytes": 16707,
+      "origin": [
+        0.581151832460733,
+        0.8782051282051282
+      ],
+      "displayWidth": 154.86486486486487,
+      "displayHeight": 126.4864864864865,
+      "defeatStartFrame": 8,
+      "defeatFrames": 8
+    },
+    {
+      "bossId": "tollkeeper",
+      "sourceAtlas": "assets/production/motion/tollkeeper-action-v2-atlas.png",
+      "sourceAtlasSha256": "d36ba858f3dc83498df7c42020ec89ed23bd0f3304cb046964a0d622c0ffd799",
+      "sourceFrame": 15,
+      "sourceCellSize": 448,
+      "sourceRect": [
+        91,
+        198,
+        341,
+        371
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.7857142857142857
+      ],
+      "sourceDisplayCell": 363.2432432432433,
+      "sourceFullDecodedBytes": 12845056,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v2/tollkeeper-defeat-reference-v1.png",
+        "sha256": "603840df0ac83fcac470d8fc94109b73aa2ea82844fabc3f3b55ea3eedbe219e"
+      },
+      "reference": "assets/delivery/boss-loading-v3/tollkeeper-defeat-reference-v2.png",
+      "referenceSha256": "ee708e5b22f8c091f52f13ea80ebf8223bdde473d6074344c5456e01d8bdcd12",
+      "referenceWidth": 250,
+      "referenceHeight": 173,
+      "referenceDecodedBytes": 173000,
+      "referencePngBytes": 29976,
+      "origin": [
+        0.532,
+        0.8901734104046243
+      ],
+      "displayWidth": 202.70270270270274,
+      "displayHeight": 140.2702702702703,
+      "defeatStartFrame": 8,
+      "defeatFrames": 8
+    },
+    {
+      "bossId": "chain-marshal",
+      "sourceAtlas": "assets/production/motion/chain-marshal-action-v2-atlas.png",
+      "sourceAtlasSha256": "07179387b2e2ed2056034f25eea2c3f628e2b267c36fc080f32f2648b7f94e2b",
+      "sourceFrame": 15,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        77,
+        180,
+        299,
+        340
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 9437184,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v2/chain-marshal-defeat-reference-v1.png",
+        "sha256": "528e7ad5b7be244d8119ae9a236f0773979d21c8664fbaefb1ffdccbe2cb259c"
+      },
+      "reference": "assets/delivery/boss-loading-v3/chain-marshal-defeat-reference-v2.png",
+      "referenceSha256": "92e39eeacb2b6a1481caa08f57598a786de9d5eb7b5677ea0d463d4f02f698ec",
+      "referenceWidth": 222,
+      "referenceHeight": 160,
+      "referenceDecodedBytes": 142080,
+      "referencePngBytes": 24351,
+      "origin": [
+        0.5180180180180181,
+        0.875
+      ],
+      "displayWidth": 180.0,
+      "displayHeight": 129.7297297297297,
+      "defeatStartFrame": 8,
+      "defeatFrames": 8
+    },
+    {
+      "bossId": "gate-widow",
+      "sourceAtlas": "assets/production/motion/gate-widow-action-v2-atlas.png",
+      "sourceAtlasSha256": "fd2370bd7308ebf9bfd7cc7f18a7d0cb7e5856f15e82902f8d1a248883ec00cb",
+      "sourceFrame": 15,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        93,
+        164,
+        291,
+        339
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 9437184,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v2/gate-widow-defeat-reference-v1.png",
+        "sha256": "2fbd12247ecdb8cbc5a4a003ed16f5f16fcd7a5fcc02bd046806fff4efa8a699"
+      },
+      "reference": "assets/delivery/boss-loading-v3/gate-widow-defeat-reference-v2.png",
+      "referenceSha256": "ae889f357e87a4973d9bbf96287abeb7a637cd1e631731b9702737a8a0eeb8df",
+      "referenceWidth": 198,
+      "referenceHeight": 175,
+      "referenceDecodedBytes": 138600,
+      "referencePngBytes": 17137,
+      "origin": [
+        0.5,
+        0.8914285714285715
+      ],
+      "displayWidth": 160.54054054054055,
+      "displayHeight": 141.8918918918919,
+      "defeatStartFrame": 8,
+      "defeatFrames": 8
+    },
+    {
+      "bossId": "black-ambulance",
+      "sourceAtlas": "assets/production/motion/black-ambulance-action-v2-atlas.png",
+      "sourceAtlasSha256": "09eb28742a63123d10bb8d49c29125e22d57829f710f3accf007cab82ecc79ce",
+      "sourceFrame": 15,
+      "sourceCellSize": 384,
+      "sourceRect": [
+        21,
+        143,
+        330,
+        341
+      ],
+      "sourceOrigin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "sourceDisplayCell": 311.35135135135135,
+      "sourceFullDecodedBytes": 9437184,
+      "previousReference": {
+        "path": "assets/delivery/boss-loading-v2/black-ambulance-defeat-reference-v1.png",
+        "sha256": "1f418eab8fbfe6f1c43107d406595925f2b0d7b26097912c86af15a2ec19ee56"
+      },
+      "reference": "assets/delivery/boss-loading-v3/black-ambulance-defeat-reference-v2.png",
+      "referenceSha256": "e5ca957df7519308fcabf3685a55ca2c669f72d7712843a6fce0e3f620a49d4f",
+      "referenceWidth": 309,
+      "referenceHeight": 198,
+      "referenceDecodedBytes": 244728,
+      "referencePngBytes": 58218,
+      "origin": [
+        0.5533980582524272,
+        0.8939393939393939
+      ],
+      "displayWidth": 250.54054054054055,
+      "displayHeight": 160.54054054054055,
+      "defeatStartFrame": 8,
+      "defeatFrames": 8
+    }
+  ],
+  "summary": {
+    "encounterAtlases": 65,
+    "alwaysLoadedAtlases": 8,
+    "lazyAtlases": 57,
+    "mainReferences": 57,
+    "settledReferences": 7,
+    "baselineDecodedBytes": 350224384,
+    "alwaysLoadedDecodedBytes": 37748736,
+    "mainReferenceDecodedBytes": 12290152,
+    "settledReferenceDecodedBytes": 1142456,
+    "referenceDecodedBytes": 13432608,
+    "startupDecodedBytes": 51181344,
+    "maximumTwoFullAtlasBytes": 29360128,
+    "maximumCachedDecodedBytes": 80541472,
+    "cachedReductionPercent": 77.00289423594218,
+    "referencePngBytes": 2593850,
+    "previousReferenceDecodedBytes": 38174720,
+    "referenceReductionPercent": 64.81281853540773
+  },
+  "limits": [
+    "Exact dimension-derived RGBA subtotals for the encounter set, excluding Constable, Warden, survivor, arena and other textures, browser/CPU/staging/mipmap/driver allocations and device FPS.",
+    "Complete RGBA reference crops include a sixteen-pixel gutter. Inverse pasting reconstructs every original source-cell channel exactly.",
+    "Cropped texture origins and display width/height preserve the original world transform. They must be applied on initial fallback and before full texture eviction.",
+    "Only authoritative current/recent full atlases load, with two retained and one in flight. Future concealed schedules are not prefetched."
+  ]
+}

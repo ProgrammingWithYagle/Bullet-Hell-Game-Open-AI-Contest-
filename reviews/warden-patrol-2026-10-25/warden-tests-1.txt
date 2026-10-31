@@ -1,0 +1,37 @@
+✔ Still Watch stays planted and Roving Vigil makes a visibly separate rest-only patrol on every map and cover rule (711.748ms)
+✔ patrol warning locks a route and next sweep locks its actual new ground origin and aim (3.0003ms)
+✔ Brutal alternates direction and final pairs have two complete warnings with no overlapping active cone (26.6841ms)
+✔ both sweep directions preserve a genuinely clear trailing interior under actual signature geometry (1.0387ms)
+✔ the live final Brutal pair clears auxiliary hazards and cannot damage its marked trailing interior (20.1539ms)
+✔ Brutal rest fan actually emits a warned second locked-origin projectile wave (8.2568ms)
+✔ patrol art follows movement only, retains world scale and avoids animation under reduced motion (0.7368ms)
+✔ victory, timeout, wipe and stagger cancel patrol/return cues and do not leave live motion state (2.6085ms)
+✔ all fifteen locales have distinct phase responses and explicit fully warned Brutal return help (0.3882ms)
+✔ issued protocol18 Practice retains money, skills and identity under the new encounter protocol (0.9788ms)
+✔ independent Warden pixel verifier reconstructs the complete source and all four normalized poses (330.288ms)
+✖ real clients reject protocol18 and replicate patrol, new sweep origin, direction and cleanup (448.0287ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 11
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3868.5166
+
+✖ failing tests:
+
+test at tests\warden-patrol.test.ts:1:9407
+✖ real clients reject protocol18 and replicate patrol, new sweep origin, direction and cleanup (448.0287ms)
+  AssertionError [ERR_ASSERTION]: 998.9999999999986 != 998
+      at close (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\warden-patrol.test.ts:20:34)
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\warden-patrol.test.ts:125:23)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

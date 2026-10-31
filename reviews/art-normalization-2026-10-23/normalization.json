@@ -1,0 +1,1500 @@
+{
+  "schemaVersion": 1,
+  "structuralChecksPassed": true,
+  "sourceManifest": "docs/art-production-2026-10-23.json",
+  "sourceManifestSha256": "6459f9366eb84ef50c8d826872027f87363750f459f3c3ef0538ea0013e73ade",
+  "operation": "Equal-grid extraction, measured static foot anchors, one uniform Lanczos scale per identity and transparent padding; original native alpha and art preserved.",
+  "selectedIdentities": 8,
+  "survivorViews": 20,
+  "bossPoses": 9,
+  "entries": [
+    {
+      "id": "heavy",
+      "name": "Heavy",
+      "family": "survivors",
+      "kind": "static-reference",
+      "atlas": "assets/production/normalized/survivors/heavy/reference-atlas-v1.png",
+      "source": "assets/production/survivors/heavy/four-view-v2.png",
+      "sourceSha256": "d3a5f7bf9d1eb24f296608396e747915d4a6443ba41dc46ee795d91dfced1de4",
+      "atlasSha256": "a755ea9427b149c9feffba07a3e2f91637f78e4a596ab2044e3a5156c0a879f3",
+      "cellSize": 256,
+      "columns": 4,
+      "frames": 4,
+      "labels": [
+        "south",
+        "east",
+        "north",
+        "west"
+      ],
+      "origin": [
+        0.5,
+        0.859375
+      ],
+      "displayHeight": 56,
+      "displayCell": 121.49152542372882,
+      "fps": 0,
+      "status": "Normalized reference; motion and gameplay pending",
+      "portrait": "assets/production/normalized/survivors/heavy/portrait-south-v1.png",
+      "portraitSha256": "50f12d29c812d30e2f02a419f724d65fbcb6fd688fde419a1ce92633db9b6209",
+      "portraitSourceRect": [
+        149,
+        63,
+        522,
+        584
+      ],
+      "portraitCropPolicy": "Native south-view alpha16 bounds plus 12px clearance, clipped to its source cell. Geometric crop only; all retained RGBA values are unchanged.",
+      "sourceSize": [
+        1247,
+        1261
+      ],
+      "uniformScale": 0.2259782608695652,
+      "anchorMethod": "Alpha-weighted horizontal center in bottom 10 percent at alpha >=16; bottom contact. Inspect crosshairs before motion production.",
+      "measurements": [
+        {
+          "label": "south",
+          "sourceRect": [
+            0,
+            0,
+            623,
+            630
+          ],
+          "sourceAlphaBounds": [
+            0,
+            0,
+            623,
+            630
+          ],
+          "sourceAlpha16Bounds": [
+            161,
+            75,
+            510,
+            572
+          ],
+          "sourceFootAnchor": [
+            331,
+            572
+          ],
+          "targetFootAnchor": [
+            128,
+            220
+          ],
+          "offset": [
+            53,
+            91
+          ],
+          "targetAlpha16Bounds": [
+            89,
+            108,
+            169,
+            220
+          ],
+          "clearancePixels": 36
+        },
+        {
+          "label": "east",
+          "sourceRect": [
+            623,
+            0,
+            1247,
+            630
+          ],
+          "sourceAlphaBounds": [
+            0,
+            49,
+            610,
+            629
+          ],
+          "sourceAlpha16Bounds": [
+            143,
+            75,
+            564,
+            578
+          ],
+          "sourceFootAnchor": [
+            295,
+            578
+          ],
+          "targetFootAnchor": [
+            128,
+            220
+          ],
+          "offset": [
+            61,
+            100
+          ],
+          "targetAlpha16Bounds": [
+            93,
+            106,
+            189,
+            220
+          ],
+          "clearancePixels": 36
+        },
+        {
+          "label": "north",
+          "sourceRect": [
+            0,
+            630,
+            623,
+            1261
+          ],
+          "sourceAlphaBounds": [
+            0,
+            0,
+            623,
+            631
+          ],
+          "sourceAlpha16Bounds": [
+            85,
+            33,
+            499,
+            539
+          ],
+          "sourceFootAnchor": [
+            329,
+            539
+          ],
+          "targetFootAnchor": [
+            128,
+            220
+          ],
+          "offset": [
+            54,
+            98
+          ],
+          "targetAlpha16Bounds": [
+            73,
+            105,
+            167,
+            221
+          ],
+          "clearancePixels": 35
+        },
+        {
+          "label": "west",
+          "sourceRect": [
+            623,
+            630,
+            1247,
+            1261
+          ],
+          "sourceAlphaBounds": [
+            0,
+            0,
+            608,
+            607
+          ],
+          "sourceAlpha16Bounds": [
+            69,
+            33,
+            481,
+            551
+          ],
+          "sourceFootAnchor": [
+            326,
+            551
+          ],
+          "targetFootAnchor": [
+            128,
+            220
+          ],
+          "offset": [
+            54,
+            95
+          ],
+          "targetAlpha16Bounds": [
+            69,
+            102,
+            163,
+            220
+          ],
+          "clearancePixels": 36
+        }
+      ]
+    },
+    {
+      "id": "tank",
+      "name": "Tank",
+      "family": "survivors",
+      "kind": "static-reference",
+      "atlas": "assets/production/normalized/survivors/tank/reference-atlas-v1.png",
+      "source": "assets/production/survivors/tank/four-view-v2.png",
+      "sourceSha256": "37f8d175f67d81cad1e13f1ed20b40e148b9548272460926c56bcaaaf932b05d",
+      "atlasSha256": "0762036ca4165e7cfe6b5aa3d2713dfc8c1ca811befe0e5d0f55694a9fe3151a",
+      "cellSize": 256,
+      "columns": 4,
+      "frames": 4,
+      "labels": [
+        "south",
+        "east",
+        "north",
+        "west"
+      ],
+      "origin": [
+        0.5,
+        0.859375
+      ],
+      "displayHeight": 56,
+      "displayCell": 85.8443113772455,
+      "fps": 0,
+      "status": "Normalized reference; motion and gameplay pending",
+      "portrait": "assets/production/normalized/survivors/tank/portrait-south-v1.png",
+      "portraitSha256": "41a1723d2f17905a2c5dd0cf93979e52d8afc3d45be6399e7d3a941c245c946f",
+      "portraitSourceRect": [
+        193,
+        66,
+        560,
+        618
+      ],
+      "portraitCropPolicy": "Native south-view alpha16 bounds plus 12px clearance, clipped to its source cell. Geometric crop only; all retained RGBA values are unchanged.",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "uniformScale": 0.315,
+      "anchorMethod": "Alpha-weighted horizontal center in bottom 10 percent at alpha >=16; bottom contact. Inspect crosshairs before motion production.",
+      "measurements": [
+        {
+          "label": "south",
+          "sourceRect": [
+            0,
+            0,
+            627,
+            627
+          ],
+          "sourceAlphaBounds": [
+            19,
+            25,
+            627,
+            611
+          ],
+          "sourceAlpha16Bounds": [
+            205,
+            78,
+            548,
+            606
+          ],
+          "sourceFootAnchor": [
+            358,
+            606
+          ],
+          "targetFootAnchor": [
+            128,
+            220
+          ],
+          "offset": [
+            21,
+            37
+          ],
+          "targetAlpha16Bounds": [
+            79,
+            54,
+            188,
+            221
+          ],
+          "clearancePixels": 35
+        },
+        {
+          "label": "east",
+          "sourceRect": [
+            627,
+            0,
+            1254,
+            627
+          ],
+          "sourceAlphaBounds": [
+            1,
+            21,
+            605,
+            615
+          ],
+          "sourceAlpha16Bounds": [
+            166,
+            79,
+            432,
+            607
+          ],
+          "sourceFootAnchor": [
+            297,
+            607
+          ],
+          "targetFootAnchor": [
+            128,
+            220
+          ],
+          "offset": [
+            35,
+            35
+          ],
+          "targetAlpha16Bounds": [
+            87,
+            53,
+            171,
+            220
+          ],
+          "clearancePixels": 36
+        },
+        {
+          "label": "north",
+          "sourceRect": [
+            0,
+            627,
+            627,
+            1254
+          ],
+          "sourceAlphaBounds": [
+            0,
+            23,
+            619,
+            609
+          ],
+          "sourceAlpha16Bounds": [
+            190,
+            32,
+            548,
+            543
+          ],
+          "sourceFootAnchor": [
+            353,
+            543
+          ],
+          "targetFootAnchor": [
+            128,
+            220
+          ],
+          "offset": [
+            17,
+            56
+          ],
+          "targetAlpha16Bounds": [
+            76,
+            59,
+            190,
+            220
+          ],
+          "clearancePixels": 36
+        },
+        {
+          "label": "west",
+          "sourceRect": [
+            627,
+            627,
+            1254,
+            1254
+          ],
+          "sourceAlphaBounds": [
+            15,
+            7,
+            613,
+            603
+          ],
+          "sourceAlpha16Bounds": [
+            132,
+            33,
+            456,
+            548
+          ],
+          "sourceFootAnchor": [
+            299,
+            548
+          ],
+          "targetFootAnchor": [
+            128,
+            220
+          ],
+          "offset": [
+            39,
+            50
+          ],
+          "targetAlpha16Bounds": [
+            75,
+            58,
+            178,
+            221
+          ],
+          "clearancePixels": 35
+        }
+      ]
+    },
+    {
+      "id": "mage",
+      "name": "Mage",
+      "family": "survivors",
+      "kind": "static-reference",
+      "atlas": "assets/production/normalized/survivors/mage/reference-atlas-v1.png",
+      "source": "assets/production/survivors/mage/four-view-v2.png",
+      "sourceSha256": "bdb1b438ad83b57e61a154f2ed1188f977ab661f4a46da1d6192323f40b129c3",
+      "atlasSha256": "f631c0a183acf88b2cb5871529fa8a2bc9d8c2f523c0fe621fc38f00a1f91d0d",
+      "cellSize": 256,
+      "columns": 4,
+      "frames": 4,
+      "labels": [
+        "south",
+        "east",
+        "north",
+        "west"
+      ],
+      "origin": [
+        0.5,
+        0.859375
+      ],
+      "displayHeight": 56,
+      "displayCell": 77.91304347826087,
+      "fps": 0,
+      "status": "Normalized reference; motion and gameplay pending",
+      "portrait": "assets/production/normalized/survivors/mage/portrait-south-v1.png",
+      "portraitSha256": "f452758195d242648e8e54c4e17af9b6fe43f7fc15f00ee2239ce60e374bc50f",
+      "portraitSourceRect": [
+        155,
+        41,
+        498,
+        613
+      ],
+      "portraitCropPolicy": "Native south-view alpha16 bounds plus 12px clearance, clipped to its source cell. Geometric crop only; all retained RGBA values are unchanged.",
+      "sourceSize": [
+        1247,
+        1261
+      ],
+      "uniformScale": 0.33494011976047905,
+      "anchorMethod": "Alpha-weighted horizontal center in bottom 10 percent at alpha >=16; bottom contact. Inspect crosshairs before motion production.",
+      "measurements": [
+        {
+          "label": "south",
+          "sourceRect": [
+            0,
+            0,
+            623,
+            630
+          ],
+          "sourceAlphaBounds": [
+            0,
+            25,
+            623,
+            630
+          ],
+          "sourceAlpha16Bounds": [
+            167,
+            53,
+            486,
+            601
+          ],
+          "sourceFootAnchor": [
+            317,
+            601
+          ],
+          "targetFootAnchor": [
+            128,
+            220
+          ],
+          "offset": [
+            22,
+            27
+          ],
+          "targetAlpha16Bounds": [
+            78,
+            36,
+            185,
+            220
+          ],
+          "clearancePixels": 36
+        },
+        {
+          "label": "east",
+          "sourceRect": [
+            623,
+            0,
+            1247,
+            630
+          ],
+          "sourceAlphaBounds": [
+            0,
+            23,
+            604,
+            616
+          ],
+          "sourceAlpha16Bounds": [
+            156,
+            64,
+            463,
+            609
+          ],
+          "sourceFootAnchor": [
+            283,
+            609
+          ],
+          "targetFootAnchor": [
+            128,
+            220
+          ],
+          "offset": [
+            33,
+            24
+          ],
+          "targetAlpha16Bounds": [
+            85,
+            38,
+            188,
+            221
+          ],
+          "clearancePixels": 35
+        },
+        {
+          "label": "north",
+          "sourceRect": [
+            0,
+            630,
+            623,
+            1261
+          ],
+          "sourceAlphaBounds": [
+            0,
+            0,
+            622,
+            591
+          ],
+          "sourceAlpha16Bounds": [
+            180,
+            36,
+            485,
+            563
+          ],
+          "sourceFootAnchor": [
+            334,
+            563
+          ],
+          "targetFootAnchor": [
+            128,
+            220
+          ],
+          "offset": [
+            16,
+            31
+          ],
+          "targetAlpha16Bounds": [
+            76,
+            43,
+            179,
+            220
+          ],
+          "clearancePixels": 36
+        },
+        {
+          "label": "west",
+          "sourceRect": [
+            623,
+            630,
+            1247,
+            1261
+          ],
+          "sourceAlphaBounds": [
+            1,
+            5,
+            580,
+            607
+          ],
+          "sourceAlpha16Bounds": [
+            173,
+            37,
+            461,
+            570
+          ],
+          "sourceFootAnchor": [
+            330,
+            570
+          ],
+          "targetFootAnchor": [
+            128,
+            220
+          ],
+          "offset": [
+            18,
+            31
+          ],
+          "targetAlpha16Bounds": [
+            76,
+            42,
+            172,
+            221
+          ],
+          "clearancePixels": 35
+        }
+      ]
+    },
+    {
+      "id": "engineer",
+      "name": "Engineer",
+      "family": "survivors",
+      "kind": "static-reference",
+      "atlas": "assets/production/normalized/survivors/engineer/reference-atlas-v1.png",
+      "source": "assets/production/survivors/engineer/four-view-v2.png",
+      "sourceSha256": "ff5e08bc0c64d4cd90e474e734a39fda4bbdb1afcbf02a76b3347c99d958698e",
+      "atlasSha256": "ce938198baaa8fad40ad1924acffb576745857e3d404abfa02db34441a5f1f98",
+      "cellSize": 256,
+      "columns": 4,
+      "frames": 4,
+      "labels": [
+        "south",
+        "east",
+        "north",
+        "west"
+      ],
+      "origin": [
+        0.5,
+        0.859375
+      ],
+      "displayHeight": 56,
+      "displayCell": 96.21476510067114,
+      "fps": 0,
+      "status": "Normalized reference; motion and gameplay pending",
+      "portrait": "assets/production/normalized/survivors/engineer/portrait-south-v1.png",
+      "portraitSha256": "8666c1327915b11a17b7998307d586665e42fbbb649d73df2673fbb40ea6f4e3",
+      "portraitSourceRect": [
+        199,
+        79,
+        498,
+        586
+      ],
+      "portraitCropPolicy": "Native south-view alpha16 bounds plus 12px clearance, clipped to its source cell. Geometric crop only; all retained RGBA values are unchanged.",
+      "sourceSize": [
+        1261,
+        1247
+      ],
+      "uniformScale": 0.30573529411764705,
+      "anchorMethod": "Alpha-weighted horizontal center in bottom 10 percent at alpha >=16; bottom contact. Inspect crosshairs before motion production.",
+      "measurements": [
+        {
+          "label": "south",
+          "sourceRect": [
+            0,
+            0,
+            630,
+            623
+          ],
+          "sourceAlphaBounds": [
+            41,
+            23,
+            630,
+            621
+          ],
+          "sourceAlpha16Bounds": [
+            211,
+            91,
+            486,
+            574
+          ],
+          "sourceFootAnchor": [
+            360,
+            574
+          ],
+          "targetFootAnchor": [
+            128,
+            220
+          ],
+          "offset": [
+            30,
+            52
+          ],
+          "targetAlpha16Bounds": [
+            82,
+            72,
+            166,
+            221
+          ],
+          "clearancePixels": 35
+        },
+        {
+          "label": "east",
+          "sourceRect": [
+            630,
+            0,
+            1261,
+            623
+          ],
+          "sourceAlphaBounds": [
+            0,
+            39,
+            617,
+            583
+          ],
+          "sourceAlpha16Bounds": [
+            202,
+            92,
+            407,
+            575
+          ],
+          "sourceFootAnchor": [
+            306,
+            575
+          ],
+          "targetFootAnchor": [
+            128,
+            220
+          ],
+          "offset": [
+            34,
+            56
+          ],
+          "targetAlpha16Bounds": [
+            96,
+            72,
+            159,
+            220
+          ],
+          "clearancePixels": 36
+        },
+        {
+          "label": "north",
+          "sourceRect": [
+            0,
+            623,
+            630,
+            1247
+          ],
+          "sourceAlphaBounds": [
+            21,
+            0,
+            630,
+            584
+          ],
+          "sourceAlpha16Bounds": [
+            228,
+            51,
+            504,
+            516
+          ],
+          "sourceFootAnchor": [
+            352,
+            516
+          ],
+          "targetFootAnchor": [
+            128,
+            220
+          ],
+          "offset": [
+            27,
+            62
+          ],
+          "targetAlpha16Bounds": [
+            90,
+            78,
+            175,
+            221
+          ],
+          "clearancePixels": 35
+        },
+        {
+          "label": "west",
+          "sourceRect": [
+            630,
+            623,
+            1261,
+            1247
+          ],
+          "sourceAlphaBounds": [
+            0,
+            32,
+            595,
+            584
+          ],
+          "sourceAlpha16Bounds": [
+            203,
+            59,
+            416,
+            526
+          ],
+          "sourceFootAnchor": [
+            304,
+            526
+          ],
+          "targetFootAnchor": [
+            128,
+            220
+          ],
+          "offset": [
+            35,
+            69
+          ],
+          "targetAlpha16Bounds": [
+            97,
+            78,
+            162,
+            220
+          ],
+          "clearancePixels": 36
+        }
+      ]
+    },
+    {
+      "id": "assassin",
+      "name": "Assassin",
+      "family": "survivors",
+      "kind": "static-reference",
+      "atlas": "assets/production/normalized/survivors/assassin/reference-atlas-v1.png",
+      "source": "assets/production/survivors/assassin/four-view-v2.png",
+      "sourceSha256": "f0e9d4b48e3b4599df355f5498bede211a39bdd2935b0a5c9c55a30e3fea82a1",
+      "atlasSha256": "589e1ffe83f620cfbb782e3b0dd7bc3de6776c4eb8d13b3ac663c08a18dd45bb",
+      "cellSize": 256,
+      "columns": 4,
+      "frames": 4,
+      "labels": [
+        "south",
+        "east",
+        "north",
+        "west"
+      ],
+      "origin": [
+        0.5,
+        0.859375
+      ],
+      "displayHeight": 56,
+      "displayCell": 98.1917808219178,
+      "fps": 0,
+      "status": "Normalized reference; motion and gameplay pending",
+      "portrait": "assets/production/normalized/survivors/assassin/portrait-south-v1.png",
+      "portraitSha256": "16c48daa1dddd3f14d648491d25cba4d8cdc0a9ad661557f7a25f6b01467916d",
+      "portraitSourceRect": [
+        156,
+        66,
+        532,
+        598
+      ],
+      "portraitCropPolicy": "Native south-view alpha16 bounds plus 12px clearance, clipped to its source cell. Geometric crop only; all retained RGBA values are unchanged.",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "uniformScale": 0.2847945205479452,
+      "anchorMethod": "Alpha-weighted horizontal center in bottom 10 percent at alpha >=16; bottom contact. Inspect crosshairs before motion production.",
+      "measurements": [
+        {
+          "label": "south",
+          "sourceRect": [
+            0,
+            0,
+            627,
+            627
+          ],
+          "sourceAlphaBounds": [
+            73,
+            61,
+            613,
+            591
+          ],
+          "sourceAlpha16Bounds": [
+            168,
+            78,
+            520,
+            586
+          ],
+          "sourceFootAnchor": [
+            373,
+            586
+          ],
+          "targetFootAnchor": [
+            128,
+            220
+          ],
+          "offset": [
+            43,
+            70
+          ],
+          "targetAlpha16Bounds": [
+            70,
+            75,
+            171,
+            220
+          ],
+          "clearancePixels": 36
+        },
+        {
+          "label": "east",
+          "sourceRect": [
+            627,
+            0,
+            1254,
+            627
+          ],
+          "sourceAlphaBounds": [
+            1,
+            81,
+            595,
+            625
+          ],
+          "sourceAlpha16Bounds": [
+            95,
+            85,
+            533,
+            590
+          ],
+          "sourceFootAnchor": [
+            311,
+            590
+          ],
+          "targetFootAnchor": [
+            128,
+            220
+          ],
+          "offset": [
+            40,
+            75
+          ],
+          "targetAlpha16Bounds": [
+            66,
+            76,
+            192,
+            220
+          ],
+          "clearancePixels": 36
+        },
+        {
+          "label": "north",
+          "sourceRect": [
+            0,
+            627,
+            627,
+            1254
+          ],
+          "sourceAlphaBounds": [
+            33,
+            45,
+            625,
+            585
+          ],
+          "sourceAlpha16Bounds": [
+            118,
+            47,
+            566,
+            548
+          ],
+          "sourceFootAnchor": [
+            329,
+            548
+          ],
+          "targetFootAnchor": [
+            128,
+            220
+          ],
+          "offset": [
+            44,
+            77
+          ],
+          "targetAlpha16Bounds": [
+            68,
+            77,
+            197,
+            221
+          ],
+          "clearancePixels": 35
+        },
+        {
+          "label": "west",
+          "sourceRect": [
+            627,
+            627,
+            1254,
+            1254
+          ],
+          "sourceAlphaBounds": [
+            1,
+            12,
+            617,
+            627
+          ],
+          "sourceAlpha16Bounds": [
+            87,
+            44,
+            550,
+            554
+          ],
+          "sourceFootAnchor": [
+            316,
+            554
+          ],
+          "targetFootAnchor": [
+            128,
+            220
+          ],
+          "offset": [
+            38,
+            66
+          ],
+          "targetAlpha16Bounds": [
+            62,
+            75,
+            194,
+            221
+          ],
+          "clearancePixels": 35
+        }
+      ]
+    },
+    {
+      "id": "lantern-warden",
+      "name": "Lantern Warden",
+      "family": "bosses",
+      "kind": "static-reference",
+      "atlas": "assets/production/normalized/bosses/lantern-warden/reference-atlas-v1.png",
+      "source": "assets/production/bosses/lantern-warden/pose-study-v2.png",
+      "sourceSha256": "31d8948a450409a931a25d6f1df17246cdb174b58a1e521b9afcd6e4c73b6888",
+      "atlasSha256": "9484ca5a74b62ec84d319052d16145e472139dada58596aaa2426510227a01e4",
+      "cellSize": 512,
+      "columns": 3,
+      "frames": 3,
+      "labels": [
+        "neutral",
+        "east profile",
+        "anticipation"
+      ],
+      "origin": [
+        0.5,
+        0.83984375
+      ],
+      "displayHeight": 150,
+      "displayCell": 220.68965517241378,
+      "fps": 0,
+      "status": "Normalized reference; motion and gameplay pending",
+      "sourceSize": [
+        1944,
+        809
+      ],
+      "uniformScale": 0.5238859416445623,
+      "anchorMethod": "Alpha-weighted horizontal center in bottom 10 percent at alpha >=16; bottom contact. Inspect crosshairs before motion production.",
+      "measurements": [
+        {
+          "label": "neutral",
+          "sourceRect": [
+            0,
+            0,
+            648,
+            809
+          ],
+          "sourceAlphaBounds": [
+            65,
+            23,
+            647,
+            761
+          ],
+          "sourceAlpha16Bounds": [
+            130,
+            91,
+            601,
+            755
+          ],
+          "sourceFootAnchor": [
+            315,
+            755
+          ],
+          "targetFootAnchor": [
+            256,
+            430
+          ],
+          "offset": [
+            125,
+            47
+          ],
+          "targetAlpha16Bounds": [
+            159,
+            83,
+            406,
+            431
+          ],
+          "clearancePixels": 81
+        },
+        {
+          "label": "east profile",
+          "sourceRect": [
+            648,
+            0,
+            1296,
+            809
+          ],
+          "sourceAlphaBounds": [
+            0,
+            19,
+            629,
+            793
+          ],
+          "sourceAlpha16Bounds": [
+            102,
+            87,
+            497,
+            750
+          ],
+          "sourceFootAnchor": [
+            300,
+            750
+          ],
+          "targetFootAnchor": [
+            256,
+            430
+          ],
+          "offset": [
+            99,
+            47
+          ],
+          "targetAlpha16Bounds": [
+            152,
+            82,
+            360,
+            430
+          ],
+          "clearancePixels": 82
+        },
+        {
+          "label": "anticipation",
+          "sourceRect": [
+            1296,
+            0,
+            1944,
+            809
+          ],
+          "sourceAlphaBounds": [
+            6,
+            0,
+            608,
+            793
+          ],
+          "sourceAlpha16Bounds": [
+            9,
+            140,
+            601,
+            754
+          ],
+          "sourceFootAnchor": [
+            233,
+            754
+          ],
+          "targetFootAnchor": [
+            256,
+            430
+          ],
+          "offset": [
+            137,
+            35
+          ],
+          "targetAlpha16Bounds": [
+            138,
+            108,
+            448,
+            430
+          ],
+          "clearancePixels": 64
+        }
+      ]
+    },
+    {
+      "id": "quarantine-clerk",
+      "name": "Quarantine Clerk",
+      "family": "bosses",
+      "kind": "static-reference",
+      "atlas": "assets/production/normalized/bosses/quarantine-clerk/reference-atlas-v1.png",
+      "source": "assets/production/bosses/quarantine-clerk/pose-study-v2.png",
+      "sourceSha256": "8c4afb8eed6ee2726475f20c1e0d4d9bee0c442e3a9c3aa3d00bfba15444a587",
+      "atlasSha256": "d416ab6eff7f7a715136b258702eef89fab4d6ccb724ef658343569ad96de866",
+      "cellSize": 512,
+      "columns": 3,
+      "frames": 3,
+      "labels": [
+        "neutral",
+        "east profile",
+        "anticipation"
+      ],
+      "origin": [
+        0.5,
+        0.83984375
+      ],
+      "displayHeight": 150,
+      "displayCell": 212.15469613259668,
+      "fps": 0,
+      "status": "Normalized reference; motion and gameplay pending",
+      "sourceSize": [
+        1882,
+        836
+      ],
+      "uniformScale": 0.5156788511749347,
+      "anchorMethod": "Alpha-weighted horizontal center in bottom 10 percent at alpha >=16; bottom contact. Inspect crosshairs before motion production.",
+      "measurements": [
+        {
+          "label": "neutral",
+          "sourceRect": [
+            0,
+            0,
+            627,
+            836
+          ],
+          "sourceAlphaBounds": [
+            0,
+            32,
+            619,
+            775
+          ],
+          "sourceAlpha16Bounds": [
+            198,
+            100,
+            529,
+            773
+          ],
+          "sourceFootAnchor": [
+            356,
+            773
+          ],
+          "targetFootAnchor": [
+            256,
+            430
+          ],
+          "offset": [
+            72,
+            48
+          ],
+          "targetAlpha16Bounds": [
+            174,
+            83,
+            345,
+            430
+          ],
+          "clearancePixels": 82
+        },
+        {
+          "label": "east profile",
+          "sourceRect": [
+            627,
+            0,
+            1254,
+            836
+          ],
+          "sourceAlphaBounds": [
+            0,
+            96,
+            624,
+            780
+          ],
+          "sourceAlpha16Bounds": [
+            195,
+            102,
+            413,
+            776
+          ],
+          "sourceFootAnchor": [
+            337,
+            776
+          ],
+          "targetFootAnchor": [
+            256,
+            430
+          ],
+          "offset": [
+            82,
+            79
+          ],
+          "targetAlpha16Bounds": [
+            182,
+            82,
+            295,
+            430
+          ],
+          "clearancePixels": 82
+        },
+        {
+          "label": "anticipation",
+          "sourceRect": [
+            1254,
+            0,
+            1882,
+            836
+          ],
+          "sourceAlphaBounds": [
+            62,
+            9,
+            552,
+            795
+          ],
+          "sourceAlpha16Bounds": [
+            65,
+            74,
+            549,
+            775
+          ],
+          "sourceFootAnchor": [
+            329,
+            775
+          ],
+          "targetFootAnchor": [
+            256,
+            430
+          ],
+          "offset": [
+            118,
+            35
+          ],
+          "targetAlpha16Bounds": [
+            119,
+            68,
+            370,
+            430
+          ],
+          "clearancePixels": 68
+        }
+      ]
+    },
+    {
+      "id": "ratcatcher",
+      "name": "Ratcatcher",
+      "family": "bosses",
+      "kind": "static-reference",
+      "atlas": "assets/production/normalized/bosses/ratcatcher/reference-atlas-v1.png",
+      "source": "assets/production/bosses/ratcatcher/pose-study-v3.png",
+      "sourceSha256": "dfc5a6beab37b62f0b4eed97fdd2d58be9da0ef64b6c69998fb1236b08e5940a",
+      "atlasSha256": "410f8d76f7aa6f4d36dd832029dc30cf024100eb0a6c8da63a8b61ef811371ae",
+      "cellSize": 512,
+      "columns": 3,
+      "frames": 3,
+      "labels": [
+        "neutral",
+        "east profile",
+        "anticipation"
+      ],
+      "origin": [
+        0.5,
+        0.83984375
+      ],
+      "displayHeight": 150,
+      "displayCell": 266.6666666666667,
+      "fps": 0,
+      "status": "Normalized reference; motion and gameplay pending",
+      "sourceSize": [
+        2172,
+        724
+      ],
+      "uniformScale": 0.5341726618705036,
+      "anchorMethod": "Alpha-weighted horizontal center in bottom 10 percent at alpha >=16; bottom contact. Inspect crosshairs before motion production.",
+      "measurements": [
+        {
+          "label": "neutral",
+          "sourceRect": [
+            0,
+            0,
+            724,
+            724
+          ],
+          "sourceAlphaBounds": [
+            25,
+            73,
+            718,
+            685
+          ],
+          "sourceAlpha16Bounds": [
+            185,
+            115,
+            676,
+            646
+          ],
+          "sourceFootAnchor": [
+            442,
+            646
+          ],
+          "targetFootAnchor": [
+            256,
+            430
+          ],
+          "offset": [
+            33,
+            124
+          ],
+          "targetAlpha16Bounds": [
+            118,
+            146,
+            381,
+            430
+          ],
+          "clearancePixels": 82
+        },
+        {
+          "label": "east profile",
+          "sourceRect": [
+            724,
+            0,
+            1448,
+            724
+          ],
+          "sourceAlphaBounds": [
+            73,
+            27,
+            708,
+            706
+          ],
+          "sourceAlpha16Bounds": [
+            110,
+            111,
+            580,
+            649
+          ],
+          "sourceFootAnchor": [
+            373,
+            649
+          ],
+          "targetFootAnchor": [
+            256,
+            430
+          ],
+          "offset": [
+            96,
+            98
+          ],
+          "targetAlpha16Bounds": [
+            116,
+            143,
+            367,
+            431
+          ],
+          "clearancePixels": 81
+        },
+        {
+          "label": "anticipation",
+          "sourceRect": [
+            1448,
+            0,
+            2172,
+            724
+          ],
+          "sourceAlphaBounds": [
+            1,
+            134,
+            688,
+            660
+          ],
+          "sourceAlpha16Bounds": [
+            30,
+            164,
+            568,
+            652
+          ],
+          "sourceFootAnchor": [
+            338,
+            652
+          ],
+          "targetFootAnchor": [
+            256,
+            430
+          ],
+          "offset": [
+            76,
+            153
+          ],
+          "targetAlpha16Bounds": [
+            92,
+            169,
+            379,
+            430
+          ],
+          "clearancePixels": 82
+        }
+      ]
+    }
+  ],
+  "assistantAnchorReview": "pending",
+  "humanReviewPerformed": false,
+  "contactSheet": {
+    "path": "reviews/art-normalization-2026-10-23/normalized-contact-sheet.png",
+    "sha256": "cdae7842205ea9c8518d6fb632d32e8808031f60a55ff3f694c9638a577b339c"
+  }
+}

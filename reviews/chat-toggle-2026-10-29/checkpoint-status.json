@@ -1,0 +1,81 @@
+{
+  "passed": true,
+  "sourceCommit": "c3f239af7e02f014fa351770d159ae5eb4903f61",
+  "buildId": "2026.10.29-chat-toggle",
+  "protocol": 38,
+  "localTests": 782,
+  "sourceCi": [
+    {
+      "jobId": 123443146245,
+      "sourceCommit": "c3f239af7e02f014fa351770d159ae5eb4903f61",
+      "conclusion": "success",
+      "tests": 782,
+      "pass": 782,
+      "fail": 0,
+      "completeDecodedLog": "reviews/chat-toggle-2026-10-29/ci-123443146245.log",
+      "bytes": 151605,
+      "sha256": "0788c5d3abb19e856d73d966fc3322f2539ca401f14444d59764b082d621385e"
+    },
+    {
+      "jobId": 123443072115,
+      "sourceCommit": "c3f239af7e02f014fa351770d159ae5eb4903f61",
+      "conclusion": "success",
+      "tests": 782,
+      "pass": 782,
+      "fail": 0,
+      "completeDecodedLog": "reviews/chat-toggle-2026-10-29/ci-123443072115.log",
+      "bytes": 150994,
+      "sha256": "cf52474a149ce1cda77bae3812312cab91a7d0913f88405ff8353e4e4e292647"
+    }
+  ],
+  "wikiCommit": "e1f322277f7865b61cf954b55a77a19f6e557738",
+  "wikiPages": 18,
+  "wikiImages": 34,
+  "compiledClients": [
+    {
+      "audience": "testing",
+      "sourceCommit": "c3f239af7e02f014fa351770d159ae5eb4903f61",
+      "entry": "assets/index-BUMVX6zj.js",
+      "sha256": "f13b09d4123b104b76e164241b76aefbf776c4d5b8ae4fad27879bb07aef7108",
+      "chatShortcutPresent": true,
+      "oldExactRankingsNoticeAbsent": true,
+      "renderedAccepted": false
+    },
+    {
+      "audience": "public",
+      "sourceCommit": "c3f239af7e02f014fa351770d159ae5eb4903f61",
+      "entry": "assets/index-BTCoKNzX.js",
+      "sha256": "4894953e593dd1d920630ac5130a0a8f66931a40402053546d459bd71490a24a",
+      "chatShortcutPresent": true,
+      "oldExactRankingsNoticeAbsent": true,
+      "renderedAccepted": false
+    }
+  ],
+  "publicUrl": "http://127.0.0.1:5229/",
+  "testingUrl": "http://127.0.0.1:5228/",
+  "publicBackend": "http://127.0.0.1:2603",
+  "testingBackend": "http://127.0.0.1:2602",
+  "globalHostedRankingsAccepted": false,
+  "priorWindowsSource": "a0c8c568bdf045c355af4605b3ccfc6d5faa49cf",
+  "priorWindowsEvidence": "reviews/smooth-rooms-2026-10-29/package-status.json",
+  "limits": [
+    "Current browser C/layout/notice version is newer than the sealed a0c8c56 Windows review.",
+    "Both live probes used their own new rooms and did not submit synthetic qualifying scores.",
+    "No existing preview/service or published download was replaced; no main merge, deployment or contest submission."
+  ],
+  "reportedIssuesHumanAccepted": true,
+  "wholeGameHumanAccepted": false,
+  "assistantRenderedAccepted": false,
+  "humanFeedback": {
+    "sourceCommit": "c3f239af7e02f014fa351770d159ae5eb4903f61",
+    "preview": "http://127.0.0.1:5229/",
+    "question": "Can C now open and close chat, and do Start run / Leave room stay clear of upgrades?",
+    "answer": "Both are fixed",
+    "acceptedScope": [
+      "C panel toggle",
+      "lobby actions stay clear of upgrades"
+    ],
+    "wholeGameAccepted": false,
+    "physicalDeviceAccepted": false
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "head": "ffbef2962dc2378da899a9c312fc2e8e2a7529d3",
+  "checks": [
+    {
+      "id": 122003398417,
+      "name": "verify",
+      "status": "completed",
+      "conclusion": "success",
+      "details_url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/40447888826/job/122003398417"
+    },
+    {
+      "id": 122003354070,
+      "name": "verify",
+      "status": "completed",
+      "conclusion": "failure",
+      "details_url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/40447875660/job/122003354070"
+    }
+  ],
+  "failedJobId": 122003354070,
+  "failure": "LAN test dereferenced a null Session.view immediately after connect; connect attaches the room before its first schema patch is guaranteed.",
+  "actualCounts": {
+    "tests": 539,
+    "passed": 538,
+    "failed": 1
+  },
+  "excerpt": [
+    "2026-10-27T04:08:45.9136324Z \u2716 failing tests:",
+    "2026-10-27T04:08:45.9136461Z ",
+    "2026-10-27T04:08:45.9136694Z test at tests/desktop.test.ts:1:3560",
+    "2026-10-27T04:08:45.9137408Z \u2716 explicit LAN authority supports real clients and graceful stop, and preserves an occupied port (950.014927ms)",
+    "2026-10-27T04:08:45.9138003Z   TypeError: Cannot read properties of null (reading 'players')",
+    "2026-10-27T04:08:45.9138884Z       at TestContext.<anonymous> (/home/runner/work/Bullet-Hell-Game-Open-AI-Contest-/Bullet-Hell-Game-Open-AI-Contest-/tests/desktop.test.ts:144:33)",
+    "2026-10-27T04:08:45.9139874Z       at process.processTicksAndRejections (node:internal/process/task_queues:104:5)",
+    "2026-10-27T04:08:45.9140392Z       at async Test.run (node:internal/test_runner/test:1409:7)",
+    "2026-10-27T04:08:45.9140986Z       at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)",
+    "2026-10-27T04:08:45.9151854Z Verification failed",
+    "2026-10-27T04:08:45.9367175Z [ELIFECYCLE] Command failed with exit code 1.",
+    "2026-10-27T04:08:45.9754581Z ##[error]Process completed with exit code 1.",
+    "2026-10-27T04:08:45.9827504Z ##[group]Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+    "2026-10-27T04:08:45.9827843Z with:",
+    "2026-10-27T04:08:45.9828023Z   name: verification-evidence",
+    "2026-10-27T04:08:45.9828324Z   path: reviews/stage1-validation.json",
+    "reviews/runtime-verification.json",
+    "",
+    "2026-10-27T04:08:45.9828649Z   if-no-files-found: error"
+  ],
+  "fix": "Wait up to five seconds for the actual local player schema; retain all class/combat/stop/occupied-port assertions.",
+  "runtimeChanged": false,
+  "frozenPreviewChanged": false
+}

@@ -1,0 +1,99 @@
+- main:
+  - region "Health":
+    - strong: Encounter 1
+    - status
+    - status
+    - button "?" [disabled]
+    - button "Ⅱ"
+    - strong:
+      - generic: QA Host · Soldier · Build strength D-
+    - progressbar "Health"
+    - generic: 110 / 110
+    - generic: Magazine 10
+    - generic: Coins 120 · Skill points 3
+    - generic: Space · Dodge ✓
+    - generic "Rally Field": Q · Ability Q ✓
+    - generic "Precision Burst": E · Ability E ✓
+    - generic "Last Roll Call": X · Ultimate ✓
+    - generic "Supplies":
+      - button "1 · Supplies ×0" [disabled]:
+        - generic: "1"
+        - text: —
+      - button "2 · Supplies ×0" [disabled]:
+        - generic: "2"
+        - text: —
+      - button "3 · Supplies ×0" [disabled]:
+        - generic: "3"
+        - text: —
+  - dialog "Room settings":
+    - heading "Room settings" [level=2]
+    - generic: 0:00
+    - text: 120 Coins
+    - text: 3 Skill points
+    - generic: Only one capstone can be active.
+    - tablist "Class shop":
+      - tab "Equip / Upgrade":
+        - text: Equip / Upgrade
+      - tab "Skill tree" [selected]:
+        - text: Skill tree
+    - tablist "Specializations":
+      - tab "Ballistics" [selected]
+      - tab "Command"
+      - tab "Survival"
+    - group "Ballistics":
+      - heading "Weapon damage" [level=4]
+      - button "Clean Bore · D-":
+        - generic: D-
+      - button "Measured Pair · C-":
+        - generic: C-
+      - button "Copper Jackets · B-":
+        - generic: B-
+      - button "Crossfire Drill · A-":
+        - generic: A-
+      - button "Long Watch · S-":
+        - generic: S-
+      - button "Last Word · SS-":
+        - generic: SS-
+      - heading "Fire rate" [level=4]
+      - button "Clean Bore · Fire rate · D":
+        - generic: D
+      - button "Measured Pair · Fire rate · C":
+        - generic: C
+      - button "Copper Jackets · Fire rate · B":
+        - generic: B
+      - button "Crossfire Drill · Fire rate · A":
+        - generic: A
+      - button "Long Watch · Fire rate · S":
+        - generic: S
+      - button "Last Word · Fire rate · SS":
+        - generic: SS
+      - heading "Critical chance" [level=4]
+      - button "Clean Bore · Critical chance · D+":
+        - generic: D+
+      - button "Measured Pair · Critical chance · C+":
+        - generic: C+
+      - button "Copper Jackets · Critical chance · B+":
+        - generic: B+
+      - button "Crossfire Drill · Critical chance · A+":
+        - generic: A+
+      - button "Long Watch · Critical chance · S+":
+        - generic: S+
+      - button "Last Word · Critical chance · SS+":
+        - generic: SS+
+    - complementary:
+      - paragraph: Select an icon to inspect its effects and cost.
+    - button "Start run"
+    - button "Leave room"
+  - button "Room chat" [expanded]
+  - region "Room chat":
+    - strong: Room chat
+    - log:
+      - time: 04:25 PM
+      - text: "QA Host: Local QA: shelter test ready."
+      - time: 04:26 PM
+      - text: "QA Host: Second-client delivery check."
+      - time: 04:27 PM
+      - text: "QA Peer: Peer received both messages."
+    - textbox "Message"
+    - button "Send" [active]
+    - generic: Room-only chat, not saved. One message every 1.5 seconds.

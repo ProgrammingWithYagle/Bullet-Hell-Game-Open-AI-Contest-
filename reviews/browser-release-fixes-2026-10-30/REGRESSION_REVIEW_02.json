@@ -1,0 +1,61 @@
+{
+  "recordedAt": "2026-10-31T02:03:01.291Z",
+  "reportedEnvironment": {
+    "browser": "Firefox",
+    "device": "laptop",
+    "window": "full screen",
+    "browserVersion": "not supplied",
+    "zoom": "not supplied"
+  },
+  "baseline": "45bd76e926df61c588712a353a9daadacebfb8b5",
+  "music": {
+    "before": "Missing/throwing hold method leaves city-wake playing; supported method passes. audio-before-02.log",
+    "after": "All66boss themes switch with hold API present, absent and throwing; stop invalidates pending decode. focused-02.log"
+  },
+  "geometry": {
+    "viewports": 14,
+    "zoomFactors": [
+      0.5,
+      0.8,
+      1,
+      1.25,
+      1.5,
+      2
+    ],
+    "maps": 6,
+    "difficulties": 6,
+    "bosses": 66,
+    "survivorClips": 172,
+    "resizeLifecycle": true,
+    "pointerCanvasBounds": true
+  },
+  "bossHeader": {
+    "review": "Equal outer side tracks and equal inner side tracks center health and name. Own row below76rem; name own row below40rem. Hidden boss panel leaves controls in their assigned corner cell.",
+    "renderedAccepted": false
+  },
+  "fullGate": {
+    "passed": true,
+    "tests": 950,
+    "runtimeSourceSha256": "7027938f35cda0bd26d8c6591bbc893101ddc467551090443f7b21446df7518c",
+    "sourceSnapshotSha256": "c453bad1121c72dbbb4faded7e0708430b6fe8218fbce73b2d39e63c8c41452e",
+    "preservedIssuedReceipts": 8
+  },
+  "limits": [
+    "Software/API/controller/geometry/build checks only. No current rendered Firefox, Safari, Chrome, physical-device or listening acceptance.",
+    "No universal browser/device or every-edge-case certification is claimed. No browser automation was used.",
+    "Backend remains at the existing compatible protocol43 source; hosted capacity and ephemeral records behavior are unchanged."
+  ],
+  "canonicalHistory": {
+    "regenerated": true,
+    "source": "src/shared/update-history.json",
+    "generator": "tools/sync-changelog.mjs",
+    "parityCheckPassed": true
+  },
+  "priorCI": {
+    "commit": "d5f935ad0cd8bb5cc164cacade4129f686f74e4d",
+    "job": 124407696700,
+    "failedCheck": "Generated changelog parity after manual edits following the first local gate",
+    "retainedLog": "reviews/browser-release-fixes-2026-10-30/ci-source-d5f935a-failed.log",
+    "correction": "Repair notes now live in shared history; generator header updated; both Markdown surfaces regenerated before full gate02."
+  }
+}

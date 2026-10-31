@@ -1,0 +1,46 @@
+✔ a successful key change keeps its owning controls and keyboard focus with a saved notice (155.426ms)
+✔ a failed control-mode save restores the displayed value and allows a focused retry (66.7929ms)
+✔ held-key repeats and IME composition cannot accidentally choose a new control (52.5387ms)
+✔ disposed settings ignore detached and still-connected old actions and release captured events (38.939ms)
+✔ closing a settings disclosure or losing focus cancels capture before the next key (57.7025ms)
+✔ leaving the actual setup settings page disposes its capture without waiting for a key or timer (814.1851ms)
+✔ a conflicting binding stays unchanged and Tab or Escape can cancel capture without saving (40.8254ms)
+✔ mouse buttons, Space and the left stick have source-backed readable labels in all fifteen languages (110.5511ms)
+✔ clicking another menu control cancels capture without swallowing navigation or rebinding the mouse (52.8276ms)
+✔ switching equipment tabs retains focus on the current selected tab (375.018ms)
+✔ switching skill branches retains focus and old detached tab handlers cannot redraw the panel (229.9199ms)
+✔ arrow, Home and End keys navigate shop tabs, including mirrored horizontal direction (233.68ms)
+✔ disposed equipment ignores old connected controls and cannot submit a purchase (156.1476ms)
+✔ purchase errors remain in the current equipment status and clear on a fresh item choice (168.1614ms)
+✔ a prerequisite link focuses its actual skill without resetting the skill scroll (157.332ms)
+✔ hidden or inert equipment cannot spend currency and a disposed result cannot alter a newer panel (164.3012ms)
+✔ first-visit detection retains valid existing preferences and recovers from missing or corrupt ones (1.9028ms)
+✔ automatic names change at new setup boundaries while typed names and mid-setup fallbacks stay fixed (0.1945ms)
+✔ the welcome page precedes setup, previews without saving, and Continue saves once then focuses first-time play (732.8137ms)
+✔ welcome language failures keep Continue usable and newer choices cancel older downloads (433.8281ms)
+✔ closing an unfinished welcome page cancels its download and does not invent a saved choice (364.4852ms)
+✔ a blocked preference save still allows play and explains the save failure (324.4452ms)
+✔ real setup seeds its automatic name only on new setup and join boundaries, retaining all choices mid-setup (427.7501ms)
+✔ first startup requires an explicit language choice once and does not store a detected suggestion (708.8543ms)
+✔ all fifteen languages provide a short game-safe default name and source-backed welcome text (127.0837ms)
+✔ leaving a connected LAN menu prevents delayed responses and detached controls from changing the next page (149.8131ms)
+✔ a late initial status cannot undo a completed hosting request (28.0663ms)
+✔ a delayed LAN status keeps the typed address and keyboard editing position (29.4278ms)
+✔ failed Stop hosting requests leave a usable retry without erasing the address draft (35.4015ms)
+✔ pending hosting blocks duplicate actions while Back still leaves safely (29.219ms)
+✔ the real setup disposes local-network actions before mounting another menu (663.0085ms)
+✔ device record filters retain the current keyboard editing focus (334.4443ms)
+✔ switching record tabs focuses the current live tab (235.2711ms)
+✔ online records retain mode, difficulty, squad size and week when returning from device records (235.3861ms)
+✔ device and online record filters keep their separate choices (234.6484ms)
+✔ a smaller mode keeps the corrected squad size and time period on return (187.6486ms)
+✔ disposed record controls cannot navigate back or start a new board request (168.7416ms)
+✔ detached record filters and tabs cannot replace the live online view (213.4654ms)
+ℹ tests 38
+ℹ suites 0
+ℹ pass 38
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4311.5852

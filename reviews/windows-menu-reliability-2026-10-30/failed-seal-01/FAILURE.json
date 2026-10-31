@@ -1,0 +1,35 @@
+{
+  "observedAt": "2026-10-30T15:44:36.190Z",
+  "failed": true,
+  "operation": "Delivery checksum generation",
+  "error": "ENOENT stat release/Grave_Accord_2026.10.29_Menu_Reliability_Public_Review.zip",
+  "cause": "Copied seal helper retained the older date in its sidecar prefix. The actual verified archive is dated2026.10.30.",
+  "runtimeOrArchiveChanged": false,
+  "preserved": [
+    {
+      "from": "reviews/windows-menu-reliability-2026-10-30/package-status.json",
+      "to": "reviews/windows-menu-reliability-2026-10-30/failed-seal-01/package-status.json",
+      "bytes": 39748,
+      "sha256": "b937d36618f99687f34554b36b79904149c8cbcd35ac80a0f1c09c690d81ee84"
+    },
+    {
+      "from": "release/Grave_Accord_2026.10.29_Menu_Reliability_Public_Review.manifest.json",
+      "to": "reviews/windows-menu-reliability-2026-10-30/failed-seal-01/Grave_Accord_2026.10.29_Menu_Reliability_Public_Review.manifest.json",
+      "bytes": 376557,
+      "sha256": "2cac264e9fde34f5b7cc8e3c64da87bb05df458fb682d0e338fdae6de744b289"
+    },
+    {
+      "from": "release/Grave_Accord_2026.10.29_Menu_Reliability_Public_Review.verification.json",
+      "to": "reviews/windows-menu-reliability-2026-10-30/failed-seal-01/Grave_Accord_2026.10.29_Menu_Reliability_Public_Review.verification.json",
+      "bytes": 39748,
+      "sha256": "b937d36618f99687f34554b36b79904149c8cbcd35ac80a0f1c09c690d81ee84"
+    },
+    {
+      "from": "release/Grave_Accord_2026.10.29_Menu_Reliability_Public_Review.START_HERE.txt",
+      "to": "reviews/windows-menu-reliability-2026-10-30/failed-seal-01/Grave_Accord_2026.10.29_Menu_Reliability_Public_Review.START_HERE.txt",
+      "bytes": 834,
+      "sha256": "415be444cc47a3088a1522dc24019d8e964c387b6362eb3cf03722cba965655f"
+    }
+  ],
+  "action": "Preserve partial notes and original helper; issue a corrected fresh set under the actual2026.10.30 archive name."
+}

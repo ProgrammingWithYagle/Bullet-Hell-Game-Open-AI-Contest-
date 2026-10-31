@@ -1,0 +1,61 @@
+# Small Wakes implementation
+
+Build `2026.10.26-small-wakes`, protocol 20. Candle Snail **1--**, Cobble Crab **1-** and Mourning Kettle **1** are three original encounters, separate from the three Early Watch identities. They fill the first three fixed subtiers to three ordinary identities apiece. The integrated roster is **66: 65 ordinary plus one secret**; **85** new ordinary identities remain toward 150 ordinary plus secrets. New bosses do not advance the original-roster quality target: Constable/Warden remain 2 of 60 implemented, 58 remaining, zero human acceptances.
+
+| Identity | First half | Second half | Extra Brutal response | Individual score |
+| --- | --- | --- | --- | --- |
+| Candle Snail | Waxwake locks a warned wax rail and a narrow fan while the body glides. | Twin Wick uses two parallel rails with a quiet center and faster lateral gliding. | A separately warned delayed cross-cut and follow-up fan, plus two actual projectile waves. | Slow Wick, G minor,9/8,88BPM; plucked droplets and bowed pedal. |
+| Cobble Crab | Grate Clamp warns two physical jaws closing toward a locked strip. A finite linked anchor stone can cancel the closure. | Cross Streets alternates axes and closes twice from the same anchor; the body scuttles sideways. | An independent second anchor/closure and linked volley, plus two projectile waves. | Stones Remember, D minor,5/4,104BPM; struck keys and low reed response. |
+| Mourning Kettle | Pressure Pour warns a steam lane. Condensation beads cross only after it subsides; a finite valve cancels its linked pour/beads. | Last Service staggers two separated lanes with a cold center. The kettle waddles between casts. | A delayed rear pour from its own valve, plus doubled bead waves. | Tea for the Absent, F-sharp minor,6/8,92BPM; descending reed and soft metal. |
+
+Every identity has two phases divided at half health, visible bar markers, an independent phase-entry cue and persistent fifteen-locale response text. Existing Normal boss health, damage, grades and timing remain unchanged. Global difficulty and party scaling never rerate an identity. Brutal's B marker remains separate; the secret stays>10.
+
+## Authority and counterplay
+
+`SmallWakesDirector` owns every actual cast. Warnings lock origin, aim, position and time; subsequent player/boss motion cannot retarget them. The minimum initial warning is 1.3 seconds. Wax/steam use bounded capsule geometry, stop at masonry and retain round-end contact. Swept player movement prevents crossing between ticks without collision. The same coordinates draw the warnings and active shapes.
+
+Crab panels move from a 180-pixel half-gap toward 34 pixels over 0.65 seconds and remain briefly after closing. Relative swept rectangles catch both moving-jaw contact and player motion. Placement keeps the complete jaws inside each board; marked outer lanes remain usable. The second closure and additional Brutal anchor have their own visible tells.
+
+Finite anchors/valves spawn clear of the boss body, masonry and one another. The moving boss also respects their footprints, so it cannot cover a live counterplay object. Real projectiles/abilities use the shared weak-point hit path and earn hit credit. Destroying one source cancels only its linked pending lanes, clamps and volleys; another Brutal source continues. Anchor/valve base health is 38/42, with 1.5× health in Brutal. These are individual authored weak points, separate from the global phase-circle shield event.
+
+Grounded movement resolves against the actual map collision: Snail 20/32 px/s, Crab 30/42, Kettle 16/24 before/after half health. Continuous motion preserves the previous body position for swept shot/body collision. Warning geometry stays locked as the body moves. Victory, timeout, wipe, phase change and stagger clean up pressure state. Generic Brutal replays remain bounded by 768 pending projectiles, 64 origins and the 4,000-hostile cap.
+
+The latest human assistance rules remain: Baby 100%, Easy 50%, Normal 25% combat revival, Hard+ disabled through all sources; shield circles only Baby/Easy Standard, six/three circles and two/three-second channels. Baby adds two cover props per map, Hard keeps half, Insane/Hellish none. Hellish lava has a three-second opening warning and every Hellish encounter is Brutal. Boundary walls and authored boss mechanics remain.
+
+## Motion and immutable production evidence
+
+Ten exact built-in ImageGen native returns and ten requests are preserved under `assets/production/generated/small-wakes-2026-10-26/`. Nine selected sheets supply 36 poses: four idle, four attack and four defeat per identity. The first Kettle idle sheet's third pose moved the permanent ribbon knot across its copper seam; that native remains with its rejection and a selected version-2 successor. No rejected/superseded source or original tool output was overwritten.
+
+The interrupted kettle action-call handle was missing on resumption, while both new PNGs were present in the tool output directory. Their distinct pouring/defeat actions were inspected and preserved with this recovery limitation. Neither request was resubmitted; no structured backend return identifier is invented.
+
+Whole-pose ownership preserves every alpha-bearing native RGBA pixel. A faint alpha<16bridge connected the two lower kettle attack figures; the selected explicit ownership boundary partitions that bridge without splitting any readable connected figure. Alpha 16 is used only for identity ownership and anchor measurement, never to remove artwork. Invisible RGB at alpha 0 remains in each immutable native. The first automatic extraction failure and first metadata-offset failure are recorded; `packing-v2.json` selects the corrected metadata while all atlas/native pixels remain unchanged.
+
+One scale per identity is calibrated across the three initial upright poses. Four 512-pixel cells per row share a measured weighted foot anchor. Defeats use frames 8–11 at 5 fps and hold the settled pose, advancing on world time after combat ends. Reduced motion holds a clear idle pose during life and the final defeat pose afterward. The total selected runtime motion is 1,542 poses.
+
+Loading version 5 preserves every previous reference and master hash, adds six exact complete live/settled crops and retains the two-atlas cache bound. The three new full atlases add 37,748,736 decoded RGBA bytes when resident together; normal runtime cache policy limits residency. This is file arithmetic within the existing encounter-texture subtotal, not GPU allocation or physical-device FPS. Warden/survivor/environment textures remain outside that subtotal.
+
+`tools/verify-small-wakes-art.py` is independent of the packer and uses only pinned Pillow. It reconstructs all selected alpha-bearing native RGBA, unsplit readable connected figures, measured anchors, uniform scaling, complete atlases and fallback crops. It also checks all ten unchanged native/request hashes and portable bindings. This establishes technical file integrity, not rendered motion acceptance.
+
+## Music, language and continuity
+
+Three newly authored arrangements have distinct melodies, meters, note events and instruments. All 63 previous boss masters and scores remain unchanged. Sixty-six boss themes plus City Wake have 67 compressed deliveries, totaling 70,569,830 bytes against 517,909,764 PCM bytes. Independent FFmpeg decode checks pass exact frame counts, SNR, headroom, DC and loop-seam bounds. The previously used local FFmpeg binary has SHA-256 `2ce797a0f88d7f067180338fb227f7b1928ea727bd9a4d7a1d022f7c52af71a3`. Browser/device decoding, human listening and final mix acceptance remain open.
+
+All fifteen launch locales have individual names, two phase names, persistent phase responses and explicit extra-Brutal help. Exact source/key parity is checked. AI-authored translations remain pending native-language and rendered-layout acceptance.
+
+Protocol 20 admits only known issued protocol 19local Practice/profile revisions through the bounded migration path. Run IDs, discoveries, money, skills and purchases survive. Earlier bounded migrations remain; online/signed state stays strict and old online clients are rejected.
+
+The focused regressions cover all twelve phase/form combinations, actual warned contact and projectile emissions, every map/difficulty's body/prop/jaw geometry, real Soldier weapon hits and cancellation, cleanup, pose/fallback selection, language help, independent RGBA reconstruction, preserved music, local migration and real owner/observer replication for all three Brutal encounters. Exact current full-suite evidence belongs in `reviews/small-wakes-2026-10-26/` and the continuation checkpoint. Failed attempts remain recorded.
+
+Rendered, physical-device, native-language, listening, final human balance, active mixed-progression 8/16/50-player/WAN/full-endurance, hosted recovery/rankings and coordinated release gates remain open. Preserve every earlier frozen preview/root/process. Browser control remains disabled. The older public protocol-4 Site and immutable protocol-13 Windows archive remain separate. Main stays protected and PR #14 draft.
+
+## Frozen preview, CI and exact publication
+
+The current build passes **484 automated tests**, authored content/fifteen locales, TypeScript and production build. Both exact `5f71f73` GitHub CI checks succeeded. The new collision/prop/jaw audit covers **432 phase/form/map/difficulty combinations**; real owner/observer rooms replicate all three Brutal signatures, cancellation and cleanup. Pinned Pillow 12.3.0 independently reconstructs all 36 selected poses and all 91 immutable production files match committed blobs. Local verification snapshot `1eb4428d35dc534d8a9088ec1f6994ca173a11b2551b7f32147d53baa5716095`; committed canonical snapshot `25fb52f0158574d32f84e430ada44dbd34df5b1b6917a4b5aa75bdd21cc3237e`. The difference is only CRLF/LF in unchanged `pnpm-workspace.yaml` and `tests/class-kits.test.ts`. Runtime source matches committed bytes exactly: `ac16815222762f4df1f1e207f2483cfdaf1a590c9851abad08d43fcf2e4b0e46`. Content revision `86ace79844ae1abe21b7fa54d18fa2de1f4316a2b5a0578c1878e6b27479ffdf`. Exact files, failed attempts, local/CI/source/audio/production proofs: `reviews/small-wakes-2026-10-26/`.
+
+The latest frozen preview is **http://127.0.0.1:5185/**, runtime commit `5f71f73a1de348df9ec8d42e9ae27a02300eb5d4`, build 2026.10.26-small-wakes/protocol 20, process **53512**, root `C:\Users\yigal\Documents\Codex\2026-10-25\continue-grave-accord-in-this-same\work\playtest-small-wakes-5f71f73`. All **1,684 files / 720,606,143 bytes** match the production receipt. **29 raw HTTP checks** pass, including all new atlases, live/settled references, individual music and selected locale bundles. Use Solo for this static preview; no mismatched permanent backend was deployed.
+
+The seven previously recorded preview processes were already absent and their ports free. Every frozen member of 5178–5184 was verified unchanged: **11,656 files / 4,791,986,115 bytes**. Those exact directories were resumed with new hidden processes, with logs stored outside the frozen roots; no existing process was stopped or replaced and no frozen member changed. The 5178–5184 index responses remain unchanged. Original process receipts are preserved; current PIDs are in `previous-preview-resumed-processes.json`. Earlier 5174–5177 roots remain untouched.
+
+The canonical Wiki is **18 pages / 34 images**, published from exact committed source `5f71f73a1de348df9ec8d42e9ae27a02300eb5d4` at Wiki commit `f19a76026ecb9798aaca228cb97c677985fccc84`. All 18 page blobs, all 34 image blobs and public image SHA-256 responses match; four public HTML responses pass. Source/Wiki publication does not update the older public protocol-4 Site or immutable protocol-13 Windows archive. These software checks do not prove rendered, physical-device, native-language, listening or final human balance acceptance.
+
+Run `node tools/verify-small-wakes-checkpoint.mjs` for the 91 immutable packet files and `python -X utf8 tools/verify-small-wakes-art.py` for independent complete RGBA reconstruction. The committed-source audit separately proves all 63 earlier boss definitions/grades, all 63 previous masters/scores, all 64 older music deliveries and every non-roster catalog section unchanged.

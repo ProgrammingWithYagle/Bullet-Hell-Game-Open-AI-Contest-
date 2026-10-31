@@ -1,5 +1,9 @@
 # Grave Accord - Stage 1 production bible
 
+Current runtime override: [difficulty rules and phase pacing](DIFFICULTY_AND_PHASES.md) supersedes the initial universal revive/Accord and three/four entry-phase assumptions below. The authored design history is retained; current source is protocol 16.
+
+> Current implementation/production authority: [state](IMPLEMENTATION_STATE.md), [progress](DEVELOPMENT_PROGRESS.md), [fixed threats](FIXED_BOSS_THREATS.md) and [continuation checkpoint](CHECKPOINT_2026_10_25.md). The expanded target is 150 ordinary bosses plus secrets; 60 are currently playable (59 ordinary, one secret). Earlier route tables below retain design history; shared fixed-grade campaign selection supersedes strict primary-route fences and encounter rerating.
+
 Edition 0.2.0 | 2026-10-22 | Expanded 60-boss design | Original cooperative gothic zombie bullet hell
 
 Status: design and preproduction. Balance values are explicit starting hypotheses. Gameplay, performance and human playtesting are not yet verified.
@@ -152,140 +156,392 @@ Ultimates begin ready and advance cooldown only during active combat. Intermissi
 
 ## Skill tree and build budget
 
-Every class has three six-node branches. Depth costs are 1,2,3,4,5,6 SP; a full branch costs 21 SP. Only one capstone can be active. Start campaigns at 3 SP and award 24 more before the final boss. Before fight j+1 of R fights, cumulative SP = 3 + floor(24*j/(R-1)). All three campaign lengths therefore arrive at 27 SP, allowing a capstone and six complementary points. A free pre-encounter respec is available in the first shop; later respec costs 90 coins and cannot occur during combat.
+Every class has three parent branches, each with three six-node specialization paths: 54 nodes per class and 378 overall. Every parent branch covers all eighteen grades from D- through SS+. Grades describe investment bands and specialization complexity; same-cost alternatives provide different benefits rather than strict dominance. Depth costs are 1,2,3,4,5,6 SP; one full specialization costs 21 SP. Paths may be mixed, but prerequisites stay within their path and only one capstone can be active. Start campaigns at 3 SP and award 24 more before the final boss. Before fight j+1 of R fights, cumulative SP = 3 + floor(24*j/(R-1)). All campaigns arrive at 27 SP, allowing a capstone and six complementary points. A free pre-encounter respec is available in the first shop; later respec costs 90 coins and cannot occur during combat.
 
 Grand Raid pre-fight skill budgets are 12,20,27. Endless follows the standard ten-encounter ramp and caps purchased skill power at 27; later rewards are mastery and streak progress. Do not award unspendable infinite skill points.
 
 Effect units: weaponDamage, fireRate, cooldownReduction, ultimateCooldownReduction, abilityPotency, ultimatePotency, armor, criticalChance and named ability modifiers are additive fractions; maxHealth/healOnHit/ultimateShield are HP; regeneration is HP/s; ultimateDuration is seconds; ultimateRadius is pixels; pierce, extraShots, selfRevives, extraTurrets, ultimatePulses and ultimateCharges are integers. Apply modifier limits after combining purchased effects. Armor cannot exceed 65%; weapon cooldown and reload duration remain positive.
 
-| Class | Branch | Node | SP | Grade | Effects |
-| --- | --- | --- | --- | --- | --- |
-| soldier | Ballistics | Clean Bore | 1 | D- | weaponDamage +0.08; fireRate +0 |
-| soldier | Ballistics | Measured Pair | 2 | C- | weaponDamage +0.1; fireRate +0.04 |
-| soldier | Ballistics | Copper Jackets | 3 | B- | weaponDamage +0.12; fireRate +0.06 |
-| soldier | Ballistics | Crossfire Drill | 4 | A- | weaponDamage +0.15; fireRate +0.08 |
-| soldier | Ballistics | Long Watch | 5 | S- | weaponDamage +0.2; fireRate +0.12 |
-| soldier | Ballistics | Last Word | 6 | SS- | weaponDamage +0.35; fireRate +0.16; extraShots +1 |
-| soldier | Command | Clear Signal | 1 | D | cooldownReduction +0.025; abilityPotency +0.05 |
-| soldier | Command | Steady Orders | 2 | C | cooldownReduction +0.025; abilityPotency +0.05 |
-| soldier | Command | Shared Bearings | 3 | B | cooldownReduction +0.04; abilityPotency +0.08; ultimateCooldownReduction +0.1 |
-| soldier | Command | Fire Discipline | 4 | A | cooldownReduction +0.05; abilityPotency +0.1 |
-| soldier | Command | Unbroken Line | 5 | S | cooldownReduction +0.06; abilityPotency +0.12; ultimateCooldownReduction +0.1; ultimatePotency +0.25 |
-| soldier | Command | Citywide Rally | 6 | SS | cooldownReduction +0.1; abilityPotency +0.2; rallyRadius +0.5; ultimateShield +30 |
-| soldier | Survival | Field Dressing | 1 | D+ | maxHealth +10; armor +0; regeneration +0 |
-| soldier | Survival | Low Profile | 2 | C+ | maxHealth +12; armor +0.03; regeneration +0.1 |
-| soldier | Survival | Hardened Coat | 3 | B+ | maxHealth +15; armor +0.04; regeneration +0.15 |
-| soldier | Survival | Second Wind | 4 | A+ | maxHealth +20; armor +0.05; regeneration +0.2 |
-| soldier | Survival | Hold Fast | 5 | S+ | maxHealth +25; armor +0.06; regeneration +0.25 |
-| soldier | Survival | Nobody Left | 6 | SS+ | maxHealth +30; armor +0.1; regeneration +0.5; selfRevives +1 |
-| heavy | Ordnance | Fresh Belt | 1 | D | weaponDamage +0.08; fireRate +0 |
-| heavy | Ordnance | Hot Chamber | 2 | C | weaponDamage +0.1; fireRate +0.04 |
-| heavy | Ordnance | Hard Rounds | 3 | B | weaponDamage +0.12; fireRate +0.06 |
-| heavy | Ordnance | Feed Motor | 4 | A | weaponDamage +0.15; fireRate +0.08 |
-| heavy | Ordnance | Iron Torrent | 5 | S | weaponDamage +0.2; fireRate +0.12 |
-| heavy | Ordnance | Foundry Roar | 6 | SS | weaponDamage +0.35; fireRate +0.16; pierce +2 |
-| heavy | Suppression | Wide Sweep | 1 | D+ | cooldownReduction +0.025; abilityPotency +0.05 |
-| heavy | Suppression | Pinned Shadows | 2 | C+ | cooldownReduction +0.025; abilityPotency +0.05 |
-| heavy | Suppression | Heavy Rhythm | 3 | B+ | cooldownReduction +0.04; abilityPotency +0.08; ultimateCooldownReduction +0.1 |
-| heavy | Suppression | Clearing Fire | 4 | A+ | cooldownReduction +0.05; abilityPotency +0.1 |
-| heavy | Suppression | Wall of Lead | 5 | S+ | cooldownReduction +0.06; abilityPotency +0.12; ultimateCooldownReduction +0.1; ultimatePotency +0.25 |
-| heavy | Suppression | Quiet the Street | 6 | SS+ | cooldownReduction +0.1; abilityPotency +0.2; suppressionDuration +0.5; ultimateDuration +2 |
-| heavy | Endurance | Padded Harness | 1 | D- | maxHealth +10; armor +0; regeneration +0 |
-| heavy | Endurance | Deep Breath | 2 | C- | maxHealth +12; armor +0.03; regeneration +0.1 |
-| heavy | Endurance | Steel Shoulders | 3 | B- | maxHealth +15; armor +0.04; regeneration +0.15 |
-| heavy | Endurance | Unshaken | 4 | A- | maxHealth +20; armor +0.05; regeneration +0.2 |
-| heavy | Endurance | Long Haul | 5 | S- | maxHealth +25; armor +0.06; regeneration +0.25 |
-| heavy | Endurance | Still Standing | 6 | SS- | maxHealth +30; armor +0.1; regeneration +0.5; selfRevives +1 |
-| tank | Breaching | Close Quarters | 1 | D+ | weaponDamage +0.08; fireRate +0 |
-| tank | Breaching | Buckshot Proof | 2 | C+ | weaponDamage +0.1; fireRate +0.04 |
-| tank | Breaching | Door Knocker | 3 | B+ | weaponDamage +0.12; fireRate +0.06 |
-| tank | Breaching | Breach Pattern | 4 | A+ | weaponDamage +0.15; fireRate +0.08 |
-| tank | Breaching | Forward Pressure | 5 | S+ | weaponDamage +0.2; fireRate +0.12 |
-| tank | Breaching | Open the Way | 6 | SS+ | weaponDamage +0.35; fireRate +0.16; extraShots +2 |
-| tank | Protection | Broad Guard | 1 | D- | cooldownReduction +0.025; abilityPotency +0.05 |
-| tank | Protection | Safe Passage | 2 | C- | cooldownReduction +0.025; abilityPotency +0.05 |
-| tank | Protection | Reinforced Face | 3 | B- | cooldownReduction +0.04; abilityPotency +0.08; ultimateCooldownReduction +0.1 |
-| tank | Protection | Linked Shelter | 4 | A- | cooldownReduction +0.05; abilityPotency +0.1 |
-| tank | Protection | Rescue Habit | 5 | S- | cooldownReduction +0.06; abilityPotency +0.12; ultimateCooldownReduction +0.1; ultimatePotency +0.25 |
-| tank | Protection | The Last Door | 6 | SS- | cooldownReduction +0.1; abilityPotency +0.2; barrierHealth +0.6; ultimatePotency +0.25 |
-| tank | Bastion | Riveted Coat | 1 | D | maxHealth +10; armor +0; regeneration +0 |
-| tank | Bastion | Grounded Stance | 2 | C | maxHealth +12; armor +0.03; regeneration +0.1 |
-| tank | Bastion | Impact Bracing | 3 | B | maxHealth +15; armor +0.04; regeneration +0.15 |
-| tank | Bastion | Deep Reserve | 4 | A | maxHealth +20; armor +0.05; regeneration +0.2 |
-| tank | Bastion | Stone Resolve | 5 | S | maxHealth +25; armor +0.06; regeneration +0.25 |
-| tank | Bastion | Unfallen | 6 | SS | maxHealth +30; armor +0.1; regeneration +0.5; selfRevives +1 |
-| medic | Chemistry | Sharp Dose | 1 | D- | weaponDamage +0.08; fireRate +0 |
-| medic | Chemistry | Pressure Injector | 2 | C- | weaponDamage +0.1; fireRate +0.04 |
-| medic | Chemistry | Stable Mixture | 3 | B- | weaponDamage +0.12; fireRate +0.06 |
-| medic | Chemistry | Surgical Volley | 4 | A- | weaponDamage +0.15; fireRate +0.08 |
-| medic | Chemistry | Last Formula | 5 | S- | weaponDamage +0.2; fireRate +0.12 |
-| medic | Chemistry | Mercy with Teeth | 6 | SS- | weaponDamage +0.35; fireRate +0.16; healOnHit +2 |
-| medic | Triage | Clean Hands | 1 | D | cooldownReduction +0.025; abilityPotency +0.05 |
-| medic | Triage | Quick Assessment | 2 | C | cooldownReduction +0.025; abilityPotency +0.05 |
-| medic | Triage | Wide Ward | 3 | B | cooldownReduction +0.04; abilityPotency +0.08; ultimateCooldownReduction +0.1 |
-| medic | Triage | Measured Serum | 4 | A | cooldownReduction +0.05; abilityPotency +0.1 |
-| medic | Triage | Rescue Protocol | 5 | S | cooldownReduction +0.06; abilityPotency +0.12; ultimateCooldownReduction +0.1; ultimatePotency +0.25 |
-| medic | Triage | Nobody Forgotten | 6 | SS | cooldownReduction +0.1; abilityPotency +0.2; reviveRate +0.5; ultimateRadius +80 |
-| medic | Recovery | Padded Satchel | 1 | D+ | maxHealth +10; armor +0; regeneration +0 |
-| medic | Recovery | Stubborn Pulse | 2 | C+ | maxHealth +12; armor +0.03; regeneration +0.1 |
-| medic | Recovery | Safe Footing | 3 | B+ | maxHealth +15; armor +0.04; regeneration +0.15 |
-| medic | Recovery | Fresh Bandage | 4 | A+ | maxHealth +20; armor +0.05; regeneration +0.2 |
-| medic | Recovery | Living Memory | 5 | S+ | maxHealth +25; armor +0.06; regeneration +0.25 |
-| medic | Recovery | A Name Returned | 6 | SS+ | maxHealth +30; armor +0.1; regeneration +0.5; selfRevives +1 |
-| mage | Hexcraft | Ash Script | 1 | D | weaponDamage +0.08; fireRate +0 |
-| mage | Hexcraft | Resonant Ink | 2 | C | weaponDamage +0.1; fireRate +0.04 |
-| mage | Hexcraft | Split Glyph | 3 | B | weaponDamage +0.12; fireRate +0.06 |
-| mage | Hexcraft | Grave Arithmetic | 4 | A | weaponDamage +0.15; fireRate +0.08 |
-| mage | Hexcraft | Forbidden Meter | 5 | S | weaponDamage +0.2; fireRate +0.12 |
-| mage | Hexcraft | The Silent Chord | 6 | SS | weaponDamage +0.35; fireRate +0.16; pierce +2 |
-| mage | Control | Marked Ground | 1 | D+ | cooldownReduction +0.025; abilityPotency +0.05 |
-| mage | Control | Patient Circle | 2 | C+ | cooldownReduction +0.025; abilityPotency +0.05 |
-| mage | Control | Deep Binding | 3 | B+ | cooldownReduction +0.04; abilityPotency +0.08; ultimateCooldownReduction +0.1 |
-| mage | Control | Echoing Ward | 4 | A+ | cooldownReduction +0.05; abilityPotency +0.1 |
-| mage | Control | Bell Geometry | 5 | S+ | cooldownReduction +0.06; abilityPotency +0.12; ultimateCooldownReduction +0.1; ultimatePotency +0.25 |
-| mage | Control | Name the Storm | 6 | SS+ | cooldownReduction +0.1; abilityPotency +0.2; sigilRadius +0.5; ultimatePulses +1 |
-| mage | Warding | Paper Seal | 1 | D- | maxHealth +10; armor +0; regeneration +0 |
-| mage | Warding | Bone Charm | 2 | C- | maxHealth +12; armor +0.03; regeneration +0.1 |
-| mage | Warding | Quiet Mantle | 3 | B- | maxHealth +15; armor +0.04; regeneration +0.15 |
-| mage | Warding | Stolen Breath | 4 | A- | maxHealth +20; armor +0.05; regeneration +0.2 |
-| mage | Warding | Salted Hem | 5 | S- | maxHealth +25; armor +0.06; regeneration +0.25 |
-| mage | Warding | A Circle Remains | 6 | SS- | maxHealth +30; armor +0.1; regeneration +0.5; selfRevives +1 |
-| engineer | Demolitions | Fine Teeth | 1 | D+ | weaponDamage +0.08; fireRate +0 |
-| engineer | Demolitions | Charged Rivets | 2 | C+ | weaponDamage +0.1; fireRate +0.04 |
-| engineer | Demolitions | Spare Barrel | 3 | B+ | weaponDamage +0.12; fireRate +0.06 |
-| engineer | Demolitions | Impact Fuse | 4 | A+ | weaponDamage +0.15; fireRate +0.08 |
-| engineer | Demolitions | Overclock | 5 | S+ | weaponDamage +0.2; fireRate +0.12 |
-| engineer | Demolitions | Turn the Key | 6 | SS+ | weaponDamage +0.35; fireRate +0.16; turretDamage +0.5 |
-| engineer | Constructs | Level Footing | 1 | D- | cooldownReduction +0.025; abilityPotency +0.05 |
-| engineer | Constructs | Fast Assembly | 2 | C- | cooldownReduction +0.025; abilityPotency +0.05 |
-| engineer | Constructs | Spare Motor | 3 | B- | cooldownReduction +0.04; abilityPotency +0.08; ultimateCooldownReduction +0.1 |
-| engineer | Constructs | Linked Repairs | 4 | A- | cooldownReduction +0.05; abilityPotency +0.1 |
-| engineer | Constructs | Long Service | 5 | S- | cooldownReduction +0.06; abilityPotency +0.12; ultimateCooldownReduction +0.1; ultimatePotency +0.25 |
-| engineer | Constructs | Two Hands More | 6 | SS- | cooldownReduction +0.1; abilityPotency +0.2; extraTurrets +1; ultimateDuration +6 |
-| engineer | Repair | Work Gloves | 1 | D | maxHealth +10; armor +0; regeneration +0 |
-| engineer | Repair | Reinforced Apron | 2 | C | maxHealth +12; armor +0.03; regeneration +0.1 |
-| engineer | Repair | Patch Plate | 3 | B | maxHealth +15; armor +0.04; regeneration +0.15 |
-| engineer | Repair | Safe Ground | 4 | A | maxHealth +20; armor +0.05; regeneration +0.2 |
-| engineer | Repair | Measured Steps | 5 | S | maxHealth +25; armor +0.06; regeneration +0.25 |
-| engineer | Repair | A Thing Rebuilt | 6 | SS | maxHealth +30; armor +0.1; regeneration +0.5; selfRevives +1 |
-| assassin | Precision | Fine Needle | 1 | D- | weaponDamage +0.08; fireRate +0 |
-| assassin | Precision | Soft Trigger | 2 | C- | weaponDamage +0.1; fireRate +0.04 |
-| assassin | Precision | True Line | 3 | B- | weaponDamage +0.12; fireRate +0.06 |
-| assassin | Precision | Through the Seam | 4 | A- | weaponDamage +0.15; fireRate +0.08 |
-| assassin | Precision | Last Aperture | 5 | S- | weaponDamage +0.2; fireRate +0.12 |
-| assassin | Precision | A Single Thread | 6 | SS- | weaponDamage +0.35; fireRate +0.16; criticalChance +0.2 |
-| assassin | Ambush | Quiet Hem | 1 | D | cooldownReduction +0.025; abilityPotency +0.05 |
-| assassin | Ambush | Hidden Route | 2 | C | cooldownReduction +0.025; abilityPotency +0.05 |
-| assassin | Ambush | Long Veil | 3 | B | cooldownReduction +0.04; abilityPotency +0.08; ultimateCooldownReduction +0.1 |
-| assassin | Ambush | Borrowed Shadow | 4 | A | cooldownReduction +0.05; abilityPotency +0.1 |
-| assassin | Ambush | Safe Return | 5 | S | cooldownReduction +0.06; abilityPotency +0.12; ultimateCooldownReduction +0.1; ultimatePotency +0.25 |
-| assassin | Ambush | No Witness | 6 | SS | cooldownReduction +0.1; abilityPotency +0.2; veilDuration +0.5; ultimateCharges +1 |
-| assassin | Evasion | Light Soles | 1 | D+ | maxHealth +10; armor +0; regeneration +0 |
-| assassin | Evasion | Loose Shoulders | 2 | C+ | maxHealth +12; armor +0.03; regeneration +0.1 |
-| assassin | Evasion | Narrow Escape | 3 | B+ | maxHealth +15; armor +0.04; regeneration +0.15 |
-| assassin | Evasion | Steady Pulse | 4 | A+ | maxHealth +20; armor +0.05; regeneration +0.2 |
-| assassin | Evasion | Afterimage | 5 | S+ | maxHealth +25; armor +0.06; regeneration +0.25 |
-| assassin | Evasion | Another Way Home | 6 | SS+ | maxHealth +30; armor +0.1; regeneration +0.5; selfRevives +1 |
+| Class | Branch | Specialization | Node | SP | Grade | Effects |
+| --- | --- | --- | --- | --- | --- | --- |
+| soldier | Ballistics | weaponDamage | Clean Bore | 1 | D- | weaponDamage 0.08; fireRate 0 |
+| soldier | Ballistics | weaponDamage | Measured Pair | 2 | C- | weaponDamage 0.1; fireRate 0.04 |
+| soldier | Ballistics | weaponDamage | Copper Jackets | 3 | B- | weaponDamage 0.12; fireRate 0.06 |
+| soldier | Ballistics | weaponDamage | Crossfire Drill | 4 | A- | weaponDamage 0.15; fireRate 0.08 |
+| soldier | Ballistics | weaponDamage | Long Watch | 5 | S- | weaponDamage 0.2; fireRate 0.12 |
+| soldier | Ballistics | weaponDamage | Last Word | 6 | SS- | weaponDamage 0.35; fireRate 0.16; extraShots 1 |
+| soldier | Ballistics | fireRate | Clean Bore · fireRate | 1 | D | fireRate 0.06; reloadReduction 0.02 |
+| soldier | Ballistics | fireRate | Measured Pair · fireRate | 2 | C | fireRate 0.07; reloadReduction 0.025 |
+| soldier | Ballistics | fireRate | Copper Jackets · fireRate | 3 | B | fireRate 0.08; reloadReduction 0.03 |
+| soldier | Ballistics | fireRate | Crossfire Drill · fireRate | 4 | A | fireRate 0.1; reloadReduction 0.035 |
+| soldier | Ballistics | fireRate | Long Watch · fireRate | 5 | S | fireRate 0.12; reloadReduction 0.04 |
+| soldier | Ballistics | fireRate | Last Word · fireRate | 6 | SS | fireRate 0.16; reloadReduction 0.05; magazine 4 |
+| soldier | Ballistics | criticalChance | Clean Bore · criticalChance | 1 | D+ | weaponDamage 0.04; criticalChance 0.02 |
+| soldier | Ballistics | criticalChance | Measured Pair · criticalChance | 2 | C+ | weaponDamage 0.05; criticalChance 0.03 |
+| soldier | Ballistics | criticalChance | Copper Jackets · criticalChance | 3 | B+ | weaponDamage 0.07; criticalChance 0.04 |
+| soldier | Ballistics | criticalChance | Crossfire Drill · criticalChance | 4 | A+ | weaponDamage 0.09; criticalChance 0.05 |
+| soldier | Ballistics | criticalChance | Long Watch · criticalChance | 5 | S+ | weaponDamage 0.12; criticalChance 0.06 |
+| soldier | Ballistics | criticalChance | Last Word · criticalChance | 6 | SS+ | weaponDamage 0.18; criticalChance 0.1; pierce 2 |
+| soldier | Command | abilityPotency | Clear Signal | 1 | D- | cooldownReduction 0.025; abilityPotency 0.05 |
+| soldier | Command | abilityPotency | Steady Orders | 2 | C- | cooldownReduction 0.025; abilityPotency 0.05 |
+| soldier | Command | abilityPotency | Shared Bearings | 3 | B- | cooldownReduction 0.04; abilityPotency 0.08; ultimateCooldownReduction 0.1 |
+| soldier | Command | abilityPotency | Fire Discipline | 4 | A- | cooldownReduction 0.05; abilityPotency 0.1 |
+| soldier | Command | abilityPotency | Unbroken Line | 5 | S- | cooldownReduction 0.06; abilityPotency 0.12; ultimateCooldownReduction 0.1; ultimatePotency 0.25 |
+| soldier | Command | abilityPotency | Citywide Rally | 6 | SS- | cooldownReduction 0.1; abilityPotency 0.2; rallyRadius 0.5; ultimateShield 30 |
+| soldier | Command | Last Roll Call | Clear Signal · Last Roll Call | 1 | D | ultimateCooldownReduction 0.015; ultimatePotency 0.025 |
+| soldier | Command | Last Roll Call | Steady Orders · Last Roll Call | 2 | C | ultimateCooldownReduction 0.02; ultimatePotency 0.03 |
+| soldier | Command | Last Roll Call | Shared Bearings · Last Roll Call | 3 | B | ultimateCooldownReduction 0.025; ultimatePotency 0.035 |
+| soldier | Command | Last Roll Call | Fire Discipline · Last Roll Call | 4 | A | ultimateCooldownReduction 0.03; ultimatePotency 0.04 |
+| soldier | Command | Last Roll Call | Unbroken Line · Last Roll Call | 5 | S | ultimateCooldownReduction 0.035; ultimatePotency 0.05 |
+| soldier | Command | Last Roll Call | Citywide Rally · Last Roll Call | 6 | SS | ultimateCooldownReduction 0.05; ultimatePotency 0.07; ultimateDuration 2 |
+| soldier | Command | Rally Field | Clear Signal · Rally Field | 1 | D+ | abilityPotency 0.04; cooldownReduction 0.015; rallyRadius 0.03 |
+| soldier | Command | Rally Field | Steady Orders · Rally Field | 2 | C+ | abilityPotency 0.06; cooldownReduction 0.02; rallyRadius 0.04 |
+| soldier | Command | Rally Field | Shared Bearings · Rally Field | 3 | B+ | abilityPotency 0.08; cooldownReduction 0.025; rallyRadius 0.05 |
+| soldier | Command | Rally Field | Fire Discipline · Rally Field | 4 | A+ | abilityPotency 0.1; cooldownReduction 0.035; rallyRadius 0.07 |
+| soldier | Command | Rally Field | Unbroken Line · Rally Field | 5 | S+ | abilityPotency 0.14; cooldownReduction 0.045; rallyRadius 0.1 |
+| soldier | Command | Rally Field | Citywide Rally · Rally Field | 6 | SS+ | abilityPotency 0.2; cooldownReduction 0.06; rallyRadius 0.16; ultimateShield 30 |
+| soldier | Survival | maxHealth | Field Dressing | 1 | D- | maxHealth 10; armor 0; regeneration 0 |
+| soldier | Survival | maxHealth | Low Profile | 2 | C- | maxHealth 12; armor 0.03; regeneration 0.1 |
+| soldier | Survival | maxHealth | Hardened Coat | 3 | B- | maxHealth 15; armor 0.04; regeneration 0.15 |
+| soldier | Survival | maxHealth | Second Wind | 4 | A- | maxHealth 20; armor 0.05; regeneration 0.2 |
+| soldier | Survival | maxHealth | Hold Fast | 5 | S- | maxHealth 25; armor 0.06; regeneration 0.25 |
+| soldier | Survival | maxHealth | Nobody Left | 6 | SS- | maxHealth 30; armor 0.1; regeneration 0.5; selfRevives 1 |
+| soldier | Survival | dodgeCooldown | Field Dressing · dodgeCooldown | 1 | D | moveSpeed 0.015; dodgeCooldown -0.02 |
+| soldier | Survival | dodgeCooldown | Low Profile · dodgeCooldown | 2 | C | moveSpeed 0.02; dodgeCooldown -0.025 |
+| soldier | Survival | dodgeCooldown | Hardened Coat · dodgeCooldown | 3 | B | moveSpeed 0.025; dodgeCooldown -0.03 |
+| soldier | Survival | dodgeCooldown | Second Wind · dodgeCooldown | 4 | A | moveSpeed 0.03; dodgeCooldown -0.035 |
+| soldier | Survival | dodgeCooldown | Hold Fast · dodgeCooldown | 5 | S | moveSpeed 0.04; dodgeCooldown -0.04 |
+| soldier | Survival | dodgeCooldown | Nobody Left · dodgeCooldown | 6 | SS | moveSpeed 0.05; dodgeCooldown -0.05; armor 0.08 |
+| soldier | Survival | reviveRate | Field Dressing · reviveRate | 1 | D+ | maxHealth 5; regeneration 0.05; reviveRate 0.02 |
+| soldier | Survival | reviveRate | Low Profile · reviveRate | 2 | C+ | maxHealth 6; regeneration 0.06; reviveRate 0.03 |
+| soldier | Survival | reviveRate | Hardened Coat · reviveRate | 3 | B+ | maxHealth 8; regeneration 0.08; reviveRate 0.04 |
+| soldier | Survival | reviveRate | Second Wind · reviveRate | 4 | A+ | maxHealth 10; regeneration 0.1; reviveRate 0.06 |
+| soldier | Survival | reviveRate | Hold Fast · reviveRate | 5 | S+ | maxHealth 12; regeneration 0.14; reviveRate 0.08 |
+| soldier | Survival | reviveRate | Nobody Left · reviveRate | 6 | SS+ | maxHealth 18; regeneration 0.22; reviveRate 0.12; selfRevives 1 |
+| heavy | Ordnance | weaponDamage | Fresh Belt | 1 | D- | weaponDamage 0.08; fireRate 0 |
+| heavy | Ordnance | weaponDamage | Hot Chamber | 2 | C- | weaponDamage 0.1; fireRate 0.04 |
+| heavy | Ordnance | weaponDamage | Hard Rounds | 3 | B- | weaponDamage 0.12; fireRate 0.06 |
+| heavy | Ordnance | weaponDamage | Feed Motor | 4 | A- | weaponDamage 0.15; fireRate 0.08 |
+| heavy | Ordnance | weaponDamage | Iron Torrent | 5 | S- | weaponDamage 0.2; fireRate 0.12 |
+| heavy | Ordnance | weaponDamage | Foundry Roar | 6 | SS- | weaponDamage 0.35; fireRate 0.16; pierce 2 |
+| heavy | Ordnance | magazine | Fresh Belt · magazine | 1 | D | magazine 3; reloadReduction 0.02 |
+| heavy | Ordnance | magazine | Hot Chamber · magazine | 2 | C | magazine 4; reloadReduction 0.025 |
+| heavy | Ordnance | magazine | Hard Rounds · magazine | 3 | B | magazine 5; reloadReduction 0.03 |
+| heavy | Ordnance | magazine | Feed Motor · magazine | 4 | A | magazine 6; reloadReduction 0.035 |
+| heavy | Ordnance | magazine | Iron Torrent · magazine | 5 | S | magazine 8; reloadReduction 0.04 |
+| heavy | Ordnance | magazine | Foundry Roar · magazine | 6 | SS | magazine 12; reloadReduction 0.05; fireRate 0.2 |
+| heavy | Ordnance | pierce | Fresh Belt · pierce | 1 | D+ | weaponDamage 0.04; criticalChance 0.02 |
+| heavy | Ordnance | pierce | Hot Chamber · pierce | 2 | C+ | weaponDamage 0.05; criticalChance 0.03 |
+| heavy | Ordnance | pierce | Hard Rounds · pierce | 3 | B+ | weaponDamage 0.07; criticalChance 0.04 |
+| heavy | Ordnance | pierce | Feed Motor · pierce | 4 | A+ | weaponDamage 0.09; criticalChance 0.05 |
+| heavy | Ordnance | pierce | Iron Torrent · pierce | 5 | S+ | weaponDamage 0.12; criticalChance 0.06 |
+| heavy | Ordnance | pierce | Foundry Roar · pierce | 6 | SS+ | weaponDamage 0.18; criticalChance 0.1; pierce 3 |
+| heavy | Suppression | abilityPotency | Wide Sweep | 1 | D- | cooldownReduction 0.025; abilityPotency 0.05 |
+| heavy | Suppression | abilityPotency | Pinned Shadows | 2 | C- | cooldownReduction 0.025; abilityPotency 0.05 |
+| heavy | Suppression | abilityPotency | Heavy Rhythm | 3 | B- | cooldownReduction 0.04; abilityPotency 0.08; ultimateCooldownReduction 0.1 |
+| heavy | Suppression | abilityPotency | Clearing Fire | 4 | A- | cooldownReduction 0.05; abilityPotency 0.1 |
+| heavy | Suppression | abilityPotency | Wall of Lead | 5 | S- | cooldownReduction 0.06; abilityPotency 0.12; ultimateCooldownReduction 0.1; ultimatePotency 0.25 |
+| heavy | Suppression | abilityPotency | Quiet the Street | 6 | SS- | cooldownReduction 0.1; abilityPotency 0.2; suppressionDuration 0.5; ultimateDuration 2 |
+| heavy | Suppression | Foundry Overture | Wide Sweep · Foundry Overture | 1 | D | ultimateCooldownReduction 0.015; ultimatePotency 0.025 |
+| heavy | Suppression | Foundry Overture | Pinned Shadows · Foundry Overture | 2 | C | ultimateCooldownReduction 0.02; ultimatePotency 0.03 |
+| heavy | Suppression | Foundry Overture | Heavy Rhythm · Foundry Overture | 3 | B | ultimateCooldownReduction 0.025; ultimatePotency 0.035 |
+| heavy | Suppression | Foundry Overture | Clearing Fire · Foundry Overture | 4 | A | ultimateCooldownReduction 0.03; ultimatePotency 0.04 |
+| heavy | Suppression | Foundry Overture | Wall of Lead · Foundry Overture | 5 | S | ultimateCooldownReduction 0.035; ultimatePotency 0.05 |
+| heavy | Suppression | Foundry Overture | Quiet the Street · Foundry Overture | 6 | SS | ultimateCooldownReduction 0.05; ultimatePotency 0.07; ultimateDuration 2 |
+| heavy | Suppression | Suppressing Cone | Wide Sweep · Suppressing Cone | 1 | D+ | abilityPotency 0.04; cooldownReduction 0.015; suppressionDuration 0.03 |
+| heavy | Suppression | Suppressing Cone | Pinned Shadows · Suppressing Cone | 2 | C+ | abilityPotency 0.06; cooldownReduction 0.02; suppressionDuration 0.04 |
+| heavy | Suppression | Suppressing Cone | Heavy Rhythm · Suppressing Cone | 3 | B+ | abilityPotency 0.08; cooldownReduction 0.025; suppressionDuration 0.05 |
+| heavy | Suppression | Suppressing Cone | Clearing Fire · Suppressing Cone | 4 | A+ | abilityPotency 0.1; cooldownReduction 0.035; suppressionDuration 0.07 |
+| heavy | Suppression | Suppressing Cone | Wall of Lead · Suppressing Cone | 5 | S+ | abilityPotency 0.14; cooldownReduction 0.045; suppressionDuration 0.1 |
+| heavy | Suppression | Suppressing Cone | Quiet the Street · Suppressing Cone | 6 | SS+ | abilityPotency 0.2; cooldownReduction 0.06; suppressionDuration 0.16; pierce 2 |
+| heavy | Endurance | maxHealth | Padded Harness | 1 | D- | maxHealth 10; armor 0; regeneration 0 |
+| heavy | Endurance | maxHealth | Deep Breath | 2 | C- | maxHealth 12; armor 0.03; regeneration 0.1 |
+| heavy | Endurance | maxHealth | Steel Shoulders | 3 | B- | maxHealth 15; armor 0.04; regeneration 0.15 |
+| heavy | Endurance | maxHealth | Unshaken | 4 | A- | maxHealth 20; armor 0.05; regeneration 0.2 |
+| heavy | Endurance | maxHealth | Long Haul | 5 | S- | maxHealth 25; armor 0.06; regeneration 0.25 |
+| heavy | Endurance | maxHealth | Still Standing | 6 | SS- | maxHealth 30; armor 0.1; regeneration 0.5; selfRevives 1 |
+| heavy | Endurance | dodgeCooldown | Padded Harness · dodgeCooldown | 1 | D | moveSpeed 0.015; dodgeCooldown -0.02 |
+| heavy | Endurance | dodgeCooldown | Deep Breath · dodgeCooldown | 2 | C | moveSpeed 0.02; dodgeCooldown -0.025 |
+| heavy | Endurance | dodgeCooldown | Steel Shoulders · dodgeCooldown | 3 | B | moveSpeed 0.025; dodgeCooldown -0.03 |
+| heavy | Endurance | dodgeCooldown | Unshaken · dodgeCooldown | 4 | A | moveSpeed 0.03; dodgeCooldown -0.035 |
+| heavy | Endurance | dodgeCooldown | Long Haul · dodgeCooldown | 5 | S | moveSpeed 0.04; dodgeCooldown -0.04 |
+| heavy | Endurance | dodgeCooldown | Still Standing · dodgeCooldown | 6 | SS | moveSpeed 0.05; dodgeCooldown -0.05; armor 0.08 |
+| heavy | Endurance | reviveRate | Padded Harness · reviveRate | 1 | D+ | maxHealth 5; regeneration 0.05; reviveRate 0.02 |
+| heavy | Endurance | reviveRate | Deep Breath · reviveRate | 2 | C+ | maxHealth 6; regeneration 0.06; reviveRate 0.03 |
+| heavy | Endurance | reviveRate | Steel Shoulders · reviveRate | 3 | B+ | maxHealth 8; regeneration 0.08; reviveRate 0.04 |
+| heavy | Endurance | reviveRate | Unshaken · reviveRate | 4 | A+ | maxHealth 10; regeneration 0.1; reviveRate 0.06 |
+| heavy | Endurance | reviveRate | Long Haul · reviveRate | 5 | S+ | maxHealth 12; regeneration 0.14; reviveRate 0.08 |
+| heavy | Endurance | reviveRate | Still Standing · reviveRate | 6 | SS+ | maxHealth 18; regeneration 0.22; reviveRate 0.12; selfRevives 1 |
+| tank | Breaching | weaponDamage | Close Quarters | 1 | D- | weaponDamage 0.08; fireRate 0 |
+| tank | Breaching | weaponDamage | Buckshot Proof | 2 | C- | weaponDamage 0.1; fireRate 0.04 |
+| tank | Breaching | weaponDamage | Door Knocker | 3 | B- | weaponDamage 0.12; fireRate 0.06 |
+| tank | Breaching | weaponDamage | Breach Pattern | 4 | A- | weaponDamage 0.15; fireRate 0.08 |
+| tank | Breaching | weaponDamage | Forward Pressure | 5 | S- | weaponDamage 0.2; fireRate 0.12 |
+| tank | Breaching | weaponDamage | Open the Way | 6 | SS- | weaponDamage 0.35; fireRate 0.16; extraShots 2 |
+| tank | Breaching | extraShots | Close Quarters · extraShots | 1 | D | weaponDamage 0.04; reloadReduction 0.02 |
+| tank | Breaching | extraShots | Buckshot Proof · extraShots | 2 | C | weaponDamage 0.05; reloadReduction 0.025 |
+| tank | Breaching | extraShots | Door Knocker · extraShots | 3 | B | weaponDamage 0.07; reloadReduction 0.03 |
+| tank | Breaching | extraShots | Breach Pattern · extraShots | 4 | A | weaponDamage 0.09; reloadReduction 0.035 |
+| tank | Breaching | extraShots | Forward Pressure · extraShots | 5 | S | weaponDamage 0.12; reloadReduction 0.04 |
+| tank | Breaching | extraShots | Open the Way · extraShots | 6 | SS | weaponDamage 0.18; reloadReduction 0.05; extraShots 2 |
+| tank | Breaching | fireRate | Close Quarters · fireRate | 1 | D+ | fireRate 0.06; magazine 0 |
+| tank | Breaching | fireRate | Buckshot Proof · fireRate | 2 | C+ | fireRate 0.07; magazine 1 |
+| tank | Breaching | fireRate | Door Knocker · fireRate | 3 | B+ | fireRate 0.08; magazine 0 |
+| tank | Breaching | fireRate | Breach Pattern · fireRate | 4 | A+ | fireRate 0.1; magazine 1 |
+| tank | Breaching | fireRate | Forward Pressure · fireRate | 5 | S+ | fireRate 0.12; magazine 0 |
+| tank | Breaching | fireRate | Open the Way · fireRate | 6 | SS+ | fireRate 0.16; magazine 2; pierce 2 |
+| tank | Protection | abilityPotency | Broad Guard | 1 | D- | cooldownReduction 0.025; abilityPotency 0.05 |
+| tank | Protection | abilityPotency | Safe Passage | 2 | C- | cooldownReduction 0.025; abilityPotency 0.05 |
+| tank | Protection | abilityPotency | Reinforced Face | 3 | B- | cooldownReduction 0.04; abilityPotency 0.08; ultimateCooldownReduction 0.1 |
+| tank | Protection | abilityPotency | Linked Shelter | 4 | A- | cooldownReduction 0.05; abilityPotency 0.1 |
+| tank | Protection | abilityPotency | Rescue Habit | 5 | S- | cooldownReduction 0.06; abilityPotency 0.12; ultimateCooldownReduction 0.1; ultimatePotency 0.25 |
+| tank | Protection | abilityPotency | The Last Door | 6 | SS- | cooldownReduction 0.1; abilityPotency 0.2; barrierHealth 0.6; ultimatePotency 0.25 |
+| tank | Protection | The City Holds | Broad Guard · The City Holds | 1 | D | ultimateCooldownReduction 0.015; ultimatePotency 0.025 |
+| tank | Protection | The City Holds | Safe Passage · The City Holds | 2 | C | ultimateCooldownReduction 0.02; ultimatePotency 0.03 |
+| tank | Protection | The City Holds | Reinforced Face · The City Holds | 3 | B | ultimateCooldownReduction 0.025; ultimatePotency 0.035 |
+| tank | Protection | The City Holds | Linked Shelter · The City Holds | 4 | A | ultimateCooldownReduction 0.03; ultimatePotency 0.04 |
+| tank | Protection | The City Holds | Rescue Habit · The City Holds | 5 | S | ultimateCooldownReduction 0.035; ultimatePotency 0.05 |
+| tank | Protection | The City Holds | The Last Door · The City Holds | 6 | SS | ultimateCooldownReduction 0.05; ultimatePotency 0.25 |
+| tank | Protection | Protective Wall | Broad Guard · Protective Wall | 1 | D+ | abilityPotency 0.04; cooldownReduction 0.015; barrierHealth 0.04 |
+| tank | Protection | Protective Wall | Safe Passage · Protective Wall | 2 | C+ | abilityPotency 0.06; cooldownReduction 0.02; barrierHealth 0.05 |
+| tank | Protection | Protective Wall | Reinforced Face · Protective Wall | 3 | B+ | abilityPotency 0.08; cooldownReduction 0.025; barrierHealth 0.07 |
+| tank | Protection | Protective Wall | Linked Shelter · Protective Wall | 4 | A+ | abilityPotency 0.1; cooldownReduction 0.035; barrierHealth 0.1 |
+| tank | Protection | Protective Wall | Rescue Habit · Protective Wall | 5 | S+ | abilityPotency 0.14; cooldownReduction 0.045; barrierHealth 0.14 |
+| tank | Protection | Protective Wall | The Last Door · Protective Wall | 6 | SS+ | abilityPotency 0.2; cooldownReduction 0.06; barrierHealth 0.2; maxHealth 25 |
+| tank | Bastion | maxHealth | Riveted Coat | 1 | D- | maxHealth 10; armor 0; regeneration 0 |
+| tank | Bastion | maxHealth | Grounded Stance | 2 | C- | maxHealth 12; armor 0.03; regeneration 0.1 |
+| tank | Bastion | maxHealth | Impact Bracing | 3 | B- | maxHealth 15; armor 0.04; regeneration 0.15 |
+| tank | Bastion | maxHealth | Deep Reserve | 4 | A- | maxHealth 20; armor 0.05; regeneration 0.2 |
+| tank | Bastion | maxHealth | Stone Resolve | 5 | S- | maxHealth 25; armor 0.06; regeneration 0.25 |
+| tank | Bastion | maxHealth | Unfallen | 6 | SS- | maxHealth 30; armor 0.1; regeneration 0.5; selfRevives 1 |
+| tank | Bastion | dodgeCooldown | Riveted Coat · dodgeCooldown | 1 | D | moveSpeed 0.015; dodgeCooldown -0.02 |
+| tank | Bastion | dodgeCooldown | Grounded Stance · dodgeCooldown | 2 | C | moveSpeed 0.02; dodgeCooldown -0.025 |
+| tank | Bastion | dodgeCooldown | Impact Bracing · dodgeCooldown | 3 | B | moveSpeed 0.025; dodgeCooldown -0.03 |
+| tank | Bastion | dodgeCooldown | Deep Reserve · dodgeCooldown | 4 | A | moveSpeed 0.03; dodgeCooldown -0.035 |
+| tank | Bastion | dodgeCooldown | Stone Resolve · dodgeCooldown | 5 | S | moveSpeed 0.04; dodgeCooldown -0.04 |
+| tank | Bastion | dodgeCooldown | Unfallen · dodgeCooldown | 6 | SS | moveSpeed 0.05; dodgeCooldown -0.05; armor 0.08 |
+| tank | Bastion | reviveRate | Riveted Coat · reviveRate | 1 | D+ | maxHealth 5; regeneration 0.05; reviveRate 0.02 |
+| tank | Bastion | reviveRate | Grounded Stance · reviveRate | 2 | C+ | maxHealth 6; regeneration 0.06; reviveRate 0.03 |
+| tank | Bastion | reviveRate | Impact Bracing · reviveRate | 3 | B+ | maxHealth 8; regeneration 0.08; reviveRate 0.04 |
+| tank | Bastion | reviveRate | Deep Reserve · reviveRate | 4 | A+ | maxHealth 10; regeneration 0.1; reviveRate 0.06 |
+| tank | Bastion | reviveRate | Stone Resolve · reviveRate | 5 | S+ | maxHealth 12; regeneration 0.14; reviveRate 0.08 |
+| tank | Bastion | reviveRate | Unfallen · reviveRate | 6 | SS+ | maxHealth 18; regeneration 0.22; reviveRate 0.12; selfRevives 1 |
+| medic | Chemistry | weaponDamage | Sharp Dose | 1 | D- | weaponDamage 0.08; fireRate 0 |
+| medic | Chemistry | weaponDamage | Pressure Injector | 2 | C- | weaponDamage 0.1; fireRate 0.04 |
+| medic | Chemistry | weaponDamage | Stable Mixture | 3 | B- | weaponDamage 0.12; fireRate 0.06 |
+| medic | Chemistry | weaponDamage | Surgical Volley | 4 | A- | weaponDamage 0.15; fireRate 0.08 |
+| medic | Chemistry | weaponDamage | Last Formula | 5 | S- | weaponDamage 0.2; fireRate 0.12 |
+| medic | Chemistry | weaponDamage | Mercy with Teeth | 6 | SS- | weaponDamage 0.35; fireRate 0.16; healOnHit 2 |
+| medic | Chemistry | healOnHit | Sharp Dose · healOnHit | 1 | D | weaponDamage 0.03; healOnHit 0.1 |
+| medic | Chemistry | healOnHit | Pressure Injector · healOnHit | 2 | C | weaponDamage 0.04; healOnHit 0.15 |
+| medic | Chemistry | healOnHit | Stable Mixture · healOnHit | 3 | B | weaponDamage 0.05; healOnHit 0.2 |
+| medic | Chemistry | healOnHit | Surgical Volley · healOnHit | 4 | A | weaponDamage 0.06; healOnHit 0.25 |
+| medic | Chemistry | healOnHit | Last Formula · healOnHit | 5 | S | weaponDamage 0.08; healOnHit 0.3 |
+| medic | Chemistry | healOnHit | Mercy with Teeth · healOnHit | 6 | SS | weaponDamage 0.12; healOnHit 1 |
+| medic | Chemistry | criticalChance | Sharp Dose · criticalChance | 1 | D+ | weaponDamage 0.04; criticalChance 0.02 |
+| medic | Chemistry | criticalChance | Pressure Injector · criticalChance | 2 | C+ | weaponDamage 0.05; criticalChance 0.03 |
+| medic | Chemistry | criticalChance | Stable Mixture · criticalChance | 3 | B+ | weaponDamage 0.07; criticalChance 0.04 |
+| medic | Chemistry | criticalChance | Surgical Volley · criticalChance | 4 | A+ | weaponDamage 0.09; criticalChance 0.05 |
+| medic | Chemistry | criticalChance | Last Formula · criticalChance | 5 | S+ | weaponDamage 0.12; criticalChance 0.06 |
+| medic | Chemistry | criticalChance | Mercy with Teeth · criticalChance | 6 | SS+ | weaponDamage 0.18; criticalChance 0.1; fireRate 0.15 |
+| medic | Triage | abilityPotency | Clean Hands | 1 | D- | cooldownReduction 0.025; abilityPotency 0.05 |
+| medic | Triage | abilityPotency | Quick Assessment | 2 | C- | cooldownReduction 0.025; abilityPotency 0.05 |
+| medic | Triage | abilityPotency | Wide Ward | 3 | B- | cooldownReduction 0.04; abilityPotency 0.08; ultimateCooldownReduction 0.1 |
+| medic | Triage | abilityPotency | Measured Serum | 4 | A- | cooldownReduction 0.05; abilityPotency 0.1 |
+| medic | Triage | abilityPotency | Rescue Protocol | 5 | S- | cooldownReduction 0.06; abilityPotency 0.12; ultimateCooldownReduction 0.1; ultimatePotency 0.25 |
+| medic | Triage | abilityPotency | Nobody Forgotten | 6 | SS- | cooldownReduction 0.1; abilityPotency 0.2; reviveRate 0.5; ultimateRadius 80 |
+| medic | Triage | Names Returned | Clean Hands · Names Returned | 1 | D | ultimateCooldownReduction 0.015; ultimatePotency 0.025 |
+| medic | Triage | Names Returned | Quick Assessment · Names Returned | 2 | C | ultimateCooldownReduction 0.02; ultimatePotency 0.03 |
+| medic | Triage | Names Returned | Wide Ward · Names Returned | 3 | B | ultimateCooldownReduction 0.025; ultimatePotency 0.035 |
+| medic | Triage | Names Returned | Measured Serum · Names Returned | 4 | A | ultimateCooldownReduction 0.03; ultimatePotency 0.04 |
+| medic | Triage | Names Returned | Rescue Protocol · Names Returned | 5 | S | ultimateCooldownReduction 0.035; ultimatePotency 0.05 |
+| medic | Triage | Names Returned | Nobody Forgotten · Names Returned | 6 | SS | ultimateCooldownReduction 0.05; ultimatePotency 0.07; ultimateRadius 80 |
+| medic | Triage | Healing Field | Clean Hands · Healing Field | 1 | D+ | abilityPotency 0.04; cooldownReduction 0.015; reviveRate 0.04 |
+| medic | Triage | Healing Field | Quick Assessment · Healing Field | 2 | C+ | abilityPotency 0.06; cooldownReduction 0.02; reviveRate 0.06 |
+| medic | Triage | Healing Field | Wide Ward · Healing Field | 3 | B+ | abilityPotency 0.08; cooldownReduction 0.025; reviveRate 0.08 |
+| medic | Triage | Healing Field | Measured Serum · Healing Field | 4 | A+ | abilityPotency 0.1; cooldownReduction 0.035; reviveRate 0.12 |
+| medic | Triage | Healing Field | Rescue Protocol · Healing Field | 5 | S+ | abilityPotency 0.14; cooldownReduction 0.045; reviveRate 0.2 |
+| medic | Triage | Healing Field | Nobody Forgotten · Healing Field | 6 | SS+ | abilityPotency 0.2; cooldownReduction 0.06; reviveRate 0.3; healOnHit 1 |
+| medic | Recovery | maxHealth | Padded Satchel | 1 | D- | maxHealth 10; armor 0; regeneration 0 |
+| medic | Recovery | maxHealth | Stubborn Pulse | 2 | C- | maxHealth 12; armor 0.03; regeneration 0.1 |
+| medic | Recovery | maxHealth | Safe Footing | 3 | B- | maxHealth 15; armor 0.04; regeneration 0.15 |
+| medic | Recovery | maxHealth | Fresh Bandage | 4 | A- | maxHealth 20; armor 0.05; regeneration 0.2 |
+| medic | Recovery | maxHealth | Living Memory | 5 | S- | maxHealth 25; armor 0.06; regeneration 0.25 |
+| medic | Recovery | maxHealth | A Name Returned | 6 | SS- | maxHealth 30; armor 0.1; regeneration 0.5; selfRevives 1 |
+| medic | Recovery | dodgeCooldown | Padded Satchel · dodgeCooldown | 1 | D | moveSpeed 0.015; dodgeCooldown -0.02 |
+| medic | Recovery | dodgeCooldown | Stubborn Pulse · dodgeCooldown | 2 | C | moveSpeed 0.02; dodgeCooldown -0.025 |
+| medic | Recovery | dodgeCooldown | Safe Footing · dodgeCooldown | 3 | B | moveSpeed 0.025; dodgeCooldown -0.03 |
+| medic | Recovery | dodgeCooldown | Fresh Bandage · dodgeCooldown | 4 | A | moveSpeed 0.03; dodgeCooldown -0.035 |
+| medic | Recovery | dodgeCooldown | Living Memory · dodgeCooldown | 5 | S | moveSpeed 0.04; dodgeCooldown -0.04 |
+| medic | Recovery | dodgeCooldown | A Name Returned · dodgeCooldown | 6 | SS | moveSpeed 0.05; dodgeCooldown -0.05; armor 0.08 |
+| medic | Recovery | reviveRate | Padded Satchel · reviveRate | 1 | D+ | maxHealth 5; regeneration 0.05; reviveRate 0.02 |
+| medic | Recovery | reviveRate | Stubborn Pulse · reviveRate | 2 | C+ | maxHealth 6; regeneration 0.06; reviveRate 0.03 |
+| medic | Recovery | reviveRate | Safe Footing · reviveRate | 3 | B+ | maxHealth 8; regeneration 0.08; reviveRate 0.04 |
+| medic | Recovery | reviveRate | Fresh Bandage · reviveRate | 4 | A+ | maxHealth 10; regeneration 0.1; reviveRate 0.06 |
+| medic | Recovery | reviveRate | Living Memory · reviveRate | 5 | S+ | maxHealth 12; regeneration 0.14; reviveRate 0.08 |
+| medic | Recovery | reviveRate | A Name Returned · reviveRate | 6 | SS+ | maxHealth 18; regeneration 0.22; reviveRate 0.12; selfRevives 1 |
+| mage | Hexcraft | weaponDamage | Ash Script | 1 | D- | weaponDamage 0.08; fireRate 0 |
+| mage | Hexcraft | weaponDamage | Resonant Ink | 2 | C- | weaponDamage 0.1; fireRate 0.04 |
+| mage | Hexcraft | weaponDamage | Split Glyph | 3 | B- | weaponDamage 0.12; fireRate 0.06 |
+| mage | Hexcraft | weaponDamage | Grave Arithmetic | 4 | A- | weaponDamage 0.15; fireRate 0.08 |
+| mage | Hexcraft | weaponDamage | Forbidden Meter | 5 | S- | weaponDamage 0.2; fireRate 0.12 |
+| mage | Hexcraft | weaponDamage | The Silent Chord | 6 | SS- | weaponDamage 0.35; fireRate 0.16; pierce 2 |
+| mage | Hexcraft | pierce | Ash Script · pierce | 1 | D | weaponDamage 0.04; reloadReduction 0.02 |
+| mage | Hexcraft | pierce | Resonant Ink · pierce | 2 | C | weaponDamage 0.05; reloadReduction 0.025 |
+| mage | Hexcraft | pierce | Split Glyph · pierce | 3 | B | weaponDamage 0.07; reloadReduction 0.03 |
+| mage | Hexcraft | pierce | Grave Arithmetic · pierce | 4 | A | weaponDamage 0.09; reloadReduction 0.035 |
+| mage | Hexcraft | pierce | Forbidden Meter · pierce | 5 | S | weaponDamage 0.12; reloadReduction 0.04 |
+| mage | Hexcraft | pierce | The Silent Chord · pierce | 6 | SS | weaponDamage 0.18; reloadReduction 0.05; pierce 3 |
+| mage | Hexcraft | extraShots | Ash Script · extraShots | 1 | D+ | fireRate 0.06; magazine 0 |
+| mage | Hexcraft | extraShots | Resonant Ink · extraShots | 2 | C+ | fireRate 0.07; magazine 1 |
+| mage | Hexcraft | extraShots | Split Glyph · extraShots | 3 | B+ | fireRate 0.08; magazine 0 |
+| mage | Hexcraft | extraShots | Grave Arithmetic · extraShots | 4 | A+ | fireRate 0.1; magazine 1 |
+| mage | Hexcraft | extraShots | Forbidden Meter · extraShots | 5 | S+ | fireRate 0.12; magazine 0 |
+| mage | Hexcraft | extraShots | The Silent Chord · extraShots | 6 | SS+ | fireRate 0.16; magazine 2; extraShots 1 |
+| mage | Control | abilityPotency | Marked Ground | 1 | D- | cooldownReduction 0.025; abilityPotency 0.05 |
+| mage | Control | abilityPotency | Patient Circle | 2 | C- | cooldownReduction 0.025; abilityPotency 0.05 |
+| mage | Control | abilityPotency | Deep Binding | 3 | B- | cooldownReduction 0.04; abilityPotency 0.08; ultimateCooldownReduction 0.1 |
+| mage | Control | abilityPotency | Echoing Ward | 4 | A- | cooldownReduction 0.05; abilityPotency 0.1 |
+| mage | Control | abilityPotency | Bell Geometry | 5 | S- | cooldownReduction 0.06; abilityPotency 0.12; ultimateCooldownReduction 0.1; ultimatePotency 0.25 |
+| mage | Control | abilityPotency | Name the Storm | 6 | SS- | cooldownReduction 0.1; abilityPotency 0.2; sigilRadius 0.5; ultimatePulses 1 |
+| mage | Control | Silent Twelfth | Marked Ground · Silent Twelfth | 1 | D | ultimateCooldownReduction 0.015; ultimatePotency 0.025 |
+| mage | Control | Silent Twelfth | Patient Circle · Silent Twelfth | 2 | C | ultimateCooldownReduction 0.02; ultimatePotency 0.03 |
+| mage | Control | Silent Twelfth | Deep Binding · Silent Twelfth | 3 | B | ultimateCooldownReduction 0.025; ultimatePotency 0.035 |
+| mage | Control | Silent Twelfth | Echoing Ward · Silent Twelfth | 4 | A | ultimateCooldownReduction 0.03; ultimatePotency 0.04 |
+| mage | Control | Silent Twelfth | Bell Geometry · Silent Twelfth | 5 | S | ultimateCooldownReduction 0.035; ultimatePotency 0.05 |
+| mage | Control | Silent Twelfth | Name the Storm · Silent Twelfth | 6 | SS | ultimateCooldownReduction 0.05; ultimatePotency 0.07; ultimatePulses 1 |
+| mage | Control | Binding Sigil | Marked Ground · Binding Sigil | 1 | D+ | abilityPotency 0.04; cooldownReduction 0.015; sigilRadius 0.03 |
+| mage | Control | Binding Sigil | Patient Circle · Binding Sigil | 2 | C+ | abilityPotency 0.06; cooldownReduction 0.02; sigilRadius 0.04 |
+| mage | Control | Binding Sigil | Deep Binding · Binding Sigil | 3 | B+ | abilityPotency 0.08; cooldownReduction 0.025; sigilRadius 0.05 |
+| mage | Control | Binding Sigil | Echoing Ward · Binding Sigil | 4 | A+ | abilityPotency 0.1; cooldownReduction 0.035; sigilRadius 0.07 |
+| mage | Control | Binding Sigil | Bell Geometry · Binding Sigil | 5 | S+ | abilityPotency 0.14; cooldownReduction 0.045; sigilRadius 0.1 |
+| mage | Control | Binding Sigil | Name the Storm · Binding Sigil | 6 | SS+ | abilityPotency 0.2; cooldownReduction 0.06; sigilRadius 0.16; ultimatePulses 1 |
+| mage | Warding | maxHealth | Paper Seal | 1 | D- | maxHealth 10; armor 0; regeneration 0 |
+| mage | Warding | maxHealth | Bone Charm | 2 | C- | maxHealth 12; armor 0.03; regeneration 0.1 |
+| mage | Warding | maxHealth | Quiet Mantle | 3 | B- | maxHealth 15; armor 0.04; regeneration 0.15 |
+| mage | Warding | maxHealth | Stolen Breath | 4 | A- | maxHealth 20; armor 0.05; regeneration 0.2 |
+| mage | Warding | maxHealth | Salted Hem | 5 | S- | maxHealth 25; armor 0.06; regeneration 0.25 |
+| mage | Warding | maxHealth | A Circle Remains | 6 | SS- | maxHealth 30; armor 0.1; regeneration 0.5; selfRevives 1 |
+| mage | Warding | dodgeCooldown | Paper Seal · dodgeCooldown | 1 | D | moveSpeed 0.015; dodgeCooldown -0.02 |
+| mage | Warding | dodgeCooldown | Bone Charm · dodgeCooldown | 2 | C | moveSpeed 0.02; dodgeCooldown -0.025 |
+| mage | Warding | dodgeCooldown | Quiet Mantle · dodgeCooldown | 3 | B | moveSpeed 0.025; dodgeCooldown -0.03 |
+| mage | Warding | dodgeCooldown | Stolen Breath · dodgeCooldown | 4 | A | moveSpeed 0.03; dodgeCooldown -0.035 |
+| mage | Warding | dodgeCooldown | Salted Hem · dodgeCooldown | 5 | S | moveSpeed 0.04; dodgeCooldown -0.04 |
+| mage | Warding | dodgeCooldown | A Circle Remains · dodgeCooldown | 6 | SS | moveSpeed 0.05; dodgeCooldown -0.05; armor 0.08 |
+| mage | Warding | reviveRate | Paper Seal · reviveRate | 1 | D+ | maxHealth 5; regeneration 0.05; reviveRate 0.02 |
+| mage | Warding | reviveRate | Bone Charm · reviveRate | 2 | C+ | maxHealth 6; regeneration 0.06; reviveRate 0.03 |
+| mage | Warding | reviveRate | Quiet Mantle · reviveRate | 3 | B+ | maxHealth 8; regeneration 0.08; reviveRate 0.04 |
+| mage | Warding | reviveRate | Stolen Breath · reviveRate | 4 | A+ | maxHealth 10; regeneration 0.1; reviveRate 0.06 |
+| mage | Warding | reviveRate | Salted Hem · reviveRate | 5 | S+ | maxHealth 12; regeneration 0.14; reviveRate 0.08 |
+| mage | Warding | reviveRate | A Circle Remains · reviveRate | 6 | SS+ | maxHealth 18; regeneration 0.22; reviveRate 0.12; selfRevives 1 |
+| engineer | Demolitions | weaponDamage | Fine Teeth | 1 | D- | weaponDamage 0.08; fireRate 0 |
+| engineer | Demolitions | weaponDamage | Charged Rivets | 2 | C- | weaponDamage 0.1; fireRate 0.04 |
+| engineer | Demolitions | weaponDamage | Spare Barrel | 3 | B- | weaponDamage 0.12; fireRate 0.06 |
+| engineer | Demolitions | weaponDamage | Impact Fuse | 4 | A- | weaponDamage 0.15; fireRate 0.08 |
+| engineer | Demolitions | weaponDamage | Overclock | 5 | S- | weaponDamage 0.2; fireRate 0.12 |
+| engineer | Demolitions | weaponDamage | Turn the Key | 6 | SS- | weaponDamage 0.35; fireRate 0.16; turretDamage 0.5 |
+| engineer | Demolitions | turretDamage | Fine Teeth · turretDamage | 1 | D | weaponDamage 0.03; turretDamage 0.04 |
+| engineer | Demolitions | turretDamage | Charged Rivets · turretDamage | 2 | C | weaponDamage 0.04; turretDamage 0.05 |
+| engineer | Demolitions | turretDamage | Spare Barrel · turretDamage | 3 | B | weaponDamage 0.05; turretDamage 0.06 |
+| engineer | Demolitions | turretDamage | Impact Fuse · turretDamage | 4 | A | weaponDamage 0.06; turretDamage 0.08 |
+| engineer | Demolitions | turretDamage | Overclock · turretDamage | 5 | S | weaponDamage 0.08; turretDamage 0.1 |
+| engineer | Demolitions | turretDamage | Turn the Key · turretDamage | 6 | SS | weaponDamage 0.12; turretDamage 0.2 |
+| engineer | Demolitions | fireRate | Fine Teeth · fireRate | 1 | D+ | fireRate 0.06; magazine 1 |
+| engineer | Demolitions | fireRate | Charged Rivets · fireRate | 2 | C+ | fireRate 0.07; magazine 1 |
+| engineer | Demolitions | fireRate | Spare Barrel · fireRate | 3 | B+ | fireRate 0.08; magazine 2 |
+| engineer | Demolitions | fireRate | Impact Fuse · fireRate | 4 | A+ | fireRate 0.1; magazine 2 |
+| engineer | Demolitions | fireRate | Overclock · fireRate | 5 | S+ | fireRate 0.12; magazine 3 |
+| engineer | Demolitions | fireRate | Turn the Key · fireRate | 6 | SS+ | fireRate 0.16; magazine 4; extraShots 1 |
+| engineer | Constructs | abilityPotency | Level Footing | 1 | D- | cooldownReduction 0.025; abilityPotency 0.05 |
+| engineer | Constructs | abilityPotency | Fast Assembly | 2 | C- | cooldownReduction 0.025; abilityPotency 0.05 |
+| engineer | Constructs | abilityPotency | Spare Motor | 3 | B- | cooldownReduction 0.04; abilityPotency 0.08; ultimateCooldownReduction 0.1 |
+| engineer | Constructs | abilityPotency | Linked Repairs | 4 | A- | cooldownReduction 0.05; abilityPotency 0.1 |
+| engineer | Constructs | abilityPotency | Long Service | 5 | S- | cooldownReduction 0.06; abilityPotency 0.12; ultimateCooldownReduction 0.1; ultimatePotency 0.25 |
+| engineer | Constructs | abilityPotency | Two Hands More | 6 | SS- | cooldownReduction 0.1; abilityPotency 0.2; extraTurrets 1; ultimateDuration 6 |
+| engineer | Constructs | Impossible Machine | Level Footing · Impossible Machine | 1 | D | ultimateCooldownReduction 0.015; ultimatePotency 0.025 |
+| engineer | Constructs | Impossible Machine | Fast Assembly · Impossible Machine | 2 | C | ultimateCooldownReduction 0.02; ultimatePotency 0.03 |
+| engineer | Constructs | Impossible Machine | Spare Motor · Impossible Machine | 3 | B | ultimateCooldownReduction 0.025; ultimatePotency 0.035 |
+| engineer | Constructs | Impossible Machine | Linked Repairs · Impossible Machine | 4 | A | ultimateCooldownReduction 0.03; ultimatePotency 0.04 |
+| engineer | Constructs | Impossible Machine | Long Service · Impossible Machine | 5 | S | ultimateCooldownReduction 0.035; ultimatePotency 0.05 |
+| engineer | Constructs | Impossible Machine | Two Hands More · Impossible Machine | 6 | SS | ultimateCooldownReduction 0.05; ultimatePotency 0.07; ultimateDuration 6 |
+| engineer | Constructs | Rivet Turret | Level Footing · Rivet Turret | 1 | D+ | abilityPotency 0.04; cooldownReduction 0.015; turretDamage 0.04 |
+| engineer | Constructs | Rivet Turret | Fast Assembly · Rivet Turret | 2 | C+ | abilityPotency 0.06; cooldownReduction 0.02; turretDamage 0.05 |
+| engineer | Constructs | Rivet Turret | Spare Motor · Rivet Turret | 3 | B+ | abilityPotency 0.08; cooldownReduction 0.025; turretDamage 0.06 |
+| engineer | Constructs | Rivet Turret | Linked Repairs · Rivet Turret | 4 | A+ | abilityPotency 0.1; cooldownReduction 0.035; turretDamage 0.08 |
+| engineer | Constructs | Rivet Turret | Long Service · Rivet Turret | 5 | S+ | abilityPotency 0.14; cooldownReduction 0.045; turretDamage 0.1 |
+| engineer | Constructs | Rivet Turret | Two Hands More · Rivet Turret | 6 | SS+ | abilityPotency 0.2; cooldownReduction 0.06; turretDamage 0.12; extraTurrets 1 |
+| engineer | Repair | maxHealth | Work Gloves | 1 | D- | maxHealth 10; armor 0; regeneration 0 |
+| engineer | Repair | maxHealth | Reinforced Apron | 2 | C- | maxHealth 12; armor 0.03; regeneration 0.1 |
+| engineer | Repair | maxHealth | Patch Plate | 3 | B- | maxHealth 15; armor 0.04; regeneration 0.15 |
+| engineer | Repair | maxHealth | Safe Ground | 4 | A- | maxHealth 20; armor 0.05; regeneration 0.2 |
+| engineer | Repair | maxHealth | Measured Steps | 5 | S- | maxHealth 25; armor 0.06; regeneration 0.25 |
+| engineer | Repair | maxHealth | A Thing Rebuilt | 6 | SS- | maxHealth 30; armor 0.1; regeneration 0.5; selfRevives 1 |
+| engineer | Repair | dodgeCooldown | Work Gloves · dodgeCooldown | 1 | D | moveSpeed 0.015; dodgeCooldown -0.02 |
+| engineer | Repair | dodgeCooldown | Reinforced Apron · dodgeCooldown | 2 | C | moveSpeed 0.02; dodgeCooldown -0.025 |
+| engineer | Repair | dodgeCooldown | Patch Plate · dodgeCooldown | 3 | B | moveSpeed 0.025; dodgeCooldown -0.03 |
+| engineer | Repair | dodgeCooldown | Safe Ground · dodgeCooldown | 4 | A | moveSpeed 0.03; dodgeCooldown -0.035 |
+| engineer | Repair | dodgeCooldown | Measured Steps · dodgeCooldown | 5 | S | moveSpeed 0.04; dodgeCooldown -0.04 |
+| engineer | Repair | dodgeCooldown | A Thing Rebuilt · dodgeCooldown | 6 | SS | moveSpeed 0.05; dodgeCooldown -0.05; armor 0.08 |
+| engineer | Repair | reviveRate | Work Gloves · reviveRate | 1 | D+ | maxHealth 5; regeneration 0.05; reviveRate 0.02 |
+| engineer | Repair | reviveRate | Reinforced Apron · reviveRate | 2 | C+ | maxHealth 6; regeneration 0.06; reviveRate 0.03 |
+| engineer | Repair | reviveRate | Patch Plate · reviveRate | 3 | B+ | maxHealth 8; regeneration 0.08; reviveRate 0.04 |
+| engineer | Repair | reviveRate | Safe Ground · reviveRate | 4 | A+ | maxHealth 10; regeneration 0.1; reviveRate 0.06 |
+| engineer | Repair | reviveRate | Measured Steps · reviveRate | 5 | S+ | maxHealth 12; regeneration 0.14; reviveRate 0.08 |
+| engineer | Repair | reviveRate | A Thing Rebuilt · reviveRate | 6 | SS+ | maxHealth 18; regeneration 0.22; reviveRate 0.12; selfRevives 1 |
+| assassin | Precision | weaponDamage | Fine Needle | 1 | D- | weaponDamage 0.08; fireRate 0 |
+| assassin | Precision | weaponDamage | Soft Trigger | 2 | C- | weaponDamage 0.1; fireRate 0.04 |
+| assassin | Precision | weaponDamage | True Line | 3 | B- | weaponDamage 0.12; fireRate 0.06 |
+| assassin | Precision | weaponDamage | Through the Seam | 4 | A- | weaponDamage 0.15; fireRate 0.08 |
+| assassin | Precision | weaponDamage | Last Aperture | 5 | S- | weaponDamage 0.2; fireRate 0.12 |
+| assassin | Precision | weaponDamage | A Single Thread | 6 | SS- | weaponDamage 0.35; fireRate 0.16; criticalChance 0.2 |
+| assassin | Precision | criticalChance | Fine Needle · criticalChance | 1 | D | weaponDamage 0.04; criticalChance 0.02 |
+| assassin | Precision | criticalChance | Soft Trigger · criticalChance | 2 | C | weaponDamage 0.05; criticalChance 0.03 |
+| assassin | Precision | criticalChance | True Line · criticalChance | 3 | B | weaponDamage 0.07; criticalChance 0.04 |
+| assassin | Precision | criticalChance | Through the Seam · criticalChance | 4 | A | weaponDamage 0.09; criticalChance 0.05 |
+| assassin | Precision | criticalChance | Last Aperture · criticalChance | 5 | S | weaponDamage 0.12; criticalChance 0.06 |
+| assassin | Precision | criticalChance | A Single Thread · criticalChance | 6 | SS | weaponDamage 0.18; criticalChance 0.15 |
+| assassin | Precision | pierce | Fine Needle · pierce | 1 | D+ | fireRate 0.06; reloadReduction 0.02 |
+| assassin | Precision | pierce | Soft Trigger · pierce | 2 | C+ | fireRate 0.07; reloadReduction 0.025 |
+| assassin | Precision | pierce | True Line · pierce | 3 | B+ | fireRate 0.08; reloadReduction 0.03 |
+| assassin | Precision | pierce | Through the Seam · pierce | 4 | A+ | fireRate 0.1; reloadReduction 0.035 |
+| assassin | Precision | pierce | Last Aperture · pierce | 5 | S+ | fireRate 0.12; reloadReduction 0.04 |
+| assassin | Precision | pierce | A Single Thread · pierce | 6 | SS+ | fireRate 0.16; reloadReduction 0.05; pierce 3 |
+| assassin | Ambush | abilityPotency | Quiet Hem | 1 | D- | cooldownReduction 0.025; abilityPotency 0.05 |
+| assassin | Ambush | abilityPotency | Hidden Route | 2 | C- | cooldownReduction 0.025; abilityPotency 0.05 |
+| assassin | Ambush | abilityPotency | Long Veil | 3 | B- | cooldownReduction 0.04; abilityPotency 0.08; ultimateCooldownReduction 0.1 |
+| assassin | Ambush | abilityPotency | Borrowed Shadow | 4 | A- | cooldownReduction 0.05; abilityPotency 0.1 |
+| assassin | Ambush | abilityPotency | Safe Return | 5 | S- | cooldownReduction 0.06; abilityPotency 0.12; ultimateCooldownReduction 0.1; ultimatePotency 0.25 |
+| assassin | Ambush | abilityPotency | No Witness | 6 | SS- | cooldownReduction 0.1; abilityPotency 0.2; veilDuration 0.5; ultimateCharges 1 |
+| assassin | Ambush | Unwritten Passage | Quiet Hem · Unwritten Passage | 1 | D | ultimateCooldownReduction 0.015; ultimatePotency 0.025 |
+| assassin | Ambush | Unwritten Passage | Hidden Route · Unwritten Passage | 2 | C | ultimateCooldownReduction 0.02; ultimatePotency 0.03 |
+| assassin | Ambush | Unwritten Passage | Long Veil · Unwritten Passage | 3 | B | ultimateCooldownReduction 0.025; ultimatePotency 0.035 |
+| assassin | Ambush | Unwritten Passage | Borrowed Shadow · Unwritten Passage | 4 | A | ultimateCooldownReduction 0.03; ultimatePotency 0.04 |
+| assassin | Ambush | Unwritten Passage | Safe Return · Unwritten Passage | 5 | S | ultimateCooldownReduction 0.035; ultimatePotency 0.05 |
+| assassin | Ambush | Unwritten Passage | No Witness · Unwritten Passage | 6 | SS | ultimateCooldownReduction 0.05; ultimatePotency 0.07; ultimateCharges 1 |
+| assassin | Ambush | Invisibility | Quiet Hem · Invisibility | 1 | D+ | abilityPotency 0.04; cooldownReduction 0.015; veilDuration 0.03 |
+| assassin | Ambush | Invisibility | Hidden Route · Invisibility | 2 | C+ | abilityPotency 0.06; cooldownReduction 0.02; veilDuration 0.04 |
+| assassin | Ambush | Invisibility | Long Veil · Invisibility | 3 | B+ | abilityPotency 0.08; cooldownReduction 0.025; veilDuration 0.05 |
+| assassin | Ambush | Invisibility | Borrowed Shadow · Invisibility | 4 | A+ | abilityPotency 0.1; cooldownReduction 0.035; veilDuration 0.07 |
+| assassin | Ambush | Invisibility | Safe Return · Invisibility | 5 | S+ | abilityPotency 0.14; cooldownReduction 0.045; veilDuration 0.1 |
+| assassin | Ambush | Invisibility | No Witness · Invisibility | 6 | SS+ | abilityPotency 0.2; cooldownReduction 0.06; veilDuration 0.16; ultimateCharges 1 |
+| assassin | Evasion | maxHealth | Light Soles | 1 | D- | maxHealth 10; armor 0; regeneration 0 |
+| assassin | Evasion | maxHealth | Loose Shoulders | 2 | C- | maxHealth 12; armor 0.03; regeneration 0.1 |
+| assassin | Evasion | maxHealth | Narrow Escape | 3 | B- | maxHealth 15; armor 0.04; regeneration 0.15 |
+| assassin | Evasion | maxHealth | Steady Pulse | 4 | A- | maxHealth 20; armor 0.05; regeneration 0.2 |
+| assassin | Evasion | maxHealth | Afterimage | 5 | S- | maxHealth 25; armor 0.06; regeneration 0.25 |
+| assassin | Evasion | maxHealth | Another Way Home | 6 | SS- | maxHealth 30; armor 0.1; regeneration 0.5; selfRevives 1 |
+| assassin | Evasion | dodgeCooldown | Light Soles · dodgeCooldown | 1 | D | moveSpeed 0.015; dodgeCooldown -0.02 |
+| assassin | Evasion | dodgeCooldown | Loose Shoulders · dodgeCooldown | 2 | C | moveSpeed 0.02; dodgeCooldown -0.025 |
+| assassin | Evasion | dodgeCooldown | Narrow Escape · dodgeCooldown | 3 | B | moveSpeed 0.025; dodgeCooldown -0.03 |
+| assassin | Evasion | dodgeCooldown | Steady Pulse · dodgeCooldown | 4 | A | moveSpeed 0.03; dodgeCooldown -0.035 |
+| assassin | Evasion | dodgeCooldown | Afterimage · dodgeCooldown | 5 | S | moveSpeed 0.04; dodgeCooldown -0.04 |
+| assassin | Evasion | dodgeCooldown | Another Way Home · dodgeCooldown | 6 | SS | moveSpeed 0.05; dodgeCooldown -0.05; armor 0.08 |
+| assassin | Evasion | reviveRate | Light Soles · reviveRate | 1 | D+ | maxHealth 5; regeneration 0.05; reviveRate 0.02 |
+| assassin | Evasion | reviveRate | Loose Shoulders · reviveRate | 2 | C+ | maxHealth 6; regeneration 0.06; reviveRate 0.03 |
+| assassin | Evasion | reviveRate | Narrow Escape · reviveRate | 3 | B+ | maxHealth 8; regeneration 0.08; reviveRate 0.04 |
+| assassin | Evasion | reviveRate | Steady Pulse · reviveRate | 4 | A+ | maxHealth 10; regeneration 0.1; reviveRate 0.06 |
+| assassin | Evasion | reviveRate | Afterimage · reviveRate | 5 | S+ | maxHealth 12; regeneration 0.14; reviveRate 0.08 |
+| assassin | Evasion | reviveRate | Another Way Home · reviveRate | 6 | SS+ | maxHealth 18; regeneration 0.22; reviveRate 0.12; selfRevives 1 |
 
 ## Weapons and class shops
 
@@ -357,7 +613,7 @@ Expanded roster: 60 distinct identities, comprising fifty route-specific bosses 
 
 Threat labels: 1 Normal; 2 Aberrant; 3 Predator; 4 Brute; 5 Scourge; 6 Dread; 7 Disaster; 8 Catastrophe; 9 Cataclysm; 10 Calamity; 11 The Uncounted (secret classification above ten). Threat and selected difficulty are independent.
 
-Initial health formula: 1800 * 1.22^(threat-1) * (timer/120) * archetypeHealthFactor * (1 + 0.7*(roster-1)) * difficultyHealth * activeMutationHealth. Secret uses threat 10 health growth plus its authored health factor. Raid multiplies health by 1.25. This couples health to the encounter time budget without making longer timers synonymous with greater threat. Check all role builds against actual damage uptime before accepting the tuning.
+Current fixed-grade health starts with 1800 * 1.22^(min(level,10)-1) * (1 + 0.08*subtier) * (timer/120) * archetypeHealthFactor, then applies party, difficulty, mutation and mode/form/cycle modifiers. Use the shared runtime helper and [fixed-threat specification](FIXED_BOSS_THREATS.md) for exact rules. Secret uses threat 10 health growth plus its authored health factor. Raid multiplies health by 1.25. This couples health to the encounter time budget without making longer timers synonymous with greater threat. Check all role builds against actual damage uptime before accepting the tuning.
 
 The editable uptime-model.csv is an analytical feasibility check across every campaign/class/difficulty/fight/legal boss combination. It assumes 65% movement-and-aim uptime, 70% pellet hits for multi-pellet weapons, worst-phase armor duty cycle and affordable legal offensive builds. It excludes Q/E damage, ultimates, mutations and Accord Break bonuses. Passing this model is a preproduction calculation, not observed combat balance; measured attack uptime and human pacing remain gameplay gates.
 
@@ -373,8 +629,10 @@ A dead watch captain remembers every order except whom it was meant to protect. 
 | 1 / 1 | zone | 2 | 0 | 10 | 7 / 1.2 |
 | 2 / 0.75 | fan | 9 | 173 | 12 | 2.88 / 0.85 |
 | 2 / 0.75 | zone | 4 | 0 | 10 | 6.3 / 1.2 |
+| 2 / 0.75 | lanes | 7 | 150 | 10 | 8.5 / 1.1 |
 | 3 / 0.4 | fan | 11 | 186 | 12 | 2.56 / 0.85 |
 | 3 / 0.4 | zone | 6 | 0 | 10 | 5.6 / 1.2 |
+| 3 / 0.4 | ring | 18 | 130 | 10 | 8.2 / 1.25 |
 
 ### Carrion Courier
 
@@ -1306,7 +1564,7 @@ Free hosting starts with a Render gameplay service and a static browser client. 
 
 | Gate | Required evidence |
 | --- | --- |
-| Stage 1 | Complete definitions; 126 skills, 28 weapons, 24 mutations, 6 arenas, 60 bosses; eight visually reviewed art proof sets; animation previews; measured audio proofs; rendered PDF; verified packet and hashes. |
+| Stage 1 | Complete definitions; 378 specialization skills, 28 weapons, 24 mutations, 6 arenas, 60 bosses; eight visually reviewed art proof sets; animation previews; measured audio proofs; rendered PDF; verified packet and hashes. |
 | First playable | Soldier/Medic, one arena/boss, combat/revive, both votes, shops, offline and public/private networking; 49 active scripted clients plus one rendered client; 4000-hostile-projectile stress case. |
 | Performance | 99th percentile server tick below 25 ms; documented desktop target 60 FPS, phone target 30 FPS; memory and encoded traffic measured; free-host capacity verified separately. |
 | Full implementation | All specified content, routes, difficulties, endless loop, localization and recovery implemented; no roadmap items silently presented as released features. |
@@ -1337,3 +1595,5 @@ Free hosting starts with a Render gameplay service and a static browser client. 
 - Bloody Hell official store page: https://store.steampowered.com/app/2056220/Bloody_Hell/ - Readable action and expressive gothic bullet-hell reference only. No copied assets.
 
 The supplied current official rules are an external requirement source. They do not authorize accepting terms or making eligibility declarations. The approved human plan authorizes the game, repository, Wiki, Project and branch protection. Art generation uses the available built-in OpenAI tool; backend names are recorded only if reported. Audio is authored by deterministic local synthesis with no sampled third-party material.
+
+Current runtime classification/offer rules are specified in [Fixed boss threats](FIXED_BOSS_THREATS.md). They supersede encounter-scaled boss ratings and strict primary-route fences for the three ordinary campaigns, while retaining finale roles. Fixed grade is separate from global difficulty and Brutal.

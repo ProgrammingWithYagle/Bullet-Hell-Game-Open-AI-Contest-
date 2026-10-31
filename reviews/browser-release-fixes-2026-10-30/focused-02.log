@@ -1,0 +1,22 @@
+✔ one stable camera contains every complete boss pose at all four physical borders on all36map/difficulty combinations (36.038ms)
+✔ all172survivor clips remain fully visible at each map/difficulty border with unchanged ground-body clearance (11.5264ms)
+✔ the actual camera adapter and pointer projection share one fixed transform without a map or phase jump (1.35ms)
+✔ real pointer events aim at the displayed world position through camera zoom and letterboxing (2.3594ms)
+✔ Brass Toad can take successive body-clear hops around the actual Baby Ossuary cover to the upper floor (118.1331ms)
+✔ actual Brass Toad encounters can reach the upper floor on every map and difficulty (854.2301ms)
+✔ actual music changes from equipment through all66boss themes and back with hold API missing (362.9598ms)
+✔ actual music changes from equipment through all66boss themes and back with hold API supported (92.8087ms)
+✔ actual music changes from equipment through all66boss themes and back with hold API throws (92.4454ms)
+✔ leaving during decode cancels the pending theme instead of starting music on the menu (23.6132ms)
+✔ remapped keyboard, mouse, gamepad and touch dispatch actions independently and clear toggles on blur (4.648ms)
+✔ all boss and survivor poses fit every map/difficulty border from phone portrait to4K without stretching (138.5108ms)
+✔ actual scale events refit the camera after fullscreen, orientation and window changes, then unsubscribe (1.0495ms)
+✔ real pointer routing follows the current canvas after zoom, DPI, resize and temporary hidden bounds (5.6122ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2474.2371

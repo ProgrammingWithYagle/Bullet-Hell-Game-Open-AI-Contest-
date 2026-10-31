@@ -1,0 +1,156 @@
+{
+  "passed": true,
+  "createdAt": "2026-10-28T00:33:46.264Z",
+  "sourceCommit": "ee8d12f3e57e1fb8d65fb97c52562d647a1a25b0",
+  "protocol": 32,
+  "backendBundleSha256": "282b944691fe95998f82d1fcfbe4dc1e985404322da2ce31b357617486bfe134",
+  "publicHTTPChecks": [
+    {
+      "path": "index.html",
+      "status": 200,
+      "bytes": 540,
+      "sha256": "2c067f17f1bf12b36ea393a84fd2e9949dc963f70decd3ee959d9147aa14faed",
+      "mime": "text/html;charset=utf-8"
+    },
+    {
+      "path": "assets/index-DOfn09r2.js",
+      "status": 200,
+      "bytes": 3426551,
+      "sha256": "a012bdfefb9332cdd239505a51a66f8c21cacfc67ef7fdfe08bb311abf211fc0",
+      "mime": "text/javascript"
+    },
+    {
+      "path": "assets/index-ByqqpBqG.css",
+      "status": 200,
+      "bytes": 458816,
+      "sha256": "8d0032f299cceabe511b2d6b0583eb06e9939f02052193e0ce33d38a9c2983b1",
+      "mime": "text/css"
+    },
+    {
+      "path": "assets/offline.worker-Bx9NSPBJ.js",
+      "status": 200,
+      "bytes": 842487,
+      "sha256": "f0c11ce912a2debfe4ef96b79fac2bf29d43f85a42800b42a10dffbcfc0c2a2d",
+      "mime": "text/javascript"
+    },
+    {
+      "path": "assets/alchemist-action-v1-atlas-DZYKLpN8.png",
+      "status": 200,
+      "bytes": 417230,
+      "sha256": "83551def6cf54bb99e551f342316ba04f80cd12dc03c660c5f3fd857d4db0fc2",
+      "mime": "image/png"
+    },
+    {
+      "path": "assets/quarantine-clerk-action-v2-atlas-BkOEnJl8.png",
+      "status": 200,
+      "bytes": 469844,
+      "sha256": "cbfddac1c1fdcb68d543bd880021cd9b86bbdf9c8e5ee9bd5e459f27b50d1ec1",
+      "mime": "image/png"
+    },
+    {
+      "path": "assets/cradle-ledger-CNVPUjw7.mp3",
+      "status": 200,
+      "bytes": 1116621,
+      "sha256": "0621ec0bc2ec6b470a009067b38bdec626ebee581eac344dca7d7777763a9309",
+      "mime": "audio/mpeg"
+    },
+    {
+      "path": "assets/ar-Dw7INC5i.js",
+      "status": 200,
+      "bytes": 180943,
+      "sha256": "5d8ae719889167386c69e9008c2fd0fb4d22b7a37d4d8f2fb1f0f8119216c2b7",
+      "mime": "text/javascript"
+    }
+  ],
+  "matchingSourceHealthAndCors": [
+    {
+      "endpoint": "http://127.0.0.1:2574",
+      "origin": "http://127.0.0.1:5200",
+      "cors": true,
+      "status": "ok",
+      "startedAt": "2026-10-28T00:30:31.214Z",
+      "uptimeSeconds": 190.4121351,
+      "prototype": "grave-accord-development",
+      "playable": {
+        "bosses": 66,
+        "classes": 7,
+        "modes": [
+          "short",
+          "standard",
+          "long",
+          "raid",
+          "endless"
+        ]
+      },
+      "protocolVersion": 32,
+      "contentRevision": "b6cdeb5a0d7475f65192d16f26a91d31660e9593843704738e1ddf494f5191bb",
+      "practiceOnly": true,
+      "audience": "testing",
+      "sourceCommit": "ee8d12f3e57e1fb8d65fb97c52562d647a1a25b0",
+      "capacity": {
+        "reservedSlots": 0,
+        "instanceLimit": 50,
+        "rooms": 0,
+        "roomLimit": 4,
+        "available": true,
+        "canJoin": true,
+        "canCreate": true,
+        "queued": 0,
+        "offeredSlots": 0
+      }
+    },
+    {
+      "endpoint": "http://127.0.0.1:2575",
+      "origin": "http://127.0.0.1:5201",
+      "cors": true,
+      "status": "ok",
+      "startedAt": "2026-10-28T00:30:32.342Z",
+      "uptimeSeconds": 189.068015,
+      "prototype": "grave-accord-development",
+      "playable": {
+        "bosses": 66,
+        "classes": 7,
+        "modes": [
+          "short",
+          "standard",
+          "long",
+          "raid",
+          "endless"
+        ]
+      },
+      "protocolVersion": 32,
+      "contentRevision": "b6cdeb5a0d7475f65192d16f26a91d31660e9593843704738e1ddf494f5191bb",
+      "practiceOnly": true,
+      "audience": "public",
+      "sourceCommit": "ee8d12f3e57e1fb8d65fb97c52562d647a1a25b0",
+      "capacity": {
+        "reservedSlots": 0,
+        "instanceLimit": 50,
+        "rooms": 0,
+        "roomLimit": 4,
+        "available": true,
+        "canJoin": true,
+        "canCreate": true,
+        "queued": 0,
+        "offeredSlots": 0
+      }
+    }
+  ],
+  "realFrozenBackendNetwork": {
+    "passed": true,
+    "testingBoss": "alchemist",
+    "players": 2,
+    "chatSenderMatchesServerIdentity": true,
+    "publicBoss": "candle-snail",
+    "publicOpeningRequestSanitized": true,
+    "lockedPoolMatchesAcrossClients": true,
+    "fullPoolTellTicks": 39,
+    "numericCueId": true,
+    "headlessOnly": true
+  },
+  "limits": [
+    "Raw HTTP, source-pinned bundle and headless real-network smoke only.",
+    "Browser use remains disabled in Work settings; no retry/bypass.",
+    "No personal clear, final balance, WAN/capacity/device/listening/native-language or deployment acceptance."
+  ]
+}

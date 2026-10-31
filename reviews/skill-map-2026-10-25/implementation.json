@@ -1,0 +1,94 @@
+{
+  "passed": true,
+  "buildId": "2026.10.25-skill-map",
+  "protocol": 15,
+  "contentRevision": "cbb6b8e68c9fb6f3191a3f0ef4a6411c8a3d3e41e3aeca783c122b07ab73d546",
+  "baseCheckpoint": "26eff6d19232c73e53ee13bbf3ccef4bc526e9e9",
+  "localTests": 402,
+  "focusedTests": 23,
+  "newMapTests": 8,
+  "allClasses": 7,
+  "nodesPerClass": 54,
+  "actualPrerequisiteEdgesPerClass": 45,
+  "defaultView": "classic",
+  "zoomBounds": [
+    0.65,
+    1.4
+  ],
+  "roster": {
+    "playable": 63,
+    "ordinary": 62,
+    "secret": 1,
+    "ordinaryRemaining": 88
+  },
+  "classAbilityRevampsRemaining": 7,
+  "originalBossQualityRemaining": 59,
+  "sourceSnapshotSha256": "8926b9d680d8fe8ac9859d83ec8e6f92a68cd1ef29f73ae8a0f982afb4bd87d6",
+  "runtimeSourceSha256": "1dbf4c45dca2637805bf1fd8f3de09a8185ff5dec255b0ea40772e0cfbfeb292",
+  "files": [
+    {
+      "path": "src/client/ui/skill-map.ts",
+      "sha256": "4940b97a9287912fe38caf223eb5d8f55866301cf3c4944351ae757cd18f6282",
+      "bytes": 6091
+    },
+    {
+      "path": "src/client/ui/skill-map.css",
+      "sha256": "2a6add715b4c07d7c28dabd1e646a77d04509515adf761efa2549c95078cdba7",
+      "bytes": 2730
+    },
+    {
+      "path": "src/client/ui/shop.ts",
+      "sha256": "4cbc11d9319b29674b3a6950c5cd3f6e0fe5e9bbe0f18113fffd1ec107023f2a",
+      "bytes": 17646
+    },
+    {
+      "path": "src/client/preferences.ts",
+      "sha256": "5bb165cabb04a0511e883294592be9d3ed597ebc8360d6fd18f29411a9dca0dd",
+      "bytes": 1395
+    },
+    {
+      "path": "src/client/profile.ts",
+      "sha256": "9d7e44c38b99a73d00377bacc875f7e19c20fd551b5e97e49e5e42b21db44a44",
+      "bytes": 11663
+    },
+    {
+      "path": "src/client/main.ts",
+      "sha256": "0a87393b75e7f6349c66d0291232980ab4b39cc14685abdea9d6343d6abb2607",
+      "bytes": 28255
+    },
+    {
+      "path": "tests/skill-map.test.ts",
+      "sha256": "541a27efbfb55c08b4d1f95826cbd4b65c27139c0b248a10b125b1aad5582dbc",
+      "bytes": 11018
+    },
+    {
+      "path": "locales/source/skill-map.mjs",
+      "sha256": "189b3e9c63b83c600b7b474672f43fca50577957629266e409c14f5cc7ebfff6",
+      "bytes": 3302
+    },
+    {
+      "path": "tools/sync-skill-map-locales.mjs",
+      "sha256": "1692122f75a0a74bd49f4edaed2b26c051b3783f9cf5849fef97b8613ba1e592",
+      "bytes": 335
+    },
+    {
+      "path": "tools/verify-locales.mjs",
+      "sha256": "87d9d593a5b546a1e7f9c4e2487a86531e473b98cb98f012394980efeae71e67",
+      "bytes": 15237
+    },
+    {
+      "path": "docs/OPTIONAL_SKILL_MAP.md",
+      "sha256": "96b719979c3f1da45777ce2e6363d8c432fd136b494288434dc12a4bb2b58f44",
+      "bytes": 3596
+    }
+  ],
+  "renderedAccepted": false,
+  "humanAccepted": false,
+  "physicalDeviceAccepted": false,
+  "nativeLanguageAccepted": false,
+  "limits": [
+    "Source and module-adapter checks cover geometry, navigation, actual shop guards, strict migration and fifteen-locale coverage.",
+    "No browser rendering, device/controller/phone, native-language or human acceptance is claimed.",
+    "Classic buying remains default; seven ability-changing class revamps are still separate unfinished work."
+  ]
+}

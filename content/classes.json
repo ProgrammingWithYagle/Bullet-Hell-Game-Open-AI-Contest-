@@ -12,15 +12,66 @@
     "branches": [
       {
         "id": "ballistics",
-        "name": "Ballistics"
+        "name": "Ballistics",
+        "subbranches": [
+          {
+            "id": "ballistics-foundation",
+            "nameKey": "stat.weaponDamage",
+            "name": "weaponDamage"
+          },
+          {
+            "id": "ballistics-path-1",
+            "nameKey": "stat.fireRate",
+            "name": "fireRate"
+          },
+          {
+            "id": "ballistics-path-2",
+            "nameKey": "stat.criticalChance",
+            "name": "criticalChance"
+          }
+        ]
       },
       {
         "id": "command",
-        "name": "Command"
+        "name": "Command",
+        "subbranches": [
+          {
+            "id": "command-foundation",
+            "nameKey": "stat.abilityPotency",
+            "name": "abilityPotency"
+          },
+          {
+            "id": "command-path-1",
+            "nameKey": "ability.soldier-ultimate.name",
+            "name": "Last Roll Call"
+          },
+          {
+            "id": "command-path-2",
+            "nameKey": "ability.soldier-q.name",
+            "name": "Rally Field"
+          }
+        ]
       },
       {
         "id": "survival",
-        "name": "Survival"
+        "name": "Survival",
+        "subbranches": [
+          {
+            "id": "survival-foundation",
+            "nameKey": "stat.maxHealth",
+            "name": "maxHealth"
+          },
+          {
+            "id": "survival-path-1",
+            "nameKey": "stat.dodgeCooldown",
+            "name": "dodgeCooldown"
+          },
+          {
+            "id": "survival-path-2",
+            "nameKey": "stat.reviveRate",
+            "name": "reviveRate"
+          }
+        ]
       }
     ],
     "abilities": [
@@ -77,15 +128,66 @@
     "branches": [
       {
         "id": "ordnance",
-        "name": "Ordnance"
+        "name": "Ordnance",
+        "subbranches": [
+          {
+            "id": "ordnance-foundation",
+            "nameKey": "stat.weaponDamage",
+            "name": "weaponDamage"
+          },
+          {
+            "id": "ordnance-path-1",
+            "nameKey": "stat.magazine",
+            "name": "magazine"
+          },
+          {
+            "id": "ordnance-path-2",
+            "nameKey": "stat.pierce",
+            "name": "pierce"
+          }
+        ]
       },
       {
         "id": "suppression",
-        "name": "Suppression"
+        "name": "Suppression",
+        "subbranches": [
+          {
+            "id": "suppression-foundation",
+            "nameKey": "stat.abilityPotency",
+            "name": "abilityPotency"
+          },
+          {
+            "id": "suppression-path-1",
+            "nameKey": "ability.heavy-ultimate.name",
+            "name": "Foundry Overture"
+          },
+          {
+            "id": "suppression-path-2",
+            "nameKey": "ability.heavy-q.name",
+            "name": "Suppressing Cone"
+          }
+        ]
       },
       {
         "id": "endurance",
-        "name": "Endurance"
+        "name": "Endurance",
+        "subbranches": [
+          {
+            "id": "endurance-foundation",
+            "nameKey": "stat.maxHealth",
+            "name": "maxHealth"
+          },
+          {
+            "id": "endurance-path-1",
+            "nameKey": "stat.dodgeCooldown",
+            "name": "dodgeCooldown"
+          },
+          {
+            "id": "endurance-path-2",
+            "nameKey": "stat.reviveRate",
+            "name": "reviveRate"
+          }
+        ]
       }
     ],
     "abilities": [
@@ -143,15 +245,66 @@
     "branches": [
       {
         "id": "breaching",
-        "name": "Breaching"
+        "name": "Breaching",
+        "subbranches": [
+          {
+            "id": "breaching-foundation",
+            "nameKey": "stat.weaponDamage",
+            "name": "weaponDamage"
+          },
+          {
+            "id": "breaching-path-1",
+            "nameKey": "stat.extraShots",
+            "name": "extraShots"
+          },
+          {
+            "id": "breaching-path-2",
+            "nameKey": "stat.fireRate",
+            "name": "fireRate"
+          }
+        ]
       },
       {
         "id": "protection",
-        "name": "Protection"
+        "name": "Protection",
+        "subbranches": [
+          {
+            "id": "protection-foundation",
+            "nameKey": "stat.abilityPotency",
+            "name": "abilityPotency"
+          },
+          {
+            "id": "protection-path-1",
+            "nameKey": "ability.tank-ultimate.name",
+            "name": "The City Holds"
+          },
+          {
+            "id": "protection-path-2",
+            "nameKey": "ability.tank-q.name",
+            "name": "Protective Wall"
+          }
+        ]
       },
       {
         "id": "bastion",
-        "name": "Bastion"
+        "name": "Bastion",
+        "subbranches": [
+          {
+            "id": "bastion-foundation",
+            "nameKey": "stat.maxHealth",
+            "name": "maxHealth"
+          },
+          {
+            "id": "bastion-path-1",
+            "nameKey": "stat.dodgeCooldown",
+            "name": "dodgeCooldown"
+          },
+          {
+            "id": "bastion-path-2",
+            "nameKey": "stat.reviveRate",
+            "name": "reviveRate"
+          }
+        ]
       }
     ],
     "abilities": [
@@ -207,15 +360,66 @@
     "branches": [
       {
         "id": "chemistry",
-        "name": "Chemistry"
+        "name": "Chemistry",
+        "subbranches": [
+          {
+            "id": "chemistry-foundation",
+            "nameKey": "stat.weaponDamage",
+            "name": "weaponDamage"
+          },
+          {
+            "id": "chemistry-path-1",
+            "nameKey": "stat.healOnHit",
+            "name": "healOnHit"
+          },
+          {
+            "id": "chemistry-path-2",
+            "nameKey": "stat.criticalChance",
+            "name": "criticalChance"
+          }
+        ]
       },
       {
         "id": "triage",
-        "name": "Triage"
+        "name": "Triage",
+        "subbranches": [
+          {
+            "id": "triage-foundation",
+            "nameKey": "stat.abilityPotency",
+            "name": "abilityPotency"
+          },
+          {
+            "id": "triage-path-1",
+            "nameKey": "ability.medic-ultimate.name",
+            "name": "Names Returned"
+          },
+          {
+            "id": "triage-path-2",
+            "nameKey": "ability.medic-q.name",
+            "name": "Healing Field"
+          }
+        ]
       },
       {
         "id": "recovery",
-        "name": "Recovery"
+        "name": "Recovery",
+        "subbranches": [
+          {
+            "id": "recovery-foundation",
+            "nameKey": "stat.maxHealth",
+            "name": "maxHealth"
+          },
+          {
+            "id": "recovery-path-1",
+            "nameKey": "stat.dodgeCooldown",
+            "name": "dodgeCooldown"
+          },
+          {
+            "id": "recovery-path-2",
+            "nameKey": "stat.reviveRate",
+            "name": "reviveRate"
+          }
+        ]
       }
     ],
     "abilities": [
@@ -252,12 +456,12 @@
       "radius": 240,
       "damage": 35,
       "effects": {
-        "reviveFraction": 0.6,
+        "reviveFraction": 0.25,
         "heal": 40,
         "cleanse": true,
         "soloShield": 40
       },
-      "description": "After a one-second channel, revive nearby downed or eliminated allies at 60% health, heal living allies for 40, cleanse effects and strike nearby enemies for 35. Solo also gains 40 shield."
+      "description": "After a one-second channel, revive nearby downed or eliminated allies according to the selected difficulty. Heal living allies for 40, cleanse effects and deal 35 damage nearby. Solo also gains 40 shield."
     }
   },
   {
@@ -273,15 +477,66 @@
     "branches": [
       {
         "id": "hexcraft",
-        "name": "Hexcraft"
+        "name": "Hexcraft",
+        "subbranches": [
+          {
+            "id": "hexcraft-foundation",
+            "nameKey": "stat.weaponDamage",
+            "name": "weaponDamage"
+          },
+          {
+            "id": "hexcraft-path-1",
+            "nameKey": "stat.pierce",
+            "name": "pierce"
+          },
+          {
+            "id": "hexcraft-path-2",
+            "nameKey": "stat.extraShots",
+            "name": "extraShots"
+          }
+        ]
       },
       {
         "id": "control",
-        "name": "Control"
+        "name": "Control",
+        "subbranches": [
+          {
+            "id": "control-foundation",
+            "nameKey": "stat.abilityPotency",
+            "name": "abilityPotency"
+          },
+          {
+            "id": "control-path-1",
+            "nameKey": "ability.mage-ultimate.name",
+            "name": "Silent Twelfth"
+          },
+          {
+            "id": "control-path-2",
+            "nameKey": "ability.mage-q.name",
+            "name": "Binding Sigil"
+          }
+        ]
       },
       {
         "id": "warding",
-        "name": "Warding"
+        "name": "Warding",
+        "subbranches": [
+          {
+            "id": "warding-foundation",
+            "nameKey": "stat.maxHealth",
+            "name": "maxHealth"
+          },
+          {
+            "id": "warding-path-1",
+            "nameKey": "stat.dodgeCooldown",
+            "name": "dodgeCooldown"
+          },
+          {
+            "id": "warding-path-2",
+            "nameKey": "stat.reviveRate",
+            "name": "reviveRate"
+          }
+        ]
       }
     ],
     "abilities": [
@@ -338,15 +593,66 @@
     "branches": [
       {
         "id": "demolitions",
-        "name": "Demolitions"
+        "name": "Demolitions",
+        "subbranches": [
+          {
+            "id": "demolitions-foundation",
+            "nameKey": "stat.weaponDamage",
+            "name": "weaponDamage"
+          },
+          {
+            "id": "demolitions-path-1",
+            "nameKey": "stat.turretDamage",
+            "name": "turretDamage"
+          },
+          {
+            "id": "demolitions-path-2",
+            "nameKey": "stat.fireRate",
+            "name": "fireRate"
+          }
+        ]
       },
       {
         "id": "constructs",
-        "name": "Constructs"
+        "name": "Constructs",
+        "subbranches": [
+          {
+            "id": "constructs-foundation",
+            "nameKey": "stat.abilityPotency",
+            "name": "abilityPotency"
+          },
+          {
+            "id": "constructs-path-1",
+            "nameKey": "ability.engineer-ultimate.name",
+            "name": "Impossible Machine"
+          },
+          {
+            "id": "constructs-path-2",
+            "nameKey": "ability.engineer-q.name",
+            "name": "Rivet Turret"
+          }
+        ]
       },
       {
         "id": "repair",
-        "name": "Repair"
+        "name": "Repair",
+        "subbranches": [
+          {
+            "id": "repair-foundation",
+            "nameKey": "stat.maxHealth",
+            "name": "maxHealth"
+          },
+          {
+            "id": "repair-path-1",
+            "nameKey": "stat.dodgeCooldown",
+            "name": "dodgeCooldown"
+          },
+          {
+            "id": "repair-path-2",
+            "nameKey": "stat.reviveRate",
+            "name": "reviveRate"
+          }
+        ]
       }
     ],
     "abilities": [
@@ -403,15 +709,66 @@
     "branches": [
       {
         "id": "precision",
-        "name": "Precision"
+        "name": "Precision",
+        "subbranches": [
+          {
+            "id": "precision-foundation",
+            "nameKey": "stat.weaponDamage",
+            "name": "weaponDamage"
+          },
+          {
+            "id": "precision-path-1",
+            "nameKey": "stat.criticalChance",
+            "name": "criticalChance"
+          },
+          {
+            "id": "precision-path-2",
+            "nameKey": "stat.pierce",
+            "name": "pierce"
+          }
+        ]
       },
       {
         "id": "ambush",
-        "name": "Ambush"
+        "name": "Ambush",
+        "subbranches": [
+          {
+            "id": "ambush-foundation",
+            "nameKey": "stat.abilityPotency",
+            "name": "abilityPotency"
+          },
+          {
+            "id": "ambush-path-1",
+            "nameKey": "ability.assassin-ultimate.name",
+            "name": "Unwritten Passage"
+          },
+          {
+            "id": "ambush-path-2",
+            "nameKey": "ability.assassin-q.name",
+            "name": "Invisibility"
+          }
+        ]
       },
       {
         "id": "evasion",
-        "name": "Evasion"
+        "name": "Evasion",
+        "subbranches": [
+          {
+            "id": "evasion-foundation",
+            "nameKey": "stat.maxHealth",
+            "name": "maxHealth"
+          },
+          {
+            "id": "evasion-path-1",
+            "nameKey": "stat.dodgeCooldown",
+            "name": "dodgeCooldown"
+          },
+          {
+            "id": "evasion-path-2",
+            "nameKey": "stat.reviveRate",
+            "name": "reviveRate"
+          }
+        ]
       }
     ],
     "abilities": [

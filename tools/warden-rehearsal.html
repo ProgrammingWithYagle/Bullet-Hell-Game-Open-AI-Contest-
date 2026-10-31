@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Grave Accord · Warden rehearsal</title>
+  </head>
+  <body>
+    <header>
+      <a href="/tools/art-review.html#lantern-warden-channel"
+        >GRAVE ACCORD <span>/ FIELD ARCHIVE</span></a
+      ><span class="tag">LOCAL SIGNATURE REHEARSAL</span>
+    </header>
+    <main>
+      <section class="intro">
+        <p class="eyebrow">THE LAMPLIGHTER'S WATCH</p>
+        <h1>Keep behind the light.</h1>
+        <p>
+          A lantern lifts. Its amber sector holds still, then sweeps clockwise.
+          Follow the outlined trailing wedge. The floor mark is the lantern's
+          fixed ground projection.
+        </p>
+      </section>
+      <section class="bench" aria-label="Interactive signature study">
+        <div class="toolbar">
+          <div>
+            <strong id="phase">Loading artwork…</strong
+            ><span id="clock">Paused at first warning</span>
+          </div>
+          <div class="buttons">
+            <button id="play" disabled>Run rehearsal</button
+            ><button id="step" disabled>Step 1 tick</button
+            ><button id="reset" disabled>Reset</button>
+          </div>
+        </div>
+        <div
+          id="stage"
+          tabindex="0"
+          role="application"
+          aria-label="Warden rehearsal. Move with WASD or arrow keys. Space pauses. R resets."
+        ></div>
+        <div class="readout">
+          <span id="health">Health 100 / 100</span
+          ><span id="pose">Loading three motion clips</span
+          ><span id="status" role="status"
+            >Starts paused. Focus the field to use the keyboard.</span
+          >
+        </div>
+        <div class="options">
+          <label><input type="checkbox" id="contrast" /> High contrast</label
+          ><label
+            ><input type="checkbox" id="reduced" /> Reduced idle motion</label
+          ><label
+            ><input type="checkbox" id="anchors" /> Show attachments and body
+            circles</label
+          >
+        </div>
+        <div class="instructions">
+          <p>
+            <strong>Move:</strong> WASD / arrows, or hold the direction buttons.
+            <strong>Pause:</strong> Space. <strong>Reset:</strong> R.
+          </p>
+          <div class="pad" aria-label="Movement pad">
+            <button data-move="0,-1" aria-label="Move up">↑</button
+            ><button data-move="-1,0" aria-label="Move left">←</button
+            ><button data-move="0,1" aria-label="Move down">↓</button
+            ><button data-move="1,0" aria-label="Move right">→</button>
+          </div>
+        </div>
+      </section>
+      <section class="notes">
+        <p>
+          <strong>Signature study.</strong> Uses the authored 55° cone,
+          24°/second rotation, 1.2-second warning, four-second active window and
+          four-second rest. Range, contact damage, hit interval and the width of
+          the marked safe wedge are candidate tuning. Bodies touching the hazard
+          boundary can take damage; stay inside the wedge.
+        </p>
+        <p>
+          The Soldier is a movement proxy. This room does not implement the
+          Warden's full fight, fan/zone attacks, phases, defeat, networking,
+          rewards or a production unlock. Idle/channel sheets await final Phaser
+          motion approval. Local controls are English; this tool is outside the
+          published game.
+        </p>
+        <p>
+          <a href="/docs/WARDEN_SIGNATURE_REHEARSAL.md"
+            >Production notes and limits</a
+          >
+          ·
+          <a href="/assets/production/motion/warden-rehearsal.json"
+            >Atlas and attachment contract</a
+          >
+          ·
+          <a href="/tools/art-review.html#lantern-warden-idle"
+            >Inspect the motion sheets</a
+          >
+        </p>
+      </section>
+    </main>
+    <script type="module" src="./warden-rehearsal.ts"></script>
+  </body>
+</html>

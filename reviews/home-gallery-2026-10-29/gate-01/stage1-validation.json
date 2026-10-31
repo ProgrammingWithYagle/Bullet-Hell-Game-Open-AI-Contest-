@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "stage": "Stage 1 source validation",
+  "passed": false,
+  "legalMutationSets": 2255,
+  "checks": [
+    {
+      "name": "Complete finite versioned content",
+      "passed": true
+    },
+    {
+      "name": "Seven classes, 378 specialization nodes, all eighteen grades and ultimates",
+      "passed": true
+    },
+    {
+      "name": "Campaign, raid and uncapped endless budgets",
+      "passed": true
+    },
+    {
+      "name": "Fixed boss grades, independent variants and complete translated tier labels",
+      "passed": true
+    },
+    {
+      "name": "Weapon accounting, rates and finite cooldowns",
+      "passed": true
+    },
+    {
+      "name": "Every legal one-, two- and three-mutation composition",
+      "passed": true
+    },
+    {
+      "name": "Boss attack contracts, transitions, arenas and deadlines",
+      "passed": true
+    },
+    {
+      "name": "Sixty-six distinct bosses, route-specific gauntlets and Endless exclusives",
+      "passed": true
+    },
+    {
+      "name": "Design bible and complete editable tables",
+      "passed": true
+    },
+    {
+      "name": "Painted arena cover and lava native pixels, transparency and provenance",
+      "passed": true
+    },
+    {
+      "name": "Painted arena worlds match exact normalized native pixels and floor-fit metadata",
+      "passed": true
+    },
+    {
+      "name": "Bellringer eight drawn walking poses and exact retained action RGBA",
+      "passed": true
+    },
+    {
+      "name": "Alchemist eight drawn walking poses and exact retained action RGBA",
+      "passed": true
+    },
+    {
+      "name": "All fifteen translation catalogs and placeholder parity",
+      "passed": false,
+      "error": "{\n  \"ok\": false,\n  \"localeCount\": 15,\n  \"bossCount\": 66,\n  \"expansionBossCount\": 49,\n  \"keysPerLocale\": 1790,\n  \"totalMessages\": 26850,\n  \"contentCoverageKeys\": 1212,\n  \"translationReview\": \"AI-authored; native-speaker and runtime layout review pending\",\n  \"errors\": [\n    \"zh-Hans: untranslated English copy at ui.galleryCover\",\n    \"zh-Hant: untranslated English copy at ui.galleryCover\",\n    \"ja: untranslated English copy at ui.galleryCover\",\n    \"es: untranslated English copy at ui.galleryCover\",\n    \"fr: untranslated English copy at ui.galleryCover\",\n    \"de: untranslated English copy at ui.galleryCover\",\n    \"pt-BR: untranslated English copy at ui.galleryCover\",\n    \"ru: untranslated English copy at ui.galleryCover\",\n    \"hi: untranslated English copy at ui.galleryCover\",\n    \"ar: untranslated English copy at ui.galleryCover\",\n    \"bn: untranslated English copy at ui.galleryCover\",\n    \"id: untranslated English copy at ui.galleryCover\",\n    \"ur: untranslated English copy at ui.galleryCover\",\n    \"ko: untranslated English copy at ui.galleryCover\"\n  ]\n}\n\n\n\n1 !== 0\n"
+    },
+    {
+      "name": "Eight reviewed art proof sets with original provenance",
+      "passed": true
+    },
+    {
+      "name": "Original music and SFX objective review",
+      "passed": true
+    },
+    {
+      "name": "Leaderboard fixtures and bounded score",
+      "passed": true
+    }
+  ]
+}

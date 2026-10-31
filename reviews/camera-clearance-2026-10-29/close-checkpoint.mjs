@@ -1,0 +1,33 @@
+import fs from 'node:fs';
+import {execFileSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+import assert from 'node:assert/strict';
+import {verifyDesktopSource} from '../../tools/desktop-source.mjs';
+import {additionalSourceBinding} from './review-inputs.mjs';
+const root='reviews/camera-clearance-2026-10-29',source='6f397a5173c69d1b710d7c02d8772f3a5f5e19b7';
+const read=file=>JSON.parse(fs.readFileSync(file)),sha=bytes=>createHash('sha256').update(bytes).digest('hex');
+const git=(...args)=>execFileSync('git',['-c','core.bare=false',...args],{maxBuffer:8*1024*1024});
+const gate=read(root+'/gate-01/runtime-verification.json'),fingerprints=verifyDesktopSource(process.cwd(),gate);
+assert.equal(git('diff',source,'--','src','tests').length,0,'Runtime/test changes after verification');
+const preservation=read(root+'/gate-01/gate-preservation.json');assert(preservation.passed);assert.equal(preservation.receipts.length,8);
+for(const member of preservation.receipts)assert.equal(sha(fs.readFileSync(member.file)),member.issuedSha256);
+const additional=additionalSourceBinding();assert.equal(additional.sha256,preservation.additionalSourceBinding.sha256);
+const ci=read(root+'/source-ci.json');assert(ci.passed);assert.equal(ci.sourceCommit,source);assert.equal(ci.jobs.length,2);
+for(const job of ci.jobs){assert.equal(job.headRevision,source);assert.equal(job.conclusion,'success');assert.equal(job.tests,869);assert.equal(job.fail,0);assert.equal(sha(fs.readFileSync(job.path)),job.sha256);}
+const wiki=read(root+'/wiki-publication.json');assert(wiki.passed);assert.equal(wiki.sourceCommit,source);assert.equal(wiki.pages,18);assert.equal(wiki.images.length,34);
+assert.equal(git('-C','.wiki-checkout','status','--porcelain').toString().trim(),'');assert.equal(git('-C','.wiki-checkout','rev-parse','HEAD').toString().trim(),wiki.publishedCommit);
+for(const page of wiki.files)assert.equal(sha(Buffer.from(fs.readFileSync('docs/wiki/'+page.file,'utf8').replaceAll('\r\n','\n'))),page.sha256);
+const wikiPreserved=read(root+'/wiki-receipt-preservation.json');assert.equal(sha(fs.readFileSync('reviews/wiki-runtime-publication.json')),wikiPreserved.issuedSha256);
+const pr=read(root+'/pr-final.json'),config=read('docs/github/first-loop-pr.json');assert.equal(pr.title,config.title);assert.equal(pr.body,config.body);assert(pr.draft&&!pr.merged);assert.equal(pr.head_sha,source);assert.equal(pr.base_sha,'c3f60ca4125bea31d94c9d3f6ea0c9d3f0853df1');
+const previews=['testing','public'].map(audience=>{
+ const manifest=read(root+'/preview-'+audience+'-bytes.json'),live=read(root+'/preview-'+audience+'-live-check.json'),process=read(root+'/preview-'+audience+'-processes.json');
+ assert(live.passed&&manifest.passed);assert.equal(manifest.sourceCommit,source);assert.equal(live.sourceCommit,source);assert.equal(live.httpChecks.length,33);assert(live.probeRoomsClosed&&live.teamRecords.noSyntheticScoresSubmitted);
+ for(const key of ['hostPasswordRetainedPrivately','guestPasswordNotExposed','hostPauseAuthoritative','guestPauseRejected','pausedClockFrozen','manualContinueWorks','hostLeaveContinues','promotedHostInviteAvailable','hostEndAllExplained','noManufacturedClear'])assert.equal(live.peerSample[key],true,key);
+ assert.equal(sha(fs.readFileSync(manifest.backend.path)),manifest.backend.sha256);
+ return {audience,url:manifest.url,endpoint:manifest.endpoint,sourceCommit:source,root:manifest.root,files:manifest.files,bytes:manifest.bytes,holdingSession:audience==='testing'?42770:70298,backend:process.backend,client:process.client,backendBundle:manifest.backend,httpHashes:live.httpChecks.length,peerSample:live.peerSample,teamRecords:live.teamRecords};
+});
+const availability=read(root+'/preserved-preview-availability.json');assert(availability.passed&&availability.currentPreviewsAvailable&&availability.previousFrozenFilesPreserved);
+const native=read('reviews/windows-camera-clearance-2026-10-29/package-status.json');assert(native.softwarePortableAccepted);assert.equal(native.sourceCommit,source);assert.equal(native.nativeFixtures.length,3);assert.equal(native.postNativeByteVerifications.length,3);
+const report={savedAt:new Date().toISOString(),continuation:'User requested continued current-content polish; this pass is complete and the broader work remains.',objectiveComplete:false,sourceCommit:source,buildId:'2026.10.29-camera-clearance',protocol:43,localGate:{passed:true,tests:869,pass:869,fail:0,path:root+'/gate-01/runtime-verification.json',...fingerprints},additionalSourceBinding:{sha256:additional.sha256,files:additional.files,bytes:additional.bytes},sourceCI:ci,previews,previousPreviews:availability.previews.filter(p=>p.scope==='arena-edge-2026-10-29'),wiki:{sourceCommit:source,publishedCommit:wiki.publishedCommit,pages:18,images:34,publicPageChecks:wiki.publicChecks.length,allImageHashesMatch:true},pr:{url:pr.url,draft:true,title:pr.title,descriptionMatchesLocalConfig:true},publication:{sourcePublished:true,exactSourceCIPassed:true,wikiPublished:true,wikiVerified:true,mainMerged:false,gameDeployed:false,hostedReleaseReplaced:false,contestSubmitted:false},historicalReceiptsPreserved:8,priorWikiReceiptPreserved:true,renderedAccepted:false,humanAccepted:false,feedback:{preview:'http://127.0.0.1:5244/',publicPreview:'http://127.0.0.1:5245/',testingLinkPreferred:true,asked:true,answerPending:true,browserOpen:'Queued only; no assistant browser observation.'},windows:{currentVerifiedReviewSource:source,packageReview:'reviews/windows-camera-clearance-2026-10-29/package-status.json',cameraClearancePackaged:true,olderArchivePreserved:true},limits:['Software/rules, actual local multi-peer transport, compiled native controllers and served/frozen hashes; no browser/rendered playtest or personal clear.','Current runtime/test source, both exact-source CI jobs, fresh public/testing previews and canonical Wiki verified. Later metadata closure must retain these runtime/test/additional bindings.','Prior5242/5243previews remain available with original owners and exact frozen hashes; all older roots/packages/raw reports are preserved.','The matching Windows camera-clearance review passes all1899files on original, fresh deep extraction and an independent Windows copy plus six actual native diagnostics. Human balance, full action art, listening, native-language, physical-device/second-computer LAN, WAN/endurance/capacity and hosted rankings/recovery acceptance remain open. Browser automation stays disabled.']};
+fs.writeFileSync(root+'/checkpoint-status.json',JSON.stringify(report,null,2)+'\n',{flag:'wx'});
+console.log(JSON.stringify({passed:true,sourceCommit:source,tests:869,previews:previews.map(p=>p.url),wiki:wiki.publishedCommit,objectiveComplete:false}));

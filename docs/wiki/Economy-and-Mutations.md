@@ -1,8 +1,34 @@
-# Economy and mutations
+# Economy, shops and mutations
 
-Personal completion rewards prevent kill stealing. Class-compatible shops use server-owned purchase validation. Power resets per run. Every mutation lasts three upcoming encounters; at most three are active.
+![All twenty-eight class weapons and eight carried supplies](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/equipment.jpg)
 
-| Mutation | Effect |
+*Current shop artwork. Icons identify items; prices and effects remain numerical authority rules.*
+
+
+Completion rewards are personal and authoritative; last hits do not steal a teammate's completion income. Weapons must match the current class. Skill purchases require their prerequisites, available SP and the single-capstone rule. Invalid or duplicate purchase commands cannot create free power.
+
+Campaigns start with 3 SP and 120 coins. Before encounter index `j` (zero-based) in an `N`-fight campaign, the total SP allowance is `3 + floor(24*j/(N-1))`; nominal cumulative base income is `120 + floor(2280*j/(N-1))`. Quarantine, Midnight and Pilgrimage therefore reach **27 SP and 2,400 base coins before the finale**. Bounties, mutations and spending affect the actual purse.
+
+## Supplies
+
+There are three carried slots, at most two charges per slot, and a shared supply cooldown in addition to item timing. Supplies are purchased during the shop and used with 1/2/3, gamepad D-pad or touch. All eight supplies and all 28 class weapons have their own item illustrations.
+
+| Supply | Price |
+| --- | --- |
+| Medkit | 90 |
+| Adrenaline | 100 |
+| Armor Plate | 110 |
+| Antidote | 65 |
+| Revive Kit | 140 |
+| Barrier Charge | 120 |
+| Ammo Pouch | 70 |
+| Focus Tonic | 110 |
+
+## Voting and mutation lifetime
+
+An encounter win leads to mutation voting (15 seconds), concealed boss voting (15), shopping (25) and deployment (5). Mutations last three upcoming encounters, with at most three active at once. Exclusions and combined modifier bounds are validated by the authority. The 24 mutation options have distinct artwork, as do all 63 specialization paths.
+
+| Mutation | Tradeoff |
 | --- | --- |
 | Glass Pact | Half maximum health; triple weapon damage. |
 | Borrowed Day | Boss health +30%; bounty doubled. |
@@ -28,3 +54,5 @@ Personal completion rewards prevent kill stealing. Class-compatible shops use se
 | Mercury Hour | Fire rate +25%; reloads take 15% longer. |
 | Spare Parts | Ability potency +25%; weapon fire rate -10%. |
 | Ash Tithe | Bounty +30% and weapon damage +10%; maximum health -20%. |
+
+Purchased power resets each run. Mastery and cosmetics now persist in a local profile with validated JSON import/export; [Profiles](Profiles) explains participation, insignia and difficulty unlocks. [Classes and Skills](Classes-and-Skills) · [Numerical supply rules](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/content/supplies.json) · [Numerical mutation rules](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/content/mutations.json)

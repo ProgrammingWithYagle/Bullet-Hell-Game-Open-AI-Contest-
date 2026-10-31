@@ -1,0 +1,301 @@
+{
+  "savedAt": "2026-10-30T00:30:49.356Z",
+  "continuation": "User requested continued current-content polish; this pass is complete and the broader work remains.",
+  "objectiveComplete": false,
+  "sourceCommit": "3991fdae3cc8aaddaea00be8d43ec668e15533e9",
+  "buildId": "2026.10.29-host-controls",
+  "protocol": 43,
+  "localGate": {
+    "passed": true,
+    "tests": 859,
+    "pass": 859,
+    "fail": 0,
+    "path": "reviews/host-controls-2026-10-29/gate-02/runtime-verification.json",
+    "runtimeSourceSha256": "770d087c83f9d6fa5b6b3d7392ff4c2b6ecf5f71928c47d752601686c320b4fd",
+    "sourceSnapshotSha256": "5ca55f6d677e222bfe041442b6fa34339d54b981a4545611f9c5987abd82bce3"
+  },
+  "additionalSourceBinding": {
+    "sha256": "58281bd1d1126cd041514de2b97a9edb7e2e005b20661f28370f9007bc1d5d72",
+    "files": 152,
+    "bytes": 50560462
+  },
+  "sourceCI": {
+    "capturedAt": "2026-10-30T00:28:04.273Z",
+    "passed": true,
+    "sourceCommit": "3991fdae3cc8aaddaea00be8d43ec668e15533e9",
+    "jobs": [
+      {
+        "id": 123814767593,
+        "headRevision": "3991fdae3cc8aaddaea00be8d43ec668e15533e9",
+        "conclusion": "success",
+        "url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/40979221005/job/123814767593",
+        "path": "reviews/host-controls-2026-10-29/ci-123814767593.log",
+        "bytes": 164200,
+        "sha256": "1f9162a5887451198c3e50b84107eefd844f1dc1422686a3ce0c9fc3a65a1ccc",
+        "tests": 859,
+        "pass": 859,
+        "fail": 0
+      },
+      {
+        "id": 123814711366,
+        "headRevision": "3991fdae3cc8aaddaea00be8d43ec668e15533e9",
+        "conclusion": "success",
+        "url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/40979204777/job/123814711366",
+        "path": "reviews/host-controls-2026-10-29/ci-123814711366.log",
+        "bytes": 163614,
+        "sha256": "b80e3b9b6a0be40c1244e07e0555e1c53e71d4385dc85ae3413e5ce94df24cc7",
+        "tests": 859,
+        "pass": 859,
+        "fail": 0
+      }
+    ],
+    "limits": [
+      "Complete decoded connector logs and exact check-head identities. Software CI is separate from rendered/human/device/listening/language/WAN acceptance."
+    ]
+  },
+  "previews": [
+    {
+      "audience": "testing",
+      "url": "http://127.0.0.1:5240/",
+      "endpoint": "http://127.0.0.1:2614",
+      "sourceCommit": "3991fdae3cc8aaddaea00be8d43ec668e15533e9",
+      "root": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\playtest-host-controls-testing-3991fda-r02",
+      "files": 1698,
+      "bytes": 734130707,
+      "holdingSession": 1898,
+      "backend": {
+        "pid": 47416,
+        "startedAt": "2026-10-30T00:25:28.8775954Z",
+        "script": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-host-controls-testing-3991fda-r02\\server.mjs",
+        "sha256": "e774f0f1d1a20c9276f2cd7a54ba76b7dd2cf2bf0537461ba241660ad8331940",
+        "port": 2614
+      },
+      "client": {
+        "pid": 21016,
+        "startedAt": "2026-10-30T00:25:28.9079482Z",
+        "root": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\playtest-host-controls-testing-3991fda-r02",
+        "port": 5240,
+        "command": "vite preview --outDir output\\playtest-host-controls-testing-3991fda-r02 --host 127.0.0.1 --port 5240 --strictPort"
+      },
+      "backendBundle": {
+        "path": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-host-controls-testing-3991fda-r02\\server.mjs",
+        "bytes": 2714696,
+        "sha256": "e774f0f1d1a20c9276f2cd7a54ba76b7dd2cf2bf0537461ba241660ad8331940",
+        "externalProjectNodeModulesRequired": true
+      },
+      "httpHashes": 33,
+      "peerSample": {
+        "peers": 2,
+        "phase": "combat",
+        "bossId": "gate-widow",
+        "form": "normal",
+        "difficulty": "baby",
+        "mode": "short",
+        "sameBoss": true,
+        "chosenRehearsalOpenerIgnored": false,
+        "chosenRehearsalOpenerRetained": true,
+        "testingModified": false,
+        "roomChatDelivered": true,
+        "chatServerConfirmed": true,
+        "chatCooldownExplicit": true,
+        "chatRejectedDraftRetained": true,
+        "roomCodeJoined": true,
+        "hostStartRequired": true,
+        "selectedMapRetained": true,
+        "passwordProtected": true,
+        "incorrectPasswordRejected": true,
+        "roomListingLockFlag": true,
+        "noPasswordInListing": true,
+        "hostPasswordRetainedPrivately": true,
+        "guestPasswordNotExposed": true,
+        "hostPauseAuthoritative": true,
+        "guestPauseRejected": true,
+        "pausedClockFrozen": true,
+        "manualContinueWorks": true,
+        "hostLeaveContinues": true,
+        "promotedHostInviteAvailable": true,
+        "hostEndAllExplained": true,
+        "noManufacturedClear": true,
+        "noPersonalClearClaimed": true
+      },
+      "teamRecords": {
+        "available": true,
+        "persistent": true,
+        "readStatus": 200,
+        "scope": "server",
+        "qualifyingRowsBeforeProbe": 0,
+        "noSyntheticScoresSubmitted": true
+      }
+    },
+    {
+      "audience": "public",
+      "url": "http://127.0.0.1:5241/",
+      "endpoint": "http://127.0.0.1:2615",
+      "sourceCommit": "3991fdae3cc8aaddaea00be8d43ec668e15533e9",
+      "root": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\playtest-host-controls-public-3991fda-r02",
+      "files": 1698,
+      "bytes": 734125029,
+      "holdingSession": 45682,
+      "backend": {
+        "pid": 34444,
+        "startedAt": "2026-10-30T00:25:43.1033329Z",
+        "script": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-host-controls-public-3991fda-r02\\server.mjs",
+        "sha256": "e774f0f1d1a20c9276f2cd7a54ba76b7dd2cf2bf0537461ba241660ad8331940",
+        "port": 2615
+      },
+      "client": {
+        "pid": 21948,
+        "startedAt": "2026-10-30T00:25:43.2237606Z",
+        "root": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\playtest-host-controls-public-3991fda-r02",
+        "port": 5241,
+        "command": "vite preview --outDir output\\playtest-host-controls-public-3991fda-r02 --host 127.0.0.1 --port 5241 --strictPort"
+      },
+      "backendBundle": {
+        "path": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-host-controls-public-3991fda-r02\\server.mjs",
+        "bytes": 2714696,
+        "sha256": "e774f0f1d1a20c9276f2cd7a54ba76b7dd2cf2bf0537461ba241660ad8331940",
+        "externalProjectNodeModulesRequired": true
+      },
+      "httpHashes": 33,
+      "peerSample": {
+        "peers": 2,
+        "phase": "combat",
+        "bossId": "ratcatcher",
+        "form": "normal",
+        "difficulty": "baby",
+        "mode": "short",
+        "sameBoss": true,
+        "chosenRehearsalOpenerIgnored": true,
+        "chosenRehearsalOpenerRetained": false,
+        "testingModified": false,
+        "roomChatDelivered": true,
+        "chatServerConfirmed": true,
+        "chatCooldownExplicit": true,
+        "chatRejectedDraftRetained": true,
+        "roomCodeJoined": true,
+        "hostStartRequired": true,
+        "selectedMapRetained": true,
+        "passwordProtected": true,
+        "incorrectPasswordRejected": true,
+        "roomListingLockFlag": true,
+        "noPasswordInListing": true,
+        "hostPasswordRetainedPrivately": true,
+        "guestPasswordNotExposed": true,
+        "hostPauseAuthoritative": true,
+        "guestPauseRejected": true,
+        "pausedClockFrozen": true,
+        "manualContinueWorks": true,
+        "hostLeaveContinues": true,
+        "promotedHostInviteAvailable": true,
+        "hostEndAllExplained": true,
+        "noManufacturedClear": true,
+        "noPersonalClearClaimed": true
+      },
+      "teamRecords": {
+        "available": true,
+        "persistent": true,
+        "readStatus": 200,
+        "scope": "server",
+        "qualifyingRowsBeforeProbe": 0,
+        "noSyntheticScoresSubmitted": true
+      }
+    }
+  ],
+  "previousPreviews": [
+    {
+      "scope": "connection-clarity-2026-10-29",
+      "audience": "testing",
+      "url": "http://127.0.0.1:5238/",
+      "endpoint": "http://127.0.0.1:2612",
+      "sourceCommit": "49b3d5ad592e53181ce03fb165caa562ad14a083",
+      "protocol": 42,
+      "frozenFilesVerified": true,
+      "frozen": [
+        {
+          "path": "index.html",
+          "bytes": 540,
+          "sha256": "0bd413d0e9b9b4717a5ea32bcff26a22d1c7545d5a35a25db6a753c24657b1ab"
+        },
+        {
+          "path": "preview-build.json",
+          "bytes": 1291,
+          "sha256": "54bdd64fc18892c469d26e263dc01a8e99391dacdbeb3481a74adb46c000c07e"
+        }
+      ],
+      "backendBundleSha256": "875ef1c8b6d542ba7c2a6aa2f56cb68dc81158f07ef92a1769f4d8e8fe67b4de",
+      "available": false,
+      "errorCode": "ECONNREFUSED",
+      "message": "Previous process is no longer listening. Its old holding session is absent. No restart or stop was attempted."
+    },
+    {
+      "scope": "connection-clarity-2026-10-29",
+      "audience": "public",
+      "url": "http://127.0.0.1:5239/",
+      "endpoint": "http://127.0.0.1:2613",
+      "sourceCommit": "49b3d5ad592e53181ce03fb165caa562ad14a083",
+      "protocol": 42,
+      "frozenFilesVerified": true,
+      "frozen": [
+        {
+          "path": "index.html",
+          "bytes": 540,
+          "sha256": "15af09af4e060188406a5cecb240cdb2ab4caf5e61aa6dad33e9320edb669a8a"
+        },
+        {
+          "path": "preview-build.json",
+          "bytes": 1290,
+          "sha256": "c7a0a4c98a948429f36893d18da4c9093b3977da0b909b3ecdd67535023ff10b"
+        }
+      ],
+      "backendBundleSha256": "875ef1c8b6d542ba7c2a6aa2f56cb68dc81158f07ef92a1769f4d8e8fe67b4de",
+      "available": false,
+      "errorCode": "ECONNREFUSED",
+      "message": "Previous process is no longer listening. Its old holding session is absent. No restart or stop was attempted."
+    }
+  ],
+  "wiki": {
+    "sourceCommit": "3991fdae3cc8aaddaea00be8d43ec668e15533e9",
+    "publishedCommit": "3efbf50fa3444cd9452a35383888182f32bbde07",
+    "pages": 18,
+    "images": 34,
+    "publicPageChecks": 4,
+    "allImageHashesMatch": true
+  },
+  "pr": {
+    "url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14",
+    "draft": true,
+    "title": "Build Grave Accord and refine multiplayer setup and host controls",
+    "descriptionMatchesLocalConfig": true
+  },
+  "publication": {
+    "sourcePublished": true,
+    "exactSourceCIPassed": true,
+    "wikiPublished": true,
+    "wikiVerified": true,
+    "mainMerged": false,
+    "gameDeployed": false,
+    "hostedReleaseReplaced": false,
+    "contestSubmitted": false
+  },
+  "historicalReceiptsPreserved": 8,
+  "priorWikiReceiptPreserved": true,
+  "renderedAccepted": false,
+  "humanAccepted": false,
+  "feedback": {
+    "preview": "http://127.0.0.1:5241/",
+    "asked": true,
+    "answerPending": true,
+    "browserOpen": "Queued only; no assistant browser observation."
+  },
+  "windows": {
+    "currentVerifiedReviewSource": "fe82c7e38c8fa73804678b6637815b23aceb0ce5",
+    "hostControlsPackaged": false,
+    "olderArchivePreserved": true
+  },
+  "limits": [
+    "Software/rules, actual local multi-peer transport, compiled native controllers and served/frozen hashes; no browser/rendered playtest or personal clear.",
+    "Current runtime/test source, both exact-source CI jobs, fresh public/testing previews and canonical Wiki verified. Later metadata closure must retain these runtime/test/additional bindings.",
+    "Old5238/5239 processes are absent; their frozen roots and backend hashes are preserved. No old process was stopped or restarted.",
+    "The matching Windows host-control review remains to be built and verified. Human balance, full action art, listening, native-language, physical-device/second-computer LAN, WAN/endurance/capacity and hosted rankings/recovery acceptance remain open. Browser automation stays disabled."
+  ]
+}
