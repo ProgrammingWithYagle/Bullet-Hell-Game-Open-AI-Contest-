@@ -812,3 +812,10 @@ body[data-reduce-motion="true"] #boss-panel.phase-entry .boss-health-track::afte
 @media(max-width:700px) {.topline>div:first-child {min-width:0;max-width:19vw;flex:0 1 19vw;} #boss-panel {min-width:0;} #pause-button {padding:.45rem;flex:0 0 auto;} #pause-button span {display:none;}}
 
 .general-mobility{padding:.7rem;border:1px solid #887351;border-radius:.5rem;margin-block-end:.7rem}.general-mobility h3,.general-mobility p{margin:.2rem 0 .5rem}.general-purchases{display:flex;flex-wrap:wrap;gap:1rem}.general-purchases>div{display:flex;align-items:center;gap:.6rem}.general-purchases .item-node{flex:0 0 auto}.touch-buttons [hidden]{display:none}.touch-buttons [data-action="sprint"][aria-pressed="true"]{outline:2px solid #e3c27a;outline-offset:2px}
+
+/* Story reading stays in menus and the existing intermission layout. */
+.story-briefing,.story-report,.story-archive{margin-block:1rem;padding:1rem;border:1px solid #75654b;border-radius:.6rem;background:#161b1b;color:#e9e0c9}
+.story-prose{max-width:66ch;line-height:1.65;overflow-wrap:anywhere}.story-prose h3{margin-block:.6rem}.story-prose p{margin-block:.45rem}.story-speaker{color:#c5a977;font-size:.9rem}.story-speaker:empty{display:none}
+.story-report summary,.story-ending summary{cursor:pointer;line-height:1.5}.story-report summary:focus-visible,.story-ending summary:focus-visible{outline:2px solid #e6bf70;outline-offset:4px}
+.story-choice{display:grid;gap:.5rem;padding-block:.5rem 1rem;border-bottom:1px solid #766349;margin-block-end:.5rem;line-height:1.5}.story-choice strong{font-size:1.1rem}.story-choice small,.story-stance{color:#e1c48d}.story-stance{font-size:.8rem;letter-spacing:.05em}
+.story-ending-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr));gap:1rem}.story-ending{padding:1rem;border:1px solid #766349;border-radius:.4rem}.story-ending.locked{color:#b8b7b0}.story-ending h3{margin-block:0 .7rem}.story-map-collage{max-width:52rem;margin:auto}

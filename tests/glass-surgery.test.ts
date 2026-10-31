@@ -287,6 +287,7 @@ test("known General-mobility saves/profiles migrate with exact builds and contro
       .ok,
   );
   const old = g.offlineCheckpoint()!;
+  old.protocolVersion = 45;
   old.contentRevision = issued;
   const after = Game.restoreOffline(old).offlineCheckpoint()!;
   assert.equal(after.protocolVersion, PROTOCOL);

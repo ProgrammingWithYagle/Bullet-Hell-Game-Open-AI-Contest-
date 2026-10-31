@@ -1,3 +1,4 @@
+import {storyReportMarkup} from './ui/story.ts';
 import {glassPhaseName,glassPhaseHint} from './glass-text.ts';
 import {TESTING_BUILD} from './build-audience.ts';
 import { showingBossDefeat } from '../shared/boss-defeat-flow.ts';
@@ -830,7 +831,7 @@ function renderOverlay(view: View, p: PlayerView) {
     title = t('ui.mutationVote');
     body = voteMarkup(view);
   } else if (view.phase === 'contractVote') {
-    title = t('ui.bossVote');
+    title = t(view.run.mode==='story'?'ui.storyChoice':'ui.bossVote');
     body = voteMarkup(view);
   } else if (view.phase === 'lobby' || view.phase === 'shop') {
     title = t(view.phase === 'shop' ? 'ui.shop' : session?.online && lobbyPanel === 'room' ? 'ui.lobbyTitle' : 'ui.prepareEquipment');
@@ -859,6 +860,9 @@ function renderOverlay(view: View, p: PlayerView) {
     + (session?.teamRecord?.status === 'saved' ? `<button id="view-team-record">${text('ui.teamRecords')}</button>` : '');
   if (view.run.mode === 'endless' && view.encounter > 0 && ['mutationVote','contractVote','shop','loading'].includes(view.phase))
     body += `<details class="end-run"><summary>${text('ui.endRun')}</summary><p>${text('ui.endRunHelp')}</p><button id="end-run" ${session?.online && view.owner !== session.id ? 'disabled' : ''}>${text('ui.endRun')}</button></details>`;
+  const sameStory = overlay.dataset.phase === view.phase;
+  const storyOpen = sameStory ? overlay.querySelector<HTMLDetailsElement>('[data-story-report]')?.open === true : ['mutationVote','contractVote','secretOffer','victory','defeat'].includes(view.phase);
+  body = storyReportMarkup(view,storyOpen) + body;
   const focusedId = previous?.id;
   const focusedItem = previous?.dataset.inspect;
   const oldScroll=overlay.querySelector('.skill-scroll');

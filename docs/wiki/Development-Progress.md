@@ -1,6 +1,6 @@
 # Development progress
 
-Updated 2026-10-31 for **2026.10.31-general-sp-sync**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
+Updated 2026-10-31 for **2026.10.31-open-ledger**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
 
 66 playable identities: 65 ordinary and 1 secret. Three ordinary bosses in every one of fifty subtiers requires 150 ordinary identities, plus secrets; 85 additional ordinary bosses remain.
 
@@ -21,6 +21,8 @@ Updated 2026-10-31 for **2026.10.31-general-sp-sync**. These counts track specif
 | Shared General mobility skill branch | 1 / 1 | 0 | Two shared independent purchases are implemented for all seven classes: Sprint3SP and Double Dash6SP from the existing earned budget. Shared authority/prediction, exact old-control/save migration, Classic/expanded-shop access, keyboard/gamepad/touch hold-toggle, HUD state and fifteen-locale help are implemented. The378class nodes remain separate. Rendered/human survivability balance, native-language and device acceptance remain open. |
 | Replay goals and survivor letters | 1 / 1 | 0 | 19 local personal goals,57 cosmetic stamps,seven survivor letters and goal-based setup suggestions are implemented. Progress derives from existing personal receipts; legacy claims award nothing. Rendered/human/language acceptance remains open. |
 | Tank and Heavy shield-cap specializations | 2 / 2 | 0 | Two existing defensive paths now raise capacity at6/15/21SP without adding shield, nodes or permanent power. Shared difficulty scaling and Hellish zero remain; human survivability balance and rendered/native-language review remain open. |
+| Playable story campaign and replay endings | 1 / 1 | 0 | The Open Ledger has15 continuous fights,3 acts,14 party route decisions and3 locally recovered endings. Earned SP and fixed threat remain. Full translation, rendered/human pacing, device and final balance acceptance remain open. |
+| Full Story narrative language deliveries | 1 / 15 | 14 | The complete original English narrative is marked lang=en/dir=ltr. Interface labels exist in all15 catalogs. The other14 complete narrative translations remain to be authored and reviewed; menu translation alone does not count. |
 
 ## Latest human feedback
 
@@ -79,6 +81,7 @@ Updated 2026-10-31 for **2026.10.31-general-sp-sync**. These counts track specif
 - Fresh2026-10-31 expansion direction authorized the selected-class shield-cap idea. Its implementation now supersedes older deferred-only shield-cap notes; selective attack blocking is still future work.
 - Fresh2026-10-31 direction requests continued replay-value development across bosses, classes and story until a successor chat is needed. Full-game completion remains the user’s decision. The former General mobility deferral is superseded by this implementation; no final human acceptance is claimed.
 - The fresh replay-value instruction also authorizes Glass Surgeon’s next original-boss quality pass and recovered Oren Pell story. This records implementation direction, not human acceptance of the new encounter.
+- The user explicitly says to keep developing, retain the full goal across turns and let them decide completion. This authorizes the playable Story campaign; no final acceptance is inferred from software checks.
 
 ## Remaining release work
 
@@ -96,6 +99,7 @@ Updated 2026-10-31 for **2026.10.31-general-sp-sync**. These counts track specif
 - Verify active 8/16/50-player mixed progression, WAN and full progression endurance; current headless and scoped local evidence is separate.
 - Deploy and independently accept shared hosted global rankings and durable recovery. Current public authorities implement persistent server-scoped team records with exact scoring and real-network/restart evidence. Shared storage ownership, participant recovery credentials, entropy recovery histories and hosted acceptance remain open.
 - Prepare and verify a new coordinated Windows/browser release with a matching backend; existing immutable Windows and older public builds remain separate.
+- Finish and review the14 remaining Story narrative translations; compare15-fight pacing, choices, endings and all difficulty paths with human players. The new campaign is implemented but not accepted as finished.
 
 ## Count definitions
 

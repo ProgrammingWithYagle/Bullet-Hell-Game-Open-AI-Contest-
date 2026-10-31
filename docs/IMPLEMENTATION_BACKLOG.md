@@ -1,5 +1,10 @@
 # Implementation backlog and contest acceptance map
 
+## Ongoing Story campaign development — 2026-10-31
+
+[The Open Ledger](STORY_CAMPAIGN.md) adds a sixth mode:15 encounters,3 acts,14 party route decisions and3 personal replay endings. Routes choose actual locations and concealed fixed-grade contracts while retaining the earned3–27SP budget. Protocol46 carries mode/history; public version4 remains unchanged. Original English narrative and fifteen-locale interface labels are implemented; fourteen full narrative translations, human pacing, rendered/device/native-language review and final balance remain open. The active user goal continues across turns. Whole-game completion remains the user's decision.
+
+
 Current development build **2026.10.31-glass-surgery / protocol 45** adds [Glass Surgeon's refraction theatre](GLASS_SURGERY.md) and the shared [General Sprint/Double Dash branch](GENERAL_MOBILITY.md), alongside [Stitchwright](STITCHWORK.md), [the Field Journal](FIELD_JOURNAL.md) and [Heavy/Tank shield paths](SHIELD_SPECIALIZATIONS.md). Original-boss quality passes are **14/60**, with **46** left. Boss/class counts remain 66/seven; the 378 class nodes remain plus two shared General purchases.
 
 Game source `517472b3e1efda13500d35e0351b3a7fdb565b92` passes **1,010 tests, 0 failures**, TypeScript, all 15 catalogs, artwork, production build and 71 atlas contracts. [Exact-source CI passed](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/41242002286). Current local review: testing **http://127.0.0.1:5280/** (backend 2656), public **http://127.0.0.1:5281/** (backend 2657). Each passes 52 served-file/catalog checks and real two-peer room/password/chat/host flows. [The current handoff](../handoff/NEXT_CHAT.md) and `reviews/glass-surgery-2026-10-31/` record exact identities and restart inputs. Earlier user previews remain available.

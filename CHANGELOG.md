@@ -1,6 +1,16 @@
 # Changelog
 
-Development build **2026.10.31-general-sp-sync**, protocol 45. The current contest Site uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.10.31-open-ledger**, protocol 46. The current contest Site uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-10-31 — The Open Ledger story campaign
+
+### Three acts, fourteen decisions, three endings
+
+- Play fifteen nonrepeating encounters from the gate to the council. Each party route vote chooses the next location and concealed fixed-grade contract; the last encounter draws from three reserved finales.
+- Recover one of three endings through Shelter, Witness or Refusal choices. The most chosen stance determines the ending; the latest choice breaks a tie. Personal endings can be reread in Profile.
+- The campaign earns its existing3–27SP and normal income across the fifteen fights. Story choices grant no free skill points or permanent combat power.
+- Original English scenes appear in setup, intermissions and results, with explicit language direction. All fifteen interface catalogs include Story labels; full narrative translations, rendered review, human pacing and final balance remain unfinished.
+- Ending credit survives optional secret failure and old checkpoint views. A late arrival cannot inherit prior completion, and modified testing runs receive no personal replay credit. Protocol46 carries Story mode and route history; known issued45 local saves migrate while online compatibility stays exact.
 
 ## 2026-10-31 — Online skill points include General purchases
 

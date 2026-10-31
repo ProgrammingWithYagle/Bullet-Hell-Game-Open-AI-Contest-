@@ -14,7 +14,7 @@ for(let seed=1;seed<=1000;seed++)for(const mode of c.modes.filter(m=>m.kind!=='e
  }assert.equal(seen.size,mode.encounters);routes++;
 }
 for(let seed=1;seed<=200;seed++){
- const rng=prng(seed),routeIds=Object.entries(c.bossPools).filter(([id])=>id!=='endless').flatMap(([,p])=>[...p.regular,...p.finale]),exclusive=c.bossPools.endless.exclusive;
+ const rng=prng(seed),routeIds=Object.entries(c.bossPools).filter(([id])=>id!=='endless'&&id!=='story').flatMap(([,p])=>[...p.regular,...p.finale]),exclusive=c.bossPools.endless.exclusive;
  const history=[],bags={route:new Set(routeIds),exclusive:new Set(exclusive)};
  for(let encounter=1;encounter<=200;encounter++){
   const isExclusive=encounter>=4&&encounter%4===0,kind=isExclusive?'exclusive':'route',pool=isExclusive?exclusive:encounter<=3?c.bossPools.endless.openingPool:routeIds;

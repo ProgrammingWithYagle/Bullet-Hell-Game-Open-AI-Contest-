@@ -1,3 +1,4 @@
+import {storyEndingsMarkup} from './story.ts';
 import {glassLore} from '../glass-text.ts';
 import type { BossId } from '../../shared/protocol.ts';
 import { data } from '../../shared/game.ts';
@@ -98,7 +99,7 @@ export function mountProfile(host: HTMLElement, back: () => void, changed: (appl
         )
         .join(
           '',
-        )}</div><section aria-labelledby="mastery-title"><h2 id="mastery-title">${e(t('ui.mastery'))}</h2><p class="muted">${e(p('rule'))}</p><div class="mastery-grid">${data.classes
+        )}</div>${storyEndingsMarkup(profile)}<section aria-labelledby="mastery-title"><h2 id="mastery-title">${e(t('ui.mastery'))}</h2><p class="muted">${e(p('rule'))}</p><div class="mastery-grid">${data.classes
         .map((c) => {
           const m = s.classes[c.id as keyof typeof s.classes],
             next = masteryThresholds[Math.min(4, m.tier + 1)];

@@ -19,7 +19,7 @@ const unique=(items,label)=>assert.equal(new Set(items.map(x=>x.id)).size,items.
 const finiteTree=value=>{if(typeof value==='number')assert(Number.isFinite(value));else if(Array.isArray(value))value.forEach(finiteTree);else if(value&&typeof value==='object')Object.values(value).forEach(finiteTree);};
 check('Complete finite versioned content',()=>{
   finiteTree(c);assert.equal(c.rules.schemaVersion,1);assert.equal(c.rules.simulationHz,30);assert.equal(c.rules.patchHz,20);
-  for(const [key,count] of Object.entries({classes:7,skills:378,weapons:28,bosses:66,mutations:24,arenas:6,modes:5,difficulties:6,locales:15,grades:18}))assert.equal(c[key].length,count,key);
+  for(const [key,count] of Object.entries({classes:7,skills:378,weapons:28,bosses:66,mutations:24,arenas:6,modes:6,difficulties:6,locales:15,grades:18}))assert.equal(c[key].length,count,key);
   for(const [key,value] of Object.entries(c))if(Array.isArray(value)&&value[0]?.id)unique(value,key);
   assert(!/\bTBD\b|TODO|FIXME/.test(JSON.stringify(c)),'Unresolved content placeholder');
   assert.equal(read('content/revision.json').sha256,crypto.createHash('sha256').update(JSON.stringify(c)).digest('hex'));
@@ -95,7 +95,7 @@ check('Boss attack contracts, transitions, arenas and deadlines',()=>{
 });
 check('Sixty-six distinct bosses, route-specific gauntlets and Endless exclusives',()=>{
   const allIds=new Set();
-  for(const m of c.modes.filter(m=>m.kind!=='endless')){
+  for(const m of c.modes.filter(m=>m.kind!=='endless'&&m.id!=='story')){
     const pool=c.bossPools[m.id];assert.equal(pool.finale.length,3);assert(pool.regular.length>=m.encounters+1,'Insufficient nonrepeating three-card candidates '+m.id);
     for(const id of [...pool.regular,...pool.finale]){assert(!allIds.has(id),'Route pools overlap '+id);allIds.add(id);assert(c.bosses.some(b=>b.id===id&&b.route===m.id&&b.finale===pool.finale.includes(id)));}
   }
@@ -103,6 +103,12 @@ check('Sixty-six distinct bosses, route-specific gauntlets and Endless exclusive
   assert.equal(allIds.size,65);assert(!allIds.has('uncounted'));assert.equal(new Set(c.bosses.map(b=>b.signature.id)).size,66);
   for(const b of c.bosses){assert(b.signature.behavior.length>30&&b.signature.counterplay.length>25);assert(b.damageWindowFraction>0&&b.damageWindowFraction<=1);}
   const result=spawnSync(process.execPath,['tools/verify-gauntlets.mjs'],{cwd:root,encoding:'utf8'});assert.equal(result.status,0,result.stdout+'\n'+result.stderr);
+});
+check('The Open Ledger has fifteen encounters, fourteen decisions and three reserved finales',()=>{
+  const story=c.storyCampaign,m=c.modes.find(m=>m.id==='story'),pool=c.bossPools.story;
+  assert.equal(story.beats.length,15);assert.equal(story.acts.length,3);assert.equal(story.endings.length,3);assert.equal(story.choiceSeconds,45);assert.equal(m.encounters,15);assert.equal(m.maxPlayers,8);
+  story.beats.forEach((beat,i)=>{assert.equal(beat.choices.length,i===14?0:3);for(const choice of beat.choices)assert(c.arenas.some(a=>a.id===choice.arenaId));});
+  const ids=[...pool.regular,...pool.finale];assert.equal(ids.length,65);assert.equal(new Set(ids).size,65);assert(ids.every(id=>c.bosses.some(b=>b.id===id&&!b.secret)));assert.equal(pool.finale.length,3);
 });
 check('Design bible and complete editable tables',()=>{
   for(const f of ['docs/GAME_BIBLE.md','docs/LOCALIZATION.md','docs/LEADERBOARDS.md','docs/AUDIO_BIBLE.md','docs/balance/skills.csv','docs/balance/weapons.csv','docs/balance/difficulties.csv','docs/balance/mutations.csv','docs/balance/route-budgets.csv','docs/balance/uptime-model.csv','docs/IMPLEMENTATION_BACKLOG.md','docs/ASSET_MANIFEST.json'])assert(exists(f),'Missing '+f);

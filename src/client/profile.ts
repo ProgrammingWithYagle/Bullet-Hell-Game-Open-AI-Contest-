@@ -1,3 +1,4 @@
+import {validStoryChoices,storyLength} from '../shared/story-campaign.ts';
 import catalog from "../../content/catalog.json";
 import {
   CONTENT_REVISION,
@@ -51,6 +52,7 @@ export type RunReceipt = {
   combatTicks: number;
   fullCampaign: boolean;
   memorial: boolean;
+  storyChoices?: number[];
 };
 export type ProfileV1 = {
   schemaVersion: 1;
@@ -138,7 +140,8 @@ function validReceipt(value: unknown): value is RunReceipt {
   const r = value as RunReceipt,
     m = mode(r.mode);
   return (
-    Object.keys(r).length === 14 &&
+    Object.keys(r).length === (r.mode === "story" ? 15 : 14) &&
+    (r.mode === "story" ? (validStoryChoices(r.storyChoices) && r.storyChoices.length >= Math.min(Math.max(0,r.teamClears-1),storyLength-1) && r.storyChoices.length <= Math.min(r.teamClears,storyLength-1) && (!r.fullCampaign || r.storyChoices.length===storyLength-1)) : r.storyChoices === undefined) &&
     id(r.runId) &&
     id(r.playerId, 64) &&
     Boolean(m) &&
@@ -244,6 +247,7 @@ export function parseProfile(raw: string): ProfileV1 {
       old.practiceOnly === true &&
       old.verified === false &&
       [
+        "fd77a95b869f368f49ce988f613db276385c45843e0152c69c3c67e13683a97b",
         "5a4ffd871d1880ccb681aee1faa5e51a664385752977fa7a136b50d44c7c6927",
         "39fd34dfd7530860d0ecfad5d7e86361438fae9bd3ac93881ec4fe51a3974322",
         "15da4f590d2f2041f065732e48498551543beab9818f1f187df710d5de521d34",
@@ -274,7 +278,10 @@ export function parseProfile(raw: string): ProfileV1 {
         "b8d9fb6918c854f3eed38b327ed0cb3026e071e6fe24932e50beed36943db241",
       ].includes(String(old.contentRevision))
     )
-      {old.controls=migrateMobilityControls(old.controls);old.contentRevision = CONTENT_REVISION;}
+      {
+        if(Array.isArray(old.runs)&&old.runs.some(r=>r?.mode==="story"))throw Error("ui.errorProfile");
+        old.controls=migrateMobilityControls(old.controls);old.contentRevision = CONTENT_REVISION;
+      }
     const prefs = old.settings;
     if (
       prefs &&
@@ -361,6 +368,7 @@ export function recordProfileView(
     return;
   if (p.progress.clears === 0 && p.progress.rescues === 0) return;
   const next: RunReceipt = {
+    ...(view.run.mode === "story" ? {storyChoices:[...(view.storyChoices??[])]} : {}),
     runId: view.run.id,
     playerId,
     mode: view.run.mode,
@@ -408,6 +416,7 @@ export function recordProfileView(
     ] as const)
       next[k] = Math.max(old[k], next[k]);
     next.bossIds = [...new Set([...old.bossIds, ...next.bossIds])];
+    if(next.mode === "story" && (old.fullCampaign || (old.storyChoices?.length??0) > (next.storyChoices?.length??0)))next.storyChoices=[...old.storyChoices!];
     next.fullCampaign ||= old.fullCampaign;
     next.memorial ||= old.memorial;
     Object.assign(old, next);

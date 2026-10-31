@@ -5,6 +5,7 @@ import {hostPasswordMarkup} from './password-visibility.ts';
 type Translate = (key: string, args?: Record<string, string | number>) => string;
 
 export function mapChoiceLabel(view: View, t: Translate) {
+ if(view.run.mode==='story')return t('ui.storyRoute');
   const choice = view.run.arenaSelection;
   return t(choice === 'randomRun' ? 'ui.randomMapRun' : choice === 'randomEncounter' ? 'ui.randomMapEncounter'
     : 'arena.' + (view.run.selectedArenaId ?? view.arenaId) + '.name');

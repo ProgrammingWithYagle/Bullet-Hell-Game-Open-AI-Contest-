@@ -13,8 +13,8 @@ import {formatMessage,type Message} from '../src/shared/messages.ts';
 import {readFileSync} from 'node:fs';
 
 function nextFight(g:Game){finishBossDefeat(g);for(let n=0;g.phase!=='combat'&&n<5;n++){g.phaseEnds=g.tick;g.step();}assert.equal(g.phase,'combat');}
-test('an explicitly selected map stays fixed in every mode, through falls, choices, saves and later fights',()=>{
-  for(const map of data.arenas)for(const mode of data.modes){
+test('an explicitly selected map stays fixed in every free-map mode, through falls, choices, saves and later fights',()=>{
+  for(const map of data.arenas)for(const mode of data.modes.filter(m=>m.id!=='story')){
     let g=new Game({mode:mode.id as 'short',openingArenaId:map.id,difficulty:'baby',maxPlayers:1});g.addPlayer('solo','Mara','soldier');g.start();
     for(let fight=0;fight<3;fight++){
       assert.equal(g.arena.id,map.id);g.boss.x=711;g.boss.y=330;g.boss.health=0;g.step();
@@ -46,7 +46,7 @@ test('authored route floors remain still throughout a fall; one defeat cue is em
   finishBossDefeat(g);assert.equal(g.arena.id,before);assert(!g.drainEvents().some(e=>e.type==='sound'&&e.id==='boss-defeated'));
   const old=g.offlineCheckpoint()! as unknown as Record<string,unknown>;old.protocolVersion=38;
   delete old.arenaId;delete (old.settings as Record<string,unknown>).arenaSelection;
-  const restored=Game.restoreOffline(old);assert.equal(restored.settings.arenaSelection,'fixed');assert.equal(PROTOCOL, 45);
+  const restored=Game.restoreOffline(old);assert.equal(restored.settings.arenaSelection,'fixed');assert.equal(PROTOCOL, 46);
   assert.throws(()=>Game.restoreOffline({...old,serverOnly:true}),/versionMismatch/);
   assert.throws(()=>Game.restoreAuthoritative({...g.authoritativeCheckpoint(),protocolVersion:38}),/versionMismatch/);
   assert.equal(restored.offlineCheckpoint()!.contentRevision,CONTENT_REVISION);

@@ -1,3 +1,4 @@
+import {storyCampaign,storyBossOffers,validStoryBoundary} from './story-campaign.ts';
 import {allSkills,skillFor,advanceMobility,takeDodge,resetMobility,dodgeMaximum,sprintUnlocked,mobilityRules} from './mobility.ts';
 import {VariantPressure} from './variant-pressure.ts';
 import { bossDefeatRemaining, showingBossDefeat } from './boss-defeat-flow.ts';
@@ -312,6 +313,7 @@ export class Game {
   } | null = null;
   mutationCards: string[] = [];
   contractCards: Contract[] = [];
+  storyChoices:number[]=[];
   readonly votes = new Map<string, number>();
   private nextId = 1;
   testingModified = false;
@@ -357,6 +359,7 @@ export class Game {
         settings.openingArenaId ?? (settings.mode === 'raid' ? 'ossuary-works' : 'gatehouse'),
       arenaSelection: settings.arenaSelection ?? (settings.openingArenaId ? 'fixed' : 'route'),
     };
+    if(this.settings.mode==='story'){this.settings.openingBossId='constable';this.settings.openingArenaId='gatehouse';this.settings.arenaSelection='route';}
     if (
       typeof this.settings.runId !== 'string' ||
       !/^[A-Za-z0-9_-]{1,100}$/.test(this.settings.runId) ||
@@ -799,7 +802,7 @@ export class Game {
     );
   }
   private startEncounter() {
-    this.currentArenaId = selectedArenaId(this.settings, this.encounter, this.secretStatus === 'active' && Boolean(this.campaignBank));
+    this.currentArenaId = selectedArenaId(this.settings, this.encounter, this.secretStatus === 'active' && Boolean(this.campaignBank),this.storyChoices);
     Object.assign(this.selectedContract,classifiedContract(this.selectedContract.bossId??'constable',encounterVariant(this.settings.difficulty,this.selectedContract.variant)));
     this.phaseAttackReadyAt = 0;
     this.variantPressure.reset(this.combatTick);
@@ -1034,6 +1037,7 @@ export class Game {
         .map((w) => w.baselineSustainedDps)
         .toSorted((a, b) => a - b)[3];
       const routePool =
+        this.settings.mode === 'story'? ((this.encounter===this.routeLength-1?data.bossPools.story.finale:data.bossPools.story.regular) as BossId[]):
         this.settings.mode === 'raid'
           ? ((this.encounter === this.routeLength - 1
               ? data.bossPools.raid.finale
@@ -1057,7 +1061,7 @@ export class Game {
       const pool =
         this.settings.mode === 'endless'
           ? this.endless.offer(this.encounter, this.rng)
-          : rankedThreatCandidates(
+          : this.settings.mode==='story'?storyBossOffers(uncleared,threat,this.rng):rankedThreatCandidates(
               uncleared.length >= 3 ? uncleared : routePool.filter((id) => id !== this.boss.id),
               threat,
               this.rng,
@@ -1068,7 +1072,7 @@ export class Game {
         const variant = encounterVariant(this.settings.difficulty,
           this.settings.mode === 'endless' ? this.nextEndlessForm(bossId) : 'normal');
         const card = {
-          id: 'watch-' + this.encounter + '-' + i,
+          id: (this.settings.mode==='story'?'story-':'watch-') + this.encounter + '-' + i,
           ...classifiedContract(bossId, variant),
           recommendedRating: 0,
           variant,
@@ -1082,9 +1086,11 @@ export class Game {
             0.65);
         return card;
       });
-      this.changePhase('contractVote', rule.bossVoteSeconds);
+      this.changePhase('contractVote',this.settings.mode==='story'?storyCampaign.choiceSeconds:rule.bossVoteSeconds);
     } else if (this.phase === 'contractVote') {
-      this.selectedContract = this.contractCards[this.winningVote()];
+      const choice=this.winningVote();
+      this.selectedContract = this.contractCards[choice];
+      if(this.settings.mode==='story')this.storyChoices.push(choice);
       this.changePhase('shop', rule.shopSeconds);
     } else if (this.phase === 'shop') this.changePhase('loading', rule.deploymentSeconds);
     else if (this.phase === 'loading') this.startEncounter();
@@ -2633,6 +2639,7 @@ export class Game {
       defeatedBoss: showingBossDefeat(this.boss, this.tick)
         ? { defeatedAt: this.boss.defeatedAt, x: this.boss.x, y: this.boss.y } : null,
       encounter: this.encounter,
+      storyChoices:[...this.storyChoices],
       accords: this.accords,
       timeouts: this.timeouts,
       endlessHistory: structuredClone(this.endless.state),
@@ -2711,8 +2718,11 @@ export class Game {
       (save.phase !== 'lobby' && (save.phaseEnds < save.tick || save.phaseEnds - save.tick > 1800))
     )
       throw Error('invalidCheckpoint');
+    if(!validStoryBoundary(save.settings.mode,save.storyChoices,save.encounter,save.phase))throw Error('invalidStoryState');
+    if(save.settings.mode==='story'&&(save.settings.openingBossId!=='constable'||save.settings.openingArenaId!=='gatehouse'||save.settings.arenaSelection!=='route'||save.arenaId===undefined))throw Error('invalidStoryState');
     const g = new Game(save.settings),
       p = save.player;
+    g.storyChoices=[...(save.storyChoices??[])];
     if (
       !validEndlessHistory(save.endlessHistory) ||
       !int(save.timeouts, 0, 1000000) ||
@@ -2877,6 +2887,18 @@ export class Game {
       (save.phase === 'mutationVote' && save.mutationCards.length !== 3)
     )
       throw Error('invalidCards');
+    if(g.settings.mode==='story'){
+      if(['contractVote','shop','loading'].includes(save.phase)&&save.secretStatus!=='active'){
+        const pool=save.encounter===g.routeLength-1?data.bossPools.story.finale:data.bossPools.story.regular;
+        if(new Set(save.contractCards.map(c=>c.bossId)).size!==3||save.contractCards.some((c,i)=>c.id!=='story-'+save.encounter+'-'+i||g.completedBossIds.has(c.bossId!)||!pool.includes(c.bossId!)))throw Error('invalidStoryState');
+      }
+      if(['shop','loading'].includes(save.phase)&&save.secretStatus!=='active'){
+        const selected=save.contractCards[g.storyChoices.at(-1)!];
+        if(!selected||JSON.stringify(save.selectedContract)!==JSON.stringify(selected))throw Error('invalidStoryState');
+      }
+      if(save.phase==='lobby'&&save.selectedContract.bossId!=='constable')throw Error('invalidStoryState');
+    }
+
     if (
       !save.votes ||
       typeof save.votes !== 'object' ||
@@ -2918,9 +2940,9 @@ export class Game {
     g.accords = save.accords;
     g.rng.state = save.rng;
     g.nextId = save.nextId;
-    const previousArena = selectedArenaId(g.settings, Math.max(0, save.encounter - 1));
+    const previousArena = selectedArenaId(g.settings, Math.max(0, save.encounter - 1),false,g.storyChoices);
     if (save.arenaId !== undefined && (!data.arenas.some(a => a.id === save.arenaId) ||
-      (g.settings.arenaSelection !== 'route' && save.arenaId !== previousArena)))
+      ((g.settings.mode==='story'||g.settings.arenaSelection !== 'route') && save.arenaId !== previousArena)))
       throw Error('invalidArenaSelection');
     g.currentArenaId = save.arenaId ?? previousArena;
     g.selectedContract = {
@@ -2975,6 +2997,7 @@ export class Game {
       defeatedBoss: showingBossDefeat(this.boss, this.tick)
         ? { defeatedAt: this.boss.defeatedAt, x: this.boss.x, y: this.boss.y } : null,
       encounter: this.encounter,
+      storyChoices:[...this.storyChoices],
       accords: this.accords,
       timeouts: this.timeouts,
       endlessHistory: structuredClone(this.endless.state),
@@ -3087,6 +3110,7 @@ export class Game {
     for(const [id,form] of base.completedBossForms)g.completedBossForms.set(id,form);
     g.rng.state = base.rng.state;
     g.selectedContract = { ...base.selectedContract };
+    g.storyChoices=[...base.storyChoices];
     g.boss = { ...base.boss };
     g.currentArenaId = base.currentArenaId;
     g.mutations.push(...structuredClone(base.mutations));
@@ -3161,6 +3185,7 @@ export class Game {
       phase: this.phase,
       phaseEnds: this.phaseEnds,
       encounter: this.encounter,
+      storyChoices:[...this.storyChoices],
       boss: { ...this.boss },
       signatures: structuredClone(this.signatures),
       minions: this.minions.snapshot(),

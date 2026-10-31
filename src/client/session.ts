@@ -31,7 +31,7 @@ export type ConnectionOptions = {
   serverEndpoint?: string;
   name: string;
   classId: ClassId;
-  mode: 'short' | 'standard' | 'long' | 'raid' | 'endless';
+  mode: 'short' | 'standard' | 'long' | 'raid' | 'endless' | 'story';
   difficulty: string;
   openingBossId?: BossId;
   openingArenaId?: string;
@@ -615,6 +615,7 @@ function networkView(s: WorldState): View {
     arenaId: hazards.arenaId ?? 'gatehouse',
     warnings: hazards.warnings ?? [],
     fields: hazards.fields ?? [],
+    storyChoices:intermission.storyChoices??[],
     secretStatus: intermission.secretStatus ?? 'locked',
     extensionParticipants: intermission.extensionParticipants ?? [],
     campaignBank: intermission.campaignBank ?? null,

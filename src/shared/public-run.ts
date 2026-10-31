@@ -7,6 +7,7 @@ import type { BossId } from "./protocol.ts";
 export function publicRunSettings(
   settings: Partial<Settings>,
 ): Partial<Settings> {
+  if(settings.mode==='story')return {...settings,openingBossId:'constable',openingArenaId:'gatehouse',arenaSelection:'route'};
   const mode = settings.mode ?? "short",
     seed = settings.seed ?? 1;
   const source =

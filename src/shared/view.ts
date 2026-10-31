@@ -58,6 +58,7 @@ export type View = {
   secretStatus: Game['secretStatus'];
   extensionParticipants: string[];
   campaignBank: Game['campaignBank'];
+  storyChoices?:number[];
   tick: number;
   combatTick: number;
   phase: Phase;
@@ -93,6 +94,7 @@ export function viewOf(g: Game, owner: string): View {
       maximumPlayers: g.settings.maxPlayers,
       ...(g.testingModified?{testingModified:true}:{}),
     },
+    storyChoices:[...g.storyChoices],
     secretStatus: g.secretStatus,
     extensionParticipants: [...g.extensionParticipants],
     campaignBank: g.campaignBank ? { ...g.campaignBank } : null,

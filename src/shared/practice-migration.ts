@@ -6,9 +6,14 @@ import { classifiedContract } from './boss-threat.ts';
 export function migratePracticeBoundary(value: unknown): unknown {
   if (!value || typeof value !== 'object' || Array.isArray(value)) return value;
   const issued = value as Record<string, unknown>;
+  if(Number(issued.protocolVersion)<=45&&issued.settings&&typeof issued.settings==='object'&&(issued.settings as Record<string,unknown>).mode==='story')throw Error('versionMismatch');
+  if(issued.protocolVersion===45&&issued.contentRevision==='fd77a95b869f368f49ce988f613db276385c45843e0152c69c3c67e13683a97b'){
+    if(issued.schemaVersion!==1||issued.practiceOnly!==true||issued.serverOnly===true||issued.players!==undefined||issued.transactions!==undefined||JSON.stringify(issued).length>32768)throw Error('versionMismatch');
+    return {...issued,protocolVersion:PROTOCOL,contentRevision:CONTENT_REVISION};
+  }
   if(issued.protocolVersion===45&&issued.contentRevision==='5a4ffd871d1880ccb681aee1faa5e51a664385752977fa7a136b50d44c7c6927'){
     if(issued.schemaVersion!==1||issued.practiceOnly!==true||issued.serverOnly===true||issued.players!==undefined||issued.transactions!==undefined||JSON.stringify(issued).length>32768)throw Error('versionMismatch');
-    return {...issued,contentRevision:CONTENT_REVISION};
+    return {...issued,protocolVersion:PROTOCOL,contentRevision:CONTENT_REVISION};
   }
   if(issued.protocolVersion===44 && ['39fd34dfd7530860d0ecfad5d7e86361438fae9bd3ac93881ec4fe51a3974322','15da4f590d2f2041f065732e48498551543beab9818f1f187df710d5de521d34'].includes(String(issued.contentRevision))){
     if(issued.schemaVersion!==1||issued.practiceOnly!==true||issued.serverOnly===true||issued.players!==undefined||issued.transactions!==undefined||JSON.stringify(issued).length>32768)throw Error('versionMismatch');

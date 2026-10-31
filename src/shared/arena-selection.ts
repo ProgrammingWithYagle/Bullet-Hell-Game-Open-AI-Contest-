@@ -1,3 +1,4 @@
+import {storyArena} from './story-campaign.ts';
 import catalog from '../../content/catalog.json';
 import { Random } from './random.ts';
 import type { ModeId } from './protocol.ts';
@@ -6,7 +7,8 @@ export const arenaSelections = ['fixed', 'randomRun', 'randomEncounter', 'route'
 export type ArenaSelection = typeof arenaSelections[number];
 export function selectedArenaId(settings: {
   seed: number; mode: ModeId; openingArenaId: string; arenaSelection: ArenaSelection;
-}, encounter: number, secret = false) {
+}, encounter: number, secret = false,storyChoices:readonly number[] = []) {
+  if(settings.mode==='story')return secret?'crown-crypt':storyArena(encounter,storyChoices);
   if (settings.arenaSelection === 'fixed') return settings.openingArenaId;
   if (settings.arenaSelection === 'randomRun' || settings.arenaSelection === 'randomEncounter') {
     const index = settings.arenaSelection === 'randomRun' ? 0 : encounter;

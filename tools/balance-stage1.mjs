@@ -25,10 +25,10 @@ function strongestWeaponModel(cl,sp,coins){
 }
 const cache=new Map();
 for(const mode of c.modes.filter(m=>m.kind!=='endless'))for(let j=0;j<mode.encounters;j++)for(const difficulty of c.difficulties)for(const cl of c.classes){
-  const sp=mode.skillBudgets?.[j]??3+Math.floor(24*j/(mode.encounters-1)),coins=Math.floor((mode.coinIncomeBudgets?.[j]??120+Math.floor(2280*j/(mode.encounters-1)))*difficulty.coins);
+  const sp=mode.skillBudgets?.[j]??3+Math.floor(24*j/(mode.encounters-1)),coins=Math.floor((mode.coinIncomeBudgets?.[j]??120+2280*j/(mode.encounters-1))*difficulty.coins);
   const key=[cl.id,sp,coins].join('/');if(!cache.has(key))cache.set(key,strongestWeaponModel(cl,sp,coins));const build=cache.get(key);
   const targetThreat=mode.threats[j];
-  const ids=mode.id==='raid'?c.bossPools.raid[j===mode.encounters-1?'finale':'regular']:c.bosses.filter(b=>['short','standard','long','raid'].includes(b.route)&&b.finale===(j===mode.encounters-1)).map(b=>b.id);
+  const ids=mode.id==='story'?(j===0?['constable']:c.bossPools.story[j===mode.encounters-1?'finale':'regular']):mode.id==='raid'?c.bossPools.raid[j===mode.encounters-1?'finale':'regular']:c.bosses.filter(b=>['short','standard','long','raid'].includes(b.route)&&b.finale===(j===mode.encounters-1)).map(b=>b.id);
   const distances=ids.map(id=>Math.abs(ratings.get(id).level-targetThreat));const nearest=Math.min(...distances);
   // Model every nearby fixed level that the ranked offer policy can choose; later depleted rosters are exercised by the full progression fixtures.
   const pool=c.bosses.filter(b=>ids.includes(b.id)&&(targetThreat===1?ratings.get(b.id).level===1:Math.abs(ratings.get(b.id).level-targetThreat)<=Math.max(1,nearest)));

@@ -1,3 +1,4 @@
+import {storyCampaignMessages} from '../locales/source/story-campaign.mjs';
 import {glassSurgeryMessages} from '../locales/source/glass-surgery.mjs';
 import {generalMobilityMessages} from '../locales/source/general-mobility.mjs';
 import {shieldSpecializationMessages} from '../locales/source/shield-specializations.mjs';
@@ -125,7 +126,7 @@ export function validateOne(document, canonical, content, locale) {
       ...Object.keys(bossGuideMessages('en')),
       ...Object.keys(stitchworkMessages('en')),
       ...Object.keys(fieldJournalMessages('en')),
-      ...Object.keys(shieldSpecializationMessages('en')), ...Object.keys(generalMobilityMessages('en')), ...Object.keys(glassSurgeryMessages('en')),
+      ...Object.keys(shieldSpecializationMessages('en')), ...Object.keys(generalMobilityMessages('en')), ...Object.keys(glassSurgeryMessages('en')), ...Object.keys(storyCampaignMessages('en')),
       ...Object.keys(classTalentMessages('en',content)),
       ...Object.keys(wardenMessages('en')),
       ...Object.keys(skillMapMessages('en')),
@@ -154,7 +155,7 @@ export function validateOne(document, canonical, content, locale) {
     if (!Object.hasOwn(messages,key)) fail(`missing feature coverage: ${key}`);
   }
   const expectedCategories = new Intl.PluralRules(locale).resolvedOptions().pluralCategories.slice().sort();
-  const expandedSource = {...smallWakesMessages(locale),...expansionMessages(locale), ...earlyWatchMessages(locale),...skillMapMessages(locale),...difficultyRuleMessages(locale),...classTalentMessages(locale,content),...wardenMessages(locale),...crazedHorizonMessages(locale),...courierRouteMessages(locale),...ratcatcherMusterMessages(locale),...clerkAppealMessages(locale),...tollkeeperReturnMessages(locale),...marshalMessages(locale),...widowMessages(locale),...ambulanceMessages(locale),...matronMessages(locale),...moldMessages(locale),...bellMessages(locale),...runtimeExtraMessages(locale),...bossGuideMessages(locale),...stitchworkMessages(locale),...fieldJournalMessages(locale),...shieldSpecializationMessages(locale),...generalMobilityMessages(locale),...glassSurgeryMessages(locale)};
+  const expandedSource = {...smallWakesMessages(locale),...expansionMessages(locale), ...earlyWatchMessages(locale),...skillMapMessages(locale),...difficultyRuleMessages(locale),...classTalentMessages(locale,content),...wardenMessages(locale),...crazedHorizonMessages(locale),...courierRouteMessages(locale),...ratcatcherMusterMessages(locale),...clerkAppealMessages(locale),...tollkeeperReturnMessages(locale),...marshalMessages(locale),...widowMessages(locale),...ambulanceMessages(locale),...matronMessages(locale),...moldMessages(locale),...bellMessages(locale),...runtimeExtraMessages(locale),...bossGuideMessages(locale),...stitchworkMessages(locale),...fieldJournalMessages(locale),...shieldSpecializationMessages(locale),...generalMobilityMessages(locale),...glassSurgeryMessages(locale),...storyCampaignMessages(locale)};
   for (const [key,text] of Object.entries(recoveryMessages(locale))) {
     if (messages[key] !== text) fail(`recovery UI source mismatch at ${key}`);
   }

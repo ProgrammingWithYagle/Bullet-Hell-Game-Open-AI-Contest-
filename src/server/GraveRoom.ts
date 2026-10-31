@@ -33,7 +33,7 @@ type Metadata = {
   hasPassword:boolean;
 };
 type Options = {
-  mode: 'short' | 'standard' | 'long' | 'raid' | 'endless';
+  mode: 'short' | 'standard' | 'long' | 'raid' | 'endless' | 'story';
   difficulty: string;
   visibility: 'public' | 'private';
   contentRevision: string;
@@ -91,7 +91,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       (options.arenaSelection !== undefined && !arenaSelections.includes(options.arenaSelection)) ||
       (options.openingBossId !== undefined &&
         !implementedBossIds.includes(options.openingBossId)) ||
-      !['short', 'standard', 'long', 'raid', 'endless'].includes(options.mode) ||
+      !['short', 'standard', 'long', 'raid', 'endless','story'].includes(options.mode) ||
       !data.difficulties.some((d) => d.id === options.difficulty) ||
       !['public', 'private'].includes(options.visibility)
     )
@@ -491,6 +491,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
         selectedArenaId: g.settings.openingArenaId,
         maximumPlayers: Math.min(g.settings.maxPlayers, capacity.limit),
       },
+      storyChoices:[...g.storyChoices],
       secretStatus: g.secretStatus,
       campaignBank: g.campaignBank,
       extensionParticipants: g.extensionParticipants,

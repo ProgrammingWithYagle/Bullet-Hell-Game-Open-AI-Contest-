@@ -169,7 +169,7 @@ export function progressionMatrix() {
           profileXp: s.classes[classId].xp,
         });
       }
-  assert.equal(rows.length, 210);
+  assert.equal(rows.length, data.modes.length * data.classes.length * data.difficulties.length);
   return rows;
 }
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

@@ -260,6 +260,7 @@ for (const testing of [false, true])
       assert(content().innerHTML.includes(`data-mode-preview="${mode.id}"`));
       assert(!content().innerHTML.includes('arena-preview'));
     }
+    host.querySelector('[data-mode="endless"]')!.click();
     host.querySelector('#setup-next')!.click();
     assert(
       content().innerHTML.includes('arena-preview'),
