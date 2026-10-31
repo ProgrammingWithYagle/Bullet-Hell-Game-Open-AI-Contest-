@@ -4,7 +4,7 @@ import {writeTextAtomic as writeFileSync} from './write-text-atomic.mjs';
 const h = JSON.parse(readFileSync('src/shared/update-history.json', 'utf8'));
 const repo = 'https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-';
 const body =
-  `# Changelog\n\nDevelopment build **${h.buildId}**, protocol ${h.snapshot.protocol}. These entries describe the feature-branch source; the public playtest remains an earlier protocol-4 deployment.\n\n` +
+  `# Changelog\n\nDevelopment build **${h.buildId}**, protocol ${h.snapshot.protocol}. The current contest Site uses protocol43; the older Site under the other account is a separate historical publication.\n\n` +
   h.entries
     .map(
       (entry) =>
