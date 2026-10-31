@@ -1,8 +1,8 @@
 # Field Journal — replay goals and survivor letters
 
-The Story expansion brings the journal to **22 personal goals and 66 cosmetic stamps**. Alongside the original nineteen goals, Story campaign clears use1/3/7completed personal runs; Story acts use the best personally started run's5/10/15clears; recovered endings use1/2/3distinct first-banked endings. Old views, partial fragments and late joins cannot manufacture earlier act or ending credit. All fifteen languages have the new guidance. Story goal preparation opens canonical setup review and waits for launch without writing a profile or granting combat power.
+The Story expansion brings the journal to **22 personal goals and 66 cosmetic stamps**. Alongside the original nineteen goals, Story campaign clears use 1/3/7 completed personal runs; Story acts use the best personally started run's 5/10/15 clears; recovered endings use 1/2/3 distinct first-banked endings. Old views, partial fragments and late joins cannot manufacture earlier act or ending credit. All fifteen languages have the new guidance. Story goal preparation opens canonical setup review and waits for launch without writing a profile or granting combat power.
 
-The original nineteen-goal implementation is described below; its57stamps and seven letters remain part of the expanded total.
+The original nineteen-goal implementation is described below; its 57 stamps and seven letters remain part of the expanded total.
 
 
 Development build **2026.10.31-field-journal**, protocol **44**. Open **Field Journal** from Home. It is a menu page; no journal panel covers combat.

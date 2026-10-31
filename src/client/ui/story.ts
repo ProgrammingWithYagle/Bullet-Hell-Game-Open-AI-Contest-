@@ -4,42 +4,58 @@ import {
   storyEnding,
   storyLength,
 } from "../../shared/story-campaign.ts";
+import { storyBook, storyDirection, type StoryBook } from "../story-book.ts";
 import type { ProfileV1 } from "../profile.ts";
 import { storyProgress } from "../story-progress.ts";
-import { t, number } from "../i18n.ts";
+import { t, number, locale, languages } from "../i18n.ts";
 import { escape as e } from "./html.ts";
 const stance = (i: number) =>
   t("ui.storyStance." + ["shelter", "witness", "defiance"][i]);
-const prose = (title: string, speaker: string, text: string) =>
-  `<div class="story-prose" lang="en" dir="ltr"><h3>${e(title)}</h3><p class="story-speaker">${e(speaker)}</p><p>${e(text)}</p></div>`;
-export function storyBriefingMarkup() {
-  const act = storyCampaign.acts[0];
-  return `<aside class="story-briefing"><p class="eyebrow">${e(t("ui.storyOriginal"))}</p>${prose(storyCampaign.title, "", storyCampaign.intro)}${prose(act.title, act.speaker, act.text)}<p>${e(t("mode.story.description"))}</p><p>${e(t("ui.storyEndingRule"))}</p></aside>`;
+const notice = (book: StoryBook) =>
+  book.language === "en"
+    ? t("ui.storyOriginal")
+    : t("ui.language") +
+      ": " +
+      (languages.find(([id]) => id === book.language)?.[1] ?? book.language);
+const prose = (book: StoryBook, title: string, speaker: string, text: string) =>
+  `<div class="story-prose" lang="${e(book.language)}" dir="${storyDirection(book.language)}"><h3>${e(title)}</h3><p class="story-speaker">${e(speaker)}</p><p>${e(text)}</p></div>`;
+const label = (book: StoryBook, title: string) =>
+  `<bdi lang="${e(book.language)}" dir="${storyDirection(book.language)}">${e(title)}</bdi>`;
+export function storyBriefingMarkup(language = locale) {
+  const book = storyBook(language),
+    act = book.acts[0];
+  return `<aside class="story-briefing"><p class="eyebrow">${e(notice(book))}</p>${prose(book, book.title, "", book.intro)}${prose(book, act.title, act.speaker, act.text)}<p>${e(t("mode.story.description"))}</p><p>${e(t("ui.storyEndingRule"))}</p></aside>`;
 }
-/** No story overlay appears in combat. Reading uses the existing intermission clock. */
-export function storyReportMarkup(view: View, open = false) {
+/** Reading uses the existing intermission clock; combat never receives a story overlay. */
+export function storyReportMarkup(view: View, open = false, language = locale) {
   if (view.run.mode !== "story" || view.phase === "combat") return "";
   if (view.phase === "lobby" || view.encounter === 0)
-    return storyBriefingMarkup();
-  const beat =
-    storyCampaign.beats[
-      Math.max(0, Math.min(storyLength - 1, view.encounter - 1))
-    ];
+    return storyBriefingMarkup(language);
+  const book = storyBook(language),
+    beat =
+      book.beats[Math.max(0, Math.min(storyLength - 1, view.encounter - 1))];
   const ending = view.campaignBank
-    ? storyCampaign.endings[storyEnding(view.storyChoices ?? [])]
+    ? book.endings[storyEnding(view.storyChoices ?? [])]
     : undefined;
-  const actIndex = Math.min(2, Math.floor(view.encounter / 5));
-  const act = storyCampaign.acts[actIndex];
-  const boundary = view.encounter === 5 || view.encounter === 10;
-  return `<details class="story-report" data-story-report ${open ? "open" : ""}><summary id="story-report-toggle">${e(t(ending ? "ui.storyEnding" : "ui.storyAftermath"))} · <bdi lang="en" dir="ltr">${e(ending?.title ?? beat.title)}</bdi></summary><p class="muted">${e(t("ui.storyOriginal"))}</p>${prose(beat.title, beat.speaker, beat.text)}${boundary ? `<p class="eyebrow">${e(t("ui.storyAct", { number: number(actIndex + 1) }))}</p>${prose(act.title, act.speaker, act.text)}` : ""}${ending ? prose(ending.title, ending.speaker, ending.text) : ""}</details>`;
+  const actIndex = Math.min(2, Math.floor(view.encounter / 5)),
+    act = book.acts[actIndex],
+    boundary = view.encounter === 5 || view.encounter === 10;
+  return `<details class="story-report" data-story-report ${open ? "open" : ""}><summary id="story-report-toggle">${e(t(ending ? "ui.storyEnding" : "ui.storyAftermath"))} · ${label(book, ending?.title ?? beat.title)}</summary><p class="muted">${e(notice(book))}</p>${prose(book, beat.title, beat.speaker, beat.text)}${boundary ? `<p class="eyebrow">${e(t("ui.storyAct", { number: number(actIndex + 1) }))}</p>${prose(book, act.title, act.speaker, act.text)}` : ""}${ending ? prose(book, ending.title, ending.speaker, ending.text) : ""}</details>`;
 }
-export function storyChoiceMarkup(view: View, index: number) {
+export function storyChoiceMarkup(
+  view: View,
+  index: number,
+  language = locale,
+) {
   if (view.run.mode !== "story" || view.phase !== "contractVote") return "";
-  const choice = storyCampaign.beats[view.encounter - 1]?.choices[index];
-  if (!choice) return "";
-  return `<span class="story-choice"><span class="story-stance">${e(stance(index))}</span><strong lang="en" dir="ltr">${e(choice.title)}</strong><span lang="en" dir="ltr">${e(choice.text)}</span><small>${e(t("arena." + choice.arenaId + ".name"))}</small></span>`;
+  const canonical = storyCampaign.beats[view.encounter - 1]?.choices[index];
+  if (!canonical) return "";
+  const book = storyBook(language),
+    choice = book.beats[view.encounter - 1].choices[index];
+  return `<span class="story-choice"><span class="story-stance">${e(stance(index))}</span><strong lang="${e(book.language)}" dir="${storyDirection(book.language)}">${e(choice.title)}</strong><span lang="${e(book.language)}" dir="${storyDirection(book.language)}">${e(choice.text)}</span><small>${e(t("arena." + canonical.arenaId + ".name"))}</small></span>`;
 }
-export function storyEndingsMarkup(profile: ProfileV1) {
-  const progress = storyProgress(profile);
-  return `<section class="story-archive" aria-labelledby="story-endings-title"><h2 id="story-endings-title">${e(t("ui.storyEndings"))}</h2><p>${e(t("ui.storyEndingsProgress", { count: number(progress.endings.size) }))} · ${e(t("ui.storyActsProgress", { count: number(progress.acts) }))}</p><p>${e(t("ui.storyEndingRule"))}</p><div class="story-ending-grid">${storyCampaign.endings.map((ending, i) => `<article data-story-ending="${i}" class="story-ending ${progress.endings.has(i) ? "recovered" : "locked"}"><h3>${e(stance(i))}</h3>${progress.endings.has(i) ? `<details><summary>${e(t("ui.storyRead"))} · <bdi lang="en" dir="ltr">${e(ending.title)}</bdi></summary><p class="muted">${e(t("ui.storyOriginal"))}</p>${prose(ending.title, ending.speaker, ending.text)}</details>` : `<p>${e(t("ui.storyNotRecovered"))}</p>`}</article>`).join("")}</div></section>`;
+export function storyEndingsMarkup(profile: ProfileV1, language = locale) {
+  const progress = storyProgress(profile),
+    book = storyBook(language);
+  return `<section class="story-archive" aria-labelledby="story-endings-title"><h2 id="story-endings-title">${e(t("ui.storyEndings"))}</h2><p>${e(t("ui.storyEndingsProgress", { count: number(progress.endings.size) }))} · ${e(t("ui.storyActsProgress", { count: number(progress.acts) }))}</p><p>${e(t("ui.storyEndingRule"))}</p><div class="story-ending-grid">${book.endings.map((ending, i) => `<article data-story-ending="${i}" class="story-ending ${progress.endings.has(i) ? "recovered" : "locked"}"><h3>${e(stance(i))}</h3>${progress.endings.has(i) ? `<details><summary>${e(t("ui.storyRead"))} · ${label(book, ending.title)}</summary><p class="muted">${e(notice(book))}</p>${prose(book, ending.title, ending.speaker, ending.text)}</details>` : `<p>${e(t("ui.storyNotRecovered"))}</p>`}</article>`).join("")}</div></section>`;
 }
