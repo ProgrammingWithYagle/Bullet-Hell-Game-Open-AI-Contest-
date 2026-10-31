@@ -1,6 +1,6 @@
 # Development progress
 
-Updated 2026-10-31 for **2026.10.31-stitchwork**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
+Updated 2026-10-31 for **2026.10.31-field-journal**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
 
 66 playable identities: 65 ordinary and 1 secret. Three ordinary bosses in every one of fifty subtiers requires 150 ordinary identities, plus secrets; 85 additional ordinary bosses remain.
 
@@ -19,6 +19,7 @@ Updated 2026-10-31 for **2026.10.31-stitchwork**. These counts track specific re
 | Mold Alchemist Crazed difficulty step | 1 / 1 | 0 | Crazed adds finite distillation columns while ordinary chemistry continues. Phase I has one fixed two-cloud lane; II re-aims three clouds; III has two staggered columns with two each; IV has three each with final inward reflux. Every path warns1.8seconds. Real mixed coolant cools apparatus to stop pending/future releases, and condenses travelling clouds while becoming spent with0.9-second grace. Shared aerosol contact/slow, owned phase persistence, fifteen-locale guides and actual owner/observer transport are integrated. Normal/Brutal behavior matches the issued owner in a separate240-case comparison. Current full-suite/CI and human balance/rendered acceptance are recorded separately; fixed grade3-- and original quality count remain. |
 | Bellringer Standard calibration / distinct Brutal technique | 1 / 1 | 0 | Standard keeps its two/three/four peals with a46-degree gap,1.05-second spacing and260-unit clapper reach. Brutal adds one physical chained-clapper throw per primary score, with a1.3-second outbound warning and a fresh1.2-second return warning. Its landed head is shootable during that return warning; breaking it cancels the return, while the thin tether is harmless. Crazed inherits a tougher head alongside its concurrent second bell. Full-score, phase-carryover, real projectile-hit and owner/observer checks are separate from rendered/human/final balance acceptance. Fixed grade3- and quality12/60 remain. |
 | Shared General mobility skill branch | 0 / 1 | 1 | Deferred during public polish. User requests a shared branch available to every class, including Double Dash and Sprint. Proposed second dash charge and stamina-limited sprint use the existing earned SP budget; exact node design is pending. Needs authority/prediction, saves/online isolation, menus/skill-map integration, keyboard/touch/gamepad/accessibility and fifteen-locale help. Bosses must remain viable without requiring these purchases; no extra class or free SP is claimed. |
+| Replay goals and survivor letters | 1 / 1 | 0 | 19 local personal goals,57 cosmetic stamps,seven survivor letters and goal-based setup suggestions are implemented. Progress derives from existing personal receipts; legacy claims award nothing. Rendered/human/language acceptance remains open. |
 
 ## Latest human feedback
 

@@ -2,6 +2,7 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
+import { fieldJournalMessages } from './source/field-journal.mjs';
 import { stitchworkMessages } from './source/stitchwork.mjs';
 import { english } from './source/en.mjs';
 import additional from './source/additional.mjs';
@@ -76,7 +77,7 @@ for (const id of ids) {
     wardenMessages(id), crazedHorizonMessages(id), courierRouteMessages(id), ratcatcherMusterMessages(id),
     clerkAppealMessages(id), tollkeeperReturnMessages(id), marshalMessages(id), widowMessages(id),
     ambulanceMessages(id), matronMessages(id), moldStillMessages(id), bellReturnChainMessages(id),
-    runtimeExtraMessages(id), bossGuideMessages(id), stitchworkMessages(id));
+    runtimeExtraMessages(id), bossGuideMessages(id), stitchworkMessages(id), fieldJournalMessages(id));
   const info = catalog.locales.find(x => x.id === id);
   const output = {
     meta: { schemaVersion: 1, locale: id, nativeName: info.name, direction: info.direction,

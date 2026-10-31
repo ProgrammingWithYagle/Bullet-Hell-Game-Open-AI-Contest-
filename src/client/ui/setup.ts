@@ -1,3 +1,5 @@
+import {mountFieldJournal} from './field-journal.ts';
+import {journalText} from '../field-journal-text.ts';
 import {TESTING_BUILD} from '../build-audience.ts';
 import {testingDifficultiesUnlocked,unlockTestingDifficulties} from '../testing-ui.ts';
 import {difficultyRulesMarkup} from './difficulty-rules.ts';
@@ -80,6 +82,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
   let disposed = false;
   let pageCleanup = () => {};
   let hostPassword='';
+  let journalSuggested: 'prepared' | 'preparedTeam' | undefined;
   let homeGalleryIndex=0;
   let page = hooks.firstVisitLanguage?'language':retryJoin?'join':initialRecords ? 'leaderboards' : 'home',
     previewClass: string = selected.classId,
@@ -150,7 +153,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
     host.innerHTML = `<div class="expedition-shell ${page === 'home' ? 'at-home' : ''}"><header class="masthead"><button id="brand-home" class="brand">${icon('bell')}<span>GRAVE ACCORD<small>${copy('brandHint')}</small></span></button><div class="masthead-controls"><label class="sr-only" for="language">${e(t('ui.language'))}</label><select id="language" aria-label="${e(t('ui.language'))}">${languages.map(([id, label]) => `<option value="${id}" ${id === locale ? 'selected' : ''}>${e(label)}</option>`).join('')}</select><button id="guide" class="icon-button" aria-label="${e(t('ui.playTutorial'))}" title="${e(t('ui.playTutorial'))}">${icon('tutorial')}</button><button id="settings" class="icon-button" aria-label="${e(t('ui.settings'))}">${icon('engineer')}</button></div></header>${stage >= 0 ? `<nav class="setup-steps" aria-label="${e(t('ui.chooseSetup'))}">${steps.map((step, i) => `<button data-page="${step}" class="${i === stage ? 'current' : ''}" ${i === stage ? 'aria-current="step"' : ''} ${i > stage ? 'disabled' : ''}><b>${number(i + 1)}</b><span>${e(t(labels[step]))}</span></button>`).join('')}</nav>` : ''}<section id="setup-content" class="setup-content"></section><p id="notice" class="setup-notice" role="status" hidden></p><footer class="setup-footer">${TESTING_BUILD ? `<details class="setup-build"><summary><bdi>Grave Accord · ${e(revision.version)}</bdi></summary><p>${e(t("ui.testingBuild"))}</p><p>${e(t('ui.translationNotice'))}</p><small><bdi>${e(history.buildId)}</bdi></small></details>` : ''}<a href="https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/wiki" target="_blank" rel="noopener">${e(t('ui.howToPlay'))}</a><button id="changelog" class="footer-link">${e(t('ui.changelog'))}</button></footer></div>`;
     const content = host.querySelector<HTMLElement>('#setup-content')!;
     if (page === 'home')
-      content.innerHTML = `<div class="home-composition">${homeGalleryMarkup(assets,t,number)}<div class="home-actions"><p class="eyebrow">${e(t('ui.chooseSetup'))}</p><h1>${copy('headline')}</h1><p class="home-pitch">${copy('pitch')}</p>${firstWatch() ? `<aside class="first-watch"><h2>${copy('firstWatch')}</h2><p>${copy('welcome')}</p><button id="gentle-start">${icon('play')}<span>${copy('gentleStart')}<small>${e(t('ui.solo'))} · ${e(t('mode.short.name'))} · ${e(t('difficulty.baby'))}</small></span></button></aside>` : ''}<div class="home-buttons">${button('new-run', t('ui.newRun'), 'play', 'class="primary"')}${savedBoundary() ? button('resume-boundary', t('ui.resumeCheckpoint'), 'resume') : ''}${button('join', t('ui.joinRoom'), 'join')}${desktopBridge() ? button('lan', desktopText('title'), 'network') : ''}${button('profile', t('ui.profile'), 'profile')}<button id="leaderboards">${icon('records')}<span>${e(t('ui.leaderboards'))}<small>${e(t('ui.localPracticeRecords'))} · ${e(t('ui.teamRecords'))}</small></span></button>${button('tutorial', expeditionText(locale, 'tutorial'), 'tutorial')}</div><p class="setup-helper">${copy('controlsHint')}</p>${capacityNotice()}</div></div>`;
+      content.innerHTML = `<div class="home-composition">${homeGalleryMarkup(assets,t,number)}<div class="home-actions"><p class="eyebrow">${e(t('ui.chooseSetup'))}</p><h1>${copy('headline')}</h1><p class="home-pitch">${copy('pitch')}</p>${firstWatch() ? `<aside class="first-watch"><h2>${copy('firstWatch')}</h2><p>${copy('welcome')}</p><button id="gentle-start">${icon('play')}<span>${copy('gentleStart')}<small>${e(t('ui.solo'))} · ${e(t('mode.short.name'))} · ${e(t('difficulty.baby'))}</small></span></button></aside>` : ''}<div class="home-buttons">${button('new-run', t('ui.newRun'), 'play', 'class="primary"')}${savedBoundary() ? button('resume-boundary', t('ui.resumeCheckpoint'), 'resume') : ''}${button('join', t('ui.joinRoom'), 'join')}${desktopBridge() ? button('lan', desktopText('title'), 'network') : ''}${button('profile', t('ui.profile'), 'profile')}${button('field-journal', journalText(locale,'title'), 'map')}<button id="leaderboards">${icon('records')}<span>${e(t('ui.leaderboards'))}<small>${e(t('ui.localPracticeRecords'))} · ${e(t('ui.teamRecords'))}</small></span></button>${button('tutorial', expeditionText(locale, 'tutorial'), 'tutorial')}</div><p class="setup-helper">${copy('controlsHint')}</p>${capacityNotice()}</div></div>`;
     if(page==='home')cleanups.push(bindHomeGallery(content.querySelector<HTMLElement>('[data-home-gallery]')!,t,number,{initial:homeGalleryIndex,rtl:locale==='ar'||locale==='ur',onChange:index=>{homeGalleryIndex=index;}}));
     if (page === 'class') {
       const c = data.classes.find((c) => c.id === previewClass)!;
@@ -171,7 +174,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
     if (page === 'difficulty')
       content.innerHTML = `<div class="setup-heading"><h1>${e(t(labels[page]))}</h1><p>${copy('difficultyIntro')}</p></div><div class="difficulty-cards" role="group" aria-label="${e(t(labels[page]))}">${data.difficulties.map((d) => `<button data-difficulty="${d.id}" class="difficulty-pick ${d.id === selected.difficulty ? 'selected' : ''}" ${!difficultyAvailable(d.id) ? 'disabled' : ''} aria-pressed="${d.id === selected.difficulty}"><span class="difficulty-emblem" aria-hidden="true">${icon('difficulty-' + d.id)}</span><span class="difficulty-name">${e(t('difficulty.' + d.id))}</span>${d.id === 'baby' ? `<span class="difficulty-recommendation">${copy('recommended')}</span>` : ''}<span class="difficulty-description">${difficultyCaption(d.id)}</span>${!difficultyAvailable(d.id) ? `<small>${icon('lock')}${e(t('ui.hardUnlock'))}</small>` : ''}</button>`).join('')}</div><section class="difficulty-summary" aria-live="polite" aria-atomic="true"><div><h2>${e(t('difficulty.' + selected.difficulty))}</h2><p>${e(t('ui.reviveRulesHelp'))}</p>${difficultyRulesMarkup(selected.difficulty)}</div><dl class="difficulty-stats">${(() => {const d = data.difficulties.find(d => d.id === selected.difficulty)!; return [['stat.health', d.health], ['stat.damage', d.damage], ['stat.bossSpeed', d.speed]].map(([key, value]) => `<div><dt>${e(t(String(key)))}</dt><dd>×${number(Number(value), 2)}</dd></div>`).join('');})()}</dl></section>${navigation(false)}`;
     if (page === 'review')
-      content.innerHTML = `<div class="setup-heading"><h1>${e(t(labels[page]))}</h1></div><div class="review-composition"><div class="review-portrait">${portrait(selected.classId)}</div><section><h2>${e(t('class.' + selected.classId + '.name'))} · ${e(t('mode.' + selected.mode + '.name'))}</h2><p>${e(mapChoiceName(arenaId))} · ${e(t('difficulty.' + selected.difficulty))}</p>${difficultyRulesMarkup(selected.difficulty)}${selected.serverEndpoint ? `<p class="prototype-note">${e(desktopText('target'))}: <bdi>${e(selected.serverEndpoint)}</bdi></p>` : ''}${TESTING_BUILD ? `<label class="name-label">${e(t('ui.boss'))}<select id="opening-boss">${implementedBossIds.map((id) => `<option value="${id}" ${id === selected.openingBossId ? 'selected' : ''}>${e(t('boss.' + id + '.name'))} · ${e(bossClassification(id, visibility === 'offline' ? selected.practiceVariant : 'normal'))}</option>`).join('')}</select></label>${visibility === 'offline' ? practiceVariantMarkup(locale, encounterVariant(selected.difficulty,selected.practiceVariant), t('ui.variantNormal'), t('ui.variantBrutal'),['insane','hellish'].includes(selected.difficulty),t('ui.variantCrazed'),t('ui.forcedFormHelp')) : ''}` : ''}<label class="name-label">${e(t('ui.displayName'))}<input id="name" value="${e(selected.name)}" maxlength="24" autocomplete="nickname"></label><div class="connection-choices" role="group" aria-label="${e(t('ui.roomSettings'))}">${[
+      content.innerHTML = `<div class="setup-heading"><h1>${e(t(labels[page]))}</h1></div><div class="review-composition"><div class="review-portrait">${portrait(selected.classId)}</div><section><h2>${e(t('class.' + selected.classId + '.name'))} · ${e(t('mode.' + selected.mode + '.name'))}</h2><p>${e(mapChoiceName(arenaId))} · ${e(t('difficulty.' + selected.difficulty))}</p>${journalSuggested?`<p class="journal-plan-notice">${e(journalText(locale,journalSuggested))}</p>`:''}${difficultyRulesMarkup(selected.difficulty)}${selected.serverEndpoint ? `<p class="prototype-note">${e(desktopText('target'))}: <bdi>${e(selected.serverEndpoint)}</bdi></p>` : ''}${TESTING_BUILD ? `<label class="name-label">${e(t('ui.boss'))}<select id="opening-boss">${implementedBossIds.map((id) => `<option value="${id}" ${id === selected.openingBossId ? 'selected' : ''}>${e(t('boss.' + id + '.name'))} · ${e(bossClassification(id, visibility === 'offline' ? selected.practiceVariant : 'normal'))}</option>`).join('')}</select></label>${visibility === 'offline' ? practiceVariantMarkup(locale, encounterVariant(selected.difficulty,selected.practiceVariant), t('ui.variantNormal'), t('ui.variantBrutal'),['insane','hellish'].includes(selected.difficulty),t('ui.variantCrazed'),t('ui.forcedFormHelp')) : ''}` : ''}<label class="name-label">${e(t('ui.displayName'))}<input id="name" value="${e(selected.name)}" maxlength="24" autocomplete="nickname"></label><div class="connection-choices" role="group" aria-label="${e(t('ui.roomSettings'))}">${[
         ['offline', 'ui.solo', 'soldier'],
         ['public', 'ui.publicRooms', 'group'],
         ['private', 'ui.privateRoom', 'lock'],
@@ -190,6 +193,12 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
       content.querySelector('.home-buttons')?.append(unlock);
       unlock.onclick=()=>{unlockTestingDifficulties();unlock.textContent=t('ui.testingUnlocked');};
     }
+    if(page==='journal')cleanups.push(mountFieldJournal(content,()=>go('home'),plan=>{
+      beginName();
+      selected={...selected,classId:plan.classId,mode:plan.mode,difficulty:plan.difficulty,practiceVariant:'normal',openingBossId:plan.mode==='raid'?'chain-colossus':'constable',openingArenaId:'gatehouse',arenaSelection:'randomEncounter',serverEndpoint:undefined};
+      previewClass=selected.classId;previewMode=selected.mode;arenaId=previewMap='randomEncounter';visibility=plan.team?'private':'offline';
+      journalSuggested=plan.team?'preparedTeam':'prepared';go('review');
+    }));
     if(page==='leaderboards')cleanups.push(mountLeaderboards(content,()=>go('home'),initialRecords?.endpoint ?? selected.serverEndpoint,initialRecords));
     if (page === 'profile')
       cleanups.push(mountProfile(
@@ -265,6 +274,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
     byId('settings', () => go('settings'));
     byId('changelog', () => go('changelog'));
     byId('profile', () => go('profile'));
+    byId('field-journal', () => go('journal'));
     byId('leaderboards',()=>go('leaderboards'));
     byId('back-home', () => go('home'));
     for (const id of ['guide', 'tutorial']) byId(id, () => { pageCleanup(); tutorial(host, () => render('#' + id)); });
@@ -483,7 +493,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
   }
   function go(next: string) {
     page = next;
-    if(next==='home')hostPassword='';
+    if(next==='home'){hostPassword='';journalSuggested=undefined;}
     render();
     window.scrollTo({ top: 0, behavior: 'auto' });
     const heading = host.querySelector<HTMLElement>('#setup-content h1');

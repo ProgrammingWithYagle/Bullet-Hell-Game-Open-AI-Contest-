@@ -1,6 +1,16 @@
 # Changelog
 
-Development build **2026.10.31-stitchwork**, protocol 44. The current contest Site uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.10.31-field-journal**, protocol 44. The current contest Site uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-10-31 — A Field Journal for the next expedition
+
+### Find another reason to return
+
+- The new Field Journal offers 19 personal goals with three stamps each: class practice, complete routes, recovered boss collections, longer Endless vigils, rescues and campaigns with all seven classes.
+- Five completed encounters with a class recover its survivor letter. Seven new original letters show the city rebuilding between expeditions.
+- Prepare expedition suggests an unfinished goal and opens setup confirmation with a suitable class and route. Rescue goals prepare a private team room; starting remains your choice.
+- Progress comes from personal profile receipts. Repeated views, reconnects and older checkpoint views do not grant duplicate progress. Legacy campaign claims do not earn stamps.
+- The journal and stamps add no combat power or verified rank. Labels and goal help cover all fifteen languages; the original letters are explicitly English editorial text.
 
 ## 2026-10-31 — The Stitchwright opens the sewing room
 

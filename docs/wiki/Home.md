@@ -91,3 +91,7 @@ A fresh New run, Start gently or Join room setup gives an automatic display name
 ## Equipment and resource pictures
 
 The equipment tab shows a field case when no item is selected; the skills tab shows an open manual. The tabs, coins and skill points use matching painted artwork. Text labels stay beside the pictures, including in the player status panel. Public and testing builds use the same presentation. Human testing5258 found the preceding tab flow fine and requested this image distinction; the new pictures await comparison.
+
+## Development replay expansion
+
+The current development branch adds the Stitchwright sewing-room quality pass and a Field Journal with19personal goals,57cosmetic stamps and seven survivor letters. **Prepare expedition** opens setup confirmation and does not start or host a run. Goals follow existing personal profile receipts, award no combat power and stay separate from verified ranks. See the [Field Journal design](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/FIELD_JOURNAL.md). The published Site remains version4/protocol43; the new local runtime is protocol44 and needs its matching backend.

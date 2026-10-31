@@ -1,6 +1,6 @@
 # Grave Accord
 
-Current development continuation: **2026.10.31-stitchwork / protocol44** adds [the Stitchwright sewing room](docs/STITCHWORK.md). The same66-boss roster now has13 implemented original-boss quality passes, with47remaining. Public Site version4 and its protocol43 backend remain separate, unchanged releases. Current expansion review manifests live in `reviews/stitchwork-2026-10-31/`; read [the current handoff](handoff/NEXT_CHAT.md) for launch and verification identities. The earlier contest details below describe their checkpoint.
+Current development continuation: **2026.10.31-field-journal / protocol44** adds [the Stitchwright sewing room](docs/STITCHWORK.md). The same66-boss roster now has13 implemented original-boss quality passes, with47remaining. Public Site version4 and its protocol43 backend remain separate, unchanged releases. Current expansion review manifests live in `reviews/field-journal-2026-10-31/`; read [the current handoff](handoff/NEXT_CHAT.md) for launch and verification identities. The new [Field Journal](docs/FIELD_JOURNAL.md) adds19replay goals,57cosmetic stamps,seven survivor letters and goal-based setup suggestions. The earlier contest details below describe their checkpoint.
 
 
 ![Grave Accord cover](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/cover.jpg)

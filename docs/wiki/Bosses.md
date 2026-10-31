@@ -346,3 +346,7 @@ Boss defeated keeps the existing fall or final pose visible for five seconds and
 ## First Watch visual polish (protocol 38)
 
 In `2026.10.28-first-watch`, a violet catalytic reaction has an angular warning center, followed by a local shock ring and starburst inside its existing damage radius. Reduced motion retains a static burst and boundary. Pale mixed coolant keeps its separate water mark and purpose. This changes presentation only: reaction damage, warning/lifetime, chemical authority and all phase ownership remain. The prior software balance samples retain their own source identities; human combat readability and final balance review remain open.
+
+## Stitchwright sewing room — development branch
+
+The thirteenth implemented original-boss quality pass adds shootable needle seams, newly warned backstitches, contracting three-sided hems with a clear opening, and purposeful short approaches. Brutal starts with returning stitches; Crazed adds independently warned crossings after hem escapes. The existing rescue tether, artwork and score remain. Recovered lore follows Elian Vey and the button jar. [Implementation and review scope](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/STITCHWORK.md). These changes require protocol44; the published version4 remains separate.

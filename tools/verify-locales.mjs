@@ -1,3 +1,4 @@
+import {fieldJournalMessages} from '../locales/source/field-journal.mjs';
 import {stitchworkMessages} from '../locales/source/stitchwork.mjs';
 import {bellReturnChainMessages as bellMessages} from '../locales/source/bell-return-chain.mjs';
 import {moldStillMessages as moldMessages} from '../locales/source/mold-still.mjs';
@@ -45,9 +46,9 @@ const commonEnglishKeys = new Set(['ui.brand','template.effect','template.effect
 // Explicit cognates and loanwords. An unlisted verbatim English message is an error.
 const cognates = {
   es:['ui.variantBrutal','branch.control','difficulty.normal','threat.1','ui.audio','ui.no'],
-  fr:['attack.charge.name','branch.bastion','branch.endurance','branch.protection','branch.suppression','branch.triage','class.assassin.name','class.mage.name','class.tank.name','difficulty.normal','stat.grade','supply.antidote.name','threat.1','threat.2','threat.4','threat.8','ui.audio','ui.boss','ui.leaderboardScore','ui.pause','ui.phase','ui.version'],
+  fr:["journal.classes",'attack.charge.name','branch.bastion','branch.endurance','branch.protection','branch.suppression','branch.triage','class.assassin.name','class.mage.name','class.tank.name','difficulty.normal','stat.grade','supply.antidote.name','threat.1','threat.2','threat.4','threat.8','ui.audio','ui.boss','ui.leaderboardScore','ui.pause','ui.phase','ui.version'],
   de:['branch.triage','difficulty.baby','difficulty.normal','stat.radius','threat.1','ui.audio','ui.boss','ui.pause','ui.phase','ui.region','ui.version','ui.vibration'],
-  'pt-BR':['difficulty.normal','threat.1'],
+  'pt-BR':["journal.classes",'difficulty.normal','threat.1'],
   id:['attack.spiral.name','difficulty.normal','stat.radius','threat.1','ui.abstain','ui.audio']
 };
 
@@ -119,6 +120,7 @@ export function validateOne(document, canonical, content, locale) {
       ...Object.keys(runtimeExtraMessages('en')),
       ...Object.keys(bossGuideMessages('en')),
       ...Object.keys(stitchworkMessages('en')),
+      ...Object.keys(fieldJournalMessages('en')),
       ...Object.keys(classTalentMessages('en',content)),
       ...Object.keys(wardenMessages('en')),
       ...Object.keys(skillMapMessages('en')),
@@ -147,7 +149,7 @@ export function validateOne(document, canonical, content, locale) {
     if (!Object.hasOwn(messages,key)) fail(`missing feature coverage: ${key}`);
   }
   const expectedCategories = new Intl.PluralRules(locale).resolvedOptions().pluralCategories.slice().sort();
-  const expandedSource = {...smallWakesMessages(locale),...expansionMessages(locale), ...earlyWatchMessages(locale),...skillMapMessages(locale),...difficultyRuleMessages(locale),...classTalentMessages(locale,content),...wardenMessages(locale),...crazedHorizonMessages(locale),...courierRouteMessages(locale),...ratcatcherMusterMessages(locale),...clerkAppealMessages(locale),...tollkeeperReturnMessages(locale),...marshalMessages(locale),...widowMessages(locale),...ambulanceMessages(locale),...matronMessages(locale),...moldMessages(locale),...bellMessages(locale),...runtimeExtraMessages(locale),...bossGuideMessages(locale),...stitchworkMessages(locale)};
+  const expandedSource = {...smallWakesMessages(locale),...expansionMessages(locale), ...earlyWatchMessages(locale),...skillMapMessages(locale),...difficultyRuleMessages(locale),...classTalentMessages(locale,content),...wardenMessages(locale),...crazedHorizonMessages(locale),...courierRouteMessages(locale),...ratcatcherMusterMessages(locale),...clerkAppealMessages(locale),...tollkeeperReturnMessages(locale),...marshalMessages(locale),...widowMessages(locale),...ambulanceMessages(locale),...matronMessages(locale),...moldMessages(locale),...bellMessages(locale),...runtimeExtraMessages(locale),...bossGuideMessages(locale),...stitchworkMessages(locale),...fieldJournalMessages(locale)};
   for (const [key,text] of Object.entries(recoveryMessages(locale))) {
     if (messages[key] !== text) fail(`recovery UI source mismatch at ${key}`);
   }
