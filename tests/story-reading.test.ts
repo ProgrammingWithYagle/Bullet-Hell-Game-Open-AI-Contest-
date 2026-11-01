@@ -122,6 +122,7 @@ test("Actual reader navigation resumes after module reload across UI contexts wh
     "private-room-one",
   );
   const dispose = reader.bindStoryReaders(env.host);
+  env.host.querySelector("[data-vn-open]")!.click();
   env.host.querySelector('[data-vn-step="1"]')!.click();
   env.host.querySelector('[data-vn-step="1"]')!.click();
   const text = env.host.querySelector("[data-vn-line]")!.textContent;

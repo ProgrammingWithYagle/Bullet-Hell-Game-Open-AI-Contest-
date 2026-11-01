@@ -11,7 +11,7 @@ export function storyHubMarkup() {
     clears = storyProgress(loadProfile(localStorage)).clears;
   } catch {}
   const book = storyBook(locale);
-  return `<section class="story-hub"><div class="section-heading"><div><p class="eyebrow">${e(t("ui.storyArcs"))} · I</p><h1 lang="${e(book.language)}" dir="${storyDirection(book.language)}">${e(book.title)}</h1></div><button data-story-home>${e(t("ui.back"))}</button></div><p>${e(t("mode.story.description"))}</p><div class="actions"><button data-story-begin class="primary">${e(t("ui.beginCampaign"))}</button><button data-story-prologue>${e(t("ui.readPrologue"))}</button></div><div class="story-chapters">${storyStructure.chapters.map((chapter, i) => `<article><span>${e(t("ui.storyChapter", { number: number(i + 1) }))}</span><h2 lang="${e(book.language)}" dir="${storyDirection(book.language)}">${e(book.acts[i].title)}</h2><p>${number(chapter.from + 1)}–${number(chapter.to)} · ${e(t("ui.storyScene", { number: number(5) }))}</p><button data-story-chapter="${i}" ${clears < chapter.from ? "disabled" : ""}>${e(t(clears < chapter.from ? "ui.laterChapter" : "ui.readChapter"))}</button><details><summary>${e(t("ui.chapterArchive"))}</summary>${chapter.scenes.map((n) => `<button data-story-scene="${n}" ${clears <= n ? "disabled" : ""}>${e(t("ui.storyScene", { number: number(n - chapter.from + 1) }))}</button>`).join("")}</details></article>`).join("")}</div><div data-story-hub-reader>${storyReaderMarkup({ kind: "prologue", index: 0 }, locale, "hub")}</div></section>`;
+  return `<section class="story-hub"><div class="section-heading"><div><p class="eyebrow">${e(t("ui.storyArcs"))} · I</p><h1 lang="${e(book.language)}" dir="${storyDirection(book.language)}">${e(book.title)}</h1></div><button data-story-home>${e(t("ui.back"))}</button></div><p>${e(t("mode.story.description"))}</p><div class="actions"><button data-story-begin class="primary">${e(t("ui.beginCampaign"))}</button><button data-story-prologue>${e(t("ui.readPrologue"))}</button></div><div class="story-chapters">${storyStructure.chapters.map((chapter, i) => `<article><span>${e(t("ui.storyChapter", { number: number(i + 1) }))}</span><h2 lang="${e(book.language)}" dir="${storyDirection(book.language)}">${e(book.acts[i].title)}</h2><p>${number(chapter.from + 1)}–${number(chapter.to)} · ${e(t("ui.storyScene", { number: number(5) }))}</p><button data-story-chapter="${i}" ${clears < chapter.from ? "disabled" : ""}>${e(t(clears < chapter.from ? "ui.laterChapter" : "ui.readChapter"))}</button><details><summary>${e(t("ui.chapterArchive"))}</summary>${chapter.scenes.map((n) => `<button data-story-scene="${n}" ${clears <= n ? "disabled" : ""}>${e(t("ui.storyScene", { number: number(n - chapter.from + 1) }))}</button>`).join("")}</details></article>`).join("")}</div><div data-story-hub-reader></div></section>`;
 }
 export function bindStoryHub(
   host: HTMLElement,
@@ -33,6 +33,11 @@ export function bindStoryHub(
     host.querySelector<HTMLElement>("[data-story-hub-reader]")!.innerHTML =
       storyReaderMarkup(spec, locale, "hub");
     reader = bindStoryReaders(host);
+    host
+      .querySelector<HTMLButtonElement>(
+        "[data-story-hub-reader] [data-vn-open]",
+      )
+      ?.click();
   };
   host.querySelector<HTMLButtonElement>("[data-story-prologue]")!.onclick =
     () => show({ kind: "prologue", index: 0 });
@@ -40,11 +45,16 @@ export function bindStoryHub(
     (button) =>
       (button.onclick = () => {
         const n = Number(button.dataset.storyChapter);
+        let clears = 0;
+        try {
+          clears = storyProgress(loadProfile(localStorage)).clears;
+        } catch {}
         if (
           !button.disabled &&
           Number.isInteger(n) &&
           n >= 0 &&
-          n < storyStructure.chapters.length
+          n < storyStructure.chapters.length &&
+          clears >= storyStructure.chapters[n].from
         )
           show({ kind: "chapter", index: n });
       }),

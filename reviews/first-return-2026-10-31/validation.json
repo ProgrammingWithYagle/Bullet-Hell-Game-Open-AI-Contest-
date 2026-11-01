@@ -1,0 +1,107 @@
+{
+  "createdAt": "2026-11-01T02:42:04.215Z",
+  "passed": true,
+  "buildId": "2026.10.31-first-return",
+  "protocol": 47,
+  "contentRevision": "1707fd9bd432dfb24107300944b99e70bcbe8a5e05077ddebaf0c2907013a1b1",
+  "runtimeSourceSha256": "fd6c199c1c48abb794e7c6a54c14941e2ab817c33f01eba7f42ac9207772a80a",
+  "sourceSnapshotSha256": "d6ffc88e7971f47aba7f3e2520db6960d7b54c7ed3194007426489b8345dd315",
+  "fullGate": {
+    "tests": 1096,
+    "passed": 1096,
+    "failed": 0,
+    "checks": [
+      {
+        "name": "Stage 1 authored content",
+        "passed": true,
+        "elapsedMs": 3635
+      },
+      {
+        "name": "Playable main-story word count",
+        "passed": true,
+        "elapsedMs": 378
+      },
+      {
+        "name": "TypeScript",
+        "passed": true,
+        "elapsedMs": 2301
+      },
+      {
+        "name": "Headless rules and real-network integration",
+        "passed": true,
+        "elapsedMs": 73749
+      },
+      {
+        "name": "Production client build",
+        "passed": true,
+        "elapsedMs": 9294
+      },
+      {
+        "name": "Emitted encounter atlas contracts",
+        "passed": true,
+        "elapsedMs": 5096
+      }
+    ],
+    "selectedAtlasContracts": 71
+  },
+  "story": {
+    "newMainStoryScenes": 2,
+    "sceneIds": [
+      "gate-cart",
+      "first-return"
+    ],
+    "editions": [
+      "en",
+      "es",
+      "ar"
+    ],
+    "openingEnglishWords": 3027,
+    "authoredPlayableEnglishMainStoryWords": 5007,
+    "wordCountSource": "reviews/story-word-count.json",
+    "singlePlaythroughCount": false,
+    "mainEnglishTarget": 5000000,
+    "completedPersonalArcs": 0,
+    "completedNewLongFormVolumes": 0,
+    "sideIntroductions": [
+      "Senn Arlow",
+      "Renn Tallow",
+      "Evi Pell",
+      "Jorren Saye"
+    ],
+    "mechanicalBinding": {
+      "bossId": "constable",
+      "arenaId": "gatehouse",
+      "allSevenClassesStoryAndFreePlay": true
+    },
+    "referenceUsesSharedFixedThreatAndEquippedGrade": true,
+    "referenceOnlyAfterKnownClear": true,
+    "readyAndRewardsSeparate": true,
+    "mutationsRemoved": true,
+    "freePlayMutationsRetained": true,
+    "readyLeadsDirectlyToConcealedRoutes": true,
+    "knownIssuedE80LocalMutationBoundaryConversion": true,
+    "profileEndingsAndPracticeRecordsPreserved": true,
+    "onlineAuthorityExact": true,
+    "fullViewportNativeNovel": true,
+    "modalControllerCases": 5,
+    "readerFocusedCases": 25,
+    "realTwoPeerStoryAndCategoryChecks": true,
+    "masteryReplacingSPImplemented": false,
+    "ordinaryEnemyCampaignGraphImplemented": false,
+    "voiceAndExpressionProductionComplete": false
+  },
+  "invariants": {
+    "sharedCatalogGameplayUnchanged": true,
+    "fixedBossClassificationsUnchanged": true,
+    "sharedBuildRatingAndFreePlaySettingsUnchanged": true,
+    "storyFlowIntentionallyChanged": true
+  },
+  "limits": [
+    "No browser automation or rendered/human/device/native-language/literary/pacing acceptance is claimed.",
+    "Authored word count includes unique base route and ending alternatives and does not establish single-playthrough duration.",
+    "Story still uses the prototype SP/economy and fifteen-boss route; the accepted mastery, scarcity and ordinary-enemy redesign is unfinished.",
+    "Full multi-volume structure, lazy volume delivery, character episodes, wider antagonist arcs, voiced pilot and emotion/action art remain unfinished.",
+    "No production deployment, main merge, paid capacity increase or Windows replacement occurred.",
+    "The full user game-development goal stays active and incomplete."
+  ]
+}

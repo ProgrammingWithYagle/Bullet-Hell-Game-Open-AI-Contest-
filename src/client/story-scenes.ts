@@ -1,3 +1,4 @@
+import { openingNarrative } from "./story-opening.ts";
 import dialogue from "./story/dialogue.json";
 import { storyBook } from "./story-book.ts";
 import { storyCampaign } from "../shared/story-campaign.ts";
@@ -6,6 +7,7 @@ import type { ClassId } from "../shared/protocol.ts";
 export type StoryLine = { speaker: string; classId?: ClassId; text: string };
 export type StoryScene = {
   id: string;
+  narrativeId?: string;
   language: string;
   title: string;
   chapter: number;
@@ -32,6 +34,8 @@ export const storyStructure = {
 export function storyScene(spec: SceneSpec, language: string): StoryScene {
   const book = storyBook(language),
     extra = dialogue[book.language as keyof typeof dialogue] ?? dialogue.en;
+  const opening = openingNarrative(spec, book.language);
+  if (opening) return opening;
   const line = (text: string, speaker = ""): StoryLine => ({
     text,
     speaker,

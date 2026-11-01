@@ -1,4 +1,4 @@
-import {bindStoryReaders} from './ui/story-reader.ts';
+import {bindStoryReaders,storyReaderOpen} from './ui/story-reader.ts';
 import {storyReportMarkup} from './ui/story.ts';
 import {glassPhaseName,glassPhaseHint} from './glass-text.ts';
 import {TESTING_BUILD} from './build-audience.ts';
@@ -907,7 +907,7 @@ function renderOverlay(view: View, p: PlayerView) {
     const scroller = overlay.querySelector('.skill-scroll');
     if (scroller) {scroller.scrollTop = scroll;scroller.scrollLeft=scrollLeft;}
   }
-  if (!view.matchPaused && !(bossGuide.blocksInput(paused)||roomChatUI?.blocksInput===true||roomInviteUI?.open===true)) {
+  if (!view.matchPaused && !storyReaderOpen() && !(bossGuide.blocksInput(paused)||roomChatUI?.blocksInput===true||roomInviteUI?.open===true)) {
     const target = focusedId
       ? overlay.querySelector<HTMLElement>('#' + CSS.escape(focusedId))
       : focusedItem
@@ -925,6 +925,7 @@ function shop(p: PlayerView) {
   return '<div class="loadout-editor">' + shopMarkup(p, supplyBindings(), settings.branchingTree,session?.view?.run.difficulty??'normal') + '</div>';
 }
 async function leave(showTeamRecord = false) {
+  storyReaderBinding?.();storyReaderBinding=undefined;
   const active = session;
   const serial = ++launchSerial;
   const record = session?.teamRecord?.status === 'saved' ? session.teamRecord.record : null;

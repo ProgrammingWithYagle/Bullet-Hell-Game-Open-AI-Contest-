@@ -58,18 +58,14 @@ export function validStoryBoundary(
     encounter > storyLength
   )
     return false;
+  if (phase === "mutationVote") return false;
   if (!validStoryChoices(choices)) return false;
   const maximum = Math.min(encounter, storyLength - 1),
     minimum = Math.max(0, Math.min(encounter - 1, storyLength - 1));
   if (choices.length < minimum || choices.length > maximum) return false;
   if (phase === "lobby") return encounter === 0 && choices.length === 0;
-  if (
-    encounter === 0 &&
-    phase !== "combat" &&
-    phase !== "defeat"
-  )
-    return false;
-  if (phase === "storyScene" || phase === "mutationVote" || phase === "contractVote")
+  if (encounter === 0 && phase !== "combat" && phase !== "defeat") return false;
+  if (phase === "storyScene" || phase === "contractVote")
     return choices.length === minimum;
   if (phase === "shop" || phase === "loading")
     return choices.length === maximum;

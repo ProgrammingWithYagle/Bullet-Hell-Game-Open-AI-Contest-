@@ -1,5 +1,7 @@
 # The Cart at the Gate
 
+Current status: the prose below is now integrated in the three-language playable opening. The original draft notes below preserve its earlier authoring context; literary and human acceptance remain open. See ../FIRST_RETURN.md.
+
 Original working scene for Grave Accord's opening volume. This is an authoring draft, not a playable replacement or a completed chapter. Senn Arlow and Renn Tallow are proposed recurring side characters from the cast plan. The confrontation precedes the Hollow Constable fight; the larger bell mystery remains unresolved.
 
 The cart stopped with its front wheel in the gate's drainage groove.

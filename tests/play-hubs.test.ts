@@ -112,8 +112,8 @@ test("Story has an untimed personal-reader boundary with saved party readiness a
   assert.equal(restored.votes.get("a"), 1);
   assert(g.vote("b", 1));
   g.step();
-  assert.equal(g.phase, "mutationVote");
-  assert.equal(g.phaseEnds - g.tick, 450);
+  assert.equal(g.phase, "contractVote");
+  assert.equal(g.phaseEnds - g.tick, 45 * 30);
   assert.equal(g.storyChoices.length, 0);
   const solo = new Game({ mode: "story", maxPlayers: 1 });
   solo.addPlayer("solo", "Reader", "medic");
@@ -127,7 +127,7 @@ test("Story has an untimed personal-reader boundary with saved party readiness a
   assert.equal(copy.phase, "storyScene");
   copy.vote("solo", 1);
   copy.step();
-  assert.equal(copy.phase, "mutationVote");
+  assert.equal(copy.phase, "contractVote");
 });
 test("Home Story and Free Play paths stay separate, custom fields require confirmation and Story cannot inherit them", async (context) => {
   const env = menuEnvironment(context),
@@ -188,9 +188,8 @@ test("Novel chapters contain longer scenes in three languages, and reader naviga
     assert(d.beats.every((lines) => lines.length === 2));
     assert.equal(d.chapters.length, 3);
     assert.equal(d.endings.length, 3);
-    assert.equal(
-      storyScene({ kind: "prologue", index: 0 }, language).lines.length,
-      9,
+    assert(
+      storyScene({ kind: "prologue", index: 0 }, language).lines.length > 9,
     );
     assert.equal(
       storyScene({ kind: "report", index: 14, ending: 0 }, language).lines
@@ -207,14 +206,19 @@ test("Novel chapters contain longer scenes in three languages, and reader naviga
   );
   const before = JSON.stringify([...env.saved]);
   const dispose = ui.bindStoryReaders(env.host);
+  env.host.querySelector("[data-vn-open]")!.click();
+  assert(env.host.querySelector("dialog")!.open);
   context.after(dispose);
   assert(env.host.innerHTML.includes('dir="rtl"'));
   assert(env.host.querySelector('[data-vn-step="-1"]')!.disabled);
   env.host.querySelector('[data-vn-step="1"]')!.click();
   assert(env.host.querySelector(".vn-portrait"));
-  assert(env.host.textContent.includes("Mara Rook"));
-  assert.deepEqual([...env.saved.keys()],['ga-story-reading-v1']);
-  const afterReading=JSON.stringify([...env.saved]);
+  assert.equal(
+    env.host.querySelector("[data-vn-line]")!.textContent,
+    storyScene({ kind: "prologue", index: 0 }, "ar").lines[1].text,
+  );
+  assert.deepEqual([...env.saved.keys()], ["ga-story-reading-v1"]);
+  const afterReading = JSON.stringify([...env.saved]);
   const detached = env.host.querySelector('[data-vn-step="1"]')!;
   dispose();
   detached.click();

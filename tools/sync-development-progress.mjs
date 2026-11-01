@@ -12,6 +12,7 @@ export function developmentProgress() {
   coverage.push({level,subtier,implemented:members.length,remaining:Math.max(0,3-members.length)});
  }
  const work=read('docs/development-work-ledger.json');
+ assert(Array.isArray(work.latestHumanFeedback)&&work.latestHumanFeedback.every(item=>typeof item==='string'&&item.trim().length>0),'Human feedback must contain nonempty records');
  const remaining=coverage.reduce((n,c)=>n+c.remaining,0);
  const result={updated:work.updated,buildId:read('src/shared/update-history.json').buildId,
   playableBosses:catalog.bosses.length,ordinaryBosses:ordinary,secretBosses:profiles.entries.length-ordinary,

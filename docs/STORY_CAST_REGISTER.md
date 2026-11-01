@@ -1,6 +1,6 @@
 # Ensemble cast register
 
-This authoring register covers the seven existing survivors, all 66 current bosses and five proposed recurring side characters. It links the current mechanics and seeds a distinct dramatic question for every boss. It does not claim 66 finished antagonist arcs or playable new character chapters. Full profiles, scenes, consequences and editorial review remain open.
+This authoring register covers the seven existing survivors, all 66 current bosses and seven side-character records. Senn and Renn now appear in the playable opening alongside Evi and Jorren; Miri, Olan and Dena remain proposals. It links the current mechanics and seeds a distinct dramatic question for every boss. It does not claim 66 finished antagonist arcs or playable new character chapters. Full profiles, scenes, consequences and editorial review remain open.
 
 | Boss | Fixed threat | Kind | Working dramatic question |
 | --- | --- | --- | --- |

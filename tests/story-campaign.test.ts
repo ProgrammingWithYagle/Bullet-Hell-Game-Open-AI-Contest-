@@ -42,7 +42,12 @@ function game(seed = 23, difficulty = "easy", runId = "story-fixture") {
   return g;
 }
 function advance(g: Game) {
- if(g.phase==='storyScene'){for(const p of g.players.values())if(p.connected&&p.eligible)g.vote(p.id,1);for(let n=0;g.phase==='storyScene'&&n<200;n++)g.step();}
+  if (g.phase === "storyScene") {
+    for (const p of g.players.values())
+      if (p.connected && p.eligible) g.vote(p.id, 1);
+    for (let n = 0; g.phase === "storyScene" && n < 200; n++) g.step();
+    return;
+  }
 
   let guard = 0;
   const phase = g.phase;
@@ -53,9 +58,11 @@ function advance(g: Game) {
   }
 }
 function next(g: Game, choice: number) {
-  if(g.phase==='storyScene'){for(const p of g.players.values())if(p.connected&&p.eligible)g.vote(p.id,1);while(g.phase==='storyScene')g.step();}
-  assert.equal(g.phase, "mutationVote");
-  advance(g);
+  if (g.phase === "storyScene") {
+    for (const p of g.players.values())
+      if (p.connected && p.eligible) g.vote(p.id, 1);
+    while (g.phase === "storyScene") g.step();
+  }
   assert.equal(g.phase, "contractVote");
   assert.equal(g.phaseEnds - g.tick, storyCampaign.choiceSeconds * 30);
   g.vote("solo", choice);
@@ -116,8 +123,11 @@ test("Story save and resume keep choices, votes and arena at every deployment bo
   for (let i = 0; i < 14; i++) {
     g.boss.health = 0;
     g.step();
-    if(g.phase==='storyScene'){g.vote('solo',1);while(g.phase==='storyScene')g.step();}
-    for (const phase of ["mutationVote", "contractVote", "shop", "loading"]) {
+    if (g.phase === "storyScene") {
+      g.vote("solo", 1);
+      while (g.phase === "storyScene") g.step();
+    }
+    for (const phase of ["contractVote", "shop", "loading"]) {
       assert.equal(g.phase, phase);
       if (phase === "contractVote") g.vote("solo", i % 3);
       const raw = json(g.offlineCheckpoint());
@@ -277,10 +287,14 @@ test("Story home entry walks the real setup, locks the choice-driven map and wai
   });
   context.after(dispose);
   env.host.querySelector("#story-campaign")!.click();
-  assert(env.host.querySelector('.story-hub'));assert.equal(env.host.querySelectorAll('[data-story-chapter]').length,3);
-  env.host.querySelector('[data-story-begin]')!.click();assert.equal(ui.setupOptions().mode,'story');
-  env.host.querySelector('#setup-next')!.click();assert.equal(env.host.querySelectorAll('[data-mode]').length,0);assert.equal(env.host.querySelectorAll('[data-map]').length,0);
-  env.host.querySelector('#setup-next')!.click();
+  assert(env.host.querySelector(".story-hub"));
+  assert.equal(env.host.querySelectorAll("[data-story-chapter]").length, 3);
+  env.host.querySelector("[data-story-begin]")!.click();
+  assert.equal(ui.setupOptions().mode, "story");
+  env.host.querySelector("#setup-next")!.click();
+  assert.equal(env.host.querySelectorAll("[data-mode]").length, 0);
+  assert.equal(env.host.querySelectorAll("[data-map]").length, 0);
+  env.host.querySelector("#setup-next")!.click();
   assert(env.host.querySelector(".story-briefing"));
   assert(env.host.querySelector("#launch"));
   assert.equal(launches, 0);

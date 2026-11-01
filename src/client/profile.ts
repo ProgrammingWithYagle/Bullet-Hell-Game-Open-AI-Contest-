@@ -242,7 +242,7 @@ export function parseProfile(raw: string): ProfileV1 {
   }
   if (value && typeof value === "object" && !Array.isArray(value)) {
     const old = value as Record<string, unknown>;
-    if(old.schemaVersion===1&&old.practiceOnly===true&&old.verified===false&&(old.contentRevision==="77b0d920d24b5f96e422f6697e8346e04cc88159920954261508b30d878d0264"||old.contentRevision==="f464a132bbc18083c5780239f18f24ff447a5be87de3e64db22d6881e7793290"||old.contentRevision==="22f660b0d378316283eb081b458adcc4cd827f7465d9089ed9146ab2ac242c9c"||old.contentRevision==="31bcd58adcfd8d9d1d76fc23b484237e68c266a513f2dedb2571f8a09067e131"))old.contentRevision=CONTENT_REVISION;
+    if(old.schemaVersion===1&&old.practiceOnly===true&&old.verified===false&&(old.contentRevision==="e80e0f1d1bd444b1c5d16fae4c7aae322b31bcac70ac180b74964f6ba0326b48"||old.contentRevision==="77b0d920d24b5f96e422f6697e8346e04cc88159920954261508b30d878d0264"||old.contentRevision==="f464a132bbc18083c5780239f18f24ff447a5be87de3e64db22d6881e7793290"||old.contentRevision==="22f660b0d378316283eb081b458adcc4cd827f7465d9089ed9146ab2ac242c9c"||old.contentRevision==="31bcd58adcfd8d9d1d76fc23b484237e68c266a513f2dedb2571f8a09067e131"))old.contentRevision=CONTENT_REVISION;
     if (
       old.schemaVersion === 1 &&
       old.practiceOnly === true &&

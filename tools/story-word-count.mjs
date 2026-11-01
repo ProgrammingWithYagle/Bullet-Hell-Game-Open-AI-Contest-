@@ -1,0 +1,22 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import {fileURLToPath} from 'node:url';
+import path from 'node:path';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const read=p=>JSON.parse(fs.readFileSync(path.join(root,p),'utf8'));
+const opening=read('src/client/story/opening/en.json'),catalog=read('content/catalog.json'),dialogue=read('src/client/story/dialogue.json').en;
+const passages=new Map();
+function add(id,text){assert(!passages.has(id));assert.equal(typeof text,'string');passages.set(id,text);}
+for(const scene of opening.scenes)add('opening:'+scene.id,scene.pages.map(p=>p.text).join('\n\n'));
+const book=catalog.storyCampaign;
+book.acts.forEach((act,i)=>{add('chapter:'+i,act.text);dialogue.chapters[i].forEach((line,n)=>add('chapter:'+i+':dialogue:'+n,line[1]));});
+book.beats.forEach((beat,i)=>{if(i!==0){add('report:'+i,beat.text);dialogue.beats[i].forEach((line,n)=>add('report:'+i+':dialogue:'+n,line[1]));}beat.choices.forEach((choice,n)=>add('choice:'+i+':'+n,choice.title+'\n'+choice.text));});
+book.endings.forEach((ending,i)=>{add('ending:'+i,ending.text);dialogue.endings[i].forEach((line,n)=>add('ending:'+i+':dialogue:'+n,line[1]));});
+const segmenter=new Intl.Segmenter('en',{granularity:'word'}),count=text=>[...segmenter.segment(text)].filter(s=>s.isWordLike).length;
+const sceneWords=opening.scenes.map(scene=>({id:scene.id,words:count(passages.get('opening:'+scene.id))}));
+const result={schemaVersion:1,language:'en',method:'Intl.Segmenter English word-like segments',measure:'Authored playable main-story prose and route-choice text; all base ending alternatives; unique passages counted once',target:5000000,targetAchieved:false,openingScenes:sceneWords,openingWords:sceneWords.reduce((n,s)=>n+s.words,0),authoredPlayableMainStoryWords:[...passages.values()].reduce((n,t)=>n+count(t),0),uniquePassages:passages.size,excluded:['UI and guide copy','chapter and scene headings','translated copies','superseded short opening and first report','duplicate archive/transcript displays','optional survivor letters and future personal routes','unimplemented drafts and editorial notes'],limits:['Authored words are not words encountered in a single playthrough.','Word count does not establish literary quality, completed character arcs or a finished main story.']};
+result.targetAchieved=result.authoredPlayableMainStoryWords>=result.target;
+const target=path.join(root,'reviews/story-word-count.json');
+if(process.argv.includes('--write'))fs.writeFileSync(target,JSON.stringify(result,null,2)+'\n');
+if(process.argv.includes('--check'))assert.deepEqual(read('reviews/story-word-count.json'),result,'Story word count is stale');
+console.log(JSON.stringify(result));

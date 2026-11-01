@@ -1,6 +1,31 @@
 # Changelog
 
-Development build **2026.10.31-lamplight-reading**, protocol 47. The current contest Site uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.10.31-first-return**, protocol 47. The current contest Site uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-10-31 — A full-screen opening and a separate Story flow
+
+### A rescue with a return journey
+
+- The Story prologue and first earned aftermath now contain two original complete scenes in English, Spanish and Arabic. Existing painted locations and survivor portraits present readable narrative pages and a full transcript. The wheel, brake, six travelers, shelter capacity, consented names and promised answer carry through the encounter.
+- Senn and Renn have practical decisions of their own. Evi Pell and Jorren Saye enter the living cast. A witness distinguishes the captain’s past choices from the failed mechanism, and the first decision still leads to the established three routes. This is an opening revision, not a completed long-form volume or personal arc.
+- The two English scenes contain 3,027 words. The main-story count now records 5,007 authored playable words, counting unique base passages/route choices/ending alternatives once. UI, translations, superseded text, optional letters, duplicate transcript displays and unimplemented drafts are excluded. Authored words are not a single-playthrough length or a measure of writing quality.
+
+### The same field rules
+
+- The untimed Story aftermath can show the actual defeated boss’s fixed threat/subtier and form, plus the reader’s actual role-normalized equipped-build grade. It uses the shared classification/rating helpers and reveals no future contract identity.
+- All seven classes can use the same opening boss/location through Story and the existing Free Play rematch configuration. Story choices, Ready votes, earned budgets, practice exclusions and fixed boss ratings remain unchanged.
+- Long-scene reading positions retain language/text-revision separation. Chapter clicks recheck current earned eligibility. Three complete prose editions, full-page controller checks and shared-mode/grade checks are included; human, native-language, device and literary acceptance remain open.
+
+### Read the chapter as a novel
+
+- Chapter and earned-report selections open a native modal screen filling the game viewport. Large existing backdrops/portraits, paragraph-preserving prose, previous/next, transcript and return controls replace the inline reading window. Arrow/Page keys and Space/Enter navigation, Escape and focus return are supported.
+- Untimed Story aftermaths open their reading screen automatically. An open scene resumes across UI rebinding; an explicit close stays closed for that boundary. Reading positions remain separate from party Ready, route votes and rewards. Native controller checks cover lifecycle and controls; rendered/device/human sizing acceptance remains open.
+
+### Story does not vote on mutations
+
+- Story Ready now leads directly to concealed route contracts. Random mutation offers and bonuses remain in Free Play. Known issued local Story saves migrate; an old mutation-vote boundary returns to untimed reading without treating the old choice as Ready. Older active mutation bonuses are removed during known local conversion. Authority restoration requires the exact current version.
+- The later cart reference now describes the next cart in English, Spanish and Arabic, matching the first journey shown in the new opening.
+- The user requests Story mastery replacing SP spending, slower resources, ordinary enemies and noncombat objectives, milestone bosses, a wider living cast and human antagonists. Classes are shared disciplines and the seven leads entered them recently. Full mastery/economy/encounter redesign, character audio and expression/action sprite production remain unfinished. The current Story still uses the prototype SP/build curve; its replacement is the next development priority.
 
 ## 2026-10-31 — Lamplighter refuges and remembered reading
 

@@ -1,5 +1,7 @@
 # Grave Accord: long-form story and cast plan
 
+Latest canon: the seven leads have only recently entered their respective classes, which are shared disciplines with many other practitioners. Prior occupations and relationships remain backstory. The user wants a wider living cast, human antagonists, ordinary-enemy encounters and bosses at selected story milestones. Story progression must move beyond SP spending; money for equipment remains. See STORY_CAMPAIGN_REDESIGN.md and VISUAL_NOVEL_DIRECTION.md for the accepted constraints and unfinished implementation plan.
+
 This is an authoring plan, not a claim that these chapters are playable. The user has approved a cooperative main campaign, optional character chapters for all seven survivors, deep worldbuilding, and deliberate development of side characters and antagonists. Their latest ambition is **five million words in the base story**, excluding optional routes and character chapters. Only the user decides when the game is finished.
 
 The existing foundation is The Open Ledger: one fifteen-encounter arc, three chapters, fourteen decisions and three endings. Seven survivor letters are epilogues, not seven completed character arcs. Existing English, Spanish and Arabic prose deliveries do not constitute the long-form campaign. The running reviews and implementation ledger remain the authority for shipped behavior.
@@ -85,7 +87,7 @@ Begin with the undelivered letter and a request to find someone without exposing
 
 ## Recurring side-character working cast
 
-These five additions are proposals for forthcoming scripts, not people already present in the playable reader. They need their own continuity records before publication.
+Senn and Renn now appear in the revised playable opening; Evi Pell and Jorren Saye enter its aftermath. Their established facts are in docs/story-continuity/OPENING.md. Miri, Olan and Dena remain proposals. These are introductions, not completed side-character arcs.
 
 - **Senn Arlow, ward porter:** knows transport, supply and the ward's social arrangements. Wants care work to remain sustainable. Can disagree with Iona's rescue plan and still care deeply about the patients. Give Senn a consequential decision beyond assisting a survivor.
 - **Miri Fen, copyist:** wants testimony preserved without making vulnerable witnesses easy to locate. Has previously accepted paid alterations. Their relationship with Vale and Sable should involve both cooperation and accountability. Privacy is a material concern, not a twist used to withhold convenient exposition.
@@ -110,7 +112,7 @@ Future treatments must include motives or behavioral purpose, connections outsid
 
 ## Long-form implementation work
 
-The current reader and fifteen-fight route are not yet a multi-volume engine. Add stable volume/chapter/scene identities, lazy narrative loading, compact persistent reading cursors and resumable chapter boundaries. Keep reading position separate from earned completion and reward receipts. A long story cannot depend on an uninterrupted room connection or ephemeral hosted SQLite.
+The current reader and fifteen-fight route are not yet a multi-volume engine. Bounded persistent reading cursors are implemented, and the two opening scenes now have stable authoring bindings. Add the full volume/chapter identity system, lazy narrative loading and resumable multi-volume chapter boundaries. Keep reading position separate from earned completion and reward receipts. A long story cannot depend on an uninterrupted room connection or ephemeral hosted SQLite.
 
 Cooperative rooms will need clear chapter/version information and spoiler-aware admission alongside Story/Free Play categories. Reading remains untimed and explicitly ready-controlled. Personal menus do not pause the whole room. Preserve offline export/import, localization ownership, typed names and the separation of modified/practice runs from records.
 

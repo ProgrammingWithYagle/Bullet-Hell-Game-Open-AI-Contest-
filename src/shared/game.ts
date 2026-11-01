@@ -1008,15 +1008,81 @@ export class Game {
       this.phase = 'victory';
       return;
     }
-    const eligible = data.mutations.filter(
-      (m) => !this.mutations.some((a) => a.id === m.id || new Set<string>(m.excludes).has(a.id)),
-    );
-    this.mutationCards = this.rng.shuffle(eligible.map((m) => m.id)).slice(0, 3);
-    this.changePhase(this.settings.mode==='story'?'storyScene':'mutationVote',this.settings.mode==='story'?0:rule.mutationVoteSeconds);
+    if(this.settings.mode==='story'){this.mutationCards=[];this.changePhase('storyScene',0);}
+    else {
+      const eligible = data.mutations.filter(
+        (m) => !this.mutations.some((a) => a.id === m.id || new Set<string>(m.excludes).has(a.id)),
+      );
+      this.mutationCards = this.rng.shuffle(eligible.map((m) => m.id)).slice(0, 3);
+      this.changePhase('mutationVote',rule.mutationVoteSeconds);
+    }
+  }
+  private offerContracts() {
+    const threat =
+      this.settings.mode === 'endless'
+        ? Math.min(10, this.encounter + 1)
+        : data.modes.find((m) => m.id === this.settings.mode)!.threats[
+            Math.min(this.encounter, this.routeLength - 1)
+          ];
+    const referenceDps = data.weapons
+      .filter((w) => w.price === 0)
+      .map((w) => w.baselineSustainedDps)
+      .toSorted((a, b) => a - b)[3];
+    const routePool =
+      this.settings.mode === 'story'? ((this.encounter===this.routeLength-1?data.bossPools.story.finale:data.bossPools.story.regular) as BossId[]):
+      this.settings.mode === 'raid'
+        ? ((this.encounter === this.routeLength - 1
+            ? data.bossPools.raid.finale
+            : data.bossPools.raid.regular) as BossId[])
+        : routeBossIds.filter(
+            (id) =>
+              data.bosses.find((b) => b.id === id)!.finale ===
+              (this.encounter === this.routeLength - 1),
+          );
+    const uncleared = routePool.filter((id) => !this.completedBossIds.has(id));
+    if (uncleared.length < 3) {
+      const substitutes = routeBossIds.filter(
+        (id) =>
+          !this.completedBossIds.has(id) &&
+          !uncleared.includes(id) &&
+          data.bosses.find((b) => b.id === id)!.finale ===
+            (this.encounter === this.routeLength - 1),
+      );
+      uncleared.push(...substitutes);
+    }
+    const pool =
+      this.settings.mode === 'endless'
+        ? this.endless.offer(this.encounter, this.rng)
+        : this.settings.mode==='story'?storyBossOffers(uncleared,threat,this.rng):rankedThreatCandidates(
+            uncleared.length >= 3 ? uncleared : routePool.filter((id) => id !== this.boss.id),
+            threat,
+            this.rng,
+            this.settings.mode,
+          );
+    this.contractCards = [0, 1, 2].map((i) => {
+      const bossId = pool[i % pool.length] as BossId;
+      const variant = encounterVariant(this.settings.difficulty,
+        this.settings.mode === 'endless' ? this.nextEndlessForm(bossId) : 'normal');
+      const card = {
+        id: (this.settings.mode==='story'?'story-':'watch-') + this.encounter + '-' + i,
+        ...classifiedContract(bossId, variant),
+        recommendedRating: 0,
+        variant,
+      };
+      card.recommendedRating =
+        this.healthForRoster(this.roster().length, card) /
+        (this.bossDefinition(card).timer *
+          this.modifier('timer') *
+          variantRules(variant).deadlineMultiplier *
+          referenceDps *
+          0.65);
+      return card;
+    });
+    this.changePhase('contractVote',this.settings.mode==='story'?storyCampaign.choiceSeconds:rule.bossVoteSeconds);
   }
   private intermission() {
     if (showingBossDefeat(this.boss, this.tick)) return;
-    if(this.phase==='storyScene'){const party=this.roster().filter(p=>p.connected&&p.eligible);if(party.length&&party.every(p=>this.votes.get(p.id)===1))this.changePhase('mutationVote',rule.mutationVoteSeconds);return;}
+    if(this.phase==='storyScene'){const party=this.roster().filter(p=>p.connected&&p.eligible);if(party.length&&party.every(p=>this.votes.get(p.id)===1))this.offerContracts();return;}
     if (this.phase === 'secretOffer') {
       this.resolveSecretOffer(this.tick >= this.phaseEnds);
       return;
@@ -1033,67 +1099,7 @@ export class Game {
         player.health = Math.min(player.health, player.maxHealth);
         this.limitPersonalShield(player);
       }
-      const threat =
-        this.settings.mode === 'endless'
-          ? Math.min(10, this.encounter + 1)
-          : data.modes.find((m) => m.id === this.settings.mode)!.threats[
-              Math.min(this.encounter, this.routeLength - 1)
-            ];
-      const referenceDps = data.weapons
-        .filter((w) => w.price === 0)
-        .map((w) => w.baselineSustainedDps)
-        .toSorted((a, b) => a - b)[3];
-      const routePool =
-        this.settings.mode === 'story'? ((this.encounter===this.routeLength-1?data.bossPools.story.finale:data.bossPools.story.regular) as BossId[]):
-        this.settings.mode === 'raid'
-          ? ((this.encounter === this.routeLength - 1
-              ? data.bossPools.raid.finale
-              : data.bossPools.raid.regular) as BossId[])
-          : routeBossIds.filter(
-              (id) =>
-                data.bosses.find((b) => b.id === id)!.finale ===
-                (this.encounter === this.routeLength - 1),
-            );
-      const uncleared = routePool.filter((id) => !this.completedBossIds.has(id));
-      if (uncleared.length < 3) {
-        const substitutes = routeBossIds.filter(
-          (id) =>
-            !this.completedBossIds.has(id) &&
-            !uncleared.includes(id) &&
-            data.bosses.find((b) => b.id === id)!.finale ===
-              (this.encounter === this.routeLength - 1),
-        );
-        uncleared.push(...substitutes);
-      }
-      const pool =
-        this.settings.mode === 'endless'
-          ? this.endless.offer(this.encounter, this.rng)
-          : this.settings.mode==='story'?storyBossOffers(uncleared,threat,this.rng):rankedThreatCandidates(
-              uncleared.length >= 3 ? uncleared : routePool.filter((id) => id !== this.boss.id),
-              threat,
-              this.rng,
-              this.settings.mode,
-            );
-      this.contractCards = [0, 1, 2].map((i) => {
-        const bossId = pool[i % pool.length] as BossId;
-        const variant = encounterVariant(this.settings.difficulty,
-          this.settings.mode === 'endless' ? this.nextEndlessForm(bossId) : 'normal');
-        const card = {
-          id: (this.settings.mode==='story'?'story-':'watch-') + this.encounter + '-' + i,
-          ...classifiedContract(bossId, variant),
-          recommendedRating: 0,
-          variant,
-        };
-        card.recommendedRating =
-          this.healthForRoster(this.roster().length, card) /
-          (this.bossDefinition(card).timer *
-            this.modifier('timer') *
-            variantRules(variant).deadlineMultiplier *
-            referenceDps *
-            0.65);
-        return card;
-      });
-      this.changePhase('contractVote',this.settings.mode==='story'?storyCampaign.choiceSeconds:rule.bossVoteSeconds);
+      this.offerContracts();
     } else if (this.phase === 'contractVote') {
       const choice=this.winningVote();
       this.selectedContract = this.contractCards[choice];
@@ -2877,6 +2883,7 @@ export class Game {
       !save.mutationCards.every((id) => data.mutations.some((m) => m.id === id))
     )
       throw Error('invalidCards');
+    if(save.settings.mode==='story'&&(save.phase==='mutationVote'||save.mutations.length!==0||save.mutationCards.length!==0))throw Error('invalidStoryState');
     const validContract = (c: Contract) =>
       c &&
       typeof c.id === 'string' &&
@@ -2896,7 +2903,7 @@ export class Game {
       save.contractCards.length > 3 ||
       !save.contractCards.every(validContract) ||
       (save.phase === 'contractVote' && save.contractCards.length !== 3) ||
-      (['storyScene','mutationVote'].includes(save.phase) && save.mutationCards.length !== 3)
+      (save.phase === 'mutationVote' && save.mutationCards.length !== 3)
     )
       throw Error('invalidCards');
     if(g.settings.mode==='story'){

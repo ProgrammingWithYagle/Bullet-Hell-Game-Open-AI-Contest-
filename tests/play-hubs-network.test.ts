@@ -92,7 +92,12 @@ test(
       await wait(() => g.votes.has(a.id));
       assert.equal(g.phase, "storyScene");
       observer.vote(1);
-      await wait(() => g.phase === "mutationVote");
+      await wait(
+        () =>
+          g.phase === "contractVote" && observer.view?.phase === "contractVote",
+      );
+      assert.deepEqual(g.mutations, []);
+      assert.deepEqual(observer.view!.mutationCards, []);
       await assert.rejects(
         new Client(endpoint).create("grave", {
           name: "Invalid Story",
