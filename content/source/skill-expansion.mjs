@@ -5,6 +5,7 @@ const weapon=[.04,.05,.07,.09,.12,.18],rate=[.06,.07,.08,.1,.12,.16],crit=[.02,.
 const potency=[.04,.06,.08,.1,.14,.2],cdr=[.015,.02,.025,.035,.045,.06];
 const health=[5,6,8,10,12,18],regen=[.05,.06,.08,.1,.14,.22];
 const weaponLanes={
+  swordsman:[['stat.fireRate',merge(series('fireRate',rate),series('reloadReduction',[.02,.025,.03,.035,.04,.05])),{bladeReach:.1}],['stat.pierce',merge(series('weaponDamage',weapon),series('criticalChance',crit)),{pierce:2}]],
   bard:[['stat.pierce',merge(series('weaponDamage',weapon),series('reloadReduction',[.02,.025,.03,.035,.04,.05])),{pierce:2}],['stat.fireRate',merge(series('fireRate',rate),series('magazine',[0,1,0,1,0,2])),{extraShots:1}]],
   soldier:[['stat.fireRate',merge(series('fireRate',rate),series('reloadReduction',[.02,.025,.03,.035,.04,.05])),{magazine:4}],['stat.criticalChance',merge(series('weaponDamage',weapon),series('criticalChance',crit)),{pierce:2}]],
   heavy:[['stat.magazine',merge(series('magazine',[3,4,5,6,8,12]),series('reloadReduction',[.02,.025,.03,.035,.04,.05])),{fireRate:.2}],['stat.pierce',merge(series('weaponDamage',weapon),series('criticalChance',crit)),{pierce:3}]],
@@ -15,6 +16,7 @@ const weaponLanes={
   assassin:[['stat.criticalChance',merge(series('weaponDamage',weapon),series('criticalChance',crit)),{criticalChance:.15}],['stat.pierce',merge(series('fireRate',rate),series('reloadReduction',[.02,.025,.03,.035,.04,.05])),{pierce:3}]],
 };
 const abilitySpecial={
+  swordsman:['bladeReach',[.02,.03,.04,.05,.06,.1],{ultimateCharges:1}],
   bard:['phraseRadius',[.03,.04,.05,.07,.1,.16],{ultimatePulses:1}],
   soldier:['rallyRadius',[.03,.04,.05,.07,.1,.16],{ultimateShield:30}],
   heavy:['suppressionDuration',[.03,.04,.05,.07,.1,.16],{pierce:2}],
@@ -24,7 +26,7 @@ const abilitySpecial={
   engineer:['turretDamage',[.04,.05,.06,.08,.1,.12],{extraTurrets:1}],
   assassin:['veilDuration',[.03,.04,.05,.07,.1,.16],{ultimateCharges:1}],
 };
-const ultimateCap={bard:{ultimatePulses:1},soldier:{ultimateDuration:2},heavy:{ultimateDuration:2},tank:{ultimatePotency:.25},medic:{ultimateRadius:80},mage:{ultimatePulses:1},engineer:{ultimateDuration:6},assassin:{ultimateCharges:1}};
+const ultimateCap={swordsman:{ultimateCharges:1},bard:{ultimatePulses:1},soldier:{ultimateDuration:2},heavy:{ultimateDuration:2},tank:{ultimatePotency:.25},medic:{ultimateRadius:80},mage:{ultimatePulses:1},engineer:{ultimateDuration:6},assassin:{ultimateCharges:1}};
 const mainFocus=['stat.weaponDamage','stat.abilityPotency','stat.maxHealth'];
 function effectsDescription(effects){return Object.entries(effects).filter(([,v])=>v).map(([key,value])=>`${key}: ${value>=0?'+':''}${value}${['maxHealth','healOnHit','ultimateShield'].includes(key)?' HP':key==='regeneration'?' HP/s':key==='ultimateDuration'?' s':key==='ultimateRadius'?' world px':['pierce','magazine','extraShots','extraTurrets','ultimateCharges','ultimatePulses','selfRevives'].includes(key)?' count':' ratio'}`).join('; ')+'. Additive bonuses; shared modifier limits apply.';}
 export function expandSkills(base,classes,grades){

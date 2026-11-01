@@ -1,6 +1,6 @@
 # Grave Accord
 
-Current development build **2026.11.01-bard / protocol 47** adds the eighth playable discipline, [Bard / Iven Cair](docs/BARD.md), with cadence, performances, four concertinas, 54 nodes and three transformations. The [new Story chapter](docs/OPENING_CHAPTER.md) uses slower learning and proof; Free Play retains rapid SP progression and mutations. There are 66 executable bosses, eight classes, 432 class nodes, 32 weapons and two shared General skills. Existing-boss quality passes are 18/60; further content and polish remain open.
+Current development build **2026.11.01-swordsman / protocol 47** adds the ninth playable discipline, [Swordsman / Dara Flint](docs/SWORDSMAN.md), with physical blade sectors, a limited frontal guard and earned counter openings. [Bard / Iven Cair](docs/BARD.md) remains playable. The [new Story chapter](docs/OPENING_CHAPTER.md) uses slower learning and proof; Free Play retains rapid SP progression and mutations. There are 66 executable bosses, nine classes, 486 class nodes, 36 weapons and two shared General skills. Existing-boss quality passes are 18/60; further content and polish remain open.
 
 The current exact source, verification evidence and testing/public review addresses are recorded in [the active handoff](handoff/NEXT_CHAT.md). Old previews and issued assets remain preserved. Published Site version 4 / protocol43 is a separate older release; this development work does not deploy it. Only the user decides whole-game completion. The long story, remaining four accepted classes, optional arcs and final human/rendered/device/language/listening/balance acceptance remain unfinished.
 
@@ -52,8 +52,8 @@ Development and testing builds include rehearsal tools. Public builds omit the b
 
 | Part | Implemented content |
 | --- | --- |
-| Survivors | Eight classes, each with two abilities and an ultimate |
-| Builds | 432 class skills, 72 specialization paths, 24 ability transformations and 32 weapons |
+| Survivors | Nine classes, each with two abilities and an ultimate |
+| Builds | 486 class skills, 81 specialization paths, 27 ability transformations and 36 weapons |
 | Encounters | 66 executable identities, including nine scheduled Endless exclusives and an optional Uncounted finale; individual original themes |
 | Routes | Quarantine Run, Midnight Circuit, Black Bell Pilgrimage, Grand Raid and Endless Vigil |
 | Arenas | Six different playable layouts with difficulty-specific cover and hazards |

@@ -47,11 +47,11 @@ test(
       const s = new Session('http://127.0.0.1:' + address.port);
       peers.push(s);
       await s.connect(
-        { name: 'QA ' + classId, classId, mode: 'short', difficulty: 'normal' },
+        { name: 'QA ' + classId, classId, mode: 'raid', difficulty: 'normal' },
         peers.length === 1 ? undefined : { roomId: peers[0].room!.roomId },
       );
     }
-    await until(() => peers.every((s) => s.view?.players.length === 8));
+    await until(() => peers.every((s) => s.view?.players.length === 9));
     const host = peers[0],
       live = liveRooms.get(host.room!.roomId)!;
     host.start();

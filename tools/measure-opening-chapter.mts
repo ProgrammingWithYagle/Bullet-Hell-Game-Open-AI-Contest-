@@ -62,7 +62,8 @@ for (const difficulty of data.difficulties)
       assert(Math.abs(dps - best.dps) < 0.001);
       game.start();
       const budget = (game.boss.deadline - game.combatTick) / 30,
-        estimated = game.boss.health / (dps * 0.65);
+        attackUptime = cl.id==='swordsman'?0.4:0.65,
+        estimated = game.boss.health / (dps * attackUptime);
       rows.push({
         classId: cl.id,
         difficulty: difficulty.id,
@@ -74,6 +75,7 @@ for (const difficulty of data.difficulties)
         preparedWeaponDamageEffects: 0,
         health: game.boss.health,
         deadlineSeconds: budget,
+        attackUptime,
         estimatedSeconds: estimated,
         deadlineRatio: estimated / budget,
       });
@@ -83,7 +85,8 @@ const report = {
   contentRevision: CONTENT_REVISION,
   kind: 'Analytical early-build feasibility, not human balance',
   assumptions: {
-    attackUptime: 0.65,
+    rangedAttackUptime: 0.65,
+    swordsmanMeleeUptime: 0.4,
     shotgunPelletHits: 0.7,
     bossClockMultiplier: 2,
     criticalHitsIncluded: false,
@@ -98,7 +101,7 @@ const report = {
   limits: [
     'Does not measure movement, cover, player survival, support actions, nest-clearing time or human accuracy.',
     'Requires choosing the shown affordable offensive purchase; other preparations can differ.',
-    'Boss health, attack definitions, fixed grades and Original Campaign timers are unchanged.',
+    'Boss health, attack definitions, fixed grades and Free Play timers are unchanged.',
   ],
   passed: rows.every((r) => r.deadlineRatio <= 1),
 };

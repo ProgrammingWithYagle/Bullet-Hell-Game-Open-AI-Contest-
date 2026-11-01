@@ -2,11 +2,12 @@ import references from '../../assets/production/normalized/library.json';
 import motion from '../../assets/production/motion/survivor-library.json';
 import legacyMotion from '../../assets/production/motion/legacy-survivor-library.json';
 import bardMotion from '../../assets/production/motion/bard-library.json';
+import swordMotion from '../../assets/production/motion/swordsman-library.json';
 import { HZ } from '../shared/protocol.ts';
 import type { ClassId } from '../shared/protocol.ts';
 import { deliveredSurvivorClip } from './survivor-delivery.ts';
 import type { SurvivorFacing } from './survivor-visual-motion.ts';
-export const additionalSurvivors = ['tank', 'mage', 'engineer', 'assassin', 'bard'] as const;
+export const additionalSurvivors = ['tank', 'mage', 'engineer', 'assassin', 'bard', 'swordsman'] as const;
 export const legacySurvivors = ['soldier', 'medic'] as const;
 type RunClip = {
   frames: number;
@@ -22,6 +23,7 @@ export const survivorArt = {
     ...(motion as { entries: RunClip[] }).entries,
     ...(legacyMotion as { entries: RunClip[] }).entries,
     ...(bardMotion as { entries: RunClip[] }).entries,
+    ...(swordMotion as { entries: RunClip[] }).entries,
   ].map(deliveredSurvivorClip),
 };
 export function survivorPose(

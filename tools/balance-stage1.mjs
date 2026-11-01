@@ -17,7 +17,7 @@ function strongestWeaponModel(cl,sp,coins){
     for(const w of c.weapons.filter(x=>x.classId===cl.id))for(let damage=0;damage<=5;damage++)for(let rate=0;rate<=5;rate++){
       const spentCoins=w.price+upgradeCost('damage',damage)+upgradeCost('fire-rate',rate);if(spentCoins>coins)continue;
       const multiplier=Math.min(4,1+(effects.weaponDamage??0)+damage*0.14),fr=w.fireRate*Math.min(2.5,1+(effects.fireRate??0)+rate*0.07);
-      const hitFraction=w.pellets>1?0.7:1,pellets=w.pellets+(effects.extraShots??0);
+      const hitFraction=w.pellets>1?0.7:1,pellets=w.delivery==='melee'?1:w.pellets+(effects.extraShots??0);
       const dps=w.damage*multiplier*pellets*hitFraction*w.magazine/(w.magazine/fr+w.reloadTime);
       if(dps>best.dps)best={dps,weapon:w.id,depths,damageUpgrades:damage,fireRateUpgrades:rate,spentCoins,spentSP:spent};
     }
@@ -36,7 +36,7 @@ for(const mode of c.modes.filter(m=>m.kind!=='endless'))for(let j=0;j<mode.encou
     const {level:threat,subtier}=ratings.get(boss.id);
     const armorAttack=boss.phases.at(-1).attacks.find(a=>a.kind==='armor');const armorUptime=armorAttack?(armorAttack.duration/armorAttack.interval)*armorAttack.resistance:0;
     // A declared analytical assumption, not measured player accuracy or playtest evidence.
-    const attackUptime=0.65*(boss.damageWindowFraction??1),armorMultiplier=1-armorUptime;
+    const attackUptime=(cl.id==='swordsman'?0.4:0.65)*(boss.damageWindowFraction??1),armorMultiplier=1-armorUptime;
     const variant=difficulty.id==='hellish'?'crazed':difficulty.id==='insane'?'brutal':'normal',variantRule=variant==='normal'?{healthMultiplier:1,deadlineMultiplier:1}:c.rules[variant],variantHealth=variantRule.healthMultiplier,timer=boss.timer*variantRule.deadlineMultiplier;
     const hp=variantHealth*c.rules.bossHealthBase*c.rules.bossHealthThreatGrowth**(Math.min(10,threat)-1)*(1+subtier*.08)*(boss.timer/120)*boss.healthFactor*difficulty.health*(mode.bossHealthMultiplier??1);
     const effectiveDps=build.dps*attackUptime*armorMultiplier,estimatedSeconds=hp/effectiveDps;
@@ -46,7 +46,7 @@ for(const mode of c.modes.filter(m=>m.kind!=='endless'))for(let j=0;j<mode.encou
 const fields=Object.keys(rows[0]);fs.mkdirSync(path.join(root,'docs/balance'),{recursive:true});
 fs.writeFileSync(path.join(root,'docs/balance/uptime-model.csv'),[fields.join(','),...rows.map(r=>fields.map(k=>r[k]).join(','))].join('\n')+'\n');
 const misses=rows.filter(r=>r.deadlineRatio>1),worst=rows.toSorted((a,b)=>b.deadlineRatio-a.deadlineRatio).slice(0,20);
-const report={schemaVersion:1,kind:'Analytical design model; not gameplay measurement',assumptions:{movementAndAimUptime:0.65,shotgunPelletHitFraction:0.7,abilitiesAndUltimatesExcluded:true,insaneForcedBrutalIncluded:true,hellishForcedCrazedIncluded:true,accordBreakBenefitsExcluded:true,mutationsExcluded:true,optimization:'Conservative legal foundation-path prefixes with one capstone; class weapons and affordable damage/fire-rate upgrades. Specialization alternatives are excluded here and validated separately. This is an offensive feasibility witness, not exhaustive optimization or a recommendation for every build.',armor:'Worst-phase repeated armor duty cycle; ignores weak-point bonus. Boss health is solo; group scaling is sublinear.'},rows:rows.length,deadlineMisses:misses.length,worst,passed:misses.length===0};
+const report={schemaVersion:1,kind:'Analytical design model; not gameplay measurement',assumptions:{rangedMovementAndAimUptime:0.65,swordsmanMeleeUptime:0.4,shotgunPelletHitFraction:0.7,abilitiesAndUltimatesExcluded:true,insaneForcedBrutalIncluded:true,hellishForcedCrazedIncluded:true,accordBreakBenefitsExcluded:true,mutationsExcluded:true,optimization:'Conservative legal foundation-path prefixes with one capstone; class weapons and affordable damage/fire-rate upgrades. Specialization alternatives are excluded here and validated separately. This is an offensive feasibility witness, not exhaustive optimization or a recommendation for every build.',armor:'Worst-phase repeated armor duty cycle; ignores weak-point bonus. Boss health is solo; group scaling is sublinear.'},rows:rows.length,deadlineMisses:misses.length,worst,passed:misses.length===0};
 report.fixedThreatClassificationVersion=classifications.classificationVersion;
 report.fixedThreatProfiles=classifications.entries;
 report.contentRevision=JSON.parse(fs.readFileSync(path.join(root,'content/revision.json'),'utf8')).sha256;

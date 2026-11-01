@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { Game, data } from '../src/shared/game.ts';
 import { idleInput, implementedClassIds } from '../src/shared/protocol.ts';
-test('all eight classes have 54 nodes and every branch contains the complete 18-grade ladder', () => {
+test('all nine classes have 54 nodes and every branch contains the complete 18-grade ladder', () => {
   const ids = new Set<string>();
   for (const cl of data.classes) {
     const nodes = data.skills.filter((s) => s.classId === cl.id);
@@ -29,7 +29,7 @@ test('all eight classes have 54 nodes and every branch contains the complete 18-
       }
     }
   }
-  assert.equal(ids.size, 432);
+  assert.equal(ids.size, 486);
 });
 test('all 63 implemented specialization paths enforce prerequisites and spend exactly 21 points', () => {
   for (const classId of implementedClassIds)

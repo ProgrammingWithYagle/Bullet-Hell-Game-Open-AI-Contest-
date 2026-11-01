@@ -71,7 +71,7 @@ test("First banked Story endings stay deduplicated through raw old views and bra
   p.runs.push(receipt("second", 15, 1), receipt("third", 15, 2));
   assert.equal(progress(p, "story-endings"), 3);
   const model = fieldJournal(p);
-  assert.equal(model.maximumStamps, 69);
+  assert.equal(model.maximumStamps, 72);
   assert.equal(model.goals.find((g) => g.id === "story-endings")!.tier, 3);
   const legacy = freshProfile();
   legacy.legacyCampaigns = [

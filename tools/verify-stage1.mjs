@@ -19,13 +19,13 @@ const unique=(items,label)=>assert.equal(new Set(items.map(x=>x.id)).size,items.
 const finiteTree=value=>{if(typeof value==='number')assert(Number.isFinite(value));else if(Array.isArray(value))value.forEach(finiteTree);else if(value&&typeof value==='object')Object.values(value).forEach(finiteTree);};
 check('Complete finite versioned content',()=>{
   finiteTree(c);assert.equal(c.rules.schemaVersion,1);assert.equal(c.rules.simulationHz,30);assert.equal(c.rules.patchHz,20);
-  for(const [key,count] of Object.entries({classes:8,skills:432,weapons:32,bosses:66,mutations:24,arenas:6,modes:6,difficulties:6,locales:15,grades:18}))assert.equal(c[key].length,count,key);
+  for(const [key,count] of Object.entries({classes:9,skills:486,weapons:36,bosses:66,mutations:24,arenas:6,modes:6,difficulties:6,locales:15,grades:18}))assert.equal(c[key].length,count,key);
   for(const [key,value] of Object.entries(c))if(Array.isArray(value)&&value[0]?.id)unique(value,key);
   assert(!/\bTBD\b|TODO|FIXME/.test(JSON.stringify(c)),'Unresolved content placeholder');
   assert.equal(read('content/revision.json').sha256,crypto.createHash('sha256').update(JSON.stringify(c)).digest('hex'));
   for(const [key,value] of Object.entries(c))assert.deepEqual(read('content/'+key+'.json'),value,'Split catalog '+key);
 });
-check('Eight classes, 432 specialization nodes, all eighteen grades and ultimates',()=>{
+check('Nine classes, 486 specialization nodes, all eighteen grades and ultimates',()=>{
   for(const cl of c.classes){
     assert.equal(cl.abilities.length,2);assert.equal(cl.branches.length,3);assert(cl.health>0&&cl.speed>0);
     assert.equal(cl.ultimate.slot,'ultimate');assert(cl.ultimate.cooldown>=60&&cl.ultimate.cooldown<=120);assert(cl.ultimate.description.length>30);
@@ -63,10 +63,11 @@ check('Fixed boss grades, independent variants and complete translated tier labe
   assert.equal(Object.keys(labels).length,15);for(const words of Object.values(labels)){assert.equal(words.length,6);assert(words.every(word=>typeof word==='string'&&word.trim()));}
 });
 check('Weapon accounting, rates and finite cooldowns',()=>{
-  for(const w of c.weapons){assert(w.damage>0&&w.fireRate>0&&w.magazine>0&&w.reloadTime>0&&w.projectileSpeed>0&&w.pellets>0&&w.price>=0);const dps=w.damage*w.pellets*w.magazine/(w.magazine/w.fireRate+w.reloadTime);assert(Math.abs(dps-w.baselineSustainedDps)<0.011);}
+  for(const w of c.weapons){if(w.delivery==='melee'){assert.equal(w.classId,'swordsman');assert.equal(w.projectileSpeed,0);assert.equal(w.rangeSeconds,0);assert(w.meleeReach>0&&w.meleeReach<=c.rules.swordsman.maximumReach);assert(w.meleeArcDegrees>0&&w.meleeArcDegrees<=360);assert.equal(w.pellets,1);assert.equal(w.spreadDegrees,0);}else assert(w.projectileSpeed>0);assert(w.damage>0&&w.fireRate>0&&w.magazine>0&&w.reloadTime>0&&w.pellets>0&&w.price>=0);const dps=w.damage*w.pellets*w.magazine/(w.magazine/w.fireRate+w.reloadTime);assert(Math.abs(dps-w.baselineSustainedDps)<0.011);}
   for(const item of [...c.upgrades,...c.supplies])assert((item.price??item.basePrice)>=0);
   for(const cl of c.classes)for(const a of [...cl.abilities,cl.ultimate])assert(a.cooldown>0&&a.duration>=0&&a.radius>=0&&a.damage>=0);
 });
+check('Swordsman native crops, complete delivery poses and item RGBA',()=>{const result=spawnSync('python',['-X','utf8','tools/verify-swordsman-art.py'],{cwd:root,encoding:'utf8'});assert.equal(result.status,0,result.stdout+'\n'+result.stderr);});
 let legalMutationSets=0;
 check('Every legal one-, two- and three-mutation composition',()=>{
   const ids=new Map(c.mutations.map(m=>[m.id,m]));

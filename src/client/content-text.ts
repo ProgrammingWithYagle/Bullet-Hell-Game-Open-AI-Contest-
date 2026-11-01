@@ -3,7 +3,10 @@ import {talentForSkill} from '../shared/class-talents.ts';
 import {revivedHealth} from '../shared/recovery-policy.ts';
 import { t, number } from './i18n.ts';
 import { data } from '../shared/game.ts';
+export function supplyName(id:string,classId:string){return t('supply.'+(classId==='swordsman'&&id==='ammo-pouch'?'swordsman-canteen':id)+'.name');}
+export function upgradeName(id:string,classId:string){return t('upgrade.'+(classId==='swordsman'&&['damage','fire-rate','magazine','reload'].includes(id)?'swordsman-':'')+id+'.name');}
 export function supplyText(id: string,difficulty='normal',classId='soldier') {
+  if(classId==='swordsman'&&id==='ammo-pouch')return t('supply.swordsman-canteen.description');
   const item = data.supplies.find((s) => s.id === id)!;
   if(item.effect==='revive'&&difficulty==='insane'&&classId==='medic')return t('ui.reviveKitOneHealth',{maximum:number(item.maximumStack)});
   const description=t('supply.' + id + '.description', {

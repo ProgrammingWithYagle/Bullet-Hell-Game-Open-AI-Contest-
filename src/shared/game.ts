@@ -1,3 +1,6 @@
+import { SwordsmanKit, type SwordContext, type SwordTalents } from './swordsman-kit.ts';
+import swordRules from './sword-rules.json';
+import { swordCircleContact, swordTrace } from './sword-geometry.ts';
 import { BardKit, type BardContext } from './bard-kit.ts';
 import {WardSkirmish,type SkirmishView} from './ward-skirmish.ts';
 import {StoryChapter,openingChapterId,validStoryChapter,validChapterBoundary,chapterParticipation,type StoryChapterState} from './story-chapter.ts';
@@ -259,9 +262,10 @@ export class Game {
   }
   readonly classKits = new ClassKits();
   readonly bard = new BardKit();
-  kitStatus(id:string){return {...this.classKits.status(id,this.combatTick),...(this.players.get(id)?.classId==='bard'?this.bard.status(id):{})};}
+  readonly sword = new SwordsmanKit();
+  kitStatus(id:string){return {...this.classKits.status(id,this.combatTick),...(this.players.get(id)?.classId==='bard'?this.bard.status(id):{}),...(this.players.get(id)?.classId==='swordsman'?this.sword.status(id,this.combatTick):{})};}
   readonly transforms = new AbilityTransforms();
-  classCues(){return [...this.classKits.cues(),...this.transforms.cues(),...this.bard.cues()];}
+  classCues(){return [...this.classKits.cues(),...this.transforms.cues(),...this.bard.cues(),...this.sword.cues(this.roster(),this.combatTick)];}
   private aimTargets(){const real=this.roster().filter(p=>p.status==='active'&&!this.classKits.untargetable(p.id,this.combatTick));return [...real,...this.classKits.decoyTargets(this.roster(),this.combatTick)];}
   private hurtTarget(id:string,amount:number){const p=this.players.get(id);if(p)this.damage(p,amount);else this.classKits.hitDecoy(id,amount);}
   private bossPrevious = { x: 800, y: 250 };
@@ -650,7 +654,7 @@ export class Game {
     const overdrive = this.combatTick < p.overdriveUntil;
     const penalty = Math.min(braced ? 0.6 : 1, overdrive ? 0.65 : 1);
     return (
-      penalty *
+      penalty * this.sword.movement(p.id,this.combatTick) *
       Math.min(
         base * 1.65,
         this.stats(p).speed *
@@ -820,7 +824,7 @@ export class Game {
     if (this.secretStatus === 'active') this.secretStatus = 'failed';
     this.phase = 'defeat'; this.phaseEnds = 0; this.boss.defeatedAt = 0;
     this.chapterState?.fail();this.wardPatients.clear();
-    this.bard.clear();
+    this.bard.clear();this.sword.clear();
     if(this.chapterState){this.skirmish?.fail();this.clearChapterCombat();}
     return true;
   }
@@ -869,7 +873,7 @@ export class Game {
     Object.assign(this.selectedContract,classifiedContract(this.selectedContract.bossId??'constable',encounterVariant(this.settings.difficulty,this.selectedContract.variant)));
     this.phaseAttackReadyAt = 0;
     this.variantPressure.reset(this.combatTick);
-    this.classKits.clear();this.bard.clear();this.transforms.clear();this.wardenPatrol.clear();
+    this.classKits.clear();this.bard.clear();this.sword.clear();this.transforms.clear();this.wardenPatrol.clear();
     this.pruneExpired();
     this.phase = 'combat';
     this.phaseEnds = 0;
@@ -1011,7 +1015,7 @@ export class Game {
     if(this.chapterState){this.clearChapterNode(true);return;}
     this.scoreObserver?.clear(this);
     for (const player of this.players.values()) this.clearPoison(player);
-    this.classKits.clear();this.bard.clear();this.transforms.clear();this.wardenPatrol.clear();
+    this.classKits.clear();this.bard.clear();this.sword.clear();this.transforms.clear();this.wardenPatrol.clear();
     this.completedBossIds.add(this.boss.id);
     const previous=this.completedBossForms.get(this.boss.id);
     if(!previous||['normal','brutal','crazed'].indexOf(this.boss.variant)>['normal','brutal','crazed'].indexOf(previous))this.completedBossForms.set(this.boss.id,this.boss.variant);
@@ -1235,6 +1239,7 @@ export class Game {
     );
     this.classKits.step(this.kitContext());
     this.bard.step(this.bardContext());
+    this.sword.step(this.swordContext());
     this.transforms.step(this.transformContext());
     this.stepFields();
     this.stepLava();
@@ -1261,7 +1266,7 @@ export class Game {
       } else this.phase = 'defeat';
       this.chapterState?.fail();this.wardPatients.clear();
       for (const player of this.players.values()) this.clearPoison(player);
-      this.classKits.clear();this.bard.clear();this.transforms.clear();this.wardenPatrol.clear();
+      this.classKits.clear();this.bard.clear();this.sword.clear();this.transforms.clear();this.wardenPatrol.clear();
       this.director.reset('constable');
       this.minions.clear();
       this.signatures = [];
@@ -1276,11 +1281,11 @@ export class Game {
     else this.skirmish?.cancel();
     this.phase=success?'victory':'defeat';
     for(const p of this.players.values())this.clearPoison(p);
-    this.classKits.clear();this.bard.clear();this.transforms.clear();this.minions.clear();this.director.reset('constable');this.signatures=[];this.warnings.length=0;this.fields.length=0;this.clearShots();this.accord=null;
+    this.classKits.clear();this.bard.clear();this.sword.clear();this.transforms.clear();this.minions.clear();this.director.reset('constable');this.signatures=[];this.warnings.length=0;this.fields.length=0;this.clearShots();this.accord=null;
   }
   private clearChapterCombat() {
     for (const p of this.players.values()) this.clearPoison(p);
-    this.classKits.clear();this.bard.clear();
+    this.classKits.clear();this.bard.clear();this.sword.clear();
     this.transforms.clear();
     this.wardenPatrol.clear();
     this.minions.clear();
@@ -1524,6 +1529,7 @@ export class Game {
   private reload(p: Player) {
     const w = data.weapons.find((w) => w.id === p.weapon)!;
     p.reloadAt = this.combatTick + ticks(w.reloadTime * this.stats(p).reload);
+    if(p.classId==='swordsman')this.events.push({type:'sound',id:'sword-recover',owner:p.id,x:p.x,y:p.y});
   }
   private useSupply(p: Player, index: number) {
     const slot = p.supplies[index],
@@ -1637,6 +1643,7 @@ export class Game {
     return shot;
   }
   private fire(p: Player) {
+    if(p.classId==='swordsman'&&!this.sword.canPrimary(p,this.combatTick))return;
     const w = data.weapons.find((w) => w.id === p.weapon)!,
       s = this.stats(p);
     const overdrive = this.combatTick < p.overdriveUntil;
@@ -1666,6 +1673,12 @@ export class Game {
       (this.combatTick < this.classKits.status(p.id, this.combatTick).passageUntil ? 1 : s.crit)
         ? s.critMultiplier
         : 1);
+    if(p.classId==='swordsman'){
+      const reach=('meleeReach' in w?w.meleeReach:undefined)??swordRules.primaryReach;
+      const arc=('meleeArcDegrees' in w?w.meleeArcDegrees:undefined)??swordRules.primaryArcDegrees;
+      this.sword.primary(p,this.swordContext(),{damage,reach:Math.min(swordRules.maximumReach,reach*(1+(s.effects.bladeReach??0))),arc:arc*Math.PI/180,ordinaryTargets:swordRules.ordinaryTargets+s.pierce+s.extraShots,talents:this.swordTalents(p)});
+      return;
+    }
     for (let n = 0; n < count; n++){
       const shot=this.emitShot(
         p.id,
@@ -1716,13 +1729,16 @@ export class Game {
       a = slot === 'ultimate' ? cl.ultimate : cl.abilities[slot === 'q' ? 0 : 1],
       s = this.stats(p),
       now = this.combatTick;
+    if(p.classId==='swordsman'&&!this.sword.canCast(p,now))return;
     if (slot === 'q') p.qAt = now + ticks(a.cooldown * s.cooldown);
     else if (slot === 'e' && !this.classKits.freeStep(p.id, now))
       p.eAt = now + ticks(a.cooldown * s.cooldown);
     else if (slot === 'ultimate') p.ultimateAt = now + ticks(a.cooldown * s.ultimateCooldown);
     const before={x:p.x,y:p.y},empowered=slot==='e'&&this.classKits.freeStep(p.id,now);
     if(!this.transforms.cast(p,slot,this.transformContext())){
-    if (p.classId === 'bard') {
+    if (p.classId === 'swordsman') {
+      this.sword.cast(p,slot,this.swordContext(),{potency:s.ability,reachBonus:s.effects.bladeReach??0,ultimateBonus:s.effects.ultimatePotency??0,ultimateDuration:s.effects.ultimateDuration??0,ultimateCharges:s.effects.ultimateCharges??0,ultimateRadius:s.effects.ultimateRadius??0,talents:this.swordTalents(p)});
+    } else if (p.classId === 'bard') {
       this.bard.cast(p, slot, this.bardContext());
     } else if (['tank', 'mage', 'engineer', 'assassin'].includes(p.classId)) {
       this.classKits.cast(p, slot, this.kitContext());
@@ -1819,6 +1835,7 @@ export class Game {
     } else p.channelUntil = now + ticks(1);
     }
     this.transforms.afterCast(p,slot,before,empowered,this.transformContext());
+    if(p.classId==='swordsman')return;
     this.events.push({
       type: 'sound',
       id:
@@ -2026,6 +2043,30 @@ export class Game {
   private transformContext():TransformContext{return {
     tick:this.combatTick,players:this.roster(),fields:this.fields,kits:this.classKits,kit:this.kitContext(),id:()=>this.id(),stats:p=>this.stats(p),heal:(source,target,amount)=>this.heal(source,target,amount),
     shot:(p,point,angle,speed,damage,pierce,life=12,slow=0)=>{const shot=this.emitShot(p.id,point.x,point.y,angle,speed,damage,4,pierce,life);if(shot&&slow>0)this.shotEffects.set(shot.id,{slowTicks:ticks(slow),slowMultiplier:.6,rangeRemaining:speed*life});},
+  };}
+  private swordTalents(p:Player):SwordTalents{return {returnStep:hasTalent(p,'return-step'),openCircle:hasTalent(p,'open-circle'),secondWatch:hasTalent(p,'second-watch')};}
+  private swordContext():SwordContext{return {
+    tick:this.combatTick,players:this.roster(),id:()=>this.id(),
+    sound:(id,source)=>this.events.push({type:'sound',id,owner:source.id,x:source.x,y:source.y}),
+    move:(source,delta)=>{const p=this.players.get(source.id);if(!p)return;const next=moveBody(p,delta,rule.playerRadius,this.obstacles);p.x=next.x;p.y=next.y;},
+    slash:(source,aim,reach,arc,amount,ordinaryTargets,training)=>{
+      const p=this.players.get(source.id);if(!p||p.classId!=='swordsman')return;
+      // A cut can damage one boss body/weak part, never multiply its boss budget across limbs.
+      const weakHits=this.director.weakPoints().flatMap(weak=>{
+        if(weak.health<=0)return [];
+        const tip=swordTrace(p,aim,reach,arc,weak),time=this.director.weakContact(p,tip,weak,0);
+        if(time===null)return [];
+        for(const wall of this.obstacles){const block=segmentRect(p,tip,wall);if(block&&block.t<=time)return [];}
+        return [{id:weak.id,time,distance:distance(p,weak)}];
+      }).sort((a,b)=>a.distance-b.distance||a.id-b.id);
+      if(weakHits.length)this.hitWeak(p,amount,weakHits[0].id);
+      else if(!this.skirmish&&!this.director.hasIndependentBodies()){
+        const hit=swordCircleContact(p,aim,reach,arc,this.boss,this.bossDefinition().radius,this.obstacles);
+        if(hit&&!this.director.coreContact(p,hit.tip,0))this.hitBoss(p,amount);
+      }
+      const actors=[...this.minions.actors.values()].filter(a=>a.health>0&&swordCircleContact(p,aim,reach,arc,a,a.radius,this.obstacles)).sort((a,b)=>distance(p,a)-distance(p,b)||a.id-b.id).slice(0,ordinaryTargets);
+      for(const actor of actors){const actual=this.minions.hit(actor.id,amount,this.combatTick);this.creditHit(p,actual);if(training)this.observeTraining(p,'measured-hit',actual);}
+    },
   };}
   private bardContext(): BardContext {
     return {
@@ -2804,6 +2845,10 @@ export class Game {
           hostileObstacles = this.obstacles;
           weakPoints = this.director.weakPoints();
         }
+      }
+      if(s.owner==='hostile'&&this.sword.guarding){
+        const guard=this.sword.guardContact(old,next,s.radius,this.roster(),this.combatTick,hitTime);
+        if(guard&&this.sword.parry(guard.owner,this.swordContext())){this.removeShot(s);continue;}
       }
       if (safeHit && safeZone)
         this.director.clerk.recordBlock(safeZone.id, {

@@ -5,12 +5,12 @@ import { readFileSync } from 'node:fs';
 import library from '../assets/delivery/selection-portraits-v1/library.json';
 import provenance from '../docs/selection-portraits-2026-10-25.json';
 const sha = (path: string) => createHash('sha256').update(readFileSync(path)).digest('hex');
-test('eight selection portraits share a full-body canvas and visible body height, with two new whole native poses and old five identities retained', () => {
-  assert.equal(library.entries.length, 8);
+test('nine selection portraits share a full-body canvas and visible body height, with two new whole native poses and old five identities retained', () => {
+  assert.equal(library.entries.length, 9);
   assert.equal(provenance.requests.length, 2);
   assert.deepEqual(
     library.entries.filter((e) => e.newPose).map((e) => e.classId),
-    ['soldier', 'medic', 'bard'],
+    ['soldier', 'medic', 'bard', 'swordsman'],
   );
   for (const e of library.entries) {
     assert.equal(sha(e.source), e.sourceSha256);

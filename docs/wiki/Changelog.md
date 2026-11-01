@@ -1,6 +1,16 @@
 # Changelog
 
-Development build **2026.11.01-bard**, protocol 47. The current contest Site uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.01-swordsman**, protocol 47. The current contest Site uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-01 — Dara Flint and the Swordsman discipline
+
+### Spacing, commitment and a limited guard
+
+- Swordsman is the ninth playable discipline. Commit physical blade sectors, advance with Measured Cut, parry up to three frontal projectiles, and spend a real opening on a counter. Long Measure empowers a bounded number of committed cuts. Cover, beams, fields and existing warnings retain their rules.
+- Free Play adds four swords, 54 specialization nodes and three transformations. Campaign uses one owned D- lesson with an actual measured-hit proof and encounter clear; no SP purchases or mutation drafting.
+- Dara enters the English, Spanish and Arabic gate opening and an English ward conversation. Her optional letter and a more experienced teacher begin relationships, not a completed personal arc.
+- The class has a full-body portrait, four idle facings, 88 selected run/action poses including a held guard, eighteen item icons, Breath/canteen presentation and original synthesized steel/cloth cues. Art remains candidate work pending rendered, listening, language and human review.
+- Summoner, Ranger and Alchemist remain required for the accepted twelve-class roster.
 
 ## 2026-11-01 — Iven Cair and the Bard discipline
 

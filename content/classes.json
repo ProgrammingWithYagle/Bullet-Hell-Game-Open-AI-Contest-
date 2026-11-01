@@ -927,5 +927,120 @@
       },
       "description": "Spend cadence to place a six-pulse performance at your feet. One pulse each second deals 36 + 4 per cadence damage and refreshes 18 + 2 per cadence shield for nearby allies. The stage stays in place. It does not heal, revive, erase hazards or stack identical shields."
     }
+  },
+  {
+    "id": "swordsman",
+    "name": "Swordsman",
+    "survivor": "Dara Flint",
+    "health": 130,
+    "speed": 240,
+    "color": "#b77d62",
+    "weapon": "swordsman-0",
+    "role": "Committed sword cuts, measured advances and bounded frontal counters.",
+    "lore": "Dara worked at a grinding bench before beginning sword training. She can judge an edge more easily than she can admit she has misjudged a distance.",
+    "branches": [
+      {
+        "id": "edgework",
+        "name": "Edgework",
+        "subbranches": [
+          {
+            "id": "edgework-foundation",
+            "nameKey": "stat.weaponDamage",
+            "name": "weaponDamage"
+          },
+          {
+            "id": "edgework-path-1",
+            "nameKey": "stat.fireRate",
+            "name": "fireRate"
+          },
+          {
+            "id": "edgework-path-2",
+            "nameKey": "stat.pierce",
+            "name": "pierce"
+          }
+        ]
+      },
+      {
+        "id": "measure",
+        "name": "Measure",
+        "subbranches": [
+          {
+            "id": "measure-foundation",
+            "nameKey": "stat.abilityPotency",
+            "name": "abilityPotency"
+          },
+          {
+            "id": "measure-path-1",
+            "nameKey": "ability.swordsman-ultimate.name",
+            "name": "Long Measure"
+          },
+          {
+            "id": "measure-path-2",
+            "nameKey": "ability.swordsman-q.name",
+            "name": "Measured Cut"
+          }
+        ]
+      },
+      {
+        "id": "footwork",
+        "name": "Footwork",
+        "subbranches": [
+          {
+            "id": "footwork-foundation",
+            "nameKey": "stat.maxHealth",
+            "name": "maxHealth"
+          },
+          {
+            "id": "footwork-path-1",
+            "nameKey": "stat.dodgeCooldown",
+            "name": "dodgeCooldown"
+          },
+          {
+            "id": "footwork-path-2",
+            "nameKey": "stat.reviveRate",
+            "name": "reviveRate"
+          }
+        ]
+      }
+    ],
+    "abilities": [
+      {
+        "id": "swordsman-q",
+        "slot": "q",
+        "kind": "measured-cut",
+        "name": "Measured Cut",
+        "cooldown": 10,
+        "duration": 0.2,
+        "radius": 130,
+        "damage": 75,
+        "description": "Commit for 0.2 seconds on the chosen aim, then advance up to 90 units through clear ground and cut for 75 damage within 130 units. Cover blocks the movement and blade. Dodging cancels the committed cut; this grants no invulnerability."
+      },
+      {
+        "id": "swordsman-e",
+        "slot": "e",
+        "kind": "frontal-guard",
+        "name": "Frontal Guard",
+        "cooldown": 9,
+        "duration": 0.36666666666666664,
+        "radius": 30,
+        "damage": 0,
+        "description": "Hold the chosen frontal guard for 11 ticks, stopping at most 3 incoming projectiles at the blade. A real parry opens a 3-second counter: the next committed primary cut deals 60% more damage. Beams, fields, melee damage and existing warnings remain dangerous. Dodging cancels the guard."
+      }
+    ],
+    "ultimate": {
+      "id": "swordsman-ultimate",
+      "slot": "ultimate",
+      "kind": "long-measure",
+      "name": "Long Measure",
+      "cooldown": 85,
+      "duration": 7,
+      "radius": 40,
+      "damage": 0,
+      "effects": {
+        "cuts": 3,
+        "weaponDamageMultiplier": 1.35
+      },
+      "description": "For 7 seconds, the next 3 committed primary cuts gain 40 reach and 35% damage. Misses and cancelled cuts spend their charge. This is an attack stance, not automatic damage, projectile reflection or invulnerability."
+    }
   }
 ]

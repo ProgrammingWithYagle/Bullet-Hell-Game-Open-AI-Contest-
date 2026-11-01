@@ -6,6 +6,12 @@ import { classifiedContract } from "./boss-threat.ts";
 function migrateKnownPracticeBoundary(value: unknown): unknown {
   if (!value || typeof value !== "object" || Array.isArray(value)) return value;
   const issued = value as Record<string, unknown>;
+  if (issued.protocolVersion === 47 && issued.contentRevision === '85c266d3bbb2457910b5237bbab3769bd1ada06014d39ded5eefe5854e5392cb') {
+    const p = issued.player as Record<string, unknown> | undefined;
+    if (issued.schemaVersion !== 1 || issued.practiceOnly !== true || issued.serverOnly === true || issued.players !== undefined || issued.transactions !== undefined || JSON.stringify(issued).length > 32768 || !p || !['soldier','medic','heavy','tank','mage','engineer','assassin','bard'].includes(String(p.classId)) || (Array.isArray(p.skills) && p.skills.some((s) => typeof s === 'string' && s.startsWith('swordsman-')))) throw Error('versionMismatch');
+    // Preserve the issued eight-class chapter state; do not create a new proof.
+    return {...issued, contentRevision: CONTENT_REVISION};
+  }
   if (issued.protocolVersion === 47 && issued.contentRevision === '5b8c858463c86d7e5d2fb70a547dd95ddcb5c38e20be547c39c4f1707e31e779') {
     const p = issued.player as Record<string, unknown> | undefined;
     if (issued.schemaVersion !== 1 || issued.practiceOnly !== true || issued.serverOnly === true || issued.players !== undefined || issued.transactions !== undefined || JSON.stringify(issued).length > 32768 || !p || !['soldier','medic','heavy','tank','mage','engineer','assassin'].includes(String(p.classId)) || (Array.isArray(p.skills) && p.skills.some((s) => typeof s === 'string' && s.startsWith('bard-'))))

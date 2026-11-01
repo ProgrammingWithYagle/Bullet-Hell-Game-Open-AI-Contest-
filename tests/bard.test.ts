@@ -209,11 +209,15 @@ test("Cut In stops at cover, leaving projectiles on the far side", () => {
   const { g, p } = fixture();
   p.x = p.oldX = 500;
   p.y = p.oldY = 500;
-  g.obstacles.splice(0, g.obstacles.length, {
-    x: 560,
-    y: 450,
-    width: 40,
-    height: 100,
+  Object.defineProperty(g, "obstacles", {
+    value: [
+      {
+        x: 560,
+        y: 450,
+        width: 40,
+        height: 100,
+      },
+    ],
   });
   const emit = Reflect.get(g, "emitShot") as Function;
   const near = emit.call(g, "hostile", 530, 500, 0, 0, 5, 3) as Shot;

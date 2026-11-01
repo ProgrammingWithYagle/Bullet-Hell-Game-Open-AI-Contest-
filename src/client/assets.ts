@@ -1,5 +1,6 @@
 import {encounterArt} from './encounter-presentation.ts';
 import {resolveEncounterAssetUrls} from './encounter-asset-urls.ts';
+import survivorDelivery from '../../assets/delivery/survivor-motion-v1/library.json';
 import wheel from '../../assets/production/motion/tollkeeper-wheel-v1.png?url';
 import arena from '../../assets/proofs/arena-v1.png?url';
 import gatehouseHalf from '../../assets/production/arenas/gatehouse-half-v1.png?url';
@@ -42,17 +43,16 @@ const survivorReferences = import.meta.glob(
   '../../assets/production/normalized/survivors/*/reference-atlas-v1.png',
   { query: '?url', import: 'default', eager: true },
 ) as Record<string, string>;
-const survivorMotion = import.meta.glob('../../assets/delivery/survivor-motion-v1/*-v1-atlas.png', {
+const survivorMotion = import.meta.glob('../../assets/delivery/survivor-motion-v1/*-v*-atlas.png', {
   query: '?url',
   import: 'default',
   eager: true,
 }) as Record<string, string>;
-const survivorMotionUrls = Object.fromEntries(
-  Object.entries(survivorMotion).map(([path, url]) => [
-    path.split('/').at(-1)!.replace('-v1-atlas.png', ''),
-    url,
-  ]),
-) as Record<string, string>;
+const survivorMotionUrls = Object.fromEntries(survivorDelivery.entries.map(entry=>{
+  const url=survivorMotion['../../'+entry.atlas];
+  if(!url)throw Error('Missing survivor delivery asset: '+entry.id);
+  return [entry.id,url];
+})) as Record<string, string>;
 const endlessProps = import.meta.glob('../../assets/production/endless-props/*.png', {
   query: '?url',
   import: 'default',

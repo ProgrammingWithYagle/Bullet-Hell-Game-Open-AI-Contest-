@@ -1,6 +1,6 @@
 # Twelve shared disciplines
 
-Accepted roster: the existing Soldier, Medic, Heavy, Tank, Mage, Engineer and Assassin, plus **Swordsman, Summoner, Ranger, Alchemist and Bard**. All five additions are accepted scope. The current playable build has eight classes, including Bard. Its first shared kit and Story foundation are implemented; Swordsman, Summoner, Ranger and Alchemist remain unfinished. No completed twelve-class roster or final class acceptance is claimed.
+Accepted roster: the existing Soldier, Medic, Heavy, Tank, Mage, Engineer and Assassin, plus **Swordsman, Summoner, Ranger, Alchemist and Bard**. All five additions are accepted scope. The current playable build has nine classes, including Bard and Swordsman. Their first shared kits and Story foundations are implemented; Summoner, Ranger and Alchemist remain unfinished. No completed twelve-class roster or final class acceptance is claimed.
 
 Classes are disciplines practiced by many people. The seven established leads recently entered theirs; practical experience from their previous lives does not make them veteran masters of that class. New disciplines need multiple practitioners across the world, including teachers, novices, rivals and antagonists. A class identity must be separate from a character ID, portrait, moral position or fixed personality.
 
@@ -30,4 +30,4 @@ Summoner particularly needs deterministic unit budgets and ownership, pathfindin
 
 The story should introduce disciplines through people and tasks before explaining their advanced possibilities. The larger ensemble and human antagonists should include differing practitioners of the same discipline rather than one representative character per class.
 
-Working new-lead treatments are in NEW_CLASS_CAST_TREATMENTS.md:Dara Flint/Swordsman,Joss Merrow/Summoner,Nela Venn/Ranger,Perrin Moss/Alchemist and Iven Cair/Bard. These names and biographies are proposals, not selectable characters or established scene canon. Each eventual lead needs a complete personal arc; update the arc register when the playable cast is actually expanded.
+Working new-lead treatments are in NEW_CLASS_CAST_TREATMENTS.md:Dara Flint/Swordsman,Joss Merrow/Summoner,Nela Venn/Ranger,Perrin Moss/Alchemist and Iven Cair/Bard. Iven and Dara are now selectable and appear in implemented scenes. Joss, Nela and Perrin remain proposals. Full personal arcs are unfinished for all twelve leads. Each eventual lead needs a complete personal arc; update the arc register when the playable cast is actually expanded.

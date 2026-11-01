@@ -1,9 +1,10 @@
 {
   "schemaVersion": 1,
-  "contentRevision": "85c266d3bbb2457910b5237bbab3769bd1ada06014d39ded5eefe5854e5392cb",
+  "contentRevision": "e74efafe14d4694ef9afd8ea6df038c3fd0e697e4b6d5039f9a6d70173c8b6bd",
   "kind": "Analytical early-build feasibility, not human balance",
   "assumptions": {
-    "attackUptime": 0.65,
+    "rangedAttackUptime": 0.65,
+    "swordsmanMeleeUptime": 0.4,
     "shotgunPelletHits": 0.7,
     "bossClockMultiplier": 2,
     "criticalHitsIncluded": false,
@@ -12,7 +13,7 @@
     "preparedFoundationsDoNotAddWeaponDamage": true,
     "solo": true
   },
-  "rows": 96,
+  "rows": 108,
   "deadlineMisses": 0,
   "worst": [
     {
@@ -26,6 +27,7 @@
       "preparedWeaponDamageEffects": 0,
       "health": 7960.5,
       "deadlineSeconds": 450,
+      "attackUptime": 0.65,
       "estimatedSeconds": 340.7941516687645,
       "deadlineRatio": 0.757320337041699
     },
@@ -40,6 +42,7 @@
       "preparedWeaponDamageEffects": 0,
       "health": 7642.079999999999,
       "deadlineSeconds": 450,
+      "attackUptime": 0.65,
       "estimatedSeconds": 327.1623856020139,
       "deadlineRatio": 0.7270275235600309
     },
@@ -54,6 +57,7 @@
       "preparedWeaponDamageEffects": 0,
       "health": 7960.5,
       "deadlineSeconds": 450,
+      "attackUptime": 0.65,
       "estimatedSeconds": 301.45934892175495,
       "deadlineRatio": 0.6699096642705665
     },
@@ -68,6 +72,7 @@
       "preparedWeaponDamageEffects": 0,
       "health": 4860.000000000001,
       "deadlineSeconds": 360,
+      "attackUptime": 0.65,
       "estimatedSeconds": 237.18810601163543,
       "deadlineRatio": 0.6588558500323206
     },
@@ -82,6 +87,7 @@
       "preparedWeaponDamageEffects": 0,
       "health": 7960.5,
       "deadlineSeconds": 450,
+      "attackUptime": 0.65,
       "estimatedSeconds": 290.750483069562,
       "deadlineRatio": 0.6461121845990266
     },
@@ -96,6 +102,7 @@
       "preparedWeaponDamageEffects": 0,
       "health": 7642.079999999999,
       "deadlineSeconds": 450,
+      "attackUptime": 0.65,
       "estimatedSeconds": 289.4009749648847,
       "deadlineRatio": 0.6431132776997438
     },
@@ -110,6 +117,7 @@
       "preparedWeaponDamageEffects": 0,
       "health": 7960.5,
       "deadlineSeconds": 450,
+      "attackUptime": 0.65,
       "estimatedSeconds": 288.18295739348366,
       "deadlineRatio": 0.6404065719855192
     },
@@ -124,6 +132,7 @@
       "preparedWeaponDamageEffects": 0,
       "health": 4665.6,
       "deadlineSeconds": 360,
+      "attackUptime": 0.65,
       "estimatedSeconds": 227.70058177117,
       "deadlineRatio": 0.6325016160310277
     },
@@ -138,6 +147,7 @@
       "preparedWeaponDamageEffects": 0,
       "health": 7642.079999999999,
       "deadlineSeconds": 450,
+      "attackUptime": 0.65,
       "estimatedSeconds": 279.1204637467795,
       "deadlineRatio": 0.6202676972150655
     },
@@ -152,6 +162,7 @@
       "preparedWeaponDamageEffects": 0,
       "health": 7642.079999999999,
       "deadlineSeconds": 450,
+      "attackUptime": 0.65,
       "estimatedSeconds": 276.65563909774426,
       "deadlineRatio": 0.6147903091060983
     },
@@ -166,28 +177,30 @@
       "preparedWeaponDamageEffects": 0,
       "health": 7960.5,
       "deadlineSeconds": 450,
+      "attackUptime": 0.65,
       "estimatedSeconds": 273.5464462438146,
       "deadlineRatio": 0.6078809916529213
     },
     {
-      "classId": "mage",
+      "classId": "swordsman",
       "difficulty": "insane",
       "bossId": "matron",
       "availableCoins": 108,
       "spentCoins": 90,
-      "weapon": "mage-0",
+      "weapon": "swordsman-0",
       "skillPoints": 0,
       "preparedWeaponDamageEffects": 0,
       "health": 7960.5,
       "deadlineSeconds": 450,
-      "estimatedSeconds": 262.97760627530363,
-      "deadlineRatio": 0.5843946806117858
+      "attackUptime": 0.4,
+      "estimatedSeconds": 264.39862677527145,
+      "deadlineRatio": 0.5875525039450477
     }
   ],
   "limits": [
     "Does not measure movement, cover, player survival, support actions, nest-clearing time or human accuracy.",
     "Requires choosing the shown affordable offensive purchase; other preparations can differ.",
-    "Boss health, attack definitions, fixed grades and Original Campaign timers are unchanged."
+    "Boss health, attack definitions, fixed grades and Free Play timers are unchanged."
   ],
   "passed": true
 }

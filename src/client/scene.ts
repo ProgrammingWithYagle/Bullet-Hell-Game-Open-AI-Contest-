@@ -1,3 +1,4 @@
+import {drawSwordCue} from './sword-presentation.ts';
 import {drawSkirmishWarnings,drawWardPatient} from './skirmish-presentation.ts';
 import {drawStitchCue, isStitchCue} from './stitch-cues.ts';
 import {isBellCue} from './bell-presentation.ts';
@@ -814,6 +815,7 @@ export class CombatScene extends Phaser.Scene {
         this.constructImages.delete(id);
       }
     for (const cue of view.classCues) {
+      if(cue.kind==='sword-cut'||cue.kind==='sword-windup'||cue.kind==='sword-guard'||cue.kind==='sword-parry'||cue.kind==='sword-return'){drawSwordCue(h,cue,now,this.reduceMotion);continue;}
       if(cue.kind==='bard-phrase'||cue.kind==='bard-cut'){
         const color=cue.encore?0xe5c379:0xc4dcb9;
         if(cue.kind==='bard-cut')h.lineStyle(4,color,.8).lineBetween(cue.x,cue.y,cue.x2??cue.x,cue.y2??cue.y);

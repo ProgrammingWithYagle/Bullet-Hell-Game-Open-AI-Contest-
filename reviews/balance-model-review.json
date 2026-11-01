@@ -2,7 +2,8 @@
   "schemaVersion": 1,
   "kind": "Analytical design model; not gameplay measurement",
   "assumptions": {
-    "movementAndAimUptime": 0.65,
+    "rangedMovementAndAimUptime": 0.65,
+    "swordsmanMeleeUptime": 0.4,
     "shotgunPelletHitFraction": 0.7,
     "abilitiesAndUltimatesExcluded": true,
     "insaneForcedBrutalIncluded": true,
@@ -12,7 +13,7 @@
     "optimization": "Conservative legal foundation-path prefixes with one capstone; class weapons and affordable damage/fire-rate upgrades. Specialization alternatives are excluded here and validated separately. This is an offensive feasibility witness, not exhaustive optimization or a recommendation for every build.",
     "armor": "Worst-phase repeated armor duty cycle; ignores weak-point bonus. Boss health is solo; group scaling is sublinear."
   },
-  "rows": 30000,
+  "rows": 33750,
   "deadlineMisses": 0,
   "worst": [
     {
@@ -124,6 +125,50 @@
       "estimatedSeconds": 175.11,
       "timer": 180,
       "deadlineRatio": 0.9728
+    },
+    {
+      "mode": "raid",
+      "fight": 3,
+      "classId": "swordsman",
+      "difficulty": "insane",
+      "boss": "last-breath-saint",
+      "variant": "brutal",
+      "threat": 10,
+      "subtier": 2,
+      "sp": 27,
+      "coins": 2160,
+      "weapon": "swordsman-3",
+      "depths": "6/0/0",
+      "spentCoins": 2160,
+      "sustainedDps": 502.38,
+      "attackUptime": 0.4,
+      "armorMultiplier": 1,
+      "bossHealth": 68759.33,
+      "estimatedSeconds": 342.17,
+      "timer": 360,
+      "deadlineRatio": 0.9505
+    },
+    {
+      "mode": "raid",
+      "fight": 3,
+      "classId": "swordsman",
+      "difficulty": "hellish",
+      "boss": "last-breath-saint",
+      "variant": "crazed",
+      "threat": 10,
+      "subtier": 2,
+      "sp": 27,
+      "coins": 2040,
+      "weapon": "swordsman-3",
+      "depths": "6/0/0",
+      "spentCoins": 1980,
+      "sustainedDps": 488.55,
+      "attackUptime": 0.4,
+      "armorMultiplier": 1,
+      "bossHealth": 66008.96,
+      "estimatedSeconds": 337.78,
+      "timer": 360,
+      "deadlineRatio": 0.9383
     },
     {
       "mode": "short",
@@ -410,50 +455,6 @@
       "estimatedSeconds": 163.51,
       "timer": 180,
       "deadlineRatio": 0.9084
-    },
-    {
-      "mode": "raid",
-      "fight": 3,
-      "classId": "medic",
-      "difficulty": "hellish",
-      "boss": "last-breath-saint",
-      "variant": "crazed",
-      "threat": 10,
-      "subtier": 2,
-      "sp": 27,
-      "coins": 2040,
-      "weapon": "medic-3",
-      "depths": "6/0/0",
-      "spentCoins": 1980,
-      "sustainedDps": 312.43,
-      "attackUptime": 0.65,
-      "armorMultiplier": 1,
-      "bossHealth": 66008.96,
-      "estimatedSeconds": 325.04,
-      "timer": 360,
-      "deadlineRatio": 0.9029
-    },
-    {
-      "mode": "standard",
-      "fight": 2,
-      "classId": "engineer",
-      "difficulty": "hellish",
-      "boss": "ash-baker",
-      "variant": "crazed",
-      "threat": 3,
-      "subtier": 2,
-      "sp": 5,
-      "coins": 317,
-      "weapon": "engineer-1",
-      "depths": "2/0/0",
-      "spentCoins": 240,
-      "sustainedDps": 62.21,
-      "attackUptime": 0.65,
-      "armorMultiplier": 1,
-      "bossHealth": 6563.63,
-      "estimatedSeconds": 162.32,
-      "timer": 180,
-      "deadlineRatio": 0.9018
     }
   ],
   "passed": true,
@@ -790,5 +791,5 @@
       "subtier": 0
     }
   ],
-  "contentRevision": "85c266d3bbb2457910b5237bbab3769bd1ada06014d39ded5eefe5854e5392cb"
+  "contentRevision": "e74efafe14d4694ef9afd8ea6df038c3fd0e697e4b6d5039f9a6d70173c8b6bd"
 }

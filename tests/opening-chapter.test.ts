@@ -76,7 +76,7 @@ function clearStreet(g: Game) {
       } else if (
         target &&
         near <
-          (p.classId === 'bard' ? (g.bard.status(p.id).cadence > 0 ? 135 : 0) : p.classId === 'tank'
+          (p.classId === 'swordsman' ? 205 : p.classId === 'bard' ? (g.bard.status(p.id).cadence > 0 ? 135 : 0) : p.classId === 'tank'
             ? 155
             : p.classId === 'heavy'
               ? 210

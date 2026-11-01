@@ -129,3 +129,8 @@ Base starting shield is recalculated each fight from the difficulty-adjusted cap
 ## Bard: Iven Cair
 
 The eighth discipline builds cadence with actual concertina-note hits, spends it on Resolving Phrase or Encore, and uses Cut In for bounded projectile control. Its Free Play tree has54nodes and three ability-changing upgrades. Story teaches one owned D- foundation through a successful demonstration instead of SP spending. See [the complete Bard contract](../BARD.md) for limits, costs and verification status. The historical seven-person lineup above remains an original reference; it does not depict the new Bard. The twelve-class expansion and full character arcs remain unfinished.
+
+
+## Swordsman: Dara Flint
+
+The ninth discipline uses real covered blade sectors, a measured advance, a three-projectile frontal guard and earned counter openings. Free Play has54nodes, four swords and three transformations; Campaign has an owned D- Measured Cut demonstration without SP. Breath, recovery and canteen equipment use class-specific copy and art. Twenty-eight selected motion/action clips include a held guard. See [the Swordsman contract](../SWORDSMAN.md) for actual limits, Story rules and verification boundaries. Dara and Iven begin their own arcs; the twelve-class roster and full character stories remain unfinished.

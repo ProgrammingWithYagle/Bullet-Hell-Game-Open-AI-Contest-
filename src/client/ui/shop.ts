@@ -16,7 +16,7 @@ import { data } from '../../shared/game.ts';
 import type { Command } from '../../shared/protocol.ts';
 import type { PlayerView } from '../../shared/view.ts';
 import { t, number } from '../i18n.ts';
-import { effectText, supplyText, skillBehavior } from '../content-text.ts';
+import { effectText, supplyText, skillBehavior, supplyName, upgradeName } from '../content-text.ts';
 import { escape as e } from './html.ts';
 import { icon, effectIcon } from './icons.ts';
 import { assets } from '../assets.ts';
@@ -26,20 +26,14 @@ import { locale } from '../i18n.ts';
 type Kind = Command['kind'];
 let mapZoom = 1;
 let shopDifficulty = 'normal';
-const itemArt = (kind: Kind, id: string, glyph: string) =>
-  (
-    kind === 'upgrade'
-      ? assets.upgrades[id]
-      : assets.items[
-          kind +
-            '/' +
-            (kind === 'skill'
-              ? allSkills.find((s) => s.id === id)?.subbranchId
-              : id)
-        ]
-  )
-    ? `<img class="item-art" src="${kind === 'upgrade' ? assets.upgrades[id] : assets.items[kind + '/' + (kind === 'skill' ? allSkills.find((s) => s.id === id)?.subbranchId : id)]}" alt="" aria-hidden="true">`
-    : icon(glyph);
+const swordGear: Record<string,string> = {damage:'honed-edge','fire-rate':'balanced-hilt',magazine:'wrapped-grip',reload:'easy-harness'};
+function itemArt(kind: Kind,id: string,glyph: string,classId: string) {
+  const sword = classId==='swordsman';
+  const special = sword && kind==='upgrade' && swordGear[id] ? assets.items['upgrade/swordsman-'+swordGear[id]]
+    : sword && kind==='supply' && id==='ammo-pouch' ? assets.items['supply/swordsman-canteen'] : undefined;
+  const url = special ?? (kind==='upgrade' ? assets.upgrades[id] : assets.items[kind+'/'+(kind==='skill' ? allSkills.find(s=>s.id===id)?.subbranchId : id)]);
+  return url ? `<img class="item-art" src="${url}" alt="" aria-hidden="true">` : icon(glyph);
+}
 let tab: 'gear' | 'tree' | 'general' = 'tree',
   branchId = '',
   chosen: { kind: Kind; id: string } | null = null;
@@ -175,7 +169,7 @@ function nodeButton(
     kind === 'skill'
       ? ''
       : `<span class="gear-name">${e(name)}</span><span class="gear-cost">${e(cost)}</span>`;
-  return `<button type="button" class="item-node ${kind === 'skill' ? 'skill-node' : ''} ${owned ? 'owned' : ''} ${state.allowed ? 'available' : 'unavailable'} ${chosen?.kind === kind && chosen.id === id ? 'inspected' : ''}" data-inspect="${id}" data-item-kind="${kind}" aria-label="${e(label)}" aria-pressed="${chosen?.kind === kind && chosen.id === id}" title="${e(label + (state.reason && !owned ? ' · ' + state.reason : ''))}">${itemArt(kind, id, glyph)}${caption}${grade ? `<span class="node-grade" aria-hidden="true">${e(grade)}</span>` : ''}${owned ? `<span class="node-status">${icon('check')}</span>` : ''}</button>`;
+  return `<button type="button" class="item-node ${kind === 'skill' ? 'skill-node' : ''} ${owned ? 'owned' : ''} ${state.allowed ? 'available' : 'unavailable'} ${chosen?.kind === kind && chosen.id === id ? 'inspected' : ''}" data-inspect="${id}" data-item-kind="${kind}" aria-label="${e(label)}" aria-pressed="${chosen?.kind === kind && chosen.id === id}" title="${e(label + (state.reason && !owned ? ' · ' + state.reason : ''))}">${itemArt(kind, id, glyph, p.classId)}${caption}${grade ? `<span class="node-grade" aria-hidden="true">${e(grade)}</span>` : ''}${owned ? `<span class="node-status">${icon('check')}</span>` : ''}</button>`;
 }
 export function shopMarkup(
   p: PlayerView,
@@ -217,7 +211,7 @@ export function shopMarkup(
           )
           .join(
             '',
-          )}</div><h3>${e(t('ui.upgrade'))}</h3><div class="gear-icons">${data.upgrades.map((u) => nodeButton(p, 'upgrade', u.id, effectIcon({ [u.effect]: u.amount }), t('upgrade.' + u.id + '.name'))).join('')}</div><h3>${e(t('ui.supplies'))} · ${e(supplyBindings.join(' / '))}</h3><p>${e(t('ui.supplyHelp', { bindings: supplyBindings.join(' / ') }))}</p><div class="gear-icons">${data.supplies.map((s) => nodeButton(p, 'supply', s.id, supplyGlyph(s.effect), t('supply.' + s.id + '.name'))).join('')}</div><p>${p.supplies.map((s, i) => `${e(supplyBindings[i])}: ${s.count ? e(t('supply.' + s.id + '.name')) + ' ×' + number(s.count) : '—'}`).join(' · ')}</p></section>`
+          )}</div><h3>${e(t('ui.upgrade'))}</h3><div class="gear-icons">${data.upgrades.map((u) => nodeButton(p, 'upgrade', u.id, effectIcon({ [u.effect]: u.amount }), upgradeName(u.id,p.classId))).join('')}</div><h3>${e(t('ui.supplies'))} · ${e(supplyBindings.join(' / '))}</h3><p>${e(t('ui.supplyHelp', { bindings: supplyBindings.join(' / ') }))}</p><div class="gear-icons">${data.supplies.map((s) => nodeButton(p, 'supply', s.id, supplyGlyph(s.effect), supplyName(s.id,p.classId))).join('')}</div><p>${p.supplies.map((s, i) => `${e(supplyBindings[i])}: ${s.count ? e(supplyName(s.id,p.classId)) + ' ×' + number(s.count) : '—'}`).join(' · ')}</p></section>`
       : expanded
         ? expandedMap(p)
         : `<div class="branch-tabs" role="tablist" aria-label="${e(t('ui.specializations'))}">${cl.branches.map((b) => `<button data-branch="${b.id}" role="tab" aria-selected="${b.id === branchId}">${e(t('branch.' + b.id))}</button>`).join('')}</div><div class="skill-scroll"><div class="skill-tree" role="group" aria-label="${e(t('branch.' + branch.id))}"><svg class="tree-connections" viewBox="0 0 600 700" preserveAspectRatio="none" aria-hidden="true"><path d="M300 40V80 M100 123V80H500V123 M300 80V123"/>${branch.subbranches
@@ -310,28 +304,28 @@ function details(p: PlayerView) {
     body = `<dl class="item-stats">${[
       ['stat.damage', w.damage],
       ['stat.fireRate', w.fireRate],
-      ['stat.magazine', w.magazine],
-      ['stat.reloadTime', w.reloadTime],
-      ['stat.extraShots', w.pellets],
-      ['stat.pierce', w.pierce],
+      [p.classId==='swordsman'?'ui.swordBreath':'stat.magazine', w.magazine],
+      [p.classId==='swordsman'?'ui.swordRecovery':'stat.reloadTime', w.reloadTime],
+      ...(p.classId==='swordsman'&&'meleeReach'in w?([['stat.bladeReach',w.meleeReach],['stat.bladeArc',w.meleeArcDegrees]] as const):[['stat.extraShots', w.pellets]]),
+      [p.classId==='swordsman'?'stat.swordCleave':'stat.pierce', w.pierce],
     ]
       .map(
         ([key, value]) =>
           `<div><dt>${e(t(String(key)))}</dt><dd>${number(Number(value), 2)}</dd></div>`,
       )
-      .join('')}</dl>`;
+      .join('')}</dl>${p.classId==='swordsman'?`<p>${e(t('weapon.'+id+'.description'))}</p>`:''}`;
   } else if (kind === 'supply') {
     const item = data.supplies.find((s) => s.id === id)!;
-    name = t('supply.' + id + '.name');
+    name = supplyName(id,p.classId);
     glyph = supplyGlyph(item.effect);
     body = `<p>${e(supplyText(id, shopDifficulty, p.classId))}</p><p>${e(t('ui.cooldown', { seconds: t('template.seconds', { value: number(item.cooldown) }) }))}</p><p>${number(p.supplies.find((s) => s.id === id)?.count ?? 0)} / ${number(item.maximumStack)}</p>`;
   } else {
     const u = data.upgrades.find((u) => u.id === id)!;
-    name = t('upgrade.' + id + '.name');
+    name = upgradeName(id,p.classId);
     glyph = effectIcon({ [u.effect]: u.amount });
     body = `<p class="effect-list">${e(effectText({ [u.effect]: u.amount }))}</p><p>${e(t('ui.upgrade'))} ${number(p.upgrades[id] ?? 0)} / ${number(u.maximum)}</p>`;
   }
-  return `<div class="detail-symbol">${itemArt(kind, id, glyph)}${grade ? `<b>${e(grade)}</b>` : ''}</div><h3>${e(name)}</h3>${body}<div class="detail-purchase"><p class="price">${number(state.price)} ${e(t(kind === 'skill' ? 'ui.skillPoints' : 'ui.coins'))}</p><button id="buy-selected" class="primary" ${state.allowed ? '' : 'disabled'}>${e(t('ui.buy'))}</button>${state.reason ? `<p class="purchase-reason">${e(state.reason)}</p>` : ''}</div>`;
+  return `<div class="detail-symbol">${itemArt(kind, id, glyph, p.classId)}${grade ? `<b>${e(grade)}</b>` : ''}</div><h3>${e(name)}</h3>${body}<div class="detail-purchase"><p class="price">${number(state.price)} ${e(t(kind === 'skill' ? 'ui.skillPoints' : 'ui.coins'))}</p><button id="buy-selected" class="primary" ${state.allowed ? '' : 'disabled'}>${e(t('ui.buy'))}</button>${state.reason ? `<p class="purchase-reason">${e(state.reason)}</p>` : ''}</div>`;
 }
 export const supplyGlyph = (effect: string) =>
   ({

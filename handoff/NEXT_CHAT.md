@@ -2,6 +2,8 @@
 
 Continue in this SAME checkout: `C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)`. Use `feat/first-playable-loop` and draft PR #14. Inspect Git status and current services before using saved identities. Do not create another game clone or worktree.
 
+**Working tree continuation:** Swordsman/Dara is under development after the verified Bard checkpoint. The working catalog now contains nine candidate classes, but the new class has not passed a full gate or been published. [SWORDSMAN_WORKING](../docs/SWORDSMAN_WORKING.md) records implemented code, focused evidence and remaining integration. Stable frozen reviews below remain the verified eight-class Bard build. Keep the full goal active.
+
 ## Current development — Bard, 2026-11-01
 
 Game source **61141f9a1c1cee3e2d0258d47308f2593121f6e9** is committed/pushed on feat/first-playable-loop. Build **2026.11.01-bard / protocol 47**, content`85c266d3bbb2457910b5237bbab3769bd1ada06014d39ded5eefe5854e5392cb`, passes **1135 tests**, TypeScript, all 15 catalogs, checked word counts,96 early-build model cases, production build and71 encounter atlas contracts. [Exact-source GitHub CI](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/41333123285) passed every job/step; ci.json records it. Runtime SHA`b7a995fd8fc865549e3b863a208a8a56c51fb28d687d6ac1a5b7e1dd33edc53b`; snapshotSHA`5d5481a7a60016ff55ac09f9053b85c0e2e0fca3cd62282dd899078589601710`. Full local gate04 is the final source evidence. Earlier failing raw attempts remain separate in workspace outputs.

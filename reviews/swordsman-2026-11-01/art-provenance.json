@@ -1,0 +1,232 @@
+{
+  "createdAt": "2026-11-01T19:34:30.202Z",
+  "requests": [
+    {
+      "file": "assets/production/generated/swordsman-2026-11-01/dara-selection-v1.png",
+      "sha256": "150b83524eb57236db674145963506715ec280248a0a65829ee4725bcf931978",
+      "request": "assets/production/generated/swordsman-2026-11-01/PROMPT.txt",
+      "requestSha256": "b3e313f93e74eee72a887f7a41d0213d8ffeb657b2c0637be8c880b1f0f912da",
+      "purpose": "selection portrait",
+      "inputBindings": [],
+      "mode": "built-in imagegen",
+      "transparentBackground": true
+    },
+    {
+      "file": "assets/production/generated/swordsman-2026-11-01/dara-four-view-v1.png",
+      "sha256": "508f56b545b10b3d62a599a10d3acfae9b246a6dc9c6c788b18a4b7264931d9d",
+      "request": "assets/production/generated/swordsman-2026-11-01/FOUR-VIEW-PROMPT.txt",
+      "requestSha256": "2a1953dcbe1fb24d60aba33411d7f35d1e7b0fc935655e8bfde8c40b52f31ac4",
+      "purpose": "initial directional candidate; missing west blade retained",
+      "inputBindings": [
+        {
+          "projectPath": "assets/production/generated/swordsman-2026-11-01/dara-selection-v1.png",
+          "sha256": "150b83524eb57236db674145963506715ec280248a0a65829ee4725bcf931978"
+        },
+        {
+          "projectPath": "assets/production/generated/bard-2026-11-01/iven-four-view-v1.png",
+          "sha256": "9133077dd3d85444b94158e0b6fe872a6c6e52dc79329d96f225879bff6b468e"
+        }
+      ],
+      "mode": "built-in imagegen",
+      "transparentBackground": true
+    },
+    {
+      "file": "assets/production/generated/swordsman-2026-11-01/dara-four-view-v2.png",
+      "sha256": "7b1c15abbf76c1730b01227cea9edaeee4885f054288be2e1ff94f33daa895de",
+      "request": "assets/production/generated/swordsman-2026-11-01/FOUR-VIEW-V2-PROMPT.txt",
+      "requestSha256": "522fa40625399ac2aa41935b2e7e405a6759083912cae0161c4c2c2b6d010d81",
+      "purpose": "west blade repair; selected idle candidate",
+      "inputBindings": [
+        {
+          "projectPath": "assets/production/generated/swordsman-2026-11-01/dara-four-view-v1.png",
+          "sha256": "508f56b545b10b3d62a599a10d3acfae9b246a6dc9c6c788b18a4b7264931d9d"
+        }
+      ],
+      "mode": "built-in imagegen",
+      "transparentBackground": true
+    },
+    {
+      "file": "assets/production/generated/swordsman-2026-11-01/dara-run-v1.png",
+      "sha256": "b1adf3d29072ce26a1be0e9fbdfdf443484b2ac4fdb36f15750479f70bab7aca",
+      "request": "assets/production/generated/swordsman-2026-11-01/RUN-PROMPT.txt",
+      "requestSha256": "6eb4127a4c6f680442bdf71b47a7e6a41091bdda32d2b811b0fb4e1717576b92",
+      "purpose": "run candidate",
+      "inputBindings": [
+        {
+          "projectPath": "assets/production/generated/swordsman-2026-11-01/dara-four-view-v2.png",
+          "sha256": "7b1c15abbf76c1730b01227cea9edaeee4885f054288be2e1ff94f33daa895de"
+        }
+      ],
+      "mode": "built-in imagegen",
+      "transparentBackground": true
+    },
+    {
+      "file": "assets/production/generated/swordsman-2026-11-01/dara-attack-v1.png",
+      "sha256": "ead4ebfc82a15bab5ae90a6b8364d230364c64f54bed5875a007a0feac78d2a9",
+      "request": "assets/production/generated/swordsman-2026-11-01/ATTACK-PROMPT.txt",
+      "requestSha256": "bd99009efcffa9629592e7410e1e0cdb2e8054f19192eec1be160442ba3d18f3",
+      "purpose": "attack candidate",
+      "inputBindings": [
+        {
+          "projectPath": "assets/production/generated/swordsman-2026-11-01/dara-four-view-v2.png",
+          "sha256": "7b1c15abbf76c1730b01227cea9edaeee4885f054288be2e1ff94f33daa895de"
+        }
+      ],
+      "mode": "built-in imagegen",
+      "transparentBackground": true
+    },
+    {
+      "file": "assets/production/generated/swordsman-2026-11-01/dara-guard-v1.png",
+      "sha256": "a8c64fa546d253d7aa8f6c767e9e2a7369223340b8d868c30139c9dc0927405c",
+      "request": "assets/production/generated/swordsman-2026-11-01/GUARD-PROMPT.txt",
+      "requestSha256": "6222e242b02e31eda90e50d88de787ddbc2b05fa7ae97187a3a5e365acd4540e",
+      "purpose": "guard candidate",
+      "inputBindings": [
+        {
+          "projectPath": "assets/production/generated/swordsman-2026-11-01/dara-four-view-v2.png",
+          "sha256": "7b1c15abbf76c1730b01227cea9edaeee4885f054288be2e1ff94f33daa895de"
+        }
+      ],
+      "mode": "built-in imagegen",
+      "transparentBackground": true
+    },
+    {
+      "file": "assets/production/generated/swordsman-2026-11-01/dara-hurt-v1.png",
+      "sha256": "d2301560d518d3fed9cb60699043fb2d1c53946d77a70e400a5da213f84541fc",
+      "request": "assets/production/generated/swordsman-2026-11-01/HURT-PROMPT.txt",
+      "requestSha256": "ca7ed40380caf5cffa4ad3c2925319d80e3a6d9c8e34ff5a2f2bc739912460f7",
+      "purpose": "hurt candidate",
+      "inputBindings": [
+        {
+          "projectPath": "assets/production/generated/swordsman-2026-11-01/dara-four-view-v2.png",
+          "sha256": "7b1c15abbf76c1730b01227cea9edaeee4885f054288be2e1ff94f33daa895de"
+        }
+      ],
+      "mode": "built-in imagegen",
+      "transparentBackground": true
+    },
+    {
+      "file": "assets/production/generated/swordsman-2026-11-01/dara-dash-v1.png",
+      "sha256": "bddddfbb3069195cb5bae07dca59f8ae25fd78bfc6704fba045239a8354749f9",
+      "request": "assets/production/generated/swordsman-2026-11-01/DASH-PROMPT.txt",
+      "requestSha256": "d2bbfadfe773853706efd8da84a34096c44f2f161b6068016c77363af31b07c6",
+      "purpose": "dash candidate",
+      "inputBindings": [
+        {
+          "projectPath": "assets/production/generated/swordsman-2026-11-01/dara-four-view-v2.png",
+          "sha256": "7b1c15abbf76c1730b01227cea9edaeee4885f054288be2e1ff94f33daa895de"
+        }
+      ],
+      "mode": "built-in imagegen",
+      "transparentBackground": true
+    },
+    {
+      "file": "assets/production/generated/swordsman-2026-11-01/dara-downed-v1.png",
+      "sha256": "8bf2e7a381bf7698f909442ca5088e9fb09c8f06aeccf558ba12835b67af8fbb",
+      "request": "assets/production/generated/swordsman-2026-11-01/DOWNED-PROMPT.txt",
+      "requestSha256": "c79175d8c5594bfb2edd7022d8ff364cc35086410b480973bb29d80db7394a8d",
+      "purpose": "downed candidate",
+      "inputBindings": [
+        {
+          "projectPath": "assets/production/generated/swordsman-2026-11-01/dara-four-view-v2.png",
+          "sha256": "7b1c15abbf76c1730b01227cea9edaeee4885f054288be2e1ff94f33daa895de"
+        }
+      ],
+      "mode": "built-in imagegen",
+      "transparentBackground": true
+    },
+    {
+      "file": "assets/production/generated/swordsman-2026-11-01/dara-downed-v2.png",
+      "sha256": "a09691c0d5351c2e7012efb1bf90143d790ecb7459c763cdb2dc9893658f911e",
+      "request": "assets/production/generated/swordsman-2026-11-01/DOWNED-V2-PROMPT.txt",
+      "requestSha256": "3278e33b5577c258345fc36a0d7974f26adcbeeaf736a743ba5f1748e427cbad",
+      "purpose": "selected corrected north downed handedness",
+      "inputBindings": [
+        {
+          "projectPath": "assets/production/generated/swordsman-2026-11-01/dara-downed-v1.png",
+          "sha256": "8bf2e7a381bf7698f909442ca5088e9fb09c8f06aeccf558ba12835b67af8fbb"
+        }
+      ],
+      "mode": "built-in imagegen",
+      "transparentBackground": true
+    },
+    {
+      "file": "assets/production/generated/swordsman-2026-11-01/swordsman-items-v1.png",
+      "sha256": "92c4a7409cd2db846b9ff8b556ffb38a7d089d211033664c1edd470b9f2a7eee",
+      "request": "assets/production/generated/swordsman-2026-11-01/ITEMS-PROMPT.txt",
+      "requestSha256": "cf0a7f6c4467cd9132b4549ab94acbc8d76a8b959d9b7920be7c2a5851297499",
+      "purpose": "thirteen weapon/path icons",
+      "inputBindings": [],
+      "mode": "built-in imagegen",
+      "transparentBackground": true
+    },
+    {
+      "file": "assets/production/generated/swordsman-2026-11-01/swordsman-gear-v1.png",
+      "sha256": "8d6388f3b97de482b77c66203188f51947bf2d69ff6d3f8db546aa838f3e676c",
+      "request": "assets/production/generated/swordsman-2026-11-01/GEAR-PROMPT.txt",
+      "requestSha256": "0a232797856b955736ba5e649afd6e70278ba0a51009ff40f274e0d220123ee2",
+      "purpose": "initial gear candidate; edge-clipped strap retained",
+      "inputBindings": [],
+      "mode": "built-in imagegen",
+      "transparentBackground": true
+    },
+    {
+      "file": "assets/production/generated/swordsman-2026-11-01/swordsman-gear-v2.png",
+      "sha256": "75affa83700616df3e585286ff6ed6534e92acd8ad23ef06b4a666a1488e7352",
+      "request": "assets/production/generated/swordsman-2026-11-01/GEAR-V2-PROMPT.txt",
+      "requestSha256": "0e14f26b5597f239a4d812ba32a68b405cacd2e1a9679939fb58dba29fe682e0",
+      "purpose": "five selected equipment icons with complete gutters",
+      "inputBindings": [
+        {
+          "projectPath": "assets/production/generated/swordsman-2026-11-01/swordsman-gear-v1.png",
+          "sha256": "8d6388f3b97de482b77c66203188f51947bf2d69ff6d3f8db546aa838f3e676c"
+        }
+      ],
+      "mode": "built-in imagegen",
+      "transparentBackground": true
+    }
+  ],
+  "generatedNatives": 13,
+  "selectionPortraits": 1,
+  "independentIdleFacings": 4,
+  "selectedRunActionClips": 28,
+  "selectedRunActionPoses": 88,
+  "itemIcons": 18,
+  "sourcePromptsSaved": true,
+  "originalsRetained": true,
+  "technicalNormalizationOnly": true,
+  "libraries": [
+    {
+      "projectPath": "assets/production/normalized/library.json",
+      "sha256": "beae1f475412cb0963e3d23faa86c03ac4cdf1bbec96a82a71187d6953231b05"
+    },
+    {
+      "projectPath": "assets/delivery/selection-portraits-v1/library.json",
+      "sha256": "f21be63cfe5a4db8ad6d155b80ae070bd1ef3aa2d742f27bfbc597a2705769af"
+    },
+    {
+      "projectPath": "assets/production/motion/swordsman-library.json",
+      "sha256": "8bc3d5218c0691be6f2e1ca5e84a4bdc35ba12850bb4cd4d25ac6e808a64c777"
+    },
+    {
+      "projectPath": "assets/production/motion/swordsman-actions/library.json",
+      "sha256": "57dc0b492557c748fba1c2223bcf97ee1b4107196951b6959ecfab25809f1b1b"
+    },
+    {
+      "projectPath": "assets/delivery/survivor-motion-v1/library.json",
+      "sha256": "4b381c87fa792a64fa9f5cfecebcec3f9bc695d86bfdf53a4a1418cd3b09c753"
+    },
+    {
+      "projectPath": "assets/production/items/library.json",
+      "sha256": "d6df2754cdf5f95d09649547ff9c3eef42790f4b0891b2843b673725572b36c8"
+    }
+  ],
+  "renderedAccepted": false,
+  "humanAccepted": false,
+  "limits": [
+    "Assistant inspection of native figures and selected normalized cells only. Running stride, action transitions, all handedness and readability still need rendered/device/human acceptance.",
+    "Only whole-figure crops, uniform sheet scales and translation; no reflection, rigging or painted pose substitutions. Uneven gutters use explicitly recorded figure rectangles. Wide attacks use320px cells.",
+    "Original synthesized steel/cloth cues are executable sound specifications; no recorded voice or listening acceptance.",
+    "No browser automation, production deployment, main merge or Windows replacement."
+  ]
+}

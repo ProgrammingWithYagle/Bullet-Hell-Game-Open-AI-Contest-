@@ -19,8 +19,8 @@ test('one stable camera contains every complete boss pose at all four physical b
   }
 });
 
-test('all197survivor clips remain fully visible at each map/difficulty border with unchanged ground-body clearance',()=>{
-  assert.equal(survivorCameraClips.length,197);const radius=data.rules.playerRadius;
+test('all226survivor clips remain fully visible at each map/difficulty border with unchanged ground-body clearance',()=>{
+  assert.equal(survivorCameraClips.length,226);const radius=data.rules.playerRadius;
   for(const map of data.arenas)for(const difficulty of data.difficulties)for(const clip of survivorCameraClips){
     const b=runtimeArena(map.id,difficulty.id).bounds;
     for(const x of [b.x+radius,b.x+b.width-radius])for(const y of [b.y+radius,b.y+b.height-radius]){

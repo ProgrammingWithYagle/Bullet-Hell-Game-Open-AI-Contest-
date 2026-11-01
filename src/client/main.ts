@@ -75,7 +75,7 @@ import { mountSetup, setupOptions } from './ui/setup.ts';
 import { shopMarkup, bindShop, supplyGlyph } from './ui/shop.ts';
 import {chapterResultMarkup} from './ui/chapter.ts';
 import { icon } from './ui/icons.ts';
-import { supplyText } from './content-text.ts';
+import { supplyText, supplyName } from './content-text.ts';
 import { voteMarkup } from './ui/votes.ts';
 import { rateBuild, buildGrade } from '../shared/build-rating.ts';
 import { data } from '../shared/game.ts';
@@ -595,7 +595,7 @@ function update(view: View) {
   shield.max=Math.max(1,p.maxShield);shield.value=Math.max(0,Math.min(p.maxShield,p.shield));
   shield.closest<HTMLElement>('.shield-meter')!.dataset.unavailable=String(p.maxShield===0);
   $('shield-text').textContent=number(p.shield)+' / '+number(p.maxShield);
-  $('ammo-label').textContent=t(p.reloadAt>view.combatTick?'ui.reloading':'ui.ammo');
+  $('ammo-label').textContent=t(p.classId==='swordsman'?(p.reloadAt>view.combatTick?'ui.swordRecovery':'ui.swordBreath'):(p.reloadAt>view.combatTick?'ui.reloading':'ui.ammo'));
   $('ammo').textContent=number(p.ammo);
   $('coins-value').textContent=number(p.coins);
   $('skill-points-value').textContent=number(p.sp);
@@ -605,7 +605,7 @@ function update(view: View) {
       slot = p.supplies[index];
     const item = data.supplies.find((s) => s.id === slot?.id);
     const remaining = Math.max(0, Math.ceil((p.supplyAt - view.combatTick) / 30));
-    const name = item ? t('supply.' + item.id + '.name') : t('ui.supplies');
+    const name = item ? supplyName(item.id,p.classId) : t('ui.supplies');
     button.disabled =
       !item ||
       !slot.count ||
@@ -631,11 +631,12 @@ function update(view: View) {
             .map((n) => bindingLabel(inputOptions.bindings[('supply' + n) as 'supply1'][0]))
             .join(' / '),
         });
-    if (button.dataset.item !== slot.id) {
-      button.dataset.item = slot.id;
+    const artId=p.classId==='swordsman'&&slot.id==='ammo-pouch'?'swordsman-canteen':slot.id;
+    if (button.dataset.item !== artId) {
+      button.dataset.item = artId;
       button.querySelector('[data-supply-glyph]')!.innerHTML =
-        item && assets.items['supply/' + item.id]
-          ? `<img class="supply-art" src="${assets.items['supply/' + item.id]}" alt="" aria-hidden="true">`
+        item && assets.items['supply/' + artId]
+          ? `<img class="supply-art" src="${assets.items['supply/' + artId]}" alt="" aria-hidden="true">`
           : icon(item ? supplyGlyph(item.effect) : 'ability');
     }
     button.querySelector('b')!.textContent = bindingLabel(
@@ -700,6 +701,12 @@ function update(view: View) {
       ' ' +
       clock((view.accord.until - view.combatTick) / 30);
   const cl = data.classes.find((c) => c.id === p.classId)!;
+  const swordHost=$('abilities').querySelector<HTMLElement>('[data-sword-state]');
+  if(p.classId==='swordsman'){
+    const status=swordHost??document.createElement('span');status.dataset.swordState='';status.className='ability';
+    const value=[(p.kit.counterUntil??0)>view.combatTick?t('ui.swordCounter'):'',(p.kit.swordCuts??0)>0?t('ui.swordCuts',{count:number(p.kit.swordCuts??0)}):''].filter(Boolean).join(' · ');
+    status.hidden=!value;if(status.textContent!==value)status.textContent=value;if(!swordHost)$('abilities').append(status);
+  }else swordHost?.remove();
   const cadenceHost=$('abilities').querySelector<HTMLElement>('[data-bard-cadence]');
   if(p.classId==='bard'){
     const meter=cadenceHost??document.createElement('span');

@@ -1,5 +1,6 @@
 import {isBellSound,playBellSound} from './bell-sound.ts';
 import {isBardSound,playBardSound} from './bard-sound.ts';
+import {isSwordSound,playSwordSound} from './sword-sound.ts';
 import phaseTurn from '../../assets/production/audio/cues/phase-turn-v1.wav?url';
 import { CombatRhythm } from './combat-rhythm.ts';
 import tempos from './music-tempos.json';
@@ -96,6 +97,11 @@ export class AudioBus {
     const now = performance.now();
     if (now - (this.last.get(id) ?? -Infinity) < 60) return;
     this.last.set(id, now);
+    if(isSwordSound(id)){
+      if(this.volume<=0)return;this.active++;
+      try{playSwordSound(this.context,id,this.volume,()=>this.active--);}catch{this.active--;}
+      return;
+    }
     if(isBardSound(id)){
       if(this.volume<=0)return;
       this.active++;

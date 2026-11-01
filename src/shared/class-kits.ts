@@ -1,6 +1,7 @@
 // Additional class abilities run only in the authoritative fixed-step simulation.
 import { hasTalent, type TalentId } from './class-talents.ts';
 import type { BardCue } from './bard-kit.ts';
+import type { SwordCue } from './swordsman-kit.ts';
 import type { TrainingEventKind } from './story-training.ts';
 import type { TalentCue } from './ability-transforms.ts';
 import { HZ, type Vec } from './protocol.ts';
@@ -16,6 +17,12 @@ import type { Minions } from './minions.ts';
 const ticks = (seconds: number) => Math.ceil(seconds * HZ);
 export const RESCUE_CHARGE_TICKS = ticks(0.3) + 1;
 export type KitStatus = {
+  counterUntil?: number;
+  swordUntil?: number;
+  swordCuts?: number;
+  guardUntil?: number;
+  guardRemaining?: number;
+  guardActive?: boolean;
   cadence?: number;
   chargeUntil: number;
   veilUntil: number;
@@ -58,6 +65,7 @@ export type Construct = {
   until: number;
 };
 export type KitCue =
+  | SwordCue
   | BardCue
   | TalentCue
   | Construct
