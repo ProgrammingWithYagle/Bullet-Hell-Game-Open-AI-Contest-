@@ -1,3 +1,4 @@
+import type {SkirmishView} from './ward-skirmish.ts';
 import type { RunProgress } from './run-progress.ts';
 import type { TerrainStatus } from './district-director.ts';
 import type { KitCue, KitStatus } from './class-kits.ts';
@@ -53,6 +54,7 @@ export type PlayerView = {
   dodgeCooldown: number;
 };
 export type View = {
+  objective?:SkirmishView;
   run: { id: string; mode: Game['settings']['mode']; difficulty: string; practiceOnly: true; testingModified?: boolean; customized?:boolean;
     arenaSelection?: Game['settings']['arenaSelection']; selectedArenaId?: string; maximumPlayers?: number };
   secretStatus: Game['secretStatus'];
@@ -84,6 +86,7 @@ export type View = {
 };
 export function viewOf(g: Game, owner: string): View {
   return {
+    ...(g.objective?{objective:g.objective}:{}),
     run: {
       id: g.settings.runId,
       mode: g.settings.mode,

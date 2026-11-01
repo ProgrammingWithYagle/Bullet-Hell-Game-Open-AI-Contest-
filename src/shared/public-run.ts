@@ -10,6 +10,7 @@ export function publicRunSettings(
 ): Partial<Settings> {
   if(settings.mode==='story')return {...settings,openingBossId:'constable',openingArenaId:'gatehouse',arenaSelection:'route'};
   if(settings.freePlay!==undefined&&!validFreePlay(settings.freePlay))throw Error('Invalid Free Play settings');
+  if(settings.freePlay?.scenarioId)return {...settings,mode:'short',openingBossId:'constable',openingArenaId:'triage-yard',arenaSelection:'fixed'};
   if(settings.freePlay?.openingBossId)return {...settings,openingBossId:settings.freePlay.openingBossId};
   const mode = settings.mode ?? "short",
     seed = settings.seed ?? 1;

@@ -489,6 +489,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       arenaId: g.arena.id,
     });
     s.intermission = JSON.stringify({
+      ...(g.objective?{objective:g.objective}:{}),
       run: {
         id: g.settings.runId,
         mode: g.settings.mode,

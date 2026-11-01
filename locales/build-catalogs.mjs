@@ -1,3 +1,4 @@
+import {wardSkirmishMessages} from './source/ward-skirmish.mjs';
 import {storyReadingMessages} from './source/story-reading.mjs';
 import {lamplightWatchMessages} from './source/lamplight-watch.mjs';
 import {stationSignalsMessages} from './source/station-signals.mjs';
@@ -57,7 +58,7 @@ for (const id of ids) {
     keys.forEach((key, index) => { messages[`${group}.${key}`] = values[index]; });
   }
   Object.assign(messages, additional[id]);
-  Object.assign(messages, expansionMessages(id), shieldSpecializationMessages(id),generalMobilityMessages(id),glassSurgeryMessages(id),storyCampaignMessages(id),bakerOvenMessages(id),sluicePressureMessages(id),playHubsMessages(id),stationSignalsMessages(id),lamplightWatchMessages(id),storyReadingMessages(id));
+  Object.assign(messages, expansionMessages(id), shieldSpecializationMessages(id),generalMobilityMessages(id),glassSurgeryMessages(id),storyCampaignMessages(id),bakerOvenMessages(id),sluicePressureMessages(id),playHubsMessages(id),stationSignalsMessages(id),lamplightWatchMessages(id),storyReadingMessages(id),wardSkirmishMessages(id));
   Object.assign(messages, earlyWatchMessages(id));
   Object.assign(messages, skillMapMessages(id));
   Object.assign(messages, interfaceMessages(id));
@@ -87,7 +88,7 @@ for (const id of ids) {
     wardenMessages(id), crazedHorizonMessages(id), courierRouteMessages(id), ratcatcherMusterMessages(id),
     clerkAppealMessages(id), tollkeeperReturnMessages(id), marshalMessages(id), widowMessages(id),
     ambulanceMessages(id), matronMessages(id), moldStillMessages(id), bellReturnChainMessages(id),
-    runtimeExtraMessages(id), bossGuideMessages(id), stitchworkMessages(id), fieldJournalMessages(id), shieldSpecializationMessages(id),generalMobilityMessages(id),glassSurgeryMessages(id),storyCampaignMessages(id),bakerOvenMessages(id),sluicePressureMessages(id),playHubsMessages(id),stationSignalsMessages(id),lamplightWatchMessages(id),storyReadingMessages(id));
+    runtimeExtraMessages(id), bossGuideMessages(id), stitchworkMessages(id), fieldJournalMessages(id), shieldSpecializationMessages(id),generalMobilityMessages(id),glassSurgeryMessages(id),storyCampaignMessages(id),bakerOvenMessages(id),sluicePressureMessages(id),playHubsMessages(id),stationSignalsMessages(id),lamplightWatchMessages(id),storyReadingMessages(id),wardSkirmishMessages(id));
   const info = catalog.locales.find(x => x.id === id);
   const output = {
     meta: { schemaVersion: 1, locale: id, nativeName: info.name, direction: info.direction,

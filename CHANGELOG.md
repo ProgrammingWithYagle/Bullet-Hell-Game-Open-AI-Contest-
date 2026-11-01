@@ -1,6 +1,20 @@
 # Changelog
 
-Development build **2026.10.31-first-return**, protocol 47. The current contest Site uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.10.31-ward-approach**, protocol 47. The current contest Site uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-10-31 — A street fight without a boss
+
+### Ward Approach practice scenario
+
+- Free Play can launch a standalone three-wave ordinary-enemy objective at Triage Yard. Spawn sites are announced for2.5seconds, remain on legal floor away from cover/lava and initial survivor positions, and are cancelled rather than silently relocated if occupied. Each later group waits for the current one to be cleared.
+- The objective owns its enemy counts, warning state and180-second deadline. It uses existing humanoid ordinary-actor art, navigation, shots, area damage, slow and decoy rules. Party-size budgets are bounded. New zombie/skeleton/wraith identities and an integrated Story objective graph remain unfinished.
+- A cleared skirmish ends the scenario without a boss defeat, boss stamp, SP/coin advancement, campaign completion or record. It has an ordinary-enemy HUD and result, actual enemy aiming targets and existing city ambience. It does not present the inert legacy boss slot as an enemy or use it for completion.
+- All seven current classes are checked with real shots. Geometry, dense-party warning ownership, failure/cleanup, setup, record exclusions and actual two-peer objective replication are covered. The scripted shooting checks use invulnerability to isolate damage/completion behavior; they do not establish human balance.
+
+### Twelve disciplines are accepted scope
+
+- The planned roster is now twelve: the existing seven plus Swordsman, Summoner, Ranger, Alchemist and Bard. All five are accepted additions; only seven are currently playable. Shared-class worldbuilding, original Bard resonance/performance ideas and distinct combat roles are recorded in TWELVE_CLASS_PLAN.md.
+- The first expanded chapter blueprint adds ordinary encounters, investigation/defense, consequence scenes and role training around selected boss milestones. It is authoring work. Story mastery replacing SP, slower resources, five full new classes, broader living antagonists, character voices and expression/action sprites remain unfinished.
 
 ## 2026-10-31 — A full-screen opening and a separate Story flow
 

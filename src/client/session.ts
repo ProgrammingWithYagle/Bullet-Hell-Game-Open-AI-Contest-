@@ -568,6 +568,7 @@ function networkView(s: WorldState): View {
   }));
   return {
     run: intermission.run,
+    ...(intermission.objective?{objective:intermission.objective}:{}),
     tick: s.tick,
     combatTick: s.combatTick,
     phase: s.phase as Phase,

@@ -1,3 +1,4 @@
+import {drawSkirmishWarnings} from './skirmish-presentation.ts';
 import {drawStitchCue, isStitchCue} from './stitch-cues.ts';
 import {isBellCue} from './bell-presentation.ts';
 import {drawBellCue} from './bell-cues.ts';
@@ -998,9 +999,10 @@ export class CombatScene extends Phaser.Scene {
       f.fillStyle(0x071410, 1).fillCircle(view.boss.x, view.boss.y, 9);
       f.lineStyle(2, 0xd2d7b7, 1).strokeCircle(view.boss.x, view.boss.y, 11);
     }
+    drawSkirmishWarnings(h,view.objective,view.phase,now);
     const warden = view.boss.id === 'lantern-warden';
     this.bossSprite.setVisible(
-      (view.phase === 'combat' &&
+      (!view.objective && view.phase === 'combat' &&
         view.boss.id !== 'choir' &&
         view.boss.id !== 'bell-triplets' &&
         !view.bossCues.some(
@@ -1022,7 +1024,7 @@ export class CombatScene extends Phaser.Scene {
     );
     const variantAppearance = bossVariantAppearance(view.boss.variant, view.boss.health > 0);
     this.bossSprite.setTint(variantAppearance.tint);
-    if (view.phase === 'combat' && variantAppearance.marks) {
+    if (!view.objective && view.phase === 'combat' && variantAppearance.marks) {
       f.lineStyle(2, variantAppearance.ring, variantAppearance.ringAlpha);
       for (let n = 0; n < variantAppearance.marks; n++) {
         const angle = (n * Math.PI * 2) / variantAppearance.marks;

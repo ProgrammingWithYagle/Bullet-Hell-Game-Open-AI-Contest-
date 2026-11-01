@@ -1,3 +1,4 @@
+import {WardSkirmish,type SkirmishView} from './ward-skirmish.ts';
 import {validFreePlay,customizedFreePlay,type FreePlayOptions} from './free-play.ts';
 import {storyCampaign,storyBossOffers,validStoryBoundary} from './story-campaign.ts';
 import {allSkills,skillFor,advanceMobility,takeDodge,resetMobility,dodgeMaximum,sprintUnlocked,mobilityRules} from './mobility.ts';
@@ -319,6 +320,8 @@ export class Game {
   readonly votes = new Map<string, number>();
   private nextId = 1;
   testingModified = false;
+  private skirmish:WardSkirmish|undefined;
+  get objective():SkirmishView|undefined {return this.skirmish?.view();}
   get customized(){return customizedFreePlay(this.settings.freePlay);}
   scoreObserver?: { start(game: Game): void; damage(id: string, hp: number): void; clear(game: Game): void };
   private freeShots: Shot[] = [];
@@ -364,6 +367,7 @@ export class Game {
         settings.openingArenaId ?? (settings.mode === 'raid' ? 'ossuary-works' : 'gatehouse'),
       arenaSelection: settings.arenaSelection ?? (settings.openingArenaId ? 'fixed' : 'route'),
     };
+    if(this.settings.freePlay?.scenarioId){if(this.settings.mode!=='short')throw Error('Invalid skirmish mode');this.settings.openingBossId='constable';this.settings.openingArenaId='triage-yard';this.settings.arenaSelection='fixed';this.skirmish=new WardSkirmish();}
     if(this.settings.mode==='story'){this.settings.openingBossId='constable';this.settings.openingArenaId='gatehouse';this.settings.arenaSelection='route';}
     if (
       typeof this.settings.runId !== 'string' ||
@@ -915,8 +919,9 @@ export class Game {
     this.director.endless.prepare(this.signatureContext());
     for (const p of this.roster()) p.terrain = freshTerrain();
     this.bossPrevious = { x: this.boss.x, y: this.boss.y };
-    this.events.push({ type: 'sound', id: 'boss-phase' });
-    this.scoreObserver?.start(this);
+    if(!this.skirmish)this.events.push({ type: 'sound', id: 'boss-phase' });
+    if(this.skirmish){this.boss.health=0;this.boss.maxHealth=1;this.boss.deadline=this.combatTick+ticks(180);this.director.reset('constable');this.signatures=[];this.skirmish.start(this.combatTick,this.roster().length);}
+    else this.scoreObserver?.start(this);
   }
   private pruneExpired() {
     for (const [id, p] of this.players)
@@ -1143,22 +1148,24 @@ export class Game {
       this.limitPersonalShield(p);
       if (p.status === 'active') this.grid.insert(p, 9 + Math.hypot(p.x - p.oldX, p.y - p.oldY));
     }
-    if (this.boss.health <= 0) {
+    if (!this.skirmish && this.boss.health <= 0) {
       this.victory();
       return;
     }
+    if(!this.skirmish){
     this.bossPrevious = { x: this.boss.x, y: this.boss.y };
     this.stepBoss();
     this.variantPressure.step({now:this.combatTick,bossId:this.boss.id,variant:this.boss.variant,phase:this.boss.phase,bounds:this.arena.bounds,targets:this.aimTargets(),damageScale:this.bossDamageScale(),blocked:this.bossCastBlocked(),paused:this.boss.id==='lamplighter'||this.boss.id==='stationmaster'||this.boss.id==='sluice-keeper'||this.boss.id==='ash-baker'||this.boss.id==='stitchwright'||this.boss.id==='bellringer'||this.boss.id==='alchemist'||this.combatTick<this.boss.staggerUntil||(this.boss.id==='lantern-warden'&&!this.wardenPatrol.canCastAuxiliary),id:()=>this.id(),damage:(id,amount)=>this.hurtTarget(id,amount)});
     this.brutalVolley.release(this.combatTick,(point,angle,speed,damage,radius)=>
       this.emitShot('hostile',point.x,point.y,angle,speed,damage,radius));
+    } else this.skirmish.step({now:this.combatTick,bounds:this.arena.bounds,obstacles:this.obstacles,lava:this.arena.lavaPits,targets:this.aimTargets(),actors:this.minions.actors,healthScale:this.difficulty.health,damageScale:this.difficulty.damage,speedScale:this.difficulty.speed,spawn:definition=>this.spawnMinion(definition)});
     this.minions.step(
       this.combatTick,
       [...this.roster().filter((player) => player.status === 'active'),...this.classKits.decoyTargets(this.roster(),this.combatTick)],
       this.obstacles,
       (target, damage) => this.hurtTarget(target.id,damage),
       this.aimTargets(),
-      this.boss.id==='matron',
+      Boolean(this.skirmish)||this.boss.id==='matron',
     );
     this.classKits.step(this.kitContext());
     this.transforms.step(this.transformContext());
@@ -1167,16 +1174,19 @@ export class Game {
     this.stepShots();
     this.stepRevives();
     for(const p of this.players.values())this.limitPersonalShield(p);
-    if (this.boss.health <= 0) {
+    if (!this.skirmish && this.boss.health <= 0) {
       this.victory();
       return;
     }
+    if(this.skirmish?.view().status==='complete'){this.finishSkirmish(true);return;}
+    if(this.skirmish?.view().status==='failed'){this.finishSkirmish(false);return;}
     const roster = this.roster(),
       canRecover = roster.some(p=>p.connected&&p.status==='downed'&&p.selfRevives>0&&selfReviveAllowed(this.settings.difficulty,p.classId,roster.length));
     if (
       this.combatTick >= this.boss.deadline ||
       (!roster.some((p) => p.status === 'active') && !canRecover)
     ) {
+      if(this.skirmish){this.finishSkirmish(false);return;}
       if (this.combatTick >= this.boss.deadline) this.timeouts++;
       if (this.secretStatus === 'active') {
         this.secretStatus = 'failed';
@@ -1191,6 +1201,13 @@ export class Game {
       this.fields.length = 0;
       this.clearShots();
     }
+  }
+  private finishSkirmish(success:boolean){
+    if(!success)this.skirmish?.fail();
+    else this.skirmish?.cancel();
+    this.phase=success?'victory':'defeat';
+    for(const p of this.players.values())this.clearPoison(p);
+    this.classKits.clear();this.transforms.clear();this.minions.clear();this.director.reset('constable');this.signatures=[];this.warnings.length=0;this.fields.length=0;this.clearShots();this.accord=null;
   }
   private stepPlayer(p: Player) {
     const now = this.combatTick,
@@ -1707,6 +1724,7 @@ export class Game {
     return true;
   }
   private hitBoss(p: Player | undefined, amount: number, bypassArmor = false) {
+    if(this.skirmish)return;
     const actual = Math.min(
       this.boss.health,
       amount *
@@ -2334,7 +2352,7 @@ export class Game {
     wall: number,
     weakPoints: ReturnType<BossDirector['weakPoints']>,
   ) {
-    const bossTime = this.director.hasIndependentBodies()
+    const bossTime = this.skirmish || this.director.hasIndependentBodies()
       ? null
       : segmentCircleXY(
           old.x - this.bossPrevious.x,
@@ -2884,6 +2902,7 @@ export class Game {
     )
       throw Error('invalidCards');
     if(save.settings.mode==='story'&&(save.phase==='mutationVote'||save.mutations.length!==0||save.mutationCards.length!==0))throw Error('invalidStoryState');
+    if(save.settings.freePlay?.scenarioId&&(save.phase!=='lobby'||save.encounter!==0||save.mutations.length!==0||save.mutationCards.length!==0||save.contractCards.length!==0))throw Error('invalidScenarioState');
     const validContract = (c: Contract) =>
       c &&
       typeof c.id === 'string' &&
@@ -3199,6 +3218,7 @@ export class Game {
   }
   snapshot() {
     return {
+      objective:this.objective,
       tick: this.tick,
       combatTick: this.combatTick,
       phase: this.phase,

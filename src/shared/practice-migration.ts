@@ -8,7 +8,7 @@ function migrateKnownPracticeBoundary(value: unknown): unknown {
   const issued = value as Record<string, unknown>;
   if (
     issued.protocolVersion === 47 &&
-    (issued.contentRevision ===
+    (issued.contentRevision === "1707fd9bd432dfb24107300944b99e70bcbe8a5e05077ddebaf0c2907013a1b1" || issued.contentRevision ===
       "e80e0f1d1bd444b1c5d16fae4c7aae322b31bcac70ac180b74964f6ba0326b48" ||
       issued.contentRevision ===
         "77b0d920d24b5f96e422f6697e8346e04cc88159920954261508b30d878d0264")

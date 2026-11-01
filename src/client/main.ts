@@ -1,3 +1,5 @@
+import {combatAimTarget} from './skirmish-presentation.ts';
+import {skirmishHUD,skirmishResults} from './ui/skirmish.ts';
 import {bindStoryReaders,storyReaderOpen} from './ui/story-reader.ts';
 import {storyReportMarkup} from './ui/story.ts';
 import {glassPhaseName,glassPhaseHint} from './glass-text.ts';
@@ -327,7 +329,8 @@ async function begin(
       const view = active.view;
       if (!view || view.matchPaused || bossGuide.pausesSimulation(paused,active.online)) return;
       const p = prediction.player ?? view.players.find((p) => p.id === active.id);
-      const frame = controls!.sample(view.tick, p, view.boss);
+      const aimTarget=combatAimTarget(view,p);
+      const frame = controls!.sample(view.tick, p, aimTarget);
       active.input(frame);
       prediction.submit(frame, view);
       if (scene) scene.predicted = prediction.player;
@@ -361,7 +364,7 @@ function setupGame(online: boolean,classId:string) {
   uiKey = '';
   lastPhase = '';
   prediction = new Prediction();
-  app.innerHTML = `<div id="stage" dir="ltr"></div><section class="hud" aria-label="${text('ui.health')}"><div class="topline"><div><strong id="encounter"></strong><small id="status" role="status"></small></div><div id="boss-panel">${bossHeaderMarkup()}<div class="boss-health-track" dir="ltr"><progress id="boss-health" max="1" value="1" aria-label="${text('ui.boss')}"></progress><div id="boss-phase-markers" aria-hidden="true"></div></div><p id="boss-phase-entry" class="boss-phase-entry" role="status" aria-live="polite" hidden></p><p id="boss-phase-note" class="boss-phase-note" role="status" aria-live="polite" hidden></p></div><div class="hud-actions"><button id="pause-button">Ⅱ <span>${text('ui.pause')}</span></button></div></div><div id="accord" class="accord" hidden></div><p id="signature-help" class="signature-help" role="status" aria-live="polite" hidden></p><div class="bottomline">${playerVitalsMarkup(classId,assets.portraits[classId],selectedCosmetic==='field-mark'?'':insignia(selectedCosmetic),t,assets.resourceIcons)}<div id="abilities" class="ability-list"></div><div id="squad" class="squad"></div></div></section><div id="modal" class="overlay" hidden></div><div id="pause-menu" class="overlay" hidden><section class="dialog"><h2>${text('ui.paused')}</h2><p id="pause-notice">${text(online ? 'ui.onlinePause' : 'ui.offlineNotice')}</p>${settingsMarkup()}<div class="actions"><button id="resume" class="primary">${text('ui.continue')}</button><button id="leave">${text('ui.leaveRoom')}</button></div></section></div><div class="touch-buttons"><button data-action="sprint" aria-pressed="false" hidden>${text('ui.sprint')}</button><button data-action="dodge">${text('ui.dodge')}</button><button data-action="q">Q</button><button data-action="e">E</button><button data-action="ultimate">${text('ui.ultimate')}</button><button data-action="interact">${text('ui.revive')}</button><button data-action="reload">${text('ui.reload')}</button></div><div class="portrait-note">${text('ui.portraitHint')}</div>`;
+  app.innerHTML = `<div id="stage" dir="ltr"></div><section class="hud" aria-label="${text('ui.health')}"><div class="topline"><div><strong id="encounter"></strong><small id="status" role="status"></small></div><div id="skirmish-panel" class="skirmish-panel" hidden></div><div id="boss-panel">${bossHeaderMarkup()}<div class="boss-health-track" dir="ltr"><progress id="boss-health" max="1" value="1" aria-label="${text('ui.boss')}"></progress><div id="boss-phase-markers" aria-hidden="true"></div></div><p id="boss-phase-entry" class="boss-phase-entry" role="status" aria-live="polite" hidden></p><p id="boss-phase-note" class="boss-phase-note" role="status" aria-live="polite" hidden></p></div><div class="hud-actions"><button id="pause-button">Ⅱ <span>${text('ui.pause')}</span></button></div></div><div id="accord" class="accord" hidden></div><p id="signature-help" class="signature-help" role="status" aria-live="polite" hidden></p><div class="bottomline">${playerVitalsMarkup(classId,assets.portraits[classId],selectedCosmetic==='field-mark'?'':insignia(selectedCosmetic),t,assets.resourceIcons)}<div id="abilities" class="ability-list"></div><div id="squad" class="squad"></div></div></section><div id="modal" class="overlay" hidden></div><div id="pause-menu" class="overlay" hidden><section class="dialog"><h2>${text('ui.paused')}</h2><p id="pause-notice">${text(online ? 'ui.onlinePause' : 'ui.offlineNotice')}</p>${settingsMarkup()}<div class="actions"><button id="resume" class="primary">${text('ui.continue')}</button><button id="leave">${text('ui.leaveRoom')}</button></div></section></div><div class="touch-buttons"><button data-action="sprint" aria-pressed="false" hidden>${text('ui.sprint')}</button><button data-action="dodge">${text('ui.dodge')}</button><button data-action="q">Q</button><button data-action="e">E</button><button data-action="ultimate">${text('ui.ultimate')}</button><button data-action="interact">${text('ui.revive')}</button><button data-action="reload">${text('ui.reload')}</button></div><div class="portrait-note">${text('ui.portraitHint')}</div>`;
   vitalsSizeObserver=new ResizeObserver(()=>{
     if (serial !== launchSerial) return;
     const top=$('player-name-label').closest('.player-vitals')!.getBoundingClientRect().top;
@@ -511,7 +514,7 @@ function syncRoomInvitePlacement(){
   roomInviteUI.place(place.slot?$(place.slot)??undefined:undefined);
 }
 function setBossGuide(value:boolean,restoreFocus=true) {
-  if(value&&(session?.view?.phase!=='combat'||!bossGuideAvailable(session.view.run.difficulty)))return;
+  if(value&&(session?.view?.objective||session?.view?.phase!=='combat'||!bossGuideAvailable(session.view.run.difficulty)))return;
   if(value)guideReturnFocus=document.activeElement instanceof HTMLElement?document.activeElement:null;
   bossGuide.set(value);
   $('boss-guide').hidden=!value;
@@ -530,9 +533,9 @@ function update(view: View) {
   if (!session || !scene) return;
   $('pause-notice').textContent=t(view.run.testingModified?'ui.testingNoRecords':session.online?'ui.onlinePause':'ui.offlineNotice');
   if(TESTING_BUILD)$('testing-run-marker').hidden=!view.run.testingModified;
-  if(view.phase!=='combat'&&bossGuide.open)setBossGuide(false,false);
-  $<HTMLButtonElement>('boss-guide-button').disabled=view.phase!=='combat';
-  $('boss-guide-button').hidden=!bossGuideAvailable(view.run.difficulty);
+  if((view.objective||view.phase!=='combat')&&bossGuide.open)setBossGuide(false,false);
+  $<HTMLButtonElement>('boss-guide-button').disabled=Boolean(view.objective)||view.phase!=='combat';
+  $('boss-guide-button').hidden=Boolean(view.objective)||!bossGuideAvailable(view.run.difficulty);
   $('boss-guide-boss-name').textContent=t('boss.'+view.boss.id+'.name');
   roomInviteUI?.update(session.code,session.hostPassword);
   hostMatchUI?.update();
@@ -574,6 +577,7 @@ function update(view: View) {
   $('player-name-label').textContent=p.name;
   $('player-class').textContent=t('class.'+p.classId+'.name');
   $('player-build').textContent=t('ui.buildRating')+' '+buildGrade(rating(p));
+  $('boss-panel').hidden=Boolean(view.objective);const objectivePanel=$('skirmish-panel');objectivePanel.hidden=!view.objective;if(view.objective){const markup=skirmishHUD(view);if(objectivePanel.innerHTML!==markup)objectivePanel.innerHTML=markup;$('encounter').textContent=t('ui.wardApproach');}
   $('boss-name').textContent=t('boss.'+view.boss.id+'.name');
   $('boss-threat-label').textContent=t('ui.threat');
   $('boss-threat-code').textContent=classifiedThreatCode(view.boss.threat,bossThreat(view.boss.id).subtier,view.boss.variant);
@@ -655,7 +659,7 @@ function update(view: View) {
     view.boss.phase,
     view.boss.variant,
     view.tick,
-    view.phase === 'combat',
+    !view.objective && view.phase === 'combat',
   );
   $('boss-panel').dataset.variant = view.boss.variant;
   $('boss-panel').dataset.phase = String(view.boss.phase);
@@ -750,11 +754,11 @@ function update(view: View) {
   else if (session.status === 'ui.errorSave') $('status').textContent = t('ui.errorSave');
   else if (!['ui.reconnecting', 'ui.errorNetwork'].includes(session.status))
     $('status').textContent = '';
-  audio.setEncounterIntensity(bossPatternPhase(view.boss.id,view.boss.variant,view.boss.phase), view.boss.variant);
+  audio.setEncounterIntensity(view.objective?0:bossPatternPhase(view.boss.id,view.boss.variant,view.boss.phase), view.objective?'normal':view.boss.variant);
   const musicPhase = defeated ? 'bossDefeated' : view.phase;
   if (musicPhase !== lastPhase) {
     lastPhase = musicPhase;
-    void audio.loop(view.phase === 'combat' || defeated, view.boss.id);
+    void audio.loop(!view.objective&&(view.phase === 'combat' || defeated), view.boss.id);
   }
   const key = JSON.stringify([
     view.phase,
@@ -850,7 +854,7 @@ function renderOverlay(view: View, p: PlayerView) {
     body = `<p>${text('ui.tutorialTeam')}</p>`;
   } else {
     title = expeditionText(locale, view.phase === 'victory' ? 'resultComplete' : 'resultEnded');
-    body = (view.endedByHost ? `<p class="result-reason">${text('ui.matchEndedByHost')}</p>` : '') + runResultsMarkup(view, p, {
+    body = skirmishResults(view) + (view.endedByHost ? `<p class="result-reason">${text('ui.matchEndedByHost')}</p>` : '') + runResultsMarkup(view, p, {
       language: locale, mode: t('mode.' + view.run.mode + '.name'), difficulty: t('difficulty.' + view.run.difficulty),
       className: t('class.' + p.classId + '.name'), number, clock,
     }) + `${view.campaignBank && ['cleared', 'failed'].includes(view.secretStatus) ? '<p>' + esc(extensionText(locale, view.secretStatus === 'cleared' ? 'cleared' : 'failed')) + '</p>' : ''}${session?.status === 'ui.errorSave' ? `<p role="alert">${text('ui.errorSave')}</p>` : ''}${(view.run.testingModified||view.run.customized) ? '' : `<p>${text(session?.online ? 'ui.practiceNotice' : 'ui.offlineNotice')}</p>`}<button id="return-menu" class="primary">${text('ui.mainMenu')}</button>`;
