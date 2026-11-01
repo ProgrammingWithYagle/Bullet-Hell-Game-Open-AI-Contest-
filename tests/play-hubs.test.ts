@@ -179,7 +179,7 @@ test("Home Story and Free Play paths stay separate, custom fields require confir
   env.host.querySelector("#new-run")!.click();
   assert.equal(ui.setupOptions().mode, "short");
 });
-test("Novel chapters contain longer scenes in three languages, and reader navigation never writes progress or launches combat", async (context) => {
+test("Novel chapters contain longer scenes in three languages, and reader navigation saves only reading state and never grants progress or launches combat", async (context) => {
   assert.equal(storyStructure.chapters.length, 3);
   for (const language of ["en", "es", "ar"]) {
     const d = dialogue[language as keyof typeof dialogue];
@@ -213,9 +213,10 @@ test("Novel chapters contain longer scenes in three languages, and reader naviga
   env.host.querySelector('[data-vn-step="1"]')!.click();
   assert(env.host.querySelector(".vn-portrait"));
   assert(env.host.textContent.includes("Mara Rook"));
-  assert.equal(JSON.stringify([...env.saved]), before);
+  assert.deepEqual([...env.saved.keys()],['ga-story-reading-v1']);
+  const afterReading=JSON.stringify([...env.saved]);
   const detached = env.host.querySelector('[data-vn-step="1"]')!;
   dispose();
   detached.click();
-  assert.equal(JSON.stringify([...env.saved]), before);
+  assert.equal(JSON.stringify([...env.saved]), afterReading);
 });

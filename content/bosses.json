@@ -8088,18 +8088,30 @@
     "damageWindowFraction": 1,
     "finale": false,
     "secret": false,
-    "lore": "A long-limbed corpse carrying a three-pronged civic candle ladder. The quarantine left its work unfinished.",
+    "lore": "Tavin Orr inspected Lorn's street lamps and signed off on its three-lamp standard. Night nurses brought him sketches of the blind corners between them; he filed the sketches as complaints about the dark. On his last round he moved one lamp to the infirmary road, then wrote the approved spacing in his report. His ladder still offers refuges by a rule he learned to bend in private.",
     "artBrief": "A long-limbed corpse carrying a three-pronged civic candle ladder. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
     "signature": {
       "id": "lamplighter",
-      "behavior": "Ignite three large candles whose shadows mark the only three safe pockets during the next pulse.",
-      "counterplay": "Stand in an outlined shadow pocket; hazard boundaries remain visible in every display setting.",
+      "behavior": "Three shootable civic candles cast reachable refuges for active survivors. Static shelters become moving shadows, a double watch and a final triple watch. Breaking a candle banks and widens only its linked announced refuges. Advanced echoes retain their issuing phase and receive new warnings.",
+      "counterplay": "Reach a white outlined destination before the full 2.8-second warning ends. Shadows stop moving before the pulse. Match a candle’s marks to its refuges; breaking it anchors and widens their promised destination. Only lamp pulses are blocked by these refuges; lava and other hazards still hurt. Crossing an exposed gap during a pulse can hit once, even if both endpoints are safe. No General purchase is required.",
       "parameters": {
         "candles": 3,
-        "safeRadiusPx": 95,
-        "pulseWarningSeconds": 1.5,
-        "pulseSeconds": 1.2,
-        "cycleSeconds": 9
+        "warningSeconds": 2.8,
+        "pulseSeconds": 0.9,
+        "shadowWidthPx": 170,
+        "shadowHeightPx": 130,
+        "finalShadowWidthPx": 140,
+        "finalShadowHeightPx": 110,
+        "bankedGrowthPx": 60,
+        "wickHealthHP": 30,
+        "maximumWickHealthHP": 60,
+        "damageHP": 12,
+        "waveSpacingSeconds": 4.8,
+        "brutalAfterLastWaveSeconds": 6,
+        "crazedAfterReturnSeconds": 4.8,
+        "minimumCycleSeconds": 9,
+        "quietRecoverySeconds": 3,
+        "walkingSpeedPxPerSecond": 45
       }
     },
     "arenaIds": [
@@ -8112,86 +8124,71 @@
     ],
     "mechanics": {
       "candles": 3,
-      "safeRadiusPx": 95,
-      "pulseWarningSeconds": 1.5,
-      "pulseSeconds": 1.2,
-      "cycleSeconds": 9
+      "warningSeconds": 2.8,
+      "pulseSeconds": 0.9,
+      "shadowWidthPx": 170,
+      "shadowHeightPx": 130,
+      "finalShadowWidthPx": 140,
+      "finalShadowHeightPx": 110,
+      "bankedGrowthPx": 60,
+      "wickHealthHP": 30,
+      "maximumWickHealthHP": 60,
+      "damageHP": 12,
+      "waveSpacingSeconds": 4.8,
+      "brutalAfterLastWaveSeconds": 6,
+      "crazedAfterReturnSeconds": 4.8,
+      "minimumCycleSeconds": 9,
+      "quietRecoverySeconds": 3,
+      "walkingSpeedPxPerSecond": 45
     },
     "phases": [
       {
         "healthThreshold": 1,
         "accordBreak": false,
+        "patternPhase": 0,
         "attacks": [
           {
-            "kind": "pulse",
-            "count": 24,
-            "speed": 125,
+            "kind": "zone",
+            "count": 1,
+            "speed": 0,
             "damage": 12,
-            "interval": 8,
-            "telegraph": 1.5,
-            "gap": 60
-          },
-          {
-            "kind": "fan",
-            "count": 8,
-            "speed": 150,
-            "damage": 10,
-            "interval": 5,
-            "telegraph": 1,
-            "arc": 100
+            "interval": 9,
+            "telegraph": 2.8,
+            "duration": 0.9
           }
-        ],
-        "patternPhase": 0
+        ]
       },
       {
         "healthThreshold": 0.75,
         "accordBreak": true,
+        "patternPhase": 1,
         "attacks": [
           {
-            "kind": "pulse",
-            "count": 26,
-            "speed": 135,
+            "kind": "zone",
+            "count": 1,
+            "speed": 0,
             "damage": 12,
-            "interval": 7.2,
-            "telegraph": 1.5,
-            "gap": 60
-          },
-          {
-            "kind": "fan",
-            "count": 10,
-            "speed": 162,
-            "damage": 10,
-            "interval": 4.5,
-            "telegraph": 1,
-            "arc": 100
+            "interval": 9,
+            "telegraph": 2.8,
+            "duration": 0.9
           }
-        ],
-        "patternPhase": 1
+        ]
       },
       {
         "healthThreshold": 0.4,
         "accordBreak": true,
+        "patternPhase": 2,
         "attacks": [
           {
-            "kind": "pulse",
-            "count": 28,
-            "speed": 145,
+            "kind": "zone",
+            "count": 2,
+            "speed": 0,
             "damage": 12,
-            "interval": 6.4,
-            "telegraph": 1.5,
-            "gap": 60
-          },
-          {
-            "kind": "fan",
-            "count": 12,
-            "speed": 174,
-            "damage": 10,
-            "interval": 4,
-            "telegraph": 1,
-            "arc": 100
+            "interval": 11.5,
+            "telegraph": 2.8,
+            "duration": 0.9
           }
-        ],
-        "patternPhase": 2
+        ]
       }
     ],
     "variants": {
@@ -8212,114 +8209,74 @@
           {
             "healthThreshold": 1,
             "accordBreak": false,
-            "signatureRepeatOffsetSeconds": 0,
+            "patternPhase": 0,
             "attacks": [
               {
-                "kind": "pulse",
-                "count": 24,
-                "speed": 125,
+                "kind": "zone",
+                "count": 1,
+                "speed": 0,
                 "damage": 12,
-                "interval": 7.2,
-                "telegraph": 1.5,
-                "gap": 60,
-                "comboOffsetSeconds": 0
-              },
-              {
-                "kind": "fan",
-                "count": 8,
-                "speed": 150,
-                "damage": 10,
-                "interval": 4.5,
-                "telegraph": 1,
-                "arc": 100,
+                "interval": 12.7,
+                "telegraph": 2.8,
+                "duration": 0.9,
                 "comboOffsetSeconds": 0
               }
             ],
-            "patternPhase": 0
+            "signatureRepeatOffsetSeconds": 0
           },
           {
             "healthThreshold": 0.75,
             "accordBreak": false,
-            "signatureRepeatOffsetSeconds": 0,
+            "patternPhase": 1,
             "attacks": [
               {
-                "kind": "pulse",
-                "count": 26,
-                "speed": 135,
+                "kind": "zone",
+                "count": 1,
+                "speed": 0,
                 "damage": 12,
-                "interval": 6.48,
-                "telegraph": 1.5,
-                "gap": 60,
-                "comboOffsetSeconds": 0
-              },
-              {
-                "kind": "fan",
-                "count": 10,
-                "speed": 162,
-                "damage": 10,
-                "interval": 4.05,
-                "telegraph": 1,
-                "arc": 100,
+                "interval": 12.7,
+                "telegraph": 2.8,
+                "duration": 0.9,
                 "comboOffsetSeconds": 0
               }
             ],
-            "patternPhase": 1
+            "signatureRepeatOffsetSeconds": 0
           },
           {
             "healthThreshold": 0.5,
             "accordBreak": false,
-            "signatureRepeatOffsetSeconds": 0,
+            "patternPhase": 2,
             "attacks": [
               {
-                "kind": "pulse",
-                "count": 28,
-                "speed": 145,
+                "kind": "zone",
+                "count": 2,
+                "speed": 0,
                 "damage": 12,
-                "interval": 5.760000000000001,
-                "telegraph": 1.5,
-                "gap": 60,
-                "comboOffsetSeconds": 0
-              },
-              {
-                "kind": "fan",
-                "count": 12,
-                "speed": 174,
-                "damage": 10,
-                "interval": 3.6,
-                "telegraph": 1,
-                "arc": 100,
+                "interval": 17.5,
+                "telegraph": 2.8,
+                "duration": 0.9,
                 "comboOffsetSeconds": 0
               }
             ],
-            "patternPhase": 2
+            "signatureRepeatOffsetSeconds": 0
           },
           {
             "healthThreshold": 0.25,
             "accordBreak": false,
-            "signatureRepeatOffsetSeconds": 1.25,
+            "patternPhase": 3,
             "attacks": [
               {
-                "kind": "pulse",
-                "count": 28,
-                "speed": 145,
+                "kind": "zone",
+                "count": 3,
+                "speed": 0,
                 "damage": 12,
-                "interval": 5.760000000000001,
-                "telegraph": 1.5,
-                "gap": 60,
+                "interval": 22.3,
+                "telegraph": 2.8,
+                "duration": 0.9,
                 "comboOffsetSeconds": 0
-              },
-              {
-                "kind": "fan",
-                "count": 12,
-                "speed": 174,
-                "damage": 10,
-                "interval": 3.6,
-                "telegraph": 1,
-                "arc": 100,
-                "comboOffsetSeconds": 1.25
               }
             ],
-            "patternPhase": 3
+            "signatureRepeatOffsetSeconds": 0
           }
         ]
       },
@@ -8334,114 +8291,74 @@
           {
             "healthThreshold": 1,
             "accordBreak": false,
-            "signatureRepeatOffsetSeconds": 0,
+            "patternPhase": 0,
             "attacks": [
               {
-                "kind": "pulse",
-                "count": 24,
-                "speed": 125,
+                "kind": "zone",
+                "count": 1,
+                "speed": 0,
                 "damage": 12,
-                "interval": 7.2,
-                "telegraph": 1.5,
-                "gap": 60,
-                "comboOffsetSeconds": 0
-              },
-              {
-                "kind": "fan",
-                "count": 8,
-                "speed": 150,
-                "damage": 10,
-                "interval": 4.5,
-                "telegraph": 1,
-                "arc": 100,
+                "interval": 17.5,
+                "telegraph": 2.8,
+                "duration": 0.9,
                 "comboOffsetSeconds": 0
               }
             ],
-            "patternPhase": 0
+            "signatureRepeatOffsetSeconds": 0
           },
           {
             "healthThreshold": 0.75,
             "accordBreak": false,
-            "signatureRepeatOffsetSeconds": 0,
+            "patternPhase": 1,
             "attacks": [
               {
-                "kind": "pulse",
-                "count": 26,
-                "speed": 135,
+                "kind": "zone",
+                "count": 1,
+                "speed": 0,
                 "damage": 12,
-                "interval": 6.48,
-                "telegraph": 1.5,
-                "gap": 60,
-                "comboOffsetSeconds": 0
-              },
-              {
-                "kind": "fan",
-                "count": 10,
-                "speed": 162,
-                "damage": 10,
-                "interval": 4.05,
-                "telegraph": 1,
-                "arc": 100,
+                "interval": 17.5,
+                "telegraph": 2.8,
+                "duration": 0.9,
                 "comboOffsetSeconds": 0
               }
             ],
-            "patternPhase": 1
+            "signatureRepeatOffsetSeconds": 0
           },
           {
             "healthThreshold": 0.5,
             "accordBreak": false,
-            "signatureRepeatOffsetSeconds": 0,
+            "patternPhase": 2,
             "attacks": [
               {
-                "kind": "pulse",
-                "count": 28,
-                "speed": 145,
+                "kind": "zone",
+                "count": 2,
+                "speed": 0,
                 "damage": 12,
-                "interval": 5.760000000000001,
-                "telegraph": 1.5,
-                "gap": 60,
-                "comboOffsetSeconds": 0
-              },
-              {
-                "kind": "fan",
-                "count": 12,
-                "speed": 174,
-                "damage": 10,
-                "interval": 3.6,
-                "telegraph": 1,
-                "arc": 100,
+                "interval": 22.3,
+                "telegraph": 2.8,
+                "duration": 0.9,
                 "comboOffsetSeconds": 0
               }
             ],
-            "patternPhase": 2
+            "signatureRepeatOffsetSeconds": 0
           },
           {
             "healthThreshold": 0.25,
             "accordBreak": false,
-            "signatureRepeatOffsetSeconds": 1.25,
+            "patternPhase": 3,
             "attacks": [
               {
-                "kind": "pulse",
-                "count": 28,
-                "speed": 145,
+                "kind": "zone",
+                "count": 3,
+                "speed": 0,
                 "damage": 12,
-                "interval": 5.760000000000001,
-                "telegraph": 1.5,
-                "gap": 60,
+                "interval": 27.1,
+                "telegraph": 2.8,
+                "duration": 0.9,
                 "comboOffsetSeconds": 0
-              },
-              {
-                "kind": "fan",
-                "count": 12,
-                "speed": 174,
-                "damage": 10,
-                "interval": 3.6,
-                "telegraph": 1,
-                "arc": 100,
-                "comboOffsetSeconds": 1.25
               }
             ],
-            "patternPhase": 3
+            "signatureRepeatOffsetSeconds": 0
           }
         ],
         "additionalPatterns": [

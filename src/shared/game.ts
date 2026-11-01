@@ -1143,7 +1143,7 @@ export class Game {
     }
     this.bossPrevious = { x: this.boss.x, y: this.boss.y };
     this.stepBoss();
-    this.variantPressure.step({now:this.combatTick,bossId:this.boss.id,variant:this.boss.variant,phase:this.boss.phase,bounds:this.arena.bounds,targets:this.aimTargets(),damageScale:this.bossDamageScale(),blocked:this.bossCastBlocked(),paused:this.boss.id==='stationmaster'||this.boss.id==='sluice-keeper'||this.boss.id==='ash-baker'||this.boss.id==='stitchwright'||this.boss.id==='bellringer'||this.boss.id==='alchemist'||this.combatTick<this.boss.staggerUntil||(this.boss.id==='lantern-warden'&&!this.wardenPatrol.canCastAuxiliary),id:()=>this.id(),damage:(id,amount)=>this.hurtTarget(id,amount)});
+    this.variantPressure.step({now:this.combatTick,bossId:this.boss.id,variant:this.boss.variant,phase:this.boss.phase,bounds:this.arena.bounds,targets:this.aimTargets(),damageScale:this.bossDamageScale(),blocked:this.bossCastBlocked(),paused:this.boss.id==='lamplighter'||this.boss.id==='stationmaster'||this.boss.id==='sluice-keeper'||this.boss.id==='ash-baker'||this.boss.id==='stitchwright'||this.boss.id==='bellringer'||this.boss.id==='alchemist'||this.combatTick<this.boss.staggerUntil||(this.boss.id==='lantern-warden'&&!this.wardenPatrol.canCastAuxiliary),id:()=>this.id(),damage:(id,amount)=>this.hurtTarget(id,amount)});
     this.brutalVolley.release(this.combatTick,(point,angle,speed,damage,radius)=>
       this.emitShot('hostile',point.x,point.y,angle,speed,damage,radius));
     this.minions.step(
@@ -2033,6 +2033,7 @@ export class Game {
       if(this.boss.id==='chain-marshal'){this.director.civic.marshal.reset();this.brutalVolley.clear();}
       if(this.boss.id==='gate-widow'){this.director.civic.widow.reset();this.brutalVolley.clear();}
       if(this.boss.id==='black-ambulance'){this.director.civic.ambulance.reset();this.brutalVolley.clear();}
+      if(this.boss.id==='lamplighter'){this.director.services.lamplighter.reset(now+ticks(1.5));this.brutalVolley.clear();}
       if(this.boss.id==='stationmaster'){this.director.services.stationmaster.reset(now+ticks(1.5));this.brutalVolley.clear();}
       if(this.boss.id==='sluice-keeper'){this.director.services.sluice.reset(now+ticks(1.5));this.brutalVolley.clear();}
       if(this.boss.id==='ash-baker'){this.director.services.baker.reset(now+ticks(1.5));this.brutalVolley.clear();}
@@ -2057,7 +2058,7 @@ export class Game {
       this.attackAt[0] = Math.max(this.attackAt[0] ?? now, this.director.earlyWatch.nextSignatureAt);
     if (this.director.smallWakes.handles(this.boss.id))
       this.attackAt[0] = Math.max(this.attackAt[0] ?? now, this.director.smallWakes.nextSignatureAt);
-    if (this.boss.id === 'stationmaster' || this.boss.id === 'sluice-keeper' || this.boss.id === 'ash-baker' || this.boss.id === 'stitchwright' || this.boss.id === 'bellringer' || this.boss.id === 'alchemist' || this.boss.id === 'matron' || this.boss.id === 'black-ambulance' || this.boss.id === 'tollkeeper' || this.boss.id === 'chain-marshal' || this.boss.id === 'gate-widow') this.director.step(this.signatureContext());
+    if (this.boss.id === 'lamplighter' || this.boss.id === 'stationmaster' || this.boss.id === 'sluice-keeper' || this.boss.id === 'ash-baker' || this.boss.id === 'stitchwright' || this.boss.id === 'bellringer' || this.boss.id === 'alchemist' || this.boss.id === 'matron' || this.boss.id === 'black-ambulance' || this.boss.id === 'tollkeeper' || this.boss.id === 'chain-marshal' || this.boss.id === 'gate-widow') this.director.step(this.signatureContext());
     const attacks = this.bossPhases()[this.boss.phase].attacks;
     for (let index = 0; index < attacks.length; index++)
       if (
@@ -2069,7 +2070,7 @@ export class Game {
         (this.boss.id !== 'gate-widow' || !this.director.civic.widow.busy) &&
         (this.boss.id !== 'black-ambulance' || (index !== 0 && !this.director.civic.ambulance.busy)) &&
         (this.boss.id !== 'matron' || (index !== 0 && !this.director.services.matron.busy)) &&
-        this.boss.id !== 'stationmaster' && this.boss.id !== 'sluice-keeper' && this.boss.id !== 'ash-baker' && this.boss.id !== 'stitchwright' && this.boss.id !== 'alchemist' && this.boss.id !== 'bellringer' &&
+        this.boss.id !== 'lamplighter' && this.boss.id !== 'stationmaster' && this.boss.id !== 'sluice-keeper' && this.boss.id !== 'ash-baker' && this.boss.id !== 'stitchwright' && this.boss.id !== 'alchemist' && this.boss.id !== 'bellringer' &&
         (this.boss.id!=='quarantine-clerk' || (!this.director.clerk.busy && (index!==0 || (now>=this.director.clerk.nextSignatureAt&&!this.warnings.length)))) &&
         (this.boss.id!=='ratcatcher' || (!this.director.ratcatcher.busy && (index!==0 || (now>=this.director.ratcatcher.nextSignatureAt && !this.warnings.length)))) &&
         (this.boss.id!=='courier' || (!this.director.courier.busy && (index!==0 || now>=this.director.courier.nextRouteAt))) &&
@@ -2232,7 +2233,7 @@ export class Game {
           y: this.boss.y,
         });
       }
-    if (this.boss.id !== 'stationmaster' && this.boss.id !== 'sluice-keeper' && this.boss.id !== 'ash-baker' && this.boss.id !== 'stitchwright' && this.boss.id !== 'bellringer' && this.boss.id !== 'alchemist' && this.boss.id !== 'matron' && this.boss.id !== 'black-ambulance' && this.boss.id !== 'tollkeeper' && this.boss.id !== 'chain-marshal' && this.boss.id !== 'gate-widow') this.director.step(this.signatureContext());
+    if (this.boss.id !== 'lamplighter' && this.boss.id !== 'stationmaster' && this.boss.id !== 'sluice-keeper' && this.boss.id !== 'ash-baker' && this.boss.id !== 'stitchwright' && this.boss.id !== 'bellringer' && this.boss.id !== 'alchemist' && this.boss.id !== 'matron' && this.boss.id !== 'black-ambulance' && this.boss.id !== 'tollkeeper' && this.boss.id !== 'chain-marshal' && this.boss.id !== 'gate-widow') this.director.step(this.signatureContext());
     if (this.boss.id === 'constable')
       moveConstable(
         this.boss,

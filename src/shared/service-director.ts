@@ -1,3 +1,4 @@
+import {LamplightWatch,type LamplightCue} from './lamplight-watch.ts';
 import {StationSignals,type StationCue} from './station-signals.ts';
 import {SluicePressure,type SluiceCue} from './sluice-pressure.ts';
 import {BakerOven,type BakerCue} from './baker-oven.ts';
@@ -130,6 +131,7 @@ export type ServiceCue =
   | SluiceCue
   | Current
   | StationCue
+  | LamplightCue
   | Sanctuary
   | Caliper
   | Verdict
@@ -205,6 +207,7 @@ export function serviceBeamContact(
   );
 }
 export class ServiceDirector {
+  readonly lamplighter=new LamplightWatch();
   readonly stationmaster=new StationSignals();
   readonly sluice=new SluicePressure();
   readonly baker = new BakerOven();
@@ -220,6 +223,7 @@ export class ServiceDirector {
   private contacts = new Map<string, number>();
   private once = new Set<string>();
   reset(kind: string, encounter = false) {
+    this.lamplighter.reset(0,encounter||kind!==this.kind);
     this.stationmaster.reset(0,encounter||kind!==this.kind);
     this.sluice.reset(0,encounter||kind!==this.kind);
     this.baker.reset(0,encounter||kind!==this.kind);
@@ -245,7 +249,7 @@ export class ServiceDirector {
     return {...move,multiplier:Math.min(move.multiplier,moldMovement(this.alchemist.cues(),position,now))};
   }
   cues(): ServiceCue[] {
-    return [...this.stationmaster.cues(),...this.sluice.cues(),...this.baker.cues(),...this.stitchwright.cues(),...this.bellringer.cues(),...this.alchemist.cues(),...this.matron.cues(),...this.shapes.map((c) => {
+    return [...this.lamplighter.cues(),...this.stationmaster.cues(),...this.sluice.cues(),...this.baker.cues(),...this.stitchwright.cues(),...this.bellringer.cues(),...this.alchemist.cues(),...this.matron.cues(),...this.shapes.map((c) => {
       if (c.kind === 'service-sanctuary')
         return {
           ...c,
@@ -259,7 +263,7 @@ export class ServiceDirector {
     })];
   }
   weakPoints() {
-    return [...this.stationmaster.weakPoints(),...this.sluice.weakPoints(),...this.baker.weakPoints(),...this.stitchwright.weakPoints(),...this.bellringer.weakPoints(),...this.matron.weakPoints(),...this.shapes.filter(
+    return [...this.lamplighter.weakPoints(),...this.stationmaster.weakPoints(),...this.sluice.weakPoints(),...this.baker.weakPoints(),...this.stitchwright.weakPoints(),...this.bellringer.weakPoints(),...this.matron.weakPoints(),...this.shapes.filter(
       (c): c is ServiceProp | Tether =>
         (c.kind === 'service-prop' || c.kind === 'service-tether') && c.health > 0,
     )];
@@ -268,6 +272,7 @@ export class ServiceDirector {
     return this.shapes.some((c) => c.id === id && c.kind === 'service-prop' && c.role === 'caster');
   }
   hit(id: number, damage: number, now: number) {
+    const lamp=this.lamplighter.hitWick(id,damage,now);if(lamp)return lamp;
     const station=this.stationmaster.hitSignal(id,damage,now);if(station)return station;
     const sluice=this.sluice.hit(id,damage,now);if(sluice)return sluice;
     const baker=this.baker.hit(id,damage,now);if(baker)return baker;
@@ -387,6 +392,7 @@ export class ServiceDirector {
   }
   cast(c: SignatureContext, target: Vec, attack: ServiceAttack) {
     if (!this.handles(c.bossId)) return false;
+    if(c.bossId==='lamplighter'){const handled=this.lamplighter.cast(c);this.nextSignatureAt=this.lamplighter.nextSignatureAt;return handled;}
     if(c.bossId==='stationmaster'){const handled=this.stationmaster.cast(c);this.nextSignatureAt=this.stationmaster.nextSignatureAt;return handled;}
     if(c.bossId==='sluice-keeper'){const handled=this.sluice.cast(c);this.nextSignatureAt=this.sluice.nextSignatureAt;return handled;}
     if(c.bossId==='ash-baker'){const handled=this.baker.cast(c,target);this.nextSignatureAt=this.baker.nextSignatureAt;return handled;}
@@ -456,52 +462,12 @@ export class ServiceDirector {
         this.nextSignatureAt=Math.max(now+ticks(plan.cycle),last+ticks(1));
         break;
       }
-      case 'lamplighter':
       case 'red-abbess': {
-        const lamp = c.bossId === 'lamplighter',
-          count = lamp ? 3 : 2,
-          safeRadius = lamp ? 95 : 100;
-        const ends = Array.from({ length: count }, (_, n) =>
-          this.free(
-            c,
-            {
-              x: b.x + b.width * (lamp ? [0.28, 0.5, 0.72][n] : n ? 0.72 : 0.28),
-              y:
-                b.y +
-                b.height *
-                  (lamp ? [0.72, 0.54, 0.72][n] : index % 2 ? (n ? 0.57 : 0.77) : n ? 0.77 : 0.57),
-            },
-            safeRadius + 10,
-          ),
-        );
-        const starts = ends.map((p, n) =>
-            this.free(c, { x: p.x + (n % 2 ? 80 : -80), y: p.y - 55 }, safeRadius + 10),
-          ),
-          startRadius = Math.hypot(b.width, b.height) / 2 + 40;
-        if (!lamp)
-          this.nextSignatureAt = Math.max(
-            this.nextSignatureAt,
-            now + ticks(1.6 + startRadius / 90 + 0.7),
-          );
-        this.shapes.push({
-          kind: 'service-sanctuary',
-          id: c.id(),
-          style: lamp ? 'lamp' : 'abbess',
-          ...center,
-          pads: starts.map((p) => ({ ...p })),
-          starts,
-          ends,
-          safeRadius,
-          radius: startRadius,
-          oldRadius: startRadius,
-          speed: lamp ? 0 : 90,
-          width: 40,
-          damage: attack.damage,
-          progress: Array(count).fill(0),
-          neutralized: false,
-          at: now + ticks(lamp ? 1.5 : 1.6),
-          until: now + ticks(lamp ? 2.7 : 1.6 + startRadius / 90 + 0.1),
-        });
+        const count=2,safeRadius=100;
+        const ends=Array.from({length:count},(_,n)=>this.free(c,{x:b.x+b.width*(n?.72:.28),y:b.y+b.height*(index%2?(n?.57:.77):n?.77:.57)},safeRadius+10));
+        const starts=ends.map((p,n)=>this.free(c,{x:p.x+(n%2?80:-80),y:p.y-55},safeRadius+10)),startRadius=Math.hypot(b.width,b.height)/2+40;
+        this.nextSignatureAt=Math.max(this.nextSignatureAt,now+ticks(1.6+startRadius/90+.7));
+        this.shapes.push({kind:'service-sanctuary',id:c.id(),style:'abbess',...center,pads:starts.map(p=>({...p})),starts,ends,safeRadius,radius:startRadius,oldRadius:startRadius,speed:90,width:40,damage:attack.damage,progress:Array(count).fill(0),neutralized:false,at:now+ticks(1.6),until:now+ticks(1.6+startRadius/90+.1)});
         break;
       }
       case 'anatomist': {
@@ -685,6 +651,7 @@ export class ServiceDirector {
     if (c.bossId === 'stitchwright') this.stitchwright.step(c, target => {
       this.cast(c, target, {kind:'hook', count:1, speed:0, damage:12, telegraph:1.4});
     });
+    if(c.bossId==='lamplighter'){this.lamplighter.step(c);this.nextSignatureAt=this.lamplighter.nextSignatureAt;return;}
     if(c.bossId==='stationmaster'){this.stationmaster.step(c);this.nextSignatureAt=this.stationmaster.nextSignatureAt;return;}
     if(c.bossId==='sluice-keeper'){this.sluice.step(c);this.nextSignatureAt=this.sluice.nextSignatureAt;return;}
     if(c.bossId==='ash-baker'){this.baker.step(c);this.nextSignatureAt=this.baker.nextSignatureAt;return;}

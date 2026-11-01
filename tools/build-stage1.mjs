@@ -1,3 +1,4 @@
+import {applyLamplightWatch} from '../content/source/lamplight-watch.mjs';
 import {applyStationSignals} from '../content/source/station-signals.mjs';
 import {applySluicePressure} from '../content/source/sluice-pressure.mjs';
 import {applyBakerOven} from '../content/source/baker-oven.mjs';
@@ -267,6 +268,7 @@ applyWardenPatrol(manifest);applyCrazedHorizon(manifest);applyCourierRoute(manif
 applyBakerOven(manifest);
 applySluicePressure(manifest);
 applyStationSignals(manifest);
+applyLamplightWatch(manifest);
 for(const [key,value] of Object.entries(manifest)) json('content/'+key+'.json',value);
 json('content/catalog.json',manifest);
 write('docs/balance/skills.csv',csv(['id','class','branch','subbranch','name','depth','cost','grade','prerequisite','capstone','effects'],skills.map(s=>[s.id,s.classId,s.branchName,s.subbranchName,s.name,s.depth,s.cost,s.grade,s.prerequisite??'',s.capstone,JSON.stringify(s.effects)])));

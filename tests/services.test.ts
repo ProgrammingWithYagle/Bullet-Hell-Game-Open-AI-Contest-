@@ -188,23 +188,12 @@ test('Stationmaster alternates open tracks and only actual swept trains damage t
     open.x,
   );
 });
-test('Lamplighter protects three outlined pockets during its pulse and preserves tell safety', () => {
-  const f = fixture('lamplighter');
-  f.cast();
-  const safe = of(f.director, 'service-sanctuary')[0];
-  f.c.targets[0].x = safe.ends[0].x;
-  f.c.targets[0].y = safe.ends[0].y;
-  f.c.targets[1].x = 100;
-  f.c.targets[1].y = 100;
-  f.step(safe.at - 1);
-  assert.equal(f.hurt.length, 0);
-  f.step(safe.at);
-  assert.deepEqual(
-    f.hurt.map((h) => h.id),
-    ['b'],
-  );
-  assert.equal(of(f.director, 'service-sanctuary')[0].pads.length, 3);
+test('Lamplighter protects its outlined promised refuges during a pulse and preserves tell safety',()=>{
+ const f=fixture('lamplighter');f.cast();const shadow=of(f.director,'service-lamp-shadow')[0],pulse=of(f.director,'service-lamp-pulse')[0];
+ f.c.targets[0].x=shadow.goalX;f.c.targets[0].y=shadow.goalY;f.c.targets[1].x=f.c.targets[1].oldX=100;f.c.targets[1].y=f.c.targets[1].oldY=100;
+ f.step(pulse.at-1);assert.equal(f.hurt.length,0);f.step(pulse.at);assert.deepEqual(f.hurt.map(h=>h.id),['b']);assert.equal(of(f.director,'service-lamp-shadow').length,3);
 });
+
 test('Anatomist tracks only for 0.7 seconds, then keeps two fixed caliper marks until release', () => {
   const f = fixture('anatomist');
   f.cast();

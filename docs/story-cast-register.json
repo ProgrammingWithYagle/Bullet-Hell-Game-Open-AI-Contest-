@@ -1,0 +1,2331 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Authoring coverage, not proof of narrative completion",
+  "mainStoryEnglishWordTarget": 5000000,
+  "optionalContentExcludedFromTarget": true,
+  "sourceRefs": [
+    "content/catalog.json",
+    "src/shared/boss-threats.json",
+    "src/client/survivor-letters.json",
+    "content/source/the-open-ledger.json"
+  ],
+  "survivors": [
+    {
+      "id": "soldier",
+      "name": "Mara Rook",
+      "kind": "survivor",
+      "arcStatus": "working-treatment",
+      "playablePersonalArcComplete": false,
+      "treatmentSource": "docs/STORY_WORLD_PLAN.md",
+      "mechanicalReferences": {
+        "classId": "soldier",
+        "earlyTechnique": {
+          "id": "soldier-command-1",
+          "grade": "D-",
+          "cost": 1
+        },
+        "capstoneExample": {
+          "id": "soldier-command-path-2-6",
+          "grade": "SS+",
+          "cost": 6,
+          "fullPathCost": 21
+        }
+      },
+      "draftScene": "docs/story-drafts/THE_CART_AT_THE_GATE.md"
+    },
+    {
+      "id": "heavy",
+      "name": "Hux Bell",
+      "kind": "survivor",
+      "arcStatus": "working-treatment",
+      "playablePersonalArcComplete": false,
+      "treatmentSource": "docs/STORY_WORLD_PLAN.md",
+      "mechanicalReferences": {
+        "classId": "heavy",
+        "earlyTechnique": {
+          "id": "heavy-suppression-1",
+          "grade": "D-",
+          "cost": 1
+        },
+        "capstoneExample": {
+          "id": "heavy-suppression-path-2-6",
+          "grade": "SS+",
+          "cost": 6,
+          "fullPathCost": 21
+        }
+      },
+      "draftScene": "docs/story-drafts/THE_CART_AT_THE_GATE.md"
+    },
+    {
+      "id": "tank",
+      "name": "Bram Voss",
+      "kind": "survivor",
+      "arcStatus": "working-treatment",
+      "playablePersonalArcComplete": false,
+      "treatmentSource": "docs/STORY_WORLD_PLAN.md",
+      "mechanicalReferences": {
+        "classId": "tank",
+        "earlyTechnique": {
+          "id": "tank-protection-1",
+          "grade": "D-",
+          "cost": 1
+        },
+        "capstoneExample": {
+          "id": "tank-protection-path-2-6",
+          "grade": "SS+",
+          "cost": 6,
+          "fullPathCost": 21
+        }
+      },
+      "draftScene": "docs/story-drafts/THE_CART_AT_THE_GATE.md"
+    },
+    {
+      "id": "medic",
+      "name": "Iona Vale",
+      "kind": "survivor",
+      "arcStatus": "working-treatment",
+      "playablePersonalArcComplete": false,
+      "treatmentSource": "docs/STORY_WORLD_PLAN.md",
+      "mechanicalReferences": {
+        "classId": "medic",
+        "earlyTechnique": {
+          "id": "medic-triage-1",
+          "grade": "D-",
+          "cost": 1
+        },
+        "capstoneExample": {
+          "id": "medic-triage-path-2-6",
+          "grade": "SS+",
+          "cost": 6,
+          "fullPathCost": 21
+        }
+      },
+      "draftScene": "docs/story-drafts/THE_CART_AT_THE_GATE.md"
+    },
+    {
+      "id": "mage",
+      "name": "Sable Quill",
+      "kind": "survivor",
+      "arcStatus": "working-treatment",
+      "playablePersonalArcComplete": false,
+      "treatmentSource": "docs/STORY_WORLD_PLAN.md",
+      "mechanicalReferences": {
+        "classId": "mage",
+        "earlyTechnique": {
+          "id": "mage-control-1",
+          "grade": "D-",
+          "cost": 1
+        },
+        "capstoneExample": {
+          "id": "mage-control-path-2-6",
+          "grade": "SS+",
+          "cost": 6,
+          "fullPathCost": 21
+        }
+      },
+      "draftScene": "docs/story-drafts/THE_CART_AT_THE_GATE.md"
+    },
+    {
+      "id": "engineer",
+      "name": "Tamsin Reed",
+      "kind": "survivor",
+      "arcStatus": "working-treatment",
+      "playablePersonalArcComplete": false,
+      "treatmentSource": "docs/STORY_WORLD_PLAN.md",
+      "mechanicalReferences": {
+        "classId": "engineer",
+        "earlyTechnique": {
+          "id": "engineer-constructs-1",
+          "grade": "D-",
+          "cost": 1
+        },
+        "capstoneExample": {
+          "id": "engineer-constructs-path-2-6",
+          "grade": "SS+",
+          "cost": 6,
+          "fullPathCost": 21
+        }
+      },
+      "draftScene": "docs/story-drafts/THE_CART_AT_THE_GATE.md"
+    },
+    {
+      "id": "assassin",
+      "name": "Vale Ash",
+      "kind": "survivor",
+      "arcStatus": "working-treatment",
+      "playablePersonalArcComplete": false,
+      "treatmentSource": "docs/STORY_WORLD_PLAN.md",
+      "mechanicalReferences": {
+        "classId": "assassin",
+        "earlyTechnique": {
+          "id": "assassin-ambush-1",
+          "grade": "D-",
+          "cost": 1
+        },
+        "capstoneExample": {
+          "id": "assassin-ambush-path-2-6",
+          "grade": "SS+",
+          "cost": 6,
+          "fullPathCost": 21
+        }
+      },
+      "draftScene": "docs/story-drafts/THE_CART_AT_THE_GATE.md"
+    }
+  ],
+  "bosses": [
+    {
+      "id": "constable",
+      "name": "Hollow Constable",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "constable",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 1,
+        "subtier": 1,
+        "ordinaryFreePlayOpener": true,
+        "route": "short"
+      },
+      "dramaticQuestion": "Which order did the captain choose while refusal was still possible, and who remembers its cost differently?",
+      "relationshipAnchors": [
+        "Mara Rook",
+        "Renn Tallow",
+        "people held at the gate"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "courier",
+      "name": "Carrion Courier",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "courier",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 1,
+        "subtier": -2,
+        "ordinaryFreePlayOpener": true,
+        "route": "short"
+      },
+      "dramaticQuestion": "Who needs a message delivered, who needs it withheld, and what did the courier understand about the difference?",
+      "relationshipAnchors": [
+        "Vale Ash",
+        "Miri Fen",
+        "people searching for an address"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "pallbearer",
+      "name": "Pallbearer",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "pallbearer",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 5,
+        "subtier": 1,
+        "ordinaryFreePlayOpener": true,
+        "route": "long"
+      },
+      "dramaticQuestion": "Who claims the space in the empty coffin, and what would the bearer have to accept to put it down?",
+      "relationshipAnchors": [
+        "Bram Voss",
+        "burial workers",
+        "people awaiting a return"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "matron",
+      "name": "Cradle Matron",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "matron",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 2,
+        "subtier": 2,
+        "ordinaryFreePlayOpener": true,
+        "route": "standard"
+      },
+      "dramaticQuestion": "When did shelter become custody, and what do the people kept beneath her care want for themselves?",
+      "relationshipAnchors": [
+        "Iona Vale",
+        "Senn Arlow",
+        "former infirmary residents"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "alchemist",
+      "name": "Mold Alchemist",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "alchemist",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 3,
+        "subtier": -2,
+        "ordinaryFreePlayOpener": true,
+        "route": "standard"
+      },
+      "dramaticQuestion": "What useful problem was the garden meant to solve, and which risks did its keeper decide others should bear?",
+      "relationshipAnchors": [
+        "Tamsin Reed",
+        "ward suppliers",
+        "displaced cultivators"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "bellringer",
+      "name": "Bellringer",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "bellringer",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 3,
+        "subtier": -1,
+        "ordinaryFreePlayOpener": true,
+        "route": "standard"
+      },
+      "dramaticQuestion": "Who could act on a warning, and what did the bell keeper do when being heard was no longer enough?",
+      "relationshipAnchors": [
+        "Sable Quill",
+        "watch runners",
+        "people beyond the signal's reach"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "stitchwright",
+      "name": "Stitchwright",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "stitchwright",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 3,
+        "subtier": 0,
+        "ordinaryFreePlayOpener": true,
+        "route": "standard"
+      },
+      "dramaticQuestion": "How did Elian's acts of repair and refusal become a command that closes the gaps people need?",
+      "relationshipAnchors": [
+        "Iona Vale",
+        "former tailoring customers",
+        "the owner of the yellow sleeve"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "choir",
+      "name": "Grave Choir",
+      "kind": "boss",
+      "nature": "collective",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "choir",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 5,
+        "subtier": -2,
+        "ordinaryFreePlayOpener": true,
+        "route": "standard"
+      },
+      "dramaticQuestion": "What distinguishes the three singers' histories from the singular voice using them now?",
+      "relationshipAnchors": [
+        "Sable Quill",
+        "chapel listeners",
+        "surviving singers"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "engine",
+      "name": "Mortuary Engine",
+      "kind": "boss",
+      "nature": "composite",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "engine",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 9,
+        "subtier": -2,
+        "ordinaryFreePlayOpener": true,
+        "route": "long"
+      },
+      "dramaticQuestion": "Who kept the foreman in the machine, and who still depends on its output?",
+      "relationshipAnchors": [
+        "Hux Bell",
+        "Tamsin Reed",
+        "the foundry's remaining workers"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "regent",
+      "name": "Drowned Regent",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "regent",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 9,
+        "subtier": -1,
+        "ordinaryFreePlayOpener": true,
+        "route": "long"
+      },
+      "dramaticQuestion": "What did the mayor protect by opening the floodgates, and whose testimony threatens that account?",
+      "relationshipAnchors": [
+        "Ressa Noll's witnesses",
+        "canal households",
+        "civic officeholders"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "uncounted",
+      "name": "The Uncounted",
+      "kind": "boss",
+      "nature": "entity",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "uncounted",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 11,
+        "subtier": 0,
+        "ordinaryFreePlayOpener": false,
+        "route": "secret"
+      },
+      "dramaticQuestion": "Whose exclusion must be understood, and who retains the right to refuse public identification?",
+      "relationshipAnchors": [
+        "Vale Ash",
+        "the witness network",
+        "secret-route participants"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "tollkeeper",
+      "name": "The Tollkeeper",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "tollkeeper",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 1,
+        "subtier": 2,
+        "ordinaryFreePlayOpener": true,
+        "route": "short"
+      },
+      "dramaticQuestion": "What exchange did the keeper believe the toll represented, and who was never allowed to bargain?",
+      "relationshipAnchors": [
+        "Mara Rook",
+        "traders",
+        "households separated from supplies"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "lantern-warden",
+      "name": "Lantern Warden",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "lantern-warden",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 2,
+        "subtier": -2,
+        "ordinaryFreePlayOpener": true,
+        "route": "short"
+      },
+      "dramaticQuestion": "Whom did the patrol's light expose, and what was the warden prepared to leave unseen?",
+      "relationshipAnchors": [
+        "Vale Ash",
+        "Renn Tallow",
+        "residents of the patrol streets"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "ratcatcher",
+      "name": "Ratcatcher",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "ratcatcher",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 1,
+        "subtier": -1,
+        "ordinaryFreePlayOpener": true,
+        "route": "short"
+      },
+      "dramaticQuestion": "Who benefited from calling something a pest, and what did the catcher's methods do to the people sharing its habitat?",
+      "relationshipAnchors": [
+        "Senn Arlow",
+        "storekeepers",
+        "people beneath the streets"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "quarantine-clerk",
+      "name": "Quarantine Clerk",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "quarantine-clerk",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 1,
+        "subtier": 0,
+        "ordinaryFreePlayOpener": true,
+        "route": "short"
+      },
+      "dramaticQuestion": "Which decision was the clerk able to make, and which did the stamp allow them to pretend was automatic?",
+      "relationshipAnchors": [
+        "Miri Fen",
+        "Iona Vale",
+        "rejected applicants"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "chain-marshal",
+      "name": "Chain Marshal",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "chain-marshal",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 2,
+        "subtier": -1,
+        "ordinaryFreePlayOpener": true,
+        "route": "short"
+      },
+      "dramaticQuestion": "What did the marshal think restraint would prevent, and when did releasing someone become a threat to their authority?",
+      "relationshipAnchors": [
+        "Bram Voss",
+        "Mara Rook",
+        "detained workers"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "gate-widow",
+      "name": "Gate Widow",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "gate-widow",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 2,
+        "subtier": 0,
+        "ordinaryFreePlayOpener": true,
+        "route": "short"
+      },
+      "dramaticQuestion": "What must remain on the other side of the gate for her mourning to make sense, and who wants it opened?",
+      "relationshipAnchors": [
+        "Bram Voss",
+        "Dena Yarrow",
+        "families at the passage"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "black-ambulance",
+      "name": "Black Ambulance",
+      "kind": "boss",
+      "nature": "composite",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "black-ambulance",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 2,
+        "subtier": 1,
+        "ordinaryFreePlayOpener": true,
+        "route": "short"
+      },
+      "dramaticQuestion": "What promise joined driver, carriage and patient, and who was excluded from its route?",
+      "relationshipAnchors": [
+        "Iona Vale",
+        "Senn Arlow",
+        "transport workers and waiting patients"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "glass-surgeon",
+      "name": "Glass Surgeon",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "glass-surgeon",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 3,
+        "subtier": 1,
+        "ordinaryFreePlayOpener": true,
+        "route": "standard"
+      },
+      "dramaticQuestion": "What did Oren's broken diagnostic glass prevent, and what could his refusal not repair for those already judged?",
+      "relationshipAnchors": [
+        "Iona Vale",
+        "former patients",
+        "the infirmary's record keepers"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "ash-baker",
+      "name": "Ash Baker",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "ash-baker",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 3,
+        "subtier": 2,
+        "ordinaryFreePlayOpener": true,
+        "route": "standard"
+      },
+      "dramaticQuestion": "How did Edda's second account sustain people, and what conflicts remain when there is less food than need?",
+      "relationshipAnchors": [
+        "Hux Bell",
+        "Olan Pike",
+        "the night-shift queue"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "sluice-keeper",
+      "name": "Sluice Keeper",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "sluice-keeper",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 4,
+        "subtier": -2,
+        "ordinaryFreePlayOpener": true,
+        "route": "standard"
+      },
+      "dramaticQuestion": "What can people on both banks establish about Ressa's relief decision and the system that constrained it?",
+      "relationshipAnchors": [
+        "Tamsin Reed",
+        "canal households",
+        "floodgate workers"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "stationmaster",
+      "name": "Last Stationmaster",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "stationmaster",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 4,
+        "subtier": -1,
+        "ordinaryFreePlayOpener": true,
+        "route": "standard"
+      },
+      "dramaticQuestion": "Who boarded Neris's last train, who remained, and what evidence could establish an arrival without erasing either group?",
+      "relationshipAnchors": [
+        "Vale Ash",
+        "Iona Vale",
+        "passengers and station staff"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "lamplighter",
+      "name": "The Lamplighter",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "lamplighter",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 4,
+        "subtier": 0,
+        "ordinaryFreePlayOpener": true,
+        "route": "standard"
+      },
+      "dramaticQuestion": "Why did Tavin dismiss the nurses' evidence publicly while changing one lamp in private?",
+      "relationshipAnchors": [
+        "Night nurses",
+        "Senn Arlow",
+        "people walking the infirmary road"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "anatomist",
+      "name": "The Anatomist",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "anatomist",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 4,
+        "subtier": 1,
+        "ordinaryFreePlayOpener": true,
+        "route": "standard"
+      },
+      "dramaticQuestion": "Who was entitled to supply a body for instruction, and what knowledge was purchased by denying its owner a voice?",
+      "relationshipAnchors": [
+        "Iona Vale",
+        "Sable Quill",
+        "students and relatives"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "plague-gardener",
+      "name": "Plague Gardener",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "plague-gardener",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 4,
+        "subtier": 2,
+        "ordinaryFreePlayOpener": true,
+        "route": "standard"
+      },
+      "dramaticQuestion": "Which growth did the gardener preserve, and who decided what the city could afford to cut away?",
+      "relationshipAnchors": [
+        "Tamsin Reed",
+        "growers",
+        "people needing medicine and food"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "red-abbess",
+      "name": "Red Abbess",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "red-abbess",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 5,
+        "subtier": -1,
+        "ordinaryFreePlayOpener": true,
+        "route": "standard"
+      },
+      "dramaticQuestion": "How did service, belief and authority become entangled, and who stayed at the chapel for reasons she could not control?",
+      "relationshipAnchors": [
+        "Dena Yarrow",
+        "Sable Quill",
+        "chapel residents"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "vesper-judge",
+      "name": "Vesper Judge",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "vesper-judge",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 5,
+        "subtier": 0,
+        "ordinaryFreePlayOpener": true,
+        "route": "standard"
+      },
+      "dramaticQuestion": "What outcome would threaten the judge's authority more than an unjust verdict?",
+      "relationshipAnchors": [
+        "Miri Fen",
+        "Mara Rook",
+        "witnesses with incompatible claims"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "cinder-foreman",
+      "name": "Cinder Foreman",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "cinder-foreman",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 5,
+        "subtier": 2,
+        "ordinaryFreePlayOpener": true,
+        "route": "long"
+      },
+      "dramaticQuestion": "How does the foreman justify extracting another shift from people whose need gives them little freedom to refuse?",
+      "relationshipAnchors": [
+        "Hux Bell",
+        "Olan Pike",
+        "furnace crews"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "canal-diver",
+      "name": "Canal Diver",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "canal-diver",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 6,
+        "subtier": -2,
+        "ordinaryFreePlayOpener": true,
+        "route": "long"
+      },
+      "dramaticQuestion": "What did the diver choose to recover, and who still disputes what was left below?",
+      "relationshipAnchors": [
+        "Ressa's witnesses",
+        "Tamsin Reed",
+        "families along the canal"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "clockmender",
+      "name": "Clockmender",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "clockmender",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 6,
+        "subtier": -1,
+        "ordinaryFreePlayOpener": true,
+        "route": "long"
+      },
+      "dramaticQuestion": "Whose time did the repaired clocks coordinate, and whose work disappeared between their marks?",
+      "relationshipAnchors": [
+        "Hux Bell",
+        "watch runners",
+        "people paid by the shift"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "wire-seamstress",
+      "name": "Seamstress of Wires",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "wire-seamstress",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 6,
+        "subtier": 0,
+        "ordinaryFreePlayOpener": true,
+        "route": "long"
+      },
+      "dramaticQuestion": "Which connections did the seamstress preserve, and what happened to people asked to live inside the resulting network?",
+      "relationshipAnchors": [
+        "Tamsin Reed",
+        "Elian's customers",
+        "maintenance crews"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "gravedigger",
+      "name": "Gravedigger",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "gravedigger",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 6,
+        "subtier": 1,
+        "ordinaryFreePlayOpener": true,
+        "route": "long"
+      },
+      "dramaticQuestion": "Who received a marked grave, and what did the digger do when the records and the bodies disagreed?",
+      "relationshipAnchors": [
+        "Vale Ash",
+        "Dena Yarrow",
+        "bereaved households"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "ink-notary",
+      "name": "Ink Notary",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "ink-notary",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 6,
+        "subtier": 2,
+        "ordinaryFreePlayOpener": true,
+        "route": "long"
+      },
+      "dramaticQuestion": "Which testimony did a signature authorize, and what price was charged for making a person believable?",
+      "relationshipAnchors": [
+        "Miri Fen",
+        "Vale Ash",
+        "people seeking recognition"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "spore-beekeeper",
+      "name": "Spore Beekeeper",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "spore-beekeeper",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 7,
+        "subtier": -2,
+        "ordinaryFreePlayOpener": true,
+        "route": "long"
+      },
+      "dramaticQuestion": "What bargain linked the keeper and the colony, and who else had to live with its spread?",
+      "relationshipAnchors": [
+        "Growers",
+        "infirmary suppliers",
+        "neighboring households"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "ice-custodian",
+      "name": "Ice Custodian",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "ice-custodian",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 7,
+        "subtier": -1,
+        "ordinaryFreePlayOpener": true,
+        "route": "long"
+      },
+      "dramaticQuestion": "Who received preservation, what was allowed to spoil, and who could influence that allocation?",
+      "relationshipAnchors": [
+        "Iona Vale",
+        "Olan Pike",
+        "storehouse workers"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "bridge-ferryman",
+      "name": "Bridge Ferryman",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "bridge-ferryman",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 7,
+        "subtier": 0,
+        "ordinaryFreePlayOpener": true,
+        "route": "long"
+      },
+      "dramaticQuestion": "Who could request a crossing, and what changed when the ferryman treated a passage as something he owned?",
+      "relationshipAnchors": [
+        "Bram Voss",
+        "canal households",
+        "stranded travelers"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "porcelain-mourner",
+      "name": "Porcelain Mourner",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "porcelain-mourner",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 7,
+        "subtier": 1,
+        "ordinaryFreePlayOpener": true,
+        "route": "long"
+      },
+      "dramaticQuestion": "What does the mask permit the mourner to display, and what does it prevent another person from recognizing?",
+      "relationshipAnchors": [
+        "Dena Yarrow",
+        "Vale Ash",
+        "the people who knew its wearer"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "boiler-tender",
+      "name": "Boiler Tender",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "boiler-tender",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 7,
+        "subtier": 2,
+        "ordinaryFreePlayOpener": true,
+        "route": "long"
+      },
+      "dramaticQuestion": "What warning did the tender understand, and who had the authority to stop a useful machine?",
+      "relationshipAnchors": [
+        "Hux Bell",
+        "Tamsin Reed",
+        "people served by the boiler"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "mirror-undertaker",
+      "name": "Mirror Undertaker",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "mirror-undertaker",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 8,
+        "subtier": -2,
+        "ordinaryFreePlayOpener": true,
+        "route": "long"
+      },
+      "dramaticQuestion": "Whose account of a dead person does the mirror preserve, and who contests the image?",
+      "relationshipAnchors": [
+        "Vale Ash",
+        "bereaved relatives",
+        "funeral workers"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "chalk-magistrate",
+      "name": "Chalk Magistrate",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "chalk-magistrate",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 8,
+        "subtier": -1,
+        "ordinaryFreePlayOpener": true,
+        "route": "long"
+      },
+      "dramaticQuestion": "When did a survey mark become an entitlement, and what remains of the people drawn outside its boundary?",
+      "relationshipAnchors": [
+        "Mara Rook",
+        "Miri Fen",
+        "residents of the disputed streets"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "wire-harpist",
+      "name": "Wire Harpist",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "wire-harpist",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 8,
+        "subtier": 0,
+        "ordinaryFreePlayOpener": true,
+        "route": "long"
+      },
+      "dramaticQuestion": "Who could hear the street music as welcome, and who learned to recognize it as an instruction?",
+      "relationshipAnchors": [
+        "Sable Quill",
+        "performers",
+        "people along the wire routes"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "crow-shepherd",
+      "name": "Crow Shepherd",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "crow-shepherd",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 8,
+        "subtier": 1,
+        "ordinaryFreePlayOpener": true,
+        "route": "long"
+      },
+      "dramaticQuestion": "What relationship did the shepherd have with the birds beyond commanding them, and what need keeps that relationship active?",
+      "relationshipAnchors": [
+        "Travelers",
+        "roof workers",
+        "people who feed or fear the flock"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "ledger-leech",
+      "name": "Ledger Leech",
+      "kind": "boss",
+      "nature": "entity",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "ledger-leech",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 8,
+        "subtier": 2,
+        "ordinaryFreePlayOpener": true,
+        "route": "long"
+      },
+      "dramaticQuestion": "What does the ledger consume or preserve, and who benefits from treating that process as ordinary administration?",
+      "relationshipAnchors": [
+        "Miri Fen",
+        "Vale Ash",
+        "people recorded as debts"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "salt-patriarch",
+      "name": "Salt Patriarch",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "salt-patriarch",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 9,
+        "subtier": 0,
+        "ordinaryFreePlayOpener": true,
+        "route": "long"
+      },
+      "dramaticQuestion": "What protection did the patriarch promise, and what did belonging require from people with nowhere else to go?",
+      "relationshipAnchors": [
+        "Dena Yarrow",
+        "dependent households",
+        "rival caretakers"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "chain-colossus",
+      "name": "Chain Colossus",
+      "kind": "boss",
+      "nature": "composite",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "chain-colossus",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 4,
+        "subtier": -2,
+        "ordinaryFreePlayOpener": true,
+        "route": "raid"
+      },
+      "dramaticQuestion": "Who was joined into this strength, and which purposes of its makers conflict inside it?",
+      "relationshipAnchors": [
+        "Bram Voss",
+        "Hux Bell",
+        "workers who maintained the chains"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "ossuary-leviathan",
+      "name": "Ossuary Leviathan",
+      "kind": "boss",
+      "nature": "entity",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "ossuary-leviathan",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 6,
+        "subtier": 2,
+        "ordinaryFreePlayOpener": true,
+        "route": "raid"
+      },
+      "dramaticQuestion": "What histories were combined in the burial beast, and what evidence survives outside the official account?",
+      "relationshipAnchors": [
+        "Sable Quill",
+        "burial workers",
+        "district witnesses"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "bell-triplets",
+      "name": "Bell Triplets",
+      "kind": "boss",
+      "nature": "collective",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "bell-triplets",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 3,
+        "subtier": -2,
+        "ordinaryFreePlayOpener": true,
+        "route": "raid"
+      },
+      "dramaticQuestion": "What distinguishes each keeper's task and judgment when their yoke forces them to act together?",
+      "relationshipAnchors": [
+        "Sable Quill",
+        "bell workers",
+        "the people timed by their shift"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "quarantine-heart",
+      "name": "Quarantine Heart",
+      "kind": "boss",
+      "nature": "composite",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "quarantine-heart",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 7,
+        "subtier": 2,
+        "ordinaryFreePlayOpener": true,
+        "route": "raid"
+      },
+      "dramaticQuestion": "Whose survival does the pump prioritize, and who can challenge the terms on which it keeps working?",
+      "relationshipAnchors": [
+        "Iona Vale",
+        "Tamsin Reed",
+        "ward and pump-house workers"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "crown-procession",
+      "name": "Crown Procession",
+      "kind": "boss",
+      "nature": "collective",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "crown-procession",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 8,
+        "subtier": 2,
+        "ordinaryFreePlayOpener": true,
+        "route": "raid"
+      },
+      "dramaticQuestion": "How do the ruler's aims differ from those of the four attendants carrying the weight?",
+      "relationshipAnchors": [
+        "Mara Rook",
+        "civic workers",
+        "people required to clear the route"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "city-eater",
+      "name": "City Eater",
+      "kind": "boss",
+      "nature": "entity",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "city-eater",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 10,
+        "subtier": 1,
+        "ordinaryFreePlayOpener": true,
+        "route": "raid"
+      },
+      "dramaticQuestion": "Who declares a district empty, and what is lost when that declaration becomes a path through the city?",
+      "relationshipAnchors": [
+        "All seven survivors",
+        "district residents",
+        "the civic authorities"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "last-breath-saint",
+      "name": "Saint of the Last Breath",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "last-breath-saint",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 10,
+        "subtier": 2,
+        "ordinaryFreePlayOpener": true,
+        "route": "raid"
+      },
+      "dramaticQuestion": "What kind of salvation does the saint offer, and can those kept alive refuse its conditions?",
+      "relationshipAnchors": [
+        "Iona Vale",
+        "Dena Yarrow",
+        "people dependent on breathing care"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "hourglass-widow",
+      "name": "Hourglass Widow",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "hourglass-widow",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 3,
+        "subtier": 2,
+        "ordinaryFreePlayOpener": true,
+        "route": "endless"
+      },
+      "dramaticQuestion": "What ending is the widow waiting for, and what does that waiting demand from people still living?",
+      "relationshipAnchors": [
+        "Bram Voss",
+        "Vale Ash",
+        "people bound to the same loss"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "unlit-astronomer",
+      "name": "Unlit Astronomer",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "unlit-astronomer",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 8,
+        "subtier": 2,
+        "ordinaryFreePlayOpener": true,
+        "route": "endless"
+      },
+      "dramaticQuestion": "What does the astronomer need the sky to confirm, and what evidence would their theory fail to admit?",
+      "relationshipAnchors": [
+        "Sable Quill",
+        "observers",
+        "people governed by the predictions"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "folded-man",
+      "name": "Folded Man",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "folded-man",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 4,
+        "subtier": 2,
+        "ordinaryFreePlayOpener": true,
+        "route": "endless"
+      },
+      "dramaticQuestion": "Which parts of a life fit the accepted account, and what choices remain in what was folded out of sight?",
+      "relationshipAnchors": [
+        "Vale Ash",
+        "Miri Fen",
+        "people who recognize the silhouette"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "red-comet",
+      "name": "Red Comet",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "red-comet",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 5,
+        "subtier": 2,
+        "ordinaryFreePlayOpener": true,
+        "route": "endless"
+      },
+      "dramaticQuestion": "What urgency does the courier serve, and who bears the damage of a route that never slows?",
+      "relationshipAnchors": [
+        "Renn Tallow",
+        "Vale Ash",
+        "people on the delivery road"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "memory-taxer",
+      "name": "Memory Taxer",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "memory-taxer",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 6,
+        "subtier": 2,
+        "ordinaryFreePlayOpener": true,
+        "route": "endless"
+      },
+      "dramaticQuestion": "Who can demand a memory as payment, and what remains when refusal becomes unaffordable?",
+      "relationshipAnchors": [
+        "Vale Ash",
+        "Miri Fen",
+        "people whose recollections are contested"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "choir-of-moths",
+      "name": "Choir of Moths",
+      "kind": "boss",
+      "nature": "collective",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "choir-of-moths",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 7,
+        "subtier": 1,
+        "ordinaryFreePlayOpener": true,
+        "route": "endless"
+      },
+      "dramaticQuestion": "What is communicated without the singer's voice, and who interprets that silence for others?",
+      "relationshipAnchors": [
+        "Sable Quill",
+        "listeners",
+        "people drawn to the lights"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "zero-hour-conductor",
+      "name": "Zero-Hour Conductor",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "zero-hour-conductor",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 9,
+        "subtier": 1,
+        "ordinaryFreePlayOpener": true,
+        "route": "endless"
+      },
+      "dramaticQuestion": "What event is the conductor trying to synchronize, and who has reason to arrive at a different time?",
+      "relationshipAnchors": [
+        "Sable Quill",
+        "Tamsin Reed",
+        "watch and shift workers"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "walking-district",
+      "name": "Walking District",
+      "kind": "boss",
+      "nature": "composite",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "walking-district",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 10,
+        "subtier": 0,
+        "ordinaryFreePlayOpener": true,
+        "route": "endless"
+      },
+      "dramaticQuestion": "Whose lives continue inside a district treated as one body, and who can speak for a moving neighborhood?",
+      "relationshipAnchors": [
+        "All seven survivors",
+        "residents",
+        "outside civic officials"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "last-knocker",
+      "name": "The Last Knocker",
+      "kind": "boss",
+      "nature": "entity",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "last-knocker",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 10,
+        "subtier": 2,
+        "ordinaryFreePlayOpener": true,
+        "route": "endless"
+      },
+      "dramaticQuestion": "What does answering the final door commit a person to, and can an invitation remain a choice?",
+      "relationshipAnchors": [
+        "Bram Voss",
+        "Mara Rook",
+        "those waiting on either side"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "ashen-usher",
+      "name": "Ashen Usher",
+      "kind": "boss",
+      "nature": "person",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "ashen-usher",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 1,
+        "subtier": -2,
+        "ordinaryFreePlayOpener": true,
+        "route": "short"
+      },
+      "dramaticQuestion": "Whom is the usher still trying to seat, and who remembers a different use for the missing hall?",
+      "relationshipAnchors": [
+        "Dena Yarrow",
+        "former visitors",
+        "neighboring residents"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "brass-toad",
+      "name": "Brass Toad",
+      "kind": "boss",
+      "nature": "creature",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "brass-toad",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 1,
+        "subtier": -1,
+        "ordinaryFreePlayOpener": true,
+        "route": "short"
+      },
+      "dramaticQuestion": "What relationship developed between the fountain, its water and the people who maintained or abandoned it?",
+      "relationshipAnchors": [
+        "Tamsin Reed",
+        "water carriers",
+        "the fountain's former visitors"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "ragpicker-kite",
+      "name": "Ragpicker's Kite",
+      "kind": "boss",
+      "nature": "object",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "ragpicker-kite",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 1,
+        "subtier": 0,
+        "ordinaryFreePlayOpener": true,
+        "route": "short"
+      },
+      "dramaticQuestion": "Who last held the tether, and what can its continued pull tell a person who has been searching below it?",
+      "relationshipAnchors": [
+        "Vale Ash",
+        "ragpickers",
+        "people along the deserted street"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "candle-snail",
+      "name": "Candle Snail",
+      "kind": "boss",
+      "nature": "creature",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "candle-snail",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 1,
+        "subtier": -2,
+        "ordinaryFreePlayOpener": true,
+        "route": "short"
+      },
+      "dramaticQuestion": "What ordinary journey follows this small light, and why might someone need the path kept open?",
+      "relationshipAnchors": [
+        "Dena Yarrow",
+        "cemetery workers",
+        "nighttime visitors"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "cobble-crab",
+      "name": "Cobble Crab",
+      "kind": "boss",
+      "nature": "creature",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "cobble-crab",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 1,
+        "subtier": -1,
+        "ordinaryFreePlayOpener": true,
+        "route": "short"
+      },
+      "dramaticQuestion": "How does the street's gathering of stones affect the people who repair, use and claim the road?",
+      "relationshipAnchors": [
+        "Hux Bell",
+        "Tamsin Reed",
+        "road workers"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    },
+    {
+      "id": "mourning-kettle",
+      "name": "Mourning Kettle",
+      "kind": "boss",
+      "nature": "object",
+      "narrativeStatus": "authoring-seed",
+      "completedStoryArc": false,
+      "canonicalLoreSource": {
+        "file": "content/catalog.json",
+        "bossId": "mourning-kettle",
+        "field": "lore"
+      },
+      "fixedGameplay": {
+        "level": 1,
+        "subtier": 0,
+        "ordinaryFreePlayOpener": true,
+        "route": "short"
+      },
+      "dramaticQuestion": "Who kept a place at this table, and what can returning to it change for the people who remain?",
+      "relationshipAnchors": [
+        "Olan Pike",
+        "former guests",
+        "the household's neighbors"
+      ],
+      "remaining": [
+        "Develop a distinct desire or behavioral purpose",
+        "Establish evidence and relationships in scenes",
+        "Connect the actual encounter mechanics and counters",
+        "Write consequences and later continuity",
+        "Revise the voice and treatment in context"
+      ]
+    }
+  ],
+  "proposedSideCharacters": [
+    {
+      "id": "senn-arlow",
+      "name": "Senn Arlow",
+      "kind": "side-character",
+      "status": "scene-draft",
+      "playable": false,
+      "treatmentSource": "docs/STORY_WORLD_PLAN.md"
+    },
+    {
+      "id": "miri-fen",
+      "name": "Miri Fen",
+      "kind": "side-character",
+      "status": "working-proposal",
+      "playable": false,
+      "treatmentSource": "docs/STORY_WORLD_PLAN.md"
+    },
+    {
+      "id": "olan-pike",
+      "name": "Olan Pike",
+      "kind": "side-character",
+      "status": "working-proposal",
+      "playable": false,
+      "treatmentSource": "docs/STORY_WORLD_PLAN.md"
+    },
+    {
+      "id": "dena-yarrow",
+      "name": "Dena Yarrow",
+      "kind": "side-character",
+      "status": "working-proposal",
+      "playable": false,
+      "treatmentSource": "docs/STORY_WORLD_PLAN.md"
+    },
+    {
+      "id": "renn-tallow",
+      "name": "Renn Tallow",
+      "kind": "side-character",
+      "status": "scene-draft",
+      "playable": false,
+      "treatmentSource": "docs/STORY_WORLD_PLAN.md"
+    }
+  ]
+}

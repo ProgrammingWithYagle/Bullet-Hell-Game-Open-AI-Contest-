@@ -70,6 +70,11 @@ test("all 66 identities admit Crazed with their fixed grade, inherited full sign
     assert.equal(b.variants.crazed.identity, b.id + "-crazed");
     assert.equal(b.variants.crazed.signature, b.signature.id);
     const inherited = b.variants.crazed.phases.map((phase, index) => {
+      if(b.id==='lamplighter'){
+        const base=b.variants.brutal.phases[index];
+        assert(phase.attacks.every((a,i)=>Math.abs(a.interval-base.attacks[i].interval-4.8)<1e-8));
+        return {...phase,attacks:phase.attacks.map((a,i)=>({...a,interval:base.attacks[i].interval}))};
+      }
       if(b.id==='stationmaster'){
         const base=b.variants.brutal.phases[index];
         assert(phase.attacks.every(a=>a.interval===23));assert(base.attacks.every(a=>a.interval===18));

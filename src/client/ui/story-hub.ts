@@ -1,5 +1,5 @@
 import { storyBook, storyDirection } from "../story-book.ts";
-import { storyScene, storyStructure } from "../story-scenes.ts";
+import { type SceneSpec, storyScene, storyStructure } from "../story-scenes.ts";
 import { storyProgress } from "../story-progress.ts";
 import { loadProfile } from "../profile.ts";
 import { t, number, locale } from "../i18n.ts";
@@ -27,27 +27,42 @@ export function bindStoryHub(
   host.querySelector<HTMLButtonElement>("[data-story-home]")!.onclick = () => {
     if (alive) back();
   };
-  const show = (index?: number) => {
+  const show = (spec: SceneSpec) => {
     if (!alive) return;
     reader();
     host.querySelector<HTMLElement>("[data-story-hub-reader]")!.innerHTML =
-      storyReaderMarkup(
-        index === undefined
-          ? { kind: "prologue", index: 0 }
-          : { kind: "chapter", index },
-        locale,
-        "hub",
-      );
+      storyReaderMarkup(spec, locale, "hub");
     reader = bindStoryReaders(host);
   };
   host.querySelector<HTMLButtonElement>("[data-story-prologue]")!.onclick =
-    () => show();
+    () => show({ kind: "prologue", index: 0 });
   host.querySelectorAll<HTMLButtonElement>("[data-story-chapter]").forEach(
     (button) =>
       (button.onclick = () => {
-        if (!button.disabled) show(Number(button.dataset.storyChapter));
+        const n = Number(button.dataset.storyChapter);
+        if (
+          !button.disabled &&
+          Number.isInteger(n) &&
+          n >= 0 &&
+          n < storyStructure.chapters.length
+        )
+          show({ kind: "chapter", index: n });
       }),
   );
+  host
+    .querySelectorAll<HTMLButtonElement>("[data-story-scene]")
+    .forEach((button) => {
+      button.onclick = () => {
+        if (!alive || button.disabled) return;
+        const n = Number(button.dataset.storyScene);
+        let clears = 0;
+        try {
+          clears = storyProgress(loadProfile(localStorage)).clears;
+        } catch {}
+        if (Number.isInteger(n) && n >= 0 && n < 15 && clears > n)
+          show({ kind: "report", index: n });
+      };
+    });
   return () => {
     alive = false;
     reader();

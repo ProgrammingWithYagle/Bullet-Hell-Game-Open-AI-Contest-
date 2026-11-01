@@ -269,6 +269,25 @@ export class ServicePresentation {
           this.image(cue.id,'midnight-prop-5',cue.carX+cue.carWidth/2,cue.carY+cue.carHeight/2,vertical?cue.carHeight:cue.carWidth,vertical?cue.carWidth:cue.carHeight,angle);
           h.lineStyle(hitboxes?2:1,hitboxes?0xeddfbe:ink,hitboxes?1:.7).strokeRect(cue.carX,cue.carY,cue.carWidth,cue.carHeight);
         }
+      } else if(cue.kind==='service-lamp-pulse'){
+        f.fillStyle(0xe6bb78,active?.1:.015).fillRect(cue.x,cue.y,cue.width,cue.height);
+        h.lineStyle(active?4:2,0xe6bb78,active?.8:.35).strokeRect(cue.x,cue.y,cue.width,cue.height);
+      } else if(cue.kind==='service-lamp-shadow'){
+        const ink=[0xf3c783,0x98d8de,0xd2c1ed][cue.group];
+        if(now<cue.at&&!cue.banked){
+          h.lineStyle(1,ink,.3).strokeRect(cue.x,cue.y,cue.width,cue.height);
+          if(!reduceMotion)h.lineStyle(1,ink,.3).lineBetween(cue.x+cue.width/2,cue.y+cue.height/2,cue.endX+cue.width/2,cue.endY+cue.height/2);
+        }
+        f.fillStyle(0x16382d,active?.7:.16).fillRect(cue.endX,cue.endY,cue.width,cue.height);
+        h.lineStyle(cue.banked?5:3,0xb8e9cf,.95).strokeRect(cue.endX,cue.endY,cue.width,cue.height);
+        h.lineStyle(2,ink,.9).strokeCircle(cue.goalX,cue.goalY,5);
+        for(let i=0;i<=cue.group;i++)h.lineStyle(3,ink,1).lineBetween(cue.endX+12+i*8,cue.endY+10,cue.endX+12+i*8,cue.endY+22);
+      } else if(cue.kind==='service-lamp-wick'){
+        const ink=cue.health>0?[0xf3c783,0x98d8de,0xd2c1ed][cue.group]:0x9acbb6;
+        this.image(cue.id,'midnight-prop-2',cue.x,cue.y,40,52,0,0,cue.health>0?1:.35);
+        h.lineStyle(2,ink,.95).strokeCircle(cue.x,cue.y,cue.radius);
+        for(let i=0;i<=cue.group;i++)h.lineStyle(3,ink,1).lineBetween(cue.x-8+i*8,cue.y+25,cue.x-8+i*8,cue.y+31);
+        if(cue.health>0){f.fillStyle(0x1d2220,.95).fillRect(cue.x-22,cue.y-35,44,5);f.fillStyle(ink,1).fillRect(cue.x-22,cue.y-35,44*cue.health/cue.maxHealth,5);}
       } else if (cue.kind === 'service-sanctuary') {
         if (active && !cue.neutralized) {
           if (cue.style === 'lamp')

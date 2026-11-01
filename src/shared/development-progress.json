@@ -1,6 +1,6 @@
 {
   "updated": "2026-10-31",
-  "buildId": "2026.10.31-station-signals",
+  "buildId": "2026.10.31-lamplight-reading",
   "playableBosses": 66,
   "ordinaryBosses": 65,
   "secretBosses": 1,
@@ -16,8 +16,8 @@
       "id": "boss-quality",
       "label": "Existing-boss phase / mobility / Brutal quality passes",
       "target": 60,
-      "implemented": 17,
-      "remaining": 43,
+      "implemented": 18,
+      "remaining": 42,
       "humanAccepted": 0,
       "completedIds": [
         "constable",
@@ -36,9 +36,10 @@
         "glass-surgeon",
         "ash-baker",
         "sluice-keeper",
-        "stationmaster"
+        "stationmaster",
+        "lamplighter"
       ],
-      "status": "Seventeen original encounter quality passes are implemented; 43 remain. Stationmaster has phase-specific bounded trains, shootable signals, open tracks, full delayed warnings, phase-preserving returns and fifteen-locale Neris Vale lore/help. Source grade/health/deadline remain. Whole-boss human acceptance remains 0; rendered/motion/device/language review and final balance stay open."
+      "status": "Eighteen original encounter quality passes are implemented; 42 remain. Lamplighter has reachable bankable shadows, distinct watches, complete later warnings, swept refuge-union exposure and fifteen-language lore/help. Source grade/health/deadline remain. Whole-boss human acceptance remains0; rendered/device/language and final balance review stay open."
     },
     {
       "id": "class-abilities",
@@ -306,6 +307,24 @@
         "ar"
       ],
       "status": "Complete English, Spanish and Arabic narrative editions cover intro,3acts,15scenes,42choices and3endings. Arabic uses explicit right-to-left prose; unsupported editions fall back explicitly to English. Prose-only packages cannot carry route commands. Interface labels cover all15catalogs. The other12full editions and native-language/rendered/pacing acceptance remain open."
+    },
+    {
+      "id": "character-story-arcs",
+      "label": "Optional survivor character arcs",
+      "target": 7,
+      "implemented": 0,
+      "remaining": 7,
+      "humanAccepted": 0,
+      "status": "User approved a complete personal arc for each of the seven survivors. Existing letters are epilogues, not completed arcs. Working treatments exist in STORY_WORLD_PLAN.md; playable character chapters, tailored challenges and their review remain unfinished."
+    },
+    {
+      "id": "long-form-story-world",
+      "label": "Long-form main story and ensemble worldbuilding delivery",
+      "target": 1,
+      "implemented": 0,
+      "remaining": 1,
+      "humanAccepted": 0,
+      "status": "User sets a long-term five-million-word main-story ambition, excluding optional routes/character chapters, with consistent care for side characters and antagonists. First Open Ledger arc and reader are implemented; the larger narrative, recurring cast, multi-volume support, finished scenes and review remain unfinished. The authoring plan is not gameplay completion."
     }
   ],
   "coverage": [
@@ -669,17 +688,20 @@
     "The user explicitly says to keep developing, retain the full goal across turns and let them decide completion. This authorizes the playable Story campaign; no final acceptance is inferred from software checks.",
     "The active continued-development instruction also authorizes Ash Baker’s next encounter pass. Software evidence is separate from user acceptance, and the full-game goal continues across turns.",
     "Continued replay-value development connects the implemented Story campaign to personal journal acts, completion and recovered endings. The journal now22goals/66cosmetic stamps is implementation evidence; final acceptance remains the user’s decision.",
-    "User2026-10-31 requests separate Story Campaign and Free Play, distinct room categories, a longer arc/chapter story with visual-novel presentation, a standalone General abilities tab, and continued boss development step by step. This implementation creates that first hub/reader structure and the next Sluice quality pass; larger future story arcs remain open."
+    "User2026-10-31 requests separate Story Campaign and Free Play, distinct room categories, a longer arc/chapter story with visual-novel presentation, a standalone General abilities tab, and continued boss development step by step. This implementation creates that first hub/reader structure and the next Sluice quality pass; larger future story arcs remain open.",
+    "User2026-10-31 explicitly accepts the shared main campaign plus seven optional character arcs. They request deep worldbuilding, good writing and consistent care for survivors, side characters and antagonists while allowing larger roles for some. They are willing to spend substantial time/tokens. They correct the long-term base-story ambition to FIVE MILLION WORDS, excluding optional side routes/character chapters. This supersedes the smaller narrative planning estimate; no fixed delivery date or token budget was agreed.",
+    "User2026-10-31 explicitly requests research/study of acclaimed long web novels and visual novels, naming LOTM/Lord of Mysteries, Reverend Insanity, Umineko and The House in Fata Morgana. Learn craft while developing an original story; do not copy their plots, characters or systems. First-pass primary-source craft notes and an original gate-scene draft are authoring work, not completed playable chapters or literary acceptance.",
+    "User2026-10-31 explicitly requires story mechanics to match the actual fixed boss threat levels1–10 and the existing D-–SS+ class-specialization grades. New maps, bosses and techniques should enter shared gameplay and be playable in Free Play as well as Story. Preserve separate Story/Free Play presentation and the same underlying content/rules. STORY_GAMEPLAY_CONTRACT.md records source-grounded semantics; no new permanent class-power ranking is invented."
   ],
   "remainingReleaseWork": [
     "Continue current-content polish for first-time players during the remaining day. The home-gallery follow-up adds manual arrows/page buttons and keyboard/RTL navigation over existing artwork, retaining menu state and accepted camera/lava/controls. Read reviews/home-gallery-2026-10-29 for exact local/source/CI/fresh-preview/Wiki evidence. Testing links are preferred for human comparison. Matching Windows packaging should follow a stable gallery pass; older6f397a5camera review remains immutable. Full human/rendered/multiplayer balance and coordinated release acceptance remain open.",
-    "Review Alchemist Crazed distillation columns, route warnings, coolant condensation and final reflux in the next matching frozen preview. The shared earned-SP General mobility branch remains deferred during public polish.",
+    "Review Alchemist Crazed distillation columns, route warnings, coolant condensation and final reflux in the next matching frozen preview. The shared General mobility branch is implemented and awaits human/device/balance review.",
     "Review shared phase-attack continuity in the next matching frozen preview; software checks are separate from rendered/human/device/final balance acceptance.",
     "Review Bellringer Standard calibration and the new Brutal/Crazed return-chain decision in the next exact-source frozen preview; fixed grade3- remains.",
     "Review General Sprint/Double Dash on rendered keyboard, gamepad and touch surfaces, all fifteen languages and representative bosses; tune mobility tradeoffs with human feedback.",
     "Complete rendered/human/device/native-language review of the testing/public split, Solo tools, optional names/chat and records UI. The manual guide works in limited 5193 human feedback; guide images are deferred polish. Public builds offer the optional guide only on Baby.",
-    "Deferred expansion: create and verify 85 additional ordinary boss identities, with distinct mechanics, art and individual original music; the target is at least 150 ordinary plus secrets.",
-    "Deferred expansion: assess or redesign the remaining 43 existing boss encounters for distinct phases, meaningful pressure and separate Brutal behavior.",
+    "Continue expansion: create and verify 85 additional ordinary boss identities, with distinct mechanics, art and individual original music; the target is at least 150 ordinary plus secrets.",
+    "Continue expansion: assess or redesign the remaining 42 existing boss encounters for distinct phases, meaningful pressure and separate Brutal behavior.",
     "Review and tune the 21 implemented ability-changing upgrades and optional skill map on actual rendered/human/device/native-language surfaces.",
     "Complete remaining boss special/action art, class special-ability art and rendered animation transitions.",
     "Complete final human balance, music/listening, native-language and physical-device acceptance. Browser automation remains disabled under the current user direction; a scripted or invulnerable sample is not a personally played clear.",
@@ -687,7 +709,8 @@
     "Deploy and independently accept shared hosted global rankings and durable recovery. Current public authorities implement persistent server-scoped team records with exact scoring and real-network/restart evidence. Shared storage ownership, participant recovery credentials, entropy recovery histories and hosted acceptance remain open.",
     "Prepare and verify a new coordinated Windows/browser release with a matching backend; existing immutable Windows and older public builds remain separate.",
     "Finish and review the12 remaining Story narrative translations; compare15-fight pacing, choices, endings and all difficulty paths with human players. The new campaign is implemented but not accepted as finished.",
-    "Continue the longer story beyond the first fifteen-encounter arc: author additional arcs and chapters, grow visual-novel scenes and new art/expressions, and obtain rendered, native-language and human pacing review. The user defines full-game completion."
+    "Continue the longer story beyond the first fifteen-encounter arc: author additional arcs and chapters, grow visual-novel scenes and new art/expressions, and obtain rendered, native-language and human pacing review. The user defines full-game completion.",
+    "Implement seven optional character arcs and the much longer main campaign, using the accepted ensemble writing/worldbuilding standard. Target five million English main-story words separately from optional content, translated duplicates and UI. Add multi-volume loading, durable reading/chapter progress, scene/continuity review and recurring side/antagonist development. STORY_WORLD_PLAN.md is an authoring plan, not a finished campaign."
   ],
-  "semanticInputsSha256": "f6fd19f13cce895213eb0334256a193ce5481869cead95bf0b66ca6b228c591b"
+  "semanticInputsSha256": "a9aea240215231c87ce1ec355c4a24095b09254fd788d35ef3c2d1d0ba8a5b7e"
 }
