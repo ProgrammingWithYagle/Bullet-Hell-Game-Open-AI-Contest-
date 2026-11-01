@@ -1,5 +1,5 @@
 {
-  "createdAt": "2026-11-01T19:34:30.202Z",
+  "createdAt": "2026-11-01T19:50:19.452Z",
   "requests": [
     {
       "file": "assets/production/generated/swordsman-2026-11-01/dara-selection-v1.png",
@@ -7,7 +7,12 @@
       "request": "assets/production/generated/swordsman-2026-11-01/PROMPT.txt",
       "requestSha256": "b3e313f93e74eee72a887f7a41d0213d8ffeb657b2c0637be8c880b1f0f912da",
       "purpose": "selection portrait",
-      "inputBindings": [],
+      "inputBindings": [
+        {
+          "projectPath": "assets/production/generated/bard-2026-11-01/iven-selection-v1.png",
+          "sha256": "593bc352bbee736c674e0f50906cee94d974c59d83b9ee1b3f11692cf52e5e78"
+        }
+      ],
       "mode": "built-in imagegen",
       "transparentBackground": true
     },
@@ -23,8 +28,8 @@
           "sha256": "150b83524eb57236db674145963506715ec280248a0a65829ee4725bcf931978"
         },
         {
-          "projectPath": "assets/production/generated/bard-2026-11-01/iven-four-view-v1.png",
-          "sha256": "9133077dd3d85444b94158e0b6fe872a6c6e52dc79329d96f225879bff6b468e"
+          "projectPath": "assets/production/normalized/survivors/bard/reference-atlas-v1.png",
+          "sha256": "55c03f60df9677baca200cc7db6b47c3a268bfd4acb5a177d1f914441046452b"
         }
       ],
       "mode": "built-in imagegen",
@@ -228,5 +233,10 @@
     "Only whole-figure crops, uniform sheet scales and translation; no reflection, rigging or painted pose substitutions. Uneven gutters use explicitly recorded figure rectangles. Wide attacks use320px cells.",
     "Original synthesized steel/cloth cues are executable sound specifications; no recorded voice or listening acceptance.",
     "No browser automation, production deployment, main merge or Windows replacement."
-  ]
+  ],
+  "provenanceCorrection": {
+    "originalSourceCommit": "08acf5f3383ac7899c8dec73d334e9d9d66a5d7b",
+    "originalReceiptSha256": "023db99c62b7a5a75f00f3dc29973384c4d58c7b8e9d205e125143e116af212c",
+    "reason": "Checked the issued imagegen arguments in the current chat record. The portrait also used the Bard portrait as style input, and the first four-view sheet used the normalized Bard reference atlas. These metadata bindings are now exact. Generated/native/normalized/delivery image bytes and runtime are unchanged."
+  }
 }

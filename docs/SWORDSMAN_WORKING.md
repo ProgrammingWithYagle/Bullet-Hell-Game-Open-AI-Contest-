@@ -1,6 +1,6 @@
 # Swordsman development notes
 
-The sections below preserve the initial continuation state. Subsequent work added all28selected run/action clips,18icons, actual cue selection, EN/ES/AR opening/English continuation, owned proofs, migration and real-peer transport. Live contracts are now in [SWORDSMAN](SWORDSMAN.md); the handoff records the latest verified/frozen state when available. A final gate is currently running. Whole-game completion remains unproven.
+The sections below preserve the initial continuation state. Subsequent work added all28selected run/action clips,18icons, actual cue selection, EN/ES/AR opening/English continuation, owned proofs, migration and real-peer transport. Live contracts are now in [SWORDSMAN](SWORDSMAN.md); the handoff records the latest verified/frozen state when available. The final local gate, exact-source CI and both frozen audiences now pass; see the current handoff for source/probe identities. Whole-game completion remains unproven.
 
 This is an uncommitted continuation of verified Bard source `61141f9a1c1cee3e2d0258d47308f2593121f6e9` / metadata `519cb40dd3e87155a9200b6f2bb3b39a9ff973d3`. The stable frozen Bard reviews remain at testing5304/backend2680 and public5305/backend2681. They still contain eight classes. No Swordsman release, final acceptance or whole-game completion is claimed.
 
