@@ -1,0 +1,52 @@
+[
+  {
+    "id": "one-place-left",
+    "name": "One Place Left",
+    "campaignMode": "chapters",
+    "bossDeadlineMultiplier": 2,
+    "proofRuleVersion": 1,
+    "nodes": [
+      {
+        "id": "gate-constable",
+        "kind": "boss",
+        "bossId": "constable",
+        "arenaId": "gatehouse"
+      },
+      {
+        "id": "street-clearance",
+        "kind": "ordinary",
+        "scenarioId": "ward-approach",
+        "routeArenas": [
+          "triage-yard",
+          "gatehouse",
+          "ossuary-works"
+        ]
+      },
+      {
+        "id": "ward-matron",
+        "kind": "boss",
+        "bossId": "matron",
+        "arenaId": "triage-yard"
+      }
+    ],
+    "economy": {
+      "startingCoins": 80,
+      "coinsPerObjective": 20,
+      "maximumObjectives": 3,
+      "skillPoints": 0
+    },
+    "techniqueGrade": "D-",
+    "lessonIds": [
+      "soldier-command-1",
+      "heavy-suppression-1",
+      "tank-protection-1",
+      "medic-triage-1",
+      "mage-control-1",
+      "engineer-constructs-1",
+      "assassin-ambush-1"
+    ],
+    "ordinaryReplay": "ward-approach",
+    "timedReading": false,
+    "maximumPreparedFoundations": 1
+  }
+]

@@ -1,3 +1,4 @@
+// Preserve issued fifteen-boss Story prototype behavior through the restore-only compatibility path.
 import {
   practiceRecords,
   PRACTICE_RECORDS_KEY,
@@ -407,7 +408,7 @@ test("Issued Story saves and ending receipts migrate exactly; old modes cannot f
       maxPlayers: 1,
       difficulty: "easy",
       runId: "baker-story-migration",
-    });
+    }, true);
   g.addPlayer("solo", "Reader", "medic");
   const old = g.offlineCheckpoint()!;
   old.contentRevision = issued;

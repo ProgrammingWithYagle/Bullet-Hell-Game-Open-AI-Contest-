@@ -1,3 +1,4 @@
+// Preserve issued fifteen-boss Story prototype behavior through the restore-only compatibility path.
 import test from "node:test";
 import assert from "node:assert/strict";
 import { Game, data } from "../src/shared/game.ts";
@@ -37,7 +38,7 @@ function game(seed = 23, difficulty = "easy", runId = "story-fixture") {
     openingBossId: "uncounted",
     openingArenaId: "crown-crypt",
     arenaSelection: "randomEncounter",
-  });
+  }, true);
   g.addPlayer("solo", "Mara", "soldier");
   return g;
 }

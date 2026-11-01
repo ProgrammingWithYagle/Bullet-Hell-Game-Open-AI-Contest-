@@ -1,5 +1,7 @@
 # First expanded chapter: One Place Left
 
+**Current direction, 2026-11-01:** Story Campaign exclusively uses the new chapter/learning system. Free Play preserves the original story-free SP runs. Do not add a second fast SP-based Story start. Earlier Story prototype saves/archives remain compatibility data, not a fresh Campaign mode. See [OPENING_CHAPTER.md](OPENING_CHAPTER.md) for the first playable implementation and its limits.
+
 This is the next chapter blueprint, not the graph currently running in the fifteen-boss prototype. It reuses the published gate opening, Constable encounter and first return, then gives them a slower continuation. Main-story completion still supports any class and co-op.
 
 The dramatic question is practical: can the party establish a route that people can keep using? Opening a gate is not the same as maintaining water, shelter, transport and trust. The chapter gives the cast time to work and disagree before its second boss. It does not reveal the full bell mechanism or resolve Lorn's entire evacuation.

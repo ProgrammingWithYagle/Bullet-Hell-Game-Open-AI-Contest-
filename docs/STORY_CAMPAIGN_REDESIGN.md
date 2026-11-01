@@ -1,5 +1,7 @@
 # Campaign progression and encounter redesign
 
+**Current direction, 2026-11-01:** Story Campaign exclusively uses the new chapter/learning system. Free Play preserves the original story-free SP runs. Do not add a second fast SP-based Story start. Earlier Story prototype saves/archives remain compatibility data, not a fresh Campaign mode. See [OPENING_CHAPTER.md](OPENING_CHAPTER.md) for the first playable implementation and its limits.
+
 The user’s new direction supersedes the short-run campaign model. These are accepted constraints and a proposed implementation plan. The full mastery system and ordinary-enemy campaign are not yet implemented.
 
 ## Accepted constraints

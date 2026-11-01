@@ -1,3 +1,4 @@
+// Preserve issued fifteen-boss Story prototype behavior through the restore-only compatibility path.
 import type { ClassId } from "../src/shared/protocol.ts";
 import test from "node:test";
 import assert from "node:assert/strict";
@@ -120,7 +121,7 @@ test("The opening's boss and location execute under shared Story and Free Play r
       mode: "story",
       difficulty: "normal",
       maxPlayers: 1,
-    });
+    }, true);
     story.addPlayer("solo", "Reader", cl.id as ClassId);
     story.start();
     const free = new Game(
@@ -132,7 +133,7 @@ test("The opening's boss and location execute under shared Story and Free Play r
         openingArenaId: "gatehouse",
         arenaSelection: "fixed",
       }),
-    );
+     true);
     free.addPlayer("solo", "Rematch", cl.id as ClassId);
     free.start();
     for (const binding of openingSceneBindings) {
@@ -154,7 +155,7 @@ test("The aftermath reference uses the actual fixed boss/form and owned build gr
   const ui = await menuBundle(context, "src/client/ui/story-encounter.ts");
   for (const difficulty of ["normal", "insane", "hellish"])
     for (const cl of data.classes) {
-      const g = new Game({ mode: "story", difficulty, maxPlayers: 1 });
+      const g = new Game({ mode: "story", difficulty, maxPlayers: 1 }, true);
       g.addPlayer("solo", "Reader", cl.id as ClassId);
       g.start();
       assert.equal(ui.storyEncounterMarkup(viewOf(g, "solo")), "");
@@ -203,7 +204,7 @@ test("Actual novel navigation reads every English, Spanish and Arabic page, pers
     ui = await menuBundle(context, "src/client/ui/story-reader.ts");
   env.saved.set(PROFILE_KEY, JSON.stringify(freshProfile()));
   const profile = env.saved.get(PROFILE_KEY);
-  const g = new Game({ mode: "story", maxPlayers: 2 });
+  const g = new Game({ mode: "story", maxPlayers: 2 }, true);
   g.addPlayer("a", "Mara", "soldier");
   g.addPlayer("b", "Iona", "medic");
   g.start();

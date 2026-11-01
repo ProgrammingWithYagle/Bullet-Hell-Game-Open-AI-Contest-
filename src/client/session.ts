@@ -8,6 +8,7 @@ import {SessionClient} from './session-client.ts';
 import {isChatReceipt} from '../shared/chat-delivery.ts';
 import type {TestingCommand} from './testing-command.ts';
 import { recordProfileView } from './profile.ts';
+import {recordChapterView} from './chapter-journal.ts';
 import { Client, ErrorCode, type Room } from '@colyseus/sdk';
 import { WorldState } from '../shared/network-state.ts';
 import {
@@ -29,6 +30,7 @@ import { defaultGameEndpoint } from './deployment.ts';
 import type { TeamRecordStatus } from '../shared/team-records.ts';
 import { isRankedTeamRecord, rememberTeamRecord } from './team-records.ts';
 export type ConnectionOptions = {
+  storyChapterId?:'one-place-left';
   freePlay?:FreePlayOptions;
   serverEndpoint?: string;
   name: string;
@@ -391,6 +393,8 @@ export class Session {
       view.run?.id,
       view.run?.testingModified === true||view.run?.customized===true,
       player?.progress,
+      player?.training,
+      view.chapter,
       view.encounter,
       view.secretStatus,
       view.phase,
@@ -403,6 +407,7 @@ export class Session {
       try {
         if ((view.run.testingModified||view.run.customized) && !recordPracticeCampaign(view, this.id, localStorage)) throw Error("ui.errorSave");
         recordProfileView(view, this.id, localStorage);
+        recordChapterView(view,this.id,localStorage,this.online);
         this.recordedProgress = progressKey;
         if (this.status === 'ui.errorSave') this.notify('');
       } catch {
@@ -568,6 +573,7 @@ function networkView(s: WorldState): View {
   }));
   return {
     run: intermission.run,
+    ...(intermission.chapter?{chapter:intermission.chapter,patients:intermission.patients??[]}:{}),
     ...(intermission.objective?{objective:intermission.objective}:{}),
     tick: s.tick,
     combatTick: s.combatTick,

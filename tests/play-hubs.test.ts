@@ -113,7 +113,8 @@ test("Story has an untimed personal-reader boundary with saved party readiness a
   assert(g.vote("b", 1));
   g.step();
   assert.equal(g.phase, "contractVote");
-  assert.equal(g.phaseEnds - g.tick, 45 * 30);
+  assert.equal(g.phaseEnds, 0);
+  assert.equal(g.chapter?.stage, 'choice');
   assert.equal(g.storyChoices.length, 0);
   const solo = new Game({ mode: "story", maxPlayers: 1 });
   solo.addPlayer("solo", "Reader", "medic");

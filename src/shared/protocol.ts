@@ -151,7 +151,7 @@ export function validInput(x: unknown): x is InputFrame {
 }
 export type Command = {
   id: string;
-  kind: 'weapon' | 'upgrade' | 'skill' | 'supply';
+  kind: 'weapon' | 'upgrade' | 'skill' | 'supply' | 'study' | 'prepare';
   item: string;
 };
 export type SupplySlot = { id: string; count: number };
@@ -162,7 +162,7 @@ export function validCommand(x: unknown): x is Command {
     Object.keys(p).length === 3 &&
     typeof p.id === 'string' &&
     /^[a-zA-Z0-9_-]{1,64}$/.test(p.id) &&
-    ['weapon', 'upgrade', 'skill', 'supply'].includes(p.kind) &&
+    ['weapon', 'upgrade', 'skill', 'supply', 'study', 'prepare'].includes(p.kind) &&
     typeof p.item === 'string' &&
     /^[a-z0-9-]{1,64}$/.test(p.item)
   );

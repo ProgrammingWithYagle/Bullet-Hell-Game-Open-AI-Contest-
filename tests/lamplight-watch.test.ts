@@ -1,3 +1,4 @@
+// Preserve issued fifteen-boss Story prototype behavior through the restore-only compatibility path.
 import { readFileSync } from "node:fs";
 import { Game } from "../src/shared/game.ts";
 import { CONTENT_REVISION } from "../src/shared/protocol.ts";
@@ -498,7 +499,7 @@ test("Fifteen editions describe the actual watches and banked refuges, while iss
   }
   const issued =
       "77b0d920d24b5f96e422f6697e8346e04cc88159920954261508b30d878d0264",
-    g = new Game({ mode: "story", maxPlayers: 1 });
+    g = new Game({ mode: "story", maxPlayers: 1 }, true);
   g.addPlayer("solo", "Reader", "medic");
   const save = g.offlineCheckpoint()!;
   save.contentRevision = issued;

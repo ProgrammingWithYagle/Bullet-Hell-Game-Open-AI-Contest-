@@ -1,0 +1,269 @@
+{
+  "title": "One Place Left",
+  "editionNotice": "This chapter's continuation is currently available in English. The gate opening and first return also have Spanish and Arabic editions.",
+  "intro": "An opening chapter: the gate, a chosen road, the people waiting at the ward. Two boss encounters and one ordinary encounter. Learning replaces SP purchases here; equipment still costs money. Boss fights allow twice the usual time for early training builds. Their health, attacks and threat grades are unchanged.",
+  "clock": "Boss time limit",
+  "standardClock": "Standard time",
+  "chapterClock": "Extended time · 2×",
+  "classic": "Earlier Story archive",
+  "chapterMode": "Story Campaign",
+  "classicHelp": "Earlier fifteen-boss Story saves and recovered text are preserved as legacy data. New campaigns use chapter learning. Free Play retains the original story-free SP runs.",
+  "training": "Learning and preparation",
+  "study": "Study this foundation",
+  "prepare": "Prepare this technique",
+  "known": "Learned",
+  "proven": "Demonstrated",
+  "prepared": "Prepared",
+  "notProven": "Complete the street encounter after putting this lesson to use. Reading or pressing an ability in an empty lane does not complete a demonstration.",
+  "locked": "The first lesson opens after the gate. Your basic class abilities are already available.",
+  "general": "Dodge is available from the start. Further General techniques need their own later lessons; this chapter does not sell them for SP.",
+  "readyHelp": "Take the time you need. Everyone present chooses Ready to continue. Before street practice, study your class foundation. A new purchase or preparation clears your Ready choice.",
+  "practiceHelp": "Use your lesson during the street encounter, then clear its waves. The green care marker at the starting shelter shows your assigned patient if you are playing Medic.",
+  "patient": "Assigned patient",
+  "complete": "Chapter complete",
+  "incomplete": "Chapter attempt ended",
+  "resultHelp": "This chapter has three objectives and two bosses. It does not complete the long main story, award the earlier prototype endings, or promote a character to an advanced grade.",
+  "objectives": "Objectives completed",
+  "bosses": "Bosses defeated",
+  "journal": "Local chapter journal",
+  "journalHelp": "Chapter records and learned techniques are kept here. Exports are local records; they cannot grant proofs in an online room.",
+  "export": "Export chapter journal",
+  "import": "Import chapter journal",
+  "imported": "Chapter journal imported.",
+  "importFailed": "The journal could not be imported. The previous record has been kept.",
+  "local": "Local record",
+  "noRecords": "No chapter record yet.",
+  "unreadable": "This chapter journal cannot be read. Its stored data has been kept.",
+  "lessons": {
+    "soldier": "A signal is useful when someone can act on it. Fire a shot that actually hits a street enemy while benefiting from your own Rally field. The shot must connect; casting Rally alone is not enough.",
+    "heavy": "Make the sweep meet the advance. Hit a street enemy with the slowing pellets from your Suppressing Cone ability. Ordinary weapon fire or a sweep into cover does not demonstrate this lesson.",
+    "tank": "Meet an advance with a controlled Rescue Charge. Connect its real sweep with a street enemy. You do not need to take damage to prove that you can use it.",
+    "medic": "Provide at least 16 points of actual care to your assigned patient at the starting shelter, using your healing field, nearby treatment or resurrection's healing. The patient's need is finite; deliberate player injuries do not count.",
+    "mage": "Put the prediction where a threat will be. Damage a street enemy with a slowing Sigil pulse. An empty circle or an unrelated weapon hit does not demonstrate control.",
+    "engineer": "Give the construct a useful line of fire. Let your own turret or siege construct land a damaging shot on a street enemy. Placing and cancelling a construct is not enough.",
+    "assassin": "Concealment needs a purpose. Land a damaging shot or sweep on a street enemy while using your actual concealment. Existing hazards still apply; concealment is not general invulnerability."
+  },
+  "choices": [
+    {
+      "title": "Take the ward road",
+      "text": "Follow Senn toward the triage yard. Clear its approach so the next cart has somewhere to turn."
+    },
+    {
+      "title": "Pass the registry",
+      "text": "Give Miri the three permitted names, then clear the gatehouse return road. The separate account stays separate."
+    },
+    {
+      "title": "Cross the wire yard",
+      "text": "Ask the ward's Engineer about a route through the works. Clear that yard before anyone can bring tools across."
+    }
+  ],
+  "scenes": [
+    {
+      "id": "ward-road",
+      "title": "Room to turn",
+      "arenaId": "triage-yard",
+      "lines": [
+        [
+          "",
+          "Senn stopped the cart short of a rut and put his boot against the wheel. He did not let go when Mara came alongside. Beyond the yard wall, a length of white cloth caught and released on a nail."
+        ],
+        [
+          "Senn Arlow",
+          "That corner. We get around it empty. Coming back with someone in the cart, I don't know."
+        ],
+        [
+          "Bram Voss",
+          "Then we check it before we put anyone in."
+        ],
+        [
+          "",
+          "The ward's side shelter was still occupied. Mera Silt sat beside a basin, holding a folded cloth to her forearm. She had caught it on a split shutter while helping to close the window. Other patients waited behind the screen; none had been promised a place on Senn's cart."
+        ],
+        [
+          "Drin Hal",
+          "If you're here to move people, ask me first. If you're here to help, ask them."
+        ],
+        [
+          "Iona Vale",
+          "Mera? May I look?"
+        ],
+        [
+          "Mera Silt",
+          "Look, yes. Don't throw that cloth away. It's mine."
+        ],
+        [
+          "",
+          "Drin made space beside the basin. He was a Medic too, with a practice Iona had only recently begun learning. He asked the others to watch the approach while he sorted the work. There was time for one foundation before they went out. Useful work would show whether the lesson had taken; the lesson itself would not vanish if the attempt failed."
+        ]
+      ]
+    },
+    {
+      "id": "registry-turn",
+      "title": "Only three names",
+      "arenaId": "gatehouse",
+      "lines": [
+        [
+          "",
+          "Miri Fen had laid a plank across two closed cabinets to make a desk. The shorter cabinet rocked whenever they wrote. Vale waited until the pen stopped scratching."
+        ],
+        [
+          "Vale Ash",
+          "Three names. They agreed to these being written down. The rest isn't for the register."
+        ],
+        [
+          "Miri Fen",
+          "Three, then. I can count that high without an office seal."
+        ],
+        [
+          "",
+          "Miri copied the names onto a fresh sheet and read them back. Vale corrected one letter. The account attributed to Senn remained on its own page. Miri asked where the people would be staying; Vale gave the answer they had, rather than a destination nobody had agreed to."
+        ],
+        [
+          "Miri Fen",
+          "I'll leave the address blank. Better a blank than someone going to the wrong door."
+        ],
+        [
+          "",
+          "The return road led past the ward's starting shelter. Drin Hal, a Medic already working there, asked them to keep the road clear while he arranged care. Mera Silt had cut her forearm on a split shutter. She agreed to treatment, but wanted her own cloth kept. Other patients waited behind a screen; their care was not a promise that all could travel."
+        ],
+        [
+          "Drin Hal",
+          "Take a minute before you go. Show me what you've been taught. Then use it where it helps."
+        ],
+        [
+          "",
+          "They could study one foundation before clearing the road. A real use during that encounter could establish the demonstration; an empty gesture could not. Vale kept the separate account folded away."
+        ]
+      ]
+    },
+    {
+      "id": "wire-yard",
+      "title": "The person who repairs it",
+      "arenaId": "ossuary-works",
+      "lines": [
+        [
+          "",
+          "Kesa Morn inspected the wire Tamsin had brought, then handed it back without pulling it straight. A row of worn clamps hung behind Kesa's workbench. Each had been marked with a different number of cuts."
+        ],
+        [
+          "Tamsin Reed",
+          "I know. It was what we had."
+        ],
+        [
+          "Kesa Morn",
+          "I'm not asking why you used it. I'm asking who checks it tomorrow."
+        ],
+        [
+          "",
+          "Tamsin looked at the wire again. Kesa was an Engineer too, and would still be maintaining this route after the newcomers had gone. They agreed to inspect the gate repair together later. No replacement part had changed hands yet."
+        ],
+        [
+          "Hux Bell",
+          "Can the cart get through here?"
+        ],
+        [
+          "Kesa Morn",
+          "After the yard is clear. Before that, I wouldn't take a wheelbarrow."
+        ],
+        [
+          "",
+          "The ward's starting shelter stood on the near side of the works. Drin Hal introduced himself as the Medic responsible for its patients. Mera Silt, who had cut her forearm on a split shutter, agreed to care and asked to keep her own cloth. Other people waited behind the screen. Clearing this yard would make one approach usable; it would not inspect the other two roads or move those patients for them."
+        ],
+        [
+          "Kesa Morn",
+          "One thing at a time, Reed. Put it where it can do some work."
+        ],
+        [
+          "",
+          "There was time to study a foundation before the street encounter. Its demonstration needed an actual useful effect and a cleared approach. Tamsin kept the wire, along with the promise to return."
+        ]
+      ]
+    },
+    {
+      "id": "ward-porch",
+      "title": "The red door",
+      "arenaId": "triage-yard",
+      "lines": [
+        [
+          "",
+          "With the chosen approach clear, Senn could bring the empty cart as far as the ward porch. He checked its brake before taking his foot from the wheel. He would not load anyone until the turn had been tried with a person's weight. The other roads remained unchecked."
+        ],
+        [
+          "Drin Hal",
+          "Tell me what worked. Tell me what didn't, too. I can't help with the version you wish had happened."
+        ],
+        [
+          "",
+          "A demonstrated foundation could now be prepared. Those who had not completed their demonstration still knew the lesson; it had not become an advanced technique through attendance. The group could continue with their basic abilities. Nobody would be sent away to prove themselves alone."
+        ],
+        [
+          "Iona Vale",
+          "And the people inside?"
+        ],
+        [
+          "Drin Hal",
+          "Some can leave. Some need equipment we can't carry. They need a choice that includes that."
+        ],
+        [
+          "",
+          "From behind the red door came a dragging sound, then the soft clatter of a bed rail. Drin stopped with his hand on the latch. The infirmary keeper had tended these rooms before the dead rose. The thing moving between their beds was still gathering bodies into nests."
+        ],
+        [
+          "Bram Voss",
+          "Who opens it?"
+        ],
+        [
+          "Drin Hal",
+          "I do. You keep the doorway usable. Don't bring the fight back through the shelter."
+        ],
+        [
+          "",
+          "They had time to choose their equipment and prepare what they had actually demonstrated. The Matron waited in the triage yard beyond the door."
+        ]
+      ]
+    },
+    {
+      "id": "one-place-left-close",
+      "title": "What the road is for",
+      "arenaId": "triage-yard",
+      "lines": [
+        [
+          "",
+          "After the Matron fell, Drin returned to the shelter before anyone asked him for a report. Mera was arguing with a man who wanted her chair for a patient from the next room. She agreed to move when he brought another chair, and stayed where she was until he did."
+        ],
+        [
+          "Senn Arlow",
+          "I can take one. I still mean one."
+        ],
+        [
+          "Iona Vale",
+          "Then we ask who wants to go, and whether we can look after them on the way."
+        ],
+        [
+          "",
+          "They had opened a gate, cleared one approach and confronted the keeper at the ward. The result gave them work to continue, rather than an answer to every problem inside. Patients still needed care. The shed still had only the one unclaimed place recorded earlier. No passenger had yet been chosen or loaded."
+        ],
+        [
+          "Mara Rook",
+          "Renn will want the road on his list."
+        ],
+        [
+          "Vale Ash",
+          "The road we checked. Leave the others blank."
+        ],
+        [
+          "",
+          "Mara felt the paper in her pocket and, in her hand, the bent cap she was still keeping for Hux. The brass plate remained at the gate wheel. Nobody here had established which office had issued the instruction. The captain and his key remained in the watch shelter; defeating the Matron had not answered for them."
+        ],
+        [
+          "Hux Bell",
+          "Before we go anywhere, I'm getting that wheel looked at."
+        ],
+        [
+          "",
+          "Senn nodded and kept his boot against it. For the moment, everyone knew which wheel he meant."
+        ]
+      ]
+    }
+  ]
+}

@@ -1,7 +1,8 @@
 import {bindStoryReaders} from './story-reader.ts';
 import {roomKind,type RoomKind,type FreePlayOptions} from '../../shared/free-play.ts';
 import {storyHubMarkup,bindStoryHub} from './story-hub.ts';
-import {storyBriefingMarkup} from './story.ts';
+import {storyBriefingMarkup,chapterBriefingMarkup} from './story.ts';
+import {chapterText} from '../chapter-text.ts';
 import {mountFieldJournal} from './field-journal.ts';
 import {journalText} from '../field-journal-text.ts';
 import {TESTING_BUILD} from '../build-audience.ts';
@@ -89,7 +90,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
   let journalSuggested: 'prepared' | 'preparedTeam' | undefined;
   let homeGalleryIndex=0;
   let journey:'story'|'freeplay'='freeplay',joinKind:RoomKind='freeplay';
-  let customScenario='',customBoss='',customForm:'normal'|'brutal'|'crazed'='normal',seedDraft='';
+  let customScenario='',customBoss='',customForm:'normal'|'brutal'|'crazed'='normal',customClock:1|2=1,seedDraft='';
   let page = hooks.firstVisitLanguage?'language':retryJoin?'join':initialRecords ? 'leaderboards' : 'home',
     previewClass: string = selected.classId,
     previewMode: string = selected.mode,
@@ -184,7 +185,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
     if (page === 'difficulty')
       content.innerHTML = `<div class="setup-heading"><h1>${e(t(labels[page]))}</h1><p>${copy('difficultyIntro')}</p></div><div class="difficulty-cards" role="group" aria-label="${e(t(labels[page]))}">${data.difficulties.map((d) => `<button data-difficulty="${d.id}" class="difficulty-pick ${d.id === selected.difficulty ? 'selected' : ''}" ${!difficultyAvailable(d.id) ? 'disabled' : ''} aria-pressed="${d.id === selected.difficulty}"><span class="difficulty-emblem" aria-hidden="true">${icon('difficulty-' + d.id)}</span><span class="difficulty-name">${e(t('difficulty.' + d.id))}</span>${d.id === 'baby' ? `<span class="difficulty-recommendation">${copy('recommended')}</span>` : ''}<span class="difficulty-description">${difficultyCaption(d.id)}</span>${!difficultyAvailable(d.id) ? `<small>${icon('lock')}${e(t('ui.hardUnlock'))}</small>` : ''}</button>`).join('')}</div><section class="difficulty-summary" aria-live="polite" aria-atomic="true"><div><h2>${e(t('difficulty.' + selected.difficulty))}</h2><p>${e(t('ui.reviveRulesHelp'))}</p>${difficultyRulesMarkup(selected.difficulty)}</div><dl class="difficulty-stats">${(() => {const d = data.difficulties.find(d => d.id === selected.difficulty)!; return [['stat.health', d.health], ['stat.damage', d.damage], ['stat.bossSpeed', d.speed]].map(([key, value]) => `<div><dt>${e(t(String(key)))}</dt><dd>×${number(Number(value), 2)}</dd></div>`).join('');})()}</dl></section>${navigation(false)}`;
     if (page === 'review')
-      content.innerHTML = `<div class="setup-heading"><h1>${e(t(labels[page]))}</h1></div><div class="review-composition"><div class="review-portrait">${portrait(selected.classId)}</div><section><h2>${e(t('class.' + selected.classId + '.name'))} · ${e(t('mode.' + selected.mode + '.name'))}</h2><p>${e(selected.mode==='story'?t('ui.storyRoute'):mapChoiceName(arenaId))} · ${e(t('difficulty.' + selected.difficulty))}</p>${journalSuggested?`<p class="journal-plan-notice">${e(journalText(locale,journalSuggested))}</p>`:''}${selected.mode==='story'?storyBriefingMarkup():''}${journey==='freeplay'?`<section class="free-play-custom"><h3>${e(t('ui.customOpening'))}</h3><label>${e(t('ui.scenario'))}<select id="freeplay-scenario"><option value="">${e(t('ui.bossRoute'))}</option><option value="ward-approach" ${customScenario?'selected':''}>${e(t('ui.wardApproach'))}</option></select></label>${customScenario?`<p>${e(t('ui.wardApproachHelp'))}</p>`:''}<div class="free-play-options"><label>${e(t('ui.boss'))}<select id="freeplay-boss" ${customScenario?'disabled':''}><option value="">${e(t('ui.automatic'))}</option>${data.bosses.filter(b=>!b.secret).map(b=>`<option value="${b.id}" ${customBoss===b.id?'selected':''}>${e(t('boss.'+b.id+'.name'))} · ${e(bossClassification(b.id))}</option>`).join('')}</select></label><label>${e(t('ui.bossForm'))}<select id="freeplay-form" ${customScenario||['insane','hellish'].includes(selected.difficulty)?'disabled':''}>${['normal','brutal','crazed'].map(form=>`<option value="${form}" ${customForm===form?'selected':''}>${e(t('ui.variant'+form[0].toUpperCase()+form.slice(1)))}</option>`).join('')}</select></label><label>${e(t('ui.runSeed'))}<input id="freeplay-seed" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="10" dir="ltr" value="${e(seedDraft)}"><small>${e(t('ui.runSeedHelp'))}</small></label></div><p>${e(t('ui.customRunNotice'))}</p></section>`:''}${difficultyRulesMarkup(selected.difficulty)}${selected.serverEndpoint ? `<p class="prototype-note">${e(desktopText('target'))}: <bdi>${e(selected.serverEndpoint)}</bdi></p>` : ''}${TESTING_BUILD && selected.mode!=='story' && !customBoss && !customScenario ? `<label class="name-label">${e(t('ui.boss'))}<select id="opening-boss">${implementedBossIds.map((id) => `<option value="${id}" ${id === selected.openingBossId ? 'selected' : ''}>${e(t('boss.' + id + '.name'))} · ${e(bossClassification(id, visibility === 'offline' ? selected.practiceVariant : 'normal'))}</option>`).join('')}</select></label>${visibility === 'offline' ? practiceVariantMarkup(locale, encounterVariant(selected.difficulty,selected.practiceVariant), t('ui.variantNormal'), t('ui.variantBrutal'),['insane','hellish'].includes(selected.difficulty),t('ui.variantCrazed'),t('ui.forcedFormHelp')) : ''}` : ''}<label class="name-label">${e(t('ui.displayName'))}<input id="name" value="${e(selected.name)}" maxlength="24" autocomplete="nickname"></label><div class="connection-choices" role="group" aria-label="${e(t('ui.roomSettings'))}">${[
+      content.innerHTML = `<div class="setup-heading"><h1>${e(t(labels[page]))}</h1></div><div class="review-composition"><div class="review-portrait">${portrait(selected.classId)}</div><section><h2>${e(t('class.' + selected.classId + '.name'))} · ${e(selected.mode==='story'?(selected.storyChapterId?chapterText(locale).chapterMode:chapterText(locale).classic):t('mode.' + selected.mode + '.name'))}</h2><p>${e(selected.mode==='story'?t('ui.storyRoute'):mapChoiceName(arenaId))} · ${e(t('difficulty.' + selected.difficulty))}</p>${journalSuggested?`<p class="journal-plan-notice">${e(journalText(locale,journalSuggested))}</p>`:''}${selected.mode==='story'?(selected.storyChapterId?chapterBriefingMarkup():storyBriefingMarkup()):''}${journey==='freeplay'?`<section class="free-play-custom"><h3>${e(t('ui.customOpening'))}</h3><label>${e(t('ui.scenario'))}<select id="freeplay-scenario"><option value="">${e(t('ui.bossRoute'))}</option><option value="ward-approach" ${customScenario?'selected':''}>${e(t('ui.wardApproach'))}</option></select></label>${customScenario?`<p>${e(t('ui.wardApproachHelp'))}</p>`:''}<div class="free-play-options"><label>${e(t('ui.boss'))}<select id="freeplay-boss" ${customScenario?'disabled':''}><option value="">${e(t('ui.automatic'))}</option>${data.bosses.filter(b=>!b.secret).map(b=>`<option value="${b.id}" ${customBoss===b.id?'selected':''}>${e(t('boss.'+b.id+'.name'))} · ${e(bossClassification(b.id))}</option>`).join('')}</select></label><label>${e(t('ui.bossForm'))}<select id="freeplay-form" ${customScenario||['insane','hellish'].includes(selected.difficulty)?'disabled':''}>${['normal','brutal','crazed'].map(form=>`<option value="${form}" ${customForm===form?'selected':''}>${e(t('ui.variant'+form[0].toUpperCase()+form.slice(1)))}</option>`).join('')}</select></label><label lang="en">${e(chapterText(locale).clock)}<select id="freeplay-clock" ${customScenario?'disabled':''}><option value="1" ${customClock===1?'selected':''}>${e(chapterText(locale).standardClock)}</option><option value="2" ${customClock===2?'selected':''}>${e(chapterText(locale).chapterClock)}</option></select></label><label>${e(t('ui.runSeed'))}<input id="freeplay-seed" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="10" dir="ltr" value="${e(seedDraft)}"><small>${e(t('ui.runSeedHelp'))}</small></label></div><p>${e(t('ui.customRunNotice'))}</p></section>`:''}${difficultyRulesMarkup(selected.difficulty)}${selected.serverEndpoint ? `<p class="prototype-note">${e(desktopText('target'))}: <bdi>${e(selected.serverEndpoint)}</bdi></p>` : ''}${TESTING_BUILD && selected.mode!=='story' && !customBoss && !customScenario ? `<label class="name-label">${e(t('ui.boss'))}<select id="opening-boss">${implementedBossIds.map((id) => `<option value="${id}" ${id === selected.openingBossId ? 'selected' : ''}>${e(t('boss.' + id + '.name'))} · ${e(bossClassification(id, visibility === 'offline' ? selected.practiceVariant : 'normal'))}</option>`).join('')}</select></label>${visibility === 'offline' ? practiceVariantMarkup(locale, encounterVariant(selected.difficulty,selected.practiceVariant), t('ui.variantNormal'), t('ui.variantBrutal'),['insane','hellish'].includes(selected.difficulty),t('ui.variantCrazed'),t('ui.forcedFormHelp')) : ''}` : ''}<label class="name-label">${e(t('ui.displayName'))}<input id="name" value="${e(selected.name)}" maxlength="24" autocomplete="nickname"></label><div class="connection-choices" role="group" aria-label="${e(t('ui.roomSettings'))}">${[
         ['offline', 'ui.solo', 'soldier'],
         ['public', 'ui.publicRooms', 'group'],
         ['private', 'ui.privateRoom', 'lock'],
@@ -206,7 +207,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
     }
     if(page==='journal')cleanups.push(mountFieldJournal(content,()=>go('home'),plan=>{
       journey=plan.mode==='story'?'story':'freeplay';beginName();
-      selected={...selected,freePlay:undefined,classId:plan.classId,mode:plan.mode,difficulty:plan.difficulty,practiceVariant:'normal',openingBossId:plan.mode==='raid'?'chain-colossus':'constable',openingArenaId:'gatehouse',arenaSelection:plan.mode==='story'?'route':'randomEncounter',serverEndpoint:undefined};
+      selected={...selected,freePlay:undefined,storyChapterId:undefined,classId:plan.classId,mode:plan.mode,difficulty:plan.difficulty,practiceVariant:'normal',openingBossId:plan.mode==='raid'?'chain-colossus':'constable',openingArenaId:'gatehouse',arenaSelection:plan.mode==='story'?'route':'randomEncounter',serverEndpoint:undefined};
       previewClass=selected.classId;previewMode=selected.mode;arenaId=previewMap=plan.mode==='story'?'gatehouse':'randomEncounter';visibility=plan.team?'private':'offline';
       journalSuggested=plan.team?'preparedTeam':'prepared';go('review');
     },()=>go('profile')));
@@ -229,7 +230,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
         content,
         (endpoint) => {
           beginName();
-          journey='freeplay';if(selected.mode==='story'){selected.mode='short';previewMode='short';}selected.freePlay=undefined;
+          journey='freeplay';selected.storyChapterId=undefined;if(selected.mode==='story'){selected.mode='short';previewMode='short';}selected.freePlay=undefined;
           selected.serverEndpoint = endpoint;
           visibility = 'public';
           go('class');
@@ -252,7 +253,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
       );
     if (page === 'settings')
       content.innerHTML = `<div class="settings-page"><h1>${e(t('ui.settings'))}</h1>${hooks.settingsHTML()}<div class="actions">${button('back-home', t('ui.back'), 'map')}</div></div>`;
-    if(page==='storyHub')cleanups.push(bindStoryHub(content,()=>{journey='story';beginName();selected={...selected,mode:'story',freePlay:undefined,practiceVariant:'normal',openingBossId:'constable',openingArenaId:'gatehouse',arenaSelection:'route'};previewClass=selected.classId;previewMode='story';arenaId=previewMap='gatehouse';go('class');},()=>go('home')));
+    if(page==='storyHub')cleanups.push(bindStoryHub(content,(storyChapterId)=>{journey='story';beginName();selected={...selected,mode:'story',storyChapterId,freePlay:undefined,practiceVariant:'normal',openingBossId:'constable',openingArenaId:'gatehouse',arenaSelection:'route'};previewClass=selected.classId;previewMode='story';arenaId=previewMap='gatehouse';go('class');},()=>go('home')));
     if (page === 'join')
       content.innerHTML = `<div class="join-page"><div class="setup-heading"><h1>${e(t('ui.joinRoom'))}</h1>${selected.serverEndpoint ? `<p>${e(desktopText('target'))}: <bdi>${e(selected.serverEndpoint)}</bdi></p>` : ''}</div><div class="join-kinds" role="tablist" aria-label="${e(t('ui.joinRoom'))}">${(['freeplay','story'] as const).map(kind=>`<button data-room-kind="${kind}" role="tab" aria-selected="${joinKind===kind}">${e(t(kind==='story'?'ui.storyRooms':'ui.freePlayRooms'))}</button>`).join('')}</div><p>${e(t('ui.roomCategoryHelp'))}</p><div class="join-options"><label>${e(t('ui.displayName'))}<input id="name" maxlength="24" value="${e(selected.name)}"></label><label>${e(t('ui.chooseClass'))}<select id="join-class">${implementedClassIds.map((id) => `<option value="${id}" ${selected.classId === id ? 'selected' : ''}>${e(t('class.' + id + '.name'))}</option>`).join('')}</select></label><label>${e(t('ui.roomCode'))}<div class="inline"><input id="code" maxlength="6" autocapitalize="characters" spellcheck="false"><button id="join-code">${e(t('ui.joinRoom'))}</button></div></label></div><div class="section-heading"><h2>${e(t('ui.publicRooms'))}</h2><button id="refresh">${e(t('ui.search'))}</button></div><div id="rooms" class="rooms"><p>${e(t('ui.noRooms'))}</p></div><div class="actions">${button('back-home', t('ui.back'), 'map')}</div></div>`;
     const byId = (id: string, fn: () => void) => {
@@ -262,14 +263,14 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
     byId('brand-home', () => go('home'));
     byId('new-run', () => {
       beginName();
-      journey='freeplay';selected.serverEndpoint=undefined;selected.freePlay=undefined;
+      journey='freeplay';selected.storyChapterId=undefined;selected.serverEndpoint=undefined;selected.freePlay=undefined;
       if(selected.mode==='story'){selected.mode='short';selected.openingBossId='constable';selected.arenaSelection='fixed';}
       previewMode=selected.mode;visibility='offline';journalSuggested=undefined;go('class');
     });
     byId('resume-boundary', hooks.resume);
     byId('gentle-start', () => {
       journey='freeplay';beginName();
-      selected = { ...selected, freePlay:undefined, classId: 'soldier', mode: 'short', difficulty: 'baby',
+      selected = { ...selected, freePlay:undefined,storyChapterId:undefined, classId: 'soldier', mode: 'short', difficulty: 'baby',
         openingBossId: 'constable', openingArenaId: 'gatehouse', arenaSelection: 'fixed', practiceVariant: 'normal',
         serverEndpoint: undefined };
       previewClass = selected.classId;
@@ -335,13 +336,15 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
     const customBossInput=host.querySelector<HTMLSelectElement>('#freeplay-boss'),customFormInput=host.querySelector<HTMLSelectElement>('#freeplay-form'),seedInput=host.querySelector<HTMLInputElement>('#freeplay-seed');
     if(customBossInput)customBossInput.onchange=()=>{customBoss=customBossInput.value;};
     if(customFormInput){if(['insane','hellish'].includes(selected.difficulty))customFormInput.value=encounterVariant(selected.difficulty);customFormInput.onchange=()=>{customForm=customFormInput.value as typeof customForm;};}
+    const clockInput=host.querySelector<HTMLSelectElement>('#freeplay-clock');if(clockInput)clockInput.onchange=()=>{customClock=clockInput.value==='2'?2:1;};
     if(seedInput)seedInput.oninput=()=>{seedDraft=seedInput.value;};
-    const scenarioInput=host.querySelector<HTMLSelectElement>('#freeplay-scenario');if(scenarioInput)scenarioInput.onchange=()=>{customScenario=scenarioInput.value==='ward-approach'?'ward-approach':'';if(customScenario){customBoss='';customForm='normal';selected.mode='short';selected.openingArenaId='triage-yard';selected.arenaSelection='fixed';arenaId=previewMap='triage-yard';}go('review');};
+    const scenarioInput=host.querySelector<HTMLSelectElement>('#freeplay-scenario');if(scenarioInput)scenarioInput.onchange=()=>{customScenario=scenarioInput.value==='ward-approach'?'ward-approach':'';if(customScenario){customBoss='';customForm='normal';customClock=1;selected.mode='short';selected.openingArenaId='triage-yard';selected.arenaSelection='fixed';arenaId=previewMap='triage-yard';}go('review');};
     byId('launch', () => {
       if(journey==='story')selected.freePlay=undefined;
       else {
+        selected.storyChapterId=undefined;
         if(seedDraft!==''&&(!/^[0-9]{1,10}$/.test(seedDraft)||Number(seedDraft)>0xffffffff)){showError('ui.runSeedHelp');seedInput?.focus();return;}
-        const freePlay:FreePlayOptions={...(customScenario?{scenarioId:'ward-approach' as const}:customBoss?{openingBossId:customBoss as BossId}:{}),...(!customScenario&&!['insane','hellish'].includes(selected.difficulty)&&customForm!=='normal'?{variant:customForm}:{}),...(seedDraft!==''?{seed:Number(seedDraft)}:{})};
+        const freePlay:FreePlayOptions={...(!customScenario&&customClock===2?{bossDeadlineMultiplier:2 as const}:{}),...(customScenario?{scenarioId:'ward-approach' as const}:customBoss?{openingBossId:customBoss as BossId}:{}),...(!customScenario&&!['insane','hellish'].includes(selected.difficulty)&&customForm!=='normal'?{variant:customForm}:{}),...(seedDraft!==''?{seed:Number(seedDraft)}:{})};
         selected.freePlay=Object.keys(freePlay).length?freePlay:undefined;
       }
       if(visibility!=='offline'&&!validRoomPassword(hostPassword,true)){showError('ui.roomPasswordHelp');hostPasswordInput?.focus();return;}
@@ -486,7 +489,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
             for (const room of rooms) {
               const b = document.createElement('button');
               b.textContent =
-                t(room.mode==='story'?'ui.storyRooms':'ui.freePlayRooms') + ' · ' + t('mode.' + room.mode + '.name') +
+                t(room.mode==='story'?'ui.storyRooms':'ui.freePlayRooms') + ' · ' + (room.mode==='story'?chapterText(locale).chapterMode:t('mode.' + room.mode + '.name')) +
                 ' · ' +
                 t('difficulty.' + room.difficulty) +
                 ' · ' +

@@ -1,6 +1,9 @@
 import {
   combatReviveAllowed,
 } from '../../shared/recovery-policy.ts';
+import {chapterTrainingMarkup} from './chapter.ts';
+import {chapterText} from '../chapter-text.ts';
+import type {ChapterStage} from '../../shared/story-chapter.ts';
 import {
   skillMapLayout,
   skillMapMarkup,
@@ -49,6 +52,7 @@ function canBuy(
   id: string,
 ): { allowed: boolean; reason: string; price: number } {
   if (kind === 'skill') {
+    if(p.training)return {allowed:false,reason:chapterText(locale).training,price:0};
     const node = skillsOf(p).find((s) => s.id === id)!;
     if (p.skills.includes(id))
       return { allowed: false, reason: t('ui.owned'), price: node.cost };
@@ -178,9 +182,11 @@ export function shopMarkup(
   supplyBindings: readonly string[] = ['1', '2', '3'],
   expanded = false,
   difficulty = 'normal',
+  chapterStage?:ChapterStage,
 ) {
   shopDifficulty = difficulty;
   const cl = data.classes.find((c) => c.id === p.classId)!;
+  if(p.training&&chosen?.kind==='skill')chosen=null;
   if (!cl.branches.some((b) => b.id === branchId)) branchId = cl.branches[0].id;
   if (
     (chosen?.kind === 'skill' &&
@@ -190,8 +196,8 @@ export function shopMarkup(
   )
     chosen = null;
   const branch = cl.branches.find((b) => b.id === branchId)!;
-  return `<p data-shop-status class="shop-purchase-status" role="status" aria-live="polite" hidden></p><p class="shop-introduction">${e(expeditionText(locale, 'shopHelp'))}</p><div class="loadout-summary"><span>${resourceArt('coins', assets.resourceIcons)}<b>${number(p.coins)}</b> ${e(t('ui.coins'))}</span><span>${resourceArt('skills', assets.resourceIcons)}<b>${number(p.sp)}</b> ${e(t('ui.skillPoints'))}</span><small>${e(t('ui.capstoneLimit'))}</small></div><div class="loadout-tabs" role="tablist" aria-label="${e(t('ui.shop'))}"><button data-shop-tab="gear" role="tab" aria-selected="${tab === 'gear'}">${resourceArt('equipment', assets.resourceIcons)}${e(t('ui.equip'))} / ${e(t('ui.upgrade'))}</button><button data-shop-tab="tree" role="tab" aria-selected="${tab === 'tree'}">${resourceArt('skills', assets.resourceIcons)}${e(t('ui.skillTree'))}</button><button data-shop-tab="general" role="tab" aria-selected="${tab === 'general'}">${icon('speed')}${e(t('ui.generalAbilities'))}</button></div><div class="loadout-workspace"><div class="loadout-board">${
-    tab === 'general' ? generalMarkup(p) : tab === 'gear'
+  return `<p data-shop-status class="shop-purchase-status" role="status" aria-live="polite" hidden></p><p class="shop-introduction">${e(p.training?chapterText(locale).readyHelp:expeditionText(locale, 'shopHelp'))}</p><div class="loadout-summary"><span>${resourceArt('coins', assets.resourceIcons)}<b>${number(p.coins)}</b> ${e(t('ui.coins'))}</span>${p.training?'':`<span>${resourceArt('skills', assets.resourceIcons)}<b>${number(p.sp)}</b> ${e(t('ui.skillPoints'))}</span><small>${e(t('ui.capstoneLimit'))}</small>`}</div><div class="loadout-tabs" role="tablist" aria-label="${e(t('ui.shop'))}"><button data-shop-tab="gear" role="tab" aria-selected="${tab === 'gear'}">${resourceArt('equipment', assets.resourceIcons)}${e(t('ui.equip'))} / ${e(t('ui.upgrade'))}</button><button data-shop-tab="tree" role="tab" aria-selected="${tab === 'tree'}">${resourceArt('skills', assets.resourceIcons)}${e(p.training?chapterText(locale).training:t('ui.skillTree'))}</button><button data-shop-tab="general" role="tab" aria-selected="${tab === 'general'}">${icon('speed')}${e(t('ui.generalAbilities'))}</button></div><div class="loadout-workspace"><div class="loadout-board">${
+    tab === 'general' ? (p.training?`<p lang="en">${e(chapterText(locale).general)}</p>`:generalMarkup(p)) : tab === 'tree'&&p.training?chapterTrainingMarkup(p,chapterStage):tab === 'gear'
       ? `<section class="armory"><h3>${e(t('ui.equip'))}</h3><div class="gear-icons">${data.weapons
           .filter((w) => w.classId === p.classId)
           .map((w) =>
@@ -345,6 +351,7 @@ export function bindShop(
   supplyBindings: readonly string[] = ['1', '2', '3'],
   expanded = false,
   difficulty = 'normal',
+  chapterStage?:ChapterStage,
 ) {
   shopDifficulty = difficulty;
   const workspace = host.querySelector<HTMLElement>('.loadout-editor');
@@ -379,7 +386,7 @@ export function bindShop(
     const oldScroll = workspace!.querySelector<HTMLElement>('.skill-scroll'),
       scroll = oldScroll?.scrollTop ?? 0,
       left = oldScroll?.scrollLeft ?? 0;
-    workspace!.innerHTML = shopMarkup(p, supplyBindings, expanded, difficulty);
+    workspace!.innerHTML = shopMarkup(p, supplyBindings, expanded, difficulty,chapterStage);
     bindActions();
     const scroller = workspace!.querySelector<HTMLElement>('.skill-scroll');
     if (scroller) {
@@ -415,6 +422,9 @@ export function bindShop(
       };
   };
   function bindActions() {
+    workspace!.querySelectorAll<HTMLButtonElement>('[data-training]').forEach(button=>{
+      button.onclick=()=>{if(active(button)&&!button.disabled&&p.training)purchase({kind:button.dataset.training as 'study'|'prepare',item:button.dataset.technique!});};
+    });
     workspace!
       .querySelectorAll<HTMLButtonElement>('[data-inspect]')
       .forEach((button) => {
@@ -454,7 +464,7 @@ export function bindShop(
           redraw('[data-branch="' + CSS.escape(branchId) + '"]');
         }),
     );
-    if (expanded&&tab==='tree') {
+    if (expanded&&tab==='tree'&&!p.training) {
       const layout = skillMapLayout(p.classId);
       prepareSkillMap(workspace!, layout);
       const viewport = workspace!.querySelector<HTMLElement>(

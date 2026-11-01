@@ -1,6 +1,6 @@
 {
-  "updated": "2026-10-31",
-  "buildId": "2026.10.31-story-voices",
+  "updated": "2026-11-01",
+  "buildId": "2026.11.01-opening-chapter",
   "playableBosses": 66,
   "ordinaryBosses": 65,
   "secretBosses": 1,
@@ -284,7 +284,7 @@
     },
     {
       "id": "story-campaign",
-      "label": "Playable story campaign and replay endings",
+      "label": "Earlier playable Story prototype and replay endings",
       "target": 1,
       "implemented": 1,
       "remaining": 0,
@@ -292,11 +292,11 @@
       "completedIds": [
         "the-open-ledger"
       ],
-      "status": "The Open Ledger has15 continuous fights,3 acts,14 party route decisions and3 locally recovered endings. Earned SP and fixed threat remain. Full translation, rendered/human pacing, device and final balance acceptance remain open."
+      "status": "The issued fifteen-fight prototype, choices and recovered endings are preserved for legacy saves/archives. Fresh Campaign starts exclusively use the new chapter system. Free Play retains original story-free SP progression. No completed long-form campaign or human acceptance is inferred."
     },
     {
       "id": "story-narrative-languages",
-      "label": "Full Story narrative language deliveries",
+      "label": "Earlier Story prototype narrative editions",
       "target": 15,
       "implemented": 3,
       "remaining": 12,
@@ -306,7 +306,7 @@
         "es",
         "ar"
       ],
-      "status": "English, Spanish and Arabic cover the current base narrative, including the complete gate opening and first-return scenes. Twelve full narrative editions remain. Native-language and literary review remain open."
+      "status": "Three editions cover the earlier prototype and full gate opening/first return. The new One Place Left continuation is English only. Twelve earlier full editions and broader chapter translations remain open; no native-language acceptance is claimed."
     },
     {
       "id": "character-story-arcs",
@@ -334,7 +334,7 @@
       "remaining": 1,
       "humanAccepted": 0,
       "completedIds": [],
-      "status": "Accepted direction; first implementation and final human review remain unfinished. See STORY_CAMPAIGN_REDESIGN.md and VISUAL_NOVEL_DIRECTION.md. Candidate full-screen reading/Story mutation removal is a foundation, not completion of this target."
+      "status": "One introductory chapter implements learned/proven/prepared state, authoritative effects for all seven roles, one D- preparation, safe-boundary persistence and a local exportable journal. The full long-term system, later lessons/grades, General learning and durable character accounts remain unfinished. Free Play SP remains unchanged."
     },
     {
       "id": "story-ordinary-encounters",
@@ -344,7 +344,7 @@
       "remaining": 1,
       "humanAccepted": 0,
       "completedIds": [],
-      "status": "Accepted direction; first implementation and final human review remain unfinished. See STORY_CAMPAIGN_REDESIGN.md and VISUAL_NOVEL_DIRECTION.md. Candidate full-screen reading/Story mutation removal is a foundation, not completion of this target."
+      "status": "Ward Approach is now a real chapter node with shared Free Play replay, bounded waves, meaningful role proofs and no fabricated boss clear. A broader ordinary-enemy roster and investigation/defense/escort objectives remain unfinished."
     },
     {
       "id": "novel-presentation-production",
@@ -365,6 +365,18 @@
       "humanAccepted": 0,
       "completedIds": [],
       "status": "Swordsman, Summoner, Ranger, Alchemist and Bard are accepted additions for a twelve-class roster. Current playable count remains7. Full shared kits, mastery, weapons, art, story and verification remain unfinished."
+    },
+    {
+      "id": "opening-chapter",
+      "label": "First chapter and all-role foundation slice",
+      "target": 1,
+      "implemented": 1,
+      "remaining": 0,
+      "humanAccepted": 0,
+      "completedIds": [
+        "one-place-left"
+      ],
+      "status": "Constable, selected ordinary approach and Matron connect five English continuation scenes with learning/proof/preparation, scarce cash, explicit extended boss clocks, co-op Ready, owned history and legacy-save compatibility. Automated evidence is separate from rendered/human/device/literary/final-balance acceptance."
     }
   ],
   "coverage": [
@@ -736,7 +748,8 @@
     "User2026-10-31 requests separate Story Campaign and Free Play, distinct room categories, a longer arc/chapter story with visual-novel presentation, a standalone General abilities tab, and continued boss development step by step. This implementation creates that first hub/reader structure and the next Sluice quality pass; larger future story arcs remain open.",
     "User2026-10-31 explicitly accepts the shared main campaign plus seven optional character arcs. They request deep worldbuilding, good writing and consistent care for survivors, side characters and antagonists while allowing larger roles for some. They are willing to spend substantial time/tokens. They correct the long-term base-story ambition to FIVE MILLION WORDS, excluding optional side routes/character chapters. This supersedes the smaller narrative planning estimate; no fixed delivery date or token budget was agreed.",
     "User2026-10-31 explicitly requests research/study of acclaimed long web novels and visual novels, naming LOTM/Lord of Mysteries, Reverend Insanity, Umineko and The House in Fata Morgana. Learn craft while developing an original story; do not copy their plots, characters or systems. First-pass primary-source craft notes and an original gate-scene draft are authoring work, not completed playable chapters or literary acceptance.",
-    "User2026-10-31 explicitly requires story mechanics to match the actual fixed boss threat levels1–10 and the existing D-–SS+ class-specialization grades. New maps, bosses and techniques should enter shared gameplay and be playable in Free Play as well as Story. Preserve separate Story/Free Play presentation and the same underlying content/rules. STORY_GAMEPLAY_CONTRACT.md records source-grounded semantics; no new permanent class-power ranking is invented."
+    "User2026-10-31 explicitly requires story mechanics to match the actual fixed boss threat levels1–10 and the existing D-–SS+ class-specialization grades. New maps, bosses and techniques should enter shared gameplay and be playable in Free Play as well as Story. Preserve separate Story/Free Play presentation and the same underlying content/rules. STORY_GAMEPLAY_CONTRACT.md records source-grounded semantics; no new permanent class-power ranking is invented.",
+    "User explicitly corrects the progression split: Campaign/Story must exclusively use the new slower system. The original story-free run modes remain in Free Play with their rapid SP progression. Do not provide a second SP-based Story mode. The twelve-class roster remains accepted; only seven are currently playable."
   ],
   "remainingReleaseWork": [
     "Continue current-content polish for first-time players during the remaining day. The home-gallery follow-up adds manual arrows/page buttons and keyboard/RTL navigation over existing artwork, retaining menu state and accepted camera/lava/controls. Read reviews/home-gallery-2026-10-29 for exact local/source/CI/fresh-preview/Wiki evidence. Testing links are preferred for human comparison. Matching Windows packaging should follow a stable gallery pass; older6f397a5camera review remains immutable. Full human/rendered/multiplayer balance and coordinated release acceptance remain open.",
@@ -755,7 +768,8 @@
     "Prepare and verify a new coordinated Windows/browser release with a matching backend; existing immutable Windows and older public builds remain separate.",
     "Finish and review the12 remaining Story narrative translations; compare15-fight pacing, choices, endings and all difficulty paths with human players. The new campaign is implemented but not accepted as finished.",
     "Continue the longer story beyond the first fifteen-encounter arc: author additional arcs and chapters, grow visual-novel scenes and new art/expressions, and obtain rendered, native-language and human pacing review. The user defines full-game completion.",
-    "Implement seven optional character arcs and the much longer main campaign, using the accepted ensemble writing/worldbuilding standard. Target five million English main-story words separately from optional content, translated duplicates and UI. Add multi-volume loading, durable reading/chapter progress, scene/continuity review and recurring side/antagonist development. STORY_WORLD_PLAN.md is an authoring plan, not a finished campaign."
+    "Implement seven optional character arcs and the much longer main campaign, using the accepted ensemble writing/worldbuilding standard. Target five million English main-story words separately from optional content, translated duplicates and UI. Add multi-volume loading, durable reading/chapter progress, scene/continuity review and recurring side/antagonist development. STORY_WORLD_PLAN.md is an authoring plan, not a finished campaign.",
+    "Extend the new chapter/learning campaign beyond One Place Left, while preserving fast SP-based Free Play. Implement permanent cross-room character advancement, later grades and General lessons, complete additional objectives/cast arcs/chapters, local active-checkpoint transfer and the English continuation translations. Five accepted new classes remain0/5playable."
   ],
-  "semanticInputsSha256": "282c5ce7559e867ed5037e90ac898797fdee7b1b3ce56c13c1b77be5c5b6bec4"
+  "semanticInputsSha256": "ab599b0e19eb0bed53ad669caead8506170db7c9296e22bc47fd7e36755e0e6a"
 }

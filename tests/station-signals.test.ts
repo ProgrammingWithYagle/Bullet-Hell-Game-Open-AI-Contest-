@@ -1,3 +1,4 @@
+// Preserve issued fifteen-boss Story prototype behavior through the restore-only compatibility path.
 import { readFileSync } from "node:fs";
 import { Game } from "../src/shared/game.ts";
 import {
@@ -420,7 +421,7 @@ test("Fifteen catalogs explain all signals and timed crossings, and issued local
   }
   const issued =
       "f464a132bbc18083c5780239f18f24ff447a5be87de3e64db22d6881e7793290",
-    story = new Game({ mode: "story", maxPlayers: 1 });
+    story = new Game({ mode: "story", maxPlayers: 1 }, true);
   story.addPlayer("solo", "Reader", "medic");
   const save = story.offlineCheckpoint()!;
   save.contentRevision = issued;
@@ -437,7 +438,7 @@ test("Fifteen catalogs explain all signals and timed crossings, and issued local
     mode: "standard",
     maxPlayers: 1,
     freePlay: { openingBossId: "stationmaster", variant: "brutal", seed: 7 },
-  });
+  }, true);
   custom.addPlayer("solo", "Traveller", "tank");
   const free = custom.offlineCheckpoint()!;
   free.contentRevision = issued;

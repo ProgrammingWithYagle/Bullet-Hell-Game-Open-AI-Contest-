@@ -1,3 +1,4 @@
+// Preserve issued fifteen-boss Story prototype behavior through the restore-only compatibility path.
 import test from "node:test";
 import assert from "node:assert/strict";
 import { Game, data } from "../src/shared/game.ts";
@@ -28,7 +29,7 @@ function advance(g: Game) {
 }
 test("Every class traverses the whole Story route without mutations while Free Play retains its mutation vote", () => {
   for (const cl of data.classes) {
-    const g = new Game({ mode: "story", maxPlayers: 1, difficulty: "easy" });
+    const g = new Game({ mode: "story", maxPlayers: 1, difficulty: "easy" }, true);
     g.addPlayer("solo", "Reader", cl.id as ClassId);
     g.start();
     for (let fight = 0; fight < 15; fight++) {
@@ -50,7 +51,7 @@ test("Every class traverses the whole Story route without mutations while Free P
     assert.equal(g.storyChoices.length, 14);
     assert.equal(g.campaignBank?.encounters, 15);
   }
-  const free = new Game({ mode: "short", maxPlayers: 1 });
+  const free = new Game({ mode: "short", maxPlayers: 1 }, true);
   free.addPlayer("solo", "Free Play", "soldier");
   free.start();
   free.boss.health = 0;
@@ -64,7 +65,7 @@ test("Every class traverses the whole Story route without mutations while Free P
   assert(!validStoryBoundary("story", [], 1, "mutationVote"));
 });
 test("Known issued local Story mutation boundaries return to reading, old bonuses are removed and profile endings/records survive", () => {
-  const g = new Game({ mode: "story", maxPlayers: 1 });
+  const g = new Game({ mode: "story", maxPlayers: 1 }, true);
   g.addPlayer("solo", "Reader", "medic");
   g.start();
   g.boss.health = 0;
@@ -148,7 +149,7 @@ test("Known issued local Story mutation boundaries return to reading, old bonuse
   );
 });
 test("Current or unknown Story snapshots cannot smuggle mutation state or reinterpret a mutation choice as Ready", () => {
-  const g = new Game({ mode: "story", maxPlayers: 1 });
+  const g = new Game({ mode: "story", maxPlayers: 1 }, true);
   g.addPlayer("solo", "Reader", "soldier");
   g.start();
   g.boss.health = 0;

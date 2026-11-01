@@ -1,4 +1,5 @@
 import { storyEncounterMarkup } from "./story-encounter.ts";
+import {chapterText} from '../chapter-text.ts';
 import { storyReaderMarkup } from "./story-reader.ts";
 import type { View } from "../../shared/view.ts";
 import {
@@ -28,9 +29,20 @@ export function storyBriefingMarkup(language = locale) {
     act = book.acts[0];
   return `<aside class="story-briefing"><p class="eyebrow">${e(notice(book))}</p><h3>${label(book, book.title)}</h3>${storyReaderMarkup({ kind: "prologue", index: 0 }, language, "briefing")}<p>${e(t("mode.story.description"))}</p><p>${e(t("ui.storyEndingRule"))}</p></aside>`;
 }
+export function chapterBriefingMarkup(language=locale){
+  const copy=chapterText(language);
+  return `<aside class="story-briefing" lang="${copy.language}" dir="ltr"><h3>${e(copy.chapterMode)} · ${e(copy.title)}</h3><p>${e(copy.intro)}</p>${language!=='en'?`<p>${e(copy.editionNotice)}</p>`:''}${storyReaderMarkup({kind:'prologue',index:0},language,'chapter-opening')}</aside>`;
+}
 /** Reading uses the existing intermission clock; combat never receives a story overlay. */
 export function storyReportMarkup(view: View, open = false, language = locale) {
   if (view.run.mode !== "story" || view.phase === "combat") return "";
+  if(view.chapter){
+    const copy=chapterText(language);
+    if(view.encounter===0)return chapterBriefingMarkup(language);
+    const spec=view.encounter===1&&!['shop','loading','defeat'].includes(view.phase)?{kind:'report' as const,index:0}:
+      {kind:'journey' as const,index:view.encounter===1?view.chapter.route??0:view.encounter===2?3:4};
+    return `<details class="story-report" data-story-report ${open?'open':''}><summary id="story-report-toggle">${e(t('ui.storyAftermath'))}</summary>${storyReaderMarkup(spec,language,view.run.id,view.phase==='storyScene'||(view.phase==='shop'&&view.encounter===1))}</details>`;
+  }
   if (view.phase === "lobby" || view.encounter === 0)
     return storyBriefingMarkup(language);
   const book = storyBook(language),
@@ -50,6 +62,7 @@ export function storyChoiceMarkup(
   language = locale,
 ) {
   if (view.run.mode !== "story" || view.phase !== "contractVote") return "";
+  if(view.chapter){const copy=chapterText(language),choice=copy.choices[index];return choice?`<span class="story-choice" lang="${copy.language}" dir="ltr"><strong>${e(choice.title)}</strong><span>${e(choice.text)}</span></span>`:'';}
   const canonical = storyCampaign.beats[view.encounter - 1]?.choices[index];
   if (!canonical) return "";
   const book = storyBook(language),

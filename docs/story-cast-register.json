@@ -2302,10 +2302,12 @@
       "id": "miri-fen",
       "name": "Miri Fen",
       "kind": "side-character",
-      "status": "working-proposal",
+      "status": "playable-chapter-branch",
       "treatmentSource": "docs/STORY_WORLD_PLAN.md",
-      "appearsInPlayableStory": false,
-      "playerSelectable": false
+      "appearsInPlayableStory": true,
+      "playerSelectable": false,
+      "sceneSource": "src/client/story/chapter/en.json",
+      "completedStoryArc": false
     },
     {
       "id": "olan-pike",
@@ -2357,6 +2359,41 @@
       "treatmentSource": "docs/story-continuity/OPENING.md",
       "appearsInPlayableStory": true,
       "playerSelectable": false
+    },
+    {
+      "id": "kesa-morn",
+      "name": "Kesa Morn",
+      "kind": "side-character",
+      "status": "playable-chapter",
+      "sceneSource": "src/client/story/chapter/en.json",
+      "treatmentSource": "docs/story-continuity/ONE_PLACE_LEFT.md",
+      "appearsInPlayableStory": true,
+      "playerSelectable": false,
+      "completedStoryArc": false,
+      "classId": "engineer"
+    },
+    {
+      "id": "drin-hal",
+      "name": "Drin Hal",
+      "kind": "side-character",
+      "status": "playable-chapter",
+      "sceneSource": "src/client/story/chapter/en.json",
+      "treatmentSource": "docs/story-continuity/ONE_PLACE_LEFT.md",
+      "appearsInPlayableStory": true,
+      "playerSelectable": false,
+      "completedStoryArc": false,
+      "classId": "medic"
+    },
+    {
+      "id": "mera-silt",
+      "name": "Mera Silt",
+      "kind": "side-character",
+      "status": "playable-chapter",
+      "sceneSource": "src/client/story/chapter/en.json",
+      "treatmentSource": "docs/story-continuity/ONE_PLACE_LEFT.md",
+      "appearsInPlayableStory": true,
+      "playerSelectable": false,
+      "completedStoryArc": false
     }
   ]
 }

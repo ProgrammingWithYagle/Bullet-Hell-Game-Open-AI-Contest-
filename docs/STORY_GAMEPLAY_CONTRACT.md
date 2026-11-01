@@ -1,5 +1,7 @@
 # Story and shared gameplay
 
+**Current direction, 2026-11-01:** Story Campaign exclusively uses the new chapter/learning system. Free Play preserves the original story-free SP runs. Do not add a second fast SP-based Story start. Earlier Story prototype saves/archives remain compatibility data, not a fresh Campaign mode. See [OPENING_CHAPTER.md](OPENING_CHAPTER.md) for the first playable implementation and its limits.
+
 The user explicitly requests that narrative danger and character techniques agree with the game's mechanics, and that new playable story content also become usable in Free Play. Story presentation stays in the Story hub; gameplay content belongs to the shared simulation and catalog.
 
 ## Owning rules

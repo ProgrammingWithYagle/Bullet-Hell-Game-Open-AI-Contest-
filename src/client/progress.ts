@@ -60,6 +60,7 @@ export function practiceRecords(store: Store): PracticeCampaignRecord[] {
   }
 }
 export function recordPracticeCampaign(view: View, playerId: string, store: Store) {
+  if(view.chapter)return true;
   if (view.run.testingModified||view.run.customized) {
     try {
       const previous = practiceRecords(store), kept = previous.filter((r) => r.id !== view.run.id);

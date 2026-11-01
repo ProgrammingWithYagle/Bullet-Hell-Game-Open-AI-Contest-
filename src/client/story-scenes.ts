@@ -1,4 +1,5 @@
 import { openingNarrative } from "./story-opening.ts";
+import {chapterText} from './chapter-text.ts';
 import dialogue from "./story/dialogue.json";
 import { storyBook } from "./story-book.ts";
 import { storyCampaign } from "../shared/story-campaign.ts";
@@ -21,7 +22,7 @@ export type StoryScene = {
 };
 export type SceneSpec = {
   arenaId?: string;
-  kind: "prologue" | "chapter" | "report";
+  kind: "prologue" | "chapter" | "report" | "journey";
   index: number;
   ending?: number;
 };
@@ -37,6 +38,11 @@ export const storyStructure = {
   ],
 };
 export function storyScene(spec: SceneSpec, language: string): StoryScene {
+  if(spec.kind==='journey'){
+    const copy=chapterText(language),scene=copy.scenes[Math.max(0,Math.min(4,Math.floor(spec.index)||0))];
+    return {id:'one-place-left-'+scene.id,language:copy.language,title:scene.title,chapter:1,arenaId:scene.arenaId,
+      lines:scene.lines.map(([speaker,text])=>({speaker,text,kind:speaker?'dialogue':'narration',...(survivors.has(speaker)?{classId:survivors.get(speaker)}:{})}))};
+  }
   const book = storyBook(language),
     extra = dialogue[book.language as keyof typeof dialogue] ?? dialogue.en;
   const opening = openingNarrative(spec, book.language);

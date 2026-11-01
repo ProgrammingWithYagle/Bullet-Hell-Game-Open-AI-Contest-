@@ -1,5 +1,7 @@
 # Story mastery: implementation contract
 
+**Current direction, 2026-11-01:** Story Campaign exclusively uses the new chapter/learning system. Free Play preserves the original story-free SP runs. Do not add a second fast SP-based Story start. Earlier Story prototype saves/archives remain compatibility data, not a fresh Campaign mode. See [OPENING_CHAPTER.md](OPENING_CHAPTER.md) for the first playable implementation and its limits.
+
 This specification develops the user's accepted direction. It is not the progression system currently running: the existing fifteen-boss Story prototype still spends SP. Free Play can retain its SP system; Story needs learning, practice, proof and preparation with lasting character records.
 
 ## Distinct records

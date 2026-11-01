@@ -1,6 +1,15 @@
 # Changelog
 
-Development build **2026.10.31-story-voices**, protocol 47. The current contest Site uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.01-opening-chapter**, protocol 47. The current contest Site uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-01 — A slower Story campaign, separate from SP-based Free Play
+
+### Story learning and Free Play builds
+
+- Story Campaign exclusively starts the new chapter system. Free Play retains the original story-free runs, SP budgets, mutations and quick build progression.
+- One Place Left connects Constable, a chosen ordinary route and Matron with untimed reading/preparation, actual role demonstrations, one prepared D- foundation, scarce coins and separate chapter history.
+- Chapter bosses allow twice the base time for early builds; their health, attacks and fixed grades stay shared. Free Play can choose the same extended clock as a marked custom run.
+- Earlier Story saves and recovered archives remain recognizable. No old purchased SP is converted into earned Story mastery.
 
 ## 2026-10-31 — Narration and individual voices
 

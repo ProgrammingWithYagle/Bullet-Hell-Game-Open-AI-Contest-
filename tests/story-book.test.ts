@@ -1,3 +1,4 @@
+// Preserve issued fifteen-boss Story prototype behavior through the restore-only compatibility path.
 import development from "../src/shared/development-progress.json";
 import test from "node:test";
 import assert from "node:assert/strict";
@@ -76,7 +77,7 @@ test("Native Spanish story reading covers setup, aftermath, route choices and re
   assert.match(briefing, /El registro abierto/);
   assert.match(briefing, /lang="es" dir="ltr"/);
   assert(!briefing.includes(storyCampaign.intro));
-  const g = new Game({ mode: "story", maxPlayers: 1, difficulty: "easy" });
+  const g = new Game({ mode: "story", maxPlayers: 1, difficulty: "easy" }, true);
   g.addPlayer("solo", "Reader", "medic");
   g.start();
   g.boss.health = 0;
@@ -142,7 +143,7 @@ test("Complete Arabic scenes and choices use right-to-left prose with canonical 
   assert.match(html, /السجل المفتوح/);
   assert.match(html, /lang="ar" dir="rtl"/);
   assert.match(html, /العربية/);
-  const g = new Game({ mode: "story", maxPlayers: 1, difficulty: "easy" });
+  const g = new Game({ mode: "story", maxPlayers: 1, difficulty: "easy" }, true);
   g.addPlayer("solo", "Reader", "soldier");
   g.start();
   g.boss.health = 0;

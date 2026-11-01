@@ -1,3 +1,4 @@
+// Preserve issued fifteen-boss Story prototype behavior through the restore-only compatibility path.
 import { readFileSync } from "node:fs";
 import { Game } from "../src/shared/game.ts";
 import { serviceMovement } from "../src/shared/service-director.ts";
@@ -404,7 +405,7 @@ test("Fifteen catalogs explain pressure phases, delayed returns and Ressa Noll l
   }
   const issued =
       "31bcd58adcfd8d9d1d76fc23b484237e68c266a513f2dedb2571f8a09067e131",
-    g = new Game({ mode: "story", maxPlayers: 1 });
+    g = new Game({ mode: "story", maxPlayers: 1 }, true);
   g.addPlayer("solo", "Reader", "medic");
   const save = g.offlineCheckpoint()!;
   save.contentRevision = issued;

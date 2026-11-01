@@ -1,4 +1,4 @@
-import {drawSkirmishWarnings} from './skirmish-presentation.ts';
+import {drawSkirmishWarnings,drawWardPatient} from './skirmish-presentation.ts';
 import {drawStitchCue, isStitchCue} from './stitch-cues.ts';
 import {isBellCue} from './bell-presentation.ts';
 import {drawBellCue} from './bell-cues.ts';
@@ -1000,6 +1000,7 @@ export class CombatScene extends Phaser.Scene {
       f.lineStyle(2, 0xd2d7b7, 1).strokeCircle(view.boss.x, view.boss.y, 11);
     }
     drawSkirmishWarnings(h,view.objective,view.phase,now);
+    drawWardPatient(h,view,this.localId);
     const warden = view.boss.id === 'lantern-warden';
     this.bossSprite.setVisible(
       (!view.objective && view.phase === 'combat' &&

@@ -1,3 +1,4 @@
+// Includes issued legacy Story saves; the current chapter system has separate role/proof tests and an early-build model.
 // Progression smoke with deliberate boss defeats and accelerated intermissions.
 // Exercises real authority transactions/save validation; does not measure player combat balance.
 import assert from 'node:assert/strict';
@@ -41,7 +42,7 @@ export function progressionMatrix() {
           runId: `matrix-${mode.id}-${classId}-${difficulty.id}`,
           difficulty: difficulty.id,
           maxPlayers: 1,
-        });
+        }, true);
         g.addPlayer('solo', 'Matrix', classId);
         const cl = data.classes.find((c) => c.id === classId)!;
         const map = new Map<string, string>(),

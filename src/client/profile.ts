@@ -351,6 +351,7 @@ export function recordProfileView(
   playerId: string,
   store: ProfileStore,
 ) {
+  if(view.chapter)return;
   if (view.run?.testingModified||view.run?.customized) {
     changeProfile(store, (profile) => {
       profile.runs = profile.runs.filter((r) => r.runId !== view.run.id || r.playerId !== playerId);

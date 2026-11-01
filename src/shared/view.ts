@@ -1,4 +1,6 @@
 import type {SkirmishView} from './ward-skirmish.ts';
+import type {StoryChapterState} from './story-chapter.ts';
+import type {StoryTrainingState} from './story-training.ts';
 import type { RunProgress } from './run-progress.ts';
 import type { TerrainStatus } from './district-director.ts';
 import type { KitCue, KitStatus } from './class-kits.ts';
@@ -8,6 +10,7 @@ import type { BossCue } from './boss-director.ts';
 import type { WardenSample } from './warden-signature.ts';
 import type { ClassId, Phase, Warning, Field, Contract, SupplySlot } from './protocol.ts';
 export type PlayerView = {
+  training?:StoryTrainingState;
   progress: RunProgress;
   eligible: boolean;
   terrain: TerrainStatus;
@@ -54,9 +57,11 @@ export type PlayerView = {
   dodgeCooldown: number;
 };
 export type View = {
+  chapter?:StoryChapterState;
+  patients?:{owner:string;x:number;y:number;health:number;maxHealth:number}[];
   objective?:SkirmishView;
   run: { id: string; mode: Game['settings']['mode']; difficulty: string; practiceOnly: true; testingModified?: boolean; customized?:boolean;
-    arenaSelection?: Game['settings']['arenaSelection']; selectedArenaId?: string; maximumPlayers?: number };
+    arenaSelection?: Game['settings']['arenaSelection']; selectedArenaId?: string; maximumPlayers?: number; bossDeadlineMultiplier?:number };
   secretStatus: Game['secretStatus'];
   extensionParticipants: string[];
   campaignBank: Game['campaignBank'];
@@ -86,6 +91,7 @@ export type View = {
 };
 export function viewOf(g: Game, owner: string): View {
   return {
+    ...(g.chapter?{chapter:g.chapter,patients:g.patients}:{}),
     ...(g.objective?{objective:g.objective}:{}),
     run: {
       id: g.settings.runId,
@@ -95,6 +101,7 @@ export function viewOf(g: Game, owner: string): View {
       arenaSelection: g.settings.arenaSelection,
       selectedArenaId: g.settings.openingArenaId,
       maximumPlayers: g.settings.maxPlayers,
+      bossDeadlineMultiplier:g.bossDeadlineMultiplier,
       ...(g.testingModified?{testingModified:true}:{}),
       ...(g.customized?{customized:true}:{}),
     },
@@ -110,6 +117,7 @@ export function viewOf(g: Game, owner: string): View {
     arenaId: g.arena.id,
     owner,
     players: [...g.players.values()].map((p) => ({
+      ...(g.trainingFor(p.id)?{training:g.trainingFor(p.id)}:{}),
       id: p.id,
       progress: structuredClone(p.progress),
       eligible: p.eligible,
@@ -132,7 +140,7 @@ export function viewOf(g: Game, owner: string): View {
       ack: p.ack,
       ammo: p.ammo,
       coins: p.coins,
-      sp: p.totalSp - p.skills.reduce((n, id) => n + g.skillCost(id), 0),
+      sp: g.chapter?0:p.totalSp - p.skills.reduce((n, id) => n + g.skillCost(id), 0),
       qAt: p.qAt,
       eAt: p.eAt,
       ultimateAt: p.ultimateAt,

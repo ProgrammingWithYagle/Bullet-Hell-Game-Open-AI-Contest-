@@ -73,6 +73,7 @@ import { initialLanguage, locale, number, setLanguage, t } from './i18n.ts';
 import {hasLanguagePreference} from './language-preference.ts';
 import { mountSetup, setupOptions } from './ui/setup.ts';
 import { shopMarkup, bindShop, supplyGlyph } from './ui/shop.ts';
+import {chapterResultMarkup} from './ui/chapter.ts';
 import { icon } from './ui/icons.ts';
 import { supplyText } from './content-text.ts';
 import { voteMarkup } from './ui/votes.ts';
@@ -577,7 +578,7 @@ function update(view: View) {
   $('player-name-label').textContent=p.name;
   $('player-class').textContent=t('class.'+p.classId+'.name');
   $('player-build').textContent=t('ui.buildRating')+' '+buildGrade(rating(p));
-  $('boss-panel').hidden=Boolean(view.objective);const objectivePanel=$('skirmish-panel');objectivePanel.hidden=!view.objective;if(view.objective){const markup=skirmishHUD(view);if(objectivePanel.innerHTML!==markup)objectivePanel.innerHTML=markup;$('encounter').textContent=t('ui.wardApproach');}
+  $('boss-panel').hidden=Boolean(view.objective);const objectivePanel=$('skirmish-panel');objectivePanel.hidden=!view.objective;if(view.objective){const markup=skirmishHUD(view,session?.id);if(objectivePanel.innerHTML!==markup)objectivePanel.innerHTML=markup;$('encounter').textContent=t('ui.wardApproach');}
   $('boss-name').textContent=t('boss.'+view.boss.id+'.name');
   $('boss-threat-label').textContent=t('ui.threat');
   $('boss-threat-code').textContent=classifiedThreatCode(view.boss.threat,bossThreat(view.boss.id).subtier,view.boss.variant);
@@ -598,6 +599,7 @@ function update(view: View) {
   $('ammo').textContent=number(p.ammo);
   $('coins-value').textContent=number(p.coins);
   $('skill-points-value').textContent=number(p.sp);
+  $('skill-points-value').closest<HTMLElement>('.vital-resource')!.hidden=Boolean(view.chapter);
   for (const button of document.querySelectorAll<HTMLButtonElement>('[data-supply-slot]')) {
     const index = Number(button.dataset.supplySlot),
       slot = p.supplies[index];
@@ -769,6 +771,8 @@ function update(view: View) {
     settings.branchingTree,
     p.coins,
     p.sp,
+    p.training,
+    view.chapter,
     p.weapon,
     p.skills,
     p.upgrades,
@@ -834,7 +838,7 @@ function renderOverlay(view: View, p: PlayerView) {
   if (overlay.hidden) { syncRoomChatPlacement(); return; }
   let body = '',
     title = '', actions = '';
-  if(view.phase==='storyScene'){title=t('ui.storyAftermath');body=`<p>${text('ui.storyReadyHelp')}</p><button data-vote="1" class="primary" ${p.eligible?'':'disabled'}>${text('ui.ready')} <span data-vote-count="1">0</span></button>`;} else if (view.phase === 'mutationVote') {
+  if(view.phase==='storyScene'){title=t('ui.storyAftermath');body=`<p>${text('ui.storyReadyHelp')}</p><button data-vote="1" class="primary" ${p.eligible||view.chapter?'':'disabled'}>${text('ui.ready')} <span data-vote-count="1">0</span></button>`;} else if (view.phase === 'mutationVote') {
     title = t('ui.mutationVote');
     body = voteMarkup(view);
   } else if (view.phase === 'contractVote') {
@@ -846,6 +850,7 @@ function renderOverlay(view: View, p: PlayerView) {
     body = navigation + (view.phase==='lobby'&&session?.online&&lobbyPanel==='room'
       ? waitingRoomMarkup(view,session.id,session.code,t,number,assets.portraits,session.hasPassword,session.hostPassword) : shop(p));
     if (view.phase === 'lobby') actions = `<button id="start" class="primary" ${view.owner !== session!.id ? 'disabled' : ''}>${text('ui.start')}</button><button id="return-menu">${text('ui.leaveRoom')}</button>`;
+    if(view.chapter&&view.phase==='shop')actions=`<button data-vote="1" class="primary" ${view.chapter.completedNodes.length===1&&!p.training?.learned.length?'disabled':''}>${text('ui.ready')} <span data-vote-count="1">0</span></button>`;
   } else if (view.phase === 'secretOffer') {
     title = extensionText(locale, 'offerTitle');
     body = `<p>${esc(extensionText(locale, 'offerBody'))}</p><div class="actions"><button data-vote="1" class="primary">${esc(extensionText(locale, 'enter'))} <span data-vote-count="1">0</span></button><button data-vote="0">${esc(extensionText(locale, 'decline'))}</button></div>`;
@@ -854,10 +859,10 @@ function renderOverlay(view: View, p: PlayerView) {
     body = `<p>${text('ui.tutorialTeam')}</p>`;
   } else {
     title = expeditionText(locale, view.phase === 'victory' ? 'resultComplete' : 'resultEnded');
-    body = skirmishResults(view) + (view.endedByHost ? `<p class="result-reason">${text('ui.matchEndedByHost')}</p>` : '') + runResultsMarkup(view, p, {
+    body = skirmishResults(view) + (view.endedByHost ? `<p class="result-reason">${text('ui.matchEndedByHost')}</p>` : '') + (view.chapter?chapterResultMarkup(view,p):runResultsMarkup(view, p, {
       language: locale, mode: t('mode.' + view.run.mode + '.name'), difficulty: t('difficulty.' + view.run.difficulty),
       className: t('class.' + p.classId + '.name'), number, clock,
-    }) + `${view.campaignBank && ['cleared', 'failed'].includes(view.secretStatus) ? '<p>' + esc(extensionText(locale, view.secretStatus === 'cleared' ? 'cleared' : 'failed')) + '</p>' : ''}${session?.status === 'ui.errorSave' ? `<p role="alert">${text('ui.errorSave')}</p>` : ''}${(view.run.testingModified||view.run.customized) ? '' : `<p>${text(session?.online ? 'ui.practiceNotice' : 'ui.offlineNotice')}</p>`}<button id="return-menu" class="primary">${text('ui.mainMenu')}</button>`;
+    })) + `${view.campaignBank && ['cleared', 'failed'].includes(view.secretStatus) ? '<p>' + esc(extensionText(locale, view.secretStatus === 'cleared' ? 'cleared' : 'failed')) + '</p>' : ''}${session?.status === 'ui.errorSave' ? `<p role="alert">${text('ui.errorSave')}</p>` : ''}${(view.run.testingModified||view.run.customized) ? '' : `<p>${text(session?.online ? 'ui.practiceNotice' : 'ui.offlineNotice')}</p>`}<button id="return-menu" class="primary">${text('ui.mainMenu')}</button>`;
   }
   const previous =
     document.activeElement instanceof HTMLElement && overlay.contains(document.activeElement)
@@ -879,13 +884,13 @@ function renderOverlay(view: View, p: PlayerView) {
   overlay.dataset.phase = view.phase;
   roomChatUI?.place();
   roomInviteUI?.place();
-  overlay.innerHTML = `<div class="dialog-layout" role="dialog" aria-modal="true" aria-labelledby="phase-heading"><section class="dialog ${view.phase === 'lobby' || view.phase === 'shop' ? 'wide' : ''}"><div class="section-heading"><h2 id="phase-heading" tabindex="-1">${esc(title)}</h2>${phaseCountdownMarkup(view.phase, locale)}</div><div id="phase-room-invite-slot" class="menu-room-invite-slot"></div><div class="phase-content">${body}</div>${actions ? `<footer class="actions phase-actions">${actions}</footer>` : ''}</section><div id="phase-chat-slot" class="dialog-chat-slot"></div></div>`;
+  overlay.innerHTML = `<div class="dialog-layout" role="dialog" aria-modal="true" aria-labelledby="phase-heading"><section class="dialog ${view.phase === 'lobby' || view.phase === 'shop' ? 'wide' : ''}"><div class="section-heading"><h2 id="phase-heading" tabindex="-1">${esc(title)}</h2>${view.chapter&&view.phase!=='loading'?'':phaseCountdownMarkup(view.phase, locale)}</div><div id="phase-room-invite-slot" class="menu-room-invite-slot"></div><div class="phase-content">${body}</div>${actions ? `<footer class="actions phase-actions">${actions}</footer>` : ''}</section><div id="phase-chat-slot" class="dialog-chat-slot"></div></div>`;
   storyReaderBinding=bindStoryReaders(overlay);
   syncRoomChatPlacement();
   const phaseContent = overlay.querySelector<HTMLElement>('.phase-content');
   if (phaseContent) phaseContent.inert = view.matchPaused === true;
   if (['lobby', 'shop'].includes(view.phase))
-    shopBinding = bindShop(overlay, p, (request) => session?.purchase(request), supplyBindings(), settings.branchingTree,view.run.difficulty);
+    shopBinding = bindShop(overlay, p, (request) => session?.purchase(request), supplyBindings(), settings.branchingTree,view.run.difficulty,view.chapter?.stage);
   overlay.querySelectorAll<HTMLButtonElement>('[data-vote]').forEach(
     (button) =>
       (button.onclick = () => {
@@ -926,7 +931,7 @@ function renderOverlay(view: View, p: PlayerView) {
 const supplyBindings = () =>
   [1, 2, 3].map((n) => bindingLabel(inputOptions.bindings[('supply' + n) as 'supply1'][0]));
 function shop(p: PlayerView) {
-  return '<div class="loadout-editor">' + shopMarkup(p, supplyBindings(), settings.branchingTree,session?.view?.run.difficulty??'normal') + '</div>';
+  return '<div class="loadout-editor">' + shopMarkup(p, supplyBindings(), settings.branchingTree,session?.view?.run.difficulty??'normal',session?.view?.chapter?.stage) + '</div>';
 }
 async function leave(showTeamRecord = false) {
   storyReaderBinding?.();storyReaderBinding=undefined;

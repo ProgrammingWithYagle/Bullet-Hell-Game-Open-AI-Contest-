@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "language": "en",
   "method": "Intl.Segmenter English word-like segments",
-  "measure": "Authored playable main-story prose and route-choice text; all base ending alternatives; unique passages counted once",
+  "measure": "Fresh Story Campaign prose and all three current route-choice/scene alternatives, counted once; earlier prototype-only passages reported separately",
   "target": 5000000,
   "targetAchieved": false,
   "openingScenes": [
@@ -16,8 +16,11 @@
     }
   ],
   "openingWords": 3027,
-  "authoredPlayableMainStoryWords": 5058,
-  "uniquePassages": 104,
+  "authoredPlayableMainStoryWords": 4203,
+  "uniquePassages": 10,
+  "legacyPrototypeOnlyWords": 2031,
+  "legacyPrototypeOnlyUniquePassages": 102,
+  "totalAuthoredMainStoryIncludingLegacyWords": 6234,
   "excluded": [
     "UI and guide copy",
     "chapter and scene headings",
@@ -25,7 +28,8 @@
     "superseded short opening and first report",
     "duplicate archive/transcript displays",
     "optional survivor letters and future personal routes",
-    "unimplemented drafts and editorial notes"
+    "unimplemented drafts and editorial notes",
+    "earlier prototype-only passages from the current-campaign target; reported separately"
   ],
   "limits": [
     "Authored words are not words encountered in a single playthrough.",

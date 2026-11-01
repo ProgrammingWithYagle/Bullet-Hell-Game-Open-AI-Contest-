@@ -35,6 +35,7 @@ type Metadata = {
   hasPassword:boolean;
 };
 type Options = {
+  storyChapterId?:Settings['storyChapterId'];
   freePlay?:FreePlayOptions;roomKind?:RoomKind;
   mode: 'short' | 'standard' | 'long' | 'raid' | 'endless' | 'story';
   difficulty: string;
@@ -95,6 +96,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       (options.openingBossId !== undefined &&
         !implementedBossIds.includes(options.openingBossId)) ||
       (options.freePlay!==undefined&&(!validFreePlay(options.freePlay)||options.mode==='story')) ||
+      (options.storyChapterId!==undefined&&(options.storyChapterId!=='one-place-left'||options.mode!=='story')) ||
       !['short', 'standard', 'long', 'raid', 'endless','story'].includes(options.mode) ||
       !data.difficulties.some((d) => d.id === options.difficulty) ||
       !['public', 'private'].includes(options.visibility)
@@ -114,6 +116,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
     this.maxMessagesPerSecond = 90;
     this.patchRate = 50;
     const settings: Partial<Settings> = {
+      ...(options.storyChapterId?{storyChapterId:options.storyChapterId}:{}),
       ...(options.freePlay?{freePlay:options.freePlay}:{}),
       runId: this.roomId,
       seed: randomBytes(4).readUInt32LE(),
@@ -125,7 +128,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       arenaSelection: options.arenaSelection,
     };
     this.game = new Game(this.isTestingServer()?settings:publicRunSettings(settings));
-    this.teamRun = this.createTeamRun(status => this.broadcast('teamRecord', status));
+    this.teamRun = this.game.chapter?undefined:this.createTeamRun(status => this.broadcast('teamRecord', status));
     this.game.scoreObserver = this.teamRun;
     this.state = new WorldState();
     this.journal = new RoomJournal(this.game, this.createRunJournal(), (status) => {
@@ -418,7 +421,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       view.ack = p.ack;
       view.ammo = p.ammo;
       view.coins = p.coins;
-      view.sp = p.totalSp - p.skills.reduce((n, id) => n + g.skillCost(id), 0);
+      view.sp = g.chapter?0:p.totalSp - p.skills.reduce((n, id) => n + g.skillCost(id), 0);
       view.qAt = p.qAt;
       view.eAt = p.eAt;
       view.ultimateAt = p.ultimateAt;
@@ -433,6 +436,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       view.reviveTarget = p.reviveTarget;
       view.selfRevives = p.selfRevives;
       view.build = JSON.stringify({
+        ...(g.trainingFor(p.id)?{training:g.trainingFor(p.id)}:{}),
         progress: p.progress,
         eligible: p.eligible,
         weapon: p.weapon,
@@ -489,6 +493,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       arenaId: g.arena.id,
     });
     s.intermission = JSON.stringify({
+      ...(g.chapter?{chapter:g.chapter,patients:g.patients}:{}),
       ...(g.objective?{objective:g.objective}:{}),
       run: {
         id: g.settings.runId,
@@ -499,6 +504,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
         arenaSelection: g.settings.arenaSelection,
         selectedArenaId: g.settings.openingArenaId,
         maximumPlayers: Math.min(g.settings.maxPlayers, capacity.limit),
+        bossDeadlineMultiplier:g.bossDeadlineMultiplier,
       },
       storyChoices:[...g.storyChoices],
       secretStatus: g.secretStatus,

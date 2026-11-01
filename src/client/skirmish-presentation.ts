@@ -37,3 +37,11 @@ export function combatAimTarget(
         Math.hypot(b.x - player.x, b.y - player.y),
     )[0];
 }
+export function drawWardPatient(graphics:Graphics,view:View,owner:string){
+  if(view.phase!=='combat')return;
+  const patient=view.patients?.find(p=>p.owner===owner);
+  if(!patient)return;
+  const complete=patient.health>=patient.maxHealth;
+  graphics.lineStyle(3,complete?0xd7dfc4:0x75d8a5,.95).strokeCircle(patient.x,patient.y,22);
+  graphics.lineBetween(patient.x-10,patient.y,patient.x+10,patient.y).lineBetween(patient.x,patient.y-10,patient.x,patient.y+10);
+}

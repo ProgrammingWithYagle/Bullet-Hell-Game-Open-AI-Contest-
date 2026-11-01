@@ -6,9 +6,11 @@ import { classifiedContract } from "./boss-threat.ts";
 function migrateKnownPracticeBoundary(value: unknown): unknown {
   if (!value || typeof value !== "object" || Array.isArray(value)) return value;
   const issued = value as Record<string, unknown>;
+  if(issued.contentRevision!==CONTENT_REVISION && (issued.chapter!==undefined ||
+    (issued.settings && typeof issued.settings==='object' && Object.hasOwn(issued.settings,'storyChapterId'))))throw Error('versionMismatch');
   if (
     issued.protocolVersion === 47 &&
-    (issued.contentRevision === "1707fd9bd432dfb24107300944b99e70bcbe8a5e05077ddebaf0c2907013a1b1" || issued.contentRevision ===
+    (issued.contentRevision === "fd913548f72bfaea33f52a16821f786491d647c10677d8c8957b248c2da799db" || issued.contentRevision === "1707fd9bd432dfb24107300944b99e70bcbe8a5e05077ddebaf0c2907013a1b1" || issued.contentRevision ===
       "e80e0f1d1bd444b1c5d16fae4c7aae322b31bcac70ac180b74964f6ba0326b48" ||
       issued.contentRevision ===
         "77b0d920d24b5f96e422f6697e8346e04cc88159920954261508b30d878d0264")

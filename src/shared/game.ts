@@ -1,4 +1,6 @@
 import {WardSkirmish,type SkirmishView} from './ward-skirmish.ts';
+import {StoryChapter,openingChapterId,validStoryChapter,validChapterBoundary,chapterParticipation,type StoryChapterState} from './story-chapter.ts';
+import {StoryTraining,chapterLessons,validStoryTraining,type StoryTrainingState,type TrainingEventKind} from './story-training.ts';
 import {validFreePlay,customizedFreePlay,type FreePlayOptions} from './free-play.ts';
 import {storyCampaign,storyBossOffers,validStoryBoundary} from './story-campaign.ts';
 import {allSkills,skillFor,advanceMobility,takeDodge,resetMobility,dodgeMaximum,sprintUnlocked,mobilityRules} from './mobility.ts';
@@ -120,6 +122,7 @@ export const implementedBossIds: readonly BossId[] = [
   ...finalBossIds,
 ];
 export type Settings = {
+  storyChapterId?:typeof openingChapterId;
   freePlay?:FreePlayOptions;
   runId: string;
   seed: number;
@@ -321,8 +324,17 @@ export class Game {
   private nextId = 1;
   testingModified = false;
   private skirmish:WardSkirmish|undefined;
+  private chapterState:StoryChapter|undefined;
+  private training = new Map<string,StoryTraining>();
+  private trainingShots = new Map<number,TrainingEventKind>();
+  private practiceEncounter = '';
+  private wardPatients = new Map<string,{owner:string;x:number;y:number;health:number;maxHealth:number}>();
+  get chapter():StoryChapterState|undefined {return this.chapterState?.snapshot();}
+  trainingFor(id:string):StoryTrainingState|undefined {return this.training.get(id)?.snapshot();}
+  get patients(){return [...this.wardPatients.values()].map(p=>({...p}));}
   get objective():SkirmishView|undefined {return this.skirmish?.view();}
   get customized(){return customizedFreePlay(this.settings.freePlay);}
+  get bossDeadlineMultiplier(){return this.chapterState?data.storyChapters[0].bossDeadlineMultiplier:this.settings.freePlay?.bossDeadlineMultiplier??1;}
   scoreObserver?: { start(game: Game): void; damage(id: string, hp: number): void; clear(game: Game): void };
   private freeShots: Shot[] = [];
   private hostileShots = 0;
@@ -352,9 +364,14 @@ export class Game {
     recommendedRating: 1,
   };
   private currentArenaId: string;
-  constructor(settings: Partial<Settings> = {}) {
+  // The second argument is an in-process compatibility path for issued prototype saves.
+  // Fresh clients/rooms never supply it: Story starts the chapter system by default.
+  constructor(settings: Partial<Settings> = {}, restoreLegacyStory = false) {
+    if(settings.mode==='story'&&settings.storyChapterId===undefined&&!restoreLegacyStory)settings={...settings,storyChapterId:openingChapterId};
+    if(settings.storyChapterId!==undefined && (settings.storyChapterId!==openingChapterId || settings.mode!=='story'))throw Error('Invalid story chapter');
     if(settings.freePlay!==undefined&&(!validFreePlay(settings.freePlay)||settings.mode==='story'))throw Error('Invalid Free Play settings');
     this.settings = {
+      ...(settings.storyChapterId?{storyChapterId:settings.storyChapterId}:{}),
       ...(settings.freePlay?{freePlay:{...settings.freePlay}}:{}),
       runId: settings.runId ?? 'simulation-' + (settings.seed ?? 1).toString(36),
       seed: settings.freePlay?.seed ?? settings.seed ?? 1,
@@ -369,6 +386,7 @@ export class Game {
     };
     if(this.settings.freePlay?.scenarioId){if(this.settings.mode!=='short')throw Error('Invalid skirmish mode');this.settings.openingBossId='constable';this.settings.openingArenaId='triage-yard';this.settings.arenaSelection='fixed';this.skirmish=new WardSkirmish();}
     if(this.settings.mode==='story'){this.settings.openingBossId='constable';this.settings.openingArenaId='gatehouse';this.settings.arenaSelection='route';}
+    if(this.settings.storyChapterId)this.chapterState=new StoryChapter();
     if (
       typeof this.settings.runId !== 'string' ||
       !/^[A-Za-z0-9_-]{1,100}$/.test(this.settings.runId) ||
@@ -493,6 +511,7 @@ export class Game {
     p.oldX = p.x;
     p.oldY = p.y;
     this.players.set(id, p);
+    if(this.chapterState)this.training.set(id,new StoryTraining(id,classId));
     p.ammo = this.stats(p).magazine;
     this.peakPlayers = Math.max(this.peakPlayers, this.players.size);
     return p;
@@ -533,9 +552,11 @@ export class Game {
     return true;
   }
   private get routeLength() {
+    if(this.chapterState)return 3;
     return data.modes.find((m) => m.id === this.settings.mode)!.encounters ?? Infinity;
   }
   private skillBudget(j: number) {
+    if(this.chapterState)return 0;
     if (this.secretStatus === 'active' && this.boss.id === 'uncounted') return 27;
     if (this.settings.mode === 'raid')
       return data.modes.find((m) => m.id === 'raid')!.skillBudgets![Math.min(j, 2)];
@@ -544,6 +565,7 @@ export class Game {
       : 3 + Math.floor((24 * Math.min(j, this.routeLength - 1)) / (this.routeLength - 1));
   }
   private incomeBudget(j: number) {
+    if(this.chapterState){const economy=data.storyChapters[0].economy;return Math.floor((economy.startingCoins+economy.coinsPerObjective*Math.min(j,economy.maximumObjectives))*this.difficulty.coins);}
     if (this.settings.mode === 'raid')
       return Math.floor(
         data.modes.find((m) => m.id === 'raid')!.coinIncomeBudgets![Math.min(j, 2)] *
@@ -653,6 +675,16 @@ export class Game {
   }
   private purchase(p: Player, r: Command): Result {
     if (!['lobby', 'shop'].includes(this.phase)) return { ok: false, reason: 'shopClosed' };
+    if(r.kind==='study'||r.kind==='prepare'){
+      const training=this.training.get(p.id),chapter=this.chapter;
+      if(!training||chapter?.stage!=='prepare'||chapter.completedNodes.length<1)return {ok:false,reason:'lessonUnavailable'};
+      const allowed=r.kind==='study'?training.study(r.item):training.prepare(r.item);
+      if(!allowed)return {ok:false,reason:'proofRequired'};
+      p.skills=training.snapshot().prepared;
+      this.statsCache.delete(p.id);this.votes.delete(p.id);
+      return {ok:true};
+    }
+    if(this.chapterState&&r.kind==='skill')return {ok:false,reason:'storyLearningRequired'};
     let price = 0;
     if (r.kind === 'weapon') {
       const w = data.weapons.find((w) => w.id === r.item && w.classId === p.classId);
@@ -697,9 +729,17 @@ export class Game {
     p.reloadAt = 0;
     this.limitPersonalShield(p);
     p.dodgeMaximum=dodgeMaximum(p.skills);
+    if(this.chapterState)this.votes.delete(p.id);
     return { ok: true };
   }
   vote(id: string, index: number): boolean {
+    if(this.chapterState){
+      const p=this.players.get(id);
+      if(!p?.connected||p.status==='waiting'||!['storyScene','contractVote','shop'].includes(this.phase))return false;
+      if(this.phase==='contractVote'?!Number.isInteger(index)||index<0||index>2:index!==1)return false;
+      if(this.phase==='shop'&&this.chapterState.nodeIndex===1&&!this.trainingFor(id)?.learned.length)return false;
+      this.votes.set(id,index);return true;
+    }
     if(this.phase==='storyScene'){const p=this.players.get(id);if(!p?.connected||!p.eligible||p.status==='waiting'||index!==1)return false;this.votes.set(id,1);return true;}
     if (this.phase === 'secretOffer') {
       const p = this.players.get(id);
@@ -760,6 +800,7 @@ export class Game {
   }
   start(): boolean {
     if (this.phase !== 'lobby' || !this.players.size) return false;
+    if(this.chapterState&&!this.chapterState.start([...this.players.values()].filter(p=>p.connected).map(p=>p.id)))return false;
     this.startEncounter();
     return true;
   }
@@ -774,6 +815,8 @@ export class Game {
     this.clearInputs(); this.votes.clear();
     if (this.secretStatus === 'active') this.secretStatus = 'failed';
     this.phase = 'defeat'; this.phaseEnds = 0; this.boss.defeatedAt = 0;
+    this.chapterState?.fail();this.wardPatients.clear();
+    if(this.chapterState){this.skirmish?.fail();this.clearChapterCombat();}
     return true;
   }
   private modifier(key: string) {
@@ -812,7 +855,12 @@ export class Game {
     );
   }
   private startEncounter() {
-    this.currentArenaId = selectedArenaId(this.settings, this.encounter, this.secretStatus === 'active' && Boolean(this.campaignBank),this.storyChoices);
+    if(this.chapterState){
+      if(this.chapter?.stage==='prepare'&&!this.chapterState.start([...this.players.values()].filter(p=>p.connected&&!p.expired).map(p=>p.id)))return;
+      this.skirmish=this.chapterState.nodeIndex===1?new WardSkirmish():undefined;
+      this.selectedContract={id:'chapter-'+this.chapterState.nodeIndex,recommendedRating:0,...classifiedContract(this.chapterState.bossId??'constable',encounterVariant(this.settings.difficulty))};
+    }
+    this.currentArenaId = this.chapterState?.arenaId??selectedArenaId(this.settings, this.encounter, this.secretStatus === 'active' && Boolean(this.campaignBank),this.storyChoices);
     Object.assign(this.selectedContract,classifiedContract(this.selectedContract.bossId??'constable',encounterVariant(this.settings.difficulty,this.selectedContract.variant)));
     this.phaseAttackReadyAt = 0;
     this.variantPressure.reset(this.combatTick);
@@ -837,6 +885,7 @@ export class Game {
         p.status = 'waiting';
         continue;
       }
+      if(this.chapterState&&!p.connected){p.status='waiting';p.eligible=false;continue;}
       p.status = 'active';
       this.clearPoison(p);
       p.eligible = true;
@@ -886,6 +935,7 @@ export class Game {
         this.combatTick +
         ticks(
           this.bossDefinition().timer *
+            this.bossDeadlineMultiplier *
             this.modifier('timer') *
             variantRules(this.selectedContract.variant??'normal').deadlineMultiplier,
         );
@@ -922,6 +972,14 @@ export class Game {
     if(!this.skirmish)this.events.push({ type: 'sound', id: 'boss-phase' });
     if(this.skirmish){this.boss.health=0;this.boss.maxHealth=1;this.boss.deadline=this.combatTick+ticks(180);this.director.reset('constable');this.signatures=[];this.skirmish.start(this.combatTick,this.roster().length);}
     else this.scoreObserver?.start(this);
+    this.wardPatients.clear();
+    if(this.chapterState&&this.skirmish){
+      this.practiceEncounter=this.settings.runId.slice(0,64)+'-'+this.combatTick+'-street';
+      for(const p of this.roster()){
+        this.training.get(p.id)?.beginPractice(this.practiceEncounter,p.connected&&p.eligible);
+        if(p.classId==='medic')this.wardPatients.set(p.id,{owner:p.id,...this.arena.playerSpawn,health:24,maxHealth:64});
+      }
+    }
   }
   private pruneExpired() {
     for (const [id, p] of this.players)
@@ -930,6 +988,7 @@ export class Game {
         this.statsCache.delete(id);
         this.transactions.delete(id);
         this.votes.delete(id);
+        this.training.delete(id);this.wardPatients.delete(id);
       }
   }
   private rescaleDepartures() {
@@ -944,6 +1003,7 @@ export class Game {
     this.votes.clear();
   }
   private victory() {
+    if(this.chapterState){this.clearChapterNode(true);return;}
     this.scoreObserver?.clear(this);
     for (const player of this.players.values()) this.clearPoison(player);
     this.classKits.clear();this.transforms.clear();this.wardenPatrol.clear();
@@ -1087,6 +1147,7 @@ export class Game {
   }
   private intermission() {
     if (showingBossDefeat(this.boss, this.tick)) return;
+    if(this.chapterState){this.chapterIntermission();return;}
     if(this.phase==='storyScene'){const party=this.roster().filter(p=>p.connected&&p.eligible);if(party.length&&party.every(p=>this.votes.get(p.id)===1))this.offerContracts();return;}
     if (this.phase === 'secretOffer') {
       this.resolveSecretOffer(this.tick >= this.phaseEnds);
@@ -1192,6 +1253,7 @@ export class Game {
         this.secretStatus = 'failed';
         this.phase = this.campaignBank ? 'victory' : 'defeat';
       } else this.phase = 'defeat';
+      this.chapterState?.fail();this.wardPatients.clear();
       for (const player of this.players.values()) this.clearPoison(player);
       this.classKits.clear();this.transforms.clear();this.wardenPatrol.clear();
       this.director.reset('constable');
@@ -1203,11 +1265,146 @@ export class Game {
     }
   }
   private finishSkirmish(success:boolean){
+    if(this.chapterState){if(success)this.clearChapterNode(false);else{this.chapterState.fail();this.skirmish?.fail();this.phase='defeat';this.clearChapterCombat();}return;}
     if(!success)this.skirmish?.fail();
     else this.skirmish?.cancel();
     this.phase=success?'victory':'defeat';
     for(const p of this.players.values())this.clearPoison(p);
     this.classKits.clear();this.transforms.clear();this.minions.clear();this.director.reset('constable');this.signatures=[];this.warnings.length=0;this.fields.length=0;this.clearShots();this.accord=null;
+  }
+  private clearChapterCombat() {
+    for (const p of this.players.values()) this.clearPoison(p);
+    this.classKits.clear();
+    this.transforms.clear();
+    this.wardenPatrol.clear();
+    this.minions.clear();
+    this.director.reset('constable');
+    this.signatures = [];
+    this.warnings.length = 0;
+    this.fields.length = 0;
+    this.clearShots();
+    this.accord = null;
+    this.wardPatients.clear();
+  }
+  private clearChapterNode(bossClear: boolean) {
+    const chapter = this.chapterState!;
+    const present = this.roster().filter((p) => p.connected && p.eligible);
+    if (
+      !chapter.clear(
+        chapter.node!,
+        present.map((p) => p.id),
+      )
+    )
+      throw Error('invalidChapterTransition');
+    if (bossClear) {
+      this.scoreObserver?.clear(this);
+      this.completedBossIds.add(this.boss.id);
+      this.completedBossForms.set(this.boss.id, this.boss.variant);
+      this.boss.health = 0;
+      this.boss.defeatedAt = this.tick;
+      this.events.push({ type: 'sound', id: 'boss-defeated' });
+      for (const p of present) {
+        p.progress.clears++;
+        if (!p.progress.clearedBossIds.includes(this.boss.id))
+          p.progress.clearedBossIds.push(this.boss.id);
+      }
+    } else {
+      this.skirmish?.cancel();
+      this.boss.defeatedAt = 0;
+      for (const p of present)
+        this.training.get(p.id)?.finishPractice(this.practiceEncounter, true);
+    }
+    this.encounter = chapter.nodeIndex;
+    for (const p of present) {
+      p.coins += Math.max(0, this.incomeBudget(this.encounter) - p.incomeGranted);
+      p.incomeGranted = this.incomeBudget(this.encounter);
+      p.totalSp = 0;
+      p.status = 'active';
+      p.health = p.maxHealth;
+    }
+    for (const p of this.players.values())
+      if (p.connected && p.status === 'waiting') p.status = 'active';
+    this.clearChapterCombat();
+    this.changePhase('storyScene', 0);
+    this.phaseEnds = 0;
+  }
+  private chapterIntermission() {
+    const party = [...this.players.values()].filter(
+      (p) => p.connected && !p.expired && p.status !== 'waiting',
+    );
+    if (this.phase === 'loading') {
+      if (this.tick >= this.phaseEnds) this.startEncounter();
+      return;
+    }
+    if (!party.length || !party.every((p) => this.votes.has(p.id))) return;
+    const chapter = this.chapterState!;
+    if (this.phase === 'storyScene') {
+      chapter.ready();
+      if (this.chapter?.stage === 'complete') {
+        this.phase = 'victory';
+        this.phaseEnds = 0;
+        this.votes.clear();
+        return;
+      }
+      if (this.chapter?.stage === 'choice') {
+        this.contractCards = [0, 1, 2].map((i) => ({
+          id: 'chapter-route-' + i,
+          recommendedRating: 0,
+          ...classifiedContract('constable', encounterVariant(this.settings.difficulty)),
+        }));
+        this.changePhase('contractVote', 0);
+        this.phaseEnds = 0;
+      } else this.prepareChapter();
+    } else if (this.phase === 'contractVote') {
+      const route = this.winningVote();
+      chapter.choose(route);
+      this.storyChoices = [route];
+      this.prepareChapter();
+    } else if (this.phase === 'shop') this.changePhase('loading', rule.deploymentSeconds);
+  }
+  private prepareChapter() {
+    this.skirmish = undefined;
+    this.selectedContract = {
+      id: 'chapter-' + this.chapterState!.nodeIndex,
+      recommendedRating: 0,
+      ...classifiedContract(
+        this.chapterState!.bossId ?? 'constable',
+        encounterVariant(this.settings.difficulty),
+      ),
+    };
+    this.contractCards = [];
+    this.changePhase('shop', 0);
+    this.phaseEnds = 0;
+  }
+  private observeTraining(source: Player | undefined, event: TrainingEventKind, actual: number) {
+    if (source && this.chapterState && this.skirmish && source.connected && source.eligible)
+      this.training.get(source.id)?.observe(source.id, this.practiceEncounter, event, actual);
+  }
+  private careForPatient(
+    source: Player,
+    point: { x: number; y: number },
+    radius: number,
+    amount: number,
+  ) {
+    const patient = this.wardPatients.get(source.id);
+    if (
+      !patient ||
+      source.classId !== 'medic' ||
+      !source.connected ||
+      source.status !== 'active' ||
+      distance(patient, point) > radius
+    )
+      return;
+    const actual = Math.max(
+      0,
+      Math.min(
+        patient.maxHealth - patient.health,
+        amount * this.difficulty.healing * this.modifier('healing'),
+      ),
+    );
+    patient.health += actual;
+    source.healing += actual;
+    this.observeTraining(source, 'patient-care', actual);
   }
   private stepPlayer(p: Player) {
     const now = this.combatTick,
@@ -1463,8 +1660,8 @@ export class Game {
       (this.combatTick < this.classKits.status(p.id, this.combatTick).passageUntil ? 1 : s.crit)
         ? s.critMultiplier
         : 1);
-    for (let n = 0; n < count; n++)
-      this.emitShot(
+    for (let n = 0; n < count; n++){
+      const shot=this.emitShot(
         p.id,
         p.x,
         p.y,
@@ -1479,6 +1676,11 @@ export class Game {
         s.pierce + (overdrive ? 2 : 0),
         w.rangeSeconds,
       );
+      if(shot&&this.chapterState){
+        if(p.classId==='soldier'&&this.fields.some(f=>f.owner===p.id&&f.kind==='rally'&&f.potency>0&&distance(fieldPosition(f,this.roster()),p)<=f.radius))this.trainingShots.set(shot.id,'rallied-hit');
+        if(p.classId==='assassin'&&this.classKits.untargetable(p.id,this.combatTick))this.trainingShots.set(shot.id,'concealed-hit');
+      }
+    }
     this.events.push({
       type: 'sound',
       id:
@@ -1527,12 +1729,14 @@ export class Game {
             s.pierce,
             a.radius / 700,
           );
-          if (shot)
+          if (shot){
             this.shotEffects.set(shot.id, {
               slowTicks: ticks(a.duration * (1 + (s.effects.suppressionDuration ?? 0))),
               slowMultiplier: 0.6,
               rangeRemaining: a.radius,
             });
+            if(this.chapterState)this.trainingShots.set(shot.id,'suppressive-hit');
+          }
         }
       } else if (slot === 'e') p.braceUntil = now + ticks(a.duration);
       else {
@@ -1594,6 +1798,7 @@ export class Game {
         potency: 8 * s.ability,
       });
     else if (slot === 'e') {
+      this.careForPatient(p,p,a.radius,20*s.ability);
       for (const ally of this.roster())
         if (ally.status === 'active' && distance(ally, p) <= a.radius) {
           this.heal(p, ally, 20 * s.ability);
@@ -1619,6 +1824,7 @@ export class Game {
     const s = this.stats(p),
       radius = 240 + (s.effects.ultimateRadius ?? 0),
       potency = 1 + (s.effects.ultimatePotency ?? 0);
+    this.careForPatient(p,p,radius,40*potency);
     for (const ally of this.roster())
       if (distance(ally, p) <= radius) {
         if (ally.status === 'downed' || ally.status === 'eliminated') this.revive(ally, p);
@@ -1831,11 +2037,11 @@ export class Game {
           if (damage > 0 && this.director.weakInRadius(point, radius, weak))
             this.hitWeak(source, damage, weak.id);
         for (const actor of this.minions.actors.values())
-          if (distance(point, actor) <= radius + actor.radius)
-            this.creditHit(
-              source,
-              this.minions.hit(actor.id, damage, this.combatTick, slowTicks, slow),
-            );
+          if (distance(point, actor) <= radius + actor.radius){
+            const actual=this.minions.hit(actor.id, damage, this.combatTick, slowTicks, slow);
+            this.creditHit(source,actual);
+            if(source.classId==='mage'&&slow<1&&slowTicks>0)this.observeTraining(source,'sigil-control',actual);
+          }
       },
       sweep: (source, from, to, radius, damage, touched) => {
         if (
@@ -1865,12 +2071,16 @@ export class Game {
               radius + actor.radius,
             ) !== null
           ) {
-            this.creditHit(source, this.minions.hit(actor.id, damage, this.combatTick));
+            const actual=this.minions.hit(actor.id, damage, this.combatTick);
+            this.creditHit(source,actual);
+            if(source.classId==='tank')this.observeTraining(source,'charge-hit',actual);
+            if(source.classId==='assassin'&&this.classKits.untargetable(source.id,this.combatTick))this.observeTraining(source,'concealed-hit',actual);
             touched.add('actor-' + actor.id);
           }
       },
       shoot: (owner, from, aim, damage) => {
-        this.emitShot(owner.id, from.x, from.y, aim, 650, damage, 3, 0, 1);
+        const shot=this.emitShot(owner.id, from.x, from.y, aim, 650, damage, 3, 0, 1);
+        if(shot&&owner.classId==='engineer'&&this.chapterState)this.trainingShots.set(shot.id,'construct-hit');
       },
       erase: (point, radius) => {
         for (const shot of this.shots.values())
@@ -2321,6 +2531,7 @@ export class Game {
       }
       if (f.kind === 'heal') {
         const source = this.players.get(f.owner);
+        if(source)this.careForPatient(source,fieldPosition(f,this.roster()),f.radius,f.potency*DT);
         if (source)
           for (const p of this.roster())
             if (p.status === 'active' && distance(fieldPosition(f,this.roster()), p) <= f.radius)
@@ -2415,6 +2626,8 @@ export class Game {
         effect?.slowMultiplier,
       );
       this.creditHit(this.players.get(shot.owner), actual);
+      const trainingEvent=this.trainingShots.get(shot.id);
+      if(trainingEvent)this.observeTraining(this.players.get(shot.owner),trainingEvent,actual);
       if (shot.pierce <= 0) return true;
       shot.pierce--;
     }
@@ -2423,6 +2636,7 @@ export class Game {
   private removeShot(s: Shot) {
     if (!this.shots.delete(s.id)) return;
     this.shotEffects.delete(s.id);
+    this.trainingShots.delete(s.id);
     this.shotHits.delete(s.id);
     if (s.owner === 'hostile') this.hostileShots--;
     this.removals.push(s.id);
@@ -2665,6 +2879,7 @@ export class Game {
       protocolVersion: PROTOCOL,
       contentRevision: CONTENT_REVISION,
       practiceOnly: true,
+      ...(this.chapter?{chapter:this.chapter}:{}),
       settings: { ...this.settings, maxPlayers: 1 },
       arenaId: this.currentArenaId,
       tick: this.tick,
@@ -2691,6 +2906,7 @@ export class Game {
       contractCards: structuredClone(this.contractCards),
       votes: Object.fromEntries(this.votes),
       player: {
+        ...(this.trainingFor(p.id)?{training:this.trainingFor(p.id)}:{}),
         progress: structuredClone(p.progress),
         id: p.id,
         name: p.name,
@@ -2750,14 +2966,17 @@ export class Game {
         save.phase,
       ) ||
       !int(save.phaseEnds) ||
-      (save.phase !== 'lobby' && save.phase!=='storyScene' && (save.phaseEnds < save.tick || save.phaseEnds - save.tick > 1800))
+      (save.phase !== 'lobby' && save.phase!=='storyScene' && !(save.settings.storyChapterId&&['shop','contractVote'].includes(save.phase)&&save.phaseEnds===0) && (save.phaseEnds < save.tick || save.phaseEnds - save.tick > 1800))
     )
       throw Error('invalidCheckpoint');
     if(save.phase==='storyScene'&&save.settings.mode!=='story')throw Error('invalidStoryState');
-    if(!validStoryBoundary(save.settings.mode,save.storyChoices,save.encounter,save.phase))throw Error('invalidStoryState');
+    if(save.settings.storyChapterId){
+      if(!validStoryChapter(save.chapter)||!validChapterBoundary(save.chapter,save.phase,save.encounter,save.storyChoices))throw Error('invalidChapterState');
+    }else if(save.chapter!==undefined||!validStoryBoundary(save.settings.mode,save.storyChoices,save.encounter,save.phase))throw Error('invalidStoryState');
     if(save.settings.mode==='story'&&(save.settings.openingBossId!=='constable'||save.settings.openingArenaId!=='gatehouse'||save.settings.arenaSelection!=='route'||save.arenaId===undefined))throw Error('invalidStoryState');
-    const g = new Game(save.settings),
+    const g = new Game(save.settings,true),
       p = save.player;
+    if(save.chapter)g.chapterState=new StoryChapter(save.chapter);
     g.storyChoices=[...(save.storyChoices??[])];
     if (
       !validEndlessHistory(save.endlessHistory) ||
@@ -2814,6 +3033,10 @@ export class Game {
     )
       throw Error('invalidBossHistory');
     for (const id of save.completedBossIds) g.completedBossIds.add(id as BossId);
+    if(g.chapterState){
+      const expected=save.encounter===0?[]:save.encounter<3?['constable']:['constable','matron'];
+      if(save.completedBossIds.length!==expected.length||save.completedBossIds.some(id=>!expected.includes(id))||save.campaignBank!==null||save.secretStatus!=='locked'||save.extensionParticipants.length||save.accords!==0)throw Error('invalidChapterState');
+    }
     if(!save.completedBossForms || typeof save.completedBossForms!=='object' || Array.isArray(save.completedBossForms) || Object.keys(save.completedBossForms).length>implementedBossIds.length || Object.entries(save.completedBossForms).some(([id,form])=>!g.completedBossIds.has(id as BossId)||!['normal','brutal','crazed'].includes(form)))throw Error('invalidBossHistory');
     for(const [id,form] of Object.entries(save.completedBossForms))g.completedBossForms.set(id as BossId,form);
     if (
@@ -2870,7 +3093,18 @@ export class Game {
       capstones += Number(node.capstone);
       owned.add(id);
     }
-    if (spent > p.totalSp || capstones > 1) throw Error('invalidBuild');
+    if ((!g.chapterState&&spent > p.totalSp) || capstones > 1) throw Error('invalidBuild');
+    if(g.chapterState){
+      const ownedNodes=chapterParticipation(save.chapter!,p.id);
+      const ownedBosses:BossId[]=ownedNodes.filter(node=>node!=='street-clearance').map(node=>node==='gate-constable'?'constable':'matron');
+      if(!validStoryTraining(p.training,p.classId)||JSON.stringify(p.skills)!==JSON.stringify(p.training.prepared)||
+        (save.encounter===0&&p.training.learned.length>0)||
+        (p.training.proofs.length>0&&!ownedNodes.includes('street-clearance'))||
+        Object.keys(save.chapter!.participation).some(id=>id!==p.id)||
+        p.progress.clears!==ownedBosses.length||p.progress.clearedBossIds.length!==ownedBosses.length||p.progress.clearedBossIds.some(id=>!ownedBosses.includes(id))||
+        (ownedNodes.length>0&&p.progress.firstEncounter<0)||p.coins>p.incomeGranted||p.incomeGranted>g.incomeBudget(save.encounter)||
+        p.progress.campaignClears!==0)throw Error('invalidStoryTraining');
+    }else if(p.training!==undefined)throw Error('invalidStoryTraining');
     for (const [id, level] of Object.entries(p.upgrades)) {
       const u = data.upgrades.find((u) => u.id === id);
       if (!u || !int(level, 0, u.maximum)) throw Error('invalidBuild');
@@ -2925,7 +3159,7 @@ export class Game {
       (save.phase === 'mutationVote' && save.mutationCards.length !== 3)
     )
       throw Error('invalidCards');
-    if(g.settings.mode==='story'){
+    if(g.settings.mode==='story'&&!g.chapterState){
       if(['contractVote','shop','loading'].includes(save.phase)&&save.secretStatus!=='active'){
         const pool=save.encounter===g.routeLength-1?data.bossPools.story.finale:data.bossPools.story.regular;
         if(new Set(save.contractCards.map(c=>c.bossId)).size!==3||save.contractCards.some((c,i)=>c.id!=='story-'+save.encounter+'-'+i||g.completedBossIds.has(c.bossId!)||!pool.includes(c.bossId!)))throw Error('invalidStoryState');
@@ -2946,6 +3180,12 @@ export class Game {
     )
       throw Error('invalidVotes');
     const player = g.addPlayer('solo', p.name, p.classId);
+    if(g.chapterState){
+      const state=g.chapter!;
+      state.participation=Object.hasOwn(state.participation,p.id)?{solo:[...state.participation[p.id]]}:{};
+      g.chapterState=new StoryChapter(state);
+      g.training.set('solo',new StoryTraining('solo',p.classId,p.training));
+    }
     Object.assign(player, {
       progress: structuredClone(p.progress),
       weapon: p.weapon,
@@ -2980,8 +3220,17 @@ export class Game {
     g.nextId = save.nextId;
     const previousArena = selectedArenaId(g.settings, Math.max(0, save.encounter - 1),false,g.storyChoices);
     if (save.arenaId !== undefined && (!data.arenas.some(a => a.id === save.arenaId) ||
-      ((g.settings.mode==='story'||g.settings.arenaSelection !== 'route') && save.arenaId !== previousArena)))
+      (!g.chapterState&&(g.settings.mode==='story'||g.settings.arenaSelection !== 'route') && save.arenaId !== previousArena)))
       throw Error('invalidArenaSelection');
+    if(g.chapterState){
+      const chapter=g.chapter!;
+      const routeArena=['triage-yard','gatehouse','ossuary-works'][chapter.route??0];
+      const expectedArena=save.encounter<2?'gatehouse':save.encounter===2?routeArena:'triage-yard';
+      const expectedBoss=save.encounter<2||(save.encounter===2&&save.phase==='storyScene')?'constable':'matron';
+      if(save.arenaId!==expectedArena||save.selectedContract.bossId!==expectedBoss||
+        (save.phase==='contractVote'&&save.contractCards.some((c,i)=>c.id!=='chapter-route-'+i||c.bossId!=='constable'))||
+        (save.phase!=='contractVote'&&save.contractCards.length))throw Error('invalidChapterState');
+    }
     g.currentArenaId = save.arenaId ?? previousArena;
     g.selectedContract = {
       ...save.selectedContract,
@@ -3026,6 +3275,7 @@ export class Game {
       protocolVersion: PROTOCOL,
       contentRevision: CONTENT_REVISION,
       serverOnly: true,
+      ...(this.chapter?{chapter:this.chapter}:{}),
       settings: { ...this.settings },
       arenaId: this.currentArenaId,
       tick: this.tick,
@@ -3090,6 +3340,7 @@ export class Game {
     )
       throw Error('invalidCheckpoint');
     const ids = new Set<string>();
+    if(save.settings.storyChapterId&&!validStoryChapter(save.chapter))throw Error('invalidChapterState');
     const parts: Game[] = [];
     for (const source of save.players) {
       if (
@@ -3113,6 +3364,7 @@ export class Game {
           practiceOnly: true,
           settings: { ...save.settings, maxPlayers: 1 },
           player: source,
+          ...(save.chapter?{chapter:{...save.chapter,participation:Object.hasOwn(save.chapter.participation,source.id)?{[source.id]:save.chapter.participation[source.id]}:{}}}:{}),
           votes: source.id in save.votes ? { solo: save.votes[source.id] } : {},
         }),
       );
@@ -3126,7 +3378,7 @@ export class Game {
     )
       throw Error('invalidRoster');
     const base = parts[0],
-      g = new Game(save.settings);
+      g = new Game(save.settings,true);
     for (const key of [
       'tick',
       'combatTick',
@@ -3149,6 +3401,7 @@ export class Game {
     g.rng.state = base.rng.state;
     g.selectedContract = { ...base.selectedContract };
     g.storyChoices=[...base.storyChoices];
+    if(save.chapter)g.chapterState=new StoryChapter(save.chapter);
     g.boss = { ...base.boss };
     g.currentArenaId = base.currentArenaId;
     g.mutations.push(...structuredClone(base.mutations));
@@ -3181,6 +3434,7 @@ export class Game {
         lastInputAt: g.tick,
       });
       g.players.set(p.id, p);
+      if(g.chapterState)g.training.set(p.id,new StoryTraining(p.id,p.classId,parts[n].trainingFor('solo')));
     }
     if (!Array.isArray(save.transactions) || save.transactions.length > 50)
       throw Error('invalidTransactions');
@@ -3219,6 +3473,7 @@ export class Game {
   snapshot() {
     return {
       objective:this.objective,
+      ...(this.chapter?{chapter:this.chapter}:{}),
       tick: this.tick,
       combatTick: this.combatTick,
       phase: this.phase,
@@ -3232,6 +3487,7 @@ export class Game {
       completedBossForms: Object.fromEntries(this.completedBossForms),
       players: [...this.players.values()].map((p) => ({
         ...p,
+        ...(this.trainingFor(p.id)?{training:this.trainingFor(p.id)}:{}),
         input: undefined,
         pending: undefined,
       })),
