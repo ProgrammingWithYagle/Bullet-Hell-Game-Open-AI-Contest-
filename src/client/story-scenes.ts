@@ -4,7 +4,12 @@ import { storyBook } from "./story-book.ts";
 import { storyCampaign } from "../shared/story-campaign.ts";
 import catalog from "../../content/catalog.json";
 import type { ClassId } from "../shared/protocol.ts";
-export type StoryLine = { speaker: string; classId?: ClassId; text: string };
+export type StoryLine = {
+  speaker: string;
+  classId?: ClassId;
+  text: string;
+  kind?: "narration" | "dialogue";
+};
 export type StoryScene = {
   id: string;
   narrativeId?: string;
@@ -36,14 +41,16 @@ export function storyScene(spec: SceneSpec, language: string): StoryScene {
     extra = dialogue[book.language as keyof typeof dialogue] ?? dialogue.en;
   const opening = openingNarrative(spec, book.language);
   if (opening) return opening;
-  const line = (text: string, speaker = ""): StoryLine => ({
+  const line = (text: string, focus = ""): StoryLine => ({
     text,
-    speaker,
-    ...(survivors.has(speaker) ? { classId: survivors.get(speaker) } : {}),
+    speaker: "",
+    kind: "narration",
+    ...(survivors.has(focus) ? { classId: survivors.get(focus) } : {}),
   });
   const spoken = (rows: string[][]) =>
     rows.map(([classId, text]) => ({
       speaker: catalog.classes.find((c) => c.id === classId)!.survivor,
+      kind: "dialogue" as const,
       classId: classId as ClassId,
       text,
     }));

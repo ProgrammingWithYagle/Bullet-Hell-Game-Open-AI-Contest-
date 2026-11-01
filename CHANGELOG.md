@@ -1,6 +1,15 @@
 # Changelog
 
-Development build **2026.10.31-ward-approach**, protocol 47. The current contest Site uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.10.31-story-voices**, protocol 47. The current contest Site uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-10-31 — Narration and individual voices
+
+### Let descriptions be narrated
+
+- Chapter descriptions, encounter reports and ending prose are now explicitly narrated, with no character speaking heading. A focal portrait can remain without falsely attributing the descriptive paragraph as spoken dialogue. Actual spoken turns retain their named speaker. The full-screen reader and transcript preserve this distinction.
+- Forty currently used short dialogue turns are revised in each English, Spanish and Arabic edition. Characters ask practical questions, correct themselves, notice different details and share ordinary humor. This is a first voice revision, not a completed cast arc or proof of literary/native-language acceptance.
+- The two longer opening manuscripts remain unchanged at3,027English words. The checked authored playable main-story count is now5,058words across104unique passages, excluding duplicate readings, translations, optional letters and UI. It is not a single-playthrough duration.
+- A semantic narration/dialogue tag alone preserves existing reading positions. Changed words or speaker attribution restart the affected scene. Reading still never presses Ready, changes routes or grants rewards. Existing shared gameplay/content and the Ward Approach scenario remain unchanged.
 
 ## 2026-10-31 — A street fight without a boss
 

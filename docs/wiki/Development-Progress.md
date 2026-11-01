@@ -1,6 +1,6 @@
 # Development progress
 
-Updated 2026-10-31 for **2026.10.31-ward-approach**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
+Updated 2026-10-31 for **2026.10.31-story-voices**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
 
 66 playable identities: 65 ordinary and 1 secret. Three ordinary bosses in every one of fifty subtiers requires 150 ordinary identities, plus secrets; 85 additional ordinary bosses remain.
 
@@ -32,6 +32,7 @@ Updated 2026-10-31 for **2026.10.31-ward-approach**. These counts track specific
 
 ## Latest human feedback
 
+- Following the5294feedback about uniform voices, descriptive chapter/report/ending paragraphs now use explicit narration rather than a character speaking label. Forty currently used short turns are revised in each English/Spanish/Arabic edition, with practical reactions, mistakes and humor. Two opening manuscripts remain unchanged. These are authoring/reader changes; native-language/literary/human review, sustained cast arcs, voices and expression production remain open.
 - A first standalone ordinary-enemy scenario is integrated in Free Play with real shared actors, warnings, navigation, objective UI and no boss/progression credit. It is a foundation for the expanded Story graph, not a completed ordinary-enemy campaign or new zombie/skeleton/wraith roster. Five additional classes are accepted but remain0/5implemented. Full verification follows separately.
 - The user expands the final roster to twelve: retain the seven current classes and add Swordsman, Summoner, Ranger, Alchemist and Bard. All five are accepted additions, not options awaiting a tenth-class decision. Bard is particularly liked and reminds the user of the Fool; develop original resonance/performance rules without copying Lord of Mysteries. Classes are shared disciplines and need story integration. Seven are currently playable; five new full kits/trees/weapons/art/mastery integrations remain unfinished.
 - Human review at5294finds Story mutation selection inappropriate, progression/resources too fast and character voices insufficiently individual. They want a Story progression system replacing skill-point spending while retaining money for equipment; SS+should be a major late achievement. They request a full-screen VN, study of VN interaction, narrator-led descriptive detail, future emotion/action sprites and possible character audio. Classes are shared by many people; the seven leads entered their respective classes recently. They want more supporting characters, living antagonists and ordinary zombie/skeleton/wraith-type encounters, with bosses at significant story points. Limited acknowledgement of progress does not establish whole-game or narrative acceptance. Candidate work now removes Story mutation votes and implements a full-viewport reader; mastery, resource/encounter redesign, voice and expression production remain unfinished.

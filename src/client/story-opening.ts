@@ -114,6 +114,7 @@ export function openingNarrative(
     arenaId: binding.arenaId,
     lines: scene.pages.map((page) => ({
       speaker: "",
+      kind: "narration" as const,
       text: page.text,
       ...(page.focus ? { classId: page.focus as ClassId } : {}),
     })),
