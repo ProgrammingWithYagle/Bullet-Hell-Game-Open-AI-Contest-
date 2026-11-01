@@ -53,7 +53,7 @@ export type PlayerView = {
   dodgeCooldown: number;
 };
 export type View = {
-  run: { id: string; mode: Game['settings']['mode']; difficulty: string; practiceOnly: true; testingModified?: boolean;
+  run: { id: string; mode: Game['settings']['mode']; difficulty: string; practiceOnly: true; testingModified?: boolean; customized?:boolean;
     arenaSelection?: Game['settings']['arenaSelection']; selectedArenaId?: string; maximumPlayers?: number };
   secretStatus: Game['secretStatus'];
   extensionParticipants: string[];
@@ -93,6 +93,7 @@ export function viewOf(g: Game, owner: string): View {
       selectedArenaId: g.settings.openingArenaId,
       maximumPlayers: g.settings.maxPlayers,
       ...(g.testingModified?{testingModified:true}:{}),
+      ...(g.customized?{customized:true}:{}),
     },
     storyChoices:[...g.storyChoices],
     secretStatus: g.secretStatus,

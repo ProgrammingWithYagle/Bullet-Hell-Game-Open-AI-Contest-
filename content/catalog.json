@@ -18246,19 +18246,25 @@
       "damageWindowFraction": 1,
       "finale": false,
       "secret": false,
-      "lore": "A drowned municipal worker hauling one circular floodgate on his back. The quarantine left its work unfinished.",
+      "lore": "Ressa Noll kept the river gates before the council turned flood levels into a list of permitted streets. She opened a relief valve when the lower wards were ordered to wait. The order shut her pump house with her inside it. Her dead hands still test every wheel for the one that can let the city breathe.",
       "artBrief": "A drowned municipal worker hauling one circular floodgate on his back. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
       "signature": {
         "id": "sluice-keeper",
-        "behavior": "Open alternating channels that push players sideways without dealing damage; bullets still require dodging.",
-        "counterplay": "Use the dry elevated strips or steer against the announced current.",
+        "behavior": "Bounded currents carry freshly warned moving crests. Shootable valves drain only their own lane and cancel its crest. Paired channels, alternating weaves and a crossed final pressure change the route; advanced returns retain their issuing phase.",
+        "counterplay": "The blue water pushes without dealing contact damage. Only the moving crest hurts, after its own full warning. Step onto a dry bank or shoot its valve. Crests wash through cover. Destroying one valve leaves other channels active; no General purchase is required.",
         "parameters": {
-          "currentForcePxPerSecond": 65,
-          "currentWidthPx": 190,
-          "currentSeconds": 4,
-          "warningSeconds": 1.5,
-          "channels": 3,
-          "cycleSeconds": 9
+          "flowWarningSeconds": 1.8,
+          "flowSeconds": 5,
+          "flowForcePxPerSecond": 70,
+          "maximumCombinedFlowPxPerSecond": 90,
+          "waveWarningSeconds": 1.8,
+          "waveDelaySeconds": 0.7,
+          "waveTravelSeconds": 2.4,
+          "waveFrontPx": 40,
+          "valveHealthHP": 30,
+          "brutalReturnDelaySeconds": 5.1,
+          "crazedReturnDelaySeconds": 10.2,
+          "walkingSpeedPxPerSecond": 50
         }
       },
       "arenaIds": [
@@ -18270,82 +18276,67 @@
         "crown-crypt"
       ],
       "mechanics": {
-        "currentForcePxPerSecond": 65,
-        "currentWidthPx": 190,
-        "currentSeconds": 4,
-        "warningSeconds": 1.5,
-        "channels": 3,
-        "cycleSeconds": 9
+        "flowWarningSeconds": 1.8,
+        "flowSeconds": 5,
+        "flowForcePxPerSecond": 70,
+        "maximumCombinedFlowPxPerSecond": 90,
+        "waveWarningSeconds": 1.8,
+        "waveDelaySeconds": 0.7,
+        "waveTravelSeconds": 2.4,
+        "waveFrontPx": 40,
+        "valveHealthHP": 30,
+        "brutalReturnDelaySeconds": 5.1,
+        "crazedReturnDelaySeconds": 10.2,
+        "walkingSpeedPxPerSecond": 50
       },
       "phases": [
         {
           "healthThreshold": 1,
           "accordBreak": false,
+          "patternPhase": 0,
           "attacks": [
             {
-              "kind": "lanes",
-              "count": 16,
-              "speed": 135,
-              "damage": 11,
-              "interval": 6,
-              "telegraph": 1.2
-            },
-            {
-              "kind": "ring",
-              "count": 18,
-              "speed": 120,
-              "damage": 10,
-              "interval": 7,
-              "telegraph": 1
+              "kind": "zone",
+              "count": 1,
+              "speed": 0,
+              "damage": 16,
+              "interval": 10,
+              "telegraph": 1.8,
+              "duration": 5
             }
-          ],
-          "patternPhase": 0
+          ]
         },
         {
           "healthThreshold": 0.75,
           "accordBreak": true,
+          "patternPhase": 1,
           "attacks": [
             {
-              "kind": "lanes",
-              "count": 18,
-              "speed": 146,
-              "damage": 11,
-              "interval": 5.4,
-              "telegraph": 1.2
-            },
-            {
-              "kind": "ring",
-              "count": 20,
-              "speed": 130,
-              "damage": 10,
-              "interval": 6.3,
-              "telegraph": 1
+              "kind": "zone",
+              "count": 2,
+              "speed": 0,
+              "damage": 16,
+              "interval": 10,
+              "telegraph": 1.8,
+              "duration": 5
             }
-          ],
-          "patternPhase": 1
+          ]
         },
         {
           "healthThreshold": 0.4,
           "accordBreak": true,
+          "patternPhase": 2,
           "attacks": [
             {
-              "kind": "lanes",
-              "count": 20,
-              "speed": 157,
-              "damage": 11,
-              "interval": 4.8,
-              "telegraph": 1.2
-            },
-            {
-              "kind": "ring",
-              "count": 22,
-              "speed": 139,
-              "damage": 10,
-              "interval": 5.6,
-              "telegraph": 1
+              "kind": "zone",
+              "count": 3,
+              "speed": 0,
+              "damage": 16,
+              "interval": 10,
+              "telegraph": 1.8,
+              "duration": 5
             }
-          ],
-          "patternPhase": 2
+          ]
         }
       ],
       "variants": {
@@ -18366,106 +18357,74 @@
             {
               "healthThreshold": 1,
               "accordBreak": false,
-              "signatureRepeatOffsetSeconds": 0,
+              "patternPhase": 0,
               "attacks": [
                 {
-                  "kind": "lanes",
-                  "count": 16,
-                  "speed": 135,
-                  "damage": 11,
-                  "interval": 5.4,
-                  "telegraph": 1.2,
-                  "comboOffsetSeconds": 0
-                },
-                {
-                  "kind": "ring",
-                  "count": 18,
-                  "speed": 120,
-                  "damage": 10,
-                  "interval": 6.3,
-                  "telegraph": 1,
+                  "kind": "zone",
+                  "count": 1,
+                  "speed": 0,
+                  "damage": 16,
+                  "interval": 15,
+                  "telegraph": 1.8,
+                  "duration": 5,
                   "comboOffsetSeconds": 0
                 }
               ],
-              "patternPhase": 0
+              "signatureRepeatOffsetSeconds": 0
             },
             {
               "healthThreshold": 0.75,
               "accordBreak": false,
-              "signatureRepeatOffsetSeconds": 0,
+              "patternPhase": 1,
               "attacks": [
                 {
-                  "kind": "lanes",
-                  "count": 18,
-                  "speed": 146,
-                  "damage": 11,
-                  "interval": 4.86,
-                  "telegraph": 1.2,
-                  "comboOffsetSeconds": 0
-                },
-                {
-                  "kind": "ring",
-                  "count": 20,
-                  "speed": 130,
-                  "damage": 10,
-                  "interval": 5.67,
-                  "telegraph": 1,
+                  "kind": "zone",
+                  "count": 2,
+                  "speed": 0,
+                  "damage": 16,
+                  "interval": 15,
+                  "telegraph": 1.8,
+                  "duration": 5,
                   "comboOffsetSeconds": 0
                 }
               ],
-              "patternPhase": 1
+              "signatureRepeatOffsetSeconds": 0
             },
             {
               "healthThreshold": 0.5,
               "accordBreak": false,
-              "signatureRepeatOffsetSeconds": 0,
+              "patternPhase": 2,
               "attacks": [
                 {
-                  "kind": "lanes",
-                  "count": 20,
-                  "speed": 157,
-                  "damage": 11,
-                  "interval": 4.32,
-                  "telegraph": 1.2,
-                  "comboOffsetSeconds": 0
-                },
-                {
-                  "kind": "ring",
-                  "count": 22,
-                  "speed": 139,
-                  "damage": 10,
-                  "interval": 5.04,
-                  "telegraph": 1,
+                  "kind": "zone",
+                  "count": 3,
+                  "speed": 0,
+                  "damage": 16,
+                  "interval": 15,
+                  "telegraph": 1.8,
+                  "duration": 5,
                   "comboOffsetSeconds": 0
                 }
               ],
-              "patternPhase": 2
+              "signatureRepeatOffsetSeconds": 0
             },
             {
               "healthThreshold": 0.25,
               "accordBreak": false,
-              "signatureRepeatOffsetSeconds": 1.25,
+              "patternPhase": 3,
               "attacks": [
                 {
-                  "kind": "lanes",
-                  "count": 20,
-                  "speed": 157,
-                  "damage": 11,
-                  "interval": 4.32,
-                  "telegraph": 1.2,
+                  "kind": "zone",
+                  "count": 3,
+                  "speed": 0,
+                  "damage": 16,
+                  "interval": 15,
+                  "telegraph": 1.8,
+                  "duration": 5,
                   "comboOffsetSeconds": 0
-                },
-                {
-                  "kind": "ring",
-                  "count": 22,
-                  "speed": 139,
-                  "damage": 10,
-                  "interval": 5.04,
-                  "telegraph": 1,
-                  "comboOffsetSeconds": 1.25
                 }
               ],
-              "patternPhase": 3
+              "signatureRepeatOffsetSeconds": 0
             }
           ]
         },
@@ -18480,106 +18439,74 @@
             {
               "healthThreshold": 1,
               "accordBreak": false,
-              "signatureRepeatOffsetSeconds": 0,
+              "patternPhase": 0,
               "attacks": [
                 {
-                  "kind": "lanes",
-                  "count": 16,
-                  "speed": 135,
-                  "damage": 11,
-                  "interval": 5.4,
-                  "telegraph": 1.2,
-                  "comboOffsetSeconds": 0
-                },
-                {
-                  "kind": "ring",
-                  "count": 18,
-                  "speed": 120,
-                  "damage": 10,
-                  "interval": 6.3,
-                  "telegraph": 1,
+                  "kind": "zone",
+                  "count": 1,
+                  "speed": 0,
+                  "damage": 16,
+                  "interval": 15,
+                  "telegraph": 1.8,
+                  "duration": 5,
                   "comboOffsetSeconds": 0
                 }
               ],
-              "patternPhase": 0
+              "signatureRepeatOffsetSeconds": 0
             },
             {
               "healthThreshold": 0.75,
               "accordBreak": false,
-              "signatureRepeatOffsetSeconds": 0,
+              "patternPhase": 1,
               "attacks": [
                 {
-                  "kind": "lanes",
-                  "count": 18,
-                  "speed": 146,
-                  "damage": 11,
-                  "interval": 4.86,
-                  "telegraph": 1.2,
-                  "comboOffsetSeconds": 0
-                },
-                {
-                  "kind": "ring",
-                  "count": 20,
-                  "speed": 130,
-                  "damage": 10,
-                  "interval": 5.67,
-                  "telegraph": 1,
+                  "kind": "zone",
+                  "count": 2,
+                  "speed": 0,
+                  "damage": 16,
+                  "interval": 15,
+                  "telegraph": 1.8,
+                  "duration": 5,
                   "comboOffsetSeconds": 0
                 }
               ],
-              "patternPhase": 1
+              "signatureRepeatOffsetSeconds": 0
             },
             {
               "healthThreshold": 0.5,
               "accordBreak": false,
-              "signatureRepeatOffsetSeconds": 0,
+              "patternPhase": 2,
               "attacks": [
                 {
-                  "kind": "lanes",
-                  "count": 20,
-                  "speed": 157,
-                  "damage": 11,
-                  "interval": 4.32,
-                  "telegraph": 1.2,
-                  "comboOffsetSeconds": 0
-                },
-                {
-                  "kind": "ring",
-                  "count": 22,
-                  "speed": 139,
-                  "damage": 10,
-                  "interval": 5.04,
-                  "telegraph": 1,
+                  "kind": "zone",
+                  "count": 3,
+                  "speed": 0,
+                  "damage": 16,
+                  "interval": 15,
+                  "telegraph": 1.8,
+                  "duration": 5,
                   "comboOffsetSeconds": 0
                 }
               ],
-              "patternPhase": 2
+              "signatureRepeatOffsetSeconds": 0
             },
             {
               "healthThreshold": 0.25,
               "accordBreak": false,
-              "signatureRepeatOffsetSeconds": 1.25,
+              "patternPhase": 3,
               "attacks": [
                 {
-                  "kind": "lanes",
-                  "count": 20,
-                  "speed": 157,
-                  "damage": 11,
-                  "interval": 4.32,
-                  "telegraph": 1.2,
+                  "kind": "zone",
+                  "count": 3,
+                  "speed": 0,
+                  "damage": 16,
+                  "interval": 15,
+                  "telegraph": 1.8,
+                  "duration": 5,
                   "comboOffsetSeconds": 0
-                },
-                {
-                  "kind": "ring",
-                  "count": 22,
-                  "speed": 139,
-                  "damage": 10,
-                  "interval": 5.04,
-                  "telegraph": 1,
-                  "comboOffsetSeconds": 1.25
                 }
               ],
-              "patternPhase": 3
+              "signatureRepeatOffsetSeconds": 0
             }
           ],
           "additionalPatterns": [

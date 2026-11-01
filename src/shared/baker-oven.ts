@@ -333,7 +333,7 @@ export class BakerOven {
     const hit = this.hits.get(q.batch);
     if (!hit) return;
     for (const p of c.targets)
-      if (!hit.has(p.id) && bakerContact({ x: p.oldX, y: p.oldY }, p, q)) {
+      if (!hit.has(p.id) && bakerContact(c.tick===q.at?p:{ x: p.oldX, y: p.oldY }, p, q)) {
         hit.add(p.id);
         c.damage(p.id, q.damage * c.damageScale);
       }

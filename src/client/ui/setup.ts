@@ -1,3 +1,6 @@
+import {bindStoryReaders} from './story-reader.ts';
+import {roomKind,type RoomKind,type FreePlayOptions} from '../../shared/free-play.ts';
+import {storyHubMarkup,bindStoryHub} from './story-hub.ts';
 import {storyBriefingMarkup} from './story.ts';
 import {mountFieldJournal} from './field-journal.ts';
 import {journalText} from '../field-journal-text.ts';
@@ -85,6 +88,8 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
   let hostPassword='';
   let journalSuggested: 'prepared' | 'preparedTeam' | undefined;
   let homeGalleryIndex=0;
+  let journey:'story'|'freeplay'='freeplay',joinKind:RoomKind='freeplay';
+  let customBoss='',customForm:'normal'|'brutal'|'crazed'='normal',seedDraft='';
   let page = hooks.firstVisitLanguage?'language':retryJoin?'join':initialRecords ? 'leaderboards' : 'home',
     previewClass: string = selected.classId,
     previewMode: string = selected.mode,
@@ -99,7 +104,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
     onlinePlaytestSlots && !selected.serverEndpoint
       ? `<p class="prototype-note">${e(t('ui.playtestCapacity', { count: number(onlinePlaytestSlots) }))}</p>`
       : '';
-  const steps = ['class', 'mode', 'map', 'difficulty', 'review'];
+  const freeSteps = ['class', 'mode', 'map', 'difficulty', 'review'];
   const labels: Record<string, string> = {
     home: 'ui.mainMenu',
     class: 'ui.chooseClass',
@@ -151,6 +156,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
     if (!difficultyAvailable(selected.difficulty)) selected.difficulty = 'normal';
     if(selected.mode==='story')selected.practiceVariant=encounterVariant(selected.difficulty,'normal');
     if(['insane','hellish'].includes(selected.difficulty))selected.practiceVariant=encounterVariant(selected.difficulty);
+    const steps=journey==='story'?['class','difficulty','review']:freeSteps;
     const stage = steps.indexOf(page);
     host.innerHTML = `<div class="expedition-shell ${page === 'home' ? 'at-home' : ''}"><header class="masthead"><button id="brand-home" class="brand">${icon('bell')}<span>GRAVE ACCORD<small>${copy('brandHint')}</small></span></button><div class="masthead-controls"><label class="sr-only" for="language">${e(t('ui.language'))}</label><select id="language" aria-label="${e(t('ui.language'))}">${languages.map(([id, label]) => `<option value="${id}" ${id === locale ? 'selected' : ''}>${e(label)}</option>`).join('')}</select><button id="guide" class="icon-button" aria-label="${e(t('ui.playTutorial'))}" title="${e(t('ui.playTutorial'))}">${icon('tutorial')}</button><button id="settings" class="icon-button" aria-label="${e(t('ui.settings'))}">${icon('engineer')}</button></div></header>${stage >= 0 ? `<nav class="setup-steps" aria-label="${e(t('ui.chooseSetup'))}">${steps.map((step, i) => `<button data-page="${step}" class="${i === stage ? 'current' : ''}" ${i === stage ? 'aria-current="step"' : ''} ${i > stage ? 'disabled' : ''}><b>${number(i + 1)}</b><span>${e(t(labels[step]))}</span></button>`).join('')}</nav>` : ''}<section id="setup-content" class="setup-content"></section><p id="notice" class="setup-notice" role="status" hidden></p><footer class="setup-footer">${TESTING_BUILD ? `<details class="setup-build"><summary><bdi>Grave Accord · ${e(revision.version)}</bdi></summary><p>${e(t("ui.testingBuild"))}</p><p>${e(t('ui.translationNotice'))}</p><small><bdi>${e(history.buildId)}</bdi></small></details>` : ''}<a href="https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/wiki" target="_blank" rel="noopener">${e(t('ui.howToPlay'))}</a><button id="changelog" class="footer-link">${e(t('ui.changelog'))}</button></footer></div>`;
     const content = host.querySelector<HTMLElement>('#setup-content')!;
@@ -162,8 +168,9 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
       content.innerHTML = `<div class="setup-heading"><h1>${e(t(labels[page]))}</h1><p>${e(t('ui.tutorialTeam'))}</p></div><div class="class-composition"><div class="character-roster" role="group" aria-label="${e(t('ui.chooseClass'))}">${data.classes.map((cl) => `<button data-class="${cl.id}" aria-pressed="${cl.id === previewClass}" class="character-pick ${cl.id === previewClass ? 'selected' : ''}">${portrait(cl.id, 'small')}<span>${e(t('class.' + cl.id + '.name'))}<small>${e(cl.survivor)}</small></span>${availableClass(cl.id) ? '' : icon('lock')}</button>`).join('')}</div><div class="character-reveal">${portrait(c.id)}<span class="character-sigil">${icon(c.id)}</span></div><article class="character-story"><span class="eyebrow">${e(c.survivor)}</span><h2>${e(t('class.' + c.id + '.name'))}</h2><p>${e(t('class.' + c.id + '.role'))}</p><p class="lore">${e(t('class.' + c.id + '.lore'))}</p><div class="stat-ribbon"><span>${icon('health')}${number(c.health)} ${e(t('stat.health'))}</span><span>${icon('move')}${number(c.speed)} ${e(t('stat.moveSpeed'))}</span></div><p class="class-starting-shield">${e(t('ui.classStartingShield',{percent:number(startingShieldFraction(c.id)*100)}))}</p><div class="starting-abilities">${[...c.abilities, c.ultimate].map((a) => `<article>${icon(a.slot === 'ultimate' ? 'ultimate' : 'ability')}<div><h3>${e(t('ability.' + a.id + '.name'))}</h3><p>${e(t('ability.' + a.id + '.description'))}</p><small>${e(t('ui.cooldown', { seconds: t('template.seconds', { value: number(a.cooldown) }) }))}</small></div></article>`).join('')}</div>${availableClass(c.id) ? '' : `<p class="availability">${e(t('ui.inProduction'))}</p>`}</article></div>${navigation(!availableClass(c.id))}`;
     }
     if (page === 'mode') {
+      if(previewMode==='story')previewMode='short';
       const m = modeMap(previewMode);
-      content.innerHTML = `<div class="setup-heading"><h1>${e(t(labels[page]))}</h1><p>${copy('modeIntro')}</p></div><div class="route-composition"><div class="route-list">${data.modes.map((m) => `<button data-mode="${m.id}" class="route-pick ${m.id === previewMode ? 'selected' : ''}" aria-pressed="${m.id === previewMode}"><bdi class="mode-count" aria-hidden="true">${m.encounters === null ? '∞' : number(m.encounters)}</bdi><span>${e(t('mode.' + m.id + '.name'))}<small>${number(modeCapacity(m.id, m.maxPlayers))} ${e(t('ui.players'))}</small></span>${availableMode(m.id) ? '' : icon('lock')}</button>`).join('')}</div><article class="route-detail">${modePreviewMarkup(m, { progression: expeditionText(locale, 'modeProgression'), fights: expeditionText(locale, 'bossFights'), estimatedTime: expeditionText(locale, 'estimatedTime'), minutes: expeditionText(locale, 'minutes'), noFinalFight: expeditionText(locale, 'noFinalFight'), endlessTime: expeditionText(locale, 'endlessTime'), number })}<div><p class="eyebrow">${e(t('ui.chooseMode'))}</p><h2>${e(t('mode.' + m.id + '.name'))}</h2><p>${m.id==='story'?e(t('mode.story.description')):copy(('mode_' + m.id) as ExpeditionMessage)}</p><div class="stat-ribbon"><span>${icon('group')}${number(m.minPlayers)}–${number(modeCapacity(m.id, m.maxPlayers))} ${e(t('ui.players'))}</span></div>${TESTING_BUILD ? `<p class="prototype-note">${availableMode(m.id) ? e(t("ui.testingBuild")) : e(t('ui.inProduction'))}</p>` : ''}</div></article></div>${navigation(!availableMode(m.id))}`;
+      content.innerHTML = `<div class="setup-heading"><h1>${e(t(labels[page]))}</h1><p>${copy('modeIntro')}</p></div><div class="route-composition"><div class="route-list">${data.modes.filter(m=>m.id!=='story').map((m) => `<button data-mode="${m.id}" class="route-pick ${m.id === previewMode ? 'selected' : ''}" aria-pressed="${m.id === previewMode}"><bdi class="mode-count" aria-hidden="true">${m.encounters === null ? '∞' : number(m.encounters)}</bdi><span>${e(t('mode.' + m.id + '.name'))}<small>${number(modeCapacity(m.id, m.maxPlayers))} ${e(t('ui.players'))}</small></span>${availableMode(m.id) ? '' : icon('lock')}</button>`).join('')}</div><article class="route-detail">${modePreviewMarkup(m, { progression: expeditionText(locale, 'modeProgression'), fights: expeditionText(locale, 'bossFights'), estimatedTime: expeditionText(locale, 'estimatedTime'), minutes: expeditionText(locale, 'minutes'), noFinalFight: expeditionText(locale, 'noFinalFight'), endlessTime: expeditionText(locale, 'endlessTime'), number })}<div><p class="eyebrow">${e(t('ui.chooseMode'))}</p><h2>${e(t('mode.' + m.id + '.name'))}</h2><p>${m.id==='story'?e(t('mode.story.description')):copy(('mode_' + m.id) as ExpeditionMessage)}</p><div class="stat-ribbon"><span>${icon('group')}${number(m.minPlayers)}–${number(modeCapacity(m.id, m.maxPlayers))} ${e(t('ui.players'))}</span></div>${TESTING_BUILD ? `<p class="prototype-note">${availableMode(m.id) ? e(t("ui.testingBuild")) : e(t('ui.inProduction'))}</p>` : ''}</div></article></div>${navigation(!availableMode(m.id))}`;
     }
     if (page === 'map') {
       const random = randomMap(previewMap);
@@ -177,7 +184,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
     if (page === 'difficulty')
       content.innerHTML = `<div class="setup-heading"><h1>${e(t(labels[page]))}</h1><p>${copy('difficultyIntro')}</p></div><div class="difficulty-cards" role="group" aria-label="${e(t(labels[page]))}">${data.difficulties.map((d) => `<button data-difficulty="${d.id}" class="difficulty-pick ${d.id === selected.difficulty ? 'selected' : ''}" ${!difficultyAvailable(d.id) ? 'disabled' : ''} aria-pressed="${d.id === selected.difficulty}"><span class="difficulty-emblem" aria-hidden="true">${icon('difficulty-' + d.id)}</span><span class="difficulty-name">${e(t('difficulty.' + d.id))}</span>${d.id === 'baby' ? `<span class="difficulty-recommendation">${copy('recommended')}</span>` : ''}<span class="difficulty-description">${difficultyCaption(d.id)}</span>${!difficultyAvailable(d.id) ? `<small>${icon('lock')}${e(t('ui.hardUnlock'))}</small>` : ''}</button>`).join('')}</div><section class="difficulty-summary" aria-live="polite" aria-atomic="true"><div><h2>${e(t('difficulty.' + selected.difficulty))}</h2><p>${e(t('ui.reviveRulesHelp'))}</p>${difficultyRulesMarkup(selected.difficulty)}</div><dl class="difficulty-stats">${(() => {const d = data.difficulties.find(d => d.id === selected.difficulty)!; return [['stat.health', d.health], ['stat.damage', d.damage], ['stat.bossSpeed', d.speed]].map(([key, value]) => `<div><dt>${e(t(String(key)))}</dt><dd>×${number(Number(value), 2)}</dd></div>`).join('');})()}</dl></section>${navigation(false)}`;
     if (page === 'review')
-      content.innerHTML = `<div class="setup-heading"><h1>${e(t(labels[page]))}</h1></div><div class="review-composition"><div class="review-portrait">${portrait(selected.classId)}</div><section><h2>${e(t('class.' + selected.classId + '.name'))} · ${e(t('mode.' + selected.mode + '.name'))}</h2><p>${e(selected.mode==='story'?t('ui.storyRoute'):mapChoiceName(arenaId))} · ${e(t('difficulty.' + selected.difficulty))}</p>${journalSuggested?`<p class="journal-plan-notice">${e(journalText(locale,journalSuggested))}</p>`:''}${selected.mode==='story'?storyBriefingMarkup():''}${difficultyRulesMarkup(selected.difficulty)}${selected.serverEndpoint ? `<p class="prototype-note">${e(desktopText('target'))}: <bdi>${e(selected.serverEndpoint)}</bdi></p>` : ''}${TESTING_BUILD && selected.mode!=='story' ? `<label class="name-label">${e(t('ui.boss'))}<select id="opening-boss">${implementedBossIds.map((id) => `<option value="${id}" ${id === selected.openingBossId ? 'selected' : ''}>${e(t('boss.' + id + '.name'))} · ${e(bossClassification(id, visibility === 'offline' ? selected.practiceVariant : 'normal'))}</option>`).join('')}</select></label>${visibility === 'offline' ? practiceVariantMarkup(locale, encounterVariant(selected.difficulty,selected.practiceVariant), t('ui.variantNormal'), t('ui.variantBrutal'),['insane','hellish'].includes(selected.difficulty),t('ui.variantCrazed'),t('ui.forcedFormHelp')) : ''}` : ''}<label class="name-label">${e(t('ui.displayName'))}<input id="name" value="${e(selected.name)}" maxlength="24" autocomplete="nickname"></label><div class="connection-choices" role="group" aria-label="${e(t('ui.roomSettings'))}">${[
+      content.innerHTML = `<div class="setup-heading"><h1>${e(t(labels[page]))}</h1></div><div class="review-composition"><div class="review-portrait">${portrait(selected.classId)}</div><section><h2>${e(t('class.' + selected.classId + '.name'))} · ${e(t('mode.' + selected.mode + '.name'))}</h2><p>${e(selected.mode==='story'?t('ui.storyRoute'):mapChoiceName(arenaId))} · ${e(t('difficulty.' + selected.difficulty))}</p>${journalSuggested?`<p class="journal-plan-notice">${e(journalText(locale,journalSuggested))}</p>`:''}${selected.mode==='story'?storyBriefingMarkup():''}${journey==='freeplay'?`<section class="free-play-custom"><h3>${e(t('ui.customOpening'))}</h3><div class="free-play-options"><label>${e(t('ui.boss'))}<select id="freeplay-boss"><option value="">${e(t('ui.automatic'))}</option>${data.bosses.filter(b=>!b.secret).map(b=>`<option value="${b.id}" ${customBoss===b.id?'selected':''}>${e(t('boss.'+b.id+'.name'))} · ${e(bossClassification(b.id))}</option>`).join('')}</select></label><label>${e(t('ui.bossForm'))}<select id="freeplay-form" ${['insane','hellish'].includes(selected.difficulty)?'disabled':''}>${['normal','brutal','crazed'].map(form=>`<option value="${form}" ${customForm===form?'selected':''}>${e(t('ui.variant'+form[0].toUpperCase()+form.slice(1)))}</option>`).join('')}</select></label><label>${e(t('ui.runSeed'))}<input id="freeplay-seed" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="10" dir="ltr" value="${e(seedDraft)}"><small>${e(t('ui.runSeedHelp'))}</small></label></div><p>${e(t('ui.customRunNotice'))}</p></section>`:''}${difficultyRulesMarkup(selected.difficulty)}${selected.serverEndpoint ? `<p class="prototype-note">${e(desktopText('target'))}: <bdi>${e(selected.serverEndpoint)}</bdi></p>` : ''}${TESTING_BUILD && selected.mode!=='story' && !customBoss ? `<label class="name-label">${e(t('ui.boss'))}<select id="opening-boss">${implementedBossIds.map((id) => `<option value="${id}" ${id === selected.openingBossId ? 'selected' : ''}>${e(t('boss.' + id + '.name'))} · ${e(bossClassification(id, visibility === 'offline' ? selected.practiceVariant : 'normal'))}</option>`).join('')}</select></label>${visibility === 'offline' ? practiceVariantMarkup(locale, encounterVariant(selected.difficulty,selected.practiceVariant), t('ui.variantNormal'), t('ui.variantBrutal'),['insane','hellish'].includes(selected.difficulty),t('ui.variantCrazed'),t('ui.forcedFormHelp')) : ''}` : ''}<label class="name-label">${e(t('ui.displayName'))}<input id="name" value="${e(selected.name)}" maxlength="24" autocomplete="nickname"></label><div class="connection-choices" role="group" aria-label="${e(t('ui.roomSettings'))}">${[
         ['offline', 'ui.solo', 'soldier'],
         ['public', 'ui.publicRooms', 'group'],
         ['private', 'ui.privateRoom', 'lock'],
@@ -189,6 +196,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
         .join(
           '',
         )}</div><p class="muted">${e(t(visibility === 'offline' ? 'ui.offlineNotice' : 'ui.practiceNotice'))}</p>${visibility !== 'offline' ? `<p class="muted">${e(t('ui.leaderboardPrivacy'))}</p>` : ''}${visibility!=='offline'?`<label class="name-label room-password-label">${e(t('ui.roomPasswordOptional'))}<span class="password-field"><input id="host-room-password" type="password" autocomplete="new-password" maxlength="128" aria-describedby="host-password-help">${passwordToggleMarkup('host-room-password',t)}</span></label><p id="host-password-help" class="room-password-help">${e(t('ui.roomPasswordHelp'))}</p>`:''}${capacityNotice()}${button('launch', t(visibility === 'offline' ? 'ui.play' : 'ui.createRoom'), 'play', 'class="primary launch"')}</section></div>${navigation(false, true)}`;
+    if(page==='review'&&journey==='story')cleanups.push(bindStoryReaders(content));
     if(TESTING_BUILD&&page==='home'){
       const banner=document.createElement('p');banner.className='testing-banner';banner.textContent=t('ui.testingBuild');
       content.prepend(banner);
@@ -197,8 +205,8 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
       unlock.onclick=()=>{unlockTestingDifficulties();unlock.textContent=t('ui.testingUnlocked');};
     }
     if(page==='journal')cleanups.push(mountFieldJournal(content,()=>go('home'),plan=>{
-      beginName();
-      selected={...selected,classId:plan.classId,mode:plan.mode,difficulty:plan.difficulty,practiceVariant:'normal',openingBossId:plan.mode==='raid'?'chain-colossus':'constable',openingArenaId:'gatehouse',arenaSelection:plan.mode==='story'?'route':'randomEncounter',serverEndpoint:undefined};
+      journey=plan.mode==='story'?'story':'freeplay';beginName();
+      selected={...selected,freePlay:undefined,classId:plan.classId,mode:plan.mode,difficulty:plan.difficulty,practiceVariant:'normal',openingBossId:plan.mode==='raid'?'chain-colossus':'constable',openingArenaId:'gatehouse',arenaSelection:plan.mode==='story'?'route':'randomEncounter',serverEndpoint:undefined};
       previewClass=selected.classId;previewMode=selected.mode;arenaId=previewMap=plan.mode==='story'?'gatehouse':'randomEncounter';visibility=plan.team?'private':'offline';
       journalSuggested=plan.team?'preparedTeam':'prepared';go('review');
     },()=>go('profile')));
@@ -221,6 +229,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
         content,
         (endpoint) => {
           beginName();
+          journey='freeplay';if(selected.mode==='story'){selected.mode='short';previewMode='short';}selected.freePlay=undefined;
           selected.serverEndpoint = endpoint;
           visibility = 'public';
           go('class');
@@ -243,8 +252,9 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
       );
     if (page === 'settings')
       content.innerHTML = `<div class="settings-page"><h1>${e(t('ui.settings'))}</h1>${hooks.settingsHTML()}<div class="actions">${button('back-home', t('ui.back'), 'map')}</div></div>`;
+    if(page==='storyHub')cleanups.push(bindStoryHub(content,()=>{journey='story';beginName();selected={...selected,mode:'story',freePlay:undefined,practiceVariant:'normal',openingBossId:'constable',openingArenaId:'gatehouse',arenaSelection:'route'};previewClass=selected.classId;previewMode='story';arenaId=previewMap='gatehouse';go('class');},()=>go('home')));
     if (page === 'join')
-      content.innerHTML = `<div class="join-page"><div class="setup-heading"><h1>${e(t('ui.joinRoom'))}</h1>${selected.serverEndpoint ? `<p>${e(desktopText('target'))}: <bdi>${e(selected.serverEndpoint)}</bdi></p>` : ''}</div><div class="join-options"><label>${e(t('ui.displayName'))}<input id="name" maxlength="24" value="${e(selected.name)}"></label><label>${e(t('ui.chooseClass'))}<select id="join-class">${implementedClassIds.map((id) => `<option value="${id}" ${selected.classId === id ? 'selected' : ''}>${e(t('class.' + id + '.name'))}</option>`).join('')}</select></label><label>${e(t('ui.roomCode'))}<div class="inline"><input id="code" maxlength="6" autocapitalize="characters" spellcheck="false"><button id="join-code">${e(t('ui.joinRoom'))}</button></div></label></div><div class="section-heading"><h2>${e(t('ui.publicRooms'))}</h2><button id="refresh">${e(t('ui.search'))}</button></div><div id="rooms" class="rooms"><p>${e(t('ui.noRooms'))}</p></div><div class="actions">${button('back-home', t('ui.back'), 'map')}</div></div>`;
+      content.innerHTML = `<div class="join-page"><div class="setup-heading"><h1>${e(t('ui.joinRoom'))}</h1>${selected.serverEndpoint ? `<p>${e(desktopText('target'))}: <bdi>${e(selected.serverEndpoint)}</bdi></p>` : ''}</div><div class="join-kinds" role="tablist" aria-label="${e(t('ui.joinRoom'))}">${(['freeplay','story'] as const).map(kind=>`<button data-room-kind="${kind}" role="tab" aria-selected="${joinKind===kind}">${e(t(kind==='story'?'ui.storyRooms':'ui.freePlayRooms'))}</button>`).join('')}</div><p>${e(t('ui.roomCategoryHelp'))}</p><div class="join-options"><label>${e(t('ui.displayName'))}<input id="name" maxlength="24" value="${e(selected.name)}"></label><label>${e(t('ui.chooseClass'))}<select id="join-class">${implementedClassIds.map((id) => `<option value="${id}" ${selected.classId === id ? 'selected' : ''}>${e(t('class.' + id + '.name'))}</option>`).join('')}</select></label><label>${e(t('ui.roomCode'))}<div class="inline"><input id="code" maxlength="6" autocapitalize="characters" spellcheck="false"><button id="join-code">${e(t('ui.joinRoom'))}</button></div></label></div><div class="section-heading"><h2>${e(t('ui.publicRooms'))}</h2><button id="refresh">${e(t('ui.search'))}</button></div><div id="rooms" class="rooms"><p>${e(t('ui.noRooms'))}</p></div><div class="actions">${button('back-home', t('ui.back'), 'map')}</div></div>`;
     const byId = (id: string, fn: () => void) => {
       const el = host.querySelector<HTMLElement>('#' + id);
       if (el) el.onclick = fn;
@@ -252,14 +262,14 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
     byId('brand-home', () => go('home'));
     byId('new-run', () => {
       beginName();
-      selected.serverEndpoint = undefined;
-      visibility = 'offline';
-      go('class');
+      journey='freeplay';selected.serverEndpoint=undefined;selected.freePlay=undefined;
+      if(selected.mode==='story'){selected.mode='short';selected.openingBossId='constable';selected.arenaSelection='fixed';}
+      previewMode=selected.mode;visibility='offline';journalSuggested=undefined;go('class');
     });
     byId('resume-boundary', hooks.resume);
     byId('gentle-start', () => {
-      beginName();
-      selected = { ...selected, classId: 'soldier', mode: 'short', difficulty: 'baby',
+      journey='freeplay';beginName();
+      selected = { ...selected, freePlay:undefined, classId: 'soldier', mode: 'short', difficulty: 'baby',
         openingBossId: 'constable', openingArenaId: 'gatehouse', arenaSelection: 'fixed', practiceVariant: 'normal',
         serverEndpoint: undefined };
       previewClass = selected.classId;
@@ -278,14 +288,11 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
     byId('changelog', () => go('changelog'));
     byId('profile', () => go('profile'));
     byId('field-journal', () => go('journal'));
-    byId('story-campaign',()=>{
-      beginName();selected={...selected,mode:'story',practiceVariant:'normal',openingBossId:'constable',openingArenaId:'gatehouse',arenaSelection:'route',serverEndpoint:undefined};
-      previewMode='story';previewClass=selected.classId;arenaId=previewMap='gatehouse';visibility='offline';journalSuggested=undefined;go('class');
-    });
+    byId('story-campaign',()=>{selected.serverEndpoint=undefined;journey='story';go('storyHub');});
     byId('leaderboards',()=>go('leaderboards'));
     byId('back-home', () => go('home'));
     for (const id of ['guide', 'tutorial']) byId(id, () => { pageCleanup(); tutorial(host, () => render('#' + id)); });
-    byId('setup-back', () => go(stage <= 0 ? 'home' : steps[stage - 1]));
+    byId('setup-back', () => go(stage <= 0 ? (journey==='story'?'storyHub':'home') : steps[stage - 1]));
     byId('setup-next', () => {
       if (page === 'class') selected.classId = previewClass as ClassId;
       if (page === 'mode') {
@@ -325,7 +332,17 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
       };
     const hostPasswordInput=host.querySelector<HTMLInputElement>('#host-room-password');
     if(hostPasswordInput){hostPasswordInput.value=hostPassword;hostPasswordInput.oninput=()=>{hostPassword=hostPasswordInput.value;};bindPasswordVisibility(host,t);}
+    const customBossInput=host.querySelector<HTMLSelectElement>('#freeplay-boss'),customFormInput=host.querySelector<HTMLSelectElement>('#freeplay-form'),seedInput=host.querySelector<HTMLInputElement>('#freeplay-seed');
+    if(customBossInput)customBossInput.onchange=()=>{customBoss=customBossInput.value;};
+    if(customFormInput){if(['insane','hellish'].includes(selected.difficulty))customFormInput.value=encounterVariant(selected.difficulty);customFormInput.onchange=()=>{customForm=customFormInput.value as typeof customForm;};}
+    if(seedInput)seedInput.oninput=()=>{seedDraft=seedInput.value;};
     byId('launch', () => {
+      if(journey==='story')selected.freePlay=undefined;
+      else {
+        if(seedDraft!==''&&(!/^[0-9]{1,10}$/.test(seedDraft)||Number(seedDraft)>0xffffffff)){showError('ui.runSeedHelp');seedInput?.focus();return;}
+        const freePlay:FreePlayOptions={...(customBoss?{openingBossId:customBoss as BossId}:{}),...(!['insane','hellish'].includes(selected.difficulty)&&customForm!=='normal'?{variant:customForm}:{}),...(seedDraft!==''?{seed:Number(seedDraft)}:{})};
+        selected.freePlay=Object.keys(freePlay).length?freePlay:undefined;
+      }
       if(visibility!=='offline'&&!validRoomPassword(hostPassword,true)){showError('ui.roomPasswordHelp');hostPasswordInput?.focus();return;}
       const password=visibility==='offline'?undefined:hostPassword;hostPassword='';if(hostPasswordInput)hostPasswordInput.value='';
       captureName(host);
@@ -417,6 +434,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
       if(cleanup)cleanups.push(cleanup);
     }
     if (page === 'join') {
+      host.querySelectorAll<HTMLButtonElement>('[data-room-kind]').forEach(button=>button.onclick=()=>{captureName(host);joinKind=button.dataset.roomKind as RoomKind;render('[data-room-kind="'+joinKind+'"]');});
       const queries = new Set<Session>();
       cleanups.push(() => { for (const query of queries) void query.close().catch(() => {}); queries.clear(); });
       host.querySelector<HTMLSelectElement>('#join-class')!.onchange = event => { selected.classId = (event.target as HTMLSelectElement).value as ClassId; };
@@ -441,7 +459,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
         const status=document.createElement('p');status.className='room-search-status';status.setAttribute('role','status');trigger.closest('label')!.append(status);
         query.onStatus=key=>{if(!disposed&&status.isConnected)status.textContent=t(key);};
         void(async()=>{
-          try{const room=await query.lookupRoom(code);if(!disposed&&trigger.isConnected)launchJoin({roomId:room.roomId,code},room.hasPassword);}
+          try{const room=await query.lookupRoom(code);if(!disposed&&trigger.isConnected)room.kind!==joinKind?showError('ui.roomKindMismatch'):launchJoin({roomId:room.roomId,code,kind:joinKind},room.hasPassword);}
           catch(error){if(!disposed&&trigger.isConnected)showError(error instanceof Error&&error.message.startsWith('ui.')?error.message:'ui.errorNetwork');}
           finally{queries.delete(query);void query.close().catch(()=>{});status.remove();if(trigger.isConnected)trigger.disabled=false;}
         })();
@@ -460,14 +478,14 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
         query.onStatus=key=>{if(!disposed&&list.isConnected)list.textContent=t(key);};
         void (async () => {
           try {
-            const rooms = await query.rooms();
+            const rooms = await query.rooms(joinKind);
             if (disposed || !list.isConnected) return;
             list.replaceChildren();
             if (!rooms.length) list.textContent = t('ui.noRooms');
             for (const room of rooms) {
               const b = document.createElement('button');
               b.textContent =
-                t('mode.' + room.mode + '.name') +
+                t(room.mode==='story'?'ui.storyRooms':'ui.freePlayRooms') + ' · ' + t('mode.' + room.mode + '.name') +
                 ' · ' +
                 t('difficulty.' + room.difficulty) +
                 ' · ' +
@@ -479,7 +497,7 @@ export function mountSetup(host: HTMLElement, hooks: Hooks, initialRecords?: Tea
               b.disabled = room.players >= room.maximumPlayers;
               b.onclick = () => {
                 capture();
-                launchJoin({roomId:room.roomId},room.hasPassword);
+                launchJoin({roomId:room.roomId,kind:joinKind},room.hasPassword);
               };
               list.append(b);
             }

@@ -1,3 +1,4 @@
+import {bindStoryReaders} from './ui/story-reader.ts';
 import {storyReportMarkup} from './ui/story.ts';
 import {glassPhaseName,glassPhaseHint} from './glass-text.ts';
 import {TESTING_BUILD} from './build-audience.ts';
@@ -819,7 +820,9 @@ function clock(seconds: number) {
   const value = Math.max(0, Math.ceil(seconds));
   return number(Math.floor(value / 60)) + ':' + String(value % 60).padStart(2, '0');
 }
+let storyReaderBinding:(()=>void)|undefined;
 function renderOverlay(view: View, p: PlayerView) {
+  storyReaderBinding?.();storyReaderBinding=undefined;
   shopBinding?.dispose();
   shopBinding = undefined;
   const overlay = $('modal');
@@ -827,7 +830,7 @@ function renderOverlay(view: View, p: PlayerView) {
   if (overlay.hidden) { syncRoomChatPlacement(); return; }
   let body = '',
     title = '', actions = '';
-  if (view.phase === 'mutationVote') {
+  if(view.phase==='storyScene'){title=t('ui.storyAftermath');body=`<p>${text('ui.storyReadyHelp')}</p><button data-vote="1" class="primary" ${p.eligible?'':'disabled'}>${text('ui.ready')} <span data-vote-count="1">0</span></button>`;} else if (view.phase === 'mutationVote') {
     title = t('ui.mutationVote');
     body = voteMarkup(view);
   } else if (view.phase === 'contractVote') {
@@ -850,7 +853,7 @@ function renderOverlay(view: View, p: PlayerView) {
     body = (view.endedByHost ? `<p class="result-reason">${text('ui.matchEndedByHost')}</p>` : '') + runResultsMarkup(view, p, {
       language: locale, mode: t('mode.' + view.run.mode + '.name'), difficulty: t('difficulty.' + view.run.difficulty),
       className: t('class.' + p.classId + '.name'), number, clock,
-    }) + `${view.campaignBank && ['cleared', 'failed'].includes(view.secretStatus) ? '<p>' + esc(extensionText(locale, view.secretStatus === 'cleared' ? 'cleared' : 'failed')) + '</p>' : ''}${session?.status === 'ui.errorSave' ? `<p role="alert">${text('ui.errorSave')}</p>` : ''}${view.run.testingModified ? '' : `<p>${text(session?.online ? 'ui.practiceNotice' : 'ui.offlineNotice')}</p>`}<button id="return-menu" class="primary">${text('ui.mainMenu')}</button>`;
+    }) + `${view.campaignBank && ['cleared', 'failed'].includes(view.secretStatus) ? '<p>' + esc(extensionText(locale, view.secretStatus === 'cleared' ? 'cleared' : 'failed')) + '</p>' : ''}${session?.status === 'ui.errorSave' ? `<p role="alert">${text('ui.errorSave')}</p>` : ''}${(view.run.testingModified||view.run.customized) ? '' : `<p>${text(session?.online ? 'ui.practiceNotice' : 'ui.offlineNotice')}</p>`}<button id="return-menu" class="primary">${text('ui.mainMenu')}</button>`;
   }
   const previous =
     document.activeElement instanceof HTMLElement && overlay.contains(document.activeElement)
@@ -861,7 +864,7 @@ function renderOverlay(view: View, p: PlayerView) {
   if (view.run.mode === 'endless' && view.encounter > 0 && ['mutationVote','contractVote','shop','loading'].includes(view.phase))
     body += `<details class="end-run"><summary>${text('ui.endRun')}</summary><p>${text('ui.endRunHelp')}</p><button id="end-run" ${session?.online && view.owner !== session.id ? 'disabled' : ''}>${text('ui.endRun')}</button></details>`;
   const sameStory = overlay.dataset.phase === view.phase;
-  const storyOpen = sameStory ? overlay.querySelector<HTMLDetailsElement>('[data-story-report]')?.open === true : ['mutationVote','contractVote','secretOffer','victory','defeat'].includes(view.phase);
+  const storyOpen = sameStory ? overlay.querySelector<HTMLDetailsElement>('[data-story-report]')?.open === true : ['storyScene','mutationVote','contractVote','secretOffer','victory','defeat'].includes(view.phase);
   body = storyReportMarkup(view,storyOpen) + body;
   const focusedId = previous?.id;
   const focusedItem = previous?.dataset.inspect;
@@ -873,6 +876,7 @@ function renderOverlay(view: View, p: PlayerView) {
   roomChatUI?.place();
   roomInviteUI?.place();
   overlay.innerHTML = `<div class="dialog-layout" role="dialog" aria-modal="true" aria-labelledby="phase-heading"><section class="dialog ${view.phase === 'lobby' || view.phase === 'shop' ? 'wide' : ''}"><div class="section-heading"><h2 id="phase-heading" tabindex="-1">${esc(title)}</h2>${phaseCountdownMarkup(view.phase, locale)}</div><div id="phase-room-invite-slot" class="menu-room-invite-slot"></div><div class="phase-content">${body}</div>${actions ? `<footer class="actions phase-actions">${actions}</footer>` : ''}</section><div id="phase-chat-slot" class="dialog-chat-slot"></div></div>`;
+  storyReaderBinding=bindStoryReaders(overlay);
   syncRoomChatPlacement();
   const phaseContent = overlay.querySelector<HTMLElement>('.phase-content');
   if (phaseContent) phaseContent.inert = view.matchPaused === true;

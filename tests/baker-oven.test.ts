@@ -411,6 +411,7 @@ test("Issued Story saves and ending receipts migrate exactly; old modes cannot f
   g.addPlayer("solo", "Reader", "medic");
   const old = g.offlineCheckpoint()!;
   old.contentRevision = issued;
+  old.protocolVersion=46;
   assert.deepEqual(Game.restoreOffline(old).storyChoices, []);
   assert.throws(
     () =>
@@ -432,6 +433,7 @@ test("Issued Story saves and ending receipts migrate exactly; old modes cannot f
     if (fight) {
       let guard = 0;
       while (g.phase !== "combat") {
+ if(g.phase==='storyScene')g.vote('solo',1);
         g.phaseEnds = g.tick;
         g.step();
         assert(++guard < 200);
@@ -540,4 +542,9 @@ test("Native drawing controller consumes exact loaf/crumb endpoints, resting hea
   assert(calls.some((c) => c.method === "fillRect"));
   art.draw(h, f, [], 109, state.c.bounds, true, true);
   assert.equal(calls.filter((c) => c.method === "destroy").length, 3);
+});
+
+test('First rolling activation never replays survivor motion from its harmless warning',()=>{
+ const f=fixture();f.d.cast(f.c,f.c.targets[0]);f.step(53);const p=f.c.targets[0];p.oldX=829;p.x=835;p.oldY=p.y=250;
+ f.c.tick=54;f.d.step(f.c);assert.equal(f.hurt.length,0);p.oldX=p.x;p.x=829;f.c.tick=55;f.d.step(f.c);assert.equal(f.hurt.length,1);
 });

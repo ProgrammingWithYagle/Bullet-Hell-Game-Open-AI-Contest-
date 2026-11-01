@@ -37,7 +37,7 @@ export class TeamRun {
   }
   start(game: Game) {
     if (this.bank || game.boss.id === 'uncounted') return;
-    if (game.testingModified || this.active || game.encounter !== this.clears) this.valid = false;
+    if ((game.testingModified||game.customized) || this.active || game.encounter !== this.clears) this.valid = false;
     this.active = true;
     this.startedAtTick = game.combatTick;
     const roster = [...game.players.values()].filter(p => !p.expired && p.status !== 'waiting');
@@ -65,7 +65,7 @@ export class TeamRun {
   clear(game: Game) {
     if (this.bank || game.boss.id === 'uncounted') return;
     if (!this.active || game.encounter !== this.clears || game.combatTick <= this.startedAtTick
-      || game.combatTick >= game.boss.deadline || game.testingModified || game.timeouts) this.valid = false;
+      || game.combatTick >= game.boss.deadline || (game.testingModified||game.customized) || game.timeouts) this.valid = false;
     this.active = false;
     this.clears++;
     this.lastClearTicks = game.combatTick;
@@ -101,7 +101,7 @@ export class TeamRun {
     catch { this.retryAt = this.now() + 2000; this.publishStatus({ status: 'unavailable' }); }
   }
   observe(game: Game) {
-    if (game.testingModified) this.valid = false;
+    if ((game.testingModified||game.customized)) this.valid = false;
     if (this.status?.status === 'unavailable' && this.now() >= this.retryAt) this.save();
     if (this.bank && game.secretStatus === 'cleared' && !this.bank.record.secretCleared) {
       this.bank.record.secretCleared = true;
@@ -109,7 +109,7 @@ export class TeamRun {
     } else if (game.settings.mode === 'endless' && game.phase === 'defeat') this.finish(game);
   }
   finish(game: Game) {
-    if (this.bank || game.settings.mode !== 'endless' || !this.clears || !this.valid || game.testingModified) return;
+    if (this.bank || game.settings.mode !== 'endless' || !this.clears || !this.valid || (game.testingModified||game.customized)) return;
     this.bank = this.snapshot(game);
     this.save();
   }

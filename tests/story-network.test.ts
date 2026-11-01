@@ -13,6 +13,8 @@ async function wait(check: () => boolean) {
   }
 }
 function advance(g: Game) {
+ if(g.phase==='storyScene'){for(const p of g.players.values())if(p.connected&&p.eligible)g.vote(p.id,1);for(let n=0;g.phase==='storyScene'&&n<200;n++)g.step();}
+
   const phase = g.phase;
   let guard = 0;
   while (g.phase === phase) {

@@ -242,7 +242,7 @@ export function parseProfile(raw: string): ProfileV1 {
   }
   if (value && typeof value === "object" && !Array.isArray(value)) {
     const old = value as Record<string, unknown>;
-    if(old.schemaVersion===1&&old.practiceOnly===true&&old.verified===false&&old.contentRevision==="22f660b0d378316283eb081b458adcc4cd827f7465d9089ed9146ab2ac242c9c")old.contentRevision=CONTENT_REVISION;
+    if(old.schemaVersion===1&&old.practiceOnly===true&&old.verified===false&&(old.contentRevision==="22f660b0d378316283eb081b458adcc4cd827f7465d9089ed9146ab2ac242c9c"||old.contentRevision==="31bcd58adcfd8d9d1d76fc23b484237e68c266a513f2dedb2571f8a09067e131"))old.contentRevision=CONTENT_REVISION;
     if (
       old.schemaVersion === 1 &&
       old.practiceOnly === true &&
@@ -351,7 +351,7 @@ export function recordProfileView(
   playerId: string,
   store: ProfileStore,
 ) {
-  if (view.run?.testingModified) {
+  if (view.run?.testingModified||view.run?.customized) {
     changeProfile(store, (profile) => {
       profile.runs = profile.runs.filter((r) => r.runId !== view.run.id || r.playerId !== playerId);
       profile.legacyCampaigns = profile.legacyCampaigns.filter((r) => r.id !== view.run.id);

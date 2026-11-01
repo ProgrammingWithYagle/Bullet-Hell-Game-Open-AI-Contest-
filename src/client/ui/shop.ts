@@ -37,7 +37,7 @@ const itemArt = (kind: Kind, id: string, glyph: string) =>
   )
     ? `<img class="item-art" src="${kind === 'upgrade' ? assets.upgrades[id] : assets.items[kind + '/' + (kind === 'skill' ? allSkills.find((s) => s.id === id)?.subbranchId : id)]}" alt="" aria-hidden="true">`
     : icon(glyph);
-let tab: 'gear' | 'tree' = 'tree',
+let tab: 'gear' | 'tree' | 'general' = 'tree',
   branchId = '',
   chosen: { kind: Kind; id: string } | null = null;
 function skillsOf(p: PlayerView) {
@@ -190,8 +190,8 @@ export function shopMarkup(
   )
     chosen = null;
   const branch = cl.branches.find((b) => b.id === branchId)!;
-  return `<p data-shop-status class="shop-purchase-status" role="status" aria-live="polite" hidden></p><p class="shop-introduction">${e(expeditionText(locale, 'shopHelp'))}</p><div class="loadout-summary"><span>${resourceArt('coins', assets.resourceIcons)}<b>${number(p.coins)}</b> ${e(t('ui.coins'))}</span><span>${resourceArt('skills', assets.resourceIcons)}<b>${number(p.sp)}</b> ${e(t('ui.skillPoints'))}</span><small>${e(t('ui.capstoneLimit'))}</small></div><div class="loadout-tabs" role="tablist" aria-label="${e(t('ui.shop'))}"><button data-shop-tab="gear" role="tab" aria-selected="${tab === 'gear'}">${resourceArt('equipment', assets.resourceIcons)}${e(t('ui.equip'))} / ${e(t('ui.upgrade'))}</button><button data-shop-tab="tree" role="tab" aria-selected="${tab === 'tree'}">${resourceArt('skills', assets.resourceIcons)}${e(t('ui.skillTree'))}</button></div><div class="loadout-workspace"><div class="loadout-board">${tab==='tree'?generalMarkup(p):''}${
-    tab === 'gear'
+  return `<p data-shop-status class="shop-purchase-status" role="status" aria-live="polite" hidden></p><p class="shop-introduction">${e(expeditionText(locale, 'shopHelp'))}</p><div class="loadout-summary"><span>${resourceArt('coins', assets.resourceIcons)}<b>${number(p.coins)}</b> ${e(t('ui.coins'))}</span><span>${resourceArt('skills', assets.resourceIcons)}<b>${number(p.sp)}</b> ${e(t('ui.skillPoints'))}</span><small>${e(t('ui.capstoneLimit'))}</small></div><div class="loadout-tabs" role="tablist" aria-label="${e(t('ui.shop'))}"><button data-shop-tab="gear" role="tab" aria-selected="${tab === 'gear'}">${resourceArt('equipment', assets.resourceIcons)}${e(t('ui.equip'))} / ${e(t('ui.upgrade'))}</button><button data-shop-tab="tree" role="tab" aria-selected="${tab === 'tree'}">${resourceArt('skills', assets.resourceIcons)}${e(t('ui.skillTree'))}</button><button data-shop-tab="general" role="tab" aria-selected="${tab === 'general'}">${icon('speed')}${e(t('ui.generalAbilities'))}</button></div><div class="loadout-workspace"><div class="loadout-board">${
+    tab === 'general' ? generalMarkup(p) : tab === 'gear'
       ? `<section class="armory"><h3>${e(t('ui.equip'))}</h3><div class="gear-icons">${data.weapons
           .filter((w) => w.classId === p.classId)
           .map((w) =>
@@ -440,6 +440,7 @@ export function bindShop(
           if (!active(button)) return;
           status('');
           tab = button.dataset.shopTab as typeof tab;
+          chosen=null;
           redraw('[data-shop-tab="' + tab + '"]');
         }),
     );
@@ -453,7 +454,7 @@ export function bindShop(
           redraw('[data-branch="' + CSS.escape(branchId) + '"]');
         }),
     );
-    if (expanded) {
+    if (expanded&&tab==='tree') {
       const layout = skillMapLayout(p.classId);
       prepareSkillMap(workspace!, layout);
       const viewport = workspace!.querySelector<HTMLElement>(

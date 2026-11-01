@@ -123,7 +123,8 @@ export function progressionMatrix() {
           for (let remaining = bossDefeatRemaining(g.boss, g.tick); remaining > 0; remaining--) g.step();
           let phases = 0;
           while (g.phase !== 'combat') {
-            assert(++phases <= 4, 'Finite intermission progression');
+            assert(++phases <= (mode.id==='story'?5:4), 'Finite intermission progression');
+            if(g.phase==='storyScene')assert(g.vote('solo',1));
             if (g.phase === 'mutationVote' || g.phase === 'contractVote') assert(g.vote('solo', 0));
             if (g.phase === 'shop') build();
             g.phaseEnds = g.tick;

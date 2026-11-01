@@ -112,7 +112,7 @@ test('welcome, map legends and difficulty explanations cover all fifteen support
 });
 
 test('mode previews describe all five authored run lengths and each difficulty has a distinct non-fallback symbol', () => {
-  for (const mode of data.modes) {
+  for (const mode of data.modes.filter(m=>m.id!=='story')) {
     const markup = modePreviewMarkup(mode, {
       progression: words.en.modeProgression,
       fights: words.en.bossFights,
@@ -255,7 +255,7 @@ for (const testing of [false, true])
     );
     host.querySelector('#new-run')!.click();
     host.querySelector('#setup-next')!.click();
-    for (const mode of data.modes) {
+    for (const mode of data.modes.filter(m=>m.id!=='story')) {
       host.querySelector(`[data-mode="${mode.id}"]`)!.click();
       assert(content().innerHTML.includes(`data-mode-preview="${mode.id}"`));
       assert(!content().innerHTML.includes('arena-preview'));

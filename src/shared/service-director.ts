@@ -1,3 +1,4 @@
+import {SluicePressure,type SluiceCue} from './sluice-pressure.ts';
 import {BakerOven,type BakerCue} from './baker-oven.ts';
 import {glassPlan,glassRayEnd,moveGlassSurgeon} from './glass-surgery.ts';
 import {gappedRingContact as serviceRingContact} from './ring-contact.ts';
@@ -138,6 +139,7 @@ export type ServiceCue =
   | Beam
   | Tether
   | BakerCue
+  | SluiceCue
   | Current
   | Rail
   | Sanctuary
@@ -167,9 +169,10 @@ export function serviceMovement(
 ) {
   let x = 0,
     y = 0,
-    multiplier = 1;
+    multiplier = 1,sluice=false;
   for (const untyped of cues) {
     const cue = untyped as ServiceCue;
+    if(cue.kind==='service-current'&&'valve' in cue)sluice=true;
     if (now < cue.at || now >= cue.until) continue;
     if (
       cue.kind === 'service-current' &&
@@ -186,6 +189,7 @@ export function serviceMovement(
     if (cue.kind === 'service-tether' && cue.targetId === id && cue.attached && cue.health > 0)
       multiplier = Math.min(multiplier, 0.5);
   }
+  const force=Math.hypot(x,y);if(sluice&&force>90){x*=90/force;y*=90/force;}
   return { x, y, multiplier:Math.min(multiplier,moldMovement(cues,position,now)) };
 }
 /** Exact swept body against a line capsule, including its round endpoint caps. */
@@ -213,6 +217,7 @@ export function serviceBeamContact(
   );
 }
 export class ServiceDirector {
+  readonly sluice=new SluicePressure();
   readonly baker = new BakerOven();
   readonly matron=new MatronWard();
   readonly alchemist=new MoldMixing();
@@ -226,6 +231,7 @@ export class ServiceDirector {
   private contacts = new Map<string, number>();
   private once = new Set<string>();
   reset(kind: string, encounter = false) {
+    this.sluice.reset(0,encounter||kind!==this.kind);
     this.baker.reset(0,encounter||kind!==this.kind);
     this.stitchwright.reset(0, encounter || kind !== this.kind);
     this.matron.reset(0,encounter||kind!==this.kind);
@@ -245,11 +251,11 @@ export class ServiceDirector {
     return serviceBossIds.some((id) => id === kind);
   }
   movement(position: Vec, id: string, now: number) {
-    const move=serviceMovement(this.shapes, position, id, now);
+    const move=serviceMovement([...this.shapes,...this.sluice.cues()], position, id, now);
     return {...move,multiplier:Math.min(move.multiplier,moldMovement(this.alchemist.cues(),position,now))};
   }
   cues(): ServiceCue[] {
-    return [...this.baker.cues(),...this.stitchwright.cues(),...this.bellringer.cues(),...this.alchemist.cues(),...this.matron.cues(),...this.shapes.map((c) => {
+    return [...this.sluice.cues(),...this.baker.cues(),...this.stitchwright.cues(),...this.bellringer.cues(),...this.alchemist.cues(),...this.matron.cues(),...this.shapes.map((c) => {
       if (c.kind === 'service-sanctuary')
         return {
           ...c,
@@ -263,7 +269,7 @@ export class ServiceDirector {
     })];
   }
   weakPoints() {
-    return [...this.baker.weakPoints(),...this.stitchwright.weakPoints(),...this.bellringer.weakPoints(),...this.matron.weakPoints(),...this.shapes.filter(
+    return [...this.sluice.weakPoints(),...this.baker.weakPoints(),...this.stitchwright.weakPoints(),...this.bellringer.weakPoints(),...this.matron.weakPoints(),...this.shapes.filter(
       (c): c is ServiceProp | Tether =>
         (c.kind === 'service-prop' || c.kind === 'service-tether') && c.health > 0,
     )];
@@ -272,6 +278,7 @@ export class ServiceDirector {
     return this.shapes.some((c) => c.id === id && c.kind === 'service-prop' && c.role === 'caster');
   }
   hit(id: number, damage: number, now: number) {
+    const sluice=this.sluice.hit(id,damage,now);if(sluice)return sluice;
     const baker=this.baker.hit(id,damage,now);if(baker)return baker;
     const stitch = this.stitchwright.hit(id, damage, now); if (stitch) return stitch;
     const bell=this.bellringer.hit(id,damage,now);if(bell)return bell;
@@ -389,6 +396,7 @@ export class ServiceDirector {
   }
   cast(c: SignatureContext, target: Vec, attack: ServiceAttack) {
     if (!this.handles(c.bossId)) return false;
+    if(c.bossId==='sluice-keeper'){const handled=this.sluice.cast(c);this.nextSignatureAt=this.sluice.nextSignatureAt;return handled;}
     if(c.bossId==='ash-baker'){const handled=this.baker.cast(c,target);this.nextSignatureAt=this.baker.nextSignatureAt;return handled;}
     if(c.bossId==='matron')return this.matron.cast(c,target);
     if(c.bossId==='alchemist')return this.alchemist.cast(c,target);
@@ -454,22 +462,6 @@ export class ServiceDirector {
         }
         for(const lens of lenses)lens.until=last;
         this.nextSignatureAt=Math.max(now+ticks(plan.cycle),last+ticks(1));
-        break;
-      }
-      case 'sluice-keeper': {
-        for (let n = 0; n < 3; n++)
-          this.shapes.push({
-            kind: 'service-current',
-            id: c.id(),
-            x: b.x,
-            y: b.y + Math.max(180, b.height * 0.24) + n * (b.height * 0.22),
-            width: b.width,
-            height: 190,
-            forceX: (n + index) % 2 ? 65 : -65,
-            forceY: 0,
-            at: now + ticks(1.5),
-            until: now + ticks(5.5),
-          });
         break;
       }
       case 'stationmaster': {
@@ -721,6 +713,7 @@ export class ServiceDirector {
     if (c.bossId === 'stitchwright') this.stitchwright.step(c, target => {
       this.cast(c, target, {kind:'hook', count:1, speed:0, damage:12, telegraph:1.4});
     });
+    if(c.bossId==='sluice-keeper'){this.sluice.step(c);this.nextSignatureAt=this.sluice.nextSignatureAt;return;}
     if(c.bossId==='ash-baker'){this.baker.step(c);this.nextSignatureAt=this.baker.nextSignatureAt;return;}
     if(c.bossId==='matron'){this.matron.step(c);return;}
     if(c.bossId==='alchemist'){this.alchemist.step(c);return;}

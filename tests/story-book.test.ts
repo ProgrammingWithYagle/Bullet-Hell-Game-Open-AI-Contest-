@@ -84,7 +84,8 @@ test("Native Spanish story reading covers setup, aftermath, route choices and re
   const before = JSON.stringify(g.snapshot());
   assert.match(ui.storyReportMarkup(viewOf(g, "solo"), true), /La bisagra/);
   assert.equal(JSON.stringify(g.snapshot()), before);
-  while (g.phase === "mutationVote") {
+  while (g.phase === "mutationVote"||g.phase==='storyScene') {
+ if(g.phase==='storyScene')g.vote('solo',1);
     g.phaseEnds = g.tick;
     g.step();
   }
@@ -146,7 +147,8 @@ test("Complete Arabic scenes and choices use right-to-left prose with canonical 
   g.start();
   g.boss.health = 0;
   g.step();
-  while (g.phase === "mutationVote") {
+  while (g.phase === "mutationVote"||g.phase==='storyScene') {
+ if(g.phase==='storyScene')g.vote('solo',1);
     g.phaseEnds = g.tick;
     g.step();
   }

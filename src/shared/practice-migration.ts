@@ -6,10 +6,15 @@ import { classifiedContract } from './boss-threat.ts';
 export function migratePracticeBoundary(value: unknown): unknown {
   if (!value || typeof value !== 'object' || Array.isArray(value)) return value;
   const issued = value as Record<string, unknown>;
+  if(Number(issued.protocolVersion)<=46&&issued.settings&&typeof issued.settings==='object'&&Object.hasOwn(issued.settings,'freePlay'))throw Error('versionMismatch');
   if(Number(issued.protocolVersion)<=45&&issued.settings&&typeof issued.settings==='object'&&(issued.settings as Record<string,unknown>).mode==='story')throw Error('versionMismatch');
+  if(issued.protocolVersion===46&&issued.contentRevision==='31bcd58adcfd8d9d1d76fc23b484237e68c266a513f2dedb2571f8a09067e131'){
+    if(issued.schemaVersion!==1||issued.practiceOnly!==true||issued.serverOnly===true||issued.players!==undefined||issued.transactions!==undefined||JSON.stringify(issued).length>32768)throw Error('versionMismatch');
+    return {...issued,protocolVersion:PROTOCOL,contentRevision:CONTENT_REVISION};
+  }
   if(issued.protocolVersion===46&&issued.contentRevision==='22f660b0d378316283eb081b458adcc4cd827f7465d9089ed9146ab2ac242c9c'){
     if(issued.schemaVersion!==1||issued.practiceOnly!==true||issued.serverOnly===true||issued.players!==undefined||issued.transactions!==undefined||JSON.stringify(issued).length>32768)throw Error('versionMismatch');
-    return {...issued,contentRevision:CONTENT_REVISION};
+    return {...issued,protocolVersion:PROTOCOL,contentRevision:CONTENT_REVISION};
   }
   if(issued.protocolVersion===45&&issued.contentRevision==='fd77a95b869f368f49ce988f613db276385c45843e0152c69c3c67e13683a97b'){
     if(issued.schemaVersion!==1||issued.practiceOnly!==true||issued.serverOnly===true||issued.players!==undefined||issued.transactions!==undefined||JSON.stringify(issued).length>32768)throw Error('versionMismatch');

@@ -394,6 +394,7 @@ test("both skill views expose shared purchases with written costs and localized 
       ["1", "2", "3"],
       expanded,
     );
+    env.host.querySelector('[data-shop-tab="general"]')!.click();
     const sprint = env.host.querySelector('[data-inspect="general-sprint"]')!;
     assert(sprint);
     assert(env.host.querySelector('[data-inspect="general-double-dash"]'));

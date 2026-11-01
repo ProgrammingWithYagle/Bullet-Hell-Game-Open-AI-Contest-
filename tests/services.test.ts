@@ -134,7 +134,7 @@ test('Sluice currents push without damage and prediction uses exactly the same f
   f.cast();
   const current = of(f.director, 'service-current')[0];
   assert.equal(f.director.movement({ x: 800, y: current.y + 95 }, 'a', current.at - 1).x, 0);
-  assert.equal(Math.abs(f.director.movement({ x: 800, y: current.y + 95 }, 'a', current.at).x), 65);
+  assert.equal(Math.abs(f.director.movement({ x: 800, y: current.y + 95 }, 'a', current.at).x), 70);
   assert.equal(f.director.movement({ x: 800, y: 100 }, 'a', current.at).x, 0);
   f.step(current.at);
   assert.equal(f.hurt.length, 0);

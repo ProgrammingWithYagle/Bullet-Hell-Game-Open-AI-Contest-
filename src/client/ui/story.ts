@@ -1,3 +1,4 @@
+import {storyReaderMarkup} from './story-reader.ts';
 import type { View } from "../../shared/view.ts";
 import {
   storyCampaign,
@@ -24,7 +25,7 @@ const label = (book: StoryBook, title: string) =>
 export function storyBriefingMarkup(language = locale) {
   const book = storyBook(language),
     act = book.acts[0];
-  return `<aside class="story-briefing"><p class="eyebrow">${e(notice(book))}</p>${prose(book, book.title, "", book.intro)}${prose(book, act.title, act.speaker, act.text)}<p>${e(t("mode.story.description"))}</p><p>${e(t("ui.storyEndingRule"))}</p></aside>`;
+  return `<aside class="story-briefing"><p class="eyebrow">${e(notice(book))}</p>${storyReaderMarkup({kind:"prologue",index:0},language,"briefing")}<p>${e(t("mode.story.description"))}</p><p>${e(t("ui.storyEndingRule"))}</p></aside>`;
 }
 /** Reading uses the existing intermission clock; combat never receives a story overlay. */
 export function storyReportMarkup(view: View, open = false, language = locale) {
@@ -40,7 +41,7 @@ export function storyReportMarkup(view: View, open = false, language = locale) {
   const actIndex = Math.min(2, Math.floor(view.encounter / 5)),
     act = book.acts[actIndex],
     boundary = view.encounter === 5 || view.encounter === 10;
-  return `<details class="story-report" data-story-report ${open ? "open" : ""}><summary id="story-report-toggle">${e(t(ending ? "ui.storyEnding" : "ui.storyAftermath"))} · ${label(book, ending?.title ?? beat.title)}</summary><p class="muted">${e(notice(book))}</p>${prose(book, beat.title, beat.speaker, beat.text)}${boundary ? `<p class="eyebrow">${e(t("ui.storyAct", { number: number(actIndex + 1) }))}</p>${prose(book, act.title, act.speaker, act.text)}` : ""}${ending ? prose(book, ending.title, ending.speaker, ending.text) : ""}</details>`;
+  return `<details class="story-report" data-story-report ${open ? "open" : ""}><summary id="story-report-toggle">${e(t(ending ? "ui.storyEnding" : "ui.storyAftermath"))} · ${label(book, ending?.title ?? beat.title)}</summary><p class="muted">${e(notice(book))}</p>${storyReaderMarkup({kind:"report",arenaId:view.arenaId,index:Math.max(0,view.encounter-1),...(ending?{ending:storyEnding(view.storyChoices??[])}:{})},language,view.run.id)}</details>`;
 }
 export function storyChoiceMarkup(
   view: View,

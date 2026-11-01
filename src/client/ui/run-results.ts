@@ -17,7 +17,7 @@ export function runResultModel(view: View, player: PlayerView) {
     teamClears: bank?.encounters ?? view.encounter,
     personalClears: player.progress.clears,
     rescues: player.progress.rescues,
-    experience: view.run.testingModified ? 0 : player.progress.clears * 100,
+    experience: (view.run.testingModified||view.run.customized) ? 0 : player.progress.clears * 100,
     combatSeconds: (bank?.combatTick ?? view.combatTick) / HZ,
     showPersonalClears: view.players.length > 1 || view.encounter !== player.progress.clears,
     reason: view.phase !== 'defeat' || view.endedByHost ? null
@@ -45,5 +45,5 @@ export function runResultsMarkup(view: View, player: PlayerView, labels: Labels)
     [text('resultRescues'), e(labels.number(model.rescues))],
     [text('resultExperience'), `<bdi>${e(labels.number(model.experience))} XP</bdi>`],
   ];
-  return `<div class="run-results"><p class="result-context">${e(labels.mode)} · ${e(labels.difficulty)} · ${e(labels.className)}</p>${model.reason ? `<p class="result-reason">${text(model.reason)}</p>` : ''}<dl class="run-stat-list">${stats.map(([label, value]) => `<div><dt>${label}</dt><dd>${value}</dd></div>`).join('')}</dl>${view.run.testingModified ? `<p class="result-records">${text('resultModified')}</p>` : `<p class="result-records">${text('resultRecords')}</p>`}</div>`;
+  return `<div class="run-results"><p class="result-context">${e(labels.mode)} · ${e(labels.difficulty)} · ${e(labels.className)}</p>${model.reason ? `<p class="result-reason">${text(model.reason)}</p>` : ''}<dl class="run-stat-list">${stats.map(([label, value]) => `<div><dt>${label}</dt><dd>${value}</dd></div>`).join('')}</dl>${(view.run.testingModified||view.run.customized) ? `<p class="result-records">${text('resultModified')}</p>` : `<p class="result-records">${text('resultRecords')}</p>`}</div>`;
 }

@@ -69,7 +69,7 @@ export function validStoryBoundary(
     phase !== "defeat"
   )
     return false;
-  if (phase === "mutationVote" || phase === "contractVote")
+  if (phase === "storyScene" || phase === "mutationVote" || phase === "contractVote")
     return choices.length === minimum;
   if (phase === "shop" || phase === "loading")
     return choices.length === maximum;

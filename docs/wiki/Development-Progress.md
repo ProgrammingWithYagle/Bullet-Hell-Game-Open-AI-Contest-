@@ -1,13 +1,13 @@
 # Development progress
 
-Updated 2026-10-31 for **2026.10.31-story-editions**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
+Updated 2026-10-31 for **2026.10.31-story-hubs**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
 
 66 playable identities: 65 ordinary and 1 secret. Three ordinary bosses in every one of fifty subtiers requires 150 ordinary identities, plus secrets; 85 additional ordinary bosses remain.
 
 | Area | Implemented | Work remaining | Review status |
 | --- | --- | --- | --- |
 | New ordinary bosses | 65 / 150 | 85 new identities | 0 unintegrated art-only concepts; Early Watch and Small Wakes integrations are implemented |
-| Existing-boss phase / mobility / Brutal quality passes | 15 / 60 | 45 | Fifteen original encounter quality passes are implemented;45 remain. Ash Baker has phase-specific locked rolls, shootable landed crusts, freshly warned crumbs, one hit per whole batch, visible-target advanced batches and harmless approaches. Fifteen-locale help/lore is authored. Whole-boss human acceptance remains0; rendered/motion/device/language review and final balance remain open. |
+| Existing-boss phase / mobility / Brutal quality passes | 16 / 60 | 44 | Sixteen original encounter quality passes are implemented;44 remain. Sluice Keeper has bounded harmless currents, shootable valves, newly warned swept crests, phase-preserving later pressure and fifteen-locale lore/help. Source grade/health/deadline remain. Whole-boss human acceptance remains0; rendered/motion/device/language review and final balance stay open. |
 | Ability-changing class-upgrade revamps | 7 / 7 | 0 | Three actual ability transformations per class (21 total) implemented at existing utility-path depth three, with shared authority, cues and fifteen-locale help. Rendered/human balance/device/native-language acceptance remains open. |
 | Optional large branching skill-tree view | 1 / 1 | 0 | Optional all-54-skill map implemented for all seven classes with settings toggle, bounded zoom, scrolling and keyboard navigation. Classic remains the default; rendered/human/device/native-language review remains open. |
 | Secondary-map topology revamps | 5 / 5 | 0 | Five distinct secondary layouts installed. Four spacious maps now have compact real geometry; Ossuary/Crown routes retain their size. Difficulty cover/lava, movement and prediction remain shared. Human 5185 feedback motivated the compact pass; its rendered/human/device comparison remains open. |
@@ -84,6 +84,7 @@ Updated 2026-10-31 for **2026.10.31-story-editions**. These counts track specifi
 - The user explicitly says to keep developing, retain the full goal across turns and let them decide completion. This authorizes the playable Story campaign; no final acceptance is inferred from software checks.
 - The active continued-development instruction also authorizes Ash Baker’s next encounter pass. Software evidence is separate from user acceptance, and the full-game goal continues across turns.
 - Continued replay-value development connects the implemented Story campaign to personal journal acts, completion and recovered endings. The journal now22goals/66cosmetic stamps is implementation evidence; final acceptance remains the user’s decision.
+- User2026-10-31 requests separate Story Campaign and Free Play, distinct room categories, a longer arc/chapter story with visual-novel presentation, a standalone General abilities tab, and continued boss development step by step. This implementation creates that first hub/reader structure and the next Sluice quality pass; larger future story arcs remain open.
 
 ## Remaining release work
 
@@ -94,7 +95,7 @@ Updated 2026-10-31 for **2026.10.31-story-editions**. These counts track specifi
 - Review General Sprint/Double Dash on rendered keyboard, gamepad and touch surfaces, all fifteen languages and representative bosses; tune mobility tradeoffs with human feedback.
 - Complete rendered/human/device/native-language review of the testing/public split, Solo tools, optional names/chat and records UI. The manual guide works in limited 5193 human feedback; guide images are deferred polish. Public builds offer the optional guide only on Baby.
 - Deferred expansion: create and verify 85 additional ordinary boss identities, with distinct mechanics, art and individual original music; the target is at least 150 ordinary plus secrets.
-- Deferred expansion: assess or redesign the remaining 45 existing boss encounters for distinct phases, meaningful pressure and separate Brutal behavior.
+- Deferred expansion: assess or redesign the remaining 44 existing boss encounters for distinct phases, meaningful pressure and separate Brutal behavior.
 - Review and tune the 21 implemented ability-changing upgrades and optional skill map on actual rendered/human/device/native-language surfaces.
 - Complete remaining boss special/action art, class special-ability art and rendered animation transitions.
 - Complete final human balance, music/listening, native-language and physical-device acceptance. Browser automation remains disabled under the current user direction; a scripted or invulnerable sample is not a personally played clear.
@@ -102,9 +103,10 @@ Updated 2026-10-31 for **2026.10.31-story-editions**. These counts track specifi
 - Deploy and independently accept shared hosted global rankings and durable recovery. Current public authorities implement persistent server-scoped team records with exact scoring and real-network/restart evidence. Shared storage ownership, participant recovery credentials, entropy recovery histories and hosted acceptance remain open.
 - Prepare and verify a new coordinated Windows/browser release with a matching backend; existing immutable Windows and older public builds remain separate.
 - Finish and review the12 remaining Story narrative translations; compare15-fight pacing, choices, endings and all difficulty paths with human players. The new campaign is implemented but not accepted as finished.
+- Continue the longer story beyond the first fifteen-encounter arc: author additional arcs and chapters, grow visual-novel scenes and new art/expressions, and obtain rendered, native-language and human pacing review. The user defines full-game completion.
 
 ## Count definitions
 
-Boss quality counts a completed implementation of the requested phase/mobility/Brutal pass, followed by separate human review. The other 45 existing encounters await assessment or redesign; they are already playable. Class revamps count the newly requested ability-changing upgrade pass, separate from the seven existing class kits and 378 skills. Map layout counts the five requested secondary-map topology revisions; their implementation is complete, while detailed new-layout human acceptance remains pending.
+Boss quality counts a completed implementation of the requested phase/mobility/Brutal pass, followed by separate human review. The other 44 existing encounters await assessment or redesign; they are already playable. Class revamps count the newly requested ability-changing upgrade pass, separate from the seven existing class kits and 378 skills. Map layout counts the five requested secondary-map topology revisions; their implementation is complete, while detailed new-layout human acceptance remains pending.
 
 Ashen Usher, Brass Toad, Ragpicker's Kite, Candle Snail, Cobble Crab and Mourning Kettle have shared-authority encounters, complete selected motion, original themes and fifteen-locale help. Their original art-only issue records remain unchanged. The structured ledger, derived counts, in-game journal summary and this page update together. Progress does not equal final balance, rendered, device, language or release acceptance.

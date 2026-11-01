@@ -32,9 +32,9 @@ test('real public/private password rooms reject missing/wrong passwords, prompt 
     try{
       await host.connect(opts,undefined,visibility,password);await until(()=>Boolean(host.code&&host.view));assert(host.hasPassword);
       const id=host.room!.roomId,authority=liveRooms.get(id)!;
-      const lookup=await guest.lookupRoom(host.code);assert.deepEqual(lookup,{roomId:id,hasPassword:true});
+      const lookup=await guest.lookupRoom(host.code);assert.deepEqual(lookup,{roomId:id,hasPassword:true,kind:'freeplay'});
       const listing=await host.rooms();assert.equal(listing.some(r=>r.roomId===id),visibility==='public');
-      if(visibility==='public'){assert.equal(listing.find(r=>r.roomId===id)!.hasPassword,true);assert.equal(listing.find(r=>r.roomId===id)!.name,'Mara');assert.equal(Object.keys(listing.find(r=>r.roomId===id)!).sort().join(','),'contentRevision,difficulty,hasPassword,maximumPlayers,mode,name,phase,players,roomId');}
+      if(visibility==='public'){assert.equal(listing.find(r=>r.roomId===id)!.hasPassword,true);assert.equal(listing.find(r=>r.roomId===id)!.name,'Mara');assert.equal(Object.keys(listing.find(r=>r.roomId===id)!).sort().join(','),'contentRevision,difficulty,hasPassword,kind,maximumPlayers,mode,name,phase,players,roomId');}
       assert(!JSON.stringify(listing).includes(password));assert(!JSON.stringify(lookup).includes(password));
       await assert.rejects(()=>failed.connect({...opts,name:'Wrong'},{code:host.code,password:'wrong'}),/ui.errorRoomPassword/);
       const raw=new Client(endpoint),settings={...opts,createKey:randomUUID(),protocolVersion:PROTOCOL,contentRevision:CONTENT_REVISION,visibility,code:host.code};
@@ -62,7 +62,7 @@ test('real public/private password rooms reject missing/wrong passwords, prompt 
 test('protocol40 local saves keep equipment, economy, selected map and identity; server checkpoints stay strict',()=>{
   const g=new Game({maxPlayers:1,mode:'endless',arenaSelection:'randomRun',openingArenaId:'crown-crypt'});const p=g.addPlayer('solo','Mara','medic');p.coins=1983;
   const old=g.offlineCheckpoint()!;old.protocolVersion=40;const restored=Game.restoreOffline(old).offlineCheckpoint()!;
-  assert.equal(PROTOCOL, 46);assert.equal(restored.protocolVersion,PROTOCOL);assert.equal(restored.contentRevision,CONTENT_REVISION);
+  assert.equal(PROTOCOL, 47);assert.equal(restored.protocolVersion,PROTOCOL);assert.equal(restored.contentRevision,CONTENT_REVISION);
   assert.deepEqual(restored.settings,old.settings);assert.deepEqual(restored.player,old.player);assert.equal(restored.arenaId,old.arenaId);
   assert.throws(()=>Game.restoreOffline({...old,contentRevision:'unknown'}),/versionMismatch/);
   assert.throws(()=>Game.restoreOffline({...old,serverOnly:true}),/versionMismatch/);

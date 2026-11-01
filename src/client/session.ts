@@ -1,3 +1,4 @@
+import {roomKind,type RoomKind,type FreePlayOptions} from '../shared/free-play.ts';
 import {TESTING_BUILD} from './build-audience.ts';
 import type { ArenaSelection } from '../shared/arena-selection.ts';
 import {isChatMessage,type ChatMessage} from '../shared/room-chat.ts';
@@ -28,6 +29,7 @@ import { defaultGameEndpoint } from './deployment.ts';
 import type { TeamRecordStatus } from '../shared/team-records.ts';
 import { isRankedTeamRecord, rememberTeamRecord } from './team-records.ts';
 export type ConnectionOptions = {
+  freePlay?:FreePlayOptions;
   serverEndpoint?: string;
   name: string;
   classId: ClassId;
@@ -48,7 +50,7 @@ export type RoomSummary = {
   phase: string;
   hasPassword:boolean;
 };
-export type RoomJoin={roomId?:string;code?:string;password?:string};
+export type RoomJoin={roomId?:string;code?:string;password?:string;kind?:RoomKind};
 export type RoomJoinRetry=Omit<RoomJoin,'password'>;
 export class Session {
   view: View | null = null;
@@ -137,10 +139,10 @@ export class Session {
       );
     });
   }
-  async rooms(): Promise<RoomSummary[]> {
+  async rooms(kind?:RoomKind): Promise<RoomSummary[]> {
     await this.warmServer();
     this.notify('ui.searchingRooms');
-    const response = await this.requests.fetch(this.endpoint + '/api/rooms');
+    const response = await this.requests.fetch(this.endpoint + '/api/rooms'+(kind?'?kind='+kind:''));
     if (!response.ok) throw Error(response.status === 429 ? 'ui.errorRate' : 'ui.errorServer');
     const rooms = await response.json(); this.signal.throwIfAborted();
     return rooms;
@@ -169,6 +171,7 @@ export class Session {
       protocolVersion: PROTOCOL,
       createKey: crypto.randomUUID(),
       visibility,
+      roomKind:join?join.kind:roomKind(options.mode),
       code: join?.code?.toUpperCase(),
       password:roomId?join?.password:createPassword,
       admissionId: await this.admit(roomId ? 'join' : 'create'),
@@ -181,6 +184,7 @@ export class Session {
     } catch(error){
       if(error instanceof Error&&['passwordRequired','invalidPassword'].includes(error.message))throw Error('ui.errorRoomPassword');
       if(error instanceof Error&&error.message==='invalidPasswordSetting')throw Error('ui.roomPasswordHelp');
+      if(error instanceof Error&&error.message==='roomKindMismatch')throw Error('ui.roomKindMismatch');
       if(error instanceof Error&&error.message==='versionMismatch')throw Error('ui.errorVersion');
       if(error instanceof Error&&error.message==='capacity')throw Error('ui.errorCapacity');
       if(error instanceof Error&&error.message==='invalidCode')throw Error('ui.errorCode');
@@ -196,7 +200,7 @@ export class Session {
     this.#invitationPassword = (roomId ? join?.password : createPassword) ?? '';
     this.attach(room, client);
   }
-  async lookupRoom(code:string,warm=true):Promise<{roomId:string;hasPassword:boolean}>{
+  async lookupRoom(code:string,warm=true):Promise<{roomId:string;hasPassword:boolean;kind:RoomKind}>{
     if(warm)await this.warmServer();
     this.notify('ui.findingRoom');
     const response=await this.requests.fetch(this.endpoint+'/api/rooms/code/'+encodeURIComponent(code.toUpperCase()));
@@ -204,7 +208,7 @@ export class Session {
     const value=await response.json();
     this.signal.throwIfAborted();
     if(typeof value.roomId!=='string'||typeof value.hasPassword!=='boolean')throw Error('ui.errorServer');
-    return {roomId:value.roomId,hasPassword:value.hasPassword};
+    return {roomId:value.roomId,hasPassword:value.hasPassword,kind:value.kind==='story'?'story':'freeplay'};
   }
   private async warmServer() {
     this.signal.throwIfAborted();
@@ -385,7 +389,7 @@ export class Session {
     const player = view.players.find((p) => p.id === this.id);
     const progressKey = JSON.stringify([
       view.run?.id,
-      view.run?.testingModified === true,
+      view.run?.testingModified === true||view.run?.customized===true,
       player?.progress,
       view.encounter,
       view.secretStatus,
@@ -397,7 +401,7 @@ export class Session {
       Date.now() >= this.profileRetryAt
     ) {
       try {
-        if (view.run.testingModified && !recordPracticeCampaign(view, this.id, localStorage)) throw Error("ui.errorSave");
+        if ((view.run.testingModified||view.run.customized) && !recordPracticeCampaign(view, this.id, localStorage)) throw Error("ui.errorSave");
         recordProfileView(view, this.id, localStorage);
         this.recordedProgress = progressKey;
         if (this.status === 'ui.errorSave') this.notify('');
@@ -408,7 +412,7 @@ export class Session {
     }
 
     const recordKey = view.campaignBank?.runId + ':' + view.secretStatus;
-    if (view.campaignBank && !view.run.testingModified && recordKey !== this.recordedCampaign) {
+    if (view.campaignBank && !view.run.testingModified && !view.run.customized && recordKey !== this.recordedCampaign) {
       this.recordedCampaign = recordKey;
       if (
         typeof localStorage !== 'undefined' &&

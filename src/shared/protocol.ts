@@ -1,5 +1,5 @@
 import revision from '../../content/revision.json' with { type: 'json' };
-export const PROTOCOL = 46;
+export const PROTOCOL = 47;
 export type BossVariant = 'normal' | 'brutal' | 'crazed';
 export const CONTENT_REVISION = revision.sha256;
 export const HZ = 30,
@@ -88,6 +88,7 @@ export type CheckpointStatus =
 export type Phase =
   | 'lobby'
   | 'combat'
+  | 'storyScene'
   | 'mutationVote'
   | 'contractVote'
   | 'shop'

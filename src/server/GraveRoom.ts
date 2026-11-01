@@ -1,3 +1,4 @@
+import {roomKind,validFreePlay,type FreePlayOptions,type RoomKind} from '../shared/free-play.ts';
 import {data} from '../shared/game.ts';
 import { Room, ServerError, type Client, type ISendOptions } from '@colyseus/core';
 import { randomBytes } from 'node:crypto';
@@ -25,6 +26,7 @@ import type { TeamRecordStatus } from '../shared/team-records.ts';
 // Bounded fifty-player builds can exceed Schema's 8 KiB initial encode buffer.
 Encoder.BUFFER_SIZE = 64 * 1024;
 type Metadata = {
+  roomKind:RoomKind;
   mode: string;
   difficulty: string;
   visibility: string;
@@ -33,6 +35,7 @@ type Metadata = {
   hasPassword:boolean;
 };
 type Options = {
+  freePlay?:FreePlayOptions;roomKind?:RoomKind;
   mode: 'short' | 'standard' | 'long' | 'raid' | 'endless' | 'story';
   difficulty: string;
   visibility: 'public' | 'private';
@@ -91,6 +94,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       (options.arenaSelection !== undefined && !arenaSelections.includes(options.arenaSelection)) ||
       (options.openingBossId !== undefined &&
         !implementedBossIds.includes(options.openingBossId)) ||
+      (options.freePlay!==undefined&&(!validFreePlay(options.freePlay)||options.mode==='story')) ||
       !['short', 'standard', 'long', 'raid', 'endless','story'].includes(options.mode) ||
       !data.difficulties.some((d) => d.id === options.difficulty) ||
       !['public', 'private'].includes(options.visibility)
@@ -110,6 +114,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
     this.maxMessagesPerSecond = 90;
     this.patchRate = 50;
     const settings: Partial<Settings> = {
+      ...(options.freePlay?{freePlay:options.freePlay}:{}),
       runId: this.roomId,
       seed: randomBytes(4).readUInt32LE(),
       mode: options.mode,
@@ -132,6 +137,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
           });
     });
     await this.setMetadata({
+      roomKind:roomKind(options.mode),
       mode: options.mode,
       difficulty: options.difficulty,
       visibility: options.visibility,
@@ -218,6 +224,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
     }, 30);
   }
   async onAuth(client: Client, options: Options) {
+    if(options.roomKind!==undefined&&options.roomKind!==roomKind(this.game.settings.mode))throw new ServerError(409,'roomKindMismatch');
     if (this.state.endedByHost) throw new ServerError(503,'roomClosed');
     if(!this.isTestingServer()&&options.openingBossId!==undefined)throw new ServerError(400,'testingSelectionDisabled');
     if (options.protocolVersion !== PROTOCOL || options.contentRevision !== CONTENT_REVISION)
@@ -485,6 +492,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       run: {
         id: g.settings.runId,
         mode: g.settings.mode,
+        ...(g.customized?{customized:true}:{}),
         difficulty: g.settings.difficulty,
         practiceOnly: true,
         arenaSelection: g.settings.arenaSelection,

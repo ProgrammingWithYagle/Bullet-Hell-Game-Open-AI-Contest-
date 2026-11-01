@@ -131,7 +131,7 @@ test(
     );
     assert.equal(valid.status, 200);
     const value = await valid.json();
-    assert.deepEqual(Object.keys(value).sort(), ['hasPassword', 'roomId']);
+    assert.deepEqual(Object.keys(value).sort(), ['hasPassword', 'kind', 'roomId']);
     assert.equal(value.roomId, owner.room!.roomId);
     assert.equal(value.hasPassword, true);
   },

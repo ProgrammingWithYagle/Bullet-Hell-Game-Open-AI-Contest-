@@ -223,11 +223,28 @@ export class ServicePresentation {
           f.fillStyle(0x97decb,1).fillRect(cue.x-25,cue.y-38,50*cue.health/cue.maxHealth,5);
         }
         if(hitboxes)h.lineStyle(1,0xeddfbe,1).strokeCircle(cue.x,cue.y,cue.radius);
+      } else if(cue.kind==='service-sluice-valve'){
+        const ink=cue.health>0?0x9de0dd:0x9bc7b0;
+        h.lineStyle(3,ink,.95).strokeCircle(cue.x,cue.y,cue.radius);
+        h.lineStyle(2,ink,.9).lineBetween(cue.x-13,cue.y,cue.x+13,cue.y).lineBetween(cue.x,cue.y-13,cue.x,cue.y+13);
+        h.lineStyle(2,ink,.9).strokeCircle(cue.x,cue.y,5);
+        if(cue.health>0){f.fillStyle(0x132124,.9).fillRect(cue.x-22,cue.y-31,44,5);f.fillStyle(0x9de0dd,1).fillRect(cue.x-22,cue.y-31,44*cue.health/cue.maxHealth,5);}
+      } else if(cue.kind==='service-sluice-wave'){
+        const ink=cue.disabled?0x9bc7b0:0xb4e7f2;
+        if(now<cue.at){
+          h.lineStyle(2,ink,.75).lineBetween(cue.fromX+cue.width/2,cue.fromY+cue.height/2,cue.toX+cue.width/2,cue.toY+cue.height/2);
+          arrow((cue.fromX+cue.toX+cue.width)/2,(cue.fromY+cue.toY+cue.height)/2,Math.atan2(cue.toY-cue.fromY,cue.toX-cue.fromX),ink,45);
+        }else if(!cue.disabled)f.fillStyle(0x8dcada,.28).fillRect(cue.x,cue.y,cue.width,cue.height);
+        h.lineStyle(3,ink,cue.disabled?.25:.9).strokeRect(cue.x,cue.y,cue.width,cue.height);
       } else if (cue.kind === 'service-current') {
-        h.fillStyle(0x83c9ce, active ? 0.12 : 0.04).fillRect(cue.x, cue.y, cue.width, cue.height);
-        h.lineStyle(2, 0x9dd3d1, 0.75).strokeRect(cue.x, cue.y, cue.width, cue.height);
-        for (let x = cue.x + 80; x < cue.x + cue.width; x += 180)
-          arrow(x, cue.y + cue.height / 2, Math.atan2(cue.forceY, cue.forceX), 0xa5dcda, 60);
+        const drained='drained' in cue&&cue.drained;
+        h.fillStyle(drained?0x9bc7b0:0x83c9ce,drained?.03:active?.12:.04).fillRect(cue.x,cue.y,cue.width,cue.height);
+        h.lineStyle(2,drained?0x9bc7b0:0x9dd3d1,drained?.3:.75).strokeRect(cue.x,cue.y,cue.width,cue.height);
+        if(!drained){
+          const direction=Math.atan2(cue.forceY,cue.forceX);
+          if(Math.abs(cue.forceX)>0)for(let x=cue.x+60;x<cue.x+cue.width;x+=160)arrow(x,cue.y+cue.height/2,direction,0xa5dcda,50);
+          else for(let y=cue.y+60;y<cue.y+cue.height;y+=140)arrow(cue.x+cue.width/2,y,direction,0xa5dcda,50);
+        }
       } else if (cue.kind === 'service-rail') {
         const railColor = cue.open ? 0xa4dec5 : color;
         h.lineStyle(3, railColor, 0.7)

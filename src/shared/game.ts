@@ -1,3 +1,4 @@
+import {validFreePlay,customizedFreePlay,type FreePlayOptions} from './free-play.ts';
 import {storyCampaign,storyBossOffers,validStoryBoundary} from './story-campaign.ts';
 import {allSkills,skillFor,advanceMobility,takeDodge,resetMobility,dodgeMaximum,sprintUnlocked,mobilityRules} from './mobility.ts';
 import {VariantPressure} from './variant-pressure.ts';
@@ -118,6 +119,7 @@ export const implementedBossIds: readonly BossId[] = [
   ...finalBossIds,
 ];
 export type Settings = {
+  freePlay?:FreePlayOptions;
   runId: string;
   seed: number;
   mode: ModeId;
@@ -317,6 +319,7 @@ export class Game {
   readonly votes = new Map<string, number>();
   private nextId = 1;
   testingModified = false;
+  get customized(){return customizedFreePlay(this.settings.freePlay);}
   scoreObserver?: { start(game: Game): void; damage(id: string, hp: number): void; clear(game: Game): void };
   private freeShots: Shot[] = [];
   private hostileShots = 0;
@@ -347,14 +350,16 @@ export class Game {
   };
   private currentArenaId: string;
   constructor(settings: Partial<Settings> = {}) {
+    if(settings.freePlay!==undefined&&(!validFreePlay(settings.freePlay)||settings.mode==='story'))throw Error('Invalid Free Play settings');
     this.settings = {
+      ...(settings.freePlay?{freePlay:{...settings.freePlay}}:{}),
       runId: settings.runId ?? 'simulation-' + (settings.seed ?? 1).toString(36),
-      seed: settings.seed ?? 1,
+      seed: settings.freePlay?.seed ?? settings.seed ?? 1,
       mode: settings.mode ?? 'short',
       difficulty: settings.difficulty ?? 'normal',
       maxPlayers: settings.maxPlayers ?? (settings.mode === 'raid' ? 16 : 8),
       openingBossId:
-        settings.openingBossId ?? (settings.mode === 'raid' ? 'chain-colossus' : 'constable'),
+        settings.freePlay?.openingBossId ?? settings.openingBossId ?? (settings.mode === 'raid' ? 'chain-colossus' : 'constable'),
       openingArenaId:
         settings.openingArenaId ?? (settings.mode === 'raid' ? 'ossuary-works' : 'gatehouse'),
       arenaSelection: settings.arenaSelection ?? (settings.openingArenaId ? 'fixed' : 'route'),
@@ -375,7 +380,7 @@ export class Game {
       throw Error('Invalid simulation settings');
     this.selectedContract = {
       ...this.selectedContract,
-      ...classifiedContract(this.settings.openingBossId,encounterVariant(this.settings.difficulty)),
+      ...classifiedContract(this.settings.openingBossId,encounterVariant(this.settings.difficulty,this.settings.freePlay?.variant)),
     };
     this.boss.threat = bossThreat(this.settings.openingBossId).level;
     this.boss.id = this.settings.openingBossId;
@@ -691,6 +696,7 @@ export class Game {
     return { ok: true };
   }
   vote(id: string, index: number): boolean {
+    if(this.phase==='storyScene'){const p=this.players.get(id);if(!p?.connected||!p.eligible||p.status==='waiting'||index!==1)return false;this.votes.set(id,1);return true;}
     if (this.phase === 'secretOffer') {
       const p = this.players.get(id);
       if (!p?.connected || !p.eligible || p.status === 'waiting' || (index !== 0 && index !== 1))
@@ -1006,10 +1012,11 @@ export class Game {
       (m) => !this.mutations.some((a) => a.id === m.id || new Set<string>(m.excludes).has(a.id)),
     );
     this.mutationCards = this.rng.shuffle(eligible.map((m) => m.id)).slice(0, 3);
-    this.changePhase('mutationVote', rule.mutationVoteSeconds);
+    this.changePhase(this.settings.mode==='story'?'storyScene':'mutationVote',this.settings.mode==='story'?0:rule.mutationVoteSeconds);
   }
   private intermission() {
     if (showingBossDefeat(this.boss, this.tick)) return;
+    if(this.phase==='storyScene'){const party=this.roster().filter(p=>p.connected&&p.eligible);if(party.length&&party.every(p=>this.votes.get(p.id)===1))this.changePhase('mutationVote',rule.mutationVoteSeconds);return;}
     if (this.phase === 'secretOffer') {
       this.resolveSecretOffer(this.tick >= this.phaseEnds);
       return;
@@ -1100,7 +1107,7 @@ export class Game {
     for (const p of this.players.values())
       if (!p.connected && this.tick - p.lastSeen >= ticks(rule.reconnectSeconds)) p.expired = true;
     if (this.phase !== 'combat') {
-      if (['mutationVote', 'contractVote', 'shop', 'loading', 'secretOffer'].includes(this.phase))
+      if (['storyScene','mutationVote', 'contractVote', 'shop', 'loading', 'secretOffer'].includes(this.phase))
         this.intermission();
       return;
     }
@@ -1136,7 +1143,7 @@ export class Game {
     }
     this.bossPrevious = { x: this.boss.x, y: this.boss.y };
     this.stepBoss();
-    this.variantPressure.step({now:this.combatTick,bossId:this.boss.id,variant:this.boss.variant,phase:this.boss.phase,bounds:this.arena.bounds,targets:this.aimTargets(),damageScale:this.bossDamageScale(),blocked:this.bossCastBlocked(),paused:this.boss.id==='ash-baker'||this.boss.id==='stitchwright'||this.boss.id==='bellringer'||this.boss.id==='alchemist'||this.combatTick<this.boss.staggerUntil||(this.boss.id==='lantern-warden'&&!this.wardenPatrol.canCastAuxiliary),id:()=>this.id(),damage:(id,amount)=>this.hurtTarget(id,amount)});
+    this.variantPressure.step({now:this.combatTick,bossId:this.boss.id,variant:this.boss.variant,phase:this.boss.phase,bounds:this.arena.bounds,targets:this.aimTargets(),damageScale:this.bossDamageScale(),blocked:this.bossCastBlocked(),paused:this.boss.id==='sluice-keeper'||this.boss.id==='ash-baker'||this.boss.id==='stitchwright'||this.boss.id==='bellringer'||this.boss.id==='alchemist'||this.combatTick<this.boss.staggerUntil||(this.boss.id==='lantern-warden'&&!this.wardenPatrol.canCastAuxiliary),id:()=>this.id(),damage:(id,amount)=>this.hurtTarget(id,amount)});
     this.brutalVolley.release(this.combatTick,(point,angle,speed,damage,radius)=>
       this.emitShot('hostile',point.x,point.y,angle,speed,damage,radius));
     this.minions.step(
@@ -2026,6 +2033,7 @@ export class Game {
       if(this.boss.id==='chain-marshal'){this.director.civic.marshal.reset();this.brutalVolley.clear();}
       if(this.boss.id==='gate-widow'){this.director.civic.widow.reset();this.brutalVolley.clear();}
       if(this.boss.id==='black-ambulance'){this.director.civic.ambulance.reset();this.brutalVolley.clear();}
+      if(this.boss.id==='sluice-keeper'){this.director.services.sluice.reset(now+ticks(1.5));this.brutalVolley.clear();}
       if(this.boss.id==='ash-baker'){this.director.services.baker.reset(now+ticks(1.5));this.brutalVolley.clear();}
       if(this.boss.id==='matron'){this.director.services.matron.reset(now+ticks(1.5));this.brutalVolley.clear();}
       if(this.boss.id==='alchemist'){this.director.services.alchemist.reset(now+ticks(1.5));this.brutalVolley.clear();}
@@ -2048,7 +2056,7 @@ export class Game {
       this.attackAt[0] = Math.max(this.attackAt[0] ?? now, this.director.earlyWatch.nextSignatureAt);
     if (this.director.smallWakes.handles(this.boss.id))
       this.attackAt[0] = Math.max(this.attackAt[0] ?? now, this.director.smallWakes.nextSignatureAt);
-    if (this.boss.id === 'ash-baker' || this.boss.id === 'stitchwright' || this.boss.id === 'bellringer' || this.boss.id === 'alchemist' || this.boss.id === 'matron' || this.boss.id === 'black-ambulance' || this.boss.id === 'tollkeeper' || this.boss.id === 'chain-marshal' || this.boss.id === 'gate-widow') this.director.step(this.signatureContext());
+    if (this.boss.id === 'sluice-keeper' || this.boss.id === 'ash-baker' || this.boss.id === 'stitchwright' || this.boss.id === 'bellringer' || this.boss.id === 'alchemist' || this.boss.id === 'matron' || this.boss.id === 'black-ambulance' || this.boss.id === 'tollkeeper' || this.boss.id === 'chain-marshal' || this.boss.id === 'gate-widow') this.director.step(this.signatureContext());
     const attacks = this.bossPhases()[this.boss.phase].attacks;
     for (let index = 0; index < attacks.length; index++)
       if (
@@ -2060,7 +2068,7 @@ export class Game {
         (this.boss.id !== 'gate-widow' || !this.director.civic.widow.busy) &&
         (this.boss.id !== 'black-ambulance' || (index !== 0 && !this.director.civic.ambulance.busy)) &&
         (this.boss.id !== 'matron' || (index !== 0 && !this.director.services.matron.busy)) &&
-        this.boss.id !== 'ash-baker' && this.boss.id !== 'stitchwright' && this.boss.id !== 'alchemist' && this.boss.id !== 'bellringer' &&
+        this.boss.id !== 'sluice-keeper' && this.boss.id !== 'ash-baker' && this.boss.id !== 'stitchwright' && this.boss.id !== 'alchemist' && this.boss.id !== 'bellringer' &&
         (this.boss.id!=='quarantine-clerk' || (!this.director.clerk.busy && (index!==0 || (now>=this.director.clerk.nextSignatureAt&&!this.warnings.length)))) &&
         (this.boss.id!=='ratcatcher' || (!this.director.ratcatcher.busy && (index!==0 || (now>=this.director.ratcatcher.nextSignatureAt && !this.warnings.length)))) &&
         (this.boss.id!=='courier' || (!this.director.courier.busy && (index!==0 || now>=this.director.courier.nextRouteAt))) &&
@@ -2223,7 +2231,7 @@ export class Game {
           y: this.boss.y,
         });
       }
-    if (this.boss.id !== 'ash-baker' && this.boss.id !== 'stitchwright' && this.boss.id !== 'bellringer' && this.boss.id !== 'alchemist' && this.boss.id !== 'matron' && this.boss.id !== 'black-ambulance' && this.boss.id !== 'tollkeeper' && this.boss.id !== 'chain-marshal' && this.boss.id !== 'gate-widow') this.director.step(this.signatureContext());
+    if (this.boss.id !== 'sluice-keeper' && this.boss.id !== 'ash-baker' && this.boss.id !== 'stitchwright' && this.boss.id !== 'bellringer' && this.boss.id !== 'alchemist' && this.boss.id !== 'matron' && this.boss.id !== 'black-ambulance' && this.boss.id !== 'tollkeeper' && this.boss.id !== 'chain-marshal' && this.boss.id !== 'gate-widow') this.director.step(this.signatureContext());
     if (this.boss.id === 'constable')
       moveConstable(
         this.boss,
@@ -2620,7 +2628,7 @@ export class Game {
     if(this.testingModified)return null;
     if (
       this.players.size !== 1 ||
-      !['lobby', 'mutationVote', 'contractVote', 'shop', 'loading', 'secretOffer'].includes(
+      !['lobby','storyScene', 'mutationVote', 'contractVote', 'shop', 'loading', 'secretOffer'].includes(
         this.phase,
       )
     )
@@ -2712,13 +2720,14 @@ export class Game {
       !int(save.accords) ||
       !int(save.rng) ||
       !int(save.nextId, 1) ||
-      !['lobby', 'mutationVote', 'contractVote', 'shop', 'loading', 'secretOffer'].includes(
+      !['lobby','storyScene', 'mutationVote', 'contractVote', 'shop', 'loading', 'secretOffer'].includes(
         save.phase,
       ) ||
       !int(save.phaseEnds) ||
-      (save.phase !== 'lobby' && (save.phaseEnds < save.tick || save.phaseEnds - save.tick > 1800))
+      (save.phase !== 'lobby' && save.phase!=='storyScene' && (save.phaseEnds < save.tick || save.phaseEnds - save.tick > 1800))
     )
       throw Error('invalidCheckpoint');
+    if(save.phase==='storyScene'&&save.settings.mode!=='story')throw Error('invalidStoryState');
     if(!validStoryBoundary(save.settings.mode,save.storyChoices,save.encounter,save.phase))throw Error('invalidStoryState');
     if(save.settings.mode==='story'&&(save.settings.openingBossId!=='constable'||save.settings.openingArenaId!=='gatehouse'||save.settings.arenaSelection!=='route'||save.arenaId===undefined))throw Error('invalidStoryState');
     const g = new Game(save.settings),
@@ -2885,7 +2894,7 @@ export class Game {
       save.contractCards.length > 3 ||
       !save.contractCards.every(validContract) ||
       (save.phase === 'contractVote' && save.contractCards.length !== 3) ||
-      (save.phase === 'mutationVote' && save.mutationCards.length !== 3)
+      (['storyScene','mutationVote'].includes(save.phase) && save.mutationCards.length !== 3)
     )
       throw Error('invalidCards');
     if(g.settings.mode==='story'){
@@ -2905,7 +2914,7 @@ export class Game {
       typeof save.votes !== 'object' ||
       Array.isArray(save.votes) ||
       Object.keys(save.votes).some((id) => id !== 'solo') ||
-      Object.values(save.votes).some((i) => !int(i, 0, 2))
+      Object.values(save.votes).some((i) => !int(i, 0, 2)||(save.phase==='storyScene'&&i!==1))
     )
       throw Error('invalidVotes');
     const player = g.addPlayer('solo', p.name, p.classId);
@@ -2978,7 +2987,7 @@ export class Game {
   // Snapshot is for first-playable rendering and boundary saves, never a trusted online combat result.
   authoritativeCheckpoint() {
     if (
-      !['lobby', 'mutationVote', 'contractVote', 'shop', 'loading', 'secretOffer'].includes(
+      !['lobby','storyScene', 'mutationVote', 'contractVote', 'shop', 'loading', 'secretOffer'].includes(
         this.phase,
       ) ||
       !this.players.size

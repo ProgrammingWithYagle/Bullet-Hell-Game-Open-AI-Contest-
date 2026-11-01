@@ -1,3 +1,4 @@
+import {validFreePlay} from './free-play.ts';
 import catalog from "../../content/catalog.json";
 import { Random } from "./random.ts";
 import threats from "./boss-threats.json";
@@ -8,6 +9,8 @@ export function publicRunSettings(
   settings: Partial<Settings>,
 ): Partial<Settings> {
   if(settings.mode==='story')return {...settings,openingBossId:'constable',openingArenaId:'gatehouse',arenaSelection:'route'};
+  if(settings.freePlay!==undefined&&!validFreePlay(settings.freePlay))throw Error('Invalid Free Play settings');
+  if(settings.freePlay?.openingBossId)return {...settings,openingBossId:settings.freePlay.openingBossId};
   const mode = settings.mode ?? "short",
     seed = settings.seed ?? 1;
   const source =

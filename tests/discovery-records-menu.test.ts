@@ -37,7 +37,7 @@ test('code lookup keeps actionable errors and disposal cancels without a late la
  const endpoint=await http(t,(request,response)=>{
   response.setHeader('Content-Type','application/json');
   if(request.url==='/api/health')return response.end(JSON.stringify(health));
-  if(request.url==='/api/rooms')return response.end('[]');
+  if(request.url?.split('?')[0]==='/api/rooms')return response.end('[]');
   if(hold){pending=true;response.on('close',()=>{aborted=true;});return;}
   response.writeHead(codeStatus).end('{}');
  });

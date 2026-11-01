@@ -1,3 +1,4 @@
+import {roomKind} from '../shared/free-play.ts';
 import { implementedBossIds } from '../shared/game.ts';
 import { Server } from '@colyseus/core';
 import { WebSocketTransport } from '@colyseus/ws-transport';
@@ -196,11 +197,12 @@ export function createGameServer(
         capacity.cancelAdmission(req.params.id);
         res.sendStatus(204);
       });
-      app.get('/api/rooms', (_req, res) =>
+      app.get('/api/rooms', (req, res) =>
         res.json(
           [...liveRooms.values()]
-            .filter((r) => !r.privateCode)
+            .filter((r) => !r.privateCode && (!req.query.kind||roomKind(r.game.settings.mode)===req.query.kind))
             .map((r) => ({
+              kind:roomKind(r.game.settings.mode),
               roomId: r.roomId,
               name: r.game.players.get(r.state.owner)?.name??'',
               mode: r.metadata.mode,
@@ -226,7 +228,7 @@ export function createGameServer(
           res.status(404).json({ error: 'invalidCode' });
           return;
         }
-        res.json({ roomId,hasPassword:liveRooms.get(roomId)?.hasPassword??false });
+        res.json({ roomId,kind:roomKind(liveRooms.get(roomId)!.game.settings.mode),hasPassword:liveRooms.get(roomId)?.hasPassword??false });
       });
     },
   });

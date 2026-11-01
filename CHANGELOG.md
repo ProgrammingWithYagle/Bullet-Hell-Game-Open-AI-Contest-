@@ -1,6 +1,30 @@
 # Changelog
 
-Development build **2026.10.31-story-editions**, protocol 46. The current contest Site uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.10.31-story-hubs**, protocol 47. The current contest Site uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-10-31 — Story Campaign and Free Play have their own homes
+
+### Choose a chapter or make a free run
+
+- The home Story Campaign entry now opens an arc and chapter hub. Story never appears among the five Free Play route choices. Story setup keeps its authored opening and route; Free Play exposes class, route, map, difficulty and optional opening boss, form and numeric seed in both audiences.
+- Explicit boss/form/seed customization is marked as practice and excluded from mastery, journal stamps and team rankings. Existing earned SP and coin curves remain, and supported custom settings persist through legal boundary saves. Story rejects custom Free Play settings.
+- Join Room separates Story and Free Play categories, room discovery filters by category, codes identify their category and explicit cross-category joins are rejected. These are different room categories on the same compatible host; no new paid server or capacity claim is made.
+- General abilities now have a dedicated shop tab beside equipment and the class skill tree. Classic and expanded trees keep their own navigation and purchase guard.
+
+### A longer illustrated reading path
+
+- The first story arc has three chapters with five encounter scenes each, plus an expanded prologue, chapter conversations and ending epilogues. Existing painted locations and survivor portraits frame a paged visual-novel reader with previous/next controls and an optional transcript.
+- Each English, Spanish and Arabic edition gains fifty dialogue turns across the prologue, chapter conversations, fifteen reports and three ending epilogues. Recovered scenes can be reread in the chapter hub. Unsupported narrative editions retain explicit English fallback.
+- After each ordinary Story fight, an untimed saved reading boundary waits for every connected eligible survivor to press Ready before preparation. It advances no combat clock and awards no extra progress. Free Play keeps its normal timers. Larger future arcs, new chapters and final narrative/native-language/rendered/pacing acceptance remain unfinished.
+
+## 2026-10-31 — Sluice Keeper releases readable pressure
+
+### Dry banks, shootable valves and moving crests
+
+- Single, opposing, alternating and crossed channels are bounded by the actual floor. Blue water pushes without contact damage; each damaging crest has a fresh full warning and uses its own visible swept front. Crests wash through cover.
+- Shootable valves drain only their own current and cancel its crest. Brutal and Crazed schedule freshly warned later pressure with new valves while retaining the phase that issued it. Combined push is capped at 90 px/s.
+- Harmless bounded approaches, fifteen-locale phase/form help and recovered Ressa Noll lore deepen the existing grade 4/subtier−2 identity. Health factor, deadline, artwork and music remain. Original-boss quality passes are now 16/60, with 44 remaining.
+- Ash Baker’s first rolling activation now ignores movement from its harmless warning frame while keeping later swept contact. Known issued local Story boundaries and ending receipts migrate to protocol 47; online compatibility remains exact.
 
 ## 2026-10-31 — The Open Ledger can be read in Spanish and Arabic
 
