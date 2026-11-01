@@ -38,7 +38,7 @@ Free Play should expose the same regular-enemy scenarios through suitable preset
 
 ## Next implementation sequence
 
-1. Finish and verify the full-viewport reader and Story-only removal of mutation votes, including known issued-save conversion.
+1. Complete foundation: the full-viewport reader and Story-only removal of mutation votes pass the1,096-test source gate and exact-source CI, including known issued-save conversion. Human/rendered acceptance remains open.
 2. Write a complete first-chapter scene/objective graph with the new pace, class teaching opportunities and recurring cast.
 3. Implement one ordinary-enemy objective in shared authority and a Free Play replay, with correct clears and records.
 4. Implement one complete learn/practice/prove technique path for all seven roles, including persistence, preparation and co-op behavior.

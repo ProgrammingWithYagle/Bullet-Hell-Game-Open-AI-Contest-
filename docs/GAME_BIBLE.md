@@ -1,5 +1,7 @@
 # Grave Accord - Stage 1 production bible
 
+Current Story exception: Story aftermaths are untimed reading phases followed directly by route choices after party Ready. Random mutations remain in Free Play. The current Story SP/economy and fifteen-boss structure are prototypes scheduled for replacement by the accepted mastery/ordinary-encounter design in STORY_CAMPAIGN_REDESIGN.md. D- through SS+ technique grades and equipped-build estimates remain distinct from permanent narrative mastery.
+
 Current runtime override: [difficulty rules and phase pacing](DIFFICULTY_AND_PHASES.md) supersedes the initial universal revive/Accord and three/four entry-phase assumptions below. The authored design history is retained; current source is protocol 16.
 
 > Current implementation/production authority: [state](IMPLEMENTATION_STATE.md), [progress](DEVELOPMENT_PROGRESS.md), [fixed threats](FIXED_BOSS_THREATS.md) and [continuation checkpoint](CHECKPOINT_2026_10_25.md). The expanded target is 150 ordinary bosses plus secrets; 60 are currently playable (59 ordinary, one secret). Earlier route tables below retain design history; shared fixed-grade campaign selection supersedes strict primary-route fences and encounter rerating.
