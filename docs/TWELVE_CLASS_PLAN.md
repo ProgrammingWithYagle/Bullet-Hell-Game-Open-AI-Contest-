@@ -29,3 +29,5 @@ Each addition needs its own base kit, weapons, specialization behavior and actua
 Summoner particularly needs deterministic unit budgets and ownership, pathfinding, target selection, damage credit, cleanup and late/reconnecting-player behavior. No unit should remain after its owner or encounter has ended. Commanding an army should remain useful when party size grows, without filling the entire screen with particles or hiding enemy warnings.
 
 The story should introduce disciplines through people and tasks before explaining their advanced possibilities. The larger ensemble and human antagonists should include differing practitioners of the same discipline rather than one representative character per class.
+
+Working new-lead treatments are in NEW_CLASS_CAST_TREATMENTS.md:Dara Flint/Swordsman,Joss Merrow/Summoner,Nela Venn/Ranger,Perrin Moss/Alchemist and Iven Cair/Bard. These names and biographies are proposals, not selectable characters or established scene canon. Each eventual lead needs a complete personal arc; update the arc register when the playable cast is actually expanded.
