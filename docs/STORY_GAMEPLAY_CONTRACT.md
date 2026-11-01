@@ -8,6 +8,8 @@ Boss classifications come from `src/shared/boss-threats.json` and the helpers in
 
 Class D- through SS+ grades already exist on specialization nodes in `content/catalog.json`. Each class has three parent branches, each containing eighteen graded techniques across three six-depth paths. The letter bands follow investment depth; the three same-cost alternatives in a band have differing benefits and complexity. A label alone does not establish strict superiority over every alternative. A full path costs21SP; normal campaign budgets arrive at27SP. The story must not treat this as a permanent ranking that makes one entire class inherently inferior to another.
 
+Equipped builds also have a shared D- through SS+ assessment in `src/shared/build-rating.ts`: weapon performance, survival and support are normalized to the class baseline, then combined with the published weights. Contract recommendations compare party capacity with the required rating. This is a field-preparation estimate, not a guarantee of victory or a permanent measure of someone's worth. Temporary mutations, auras and player execution do not change the published rating. Story references should distinguish this equipped grade from a technique's individual grade.
+
 Use the actual technique grade, prerequisites, cost, effect and limitations when writing training or mastery. All seven classes retain narrative competence and useful play. A medical or defensive technique is not judged solely by weapon damage. General Sprint/Double Dash retain their earned costs and optional status. Respec and field preparation do not imply that a survivor forgets their life history.
 
 ## Authoring record for a gameplay-bearing scene

@@ -1,6 +1,16 @@
 # Current implementation state
 
-## Current development — Stationmaster, 2026-10-31
+## Current development — Lamplighter and reading, 2026-10-31
+
+Build **2026.10.31-lamplight-reading / protocol 47**, verified game source `8a4674c0934bd12fa20e0c9cddb45c6e7570ee02`, passes **1,082 tests, 0 failures**, TypeScript, all fifteen catalogs, artwork, production build and 71 atlas contracts. Testing: **http://127.0.0.1:5294/** / backend2670. Public interface: **http://127.0.0.1:5295/** / backend2671. Both frozen audiences pass52served-file/catalog checks and actual two-peer password/code/chat/host flows. Evidence is in `reviews/lamplight-reading-2026-10-31/`. [Exact-source CI run 41262749469](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/41262749469) passed every job and step; the exact-source result is saved in ci.json.
+
+[Lamplighter](LAMPLIGHT_WATCH.md) now gives each warned active survivor a reachable refuge, moving shadows and linked shootable candles. Banking a candle anchors and widens its already-promised destinations. Each newly warned watch has its own hit budget; late activation is protected until a fresh warning. Static/moving/double/triple phases and advanced returns retain their issuing phase and clean up on stagger/reset/defeat. Grade4/subtier0, health factor0.88, base deadline120seconds and existing art/music remain. Fifteen catalogs include phase/form guidance and Tavin Orr's compromise over the inadequate lamp standard. Quality implementations total **18/60**, with **42** remaining; final human acceptance remains open.
+
+[Reading bookmarks](STORY_READING.md) persist512bounded per-scene/language positions, reset on edited text and preserve corrupt/unavailable storage with an honest session fallback. They are separate from profiles, earned receipts and Ready. The hub's formerly unbound completed-scene archive buttons now open only earned reports. Software checks include432geometry cases, over5,000legal-position witnesses, fifty targets, actual Soldier wick hits, sixty cleanup cycles, actual two-peer replication and reader/archive/storage controllers. No browser automation or rendered/device/listening/native-language/final-balance acceptance is claimed.
+
+Online peers require protocol47 and content revision `e80e0f1d1bd444b1c5d16fae4c7aae322b31bcac70ac180b74964f6ba0326b48`. Known issued77b0d920local boundaries, profiles and practice records migrate; authority restoration stays exact. The public Site version4/protocol43, production, main and Windows releases are unchanged. The full game-development goal remains active and incomplete.
+
+## Earlier development — Stationmaster, 2026-10-31
 
 Build **2026.10.31-station-signals / protocol 47**, verified game source `ea08414c2b1463c5f26f85c02c4ece8eac0a8735`, passes **1,066 tests, 0 failures**, TypeScript, all fifteen catalogs, artwork, production build and 71 atlas contracts. Testing: **http://127.0.0.1:5292/** / backend 2668. Public interface: **http://127.0.0.1:5293/** / backend 2669. Both frozen audiences pass 52 served-file/catalog checks and actual two-peer password/code/chat/host flows. Receipts are in `reviews/station-signals-2026-10-31/`. [Exact-source CI run 41257403707](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/41257403707) passed every job and step; `ci.json` preserves the successful exact-source result.
 
