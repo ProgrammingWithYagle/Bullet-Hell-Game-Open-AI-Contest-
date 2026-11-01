@@ -7805,18 +7805,25 @@
     "damageWindowFraction": 1,
     "finale": false,
     "secret": false,
-    "lore": "A rigid dead conductor with a huge ticket punch and broad signal flags. The quarantine left its work unfinished.",
+    "lore": "Neris Vale held the last train while the council ordered the lower platform sealed. She counted the wounded aboard instead of checking their permits. The departure bell rang after the gates closed, but no arrival was ever recorded. Her signal still promises one clear track to anyone willing to cross the platform.",
     "artBrief": "A rigid dead conductor with a huge ticket punch and broad signal flags. Dry ink contour and matte gouache; one clear prop, broad quiet fabric shapes, three grouped value masses. No particle cloud or dense all-over filigree.",
     "signature": {
       "id": "stationmaster",
-      "behavior": "Alternate two rail lanes; a red signal closes one and a white signal opens its partner.",
-      "counterplay": "Follow the distinct cross and arrow symbols rather than signal color alone.",
+      "behavior": "Bounded train dispatches change from paired tracks to a rotating three-track timetable, then freshly warned crossings. Every wave retains an open track. Shootable signals can open another track; advanced returns retain their issuing phase.",
+      "counterplay": "Arrows mark an open track; crosses mark an incoming train. Each wave warns for two seconds. Only the visible moving car hurts, once per entire dispatch, including its later crossing. Leave its path or shoot its signal. Trains pass through cover. No General purchase is required.",
       "parameters": {
-        "railWidthPx": 125,
-        "rails": 2,
-        "trainSpeedPxPerSecond": 300,
-        "warningSeconds": 1.5,
-        "cycleSeconds": 7
+        "warningSeconds": 2,
+        "trainTravelSeconds": 2.6,
+        "railWidthPx": 100,
+        "carLengthPx": 125,
+        "signalHealthHP": 30,
+        "maximumSignalHealthHP": 60,
+        "damageHP": 20,
+        "crossingDelaySeconds": 4,
+        "finalCrossingDelaySeconds": 3.6,
+        "brutalReturnDelaySeconds": 7,
+        "crazedReturnDelaySeconds": 12,
+        "walkingSpeedPxPerSecond": 50
       }
     },
     "arenaIds": [
@@ -7828,81 +7835,67 @@
       "crown-crypt"
     ],
     "mechanics": {
-      "railWidthPx": 125,
-      "rails": 2,
-      "trainSpeedPxPerSecond": 300,
-      "warningSeconds": 1.5,
-      "cycleSeconds": 7
+      "warningSeconds": 2,
+      "trainTravelSeconds": 2.6,
+      "railWidthPx": 100,
+      "carLengthPx": 125,
+      "signalHealthHP": 30,
+      "maximumSignalHealthHP": 60,
+      "damageHP": 20,
+      "crossingDelaySeconds": 4,
+      "finalCrossingDelaySeconds": 3.6,
+      "brutalReturnDelaySeconds": 7,
+      "crazedReturnDelaySeconds": 12,
+      "walkingSpeedPxPerSecond": 50
     },
     "phases": [
       {
         "healthThreshold": 1,
         "accordBreak": false,
+        "patternPhase": 0,
         "attacks": [
           {
-            "kind": "charge",
-            "count": 1,
-            "speed": 300,
-            "damage": 17,
-            "interval": 7,
-            "telegraph": 1.5
-          },
-          {
-            "kind": "cross",
-            "count": 16,
-            "speed": 145,
-            "damage": 11,
-            "interval": 5,
-            "telegraph": 1
+            "kind": "zone",
+            "count": 2,
+            "speed": 0,
+            "damage": 20,
+            "interval": 11,
+            "telegraph": 2,
+            "duration": 2.6
           }
-        ],
-        "patternPhase": 0
+        ]
       },
       {
         "healthThreshold": 0.75,
         "accordBreak": true,
+        "patternPhase": 1,
         "attacks": [
           {
-            "kind": "charge",
-            "count": 1,
-            "speed": 324,
-            "damage": 17,
-            "interval": 6.3,
-            "telegraph": 1.5
-          },
-          {
-            "kind": "cross",
-            "count": 18,
-            "speed": 157,
-            "damage": 11,
-            "interval": 4.5,
-            "telegraph": 1
+            "kind": "zone",
+            "count": 3,
+            "speed": 0,
+            "damage": 20,
+            "interval": 11,
+            "telegraph": 2,
+            "duration": 2.6
           }
-        ],
-        "patternPhase": 1
+        ]
       },
       {
         "healthThreshold": 0.4,
         "accordBreak": true,
+        "patternPhase": 2,
         "attacks": [
           {
-            "kind": "charge",
-            "count": 1,
-            "speed": 348,
-            "damage": 17,
-            "interval": 5.6,
-            "telegraph": 1.5
-          },
-          {
-            "kind": "cross",
-            "count": 20,
-            "speed": 168,
-            "damage": 11,
-            "interval": 4,
-            "telegraph": 1
+            "kind": "zone",
+            "count": 5,
+            "speed": 0,
+            "damage": 20,
+            "interval": 11,
+            "telegraph": 2,
+            "duration": 2.6
           }
-        ],
-        "patternPhase": 2
+        ]
       }
     ],
     "variants": {
@@ -7923,106 +7916,74 @@
           {
             "healthThreshold": 1,
             "accordBreak": false,
-            "signatureRepeatOffsetSeconds": 0,
+            "patternPhase": 0,
             "attacks": [
               {
-                "kind": "charge",
-                "count": 1,
-                "speed": 300,
-                "damage": 17,
-                "interval": 6.3,
-                "telegraph": 1.5,
-                "comboOffsetSeconds": 0
-              },
-              {
-                "kind": "cross",
-                "count": 16,
-                "speed": 145,
-                "damage": 11,
-                "interval": 4.5,
-                "telegraph": 1,
+                "kind": "zone",
+                "count": 2,
+                "speed": 0,
+                "damage": 20,
+                "interval": 18,
+                "telegraph": 2,
+                "duration": 2.6,
                 "comboOffsetSeconds": 0
               }
             ],
-            "patternPhase": 0
+            "signatureRepeatOffsetSeconds": 0
           },
           {
             "healthThreshold": 0.75,
             "accordBreak": false,
-            "signatureRepeatOffsetSeconds": 0,
+            "patternPhase": 1,
             "attacks": [
               {
-                "kind": "charge",
-                "count": 1,
-                "speed": 324,
-                "damage": 17,
-                "interval": 5.67,
-                "telegraph": 1.5,
-                "comboOffsetSeconds": 0
-              },
-              {
-                "kind": "cross",
-                "count": 18,
-                "speed": 157,
-                "damage": 11,
-                "interval": 4.05,
-                "telegraph": 1,
+                "kind": "zone",
+                "count": 3,
+                "speed": 0,
+                "damage": 20,
+                "interval": 18,
+                "telegraph": 2,
+                "duration": 2.6,
                 "comboOffsetSeconds": 0
               }
             ],
-            "patternPhase": 1
+            "signatureRepeatOffsetSeconds": 0
           },
           {
             "healthThreshold": 0.5,
             "accordBreak": false,
-            "signatureRepeatOffsetSeconds": 0,
+            "patternPhase": 2,
             "attacks": [
               {
-                "kind": "charge",
-                "count": 1,
-                "speed": 348,
-                "damage": 17,
-                "interval": 5.04,
-                "telegraph": 1.5,
-                "comboOffsetSeconds": 0
-              },
-              {
-                "kind": "cross",
-                "count": 20,
-                "speed": 168,
-                "damage": 11,
-                "interval": 3.6,
-                "telegraph": 1,
+                "kind": "zone",
+                "count": 5,
+                "speed": 0,
+                "damage": 20,
+                "interval": 18,
+                "telegraph": 2,
+                "duration": 2.6,
                 "comboOffsetSeconds": 0
               }
             ],
-            "patternPhase": 2
+            "signatureRepeatOffsetSeconds": 0
           },
           {
             "healthThreshold": 0.25,
             "accordBreak": false,
-            "signatureRepeatOffsetSeconds": 1.25,
+            "patternPhase": 3,
             "attacks": [
               {
-                "kind": "charge",
-                "count": 1,
-                "speed": 348,
-                "damage": 17,
-                "interval": 5.04,
-                "telegraph": 1.5,
+                "kind": "zone",
+                "count": 4,
+                "speed": 0,
+                "damage": 20,
+                "interval": 18,
+                "telegraph": 2,
+                "duration": 2.6,
                 "comboOffsetSeconds": 0
-              },
-              {
-                "kind": "cross",
-                "count": 20,
-                "speed": 168,
-                "damage": 11,
-                "interval": 3.6,
-                "telegraph": 1,
-                "comboOffsetSeconds": 1.25
               }
             ],
-            "patternPhase": 3
+            "signatureRepeatOffsetSeconds": 0
           }
         ]
       },
@@ -8037,106 +7998,74 @@
           {
             "healthThreshold": 1,
             "accordBreak": false,
-            "signatureRepeatOffsetSeconds": 0,
+            "patternPhase": 0,
             "attacks": [
               {
-                "kind": "charge",
-                "count": 1,
-                "speed": 300,
-                "damage": 17,
-                "interval": 6.3,
-                "telegraph": 1.5,
-                "comboOffsetSeconds": 0
-              },
-              {
-                "kind": "cross",
-                "count": 16,
-                "speed": 145,
-                "damage": 11,
-                "interval": 4.5,
-                "telegraph": 1,
+                "kind": "zone",
+                "count": 2,
+                "speed": 0,
+                "damage": 20,
+                "interval": 23,
+                "telegraph": 2,
+                "duration": 2.6,
                 "comboOffsetSeconds": 0
               }
             ],
-            "patternPhase": 0
+            "signatureRepeatOffsetSeconds": 0
           },
           {
             "healthThreshold": 0.75,
             "accordBreak": false,
-            "signatureRepeatOffsetSeconds": 0,
+            "patternPhase": 1,
             "attacks": [
               {
-                "kind": "charge",
-                "count": 1,
-                "speed": 324,
-                "damage": 17,
-                "interval": 5.67,
-                "telegraph": 1.5,
-                "comboOffsetSeconds": 0
-              },
-              {
-                "kind": "cross",
-                "count": 18,
-                "speed": 157,
-                "damage": 11,
-                "interval": 4.05,
-                "telegraph": 1,
+                "kind": "zone",
+                "count": 3,
+                "speed": 0,
+                "damage": 20,
+                "interval": 23,
+                "telegraph": 2,
+                "duration": 2.6,
                 "comboOffsetSeconds": 0
               }
             ],
-            "patternPhase": 1
+            "signatureRepeatOffsetSeconds": 0
           },
           {
             "healthThreshold": 0.5,
             "accordBreak": false,
-            "signatureRepeatOffsetSeconds": 0,
+            "patternPhase": 2,
             "attacks": [
               {
-                "kind": "charge",
-                "count": 1,
-                "speed": 348,
-                "damage": 17,
-                "interval": 5.04,
-                "telegraph": 1.5,
-                "comboOffsetSeconds": 0
-              },
-              {
-                "kind": "cross",
-                "count": 20,
-                "speed": 168,
-                "damage": 11,
-                "interval": 3.6,
-                "telegraph": 1,
+                "kind": "zone",
+                "count": 5,
+                "speed": 0,
+                "damage": 20,
+                "interval": 23,
+                "telegraph": 2,
+                "duration": 2.6,
                 "comboOffsetSeconds": 0
               }
             ],
-            "patternPhase": 2
+            "signatureRepeatOffsetSeconds": 0
           },
           {
             "healthThreshold": 0.25,
             "accordBreak": false,
-            "signatureRepeatOffsetSeconds": 1.25,
+            "patternPhase": 3,
             "attacks": [
               {
-                "kind": "charge",
-                "count": 1,
-                "speed": 348,
-                "damage": 17,
-                "interval": 5.04,
-                "telegraph": 1.5,
+                "kind": "zone",
+                "count": 4,
+                "speed": 0,
+                "damage": 20,
+                "interval": 23,
+                "telegraph": 2,
+                "duration": 2.6,
                 "comboOffsetSeconds": 0
-              },
-              {
-                "kind": "cross",
-                "count": 20,
-                "speed": 168,
-                "damage": 11,
-                "interval": 3.6,
-                "telegraph": 1,
-                "comboOffsetSeconds": 1.25
               }
             ],
-            "patternPhase": 3
+            "signatureRepeatOffsetSeconds": 0
           }
         ],
         "additionalPatterns": [

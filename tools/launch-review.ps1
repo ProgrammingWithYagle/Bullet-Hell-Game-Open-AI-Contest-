@@ -6,8 +6,15 @@ $launchManifest=Get-Content -LiteralPath ($Scope+'/preview-'+$Audience+'.json') 
 if ((Get-FileHash -LiteralPath $launchManifest.manifestPath -Algorithm SHA256).Hash.ToLowerInvariant() -ne $launchManifest.manifestSha256) { throw 'Frozen manifest differs' }
 if ((Get-FileHash -LiteralPath $launchManifest.backend.path -Algorithm SHA256).Hash.ToLowerInvariant() -ne $launchManifest.backend.sha256) { throw 'Frozen backend differs' }
 $launchClientPort=([Uri]$launchManifest.url).Port;$launchServerPort=([Uri]$launchManifest.endpoint).Port
-$launchPorts=@([System.Net.NetworkInformation.IPGlobalProperties]::GetIPGlobalProperties().GetActiveTcpListeners() | ForEach-Object {$_.Port})
-if ($launchClientPort -in $launchPorts -or $launchServerPort -in $launchPorts) { throw 'A review port is already in use' }
+# Probe only the loopback ports this review will use. The machine-wide TCP
+# inventory can be unavailable in a restricted desktop process.
+foreach($launchPort in @($launchClientPort,$launchServerPort)) {
+ $launchProbe=[System.Net.Sockets.TcpListener]::new([System.Net.IPAddress]::Loopback,$launchPort)
+ $launchProbe.ExclusiveAddressUse=$true
+ try { $launchProbe.Start() }
+ catch { throw ('Review port '+$launchPort+' is unavailable: '+$_.Exception.Message) }
+ finally { $launchProbe.Stop() }
+}
 $launchLabel=Split-Path $Scope -Leaf
 $launchSaved=@{}
 foreach($launchName in @('PORT','HOST','CLIENT_ORIGINS','RENDER_GIT_COMMIT','GRAVE_TESTING_SERVER','GRAVE_RECORDS_DB')){$launchSaved[$launchName]=[Environment]::GetEnvironmentVariable($launchName,'Process')}

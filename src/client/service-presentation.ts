@@ -245,35 +245,29 @@ export class ServicePresentation {
           if(Math.abs(cue.forceX)>0)for(let x=cue.x+60;x<cue.x+cue.width;x+=160)arrow(x,cue.y+cue.height/2,direction,0xa5dcda,50);
           else for(let y=cue.y+60;y<cue.y+cue.height;y+=140)arrow(cue.x+cue.width/2,y,direction,0xa5dcda,50);
         }
-      } else if (cue.kind === 'service-rail') {
-        const railColor = cue.open ? 0xa4dec5 : color;
-        h.lineStyle(3, railColor, 0.7)
-          .lineBetween(cue.x - cue.width / 2, cue.y, cue.x - cue.width / 2, cue.y + cue.height)
-          .lineBetween(cue.x + cue.width / 2, cue.y, cue.x + cue.width / 2, cue.y + cue.height);
-        for (let y = cue.y + 100; y < cue.y + cue.height; y += 180) {
-          if (cue.open) arrow(cue.x, y, Math.PI / 2, railColor);
-          else
-            h.lineStyle(4, railColor, 0.95)
-              .lineBetween(cue.x - 18, y - 18, cue.x + 18, y + 18)
-              .lineBetween(cue.x + 18, y - 18, cue.x - 18, y + 18);
+      } else if(cue.kind==='service-train-signal'){
+        const ink=cue.open?0xa4dec5:0xf4b894;
+        h.lineStyle(3,ink,1).strokeCircle(cue.x,cue.y,cue.radius);
+        const track=cues.find(q=>q.kind==='service-train-track'&&q.signal===cue.id);
+        if(track&&track.kind==='service-train-track')h.lineStyle(1,ink,.5).lineBetween(cue.x,cue.y,track.fromX+track.carWidth/2,track.fromY+track.carHeight/2);
+        if(cue.open)arrow(cue.x,cue.y,0,ink,22);
+        else{
+          h.lineStyle(4,ink,1).lineBetween(cue.x-8,cue.y-8,cue.x+8,cue.y+8).lineBetween(cue.x+8,cue.y-8,cue.x-8,cue.y+8);
+          f.fillStyle(0x1e2020,.95).fillRect(cue.x-22,cue.y-30,44,5);f.fillStyle(ink,1).fillRect(cue.x-22,cue.y-30,44*cue.health/cue.maxHealth,5);
         }
-        if (active && !cue.open) {
-          this.image(
-            cue.id,
-            'midnight-prop-5',
-            cue.x,
-            cue.trainY + cue.trainHeight / 2,
-            cue.trainHeight,
-            cue.width,
-            Math.PI / 2,
-          );
-          if (hitboxes)
-            h.lineStyle(2, 0xeddfbe, 1).strokeRect(
-              cue.x - cue.width / 2,
-              cue.trainY,
-              cue.width,
-              cue.trainHeight,
-            );
+      } else if(cue.kind==='service-train-track'){
+        const ink=cue.open?0xa4dec5:now<cue.at?0xe4cf91:0xf19a77,vertical=cue.axis==='y';
+        h.lineStyle(2,ink,cue.open?.55:.8).strokeRect(cue.x,cue.y,cue.width,cue.height);
+        const angle=Math.atan2(cue.toY-cue.fromY,cue.toX-cue.fromX),length=vertical?cue.height:cue.width;
+        for(let along=60;along<length;along+=170){
+          const x=vertical?cue.x+cue.width/2:cue.x+along,y=vertical?cue.y+along:cue.y+cue.height/2;
+          if(cue.open)arrow(x,y,angle,ink,34);
+          else h.lineStyle(3,ink,.85).lineBetween(x-11,y-11,x+11,y+11).lineBetween(x+11,y-11,x-11,y+11);
+        }
+        if(!cue.open&&now<cue.at)arrow(cue.fromX+cue.carWidth/2,cue.fromY+cue.carHeight/2,angle,ink,46);
+        if(active&&!cue.open){
+          this.image(cue.id,'midnight-prop-5',cue.carX+cue.carWidth/2,cue.carY+cue.carHeight/2,vertical?cue.carHeight:cue.carWidth,vertical?cue.carWidth:cue.carHeight,angle);
+          h.lineStyle(hitboxes?2:1,hitboxes?0xeddfbe:ink,hitboxes?1:.7).strokeRect(cue.carX,cue.carY,cue.carWidth,cue.carHeight);
         }
       } else if (cue.kind === 'service-sanctuary') {
         if (active && !cue.neutralized) {

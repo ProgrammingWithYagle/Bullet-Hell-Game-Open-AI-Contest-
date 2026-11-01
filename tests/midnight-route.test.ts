@@ -103,9 +103,9 @@ test('every Midnight identity executes all Normal/Brutal phases on actual maps a
           g.step();
         }
         let observed = false;
-        for (let tick = 0; tick < 150; tick++) {
+        for (let tick = 0; tick < (id==='stationmaster'?24*30:150); tick++) {
           g.step();
-          observed ||= g.director.cues().some((c) => (c.kind.startsWith('stitch-')||c.kind.startsWith('service-')||c.kind.startsWith('mold-') || c.kind.startsWith('bell-')));
+          observed ||= g.director.cues().some((c) => id==='stationmaster'?((c.kind==='service-train-track'||c.kind==='service-train-signal')&&c.phase===phase):(c.kind.startsWith('stitch-')||c.kind.startsWith('service-')||c.kind.startsWith('mold-') || c.kind.startsWith('bell-')));
         }
         assert(observed, id + ' did not execute its signature in phase ' + phase);
       }

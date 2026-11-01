@@ -157,18 +157,18 @@ test('Sluice currents push without damage and prediction uses exactly the same f
     assert(Math.abs(prediction.player!.y - p.y) < 1e-6);
   }
 });
-test('Stationmaster alternates two distinct signals and swept trains never hit the open track', () => {
+test('Stationmaster alternates open tracks and only actual swept trains damage the closed one', () => {
   const f = fixture('stationmaster');
   f.cast();
-  const rails = of(f.director, 'service-rail'),
+  const rails = of(f.director, 'service-train-track'),
     closed = rails.find((r) => !r.open)!,
     open = rails.find((r) => r.open)!;
-  f.c.targets[0].x = closed.x;
-  f.c.targets[0].oldX = closed.x;
+  f.c.targets[0].x = closed.x + closed.width/2;
+  f.c.targets[0].oldX = closed.x + closed.width/2;
   f.c.targets[0].y = 50;
   f.c.targets[0].oldY = 50;
-  f.c.targets[1].x = open.x;
-  f.c.targets[1].oldX = open.x;
+  f.c.targets[1].x = open.x + open.width/2;
+  f.c.targets[1].oldX = open.x + open.width/2;
   f.c.targets[1].y = 50;
   f.c.targets[1].oldY = 50;
   f.step(closed.at - 1);
@@ -178,10 +178,11 @@ test('Stationmaster alternates two distinct signals and swept trains never hit t
     f.hurt.map((h) => h.id),
     ['a'],
   );
+  f.step(499);
   f.c.tick = 500;
   f.cast();
   assert.equal(
-    of(f.director, 'service-rail')
+    of(f.director, 'service-train-track')
       .filter((r) => !r.open)
       .at(-1)!.x,
     open.x,
@@ -292,6 +293,7 @@ test('Judge damages only its announced half, includes fast crossings and alterna
   );
   f.step(verdict.at + 1);
   assert.equal(f.hurt.length, 1);
+  f.step(499);
   f.c.tick = 500;
   f.cast();
   assert.equal(of(f.director, 'service-verdict').at(-1)!.side, 1);

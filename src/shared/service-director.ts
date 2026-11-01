@@ -1,3 +1,4 @@
+import {StationSignals,type StationCue} from './station-signals.ts';
 import {SluicePressure,type SluiceCue} from './sluice-pressure.ts';
 import {BakerOven,type BakerCue} from './baker-oven.ts';
 import {glassPlan,glassRayEnd,moveGlassSurgeon} from './glass-surgery.ts';
@@ -81,19 +82,6 @@ type Tether = Life &
     damage: number;
   };
 type Current = Life & Rect & { kind: 'service-current'; forceX: number; forceY: number };
-type Rail = Life & {
-  kind: 'service-rail';
-  x: number;
-  y: number;
-  width: number;
-  height: number;
-  trainY: number;
-  oldTrainY: number;
-  trainHeight: number;
-  open: boolean;
-  speed: number;
-  damage: number;
-};
 type Sanctuary = Life &
   Vec & {
     kind: 'service-sanctuary';
@@ -141,7 +129,7 @@ export type ServiceCue =
   | BakerCue
   | SluiceCue
   | Current
-  | Rail
+  | StationCue
   | Sanctuary
   | Caliper
   | Verdict
@@ -217,6 +205,7 @@ export function serviceBeamContact(
   );
 }
 export class ServiceDirector {
+  readonly stationmaster=new StationSignals();
   readonly sluice=new SluicePressure();
   readonly baker = new BakerOven();
   readonly matron=new MatronWard();
@@ -231,6 +220,7 @@ export class ServiceDirector {
   private contacts = new Map<string, number>();
   private once = new Set<string>();
   reset(kind: string, encounter = false) {
+    this.stationmaster.reset(0,encounter||kind!==this.kind);
     this.sluice.reset(0,encounter||kind!==this.kind);
     this.baker.reset(0,encounter||kind!==this.kind);
     this.stitchwright.reset(0, encounter || kind !== this.kind);
@@ -255,7 +245,7 @@ export class ServiceDirector {
     return {...move,multiplier:Math.min(move.multiplier,moldMovement(this.alchemist.cues(),position,now))};
   }
   cues(): ServiceCue[] {
-    return [...this.sluice.cues(),...this.baker.cues(),...this.stitchwright.cues(),...this.bellringer.cues(),...this.alchemist.cues(),...this.matron.cues(),...this.shapes.map((c) => {
+    return [...this.stationmaster.cues(),...this.sluice.cues(),...this.baker.cues(),...this.stitchwright.cues(),...this.bellringer.cues(),...this.alchemist.cues(),...this.matron.cues(),...this.shapes.map((c) => {
       if (c.kind === 'service-sanctuary')
         return {
           ...c,
@@ -269,7 +259,7 @@ export class ServiceDirector {
     })];
   }
   weakPoints() {
-    return [...this.sluice.weakPoints(),...this.baker.weakPoints(),...this.stitchwright.weakPoints(),...this.bellringer.weakPoints(),...this.matron.weakPoints(),...this.shapes.filter(
+    return [...this.stationmaster.weakPoints(),...this.sluice.weakPoints(),...this.baker.weakPoints(),...this.stitchwright.weakPoints(),...this.bellringer.weakPoints(),...this.matron.weakPoints(),...this.shapes.filter(
       (c): c is ServiceProp | Tether =>
         (c.kind === 'service-prop' || c.kind === 'service-tether') && c.health > 0,
     )];
@@ -278,6 +268,7 @@ export class ServiceDirector {
     return this.shapes.some((c) => c.id === id && c.kind === 'service-prop' && c.role === 'caster');
   }
   hit(id: number, damage: number, now: number) {
+    const station=this.stationmaster.hitSignal(id,damage,now);if(station)return station;
     const sluice=this.sluice.hit(id,damage,now);if(sluice)return sluice;
     const baker=this.baker.hit(id,damage,now);if(baker)return baker;
     const stitch = this.stitchwright.hit(id, damage, now); if (stitch) return stitch;
@@ -396,6 +387,7 @@ export class ServiceDirector {
   }
   cast(c: SignatureContext, target: Vec, attack: ServiceAttack) {
     if (!this.handles(c.bossId)) return false;
+    if(c.bossId==='stationmaster'){const handled=this.stationmaster.cast(c);this.nextSignatureAt=this.stationmaster.nextSignatureAt;return handled;}
     if(c.bossId==='sluice-keeper'){const handled=this.sluice.cast(c);this.nextSignatureAt=this.sluice.nextSignatureAt;return handled;}
     if(c.bossId==='ash-baker'){const handled=this.baker.cast(c,target);this.nextSignatureAt=this.baker.nextSignatureAt;return handled;}
     if(c.bossId==='matron')return this.matron.cast(c,target);
@@ -462,26 +454,6 @@ export class ServiceDirector {
         }
         for(const lens of lenses)lens.until=last;
         this.nextSignatureAt=Math.max(now+ticks(plan.cycle),last+ticks(1));
-        break;
-      }
-      case 'stationmaster': {
-        for (let n = 0; n < 2; n++)
-          this.shapes.push({
-            kind: 'service-rail',
-            id: c.id(),
-            x: b.x + b.width * (n ? 0.67 : 0.33),
-            y: b.y,
-            width: 125,
-            height: b.height,
-            trainY: b.y - 150,
-            oldTrainY: b.y - 150,
-            trainHeight: 150,
-            open: n !== index % 2,
-            speed: 300,
-            damage: attack.damage,
-            at: now + ticks(1.5),
-            until: now + ticks(1.5 + (b.height + 300) / 300),
-          });
         break;
       }
       case 'lamplighter':
@@ -713,6 +685,7 @@ export class ServiceDirector {
     if (c.bossId === 'stitchwright') this.stitchwright.step(c, target => {
       this.cast(c, target, {kind:'hook', count:1, speed:0, damage:12, telegraph:1.4});
     });
+    if(c.bossId==='stationmaster'){this.stationmaster.step(c);this.nextSignatureAt=this.stationmaster.nextSignatureAt;return;}
     if(c.bossId==='sluice-keeper'){this.sluice.step(c);this.nextSignatureAt=this.sluice.nextSignatureAt;return;}
     if(c.bossId==='ash-baker'){this.baker.step(c);this.nextSignatureAt=this.baker.nextSignatureAt;return;}
     if(c.bossId==='matron'){this.matron.step(c);return;}
@@ -812,19 +785,6 @@ export class ServiceDirector {
           for (const p of c.targets)
             if (serviceBeamContact({ x: p.oldX, y: p.oldY }, p, cue))
               this.touch(c, cue, p, cue.damage, true);
-      } else if (cue.kind === 'service-rail' && !cue.open) {
-        cue.oldTrainY = cue.trainY;
-        cue.trainY = cue.y - 150 + (now - cue.at) * DT * cue.speed;
-        for (const p of c.targets)
-          if (
-            segmentRect(
-              { x: p.oldX, y: p.oldY - cue.oldTrainY },
-              { x: p.x, y: p.y - cue.trainY },
-              { x: cue.x - cue.width / 2, y: 0, width: cue.width, height: cue.trainHeight },
-              9,
-            ) !== null
-          )
-            this.touch(c, cue, p, cue.damage);
       } else if (cue.kind === 'service-sanctuary') {
         cue.pads = cue.ends.map((p) => ({ ...p }));
         if (cue.style === 'lamp') {

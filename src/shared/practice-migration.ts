@@ -6,6 +6,10 @@ import { classifiedContract } from './boss-threat.ts';
 export function migratePracticeBoundary(value: unknown): unknown {
   if (!value || typeof value !== 'object' || Array.isArray(value)) return value;
   const issued = value as Record<string, unknown>;
+  if(issued.protocolVersion===47&&issued.contentRevision==='f464a132bbc18083c5780239f18f24ff447a5be87de3e64db22d6881e7793290'){
+    if(issued.schemaVersion!==1||issued.practiceOnly!==true||issued.serverOnly===true||issued.players!==undefined||issued.transactions!==undefined||JSON.stringify(issued).length>32768)throw Error('versionMismatch');
+    return {...issued,contentRevision:CONTENT_REVISION};
+  }
   if(Number(issued.protocolVersion)<=46&&issued.settings&&typeof issued.settings==='object'&&Object.hasOwn(issued.settings,'freePlay'))throw Error('versionMismatch');
   if(Number(issued.protocolVersion)<=45&&issued.settings&&typeof issued.settings==='object'&&(issued.settings as Record<string,unknown>).mode==='story')throw Error('versionMismatch');
   if(issued.protocolVersion===46&&issued.contentRevision==='31bcd58adcfd8d9d1d76fc23b484237e68c266a513f2dedb2571f8a09067e131'){

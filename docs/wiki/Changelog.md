@@ -1,6 +1,16 @@
 # Changelog
 
-Development build **2026.10.31-story-hubs**, protocol 47. The current contest Site uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.10.31-station-signals**, protocol 47. The current contest Site uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-10-31 — Stationmaster opens the last platform
+
+### Read the signals and change the route
+
+- Stationmaster now moves from paired tracks to a rotating three-track timetable, separately warned transfer crossings and an advanced four-way junction. Every wave retains an open track. Arrows and crosses distinguish safe and incoming routes without relying on color alone.
+- Shoot a closed signal to open only its track. Signals remain clear of real cover, lava and floor borders. Only the visible swept car hurts, with one hit per entire dispatch including its later crossing; trains pass through cover, as the guide explains.
+- Brutal schedules a reversed dispatch after 7 seconds; Crazed adds another after 12. Each later wave has new signals and a full two-second warning, and keeps the phase that issued it. Stagger, defeat and encounter reset cancel queued trains.
+- Harmless bounded approaches occur between full dispatches. Grade 4/subtier−1, health factor, deadline, existing art and music remain. All fifteen catalogs gain phase/form help and Neris Vale lore. Original-boss quality implementations now total 17/60, with 43 remaining.
+- Known issued local Story/Free Play boundaries, ending receipts and practice records migrate to the new content revision. Online compatibility remains exact. These software checks do not establish final balance, rendered/device/native-language or human acceptance.
 
 ## 2026-10-31 — Story Campaign and Free Play have their own homes
 
