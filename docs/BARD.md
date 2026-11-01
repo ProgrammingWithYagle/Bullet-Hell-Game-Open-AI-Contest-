@@ -6,11 +6,11 @@ The eighth playable discipline uses its own concertina notes, cadence, performan
 
 Primary notes earn one cadence only on actual positive enemy damage, at most once every ten simulation ticks. The meter holds three. Misses, button presses, ally damage, idle time, Q, E, Encore and lures never refill it. A pierced or spread shot cannot fill it several times in one tick. Leaving combat, becoming inactive or disconnecting clears pending performances and cadence. They cannot carry into a saved preparation boundary.
 
-- **Resolving Phrase / Q, 12 s:** consume the current cadence for three pulses, 0.75 seconds apart. Each follows the Bard and deals 20 + 5 per spent cadence damage within145 units. Ordinary enemies hit are slowed25% for1.25seconds. Nearby connected active allies receive6 + 3 per cadence shield for2seconds. The strongest shield value refreshes; it does not add with itself or another Bard.
-- **Cut In / E, 15 s:** strike a narrow210-unit line for65damage and erase at most eight actual hostile projectiles along it. Cover stops the line. This does not move an existing warning, erase fields or beams, grant invulnerability, or interrupt an announced boss attack.
-- **Encore / Ultimate, 90 s:** consume cadence to place six pulses, one per second, at the original performance position. Radius205; each pulse deals36 + 4 per cadence damage and refreshes18 + 2 per cadence shield for2seconds. Shared potency/radius/ultimate upgrades apply. The total pulse count is bounded at12. It cannot heal or revive.
+- **Resolving Phrase / Q, 12 s:** consume the current cadence for three pulses, 0.75 seconds apart. Each follows the Bard and deals 20 + 5 per spent cadence damage within 145 units. Ordinary enemies hit are slowed25% for1.25 seconds. Nearby connected active allies receive6 + 3 per cadence shield for2 seconds. The strongest shield value refreshes; it does not add with itself or another Bard.
+- **Cut In / E, 15 s:** strike a narrow210-unit line for65 damage and erase at most eight actual hostile projectiles along it. Cover stops the line. This does not move an existing warning, erase fields or beams, grant invulnerability, or interrupt an announced boss attack.
+- **Encore / Ultimate, 90 s:** consume cadence to place six pulses, one per second, at the original performance position. Radius205; each pulse deals36 + 4 per cadence damage and refreshes18 + 2 per cadence shield for2 seconds. Shared potency/radius/ultimate upgrades apply. The total pulse count is bounded at12. It cannot heal or revive.
 
-All shields immediately respect the same personal capacity and difficulty rules as other sources, including zero on Hellish. Damage, slow and shield changes occur only in the authoritative30Hz simulation. Clients draw the replicated meter, pulse beats, note shots, cut line and original reed-like synthesized cues; audio is not needed to time an input. Existing effects-volume, mute, hidden-tab and voice-budget gates apply. No voice acting or listening acceptance is claimed.
+All shields immediately respect the same personal capacity and difficulty rules as other sources, including zero on Hellish. Damage, slow and shield changes occur only in the authoritative30 Hz simulation. Clients draw the replicated meter, pulse beats, note shots, cut line and original reed-like synthesized cues; audio is not needed to time an input. Existing effects-volume, mute, hidden-tab and voice-budget gates apply. No voice acting or listening acceptance is claimed.
 
 ## Free Play and Story
 
@@ -18,9 +18,9 @@ Free Play retains its original rapid SP/coin budgets and mutations. Bard has fou
 
 | Upgrade | Actual change |
 | --- | --- |
-| Held Note | Last Q pulse has40% more radius, twice its shield and2.5seconds of slow. |
+| Held Note | Last Q pulse has40% more radius, twice its shield and2.5 seconds of slow. |
 | Travelling Chorus | Encore follows the performer instead of remaining at the casting position. |
-| Borrowed Cue | E leaves one destructible30-health sound lure for4seconds. Newly aimed attacks may choose it; committed warning positions stay as announced. |
+| Borrowed Cue | E leaves one destructible30-health sound lure for4 seconds. Newly aimed attacks may choose it; committed warning positions stay as announced. |
 
 Story grants no SP. Iven can study **Leave a Breath / bard-performance-1**, an existing D- support root, after Constable. During the selected ordinary encounter, he must earn cadence with an actual primary hit and spend it on Q so a pulse damages an ordinary street enemy. Successful completion records the owned proof. Empty or uncharged phrases, Encore, another Bard's effects and failed encounters grant none. Preparing the proved root applies its actual catalog cooldown/potency effects. No advanced grade, permanent cross-room account or optional personal chapter is implied.
 
