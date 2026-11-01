@@ -1,6 +1,6 @@
 # Five new disciplines: working cast treatments
 
-The five classes are accepted additions. The people below are **working proposals** for the new playable leads, not characters already selectable or present in published scenes. Their names, designs and biographies still need revision with the actual kits and scripts. The existing seven leads keep their established identities and arcs.
+The five classes are accepted additions. **Iven Cair is now the playable Bard**, with an opening appearance, an English continuation and an optional letter. His full arc is unfinished. The other four people below remain working proposals and are not selectable or present in implemented scenes. The established leads keep their identities and arcs.
 
 All five are recent entrants to their disciplines. Earlier occupations provide knowledge, relationships and habits without making them established masters of the new class. The world has other practitioners of every discipline. Each new lead needs a main-story role, an optional personal arc, relationships beyond the party and an aftermath. An impressive skill tree cannot substitute for those things.
 

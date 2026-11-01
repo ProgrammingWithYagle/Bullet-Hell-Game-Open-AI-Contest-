@@ -1,3 +1,4 @@
+import { applyBard } from '../content/source/bard.mjs';
 import {applyOpeningChapter} from '../content/source/opening-chapter.mjs';
 import {applyWardApproach} from '../content/source/ward-approach.mjs';
 import {applyLamplightWatch} from '../content/source/lamplight-watch.mjs';
@@ -265,7 +266,7 @@ const arenas = [
 
 const leaderboards=JSON.parse(fs.readFileSync(path.join(root,'content/leaderboards.json'),'utf8'));
 const manifest = {rules,locales,difficulties,modes,classes,skills,weapons,upgrades,supplies,bosses,bossPools,mutations,arenas,grades,leaderboards,threats:['Normal','Aberrant','Predator','Brute','Scourge','Dread','Disaster','Catastrophe','Cataclysm','Calamity','The Uncounted']};
-applyEncounterPacing(manifest);addClassTalents(manifest);
+applyBard(manifest);applyEncounterPacing(manifest);addClassTalents(manifest);
 applyWardenPatrol(manifest);applyCrazedHorizon(manifest);applyCourierRoute(manifest);applyRatcatcherMuster(manifest);applyClerkAppeal(manifest);applyTollkeeperReturn(manifest);applyMarshalChains(manifest);applyWidowGates(manifest);applyAmbulanceRoute(manifest);applyMatronWard(manifest);applyMoldMixing(manifest);applyBellCarillon(manifest);applyBellCounterpoint(manifest);applyStitchwork(manifest);applyShieldSpecializations(manifest);applyGeneralMobility(manifest);applyGlassSurgery(manifest);applyStoryCampaign(manifest);
 applyBakerOven(manifest);
 applySluicePressure(manifest);

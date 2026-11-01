@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentRevision": "5b8c858463c86d7e5d2fb70a547dd95ddcb5c38e20be547c39c4f1707e31e779",
+  "contentRevision": "85c266d3bbb2457910b5237bbab3769bd1ada06014d39ded5eefe5854e5392cb",
   "kind": "Analytical early-build feasibility, not human balance",
   "assumptions": {
     "attackUptime": 0.65,
@@ -12,7 +12,7 @@
     "preparedFoundationsDoNotAddWeaponDamage": true,
     "solo": true
   },
-  "rows": 84,
+  "rows": 96,
   "deadlineMisses": 0,
   "worst": [
     {
@@ -156,6 +156,20 @@
       "deadlineRatio": 0.6147903091060983
     },
     {
+      "classId": "bard",
+      "difficulty": "insane",
+      "bossId": "matron",
+      "availableCoins": 108,
+      "spentCoins": 90,
+      "weapon": "bard-0",
+      "skillPoints": 0,
+      "preparedWeaponDamageEffects": 0,
+      "health": 7960.5,
+      "deadlineSeconds": 450,
+      "estimatedSeconds": 273.5464462438146,
+      "deadlineRatio": 0.6078809916529213
+    },
+    {
       "classId": "mage",
       "difficulty": "insane",
       "bossId": "matron",
@@ -168,20 +182,6 @@
       "deadlineSeconds": 450,
       "estimatedSeconds": 262.97760627530363,
       "deadlineRatio": 0.5843946806117858
-    },
-    {
-      "classId": "medic",
-      "difficulty": "insane",
-      "bossId": "constable",
-      "availableCoins": 72,
-      "spentCoins": 0,
-      "weapon": "medic-0",
-      "skillPoints": 0,
-      "preparedWeaponDamageEffects": 0,
-      "health": 4860.000000000001,
-      "deadlineSeconds": 360,
-      "estimatedSeconds": 209.81161695447415,
-      "deadlineRatio": 0.5828100470957616
     }
   ],
   "limits": [

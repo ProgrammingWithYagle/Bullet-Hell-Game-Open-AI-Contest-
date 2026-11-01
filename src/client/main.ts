@@ -700,6 +700,13 @@ function update(view: View) {
       ' ' +
       clock((view.accord.until - view.combatTick) / 30);
   const cl = data.classes.find((c) => c.id === p.classId)!;
+  const cadenceHost=$('abilities').querySelector<HTMLElement>('[data-bard-cadence]');
+  if(p.classId==='bard'){
+    const meter=cadenceHost??document.createElement('span');
+    meter.dataset.bardCadence='';meter.className='ability bard-cadence';
+    meter.textContent=t('ui.bardCadence',{count:number(p.kit.cadence??0)});
+    if(!cadenceHost)$('abilities').append(meter);
+  }else cadenceHost?.remove();
   const abilityList = $('abilities');
   const sprintTouch=document.querySelector<HTMLElement>('[data-action="sprint"]');if(sprintTouch)sprintTouch.hidden=!p.skills.includes('general-sprint');
   if(!p.skills.includes('general-sprint'))abilityList.querySelector('[data-ability="sprint"]')?.remove();

@@ -1,3 +1,4 @@
+import { BardKit, type BardContext } from './bard-kit.ts';
 import {WardSkirmish,type SkirmishView} from './ward-skirmish.ts';
 import {StoryChapter,openingChapterId,validStoryChapter,validChapterBoundary,chapterParticipation,type StoryChapterState} from './story-chapter.ts';
 import {StoryTraining,chapterLessons,validStoryTraining,type StoryTrainingState,type TrainingEventKind} from './story-training.ts';
@@ -257,8 +258,10 @@ export class Game {
     return [...this.director.cues(),...this.brutalVolley.cues(),...this.variantPressure.cues(),...this.wardenPatrol.cues(),...lava];
   }
   readonly classKits = new ClassKits();
+  readonly bard = new BardKit();
+  kitStatus(id:string){return {...this.classKits.status(id,this.combatTick),...(this.players.get(id)?.classId==='bard'?this.bard.status(id):{})};}
   readonly transforms = new AbilityTransforms();
-  classCues(){return [...this.classKits.cues(),...this.transforms.cues()];}
+  classCues(){return [...this.classKits.cues(),...this.transforms.cues(),...this.bard.cues()];}
   private aimTargets(){const real=this.roster().filter(p=>p.status==='active'&&!this.classKits.untargetable(p.id,this.combatTick));return [...real,...this.classKits.decoyTargets(this.roster(),this.combatTick)];}
   private hurtTarget(id:string,amount:number){const p=this.players.get(id);if(p)this.damage(p,amount);else this.classKits.hitDecoy(id,amount);}
   private bossPrevious = { x: 800, y: 250 };
@@ -327,6 +330,7 @@ export class Game {
   private chapterState:StoryChapter|undefined;
   private training = new Map<string,StoryTraining>();
   private trainingShots = new Map<number,TrainingEventKind>();
+  private bardPrimaryShots = new Set<number>();
   private practiceEncounter = '';
   private wardPatients = new Map<string,{owner:string;x:number;y:number;health:number;maxHealth:number}>();
   get chapter():StoryChapterState|undefined {return this.chapterState?.snapshot();}
@@ -816,6 +820,7 @@ export class Game {
     if (this.secretStatus === 'active') this.secretStatus = 'failed';
     this.phase = 'defeat'; this.phaseEnds = 0; this.boss.defeatedAt = 0;
     this.chapterState?.fail();this.wardPatients.clear();
+    this.bard.clear();
     if(this.chapterState){this.skirmish?.fail();this.clearChapterCombat();}
     return true;
   }
@@ -864,7 +869,7 @@ export class Game {
     Object.assign(this.selectedContract,classifiedContract(this.selectedContract.bossId??'constable',encounterVariant(this.settings.difficulty,this.selectedContract.variant)));
     this.phaseAttackReadyAt = 0;
     this.variantPressure.reset(this.combatTick);
-    this.classKits.clear();this.transforms.clear();this.wardenPatrol.clear();
+    this.classKits.clear();this.bard.clear();this.transforms.clear();this.wardenPatrol.clear();
     this.pruneExpired();
     this.phase = 'combat';
     this.phaseEnds = 0;
@@ -1006,7 +1011,7 @@ export class Game {
     if(this.chapterState){this.clearChapterNode(true);return;}
     this.scoreObserver?.clear(this);
     for (const player of this.players.values()) this.clearPoison(player);
-    this.classKits.clear();this.transforms.clear();this.wardenPatrol.clear();
+    this.classKits.clear();this.bard.clear();this.transforms.clear();this.wardenPatrol.clear();
     this.completedBossIds.add(this.boss.id);
     const previous=this.completedBossForms.get(this.boss.id);
     if(!previous||['normal','brutal','crazed'].indexOf(this.boss.variant)>['normal','brutal','crazed'].indexOf(previous))this.completedBossForms.set(this.boss.id,this.boss.variant);
@@ -1229,6 +1234,7 @@ export class Game {
       Boolean(this.skirmish)||this.boss.id==='matron',
     );
     this.classKits.step(this.kitContext());
+    this.bard.step(this.bardContext());
     this.transforms.step(this.transformContext());
     this.stepFields();
     this.stepLava();
@@ -1255,7 +1261,7 @@ export class Game {
       } else this.phase = 'defeat';
       this.chapterState?.fail();this.wardPatients.clear();
       for (const player of this.players.values()) this.clearPoison(player);
-      this.classKits.clear();this.transforms.clear();this.wardenPatrol.clear();
+      this.classKits.clear();this.bard.clear();this.transforms.clear();this.wardenPatrol.clear();
       this.director.reset('constable');
       this.minions.clear();
       this.signatures = [];
@@ -1270,11 +1276,11 @@ export class Game {
     else this.skirmish?.cancel();
     this.phase=success?'victory':'defeat';
     for(const p of this.players.values())this.clearPoison(p);
-    this.classKits.clear();this.transforms.clear();this.minions.clear();this.director.reset('constable');this.signatures=[];this.warnings.length=0;this.fields.length=0;this.clearShots();this.accord=null;
+    this.classKits.clear();this.bard.clear();this.transforms.clear();this.minions.clear();this.director.reset('constable');this.signatures=[];this.warnings.length=0;this.fields.length=0;this.clearShots();this.accord=null;
   }
   private clearChapterCombat() {
     for (const p of this.players.values()) this.clearPoison(p);
-    this.classKits.clear();
+    this.classKits.clear();this.bard.clear();
     this.transforms.clear();
     this.wardenPatrol.clear();
     this.minions.clear();
@@ -1676,6 +1682,7 @@ export class Game {
         s.pierce + (overdrive ? 2 : 0),
         w.rangeSeconds,
       );
+      if(shot&&p.classId==='bard')this.bardPrimaryShots.add(shot.id);
       if(shot&&this.chapterState){
         if(p.classId==='soldier'&&this.fields.some(f=>f.owner===p.id&&f.kind==='rally'&&f.potency>0&&distance(fieldPosition(f,this.roster()),p)<=f.radius))this.trainingShots.set(shot.id,'rallied-hit');
         if(p.classId==='assassin'&&this.classKits.untargetable(p.id,this.combatTick))this.trainingShots.set(shot.id,'concealed-hit');
@@ -1684,7 +1691,9 @@ export class Game {
     this.events.push({
       type: 'sound',
       id:
-        p.classId === 'medic'
+        p.classId === 'bard'
+          ? 'weapon-concertina'
+          : p.classId === 'medic'
           ? 'weapon-injector'
           : p.classId === 'heavy'
             ? 'weapon-heavy-lmg'
@@ -1713,7 +1722,9 @@ export class Game {
     else if (slot === 'ultimate') p.ultimateAt = now + ticks(a.cooldown * s.ultimateCooldown);
     const before={x:p.x,y:p.y},empowered=slot==='e'&&this.classKits.freeStep(p.id,now);
     if(!this.transforms.cast(p,slot,this.transformContext())){
-    if (['tank', 'mage', 'engineer', 'assassin'].includes(p.classId)) {
+    if (p.classId === 'bard') {
+      this.bard.cast(p, slot, this.bardContext());
+    } else if (['tank', 'mage', 'engineer', 'assassin'].includes(p.classId)) {
       this.classKits.cast(p, slot, this.kitContext());
     } else if (p.classId === 'heavy') {
       if (slot === 'q') {
@@ -2016,6 +2027,28 @@ export class Game {
     tick:this.combatTick,players:this.roster(),fields:this.fields,kits:this.classKits,kit:this.kitContext(),id:()=>this.id(),stats:p=>this.stats(p),heal:(source,target,amount)=>this.heal(source,target,amount),
     shot:(p,point,angle,speed,damage,pierce,life=12,slow=0)=>{const shot=this.emitShot(p.id,point.x,point.y,angle,speed,damage,4,pierce,life);if(shot&&slow>0)this.shotEffects.set(shot.id,{slowTicks:ticks(slow),slowMultiplier:.6,rangeRemaining:speed*life});},
   };}
+  private bardContext(): BardContext {
+    return {
+      ...this.kitContext(),
+      kits: this.classKits,
+      shield: (ally, amount, until) => {
+        this.classKits.grantShield(ally.id, amount, until, this.combatTick);
+        this.limitPersonalShield(ally);
+      },
+      sound: (id, source) => this.events.push({ type: 'sound', id, owner: source.id, x: source.x, y: source.y }),
+      eraseLine: (from, to, radius, maximum) => {
+        let count = 0;
+        for (const shot of this.shots.values()) {
+          if (count >= maximum) break;
+          if (shot.owner === 'hostile' && segmentCircle(from, to, shot, radius + shot.radius) !== null) {
+            this.removeShot(shot);
+            count++;
+          }
+        }
+        return count;
+      },
+    };
+  }
   private kitContext(): KitContext {
     return {
       tick: this.combatTick,
@@ -2025,7 +2058,7 @@ export class Game {
       minions: this.minions,
       stats: (p) => this.stats(p),
       id: () => this.id(),
-      area: (source, point, radius, damage, slow = 1, slowTicks = 0) => {
+      area: (source, point, radius, damage, slow = 1, slowTicks = 0, training) => {
         if (
           !this.director.hasIndependentBodies() &&
           !this.director.coreContact(point, point, radius) &&
@@ -2040,6 +2073,7 @@ export class Game {
           if (distance(point, actor) <= radius + actor.radius){
             const actual=this.minions.hit(actor.id, damage, this.combatTick, slowTicks, slow);
             this.creditHit(source,actual);
+            if(training)this.observeTraining(source,training,actual);
             if(source.classId==='mage'&&slow<1&&slowTicks>0)this.observeTraining(source,'sigil-control',actual);
           }
       },
@@ -2604,11 +2638,15 @@ export class Game {
       hits.sort((a, b) => a.time - b.time || (a.minionId ?? 0) - (b.minionId ?? 0));
     for (const hit of hits) {
       if (hit.weakId !== undefined) {
-        this.hitWeak(this.players.get(shot.owner), shot.damage, hit.weakId);
+        const source=this.players.get(shot.owner), before=source?.damageDealt??0;
+        this.hitWeak(source, shot.damage, hit.weakId);
+        if(this.bardPrimaryShots.has(shot.id))this.bard.primaryHit(source,(source?.damageDealt??0)-before,this.combatTick);
         return true;
       }
       if (hit.minionId === undefined) {
-        this.hitBoss(this.players.get(shot.owner), shot.damage);
+        const source=this.players.get(shot.owner), before=source?.damageDealt??0;
+        this.hitBoss(source, shot.damage);
+        if(this.bardPrimaryShots.has(shot.id))this.bard.primaryHit(source,(source?.damageDealt??0)-before,this.combatTick);
         return true;
       }
       let touched = this.shotHits.get(shot.id);
@@ -2626,6 +2664,7 @@ export class Game {
         effect?.slowMultiplier,
       );
       this.creditHit(this.players.get(shot.owner), actual);
+      if(this.bardPrimaryShots.has(shot.id))this.bard.primaryHit(this.players.get(shot.owner),actual,this.combatTick);
       const trainingEvent=this.trainingShots.get(shot.id);
       if(trainingEvent)this.observeTraining(this.players.get(shot.owner),trainingEvent,actual);
       if (shot.pierce <= 0) return true;
@@ -2637,6 +2676,7 @@ export class Game {
     if (!this.shots.delete(s.id)) return;
     this.shotEffects.delete(s.id);
     this.trainingShots.delete(s.id);
+    this.bardPrimaryShots.delete(s.id);
     this.shotHits.delete(s.id);
     if (s.owner === 'hostile') this.hostileShots--;
     this.removals.push(s.id);

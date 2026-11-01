@@ -121,7 +121,7 @@ export function viewOf(g: Game, owner: string): View {
       id: p.id,
       progress: structuredClone(p.progress),
       eligible: p.eligible,
-      kit: g.classKits.status(p.id, g.combatTick),
+      kit: g.kitStatus(p.id),
       terrain: structuredClone(p.terrain),
       name: p.name,
       classId: p.classId,

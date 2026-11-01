@@ -303,6 +303,50 @@
         640
       ],
       "newPose": false
+    },
+    {
+      "classId": "bard",
+      "source": "assets/production/generated/bard-2026-11-01/iven-selection-v1.png",
+      "sourceSha256": "593bc352bbee736c674e0f50906cee94d974c59d83b9ee1b3f11692cf52e5e78",
+      "sourceSize": [
+        1024,
+        1536
+      ],
+      "sourceAlphaBounds": [
+        0,
+        6,
+        1004,
+        1528
+      ],
+      "sourceAlpha16Bounds": [
+        253,
+        9,
+        817,
+        1524
+      ],
+      "uniformScale": 0.3801980198019802,
+      "resizedCrop": [
+        382,
+        579
+      ],
+      "offset": [
+        37,
+        31
+      ],
+      "targetAlpha16Bounds": [
+        133,
+        32,
+        348,
+        609
+      ],
+      "image": "assets/delivery/selection-portraits-v1/bard-selection-v1.png",
+      "imageSha256": "9c575e7b565ae4da3818a309f4f22b3552d9cfc17b654fa806026349940661ca",
+      "imageSize": [
+        480,
+        640
+      ],
+      "newPose": true,
+      "sourceTool": "tools/build-bard-art.py"
     }
   ],
   "visibleBodyHeightTarget": 576,
@@ -313,5 +357,13 @@
     "Only whole-figure crop, one uniform scale, and translation. No alpha erasure, rigging or mirroring.",
     "Class selection only; gameplay sprites, shots, stats and kit behavior are unchanged.",
     "Exact visible body-height normalization is separate from rendered menu/human acceptance."
+  ],
+  "extensions": [
+    {
+      "classId": "bard",
+      "sourceTool": "tools/build-bard-art.py",
+      "sourceToolSha256": "9c98d1bfaaef2c694665a369d6c5cbacc9987dd4f3c4c263ae2c9f120eda1a95",
+      "renderedAccepted": false
+    }
   ]
 }

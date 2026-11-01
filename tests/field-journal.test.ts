@@ -41,12 +41,12 @@ function receipt(id: string, extra: Partial<RunReceipt> = {}): RunReceipt {
     ...extra,
   };
 }
-test("new profiles have twenty-two attainable goals, 66 stamps, seven locked letters and no automatic launch or power", () => {
+test("new profiles have twenty-three attainable goals, 69 stamps, eight locked letters and no automatic launch or power", () => {
   const p = freshProfile(),
     m = fieldJournal(p);
-  assert.equal(m.goals.length, 22);
-  assert.equal(new Set(m.goals.map((g) => g.id)).size, 22);
-  assert.equal(m.maximumStamps, 66);
+  assert.equal(m.goals.length, 23);
+  assert.equal(new Set(m.goals.map((g) => g.id)).size, 23);
+  assert.equal(m.maximumStamps, 69);
   assert.equal(m.stamps, 0);
   assert.equal(m.letters.length, 0);
   for (const g of m.goals) {
@@ -209,7 +209,7 @@ test("all class letters, three-stamp route goals and ordinary discoveries can co
     }),
   );
   for (const mode of ["short", "standard", "long", "raid"] as const)
-    for (let i = 0; i < 7; i++)
+    for (let i = 0; i < implementedClassIds.length; i++)
       p.runs.push(
         receipt(mode + i, {
           mode,
@@ -222,8 +222,8 @@ test("all class letters, three-stamp route goals and ordinary discoveries can co
   for(let i=0;i<7;i++)p.runs.push(receipt('story-journal-full-'+i,{mode:'story',clears:15,teamClears:15,campaignClears:15,storyChoices:Array(14).fill(i%3)}));
   const before = JSON.stringify(p),
     m = fieldJournal(parseProfile(before));
-  assert.equal(m.stamps, 66);
-  assert.equal(m.letters.length, 7);
+  assert.equal(m.stamps, 69);
+  assert.equal(m.letters.length, 8);
   assert(m.goals.every((g) => g.complete));
   assert.equal(JSON.stringify(p), before);
   assert(!JSON.stringify(m).includes("uncounted"));
@@ -263,11 +263,11 @@ test("journal controller filters without writes, keeps focus, hides locked lette
     (p: unknown) => plans.push(p),
   );
   context.after(dispose);
-  assert.equal(env.host.querySelectorAll("[data-journal-goal]").length, 22);
+  assert.equal(env.host.querySelectorAll("[data-journal-goal]").length, 23);
   assert.equal(env.host.querySelectorAll(".journal-letter").length, 0);
   const classes = env.host.querySelector('[data-journal-filter="classes"]')!;
   classes.click();
-  assert.equal(env.host.querySelectorAll("[data-journal-goal]").length, 7);
+  assert.equal(env.host.querySelectorAll("[data-journal-goal]").length, 8);
   assert.equal(
     env.document.activeElement,
     env.host.querySelector('[data-journal-filter="classes"]'),
@@ -329,7 +329,7 @@ test("all fifteen runtime labels match catalogs, preserve placeholders and discl
     );
     assert(
       !/[{}]/.test(
-        journalText(l.id, "totals", { count: 1, total: 57, letters: 1 }),
+        journalText(l.id, "totals", { count: 1, total: 69, letters: 1, totalLetters: 8 }),
       ),
     );
     if (l.id !== "en")

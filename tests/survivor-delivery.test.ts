@@ -10,15 +10,17 @@ import actions from '../assets/production/motion/survivor-actions/library.json';
 import runs from '../assets/production/motion/survivor-library.json';
 import legacy from '../assets/production/motion/legacy-survivor-library.json';
 import heavy from '../assets/production/motion/heavy-library.json';
-const originals = [...actions.entries, ...runs.entries, ...legacy.entries, ...heavy.entries];
+import bard from '../assets/production/motion/bard-library.json';
+import bardActions from '../assets/production/motion/bard-actions/library.json';
+const originals = [...actions.entries, ...runs.entries, ...legacy.entries, ...heavy.entries, ...bard.entries, ...bardActions.entries];
 const sha = (path: string) => createHash('sha256').update(readFileSync(path)).digest('hex');
 
-test('all 820 selected survivor poses retain exact original contracts and have bounded two-times display delivery textures', () => {
-  assert.equal(originals.length, 168);
-  assert.equal(survivorDelivery.entries.length, 168);
+test('all 904 selected survivor poses retain exact original contracts and have bounded two-times display delivery textures', () => {
+  assert.equal(originals.length, 192);
+  assert.equal(survivorDelivery.entries.length, 192);
   assert.equal(
     survivorDelivery.entries.reduce((sum, e) => sum + e.frames, 0),
-    820,
+    904,
   );
   for (const original of originals) {
     const entry = survivorDelivery.entries.find((e) => e.id === original.id)!;
@@ -46,7 +48,7 @@ test('all 820 selected survivor poses retain exact original contracts and have b
 
 test('every live action and run selector uses matching delivery cells while retaining world origin and size', () => {
   const live = [...survivorActionArt.entries, ...survivorArt.entries, ...heavyArt.entries];
-  assert.equal(live.length, 168);
+  assert.equal(live.length, 192);
   for (const clip of live) {
     const original = originals.find((e) => e.id === clip.id)!;
     const delivery = survivorDelivery.entries.find((e) => e.id === clip.id)!;

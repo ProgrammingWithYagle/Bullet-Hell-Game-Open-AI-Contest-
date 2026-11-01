@@ -1,5 +1,8 @@
 import catalog from '../../content/catalog.json';
 export type TalentId =
+  | 'held-note'
+  | 'travelling-chorus'
+  | 'borrowed-cue'
   | 'breach-cadence'
   | 'supply-line'
   | 'marching-colors'

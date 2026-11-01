@@ -1,23 +1,12 @@
 # Grave Accord
 
-Current development build **2026.10.31-glass-surgery / protocol 45** adds [Glass Surgeon's refraction theatre](docs/GLASS_SURGERY.md) and the shared [General Sprint/Double Dash branch](docs/GENERAL_MOBILITY.md), alongside [Stitchwright](docs/STITCHWORK.md), [the Field Journal](docs/FIELD_JOURNAL.md) and [Heavy/Tank shield paths](docs/SHIELD_SPECIALIZATIONS.md). Original-boss quality passes are **14/60**, with **46** left. Boss/class counts remain 66/seven; the 378 class nodes remain plus two shared General purchases.
+Current development build **2026.11.01-bard / protocol 47** adds the eighth playable discipline, [Bard / Iven Cair](docs/BARD.md), with cadence, performances, four concertinas, 54 nodes and three transformations. The [new Story chapter](docs/OPENING_CHAPTER.md) uses slower learning and proof; Free Play retains rapid SP progression and mutations. There are 66 executable bosses, eight classes, 432 class nodes, 32 weapons and two shared General skills. Existing-boss quality passes are 18/60; further content and polish remain open.
 
-Game source `517472b3e1efda13500d35e0351b3a7fdb565b92` passes **1,010 tests, 0 failures**, TypeScript, all 15 catalogs, artwork, production build and 71 atlas contracts. [Exact-source CI passed](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/41242002286). Current local review: testing **http://127.0.0.1:5280/** (backend 2656), public **http://127.0.0.1:5281/** (backend 2657). Each passes 52 served-file/catalog checks and real two-peer room/password/chat/host flows. [The current handoff](handoff/NEXT_CHAT.md) and `reviews/glass-surgery-2026-10-31/` record exact identities and restart inputs. Earlier user previews remain available.
-
-Published Site **version 4 / protocol 43** and its older backend are unchanged. Development clients need protocol 45 and matching content revision `fd77a95b869f368f49ce988f613db276385c45843e0152c69c3c67e13683a97b`. The user decides full-game completion; story, boss expansion and other features/polish remain open. Rendered/human/device/native-language acceptance and final balance remain open. The contest sections below retain their earlier release facts.
-
+The current exact source, verification evidence and testing/public review addresses are recorded in [the active handoff](handoff/NEXT_CHAT.md). Old previews and issued assets remain preserved. Published Site version 4 / protocol43 is a separate older release; this development work does not deploy it. Only the user decides whole-game completion. The long story, remaining four accepted classes, optional arcs and final human/rendered/device/language/listening/balance acceptance remain unfinished.
 
 ![Grave Accord cover](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/cover.jpg)
 
-A cooperative gothic bullet-hell game. Dodge attacks, defeat a boss, vote on the next contract and spend your rewards on a build. Play solo or with friends.
-
-The published contest checkpoint uses **build 2026.10.30-shared-network / protocol 43**; the feature branch now contains the newer development expansion above. [Draft PR #14](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14) contains the contest checkpoint; protected main remains a separate release boundary.
-
-New players choose a language before the home menu. Automatic names use the language at a fresh setup boundary, then stay fixed throughout that setup; typed names are never translated. Profile/language ownership, input/focus preservation and retry behavior remain. Controls retain focus, confirm saves, restore stored values after a save failure and cancel unfinished key choices when leaving. Written mouse-button and stick labels are shared by all fifteen languages. The first language screen now shows its real status messages without an empty warning frame; the human confirmed the strip is gone. Verification is recorded in its scoped review. Manual arrows show the full cover, seven survivors and six maps. Full boss and survivor artwork stays visible near borders while upper floor routes remain usable. Host controls retain explicit Pause/Continue, private password reveal and a confirmed end-for-everyone action. [The current review](reviews/browser-release-fixes-2026-10-30) records exact software/transport evidence and limits. Loading has Cancel/Esc, useful room-search/join errors and requests that end when their screen closes. Earlier chat, player-status, room-password, boss/map and recovery improvements remain. [Earlier connection evidence](reviews/connection-clarity-2026-10-29) distinguishes software/transport checks from rendered/human acceptance. [Windows development](docs/WINDOWS_DESKTOP.md) identifies the separately verified native package.
-
-After each boss clear, a five-second **Boss defeated** moment lets the existing fall or final pose finish with a preparation message and countdown before the next choices or results. Fifteen bosses have full falling sequences; fifty-one have final poses.
-
-Server team records save shared results and offer filters and team history. Device and online tabs keep their separate filter choices while you compare records; tab and device-filter changes keep keyboard focus. Chat has its own space during menus and keeps its fight position. The matching local previews include these changes; the published contest Site connects to the compatible server. Durable global storage remains future work.
+A cooperative gothic bullet-hell game. Play solo or with friends, dodge hostile patterns and build a class through story-free runs or the slower chapter campaign.
 
 ## Public contest checkpoint
 
@@ -63,8 +52,8 @@ Development and testing builds include rehearsal tools. Public builds omit the b
 
 | Part | Implemented content |
 | --- | --- |
-| Survivors | Seven classes, each with two abilities and an ultimate |
-| Builds | 378 class skills, 63 specialization paths, 21 ability transformations and 28 weapons |
+| Survivors | Eight classes, each with two abilities and an ultimate |
+| Builds | 432 class skills, 72 specialization paths, 24 ability transformations and 32 weapons |
 | Encounters | 66 executable identities, including nine scheduled Endless exclusives and an optional Uncounted finale; individual original themes |
 | Routes | Quarantine Run, Midnight Circuit, Black Bell Pilgrimage, Grand Raid and Endless Vigil |
 | Arenas | Six different playable layouts with difficulty-specific cover and hazards |

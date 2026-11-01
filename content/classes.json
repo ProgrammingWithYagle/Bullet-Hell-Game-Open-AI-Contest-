@@ -811,5 +811,121 @@
       },
       "description": "For 5 seconds gain three free empowered Shadow Steps, 100% critical chance and untargetability to new aimed attacks. Existing hazards remain dangerous outside dodge invulnerability."
     }
+  },
+  {
+    "id": "bard",
+    "name": "Bard",
+    "survivor": "Iven Cair",
+    "health": 100,
+    "speed": 225,
+    "color": "#cfad69",
+    "weapon": "bard-0",
+    "role": "Cadenced note fire, close support and selective projectile control.",
+    "lore": "Iven Cair spent years moving scenery for other people's performances. Newly admitted to the Bard discipline, he is learning to leave a pause long enough for someone else to answer.",
+    "branches": [
+      {
+        "id": "notecraft",
+        "name": "Notecraft",
+        "subbranches": [
+          {
+            "id": "notecraft-foundation",
+            "nameKey": "stat.weaponDamage",
+            "name": "weaponDamage"
+          },
+          {
+            "id": "notecraft-path-1",
+            "nameKey": "stat.pierce",
+            "name": "pierce"
+          },
+          {
+            "id": "notecraft-path-2",
+            "nameKey": "stat.fireRate",
+            "name": "fireRate"
+          }
+        ]
+      },
+      {
+        "id": "performance",
+        "name": "Performance",
+        "subbranches": [
+          {
+            "id": "performance-foundation",
+            "nameKey": "stat.abilityPotency",
+            "name": "abilityPotency"
+          },
+          {
+            "id": "performance-path-1",
+            "nameKey": "ability.bard-ultimate.name",
+            "name": "Encore"
+          },
+          {
+            "id": "performance-path-2",
+            "nameKey": "ability.bard-q.name",
+            "name": "Resolving Phrase"
+          }
+        ]
+      },
+      {
+        "id": "company",
+        "name": "Company",
+        "subbranches": [
+          {
+            "id": "company-foundation",
+            "nameKey": "stat.maxHealth",
+            "name": "maxHealth"
+          },
+          {
+            "id": "company-path-1",
+            "nameKey": "stat.dodgeCooldown",
+            "name": "dodgeCooldown"
+          },
+          {
+            "id": "company-path-2",
+            "nameKey": "stat.reviveRate",
+            "name": "reviveRate"
+          }
+        ]
+      }
+    ],
+    "abilities": [
+      {
+        "id": "bard-q",
+        "slot": "q",
+        "kind": "resolving-phrase",
+        "name": "Resolving Phrase",
+        "cooldown": 12,
+        "duration": 1.5,
+        "radius": 145,
+        "damage": 20,
+        "description": "Spend up to 3 cadence for three moving pulses, 0.75 seconds apart. Each deals 20 + 5 per cadence damage, slows ordinary enemies by 25%, and refreshes nearby allies' shield to 6 + 3 per cadence for 2 seconds. Shields use the strongest value and respect difficulty limits."
+      },
+      {
+        "id": "bard-e",
+        "slot": "e",
+        "kind": "cut-in",
+        "name": "Cut In",
+        "cooldown": 15,
+        "duration": 0.25,
+        "radius": 210,
+        "damage": 65,
+        "description": "Strike along a narrow line toward the aim point, stopping at cover. Deal 65 damage and erase up to 8 hostile projectiles on that line. Warnings, beams, fields and already chosen attack positions are unchanged."
+      }
+    ],
+    "ultimate": {
+      "id": "bard-ultimate",
+      "slot": "ultimate",
+      "name": "Encore",
+      "kind": "encore",
+      "cooldown": 90,
+      "duration": 6,
+      "radius": 205,
+      "damage": 36,
+      "effects": {
+        "pulses": 6,
+        "allyShield": 18,
+        "ordinaryEnemySlow": 0.75
+      },
+      "description": "Spend cadence to place a six-pulse performance at your feet. One pulse each second deals 36 + 4 per cadence damage and refreshes 18 + 2 per cadence shield for nearby allies. The stage stays in place. It does not heal, revive, erase hazards or stack identical shields."
+    }
   }
 ]

@@ -1,4 +1,5 @@
 export const classTalents = {
+  bard: ['held-note', 'travelling-chorus', 'borrowed-cue'],
   soldier: ['breach-cadence', 'supply-line', 'marching-colors'],
   heavy: ['shoulder-mantlet', 'furnace-vents', 'split-suppression'],
   tank: ['wake-guard', 'procession', 'cornerstone'],

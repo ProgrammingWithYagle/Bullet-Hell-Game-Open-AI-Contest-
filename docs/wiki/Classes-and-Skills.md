@@ -1,6 +1,6 @@
 # Classes and skills
 
-All seven classes are selectable and execute their two abilities and ultimate offline and online. There are 54 skill nodes, nine specialization paths and four weapons per class: **378 nodes, 63 paths and 28 weapons total**.
+All eight current classes are selectable and execute their two abilities and ultimate offline and online. There are 54 skill nodes, nine specialization paths and four weapons per class: **432 nodes, 72 paths and 32 weapons total**.
 
 ![The seven survivors: Soldier, Heavy, Tank, Medic, Mage, Engineer and Assassin](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/survivors.jpg)
 
@@ -124,3 +124,8 @@ Personal shields now share one combined capacity across starting shields, abilit
 
 
 Base starting shield is recalculated each fight from the difficulty-adjusted capacity: Heavy 50%, Tank 100%, Soldier 15%, all other classes 0. Hellish gives everyone0. Existing starting-shield mutation bonuses can fill remaining capacity, and all sources respect the same cap. This adds no new branch or maximum-shield upgrade.
+
+
+## Bard: Iven Cair
+
+The eighth discipline builds cadence with actual concertina-note hits, spends it on Resolving Phrase or Encore, and uses Cut In for bounded projectile control. Its Free Play tree has54nodes and three ability-changing upgrades. Story teaches one owned D- foundation through a successful demonstration instead of SP spending. See [the complete Bard contract](../BARD.md) for limits, costs and verification status. The historical seven-person lineup above remains an original reference; it does not depict the new Bard. The twelve-class expansion and full character arcs remain unfinished.

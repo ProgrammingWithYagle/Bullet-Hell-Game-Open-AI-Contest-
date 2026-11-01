@@ -120,13 +120,13 @@ test("A semantic label alone preserves a reading mark, while changed words or sp
   );
 });
 
-test("The canonical playable word count counts the revised prose once and leaves the two opening manuscripts unchanged", () => {
+test("The canonical playable word count counts the current prose and Bard introduction once while keeping legacy-only passages separate", () => {
   const words = JSON.parse(
     readFileSync("reviews/story-word-count.json", "utf8"),
   );
-  assert.equal(words.openingWords, 3027);
-  assert.equal(words.authoredPlayableMainStoryWords, 4203);
-  assert.equal(words.totalAuthoredMainStoryIncludingLegacyWords, 6234);
+  assert.equal(words.openingWords, 3120);
+  assert.equal(words.authoredPlayableMainStoryWords, 4430);
+  assert.equal(words.totalAuthoredMainStoryIncludingLegacyWords, 6461);
   assert.equal(words.legacyPrototypeOnlyWords, 2031);
   assert.equal(words.targetAchieved, false);
   assert.equal(words.uniquePassages, 10);

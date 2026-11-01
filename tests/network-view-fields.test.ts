@@ -51,7 +51,7 @@ test(
         peers.length === 1 ? undefined : { roomId: peers[0].room!.roomId },
       );
     }
-    await until(() => peers.every((s) => s.view?.players.length === 7));
+    await until(() => peers.every((s) => s.view?.players.length === 8));
     const host = peers[0],
       live = liveRooms.get(host.room!.roomId)!;
     host.start();

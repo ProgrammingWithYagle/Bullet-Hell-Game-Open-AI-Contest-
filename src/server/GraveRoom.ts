@@ -443,7 +443,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
         skills: p.skills,
         upgrades: p.upgrades,
         supplies: p.supplies,
-        kit: g.classKits.status(p.id, g.combatTick),
+        kit: g.kitStatus(p.id),
         terrain: p.terrain,
       });
       view.speed = g.movementSpeed(p);

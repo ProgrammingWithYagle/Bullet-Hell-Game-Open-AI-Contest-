@@ -32,6 +32,7 @@ import {smallWakesIds} from '../content/source/small-wakes.mjs';
 import {smallWakesMessages} from '../locales/source/small-wakes.mjs';
 import { wardenMessages } from '../locales/source/warden-patrol.mjs';
 import { classTalentMessages } from '../locales/source/class-talents.mjs';
+import { bardMessages } from '../locales/source/bard.mjs';
 import { english } from '../locales/source/en.mjs';
 import additional from '../locales/source/additional.mjs';
 import { difficultyRuleMessages } from '../locales/source/difficulty-rules.mjs';
@@ -135,6 +136,7 @@ export function validateOne(document, canonical, content, locale) {
       ...Object.keys(fieldJournalMessages('en')),
       ...Object.keys(shieldSpecializationMessages('en')), ...Object.keys(generalMobilityMessages('en')), ...Object.keys(glassSurgeryMessages('en')), ...Object.keys(storyCampaignMessages('en')), ...Object.keys(bakerOvenMessages('en')), ...Object.keys(sluicePressureMessages('en')), ...Object.keys(playHubsMessages('en')), ...Object.keys(stationSignalsMessages('en')), ...Object.keys(lamplightWatchMessages('en')), ...Object.keys(storyReadingMessages('en')), ...Object.keys(wardSkirmishMessages('en')),
       ...Object.keys(classTalentMessages('en',content)),
+      ...Object.keys(bardMessages('en',content,english)),
       ...Object.keys(wardenMessages('en')),
       ...Object.keys(skillMapMessages('en')),
       ...Object.keys(difficultyRuleMessages('en')),
@@ -162,7 +164,7 @@ export function validateOne(document, canonical, content, locale) {
     if (!Object.hasOwn(messages,key)) fail(`missing feature coverage: ${key}`);
   }
   const expectedCategories = new Intl.PluralRules(locale).resolvedOptions().pluralCategories.slice().sort();
-  const expandedSource = {...smallWakesMessages(locale),...expansionMessages(locale), ...earlyWatchMessages(locale),...skillMapMessages(locale),...difficultyRuleMessages(locale),...classTalentMessages(locale,content),...wardenMessages(locale),...crazedHorizonMessages(locale),...courierRouteMessages(locale),...ratcatcherMusterMessages(locale),...clerkAppealMessages(locale),...tollkeeperReturnMessages(locale),...marshalMessages(locale),...widowMessages(locale),...ambulanceMessages(locale),...matronMessages(locale),...moldMessages(locale),...bellMessages(locale),...runtimeExtraMessages(locale),...bossGuideMessages(locale),...stitchworkMessages(locale),...fieldJournalMessages(locale),...shieldSpecializationMessages(locale),...generalMobilityMessages(locale),...glassSurgeryMessages(locale),...storyCampaignMessages(locale),...bakerOvenMessages(locale),...sluicePressureMessages(locale),...playHubsMessages(locale),...stationSignalsMessages(locale),...lamplightWatchMessages(locale),...storyReadingMessages(locale),...wardSkirmishMessages(locale)};
+  const expandedSource = {...smallWakesMessages(locale),...expansionMessages(locale), ...earlyWatchMessages(locale),...skillMapMessages(locale),...difficultyRuleMessages(locale),...classTalentMessages(locale,content),...wardenMessages(locale),...crazedHorizonMessages(locale),...courierRouteMessages(locale),...ratcatcherMusterMessages(locale),...clerkAppealMessages(locale),...tollkeeperReturnMessages(locale),...marshalMessages(locale),...widowMessages(locale),...ambulanceMessages(locale),...matronMessages(locale),...moldMessages(locale),...bellMessages(locale),...runtimeExtraMessages(locale),...bossGuideMessages(locale),...stitchworkMessages(locale),...fieldJournalMessages(locale),...shieldSpecializationMessages(locale),...generalMobilityMessages(locale),...glassSurgeryMessages(locale),...storyCampaignMessages(locale),...bakerOvenMessages(locale),...sluicePressureMessages(locale),...playHubsMessages(locale),...stationSignalsMessages(locale),...lamplightWatchMessages(locale),...storyReadingMessages(locale),...wardSkirmishMessages(locale),...bardMessages(locale,content,document.messages)};
   for (const [key,text] of Object.entries(recoveryMessages(locale))) {
     if (messages[key] !== text) fail(`recovery UI source mismatch at ${key}`);
   }

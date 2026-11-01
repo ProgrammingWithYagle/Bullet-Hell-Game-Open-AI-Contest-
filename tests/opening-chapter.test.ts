@@ -76,7 +76,7 @@ function clearStreet(g: Game) {
       } else if (
         target &&
         near <
-          (p.classId === 'tank'
+          (p.classId === 'bard' ? (g.bard.status(p.id).cadence > 0 ? 135 : 0) : p.classId === 'tank'
             ? 155
             : p.classId === 'heavy'
               ? 210
@@ -93,7 +93,7 @@ function clearStreet(g: Game) {
       ...idleInput(),
       sequence: p.ack + 1,
       aim: target ? Math.atan2(target.y - p.y, target.x - p.x) : 0,
-      fire: actedAt >= 0 && n > actedAt + 30,
+      fire: p.classId === 'bard' || actedAt >= 0 && n > actedAt + 30,
       q,
       e,
     });

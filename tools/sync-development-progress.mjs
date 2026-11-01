@@ -21,7 +21,7 @@ export function developmentProgress() {
   items:work.items,coverage,latestHumanFeedback:work.latestHumanFeedback,
   remainingReleaseWork:work.remainingReleaseWork,
   semanticInputsSha256:createHash('sha256').update(JSON.stringify({profiles,catalogBossIds:catalog.bosses.map(b=>b.id),work})).digest('hex')};
- assert.equal(result.playableBosses,profiles.entries.length);assert.equal(result.classes,7);
+ assert.equal(result.playableBosses,profiles.entries.length);assert.equal(result.classes,catalog.classes.length);
  for(const item of result.items){assert.equal(item.remaining,item.target-item.implemented);assert(item.humanAccepted<=item.implemented);}
  for(const id of work.items.find(i=>i.id==='boss-quality').completedIds)assert(catalog.bosses.some(b=>b.id===id));
  return result;

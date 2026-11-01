@@ -236,6 +236,10 @@ export class CombatScene extends Phaser.Scene {
       paint.generateTexture('projectile-' + key, 32, 32);
       paint.destroy();
     }
+    const note=this.make.graphics({x:0,y:0});
+    note.lineStyle(4,0xffd58b,1).strokeEllipse(16,17,20,11);
+    note.lineStyle(2,0x423c2d,1).lineBetween(8,17,24,17);
+    note.generateTexture('projectile-note',32,32);note.destroy();
     this.foreground = this.add.graphics().setDepth(30);
     this.bossSprite = this.add
       .sprite(800, 315, 'constable-idle', 0)
@@ -810,6 +814,16 @@ export class CombatScene extends Phaser.Scene {
         this.constructImages.delete(id);
       }
     for (const cue of view.classCues) {
+      if(cue.kind==='bard-phrase'||cue.kind==='bard-cut'){
+        const color=cue.encore?0xe5c379:0xc4dcb9;
+        if(cue.kind==='bard-cut')h.lineStyle(4,color,.8).lineBetween(cue.x,cue.y,cue.x2??cue.x,cue.y2??cue.y);
+        else {
+          const progress=Math.max(0,Math.min(1,(now-cue.at)/(cue.until-cue.at)));
+          h.lineStyle(2,color,.8*(1-progress)).strokeCircle(cue.x,cue.y,cue.radius*(.65+.35*progress));
+          for(let beat=0;beat<3;beat++)h.fillStyle(color,beat===cue.beat%3?.8:.25).fillCircle(cue.x+(beat-1)*10,cue.y-22,3);
+        }
+        continue;
+      }
       if(cue.kind==='talent-area'||cue.kind==='talent-link'){
         const pending=now<cue.at,color=cue.talent==='aftercut'||cue.talent==='unwritten-traps'?0xb9a6df:cue.talent==='furnace-vents'?0xe9bc83:0x9ce0c8;
         if(cue.kind==='talent-link'){
@@ -1228,7 +1242,7 @@ export class CombatScene extends Phaser.Scene {
       }
       const key =
         'projectile-' +
-        (s.owner === 'hostile' ? (this.highContrast ? 'contrast' : 'hostile') : 'friendly');
+        (s.owner === 'hostile' ? (this.highContrast ? 'contrast' : 'hostile') : view.players.find(p=>p.id===s.owner)?.classId==='bard'?'note':'friendly');
       let image = this.bulletImages.get(id);
       if (!image) {
         image = this.bulletPool.pop() ?? this.add.image(s.x, s.y, key).setDepth(20);

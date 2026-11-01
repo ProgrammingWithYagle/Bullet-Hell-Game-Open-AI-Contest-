@@ -1,6 +1,6 @@
 # Ensemble cast register
 
-This authoring register covers the seven existing survivors, all 66 current bosses and ten side-character records. Senn, Renn, Evi and Jorren appear in the opening; Miri now appears on a chapter branch, alongside the additional living cast Kesa Morn, Drin Hal and Mera Silt. Olan and Dena remain proposals. It links the current mechanics and seeds a distinct dramatic question for every boss. It does not claim 66 finished antagonist arcs or playable new character chapters. Full profiles, scenes, consequences and editorial review remain open.
+This authoring register covers the eight current survivors, all 66 current bosses and ten side-character records. Senn, Renn, Evi and Jorren appear in the opening; Miri now appears on a chapter branch, alongside the additional living cast Kesa Morn, Drin Hal and Mera Silt. Olan and Dena remain proposals. It links the current mechanics and seeds a distinct dramatic question for every boss. It does not claim 66 finished antagonist arcs or playable new character chapters. Full profiles, scenes, consequences and editorial review remain open.
 
 | Boss | Fixed threat | Kind | Working dramatic question |
 | --- | --- | --- | --- |

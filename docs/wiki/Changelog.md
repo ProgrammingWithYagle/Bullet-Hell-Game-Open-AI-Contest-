@@ -1,6 +1,16 @@
 # Changelog
 
-Development build **2026.11.01-opening-chapter**, protocol 47. The current contest Site uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.01-bard**, protocol 47. The current contest Site uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-01 — Iven Cair and the Bard discipline
+
+### Cadence in both modes
+
+- Bard is the eighth playable discipline: land primary notes to build three cadence, spend it on Resolving Phrase or Encore, and use Cut In to open a narrow gap in hostile projectiles.
+- Free Play has four concertinas, 54 specialization nodes and three actual ability transformations. Story keeps its slower learning/proof system and teaches one cadence-backed D- foundation, without SP.
+- Iven joins the gate opening in English, Spanish and Arabic. The English ward continuation and an optional letter begin his own voice without completing his arc.
+- A portrait, four directional idle views, 84 selected running/action poses, thirteen item icons and original synthesized reed cues are integrated. Attack, hurt, dodge and downed strips follow actual state; motion refinement, rendered, listening, native-language and human balance review remain open.
+- Swordsman, Summoner, Ranger and Alchemist remain accepted future additions for the twelve-class roster.
 
 ## 2026-11-01 — A slower Story campaign, separate from SP-based Free Play
 

@@ -1,6 +1,6 @@
 {
   "updated": "2026-11-01",
-  "buildId": "2026.11.01-opening-chapter",
+  "buildId": "2026.11.01-bard",
   "playableBosses": 66,
   "ordinaryBosses": 65,
   "secretBosses": 1,
@@ -9,7 +9,7 @@
   "currentSecretTarget": 1,
   "minimumTotalTarget": 151,
   "generatedConcepts": 0,
-  "classes": 7,
+  "classes": 8,
   "maps": 6,
   "items": [
     {
@@ -44,8 +44,8 @@
     {
       "id": "class-abilities",
       "label": "Ability-changing class-upgrade revamps",
-      "target": 7,
-      "implemented": 7,
+      "target": 8,
+      "implemented": 8,
       "remaining": 0,
       "humanAccepted": 0,
       "completedIds": [
@@ -55,9 +55,10 @@
         "medic",
         "mage",
         "engineer",
-        "assassin"
+        "assassin",
+        "bard"
       ],
-      "status": "Three actual ability transformations per class (21 total) implemented at existing utility-path depth three, with shared authority, cues and fifteen-locale help. Rendered/human balance/device/native-language acceptance remains open."
+      "status": "Three ability-changing upgrades per current class (24 total) execute under shared authority with cues and fifteen-language help. This includes Held Note, Travelling Chorus and Borrowed Cue for Bard. Human/rendered/device/native-language/final balance acceptance remains open."
     },
     {
       "id": "branching-tree",
@@ -311,11 +312,11 @@
     {
       "id": "character-story-arcs",
       "label": "Optional survivor character arcs",
-      "target": 7,
+      "target": 12,
       "implemented": 0,
-      "remaining": 7,
+      "remaining": 12,
       "humanAccepted": 0,
-      "status": "User approved a complete personal arc for each of the seven survivors. Existing letters are epilogues, not completed arcs. Working treatments exist in STORY_WORLD_PLAN.md; playable character chapters, tailored challenges and their review remain unfinished."
+      "status": "Every accepted playable lead needs a full optional personal arc. Eight current leads and four proposed additions have treatments; existing letters and opening appearances are not completed arcs."
     },
     {
       "id": "long-form-story-world",
@@ -334,7 +335,7 @@
       "remaining": 1,
       "humanAccepted": 0,
       "completedIds": [],
-      "status": "One introductory chapter implements learned/proven/prepared state, authoritative effects for all seven roles, one D- preparation, safe-boundary persistence and a local exportable journal. The full long-term system, later lessons/grades, General learning and durable character accounts remain unfinished. Free Play SP remains unchanged."
+      "status": "One introductory chapter implements learned/proven/prepared state, authoritative effects for all eight current roles, one D- preparation, safe-boundary persistence and a local exportable journal. The full long-term system, later lessons/grades, General learning and durable character accounts remain unfinished. Free Play SP remains unchanged."
     },
     {
       "id": "story-ordinary-encounters",
@@ -360,11 +361,13 @@
       "id": "new-classes",
       "label": "Accepted new class disciplines and Story/Free Play integration",
       "target": 5,
-      "implemented": 0,
-      "remaining": 5,
+      "implemented": 1,
+      "remaining": 4,
       "humanAccepted": 0,
-      "completedIds": [],
-      "status": "Swordsman, Summoner, Ranger, Alchemist and Bard are accepted additions for a twelve-class roster. Current playable count remains7. Full shared kits, mastery, weapons, art, story and verification remain unfinished."
+      "completedIds": [
+        "bard"
+      ],
+      "status": "Bard has a shared authoritative kit, 54 Free Play nodes, four weapons, three transformations, a Story D- proof, roster art/motion candidates, icons, synthesized cues and fifteen-language mechanical copy. Eight classes are playable. Swordsman, Summoner, Ranger and Alchemist remain required. Full character arcs, extended mastery, additional action art and human/rendered/listening/native-language acceptance remain open."
     },
     {
       "id": "opening-chapter",
@@ -749,7 +752,8 @@
     "User2026-10-31 explicitly accepts the shared main campaign plus seven optional character arcs. They request deep worldbuilding, good writing and consistent care for survivors, side characters and antagonists while allowing larger roles for some. They are willing to spend substantial time/tokens. They correct the long-term base-story ambition to FIVE MILLION WORDS, excluding optional side routes/character chapters. This supersedes the smaller narrative planning estimate; no fixed delivery date or token budget was agreed.",
     "User2026-10-31 explicitly requests research/study of acclaimed long web novels and visual novels, naming LOTM/Lord of Mysteries, Reverend Insanity, Umineko and The House in Fata Morgana. Learn craft while developing an original story; do not copy their plots, characters or systems. First-pass primary-source craft notes and an original gate-scene draft are authoring work, not completed playable chapters or literary acceptance.",
     "User2026-10-31 explicitly requires story mechanics to match the actual fixed boss threat levels1–10 and the existing D-–SS+ class-specialization grades. New maps, bosses and techniques should enter shared gameplay and be playable in Free Play as well as Story. Preserve separate Story/Free Play presentation and the same underlying content/rules. STORY_GAMEPLAY_CONTRACT.md records source-grounded semantics; no new permanent class-power ranking is invented.",
-    "User explicitly corrects the progression split: Campaign/Story must exclusively use the new slower system. The original story-free run modes remain in Free Play with their rapid SP progression. Do not provide a second SP-based Story mode. The twelve-class roster remains accepted; only seven are currently playable."
+    "User explicitly corrects the progression split: Campaign/Story must exclusively use the new slower system. The original story-free run modes remain in Free Play with their rapid SP progression. Do not provide a second SP-based Story mode. The twelve-class roster remains accepted; only seven are currently playable.",
+    "The user reiterates that rapid SP growth cannot share the slow campaign pace. Keep Story exclusively on chapter learning/proofs; retain fast SP progression in story-free Free Play. Continue the full development goal, with completion reserved to the user."
   ],
   "remainingReleaseWork": [
     "Continue current-content polish for first-time players during the remaining day. The home-gallery follow-up adds manual arrows/page buttons and keyboard/RTL navigation over existing artwork, retaining menu state and accepted camera/lava/controls. Read reviews/home-gallery-2026-10-29 for exact local/source/CI/fresh-preview/Wiki evidence. Testing links are preferred for human comparison. Matching Windows packaging should follow a stable gallery pass; older6f397a5camera review remains immutable. Full human/rendered/multiplayer balance and coordinated release acceptance remain open.",
@@ -768,8 +772,8 @@
     "Prepare and verify a new coordinated Windows/browser release with a matching backend; existing immutable Windows and older public builds remain separate.",
     "Finish and review the12 remaining Story narrative translations; compare15-fight pacing, choices, endings and all difficulty paths with human players. The new campaign is implemented but not accepted as finished.",
     "Continue the longer story beyond the first fifteen-encounter arc: author additional arcs and chapters, grow visual-novel scenes and new art/expressions, and obtain rendered, native-language and human pacing review. The user defines full-game completion.",
-    "Implement seven optional character arcs and the much longer main campaign, using the accepted ensemble writing/worldbuilding standard. Target five million English main-story words separately from optional content, translated duplicates and UI. Add multi-volume loading, durable reading/chapter progress, scene/continuity review and recurring side/antagonist development. STORY_WORLD_PLAN.md is an authoring plan, not a finished campaign.",
-    "Extend the new chapter/learning campaign beyond One Place Left, while preserving fast SP-based Free Play. Implement permanent cross-room character advancement, later grades and General lessons, complete additional objectives/cast arcs/chapters, local active-checkpoint transfer and the English continuation translations. Five accepted new classes remain0/5playable."
+    "Implement twelve optional character arcs and the much longer main campaign, using the accepted ensemble writing/worldbuilding standard. Target five million English main-story words separately from optional content, translated duplicates and UI. Add multi-volume loading, durable reading/chapter progress, scene/continuity review and recurring side/antagonist development. STORY_WORLD_PLAN.md is an authoring plan, not a finished campaign.",
+    "Extend the new chapter/learning campaign beyond One Place Left, while preserving fast SP-based Free Play. Implement permanent cross-room character advancement, later grades and General lessons, complete additional objectives/cast arcs/chapters, local active-checkpoint transfer and the English continuation translations. Bard is playable; Swordsman, Summoner, Ranger and Alchemist remain unfinished."
   ],
-  "semanticInputsSha256": "ab599b0e19eb0bed53ad669caead8506170db7c9296e22bc47fd7e36755e0e6a"
+  "semanticInputsSha256": "e489646e3aa157090db354036b9a1d544ce494338b78597d826113c1978b4e2a"
 }

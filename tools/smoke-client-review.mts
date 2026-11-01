@@ -66,7 +66,7 @@ const boardResponse = await fetch(manifest.endpoint + '/api/leaderboards?mode=sh
 assert.equal(boardResponse.status, 200);
 const board = await boardResponse.json();
 assert.equal(board.scope, 'server'); assert.equal(board.total, 0);
-assert.equal(health.playable.bosses, 66); assert.equal(health.playable.classes, 7);
+assert.equal(health.playable.bosses, 66); assert.equal(health.playable.classes, JSON.parse(fs.readFileSync('content/catalog.json','utf8')).classes.length);
 assert(Math.abs(Date.parse(health.startedAt) - Date.parse(processes.backend.startedAt)) < 10000);
 const denied = await fetch(manifest.endpoint + '/api/health', { headers: { Origin: 'http://127.0.0.1:5213' } });
 const otherHealthOrigin = denied.headers.get('access-control-allow-origin');

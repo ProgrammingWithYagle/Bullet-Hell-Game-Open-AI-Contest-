@@ -1,5 +1,7 @@
 // Additional class abilities run only in the authoritative fixed-step simulation.
 import { hasTalent, type TalentId } from './class-talents.ts';
+import type { BardCue } from './bard-kit.ts';
+import type { TrainingEventKind } from './story-training.ts';
 import type { TalentCue } from './ability-transforms.ts';
 import { HZ, type Vec } from './protocol.ts';
 import {
@@ -14,6 +16,7 @@ import type { Minions } from './minions.ts';
 const ticks = (seconds: number) => Math.ceil(seconds * HZ);
 export const RESCUE_CHARGE_TICKS = ticks(0.3) + 1;
 export type KitStatus = {
+  cadence?: number;
   chargeUntil: number;
   veilUntil: number;
   passageUntil: number;
@@ -55,6 +58,7 @@ export type Construct = {
   until: number;
 };
 export type KitCue =
+  | BardCue
   | TalentCue
   | Construct
   | {
@@ -93,6 +97,7 @@ export type KitContext = {
     damage: number,
     slow?: number,
     slowTicks?: number,
+    training?: TrainingEventKind,
   ): void;
   sweep(
     source: Player,
@@ -206,6 +211,15 @@ export class ClassKits {
       s.shield = amount;
       s.shieldUntil = until;
     }
+  }
+  grantShield(id: string, amount: number, until: number, now: number) {
+    this.shield(id, Math.max(0, amount), until, now);
+  }
+  placeDecoy(p: Player, c: KitContext, point: Vec, health: number, seconds: number, source: string) {
+    for (const [id, t] of this.towers)
+      if (t.owner === p.id && t.source === source) this.towers.delete(id);
+    const id = c.id();
+    this.towers.set(id, { kind: 'decoy', id, owner: p.id, ...point, radius: 18, aim: p.aim, health, maxHealth: health, at: c.tick, until: c.tick + ticks(seconds), damage: 0, fireAt: c.tick, interval: 1, source });
   }
   constructs() {
     return [...this.towers.values()].filter((t) => t.health > 0);

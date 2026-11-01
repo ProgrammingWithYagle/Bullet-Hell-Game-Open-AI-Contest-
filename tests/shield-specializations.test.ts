@@ -64,7 +64,7 @@ test("two existing paths retain all IDs, prices, prerequisites and old bonuses, 
       assert(g.stats(p).effects.maxHealth > 0);
     }
   }
-  assert.equal(data.skills.length, 378);
+  assert.equal(data.skills.length, 432);
   assert.equal(
     data.skills.filter((s) => "shieldCapacity" in s.effects).length,
     6,

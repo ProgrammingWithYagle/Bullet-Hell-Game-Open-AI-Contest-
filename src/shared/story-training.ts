@@ -8,6 +8,7 @@ export const chapterCharacterIds: Record<ClassId, string> = {
   mage: 'sable-quill',
   engineer: 'tamsin-reed',
   assassin: 'vale-ash',
+  bard: 'iven-cair',
 };
 
 export type TrainingEventKind =
@@ -17,11 +18,14 @@ export type TrainingEventKind =
   | 'patient-care'
   | 'sigil-control'
   | 'construct-hit'
-  | 'concealed-hit';
+  | 'concealed-hit'
+  | 'phrased-hit';
+// A phrase counts only after spending cadence earned by a real primary hit.
 export const chapterLessons: Record<
   ClassId,
   { techniqueId: string; event: TrainingEventKind; minimum: number }
 > = {
+  bard: { techniqueId: 'bard-performance-1', event: 'phrased-hit', minimum: 1 },
   soldier: {
     techniqueId: 'soldier-command-1',
     event: 'rallied-hit',
