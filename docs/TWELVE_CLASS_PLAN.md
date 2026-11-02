@@ -1,8 +1,8 @@
 # Twelve shared disciplines
 
-Accepted roster: the existing Soldier, Medic, Heavy, Tank, Mage, Engineer and Assassin, plus **Swordsman, Summoner, Ranger, Alchemist and Bard**. All five additions are accepted scope. The current playable build has nine classes, including Bard and Swordsman. Their first shared kits and Story foundations are implemented; Summoner, Ranger and Alchemist remain unfinished. No completed twelve-class roster or final class acceptance is claimed.
+Accepted roster: the existing Soldier, Medic, Heavy, Tank, Mage, Engineer and Assassin, plus **Swordsman, Summoner, Ranger, Alchemist and Bard**. All five additions are accepted scope. The current playable build has ten classes, including Bard, Swordsman and Summoner. Their first shared kits and Story foundations are implemented; Ranger and Alchemist remain unfinished. No completed twelve-class roster or final class acceptance is claimed.
 
-Classes are disciplines practiced by many people. The seven established leads recently entered theirs; practical experience from their previous lives does not make them veteran masters of that class. New disciplines need multiple practitioners across the world, including teachers, novices, rivals and antagonists. A class identity must be separate from a character ID, portrait, moral position or fixed personality.
+Classes are disciplines practiced by many people. The established and new leads recently entered theirs; practical experience from their previous lives does not make them veteran masters of that class. New disciplines need multiple practitioners across the world, including teachers, novices, rivals and antagonists. A class identity must be separate from a character ID, portrait, moral position or fixed personality.
 
 | Addition | Core play | Distinction and limit | Story opportunities |
 | --- | --- | --- | --- |

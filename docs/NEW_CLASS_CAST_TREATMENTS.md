@@ -1,6 +1,6 @@
 # Five new disciplines: working cast treatments
 
-The five classes are accepted additions. **Iven Cair/Bard and Dara Flint/Swordsman are now playable**, with opening appearances, English continuations and optional letters. Their full arcs are unfinished. The other three people below remain working proposals and are not selectable or present in implemented scenes. The established leads keep their identities and arcs.
+The five classes are accepted additions. **Iven Cair/Bard, Dara Flint/Swordsman and Joss Merrow/Summoner are now playable**, with opening appearances, English continuations and optional letters. Their full arcs are unfinished. Ranger and Alchemist remain working proposals and are not selectable or present in implemented scenes. The established leads keep their identities and arcs.
 
 All five are recent entrants to their disciplines. Earlier occupations provide knowledge, relationships and habits without making them established masters of the new class. The world has other practitioners of every discipline. Each new lead needs a main-story role, an optional personal arc, relationships beyond the party and an aftermath. An impressive skill tree cannot substitute for those things.
 
