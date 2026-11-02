@@ -63,6 +63,13 @@ test(
       assert.equal(room.state.retinue.size, 2);
       assert(!JSON.parse(room.state.hazards).retinue);
       assert(!JSON.parse(room.state.hazards).summons);
+      // Compare one acknowledged, frozen tick: live authority can otherwise
+      // advance while its last encoded patch is still travelling to this peer.
+      a.setMatchPaused(true);
+      await wait(
+        () =>
+          b.view?.matchPaused === true && b.view.combatTick === g.combatTick,
+      );
       for (const e of b.view!.retinue!) {
         const wire = room.state.retinue.get(String(e.id))!;
         assert.equal(e.x, wire.x / 4);
@@ -71,6 +78,8 @@ test(
         assert.equal(e.owner, a.id);
       }
       const health = g.boss.health;
+      a.setMatchPaused(false);
+      await wait(() => b.view?.matchPaused === false);
       await wait(() => g.boss.health < health);
       assert(p.damageDealt > 0);
       a.orderRetinue("hold");
