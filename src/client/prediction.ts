@@ -1,3 +1,4 @@
+import {rangerPredictedSpeed,cancelPredictedRangerDraw} from './ranger-presentation.ts';
 import {advanceMobility,takeDodge,sprintUnlocked,mobilityRules} from '../shared/mobility.ts';
 import clerkRules from '../shared/clerk-appeal-rules.json';
 import {fieldPosition} from '../shared/field-follow.ts';
@@ -52,6 +53,7 @@ export class Prediction {
     const dodgePeriod=Math.ceil(data.rules.dodgeCooldown*p.dodgeCooldown*HZ);
     advanceMobility(p,i,now,dodgePeriod,sprintUnlocked(p.skills),now<p.reloadAt);
     if (i.dodge && takeDodge(p,now,dodgePeriod)) {
+      cancelPredictedRangerDraw(p);
       p.dashX = len ? mx : Math.cos(i.aim);
       p.dashY = len ? my : Math.sin(i.aim);
       p.dashUntil = now + Math.ceil(data.rules.dodgeDuration * HZ);
@@ -80,7 +82,7 @@ export class Prediction {
         ? now < p.kit.chargeUntil
           ? 600
           : data.rules.dodgeSpeed
-        : p.speed * (p.sprinting?mobilityRules.sprintMultiplier:1) *
+        : rangerPredictedSpeed(p,now) * (p.sprinting?mobilityRules.sprintMultiplier:1) *
           Math.min(now < p.slowUntil ? 0.65 : 1, now < p.poisonUntil ? clerkRules.purpleSlowMultiplier : 1) *
           (1 + rally) *
           environment.multiplier *

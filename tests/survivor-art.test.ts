@@ -13,7 +13,7 @@ test('four additional survivors have independent directional runs with 124 appro
     library.entries.reduce((n, e) => n + e.frames, 0),
     124,
   );
-  for (const id of additionalSurvivors.filter((id) => !['bard','swordsman','summoner'].includes(id))) {
+  for (const id of additionalSurvivors.filter((id) => !['bard','swordsman','summoner','ranger'].includes(id))) {
     assert.deepEqual(
       library.entries
         .filter((e) => e.classId === id)

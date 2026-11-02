@@ -103,11 +103,11 @@ function hostile(
     3,
   ) as Shot;
 }
-test('27 transformations are legal six-SP depth-three purchases with stable IDs and prerequisites', () => {
-  assert.equal(data.skills.length, 540);
+test('33 transformations are legal six-SP depth-three purchases with stable IDs and prerequisites', () => {
+  assert.equal(data.skills.length, 594);
   const transformed = data.skills.filter((s) => 'transform' in s);
-  assert.equal(transformed.length, 30);
-  assert.equal(new Set(transformed.map((s) => talentForSkill(s.id))).size, 30);
+  assert.equal(transformed.length, 33);
+  assert.equal(new Set(transformed.map((s) => talentForSkill(s.id))).size, 33);
   for (const cl of data.classes) {
     const g = new Game(),
       p = g.addPlayer('p', 'Survivor', cl.id as ClassId);

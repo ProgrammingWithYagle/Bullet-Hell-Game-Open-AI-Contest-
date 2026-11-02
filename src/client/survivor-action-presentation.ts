@@ -3,6 +3,8 @@ import library from '../../assets/production/motion/survivor-actions/library.jso
 import bardLibrary from '../../assets/production/motion/bard-actions/library.json';
 import swordLibrary from '../../assets/production/motion/swordsman-actions/library.json';
 import summonerLibrary from '../../assets/production/motion/summoner-actions/library.json';
+import rangerLibrary from '../../assets/production/motion/ranger-actions/library.json';
+import {rangerAttackCue,rangerAttackFrame} from './ranger-presentation.ts';
 import catalog from '../../content/catalog.json';
 import { HZ, type ClassId } from '../shared/protocol.ts';
 import type { View, PlayerView } from '../shared/view.ts';
@@ -31,6 +33,7 @@ export const survivorActionArt = {
     ...(bardLibrary as unknown as { entries: Clip[] }).entries,
     ...(swordLibrary as unknown as { entries: Clip[] }).entries,
     ...(summonerLibrary as unknown as { entries: Clip[] }).entries,
+    ...(rangerLibrary as unknown as { entries: Clip[] }).entries,
   ].map(deliveredSurvivorClip),
 };
 const clips = new Map(survivorActionArt.entries.map((clip) => [clip.id, clip]));
@@ -96,7 +99,7 @@ export class SurvivorActionClock {
       if (old && continuingCombat && old.status === 'active' && player.status === 'active') {
         const attack = clips.get(player.classId + '-attack-south');
         if (
-          player.weapon === old.weapon &&
+          player.classId !== 'ranger' && player.weapon === old.weapon &&
           player.ammo < old.ammo &&
           attack &&
           view.tick - memory.attackAt >= (attack.frames * HZ) / attack.fps
@@ -175,6 +178,7 @@ export class SurvivorActionClock {
     const memory = this.people.get(player.id);
     if (!memory) return undefined;
     const drawn = wallTimeMs === undefined ? view : this.timeline.sample(wallTimeMs);
+    let rangerFrame:number|undefined;
     let facing = visualFacing ?? facingOf(player.aim),
       action: Action = 'idle',
       elapsed = drawn.tick;
@@ -215,8 +219,11 @@ export class SurvivorActionClock {
                 )
               : undefined;
           const attack = clips.get(player.classId + '-attack-' + facing)!;
+          const bow=rangerAttackCue(player,view,drawn.combatTick);
           const attacking = view.tick - memory.attackAt < (attack.frames * HZ) / attack.fps;
-          if (guard && guard.kind === 'sword-guard') {
+          if(bow){
+            action='attack';facing=facingOf(bow.aim);rangerFrame=rangerAttackFrame(bow,drawn.combatTick,reduced);
+          }else if (guard && guard.kind === 'sword-guard') {
             action = 'guard';
             facing = facingOf(guard.aim);
             elapsed = 0;
@@ -229,7 +236,7 @@ export class SurvivorActionClock {
       }
     } else return undefined;
     const clip = clips.get(player.classId + '-' + action + '-' + facing)!;
-    const frame = reduced
+    const frame = rangerFrame ?? (reduced
       ? action === 'downed'
         ? clip.frames - 1
         : action === 'dash'
@@ -239,7 +246,7 @@ export class SurvivorActionClock {
             : 0
       : action === 'idle'
         ? Math.floor((Math.max(0, elapsed) * clip.fps) / HZ) % clip.frames
-        : Math.min(clip.frames - 1, Math.floor((Math.max(0, elapsed) * clip.fps) / HZ));
+        : Math.min(clip.frames - 1, Math.floor((Math.max(0, elapsed) * clip.fps) / HZ)));
     return {
       texture: clip.id,
       frame,

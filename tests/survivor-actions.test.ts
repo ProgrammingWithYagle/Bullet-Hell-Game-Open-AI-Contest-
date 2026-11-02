@@ -70,7 +70,7 @@ test('Tank actions retain twenty distinct directional clips, 88 drawn poses and 
     for (const binding of request.inputBindings)
       assert.equal(sha(binding.projectPath), binding.sha256);
   }
-  assert.equal(survivorActionArt.entries.length, 204);
+  assert.equal(survivorActionArt.entries.length, 224);
 });
 
 test('actual weapon shots trigger a complete stationary firing cycle without repeated snapshots restarting it', () => {

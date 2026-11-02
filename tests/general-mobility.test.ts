@@ -58,8 +58,8 @@ function state(): Mobility {
   return p;
 }
 
-test("General purchases use existing earned SP for all ten classes without adding class nodes or granting free build points", () => {
-  assert.equal(data.skills.length, 540);
+test("General purchases use existing earned SP for all eleven classes without adding class nodes or granting free build points", () => {
+  assert.equal(data.skills.length, 594);
   assert.equal(data.generalSkills.length, 2);
   for (const classId of implementedClassIds) {
     const g = new Game(),

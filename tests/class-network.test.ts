@@ -7,12 +7,12 @@ import { implementedClassIds, idleInput } from '../src/shared/protocol.ts';
 const until = async (check: () => boolean) => {
   const end = Date.now() + 6000;
   while (!check()) {
-    if (Date.now() > end) throw Error('Ten-class network state timed out');
+    if (Date.now() > end) throw Error('Full-class network state timed out');
     await new Promise((r) => setTimeout(r, 20));
   }
 };
 test(
-  'ten real clients keep every class identity and replicate constructs, veil, charges and temporary team shields',
+  'eleven real clients keep every class identity and replicate constructs, veil, charges and temporary team shields',
   { timeout: 22000 },
   async () => {
     const { server, httpServer } = createGameServer();
@@ -38,7 +38,7 @@ test(
       }
       const owner = clients[0],
         observer = clients[1];
-      await until(() => owner.view?.players.length === 10);
+      await until(() => clients.every(client=>client.view?.players.length === implementedClassIds.length));
       owner.start();
       await until(() => observer.view?.phase === 'combat');
       const room = liveRooms.get(owner.room!.roomId)!;
@@ -49,7 +49,7 @@ test(
         p.oldX = p.x;
         p.oldY = p.y;
         p.invulnerableUntil = 1e9;
-        p.shield=0; // The seven-class ability fixture isolates temporary protection from base starting shields.
+        p.shield=0; // Isolate temporary protection from base starting shields.
       }
       for (const client of clients)
         client.input({ ...idleInput(), sequence: 1, aim: -Math.PI / 2, q: true, ultimate: true });

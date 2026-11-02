@@ -216,6 +216,52 @@
         }
       },
       "draftScene": "src/client/story/opening/en.json"
+    },
+    {
+      "id": "summoner",
+      "name": "Joss Merrow",
+      "kind": "survivor",
+      "arcStatus": "working-treatment",
+      "playablePersonalArcComplete": false,
+      "treatmentSource": "docs/NEW_CLASS_CAST_TREATMENTS.md",
+      "mechanicalReferences": {
+        "classId": "summoner",
+        "earlyTechnique": {
+          "id": "summoner-bonds-1",
+          "grade": "D-",
+          "cost": 1
+        },
+        "capstoneExample": {
+          "id": "summoner-bonds-path-2-6",
+          "grade": "SS+",
+          "cost": 6,
+          "fullPathCost": 21
+        }
+      },
+      "draftScene": "src/client/story/chapter/en.json"
+    },
+    {
+      "id": "ranger",
+      "name": "Nela Venn",
+      "kind": "survivor",
+      "arcStatus": "working-treatment",
+      "playablePersonalArcComplete": false,
+      "treatmentSource": "docs/NEW_CLASS_CAST_TREATMENTS.md",
+      "mechanicalReferences": {
+        "classId": "ranger",
+        "earlyTechnique": {
+          "id": "ranger-fieldcraft-1",
+          "grade": "D-",
+          "cost": 1
+        },
+        "capstoneExample": {
+          "id": "ranger-fieldcraft-path-2-6",
+          "grade": "SS+",
+          "cost": 6,
+          "fullPathCost": 21
+        }
+      },
+      "draftScene": "src/client/story/chapter/en.json"
     }
   ],
   "bosses": [
@@ -2433,6 +2479,28 @@
     {
       "id": "mera-silt",
       "name": "Mera Silt",
+      "kind": "side-character",
+      "status": "playable-chapter",
+      "sceneSource": "src/client/story/chapter/en.json",
+      "treatmentSource": "docs/story-continuity/ONE_PLACE_LEFT.md",
+      "appearsInPlayableStory": true,
+      "playerSelectable": false,
+      "completedStoryArc": false
+    },
+    {
+      "id": "nell-dace",
+      "name": "Nell Dace",
+      "kind": "side-character",
+      "status": "playable-chapter",
+      "sceneSource": "src/client/story/chapter/en.json",
+      "treatmentSource": "docs/story-continuity/ONE_PLACE_LEFT.md",
+      "appearsInPlayableStory": true,
+      "playerSelectable": false,
+      "completedStoryArc": false
+    },
+    {
+      "id": "els-pell",
+      "name": "Els Pell",
       "kind": "side-character",
       "status": "playable-chapter",
       "sceneSource": "src/client/story/chapter/en.json",

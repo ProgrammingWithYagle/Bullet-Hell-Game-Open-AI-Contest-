@@ -17,7 +17,7 @@ const until = async (check: () => boolean) => {
   }
 };
 test(
-  'real owner purchases and observer replication preserve transformed fields, walls, turrets, timed cues and decoys for all ten classes',
+  'real owner purchases and observer replication preserve transformed fields, walls, turrets, timed cues and decoys for all eleven classes',
   { timeout: 30000 },
   async () => {
     const { server, httpServer } = createGameServer();

@@ -1,6 +1,17 @@
 # Changelog
 
-Development build **2026.11.01-summoner**, protocol 48. The current contest Site uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.02-ranger**, protocol 48. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-02 — Nela Venn and the Ranger discipline
+
+### Committed arrows and prepared ground
+
+- Ranger is the eleventh playable discipline. Draw your bow along a committed aim, spend real ready arrows, and release from your actual position. A dodge cancels the draw without refunding its arrows. Bow rate upgrades retain their actual fractional timing.
+- Drawn Line pierces along its chosen line. Tripline arms a physical cable, catches a real crossing and slows ordinary enemies without rooting a boss or cancelling an attack. Surveyor’s Circuit prepares fixed firing positions with finite charges instead of firing automatically.
+- Free Play adds four bows,54 specialization nodes and Crosswind, Linked Stakes and Long Survey. A legal field build costing 27 SP can maintain four cables; Long Survey trades two short firing positions for one longer position. Quiver replenishment, bow equipment and arrow bundles have their own presentation.
+- Campaign keeps slow learning and no SP or mutation draft. Nela demonstrates one D- foundation by damaging an ordinary enemy with her own released Drawn Line arrow and completing that practice encounter. Entry, reading, empty casts, other owners and boss-only hits grant no proof.
+- Nela’s English ward conversation introduces civilian cart fitter Els Pell. Their barrow test is an agreement for later. Her optional letter The Longer Way is separate, and neither introduction completes a personal arc. Original directional character art and quiet bow/wood/cloth sound candidates accompany the class.
+- Alchemist remains required for twelve classes. The longer main campaign, twelve full personal arcs, later mastery, durable characters, additional objectives and boss work remain in development.
 
 ## 2026-11-01 — Joss Merrow and a living retinue
 
@@ -1525,7 +1536,7 @@ Development build **2026.11.01-summoner**, protocol 48. The current contest Site
 
 ## Still in development
 
-- All sixty-six boss identities execute in Standard, Brutal and Crazed forms. Seven survivors have complete selected basic motion and 21 ability transformations. Bespoke special-ability/boss action production, transformation animation, final encounter tuning and rendered/device acceptance remain unfinished.
+- All sixty-six boss identities execute in Standard, Brutal and Crazed forms. Eleven survivors have selected basic motion and33 ability transformations. Bespoke special-ability/boss action production, transformation animation, final encounter tuning and rendered/device acceptance remain unfinished.
 - Local mastery, cosmetics, profiles and remappable controls are implemented. Native-language, physical-device, human listening/gameplay, full-progression endurance and full capacity acceptance remain open.
 - An unsigned Windows/offline/LAN development download is published with exact artifact evidence. Physical second-machine LAN and final coordinated browser/Windows release acceptance remain open.
 - Verified public rankings and durable deployed recovery remain unfinished. Bounded compressed transfer passes a fifty-build local HTTP/restart fixture; maximum-entropy histories still require paging.

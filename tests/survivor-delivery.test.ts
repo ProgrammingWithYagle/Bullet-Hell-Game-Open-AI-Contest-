@@ -16,15 +16,17 @@ import sword from '../assets/production/motion/swordsman-library.json';
 import swordActions from '../assets/production/motion/swordsman-actions/library.json';
 import summoner from '../assets/production/motion/summoner-library.json';
 import summonerActions from '../assets/production/motion/summoner-actions/library.json';
-const originals = [...actions.entries, ...runs.entries, ...legacy.entries, ...heavy.entries, ...bard.entries, ...bardActions.entries, ...sword.entries, ...swordActions.entries,...summoner.entries,...summonerActions.entries];
+import ranger from '../assets/production/motion/ranger-library.json';
+import rangerActions from '../assets/production/motion/ranger-actions/library.json';
+const originals = [...actions.entries, ...runs.entries, ...legacy.entries, ...heavy.entries, ...bard.entries, ...bardActions.entries, ...sword.entries, ...swordActions.entries,...summoner.entries,...summonerActions.entries,...ranger.entries,...rangerActions.entries];
 const sha = (path: string) => createHash('sha256').update(readFileSync(path)).digest('hex');
 
-test('all 1076 selected survivor poses retain exact original contracts and have bounded two-times display delivery textures', () => {
-  assert.equal(originals.length, 244);
-  assert.equal(survivorDelivery.entries.length, 244);
+test('all 1148 selected survivor poses retain exact original contracts and have bounded two-times display delivery textures', () => {
+  assert.equal(originals.length, 268);
+  assert.equal(survivorDelivery.entries.length, 268);
   assert.equal(
     survivorDelivery.entries.reduce((sum, e) => sum + e.frames, 0),
-    1076,
+    1148,
   );
   for (const original of originals) {
     const entry = survivorDelivery.entries.find((e) => e.id === original.id)!;
@@ -52,7 +54,7 @@ test('all 1076 selected survivor poses retain exact original contracts and have 
 
 test('every live action and run selector uses matching delivery cells while retaining world origin and size', () => {
   const live = [...survivorActionArt.entries, ...survivorArt.entries, ...heavyArt.entries];
-  assert.equal(live.length, 244);
+  assert.equal(live.length, 268);
   for (const clip of live) {
     const original = originals.find((e) => e.id === clip.id)!;
     const delivery = survivorDelivery.entries.find((e) => e.id === clip.id)!;

@@ -61,6 +61,7 @@ import './ui/waiting-room.css';
 import './ui/interface-clarity.css';
 import './ui/retinue.css';
 import {RetinueControls} from './retinue-controls.ts';
+import {rangerCommitBlocked} from './ranger-presentation.ts';
 import './ui/home-gallery.css';
 import './ui/language-welcome.css';
 import './ui/game-viewport.css';
@@ -603,8 +604,8 @@ function update(view: View) {
   shield.max=Math.max(1,p.maxShield);shield.value=Math.max(0,Math.min(p.maxShield,p.shield));
   shield.closest<HTMLElement>('.shield-meter')!.dataset.unavailable=String(p.maxShield===0);
   $('shield-text').textContent=number(p.shield)+' / '+number(p.maxShield);
-  $('ammo-label').textContent=t(p.classId==='swordsman'?(p.reloadAt>view.combatTick?'ui.swordRecovery':'ui.swordBreath'):p.classId==='summoner'?(p.reloadAt>view.combatTick?'ui.summonerRebind':'ui.summonerFocus'):(p.reloadAt>view.combatTick?'ui.reloading':'ui.ammo'));
-  $('ammo').textContent=number(p.ammo);
+  $('ammo-label').textContent=t(p.classId==='ranger'?(p.reloadAt>view.combatTick?'ui.rangerReplenish':'ui.rangerQuiver'):p.classId==='swordsman'?(p.reloadAt>view.combatTick?'ui.swordRecovery':'ui.swordBreath'):p.classId==='summoner'?(p.reloadAt>view.combatTick?'ui.summonerRebind':'ui.summonerFocus'):(p.reloadAt>view.combatTick?'ui.reloading':'ui.ammo'));
+  $('ammo').textContent=number(p.ammo)+(p.classId==='ranger'?' / '+number(p.kit.rangerQuiverCapacity??p.ammo):'');
   $('coins-value').textContent=number(p.coins);
   $('skill-points-value').textContent=number(p.sp);
   $('skill-points-value').closest<HTMLElement>('.vital-resource')!.hidden=Boolean(view.chapter);
@@ -639,7 +640,7 @@ function update(view: View) {
             .map((n) => bindingLabel(inputOptions.bindings[('supply' + n) as 'supply1'][0]))
             .join(' / '),
         });
-    const artId=slot.id==='ammo-pouch'?(p.classId==='swordsman'?'swordsman-canteen':p.classId==='summoner'?'summoner-thread-spool':slot.id):slot.id;
+    const artId=slot.id==='ammo-pouch'?(p.classId==='swordsman'?'swordsman-canteen':p.classId==='summoner'?'summoner-thread-spool':p.classId==='ranger'?'ranger-arrow-bundle':slot.id):slot.id;
     if (button.dataset.item !== artId) {
       button.dataset.item = artId;
       button.querySelector('[data-supply-glyph]')!.innerHTML =
@@ -710,6 +711,12 @@ function update(view: View) {
       clock((view.accord.until - view.combatTick) / 30);
   const cl = data.classes.find((c) => c.id === p.classId)!;
   const swordHost=$('abilities').querySelector<HTMLElement>('[data-sword-state]');
+  const rangerHost=$('abilities').querySelector<HTMLElement>('[data-ranger-state]');
+  if(p.classId==='ranger'){
+    const status=rangerHost??document.createElement('span');status.dataset.rangerState='';status.className='ability';
+    const value=t('ui.rangerTraps',{count:number(p.kit.rangerTraps??0),capacity:number(p.kit.rangerTrapCapacity??2)})+' · '+t('ui.rangerSurvey',{count:number(p.kit.rangerSurveyCharges??0)});
+    if(status.textContent!==value)status.textContent=value;if(!rangerHost)$('abilities').append(status);
+  }else rangerHost?.remove();
   if(p.classId==='swordsman'){
     const status=swordHost??document.createElement('span');status.dataset.swordState='';status.className='ability';
     const value=[(p.kit.counterUntil??0)>view.combatTick?t('ui.swordCounter'):'',(p.kit.swordCuts??0)>0?t('ui.swordCuts',{count:number(p.kit.swordCuts??0)}):''].filter(Boolean).join(' · ');
@@ -743,7 +750,8 @@ function update(view: View) {
       e.dataset.ability = key;
       abilityList.append(e);
     }
-    e.className = at <= view.combatTick && !(key==='sprint'&&p.sprintExhausted) ? 'ability ready' : 'ability';
+    const rangerBlocked=rangerCommitBlocked(p,key,view.combatTick);
+    e.className = at <= view.combatTick && !(key==='sprint'&&p.sprintExhausted) && !rangerBlocked ? 'ability ready' : 'ability';
     e.title = name || label;
     const touch = document.querySelector<HTMLElement>('.touch-buttons [data-action="' + key + '"]');
     if (touch && touch.textContent !== label) touch.textContent = label;
@@ -752,7 +760,7 @@ function update(view: View) {
       ' · ' +
       label +
       ' ' +
-      (at > view.combatTick ? clock((at - view.combatTick) / 30) : '✓');
+      (at > view.combatTick ? clock((at - view.combatTick) / 30) : rangerBlocked ? '—' : '✓');
     if (e.textContent !== value) e.textContent = value;
   }
   $('squad').textContent =

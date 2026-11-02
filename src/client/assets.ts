@@ -133,7 +133,7 @@ const encounterMotion = import.meta.glob(
 export const assets = {
   resourceIcons: Object.fromEntries(
     Object.entries(resourceIcons).map(([path, url]) => [
-      path.endsWith("summoner-focus-v1.png") ? "summoner-focus" : path.endsWith("equipment-case-v1.png")
+      path.endsWith("ranger-quiver-v1.png") ? "ranger-quiver" : path.endsWith("summoner-focus-v1.png") ? "summoner-focus" : path.endsWith("equipment-case-v1.png")
         ? "equipment"
         : path.endsWith("skill-manual-v1.png")
           ? "skills"

@@ -29,7 +29,7 @@ test('all nine classes have 54 nodes and every branch contains the complete 18-g
       }
     }
   }
-  assert.equal(ids.size, 540);
+  assert.equal(ids.size, 594);
 });
 test('all 63 implemented specialization paths enforce prerequisites and spend exactly 21 points', () => {
   for (const classId of implementedClassIds)

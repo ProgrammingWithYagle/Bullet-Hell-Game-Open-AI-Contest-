@@ -6,6 +6,11 @@ import { classifiedContract } from "./boss-threat.ts";
 function migrateKnownPracticeBoundary(value: unknown): unknown {
   if (!value || typeof value !== "object" || Array.isArray(value)) return value;
   const issued = value as Record<string, unknown>;
+  if(issued.protocolVersion===48&&issued.contentRevision==='f099f438f83d4f79da2fd18bc8cd680e3e8616e5febb50d7b78609b47d09bb32'){
+    const p=issued.player as Record<string,unknown>|undefined;
+    if(issued.schemaVersion!==1||issued.practiceOnly!==true||issued.serverOnly===true||issued.players!==undefined||issued.transactions!==undefined||JSON.stringify(issued).length>32768||!p||!['soldier','medic','heavy','tank','mage','engineer','assassin','bard','swordsman','summoner'].includes(String(p.classId))||(Array.isArray(p.skills)&&p.skills.some(s=>typeof s==='string'&&s.startsWith('ranger-'))))throw Error('versionMismatch');
+    return {...issued,contentRevision:CONTENT_REVISION};
+  }
   if(issued.protocolVersion===47&&issued.contentRevision==='e74efafe14d4694ef9afd8ea6df038c3fd0e697e4b6d5039f9a6d70173c8b6bd'){
     const p=issued.player as Record<string,unknown>|undefined;
     if(issued.schemaVersion!==1||issued.practiceOnly!==true||issued.serverOnly===true||issued.players!==undefined||issued.transactions!==undefined||JSON.stringify(issued).length>32768||!p||!['soldier','medic','heavy','tank','mage','engineer','assassin','bard','swordsman'].includes(String(p.classId))||(Array.isArray(p.skills)&&p.skills.some(s=>typeof s==='string'&&s.startsWith('summoner-'))))throw Error('versionMismatch');

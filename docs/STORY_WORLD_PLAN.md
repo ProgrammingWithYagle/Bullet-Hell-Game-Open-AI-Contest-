@@ -4,7 +4,7 @@ Latest canon: the established seven and newly introduced leads have only recentl
 
 This is an authoring plan, not a claim that these chapters are playable. The user has approved a cooperative main campaign, optional character chapters for all twelve accepted survivors, deep worldbuilding, and deliberate development of side characters and antagonists. Their latest ambition is **five million words in the base story**, excluding optional routes and character chapters. Only the user decides when the game is finished.
 
-The existing foundation is The Open Ledger: one fifteen-encounter arc, three chapters, fourteen decisions and three endings. Seven survivor letters are epilogues, not seven completed character arcs. Existing English, Spanish and Arabic prose deliveries do not constitute the long-form campaign. The running reviews and implementation ledger remain the authority for shipped behavior.
+Fresh Campaign starts use One Place Left, with full-screen reading, two milestone bosses, one ordinary encounter and learned/proven/prepared D- foundations for eleven disciplines. The earlier fifteen-encounter Open Ledger prototype, fourteen decisions and three endings remain an archive/restore compatibility path. Eleven optional survivor letters are separate vignettes, not completed character arcs or a finished main story. English, Spanish and Arabic gate editions and the English chapter continuation do not constitute the long-form campaign. The running reviews and implementation ledger remain the authority for verified behavior.
 
 ## Scale and structure
 

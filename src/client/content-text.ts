@@ -3,9 +3,10 @@ import {talentForSkill} from '../shared/class-talents.ts';
 import {revivedHealth} from '../shared/recovery-policy.ts';
 import { t, number } from './i18n.ts';
 import { data } from '../shared/game.ts';
-export function supplyName(id:string,classId:string){return t('supply.'+(id==='ammo-pouch'?(classId==='swordsman'?'swordsman-canteen':classId==='summoner'?'summoner-thread-spool':id):id)+'.name');}
-export function upgradeName(id:string,classId:string){return t('upgrade.'+(['damage','fire-rate','magazine','reload'].includes(id)?(classId==='swordsman'?'swordsman-':classId==='summoner'?'summoner-':''):'')+id+'.name');}
+export function supplyName(id:string,classId:string){return t('supply.'+(id==='ammo-pouch'?(classId==='swordsman'?'swordsman-canteen':classId==='summoner'?'summoner-thread-spool':classId==='ranger'?'ranger-arrow-bundle':id):id)+'.name');}
+export function upgradeName(id:string,classId:string){return t('upgrade.'+(['damage','fire-rate','magazine','reload'].includes(id)?(classId==='swordsman'?'swordsman-':classId==='summoner'?'summoner-':classId==='ranger'?'ranger-':''):'')+id+'.name');}
 export function supplyText(id: string,difficulty='normal',classId='soldier') {
+  if(classId==='ranger'&&id==='ammo-pouch')return t('supply.ranger-arrow-bundle.description',{maximum:number(data.supplies.find(s=>s.id==='ammo-pouch')!.maximumStack)});
   if(classId==='summoner'&&id==='ammo-pouch')return t('supply.summoner-thread-spool.description',{maximum:number(data.supplies.find(s=>s.id==='ammo-pouch')!.maximumStack)});
   if(classId==='swordsman'&&id==='ammo-pouch')return t('supply.swordsman-canteen.description');
   const item = data.supplies.find((s) => s.id === id)!;
@@ -37,6 +38,7 @@ const flat = new Set([
   'ultimateRadius',
   'startShield',
   'retinueCapacity',
+  'rangerTrapCapacity',
 ]);
 export function effectText(
   effects: Record<string, number | undefined>,
@@ -49,7 +51,7 @@ export function effectText(
       let formatted = '';
       if (kind === 'mutation' && !['armor', 'extraShots', 'startShield'].includes(key))
         formatted = '×' + number(value, 2);
-      else if (key === 'ultimateDuration')
+      else if (key === 'ultimateDuration'||key==='rangerTrapDuration')
         formatted = t('template.seconds', { value: (value > 0 ? '+' : '') + number(value, 2) });
       else if (key === 'ultimateRadius')
         formatted = t('template.pixels', { value: (value > 0 ? '+' : '') + number(value, 2) });

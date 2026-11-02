@@ -119,6 +119,7 @@ test('one-shot attack and hurt directions remain at their authoritative onset in
     view.tick++;
     view.combatTick++;
     view.players[0].ammo--;
+    if(p.classId==='ranger')view.classCues.push({kind:'ranger-draw',id:999999,owner:p.id,x:p.x,y:p.y,x2:p.x,y2:p.y,aim:0,radius:950,at:view.combatTick,until:view.combatTick+6,remaining:1,active:false,training:false});
     clock.observe(view);
     assert.equal(clock.pose(view.players[0], view, false)!.facing, 'east');
     view.players[0].aim = Math.PI / 2;

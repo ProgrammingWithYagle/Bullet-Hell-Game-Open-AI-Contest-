@@ -20,7 +20,7 @@ test('the defeat status counts actual remaining ticks and distinguishes the next
   }
 });
 
-test('all ten actual portraits have bounded headshots; player status and room roster keep resources independent and text escaped',()=>{
+test('all eleven actual portraits have bounded headshots; player status and room roster keep resources independent and text escaped',()=>{
   const portraits=Object.fromEntries(data.classes.map(c=>[c.id,'/images/'+c.id+'-selection-v1.png'])),g=new Game({mode:'raid',maxPlayers:16});
   for(const c of data.classes){
     const head=characterHeadshot(c.id,portraits[c.id]);assert(head.includes('viewBox='));assert(head.includes(portraits[c.id]));assert(head.includes('aria-hidden="true"'));
@@ -30,7 +30,7 @@ test('all ten actual portraits have bounded headshots; player status and room ro
     g.addPlayer(c.id,'<'+c.survivor+'>',c.id as ClassId);
   }
   const roster=waitingRoomMarkup(viewOf(g,'soldier'),'soldier','ABC234',key=>key,String,portraits,true);
-  assert.equal((roster.match(/class="character-headshot"/g)??[]).length,10);assert(roster.includes('ui.roomPasswordProtected'));assert(roster.includes('&lt;'));assert(!roster.includes('<Mara>'));
+  assert.equal((roster.match(/class="character-headshot"/g)??[]).length,11);assert(roster.includes('ui.roomPasswordProtected'));assert(roster.includes('&lt;'));assert(!roster.includes('<Mara>'));
   assert.throws(()=>characterHeadshot('missing','image'),/Missing character/);
   const collage=mapCollage(Object.fromEntries(data.arenas.map(a=>[a.id,'/maps/'+a.id+'.png'])));assert.equal((collage.match(/<img /g)??[]).length,6);for(const a of data.arenas)assert(collage.includes(a.id+'.png'));assert.throws(()=>mapCollage({}),/Missing map imagery/);
 });

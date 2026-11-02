@@ -67,6 +67,7 @@ test('Heavy is admitted with authored health, weapon, movement and Practice/serv
     'bard',
     'swordsman',
     'summoner',
+    'ranger',
   ]);
   const { game, player } = setup();
   assert.equal(player.health, 140);

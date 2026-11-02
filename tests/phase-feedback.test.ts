@@ -229,7 +229,7 @@ test('one progress ledger keeps local, Wiki and in-game counts aligned with exec
   assert.equal(progress.generatedConcepts, 0);
   assert.equal(progress.ordinaryTarget, 150);
   assert.equal(progress.items.find((i) => i.id === 'boss-quality')!.remaining, 42);
-  assert.equal(progress.items.find((i) => i.id === 'class-abilities')!.remaining, 0);
+  assert.equal(progress.items.find((i) => i.id === 'class-abilities')!.remaining, 1);
   assert.equal(progress.items.find((i) => i.id === 'map-layout')!.remaining, 0);
   assert.equal(progress.items.find((i) => i.id === 'map-layout')!.humanAccepted, 0);
 });

@@ -11,6 +11,7 @@ export const chapterCharacterIds: Record<ClassId, string> = {
   bard: 'iven-cair',
   swordsman: 'dara-flint',
   summoner: 'joss-merrow',
+  ranger: 'nela-venn',
 };
 
 export type TrainingEventKind =
@@ -23,12 +24,14 @@ export type TrainingEventKind =
   | 'concealed-hit'
   | 'phrased-hit'
   | 'measured-hit'
-  | 'retinue-hit';
+  | 'retinue-hit'
+  | 'drawn-hit';
 // A phrase counts only after spending cadence earned by a real primary hit.
 export const chapterLessons: Record<
   ClassId,
   { techniqueId: string; event: TrainingEventKind; minimum: number }
 > = {
+  ranger: { techniqueId: 'ranger-fieldcraft-1', event: 'drawn-hit', minimum: 1 },
   summoner: { techniqueId: 'summoner-bonds-1', event: 'retinue-hit', minimum: 1 },
   swordsman: { techniqueId: 'swordsman-measure-1', event: 'measured-hit', minimum: 1 },
   bard: { techniqueId: 'bard-performance-1', event: 'phrased-hit', minimum: 1 },

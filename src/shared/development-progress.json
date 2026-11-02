@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-01",
-  "buildId": "2026.11.01-summoner",
+  "updated": "2026-11-02",
+  "buildId": "2026.11.02-ranger",
   "playableBosses": 66,
   "ordinaryBosses": 65,
   "secretBosses": 1,
@@ -9,7 +9,7 @@
   "currentSecretTarget": 1,
   "minimumTotalTarget": 151,
   "generatedConcepts": 0,
-  "classes": 10,
+  "classes": 11,
   "maps": 6,
   "items": [
     {
@@ -44,9 +44,9 @@
     {
       "id": "class-abilities",
       "label": "Ability-changing class-upgrade revamps",
-      "target": 10,
-      "implemented": 10,
-      "remaining": 0,
+      "target": 12,
+      "implemented": 11,
+      "remaining": 1,
       "humanAccepted": 0,
       "completedIds": [
         "soldier",
@@ -58,9 +58,10 @@
         "assassin",
         "bard",
         "swordsman",
-        "summoner"
+        "summoner",
+        "ranger"
       ],
-      "status": "Three ability-changing upgrades per current class (30 total) execute under shared authority with fifteen-language help. Summoner adds Running Pack, Closed Ranks and Patient Company. Rendered/device/native-language/listening/human/final balance review remains open."
+      "status": "Three ability-changing upgrades per current class (33 total) execute under shared authority with fifteen-language help. Ranger adds Crosswind, Linked Stakes and Long Survey. The accepted Alchemist discipline remains required. Rendered/device/native-language/listening/human/final balance review remains open."
     },
     {
       "id": "branching-tree",
@@ -72,7 +73,7 @@
       "completedIds": [
         "expanded-skill-map"
       ],
-      "status": "Optional all-54-skill map implemented for all nine current classes with settings toggle, bounded zoom, scrolling and keyboard navigation. Classic remains the default; rendered/human/device/native-language review remains open."
+      "status": "Optional all-54-skill map implemented for all eleven current classes with settings toggle, bounded zoom, scrolling and keyboard navigation. Classic remains the default; rendered/human/device/native-language review remains open."
     },
     {
       "id": "map-layout",
@@ -318,7 +319,7 @@
       "implemented": 0,
       "remaining": 12,
       "humanAccepted": 0,
-      "status": "Every accepted playable lead needs a full optional personal arc. Ten current leads and two proposed additions have treatments; existing letters and opening appearances are not completed arcs."
+      "status": "Every accepted playable lead needs a full optional personal arc. Eleven current leads and one proposed addition have treatments; existing letters and opening appearances are not completed arcs."
     },
     {
       "id": "long-form-story-world",
@@ -337,7 +338,7 @@
       "remaining": 1,
       "humanAccepted": 0,
       "completedIds": [],
-      "status": "One introductory chapter implements learned/proven/prepared state, authoritative effects for all ten current roles, one D- preparation, safe-boundary persistence and a local exportable journal. The full long-term system, later lessons/grades, General learning and durable character accounts remain unfinished. Free Play SP remains unchanged."
+      "status": "One introductory chapter implements learned/proven/prepared state, authoritative effects for all eleven current roles, one D- preparation, safe-boundary persistence and a local exportable journal. The full long-term system, later lessons/grades, General learning and durable character accounts remain unfinished. Free Play SP remains unchanged."
     },
     {
       "id": "story-ordinary-encounters",
@@ -363,14 +364,16 @@
       "id": "new-classes",
       "label": "Accepted new class disciplines and Story/Free Play integration",
       "target": 5,
-      "implemented": 3,
-      "remaining": 2,
+      "implemented": 4,
+      "remaining": 1,
       "humanAccepted": 0,
       "completedIds": [
         "bard",
-        "swordsman"
+        "swordsman",
+        "summoner",
+        "ranger"
       ],
-      "status": "Bard, Swordsman and Summoner have authoritative kits,54nodes/fourweapons/threetransformations each, actual owned D- Story demonstrations, art candidates and original synthesized cues. Ten classes are integrated. Ranger and Alchemist remain required; full arcs, later mastery and final acceptance remain open."
+      "status": "Bard, Swordsman, Summoner and Ranger have authoritative kits, 54 nodes, four weapons and three transformations each, actual owned D- Story demonstrations, art candidates and original synthesized cues. Eleven classes are integrated. Alchemist remains required; full arcs, later mastery and final acceptance remain open."
     },
     {
       "id": "opening-chapter",
@@ -759,24 +762,24 @@
     "The user reiterates that rapid SP growth cannot share the slow campaign pace. Keep Story exclusively on chapter learning/proofs; retain fast SP progression in story-free Free Play. Continue the full development goal, with completion reserved to the user."
   ],
   "remainingReleaseWork": [
-    "Continue current-content polish for first-time players during the remaining day. The home-gallery follow-up adds manual arrows/page buttons and keyboard/RTL navigation over existing artwork, retaining menu state and accepted camera/lava/controls. Read reviews/home-gallery-2026-10-29 for exact local/source/CI/fresh-preview/Wiki evidence. Testing links are preferred for human comparison. Matching Windows packaging should follow a stable gallery pass; older6f397a5camera review remains immutable. Full human/rendered/multiplayer balance and coordinated release acceptance remain open.",
-    "Review Alchemist Crazed distillation columns, route warnings, coolant condensation and final reflux in the next matching frozen preview. The shared General mobility branch is implemented and awaits human/device/balance review.",
+    "Earlier gallery reviews remain historical comparison evidence under reviews/home-gallery-2026-10-29. The current user instruction authorizes continued expansion and polish. Preserve older exact-source services, Windows packages and art/source history. Matching human/rendered/device/multiplayer balance and coordinated release acceptance remain open; do not infer production deployment or main-merge permission.",
+    "Review the Mold Alchemist boss’s Crazed distillation columns, route warnings, coolant condensation and final reflux in the next matching frozen preview. The shared General mobility branch is implemented and awaits human/device/balance review.",
     "Review shared phase-attack continuity in the next matching frozen preview; software checks are separate from rendered/human/device/final balance acceptance.",
     "Review Bellringer Standard calibration and the new Brutal/Crazed return-chain decision in the next exact-source frozen preview; fixed grade3- remains.",
     "Review General Sprint/Double Dash on rendered keyboard, gamepad and touch surfaces, all fifteen languages and representative bosses; tune mobility tradeoffs with human feedback.",
     "Complete rendered/human/device/native-language review of the testing/public split, Solo tools, optional names/chat and records UI. The manual guide works in limited 5193 human feedback; guide images are deferred polish. Public builds offer the optional guide only on Baby.",
     "Continue expansion: create and verify 85 additional ordinary boss identities, with distinct mechanics, art and individual original music; the target is at least 150 ordinary plus secrets.",
     "Continue expansion: assess or redesign the remaining 42 existing boss encounters for distinct phases, meaningful pressure and separate Brutal behavior.",
-    "Review and tune the 27 implemented ability-changing upgrades and optional skill map on actual rendered/human/device/native-language surfaces.",
+    "Review and tune the 33 implemented ability-changing upgrades and optional skill map on actual rendered/human/device/native-language surfaces.",
     "Complete remaining boss special/action art, class special-ability art and rendered animation transitions.",
     "Complete final human balance, music/listening, native-language and physical-device acceptance. Browser automation remains disabled under the current user direction; a scripted or invulnerable sample is not a personally played clear.",
     "Verify active 8/16/50-player mixed progression, WAN and full progression endurance; current headless and scoped local evidence is separate.",
     "Deploy and independently accept shared hosted global rankings and durable recovery. Current public authorities implement persistent server-scoped team records with exact scoring and real-network/restart evidence. Shared storage ownership, participant recovery credentials, entropy recovery histories and hosted acceptance remain open.",
     "Prepare and verify a new coordinated Windows/browser release with a matching backend; existing immutable Windows and older public builds remain separate.",
     "Finish and review the12 remaining Story narrative translations; compare15-fight pacing, choices, endings and all difficulty paths with human players. The new campaign is implemented but not accepted as finished.",
-    "Continue the longer story beyond the first fifteen-encounter arc: author additional arcs and chapters, grow visual-novel scenes and new art/expressions, and obtain rendered, native-language and human pacing review. The user defines full-game completion.",
+    "Continue the fresh chapter campaign beyond One Place Left; preserve the earlier fifteen-encounter prototype as an archive: author additional arcs and chapters, grow visual-novel scenes and new art/expressions, and obtain rendered, native-language and human pacing review. The user defines full-game completion.",
     "Implement twelve optional character arcs and the much longer main campaign, using the accepted ensemble writing/worldbuilding standard. Target five million English main-story words separately from optional content, translated duplicates and UI. Add multi-volume loading, durable reading/chapter progress, scene/continuity review and recurring side/antagonist development. STORY_WORLD_PLAN.md is an authoring plan, not a finished campaign.",
-    "Extend the new chapter/learning campaign beyond One Place Left, while preserving fast SP-based Free Play. Implement permanent cross-room character advancement, later grades and General lessons, complete additional objectives/cast arcs/chapters, local active-checkpoint transfer and the English continuation translations. Bard, Swordsman and Summoner are integrated; Ranger and Alchemist remain unfinished."
+    "Extend the new chapter/learning campaign beyond One Place Left, while preserving fast SP-based Free Play. Implement permanent cross-room character advancement, later grades and General lessons, complete additional objectives/cast arcs/chapters, local active-checkpoint transfer and the English continuation translations. Bard, Swordsman, Summoner and Ranger are integrated; Alchemist remains unfinished."
   ],
-  "semanticInputsSha256": "aa9d90e93c48125a7115f42d8383155acbb0e40b68d4e65da1981af05b38eb41"
+  "semanticInputsSha256": "91b70457812163c5ab05e8496224bdb64f7e4e1bf46cc096581bc059501a7952"
 }
