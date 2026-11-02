@@ -1,6 +1,17 @@
 # Changelog
 
-Development build **2026.11.02-alchemist**, protocol 48. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.02-chapter-checkpoint**, protocol 48. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-02 — Carry a local Campaign between previews
+
+### Chapter saves that can travel
+
+- Campaign now offers local safe-checkpoint export, file preview and resume in its own tab. The packet carries the chapter boundary, class identity, route, equipment, remaining money and learned/proven/prepared techniques.
+- An isolated Solo worker checks a checkpoint through the actual complete restore rules before the file can replace a save. Inspection does not start or replace a running game. Free Play, archived SP Story, combat-state and inconsistent training files are rejected.
+- Import previews the character, completed objectives and training before an explicit Use this checkpoint action. A stale selection, cancelled work, malformed file or failed storage write leaves the existing local save intact. Choosing a newer file prevents an older asynchronous read from taking over.
+- The file replaces the single local resume slot when explicitly used. Reading bookmarks and journal history remain separate; these local files grant no online progress. The journal retains its own existing history export/import.
+- Resumed characters now bind the HUD portrait and primary-resource icon to the actual restored class, even when the menu selected a different class. Repeated views preserve the existing HUD rather than rebuilding it.
+- Transfer guidance has drafts in all fifteen supported languages. Campaign still has slow learning and no SP or mutation draft; Free Play keeps fast SP builds and mutations. Further chapters, persistent characters, later mastery, full arcs and final rendered/device/native-language/human review remain unfinished.
 
 ## 2026-11-02 — Perrin Moss and the Alchemist discipline
 

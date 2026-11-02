@@ -13,7 +13,7 @@ import {RoomInviteUI,roomInvitePlacement} from './room-invite-ui.ts';
 import {HostMatchUI} from './host-match-ui.ts';
 import {bindPasswordVisibility} from './ui/password-visibility.ts';
 import {waitingRoomMarkup,bindRoomCode} from './ui/waiting-room.ts';
-import {playerVitalsMarkup} from './ui/player-vitals.ts';
+import {playerVitalsMarkup,ensurePlayerVitalsClass} from './ui/player-vitals.ts';
 import {bossDefeatStatus} from './ui/boss-defeat-status.ts';
 import { teamResultMarkup } from './ui/team-records.ts';
 import type { TeamBoardSelection } from './team-records.ts';
@@ -592,6 +592,7 @@ function update(view: View) {
   });
   const power=clerkShelterPower(view,p),powerElement=$('clerk-shelter-power');
   powerElement.hidden=power<=0;powerElement.textContent=power>0?t('ui.shelterPower',{percent:number(Math.round(power*100))}):'';
+  ensurePlayerVitalsClass(app,p.classId,assets.portraits[p.classId],selectedCosmetic==='field-mark'?'':insignia(selectedCosmetic),t,assets.resourceIcons);
   $('player-name-label').textContent=p.name;
   $('player-class').textContent=t('class.'+p.classId+'.name');
   $('player-build').textContent=t('ui.buildRating')+' '+buildGrade(rating(p));

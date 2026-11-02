@@ -1,4 +1,5 @@
 import {TESTING_BUILD} from './build-audience.ts';
+import { inspectLocalChapterCheckpoint } from '../shared/chapter-transfer.ts';
 import {applyTestingCommand} from './testing-command.ts';
 import {publicRunSettings} from '../shared/public-run.ts';
 import { createPracticeGame } from '../shared/practice-start.ts';
@@ -30,6 +31,14 @@ const emit = (force = false) => {
 };
 self.onmessage = (e: MessageEvent) => {
   const m = e.data;
+  if (m.type === 'inspectChapterCheckpoint') {
+    try {
+      postMessage({type:'chapterCheckpointInspection',ok:true,value:inspectLocalChapterCheckpoint(m.value)});
+    } catch {
+      postMessage({type:'chapterCheckpointInspection',ok:false});
+    }
+    return;
+  }
   if (m.type === 'resume') {
     try {
       game = Game.restoreOffline(m.value);

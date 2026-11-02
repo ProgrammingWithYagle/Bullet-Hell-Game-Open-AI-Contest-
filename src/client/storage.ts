@@ -1,6 +1,7 @@
 import { CONTENT_REVISION, PROTOCOL } from '../shared/protocol.ts';
 import { migratePracticeBoundary } from '../shared/practice-migration.ts';
-const KEY = 'ga-offline-boundary-v1';
+export const OFFLINE_BOUNDARY_KEY = 'ga-offline-boundary-v1';
+const KEY = OFFLINE_BOUNDARY_KEY;
 export function savedBoundary(): unknown | null {
   try {
     const raw = localStorage.getItem(KEY);

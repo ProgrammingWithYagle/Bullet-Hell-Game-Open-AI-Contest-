@@ -1,0 +1,11 @@
+# Local Campaign checkpoint transfer
+
+The Campaign tab can resume or export the saved local chapter. Selecting a checkpoint file first validates it and previews its character, completed objectives and learned/proven/prepared techniques. Nothing is installed until the player chooses Use this checkpoint. That action replaces the single local resume slot.
+
+The versioned JSON packet contains a local safe boundary, equipment, money, route and training state. The same full Game restore checks used by Solo validate it in an isolated worker. Inspection neither starts nor replaces a running game. Current and explicitly recognized historical chapter saves can migrate; Free Play, archived SP Story, combat snapshots, impossible class histories, mismatched training and malformed/oversized files are rejected.
+
+Cancellation, controller disposal and newer selections invalidate outstanding reads. Every inspection worker terminates on completion, rejection or abort. A compare-before-write check rejects an import if the saved game changed while its file was open. A storage error preserves the earlier resume slot. Export/preview alone never writes it. Profile data and chapter-history bytes are separate.
+
+These are local practice checkpoints. They are never submitted as server-issued proofs or online account progress. Reading bookmarks and chapter journal history are not included in this packet; the journal has its own existing export/import. Separate per-mode save slots, complete bookmark transfer, durable characters and hosted account recovery remain future work.
+
+Focused evidence includes an actual earned ordinary proof and equipment transaction, all twelve class identities, issued Ranger-era migration, invalid/cancelled/stale/quota cases, real compiled public/testing Solo workers, actual controller actions, lifetime cleanup and fifteen draft guidance editions. Browser/rendered, physical-device, native-language, human-play and final UX acceptance remain open. The complete local gate02 passes1,251tests, TypeScript,15catalogs,144early-chapter cases and the production/art build. Exact-source CI and frozen probes remain pending. Restored portrait/resource binding now follows actual authority rather than the menu selection; an added twelve-class HUD regression passes.

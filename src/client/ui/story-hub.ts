@@ -9,6 +9,7 @@ import { chapterText } from '../chapter-text.ts';
 import { chapterJournal, exportChapterJournal, importChapterJournal } from '../chapter-journal.ts';
 import catalog from '../../../content/catalog.json';
 import { chapterParticipation } from '../../shared/story-chapter.ts';
+import { chapterTransferMarkup, bindChapterTransfer } from './chapter-transfer.ts';
 function earnedChapterScenes() {
   const scenes = new Set<number>();
   try {
@@ -58,15 +59,17 @@ export function storyHubMarkup() {
   } catch {}
   const book = storyBook(locale),
     copy = chapterText(locale);
-  return `<section class="story-hub"><div class="section-heading"><div><p class="eyebrow">${e(t('ui.storyCampaign'))}</p><h1>${e(t('ui.beginCampaign'))}</h1></div><button data-story-home>${e(t('ui.back'))}</button></div><div class="campaign-modes"><article lang="${copy.language}" dir="ltr"><h2>${e(copy.chapterMode)}</h2><h3>${e(copy.title)}</h3><p>${e(copy.intro)}</p><button data-story-begin class="primary">${e(t('ui.start'))}</button></article></div><div class="actions"><button data-story-prologue>${e(t('ui.readPrologue'))}</button></div>${chapterJournalMarkup()}<details class="original-campaign-archive"><summary lang="${copy.language}">${e(copy.classic)} · ${e(t('ui.chapterArchive'))}</summary><h2 lang="${e(book.language)}" dir="${storyDirection(book.language)}">${e(book.title)}</h2><div class="story-chapters">${storyStructure.chapters.map((chapter, i) => `<article><span>${e(t('ui.storyChapter', { number: number(i + 1) }))}</span><h3 lang="${e(book.language)}" dir="${storyDirection(book.language)}">${e(book.acts[i].title)}</h3><p>${number(chapter.from + 1)}–${number(chapter.to)} · ${e(t('ui.storyScene', { number: number(5) }))}</p><button data-story-chapter="${i}" ${clears < chapter.from ? 'disabled' : ''}>${e(t(clears < chapter.from ? 'ui.laterChapter' : 'ui.readChapter'))}</button><details><summary>${e(t('ui.chapterArchive'))}</summary>${chapter.scenes.map((n) => `<button data-story-scene="${n}" ${clears <= n ? 'disabled' : ''}>${e(t('ui.storyScene', { number: number(n - chapter.from + 1) }))}</button>`).join('')}</details></article>`).join('')}</div></details><div data-story-hub-reader></div></section>`;
+  return `<section class="story-hub"><div class="section-heading"><div><p class="eyebrow">${e(t('ui.storyCampaign'))}</p><h1>${e(t('ui.beginCampaign'))}</h1></div><button data-story-home>${e(t('ui.back'))}</button></div><div class="campaign-modes"><article lang="${copy.language}" dir="ltr"><h2>${e(copy.chapterMode)}</h2><h3>${e(copy.title)}</h3><p>${e(copy.intro)}</p><button data-story-begin class="primary">${e(t('ui.start'))}</button></article></div><div class="actions"><button data-story-prologue>${e(t('ui.readPrologue'))}</button></div>${chapterTransferMarkup()}${chapterJournalMarkup()}<details class="original-campaign-archive"><summary lang="${copy.language}">${e(copy.classic)} · ${e(t('ui.chapterArchive'))}</summary><h2 lang="${e(book.language)}" dir="${storyDirection(book.language)}">${e(book.title)}</h2><div class="story-chapters">${storyStructure.chapters.map((chapter, i) => `<article><span>${e(t('ui.storyChapter', { number: number(i + 1) }))}</span><h3 lang="${e(book.language)}" dir="${storyDirection(book.language)}">${e(book.acts[i].title)}</h3><p>${number(chapter.from + 1)}–${number(chapter.to)} · ${e(t('ui.storyScene', { number: number(5) }))}</p><button data-story-chapter="${i}" ${clears < chapter.from ? 'disabled' : ''}>${e(t(clears < chapter.from ? 'ui.laterChapter' : 'ui.readChapter'))}</button><details><summary>${e(t('ui.chapterArchive'))}</summary>${chapter.scenes.map((n) => `<button data-story-scene="${n}" ${clears <= n ? 'disabled' : ''}>${e(t('ui.storyScene', { number: number(n - chapter.from + 1) }))}</button>`).join('')}</details></article>`).join('')}</div></details><div data-story-hub-reader></div></section>`;
 }
 export function bindStoryHub(
   host: HTMLElement,
   begin: (chapterId?: 'one-place-left') => void,
   back: () => void,
+  resume?: () => void,
 ) {
   const ownerDocument = document;
   host.innerHTML = storyHubMarkup();
+  const transfer = bindChapterTransfer(host,resume);
   let alive = true,
     reader = bindStoryReaders(host);
   host.querySelector<HTMLButtonElement>('[data-story-begin]')!.onclick = () => {
@@ -168,6 +171,7 @@ export function bindStoryHub(
   });
   return () => {
     alive = false;
+    transfer();
     reader();
   };
 }

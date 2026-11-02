@@ -51,6 +51,7 @@
 }
 .campaign-modes > article,
 .chapter-journal,
+.chapter-checkpoint,
 .chapter-training > article {
   border: 1px solid #74684c;
   border-radius: .6rem;
@@ -64,3 +65,9 @@
 .chapter-archive { display: flex; flex-wrap: wrap; gap: .6rem; margin-block: .8rem; }
 .chapter-training p { max-width: 65ch; line-height: 1.55; }
 .training-status { color: #b9d6ad; }
+
+.chapter-checkpoint { margin-block: 1rem; }
+.chapter-checkpoint input { display: block; max-width: 100%; margin-block-start: .4rem; }
+.chapter-checkpoint [data-checkpoint-preview] { padding: .75rem; background: #b9d6ad0f; border-radius: .5rem; }
+.chapter-checkpoint .actions { flex-wrap: wrap; }
+.chapter-checkpoint [hidden] { display: none !important; }
