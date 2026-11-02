@@ -1,3 +1,5 @@
+import {retinueArt} from './retinue-presentation.ts';
+import summonRules from '../shared/summoner-rules.json';
 import catalog from '../../content/catalog.json';
 import footprints from '../shared/boss-body-bounds.json';
 import {survivorArt} from './survivor-presentation.ts';
@@ -16,6 +18,12 @@ export const survivorCameraClips=[...survivorArt.entries,...survivorArt.referenc
 for(const clip of survivorCameraClips){
   const extents={left:clip.displayCell*clip.origin[0],right:clip.displayCell*(1-clip.origin[0]),top:clip.displayCell*clip.origin[1],bottom:clip.displayCell*(1-clip.origin[1])};
   for(const side of ['left','right','top','bottom'] as const)margins[side]=Math.max(margins[side],Math.ceil(extents[side]-catalog.rules.playerRadius)+16);
+}
+export const retinueCameraClips=retinueArt;
+for(const clip of retinueCameraClips){
+ const radius=summonRules.kinds[clip.entityKind as keyof typeof summonRules.kinds].radius;
+ const extents={left:clip.displayCell*clip.origin[0],right:clip.displayCell*(1-clip.origin[0]),top:clip.displayCell*clip.origin[1],bottom:clip.displayCell*(1-clip.origin[1])};
+ for(const side of ['left','right','top','bottom'] as const)margins[side]=Math.max(margins[side],Math.ceil(extents[side]-radius)+16);
 }
 export const arenaCamera={
   x:-margins.left,y:-margins.top,width:1600+margins.left+margins.right,height:1000+margins.top+margins.bottom,

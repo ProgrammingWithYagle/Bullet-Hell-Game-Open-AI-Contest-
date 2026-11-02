@@ -1,4 +1,5 @@
 export const classTalents = {
+  summoner: ['running-pack', 'closed-ranks', 'patient-company'],
   swordsman: ['return-step', 'open-circle', 'second-watch'],
   bard: ['held-note', 'travelling-chorus', 'borrowed-cue'],
   soldier: ['breach-cadence', 'supply-line', 'marching-colors'],

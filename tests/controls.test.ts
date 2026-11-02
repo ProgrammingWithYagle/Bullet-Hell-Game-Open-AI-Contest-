@@ -43,6 +43,7 @@ test('remapped keyboard, mouse, gamepad and touch dispatch actions independently
     controls.blocked = false;
     const options = defaultControls();
     options.bindings.q = ['KeyV'];
+    options.bindings.retinue=['KeyB'];
     options.bindings.e = ['KeyQ'];
     options.bindings.fire = ['KeyC'];
     options.fireMode = 'toggle';
@@ -91,6 +92,11 @@ test('remapped keyboard, mouse, gamepad and touch dispatch actions independently
     controls.sample(13);
     buttons[7].pressed = true;
     assert(controls.sample(14).fire);
+    buttons[7].pressed=false;controls.sample(15);
+    event(win,'keydown',{code:'KeyB'});const commandFrame=controls.sample(16);assert(controls.takeRetinueCycle());assert(!controls.takeRetinueCycle());assert(!('retinue' in commandFrame));
+    controls.sample(17);assert(!controls.takeRetinueCycle(),'Holding a key does not spam orders');event(win,'keyup',{code:'KeyB'});
+    buttons[options.gamepad.retinue].pressed=true;controls.sample(18);assert(controls.takeRetinueCycle());controls.sample(19);assert(!controls.takeRetinueCycle(),'Holding the pad button emits one edge');
+    buttons[options.gamepad.retinue].pressed=false;controls.sample(20);event(win,'keydown',{code:'KeyB'});controls.sample(21);event(win,'blur');assert(!controls.takeRetinueCycle());
     controls.destroy();
     controls = undefined;
   } finally {

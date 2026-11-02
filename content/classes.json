@@ -1042,5 +1042,120 @@
       },
       "description": "For 7 seconds, the next 3 committed primary cuts gain 40 reach and 35% damage. Misses and cancelled cuts spend their charge. This is an attack stance, not automatic damage, projectile reflection or invulnerability."
     }
+  },
+  {
+    "id": "summoner",
+    "name": "Summoner",
+    "survivor": "Joss Merrow",
+    "health": 105,
+    "speed": 245,
+    "color": "#9fbf8e",
+    "weapon": "summoner-0",
+    "role": "Call a bounded retinue, mark its work and keep its members alive through orders and physical recall.",
+    "lore": "Joss organized market deliveries before entering Summoner training. He remembers promises more easily than he remembers to leave enough time to keep them.",
+    "branches": [
+      {
+        "id": "beaconwork",
+        "name": "Beaconwork",
+        "subbranches": [
+          {
+            "id": "beaconwork-foundation",
+            "nameKey": "stat.weaponDamage",
+            "name": "weaponDamage"
+          },
+          {
+            "id": "beaconwork-path-1",
+            "nameKey": "stat.fireRate",
+            "name": "fireRate"
+          },
+          {
+            "id": "beaconwork-path-2",
+            "nameKey": "stat.criticalChance",
+            "name": "criticalChance"
+          }
+        ]
+      },
+      {
+        "id": "bonds",
+        "name": "Bonds",
+        "subbranches": [
+          {
+            "id": "bonds-foundation",
+            "nameKey": "stat.abilityPotency",
+            "name": "abilityPotency"
+          },
+          {
+            "id": "bonds-path-1",
+            "nameKey": "ability.summoner-ultimate.name",
+            "name": "Open Muster"
+          },
+          {
+            "id": "bonds-path-2",
+            "nameKey": "ability.summoner-q.name",
+            "name": "Call Retinue"
+          }
+        ]
+      },
+      {
+        "id": "waykeeping",
+        "name": "Waykeeping",
+        "subbranches": [
+          {
+            "id": "waykeeping-foundation",
+            "nameKey": "stat.maxHealth",
+            "name": "maxHealth"
+          },
+          {
+            "id": "waykeeping-path-1",
+            "nameKey": "stat.dodgeCooldown",
+            "name": "dodgeCooldown"
+          },
+          {
+            "id": "waykeeping-path-2",
+            "nameKey": "stat.reviveRate",
+            "name": "reviveRate"
+          }
+        ]
+      }
+    ],
+    "abilities": [
+      {
+        "id": "summoner-q",
+        "slot": "q",
+        "kind": "retinue-call",
+        "name": "Call Retinue",
+        "cooldown": 8,
+        "duration": 0,
+        "radius": 68,
+        "damage": 0,
+        "description": "Call one Tatterhound and one Lanternwing into clear nearby space, up to four permanent companions. Existing companions keep their health. A full or blocked call spends no cooldown. Companions have real health, movement and attacks; they disappear with their owner or encounter."
+      },
+      {
+        "id": "summoner-e",
+        "slot": "e",
+        "kind": "retinue-gather",
+        "name": "Gather",
+        "cooldown": 12,
+        "duration": 4,
+        "radius": 45,
+        "damage": 0,
+        "description": "For four seconds, send the living retinue physically back to you at 40% extra movement speed. Each companion present at the cast can recover 12 base health once after arriving. No teleport, resurrection, repeated-arrival healing or invulnerability."
+      }
+    ],
+    "ultimate": {
+      "id": "summoner-ultimate",
+      "slot": "ultimate",
+      "kind": "open-muster",
+      "name": "Open Muster",
+      "cooldown": 95,
+      "duration": 16,
+      "radius": 540,
+      "damage": 0,
+      "effects": {
+        "companions": 2,
+        "damageMultiplier": 1.25
+      },
+      "description": "Call up to two temporary Wickerwards for 16 seconds and strengthen retinue damage by 25% for that interval. Bodies obey the same health, cover, orders and eight-companion owner limit. Expiration removes temporary forms without an explosion or refund."
+    }
   }
 ]

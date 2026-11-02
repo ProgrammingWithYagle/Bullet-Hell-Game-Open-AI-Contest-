@@ -40,6 +40,7 @@ export function actionLabel(action: Action) {
       {
         dodge: 'ui.dodge',
         sprint:'ui.sprint',
+        retinue:'ui.retinueOrders',
         reload: 'ui.reload',
         q: 'ui.abilityQ',
         e: 'ui.abilityE',

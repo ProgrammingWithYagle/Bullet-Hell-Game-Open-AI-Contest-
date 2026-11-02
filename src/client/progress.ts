@@ -24,6 +24,11 @@ export type PracticeCampaignRecord = {
   secret: View['secretStatus'];
   memorial: boolean;
 };
+const issuedRosters:Record<string,readonly ClassId[]>={
+ 'e74efafe14d4694ef9afd8ea6df038c3fd0e697e4b6d5039f9a6d70173c8b6bd':implementedClassIds.slice(0,9),
+ '85c266d3bbb2457910b5237bbab3769bd1ada06014d39ded5eefe5854e5392cb':implementedClassIds.slice(0,8),
+ '5b8c858463c86d7e5d2fb70a547dd95ddcb5c38e20be547c39c4f1707e31e779':implementedClassIds.slice(0,7),
+};
 type Store = Pick<Storage, 'getItem' | 'setItem'>;
 export function practiceRecords(store: Store): PracticeCampaignRecord[] {
   try {
@@ -39,8 +44,9 @@ export function practiceRecords(store: Store): PracticeCampaignRecord[] {
         r.id.length <= 100 &&
         r.practiceOnly === true &&
         r.verified === false &&
-        (r.contentRevision === CONTENT_REVISION || (r.contentRevision === '1707fd9bd432dfb24107300944b99e70bcbe8a5e05077ddebaf0c2907013a1b1' && r.protocol === 47) || (r.contentRevision === 'e80e0f1d1bd444b1c5d16fae4c7aae322b31bcac70ac180b74964f6ba0326b48' && r.protocol === 47) || (r.contentRevision === '77b0d920d24b5f96e422f6697e8346e04cc88159920954261508b30d878d0264' && r.protocol === 47) || (r.contentRevision === 'f464a132bbc18083c5780239f18f24ff447a5be87de3e64db22d6881e7793290' && r.protocol === 47) || (r.contentRevision === '31bcd58adcfd8d9d1d76fc23b484237e68c266a513f2dedb2571f8a09067e131' && r.protocol === 46) || (r.contentRevision === '22f660b0d378316283eb081b458adcc4cd827f7465d9089ed9146ab2ac242c9c' && r.protocol === 46) || (r.contentRevision === 'fd77a95b869f368f49ce988f613db276385c45843e0152c69c3c67e13683a97b' && r.protocol <= 45) || (r.contentRevision === '5a4ffd871d1880ccb681aee1faa5e51a664385752977fa7a136b50d44c7c6927' && r.protocol <= 45) || (r.contentRevision === '39fd34dfd7530860d0ecfad5d7e86361438fae9bd3ac93881ec4fe51a3974322' && r.protocol <= 44) || (r.contentRevision === '15da4f590d2f2041f065732e48498551543beab9818f1f187df710d5de521d34' && r.protocol <= 44) || (r.contentRevision === '1ae4988671b4316e028ed42c6a9cd63c2efa26f046debad2fb75b8e1fc8e7f6d' && r.protocol <= 43)) &&
-        Number.isSafeInteger(r.protocol) &&
+        ((r.contentRevision === CONTENT_REVISION && r.protocol===PROTOCOL) || (Object.hasOwn(issuedRosters,r.contentRevision)&&r.protocol===47) || (r.contentRevision === '1707fd9bd432dfb24107300944b99e70bcbe8a5e05077ddebaf0c2907013a1b1' && r.protocol === 47) || (r.contentRevision === 'e80e0f1d1bd444b1c5d16fae4c7aae322b31bcac70ac180b74964f6ba0326b48' && r.protocol === 47) || (r.contentRevision === '77b0d920d24b5f96e422f6697e8346e04cc88159920954261508b30d878d0264' && r.protocol === 47) || (r.contentRevision === 'f464a132bbc18083c5780239f18f24ff447a5be87de3e64db22d6881e7793290' && r.protocol === 47) || (r.contentRevision === '31bcd58adcfd8d9d1d76fc23b484237e68c266a513f2dedb2571f8a09067e131' && r.protocol === 46) || (r.contentRevision === '22f660b0d378316283eb081b458adcc4cd827f7465d9089ed9146ab2ac242c9c' && r.protocol === 46) || (r.contentRevision === 'fd77a95b869f368f49ce988f613db276385c45843e0152c69c3c67e13683a97b' && r.protocol <= 45) || (r.contentRevision === '5a4ffd871d1880ccb681aee1faa5e51a664385752977fa7a136b50d44c7c6927' && r.protocol <= 45) || (r.contentRevision === '39fd34dfd7530860d0ecfad5d7e86361438fae9bd3ac93881ec4fe51a3974322' && r.protocol <= 44) || (r.contentRevision === '15da4f590d2f2041f065732e48498551543beab9818f1f187df710d5de521d34' && r.protocol <= 44) || (r.contentRevision === '1ae4988671b4316e028ed42c6a9cd63c2efa26f046debad2fb75b8e1fc8e7f6d' && r.protocol <= 43)) &&
+        Number.isSafeInteger(r.protocol) && r.protocol>0 &&
+        (r.contentRevision===CONTENT_REVISION?implementedClassIds:issuedRosters[r.contentRevision]??implementedClassIds.slice(0,7)).includes(r.classId) &&
         (r.mode!=='story'||(r.protocol>=46&&r.protocol<=PROTOCOL)) &&
         implementedClassIds.includes(r.classId) &&
         catalog.modes.some(

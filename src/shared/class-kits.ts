@@ -1,6 +1,7 @@
 // Additional class abilities run only in the authoritative fixed-step simulation.
 import { hasTalent, type TalentId } from './class-talents.ts';
 import type { BardCue } from './bard-kit.ts';
+import type {RetinueOrder} from './summoner-kit.ts';
 import type { SwordCue } from './swordsman-kit.ts';
 import type { TrainingEventKind } from './story-training.ts';
 import type { TalentCue } from './ability-transforms.ts';
@@ -17,6 +18,8 @@ import type { Minions } from './minions.ts';
 const ticks = (seconds: number) => Math.ceil(seconds * HZ);
 export const RESCUE_CHARGE_TICKS = ticks(0.3) + 1;
 export type KitStatus = {
+  retinueHoldX?:number;retinueHoldY?:number;retinueMarkKey?:string;
+  retinueCount?:number;retinuePermanent?:number;retinueCapacity?:number;retinueOrder?:RetinueOrder;retinueMarkUntil?:number;retinueGatherUntil?:number;retinueUltimateUntil?:number;
   counterUntil?: number;
   swordUntil?: number;
   swordCuts?: number;

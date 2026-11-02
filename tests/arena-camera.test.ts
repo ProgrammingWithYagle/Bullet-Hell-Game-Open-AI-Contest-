@@ -1,3 +1,5 @@
+import {retinueCameraClips} from '../src/client/arena-camera.ts';
+import summonRules from '../src/shared/summoner-rules.json';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {arenaCamera,arenaCameraZoom,arenaWorldToCanvas,arenaCanvasToWorld,applyArenaCamera,survivorCameraClips} from '../src/client/arena-camera.ts';
@@ -19,8 +21,8 @@ test('one stable camera contains every complete boss pose at all four physical b
   }
 });
 
-test('all226survivor clips remain fully visible at each map/difficulty border with unchanged ground-body clearance',()=>{
-  assert.equal(survivorCameraClips.length,226);const radius=data.rules.playerRadius;
+test('all251survivor clips remain fully visible at each map/difficulty border with unchanged ground-body clearance',()=>{
+  assert.equal(survivorCameraClips.length,251);const radius=data.rules.playerRadius;
   for(const map of data.arenas)for(const difficulty of data.difficulties)for(const clip of survivorCameraClips){
     const b=runtimeArena(map.id,difficulty.id).bounds;
     for(const x of [b.x+radius,b.x+b.width-radius])for(const y of [b.y+radius,b.y+b.height-radius]){
@@ -81,4 +83,15 @@ test('actual Brass Toad encounters can reach the upper floor on every map and di
     for(let tick=0;tick<3600&&game.boss.y>=b.y+b.height*.3;tick++)game.step();
     assert(game.boss.y<b.y+b.height*.3,JSON.stringify({map:map.id,difficulty:difficulty.id,start,target,actual:{x:game.boss.x,y:game.boss.y}}));
   }
+});
+
+
+test('All60companion clips retain their complete cells at every map border using each actual entity radius',()=>{
+ assert.equal(retinueCameraClips.length,60);
+ for(const map of data.arenas)for(const difficulty of data.difficulties)for(const clip of retinueCameraClips){
+  const b=runtimeArena(map.id,difficulty.id).bounds,r=summonRules.kinds[clip.entityKind as keyof typeof summonRules.kinds].radius;
+  for(const x of [b.x+r,b.x+b.width-r])for(const y of [b.y+r,b.y+b.height-r]){
+   assert(x-clip.displayCell*clip.origin[0]>=arenaCamera.x&&y-clip.displayCell*clip.origin[1]>=arenaCamera.y&&x+clip.displayCell*(1-clip.origin[0])<=arenaCamera.x+arenaCamera.width&&y+clip.displayCell*(1-clip.origin[1])<=arenaCamera.y+arenaCamera.height,clip.id);
+  }
+ }
 });

@@ -7,12 +7,12 @@ import { implementedClassIds, idleInput } from '../src/shared/protocol.ts';
 const until = async (check: () => boolean) => {
   const end = Date.now() + 6000;
   while (!check()) {
-    if (Date.now() > end) throw Error('Nine-class network state timed out');
+    if (Date.now() > end) throw Error('Ten-class network state timed out');
     await new Promise((r) => setTimeout(r, 20));
   }
 };
 test(
-  'nine real clients keep every class identity and replicate constructs, veil, charges and temporary team shields',
+  'ten real clients keep every class identity and replicate constructs, veil, charges and temporary team shields',
   { timeout: 22000 },
   async () => {
     const { server, httpServer } = createGameServer();
@@ -38,7 +38,7 @@ test(
       }
       const owner = clients[0],
         observer = clients[1];
-      await until(() => owner.view?.players.length === 9);
+      await until(() => owner.view?.players.length === 10);
       owner.start();
       await until(() => observer.view?.phase === 'combat');
       const room = liveRooms.get(owner.room!.roomId)!;

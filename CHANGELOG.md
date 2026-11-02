@@ -1,6 +1,17 @@
 # Changelog
 
-Development build **2026.11.01-swordsman**, protocol 47. The current contest Site uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.01-summoner**, protocol 48. The current contest Site uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-01 — Joss Merrow and a living retinue
+
+### Owned companions, deliberate orders
+
+- Summoner is the tenth playable discipline. Call finite Tatterhounds and Lanternwings, gather living companions physically for one arrival repair, and temporarily muster Wickerwards. Every body has real health, cover navigation and credited attacks; poison, fields, projectiles and warned health loss remain dangerous.
+- Use Escort, Hold and Focus through visible controls or a rebindable keyboard/gamepad cycle. Only a real primary hit marks a living target. The server authenticates orders, rejects them under pause and clears ownership on disconnect, incapacitation and encounter exit.
+- Free Play adds four beacon staves, 54 nodes and three transformations. Campaign retains slow learning: demonstrate an owned retinue hit on the same marked ordinary enemy and clear the encounter to prove one D- foundation. No Campaign mutation draft or SP shop is added.
+- Joss enters the gate in English, Spanish and Arabic and meets civilian cook Nell Dace in the English ward continuation. His optional basket letter is separate. These introductions do not complete either character arc.
+- Original candidates include a full-body portrait, 84 Joss poses, 132 companion poses, eighteen item icons, Focus/Rebind equipment presentation and short synthesized wood/glass cues. Pixel reconstruction is verified separately from rendered, language, listening, device, motion and human acceptance.
+- Ranger and Alchemist remain required for the accepted twelve-class roster. The much larger story, twelve personal arcs, later mastery, durable characters and boss work remain in development.
 
 ## 2026-11-01 — Dara Flint and the Swordsman discipline
 

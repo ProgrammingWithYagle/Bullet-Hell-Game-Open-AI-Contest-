@@ -14,7 +14,7 @@ import {
   type ClassId,
   type Event,
 } from '../shared/protocol.ts';
-import { WorldState, PlayerState, ActorState } from '../shared/network-state.ts';
+import { WorldState, PlayerState, ActorState, SummonState } from '../shared/network-state.ts';
 import { capacity } from './capacity.ts';
 import {RoomChat} from '../shared/room-chat.ts';
 import { arenaSelections } from '../shared/arena-selection.ts';
@@ -167,6 +167,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       if(delivery.message)for(const peer of this.clients)if(this.roomChat.receives(peer.sessionId))peer.send('chat',delivery.message);
       client.send('chatReceipt',delivery.receipt);
     });
+    this.onMessage('retinueOrder',(client,value:unknown)=>{if(!this.journal.blocked&&!this.state.matchPaused&&this.readyAt.has(client))this.game.orderRetinue(client.sessionId,value);});
     this.onMessage('input', (client, value: unknown) => {
       if (this.journal.blocked || this.state.matchPaused) return;
       if (this.game.submitInput(client.sessionId, value)) this.telemetry.acceptedInputs++;
@@ -484,6 +485,15 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       view.goalY = actor.goalY ?? -1;
     }
     for (const key of s.actors.keys()) if (!g.minions.actors.has(Number(key))) s.actors.delete(key);
+    const retinue=g.retinue.snapshot(),visibleRetinue=new Set<string>();
+    for(const e of retinue){
+      const key=String(e.id);visibleRetinue.add(key);let state=s.retinue.get(key);
+      if(!state){state=new SummonState();s.retinue.set(key,state);}
+      state.id=e.id;state.owner=e.owner;state.kind=e.kind;state.slot=e.slot;
+      state.x=Math.round(e.x*4);state.y=Math.round(e.y*4);state.oldX=Math.round(e.oldX*4);state.oldY=Math.round(e.oldY*4);state.aim=Math.round(e.aim*1000);state.actionAim=Math.round(e.actionAim*1000);
+      state.health=e.health;state.maxHealth=e.maxHealth;state.radius=e.radius;state.bornAt=e.bornAt;state.expires=e.expires;state.temporary=e.temporary;state.action=e.action;state.actionAt=e.actionAt;state.slowUntil=e.slowUntil;state.poisonUntil=e.poisonUntil;
+    }
+    for(const key of s.retinue.keys())if(!visibleRetinue.has(key))s.retinue.delete(key);
     s.hazards = JSON.stringify({
       warnings: g.warnings,
       fields: g.fields,

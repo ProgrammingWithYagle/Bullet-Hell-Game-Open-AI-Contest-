@@ -1,3 +1,6 @@
+import {bardMessages} from './source/bard.mjs';
+import {swordsmanMessages} from './source/swordsman.mjs';
+import {summonerMessages} from './source/summoner.mjs';
 import {wardSkirmishMessages} from './source/ward-skirmish.mjs';
 import {storyReadingMessages} from './source/story-reading.mjs';
 import {lamplightWatchMessages} from './source/lamplight-watch.mjs';
@@ -66,6 +69,7 @@ for (const id of ids) {
   Object.assign(messages, suppliesMessages(id));
   Object.assign(messages, capacityMessages(id));
   Object.assign(messages, playtestMessages(id));
+  Object.assign(messages,bardMessages(id,catalog,messages),swordsmanMessages(id,catalog,messages),summonerMessages(id,catalog,messages));
   // Added specialization nodes reuse the approved localized base names plus an already
   // localized focus label. Numerical effect text is formatted from the authored values.
   for(const skill of catalog.skills)if(skill.sourceSkillId&&skill.sourceSkillId!==skill.id){
@@ -89,6 +93,7 @@ for (const id of ids) {
     clerkAppealMessages(id), tollkeeperReturnMessages(id), marshalMessages(id), widowMessages(id),
     ambulanceMessages(id), matronMessages(id), moldStillMessages(id), bellReturnChainMessages(id),
     runtimeExtraMessages(id), bossGuideMessages(id), stitchworkMessages(id), fieldJournalMessages(id), shieldSpecializationMessages(id),generalMobilityMessages(id),glassSurgeryMessages(id),storyCampaignMessages(id),bakerOvenMessages(id),sluicePressureMessages(id),playHubsMessages(id),stationSignalsMessages(id),lamplightWatchMessages(id),storyReadingMessages(id),wardSkirmishMessages(id));
+  Object.assign(messages,bardMessages(id,catalog,messages),swordsmanMessages(id,catalog,messages),summonerMessages(id,catalog,messages));
   const info = catalog.locales.find(x => x.id === id);
   const output = {
     meta: { schemaVersion: 1, locale: id, nativeName: info.name, direction: info.direction,

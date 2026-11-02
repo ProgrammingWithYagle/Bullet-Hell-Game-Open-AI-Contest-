@@ -6,6 +6,7 @@ export const actions = [
   'fire',
   'dodge',
   'sprint',
+  'retinue',
   'reload',
   'q',
   'e',
@@ -36,6 +37,7 @@ export const defaultControls = (): ControlOptions => ({
     fire: ['Mouse0'],
     dodge: ['Space'],
     sprint:['ShiftLeft'],
+    retinue:['KeyV'],
     reload: ['KeyR'],
     q: ['KeyQ'],
     e: ['KeyE'],
@@ -49,6 +51,7 @@ export const defaultControls = (): ControlOptions => ({
     fire: 7,
     dodge: 0,
     sprint:10,
+    retinue:15,
     reload: 2,
     q: 4,
     e: 5,
@@ -130,13 +133,29 @@ export class ActionLatch {
 /** Add Sprint to an exact legacy control shape without overwriting a chosen key/button. */
 export function migrateMobilityControls(value:unknown):unknown {
  if(validControls(value))return value;
+ const retinue = migrateRetinueControls(value);if(validControls(retinue))return retinue;
  if(!value||typeof value!=='object'||Array.isArray(value))return value;
- const old=value as Record<string,any>,legacyActions=actions.filter(a=>a!=='sprint'),legacyButtons=buttonActions.filter(a=>a!=='sprint');
+ const old=value as Record<string,any>,legacyActions=actions.filter(a=>a!=='sprint'&&a!=='retinue'),legacyButtons=buttonActions.filter(a=>a!=='sprint'&&a!=='retinue');
  if(Object.keys(old).length!==4||!['bindings','gamepad','fireMode','interactMode'].every(k=>Object.hasOwn(old,k))||!old.bindings||!old.gamepad||Object.keys(old.bindings).length!==legacyActions.length||Object.keys(old.gamepad).length!==legacyButtons.length||!legacyActions.every(a=>Object.hasOwn(old.bindings,a))||!legacyButtons.every(a=>Object.hasOwn(old.gamepad,a)))return value;
  const used=new Set(Object.values(old.bindings).flat()),pads=new Set(Object.values(old.gamepad));
  const candidates=['ShiftLeft','ShiftRight','ControlLeft','ControlRight',...Array.from({length:26},(_,n)=>'Key'+String.fromCharCode(65+n)),...Array.from({length:10},(_,n)=>'Digit'+n),'Mouse0','Mouse1','Mouse2','Space','ArrowUp','ArrowDown','ArrowLeft','ArrowRight'];
  const key=candidates.find(k=>!used.has(k)),button=[10,11,6,8,9,15,16,...Array.from({length:17},(_,n)=>n)].find(n=>!pads.has(n));
  if(!key||button===undefined)return value;
  const next={...old,bindings:{...old.bindings,sprint:[key]},gamepad:{...old.gamepad,sprint:button},sprintMode:'hold'};
- return validControls(next)?next:value;
+ return migrateRetinueControls(next);
+}
+
+
+/** Preserve exact existing mappings when adding the new discrete retinue command. */
+export function migrateRetinueControls(value: unknown): unknown {
+  if(validControls(value))return value;
+  if(!value || typeof value!=='object' || Array.isArray(value))return value;
+  const old=value as Record<string,any>, legacyActions=actions.filter(a=>a!=='retinue'), legacyButtons=buttonActions.filter(a=>a!=='retinue');
+  if(Object.keys(old).length!==5 || !['bindings','gamepad','fireMode','interactMode','sprintMode'].every(k=>Object.hasOwn(old,k)) || !old.bindings || !old.gamepad || Object.keys(old.bindings).length!==legacyActions.length || Object.keys(old.gamepad).length!==legacyButtons.length || !legacyActions.every(a=>Object.hasOwn(old.bindings,a)) || !legacyButtons.every(a=>Object.hasOwn(old.gamepad,a)))return value;
+  const keys=new Set(Object.values(old.bindings).flat()), pads=new Set(Object.values(old.gamepad));
+  const key=['KeyV','KeyG','KeyB',...Array.from({length:26},(_,n)=>'Key'+String.fromCharCode(65+n)),...Array.from({length:10},(_,n)=>'Digit'+n)].find(k=>!keys.has(k));
+  const button=[15,11,6,8,9,16,...Array.from({length:17},(_,n)=>n)].find(n=>!pads.has(n));
+  if(!key || button===undefined)return value;
+  const next={...old,bindings:{...old.bindings,retinue:[key]},gamepad:{...old.gamepad,retinue:button}};
+  return validControls(next)?next:value;
 }

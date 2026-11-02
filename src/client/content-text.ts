@@ -3,9 +3,10 @@ import {talentForSkill} from '../shared/class-talents.ts';
 import {revivedHealth} from '../shared/recovery-policy.ts';
 import { t, number } from './i18n.ts';
 import { data } from '../shared/game.ts';
-export function supplyName(id:string,classId:string){return t('supply.'+(classId==='swordsman'&&id==='ammo-pouch'?'swordsman-canteen':id)+'.name');}
-export function upgradeName(id:string,classId:string){return t('upgrade.'+(classId==='swordsman'&&['damage','fire-rate','magazine','reload'].includes(id)?'swordsman-':'')+id+'.name');}
+export function supplyName(id:string,classId:string){return t('supply.'+(id==='ammo-pouch'?(classId==='swordsman'?'swordsman-canteen':classId==='summoner'?'summoner-thread-spool':id):id)+'.name');}
+export function upgradeName(id:string,classId:string){return t('upgrade.'+(['damage','fire-rate','magazine','reload'].includes(id)?(classId==='swordsman'?'swordsman-':classId==='summoner'?'summoner-':''):'')+id+'.name');}
 export function supplyText(id: string,difficulty='normal',classId='soldier') {
+  if(classId==='summoner'&&id==='ammo-pouch')return t('supply.summoner-thread-spool.description',{maximum:number(data.supplies.find(s=>s.id==='ammo-pouch')!.maximumStack)});
   if(classId==='swordsman'&&id==='ammo-pouch')return t('supply.swordsman-canteen.description');
   const item = data.supplies.find((s) => s.id === id)!;
   if(item.effect==='revive'&&difficulty==='insane'&&classId==='medic')return t('ui.reviveKitOneHealth',{maximum:number(item.maximumStack)});
@@ -17,6 +18,10 @@ export function supplyText(id: string,difficulty='normal',classId='soldier') {
     maximum: number(item.maximumStack),
   });
   return description+(item.effect==='revive'&&difficulty==='baby'&&classId==='medic'?' '+t('ui.medicBabyShield'):'');
+}
+export function upgradeEffects(id:string,classId:string){
+ const u=data.upgrades.find(u=>u.id===id)!;
+ return {[u.effect]:u.amount,...(classId==='summoner'&&id==='damage'?{summonDamage:data.rules.summoner.equipmentDamagePerLevel}:{}),...(classId==='summoner'&&id==='fire-rate'?{summonAttackRate:data.rules.summoner.equipmentAttackRatePerLevel}:{})};
 }
 const flat = new Set([
   'maxHealth',
@@ -31,6 +36,7 @@ const flat = new Set([
   'ultimateShield',
   'ultimateRadius',
   'startShield',
+  'retinueCapacity',
 ]);
 export function effectText(
   effects: Record<string, number | undefined>,

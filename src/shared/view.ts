@@ -1,3 +1,4 @@
+import type {SummonView} from './summoner-kit.ts';
 import type {SkirmishView} from './ward-skirmish.ts';
 import type {StoryChapterState} from './story-chapter.ts';
 import type {StoryTrainingState} from './story-training.ts';
@@ -57,6 +58,7 @@ export type PlayerView = {
   dodgeCooldown: number;
 };
 export type View = {
+  retinue?:SummonView[];
   chapter?:StoryChapterState;
   patients?:{owner:string;x:number;y:number;health:number;maxHealth:number}[];
   objective?:SkirmishView;
@@ -171,6 +173,7 @@ export function viewOf(g: Game, owner: string): View {
     minions: g.minions.snapshot(),
     bossCues: g.bossCues(),
     classCues: g.classCues(),
+    retinue:g.retinue.snapshot(),
     warnings: g.warnings.map((w) => ({ ...w })),
     fields: g.fields.map((f) => ({ ...f })),
     mutations: g.mutations.map((m) => ({ ...m })),

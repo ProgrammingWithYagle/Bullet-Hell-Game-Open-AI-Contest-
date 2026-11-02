@@ -10,7 +10,7 @@ const upgradeCost=(id,n)=>{const u=c.upgrades.find(x=>x.id===id);return n*u.base
 const combinations=[];
 for(let a=0;a<=6;a++)for(let b=0;b<=6;b++)for(let d=0;d<=6;d++)if([a,b,d].filter(x=>x===6).length<=1)combinations.push([a,b,d]);
 function strongestWeaponModel(cl,sp,coins){
-  let best={dps:0};
+  let best={dps:0,score:0,companionDps:0};
   for(const depths of combinations){
     const spent=depths.reduce((s,n)=>s+costs[n],0);if(spent>sp)continue;
     const effects={};for(let b=0;b<3;b++)for(const s of c.skills.filter(s=>s.classId===cl.id&&s.branchId===cl.branches[b].id&&s.lane===0&&s.depth<=depths[b]))for(const [k,v]of Object.entries(s.effects))effects[k]=(effects[k]??0)+v;
@@ -19,7 +19,12 @@ function strongestWeaponModel(cl,sp,coins){
       const multiplier=Math.min(4,1+(effects.weaponDamage??0)+damage*0.14),fr=w.fireRate*Math.min(2.5,1+(effects.fireRate??0)+rate*0.07);
       const hitFraction=w.pellets>1?0.7:1,pellets=w.delivery==='melee'?1:w.pellets+(effects.extraShots??0);
       const dps=w.damage*multiplier*pellets*hitFraction*w.magazine/(w.magazine/fr+w.reloadTime);
-      if(dps>best.dps)best={dps,weapon:w.id,depths,damageUpgrades:damage,fireRateUpgrades:rate,spentCoins,spentSP:spent};
+      const petScale=Math.min(4,Math.min(2,1+(effects.abilityPotency??0))*(1+(w.summonBond??0))*(1+(effects.summonDamage??0)+damage*(c.rules.summoner?.equipmentDamagePerLevel??0)));
+      const petCount=cl.id==='summoner'?Math.min(6,4+(effects.retinueCapacity??0)):0;
+      const petRate=Math.min(4,1+(effects.summonAttackRate??0)+rate*(c.rules.summoner?.equipmentAttackRatePerLevel??0));
+      const companionDps=cl.id==='summoner'?petCount/2*(c.rules.summoner.kinds.hound.damage/(Math.max(9,Math.ceil(c.rules.summoner.kinds.hound.attackTicks/petRate))/30)+c.rules.summoner.kinds.wing.damage/(Math.max(9,Math.ceil(c.rules.summoner.kinds.wing.attackTicks/petRate))/30))*petScale:0;
+      const score=dps*.65+companionDps*.4;
+      if(score>best.score)best={dps,score,companionDps,petCount,weapon:w.id,depths,damageUpgrades:damage,fireRateUpgrades:rate,spentCoins,spentSP:spent};
     }
   }return best;
 }
@@ -39,14 +44,17 @@ for(const mode of c.modes.filter(m=>m.kind!=='endless'))for(let j=0;j<mode.encou
     const attackUptime=(cl.id==='swordsman'?0.4:0.65)*(boss.damageWindowFraction??1),armorMultiplier=1-armorUptime;
     const variant=difficulty.id==='hellish'?'crazed':difficulty.id==='insane'?'brutal':'normal',variantRule=variant==='normal'?{healthMultiplier:1,deadlineMultiplier:1}:c.rules[variant],variantHealth=variantRule.healthMultiplier,timer=boss.timer*variantRule.deadlineMultiplier;
     const hp=variantHealth*c.rules.bossHealthBase*c.rules.bossHealthThreatGrowth**(Math.min(10,threat)-1)*(1+subtier*.08)*(boss.timer/120)*boss.healthFactor*difficulty.health*(mode.bossHealthMultiplier??1);
-    const effectiveDps=build.dps*attackUptime*armorMultiplier,estimatedSeconds=hp/effectiveDps;
-    rows.push({mode:mode.id,fight:j+1,classId:cl.id,difficulty:difficulty.id,boss:boss.id,variant,threat,subtier,sp,coins,weapon:build.weapon,depths:build.depths.join('/'),spentCoins:build.spentCoins,sustainedDps:+build.dps.toFixed(2),attackUptime,armorMultiplier:+armorMultiplier.toFixed(4),bossHealth:+hp.toFixed(2),estimatedSeconds:+estimatedSeconds.toFixed(2),timer,deadlineRatio:+(estimatedSeconds/timer).toFixed(4)});
+    const primaryDps=build.dps*attackUptime*armorMultiplier,companionUptime=cl.id==='summoner'?.4:0;
+    const companionWarmupSeconds=cl.id==='summoner'?(build.petCount/2-1)*8:0,companionEffectiveDps=(build.companionDps??0)*companionUptime*(boss.damageWindowFraction??1)*armorMultiplier;
+    const effectiveDps=primaryDps+companionEffectiveDps;
+    const estimatedSeconds=hp<=primaryDps*companionWarmupSeconds?hp/primaryDps:companionWarmupSeconds+(hp-primaryDps*companionWarmupSeconds)/effectiveDps;
+    rows.push({mode:mode.id,fight:j+1,classId:cl.id,difficulty:difficulty.id,boss:boss.id,variant,threat,subtier,sp,coins,weapon:build.weapon,depths:build.depths.join('/'),spentCoins:build.spentCoins,sustainedDps:+build.dps.toFixed(2),companionTheoreticalDps:+(build.companionDps??0).toFixed(2),permanentCompanions:build.petCount??0,companionUptime,companionWarmupSeconds,attackUptime,armorMultiplier:+armorMultiplier.toFixed(4),bossHealth:+hp.toFixed(2),estimatedSeconds:+estimatedSeconds.toFixed(2),timer,deadlineRatio:+(estimatedSeconds/timer).toFixed(4)});
   }
 }
 const fields=Object.keys(rows[0]);fs.mkdirSync(path.join(root,'docs/balance'),{recursive:true});
 fs.writeFileSync(path.join(root,'docs/balance/uptime-model.csv'),[fields.join(','),...rows.map(r=>fields.map(k=>r[k]).join(','))].join('\n')+'\n');
 const misses=rows.filter(r=>r.deadlineRatio>1),worst=rows.toSorted((a,b)=>b.deadlineRatio-a.deadlineRatio).slice(0,20);
-const report={schemaVersion:1,kind:'Analytical design model; not gameplay measurement',assumptions:{rangedMovementAndAimUptime:0.65,swordsmanMeleeUptime:0.4,shotgunPelletHitFraction:0.7,abilitiesAndUltimatesExcluded:true,insaneForcedBrutalIncluded:true,hellishForcedCrazedIncluded:true,accordBreakBenefitsExcluded:true,mutationsExcluded:true,optimization:'Conservative legal foundation-path prefixes with one capstone; class weapons and affordable damage/fire-rate upgrades. Specialization alternatives are excluded here and validated separately. This is an offensive feasibility witness, not exhaustive optimization or a recommendation for every build.',armor:'Worst-phase repeated armor duty cycle; ignores weak-point bonus. Boss health is solo; group scaling is sublinear.'},rows:rows.length,deadlineMisses:misses.length,worst,passed:misses.length===0};
+const report={schemaVersion:1,kind:'Analytical design model; not gameplay measurement',assumptions:{rangedMovementAndAimUptime:0.65,swordsmanMeleeUptime:0.4,shotgunPelletHitFraction:0.7,abilitiesAndUltimatesExcluded:'Permanent base Summoner retinue included separately; other class abilities and every ultimate excluded',summonerPermanentBodies:'Four base bodies; six only for the purchased capacity capstone',summonerCompanionUptime:.4,summonerNoPetWarmupSeconds:'Eight seconds for four bodies, sixteen for six; ignores actual earlier-pair damage',summonerLimits:'Assumed uptime discounts movement, repair and attrition. Only purchased permanent capacity and purchased attack-rate/companion-damage effects are included. Advanced transformations and ultimate are excluded. Not a measured availability or human balance claim.',storyScope:'Story rows are the earlier SP-based legacy prototype, not the fresh chapter campaign; fresh chapter feasibility is measured separately.',insaneForcedBrutalIncluded:true,hellishForcedCrazedIncluded:true,accordBreakBenefitsExcluded:true,mutationsExcluded:true,optimization:'Conservative legal foundation-path prefixes with one capstone; class weapons and affordable damage/fire-rate upgrades. Specialization alternatives are excluded here and validated separately. This is an offensive feasibility witness, not exhaustive optimization or a recommendation for every build.',armor:'Worst-phase repeated armor duty cycle; ignores weak-point bonus. Boss health is solo; group scaling is sublinear.'},rows:rows.length,deadlineMisses:misses.length,worst,passed:misses.length===0};
 report.fixedThreatClassificationVersion=classifications.classificationVersion;
 report.fixedThreatProfiles=classifications.entries;
 report.contentRevision=JSON.parse(fs.readFileSync(path.join(root,'content/revision.json'),'utf8')).sha256;

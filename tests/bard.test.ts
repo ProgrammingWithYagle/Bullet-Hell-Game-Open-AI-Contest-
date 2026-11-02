@@ -326,6 +326,7 @@ test("The issued chapter revision preserves original characters and proofs witho
   const saved = g.offlineCheckpoint()!;
   saved.contentRevision =
     "5b8c858463c86d7e5d2fb70a547dd95ddcb5c38e20be547c39c4f1707e31e779";
+  saved.protocolVersion = 47; // Exact issued envelope, not the current protocol.
   const restored = Game.restoreOffline(structuredClone(saved));
   assert.deepEqual(restored.chapter, g.chapter);
   assert.deepEqual(restored.trainingFor("solo"), g.trainingFor("p"));

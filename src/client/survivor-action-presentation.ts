@@ -2,6 +2,7 @@
 import library from '../../assets/production/motion/survivor-actions/library.json';
 import bardLibrary from '../../assets/production/motion/bard-actions/library.json';
 import swordLibrary from '../../assets/production/motion/swordsman-actions/library.json';
+import summonerLibrary from '../../assets/production/motion/summoner-actions/library.json';
 import catalog from '../../content/catalog.json';
 import { HZ, type ClassId } from '../shared/protocol.ts';
 import type { View, PlayerView } from '../shared/view.ts';
@@ -29,6 +30,7 @@ export const survivorActionArt = {
     ...(library as unknown as { entries: Clip[] }).entries,
     ...(bardLibrary as unknown as { entries: Clip[] }).entries,
     ...(swordLibrary as unknown as { entries: Clip[] }).entries,
+    ...(summonerLibrary as unknown as { entries: Clip[] }).entries,
   ].map(deliveredSurvivorClip),
 };
 const clips = new Map(survivorActionArt.entries.map((clip) => [clip.id, clip]));

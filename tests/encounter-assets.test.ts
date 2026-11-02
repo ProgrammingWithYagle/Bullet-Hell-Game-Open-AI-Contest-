@@ -39,14 +39,14 @@ test('illustrations cover every playable weapon, supply, specialization path and
       .map((w) => w.id)
       .sort(),
   );
-  assert.deepEqual(actual('supply'), [...data.supplies.map((s) => s.id), 'swordsman-canteen'].sort());
-  assert.deepEqual(actual('upgrade'), ['swordsman-balanced-hilt','swordsman-easy-harness','swordsman-honed-edge','swordsman-wrapped-grip']);
+  assert.deepEqual(actual('supply'), [...data.supplies.map((s) => s.id), 'swordsman-canteen','summoner-thread-spool'].sort());
+  assert.deepEqual(actual('upgrade'), ['summoner-clear-beacon','summoner-deep-spool','summoner-quick-loop','summoner-ready-ties','swordsman-balanced-hilt','swordsman-easy-harness','swordsman-honed-edge','swordsman-wrapped-grip']);
   assert.deepEqual(actual('mutation'), data.mutations.map((m) => m.id).sort());
   const skills = data.skills.filter((s) => implementedClassIds.some((c) => c === s.classId));
-  assert.equal(skills.length, 486);
+  assert.equal(skills.length, 540);
   assert.deepEqual(actual('skill'), [...new Set(skills.map((s) => s.subbranchId))].sort());
-  assert.equal(items.entries.length, 154);
-  assert.equal(new Set(items.entries.map((e) => e.atlasSha256)).size, 154);
+  assert.equal(items.entries.length, 172);
+  assert.equal(new Set(items.entries.map((e) => e.atlasSha256)).size, 172);
   for (const entry of items.entries) {
     const bytes = readFileSync(entry.atlas);
     assert.equal(createHash('sha256').update(bytes).digest('hex'), entry.atlasSha256);

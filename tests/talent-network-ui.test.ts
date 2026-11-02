@@ -17,7 +17,7 @@ const until = async (check: () => boolean) => {
   }
 };
 test(
-  'real owner purchases and observer replication preserve transformed fields, walls, turrets, timed cues and decoys for all seven classes',
+  'real owner purchases and observer replication preserve transformed fields, walls, turrets, timed cues and decoys for all ten classes',
   { timeout: 30000 },
   async () => {
     const { server, httpServer } = createGameServer();
@@ -77,7 +77,7 @@ test(
           await until(
             () =>
               guest.view!.classCues.length > 0 ||
-              guest.view!.fields.some((f) => !!f.anchor),
+              guest.view!.fields.some((f) => !!f.anchor) || (guest.view!.retinue?.length??0)>0,
           );
           const v = guest.view!;
           assert.equal(v.players.length, 2);
@@ -114,10 +114,18 @@ test(
             assert(
               v.classCues.some((c) => c.kind === 'decoy' && c.health === 60),
             );
+          if(cl.id==='summoner'){
+            const own=v.retinue!.filter(e=>e.owner===owner.id&&e.health>0);
+            assert.equal(own.filter(e=>e.kind==='hound').length,2,'Running Pack changes the real called pair');
+            assert.equal(own.filter(e=>e.kind==='wing').length,0);
+            assert(own.some(e=>e.kind==='ward'&&e.expires-e.bornAt>=720),'Patient Company extends actual temporary bodies');
+            await until(()=>g.retinue.owned(owner.id).filter(e=>e.kind==='hound').every(e=>e.armorUntil>g.combatTick));
+          }
           g.boss.health = 0;
           await until(() => guest.view?.phase !== 'combat');
           assert.equal(guest.view!.classCues.length, 0);
           assert.equal(guest.view!.fields.length, 0);
+          assert.equal(guest.view!.retinue?.length??0,0);
         } finally {
           await Promise.allSettled([owner.close(), guest.close()]);
         }

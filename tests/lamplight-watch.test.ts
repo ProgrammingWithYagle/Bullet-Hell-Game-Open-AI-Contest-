@@ -503,6 +503,7 @@ test("Fifteen editions describe the actual watches and banked refuges, while iss
   g.addPlayer("solo", "Reader", "medic");
   const save = g.offlineCheckpoint()!;
   save.contentRevision = issued;
+  save.protocolVersion = 47;
   assert.deepEqual(Game.restoreOffline(save).storyChoices, []);
   assert.throws(
     () =>

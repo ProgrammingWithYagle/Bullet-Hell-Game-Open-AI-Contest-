@@ -425,6 +425,7 @@ test("Fifteen catalogs explain all signals and timed crossings, and issued local
   story.addPlayer("solo", "Reader", "medic");
   const save = story.offlineCheckpoint()!;
   save.contentRevision = issued;
+  save.protocolVersion = 47;
   assert.deepEqual(Game.restoreOffline(save).storyChoices, []);
   assert.throws(
     () =>
@@ -442,6 +443,7 @@ test("Fifteen catalogs explain all signals and timed crossings, and issued local
   custom.addPlayer("solo", "Traveller", "tank");
   const free = custom.offlineCheckpoint()!;
   free.contentRevision = issued;
+  free.protocolVersion = 47;
   const after = Game.restoreOffline(free);
   assert.equal(after.customized, true);
   assert.deepEqual(after.settings.freePlay, custom.settings.freePlay);

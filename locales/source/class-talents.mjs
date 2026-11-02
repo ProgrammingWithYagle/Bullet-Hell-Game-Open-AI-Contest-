@@ -1,6 +1,7 @@
 import {classTalents} from '../../content/source/class-talents.mjs';
 import {bardTalentMessages} from './bard.mjs';
 import {swordsmanTalentMessages} from './swordsman.mjs';
+import {summonerTalentMessages} from './summoner.mjs';
 const rows={
 en:`Breach Cadence|E fires three locked-aim shots 0.12 s apart; total damage stays the same.
 Supply Line|Ultimate refills ammo again halfway through its field; its base damage bonus falls from 35% to 25%.
@@ -318,13 +319,14 @@ ko:`돌파 박자|E가 고정 방향으로 0.12초 간격으로 3발을 쏩니�
 미기록 함정|궁극기가 3.5초간 지속되고 무료 발걸음이 하나 줄어듭니다. 강화 발걸음 출발점에 피해 파동 3회를 남깁니다.
 미끼 장막|Q가 조준을 끌고 탄환으로 파괴할 수 있는 체력 60의 미끼를 남깁니다. 기본 은폐는 6초에서 4초로 줄어듭니다.`
 };
-const ids=Object.entries(classTalents).filter(([id])=>!['bard','swordsman'].includes(id)).flatMap(([,ids])=>ids);
+const ids=Object.entries(classTalents).filter(([id])=>!['bard','swordsman','summoner'].includes(id)).flatMap(([,ids])=>ids);
 export function classTalentMessages(locale,catalog){
  if(!rows[locale])throw Error('Missing class talent locale '+locale);
  const entries=rows[locale].normalize('NFC').split('\n');if(entries.length!==21)throw Error('Expected 21 translated talents '+locale);
  const messages={};entries.forEach((row,i)=>{const [name,description]=row.split('|');if(!name||!description)throw Error('Malformed talent '+locale+'/'+i);messages['talent.'+ids[i]+'.name']=name;messages['talent.'+ids[i]+'.description']=description;});
  Object.assign(messages,bardTalentMessages(locale));
  Object.assign(messages,swordsmanTalentMessages(locale));
+ Object.assign(messages,summonerTalentMessages(locale));
  if(catalog)for(const node of catalog.skills.filter(s=>s.transform))messages['skill.'+node.id+'.name']=messages['talent.'+node.transform+'.name'];
  return messages;
 }

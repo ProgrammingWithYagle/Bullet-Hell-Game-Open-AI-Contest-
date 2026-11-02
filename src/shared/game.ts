@@ -1,3 +1,5 @@
+import {SummonerKit,baseSummonerOptions,type SummonerOptions,type SummonerContext,type SummonTarget,type SummonEntity} from './summoner-kit.ts';
+import summonerRules from './summoner-rules.json';
 import { SwordsmanKit, type SwordContext, type SwordTalents } from './swordsman-kit.ts';
 import swordRules from './sword-rules.json';
 import { swordCircleContact, swordTrace } from './sword-geometry.ts';
@@ -263,11 +265,12 @@ export class Game {
   readonly classKits = new ClassKits();
   readonly bard = new BardKit();
   readonly sword = new SwordsmanKit();
-  kitStatus(id:string){return {...this.classKits.status(id,this.combatTick),...(this.players.get(id)?.classId==='bard'?this.bard.status(id):{}),...(this.players.get(id)?.classId==='swordsman'?this.sword.status(id,this.combatTick):{})};}
+  readonly retinue = new SummonerKit();
+  kitStatus(id:string){return {...this.classKits.status(id,this.combatTick),...(this.players.get(id)?.classId==='bard'?this.bard.status(id):{}),...(this.players.get(id)?.classId==='swordsman'?this.sword.status(id,this.combatTick):{}),...(this.players.get(id)?.classId==='summoner'?this.retinue.status(this.players.get(id)!,this.combatTick,this.summonerOptions(this.players.get(id)!)):{})};}
   readonly transforms = new AbilityTransforms();
   classCues(){return [...this.classKits.cues(),...this.transforms.cues(),...this.bard.cues(),...this.sword.cues(this.roster(),this.combatTick)];}
-  private aimTargets(){const real=this.roster().filter(p=>p.status==='active'&&!this.classKits.untargetable(p.id,this.combatTick));return [...real,...this.classKits.decoyTargets(this.roster(),this.combatTick)];}
-  private hurtTarget(id:string,amount:number){const p=this.players.get(id);if(p)this.damage(p,amount);else this.classKits.hitDecoy(id,amount);}
+  private aimTargets(wardsOnly=true){const real=this.roster().filter(p=>p.status==='active'&&!this.classKits.untargetable(p.id,this.combatTick));return [...real,...this.classKits.decoyTargets(this.roster(),this.combatTick),...this.retinueTargets(wardsOnly)];}
+  private hurtTarget(id:string,amount:number){const p=this.players.get(id);if(p)this.damage(p,amount);else if(/^retinue:\d+$/.test(id))this.retinue.hit(Number(id.slice(8)),amount,this.combatTick);else this.classKits.hitDecoy(id,amount);}
   private bossPrevious = { x: 800, y: 250 };
   private shotEffects = new Map<
     number,
@@ -335,6 +338,8 @@ export class Game {
   private training = new Map<string,StoryTraining>();
   private trainingShots = new Map<number,TrainingEventKind>();
   private bardPrimaryShots = new Set<number>();
+  private summonerPrimaryShots = new Set<number>();
+  private retinueShots = new Map<number,{unit:number;x:number;y:number}>();
   private practiceEncounter = '';
   private wardPatients = new Map<string,{owner:string;x:number;y:number;health:number;maxHealth:number}>();
   get chapter():StoryChapterState|undefined {return this.chapterState?.snapshot();}
@@ -353,6 +358,8 @@ export class Game {
   private projectilePlayers: Player[] = [];
   private constructGrid = new SpatialGrid<Construct>();
   private projectileConstructs: Construct[] = [];
+  private retinueGrid = new SpatialGrid<SummonEntity>();
+  private projectileRetinue: SummonEntity[] = [];
   private collisionHits: { time: number; minionId?: number; weakId?: number }[] = [];
 
   private attackAt = [0, 0];
@@ -525,6 +532,7 @@ export class Game {
     return p;
   }
   setConnected(id: string, connected: boolean) {
+    if(!connected)this.clearOwnerRetinue(id);
     const p = this.players.get(id);
     if (!p) return;
     p.connected = connected;
@@ -824,7 +832,7 @@ export class Game {
     if (this.secretStatus === 'active') this.secretStatus = 'failed';
     this.phase = 'defeat'; this.phaseEnds = 0; this.boss.defeatedAt = 0;
     this.chapterState?.fail();this.wardPatients.clear();
-    this.bard.clear();this.sword.clear();
+    this.bard.clear();this.sword.clear();this.retinue.clear();
     if(this.chapterState){this.skirmish?.fail();this.clearChapterCombat();}
     return true;
   }
@@ -873,7 +881,7 @@ export class Game {
     Object.assign(this.selectedContract,classifiedContract(this.selectedContract.bossId??'constable',encounterVariant(this.settings.difficulty,this.selectedContract.variant)));
     this.phaseAttackReadyAt = 0;
     this.variantPressure.reset(this.combatTick);
-    this.classKits.clear();this.bard.clear();this.sword.clear();this.transforms.clear();this.wardenPatrol.clear();
+    this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();this.transforms.clear();this.wardenPatrol.clear();
     this.pruneExpired();
     this.phase = 'combat';
     this.phaseEnds = 0;
@@ -1015,7 +1023,7 @@ export class Game {
     if(this.chapterState){this.clearChapterNode(true);return;}
     this.scoreObserver?.clear(this);
     for (const player of this.players.values()) this.clearPoison(player);
-    this.classKits.clear();this.bard.clear();this.sword.clear();this.transforms.clear();this.wardenPatrol.clear();
+    this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();this.transforms.clear();this.wardenPatrol.clear();
     this.completedBossIds.add(this.boss.id);
     const previous=this.completedBossForms.get(this.boss.id);
     if(!previous||['normal','brutal','crazed'].indexOf(this.boss.variant)>['normal','brutal','crazed'].indexOf(previous))this.completedBossForms.set(this.boss.id,this.boss.variant);
@@ -1231,18 +1239,20 @@ export class Game {
     } else this.skirmish.step({now:this.combatTick,bounds:this.arena.bounds,obstacles:this.obstacles,lava:this.arena.lavaPits,targets:this.aimTargets(),actors:this.minions.actors,healthScale:this.difficulty.health,damageScale:this.difficulty.damage,speedScale:this.difficulty.speed,spawn:definition=>this.spawnMinion(definition)});
     this.minions.step(
       this.combatTick,
-      [...this.roster().filter((player) => player.status === 'active'),...this.classKits.decoyTargets(this.roster(),this.combatTick)],
+      [...this.roster().filter((player) => player.status === 'active'),...this.classKits.decoyTargets(this.roster(),this.combatTick),...this.retinueTargets()],
       this.obstacles,
       (target, damage) => this.hurtTarget(target.id,damage),
-      this.aimTargets(),
+      this.aimTargets(false),
       Boolean(this.skirmish)||this.boss.id==='matron',
     );
     this.classKits.step(this.kitContext());
     this.bard.step(this.bardContext());
     this.sword.step(this.swordContext());
+    this.retinue.step(this.retinueContext());
     this.transforms.step(this.transformContext());
     this.stepFields();
     this.stepLava();
+    this.stepRetinueHazards();
     this.stepShots();
     this.stepRevives();
     for(const p of this.players.values())this.limitPersonalShield(p);
@@ -1266,7 +1276,7 @@ export class Game {
       } else this.phase = 'defeat';
       this.chapterState?.fail();this.wardPatients.clear();
       for (const player of this.players.values()) this.clearPoison(player);
-      this.classKits.clear();this.bard.clear();this.sword.clear();this.transforms.clear();this.wardenPatrol.clear();
+      this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();this.transforms.clear();this.wardenPatrol.clear();
       this.director.reset('constable');
       this.minions.clear();
       this.signatures = [];
@@ -1281,11 +1291,11 @@ export class Game {
     else this.skirmish?.cancel();
     this.phase=success?'victory':'defeat';
     for(const p of this.players.values())this.clearPoison(p);
-    this.classKits.clear();this.bard.clear();this.sword.clear();this.transforms.clear();this.minions.clear();this.director.reset('constable');this.signatures=[];this.warnings.length=0;this.fields.length=0;this.clearShots();this.accord=null;
+    this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();this.transforms.clear();this.minions.clear();this.director.reset('constable');this.signatures=[];this.warnings.length=0;this.fields.length=0;this.clearShots();this.accord=null;
   }
   private clearChapterCombat() {
     for (const p of this.players.values()) this.clearPoison(p);
-    this.classKits.clear();this.bard.clear();this.sword.clear();
+    this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();
     this.transforms.clear();
     this.wardenPatrol.clear();
     this.minions.clear();
@@ -1529,7 +1539,7 @@ export class Game {
   private reload(p: Player) {
     const w = data.weapons.find((w) => w.id === p.weapon)!;
     p.reloadAt = this.combatTick + ticks(w.reloadTime * this.stats(p).reload);
-    if(p.classId==='swordsman')this.events.push({type:'sound',id:'sword-recover',owner:p.id,x:p.x,y:p.y});
+    if(p.classId==='swordsman'||p.classId==='summoner')this.events.push({type:'sound',id:p.classId==='swordsman'?'sword-recover':'summoner-rebind',owner:p.id,x:p.x,y:p.y});
   }
   private useSupply(p: Player, index: number) {
     const slot = p.supplies[index],
@@ -1696,6 +1706,7 @@ export class Game {
         w.rangeSeconds,
       );
       if(shot&&p.classId==='bard')this.bardPrimaryShots.add(shot.id);
+      if(shot&&p.classId==='summoner')this.summonerPrimaryShots.add(shot.id);
       if(shot&&this.chapterState){
         if(p.classId==='soldier'&&this.fields.some(f=>f.owner===p.id&&f.kind==='rally'&&f.potency>0&&distance(fieldPosition(f,this.roster()),p)<=f.radius))this.trainingShots.set(shot.id,'rallied-hit');
         if(p.classId==='assassin'&&this.classKits.untargetable(p.id,this.combatTick))this.trainingShots.set(shot.id,'concealed-hit');
@@ -1704,7 +1715,7 @@ export class Game {
     this.events.push({
       type: 'sound',
       id:
-        p.classId === 'bard'
+        p.classId === 'summoner' ? 'summoner-beacon' : p.classId === 'bard'
           ? 'weapon-concertina'
           : p.classId === 'medic'
           ? 'weapon-injector'
@@ -1730,13 +1741,16 @@ export class Game {
       s = this.stats(p),
       now = this.combatTick;
     if(p.classId==='swordsman'&&!this.sword.canCast(p,now))return;
+    if(p.classId==='summoner'&&!this.retinue.canCast(p,slot,this.retinueContext(),this.summonerOptions(p)))return;
     if (slot === 'q') p.qAt = now + ticks(a.cooldown * s.cooldown);
     else if (slot === 'e' && !this.classKits.freeStep(p.id, now))
       p.eAt = now + ticks(a.cooldown * s.cooldown);
     else if (slot === 'ultimate') p.ultimateAt = now + ticks(a.cooldown * s.ultimateCooldown);
     const before={x:p.x,y:p.y},empowered=slot==='e'&&this.classKits.freeStep(p.id,now);
     if(!this.transforms.cast(p,slot,this.transformContext())){
-    if (p.classId === 'swordsman') {
+    if(p.classId==='summoner'){
+      this.retinue.cast(p,slot,this.retinueContext(),this.summonerOptions(p));
+    } else if (p.classId === 'swordsman') {
       this.sword.cast(p,slot,this.swordContext(),{potency:s.ability,reachBonus:s.effects.bladeReach??0,ultimateBonus:s.effects.ultimatePotency??0,ultimateDuration:s.effects.ultimateDuration??0,ultimateCharges:s.effects.ultimateCharges??0,ultimateRadius:s.effects.ultimateRadius??0,talents:this.swordTalents(p)});
     } else if (p.classId === 'bard') {
       this.bard.cast(p, slot, this.bardContext());
@@ -1835,7 +1849,7 @@ export class Game {
     } else p.channelUntil = now + ticks(1);
     }
     this.transforms.afterCast(p,slot,before,empowered,this.transformContext());
-    if(p.classId==='swordsman')return;
+    if(p.classId==='swordsman'||p.classId==='summoner')return;
     this.events.push({
       type: 'sound',
       id:
@@ -1909,6 +1923,7 @@ export class Game {
     if (p.health <= 0) {
       this.clearPoison(p);
       p.status = 'downed';
+      if(p.classId==='summoner')this.clearOwnerRetinue(p.id);
       p.health = 0;
       p.downUntil = this.combatTick + ticks(rule.downedSeconds);
       p.reviveProgress = 0;
@@ -1957,17 +1972,18 @@ export class Game {
     p.invulnerableUntil = this.combatTick + ticks(0.2);
     return true;
   }
-  private hitBoss(p: Player | undefined, amount: number, bypassArmor = false) {
+  private hitBoss(p: Player | undefined, amount: number, bypassArmor = false, attackOrigin?: {x:number;y:number}) {
+    const source=p&&attackOrigin?{...p,x:attackOrigin.x,y:attackOrigin.y}:p;
     if(this.skirmish)return;
     const actual = Math.min(
       this.boss.health,
       amount *
-        (p && this.boss.id==='quarantine-clerk' ? this.director.clerk.shelterMultiplier(p,this.combatTick,this.boss.phase,this.boss.variant) : 1) *
+        (p && this.boss.id==='quarantine-clerk' ? this.director.clerk.shelterMultiplier(source!,this.combatTick,this.boss.phase,this.boss.variant) : 1) *
         (this.combatTick < this.boss.vulnerableUntil ? 1.25 : 1) *
         (this.boss.id === 'black-ambulance' && this.director.civic.recovering ? 1.25 : 1) *
         (bypassArmor
           ? 1
-          : this.director.district.bodyMultiplier(p, this.boss, this.combatTick) *
+          : this.director.district.bodyMultiplier(source, this.boss, this.combatTick) *
             this.director.raids.bodyMultiplier(this.combatTick) *
             this.director.endless.bodyMultiplier(this.combatTick)),
     );
@@ -2031,11 +2047,11 @@ export class Game {
       for (let index = this.fields.length - 1; index >= 0; index--)
         if (this.fields[index].owner === 'hostile') this.fields.splice(index, 1);
     }
-    for (const player of this.roster()) {
+    for (const player of [...this.roster(),...this.retinueTargets()]) {
       if (player.status !== 'active' || this.combatTick < (this.wardenHitAt.get(player.id) ?? 0))
         continue;
       if (this.signatures.some((sample) => wardenCanHit(sample, player, rule.playerRadius))) {
-        this.damage(player, WARDEN_SIGNATURE.contactDamage * this.bossDamageScale());
+        this.hurtTarget(player.id, WARDEN_SIGNATURE.contactDamage * this.bossDamageScale());
         this.wardenHitAt.set(player.id, this.combatTick + WARDEN_SIGNATURE.contactIntervalTicks);
       }
     }
@@ -2044,6 +2060,57 @@ export class Game {
     tick:this.combatTick,players:this.roster(),fields:this.fields,kits:this.classKits,kit:this.kitContext(),id:()=>this.id(),stats:p=>this.stats(p),heal:(source,target,amount)=>this.heal(source,target,amount),
     shot:(p,point,angle,speed,damage,pierce,life=12,slow=0)=>{const shot=this.emitShot(p.id,point.x,point.y,angle,speed,damage,4,pierce,life);if(shot&&slow>0)this.shotEffects.set(shot.id,{slowTicks:ticks(slow),slowMultiplier:.6,rangeRemaining:speed*life});},
   };}
+  private summonerOptions(p:Player):SummonerOptions {
+    const s=this.stats(p),e=s.effects,w=data.weapons.find(w=>w.id===p.weapon)!;
+    return {potency:s.ability*(1+('summonBond' in w?(w.summonBond??0):0)),healthBonus:e.summonHealth??0,damageBonus:(e.summonDamage??0)+Math.min(5,p.upgrades.damage??0)*data.rules.summoner.equipmentDamagePerLevel,speedBonus:e.summonSpeed??0,attackRateBonus:(e.summonAttackRate??0)+Math.min(5,p.upgrades['fire-rate']??0)*data.rules.summoner.equipmentAttackRatePerLevel,reachBonus:e.summonReach??0,capacityBonus:e.retinueCapacity??0,ultimateDurationBonus:ticks(e.ultimateDuration??0),ultimateExtraWarders:e.ultimateCharges??0,ultimatePotencyBonus:e.ultimatePotency??0,talents:{runningPack:hasTalent(p,'running-pack'),closedRanks:hasTalent(p,'closed-ranks'),patientCompany:hasTalent(p,'patient-company')}};
+  }
+  orderRetinue(id:string,order:unknown){const p=this.players.get(id);return !!p&&p.classId==='summoner'&&this.phase==='combat'&&this.retinue.order(p,order,this.retinueContext());}
+  private clearOwnerRetinue(owner:string){
+    this.retinue.removeOwner(owner);
+    for(const [id]of this.retinueShots){const shot=this.shots.get(id);if(shot?.owner===owner)this.removeShot(shot);}
+  }
+  private retinueTargets(wardsOnly=false):Player[]{
+    return [...this.retinue.entities.values()].flatMap(e=>{
+      const owner=this.players.get(e.owner);
+      if(!owner?.connected||owner.status!=='active'||e.health<=0||(e.temporary&&this.combatTick>=e.expires)||(wardsOnly&&e.kind!=='ward'))return [];
+      return [{...owner,id:'retinue:'+e.id,x:e.x,y:e.y,oldX:e.oldX,oldY:e.oldY,health:e.health,maxHealth:e.maxHealth,invulnerableUntil:0}];
+    });
+  }
+  private retinueEnemy(key:string):SummonTarget|undefined{
+    if(key==='boss')return !this.skirmish&&!this.director.hasIndependentBodies()&&this.boss.health>0?{key,kind:'boss',x:this.boss.x,y:this.boss.y,radius:this.bossDefinition().radius,health:this.boss.health}:undefined;
+    if(/^ordinary:\d+$/.test(key)){const a=this.minions.actors.get(Number(key.slice(9)));return a&&a.health>0?{key,kind:'ordinary',x:a.x,y:a.y,radius:a.radius,health:a.health}:undefined;}
+    if(/^weak:\d+$/.test(key)){const a=this.director.weakPoints().find(w=>w.id===Number(key.slice(5)));return a&&a.health>0?{key,kind:'weak',x:a.x,y:a.y,radius:a.radius,health:a.health}:undefined;}
+  }
+  private retinueContext():SummonerContext{
+    const keys=['boss',...this.director.weakPoints().map(w=>'weak:'+w.id),...this.minions.actors.keys()].map(k=>typeof k==='number'?'ordinary:'+k:k);
+    return {tick:this.combatTick,combat:this.phase==='combat',paused:false,owners:this.roster(),bounds:this.arena.bounds,obstacles:this.obstacles,lava:this.arena.lavaPits,enemies:keys.flatMap(key=>{const target=this.retinueEnemy(key);return target?[target]:[];}),target:key=>this.retinueEnemy(key),id:()=>this.id(),sound:(id,p)=>this.events.push({type:'sound',id,owner:p.id,x:p.x,y:p.y}),
+      strike:(owner,unit,target,amount,marked)=>{
+        const p=this.players.get(owner.id);if(!p?.connected||p.status!=='active')return 0;
+        if(this.obstacles.some(w=>segmentRect(unit,target,w)))return 0;
+        const before=p.damageDealt;
+        if(target.kind==='ordinary'){const actual=this.minions.hit(Number(target.key.slice(9)),amount,this.combatTick);this.creditHit(p,actual);if(marked)this.observeTraining(p,'retinue-hit',actual);}
+        else if(target.kind==='weak'){const weak=this.director.weakPoints().find(w=>w.id===Number(target.key.slice(5)));if(weak&&this.director.weakContact(unit,target,weak,0)!==null)this.hitWeak(p,amount,weak.id,unit);}
+        else if(!this.director.coreContact(unit,target,0))this.hitBoss(p,amount,false,unit);
+        return p.damageDealt-before;
+      },
+      shoot:(owner,unit,target,amount,speed)=>{
+        const shot=this.emitShot(owner.id,unit.x,unit.y,Math.atan2(target.y-unit.y,target.x-unit.x),speed,amount,3,0,Math.min(3,(unit.range+target.radius+80)/speed));
+        if(shot)this.retinueShots.set(shot.id,{unit:unit.id,x:unit.x,y:unit.y});
+      }
+    };
+  }
+  private retinueShotHit(shot:Shot,p:Player|undefined,key:string,actual:number){
+    if(!p||p.classId!=='summoner'||!p.connected||p.status!=='active'||actual<=0)return;
+    if(this.summonerPrimaryShots.has(shot.id))this.retinue.mark(p,key,actual,this.retinueContext());
+    if(this.retinueShots.has(shot.id)&&key.startsWith('ordinary:')&&this.retinue.marked(p.id,key,this.combatTick))this.observeTraining(p,'retinue-hit',actual);
+  }
+  private stepRetinueHazards(){
+    if(!this.retinue.entities.size)return;
+    for(const e of this.retinue.entities.values()){
+      for(const f of this.fields)if(f.kind==='zone'&&distance(e,fieldPosition(f,this.roster()))<=f.radius+e.radius){this.retinue.slow(e.id,this.combatTick+ticks(.1));if(this.combatTick%HZ===0)this.retinue.hit(e.id,f.potency,this.combatTick);}
+      if(this.combatTick>=this.arenaHazardAt&&this.combatTick%ticks(rule.arenaDifficulty.lavaHitIntervalSeconds)===0&&this.arena.lavaPits.some(pit=>segmentCircle({x:e.oldX,y:e.oldY},e,pit,pit.radius+e.radius)!==null))this.retinue.hit(e.id,rule.arenaDifficulty.lavaDamagePerSecond*rule.arenaDifficulty.lavaHitIntervalSeconds,this.combatTick);
+    }
+  }
   private swordTalents(p:Player):SwordTalents{return {returnStep:hasTalent(p,'return-step'),openCircle:hasTalent(p,'open-circle'),secondWatch:hasTalent(p,'second-watch')};}
   private swordContext():SwordContext{return {
     tick:this.combatTick,players:this.roster(),id:()=>this.id(),
@@ -2171,14 +2238,22 @@ export class Game {
       cueSound: (id) => { this.events.push({type:'sound',id}); },
       damageMaximumHealth: (id,fraction) => {
         const p=this.players.get(id);
+        if(!p&&/^retinue:\d+$/.test(id)){const e=this.retinue.entities.get(Number(id.slice(8)));return !!e&&this.retinue.hit(e.id,e.maxHealth*fraction,this.combatTick,true)>0;}
         if(!p||p.status!=='active'||this.combatTick<p.invulnerableUntil||this.director.isSafe(p,this.combatTick))return false;
         this.damage(p,p.maxHealth*fraction,true,true);return true;
       },
       random: () => this.rng.next(),
-      purpleStamp: (id,amount,first) => { const p=this.players.get(id); return !!p && this.purpleStamp(p,amount,first); },
+      purpleStamp: (id,amount,first) => { const p=this.players.get(id);if(!p&&/^retinue:\d+$/.test(id)){
+        const entityId=Number(id.slice(8)), e=this.retinue.entities.get(entityId);if(!e)return false;
+        if(first)this.retinue.hit(entityId,e.health*clerkAppealRules.purpleCurrentHealthFraction,this.combatTick,true);
+        const actual=this.retinue.hit(entityId,amount,this.combatTick);
+        if(first)this.retinue.poison(entityId,clerkAppealRules.purplePoisonDamage*this.bossDamageScale(),ticks(clerkAppealRules.purplePoisonSeconds),ticks(clerkAppealRules.purplePoisonIntervalSeconds),clerkAppealRules.purpleSlowMultiplier,this.combatTick);
+        return actual>0;
+      } return !!p && this.purpleStamp(p,amount,first); },
       variant: this.boss.variant,
       damageCurrentHealth: (id,fraction,minimumHealth) => {
         const player=this.players.get(id);
+        if(!player&&/^retinue:\d+$/.test(id)){const e=this.retinue.entities.get(Number(id.slice(8)));return !!e&&this.retinue.hit(e.id,Math.max(0,Math.min(e.health*fraction,e.health-minimumHealth)),this.combatTick,true)>0;}
         return !!player && this.damageCurrentHealth(player,fraction,minimumHealth);
       },
       auxiliaryBusy: this.bossCastBlocked() || this.warnings.length > 0 || this.combatTick < this.boss.castEndsAt,
@@ -2241,7 +2316,7 @@ export class Game {
       bounds: this.arena.bounds,
       obstacles: this.obstacles,
       bodyObstacles: this.bossObstacles,
-      targets: this.roster().filter((p) => p.status === 'active'),
+      targets: [...this.roster().filter((p) => p.status === 'active'),...this.retinueTargets()],
       aimTargets: this.aimTargets(),
       damageScale: this.bossDamageScale(),
       brutal: this.boss.variant !== 'normal',
@@ -2624,10 +2699,10 @@ export class Game {
     if (this.phase !== 'combat' || this.minions.actors.size >= rule.maximumMinions) return null;
     return this.minions.spawn(this.id(), definition, this.combatTick);
   }
-  private hitWeak(source: Player | undefined, amount: number, id: number) {
+  private hitWeak(source: Player | undefined, amount: number, id: number, attackOrigin?: {x:number;y:number}) {
     const transfer = this.director.damageTransfer(id);
     const actual = this.director.hitWeakPoint(amount, this.combatTick, id);
-    if (transfer) this.hitBoss(source, actual * transfer.multiplier, transfer.bypassArmor);
+    if (transfer) this.hitBoss(source, actual * transfer.multiplier, transfer.bypassArmor,attackOrigin);
     else this.creditHit(source, actual);
   }
 
@@ -2680,13 +2755,15 @@ export class Game {
     for (const hit of hits) {
       if (hit.weakId !== undefined) {
         const source=this.players.get(shot.owner), before=source?.damageDealt??0;
-        this.hitWeak(source, shot.damage, hit.weakId);
+        this.hitWeak(source, shot.damage, hit.weakId,this.retinueShots.get(shot.id));
+        this.retinueShotHit(shot,source,"weak:"+hit.weakId,(source?.damageDealt??0)-before);
         if(this.bardPrimaryShots.has(shot.id))this.bard.primaryHit(source,(source?.damageDealt??0)-before,this.combatTick);
         return true;
       }
       if (hit.minionId === undefined) {
         const source=this.players.get(shot.owner), before=source?.damageDealt??0;
-        this.hitBoss(source, shot.damage);
+        this.hitBoss(source, shot.damage,false,this.retinueShots.get(shot.id));
+        this.retinueShotHit(shot,source,"boss",(source?.damageDealt??0)-before);
         if(this.bardPrimaryShots.has(shot.id))this.bard.primaryHit(source,(source?.damageDealt??0)-before,this.combatTick);
         return true;
       }
@@ -2705,6 +2782,7 @@ export class Game {
         effect?.slowMultiplier,
       );
       this.creditHit(this.players.get(shot.owner), actual);
+      this.retinueShotHit(shot,this.players.get(shot.owner),"ordinary:"+hit.minionId,actual);
       if(this.bardPrimaryShots.has(shot.id))this.bard.primaryHit(this.players.get(shot.owner),actual,this.combatTick);
       const trainingEvent=this.trainingShots.get(shot.id);
       if(trainingEvent)this.observeTraining(this.players.get(shot.owner),trainingEvent,actual);
@@ -2718,6 +2796,8 @@ export class Game {
     this.shotEffects.delete(s.id);
     this.trainingShots.delete(s.id);
     this.bardPrimaryShots.delete(s.id);
+    this.summonerPrimaryShots.delete(s.id);
+    this.retinueShots.delete(s.id);
     this.shotHits.delete(s.id);
     if (s.owner === 'hostile') this.hostileShots--;
     this.removals.push(s.id);
@@ -2729,10 +2809,13 @@ export class Game {
     for (const s of this.shots.values()) this.removeShot(s);
   }
   private stepShots() {
+    for(const [id]of this.retinueShots){const shot=this.shots.get(id),owner=shot&&this.players.get(shot.owner);if(shot&&(!owner?.connected||owner.status!=='active'))this.removeShot(shot);}
     const safeZones = this.director.safeZones(this.combatTick);
     const districtCover = this.director.district.projectileCover();
     const constructs = this.classKits.constructs();
     const useConstructGrid = constructs.length >= 8;
+    const companions=[...this.retinue.entities.values()];
+    if(companions.length){this.retinueGrid.clear();for(const e of companions)this.retinueGrid.insert(e,e.radius);}
     if (useConstructGrid) {
       this.constructGrid.clear();
       for (const body of constructs)
@@ -2778,6 +2861,7 @@ export class Game {
       let player: Player | undefined,
         barrier: Field | undefined,
         structure: Construct | undefined,
+        companion:SummonEntity|undefined,
         hitTime = wall,
         friendlyHit = false,
         safeHit = false;
@@ -2837,6 +2921,15 @@ export class Game {
             hitTime = t;
           }
         }
+        if(companions.length){
+          this.retinueGrid.queryInto(old,next,s.radius+12,this.projectileRetinue);
+          this.projectileRetinue.sort((a,b)=>a.id-b.id);
+          for(const body of this.projectileRetinue){
+            if(body.health<=0||!this.retinue.entities.has(body.id))continue;
+            const time=segmentCircleXY(old.x-body.oldX,old.y-body.oldY,next.x-body.x,next.y-body.y,0,0,s.radius+body.radius);
+            if(time!==null&&time<hitTime){hitTime=time;companion=body;player=undefined;structure=undefined;barrier=undefined;safeHit=false;}
+          }
+        }
       } else {
         friendlyHit = this.friendlyCollision(s, old, next, wall, weakPoints);
         // A weapon may destroy a building. Rebuild its solid list before a
@@ -2860,11 +2953,13 @@ export class Game {
       if (player) this.damage(player, s.damage);
       else if (barrier) barrier.potency = Math.max(0, barrier.potency - s.damage);
       else if (structure) this.classKits.hitConstruct(structure.id, s.damage);
+      else if(companion)this.retinue.hit(companion.id,s.damage,this.combatTick);
 
       if (
         player ||
         barrier ||
         structure ||
+        companion ||
         friendlyHit ||
         safeHit ||
         effect?.rangeRemaining === 0 ||

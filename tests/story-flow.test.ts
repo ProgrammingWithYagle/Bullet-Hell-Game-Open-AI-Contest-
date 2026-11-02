@@ -72,6 +72,7 @@ test("Known issued local Story mutation boundaries return to reading, old bonuse
   g.step();
   const old = clone(g.offlineCheckpoint()!);
   old.contentRevision = issued;
+  old.protocolVersion = 47;
   old.phase = "mutationVote";
   old.phaseEnds = old.tick + 450;
   old.mutations = [{ id: data.mutations[0].id, remaining: 3 }];

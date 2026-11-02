@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import {encounterArt} from '../src/client/encounter-presentation.ts';
 import survivors from '../assets/delivery/survivor-motion-v1/library.json' with {type:'json'};
+import retinue from '../assets/delivery/retinue-motion-v1/library.json' with {type:'json'};
 const dir=process.argv[2]??'dist';assert(['dist','dist-public'].includes(dir));
 const walk=d=>fs.readdirSync(d).sort().flatMap(n=>{const p=path.join(d,n);return fs.statSync(p).isDirectory()?walk(p):[p];}),files=walk(dir),sha=b=>createHash('sha256').update(b).digest('hex');
 const pngs=new Map();for(const p of files.filter(p=>p.endsWith('.png'))){const b=fs.readFileSync(p),h=sha(b);pngs.set(h,{path:p.replaceAll('\\','/'),bytes:b.length,width:b.readUInt32BE(16),height:b.readUInt32BE(20)});}
@@ -17,11 +18,11 @@ for(const e of encounterArt){
 }
 const alchemist=checks.find(c=>c.bossId==='alchemist');assert(alchemist&&alchemist.frames===16&&alchemist.source.endsWith('alchemist-action-walk-v2-atlas.png'));
 const bell=checks.find(c=>c.bossId==='bellringer');assert(bell&&bell.frames===16&&bell.source.endsWith('bellringer-action-walk-v2-atlas.png'));
-for(const clip of survivors.entries){
+for(const clip of [...survivors.entries,...retinue.entries]){
  const file=pngs.get(clip.atlasSha256);assert(file,'Selected survivor atlas is not emitted: '+clip.id);
  assert(main.includes(path.basename(file.path)),'Selected survivor URL is absent from client: '+clip.id);
  assert.equal(file.width,clip.columns*clip.cellSize);assert.equal(file.height,Math.ceil(clip.frames/clip.columns)*clip.cellSize);
 }
 const report={passed:true,target:dir,bellringerWalkFrames:8,retainedBellringerActionFrames:8,selectedAtlases:checks.length,alchemistWalkFrames:8,retainedAlchemistActionFrames:8,checks,scope:'Selected runtime pose metadata, actual emitted PNG bytes/dimensions and client URL references. No rendered acceptance.'};
-report.selectedSurvivorAtlases=survivors.entries.length;
+report.selectedSurvivorAtlases=survivors.entries.length;report.selectedCompanionAtlases=retinue.entries.length;
 const out='reviews/resonant-tolls-2026-10-27/emitted-atlases-'+(dir==='dist'?'testing':'public')+'.json';fs.writeFileSync(out,JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({...report,checks:undefined}));

@@ -67,6 +67,7 @@ self.onmessage = (e: MessageEvent) => {
     if(ok){postMessage({type:'checkpoint',value:null});emit(true);}
     return;
   }
+  if(m.type==='retinueOrder'){if(!paused)game.orderRetinue('solo',m.order);emit();return;}
   if (m.type === 'input') game.submitInput('solo', m.input);
   else if (m.type === 'start') {
     game.start();

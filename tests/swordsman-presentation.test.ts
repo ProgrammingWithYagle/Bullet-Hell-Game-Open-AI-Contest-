@@ -96,6 +96,7 @@ test('An issued Bard save preserves learning and identity, rejects newly invente
   const saved = g.offlineCheckpoint()!;
   const issued = '85c266d3bbb2457910b5237bbab3769bd1ada06014d39ded5eefe5854e5392cb';
   saved.contentRevision = issued;
+  saved.protocolVersion = 47; // Exact issued envelope, not the current protocol.
   const restored = Game.restoreOffline(structuredClone(saved));
   assert.equal(restored.players.get('solo')?.classId, 'bard');
   assert.deepEqual(restored.trainingFor('solo'), g.trainingFor('p'));

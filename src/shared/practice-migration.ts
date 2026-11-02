@@ -6,6 +6,11 @@ import { classifiedContract } from "./boss-threat.ts";
 function migrateKnownPracticeBoundary(value: unknown): unknown {
   if (!value || typeof value !== "object" || Array.isArray(value)) return value;
   const issued = value as Record<string, unknown>;
+  if(issued.protocolVersion===47&&issued.contentRevision==='e74efafe14d4694ef9afd8ea6df038c3fd0e697e4b6d5039f9a6d70173c8b6bd'){
+    const p=issued.player as Record<string,unknown>|undefined;
+    if(issued.schemaVersion!==1||issued.practiceOnly!==true||issued.serverOnly===true||issued.players!==undefined||issued.transactions!==undefined||JSON.stringify(issued).length>32768||!p||!['soldier','medic','heavy','tank','mage','engineer','assassin','bard','swordsman'].includes(String(p.classId))||(Array.isArray(p.skills)&&p.skills.some(s=>typeof s==='string'&&s.startsWith('summoner-'))))throw Error('versionMismatch');
+    return {...issued,contentRevision:CONTENT_REVISION,protocolVersion:PROTOCOL};
+  }
   if (issued.protocolVersion === 47 && issued.contentRevision === '85c266d3bbb2457910b5237bbab3769bd1ada06014d39ded5eefe5854e5392cb') {
     const p = issued.player as Record<string, unknown> | undefined;
     if (issued.schemaVersion !== 1 || issued.practiceOnly !== true || issued.serverOnly === true || issued.players !== undefined || issued.transactions !== undefined || JSON.stringify(issued).length > 32768 || !p || !['soldier','medic','heavy','tank','mage','engineer','assassin','bard'].includes(String(p.classId)) || (Array.isArray(p.skills) && p.skills.some((s) => typeof s === 'string' && s.startsWith('swordsman-')))) throw Error('versionMismatch');
@@ -730,7 +735,10 @@ function migrateKnownPracticeBoundary(value: unknown): unknown {
 
 /** Only already-recognized issued local saves receive the Story flow conversion. */
 export function migratePracticeBoundary(value: unknown): unknown {
-  const migrated = migrateKnownPracticeBoundary(value);
+  let migrated = migrateKnownPracticeBoundary(value);
+  // A changed object proves recognition by an exact issued local migration.
+  // Earlier47 chapter/content paths retain data but now enter the48 wire era.
+  if(migrated!==value&&migrated&&typeof migrated==='object'&&!Array.isArray(migrated)&&(migrated as Record<string,unknown>).protocolVersion===47)migrated={...(migrated as Record<string,unknown>),protocolVersion:PROTOCOL};
   if (
     migrated === value ||
     !migrated ||

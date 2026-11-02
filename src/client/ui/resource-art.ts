@@ -1,7 +1,7 @@
 import { escape as e } from './html.ts';
 import { icon } from './icons.ts';
 
-export type ResourceKind = 'equipment' | 'coins' | 'skills';
+export type ResourceKind = 'equipment' | 'coins' | 'skills' | 'summoner-focus';
 export type ResourceImages = Partial<Record<ResourceKind, string>>;
 
 export function resourceArt(kind: ResourceKind, images: ResourceImages = {}) {

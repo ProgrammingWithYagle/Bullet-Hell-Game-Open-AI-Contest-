@@ -104,10 +104,10 @@ function hostile(
   ) as Shot;
 }
 test('27 transformations are legal six-SP depth-three purchases with stable IDs and prerequisites', () => {
-  assert.equal(data.skills.length, 486);
+  assert.equal(data.skills.length, 540);
   const transformed = data.skills.filter((s) => 'transform' in s);
-  assert.equal(transformed.length, 27);
-  assert.equal(new Set(transformed.map((s) => talentForSkill(s.id))).size, 27);
+  assert.equal(transformed.length, 30);
+  assert.equal(new Set(transformed.map((s) => talentForSkill(s.id))).size, 30);
   for (const cl of data.classes) {
     const g = new Game(),
       p = g.addPlayer('p', 'Survivor', cl.id as ClassId);
@@ -613,7 +613,7 @@ test('issued protocol-17 local saves retain skill node ownership and progression
     'd4419d906f67286576ca3f6795e03a921269aff861b36e2e82ce68aa2e501775';
   const restored = Game.restoreOffline(save),
     after = [...restored.players.values()][0];
-  assert.equal(PROTOCOL, 47);
+  assert.equal(PROTOCOL, 48);
   assert.equal(after.coins, 901);
   assert.deepEqual(after.skills, p.skills);
   assert(hasTalent(after, 'breach-cadence'));

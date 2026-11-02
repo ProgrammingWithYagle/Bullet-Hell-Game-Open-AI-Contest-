@@ -16,3 +16,12 @@ Mara keeps the paper in her pocket and still holds the bent cap for Hux. The bra
 
 
 Dara Flint is present on the inner side of the gate. Her empty scabbard catches in a paving joint; Hux frees it while her drawn sword stays clear. Tamsin offers to shorten its strap, and Dara accepts for later. At the ward porch, after street clearance, Tamsin adjusts that buckle with Dara seated; Dara tests the fit and thanks her. No replacement weapon, money or new technique changes hands. Dara recently entered the Swordsman discipline after working at a grinding bench. A more experienced woman teaches at her training hall; no name, rank or further identity has yet been established. This small admission is an opening beat, not a completed personal arc or an automatic gameplay proof.
+
+
+## Summoner continuation (working candidate)
+
+Joss Merrow is a recent Summoner entrant and previously delivered parcels around the market. Other people practice the same discipline. His three delivery squares remain unchecked at the ward; no delivery is declared completed, no exact training duration or advanced grade is assigned, and no companion carries cargo or a patient. Senn identifies the ward as uphill of the dyers' bridge; Joss's uncle calls that area the new yard. This is spoken geography, not a delivered bridge combat map. Joss remains inside the gate with the group and does not change Senn's six-person count outside it.
+
+Nell Dace is a market cook and a new civilian side character, not a class or boss. A boy from the far stairs has returned her pan. There are now fourteen people there, up from twelve when Joss last left; she has divided the food more thinly and makes no promise for tomorrow. Her former canal-steps location is from yesterday. The boy is unnamed; nobody assigns him a class, age beyond 'boy', later destination or extra delivery. Nell goes inside to find him. Joss holds the covered pan and waits to ask Drin about washing water; washing/return is not yet completed. The optional basket letter has an unnamed stallholder, not an automatically identified Nell.
+
+Joss's first Campaign foundation is D-: a real primary beacon marks an ordinary target, his own living retinue damages that same target during its finite mark, and the encounter clears. Reading, empty casts, another caller's retinue, defeated targets and boss-only damage do not demonstrate it. Free Play uses SP and may choose the three behavior transformations; this chapter does not sell mutations or advanced mastery.

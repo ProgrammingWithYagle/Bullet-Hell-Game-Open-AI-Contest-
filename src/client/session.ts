@@ -28,6 +28,7 @@ import { savedBoundary, storeBoundary } from './storage.ts';
 import { recordPracticeCampaign } from './progress.ts';
 import { defaultGameEndpoint } from './deployment.ts';
 import type { TeamRecordStatus } from '../shared/team-records.ts';
+import type {SummonKind,SummonView} from '../shared/summoner-kit.ts';
 import { isRankedTeamRecord, rememberTeamRecord } from './team-records.ts';
 export type ConnectionOptions = {
   storyChapterId?:'one-place-left';
@@ -438,6 +439,7 @@ export class Session {
     this.checkpointStatus = status as CheckpointStatus;
     this.onCheckpointStatus(this.checkpointStatus);
   }
+  orderRetinue(order:'escort'|'hold'|'focus'){if(this.online){if(this.room?.connection.isOpen)this.room.send('retinueOrder',order);}else this.worker?.postMessage({type:'retinueOrder',order});}
   input(input: InputFrame) {
     if (this.online) {
       if (this.room?.connection.isOpen) this.room.send('input', input);
@@ -623,6 +625,7 @@ function networkView(s: WorldState): View {
     })),
     bossCues: hazards.bossCues ?? [],
     classCues: hazards.classCues ?? [],
+    retinue:[...s.retinue.values()].map(e=>({id:e.id,owner:e.owner,kind:e.kind as SummonKind,slot:e.slot,x:e.x/4,y:e.y/4,oldX:e.oldX/4,oldY:e.oldY/4,aim:e.aim/1000,actionAim:e.actionAim/1000,health:e.health,maxHealth:e.maxHealth,radius:e.radius,bornAt:e.bornAt,expires:e.expires,temporary:e.temporary,action:e.action as SummonView['action'],actionAt:e.actionAt,slowUntil:e.slowUntil,poisonUntil:e.poisonUntil})),
     arenaId: hazards.arenaId ?? 'gatehouse',
     warnings: hazards.warnings ?? [],
     fields: hazards.fields ?? [],

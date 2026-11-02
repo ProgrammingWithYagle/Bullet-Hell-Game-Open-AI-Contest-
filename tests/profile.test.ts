@@ -212,7 +212,7 @@ test('protocol-12 Practice migration preserves the secret offer and personal sol
   delete save.settings.runId;
   delete save.player.progress;
   const restored = Game.restoreOffline(save);
-  assert.equal(PROTOCOL, 47);
+  assert.equal(PROTOCOL, 48);
   assert.equal(restored.phase, 'secretOffer');
   assert.deepEqual(restored.campaignBank, g.campaignBank);
   assert.deepEqual(restored.endless.state, g.endless.state);
@@ -279,9 +279,10 @@ test('storage failures and corrupt prior files preserve the previous profile byt
 test('bindings reject conflicts and reserved navigation, and touch/gamepad can share action names', () => {
   const controls = defaultControls();
   assert(validControls(controls));
-  const alt = rebind(controls, 'q', 0, 'KeyV')!;
+  const alt = rebind(controls, 'q', 0, 'KeyB')!;
   assert(alt);
-  assert.equal(alt.bindings.q[0], 'KeyV');
+  assert.equal(alt.bindings.q[0], 'KeyB');
+  assert.equal(rebind(controls,'q',0,'KeyV'),null,'The retinue key remains owned until explicitly rebound');
   for (const code of ['Escape', 'Tab', 'F5', 'KeyR'])
     assert.equal(rebind(controls, 'q', 0, code), null);
   const duplicate = structuredClone(controls);
@@ -342,7 +343,7 @@ test('legacy Hard campaign records stay portable but never infer missing partici
         id: bank.runId,
         practiceOnly: true,
         verified: false,
-        contentRevision: CONTENT_REVISION,
+        contentRevision: '5a4ffd871d1880ccb681aee1faa5e51a664385752977fa7a136b50d44c7c6927',
         protocol: 12,
         mode: bank.mode,
         difficulty: bank.difficulty,

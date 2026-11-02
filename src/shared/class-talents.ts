@@ -1,5 +1,8 @@
 import catalog from '../../content/catalog.json';
 export type TalentId =
+  | 'running-pack'
+  | 'closed-ranks'
+  | 'patient-company'
   | 'return-step'
   | 'open-circle'
   | 'second-watch'

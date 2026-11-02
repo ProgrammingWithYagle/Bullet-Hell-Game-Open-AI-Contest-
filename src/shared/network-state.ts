@@ -68,6 +68,12 @@ export const ActorState = schema(
   'GraveActor',
 );
 export type ActorState = SchemaType<typeof ActorState>;
+export const SummonState=schema({
+ id:t.uint32().default(0),owner:t.string().default(''),kind:t.string().default('hound'),slot:t.uint8().default(0),
+ x:t.int16().default(0),y:t.int16().default(0),oldX:t.int16().default(0),oldY:t.int16().default(0),aim:t.int16().default(0),actionAim:t.int16().default(0),
+ health:t.float32().default(0),maxHealth:t.float32().default(0),radius:t.uint8().default(10),bornAt:t.uint32().default(0),expires:t.uint32().default(0),temporary:t.boolean().default(false),action:t.string().default('idle'),actionAt:t.uint32().default(0),slowUntil:t.uint32().default(0),poisonUntil:t.uint32().default(0)
+},'GraveSummon');
+export type SummonState=SchemaType<typeof SummonState>;
 export const WorldState = schema(
   {
     tick: t.uint32().default(0),
@@ -99,6 +105,7 @@ export const WorldState = schema(
     hazards: t.string().default('{}'),
     intermission: t.string().default('{}'),
     accord: t.string().default('null'),
+    retinue:t.map(SummonState),
   },
   'GraveWorld',
 );

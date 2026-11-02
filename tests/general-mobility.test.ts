@@ -58,8 +58,8 @@ function state(): Mobility {
   return p;
 }
 
-test("General purchases use existing earned SP for all seven classes without adding class nodes or granting free build points", () => {
-  assert.equal(data.skills.length, 486);
+test("General purchases use existing earned SP for all ten classes without adding class nodes or granting free build points", () => {
+  assert.equal(data.skills.length, 540);
   assert.equal(data.generalSkills.length, 2);
   for (const classId of implementedClassIds) {
     const g = new Game(),
@@ -247,6 +247,8 @@ test("current and known old local saves preserve builds/economy; old online revi
 test("old custom controls gain unused Sprint bindings while keeping every prior choice; malformed/current missing fields are not silently repaired", () => {
   const current = defaultControls(),
     old: any = structuredClone(current);
+  delete old.bindings.retinue;
+  delete old.gamepad.retinue;
   delete old.bindings.sprint;
   delete old.gamepad.sprint;
   delete old.sprintMode;

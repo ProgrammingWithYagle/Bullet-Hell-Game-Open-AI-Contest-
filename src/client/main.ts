@@ -59,6 +59,8 @@ import './ui/runtime-extras.css';
 import './ui/boss-defeat.css';
 import './ui/waiting-room.css';
 import './ui/interface-clarity.css';
+import './ui/retinue.css';
+import {RetinueControls} from './retinue-controls.ts';
 import './ui/home-gallery.css';
 import './ui/language-welcome.css';
 import './ui/game-viewport.css';
@@ -85,6 +87,7 @@ const app = document.querySelector<HTMLElement>('#app')!,
   bossPhaseFeedback = new BossPhaseFeedback(),
   bossGuide = new BossGuideState();
 let guideReturnFocus: HTMLElement | null = null;
+let retinueUI:RetinueControls|undefined;
 let session: Session | undefined,
   game: Phaser.Game | undefined,
   scene: CombatScene | undefined,
@@ -333,6 +336,7 @@ async function begin(
       const aimTarget=combatAimTarget(view,p);
       const frame = controls!.sample(view.tick, p, aimTarget);
       active.input(frame);
+      if(controls!.takeRetinueCycle())retinueUI?.cycle();
       prediction.submit(frame, view);
       if (scene) scene.predicted = prediction.player;
     }, 1000 / 30);
@@ -447,6 +451,9 @@ function setupGame(online: boolean,classId:string) {
   actionDock.className = 'combat-action-dock';
   $('abilities').before(actionDock);
   actionDock.append($('abilities'), supplyBar, app.querySelector('.touch-buttons')!);
+    const retinueRoot=document.createElement('section');
+  actionDock.append(retinueRoot);
+  retinueUI=new RetinueControls(retinueRoot,t,order=>session?.orderRetinue(order),number);
   scene = new CombatScene();
   controls = new Controls($('stage'),point=>scene!.canvasToWorld(point),()=>scene!.viewport());
   scene.onLoadProgress = value => {
@@ -549,6 +556,7 @@ function update(view: View) {
   prediction.acknowledge(view, session.id);
   scene.predicted = prediction.player;
   const p = view.players.find((p) => p.id === session!.id);
+  retinueUI?.update(view,session.id,paused||bossGuide.open,bindingLabel(inputOptions.bindings.retinue[0]));
   if (!p) return;
   const defeated = showingBossDefeat(view.boss, view.tick), banner = $('boss-defeated-banner');
   const defeatId = view.run.id + ':' + view.boss.defeatedAt;
@@ -595,7 +603,7 @@ function update(view: View) {
   shield.max=Math.max(1,p.maxShield);shield.value=Math.max(0,Math.min(p.maxShield,p.shield));
   shield.closest<HTMLElement>('.shield-meter')!.dataset.unavailable=String(p.maxShield===0);
   $('shield-text').textContent=number(p.shield)+' / '+number(p.maxShield);
-  $('ammo-label').textContent=t(p.classId==='swordsman'?(p.reloadAt>view.combatTick?'ui.swordRecovery':'ui.swordBreath'):(p.reloadAt>view.combatTick?'ui.reloading':'ui.ammo'));
+  $('ammo-label').textContent=t(p.classId==='swordsman'?(p.reloadAt>view.combatTick?'ui.swordRecovery':'ui.swordBreath'):p.classId==='summoner'?(p.reloadAt>view.combatTick?'ui.summonerRebind':'ui.summonerFocus'):(p.reloadAt>view.combatTick?'ui.reloading':'ui.ammo'));
   $('ammo').textContent=number(p.ammo);
   $('coins-value').textContent=number(p.coins);
   $('skill-points-value').textContent=number(p.sp);
@@ -631,7 +639,7 @@ function update(view: View) {
             .map((n) => bindingLabel(inputOptions.bindings[('supply' + n) as 'supply1'][0]))
             .join(' / '),
         });
-    const artId=p.classId==='swordsman'&&slot.id==='ammo-pouch'?'swordsman-canteen':slot.id;
+    const artId=slot.id==='ammo-pouch'?(p.classId==='swordsman'?'swordsman-canteen':p.classId==='summoner'?'summoner-thread-spool':slot.id):slot.id;
     if (button.dataset.item !== artId) {
       button.dataset.item = artId;
       button.querySelector('[data-supply-glyph]')!.innerHTML =
@@ -972,6 +980,7 @@ function destroy() {
   hostMatchUI?.destroy();hostMatchUI=undefined;
   if (timer) clearInterval(timer);
   timer = undefined;
+  retinueUI?.dispose();retinueUI=undefined;
   controls?.destroy();
   game?.destroy(true);
   game = undefined;

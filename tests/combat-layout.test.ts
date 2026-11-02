@@ -8,7 +8,7 @@ import {defaultPreferences,migratePreferences,validPreferences} from '../src/cli
 import {data} from '../src/shared/game.ts';
 
 test('existing eleven-field profiles retain progress, controls and language while adding the layout default',()=>{
-  const profile=freshProfile();profile.locale='ja';profile.settings.volume=.7;profile.controls.bindings.dodge=['KeyV'];
+  const profile=freshProfile();profile.locale='ja';profile.settings.volume=.7;profile.controls.bindings.dodge=['KeyB'];
   profile.runs=[{runId:'layout-migration',playerId:'solo',mode:'short',difficulty:'normal',classId:'medic',clears:1,rescues:0,firstEncounter:0,campaignClears:1,bossIds:['ashen-usher'],teamClears:1,combatTicks:3000,fullCampaign:false,memorial:false}];
   const old=structuredClone(profile) as any;delete old.settings.combatLayout;const raw=JSON.stringify(old),restored=parseProfile(raw);
   assert.equal(restored.settings.combatLayout,'grouped');assert.deepEqual(restored.runs,profile.runs);assert.deepEqual(restored.controls,profile.controls);assert.equal(restored.locale,'ja');assert.equal(summary(restored).totalClears,1);

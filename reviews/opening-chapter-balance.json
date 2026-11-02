@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentRevision": "e74efafe14d4694ef9afd8ea6df038c3fd0e697e4b6d5039f9a6d70173c8b6bd",
+  "contentRevision": "f099f438f83d4f79da2fd18bc8cd680e3e8616e5febb50d7b78609b47d09bb32",
   "kind": "Analytical early-build feasibility, not human balance",
   "assumptions": {
     "rangedAttackUptime": 0.65,
@@ -8,12 +8,15 @@
     "shotgunPelletHits": 0.7,
     "bossClockMultiplier": 2,
     "criticalHitsIncluded": false,
-    "classAbilitiesIncluded": false,
+    "classAbilitiesIncluded": "Summoner permanent base retinue only; other class ability damage and all ultimates excluded",
+    "summonerPermanentCompanions": 4,
+    "summonerCompanionUptime": 0.4,
+    "summonerCompanionWarmupSeconds": 8,
     "ordinaryEnemyAndNestWorkIncluded": false,
     "preparedFoundationsDoNotAddWeaponDamage": true,
     "solo": true
   },
-  "rows": 108,
+  "rows": 120,
   "deadlineMisses": 0,
   "worst": [
     {
@@ -28,6 +31,9 @@
       "health": 7960.5,
       "deadlineSeconds": 450,
       "attackUptime": 0.65,
+      "companionUptime": 0,
+      "companionWarmupSeconds": 0,
+      "companionTheoreticalDps": 0,
       "estimatedSeconds": 340.7941516687645,
       "deadlineRatio": 0.757320337041699
     },
@@ -43,6 +49,9 @@
       "health": 7642.079999999999,
       "deadlineSeconds": 450,
       "attackUptime": 0.65,
+      "companionUptime": 0,
+      "companionWarmupSeconds": 0,
+      "companionTheoreticalDps": 0,
       "estimatedSeconds": 327.1623856020139,
       "deadlineRatio": 0.7270275235600309
     },
@@ -58,6 +67,9 @@
       "health": 7960.5,
       "deadlineSeconds": 450,
       "attackUptime": 0.65,
+      "companionUptime": 0,
+      "companionWarmupSeconds": 0,
+      "companionTheoreticalDps": 0,
       "estimatedSeconds": 301.45934892175495,
       "deadlineRatio": 0.6699096642705665
     },
@@ -73,6 +85,9 @@
       "health": 4860.000000000001,
       "deadlineSeconds": 360,
       "attackUptime": 0.65,
+      "companionUptime": 0,
+      "companionWarmupSeconds": 0,
+      "companionTheoreticalDps": 0,
       "estimatedSeconds": 237.18810601163543,
       "deadlineRatio": 0.6588558500323206
     },
@@ -88,6 +103,9 @@
       "health": 7960.5,
       "deadlineSeconds": 450,
       "attackUptime": 0.65,
+      "companionUptime": 0,
+      "companionWarmupSeconds": 0,
+      "companionTheoreticalDps": 0,
       "estimatedSeconds": 290.750483069562,
       "deadlineRatio": 0.6461121845990266
     },
@@ -103,6 +121,9 @@
       "health": 7642.079999999999,
       "deadlineSeconds": 450,
       "attackUptime": 0.65,
+      "companionUptime": 0,
+      "companionWarmupSeconds": 0,
+      "companionTheoreticalDps": 0,
       "estimatedSeconds": 289.4009749648847,
       "deadlineRatio": 0.6431132776997438
     },
@@ -118,6 +139,9 @@
       "health": 7960.5,
       "deadlineSeconds": 450,
       "attackUptime": 0.65,
+      "companionUptime": 0,
+      "companionWarmupSeconds": 0,
+      "companionTheoreticalDps": 0,
       "estimatedSeconds": 288.18295739348366,
       "deadlineRatio": 0.6404065719855192
     },
@@ -133,6 +157,9 @@
       "health": 4665.6,
       "deadlineSeconds": 360,
       "attackUptime": 0.65,
+      "companionUptime": 0,
+      "companionWarmupSeconds": 0,
+      "companionTheoreticalDps": 0,
       "estimatedSeconds": 227.70058177117,
       "deadlineRatio": 0.6325016160310277
     },
@@ -148,6 +175,9 @@
       "health": 7642.079999999999,
       "deadlineSeconds": 450,
       "attackUptime": 0.65,
+      "companionUptime": 0,
+      "companionWarmupSeconds": 0,
+      "companionTheoreticalDps": 0,
       "estimatedSeconds": 279.1204637467795,
       "deadlineRatio": 0.6202676972150655
     },
@@ -163,6 +193,9 @@
       "health": 7642.079999999999,
       "deadlineSeconds": 450,
       "attackUptime": 0.65,
+      "companionUptime": 0,
+      "companionWarmupSeconds": 0,
+      "companionTheoreticalDps": 0,
       "estimatedSeconds": 276.65563909774426,
       "deadlineRatio": 0.6147903091060983
     },
@@ -178,6 +211,9 @@
       "health": 7960.5,
       "deadlineSeconds": 450,
       "attackUptime": 0.65,
+      "companionUptime": 0,
+      "companionWarmupSeconds": 0,
+      "companionTheoreticalDps": 0,
       "estimatedSeconds": 273.5464462438146,
       "deadlineRatio": 0.6078809916529213
     },
@@ -193,6 +229,9 @@
       "health": 7960.5,
       "deadlineSeconds": 450,
       "attackUptime": 0.4,
+      "companionUptime": 0,
+      "companionWarmupSeconds": 0,
+      "companionTheoreticalDps": 0,
       "estimatedSeconds": 264.39862677527145,
       "deadlineRatio": 0.5875525039450477
     }
@@ -200,6 +239,7 @@
   "limits": [
     "Does not measure movement, cover, player survival, support actions, nest-clearing time or human accuracy.",
     "Requires choosing the shown affordable offensive purchase; other preparations can differ.",
+    "Summoner pet uptime/availability is an assumption that discounts navigation, recall and attrition; it is not measured survivability or a played clear. Only the shown actually purchased companion-damage/rate equipment is included. No ultimate, higher-capacity skill or prepared potency is included.",
     "Boss health, attack definitions, fixed grades and Free Play timers are unchanged."
   ],
   "passed": true

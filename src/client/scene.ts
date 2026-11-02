@@ -1,4 +1,5 @@
 import {drawSwordCue} from './sword-presentation.ts';
+import {retinueArt,retinuePose} from './retinue-presentation.ts';
 import {drawSkirmishWarnings,drawWardPatient} from './skirmish-presentation.ts';
 import {drawStitchCue, isStitchCue} from './stitch-cues.ts';
 import {isBellCue} from './bell-presentation.ts';
@@ -87,6 +88,7 @@ export class CombatScene extends Phaser.Scene {
   private cancelBossLoads = new Set<() => void>();
   private survivorActions = new SurvivorActionClock();
   private actors = new Map<number, Phaser.GameObjects.Sprite>();
+  private companions = new Map<number,Phaser.GameObjects.Sprite>();
   private shadows!: Phaser.GameObjects.Graphics;
   private hazards!: Phaser.GameObjects.Graphics;
   private bulletImages = new Map<number, Phaser.GameObjects.Image>();
@@ -194,6 +196,7 @@ export class CombatScene extends Phaser.Scene {
         frameWidth: clip.cellSize,
         frameHeight: clip.cellSize,
       });
+    for(const clip of retinueArt)this.load.spritesheet(clip.id,assets.retinue[clip.id],{frameWidth:clip.cellSize,frameHeight:clip.cellSize});
     preloadBossTextureBase(
       this.load,
       encounterArt,
@@ -241,6 +244,7 @@ export class CombatScene extends Phaser.Scene {
     note.lineStyle(4,0xffd58b,1).strokeEllipse(16,17,20,11);
     note.lineStyle(2,0x423c2d,1).lineBetween(8,17,24,17);
     note.generateTexture('projectile-note',32,32);note.destroy();
+    const beacon=this.make.graphics({x:0,y:0});beacon.lineStyle(3,0xe8ce8a,1).strokeCircle(16,16,8);beacon.fillStyle(0xabc8bd,1).fillCircle(16,16,4);beacon.generateTexture('projectile-beacon',32,32);beacon.destroy();
     this.foreground = this.add.graphics().setDepth(30);
     this.bossSprite = this.add
       .sprite(800, 315, 'constable-idle', 0)
@@ -1233,6 +1237,27 @@ export class CombatScene extends Phaser.Scene {
         this.people.delete(id);
         this.nameLabels.get(id)?.destroy();this.nameLabels.delete(id);
       }
+    const companionIds=new Set<number>();
+    for(const entity of view.retinue??[]){
+      const pose=retinuePose(entity,animationTime.combatTick,this.reduceMotion);if(!pose)continue;companionIds.add(entity.id);
+      let sprite=this.companions.get(entity.id);
+      if(!sprite){sprite=this.add.sprite(entity.x,entity.y,pose.texture,pose.frame);this.companions.set(entity.id,sprite);}
+      const blend=1-Math.exp(-20*dt);sprite.x+=(entity.x-sprite.x)*blend;sprite.y+=(entity.y-sprite.y)*blend;
+      sprite.setTexture(pose.texture,pose.frame).setOrigin(pose.origin[0],pose.origin[1]).setDisplaySize(pose.displayCell,pose.displayCell).setDepth(4.8+sprite.y/1000).setAlpha(entity.health<=0?.35:entity.owner===this.localId?.95:.65).setTint(now<entity.poisonUntil?0xd3a9e7:0xffffff);
+      if(entity.health>0&&entity.owner===this.localId){
+        f.lineStyle(1,entity.temporary?0xe0c88c:0xa4c4a1,.7).strokeCircle(sprite.x,sprite.y,entity.radius);
+        f.fillStyle(0x10221b,.9).fillRect(sprite.x-13,sprite.y+entity.radius+3,26,2);
+        f.fillStyle(now<entity.poisonUntil?0xd3a9e7:0xb7cea8,1).fillRect(sprite.x-13,sprite.y+entity.radius+3,26*Math.max(0,entity.health/entity.maxHealth),2);
+      }
+    }
+    for(const [id,sprite]of this.companions)if(!companionIds.has(id)){sprite.destroy();this.companions.delete(id);}
+    const caller=view.players.find(p=>p.id===this.localId&&p.classId==='summoner');
+    if(caller?.kit.retinueOrder==='hold'&&caller.kit.retinueCount){const x=caller.kit.retinueHoldX??caller.x,y=caller.kit.retinueHoldY??caller.y;f.lineStyle(1,0xb7cea8,.7).strokeCircle(x,y,7).lineBetween(x-10,y,x+10,y).lineBetween(x,y-10,x,y+10);}
+    const mark=caller?.kit.retinueMarkKey;
+    if(mark&&(caller?.kit.retinueMarkUntil??0)>now){
+      const target=mark==='boss'?view.boss:mark.startsWith('ordinary:')?view.minions.find(m=>m.id===Number(mark.slice(9))):view.bossCues.find(c=>'id'in c&&c.id===Number(mark.slice(5)));
+      if(target&&'x'in target&&'y'in target)f.lineStyle(2,0xe7d19a,.8).strokeCircle(target.x,target.y,18);
+    }
     this.renderedHostiles = 0;
     for (const [id, s] of this.shots) {
       s.x += s.vx * dt;
@@ -1244,7 +1269,7 @@ export class CombatScene extends Phaser.Scene {
       }
       const key =
         'projectile-' +
-        (s.owner === 'hostile' ? (this.highContrast ? 'contrast' : 'hostile') : view.players.find(p=>p.id===s.owner)?.classId==='bard'?'note':'friendly');
+        (s.owner === 'hostile' ? (this.highContrast ? 'contrast' : 'hostile') : view.players.find(p=>p.id===s.owner)?.classId==='bard'?'note':view.players.find(p=>p.id===s.owner)?.classId==='summoner'?'beacon':'friendly');
       let image = this.bulletImages.get(id);
       if (!image) {
         image = this.bulletPool.pop() ?? this.add.image(s.x, s.y, key).setDepth(20);

@@ -29,6 +29,8 @@ export class Controls {
   touch = false;
   blocked = true;
   private sequence = 0;
+  private retinueCycle = false;
+  takeRetinueCycle(){const pulse=this.retinueCycle;this.retinueCycle=false;return pulse;}
   private lastButtons: boolean[] = [];
   private angle = -Math.PI / 2;
   private listeners = new AbortController();
@@ -133,6 +135,7 @@ export class Controls {
     });
   }
   clear() {
+    this.retinueCycle=false;
     this.keys.clear();
     this.pressed.clear();
     this.virtualPressed.clear();
@@ -223,6 +226,7 @@ export class Controls {
         break;
       }
     for (const a of ['dodge', 'reload', 'q', 'e', 'ultimate'] as const) input[a] = pulse(a);
+    this.retinueCycle=pulse('retinue');
     this.pressed.clear();
     this.virtualPressed.clear();
     return input;

@@ -1,6 +1,9 @@
 import {encounterArt} from './encounter-presentation.ts';
 import {resolveEncounterAssetUrls} from './encounter-asset-urls.ts';
 import survivorDelivery from '../../assets/delivery/survivor-motion-v1/library.json';
+import retinueDelivery from '../../assets/delivery/retinue-motion-v1/library.json';
+const retinueImages=import.meta.glob('../../assets/delivery/retinue-motion-v1/*-v1-atlas.png',{query:'?url',import:'default',eager:true}) as Record<string,string>;
+const retinueUrls=Object.fromEntries(retinueDelivery.entries.map(e=>{const url=retinueImages['../../'+e.atlas];if(!url)throw Error('Missing companion asset: '+e.id);return [e.id,url];})) as Record<string,string>;
 import wheel from '../../assets/production/motion/tollkeeper-wheel-v1.png?url';
 import arena from '../../assets/proofs/arena-v1.png?url';
 import gatehouseHalf from '../../assets/production/arenas/gatehouse-half-v1.png?url';
@@ -130,7 +133,7 @@ const encounterMotion = import.meta.glob(
 export const assets = {
   resourceIcons: Object.fromEntries(
     Object.entries(resourceIcons).map(([path, url]) => [
-      path.endsWith("equipment-case-v1.png")
+      path.endsWith("summoner-focus-v1.png") ? "summoner-focus" : path.endsWith("equipment-case-v1.png")
         ? "equipment"
         : path.endsWith("skill-manual-v1.png")
           ? "skills"
@@ -152,6 +155,7 @@ export const assets = {
     ]),
   ) as Record<string, string>,
   survivorActions: survivorMotionUrls,
+  retinue:retinueUrls,
   endlessProps: Object.fromEntries(
     Object.entries(endlessProps).map(([p, u]) => [p.split('/').at(-1)!.replace('.png', ''), u]),
   ),
