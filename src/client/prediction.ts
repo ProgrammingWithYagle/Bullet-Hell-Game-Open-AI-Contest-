@@ -1,3 +1,4 @@
+import {alchemyPredictedSpeed,cancelPredictedBrew} from './alchemy-presentation.ts';
 import {rangerPredictedSpeed,cancelPredictedRangerDraw} from './ranger-presentation.ts';
 import {advanceMobility,takeDodge,sprintUnlocked,mobilityRules} from '../shared/mobility.ts';
 import clerkRules from '../shared/clerk-appeal-rules.json';
@@ -54,6 +55,7 @@ export class Prediction {
     advanceMobility(p,i,now,dodgePeriod,sprintUnlocked(p.skills),now<p.reloadAt);
     if (i.dodge && takeDodge(p,now,dodgePeriod)) {
       cancelPredictedRangerDraw(p);
+      cancelPredictedBrew(p);
       p.dashX = len ? mx : Math.cos(i.aim);
       p.dashY = len ? my : Math.sin(i.aim);
       p.dashUntil = now + Math.ceil(data.rules.dodgeDuration * HZ);
@@ -82,7 +84,7 @@ export class Prediction {
         ? now < p.kit.chargeUntil
           ? 600
           : data.rules.dodgeSpeed
-        : rangerPredictedSpeed(p,now) * (p.sprinting?mobilityRules.sprintMultiplier:1) *
+        : (p.classId==='alchemist'?alchemyPredictedSpeed(p,now):rangerPredictedSpeed(p,now)) * (p.sprinting?mobilityRules.sprintMultiplier:1) *
           Math.min(now < p.slowUntil ? 0.65 : 1, now < p.poisonUntil ? clerkRules.purpleSlowMultiplier : 1) *
           (1 + rally) *
           environment.multiplier *

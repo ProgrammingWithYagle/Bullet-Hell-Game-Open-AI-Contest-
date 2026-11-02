@@ -61,8 +61,8 @@ function path(g: Game, id: string) {
   g.phase = 'combat';
 }
 
-test('all eleven survivors are selectable with their own four compatible weapon tiers and 54 purchasable nodes', () => {
-  assert.equal(implementedClassIds.length, 11);
+test('all twelve survivors are selectable with their own four compatible weapon tiers and 54 purchasable nodes', () => {
+  assert.equal(implementedClassIds.length, 12);
   for (const id of implementedClassIds) {
     const { g, p } = game(id);
     assert.equal(p.weapon, id + '-0');

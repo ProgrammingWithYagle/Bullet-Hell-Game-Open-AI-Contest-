@@ -1,4 +1,5 @@
 const paths: Record<string, string> = {
+  alchemist:'M11 3h10 M13 3v10L5 26q-2 4 3 4h16q5 0 3-4L19 13V3 M9 22h14 M12 17l3 2 M19 24h1',
   ranger:'M8 3c21 5 21 21 0 26L17 16z M3 16h24 M22 11l6 5-6 5',
   summoner:'M7 27l9-19 4 2-9 19 M15 8a4 4 0 1 1 7-4 M21 15c8 1 7 10 2 12 M25 26l-4 1 1-4',
   swordsman: 'M6 28l6-9 M9 18l6 6 M12 19L25 3l4 1-2 5-13 13 M5 29l3-1',

@@ -2,6 +2,10 @@
 
 Continue in this SAME checkout: `C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)`. Use `feat/first-playable-loop` and draft PR #14. Inspect Git status and current services before using saved identities. Do not create another game clone or worktree.
 
+## Uncommitted continuation — Alchemist candidate
+
+Read [ALCHEMIST_WORKING](../docs/ALCHEMIST_WORKING.md) and [ALCHEMIST](../docs/ALCHEMIST.md). The uncommitted twelve-class candidate now includes real finite recipes, legally usable combinations/batch windows, actual damage/healing/cover, three transformations, owned offline/network messages, compact controls, full original pose/icon admission, independent RGBA verification, fifteen draft mechanical editions, synthesized audio and an English Perrin/Heda scene. Current Free Play has separate SP progression/model evidence; Campaign keeps slow D- learning/proofs. Existing mechanics/art/messages/Free Play rows and historical evidence are preserved. Complete gates, immutable audience probes, exact-source CI and publication remain pending. Current frozen previews still use verified Ranger source below. Browser automation remains disabled; no subagents are authorized. Keep the full goal active.
+
 ## Current development — Ranger, 2026-11-02
 
 Game source **1f3ef9223f98ef7017c058e872e3b2444ad0c699** is committed/pushed on feat/first-playable-loop. Build **2026.11.02-ranger / protocol 48**, content 8bda5e247f3df132a9c80f244fd8a7c2b3eaf468e2c6a8927f87a35937fbe110, passes **1,202 tests**, TypeScript,15 catalogs, checked main-story words,132 early-chapter cases, production build and71 encounter/268 survivor/60 companion atlas contracts. [Exact-source CI](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/41380260696) passed every job and step. Runtime SHA 284b562890f2f75cafd118b7917f66b122ff6d22302fb0a1280773d220867db4; snapshot SHA 0c7d6979d5b3b4ff7a91ad47ea36fd9dd5657eef773b4246deb3cddf8780ad33. The retained final local log is reviews/ranger-2026-11-02/full-gate04.log; earlier attempts remain workspace evidence.

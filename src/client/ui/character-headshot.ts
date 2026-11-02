@@ -1,5 +1,6 @@
 import {escape as e} from './html.ts';
 const crops:Record<string,[number,number,number,number]>={
+  alchemist:[180,12,170,170],
   ranger:[150,12,170,170],
   swordsman:[165,15,155,155],
   summoner:[147,15,155,155],

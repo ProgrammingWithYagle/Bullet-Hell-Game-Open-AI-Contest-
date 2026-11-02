@@ -1,3 +1,5 @@
+import {AlchemistKit,type AlchemyContext,type AlchemyOptions,type AlchemyArea} from './alchemist-kit.ts';
+import alchemyRules from './alchemy-rules.json';
 import {RangerKit, type RangerContext, type RangerOptions, type RangerTarget} from './ranger-kit.ts';
 import {SummonerKit,baseSummonerOptions,type SummonerOptions,type SummonerContext,type SummonTarget,type SummonEntity} from './summoner-kit.ts';
 import summonerRules from './summoner-rules.json';
@@ -268,9 +270,10 @@ export class Game {
   readonly sword = new SwordsmanKit();
   readonly retinue = new SummonerKit();
   readonly ranger = new RangerKit();
-  kitStatus(id:string){return {...this.classKits.status(id,this.combatTick),...(this.players.get(id)?.classId==='ranger'?{...this.ranger.status(id,this.combatTick,this.rangerOptions(this.players.get(id)!)),rangerQuiverCapacity:this.stats(this.players.get(id)!).magazine}:{}),...(this.players.get(id)?.classId==='bard'?this.bard.status(id):{}),...(this.players.get(id)?.classId==='swordsman'?this.sword.status(id,this.combatTick):{}),...(this.players.get(id)?.classId==='summoner'?this.retinue.status(this.players.get(id)!,this.combatTick,this.summonerOptions(this.players.get(id)!)):{})};}
+  readonly alchemy = new AlchemistKit();
+  kitStatus(id:string){return {...this.classKits.status(id,this.combatTick),...(this.players.get(id)?.classId==='alchemist'?{...this.alchemy.status(id,this.combatTick,this.alchemyOptions(this.players.get(id)!)),alchemySamplesCapacity:this.stats(this.players.get(id)!).magazine}:{}),...(this.players.get(id)?.classId==='ranger'?{...this.ranger.status(id,this.combatTick,this.rangerOptions(this.players.get(id)!)),rangerQuiverCapacity:this.stats(this.players.get(id)!).magazine}:{}),...(this.players.get(id)?.classId==='bard'?this.bard.status(id):{}),...(this.players.get(id)?.classId==='swordsman'?this.sword.status(id,this.combatTick):{}),...(this.players.get(id)?.classId==='summoner'?this.retinue.status(this.players.get(id)!,this.combatTick,this.summonerOptions(this.players.get(id)!)):{})};}
   readonly transforms = new AbilityTransforms();
-  classCues(){return [...this.classKits.cues(),...this.transforms.cues(),...this.bard.cues(),...this.sword.cues(this.roster(),this.combatTick),...this.ranger.cues(this.rangerContext())];}
+  classCues(){return [...this.classKits.cues(),...this.transforms.cues(),...this.bard.cues(),...this.sword.cues(this.roster(),this.combatTick),...this.ranger.cues(this.rangerContext()),...this.alchemy.cues(this.alchemyContext())];}
   private aimTargets(wardsOnly=true){const real=this.roster().filter(p=>p.status==='active'&&!this.classKits.untargetable(p.id,this.combatTick));return [...real,...this.classKits.decoyTargets(this.roster(),this.combatTick),...this.retinueTargets(wardsOnly)];}
   private hurtTarget(id:string,amount:number){const p=this.players.get(id);if(p)this.damage(p,amount);else if(/^retinue:\d+$/.test(id))this.retinue.hit(Number(id.slice(8)),amount,this.combatTick);else this.classKits.hitDecoy(id,amount);}
   private bossPrevious = { x: 800, y: 250 };
@@ -342,6 +345,7 @@ export class Game {
   private bardPrimaryShots = new Set<number>();
   private summonerPrimaryShots = new Set<number>();
   private retinueShots = new Map<number,{unit:number;x:number;y:number}>();
+  private alchemyPrimaryShots = new Set<number>();
   private rangerShots = new Map<number,{x:number;y:number}>();
   private practiceEncounter = '';
   private wardPatients = new Map<string,{owner:string;x:number;y:number;health:number;maxHealth:number}>();
@@ -535,7 +539,7 @@ export class Game {
     return p;
   }
   setConnected(id: string, connected: boolean) {
-    if(!connected){this.clearOwnerRetinue(id);this.clearOwnerRanger(id);}
+    if(!connected){this.clearOwnerRetinue(id);this.clearOwnerRanger(id);this.clearOwnerAlchemy(id);}
     const p = this.players.get(id);
     if (!p) return;
     p.connected = connected;
@@ -665,7 +669,7 @@ export class Game {
     const overdrive = this.combatTick < p.overdriveUntil;
     const penalty = Math.min(braced ? 0.6 : 1, overdrive ? 0.65 : 1);
     return (
-      penalty * this.sword.movement(p.id,this.combatTick) * this.ranger.movement(p.id,this.combatTick) *
+      penalty * this.sword.movement(p.id,this.combatTick) * this.ranger.movement(p.id,this.combatTick) * this.alchemy.movement(p.id,this.combatTick) *
       Math.min(
         base * 1.65,
         this.stats(p).speed *
@@ -835,7 +839,7 @@ export class Game {
     if (this.secretStatus === 'active') this.secretStatus = 'failed';
     this.phase = 'defeat'; this.phaseEnds = 0; this.boss.defeatedAt = 0;
     this.chapterState?.fail();this.wardPatients.clear();
-    this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();
+    this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.alchemy.clear();
     if(this.chapterState){this.skirmish?.fail();this.clearChapterCombat();}
     return true;
   }
@@ -884,7 +888,7 @@ export class Game {
     Object.assign(this.selectedContract,classifiedContract(this.selectedContract.bossId??'constable',encounterVariant(this.settings.difficulty,this.selectedContract.variant)));
     this.phaseAttackReadyAt = 0;
     this.variantPressure.reset(this.combatTick);
-    this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.transforms.clear();this.wardenPatrol.clear();
+    this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.alchemy.clear();this.transforms.clear();this.wardenPatrol.clear();
     this.pruneExpired();
     this.phase = 'combat';
     this.phaseEnds = 0;
@@ -1026,7 +1030,7 @@ export class Game {
     if(this.chapterState){this.clearChapterNode(true);return;}
     this.scoreObserver?.clear(this);
     for (const player of this.players.values()) this.clearPoison(player);
-    this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.transforms.clear();this.wardenPatrol.clear();
+    this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.alchemy.clear();this.transforms.clear();this.wardenPatrol.clear();
     this.completedBossIds.add(this.boss.id);
     const previous=this.completedBossForms.get(this.boss.id);
     if(!previous||['normal','brutal','crazed'].indexOf(this.boss.variant)>['normal','brutal','crazed'].indexOf(previous))this.completedBossForms.set(this.boss.id,this.boss.variant);
@@ -1253,6 +1257,7 @@ export class Game {
     this.sword.step(this.swordContext());
     this.retinue.step(this.retinueContext());
     this.ranger.step(this.rangerContext());
+    this.alchemy.step(this.alchemyContext());
     this.transforms.step(this.transformContext());
     this.stepFields();
     this.stepLava();
@@ -1280,7 +1285,7 @@ export class Game {
       } else this.phase = 'defeat';
       this.chapterState?.fail();this.wardPatients.clear();
       for (const player of this.players.values()) this.clearPoison(player);
-      this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.transforms.clear();this.wardenPatrol.clear();
+      this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.alchemy.clear();this.transforms.clear();this.wardenPatrol.clear();
       this.director.reset('constable');
       this.minions.clear();
       this.signatures = [];
@@ -1295,11 +1300,11 @@ export class Game {
     else this.skirmish?.cancel();
     this.phase=success?'victory':'defeat';
     for(const p of this.players.values())this.clearPoison(p);
-    this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.transforms.clear();this.minions.clear();this.director.reset('constable');this.signatures=[];this.warnings.length=0;this.fields.length=0;this.clearShots();this.accord=null;
+    this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.alchemy.clear();this.transforms.clear();this.minions.clear();this.director.reset('constable');this.signatures=[];this.warnings.length=0;this.fields.length=0;this.clearShots();this.accord=null;
   }
   private clearChapterCombat() {
     for (const p of this.players.values()) this.clearPoison(p);
-    this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();
+    this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.alchemy.clear();
     this.transforms.clear();
     this.wardenPatrol.clear();
     this.minions.clear();
@@ -1521,12 +1526,12 @@ export class Game {
     );
     p.x = next.x;
     p.y = next.y;
-    if (i.reload && now >= p.overdriveUntil && !p.reloadAt && p.ammo < stats.magazine && (p.classId!=='ranger'||this.ranger.canPrimary(p,this.rangerContext())))
+    if (i.reload && now >= p.overdriveUntil && !p.reloadAt && p.ammo < stats.magazine && (p.classId!=='ranger'||this.ranger.canPrimary(p,this.rangerContext())) && (p.classId!=='alchemist'||this.alchemy.canPrimary(p,this.alchemyContext())))
       this.reload(p);
     if (i.q && now >= p.qAt) this.ability(p, 'q');
     if (i.e && (now >= p.eAt || this.classKits.freeStep(p.id, now))) this.ability(p, 'e');
     if (i.ultimate && now >= p.ultimateAt) this.ability(p, 'ultimate');
-    if (i.fire && !p.reloadAt && (p.classId!=='ranger'||this.ranger.canPrimary(p,this.rangerContext()))) {
+    if (i.fire && !p.reloadAt && (p.classId!=='ranger'||this.ranger.canPrimary(p,this.rangerContext())) && (p.classId!=='alchemist'||this.alchemy.canPrimary(p,this.alchemyContext()))) {
       // A new trigger press starts now; sustained fire retains fractional debt.
       // This supports rates above 30Hz without catching up missed idle shots.
       if (!p.wasFiring) p.fireAt = Math.max(p.fireAt, now);
@@ -1541,6 +1546,7 @@ export class Game {
     p.wasFiring = i.fire && !p.reloadAt;
   }
   private reload(p: Player) {
+    if(p.classId==='alchemist')this.events.push({type:'sound',id:'alchemy-refill',owner:p.id,x:p.x,y:p.y});
     if(p.classId==='ranger')this.events.push({type:'sound',id:'ranger-replenish',owner:p.id,x:p.x,y:p.y});
     const w = data.weapons.find((w) => w.id === p.weapon)!;
     p.reloadAt = this.combatTick + ticks(w.reloadTime * this.stats(p).reload);
@@ -1663,6 +1669,7 @@ export class Game {
       // Keep fractional spacing during held fire without banking idle draws.
       p.fireAt=Math.max(p.fireAt,this.combatTick-1);
     }
+    if(p.classId==='alchemist'&&!this.alchemy.canPrimary(p,this.alchemyContext()))return;
     if(p.classId==='swordsman'&&!this.sword.canPrimary(p,this.combatTick))return;
     const w = data.weapons.find((w) => w.id === p.weapon)!,
       s = this.stats(p);
@@ -1721,6 +1728,7 @@ export class Game {
       );
       if(shot&&p.classId==='bard')this.bardPrimaryShots.add(shot.id);
       if(shot&&p.classId==='summoner')this.summonerPrimaryShots.add(shot.id);
+      if(shot&&p.classId==='alchemist')this.alchemyPrimaryShots.add(shot.id);
       if(shot&&this.chapterState){
         if(p.classId==='soldier'&&this.fields.some(f=>f.owner===p.id&&f.kind==='rally'&&f.potency>0&&distance(fieldPosition(f,this.roster()),p)<=f.radius))this.trainingShots.set(shot.id,'rallied-hit');
         if(p.classId==='assassin'&&this.classKits.untargetable(p.id,this.combatTick))this.trainingShots.set(shot.id,'concealed-hit');
@@ -1729,7 +1737,7 @@ export class Game {
     this.events.push({
       type: 'sound',
       id:
-        p.classId === 'summoner' ? 'summoner-beacon' : p.classId === 'bard'
+        p.classId === 'alchemist' ? 'alchemy-dose' : p.classId === 'summoner' ? 'summoner-beacon' : p.classId === 'bard'
           ? 'weapon-concertina'
           : p.classId === 'medic'
           ? 'weapon-injector'
@@ -1749,22 +1757,25 @@ export class Game {
       y: p.y,
     });
   }
-  private ability(p: Player, slot: 'q' | 'e' | 'ultimate') {
+  private ability(p: Player, slot: 'q' | 'e' | 'ultimate', alchemyPoint?: {x:number;y:number}) {
     const cl = data.classes.find((c) => c.id === p.classId)!,
       a = slot === 'ultimate' ? cl.ultimate : cl.abilities[slot === 'q' ? 0 : 1],
       s = this.stats(p),
       now = this.combatTick;
+    if(p.classId==='alchemist'&&!this.alchemy.canCast(p,slot,this.alchemyContext(p.id,alchemyPoint),this.alchemyOptions(p)))return;
     if(p.classId==='swordsman'&&!this.sword.canCast(p,now))return;
     if(p.classId==='summoner'&&!this.retinue.canCast(p,slot,this.retinueContext(),this.summonerOptions(p)))return;
     if(p.classId==='ranger'&&(!this.ranger.canCast(p,slot,this.rangerContext(),this.rangerOptions(p))||(slot==='q'&&(p.reloadAt>now||p.ammo<(hasTalent(p,'crosswind')?3:1)))))return;
     if(p.classId==='ranger'&&slot==='q')p.ammo-=hasTalent(p,'crosswind')?3:1;
     if (slot === 'q') p.qAt = now + ticks(a.cooldown * s.cooldown);
     else if (slot === 'e' && !this.classKits.freeStep(p.id, now))
-      p.eAt = now + ticks(a.cooldown * s.cooldown);
+      p.eAt = now + ticks((a.cooldown + (p.classId==='alchemist'&&hasTalent(p,'second-extraction')?alchemyRules.extractionCooldownPenalty:0)) * s.cooldown);
     else if (slot === 'ultimate') p.ultimateAt = now + ticks(a.cooldown * s.ultimateCooldown);
     const before={x:p.x,y:p.y},empowered=slot==='e'&&this.classKits.freeStep(p.id,now);
     if(!this.transforms.cast(p,slot,this.transformContext())){
-    if(p.classId==='ranger'){
+    if(p.classId==='alchemist'){
+      this.alchemy.cast(p,slot,this.alchemyContext(p.id,alchemyPoint),this.alchemyOptions(p));
+    } else if(p.classId==='ranger'){
       this.ranger.cast(p,slot,this.rangerContext(),this.rangerOptions(p));
     } else if(p.classId==='summoner'){
       this.retinue.cast(p,slot,this.retinueContext(),this.summonerOptions(p));
@@ -1867,7 +1878,7 @@ export class Game {
     } else p.channelUntil = now + ticks(1);
     }
     this.transforms.afterCast(p,slot,before,empowered,this.transformContext());
-    if(p.classId==='swordsman'||p.classId==='summoner'||p.classId==='ranger')return;
+    if(p.classId==='swordsman'||p.classId==='summoner'||p.classId==='ranger'||p.classId==='alchemist')return;
     this.events.push({
       type: 'sound',
       id:
@@ -1943,6 +1954,7 @@ export class Game {
       p.status = 'downed';
       if(p.classId==='summoner')this.clearOwnerRetinue(p.id);
       if(p.classId==='ranger')this.clearOwnerRanger(p.id);
+      if(p.classId==='alchemist')this.clearOwnerAlchemy(p.id);
       p.health = 0;
       p.downUntil = this.combatTick + ticks(rule.downedSeconds);
       p.reviveProgress = 0;
@@ -2079,6 +2091,51 @@ export class Game {
     tick:this.combatTick,players:this.roster(),fields:this.fields,kits:this.classKits,kit:this.kitContext(),id:()=>this.id(),stats:p=>this.stats(p),heal:(source,target,amount)=>this.heal(source,target,amount),
     shot:(p,point,angle,speed,damage,pierce,life=12,slow=0)=>{const shot=this.emitShot(p.id,point.x,point.y,angle,speed,damage,4,pierce,life);if(shot&&slow>0)this.shotEffects.set(shot.id,{slowTicks:ticks(slow),slowMultiplier:.6,rangeRemaining:speed*life});},
   };}
+  private alchemyOptions(p:Player):AlchemyOptions {
+    const s=this.stats(p),e=s.effects;
+    return {potency:s.ability,radiusBonus:e.alchemyRadius??0,ultimateDurationBonus:ticks(e.ultimateDuration??0),ultimateCharges:e.ultimateCharges??0,ultimatePotency:e.ultimatePotency??0,talents:{splitPour:hasTalent(p,'split-pour'),settledBatch:hasTalent(p,'settled-batch'),secondExtraction:hasTalent(p,'second-extraction')}};
+  }
+  selectAlchemy(id:string,recipe:unknown){
+    const p=this.players.get(id);
+    return !!p&&this.alchemy.select(p,recipe,this.alchemyContext());
+  }
+  throwAlchemy(id:string,point:unknown){
+    const p=this.players.get(id);
+    if(!p||p.classId!=='alchemist'||!p.connected||p.status!=='active'||this.phase!=='combat'||this.combatTick<p.eAt||!point||typeof point!=='object'||Array.isArray(point))return false;
+    const target=point as {x?:unknown;y?:unknown};
+    if(typeof target.x!=='number'||typeof target.y!=='number'||!Number.isFinite(target.x)||!Number.isFinite(target.y)||Math.abs(target.x)>1e6||Math.abs(target.y)>1e6)return false;
+    const before=p.eAt;
+    this.ability(p,'e',{x:target.x,y:target.y});
+    return p.eAt!==before;
+  }
+  private clearOwnerAlchemy(owner:string){
+    this.alchemy.removeOwner(owner);
+    for(const id of this.alchemyPrimaryShots){const shot=this.shots.get(id);if(shot?.owner===owner)this.removeShot(shot);}
+  }
+  private alchemyPrimaryHit(shot:Shot,p:Player|undefined,actual:number){
+    if(p&&this.alchemyPrimaryShots.has(shot.id))this.alchemy.primaryHit(p,actual,this.alchemyContext());
+  }
+  private alchemyArea(a:AlchemyArea){
+    const p=this.players.get(a.owner);
+    if(!p?.connected||p.status!=='active'||p.classId!=='alchemist')return {damage:0,healing:0};
+    const before=p.damageDealt, healed=p.healing;
+    const visible=(target:{x:number;y:number})=>!this.obstacles.some(w=>segmentRect(a,target,w));
+    for(const actor of this.minions.actors.values())if(distance(a,actor)<=a.radius+actor.radius&&visible(actor)){
+      const actual=this.minions.hit(actor.id,a.damage,this.combatTick,a.slowTicks,a.slowMultiplier);
+      this.creditHit(p,actual);
+      if(a.training)this.observeTraining(p,'mixture-hit',actual);
+    }
+    if(a.damage>0){
+      const weakHits=this.director.weakPoints().filter(w=>w.health>0&&this.director.weakInRadius(a,a.radius,w)&&visible(w));
+      for(const weak of weakHits)this.hitWeak(p,a.damage,weak.id,a.origin);
+      if(!this.skirmish&&!this.director.hasIndependentBodies()&&!weakHits.some(w=>this.director.damageTransfer(w.id))&&!this.director.coreContact(a,a,a.radius)&&distance(a,this.boss)<=a.radius+this.bossDefinition().radius&&visible(this.boss))this.hitBoss(p,a.damage,false,a.origin);
+    }
+    if(a.healing>0)for(const ally of this.roster())if(ally.connected&&ally.status==='active'&&distance(a,ally)<=a.radius&&visible(ally))this.heal(p,ally,a.healing);
+    return {damage:Math.max(0,p.damageDealt-before),healing:Math.max(0,p.healing-healed)};
+  }
+  private alchemyContext(aimOwner?:string,point?:{x:number;y:number}):AlchemyContext {
+    return {tick:this.combatTick,combat:this.phase==='combat',paused:false,owners:this.roster(),bounds:this.arena.bounds,obstacles:this.obstacles,aimPoint:id=>id===aimOwner?point:undefined,id:()=>this.id(),area:a=>this.alchemyArea(a),sound:(id,p)=>this.events.push({type:'sound',id,owner:p.id,x:p.x,y:p.y})};
+  }
   private rangerOptions(p:Player):RangerOptions {
     const s=this.stats(p),e=s.effects;
     return {potency:s.ability,trapCapacityBonus:e.rangerTrapCapacity??0,trapDurationBonus:ticks(e.rangerTrapDuration??0),ultimateDurationBonus:ticks(e.ultimateDuration??0),ultimateCharges:e.ultimateCharges??0,ultimatePotency:e.ultimatePotency??0,ultimateRadius:e.ultimateRadius??0,talents:{crosswind:hasTalent(p,'crosswind'),linkedStakes:hasTalent(p,'linked-stakes'),longSurvey:hasTalent(p,'long-survey')}};
@@ -2817,6 +2874,7 @@ export class Game {
         this.hitWeak(source, shot.damage, hit.weakId,this.retinueShots.get(shot.id)??this.rangerShots.get(shot.id));
         this.retinueShotHit(shot,source,"weak:"+hit.weakId,(source?.damageDealt??0)-before);
         if(this.bardPrimaryShots.has(shot.id))this.bard.primaryHit(source,(source?.damageDealt??0)-before,this.combatTick);
+        this.alchemyPrimaryHit(shot,source,(source?.damageDealt??0)-before);
         return true;
       }
       if (hit.minionId === undefined) {
@@ -2824,6 +2882,7 @@ export class Game {
         this.hitBoss(source, shot.damage,false,this.retinueShots.get(shot.id)??this.rangerShots.get(shot.id));
         this.retinueShotHit(shot,source,"boss",(source?.damageDealt??0)-before);
         if(this.bardPrimaryShots.has(shot.id))this.bard.primaryHit(source,(source?.damageDealt??0)-before,this.combatTick);
+        this.alchemyPrimaryHit(shot,source,(source?.damageDealt??0)-before);
         return true;
       }
       let touched = this.shotHits.get(shot.id);
@@ -2843,6 +2902,7 @@ export class Game {
       this.creditHit(this.players.get(shot.owner), actual);
       this.retinueShotHit(shot,this.players.get(shot.owner),"ordinary:"+hit.minionId,actual);
       if(this.bardPrimaryShots.has(shot.id))this.bard.primaryHit(this.players.get(shot.owner),actual,this.combatTick);
+      this.alchemyPrimaryHit(shot,this.players.get(shot.owner),actual);
       const trainingEvent=this.trainingShots.get(shot.id);
       if(trainingEvent)this.observeTraining(this.players.get(shot.owner),trainingEvent,actual);
       if (shot.pierce <= 0) return true;
@@ -2858,6 +2918,7 @@ export class Game {
     this.summonerPrimaryShots.delete(s.id);
     this.retinueShots.delete(s.id);
     this.rangerShots.delete(s.id);
+    this.alchemyPrimaryShots.delete(s.id);
     this.shotHits.delete(s.id);
     if (s.owner === 'hostile') this.hostileShots--;
     this.removals.push(s.id);
@@ -2869,6 +2930,7 @@ export class Game {
     for (const s of this.shots.values()) this.removeShot(s);
   }
   private stepShots() {
+    for(const id of this.alchemyPrimaryShots){const shot=this.shots.get(id),owner=shot&&this.players.get(shot.owner);if(shot&&(!owner?.connected||owner.status!=='active'))this.removeShot(shot);}
     for(const [id]of this.rangerShots){const shot=this.shots.get(id),owner=shot&&this.players.get(shot.owner);if(shot&&(!owner?.connected||owner.status!=='active'))this.removeShot(shot);}
     for(const [id]of this.retinueShots){const shot=this.shots.get(id),owner=shot&&this.players.get(shot.owner);if(shot&&(!owner?.connected||owner.status!=='active'))this.removeShot(shot);}
     const safeZones = this.director.safeZones(this.combatTick);

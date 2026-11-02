@@ -262,6 +262,29 @@
         }
       },
       "draftScene": "src/client/story/chapter/en.json"
+    },
+    {
+      "id": "alchemist",
+      "name": "Perrin Moss",
+      "kind": "survivor",
+      "arcStatus": "working-treatment",
+      "playablePersonalArcComplete": false,
+      "treatmentSource": "docs/NEW_CLASS_CAST_TREATMENTS.md",
+      "mechanicalReferences": {
+        "classId": "alchemist",
+        "earlyTechnique": {
+          "id": "alchemist-mixtures-1",
+          "grade": "D-",
+          "cost": 1
+        },
+        "capstoneExample": {
+          "id": "alchemist-mixtures-path-2-6",
+          "grade": "SS+",
+          "cost": 6,
+          "fullPathCost": 21
+        }
+      },
+      "draftScene": "src/client/story/chapter/en.json"
     }
   ],
   "bosses": [
@@ -2508,6 +2531,18 @@
       "appearsInPlayableStory": true,
       "playerSelectable": false,
       "completedStoryArc": false
+    },
+    {
+      "id": "heda-linn",
+      "name": "Heda Linn",
+      "kind": "side-character",
+      "status": "playable-chapter",
+      "sceneSource": "src/client/story/chapter/en.json",
+      "treatmentSource": "docs/story-continuity/ONE_PLACE_LEFT.md",
+      "appearsInPlayableStory": true,
+      "playerSelectable": false,
+      "completedStoryArc": false,
+      "classId": "alchemist"
     }
   ]
 }

@@ -1,3 +1,4 @@
+import {alchemistTalentMessages} from './alchemist-class.mjs';
 import {classTalents} from '../../content/source/class-talents.mjs';
 import {bardTalentMessages} from './bard.mjs';
 import {swordsmanTalentMessages} from './swordsman.mjs';
@@ -320,7 +321,7 @@ ko:`돌파 박자|E가 고정 방향으로 0.12초 간격으로 3발을 쏩니�
 미기록 함정|궁극기가 3.5초간 지속되고 무료 발걸음이 하나 줄어듭니다. 강화 발걸음 출발점에 피해 파동 3회를 남깁니다.
 미끼 장막|Q가 조준을 끌고 탄환으로 파괴할 수 있는 체력 60의 미끼를 남깁니다. 기본 은폐는 6초에서 4초로 줄어듭니다.`
 };
-const ids=Object.entries(classTalents).filter(([id])=>!['bard','swordsman','summoner','ranger'].includes(id)).flatMap(([,ids])=>ids);
+const ids=['soldier','heavy','tank','medic','mage','engineer','assassin'].flatMap(id=>classTalents[id]);
 export function classTalentMessages(locale,catalog){
  if(!rows[locale])throw Error('Missing class talent locale '+locale);
  const entries=rows[locale].normalize('NFC').split('\n');if(entries.length!==21)throw Error('Expected 21 translated talents '+locale);
@@ -329,6 +330,7 @@ export function classTalentMessages(locale,catalog){
  Object.assign(messages,swordsmanTalentMessages(locale));
  Object.assign(messages,summonerTalentMessages(locale));
  Object.assign(messages,rangerTalentMessages(locale));
+ Object.assign(messages,alchemistTalentMessages(locale));
  if(catalog)for(const node of catalog.skills.filter(s=>s.transform))messages['skill.'+node.id+'.name']=messages['talent.'+node.transform+'.name'];
  return messages;
 }

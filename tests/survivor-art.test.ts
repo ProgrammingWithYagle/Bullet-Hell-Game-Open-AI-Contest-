@@ -6,14 +6,14 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import library from '../assets/production/motion/survivor-library.json' with { type: 'json' };
-import { additionalSurvivors, survivorPose } from '../src/client/survivor-presentation.ts';
+import { survivorPose } from '../src/client/survivor-presentation.ts';
 test('four additional survivors have independent directional runs with 124 approved poses and preserved native hashes', () => {
   assert.equal(library.entries.length, 16);
   assert.equal(
     library.entries.reduce((n, e) => n + e.frames, 0),
     124,
   );
-  for (const id of additionalSurvivors.filter((id) => !['bard','swordsman','summoner','ranger'].includes(id))) {
+  for (const id of ['tank','mage','engineer','assassin'] as const) {
     assert.deepEqual(
       library.entries
         .filter((e) => e.classId === id)

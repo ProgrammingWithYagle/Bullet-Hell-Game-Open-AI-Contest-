@@ -3,6 +3,7 @@ import { hasTalent, type TalentId } from './class-talents.ts';
 import type { BardCue } from './bard-kit.ts';
 import type {RetinueOrder} from './summoner-kit.ts';
 import type { SwordCue } from './swordsman-kit.ts';
+import type { AlchemyCue, Recipe } from './alchemist-kit.ts';
 import type { RangerCue } from './ranger-kit.ts';
 import type { TrainingEventKind } from './story-training.ts';
 import type { TalentCue } from './ability-transforms.ts';
@@ -19,6 +20,7 @@ import type { Minions } from './minions.ts';
 const ticks = (seconds: number) => Math.ceil(seconds * HZ);
 export const RESCUE_CHARGE_TICKS = ticks(0.3) + 1;
 export type KitStatus = {
+  alchemySamplesCapacity?:number;alchemyRecipe?:Recipe;alchemyCinder?:number;alchemyChalk?:number;alchemySap?:number;alchemyPrepared?:Recipe[];alchemyCapacity?:number;alchemyBrewUntil?:number;alchemyBrewRecipe?:string;alchemyBrewMovement?:number;alchemyBatchUntil?:number;alchemyBatchCharges?:number;
   rangerDrawUntil?:number;rangerDrawId?:number;rangerDrawMovement?:number;rangerTraps?:number;rangerTrapCapacity?:number;rangerSurveyCharges?:number;rangerSurveyUntil?:number;rangerQuiverCapacity?:number;
   retinueHoldX?:number;retinueHoldY?:number;retinueMarkKey?:string;
   retinueCount?:number;retinuePermanent?:number;retinueCapacity?:number;retinueOrder?:RetinueOrder;retinueMarkUntil?:number;retinueGatherUntil?:number;retinueUltimateUntil?:number;
@@ -70,6 +72,7 @@ export type Construct = {
   until: number;
 };
 export type KitCue =
+  | AlchemyCue
   | RangerCue
   | SwordCue
   | BardCue

@@ -18,15 +18,17 @@ import summoner from '../assets/production/motion/summoner-library.json';
 import summonerActions from '../assets/production/motion/summoner-actions/library.json';
 import ranger from '../assets/production/motion/ranger-library.json';
 import rangerActions from '../assets/production/motion/ranger-actions/library.json';
-const originals = [...actions.entries, ...runs.entries, ...legacy.entries, ...heavy.entries, ...bard.entries, ...bardActions.entries, ...sword.entries, ...swordActions.entries,...summoner.entries,...summonerActions.entries,...ranger.entries,...rangerActions.entries];
+import alchemist from '../assets/production/motion/alchemist-library.json';
+import alchemistActions from '../assets/production/motion/alchemist-actions/library.json';
+const originals = [...actions.entries, ...runs.entries, ...legacy.entries, ...heavy.entries, ...bard.entries, ...bardActions.entries, ...sword.entries, ...swordActions.entries,...summoner.entries,...summonerActions.entries,...ranger.entries,...rangerActions.entries,...alchemist.entries,...alchemistActions.entries];
 const sha = (path: string) => createHash('sha256').update(readFileSync(path)).digest('hex');
 
-test('all 1148 selected survivor poses retain exact original contracts and have bounded two-times display delivery textures', () => {
-  assert.equal(originals.length, 268);
-  assert.equal(survivorDelivery.entries.length, 268);
+test('all 1242 selected survivor poses retain exact original contracts and have bounded two-times display delivery textures', () => {
+  assert.equal(originals.length, 300);
+  assert.equal(survivorDelivery.entries.length, 300);
   assert.equal(
     survivorDelivery.entries.reduce((sum, e) => sum + e.frames, 0),
-    1148,
+    1242,
   );
   for (const original of originals) {
     const entry = survivorDelivery.entries.find((e) => e.id === original.id)!;
@@ -54,7 +56,7 @@ test('all 1148 selected survivor poses retain exact original contracts and have 
 
 test('every live action and run selector uses matching delivery cells while retaining world origin and size', () => {
   const live = [...survivorActionArt.entries, ...survivorArt.entries, ...heavyArt.entries];
-  assert.equal(live.length, 268);
+  assert.equal(live.length, 300);
   for (const clip of live) {
     const original = originals.find((e) => e.id === clip.id)!;
     const delivery = survivorDelivery.entries.find((e) => e.id === clip.id)!;

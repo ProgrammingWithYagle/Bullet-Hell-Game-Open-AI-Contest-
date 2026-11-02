@@ -1,8 +1,10 @@
 # Grave Accord
 
-Current development build **2026.11.02-ranger / protocol 48** adds [Ranger / Nela Venn](docs/RANGER.md): committed bow draws, finite ready arrows, physical triplines and limited prepared firing positions. [Summoner](docs/SUMMONER.md),[Swordsman](docs/SWORDSMAN.md) and [Bard](docs/BARD.md) remain playable. [Story Campaign](docs/OPENING_CHAPTER.md) keeps slower learning and proofs; story-free Free Play keeps rapid SP and mutations. The game has 66 executable bosses,11 classes,594 class nodes,44 weapons,33 transformations and two General Free Play skills. Existing-boss quality passes remain 18/60.
+Current local candidate **2026.11.02-alchemist / protocol48** adds [Alchemist / Perrin Moss](docs/ALCHEMIST.md): finite ingredients, committed bottles, intentional landings, useful mixtures and three transformations. The accepted twelve-class roster is implemented, with648 class nodes,48 weapons,36 transformations and two General Free Play skills. All66 bosses remain playable; existing-boss quality passes remain18/60.
 
-[Current source, exact CI and local review links](handoff/NEXT_CHAT.md) record 1,202 passing tests and matching frozen testing/public snapshots. Published Site version 4 / protocol 43 remains a separate older release. Alchemist, the long campaign, complete personal arcs and final human/rendered/device/language/listening/balance acceptance remain unfinished. Only the user decides whole-game completion.
+[Story Campaign](docs/OPENING_CHAPTER.md) exclusively uses slower learning/proofs with no SP or mutation draft. Story-free Free Play keeps rapid SP progression and mutations. The complete local source gate passes1,238tests, TypeScript,15catalogs,144early-chapter cases and the production/art build. Exact-source CI and new frozen audiences are pending; [the handoff](handoff/NEXT_CHAT.md) still records the verified Ranger previews.
+
+The longer campaign, twelve full personal arcs, later mastery, durable characters and final human/rendered/device/language/listening/balance acceptance remain unfinished. Published Site version4/protocol43 is a separate older release. Only the user decides whole-game completion.
 
 ![Grave Accord cover](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/cover.jpg)
 

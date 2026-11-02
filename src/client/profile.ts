@@ -242,6 +242,18 @@ export function parseProfile(raw: string): ProfileV1 {
   }
   if (value && typeof value === "object" && !Array.isArray(value)) {
     const old = value as Record<string, unknown>;
+    // An older edition cannot contain clears from a discipline not yet in its roster.
+    if(typeof old.contentRevision==='string'&&old.contentRevision!==CONTENT_REVISION){
+      const recentRosters:Record<string,number>={
+        '8bda5e247f3df132a9c80f244fd8a7c2b3eaf468e2c6a8927f87a35937fbe110':11,
+        'f099f438f83d4f79da2fd18bc8cd680e3e8616e5febb50d7b78609b47d09bb32':10,
+        'e74efafe14d4694ef9afd8ea6df038c3fd0e697e4b6d5039f9a6d70173c8b6bd':9,
+        '85c266d3bbb2457910b5237bbab3769bd1ada06014d39ded5eefe5854e5392cb':8,
+      };
+      const roster:readonly string[]=implementedClassIds.slice(0,recentRosters[old.contentRevision]??7);
+      if(Array.isArray(old.runs)&&old.runs.some(r=>r&&typeof r==='object'&&typeof r.classId==='string'&&!roster.includes(r.classId)))throw Error('ui.errorProfile');
+    }
+    if(old.contentRevision==='8bda5e247f3df132a9c80f244fd8a7c2b3eaf468e2c6a8927f87a35937fbe110'&&old.schemaVersion===1&&old.practiceOnly===true&&old.verified===false)old.contentRevision=CONTENT_REVISION;
     if(old.contentRevision==='f099f438f83d4f79da2fd18bc8cd680e3e8616e5febb50d7b78609b47d09bb32'&&old.schemaVersion===1&&old.practiceOnly===true&&old.verified===false){
       if(Array.isArray(old.runs)&&old.runs.some(r=>r?.classId==='ranger'))throw Error('ui.errorProfile');
       old.contentRevision=CONTENT_REVISION;

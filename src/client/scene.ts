@@ -1,3 +1,4 @@
+import {drawAlchemyCue} from './alchemy-presentation.ts';
 import {drawRangerCue} from './ranger-presentation.ts';
 import {drawSwordCue} from './sword-presentation.ts';
 import {retinueArt,retinuePose} from './retinue-presentation.ts';
@@ -821,6 +822,7 @@ export class CombatScene extends Phaser.Scene {
         this.constructImages.delete(id);
       }
     for (const cue of view.classCues) {
+      if(cue.kind==='alchemy-brew'||cue.kind==='alchemy-flask'||cue.kind==='alchemy-pool'||cue.kind==='alchemy-combination'){drawAlchemyCue(h,cue,now,this.localId);continue;}
       if(cue.kind==='ranger-draw'||cue.kind==='ranger-release'||cue.kind==='ranger-trap'||cue.kind==='ranger-survey'){drawRangerCue(h,cue,now,this.localId);continue;}
       if(cue.kind==='sword-cut'||cue.kind==='sword-windup'||cue.kind==='sword-guard'||cue.kind==='sword-parry'||cue.kind==='sword-return'){drawSwordCue(h,cue,now,this.reduceMotion);continue;}
       if(cue.kind==='bard-phrase'||cue.kind==='bard-cut'){

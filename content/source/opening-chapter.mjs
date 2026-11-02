@@ -45,6 +45,7 @@ export function applyOpeningChapter(c) {
         'swordsman-measure-1',
         'summoner-bonds-1',
         'ranger-fieldcraft-1',
+        'alchemist-mixtures-1',
       ],
       ordinaryReplay: 'ward-approach',
       timedReading: false,

@@ -3,6 +3,8 @@ import library from '../../assets/production/motion/survivor-actions/library.jso
 import bardLibrary from '../../assets/production/motion/bard-actions/library.json';
 import swordLibrary from '../../assets/production/motion/swordsman-actions/library.json';
 import summonerLibrary from '../../assets/production/motion/summoner-actions/library.json';
+import alchemistLibrary from '../../assets/production/motion/alchemist-actions/library.json';
+import {alchemyActionCue,alchemyActionFrame} from './alchemy-presentation.ts';
 import rangerLibrary from '../../assets/production/motion/ranger-actions/library.json';
 import {rangerAttackCue,rangerAttackFrame} from './ranger-presentation.ts';
 import catalog from '../../content/catalog.json';
@@ -14,7 +16,7 @@ import type { SurvivorFacing } from './survivor-visual-motion.ts';
 import { deliveredSurvivorClip } from './survivor-delivery.ts';
 
 type Facing = 'south' | 'east' | 'north' | 'west';
-type Action = 'idle' | 'attack' | 'hurt' | 'dash' | 'downed' | 'guard';
+type Action = 'idle' | 'attack' | 'hurt' | 'dash' | 'downed' | 'guard' | 'brew' | 'throw';
 type Clip = {
   id: string;
   classId: ClassId;
@@ -34,6 +36,7 @@ export const survivorActionArt = {
     ...(swordLibrary as unknown as { entries: Clip[] }).entries,
     ...(summonerLibrary as unknown as { entries: Clip[] }).entries,
     ...(rangerLibrary as unknown as { entries: Clip[] }).entries,
+    ...(alchemistLibrary as unknown as { entries: Clip[] }).entries,
   ].map(deliveredSurvivorClip),
 };
 const clips = new Map(survivorActionArt.entries.map((clip) => [clip.id, clip]));
@@ -178,7 +181,7 @@ export class SurvivorActionClock {
     const memory = this.people.get(player.id);
     if (!memory) return undefined;
     const drawn = wallTimeMs === undefined ? view : this.timeline.sample(wallTimeMs);
-    let rangerFrame:number|undefined;
+    let poseFrame:number|undefined;
     let facing = visualFacing ?? facingOf(player.aim),
       action: Action = 'idle',
       elapsed = drawn.tick;
@@ -219,15 +222,23 @@ export class SurvivorActionClock {
                 )
               : undefined;
           const attack = clips.get(player.classId + '-attack-' + facing)!;
+          const candidateChemistry=alchemyActionCue(player,view,drawn.combatTick);
+          const chemistry=candidateChemistry&&(candidateChemistry.kind==='alchemy-brew'||memory.attackAt<view.tick-(view.combatTick-candidateChemistry.at))?candidateChemistry:undefined;
           const bow=rangerAttackCue(player,view,drawn.combatTick);
           const attacking = view.tick - memory.attackAt < (attack.frames * HZ) / attack.fps;
-          if(bow){
-            action='attack';facing=facingOf(bow.aim);rangerFrame=rangerAttackFrame(bow,drawn.combatTick,reduced);
+          if(chemistry?.kind==='alchemy-brew'){
+            action='brew';facing=facingOf(player.aim);
+            poseFrame=alchemyActionFrame(chemistry,drawn.combatTick,clips.get(player.classId+'-brew-'+facing)!.frames,reduced);
+          }else if(bow){
+            action='attack';facing=facingOf(bow.aim);poseFrame=rangerAttackFrame(bow,drawn.combatTick,reduced);
           }else if (guard && guard.kind === 'sword-guard') {
             action = 'guard';
             facing = facingOf(guard.aim);
             elapsed = 0;
-          } else if (attacking && (!moving || player.classId === 'swordsman')) {
+          } else if(chemistry?.kind==='alchemy-flask'){
+            action='throw';facing=facingOf(chemistry.x===chemistry.x2&&chemistry.y===chemistry.y2?player.aim:Math.atan2(chemistry.y2-chemistry.y,chemistry.x2-chemistry.x));
+            poseFrame=alchemyActionFrame(chemistry,drawn.combatTick,clips.get(player.classId+'-throw-'+facing)!.frames,reduced);
+          } else if (attacking && (!moving || player.classId === 'swordsman'||player.classId==='alchemist')) {
             action = 'attack';
             facing = memory.attackFacing;
             elapsed = drawn.tick - memory.attackAt;
@@ -236,7 +247,7 @@ export class SurvivorActionClock {
       }
     } else return undefined;
     const clip = clips.get(player.classId + '-' + action + '-' + facing)!;
-    const frame = rangerFrame ?? (reduced
+    const frame = poseFrame ?? (reduced
       ? action === 'downed'
         ? clip.frames - 1
         : action === 'dash'

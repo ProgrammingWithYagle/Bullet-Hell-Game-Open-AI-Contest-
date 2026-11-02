@@ -1,4 +1,4 @@
-// Includes issued legacy Story saves; the current chapter system has separate role/proof tests and an early-build model.
+// Current Free Play only. Chapter Campaign has separate real role/proof tests and an early-build model; legacy Story restore has dedicated compatibility fixtures.
 // Progression smoke with deliberate boss defeats and accelerated intermissions.
 // Exercises real authority transactions/save validation; does not measure player combat balance.
 import assert from 'node:assert/strict';
@@ -28,12 +28,12 @@ export function progressionMatrix() {
     finalSp: number;
     capstones: number;
     incomeGranted: number;
-    campaign: boolean;
+    timed: boolean;
     hardUnlock: boolean;
     profileXp: number;
   }[] = [];
   let serial = 0;
-  for (const mode of data.modes)
+  for (const mode of data.modes.filter(mode=>mode.id!=='story'))
     for (const classId of implementedClassIds)
       for (const difficulty of data.difficulties) {
         let g = new Game({
@@ -42,7 +42,7 @@ export function progressionMatrix() {
           runId: `matrix-${mode.id}-${classId}-${difficulty.id}`,
           difficulty: difficulty.id,
           maxPlayers: 1,
-        }, true);
+        });
         g.addPlayer('solo', 'Matrix', classId);
         const cl = data.classes.find((c) => c.id === classId)!;
         const map = new Map<string, string>(),
@@ -166,12 +166,12 @@ export function progressionMatrix() {
           finalSp: p.totalSp,
           capstones: p.skills.filter((id) => data.skills.find((s) => s.id === id)!.capstone).length,
           incomeGranted: p.incomeGranted,
-          campaign: mode.id !== 'endless',
+          timed: mode.id !== 'endless',
           hardUnlock: s.hardUnlocked,
           profileXp: s.classes[classId].xp,
         });
       }
-  assert.equal(rows.length, data.modes.length * data.classes.length * data.difficulties.length);
+  assert.equal(rows.length, data.modes.filter(mode=>mode.id!=='story').length * implementedClassIds.length * data.difficulties.length);
   return rows;
 }
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
@@ -186,8 +186,8 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
     passed: true,
     protocol: PROTOCOL,
     contentRevision: CONTENT_REVISION,
-    timedCombinations: rows.filter((r) => r.campaign).length,
-    endlessCombinations: rows.filter((r) => !r.campaign).length,
+    timedCombinations: rows.filter((r) => r.timed).length,
+    endlessCombinations: rows.filter((r) => !r.timed).length,
     encounters: rows.reduce((n, r) => n + r.clears, 0),
     restoredBoundaries: rows.reduce((n, r) => n + r.restoredBoundaries, 0),
     sourceFiles: [

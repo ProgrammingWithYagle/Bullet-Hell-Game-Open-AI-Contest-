@@ -30,7 +30,7 @@ const summonGear:Record<string,string>={damage:'clear-beacon','fire-rate':'quick
 const swordGear: Record<string,string> = {damage:'honed-edge','fire-rate':'balanced-hilt',magazine:'wrapped-grip',reload:'easy-harness'};
 function itemArt(kind: Kind,id: string,glyph: string,classId: string) {
   const sword = classId==='swordsman';
-  const special = classId==='ranger'&&kind==='upgrade'&&['damage','fire-rate','magazine','reload'].includes(id)?assets.items['upgrade/ranger-'+id]:classId==='ranger'&&kind==='supply'&&id==='ammo-pouch'?assets.items['supply/ranger-arrow-bundle']:sword && kind==='upgrade' && swordGear[id] ? assets.items['upgrade/swordsman-'+swordGear[id]]
+  const special = classId==='alchemist'&&kind==='upgrade'&&['damage','fire-rate','magazine','reload'].includes(id)?assets.items['upgrade/alchemist-'+id]:classId==='alchemist'&&kind==='supply'&&id==='ammo-pouch'?assets.items['supply/alchemist-sample-case']:classId==='ranger'&&kind==='upgrade'&&['damage','fire-rate','magazine','reload'].includes(id)?assets.items['upgrade/ranger-'+id]:classId==='ranger'&&kind==='supply'&&id==='ammo-pouch'?assets.items['supply/ranger-arrow-bundle']:sword && kind==='upgrade' && swordGear[id] ? assets.items['upgrade/swordsman-'+swordGear[id]]
     : sword && kind==='supply' && id==='ammo-pouch' ? assets.items['supply/swordsman-canteen'] : classId==='summoner'&&kind==='upgrade'&&summonGear[id]?assets.items['upgrade/summoner-'+summonGear[id]]:classId==='summoner'&&kind==='supply'&&id==='ammo-pouch'?assets.items['supply/summoner-thread-spool']:undefined;
   const url = special ?? (kind==='upgrade' ? assets.upgrades[id] : assets.items[kind+'/'+(kind==='skill' ? allSkills.find(s=>s.id===id)?.subbranchId : id)]);
   return url ? `<img class="item-art" src="${url}" alt="" aria-hidden="true">` : icon(glyph);
@@ -305,8 +305,8 @@ function details(p: PlayerView) {
     body = `<dl class="item-stats">${[
       ['stat.damage', w.damage],
       ['stat.fireRate', w.fireRate],
-      [p.classId==='swordsman'?'ui.swordBreath':p.classId==='summoner'?'ui.summonerFocus':p.classId==='ranger'?'ui.rangerQuiver':'stat.magazine', w.magazine],
-      [p.classId==='swordsman'?'ui.swordRecovery':p.classId==='summoner'?'ui.summonerRebind':p.classId==='ranger'?'ui.rangerReplenish':'stat.reloadTime', w.reloadTime],
+      [p.classId==='swordsman'?'ui.swordBreath':p.classId==='summoner'?'ui.summonerFocus':p.classId==='ranger'?'ui.rangerQuiver':p.classId==='alchemist'?'ui.alchemySamples':'stat.magazine', w.magazine],
+      [p.classId==='swordsman'?'ui.swordRecovery':p.classId==='summoner'?'ui.summonerRebind':p.classId==='ranger'?'ui.rangerReplenish':p.classId==='alchemist'?'ui.alchemyRefill':'stat.reloadTime', w.reloadTime],
       ...(p.classId==='swordsman'&&'meleeReach'in w?([['stat.bladeReach',w.meleeReach],['stat.bladeArc',w.meleeArcDegrees]] as const):p.classId==='ranger'?[['stat.range',Math.round(w.projectileSpeed*w.rangeSeconds)]]:[['stat.extraShots', w.pellets]]),
       [p.classId==='swordsman'?'stat.swordCleave':'stat.pierce', w.pierce],
     ]
@@ -314,7 +314,7 @@ function details(p: PlayerView) {
         ([key, value]) =>
           `<div><dt>${e(t(String(key)))}</dt><dd>${number(Number(value), 2)}</dd></div>`,
       )
-      .join('')}</dl>${p.classId==='swordsman'||p.classId==='summoner'||p.classId==='ranger'?`<p>${e(t('weapon.'+id+'.description'))}</p>`:''}`;
+      .join('')}</dl>${p.classId==='swordsman'||p.classId==='summoner'||p.classId==='ranger'||p.classId==='alchemist'?`<p>${e(t('weapon.'+id+'.description'))}</p>`:''}`;
   } else if (kind === 'supply') {
     const item = data.supplies.find((s) => s.id === id)!;
     name = supplyName(id,p.classId);

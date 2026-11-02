@@ -21,6 +21,9 @@ export class Controls {
   private suppressPad = true;
   move = { x: 0, y: 0 };
   aim = { x: 0, y: 0 };
+  private flaskInput: 'pointer'|'touch'|'pad' = 'pointer';
+  private flaskOffset = {x:0,y:0};
+  flaskPoint(player:{x:number;y:number}){return this.flaskInput==='pointer'?{...this.pointer}:{x:player.x+this.flaskOffset.x,y:player.y+this.flaskOffset.y};}
   pointer = { x: 800, y: 250 };
   firing = false;
   interacting = false;
@@ -47,6 +50,7 @@ export class Controls {
           e.target.closest('input,select,textarea,[contenteditable="true"]'))
       )
         return;
+      this.flaskInput='pointer';
       if (Object.values(this.options.bindings).some((list) => list.includes(e.code)))
         e.preventDefault();
       if (!this.keys.has(e.code)) this.pressed.add(e.code);
@@ -72,9 +76,11 @@ export class Controls {
         if (!this.keys.has(code)) this.pressed.add(code);
         this.keys.add(code);
       }
+      this.flaskInput=e.pointerType==='touch'?'touch':'pointer';
       this.setPointer(e);
     });
     on(element, 'pointermove', (e) => {
+      this.flaskInput=e.pointerType==='touch'?'touch':'pointer';
       this.setPointer(e);
       const start = this.pointers.get(e.pointerId);
       if (start) {
@@ -105,6 +111,7 @@ export class Controls {
       on(button, 'pointerdown', (e) => {
         e.preventDefault();
         if (this.blocked || button.disabled) return;
+        if(e.pointerType==='touch'){this.touch=true;this.flaskInput='touch';}
         const action = button.dataset.action as Action;
         if (!actions.includes(action)) return;
         if (action === 'interact') this.interacting = true;
@@ -136,6 +143,7 @@ export class Controls {
   }
   clear() {
     this.retinueCycle=false;
+    this.flaskOffset={x:0,y:0};
     this.keys.clear();
     this.pressed.clear();
     this.virtualPressed.clear();
@@ -173,6 +181,7 @@ export class Controls {
     if (player && !this.touch)
       this.angle = Math.atan2(this.pointer.y - player.y, this.pointer.x - player.x);
     if (Math.hypot(this.aim.x, this.aim.y) > 0.15) this.angle = Math.atan2(this.aim.y, this.aim.x);
+    if(this.flaskInput==='touch'){const len=Math.hypot(this.aim.x,this.aim.y),scale=len>.15?300/Math.max(1,len):0;this.flaskOffset={x:this.aim.x*scale,y:this.aim.y*scale};}
     const pad = navigator.getGamepads?.().find((p) => p?.connected);
     let padFire = false,
       padInteract = false, padSprint=false;
@@ -182,7 +191,9 @@ export class Controls {
       input.moveY += dead(pad.axes[1] ?? 0);
       const x = dead(pad.axes[2] ?? 0),
         y = dead(pad.axes[3] ?? 0);
-      if (x || y) this.angle = Math.atan2(y, x);
+      if (x || y) {this.angle = Math.atan2(y, x);this.flaskInput='pad';}
+      if(pad.buttons[this.options.gamepad.e]?.pressed)this.flaskInput='pad';
+      if(this.flaskInput==='pad'){const scale=300/Math.max(1,Math.hypot(x,y));this.flaskOffset={x:x*scale,y:y*scale};}
       const down = pad.buttons.map((b) => b.pressed);
       if (this.suppressPad && !down.some(Boolean)) this.suppressPad = false;
       if (!this.suppressPad) {

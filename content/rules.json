@@ -419,5 +419,77 @@
     "crosswindDamageMultiplier": 0.5,
     "crosswindSpreadRadians": 0.15,
     "linkedStakeTargets": 3
+  },
+  "alchemy": {
+    "initialReagent": 3,
+    "maximumReagent": 6,
+    "primaryRecoveryTicks": 30,
+    "passiveRecoveryTicks": 150,
+    "recipeChoiceIntervalTicks": 6,
+    "brewTicks": 12,
+    "settledBrewTicks": 24,
+    "brewMovement": 0.8,
+    "brewCooldown": 4,
+    "flaskCooldown": 6,
+    "extractionCooldownPenalty": 2,
+    "preparedCapacity": 2,
+    "maximumPreparedCapacity": 3,
+    "flightTicks": 15,
+    "flaskRange": 300,
+    "minimumThrowDistance": 48,
+    "splitOffset": 24,
+    "splitMultiplier": 0.55,
+    "splitRadiusMultiplier": 0.72,
+    "maximumOwnerFlights": 6,
+    "maximumOwnerFields": 4,
+    "fieldPulseTicks": 45,
+    "fieldTicks": 240,
+    "comboDamage": 30,
+    "ultimateCooldown": 95,
+    "ultimateTicks": 420,
+    "ultimateCharges": 3,
+    "ultimateDamageMultiplier": 1.5,
+    "ultimateRadiusMultiplier": 1.25,
+    "recipes": {
+      "flare": {
+        "cost": {
+          "cinder": 1,
+          "chalk": 1,
+          "sap": 0
+        },
+        "radius": 58,
+        "damage": 55,
+        "healing": 0,
+        "pulseDamage": 4,
+        "slowTicks": 0,
+        "slowMultiplier": 1
+      },
+      "binding": {
+        "cost": {
+          "cinder": 0,
+          "chalk": 1,
+          "sap": 1
+        },
+        "radius": 64,
+        "damage": 25,
+        "healing": 0,
+        "pulseDamage": 0,
+        "slowTicks": 90,
+        "slowMultiplier": 0.6
+      },
+      "mending": {
+        "cost": {
+          "cinder": 1,
+          "chalk": 0,
+          "sap": 1
+        },
+        "radius": 76,
+        "damage": 0,
+        "healing": 18,
+        "pulseDamage": 0,
+        "slowTicks": 0,
+        "slowMultiplier": 1
+      }
+    }
   }
 }

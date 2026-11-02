@@ -16,6 +16,7 @@ export const implementedClassIds = [
   'swordsman',
   'summoner',
   'ranger',
+  'alchemist',
 ] as const;
 export type ClassId = (typeof implementedClassIds)[number];
 export const implementedModeIds = ['short', 'standard', 'long', 'raid', 'endless','story'] as const;

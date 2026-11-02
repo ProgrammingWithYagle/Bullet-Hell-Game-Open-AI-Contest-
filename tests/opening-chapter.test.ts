@@ -76,7 +76,7 @@ function clearStreet(g: Game) {
       } else if (
         target &&
         near <
-          (p.classId === 'swordsman' ? 205 : p.classId === 'bard' ? (g.bard.status(p.id).cadence > 0 ? 135 : 0) : p.classId === 'tank'
+          (p.classId === 'alchemist' ? 260 : p.classId === 'swordsman' ? 205 : p.classId === 'bard' ? (g.bard.status(p.id).cadence > 0 ? 135 : 0) : p.classId === 'tank'
             ? 155
             : p.classId === 'heavy'
               ? 210
@@ -89,6 +89,7 @@ function clearStreet(g: Game) {
         actedAt = n;
       }
     }
+    if(p.classId==='alchemist'&&target&&near<290&&(g.kitStatus(p.id).alchemyPrepared?.length??0)>0)g.throwAlchemy(p.id,{x:target.x,y:target.y});
     g.submitInput(p.id, {
       ...idleInput(),
       sequence: p.ack + 1,

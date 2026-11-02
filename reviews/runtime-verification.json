@@ -1,48 +1,48 @@
 {
-  "createdAt": "2026-11-02T02:53:11.945Z",
+  "createdAt": "2026-11-02T15:45:06.461Z",
   "passed": true,
-  "sourceSnapshotSha256": "0c7d6979d5b3b4ff7a91ad47ea36fd9dd5657eef773b4246deb3cddf8780ad33",
-  "runtimeSourceSha256": "284b562890f2f75cafd118b7917f66b122ff6d22302fb0a1280773d220867db4",
-  "contentRevision": "8bda5e247f3df132a9c80f244fd8a7c2b3eaf468e2c6a8927f87a35937fbe110",
+  "sourceSnapshotSha256": "8db3017ee70cd97129ab1c7563837825043150f64be52e4793be6fc1f729d67b",
+  "runtimeSourceSha256": "307734d850039da5008fd8142a4ab128f6d30524624f351fa98a29aa4704f547",
+  "contentRevision": "1dd8789a6050eac2ca2f677bc15a8cdbfafaf78d73226d5be7cfbfc3ed70ba04",
   "checks": [
     {
       "name": "Stage 1 authored content",
       "passed": true,
-      "elapsedMs": 33651
+      "elapsedMs": 69156
     },
     {
       "name": "Playable main-story word count",
       "passed": true,
-      "elapsedMs": 738
+      "elapsedMs": 804
     },
     {
       "name": "TypeScript",
       "passed": true,
-      "elapsedMs": 2653
+      "elapsedMs": 2928
     },
     {
       "name": "Early chapter build feasibility",
       "passed": true,
-      "elapsedMs": 1662
+      "elapsedMs": 1882
     },
     {
       "name": "Headless rules and real-network integration",
       "passed": true,
-      "elapsedMs": 143994
+      "elapsedMs": 164800
     },
     {
       "name": "Production client build",
       "passed": true,
-      "elapsedMs": 7969
+      "elapsedMs": 8963
     },
     {
       "name": "Emitted encounter atlas contracts",
       "passed": true,
-      "elapsedMs": 1712
+      "elapsedMs": 2590
     }
   ],
-  "outputFiles": 1936,
-  "outputBytes": 759243765,
+  "outputFiles": 1988,
+  "outputBytes": 763535660,
   "artifacts": [
     {
       "path": "dist/assets/0-Bw4fnU8q.png",
@@ -255,14 +255,224 @@
       "sha256": "f924e2657e5c1d17dea1a92f919e8a33cfbb7ec4b5ddfc3b4c1789e8960abe7c"
     },
     {
+      "path": "dist/assets/alchemist-0-Cnr4aE9j.png",
+      "bytes": 43805,
+      "sha256": "59972c8aaa025510de88620011b834abebec1200ca769b1795e98e8beb3ab427"
+    },
+    {
+      "path": "dist/assets/alchemist-1-BZ-X3eg6.png",
+      "bytes": 58396,
+      "sha256": "25843a1e5e220da80017806864b5ea43c237edc2dc0510bcf889e3b7a3de65d3"
+    },
+    {
+      "path": "dist/assets/alchemist-2-DWMGrew_.png",
+      "bytes": 59378,
+      "sha256": "34de89817f5977ab37211c43381ed0c7019711102735b491e05898d54a620ffc"
+    },
+    {
+      "path": "dist/assets/alchemist-3-COw9Rzid.png",
+      "bytes": 57610,
+      "sha256": "9cd5838a70cd9b3f01c99d8464d93aee7c7287a38cd03ae602122b67b30744f4"
+    },
+    {
       "path": "dist/assets/alchemist-action-walk-v2-atlas-2HWTMBNg.png",
       "bytes": 867597,
       "sha256": "cc2c197aa0c7d97e2a5cb76e202510d1d4c814651ee70d72b9477c784caafde1"
     },
     {
+      "path": "dist/assets/alchemist-attack-east-v1-atlas-BV_Nd6fy.png",
+      "bytes": 78921,
+      "sha256": "33c7bdba9f72aa6ddd68c27f515be5cc7db0309491701919c645fa7ed069c538"
+    },
+    {
+      "path": "dist/assets/alchemist-attack-north-v1-atlas-DdWrc9wC.png",
+      "bytes": 106687,
+      "sha256": "1d8bc28a4dba99abb15d3e70d0bd019a0dd400035464806e1fee4a59a77cbe04"
+    },
+    {
+      "path": "dist/assets/alchemist-attack-south-v1-atlas-BzeY6ZhY.png",
+      "bytes": 106907,
+      "sha256": "3372e09df0e4b70a511becf42055ef50b59181812eb26267ca0cb953cbacc8ad"
+    },
+    {
+      "path": "dist/assets/alchemist-attack-west-v1-atlas-B9oOLyRF.png",
+      "bytes": 78689,
+      "sha256": "18e03fc79bbeb03de5f1f0c1cd64d341813bf9a743613e0f20de7446dc1763da"
+    },
+    {
+      "path": "dist/assets/alchemist-brew-east-v1-atlas-BH1otg5H.png",
+      "bytes": 57307,
+      "sha256": "69a68f5e3efc4df2d1cd602b93a4838b5bd241d25da0c9ad88193e17355f5925"
+    },
+    {
+      "path": "dist/assets/alchemist-brew-north-v1-atlas-C9zTtPWB.png",
+      "bytes": 65809,
+      "sha256": "2f8a5de43f3e309f705fd14b88e8de593087207de1bf6cf25d72e9b5f4d71be7"
+    },
+    {
+      "path": "dist/assets/alchemist-brew-south-v1-atlas-B3uWTLp6.png",
+      "bytes": 64811,
+      "sha256": "2631d6dac4300533e09a09e9a0c26c021660486a57745e95895358ddb6365662"
+    },
+    {
+      "path": "dist/assets/alchemist-brew-west-v1-atlas-DVQ-X-xp.png",
+      "bytes": 36547,
+      "sha256": "0dbe83d38f2cbffb796b540eb69d0962bd34bc89b506a2052d6650a9abbd42f1"
+    },
+    {
+      "path": "dist/assets/alchemist-damage-D5dV37Qk.png",
+      "bytes": 52771,
+      "sha256": "198a386b050dced0db41e86d0955281441716f4b23ee33b65d592286c6200c41"
+    },
+    {
+      "path": "dist/assets/alchemist-dash-east-v1-atlas-ul7HlzI3.png",
+      "bytes": 85951,
+      "sha256": "cf148648194015aec73de308f92ae1249a104da78e1dc92522fc8eda3298e3a5"
+    },
+    {
+      "path": "dist/assets/alchemist-dash-north-v1-atlas-D0Na4ZCi.png",
+      "bytes": 80895,
+      "sha256": "5353dfead533e894bbf0f1165a1d17a03d0be26c5bd698cfaa21192b1461c525"
+    },
+    {
+      "path": "dist/assets/alchemist-dash-south-v1-atlas-n_QDI1wR.png",
+      "bytes": 42059,
+      "sha256": "38dd9cf06a288f709e17989789ec1841506f9260431a48d103e6a3897d5ab388"
+    },
+    {
+      "path": "dist/assets/alchemist-dash-west-v1-atlas-BYbdJaic.png",
+      "bytes": 86717,
+      "sha256": "0bc20b1163bddda64b2fa58b9e7bbb0711ac8d18fe2ebd7cb7a9addc0468d26c"
+    },
+    {
+      "path": "dist/assets/alchemist-downed-east-v1-atlas-BjRZJJcw.png",
+      "bytes": 48217,
+      "sha256": "b2c2881d501d8755731f167bc32a6a58e78675d8eb6d8b89b9a4556d6aef9836"
+    },
+    {
+      "path": "dist/assets/alchemist-downed-north-v1-atlas-CJEaP1an.png",
+      "bytes": 45614,
+      "sha256": "234f07238183a82d631e7d508e077f486ffb8844eadc18bc761fdd26d50b022e"
+    },
+    {
+      "path": "dist/assets/alchemist-downed-south-v1-atlas-DW72Smfn.png",
+      "bytes": 44007,
+      "sha256": "c630fdc8b195bd18782ec2b004bc5798b5c51777dca2d99d2b59436693a3231d"
+    },
+    {
+      "path": "dist/assets/alchemist-downed-west-v1-atlas-BfOPPj0-.png",
+      "bytes": 49286,
+      "sha256": "67989acf429d6a9eaecb31294d94fe4493291cb74686648d2d3131519297ecc6"
+    },
+    {
+      "path": "dist/assets/alchemist-fire-rate-BzpEKbmn.png",
+      "bytes": 70842,
+      "sha256": "0858c3b08c47f2d03efae05200c88efaa6f11880bcc016a3aa0a6961497a2376"
+    },
+    {
+      "path": "dist/assets/alchemist-hurt-east-v1-atlas-DpHPAg1b.png",
+      "bytes": 44537,
+      "sha256": "0ad54e725563c582960513fa55fc2ea81894a0b9a0363728433aa80217dee3a3"
+    },
+    {
+      "path": "dist/assets/alchemist-hurt-north-v1-atlas-B92EfX2G.png",
+      "bytes": 57210,
+      "sha256": "94998a8fbc11cdf30fe0d9fe968477967fc7b7acf61c446c573d10e03636c7fe"
+    },
+    {
+      "path": "dist/assets/alchemist-hurt-south-v1-atlas-Af6rSzXo.png",
+      "bytes": 53759,
+      "sha256": "db52134f2e4d0c512f7a4cdd77c7ec0d3105b6747c13eecfd8cd85424cc792b8"
+    },
+    {
+      "path": "dist/assets/alchemist-hurt-west-v1-atlas-CQYtassi.png",
+      "bytes": 42784,
+      "sha256": "58453e43a6291c91da89c4b9d60a48e3ac4d139bb917e40d536ac3aa93f831e1"
+    },
+    {
+      "path": "dist/assets/alchemist-idle-east-v1-atlas-C_h26E97.png",
+      "bytes": 35211,
+      "sha256": "2c70ebfae4c4d7fab2a0d82e092c3218e9219ce9ab2bccd92bb977be345b26ae"
+    },
+    {
+      "path": "dist/assets/alchemist-idle-north-v1-atlas-7ftAU9ah.png",
+      "bytes": 46720,
+      "sha256": "1a4a30ee0fd1a3df89820861ce5e7748e5f699b4b70174e754df81da4e0ddfb3"
+    },
+    {
+      "path": "dist/assets/alchemist-idle-south-v1-atlas-5PRgzX92.png",
+      "bytes": 46666,
+      "sha256": "f9a5bb1164568d4c023efea3d8fb79c61081ad79e016e3b71b24d68ee17bc4e7"
+    },
+    {
+      "path": "dist/assets/alchemist-idle-west-v1-atlas-C7jiGx3L.png",
+      "bytes": 34508,
+      "sha256": "1c1b66b5a41e784d8eecc82c88e3c8c77a7bf3ebfd488b8c0d2e0fed1399e25a"
+    },
+    {
+      "path": "dist/assets/alchemist-magazine-Bpc34Jlw.png",
+      "bytes": 94489,
+      "sha256": "5a5a1dafd3595549f9cedb233bb54870fbe4acddf08881c584d95fe146862db8"
+    },
+    {
       "path": "dist/assets/alchemist-reference-v3-Co6TVgM3.png",
       "bytes": 50305,
       "sha256": "7e71817060e207dab2ec25f4c3beb3a5a82a54803b791f977bb0fc757d5f649d"
+    },
+    {
+      "path": "dist/assets/alchemist-reload-DDW_eIu-.png",
+      "bytes": 82856,
+      "sha256": "06e52c88e98f20a854be3522ea4923dbeb2b058cb9a6a55f83ce6fb1d5070853"
+    },
+    {
+      "path": "dist/assets/alchemist-run-east-v1-atlas-B2I0GwTU.png",
+      "bytes": 111590,
+      "sha256": "46ce47fbe91fea82e1f0a52bd09148d89196ea941363b8ab39a806db69c163db"
+    },
+    {
+      "path": "dist/assets/alchemist-run-north-v1-atlas-Un2vDhVA.png",
+      "bytes": 91333,
+      "sha256": "88ba0fd2839218b422f42525828eb6d77a28c4938a77c1780eb6dd77880718fe"
+    },
+    {
+      "path": "dist/assets/alchemist-run-south-v1-atlas-B-gmX5pO.png",
+      "bytes": 86901,
+      "sha256": "ec8d374e47a35a5ddbba58b772aac6e6ab468b512c14d8bfa357e6ea72310b50"
+    },
+    {
+      "path": "dist/assets/alchemist-run-west-v1-atlas-gLKm-Du6.png",
+      "bytes": 119788,
+      "sha256": "c5beb40e539f9fbb9f0b988f79ff01afb29bf5c0cb56e06d3e5479c92618d730"
+    },
+    {
+      "path": "dist/assets/alchemist-sample-case-DPSfqFe-.png",
+      "bytes": 103812,
+      "sha256": "cd83567c4dcef83229de26b19eb40c569e3a4fe6742d5a0d2e102121815a30dc"
+    },
+    {
+      "path": "dist/assets/alchemist-selection-v1-DunMSliU.png",
+      "bytes": 188227,
+      "sha256": "b872c1bdc53b6ada7adf510a9ad65fde20d5f4a4156c9483d74d460771a2c8c4"
+    },
+    {
+      "path": "dist/assets/alchemist-throw-east-v1-atlas-qeekgoQV.png",
+      "bytes": 68195,
+      "sha256": "a6f4f1834bcc492da85457a4713b025f7e9ea6d368ffeb00e7a9d710ebb288d0"
+    },
+    {
+      "path": "dist/assets/alchemist-throw-north-v1-atlas-8eg_dw9Y.png",
+      "bytes": 93001,
+      "sha256": "b5d56cc4bbaecdbb111ee40ca58915786102106b39724a946e3472936b050725"
+    },
+    {
+      "path": "dist/assets/alchemist-throw-south-v1-atlas-DYHpO0mu.png",
+      "bytes": 106145,
+      "sha256": "3396c0b46cc8e26eda9c37dc8fef1726df4a90d7224b1fd527565a7a1ce11bce"
+    },
+    {
+      "path": "dist/assets/alchemist-throw-west-v1-atlas-BewLlQcb.png",
+      "bytes": 99804,
+      "sha256": "ad7fd58e31bdedcd6714b49b09b18fda6e2cd1453fdab8d5ae30d5eb6e9c1286"
     },
     {
       "path": "dist/assets/ambush-foundation-DedcoKX9.png",
@@ -310,9 +520,9 @@
       "sha256": "3dfa35faacc6bf961c045cc87e395f970cd2a52bb6bf506b8995c5ec4a1432e3"
     },
     {
-      "path": "dist/assets/ar-CXFx60ED.js",
-      "bytes": 287202,
-      "sha256": "04e36d8df6904ea780d04159061fd71b472bfe4cb4da5e489344efb0f5a5af19"
+      "path": "dist/assets/ar-Dlj9N0dK.js",
+      "bytes": 308814,
+      "sha256": "b3105b3d3ccd7be59369f9d719e0ca3e9fce799537c506013e9506a7cd2b8852"
     },
     {
       "path": "dist/assets/arch-without-door-BVOqEJbp.wav",
@@ -775,9 +985,9 @@
       "sha256": "831e77f265dc70878634534072a5c60f0ef0a016d4eb0ef51c58c4e03878575a"
     },
     {
-      "path": "dist/assets/bn-DCfZmAEU.js",
-      "bytes": 382370,
-      "sha256": "fd48d34d24590ff6c8f9c9e6594eed6230e627c07bb0ed7e2162d56b60dfa936"
+      "path": "dist/assets/bn-CW_wJFr_.js",
+      "bytes": 410706,
+      "sha256": "d9f3fe737d3b753d2aee6c904c2802c00f37dc81391e20e74ddf0a8e6dea4c48"
     },
     {
       "path": "dist/assets/boiler-tender-action-v1-atlas-CNpBmYnY.png",
@@ -1260,9 +1470,9 @@
       "sha256": "bb2ec2efbd951fd53d900e49e8a4530f0292dfb2c2d54ddb4987d806ab3f0382"
     },
     {
-      "path": "dist/assets/de-BCaiTtYh.js",
-      "bytes": 231445,
-      "sha256": "f24f24529456d0dcddce98de527e470e5cb3878e996860a0ec3c12b3338f938f"
+      "path": "dist/assets/de-CPZd8wo2.js",
+      "bytes": 248447,
+      "sha256": "894b84c5b9e578b3dcec617ddde4f76fb0b927e3249f37fef9a5d7f5de7e9787"
     },
     {
       "path": "dist/assets/dead-calm-xWdbz_cQ.png",
@@ -1340,6 +1550,21 @@
       "sha256": "a47b31cea701826e0cbe95ea4c9a7c9285fd66b323aef52844dba9bf20a0b7f3"
     },
     {
+      "path": "dist/assets/dyehouse-foundation-CGuwpXDX.png",
+      "bytes": 92103,
+      "sha256": "af96eb97d577fa7d40e7aa7181a7b9a06e858466b6ba33437ae2d43de5880a42"
+    },
+    {
+      "path": "dist/assets/dyehouse-path-1-B0DsIeFc.png",
+      "bytes": 89479,
+      "sha256": "d55803068f76d21c89b705fe9d79ae07e67398bd67327204fa2976266dad5715"
+    },
+    {
+      "path": "dist/assets/dyehouse-path-2-DTXnL_pL.png",
+      "bytes": 72824,
+      "sha256": "d9e60344e178cf22d0dcc8b1680c3cd43de24a8e1ec2bc22173b5e7e9b9989cc"
+    },
+    {
       "path": "dist/assets/edgework-foundation-i-pYbqI5.png",
       "bytes": 79312,
       "sha256": "fbca9cd335d707c10e77ae6eb361372e13e82fa1203b96d96fd633f710bf40f1"
@@ -1375,14 +1600,14 @@
       "sha256": "45310026151dd0ee45d22bd1506b53c05689c79e8f0c1cd55bf9475941b5b7e5"
     },
     {
-      "path": "dist/assets/en-DSAu7H9m.js",
-      "bytes": 43,
-      "sha256": "a65b9c87a3a8d24ae78d4167bbeddb8ddd18b367dd212bb98da7c42e1f5789c0"
+      "path": "dist/assets/en-C-YFatvu.js",
+      "bytes": 240057,
+      "sha256": "8583c0567382d40a65bdc5a50e67abd02649b3565d433f5a57ec0b54ec2fa93b"
     },
     {
-      "path": "dist/assets/en-R2CRzIjG.js",
-      "bytes": 223275,
-      "sha256": "3d737d88e22631c1bd70489bc3e46c1dbb5a4010521720dd0b9deb6306a592b8"
+      "path": "dist/assets/en-CAEDtAfc.js",
+      "bytes": 43,
+      "sha256": "c8f71be34b3bb740727b7b68011a392b2dca5592d7b7da0b65a6dfbe76d2c30a"
     },
     {
       "path": "dist/assets/endurance-foundation-BIeMf_x_.png",
@@ -1570,9 +1795,9 @@
       "sha256": "c5a3736dfa49eb7d2019a7c13b63e08f21a981a0d9b45202bfe6e5d5439adf8e"
     },
     {
-      "path": "dist/assets/es-Dej_y3XP.js",
-      "bytes": 243991,
-      "sha256": "225168a5edac436c7ac31d841e9554dfd30b8020a18d76d5b895f402a5bfe6f1"
+      "path": "dist/assets/es-DXRPHXnT.js",
+      "bytes": 261968,
+      "sha256": "70f902c036000697c3678501ea241dacc1be9ee86e3c8e498e5aebb61f3c07a7"
     },
     {
       "path": "dist/assets/evasion-foundation-Dh1WLs1F.png",
@@ -1670,9 +1895,9 @@
       "sha256": "f0c98b1f22719bedab8fb53d1fd6ab37229a89770550987393bca065fbc482c7"
     },
     {
-      "path": "dist/assets/fr-BCiLr0d0.js",
-      "bytes": 231756,
-      "sha256": "142ad02079aa8bba7860c51dab1a4a38fe236882ccc4c437b87e86553b88e0a8"
+      "path": "dist/assets/fr-DdX_tpGY.js",
+      "bytes": 248613,
+      "sha256": "f5a36296c7ae79eeac356054afab4040e2d407e75310281f6487375e1dfed4a2"
     },
     {
       "path": "dist/assets/gate-widow-action-v2-atlas-0HAHO5gN.png",
@@ -1935,9 +2160,9 @@
       "sha256": "72f077f00114482c6e6925f1703bd6748cc760829ea809e5fb1c798420db1a97"
     },
     {
-      "path": "dist/assets/hi-DW-QtUgU.js",
-      "bytes": 392240,
-      "sha256": "418aa428abd3d6a9c5a737c5a77151557e0b83b34e019bf5106f051612948bda"
+      "path": "dist/assets/hi-j598ZfOi.js",
+      "bytes": 421551,
+      "sha256": "5fffa22480a66a87ed211d69a635d80d584dd6353830cf4dfbb54a4cc75b0227"
     },
     {
       "path": "dist/assets/hive-without-sun-Cvi0SZR4.mp3",
@@ -1985,9 +2210,9 @@
       "sha256": "7c742b963e54937c473e6fd0b7f2524aadadea8cc86ca13502685312cfea057f"
     },
     {
-      "path": "dist/assets/id-B5-zrRde.js",
-      "bytes": 231475,
-      "sha256": "4f538f70751651038eb9299f0a042fd4f6ea1816b22eefb52932e73b7e2503ff"
+      "path": "dist/assets/id-Bu8hVjRV.js",
+      "bytes": 248651,
+      "sha256": "b1fccdbd240d90255f2588fac46129b698ef9e8f584cbbcd02c411137243a342"
     },
     {
       "path": "dist/assets/im-fell-english-sc-latin-400-normal-CW_nhHm4.woff2",
@@ -2010,14 +2235,14 @@
       "sha256": "97bc99bc880f3884812b04266a62d6a896f5879053848bbf94e3f4f904f52f83"
     },
     {
-      "path": "dist/assets/index-CjllD6o1.css",
-      "bytes": 511574,
-      "sha256": "1ad5230caadda7f8368176b6e11088e347cc4020a9fb63ac0bca2e9cb4f191ba"
+      "path": "dist/assets/index-CRaPtW4K.js",
+      "bytes": 4767316,
+      "sha256": "8420a6e99d4af730db7cad5d28fb6b0bdaa368de4c86633f739e018450a1f7ce"
     },
     {
-      "path": "dist/assets/index-R8pNTGU7.js",
-      "bytes": 4625449,
-      "sha256": "f2832f0fd4a4486b1c678f305a4dc1eaa83bf1d5e5bdaf162f642fdcc1945adf"
+      "path": "dist/assets/index-DZjOiCES.css",
+      "bytes": 512344,
+      "sha256": "5bf6a01ebb22710012a588e1255542f7ec3f783e1cc6eedb82e6fce21628058f"
     },
     {
       "path": "dist/assets/infirmary-minion-action-v1-atlas-DQ4YVK8X.png",
@@ -2060,14 +2285,14 @@
       "sha256": "8aca7c94918a65dbcc820e13d3d3d4338882c1462b906ef8a57120d2a11a3c92"
     },
     {
-      "path": "dist/assets/ja-C8bUmWOm.js",
-      "bytes": 242975,
-      "sha256": "04fa27353e7fd0ba0867b3a5246cd25d6a249a7a7b552fe8c2908b586d9e8ae1"
+      "path": "dist/assets/ja-B60PFr7T.js",
+      "bytes": 260551,
+      "sha256": "f2f8c36bfaaf847aeafe18ed265c36f786c90c1f88be40a0f6f8b2e269ffac31"
     },
     {
-      "path": "dist/assets/ko-i14jBIPi.js",
-      "bytes": 236116,
-      "sha256": "60af2bfe9a1895d1e5236a1eb31887f4cf20eee0ab6663766eb5cfa2321c5faf"
+      "path": "dist/assets/ko-CuAruQ1j.js",
+      "bytes": 253585,
+      "sha256": "74f6a74818991d206f3d5fd2fc28ffeaecac001511611116a658b3c4782187d9"
     },
     {
       "path": "dist/assets/lamplighter-action-v1-atlas-BVYZyPHg.png",
@@ -2583,6 +2808,21 @@
       "path": "dist/assets/mirror-undertaker-reference-v3-B0VrCRwC.png",
       "bytes": 39255,
       "sha256": "133b5268d8357aee1121c881e7a56520e2c84537d0e1eb64778669013b57ebfa"
+    },
+    {
+      "path": "dist/assets/mixtures-foundation-DiMDabkM.png",
+      "bytes": 83408,
+      "sha256": "6ad61b435ea5d8b52df617e5ace3ad9840222c90ead3c0c278fa12ac981c618a"
+    },
+    {
+      "path": "dist/assets/mixtures-path-1-aQkMVVwM.png",
+      "bytes": 97400,
+      "sha256": "46c83562bc20ba600076c8f39cb9481adb3910eadda917f32e64c9d74a18809d"
+    },
+    {
+      "path": "dist/assets/mixtures-path-2-B5y4OaxQ.png",
+      "bytes": 62878,
+      "sha256": "4bdd0ff8c5b0dec6b5daf8afad68672bb0635b4d930a92f628d3c9176a495bb4"
     },
     {
       "path": "dist/assets/mortuary-drive-BUstYaJh.wav",
@@ -7500,9 +7740,9 @@
       "sha256": "810c4f33639e2e7df436de2154aa921845dd56f5bccc301215bcd6791804b44a"
     },
     {
-      "path": "dist/assets/offline.worker-CQNrRo1d.js",
-      "bytes": 1214718,
-      "sha256": "6027e01bf8e62f4271527b62bffee3cdd309e4f2f5b32a35a17c4d47dbfd7622"
+      "path": "dist/assets/offline.worker-VBordlrs.js",
+      "bytes": 1262739,
+      "sha256": "e649b209c3ca45ac68a3c0a2e584e4c543c6cdf77df322dbd59b57ad73817468"
     },
     {
       "path": "dist/assets/one-door-left-CF84AdvY.wav",
@@ -7695,9 +7935,9 @@
       "sha256": "fd1033a8780d7551b182cd1056b489afa44589bffb3bb1ddc3aa7c83abd74720"
     },
     {
-      "path": "dist/assets/pt-BR-CFTRghBw.js",
-      "bytes": 231365,
-      "sha256": "eae5f8b0651942b057b6d3d22b4cb150adb74e64bb02967996a78796109439d9"
+      "path": "dist/assets/pt-BR-CksIGmJc.js",
+      "bytes": 248359,
+      "sha256": "9759196ff795af7c68a631e864397dc025296c5d9d1aae34a48bde4d9dfdca91"
     },
     {
       "path": "dist/assets/quarantine-clerk-action-v2-atlas-BkOEnJl8.png",
@@ -7950,6 +8190,21 @@
       "sha256": "db86d2af6ff887c0584e9338a63bc3b685979ac06b949ddcf832a6bc63851cb8"
     },
     {
+      "path": "dist/assets/reagents-foundation-BLJJ5xDp.png",
+      "bytes": 75996,
+      "sha256": "54882c151bee762ae7de5271bd6bb5656e46c4de5f2dec73cc6297b5d283a660"
+    },
+    {
+      "path": "dist/assets/reagents-path-1-05Zu8ECn.png",
+      "bytes": 73787,
+      "sha256": "f8a5c74ea604bbe9347c98bdb1495416613319c2fbe1d8bd6b8b62be85fb2a68"
+    },
+    {
+      "path": "dist/assets/reagents-path-2-Dwcc7GQL.png",
+      "bytes": 57834,
+      "sha256": "e3359dc43f183c1c00cb2e3ee23d909e6e1258f5b3d489e28e88445e9fabe163"
+    },
+    {
       "path": "dist/assets/recovery-foundation-BB3Oz9tT.png",
       "bytes": 94216,
       "sha256": "a7cd55efb3748bc987ba4d9a25bdeee7b047d1748df292487e83b26114049f15"
@@ -7983,6 +8238,11 @@
       "path": "dist/assets/red-comet-reference-v3-C2IwiYBd.png",
       "bytes": 31749,
       "sha256": "495797a379749853bb7148f157b969618b36bca2088360abd7ed9840d89e6aef"
+    },
+    {
+      "path": "dist/assets/reference-atlas-v1-B3TrzWxs.png",
+      "bytes": 72115,
+      "sha256": "a2ded6f81923fe63a8ad5880db8a9fb5365a8ea95f586ce7fe8657f476a9b3b1"
     },
     {
       "path": "dist/assets/reference-atlas-v1-BzqiroAG.png",
@@ -8375,9 +8635,9 @@
       "sha256": "bf1ec32551fd0644c3c6ceb2e6c948774dc02f9ee05c472aeb9c3964b7487076"
     },
     {
-      "path": "dist/assets/ru-6gKq-qQH.js",
-      "bytes": 326562,
-      "sha256": "323b2a51dc42d72875f52be2899b9bf3736943e7b111170827fecf8dfa728a9e"
+      "path": "dist/assets/ru-gqo8ZWG0.js",
+      "bytes": 350640,
+      "sha256": "163c83b9c2adf6512ebc3e15c5eb4890881e575d9fc1626b201559ebcd262816"
     },
     {
       "path": "dist/assets/salt-circle-CAdlZz3j.png",
@@ -9565,9 +9825,9 @@
       "sha256": "1484b4f393ae52371d4a404e8a9c07d5fde2d923525f989b2fdf9c815e76a0bc"
     },
     {
-      "path": "dist/assets/ur-CG0bw1qW.js",
-      "bytes": 294127,
-      "sha256": "09921421aaef2b624b2c193541217cc5707548c9a86508fe405e71473956c87a"
+      "path": "dist/assets/ur-Dnh4G38C.js",
+      "bytes": 316292,
+      "sha256": "d0be548e1ad1301720af810e5404e1fc86e86073e2a8b9c20231744525f6d0e1"
     },
     {
       "path": "dist/assets/vesper-judge-action-v1-atlas-CymEOsXa.png",
@@ -9710,19 +9970,19 @@
       "sha256": "7bcffcf0a833f30d08703e3d4247c6819480156016b355fd4bd3f312ac73d2ca"
     },
     {
-      "path": "dist/assets/zh-Hans-BLQNINaw.js",
-      "bytes": 213962,
-      "sha256": "ae180fa3544522622d7d30827d356fe4d01b1a466369d1c1e128784734ac7048"
+      "path": "dist/assets/zh-Hans-C0K3Ns0u.js",
+      "bytes": 229620,
+      "sha256": "ec886a7f7c67c49ce5cfb3de2ab622f824910f7b34cf2b6a4f2e6296d60b6b71"
     },
     {
-      "path": "dist/assets/zh-Hant-B5ktu5YJ.js",
-      "bytes": 213914,
-      "sha256": "4ac10c318016ad037ed95ac8ee56fa8208a7c8334530b80c583de4cb93056543"
+      "path": "dist/assets/zh-Hant-BymZqzn8.js",
+      "bytes": 229572,
+      "sha256": "04d3855d5c44d3b36ab8074af244247f6948b26bd59824ed605af253d53909bc"
     },
     {
       "path": "dist/index.html",
       "bytes": 540,
-      "sha256": "646189004effa2bbf0007e009fd51ff3b178bb3c7e26ff631d3d52ff74638ed6"
+      "sha256": "e29c7a9ab3a417b80e151684c5af2b1931ff6109aed3c29056a4df89512c0f84"
     }
   ],
   "limits": [

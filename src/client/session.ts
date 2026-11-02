@@ -439,6 +439,8 @@ export class Session {
     this.checkpointStatus = status as CheckpointStatus;
     this.onCheckpointStatus(this.checkpointStatus);
   }
+  selectAlchemy(recipe:'flare'|'binding'|'mending'){if(this.online){if(this.room?.connection.isOpen)this.room.send('alchemyRecipe',recipe);}else this.worker?.postMessage({type:'alchemyRecipe',recipe});}
+  throwAlchemy(point:{x:number;y:number}){if(this.online){if(this.room?.connection.isOpen)this.room.send('alchemyThrow',point);}else this.worker?.postMessage({type:'alchemyThrow',point});}
   orderRetinue(order:'escort'|'hold'|'focus'){if(this.online){if(this.room?.connection.isOpen)this.room.send('retinueOrder',order);}else this.worker?.postMessage({type:'retinueOrder',order});}
   input(input: InputFrame) {
     if (this.online) {

@@ -1,6 +1,6 @@
 # Ensemble cast register
 
-This authoring register covers the eleven current survivors, all 66 current bosses and twelve side-character records. Senn, Renn, Evi and Jorren appear in the opening; Miri now appears on a chapter branch, alongside the additional living cast Kesa Morn, Drin Hal and Mera Silt. Olan and Dena remain proposals. It links the current mechanics and seeds a distinct dramatic question for every boss. It does not claim 66 finished antagonist arcs or playable new character chapters. Full profiles, scenes, consequences and editorial review remain open.
+This authoring register covers the twelve current survivor candidates, all 66 current bosses and thirteen side-character records. Senn, Renn, Evi and Jorren appear in the opening; Miri now appears on a chapter branch, alongside the additional living cast Kesa Morn, Drin Hal and Mera Silt. Olan and Dena remain proposals. It links the current mechanics and seeds a distinct dramatic question for every boss. It does not claim 66 finished antagonist arcs or playable new character chapters. Full profiles, scenes, consequences and editorial review remain open.
 
 | Boss | Fixed threat | Kind | Working dramatic question |
 | --- | --- | --- | --- |
@@ -72,3 +72,5 @@ This authoring register covers the eleven current survivors, all 66 current boss
 | Mourning Kettle | 1 | object | Who kept a place at this table, and what can returning to it change for the people who remain? |
 
 The structured source is docs/story-cast-register.json. Existing lore remains in the shared catalog. Draft questions are proposals for development, not additional established facts. Class technique references use actual catalog IDs and grades; no permanent class-strength ranking has been invented.
+
+Perrin Moss now has an English ward-porch scene with Heda Linn, another Alchemist who checks incoming ward stores. Heda and Perrin share dyehouse history; their work, tastes and disagreements are not a completed personal arc. Perrin’s twelve-class gameplay integration is still a working candidate until the full release gate.

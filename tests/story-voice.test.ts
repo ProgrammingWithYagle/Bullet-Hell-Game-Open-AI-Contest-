@@ -125,8 +125,8 @@ test("The canonical playable word count counts current ensemble prose once while
     readFileSync("reviews/story-word-count.json", "utf8"),
   );
   assert.equal(words.openingWords, 3392);
-  assert.equal(words.authoredPlayableMainStoryWords, 5425);
-  assert.equal(words.totalAuthoredMainStoryIncludingLegacyWords, 7456);
+  assert.equal(words.authoredPlayableMainStoryWords, 5741);
+  assert.equal(words.totalAuthoredMainStoryIncludingLegacyWords, 7772);
   assert.equal(words.legacyPrototypeOnlyWords, 2031);
   assert.equal(words.targetAchieved, false);
   assert.equal(words.uniquePassages, 10);

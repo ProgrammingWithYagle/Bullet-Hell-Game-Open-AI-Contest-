@@ -5,11 +5,11 @@ import { readFileSync } from 'node:fs';
 import { progressionMatrix } from '../tools/progression-matrix.ts';
 import { Game, data } from '../src/shared/game.ts';
 import { type BossId } from '../src/shared/protocol.ts';
-test('all 330 timed class/mode/difficulty and 66 Endless combinations preserve legal power, saves and personal progress', () => {
+test('all 288 timed Free Play class/mode/difficulty and 72 Endless combinations preserve legal power, saves and personal progress', () => {
   const rows = progressionMatrix();
-  assert.equal(rows.filter((r) => r.campaign).length, 330);
-  assert.equal(rows.filter(r=>r.mode==='story').length,66);
-  assert.equal(rows.filter((r) => !r.campaign).length, 66);
+  assert.equal(rows.filter((r) => r.timed).length, 288);
+  assert.equal(rows.filter(r=>r.mode==='story').length,0);
+  assert.equal(rows.filter((r) => !r.timed).length, 72);
   assert(rows.every((r) => r.finalSp === 27 && r.capstones <= 1));
 });
 test('runtime opening health matches the independently published authored uptime-model rows', () => {

@@ -1,3 +1,4 @@
+import {alchemistMessages} from '../locales/source/alchemist-class.mjs';
 import {wardSkirmishMessages} from '../locales/source/ward-skirmish.mjs';
 import {storyReadingMessages} from '../locales/source/story-reading.mjs';
 import {lamplightWatchMessages} from '../locales/source/lamplight-watch.mjs';
@@ -58,12 +59,12 @@ const same = (a,b) => JSON.stringify(a) === JSON.stringify(b);
 const kind = value => typeof value === 'string' ? 'text' : value && typeof value === 'object' && !Array.isArray(value) ? 'plural' : 'invalid';
 const tokens = value => kind(value) === 'text' ? placeholders(value) : kind(value) === 'plural' ? [...new Set(Object.values(value.forms ?? {}).filter(x=>typeof x==='string').flatMap(placeholders))].sort() : [];
 // This health-row format contains only translated arguments, numbers and punctuation.
-const commonEnglishKeys = new Set(['ui.retinueHealthRow','ui.brand','template.effect','template.effectFlat','template.effectMultiplier','template.effectPercent','template.percent','template.perSecond','template.seconds']);
+const commonEnglishKeys = new Set(['ui.alchemyQueue','ui.retinueHealthRow','ui.brand','template.effect','template.effectFlat','template.effectMultiplier','template.effectPercent','template.percent','template.perSecond','template.seconds']);
 // Explicit cognates and loanwords. An unlisted verbatim English message is an error.
 const cognates = {
   es:['branch.general','ui.variantBrutal','branch.control','difficulty.normal','threat.1','ui.audio','ui.no'],
   fr:['skill.general-sprint.name','ui.sprint',"journal.classes",'attack.charge.name','branch.bastion','branch.endurance','branch.protection','branch.suppression','branch.triage','class.assassin.name','class.mage.name','class.tank.name','difficulty.normal','stat.grade','supply.antidote.name','threat.1','threat.2','threat.4','threat.8','ui.audio','ui.boss','ui.leaderboardScore','ui.pause','ui.phase','ui.version'],
-  de:['skill.general-sprint.name','ui.sprint','branch.triage','difficulty.baby','difficulty.normal','stat.radius','threat.1','ui.audio','ui.boss','ui.pause','ui.phase','ui.region','ui.version','ui.vibration'],
+  de:['class.alchemist.name','skill.general-sprint.name','ui.sprint','branch.triage','difficulty.baby','difficulty.normal','stat.radius','threat.1','ui.audio','ui.boss','ui.pause','ui.phase','ui.region','ui.version','ui.vibration'],
   'pt-BR':["journal.classes",'difficulty.normal','threat.1'],
   id:['attack.spiral.name','difficulty.normal','stat.radius','threat.1','ui.abstain','ui.audio']
 };
@@ -144,6 +145,7 @@ export function validateOne(document, canonical, content, locale) {
       ...Object.keys(swordsmanMessages('en',content,canonical.messages)),
       ...Object.keys(summonerMessages('en',content,canonical.messages)),
       ...Object.keys(rangerMessages('en',content,canonical.messages)),
+      ...Object.keys(alchemistMessages('en',content,canonical.messages)),
       ...Object.keys(wardenMessages('en')),
       ...Object.keys(skillMapMessages('en')),
       ...Object.keys(difficultyRuleMessages('en')),
@@ -171,7 +173,7 @@ export function validateOne(document, canonical, content, locale) {
     if (!Object.hasOwn(messages,key)) fail(`missing feature coverage: ${key}`);
   }
   const expectedCategories = new Intl.PluralRules(locale).resolvedOptions().pluralCategories.slice().sort();
-  const expandedSource = {...smallWakesMessages(locale),...expansionMessages(locale), ...earlyWatchMessages(locale),...skillMapMessages(locale),...difficultyRuleMessages(locale),...classTalentMessages(locale,content),...wardenMessages(locale),...crazedHorizonMessages(locale),...courierRouteMessages(locale),...ratcatcherMusterMessages(locale),...clerkAppealMessages(locale),...tollkeeperReturnMessages(locale),...marshalMessages(locale),...widowMessages(locale),...ambulanceMessages(locale),...matronMessages(locale),...moldMessages(locale),...bellMessages(locale),...runtimeExtraMessages(locale),...bossGuideMessages(locale),...stitchworkMessages(locale),...fieldJournalMessages(locale),...shieldSpecializationMessages(locale),...generalMobilityMessages(locale),...glassSurgeryMessages(locale),...storyCampaignMessages(locale),...bakerOvenMessages(locale),...sluicePressureMessages(locale),...playHubsMessages(locale),...stationSignalsMessages(locale),...lamplightWatchMessages(locale),...storyReadingMessages(locale),...wardSkirmishMessages(locale),...bardMessages(locale,content,document.messages),...swordsmanMessages(locale,content,document.messages),...summonerMessages(locale,content,document.messages),...rangerMessages(locale,content,document.messages)};
+  const expandedSource = {...smallWakesMessages(locale),...expansionMessages(locale), ...earlyWatchMessages(locale),...skillMapMessages(locale),...difficultyRuleMessages(locale),...classTalentMessages(locale,content),...wardenMessages(locale),...crazedHorizonMessages(locale),...courierRouteMessages(locale),...ratcatcherMusterMessages(locale),...clerkAppealMessages(locale),...tollkeeperReturnMessages(locale),...marshalMessages(locale),...widowMessages(locale),...ambulanceMessages(locale),...matronMessages(locale),...moldMessages(locale),...bellMessages(locale),...runtimeExtraMessages(locale),...bossGuideMessages(locale),...stitchworkMessages(locale),...fieldJournalMessages(locale),...shieldSpecializationMessages(locale),...generalMobilityMessages(locale),...glassSurgeryMessages(locale),...storyCampaignMessages(locale),...bakerOvenMessages(locale),...sluicePressureMessages(locale),...playHubsMessages(locale),...stationSignalsMessages(locale),...lamplightWatchMessages(locale),...storyReadingMessages(locale),...wardSkirmishMessages(locale),...bardMessages(locale,content,document.messages),...swordsmanMessages(locale,content,document.messages),...summonerMessages(locale,content,document.messages),...rangerMessages(locale,content,document.messages),...alchemistMessages(locale,content,document.messages)};
   for (const [key,text] of Object.entries(recoveryMessages(locale))) {
     if (messages[key] !== text) fail(`recovery UI source mismatch at ${key}`);
   }

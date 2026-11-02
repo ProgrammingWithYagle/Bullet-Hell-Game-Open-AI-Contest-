@@ -60,6 +60,9 @@ import './ui/boss-defeat.css';
 import './ui/waiting-room.css';
 import './ui/interface-clarity.css';
 import './ui/retinue.css';
+import {AlchemyControls} from './alchemy-controls.ts';
+import {alchemyCommitBlocked} from './alchemy-presentation.ts';
+import './ui/alchemy.css';
 import {RetinueControls} from './retinue-controls.ts';
 import {rangerCommitBlocked} from './ranger-presentation.ts';
 import './ui/home-gallery.css';
@@ -89,6 +92,7 @@ const app = document.querySelector<HTMLElement>('#app')!,
   bossGuide = new BossGuideState();
 let guideReturnFocus: HTMLElement | null = null;
 let retinueUI:RetinueControls|undefined;
+let alchemyUI:AlchemyControls|undefined;
 let session: Session | undefined,
   game: Phaser.Game | undefined,
   scene: CombatScene | undefined,
@@ -336,8 +340,9 @@ async function begin(
       const p = prediction.player ?? view.players.find((p) => p.id === active.id);
       const aimTarget=combatAimTarget(view,p);
       const frame = controls!.sample(view.tick, p, aimTarget);
+      if(p?.classId==='alchemist'&&frame.e){active.throwAlchemy(controls!.flaskPoint(p));frame.e=false;}
       active.input(frame);
-      if(controls!.takeRetinueCycle())retinueUI?.cycle();
+      if(controls!.takeRetinueCycle()){if(p?.classId==='alchemist')alchemyUI?.cycle();else retinueUI?.cycle();}
       prediction.submit(frame, view);
       if (scene) scene.predicted = prediction.player;
     }, 1000 / 30);
@@ -455,6 +460,8 @@ function setupGame(online: boolean,classId:string) {
     const retinueRoot=document.createElement('section');
   actionDock.append(retinueRoot);
   retinueUI=new RetinueControls(retinueRoot,t,order=>session?.orderRetinue(order),number);
+  const alchemyRoot=document.createElement('section');actionDock.append(alchemyRoot);
+  alchemyUI=new AlchemyControls(alchemyRoot,t,recipe=>session?.selectAlchemy(recipe),number);
   scene = new CombatScene();
   controls = new Controls($('stage'),point=>scene!.canvasToWorld(point),()=>scene!.viewport());
   scene.onLoadProgress = value => {
@@ -558,6 +565,7 @@ function update(view: View) {
   scene.predicted = prediction.player;
   const p = view.players.find((p) => p.id === session!.id);
   retinueUI?.update(view,session.id,paused||bossGuide.open,bindingLabel(inputOptions.bindings.retinue[0]));
+  alchemyUI?.update(view,session.id,paused||bossGuide.open,bindingLabel(inputOptions.bindings.retinue[0]));
   if (!p) return;
   const defeated = showingBossDefeat(view.boss, view.tick), banner = $('boss-defeated-banner');
   const defeatId = view.run.id + ':' + view.boss.defeatedAt;
@@ -604,8 +612,8 @@ function update(view: View) {
   shield.max=Math.max(1,p.maxShield);shield.value=Math.max(0,Math.min(p.maxShield,p.shield));
   shield.closest<HTMLElement>('.shield-meter')!.dataset.unavailable=String(p.maxShield===0);
   $('shield-text').textContent=number(p.shield)+' / '+number(p.maxShield);
-  $('ammo-label').textContent=t(p.classId==='ranger'?(p.reloadAt>view.combatTick?'ui.rangerReplenish':'ui.rangerQuiver'):p.classId==='swordsman'?(p.reloadAt>view.combatTick?'ui.swordRecovery':'ui.swordBreath'):p.classId==='summoner'?(p.reloadAt>view.combatTick?'ui.summonerRebind':'ui.summonerFocus'):(p.reloadAt>view.combatTick?'ui.reloading':'ui.ammo'));
-  $('ammo').textContent=number(p.ammo)+(p.classId==='ranger'?' / '+number(p.kit.rangerQuiverCapacity??p.ammo):'');
+  $('ammo-label').textContent=t(p.classId==='alchemist'?(p.reloadAt>view.combatTick?'ui.alchemyRefill':'ui.alchemySamples'):p.classId==='ranger'?(p.reloadAt>view.combatTick?'ui.rangerReplenish':'ui.rangerQuiver'):p.classId==='swordsman'?(p.reloadAt>view.combatTick?'ui.swordRecovery':'ui.swordBreath'):p.classId==='summoner'?(p.reloadAt>view.combatTick?'ui.summonerRebind':'ui.summonerFocus'):(p.reloadAt>view.combatTick?'ui.reloading':'ui.ammo'));
+  $('ammo').textContent=number(p.ammo)+(p.classId==='ranger'?' / '+number(p.kit.rangerQuiverCapacity??p.ammo):p.classId==='alchemist'?' / '+number(p.kit.alchemySamplesCapacity??p.ammo):'');
   $('coins-value').textContent=number(p.coins);
   $('skill-points-value').textContent=number(p.sp);
   $('skill-points-value').closest<HTMLElement>('.vital-resource')!.hidden=Boolean(view.chapter);
@@ -640,7 +648,7 @@ function update(view: View) {
             .map((n) => bindingLabel(inputOptions.bindings[('supply' + n) as 'supply1'][0]))
             .join(' / '),
         });
-    const artId=slot.id==='ammo-pouch'?(p.classId==='swordsman'?'swordsman-canteen':p.classId==='summoner'?'summoner-thread-spool':p.classId==='ranger'?'ranger-arrow-bundle':slot.id):slot.id;
+    const artId=slot.id==='ammo-pouch'?(p.classId==='swordsman'?'swordsman-canteen':p.classId==='summoner'?'summoner-thread-spool':p.classId==='ranger'?'ranger-arrow-bundle':p.classId==='alchemist'?'alchemist-sample-case':slot.id):slot.id;
     if (button.dataset.item !== artId) {
       button.dataset.item = artId;
       button.querySelector('[data-supply-glyph]')!.innerHTML =
@@ -750,7 +758,7 @@ function update(view: View) {
       e.dataset.ability = key;
       abilityList.append(e);
     }
-    const rangerBlocked=rangerCommitBlocked(p,key,view.combatTick);
+    const rangerBlocked=rangerCommitBlocked(p,key,view.combatTick)||alchemyCommitBlocked(p,key,view.combatTick);
     e.className = at <= view.combatTick && !(key==='sprint'&&p.sprintExhausted) && !rangerBlocked ? 'ability ready' : 'ability';
     e.title = name || label;
     const touch = document.querySelector<HTMLElement>('.touch-buttons [data-action="' + key + '"]');
@@ -989,6 +997,7 @@ function destroy() {
   if (timer) clearInterval(timer);
   timer = undefined;
   retinueUI?.dispose();retinueUI=undefined;
+  alchemyUI?.dispose();alchemyUI=undefined;
   controls?.destroy();
   game?.destroy(true);
   game = undefined;

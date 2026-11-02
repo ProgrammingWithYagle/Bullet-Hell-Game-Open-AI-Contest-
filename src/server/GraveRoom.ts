@@ -167,6 +167,8 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       if(delivery.message)for(const peer of this.clients)if(this.roomChat.receives(peer.sessionId))peer.send('chat',delivery.message);
       client.send('chatReceipt',delivery.receipt);
     });
+    this.onMessage('alchemyRecipe',(client,value:unknown)=>{if(!this.journal.blocked&&!this.state.matchPaused&&this.readyAt.has(client))this.game.selectAlchemy(client.sessionId,value);});
+    this.onMessage('alchemyThrow',(client,value:unknown)=>{if(!this.journal.blocked&&!this.state.matchPaused&&this.readyAt.has(client))this.game.throwAlchemy(client.sessionId,value);});
     this.onMessage('retinueOrder',(client,value:unknown)=>{if(!this.journal.blocked&&!this.state.matchPaused&&this.readyAt.has(client))this.game.orderRetinue(client.sessionId,value);});
     this.onMessage('input', (client, value: unknown) => {
       if (this.journal.blocked || this.state.matchPaused) return;

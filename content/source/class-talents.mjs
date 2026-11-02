@@ -1,4 +1,5 @@
 export const classTalents = {
+  alchemist: ['split-pour', 'settled-batch', 'second-extraction'],
   ranger: ['crosswind', 'linked-stakes', 'long-survey'],
   summoner: ['running-pack', 'closed-ranks', 'patient-company'],
   swordsman: ['return-step', 'open-circle', 'second-watch'],

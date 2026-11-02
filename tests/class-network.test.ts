@@ -12,7 +12,7 @@ const until = async (check: () => boolean) => {
   }
 };
 test(
-  'eleven real clients keep every class identity and replicate constructs, veil, charges and temporary team shields',
+  'twelve real clients keep every class identity and replicate constructs, veil, charges and temporary team shields',
   { timeout: 22000 },
   async () => {
     const { server, httpServer } = createGameServer();

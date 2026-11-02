@@ -1,5 +1,8 @@
 import catalog from '../../content/catalog.json';
 export type TalentId =
+  | 'split-pour'
+  | 'settled-batch'
+  | 'second-extraction'
   | 'crosswind'
   | 'linked-stakes'
   | 'long-survey'

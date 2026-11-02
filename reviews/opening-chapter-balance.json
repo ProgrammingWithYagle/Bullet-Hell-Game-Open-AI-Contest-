@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentRevision": "8bda5e247f3df132a9c80f244fd8a7c2b3eaf468e2c6a8927f87a35937fbe110",
+  "contentRevision": "1dd8789a6050eac2ca2f677bc15a8cdbfafaf78d73226d5be7cfbfc3ed70ba04",
   "kind": "Analytical early-build feasibility, not human balance",
   "assumptions": {
     "rangedAttackUptime": 0.65,
@@ -16,7 +16,7 @@
     "preparedFoundationsDoNotAddWeaponDamage": true,
     "solo": true
   },
-  "rows": 132,
+  "rows": 144,
   "deadlineMisses": 0,
   "worst": [
     {
@@ -90,6 +90,42 @@
       "companionTheoreticalDps": 0,
       "estimatedSeconds": 327.1623856020139,
       "deadlineRatio": 0.7270275235600309
+    },
+    {
+      "classId": "alchemist",
+      "difficulty": "insane",
+      "bossId": "matron",
+      "availableCoins": 108,
+      "spentCoins": 90,
+      "weapon": "alchemist-0",
+      "skillPoints": 0,
+      "preparedWeaponDamageEffects": 0,
+      "health": 7960.5,
+      "deadlineSeconds": 450,
+      "attackUptime": 0.65,
+      "companionUptime": 0,
+      "companionWarmupSeconds": 0,
+      "companionTheoreticalDps": 0,
+      "estimatedSeconds": 323.28216374269005,
+      "deadlineRatio": 0.718404808317089
+    },
+    {
+      "classId": "alchemist",
+      "difficulty": "hellish",
+      "bossId": "matron",
+      "availableCoins": 102,
+      "spentCoins": 90,
+      "weapon": "alchemist-0",
+      "skillPoints": 0,
+      "preparedWeaponDamageEffects": 0,
+      "health": 7642.079999999999,
+      "deadlineSeconds": 450,
+      "attackUptime": 0.65,
+      "companionUptime": 0,
+      "companionWarmupSeconds": 0,
+      "companionTheoreticalDps": 0,
+      "estimatedSeconds": 310.3508771929824,
+      "deadlineRatio": 0.6896686159844053
     },
     {
       "classId": "ranger",
@@ -198,42 +234,6 @@
       "companionTheoreticalDps": 0,
       "estimatedSeconds": 289.4009749648847,
       "deadlineRatio": 0.6431132776997438
-    },
-    {
-      "classId": "engineer",
-      "difficulty": "insane",
-      "bossId": "matron",
-      "availableCoins": 108,
-      "spentCoins": 90,
-      "weapon": "engineer-0",
-      "skillPoints": 0,
-      "preparedWeaponDamageEffects": 0,
-      "health": 7960.5,
-      "deadlineSeconds": 450,
-      "attackUptime": 0.65,
-      "companionUptime": 0,
-      "companionWarmupSeconds": 0,
-      "companionTheoreticalDps": 0,
-      "estimatedSeconds": 288.18295739348366,
-      "deadlineRatio": 0.6404065719855192
-    },
-    {
-      "classId": "tank",
-      "difficulty": "hellish",
-      "bossId": "constable",
-      "availableCoins": 68,
-      "spentCoins": 0,
-      "weapon": "tank-0",
-      "skillPoints": 0,
-      "preparedWeaponDamageEffects": 0,
-      "health": 4665.6,
-      "deadlineSeconds": 360,
-      "attackUptime": 0.65,
-      "companionUptime": 0,
-      "companionWarmupSeconds": 0,
-      "companionTheoreticalDps": 0,
-      "estimatedSeconds": 227.70058177117,
-      "deadlineRatio": 0.6325016160310277
     }
   ],
   "limits": [

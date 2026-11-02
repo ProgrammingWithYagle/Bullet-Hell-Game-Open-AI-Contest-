@@ -21,6 +21,11 @@ Each current class can study one existing D- support foundation. Knowledge, comp
 | Mage | Damage a valid enemy with the slowing Binding Sigil |
 | Engineer | Have an owned turret/siege construct land a damaging shot |
 | Assassin | Land a damaging shot/sweep while using actual concealment |
+| Bard | Land an owned Phrase powered by cadence earned from a real primary hit |
+| Swordsman | Damage an ordinary enemy with an owned committed Measured Cut |
+| Summoner | Mark an ordinary enemy with a real primary hit, then have the same owner's retinue damage it during that mark |
+| Ranger | Damage an ordinary enemy with the owner's released Drawn Line arrow |
+| Alchemist | Damage an ordinary enemy with the owner's useful initial Flare or Binding splash; later pulses and healing do not count |
 
 The care marker is a protected treatment location, not an enemy, player clone or source of repeatable injuries. Each eligible Medic receives a separate finite patient need, so another Medic cannot consume all of their demonstration. Invalid, empty, wrong-owner and wrong-instance actions do not count. The green marker and HUD identify the assigned patient. No client action-count/proof payload is accepted.
 
@@ -32,7 +37,7 @@ Before difficulty multipliers, starting cash is80and cumulative income rises by2
 
 Chapter boss deadlines are explicitly2×their base/form time. Their health, attacks, phase rules and fixed threat grades remain shared. This avoids withholding SP while retaining a timer designed around rapid purchased builds. Free Play offers the same extended clock as a marked custom option, excluded from normal records. The ordinary scenario keeps its separate180-second objective deadline.
 
-The84-row early-build model uses actual shared boss health, shop transactions and weapon stats with65%attack uptime,70%shotgun pellet hits, no critical bonuses or class-ability damage. Its worst case is the Insane Tank/Matron estimate at about75.7%of the available clock. It excludes survival, actual movement/cover, nest-clearing work and human accuracy. This is feasibility evidence, not final balance acceptance.
+The144-row early-build model uses actual shared boss health, shop transactions and weapon stats with65%attack uptime,70%shotgun pellet hits, no critical bonuses or class-ability damage. Its current worst case is the Insane Ranger/Matron estimate at about78.1%of the available clock. It excludes survival, actual movement/cover, nest-clearing work and human accuracy. This is feasibility evidence, not final balance acceptance.
 
 ## Records and compatibility
 
@@ -44,8 +49,8 @@ Fresh `Game`/room/practice Story starts default to `one-place-left`. The old con
 
 ## Writing and remaining scope
 
-The continuation adds five English scenes and three route choices:1,176new counted words. The fresh Story Campaign currently contains4,430 English words across10unique passages, including the 3,120-word gate opening/first return, now including Iven. An additional2,031words across102earlier prototype-only passages remain available as legacy material; the combined authored total is6,461. The legacy-only text is reported separately from the fresh-campaign target. Counts include all three current branches, not one-playthrough length. The long-term base-story target remains5,000,000English words, excluding optional routes, translations and UI.
+The current fresh Campaign contains5,741 English words across10 unique passages:3,392 opening/first-return words plus2,349 continuation/choice words. Legacy-only2,031words across102passages remain separately available; combined authored text is7,772words. Counts include all three current main-route alternatives rather than a single playthrough. Optional letters, personal chapters, translations and UI are excluded from the five-million-English-word base-story ambition.
 
-Miri now appears on the registry route. Kesa Morn (Engineer), Drin Hal (Medic) and Mera Silt are additional living cast members, independent of playable class identities. They have actions and obligations here, not completed arcs. All eight playable leads remain recent class entrants. New continuation prose is currently English; the gate opening/first return and earlier prototype retain their existing English/Spanish/Arabic editions. Bard now has its own portrait, directional combat art, synthesized cues and first foundation. Expression/voice production, distinct mob archetypes, four further classes, later chapters and broader mastery remain open.
+All twelve leads are recent entrants to shared disciplines. Miri, Kesa Morn, Drin Hal, Mera Silt, Nell Dace, Els Pell and Heda Linn have roles independent of the playable class identities. The English ward scenes add ordinary relationships and practical work without manufacturing techniques, equipment transfers or completed personal arcs. Opening editions and later English-only prose retain their explicit language boundaries. Voice/expression production, distinct mob archetypes, later chapters, durable characters and broader mastery remain open.
 
 Automated evidence covers simulation, native controller/graphics calls, persistence, negative cases and real WebSocket peers. No rendered/browser, physical-device, native-language, listening or human literary/balance acceptance is inferred. Browser automation remains disabled under the user's standing direction.
