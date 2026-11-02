@@ -73,4 +73,4 @@ This authoring register covers the twelve current survivor candidates, all 66 cu
 
 The structured source is docs/story-cast-register.json. Existing lore remains in the shared catalog. Draft questions are proposals for development, not additional established facts. Class technique references use actual catalog IDs and grades; no permanent class-strength ranking has been invented.
 
-Perrin Moss now has an English ward-porch scene with Heda Linn, another Alchemist who checks incoming ward stores. Heda and Perrin share dyehouse history; their work, tastes and disagreements are not a completed personal arc. Perrin’s twelve-class gameplay integration is still a working candidate until the full release gate.
+Perrin Moss now has an English ward-porch scene with Heda Linn, another Alchemist who checks incoming ward stores. Heda and Perrin share dyehouse history; their work, tastes and disagreements are not a completed personal arc. Perrin’s twelve-class gameplay integration passes source62030d3 verification; complete arcs and final human acceptance remain open.

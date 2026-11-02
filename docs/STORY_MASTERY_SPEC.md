@@ -2,7 +2,7 @@
 
 **Current direction, 2026-11-01:** Story Campaign exclusively uses the new chapter/learning system. Free Play preserves the original story-free SP runs. Do not add a second fast SP-based Story start. Earlier Story prototype saves/archives remain compatibility data, not a fresh Campaign mode. See [OPENING_CHAPTER.md](OPENING_CHAPTER.md) for the first playable implementation and its limits.
 
-This specification develops the user's accepted direction. It is not the progression system currently running: the existing fifteen-boss Story prototype still spends SP. Free Play can retain its SP system; Story needs learning, practice, proof and preparation with lasting character records.
+This specification develops the user's accepted direction. The current introductory chapter implements one owned D- learn/prove/prepare path for each of twelve roles, with safe-boundary persistence and separate local history. The full lasting character system and later learning remain unfinished. The fifteen-boss SP Story is archive/restore compatibility only; Free Play retains SP.
 
 ## Distinct records
 
@@ -15,7 +15,7 @@ A character's training record identifies learned techniques, completed proofs an
 
 These are facts and choices, not balances to spend. There is no interchangeable mastery coin. Money remains available for equipment, supplies and practical arrangements. A player cannot buy a proof by adding money or by importing a numeric total.
 
-Use stable character IDs and technique IDs. The seven existing leads are distinct people in shared classes; twelve eventual classes do not imply exactly twelve people. Do not store a discipline's entire world's progress in one class-wide biography. Existing class-based cosmetic/profile records remain separate until a migration is designed.
+Use stable character IDs and technique IDs. The twelve leads are distinct people in shared classes; twelve playable classes do not imply exactly twelve people in the world. Do not store a discipline's entire world's progress in one class-wide biography. Existing class-based cosmetic/profile records remain separate until a migration is designed.
 
 ## Proof ownership and authority
 
@@ -45,7 +45,7 @@ These candidate anchors use actual shared D- nodes. Final criteria must be imple
 | Engineer | engineer-constructs-1 | Can a placed construct do useful work under the real terrain limits? | Place, maintain and use a construct during an objective; no proof from placing and cancelling it in safety |
 | Assassin | assassin-ambush-1 | Can concealment serve a task without ignoring existing hazards? | Use the actual concealment/step rules in a threatened traversal, then complete a task; the lesson does not grant immunity to old hazards |
 
-The five new classes need equally deliberate proofs once their actual kits exist. Do not invent their mastery criteria around effects that have not been implemented. Bard's performance can have a consequential use without requiring a compulsory twitch rhythm game; Summoner's proof must involve real owned units and commands, not an arbitrary summoned-count total.
+All five added classes now have actual introductory proofs listed in OPENING_CHAPTER.md. Later demonstrations must remain tied to implemented effects. Bard's performance can have a consequential use without requiring a compulsory twitch rhythm game; Summoner's proof must involve real owned units and commands, not an arbitrary summoned-count total.
 
 ## Grades and preparation
 

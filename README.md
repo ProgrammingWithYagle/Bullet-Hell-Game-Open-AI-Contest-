@@ -1,10 +1,10 @@
 # Grave Accord
 
-Current local candidate **2026.11.02-alchemist / protocol48** adds [Alchemist / Perrin Moss](docs/ALCHEMIST.md): finite ingredients, committed bottles, intentional landings, useful mixtures and three transformations. The accepted twelve-class roster is implemented, with648 class nodes,48 weapons,36 transformations and two General Free Play skills. All66 bosses remain playable; existing-boss quality passes remain18/60.
+Current development build **2026.11.02-alchemist / protocol 48** completes the accepted twelve-discipline roster with [Alchemist / Perrin Moss](docs/ALCHEMIST.md): finite ingredients, committed bottles, intentional landings and useful mixture combinations. The game has 66 playable bosses,12 classes,648 class nodes,48 weapons,36 transformations and two General Free Play skills. Existing-boss quality passes remain18/60.
 
-[Story Campaign](docs/OPENING_CHAPTER.md) exclusively uses slower learning/proofs with no SP or mutation draft. Story-free Free Play keeps rapid SP progression and mutations. The complete local source gate passes1,238tests, TypeScript,15catalogs,144early-chapter cases and the production/art build. Exact-source CI and new frozen audiences are pending; [the handoff](handoff/NEXT_CHAT.md) still records the verified Ranger previews.
+[Campaign](docs/OPENING_CHAPTER.md) exclusively uses slower learning/proofs with no SP or mutation draft. Story-free Free Play keeps rapid SP progression and mutations. [Exact source 62030d3 CI](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/41475492836) passes 1,238 tests, TypeScript,15 catalogs,144 early-chapter cases and the production/art build. Matching frozen [testing](http://127.0.0.1:5312/) and [public interface](http://127.0.0.1:5313/) pass actual room and gameplay probes. [The handoff](handoff/NEXT_CHAT.md) records fingerprints and limits.
 
-The longer campaign, twelve full personal arcs, later mastery, durable characters and final human/rendered/device/language/listening/balance acceptance remain unfinished. Published Site version4/protocol43 is a separate older release. Only the user decides whole-game completion.
+The longer campaign, twelve full personal arcs, later mastery, durable characters and final human/rendered/device/language/listening/balance acceptance remain unfinished. Published Site version4/protocol 43 is a separate older release. Only the user decides whole-game completion.
 
 ![Grave Accord cover](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/cover.jpg)
 

@@ -8,7 +8,7 @@ The user’s new direction supersedes the short-run campaign model. These are ac
 
 Story and Free Play remain separate. Story does not offer random mutation votes. Skill points should be replaced in Story by a different form of character development; money can still buy equipment. Advancement and resources should be considerably slower and more meaningful than the current fifteen-fight prototype. SS+ is a major late-story accomplishment, not something to reach by roughly twenty chapters.
 
-The seven playable leads only recently entered their respective classes. A class is a shared discipline with many practitioners, not the name of one unique character. Their prior jobs, relationships, civilian expertise and service remain valid backstory. Do not turn an experienced worker into an established master of a newly entered class. Supporting characters, rivals, mentors and human antagonists exist independently of the playable roster.
+The twelve playable leads only recently entered their respective classes. A class is a shared discipline with many practitioners, not the name of one unique character. Their prior jobs, relationships, civilian expertise and service remain valid backstory. Do not turn an experienced worker into an established master of a newly entered class. Supporting characters, rivals, mentors and human antagonists exist independently of the playable roster.
 
 Bosses belong at consequential story points. Ordinary enemies, investigation, travel, conversation, rescue and defense should also carry the campaign. Zombies, skeletons and wraiths are requested directions for distinct regular enemies. Living antagonists can create conflicts that do not end in a boss fight. New playable maps, enemies, techniques and scenarios must also have an appropriate shared Free Play implementation.
 
@@ -36,7 +36,7 @@ Author a chapter as a sequence of scene and objective nodes, rather than making 
 
 The current Minions controller has shared-authority rat and ordinary actors. It is useful infrastructure, not a complete zombie/skeleton/wraith roster or standalone skirmish mode. New archetypes need distinct silhouettes and behaviors, fair attack warnings, solo/support-role viability, co-op scaling, resources and record handling. Defending a cart or clearing a street must not award an unrelated boss stamp.
 
-Free Play should expose the same regular-enemy scenarios through suitable presets or customization. Story choices and earned narrative progression stay separate. Concealed future bosses and secret content retain their spoiler rules. The current15-encounter Story still consists of boss fights; the new encounter graph is open work.
+Free Play should expose the same regular-enemy scenarios through suitable presets or customization. Story choices and earned narrative progression stay separate. Concealed future bosses and secret content retain their spoiler rules. The earlier15-encounter Story archive consists of boss fights. The current introductory chapter has two real bosses and one ordinary objective. A broader encounter graph remains open work.
 
 ## Next implementation sequence
 
