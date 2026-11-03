@@ -1,5 +1,61 @@
 # Grave Accord: current continuation checkpoint
 
+Updated 2026-11-02 after the General/Specializations and sentry-polish slice. **The full development goal is active and unfinished; only the user decides when the game is complete.** This is a continuation checkpoint, not a final release or a requested pause.
+
+Use the SAME checkout, feat/first-playable-loop and draft PR14. Every Git invocation uses git -c core.bare=false. Inspect live HEAD/status/services/remote CI before edits. No clone/worktree, main merge or production deployment. Later evidence/documentation commits may sit above the playable source.
+
+## Active focus: finish Free Play classes, one at a time
+
+Follow [FREE_PLAY_POLISH_ROADMAP.md](../docs/FREE_PLAY_POLISH_ROADMAP.md) and [SKILL_TREE_RESEARCH.md](../docs/SKILL_TREE_RESEARCH.md): classes first, then bosses individually, then the remaining Free Play loop/breadth; **Campaign last**. Older Campaign-next recommendations and stale ledger priority text are superseded.
+
+The General/Specializations separation and aiming correction are implemented. **Engineer is still the current focus and is not finished.** It has two live D- Q entry techniques, not a completed three-path tree. Next develop meaningful internal Machinery choices, then Traps, then a distinctive Field Works third pathway, with real functional comparisons and quality checks before the next. Names/input/tuning proposals are not final. Later roll through the other eleven classes individually, each with at least three distinctive specializations. Do not mass-apply the parked uncompiled broad sketch, generate percentage filler, add empty branch cards or open another feature stream.
+
+## Latest verified playable source
+
+- Source **a63533a5a4401659bac44fc8ffa7f72dd82774bc**, build **2026.11.02-class-tree-polish**, protocol **50**.
+- Full local gate: **1,272/1,272 tests pass**, TypeScript, content/locales/story checks,144 early-Campaign cases, production build,71 encounter/300 survivor/60 companion atlas contracts.
+- Exact-source [push CI41579122834](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/41579122834), job125729520888, and [PR CI41579139487](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/41579139487), job125729573579: all jobs and steps pass. [Receipt](../reviews/class-tree-polish-2026-11-02/source-ci.json).
+- Content SHA-256 remains a6a17f1935ebd8e91d8d5916a7c8ee920190e13bc42a07e09dec98723e94390f. Runtime source3abaf4336dbfa9164c116aca02edba90ca99724923b967f763431d086584d332; source/test snapshot dc50e4f6de59719cee876e03ceb47c0b198a2af4b15eda7d3d51c5e1124abbe7.
+- Final [full-gate01.log](../reviews/class-tree-polish-2026-11-02/full-gate01.log), SHA-256 afcaaa4fdc383fd742a5a59a48a33b67d3f6587a6fa5da7e0b3594c1f291d073. The scope preserves raw log bytes. Earlier focused failures are retained and labeled in its README; the final gate is green.
+- [Source verification](../reviews/class-tree-polish-2026-11-02/source-verification.json) proves the issued catalog/ledger are unchanged, only two existing English pilot values changed per locale, all36legacy transformations remain single purchases in General, and the WIP hashes/forward check match.
+
+## Implemented behavior and boundaries
+
+[CLASS_TREE_POLISH.md](../docs/CLASS_TREE_POLISH.md) and [ENGINEER_PATHWAYS.md](../docs/ENGINEER_PATHWAYS.md) describe the actual slice.
+
+General contains the original numerical class foundations and shared mobility for all12classes. Classic shows the selected18class nodes plus two shared purchases; expanded shows all54plus two. All648issued class nodes, the two shared IDs and the two Engineer IDs retain costs, prerequisites and effects. The36legacy transformations remain in General pending a deliberate presentation migration; never duplicate their purchase.
+
+Engineer has a dedicated Specializations tab with an authored map of the real Level Footing reference and the two live choices. The reference opens General at the actual node/branch. It does not charge for a duplicate. Inspection, conflicts, guarded spending, spatial keyboard focus, Tab exit, General scroll retention and compact linear presentation are checked. No placeholder Field Works or fictional hybrid is selectable.
+
+Carriage Sentry now holds its deployed offset while following player movement; barrel aiming is independent. Changing aim while standing still no longer moves it or restarts bracing. Movement still stops fire, obeys150px/s and requires0.5sbracing. Paired offsets, damage/health/range/lifetime/cooldown, terrain/cover, overclock and owner cleanup remain. Pressure Charges are unchanged. The native before-fix fixture recorded14fixed-aim shots versus zero sweeping-aim shots; fixed four-heading/paired/relocation/source/network checks pass.
+
+Protocol50 distinguishes the corrected construct state. Issued protocol49/content a6a17f… local safe boundaries explicitly migrate existing classes, owned Engineer choices, equipment, money and chapter knowledge. They contain no live constructs. The established local Solo session-ID mapping remains; character identity/proof are retained. Earlier migrations continue. Online authority stays exact-version/server-owned. Profiles keep their content identity. The twelve pilot copy keys remain explicitly English; two values changed, with no completed translation acceptance.
+
+## Matching frozen local reviews
+
+- Testing [5318](http://127.0.0.1:5318/) / backend2694; public interface [5319](http://127.0.0.1:5319/) /2695. Both bind sourcea63533a and protocol50. Each has1,989fully hashed files,52HTTP/catalog samples/15catalogs, real peer/late-observer/pause checks, actual served optimized-worker purchase/restore/cast/pause and12-class Campaign checkpoint inspection/resume. Actual served worker aim probes apply24changing inputs with a stationary owner and **zero carriage drift** in both audiences.
+- Testing launcher15888; backend76692 created2026-11-03T04:37:37.281655Z; client38944 created04:37:37.758103Z.
+- Public launcher25896; backend43292 created04:37:37.350597Z; client75868 created04:37:37.823868Z. Both backends use output/frozen-class-tree-polish-2026-11-02-a63533a.mjs.
+- [Frozen verification](../reviews/class-tree-polish-2026-11-02/frozen-verification.json) and [process identities](../reviews/class-tree-polish-2026-11-02/process-identities.json) bind actual files/commands/PIDs/UTC. Revalidate exact identity before any cleanup; never kill by port alone.
+- Older5316/2692 and5317/2693 still serve ab8e4b3/protocol49 and their full frozen manifests/backend hashes remain intact. Earlier5314–5315 and other reviews are preserved too. **Older previews are historical integrity evidence, not acceptance for this source.** Private SQLite files remain local. No public Site, production backend, Windows package or main branch was replaced.
+
+## Remaining scope and constraints
+
+Campaign remains slow learned/proven/prepared progression, scarce resources, no SP and no mutations. Free Play keeps rapid SP, mutations and customization. Share actual techniques/simulation while acquisition differs. The two Engineer techniques still have no Campaign acquisition. One D- preparation remains the chapter baseline; do not accelerate entrants to SS+.
+
+Campaign is the final roadmap phase. Service Yard/Porch Watch remains its unchanged restorable WIP, original4passes/1failure, unregistered/unselectable and outside the1,272tests. Read its manifest/log before eventual application. Multi-chapter history, integration, UI, original prose and full verification remain required. Preserve all shown ward continuity.
+
+Main-story prose remains **5,741 checked English words** toward **five million base-story English words**, excluding optional routes/letters/personal chapters, UI and translations. All12personal arcs remain unfinished. The ensemble world, civilians/human antagonists/boss aims and distinct voices, ordinary objectives, bosses and polish remain full scope in the roadmap order. No repair, transfer, transport, healing or consent is invented by this slice.
+
+Browser automation remains disabled: no CUA, Playwright, screenshots or browser switching. Native/headless/network/DOM fixtures and local image inspection remain available. No subagents without fresh explicit authorization. Keep human enjoyment/rendered/device/native-language/listening/motion/literary/final-balance acceptance separate from automated checks. Art coherence remains class-polish work; no broad portrait/sprite replacement occurred.
+
+Standing approval covers verified feature-branch pushes and draft PR14title/body. Keep it draft. No main merge, production/Windows replacement, capacity purchase or private-database upload. Do not mark the whole goal complete from this bounded slice.
+
+## Earlier checkpoint retained as historical context
+
+Everything below this heading is the earlier Engineer/checkpoint handoff, including its older sources, previews and sequencing. Retain its continuity and remaining-work detail; the live source and current priorities above take precedence.
+# Grave Accord: current continuation checkpoint
+
 Updated 2026-11-02 after the authorized Engineer specialization slice. **The full game remains unfinished; only the user decides when it is complete.** This records continuing development, not a final release or a user-requested stop.
 
 Use the same checkout and feat/first-playable-loop / draft PR14. Every Git invocation needs git -c core.bare=false. Do not clone, create a worktree, merge main or deploy production. Inspect live HEAD/status/services/remote CI before edits. Later documentation/evidence commits may sit above this playable source.

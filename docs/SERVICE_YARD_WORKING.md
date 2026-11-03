@@ -2,7 +2,7 @@
 
 **Scheduling update:** Campaign is the final phase of [FREE_PLAY_POLISH_ROADMAP.md](FREE_PLAY_POLISH_ROADMAP.md). This WIP is preserved, not the next active slice. Current work is Free Play class-tree/Engineer polish, then the remaining classes and bosses individually. The old requested-handoff pause below is historical; the full development goal remains active.
 
-Current continuation: the separate Engineer Free Play pilot is verified at ab8e4b3 / protocol49; see [ENGINEER_PATHWAYS.md](ENGINEER_PATHWAYS.md) and the current handoff. This Service Yard candidate remains unintegrated, with its original4pass/1fail WIP intact. The dated checkpoint below describes its preservation boundary.
+Current continuation: General/Specializations and the sentry aiming fix are verified at a63533a / protocol50,1,272tests; see [CLASS_TREE_POLISH.md](CLASS_TREE_POLISH.md). The earlier two-choice pilot was ab8e4b3/protocol49; see [ENGINEER_PATHWAYS.md](ENGINEER_PATHWAYS.md) and the current handoff. This Service Yard candidate remains unintegrated, with its original4pass/1fail WIP intact. The dated checkpoint below describes its preservation boundary.
 
 The user requested a new-chat handoff on 2026-11-02. Development is paused at that boundary. Verified source remains 5fba8f2, metadata9c84f1c, build2026.11.02-chapter-checkpoint/protocol48. The metadata CI41486223371/job125417167316 also passes every step. Testing5314/2690 and public5315/2691 are preserved; no newer feature is frozen yet. The latest class-specialization direction is in [CLASS_SPECIALIZATION_PLAN.md](CLASS_SPECIALIZATION_PLAN.md).
 
