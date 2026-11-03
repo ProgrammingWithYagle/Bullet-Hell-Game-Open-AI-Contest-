@@ -93,3 +93,57 @@ test('Bracing sentries retain Crossfire Pair and siege overclock while charge re
 test('All fixed maps and difficulties admit the new placement rules only outside complete cover and lava footprints',()=>{
   for(const arena of data.arenas)for(const difficulty of data.difficulties){const g=new Game({mode:'short',openingArenaId:arena.id,difficulty:difficulty.id}),p=g.addPlayer('p','Tamsin','engineer');g.start();const c=context(g);for(const angle of [0,Math.PI/2,Math.PI,-Math.PI/2]){p.aim=angle;const point={x:p.x+Math.cos(angle)*120,y:p.y+Math.sin(angle)*120};if(chargeLegal(point,p,c)){assert(!c.terrain!.lava.some(l=>Math.hypot(point.x-l.x,point.y-l.y)<=l.radius+12));assert(point.x>=c.terrain!.bounds.x+12);}}}
 });
+
+test('Stationary sentries keep firing through aim sweeps at every deployment heading, including Crossfire Pair',()=>{
+  const pairId=data.skills.find(s=>'transform'in s&&s.transform==='crossfire-pair')!.id;
+  for(const heading of [0,Math.PI/2,Math.PI,-Math.PI/2])for(const pair of [false,true]){
+    const run=(sweep:boolean)=>{
+      const {g,p}=fixture(machinery);p.aim=heading;if(pair)p.skills.push(pairId);
+      const c=context(g),kits=new ClassKits();c.obstacles=[];let shots=0,travel=0;
+      c.shoot=()=>{shots++;};c.targets=[{x:p.x+200*Math.cos(heading),y:p.y+200*Math.sin(heading),oldX:0,oldY:0,radius:20,health:1000}];
+      kits.cast(p,'q',c);const starts=kits.constructs().map(t=>({x:t.x,y:t.y}));
+      for(let tick=1;tick<=6*HZ;tick++){
+        c.tick=tick;p.aim=heading+(sweep?Math.sin(tick/HZ)*.6:0);kits.step(c);
+        kits.constructs().forEach((tower,i)=>{travel+=Math.hypot(tower.x-starts[i].x,tower.y-starts[i].y);});
+      }
+      assert.equal(kits.constructs().length,pair?2:1);if(pair)assert.notDeepEqual(starts[0],starts[1]);
+      return {shots,travel};
+    };
+    const fixed=run(false),sweeping=run(true);assert(fixed.shots>0);assert.equal(sweeping.shots,fixed.shots,'Changing aim alone must not restart bracing');assert.equal(sweeping.travel,0);
+  }
+});
+
+test('Moving sentries preserve their formation, respect relocation speed and rebrace after movement while aim keeps changing',()=>{
+  const {g,p}=fixture(machinery),pair=data.skills.find(s=>'transform'in s&&s.transform==='crossfire-pair')!.id;p.skills.push(pair);
+  const c=context(g),kits=new ClassKits();c.obstacles=[];let shots=0;c.shoot=()=>{shots++;};
+  c.targets=[{x:1100,y:700,oldX:1100,oldY:700,radius:20,health:1000}];kits.cast(p,'q',c);
+  const start=kits.constructs().map(t=>({x:t.x,y:t.y}));
+  for(let tick=1;tick<=HZ;tick++){
+    const before=kits.constructs().map(t=>({x:t.x,y:t.y}));p.x+=3;p.aim=Math.sin(tick)*2;c.tick=tick;kits.step(c);
+    kits.constructs().forEach((tower,i)=>assert(Math.hypot(tower.x-before[i].x,tower.y-before[i].y)<=er.machineSpeed/HZ+1e-9));assert.equal(shots,0);
+  }
+  const stopped=kits.constructs().map(t=>({x:t.x,y:t.y}));stopped.forEach((t,i)=>{assert.equal(t.x-start[i].x,90);assert.equal(t.y,start[i].y);});
+  for(let tick=HZ+1;tick<1.5*HZ;tick++){p.aim+=.4;c.tick=tick;kits.step(c);assert.equal(shots,0);}
+  c.tick=1.5*HZ;kits.step(c);assert(shots>0);assert.deepEqual(kits.constructs().map(t=>({x:t.x,y:t.y})),stopped);
+  p.x+=200;c.obstacles=[{x:stopped[0].x+25,y:600,width:20,height:200}];
+  for(let i=0;i<60;i++){c.tick++;kits.step(c);}assert(kits.constructs().every(t=>t.x<=c.obstacles[0].x-t.radius+1e-6));
+});
+
+test('The issued protocol-49 boundaries preserve every class and owned Engineer choice locally, without online authority',()=>{
+  const issuedRevision='a6a17f1935ebd8e91d8d5916a7c8ee920190e13bc42a07e09dec98723e94390f';
+  for(const classId of data.classes.map(c=>c.id)){
+    const g=new Game({mode:'story'});g.addPlayer('p','Entrant',classId as Player['classId']);
+    const saved=g.offlineCheckpoint()!;saved.protocolVersion=49;saved.contentRevision=issuedRevision;
+    const copy=Game.restoreOffline(structuredClone(saved)),restored=copy.offlineCheckpoint()!;
+    assert.equal(restored.protocolVersion,PROTOCOL);assert.deepEqual(restored.player,{...saved.player,id:'solo'});assert.deepEqual(restored.chapter,saved.chapter);
+  }
+  for(const choice of [machinery,traps]){
+    const {g,p}=fixture(choice);p.coins=37;g.boss.health=0;g.step();const saved=g.offlineCheckpoint()!;assert(saved);saved.protocolVersion=49;saved.contentRevision=issuedRevision;
+    const copy=Game.restoreOffline(structuredClone(saved));assert.deepEqual(copy.offlineCheckpoint()!.player,{...saved.player,id:'solo'});assert(copy.players.get('solo')!.skills.includes(choice));
+    const online=new Game(),owner=online.addPlayer('owner','Tamsin','engineer');
+    for(const id of [foundation,choice])assert(online.transact(owner.id,{id,kind:'skill',item:id}).ok);
+    const server=online.authoritativeCheckpoint();assert(server);assert.deepEqual(Game.restoreAuthoritative(structuredClone(server)).players.get('owner')!.skills,owner.skills);
+    server.protocolVersion=49;assert.throws(()=>Game.restoreAuthoritative(server),/versionMismatch/);
+    for(const patch of [{serverOnly:true},{players:[]},{transactions:[]},{schemaVersion:99}])assert.throws(()=>Game.restoreOffline({...saved,...patch}));
+  }
+});

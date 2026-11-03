@@ -2,11 +2,13 @@
 
 Researched 2026-11-02 against developer sources and the actual local implementation. Follow [the Free Play polish roadmap](FREE_PLAY_POLISH_ROADMAP.md) for development order. The proposed graph and mechanics below are not implemented content.
 
-## Finding: the present rigidity is structural
+Runtime follow-up: [CLASS_TREE_POLISH.md](CLASS_TREE_POLISH.md) implements the first General/Specializations separation and the sentry aiming correction. The following audit describes sourceab8e4b3; the General grid is preserved, while the two live Engineer choices now have their own authored fork. The fuller proposed graph remains unfinished.
+
+## Finding: the audited rigidity is structural
 
 For each of the twelve classes, the existing expanded map has **54 nodes, 45 prerequisite edges and nine disconnected six-node chains**. There are no internal forks, rejoining prerequisites or connections between subbranches. The decorative class/branch lines suggest a hierarchy, but do not introduce further gameplay choices. Engineer's two additional live specialization cards sit outside that old graph and are not included in those counts.
 
-`src/client/ui/skill-map.ts` places nodes at `x = 100 + lane × 200`, `y = 290 + (depth − 1) × 112`. It draws prerequisite edges vertically and navigates keyboard focus by lane/depth. `src/client/ui/shop.ts` appends the Engineer cards below the old tree; General currently contains only two mobility purchases. `content/skills.json` permits only one prerequisite per legacy node. Merely drawing curved edges would preserve those nine chains and their decisions.
+`src/client/ui/skill-map.ts` places nodes at `x = 100 + lane × 200`, `y = 290 + (depth − 1) × 112`. It draws prerequisite edges vertically and navigates keyboard focus by lane/depth. At the audited source, `src/client/ui/shop.ts` appended the Engineer cards below the old tree; General contained only two mobility purchases. `content/skills.json` permits only one prerequisite per legacy node. Merely drawing curved edges would preserve those nine chains and their decisions.
 
 The audit is recorded in `reviews/class-tree-research-2026-11-02/grave-accord-topology.json`, with source-file hashes and per-class counts. This is an audit of data and code, not a rendered or hands-on acceptance result.
 
@@ -104,6 +106,6 @@ The graph needs authored coordinates and graph/spatial keyboard navigation; `lan
 
 ## Verification and the next concrete slice
 
-Research and the roadmap are the first completed planning unit. The next runtime slice is **General/Specializations separation with an honest Engineer graph**, preserving the two existing live purchases. It must not label proposed branches selectable or draw fictional prerequisite edges. Functional forks and Field Works follow in individual tested slices; the graph grows as those mechanics become real.
+Research and the roadmap are the first completed planning unit. The first runtime slice now implements **General/Specializations separation with an honest Engineer graph**, preserving the two existing live purchases; see CLASS_TREE_POLISH.md. The next functional work remains Engineer, one pathway at a time. It must not label proposed branches selectable or draw fictional prerequisite edges. Functional forks and Field Works follow in individual tested slices; the graph grows as those mechanics become real.
 
 Use native DOM fixtures for tab placement, details, keyboard focus and same-choice compact/expanded views; shared-authority tests for costs/conflicts/restore; simulation/network fixtures for actual techniques. Then run the appropriate full gate and exact-source CI, and freeze matching review builds. Browser automation remains disabled. Human enjoyment, rendered readability, touch/device, listening, localization, motion and final balance are separate acceptance categories. No test count is a substitute for them.

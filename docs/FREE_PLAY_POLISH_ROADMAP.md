@@ -20,6 +20,8 @@ There are no invented dates or promises of final balance. Automated checks estab
 
 ## First focus: finish the class system through Engineer
 
+First runtime slice: [CLASS_TREE_POLISH.md](CLASS_TREE_POLISH.md), build2026.11.02-class-tree-polish/protocol50, implements the General/Specializations separation and fixes the reproduced sentry-aiming fault. Its full local gate passes1,272tests. Engineer still needs a third pathway, internal forks, later decisions and separate human acceptance; this does not complete order1.
+
 The current playable Engineer pilot has two mutually exclusive Q techniques, Carriage Sentry and Pressure Charges. It is an implemented comparison, not a finished three-path tree. The first deliverables are deliberately sequential:
 
 1. **Finish the research and design.** Audit current choices and ownership, study developer examples, specify General/Specializations separation and a genuine graph. See [the research and design](SKILL_TREE_RESEARCH.md). This document and that brief are planning work; they do not change the game.
@@ -75,6 +77,6 @@ Current base-story prose remains 5,741 checked English words; all twelve persona
 
 ## Starting evidence and working constraints
 
-Latest playable source: `ab8e4b37b65c9dee32c95dfb643207009c590674`, build `2026.11.02-engineer-pathways`, protocol 49; 1,265 passing tests and exact-source CI run 41564738365. Metadata HEAD at the research audit: `74163e18c46ef523ee8b174fa0b11e17dac5fbec`, clean checkout and live CI run 41566073872, all jobs/steps successful. The research/planning commit is not a newer playable feature.
+Starting playable source for this roadmap: `ab8e4b37b65c9dee32c95dfb643207009c590674`, build `2026.11.02-engineer-pathways`, protocol 49; 1,265 passing tests and exact-source CI run 41564738365. Metadata HEAD at the research audit: `74163e18c46ef523ee8b174fa0b11e17dac5fbec`, clean checkout and live CI run 41566073872, all jobs/steps successful. The research/planning commit is not a newer playable feature.
 
 Use the same checkout, `feat/first-playable-loop` and draft PR14. Every Git invocation uses `git -c core.bare=false`. Keep older previews/private SQLite files intact. Browser automation and subagents remain disabled. Feature-branch pushes and draft-PR metadata updates are authorized; main merge, production/Windows replacement, capacity purchase and private-database upload are not. The whole game remains unfinished, and only the user decides when it is complete.

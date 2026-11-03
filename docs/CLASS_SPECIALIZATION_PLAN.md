@@ -2,6 +2,8 @@
 
 Status: resumed development, 2026-11-02. The bounded Engineer Free Play pilot is implemented; see [ENGINEER_PATHWAYS.md](ENGINEER_PATHWAYS.md) for actual mechanics, conflicts and limits. The broader pathways, later grades and Campaign teaching below remain proposals. This plan does not finalize all twelve pathway rosters.
 
+The first runtime polish slice now separates General/Specializations and corrects sentry aiming/bracing in build2026.11.02-class-tree-polish/protocol50; see [CLASS_TREE_POLISH.md](CLASS_TREE_POLISH.md). Its two live entry techniques remain the only implemented new pathway choices.
+
 ## Active order and research
 
 The user's latest direction is one area at a time: Free Play classes, then bosses, then the remaining Free Play loop, with Campaign last. [FREE_PLAY_POLISH_ROADMAP.md](FREE_PLAY_POLISH_ROADMAP.md) is the current sequence; [SKILL_TREE_RESEARCH.md](SKILL_TREE_RESEARCH.md) records the actual topology audit, developer references and the new graph design. They supersede earlier Campaign-next recommendations.

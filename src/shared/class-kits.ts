@@ -54,7 +54,7 @@ const emptyStatus = (): KitStatus => ({
 export type Construct = {
   kind: 'turret' | 'siege' | 'wall' | 'decoy';
   machinery?: boolean;
-  anchorOffset?: number;
+  followOffset?: Vec;
   braceUntil?: number;
   source?: string;
   halfSpan?: number;
@@ -667,7 +667,8 @@ export class ClassKits {
       interval: interval * HZ,
       mobile: options.mobile,
       machinery: options.machinery,
-      anchorOffset:options.machinery?-(point.x-p.x)*Math.sin(p.aim)+(point.y-p.y)*Math.cos(p.aim):undefined,
+      // Follow the owner's translation, independently of their weapon aim.
+      followOffset: options.machinery ? {x:point.x-p.x,y:point.y-p.y} : undefined,
       braceUntil: options.machinery?c.tick+ticks(er.braceSeconds):undefined,
       farAim: options.farAim,
       retaliation:
@@ -741,8 +742,9 @@ export class ClassKits {
           this.towers.delete(id);
           continue;
         }
-        const center = this.point(owner, 75, c),
-          goal=tower.machinery?{x:center.x-Math.sin(owner.aim)*(tower.anchorOffset??0),y:center.y+Math.cos(owner.aim)*(tower.anchorOffset??0)}:center,
+        const goal = tower.machinery
+            ? {x:owner.x+(tower.followOffset?.x??0),y:owner.y+(tower.followOffset?.y??0)}
+            : this.point(owner,75,c),
           length = distance(tower, goal),
           step = Math.min((tower.machinery?er.machineSpeed:160) / HZ, length);
         if (length > 0) {

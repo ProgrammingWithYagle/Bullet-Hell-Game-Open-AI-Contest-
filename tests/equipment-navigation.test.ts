@@ -51,7 +51,7 @@ test('switching equipment tabs retains focus on the current selected tab', async
   );
   assert.equal(current.getAttribute('aria-selected'), 'true');
   assert.equal(current.tabIndex, 0);
-  assert.equal(f.host.querySelector('[data-shop-tab="tree"]')!.tabIndex, -1);
+  assert.equal(f.host.querySelector('[data-shop-tab="general"]')!.tabIndex, -1);
 });
 test('switching skill branches retains focus and old detached tab handlers cannot redraw the panel', async (t) => {
   const f = await fixture(t),
@@ -69,7 +69,7 @@ test('switching skill branches retains focus and old detached tab handlers canno
   oldTab.click();
   assert.equal(
     f.host
-      .querySelector('[data-shop-tab="tree"]')!
+      .querySelector('[data-shop-tab="general"]')!
       .getAttribute('aria-selected'),
     'true',
   );
@@ -77,7 +77,7 @@ test('switching skill branches retains focus and old detached tab handlers canno
 test('arrow, Home and End keys navigate shop tabs, including mirrored horizontal direction', async (t) => {
   const f = await fixture(t);
   let prevented = false;
-  const tree = f.host.querySelector('[data-shop-tab="tree"]')!;
+  const tree = f.host.querySelector('[data-shop-tab="general"]')!;
   tree.focus();
   tree.dispatch('keydown', {
     key: 'Home',
@@ -98,7 +98,7 @@ test('arrow, Home and End keys navigate shop tabs, including mirrored horizontal
     .dispatch('keydown', { key: 'ArrowLeft' });
   assert.equal(
     f.host
-      .querySelector('[data-shop-tab="tree"]')!
+      .querySelector('[data-shop-tab="general"]')!
       .getAttribute('aria-selected'),
     'true',
   );
@@ -187,7 +187,7 @@ test('empty equipment and skill details show their own painted image while curre
     summary.querySelector('[data-resource-art="skills"]')!.getAttribute('src'),
     '/skill-manual.png',
   );
-  f.host.querySelector('[data-shop-tab="tree"]')!.click();
+  f.host.querySelector('[data-shop-tab="general"]')!.click();
   assert.equal(
     f.host.querySelector('.inspect-empty img')!.dataset.resourceArt,
     'skills',

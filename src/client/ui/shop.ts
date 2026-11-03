@@ -11,6 +11,7 @@ import {
   clampMapZoom,
   mapZoomScroll,
 } from './skill-map.ts';
+import {specializationMapLayout,specializationMapMarkup,prepareSpecializationMap} from './specialization-map.ts';
 import { conflictingSkill } from '../../shared/skill-conflicts.ts';
 import {allSkills,generalSkills} from '../../shared/mobility.ts';
 import { data } from '../../shared/game.ts';
@@ -28,6 +29,8 @@ type Kind = Command['kind'];
 let mapZoom = 1;
 let shopDifficulty = 'normal';
 let shopSpecializationsAllowed = true;
+let shopContext = '';
+let generalScroll = {top:0,left:0};
 const summonGear:Record<string,string>={damage:'clear-beacon','fire-rate':'quick-loop',magazine:'deep-spool',reload:'ready-ties'};
 const swordGear: Record<string,string> = {damage:'honed-edge','fire-rate':'balanced-hilt',magazine:'wrapped-grip',reload:'easy-harness'};
 function itemArt(kind: Kind,id: string,glyph: string,classId: string) {
@@ -37,7 +40,7 @@ function itemArt(kind: Kind,id: string,glyph: string,classId: string) {
   const url = special ?? (kind==='upgrade' ? assets.upgrades[id] : assets.items[kind+'/'+(kind==='skill' ? allSkills.find(s=>s.id===id)?.subbranchId : id)]);
   return url ? `<img class="item-art" src="${url}" alt="" aria-hidden="true">` : icon(glyph);
 }
-let tab: 'gear' | 'tree' | 'general' = 'tree',
+let tab: 'gear' | 'tree' | 'general' | 'specializations' = 'general',
   branchId = '',
   chosen: { kind: Kind; id: string } | null = null;
 function skillsOf(p: PlayerView) {
@@ -188,6 +191,11 @@ export function shopMarkup(
   shopDifficulty = difficulty;
   shopSpecializationsAllowed = allowSpecializations;
   const cl = data.classes.find((c) => c.id === p.classId)!;
+  const hasSpecializations = !p.training && allowSpecializations && !!specializationMapLayout(p.classId);
+  const context = [p.classId,!!p.training,allowSpecializations].join(':');
+  if(shopContext!==context){shopContext=context;tab=p.training?'tree':'general';chosen=null;generalScroll={top:0,left:0};}
+  if(tab==='specializations'&&!hasSpecializations)tab=p.training?'tree':'general';
+  if(tab==='tree'&&!p.training)tab='general';
   if(p.training&&chosen?.kind==='skill')chosen=null;
   if (!cl.branches.some((b) => b.id === branchId)) branchId = cl.branches[0].id;
   if (
@@ -198,8 +206,8 @@ export function shopMarkup(
   )
     chosen = null;
   const branch = cl.branches.find((b) => b.id === branchId)!;
-  return `<p data-shop-status class="shop-purchase-status" role="status" aria-live="polite" hidden></p><p class="shop-introduction">${e(p.training?chapterText(locale).readyHelp:expeditionText(locale, 'shopHelp'))}</p><div class="loadout-summary"><span>${resourceArt('coins', assets.resourceIcons)}<b>${number(p.coins)}</b> ${e(t('ui.coins'))}</span>${p.training?'':`<span>${resourceArt('skills', assets.resourceIcons)}<b>${number(p.sp)}</b> ${e(t('ui.skillPoints'))}</span><small>${e(t('ui.capstoneLimit'))}</small>`}</div><div class="loadout-tabs" role="tablist" aria-label="${e(t('ui.shop'))}"><button data-shop-tab="gear" role="tab" aria-selected="${tab === 'gear'}">${resourceArt('equipment', assets.resourceIcons)}${e(t('ui.equip'))} / ${e(t('ui.upgrade'))}</button><button data-shop-tab="tree" role="tab" aria-selected="${tab === 'tree'}">${resourceArt('skills', assets.resourceIcons)}${e(p.training?chapterText(locale).training:t('ui.skillTree'))}</button><button data-shop-tab="general" role="tab" aria-selected="${tab === 'general'}">${icon('speed')}${e(t('ui.generalAbilities'))}</button></div><div class="loadout-workspace"><div class="loadout-board">${
-    tab === 'general' ? (p.training?`<p lang="en">${e(chapterText(locale).general)}</p>`:generalMarkup(p)) : tab === 'tree'&&p.training?chapterTrainingMarkup(p,chapterStage):tab === 'gear'
+  return `<p data-shop-status class="shop-purchase-status" role="status" aria-live="polite" hidden></p><p class="shop-introduction">${e(p.training?chapterText(locale).readyHelp:expeditionText(locale, 'shopHelp'))}</p><div class="loadout-summary"><span>${resourceArt('coins', assets.resourceIcons)}<b>${number(p.coins)}</b> ${e(t('ui.coins'))}</span>${p.training?'':`<span>${resourceArt('skills', assets.resourceIcons)}<b>${number(p.sp)}</b> ${e(t('ui.skillPoints'))}</span><small>${e(t('ui.capstoneLimit'))}</small>`}</div><div class="loadout-tabs" role="tablist" aria-label="${e(t('ui.shop'))}"><button data-shop-tab="gear" role="tab" aria-selected="${tab === 'gear'}">${resourceArt('equipment', assets.resourceIcons)}${e(t('ui.equip'))} / ${e(t('ui.upgrade'))}</button>${p.training?`<button data-shop-tab="tree" role="tab" aria-selected="${tab === 'tree'}">${resourceArt('skills', assets.resourceIcons)}${e(chapterText(locale).training)}</button>`:''}<button data-shop-tab="general" role="tab" aria-selected="${tab === 'general'}">${resourceArt('skills', assets.resourceIcons)}${e(t('branch.general'))}</button>${hasSpecializations?`<button data-shop-tab="specializations" role="tab" aria-selected="${tab === 'specializations'}">${icon('engineer')}${e(t('ui.specializations'))}</button>`:''}</div><div class="loadout-workspace"><div class="loadout-board">${
+    tab === 'specializations' ? specializationMarkup(p,allowSpecializations) : tab === 'general'&&p.training ? `<p lang="en">${e(chapterText(locale).general)}</p>` : tab === 'tree'&&p.training?chapterTrainingMarkup(p,chapterStage):tab === 'gear'
       ? `<section class="armory"><h3>${e(t('ui.equip'))}</h3><div class="gear-icons">${data.weapons
           .filter((w) => w.classId === p.classId)
           .map((w) =>
@@ -222,7 +230,7 @@ export function shopMarkup(
           )}</div><h3>${e(t('ui.upgrade'))}</h3><div class="gear-icons">${data.upgrades.map((u) => nodeButton(p, 'upgrade', u.id, effectIcon({ [u.effect]: u.amount }), upgradeName(u.id,p.classId))).join('')}</div><h3>${e(t('ui.supplies'))} · ${e(supplyBindings.join(' / '))}</h3><p>${e(t('ui.supplyHelp', { bindings: supplyBindings.join(' / ') }))}</p><div class="gear-icons">${data.supplies.map((s) => nodeButton(p, 'supply', s.id, supplyGlyph(s.effect), supplyName(s.id,p.classId))).join('')}</div><p>${p.supplies.map((s, i) => `${e(supplyBindings[i])}: ${s.count ? e(supplyName(s.id,p.classId)) + ' ×' + number(s.count) : '—'}`).join(' · ')}</p></section>`
       : (expanded
         ? expandedMap(p)
-        : `<div class="branch-tabs" role="tablist" aria-label="${e(t('ui.specializations'))}">${cl.branches.map((b) => `<button data-branch="${b.id}" role="tab" aria-selected="${b.id === branchId}">${e(t('branch.' + b.id))}</button>`).join('')}</div><div class="skill-scroll"><div class="skill-tree" role="group" aria-label="${e(t('branch.' + branch.id))}"><svg class="tree-connections" viewBox="0 0 600 700" preserveAspectRatio="none" aria-hidden="true"><path d="M300 40V80 M100 123V80H500V123 M300 80V123"/>${branch.subbranches
+        : `<div class="branch-tabs" role="tablist" aria-label="${e(t('ui.skillTree'))}">${cl.branches.map((b) => `<button data-branch="${b.id}" role="tab" aria-selected="${b.id === branchId}">${e(t('branch.' + b.id))}</button>`).join('')}</div><div class="skill-scroll"><div class="skill-tree" role="group" aria-label="${e(t('branch.' + branch.id))}"><svg class="tree-connections" viewBox="0 0 600 700" preserveAspectRatio="none" aria-hidden="true"><path d="M300 40V80 M100 123V80H500V123 M300 80V123"/>${branch.subbranches
             .map((sub, i) => {
               const nodes = skillsOf(p)
                   .filter((s) => s.subbranchId === sub.id)
@@ -259,15 +267,21 @@ export function shopMarkup(
                   .join('')}</section>`,
             )
             .join('')}</div></div></div>`
-  ) + specializationMarkup(p,allowSpecializations)}</div><aside id="item-details" class="item-details" aria-live="polite">${details(p)}</aside></div>`;
+  ) + generalMarkup(p)}</div><aside id="item-details" class="item-details" aria-live="polite">${details(p)}</aside></div>`;
 }
 
 export function specializationMarkup(p:PlayerView,allowed=true){
-  if(!allowed||p.training||p.classId!=='engineer')return '';
-  return '<section class="pathway-choices" lang="en" dir="ltr" aria-label="'+e(t('ui.pathways'))+'"><h3>'+e(t('ui.pathways'))+'</h3><p>'+e(t('ui.pathwayHelp'))+'</p><div class="pathway-options">'+data.specializationSkills.filter(s=>s.classId===p.classId).map(s=>'<article><h4>'+e(t(s.subbranchNameKey))+'</h4>'+nodeButton(p,'skill',s.id,s.id==='engineer-machinery-1'?'engineer':'ability',t(s.nameKey),s.grade)+'<strong>'+e(t(s.nameKey))+'</strong><p>'+e(t('pathway.'+s.id+'.summary'))+'</p></article>').join('')+'</div></section>';
+  const map=allowed&&!p.training?specializationMapLayout(p.classId):null;if(!map)return '';
+  return '<section class="pathway-choices" lang="en" dir="ltr" aria-label="'+e(t('ui.pathways'))+'"><h3>'+e(t('ui.pathways'))+'</h3><p>'+e(t('ui.pathwayHelp'))+'</p>'+specializationMapMarkup(map,p.skills,(id,reference)=>{
+    const skill=allSkills.find(s=>s.id===id)!;
+    if(reference)return '<button type="button" class="pathway-foundation" data-prerequisite="'+e(id)+'" data-graph-focus="'+e(id)+'" lang="'+e(locale)+'" dir="auto"><small>'+e(t('branch.general'))+'</small><strong>'+e(t('skill.'+id+'.name'))+'</strong><span>'+e(p.skills.includes(id)?t('ui.owned'):number(skill.cost)+' '+t('ui.skillPoints'))+'</span></button>';
+    const state=canBuy(p,'skill',id),owned=p.skills.includes(id);
+    const button=nodeButton(p,'skill',id,id==='engineer-machinery-1'?'engineer':'ability',t('skill.'+id+'.name'),skill.grade).replace('data-inspect=','data-graph-focus="'+e(id)+'" aria-describedby="pathway-summary-'+e(id)+'" data-inspect=');
+    return '<article class="pathway-technique"><h4>'+e(t(skill.subbranchNameKey))+' <span class="pathway-slot" aria-hidden="true">Q</span></h4>'+button+'<strong>'+e(t('skill.'+id+'.name'))+'</strong><p id="pathway-summary-'+e(id)+'">'+e(t('pathway.'+id+'.summary'))+'</p><p class="pathway-state" lang="'+e(locale)+'" dir="auto">'+e(owned?t('ui.owned'):state.allowed?number(skill.cost)+' '+t('ui.skillPoints'):state.reason)+'</p></article>';
+  })+'</section>';
 }
 function generalMarkup(p:PlayerView){
- return `<section class="general-mobility" aria-label="${e(t('branch.general'))}"><h3>${e(t('branch.general'))}</h3><p>${e(t('ui.generalMobilityHelp'))}</p><div class="general-purchases">${generalSkills.map(s=>`<div>${nodeButton(p,'skill',s.id,'speed',t(s.nameKey))}<span>${e(t(s.nameKey))} · ${number(s.cost)} ${e(t('ui.skillPoints'))}</span></div>`).join('')}</div></section>`;
+ return `<section class="general-mobility" aria-label="${e(t('branch.general'))}"><h3>${e(t('ui.generalAbilities'))}</h3><p>${e(t('ui.generalMobilityHelp'))}</p><div class="general-purchases">${generalSkills.map(s=>`<div>${nodeButton(p,'skill',s.id,'speed',t(s.nameKey))}<span>${e(t(s.nameKey))} · ${number(s.cost)} ${e(t('ui.skillPoints'))}</span></div>`).join('')}</div></section>`;
 }
 function expandedMap(p: PlayerView) {
   const layout = skillMapLayout(p.classId);
@@ -391,19 +405,18 @@ export function bindShop(
   };
   const redraw = (focus: string) => {
     if (!active()) return;
-    const oldScroll = workspace!.querySelector<HTMLElement>('.skill-scroll'),
-      scroll = oldScroll?.scrollTop ?? 0,
-      left = oldScroll?.scrollLeft ?? 0;
+    const oldScroll = workspace!.querySelector<HTMLElement>('.skill-scroll');
+    if(oldScroll)generalScroll={top:oldScroll.scrollTop,left:oldScroll.scrollLeft};
     workspace!.innerHTML = shopMarkup(p, supplyBindings, expanded, difficulty,chapterStage,allowSpecializations);
     bindActions();
     const scroller = workspace!.querySelector<HTMLElement>('.skill-scroll');
     if (scroller) {
-      scroller.scrollTop = scroll;
-      scroller.scrollLeft = left;
+      scroller.scrollTop = generalScroll.top;
+      scroller.scrollLeft = generalScroll.left;
     }
-    workspace!
-      .querySelector<HTMLElement>(focus)
-      ?.focus({ preventScroll: true });
+    const focused=workspace!.querySelector<HTMLElement>(focus);
+    focused?.focus({preventScroll:true});
+    if(focus.startsWith('[data-inspect='))focused?.scrollIntoView?.({block:'nearest',inline:'nearest',behavior:'auto'});
     status(message);
   };
   const bindDetails = () => {
@@ -418,16 +431,17 @@ export function bindShop(
         )
           purchase({ kind: chosen.kind, item: chosen.id });
       };
-    const prerequisite = workspace!.querySelector<HTMLButtonElement>(
-      '[data-prerequisite]',
-    );
-    if (prerequisite)
+    workspace!.querySelectorAll<HTMLButtonElement>('[data-prerequisite]').forEach(prerequisite=>{
       prerequisite.onclick = () => {
-        if (!active(prerequisite)) return;
+        if (!active(prerequisite)||p.training) return;
+        const id=prerequisite.dataset.prerequisite!,skill=skillsOf(p).find(s=>s.id===id);if(!skill)return;
         status('');
-        chosen = { kind: 'skill', id: prerequisite.dataset.prerequisite! };
-        redraw('[data-inspect="' + CSS.escape(chosen.id) + '"]');
+        chosen = { kind: 'skill', id };
+        tab=data.specializationSkills.some(s=>s.id===id)?'specializations':'general';
+        if(skill.classId===p.classId)branchId=skill.branchId;
+        redraw('[data-inspect="' + CSS.escape(id) + '"]');
       };
+    });
   };
   function bindActions() {
     workspace!.querySelectorAll<HTMLButtonElement>('[data-training]').forEach(button=>{
@@ -472,7 +486,10 @@ export function bindShop(
           redraw('[data-branch="' + CSS.escape(branchId) + '"]');
         }),
     );
-    if (expanded&&tab==='tree'&&!p.training) {
+    if(tab==='specializations'){
+      const map=specializationMapLayout(p.classId);if(map)prepareSpecializationMap(workspace!,map);
+    }
+    if (expanded&&tab==='general'&&!p.training) {
       const layout = skillMapLayout(p.classId);
       prepareSkillMap(workspace!, layout);
       const viewport = workspace!.querySelector<HTMLElement>(

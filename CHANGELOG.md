@@ -1,6 +1,13 @@
 # Changelog
 
-Development build **2026.11.02-engineer-pathways**, protocol 49. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.02-class-tree-polish**, protocol 50. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-02 — Clearer class choices
+
+### General and Specializations
+
+- Existing class foundations and mobility share General. Engineer techniques have a dedicated specialization graph, keyboard inspection and a link to their actual prerequisite.
+- Carriage Sentries hold their deployment offset while following player movement. Changing aim no longer restarts their brace timer.
 
 ## 2026-11-02 — Engineer pathways
 

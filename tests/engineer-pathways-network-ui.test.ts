@@ -21,6 +21,12 @@ test('Real peers buy contrasting pathways with owned spending; a late observer r
     host.start();await wait(()=>ally.view?.phase==='combat');g.boss.staggerUntil=g.boss.deadline=1e9;g.boss.x=1250;g.boss.y=200;g.boss.health=g.boss.maxHealth=1e6;
     for(const peer of [host,ally]){const p=g.players.get(peer.id)!;p.x=p.oldX=800;p.y=p.oldY=700;p.invulnerableUntil=1e9;peer.input({...idleInput(),sequence:1,aim:0,q:true});}
     await wait(()=>!!ally.view?.classCues.some(c=>c.kind==='engineer-charge'&&c.owner===host.id)&&!!ally.view.classCues.some(c=>c.kind==='turret'&&c.machinery&&c.owner===ally.id));
+    // Real input aim changes must not move a stationary carriage or starve fire.
+    g.obstacles.splice(0);const target=g.minions.spawn(900001,{kind:'ordinary',x:1100,y:700,health:100000,speed:0,radius:12,damage:0},g.combatTick)!;
+    const sentry=g.classKits.constructs().find(c=>c.machinery&&c.owner===ally.id)!,start={x:sentry.x,y:sentry.y};
+    for(let i=0;i<30;i++){ally.input({...idleInput(),sequence:i+2,aim:Math.sin(i/5)*.6});await new Promise(r=>setTimeout(r,25));}
+    await wait(()=>target.health<100000);assert(g.players.get(ally.id)!.damageDealt>0);assert.deepEqual({x:sentry.x,y:sentry.y},start);
+    await wait(()=>!!host.view?.classCues.some(c=>c.kind==='turret'&&c.machinery&&c.owner===ally.id&&c.x===start.x&&c.y===start.y));
     host.setMatchPaused(true);await wait(()=>!!ally.view?.matchPaused);const pausedTick=g.combatTick;await new Promise(r=>setTimeout(r,150));assert.equal(g.combatTick,pausedTick);host.setMatchPaused(false);await wait(()=>!ally.view?.matchPaused);
     await late.connect({...options,name:'Late observer',classId:'medic'},{roomId:host.room!.roomId});await wait(()=>!!late.view?.classCues.some(c=>c.kind==='engineer-charge'&&c.owner===host.id));
     assert(late.view!.classCues.some(c=>c.kind==='turret'&&c.machinery&&c.owner===ally.id));assert(!late.view!.players.find(p=>p.id===late.id)!.skills.length);
@@ -38,7 +44,7 @@ test('Both tree views inspect the same Engineer pathways, explain conflicts, pre
     const g=new Game(),p=g.addPlayer('p','Tamsin','engineer');g.transact(p.id,{id:'foundation',kind:'skill',item:'engineer-constructs-1'});const v=viewOf(g,p.id).players[0];const requests:unknown[]=[];
     env.host.innerHTML='<div class="loadout-editor">'+shop.shopMarkup(v,[],expanded)+'</div>';
     const viewport=env.host.querySelector('.skill-map-viewport');if(viewport)Object.assign(viewport,{clientWidth:600,clientHeight:400});
-    const binding=shop.bindShop(env.host,v,(r:unknown)=>requests.push(r),[],expanded);env.host.querySelector('[data-shop-tab="tree"]')!.click();
+    const binding=shop.bindShop(env.host,v,(r:unknown)=>requests.push(r),[],expanded);env.host.querySelector('[data-shop-tab="specializations"]')!.click();
     for(const path of ['engineer-machinery-1','engineer-traps-1'])assert(env.host.querySelector('[data-inspect="'+path+'"]'));
     env.host.querySelector('[data-inspect="engineer-traps-1"]')!.click();assert(env.host.querySelector('#item-details')!.innerHTML.includes(messages['skill.engineer-traps-1.description']));assert.equal(requests.length,0);
     env.host.querySelector('#buy-selected')!.click();assert.deepEqual(requests,[{kind:'skill',item:'engineer-traps-1'}]);

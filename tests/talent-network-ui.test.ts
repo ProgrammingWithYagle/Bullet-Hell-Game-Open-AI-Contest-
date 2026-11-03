@@ -210,7 +210,7 @@ test('both actual shop layouts show localized talent help and retain prerequisit
           [],
           expanded,
         );
-        env.host.querySelector('[data-shop-tab="tree"]')!.click();
+        env.host.querySelector('[data-shop-tab="general"]')!.click();
         if (!expanded)
           env.host
             .querySelector('[data-branch="' + node.branchId + '"]')!
