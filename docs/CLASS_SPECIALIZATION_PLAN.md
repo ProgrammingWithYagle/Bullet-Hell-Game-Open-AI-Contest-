@@ -1,6 +1,6 @@
 # Class specialization: next development direction
 
-Status: resumed development, 2026-11-02. The bounded Engineer Free Play pilot is implemented; see [ENGINEER_PATHWAYS.md](ENGINEER_PATHWAYS.md) for actual mechanics, conflicts and limits. The broader pathways, later grades and Campaign teaching below remain proposals. This plan does not finalize all twelve pathway rosters.
+Status: continuing development, 2026-11-03. Current playable source42ec8060c9b9f4dc83b663ca5655ba0df6deb35e, build2026.11.03-workbook-zoom-polish/protocol52, passes1,311tests and exact-source push/PR CI. [GENERAL_WORKBOOK.md](GENERAL_WORKBOOK.md) records the matching General tree, separate shared-technique subtab, four shared techniques and35%–200%true zoom/Fit. The broader pathways, later grades and Campaign teaching below remain proposals. This plan does not finalize all twelve pathway rosters.
 
 The first runtime polish slice now separates General/Specializations and corrects sentry aiming/bracing in build2026.11.02-class-tree-polish/protocol50; see [CLASS_TREE_POLISH.md](CLASS_TREE_POLISH.md). The newer build2026.11.03-machinery-progression/protocol51 adds six real Machinery techniques, separately earned actions and a painted field-manual graph; see [ENGINEER_MACHINERY.md](ENGINEER_MACHINERY.md). Traps beyond its entry, the third Engineer pathway and the other classes remain unfinished.
 
@@ -8,7 +8,7 @@ The first runtime polish slice now separates General/Specializations and correct
 
 The user's latest direction is one area at a time: Free Play classes, then bosses, then the remaining Free Play loop, with Campaign last. [FREE_PLAY_POLISH_ROADMAP.md](FREE_PLAY_POLISH_ROADMAP.md) is the current sequence; [SKILL_TREE_RESEARCH.md](SKILL_TREE_RESEARCH.md) records the actual topology audit, developer references and the new graph design. They supersede earlier Campaign-next recommendations.
 
-Keep the current numerical class tree and shared mobility under General. Specializations is a new dedicated tree with real forks, purposeful joins and compatible hybrids. Target at least three distinctive specializations per class; do not mass-generate new nodes. Finish Engineer first (Machinery, Traps, proposed Field Works), then progress class by class. Engineer now has two entry techniques plus six Machinery techniques. Other proposed pathway rosters remain unimplemented. The broader names and mechanics below remain proposals.
+Keep the current numerical class tree and shared techniques under General. Specializations is a new dedicated tree with real forks, purposeful joins and compatible hybrids. Target at least three distinctive specializations per class; do not mass-generate new nodes. Finish Engineer first: Machinery, complete Traps, then **Builder**, the user's intended third identity for barriers and defensive construction. Builder replaces the provisional Field Works name; its mechanics remain unfinished. Engineer now has two entry techniques plus six Machinery techniques. Other proposed pathway rosters remain unimplemented. The broader names and mechanics below remain proposals. The [weapon workshop/shop overhaul](ARMORY_REWORK_IDEAS.md) is queued later: every purchase needs meaning, with useful statistics supporting qualitative choices.
 
 ## The user's request
 
@@ -18,7 +18,7 @@ That direction is accepted. The example designs below are proposals for iteratio
 
 ## What exists
 
-The live catalog has twelve classes, 648 class nodes (54 per class), 48 weapons, 36 ability transformations and two General Free Play purchases. Every class has three parent branches, each with three six-node paths. Their grade lanes cover all eighteen grades: D-, D, D+, C-, C, C+, B-, B, B+, A-, A, A+, S-, S, S+, SS-, SS and SS+.
+The live catalog has twelve classes, 648 class nodes (54 per class), 48 weapons, 36 ability transformations, four General Free Play purchases and eight Engineer specialization techniques. Every class has three legacy parent branches, each with three six-node paths. Their grade lanes cover all eighteen grades: D-, D, D+, C-, C, C+, B-, B, B+, A-, A, A+, S-, S, S+, SS-, SS and SS+. These existing class branches are not completed new specializations.
 
 The current paths mostly extend familiar numerical effects. Some nodes already change abilities, including the three transformations per class and Heavy/Tank shield-cap choices. Preserve those working distinctions. The request is for deeper identities and choices, not merely new names for damage, cooldown and health bonuses. Historical SKILL_TREE_AND_MENU.md / CLASS_TALENTS.md / OPTIONAL_SKILL_MAP.md snapshots contain older seven-class totals; current catalog and the current handoff take precedence.
 
@@ -45,7 +45,7 @@ Recommend starting with Engineer, since the user supplied concrete identities. B
 | --- | --- | --- | --- |
 | Machinery / technology | Invest in a small number of purposeful machines; choose their location, role and operating window | Configure a turret for tracking or a committed firing lane; deliberately redeploy; briefly combine machines into an advanced construct | Finite owned machines, deployment commitment, real cover/target rules, competing configurations and bounded uptime |
 | Trapper | Prepare ground, predict an approach, choose when to trigger it | Arming windows, visible trigger zones, linked traps or a chosen remote detonation; useful control on ordinary enemies with explicit boss responses | Finite placed traps, actual trigger ownership, invalid-ground rejection, readable detonation and no permanent boss stun |
-| Field works (optional third proposal) | Build useful temporary positions and maintain them under pressure | Select a barricade function or a repair interaction; connect two supported positions | No free permanent defenses, no impossible map closures, shared collision rules, no violation of Hellish shielding/recovery restrictions |
+| Builder (user-selected third identity; mechanics proposed) | Build useful temporary positions and maintain them under pressure | Select a barrier function or a repair interaction; connect two supported positions | No free permanent defenses, no impossible map closures, shared collision rules, no violation of Hellish shielding/recovery restrictions |
 
 These examples are not mechanics currently present. Do not describe a new heat/scrap resource as implemented, or rename SP into a new Campaign currency. Add a resource only if a concrete action needs it. Machinery must remain distinct from the Summoner's living retinue; Engineer traps must remain distinct from Ranger's fieldcraft.
 
@@ -89,7 +89,7 @@ Use narrator-led physical detail and distinct human speech. Give teachers, peers
 
 1. Finish the current topology/developer research and specification in SKILL_TREE_RESEARCH.md. Preserve the distinction between a proposed graph and implemented choices.
 2. Separate General and Specializations while preserving current ownership, prerequisites and prices. Show only actual live nodes/relationships; retain an accessible equivalent view.
-3. Polish the existing Engineer comparison, then complete Machinery, Traps and Field Works in individual coherent slices. Each needs an early functional identity, internal choices and a real late purpose. Verify before adding the next.
+3. Polish the existing Engineer comparison, then complete Machinery, Traps and Builder in individual coherent slices. Each needs an early functional identity, internal choices and a real late purpose. Verify before adding the next.
 4. Complete Engineer's whole Free Play build loop and compatibility/network evidence, then the remaining classes one at a time in the roadmap order. Target at least three distinctive specializations each, without inflating the budget or filling eighteen grades with generic percentages.
 5. Polish cross-class Free Play balance, existing bosses individually and the surrounding Free Play loop before more breadth. Keep human enjoyment/rendered/device/language/listening/motion/final-balance review separate from automated checks.
 6. Resume Campaign only in the final roadmap phase: authored learning/proof/preparation, multi-chapter history, safe migrations, sustained ensemble prose and all twelve optional arcs. Reuse actual shared mechanics; never add SP/mutations or rapid SS+ progression.

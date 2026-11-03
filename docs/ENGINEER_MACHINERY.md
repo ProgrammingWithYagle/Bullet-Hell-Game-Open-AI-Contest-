@@ -1,8 +1,10 @@
 # Engineer Machinery — progression and field manual
 
+Current integration: these mechanics remain in source42ec8060c9b9f4dc83b663ca5655ba0df6deb35e, build2026.11.03-workbook-zoom-polish/protocol52, with1,311passing tests and exact-source CI. [GENERAL_WORKBOOK.md](GENERAL_WORKBOOK.md) records the newer matching General tree, four shared techniques and true zoom/Fit. The dated Machinery slice below retains its original protocol51 provenance. Engineer still needs complete Traps and Builder, the user's barrier/construction pathway; its mechanics remain unfinished.
+
 Build **2026.11.03-machinery-manual-polish**, protocol **51**. This is a focused Free Play Engineer slice. Machinery now has an internal control fork, separately earned actions and late mechanical evolutions. Engineer still needs a complete Traps route and a third distinctive pathway before the next class.
 
-General keeps all 648 issued class purchases, two shared mobility purchases and 36 existing transformations. Their IDs, prices, prerequisites and effects remain. The two issued Engineer entry techniques keep their identities too. The new content adds six Machinery techniques; it does not fill eighteen grades with percentage nodes or raise the 27-SP budget/one-capstone limit.
+At this slice's original issue, General kept all648issued class purchases, two shared mobility purchases and36existing transformations. Their IDs, prices, prerequisites and effects remain. The two issued Engineer entry techniques keep their identities too. This Machinery content adds six techniques; it does not fill eighteen grades with percentage nodes or raise the27-SP budget/one-capstone limit. Protocol52 later adds Brake Step and Course Correction to the shared General subtab, preserving those issued purchases.
 
 ## Acquire and develop
 
