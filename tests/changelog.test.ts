@@ -13,6 +13,7 @@ test('journal snapshot agrees with actual playable content rather than authored 
   assert.deepEqual(history.snapshot, {
     bosses: implementedBossIds.length,
     sharedSkills: catalog.generalSkills.length,
+    specializationSkills:catalog.specializationSkills.length,
     classes: implementedClassIds.length,
     skills: catalog.skills.filter((x) => implementedClassIds.some((id) => id === x.classId)).length,
     weapons: catalog.weapons.filter((x) => implementedClassIds.some((id) => id === x.classId))

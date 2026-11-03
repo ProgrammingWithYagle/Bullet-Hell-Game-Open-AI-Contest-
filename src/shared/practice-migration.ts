@@ -6,16 +6,23 @@ import { classifiedContract } from "./boss-threat.ts";
 function migrateKnownPracticeBoundary(value: unknown): unknown {
   if (!value || typeof value !== "object" || Array.isArray(value)) return value;
   const issued = value as Record<string, unknown>;
+  const oldPlayer=issued.player as Record<string,unknown>|undefined;
+  if(issued.contentRevision!==CONTENT_REVISION&&Array.isArray(oldPlayer?.skills)&&oldPlayer.skills.some(id=>catalog.specializationSkills.some(node=>node.id===id)))throw Error('versionMismatch');
+  if(issued.protocolVersion===48&&issued.contentRevision==='1dd8789a6050eac2ca2f677bc15a8cdbfafaf78d73226d5be7cfbfc3ed70ba04'){
+    const p=issued.player as Record<string,unknown>|undefined;
+    if(issued.schemaVersion!==1||issued.practiceOnly!==true||issued.serverOnly===true||issued.players!==undefined||issued.transactions!==undefined||JSON.stringify(issued).length>32768||!p||(Array.isArray(p.skills)&&p.skills.some(s=>typeof s==='string'&&['engineer-machinery-1','engineer-traps-1'].includes(s))))throw Error('versionMismatch');
+    return {...issued,contentRevision:CONTENT_REVISION,protocolVersion:PROTOCOL};
+  }
   if(issued.protocolVersion===48&&issued.contentRevision==='8bda5e247f3df132a9c80f244fd8a7c2b3eaf468e2c6a8927f87a35937fbe110'){
     const p=issued.player as Record<string,unknown>|undefined;
     if(issued.schemaVersion!==1||issued.practiceOnly!==true||issued.serverOnly===true||issued.players!==undefined||issued.transactions!==undefined||JSON.stringify(issued).length>32768||!p||!['soldier','medic','heavy','tank','mage','engineer','assassin','bard','swordsman','summoner','ranger'].includes(String(p.classId))||(Array.isArray(p.skills)&&p.skills.some(s=>typeof s==='string'&&s.startsWith('alchemist-'))))throw Error('versionMismatch');
     // This issued chapter already has identity and proofs. Preserve them unchanged.
-    return {...issued,contentRevision:CONTENT_REVISION};
+    return {...issued,contentRevision:CONTENT_REVISION,protocolVersion:PROTOCOL};
   }
   if(issued.protocolVersion===48&&issued.contentRevision==='f099f438f83d4f79da2fd18bc8cd680e3e8616e5febb50d7b78609b47d09bb32'){
     const p=issued.player as Record<string,unknown>|undefined;
     if(issued.schemaVersion!==1||issued.practiceOnly!==true||issued.serverOnly===true||issued.players!==undefined||issued.transactions!==undefined||JSON.stringify(issued).length>32768||!p||!['soldier','medic','heavy','tank','mage','engineer','assassin','bard','swordsman','summoner'].includes(String(p.classId))||(Array.isArray(p.skills)&&p.skills.some(s=>typeof s==='string'&&s.startsWith('ranger-'))))throw Error('versionMismatch');
-    return {...issued,contentRevision:CONTENT_REVISION};
+    return {...issued,contentRevision:CONTENT_REVISION,protocolVersion:PROTOCOL};
   }
   if(issued.protocolVersion===47&&issued.contentRevision==='e74efafe14d4694ef9afd8ea6df038c3fd0e697e4b6d5039f9a6d70173c8b6bd'){
     const p=issued.player as Record<string,unknown>|undefined;
@@ -26,14 +33,14 @@ function migrateKnownPracticeBoundary(value: unknown): unknown {
     const p = issued.player as Record<string, unknown> | undefined;
     if (issued.schemaVersion !== 1 || issued.practiceOnly !== true || issued.serverOnly === true || issued.players !== undefined || issued.transactions !== undefined || JSON.stringify(issued).length > 32768 || !p || !['soldier','medic','heavy','tank','mage','engineer','assassin','bard'].includes(String(p.classId)) || (Array.isArray(p.skills) && p.skills.some((s) => typeof s === 'string' && s.startsWith('swordsman-')))) throw Error('versionMismatch');
     // Preserve the issued eight-class chapter state; do not create a new proof.
-    return {...issued, contentRevision: CONTENT_REVISION};
+    return {...issued, contentRevision: CONTENT_REVISION, protocolVersion:PROTOCOL};
   }
   if (issued.protocolVersion === 47 && issued.contentRevision === '5b8c858463c86d7e5d2fb70a547dd95ddcb5c38e20be547c39c4f1707e31e779') {
     const p = issued.player as Record<string, unknown> | undefined;
     if (issued.schemaVersion !== 1 || issued.practiceOnly !== true || issued.serverOnly === true || issued.players !== undefined || issued.transactions !== undefined || JSON.stringify(issued).length > 32768 || !p || !['soldier','medic','heavy','tank','mage','engineer','assassin'].includes(String(p.classId)) || (Array.isArray(p.skills) && p.skills.some((s) => typeof s === 'string' && s.startsWith('bard-'))))
       throw Error('versionMismatch');
     // This issued version already had chapter proofs. Preserve them; mint nothing.
-    return { ...issued, contentRevision: CONTENT_REVISION };
+    return { ...issued, contentRevision: CONTENT_REVISION, protocolVersion:PROTOCOL };
   }
   if(issued.contentRevision!==CONTENT_REVISION && (issued.chapter!==undefined ||
     (issued.settings && typeof issued.settings==='object' && Object.hasOwn(issued.settings,'storyChapterId'))))throw Error('versionMismatch');
@@ -53,7 +60,7 @@ function migrateKnownPracticeBoundary(value: unknown): unknown {
       JSON.stringify(issued).length > 32768
     )
       throw Error("versionMismatch");
-    return { ...issued, contentRevision: CONTENT_REVISION };
+    return { ...issued, contentRevision: CONTENT_REVISION, protocolVersion:PROTOCOL };
   }
   if (
     issued.protocolVersion === 47 &&
@@ -69,7 +76,7 @@ function migrateKnownPracticeBoundary(value: unknown): unknown {
       JSON.stringify(issued).length > 32768
     )
       throw Error("versionMismatch");
-    return { ...issued, contentRevision: CONTENT_REVISION };
+    return { ...issued, contentRevision: CONTENT_REVISION, protocolVersion:PROTOCOL };
   }
   if (
     Number(issued.protocolVersion) <= 46 &&

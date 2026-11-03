@@ -51,9 +51,10 @@ test('A portable local chapter preserves an actual earned proof, preparation, ro
 test('All twelve identities can transfer local chapters; issued Ranger-era chapters migrate without admitting a later Alchemist forgery',()=>{
  for(const id of implementedClassIds)assert.equal(inspectLocalChapterCheckpoint(fresh(id).offlineCheckpoint()).summary.classId,id);
  const old=fresh('ranger').offlineCheckpoint()!;
+ old.protocolVersion=48;
  old.contentRevision='8bda5e247f3df132a9c80f244fd8a7c2b3eaf468e2c6a8927f87a35937fbe110';
  assert.equal(inspectLocalChapterCheckpoint(old).summary.classId,'ranger');
- const forged=fresh('alchemist').offlineCheckpoint()!;forged.contentRevision=old.contentRevision;
+ const forged=fresh('alchemist').offlineCheckpoint()!;forged.contentRevision=old.contentRevision;forged.protocolVersion=48;
  assert.throws(()=>inspectLocalChapterCheckpoint(forged));
 });
 test('Transfer framing and complete restore checks reject wrong formats, combat, Free Play, legacy SP Story and inconsistent training',()=>{

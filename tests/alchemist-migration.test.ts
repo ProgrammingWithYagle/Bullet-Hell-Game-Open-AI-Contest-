@@ -1,14 +1,14 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { Game } from '../src/shared/game.ts';
-import { CONTENT_REVISION } from '../src/shared/protocol.ts';
+import { CONTENT_REVISION, PROTOCOL } from '../src/shared/protocol.ts';
 import { freshProfile, parseProfile, summary, type RunReceipt } from '../src/client/profile.ts';
 import { practiceRecords, type PracticeCampaignRecord } from '../src/client/progress.ts';
 const issued='8bda5e247f3df132a9c80f244fd8a7c2b3eaf468e2c6a8927f87a35937fbe110';
 
 test('The issued eleven-class local chapter preserves Nela’s identity and proofs, rejects invented Alchemist state, and cannot be imported as online authority',()=>{
   const g=new Game({mode:'story'});g.addPlayer('p','Nela','ranger');
-  const saved=g.offlineCheckpoint()!;saved.contentRevision=issued;
+  const saved=g.offlineCheckpoint()!;saved.contentRevision=issued;saved.protocolVersion=48;
   const copy=Game.restoreOffline(structuredClone(saved));
   assert.equal(copy.players.get('solo')!.classId,'ranger');assert.deepEqual(copy.trainingFor('solo'),g.trainingFor('p'));
   assert.equal(copy.offlineCheckpoint()!.contentRevision,CONTENT_REVISION);
@@ -27,8 +27,8 @@ test('Historical profiles retain original receipts and reject disciplines not pr
   }
 });
 test('Earlier clear records keep their issued revision and eleven-class roster while current Alchemist records use the new revision',()=>{
-  const current:PracticeCampaignRecord={schemaVersion:1,id:'new-perrin',practiceOnly:true,verified:false,contentRevision:CONTENT_REVISION,protocol:48,mode:'short',difficulty:'normal',classId:'alchemist',completedEncounters:5,accords:0,combatTicks:5000,secret:'locked',memorial:false};
-  const earlier={...current,id:'old-nela',contentRevision:issued,classId:'ranger' as const};
+  const current:PracticeCampaignRecord={schemaVersion:1,id:'new-perrin',practiceOnly:true,verified:false,contentRevision:CONTENT_REVISION,protocol:PROTOCOL,mode:'short',difficulty:'normal',classId:'alchemist',completedEncounters:5,accords:0,combatTicks:5000,secret:'locked',memorial:false};
+  const earlier={...current,id:'old-nela',protocol:48,contentRevision:issued,classId:'ranger' as const};
   const raw=JSON.stringify([earlier,current,{...earlier,id:'forged-class',classId:'alchemist'},{...earlier,id:'forged-protocol',protocol:47}]);
   const rows=practiceRecords({getItem:()=>raw,setItem:()=>assert.fail('Reading must preserve historical bytes')});
   assert.deepEqual(rows.map(r=>r.id),['old-nela','new-perrin']);assert.equal(rows[0].contentRevision,issued);

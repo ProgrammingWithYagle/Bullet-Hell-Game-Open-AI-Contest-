@@ -24,6 +24,7 @@ import type { DistrictCue } from '../shared/district-director.ts';
 import { ServicePresentation } from './service-presentation.ts';
 import type { ServiceCue } from '../shared/service-director.ts';
 import Phaser from 'phaser';
+import {engineerRules} from '../shared/engineer-pathways.ts';
 import { assets } from './assets.ts';
 import { arenaCoverPlan, arenaCoverPlacement, preloadArenaCovers } from './arena-covers.ts';
 import {arenaWorldPlacement,arenaWorldTiles,preloadArenaWorlds} from './arena-worlds.ts';
@@ -822,6 +823,17 @@ export class CombatScene extends Phaser.Scene {
         this.constructImages.delete(id);
       }
     for (const cue of view.classCues) {
+      if(cue.kind==='engineer-charge'){
+        const armed=cue.state==='ready',fuse=cue.state==='fuse',spent=cue.state==='spent';
+        const color=fuse?0xf0b262:armed?0x97d8c7:0x9a9b8a;
+        const radius=fuse||spent?engineerRules.blastRadius:cue.radius;
+        h.lineStyle(fuse?3:2,color,.85).strokeCircle(cue.x,cue.y,radius);
+        h.fillStyle(color,spent?.20:.05).fillCircle(cue.x,cue.y,radius);
+        h.fillStyle(color,.9).fillRect(cue.x-7,cue.y-7,14,14);
+        h.lineStyle(2,color,.9).lineBetween(cue.x-11,cue.y,cue.x+11,cue.y).lineBetween(cue.x,cue.y-11,cue.x,cue.y+11);
+        if(!armed&&!spent){const start=fuse?cue.detonateAt-Math.ceil(engineerRules.fuseSeconds*30):cue.at,end=fuse?cue.detonateAt:cue.armedAt;const progress=Math.max(0,Math.min(1,(now-start)/(end-start)));h.lineStyle(3,color,1).beginPath().arc(cue.x,cue.y,18,-Math.PI/2,-Math.PI/2+Math.PI*2*progress).strokePath();}
+        continue;
+      }
       if(cue.kind==='alchemy-brew'||cue.kind==='alchemy-flask'||cue.kind==='alchemy-pool'||cue.kind==='alchemy-combination'){drawAlchemyCue(h,cue,now,this.localId);continue;}
       if(cue.kind==='ranger-draw'||cue.kind==='ranger-release'||cue.kind==='ranger-trap'||cue.kind==='ranger-survey'){drawRangerCue(h,cue,now,this.localId);continue;}
       if(cue.kind==='sword-cut'||cue.kind==='sword-windup'||cue.kind==='sword-guard'||cue.kind==='sword-parry'||cue.kind==='sword-return'){drawSwordCue(h,cue,now,this.reduceMotion);continue;}
@@ -875,6 +887,7 @@ export class CombatScene extends Phaser.Scene {
         }
         h.lineStyle(2,0x9ccbd8,.8).strokeCircle(cue.x,cue.y,cue.radius+4);
       } else if (cue.kind === 'turret' || cue.kind === 'siege') {
+        if(cue.machinery){h.lineStyle(2,0xdac687,.8).strokeCircle(cue.x,cue.y,25);if(now<(cue.braceUntil??0))h.lineStyle(3,0xdac687,.9).lineBetween(cue.x-15,cue.y+27,cue.x+15,cue.y+27);}
         const facing =
             Math.abs(Math.cos(cue.aim)) > Math.abs(Math.sin(cue.aim))
               ? Math.cos(cue.aim) > 0

@@ -24,7 +24,7 @@ test("The exact issued ten-class local chapter keeps its Summoner identity and e
   assert.equal(restored.players.get("solo")!.classId, "summoner");
   assert.deepEqual(restored.trainingFor("solo"), g.trainingFor("p"));
   assert.equal(restored.offlineCheckpoint()!.contentRevision, CONTENT_REVISION);
-  assert.equal(PROTOCOL, 48);
+  assert.equal(PROTOCOL, 49);
   const forged = structuredClone(saved);
   forged.player.classId = "ranger";
   assert.throws(() => Game.restoreOffline(forged));
@@ -73,7 +73,7 @@ test("Retained protocol48 clear records use their issued ten-class roster and or
     practiceOnly: true,
     verified: false,
     contentRevision: CONTENT_REVISION,
-    protocol: 48,
+    protocol: PROTOCOL,
     mode: "short",
     difficulty: "normal",
     classId: "ranger",
@@ -86,6 +86,7 @@ test("Retained protocol48 clear records use their issued ten-class roster and or
   const old = {
     ...current,
     id: "old-summoner",
+    protocol:48,
     contentRevision: issued,
     classId: "summoner" as const,
   };

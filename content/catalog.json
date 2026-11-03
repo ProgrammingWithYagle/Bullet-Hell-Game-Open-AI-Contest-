@@ -492,6 +492,24 @@
           "slowMultiplier": 1
         }
       }
+    },
+    "engineerPathways": {
+      "machineSpeed": 150,
+      "machineRange": 420,
+      "machineDamageMultiplier": 1.2,
+      "braceSeconds": 0.5,
+      "chargeReach": 120,
+      "chargeBodyRadius": 12,
+      "chargeCapacity": 2,
+      "chargeSeconds": 36,
+      "armSeconds": 1,
+      "fuseSeconds": 0.5,
+      "triggerRadius": 44,
+      "blastRadius": 100,
+      "chargeDamage": 150,
+      "ordinarySlow": 0.5,
+      "slowSeconds": 2,
+      "flashSeconds": 0.35
     }
   },
   "locales": [
@@ -44201,6 +44219,46 @@
       "ordinaryReplay": "ward-approach",
       "timedReading": false,
       "maximumPreparedFoundations": 1
+    }
+  ],
+  "specializationSkills": [
+    {
+      "id": "engineer-machinery-1",
+      "classId": "engineer",
+      "branchId": "engineer-pathways",
+      "branchName": "Specializations",
+      "subbranchId": "engineer-machinery-1",
+      "subbranchName": "Machinery",
+      "subbranchNameKey": "pathway.engineer-machinery-1.name",
+      "name": "Carriage Sentry",
+      "nameKey": "skill.engineer-machinery-1.name",
+      "sourceSkillId": "engineer-machinery-1",
+      "depth": 1,
+      "cost": 2,
+      "grade": "D-",
+      "prerequisite": "engineer-constructs-1",
+      "capstone": false,
+      "effects": {},
+      "description": "A mobile Q machine follows its owner, then braces for half a second before firing. Shorter range and lost moving fire trade sustained output for relocation."
+    },
+    {
+      "id": "engineer-traps-1",
+      "classId": "engineer",
+      "branchId": "engineer-pathways",
+      "branchName": "Specializations",
+      "subbranchId": "engineer-traps-1",
+      "subbranchName": "Traps",
+      "subbranchNameKey": "pathway.engineer-traps-1.name",
+      "name": "Pressure Charges",
+      "nameKey": "skill.engineer-traps-1.name",
+      "sourceSkillId": "engineer-traps-1",
+      "depth": 1,
+      "cost": 2,
+      "grade": "D-",
+      "prerequisite": "engineer-constructs-1",
+      "capstone": false,
+      "effects": {},
+      "description": "Q places an armed proximity charge instead of a turret. Up to two charges; one second arming, half-second visible fuse, ordinary control and finite explosions."
     }
   ]
 }

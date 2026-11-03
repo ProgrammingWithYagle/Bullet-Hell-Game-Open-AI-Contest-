@@ -87,6 +87,7 @@ import { clerkAppealRules } from './clerk-appeal.ts';
 import { migratePracticeBoundary } from './practice-migration.ts';
 import { Minions, type MinionSpawn } from './minions.ts';
 import { BossDirector, type SignatureContext } from './boss-director.ts';
+import { conflictingSkill } from './skill-conflicts.ts';
 import { ClassKits, constructHit, type Construct, type KitContext } from './class-kits.ts';
 import { leaveClosingGates } from './civic-director.ts';
 import {
@@ -736,6 +737,8 @@ export class Game {
       slot.count++;
     } else {
       const s = skillFor(r.item,p.classId);
+      if (conflictingSkill(p.skills,r.item)) return {ok:false,reason:'incompatibleItem'};
+      if (this.settings.mode==='story'&&data.specializationSkills.some(s=>s.id===r.item)) return {ok:false,reason:'storyLearningRequired'};
       if (!s || p.skills.includes(s.id) || (s.prerequisite && !p.skills.includes(s.prerequisite)))
         return { ok: false, reason: 'prerequisite' };
       if (s.capstone && p.skills.some((id) => allSkills.find((x) => x.id === id)!.capstone))
@@ -1762,6 +1765,7 @@ export class Game {
       a = slot === 'ultimate' ? cl.ultimate : cl.abilities[slot === 'q' ? 0 : 1],
       s = this.stats(p),
       now = this.combatTick;
+    if(p.classId==='engineer'&&!this.classKits.canCast(p,slot,this.kitContext()))return;
     if(p.classId==='alchemist'&&!this.alchemy.canCast(p,slot,this.alchemyContext(p.id,alchemyPoint),this.alchemyOptions(p)))return;
     if(p.classId==='swordsman'&&!this.sword.canCast(p,now))return;
     if(p.classId==='summoner'&&!this.retinue.canCast(p,slot,this.retinueContext(),this.summonerOptions(p)))return;
@@ -2274,27 +2278,31 @@ export class Game {
     };
   }
   private kitContext(): KitContext {
+    const game=this;let targets:RangerTarget[]|undefined;
     return {
       tick: this.combatTick,
       players: this.roster(),
       obstacles: this.obstacles,
+      terrain: {bounds:this.arena.bounds,lava:this.arena.lavaPits},
+      get targets(){return targets??=game.rangerTargets();},
       boss: this.boss,
       minions: this.minions,
       stats: (p) => this.stats(p),
       id: () => this.id(),
-      area: (source, point, radius, damage, slow = 1, slowTicks = 0, training) => {
+      area: (source, point, radius, damage, slow = 1, slowTicks = 0, training, cover = false) => {
+        const visible=(target:{x:number;y:number})=>!cover||!this.obstacles.some(w=>segmentRect(point,target,w,0)!==null);
         if (
           !this.director.hasIndependentBodies() &&
           !this.director.coreContact(point, point, radius) &&
           damage > 0 &&
-          distance(point, this.boss) <= radius + this.bossDefinition().radius
+          distance(point, this.boss) <= radius + this.bossDefinition().radius && visible(this.boss)
         )
           this.hitBoss(source, damage);
         for (const weak of this.director.weakPoints())
-          if (damage > 0 && this.director.weakInRadius(point, radius, weak))
+          if (damage > 0 && visible(weak) && this.director.weakInRadius(point, radius, weak))
             this.hitWeak(source, damage, weak.id);
         for (const actor of this.minions.actors.values())
-          if (distance(point, actor) <= radius + actor.radius){
+          if (visible(actor) && distance(point, actor) <= radius + actor.radius){
             const actual=this.minions.hit(actor.id, damage, this.combatTick, slowTicks, slow);
             this.creditHit(source,actual);
             if(training)this.observeTraining(source,training,actual);
@@ -3390,7 +3398,7 @@ export class Game {
     const owned = new Set<string>();
     for (const id of p.skills) {
       const node = skillFor(id,p.classId);
-      if (!node || (node.prerequisite && !owned.has(node.prerequisite)))
+      if (!node || conflictingSkill([...owned],id) || (g.settings.mode==='story'&&data.specializationSkills.some(s=>s.id===id)) || (node.prerequisite && !owned.has(node.prerequisite)))
         throw Error('invalidBuild');
       spent += node.cost;
       capstones += Number(node.capstone);

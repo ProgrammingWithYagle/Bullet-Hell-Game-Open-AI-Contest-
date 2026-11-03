@@ -1,3 +1,4 @@
+import {engineerPathwayMessages} from './source/engineer-pathways.mjs';
 import {bardMessages} from './source/bard.mjs';
 import {swordsmanMessages} from './source/swordsman.mjs';
 import {summonerMessages} from './source/summoner.mjs';
@@ -69,6 +70,8 @@ for (const id of ids) {
   Object.assign(messages, suppliesMessages(id));
   Object.assign(messages, capacityMessages(id));
   Object.assign(messages, playtestMessages(id));
+  messages['skill.soldier-command-1.description']??=messages['template.skill'];
+  messages['weapon.soldier-0.description']??=messages['template.weapon'];
   Object.assign(messages,bardMessages(id,catalog,messages),swordsmanMessages(id,catalog,messages),summonerMessages(id,catalog,messages));
   // Added specialization nodes reuse the approved localized base names plus an already
   // localized focus label. Numerical effect text is formatted from the authored values.
@@ -94,6 +97,7 @@ for (const id of ids) {
     ambulanceMessages(id), matronMessages(id), moldStillMessages(id), bellReturnChainMessages(id),
     runtimeExtraMessages(id), bossGuideMessages(id), stitchworkMessages(id), fieldJournalMessages(id), shieldSpecializationMessages(id),generalMobilityMessages(id),glassSurgeryMessages(id),storyCampaignMessages(id),bakerOvenMessages(id),sluicePressureMessages(id),playHubsMessages(id),stationSignalsMessages(id),lamplightWatchMessages(id),storyReadingMessages(id),wardSkirmishMessages(id));
   Object.assign(messages,bardMessages(id,catalog,messages),swordsmanMessages(id,catalog,messages),summonerMessages(id,catalog,messages));
+  Object.assign(messages,engineerPathwayMessages(id));
   const info = catalog.locales.find(x => x.id === id);
   const output = {
     meta: { schemaVersion: 1, locale: id, nativeName: info.name, direction: info.direction,

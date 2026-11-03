@@ -1,7 +1,7 @@
 import catalog from "../../content/catalog.json";
 import { DT, HZ, type InputFrame } from "./protocol.ts";
 export const generalSkills = catalog.generalSkills;
-export const allSkills = [...catalog.skills, ...generalSkills];
+export const allSkills = [...catalog.skills, ...generalSkills, ...catalog.specializationSkills];
 export const skillFor = (id: string, classId: string) =>
   allSkills.find(
     (s) => s.id === id && (s.classId === classId || s.classId === "general"),

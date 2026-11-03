@@ -52,6 +52,7 @@ import Phaser from 'phaser';
 import './style.css';
 import './ui/polish.css';
 import './ui/skill-map.css';
+import { engineerQNameKey } from '../shared/engineer-pathways.ts';
 import './fonts.css';
 import './ui/expedition.css';
 import './ui/votes.css';
@@ -739,12 +740,14 @@ function update(view: View) {
     if(!cadenceHost)$('abilities').append(meter);
   }else cadenceHost?.remove();
   const abilityList = $('abilities');
+  const engineerQ=engineerQNameKey(p),engineerCharges=view.classCues.filter(c=>c.kind==='engineer-charge'&&c.owner===p.id&&c.state!=='spent'&&view.combatTick<c.until).length;
+  const qLabel=t(engineerQ?'skill.'+engineerQ+'.name':'ability.'+cl.abilities[0].id+'.name')+(engineerQ==='engineer-traps-1'?' '+number(engineerCharges)+'/'+number(data.rules.engineerPathways.chargeCapacity):'');
   const sprintTouch=document.querySelector<HTMLElement>('[data-action="sprint"]');if(sprintTouch)sprintTouch.hidden=!p.skills.includes('general-sprint');
   if(!p.skills.includes('general-sprint'))abilityList.querySelector('[data-ability="sprint"]')?.remove();
   for (const [key, label, at, name] of [
     ['dodge', t('ui.dodge')+(p.dodgeMaximum>1?' '+number(p.dodgeCharges)+'/'+number(p.dodgeMaximum):''), p.dodgeCharges>0?0:p.dodgeAt, ''],
     ...(p.skills.includes('general-sprint')?[["sprint",t('ui.sprint')+' '+number(Math.floor(p.sprintStamina))+'%'+(p.sprintExhausted?' · '+t('ui.sprintRest'):''),0,t('skill.general-sprint.description')] as const]:[]),
-    ['q', t('ability.' + cl.abilities[0].id + '.name'), p.qAt, t('ability.' + cl.abilities[0].id + '.name')],
+    ['q', qLabel, p.qAt, t(engineerQ?'skill.'+engineerQ+'.description':'ability.'+cl.abilities[0].id+'.name')],
     [
       'e',
       t('ability.' + cl.abilities[1].id + '.name') + (p.kit.stepCharges > 0 ? ' ×' + number(p.kit.stepCharges) : ''),
@@ -759,9 +762,10 @@ function update(view: View) {
       e.dataset.ability = key;
       abilityList.append(e);
     }
-    const rangerBlocked=rangerCommitBlocked(p,key,view.combatTick)||alchemyCommitBlocked(p,key,view.combatTick);
+    const rangerBlocked=rangerCommitBlocked(p,key,view.combatTick)||alchemyCommitBlocked(p,key,view.combatTick)||(key==='q'&&p.skills.includes('engineer-traps-1')&&view.classCues.filter(c=>c.kind==='engineer-charge'&&c.owner===p.id&&c.state!=='spent'&&view.combatTick<c.until).length>=data.rules.engineerPathways.chargeCapacity);
     e.className = at <= view.combatTick && !(key==='sprint'&&p.sprintExhausted) && !rangerBlocked ? 'ability ready' : 'ability';
     e.title = name || label;
+    if(engineerQ&&key==='q')e.lang='en';else e.removeAttribute('lang');
     const touch = document.querySelector<HTMLElement>('.touch-buttons [data-action="' + key + '"]');
     if (touch && touch.textContent !== label) touch.textContent = label;
     const value =
@@ -929,7 +933,7 @@ function renderOverlay(view: View, p: PlayerView) {
   const phaseContent = overlay.querySelector<HTMLElement>('.phase-content');
   if (phaseContent) phaseContent.inert = view.matchPaused === true;
   if (['lobby', 'shop'].includes(view.phase))
-    shopBinding = bindShop(overlay, p, (request) => session?.purchase(request), supplyBindings(), settings.branchingTree,view.run.difficulty,view.chapter?.stage);
+    shopBinding = bindShop(overlay, p, (request) => session?.purchase(request), supplyBindings(), settings.branchingTree,view.run.difficulty,view.chapter?.stage,view.run.mode!=='story');
   overlay.querySelectorAll<HTMLButtonElement>('[data-vote]').forEach(
     (button) =>
       (button.onclick = () => {
@@ -970,7 +974,7 @@ function renderOverlay(view: View, p: PlayerView) {
 const supplyBindings = () =>
   [1, 2, 3].map((n) => bindingLabel(inputOptions.bindings[('supply' + n) as 'supply1'][0]));
 function shop(p: PlayerView) {
-  return '<div class="loadout-editor">' + shopMarkup(p, supplyBindings(), settings.branchingTree,session?.view?.run.difficulty??'normal',session?.view?.chapter?.stage) + '</div>';
+  return '<div class="loadout-editor">' + shopMarkup(p, supplyBindings(), settings.branchingTree,session?.view?.run.difficulty??'normal',session?.view?.chapter?.stage,session?.view?.run.mode!=='story') + '</div>';
 }
 async function leave(showTeamRecord = false) {
   storyReaderBinding?.();storyReaderBinding=undefined;

@@ -1,4 +1,5 @@
 // Additional class abilities run only in the authoritative fixed-step simulation.
+import { engineerRules as er, chargePoint, chargeLegal, type EngineerCharge } from './engineer-pathways.ts';
 import { hasTalent, type TalentId } from './class-talents.ts';
 import type { BardCue } from './bard-kit.ts';
 import type {RetinueOrder} from './summoner-kit.ts';
@@ -52,6 +53,9 @@ const emptyStatus = (): KitStatus => ({
 });
 export type Construct = {
   kind: 'turret' | 'siege' | 'wall' | 'decoy';
+  machinery?: boolean;
+  anchorOffset?: number;
+  braceUntil?: number;
   source?: string;
   halfSpan?: number;
   follow?: boolean;
@@ -72,6 +76,7 @@ export type Construct = {
   until: number;
 };
 export type KitCue =
+  | EngineerCharge
   | AlchemyCue
   | RangerCue
   | SwordCue
@@ -103,6 +108,8 @@ export type KitContext = {
   tick: number;
   players: Player[];
   obstacles: Rect[];
+  terrain?: {bounds:Rect;lava:readonly (Vec & {radius:number})[]};
+  targets?: readonly (Vec & {oldX:number;oldY:number;radius:number;health:number})[];
   boss: Boss;
   minions: Minions;
   stats(player: Player): Stats;
@@ -115,6 +122,7 @@ export type KitContext = {
     slow?: number,
     slowTicks?: number,
     training?: TrainingEventKind,
+    cover?: boolean,
   ): void;
   sweep(
     source: Player,
@@ -161,6 +169,35 @@ export function constructHit(from: Vec, to: Vec, body: Construct, pad: number) {
   );
 }
 export class ClassKits {
+  private engineerCharges: (EngineerCharge & {damage:number})[] = [];
+  canCast(p:Player,slot:string,c:KitContext) {
+    if(p.classId!=='engineer'||slot!=='q')return true;
+    if(p.skills.includes('engineer-traps-1'))return chargeLegal(chargePoint(p),p,c)&&this.engineerCharges.filter(m=>m.owner===p.id&&m.state!=='spent'&&c.tick<m.until).length<er.chargeCapacity;
+    if(p.skills.includes('engineer-machinery-1'))return this.machinePoints(p,c).every(point=>chargeLegal(point,p,c,18));
+    return true;
+  }
+  private machinePoints(p:Player,c:KitContext) {
+    return (hasTalent(p,'crossfire-pair')?[-1,1]:[0]).map(side=>({x:p.x+Math.cos(p.aim)*65-Math.sin(p.aim)*side*55,y:p.y+Math.sin(p.aim)*65+Math.cos(p.aim)*side*55}));
+  }
+  private stepEngineerCharges(c:KitContext) {
+    for(const m of this.engineerCharges) {
+      const owner=c.players.find(p=>p.id===m.owner&&p.connected&&p.status==='active');
+      if(!owner||c.tick>=m.until){m.until=0;continue;}
+      if(m.state==='spent')continue;
+      if(m.state==='fuse') {
+        if(c.tick<m.detonateAt)continue;
+        c.area(owner,m,er.blastRadius,m.damage,er.ordinarySlow,ticks(er.slowSeconds),undefined,true);
+        m.state='spent';m.at=c.tick;m.until=c.tick+ticks(er.flashSeconds);
+        continue;
+      }
+      if(c.tick<m.armedAt)continue;
+      m.state='ready';
+      if(c.targets?.some(t=>t.health>0&&segmentCircle({x:t.oldX,y:t.oldY},t,m,er.triggerRadius+t.radius)!==null&&!c.obstacles.some(w=>segmentRect(m,t,w,0)!==null))) {
+        m.state='fuse';m.detonateAt=c.tick+ticks(er.fuseSeconds);
+      }
+    }
+    this.engineerCharges=this.engineerCharges.filter(m=>c.tick<m.until);
+  }
   private retaliation: {
     owner: string;
     x: number;
@@ -179,6 +216,7 @@ export class ClassKits {
     return charge && tick < charge.until ? 600 : undefined;
   }
   clear() {
+    this.engineerCharges = [];
     this.retaliation = [];
     this.statuses.clear();
     this.towers.clear();
@@ -352,6 +390,7 @@ export class ClassKits {
       ({ damage: _d, fireAt: _f, interval: _i, ...cue }) => ({ ...cue }),
     );
     return [
+      ...this.engineerCharges.map(({damage:_damage,...cue})=>({...cue})),
       ...constructs,
       ...this.areas.map(
         ({
@@ -485,6 +524,12 @@ export class ClassKits {
         });
       }
     } else if (p.classId === 'engineer') {
+      if(!this.canCast(p,slot,c))return;
+      if(slot==='q'&&p.skills.includes('engineer-traps-1')) {
+        const point=chargePoint(p);
+        this.engineerCharges.push({kind:'engineer-charge',id:c.id(),owner:p.id,...point,radius:er.triggerRadius,at:now,armedAt:now+ticks(er.armSeconds),detonateAt:0,until:now+ticks(er.chargeSeconds),state:'arming',damage:er.chargeDamage*s.ability*(1+(s.effects.turretDamage??0))});
+        return;
+      }
       if (slot === 'e') this.construct(p, 'wall', 120 * s.ability, 8, 0, c);
       else {
         const pair = !ultimate && hasTalent(p, 'crossfire-pair'),
@@ -508,7 +553,7 @@ export class ClassKits {
             (ultimate ? 90 * up : (pair ? 12.5 : 25) * s.ability) *
               (1 + (s.effects.turretDamage ?? 0)),
             c,
-            { point, mobile, farAim: side === 1 },
+            { point, mobile:mobile||(!ultimate&&p.skills.includes('engineer-machinery-1')), farAim: side === 1, machinery:!ultimate&&p.skills.includes('engineer-machinery-1') },
           );
         }
       }
@@ -590,7 +635,7 @@ export class ClassKits {
     seconds: number,
     dps: number,
     c: KitContext,
-    options: { point?: Vec; mobile?: boolean; farAim?: boolean } = {},
+    options: { point?: Vec; mobile?: boolean; farAim?: boolean; machinery?:boolean } = {},
   ) {
     const allowed =
       kind === 'turret'
@@ -617,10 +662,13 @@ export class ClassKits {
       maxHealth: health,
       at: c.tick,
       until: c.tick + ticks(seconds),
-      damage: dps * interval,
+      damage: dps * interval * (options.machinery?er.machineDamageMultiplier:1),
       fireAt: c.tick,
       interval: interval * HZ,
       mobile: options.mobile,
+      machinery: options.machinery,
+      anchorOffset:options.machinery?-(point.x-p.x)*Math.sin(p.aim)+(point.y-p.y)*Math.cos(p.aim):undefined,
+      braceUntil: options.machinery?c.tick+ticks(er.braceSeconds):undefined,
       farAim: options.farAim,
       retaliation:
         kind === 'wall' &&
@@ -631,6 +679,7 @@ export class ClassKits {
     });
   }
   step(c: KitContext) {
+    this.stepEngineerCharges(c);
     const present = new Set(c.players.map((p) => p.id));
     for (const id of this.statuses.keys())
       if (!present.has(id)) this.statuses.delete(id);
@@ -650,6 +699,7 @@ export class ClassKits {
       );
     }
     for (const [id, tower] of this.towers) {
+      if(tower.machinery&&!c.players.some(p=>p.id===tower.owner&&p.connected&&p.status==='active')){this.towers.delete(id);continue;}
       if (c.tick >= tower.until || tower.health <= 0) {
         this.queueRetaliation(tower);
         this.towers.delete(id);
@@ -691,9 +741,10 @@ export class ClassKits {
           this.towers.delete(id);
           continue;
         }
-        const goal = this.point(owner, 75, c),
+        const center = this.point(owner, 75, c),
+          goal=tower.machinery?{x:center.x-Math.sin(owner.aim)*(tower.anchorOffset??0),y:center.y+Math.cos(owner.aim)*(tower.anchorOffset??0)}:center,
           length = distance(tower, goal),
-          step = Math.min(160 / HZ, length);
+          step = Math.min((tower.machinery?er.machineSpeed:160) / HZ, length);
         if (length > 0) {
           const point = moveBody(
             tower,
@@ -704,11 +755,15 @@ export class ClassKits {
             tower.radius,
             c.obstacles,
           );
-          tower.x = point.x;
-          tower.y = point.y;
+          if(!tower.machinery||chargeLegal(point,tower,c,tower.radius)){
+            if(tower.machinery&&distance(tower,point)>.01)tower.braceUntil=c.tick+ticks(er.braceSeconds);
+            tower.x = point.x;
+            tower.y = point.y;
+          }
         }
       }
-      const targets = [c.boss, ...c.minions.actors.values()]
+      if(tower.machinery&&c.tick<(tower.braceUntil??0)){tower.fireAt=c.tick;continue;}
+      const targets = tower.machinery ? [...(c.targets??[])].filter(t=>t.health>0&&distance(t,tower)<=er.machineRange&&!c.obstacles.some(w=>segmentRect(tower,t,w,3)!==null)).sort((a,b)=>distance(a,tower)-distance(b,tower)) : [c.boss, ...c.minions.actors.values()]
         .filter((t) => t.health > 0 && distance(t, tower) <= 650)
         .sort((a, b) => distance(a, tower) - distance(b, tower));
       const target =

@@ -1,6 +1,6 @@
 # Class specialization: next development direction
 
-Status: design handoff, 2026-11-02. No new pathway, ability, node, grade reward or UI has been implemented by this document. The user requested a handoff and a new chat; feature development stops at this boundary.
+Status: resumed development, 2026-11-02. The bounded Engineer Free Play pilot is implemented; see [ENGINEER_PATHWAYS.md](ENGINEER_PATHWAYS.md) for actual mechanics, conflicts and limits. The broader pathways, later grades and Campaign teaching below remain proposals. This plan does not finalize all twelve pathway rosters.
 
 ## The user's request
 

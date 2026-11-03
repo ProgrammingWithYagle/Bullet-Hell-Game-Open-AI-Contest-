@@ -1,6 +1,13 @@
 # Changelog
 
-Development build **2026.11.02-chapter-checkpoint**, protocol 48. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.02-engineer-pathways**, protocol 49. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-02 — Engineer pathways
+
+### Two early Q choices
+
+- Free Play Engineers can buy a bracing Carriage Sentry or armed Pressure Charges after Level Footing. Both cost two SP, share Q and preserve the current budget.
+- Campaign learning remains unchanged; the new techniques await authored teaching and owned proof. Historical local checkpoints migrate without granting techniques or online authority.
 
 ## 2026-11-02 — Carry a local Campaign between previews
 
