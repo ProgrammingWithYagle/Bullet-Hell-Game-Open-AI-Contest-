@@ -4,6 +4,14 @@ Updated 2026-11-02 after the authorized Engineer specialization slice. **The ful
 
 Use the same checkout and feat/first-playable-loop / draft PR14. Every Git invocation needs git -c core.bare=false. Do not clone, create a worktree, merge main or deploy production. Inspect live HEAD/status/services/remote CI before edits. Later documentation/evidence commits may sit above this playable source.
 
+## Active priority — Free Play polish, Campaign last
+
+The user now wants one thing finished at a time: **Free Play classes first, bosses next, the remaining Free Play loop after that, Campaign last.** Follow [FREE_PLAY_POLISH_ROADMAP.md](../docs/FREE_PLAY_POLISH_ROADMAP.md) and [SKILL_TREE_RESEARCH.md](../docs/SKILL_TREE_RESEARCH.md). These supersede earlier Campaign-next recommendations and stale ledger priority text; no completed-work counts change.
+
+Keep the existing numerical class tree/shared mobility under General. Build Specializations as a separate authored graph with meaningful forks, clear exclusions, legal joins and limited hybrids. Every class should eventually have at least three distinctive specializations (a fourth only when useful). Complete Engineer as the reference, then the other classes individually; do not mass-apply the parked broad implementation sketch. Machinery/Traps have two live entry nodes; Field Works and the full graph remain proposals. The next runtime slice is the safe General/Specializations separation and an honest graph of existing choices, followed by Engineer mechanics one pathway at a time.
+
+Research/design documents and their audit are planning evidence, not a newer playable feature. Portrait/sprite coherence belongs in each class's polish; no batch art replacement is approved or performed. Service Yard remains preserved until Campaign's final phase. The full game goal is active and unfinished.
+
 ## Latest verified playable source
 
 - Source **ab8e4b37b65c9dee32c95dfb643207009c590674**, build **2026.11.02-engineer-pathways**, protocol **49**.
@@ -28,11 +36,11 @@ Campaign still has slow learned/proven/prepared knowledge, one D- preparation, s
 
 ## Continue the broader goal
 
-Read [CLASS_SPECIALIZATION_PLAN.md](../docs/CLASS_SPECIALIZATION_PLAN.md) and [SERVICE_YARD_WORKING.md](../docs/SERVICE_YARD_WORKING.md). Only the bounded Engineer Free Play pilot is implemented; broader pathways/names and higher-grade designs remain proposals. Continue meaningful early breadth and deliberate later preparation, not generic node multiplication or rapid SS+ Campaign promotion.
+Read [CLASS_SPECIALIZATION_PLAN.md](../docs/CLASS_SPECIALIZATION_PLAN.md) and [SERVICE_YARD_WORKING.md](../docs/SERVICE_YARD_WORKING.md), then follow the active Free Play polish order above. Only the bounded Engineer Free Play pilot is implemented; broader pathways/names and higher-grade designs remain proposals. Preserve the Campaign constraints while deferring new Campaign implementation.
 
 Service Yard / Porch Watch remains its exact restorable WIP, original4passes/1failure, not active/selectable and not part of1,265tests. Its patch/log hashes and forward apply check pass unchanged; it still needs history, integration, UI, original prose and full verification. Read its manifest/log before applying it. The ward endpoint and all pending transfers/repairs/consent remain as documented below.
 
-The main story remains **5,741 checked English words** toward **five million base-story English words**, excluding optional arcs/letters/character chapters, translations and UI. All12personal arcs remain incomplete. Continue the full campaign, ensemble/civilian/human-antagonist/boss aims and voices, ordinary objectives, bosses and polish. No final human/rendered/device/native-language/listening/motion/literary/balance acceptance is claimed.
+The main story remains **5,741 checked English words** toward **five million base-story English words**, excluding optional arcs/letters/character chapters, translations and UI. All12personal arcs remain incomplete. The full campaign, ensemble/civilian/human-antagonist/boss aims and voices, ordinary objectives, bosses and polish remain scope; develop them in the active roadmap order, with Campaign last. No final human/rendered/device/native-language/listening/motion/literary/balance acceptance is claimed.
 
 Browser automation remains disabled: no CUA, Playwright, screenshots or browser switching. Native/headless/network/DOM fixtures and local image inspection remain available. No subagents without fresh authorization. Verified feature-branch pushes and draft PR14title/body remain approved; main merge, production/Windows replacement, capacity purchases and private DB uploads remain outside scope.
 

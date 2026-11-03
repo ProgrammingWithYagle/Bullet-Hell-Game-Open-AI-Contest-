@@ -2,6 +2,8 @@
 
 Build 2026.11.02-engineer-pathways / protocol 49. This is a two-choice Free Play pilot. It does not complete Engineer's later grades, the other eleven specialization designs, any personal arc or the larger game.
 
+**Current development order:** [FREE_PLAY_POLISH_ROADMAP.md](FREE_PLAY_POLISH_ROADMAP.md) makes Engineer the first polished reference before the other classes, bosses and eventually Campaign. [SKILL_TREE_RESEARCH.md](SKILL_TREE_RESEARCH.md) proposes the dedicated graph and third Field Works pathway. These are not yet implemented; the instructions below describe the current two-choice pilot.
+
 In Free Play, open the class tree, buy **Level Footing** for 1 SP and inspect the new **Specializations** section. Buy either D- technique for 2 SP. Both classic and expanded views use the same controls and authoritative nodes. The existing three-SP start, 27-SP cap and one-capstone rule remain. Selecting neither retains Rivet Turret. A choice lasts this run; start another run to compare.
 
 | Choice | Decisions and cost |

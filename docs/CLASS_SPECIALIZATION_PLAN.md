@@ -2,6 +2,12 @@
 
 Status: resumed development, 2026-11-02. The bounded Engineer Free Play pilot is implemented; see [ENGINEER_PATHWAYS.md](ENGINEER_PATHWAYS.md) for actual mechanics, conflicts and limits. The broader pathways, later grades and Campaign teaching below remain proposals. This plan does not finalize all twelve pathway rosters.
 
+## Active order and research
+
+The user's latest direction is one area at a time: Free Play classes, then bosses, then the remaining Free Play loop, with Campaign last. [FREE_PLAY_POLISH_ROADMAP.md](FREE_PLAY_POLISH_ROADMAP.md) is the current sequence; [SKILL_TREE_RESEARCH.md](SKILL_TREE_RESEARCH.md) records the actual topology audit, developer references and the new graph design. They supersede earlier Campaign-next recommendations.
+
+Keep the current numerical class tree and shared mobility under General. Specializations is a new dedicated tree with real forks, purposeful joins and compatible hybrids. Target at least three distinctive specializations per class; do not mass-generate new nodes. Finish Engineer first (Machinery, Traps, proposed Field Works), then progress class by class. Only its two pilot entry techniques are live today. The broader names and mechanics below remain proposals.
+
 ## The user's request
 
 Keep the useful existing upgrades, but add another part of the class tree with more fun, dynamic and specialized pathways. The user's concrete Engineer examples are a technology pathway for advanced machinery and a trap pathway for traps. They also want more abilities/upgrades within the grades from D- through SS+, more replay value and a stronger connection between character development and the story.
@@ -18,7 +24,7 @@ Campaign uses learned/proven/prepared knowledge, no SP and no mutations. Only th
 
 ## Design principles
 
-- Retain shared foundations, then expose a clearly named Specializations section. General abilities keep their own section. Both class-tree views must represent the same authoritative choices.
+- Put the existing numerical foundations and shared mobility under General. Give Specializations its own authored dynamic graph. Preserve behavior-bearing legacy IDs/effects through an explicit inventory and deliberate presentation/migration work; never duplicate a purchase. Compact/expanded views must represent the same authoritative choices.
 - A pathway changes decisions: where to stand, what to deploy, what to reserve, how to respond or which targets matter. A name and a percentage bonus are insufficient as its whole identity.
 - Offer multiple meaningful options within rank bands. Build breadth can grow while a character remains in an early band. More available nodes need not increase prepared power or speed up promotion.
 - Give each path an early affordable identity, later interactions, and a distinctive high-grade culmination. Players should feel a build before the last encounter. Do not require a capstone to make the basic path function.
@@ -79,12 +85,11 @@ Use narrator-led physical detail and distinct human speech. Give teachers, peers
 
 ## Implementation and acceptance sequence
 
-1. Audit the current Engineer catalog, transformations, authoritative kit, both skill views, old saves and tests. Record which behavior is already implemented; do not start by mass-generating nodes.
-2. Define two early pathway identities, their real decision tradeoff, shared technique IDs and availability in each mode. Specify grade/preparation and conflicts separately from numerical field strength.
-3. Implement bounded authority behavior and actual costs/cooldowns/ownership/terrain/cleanup. Add readable path inspection and supported inputs. Keep older IDs and deliberate compatibility migrations.
-4. Verify useful effects, invalid and repeated inputs, solo/co-op alternatives, owner isolation, death/disconnect/boundary cleanup, pause, late observation and no fabricated proof. Test the real build choices against ordinary objectives and milestone bosses.
-5. Introduce Campaign learning only after the ability exists, with explicit provenance and continued slow progression. Extend safe-boundary/checkpoint/journal migration without client-forged online credit.
-6. Check the full gate and exact-source CI; freeze matching client/server audiences and run native/network probes within the standing browser restriction. Human/rendered/device/native-language/listening/final-balance acceptance remain separate.
-7. Expand horizontally within rank bands, then deepen higher grades as the Campaign's authored milestones support them. Roll out other classes in coherent slices, preserving identity and replay comparisons.
+1. Finish the current topology/developer research and specification in SKILL_TREE_RESEARCH.md. Preserve the distinction between a proposed graph and implemented choices.
+2. Separate General and Specializations while preserving current ownership, prerequisites and prices. Show only actual live nodes/relationships; retain an accessible equivalent view.
+3. Polish the existing Engineer comparison, then complete Machinery, Traps and Field Works in individual coherent slices. Each needs an early functional identity, internal choices and a real late purpose. Verify before adding the next.
+4. Complete Engineer's whole Free Play build loop and compatibility/network evidence, then the remaining classes one at a time in the roadmap order. Target at least three distinctive specializations each, without inflating the budget or filling eighteen grades with generic percentages.
+5. Polish cross-class Free Play balance, existing bosses individually and the surrounding Free Play loop before more breadth. Keep human enjoyment/rendered/device/language/listening/motion/final-balance review separate from automated checks.
+6. Resume Campaign only in the final roadmap phase: authored learning/proof/preparation, multi-chapter history, safe migrations, sustained ensemble prose and all twelve optional arcs. Reuse actual shared mechanics; never add SP/mutations or rapid SS+ progression.
 
-This plan adds no completed-work ledger credit. The game remains unfinished; only the user decides it is complete.
+Run appropriate focused checks, the full gate for runtime slices and exact-source CI. Preserve older previews/private databases and freeze matching review builds only for actual source changes. This plan adds no completed-work ledger credit. The game remains unfinished; only the user decides it is complete.
