@@ -13,6 +13,7 @@ import {applySluicePressure} from '../content/source/sluice-pressure.mjs';
 import {applyBakerOven} from '../content/source/baker-oven.mjs';
 import {applyStoryCampaign} from '../content/source/story-campaign.mjs';
 import {applyGlassSurgery} from '../content/source/glass-surgery.mjs';
+import {applyGeneralTechniques} from '../content/source/general-techniques.mjs';
 import {applyGeneralMobility} from '../content/source/general-mobility.mjs';
 import {applyShieldSpecializations} from '../content/source/shield-specializations.mjs';
 import {applyStitchwork} from '../content/source/stitchwork.mjs';
@@ -273,7 +274,7 @@ const arenas = [
 const leaderboards=JSON.parse(fs.readFileSync(path.join(root,'content/leaderboards.json'),'utf8'));
 const manifest = {rules,locales,difficulties,modes,classes,skills,weapons,upgrades,supplies,bosses,bossPools,mutations,arenas,grades,leaderboards,threats:['Normal','Aberrant','Predator','Brute','Scourge','Dread','Disaster','Catastrophe','Cataclysm','Calamity','The Uncounted']};
 applyBard(manifest);applySwordsman(manifest);applySummoner(manifest);applyRanger(manifest);applyAlchemist(manifest);applyEncounterPacing(manifest);addClassTalents(manifest);applyEngineerPathways(manifest);applyEngineerMachinery(manifest);
-applyWardenPatrol(manifest);applyCrazedHorizon(manifest);applyCourierRoute(manifest);applyRatcatcherMuster(manifest);applyClerkAppeal(manifest);applyTollkeeperReturn(manifest);applyMarshalChains(manifest);applyWidowGates(manifest);applyAmbulanceRoute(manifest);applyMatronWard(manifest);applyMoldMixing(manifest);applyBellCarillon(manifest);applyBellCounterpoint(manifest);applyStitchwork(manifest);applyShieldSpecializations(manifest);applyGeneralMobility(manifest);applyGlassSurgery(manifest);applyStoryCampaign(manifest);
+applyWardenPatrol(manifest);applyCrazedHorizon(manifest);applyCourierRoute(manifest);applyRatcatcherMuster(manifest);applyClerkAppeal(manifest);applyTollkeeperReturn(manifest);applyMarshalChains(manifest);applyWidowGates(manifest);applyAmbulanceRoute(manifest);applyMatronWard(manifest);applyMoldMixing(manifest);applyBellCarillon(manifest);applyBellCounterpoint(manifest);applyStitchwork(manifest);applyShieldSpecializations(manifest);applyGeneralMobility(manifest);applyGeneralTechniques(manifest);applyGlassSurgery(manifest);applyStoryCampaign(manifest);
 applyBakerOven(manifest);
 applySluicePressure(manifest);
 applyStationSignals(manifest);

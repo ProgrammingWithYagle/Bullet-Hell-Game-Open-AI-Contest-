@@ -12,7 +12,7 @@ import {StoryChapter,openingChapterId,validStoryChapter,validChapterBoundary,cha
 import {StoryTraining,chapterLessons,validStoryTraining,type StoryTrainingState,type TrainingEventKind} from './story-training.ts';
 import {validFreePlay,customizedFreePlay,type FreePlayOptions} from './free-play.ts';
 import {storyCampaign,storyBossOffers,validStoryBoundary} from './story-campaign.ts';
-import {allSkills,skillFor,advanceMobility,takeDodge,resetMobility,dodgeMaximum,sprintUnlocked,mobilityRules} from './mobility.ts';
+import {allSkills,skillFor,advanceMobility,dodgeIntent,takeDodge,resetMobility,dodgeMaximum,sprintUnlocked,mobilityRules} from './mobility.ts';
 import {VariantPressure} from './variant-pressure.ts';
 import { bossDefeatRemaining, showingBossDefeat } from './boss-defeat-flow.ts';
 import { arenaSelections, selectedArenaId, type ArenaSelection } from './arena-selection.ts';
@@ -178,6 +178,7 @@ export type Player = {
   sprintRecoveryAt:number;
   sprintExhausted:boolean;
   sprinting:boolean;
+  dodgeInputDown?:boolean;dodgeSteered?:boolean;dodgeControlUntil?:number;
   dashUntil: number;
   invulnerableUntil: number;
   dashX: number;
@@ -498,6 +499,7 @@ export class Game {
       wasFiring: false,
       dodgeAt: 0,
       dodgeCharges:1,dodgeMaximum:1,sprintStamina:100,sprintRecoveryAt:0,sprintExhausted:false,sprinting:false,
+      dodgeInputDown:false,dodgeSteered:false,dodgeControlUntil:0,
       dashUntil: 0,
       invulnerableUntil: 0,
       dashX: 0,
@@ -1486,10 +1488,12 @@ export class Game {
     p.dodgeMaximum=dodgeMaximum(p.skills);
     const dodgePeriod=ticks(rule.dodgeCooldown*stats.dodgeCooldown);
     advanceMobility(p,i,now,dodgePeriod,sprintUnlocked(p.skills),now<p.reloadAt);
-    if (i.dodge && takeDodge(p,now,dodgePeriod)) {
+    const dodge=dodgeIntent(p,i,now,p.skills);
+    if (dodge==='start' && takeDodge(p,now,dodgePeriod)) {
       p.dashX = len ? mx : Math.cos(i.aim);
       p.dashY = len ? my : Math.sin(i.aim);
       p.dashUntil = now + ticks(rule.dodgeDuration);
+      p.dodgeControlUntil=p.dashUntil;
       p.invulnerableUntil = now + ticks(rule.dodgeInvulnerability);
 
       this.events.push({ type: 'sound', id: 'dodge', x: p.x, y: p.y });

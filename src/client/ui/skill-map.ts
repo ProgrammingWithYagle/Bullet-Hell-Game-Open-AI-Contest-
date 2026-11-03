@@ -19,10 +19,14 @@ export type MapLayout = {
   nodes: MapNode[];
   edges: { from: string; to: string }[];
 };
-export function skillMapLayout(classId: string): MapLayout {
+export function skillMapLayout(classId: string, branchId?: string): MapLayout {
   const cl = catalog.classes.find((c) => c.id === classId);
   if (!cl) throw Error("Unknown skill-map class");
-  const columns = cl.branches.flatMap((b) =>
+  const branches = branchId
+    ? cl.branches.filter((b) => b.id === branchId)
+    : cl.branches;
+  if (!branches.length) throw Error("Unknown foundation branch");
+  const columns = branches.flatMap((b) =>
     b.subbranches.map((p) => ({
       branch: b.id,
       path: p.id,
@@ -40,19 +44,19 @@ export function skillMapLayout(classId: string): MapLayout {
         pathId: s.subbranchId,
         lane,
         depth: s.depth,
-        x: 100 + lane * 200,
-        y: 290 + (s.depth - 1) * 112,
+        x: 120 + lane * 240 + (s.depth % 2 ? -18 : 18),
+        y: 290 + (s.depth - 1) * 165,
       })),
   );
   return {
-    width: 1800,
-    height: 950,
-    root: { x: 900, y: 42 },
-    groups: cl.branches.map((b, i) => ({ id: b.id, x: 300 + i * 600, y: 125 })),
+    width: columns.length * 240,
+    height: 1220,
+    root: { x: columns.length * 120, y: 48 },
+    groups: branches.map((b, i) => ({ id: b.id, x: 360 + i * 720, y: 130 })),
     paths: columns.map((p, i) => ({
       id: p.path,
       nameKey: p.nameKey,
-      x: 100 + i * 200,
+      x: 120 + i * 240,
       y: 205,
     })),
     nodes,
@@ -78,7 +82,7 @@ export function mapFocus(layout: MapLayout, id: string, key: string) {
 }
 export const clampMapZoom = (value: number) =>
   Number.isFinite(value)
-    ? Math.max(0.65, Math.min(1.4, Math.round(value * 100) / 100))
+    ? Math.max(0.35, Math.min(2, Math.round(value * 100) / 100))
     : 1;
 export function mapZoomScroll(
   scroll: number,
@@ -114,16 +118,19 @@ export function skillMapMarkup(
       .map((g) => `M${layout.root.x} 78V95H${g.x}V${g.y - 20}`)
       .join("") +
     layout.paths
-      .map(
-        (p, i) =>
-          ` M${layout.groups[Math.floor(i / 3)].x} 149V166H${p.x}V${p.y + 35}`,
-      )
+      .map((p, i) => {
+        const first = layout.nodes.find(
+          (n) => n.pathId === p.id && n.depth === 1,
+        )!;
+        return ` M${layout.groups[Math.floor(i / 3)].x} 149V170H${p.x}V${p.y - 20} M${p.x} ${p.y + 22}C${p.x} ${p.y + 34},${first.x} ${first.y - 64},${first.x} ${first.y - 46}`;
+      })
       .join("");
   const edges = layout.edges
     .map((e) => {
       const a = byId.get(e.from)!,
-        b = byId.get(e.to)!;
-      return `<path class="${owned.includes(e.from) ? "lit" : ""}" data-from="${escape(e.from)}" data-to="${escape(e.to)}" d="M${a.x} ${a.y + 38}V${b.y - 38}"/>`;
+        b = byId.get(e.to)!,
+        side = Math.sign(b.x - a.x) || 1;
+      return `<path class="${owned.includes(e.from) ? "lit" : ""}" data-from="${escape(e.from)}" data-to="${escape(e.to)}" d="M${a.x + side * 46} ${a.y}C${a.x + side * 120} ${a.y},${b.x + side * 120} ${b.y},${b.x + side * 46} ${b.y}"/>`;
     })
     .join("");
   return `<div class="skill-map-viewport skill-scroll" tabindex="0" role="group" aria-label="${escape(label("ui.skillTree"))}"><div class="skill-map-sheet" style="width:${layout.width * scale}px;height:${layout.height * scale}px"><div class="skill-map-canvas" style="width:${layout.width}px;height:${layout.height}px;transform:scale(${scale})"><svg class="skill-map-edges" width="${layout.width}" height="${layout.height}" aria-hidden="true" focusable="false"><path class="map-forks" d="${forks}"/>${edges}</svg><div class="skill-map-root" style="left:${layout.root.x}px;top:${layout.root.y}px">${root}</div>${layout.groups.map((g) => `<h3 class="skill-map-group" dir="auto" style="left:${g.x}px;top:${g.y}px">${escape(label("branch." + g.id))}</h3>`).join("")}${layout.paths.map((p) => `<p class="skill-map-path" dir="auto" style="left:${p.x}px;top:${p.y}px">${escape(label(p.nameKey))}</p>`).join("")}${layout.nodes.map((n) => `<div class="skill-map-node" data-map-cell="${escape(n.id)}" style="left:${n.x}px;top:${n.y}px">${node(n.id)}<small dir="auto">${escape(label("skill." + n.id + ".name"))}</small></div>`).join("")}</div></div></div>`;

@@ -7,6 +7,11 @@ function migrateKnownPracticeBoundary(value: unknown): unknown {
   if (!value || typeof value !== "object" || Array.isArray(value)) return value;
   const issued = value as Record<string, unknown>;
   const oldPlayer=issued.player as Record<string,unknown>|undefined;
+  if(issued.contentRevision!==CONTENT_REVISION&&Array.isArray(oldPlayer?.skills)&&oldPlayer.skills.some(id=>['general-brake-step','general-course-correction'].includes(String(id))))throw Error('versionMismatch');
+  if(issued.protocolVersion===51&&issued.contentRevision==='9b4db7927068a0b75ba0d915094354eb66102090eeed913b8d013e3c9459233f'){
+    if(issued.schemaVersion!==1||issued.practiceOnly!==true||issued.serverOnly===true||issued.players!==undefined||issued.transactions!==undefined||JSON.stringify(issued).length>32768||!oldPlayer)throw Error('versionMismatch');
+    return {...issued,contentRevision:CONTENT_REVISION,protocolVersion:PROTOCOL};
+  }
   // The issued two-pathway edition already owns its skills and chapter proofs.
   // A local safe boundary carries no live constructs; preserve that ownership.
   if([49,50].includes(issued.protocolVersion as number)&&issued.contentRevision==='a6a17f1935ebd8e91d8d5916a7c8ee920190e13bc42a07e09dec98723e94390f'){

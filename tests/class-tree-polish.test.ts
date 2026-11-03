@@ -47,11 +47,13 @@ test('Both General views lead to the actual prerequisite purchase, then the dist
       binding=f.shop.bindShop(f.host,v,(r:any)=>{assert(g.transact(p.id,{id:'purchase-'+requests.length,...r}).ok);requests.push(r);Object.assign(v,viewOf(g,p.id).players[0]);},[],expanded);
     };
     render();f.host.querySelector('[data-shop-tab="general"]')!.click();
-    assert(!f.host.querySelector('[data-inspect="engineer-machinery-1"]'));assert(f.host.querySelector('[data-inspect="general-sprint"]'));
+    assert(!f.host.querySelector('[data-inspect="engineer-machinery-1"]'));assert(!f.host.querySelector('[data-inspect="general-sprint"]'));
+    f.host.querySelector('[data-branch="general"]')!.click();assert(f.host.querySelector('[data-inspect="general-sprint"]'));
+    f.host.querySelector('[data-branch="'+data.classes.find(c=>c.id==='engineer')!.branches[0].id+'"]')!.click();
     const scroller=f.host.querySelector('.skill-scroll') as any;Object.assign(scroller,{scrollTop:123,scrollLeft:45});
     f.host.querySelector('[data-shop-tab="specializations"]')!.click();f.host.querySelector('[data-shop-tab="general"]')!.click();
     const returned=f.host.querySelector('.skill-scroll') as any;assert.equal(returned.scrollTop,123);assert.equal(returned.scrollLeft,45);
-    if(!expanded)f.host.querySelectorAll('[data-branch]')[2].click();
+    if(!expanded)f.host.querySelectorAll('[data-branch]')[3].click();
     f.host.querySelector('[data-shop-tab="specializations"]')!.click();assert(f.host.querySelector('.specialization-graph'));assert.equal(f.host.querySelectorAll('[data-inspect]').length,data.specializationSkills.length);
     f.host.querySelector('[data-inspect="engineer-machinery-1"]')!.click();assert(f.host.querySelector('#buy-selected')!.disabled);assert.equal(requests.length,0);
     f.host.querySelector('.pathway-foundation')!.click();assert.equal(f.host.querySelector('[data-shop-tab="general"]')!.getAttribute('aria-selected'),'true');assert.equal(f.document.activeElement?.dataset.inspect,'engineer-constructs-1');

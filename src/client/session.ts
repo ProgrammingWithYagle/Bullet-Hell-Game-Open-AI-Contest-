@@ -557,6 +557,7 @@ function networkView(s: WorldState): View {
     eAt: p.eAt,
     ultimateAt: p.ultimateAt,
     dodgeAt: p.dodgeAt,
+    dodgeInputDown:p.dodgeInputDown,dodgeSteered:p.dodgeSteered,dodgeControlUntil:p.dodgeControlUntil,
     dodgeCharges:p.dodgeCharges,dodgeMaximum:p.dodgeMaximum,sprintStamina:p.sprintStamina,sprintRecoveryAt:p.sprintRecoveryAt,sprintExhausted:p.sprintExhausted,sprinting:p.sprinting,
     reloadAt: p.reloadAt,
     supplyAt: p.supplyAt,

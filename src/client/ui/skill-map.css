@@ -163,7 +163,8 @@
 .pathway-legend .active-key {border-width:3px;border-color:#30655c;}
 .pathway-legend .exclusive-key {width:22px;height:0;border:0;border-top:2px dashed #9b644e;border-radius:0;}
 .specialization-viewport {direction:ltr;overflow:auto;overscroll-behavior:contain;touch-action:pan-x pan-y;max-height:min(65dvh,720px);min-height:300px;scrollbar-gutter:stable;background:#e9dfbd;}
-.specialization-graph {position:relative;width:var(--graph-width);height:var(--graph-height);margin-inline:auto;background:radial-gradient(ellipse at 45% 30%,#f6efd6b3,transparent 62%),repeating-linear-gradient(0deg,transparent,transparent 39px,#8a977311 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,#8a977311 40px);}
+.specialization-sheet {position:relative;margin-inline:auto;}
+.specialization-graph {position:relative;transform-origin:top left;width:var(--graph-width);height:var(--graph-height);margin-inline:auto;background:radial-gradient(ellipse at 45% 30%,#f6efd6b3,transparent 62%),repeating-linear-gradient(0deg,transparent,transparent 39px,#8a977311 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,#8a977311 40px);}
 .specialization-graph::after {content:'';position:absolute;inset:15px;pointer-events:none;border:1px solid #a99d6d55;border-radius:4px;}
 .specialization-connections {position:absolute;inset:0;width:100%;height:100%;pointer-events:none;fill:none;stroke:var(--pathway-line);stroke-width:3;stroke-linecap:round;}
 .specialization-connections .locked-route {stroke-dasharray:5 8;stroke-width:2;}
@@ -177,7 +178,7 @@
 .pathway-foundation {display:grid;gap:.2rem;width:100%;min-height:74px;padding:.6rem;border:1px dashed #8d916c;border-radius:5px;background:#ece4c9;color:#37503c;box-shadow:0 2px 4px #35432c12;}
 .pathway-foundation strong {font-size:.95rem;}.pathway-foundation small {text-transform:uppercase;letter-spacing:.09em;font-size:.65rem;}.pathway-foundation span {font-size:.7rem;}
 .pathway-technique {position:relative;min-width:0;text-align:center;}
-.pathway-technique .technique-role {display:block;min-height:1.4em;font-size:.64rem;text-transform:uppercase;letter-spacing:.075em;color:#647057;margin-bottom:.35rem;}
+.pathway-technique .technique-role {display:block;min-height:1.4em;font-size:.64rem;text-transform:uppercase;letter-spacing:.075em;color:#53614b;margin-bottom:.35rem;}
 /* These scoped declarations supersede the legacy .item-node important skin. */
 .pathway-technique .skill-node {display:block;width:84px;height:84px;min-width:44px;min-height:44px;margin:0 auto .45rem;padding:5px;border:2px solid #9c9069!important;border-radius:50%;background:radial-gradient(circle at 45% 30%,#f4eacb,#c9b987)!important;box-shadow:0 0 0 4px #e9dfbd,0 0 0 5px #b9ae89,0 5px 9px #32422c24;transition:box-shadow .15s,border-color .15s;}
 .pathway-technique .skill-node .item-art {object-fit:contain;width:100%;height:100%;filter:drop-shadow(0 2px 1px #0004);}
@@ -192,7 +193,7 @@
 .pathway-technique.role-capstone .skill-node {width:98px;height:98px;border-radius:27% 27% 12% 12%;border-width:4px!important;box-shadow:0 0 0 4px #e9dfbd,0 0 0 6px #b1924d,0 7px 13px #6b512f33;}
 /* Tier and owned seals occupy opposite lower corners; reset inherited anchors. */
 .pathway-technique .node-grade {background:#efe4c2;color:#3c4b32;border:1px solid #b0a377;font-size:.66rem;line-height:1.2;padding:.12rem .28rem;min-width:22px;border-radius:3px;top:auto;bottom:-5px;left:-8px;right:auto;transform:none;}
-.pathway-technique>strong {display:block;font-size:.85rem;line-height:1.35;min-height:1.35em;padding:.1rem .2rem;background:#e9dfbde6;border-radius:3px;}
+.pathway-technique>strong {display:block;font-size:.85rem;line-height:1.35;min-height:1.35em;padding:.1rem .2rem;background:transparent;border-radius:0;}
 .pathway-technique .pathway-slot {font-size:.62rem;letter-spacing:.04em;color:#4c6753;margin-inline-start:.4rem;white-space:nowrap;}
 .pathway-technique .pathway-state {font-size:.7rem;line-height:1.35;margin:.25rem 0 0;color:#54654b;}
 .pathway-technique .pathway-summary {position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;}
@@ -230,3 +231,5 @@
 .loadout-board .skill-tree {border:1px solid #b4ad88;border-radius:8px;background:radial-gradient(ellipse at top,#f2ebd0,#ded8b9);}
 .loadout-board .general-mobility {border-top:3px double #aaa16e;padding-top:1rem;margin-top:1rem;}
 .loadout-board .item-art {object-fit:contain;}
+
+.reading-view .specialization-sheet {width:auto!important;height:auto!important;}.reading-view .specialization-graph {transform:none!important;}

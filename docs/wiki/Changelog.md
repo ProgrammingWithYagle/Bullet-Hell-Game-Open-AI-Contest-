@@ -1,6 +1,17 @@
 # Changelog
 
-Development build **2026.11.03-machinery-manual-polish**, protocol 51. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.03-foundation-workbook**, protocol 52. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-03 — Foundations with room to choose
+
+### General and Specializations
+
+- General has a shared-technique subtab alongside the class branches, with a matching field workbook, real prerequisite curves and a reading view. Existing foundation purchases retain their identities.
+- Both trees support 35%–200% zoom and Fit tree. Specializations now scales the whole tree; upgrade titles no longer have rectangular parchment backplates.
+
+### Shared footwork
+
+- Brake Step lets a second Dodge press stop an ordinary dodge without refunding its charge or extending protection. Course Correction spends stamina on one controlled turn during an ordinary dodge. Both use existing controls and compete for the existing SP budget.
 
 ## 2026-11-03 — Clear technique frames and tier seals
 

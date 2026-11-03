@@ -36,6 +36,7 @@ export type PlayerView = {
   eAt: number;
   ultimateAt: number;
   dodgeAt: number;
+  dodgeInputDown?:boolean;dodgeSteered?:boolean;dodgeControlUntil?:number;
   dodgeCharges:number;dodgeMaximum:number;sprintStamina:number;sprintRecoveryAt:number;sprintExhausted:boolean;sprinting:boolean;
   reloadAt: number;
   downUntil: number;
@@ -147,6 +148,7 @@ export function viewOf(g: Game, owner: string): View {
       eAt: p.eAt,
       ultimateAt: p.ultimateAt,
       dodgeAt: p.dodgeAt,
+      dodgeInputDown:p.dodgeInputDown??false,dodgeSteered:p.dodgeSteered??false,dodgeControlUntil:p.dodgeControlUntil??0,
       dodgeCharges:p.dodgeCharges,dodgeMaximum:p.dodgeMaximum,sprintStamina:p.sprintStamina,sprintRecoveryAt:p.sprintRecoveryAt,sprintExhausted:p.sprintExhausted,sprinting:p.sprinting&&g.phase==='combat'&&p.status==='active',
       reloadAt: p.reloadAt,
       downUntil: p.downUntil,

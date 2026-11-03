@@ -110,7 +110,7 @@ export function specializationMapMarkup(
   options: { mode?: "map" | "list"; zoom?: number; selected?: string } = {},
 ) {
   const byId = new Map(map.nodes.map((n) => [n.id, n])),
-    zoom = options.zoom ?? 1;
+    zoom = Number.isFinite(options.zoom)?Math.max(.35,Math.min(2,options.zoom!)):1;
   const edges = map.edges
     .map((edge) => {
       const a = byId.get(edge.from)!,
@@ -179,11 +179,11 @@ export function specializationMapMarkup(
   return (
     '<div class="specialization-viewport ' +
     (options.mode === "list" ? "reading-view" : "") +
-    '"><div class="specialization-graph" role="group" aria-label="Specializations" style="--graph-width:' +
-    map.width * zoom +
+    '"><div class="specialization-sheet" style="width:'+map.width*zoom+'px;height:'+map.height*zoom+'px"><div class="specialization-graph" role="group" aria-label="Specializations" style="--graph-width:' +
+    map.width +
     "px;--graph-height:" +
-    map.height * zoom +
-    'px"><svg class="specialization-connections" viewBox="0 0 ' +
+    map.height +
+    'px;transform:scale('+zoom+')"><svg class="specialization-connections" viewBox="0 0 ' +
     map.width +
     " " +
     map.height +
@@ -207,7 +207,7 @@ export function specializationMapMarkup(
           "</div>",
       )
       .join("") +
-    "</div></div>"
+    "</div></div></div>"
   );
 }
 export function highlightSpecialization(

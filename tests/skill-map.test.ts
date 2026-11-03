@@ -83,14 +83,13 @@ test('keyboard navigation follows path depth and neighboring branches with bound
   assert.equal(mapFocus(map, 'missing', 'ArrowDown'), null);
 });
 
-test('zoom retains a minimum target above 44 pixels and preserves the viewport center', () => {
-  assert.equal(clampMapZoom(-3), 0.65);
-  assert.equal(clampMapZoom(9), 1.4);
+test('overview zoom covers 35 to 200 percent and preserves the viewport center away from scroll bounds', () => {
+  assert.equal(clampMapZoom(-3), 0.35);
+  assert.equal(clampMapZoom(9), 2);
   assert.equal(clampMapZoom(NaN), 1);
-  assert(76 * clampMapZoom(0) >= 44);
-  for (const oldZoom of [0.65, 1, 1.4])
-    for (const nextZoom of [0.65, 1, 1.4]) {
-      const left = 500,
+  for (const oldZoom of [0.35, 1, 2])
+    for (const nextZoom of [0.35, 1, 2]) {
+      const left = 5000,
         viewport = 320,
         next = mapZoomScroll(left, viewport, oldZoom, nextZoom);
       assert(
@@ -301,11 +300,11 @@ test('the actual shop switches between 18 and 54 skills and expanded inspection 
     const p = viewOf(g, 'solo').players[0];
     assert.equal(
       (shop.shopMarkup(p, [], false).match(/data-inspect=/g) ?? []).length,
-      20,
+      18,
     );
     const expanded = shop.shopMarkup(p, [], true);
-    assert.equal((expanded.match(/data-inspect=/g) ?? []).length, 56);
-    assert.equal((expanded.match(/data-map-cell=/g) ?? []).length,54,'General retains all54 class nodes alongside its two shared purchases');
+    assert.equal((expanded.match(/data-inspect=/g) ?? []).length, 54);
+    assert.equal((expanded.match(/data-map-cell=/g) ?? []).length,54,'All54 class nodes remain; shared techniques have their own subtab');
     assert.equal((expanded.match(/data-from=/g) ?? []).length, 45);
     const first = catalog.skills.find(
       (s) => s.classId === cl.id && s.lane === 0 && s.depth === 1,

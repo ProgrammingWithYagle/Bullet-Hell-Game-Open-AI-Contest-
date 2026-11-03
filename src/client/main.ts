@@ -52,6 +52,7 @@ import Phaser from 'phaser';
 import './style.css';
 import './ui/polish.css';
 import './ui/skill-map.css';
+import './ui/foundation-tree.css';
 import {engineerActions} from './engineer-actions.ts';
 import { engineerQNameKey } from '../shared/engineer-pathways.ts';
 import './fonts.css';

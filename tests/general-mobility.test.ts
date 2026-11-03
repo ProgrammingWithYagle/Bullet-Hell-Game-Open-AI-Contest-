@@ -60,7 +60,7 @@ function state(): Mobility {
 
 test("General purchases use existing earned SP for all twelve classes without adding class nodes or granting free build points", () => {
   assert.equal(data.skills.length, 648);
-  assert.equal(data.generalSkills.length, 2);
+  assert.equal(data.generalSkills.length, 4);
   for (const classId of implementedClassIds) {
     const g = new Game(),
       p = g.addPlayer("solo", "Runner", classId);
@@ -375,6 +375,7 @@ test("Sprint keyboard, gamepad and touch support hold/toggle, quick taps, cancel
   }
 });
 test("both skill views expose shared purchases with written costs and localized descriptions; inspecting does not spend", async (context) => {
+  const css=Object.getOwnPropertyDescriptor(globalThis,'CSS');Object.defineProperty(globalThis,'CSS',{configurable:true,value:{escape:(s:string)=>s}});context.after(()=>css?Object.defineProperty(globalThis,'CSS',css):Reflect.deleteProperty(globalThis,'CSS'));
   const env = menuEnvironment(context),
     ui = await menuBundle(context, "src/client/ui/shop.ts", {
       "assets.ts":
@@ -397,6 +398,7 @@ test("both skill views expose shared purchases with written costs and localized 
       expanded,
     );
     env.host.querySelector('[data-shop-tab="general"]')!.click();
+    env.host.querySelector('[data-branch="general"]')!.click();
     const sprint = env.host.querySelector('[data-inspect="general-sprint"]')!;
     assert(sprint);
     assert(env.host.querySelector('[data-inspect="general-double-dash"]'));

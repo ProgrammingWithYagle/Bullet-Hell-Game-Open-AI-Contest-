@@ -1,6 +1,6 @@
 # Development progress
 
-Updated 2026-11-02 for **2026.11.03-machinery-manual-polish**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
+Updated 2026-11-03 for **2026.11.03-foundation-workbook**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
 
 66 playable identities: 65 ordinary and 1 secret. Three ordinary bosses in every one of fifty subtiers requires 150 ordinary identities, plus secrets; 85 additional ordinary bosses remain.
 
@@ -102,6 +102,9 @@ Updated 2026-11-02 for **2026.11.03-machinery-manual-polish**. These counts trac
 - User2026-10-31 explicitly requires story mechanics to match the actual fixed boss threat levels1–10 and the existing D-–SS+ class-specialization grades. New maps, bosses and techniques should enter shared gameplay and be playable in Free Play as well as Story. Preserve separate Story/Free Play presentation and the same underlying content/rules. STORY_GAMEPLAY_CONTRACT.md records source-grounded semantics; no new permanent class-power ranking is invented.
 - User explicitly corrects the progression split: Campaign/Story must exclusively use the new slower system. The original story-free run modes remain in Free Play with their rapid SP progression. Do not provide a second SP-based Story mode. The twelve-class roster remains accepted; only seven are currently playable.
 - The user reiterates that rapid SP growth cannot share the slow campaign pace. Keep Story exclusively on chapter learning/proofs; retain fast SP progression in story-free Free Play. Continue the full development goal, with completion reserved to the user.
+- The Engineer specialization tree looks much better; extend that visual care to General, put shared abilities in their own subtab, add meaningful shared techniques, widen zoom and remove the text backplates.
+- Finish Engineer with more real choices and a Builder specialization centred on barriers and defensive construction, then move class by class. Every shop purchase needs a clear use; statistics can support a build but cannot be its whole identity.
+- Queue a later per-weapon workshop, one-to-five stars, sequential fully developed predecessors, a broader D- to SS+ roster and qualitative weapon abilities; audit overlap with the skill tree. Continue the current tree focus first.
 
 ## Remaining release work
 

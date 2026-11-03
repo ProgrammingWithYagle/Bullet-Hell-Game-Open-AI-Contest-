@@ -1,6 +1,6 @@
 import {alchemyPredictedSpeed,cancelPredictedBrew} from './alchemy-presentation.ts';
 import {rangerPredictedSpeed,cancelPredictedRangerDraw} from './ranger-presentation.ts';
-import {advanceMobility,takeDodge,sprintUnlocked,mobilityRules} from '../shared/mobility.ts';
+import {advanceMobility,dodgeIntent,takeDodge,sprintUnlocked,mobilityRules} from '../shared/mobility.ts';
 import clerkRules from '../shared/clerk-appeal-rules.json';
 import {fieldPosition} from '../shared/field-follow.ts';
 import { earlyWatchMovement } from '../shared/early-watch-director.ts';
@@ -53,12 +53,14 @@ export class Prediction {
     p.y = clear.y;
     const dodgePeriod=Math.ceil(data.rules.dodgeCooldown*p.dodgeCooldown*HZ);
     advanceMobility(p,i,now,dodgePeriod,sprintUnlocked(p.skills),now<p.reloadAt);
-    if (i.dodge && takeDodge(p,now,dodgePeriod)) {
+    const dodge=dodgeIntent(p,i,now,p.skills);
+    if (dodge==='start' && takeDodge(p,now,dodgePeriod)) {
       cancelPredictedRangerDraw(p);
       cancelPredictedBrew(p);
       p.dashX = len ? mx : Math.cos(i.aim);
       p.dashY = len ? my : Math.sin(i.aim);
       p.dashUntil = now + Math.ceil(data.rules.dodgeDuration * HZ);
+      p.dodgeControlUntil=p.dashUntil;
 
     }
     const environment = serviceMovement(view.bossCues, p, p.id, now);

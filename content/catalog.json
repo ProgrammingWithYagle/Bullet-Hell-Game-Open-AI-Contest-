@@ -287,7 +287,10 @@
       "sprintDrainPerSecond": 30,
       "sprintRecoveryPerSecond": 25,
       "sprintRecoveryDelay": 1,
-      "sprintRestart": 35
+      "sprintRestart": 35,
+      "courseStaminaCost": 20,
+      "courseMinimumTurn": 0.5235987755982988,
+      "courseMaximumTurn": 1.5707963267948966
     },
     "swordsman": {
       "primaryWindupTicks": 3,
@@ -43811,6 +43814,42 @@
         "dodgeCharges": 1
       },
       "description": "Spend 6 earned SP for a second dodge charge. Charges recharge sequentially using the existing dodge cooldown. A new dodge waits for the current dash to finish."
+    },
+    {
+      "id": "general-brake-step",
+      "classId": "general",
+      "name": "Brake Step",
+      "branchId": "general",
+      "subbranchId": "general-footwork",
+      "subbranchName": "Shared footwork",
+      "subbranchNameKey": "ui.generalFootwork",
+      "nameKey": "skill.general-brake-step.name",
+      "sourceSkillId": "general-brake-step",
+      "depth": 1,
+      "cost": 2,
+      "grade": "D",
+      "prerequisite": null,
+      "capstone": false,
+      "effects": {},
+      "description": "Press Dodge again during a dodge to stop its movement. The original protection deadline and charge recovery stay unchanged."
+    },
+    {
+      "id": "general-course-correction",
+      "classId": "general",
+      "name": "Course Correction",
+      "branchId": "general",
+      "subbranchId": "general-footwork",
+      "subbranchName": "Shared footwork",
+      "subbranchNameKey": "ui.generalFootwork",
+      "nameKey": "skill.general-course-correction.name",
+      "sourceSkillId": "general-course-correction",
+      "depth": 2,
+      "cost": 3,
+      "grade": "D+",
+      "prerequisite": "general-sprint",
+      "capstone": false,
+      "effects": {},
+      "description": "During a dodge, hold Sprint and change movement direction to spend stamina on one turn of up to 90 degrees."
     }
   ],
   "storyCampaign": {
