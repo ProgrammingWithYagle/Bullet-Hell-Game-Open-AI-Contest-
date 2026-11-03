@@ -1,6 +1,6 @@
 # Engineer Machinery — progression and field manual
 
-Build **2026.11.03-machinery-progression**, protocol **51**. This is a focused Free Play Engineer slice. Machinery now has an internal control fork, separately earned actions and late mechanical evolutions. Engineer still needs a complete Traps route and a third distinctive pathway before the next class.
+Build **2026.11.03-machinery-manual-polish**, protocol **51**. This is a focused Free Play Engineer slice. Machinery now has an internal control fork, separately earned actions and late mechanical evolutions. Engineer still needs a complete Traps route and a third distinctive pathway before the next class.
 
 General keeps all 648 issued class purchases, two shared mobility purchases and 36 existing transformations. Their IDs, prices, prerequisites and effects remain. The two issued Engineer entry techniques keep their identities too. The new content adds six Machinery techniques; it does not fill eighteen grades with percentage nodes or raise the 27-SP budget/one-capstone limit.
 
@@ -34,6 +34,8 @@ Salvage has a 24-second base cooldown. It consumes remaining machine uptime, exc
 Original bounded mechanical sounds distinguish orders, charging, actual rail release, a resolving collapse and salvage. They follow successful simulation events; rejected or cancelled work produces no invented firing sound. The audio bus retains its existing voice/rate limits and volume controls. Native waveform/cleanup checks are separate from listening acceptance.
 
 ## Presentation and preservation
+
+A final native cascade review found the older important item skin overriding the new active/capstone frames, while inherited top/left badge anchors conflicted with the new corner positioning. Scoped declarations now preserve the intended frames, separate tier/ownership seals, keep owned emblems in full colour and centre the inspector at compact widths. The parser/DOM diagnosis compares five normal-sheet states; it is not a browser/layout or rendered acceptance result.
 
 The specialization section uses an authored parchment/green-leather field-manual design, eight original painted equipment emblems, brass routes, explicit exclusions, distinct new-action/evolution/control/capstone frames, selected-route highlighting and a larger inspector. The map supports bounded spacing controls and spatial keyboard focus; its equivalent reading view retains every real node, description, prerequisite and guarded purchase. General keeps its existing classic/expanded choices and remembered scroll. No unimplemented Field Works or invented hybrid card is selectable.
 

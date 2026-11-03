@@ -178,17 +178,20 @@
 .pathway-foundation strong {font-size:.95rem;}.pathway-foundation small {text-transform:uppercase;letter-spacing:.09em;font-size:.65rem;}.pathway-foundation span {font-size:.7rem;}
 .pathway-technique {position:relative;min-width:0;text-align:center;}
 .pathway-technique .technique-role {display:block;min-height:1.4em;font-size:.64rem;text-transform:uppercase;letter-spacing:.075em;color:#647057;margin-bottom:.35rem;}
-.pathway-technique .skill-node {display:block;width:84px;height:84px;min-width:44px;min-height:44px;margin:0 auto .45rem;padding:5px;border:2px solid #9c9069;border-radius:50%;background:radial-gradient(circle at 45% 30%,#f4eacb,#c9b987);box-shadow:0 0 0 4px #e9dfbd,0 0 0 5px #b9ae89,0 5px 9px #32422c24;transition:box-shadow .15s,border-color .15s;}
+/* These scoped declarations supersede the legacy .item-node important skin. */
+.pathway-technique .skill-node {display:block;width:84px;height:84px;min-width:44px;min-height:44px;margin:0 auto .45rem;padding:5px;border:2px solid #9c9069!important;border-radius:50%;background:radial-gradient(circle at 45% 30%,#f4eacb,#c9b987)!important;box-shadow:0 0 0 4px #e9dfbd,0 0 0 5px #b9ae89,0 5px 9px #32422c24;transition:box-shadow .15s,border-color .15s;}
 .pathway-technique .skill-node .item-art {object-fit:contain;width:100%;height:100%;filter:drop-shadow(0 2px 1px #0004);}
-.pathway-technique .skill-node.unavailable {opacity:1;background:#dcd5b7;border-color:#9da186;}
+.pathway-technique .skill-node.unavailable {opacity:1;background:#dcd5b7!important;border-color:#9da186!important;}
 .pathway-technique .skill-node.unavailable .item-art {filter:saturate(.4) opacity(.7);}
-.pathway-technique .skill-node.available {border-color:#50785e;box-shadow:0 0 0 4px #e9dfbd,0 0 0 6px #78936e,0 5px 9px #32422c24;}
-.pathway-technique .skill-node.owned {border-color:#a77d29;box-shadow:0 0 0 4px #e9dfbd,0 0 0 6px #b58b40,0 5px 9px #32422c24;}
-.pathway-technique .skill-node.inspected {border-color:#24584c;box-shadow:0 0 0 4px #e9dfbd,0 0 0 7px #2c685b,0 6px 12px #32422c35;}
+.pathway-technique .skill-node.owned .item-art {filter:drop-shadow(0 2px 1px #0004);}
+.pathway-technique .skill-node.available {border-color:#50785e!important;box-shadow:0 0 0 4px #e9dfbd,0 0 0 6px #78936e,0 5px 9px #32422c24;}
+.pathway-technique .skill-node.owned {border-color:#a77d29!important;background:radial-gradient(circle at 45% 30%,#f4eacb,#c9b987)!important;box-shadow:0 0 0 4px #e9dfbd,0 0 0 6px #b58b40,0 5px 9px #32422c24;}
+.pathway-technique .skill-node.inspected {border-color:#24584c!important;box-shadow:0 0 0 4px #e9dfbd,0 0 0 7px #2c685b,0 6px 12px #32422c35;}
 .pathway-technique.role-evolution .skill-node {border-radius:20%;}
-.pathway-technique.role-active .skill-node {border-style:double;border-width:5px;}
-.pathway-technique.role-capstone .skill-node {width:98px;height:98px;border-radius:27% 27% 12% 12%;border-width:4px;box-shadow:0 0 0 4px #e9dfbd,0 0 0 6px #b1924d,0 7px 13px #6b512f33;}
-.pathway-technique .node-grade {background:#efe4c2;color:#3c4b32;border:1px solid #b0a377;font-size:.66rem;padding:.12rem .28rem;min-width:22px;border-radius:3px;bottom:-5px;right:-8px;}
+.pathway-technique.role-active .skill-node {border-style:double!important;border-width:5px!important;}
+.pathway-technique.role-capstone .skill-node {width:98px;height:98px;border-radius:27% 27% 12% 12%;border-width:4px!important;box-shadow:0 0 0 4px #e9dfbd,0 0 0 6px #b1924d,0 7px 13px #6b512f33;}
+/* Tier and owned seals occupy opposite lower corners; reset inherited anchors. */
+.pathway-technique .node-grade {background:#efe4c2;color:#3c4b32;border:1px solid #b0a377;font-size:.66rem;line-height:1.2;padding:.12rem .28rem;min-width:22px;border-radius:3px;top:auto;bottom:-5px;left:-8px;right:auto;transform:none;}
 .pathway-technique>strong {display:block;font-size:.85rem;line-height:1.35;min-height:1.35em;padding:.1rem .2rem;background:#e9dfbde6;border-radius:3px;}
 .pathway-technique .pathway-slot {font-size:.62rem;letter-spacing:.04em;color:#4c6753;margin-inline-start:.4rem;white-space:nowrap;}
 .pathway-technique .pathway-state {font-size:.7rem;line-height:1.35;margin:.25rem 0 0;color:#54654b;}
@@ -217,9 +220,9 @@
   .pathway-toolbar>small {flex-basis:100%;max-width:none;}
 }
 @media (prefers-reduced-motion:reduce) {.pathway-technique .skill-node {transition:none;}}
-@media (forced-colors:active) {.pathway-technique .skill-node,.pathway-foundation {border-color:ButtonText;}.specialization-connections path {stroke:CanvasText;}.pathway-technique .skill-node.inspected {outline:3px solid Highlight;}.pathway-technique .skill-node .item-art {forced-color-adjust:none;}}
+@media (forced-colors:active) {.pathway-choices .pathway-technique .skill-node,.pathway-foundation {border-color:ButtonText!important;}.specialization-connections path {stroke:CanvasText;}.pathway-technique .skill-node.inspected {outline:3px solid Highlight;}.pathway-technique .skill-node .item-art {forced-color-adjust:none;}}
 
-.item-details:has(.pathway-detail) .detail-symbol {position:relative;flex:0 0 144px;box-sizing:border-box;}
+.item-details:has(.pathway-detail) .detail-symbol {position:relative;flex:0 0 144px;box-sizing:border-box;float:none;}
 .item-details:has(.pathway-detail) .detail-symbol b {position:absolute;bottom:-.35rem;right:-.3rem;padding:.1rem .45rem;background:#f0e5c5;border:1px solid #aa9461;border-radius:4px;color:#4b592f;font-size:1rem;}
 
 .loadout-board .branch-tabs button {min-height:44px;border-color:#a7a47d;background:#e8e2c8;}

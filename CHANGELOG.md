@@ -1,6 +1,12 @@
 # Changelog
 
-Development build **2026.11.03-machinery-progression**, protocol 51. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.03-machinery-manual-polish**, protocol 51. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-03 — Clear technique frames and tier seals
+
+### Field manual presentation
+
+- New actions, evolutions and capstones retain their distinct frames alongside the older General menu styling. Tier seals and ownership marks use separate corners.
 
 ## 2026-11-03 — The Engineer’s field manual
 
