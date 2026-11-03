@@ -34,7 +34,7 @@ test("Original Engineer cues are distinct finite mono waveforms with quiet, clic
       );
     }
   }
-  assert.equal(signatures.size, 10);
+  assert.equal(signatures.size, 18);
   assert(!isEngineerSound("engineer-unknown"));
   assert.throws(() => engineerSamples("engineer-rail", NaN));
 });

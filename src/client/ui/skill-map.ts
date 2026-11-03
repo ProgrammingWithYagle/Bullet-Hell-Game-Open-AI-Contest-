@@ -84,6 +84,8 @@ export const clampMapZoom = (value: number) =>
   Number.isFinite(value)
     ? Math.max(0.35, Math.min(2, Math.round(value * 100) / 100))
     : 1;
+export const fitMapZoom = (width:number,height:number,logicalWidth:number,logicalHeight:number) =>
+  clampMapZoom(Math.floor(Math.min(width/logicalWidth,height/logicalHeight)*100)/100);
 export function mapZoomScroll(
   scroll: number,
   viewport: number,

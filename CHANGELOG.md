@@ -1,6 +1,23 @@
 # Changelog
 
-Development build **2026.11.03-workbook-zoom-polish**, protocol 52. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.03-engineer-traps**, protocol 53. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-03 — Prepared ground, deliberate control
+
+### Develop the Traps pathway
+
+- Choose a visible tripwire or a Safety Switch, then acquire Firing Key and Haul Line as separate actions. Breach Casings changes explosion geometry; Demolition Corridor coordinates two delivered explosions.
+- The full route costs21SP within the original27-SP/one-capstone budget. General remains separate with four shared techniques; Builder is still the unfinished third Engineer pathway.
+
+### Readable equipment and commitments
+
+- Six original painted equipment emblems extend the field manual. Both real routes share an authored tree and equivalent reading view with35%–200%zoom/Fit.
+- Whole-width ground checks, fixed jet warnings, immutable charge lifetimes, full rearming and owner cancellation govern the actual shared simulation. Paused inputs are discarded.
+
+### Preserve progression
+
+- Protocol53 explicitly migrates the issued protocol52local boundary, retaining old General/Engineer ownership, equipment, profiles and proof boundaries. Older editions cannot invent new Traps purchases.
+- Campaign remains slow learned/proven/prepared progression with no SP or mutations. Its new Traps lessons and the later weapon workshop remain unfinished.
 
 ## 2026-11-03 — A stable tree viewport
 

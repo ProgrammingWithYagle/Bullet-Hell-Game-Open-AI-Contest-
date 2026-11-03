@@ -8,6 +8,7 @@ import {
   skillMapLayout,
   prepareSkillMap,
   clampMapZoom,
+  fitMapZoom,
   mapZoomScroll,
 } from './skill-map.ts';
 import {foundationTreeMarkup} from './foundation-tree.ts';
@@ -29,7 +30,7 @@ import { locale } from '../i18n.ts';
 type Kind = Command['kind'];
 let mapZoom = 1;
 let foundationMode:'map'|'list'='map';
-let specializationMode:'map'|'list'='map',specializationZoom=1;
+let specializationMode:'map'|'list'='map',specializationZoom=1,specializationZoomChosen=false;
 let specializationScroll={top:0,left:0};
 let shopDifficulty = 'normal';
 let shopSpecializationsAllowed = true;
@@ -243,7 +244,7 @@ export function specializationMarkup(p:PlayerView,allowed=true){
   const render=(id:string,reference:boolean)=>{
     const skill=allSkills.find(s=>s.id===id)!;
     if(reference)return '<button type="button" class="pathway-foundation" data-prerequisite="'+e(id)+'" data-graph-focus="'+e(id)+'" lang="'+e(locale)+'" dir="auto"><small>'+e(t('branch.general'))+'</small><strong>'+e(t('skill.'+id+'.name'))+'</strong><span>'+e(p.skills.includes(id)?t('ui.owned'):number(skill.cost)+' '+t('ui.skillPoints'))+'</span></button>';
-    const state=canBuy(p,'skill',id),owned=p.skills.includes(id),role=techniqueRole(id),slot=id==='engineer-machinery-salvage-1'?'B':role==='entry'||role==='control'?'Q':'C';
+    const state=canBuy(p,'skill',id),owned=p.skills.includes(id),role=techniqueRole(id),slot=['engineer-machinery-salvage-1','engineer-traps-haul-1'].includes(id)?'B':role==='entry'||role==='control'?'Q':'C';
     const button=nodeButton(p,'skill',id,id==='engineer-machinery-1'?'engineer':'ability',t('skill.'+id+'.name'),skill.grade).replace('data-inspect=','data-graph-focus="'+e(id)+'" aria-describedby="pathway-summary-'+e(id)+'" data-inspect=');
     return '<article class="pathway-technique role-'+e(role)+'"><span class="technique-role">'+e(techniqueRoleName(id))+'</span>'+button+'<strong>'+e(t('skill.'+id+'.name'))+'</strong><p class="pathway-state">'+e(owned?t('ui.owned'):number(skill.cost)+' '+t('ui.skillPoints'))+' <span class="pathway-slot">'+(slot==='Q'?'Q':e(t(slot==='B'?'ui.pathwayAction2':'ui.pathwayAction1')))+'</span></p><p class="pathway-summary" id="pathway-summary-'+e(id)+'">'+e(t('pathway.'+id+'.summary'))+' '+e(!owned&&!state.allowed?state.reason:'')+'</p><p class="pathway-parent">'+e(t('ui.prerequisite',{name:t('skill.'+skill.prerequisite+'.name')}))+'</p></article>';
   };
@@ -440,13 +441,20 @@ export function bindShop(
     workspace!.querySelectorAll<HTMLButtonElement>('[data-specialization-zoom]').forEach(button=>button.onclick=()=>{
       if(!active(button)||button.disabled)return;
       const action=button.dataset.specializationZoom,viewport=workspace!.querySelector<HTMLElement>('.specialization-viewport'),map=specializationMapLayout(p.classId);if(!viewport||!map)return;
+      specializationZoomChosen=true;
       const before=specializationZoom,left=viewport.scrollLeft,top=viewport.scrollTop,width=viewport.clientWidth,height=viewport.clientHeight;
-      specializationZoom=action==='fit'?clampMapZoom(Math.min(width/map.width,height/map.height)):action==='reset'?1:clampMapZoom(specializationZoom+(action==='in'?.1:-.1));
+      specializationZoom=action==='fit'?fitMapZoom(width,height,map.width,map.height):action==='reset'?1:clampMapZoom(specializationZoom+(action==='in'?.1:-.1));
       redraw('[data-specialization-zoom="'+action+'"]');
       const next=workspace!.querySelector<HTMLElement>('.specialization-viewport');if(next){next.scrollLeft=mapZoomScroll(left,width,before,specializationZoom);next.scrollTop=mapZoomScroll(top,height,before,specializationZoom);specializationScroll={left:next.scrollLeft,top:next.scrollTop};}
     });
     if(tab==='specializations'){
-      const map=specializationMapLayout(p.classId);if(map)prepareSpecializationMap(workspace!,map);
+      const map=specializationMapLayout(p.classId),viewport=workspace!.querySelector<HTMLElement>('.specialization-viewport');
+      if(map&&viewport&&specializationMode==='map'&&!specializationZoomChosen&&viewport.clientWidth>0&&viewport.clientHeight>0){
+        specializationZoomChosen=true;
+        specializationZoom=fitMapZoom(viewport.clientWidth,viewport.clientHeight,map.width,map.height);
+        redraw('[data-shop-tab="specializations"]');return;
+      }
+      if(map)prepareSpecializationMap(workspace!,map);
     }
     workspace!.querySelectorAll<HTMLButtonElement>('[data-foundation-mode]').forEach(button=>button.onclick=()=>{if(!active(button))return;foundationMode=button.dataset.foundationMode as 'map'|'list';redraw('[data-foundation-mode="'+foundationMode+'"]');});
     if (tab==='general'&&!p.training&&branchId!=='general') {
@@ -474,7 +482,7 @@ export function bindShop(
             const before = mapZoom;
             mapZoom =
               button.dataset.mapZoom === 'fit'
-                ? clampMapZoom(Math.min(viewport.clientWidth/layout.width,viewport.clientHeight/layout.height))
+                ? fitMapZoom(viewport.clientWidth,viewport.clientHeight,layout.width,layout.height)
                 : button.dataset.mapZoom === 'reset'
                 ? 1
                 : clampMapZoom(

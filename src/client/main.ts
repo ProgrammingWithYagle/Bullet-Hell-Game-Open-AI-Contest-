@@ -767,7 +767,7 @@ function update(view: View) {
       e.dataset.ability = key;
       abilityList.append(e);
     }
-    const rangerBlocked=(key==='q'&&machineryActions.qBlocked)||!!machineryActions.extras.find(a=>a.key===key)?.blocked||rangerCommitBlocked(p,key,view.combatTick)||alchemyCommitBlocked(p,key,view.combatTick)||(key==='q'&&p.skills.includes('engineer-traps-1')&&view.classCues.filter(c=>c.kind==='engineer-charge'&&c.owner===p.id&&c.state!=='spent'&&view.combatTick<c.until).length>=data.rules.engineerPathways.chargeCapacity);
+    const rangerBlocked=(key==='q'&&machineryActions.qBlocked)||!!machineryActions.extras.find(a=>a.key===key)?.blocked||rangerCommitBlocked(p,key,view.combatTick)||alchemyCommitBlocked(p,key,view.combatTick)||(key==='q'&&!machineryActions.command&&p.skills.includes('engineer-traps-1')&&view.classCues.filter(c=>c.kind==='engineer-charge'&&c.owner===p.id&&c.state!=='spent'&&view.combatTick<c.until).length>=data.rules.engineerPathways.chargeCapacity);
     e.className = at <= view.combatTick && !(key==='sprint'&&p.sprintExhausted) && !rangerBlocked ? 'ability ready' : 'ability';
     e.title = name || label;
     if((engineerQ&&key==='q')||key==='technique1'||key==='technique2')e.lang='en';else e.removeAttribute('lang');

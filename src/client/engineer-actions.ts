@@ -1,6 +1,7 @@
 import type { PlayerView } from "../shared/view.ts";
 import type { KitCue, Construct } from "../shared/class-kits.ts";
 import { machineryIds as ids } from "../shared/engineer-machinery.ts";
+import { trapIds } from "../shared/engineer-traps.ts";
 import { engineerRules as r } from "../shared/engineer-pathways.ts";
 import { distance } from "../shared/geometry.ts";
 import { HZ } from "../shared/protocol.ts";
@@ -10,6 +11,19 @@ export function engineerActions(
   cues: readonly KitCue[],
   now: number,
 ) {
+  if(p.classId==='engineer'&&p.skills.includes('engineer-traps-1')){
+    const plates=cues.filter(c=>c.kind==='engineer-charge'&&c.owner===p.id&&c.state!=='spent'&&c.until>now);
+    const ready=plates.filter(c=>c.kind==='engineer-charge'&&c.state==='ready');
+    const command=p.skills.includes(trapIds.switch)&&plates.some(c=>c.kind==='engineer-charge'&&c.state!=='fuse')&&(p.qAt>now||plates.length>=r.chargeCapacity);
+    return {
+      command,qNameKey:command?(p.kit.trapHeld?'ui.engineer.releaseTraps':'ui.engineer.holdTraps'):null,
+      qAt:command?(p.kit.trapCommandAt??0):p.qAt,qBlocked:!command&&plates.length>=r.chargeCapacity,
+      extras:([
+        ['technique1',trapIds.key,p.kit.technique1At??0,!ready.some(c=>c.until>now+Math.ceil(r.fuseSeconds*HZ))],
+        ['technique2',trapIds.haul,p.kit.technique2At??0,!ready.some(c=>distance(p,c)<=r.haulReach&&c.until>now+Math.ceil((r.haulSeconds+r.armSeconds)*HZ))],
+      ] as const).filter(([,id])=>p.skills.includes(id)).map(([key,id,at,blocked])=>({key,id:key==='technique1'&&p.skills.includes(trapIds.corridor)?trapIds.corridor:id,at,blocked})),
+    };
+  }
   const machines = cues.filter(
     (c): c is Construct =>
       c.kind === "turret" &&

@@ -1,0 +1,36 @@
+# Engineer Traps — prepared ground and deliberate control
+
+Build **2026.11.03-engineer-traps**, protocol **53**. This focused Free Play slice develops Pressure Charges with an early control choice, two acquired actions and qualitative late abilities. The six additions bring Engineer to fourteen specialization techniques across Machinery and Traps. **Builder** remains the unfinished third pathway; Engineer and the broader game remain unfinished. Campaign acquisition is unchanged and remains the final roadmap phase.
+
+All648class-node IDs, four issued General techniques, eight issued Engineer techniques and36transformations retain their prices, prerequisites and effects. The issued Pressure Charges baseline remains: Q places one plate120pixels ahead, one second to arm, a44-pixel trigger, a full visible half-second fuse, a100-pixel/150-base-damage blast and a maximum of two owned charges lasting36seconds. Ordinary enemies can be slowed; boss attack clocks remain. Invalid placements and full slots spend no deployment cooldown. Barricade and Impossible Machine remain available. Machinery, Crossfire Pair and extra-turret conflicts remain explicit.
+
+| Technique | Grade / SP | Earned SP required | Meaningful change |
+| --- | --- | ---: | --- |
+| Tripwire Couplers | D /2 | 5 | Two ready plates can trigger together when a hostile body crosses their visible clear connection. |
+| Safety Switch | D /2 | 5 | An alternative control: Q holds or releases idle plates during deployment recovery or with both slots full. |
+| Firing Key | B- /3 | 11 | Adds action1(default C): remotely commit every ready owned plate, including held plates. |
+| Breach Casings | A- /3 | 17 | Adds a warned directional piercing jet to each committed explosion; placed aim matters. |
+| Haul Line | S- /4 | 21 | Adds action2(default B): reposition and fully rearm a ready plate without extending its lifetime. |
+| Demolition Corridor | SS+ /6 | 27 | Two actual delivered explosions can release one further warned strip along their fixed connection. |
+
+Tripwire Couplers and Safety Switch exclude each other; either is optional. Firing Key requires Pressure Charges; Casings and Haul require Firing Key; Corridor requires Casings. The full route with one control fork, Level Footing and Pressure Charges costs **21SP**, leaving six of the original27SP for supporting choices. The one-capstone rule remains. Normal encounter rewards first admit the gated additions at5,11,19,21and27earnedSP; the A- gate is17but the normal reward sequence reaches19next. These gates apply to rapid Free Play acquisition, not a Campaign promotion schedule.
+
+## Actual commitments
+
+Tripwire links only two same-owner ready plates within360pixels, on clear ground with visible3-pixel cable clearance. Trigger detection covers fast swept body crossings rather than only the final frame. Proximity triggers remain. The link never extends either lifetime. Safety Switch holds arming/ready equipment without stopping its clock. A committed fuse cannot be held or hauled. With a free slot and deployment ready, Q deploys normally; with both slots full, Q can still release held ground. Commands recover in0.8seconds.
+
+Firing Key only commits ready plates with enough lifetime to complete their full fuse. Ordinary remote firing has a12-second base recovery. It grants no extra plates, refunds or instant explosions. Breach Casings fixes a320-pixel/14-pixel-radius lane to the direction recorded on placement or haul. Each jet deals120base damage with ability/turret modifiers. The full committed lane is public during the fuse. Cover can shorten the actual release; removing cover cannot expand it beyond its warning. Shared authoritative cover checks also protect bodies behind the lane edge.
+
+Haul chooses the nearest ready owned plate within320pixels and moves it over0.6seconds toward a legal position120pixels ahead of current aim. Its direction updates when the haul is committed, then stays fixed. It requires a full one-second rearm on arrival. Blocked paths, overlapping destinations or inadequate remaining lifetime reject without spending recovery. Dynamic interruption stops at the last legal point and rearms there; equipment made illegal by cover is removed. Original expiry remains. Haul has an18-second base recovery and cannot rescue a committed fuse.
+
+Corridor requires two ready owned plates no more than360pixels apart and an entirely clear26-pixel-radius strip, including both endpoint caps. Remote commitment shows that fixed strip immediately. Both actual explosions must deliver; a further0.4-second warning then precedes one300-base-damage strip hit. Obstruction cancels the strip as soon as it appears. Death, disconnect, missing delivery, expiry before explosion and phase cleanup cancel pending work. Clear paired commitment has16-second recovery; an ordinary remote cast still uses12seconds. It works with either control choice and does not require Tripwire Couplers.
+
+Authority owns damage, timing, cooldowns, geometry, lifetime, ownership and cancellation. Public cues omit damage, internal interpolation and delivered-plate sets. HUD controls derive from real owned equipment. Original bounded sounds distinguish fuse, blast, haul and coordinated release; waveform checks do not establish listening or motion comfort.
+
+## Tree, art and compatibility
+
+The field manual contains both real routes on one authored2100×1160canvas, with actual prerequisite and exclusion links and an equivalent reading view. General stays separate. The35%–200%zoom/Fit controls remain. Six original painted equipment emblems extend the existing material language; all eight older PNGs/provenance entries remain exact. Generated alpha is retained byte-for-byte. Native parchment/small-size inspection is separate from game rendering, devices and human acceptance. Twenty added copy keys per catalog are explicit English pilot text; the shared manual introduction is deliberately updated to include prepared ground. Other issued locale values remain.
+
+Protocol53 explicitly admits the issued content1d1292…/protocol52local boundary, including all four General techniques and the eight issued Engineer techniques. Older editions cannot invent these six new Traps IDs. Existing earlier migration routes, all twelve identities, profiles/bindings/HUD preferences, equipment, balances and knowledge/proof boundaries remain. New current Traps boundaries restore ownership without live equipment or held state. Online authority remains strict and server-owned; local Practice receipts do not become online proof.
+
+Focused mechanics, real peers, both optimized Solo workers and normal reward acquisition are checked separately. The full gate, exact-source CI and matching frozen reviews must pass before this candidate is described as a verified current build. Human enjoyment, full rendered/device/native-language/listening/motion/literary/final-balance acceptance stays separate. Service Yard remains its preserved unintegrated WIP; no story prose or Campaign lesson is added. The weapon workshop/shop overhaul remains queued later.

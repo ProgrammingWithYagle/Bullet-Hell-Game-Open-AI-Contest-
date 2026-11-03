@@ -12,7 +12,7 @@ export function engineerMachineryMessages(){
     'ui.technique1':'Technique action 1','ui.technique2':'Technique action 2',
     'ui.engineer.anchor':'Anchor carriages','ui.engineer.recall':'Recall carriages','ui.engineer.waypoint':'Set waypoint',
     'ui.pathwayEarned':'Available after earning {count} SP in this run ({earned} earned).',
-    'ui.pathwayFieldManual':'The Engineer’s field manual','ui.pathwayManualHelp':'Follow a route to develop its technique. Choose a carriage control, add new actions, then evolve their behaviour. Select any emblem to inspect before spending.',
+    'ui.pathwayFieldManual':'The Engineer’s field manual','ui.pathwayManualHelp':'Follow a route to develop its technique. Choose how to control your machines or prepared ground, add new actions, then evolve their behaviour. Select any emblem to inspect before spending.',
     'ui.pathwayMap':'Tree','ui.pathwayList':'Reading view','ui.pathwayControls':'Arrow keys follow the tree. Enter inspects. Tab leaves the map.',
     'ui.pathwayNewAction':'New active action','ui.pathwayEvolution':'Ability evolution','ui.pathwayControl':'Control choice','ui.pathwayEntry':'Q specialization','ui.pathwayCapstone':'Capstone evolution',
     'ui.pathwayExclusive':'Choose one','ui.pathwayOptional':'Optional control fork','ui.pathwayAbilityRoute':'Develop your machinery',

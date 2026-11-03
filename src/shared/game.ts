@@ -1538,8 +1538,7 @@ export class Game {
     if (i.reload && now >= p.overdriveUntil && !p.reloadAt && p.ammo < stats.magazine && (p.classId!=='ranger'||this.ranger.canPrimary(p,this.rangerContext())) && (p.classId!=='alchemist'||this.alchemy.canPrimary(p,this.alchemyContext())))
       this.reload(p);
     if(i.q){
-      if(now>=p.qAt)this.ability(p,'q');
-      else this.classKits.commandEngineer(p,this.kitContext());
+      if(!this.classKits.commandEngineer(p,this.kitContext())&&now>=p.qAt)this.ability(p,'q');
     }
     for(const slot of ['technique1','technique2'] as const)if(i[slot])this.classKits.castEngineer(p,slot,this.kitContext());
     if (i.e && (now >= p.eAt || this.classKits.freeStep(p.id, now))) this.ability(p, 'e');
@@ -2320,11 +2319,17 @@ export class Game {
             if(source.classId==='mage'&&slow<1&&slowTicks>0)this.observeTraining(source,'sigil-control',actual);
           }
       },
-      sweep: (source, from, to, radius, damage, touched) => {
+      sweep: (source, from, to, radius, damage, touched, cover = false) => {
+        const visible=(target:{x:number;y:number})=>{
+          if(!cover)return true;
+          const dx=to.x-from.x,dy=to.y-from.y,t=Math.max(0,Math.min(1,((target.x-from.x)*dx+(target.y-from.y)*dy)/(dx*dx+dy*dy||1)));
+          return !this.obstacles.some(w=>segmentRect({x:from.x+t*dx,y:from.y+t*dy},target,w,0)!==null);
+        };
         if (
           !this.director.hasIndependentBodies() &&
           !this.director.coreContact(from, to, radius) &&
           !touched.has('boss') &&
+          visible(this.boss) &&
           segmentCircle(from, to, this.boss, radius + this.bossDefinition().radius) !== null
         ) {
           this.hitBoss(source, damage);
@@ -2333,6 +2338,7 @@ export class Game {
         for (const weak of this.director.weakPoints())
           if (
             !touched.has('weak-' + weak.id) &&
+            visible(weak) &&
             this.director.weakContact(from, to, weak, radius) !== null
           ) {
             this.hitWeak(source, damage, weak.id);
@@ -2341,6 +2347,7 @@ export class Game {
         for (const actor of this.minions.actors.values())
           if (
             !touched.has('actor-' + actor.id) &&
+            visible(actor) &&
             segmentCircle(
               { x: from.x - actor.oldX, y: from.y - actor.oldY },
               { x: to.x - actor.x, y: to.y - actor.y },

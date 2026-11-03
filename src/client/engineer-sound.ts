@@ -1,5 +1,9 @@
 /** Original, quiet mechanical cues. One bounded mono voice per event; no sampled music or voice. */
 export const engineerSoundSpecs = {
+  "engineer-fuse": {duration:0.16,frequency:510,end:330,noise:0.12,gain:0.035},
+  "engineer-blast": {duration:0.30,frequency:105,end:43,noise:0.60,gain:0.075},
+  "engineer-haul": {duration:0.27,frequency:135,end:210,noise:0.38,gain:0.04},
+  "engineer-demolition": {duration:0.39,frequency:75,end:28,noise:0.68,gain:0.08},
   "engineer-order": {
     duration: 0.1,
     frequency: 220,

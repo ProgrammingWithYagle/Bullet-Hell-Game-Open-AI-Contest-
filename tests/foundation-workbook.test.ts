@@ -99,13 +99,13 @@ test("Specialization overview zoom scales the complete map from 35 to 200 percen
     f.host
       .querySelector(".specialization-graph")!
       .getAttribute("style")!
-      .includes("--graph-width:1000px"),
+      .includes("--graph-width:2100px"),
   );
   assert(
     f.host
       .querySelector(".specialization-sheet")!
       .getAttribute("style")!
-      .includes("width:350px"),
+      .includes("width:735px"),
   );
   for (let n = 0; n < 20; n++)
     f.host.querySelector('[data-specialization-zoom="in"]')!.click();
@@ -133,6 +133,23 @@ test("Specialization overview zoom scales the complete map from 35 to 200 percen
   );
   assert(f.host.querySelector('[data-specialization-zoom="fit"]')!.disabled);
   assert.equal(f.requests.length, 0);
+});
+
+test('The wider two-route manual opens fitted once and retains a deliberately chosen zoom across tabs',async t=>{
+  const f=await fixture(t),prototype=Object.getPrototypeOf(f.host),saved=new Map<string,PropertyDescriptor|undefined>();
+  for(const [key,size]of [['clientWidth',1000],['clientHeight',620]] as const){
+    saved.set(key,Object.getOwnPropertyDescriptor(prototype,key));
+    Object.defineProperty(prototype,key,{configurable:true,get(){return this.classList.contains('specialization-viewport')?size:0;},set(){}});
+  }
+  t.after(()=>{for(const [key,descriptor]of saved)descriptor?Object.defineProperty(prototype,key,descriptor):Reflect.deleteProperty(prototype,key);});
+  f.host.querySelector('[data-shop-tab="specializations"]')!.click();
+  let zoom=f.host.querySelector('.specialization-graph')!.getAttribute('style')!;
+  assert(zoom.includes('transform:scale(0.47)'),'initial fit includes both route regions without rounding beyond the viewport');
+  assert.equal(f.host.querySelectorAll('[data-inspect]').length,data.specializationSkills.length);
+  f.host.querySelector('[data-specialization-zoom="reset"]')!.click();
+  assert(f.host.querySelector('.specialization-graph')!.getAttribute('style')!.includes('transform:scale(1)'));
+  f.host.querySelector('[data-shop-tab="general"]')!.click();f.host.querySelector('[data-shop-tab="specializations"]')!.click();
+  zoom=f.host.querySelector('.specialization-graph')!.getAttribute('style')!;assert(zoom.includes('transform:scale(1)'));assert.equal(f.requests.length,0);
 });
 test("Each General branch draws exactly its eighteen issued IDs and prerequisite links with room for labels", () => {
   for (const cl of data.classes)

@@ -6,7 +6,7 @@ export function specializationSpRequired(id:string):number {const s=catalog.spec
 export const engineerRules=catalog.rules.engineerPathways;
 export type EngineerCharge=Vec & {
   kind:'engineer-charge';id:number;owner:string;radius:number;at:number;until:number;
-  armedAt:number;detonateAt:number;state:'arming'|'ready'|'fuse'|'spent';
+  armedAt:number;detonateAt:number;state:'arming'|'ready'|'fuse'|'spent'|'hauling';aim?:number;held?:boolean;
 };
 export const chargePoint=(p:Vec & {aim:number})=>({x:p.x+Math.cos(p.aim)*engineerRules.chargeReach,y:p.y+Math.sin(p.aim)*engineerRules.chargeReach});
 /** Reject blocked deployment and lava crossings; never silently move a charge. */

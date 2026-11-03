@@ -11,9 +11,15 @@ export type SpecializationMap = {
 };
 // Authored positions belong to real techniques; no proposed family becomes an empty card.
 const positions: Record<string, Point> = {
-  "engineer-constructs-1": { x: 500, y: 75 },
+  "engineer-constructs-1": { x: 895, y: 75 },
   "engineer-machinery-1": { x: 340, y: 255 },
-  "engineer-traps-1": { x: 800, y: 255 },
+  "engineer-traps-1": { x: 1450, y: 255 },
+  "engineer-traps-wire-1": { x: 1160, y: 460 },
+  "engineer-traps-switch-1": { x: 1450, y: 460 },
+  "engineer-traps-key-1": { x: 1740, y: 545 },
+  "engineer-traps-casings-1": { x: 1600, y: 800 },
+  "engineer-traps-haul-1": { x: 1890, y: 800 },
+  "engineer-traps-corridor-1": { x: 1600, y: 1030 },
   "engineer-machinery-anchor-1": { x: 125, y: 460 },
   "engineer-machinery-survey-1": { x: 350, y: 460 },
   "engineer-machinery-coil-1": { x: 580, y: 545 },
@@ -46,8 +52,8 @@ export function specializationMapLayout(
     return { ...n, ...point };
   });
   return {
-    width: 1000,
-    height: 1120,
+    width: 2100,
+    height: 1160,
     nodes,
     edges: techniques
       .filter((s) => s.prerequisite)
@@ -83,7 +89,10 @@ export function specializationFocus(
       ? map.edges.filter((edge) => edge.to === id).map((edge) => edge.from)
       : key === "ArrowDown"
         ? map.edges.filter((edge) => edge.from === id).map((edge) => edge.to)
-        : [];
+        : map.exclusions.flatMap(pair=>pair.a===id?[pair.b]:pair.b===id?[pair.a]:[]).filter(id=>{
+            const n=map.nodes.find(n=>n.id===id)!;
+            return (n.x-current.x)*d.x+(n.y-current.y)*d.y>0.01;
+          });
   const candidates = related.length
     ? map.nodes.filter((n) => related.includes(n.id))
     : map.nodes;

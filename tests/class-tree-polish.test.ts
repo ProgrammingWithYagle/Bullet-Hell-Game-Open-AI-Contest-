@@ -21,7 +21,7 @@ test('The specialization graph contains only real techniques, their General refe
   assert.deepEqual(map.nodes.filter(n=>n.reference).map(n=>n.id),['engineer-constructs-1']);
   assert.deepEqual(new Set(map.nodes.filter(n=>!n.reference).map(n=>n.id)),new Set(data.specializationSkills.map(s=>s.id)));
   assert.deepEqual(map.edges,data.specializationSkills.map(s=>({from:s.prerequisite,to:s.id})));
-  assert.deepEqual(map.exclusions,[{a:'engineer-machinery-1',b:'engineer-traps-1'},{a:'engineer-machinery-anchor-1',b:'engineer-machinery-survey-1'}]);
+  assert.deepEqual(map.exclusions,[{a:'engineer-machinery-1',b:'engineer-traps-1'},{a:'engineer-machinery-anchor-1',b:'engineer-machinery-survey-1'},{a:'engineer-traps-wire-1',b:'engineer-traps-switch-1'}]);
   for(const cl of data.classes.filter(c=>c.id!=='engineer'))assert.equal(specializationMapLayout(cl.id),null);
   const html=specializationMapMarkup(map,['engineer-constructs-1','engineer-machinery-1'],(id,ref)=>'<button data-graph-focus="'+id+'">'+(ref?'General':'Technique')+'</button>');
   assert.equal((html.match(/data-from=/g)??[]).length,data.specializationSkills.length);assert(html.includes('conflicting-route'));assert(!html.includes('Field Works'));assert(!html.includes('data-purchase'));
@@ -32,7 +32,10 @@ test('Graph arrows follow authored positions and normal Tab can leave the graph 
   prepareSpecializationMap(host as unknown as HTMLElement,map);
   const buttons=host.querySelectorAll('[data-graph-focus]'),graph=host.querySelector('.specialization-graph')!;assert.equal(buttons.filter(b=>b.tabIndex===0).length,1);assert.equal(host.querySelector('#outside')!.tabIndex,0);
   assert.equal(specializationFocus(map,left,'ArrowRight'),right);assert.equal(specializationFocus(map,right,'ArrowLeft'),left);assert.equal(specializationFocus(map,left,'ArrowUp'),root);assert.equal(specializationFocus(map,root,'ArrowDown'),left);
-  assert.equal(specializationFocus(map,right,'Home'),root);assert.equal(specializationFocus(map,root,'End'),'engineer-machinery-convergence-1');assert.equal(specializationFocus(map,'missing','ArrowDown'),null);
+  assert.equal(specializationFocus(map,right,'Home'),root);assert.equal(specializationFocus(map,root,'End'),'engineer-traps-corridor-1');assert.equal(specializationFocus(map,'missing','ArrowDown'),null);
+  assert.equal(specializationFocus(map,'engineer-traps-wire-1','ArrowRight'),'engineer-traps-switch-1');
+  assert.equal(specializationFocus(map,'engineer-traps-switch-1','ArrowLeft'),'engineer-traps-wire-1');
+  assert.equal(specializationFocus(map,'engineer-traps-corridor-1','ArrowUp'),'engineer-traps-casings-1');
   let prevented=false;graph.onkeydown!({key:'ArrowRight',target:buttons[1],preventDefault(){prevented=true;}});assert(prevented);assert.equal(document.activeElement?.dataset.graphFocus,right);assert.equal(buttons.filter(b=>b.tabIndex===0).length,1);
   prevented=false;graph.onkeydown!({key:'Tab',target:buttons[2],preventDefault(){prevented=true;}});assert(!prevented);
 });

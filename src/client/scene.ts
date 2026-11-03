@@ -844,15 +844,30 @@ export class CombatScene extends Phaser.Scene {
         h.lineStyle(2,color,1).lineBetween(cue.x-size,cue.y-size,cue.x+size,cue.y+size).lineBetween(cue.x-size,cue.y+size,cue.x+size,cue.y-size);
         continue;
       }
+      if(cue.kind==='engineer-wire'||cue.kind==='engineer-jet'||cue.kind==='engineer-haul'||cue.kind==='engineer-corridor'){
+        const impact=!!cue.impact,wire=cue.kind==='engineer-wire',haul=cue.kind==='engineer-haul';
+        const color=wire?0x9bc8b4:haul?0xc3b983:impact?0xf0d49a:0xd0ad70;
+        const dx=cue.toX-cue.x,dy=cue.toY-cue.y,length=Math.hypot(dx,dy)||1,nx=-dy/length,ny=dx/length;
+        if(!wire&&!haul){
+          h.lineStyle(cue.radius*2,color,impact?.28:.07).lineBetween(cue.x,cue.y,cue.toX,cue.toY);
+          for(const side of [-1,1])h.lineStyle(impact?2:1,color,.85).lineBetween(cue.x+nx*cue.radius*side,cue.y+ny*cue.radius*side,cue.toX+nx*cue.radius*side,cue.toY+ny*cue.radius*side);
+        }
+        h.lineStyle(impact?4:wire?2:1,color,impact?1:.8).lineBetween(cue.x,cue.y,cue.toX,cue.toY);
+        h.lineStyle(2,color,.9).strokeCircle(cue.x,cue.y,wire?6:9).strokeCircle(cue.toX,cue.toY,wire?6:9);
+        if(!wire&&!haul&&!impact){const progress=Math.max(0,Math.min(1,(now-cue.at)/Math.max(1,cue.until-cue.at)));h.lineStyle(3,color,1).beginPath().arc(cue.x,cue.y,16,-Math.PI/2,-Math.PI/2+Math.PI*2*progress).strokePath();}
+        continue;
+      }
       if(cue.kind==='engineer-charge'){
         const armed=cue.state==='ready',fuse=cue.state==='fuse',spent=cue.state==='spent';
-        const color=fuse?0xf0b262:armed?0x97d8c7:0x9a9b8a;
+        const color=fuse?0xf0b262:cue.held?0xc4b687:armed?0x97d8c7:0x9a9b8a;
         const radius=fuse||spent?engineerRules.blastRadius:cue.radius;
         h.lineStyle(fuse?3:2,color,.85).strokeCircle(cue.x,cue.y,radius);
         h.fillStyle(color,spent?.20:.05).fillCircle(cue.x,cue.y,radius);
         h.fillStyle(color,.9).fillRect(cue.x-7,cue.y-7,14,14);
         h.lineStyle(2,color,.9).lineBetween(cue.x-11,cue.y,cue.x+11,cue.y).lineBetween(cue.x,cue.y-11,cue.x,cue.y+11);
-        if(!armed&&!spent){const start=fuse?cue.detonateAt-Math.ceil(engineerRules.fuseSeconds*30):cue.at,end=fuse?cue.detonateAt:cue.armedAt;const progress=Math.max(0,Math.min(1,(now-start)/(end-start)));h.lineStyle(3,color,1).beginPath().arc(cue.x,cue.y,18,-Math.PI/2,-Math.PI/2+Math.PI*2*progress).strokePath();}
+        if(cue.held&&!fuse&&!spent)h.lineStyle(3,0x424c3b,1).lineBetween(cue.x-3,cue.y-5,cue.x-3,cue.y+5).lineBetween(cue.x+3,cue.y-5,cue.x+3,cue.y+5);
+        if(cue.aim!==undefined&&!spent)h.lineStyle(2,color,.9).lineBetween(cue.x+Math.cos(cue.aim)*14,cue.y+Math.sin(cue.aim)*14,cue.x+Math.cos(cue.aim)*25,cue.y+Math.sin(cue.aim)*25);
+        if(!armed&&!spent&&cue.state!=='hauling'){const start=fuse?cue.detonateAt-Math.ceil(engineerRules.fuseSeconds*30):cue.at,end=fuse?cue.detonateAt:cue.armedAt;const progress=Math.max(0,Math.min(1,(now-start)/(end-start)));h.lineStyle(3,color,1).beginPath().arc(cue.x,cue.y,18,-Math.PI/2,-Math.PI/2+Math.PI*2*progress).strokePath();}
         continue;
       }
       if(cue.kind==='alchemy-brew'||cue.kind==='alchemy-flask'||cue.kind==='alchemy-pool'||cue.kind==='alchemy-combination'){drawAlchemyCue(h,cue,now,this.localId);continue;}
