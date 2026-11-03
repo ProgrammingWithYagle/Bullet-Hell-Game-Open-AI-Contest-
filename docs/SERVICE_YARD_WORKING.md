@@ -1,5 +1,7 @@
 # The Service Yard — second-chapter candidate
 
+Current continuation: the separate Engineer Free Play pilot is verified at ab8e4b3 / protocol49; see [ENGINEER_PATHWAYS.md](ENGINEER_PATHWAYS.md) and the current handoff. This Service Yard candidate remains unintegrated, with its original4pass/1fail WIP intact. The dated checkpoint below describes its preservation boundary.
+
 The user requested a new-chat handoff on 2026-11-02. Development is paused at that boundary. Verified source remains 5fba8f2, metadata9c84f1c, build2026.11.02-chapter-checkpoint/protocol48. The metadata CI41486223371/job125417167316 also passes every step. Testing5314/2690 and public5315/2691 are preserved; no newer feature is frozen yet. The latest class-specialization direction is in [CLASS_SPECIALIZATION_PLAN.md](CLASS_SPECIALIZATION_PLAN.md).
 
 The next vertical slice extends the actual Campaign beyond One Place Left. It uses slower continuing character knowledge, scarce carried money/equipment, a new ordinary defensive objective and narrator-led scenes. It must preserve rapid SP Free Play and make the new objective replayable there. No automatic grade or SP reward accompanies a chapter.

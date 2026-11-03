@@ -1,3 +1,45 @@
+# Grave Accord: current continuation checkpoint
+
+Updated 2026-11-02 after the authorized Engineer specialization slice. **The full game remains unfinished; only the user decides when it is complete.** This records continuing development, not a final release or a user-requested stop.
+
+Use the same checkout and feat/first-playable-loop / draft PR14. Every Git invocation needs git -c core.bare=false. Do not clone, create a worktree, merge main or deploy production. Inspect live HEAD/status/services/remote CI before edits. Later documentation/evidence commits may sit above this playable source.
+
+## Latest verified playable source
+
+- Source **ab8e4b37b65c9dee32c95dfb643207009c590674**, build **2026.11.02-engineer-pathways**, protocol **49**.
+- Final local gate: **1,265/1,265 tests pass**, TypeScript, checked story words,144 early-Campaign cases,15 catalogs/2,739 keys/41,085 messages, production build and71 encounter/300 survivor/60 companion atlas contracts. Twelve new pilot keys are explicitly English, not completed translations.
+- Exact-source CI [41564738365](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/41564738365), job125683418867: every job and step passed. Receipt: [source-ci.json](../reviews/engineer-pathways-2026-11-02/source-ci.json).
+- Content SHA-256 a6a17f1935ebd8e91d8d5916a7c8ee920190e13bc42a07e09dec98723e94390f; runtime source225c931010188c4901ca8a9aabe137bc6a4ea16569d0f99eb2364bea58b3d81d; source/test snapshot ea48e3eb498b9914ef031d673d2205295d98b0339f8242ca2ce4de440123876a.
+- Final raw gate [full-gate03.log](../reviews/engineer-pathways-2026-11-02/full-gate03.log), SHA-256 cd699d690eb44cdf44f30bc2ea7500dbe109396407826a0ebd0e043fa1953c80. Gates01/02 preserve earlier stale-evidence/fixture failures;03 is final.
+
+## Implemented slice and boundaries
+
+[ENGINEER_PATHWAYS.md](../docs/ENGINEER_PATHWAYS.md) is the mechanic reference. Free Play Engineers buy existing Level Footing for1SP, then either D- Carriage Sentry (Machinery) or Pressure Charges (Traps) for2SP. The choices share Q and exclude each other. Machinery moves then braces before shooting; charges arm, commit a visible fuse, burst and slow ordinary bodies without slowing bosses. Read the shared conflicts with existing Q transformations/capstones before extending them. The original648 class nodes, two General nodes, classes/weapons/maps/chapter data and every previous locale value are preserved; two additional pathway nodes are separate.
+
+Both classic/expanded views inspect the same purchases; HUD names/counts, terrain/capacity rejection, finite ownership/cleanup, real socket replication and native served-worker purchase/restore/cast/pause are checked. Recognized issued local boundaries and profiles migrate deliberately; no historical save can invent the new IDs. Online authority remains exact-version only. Archived SP Story does not advertise or buy these techniques.
+
+Campaign still has slow learned/proven/prepared knowledge, one D- preparation, scarce money, zero SP and no mutations. **The pilot has no Campaign lesson/proof/acquisition yet.** Author a meaningful teacher/work encounter and owned use before admitting it. No new rank, story prose, personal arc, repair/transport/healing or resource was invented. Free Play keeps rapid SP/mutations/customization. Shared simulation remains the authority.
+
+## Current frozen local reviews
+
+- Testing [5316](http://127.0.0.1:5316/) / backend2692; public interface [5317](http://127.0.0.1:5317/) /2693. Both bind exact sourceab8e4b37b65c9dee32c95dfb643207009c590674; each has1,989 files,52 HTTP/catalog/hash samples, three-peer Engineer and actual optimized Solo-worker checks, twelve-class Campaign checkpoint inspection/resume and Campaign/Free Play entry probes. Full frozen filesystem manifests/backend hashes also match.
+- Testing launcher29932, backend68752(created2026-11-03T02:12:59.692765Z), client71632(created02:13:00.149772Z). Public launcher29816, backend48936(created02:13:41.053747Z), client11112(created02:13:41.499553Z). Recheck PID, full command and UTC creation before any cleanup; never kill by port alone.
+- [Frozen verification](../reviews/engineer-pathways-2026-11-02/frozen-verification.json), process receipts and smoke receipts retain exact roots/identities. No older preview or private SQLite file was replaced/uploaded. New local private DBs also stay local. These are local reviews, not a production deployment, WAN/capacity acceptance or Windows replacement.
+
+## Continue the broader goal
+
+Read [CLASS_SPECIALIZATION_PLAN.md](../docs/CLASS_SPECIALIZATION_PLAN.md) and [SERVICE_YARD_WORKING.md](../docs/SERVICE_YARD_WORKING.md). Only the bounded Engineer Free Play pilot is implemented; broader pathways/names and higher-grade designs remain proposals. Continue meaningful early breadth and deliberate later preparation, not generic node multiplication or rapid SS+ Campaign promotion.
+
+Service Yard / Porch Watch remains its exact restorable WIP, original4passes/1failure, not active/selectable and not part of1,265tests. Its patch/log hashes and forward apply check pass unchanged; it still needs history, integration, UI, original prose and full verification. Read its manifest/log before applying it. The ward endpoint and all pending transfers/repairs/consent remain as documented below.
+
+The main story remains **5,741 checked English words** toward **five million base-story English words**, excluding optional arcs/letters/character chapters, translations and UI. All12personal arcs remain incomplete. Continue the full campaign, ensemble/civilian/human-antagonist/boss aims and voices, ordinary objectives, bosses and polish. No final human/rendered/device/native-language/listening/motion/literary/balance acceptance is claimed.
+
+Browser automation remains disabled: no CUA, Playwright, screenshots or browser switching. Native/headless/network/DOM fixtures and local image inspection remain available. No subagents without fresh authorization. Verified feature-branch pushes and draft PR14title/body remain approved; main merge, production/Windows replacement, capacity purchases and private DB uploads remain outside scope.
+
+## Previous handoff retained as historical context
+
+The following is the earlier71d8c5a handoff. Its5fba8f2/protocol48/1,251-test/5314–5315 snapshot and pause wording describe the earlier boundary, not current acceptance. Keep its detailed continuity and remaining-work constraints; the current checkpoint above and live source take precedence.
+
 # Grave Accord: next-chat handoff
 
 Saved at the user's requested stopping point, **2026-11-02**. Feature development is paused for a new chat. **The game is unfinished; only the user decides when it is complete.** Resume the larger development goal when the user starts the successor chat. Do not continue feature work in the closing chat.
