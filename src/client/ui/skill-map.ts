@@ -80,22 +80,23 @@ export function mapFocus(layout: MapLayout, id: string, key: string) {
     layout.nodes.find((n) => n.lane === lane && n.depth === depth)?.id ?? id
   );
 }
-export const clampMapZoom = (value: number) =>
+export const clampMapZoom = (value: number,minimum=.35) =>
   Number.isFinite(value)
-    ? Math.max(0.35, Math.min(2, Math.round(value * 100) / 100))
+    ? Math.max(minimum, Math.min(2, Math.round(value * 100) / 100))
     : 1;
-export const fitMapZoom = (width:number,height:number,logicalWidth:number,logicalHeight:number) =>
-  clampMapZoom(Math.floor(Math.min(width/logicalWidth,height/logicalHeight)*100)/100);
+export const fitMapZoom = (width:number,height:number,logicalWidth:number,logicalHeight:number,minimum=.35) =>
+  clampMapZoom(Math.floor(Math.min(width/logicalWidth,height/logicalHeight)*100)/100,minimum);
 export function mapZoomScroll(
   scroll: number,
   viewport: number,
   oldZoom: number,
   newZoom: number,
+  minimum=.35,
 ) {
   return Math.max(
     0,
-    ((Math.max(0, scroll) + viewport / 2) / clampMapZoom(oldZoom)) *
-      clampMapZoom(newZoom) -
+    ((Math.max(0, scroll) + viewport / 2) / clampMapZoom(oldZoom,minimum)) *
+      clampMapZoom(newZoom,minimum) -
       viewport / 2,
   );
 }

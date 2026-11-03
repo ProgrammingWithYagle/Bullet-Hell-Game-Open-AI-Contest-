@@ -823,6 +823,17 @@ export class CombatScene extends Phaser.Scene {
         this.constructImages.delete(id);
       }
     for (const cue of view.classCues) {
+      if(cue.kind==='engineer-builder-plan'||cue.kind==='engineer-builder-work'){
+        const work=cue.kind==='engineer-builder-work',color=cue.rejected?0xd78965:work?0xa9d7b5:0xd8c28a;
+        if(work||cue.owner===this.localId){
+          const progress=Math.max(0,Math.min(1,(now-cue.at)/Math.max(1,cue.until-cue.at)));
+          h.lineStyle(2,color,.7).lineBetween(cue.x,cue.y,cue.toX,cue.toY);
+          h.lineStyle(2,color,.5).strokeCircle(cue.toX,cue.toY,18);
+          h.lineStyle(4,color,.9).beginPath().arc(cue.toX,cue.toY,22,-Math.PI/2,-Math.PI/2+Math.PI*2*progress).strokePath();
+          if(cue.rejected){h.lineStyle(3,color,.9).lineBetween(cue.x-10,cue.y-10,cue.x+10,cue.y+10);h.lineBetween(cue.x+10,cue.y-10,cue.x-10,cue.y+10);}
+        }
+        continue;
+      }
       if(cue.kind==='engineer-coil'||cue.kind==='engineer-beam'){
         const charging=cue.kind==='engineer-coil',color=cue.convergence?0xe4cd83:0x86d7cb;
         const endX=cue.toX??cue.x,endY=cue.toY??cue.y;
@@ -914,8 +925,13 @@ export class CombatScene extends Phaser.Scene {
             ([x, y]) =>
               new Phaser.Math.Vector2(cue.x + x * cosine - y * sine, cue.y + x * sine + y * cosine),
           );
-        h.fillStyle(color, 0.28).fillPoints(points, true);
-        h.lineStyle(4, color, 1).strokePoints(points, true);
+        const folding=now<(cue.buildingUntil??0),panelColor=cue.builder?0xa6c2aa:color;
+        h.fillStyle(panelColor,folding?.06:.28).fillPoints(points, true);
+        h.lineStyle(folding?2:4,panelColor,folding?.5:1).strokePoints(points, true);
+        if(cue.builder){
+          for(const side of [-1,1]){const along=side*(span-10);h.fillStyle(0xd1b46c,folding?.4:1).fillCircle(cue.x-along*sine,cue.y+along*cosine,4);}
+          if(folding){const began=cue.buildingAt??cue.at,progress=Math.max(0,Math.min(1,(now-began)/Math.max(1,(cue.buildingUntil??now)-began)));h.lineStyle(3,0xd1b46c,.9).beginPath().arc(cue.x,cue.y,20,-Math.PI/2,-Math.PI/2+Math.PI*2*progress).strokePath();}
+        }
       } else if(cue.kind==='decoy'){
         const owner=this.people.get(cue.owner);let ghost=this.constructImages.get(cue.id);
         if(owner){if(!ghost){ghost=this.add.image(cue.x,cue.y,owner.texture.key,owner.frame.name);this.constructImages.set(cue.id,ghost);}

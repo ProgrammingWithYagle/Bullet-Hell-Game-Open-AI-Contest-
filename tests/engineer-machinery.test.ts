@@ -98,7 +98,7 @@ function isolated(skills: string[], pair = false) {
 }
 
 test("Machinery grows from three starter actions to four and five while earned-SP gates protect late abilities", () => {
-  assert.equal(data.specializationSkills.length, 14);
+  assert.equal(data.specializationSkills.length, 22);
   assert.equal(data.skills.length, 648);
   for (const [id, gate] of [
     [ids.anchor, 5],
@@ -584,7 +584,7 @@ test("The authored tree exposes every real technique once, follows direct parent
     '<div class="loadout-editor">' + shop.shopMarkup(v) + "</div>";
   const binding = shop.bindShop(env.host, v, (r: unknown) => requests.push(r));
   env.host.querySelector('[data-shop-tab="specializations"]')!.click();
-  assert.equal(env.host.querySelectorAll("[data-inspect]").length, 14);
+  assert.equal(env.host.querySelectorAll("[data-inspect]").length, 22);
   assert.equal(env.host.querySelectorAll(".foundation-reference").length, 1);
   const map = specializationMapLayout("engineer")!;
   assert.equal(specializationFocus(map, ids.prism, "ArrowUp"), ids.coil);
@@ -600,7 +600,7 @@ test("The authored tree exposes every real technique once, follows direct parent
   assert.equal(requests.length, 0);
   env.host.querySelector('[data-specialization-mode="list"]')!.click();
   assert(env.host.querySelector(".reading-view"));
-  assert.equal(env.host.querySelectorAll("[data-inspect]").length, 14);
+  assert.equal(env.host.querySelectorAll("[data-inspect]").length, 22);
   assert(env.host.querySelector(".pathway-parent"));
   assert(
     env.host

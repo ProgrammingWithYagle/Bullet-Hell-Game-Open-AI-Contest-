@@ -11,27 +11,50 @@ export type SpecializationMap = {
 };
 // Authored positions belong to real techniques; no proposed family becomes an empty card.
 const positions: Record<string, Point> = {
-  "engineer-constructs-1": { x: 895, y: 75 },
-  "engineer-machinery-1": { x: 340, y: 255 },
-  "engineer-traps-1": { x: 1450, y: 255 },
-  "engineer-traps-wire-1": { x: 1160, y: 460 },
-  "engineer-traps-switch-1": { x: 1450, y: 460 },
-  "engineer-traps-key-1": { x: 1740, y: 545 },
-  "engineer-traps-casings-1": { x: 1600, y: 800 },
-  "engineer-traps-haul-1": { x: 1890, y: 800 },
-  "engineer-traps-corridor-1": { x: 1600, y: 1030 },
+  "engineer-constructs-1": { x: 500, y: 75 },
+  "engineer-machinery-1": { x: 350, y: 255 },
+  "engineer-traps-1": { x: 450, y: 255 },
+  "engineer-traps-wire-1": { x: 160, y: 460 },
+  "engineer-traps-switch-1": { x: 450, y: 460 },
+  "engineer-traps-key-1": { x: 740, y: 545 },
+  "engineer-traps-casings-1": { x: 600, y: 800 },
+  "engineer-traps-haul-1": { x: 890, y: 800 },
+  "engineer-traps-corridor-1": { x: 600, y: 1030 },
   "engineer-machinery-anchor-1": { x: 125, y: 460 },
   "engineer-machinery-survey-1": { x: 350, y: 460 },
   "engineer-machinery-coil-1": { x: 580, y: 545 },
   "engineer-machinery-prism-1": { x: 460, y: 770 },
   "engineer-machinery-salvage-1": { x: 800, y: 770 },
   "engineer-machinery-convergence-1": { x: 460, y: 1000 },
+  "engineer-builder-1": { x: 500, y: 255 },
+  "engineer-builder-longspan-1": { x: 210, y: 460 },
+  "engineer-builder-wings-1": { x: 500, y: 460 },
+  "engineer-builder-hinge-1": { x: 790, y: 545 },
+  "engineer-builder-repair-1": { x: 210, y: 770 },
+  "engineer-builder-survey-1": { x: 650, y: 800 },
+  "engineer-builder-linked-1": { x: 350, y: 1030 },
+  "engineer-builder-redoubt-1": { x: 500, y: 1270 },
 };
+export function specializationRoutes(classId: string) {
+  return [
+    ...new Map(
+      catalog.specializationSkills
+        .filter((s) => s.classId === classId)
+        .map((s) => [
+          s.subbranchId,
+          { id: s.subbranchId, nameKey: s.subbranchNameKey },
+        ]),
+    ).values(),
+  ];
+}
 export function specializationMapLayout(
   classId: string,
+  route = "all",
 ): SpecializationMap | null {
+  const routes = specializationRoutes(classId),
+    single = routes.some((r) => r.id === route);
   const techniques = catalog.specializationSkills.filter(
-    (s) => s.classId === classId,
+    (s) => s.classId === classId && (!single || s.subbranchId === route),
   );
   if (!techniques.length) return null;
   const ids = new Set(techniques.map((s) => s.id)),
@@ -49,11 +72,19 @@ export function specializationMapLayout(
     const point = positions[n.id];
     if (!point)
       throw Error("Specialization needs an authored position: " + n.id);
-    return { ...n, ...point };
+    const technique = techniques.find((s) => s.id === n.id);
+    const offset = single
+      ? 0
+      : routes.findIndex((r) => r.id === technique?.subbranchId) * 1050;
+    return {
+      ...n,
+      ...point,
+      x: n.reference ? (single ? 500 : 1550) : point.x + offset,
+    };
   });
   return {
-    width: 2100,
-    height: 1160,
+    width: single ? 1000 : 3100,
+    height: single ? Math.max(...nodes.map((n) => n.y)) + 130 : 1400,
     nodes,
     edges: techniques
       .filter((s) => s.prerequisite)
@@ -65,6 +96,20 @@ export function specializationMapLayout(
         .map((b) => ({ a: a.id, b: b.id })),
     ),
   };
+}
+function connector(
+  a: SpecializationMap["nodes"][number],
+  b: SpecializationMap["nodes"][number],
+) {
+  const start = a.y + (a.reference ? 40 : 92),
+    end = b.y - 66,
+    mid = (start + end) / 2;
+  // Long entry edges travel through clear gutters, leaving the early fork readable.
+  if (a.id === "engineer-builder-1" && b.id === "engineer-builder-repair-1") {
+    const gutter = a.x - 430;
+    return `M${a.x} ${start} C${a.x} 360,${gutter} 360,${gutter} 390 L${gutter} 650 C${gutter} 685,${b.x} 680,${b.x} ${end}`;
+  }
+  return `M${a.x} ${start} C${a.x} ${a.reference ? mid : Math.min(mid, 360 + a.y - 255)},${b.x} ${a.reference ? mid : Math.min(mid, 360 + a.y - 255)},${b.x} ${end}`;
 }
 export function specializationFocus(
   map: SpecializationMap,
@@ -89,10 +134,14 @@ export function specializationFocus(
       ? map.edges.filter((edge) => edge.to === id).map((edge) => edge.from)
       : key === "ArrowDown"
         ? map.edges.filter((edge) => edge.from === id).map((edge) => edge.to)
-        : map.exclusions.flatMap(pair=>pair.a===id?[pair.b]:pair.b===id?[pair.a]:[]).filter(id=>{
-            const n=map.nodes.find(n=>n.id===id)!;
-            return (n.x-current.x)*d.x+(n.y-current.y)*d.y>0.01;
-          });
+        : map.exclusions
+            .flatMap((pair) =>
+              pair.a === id ? [pair.b] : pair.b === id ? [pair.a] : [],
+            )
+            .filter((id) => {
+              const n = map.nodes.find((n) => n.id === id)!;
+              return (n.x - current.x) * d.x + (n.y - current.y) * d.y > 0.01;
+            });
   const candidates = related.length
     ? map.nodes.filter((n) => related.includes(n.id))
     : map.nodes;
@@ -119,7 +168,9 @@ export function specializationMapMarkup(
   options: { mode?: "map" | "list"; zoom?: number; selected?: string } = {},
 ) {
   const byId = new Map(map.nodes.map((n) => [n.id, n])),
-    zoom = Number.isFinite(options.zoom)?Math.max(.35,Math.min(2,options.zoom!)):1;
+    zoom = Number.isFinite(options.zoom)
+      ? Math.max(0.2, Math.min(2, options.zoom!))
+      : 1;
   const edges = map.edges
     .map((edge) => {
       const a = byId.get(edge.from)!,
@@ -138,22 +189,8 @@ export function specializationMapMarkup(
         e(edge.from) +
         '" data-to="' +
         e(edge.to) +
-        '" d="M' +
-        a.x +
-        " " +
-        (a.y + (a.reference ? 40 : 92)) +
-        " C" +
-        a.x +
-        " " +
-        (a.y + (a.reference ? 100 : 150)) +
-        "," +
-        b.x +
-        " " +
-        (b.y - 115) +
-        "," +
-        b.x +
-        " " +
-        (b.y - 66) +
+        '" d="' +
+        connector(a, b) +
         '"/>'
       );
     })
@@ -167,10 +204,9 @@ export function specializationMapMarkup(
         (first.x + 66) +
         " " +
         first.y +
-        " L" +
-        (second.x - 66) +
-        " " +
-        second.y +
+        (second.x - first.x > 1500
+          ? ` C${first.x + 66} 125,${second.x - 66} 125,${second.x - 66} ${second.y}`
+          : ` L${second.x - 66} ${second.y}`) +
         '"/>'
       );
     })
@@ -188,11 +224,17 @@ export function specializationMapMarkup(
   return (
     '<div class="specialization-viewport ' +
     (options.mode === "list" ? "reading-view" : "") +
-    '"><div class="specialization-sheet" style="width:'+map.width*zoom+'px;height:'+map.height*zoom+'px"><div class="specialization-graph" role="group" aria-label="Specializations" style="--graph-width:' +
+    '"><div class="specialization-sheet" style="width:' +
+    map.width * zoom +
+    "px;height:" +
+    map.height * zoom +
+    'px"><div class="specialization-graph" role="group" aria-label="Specializations" style="--graph-width:' +
     map.width +
     "px;--graph-height:" +
     map.height +
-    'px;transform:scale('+zoom+')"><svg class="specialization-connections" viewBox="0 0 ' +
+    "px;transform:scale(" +
+    zoom +
+    ')"><svg class="specialization-connections" viewBox="0 0 ' +
     map.width +
     " " +
     map.height +

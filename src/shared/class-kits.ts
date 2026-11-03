@@ -1,4 +1,5 @@
 // Additional class abilities run only in the authoritative fixed-step simulation.
+import {EngineerBuilder,type BuilderCue} from './engineer-builder.ts';
 import {EngineerTraps,type TrapCue} from './engineer-traps.ts';
 import {EngineerMachinery,type MachineryOrder,type MachineryCue} from './engineer-machinery.ts';
 import { engineerRules as er, chargeLegal, type EngineerCharge } from './engineer-pathways.ts';
@@ -24,6 +25,7 @@ const ticks = (seconds: number) => Math.ceil(seconds * HZ);
 export const RESCUE_CHARGE_TICKS = ticks(0.3) + 1;
 export type KitStatus = {
   technique1At?:number;technique2At?:number;trapCommandAt?:number;trapHeld?:boolean;
+  builderRepairUntil?:number;builderRepairTarget?:number;builderGroups?:number;builderGroupCapacity?:number;
   alchemySamplesCapacity?:number;alchemyRecipe?:Recipe;alchemyCinder?:number;alchemyChalk?:number;alchemySap?:number;alchemyPrepared?:Recipe[];alchemyCapacity?:number;alchemyBrewUntil?:number;alchemyBrewRecipe?:string;alchemyBrewMovement?:number;alchemyBatchUntil?:number;alchemyBatchCharges?:number;
   rangerDrawUntil?:number;rangerDrawId?:number;rangerDrawMovement?:number;rangerTraps?:number;rangerTrapCapacity?:number;rangerSurveyCharges?:number;rangerSurveyUntil?:number;rangerQuiverCapacity?:number;
   retinueHoldX?:number;retinueHoldY?:number;retinueMarkKey?:string;
@@ -57,6 +59,7 @@ const emptyStatus = (): KitStatus => ({
 export type Construct = {
   kind: 'turret' | 'siege' | 'wall' | 'decoy';
   machinery?: boolean;
+  builder?:boolean;builderGroup?:number;buildingAt?:number;buildingUntil?:number;linkedSiege?:number;
   followOffset?: Vec;
   order?:MachineryOrder;goal?:Vec;formationOffset?:Vec;commandAt?:number;
   braceUntil?: number;
@@ -80,6 +83,7 @@ export type Construct = {
   until: number;
 };
 export type KitCue =
+  | BuilderCue
   | TrapCue
   | MachineryCue
   | EngineerCharge
@@ -179,11 +183,14 @@ export function constructHit(from: Vec, to: Vec, body: Construct, pad: number) {
 export class ClassKits {
   private machinery=new EngineerMachinery();
   private traps=new EngineerTraps();
+  private builder=new EngineerBuilder();
+  private combatClock=0;
   commandEngineer(p:Player,c:KitContext){return p.skills.includes('engineer-traps-1')?this.traps.command(p,c):this.machinery.command(p,c,this.towers);}
-  castEngineer(p:Player,slot:'technique1'|'technique2',c:KitContext){return p.skills.includes('engineer-traps-1')?this.traps.cast(p,slot,c):this.machinery.cast(p,slot,c,this.towers);}
+  castEngineer(p:Player,slot:'technique1'|'technique2',c:KitContext){return p.skills.includes('engineer-builder-1')?this.builder.cast(p,slot,c,this.towers):p.skills.includes('engineer-traps-1')?this.traps.cast(p,slot,c):this.machinery.cast(p,slot,c,this.towers);}
   private machineryCues:MachineryCue[]=[];
   canCast(p:Player,slot:string,c:KitContext) {
     if(p.classId!=='engineer'||slot!=='q')return true;
+    if(p.skills.includes('engineer-builder-1'))return this.builder.canDeploy(p,c);
     if(p.skills.includes('engineer-traps-1'))return this.traps.canDeploy(p,c);
     if(p.skills.includes('engineer-machinery-1'))return this.machinePoints(p,c).every(point=>chargeLegal(point,p,c,18));
     return true;
@@ -210,7 +217,7 @@ export class ClassKits {
   }
   clear() {
     this.machinery.clear();this.machineryCues=[];
-    this.traps.clear();
+    this.traps.clear();this.builder.clear();this.combatClock=0;
     this.retaliation = [];
     this.statuses.clear();
     this.towers.clear();
@@ -219,10 +226,10 @@ export class ClassKits {
   }
   status(id: string, tick: number): KitStatus {
     const s = this.statuses.get(id);
-    if (!s) return {...emptyStatus(),...this.machinery.status(id),...this.traps.status(id)};
+    if (!s) return {...emptyStatus(),...this.machinery.status(id),...this.traps.status(id),...this.builder.status(id)};
     return {
       ...s,
-      ...this.machinery.status(id),...this.traps.status(id),
+      ...this.machinery.status(id),...this.traps.status(id),...this.builder.status(id),
       shield: tick < s.shieldUntil ? s.shield : 0,
       armor: tick < s.armorUntil ? s.armor : 0,
       stepCharges: tick < s.passageUntil ? s.stepCharges : 0,
@@ -272,7 +279,7 @@ export class ClassKits {
     this.towers.set(id, { kind: 'decoy', id, owner: p.id, ...point, radius: 18, aim: p.aim, health, maxHealth: health, at: c.tick, until: c.tick + ticks(seconds), damage: 0, fireAt: c.tick, interval: 1, source });
   }
   constructs() {
-    return [...this.towers.values()].filter((t) => t.health > 0);
+    return [...this.towers.values()].filter((t) => t.health > 0&&this.combatClock>=(t.buildingUntil??0));
   }
   hitConstruct(id: number, damage: number) {
     const t = this.towers.get(id);
@@ -385,7 +392,7 @@ export class ClassKits {
       ({ damage: _d, fireAt: _f, interval: _i, ...cue }) => ({ ...cue }),
     );
     return [
-      ...this.traps.cues(),
+      ...this.traps.cues(),...this.builder.cues(),
       ...constructs,
       ...this.machineryCues,
       ...this.areas.map(
@@ -521,6 +528,7 @@ export class ClassKits {
       }
     } else if (p.classId === 'engineer') {
       if(!this.canCast(p,slot,c))return;
+      if(slot==='q'&&p.skills.includes('engineer-builder-1')){this.builder.deploy(p,c,this.towers);return;}
       if(slot==='q'&&p.skills.includes('engineer-traps-1')) {
         this.traps.deploy(p,c);
         return;
@@ -540,7 +548,7 @@ export class ClassKits {
               20,
               c.obstacles,
             );
-          this.construct(
+          const machine=this.construct(
             p,
             ultimate ? 'siege' : 'turret',
             ultimate ? (mobile ? 160 : 200) * up : (pair ? 40 : 80) * s.ability,
@@ -550,6 +558,7 @@ export class ClassKits {
             c,
             { point, mobile:mobile||(!ultimate&&p.skills.includes('engineer-machinery-1')), farAim: side === 1, machinery:!ultimate&&p.skills.includes('engineer-machinery-1') },
           );
+          if(ultimate)this.builder.fortify(p,machine,c,this.towers);
         }
       }
     } else if (p.classId === 'assassin') {
@@ -676,8 +685,10 @@ export class ClassKits {
           ? 0.6
           : 0,
     });
+    return id;
   }
   step(c: KitContext) {
+    this.combatClock=c.tick;this.builder.step(c,this.towers);
     this.traps.step(c);
     this.machinery.step(c,this.towers);this.machineryCues=this.machinery.cues(c);
     const present = new Set(c.players.map((p) => p.id));

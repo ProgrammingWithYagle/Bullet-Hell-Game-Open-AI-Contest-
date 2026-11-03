@@ -156,6 +156,10 @@
 .pathway-toolbar button {min-width:44px;min-height:44px;padding:.45rem .7rem;border:1px solid #9d9877;border-radius:.3rem;background:#eee6ca;color:#294333;font:inherit;font-size:.8rem;}
 .pathway-toolbar button[aria-pressed="true"] {background:#294333;border-color:#294333;color:#f8eccb;}
 .pathway-toolbar button:disabled {opacity:.5;}
+.pathway-route-picker {display:flex;flex-wrap:wrap;align-items:center;gap:.45rem;padding:.8rem 1rem;background:#ece3c6;border-bottom:1px solid #b7ac88;}
+.pathway-route-picker button {min-height:44px;padding:.5rem .9rem;border:1px solid #969573;border-radius:.35rem;background:#f4ecd5;color:#294333;font:inherit;font-size:.85rem;}
+.pathway-route-picker button[aria-pressed="true"] {color:#f6eac7;background:#294333;border-color:#294333;box-shadow:inset 0 -2px #ac9152;}
+.pathway-route-picker p {flex:1 1 100%;margin:.15rem 0 0;font-size:.73rem;line-height:1.5;color:#53614b;max-width:80ch;}
 .pathway-legend {display:flex;flex-wrap:wrap;gap:.65rem 1.2rem;padding:.65rem 1rem;font-size:.7rem;border-top:1px solid #b7ac88;background:#e1d6b2;}
 .pathway-legend span {display:flex;align-items:center;gap:.4rem;}
 .pathway-legend i {display:inline-block;width:12px;height:12px;border:2px solid #8b7440;border-radius:50%;background:#efe4bc;}

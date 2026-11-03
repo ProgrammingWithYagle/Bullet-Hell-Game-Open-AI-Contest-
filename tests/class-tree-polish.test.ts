@@ -21,7 +21,7 @@ test('The specialization graph contains only real techniques, their General refe
   assert.deepEqual(map.nodes.filter(n=>n.reference).map(n=>n.id),['engineer-constructs-1']);
   assert.deepEqual(new Set(map.nodes.filter(n=>!n.reference).map(n=>n.id)),new Set(data.specializationSkills.map(s=>s.id)));
   assert.deepEqual(map.edges,data.specializationSkills.map(s=>({from:s.prerequisite,to:s.id})));
-  assert.deepEqual(map.exclusions,[{a:'engineer-machinery-1',b:'engineer-traps-1'},{a:'engineer-machinery-anchor-1',b:'engineer-machinery-survey-1'},{a:'engineer-traps-wire-1',b:'engineer-traps-switch-1'}]);
+  assert.deepEqual(new Set(map.exclusions.map(p=>p.a+'>'+p.b)),new Set(['engineer-machinery-1>engineer-traps-1','engineer-machinery-1>engineer-builder-1','engineer-traps-1>engineer-builder-1','engineer-machinery-anchor-1>engineer-machinery-survey-1','engineer-traps-wire-1>engineer-traps-switch-1','engineer-builder-longspan-1>engineer-builder-wings-1']));
   for(const cl of data.classes.filter(c=>c.id!=='engineer'))assert.equal(specializationMapLayout(cl.id),null);
   const html=specializationMapMarkup(map,['engineer-constructs-1','engineer-machinery-1'],(id,ref)=>'<button data-graph-focus="'+id+'">'+(ref?'General':'Technique')+'</button>');
   assert.equal((html.match(/data-from=/g)??[]).length,data.specializationSkills.length);assert(html.includes('conflicting-route'));assert(!html.includes('Field Works'));assert(!html.includes('data-purchase'));
@@ -31,8 +31,8 @@ test('Graph arrows follow authored positions and normal Tab can leave the graph 
   host.innerHTML=specializationMapMarkup(map,[],id=>'<button data-graph-focus="'+id+'">'+id+'</button>')+'<button id="outside">Leave tree</button>';
   prepareSpecializationMap(host as unknown as HTMLElement,map);
   const buttons=host.querySelectorAll('[data-graph-focus]'),graph=host.querySelector('.specialization-graph')!;assert.equal(buttons.filter(b=>b.tabIndex===0).length,1);assert.equal(host.querySelector('#outside')!.tabIndex,0);
-  assert.equal(specializationFocus(map,left,'ArrowRight'),right);assert.equal(specializationFocus(map,right,'ArrowLeft'),left);assert.equal(specializationFocus(map,left,'ArrowUp'),root);assert.equal(specializationFocus(map,root,'ArrowDown'),left);
-  assert.equal(specializationFocus(map,right,'Home'),root);assert.equal(specializationFocus(map,root,'End'),'engineer-traps-corridor-1');assert.equal(specializationFocus(map,'missing','ArrowDown'),null);
+  assert.equal(specializationFocus(map,left,'ArrowRight'),right);assert.equal(specializationFocus(map,right,'ArrowLeft'),left);assert.equal(specializationFocus(map,left,'ArrowUp'),root);assert.equal(specializationFocus(map,root,'ArrowDown'),right);
+  assert.equal(specializationFocus(map,right,'Home'),root);assert.equal(specializationFocus(map,root,'End'),'engineer-builder-redoubt-1');assert.equal(specializationFocus(map,'missing','ArrowDown'),null);
   assert.equal(specializationFocus(map,'engineer-traps-wire-1','ArrowRight'),'engineer-traps-switch-1');
   assert.equal(specializationFocus(map,'engineer-traps-switch-1','ArrowLeft'),'engineer-traps-wire-1');
   assert.equal(specializationFocus(map,'engineer-traps-corridor-1','ArrowUp'),'engineer-traps-casings-1');

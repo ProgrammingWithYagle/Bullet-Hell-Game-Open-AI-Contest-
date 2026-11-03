@@ -1,6 +1,6 @@
 # Development progress
 
-Updated 2026-11-03 for **2026.11.03-engineer-traps**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
+Updated 2026-11-03 for **2026.11.03-engineer-builder**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
 
 66 playable identities: 65 ordinary and 1 secret. Three ordinary bosses in every one of fifty subtiers requires 150 ordinary identities, plus secrets; 85 additional ordinary bosses remain.
 
@@ -9,7 +9,8 @@ Updated 2026-11-03 for **2026.11.03-engineer-traps**. These counts track specifi
 | New ordinary bosses | 65 / 150 | 85 new identities | 0 unintegrated art-only concepts; Early Watch and Small Wakes integrations are implemented |
 | Existing-boss phase / mobility / Brutal quality passes | 18 / 60 | 42 | Eighteen original encounter quality passes are implemented; 42 remain. Lamplighter has reachable bankable shadows, distinct watches, complete later warnings, swept refuge-union exposure and fifteen-language lore/help. Source grade/health/deadline remain. Whole-boss human acceptance remains0; rendered/device/language and final balance review stay open. |
 | Ability-changing class-upgrade revamps | 12 / 12 | 0 | Three ability-changing upgrades per class (36 total) execute under shared authority. Alchemist adds Split Pour, Settled Batch and Second Extraction with finite stock, real landings and useful-effect refunds. Fifteen-language help is drafted. Rendered/device/native-language/listening/human/final balance review remains open. |
-| Optional large branching skill-tree view | 1 / 1 | 0 | Optional all-54-skill map implemented for all twelve current classes with settings toggle, bounded zoom, scrolling and keyboard navigation. Classic remains the default; rendered/human/device/native-language review remains open. |
+| Classes with at least three developed specialization routes | 1 / 12 | 11 | Engineer has Machinery, Traps and Builder, with22actual techniques and deliberate early/late behavior. This tracks implementation, not whole-class human acceptance; the other eleven class route sets remain proposals. General foundations and four shared techniques stay separate. The existing36transformation counter is an earlier request. |
+| Optional large branching skill-tree view | 1 / 1 | 0 | All twelve issued54-node General maps remain. General now uses a field-manual workbook with a shared-technique subtab, reading view and35%–200%zoom. Engineer has a separate dynamic three-route specialization tree, closer route views and20%–200%zoom. Rendered/human/device/native-language review remains open. |
 | Secondary-map topology revamps | 5 / 5 | 0 | Five distinct secondary layouts installed. Four spacious maps now have compact real geometry; Ossuary/Crown routes retain their size. Difficulty cover/lava, movement and prediction remain shared. Human 5185 feedback motivated the compact pass; its rendered/human/device comparison remains open. |
 | Map ground-art deliveries | 6 / 6 | 0 | Six ground deliveries installed. Limited Normal/Constable readability feedback is positive. |
 | Early Watch motion and encounter integration | 3 / 3 | 0 | Three encounters, 36 selected poses, individual themes and fifteen-locale help implemented. Limited 5179 phase/pacing feedback informed the new two-phase/difficulty pass; its human comparison, rendered and listening review remain open. |
@@ -105,9 +106,11 @@ Updated 2026-11-03 for **2026.11.03-engineer-traps**. These counts track specifi
 - The Engineer specialization tree looks much better; extend that visual care to General, put shared abilities in their own subtab, add meaningful shared techniques, widen zoom and remove the text backplates.
 - Finish Engineer with more real choices and a Builder specialization centred on barriers and defensive construction, then move class by class. Every shop purchase needs a clear use; statistics can support a build but cannot be its whole identity.
 - Queue a later per-weapon workshop, one-to-five stars, sequential fully developed predecessors, a broader D- to SS+ roster and qualitative weapon abilities; audit overlap with the skill tree. Continue the current tree focus first.
+- User2026-11-03 reiterates that every shop purchase must have meaning. General statistical upgrades can support a build, while purchases also need useful qualitative roles and interactions. Keep the queued weapon/workshop overhaul after the current focused class work.
 
 ## Remaining release work
 
+- Follow the focused Free Play sequence: complete whole Engineer replay/human review, then develop the other eleven classes individually with at least three distinctive specialization routes; bosses follow, then other Free Play, with Campaign last. Engineer implementation is one reference, not completion of the full class request.
 - Earlier gallery reviews remain historical comparison evidence under reviews/home-gallery-2026-10-29. The current user instruction authorizes continued expansion and polish. Preserve older exact-source services, Windows packages and art/source history. Matching human/rendered/device/multiplayer balance and coordinated release acceptance remain open; do not infer production deployment or main-merge permission.
 - Review the Mold Alchemist boss’s Crazed distillation columns, route warnings, coolant condensation and final reflux in the next matching frozen preview. The shared General mobility branch is implemented and awaits human/device/balance review.
 - Review shared phase-attack continuity in the next matching frozen preview; software checks are separate from rendered/human/device/final balance acceptance.

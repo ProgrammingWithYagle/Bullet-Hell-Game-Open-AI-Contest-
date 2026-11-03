@@ -1,6 +1,23 @@
 # Changelog
 
-Development build **2026.11.03-engineer-traps**, protocol 53. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.03-engineer-builder**, protocol 54. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-03 — Cover worth tending
+
+### Build a defensive discipline
+
+- Builder becomes the third Engineer Q specialization: Field Screen, an optional Longspan Panels/Return Wings geometry choice, Hinged Assembly, Field Maintenance, Linked Foundations, Survey Frame and Keystone Redoubt.
+- The full selected route costs22SP, leaving five for General support within the existing27-SP/one-capstone budget. New work actions arrive through run-earned progression and later evolve; the route is not a list of percentage bonuses.
+
+### Read construction and commitment
+
+- Eight original painted equipment emblems join the fourteen issued emblems. Compare all three routes or inspect one closer tree, with an equivalent reading view and20%–200%specialization zoom; General keeps35%–200%.
+- Visible assembly and folding windows remove protection while work is in progress. Repairs require stationary commitment; cover keeps finite health and its original lifetime. Redoubt adds real panels around the existing ultimate without replacing its behavior.
+
+### Preserve owned progress
+
+- Protocol54 deliberately admits the issued protocol53local safe boundary with all fourteen earlier Engineer techniques, all four General techniques, equipment, profiles and historical clears. Older editions cannot invent Builder ownership; online proof ownership remains strict.
+- Campaign stays slow learned/proven/prepared progression with no SP or mutations, and remains the final development phase. The other class pathways and queued weapon/shop overhaul are still future work.
 
 ## 2026-11-03 — Prepared ground, deliberate control
 

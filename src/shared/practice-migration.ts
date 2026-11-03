@@ -7,13 +7,18 @@ function migrateKnownPracticeBoundary(value: unknown): unknown {
   if (!value || typeof value !== "object" || Array.isArray(value)) return value;
   const issued = value as Record<string, unknown>;
   const oldPlayer=issued.player as Record<string,unknown>|undefined;
+  if(issued.contentRevision!==CONTENT_REVISION&&Array.isArray(oldPlayer?.skills)&&oldPlayer.skills.some(id=>String(id).startsWith('engineer-builder-')))throw Error('versionMismatch');
+  if(issued.protocolVersion===53&&issued.contentRevision==='2bcf8d4f883afe0a674ea23066435376c1cc97631de03dff74dadb4cfe373fea'){
+    if(issued.schemaVersion!==1||issued.practiceOnly!==true||issued.serverOnly===true||issued.players!==undefined||issued.transactions!==undefined||JSON.stringify(issued).length>32768||!oldPlayer||(Array.isArray(oldPlayer.skills)&&oldPlayer.skills.some(id=>catalog.specializationSkills.some(s=>s.id===id)&&!["engineer-machinery-1","engineer-traps-1","engineer-machinery-anchor-1","engineer-machinery-survey-1","engineer-machinery-coil-1","engineer-machinery-prism-1","engineer-machinery-salvage-1","engineer-machinery-convergence-1","engineer-traps-wire-1","engineer-traps-switch-1","engineer-traps-key-1","engineer-traps-casings-1","engineer-traps-haul-1","engineer-traps-corridor-1"].includes(String(id)))))throw Error('versionMismatch');
+    return {...issued,contentRevision:CONTENT_REVISION,protocolVersion:PROTOCOL};
+  }
   if(issued.protocolVersion===52&&issued.contentRevision==='1d1292a7442e6eeab687739ce510eba46fd061ae087abd3d8ff51d2f0b7e0186'){
     if(issued.schemaVersion!==1||issued.practiceOnly!==true||issued.serverOnly===true||issued.players!==undefined||issued.transactions!==undefined||JSON.stringify(issued).length>32768||!oldPlayer||(Array.isArray(oldPlayer.skills)&&oldPlayer.skills.some(id=>catalog.specializationSkills.some(s=>s.id===id)&&!["engineer-machinery-1","engineer-traps-1","engineer-machinery-anchor-1","engineer-machinery-survey-1","engineer-machinery-coil-1","engineer-machinery-prism-1","engineer-machinery-salvage-1","engineer-machinery-convergence-1"].includes(String(id)))))throw Error('versionMismatch');
     return {...issued,contentRevision:CONTENT_REVISION,protocolVersion:PROTOCOL};
   }
   if(issued.contentRevision!==CONTENT_REVISION&&Array.isArray(oldPlayer?.skills)&&oldPlayer.skills.some(id=>['general-brake-step','general-course-correction'].includes(String(id))))throw Error('versionMismatch');
   if(issued.protocolVersion===51&&issued.contentRevision==='9b4db7927068a0b75ba0d915094354eb66102090eeed913b8d013e3c9459233f'){
-    if(issued.schemaVersion!==1||issued.practiceOnly!==true||issued.serverOnly===true||issued.players!==undefined||issued.transactions!==undefined||JSON.stringify(issued).length>32768||!oldPlayer||(Array.isArray(oldPlayer.skills)&&oldPlayer.skills.some(id=>String(id).startsWith('engineer-traps-')&&id!=='engineer-traps-1')))throw Error('versionMismatch');
+    if(issued.schemaVersion!==1||issued.practiceOnly!==true||issued.serverOnly===true||issued.players!==undefined||issued.transactions!==undefined||JSON.stringify(issued).length>32768||!oldPlayer||(Array.isArray(oldPlayer.skills)&&oldPlayer.skills.some(id=>catalog.specializationSkills.some(s=>s.id===id)&&!["engineer-machinery-1","engineer-traps-1","engineer-machinery-anchor-1","engineer-machinery-survey-1","engineer-machinery-coil-1","engineer-machinery-prism-1","engineer-machinery-salvage-1","engineer-machinery-convergence-1"].includes(String(id)))))throw Error('versionMismatch');
     return {...issued,contentRevision:CONTENT_REVISION,protocolVersion:PROTOCOL};
   }
   // The issued two-pathway edition already owns its skills and chapter proofs.

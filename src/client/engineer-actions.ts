@@ -2,6 +2,7 @@ import type { PlayerView } from "../shared/view.ts";
 import type { KitCue, Construct } from "../shared/class-kits.ts";
 import { machineryIds as ids } from "../shared/engineer-machinery.ts";
 import { trapIds } from "../shared/engineer-traps.ts";
+import {builderIds} from '../shared/engineer-builder.ts';
 import { engineerRules as r } from "../shared/engineer-pathways.ts";
 import { distance } from "../shared/geometry.ts";
 import { HZ } from "../shared/protocol.ts";
@@ -11,6 +12,15 @@ export function engineerActions(
   cues: readonly KitCue[],
   now: number,
 ) {
+  if(p.classId==='engineer'&&p.skills.includes(builderIds.entry)){
+    const walls=cues.filter((c):c is Construct=>c.kind==='wall'&&c.owner===p.id&&c.health>0&&c.until>now);
+    const screens=walls.filter(c=>c.builder&&c.linkedSiege===undefined),groups=new Set(screens.map(c=>c.builderGroup)),capacity=p.skills.includes(builderIds.linked)?2:1;
+    const ready=screens.filter(c=>now>=(c.buildingUntil??0)&&c.until>now+Math.ceil((p.skills.includes(builderIds.survey)?r.builderSurveySeconds:r.builderPivotSeconds)*HZ)&&distance(c,p)<=r.builderWorkReach);
+    return {command:false,qNameKey:null,qAt:p.qAt,qBlocked:groups.size>=capacity,extras:([
+      ['technique1',builderIds.hinge,p.kit.technique1At??0,!ready.length],
+      ['technique2',builderIds.repair,p.kit.technique2At??0,!!p.kit.builderRepairUntil||!walls.some(c=>now>=(c.buildingUntil??0)&&c.health<c.maxHealth&&distance(c,p)<=r.builderRepairReach&&c.until>now+Math.ceil(r.builderRepairSeconds*HZ))],
+    ] as const).filter(([,id])=>p.skills.includes(id)).map(([key,id,at,blocked])=>({key,id:key==='technique1'&&p.skills.includes(builderIds.survey)?builderIds.survey:id,at,blocked}))};
+  }
   if(p.classId==='engineer'&&p.skills.includes('engineer-traps-1')){
     const plates=cues.filter(c=>c.kind==='engineer-charge'&&c.owner===p.id&&c.state!=='spent'&&c.until>now);
     const ready=plates.filter(c=>c.kind==='engineer-charge'&&c.state==='ready');

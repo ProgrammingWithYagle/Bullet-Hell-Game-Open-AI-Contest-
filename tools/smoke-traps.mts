@@ -7,7 +7,7 @@ const preview=JSON.parse(fs.readFileSync(scope+'/preview-'+audience+'.json','utf
 const sha=(b:Buffer)=>createHash('sha256').update(b).digest('hex'),load=async(member:any)=>{assert(member);const res=await fetch(new URL(member.path,preview.url));assert(res.ok);const b=Buffer.from(await res.arrayBuffer());assert.equal(sha(b),member.sha256);return b;};
 const workerFile=manifest.members.find((m:any)=>/offline\.worker-.*\.js$/.test(m.path)),mainFile=manifest.members.find((m:any)=>/\/index-.*\.js$/.test(m.path)),cssFile=manifest.members.find((m:any)=>/\/index-.*\.css$/.test(m.path));
 const bytes=await load(workerFile),main=await load(mainFile),css=await load(cssFile);
-for(const marker of ['engineer-traps-wire-1','engineer-traps-corridor-1','engineer-haul','engineer-demolition','ui.engineer.holdTraps','2100'])assert(main.includes(Buffer.from(marker)),marker);
+for(const marker of ['engineer-traps-wire-1','engineer-traps-corridor-1','engineer-haul','engineer-demolition','ui.engineer.holdTraps','pathway-route-picker'])assert(main.includes(Buffer.from(marker)),marker);
 assert(css.includes(Buffer.from('.specialization-sheet')));
 const health=await fetch(preview.endpoint+'/api/health').then(r=>r.json());assert.equal(health.sourceCommit,preview.sourceCommit);assert.equal(health.protocolVersion,PROTOCOL);assert.equal(health.contentRevision,preview.contentRevision);
 const g=new Game({mode:'endless',difficulty:'baby',maxPlayers:1,seed:41,arenaSelection:'fixed',openingArenaId:'gatehouse'});g.encounter=9;g.addPlayer('solo','Tamsin','engineer');

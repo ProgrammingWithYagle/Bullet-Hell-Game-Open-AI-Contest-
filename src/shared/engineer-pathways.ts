@@ -1,7 +1,7 @@
 import catalog from '../../content/catalog.json';
 import {distance,segmentCircle,segmentRect,type Rect} from './geometry.ts';
 import type {Vec} from './protocol.ts';
-export function engineerQNameKey(p:{classId:string;skills:readonly string[]}) {return p.classId==='engineer'?['engineer-machinery-1','engineer-traps-1'].find(id=>p.skills.includes(id)):undefined;}
+export function engineerQNameKey(p:{classId:string;skills:readonly string[]}) {return p.classId==='engineer'?['engineer-machinery-1','engineer-traps-1','engineer-builder-1'].find(id=>p.skills.includes(id)):undefined;}
 export function specializationSpRequired(id:string):number {const s=catalog.specializationSkills.find(s=>s.id===id);return s&&'freePlaySpRequired' in s?Number(s.freePlaySpRequired):0;}
 export const engineerRules=catalog.rules.engineerPathways;
 export type EngineerCharge=Vec & {

@@ -744,7 +744,8 @@ function update(view: View) {
   const abilityList = $('abilities');
   const engineerQ=engineerQNameKey(p),engineerCharges=view.classCues.filter(c=>c.kind==='engineer-charge'&&c.owner===p.id&&c.state!=='spent'&&view.combatTick<c.until).length;
   const machineryActions=engineerActions(p,view.classCues,view.combatTick);
-  const qLabel=t(machineryActions.qNameKey??(engineerQ?'skill.'+engineerQ+'.name':'ability.'+cl.abilities[0].id+'.name'))+(engineerQ==='engineer-traps-1'?' '+number(engineerCharges)+'/'+number(data.rules.engineerPathways.chargeCapacity):'');
+  const qLabel=t(machineryActions.qNameKey??(engineerQ?'skill.'+engineerQ+'.name':'ability.'+cl.abilities[0].id+'.name'))+(engineerQ==='engineer-traps-1'?' '+number(engineerCharges)+'/'+number(data.rules.engineerPathways.chargeCapacity):engineerQ==='engineer-builder-1'?' '+t('ui.engineer.builderGroups',{count:number(p.kit.builderGroups??0),capacity:number(p.skills.includes('engineer-builder-linked-1')?2:1)}):'');
+  const redoubt=p.skills.includes('engineer-builder-redoubt-1'),ultimateLabel=t(redoubt?'skill.engineer-builder-redoubt-1.name':'ability.'+cl.ultimate.id+'.name');
   for(const slot of ['technique1','technique2']){const shown=machineryActions.extras.some(a=>a.key===slot),touch=document.querySelector<HTMLElement>('[data-action="'+slot+'"]');if(touch)touch.hidden=!shown;if(!shown)abilityList.querySelector('[data-ability="'+slot+'"]')?.remove();}
   const sprintTouch=document.querySelector<HTMLElement>('[data-action="sprint"]');if(sprintTouch)sprintTouch.hidden=!p.skills.includes('general-sprint');
   if(!p.skills.includes('general-sprint'))abilityList.querySelector('[data-ability="sprint"]')?.remove();
@@ -758,7 +759,7 @@ function update(view: View) {
       p.kit.stepCharges > 0 ? 0 : p.eAt,
       t('ability.' + cl.abilities[1].id + '.name'),
     ],
-    ['ultimate', t('ability.' + cl.ultimate.id + '.name'), p.ultimateAt, t('ability.' + cl.ultimate.id + '.name')],
+    ['ultimate', ultimateLabel, p.ultimateAt, t(redoubt?'skill.engineer-builder-redoubt-1.description':'ability.' + cl.ultimate.id + '.name')],
     ...machineryActions.extras.map(a=>[a.key,t('skill.'+a.id+'.name'),a.at,t('skill.'+a.id+'.description')] as const),
   ] as const) {
     let e = abilityList.querySelector<HTMLElement>('[data-ability="' + key + '"]');

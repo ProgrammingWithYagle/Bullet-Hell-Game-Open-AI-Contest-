@@ -83,7 +83,7 @@ test("Expanded General keeps all 54 issued nodes, and its reading view preserves
   assert.equal(f.host.querySelectorAll("[data-inspect]").length, 54);
   assert.equal(f.requests.length, 0);
 });
-test("Specialization overview zoom scales the complete map from 35 to 200 percent; Fit and reading view do not purchase or omit techniques", async (t) => {
+test("Specialization overview zoom scales the complete map from 20 to 200 percent; Fit and reading view do not purchase or omit techniques", async (t) => {
   const f = await fixture(t);
   f.host.querySelector('[data-shop-tab="specializations"]')!.click();
   for (let n = 0; n < 15; n++)
@@ -93,19 +93,19 @@ test("Specialization overview zoom scales the complete map from 35 to 200 percen
     f.host
       .querySelector(".specialization-graph")!
       .getAttribute("style")!
-      .includes("transform:scale(0.35)"),
+      .includes("transform:scale(0.2)"),
   );
   assert(
     f.host
       .querySelector(".specialization-graph")!
       .getAttribute("style")!
-      .includes("--graph-width:2100px"),
+      .includes("--graph-width:3100px"),
   );
   assert(
     f.host
       .querySelector(".specialization-sheet")!
       .getAttribute("style")!
-      .includes("width:735px"),
+      .includes("width:620px"),
   );
   for (let n = 0; n < 20; n++)
     f.host.querySelector('[data-specialization-zoom="in"]')!.click();
@@ -123,7 +123,7 @@ test("Specialization overview zoom scales the complete map from 35 to 200 percen
     f.host
       .querySelector(".specialization-graph")!
       .getAttribute("style")!
-      .includes("transform:scale(0.35)"),
+      .includes("transform:scale(0.2)"),
   );
   f.host.querySelector('[data-specialization-mode="list"]')!.click();
   assert(f.host.querySelector(".reading-view"));
@@ -135,7 +135,7 @@ test("Specialization overview zoom scales the complete map from 35 to 200 percen
   assert.equal(f.requests.length, 0);
 });
 
-test('The wider two-route manual opens fitted once and retains a deliberately chosen zoom across tabs',async t=>{
+test('The wider three-route manual opens fitted once and retains a deliberately chosen zoom across tabs',async t=>{
   const f=await fixture(t),prototype=Object.getPrototypeOf(f.host),saved=new Map<string,PropertyDescriptor|undefined>();
   for(const [key,size]of [['clientWidth',1000],['clientHeight',620]] as const){
     saved.set(key,Object.getOwnPropertyDescriptor(prototype,key));
@@ -144,7 +144,7 @@ test('The wider two-route manual opens fitted once and retains a deliberately ch
   t.after(()=>{for(const [key,descriptor]of saved)descriptor?Object.defineProperty(prototype,key,descriptor):Reflect.deleteProperty(prototype,key);});
   f.host.querySelector('[data-shop-tab="specializations"]')!.click();
   let zoom=f.host.querySelector('.specialization-graph')!.getAttribute('style')!;
-  assert(zoom.includes('transform:scale(0.47)'),'initial fit includes both route regions without rounding beyond the viewport');
+  assert(zoom.includes('transform:scale(0.32)'),'initial fit includes all three route regions without rounding beyond the viewport');
   assert.equal(f.host.querySelectorAll('[data-inspect]').length,data.specializationSkills.length);
   f.host.querySelector('[data-specialization-zoom="reset"]')!.click();
   assert(f.host.querySelector('.specialization-graph')!.getAttribute('style')!.includes('transform:scale(1)'));

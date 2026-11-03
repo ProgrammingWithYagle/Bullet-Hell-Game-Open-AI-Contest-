@@ -2968,7 +2968,7 @@ export class Game {
     if (useConstructGrid) {
       this.constructGrid.clear();
       for (const body of constructs)
-        this.constructGrid.insert(body, body.kind === 'wall' ? 122 : body.radius);
+        this.constructGrid.insert(body, body.kind === 'wall' ? (body.halfSpan??110)+12 : body.radius);
     }
     let weakPoints = this.director.weakPoints();
 
