@@ -163,8 +163,8 @@
 .pathway-legend .active-key {border-width:3px;border-color:#30655c;}
 .pathway-legend .exclusive-key {width:22px;height:0;border:0;border-top:2px dashed #9b644e;border-radius:0;}
 .specialization-viewport {direction:ltr;overflow:auto;overscroll-behavior:contain;touch-action:pan-x pan-y;max-height:min(65dvh,720px);min-height:300px;scrollbar-gutter:stable;background:#e9dfbd;}
-.specialization-sheet {position:relative;margin-inline:auto;}
-.specialization-graph {position:relative;transform-origin:top left;width:var(--graph-width);height:var(--graph-height);margin-inline:auto;background:radial-gradient(ellipse at 45% 30%,#f6efd6b3,transparent 62%),repeating-linear-gradient(0deg,transparent,transparent 39px,#8a977311 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,#8a977311 40px);}
+.specialization-sheet {position:relative;overflow:clip;margin-inline:auto;}
+.specialization-graph {position:relative;transform-origin:top left;width:var(--graph-width);height:var(--graph-height);margin:0;background:radial-gradient(ellipse at 45% 30%,#f6efd6b3,transparent 62%),repeating-linear-gradient(0deg,transparent,transparent 39px,#8a977311 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,#8a977311 40px);}
 .specialization-graph::after {content:'';position:absolute;inset:15px;pointer-events:none;border:1px solid #a99d6d55;border-radius:4px;}
 .specialization-connections {position:absolute;inset:0;width:100%;height:100%;pointer-events:none;fill:none;stroke:var(--pathway-line);stroke-width:3;stroke-linecap:round;}
 .specialization-connections .locked-route {stroke-dasharray:5 8;stroke-width:2;}

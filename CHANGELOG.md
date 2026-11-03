@@ -1,6 +1,12 @@
 # Changelog
 
-Development build **2026.11.03-foundation-workbook**, protocol 52. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.03-workbook-zoom-polish**, protocol 52. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-03 — A stable tree viewport
+
+### Zoom alignment
+
+- The scaled tree stays aligned with its holder at every zoom level. The holder clips its overflow while the logical canvas keeps a zero origin. Reading views retain normal document flow.
 
 ## 2026-11-03 — Foundations with room to choose
 

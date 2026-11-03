@@ -1,10 +1,10 @@
 # General foundations and shared footwork
 
-Build `2026.11.03-foundation-workbook`, protocol52. This slice follows the user's feedback on the Engineer field manual. It does not complete Engineer, the shop overhaul or the game.
+Build `2026.11.03-workbook-zoom-polish`, protocol52. This slice follows the user's feedback on the Engineer field manual. It does not complete Engineer, the shop overhaul or the game.
 
 General now uses a matching field workbook. Shared techniques have their own subtab alongside the class branches (Engineer: Demolitions, Constructs and Repair). Classic retains the selected eighteen-node branch; the expanded preference offers all54issued class purchases as well as individual branches. Curved paths follow actual prerequisites, not new acquisition rules. A reading view preserves every purchase and prerequisite without a spatial layout. Existing statistical foundations and36old transformations retain their IDs, costs and effects.
 
-Both trees support35%–200%zoom and Fit tree. Specializations scales its whole logical canvas, including nodes and labels; the former90%–130%control changed spacing only. Zoom keeps the viewport centre where scroll bounds permit. Reading views remain unscaled. The translucent rectangular parchment backgrounds behind specialization titles were removed; this identifies a concrete source of the reported text backplates, not a claim of full rendered acceptance.
+Both trees support35%–200%zoom and Fit tree. Specializations scales its whole logical canvas, including nodes and labels; the former90%–130%control changed spacing only. Zoom keeps the viewport centre where scroll bounds permit. Reading views remain unscaled. The final viewport refinement clips the scaled holder and resets the inner canvas margin to zero, avoiding the old auto-centred offset inside the scaled holder. The translucent rectangular parchment backgrounds behind specialization titles were removed; this identifies a concrete source of the reported text backplates, not a claim of full rendered acceptance.
 
 ## Shared choices
 
