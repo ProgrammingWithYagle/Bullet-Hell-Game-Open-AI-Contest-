@@ -1,6 +1,6 @@
 # The Service Yard — second-chapter candidate
 
-**Current Free Play slice:** [General workbook and shared footwork](GENERAL_WORKBOOK.md), source42ec8060c9b9f4dc83b663ca5655ba0df6deb35e, build2026.11.03-workbook-zoom-polish/protocol52, passes1,311runtime tests and exact-source push/PR CI. [Engineer Machinery](ENGINEER_MACHINERY.md) remains implemented. This Service Yard patch remains unchanged, unregistered, unselectable and outside that count, with its original four passes/one failure. Campaign remains last in the roadmap; no story work was applied.
+**Current Free Play slice:** [Engineer Traps](ENGINEER_TRAPS.md), sourcec4b2b6fc9396960cc890b9f6a6bbe242c47ccac6, build2026.11.03-engineer-traps/protocol53, passes1,334runtime tests and matching5326/5327native reviews. Read live source CI separately in the handoff/receipt. General/shared footwork and Engineer Machinery remain implemented. This Service Yard patch remains unchanged, unregistered, unselectable and outside that count, with its original four passes/one failure. Campaign remains last in the roadmap; no story work was applied.
 
 **Scheduling update:** Campaign is the final phase of [FREE_PLAY_POLISH_ROADMAP.md](FREE_PLAY_POLISH_ROADMAP.md). This WIP is preserved, not the next active slice. Current work is Free Play class-tree/Engineer polish, then the remaining classes and bosses individually. The old requested-handoff pause below is historical; the full development goal remains active.
 

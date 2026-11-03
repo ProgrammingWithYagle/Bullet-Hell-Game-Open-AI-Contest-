@@ -1,5 +1,7 @@
 # General foundations and shared footwork
 
+Current integration: the following General controls remain in sourcec4b2b6fc9396960cc890b9f6a6bbe242c47ccac6/build2026.11.03-engineer-traps/protocol53, with1,334passing tests and matching5326/5327reviews. The wider specialization graph opens fitted once and preserves deliberate zoom; Fit rounds down within its permitted range. [ENGINEER_TRAPS.md](ENGINEER_TRAPS.md) describes the newly developed route. The original General slice below retains protocol52provenance; Builder remains unfinished.
+
 Build `2026.11.03-workbook-zoom-polish`, protocol52. This slice follows the user's feedback on the Engineer field manual. It does not complete Engineer, the shop overhaul or the game.
 
 General now uses a matching field workbook. Shared techniques have their own subtab alongside the class branches (Engineer: Demolitions, Constructs and Repair). Classic retains the selected eighteen-node branch; the expanded preference offers all54issued class purchases as well as individual branches. Curved paths follow actual prerequisites, not new acquisition rules. A reading view preserves every purchase and prerequisite without a spatial layout. Existing statistical foundations and36old transformations retain their IDs, costs and effects.
