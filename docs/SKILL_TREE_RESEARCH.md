@@ -1,5 +1,7 @@
 # Skill-tree research and Grave Accord design brief
 
+**Implementation update, 2026-11-03:** [ENGINEER_MACHINERY.md](ENGINEER_MACHINERY.md) records the real Machinery fork, earned actions/evolutions and painted authored map/reading view in protocol51. Future joins, hybrids, full Traps/Field Works and other-class rosters below remain design proposals. The following audit preserves its dated source boundary.
+
 Researched 2026-11-02 against developer sources and the actual local implementation. Follow [the Free Play polish roadmap](FREE_PLAY_POLISH_ROADMAP.md) for development order. The proposed graph and mechanics below are not implemented content.
 
 Runtime follow-up: [CLASS_TREE_POLISH.md](CLASS_TREE_POLISH.md) implements the first General/Specializations separation and the sentry aiming correction. The following audit describes sourceab8e4b3; the General grid is preserved, while the two live Engineer choices now have their own authored fork. The fuller proposed graph remains unfinished.

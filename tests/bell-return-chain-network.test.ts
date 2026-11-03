@@ -45,7 +45,7 @@ test("issued36 Practice/profile progress migrates to37; foreign revisions, forge
       contentRevision: issued,
     };
   const restored = Game.restoreOffline(old).offlineCheckpoint()!;
-  assert.equal(PROTOCOL, 50);
+  assert.equal(PROTOCOL, 51);
   assert.notEqual(CONTENT_REVISION, issued);
   assert.equal(restored.protocolVersion, PROTOCOL);
   assert.equal(restored.contentRevision, CONTENT_REVISION);

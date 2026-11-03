@@ -45,6 +45,7 @@ export function actionLabel(action: Action) {
         q: 'ui.abilityQ',
         e: 'ui.abilityE',
         ultimate: 'ui.ultimate',
+        technique1:'ui.technique1',technique2:'ui.technique2',
         interact: 'ui.interact',
       } as Record<string, string>
     )[action],

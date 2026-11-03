@@ -20,7 +20,7 @@ function context(g:Game):KitContext{return {...(g as unknown as {kitContext():Ki
 function cast(g:Game,p:Player){assert(g.submitInput(p.id,{...idleInput(),sequence:p.ack+1,aim:p.aim,q:true}));g.step();g.submitInput(p.id,{...idleInput(),sequence:p.ack+1,aim:p.aim});}
 const advance=(g:Game,n:number)=>{for(let i=0;i<n;i++)g.step();};
 test('The Engineer pilot adds two early behavioral choices, preserves every foundation and spends the existing three-SP start',()=>{
-  assert.equal(data.skills.length,648);assert.equal(data.specializationSkills.length,2);
+  assert.equal(data.skills.length,648);assert.equal(data.specializationSkills.filter(s=>s.prerequisite==='engineer-constructs-1').length,2);
   for(const id of [machinery,traps]){const {g,p}=fixture(id);assert.equal(p.totalSp,3);assert.equal(p.skills.reduce((n,id)=>n+g.skillCost(id),0),3);assert.equal(data.specializationSkills.find(s=>s.id===id)!.grade,'D-');assert.equal(g.transact(p.id,{id:'other',kind:'skill',item:id===traps?machinery:traps}).ok,false);}
   const g=new Game(),p=g.addPlayer('p','Mara','soldier');assert.equal(g.transact(p.id,{id:'wrong',kind:'skill',item:traps}).ok,false);
   const story=new Game({mode:'story'}),t=story.addPlayer('t','Tamsin','engineer');assert.equal(story.transact(t.id,{id:'deny',kind:'skill',item:traps}).reason,'storyLearningRequired');assert.equal(t.totalSp,0);

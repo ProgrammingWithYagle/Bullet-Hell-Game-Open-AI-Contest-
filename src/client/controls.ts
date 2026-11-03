@@ -236,7 +236,7 @@ export class Controls {
         input.supply = n;
         break;
       }
-    for (const a of ['dodge', 'reload', 'q', 'e', 'ultimate'] as const) input[a] = pulse(a);
+    for (const a of ['dodge', 'reload', 'q', 'e', 'ultimate','technique1','technique2'] as const) input[a] = pulse(a);
     this.retinueCycle=pulse('retinue');
     this.pressed.clear();
     this.virtualPressed.clear();

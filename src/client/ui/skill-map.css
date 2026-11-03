@@ -140,37 +140,90 @@
 }
 
 .pathway-choices {
-  --pathway-ink:#294331;--pathway-line:#8c9e80;--pathway-paper:#ece5c7;--pathway-gold:#9d782f;
+  --pathway-ink:#243d34;--pathway-line:#b7ac88;--pathway-paper:#e9dfbd;--pathway-gold:#a67a32;
   container-name:specializations;container-type:inline-size;color:var(--pathway-ink);
+  border:1px solid #6d795c;border-radius:12px;overflow:clip;background:#e9dfbd;
+  box-shadow:0 3px 14px #182e2224;
 }
-.pathway-choices>h3 {margin-block:0 .4rem;}
-.pathway-choices>p {max-width:70ch;font-size:.88rem;line-height:1.5;}
-.specialization-graph {position:relative;min-height:500px;border:1px solid var(--pathway-line);border-radius:.75rem;background:radial-gradient(ellipse at top,#eee4c2a0,#d6ddc480);}
-.specialization-connections {position:absolute;inset:0;width:100%;height:100%;pointer-events:none;fill:none;stroke:var(--pathway-line);stroke-width:3;}
-.specialization-connections .locked-route {stroke-dasharray:7 5;}
-.specialization-connections .conflicting-route {stroke:#865b4e;stroke-dasharray:2 6;}
-.specialization-connections .available-route {stroke:var(--pathway-ink);}
-.specialization-connections .owned-route {stroke:var(--pathway-gold);stroke-width:5;}
-.specialization-position {position:absolute;left:var(--node-x);top:var(--node-y);width:44%;max-width:300px;transform:translate(-50%,-66px);}
-.specialization-position.foundation-reference {transform:translate(-50%,-50%);width:52%;}
-.pathway-foundation {display:grid;gap:.2rem;width:100%;min-height:80px;padding:.6rem;border:2px dashed var(--pathway-line);background:var(--pathway-paper);font-size:.8rem;}
-.pathway-foundation strong {font-size:1rem;}
-.pathway-foundation small {text-transform:uppercase;letter-spacing:.08em;}
-.pathway-technique {min-width:0;padding:.8rem;background:var(--pathway-paper);border:1px solid var(--pathway-line);border-radius:.5rem;text-align:center;}
-.pathway-technique h4 {margin:0 0 .55rem;display:flex;gap:.5rem;align-items:center;justify-content:center;}
-.pathway-slot {font-size:.7rem;border:1px solid currentColor;border-radius:.2rem;padding:.1rem .3rem;}
-.pathway-technique .skill-node {display:block;width:76px;height:76px;min-width:44px;min-height:44px;margin:.5rem auto;}
-.pathway-technique strong {display:block;}
-.pathway-technique p {font-size:.84rem;line-height:1.5;margin-block:.5rem;}
-.pathway-technique .pathway-state {min-height:2.5em;font-weight:600;}
-.pathway-choices button:focus-visible {outline:3px solid #315a49;outline-offset:4px;}
+.pathway-manual-heading {display:flex;gap:1rem;align-items:center;padding:1.15rem 1.3rem;background:linear-gradient(115deg,#1c352e,#314b39);color:#f0dfb6;border-bottom:3px double #b69b5b;}
+.pathway-manual-heading .manual-emblem {width:72px;height:72px;flex:0 0 72px;filter:drop-shadow(0 3px 2px #0006);}
+.manual-emblem img {width:100%;height:100%;object-fit:contain;}
+.pathway-manual-heading .eyebrow {font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;margin:0 0 .3rem;color:#cfbd8c;}
+.pathway-manual-heading h3 {font-family:var(--display-font);font-size:1.5rem;line-height:1.15;margin:0;font-weight:500;}
+.pathway-manual-heading p:last-child {font-size:.8rem;line-height:1.5;max-width:68ch;margin:.6rem 0 0;color:#e2ddc5;}
+.pathway-toolbar {display:flex;align-items:center;flex-wrap:wrap;gap:.35rem;padding:.65rem .9rem;background:#e1d6b2;border-bottom:1px solid #b7ac88;}
+.pathway-toolbar>small {flex:1 1 220px;font-size:.75rem;line-height:1.4;max-width:42ch;margin-inline-end:auto;}
+.pathway-toolbar button {min-width:44px;min-height:44px;padding:.45rem .7rem;border:1px solid #9d9877;border-radius:.3rem;background:#eee6ca;color:#294333;font:inherit;font-size:.8rem;}
+.pathway-toolbar button[aria-pressed="true"] {background:#294333;border-color:#294333;color:#f8eccb;}
+.pathway-toolbar button:disabled {opacity:.5;}
+.pathway-legend {display:flex;flex-wrap:wrap;gap:.65rem 1.2rem;padding:.65rem 1rem;font-size:.7rem;border-top:1px solid #b7ac88;background:#e1d6b2;}
+.pathway-legend span {display:flex;align-items:center;gap:.4rem;}
+.pathway-legend i {display:inline-block;width:12px;height:12px;border:2px solid #8b7440;border-radius:50%;background:#efe4bc;}
+.pathway-legend .evolution-key {border-radius:2px;transform:rotate(45deg);}
+.pathway-legend .active-key {border-width:3px;border-color:#30655c;}
+.pathway-legend .exclusive-key {width:22px;height:0;border:0;border-top:2px dashed #9b644e;border-radius:0;}
+.specialization-viewport {direction:ltr;overflow:auto;overscroll-behavior:contain;touch-action:pan-x pan-y;max-height:min(65dvh,720px);min-height:300px;scrollbar-gutter:stable;background:#e9dfbd;}
+.specialization-graph {position:relative;width:var(--graph-width);height:var(--graph-height);margin-inline:auto;background:radial-gradient(ellipse at 45% 30%,#f6efd6b3,transparent 62%),repeating-linear-gradient(0deg,transparent,transparent 39px,#8a977311 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,#8a977311 40px);}
+.specialization-graph::after {content:'';position:absolute;inset:15px;pointer-events:none;border:1px solid #a99d6d55;border-radius:4px;}
+.specialization-connections {position:absolute;inset:0;width:100%;height:100%;pointer-events:none;fill:none;stroke:var(--pathway-line);stroke-width:3;stroke-linecap:round;}
+.specialization-connections .locked-route {stroke-dasharray:5 8;stroke-width:2;}
+.specialization-connections .conflicting-route {stroke:#a78475;stroke-dasharray:2 7;}
+.specialization-connections .available-route {stroke:#647e65;}
+.specialization-connections .owned-route {stroke:#ac853e;stroke-width:5;}
+.specialization-connections .inspected-route {stroke:#2d685c;stroke-width:5;filter:drop-shadow(0 0 3px #3a786133);}
+.specialization-connections .exclusive-route {stroke:#a27762;stroke-width:1.5;stroke-dasharray:3 7;}
+.specialization-position {position:absolute;left:var(--node-x);top:var(--node-y);width:188px;transform:translate(-50%,-66px);z-index:1;text-align:center;}
+.specialization-position.foundation-reference {width:210px;transform:translate(-50%,-50%);}
+.pathway-foundation {display:grid;gap:.2rem;width:100%;min-height:74px;padding:.6rem;border:1px dashed #8d916c;border-radius:5px;background:#ece4c9;color:#37503c;box-shadow:0 2px 4px #35432c12;}
+.pathway-foundation strong {font-size:.95rem;}.pathway-foundation small {text-transform:uppercase;letter-spacing:.09em;font-size:.65rem;}.pathway-foundation span {font-size:.7rem;}
+.pathway-technique {position:relative;min-width:0;text-align:center;}
+.pathway-technique .technique-role {display:block;min-height:1.4em;font-size:.64rem;text-transform:uppercase;letter-spacing:.075em;color:#647057;margin-bottom:.35rem;}
+.pathway-technique .skill-node {display:block;width:84px;height:84px;min-width:44px;min-height:44px;margin:0 auto .45rem;padding:5px;border:2px solid #9c9069;border-radius:50%;background:radial-gradient(circle at 45% 30%,#f4eacb,#c9b987);box-shadow:0 0 0 4px #e9dfbd,0 0 0 5px #b9ae89,0 5px 9px #32422c24;transition:box-shadow .15s,border-color .15s;}
+.pathway-technique .skill-node .item-art {object-fit:contain;width:100%;height:100%;filter:drop-shadow(0 2px 1px #0004);}
+.pathway-technique .skill-node.unavailable {opacity:1;background:#dcd5b7;border-color:#9da186;}
+.pathway-technique .skill-node.unavailable .item-art {filter:saturate(.4) opacity(.7);}
+.pathway-technique .skill-node.available {border-color:#50785e;box-shadow:0 0 0 4px #e9dfbd,0 0 0 6px #78936e,0 5px 9px #32422c24;}
+.pathway-technique .skill-node.owned {border-color:#a77d29;box-shadow:0 0 0 4px #e9dfbd,0 0 0 6px #b58b40,0 5px 9px #32422c24;}
+.pathway-technique .skill-node.inspected {border-color:#24584c;box-shadow:0 0 0 4px #e9dfbd,0 0 0 7px #2c685b,0 6px 12px #32422c35;}
+.pathway-technique.role-evolution .skill-node {border-radius:20%;}
+.pathway-technique.role-active .skill-node {border-style:double;border-width:5px;}
+.pathway-technique.role-capstone .skill-node {width:98px;height:98px;border-radius:27% 27% 12% 12%;border-width:4px;box-shadow:0 0 0 4px #e9dfbd,0 0 0 6px #b1924d,0 7px 13px #6b512f33;}
+.pathway-technique .node-grade {background:#efe4c2;color:#3c4b32;border:1px solid #b0a377;font-size:.66rem;padding:.12rem .28rem;min-width:22px;border-radius:3px;bottom:-5px;right:-8px;}
+.pathway-technique>strong {display:block;font-size:.85rem;line-height:1.35;min-height:1.35em;padding:.1rem .2rem;background:#e9dfbde6;border-radius:3px;}
+.pathway-technique .pathway-slot {font-size:.62rem;letter-spacing:.04em;color:#4c6753;margin-inline-start:.4rem;white-space:nowrap;}
+.pathway-technique .pathway-state {font-size:.7rem;line-height:1.35;margin:.25rem 0 0;color:#54654b;}
+.pathway-technique .pathway-summary {position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;}
+.pathway-choices button:focus-visible {outline:3px solid #24584c;outline-offset:5px;}
+.pathway-technique .pathway-parent {display:none;}
+.reading-view.specialization-viewport {max-height:65dvh;}
+.reading-view .specialization-graph {display:grid;gap:1rem;padding:1rem;width:auto;height:auto;background:#e9dfbd;}
+.reading-view .specialization-connections,.reading-view .specialization-graph::after {display:none;}
+.reading-view .specialization-position,.reading-view .specialization-position.foundation-reference {position:static;transform:none;width:auto;text-align:start;}
+.reading-view .pathway-technique {display:grid;grid-template-columns:100px minmax(0,1fr);column-gap:.8rem;text-align:start;border-bottom:1px solid #bfb28c;padding:0 0 1rem;}
+.reading-view .pathway-technique .skill-node {grid-column:1;grid-row:1/6;align-self:start;margin:.4rem auto;}
+.reading-view .pathway-technique>.technique-role,.reading-view .pathway-technique>strong,.reading-view .pathway-technique>p {grid-column:2;}
+.reading-view .pathway-summary {position:static;clip-path:none;width:auto;height:auto;white-space:normal;font-size:.8rem;line-height:1.5;margin:.4rem 0;overflow:visible;}
+.reading-view .pathway-technique .pathway-parent {display:block;font-size:.7rem;margin:.4rem 0 0;}
+.pathway-detail {border-top:3px double #a89050;padding-top:.75rem;}
+.pathway-detail .technique-role {color:#4c735b;text-transform:uppercase;font-size:.73rem;letter-spacing:.06em;}
+.pathway-detail .skill-behavior {line-height:1.65;}
+.item-details:has(.pathway-detail) .detail-symbol {width:144px;height:144px;padding:12px;margin:.5rem auto 1rem;border:1px solid #a89564;border-radius:50%;background:radial-gradient(circle,#f2e8c9,#cfbd90);box-shadow:inset 0 0 0 5px #e3d6b0,0 3px 8px #3b402221;}
+.item-details:has(.pathway-detail) .detail-symbol .item-art {width:100%;height:100%;object-fit:contain;}
+.item-details:has(.pathway-detail)>h3 {text-align:center;font-size:1.4rem;}
 .loadout-tabs button {min-height:44px;}
 @container specializations (max-width:540px) {
-  .specialization-graph {display:grid;gap:.8rem;padding:.8rem;min-height:0;}
-  .specialization-connections {display:none;}
-  .specialization-position,.specialization-position.foundation-reference {position:static;transform:none;width:auto;max-width:none;}
-  .pathway-technique {display:grid;grid-template-columns:80px minmax(0,1fr);column-gap:.8rem;text-align:start;}
-  .pathway-technique h4 {grid-column:1/-1;justify-content:space-between;}
-  .pathway-technique .skill-node {grid-column:1;grid-row:2/5;align-self:start;}
-  .pathway-technique>strong,.pathway-technique>p {grid-column:2;}
+  .pathway-manual-heading {padding:1rem;gap:.65rem;}.pathway-manual-heading .manual-emblem {width:50px;height:50px;flex-basis:50px;}.pathway-manual-heading h3 {font-size:1.2rem;}
+  .specialization-viewport {max-height:60dvh;}
+  .pathway-toolbar>small {flex-basis:100%;max-width:none;}
 }
+@media (prefers-reduced-motion:reduce) {.pathway-technique .skill-node {transition:none;}}
+@media (forced-colors:active) {.pathway-technique .skill-node,.pathway-foundation {border-color:ButtonText;}.specialization-connections path {stroke:CanvasText;}.pathway-technique .skill-node.inspected {outline:3px solid Highlight;}.pathway-technique .skill-node .item-art {forced-color-adjust:none;}}
+
+.item-details:has(.pathway-detail) .detail-symbol {position:relative;flex:0 0 144px;box-sizing:border-box;}
+.item-details:has(.pathway-detail) .detail-symbol b {position:absolute;bottom:-.35rem;right:-.3rem;padding:.1rem .45rem;background:#f0e5c5;border:1px solid #aa9461;border-radius:4px;color:#4b592f;font-size:1rem;}
+
+.loadout-board .branch-tabs button {min-height:44px;border-color:#a7a47d;background:#e8e2c8;}
+.loadout-board .branch-tabs button[aria-selected="true"] {background:#2c4837;color:#f1e4bf;border-color:#2c4837;}
+.loadout-board .skill-tree {border:1px solid #b4ad88;border-radius:8px;background:radial-gradient(ellipse at top,#f2ebd0,#ded8b9);}
+.loadout-board .general-mobility {border-top:3px double #aaa16e;padding-top:1rem;margin-top:1rem;}
+.loadout-board .item-art {object-fit:contain;}

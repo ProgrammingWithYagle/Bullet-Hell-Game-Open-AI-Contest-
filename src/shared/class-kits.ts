@@ -1,4 +1,5 @@
 // Additional class abilities run only in the authoritative fixed-step simulation.
+import {EngineerMachinery,type MachineryOrder,type MachineryCue} from './engineer-machinery.ts';
 import { engineerRules as er, chargePoint, chargeLegal, type EngineerCharge } from './engineer-pathways.ts';
 import { hasTalent, type TalentId } from './class-talents.ts';
 import type { BardCue } from './bard-kit.ts';
@@ -21,6 +22,7 @@ import type { Minions } from './minions.ts';
 const ticks = (seconds: number) => Math.ceil(seconds * HZ);
 export const RESCUE_CHARGE_TICKS = ticks(0.3) + 1;
 export type KitStatus = {
+  technique1At?:number;technique2At?:number;
   alchemySamplesCapacity?:number;alchemyRecipe?:Recipe;alchemyCinder?:number;alchemyChalk?:number;alchemySap?:number;alchemyPrepared?:Recipe[];alchemyCapacity?:number;alchemyBrewUntil?:number;alchemyBrewRecipe?:string;alchemyBrewMovement?:number;alchemyBatchUntil?:number;alchemyBatchCharges?:number;
   rangerDrawUntil?:number;rangerDrawId?:number;rangerDrawMovement?:number;rangerTraps?:number;rangerTrapCapacity?:number;rangerSurveyCharges?:number;rangerSurveyUntil?:number;rangerQuiverCapacity?:number;
   retinueHoldX?:number;retinueHoldY?:number;retinueMarkKey?:string;
@@ -55,6 +57,7 @@ export type Construct = {
   kind: 'turret' | 'siege' | 'wall' | 'decoy';
   machinery?: boolean;
   followOffset?: Vec;
+  order?:MachineryOrder;goal?:Vec;formationOffset?:Vec;commandAt?:number;
   braceUntil?: number;
   source?: string;
   halfSpan?: number;
@@ -76,6 +79,7 @@ export type Construct = {
   until: number;
 };
 export type KitCue =
+  | MachineryCue
   | EngineerCharge
   | AlchemyCue
   | RangerCue
@@ -114,6 +118,7 @@ export type KitContext = {
   minions: Minions;
   stats(player: Player): Stats;
   id(): number;
+  sound?(id:string,owner:Player):void;
   area(
     source: Player,
     point: Vec,
@@ -169,6 +174,10 @@ export function constructHit(from: Vec, to: Vec, body: Construct, pad: number) {
   );
 }
 export class ClassKits {
+  private machinery=new EngineerMachinery();
+  commandEngineer(p:Player,c:KitContext){return this.machinery.command(p,c,this.towers);}
+  castEngineer(p:Player,slot:'technique1'|'technique2',c:KitContext){return this.machinery.cast(p,slot,c,this.towers);}
+  private machineryCues:MachineryCue[]=[];
   private engineerCharges: (EngineerCharge & {damage:number})[] = [];
   canCast(p:Player,slot:string,c:KitContext) {
     if(p.classId!=='engineer'||slot!=='q')return true;
@@ -216,6 +225,7 @@ export class ClassKits {
     return charge && tick < charge.until ? 600 : undefined;
   }
   clear() {
+    this.machinery.clear();this.machineryCues=[];
     this.engineerCharges = [];
     this.retaliation = [];
     this.statuses.clear();
@@ -225,9 +235,10 @@ export class ClassKits {
   }
   status(id: string, tick: number): KitStatus {
     const s = this.statuses.get(id);
-    if (!s) return emptyStatus();
+    if (!s) return {...emptyStatus(),...this.machinery.status(id)};
     return {
       ...s,
+      ...this.machinery.status(id),
       shield: tick < s.shieldUntil ? s.shield : 0,
       armor: tick < s.armorUntil ? s.armor : 0,
       stepCharges: tick < s.passageUntil ? s.stepCharges : 0,
@@ -392,6 +403,7 @@ export class ClassKits {
     return [
       ...this.engineerCharges.map(({damage:_damage,...cue})=>({...cue})),
       ...constructs,
+      ...this.machineryCues,
       ...this.areas.map(
         ({
           damage: _d,
@@ -669,6 +681,9 @@ export class ClassKits {
       machinery: options.machinery,
       // Follow the owner's translation, independently of their weapon aim.
       followOffset: options.machinery ? {x:point.x-p.x,y:point.y-p.y} : undefined,
+      formationOffset:options.machinery?{x:point.x-p.x-Math.cos(p.aim)*65,y:point.y-p.y-Math.sin(p.aim)*65}:undefined,
+      order:options.machinery?'follow':undefined,
+      commandAt:options.machinery?c.tick+ticks(er.commandSeconds):undefined,
       braceUntil: options.machinery?c.tick+ticks(er.braceSeconds):undefined,
       farAim: options.farAim,
       retaliation:
@@ -681,6 +696,7 @@ export class ClassKits {
   }
   step(c: KitContext) {
     this.stepEngineerCharges(c);
+    this.machinery.step(c,this.towers);this.machineryCues=this.machinery.cues(c);
     const present = new Set(c.players.map((p) => p.id));
     for (const id of this.statuses.keys())
       if (!present.has(id)) this.statuses.delete(id);
@@ -737,13 +753,14 @@ export class ClassKits {
         this.towers.delete(id);
         continue;
       }
-      if (tower.mobile) {
+      if(tower.machinery&&this.machinery.busy(tower.id)){tower.fireAt=c.tick+ticks(er.braceSeconds);continue;}
+      if (tower.mobile && (!tower.machinery||tower.order!=='anchor')) {
         if (owner.status !== 'active') {
           this.towers.delete(id);
           continue;
         }
         const goal = tower.machinery
-            ? {x:owner.x+(tower.followOffset?.x??0),y:owner.y+(tower.followOffset?.y??0)}
+            ? tower.order==='waypoint'&&tower.goal?tower.goal:{x:owner.x+(tower.followOffset?.x??0),y:owner.y+(tower.followOffset?.y??0)}
             : this.point(owner,75,c),
           length = distance(tower, goal),
           step = Math.min((tower.machinery?er.machineSpeed:160) / HZ, length);

@@ -1,5 +1,7 @@
 # Class-tree structure and Engineer polish
 
+**Current continuation:** build2026.11.03-machinery-progression/protocol51 adds the Machinery control fork, earned fourth/fifth actions, late evolutions and the painted field-manual tree. See [ENGINEER_MACHINERY.md](ENGINEER_MACHINERY.md). The dated protocol50 description below is retained as the preceding verified slice; its two-entry-only and presentation limits are historical. Engineer still needs Traps and a third pathway.
+
 Build **2026.11.02-class-tree-polish**, protocol **50**. This is the first runtime slice of the sequential Free Play class-polish roadmap. Engineer still has two new live Q entry techniques; its full three-path tree, internal forks and Field Works remain unfinished.
 
 ## What changed

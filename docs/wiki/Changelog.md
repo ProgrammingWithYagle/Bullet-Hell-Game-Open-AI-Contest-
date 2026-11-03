@@ -1,6 +1,13 @@
 # Changelog
 
-Development build **2026.11.02-class-tree-polish**, protocol 50. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.03-machinery-progression**, protocol 51. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-03 — The Engineer’s field manual
+
+### Machinery that grows with your run
+
+- Anchor or direct carriages with a real control fork. Later, earn Coil Lance and Salvage Pulse as separate active actions; evolve the lance into Prism Coils and Rail Convergence.
+- A painted field-manual tree distinguishes control choices, new actions and evolutions. Read every technique and prerequisite before buying, or use the equivalent reading view. Existing General purchases retain their identities.
 
 ## 2026-11-02 — Clearer class choices
 

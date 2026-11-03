@@ -1,5 +1,7 @@
 # Engineer pathways — playable pilot
 
+**Current continuation:** build2026.11.03-machinery-progression/protocol51 adds the Machinery control fork, earned fourth/fifth actions, late evolutions and the painted field-manual tree. See [ENGINEER_MACHINERY.md](ENGINEER_MACHINERY.md). The dated protocol50 description below is retained as the preceding verified slice; its two-entry-only and presentation limits are historical. Engineer still needs Traps and a third pathway.
+
 Build 2026.11.02-class-tree-polish / protocol 50. This is a two-choice Free Play pilot. It does not complete Engineer's later grades, the other eleven specialization designs, any personal arc or the larger game.
 
 **Current development order:** [FREE_PLAY_POLISH_ROADMAP.md](FREE_PLAY_POLISH_ROADMAP.md) makes Engineer the first polished reference before the other classes, bosses and eventually Campaign. [CLASS_TREE_POLISH.md](CLASS_TREE_POLISH.md) records the implemented dedicated graph and aiming fix. Field Works, internal pathway forks and later grades remain proposals; the instructions below describe the current two-choice pilot.

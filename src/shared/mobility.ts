@@ -68,6 +68,8 @@ export function advanceMobility(
     !input.q &&
     !input.e &&
     !input.ultimate &&
+    !input.technique1 &&
+    !input.technique2 &&
     !reloading;
   if (p.sprinting) {
     p.sprintStamina = Math.max(

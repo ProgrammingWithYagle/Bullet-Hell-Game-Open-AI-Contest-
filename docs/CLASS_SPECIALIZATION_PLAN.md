@@ -2,13 +2,13 @@
 
 Status: resumed development, 2026-11-02. The bounded Engineer Free Play pilot is implemented; see [ENGINEER_PATHWAYS.md](ENGINEER_PATHWAYS.md) for actual mechanics, conflicts and limits. The broader pathways, later grades and Campaign teaching below remain proposals. This plan does not finalize all twelve pathway rosters.
 
-The first runtime polish slice now separates General/Specializations and corrects sentry aiming/bracing in build2026.11.02-class-tree-polish/protocol50; see [CLASS_TREE_POLISH.md](CLASS_TREE_POLISH.md). Its two live entry techniques remain the only implemented new pathway choices.
+The first runtime polish slice now separates General/Specializations and corrects sentry aiming/bracing in build2026.11.02-class-tree-polish/protocol50; see [CLASS_TREE_POLISH.md](CLASS_TREE_POLISH.md). The newer build2026.11.03-machinery-progression/protocol51 adds six real Machinery techniques, separately earned actions and a painted field-manual graph; see [ENGINEER_MACHINERY.md](ENGINEER_MACHINERY.md). Traps beyond its entry, the third Engineer pathway and the other classes remain unfinished.
 
 ## Active order and research
 
 The user's latest direction is one area at a time: Free Play classes, then bosses, then the remaining Free Play loop, with Campaign last. [FREE_PLAY_POLISH_ROADMAP.md](FREE_PLAY_POLISH_ROADMAP.md) is the current sequence; [SKILL_TREE_RESEARCH.md](SKILL_TREE_RESEARCH.md) records the actual topology audit, developer references and the new graph design. They supersede earlier Campaign-next recommendations.
 
-Keep the current numerical class tree and shared mobility under General. Specializations is a new dedicated tree with real forks, purposeful joins and compatible hybrids. Target at least three distinctive specializations per class; do not mass-generate new nodes. Finish Engineer first (Machinery, Traps, proposed Field Works), then progress class by class. Only its two pilot entry techniques are live today. The broader names and mechanics below remain proposals.
+Keep the current numerical class tree and shared mobility under General. Specializations is a new dedicated tree with real forks, purposeful joins and compatible hybrids. Target at least three distinctive specializations per class; do not mass-generate new nodes. Finish Engineer first (Machinery, Traps, proposed Field Works), then progress class by class. Engineer now has two entry techniques plus six Machinery techniques. Other proposed pathway rosters remain unimplemented. The broader names and mechanics below remain proposals.
 
 ## The user's request
 

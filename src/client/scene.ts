@@ -823,6 +823,27 @@ export class CombatScene extends Phaser.Scene {
         this.constructImages.delete(id);
       }
     for (const cue of view.classCues) {
+      if(cue.kind==='engineer-coil'||cue.kind==='engineer-beam'){
+        const charging=cue.kind==='engineer-coil',color=cue.convergence?0xe4cd83:0x86d7cb;
+        const endX=cue.toX??cue.x,endY=cue.toY??cue.y;
+        for(const ray of charging?(cue.rays??[{x:endX,y:endY}]):[{x:endX,y:endY}]){
+          h.lineStyle(charging?2:cue.radius*2,color,charging?.5:.25).lineBetween(cue.x,cue.y,ray.x,ray.y);
+          h.lineStyle(charging?1:4,color,charging?.8:1).lineBetween(cue.x,cue.y,ray.x,ray.y);
+        }
+        h.lineStyle(2,color,.9).strokeCircle(cue.x,cue.y,charging?24:18);
+        if(charging){const progress=Math.max(0,Math.min(1,(now-cue.at)/Math.max(1,cue.until-cue.at)));h.lineStyle(4,color,1).beginPath().arc(cue.x,cue.y,27,-Math.PI/2,-Math.PI/2+Math.PI*2*progress).strokePath();}
+        continue;
+      }
+      if(cue.kind==='engineer-collapse'||cue.kind==='engineer-salvage'||cue.kind==='engineer-order'){
+        if(cue.kind==='engineer-order'&&cue.owner!==this.localId)continue;
+        const color=cue.rejected?0xd78965:cue.kind==='engineer-salvage'?0xdac687:0xb5e1cc;
+        h.lineStyle(cue.impact?5:2,color,.9).strokeCircle(cue.x,cue.y,cue.radius);
+        h.fillStyle(color,cue.impact?.23:.05).fillCircle(cue.x,cue.y,cue.radius);
+        if(cue.impact){h.lineStyle(3,color,1).strokeCircle(cue.x,cue.y,cue.radius*.55);h.fillStyle(0xfff0bd,.7).fillCircle(cue.x,cue.y,18);}
+        const size=cue.rejected?9:6;
+        h.lineStyle(2,color,1).lineBetween(cue.x-size,cue.y-size,cue.x+size,cue.y+size).lineBetween(cue.x-size,cue.y+size,cue.x+size,cue.y-size);
+        continue;
+      }
       if(cue.kind==='engineer-charge'){
         const armed=cue.state==='ready',fuse=cue.state==='fuse',spent=cue.state==='spent';
         const color=fuse?0xf0b262:armed?0x97d8c7:0x9a9b8a;
@@ -887,6 +908,8 @@ export class CombatScene extends Phaser.Scene {
         }
         h.lineStyle(2,0x9ccbd8,.8).strokeCircle(cue.x,cue.y,cue.radius+4);
       } else if (cue.kind === 'turret' || cue.kind === 'siege') {
+        if(cue.machinery&&cue.owner===this.localId&&cue.order==='waypoint'&&cue.goal){h.lineStyle(1,0xc7b374,.7).lineBetween(cue.x,cue.y,cue.goal.x,cue.goal.y);h.lineStyle(2,0xc7b374,.9).strokeCircle(cue.goal.x,cue.goal.y,12);}
+        if(cue.machinery&&cue.order==='anchor')h.lineStyle(3,0xc7b374,.95).strokeRect(cue.x-24,cue.y-24,48,48);
         if(cue.machinery){h.lineStyle(2,0xdac687,.8).strokeCircle(cue.x,cue.y,25);if(now<(cue.braceUntil??0))h.lineStyle(3,0xdac687,.9).lineBetween(cue.x-15,cue.y+27,cue.x+15,cue.y+27);}
         const facing =
             Math.abs(Math.cos(cue.aim)) > Math.abs(Math.sin(cue.aim))

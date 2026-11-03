@@ -11,7 +11,8 @@ import {
   clampMapZoom,
   mapZoomScroll,
 } from './skill-map.ts';
-import {specializationMapLayout,specializationMapMarkup,prepareSpecializationMap} from './specialization-map.ts';
+import {specializationMapLayout,specializationMapMarkup,prepareSpecializationMap,highlightSpecialization} from './specialization-map.ts';
+import {specializationSpRequired} from '../../shared/engineer-pathways.ts';
 import { conflictingSkill } from '../../shared/skill-conflicts.ts';
 import {allSkills,generalSkills} from '../../shared/mobility.ts';
 import { data } from '../../shared/game.ts';
@@ -27,6 +28,8 @@ import { expeditionText } from '../expedition-text.ts';
 import { locale } from '../i18n.ts';
 type Kind = Command['kind'];
 let mapZoom = 1;
+let specializationMode:'map'|'list'='map',specializationZoom=1;
+let specializationScroll={top:0,left:0};
 let shopDifficulty = 'normal';
 let shopSpecializationsAllowed = true;
 let shopContext = '';
@@ -37,7 +40,7 @@ function itemArt(kind: Kind,id: string,glyph: string,classId: string) {
   const sword = classId==='swordsman';
   const special = classId==='alchemist'&&kind==='upgrade'&&['damage','fire-rate','magazine','reload'].includes(id)?assets.items['upgrade/alchemist-'+id]:classId==='alchemist'&&kind==='supply'&&id==='ammo-pouch'?assets.items['supply/alchemist-sample-case']:classId==='ranger'&&kind==='upgrade'&&['damage','fire-rate','magazine','reload'].includes(id)?assets.items['upgrade/ranger-'+id]:classId==='ranger'&&kind==='supply'&&id==='ammo-pouch'?assets.items['supply/ranger-arrow-bundle']:sword && kind==='upgrade' && swordGear[id] ? assets.items['upgrade/swordsman-'+swordGear[id]]
     : sword && kind==='supply' && id==='ammo-pouch' ? assets.items['supply/swordsman-canteen'] : classId==='summoner'&&kind==='upgrade'&&summonGear[id]?assets.items['upgrade/summoner-'+summonGear[id]]:classId==='summoner'&&kind==='supply'&&id==='ammo-pouch'?assets.items['supply/summoner-thread-spool']:undefined;
-  const url = special ?? (kind==='upgrade' ? assets.upgrades[id] : assets.items[kind+'/'+(kind==='skill' ? allSkills.find(s=>s.id===id)?.subbranchId : id)]);
+  const url = (kind==='skill'?assets.specializationIcons?.[id]:undefined) ?? special ?? (kind==='upgrade' ? assets.upgrades[id] : assets.items[kind+'/'+(kind==='skill' ? allSkills.find(s=>s.id===id)?.subbranchId : id)]);
   return url ? `<img class="item-art" src="${url}" alt="" aria-hidden="true">` : icon(glyph);
 }
 let tab: 'gear' | 'tree' | 'general' | 'specializations' = 'general',
@@ -59,6 +62,8 @@ function canBuy(
     if(conflict)return {allowed:false,reason:t('ui.pathwayConflict',{name:t('skill.'+conflict+'.name')}),price:node.cost};
     if (p.skills.includes(id))
       return { allowed: false, reason: t('ui.owned'), price: node.cost };
+    const earned=p.sp+p.skills.reduce((sum,id)=>sum+(allSkills.find(s=>s.id===id)?.cost??0),0),required=specializationSpRequired(id);
+    if(earned<required)return {allowed:false,reason:t('ui.pathwayEarned',{count:required,earned}),price:node.cost};
     if (node.prerequisite && !p.skills.includes(node.prerequisite))
       return {
         allowed: false,
@@ -193,7 +198,7 @@ export function shopMarkup(
   const cl = data.classes.find((c) => c.id === p.classId)!;
   const hasSpecializations = !p.training && allowSpecializations && !!specializationMapLayout(p.classId);
   const context = [p.classId,!!p.training,allowSpecializations].join(':');
-  if(shopContext!==context){shopContext=context;tab=p.training?'tree':'general';chosen=null;generalScroll={top:0,left:0};}
+  if(shopContext!==context){shopContext=context;tab=p.training?'tree':'general';chosen=null;generalScroll={top:0,left:0};specializationScroll={top:0,left:0};}
   if(tab==='specializations'&&!hasSpecializations)tab=p.training?'tree':'general';
   if(tab==='tree'&&!p.training)tab='general';
   if(p.training&&chosen?.kind==='skill')chosen=null;
@@ -270,15 +275,19 @@ export function shopMarkup(
   ) + generalMarkup(p)}</div><aside id="item-details" class="item-details" aria-live="polite">${details(p)}</aside></div>`;
 }
 
+function techniqueRole(id:string){const s=data.specializationSkills.find(s=>s.id===id);return s&&'role' in s?String(s.role):'entry';}
+function techniqueRoleName(id:string){return t('ui.pathway'+({active:'NewAction',evolution:'Evolution',control:'Control',capstone:'Capstone',entry:'Entry'} as Record<string,string>)[techniqueRole(id)]);}
 export function specializationMarkup(p:PlayerView,allowed=true){
   const map=allowed&&!p.training?specializationMapLayout(p.classId):null;if(!map)return '';
-  return '<section class="pathway-choices" lang="en" dir="ltr" aria-label="'+e(t('ui.pathways'))+'"><h3>'+e(t('ui.pathways'))+'</h3><p>'+e(t('ui.pathwayHelp'))+'</p>'+specializationMapMarkup(map,p.skills,(id,reference)=>{
+  const render=(id:string,reference:boolean)=>{
     const skill=allSkills.find(s=>s.id===id)!;
     if(reference)return '<button type="button" class="pathway-foundation" data-prerequisite="'+e(id)+'" data-graph-focus="'+e(id)+'" lang="'+e(locale)+'" dir="auto"><small>'+e(t('branch.general'))+'</small><strong>'+e(t('skill.'+id+'.name'))+'</strong><span>'+e(p.skills.includes(id)?t('ui.owned'):number(skill.cost)+' '+t('ui.skillPoints'))+'</span></button>';
-    const state=canBuy(p,'skill',id),owned=p.skills.includes(id);
+    const state=canBuy(p,'skill',id),owned=p.skills.includes(id),role=techniqueRole(id),slot=id==='engineer-machinery-salvage-1'?'B':role==='entry'||role==='control'?'Q':'C';
     const button=nodeButton(p,'skill',id,id==='engineer-machinery-1'?'engineer':'ability',t('skill.'+id+'.name'),skill.grade).replace('data-inspect=','data-graph-focus="'+e(id)+'" aria-describedby="pathway-summary-'+e(id)+'" data-inspect=');
-    return '<article class="pathway-technique"><h4>'+e(t(skill.subbranchNameKey))+' <span class="pathway-slot" aria-hidden="true">Q</span></h4>'+button+'<strong>'+e(t('skill.'+id+'.name'))+'</strong><p id="pathway-summary-'+e(id)+'">'+e(t('pathway.'+id+'.summary'))+'</p><p class="pathway-state" lang="'+e(locale)+'" dir="auto">'+e(owned?t('ui.owned'):state.allowed?number(skill.cost)+' '+t('ui.skillPoints'):state.reason)+'</p></article>';
-  })+'</section>';
+    return '<article class="pathway-technique role-'+e(role)+'"><span class="technique-role">'+e(techniqueRoleName(id))+'</span>'+button+'<strong>'+e(t('skill.'+id+'.name'))+'</strong><p class="pathway-state">'+e(owned?t('ui.owned'):number(skill.cost)+' '+t('ui.skillPoints'))+' <span class="pathway-slot">'+(slot==='Q'?'Q':e(t(slot==='B'?'ui.pathwayAction2':'ui.pathwayAction1')))+'</span></p><p class="pathway-summary" id="pathway-summary-'+e(id)+'">'+e(t('pathway.'+id+'.summary'))+' '+e(!owned&&!state.allowed?state.reason:'')+'</p><p class="pathway-parent">'+e(t('ui.prerequisite',{name:t('skill.'+skill.prerequisite+'.name')}))+'</p></article>';
+  };
+  const art=assets.specializationIcons?.['engineer-machinery-1'];
+  return '<section class="pathway-choices" lang="en" dir="ltr" aria-label="'+e(t('ui.pathways'))+'"><header class="pathway-manual-heading"><div class="manual-emblem" aria-hidden="true">'+(art?'<img src="'+e(art)+'" alt="">':icon('engineer'))+'</div><div><p class="eyebrow">'+e(t('ui.pathways'))+'</p><h3>'+e(t('ui.pathwayFieldManual'))+'</h3><p>'+e(t('ui.pathwayManualHelp'))+'</p></div></header><div class="pathway-toolbar"><small>'+e(t('ui.pathwayControls'))+'</small><button type="button" data-specialization-mode="map" aria-pressed="'+(specializationMode==='map')+'">'+e(t('ui.pathwayMap'))+'</button><button type="button" data-specialization-mode="list" aria-pressed="'+(specializationMode==='list')+'">'+e(t('ui.pathwayList'))+'</button><button type="button" data-specialization-zoom="out" aria-label="'+e(t('ui.zoomOut'))+'" '+(specializationZoom<=.9||specializationMode==='list'?'disabled':'')+'>−</button><button type="button" data-specialization-zoom="reset" aria-label="'+e(t('ui.resetZoom'))+'" '+(specializationMode==='list'?'disabled':'')+'>'+number(Math.round(specializationZoom*100))+'%</button><button type="button" data-specialization-zoom="in" aria-label="'+e(t('ui.zoomIn'))+'" '+(specializationZoom>=1.3||specializationMode==='list'?'disabled':'')+'>+</button></div>'+specializationMapMarkup(map,p.skills,render,{mode:specializationMode,zoom:specializationZoom,selected:chosen?.id})+'<div class="pathway-legend" aria-hidden="true"><span><i class="active-key"></i>'+e(t('ui.pathwayNewAction'))+'</span><span><i class="evolution-key"></i>'+e(t('ui.pathwayEvolution'))+'</span><span><i class="exclusive-key"></i>'+e(t('ui.pathwayExclusive'))+'</span></div></section>';
 }
 function generalMarkup(p:PlayerView){
  return `<section class="general-mobility" aria-label="${e(t('branch.general'))}"><h3>${e(t('ui.generalAbilities'))}</h3><p>${e(t('ui.generalMobilityHelp'))}</p><div class="general-purchases">${generalSkills.map(s=>`<div>${nodeButton(p,'skill',s.id,'speed',t(s.nameKey))}<span>${e(t(s.nameKey))} · ${number(s.cost)} ${e(t('ui.skillPoints'))}</span></div>`).join('')}</div></section>`;
@@ -323,6 +332,7 @@ function details(p: PlayerView) {
     glyph = effectIcon(node.effects);
     grade = node.classId==='general'?'':node.grade;
     body = `<p class="eyebrow">${e(t('branch.' + node.branchId))} · ${e(t(node.subbranchNameKey))}</p><p class="effect-list">${e(effectText(node.effects))}</p>${skillBehavior(node.id) ? `<p class="skill-behavior" ${data.specializationSkills.some(s=>s.id===id)?'lang="en" dir="ltr"':''}>${e(skillBehavior(node.id))}</p>` : ''}<p class="muted">${e(t('ui.ratingExplanation'))}</p>${node.prerequisite ? `<button class="prerequisite-link" data-prerequisite="${node.prerequisite}">${e(t('ui.prerequisite', { name: t('skill.' + node.prerequisite + '.name') }))}</button>` : ''}${node.capstone ? `<p class="capstone-note">${icon('ultimate')}${e(t('ui.capstone'))} · ${e(t('ui.capstoneLimit'))}</p>` : ''}`;
+    if(data.specializationSkills.some(s=>s.id===id))body='<div class="pathway-detail" lang="en" dir="ltr"><p class="technique-role">'+e(techniqueRoleName(id))+'</p><p class="skill-behavior">'+e(skillBehavior(id))+'</p>'+('<p>'+e(t('ui.pathwayLate'))+'</p>')+(specializationSpRequired(id)?'<p>'+e(t('ui.pathwayEarned',{count:specializationSpRequired(id),earned:p.sp+p.skills.reduce((n,id)=>n+(allSkills.find(s=>s.id===id)?.cost??0),0)}))+'</p>':'')+(node.prerequisite?'<button class="prerequisite-link" data-prerequisite="'+e(node.prerequisite)+'">'+e(t('ui.prerequisite',{name:t('skill.'+node.prerequisite+'.name')}))+'</button>':'')+(node.capstone?'<p class="capstone-note">'+e(t('ui.capstoneLimit'))+'</p>':'')+'</div>';
     if(node.classId==='general')body=`<p>${e(t('ui.generalMobilityHelp'))}</p><p class="skill-behavior">${e(skillBehavior(node.id))}</p>`;
   } else if (kind === 'weapon') {
     const w = data.weapons.find((w) => w.id === id)!;
@@ -405,6 +415,7 @@ export function bindShop(
   };
   const redraw = (focus: string) => {
     if (!active()) return;
+    const oldSpecial=workspace!.querySelector<HTMLElement>('.specialization-viewport');if(oldSpecial)specializationScroll={top:oldSpecial.scrollTop,left:oldSpecial.scrollLeft};
     const oldScroll = workspace!.querySelector<HTMLElement>('.skill-scroll');
     if(oldScroll)generalScroll={top:oldScroll.scrollTop,left:oldScroll.scrollLeft};
     workspace!.innerHTML = shopMarkup(p, supplyBindings, expanded, difficulty,chapterStage,allowSpecializations);
@@ -414,6 +425,7 @@ export function bindShop(
       scroller.scrollTop = generalScroll.top;
       scroller.scrollLeft = generalScroll.left;
     }
+    const special=workspace!.querySelector<HTMLElement>('.specialization-viewport');if(special){special.scrollTop=specializationScroll.top;special.scrollLeft=specializationScroll.left;}
     const focused=workspace!.querySelector<HTMLElement>(focus);
     focused?.focus({preventScroll:true});
     if(focus.startsWith('[data-inspect='))focused?.scrollIntoView?.({block:'nearest',inline:'nearest',behavior:'auto'});
@@ -464,6 +476,7 @@ export function bindShop(
           });
           workspace!.querySelector('#item-details')!.innerHTML = details(p);
           bindDetails();
+          if(tab==='specializations'){const map=specializationMapLayout(p.classId);if(map)highlightSpecialization(workspace!,map,chosen.id);}
         };
       });
     workspace!.querySelectorAll<HTMLButtonElement>('[data-shop-tab]').forEach(
@@ -486,6 +499,8 @@ export function bindShop(
           redraw('[data-branch="' + CSS.escape(branchId) + '"]');
         }),
     );
+    workspace!.querySelectorAll<HTMLButtonElement>('[data-specialization-mode]').forEach(button=>button.onclick=()=>{if(!active(button))return;specializationMode=button.dataset.specializationMode as 'map'|'list';redraw('[data-specialization-mode="'+specializationMode+'"]');});
+    workspace!.querySelectorAll<HTMLButtonElement>('[data-specialization-zoom]').forEach(button=>button.onclick=()=>{if(!active(button)||button.disabled)return;const action=button.dataset.specializationZoom;specializationZoom=action==='reset'?1:Math.max(.9,Math.min(1.3,Math.round((specializationZoom+(action==='in'?.1:-.1))*10)/10));redraw('[data-specialization-zoom="'+action+'"]');});
     if(tab==='specializations'){
       const map=specializationMapLayout(p.classId);if(map)prepareSpecializationMap(workspace!,map);
     }

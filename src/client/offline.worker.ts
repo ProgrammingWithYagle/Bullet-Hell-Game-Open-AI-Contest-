@@ -79,7 +79,7 @@ self.onmessage = (e: MessageEvent) => {
   if(m.type==='alchemyRecipe'){if(!paused)game.selectAlchemy('solo',m.recipe);emit();return;}
   if(m.type==='alchemyThrow'){if(!paused)game.throwAlchemy('solo',m.point);emit();return;}
   if(m.type==='retinueOrder'){if(!paused)game.orderRetinue('solo',m.order);emit();return;}
-  if (m.type === 'input') game.submitInput('solo', m.input);
+  if (m.type === 'input') { if(!paused)game.submitInput('solo', m.input); }
   else if (m.type === 'start') {
     game.start();
     emit();

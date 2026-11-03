@@ -52,6 +52,7 @@ import Phaser from 'phaser';
 import './style.css';
 import './ui/polish.css';
 import './ui/skill-map.css';
+import {engineerActions} from './engineer-actions.ts';
 import { engineerQNameKey } from '../shared/engineer-pathways.ts';
 import './fonts.css';
 import './ui/expedition.css';
@@ -376,7 +377,7 @@ function setupGame(online: boolean,classId:string) {
   uiKey = '';
   lastPhase = '';
   prediction = new Prediction();
-  app.innerHTML = `<div id="stage" dir="ltr"></div><section class="hud" aria-label="${text('ui.health')}"><div class="topline"><div><strong id="encounter"></strong><small id="status" role="status"></small></div><div id="skirmish-panel" class="skirmish-panel" hidden></div><div id="boss-panel">${bossHeaderMarkup()}<div class="boss-health-track" dir="ltr"><progress id="boss-health" max="1" value="1" aria-label="${text('ui.boss')}"></progress><div id="boss-phase-markers" aria-hidden="true"></div></div><p id="boss-phase-entry" class="boss-phase-entry" role="status" aria-live="polite" hidden></p><p id="boss-phase-note" class="boss-phase-note" role="status" aria-live="polite" hidden></p></div><div class="hud-actions"><button id="pause-button">Ⅱ <span>${text('ui.pause')}</span></button></div></div><div id="accord" class="accord" hidden></div><p id="signature-help" class="signature-help" role="status" aria-live="polite" hidden></p><div class="bottomline">${playerVitalsMarkup(classId,assets.portraits[classId],selectedCosmetic==='field-mark'?'':insignia(selectedCosmetic),t,assets.resourceIcons)}<div id="abilities" class="ability-list"></div><div id="squad" class="squad"></div></div></section><div id="modal" class="overlay" hidden></div><div id="pause-menu" class="overlay" hidden><section class="dialog"><h2>${text('ui.paused')}</h2><p id="pause-notice">${text(online ? 'ui.onlinePause' : 'ui.offlineNotice')}</p>${settingsMarkup()}<div class="actions"><button id="resume" class="primary">${text('ui.continue')}</button><button id="leave">${text('ui.leaveRoom')}</button></div></section></div><div class="touch-buttons"><button data-action="sprint" aria-pressed="false" hidden>${text('ui.sprint')}</button><button data-action="dodge">${text('ui.dodge')}</button><button data-action="q">Q</button><button data-action="e">E</button><button data-action="ultimate">${text('ui.ultimate')}</button><button data-action="interact">${text('ui.revive')}</button><button data-action="reload">${text('ui.reload')}</button></div><div class="portrait-note">${text('ui.portraitHint')}</div>`;
+  app.innerHTML = `<div id="stage" dir="ltr"></div><section class="hud" aria-label="${text('ui.health')}"><div class="topline"><div><strong id="encounter"></strong><small id="status" role="status"></small></div><div id="skirmish-panel" class="skirmish-panel" hidden></div><div id="boss-panel">${bossHeaderMarkup()}<div class="boss-health-track" dir="ltr"><progress id="boss-health" max="1" value="1" aria-label="${text('ui.boss')}"></progress><div id="boss-phase-markers" aria-hidden="true"></div></div><p id="boss-phase-entry" class="boss-phase-entry" role="status" aria-live="polite" hidden></p><p id="boss-phase-note" class="boss-phase-note" role="status" aria-live="polite" hidden></p></div><div class="hud-actions"><button id="pause-button">Ⅱ <span>${text('ui.pause')}</span></button></div></div><div id="accord" class="accord" hidden></div><p id="signature-help" class="signature-help" role="status" aria-live="polite" hidden></p><div class="bottomline">${playerVitalsMarkup(classId,assets.portraits[classId],selectedCosmetic==='field-mark'?'':insignia(selectedCosmetic),t,assets.resourceIcons)}<div id="abilities" class="ability-list"></div><div id="squad" class="squad"></div></div></section><div id="modal" class="overlay" hidden></div><div id="pause-menu" class="overlay" hidden><section class="dialog"><h2>${text('ui.paused')}</h2><p id="pause-notice">${text(online ? 'ui.onlinePause' : 'ui.offlineNotice')}</p>${settingsMarkup()}<div class="actions"><button id="resume" class="primary">${text('ui.continue')}</button><button id="leave">${text('ui.leaveRoom')}</button></div></section></div><div class="touch-buttons"><button data-action="sprint" aria-pressed="false" hidden>${text('ui.sprint')}</button><button data-action="dodge">${text('ui.dodge')}</button><button data-action="q">Q</button><button data-action="e">E</button><button data-action="technique1" hidden></button><button data-action="technique2" hidden></button><button data-action="ultimate">${text('ui.ultimate')}</button><button data-action="interact">${text('ui.revive')}</button><button data-action="reload">${text('ui.reload')}</button></div><div class="portrait-note">${text('ui.portraitHint')}</div>`;
   vitalsSizeObserver=new ResizeObserver(()=>{
     if (serial !== launchSerial) return;
     const top=$('player-name-label').closest('.player-vitals')!.getBoundingClientRect().top;
@@ -741,13 +742,15 @@ function update(view: View) {
   }else cadenceHost?.remove();
   const abilityList = $('abilities');
   const engineerQ=engineerQNameKey(p),engineerCharges=view.classCues.filter(c=>c.kind==='engineer-charge'&&c.owner===p.id&&c.state!=='spent'&&view.combatTick<c.until).length;
-  const qLabel=t(engineerQ?'skill.'+engineerQ+'.name':'ability.'+cl.abilities[0].id+'.name')+(engineerQ==='engineer-traps-1'?' '+number(engineerCharges)+'/'+number(data.rules.engineerPathways.chargeCapacity):'');
+  const machineryActions=engineerActions(p,view.classCues,view.combatTick);
+  const qLabel=t(machineryActions.qNameKey??(engineerQ?'skill.'+engineerQ+'.name':'ability.'+cl.abilities[0].id+'.name'))+(engineerQ==='engineer-traps-1'?' '+number(engineerCharges)+'/'+number(data.rules.engineerPathways.chargeCapacity):'');
+  for(const slot of ['technique1','technique2']){const shown=machineryActions.extras.some(a=>a.key===slot),touch=document.querySelector<HTMLElement>('[data-action="'+slot+'"]');if(touch)touch.hidden=!shown;if(!shown)abilityList.querySelector('[data-ability="'+slot+'"]')?.remove();}
   const sprintTouch=document.querySelector<HTMLElement>('[data-action="sprint"]');if(sprintTouch)sprintTouch.hidden=!p.skills.includes('general-sprint');
   if(!p.skills.includes('general-sprint'))abilityList.querySelector('[data-ability="sprint"]')?.remove();
   for (const [key, label, at, name] of [
     ['dodge', t('ui.dodge')+(p.dodgeMaximum>1?' '+number(p.dodgeCharges)+'/'+number(p.dodgeMaximum):''), p.dodgeCharges>0?0:p.dodgeAt, ''],
     ...(p.skills.includes('general-sprint')?[["sprint",t('ui.sprint')+' '+number(Math.floor(p.sprintStamina))+'%'+(p.sprintExhausted?' · '+t('ui.sprintRest'):''),0,t('skill.general-sprint.description')] as const]:[]),
-    ['q', qLabel, p.qAt, t(engineerQ?'skill.'+engineerQ+'.description':'ability.'+cl.abilities[0].id+'.name')],
+    ['q', qLabel, machineryActions.qAt, t(engineerQ?'skill.'+engineerQ+'.description':'ability.'+cl.abilities[0].id+'.name')],
     [
       'e',
       t('ability.' + cl.abilities[1].id + '.name') + (p.kit.stepCharges > 0 ? ' ×' + number(p.kit.stepCharges) : ''),
@@ -755,6 +758,7 @@ function update(view: View) {
       t('ability.' + cl.abilities[1].id + '.name'),
     ],
     ['ultimate', t('ability.' + cl.ultimate.id + '.name'), p.ultimateAt, t('ability.' + cl.ultimate.id + '.name')],
+    ...machineryActions.extras.map(a=>[a.key,t('skill.'+a.id+'.name'),a.at,t('skill.'+a.id+'.description')] as const),
   ] as const) {
     let e = abilityList.querySelector<HTMLElement>('[data-ability="' + key + '"]');
     if (!e) {
@@ -762,10 +766,10 @@ function update(view: View) {
       e.dataset.ability = key;
       abilityList.append(e);
     }
-    const rangerBlocked=rangerCommitBlocked(p,key,view.combatTick)||alchemyCommitBlocked(p,key,view.combatTick)||(key==='q'&&p.skills.includes('engineer-traps-1')&&view.classCues.filter(c=>c.kind==='engineer-charge'&&c.owner===p.id&&c.state!=='spent'&&view.combatTick<c.until).length>=data.rules.engineerPathways.chargeCapacity);
+    const rangerBlocked=(key==='q'&&machineryActions.qBlocked)||!!machineryActions.extras.find(a=>a.key===key)?.blocked||rangerCommitBlocked(p,key,view.combatTick)||alchemyCommitBlocked(p,key,view.combatTick)||(key==='q'&&p.skills.includes('engineer-traps-1')&&view.classCues.filter(c=>c.kind==='engineer-charge'&&c.owner===p.id&&c.state!=='spent'&&view.combatTick<c.until).length>=data.rules.engineerPathways.chargeCapacity);
     e.className = at <= view.combatTick && !(key==='sprint'&&p.sprintExhausted) && !rangerBlocked ? 'ability ready' : 'ability';
     e.title = name || label;
-    if(engineerQ&&key==='q')e.lang='en';else e.removeAttribute('lang');
+    if((engineerQ&&key==='q')||key==='technique1'||key==='technique2')e.lang='en';else e.removeAttribute('lang');
     const touch = document.querySelector<HTMLElement>('.touch-buttons [data-action="' + key + '"]');
     if (touch && touch.textContent !== label) touch.textContent = label;
     const value =

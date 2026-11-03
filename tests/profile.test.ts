@@ -212,7 +212,7 @@ test('protocol-12 Practice migration preserves the secret offer and personal sol
   delete save.settings.runId;
   delete save.player.progress;
   const restored = Game.restoreOffline(save);
-  assert.equal(PROTOCOL, 50);
+  assert.equal(PROTOCOL, 51);
   assert.equal(restored.phase, 'secretOffer');
   assert.deepEqual(restored.campaignBank, g.campaignBank);
   assert.deepEqual(restored.endless.state, g.endless.state);
@@ -279,9 +279,9 @@ test('storage failures and corrupt prior files preserve the previous profile byt
 test('bindings reject conflicts and reserved navigation, and touch/gamepad can share action names', () => {
   const controls = defaultControls();
   assert(validControls(controls));
-  const alt = rebind(controls, 'q', 0, 'KeyB')!;
+  const alt = rebind(controls, 'q', 0, 'KeyG')!;
   assert(alt);
-  assert.equal(alt.bindings.q[0], 'KeyB');
+  assert.equal(alt.bindings.q[0], 'KeyG');
   assert.equal(rebind(controls,'q',0,'KeyV'),null,'The retinue key remains owned until explicitly rebound');
   for (const code of ['Escape', 'Tab', 'F5', 'KeyR'])
     assert.equal(rebind(controls, 'q', 0, code), null);

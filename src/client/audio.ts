@@ -1,3 +1,4 @@
+import {isEngineerSound,playEngineerSound} from './engineer-sound.ts';
 import {isBellSound,playBellSound} from './bell-sound.ts';
 import {isBardSound,playBardSound} from './bard-sound.ts';
 import {isSwordSound,playSwordSound} from './sword-sound.ts';
@@ -100,6 +101,11 @@ export class AudioBus {
     const now = performance.now();
     if (now - (this.last.get(id) ?? -Infinity) < 60) return;
     this.last.set(id, now);
+    if(isEngineerSound(id)){
+      if(this.volume<=0)return;this.active++;
+      try{playEngineerSound(this.context,id,this.volume,()=>this.active--);}catch{this.active--;}
+      return;
+    }
     if(isAlchemySound(id)){
       if(this.volume<=0)return;this.active++;
       try{playAlchemySound(this.context,id,this.volume,()=>this.active--);}catch{this.active--;}

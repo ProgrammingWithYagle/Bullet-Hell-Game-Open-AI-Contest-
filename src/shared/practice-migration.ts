@@ -9,8 +9,8 @@ function migrateKnownPracticeBoundary(value: unknown): unknown {
   const oldPlayer=issued.player as Record<string,unknown>|undefined;
   // The issued two-pathway edition already owns its skills and chapter proofs.
   // A local safe boundary carries no live constructs; preserve that ownership.
-  if(issued.protocolVersion===49&&issued.contentRevision==='a6a17f1935ebd8e91d8d5916a7c8ee920190e13bc42a07e09dec98723e94390f'){
-    if(issued.schemaVersion!==1||issued.practiceOnly!==true||issued.serverOnly===true||issued.players!==undefined||issued.transactions!==undefined||JSON.stringify(issued).length>32768||!oldPlayer)throw Error('versionMismatch');
+  if([49,50].includes(issued.protocolVersion as number)&&issued.contentRevision==='a6a17f1935ebd8e91d8d5916a7c8ee920190e13bc42a07e09dec98723e94390f'){
+    if(issued.schemaVersion!==1||issued.practiceOnly!==true||issued.serverOnly===true||issued.players!==undefined||issued.transactions!==undefined||JSON.stringify(issued).length>32768||!oldPlayer||(Array.isArray(oldPlayer.skills)&&oldPlayer.skills.some(id=>catalog.specializationSkills.some(s=>s.id===id)&&!['engineer-machinery-1','engineer-traps-1'].includes(String(id)))))throw Error('versionMismatch');
     return {...issued,contentRevision:CONTENT_REVISION,protocolVersion:PROTOCOL};
   }
   if(issued.contentRevision!==CONTENT_REVISION&&Array.isArray(oldPlayer?.skills)&&oldPlayer.skills.some(id=>catalog.specializationSkills.some(node=>node.id===id)))throw Error('versionMismatch');

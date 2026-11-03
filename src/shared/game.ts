@@ -87,6 +87,7 @@ import { clerkAppealRules } from './clerk-appeal.ts';
 import { migratePracticeBoundary } from './practice-migration.ts';
 import { Minions, type MinionSpawn } from './minions.ts';
 import { BossDirector, type SignatureContext } from './boss-director.ts';
+import {specializationSpRequired} from './engineer-pathways.ts';
 import { conflictingSkill } from './skill-conflicts.ts';
 import { ClassKits, constructHit, type Construct, type KitContext } from './class-kits.ts';
 import { leaveClosingGates } from './civic-director.ts';
@@ -741,6 +742,7 @@ export class Game {
       if (this.settings.mode==='story'&&data.specializationSkills.some(s=>s.id===r.item)) return {ok:false,reason:'storyLearningRequired'};
       if (!s || p.skills.includes(s.id) || (s.prerequisite && !p.skills.includes(s.prerequisite)))
         return { ok: false, reason: 'prerequisite' };
+      if(p.totalSp<specializationSpRequired(r.item))return {ok:false,reason:'insufficientPoints'};
       if (s.capstone && p.skills.some((id) => allSkills.find((x) => x.id === id)!.capstone))
         return { ok: false, reason: 'capstoneMaximum' };
       const spent = p.skills.reduce((n, id) => n + allSkills.find((s) => s.id === id)!.cost, 0);
@@ -1217,7 +1219,7 @@ export class Game {
       if (p.pending.length) {
         const latest = p.pending.at(-1)!;
         const next = { ...latest };
-        for (const k of ['reload', 'dodge', 'q', 'e', 'ultimate'] as const)
+        for (const k of ['reload', 'dodge', 'q', 'e', 'ultimate','technique1','technique2'] as const)
           next[k] = p.pending.some((i) => i[k]);
         next.supply = p.pending.find((i) => i.supply >= 0)?.supply ?? -1;
         p.ack = latest.sequence;
@@ -1228,7 +1230,7 @@ export class Game {
         p.input = { ...idleInput(), sequence: p.ack, aim: p.aim };
       this.stepPlayer(p);
       // One-shot actions are consumed by the authoritative step, held movement/fire/interact persist briefly.
-      p.input.reload = p.input.dodge = p.input.q = p.input.e = p.input.ultimate = false;
+      p.input.reload = p.input.dodge = p.input.q = p.input.e = p.input.ultimate = p.input.technique1 = p.input.technique2 = false;
       p.input.supply = -1;
     }
     this.grid.clear();
@@ -1531,7 +1533,11 @@ export class Game {
     p.y = next.y;
     if (i.reload && now >= p.overdriveUntil && !p.reloadAt && p.ammo < stats.magazine && (p.classId!=='ranger'||this.ranger.canPrimary(p,this.rangerContext())) && (p.classId!=='alchemist'||this.alchemy.canPrimary(p,this.alchemyContext())))
       this.reload(p);
-    if (i.q && now >= p.qAt) this.ability(p, 'q');
+    if(i.q){
+      if(now>=p.qAt)this.ability(p,'q');
+      else this.classKits.commandEngineer(p,this.kitContext());
+    }
+    for(const slot of ['technique1','technique2'] as const)if(i[slot])this.classKits.castEngineer(p,slot,this.kitContext());
     if (i.e && (now >= p.eAt || this.classKits.freeStep(p.id, now))) this.ability(p, 'e');
     if (i.ultimate && now >= p.ultimateAt) this.ability(p, 'ultimate');
     if (i.fire && !p.reloadAt && (p.classId!=='ranger'||this.ranger.canPrimary(p,this.rangerContext())) && (p.classId!=='alchemist'||this.alchemy.canPrimary(p,this.alchemyContext()))) {
@@ -2285,6 +2291,7 @@ export class Game {
       obstacles: this.obstacles,
       terrain: {bounds:this.arena.bounds,lava:this.arena.lavaPits},
       get targets(){return targets??=game.rangerTargets();},
+      sound:(id,owner)=>this.events.push({type:'sound',id,owner:owner.id,x:owner.x,y:owner.y}),
       boss: this.boss,
       minions: this.minions,
       stats: (p) => this.stats(p),
@@ -3398,7 +3405,7 @@ export class Game {
     const owned = new Set<string>();
     for (const id of p.skills) {
       const node = skillFor(id,p.classId);
-      if (!node || conflictingSkill([...owned],id) || (g.settings.mode==='story'&&data.specializationSkills.some(s=>s.id===id)) || (node.prerequisite && !owned.has(node.prerequisite)))
+      if (!node || p.totalSp<specializationSpRequired(id) || conflictingSkill([...owned],id) || (g.settings.mode==='story'&&data.specializationSkills.some(s=>s.id===id)) || (node.prerequisite && !owned.has(node.prerequisite)))
         throw Error('invalidBuild');
       spent += node.cost;
       capstones += Number(node.capstone);

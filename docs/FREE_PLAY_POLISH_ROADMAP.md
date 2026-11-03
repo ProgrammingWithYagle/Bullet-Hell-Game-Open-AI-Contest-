@@ -1,6 +1,6 @@
 # Grave Accord — Free Play polish roadmap
 
-Updated 2026-11-02. This is the active development order requested by the user. It supersedes earlier recommendations to continue Campaign/Service Yard next and any stale priority text in the completion ledger. It records work to do, without awarding completion credit.
+Updated 2026-11-03. This is the active development order requested by the user. It supersedes earlier recommendations to continue Campaign/Service Yard next and any stale priority text in the completion ledger. It records work to do, without awarding completion credit.
 
 Finish one coherent area before opening the next. Use the public-release-era game's clarity and restraint as a quality reference; preserve later useful work while resolving regressions in the area being polished. Do not roll back the checkout or assume the old public deployment proves current behavior.
 
@@ -20,9 +20,9 @@ There are no invented dates or promises of final balance. Automated checks estab
 
 ## First focus: finish the class system through Engineer
 
-First runtime slice: [CLASS_TREE_POLISH.md](CLASS_TREE_POLISH.md), build2026.11.02-class-tree-polish/protocol50, implements the General/Specializations separation and fixes the reproduced sentry-aiming fault. Its full local gate passes1,272tests. Engineer still needs a third pathway, internal forks, later decisions and separate human acceptance; this does not complete order1.
+First runtime slice: [CLASS_TREE_POLISH.md](CLASS_TREE_POLISH.md), build2026.11.02-class-tree-polish/protocol50, implements the General/Specializations separation and fixes the reproduced sentry-aiming fault. Its full local gate passes1,272tests. The newer [Machinery slice](ENGINEER_MACHINERY.md), build2026.11.03-machinery-progression/protocol51, adds its real control fork, earned fourth/fifth actions, late evolutions, painted emblems and an authored field manual. Its final local gate passes1,296tests. Engineer still needs complete Traps, a third pathway and separate human acceptance; order1 remains active.
 
-The current playable Engineer pilot has two mutually exclusive Q techniques, Carriage Sentry and Pressure Charges. It is an implemented comparison, not a finished three-path tree. The first deliverables are deliberately sequential:
+The current Engineer has two mutually exclusive Q entry techniques, Carriage Sentry and Pressure Charges, plus six Machinery upgrades. It is an implemented comparison, not a finished three-path tree. The first deliverables are deliberately sequential:
 
 1. **Finish the research and design.** Audit current choices and ownership, study developer examples, specify General/Specializations separation and a genuine graph. See [the research and design](SKILL_TREE_RESEARCH.md). This document and that brief are planning work; they do not change the game.
 2. **Separate the screens safely.** General contains the existing numerical class foundations and shared mobility. Specializations gets a dedicated tree and inspector. Retain every issued ID, price, prerequisite and owned effect. Audit the existing functional transformations before moving their presentation; each has one authoritative purchase. Campaign's current training screen remains its own slow-acquisition view.
@@ -34,11 +34,11 @@ No new Campaign chapter, class roster, boss roster or broad art replacement is p
 
 ## Class queue and three proposed specializations each
 
-Every row below is a design target, not a claim of implemented content. Three strong pathways are the minimum. A fourth belongs only where it adds a different decision loop; it is not filler to make the table larger. Each path needs internal choices, rather than one new ability card.
+Every row below is a design target, not a claim of implemented content. Three strong pathways are the minimum. A fourth belongs only where it adds a different decision loop; it is not filler to make the table larger. Each path needs internal choices, rather than one new ability card. Later progression must expand the usable kit and qualitatively evolve its abilities; numerical foundations remain in General.
 
 | Queue | Class | Three pathway concepts | Decisions that must differ |
 | --- | --- | --- | --- |
-| 1 | Engineer | Machinery / Traps / Field Works | Reposition and commit machines; anticipate and trigger ground threats; construct finite useful positions and passages. Machinery/Traps have two live entry techniques; Field Works and the fuller graph are proposed. |
+| 1 | Engineer | Machinery / Traps / Field Works | Reposition and commit machines; anticipate and trigger ground threats; construct finite useful positions and passages. Machinery has a real control fork, Coil/Prism/Salvage/Convergence progression and new active actions. Traps has its entry; its full route and Field Works remain unfinished. |
 | 2 | Soldier | Skirmisher / Squad Command / Field Logistics | Move between firing windows; coordinate owned rally windows that also work solo; choose where and when to commit limited ammunition support. |
 | 3 | Heavy | Siege Gunner / Suppressor / Armored Anchor | Commit a firing lane; deny approaches through sustained fire; hold an operating position with a real mobility cost. |
 | 4 | Tank | Mobile Bulwark / Interceptor / Bastion | Escort while moving; deliberately intercept legal threats; establish a temporary held position. Fixed boss threats and difficulty restrictions stay authoritative. |

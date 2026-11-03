@@ -1,5 +1,7 @@
 # The Service Yard — second-chapter candidate
 
+**Current Free Play slice:** [Engineer Machinery](ENGINEER_MACHINERY.md), protocol51, passes1,296runtime tests. This Service Yard patch remains unchanged, unregistered, unselectable and outside that count, with its original four passes/one failure. Campaign remains last in the roadmap; no story work was applied.
+
 **Scheduling update:** Campaign is the final phase of [FREE_PLAY_POLISH_ROADMAP.md](FREE_PLAY_POLISH_ROADMAP.md). This WIP is preserved, not the next active slice. Current work is Free Play class-tree/Engineer polish, then the remaining classes and bosses individually. The old requested-handoff pause below is historical; the full development goal remains active.
 
 Current continuation: General/Specializations and the sentry aiming fix are verified at a63533a / protocol50,1,272tests; see [CLASS_TREE_POLISH.md](CLASS_TREE_POLISH.md). The earlier two-choice pilot was ab8e4b3/protocol49; see [ENGINEER_PATHWAYS.md](ENGINEER_PATHWAYS.md) and the current handoff. This Service Yard candidate remains unintegrated, with its original4pass/1fail WIP intact. The dated checkpoint below describes its preservation boundary.

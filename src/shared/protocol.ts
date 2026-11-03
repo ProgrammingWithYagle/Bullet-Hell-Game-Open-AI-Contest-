@@ -1,5 +1,5 @@
 import revision from '../../content/revision.json' with { type: 'json' };
-export const PROTOCOL = 50;
+export const PROTOCOL = 51;
 export type BossVariant = 'normal' | 'brutal' | 'crazed';
 export const CONTENT_REVISION = revision.sha256;
 export const HZ = 30,
@@ -114,6 +114,8 @@ export type InputFrame = {
   q: boolean;
   e: boolean;
   ultimate: boolean;
+  technique1: boolean;
+  technique2: boolean;
   interact: boolean;
   supply: number;
 };
@@ -130,10 +132,12 @@ export const idleInput = (): InputFrame => ({
   q: false,
   e: false,
   ultimate: false,
+  technique1: false,
+  technique2: false,
   interact: false,
   supply: -1,
 });
-const booleans = ['fire', 'reload', 'dodge', 'sprint', 'q', 'e', 'ultimate', 'interact'] as const;
+const booleans = ['fire', 'reload', 'dodge', 'sprint', 'q', 'e', 'ultimate', 'technique1', 'technique2', 'interact'] as const;
 const inputKeys = new Set(Object.keys(idleInput()));
 export function validInput(x: unknown): x is InputFrame {
   if (!x || typeof x !== 'object' || Array.isArray(x)) return false;
