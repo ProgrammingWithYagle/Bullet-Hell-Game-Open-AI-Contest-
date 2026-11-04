@@ -10,6 +10,15 @@ Audit the overlap between coin-shop upgrades and the General skill tree before r
 
 The user's meaning test applies throughout the shop: ordinary stat improvements are useful support, but the whole shop must not reduce to percentage increases. Every purchase needs a clear role and noticeable use; later development should include decisions, interactions, commitments and qualitative ability changes. Do not use renamed numbers as a substitute for distinct mechanics.
 
+For the later redesign, review each proposed purchase against these concrete questions:
+
+- What can the player do differently after buying it, or which clear play style does its numerical improvement support?
+- When would the player choose it over another use of the same money? Show the commitment, limit or tradeoff that makes that choice matter.
+- Does the player already own this benefit through General, a specialization or another item? Remove redundant payment before adding another upgrade track.
+- Does the shop show the actual current-to-next result for this weapon/build, including caps and prerequisites? A purchase that has reached an effect cap must not promise an improvement it cannot deliver.
+
+Weapon development should include noticeable handling or behavior milestones alongside useful stat tuning. Supplies and field equipment should offer deliberate preparation and limited actions. General and specializations retain their own progression roles. These are design criteria for the queued overhaul, not a new item roster or implemented shop behavior. Judge the finished shop by useful choices in play rather than its item count.
+
 Preserve all issued weapon IDs, owned equipment, upgrade investment, balances, local profiles/checkpoints and online ownership through deliberate migrations. The new sequential rule must not silently delete or invalidate historically legitimate higher-tier equipment. Migration and future progression rules need explicit tests; imported local receipts never become online authority.
 
 Campaign keeps slow learned/proven/prepared advancement, scarce resources, no SP and no mutations. Future high-grade equipment must fit authored access and continuity rather than promote recent entrants to SS+ in a few chapters. Free Play remains the rapid build/customization environment. Share actual weapon techniques/simulation while admitting them differently in the two modes.
