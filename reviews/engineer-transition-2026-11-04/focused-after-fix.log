@@ -1,0 +1,36 @@
+✔ offline checkpoint round-trip preserves purchased power, rewards, voting timers and deterministic choices (15.8956ms)
+✔ restoring resets the input sequence so a new client can move without replaying stale combat input (3.0325ms)
+✔ malformed, stale, cross-class, over-budget and incompatible boundary saves are rejected (4.2211ms)
+✔ soldier starts each fresh encounter ready to fire and keeps identical held-fire results after any safe intermission restore (71.5515ms)
+✔ medic starts each fresh encounter ready to fire and keeps identical held-fire results after any safe intermission restore (31.7042ms)
+✔ heavy starts each fresh encounter ready to fire and keeps identical held-fire results after any safe intermission restore (28.3332ms)
+✔ tank starts each fresh encounter ready to fire and keeps identical held-fire results after any safe intermission restore (28.6932ms)
+✔ mage starts each fresh encounter ready to fire and keeps identical held-fire results after any safe intermission restore (19.7249ms)
+✔ engineer starts each fresh encounter ready to fire and keeps identical held-fire results after any safe intermission restore (19.0341ms)
+✔ assassin starts each fresh encounter ready to fire and keeps identical held-fire results after any safe intermission restore (18.761ms)
+✔ bard starts each fresh encounter ready to fire and keeps identical held-fire results after any safe intermission restore (18.3157ms)
+✔ swordsman starts each fresh encounter ready to fire and keeps identical held-fire results after any safe intermission restore (21.4782ms)
+✔ summoner starts each fresh encounter ready to fire and keeps identical held-fire results after any safe intermission restore (19.1045ms)
+✔ ranger starts each fresh encounter ready to fire and keeps identical held-fire results after any safe intermission restore (21.0029ms)
+✔ alchemist starts each fresh encounter ready to fire and keeps identical held-fire results after any safe intermission restore (22.4315ms)
+✔ Fresh primary readiness never refreshes Engineer Q, E or ultimate recovery or reconstructs prior work (13.4205ms)
+✔ A last-zone slow cannot cross a fresh encounter or change movement after any safe intermission restore (47.957ms)
+✔ The actual zone slow still reduces movement during the current encounter and expires on its ordinary combat clock (6.2524ms)
+✔ General purchases use existing earned SP for all twelve classes without adding class nodes or granting free build points (10.8147ms)
+✔ Double Dash recharges serially, preserves the original cooldown, cannot overlap a dash or create extra invulnerability (33.3323ms)
+✔ Sprint has bounded stamina, exhaustion hysteresis and delayed recovery; ordinary combat actions and locked purchases cannot sprint (0.4093ms)
+✔ movement authority and prediction agree across all classes and maps, including Hellish, terrain slows, Sprint and two dash charges (2146.0264ms)
+✔ current and known old local saves preserve builds/economy; old online revisions stay strict and new input requires Sprint boolean (7.9039ms)
+✔ old custom controls gain unused Sprint bindings while keeping every prior choice; malformed/current missing fields are not silently repaired (2.0535ms)
+✔ Sprint keyboard, gamepad and touch support hold/toggle, quick taps, cancel, blocked focus and blur without leaking input (1.9825ms)
+✔ both skill views expose shared purchases with written costs and localized descriptions; inspecting does not spend (826.0379ms)
+✔ actual peers purchase General skills through the server, replicate stamina and dash charges, and host pause freezes resources (867.1793ms)
+✔ authoritative multiplayer boundaries retain different General investments per participant and rebuild only legal movement resources (10.2355ms)
+ℹ tests 28
+ℹ suites 0
+ℹ pass 28
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7473.2865

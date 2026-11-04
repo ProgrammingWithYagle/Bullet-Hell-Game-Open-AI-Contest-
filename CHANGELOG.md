@@ -1,6 +1,13 @@
 # Changelog
 
-Development build **2026.11.04-engineer-replay-polish**, protocol 54. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.04-engineer-transition-polish**, protocol 54. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-04 — Leave old hazards behind
+
+### A fresh start after the interval
+
+- A new encounter now clears the previous encounter's brief hostile-zone slowdown before movement begins. Continuing and resuming receive the same fresh movement state.
+- Hazard slows still affect movement during combat and expire on their normal clock. Primary readiness, Q/E/ultimate recovery, purchases and build choices retain their intended behavior.
 
 ## 2026-11-04 — Ready for the next encounter
 

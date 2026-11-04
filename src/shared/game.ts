@@ -920,6 +920,7 @@ export class Game {
       if(this.chapterState&&!p.connected){p.status='waiting';p.eligible=false;continue;}
       p.status = 'active';
       this.clearPoison(p);
+      p.slowUntil = 0;
       p.eligible = true;
       if (p.progress.firstEncounter < 0) p.progress.firstEncounter = this.encounter;
       p.totalSp = Math.max(p.totalSp, this.skillBudget(this.encounter));
