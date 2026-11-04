@@ -846,6 +846,7 @@ export class Game {
     if (this.secretStatus === 'active') this.secretStatus = 'failed';
     this.phase = 'defeat'; this.phaseEnds = 0; this.boss.defeatedAt = 0;
     this.chapterState?.fail();this.wardPatients.clear();
+    this.classKits.clear();
     this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.alchemy.clear();
     if(this.chapterState){this.skirmish?.fail();this.clearChapterCombat();}
     return true;

@@ -1,6 +1,18 @@
 # Changelog
 
-Development build **2026.11.03-engineer-builder**, protocol 54. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.04-engineer-exit-polish**, protocol 54. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-04 — A clean end to constructed work
+
+### End the run cleanly
+
+- Ending a live run through the host control now removes Engineer machines, charges, panels, folding plans and committed repairs from the final view. Other class-kit work is cleared by the same shared cleanup.
+- Paused host ending still requires the owner. Peers and already connected late observers receive the final clean state; ending keeps earned purchases and balances and does not create a resumable defeated boundary.
+
+### Keep the class focus
+
+- Machinery, Traps and Builder retain their22techniques, costs, geometry, finite work windows and27-SP/one-capstone budget. No new content, acquisition rules or save version is introduced.
+- This fixes a reproduced exit defect found during the whole Engineer loop assessment. Complete seeded run/replay, human enjoyment, rendered/device/native-language/listening and final balance remain open; other classes and the later shop overhaul remain future focused work.
 
 ## 2026-11-03 — Cover worth tending
 

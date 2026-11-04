@@ -1,0 +1,11 @@
+# Whole Engineer run and replay review
+
+The three-path Builder source d3de8ed/protocol54passes1,370tests and exact source CI, with matching5328/5329native reviews. Its metadata648b337changes documentation/evidence only. The whole Engineer run/replay assessment remains the current focus before Soldier. The other eleven proposed class rosters and later weapon/shop overhaul remain unfinished.
+
+The first exit audit found a concrete defect: Game.endByHost cleared several specialist controllers but omitted ClassKits. As a result, machinery, pending coils, pressure charges, Builder panels, folding plans and repair work remained in the final defeat snapshot. The candidate adds the existing ClassKits.clear cleanup to that host-end boundary. It preserves purchases, balances, fixed inputs and the existing rule that an ended room locks new admission. Existing late observers receive the clean final snapshot.
+
+Five failing regressions are preserved under reviews/engineer-run-exit-2026-11-04 before the fix. The focused post-fix group passes17checks, including all three Engineer identities, committed maintenance, paused owner/non-owner behavior, existing host lifecycle and Builder integration. The complete gate, exact-source CI and fresh matching review evidence are separate pending gates. This document does not declare a new verified playable source until those receipts exist.
+
+Next assess buying/inspection, actual combat, ordinary reward acquisition, General/legacy synergies, mutation/contract choices, pause, exact boundary restoration, completion and same-seed replay across early/middle/late legal builds. Reuse actual simulation and acquisition rules. Distinguish controlled transition fixtures from autonomous full clears, real room transport from WAN, and automated evidence from human enjoyment/rendering/device/native-language/listening/motion/final balance. A passing narrow fixture cannot close this entire checklist.
+
+No catalog content, assets, costs, grades, progression budgets, protocol or ownership migration change in this exit fix. Campaign remains slow learned/proven/prepared with no SP or mutations, and stays last. Service Yard remains its unchanged unregistered four-pass/one-failure WIP. Older previews and private SQLite files remain preserved.
