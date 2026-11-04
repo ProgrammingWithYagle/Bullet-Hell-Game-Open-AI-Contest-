@@ -1505,7 +1505,7 @@ export class Game {
       p.dodgeControlUntil=p.dashUntil;
       p.invulnerableUntil = now + ticks(rule.dodgeInvulnerability);
 
-      if(p.classId==='soldier')this.skirmisher.stopLoading(p.id);
+      if(p.classId==='soldier')this.skirmisher.interrupt(p.id);
       this.events.push({ type: 'sound', id: 'dodge', x: p.x, y: p.y });
     }
     const rally = Math.max(
@@ -1575,7 +1575,7 @@ export class Game {
     p.wasFiring = i.fire && !p.reloadAt && !loading;
   }
   private reload(p: Player) {
-    if(p.classId==='soldier')this.skirmisher.stopLoading(p.id);
+    if(p.classId==='soldier')this.skirmisher.interrupt(p.id);
     if(p.classId==='alchemist')this.events.push({type:'sound',id:'alchemy-refill',owner:p.id,x:p.x,y:p.y});
     if(p.classId==='ranger')this.events.push({type:'sound',id:'ranger-replenish',owner:p.id,x:p.x,y:p.y});
     const w = data.weapons.find((w) => w.id === p.weapon)!;
@@ -1978,7 +1978,7 @@ export class Game {
     p.shield -= blocked;
     const actual = Math.min(p.health, afterKit - blocked);
     p.health -= actual;
-    if(actual>0&&p.classId==='soldier')this.skirmisher.stopLoading(p.id);
+    if(actual>0&&p.classId==='soldier')this.skirmisher.interrupt(p.id);
     p.damageTaken += actual;
     this.scoreObserver?.damage(p.id, actual);
     if (grantInvulnerability) p.invulnerableUntil = this.combatTick + ticks(0.2);
@@ -2013,7 +2013,7 @@ export class Game {
     if (first) {
       const loss = p.health * clerkAppealRules.purpleCurrentHealthFraction;
       p.health -= loss;
-      if(loss>0&&p.classId==='soldier')this.skirmisher.stopLoading(p.id);
+      if(loss>0&&p.classId==='soldier')this.skirmisher.interrupt(p.id);
       p.damageTaken += loss;
       this.scoreObserver?.damage(p.id, loss);
     }
@@ -2033,7 +2033,7 @@ export class Game {
     // Its once-per-seal budget lives in the Clerk controller; it never downs by itself.
     const actual = Math.min(p.health * fraction, Math.max(0,p.health-minimumHealth));
     p.health -= actual;
-    if(actual>0&&p.classId==='soldier')this.skirmisher.stopLoading(p.id);
+    if(actual>0&&p.classId==='soldier')this.skirmisher.interrupt(p.id);
     p.damageTaken += actual;
     this.scoreObserver?.damage(p.id, actual);
     p.invulnerableUntil = this.combatTick + ticks(0.2);

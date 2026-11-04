@@ -20,6 +20,8 @@ const controlsByTechnique: Record<string, readonly KitAction[]> = {
   'soldier-skirmisher-rear-1':['technique1'],
   'soldier-skirmisher-drill-1':['technique2'],
   'soldier-skirmisher-roving-1':['technique2','e','technique1'],
+  'soldier-skirmisher-ready-1':['technique2','technique1','e'],
+  'soldier-skirmisher-volley-1':['technique2','technique1','e'],
   "engineer-machinery-1": ["q"],
   [machineryIds.anchor]: ["q"],
   [machineryIds.survey]: ["q"],

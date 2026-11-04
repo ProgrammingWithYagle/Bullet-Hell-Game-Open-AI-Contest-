@@ -1,7 +1,11 @@
 import { data } from "../../shared/game.ts";
 import type { PlayerView } from "../../shared/view.ts";
 import { skirmisherIds as ids } from "../../shared/soldier-skirmisher.ts";
-import { soldierActionId, soldierLoadId } from "../soldier-actions.ts";
+import {
+  soldierActionId,
+  soldierLoadId,
+  soldierPaidStepAvailable,
+} from "../soldier-actions.ts";
 import type { ControlOptions } from "../input-bindings.ts";
 import { actionLabel } from "./control-settings.ts";
 import { bindingMarkup } from "./engineer-controls.ts";
@@ -75,7 +79,15 @@ export function soldierKitMarkup(
     '" dir="auto">' +
     e(t("ui.equipped")) +
     '</small></summary><p lang="en" dir="ltr">' +
-    e(help + loadHelp) +
+    e(
+      help +
+        loadHelp +
+        (p.skills.includes(ids.volley)
+          ? " " + t("ui.soldier.volleyHelp")
+          : p.skills.includes(ids.ready)
+            ? " " + t("ui.soldier.readyHelp")
+            : ""),
+    ) +
     "</p><ul>" +
     rows
       .map(
@@ -124,14 +136,46 @@ export function soldierHudLabel(p: PlayerView, key: string, now: number) {
     );
   }
   const name = t("skill." + soldierActionId(p) + ".name"),
-    window = p.kit.soldierFollowupUntil ?? 0;
-  return (
-    name +
-    (window > now && (p.kit.soldierStepUntil ?? 0) <= now
-      ? " · " +
-        t("ui.soldier.opening", {
-          seconds: number(Number(((window - now) / 30).toFixed(1))),
-        })
-      : "")
-  );
+    window = p.kit.soldierFollowupUntil ?? 0,
+    recovery = p.kit.technique1At ?? 0;
+  if ((p.kit.soldierStepUntil ?? 0) > now) return name;
+  if (
+    (p.kit.soldierStepRejectUntil ?? 0) > now &&
+    p.kit.soldierStepRejectReason
+  )
+    return (
+      name +
+      " · " +
+      t(
+        {
+          ground: "ui.soldier.rejectGround",
+          direction: "ui.soldier.rejectDirection",
+          ammunition: "ui.soldier.rejectAmmunition",
+        }[p.kit.soldierStepRejectReason],
+      )
+    );
+  if (window > now && recovery <= now)
+    return (
+      name +
+      " · " +
+      t("ui.soldier.opening", {
+        seconds: number(Number(((window - now) / 30).toFixed(1))),
+      })
+    );
+  if (soldierPaidStepAvailable(p, now))
+    return (
+      name +
+      " · " +
+      t(
+        p.kit.soldierReadyRelay
+          ? "ui.soldier.relayOpening"
+          : "ui.soldier.paidOpening",
+        {
+          seconds: number(
+            Number(((p.kit.soldierReadyUntil! - now) / 30).toFixed(1)),
+          ),
+        },
+      )
+    );
+  return name;
 }

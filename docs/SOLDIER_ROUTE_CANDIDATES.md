@@ -1,0 +1,24 @@
+# Soldier route candidates — an open roster
+
+User direction, 2026-11-04: Foot Soldier, Marksman, Sniper and Hunter are welcome Soldier candidates. There is **no fixed maximum** for Soldier or any other class. The earlier three-route target is an initial coverage milestone, not a completion criterion or a ceiling. Add further fitting pathways when they offer a distinctive combat loop. Continue one coherent, polished slice at a time.
+
+These are working designs, not implemented or final routes. See [SOLDIER_SPECIALIZATIONS.md](SOLDIER_SPECIALIZATIONS.md) for the exact verified source and actual mechanics. The existing Skirmisher IDs, ownership and useful foundations remain. A name by itself does not justify another paid entry.
+
+| Candidate | Decisions to explore | Distinction to establish before implementation |
+| --- | --- | --- |
+| Skirmisher | Burst, commit to vulnerable movement, load selected rounds and coordinate follow-ups | Existing movement/loading region. Finish its current later-kit verification, then assess it in whole-class combinations. |
+| Foot Soldier | Hold or advance a firing line; choose positions for sustained fighting and guarded preparation | Needs a position/line-control loop that differs from Skirmisher's short movement commitments. It may instead become a broader name for an infantry family if a separate route would duplicate the same choices. |
+| Marksman | Maintain useful aim while moving; choose priority targets and follow-up shots | Mobile precision and target sequences, with real decisions beyond accuracy/critical percentages. It must differ from both Skirmisher movement and Sniper setup. |
+| Sniper | Prepare a position, establish line of sight and commit to a decisive shot | Setup, vulnerability, timing and actual projectile/weak-point behavior. It must work with the issued equipment system and shared simulation; a stronger damage number does not make the route. |
+| Hunter | Pursue a dangerous target; choose when to press, cut off or change the pursuit | A Soldier-specific firearm/pursuit loop, useful solo and in a party. Compare it with Assassin mark/pursuit concepts and the existing Ranger's charged bow, traps and survey so it earns a separate role. |
+| Officer / Squad Command | Issue useful personal/field orders and coordinate finite attack or rally windows | Preserve other players' control, solo usefulness and the issued Rally Field/Marching Colors benefits. No second payment for an already owned operation. |
+| Grenadier | Place a thrown attack through aim, fuse timing and movement; prepare the next approach | Direct thrown-explosive handling must differ from Engineer machinery/placed traps. Resolve compatibility with already owned burst transformations before selling an E variant. |
+| Field Support / Logistics | Reserve and place finite ammunition/equipment support; decide timing and stock use | Preserve Supply Line and ordinary reload/supplies. No infinite resources, farming loops or compulsory idle allies; useful personal operation as well as co-op. |
+
+The roster stays open beyond these examples. Similar candidates should be combined, differentiated or revised during actual design rather than shipped as duplicate purchases. The first useful comparison after the current Skirmisher slice is Marksman versus Sniper: mobile precision versus committed preparation. Choose and build one initial playable route, then assess the next. Foot Soldier and Hunter remain active candidates, alongside Command, Grenadier and Support; none is ruled out by the old three/four-route vocabulary.
+
+For each candidate, specify its early affordable identity, later interactions, useful internal alternatives, a qualitative culmination, real costs/limits and compatibility with issued General transformations. Keep the 27-SP budget and one-capstone rule until tested evidence justifies changing them. More available routes means more replay/build choices, not automatic access to everything in one run. Use authored region layouts, actual prerequisite/exclusion navigation, clear inspection and owned remapped controls rather than empty proposed cards.
+
+Campaign remains last and slow learned/proven/prepared, with scarce resources, no SP or mutations and no rapid SS+ promotion. Soldier is a shared discipline; Mara and the other leads are recent entrants. Any story connection needs authored work, learning and proof, preserving shown continuity. This proposal creates no Campaign lesson, reputation, promotion or completed personal arc. Free Play shares actual techniques/simulation but acquires them differently.
+
+Human enjoyment, rendered presentation, devices, native language, listening, motion and final balance remain separate from automated source/network/migration evidence. Reaching three routes does not finish a class or the whole game. Only the user decides when the full game is finished.

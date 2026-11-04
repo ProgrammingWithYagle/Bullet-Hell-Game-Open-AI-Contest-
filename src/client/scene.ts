@@ -881,8 +881,21 @@ export class CombatScene extends Phaser.Scene {
         }
         continue;
       }
+      if(cue.kind==='soldier-step-reject'){
+        const local=cue.owner===this.localId,color=0xbba680;
+        if(cue.reason==='ground')h.lineStyle(1,color,local?.6:.25).lineBetween(cue.x,cue.y,cue.toX,cue.toY).strokeCircle(cue.toX,cue.toY,cue.radius);
+        else {const x=cue.x,y=cue.y-cue.radius-6;h.lineStyle(2,color,local?.7:.3).lineBetween(x-3,y-3,x+3,y+3).lineBetween(x+3,y-3,x-3,y+3);}
+        continue;
+      }
+      if(cue.kind==='soldier-ready'){
+        const local=cue.owner===this.localId,color=cue.relay?0xdfc18b:0xbfcdb8,x=cue.x,y=cue.y-cue.radius;
+        // Stationary one/two-leg chevrons: no extra full ring, flash or particles.
+        h.lineStyle(2,color,local?.85:.4).lineBetween(x-5,y-3,x,y).lineBetween(x,y,x+5,y-3);
+        if(cue.relay)h.lineBetween(x-5,y+2,x,y+5).lineBetween(x,y+5,x+5,y+2);
+        continue;
+      }
       if(cue.kind==='soldier-step'){
-        const local=cue.owner===this.localId,color=cue.mode==='rear'?0xb9cbbd:0xa5bdcf;
+        const local=cue.owner===this.localId,color=cue.loaded?(cue.relay?0xdfc18b:0xbfcdb8):cue.mode==='rear'?0xb9cbbd:0xa5bdcf;
         if(cue.mode==='rear'){
           const mid=Math.ceil((cue.until-cue.at)/2)/(cue.until-cue.at),x=cue.x+(cue.toX-cue.x)*mid,y=cue.y+(cue.toY-cue.y)*mid;
           h.lineStyle(skirmisherRules.guardRadius*2,color,local?.08:.035).lineBetween(x,y,x+Math.cos(cue.aim)*skirmisherRules.guardReach,y+Math.sin(cue.aim)*skirmisherRules.guardReach);

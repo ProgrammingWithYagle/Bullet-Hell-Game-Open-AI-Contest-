@@ -1,6 +1,8 @@
+import {soldierVolleyMessages}from'./soldier-volley.mjs';
 import {soldierReloadMessages}from'./soldier-reload.mjs';
 export const soldierSkirmisherMessages = () => ({
   ...soldierReloadMessages(),
+  ...soldierVolleyMessages(),
   "branch.soldier-pathways": "Specializations",
   "pathway.soldier-skirmisher-1.name": "Skirmisher",
   "skill.soldier-skirmisher-1.name": "Passing Shot",

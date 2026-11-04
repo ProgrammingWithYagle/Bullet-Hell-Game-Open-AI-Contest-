@@ -12,7 +12,11 @@ The first runtime polish slice separated General/Specializations and corrected s
 
 The user's latest direction is one area at a time: Free Play classes, then bosses, then the remaining Free Play loop, with Campaign last. [FREE_PLAY_POLISH_ROADMAP.md](FREE_PLAY_POLISH_ROADMAP.md) is the current sequence; [SKILL_TREE_RESEARCH.md](SKILL_TREE_RESEARCH.md) records the actual topology audit, developer references and the new graph design. They supersede earlier Campaign-next recommendations.
 
-Keep the current numerical class tree and shared techniques under General. Specializations is a new dedicated tree with real forks, purposeful joins and compatible hybrids. Target at least three distinctive specializations per class; do not mass-generate new nodes. Engineer's developed Machinery, Traps and **Builder** routes now have scoped whole-class seeded run/replay and targeted Traps control assessment. Continue with Soldier as the next single class; see SOLDIER_SPECIALIZATIONS.md. Builder implements the user's barrier/construction identity and replaces the provisional Field Works name. Its committed cover/repair/relocation/redoubt mechanics have scoped automated evidence, with whole human acceptance still open. Other proposed pathway rosters remain unimplemented. The broader names and mechanics below remain proposals. The [weapon workshop/shop overhaul](ARMORY_REWORK_IDEAS.md) is queued later: every purchase needs meaning, with useful statistics supporting qualitative choices.
+Keep the current numerical class tree and shared techniques under General. Specializations is a new dedicated tree with real forks, purposeful joins and compatible hybrids. At least three distinctive specializations is an initial coverage milestone for each class. There is no fixed maximum: add further fitting routes with distinctive combat loops, one polished slice at a time. Engineer's developed Machinery, Traps and **Builder** routes now have scoped whole-class seeded run/replay and targeted Traps control assessment. Continue with Soldier as the next single class; see SOLDIER_SPECIALIZATIONS.md. Builder implements the user's barrier/construction identity and replaces the provisional Field Works name. Its committed cover/repair/relocation/redoubt mechanics have scoped automated evidence, with whole human acceptance still open. Other proposed pathway rosters remain unimplemented. The broader names and mechanics below remain proposals. The [weapon workshop/shop overhaul](ARMORY_REWORK_IDEAS.md) is queued later: every purchase needs meaning, with useful statistics supporting qualitative choices.
+
+## Open pathway roster
+
+The user explicitly removed a three/four-route ceiling on 2026-11-04. This applies to all classes. For Soldier, Foot Soldier, Marksman, Sniper and Hunter join the working candidates alongside the current Skirmisher region, Command, Grenadier and Support. See [SOLDIER_ROUTE_CANDIDATES.md](SOLDIER_ROUTE_CANDIDATES.md) for gameplay distinctions and unresolved overlap. These are proposals, not implemented routes. Three-route coverage never establishes whole-class or whole-game completion.
 
 ## The user's request
 
@@ -61,7 +65,7 @@ Working vocabulary only; names, branch count and exact abilities can change. The
 
 | Class | Possible pathway identities | What should feel different |
 | --- | --- | --- |
-| Soldier | Mobile skirmisher / squad command / field logistics | Repositioned firing, consequential coordinated windows, or careful ammunition and rally placement |
+| Soldier | Skirmisher; Foot Soldier; Marksman; Sniper; Hunter; Officer / Squad Command; Grenadier; Field Support / Logistics | Repositioned firing, consequential coordinated windows, or careful ammunition and rally placement |
 | Heavy | Siege gunner / suppressor / armored anchor | Committed firing lanes, controlled space, or a slower defended operating position |
 | Tank | Mobile bulwark / interceptor / bastion | Escort movement, deliberate interception, or construction of a held position; all within actual difficulty limits |
 | Medic | Field surgery / rapid response / preventive care | Committed treatment, mobile rescue decisions, or limited advance protection; no injury farming or invented universal cures |

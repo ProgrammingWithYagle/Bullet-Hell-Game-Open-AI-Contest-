@@ -38,14 +38,16 @@ Engineer now has three mutually exclusive Q entries—Carriage Sentry, Pressure 
 
 No new Campaign chapter, class roster, boss roster or broad art replacement is part of this focus. Preserve the Service Yard WIP unchanged. This is a change in development order, not abandonment of those goals.
 
-## Class queue and three proposed specializations each
+## Class queue and starting pathway candidates
 
-Every row below is a design target, not a claim of implemented content. Three strong pathways are the minimum. A fourth belongs only where it adds a different decision loop; it is not filler to make the table larger. Each path needs internal choices, rather than one new ability card. Later progression must expand the usable kit and qualitatively evolve its abilities; numerical foundations remain in General.
+Soldier's expanded working roster includes Foot Soldier, Marksman, Sniper and Hunter, alongside Skirmisher, Officer/Command, Grenadier and Field Support/Logistics. [SOLDIER_ROUTE_CANDIDATES.md](SOLDIER_ROUTE_CANDIDATES.md) compares the proposed roles. Finish current Skirmisher verification, then compare mobile precision and prepared sniping before the next playable route. Names/mechanics remain proposals; the same open-roster policy applies to every class.
 
-| Queue | Class | Three pathway concepts | Decisions that must differ |
+Every row below is a design target, not a claim of implemented content. Three strong pathways are an initial coverage milestone. The user removed a fixed maximum on 2026-11-04; add further fitting routes with distinctive loops, one polished slice at a time. Each path needs internal choices, rather than one new ability card. Later progression must expand the usable kit and qualitatively evolve its abilities; numerical foundations remain in General.
+
+| Queue | Class | Starting pathway candidates | Decisions that must differ |
 | --- | --- | --- | --- |
 | 1 | Engineer | Machinery / Traps / Builder | Three implemented identities: move/commit machines, prepare/coordinate charges, and shape/maintain finite cover. Each has internal choices, acquired actions and late qualitative behavior. Whole run/replay and separate human acceptance remain open. |
-| 2 | Soldier | Skirmisher / Squad Command / Field Logistics | Move between firing windows; coordinate owned rally windows that also work solo; choose where and when to commit limited ammunition support. |
+| 2 | Soldier | Skirmisher; Foot Soldier; Marksman; Sniper; Hunter; Officer; Grenadier; Field Support | Move between firing windows; hold or advance a line; distinguish mobile precision from prepared shots; pursue priority targets; coordinate orders, thrown attacks and finite support. These are open candidates, not implemented routes. |
 | 3 | Heavy | Siege Gunner / Suppressor / Armored Anchor | Commit a firing lane; deny approaches through sustained fire; hold an operating position with a real mobility cost. |
 | 4 | Tank | Mobile Bulwark / Interceptor / Bastion | Escort while moving; deliberately intercept legal threats; establish a temporary held position. Fixed boss threats and difficulty restrictions stay authoritative. |
 | 5 | Medic | Field Surgery / Rapid Response / Preventive Care | Commit to a treatment window; reach a rescue without ignoring terrain; time limited advance protection. No injury farming or universal cures. |

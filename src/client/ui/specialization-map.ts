@@ -17,6 +17,8 @@ const positions: Record<string, Point> = {
   'soldier-skirmisher-rear-1':{x:750,y:510},
   'soldier-skirmisher-drill-1':{x:500,y:750},
   'soldier-skirmisher-roving-1':{x:650,y:1000},
+  'soldier-skirmisher-ready-1':{x:350,y:1245},
+  'soldier-skirmisher-volley-1':{x:650,y:1490},
   "engineer-constructs-1": { x: 500, y: 75 },
   "engineer-machinery-1": { x: 350, y: 255 },
   "engineer-traps-1": { x: 450, y: 255 },

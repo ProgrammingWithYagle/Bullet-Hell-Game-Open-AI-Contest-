@@ -77,8 +77,8 @@ test("Soldier shows only the implemented authored fork, its General reference an
   );
   const map = specializationMapLayout("soldier")!;
   assert.equal(map.width, 1000);
-  assert.equal(map.nodes.length, 6);
-  assert.equal(map.edges.length, 5);
+  assert.equal(map.nodes.length, 8);
+  assert.equal(map.edges.length, 7);
   assert.deepEqual(map.exclusions, [{ a: ids.advance, b: ids.rear }]);
   assert.equal(specializationFocus(map, ids.advance, "ArrowRight"), ids.rear);
   assert.equal(specializationFocus(map, ids.rear, "ArrowUp"), ids.entry);
