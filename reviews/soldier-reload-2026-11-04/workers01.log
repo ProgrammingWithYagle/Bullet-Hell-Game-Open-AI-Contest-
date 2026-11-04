@@ -1,0 +1,72 @@
+✖ real mixed-class peers see finite owner loading, pause/late observation and host-exit cleanup with ordinary Raid ownership (6261.2695ms)
+✖ actual optimized public Solo worker loads finite rounds, coordinates each step and discards paused requests (6314.6129ms)
+✖ actual optimized testing Solo worker loads finite rounds, coordinates each step and discards paused requests (6562.9812ms)
+✔ ordinary Raid's 12 SP buys the fifth action; earned gates keep the evolution later and preserve General (4.5809ms)
+✔ individual rounds use each actual weapon's modified reload clock and stop at four without overflow (43.3319ms)
+✔ replacing a normal reload never converts elapsed work into cartridges (5.633ms)
+✔ stop works during recovery, retains inserted rounds and resumes held primary without catch-up shots (4.6161ms)
+✔ manual full Reload interrupts; simultaneous Reload and action2 chooses the full reload (12.1284ms)
+✔ base drill stops for a fresh burst or successful step; a rejected step preserves its work (5.3176ms)
+✔ Roving Chamber keeps the same finite drill through burst and all three physical commitments (14.0256ms)
+✔ dodge and actual health loss stop both drills; a fully absorbed hit does not (20.0764ms)
+✔ owner/weapon/phase loss clears unfinished work and an actual ultimate refill ends the drill (5.8117ms)
+✔ walking remains real while sprint is gated; full magazines and unowned requests spend no recovery (6.0298ms)
+✔ issued Breach Cadence still delivers its three scheduled burst rounds during roving loading (4.291ms)
+✔ public load progress is owner-attached and strips private bookkeeping; stop stays available during recovery (3.0432ms)
+✔ disconnect or downing cancels unfinished work without refunding either acquired action's recovery (2.2885ms)
+✔ exact issued55 safe ownership migrates without inventing new techniques or online proof (4.8408ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 14
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14139.2687
+
+✖ failing tests:
+
+test at tests\soldier-reload-network.test.ts:1:450
+✖ real mixed-class peers see finite owner loading, pause/late observation and host-exit cleanup with ordinary Raid ownership (6261.2695ms)
+  AssertionError [ERR_ASSERTION]: actual expenditure
+      at wait (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\soldier-reload-network.test.ts:12:89)
+      at async TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\soldier-reload-network.test.ts:17:163)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\soldier-reload-worker.test.ts:1:441
+✖ actual optimized public Solo worker loads finite rounds, coordinates each step and discards paused requests (6314.6129ms)
+  AssertionError [ERR_ASSERTION]: actual primary expenditure drill
+      at wait (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\soldier-reload-worker.test.ts:18:133)
+      at async TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\soldier-reload-worker.test.ts:21:31)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\soldier-reload-worker.test.ts:1:441
+✖ actual optimized testing Solo worker loads finite rounds, coordinates each step and discards paused requests (6562.9812ms)
+  AssertionError [ERR_ASSERTION]: actual primary expenditure drill
+      at wait (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\soldier-reload-worker.test.ts:18:133)
+      at async TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\soldier-reload-worker.test.ts:21:31)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

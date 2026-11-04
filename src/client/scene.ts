@@ -869,6 +869,18 @@ export class CombatScene extends Phaser.Scene {
         if(!wire&&!haul&&!impact){const progress=Math.max(0,Math.min(1,(now-cue.at)/Math.max(1,cue.until-cue.at)));h.lineStyle(3,color,1).beginPath().arc(cue.x,cue.y,16,-Math.PI/2,-Math.PI/2+Math.PI*2*progress).strokePath();}
         continue;
       }
+      if(cue.kind==='soldier-load'){
+        const local=cue.owner===this.localId,color=cue.roving?0xd6c28f:0xb8c1af;
+        // Four cartridge pips and one quiet timing arc, attached to the actual owner.
+        const progress=Math.max(0,Math.min(1,(now-cue.roundAt)/Math.max(1,cue.nextAt-cue.roundAt)));
+        h.lineStyle(1,color,local?.65:.3).beginPath().arc(cue.x,cue.y,cue.radius,-Math.PI/2,-Math.PI/2+Math.PI*2*progress).strokePath();
+        for(let n=0;n<cue.total;n++){
+          const x=cue.x+(n-(cue.total-1)/2)*6,y=cue.y+cue.radius+6;
+          if(n<cue.loaded)h.fillStyle(color,local?.9:.45).fillRect(x-1.5,y-3,3,6);
+          else h.lineStyle(1,color,local?.5:.2).strokeRect(x-1.5,y-3,3,6);
+        }
+        continue;
+      }
       if(cue.kind==='soldier-step'){
         const local=cue.owner===this.localId,color=cue.mode==='rear'?0xb9cbbd:0xa5bdcf;
         if(cue.mode==='rear'){

@@ -1,3 +1,4 @@
+import {applySoldierReload} from '../content/source/soldier-reload.mjs';
 import {applySoldierSkirmisher} from '../content/source/soldier-skirmisher.mjs';
 import {applyEngineerBuilder} from '../content/source/engineer-builder.mjs';
 import {applyEngineerTraps} from '../content/source/engineer-traps.mjs';
@@ -276,7 +277,7 @@ const arenas = [
 
 const leaderboards=JSON.parse(fs.readFileSync(path.join(root,'content/leaderboards.json'),'utf8'));
 const manifest = {rules,locales,difficulties,modes,classes,skills,weapons,upgrades,supplies,bosses,bossPools,mutations,arenas,grades,leaderboards,threats:['Normal','Aberrant','Predator','Brute','Scourge','Dread','Disaster','Catastrophe','Cataclysm','Calamity','The Uncounted']};
-applyBard(manifest);applySwordsman(manifest);applySummoner(manifest);applyRanger(manifest);applyAlchemist(manifest);applyEncounterPacing(manifest);addClassTalents(manifest);applyEngineerPathways(manifest);applyEngineerMachinery(manifest);applyEngineerTraps(manifest);applyEngineerBuilder(manifest);applySoldierSkirmisher(manifest);
+applyBard(manifest);applySwordsman(manifest);applySummoner(manifest);applyRanger(manifest);applyAlchemist(manifest);applyEncounterPacing(manifest);addClassTalents(manifest);applyEngineerPathways(manifest);applyEngineerMachinery(manifest);applyEngineerTraps(manifest);applyEngineerBuilder(manifest);applySoldierSkirmisher(manifest);applySoldierReload(manifest);
 applyWardenPatrol(manifest);applyCrazedHorizon(manifest);applyCourierRoute(manifest);applyRatcatcherMuster(manifest);applyClerkAppeal(manifest);applyTollkeeperReturn(manifest);applyMarshalChains(manifest);applyWidowGates(manifest);applyAmbulanceRoute(manifest);applyMatronWard(manifest);applyMoldMixing(manifest);applyBellCarillon(manifest);applyBellCounterpoint(manifest);applyStitchwork(manifest);applyShieldSpecializations(manifest);applyGeneralMobility(manifest);applyGeneralTechniques(manifest);applyGlassSurgery(manifest);applyStoryCampaign(manifest);
 applyBakerOven(manifest);
 applySluicePressure(manifest);

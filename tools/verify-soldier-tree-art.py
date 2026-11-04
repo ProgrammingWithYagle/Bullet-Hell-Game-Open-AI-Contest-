@@ -10,7 +10,7 @@ manifest = json.loads((folder / "provenance.json").read_text(encoding="utf-8"))
 catalog = json.loads((root / "content/catalog.json").read_text(encoding="utf-8"))
 expected = {s["id"] for s in catalog["specializationSkills"] if s["classId"] == "soldier"}
 assert {a["id"] for a in manifest["assets"]} == expected
-assert len(manifest["assets"]) == len(expected) == 3
+assert len(manifest["assets"]) == len(expected) == 5
 rows = []
 for asset in manifest["assets"]:
     path = root / asset["file"]

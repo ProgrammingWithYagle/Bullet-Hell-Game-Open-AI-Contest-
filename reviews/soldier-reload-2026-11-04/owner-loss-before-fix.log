@@ -1,0 +1,45 @@
+✔ ordinary Raid's 12 SP buys the fifth action; earned gates keep the evolution later and preserve General (4.8171ms)
+✔ individual rounds use each actual weapon's modified reload clock and stop at four without overflow (43.3809ms)
+✔ replacing a normal reload never converts elapsed work into cartridges (4.9859ms)
+✔ stop works during recovery, retains inserted rounds and resumes held primary without catch-up shots (4.0896ms)
+✔ manual full Reload interrupts; simultaneous Reload and action2 chooses the full reload (12.5405ms)
+✔ base drill stops for a fresh burst or successful step; a rejected step preserves its work (5.5802ms)
+✔ Roving Chamber keeps the same finite drill through burst and all three physical commitments (14.0352ms)
+✔ dodge and actual health loss stop both drills; a fully absorbed hit does not (19.2234ms)
+✔ owner/weapon/phase loss clears unfinished work and an actual ultimate refill ends the drill (4.9919ms)
+✔ walking remains real while sprint is gated; full magazines and unowned requests spend no recovery (6.0007ms)
+✔ issued Breach Cadence still delivers its three scheduled burst rounds during roving loading (4.0769ms)
+✔ public load progress is owner-attached and strips private bookkeeping; stop stays available during recovery (2.5731ms)
+✖ disconnect or downing cancels unfinished work without refunding either acquired action's recovery (5.1538ms)
+✔ exact issued55 safe ownership migrates without inventing new techniques or online proof (4.438ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 13
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1014.1431
+
+✖ failing tests:
+
+test at tests\soldier-reload.test.ts:1:9797
+✖ disconnect or downing cancels unfinished work without refunding either acquired action's recovery (5.1538ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 182
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\soldier-reload.test.ts:131:144)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 182,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

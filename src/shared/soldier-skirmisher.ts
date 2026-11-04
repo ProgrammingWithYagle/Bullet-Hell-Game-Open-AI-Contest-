@@ -7,6 +7,8 @@ export const skirmisherIds = {
   entry: "soldier-skirmisher-1",
   advance: "soldier-skirmisher-advance-1",
   rear: "soldier-skirmisher-rear-1",
+  drill: "soldier-skirmisher-drill-1",
+  roving: "soldier-skirmisher-roving-1",
 } as const;
 export const skirmisherRules = catalog.rules.soldierSkirmisher;
 const ticks = (seconds: number) => Math.ceil(seconds * HZ);
@@ -22,6 +24,20 @@ export type SoldierStepCue = Vec & {
   aim: number;
   radius: number;
 };
+export type SoldierLoadCue = Vec & {
+  kind: "soldier-load";
+  radius: number;
+  id: number;
+  owner: string;
+  at: number;
+  roundAt: number;
+  nextAt: number;
+  until: number;
+  total: number;
+  loaded: number;
+  roving: boolean;
+};
+export type SoldierCue = SoldierStepCue | SoldierLoadCue;
 export type SkirmisherContext = {
   tick: number;
   players: readonly Player[];
@@ -34,7 +50,17 @@ export type SkirmisherContext = {
   sound(p: Player, id: string): void;
 };
 type Motion = SoldierStepCue & { damage: number; middleFired: boolean };
-type State = { windowUntil: number; technique1At: number; motion?: Motion };
+type Loading = Omit<
+  SoldierLoadCue,
+  "kind" | "radius" | "x" | "y" | "roving"
+> & { weapon: string; interval: number };
+type State = {
+  windowUntil: number;
+  technique1At: number;
+  technique2At: number;
+  motion?: Motion;
+  load?: Loading;
+};
 const live = (p: Player | undefined): p is Player =>
   !!p &&
   p.classId === "soldier" &&
@@ -54,10 +80,22 @@ export class SoldierSkirmisher {
     this.states.clear();
   }
   remove(id: string) {
-    this.states.delete(id);
+    const s = this.states.get(id);
+    if (s) {
+      s.windowUntil = 0;
+      s.motion = undefined;
+      s.load = undefined;
+    }
   }
   hasMotion(id: string) {
     return !!this.states.get(id)?.motion;
+  }
+  isLoading(id: string) {
+    return !!this.states.get(id)?.load;
+  }
+  stopLoading(id: string) {
+    const s = this.states.get(id);
+    if (s) s.load = undefined;
   }
   status(id: string) {
     const s = this.states.get(id);
@@ -65,10 +103,102 @@ export class SoldierSkirmisher {
       soldierFollowupUntil: s?.windowUntil ?? 0,
       soldierStepUntil: s?.motion?.until ?? 0,
       technique1At: s?.technique1At ?? 0,
+      technique2At: s?.technique2At ?? 0,
+      soldierLoadUntil: s?.load?.until ?? 0,
+      soldierLoadNextAt: s?.load?.nextAt ?? 0,
+      soldierLoadTotal: s?.load?.total ?? 0,
+      soldierLoadInserted: s?.load?.loaded ?? 0,
     };
   }
   private state(id: string) {
-    return this.states.get(id) ?? { windowUntil: 0, technique1At: 0 };
+    return (
+      this.states.get(id) ?? {
+        windowUntil: 0,
+        technique1At: 0,
+        technique2At: 0,
+      }
+    );
+  }
+  /** Toggle finite personal loading; stopping preserves inserted rounds, never recovery. */
+  load(p: Player, c: SkirmisherContext) {
+    if (!live(p) || !p.skills.includes(skirmisherIds.drill) || p.input.reload)
+      return false;
+    const s = this.state(p.id);
+    if (s.load) {
+      s.load = undefined;
+      return true;
+    }
+    const stats = c.stats(p),
+      weapon = catalog.weapons.find((w) => w.id === p.weapon);
+    if (
+      !weapon ||
+      c.tick < s.technique2At ||
+      p.dashUntil > c.tick ||
+      p.channelUntil > c.tick ||
+      p.overdriveUntil > c.tick ||
+      p.ammo >= stats.magazine ||
+      (s.motion && !p.skills.includes(skirmisherIds.roving))
+    )
+      return false;
+    const total = Math.min(
+        skirmisherRules.drillRounds,
+        stats.magazine - p.ammo,
+      ),
+      first = ticks(
+        weapon.reloadTime * stats.reload * skirmisherRules.drillFirstFraction,
+      ),
+      interval = ticks(
+        weapon.reloadTime * stats.reload * skirmisherRules.drillRoundFraction,
+      );
+    // Normal reload work is forfeited, not converted into immediate cartridges.
+    p.reloadAt = 0;
+    this.states.set(p.id, {
+      ...s,
+      technique2At:
+        c.tick + ticks(skirmisherRules.drillCooldown * stats.cooldown),
+      load: {
+        id: c.id(),
+        owner: p.id,
+        weapon: p.weapon,
+        at: c.tick,
+        roundAt: c.tick,
+        nextAt: c.tick + first,
+        until: c.tick + first + interval * (total - 1),
+        total,
+        loaded: 0,
+        interval,
+      },
+    });
+    c.sound(p, "soldier-load-start");
+    return true;
+  }
+  /** Shared combat clock only: no wall-clock/loading progress is saved or refunded. */
+  advanceLoad(p: Player, c: SkirmisherContext) {
+    const s = this.states.get(p.id),
+      load = s?.load;
+    if (!s || !load) return;
+    if (
+      !live(p) ||
+      !p.skills.includes(skirmisherIds.drill) ||
+      p.weapon !== load.weapon ||
+      p.dashUntil > c.tick ||
+      p.channelUntil > c.tick ||
+      p.reloadAt > 0 ||
+      p.ammo >= c.stats(p).magazine
+    ) {
+      s.load = undefined;
+      return;
+    }
+    if (c.tick < load.nextAt) return;
+    p.ammo = Math.min(c.stats(p).magazine, p.ammo + 1);
+    load.loaded++;
+    c.sound(p, "soldier-load-round");
+    if (load.loaded >= load.total || p.ammo >= c.stats(p).magazine)
+      s.load = undefined;
+    else {
+      load.roundAt = load.nextAt;
+      load.nextAt += load.interval;
+    }
   }
   burst(p: Player, c: SkirmisherContext) {
     if (!live(p)) return;
@@ -76,6 +206,7 @@ export class SoldierSkirmisher {
     this.states.set(p.id, {
       ...s,
       windowUntil: c.tick + ticks(skirmisherRules.followupSeconds),
+      load: p.skills.includes(skirmisherIds.roving) ? s.load : undefined,
     });
   }
   private legal(from: Vec, to: Vec, c: SkirmisherContext) {
@@ -138,6 +269,8 @@ export class SoldierSkirmisher {
       middleFired: false,
     };
     this.states.set(p.id, {
+      ...s,
+      load: p.skills.includes(skirmisherIds.roving) ? s.load : undefined,
       windowUntil: 0,
       technique1At:
         c.tick + ticks(skirmisherRules.followupCooldown * c.stats(p).cooldown),
@@ -207,9 +340,11 @@ export class SoldierSkirmisher {
     for (const [id, s] of this.states) {
       const p = c.players.find((p) => p.id === id);
       if (!live(p)) {
-        this.states.delete(id);
+        if (!p) this.states.delete(id);
+        else this.remove(id);
         continue;
       }
+      this.advanceLoad(p, c);
       if (s.windowUntil <= c.tick) s.windowUntil = 0;
       if (
         s.motion &&
@@ -220,11 +355,26 @@ export class SoldierSkirmisher {
         s.motion = undefined;
     }
   }
-  cues(): SoldierStepCue[] {
-    return [...this.states.values()].flatMap((s) => {
-      if (!s.motion) return [];
-      const { damage: _d, middleFired: _m, ...cue } = s.motion;
-      return [cue];
-    });
+  cues(players: readonly Player[] = []): SoldierCue[] {
+    const result: SoldierCue[] = [];
+    for (const [id, s] of this.states) {
+      if (s.motion) {
+        const { damage: _d, middleFired: _m, ...cue } = s.motion;
+        result.push(cue);
+      }
+      const p = players.find((p) => p.id === id);
+      if (s.load && live(p)) {
+        const { weapon: _w, interval: _i, ...progress } = s.load;
+        result.push({
+          kind: "soldier-load",
+          radius: catalog.rules.playerRadius + 8,
+          ...progress,
+          x: p.x,
+          y: p.y,
+          roving: p.skills.includes(skirmisherIds.roving),
+        });
+      }
+    }
+    return result;
   }
 }

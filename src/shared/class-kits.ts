@@ -1,4 +1,4 @@
-import type {SoldierStepCue} from './soldier-skirmisher.ts';
+import type {SoldierCue} from './soldier-skirmisher.ts';
 // Additional class abilities run only in the authoritative fixed-step simulation.
 import {EngineerBuilder,type BuilderCue} from './engineer-builder.ts';
 import {EngineerTraps,type TrapCue} from './engineer-traps.ts';
@@ -26,6 +26,7 @@ const ticks = (seconds: number) => Math.ceil(seconds * HZ);
 export const RESCUE_CHARGE_TICKS = ticks(0.3) + 1;
 export type KitStatus = {
   soldierFollowupUntil?:number;soldierStepUntil?:number;
+  soldierLoadUntil?:number;soldierLoadNextAt?:number;soldierLoadTotal?:number;soldierLoadInserted?:number;soldierMagazineCapacity?:number;
   technique1At?:number;technique2At?:number;trapCommandAt?:number;trapHeld?:boolean;
   builderRepairUntil?:number;builderRepairTarget?:number;builderGroups?:number;builderGroupCapacity?:number;
   alchemySamplesCapacity?:number;alchemyRecipe?:Recipe;alchemyCinder?:number;alchemyChalk?:number;alchemySap?:number;alchemyPrepared?:Recipe[];alchemyCapacity?:number;alchemyBrewUntil?:number;alchemyBrewRecipe?:string;alchemyBrewMovement?:number;alchemyBatchUntil?:number;alchemyBatchCharges?:number;
@@ -85,7 +86,7 @@ export type Construct = {
   until: number;
 };
 export type KitCue =
-  | SoldierStepCue
+  | SoldierCue
   | BuilderCue
   | TrapCue
   | MachineryCue

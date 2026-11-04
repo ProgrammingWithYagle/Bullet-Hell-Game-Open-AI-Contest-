@@ -1,11 +1,11 @@
 import { data } from "../../shared/game.ts";
 import type { PlayerView } from "../../shared/view.ts";
 import { skirmisherIds as ids } from "../../shared/soldier-skirmisher.ts";
-import { soldierActionId } from "../soldier-actions.ts";
+import { soldierActionId, soldierLoadId } from "../soldier-actions.ts";
 import type { ControlOptions } from "../input-bindings.ts";
 import { actionLabel } from "./control-settings.ts";
 import { bindingMarkup } from "./engineer-controls.ts";
-import { locale, t } from "../i18n.ts";
+import { locale, number, t } from "../i18n.ts";
 import { escape as e } from "./html.ts";
 export function soldierKitMarkup(
   p: PlayerView,
@@ -36,6 +36,15 @@ export function soldierKitMarkup(
           },
         ]
       : []),
+    ...(p.skills.includes(ids.drill)
+      ? [
+          {
+            action: "technique2" as const,
+            nameKey: "skill." + soldierLoadId(p) + ".name",
+            skill: soldierLoadId(p),
+          },
+        ]
+      : []),
   ];
   const help = p.skills.includes(ids.entry)
     ? t(
@@ -46,6 +55,14 @@ export function soldierKitMarkup(
             : "ui.soldier.passingHelp",
       )
     : t("ui.soldier.kitHelp");
+  const loadHelp = p.skills.includes(ids.drill)
+    ? " " +
+      t(
+        p.skills.includes(ids.roving)
+          ? "ui.soldier.rovingHelp"
+          : "ui.soldier.drillHelp",
+      )
+    : "";
   return (
     '<details class="engineer-kit soldier-kit" data-class-kit data-soldier-kit' +
     (open ? " open" : "") +
@@ -58,7 +75,7 @@ export function soldierKitMarkup(
     '" dir="auto">' +
     e(t("ui.equipped")) +
     '</small></summary><p lang="en" dir="ltr">' +
-    e(help) +
+    e(help + loadHelp) +
     "</p><ul>" +
     rows
       .map(
@@ -81,5 +98,40 @@ export function soldierKitMarkup(
       )
       .join("") +
     "</ul></details>"
+  );
+}
+
+/** Owned HUD/touch labels use authority's clock and progress, including stop during recovery. */
+export function soldierHudLabel(p: PlayerView, key: string, now: number) {
+  if (key === "technique2") {
+    const name = t("skill." + soldierLoadId(p) + ".name");
+    return (
+      name +
+      ((p.kit.soldierLoadUntil ?? 0) > now
+        ? " · " +
+          t("ui.soldier.loading", {
+            loaded: number(p.kit.soldierLoadInserted ?? 0),
+            total: number(p.kit.soldierLoadTotal ?? 0),
+            seconds: number(
+              Number(
+                (
+                  Math.max(0, (p.kit.soldierLoadNextAt ?? now) - now) / 30
+                ).toFixed(1),
+              ),
+            ),
+          })
+        : "")
+    );
+  }
+  const name = t("skill." + soldierActionId(p) + ".name"),
+    window = p.kit.soldierFollowupUntil ?? 0;
+  return (
+    name +
+    (window > now && (p.kit.soldierStepUntil ?? 0) <= now
+      ? " · " +
+        t("ui.soldier.opening", {
+          seconds: number(Number(((window - now) / 30).toFixed(1))),
+        })
+      : "")
   );
 }

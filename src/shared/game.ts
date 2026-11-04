@@ -276,9 +276,9 @@ export class Game {
   readonly ranger = new RangerKit();
   readonly alchemy = new AlchemistKit();
   readonly skirmisher = new SoldierSkirmisher();
-  kitStatus(id:string){return {...this.classKits.status(id,this.combatTick),...(this.players.get(id)?.classId==='soldier'?this.skirmisher.status(id):{}),...(this.players.get(id)?.classId==='alchemist'?{...this.alchemy.status(id,this.combatTick,this.alchemyOptions(this.players.get(id)!)),alchemySamplesCapacity:this.stats(this.players.get(id)!).magazine}:{}),...(this.players.get(id)?.classId==='ranger'?{...this.ranger.status(id,this.combatTick,this.rangerOptions(this.players.get(id)!)),rangerQuiverCapacity:this.stats(this.players.get(id)!).magazine}:{}),...(this.players.get(id)?.classId==='bard'?this.bard.status(id):{}),...(this.players.get(id)?.classId==='swordsman'?this.sword.status(id,this.combatTick):{}),...(this.players.get(id)?.classId==='summoner'?this.retinue.status(this.players.get(id)!,this.combatTick,this.summonerOptions(this.players.get(id)!)):{})};}
+  kitStatus(id:string){return {...this.classKits.status(id,this.combatTick),...(this.players.get(id)?.classId==='soldier'?{...this.skirmisher.status(id),soldierMagazineCapacity:this.stats(this.players.get(id)!).magazine}:{}),...(this.players.get(id)?.classId==='alchemist'?{...this.alchemy.status(id,this.combatTick,this.alchemyOptions(this.players.get(id)!)),alchemySamplesCapacity:this.stats(this.players.get(id)!).magazine}:{}),...(this.players.get(id)?.classId==='ranger'?{...this.ranger.status(id,this.combatTick,this.rangerOptions(this.players.get(id)!)),rangerQuiverCapacity:this.stats(this.players.get(id)!).magazine}:{}),...(this.players.get(id)?.classId==='bard'?this.bard.status(id):{}),...(this.players.get(id)?.classId==='swordsman'?this.sword.status(id,this.combatTick):{}),...(this.players.get(id)?.classId==='summoner'?this.retinue.status(this.players.get(id)!,this.combatTick,this.summonerOptions(this.players.get(id)!)):{})};}
   readonly transforms = new AbilityTransforms();
-  classCues(){return [...this.skirmisher.cues(),...this.classKits.cues(),...this.transforms.cues(),...this.bard.cues(),...this.sword.cues(this.roster(),this.combatTick),...this.ranger.cues(this.rangerContext()),...this.alchemy.cues(this.alchemyContext())];}
+  classCues(){return [...this.skirmisher.cues(this.roster()),...this.classKits.cues(),...this.transforms.cues(),...this.bard.cues(),...this.sword.cues(this.roster(),this.combatTick),...this.ranger.cues(this.rangerContext()),...this.alchemy.cues(this.alchemyContext())];}
   private aimTargets(wardsOnly=true){const real=this.roster().filter(p=>p.status==='active'&&!this.classKits.untargetable(p.id,this.combatTick));return [...real,...this.classKits.decoyTargets(this.roster(),this.combatTick),...this.retinueTargets(wardsOnly)];}
   private hurtTarget(id:string,amount:number){const p=this.players.get(id);if(p)this.damage(p,amount);else if(/^retinue:\d+$/.test(id))this.retinue.hit(Number(id.slice(8)),amount,this.combatTick);else this.classKits.hitDecoy(id,amount);}
   private bossPrevious = { x: 800, y: 250 };
@@ -1480,6 +1480,7 @@ export class Game {
       p.ammo = stats.magazine;
       p.reloadAt = 0;
     }
+    if(p.classId==='soldier')this.skirmisher.advanceLoad(p,this.skirmisherContext());
     if (p.channelUntil) {
       if (now >= p.channelUntil) {
         p.channelUntil = 0;
@@ -1495,7 +1496,7 @@ export class Game {
     }
     p.dodgeMaximum=dodgeMaximum(p.skills);
     const dodgePeriod=ticks(rule.dodgeCooldown*stats.dodgeCooldown);
-    advanceMobility(p,i,now,dodgePeriod,sprintUnlocked(p.skills),now<p.reloadAt);
+    advanceMobility(p,i,now,dodgePeriod,sprintUnlocked(p.skills),now<p.reloadAt||(p.classId==='soldier'&&this.skirmisher.isLoading(p.id)));
     const dodge=dodgeIntent(p,i,now,p.skills);
     if (dodge==='start' && takeDodge(p,now,dodgePeriod)) {
       p.dashX = len ? mx : Math.cos(i.aim);
@@ -1504,6 +1505,7 @@ export class Game {
       p.dodgeControlUntil=p.dashUntil;
       p.invulnerableUntil = now + ticks(rule.dodgeInvulnerability);
 
+      if(p.classId==='soldier')this.skirmisher.stopLoading(p.id);
       this.events.push({ type: 'sound', id: 'dodge', x: p.x, y: p.y });
     }
     const rally = Math.max(
@@ -1554,8 +1556,11 @@ export class Game {
     for(const slot of ['technique1','technique2'] as const)if(i[slot])this.classKits.castEngineer(p,slot,this.kitContext());
     if (i.e && (now >= p.eAt || this.classKits.freeStep(p.id, now))) this.ability(p, 'e');
     if(p.classId==='soldier'&&i.technique1)this.skirmisher.cast(p,this.skirmisherContext());
+    if(p.classId==='soldier'&&i.technique2)this.skirmisher.load(p,this.skirmisherContext());
     if (i.ultimate && now >= p.ultimateAt) this.ability(p, 'ultimate');
-    if (i.fire && !p.reloadAt && (p.classId!=='ranger'||this.ranger.canPrimary(p,this.rangerContext())) && (p.classId!=='alchemist'||this.alchemy.canPrimary(p,this.alchemyContext()))) {
+    if(p.classId==='soldier')this.skirmisher.advanceLoad(p,this.skirmisherContext());
+    const loading=p.classId==='soldier'&&this.skirmisher.isLoading(p.id);
+    if (i.fire && !p.reloadAt && !loading && (p.classId!=='ranger'||this.ranger.canPrimary(p,this.rangerContext())) && (p.classId!=='alchemist'||this.alchemy.canPrimary(p,this.alchemyContext()))) {
       // A new trigger press starts now; sustained fire retains fractional debt.
       // This supports rates above 30Hz without catching up missed idle shots.
       if (!p.wasFiring) p.fireAt = Math.max(p.fireAt, now);
@@ -1567,9 +1572,10 @@ export class Game {
         }
       }
     }
-    p.wasFiring = i.fire && !p.reloadAt;
+    p.wasFiring = i.fire && !p.reloadAt && !loading;
   }
   private reload(p: Player) {
+    if(p.classId==='soldier')this.skirmisher.stopLoading(p.id);
     if(p.classId==='alchemist')this.events.push({type:'sound',id:'alchemy-refill',owner:p.id,x:p.x,y:p.y});
     if(p.classId==='ranger')this.events.push({type:'sound',id:'ranger-replenish',owner:p.id,x:p.x,y:p.y});
     const w = data.weapons.find((w) => w.id === p.weapon)!;
@@ -1972,6 +1978,7 @@ export class Game {
     p.shield -= blocked;
     const actual = Math.min(p.health, afterKit - blocked);
     p.health -= actual;
+    if(actual>0&&p.classId==='soldier')this.skirmisher.stopLoading(p.id);
     p.damageTaken += actual;
     this.scoreObserver?.damage(p.id, actual);
     if (grantInvulnerability) p.invulnerableUntil = this.combatTick + ticks(0.2);
@@ -2006,6 +2013,7 @@ export class Game {
     if (first) {
       const loss = p.health * clerkAppealRules.purpleCurrentHealthFraction;
       p.health -= loss;
+      if(loss>0&&p.classId==='soldier')this.skirmisher.stopLoading(p.id);
       p.damageTaken += loss;
       this.scoreObserver?.damage(p.id, loss);
     }
@@ -2025,6 +2033,7 @@ export class Game {
     // Its once-per-seal budget lives in the Clerk controller; it never downs by itself.
     const actual = Math.min(p.health * fraction, Math.max(0,p.health-minimumHealth));
     p.health -= actual;
+    if(actual>0&&p.classId==='soldier')this.skirmisher.stopLoading(p.id);
     p.damageTaken += actual;
     this.scoreObserver?.damage(p.id, actual);
     p.invulnerableUntil = this.combatTick + ticks(0.2);

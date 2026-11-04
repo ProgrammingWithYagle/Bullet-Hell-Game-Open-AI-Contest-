@@ -1,3 +1,4 @@
+import {soldierHudLabel}from'./ui/soldier-controls.ts';
 import {HZ}from'../shared/protocol.ts';
 import {soldierActions}from'./soldier-actions.ts';
 import {combatAimTarget} from './skirmish-presentation.ts';
@@ -762,7 +763,7 @@ function update(view: View) {
       t('ability.' + cl.abilities[1].id + '.name'),
     ],
     ['ultimate', ultimateLabel, p.ultimateAt, t(redoubt?'skill.engineer-builder-redoubt-1.description':'ability.' + cl.ultimate.id + '.name')],
-    ...machineryActions.extras.map(a=>[a.key,t('skill.'+a.id+'.name')+(p.classId==='soldier'&&!a.blocked?' · '+t('ui.soldier.opening',{seconds:number(Number(((p.kit.soldierFollowupUntil!-view.combatTick)/HZ).toFixed(1)))}):''),a.at,t('skill.'+a.id+'.description')] as const),
+    ...machineryActions.extras.map(a=>[a.key,(p.classId==='soldier'?soldierHudLabel(p,a.key,view.combatTick):t('skill.'+a.id+'.name')),a.at,t('skill.'+a.id+'.description')] as const),
   ] as const) {
     let e = abilityList.querySelector<HTMLElement>('[data-ability="' + key + '"]');
     if (!e) {

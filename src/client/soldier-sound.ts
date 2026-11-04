@@ -1,6 +1,8 @@
 /** Original dry footwork: two finite, quiet cloth/boot transients. */
-export const isSoldierSound = (id: string): id is "soldier-footwork" =>
-  id === "soldier-footwork";
+export type SoldierSound =
+  "soldier-footwork" | "soldier-load-start" | "soldier-load-round";
+export const isSoldierSound = (id: string): id is SoldierSound =>
+  ["soldier-footwork", "soldier-load-start", "soldier-load-round"].includes(id);
 export function soldierSamples(rate: number) {
   if (!Number.isFinite(rate) || rate < 8000 || rate > 192000)
     throw Error("Invalid audio rate");
@@ -25,11 +27,14 @@ export function soldierSamples(rate: number) {
 }
 export function playSoldierSound(
   context: AudioContext,
-  _id: "soldier-footwork",
+  id: SoldierSound,
   volume: number,
   ended: () => void,
 ) {
-  const samples = soldierSamples(context.sampleRate),
+  const samples =
+      id === "soldier-footwork"
+        ? soldierSamples(context.sampleRate)
+        : soldierLoadSamples(context.sampleRate, id),
     buffer = context.createBuffer(1, samples.length, context.sampleRate);
   buffer.getChannelData(0).set(samples);
   const source = context.createBufferSource(),
@@ -47,4 +52,30 @@ export function playSoldierSound(
   };
   source.start();
   return source;
+}
+
+export function soldierLoadSamples(
+  rate: number,
+  id: "soldier-load-start" | "soldier-load-round",
+) {
+  if (!Number.isFinite(rate) || rate < 8000 || rate > 192000)
+    throw Error("Invalid audio rate");
+  const duration = id === "soldier-load-start" ? 0.12 : 0.075,
+    samples = new Float32Array(Math.ceil(rate * duration));
+  let seed = 17323;
+  for (let i = 0; i < samples.length; i++) {
+    seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0;
+    const t = i / rate,
+      fade = Math.max(0, 1 - t / duration),
+      attack = Math.min(1, t / 0.002),
+      noise = (seed / 0x100000000) * 2 - 1;
+    samples[i] =
+      (noise * 0.18 +
+        Math.sin(2 * Math.PI * (id === "soldier-load-start" ? 510 : 870) * t) *
+          0.21) *
+      attack *
+      fade *
+      fade;
+  }
+  return samples;
 }

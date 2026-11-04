@@ -1,6 +1,16 @@
 # Changelog
 
-Development build **2026.11.04-soldier-skirmisher-step**, protocol 55. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.04-soldier-roving-load**, protocol 56. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-04 — Take the rounds you need
+
+### The next Skirmisher action
+
+- Cartridge Drill adds action 2 (default B, remappable). Load up to four missing rounds individually, then use the action again to stop with completed rounds retained. Held primary fire waits during the drill and resumes when it finishes or stops. Ordinary Reload keeps its full-magazine role.
+- The first round takes 35% of this weapon's modified full-reload time; later rounds take 20% each. Walking remains available. A fresh burst, committed step, dodge, ordinary Reload or health damage interrupts. Replacing a normal reload forfeits its unfinished work. Base recovery is 12 seconds, without cooldown refunds or magazine overflow.
+- Roving Chamber lets the same finite drill continue through a fresh Precision Burst and any Passing Shot variant. Coordinate three actions without gaining more rounds, faster loading or immunity. It unlocks at 17 earned SP; Cartridge Drill unlocks at 11. The 27-SP budget and one-capstone limit remain.
+- The owned manual and HUD show the fifth action, current remaps, round progress and the option to stop during recovery. Two matching equipment emblems extend the authored tree. Disconnect and downing cancel unfinished Soldier work while retaining both acquired actions' spent recovery.
+- Soldier has five techniques in one unfinished early and middle Skirmisher region. Its high-grade culmination, Squad Command and Field Logistics remain. Classes stay the current Free Play focus; bosses, the weapon workshop and Campaign follow later.
 
 ## 2026-11-04 — Choose your follow-through
 
