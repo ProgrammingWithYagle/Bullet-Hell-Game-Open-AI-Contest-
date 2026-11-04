@@ -1,5 +1,9 @@
 # Engineer Traps — prepared ground and deliberate control
 
+Current playable source **d3de8edfd00375880a4c07eae658a0ea77ac8486**, build **2026.11.03-engineer-builder**, protocol **54**, passes **1,370tests** and exact push/PR CI with every job/step. Testing[5328](http://127.0.0.1:5328/)/2704 and public[5329](http://127.0.0.1:5329/)/2705pass eight native groups each, with2,011hashed files per audience. [ENGINEER_BUILDER.md](ENGINEER_BUILDER.md) records the third route and limits. Engineer has22real specialization techniques across Machinery, Traps and Builder. Whole seeded run/replay assessment and separate human acceptance remain open; other class rosters remain proposals. Traps' issued mechanics remain. The protocol53slice below retains its own provenance.
+
+## Historical Traps slice
+
 Build **2026.11.03-engineer-traps**, protocol **53**. This focused Free Play slice develops Pressure Charges with an early control choice, two acquired actions and qualitative late abilities. The six additions bring Engineer to fourteen specialization techniques across Machinery and Traps. **Builder** remains the unfinished third pathway; Engineer and the broader game remain unfinished. Campaign acquisition is unchanged and remains the final roadmap phase.
 
 All648class-node IDs, four issued General techniques, eight issued Engineer techniques and36transformations retain their prices, prerequisites and effects. The issued Pressure Charges baseline remains: Q places one plate120pixels ahead, one second to arm, a44-pixel trigger, a full visible half-second fuse, a100-pixel/150-base-damage blast and a maximum of two owned charges lasting36seconds. Ordinary enemies can be slowed; boss attack clocks remain. Invalid placements and full slots spend no deployment cooldown. Barricade and Impossible Machine remain available. Machinery, Crossfire Pair and extra-turret conflicts remain explicit.

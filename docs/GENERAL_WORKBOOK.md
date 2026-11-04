@@ -1,6 +1,8 @@
 # General foundations and shared footwork
 
-Current integration: the following General controls remain in sourcec4b2b6fc9396960cc890b9f6a6bbe242c47ccac6/build2026.11.03-engineer-traps/protocol53, with1,334passing tests and matching5326/5327reviews. The wider specialization graph opens fitted once and preserves deliberate zoom; Fit rounds down within its permitted range. [ENGINEER_TRAPS.md](ENGINEER_TRAPS.md) describes the newly developed route. The original General slice below retains protocol52provenance; Builder remains unfinished.
+Current playable source **d3de8edfd00375880a4c07eae658a0ea77ac8486**, build **2026.11.03-engineer-builder**, protocol **54**, passes **1,370tests** and exact push/PR CI with every job/step. Testing[5328](http://127.0.0.1:5328/)/2704 and public[5329](http://127.0.0.1:5329/)/2705pass eight native groups each, with2,011hashed files per audience. [ENGINEER_BUILDER.md](ENGINEER_BUILDER.md) records the third route and limits. Engineer has22real specialization techniques across Machinery, Traps and Builder. Whole seeded run/replay assessment and separate human acceptance remain open; other class rosters remain proposals. General/shared footwork is preserved. Its original protocol52slice below retains provenance; the current specialization range is20%–200%, with closer route views.
+
+## Historical General slice
 
 Build `2026.11.03-workbook-zoom-polish`, protocol52. This slice follows the user's feedback on the Engineer field manual. It does not complete Engineer, the shop overhaul or the game.
 

@@ -1,6 +1,8 @@
 # Engineer Machinery — progression and field manual
 
-Current integration: these mechanics remain in sourcec4b2b6fc9396960cc890b9f6a6bbe242c47ccac6, build2026.11.03-engineer-traps/protocol53, with1,334passing tests and matching5326/5327reviews. [ENGINEER_TRAPS.md](ENGINEER_TRAPS.md) describes the second developed route; [GENERAL_WORKBOOK.md](GENERAL_WORKBOOK.md) records the matching General tree, four shared techniques and true zoom/Fit. The dated Machinery slice below retains its original protocol51provenance. Builder, the user's barrier/construction pathway, remains the unfinished third identity.
+Current playable source **d3de8edfd00375880a4c07eae658a0ea77ac8486**, build **2026.11.03-engineer-builder**, protocol **54**, passes **1,370tests** and exact push/PR CI with every job/step. Testing[5328](http://127.0.0.1:5328/)/2704 and public[5329](http://127.0.0.1:5329/)/2705pass eight native groups each, with2,011hashed files per audience. [ENGINEER_BUILDER.md](ENGINEER_BUILDER.md) records the third route and limits. Engineer has22real specialization techniques across Machinery, Traps and Builder. Whole seeded run/replay assessment and separate human acceptance remain open; other class rosters remain proposals. Machinery's issued mechanics remain. The protocol51slice below retains its own provenance.
+
+## Historical Machinery slice
 
 Build **2026.11.03-machinery-manual-polish**, protocol **51**. This is a focused Free Play Engineer slice. Machinery now has an internal control fork, separately earned actions and late mechanical evolutions. Engineer still needs a complete Traps route and a third distinctive pathway before the next class.
 
