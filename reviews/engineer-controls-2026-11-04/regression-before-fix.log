@@ -1,0 +1,80 @@
+✖ Inspecting an acquired-action or ultimate evolution shows actual alternate keyboard and gamepad bindings in both map and reading view (374.7205ms)
+✖ The owned kit starts with three issued actions and reveals only purchased actions with the same evolved names used in combat (266.1321ms)
+✖ Breach Casings explains both placement-triggered and remote firing controls instead of implying it is only action 1 (248.8901ms)
+✖ The optional control guide keeps its open state across route and reading changes without spending or showing unowned late actions (266.1979ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 0
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2345.5849
+
+✖ failing tests:
+
+test at tests\engineer-control-guide.test.ts:1:2144
+✖ Inspecting an acquired-action or ultimate evolution shows actual alternate keyboard and gamepad bindings in both map and reading view (374.7205ms)
+  AssertionError [ERR_ASSERTION]: engineer-machinery-coil-1
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\engineer-control-guide.test.ts:91:7)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\engineer-control-guide.test.ts:1:3059
+✖ The owned kit starts with three issued actions and reveals only purchased actions with the same evolved names used in combat (266.1321ms)
+  AssertionError [ERR_ASSERTION]: engineer-machinery-1
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\engineer-control-guide.test.ts:135:5)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\engineer-control-guide.test.ts:1:4521
+✖ Breach Casings explains both placement-triggered and remote firing controls instead of implying it is only action 1 (248.8901ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(panel.querySelector('[data-technique-control="q"]'))
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\engineer-control-guide.test.ts:166:3)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\engineer-control-guide.test.ts:1:4966
+✖ The optional control guide keeps its open state across route and reading changes without spending or showing unowned late actions (266.1979ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(guide)
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\engineer-control-guide.test.ts:174:3)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

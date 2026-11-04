@@ -27,6 +27,9 @@ import { assets } from '../assets.ts';
 import { resourceArt } from './resource-art.ts';
 import { expeditionText } from '../expedition-text.ts';
 import { locale } from '../i18n.ts';
+import { defaultControls, type ControlOptions } from '../input-bindings.ts';
+import { engineerKitMarkup, techniqueControlsMarkup, techniqueControlSlots, techniqueSlotLabel } from './engineer-controls.ts';
+let engineerControlsOpen = false;
 type Kind = Command['kind'];
 let mapZoom = 1;
 let foundationMode:'map'|'list'='map';
@@ -195,13 +198,14 @@ export function shopMarkup(
   difficulty = 'normal',
   chapterStage?:ChapterStage,
   allowSpecializations = true,
+  controls: ControlOptions = defaultControls(),
 ) {
   shopDifficulty = difficulty;
   shopSpecializationsAllowed = allowSpecializations;
   const cl = data.classes.find((c) => c.id === p.classId)!;
   const hasSpecializations = !p.training && allowSpecializations && !!specializationMapLayout(p.classId,specializationRoute);
   const context = [p.classId,!!p.training,allowSpecializations,expanded].join(':');
-  if(shopContext!==context){shopContext=context;tab=p.training?'tree':'general';chosen=null;specializationRoute='all';generalScroll={top:0,left:0};specializationScroll={top:0,left:0};branchId=expanded?'all':cl.branches[0].id;}
+  if(shopContext!==context){shopContext=context;tab=p.training?'tree':'general';chosen=null;engineerControlsOpen=false;specializationRoute='all';generalScroll={top:0,left:0};specializationScroll={top:0,left:0};branchId=expanded?'all':cl.branches[0].id;}
   if(tab==='specializations'&&!hasSpecializations)tab=p.training?'tree':'general';
   if(tab==='tree'&&!p.training)tab='general';
   if(p.training&&chosen?.kind==='skill')chosen=null;
@@ -214,7 +218,7 @@ export function shopMarkup(
   )
     chosen = null;
   return `<p data-shop-status class="shop-purchase-status" role="status" aria-live="polite" hidden></p><p class="shop-introduction">${e(p.training?chapterText(locale).readyHelp:expeditionText(locale, 'shopHelp'))}</p><div class="loadout-summary"><span>${resourceArt('coins', assets.resourceIcons)}<b>${number(p.coins)}</b> ${e(t('ui.coins'))}</span>${p.training?'':`<span>${resourceArt('skills', assets.resourceIcons)}<b>${number(p.sp)}</b> ${e(t('ui.skillPoints'))}</span><small>${e(t('ui.capstoneLimit'))}</small>`}</div><div class="loadout-tabs" role="tablist" aria-label="${e(t('ui.shop'))}"><button data-shop-tab="gear" role="tab" aria-selected="${tab === 'gear'}">${resourceArt('equipment', assets.resourceIcons)}${e(t('ui.equip'))} / ${e(t('ui.upgrade'))}</button>${p.training?`<button data-shop-tab="tree" role="tab" aria-selected="${tab === 'tree'}">${resourceArt('skills', assets.resourceIcons)}${e(chapterText(locale).training)}</button>`:''}<button data-shop-tab="general" role="tab" aria-selected="${tab === 'general'}">${resourceArt('skills', assets.resourceIcons)}${e(t('branch.general'))}</button>${hasSpecializations?`<button data-shop-tab="specializations" role="tab" aria-selected="${tab === 'specializations'}">${icon('engineer')}${e(t('ui.specializations'))}</button>`:''}</div><div class="loadout-workspace"><div class="loadout-board">${
-    tab === 'specializations' ? specializationMarkup(p,allowSpecializations) : tab === 'general'&&p.training ? `<p lang="en">${e(chapterText(locale).general)}</p>` : tab === 'tree'&&p.training?chapterTrainingMarkup(p,chapterStage):tab === 'gear'
+    tab === 'specializations' ? specializationMarkup(p,allowSpecializations,controls) : tab === 'general'&&p.training ? `<p lang="en">${e(chapterText(locale).general)}</p>` : tab === 'tree'&&p.training?chapterTrainingMarkup(p,chapterStage):tab === 'gear'
       ? `<section class="armory"><h3>${e(t('ui.equip'))}</h3><div class="gear-icons">${data.weapons
           .filter((w) => w.classId === p.classId)
           .map((w) =>
@@ -235,29 +239,29 @@ export function shopMarkup(
           .join(
             '',
           )}</div><h3>${e(t('ui.upgrade'))}</h3><div class="gear-icons">${data.upgrades.map((u) => nodeButton(p, 'upgrade', u.id, effectIcon({ [u.effect]: u.amount }), upgradeName(u.id,p.classId))).join('')}</div><h3>${e(t('ui.supplies'))} · ${e(supplyBindings.join(' / '))}</h3><p>${e(t('ui.supplyHelp', { bindings: supplyBindings.join(' / ') }))}</p><div class="gear-icons">${data.supplies.map((s) => nodeButton(p, 'supply', s.id, supplyGlyph(s.effect), supplyName(s.id,p.classId))).join('')}</div><p>${p.supplies.map((s, i) => `${e(supplyBindings[i])}: ${s.count ? e(supplyName(s.id,p.classId)) + ' ×' + number(s.count) : '—'}`).join(' · ')}</p></section>`
-      : generalTreeMarkup(p,expanded)}</div><aside id="item-details" class="item-details" aria-live="polite">${details(p)}</aside></div>`;
+      : generalTreeMarkup(p,expanded)}</div><aside id="item-details" class="item-details" aria-live="polite">${details(p,controls)}</aside></div>`;
 }
 
 function techniqueRole(id:string){const s=data.specializationSkills.find(s=>s.id===id);return s&&'role' in s?String(s.role):'entry';}
 function techniqueRoleName(id:string){return t('ui.pathway'+({active:'NewAction',evolution:'Evolution',control:'Control',capstone:'Capstone',entry:'Entry'} as Record<string,string>)[techniqueRole(id)]);}
-export function specializationMarkup(p:PlayerView,allowed=true){
+export function specializationMarkup(p:PlayerView,allowed=true,controls:ControlOptions=defaultControls()){
   const map=allowed&&!p.training?specializationMapLayout(p.classId,specializationRoute):null;if(!map)return '';
   const render=(id:string,reference:boolean)=>{
     const skill=allSkills.find(s=>s.id===id)!;
     if(reference)return '<button type="button" class="pathway-foundation" data-prerequisite="'+e(id)+'" data-graph-focus="'+e(id)+'" lang="'+e(locale)+'" dir="auto"><small>'+e(t('branch.general'))+'</small><strong>'+e(t('skill.'+id+'.name'))+'</strong><span>'+e(p.skills.includes(id)?t('ui.owned'):number(skill.cost)+' '+t('ui.skillPoints'))+'</span></button>';
-    const state=canBuy(p,'skill',id),owned=p.skills.includes(id),role=techniqueRole(id),slot=['engineer-machinery-salvage-1','engineer-traps-haul-1','engineer-builder-repair-1'].includes(id)?'B':id==='engineer-builder-redoubt-1'?'R':role==='entry'||role==='control'||id==='engineer-builder-linked-1'?'Q':'C';
+    const state=canBuy(p,'skill',id),owned=p.skills.includes(id),role=techniqueRole(id),slots=techniqueControlSlots(id);
     const button=nodeButton(p,'skill',id,id==='engineer-machinery-1'?'engineer':'ability',t('skill.'+id+'.name'),skill.grade).replace('data-inspect=','data-graph-focus="'+e(id)+'" aria-describedby="pathway-summary-'+e(id)+'" data-inspect=');
-    return '<article class="pathway-technique role-'+e(role)+'"><span class="technique-role">'+e(techniqueRoleName(id))+'</span>'+button+'<strong>'+e(t('skill.'+id+'.name'))+'</strong><p class="pathway-state">'+e(owned?t('ui.owned'):number(skill.cost)+' '+t('ui.skillPoints'))+' <span class="pathway-slot">'+(slot==='Q'?'Q':e(t(slot==='R'?'ui.pathwayUltimate':slot==='B'?'ui.pathwayAction2':'ui.pathwayAction1')))+'</span></p><p class="pathway-summary" id="pathway-summary-'+e(id)+'">'+e(t('pathway.'+id+'.summary'))+' '+e(!owned&&!state.allowed?state.reason:'')+'</p><p class="pathway-parent">'+e(t('ui.prerequisite',{name:t('skill.'+skill.prerequisite+'.name')}))+'</p></article>';
+    return '<article class="pathway-technique role-'+e(role)+'"><span class="technique-role">'+e(techniqueRoleName(id))+'</span>'+button+'<strong>'+e(t('skill.'+id+'.name'))+'</strong><p class="pathway-state">'+e(owned?t('ui.owned'):number(skill.cost)+' '+t('ui.skillPoints'))+' <span class="pathway-slot">'+e(slots.map(techniqueSlotLabel).join(' / '))+'</span></p><p class="pathway-summary" id="pathway-summary-'+e(id)+'">'+e(t('pathway.'+id+'.summary'))+' '+e(!owned&&!state.allowed?state.reason:'')+'</p><p class="pathway-parent">'+e(t('ui.prerequisite',{name:t('skill.'+skill.prerequisite+'.name')}))+'</p></article>';
   };
   const art=assets.specializationIcons?.['engineer-machinery-1'];
   const routes='<nav class="pathway-route-picker" aria-label="'+e(t('ui.pathwayRoutes'))+'">'+[{id:'all',nameKey:'ui.pathwayOverview'},...specializationRoutes(p.classId)].map(route=>'<button type="button" data-specialization-route="'+e(route.id)+'" aria-pressed="'+(route.id===specializationRoute)+'">'+e(t(route.nameKey))+'</button>').join('')+'<p>'+e(t('ui.pathwayRouteHelp'))+'</p></nav>';
-  return '<section class="pathway-choices" lang="en" dir="ltr" aria-label="'+e(t('ui.pathways'))+'"><header class="pathway-manual-heading"><div class="manual-emblem" aria-hidden="true">'+(art?'<img src="'+e(art)+'" alt="">':icon('engineer'))+'</div><div><p class="eyebrow">'+e(t('ui.pathways'))+'</p><h3>'+e(t('ui.pathwayFieldManual'))+'</h3><p>'+e(t('ui.pathwayManualHelp'))+'</p></div></header>'+routes+'<div class="pathway-toolbar"><small>'+e(t('ui.pathwayControls'))+'</small><button type="button" data-specialization-mode="map" aria-pressed="'+(specializationMode==='map')+'">'+e(t('ui.pathwayMap'))+'</button><button type="button" data-specialization-mode="list" aria-pressed="'+(specializationMode==='list')+'">'+e(t('ui.pathwayList'))+'</button><button type="button" data-specialization-zoom="fit" lang="en" dir="ltr" '+(specializationMode==='list'?'disabled':'')+'>'+e(t('ui.treeFit'))+'</button><button type="button" data-specialization-zoom="out" aria-label="'+e(t('ui.zoomOut'))+'" '+(specializationZoom<=.2||specializationMode==='list'?'disabled':'')+'>−</button><button type="button" data-specialization-zoom="reset" aria-label="'+e(t('ui.resetZoom'))+'" '+(specializationMode==='list'?'disabled':'')+'>'+number(Math.round(specializationZoom*100))+'%</button><button type="button" data-specialization-zoom="in" aria-label="'+e(t('ui.zoomIn'))+'" '+(specializationZoom>=2||specializationMode==='list'?'disabled':'')+'>+</button></div>'+specializationMapMarkup(map,p.skills,render,{mode:specializationMode,zoom:specializationZoom,selected:chosen?.id})+'<div class="pathway-legend" aria-hidden="true"><span><i class="active-key"></i>'+e(t('ui.pathwayNewAction'))+'</span><span><i class="evolution-key"></i>'+e(t('ui.pathwayEvolution'))+'</span><span><i class="exclusive-key"></i>'+e(t('ui.pathwayExclusive'))+'</span></div></section>';
+  return '<section class="pathway-choices" lang="en" dir="ltr" aria-label="'+e(t('ui.pathways'))+'"><header class="pathway-manual-heading"><div class="manual-emblem" aria-hidden="true">'+(art?'<img src="'+e(art)+'" alt="">':icon('engineer'))+'</div><div><p class="eyebrow">'+e(t('ui.pathways'))+'</p><h3>'+e(t('ui.pathwayFieldManual'))+'</h3><p>'+e(t('ui.pathwayManualHelp'))+'</p></div></header>'+engineerKitMarkup(p,controls,engineerControlsOpen)+routes+'<div class="pathway-toolbar"><small>'+e(t('ui.pathwayControls'))+'</small><button type="button" data-specialization-mode="map" aria-pressed="'+(specializationMode==='map')+'">'+e(t('ui.pathwayMap'))+'</button><button type="button" data-specialization-mode="list" aria-pressed="'+(specializationMode==='list')+'">'+e(t('ui.pathwayList'))+'</button><button type="button" data-specialization-zoom="fit" lang="en" dir="ltr" '+(specializationMode==='list'?'disabled':'')+'>'+e(t('ui.treeFit'))+'</button><button type="button" data-specialization-zoom="out" aria-label="'+e(t('ui.zoomOut'))+'" '+(specializationZoom<=.2||specializationMode==='list'?'disabled':'')+'>−</button><button type="button" data-specialization-zoom="reset" aria-label="'+e(t('ui.resetZoom'))+'" '+(specializationMode==='list'?'disabled':'')+'>'+number(Math.round(specializationZoom*100))+'%</button><button type="button" data-specialization-zoom="in" aria-label="'+e(t('ui.zoomIn'))+'" '+(specializationZoom>=2||specializationMode==='list'?'disabled':'')+'>+</button></div>'+specializationMapMarkup(map,p.skills,render,{mode:specializationMode,zoom:specializationZoom,selected:chosen?.id})+'<div class="pathway-legend" aria-hidden="true"><span><i class="active-key"></i>'+e(t('ui.pathwayNewAction'))+'</span><span><i class="evolution-key"></i>'+e(t('ui.pathwayEvolution'))+'</span><span><i class="exclusive-key"></i>'+e(t('ui.pathwayExclusive'))+'</span></div></section>';
 }
 function foundationGlyph(id:string,fallback:string){return id==='general-brake-step'?'brake':id==='general-course-correction'?'course':fallback;}
 function generalTreeMarkup(p:PlayerView,expanded:boolean){
  return foundationTreeMarkup({classId:p.classId,skills:p.skills,branch:branchId,expanded,mode:foundationMode,zoom:mapZoom,label:t,symbol:icon(p.classId),behavior:skillBehavior,render:id=>{const s=allSkills.find(s=>s.id===id)!;return nodeButton(p,'skill',id,foundationGlyph(id,s.classId==='general'?'speed':effectIcon(s.effects)),t('skill.'+id+'.name'),s.grade);}});
 }
-function details(p: PlayerView) {
+function details(p: PlayerView,controls:ControlOptions) {
   if (!chosen)
     return `<div class="inspect-empty">${resourceArt(tab === 'gear' ? 'equipment' : 'skills', assets.resourceIcons)}<p>${e(t('ui.selectItem'))}</p></div>`;
   const { kind, id } = chosen,
@@ -272,7 +276,7 @@ function details(p: PlayerView) {
     glyph = foundationGlyph(id,effectIcon(node.effects));
     grade = node.classId==='general'?'':node.grade;
     body = `<p class="eyebrow">${e(t('branch.' + node.branchId))} · ${e(t(node.subbranchNameKey))}</p><p class="effect-list">${e(effectText(node.effects))}</p>${skillBehavior(node.id) ? `<p class="skill-behavior" ${data.specializationSkills.some(s=>s.id===id)?'lang="en" dir="ltr"':''}>${e(skillBehavior(node.id))}</p>` : ''}<p class="muted">${e(t('ui.ratingExplanation'))}</p>${node.prerequisite ? `<button class="prerequisite-link" data-prerequisite="${node.prerequisite}">${e(t('ui.prerequisite', { name: t('skill.' + node.prerequisite + '.name') }))}</button>` : ''}${node.capstone ? `<p class="capstone-note">${icon('ultimate')}${e(t('ui.capstone'))} · ${e(t('ui.capstoneLimit'))}</p>` : ''}`;
-    if(data.specializationSkills.some(s=>s.id===id))body='<div class="pathway-detail" lang="en" dir="ltr"><p class="technique-role">'+e(techniqueRoleName(id))+'</p><p class="skill-behavior">'+e(skillBehavior(id))+'</p>'+('<p>'+e(t('ui.pathwayLate'))+'</p>')+(specializationSpRequired(id)?'<p>'+e(t('ui.pathwayEarned',{count:specializationSpRequired(id),earned:p.sp+p.skills.reduce((n,id)=>n+(allSkills.find(s=>s.id===id)?.cost??0),0)}))+'</p>':'')+(node.prerequisite?'<button class="prerequisite-link" data-prerequisite="'+e(node.prerequisite)+'">'+e(t('ui.prerequisite',{name:t('skill.'+node.prerequisite+'.name')}))+'</button>':'')+(node.capstone?'<p class="capstone-note">'+e(t('ui.capstoneLimit'))+'</p>':'')+'</div>';
+    if(data.specializationSkills.some(s=>s.id===id))body='<div class="pathway-detail" lang="en" dir="ltr"><p class="technique-role">'+e(techniqueRoleName(id))+'</p>'+techniqueControlsMarkup(id,controls)+'<p class="skill-behavior">'+e(skillBehavior(id))+'</p>'+('<p>'+e(t('ui.pathwayLate'))+'</p>')+(specializationSpRequired(id)?'<p>'+e(t('ui.pathwayEarned',{count:specializationSpRequired(id),earned:p.sp+p.skills.reduce((n,id)=>n+(allSkills.find(s=>s.id===id)?.cost??0),0)}))+'</p>':'')+(node.prerequisite?'<button class="prerequisite-link" data-prerequisite="'+e(node.prerequisite)+'">'+e(t('ui.prerequisite',{name:t('skill.'+node.prerequisite+'.name')}))+'</button>':'')+(node.capstone?'<p class="capstone-note">'+e(t('ui.capstoneLimit'))+'</p>':'')+'</div>';
     if(node.classId==='general')body=`<p>${e(t('ui.foundationSharedHelp'))}</p><p class="skill-behavior" ${['general-brake-step','general-course-correction'].includes(id)?'lang="en" dir="ltr"':''}>${e(skillBehavior(node.id))}</p>${node.prerequisite?`<button type="button" class="prerequisite-link" data-prerequisite="${e(node.prerequisite)}">${e(t('ui.prerequisite',{name:t('skill.'+node.prerequisite+'.name')}))}</button>`:''}`;
   } else if (kind === 'weapon') {
     const w = data.weapons.find((w) => w.id === id)!;
@@ -323,6 +327,7 @@ export function bindShop(
   difficulty = 'normal',
   chapterStage?:ChapterStage,
   allowSpecializations = true,
+  controls: ControlOptions = defaultControls(),
 ) {
   shopDifficulty = difficulty;
   shopSpecializationsAllowed = allowSpecializations;
@@ -355,10 +360,11 @@ export function bindShop(
   };
   const redraw = (focus: string) => {
     if (!active()) return;
+    const oldKit=workspace!.querySelector<HTMLDetailsElement>('[data-engineer-kit]');if(oldKit)engineerControlsOpen=oldKit.open;
     const oldSpecial=workspace!.querySelector<HTMLElement>('.specialization-viewport');if(oldSpecial)specializationScroll={top:oldSpecial.scrollTop,left:oldSpecial.scrollLeft};
     const oldScroll = workspace!.querySelector<HTMLElement>('.skill-scroll');
     if(oldScroll)generalScroll={top:oldScroll.scrollTop,left:oldScroll.scrollLeft};
-    workspace!.innerHTML = shopMarkup(p, supplyBindings, expanded, difficulty,chapterStage,allowSpecializations);
+    workspace!.innerHTML = shopMarkup(p, supplyBindings, expanded, difficulty,chapterStage,allowSpecializations,controls);
     bindActions();
     const scroller = workspace!.querySelector<HTMLElement>('.skill-scroll');
     if (scroller) {
@@ -372,6 +378,7 @@ export function bindShop(
     status(message);
   };
   const bindDetails = () => {
+    const kit=workspace!.querySelector<HTMLDetailsElement>('[data-engineer-kit]');if(kit)kit.ontoggle=()=>{if(active(kit))engineerControlsOpen=kit.open;};
     const buy = workspace!.querySelector<HTMLButtonElement>('#buy-selected');
     if (buy)
       buy.onclick = () => {
@@ -415,7 +422,7 @@ export function bindShop(
             node.classList.toggle('inspected', active);
             node.setAttribute('aria-pressed', String(active));
           });
-          workspace!.querySelector('#item-details')!.innerHTML = details(p);
+          workspace!.querySelector('#item-details')!.innerHTML = details(p,controls);
           bindDetails();
           if(tab==='specializations'){const map=specializationMapLayout(p.classId,specializationRoute);if(map)highlightSpecialization(workspace!,map,chosen.id);}
         };
@@ -568,6 +575,7 @@ export function bindShop(
   if (workspace) bindActions();
   return {
     dispose() {
+      const kit=workspace?.querySelector<HTMLDetailsElement>('[data-engineer-kit]');if(kit)engineerControlsOpen=kit.open;
       disposed = true;
     },
     reportPurchase(result: { ok: boolean; reason?: string }) {

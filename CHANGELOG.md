@@ -1,6 +1,14 @@
 # Changelog
 
-Development build **2026.11.04-engineer-transition-polish**, protocol 54. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.04-engineer-kit-guide**, protocol 54. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-04 — Know the kit you are building
+
+### Your field controls
+
+- The Engineer field manual now has an optional, initially closed controls card. It lists the three issued actions and adds only techniques you actually own, using the same evolved ability names as the combat HUD.
+- Inspect a technique to see its affected inputs with your current keyboard, alternate-key and gamepad bindings. The manual refreshes after controls change; opening the guide or inspecting a node spends nothing.
+- Breach Casings now identifies both placement-triggered and remote-firing inputs. The guide keeps its open state while you change routes or reading view. Existing tree layout, abilities, purchases, saves and progression rules remain.
 
 ## 2026-11-04 — Leave old hazards behind
 

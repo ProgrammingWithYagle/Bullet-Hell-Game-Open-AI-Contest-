@@ -1,0 +1,13 @@
+# Engineer kit and control guide
+
+Candidate build2026.11.04-engineer-kit-guide/protocol54, contentd7aea7…unchanged. Base metadata151690e0 binds playable sourcef6709140/1,390tests; exact source and metadata push/PR CI pass. This remains the single Engineer usability focus.
+
+The field manual previously exposed generic Action1/Action2 labels and default-key prose without an owned-kit guide or current remapped binding context. Breach Casings was labeled only Action1 even though ordinary placed-charge triggering also evolves. Four pre-implementation native DOM flows fail in regression-before-fix.log.
+
+The initially closed controls card now shows only the owned three/four/five-action kit. It shares evolved extra-action names with engineerActions, the existing combat HUD source. The inspector shows actual keyboard/alternate/gamepad bindings for affected inputs, including Q and action1 for Breach Casings. Main threads real inputOptions through initial markup and redraw bindings, and includes binding changes in the phase overlay signature. Foldout openness survives local redraw/disposal. It has native details/summary semantics, bounded responsive rows, themed keycaps and forced-colors support; no new permanent combat panel.
+
+focused-final.log passes20checks including four new flows, existing guarded purchases, both tree views, actual Builder peers, General topology and input controls. focused-after-fix.log preserves two initial test-fixture errors: whitespace-normalized MenuDOM text and an unavailable hasAttribute helper; the final assertions use semantic child values and getAttribute, with a typed MenuElement. These are not gameplay defects.
+
+No shared simulation/controller, catalog, prices, assets, locale keys, protocol, acquisition, save/profile schema or proof ownership changes. All control labels reuse issued catalogs; new specialization names remain the existing English pilot. Full gate, exact-source CI and fresh matching native review evidence follow separately. Earlier previews/privateSQLite and Service Yard WIP remain. Human/rendered/device/native-language/listening/motion/final-balance acceptance stays separate. No browser automation, subagents, cleanup, deployment or new shop implementation.
+
+Complete full-gate01.log passes1,394tests, TypeScript, authored content/locales/story,144early-Campaign cases, production build and71encounter/300survivor/60companion atlas contracts. Exact raw log/runtime/source-test fingerprints bind in source-verification.json. Compiled main/CSS contain the control guide and current testing endpoint. Shared simulation/catalog/protocol/schema remain exact; this slice changes client guidance.

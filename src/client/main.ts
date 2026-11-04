@@ -818,6 +818,8 @@ function update(view: View) {
     view.phase==='lobby'?view.players.map(p=>[p.id,p.name,p.classId,p.connected]):null,
     view.secretStatus,
     settings.branchingTree,
+    inputOptions.bindings,
+    inputOptions.gamepad,
     p.coins,
     p.sp,
     p.training,
@@ -939,7 +941,7 @@ function renderOverlay(view: View, p: PlayerView) {
   const phaseContent = overlay.querySelector<HTMLElement>('.phase-content');
   if (phaseContent) phaseContent.inert = view.matchPaused === true;
   if (['lobby', 'shop'].includes(view.phase))
-    shopBinding = bindShop(overlay, p, (request) => session?.purchase(request), supplyBindings(), settings.branchingTree,view.run.difficulty,view.chapter?.stage,view.run.mode!=='story');
+    shopBinding = bindShop(overlay, p, (request) => session?.purchase(request), supplyBindings(), settings.branchingTree,view.run.difficulty,view.chapter?.stage,view.run.mode!=='story',inputOptions);
   overlay.querySelectorAll<HTMLButtonElement>('[data-vote]').forEach(
     (button) =>
       (button.onclick = () => {
@@ -980,7 +982,7 @@ function renderOverlay(view: View, p: PlayerView) {
 const supplyBindings = () =>
   [1, 2, 3].map((n) => bindingLabel(inputOptions.bindings[('supply' + n) as 'supply1'][0]));
 function shop(p: PlayerView) {
-  return '<div class="loadout-editor">' + shopMarkup(p, supplyBindings(), settings.branchingTree,session?.view?.run.difficulty??'normal',session?.view?.chapter?.stage,session?.view?.run.mode!=='story') + '</div>';
+  return '<div class="loadout-editor">' + shopMarkup(p, supplyBindings(), settings.branchingTree,session?.view?.run.difficulty??'normal',session?.view?.chapter?.stage,session?.view?.run.mode!=='story',inputOptions) + '</div>';
 }
 async function leave(showTeamRecord = false) {
   storyReaderBinding?.();storyReaderBinding=undefined;
