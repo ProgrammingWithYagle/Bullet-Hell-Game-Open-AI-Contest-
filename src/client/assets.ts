@@ -130,7 +130,7 @@ const encounterMotion = import.meta.glob(
     eager: true,
   },
 ) as Record<string, string>;
-const specializationImages=import.meta.glob('../../assets/production/ui/engineer-tree-2026-11-03/*.png',{query:'?url',import:'default',eager:true}) as Record<string,string>;
+const specializationImages=import.meta.glob(['../../assets/production/ui/engineer-tree-2026-11-03/*.png','../../assets/production/ui/soldier-tree-2026-11-04/*.png'],{query:'?url',import:'default',eager:true}) as Record<string,string>;
 export const assets = {
   specializationIcons:Object.fromEntries(Object.entries(specializationImages).map(([path,url])=>[path.split('/').at(-1)!.replace('.png',''),url])) as Record<string,string>,
   resourceIcons: Object.fromEntries(

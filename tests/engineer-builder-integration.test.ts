@@ -153,7 +153,7 @@ test("Protocol-53 local boundaries preserve all twelve identities, all four Gene
   }
 });
 
-test("Issued fourteen-technique ownership migrates exactly, while protocol51/52/53 cannot invent Builder and current54 rejects conflicting paths", () => {
+test("Issued fourteen-technique ownership migrates exactly, while protocol51/52/53 cannot invent Builder and current55 rejects conflicting paths", () => {
   const seen = new Set<string>();
   for (const route of [
     [
@@ -214,7 +214,7 @@ test("Issued fourteen-technique ownership migrates exactly, while protocol51/52/
     bad.player.skills.push(extra);
     assert.throws(() => Game.restoreOffline(bad));
   }
-  assert.equal(PROTOCOL, 54);
+  assert.equal(PROTOCOL, 55);
   assert.equal(save.contentRevision, CONTENT_REVISION);
 });
 

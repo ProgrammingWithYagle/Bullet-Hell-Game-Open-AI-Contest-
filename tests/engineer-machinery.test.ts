@@ -98,7 +98,7 @@ function isolated(skills: string[], pair = false) {
 }
 
 test("Machinery grows from three starter actions to four and five while earned-SP gates protect late abilities", () => {
-  assert.equal(data.specializationSkills.length, 22);
+  assert.equal(data.specializationSkills.filter(s=>s.classId==='engineer').length, 22);
   assert.equal(data.skills.length, 648);
   for (const [id, gate] of [
     [ids.anchor, 5],

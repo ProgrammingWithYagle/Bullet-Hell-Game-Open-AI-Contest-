@@ -19,12 +19,12 @@ async function fixture(t:TestContext){
 test('The specialization graph contains only real techniques, their General reference and the shared Q exclusion',()=>{
   const map=specializationMapLayout('engineer')!;assert(map);
   assert.deepEqual(map.nodes.filter(n=>n.reference).map(n=>n.id),['engineer-constructs-1']);
-  assert.deepEqual(new Set(map.nodes.filter(n=>!n.reference).map(n=>n.id)),new Set(data.specializationSkills.map(s=>s.id)));
-  assert.deepEqual(map.edges,data.specializationSkills.map(s=>({from:s.prerequisite,to:s.id})));
+  assert.deepEqual(new Set(map.nodes.filter(n=>!n.reference).map(n=>n.id)),new Set(data.specializationSkills.filter(s=>s.classId==='engineer').map(s=>s.id)));
+  assert.deepEqual(map.edges,data.specializationSkills.filter(s=>s.classId==='engineer').map(s=>({from:s.prerequisite,to:s.id})));
   assert.deepEqual(new Set(map.exclusions.map(p=>p.a+'>'+p.b)),new Set(['engineer-machinery-1>engineer-traps-1','engineer-machinery-1>engineer-builder-1','engineer-traps-1>engineer-builder-1','engineer-machinery-anchor-1>engineer-machinery-survey-1','engineer-traps-wire-1>engineer-traps-switch-1','engineer-builder-longspan-1>engineer-builder-wings-1']));
-  for(const cl of data.classes.filter(c=>c.id!=='engineer'))assert.equal(specializationMapLayout(cl.id),null);
+  for(const cl of data.classes.filter(c=>!['engineer','soldier'].includes(c.id)))assert.equal(specializationMapLayout(cl.id),null);
   const html=specializationMapMarkup(map,['engineer-constructs-1','engineer-machinery-1'],(id,ref)=>'<button data-graph-focus="'+id+'">'+(ref?'General':'Technique')+'</button>');
-  assert.equal((html.match(/data-from=/g)??[]).length,data.specializationSkills.length);assert(html.includes('conflicting-route'));assert(!html.includes('Field Works'));assert(!html.includes('data-purchase'));
+  assert.equal((html.match(/data-from=/g)??[]).length,data.specializationSkills.filter(s=>s.classId==='engineer').length);assert(html.includes('conflicting-route'));assert(!html.includes('Field Works'));assert(!html.includes('data-purchase'));
 });
 test('Graph arrows follow authored positions and normal Tab can leave the graph without purchasing',t=>{
   const {host,document}=menuEnvironment(t),map=specializationMapLayout('engineer')!,root='engineer-constructs-1',left='engineer-machinery-1',right='engineer-traps-1';
@@ -57,7 +57,7 @@ test('Both General views lead to the actual prerequisite purchase, then the dist
     f.host.querySelector('[data-shop-tab="specializations"]')!.click();f.host.querySelector('[data-shop-tab="general"]')!.click();
     const returned=f.host.querySelector('.skill-scroll') as any;assert.equal(returned.scrollTop,123);assert.equal(returned.scrollLeft,45);
     if(!expanded)f.host.querySelectorAll('[data-branch]')[3].click();
-    f.host.querySelector('[data-shop-tab="specializations"]')!.click();assert(f.host.querySelector('.specialization-graph'));assert.equal(f.host.querySelectorAll('[data-inspect]').length,data.specializationSkills.length);
+    f.host.querySelector('[data-shop-tab="specializations"]')!.click();assert(f.host.querySelector('.specialization-graph'));assert.equal(f.host.querySelectorAll('[data-inspect]').length,data.specializationSkills.filter(s=>s.classId==='engineer').length);
     f.host.querySelector('[data-inspect="engineer-machinery-1"]')!.click();assert(f.host.querySelector('#buy-selected')!.disabled);assert.equal(requests.length,0);
     f.host.querySelector('.pathway-foundation')!.click();assert.equal(f.host.querySelector('[data-shop-tab="general"]')!.getAttribute('aria-selected'),'true');assert.equal(f.document.activeElement?.dataset.inspect,'engineer-constructs-1');
     f.host.querySelector('#buy-selected')!.click();assert.deepEqual(requests,[{kind:'skill',item:'engineer-constructs-1'}]);render();
@@ -71,5 +71,6 @@ test('Campaign training and archived SP Story do not expose the Free Play specia
   const {shop}=await fixture(t),g=new Game({mode:'story'}),p=g.addPlayer('p','Tamsin','engineer'),v=viewOf(g,p.id).players[0];
   const campaign=shop.shopMarkup(v);assert(campaign.includes('data-shop-tab="tree"'));assert(!campaign.includes('data-shop-tab="specializations"'));assert(!campaign.includes('data-inspect="engineer-constructs-1"'));assert(!campaign.includes('data-inspect="general-sprint"'));
   const free=new Game(),q=free.addPlayer('q','Tamsin','engineer'),old=shop.shopMarkup(viewOf(free,q.id).players[0],[],true,'normal',undefined,false);assert(!old.includes('data-shop-tab="specializations"'));assert(!old.includes('pathway-choices'));
-  const soldier=new Game(),s=soldier.addPlayer('s','Mara','soldier'),other=shop.shopMarkup(viewOf(soldier,s.id).players[0]);assert(!other.includes('data-shop-tab="specializations"'));assert(other.includes('data-inspect="soldier-ballistics-1"'));
+  const soldier=new Game({mode:'story'}),s=soldier.addPlayer('s','Mara','soldier'),other=shop.shopMarkup(viewOf(soldier,s.id).players[0]);assert(!other.includes('data-shop-tab="specializations"'));assert(!other.includes('data-inspect="soldier-ballistics-1"'));
+  const medic=new Game(),m=medic.addPlayer('m','Perrin','medic'),unimplemented=shop.shopMarkup(viewOf(medic,m.id).players[0]);assert(!unimplemented.includes('data-shop-tab="specializations"'));assert(unimplemented.includes('data-inspect="medic-chemistry-1"'));
 });

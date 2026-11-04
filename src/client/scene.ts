@@ -1,3 +1,4 @@
+import {skirmisherRules}from'../shared/soldier-skirmisher.ts';
 import {drawAlchemyCue} from './alchemy-presentation.ts';
 import {drawRangerCue} from './ranger-presentation.ts';
 import {drawSwordCue} from './sword-presentation.ts';
@@ -866,6 +867,19 @@ export class CombatScene extends Phaser.Scene {
         h.lineStyle(impact?4:wire?2:1,color,impact?1:.8).lineBetween(cue.x,cue.y,cue.toX,cue.toY);
         h.lineStyle(2,color,.9).strokeCircle(cue.x,cue.y,wire?6:9).strokeCircle(cue.toX,cue.toY,wire?6:9);
         if(!wire&&!haul&&!impact){const progress=Math.max(0,Math.min(1,(now-cue.at)/Math.max(1,cue.until-cue.at)));h.lineStyle(3,color,1).beginPath().arc(cue.x,cue.y,16,-Math.PI/2,-Math.PI/2+Math.PI*2*progress).strokePath();}
+        continue;
+      }
+      if(cue.kind==='soldier-step'){
+        const local=cue.owner===this.localId,color=cue.mode==='rear'?0xb9cbbd:0xa5bdcf;
+        if(cue.mode==='rear'){
+          const mid=Math.ceil((cue.until-cue.at)/2)/(cue.until-cue.at),x=cue.x+(cue.toX-cue.x)*mid,y=cue.y+(cue.toY-cue.y)*mid;
+          h.lineStyle(skirmisherRules.guardRadius*2,color,local?.08:.035).lineBetween(x,y,x+Math.cos(cue.aim)*skirmisherRules.guardReach,y+Math.sin(cue.aim)*skirmisherRules.guardReach);
+          h.lineStyle(1,color,local?.55:.25).lineBetween(x,y,x+Math.cos(cue.aim)*skirmisherRules.guardReach,y+Math.sin(cue.aim)*skirmisherRules.guardReach);
+        }
+        h.lineStyle(2,color,local?.75:.35).lineBetween(cue.x,cue.y,cue.toX,cue.toY);
+        h.lineStyle(1,color,local?.8:.4).strokeCircle(cue.toX,cue.toY,cue.radius+3);
+        const dx=cue.toX-cue.x,dy=cue.toY-cue.y,length=Math.hypot(dx,dy)||1,nx=-dy/length,ny=dx/length;
+        h.lineBetween(cue.toX-dx/length*9+nx*5,cue.toY-dy/length*9+ny*5,cue.toX,cue.toY).lineBetween(cue.toX-dx/length*9-nx*5,cue.toY-dy/length*9-ny*5,cue.toX,cue.toY);
         continue;
       }
       if(cue.kind==='engineer-charge'){

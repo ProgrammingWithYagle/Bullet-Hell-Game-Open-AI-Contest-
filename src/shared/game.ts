@@ -1,3 +1,4 @@
+import {SoldierSkirmisher,type SkirmisherContext} from './soldier-skirmisher.ts';
 import {AlchemistKit,type AlchemyContext,type AlchemyOptions,type AlchemyArea} from './alchemist-kit.ts';
 import alchemyRules from './alchemy-rules.json';
 import {RangerKit, type RangerContext, type RangerOptions, type RangerTarget} from './ranger-kit.ts';
@@ -274,9 +275,10 @@ export class Game {
   readonly retinue = new SummonerKit();
   readonly ranger = new RangerKit();
   readonly alchemy = new AlchemistKit();
-  kitStatus(id:string){return {...this.classKits.status(id,this.combatTick),...(this.players.get(id)?.classId==='alchemist'?{...this.alchemy.status(id,this.combatTick,this.alchemyOptions(this.players.get(id)!)),alchemySamplesCapacity:this.stats(this.players.get(id)!).magazine}:{}),...(this.players.get(id)?.classId==='ranger'?{...this.ranger.status(id,this.combatTick,this.rangerOptions(this.players.get(id)!)),rangerQuiverCapacity:this.stats(this.players.get(id)!).magazine}:{}),...(this.players.get(id)?.classId==='bard'?this.bard.status(id):{}),...(this.players.get(id)?.classId==='swordsman'?this.sword.status(id,this.combatTick):{}),...(this.players.get(id)?.classId==='summoner'?this.retinue.status(this.players.get(id)!,this.combatTick,this.summonerOptions(this.players.get(id)!)):{})};}
+  readonly skirmisher = new SoldierSkirmisher();
+  kitStatus(id:string){return {...this.classKits.status(id,this.combatTick),...(this.players.get(id)?.classId==='soldier'?this.skirmisher.status(id):{}),...(this.players.get(id)?.classId==='alchemist'?{...this.alchemy.status(id,this.combatTick,this.alchemyOptions(this.players.get(id)!)),alchemySamplesCapacity:this.stats(this.players.get(id)!).magazine}:{}),...(this.players.get(id)?.classId==='ranger'?{...this.ranger.status(id,this.combatTick,this.rangerOptions(this.players.get(id)!)),rangerQuiverCapacity:this.stats(this.players.get(id)!).magazine}:{}),...(this.players.get(id)?.classId==='bard'?this.bard.status(id):{}),...(this.players.get(id)?.classId==='swordsman'?this.sword.status(id,this.combatTick):{}),...(this.players.get(id)?.classId==='summoner'?this.retinue.status(this.players.get(id)!,this.combatTick,this.summonerOptions(this.players.get(id)!)):{})};}
   readonly transforms = new AbilityTransforms();
-  classCues(){return [...this.classKits.cues(),...this.transforms.cues(),...this.bard.cues(),...this.sword.cues(this.roster(),this.combatTick),...this.ranger.cues(this.rangerContext()),...this.alchemy.cues(this.alchemyContext())];}
+  classCues(){return [...this.skirmisher.cues(),...this.classKits.cues(),...this.transforms.cues(),...this.bard.cues(),...this.sword.cues(this.roster(),this.combatTick),...this.ranger.cues(this.rangerContext()),...this.alchemy.cues(this.alchemyContext())];}
   private aimTargets(wardsOnly=true){const real=this.roster().filter(p=>p.status==='active'&&!this.classKits.untargetable(p.id,this.combatTick));return [...real,...this.classKits.decoyTargets(this.roster(),this.combatTick),...this.retinueTargets(wardsOnly)];}
   private hurtTarget(id:string,amount:number){const p=this.players.get(id);if(p)this.damage(p,amount);else if(/^retinue:\d+$/.test(id))this.retinue.hit(Number(id.slice(8)),amount,this.combatTick);else this.classKits.hitDecoy(id,amount);}
   private bossPrevious = { x: 800, y: 250 };
@@ -543,6 +545,7 @@ export class Game {
     return p;
   }
   setConnected(id: string, connected: boolean) {
+    if(!connected)this.skirmisher.remove(id);
     if(!connected){this.clearOwnerRetinue(id);this.clearOwnerRanger(id);this.clearOwnerAlchemy(id);}
     const p = this.players.get(id);
     if (!p) return;
@@ -847,7 +850,7 @@ export class Game {
     this.phase = 'defeat'; this.phaseEnds = 0; this.boss.defeatedAt = 0;
     this.chapterState?.fail();this.wardPatients.clear();
     this.classKits.clear();
-    this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.alchemy.clear();
+    this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.alchemy.clear();this.skirmisher.clear();
     if(this.chapterState){this.skirmish?.fail();this.clearChapterCombat();}
     return true;
   }
@@ -896,7 +899,7 @@ export class Game {
     Object.assign(this.selectedContract,classifiedContract(this.selectedContract.bossId??'constable',encounterVariant(this.settings.difficulty,this.selectedContract.variant)));
     this.phaseAttackReadyAt = 0;
     this.variantPressure.reset(this.combatTick);
-    this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.alchemy.clear();this.transforms.clear();this.wardenPatrol.clear();
+    this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.alchemy.clear();this.skirmisher.clear();this.transforms.clear();this.wardenPatrol.clear();
     this.pruneExpired();
     this.phase = 'combat';
     this.phaseEnds = 0;
@@ -1041,7 +1044,7 @@ export class Game {
     if(this.chapterState){this.clearChapterNode(true);return;}
     this.scoreObserver?.clear(this);
     for (const player of this.players.values()) this.clearPoison(player);
-    this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.alchemy.clear();this.transforms.clear();this.wardenPatrol.clear();
+    this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.alchemy.clear();this.skirmisher.clear();this.transforms.clear();this.wardenPatrol.clear();
     this.completedBossIds.add(this.boss.id);
     const previous=this.completedBossForms.get(this.boss.id);
     if(!previous||['normal','brutal','crazed'].indexOf(this.boss.variant)>['normal','brutal','crazed'].indexOf(previous))this.completedBossForms.set(this.boss.id,this.boss.variant);
@@ -1264,6 +1267,7 @@ export class Game {
       Boolean(this.skirmish)||this.boss.id==='matron',
     );
     this.classKits.step(this.kitContext());
+    this.skirmisher.step(this.skirmisherContext());
     this.bard.step(this.bardContext());
     this.sword.step(this.swordContext());
     this.retinue.step(this.retinueContext());
@@ -1296,7 +1300,7 @@ export class Game {
       } else this.phase = 'defeat';
       this.chapterState?.fail();this.wardPatients.clear();
       for (const player of this.players.values()) this.clearPoison(player);
-      this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.alchemy.clear();this.transforms.clear();this.wardenPatrol.clear();
+      this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.alchemy.clear();this.skirmisher.clear();this.transforms.clear();this.wardenPatrol.clear();
       this.director.reset('constable');
       this.minions.clear();
       this.signatures = [];
@@ -1311,11 +1315,11 @@ export class Game {
     else this.skirmish?.cancel();
     this.phase=success?'victory':'defeat';
     for(const p of this.players.values())this.clearPoison(p);
-    this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.alchemy.clear();this.transforms.clear();this.minions.clear();this.director.reset('constable');this.signatures=[];this.warnings.length=0;this.fields.length=0;this.clearShots();this.accord=null;
+    this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.alchemy.clear();this.skirmisher.clear();this.transforms.clear();this.minions.clear();this.director.reset('constable');this.signatures=[];this.warnings.length=0;this.fields.length=0;this.clearShots();this.accord=null;
   }
   private clearChapterCombat() {
     for (const p of this.players.values()) this.clearPoison(p);
-    this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.alchemy.clear();
+    this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.alchemy.clear();this.skirmisher.clear();
     this.transforms.clear();
     this.wardenPatrol.clear();
     this.minions.clear();
@@ -1528,17 +1532,20 @@ export class Game {
           (1 + rally) *
           environment.multiplier *
           terrain.multiplier;
+    const footwork=p.classId==='soldier'&&this.skirmisher.hasMotion(p.id)?this.skirmisher.movement(p,this.skirmisherContext()):null;
+    const footworkFactor=Math.min(now<p.slowUntil?.65:1,now<p.poisonUntil?clerkAppealRules.purpleSlowMultiplier:1)*environment.multiplier*terrain.multiplier;
     const next = moveBody(
       p,
       {
-        x: ((dash ? p.dashX : mx) * speed + environment.x + terrain.x + raidForce.x + earlyForce.x) * DT,
-        y: ((dash ? p.dashY : my) * speed + environment.y + terrain.y + raidForce.y + earlyForce.y) * DT,
+        x: footwork ? footwork.x*footworkFactor + (environment.x + terrain.x + raidForce.x + earlyForce.x)*DT : ((dash ? p.dashX : mx) * speed + environment.x + terrain.x + raidForce.x + earlyForce.x) * DT,
+        y: footwork ? footwork.y*footworkFactor + (environment.y + terrain.y + raidForce.y + earlyForce.y)*DT : ((dash ? p.dashY : my) * speed + environment.y + terrain.y + raidForce.y + earlyForce.y) * DT,
       },
       rule.playerRadius,
       this.obstacles,
     );
     p.x = next.x;
     p.y = next.y;
+    if(footwork)this.skirmisher.afterMove(p,this.skirmisherContext());
     if (i.reload && now >= p.overdriveUntil && !p.reloadAt && p.ammo < stats.magazine && (p.classId!=='ranger'||this.ranger.canPrimary(p,this.rangerContext())) && (p.classId!=='alchemist'||this.alchemy.canPrimary(p,this.alchemyContext())))
       this.reload(p);
     if(i.q){
@@ -1546,6 +1553,7 @@ export class Game {
     }
     for(const slot of ['technique1','technique2'] as const)if(i[slot])this.classKits.castEngineer(p,slot,this.kitContext());
     if (i.e && (now >= p.eAt || this.classKits.freeStep(p.id, now))) this.ability(p, 'e');
+    if(p.classId==='soldier'&&i.technique1)this.skirmisher.cast(p,this.skirmisherContext());
     if (i.ultimate && now >= p.ultimateAt) this.ability(p, 'ultimate');
     if (i.fire && !p.reloadAt && (p.classId!=='ranger'||this.ranger.canPrimary(p,this.rangerContext())) && (p.classId!=='alchemist'||this.alchemy.canPrimary(p,this.alchemyContext()))) {
       // A new trigger press starts now; sustained fire retains fractional debt.
@@ -1895,6 +1903,7 @@ export class Game {
     } else p.channelUntil = now + ticks(1);
     }
     this.transforms.afterCast(p,slot,before,empowered,this.transformContext());
+    if(p.classId==='soldier'&&slot==='e')this.skirmisher.burst(p,this.skirmisherContext());
     if(p.classId==='swordsman'||p.classId==='summoner'||p.classId==='ranger'||p.classId==='alchemist')return;
     this.events.push({
       type: 'sound',
@@ -1972,6 +1981,7 @@ export class Game {
       if(p.classId==='summoner')this.clearOwnerRetinue(p.id);
       if(p.classId==='ranger')this.clearOwnerRanger(p.id);
       if(p.classId==='alchemist')this.clearOwnerAlchemy(p.id);
+      if(p.classId==='soldier')this.skirmisher.remove(p.id);
       p.health = 0;
       p.downUntil = this.combatTick + ticks(rule.downedSeconds);
       p.reviveProgress = 0;
@@ -2288,6 +2298,13 @@ export class Game {
         }
         return count;
       },
+    };
+  }
+  private skirmisherContext():SkirmisherContext{
+    return {tick:this.combatTick,players:this.roster(),obstacles:this.obstacles,terrain:{bounds:this.arena.bounds,lava:this.arena.lavaPits},stats:p=>this.stats(p),id:()=>this.id(),
+      shoot:(p,point,aim,damage)=>{this.emitShot(p.id,point.x,point.y,aim,900,damage,4,1,1);this.events.push({type:'sound',id:'weapon-pistol',owner:p.id,x:point.x,y:point.y});},
+      intercept:(p,from,to,radius)=>{const shot=[...this.shots.values()].filter(s=>s.owner==='hostile'&&segmentCircle(from,to,s,s.radius+radius)!==null&&!this.obstacles.some(w=>segmentRect(p,s,w,0)!==null)).sort((a,b)=>distance(p,a)-distance(p,b)||a.id-b.id)[0];if(!shot)return false;this.removeShot(shot);return true;},
+      sound:(p,id)=>{this.events.push({type:'sound',id,owner:p.id,x:p.x,y:p.y});}
     };
   }
   private kitContext(): KitContext {

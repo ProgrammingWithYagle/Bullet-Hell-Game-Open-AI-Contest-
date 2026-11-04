@@ -1,3 +1,4 @@
+import {soldierKitMarkup}from'./soldier-controls.ts';
 import {
   combatReviveAllowed,
 } from '../../shared/recovery-policy.ts';
@@ -253,9 +254,9 @@ export function specializationMarkup(p:PlayerView,allowed=true,controls:ControlO
     const button=nodeButton(p,'skill',id,id==='engineer-machinery-1'?'engineer':'ability',t('skill.'+id+'.name'),skill.grade).replace('data-inspect=','data-graph-focus="'+e(id)+'" aria-describedby="pathway-summary-'+e(id)+'" data-inspect=');
     return '<article class="pathway-technique role-'+e(role)+'"><span class="technique-role">'+e(techniqueRoleName(id))+'</span>'+button+'<strong>'+e(t('skill.'+id+'.name'))+'</strong><p class="pathway-state">'+e(owned?t('ui.owned'):number(skill.cost)+' '+t('ui.skillPoints'))+' <span class="pathway-slot">'+e(slots.map(techniqueSlotLabel).join(' / '))+'</span></p><p class="pathway-summary" id="pathway-summary-'+e(id)+'">'+e(t('pathway.'+id+'.summary'))+' '+e(!owned&&!state.allowed?state.reason:'')+'</p><p class="pathway-parent">'+e(t('ui.prerequisite',{name:t('skill.'+skill.prerequisite+'.name')}))+'</p></article>';
   };
-  const art=assets.specializationIcons?.['engineer-machinery-1'];
-  const routes='<nav class="pathway-route-picker" aria-label="'+e(t('ui.pathwayRoutes'))+'">'+[{id:'all',nameKey:'ui.pathwayOverview'},...specializationRoutes(p.classId)].map(route=>'<button type="button" data-specialization-route="'+e(route.id)+'" aria-pressed="'+(route.id===specializationRoute)+'">'+e(t(route.nameKey))+'</button>').join('')+'<p>'+e(t('ui.pathwayRouteHelp'))+'</p></nav>';
-  return '<section class="pathway-choices" lang="en" dir="ltr" aria-label="'+e(t('ui.pathways'))+'"><header class="pathway-manual-heading"><div class="manual-emblem" aria-hidden="true">'+(art?'<img src="'+e(art)+'" alt="">':icon('engineer'))+'</div><div><p class="eyebrow">'+e(t('ui.pathways'))+'</p><h3>'+e(t('ui.pathwayFieldManual'))+'</h3><p>'+e(t('ui.pathwayManualHelp'))+'</p></div></header>'+engineerKitMarkup(p,controls,engineerControlsOpen)+routes+'<div class="pathway-toolbar"><small>'+e(t('ui.pathwayControls'))+'</small><button type="button" data-specialization-mode="map" aria-pressed="'+(specializationMode==='map')+'">'+e(t('ui.pathwayMap'))+'</button><button type="button" data-specialization-mode="list" aria-pressed="'+(specializationMode==='list')+'">'+e(t('ui.pathwayList'))+'</button><button type="button" data-specialization-zoom="fit" lang="en" dir="ltr" '+(specializationMode==='list'?'disabled':'')+'>'+e(t('ui.treeFit'))+'</button><button type="button" data-specialization-zoom="out" aria-label="'+e(t('ui.zoomOut'))+'" '+(specializationZoom<=.2||specializationMode==='list'?'disabled':'')+'>−</button><button type="button" data-specialization-zoom="reset" aria-label="'+e(t('ui.resetZoom'))+'" '+(specializationMode==='list'?'disabled':'')+'>'+number(Math.round(specializationZoom*100))+'%</button><button type="button" data-specialization-zoom="in" aria-label="'+e(t('ui.zoomIn'))+'" '+(specializationZoom>=2||specializationMode==='list'?'disabled':'')+'>+</button></div>'+specializationMapMarkup(map,p.skills,render,{mode:specializationMode,zoom:specializationZoom,selected:chosen?.id})+'<div class="pathway-legend" aria-hidden="true"><span><i class="active-key"></i>'+e(t('ui.pathwayNewAction'))+'</span><span><i class="evolution-key"></i>'+e(t('ui.pathwayEvolution'))+'</span><span><i class="exclusive-key"></i>'+e(t('ui.pathwayExclusive'))+'</span></div></section>';
+  const art=assets.specializationIcons?.[p.classId==='soldier'?'soldier-skirmisher-1':'engineer-machinery-1'];
+  const routes=specializationRoutes(p.classId).length>1?'<nav class="pathway-route-picker" aria-label="'+e(t('ui.pathwayRoutes'))+'">'+[{id:'all',nameKey:'ui.pathwayOverview'},...specializationRoutes(p.classId)].map(route=>'<button type="button" data-specialization-route="'+e(route.id)+'" aria-pressed="'+(route.id===specializationRoute)+'">'+e(t(route.nameKey))+'</button>').join('')+'<p>'+e(t('ui.pathwayRouteHelp'))+'</p></nav>':'';
+  return '<section class="pathway-choices" lang="en" dir="ltr" aria-label="'+e(t('ui.pathways'))+'"><header class="pathway-manual-heading"><div class="manual-emblem" aria-hidden="true">'+(art?'<img src="'+e(art)+'" alt="">':icon('engineer'))+'</div><div><p class="eyebrow">'+e(t('ui.pathways'))+'</p><h3>'+e(t(p.classId==='soldier'?'ui.soldier.fieldManual':'ui.pathwayFieldManual'))+'</h3><p>'+e(t(p.classId==='soldier'?'ui.soldier.manualHelp':'ui.pathwayManualHelp'))+'</p></div></header>'+(p.classId==='soldier'?soldierKitMarkup(p,controls,engineerControlsOpen):engineerKitMarkup(p,controls,engineerControlsOpen))+routes+'<div class="pathway-toolbar"><small>'+e(t('ui.pathwayControls'))+'</small><button type="button" data-specialization-mode="map" aria-pressed="'+(specializationMode==='map')+'">'+e(t('ui.pathwayMap'))+'</button><button type="button" data-specialization-mode="list" aria-pressed="'+(specializationMode==='list')+'">'+e(t('ui.pathwayList'))+'</button><button type="button" data-specialization-zoom="fit" lang="en" dir="ltr" '+(specializationMode==='list'?'disabled':'')+'>'+e(t('ui.treeFit'))+'</button><button type="button" data-specialization-zoom="out" aria-label="'+e(t('ui.zoomOut'))+'" '+(specializationZoom<=.2||specializationMode==='list'?'disabled':'')+'>−</button><button type="button" data-specialization-zoom="reset" aria-label="'+e(t('ui.resetZoom'))+'" '+(specializationMode==='list'?'disabled':'')+'>'+number(Math.round(specializationZoom*100))+'%</button><button type="button" data-specialization-zoom="in" aria-label="'+e(t('ui.zoomIn'))+'" '+(specializationZoom>=2||specializationMode==='list'?'disabled':'')+'>+</button></div>'+specializationMapMarkup(map,p.skills,render,{mode:specializationMode,zoom:specializationZoom,selected:chosen?.id})+'<div class="pathway-legend" aria-hidden="true"><span><i class="active-key"></i>'+e(t('ui.pathwayNewAction'))+'</span><span><i class="evolution-key"></i>'+e(t('ui.pathwayEvolution'))+'</span><span><i class="exclusive-key"></i>'+e(t('ui.pathwayExclusive'))+'</span></div></section>';
 }
 function foundationGlyph(id:string,fallback:string){return id==='general-brake-step'?'brake':id==='general-course-correction'?'course':fallback;}
 function generalTreeMarkup(p:PlayerView,expanded:boolean){
@@ -360,7 +361,7 @@ export function bindShop(
   };
   const redraw = (focus: string) => {
     if (!active()) return;
-    const oldKit=workspace!.querySelector<HTMLDetailsElement>('[data-engineer-kit]');if(oldKit)engineerControlsOpen=oldKit.open;
+    const oldKit=workspace!.querySelector<HTMLDetailsElement>('[data-class-kit]');if(oldKit)engineerControlsOpen=oldKit.open;
     const oldSpecial=workspace!.querySelector<HTMLElement>('.specialization-viewport');if(oldSpecial)specializationScroll={top:oldSpecial.scrollTop,left:oldSpecial.scrollLeft};
     const oldScroll = workspace!.querySelector<HTMLElement>('.skill-scroll');
     if(oldScroll)generalScroll={top:oldScroll.scrollTop,left:oldScroll.scrollLeft};
@@ -378,7 +379,7 @@ export function bindShop(
     status(message);
   };
   const bindDetails = () => {
-    const kit=workspace!.querySelector<HTMLDetailsElement>('[data-engineer-kit]');if(kit)kit.ontoggle=()=>{if(active(kit))engineerControlsOpen=kit.open;};
+    const kit=workspace!.querySelector<HTMLDetailsElement>('[data-class-kit]');if(kit)kit.ontoggle=()=>{if(active(kit))engineerControlsOpen=kit.open;};
     const buy = workspace!.querySelector<HTMLButtonElement>('#buy-selected');
     if (buy)
       buy.onclick = () => {
@@ -575,7 +576,7 @@ export function bindShop(
   if (workspace) bindActions();
   return {
     dispose() {
-      const kit=workspace?.querySelector<HTMLDetailsElement>('[data-engineer-kit]');if(kit)engineerControlsOpen=kit.open;
+      const kit=workspace?.querySelector<HTMLDetailsElement>('[data-class-kit]');if(kit)engineerControlsOpen=kit.open;
       disposed = true;
     },
     reportPurchase(result: { ok: boolean; reason?: string }) {

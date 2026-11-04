@@ -67,6 +67,7 @@ check('Weapon accounting, rates and finite cooldowns',()=>{
   for(const item of [...c.upgrades,...c.supplies])assert((item.price??item.basePrice)>=0);
   for(const cl of c.classes)for(const a of [...cl.abilities,cl.ultimate])assert(a.cooldown>0&&a.duration>=0&&a.radius>=0&&a.damage>=0);
 });
+check('Soldier technique emblems retain exact generated alpha and provenance',()=>{const result=spawnSync('python',['-X','utf8','tools/verify-soldier-tree-art.py'],{cwd:root,encoding:'utf8'});assert.equal(result.status,0,result.stdout+'\n'+result.stderr);});
 check('Engineer technique emblems retain exact generated alpha and provenance',()=>{const result=spawnSync('python',['-X','utf8','tools/verify-engineer-tree-art.py'],{cwd:root,encoding:'utf8'});assert.equal(result.status,0,result.stdout+'\n'+result.stderr);});
 check('Alchemist retained natives, whole-figure crops and independent RGBA delivery',()=>{const result=spawnSync('python',['-X','utf8','tools/verify-alchemist-art.py'],{cwd:root,encoding:'utf8'});assert.equal(result.status,0,result.stdout+'\n'+result.stderr);});
 check('Summoner original natives, complete companion poses and exact RGBA delivery',()=>{const result=spawnSync('python',['-X','utf8','tools/verify-summoner-art.py'],{cwd:root,encoding:'utf8'});assert.equal(result.status,0,result.stdout+'\n'+result.stderr);});

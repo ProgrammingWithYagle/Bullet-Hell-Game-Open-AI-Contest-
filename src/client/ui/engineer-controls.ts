@@ -15,6 +15,9 @@ type KitAction = "q" | "e" | "ultimate" | "technique1" | "technique2";
 // These are affected inputs, not an inference from a technique's visual frame.
 // Breach Casings also works when a placed charge triggers without remote input.
 const controlsByTechnique: Record<string, readonly KitAction[]> = {
+  'soldier-skirmisher-1':['e','technique1'],
+  'soldier-skirmisher-advance-1':['technique1'],
+  'soldier-skirmisher-rear-1':['technique1'],
   "engineer-machinery-1": ["q"],
   [machineryIds.anchor]: ["q"],
   [machineryIds.survey]: ["q"],
@@ -53,7 +56,7 @@ export const techniqueSlotLabel = (slot: KitAction) =>
               : "ui.pathwayAction2",
       );
 
-function bindingMarkup(action: KitAction, controls: ControlOptions) {
+export function bindingMarkup(action: KitAction, controls: ControlOptions) {
   const keys = controls.bindings[action]
     .map((code) => '<kbd dir="auto">' + e(bindingLabel(code)) + "</kbd>")
     .join(" / ");
@@ -137,7 +140,7 @@ export function engineerKitMarkup(
     })),
   ];
   return (
-    '<details class="engineer-kit" data-engineer-kit' +
+    '<details class="engineer-kit" data-class-kit data-engineer-kit' +
     (open ? " open" : "") +
     '><summary id="engineer-kit-controls"><span lang="' +
     e(locale) +

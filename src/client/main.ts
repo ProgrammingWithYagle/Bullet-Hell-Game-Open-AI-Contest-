@@ -1,3 +1,5 @@
+import {HZ}from'../shared/protocol.ts';
+import {soldierActions}from'./soldier-actions.ts';
 import {combatAimTarget} from './skirmish-presentation.ts';
 import {skirmishHUD,skirmishResults} from './ui/skirmish.ts';
 import {bindStoryReaders,storyReaderOpen} from './ui/story-reader.ts';
@@ -743,7 +745,7 @@ function update(view: View) {
   }else cadenceHost?.remove();
   const abilityList = $('abilities');
   const engineerQ=engineerQNameKey(p),engineerCharges=view.classCues.filter(c=>c.kind==='engineer-charge'&&c.owner===p.id&&c.state!=='spent'&&view.combatTick<c.until).length;
-  const machineryActions=engineerActions(p,view.classCues,view.combatTick);
+  const machineryActions=p.classId==='soldier'?soldierActions(p,view.combatTick):engineerActions(p,view.classCues,view.combatTick);
   const qLabel=t(machineryActions.qNameKey??(engineerQ?'skill.'+engineerQ+'.name':'ability.'+cl.abilities[0].id+'.name'))+(engineerQ==='engineer-traps-1'?' '+number(engineerCharges)+'/'+number(data.rules.engineerPathways.chargeCapacity):engineerQ==='engineer-builder-1'?' '+t('ui.engineer.builderGroups',{count:number(p.kit.builderGroups??0),capacity:number(p.skills.includes('engineer-builder-linked-1')?2:1)}):'');
   const redoubt=p.skills.includes('engineer-builder-redoubt-1'),ultimateLabel=t(redoubt?'skill.engineer-builder-redoubt-1.name':'ability.'+cl.ultimate.id+'.name');
   for(const slot of ['technique1','technique2']){const shown=machineryActions.extras.some(a=>a.key===slot),touch=document.querySelector<HTMLElement>('[data-action="'+slot+'"]');if(touch)touch.hidden=!shown;if(!shown)abilityList.querySelector('[data-ability="'+slot+'"]')?.remove();}
@@ -760,7 +762,7 @@ function update(view: View) {
       t('ability.' + cl.abilities[1].id + '.name'),
     ],
     ['ultimate', ultimateLabel, p.ultimateAt, t(redoubt?'skill.engineer-builder-redoubt-1.description':'ability.' + cl.ultimate.id + '.name')],
-    ...machineryActions.extras.map(a=>[a.key,t('skill.'+a.id+'.name'),a.at,t('skill.'+a.id+'.description')] as const),
+    ...machineryActions.extras.map(a=>[a.key,t('skill.'+a.id+'.name')+(p.classId==='soldier'&&!a.blocked?' · '+t('ui.soldier.opening',{seconds:number(Number(((p.kit.soldierFollowupUntil!-view.combatTick)/HZ).toFixed(1)))}):''),a.at,t('skill.'+a.id+'.description')] as const),
   ] as const) {
     let e = abilityList.querySelector<HTMLElement>('[data-ability="' + key + '"]');
     if (!e) {

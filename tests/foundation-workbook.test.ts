@@ -129,7 +129,7 @@ test("Specialization overview zoom scales the complete map from 20 to 200 percen
   assert(f.host.querySelector(".reading-view"));
   assert.equal(
     f.host.querySelectorAll("[data-inspect]").length,
-    data.specializationSkills.length,
+    data.specializationSkills.filter(s=>s.classId==='engineer').length,
   );
   assert(f.host.querySelector('[data-specialization-zoom="fit"]')!.disabled);
   assert.equal(f.requests.length, 0);
@@ -145,7 +145,7 @@ test('The wider three-route manual opens fitted once and retains a deliberately 
   f.host.querySelector('[data-shop-tab="specializations"]')!.click();
   let zoom=f.host.querySelector('.specialization-graph')!.getAttribute('style')!;
   assert(zoom.includes('transform:scale(0.32)'),'initial fit includes all three route regions without rounding beyond the viewport');
-  assert.equal(f.host.querySelectorAll('[data-inspect]').length,data.specializationSkills.length);
+  assert.equal(f.host.querySelectorAll('[data-inspect]').length,data.specializationSkills.filter(s=>s.classId==='engineer').length);
   f.host.querySelector('[data-specialization-zoom="reset"]')!.click();
   assert(f.host.querySelector('.specialization-graph')!.getAttribute('style')!.includes('transform:scale(1)'));
   f.host.querySelector('[data-shop-tab="general"]')!.click();f.host.querySelector('[data-shop-tab="specializations"]')!.click();

@@ -1,0 +1,238 @@
+✖ issued54profiles preserve all twelve disciplines, both HUD layouts, remapped controls and historical local records (1.302ms)
+✖ issued54records retain exact historical identity while wrong editions and verified claims remain excluded (4.3563ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 0
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 726.1173
+
+✖ failing tests:
+
+test at tests\soldier-profile-migration.test.ts:1:762
+✖ issued54profiles preserve all twelve disciplines, both HUD layouts, remapped controls and historical local records (1.302ms)
+  Error: ui.errorProfile
+      at parseProfile (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\src\client\profile.ts:260:140)
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\soldier-profile-migration.test.ts:12:14)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+
+test at tests\soldier-profile-migration.test.ts:1:1922
+✖ issued54records retain exact historical identity while wrong editions and verified claims remain excluded (4.3563ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + []
+  - [
+  -   {
+  -     accords: 0,
+  -     classId: 'soldier',
+  -     combatTicks: 6000,
+  -     completedEncounters: 5,
+  -     contentRevision: 'd7aea7cb50f954a88d02ff12291808900bbd00d1e4445c4e0af2655168132510',
+  -     difficulty: 'normal',
+  -     id: 'issued54-soldier',
+  -     memorial: false,
+  -     mode: 'short',
+  -     practiceOnly: true,
+  -     protocol: 54,
+  -     schemaVersion: 1,
+  -     secret: 'locked',
+  -     verified: false
+  -   },
+  -   {
+  -     accords: 0,
+  -     classId: 'medic',
+  -     combatTicks: 6000,
+  -     completedEncounters: 5,
+  -     contentRevision: 'd7aea7cb50f954a88d02ff12291808900bbd00d1e4445c4e0af2655168132510',
+  -     difficulty: 'normal',
+  -     id: 'issued54-medic',
+  -     memorial: false,
+  -     mode: 'short',
+  -     practiceOnly: true,
+  -     protocol: 54,
+  -     schemaVersion: 1,
+  -     secret: 'locked',
+  -     verified: false
+  -   },
+  -   {
+  -     accords: 0,
+  -     classId: 'heavy',
+  -     combatTicks: 6000,
+  -     completedEncounters: 5,
+  -     contentRevision: 'd7aea7cb50f954a88d02ff12291808900bbd00d1e4445c4e0af2655168132510',
+  -     difficulty: 'normal',
+  -     id: 'issued54-heavy',
+  -     memorial: false,
+  -     mode: 'short',
+  -     practiceOnly: true,
+  -     protocol: 54,
+  -     schemaVersion: 1,
+  -     secret: 'locked',
+  -     verified: false
+  -   },
+  -   {
+  -     accords: 0,
+  -     classId: 'tank',
+  -     combatTicks: 6000,
+  -     completedEncounters: 5,
+  -     contentRevision: 'd7aea7cb50f954a88d02ff12291808900bbd00d1e4445c4e0af2655168132510',
+  -     difficulty: 'normal',
+  -     id: 'issued54-tank',
+  -     memorial: false,
+  -     mode: 'short',
+  -     practiceOnly: true,
+  -     protocol: 54,
+  -     schemaVersion: 1,
+  -     secret: 'locked',
+  -     verified: false
+  -   },
+  -   {
+  -     accords: 0,
+  -     classId: 'mage',
+  -     combatTicks: 6000,
+  -     completedEncounters: 5,
+  -     contentRevision: 'd7aea7cb50f954a88d02ff12291808900bbd00d1e4445c4e0af2655168132510',
+  -     difficulty: 'normal',
+  -     id: 'issued54-mage',
+  -     memorial: false,
+  -     mode: 'short',
+  -     practiceOnly: true,
+  -     protocol: 54,
+  -     schemaVersion: 1,
+  -     secret: 'locked',
+  -     verified: false
+  -   },
+  -   {
+  -     accords: 0,
+  -     classId: 'engineer',
+  -     combatTicks: 6000,
+  -     completedEncounters: 5,
+  -     contentRevision: 'd7aea7cb50f954a88d02ff12291808900bbd00d1e4445c4e0af2655168132510',
+  -     difficulty: 'normal',
+  -     id: 'issued54-engineer',
+  -     memorial: false,
+  -     mode: 'short',
+  -     practiceOnly: true,
+  -     protocol: 54,
+  -     schemaVersion: 1,
+  -     secret: 'locked',
+  -     verified: false
+  -   },
+  -   {
+  -     accords: 0,
+  -     classId: 'assassin',
+  -     combatTicks: 6000,
+  -     completedEncounters: 5,
+  -     contentRevision: 'd7aea7cb50f954a88d02ff12291808900bbd00d1e4445c4e0af2655168132510',
+  -     difficulty: 'normal',
+  -     id: 'issued54-assassin',
+  -     memorial: false,
+  -     mode: 'short',
+  -     practiceOnly: true,
+  -     protocol: 54,
+  -     schemaVersion: 1,
+  -     secret: 'locked',
+  -     verified: false
+  -   },
+  -   {
+  -     accords: 0,
+  -     classId: 'bard',
+  -     combatTicks: 6000,
+  -     completedEncounters: 5,
+  -     contentRevision: 'd7aea7cb50f954a88d02ff12291808900bbd00d1e4445c4e0af2655168132510',
+  -     difficulty: 'normal',
+  -     id: 'issued54-bard',
+  -     memorial: false,
+  -     mode: 'short',
+  -     practiceOnly: true,
+  -     protocol: 54,
+  -     schemaVersion: 1,
+  -     secret: 'locked',
+  -     verified: false
+  -   },
+  -   {
+  -     accords: 0,
+  -     classId: 'swordsman',
+  -     combatTicks: 6000,
+  -     completedEncounters: 5,
+  -     contentRevision: 'd7aea7cb50f954a88d02ff12291808900bbd00d1e4445c4e0af2655168132510',
+  -     difficulty: 'normal',
+  -     id: 'issued54-swordsman',
+  -     memorial: false,
+  -     mode: 'short',
+  -     practiceOnly: true,
+  -     protocol: 54,
+  -     schemaVersion: 1,
+  -     secret: 'locked',
+  -     verified: false
+  -   },
+  -   {
+  -     accords: 0,
+  -     classId: 'summoner',
+  -     combatTicks: 6000,
+  -     completedEncounters: 5,
+  -     contentRevision: 'd7aea7cb50f954a88d02ff12291808900bbd00d1e4445c4e0af2655168132510',
+  -     difficulty: 'normal',
+  -     id: 'issued54-summoner',
+  -     memorial: false,
+  -     mode: 'short',
+  -     practiceOnly: true,
+  -     protocol: 54,
+  -     schemaVersion: 1,
+  -     secret: 'locked',
+  -     verified: false
+  -   },
+  -   {
+  -     accords: 0,
+  -     classId: 'ranger',
+  -     combatTicks: 6000,
+  -     completedEncounters: 5,
+  -     contentRevision: 'd7aea7cb50f954a88d02ff12291808900bbd00d1e4445c4e0af2655168132510',
+  -     difficulty: 'normal',
+  -     id: 'issued54-ranger',
+  -     memorial: false,
+  -     mode: 'short',
+  -     practiceOnly: true,
+  -     protocol: 54,
+  -     schemaVersion: 1,
+  -     secret: 'locked',
+  -     verified: false
+  -   },
+  -   {
+  -     accords: 0,
+  -     classId: 'alchemist',
+  -     combatTicks: 6000,
+  -     completedEncounters: 5,
+  -     contentRevision: 'd7aea7cb50f954a88d02ff12291808900bbd00d1e4445c4e0af2655168132510',
+  -     difficulty: 'normal',
+  -     id: 'issued54-alchemist',
+  -     memorial: false,
+  -     mode: 'short',
+  -     practiceOnly: true,
+  -     protocol: 54,
+  -     schemaVersion: 1,
+  -     secret: 'locked',
+  -     verified: false
+  -   }
+  - ]
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\soldier-profile-migration.test.ts:19:132)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [],
+    expected: [ { schemaVersion: 1, id: 'issued54-soldier', practiceOnly: true, verified: false, contentRevision: 'd7aea7cb50f954a88d02ff12291808900bbd00d1e4445c4e0af2655168132510', protocol: 54, mode: 'short', difficulty: 'normal', classId: 'soldier', completedEncounters: 5, accords: 0, combatTicks: 6000, secret: 'locked', memorial: false }, { schemaVersion: 1, id: 'issued54-medic', practiceOnly: true, verified: false, contentRevision: 'd7aea7cb50f954a88d02ff12291808900bbd00d1e4445c4e0af2655168132510', protocol: 54, mode: 'short', difficulty: 'normal', classId: 'medic', completedEncounters: 5, accords: 0, combatTicks: 6000, secret: 'locked', memorial: false }, { schemaVersion: 1, id: 'issued54-heavy', practiceOnly: true, verified: false, contentRevision: 'd7aea7cb50f954a88d02ff12291808900bbd00d1e4445c4e0af2655168132510', protocol: 54, mode: 'short', difficulty: 'normal', classId: 'heavy', completedEncounters: 5, accords: 0, combatTicks: 6000, secret: 'locked', memorial: false }, { schemaVersion: 1, id: 'issued54-tank', practiceOnly: true, verified: false, contentRevision: 'd7aea7cb50f954a88d02ff12291808900bbd00d1e4445c4e0af2655168132510', protocol: 54, mode: 'short', difficulty: 'normal', classId: 'tank', completedEncounters: 5, accords: 0, combatTicks: 6000, secret: 'locked', memorial: false }, { schemaVersion: 1, id: 'issued54-mage', practiceOnly: true, verified: false, contentRevision: 'd7aea7cb50f954a88d02ff12291808900bbd00d1e4445c4e0af2655168132510', protocol: 54, mode: 'short', difficulty: 'normal', classId: 'mage', completedEncounters: 5, accords: 0, combatTicks: 6000, secret: 'locked', memorial: false }, { schemaVersion: 1, id: 'issued54-engineer', practiceOnly: true, verified: false, contentRevision: 'd7aea7cb50f954a88d02ff12291808900bbd00d1e4445c4e0af2655168132510', protocol: 54, mode: 'short', difficulty: 'normal', classId: 'engineer', completedEncounters: 5, accords: 0, combatTicks: 6000, secret: 'locked', memorial: false }, { schemaVersion: 1, id: 'issued54-assassin', practiceOnly: true, verified: false, contentRevision: 'd7aea7cb50f954a88d02ff12291808900bbd00d1e4445c4e0af2655168132510', protocol: 54, mode: 'short', difficulty: 'normal', classId: 'assassin', completedEncounters: 5, accords: 0, combatTicks: 6000, secret: 'locked', memorial: false }, { schemaVersion: 1, id: 'issued54-bard', practiceOnly: true, verified: false, contentRevision: 'd7aea7cb50f954a88d02ff12291808900bbd00d1e4445c4e0af2655168132510', protocol: 54, mode: 'short', difficulty: 'normal', classId: 'bard', completedEncounters: 5, accords: 0, combatTicks: 6000, secret: 'locked', memorial: false }, { schemaVersion: 1, id: 'issued54-swordsman', practiceOnly: true, verified: false, contentRevision: 'd7aea7cb50f954a88d02ff12291808900bbd00d1e4445c4e0af2655168132510', protocol: 54, mode: 'short', difficulty: 'normal', classId: 'swordsman', completedEncounters: 5, accords: 0, combatTicks: 6000, secret: 'locked', memorial: false }, { schemaVersion: 1, id: 'issued54-summoner', practiceOnly: true, verified: false, contentRevision: 'd7aea7cb50f954a88d02ff12291808900bbd00d1e4445c4e0af2655168132510', protocol: 54, mode: 'short', difficulty: 'normal', classId: 'summoner', completedEncounters: 5, accords: 0, combatTicks: 6000, secret: 'locked', memorial: false }, { schemaVersion: 1, id: 'issued54-ranger', practiceOnly: true, verified: false, contentRevision: 'd7aea7cb50f954a88d02ff12291808900bbd00d1e4445c4e0af2655168132510', protocol: 54, mode: 'short', difficulty: 'normal', classId: 'ranger', completedEncounters: 5, accords: 0, combatTicks: 6000, secret: 'locked', memorial: false }, { schemaVersion: 1, id: 'issued54-alchemist', practiceOnly: true, verified: false, contentRevision: 'd7aea7cb50f954a88d02ff12291808900bbd00d1e4445c4e0af2655168132510', protocol: 54, mode: 'short', difficulty: 'normal', classId: 'alchemist', completedEncounters: 5, accords: 0, combatTicks: 6000, secret: 'locked', memorial: false } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

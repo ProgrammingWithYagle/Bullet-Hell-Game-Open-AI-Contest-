@@ -1,6 +1,15 @@
 # Changelog
 
-Development build **2026.11.04-engineer-kit-guide**, protocol 54. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.04-soldier-skirmisher-step**, protocol 55. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-04 — Choose your follow-through
+
+### A first Soldier specialization
+
+- Passing Shot adds a fourth action after a real Precision Burst. Hold movement and use action 1 during the brief opening to commit a vulnerable physical step, then fire on arrival. The issued burst, rally, Last Roll Call and all three General transformations remain.
+- Choose Crossing Advance to commit forward and split the follow-up between departure and a re-aimed arrival shot, or Rear Guard to retreat with one timed projectile interception. Both keep the same follow-up damage; terrain, other projectiles and fixed hazards remain dangerous.
+- The Soldier field manual has an authored early fork, real General reference, matching reading view, painted equipment emblems and current remapped controls. The owned HUD shows the earned opening and only the action you purchased.
+- This is the first Skirmisher slice. Its later kit, Squad Command, Field Logistics and the other classes remain unfinished. Useful statistics remain under General; the per-weapon workshop/shop overhaul is still queued. Campaign remains last, slow learned/proven/prepared with no SP or mutations.
 
 ## 2026-11-04 — Know the kit you are building
 

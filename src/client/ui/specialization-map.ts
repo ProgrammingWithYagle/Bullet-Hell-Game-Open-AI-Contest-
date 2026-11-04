@@ -11,6 +11,10 @@ export type SpecializationMap = {
 };
 // Authored positions belong to real techniques; no proposed family becomes an empty card.
 const positions: Record<string, Point> = {
+  'soldier-ballistics-1':{x:500,y:75},
+  'soldier-skirmisher-1':{x:500,y:255},
+  'soldier-skirmisher-advance-1':{x:250,y:510},
+  'soldier-skirmisher-rear-1':{x:750,y:510},
   "engineer-constructs-1": { x: 500, y: 75 },
   "engineer-machinery-1": { x: 350, y: 255 },
   "engineer-traps-1": { x: 450, y: 255 },
@@ -79,12 +83,12 @@ export function specializationMapLayout(
     return {
       ...n,
       ...point,
-      x: n.reference ? (single ? 500 : 1550) : point.x + offset,
+      x: n.reference ? (single ? 500 : (routes.length*1050-50)/2) : point.x + offset,
     };
   });
   return {
-    width: single ? 1000 : 3100,
-    height: single ? Math.max(...nodes.map((n) => n.y)) + 130 : 1400,
+    width: single ? 1000 : routes.length*1050-50,
+    height: Math.max(...nodes.map((n) => n.y)) + 130,
     nodes,
     edges: techniques
       .filter((s) => s.prerequisite)

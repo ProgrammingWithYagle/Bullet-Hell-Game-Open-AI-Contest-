@@ -1,6 +1,6 @@
 # Development progress
 
-Updated 2026-11-03 for **2026.11.04-engineer-kit-guide**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
+Updated 2026-11-03 for **2026.11.04-soldier-skirmisher-step**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
 
 66 playable identities: 65 ordinary and 1 secret. Three ordinary bosses in every one of fifty subtiers requires 150 ordinary identities, plus secrets; 85 additional ordinary bosses remain.
 
