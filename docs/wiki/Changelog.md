@@ -1,6 +1,13 @@
 # Changelog
 
-Development build **2026.11.04-engineer-exit-polish**, protocol 54. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.04-engineer-replay-polish**, protocol 54. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-04 — Ready for the next encounter
+
+### Consistent fresh weapons
+
+- A new encounter now readies the refilled primary weapon in both continuing and resumed runs. Saving between encounters no longer changes when the first shot can fire.
+- Held fire keeps its normal rhythm, including rapid weapons, committed bow draws and sword attacks. Q, E and ultimate recovery still carry between encounters; prior machines, traps and cover stay cleared.
 
 ## 2026-11-04 — A clean end to constructed work
 

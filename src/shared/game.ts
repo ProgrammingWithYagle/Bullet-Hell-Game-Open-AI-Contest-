@@ -944,6 +944,8 @@ export class Game {
       );
       p.ammo = this.stats(p).magazine;
       p.reloadAt = 0;
+      // A fresh encounter refills and readies the primary in live and resumed runs.
+      p.fireAt = this.combatTick;
       p.selfRevives = selfReviveCharges(this.settings.difficulty,p.classId,this.stats(p).effects.selfRevives);
       p.reviveProgress = 0;
       p.downUntil = 0;
