@@ -1,0 +1,84 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-04T06:16:41.939Z",
+  "audience": "public",
+  "sourceCommit": "84b6bbad3cc0a759a456cf20af2298c3b4c7a751",
+  "protocol": 56,
+  "workerSha256": "b47bcd7955d4c267f3ea8c23539dbe06d9651b97a66579335267b2626a6f00c7",
+  "rows": [
+    {
+      "route": "drill",
+      "startingSP": 12,
+      "owned": [
+        "soldier-ballistics-1",
+        "soldier-skirmisher-1",
+        "soldier-skirmisher-drill-1"
+      ],
+      "actualExpenditure": true,
+      "finiteRoundInserted": true,
+      "pausedRequestsDiscarded": true,
+      "rovingStep": false,
+      "privateBookkeepingOmitted": true,
+      "stopDuringRecovery": true,
+      "resumedPrimary": true
+    },
+    {
+      "route": "passing",
+      "startingSP": 27,
+      "owned": [
+        "soldier-ballistics-1",
+        "soldier-skirmisher-1",
+        "soldier-skirmisher-drill-1",
+        "soldier-skirmisher-roving-1"
+      ],
+      "actualExpenditure": true,
+      "finiteRoundInserted": true,
+      "pausedRequestsDiscarded": true,
+      "rovingStep": true,
+      "privateBookkeepingOmitted": true,
+      "stopDuringRecovery": true,
+      "resumedPrimary": true
+    },
+    {
+      "route": "advance",
+      "startingSP": 27,
+      "owned": [
+        "soldier-ballistics-1",
+        "soldier-skirmisher-1",
+        "soldier-skirmisher-drill-1",
+        "soldier-skirmisher-roving-1",
+        "soldier-skirmisher-advance-1"
+      ],
+      "actualExpenditure": true,
+      "finiteRoundInserted": true,
+      "pausedRequestsDiscarded": true,
+      "rovingStep": true,
+      "privateBookkeepingOmitted": true,
+      "stopDuringRecovery": true,
+      "resumedPrimary": true
+    },
+    {
+      "route": "rear",
+      "startingSP": 27,
+      "owned": [
+        "soldier-ballistics-1",
+        "soldier-skirmisher-1",
+        "soldier-skirmisher-drill-1",
+        "soldier-skirmisher-roving-1",
+        "soldier-skirmisher-rear-1"
+      ],
+      "actualExpenditure": true,
+      "finiteRoundInserted": true,
+      "pausedRequestsDiscarded": true,
+      "rovingStep": true,
+      "privateBookkeepingOmitted": true,
+      "stopDuringRecovery": true,
+      "resumedPrimary": true
+    }
+  ],
+  "limits": [
+    "Exact HTTP-served full optimized Solo worker executed natively; no worker/source patch or testing command.",
+    "Drill uses ordinary Raid12SP; later evolution/fork cases use controlled legal endless-encounter9safe boundaries, not natural progression. Separate native natural/replay reports record actual rewards and outcomes.",
+    "No browser rendering/device/human fun/listening/motion/final-balance acceptance is inferred."
+  ]
+}
