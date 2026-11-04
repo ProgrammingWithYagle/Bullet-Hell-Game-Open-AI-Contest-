@@ -1,6 +1,6 @@
 # The Service Yard — second-chapter candidate
 
-**Current Free Play slice:** [Engineer Builder](ENGINEER_BUILDER.md), sourced3de8edfd00375880a4c07eae658a0ea77ac8486, build2026.11.03-engineer-builder/protocol54, passes1,370tests and exact push/PR CI. Matching5328/5329reviews pass all eight native groups. Engineer now has three implemented routes/22techniques; whole seeded run/replay and separate human acceptance remain open. Service Yard remains unchanged, unregistered, unselectable and outside that count, with its original four passes/one failure. Campaign remains last; no story work was applied.
+**Current Free Play slice:** [Engineer exit polish](ENGINEER_RUN_REVIEW.md), source7f5cdac6e84524a391fd96675c857a21d35dd9c7, build2026.11.04-engineer-exit-polish/protocol54, passes1,375tests and exact push/PR CI. Matching5330/5331reviews pass the three targeted native groups. Engineer retains three routes/22techniques; controlled boundary consistency passes30cases, while actual combat/whole replay and separate human acceptance remain open. Service Yard is unchanged/unregistered/unselectable/outside that count, with its original4passes/1failure. Campaign remains last; no story work was applied.
 
 **Scheduling update:** Campaign is the final phase of [FREE_PLAY_POLISH_ROADMAP.md](FREE_PLAY_POLISH_ROADMAP.md). This WIP is preserved, not the next active slice. Current work is Free Play class-tree/Engineer polish, then the remaining classes and bosses individually. The old requested-handoff pause below is historical; the full development goal remains active.
 
