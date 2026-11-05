@@ -1072,8 +1072,6 @@ export class Game {
         p.coins += Math.floor(reward * this.selectedContract.bounty * this.modifier('coins'));
         p.incomeGranted = this.incomeBudget(this.encounter + 1);
         p.totalSp = this.skillBudget(this.encounter + 1);
-        p.health = p.maxHealth;
-        p.ammo = this.stats(p).magazine;
         p.status = 'active';
         p.braceUntil = p.overdriveUntil = 0;
       }
@@ -1086,6 +1084,15 @@ export class Game {
     for (const m of this.mutations) m.remaining--;
     for (let i = this.mutations.length - 1; i >= 0; i--)
       if (this.mutations[i].remaining <= 0) this.mutations.splice(i, 1);
+    // Victory already refills the roster. Apply it to the post-expiry stats so
+    // the live boundary and an exact safe restore use the same health/magazine.
+    this.statsCache.clear();
+    for (const p of this.roster()) if (p.eligible) {
+      const stats = this.stats(p);
+      p.maxHealth = stats.health;
+      p.health = p.maxHealth;
+      p.ammo = stats.magazine;
+    }
     if (this.boss.id === 'uncounted') {
       this.secretStatus = 'cleared';
       this.phase = 'victory';
@@ -1273,7 +1280,7 @@ export class Game {
     );
     this.classKits.step(this.kitContext());
     this.skirmisher.step(this.skirmisherContext());
-    this.marksman.step(this.combatTick);
+    this.marksman.step(this.combatTick,this.roster());
     this.bard.step(this.bardContext());
     this.sword.step(this.swordContext());
     this.retinue.step(this.retinueContext());
@@ -1562,7 +1569,7 @@ export class Game {
     for(const slot of ['technique1','technique2'] as const)if(i[slot])this.classKits.castEngineer(p,slot,this.kitContext());
     if (i.e && (now >= p.eAt || this.classKits.freeStep(p.id, now))) this.ability(p, 'e');
     if(p.classId==='soldier'&&i.technique1){if(p.skills.includes(marksmanId))this.marksman.cast(p,this.marksmanContext());else this.skirmisher.cast(p,this.skirmisherContext());}
-    if(p.classId==='soldier'&&i.technique2)this.skirmisher.load(p,this.skirmisherContext());
+    if(p.classId==='soldier'&&i.technique2){if(p.skills.includes(marksmanId))this.marksman.castPair(p,this.marksmanContext());else this.skirmisher.load(p,this.skirmisherContext());}
     if (i.ultimate && now >= p.ultimateAt) this.ability(p, 'ultimate');
     if(p.classId==='soldier')this.skirmisher.advanceLoad(p,this.skirmisherContext());
     const loading=p.classId==='soldier'&&this.skirmisher.isLoading(p.id);

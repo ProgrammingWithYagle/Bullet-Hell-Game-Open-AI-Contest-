@@ -87,8 +87,8 @@ test("the authored whole tree connects two implemented disciplines while retaini
   assert.equal(whole.width, 2050);
   assert.equal(old.nodes.length, 8);
   assert.equal(old.edges.length, 7);
-  assert.equal(mark.nodes.length, 2);
-  assert.deepEqual(mark.edges, [{ from: "soldier-ballistics-1", to: id }]);
+  assert.equal(mark.nodes.length, 5);
+  assert.deepEqual(mark.edges, [{from:"soldier-ballistics-1",to:id},...['soldier-marksman-carom-1','soldier-marksman-line-1','soldier-marksman-pair-1'].map(to=>({from:id,to}))]);
   assert(
     whole.exclusions.some(
       (pair) => pair.a === "soldier-skirmisher-1" && pair.b === id,

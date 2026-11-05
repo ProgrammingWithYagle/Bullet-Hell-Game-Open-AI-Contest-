@@ -1,4 +1,4 @@
-import { marksmanId, marksmanRules } from "../shared/soldier-marksman.ts";
+import { marksmanId, marksmanIds, marksmanRules } from "../shared/soldier-marksman.ts";
 import type { PlayerView } from "../shared/view.ts";
 import {
   skirmisherIds as ids,
@@ -43,6 +43,8 @@ export function soldierActions(p: PlayerView, now: number) {
               p.dashUntil > now ||
               p.overdriveUntil > now),
         },
+        ...(p.skills.includes(marksmanIds.pair) ? [{key:"technique2" as const,id:marksmanIds.pair,
+          at:(p.kit.soldierPairUntil??0)>now?0:(p.kit.technique2At??0),blocked:p.kit.soldierBankBlocked??true}] : []),
       ],
     };
   const extras: {

@@ -1,4 +1,4 @@
-import { marksmanId } from "../../shared/soldier-marksman.ts";
+import { marksmanId, marksmanIds } from "../../shared/soldier-marksman.ts";
 import { data } from "../../shared/game.ts";
 import type { PlayerView } from "../../shared/view.ts";
 import { skirmisherIds as ids } from "../../shared/soldier-skirmisher.ts";
@@ -41,6 +41,7 @@ export function soldierKitMarkup(
           },
         ]
       : []),
+    ...(p.skills.includes(marksmanId) && p.skills.includes(marksmanIds.pair) ? [{action:"technique2" as const,nameKey:"skill."+marksmanIds.pair+".name",skill:marksmanIds.pair}] : []),
     ...(!p.skills.includes(marksmanId) && p.skills.includes(ids.drill)
       ? [
           {
@@ -86,6 +87,8 @@ export function soldierKitMarkup(
     e(
       help +
         loadHelp +
+        (p.skills.includes(marksmanIds.carom)?" "+t("skill."+marksmanIds.carom+".description"):p.skills.includes(marksmanIds.line)?" "+t("skill."+marksmanIds.line+".description"):"") +
+        (p.skills.includes(marksmanIds.pair)?" "+t("ui.soldier.pairHelp"):"") +
         (p.skills.includes(ids.volley)
           ? " " + t("ui.soldier.volleyHelp")
           : p.skills.includes(ids.ready)
@@ -119,6 +122,10 @@ export function soldierKitMarkup(
 
 /** Owned HUD/touch labels use authority's clock and progress, including stop during recovery. */
 export function soldierHudLabel(p: PlayerView, key: string, now: number) {
+  if(key === "technique2" && p.skills.includes(marksmanIds.pair)){
+    const name=t("skill."+marksmanIds.pair+".name"),until=p.kit.soldierPairUntil??0;
+    return name+(p.ammo<1?" · "+t("ui.soldier.rejectAmmunition"):until>now?" · "+t("ui.soldier.pairOpening",{seconds:number(Number(((until-now)/30).toFixed(1)))}):"");
+  }
   if (key === "technique1" && p.skills.includes(marksmanId)) {
     const name = t("skill." + marksmanId + ".name");
     return (
@@ -126,7 +133,7 @@ export function soldierHudLabel(p: PlayerView, key: string, now: number) {
       (p.ammo < 1
         ? " · " + t("ui.soldier.rejectAmmunition")
         : (p.kit.technique1At ?? 0) <= now && !p.kit.soldierBankBlocked
-          ? " · " + t("ui.soldier.bankReady")
+          ? " · " + t(p.skills.includes(marksmanIds.carom)?"ui.soldier.caromReady":p.skills.includes(marksmanIds.line)?"ui.soldier.lineReady":"ui.soldier.bankReady")
           : "")
     );
   }

@@ -1,6 +1,17 @@
 # Changelog
 
-Development build **2026.11.04-soldier-bank-shot**, protocol 58. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.05-marksman-measured-pair**, protocol 59. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-05 — Choose the bank, earn the next shot
+
+### Marksman internal choices and a later acquired operation
+
+- Double Bank and Line Drive are mutually exclusive early choices. Double Bank allows two real cover contacts within the original projectile lifetime. Line Drive earns passage through one ordinary body only after its first physical bank; bosses, weak points and further cover still stop it.
+- Measured Pair is a B- acquired action on remappable action 2. Spend one cartridge and start twelve-second base recovery. Its first actual cover contact earns 1.2 seconds for one manually aimed second press and another actual cartridge. The second shot cannot earn another; both shots inherit your chosen bank variant.
+- The new options retain actual bodies, cover, travel, source-sensitive armor, ammunition and owner cleanup. Rejected requests spend nothing. The authored fork, owned manual, HUD and three painted equipment emblems expose the actual choices without extra permanent playfield panels.
+- Exact protocol58 local saves retain all thirty issued techniques and four shared purchases, twelve class labels, equipment, remaps, both HUD choices and original Practice record labels. Local imports never become online proof.
+- Victory refills now use the maximum health and magazine after mutations expire. Live intermissions and safe resumes therefore retain the same replenished state, including the final secret offer.
+- Soldier now has seven Skirmisher and four Marksman techniques. Later high-grade Marksman development, other proposed Soldier routes and whole-class assessment remain unfinished. There is no fixed pathway maximum. Bosses, the armory and Campaign remain later; only the user decides when the game is finished.
 
 ## 2026-11-04 — Read the wall, choose the shot
 

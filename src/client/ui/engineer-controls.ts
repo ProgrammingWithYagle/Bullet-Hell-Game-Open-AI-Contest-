@@ -16,6 +16,9 @@ type KitAction = "q" | "e" | "ultimate" | "technique1" | "technique2";
 // Breach Casings also works when a placed charge triggers without remote input.
 const controlsByTechnique: Record<string, readonly KitAction[]> = {
   'soldier-marksman-1':['technique1'],
+  'soldier-marksman-carom-1':['technique1','technique2'],
+  'soldier-marksman-line-1':['technique1','technique2'],
+  'soldier-marksman-pair-1':['technique2'],
   'soldier-skirmisher-1':['e','technique1'],
   'soldier-skirmisher-advance-1':['technique1'],
   'soldier-skirmisher-rear-1':['technique1'],

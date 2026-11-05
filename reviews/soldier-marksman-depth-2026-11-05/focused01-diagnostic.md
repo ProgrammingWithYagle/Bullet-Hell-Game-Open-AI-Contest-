@@ -1,0 +1,3 @@
+# First focused fixture attempt
+
+Initial run: 40 tests, 36 pass, 4 fail, 0 cancelled/skipped. Existing Marksman tests all passed. New failures were test-fixture assumptions: default aim was not set before a direct controller call; disconnected player input is rejected; Game has no setMatchPaused API (pause belongs to worker/room); Course Correction requires owned Sprint. The corrected tests set actual fixture aim, advance authority without submitting disconnected input, check host exit at Game scope and pause at actual worker/peer scope, and purchase the actual prerequisite. No runtime physics, assertion goal or deadline was relaxed. The original failed run remains in the chat tool transcript; this is its diagnostic, not a recreated raw log.
