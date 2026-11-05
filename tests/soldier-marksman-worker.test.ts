@@ -163,6 +163,13 @@ for (const testing of [false, true])
         assert(Math.cos(bank.outgoingAim) > 0.99);
         for (const key of ["origin", "banks", "proof", "recovery"])
           assert(!(key in bank), key);
+        // State and events are separate messages; observing the cue does not acknowledge its event batch.
+        await wait(
+          () =>
+            shots.some((s) => s.id === bank.id && s.vx > 0) &&
+            sounds.some((s) => s.id === "soldier-bank"),
+          "bank trajectory/contact event batch",
+        );
         const trajectories = shots.filter((s) => s.id === bank.id);
         assert(trajectories.some((s) => s.vx < 0));
         assert(trajectories.some((s) => s.vx > 0));
