@@ -1,3 +1,4 @@
+import {motionAt,type MotionWindow}from'./motion-window.ts';
 import {ClerkAppeal,type ClerkCue} from './clerk-appeal.ts';
 import {RatcatcherMuster,type RatMusterCue} from './ratcatcher-muster.ts';
 import {CourierRoute,type CourierCue} from './courier-route.ts';
@@ -239,22 +240,28 @@ export class BossDirector {
   weakPoint(): Extract<BossCue, { kind: 'sack' }> | null {
     return this.kind==='ratcatcher'?this.ratcatcher.sack():null;
   }
-  weakContact(from: Vec, to: Vec, weak: Vec & { kind: string; radius: number }, radius: number) {
+  weakContact(from: Vec, to: Vec, weak: Vec & { kind: string; radius: number }, radius: number,motion?:MotionWindow) {
     if (weak.kind === 'stitch-pin') {
       const pin = weak as import('./stitchwork.ts').StitchPin;
-      return segmentCircle({x:from.x-pin.oldX,y:from.y-pin.oldY},{x:to.x-pin.x,y:to.y-pin.y},{x:0,y:0},radius+pin.radius);
+      const a=motion?motionAt({x:pin.oldX,y:pin.oldY},pin,motion.from):{x:pin.oldX,y:pin.oldY},b=motion?motionAt({x:pin.oldX,y:pin.oldY},pin,motion.to):pin;
+      return segmentCircle({x:from.x-a.x,y:from.y-a.y},{x:to.x-b.x,y:to.y-b.y},{x:0,y:0},radius+pin.radius);
     }
-    if(weak.kind==='sack'&&this.kind==='ratcatcher')return this.ratcatcher.weakContact(from,to,radius);
+    if(weak.kind==='sack'&&this.kind==='ratcatcher')return this.ratcatcher.weakContact(from,to,radius,motion);
     if (weak.kind === 'endless-prop')
       return this.endless.weakContact(from, to, weak as EndlessProp, radius);
     if (weak.kind === 'raid-prop') {
       const p = weak as import('./raid-director.ts').RaidProp;
+      const a=motion?motionAt({x:p.oldX,y:p.oldY},p,motion.from):{x:p.oldX,y:p.oldY},b=motion?motionAt({x:p.oldX,y:p.oldY},p,motion.to):p;
       return segmentCircle(
-        { x: from.x - p.oldX, y: from.y - p.oldY },
-        { x: to.x - p.x, y: to.y - p.y },
+        { x: from.x - a.x, y: from.y - a.y },
+        { x: to.x - b.x, y: to.y - b.y },
         { x: 0, y: 0 },
         p.radius + radius,
       );
+    }
+    if(motion&&weak.kind==='district-prop'){
+      const p=weak as DistrictProp,a=motionAt({x:p.oldX,y:p.oldY},p,motion.from),b=motionAt({x:p.oldX,y:p.oldY},p,motion.to);
+      return this.district.weakContact(from,to,{...p,oldX:a.x,oldY:a.y,x:b.x,y:b.y},radius);
     }
     return weak.kind === 'district-prop'
       ? this.district.weakContact(from, to, weak as DistrictProp, radius)

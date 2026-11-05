@@ -1,3 +1,4 @@
+import { marksmanId } from "../../shared/soldier-marksman.ts";
 import { data } from "../../shared/game.ts";
 import type { PlayerView } from "../../shared/view.ts";
 import { skirmisherIds as ids } from "../../shared/soldier-skirmisher.ts";
@@ -31,7 +32,7 @@ export function soldierKitMarkup(
       action: "ultimate" as const,
       nameKey: "ability." + cl.ultimate.id + ".name",
     },
-    ...(p.skills.includes(ids.entry)
+    ...(p.skills.includes(ids.entry) || p.skills.includes(marksmanId)
       ? [
           {
             action: "technique1" as const,
@@ -40,7 +41,7 @@ export function soldierKitMarkup(
           },
         ]
       : []),
-    ...(p.skills.includes(ids.drill)
+    ...(!p.skills.includes(marksmanId) && p.skills.includes(ids.drill)
       ? [
           {
             action: "technique2" as const,
@@ -50,23 +51,26 @@ export function soldierKitMarkup(
         ]
       : []),
   ];
-  const help = p.skills.includes(ids.entry)
-    ? t(
-        p.skills.includes(ids.advance)
-          ? "ui.soldier.advanceHelp"
-          : p.skills.includes(ids.rear)
-            ? "ui.soldier.rearHelp"
-            : "ui.soldier.passingHelp",
-      )
-    : t("ui.soldier.kitHelp");
-  const loadHelp = p.skills.includes(ids.drill)
-    ? " " +
-      t(
-        p.skills.includes(ids.roving)
-          ? "ui.soldier.rovingHelp"
-          : "ui.soldier.drillHelp",
-      )
-    : "";
+  const help = p.skills.includes(marksmanId)
+    ? t("ui.soldier.marksmanHelp")
+    : p.skills.includes(ids.entry)
+      ? t(
+          p.skills.includes(ids.advance)
+            ? "ui.soldier.advanceHelp"
+            : p.skills.includes(ids.rear)
+              ? "ui.soldier.rearHelp"
+              : "ui.soldier.passingHelp",
+        )
+      : t("ui.soldier.kitHelp");
+  const loadHelp =
+    !p.skills.includes(marksmanId) && p.skills.includes(ids.drill)
+      ? " " +
+        t(
+          p.skills.includes(ids.roving)
+            ? "ui.soldier.rovingHelp"
+            : "ui.soldier.drillHelp",
+        )
+      : "";
   return (
     '<details class="engineer-kit soldier-kit" data-class-kit data-soldier-kit' +
     (open ? " open" : "") +
@@ -115,6 +119,17 @@ export function soldierKitMarkup(
 
 /** Owned HUD/touch labels use authority's clock and progress, including stop during recovery. */
 export function soldierHudLabel(p: PlayerView, key: string, now: number) {
+  if (key === "technique1" && p.skills.includes(marksmanId)) {
+    const name = t("skill." + marksmanId + ".name");
+    return (
+      name +
+      (p.ammo < 1
+        ? " · " + t("ui.soldier.rejectAmmunition")
+        : (p.kit.technique1At ?? 0) <= now && !p.kit.soldierBankBlocked
+          ? " · " + t("ui.soldier.bankReady")
+          : "")
+    );
+  }
   if (key === "technique2") {
     const name = t("skill." + soldierLoadId(p) + ".name");
     return (

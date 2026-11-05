@@ -1,3 +1,4 @@
+import {motionAt,type MotionWindow}from'./motion-window.ts';
 import tuning from "./ratcatcher-muster-rules.json";
 import { DT, HZ, type Vec } from "./protocol.ts";
 import {
@@ -129,15 +130,16 @@ export class RatcatcherMuster {
         }
       : null;
   }
-  weakContact(from: Vec, to: Vec, radius: number) {
+  weakContact(from: Vec, to: Vec, radius: number,motion?:MotionWindow) {
+    const a=motion?motionAt(this.oldOrigin,this.origin,motion.from):this.oldOrigin,b=motion?motionAt(this.oldOrigin,this.origin,motion.to):this.origin;
     return segmentCircle(
       {
-        x: from.x - this.oldOrigin.x - tuning.sackOffset.x,
-        y: from.y - this.oldOrigin.y - tuning.sackOffset.y,
+        x: from.x - a.x - tuning.sackOffset.x,
+        y: from.y - a.y - tuning.sackOffset.y,
       },
       {
-        x: to.x - this.origin.x - tuning.sackOffset.x,
-        y: to.y - this.origin.y - tuning.sackOffset.y,
+        x: to.x - b.x - tuning.sackOffset.x,
+        y: to.y - b.y - tuning.sackOffset.y,
       },
       { x: 0, y: 0 },
       radius + tuning.sackRadius,

@@ -4,7 +4,9 @@ export type SoldierSound =
   | "soldier-load-start"
   | "soldier-load-round"
   | "soldier-ready"
-  | "soldier-step-reject";
+  | "soldier-step-reject"
+  | "soldier-bank-shot"
+  | "soldier-bank";
 export const isSoldierSound = (id: string): id is SoldierSound =>
   [
     "soldier-footwork",
@@ -12,6 +14,8 @@ export const isSoldierSound = (id: string): id is SoldierSound =>
     "soldier-load-round",
     "soldier-ready",
     "soldier-step-reject",
+    "soldier-bank-shot",
+    "soldier-bank",
   ].includes(id);
 export function soldierSamples(rate: number) {
   if (!Number.isFinite(rate) || rate < 8000 || rate > 192000)
@@ -42,13 +46,15 @@ export function playSoldierSound(
   ended: () => void,
 ) {
   const samples =
-      id === "soldier-footwork"
-        ? soldierSamples(context.sampleRate)
-        : id === "soldier-ready"
-          ? soldierReadySamples(context.sampleRate)
-          : id === "soldier-step-reject"
-            ? soldierRejectSamples(context.sampleRate)
-            : soldierLoadSamples(context.sampleRate, id),
+      id === "soldier-bank-shot" || id === "soldier-bank"
+        ? soldierBankSamples(context.sampleRate, id)
+        : id === "soldier-footwork"
+          ? soldierSamples(context.sampleRate)
+          : id === "soldier-ready"
+            ? soldierReadySamples(context.sampleRate)
+            : id === "soldier-step-reject"
+              ? soldierRejectSamples(context.sampleRate)
+              : soldierLoadSamples(context.sampleRate, id),
     buffer = context.createBuffer(1, samples.length, context.sampleRate);
   buffer.getChannelData(0).set(samples);
   const source = context.createBufferSource(),
@@ -131,6 +137,37 @@ export function soldierRejectSamples(rate: number) {
       Math.sin(2 * Math.PI * (180 * t - 250 * t * t)) *
       0.09 *
       Math.min(1, t / 0.003) *
+      fade *
+      fade;
+  }
+  return samples;
+}
+
+/** Original finite cartridge report and small iron-contact ring. */
+export function soldierBankSamples(
+  rate: number,
+  id: "soldier-bank-shot" | "soldier-bank",
+) {
+  if (!Number.isFinite(rate) || rate < 8000 || rate > 192000)
+    throw Error("Invalid audio rate");
+  const contact = id === "soldier-bank",
+    duration = contact ? 0.075 : 0.11,
+    samples = new Float32Array(Math.ceil(rate * duration));
+  let seed = contact ? 9017 : 6311;
+  for (let i = 0; i < samples.length; i++) {
+    seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0;
+    const t = i / rate,
+      fade = Math.max(0, 1 - t / duration),
+      attack = Math.min(1, t / 0.002),
+      noise = seed / 0x80000000 - 1;
+    const tone = Math.sin(
+      2 *
+        Math.PI *
+        ((contact ? 980 : 150) * t - (contact ? 1100 : 300) * t * t),
+    );
+    samples[i] =
+      (tone * (contact ? 0.2 : 0.3) + noise * (contact ? 0.035 : 0.11)) *
+      attack *
       fade *
       fade;
   }

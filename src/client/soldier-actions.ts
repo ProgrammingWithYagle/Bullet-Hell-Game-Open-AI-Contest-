@@ -1,9 +1,11 @@
+import { marksmanId, marksmanRules } from "../shared/soldier-marksman.ts";
 import type { PlayerView } from "../shared/view.ts";
 import {
   skirmisherIds as ids,
   skirmisherRules as rules,
 } from "../shared/soldier-skirmisher.ts";
 export function soldierActionId(p: Pick<PlayerView, "skills">) {
+  if (p.skills.includes(marksmanId)) return marksmanId;
   return p.skills.includes(ids.advance)
     ? ids.advance
     : p.skills.includes(ids.rear)
@@ -22,6 +24,27 @@ export function soldierPaidStepAvailable(p: PlayerView, now: number) {
   );
 }
 export function soldierActions(p: PlayerView, now: number) {
+  if (p.classId === "soldier" && p.skills.includes(marksmanId))
+    return {
+      command: false,
+      qNameKey: null,
+      qAt: p.qAt,
+      qBlocked: false,
+      extras: [
+        {
+          key: "technique1" as const,
+          id: marksmanId,
+          at: p.kit.technique1At ?? 0,
+          blocked:
+            p.kit.soldierBankBlocked ??
+            (p.status !== "active" ||
+              p.ammo < marksmanRules.ammunition ||
+              p.reloadAt > now ||
+              p.dashUntil > now ||
+              p.overdriveUntil > now),
+        },
+      ],
+    };
   const extras: {
     key: "technique1" | "technique2";
     id: string;

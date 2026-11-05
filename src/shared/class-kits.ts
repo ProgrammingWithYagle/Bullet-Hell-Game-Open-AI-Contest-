@@ -1,3 +1,4 @@
+import type {MarksmanBankCue}from'./soldier-marksman.ts';
 import type {SoldierCue} from './soldier-skirmisher.ts';
 // Additional class abilities run only in the authoritative fixed-step simulation.
 import {EngineerBuilder,type BuilderCue} from './engineer-builder.ts';
@@ -25,6 +26,7 @@ import type { Minions } from './minions.ts';
 const ticks = (seconds: number) => Math.ceil(seconds * HZ);
 export const RESCUE_CHARGE_TICKS = ticks(0.3) + 1;
 export type KitStatus = {
+  soldierBankBlocked?:boolean;
   soldierFollowupUntil?:number;soldierStepUntil?:number;
   soldierReadyUntil?:number;soldierReadyRelay?:boolean;
   soldierStepRejectUntil?:number;soldierStepRejectReason?:"ground"|"direction"|"ammunition";
@@ -88,6 +90,7 @@ export type Construct = {
   until: number;
 };
 export type KitCue =
+  | MarksmanBankCue
   | SoldierCue
   | BuilderCue
   | TrapCue

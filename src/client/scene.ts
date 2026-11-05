@@ -881,6 +881,14 @@ export class CombatScene extends Phaser.Scene {
         }
         continue;
       }
+      if(cue.kind==='soldier-bank'){
+        const fade=Math.max(0,1-(now-cue.at)/(cue.until-cue.at)),local=cue.owner===this.localId,color=0xc6ae7d;
+        // An actual finite contact, with no permanent aiming overlay or particle spray.
+        h.lineStyle(1.5,color,fade*(local?.8:.35))
+          .lineBetween(cue.x-Math.cos(cue.incomingAim)*11,cue.y-Math.sin(cue.incomingAim)*11,cue.x,cue.y)
+          .lineBetween(cue.x,cue.y,cue.x+Math.cos(cue.outgoingAim)*15,cue.y+Math.sin(cue.outgoingAim)*15);
+        h.fillStyle(color,fade*.5).fillCircle(cue.x,cue.y,1.5);continue;
+      }
       if(cue.kind==='soldier-step-reject'){
         const local=cue.owner===this.localId,color=0xbba680;
         if(cue.reason==='ground')h.lineStyle(1,color,local?.6:.25).lineBetween(cue.x,cue.y,cue.toX,cue.toY).strokeCircle(cue.toX,cue.toY,cue.radius);

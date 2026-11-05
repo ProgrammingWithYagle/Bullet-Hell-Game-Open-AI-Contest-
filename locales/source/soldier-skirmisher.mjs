@@ -1,8 +1,10 @@
+import {soldierMarksmanMessages}from'./soldier-marksman.mjs';
 import {soldierVolleyMessages}from'./soldier-volley.mjs';
 import {soldierReloadMessages}from'./soldier-reload.mjs';
 export const soldierSkirmisherMessages = () => ({
   ...soldierReloadMessages(),
   ...soldierVolleyMessages(),
+  ...soldierMarksmanMessages(),
   "branch.soldier-pathways": "Specializations",
   "pathway.soldier-skirmisher-1.name": "Skirmisher",
   "skill.soldier-skirmisher-1.name": "Passing Shot",
@@ -20,11 +22,11 @@ export const soldierSkirmisherMessages = () => ({
     "Commit forward; fire on departure, then aim the arrival round again.",
   "pathway.soldier-skirmisher-rear-1.summary":
     "Commit backward; a timed guard shot can intercept one visible projectile.",
-  "ui.soldier.fieldManual": "Fire and movement",
+  "ui.soldier.fieldManual": "Fire discipline",
   "ui.soldier.manualHelp":
-    "A burst opens a brief follow-through. Choose ground you can commit to, then decide how to cross it. Your rally and Last Roll Call keep their familiar jobs.",
+    "Choose a firing discipline and inspect its controls, costs and commitments. Your rally, Precision Burst and Last Roll Call remain part of every build.",
   "ui.soldier.kitHelp":
-    "Your issued rally, burst and Last Roll Call remain. Passing Shot adds a separate action after a real Precision Burst.",
+    "Your issued rally, Precision Burst and Last Roll Call remain. A firing discipline adds its own action. Inspect its General foundation and exclusions before buying.",
   "ui.soldier.passingHelp":
     "After Precision Burst, hold a movement direction and use action 1 within 1.2 seconds. The committed step fires on arrival. It grants no dodge immunity.",
   "ui.soldier.advanceHelp":

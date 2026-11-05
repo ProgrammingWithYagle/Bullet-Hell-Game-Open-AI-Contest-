@@ -69,13 +69,13 @@ async function ui(t: any, skills: string[] = [], early = false) {
   return { ...env, shop, g, p, player, controls, requests };
 }
 
-test("Soldier shows only the implemented authored fork, its General reference and real exclusion navigation", () => {
+test("Soldier retains its authored Skirmisher fork beside the real Marksman entry", () => {
   const routes = specializationRoutes("soldier");
   assert.deepEqual(
     routes.map((r) => r.id),
-    [ids.entry],
+    [ids.entry,"soldier-marksman-1"],
   );
-  const map = specializationMapLayout("soldier")!;
+  const map = specializationMapLayout("soldier",ids.entry)!;
   assert.equal(map.width, 1000);
   assert.equal(map.nodes.length, 8);
   assert.equal(map.edges.length, 7);
@@ -86,6 +86,8 @@ test("Soldier shows only the implemented authored fork, its General reference an
     map.nodes.filter((n) => n.reference)[0].id,
     "soldier-ballistics-1",
   );
+  const whole=specializationMapLayout('soldier')!;assert.equal(whole.width,2050);assert.equal(whole.nodes.length,9);assert.equal(whole.edges.length,8);
+  assert(whole.exclusions.some(pair=>pair.a===ids.entry&&pair.b==='soldier-marksman-1'));
   assert.equal(specializationMapLayout("medic"), null);
 });
 
@@ -114,7 +116,7 @@ test("native map and reading view inspect real controls without buying and hide 
     assert(!f.host.textContent.includes("Field Logistics"));
     assert(!f.host.textContent.includes("Squad Command"));
     assert(!f.host.textContent.includes("Carriage Sentry"));
-    assert.equal(f.host.querySelector("[data-specialization-route]"), null);
+    assert.deepEqual(f.host.querySelectorAll('[data-specialization-route]').map(button=>button.getAttribute('data-specialization-route')),['all',ids.entry,'soldier-marksman-1']);
   }
   assert.deepEqual(f.requests, []);
   assert.equal(f.p.skills.length, 0);
