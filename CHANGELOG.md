@@ -1,6 +1,17 @@
 # Changelog
 
-Development build **2026.11.05-marksman-measured-pair**, protocol 59. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.05-marksman-twin-lanes**, protocol 60. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-05 — Hold the measure, relay the angle
+
+### Marksman late acquired operations
+
+- Held Measure keeps one contact-earned Measured Pair follow-up through a real manual reload and a short grace period, capped at four seconds. It cannot be reserved twice; interruption cancels the held opportunity without refunding recovery.
+- Angle Relay is earned only by the second paid Measured Pair shot banking off real cover. Its short window permits one paid Bank Shot during recovery and extends that recovery. A ready ordinary Bank Shot consumes the same credit.
+- Twin Lanes spends two real rounds and two projectile slots atomically on independently physical bank shots ten degrees either side of manual aim. It inherits Double Bank or Line Drive and requires an earned relay during recovery. Ordinary ready Bank Shot remains one round.
+- The authored tree and remapped owned guide expose the late choices, actual reload context and ammunition requirements. Three painted equipment emblems retain genuine alpha. No additional permanent action slot is required.
+- Exact protocol59 local ownership preserves all33 issued techniques, four General techniques, twelve class histories, equipment, remaps and both HUD choices. Historical Practice records remain local and keep their original editions.
+- Soldier now has seven Skirmisher and seven Marksman techniques with early forks and late acquired operations. Other fitting Soldier routes and whole-class assessment remain open; there is no fixed maximum. Human, rendered, device, language, listening, motion and final-balance acceptance remain separate. Only the user decides when the game is finished.
 
 ## 2026-11-05 — Choose the bank, earn the next shot
 

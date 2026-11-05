@@ -1,5 +1,7 @@
+import{marksmanLateMessages}from'./marksman-late.mjs';
 import {marksmanDepthMessages}from'./marksman-depth.mjs';
 export const soldierMarksmanMessages=()=>({
+ ...marksmanLateMessages(),
  ...marksmanDepthMessages(),
  'pathway.soldier-marksman-1.name':'Marksman',
  'pathway.soldier-marksman-1.summary':'Read the cover, choose an angle and spend a cartridge on one deliberate bank.',

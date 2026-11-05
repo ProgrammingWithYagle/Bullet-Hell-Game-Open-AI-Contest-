@@ -108,7 +108,7 @@ test("Marksman is an affordable real alternative to Skirmisher, with symmetric a
   );
   assert.equal(data.skills.length, 648);
   assert.equal(data.generalSkills.length, 4);
-  assert.equal(data.specializationSkills.length, 33);
+  assert.equal(data.specializationSkills.length, 36);
 });
 
 test("Bank Shot spends one real round and its own recovery without needing or changing E", () => {
@@ -410,6 +410,7 @@ test("empty ammunition and a failed projectile admission cannot spend recovery",
     tick: other.g.combatTick,
     stats: (p) => other.g.stats(p),
     shoot: () => undefined,
+    shootMany:()=>undefined,
     sound: () => assert.fail("No sound without an admitted projectile"),
   });
   assert.equal(result, false);

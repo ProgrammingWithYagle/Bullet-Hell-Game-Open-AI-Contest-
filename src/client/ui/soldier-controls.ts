@@ -41,7 +41,15 @@ export function soldierKitMarkup(
           },
         ]
       : []),
-    ...(p.skills.includes(marksmanId) && p.skills.includes(marksmanIds.pair) ? [{action:"technique2" as const,nameKey:"skill."+marksmanIds.pair+".name",skill:marksmanIds.pair}] : []),
+    ...(p.skills.includes(marksmanId) && p.skills.includes(marksmanIds.pair)
+      ? [
+          {
+            action: "technique2" as const,
+            nameKey: "skill." + marksmanIds.pair + ".name",
+            skill: marksmanIds.pair,
+          },
+        ]
+      : []),
     ...(!p.skills.includes(marksmanId) && p.skills.includes(ids.drill)
       ? [
           {
@@ -87,8 +95,24 @@ export function soldierKitMarkup(
     e(
       help +
         loadHelp +
-        (p.skills.includes(marksmanIds.carom)?" "+t("skill."+marksmanIds.carom+".description"):p.skills.includes(marksmanIds.line)?" "+t("skill."+marksmanIds.line+".description"):"") +
-        (p.skills.includes(marksmanIds.pair)?" "+t("ui.soldier.pairHelp"):"") +
+        [marksmanIds.reserve, marksmanIds.relay, marksmanIds.twin]
+          .filter((id) => p.skills.includes(id))
+          .map(
+            (id) =>
+              " " +
+              t("skill." + id + ".name") +
+              ": " +
+              t("skill." + id + ".description"),
+          )
+          .join("") +
+        (p.skills.includes(marksmanIds.carom)
+          ? " " + t("skill." + marksmanIds.carom + ".description")
+          : p.skills.includes(marksmanIds.line)
+            ? " " + t("skill." + marksmanIds.line + ".description")
+            : "") +
+        (p.skills.includes(marksmanIds.pair)
+          ? " " + t("ui.soldier.pairHelp")
+          : "") +
         (p.skills.includes(ids.volley)
           ? " " + t("ui.soldier.volleyHelp")
           : p.skills.includes(ids.ready)
@@ -116,24 +140,69 @@ export function soldierKitMarkup(
           "</div></li>",
       )
       .join("") +
-    "</ul></details>"
+    "</ul>" +
+    (p.skills.includes(marksmanIds.reserve)
+      ? '<p data-reserve-control lang="en">' +
+        e(actionLabel("reload")) +
+        " " +
+        bindingMarkup("reload", controls) +
+        "</p>"
+      : "") +
+    "</details>"
   );
 }
 
 /** Owned HUD/touch labels use authority's clock and progress, including stop during recovery. */
 export function soldierHudLabel(p: PlayerView, key: string, now: number) {
-  if(key === "technique2" && p.skills.includes(marksmanIds.pair)){
-    const name=t("skill."+marksmanIds.pair+".name"),until=p.kit.soldierPairUntil??0;
-    return name+(p.ammo<1?" · "+t("ui.soldier.rejectAmmunition"):until>now?" · "+t("ui.soldier.pairOpening",{seconds:number(Number(((until-now)/30).toFixed(1)))}):"");
+  if (key === "technique2" && p.skills.includes(marksmanIds.pair)) {
+    const name = t("skill." + marksmanIds.pair + ".name"),
+      until = p.kit.soldierPairUntil ?? 0;
+    return (
+      name +
+      (p.ammo < 1
+        ? " · " + t("ui.soldier.rejectAmmunition")
+        : p.kit.soldierPairHeld
+          ? " · " + t("ui.soldier.pairHeld")
+          : until > now
+            ? " · " +
+              t("ui.soldier.pairOpening", {
+                seconds: number(Number(((until - now) / 30).toFixed(1))),
+              })
+            : "")
+    );
   }
   if (key === "technique1" && p.skills.includes(marksmanId)) {
-    const name = t("skill." + marksmanId + ".name");
+    const name = t("skill." + marksmanId + ".name"),
+      relay = p.kit.soldierRelayUntil ?? 0;
+    if (relay > now && (p.kit.technique1At ?? 0) > now) {
+      const twin = p.skills.includes(marksmanIds.twin);
+      return (
+        t("skill." + (twin ? marksmanIds.twin : marksmanIds.relay) + ".name") +
+        " · " +
+        (p.ammo < (p.kit.soldierBankAmmunition ?? 1)
+          ? t(
+              twin
+                ? "ui.soldier.twinAmmunition"
+                : "ui.soldier.rejectAmmunition",
+            )
+          : t("ui.soldier.relayShot", {
+              seconds: number(Number(((relay - now) / 30).toFixed(1))),
+            }))
+      );
+    }
     return (
       name +
       (p.ammo < 1
         ? " · " + t("ui.soldier.rejectAmmunition")
         : (p.kit.technique1At ?? 0) <= now && !p.kit.soldierBankBlocked
-          ? " · " + t(p.skills.includes(marksmanIds.carom)?"ui.soldier.caromReady":p.skills.includes(marksmanIds.line)?"ui.soldier.lineReady":"ui.soldier.bankReady")
+          ? " · " +
+            t(
+              p.skills.includes(marksmanIds.carom)
+                ? "ui.soldier.caromReady"
+                : p.skills.includes(marksmanIds.line)
+                  ? "ui.soldier.lineReady"
+                  : "ui.soldier.bankReady",
+            )
           : "")
     );
   }

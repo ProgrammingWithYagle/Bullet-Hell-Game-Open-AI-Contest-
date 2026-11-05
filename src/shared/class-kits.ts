@@ -27,7 +27,7 @@ const ticks = (seconds: number) => Math.ceil(seconds * HZ);
 export const RESCUE_CHARGE_TICKS = ticks(0.3) + 1;
 export type KitStatus = {
   soldierBankBlocked?:boolean;
-  soldierPairUntil?:number;
+  soldierPairUntil?:number;soldierPairHeld?:boolean;soldierPairBlocked?:boolean;soldierRelayUntil?:number;soldierBankAmmunition?:number;
   soldierFollowupUntil?:number;soldierStepUntil?:number;
   soldierReadyUntil?:number;soldierReadyRelay?:boolean;
   soldierStepRejectUntil?:number;soldierStepRejectReason?:"ground"|"direction"|"ammunition";

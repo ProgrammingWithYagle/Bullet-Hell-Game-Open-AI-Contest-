@@ -17,7 +17,7 @@ test('Marksman forks are real symmetric alternatives, and the later operation ke
     assert.equal(g.transact(p.id,{id:'too-early',kind:'skill',item:ids.pair}).ok,false);
     assert.equal(g.transact(p.id,{id:'fork-unearned',kind:'skill',item:first}).ok,false);
   }
-  assert.equal(data.skills.length,648);assert.equal(data.generalSkills.length,4);assert.equal(data.specializationSkills.length,33);
+  assert.equal(data.skills.length,648);assert.equal(data.generalSkills.length,4);assert.equal(data.specializationSkills.length,36);
   assert.equal(data.rules.maximumActiveCapstones,1);
 });
 

@@ -1562,7 +1562,7 @@ export class Game {
     p.y = next.y;
     if(footwork)this.skirmisher.afterMove(p,this.skirmisherContext());
     if (i.reload && now >= p.overdriveUntil && !p.reloadAt && p.ammo < stats.magazine && (p.classId!=='ranger'||this.ranger.canPrimary(p,this.rangerContext())) && (p.classId!=='alchemist'||this.alchemy.canPrimary(p,this.alchemyContext())))
-      this.reload(p);
+      {this.reload(p);if(p.classId==='soldier')this.marksman.reservePair(p,this.marksmanContext());}
     if(i.q){
       if(!this.classKits.commandEngineer(p,this.kitContext())&&now>=p.qAt)this.ability(p,'q');
     }
@@ -1672,6 +1672,7 @@ export class Game {
       this.brutalVolley.capture(this.combatTick,{x,y},angle,speed,damage,radius,bossThreat(this.boss.id).level,()=>this.id(),this.boss.variant);
     return shot;
   }
+  private canEmitShots(owner:string,count:number){return this.shots.size+count<=6000&&(owner!=='hostile'||this.hostileShots+count<=rule.maximumHostileProjectiles);}
   private emitShot(
     owner: string,
     x: number,
@@ -1683,10 +1684,7 @@ export class Game {
     pierce = 0,
     lifeSeconds = 12,
   ) {
-    if (
-      this.shots.size >= 6000 ||
-      (owner === 'hostile' && this.hostileShots >= rule.maximumHostileProjectiles)
-    )
+    if (!this.canEmitShots(owner,1))
       return;
     const shot = this.freeShots.pop() ?? ({} as Shot);
     Object.assign(shot, {
@@ -2325,6 +2323,7 @@ export class Game {
   private marksmanContext(){return {
     tick:this.combatTick,stats:(p:Player)=>this.stats(p),
     shoot:(p:Player,damage:number)=>this.emitShot(p.id,p.x,p.y,p.aim,marksmanRules.speed,damage,marksmanRules.radius,0,marksmanRules.lifeSeconds),
+    shootMany:(p:Player,damage:number,aims:readonly number[])=>{if(aims.length!==2||!this.canEmitShots(p.id,aims.length))return;return aims.map(aim=>this.emitShot(p.id,p.x,p.y,aim,marksmanRules.speed,damage,marksmanRules.radius,0,marksmanRules.lifeSeconds)!);},
     sound:(p:Player,id:string,point={x:p.x,y:p.y})=>this.events.push({type:'sound' as const,id,owner:p.id,x:point.x,y:point.y})
   };}
   private skirmisherContext():SkirmisherContext{

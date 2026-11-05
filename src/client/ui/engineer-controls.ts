@@ -11,7 +11,7 @@ import { locale, number, t } from "../i18n.ts";
 import { profileText } from "../profile-text.ts";
 import { escape as e } from "./html.ts";
 
-type KitAction = "q" | "e" | "ultimate" | "technique1" | "technique2";
+type KitAction = "q" | "e" | "ultimate" | "technique1" | "technique2" | "reload";
 // These are affected inputs, not an inference from a technique's visual frame.
 // Breach Casings also works when a placed charge triggers without remote input.
 const controlsByTechnique: Record<string, readonly KitAction[]> = {
@@ -19,6 +19,9 @@ const controlsByTechnique: Record<string, readonly KitAction[]> = {
   'soldier-marksman-carom-1':['technique1','technique2'],
   'soldier-marksman-line-1':['technique1','technique2'],
   'soldier-marksman-pair-1':['technique2'],
+  'soldier-marksman-reserve-1':['reload','technique2'],
+  'soldier-marksman-relay-1':['technique2','technique1'],
+  'soldier-marksman-twin-1':['technique1'],
   'soldier-skirmisher-1':['e','technique1'],
   'soldier-skirmisher-advance-1':['technique1'],
   'soldier-skirmisher-rear-1':['technique1'],
