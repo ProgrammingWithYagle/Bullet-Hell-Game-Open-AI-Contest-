@@ -1,4 +1,4 @@
-import { SniperFieldRest } from "./soldier-sniper-rest.ts";
+import { SniperPositions } from "./soldier-sniper-positions.ts";
 import {
   advanceSniperBore,
   type BoreFlight,
@@ -16,10 +16,12 @@ export const sniperIds = {
   clear: "soldier-sniper-clear-1",
   bore: "soldier-sniper-bore-1",
   rest: "soldier-sniper-rest-1",
+  withdrawal: "soldier-sniper-withdrawal-1",
 } as const;
 export const sniperRules = catalog.rules.soldierSniper;
 export const sniperBoreRules = catalog.rules.soldierSniperBore;
 export const sniperRestRules = catalog.rules.soldierSniperRest;
+export const sniperWithdrawalRules = catalog.rules.soldierSniperWithdrawal;
 const ticks = (seconds: number) => Math.ceil(seconds * HZ),
   angle = (value: number) => Math.atan2(Math.sin(value), Math.cos(value));
 const owned = (p: Player | undefined): p is Player =>
@@ -39,6 +41,7 @@ type Preparation = Vec & {
   damage: number;
   handling: "plain" | "carry" | "clear";
   restClaimed?: boolean;
+  withdrawalAssisted?: boolean;
 };
 type Flight = { owner: string; weapon: string; origin: Vec; bore?: BoreFlight };
 type SniperSightCue = Vec & {
@@ -98,13 +101,20 @@ export type SniperFlightContext = {
 /** A paid, planted opportunity. Settling never fires, targets or refunds a round. */
 export class SoldierSniper {
   private recovery = new Map<string, number>();
-  private rests = new SniperFieldRest({
-    settleTicks: ticks(sniperRules.settleSeconds),
-    lifetimeTicks: ticks(sniperRestRules.seconds),
-    claimRadius: sniperRestRules.radius,
-    aimArc: sniperRules.aimArc,
-    stationaryTolerance: sniperRules.stationaryTolerance,
-  });
+  private rests = new SniperPositions(
+    {
+      settleTicks: ticks(sniperRules.settleSeconds),
+      lifetimeTicks: ticks(sniperRestRules.seconds),
+      claimRadius: sniperRestRules.radius,
+      aimArc: sniperRules.aimArc,
+      stationaryTolerance: sniperRules.stationaryTolerance,
+    },
+    {
+      minimumDistance: sniperWithdrawalRules.minimumDistance,
+      claimRadius: sniperRestRules.radius,
+      aimArc: sniperRules.aimArc,
+    },
+  );
   private actions = new Map<
     string,
     { primaryAt: number; primaryAim: number; shotAt: number; shotAim: number }
@@ -166,7 +176,7 @@ export class SoldierSniper {
     return ids;
   }
   interrupt(owner: string) {
-    this.rests.cancelSetup(owner);
+    this.rests.abandonPaid(owner);
     this.preparations.delete(owner);
   }
   private busy(p: Player | undefined, now: number) {
@@ -189,9 +199,10 @@ export class SoldierSniper {
       p.weapon !== q.weapon ||
       p.health < q.health ||
       (q.restClaimed && !p.skills.includes(sniperIds.rest)) ||
+      (q.withdrawalAssisted && !p.skills.includes(sniperIds.withdrawal)) ||
       (q.handling !== "plain" && !p.skills.includes(sniperIds[q.handling]))
     ) {
-      this.preparations.delete(p.id);
+      this.interrupt(p.id);
       return;
     }
     if (distance(p, q) > sniperRules.stationaryTolerance) {
@@ -214,6 +225,7 @@ export class SoldierSniper {
       now,
       live(p) && p.skills.includes(sniperIds.rest),
       !this.busy(p, now),
+      !!p && p.skills.includes(sniperIds.withdrawal),
     );
   }
   private planted(p: Player) {
@@ -307,11 +319,11 @@ export class SoldierSniper {
   }
   private restCues(players: readonly Player[]): SniperRestCue[] {
     return this.restOwners().flatMap((owner) => {
-      const q = this.rests.get(owner),
-        p = players.find((p) => p.id === owner);
-      return q && live(p)
-        ? [
-            {
+      const p = players.find((p) => p.id === owner);
+      return live(p)
+        ? this.rests
+            .all(owner)
+            .map((q) => ({
               kind: "soldier-rest" as const,
               owner,
               id: q.cueId,
@@ -322,18 +334,20 @@ export class SoldierSniper {
               until: q.until,
               aim: q.aim,
               radius: sniperRestRules.radius,
-            },
-          ]
+            }))
         : [];
     });
   }
   status(p: Player | undefined, now: number) {
-    const rest = this.syncRest(p, p?.id ?? "", now);
+    const rest = this.syncRest(p, p?.id ?? "", now),
+      paired = !!p && p.skills.includes(sniperIds.withdrawal),
+      positions = p ? this.rests.status(p.id) : { count: 0, fallbackUntil: 0 },
+      fallback = !!p && this.rests.fallback(p, now, paired);
     const q = this.preparation(p, now),
       at = p ? (this.recovery.get(p.id) ?? 0) : 0,
       action = p ? this.actions.get(p.id) : undefined;
     return {
-      technique1At: q ? 0 : at,
+      technique1At: q || fallback ? 0 : at,
       sniperRecoveryAt: at,
       sniperPrimaryAt: action?.primaryAt ?? 0,
       sniperPrimaryAim: action?.primaryAim ?? 0,
@@ -349,6 +363,10 @@ export class SoldierSniper {
       sniperRestAim: rest?.aim ?? 0,
       sniperRestSetting: rest?.setting ?? false,
       sniperRestReady: !!rest && !rest.setting,
+      sniperRestCount: positions.count,
+      sniperRestCanSecond: !!p && this.rests.canPlaceSecond(p, paired),
+      sniperWithdrawalUntil: positions.fallbackUntil,
+      sniperWithdrawalReady: fallback,
       sniperRestBlocked: this.busy(p, now) || !p || !this.planted(p),
       sniperBlocked:
         this.busy(p, now) ||
@@ -376,25 +394,35 @@ export class SoldierSniper {
       if (c.tick < q.readyAt) return false;
       return this.release(p, q, c, false);
     }
+    const recoveryAt = this.recovery.get(p.id) ?? 0,
+      paired = p.skills.includes(sniperIds.withdrawal),
+      fallback = this.rests.fallback(p, c.tick, paired),
+      duringRecovery = fallback && c.tick < recoveryAt;
     if (
-      c.tick < (this.recovery.get(p.id) ?? 0) ||
+      (c.tick < recoveryAt && !fallback) ||
       p.ammo < 1 ||
       !c.canEmit() ||
-      Math.hypot(p.input.moveX, p.input.moveY) > 0 ||
-      Math.hypot(p.x - p.oldX, p.y - p.oldY) > sniperRules.stationaryTolerance
+      !this.planted(p)
     )
       return false;
-    const restClaimed = this.rests.consume(p, c.tick);
+    const take = this.rests.take(p, c.tick),
+      restClaimed = !!take;
+    if (fallback && !take) return false;
     this.rests.cancelSetup(p.id);
+    if (fallback) this.rests.consumeFallback(p.id);
     p.ammo--;
     const stats = c.stats(p);
     this.recovery.set(
       p.id,
-      c.tick + ticks(sniperRules.cooldown * stats.cooldown),
+      (duringRecovery ? recoveryAt : c.tick) +
+        ticks(sniperRules.cooldown * stats.cooldown),
     );
+    const preparation = c.id();
+    if (!fallback)
+      this.rests.normalClaim(p, preparation, take, c.tick, recoveryAt, paired);
     this.preparations.set(p.id, {
       owner: p.id,
-      id: c.id(),
+      id: preparation,
       x: p.x,
       y: p.y,
       weapon: p.weapon,
@@ -402,6 +430,7 @@ export class SoldierSniper {
       at: c.tick,
       readyAt: restClaimed ? c.tick : c.tick + ticks(sniperRules.settleSeconds),
       restClaimed,
+      withdrawalAssisted: duringRecovery,
       until: c.tick + ticks(sniperRules.preparationSeconds),
       aim: p.aim,
       fireLatch: p.input.fire,
@@ -423,6 +452,7 @@ export class SoldierSniper {
         : q.damage,
     );
     if (!shot) return false;
+    this.rests.released(p, q.id, c.tick);
     this.flights.set(shot.id, {
       owner: p.id,
       weapon: q.weapon,
@@ -452,12 +482,14 @@ export class SoldierSniper {
     }
     if (!p.skills.includes(sniperIds.rest) || !this.planted(p)) return false;
     this.syncRest(p, p.id, c.tick);
-    if (this.rests.get(p.id)) {
-      this.rests.remove(p.id);
-      return true;
-    }
-    this.rests.place(p, c.tick, c.id(), p.input.fire);
-    c.sound(p, "sniper-rest");
+    const action = this.rests.operate(
+      p,
+      c.tick,
+      () => c.id(),
+      p.input.fire,
+      p.skills.includes(sniperIds.withdrawal),
+    );
+    if (action !== "recall") c.sound(p, "sniper-rest");
     return true;
   }
   advance(s: Shot, c: SniperFlightContext) {

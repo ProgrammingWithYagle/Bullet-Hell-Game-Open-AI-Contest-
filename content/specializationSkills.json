@@ -1023,5 +1023,26 @@
     "role": "active",
     "effects": {},
     "description": "With no paid round prepared, action2 sets an empty rest at your actual position and bearing. Remain planted for0.7seconds; moving, taking health loss or another action interrupts unfinished setup. Once settled you may leave, but the rest stays fixed and expires9seconds after planting. Return within6pixels and12degrees: an accepted fresh action1 consumes the rest and reserves one actual round ready for a separate manual release. Normal recovery and actual ammunition still apply; unavailable preparation preserves the rest. Elsewhere action1 retains its ordinary full settling. Action2 recalls an existing empty rest, or uses Bore Through when a paid round is prepared. Carry movement restarts settling; Clear returns only the paid round, never the rest. No automatic shot, targeting, remote origin, cover, protection, extra ammunition or new currency."
+  },
+  {
+    "id": "soldier-sniper-withdrawal-1",
+    "classId": "soldier",
+    "branchId": "soldier-pathways",
+    "branchName": "Specializations",
+    "subbranchId": "soldier-sniper-1",
+    "subbranchName": "Sniper",
+    "subbranchNameKey": "pathway.soldier-sniper-1.name",
+    "name": "Prepared Withdrawal",
+    "nameKey": "skill.soldier-sniper-withdrawal-1.name",
+    "sourceSkillId": "soldier-sniper-withdrawal-1",
+    "grade": "SS+",
+    "depth": 5,
+    "cost": 6,
+    "freePlaySpRequired": 27,
+    "prerequisite": "soldier-sniper-rest-1",
+    "capstone": true,
+    "role": "active",
+    "effects": {},
+    "description": "Prepare two separate Field Rest positions at least96pixels apart, each with its real settling, manual bearing and original expiry. Both must be settled before a normally available action1 claims the first. Only a successful separate manual release earns one return opportunity at the other original site. Physically return within its local position/bearing limits: action1 may reserve another actual round during recovery, ready for its own separate manual release. That alternate payment extends spent recovery by one ordinary action1 duration. A normally ready claim consumes the same finite opportunity. With no paid preparation, action2 sets a second site only after the first settles and from sufficient distance; nearer action2, two sites or an armed return means recall the plan. Carry still requires new settling after movement; Clear returns only its reserved round and keeps recovery. No site, right or ammunition is restored and a return cannot earn another return. Physical bodies, cover, time and firing-origin armor remain."
   }
 ]

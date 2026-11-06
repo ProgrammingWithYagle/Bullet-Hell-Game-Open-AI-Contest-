@@ -1,7 +1,9 @@
+import{soldierSniperWithdrawalMessages}from'./soldier-sniper-withdrawal.mjs';
 import{soldierSniperRestMessages}from'./soldier-sniper-rest.mjs';
 import{soldierSniperBoreMessages}from'./soldier-sniper-bore.mjs';
 import{soldierSniperHandlingMessages}from'./soldier-sniper-handling.mjs';
 export const soldierSniperMessages=()=>({
+  ...soldierSniperWithdrawalMessages(),
   ...soldierSniperRestMessages(),
   ...soldierSniperBoreMessages(),
   ...soldierSniperHandlingMessages(),

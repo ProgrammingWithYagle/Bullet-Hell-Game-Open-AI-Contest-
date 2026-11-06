@@ -11,26 +11,35 @@ export type SpecializationMap = {
 };
 // Authored positions belong to real techniques; no proposed family becomes an empty card.
 const positions: Record<string, Point> = {
-  'soldier-sniper-1':{x:500,y:255},
-  'soldier-sniper-bore-1':{x:500,y:775},
-  'soldier-sniper-rest-1':{x:500,y:1035},
-  'soldier-sniper-carry-1':{x:230,y:505},'soldier-sniper-clear-1':{x:770,y:505},
-  'soldier-grenadier-1':{x:500,y:255},'soldier-grenadier-skim-1':{x:230,y:505},'soldier-grenadier-contact-1':{x:770,y:505},'soldier-grenadier-pitch-1':{x:500,y:775},'soldier-grenadier-pin-1':{x:230,y:1030},'soldier-grenadier-sling-1':{x:770,y:1030},'soldier-grenadier-kick-1':{x:500,y:1280},'soldier-grenadier-return-1':{x:500,y:1530},
-  'soldier-marksman-1':{x:500,y:255},
-  'soldier-marksman-carom-1':{x:250,y:510},
-  'soldier-marksman-line-1':{x:750,y:510},
-  'soldier-marksman-pair-1':{x:500,y:780},
-  'soldier-marksman-reserve-1':{x:250,y:1030},
-  'soldier-marksman-relay-1':{x:650,y:1270},
-  'soldier-marksman-twin-1':{x:500,y:1510},
-  'soldier-ballistics-1':{x:500,y:75},
-  'soldier-skirmisher-1':{x:500,y:255},
-  'soldier-skirmisher-advance-1':{x:250,y:510},
-  'soldier-skirmisher-rear-1':{x:750,y:510},
-  'soldier-skirmisher-drill-1':{x:500,y:750},
-  'soldier-skirmisher-roving-1':{x:650,y:1000},
-  'soldier-skirmisher-ready-1':{x:350,y:1245},
-  'soldier-skirmisher-volley-1':{x:650,y:1490},
+  "soldier-sniper-1": { x: 500, y: 255 },
+  "soldier-sniper-bore-1": { x: 500, y: 775 },
+  "soldier-sniper-rest-1": { x: 500, y: 1035 },
+  "soldier-sniper-withdrawal-1": { x: 500, y: 1555 },
+  "soldier-sniper-carry-1": { x: 230, y: 505 },
+  "soldier-sniper-clear-1": { x: 770, y: 505 },
+  "soldier-grenadier-1": { x: 500, y: 255 },
+  "soldier-grenadier-skim-1": { x: 230, y: 505 },
+  "soldier-grenadier-contact-1": { x: 770, y: 505 },
+  "soldier-grenadier-pitch-1": { x: 500, y: 775 },
+  "soldier-grenadier-pin-1": { x: 230, y: 1030 },
+  "soldier-grenadier-sling-1": { x: 770, y: 1030 },
+  "soldier-grenadier-kick-1": { x: 500, y: 1280 },
+  "soldier-grenadier-return-1": { x: 500, y: 1530 },
+  "soldier-marksman-1": { x: 500, y: 255 },
+  "soldier-marksman-carom-1": { x: 250, y: 510 },
+  "soldier-marksman-line-1": { x: 750, y: 510 },
+  "soldier-marksman-pair-1": { x: 500, y: 780 },
+  "soldier-marksman-reserve-1": { x: 250, y: 1030 },
+  "soldier-marksman-relay-1": { x: 650, y: 1270 },
+  "soldier-marksman-twin-1": { x: 500, y: 1510 },
+  "soldier-ballistics-1": { x: 500, y: 75 },
+  "soldier-skirmisher-1": { x: 500, y: 255 },
+  "soldier-skirmisher-advance-1": { x: 250, y: 510 },
+  "soldier-skirmisher-rear-1": { x: 750, y: 510 },
+  "soldier-skirmisher-drill-1": { x: 500, y: 750 },
+  "soldier-skirmisher-roving-1": { x: 650, y: 1000 },
+  "soldier-skirmisher-ready-1": { x: 350, y: 1245 },
+  "soldier-skirmisher-volley-1": { x: 650, y: 1490 },
   "engineer-constructs-1": { x: 500, y: 75 },
   "engineer-machinery-1": { x: 350, y: 255 },
   "engineer-traps-1": { x: 450, y: 255 },
@@ -99,11 +108,15 @@ export function specializationMapLayout(
     return {
       ...n,
       ...point,
-      x: n.reference ? (single ? 500 : (routes.length*1050-50)/2) : point.x + offset,
+      x: n.reference
+        ? single
+          ? 500
+          : (routes.length * 1050 - 50) / 2
+        : point.x + offset,
     };
   });
   return {
-    width: single ? 1000 : routes.length*1050-50,
+    width: single ? 1000 : routes.length * 1050 - 50,
     height: Math.max(...nodes.map((n) => n.y)) + 130,
     nodes,
     edges: techniques

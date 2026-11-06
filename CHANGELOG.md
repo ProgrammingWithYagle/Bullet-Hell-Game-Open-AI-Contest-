@@ -1,6 +1,15 @@
 # Changelog
 
-Development build **2026.11.06-sniper-field-rest**, protocol 65. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.06-sniper-prepared-withdrawal**, protocol 66. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-06 — Prepare the return before committing the shot
+
+### Sniper: Prepared Withdrawal
+
+- This late one-capstone operation can prepare two actual empty positions with their own settling, manual bearings and original finite deadlines. Place the second only after the first settles, from at least96px away.
+- Only a normally available C claim from a complete pair followed by its actual manual release earns one return opportunity at the other original site. Physically return and pay another actual round during recovery, then separately release; this extends spent recovery.
+- The return cannot recursively earn another. Recall, failed plans, Carry movement, Clear handling, ownership loss and real bodies/cover/time/armor retain their actual consequences. No automatic shot, target selection, movement or protection.
+- Exact65 local ownership/history migration preserves49issued techniques/four General/all twelve classes.27SP/onecapstone, earlier operations, controls, HUD choices and Practice editions remain. Soldier whole-class/human/final-balance assessment and remaining classes continue.
 
 ## 2026-11-06 — Prepare a position before paying for the shot
 

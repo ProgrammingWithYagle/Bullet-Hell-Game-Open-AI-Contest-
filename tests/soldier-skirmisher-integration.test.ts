@@ -86,7 +86,7 @@ test("Soldier retains its authored Skirmisher fork beside the real Marksman entr
     map.nodes.filter((n) => n.reference)[0].id,
     "soldier-ballistics-1",
   );
-  const whole=specializationMapLayout('soldier')!;assert.equal(whole.width,4150);assert.equal(whole.nodes.length,28);assert.equal(whole.edges.length,27);
+  const whole=specializationMapLayout('soldier')!;assert.equal(whole.width,4150);assert.equal(whole.nodes.length,29);assert.equal(whole.edges.length,28);
   assert(whole.exclusions.some(pair=>pair.a===ids.entry&&pair.b==='soldier-marksman-1'));
   assert.equal(specializationMapLayout("medic"), null);
 });

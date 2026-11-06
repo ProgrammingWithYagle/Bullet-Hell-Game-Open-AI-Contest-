@@ -31,6 +31,7 @@ export type KitStatus = {
   sniperPrimaryAt?:number;sniperPrimaryAim?:number;sniperShotAt?:number;sniperShotAim?:number;
   sniperRecoveryAt?:number;sniperReadyAt?:number;sniperUntil?:number;sniperPrepared?:boolean;sniperBlocked?:boolean;
   sniperRestAt?:number;sniperRestUntil?:number;sniperRestX?:number;sniperRestY?:number;sniperRestAim?:number;sniperRestSetting?:boolean;sniperRestReady?:boolean;sniperRestBlocked?:boolean;
+  sniperRestCount?:number;sniperRestCanSecond?:boolean;sniperWithdrawalUntil?:number;sniperWithdrawalReady?:boolean;
   grenadierRecoveryAt?:number;grenadierFuseUntil?:number;grenadierPinnedUntil?:number;grenadierRemainingFuse?:number;grenadierHolding?:boolean;grenadierCanCatch?:boolean;grenadierCanKick?:boolean;grenadierBlocked?:boolean;grenadierShortBlocked?:boolean;
   soldierBankBlocked?:boolean;
   soldierPairUntil?:number;soldierPairHeld?:boolean;soldierPairBlocked?:boolean;soldierRelayUntil?:number;soldierBankAmmunition?:number;

@@ -1,0 +1,10 @@
+export const soldierSniperWithdrawalMessages=()=>({
+  "skill.soldier-sniper-withdrawal-1.name": "Prepared Withdrawal",
+  "skill.soldier-sniper-withdrawal-1.description": "Prepare two separate Field Rest positions at least96pixels apart, each with its real settling, manual bearing and original expiry. Both must be settled before a normally available action1 claims the first. Only a successful separate manual release earns one return opportunity at the other original site. Physically return within its local position/bearing limits: action1 may reserve another actual round during recovery, ready for its own separate manual release. That alternate payment extends spent recovery by one ordinary action1 duration. A normally ready claim consumes the same finite opportunity. With no paid preparation, action2 sets a second site only after the first settles and from sufficient distance; nearer action2, two sites or an armed return means recall the plan. Carry still requires new settling after movement; Clear returns only its reserved round and keeps recovery. No site, right or ammunition is restored and a return cannot earn another return. Physical bodies, cover, time and firing-origin armor remain.",
+  "ui.sniper.withdrawalBoreName": "Field Rest / Prepared Withdrawal / Bore Through",
+  "ui.sniper.withdrawalHelp": "Settle both positions before the first normally available action1 claim. That round must actually be released before one return can be paid for at the other original site during recovery. Recovery extends; the original site expiry keeps running. With no paid preparation, action2 sets a second site only after the first settles and from at least96px away; nearer action2, two sites or an armed return means recall. Carry and Clear retain their issued handling.",
+  "ui.sniper.recallFallback": "recall return position",
+  "ui.sniper.recallPair": "recall paired positions",
+  "ui.sniper.setSecond": "set second position",
+  "ui.sniper.prepareFallback": "use return position · prepare round"
+});

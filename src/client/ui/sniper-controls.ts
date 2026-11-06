@@ -20,7 +20,9 @@ export function sniperKitMarkup(
           [
             "technique2",
             p.skills.includes(sniperIds.rest)
-              ? "ui.sniper.restBoreName"
+              ? p.skills.includes(sniperIds.withdrawal)
+                ? "ui.sniper.withdrawalBoreName"
+                : "ui.sniper.restBoreName"
               : "skill." + sniperIds.bore + ".name",
           ] as const,
         ]
@@ -54,6 +56,9 @@ export function sniperKitMarkup(
     (p.skills.includes(sniperIds.rest)
       ? " " + e(t("ui.sniper.restHelp"))
       : "") +
+    (p.skills.includes(sniperIds.withdrawal)
+      ? " " + e(t("ui.sniper.withdrawalHelp"))
+      : "") +
     "</p><ul>" +
     rows
       .map(
@@ -79,6 +84,19 @@ export function sniperKitMarkup(
   );
 }
 export function sniperHudLabel(p: PlayerView, now: number, bore = false) {
+  if (
+    bore &&
+    !p.kit.sniperPrepared &&
+    p.skills.includes(sniperIds.withdrawal)
+  ) {
+    if ((p.kit.sniperWithdrawalUntil ?? 0) > now)
+      return t("ui.sniper.recallFallback");
+    if ((p.kit.sniperRestCount ?? 0) >= 2) return t("ui.sniper.recallPair");
+    if (p.kit.sniperRestCanSecond) return t("ui.sniper.setSecond");
+  }
+  if (!bore && !p.kit.sniperPrepared && p.kit.sniperWithdrawalReady)
+    return t("ui.sniper.prepareFallback");
+
   if (bore && !p.kit.sniperPrepared && p.skills.includes(sniperIds.rest))
     return t(
       (p.kit.sniperRestUntil ?? 0) > now
