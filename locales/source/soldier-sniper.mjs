@@ -1,6 +1,8 @@
+import{soldierSniperRestMessages}from'./soldier-sniper-rest.mjs';
 import{soldierSniperBoreMessages}from'./soldier-sniper-bore.mjs';
 import{soldierSniperHandlingMessages}from'./soldier-sniper-handling.mjs';
 export const soldierSniperMessages=()=>({
+  ...soldierSniperRestMessages(),
   ...soldierSniperBoreMessages(),
   ...soldierSniperHandlingMessages(),
   "pathway.soldier-sniper-1.name": "Sniper",

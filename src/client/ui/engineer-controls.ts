@@ -15,7 +15,7 @@ type KitAction = "q" | "e" | "ultimate" | "technique1" | "technique2" | "reload"
 // These are affected inputs, not an inference from a technique's visual frame.
 // Breach Casings also works when a placed charge triggers without remote input.
 const controlsByTechnique: Record<string, readonly KitAction[]> = {
-  'soldier-sniper-1':['technique1'],'soldier-sniper-bore-1':['technique1','technique2'],'soldier-sniper-carry-1':['technique1'],'soldier-sniper-clear-1':['technique1','reload'],
+  'soldier-sniper-1':['technique1'],'soldier-sniper-bore-1':['technique1','technique2'],'soldier-sniper-rest-1':['technique1','technique2'],'soldier-sniper-carry-1':['technique1'],'soldier-sniper-clear-1':['technique1','reload'],
   'soldier-grenadier-1':['technique1'],'soldier-grenadier-skim-1':['technique1','technique2'],'soldier-grenadier-contact-1':['technique1','technique2'],'soldier-grenadier-pitch-1':['technique2'],'soldier-grenadier-pin-1':['reload','technique1'],'soldier-grenadier-sling-1':['e','technique1'],'soldier-grenadier-kick-1':['technique2'],'soldier-grenadier-return-1':['technique1'],
   'soldier-marksman-1':['technique1'],
   'soldier-marksman-carom-1':['technique1','technique2'],

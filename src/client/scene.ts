@@ -885,6 +885,9 @@ export class CombatScene extends Phaser.Scene {
       if(cue.kind==='soldier-puncture'){
         const alpha=Math.max(0,Math.min(1,(cue.until-now)/(cue.until-cue.at))),dx=-Math.sin(cue.aim)*5,dy=Math.cos(cue.aim)*5;h.lineStyle(1.8,0xc4bd93,.8*alpha);for(const point of [{x:cue.x,y:cue.y},{x:cue.exitX,y:cue.exitY}]){h.strokeCircle(point.x,point.y,4);h.lineBetween(point.x-dx,point.y-dy,point.x+dx,point.y+dy);}continue;
       }
+      if(cue.kind==='soldier-rest'){
+        const local=cue.owner===this.localId,ready=now>=cue.readyAt,fade=Math.min(1,Math.max(0,(cue.until-now)/15)),color=ready?0xb7ad86:0x879da2;h.lineStyle(ready?1.8:1,color,(local?.8:.3)*fade).strokeRect(cue.x-6,cue.y-4,12,8);h.lineBetween(cue.x+Math.cos(cue.aim)*8,cue.y+Math.sin(cue.aim)*8,cue.x+Math.cos(cue.aim)*19,cue.y+Math.sin(cue.aim)*19);if(!ready){const progress=Math.max(0,Math.min(1,(now-cue.at)/(cue.readyAt-cue.at)));h.beginPath().arc(cue.x,cue.y,9,-Math.PI/2,-Math.PI/2+Math.PI*2*progress).strokePath();}continue;
+      }
       if(cue.kind==='soldier-sight'){
         const local=cue.owner===this.localId,ready=now>=cue.readyAt,color=ready?0xc4bd93:0x879da2,alpha=local?.8:.28,length=Math.min(cue.radius,36);h.lineStyle(ready?2:1.2,color,alpha).strokeCircle(cue.x,cue.y,12);for(const side of [-1,1]){const a=cue.aim+side*Math.PI/15;h.lineBetween(cue.x+Math.cos(a)*15,cue.y+Math.sin(a)*15,cue.x+Math.cos(a)*length,cue.y+Math.sin(a)*length);}continue;
       }

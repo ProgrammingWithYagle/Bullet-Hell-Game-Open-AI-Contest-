@@ -16,7 +16,14 @@ export function sniperKitMarkup(
     ["ultimate", "ability.soldier-ultimate.name"],
     ["technique1", "skill.soldier-sniper-1.name"],
     ...(p.skills.includes(sniperIds.bore)
-      ? [["technique2", "skill." + sniperIds.bore + ".name"] as const]
+      ? [
+          [
+            "technique2",
+            p.skills.includes(sniperIds.rest)
+              ? "ui.sniper.restBoreName"
+              : "skill." + sniperIds.bore + ".name",
+          ] as const,
+        ]
       : []),
     ...(p.skills.includes(sniperIds.clear)
       ? [["reload", "skill." + sniperIds.clear + ".name"] as const]
@@ -44,6 +51,9 @@ export function sniperKitMarkup(
     (p.skills.includes(sniperIds.bore)
       ? " " + e(t("ui.sniper.boreHelp"))
       : "") +
+    (p.skills.includes(sniperIds.rest)
+      ? " " + e(t("ui.sniper.restHelp"))
+      : "") +
     "</p><ul>" +
     rows
       .map(
@@ -69,7 +79,30 @@ export function sniperKitMarkup(
   );
 }
 export function sniperHudLabel(p: PlayerView, now: number, bore = false) {
+  if (bore && !p.kit.sniperPrepared && p.skills.includes(sniperIds.rest))
+    return t(
+      (p.kit.sniperRestUntil ?? 0) > now
+        ? "ui.sniper.recallRest"
+        : "ui.sniper.placeRest",
+    );
   if (bore && !p.kit.sniperPrepared) return t("ui.sniper.boreAwait");
+  if (
+    !bore &&
+    !p.kit.sniperPrepared &&
+    p.kit.sniperRestReady &&
+    Math.hypot(
+      p.x - (p.kit.sniperRestX ?? 0),
+      p.y - (p.kit.sniperRestY ?? 0),
+    ) <= 6 &&
+    Math.abs(
+      Math.atan2(
+        Math.sin(p.aim - (p.kit.sniperRestAim ?? 0)),
+        Math.cos(p.aim - (p.kit.sniperRestAim ?? 0)),
+      ),
+    ) <=
+      Math.PI / 15
+  )
+    return t("ui.sniper.claimRest");
   const settling = (p.kit.sniperReadyAt ?? 0) > now,
     target = settling ? p.kit.sniperReadyAt! : p.kit.sniperUntil!;
   return (p.kit.sniperUntil ?? 0) > now

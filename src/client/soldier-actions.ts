@@ -32,7 +32,7 @@ export function soldierPaidStepAvailable(p: PlayerView, now: number) {
   );
 }
 export function soldierActions(p: PlayerView, now: number) {
-  if(p.classId==='soldier'&&p.skills.includes(sniperId))return{command:false,qNameKey:null,qAt:p.qAt,qBlocked:false,extras:[{key:'technique1' as const,id:sniperId,at:p.kit.technique1At??0,blocked:p.kit.sniperBlocked??true},...(p.skills.includes(sniperIds.bore)?[{key:'technique2' as const,id:sniperIds.bore,at:p.kit.sniperPrepared?0:p.kit.sniperRecoveryAt??0,blocked:!p.kit.sniperPrepared||(p.kit.sniperBlocked??true)}]:[])]};
+  if(p.classId==='soldier'&&p.skills.includes(sniperId))return{command:false,qNameKey:null,qAt:p.qAt,qBlocked:false,extras:[{key:'technique1' as const,id:sniperId,at:p.kit.technique1At??0,blocked:p.kit.sniperBlocked??true},...(p.skills.includes(sniperIds.bore)?[{key:'technique2' as const,id:p.kit.sniperPrepared?sniperIds.bore:p.skills.includes(sniperIds.rest)?sniperIds.rest:sniperIds.bore,at:p.skills.includes(sniperIds.rest)?0:p.kit.sniperPrepared?0:p.kit.sniperRecoveryAt??0,blocked:p.kit.sniperPrepared?(p.kit.sniperBlocked??true):p.skills.includes(sniperIds.rest)?(p.kit.sniperRestBlocked??true):true}]:[])]};
   if(p.classId==='soldier'&&p.skills.includes(gren.entry))return{command:false,qNameKey:null,qAt:p.qAt,qBlocked:false,extras:[{key:'technique1' as const,id:gren.entry,at:p.kit.technique1At??0,blocked:p.kit.grenadierBlocked??true},...(p.skills.includes(gren.pitch)?[{key:'technique2' as const,id:gren.pitch,at:p.kit.technique2At??0,blocked:p.kit.grenadierShortBlocked??true}]:[])]};
   if (p.classId === "soldier" && p.skills.includes(marksmanId))
     return {

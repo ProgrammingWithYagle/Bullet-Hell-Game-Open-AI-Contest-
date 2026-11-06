@@ -1,6 +1,15 @@
 # Changelog
 
-Development build **2026.11.05-sniper-bore**, protocol 64. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.06-sniper-field-rest**, protocol 65. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-06 — Prepare a position before paying for the shot
+
+### Sniper: Field Rest
+
+- Acquired action2 can set one empty fixed firing rest before a paid round is prepared. Stand still for0.7s; once settled it remains at its original position/bearing until9s from planting.
+- Return within6px/12degrees to consume it with a fresh accepted action1. One actual round and ordinary recovery are still paid, then a separate manual C/B releases the physical shot. Failed preparation checks preserve the rest.
+- Action2 recalls an existing empty rest, or remains Bore Through with a paid round. Carry/Clear retain their actual costs, settling and recovery; nothing restores a consumed rest. No new currency, automatic shot or protection.
+- Exact64 migration preserves all twelve class ownership/history rosters and48issued techniques/four General. Later Sniper culmination and whole-class/human assessment remain open.
 
 ## 2026-11-05 — Choose a line through the screen
 

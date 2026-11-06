@@ -1,3 +1,4 @@
+import { SniperFieldRest } from "./soldier-sniper-rest.ts";
 import {
   advanceSniperBore,
   type BoreFlight,
@@ -14,9 +15,11 @@ export const sniperIds = {
   carry: "soldier-sniper-carry-1",
   clear: "soldier-sniper-clear-1",
   bore: "soldier-sniper-bore-1",
+  rest: "soldier-sniper-rest-1",
 } as const;
 export const sniperRules = catalog.rules.soldierSniper;
 export const sniperBoreRules = catalog.rules.soldierSniperBore;
+export const sniperRestRules = catalog.rules.soldierSniperRest;
 const ticks = (seconds: number) => Math.ceil(seconds * HZ),
   angle = (value: number) => Math.atan2(Math.sin(value), Math.cos(value));
 const owned = (p: Player | undefined): p is Player =>
@@ -35,6 +38,7 @@ type Preparation = Vec & {
   fireLatch: boolean;
   damage: number;
   handling: "plain" | "carry" | "clear";
+  restClaimed?: boolean;
 };
 type Flight = { owner: string; weapon: string; origin: Vec; bore?: BoreFlight };
 type SniperSightCue = Vec & {
@@ -58,7 +62,17 @@ export type SniperPunctureCue = Vec & {
   aim: number;
   radius: number;
 };
-export type SniperCue = SniperSightCue | SniperPunctureCue;
+export type SniperRestCue = Vec & {
+  kind: "soldier-rest";
+  owner: string;
+  id: number;
+  at: number;
+  readyAt: number;
+  until: number;
+  aim: number;
+  radius: number;
+};
+export type SniperCue = SniperSightCue | SniperPunctureCue | SniperRestCue;
 export type SniperContext = {
   tick: number;
   stats(p: Player): Stats;
@@ -84,6 +98,13 @@ export type SniperFlightContext = {
 /** A paid, planted opportunity. Settling never fires, targets or refunds a round. */
 export class SoldierSniper {
   private recovery = new Map<string, number>();
+  private rests = new SniperFieldRest({
+    settleTicks: ticks(sniperRules.settleSeconds),
+    lifetimeTicks: ticks(sniperRestRules.seconds),
+    claimRadius: sniperRestRules.radius,
+    aimArc: sniperRules.aimArc,
+    stationaryTolerance: sniperRules.stationaryTolerance,
+  });
   private actions = new Map<
     string,
     { primaryAt: number; primaryAim: number; shotAt: number; shotAim: number }
@@ -119,6 +140,7 @@ export class SoldierSniper {
   }
   clear() {
     this.recovery.clear();
+    this.rests.clear();
     this.actions.clear();
     this.barrelUntil.clear();
     this.preparations.clear();
@@ -132,6 +154,7 @@ export class SoldierSniper {
     this.flights.delete(id);
   }
   cancelOwner(owner: string) {
+    this.rests.remove(owner);
     this.punctures = this.punctures.filter((c) => c.owner !== owner);
     this.barrelUntil.delete(owner);
     this.actions.delete(owner);
@@ -143,6 +166,7 @@ export class SoldierSniper {
     return ids;
   }
   interrupt(owner: string) {
+    this.rests.cancelSetup(owner);
     this.preparations.delete(owner);
   }
   private busy(p: Player | undefined, now: number) {
@@ -164,6 +188,7 @@ export class SoldierSniper {
       q.until <= now ||
       p.weapon !== q.weapon ||
       p.health < q.health ||
+      (q.restClaimed && !p.skills.includes(sniperIds.rest)) ||
       (q.handling !== "plain" && !p.skills.includes(sniperIds[q.handling]))
     ) {
       this.preparations.delete(p.id);
@@ -182,7 +207,24 @@ export class SoldierSniper {
     }
     return q;
   }
+  private syncRest(p: Player | undefined, owner: string, now: number) {
+    return this.rests.sync(
+      p,
+      owner,
+      now,
+      live(p) && p.skills.includes(sniperIds.rest),
+      !this.busy(p, now),
+    );
+  }
+  private planted(p: Player) {
+    return (
+      Math.hypot(p.input.moveX, p.input.moveY) === 0 &&
+      Math.hypot(p.x - p.oldX, p.y - p.oldY) <= sniperRules.stationaryTolerance
+    );
+  }
   react(p: Player, input: InputFrame, c: SniperContext) {
+    this.syncRest(p, p.id, c.tick);
+    this.rests.react(p.id, input);
     const q = this.preparation(p, c.tick);
     if (!q) return false;
     if (!input.fire) q.fireLatch = false;
@@ -216,9 +258,17 @@ export class SoldierSniper {
     return false;
   }
   afterMove(p: Player, now: number) {
+    this.syncRest(p, p.id, now);
     this.preparation(p, now);
   }
   step(now: number, players: readonly Player[]) {
+    for (const owner of this.restOwners()) {
+      this.syncRest(
+        players.find((p) => p.id === owner),
+        owner,
+        now,
+      );
+    }
     this.punctures = this.punctures.filter((c) => c.until > now);
     for (const owner of this.preparations.keys()) {
       const p = players.find((p) => p.id === owner);
@@ -227,7 +277,7 @@ export class SoldierSniper {
     }
   }
   blocksPrimary(owner: string) {
-    return this.preparations.has(owner);
+    return this.preparations.has(owner) || this.rests.blocksPrimary(owner);
   }
   cues(players: readonly Player[]): SniperCue[] {
     return [...this.preparations.values()]
@@ -250,9 +300,35 @@ export class SoldierSniper {
             ]
           : [];
       })
-      .concat(this.punctures);
+      .concat(this.punctures, this.restCues(players));
+  }
+  private restOwners() {
+    return this.rests.owners();
+  }
+  private restCues(players: readonly Player[]): SniperRestCue[] {
+    return this.restOwners().flatMap((owner) => {
+      const q = this.rests.get(owner),
+        p = players.find((p) => p.id === owner);
+      return q && live(p)
+        ? [
+            {
+              kind: "soldier-rest" as const,
+              owner,
+              id: q.cueId,
+              x: q.x,
+              y: q.y,
+              at: q.at,
+              readyAt: q.readyAt,
+              until: q.until,
+              aim: q.aim,
+              radius: sniperRestRules.radius,
+            },
+          ]
+        : [];
+    });
   }
   status(p: Player | undefined, now: number) {
+    const rest = this.syncRest(p, p?.id ?? "", now);
     const q = this.preparation(p, now),
       at = p ? (this.recovery.get(p.id) ?? 0) : 0,
       action = p ? this.actions.get(p.id) : undefined;
@@ -266,6 +342,14 @@ export class SoldierSniper {
       sniperReadyAt: q?.readyAt ?? 0,
       sniperUntil: q?.until ?? 0,
       sniperPrepared: !!q,
+      sniperRestAt: rest?.readyAt ?? 0,
+      sniperRestUntil: rest?.until ?? 0,
+      sniperRestX: rest?.x ?? 0,
+      sniperRestY: rest?.y ?? 0,
+      sniperRestAim: rest?.aim ?? 0,
+      sniperRestSetting: rest?.setting ?? false,
+      sniperRestReady: !!rest && !rest.setting,
+      sniperRestBlocked: this.busy(p, now) || !p || !this.planted(p),
       sniperBlocked:
         this.busy(p, now) ||
         (q
@@ -278,6 +362,7 @@ export class SoldierSniper {
     };
   }
   cast(p: Player, c: SniperContext) {
+    this.syncRest(p, p.id, c.tick);
     if (
       this.busy(p, c.tick) ||
       p.input.reload ||
@@ -299,6 +384,8 @@ export class SoldierSniper {
       Math.hypot(p.x - p.oldX, p.y - p.oldY) > sniperRules.stationaryTolerance
     )
       return false;
+    const restClaimed = this.rests.consume(p, c.tick);
+    this.rests.cancelSetup(p.id);
     p.ammo--;
     const stats = c.stats(p);
     this.recovery.set(
@@ -313,7 +400,8 @@ export class SoldierSniper {
       weapon: p.weapon,
       health: p.health,
       at: c.tick,
-      readyAt: c.tick + ticks(sniperRules.settleSeconds),
+      readyAt: restClaimed ? c.tick : c.tick + ticks(sniperRules.settleSeconds),
+      restClaimed,
       until: c.tick + ticks(sniperRules.preparationSeconds),
       aim: p.aim,
       fireLatch: p.input.fire,
@@ -349,6 +437,7 @@ export class SoldierSniper {
   bore(p: Player, c: SniperContext) {
     if (
       !p.skills.includes(sniperIds.bore) ||
+      p.input.technique1 ||
       this.busy(p, c.tick) ||
       p.input.reload ||
       p.input.dodge ||
@@ -357,8 +446,19 @@ export class SoldierSniper {
     )
       return false;
     const q = this.preparation(p, c.tick);
-    if (!q || c.tick < q.readyAt) return false;
-    return this.release(p, q, c, true);
+    if (q) {
+      if (c.tick < q.readyAt) return false;
+      return this.release(p, q, c, true);
+    }
+    if (!p.skills.includes(sniperIds.rest) || !this.planted(p)) return false;
+    this.syncRest(p, p.id, c.tick);
+    if (this.rests.get(p.id)) {
+      this.rests.remove(p.id);
+      return true;
+    }
+    this.rests.place(p, c.tick, c.id(), p.input.fire);
+    c.sound(p, "sniper-rest");
+    return true;
   }
   advance(s: Shot, c: SniperFlightContext) {
     const f = this.flights.get(s.id);

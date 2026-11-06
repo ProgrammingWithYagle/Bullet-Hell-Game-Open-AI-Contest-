@@ -10,10 +10,10 @@ import {
   specializationFocus,
 } from "../src/client/ui/specialization-map.ts";
 import { menuEnvironment, menuBundle } from "./helpers/menu-fixture.ts";
-test("the authored Sniper map has exactly its four live techniques, real foundation and one handling exclusion", () => {
+test("the authored Sniper map has exactly its five live techniques, real foundation and one handling exclusion", () => {
   const map = specializationMapLayout("soldier", ids.entry)!;
-  assert.equal(map.nodes.length, 5);
-  assert.equal(map.edges.length, 4);
+  assert.equal(map.nodes.length, 6);
+  assert.equal(map.edges.length, 5);
   assert.equal(map.exclusions.length, 1);
   assert.deepEqual(
     new Set([map.exclusions[0].a, map.exclusions[0].b]),

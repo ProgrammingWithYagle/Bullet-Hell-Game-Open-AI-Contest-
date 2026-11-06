@@ -11,8 +11,8 @@ import { specializationMapLayout } from "../src/client/ui/specialization-map.ts"
 import { menuEnvironment, menuBundle } from "./helpers/menu-fixture.ts";
 test("Bore is an actual authored optional acquired node, with the handling fork retained", () => {
   const map = specializationMapLayout("soldier", ids.entry)!;
-  assert.equal(map.nodes.length, 5);
-  assert.equal(map.edges.length, 4);
+  assert.equal(map.nodes.length, 6);
+  assert.equal(map.edges.length, 5);
   assert.equal(map.exclusions.length, 1);
   assert(map.edges.some((e) => e.from === ids.entry && e.to === ids.bore));
   assert(
