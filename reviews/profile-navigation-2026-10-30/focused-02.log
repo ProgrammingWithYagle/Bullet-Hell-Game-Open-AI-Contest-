@@ -1,0 +1,27 @@
+✔ Cancel keeps a newer load intact after the older join returns success (597.4712ms)
+✔ Cancel keeps a newer load intact after the older join returns error (374.3436ms)
+✔ Escape cancels before artwork or audio settles and late completions do not reopen the game (317.998ms)
+✔ a saved language that fails to load still reaches the usable English menu with a retry notice (232.5605ms)
+✔ the latest language choice wins even when the older download finishes later (391.8171ms)
+✔ choosing English cancels an older RTL language result without reversing document direction (87.1758ms)
+✔ an aborted language request never changes the catalog, page direction or saved preference (87.2291ms)
+✔ obsolete language failures are ignored while a current failure preserves the working language and can retry (75.563ms)
+✔ leaving a setup page aborts its pending language choice without saving or redrawing the next page (403.4077ms)
+✔ a language load error remains on the current page with a retry and the current selection (333.0894ms)
+✔ a completed language change keeps the current text draft, cursor and focused field (363.9923ms)
+✔ a working language change reports a storage error without reverting to an inconsistent menu (349.1378ms)
+✔ leaving Profile while a file is read prevents a late import from replacing saved progress (459.2565ms)
+✔ a pending profile import ignores conflicting file and cosmetic actions and remains usable afterwards (166.125ms)
+✔ valid profile files report storage failures accurately and keep the previous bytes available to export (170.0157ms)
+✔ a disposed profile cannot save from its detached cosmetic or file controls (148.8421ms)
+✔ a successful profile import keeps its notice and returns focus to the current import control (185.9977ms)
+✔ actual setup ignores an older profile refresh after moving to a different page (443.7216ms)
+✔ an imported language refreshes its owning setup and keeps the success notice and import focus (420.5954ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4287.9554

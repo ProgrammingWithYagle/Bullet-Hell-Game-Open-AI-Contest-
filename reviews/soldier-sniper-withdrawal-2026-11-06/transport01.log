@@ -1,0 +1,64 @@
+{"nativeFieldRest":"clear","actualFirstClear":true,"boss":"chain-colossus","seconds":18.4,"earnedSP":20}
+✖ real Prepared Withdrawal peers earn27SP through two ordinary Raid clears, settle a pair, claim one finite paid return, Clear its actual round with recovery debt and remove actual rest on host exit (88027.6243ms)
+{"nativeFieldRest":"carry","actualFirstClear":true,"boss":"bell-triplets","seconds":18.333333333333332,"earnedSP":20}
+✖ whole optimized public Prepared Withdrawal worker earns27SP through two actual Raid clears, settles a real pair, fires and physically returns for one paid second release with extended recovery (87659.1298ms)
+{"nativeFieldRest":"carry","actualFirstClear":true,"boss":"chain-colossus","seconds":22,"earnedSP":20}
+✖ whole optimized testing Prepared Withdrawal worker earns27SP through two actual Raid clears, settles a real pair, fires and physically returns for one paid second release with extended recovery (91745.1765ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 0
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 179961.0798
+
+✖ failing tests:
+
+test at tests\soldier-sniper-withdrawal-network.test.ts:1:200
+✖ real Prepared Withdrawal peers earn27SP through two ordinary Raid clears, settle a pair, claim one finite paid return, Clear its actual round with recovery debt and remove actual rest on host exit (88027.6243ms)
+  AssertionError [ERR_ASSERTION]: 20earned cannot bypass27earned gate
+      at sniperWithdrawalFlow (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\sniper-withdrawal-flow.ts:46:3)
+      at async sniperWithdrawalPeerFlow (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\sniper-withdrawal-peer-flow.ts:86:20)
+      at async TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\soldier-sniper-withdrawal-network.test.ts:11:20)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\soldier-sniper-withdrawal-worker.test.ts:1:614
+✖ whole optimized public Prepared Withdrawal worker earns27SP through two actual Raid clears, settles a real pair, fires and physically returns for one paid second release with extended recovery (87659.1298ms)
+  AssertionError [ERR_ASSERTION]: 20earned cannot bypass27earned gate
+      at sniperWithdrawalFlow (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\sniper-withdrawal-flow.ts:46:3)
+      at async sniperWithdrawalWorkerFlow (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\sniper-withdrawal-worker-flow.ts:66:20)
+      at async TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\soldier-sniper-withdrawal-worker.test.ts:28:22)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\soldier-sniper-withdrawal-worker.test.ts:1:614
+✖ whole optimized testing Prepared Withdrawal worker earns27SP through two actual Raid clears, settles a real pair, fires and physically returns for one paid second release with extended recovery (91745.1765ms)
+  AssertionError [ERR_ASSERTION]: 20earned cannot bypass27earned gate
+      at sniperWithdrawalFlow (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\sniper-withdrawal-flow.ts:46:3)
+      at async sniperWithdrawalWorkerFlow (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\sniper-withdrawal-worker-flow.ts:66:20)
+      at async TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\soldier-sniper-withdrawal-worker.test.ts:28:22)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

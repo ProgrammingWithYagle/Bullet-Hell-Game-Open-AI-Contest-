@@ -1,0 +1,78 @@
+{
+  "createdAt": "2026-10-24T02:12:16.845975+00:00",
+  "passed": true,
+  "implementationSourceCommit": "9a2ed8a6b5d6782cc23b3c92b07951d0a3a9251a",
+  "branch": "feat/first-playable-loop",
+  "pr": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14",
+  "draft": true,
+  "checks": [
+    {
+      "id": 120749186980,
+      "name": "verify",
+      "status": "completed",
+      "conclusion": "success",
+      "details_url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/40052872521/job/120749186980"
+    },
+    {
+      "id": 120749180834,
+      "name": "verify",
+      "status": "completed",
+      "conclusion": "success",
+      "details_url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/40052870668/job/120749180834"
+    }
+  ],
+  "sourceSnapshotSha256": "96b4eb6c912599400d1ce55c03cb460c816c635c882cb43a14804ee663dd500b",
+  "runtimeSourceSha256": "c5e1e1f1507c711182a48918b87c5c1c825ccdaf7c367a24d5736b6e599f9cf5",
+  "tests": 124,
+  "wiki": {
+    "sourceCommit": "9a2ed8a6b5d6782cc23b3c92b07951d0a3a9251a",
+    "publishedCommit": "6e841e0d9b3462a9619120dea9a555fcb927fe58",
+    "matchingPages": 15
+  },
+  "localDelivery": {
+    "protocol": 6,
+    "hashedAssets": 80,
+    "modules": 7
+  },
+  "reviewPack": {
+    "passed": true,
+    "sourceCommit": "9a2ed8a6b5d6782cc23b3c92b07951d0a3a9251a",
+    "files": 87,
+    "zip": "Grave_Accord_Boss_Art_Music_Review.zip",
+    "zipBytes": 33944348,
+    "zipSha256": "fc8b57b5d4c8ba75d1620bcd2a83ef9e91f64a043b5cda857f4755a19a164d43",
+    "allZipMemberHashesMatch": true
+  },
+  "measurements": [
+    {
+      "boss": "ratcatcher",
+      "normalP99Ms": 10.87519999999995,
+      "stressP99Ms": 30.356299999999464,
+      "stressMaximumMs": 49.550500000000284,
+      "peakMinions": 12,
+      "peakHostiles": 4000
+    },
+    {
+      "boss": "courier",
+      "normalP99Ms": 13.698700000000372,
+      "stressP99Ms": 35.688500000000204,
+      "stressMaximumMs": 56.807300000000396,
+      "peakMinions": 0,
+      "peakHostiles": 4000
+    },
+    {
+      "boss": "quarantine-clerk",
+      "normalP99Ms": 14.657600000000002,
+      "stressP99Ms": 34.75980000000072,
+      "stressMaximumMs": 71.85689999999977,
+      "peakMinions": 0,
+      "peakHostiles": 4000
+    }
+  ],
+  "limits": [
+    "Source and native Wiki publication only; the public hosted game remains the earlier protocol-4 deployment.",
+    "Final rendered motion/device/human/native-language/listening acceptance remains open.",
+    "50-client stress samples include over-budget ticks; shared-process failures remain preserved and full 49+1/endurance/hosting acceptance is open.",
+    "Metadata-only follow-up commits do not change the verified implementation source or canonical Wiki blobs."
+  ]
+}

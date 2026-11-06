@@ -1,0 +1,17 @@
+# Glass Surgeon's refraction theatre
+
+Build **2026.10.31-glass-surgery** replaces the old missing-edge polygon with locked optical paths. The boss keeps its identity, fixed threat, health factor, artwork, music and ordinary encounter/reward rules. Wire protocol remains45 because existing shootable-prop and glass-beam fields are reused; the new content revision must match online.
+
+The diagnostic stage bends one ray through a shootable lens. The relay stage links two lenses. The split stage forks one source toward two visible positions. The advanced final examination changes the return's lens route. Positions are sampled when the complete warning is committed. Rays never follow moving survivors and never form the old enclosure.
+
+Each optical pulse has a two-second warning and a1.25-second active window. Every segment belonging to that pulse shares one hit per survivor, including at the shared junction. A lens disables all downstream dependent segments when destroyed; unrelated branches remain. Light passes through cover, as explained in the help. All endpoints stay within the shared arena. Lens positions stay clear of fixed obstacles and retain their identities while old warnings finish across phase entry.
+
+Brutal adds a return at5.3seconds after commitment; its new warning appears at3.3seconds. Crazed adds an independently aimed later incision at7.7seconds, with a fresh warning at5.7seconds. The damaging windows remain separated. Surviving lenses are reused, and destroyed lenses cannot reappear in queued returns. A new primary cast waits for the complete score and a quiet gap. Stagger/reset and encounter exit cancel both visible optics and queued children.
+
+Between complete casts, the boss repositions slowly at55 world pixels per second before movement scaling. The approach has no new contact damage. Shared boss-body obstacles retain full-art clearance. It stays still during its optical work and respects pause/auxiliary state. Existing casting/action art is reused; this is not a new drawn walking cycle.
+
+All fifteen catalogs provide phase names, practical counterplay, advanced-form help and translated Oren Pell lore. The recovered codex retains the original English history and can show the localized passage. Dr. Oren Pell's refusal to certify patients by eye color connects this encounter to the city's civic orders. Known General-mobility local saves/profiles migrate with purchases and controls intact. Online restore stays strict about protocol and the exact content hash.
+
+Canonical content: `content/source/glass-surgery.mjs`. Pure layout/movement helpers: `src/shared/glass-surgery.ts`. `ServiceDirector` owns visible cues, delayed children, shootable dependencies and hit ownership. Existing client geometry/art consumes those authoritative shapes. `tools/update-glass-surgery.mjs` reapplies content/help, followed by the normal locale, analytical-model and full-gate generators.
+
+Software checks cover432 map/difficulty/form/phase combinations, a base-speed escape at tested starting positions, target locks, one-hit pulse limits, delayed cut/reset semantics, phase continuity, bounded repeated cycles, save/profile migration and real two-peer transport. This does not certify every mid-fight position, rendered presentation, human balance, listening, native-language quality, physical devices, WAN or endurance. No boss/class count increase, public deployment or whole-game completion is claimed.

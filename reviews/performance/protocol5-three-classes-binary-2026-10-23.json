@@ -1,0 +1,76 @@
+{
+  "createdAt": "2026-10-24T00:26:52.737Z",
+  "contentRevision": "b8d9fb6918c854f3eed38b327ed0cb3026e071e6fe24932e50beed36943db241",
+  "protocolVersion": 5,
+  "classRoster": {
+    "soldier": 17,
+    "medic": 17,
+    "heavy": 16
+  },
+  "players": 50,
+  "renderedClients": 0,
+  "scriptedClients": 50,
+  "firstPlayableGate": "incomplete",
+  "reference": {
+    "cpu": "Intel(R) Core(TM) 9 270H",
+    "logicalCpus": 20,
+    "memoryGiB": 31.638248443603516,
+    "platform": "win32",
+    "node": "v24.19.0"
+  },
+  "baseline": {
+    "scenario": "active combat",
+    "bossId": "constable",
+    "durationSeconds": 5.0406715,
+    "samples": 151,
+    "tickP50Ms": 2.897000000000844,
+    "tickP99Ms": 9.550400000000081,
+    "tickMaxMs": 10.886999999999944,
+    "eventLoopP99Ms": 32.620543,
+    "encodedOutboundBytes": 10441926,
+    "meanOutboundBytesPerSecondPerClient": 41430.69430332843,
+    "peakHostiles": 0,
+    "stressProjectilesSpawned": 0,
+    "processMemory": {
+      "rss": 246218752,
+      "heapTotal": 194060288,
+      "heapUsed": 72711920,
+      "external": 8774632,
+      "arrayBuffers": 4432267
+    }
+  },
+  "stress": {
+    "scenario": "4000-hostile stress",
+    "bossId": "lantern-warden",
+    "durationSeconds": 5.0078488,
+    "samples": 150,
+    "tickP50Ms": 7.987500000001091,
+    "tickP99Ms": 38.12620000000061,
+    "tickMaxMs": 46.821099999999205,
+    "eventLoopP99Ms": 58.556415,
+    "encodedOutboundBytes": 53692129,
+    "meanOutboundBytesPerSecondPerClient": 214431.90936595373,
+    "peakHostiles": 4000,
+    "stressProjectilesSpawned": 13112,
+    "processMemory": {
+      "rss": 258920448,
+      "heapTotal": 189489152,
+      "heapUsed": 53560136,
+      "external": 11037415,
+      "arrayBuffers": 6695010
+    }
+  },
+  "actions": {
+    "acceptedInputs": 11650,
+    "rejectedInputs": 0,
+    "successfulPurchaseReplies": 100,
+    "votes": 100
+  },
+  "limitations": [
+    "All clients are scripted; no rendered-client FPS measurement.",
+    "The Warden extinguishes hostile shots at signature release; 4000 is the measured peak, not a continuous-every-frame guarantee.",
+    "Server and bot clients share this process; memory is combined.",
+    "Invulnerability and extended boss health isolate throughput; stress projectiles and short intermissions are test fixtures.",
+    "Localhost pilot does not establish WAN performance, free-host capacity, device performance, reconnection endurance or human play quality."
+  ]
+}

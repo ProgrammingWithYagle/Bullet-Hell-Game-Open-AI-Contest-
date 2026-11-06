@@ -1,0 +1,724 @@
+{
+  "checkedAt": "2026-10-29T20:53:23.884Z",
+  "passed": true,
+  "label": "source-02",
+  "scope": "Current staged changes excluding this receipt; bounded pattern scan, not complete secret detection.",
+  "branch": "feat/first-playable-loop",
+  "findings": [],
+  "members": [
+    {
+      "path": ".gitattributes",
+      "bytes": 9505,
+      "sha256": "16e4c9e09f7effb9588344e320ecd0af45bc3fbec845874099ffc0fde2b50afc",
+      "textScanned": true
+    },
+    {
+      "path": "CHANGELOG.md",
+      "bytes": 145520,
+      "sha256": "9bf4d672c502d169bca82040fd8df12f135068b4ecd71841705048c34bd2a20e",
+      "textScanned": true
+    },
+    {
+      "path": "README.md",
+      "bytes": 8758,
+      "sha256": "8f8998a1252def3e5d0e7bd9a5854d60938b8ebd14d653fa769e668633d7728c",
+      "textScanned": true
+    },
+    {
+      "path": "START_NEXT_CHAT.txt",
+      "bytes": 6711,
+      "sha256": "b9e97b6b7e7497ed0c0a887474a573131ca6bda4ed6da3c12dbe9f2a71f7c979",
+      "textScanned": true
+    },
+    {
+      "path": "docs/CHECKPOINT_2026_10_25.md",
+      "bytes": 18091,
+      "sha256": "fbc778cd455260927866842c2a6d3a8fff204edab7dc258eb6f8e2bf7908c916",
+      "textScanned": true
+    },
+    {
+      "path": "docs/DEVELOPMENT_PROGRESS.md",
+      "bytes": 22570,
+      "sha256": "e3ee898e13eb5b0db92bcca306256b27e2bc82bebb130cbe7185a999757998db",
+      "textScanned": true
+    },
+    {
+      "path": "docs/development-work-ledger.json",
+      "bytes": 26268,
+      "sha256": "1dccf575af8fc36f7bf8d850ad176cdc61d27de5e44e0235dfb6b5b47d3b9e28",
+      "textScanned": true
+    },
+    {
+      "path": "docs/wiki/Bosses.md",
+      "bytes": 39072,
+      "sha256": "0d0d71f1034810f55ca8bd46fad2e12232a5a411a27fec59abaf2d60a429178a",
+      "textScanned": true
+    },
+    {
+      "path": "docs/wiki/Changelog.md",
+      "bytes": 145520,
+      "sha256": "9bf4d672c502d169bca82040fd8df12f135068b4ecd71841705048c34bd2a20e",
+      "textScanned": true
+    },
+    {
+      "path": "docs/wiki/Development-Progress.md",
+      "bytes": 22570,
+      "sha256": "e3ee898e13eb5b0db92bcca306256b27e2bc82bebb130cbe7185a999757998db",
+      "textScanned": true
+    },
+    {
+      "path": "docs/wiki/Getting-Started.md",
+      "bytes": 16794,
+      "sha256": "95cc794876c70684b3c9ac30e76b7a1780bed1488124865c18c72bd4855940df",
+      "textScanned": true
+    },
+    {
+      "path": "docs/wiki/Home.md",
+      "bytes": 5663,
+      "sha256": "56a1b562e0836890807f49b08ab49fc73dd1185392174dd59bdaa7f6fb6d870f",
+      "textScanned": true
+    },
+    {
+      "path": "docs/wiki/Hosting-and-Recovery.md",
+      "bytes": 5663,
+      "sha256": "ab7fc628b0fee2beec0ca958b3fcff3da863efb493ce6b2c8aaf3a313e652817",
+      "textScanned": true
+    },
+    {
+      "path": "locales/ar.json",
+      "bytes": 200060,
+      "sha256": "976f7658e98790413c3bd9c1aba6eff2cba28b5d63313b99dad52a949857b92d",
+      "textScanned": true
+    },
+    {
+      "path": "locales/bn.json",
+      "bytes": 261676,
+      "sha256": "652f43e5d4230e6dc6fdb51115eaa5b5784d1c2fee1aedb79740e8c1d0c5968b",
+      "textScanned": true
+    },
+    {
+      "path": "locales/de.json",
+      "bytes": 163466,
+      "sha256": "eab82a0f7bf06d191b699bdf1ffc09619d3d4e30cdae7a476b7954227153e560",
+      "textScanned": true
+    },
+    {
+      "path": "locales/en.json",
+      "bytes": 158108,
+      "sha256": "721f08e746a0f580f247de485d42c02624e9913dbd7817a6848dfb94668d089e",
+      "textScanned": true
+    },
+    {
+      "path": "locales/es.json",
+      "bytes": 171844,
+      "sha256": "81cddf13bb2d2eaeefb205c5e7f7658b5d98ef529aab657b213054c01d24664b",
+      "textScanned": true
+    },
+    {
+      "path": "locales/fr.json",
+      "bytes": 163696,
+      "sha256": "c7d7583084b389815c6850947fc6bf8d5548b10fb7f488d691585b8e1a2ecca1",
+      "textScanned": true
+    },
+    {
+      "path": "locales/hi.json",
+      "bytes": 268818,
+      "sha256": "ccbfaaa9baf36e4befd755847507e0de9bcd0f8d93671e7c12e6a95d47ab80d5",
+      "textScanned": true
+    },
+    {
+      "path": "locales/id.json",
+      "bytes": 163100,
+      "sha256": "1d44635067136e1cbb1c9f4fce349cd78bdedf51e9bfc115c20fe92ea990d6df",
+      "textScanned": true
+    },
+    {
+      "path": "locales/ja.json",
+      "bytes": 170161,
+      "sha256": "21e3c77c2f0e44f5b00d65b7758b8f2b8c96d7cdd2096bff0715cadeda62201a",
+      "textScanned": true
+    },
+    {
+      "path": "locales/ko.json",
+      "bytes": 166345,
+      "sha256": "81e56a476850a529893d7a44d1bd37f2038f61f229f40a56bd69862971aaf248",
+      "textScanned": true
+    },
+    {
+      "path": "locales/pt-BR.json",
+      "bytes": 163244,
+      "sha256": "ca04e6e2424680ea56ecf6613ea0f5b1b3e7d519d96806d3422661cdf77a9e7f",
+      "textScanned": true
+    },
+    {
+      "path": "locales/ru.json",
+      "bytes": 224671,
+      "sha256": "60cfb2f3cef35969a84fea0165913aefc364e3a3e98d35409cba4aed88a9cb7d",
+      "textScanned": true
+    },
+    {
+      "path": "locales/source/interface-clarity.mjs",
+      "bytes": 8821,
+      "sha256": "6125631ab5e30262e49a9a00f835258a45fed3a1a129aa889722e0500208b0ec",
+      "textScanned": true
+    },
+    {
+      "path": "locales/source/runtime-extras.mjs",
+      "bytes": 17248,
+      "sha256": "b8a9ed40456b0bbbbd01e10aed942e56afb3d0e8f4bd7d37160100913667e735",
+      "textScanned": true
+    },
+    {
+      "path": "locales/ur.json",
+      "bytes": 203090,
+      "sha256": "cdeb3faaedd6a81d7b3324c7322fb441b6ebe32b91e6faa585eeb8533823b39b",
+      "textScanned": true
+    },
+    {
+      "path": "locales/zh-Hans.json",
+      "bytes": 152384,
+      "sha256": "75dbd69a7880fbdb64ab91ed36feb8a468f0461d70e6c71f98707a38b72c232d",
+      "textScanned": true
+    },
+    {
+      "path": "locales/zh-Hant.json",
+      "bytes": 152372,
+      "sha256": "5361bcd88e15f3334538f26f3ef9bf7112cf3b0d3b35fa3135e920ab287b9037",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/interface-clarity-2026-10-29/IMPLEMENTATION.md",
+      "bytes": 3844,
+      "sha256": "8cb931f6b81312337c9e6bf448a3bae08e6fd09d481d0fedc71aaa4a433386cf",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/interface-clarity-2026-10-29/REQUEST.md",
+      "bytes": 2962,
+      "sha256": "3198376263ce3ea0f25852dd810f658a0d80b95c595b92740b75c798b9e146d0",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/interface-clarity-2026-10-29/crab-baseline.json",
+      "bytes": 2044,
+      "sha256": "687b0b019d643cfe56979ef4d2f305d23823e667a769195ec40b16470dc8f131",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/interface-clarity-2026-10-29/export-payload-check.json",
+      "bytes": 23139,
+      "sha256": "a5cd8095a43f4a3ccc0c78a725db219d3a4eac797bd9a29e6812fa93547e16cc",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/interface-clarity-2026-10-29/focused-01.log",
+      "bytes": 3506,
+      "sha256": "8de83035375a09763653656cbe5f9cc8c8499b06a7879134d94ca1067b6bb4f6",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/interface-clarity-2026-10-29/focused-02.log",
+      "bytes": 3708,
+      "sha256": "b21023c7ad4e9665b4a90a9a421044be7f286022881a10222917812fb7be0075",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/interface-clarity-2026-10-29/focused-03.log",
+      "bytes": 2792,
+      "sha256": "5e5c868c8667352b3e7fc8311d2fd946cf64cba05c7f41904bdf485d0dc3826f",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/interface-clarity-2026-10-29/freeze-review.mjs",
+      "bytes": 9194,
+      "sha256": "65a33137778582d41cac1a32eb8a55816e090b5edea7e3f752d0ca6a052cf65b",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/interface-clarity-2026-10-29/full-gate-01.log",
+      "bytes": 2512,
+      "sha256": "77ff637bcc18726150b37409587b7047144f2e26f90dd07a1bd52cd138d3315a",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/interface-clarity-2026-10-29/full-gate-02.log",
+      "bytes": 101536,
+      "sha256": "c53f56d2dce06c6b992f60dbacc395de66fbdbb4e9667164b0464ccb1f0b7abd",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/interface-clarity-2026-10-29/gate-01/alchemist-lab-2026-10-27--art-verification.json",
+      "bytes": 3238,
+      "sha256": "1a34801387c735f1fa36eeeebd11b7493d6adc50dc4adc4dd6b5f0e26c1c74ea",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/interface-clarity-2026-10-29/gate-01/gate-preservation.json",
+      "bytes": 25137,
+      "sha256": "bdcde5c3ee839f1d5b0c219029715c71222d50925d1005587b561d8f6f1308da",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/interface-clarity-2026-10-29/gate-01/resonant-tolls-2026-10-27--art-verification.json",
+      "bytes": 3235,
+      "sha256": "9097860a723322f04214cfbc4fee897d38751f1ac681eac20cc8c200706b7c9b",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/interface-clarity-2026-10-29/gate-01/resonant-tolls-2026-10-27--emitted-atlases-public.json",
+      "bytes": 26468,
+      "sha256": "2cf44dc5d75919502d02ba95432c046fba6601aeac88c687b097ddb7d097094f",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/interface-clarity-2026-10-29/gate-01/resonant-tolls-2026-10-27--emitted-atlases-testing.json",
+      "bytes": 25964,
+      "sha256": "3e1480a6a9549fc9be87b90acdbfb5694fc6d625a6e5f2cd1a7277a3bbabc6c0",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/interface-clarity-2026-10-29/gate-01/runtime-verification.json",
+      "bytes": 230,
+      "sha256": "36c17c4ae5a2ddd9c3fa7484489847710179b326626e6c540069a88a8bbfe8b5",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/interface-clarity-2026-10-29/gate-01/small-wakes-2026-10-26--art-verification.json",
+      "bytes": 2964,
+      "sha256": "c06f2b3d1584d70e71407e4b4a238a210a442685e829ac424fb356bcbab2e77d",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/interface-clarity-2026-10-29/gate-01/stage1-validation.json",
+      "bytes": 2386,
+      "sha256": "c34cc0616e51603fda9b4a575e2abf676253d2a24bc63afcc17a3d16510fb8c2",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/interface-clarity-2026-10-29/gate-01/warden-patrol-2026-10-25--art-verification.json",
+      "bytes": 762,
+      "sha256": "abf1b97cf81c99f619d19def80a83d0d2bbe8098d924e5287328d8702dd0813f",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/interface-clarity-2026-10-29/gate-02/alchemist-lab-2026-10-27--art-verification.json",
+      "bytes": 3238,
+      "sha256": "1a34801387c735f1fa36eeeebd11b7493d6adc50dc4adc4dd6b5f0e26c1c74ea",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/interface-clarity-2026-10-29/gate-02/gate-preservation.json",
+      "bytes": 25135,
+      "sha256": "95414b697b34fc01a331f5ab91ffbc7c7a438b285fbb700b93fbc355a43b511a",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/interface-clarity-2026-10-29/gate-02/resonant-tolls-2026-10-27--art-verification.json",
+      "bytes": 3235,
+      "sha256": "9097860a723322f04214cfbc4fee897d38751f1ac681eac20cc8c200706b7c9b",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/interface-clarity-2026-10-29/gate-02/resonant-tolls-2026-10-27--emitted-atlases-public.json",
+      "bytes": 26468,
+      "sha256": "2cf44dc5d75919502d02ba95432c046fba6601aeac88c687b097ddb7d097094f",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/interface-clarity-2026-10-29/gate-02/resonant-tolls-2026-10-27--emitted-atlases-testing.json",
+      "bytes": 25964,
+      "sha256": "3e1480a6a9549fc9be87b90acdbfb5694fc6d625a6e5f2cd1a7277a3bbabc6c0",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/interface-clarity-2026-10-29/gate-02/runtime-verification.json",
+      "bytes": 315537,
+      "sha256": "9bf20b27e918d42d843674ece63d5a3abc6267e7a1552182497f7b768b608beb",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/interface-clarity-2026-10-29/gate-02/small-wakes-2026-10-26--art-verification.json",
+      "bytes": 2964,
+      "sha256": "8381d9b5cac7144cd9f3df112bdcf0faaf30812f7d109f64c820efdf6550917a",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/interface-clarity-2026-10-29/gate-02/stage1-validation.json",
+      "bytes": 1978,
+      "sha256": "9ef6e8c147e15c0b854fafd2d06ed41a1cb8ef0602e7556fdb13f37f1a4cca76",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/interface-clarity-2026-10-29/gate-02/warden-patrol-2026-10-25--art-verification.json",
+      "bytes": 762,
+      "sha256": "3ea8911e3954c51586439fa96cdf9484252538595ba49a998a7ab7f9b3d26c6a",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/interface-clarity-2026-10-29/headshots-native-inspection-02.json",
+      "bytes": 2186,
+      "sha256": "a1a6a587e18e6057ae0e97c9553ca22c84faeb5865dedf84a75a5bfc4fb60b27",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/interface-clarity-2026-10-29/headshots-native-inspection-02.png",
+      "bytes": 264663,
+      "sha256": "0b60b5d23bb85cfa043b9cd13f3eaa5e786dbbfcbd889e46d1c1bd4aec307e9b",
+      "textScanned": false
+    },
+    {
+      "path": "reviews/interface-clarity-2026-10-29/headshots-native-inspection.json",
+      "bytes": 2185,
+      "sha256": "71da712f6d246443506d5d673182850efe977b364207d8eef9f8c892b74ebf47",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/interface-clarity-2026-10-29/headshots-native-inspection.png",
+      "bytes": 257617,
+      "sha256": "0efe47c378fb84bac5d622aa05199f2eb18169b6eba03c67bcf41fd0d4cc1da5",
+      "textScanned": false
+    },
+    {
+      "path": "reviews/interface-clarity-2026-10-29/launch-preview.ps1",
+      "bytes": 3836,
+      "sha256": "d50be5cb1457f0cdd14a863c92f737c238731bfc7e3102cb59e979c917621291",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/interface-clarity-2026-10-29/local-status.json",
+      "bytes": 2051,
+      "sha256": "e2b67ee9f27365affea9275417f861be48bf56ae027ee731c9d265082237c2f7",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/interface-clarity-2026-10-29/publish-wiki.mjs",
+      "bytes": 2408,
+      "sha256": "d0017664466ced846a0b7c584716e529ceaca10981c417b7e09dbe05392640b2",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/interface-clarity-2026-10-29/review-inputs.mjs",
+      "bytes": 1924,
+      "sha256": "273117fba1eca8c7dc725e64ac92dcd2c78ac9c90ee4a31a496fb3e4249dd820",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/interface-clarity-2026-10-29/run-gate.mjs",
+      "bytes": 3329,
+      "sha256": "6c11fa107380ca52ee1aa0279a8ed59e5b39650fb28c5e2ee925aeef072492fd",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/interface-clarity-2026-10-29/scan-export.mjs",
+      "bytes": 1675,
+      "sha256": "9363450ddefbfb69aab436b55edc76fe9f3f537d7de86fa93b10d9db61560b19",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/interface-clarity-2026-10-29/smoke-preview.mts",
+      "bytes": 9101,
+      "sha256": "c0687928ff328aafb11789bf3c413d56d49a9acb61f68e6e8d2ab140ba235aee",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/interface-clarity-2026-10-29/verify-wiki.mjs",
+      "bytes": 1767,
+      "sha256": "70c0d34ff25d9477002ac947525064c7c001d9980bc2fc0f0fbc9ce299ec93ea",
+      "textScanned": true
+    },
+    {
+      "path": "src/client/main.ts",
+      "bytes": 48556,
+      "sha256": "0fdf65d442e8894026e04e74da7dddb12cd3bca523aa088f594180087e2c134a",
+      "textScanned": true
+    },
+    {
+      "path": "src/client/room-invite-ui.ts",
+      "bytes": 2292,
+      "sha256": "7c211dab0e275809e2b0e92c96c9c4111f1495b5f0684748b53504aabd632598",
+      "textScanned": true
+    },
+    {
+      "path": "src/client/session.ts",
+      "bytes": 19806,
+      "sha256": "5f3594f36694c1eba6ce6c25bffd0ea19509688698adc0a0046f6093f8eecc79",
+      "textScanned": true
+    },
+    {
+      "path": "src/client/ui/boss-defeat-status.ts",
+      "bytes": 424,
+      "sha256": "94df2cee4002c4f8acc57c4fbc19ce74d4031c08d1f2eeb53e0cf6cdbc51fd4d",
+      "textScanned": true
+    },
+    {
+      "path": "src/client/ui/character-headshot.ts",
+      "bytes": 702,
+      "sha256": "6314a037b3d1d5a78566411bc504bf692ea1ee4f3ca117ba8d80e8536ffd445d",
+      "textScanned": true
+    },
+    {
+      "path": "src/client/ui/interface-clarity.css",
+      "bytes": 7097,
+      "sha256": "c86f89b9045ce8b981d23c57e62ec3d247a5811e3a8dc3b8bfbaf8dc140a4ee7",
+      "textScanned": true
+    },
+    {
+      "path": "src/client/ui/map-collage.ts",
+      "bytes": 439,
+      "sha256": "a4d8d069ae534b53a1a843cb4cd39bf856b5a10a9d568b0195b0906e92102d4a",
+      "textScanned": true
+    },
+    {
+      "path": "src/client/ui/player-vitals.ts",
+      "bytes": 1586,
+      "sha256": "a6386e69cb8f8872e233da506d3f2d180fa383bb2626631b0d874e37edadbe0e",
+      "textScanned": true
+    },
+    {
+      "path": "src/client/ui/room-password.ts",
+      "bytes": 1848,
+      "sha256": "baba20ddd6d1b20a030c95eede32dd195c21b28d508a2aa96096837df73a81e1",
+      "textScanned": true
+    },
+    {
+      "path": "src/client/ui/setup.ts",
+      "bytes": 31487,
+      "sha256": "ada022cc550cf329b522d67942f0cf7791c80e10688466767e12730b35a1a285",
+      "textScanned": true
+    },
+    {
+      "path": "src/client/ui/waiting-room.ts",
+      "bytes": 3276,
+      "sha256": "6f3fd71ff9b486743e9b10fa43b1d6c4a328f00e7c71009df8e7b2cd0ffeb324",
+      "textScanned": true
+    },
+    {
+      "path": "src/server/GraveRoom.ts",
+      "bytes": 19562,
+      "sha256": "18fda6604dcd18440b9474aa0af619d01afcbeafcf8a9266c768d59951b3bb2f",
+      "textScanned": true
+    },
+    {
+      "path": "src/server/room-password.ts",
+      "bytes": 834,
+      "sha256": "8470f2f83d4e2c5c430c50567231cb1a277d57df182d57b1cb25f281eea669d3",
+      "textScanned": true
+    },
+    {
+      "path": "src/server/service.ts",
+      "bytes": 11068,
+      "sha256": "298881bbc23627a5f88a6e306a9c3a33cfae4f608fb3d211cd40c8b2ce895222",
+      "textScanned": true
+    },
+    {
+      "path": "src/shared/development-progress.json",
+      "bytes": 31269,
+      "sha256": "409d3766c7e394062ad0475914fd26d2e10b31921a9801859eafddd2a173d26b",
+      "textScanned": true
+    },
+    {
+      "path": "src/shared/game.ts",
+      "bytes": 123934,
+      "sha256": "4323f4e69453de2edfd72b9b6c1effb9cc39e8b4c223c386aa429943632f956d",
+      "textScanned": true
+    },
+    {
+      "path": "src/shared/practice-migration.ts",
+      "bytes": 16056,
+      "sha256": "06dce733202565bbefb29dad3b0804f3455be3ed2f8d6eb829ba665683314d05",
+      "textScanned": true
+    },
+    {
+      "path": "src/shared/protocol.ts",
+      "bytes": 5334,
+      "sha256": "666dadc366c81b5cc5ffb74d6a1c77d9737227499f46944fc9dcb5e7aae891a5",
+      "textScanned": true
+    },
+    {
+      "path": "src/shared/room-password-policy.ts",
+      "bytes": 394,
+      "sha256": "6ed5bf8a53a0012f8dcaad1d7dc207261ae2cdf76f47043d6f26cc54c9cfdecb",
+      "textScanned": true
+    },
+    {
+      "path": "src/shared/small-wakes-body-bounds.json",
+      "bytes": 4592,
+      "sha256": "373e35342b58f266b71971ec672b40b16fc14d2529e1727728586fd7320ea7cd",
+      "textScanned": true
+    },
+    {
+      "path": "src/shared/small-wakes-body-bounds.ts",
+      "bytes": 2170,
+      "sha256": "8b3387befd5342a3bdc02dfca59370b5b7a0e0719178fa9bee698a77205c7d04",
+      "textScanned": true
+    },
+    {
+      "path": "src/shared/small-wakes-director.ts",
+      "bytes": 18870,
+      "sha256": "2df7bbcd4b17a138a67931da96432d14b3997191b8a75aebd02b272dc42c1093",
+      "textScanned": true
+    },
+    {
+      "path": "src/shared/update-history.json",
+      "bytes": 169511,
+      "sha256": "bc17a89a30189aeb2e497479376becc118057e65368b3cfb832a5f702b2fdcf1",
+      "textScanned": true
+    },
+    {
+      "path": "tests/ambulance-network.test.ts",
+      "bytes": 6898,
+      "sha256": "721bd85ba2eeb2a689a9906b7031d8b823a0133355eeccdb8cb0cd44667ca2e0",
+      "textScanned": true
+    },
+    {
+      "path": "tests/bell-network.test.ts",
+      "bytes": 8554,
+      "sha256": "c67c2cf31b5eaa0a45f0fa47ae1badcf7c83f92dcbc6fcdd1ef83ba3df0e1c0e",
+      "textScanned": true
+    },
+    {
+      "path": "tests/bell-return-chain-network.test.ts",
+      "bytes": 9105,
+      "sha256": "625f6b575426fad5b975ac75b0b3fdbcc9d6b2b2cea45aa4761dd03530adc94a",
+      "textScanned": true
+    },
+    {
+      "path": "tests/class-talents.test.ts",
+      "bytes": 24237,
+      "sha256": "9a08745408e53fee4b971bc15909fda46391322f8911744675652fce25b7ca25",
+      "textScanned": true
+    },
+    {
+      "path": "tests/clerk-appeal.test.ts",
+      "bytes": 19017,
+      "sha256": "089abf0b198c32bb225b9c92003bc734096190d0cd802cfdf47da8925f02740f",
+      "textScanned": true
+    },
+    {
+      "path": "tests/clerk-shelter.test.ts",
+      "bytes": 10826,
+      "sha256": "1b865212c78e1474a409fed95885775b91d399328e74ea8da3083ef570f93bc3",
+      "textScanned": true
+    },
+    {
+      "path": "tests/clerk-venom.test.ts",
+      "bytes": 20379,
+      "sha256": "1384ac129e0544cb34c9f183bc65863895c1b6157956554223649f450b773139",
+      "textScanned": true
+    },
+    {
+      "path": "tests/courier-route.test.ts",
+      "bytes": 20061,
+      "sha256": "d9295150427c87fd0eb7a97d648e08bc588493f687a40c09636d22857601a76b",
+      "textScanned": true
+    },
+    {
+      "path": "tests/crossed-threshold-network.test.ts",
+      "bytes": 4835,
+      "sha256": "0133c138ad200b036adebc8990a46a857136eec79cd0686b19eceb21fb19e6eb",
+      "textScanned": true
+    },
+    {
+      "path": "tests/fixed-threats.test.ts",
+      "bytes": 8859,
+      "sha256": "3f3a52c8cf6bebb46e028fe60ebf1e328c3af5dcb1ca2ce8de338bbc9f825280",
+      "textScanned": true
+    },
+    {
+      "path": "tests/interface-clarity.test.ts",
+      "bytes": 6832,
+      "sha256": "e52ca40c4ded4794b2e938075e4a3917d088ea4165fb2886cebf6c0880cbbc7e",
+      "textScanned": true
+    },
+    {
+      "path": "tests/marshal-chains.test.ts",
+      "bytes": 19793,
+      "sha256": "7cb9280a7aa32d5689ed6e634c17f13119c9d71e3d41b085169b6636761190d3",
+      "textScanned": true
+    },
+    {
+      "path": "tests/matron-network.test.ts",
+      "bytes": 6647,
+      "sha256": "62b6984ccf08191168e3eab89ff2fb304d005f6dd5caa3ad0bb4cc958611d9fe",
+      "textScanned": true
+    },
+    {
+      "path": "tests/medic-recovery.test.ts",
+      "bytes": 13906,
+      "sha256": "f142e45c742ea7161f220a134aae2e4ddc6b9ab3f95d9c42a9b2872d52a8ba4f",
+      "textScanned": true
+    },
+    {
+      "path": "tests/mold-network.test.ts",
+      "bytes": 9619,
+      "sha256": "81bead507ae458c5362db7ac48e709ec6462141d5788ea2b87c37f32a18ad94c",
+      "textScanned": true
+    },
+    {
+      "path": "tests/mold-still-network.test.ts",
+      "bytes": 9114,
+      "sha256": "7f2950174c2d8e1c8b59586bf39af2e902d265f0211d062717a497fe77031b47",
+      "textScanned": true
+    },
+    {
+      "path": "tests/phase-continuity-migration.test.ts",
+      "bytes": 1942,
+      "sha256": "56c7f68b92cd1bfff12dd83a95b72b39a142cff0ecbc299c8fa3c322da57bac5",
+      "textScanned": true
+    },
+    {
+      "path": "tests/profile.test.ts",
+      "bytes": 13193,
+      "sha256": "c23464f55223f6ce9d787f6df59e46254704533dd15099b261d96a13d3d2b1b2",
+      "textScanned": true
+    },
+    {
+      "path": "tests/ratcatcher-muster.test.ts",
+      "bytes": 21587,
+      "sha256": "7b1d3b7d6c56610ac92ff7ea2faaa9ca31fff21975627ede47c082155587e350",
+      "textScanned": true
+    },
+    {
+      "path": "tests/room-lobby.test.ts",
+      "bytes": 7517,
+      "sha256": "8abaa14fb58f92dc4fe8415c93cda5be794a7b0860b7e60e4e34687ce3807cc0",
+      "textScanned": true
+    },
+    {
+      "path": "tests/room-password.test.ts",
+      "bytes": 6904,
+      "sha256": "5a9febcf30cf6715e1df0d856387c0f98cf79db0178da499241fdcd6169fdcf2",
+      "textScanned": true
+    },
+    {
+      "path": "tests/small-wakes-bounds.test.ts",
+      "bytes": 3719,
+      "sha256": "a0ae2bbee665af01c0655947893495dd8fa30a7fed0266a40ddd5508e3d37e78",
+      "textScanned": true
+    },
+    {
+      "path": "tests/tollkeeper-return.test.ts",
+      "bytes": 15326,
+      "sha256": "3474bd5dcd9ea45943059816fe793416ffb6c2d18c358b6513c61189b5e01066",
+      "textScanned": true
+    },
+    {
+      "path": "tests/warden-network.test.ts",
+      "bytes": 3934,
+      "sha256": "0824053489a3db8dd0688acd449c4f041be653406ca2f74bbdc37cb131f4f843",
+      "textScanned": true
+    },
+    {
+      "path": "tests/warden-patrol.test.ts",
+      "bytes": 15693,
+      "sha256": "48469767b35a9b4af147b6e21a45d18c8f2e32e8c5df19d1156d5281e7052aa9",
+      "textScanned": true
+    },
+    {
+      "path": "tools/derive-small-wakes-body-bounds.py",
+      "bytes": 1891,
+      "sha256": "1df68f3a893533b0f65f5d624aa3a5db61aef43e8d295787b2a76ef8a9bc2ec1",
+      "textScanned": true
+    }
+  ]
+}

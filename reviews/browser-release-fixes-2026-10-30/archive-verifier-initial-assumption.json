@@ -1,0 +1,7 @@
+{
+  "passed": false,
+  "assumed": "Source build/ paths and source .openai/hosting.json",
+  "observed": "Sites helper normalizes static build/ to dist/ and places its otherwise equivalent manifest at dist/.openai/hosting.json.",
+  "correction": "verify-site-archive-final.py verifies every static byte and permits only static.directory build to dist in metadata.",
+  "artifactChanged": false
+}

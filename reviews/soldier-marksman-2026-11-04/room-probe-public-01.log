@@ -1,0 +1,18 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+
+  assert(trajectories.some(s=>s.vx<0))
+
+    at <anonymous> (C:\Users\yigal\Documents\Codex\2026-11-02\continue-developing-grave-accord-in-this\work\soldier-marksman-stage\smoke-room.mts:9:102) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.22.1

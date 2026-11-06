@@ -1,0 +1,91 @@
+{
+  "checkedAt": "2026-10-30T19:22:10.638Z",
+  "passed": true,
+  "gameChanged": false,
+  "sourceCommit": "cb0ca6d3c27d32c0930381334d0dedbb14d4cc7f",
+  "reviewedHead": "71e47d255b3a84e75c496eb105c61fbc31aa15db",
+  "cases": [
+    {
+      "size": 8,
+      "mode": "short",
+      "visibility": "public",
+      "report": "reviews/multiplayer-progression-2026-10-30/progression-03.json",
+      "sha256": "754a40728f2b80f49e0835dfc7aa9dcff4d6871a807cae314e8883ffec3e0d8f",
+      "fights": 5,
+      "mixedBuilds": 8,
+      "acceptedInputs": 1605,
+      "rejectedInputs": 0,
+      "record": {
+        "runId": "85acf10d-816c-43e0-a74a-8060ed0f6df8",
+        "peakPlayers": 8,
+        "rosterCount": 9,
+        "clears": 5,
+        "rank": 1,
+        "rosterPages": 1
+      },
+      "persistedAfterRestart": true
+    },
+    {
+      "size": 16,
+      "mode": "raid",
+      "visibility": "private",
+      "report": "reviews/multiplayer-progression-2026-10-30/progression-07.json",
+      "sha256": "70c4fd7ab4a45327b0035df8d8b2b8a870a670b51fa5d5d48139906730fd2fc0",
+      "fights": 3,
+      "mixedBuilds": 16,
+      "acceptedInputs": 1973,
+      "rejectedInputs": 0,
+      "record": {
+        "runId": "34051656-ad51-4e59-b12d-83a1bc1a8ae2",
+        "peakPlayers": 16,
+        "rosterCount": 17,
+        "clears": 3,
+        "rank": 1,
+        "rosterPages": 1
+      },
+      "persistedAfterRestart": true
+    },
+    {
+      "size": 50,
+      "mode": "endless",
+      "visibility": "public",
+      "report": "reviews/multiplayer-progression-2026-10-30/progression-07.json",
+      "sha256": "70c4fd7ab4a45327b0035df8d8b2b8a870a670b51fa5d5d48139906730fd2fc0",
+      "fights": 3,
+      "mixedBuilds": 50,
+      "acceptedInputs": 6437,
+      "rejectedInputs": 0,
+      "record": {
+        "runId": "dfd5ccc4-d676-4aed-999c-2240b9890fb7",
+        "peakPlayers": 50,
+        "rosterCount": 51,
+        "clears": 3,
+        "rank": 1,
+        "rosterPages": 2
+      },
+      "persistedAfterRestart": true
+    }
+  ],
+  "standaloneFiftyRepeat": {
+    "path": "reviews/multiplayer-progression-2026-10-30/progression-06.json",
+    "sha256": "eed97740fd5c521c7eebe63b441fb8d0b268bd2730f6821c71fc3c85fee8e93e",
+    "passed": true
+  },
+  "preservedEarlierTimeout": {
+    "path": "reviews/multiplayer-progression-2026-10-30/progression-05.json",
+    "sha256": "ea7b99688e5dd857dcb5492b52ff4c18cb9a18800b91f576d300cdeeaf69f9a1",
+    "notReproducedIn": "Standalone50 and exact16-then50 instrumented repeat, with unchanged timeouts and game code",
+    "causeProven": false
+  },
+  "archive": {
+    "path": "reviews/multiplayer-progression-2026-10-30/frozen-inputs-01.zip",
+    "sha256": "17dd97c7a64761ff0208ad8b479343a30b59e7b0ad71a7b8f64bbbba29519e44",
+    "bytes": 3136008
+  },
+  "reviewedHeadCIPassed": true,
+  "limits": [
+    "Real SDK Sessions and separate local authority, with all seven classes, earned purchases, input/abilities, equal-count votes, host pause/departure, replacement, reconnect, shared results, roster pagination and restart persistence.",
+    "QA-only invulnerability, boss-health clears and accelerated phase deadlines; zero rendered clients. Not ordinary qualifying scores, final encounter balance, full endurance, WAN/hosted/physical-device or human acceptance.",
+    "Earlier host-order/private-code fixture errors and the unexplained initial fifty-client join timeout remain preserved; no production defect is claimed fixed."
+  ]
+}

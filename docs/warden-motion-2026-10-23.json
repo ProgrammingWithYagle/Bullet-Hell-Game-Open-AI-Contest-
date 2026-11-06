@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "requests": [
+    {
+      "id": "lantern-warden-idle-v1",
+      "args": {
+        "transparent_background": true,
+        "referenced_image_paths": [
+          "C:\\Users\\yigal\\Documents\\Codex\\2026-10-23\\can-you-continue-with-the-development\\work\\warden\\idle-edit-canvas.png"
+        ],
+        "prompt": "Use case: identity-preserve. Asset type: Grave Accord production game sprite idle loop. Edit the supplied transparent reference canvas into ONE COMPLETE FOUR-FRAME IDLE SPRITE SHEET, two columns by two rows, reading left-to-right then down. Use the supplied dead lamplighter as the exact character identity and finish authority. Same 3/4 south-east facing in EVERY frame, identical gaunt skull face, blue-teal peaked cap, triangular torn dark teal coat with broad quiet gouache fabric surfaces, cream central shirt, brown boots and wraps. Physical LEFT hand (viewer right) holds exactly one caged brass lantern lowered beside the thigh; physical right hand near chest. Keep feet planted in identical positions and keep overall character height identical across all four frames. Delicate breathing and a tiny continuous lantern pendulum, small coat hem settling, seamless loop: 1 neutral, 2 gentle inhale, 3 tiny exhale/lantern outward by a few pixels, 4 return toward neutral. This is subtle idle breathing, never a walk, attack, extra gesture or pose turnaround. Reproduce the same outfit proportions, face, hand anatomy and lantern shape, keep the cap height and boots unchanged. Same readable dry black ink contour and matte opaque gouache as reference; sparse focal face/hand/prop detail, no grain noise. Draw all four frames at once on a genuinely transparent RGBA background, each whole figure fully contained in a separate equal square cell with broad clear gutters on every side, identical bottom-center foot location, no overlap or ground shadow. Fill the 2x2 sheet at useful asset resolution; frame images should be large. Preserve physical-left lantern ownership, coherent fingers holding handle, no limb swaps or mirrored bodies. No scenery, particles, glow haze, smoke, floor, backdrop, checkerboard paint, labels, typography, borders, watermarks, or added objects. Return the finished four-frame sheet only."
+      },
+      "original": "C:\\Users\\yigal\\.codex\\generated_images\\01a16b04-4ec7-7180-bb3a-81ca62b6fff6\\exec-7c5d1e39-1dbe-4beb-a536-9be2acea01f3.png",
+      "file": "assets/production/bosses/lantern-warden/idle-sheet-v1.png",
+      "tool": "built-in image_gen",
+      "modelSelection": "No model or quality selector exposed; backend unreported",
+      "decision": "Assistant-reviewed motion candidate; Phaser motion acceptance pending",
+      "sha256": "2165803a382ce96fc733acefdd0bae19095a7836c1c23e25a2eda34b866609c0",
+      "portableReferences": [
+        {
+          "argument": "C:\\Users\\yigal\\Documents\\Codex\\2026-10-23\\can-you-continue-with-the-development\\work\\warden\\idle-edit-canvas.png",
+          "file": "assets/production/bosses/lantern-warden/references/rehearsal/idle-edit-canvas.png",
+          "sha256": "0ff49cba3880e03a5e6a8705a6ccdd192cb2f29afe7017dabf053aa44923d6a9"
+        }
+      ],
+      "sourceSeed": {
+        "atlas": "assets/production/motion/lantern-warden-attack-v2-atlas.png",
+        "frame": 0,
+        "file": "assets/production/bosses/lantern-warden/references/rehearsal/idle-seed.png",
+        "sha256": "37ed316ad4bb5c96f58cd63eb4bc93d1ae3f31cd1d4d00d897a0dfce10046ae0"
+      }
+    },
+    {
+      "id": "lantern-warden-channel-v1",
+      "args": {
+        "transparent_background": true,
+        "referenced_image_paths": [
+          "C:\\Users\\yigal\\Documents\\Codex\\2026-10-23\\can-you-continue-with-the-development\\work\\warden\\channel-edit-canvas.png"
+        ],
+        "prompt": "Use case: identity-preserve. Asset type: Grave Accord production boss sprite CHANNEL/HOLD loop. Edit the supplied transparent reference canvas into ONE COMPLETE FOUR-FRAME CHANNEL SPRITE SHEET, TWO COLUMNS by TWO ROWS, reading left-to-right then down. The single supplied raised-lantern sprite is the exact identity, pose and finish authority. SAME 3/4 south-east facing in every frame. Preserve gaunt skull face, dark teal peaked cap, long triangular torn teal coat, broad cream central shirt, brown boots and wraps. Physical LEFT hand (viewer right) keeps exactly one brass caged lantern raised in the same extended grip around shoulder height throughout all four frames; physical RIGHT hand near chest. Arm remains attached to shoulder under the continuous coat sleeve. This holds the raised attack pose for four seconds in game. Tiny changes only: 1 steady hold, 2 subtle inhale and lantern tilt two degrees, 3 subtle exhale and a tiny reverse lantern tilt, 4 return toward first hold. No raising/lowering cycle; NO walk or new action. Feet planted in the exact same positions; cap height and body proportions identical in all four frames. Keep the lantern frame, single handle and coherent fingers identical; do not change into a bell or add poles, chains, extra lanterns or unattached handles. Same quiet dry black ink contour and matte opaque gouache as reference; selective face/hand/prop detail, no all-over grain. Genuine transparent RGBA canvas. Four whole figures at useful asset resolution, each entirely inside one equal square cell, identical bottom-center foot position and generous transparent gutters. No scenery, ground/shadow, light beams, glow haze, sparks, particles, smoke, text, labels, borders, watermark or checkerboard paint. Return only the complete four-frame 2x2 sheet. Do not mirror the character or swap hands."
+      },
+      "original": "C:\\Users\\yigal\\.codex\\generated_images\\01a16b04-4ec7-7180-bb3a-81ca62b6fff6\\exec-5e05a2ef-9ce1-45ec-a8b5-c74b0cc2488c.png",
+      "file": "assets/production/bosses/lantern-warden/channel-sheet-v1.png",
+      "tool": "built-in image_gen",
+      "modelSelection": "No model or quality selector exposed; backend unreported",
+      "decision": "Assistant-reviewed motion candidate; Phaser motion acceptance pending",
+      "sha256": "aed62fcb72c216d37d93af81364a5ff7881e752b09f190626616f147f983ca18",
+      "portableReferences": [
+        {
+          "argument": "C:\\Users\\yigal\\Documents\\Codex\\2026-10-23\\can-you-continue-with-the-development\\work\\warden\\channel-edit-canvas.png",
+          "file": "assets/production/bosses/lantern-warden/references/rehearsal/channel-edit-canvas.png",
+          "sha256": "1ffcf5e0bc9b88c03aae9f1bba1d01841bf93b8af137c58334da3b850577d632"
+        }
+      ],
+      "sourceSeed": {
+        "atlas": "assets/production/motion/lantern-warden-attack-v2-atlas.png",
+        "frame": 4,
+        "file": "assets/production/bosses/lantern-warden/references/rehearsal/channel-seed.png",
+        "sha256": "ae8fa6d0da7f881ae7056099c95830fdae6ef9dfab6dd39b3a233fae85f79bb6"
+      }
+    }
+  ]
+}

@@ -1,0 +1,887 @@
+{
+  "schemaVersion": 1,
+  "kind": "Current Free Play analytical design model; not gameplay measurement",
+  "assumptions": {
+    "rangedMovementAndAimUptime": 0.65,
+    "swordsmanMeleeUptime": 0.4,
+    "shotgunPelletHitFraction": 0.7,
+    "abilitiesAndUltimatesExcluded": "Permanent base Summoner retinue included separately; other class abilities and every ultimate excluded",
+    "summonerPermanentBodies": "Four base bodies; six only for the purchased capacity capstone",
+    "summonerCompanionUptime": 0.4,
+    "summonerNoPetWarmupSeconds": "Eight seconds for four bodies, sixteen for six; ignores actual earlier-pair damage",
+    "summonerLimits": "Assumed uptime discounts movement, repair and attrition. Only purchased permanent capacity and purchased attack-rate/companion-damage effects are included. Advanced transformations and ultimate are excluded. Not a measured availability or human balance claim.",
+    "storyScope": "Story is excluded from the current SP witness. Fresh Campaign uses chapter learning/proofs and its separate role tests/early-build model. The exact earlier SP Story witness is retained in docs/balance/history/2026-11-02-ranger-uptime-model.csv.",
+    "currentModes": [
+      "short",
+      "standard",
+      "long",
+      "raid"
+    ],
+    "storySpExcluded": true,
+    "insaneForcedBrutalIncluded": true,
+    "hellishForcedCrazedIncluded": true,
+    "accordBreakBenefitsExcluded": true,
+    "mutationsExcluded": true,
+    "optimization": "Conservative legal foundation-path prefixes with one capstone; class weapons and affordable damage/fire-rate upgrades. Specialization alternatives are excluded here and validated separately. This is an offensive feasibility witness, not exhaustive optimization or a recommendation for every build.",
+    "armor": "Worst-phase repeated armor duty cycle; ignores weak-point bonus. Boss health is solo; group scaling is sublinear."
+  },
+  "rows": 27144,
+  "deadlineMisses": 0,
+  "worst": [
+    {
+      "mode": "short",
+      "fight": 1,
+      "classId": "ranger",
+      "difficulty": "insane",
+      "boss": "constable",
+      "variant": "brutal",
+      "threat": 1,
+      "subtier": 1,
+      "sp": 3,
+      "coins": 108,
+      "weapon": "ranger-0",
+      "depths": "2/0/0",
+      "spentCoins": 90,
+      "sustainedDps": 41.63,
+      "companionTheoreticalDps": 0,
+      "permanentCompanions": 0,
+      "companionUptime": 0,
+      "companionWarmupSeconds": 0,
+      "attackUptime": 0.65,
+      "armorMultiplier": 1,
+      "bossHealth": 4860,
+      "estimatedSeconds": 179.6,
+      "timer": 180,
+      "deadlineRatio": 0.9978
+    },
+    {
+      "mode": "standard",
+      "fight": 1,
+      "classId": "ranger",
+      "difficulty": "insane",
+      "boss": "constable",
+      "variant": "brutal",
+      "threat": 1,
+      "subtier": 1,
+      "sp": 3,
+      "coins": 108,
+      "weapon": "ranger-0",
+      "depths": "2/0/0",
+      "spentCoins": 90,
+      "sustainedDps": 41.63,
+      "companionTheoreticalDps": 0,
+      "permanentCompanions": 0,
+      "companionUptime": 0,
+      "companionWarmupSeconds": 0,
+      "attackUptime": 0.65,
+      "armorMultiplier": 1,
+      "bossHealth": 4860,
+      "estimatedSeconds": 179.6,
+      "timer": 180,
+      "deadlineRatio": 0.9978
+    },
+    {
+      "mode": "long",
+      "fight": 1,
+      "classId": "ranger",
+      "difficulty": "insane",
+      "boss": "constable",
+      "variant": "brutal",
+      "threat": 1,
+      "subtier": 1,
+      "sp": 3,
+      "coins": 108,
+      "weapon": "ranger-0",
+      "depths": "2/0/0",
+      "spentCoins": 90,
+      "sustainedDps": 41.63,
+      "companionTheoreticalDps": 0,
+      "permanentCompanions": 0,
+      "companionUptime": 0,
+      "companionWarmupSeconds": 0,
+      "attackUptime": 0.65,
+      "armorMultiplier": 1,
+      "bossHealth": 4860,
+      "estimatedSeconds": 179.6,
+      "timer": 180,
+      "deadlineRatio": 0.9978
+    },
+    {
+      "mode": "standard",
+      "fight": 4,
+      "classId": "summoner",
+      "difficulty": "insane",
+      "boss": "pallbearer",
+      "variant": "brutal",
+      "threat": 5,
+      "subtier": 1,
+      "sp": 11,
+      "coins": 792,
+      "weapon": "summoner-3",
+      "depths": "4/1/0",
+      "spentCoins": 720,
+      "sustainedDps": 67.77,
+      "companionTheoreticalDps": 78.06,
+      "permanentCompanions": 4,
+      "companionUptime": 0.4,
+      "companionWarmupSeconds": 8,
+      "attackUptime": 0.65,
+      "armorMultiplier": 0.8558,
+      "bossHealth": 14131.07,
+      "estimatedSeconds": 222.7,
+      "timer": 225,
+      "deadlineRatio": 0.9898
+    },
+    {
+      "mode": "standard",
+      "fight": 2,
+      "classId": "tank",
+      "difficulty": "hellish",
+      "boss": "ash-baker",
+      "variant": "crazed",
+      "threat": 3,
+      "subtier": 2,
+      "sp": 5,
+      "coins": 317,
+      "weapon": "tank-1",
+      "depths": "2/0/0",
+      "spentCoins": 240,
+      "sustainedDps": 57.5,
+      "companionTheoreticalDps": 0,
+      "permanentCompanions": 0,
+      "companionUptime": 0,
+      "companionWarmupSeconds": 0,
+      "attackUptime": 0.65,
+      "armorMultiplier": 1,
+      "bossHealth": 6563.63,
+      "estimatedSeconds": 175.62,
+      "timer": 180,
+      "deadlineRatio": 0.9757
+    },
+    {
+      "mode": "short",
+      "fight": 1,
+      "classId": "tank",
+      "difficulty": "insane",
+      "boss": "constable",
+      "variant": "brutal",
+      "threat": 1,
+      "subtier": 1,
+      "sp": 3,
+      "coins": 108,
+      "weapon": "tank-0",
+      "depths": "2/0/0",
+      "spentCoins": 90,
+      "sustainedDps": 42.7,
+      "companionTheoreticalDps": 0,
+      "permanentCompanions": 0,
+      "companionUptime": 0,
+      "companionWarmupSeconds": 0,
+      "attackUptime": 0.65,
+      "armorMultiplier": 1,
+      "bossHealth": 4860,
+      "estimatedSeconds": 175.11,
+      "timer": 180,
+      "deadlineRatio": 0.9728
+    },
+    {
+      "mode": "standard",
+      "fight": 1,
+      "classId": "tank",
+      "difficulty": "insane",
+      "boss": "constable",
+      "variant": "brutal",
+      "threat": 1,
+      "subtier": 1,
+      "sp": 3,
+      "coins": 108,
+      "weapon": "tank-0",
+      "depths": "2/0/0",
+      "spentCoins": 90,
+      "sustainedDps": 42.7,
+      "companionTheoreticalDps": 0,
+      "permanentCompanions": 0,
+      "companionUptime": 0,
+      "companionWarmupSeconds": 0,
+      "attackUptime": 0.65,
+      "armorMultiplier": 1,
+      "bossHealth": 4860,
+      "estimatedSeconds": 175.11,
+      "timer": 180,
+      "deadlineRatio": 0.9728
+    },
+    {
+      "mode": "long",
+      "fight": 1,
+      "classId": "tank",
+      "difficulty": "insane",
+      "boss": "constable",
+      "variant": "brutal",
+      "threat": 1,
+      "subtier": 1,
+      "sp": 3,
+      "coins": 108,
+      "weapon": "tank-0",
+      "depths": "2/0/0",
+      "spentCoins": 90,
+      "sustainedDps": 42.7,
+      "companionTheoreticalDps": 0,
+      "permanentCompanions": 0,
+      "companionUptime": 0,
+      "companionWarmupSeconds": 0,
+      "attackUptime": 0.65,
+      "armorMultiplier": 1,
+      "bossHealth": 4860,
+      "estimatedSeconds": 175.11,
+      "timer": 180,
+      "deadlineRatio": 0.9728
+    },
+    {
+      "mode": "short",
+      "fight": 1,
+      "classId": "ranger",
+      "difficulty": "hellish",
+      "boss": "constable",
+      "variant": "crazed",
+      "threat": 1,
+      "subtier": 1,
+      "sp": 3,
+      "coins": 102,
+      "weapon": "ranger-0",
+      "depths": "2/0/0",
+      "spentCoins": 90,
+      "sustainedDps": 41.63,
+      "companionTheoreticalDps": 0,
+      "permanentCompanions": 0,
+      "companionUptime": 0,
+      "companionWarmupSeconds": 0,
+      "attackUptime": 0.65,
+      "armorMultiplier": 1,
+      "bossHealth": 4665.6,
+      "estimatedSeconds": 172.41,
+      "timer": 180,
+      "deadlineRatio": 0.9579
+    },
+    {
+      "mode": "standard",
+      "fight": 1,
+      "classId": "ranger",
+      "difficulty": "hellish",
+      "boss": "constable",
+      "variant": "crazed",
+      "threat": 1,
+      "subtier": 1,
+      "sp": 3,
+      "coins": 102,
+      "weapon": "ranger-0",
+      "depths": "2/0/0",
+      "spentCoins": 90,
+      "sustainedDps": 41.63,
+      "companionTheoreticalDps": 0,
+      "permanentCompanions": 0,
+      "companionUptime": 0,
+      "companionWarmupSeconds": 0,
+      "attackUptime": 0.65,
+      "armorMultiplier": 1,
+      "bossHealth": 4665.6,
+      "estimatedSeconds": 172.41,
+      "timer": 180,
+      "deadlineRatio": 0.9579
+    },
+    {
+      "mode": "long",
+      "fight": 1,
+      "classId": "ranger",
+      "difficulty": "hellish",
+      "boss": "constable",
+      "variant": "crazed",
+      "threat": 1,
+      "subtier": 1,
+      "sp": 3,
+      "coins": 102,
+      "weapon": "ranger-0",
+      "depths": "2/0/0",
+      "spentCoins": 90,
+      "sustainedDps": 41.63,
+      "companionTheoreticalDps": 0,
+      "permanentCompanions": 0,
+      "companionUptime": 0,
+      "companionWarmupSeconds": 0,
+      "attackUptime": 0.65,
+      "armorMultiplier": 1,
+      "bossHealth": 4665.6,
+      "estimatedSeconds": 172.41,
+      "timer": 180,
+      "deadlineRatio": 0.9579
+    },
+    {
+      "mode": "standard",
+      "fight": 4,
+      "classId": "summoner",
+      "difficulty": "hellish",
+      "boss": "pallbearer",
+      "variant": "crazed",
+      "threat": 5,
+      "subtier": 1,
+      "sp": 11,
+      "coins": 748,
+      "weapon": "summoner-3",
+      "depths": "4/1/0",
+      "spentCoins": 720,
+      "sustainedDps": 67.77,
+      "companionTheoreticalDps": 78.06,
+      "permanentCompanions": 4,
+      "companionUptime": 0.4,
+      "companionWarmupSeconds": 8,
+      "attackUptime": 0.65,
+      "armorMultiplier": 0.8558,
+      "bossHealth": 13565.82,
+      "estimatedSeconds": 213.92,
+      "timer": 225,
+      "deadlineRatio": 0.9508
+    },
+    {
+      "mode": "raid",
+      "fight": 3,
+      "classId": "swordsman",
+      "difficulty": "insane",
+      "boss": "last-breath-saint",
+      "variant": "brutal",
+      "threat": 10,
+      "subtier": 2,
+      "sp": 27,
+      "coins": 2160,
+      "weapon": "swordsman-3",
+      "depths": "6/0/0",
+      "spentCoins": 2160,
+      "sustainedDps": 502.38,
+      "companionTheoreticalDps": 0,
+      "permanentCompanions": 0,
+      "companionUptime": 0,
+      "companionWarmupSeconds": 0,
+      "attackUptime": 0.4,
+      "armorMultiplier": 1,
+      "bossHealth": 68759.33,
+      "estimatedSeconds": 342.17,
+      "timer": 360,
+      "deadlineRatio": 0.9505
+    },
+    {
+      "mode": "raid",
+      "fight": 2,
+      "classId": "summoner",
+      "difficulty": "insane",
+      "boss": "quarantine-heart",
+      "variant": "brutal",
+      "threat": 7,
+      "subtier": 2,
+      "sp": 20,
+      "coins": 1260,
+      "weapon": "summoner-3",
+      "depths": "5/2/0",
+      "spentCoins": 1200,
+      "sustainedDps": 96.22,
+      "companionTheoreticalDps": 123.82,
+      "permanentCompanions": 4,
+      "companionUptime": 0.4,
+      "companionWarmupSeconds": 8,
+      "attackUptime": 0.5525,
+      "armorMultiplier": 1,
+      "bossHealth": 28163.02,
+      "estimatedSeconds": 299.18,
+      "timer": 315,
+      "deadlineRatio": 0.9498
+    },
+    {
+      "mode": "raid",
+      "fight": 3,
+      "classId": "summoner",
+      "difficulty": "insane",
+      "boss": "last-breath-saint",
+      "variant": "brutal",
+      "threat": 10,
+      "subtier": 2,
+      "sp": 27,
+      "coins": 2160,
+      "weapon": "summoner-3",
+      "depths": "6/0/0",
+      "spentCoins": 2070,
+      "sustainedDps": 138.08,
+      "companionTheoreticalDps": 285.91,
+      "permanentCompanions": 4,
+      "companionUptime": 0.4,
+      "companionWarmupSeconds": 8,
+      "attackUptime": 0.65,
+      "armorMultiplier": 1,
+      "bossHealth": 68759.33,
+      "estimatedSeconds": 341.34,
+      "timer": 360,
+      "deadlineRatio": 0.9482
+    },
+    {
+      "mode": "short",
+      "fight": 1,
+      "classId": "ranger",
+      "difficulty": "insane",
+      "boss": "tollkeeper",
+      "variant": "brutal",
+      "threat": 1,
+      "subtier": 2,
+      "sp": 3,
+      "coins": 108,
+      "weapon": "ranger-0",
+      "depths": "2/0/0",
+      "spentCoins": 90,
+      "sustainedDps": 41.63,
+      "companionTheoreticalDps": 0,
+      "permanentCompanions": 0,
+      "companionUptime": 0,
+      "companionWarmupSeconds": 0,
+      "attackUptime": 0.65,
+      "armorMultiplier": 1,
+      "bossHealth": 4019.4,
+      "estimatedSeconds": 148.53,
+      "timer": 157.5,
+      "deadlineRatio": 0.9431
+    },
+    {
+      "mode": "standard",
+      "fight": 1,
+      "classId": "ranger",
+      "difficulty": "insane",
+      "boss": "tollkeeper",
+      "variant": "brutal",
+      "threat": 1,
+      "subtier": 2,
+      "sp": 3,
+      "coins": 108,
+      "weapon": "ranger-0",
+      "depths": "2/0/0",
+      "spentCoins": 90,
+      "sustainedDps": 41.63,
+      "companionTheoreticalDps": 0,
+      "permanentCompanions": 0,
+      "companionUptime": 0,
+      "companionWarmupSeconds": 0,
+      "attackUptime": 0.65,
+      "armorMultiplier": 1,
+      "bossHealth": 4019.4,
+      "estimatedSeconds": 148.53,
+      "timer": 157.5,
+      "deadlineRatio": 0.9431
+    },
+    {
+      "mode": "long",
+      "fight": 1,
+      "classId": "ranger",
+      "difficulty": "insane",
+      "boss": "tollkeeper",
+      "variant": "brutal",
+      "threat": 1,
+      "subtier": 2,
+      "sp": 3,
+      "coins": 108,
+      "weapon": "ranger-0",
+      "depths": "2/0/0",
+      "spentCoins": 90,
+      "sustainedDps": 41.63,
+      "companionTheoreticalDps": 0,
+      "permanentCompanions": 0,
+      "companionUptime": 0,
+      "companionWarmupSeconds": 0,
+      "attackUptime": 0.65,
+      "armorMultiplier": 1,
+      "bossHealth": 4019.4,
+      "estimatedSeconds": 148.53,
+      "timer": 157.5,
+      "deadlineRatio": 0.9431
+    },
+    {
+      "mode": "raid",
+      "fight": 3,
+      "classId": "swordsman",
+      "difficulty": "hellish",
+      "boss": "last-breath-saint",
+      "variant": "crazed",
+      "threat": 10,
+      "subtier": 2,
+      "sp": 27,
+      "coins": 2040,
+      "weapon": "swordsman-3",
+      "depths": "6/0/0",
+      "spentCoins": 1980,
+      "sustainedDps": 488.55,
+      "companionTheoreticalDps": 0,
+      "permanentCompanions": 0,
+      "companionUptime": 0,
+      "companionWarmupSeconds": 0,
+      "attackUptime": 0.4,
+      "armorMultiplier": 1,
+      "bossHealth": 66008.96,
+      "estimatedSeconds": 337.78,
+      "timer": 360,
+      "deadlineRatio": 0.9383
+    },
+    {
+      "mode": "raid",
+      "fight": 3,
+      "classId": "summoner",
+      "difficulty": "hellish",
+      "boss": "last-breath-saint",
+      "variant": "crazed",
+      "threat": 10,
+      "subtier": 2,
+      "sp": 27,
+      "coins": 2040,
+      "weapon": "summoner-3",
+      "depths": "6/0/0",
+      "spentCoins": 1860,
+      "sustainedDps": 129.25,
+      "companionTheoreticalDps": 285.91,
+      "permanentCompanions": 4,
+      "companionUptime": 0.4,
+      "companionWarmupSeconds": 8,
+      "attackUptime": 0.65,
+      "armorMultiplier": 1,
+      "bossHealth": 66008.96,
+      "estimatedSeconds": 337.35,
+      "timer": 360,
+      "deadlineRatio": 0.9371
+    }
+  ],
+  "passed": true,
+  "fixedThreatClassificationVersion": "2026.10.26-small-wakes",
+  "fixedThreatProfiles": [
+    {
+      "bossId": "constable",
+      "level": 1,
+      "subtier": 1
+    },
+    {
+      "bossId": "courier",
+      "level": 1,
+      "subtier": -2
+    },
+    {
+      "bossId": "pallbearer",
+      "level": 5,
+      "subtier": 1
+    },
+    {
+      "bossId": "matron",
+      "level": 2,
+      "subtier": 2
+    },
+    {
+      "bossId": "alchemist",
+      "level": 3,
+      "subtier": -2
+    },
+    {
+      "bossId": "bellringer",
+      "level": 3,
+      "subtier": -1
+    },
+    {
+      "bossId": "stitchwright",
+      "level": 3,
+      "subtier": 0
+    },
+    {
+      "bossId": "choir",
+      "level": 5,
+      "subtier": -2
+    },
+    {
+      "bossId": "engine",
+      "level": 9,
+      "subtier": -2
+    },
+    {
+      "bossId": "regent",
+      "level": 9,
+      "subtier": -1
+    },
+    {
+      "bossId": "uncounted",
+      "level": 11,
+      "subtier": 0
+    },
+    {
+      "bossId": "tollkeeper",
+      "level": 1,
+      "subtier": 2
+    },
+    {
+      "bossId": "lantern-warden",
+      "level": 2,
+      "subtier": -2
+    },
+    {
+      "bossId": "ratcatcher",
+      "level": 1,
+      "subtier": -1
+    },
+    {
+      "bossId": "quarantine-clerk",
+      "level": 1,
+      "subtier": 0
+    },
+    {
+      "bossId": "chain-marshal",
+      "level": 2,
+      "subtier": -1
+    },
+    {
+      "bossId": "gate-widow",
+      "level": 2,
+      "subtier": 0
+    },
+    {
+      "bossId": "black-ambulance",
+      "level": 2,
+      "subtier": 1
+    },
+    {
+      "bossId": "glass-surgeon",
+      "level": 3,
+      "subtier": 1
+    },
+    {
+      "bossId": "ash-baker",
+      "level": 3,
+      "subtier": 2
+    },
+    {
+      "bossId": "sluice-keeper",
+      "level": 4,
+      "subtier": -2
+    },
+    {
+      "bossId": "stationmaster",
+      "level": 4,
+      "subtier": -1
+    },
+    {
+      "bossId": "lamplighter",
+      "level": 4,
+      "subtier": 0
+    },
+    {
+      "bossId": "anatomist",
+      "level": 4,
+      "subtier": 1
+    },
+    {
+      "bossId": "plague-gardener",
+      "level": 4,
+      "subtier": 2
+    },
+    {
+      "bossId": "red-abbess",
+      "level": 5,
+      "subtier": -1
+    },
+    {
+      "bossId": "vesper-judge",
+      "level": 5,
+      "subtier": 0
+    },
+    {
+      "bossId": "cinder-foreman",
+      "level": 5,
+      "subtier": 2
+    },
+    {
+      "bossId": "canal-diver",
+      "level": 6,
+      "subtier": -2
+    },
+    {
+      "bossId": "clockmender",
+      "level": 6,
+      "subtier": -1
+    },
+    {
+      "bossId": "wire-seamstress",
+      "level": 6,
+      "subtier": 0
+    },
+    {
+      "bossId": "gravedigger",
+      "level": 6,
+      "subtier": 1
+    },
+    {
+      "bossId": "ink-notary",
+      "level": 6,
+      "subtier": 2
+    },
+    {
+      "bossId": "spore-beekeeper",
+      "level": 7,
+      "subtier": -2
+    },
+    {
+      "bossId": "ice-custodian",
+      "level": 7,
+      "subtier": -1
+    },
+    {
+      "bossId": "bridge-ferryman",
+      "level": 7,
+      "subtier": 0
+    },
+    {
+      "bossId": "porcelain-mourner",
+      "level": 7,
+      "subtier": 1
+    },
+    {
+      "bossId": "boiler-tender",
+      "level": 7,
+      "subtier": 2
+    },
+    {
+      "bossId": "mirror-undertaker",
+      "level": 8,
+      "subtier": -2
+    },
+    {
+      "bossId": "chalk-magistrate",
+      "level": 8,
+      "subtier": -1
+    },
+    {
+      "bossId": "wire-harpist",
+      "level": 8,
+      "subtier": 0
+    },
+    {
+      "bossId": "crow-shepherd",
+      "level": 8,
+      "subtier": 1
+    },
+    {
+      "bossId": "ledger-leech",
+      "level": 8,
+      "subtier": 2
+    },
+    {
+      "bossId": "salt-patriarch",
+      "level": 9,
+      "subtier": 0
+    },
+    {
+      "bossId": "chain-colossus",
+      "level": 4,
+      "subtier": -2
+    },
+    {
+      "bossId": "ossuary-leviathan",
+      "level": 6,
+      "subtier": 2
+    },
+    {
+      "bossId": "bell-triplets",
+      "level": 3,
+      "subtier": -2
+    },
+    {
+      "bossId": "quarantine-heart",
+      "level": 7,
+      "subtier": 2
+    },
+    {
+      "bossId": "crown-procession",
+      "level": 8,
+      "subtier": 2
+    },
+    {
+      "bossId": "city-eater",
+      "level": 10,
+      "subtier": 1
+    },
+    {
+      "bossId": "last-breath-saint",
+      "level": 10,
+      "subtier": 2
+    },
+    {
+      "bossId": "hourglass-widow",
+      "level": 3,
+      "subtier": 2
+    },
+    {
+      "bossId": "unlit-astronomer",
+      "level": 8,
+      "subtier": 2
+    },
+    {
+      "bossId": "folded-man",
+      "level": 4,
+      "subtier": 2
+    },
+    {
+      "bossId": "red-comet",
+      "level": 5,
+      "subtier": 2
+    },
+    {
+      "bossId": "memory-taxer",
+      "level": 6,
+      "subtier": 2
+    },
+    {
+      "bossId": "choir-of-moths",
+      "level": 7,
+      "subtier": 1
+    },
+    {
+      "bossId": "zero-hour-conductor",
+      "level": 9,
+      "subtier": 1
+    },
+    {
+      "bossId": "walking-district",
+      "level": 10,
+      "subtier": 0
+    },
+    {
+      "bossId": "last-knocker",
+      "level": 10,
+      "subtier": 2
+    },
+    {
+      "bossId": "ashen-usher",
+      "level": 1,
+      "subtier": -2
+    },
+    {
+      "bossId": "brass-toad",
+      "level": 1,
+      "subtier": -1
+    },
+    {
+      "bossId": "ragpicker-kite",
+      "level": 1,
+      "subtier": 0
+    },
+    {
+      "bossId": "candle-snail",
+      "level": 1,
+      "subtier": -2
+    },
+    {
+      "bossId": "cobble-crab",
+      "level": 1,
+      "subtier": -1
+    },
+    {
+      "bossId": "mourning-kettle",
+      "level": 1,
+      "subtier": 0
+    }
+  ],
+  "contentRevision": "78d78be91de271588e2c3a35baac583f5f2f93412a89160bff3b58832c4c13f7"
+}

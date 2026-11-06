@@ -1,0 +1,17 @@
+✔ a real Rescue Charge spreads its six drawn poses across the complete ten-tick charge interval (12.9778ms)
+✔ sixty-Hz rendering between twenty-Hz authority patches exposes every short-dodge pose without changing authority state (3.9715ms)
+✔ the drawing clock is monotonic between patches, ignores duplicate observations and stops at one patch of lead (0.7837ms)
+✔ run, encounter, phase and backward authority boundaries reset drawing time while noncombat clocks stay paused (0.8115ms)
+✔ interpolated action frames keep authority-selected status and reduced motion stable through a stalled patch (0.7617ms)
+✔ sixty-Hz drawing over actual thirty-Hz movement no longer alternates run and idle between movement updates for any class (23.3187ms)
+✔ twenty-Hz movement patches retain a run between frames but stop at a bounded grace period and reset on encounter, departure and death (0.8245ms)
+✔ small diagonal aim jitter does not flip sprite sheets while deliberate direction changes remain immediate and finite (0.8752ms)
+✔ one-shot attack and hurt directions remain at their authoritative onset instead of flipping with later aim changes (2.3321ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 447.7034

@@ -1,0 +1,27 @@
+✖ Brass Toad can take successive body-clear hops around the actual Baby Ossuary cover to the upper floor (222.9379ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1183.9876
+
+✖ failing tests:
+
+test at tests\arena-camera.test.ts:1:2810
+✖ Brass Toad can take successive body-clear hops around the actual Baby Ossuary cover to the upper floor (222.9379ms)
+  AssertionError [ERR_ASSERTION]: {"actualBoss":{"x":899.9071287905864,"y":550.0767939455002},"start":{"x":788,"y":926},"target":{"x":788,"y":62}}
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\arena-camera.test.ts:52:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

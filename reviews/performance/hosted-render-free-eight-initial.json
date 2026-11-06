@@ -1,0 +1,70 @@
+{
+  "createdAt": "2026-10-23T18:51:28.480Z",
+  "endpoint": "https://grave-accord-playtest.onrender.com",
+  "expectedCommit": "853a5a64a953691772e0bc829a3237e43788657f",
+  "protocolVersion": 4,
+  "contentRevision": "b8d9fb6918c854f3eed38b327ed0cb3026e071e6fe24932e50beed36943db241",
+  "scriptedClients": 8,
+  "renderedClients": 0,
+  "completed": false,
+  "failure": "invalidCode",
+  "stopReason": "",
+  "durationSeconds": 0,
+  "phasesObserved": [],
+  "combatPolls": 0,
+  "minimumActivePlayersDuringCombatPolls": null,
+  "peakHostiles": 0,
+  "peakRollingWindowP99Ms": 0,
+  "peakRollingWindowMaxMs": 0,
+  "peakServerOnlyRssBytes": 0,
+  "encodedOutboundBytes": 0,
+  "encodedBudgetBytes": 31457280,
+  "healthBefore": {
+    "status": "ok",
+    "startedAt": "2026-10-23T18:47:55.081Z",
+    "uptimeSeconds": 216.459224634,
+    "prototype": "constable-loop",
+    "protocolVersion": 4,
+    "contentRevision": "b8d9fb6918c854f3eed38b327ed0cb3026e071e6fe24932e50beed36943db241",
+    "practiceOnly": true,
+    "sourceCommit": "853a5a64a953691772e0bc829a3237e43788657f",
+    "capacity": {
+      "reservedSlots": 0,
+      "instanceLimit": 8,
+      "rooms": 0,
+      "roomLimit": 1,
+      "available": true,
+      "canJoin": true,
+      "canCreate": true,
+      "queued": 0,
+      "offeredSlots": 0
+    }
+  },
+  "healthAfter": {
+    "status": "ok",
+    "startedAt": "2026-10-23T18:47:55.081Z",
+    "uptimeSeconds": 221.113941922,
+    "prototype": "constable-loop",
+    "protocolVersion": 4,
+    "contentRevision": "b8d9fb6918c854f3eed38b327ed0cb3026e071e6fe24932e50beed36943db241",
+    "practiceOnly": true,
+    "sourceCommit": "853a5a64a953691772e0bc829a3237e43788657f",
+    "capacity": {
+      "reservedSlots": 0,
+      "instanceLimit": 8,
+      "rooms": 0,
+      "roomLimit": 1,
+      "available": true,
+      "canJoin": true,
+      "canCreate": true,
+      "queued": 0,
+      "offeredSlots": 0
+    }
+  },
+  "samples": [],
+  "limits": [
+    "Actual Render Free process, ordinary private-room client inputs, Baby difficulty; no invulnerability, boss health, timing or projectile injection.",
+    "Server-only memory excludes local SDK clients. Rolling tick windows overlap and are at most 600 samples per room; peak of their p99 values is not a global percentile.",
+    "Natural combat/intermission workload, not the 4,000-hostile stress or 60-minute endurance gate. No rendered FPS, physical device or human evidence."
+  ]
+}

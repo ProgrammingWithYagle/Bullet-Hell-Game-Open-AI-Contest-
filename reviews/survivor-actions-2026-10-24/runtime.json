@@ -1,0 +1,53 @@
+{
+  "passed": true,
+  "buildId": "2026.10.24-tank-actions",
+  "protocol": 13,
+  "sourceSnapshotSha256": "67debed31b9c2b1dd793d5f7ff37811b33cf81e3304c48866dd8f0942b9bd571",
+  "runtimeSourceSha256": "c17687ade0146ca7017ebcdb0fa4a297a4fe9ff2188ffee0205891934aac3e26",
+  "contentRevision": "b8d9fb6918c854f3eed38b327ed0cb3026e071e6fe24932e50beed36943db241",
+  "fullPipeline": {
+    "tests": 290,
+    "failed": 0,
+    "outputFiles": 1454,
+    "logSha256": "4632634afabec2641d2f2b0138ecdc5bdc0d30f7dc888ccbe6317a2788ddfd38"
+  },
+  "art": {
+    "newClips": 20,
+    "newDrawnPoses": 88,
+    "retainedNativeReturns": 25,
+    "existingTankRunPoses": 32,
+    "tankTotalSelectedPoses": 120,
+    "selectedProductionPoseTotal": 791,
+    "independentReconstruction": "reviews/survivor-actions-2026-10-24/verification.json",
+    "reconstructionSha256": "3660e010a78032ec97de7dc045d03a09bf4a50c3a28bfd6bf359a27d2dd5e887",
+    "provenance": "docs/survivor-actions-2026-10-24.json",
+    "provenanceSha256": "7551e3391661f3fd88a3f25770c437fc3a891fcc57107cae3e14e49408a57e45",
+    "creativePixelEdits": false,
+    "alphaErasure": false,
+    "facingMirrors": false
+  },
+  "presentationChecks": [
+    "Authority-fired weapon shot and sustained snapshots do not restart unfinished firing.",
+    "Health loss cancels an interrupted firing cycle and recovers cleanly.",
+    "Real authority dodge selects movement direction and shows all six frames in its authored interval.",
+    "Falls lock direction, late observers derive existing elapsed fall time, final rest holds and revive clears stale cues.",
+    "Reduced motion uses fixed poses; waiting/other classes yield to their current art.",
+    "New runs/encounters, backward clocks and missing participants do not inherit state."
+  ],
+  "wikiImage": {
+    "files": 10,
+    "priorNineImageHashesUnchanged": true,
+    "added": "images/tank-actions.jpg"
+  },
+  "preservedIteration": {
+    "initialFailingTestLogSha256": "a5e94b9591d0dd5560a29efae33c95ac9e84c0bfe77462832d67d3709afd47f4",
+    "cause": "Hurt recovery briefly returned to interrupted attack; health loss now cancels the attack cue.",
+    "previewFalseAlarm": "Brown vignette in tool preview was RGB hidden beneath alpha zero; native compositing established the original sprites were clean. Original quieter-color dodge variants are selected; extra edits remain preserved."
+  },
+  "issuedWindowsArchiveSourceUnchanged": "52552c0d4465b918d7cde2ab3c2aa7f1d7eb045e",
+  "limits": [
+    "Native/contact-sheet/GIF review and state tests only; no new rendered Phaser transitions, listening, physical-device or human acceptance.",
+    "Other survivors and bosses still need complete action libraries; new Tank clips do not establish a finished game.",
+    "Published Windows development download is immutable and predates these source changes."
+  ]
+}

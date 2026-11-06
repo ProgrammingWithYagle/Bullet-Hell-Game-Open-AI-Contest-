@@ -1,0 +1,56 @@
+✖ compiled room search shows the version error, retries, then aborts when the player goes back (3032.7185ms)
+✖ code lookup keeps actionable errors and disposal cancels without a late launch (3398.2945ms)
+✖ leaving the online records tab aborts its real pending board request (2829.3523ms)
+✖ existing rows still open after pagination and changing filters aborts roster requests (2878.5812ms)
+✔ manual cover arrows and direct page buttons wrap without stealing focus or changing setup (9.43ms)
+✔ gallery keyboard navigation follows RTL and keeps the remembered image on a later mount (2.6342ms)
+✔ the real home menu keeps its gallery image when returning from setup and cleans old controls (591.9938ms)
+✔ all fifteen catalogs have source-backed image navigation and missing art fails before rendering (49.6669ms)
+✔ leaving a connected LAN menu prevents delayed responses and detached controls from changing the next page (126.0079ms)
+✔ a late initial status cannot undo a completed hosting request (27.7118ms)
+✔ a delayed LAN status keeps the typed address and keyboard editing position (22.0943ms)
+✔ failed Stop hosting requests leave a usable retry without erasing the address draft (21.5467ms)
+✔ pending hosting blocks duplicate actions while Back still leaves safely (21.3939ms)
+✔ the real setup disposes local-network actions before mounting another menu (422.0962ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 10
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 13220.2527
+
+✖ failing tests:
+
+test at tests\discovery-records-menu.test.ts:1:1388
+✖ compiled room search shows the version error, retries, then aborts when the player goes back (3032.7185ms)
+  Error: Timed out
+      at until (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\discovery-records-menu.test.ts:9:117)
+      at async TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\discovery-records-menu.test.ts:26:2)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+
+test at tests\discovery-records-menu.test.ts:1:3187
+✖ code lookup keeps actionable errors and disposal cancels without a late launch (3398.2945ms)
+  Error: Timed out
+      at until (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\discovery-records-menu.test.ts:9:117)
+      at async TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\discovery-records-menu.test.ts:46:93)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests\discovery-records-menu.test.ts:1:4901
+✖ leaving the online records tab aborts its real pending board request (2829.3523ms)
+  Error: Timed out
+      at until (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\discovery-records-menu.test.ts:9:117)
+      at async TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\discovery-records-menu.test.ts:57:53)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests\discovery-records-menu.test.ts:1:5580
+✖ existing rows still open after pagination and changing filters aborts roster requests (2878.5812ms)
+  Error: Timed out
+      at until (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\discovery-records-menu.test.ts:9:117)
+      at async TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\discovery-records-menu.test.ts:72:2)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)

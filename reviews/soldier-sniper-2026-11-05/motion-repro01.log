@@ -1,0 +1,116 @@
+✖ Sniper reservation and settling do not select a firing pose before an actual release (26.3016ms)
+✖ actual manually released Sniper shot selects its firing cycle without another ammo decrement or snapshot restart (14.772ms)
+✖ a paid preparation cancelled between received snapshots does not manufacture a firing pose (3.6896ms)
+✔ ordinary primary shots remain independently animated in every Sniper facing (12.4653ms)
+✖ a late observer samples the actual released-shot age and stale/ended shots never restart (9.5524ms)
+✔ Tank actions retain twenty distinct directional clips, 88 drawn poses and every immutable native/request binding (145.1944ms)
+✔ actual weapon shots trigger a complete stationary firing cycle without repeated snapshots restarting it (21.4066ms)
+✔ damage interrupts a shot, recovers, and keeps movement available rather than replaying stale hit poses (3.0104ms)
+✔ a real dodge follows movement direction, completes every drawn frame within the authoritative interval and wins over hurt (3.8564ms)
+✔ downed motion locks its facing, holds the resting frame, and revival clears attack/hurt history (3.9457ms)
+✔ late observers of an existing fall, reduced motion, waiting participants and other classes have explicit stable poses (3.4968ms)
+✔ new runs, encounter boundaries, backward clocks and removed participants cannot inherit action state (2.3204ms)
+✔ Engineer actions preserve twenty independent clips, all 23 returns and their exact input bindings (95.3068ms)
+✔ Engineer and Tank presentation cues stay independent through fire, fall, revive and a class identity change (3.6053ms)
+✔ Mage actions preserve twenty complete clips, all 25 native attempts and exact reference bindings (108.2622ms)
+✔ real Mage primary casts select the corresponding independent staff clip in all four aim directions (7.7373ms)
+✔ heavy actions retain all native attempts, exact bindings and complete padded directional clips (97.1616ms)
+✔ heavy authority-fired primary shots select the correct independent attack facing (7.2165ms)
+✔ assassin actions retain all native attempts, exact bindings and complete padded directional clips (101.9219ms)
+✔ assassin authority-fired primary shots select the correct independent attack facing (7.243ms)
+✔ soldier actions retain all native attempts, exact bindings and complete padded directional clips (112.1329ms)
+✔ soldier authority-fired primary shots select the correct independent attack facing (8.061ms)
+✔ medic actions retain all native attempts, exact bindings and complete padded directional clips (130.2221ms)
+✔ medic authority-fired primary shots select the correct independent attack facing (9.866ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 20
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1280.2958
+
+✖ failing tests:
+
+test at tests\soldier-sniper-motion.test.ts:1:1407
+✖ Sniper reservation and settling do not select a firing pose before an actual release (26.3016ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'attack' !== 'idle'
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\soldier-sniper-motion.test.ts:4:194)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'attack',
+    expected: 'idle',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\soldier-sniper-motion.test.ts:1:1698
+✖ actual manually released Sniper shot selects its firing cycle without another ammo decrement or snapshot restart (14.772ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'idle' !== 'attack'
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\soldier-sniper-motion.test.ts:5:163)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'idle',
+    expected: 'attack',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\soldier-sniper-motion.test.ts:1:2136
+✖ a paid preparation cancelled between received snapshots does not manufacture a firing pose (3.6896ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'attack' !== 'idle'
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\soldier-sniper-motion.test.ts:6:259)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'attack',
+    expected: 'idle',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\soldier-sniper-motion.test.ts:1:2730
+✖ a late observer samples the actual released-shot age and stale/ended shots never restart (9.5524ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'idle' !== 'attack'
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\soldier-sniper-motion.test.ts:8:313)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'idle',
+    expected: 'attack',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

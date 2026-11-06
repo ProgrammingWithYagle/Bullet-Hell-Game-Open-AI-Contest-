@@ -1,0 +1,260 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-05T00:32:20.377Z",
+  "baseMetadata": "afc42747f9eb4dc512deff3fd2680590ebae5663",
+  "basePlayableSource": "afc42747f9eb4dc512deff3fd2680590ebae5663",
+  "buildId": "2026.11.04-soldier-bank-shot",
+  "protocol": 58,
+  "tests": 1500,
+  "contentRevision": "78d78be91de271588e2c3a35baac583f5f2f93412a89160bff3b58832c4c13f7",
+  "runtimeSourceSha256": "10f5e398f4b8e453e24bf2b377d5322a4465ffabc9c320dab147a89fed04b2ad",
+  "sourceSnapshotSha256": "f9c9d55d95620fcae8605bc56afd504736a60c12007f548f7fd32cac427b3d4f",
+  "finalGate": {
+    "path": "reviews/soldier-marksman-sync-2026-11-05/full-gate01.log",
+    "sha256": "d10daa3d3b29c00278b6422117691584c1a43377c95459af6162eef92ff300bb"
+  },
+  "retained": {
+    "classNodes": 648,
+    "generalTechniques": 4,
+    "issuedSpecializations": 29,
+    "engineerTechniques": 22,
+    "transformations": 36,
+    "weapons": 48,
+    "classes": 12,
+    "allPriorCatalogDefinitionsExact": true,
+    "allSevenIssuedSoldierEmblemsAndEntriesExact": true,
+    "issuedAudio25ArraysExact": true,
+    "serviceYardPatchExact": true
+  },
+  "techniques": {
+    "total": 30,
+    "soldier": 8,
+    "skirmisher": 7,
+    "marksmanInitialEntry": 1,
+    "marksmanRouteComplete": false,
+    "soldierClassComplete": false
+  },
+  "mechanic": "One physical cover bank consumes remaining tick travel, costs one actual cartridge, uses each leg's fractional moving-body contacts and true last origin for armor; further cover absorbs. Separate C recovery and finite contact cue. Host exit removes the shot. No aim assist/immunity/movement/resources/boss bypass.",
+  "migration": "Exact issued57/d86d223b admits29techniques before older exact whitelists. Preserve12class labels, bothHUDlayouts, remaps, equipment/balances and original Practice editions. Wrong editions/forged ownership/verified claims remain rejected. Local imports never become online proof.",
+  "naturalCombat": {
+    "reports": [
+      {
+        "path": "reviews/soldier-marksman-2026-11-04/natural-gatehouse-2209.json",
+        "sha256": "1163071f3aa66024db4abb8eaa356fcd926a0d84e85ac639f6da9482de0f434e"
+      },
+      {
+        "path": "reviews/soldier-marksman-2026-11-04/natural-gatehouse-2209-restored.json",
+        "sha256": "008578b925f664b728f3bf0119c401453f6951aec6048dae4c5feb41c40c89f4"
+      },
+      {
+        "path": "reviews/soldier-marksman-2026-11-04/natural-gatehouse-2209-comparison.json",
+        "sha256": "3852a73e12eb706c9b8a5dfd998a2ca3f9d175b80661dd4f10f0387cba3e1282"
+      },
+      {
+        "path": "reviews/soldier-marksman-2026-11-04/natural-gatehouse-2209.log",
+        "sha256": "29cb862ef8723de0dd986365304d7ecb778ff43c55615894369e0e94344ad202"
+      },
+      {
+        "path": "reviews/soldier-marksman-2026-11-04/natural-gatehouse-2209-restored.log",
+        "sha256": "ed55c2d2a4f1f3c2c9dbe8a991ea7fd5bbcbd0c24ed30b22b589c0b0501cd0be"
+      },
+      {
+        "path": "reviews/soldier-marksman-2026-11-04/natural-triage-yard-9027.json",
+        "sha256": "56af2a51b0700c6d7fb847ea2e99f48fdf8d6db2730be1ad2e79162d38569ae5"
+      },
+      {
+        "path": "reviews/soldier-marksman-2026-11-04/natural-triage-yard-9027-restored.json",
+        "sha256": "c4f91b8b492b3830b612daf139356ebbcb4c7be6218c48f917ad1947c20a9014"
+      },
+      {
+        "path": "reviews/soldier-marksman-2026-11-04/natural-triage-yard-9027-comparison.json",
+        "sha256": "8dedc92d01e98a2b3f9f484f4379999943215055704ec5ed3a0a1e8a15716da4"
+      },
+      {
+        "path": "reviews/soldier-marksman-2026-11-04/natural-triage-yard-9027.log",
+        "sha256": "ebd7b4f6229316fb907c4f853dfc47bcf3a1aca4c5ac6c2e6ede2e427964a6b3"
+      },
+      {
+        "path": "reviews/soldier-marksman-2026-11-04/natural-triage-yard-9027-restored.log",
+        "sha256": "10090eb3c891aecbd22659b40a2edf3d9cb61071fdfbd0df998a0858083105f9"
+      }
+    ],
+    "rows": [
+      {
+        "map": "gatehouse",
+        "seed": 2209,
+        "route": "general",
+        "result": "defeat",
+        "clears": 4,
+        "combatSeconds": 201.7,
+        "earnedSP": 27,
+        "spentSP": 25,
+        "casts": 0,
+        "coverContacts": 0,
+        "steps": 0
+      },
+      {
+        "map": "gatehouse",
+        "seed": 2209,
+        "route": "skirmisher",
+        "result": "victory",
+        "clears": 5,
+        "combatSeconds": 130.3,
+        "earnedSP": 27,
+        "spentSP": 27,
+        "casts": 0,
+        "coverContacts": 0,
+        "steps": 13
+      },
+      {
+        "map": "gatehouse",
+        "seed": 2209,
+        "route": "marksman",
+        "result": "victory",
+        "clears": 5,
+        "combatSeconds": 145.03333333333333,
+        "earnedSP": 27,
+        "spentSP": 27,
+        "casts": 22,
+        "coverContacts": 21,
+        "steps": 0
+      },
+      {
+        "map": "triage-yard",
+        "seed": 9027,
+        "route": "general",
+        "result": "victory",
+        "clears": 5,
+        "combatSeconds": 235.83333333333334,
+        "earnedSP": 27,
+        "spentSP": 25,
+        "casts": 0,
+        "coverContacts": 0,
+        "steps": 0
+      },
+      {
+        "map": "triage-yard",
+        "seed": 9027,
+        "route": "skirmisher",
+        "result": "defeat",
+        "clears": 3,
+        "combatSeconds": 297.73333333333335,
+        "earnedSP": 21,
+        "spentSP": 21,
+        "casts": 0,
+        "coverContacts": 0,
+        "steps": 4
+      },
+      {
+        "map": "triage-yard",
+        "seed": 9027,
+        "route": "marksman",
+        "result": "defeat",
+        "clears": 3,
+        "combatSeconds": 290.7,
+        "earnedSP": 21,
+        "spentSP": 21,
+        "casts": 18,
+        "coverContacts": 18,
+        "steps": 0
+      }
+    ],
+    "sixMeasuredRestorePairsMatch": true,
+    "restores": [
+      {
+        "map": "gatehouse",
+        "seed": 2209,
+        "route": "general",
+        "safeRestores": 17,
+        "measuredOutcomeAndActionsMatch": true,
+        "mismatches": []
+      },
+      {
+        "map": "gatehouse",
+        "seed": 2209,
+        "route": "skirmisher",
+        "safeRestores": 18,
+        "measuredOutcomeAndActionsMatch": true,
+        "mismatches": []
+      },
+      {
+        "map": "gatehouse",
+        "seed": 2209,
+        "route": "marksman",
+        "safeRestores": 18,
+        "measuredOutcomeAndActionsMatch": true,
+        "mismatches": []
+      },
+      {
+        "map": "triage-yard",
+        "seed": 9027,
+        "route": "general",
+        "safeRestores": 18,
+        "measuredOutcomeAndActionsMatch": true,
+        "mismatches": []
+      },
+      {
+        "map": "triage-yard",
+        "seed": 9027,
+        "route": "skirmisher",
+        "safeRestores": 13,
+        "measuredOutcomeAndActionsMatch": true,
+        "mismatches": []
+      },
+      {
+        "map": "triage-yard",
+        "seed": 9027,
+        "route": "marksman",
+        "safeRestores": 13,
+        "measuredOutcomeAndActionsMatch": true,
+        "mismatches": []
+      }
+    ],
+    "conservativePilotRadius": 18,
+    "actualCatalogPlayerRadius": 9,
+    "ordinaryStartingSP": 3,
+    "limits": "Two seeds/maps, one autonomous policy and differing specialization/General spending. General retains2SP at27. Contacts are not per-shot hit/damage attribution. Wins/losses retained; no build ranking or human/final-balance acceptance."
+  },
+  "diagnostics": {
+    "initialGate": {
+      "path": "reviews/soldier-marksman-2026-11-04/full-gate01.log",
+      "tests": 1500,
+      "pass": 1499,
+      "fail": 0,
+      "cancelled": 1,
+      "reason": "Existing Small Wakes peer test exceeded40secondtimeout; cause not established."
+    },
+    "unchangedIsolatedSmallWakes": {
+      "path": "reviews/soldier-marksman-2026-11-04/small-wakes-isolated01.log",
+      "pass": 15
+    },
+    "finalGateNoTimeoutOrTestWeakening": true,
+    "earlierNativeExitBugFixed": true,
+    "allRawCandidateAttemptsPreserved": true,
+    "originalCI": "reviews/soldier-marksman-2026-11-04/source-ci-attempt1.json"
+  },
+  "routePolicy": {
+    "noFixedMaximumForEveryClass": true,
+    "threeRoutesInitialCoverageOnly": true,
+    "onePolishedSliceAtATime": true,
+    "next": "Develop meaningful internal Marksman choices and later acquired operations; further Soldier candidates remain open."
+  },
+  "limits": [
+    "Complete configured automated gate. Exact-source CI and new frozen/served reviews follow separately; older previews never establish current acceptance.",
+    "Native DOM, generated art/alpha inspection, exact synthesized samples, optimized workers and loopback peers are distinct from human/rendered/device/native-language/listening/motion/literary/final-balance acceptance. New6locale keys and3revisedsharedlabels are English pilot copy.",
+    "Story5741checkedEnglishbasewords; no complete personal arc. Campaign remains last/noSP/mutations/scarce learned-proven-prepared; ServiceYard stays unregistered4pass/1fail outside1500tests. No browser automation, subagents, cleanup/privateupload, production deploy, mainmerge, Windows replacement or capacity purchase. Only the user decides when the full game is finished.",
+    "Current commit changes only worker-test synchronization, not the runtime feature. Original natural/replay data retain original provenance with exact current runtime bytes. Fresh current-snapshot CI/reviews follow separately."
+  ],
+  "originalRuntimeFeatureSource": "afc42747f9eb4dc512deff3fd2680590ebae5663",
+  "verificationCorrection": {
+    "onlyChangedRuntimeInput": "tests/soldier-marksman-worker.test.ts",
+    "gameRuntimeBytesExact": true,
+    "originalSnapshot": "a8178bf401e9a89eb467b7fb29b69d713139cb164f11da46e94d1a0ef5bc4648",
+    "originalScope": "reviews/soldier-marksman-2026-11-04",
+    "originalPushCIPassed1500": true,
+    "originalPRCIEventReadBeforeMessage": true,
+    "actualEventAcknowledgmentAdded": true,
+    "assertionsAndDeadlinesRetained": true,
+    "naturalReportsNotReexecutedOrRelabeled": true
+  }
+}

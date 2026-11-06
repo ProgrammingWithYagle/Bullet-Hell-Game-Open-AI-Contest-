@@ -1,0 +1,105 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-06T22:33:40.994Z",
+  "sourceCommit": "6345afc1ae9fdab087126cb608dd2c95ec82b92f",
+  "protocol": 66,
+  "audience": "public",
+  "workerSha256": "5eb80c9572dd09b7e23b8c66eee53252092b6c265a2a83a656a437e21b95425a",
+  "ordinaryStartingSP": 12,
+  "difficulty": "baby",
+  "firstBoss": "bell-triplets",
+  "actualFirstBossClear": true,
+  "firstCombatTicks": 555,
+  "earnedAfterActualClear": 20,
+  "actualRequiredSkillPurchases": 6,
+  "spentSkillSP": 17,
+  "remainingSP": 10,
+  "acceptedPurchases": [
+    {
+      "kind": "skill",
+      "item": "soldier-ballistics-1"
+    },
+    {
+      "kind": "skill",
+      "item": "soldier-sniper-1"
+    },
+    {
+      "kind": "skill",
+      "item": "soldier-sniper-bore-1"
+    },
+    {
+      "kind": "skill",
+      "item": "soldier-sniper-carry-1"
+    },
+    {
+      "kind": "weapon",
+      "item": "soldier-3"
+    },
+    {
+      "kind": "skill",
+      "item": "soldier-sniper-rest-1"
+    },
+    {
+      "kind": "upgrade",
+      "item": "health"
+    },
+    {
+      "kind": "upgrade",
+      "item": "damage"
+    },
+    {
+      "kind": "supply",
+      "item": "medkit"
+    },
+    {
+      "kind": "skill",
+      "item": "soldier-sniper-withdrawal-1"
+    }
+  ],
+  "handling": "carry",
+  "actualMovementToUsableInteriorCover": true,
+  "emptyRestUsesNoRoundOrRecovery": true,
+  "originalFiniteRestLifetime": true,
+  "actualWalkingAwayAndBackToFixedSite": true,
+  "manualPaidClaimReadyAtActualSite": true,
+  "separateManualReleaseRequired": true,
+  "sameTickCBDoesNotEmit": true,
+  "pauseDiscardsRequestsAndFreezesRestClock": true,
+  "sharedSpatialFeedbackOmitsPayment": true,
+  "actualCarryRestartsFullSettling": true,
+  "originalPaidDeadlineAndRecoveryRetained": true,
+  "actualShotAndRemoval": true,
+  "actualReservedRoundReturned": false,
+  "clearConsumesReloadPress": false,
+  "consumedRestNeverRestored": true,
+  "spentRecoveryRetained": true,
+  "noFriendlyFlightInvented": false,
+  "noCheckpointOrBudgetHealthPositionInjection": true,
+  "secondBoss": "quarantine-heart",
+  "secondCombatTicks": 1069,
+  "actualSecondBossClear": true,
+  "earnedAfterTwoActualClears": 27,
+  "normalVotesShopDeploymentClocks": true,
+  "actualTwoIndependentlySettledPositions": true,
+  "originalSeparateFiniteDeadlines": true,
+  "actualWalkingBetweenBothPositions": true,
+  "actualFirstManualReleaseEarnsReturn": true,
+  "actualPaidReturnDuringRecovery": true,
+  "extendedRecoveryByOneOrdinaryDuration": true,
+  "bothClaimTicksCannotEmit": true,
+  "pairPauseDiscardsRequestsAndFreezesClocks": true,
+  "actualSecondManualShot": true,
+  "actualReturnRoundCleared": false,
+  "clearKeepsExtendedDebt": false,
+  "noRecursivePairOrReturnedSite": true,
+  "ordinaryEarnedCoinEquipmentAndHealing": true,
+  "visibleRaidLaneAndValvePolicy": true,
+  "firstPaidUntil": 1977,
+  "originalReturnUntil": 2117,
+  "workerPatched": false,
+  "wholeOptimizedWorkerExecuted": true,
+  "limits": [
+    "Entire exact HTTP-served optimized worker, with only native parentPort transport shim. Ordinary Baby Raid starts12SP, rejects the17earned node, clears an actual first boss through regular inputs, earns20SP and buys Field Rest, then clears a real second boss and earns27SP, buys Prepared Withdrawal for17total skill spending/10left, independently settles two positions, fires, physically returns and pays/releases the finite second round with extended C recovery. Default vote/shop/deployment/combat clocks remain.",
+    "No worker-source patch, testing command, checkpoint, budget/health/position injection, forced clear, invulnerability, timeout/deadline extension or score upload. Native proof remains separate from full-browser/rendered/device/language/listening/motion/human/final-balance acceptance."
+  ]
+}

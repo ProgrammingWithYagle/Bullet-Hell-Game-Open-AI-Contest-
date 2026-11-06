@@ -1,0 +1,809 @@
+import {LamplightWatch,type LamplightCue} from './lamplight-watch.ts';
+import {StationSignals,type StationCue} from './station-signals.ts';
+import {SluicePressure,type SluiceCue} from './sluice-pressure.ts';
+import {BakerOven,type BakerCue} from './baker-oven.ts';
+import {glassPlan,glassRayEnd,moveGlassSurgeon} from './glass-surgery.ts';
+import {gappedRingContact as serviceRingContact} from './ring-contact.ts';
+export {gappedRingContact as serviceRingContact} from './ring-contact.ts';
+import {Stitchwork, type StitchCue} from './stitchwork.ts';
+import {BellCarillon,type BellCue} from './bell-carillon.ts';
+import {MoldMixing,moldMovement,type MoldCue} from './mold-mixing.ts';
+import {MatronWard,type MatronCue} from './matron-ward.ts';
+import catalog from '../../content/catalog.json' with { type: 'json' };
+// Services of the dead: authoritative, readable signatures for Midnight Circuit.
+// Phaser consumes these exact shapes; current/tether movement is also shared with prediction.
+import { DT, HZ, type Vec } from './protocol.ts';
+import { clamp, distance, segmentCircle, segmentRect, type Rect } from './geometry.ts';
+import type { SignatureContext } from './boss-director.ts';
+export const serviceBossIds = [
+  'matron',
+  'alchemist',
+  'bellringer',
+  'stitchwright',
+  'glass-surgeon',
+  'ash-baker',
+  'sluice-keeper',
+  'stationmaster',
+  'lamplighter',
+  'anatomist',
+  'plague-gardener',
+  'choir',
+  'red-abbess',
+  'vesper-judge',
+] as const;
+type Life = { id: number; at: number; until: number };
+export type ServiceProp = Life &
+  Vec & {
+    kind: 'service-prop';
+    role: 'nest' | 'needle' | 'root' | 'caster';
+    radius: number;
+    health: number;
+    maxHealth: number;
+    nextAt: number;
+    index: number;
+  };
+type Pool = Life & Vec & { kind: 'service-pool'; radius: number; damage: number };
+type Ring = Life &
+  Vec & {
+    kind: 'service-ring';
+    radius: number;
+    oldRadius: number;
+    gapAngle: number;
+    gap: number;
+    width: number;
+    speed: number;
+    damage: number;
+  };
+type Beam = Life & {
+  kind: 'service-beam';
+  style: 'glass' | 'choir' | 'vine' | 'abbess';
+  x1: number;
+  y1: number;
+  x2: number;
+  y2: number;
+  width: number;
+  damage: number;
+  dependencies: number[];
+  disabled: boolean;
+  cutAt: number;
+  index: number;
+};
+type Tether = Life &
+  Vec & {
+    kind: 'service-tether';
+    targetId: string;
+    endX: number;
+    endY: number;
+    radius: number;
+    health: number;
+    maxHealth: number;
+    progress: number;
+    attached: boolean;
+    checked: boolean;
+    damage: number;
+  };
+type Current = Life & Rect & { kind: 'service-current'; forceX: number; forceY: number };
+type Sanctuary = Life &
+  Vec & {
+    kind: 'service-sanctuary';
+    style: 'lamp' | 'abbess';
+    pads: Vec[];
+    starts: Vec[];
+    ends: Vec[];
+    safeRadius: number;
+    radius: number;
+    oldRadius: number;
+    speed: number;
+    width: number;
+    damage: number;
+    progress: number[];
+    neutralized: boolean;
+  };
+type Caliper = Life &
+  Vec & {
+    kind: 'service-caliper';
+    targetId: string;
+    lockAt: number;
+    radius: number;
+    damage: number;
+  };
+type Verdict = Life & Rect & { kind: 'service-verdict'; side: number; damage: number };
+type Spiral = Life &
+  Vec & {
+    kind: 'service-spiral';
+    angle: number;
+    count: number;
+    emitted: number;
+    speed: number;
+    damage: number;
+  };
+export type ServiceCue =
+  | StitchCue
+  | BellCue
+  | MoldCue
+  | MatronCue
+  | ServiceProp
+  | Pool
+  | Ring
+  | Beam
+  | Tether
+  | BakerCue
+  | SluiceCue
+  | Current
+  | StationCue
+  | LamplightCue
+  | Sanctuary
+  | Caliper
+  | Verdict
+  | Spiral;
+export type ServiceAttack = {
+  kind: string;
+  interval?: number;
+  count: number;
+  speed: number;
+  damage: number;
+  telegraph: number;
+  radius?: number;
+  duration?: number;
+  width?: number;
+  gap?: number;
+};
+const ticks = (seconds: number) => Math.ceil(seconds * HZ),
+  forever = 1e12;
+const angleDelta = (a: number, b: number) => Math.atan2(Math.sin(a - b), Math.cos(a - b));
+export function serviceMovement(
+  cues: readonly { kind: string }[],
+  position: Vec,
+  id: string,
+  now: number,
+) {
+  let x = 0,
+    y = 0,
+    multiplier = 1,sluice=false;
+  for (const untyped of cues) {
+    const cue = untyped as ServiceCue;
+    if(cue.kind==='service-current'&&'valve' in cue)sluice=true;
+    if (now < cue.at || now >= cue.until) continue;
+    if (
+      cue.kind === 'service-current' &&
+      position.x >= cue.x &&
+      position.x <= cue.x + cue.width &&
+      position.y >= cue.y &&
+      position.y <= cue.y + cue.height
+    ) {
+      x += cue.forceX;
+      y += cue.forceY;
+    }
+    if (cue.kind === 'service-pool' && distance(position, cue) <= cue.radius + 9)
+      multiplier = Math.min(multiplier, 0.65);
+    if (cue.kind === 'service-tether' && cue.targetId === id && cue.attached && cue.health > 0)
+      multiplier = Math.min(multiplier, 0.5);
+  }
+  const force=Math.hypot(x,y);if(sluice&&force>90){x*=90/force;y*=90/force;}
+  return { x, y, multiplier:Math.min(multiplier,moldMovement(cues,position,now)) };
+}
+/** Exact swept body against a line capsule, including its round endpoint caps. */
+export function serviceBeamContact(
+  from: Vec,
+  to: Vec,
+  beam: { x1: number; y1: number; x2: number; y2: number; width: number },
+  body = 9,
+) {
+  const dx = beam.x2 - beam.x1,
+    dy = beam.y2 - beam.y1,
+    length = Math.hypot(dx, dy),
+    angle = Math.atan2(dy, dx),
+    c = Math.cos(angle),
+    s = Math.sin(angle),
+    r = body + beam.width / 2;
+  const local = (p: Vec) => ({
+    x: (p.x - beam.x1) * c + (p.y - beam.y1) * s,
+    y: -(p.x - beam.x1) * s + (p.y - beam.y1) * c,
+  });
+  return (
+    segmentRect(local(from), local(to), { x: 0, y: -r, width: length, height: r * 2 }) !== null ||
+    segmentCircle(from, to, { x: beam.x1, y: beam.y1 }, r) !== null ||
+    segmentCircle(from, to, { x: beam.x2, y: beam.y2 }, r) !== null
+  );
+}
+export class ServiceDirector {
+  readonly lamplighter=new LamplightWatch();
+  readonly stationmaster=new StationSignals();
+  readonly sluice=new SluicePressure();
+  readonly baker = new BakerOven();
+  readonly matron=new MatronWard();
+  readonly alchemist=new MoldMixing();
+  readonly bellringer=new BellCarillon();
+  private kind = '';
+  private castIndex = 0;
+  readonly stitchwright = new Stitchwork();
+  nextSignatureAt = 0;
+  private shapes: ServiceCue[] = [];
+  private opticalQueue:{warnAt:number;at:number;until:number;from:Vec;to:Vec;width:number;damage:number;dependencies:number[];index:number}[]=[];
+  private contacts = new Map<string, number>();
+  private once = new Set<string>();
+  reset(kind: string, encounter = false) {
+    this.lamplighter.reset(0,encounter||kind!==this.kind);
+    this.stationmaster.reset(0,encounter||kind!==this.kind);
+    this.sluice.reset(0,encounter||kind!==this.kind);
+    this.baker.reset(0,encounter||kind!==this.kind);
+    this.stitchwright.reset(0, encounter || kind !== this.kind);
+    this.matron.reset(0,encounter||kind!==this.kind);
+    this.alchemist.reset(0,encounter||kind!==this.kind);
+    this.bellringer.reset(0,encounter||kind!==this.kind);
+    const keepChoir = kind === this.kind && kind === 'choir' && !encounter;
+    this.shapes = keepChoir
+      ? this.shapes.filter((c) => c.kind === 'service-prop' && c.role === 'caster')
+      : [];
+    if (kind !== this.kind || encounter) {this.castIndex = 0;this.nextSignatureAt=0;}
+    this.kind = kind;
+    this.opticalQueue=[];
+    this.contacts.clear();
+    this.once.clear();
+  }
+  handles(kind: string) {
+    return serviceBossIds.some((id) => id === kind);
+  }
+  movement(position: Vec, id: string, now: number) {
+    const move=serviceMovement([...this.shapes,...this.sluice.cues()], position, id, now);
+    return {...move,multiplier:Math.min(move.multiplier,moldMovement(this.alchemist.cues(),position,now))};
+  }
+  cues(): ServiceCue[] {
+    return [...this.lamplighter.cues(),...this.stationmaster.cues(),...this.sluice.cues(),...this.baker.cues(),...this.stitchwright.cues(),...this.bellringer.cues(),...this.alchemist.cues(),...this.matron.cues(),...this.shapes.map((c) => {
+      if (c.kind === 'service-sanctuary')
+        return {
+          ...c,
+          pads: c.pads.map((p) => ({ ...p })),
+          starts: c.starts.map((p) => ({ ...p })),
+          ends: c.ends.map((p) => ({ ...p })),
+          progress: [...c.progress],
+        };
+      if (c.kind === 'service-beam') return { ...c, dependencies: [...c.dependencies] };
+      return { ...c };
+    })];
+  }
+  weakPoints() {
+    return [...this.lamplighter.weakPoints(),...this.stationmaster.weakPoints(),...this.sluice.weakPoints(),...this.baker.weakPoints(),...this.stitchwright.weakPoints(),...this.bellringer.weakPoints(),...this.matron.weakPoints(),...this.shapes.filter(
+      (c): c is ServiceProp | Tether =>
+        (c.kind === 'service-prop' || c.kind === 'service-tether') && c.health > 0,
+    )];
+  }
+  transfersDamage(id: number) {
+    return this.shapes.some((c) => c.id === id && c.kind === 'service-prop' && c.role === 'caster');
+  }
+  hit(id: number, damage: number, now: number) {
+    const lamp=this.lamplighter.hitWick(id,damage,now);if(lamp)return lamp;
+    const station=this.stationmaster.hitSignal(id,damage,now);if(station)return station;
+    const sluice=this.sluice.hit(id,damage,now);if(sluice)return sluice;
+    const baker=this.baker.hit(id,damage,now);if(baker)return baker;
+    const stitch = this.stitchwright.hit(id, damage, now); if (stitch) return stitch;
+    const bell=this.bellringer.hit(id,damage,now);if(bell)return bell;
+    const matron=this.matron.hit(id,damage);if(matron)return matron;
+    const prop = this.weakPoints().find((p) => p.id === id);
+    if (!prop) return 0;
+    const actual = Math.min(prop.health, Math.max(0, damage));
+    prop.health -= actual;
+    if (prop.health <= 0) {
+      if (prop.kind === 'service-tether') {
+        prop.attached = false;
+        prop.until = now;
+      }
+      for (const cue of this.shapes)
+        if (cue.kind === 'service-beam' && cue.dependencies.includes(id)) {
+          if (cue.style === 'vine') cue.cutAt = Math.max(1, now);
+          else cue.disabled = true;
+        }
+    }
+    return actual;
+  }
+  private bounds(c: SignatureContext) {
+    return c.bounds ?? { x: 0, y: 0, width: 1600, height: 1000 };
+  }
+  private free(c: SignatureContext, point: Vec, radius = 24) {
+    const b = this.bounds(c),
+      base = {
+        x: clamp(point.x, b.x + radius + 3, b.x + b.width - radius - 3),
+        y: clamp(point.y, b.y + radius + 3, b.y + b.height - radius - 3),
+      };
+    for (let offset = 0; offset <= 600; offset += 24)
+      for (let n = 0; n < 16; n++) {
+        const p = {
+          x: clamp(
+            base.x + Math.cos((n * Math.PI) / 8) * offset,
+            b.x + radius + 3,
+            b.x + b.width - radius - 3,
+          ),
+          y: clamp(
+            base.y + Math.sin((n * Math.PI) / 8) * offset,
+            b.y + radius + 3,
+            b.y + b.height - radius - 3,
+          ),
+        };
+        if (!c.obstacles.some((o) => segmentRect(p, p, o, radius) !== null)) return p;
+      }
+    throw Error('Arena has no clear signature position');
+  }
+  private prop(
+    c: SignatureContext,
+    role: ServiceProp['role'],
+    point: Vec,
+    health: number,
+    index: number,
+    at = c.tick,
+  ) {
+    const radius = role === 'nest' ? 32 : role === 'caster' ? 24 : 18;
+    const p: ServiceProp = {
+      kind: 'service-prop',
+      id: c.id(),
+      role,
+      ...this.free(c, point, radius),
+      radius,
+      health: health * (c.brutal ? 2 : 1),
+      maxHealth: health * (c.brutal ? 2 : 1),
+      index,
+      at,
+      until: forever,
+      nextAt: at,
+    };
+    this.shapes.push(p);
+    return p;
+  }
+  private end(c: SignatureContext, from: Vec, target: Vec, range = 1900, pad = 0) {
+    const angle = Math.atan2(target.y - from.y, target.x - from.x),
+      end = { x: from.x + Math.cos(angle) * range, y: from.y + Math.sin(angle) * range };
+    let fraction = 1;
+    for (const o of c.obstacles) {
+      const hit = segmentRect(from, end, o, pad);
+      if (hit) fraction = Math.min(fraction, Math.max(0, hit.t - 0.001));
+    }
+    return { x: from.x + (end.x - from.x) * fraction, y: from.y + (end.y - from.y) * fraction };
+  }
+  private beam(
+    c: SignatureContext,
+    from: Vec,
+    to: Vec,
+    style: Beam['style'],
+    at: number,
+    duration: number,
+    width: number,
+    damage: number,
+    dependencies: number[] = [],
+    index = 0,
+  ) {
+    const beam: Beam = {
+      kind: 'service-beam',
+      id: c.id(),
+      style,
+      x1: from.x,
+      y1: from.y,
+      x2: to.x,
+      y2: to.y,
+      width,
+      damage,
+      dependencies,
+      disabled: false,
+      cutAt: 0,
+      index,
+      at,
+      until: at + ticks(duration),
+    };
+    this.shapes.push(beam);
+    return beam;
+  }
+  cast(c: SignatureContext, target: Vec, attack: ServiceAttack) {
+    if (!this.handles(c.bossId)) return false;
+    if(c.bossId==='lamplighter'){const handled=this.lamplighter.cast(c);this.nextSignatureAt=this.lamplighter.nextSignatureAt;return handled;}
+    if(c.bossId==='stationmaster'){const handled=this.stationmaster.cast(c);this.nextSignatureAt=this.stationmaster.nextSignatureAt;return handled;}
+    if(c.bossId==='sluice-keeper'){const handled=this.sluice.cast(c);this.nextSignatureAt=this.sluice.nextSignatureAt;return handled;}
+    if(c.bossId==='ash-baker'){const handled=this.baker.cast(c,target);this.nextSignatureAt=this.baker.nextSignatureAt;return handled;}
+    if(c.bossId==='matron')return this.matron.cast(c,target);
+    if(c.bossId==='alchemist')return this.alchemist.cast(c,target);
+    if(c.bossId==='bellringer')return this.bellringer.cast(c,target);
+    const now = c.tick,
+      at = now + ticks(attack.telegraph),
+      index = this.castIndex++,
+      b = this.bounds(c),
+      center = { x: b.x + b.width / 2, y: b.y + b.height / 2 },
+      visible = c.aimTargets ?? c.targets;
+    const mechanics = catalog.bosses.find((b) => b.id === c.bossId)!.mechanics;
+    this.nextSignatureAt =
+      now +
+      ticks(
+        mechanics.cycleSeconds
+          ? mechanics.cycleSeconds * Math.max(0.7, 1 - c.phase * 0.1)
+          : (attack.interval ?? 8),
+      );
+    switch (c.bossId) {
+      case 'stitchwright': {
+        const aimed = visible[index % Math.max(1, visible.length)];
+        if (!aimed) break;
+        const point = this.free(c, { x: aimed.x + 65, y: aimed.y - 35 });
+        this.shapes.push({
+          kind: 'service-tether',
+          id: c.id(),
+          ...point,
+          targetId: aimed.id,
+          endX: aimed.x,
+          endY: aimed.y,
+          radius: 24,
+          health: 45 * (c.brutal ? 2 : 1),
+          maxHealth: 45 * (c.brutal ? 2 : 1),
+          progress: 0,
+          attached: false,
+          checked: false,
+          damage: attack.damage,
+          at,
+          until: at + ticks(4),
+        });
+        break;
+      }
+      case 'glass-surgeon': {
+        const plan=glassPlan(c,target,index),lenses=plan.lenses.map((p,n)=>this.prop(c,'needle',p,plan.health,n,now));
+        let last=now;const emitted=new Set<string>();
+        const optical=(from:Vec,to:Vec,at:number,dependencies:number[],group:number)=>{
+          const key=[group,from.x,from.y,to.x,to.y].join(':');if(emitted.has(key)||distance(from,to)<=2)return;emitted.add(key);
+          const warnAt=at-ticks(plan.warning);
+          if(warnAt<=now)this.beam(c,from,to,'glass',at,plan.active,plan.width,attack.damage,[...dependencies],group);
+          else this.opticalQueue.push({warnAt,at,until:at+ticks(plan.active),from:{...from},to:{...to},width:plan.width,damage:attack.damage,dependencies:[...dependencies],index:group});
+        };
+        for(const [pulse,route] of plan.routes.entries()){
+          const at=now+ticks(plan.warning+route.delay),until=at+ticks(plan.active),group=index*10+(route.delay===0?0:pulse);
+          let from:Vec={...c.boss};const dependencies:number[]=[];
+          for(const n of route.lenses){
+            const lens=lenses[n];dependencies.push(lens.id);
+            optical(from,lens,at,dependencies,group);
+            from=lens;
+          }
+          const end=glassRayEnd(from,route.aim,b);
+          optical(from,end,at,dependencies,group);
+          last=Math.max(last,until);
+        }
+        for(const lens of lenses)lens.until=last;
+        this.nextSignatureAt=Math.max(now+ticks(plan.cycle),last+ticks(1));
+        break;
+      }
+      case 'red-abbess': {
+        const count=2,safeRadius=100;
+        const ends=Array.from({length:count},(_,n)=>this.free(c,{x:b.x+b.width*(n?.72:.28),y:b.y+b.height*(index%2?(n?.57:.77):n?.77:.57)},safeRadius+10));
+        const starts=ends.map((p,n)=>this.free(c,{x:p.x+(n%2?80:-80),y:p.y-55},safeRadius+10)),startRadius=Math.hypot(b.width,b.height)/2+40;
+        this.nextSignatureAt=Math.max(this.nextSignatureAt,now+ticks(1.6+startRadius/90+.7));
+        this.shapes.push({kind:'service-sanctuary',id:c.id(),style:'abbess',...center,pads:starts.map(p=>({...p})),starts,ends,safeRadius,radius:startRadius,oldRadius:startRadius,speed:90,width:40,damage:attack.damage,progress:Array(count).fill(0),neutralized:false,at:now+ticks(1.6),until:now+ticks(1.6+startRadius/90+.1)});
+        break;
+      }
+      case 'anatomist': {
+        for (let n = 0; n < Math.min(2, visible.length); n++) {
+          const t = visible[(index + n) % visible.length];
+          this.shapes.push({
+            kind: 'service-caliper',
+            id: c.id(),
+            x: t.x,
+            y: t.y,
+            targetId: t.id,
+            lockAt: now + ticks(0.7),
+            radius: 70,
+            damage: 16,
+            at: now + ticks(1.6),
+            until: now + ticks(1.8),
+          });
+        }
+        break;
+      }
+      case 'plague-gardener': {
+        // Later roots do not erase dependencies of previously warned vines.
+        for (let n = 0; n < 4; n++) {
+          const angle = Math.PI / 4 + (n * Math.PI) / 2,
+            root = this.prop(
+              c,
+              'root',
+              { x: center.x + Math.cos(angle) * 350, y: center.y + Math.sin(angle) * 280 },
+              70,
+              n,
+              at,
+            ),
+            beam = this.beam(
+              c,
+              center,
+              root,
+              'vine',
+              now + ticks(1.4),
+              6,
+              35,
+              attack.damage,
+              [root.id],
+              n,
+            );
+          root.until = beam.until;
+          if (n === index % 4) beam.cutAt = beam.at + ticks(3);
+        }
+        break;
+      }
+      case 'choir': {
+        let casters = this.weakPoints().filter(
+          (p): p is ServiceProp => p.kind === 'service-prop' && p.role === 'caster',
+        );
+        if (!this.shapes.some((p) => p.kind === 'service-prop' && p.role === 'caster'))
+          casters = [-220, 0, 220].map((dx, n) =>
+            this.prop(
+              c,
+              'caster',
+              { x: c.boss.x + dx, y: c.boss.y + (n === 1 ? -30 : 25) },
+              ((c.bossMaximumHealth ?? 1000) * 0.34) / (c.brutal ? 2 : 1),
+              n,
+              now,
+            ),
+          );
+        for (const caster of casters) {
+          const end = this.end(c, caster, target);
+          this.beam(
+            c,
+            caster,
+            end,
+            'choir',
+            at + ticks(caster.index * 0.45),
+            0.6,
+            26,
+            attack.damage,
+            [caster.id],
+            caster.index,
+          );
+        }
+        break;
+      }
+      case 'vesper-judge': {
+        const side = index % 2;
+        this.shapes.push({
+          kind: 'service-verdict',
+          id: c.id(),
+          x: b.x + (side ? b.width / 2 : 0),
+          y: b.y,
+          width: b.width / 2,
+          height: b.height,
+          side,
+          damage: attack.damage,
+          at: now + ticks(1.7),
+          until: now + ticks(2.3),
+        });
+        break;
+      }
+    }
+    return true;
+  }
+  supplement(c: SignatureContext, target: Vec, attack: ServiceAttack) {
+    const at = c.tick + ticks(attack.telegraph);
+    if (attack.kind === 'beam') {
+      const angle = Math.atan2(target.y - c.boss.y, target.x - c.boss.x);
+      for (let n = 0; n < Math.min(4, attack.count); n++) {
+        const theta = angle + (n - (Math.min(4, attack.count) - 1) / 2) * 0.25,
+          end = this.end(c, c.boss, {
+            x: c.boss.x + Math.cos(theta),
+            y: c.boss.y + Math.sin(theta),
+          });
+        this.beam(
+          c,
+          c.boss,
+          end,
+          'abbess',
+          at,
+          attack.duration ?? 0.6,
+          attack.width ?? 22,
+          attack.damage,
+        );
+      }
+      return true;
+    }
+    if (attack.kind === 'spiral') {
+      const count = Math.min(60, attack.count);
+      this.shapes.push({
+        kind: 'service-spiral',
+        id: c.id(),
+        x: c.boss.x,
+        y: c.boss.y,
+        angle: this.castIndex * 0.6,
+        count,
+        emitted: 0,
+        speed: attack.speed,
+        damage: attack.damage,
+        at,
+        until: at + count * 2 + 1,
+      });
+      return true;
+    }
+    return false;
+  }
+  private touch(
+    c: SignatureContext,
+    cue: ServiceCue,
+    target: { id: string },
+    damage: number,
+    repeat = false,
+  ) {
+    const optical=c.bossId==='glass-surgeon'&&cue.kind==='service-beam'&&cue.style==='glass';
+    const key = (optical?'glass:'+cue.index:cue.id) + ':' + target.id;
+    if (repeat&&!optical) {
+      if (c.tick < (this.contacts.get(key) ?? 0)) return;
+      this.contacts.set(key, c.tick + ticks(0.5));
+    } else {
+      if (this.once.has(key)) return;
+      this.once.add(key);
+    }
+    c.damage(target.id, damage * c.damageScale);
+  }
+  private activeBeam(beam: Beam, now: number) {
+    return !beam.disabled && (!beam.cutAt || now < beam.cutAt);
+  }
+  prepare(c: SignatureContext) {
+    if (
+      c.bossId === 'choir' &&
+      !this.shapes.some((p) => p.kind === 'service-prop' && p.role === 'caster')
+    )
+      [-220, 0, 220].forEach((dx, n) =>
+        this.prop(
+          c,
+          'caster',
+          { x: c.boss.x + dx, y: c.boss.y + (n === 1 ? -30 : 25) },
+          ((c.bossMaximumHealth ?? 1000) * 0.34) / (c.brutal ? 2 : 1),
+          n,
+          c.tick,
+        ),
+      );
+  }
+  step(c: SignatureContext) {
+    if (c.bossId === 'stitchwright') this.stitchwright.step(c, target => {
+      this.cast(c, target, {kind:'hook', count:1, speed:0, damage:12, telegraph:1.4});
+    });
+    if(c.bossId==='lamplighter'){this.lamplighter.step(c);this.nextSignatureAt=this.lamplighter.nextSignatureAt;return;}
+    if(c.bossId==='stationmaster'){this.stationmaster.step(c);this.nextSignatureAt=this.stationmaster.nextSignatureAt;return;}
+    if(c.bossId==='sluice-keeper'){this.sluice.step(c);this.nextSignatureAt=this.sluice.nextSignatureAt;return;}
+    if(c.bossId==='ash-baker'){this.baker.step(c);this.nextSignatureAt=this.baker.nextSignatureAt;return;}
+    if(c.bossId==='matron'){this.matron.step(c);return;}
+    if(c.bossId==='alchemist'){this.alchemist.step(c);return;}
+    if(c.bossId==='bellringer'){this.bellringer.step(c);return;}
+    this.prepare(c);
+    const now = c.tick;
+    if(c.bossId==='glass-surgeon'){
+      const alive=new Set(this.weakPoints().filter(p=>p.health>0).map(p=>p.id));let warned=false;
+      this.opticalQueue=this.opticalQueue.filter(q=>{
+        if(q.until<=now||q.dependencies.some(id=>!alive.has(id)))return false;
+        if(q.warnAt>now)return true;
+        this.beam(c,q.from,q.to,'glass',q.at,(q.until-q.at)/HZ,q.width,q.damage,q.dependencies,q.index);warned=true;return false;
+      });
+      if(warned)c.warn?.();
+      moveGlassSurgeon(c,this.castIndex,this.opticalQueue.length>0||this.shapes.some(q=>q.kind==='service-beam'&&q.style==='glass'&&q.until>now));
+    }
+    for (const cue of this.shapes) {
+      if (cue.kind === 'service-caliper' && now <= cue.lockAt) {
+        const p = c.targets.find((p) => p.id === cue.targetId);
+        if (p) {
+          cue.x = p.x;
+          cue.y = p.y;
+        }
+      }
+      if (cue.kind === 'service-sanctuary' && now < cue.at) {
+        const duration = ticks(cue.style === 'lamp' ? 1.5 : 1.6),
+          t = clamp(1 - (cue.at - now) / duration, 0, 1);
+        cue.pads = cue.ends.map((p, i) => ({
+          x: cue.starts[i].x + (p.x - cue.starts[i].x) * t,
+          y: cue.starts[i].y + (p.y - cue.starts[i].y) * t,
+        }));
+      }
+      if (now < cue.at || now >= cue.until) continue;
+      if (
+        cue.kind === 'service-prop' &&
+        cue.role === 'nest' &&
+        cue.health > 0 &&
+        now >= cue.nextAt
+      ) {
+        cue.nextAt = now + ticks(6);
+        for (let n = 0; n < 2; n++)
+          c.spawnOrdinary?.(
+            this.free(c, { x: cue.x + (n ? 22 : -22), y: cue.y + 40 }, 12),
+            80 + c.phase * 6,
+            45,
+            9 * c.damageScale,
+            18,
+          );
+      } else if (cue.kind === 'service-ring') {
+        cue.oldRadius = cue.radius;
+        cue.radius = Math.max(0, (now - cue.at) * DT * cue.speed);
+        for (const p of c.targets)
+          if (serviceRingContact({ x: p.oldX, y: p.oldY }, p, cue))
+            this.touch(c, cue, p, cue.damage);
+      } else if (cue.kind === 'service-pool') {
+        for (const p of c.targets)
+          if (segmentCircle({ x: p.oldX, y: p.oldY }, p, cue, cue.radius + 9) !== null)
+            this.touch(c, cue, p, cue.damage, true);
+      } else if (cue.kind === 'service-tether') {
+        const p = c.targets.find((p) => p.id === cue.targetId);
+        if (!p || cue.health <= 0) {
+          cue.until = now;
+          continue;
+        }
+        if (!cue.checked) {
+          cue.checked = true;
+          cue.attached = distance(p, { x: cue.endX, y: cue.endY }) <= 70;
+          if (cue.attached) this.touch(c, cue, p, cue.damage);
+          else cue.until = now;
+        }
+        cue.endX = p.x;
+        cue.endY = p.y;
+        if (distance(p, cue) > 350) {
+          cue.attached = false;
+          cue.until = now;
+        }
+        const rescue = c.targets.some(
+          (p) => distance(p, cue) <= 85 && c.interactors?.includes(p.id),
+        );
+        cue.progress = rescue ? cue.progress + 1 : 0;
+        if (cue.progress >= ticks(1)) {
+          cue.health = 0;
+          cue.attached = false;
+          cue.until = now;
+        }
+      } else if (cue.kind === 'service-beam') {
+        if (cue.cutAt && now >= cue.cutAt) {
+          for (const p of c.targets) {
+            const key = 'heal:' + cue.id + ':' + p.id;
+            if (!this.once.has(key) && serviceBeamContact(p, p, cue)) {
+              this.once.add(key);
+              c.restore?.(p.id, 10);
+            }
+          }
+        } else if (this.activeBeam(cue, now))
+          for (const p of c.targets)
+            if (serviceBeamContact({ x: p.oldX, y: p.oldY }, p, cue))
+              this.touch(c, cue, p, cue.damage, true);
+      } else if (cue.kind === 'service-sanctuary') {
+        cue.pads = cue.ends.map((p) => ({ ...p }));
+        if (cue.style === 'lamp') {
+          for (const p of c.targets)
+            if (!cue.pads.some((pad) => distance(p, pad) + 9 <= cue.safeRadius))
+              this.touch(c, cue, p, cue.damage, true);
+        } else {
+          for (let i = 0; i < cue.pads.length; i++)
+            cue.progress[i] = c.targets.some((p) => distance(p, cue.pads[i]) + 9 <= cue.safeRadius)
+              ? cue.progress[i] + 1
+              : 0;
+          if (cue.progress.some((v) => v >= ticks(1.2))) cue.neutralized = true;
+          cue.oldRadius = cue.radius;
+          cue.radius = Math.max(0, cue.radius - cue.speed * DT);
+          if (!cue.neutralized)
+            for (const p of c.targets)
+              if (
+                !cue.pads.some((pad) => distance(p, pad) + 9 <= cue.safeRadius) &&
+                serviceRingContact({ x: p.oldX, y: p.oldY }, p, cue)
+              )
+                this.touch(c, cue, p, cue.damage);
+        }
+      } else if (cue.kind === 'service-caliper') {
+        for (const p of c.targets)
+          if (segmentCircle({ x: p.oldX, y: p.oldY }, p, cue, cue.radius + 9) !== null)
+            this.touch(c, cue, p, cue.damage);
+      } else if (cue.kind === 'service-verdict') {
+        for (const p of c.targets)
+          if (segmentRect({ x: p.oldX, y: p.oldY }, p, cue, 9) !== null)
+            this.touch(c, cue, p, cue.damage);
+      } else if (cue.kind === 'service-spiral') {
+        while (cue.emitted < cue.count && now >= cue.at + cue.emitted * 2) {
+          c.emitHostile?.(
+            cue,
+            cue.angle + (cue.emitted * Math.PI * 2) / cue.count,
+            cue.speed,
+            cue.damage * c.damageScale,
+            5,
+          );
+          cue.emitted++;
+        }
+      }
+    }
+    this.shapes = this.shapes.filter(
+      (cue) =>
+        now < cue.until && (cue.kind !== 'service-prop' || cue.health > 0 || cue.role === 'caster'),
+    );
+    const live = new Set(this.shapes.map((c) => String(c.id)));
+    for (const key of this.contacts.keys())
+      if (!live.has(key.split(':')[0])) this.contacts.delete(key);
+    const opticalGroups=new Set(this.shapes.flatMap(q=>q.kind==='service-beam'&&q.style==='glass'?[String(q.index)]:[]));
+    for (const key of this.once)
+      if (key.startsWith('glass:')?!opticalGroups.has(key.split(':')[1]):!live.has(key.split(':')[key.startsWith('heal:') ? 1 : 0])) this.once.delete(key);
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "checkedAt": "2026-11-06T21:48:54.816Z",
+  "runtimeChangesForCorrections": false,
+  "gameplayClocksChanged": false,
+  "timeoutsExtended": false,
+  "skippedChecks": false,
+  "attempts": [
+    {
+      "log": "authority01.log",
+      "pass": 37,
+      "tests": 39,
+      "issue": "New expectations misread issued Soldier ultimate magazine refill and final Breach Cadence tick."
+    },
+    {
+      "log": "authority02.log",
+      "pass": 38,
+      "tests": 39,
+      "issue": "New fixture still wrongly expected Heavy overdrive state from Soldier ultimate; typed existing rally/reload behavior corrected."
+    },
+    {
+      "log": "authority04.log",
+      "pass": 41,
+      "tests": 41,
+      "issue": "Corrected fixtures and added all-twelve-class/exact65 ownership guards."
+    },
+    {
+      "log": "transport01.log",
+      "pass": 0,
+      "tests": 3,
+      "issue": "The new early-gate purchase was sent during combat. The same insufficientPoints assertion now runs in the actual20earned safe shop."
+    },
+    {
+      "log": "transport02.log",
+      "pass": 2,
+      "tests": 3,
+      "issue": "One public paid-ready assertion failed; exact original cause unproved."
+    },
+    {
+      "log": "public-claim-diagnostic01.log",
+      "passed": true,
+      "issue": "Unchanged original assertion passed, with real City Eater and complete actual pose/site/timing diagnostics. This does not erase the earlier failure."
+    },
+    {
+      "log": "full-gate01.log",
+      "pass": 1786,
+      "tests": 1788,
+      "issue": "New public claim was absent; new late cue assertion observed one point. Policy ignored visible broad raid damage lanes and did not require two live settled sites before proceeding. It now avoids actual announced damaging lane geometry, verifies both actual sites and awaits both late cues. Exact original cancellation cause remains unproved."
+    },
+    {
+      "log": "full-gate02.log",
+      "stage": "TypeScript",
+      "issue": "New generic BossCue filter needed an explicit RaidCue lane type guard; no runtime change."
+    }
+  ],
+  "lessons": [
+    "Source-bound native play must respect actual currently warned hazards as well as masonry.",
+    "Check actual post-stop body position rather than assuming the movement stop succeeded.",
+    "A ready clock alone does not establish that a cancellable site still exists.",
+    "Await complete separate authoritative state/event data inside existing bounds.",
+    "Retain raw failures, exact provenance and uncertainty; do not patch gameplay or erase evidence to satisfy a fixture."
+  ]
+}

@@ -1,0 +1,246 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-06T03:10:01.227Z",
+  "sourceCommit": "d5bc83359e2cf5bb9efd410033ff89803f060b9d",
+  "buildId": "2026.11.05-sniper-settled-shot",
+  "protocol": 62,
+  "tests": 1628,
+  "checks": 7,
+  "sourceCI": {
+    "passed": true,
+    "checkedAt": "2026-11-06T03:09:50.891Z",
+    "phase": "source",
+    "head": "d5bc83359e2cf5bb9efd410033ff89803f060b9d",
+    "sourceCommit": "d5bc83359e2cf5bb9efd410033ff89803f060b9d",
+    "events": [
+      {
+        "id": 42154015340,
+        "event": "push",
+        "url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/42154015340",
+        "headSha": "d5bc83359e2cf5bb9efd410033ff89803f060b9d",
+        "status": "completed",
+        "conclusion": "success",
+        "totalJobs": 1,
+        "jobs": [
+          {
+            "id": 127683731857,
+            "name": "verify",
+            "status": "completed",
+            "conclusion": "success",
+            "steps": [
+              {
+                "name": "Set up job",
+                "number": 1,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+                "number": 2,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+                "number": 3,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Install pinned package manager",
+                "number": 4,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Install locked dependencies",
+                "number": 5,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Install pinned image verification dependency",
+                "number": 6,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Verify content, rules, networking and client build",
+                "number": 7,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Preserve verification report",
+                "number": 8,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Post Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+                "number": 15,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+                "number": 16,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Complete job",
+                "number": 17,
+                "status": "completed",
+                "conclusion": "success"
+              }
+            ],
+            "tests": 1628,
+            "pass": 1628,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "log": "reviews/soldier-sniper-2026-11-05/ci-source-push-127683731857.log",
+            "decodedLogSha256": "809263600ade64729595ecee49c34944e2cae3d51bb9589c7c9d18663fef02c1",
+            "verified": true
+          }
+        ]
+      },
+      {
+        "id": 42154031288,
+        "event": "pull_request",
+        "url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/42154031288",
+        "headSha": "d5bc83359e2cf5bb9efd410033ff89803f060b9d",
+        "status": "completed",
+        "conclusion": "success",
+        "totalJobs": 1,
+        "jobs": [
+          {
+            "id": 127683784335,
+            "name": "verify",
+            "status": "completed",
+            "conclusion": "success",
+            "steps": [
+              {
+                "name": "Set up job",
+                "number": 1,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+                "number": 2,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+                "number": 3,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Install pinned package manager",
+                "number": 4,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Install locked dependencies",
+                "number": 5,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Install pinned image verification dependency",
+                "number": 6,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Verify content, rules, networking and client build",
+                "number": 7,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Preserve verification report",
+                "number": 8,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Post Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+                "number": 15,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+                "number": 16,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Complete job",
+                "number": 17,
+                "status": "completed",
+                "conclusion": "success"
+              }
+            ],
+            "tests": 1628,
+            "pass": 1628,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "log": "reviews/soldier-sniper-2026-11-05/ci-source-pull_request-127683784335.log",
+            "decodedLogSha256": "a9251e7dc170ab53024e0386dbd414f2f4b95cb8655922b469078358879762c0",
+            "verified": true
+          }
+        ]
+      }
+    ],
+    "draftPR14": true,
+    "credentialsPrintedOrStored": false,
+    "transport": "Bounded native GitHub API for both push/PR runs and decoded log files; GitHub connector supplies draft-PR metadata. Cached credential remains in memory only."
+  },
+  "sourceRuntimeStable": true,
+  "frozenReviews": [
+    {
+      "audience": "testing",
+      "url": "http://127.0.0.1:5354/",
+      "endpoint": "http://127.0.0.1:2730",
+      "sourceCommit": "d5bc83359e2cf5bb9efd410033ff89803f060b9d",
+      "protocol": 62,
+      "filesHashed": 2034,
+      "manifestSha256": "ea88a3fb02b0fdaabe4c3bcfab4064180b46d0702c6c427731ada4fff2592357",
+      "backendSha256": "5802ebdad7896170f2fcf358285fc9725c512dad6268859d1b7b39633b14ae3e",
+      "fourNativeGroupsPassed": true,
+      "nativeCases": 5,
+      "ordinaryShort3SPAndTwoActualPurchases": true
+    },
+    {
+      "audience": "public",
+      "url": "http://127.0.0.1:5355/",
+      "endpoint": "http://127.0.0.1:2731",
+      "sourceCommit": "d5bc83359e2cf5bb9efd410033ff89803f060b9d",
+      "protocol": 62,
+      "filesHashed": 2034,
+      "manifestSha256": "49a03f4099ecd6efb65776e176ac18f4426f0ecd7c4e36b55ac7689a15871195",
+      "backendSha256": "5802ebdad7896170f2fcf358285fc9725c512dad6268859d1b7b39633b14ae3e",
+      "fourNativeGroupsPassed": true,
+      "nativeCases": 5,
+      "ordinaryShort3SPAndTwoActualPurchases": true
+    }
+  ],
+  "olderFrozenRootsPreserved": 37,
+  "services": {
+    "current": 4,
+    "preceding": 16,
+    "olderRecordedAbsent": 48,
+    "cleanup": false
+  },
+  "currentNaturalReplayComparisons": 6,
+  "gameUnfinished": true,
+  "userDecidesCompletion": true
+}

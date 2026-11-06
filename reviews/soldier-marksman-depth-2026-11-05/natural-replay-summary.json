@@ -1,0 +1,88 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-05T14:15:54.667Z",
+  "runtimeSourceSha256": "8e04a09cbea8b1250262576a20cefa64797c35a2d4dd896d3496f54d25048c58",
+  "trials": [
+    {
+      "map": "gatehouse",
+      "seed": 2209,
+      "route": "carom",
+      "phase": "victory",
+      "clears": 5,
+      "seconds": 181.73333333333332,
+      "earnedSP": 27,
+      "spentSP": 26,
+      "casts": 53,
+      "operations": {
+        "bank": 27,
+        "pair-first": 13,
+        "pair-second": 13
+      },
+      "coverContacts": 81,
+      "safeRestores": 18,
+      "allMeasuredFieldsMatch": true
+    },
+    {
+      "map": "gatehouse",
+      "seed": 2209,
+      "route": "line",
+      "phase": "victory",
+      "clears": 5,
+      "seconds": 135.26666666666668,
+      "earnedSP": 27,
+      "spentSP": 26,
+      "casts": 40,
+      "operations": {
+        "bank": 21,
+        "pair-first": 10,
+        "pair-second": 9
+      },
+      "coverContacts": 39,
+      "safeRestores": 18,
+      "allMeasuredFieldsMatch": true
+    },
+    {
+      "map": "triage-yard",
+      "seed": 9027,
+      "route": "carom",
+      "phase": "defeat",
+      "clears": 4,
+      "seconds": 237.8,
+      "earnedSP": 27,
+      "spentSP": 26,
+      "casts": 59,
+      "operations": {
+        "bank": 31,
+        "pair-first": 14,
+        "pair-second": 14
+      },
+      "coverContacts": 110,
+      "safeRestores": 17,
+      "allMeasuredFieldsMatch": true
+    },
+    {
+      "map": "triage-yard",
+      "seed": 9027,
+      "route": "line",
+      "phase": "victory",
+      "clears": 5,
+      "seconds": 213.06666666666666,
+      "earnedSP": 27,
+      "spentSP": 26,
+      "casts": 47,
+      "operations": {
+        "bank": 28,
+        "pair-first": 11,
+        "pair-second": 8
+      },
+      "coverContacts": 47,
+      "safeRestores": 18,
+      "allMeasuredFieldsMatch": true
+    }
+  ],
+  "limits": [
+    "Two scenarios/one conservative18px steering policy with actual9px bodies. Actual Short rewards and purchase order; no injected health/resources/position, forced clear, deadline edits or score upload.",
+    "Both fork costs/purchase order match; observed contacts are not per-shot damage attribution. Results do not rank builds or establish human fun/final balance.",
+    "Earlier candidate runtime ae14b503 had a Triage ending-health divergence; all its original trials and gate remain preserved separately."
+  ]
+}

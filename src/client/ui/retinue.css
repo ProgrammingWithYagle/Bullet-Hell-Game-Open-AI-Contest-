@@ -1,0 +1,66 @@
+.retinue-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.3rem 0.6rem;
+  max-width: 32rem;
+  padding: 0.3rem 0.45rem;
+  border: 1px solid #829a74;
+  background: #101b17ed;
+  pointer-events: auto;
+  font-size: 0.75rem;
+}
+.retinue-controls[hidden] {
+  display: none;
+}
+.retinue-controls > small {
+  flex: 1 1 100%;
+}
+.retinue-order-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+.retinue-order-buttons button {
+  min-height: 2.5rem;
+  padding: 0.35rem 0.6rem;
+  font-size: 0.75rem;
+}
+.retinue-order-buttons button[aria-pressed="true"] {
+  border-color: #e9d8aa;
+  background: #344638;
+}
+.retinue-controls details {
+  position: relative;
+}
+.retinue-controls summary {
+  cursor: pointer;
+  min-height: 2.5rem;
+  display: flex;
+  align-items: center;
+  padding: 0.3rem;
+}
+.retinue-controls ul {
+  position: absolute;
+  bottom: 100%;
+  inset-inline-end: 0;
+  min-width: 14rem;
+  max-height: 17rem;
+  overflow: auto;
+  margin: 0;
+  padding: 0.6rem 0.8rem;
+  list-style: none;
+  border: 1px solid #829a74;
+  background: #101b17fa;
+}
+.retinue-controls li {
+  padding: 0.15rem 0;
+}
+@media (max-width: 600px) {
+  .retinue-controls {
+    max-width: 100%;
+  }
+  .retinue-order-buttons button {
+    min-height: 2.75rem;
+  }
+}

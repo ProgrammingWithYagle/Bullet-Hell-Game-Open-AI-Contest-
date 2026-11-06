@@ -1,0 +1,26 @@
+✖ quickly hiding and showing chat restores its recent history without another player needing to post (7257.0954ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9284.5581
+
+✖ failing tests:
+
+test at tests\chat-history-retry.test.ts:1:348
+✖ quickly hiding and showing chat restores its recent history without another player needing to post (7257.0954ms)
+  AssertionError [ERR_ASSERTION]: Chat history did not return
+      at wait (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\chat-history-retry.test.ts:8:178)
+      at async TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\chat-history-retry.test.ts:14:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

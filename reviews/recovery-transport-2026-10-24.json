@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "buildId": "2026.10.24-recovery-transport",
+  "protocol": 13,
+  "sourceBaseCommit": "47eb2ee823e0b3092270c05f3a12be12424556a2",
+  "sourceSnapshotSha256": "786cda3ade8d704d0d67b6abfcd824bcf75b92d413b604937de53a8546b6184f",
+  "runtimeSourceSha256": "5a4e88baa9603155e20a8d051d636c012346d3298189c82fa2417bcc9a2c61ca",
+  "contentRevision": "b8d9fb6918c854f3eed38b327ed0cb3026e071e6fe24932e50beed36943db241",
+  "sourceFiles": [
+    {
+      "path": "src/server/checkpoints.ts",
+      "sha256": "16af8d7fe72766eb13e4c3c3df9cc4e0305c8fe82fa5ef27eaf80e3aa6b4b1d0"
+    },
+    {
+      "path": "tests/checkpoint-transport.test.ts",
+      "sha256": "5b3a2de423e65244c10344b0732addc7eb32c487c535e327682802a934b3ad59"
+    },
+    {
+      "path": "tests/helpers/recovery-build.ts",
+      "sha256": "acec2f06312b38ce7089b6fc99ebf95f86c2b148e00341676912d73987f75bec"
+    },
+    {
+      "path": "tests/run-journal.test.ts",
+      "sha256": "65d9d7524696b6ae13b02298b50c39eac7151da04ecad26396759c3e5b0c7e8e"
+    }
+  ],
+  "fullPipeline": {
+    "tests": 283,
+    "failed": 0,
+    "productionFiles": 1434,
+    "logSha256": "19dc7ad084eb6113d2509e849640201c279eacc049e5eea45e69985fb4be6376",
+    "checks": [
+      {
+        "name": "Stage 1 authored content",
+        "passed": true,
+        "elapsedMs": 973
+      },
+      {
+        "name": "TypeScript",
+        "passed": true,
+        "elapsedMs": 929
+      },
+      {
+        "name": "Headless rules and real-network integration",
+        "passed": true,
+        "elapsedMs": 43673
+      },
+      {
+        "name": "Production client build",
+        "passed": true,
+        "elapsedMs": 3754
+      }
+    ]
+  },
+  "bounds": {
+    "decodedBytes": 1048576,
+    "compressedBytes": 47104,
+    "httpRequestAndResponseBytes": 65536,
+    "authenticateBeforeInflation": true,
+    "rejectTrailingInput": true,
+    "legacyEnvelopeAccepted": true,
+    "canonicalRawDigestAcrossEnvelopes": true
+  },
+  "measuredCases": [
+    {
+      "participants": 50,
+      "rawBytes": 454401,
+      "compressedBytes": 44769,
+      "registrationBytes": 59889,
+      "bodyLimit": 65536,
+      "classes": 7
+    },
+    {
+      "participants": 50,
+      "classes": 7,
+      "syntheticClears": 10,
+      "registrationBytes": 59856,
+      "lookupBytes": 60111,
+      "bodyLimit": 65536,
+      "claimWinners": 1,
+      "successfulReceiptsRetried": 50,
+      "failedReceiptsRetried": 50,
+      "fileBacked": true,
+      "processRestart": true,
+      "hostedD1": false,
+      "renderedClients": 0
+    }
+  ],
+  "negativeControls": [
+    "Authenticated expansion beyond one MiB rejected.",
+    "Bad signatures fail before decompression. Encoding removal, unknown fields, noncanonical base64url, invalid UTF-8, invalid clocks, truncation and trailing/concatenated streams rejected.",
+    "A legal high-entropy fifty-player roster exceeds the compressed bound: no HTTP write, no dropped purchase replies, journal latches unavailable.",
+    "Maximum permitted IDs and safe integers fit all complete registration/event/lookup bodies."
+  ],
+  "preservedFailure": {
+    "reason": "Initial 40-KiB compressed ceiling rejected the developed-squad fixture; final 46-KiB ceiling preserves the 64-KiB complete message limit.",
+    "originalLogSha256": "addf2f1aa7dc0e0d08ed4f1af92c7b11a97bf46463abfd3763ad224cb581d00b",
+    "sanitizedTranscript": "reviews/recovery/transport-first-budget.txt",
+    "sanitizedSha256": "c849f42c8a5846d8bc7f5a7c7699268b69d625ba23519578b10569f31f36c619"
+  },
+  "issuedWindowsSourceUnchanged": "52552c0d4465b918d7cde2ab3c2aa7f1d7eb045e",
+  "limits": [
+    "Local automated software fixtures with deliberately forced clears and accelerated intermissions, not human balance wins.",
+    "Real loopback HTTP and file-backed SQLite replacement/claim race; synthetic lease clock, zero rendered clients, no hosted D1 evidence.",
+    "Normal runtime recovery writer remains disabled. Participant credentials, historical departures, durable command acknowledgements, maximum-entropy paging and hosted rankings/recovery remain unfinished."
+  ]
+}

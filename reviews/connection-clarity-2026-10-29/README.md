@@ -1,0 +1,11 @@
+# Connection clarity — verified source checkpoint
+
+Source **49b3d5ad592e53181ce03fb165caa562ad14a083**, build **2026.10.29-connection-clarity / protocol42**, passes **849/849/0** locally and in both exact-source CI jobs. [Complete checkpoint](checkpoint-status.json), [final local gate](gate-02/runtime-verification.json), [source CI and complete logs](source-ci.json), [baseline](baseline-delayed-search.json) and [implementation](IMPLEMENTATION.md) distinguish the evidence and limits.
+
+Fresh public **http://127.0.0.1:5239/** / backend2613 / holding54334 and testing **http://127.0.0.1:5238/** / backend2612 / holding43635 each pass33served hashes, exact source/audience/worker checks, actual protected-room/code joining, host-only Start, confirmed chat and persistent server-record reads. Own probe rooms closed; no synthetic qualifying score. A fresh read-only check confirms the original owners and metadata hashes. Human feedback is pending; the browser open is queued only.
+
+Wiki **064db30c8a559ea427cb4d20e1f7e3c36163c2f3** matches all18canonical Markdown pages and34images, including public image hashes and four public page responses. The previous global Wiki receipt and eight issued gate receipts remain byte-identical. The draft PR description matches its saved local config.
+
+Gate01 passed849checks. Gate02 verified the final loading-shortcut/visibility guard. Failed fixture attempts are preserved. The initial freeze rejected the local LICENSE CRLF difference; the corrected freezer explicitly proves unchanged text and records local/committed hashes and byte lengths without altering the file. Both freezes retain the known separate pnpm-workspace newline difference. The legacy Windows PowerShell launcher rejected scripts before creating a process; the configured PowerShell7 runtime successfully launched both new previews. No old service was stopped or replaced.
+
+The native fe82c7e Windows ZIP remains an exact older review and has not been repackaged for this pass. Its three copies/six native fixtures remain historical proof for that source. Hosted game and releases are unchanged. The broad polish goal remains active; current human/rendered/final balance/device/listening/native-language/WAN/endurance/capacity and deployed shared rankings/recovery remain open.

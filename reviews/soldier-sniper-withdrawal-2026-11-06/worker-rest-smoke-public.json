@@ -1,0 +1,68 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-06T22:28:56.160Z",
+  "sourceCommit": "6345afc1ae9fdab087126cb608dd2c95ec82b92f",
+  "protocol": 66,
+  "audience": "public",
+  "workerSha256": "5eb80c9572dd09b7e23b8c66eee53252092b6c265a2a83a656a437e21b95425a",
+  "ordinaryStartingSP": 12,
+  "difficulty": "baby",
+  "firstBoss": "bell-triplets",
+  "actualFirstBossClear": true,
+  "firstCombatTicks": 550,
+  "earnedAfterActualClear": 20,
+  "actualRequiredSkillPurchases": 5,
+  "spentSkillSP": 11,
+  "remainingSP": 9,
+  "acceptedPurchases": [
+    {
+      "kind": "skill",
+      "item": "soldier-ballistics-1"
+    },
+    {
+      "kind": "skill",
+      "item": "soldier-sniper-1"
+    },
+    {
+      "kind": "skill",
+      "item": "soldier-sniper-bore-1"
+    },
+    {
+      "kind": "skill",
+      "item": "soldier-sniper-carry-1"
+    },
+    {
+      "kind": "weapon",
+      "item": "soldier-3"
+    },
+    {
+      "kind": "skill",
+      "item": "soldier-sniper-rest-1"
+    }
+  ],
+  "handling": "carry",
+  "actualMovementToUsableInteriorCover": true,
+  "emptyRestUsesNoRoundOrRecovery": true,
+  "originalFiniteRestLifetime": true,
+  "actualWalkingAwayAndBackToFixedSite": true,
+  "manualPaidClaimReadyAtActualSite": true,
+  "separateManualReleaseRequired": true,
+  "sameTickCBDoesNotEmit": true,
+  "pauseDiscardsRequestsAndFreezesRestClock": true,
+  "sharedSpatialFeedbackOmitsPayment": true,
+  "actualCarryRestartsFullSettling": true,
+  "originalPaidDeadlineAndRecoveryRetained": true,
+  "actualShotAndRemoval": true,
+  "actualReservedRoundReturned": false,
+  "clearConsumesReloadPress": false,
+  "consumedRestNeverRestored": true,
+  "spentRecoveryRetained": true,
+  "noFriendlyFlightInvented": false,
+  "noCheckpointOrBudgetHealthPositionInjection": true,
+  "workerPatched": false,
+  "wholeOptimizedWorkerExecuted": true,
+  "limits": [
+    "Entire exact HTTP-served optimized worker, with only native parentPort transport shim. Ordinary Baby Raid starts12SP, rejects the17earned node, clears an actual first boss through regular inputs, earns20SP, buys Field Rest at11total skill spending/9left, then walks/sets/returns/claims and separately releases after actual Carry settling. Default vote/shop/deployment/combat clocks remain.",
+    "No worker-source patch, testing command, checkpoint, budget/health/position injection, forced clear, invulnerability, timeout/deadline extension or score upload. Native proof remains separate from full-browser/rendered/device/language/listening/motion/human/final-balance acceptance."
+  ]
+}

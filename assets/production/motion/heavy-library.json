@@ -1,0 +1,209 @@
+{
+  "schemaVersion": 1,
+  "reference": {
+    "id": "heavy",
+    "name": "Heavy",
+    "family": "survivors",
+    "kind": "static-reference",
+    "atlas": "assets/production/normalized/survivors/heavy/reference-atlas-v1.png",
+    "source": "assets/production/survivors/heavy/four-view-v2.png",
+    "sourceSha256": "d3a5f7bf9d1eb24f296608396e747915d4a6443ba41dc46ee795d91dfced1de4",
+    "atlasSha256": "a755ea9427b149c9feffba07a3e2f91637f78e4a596ab2044e3a5156c0a879f3",
+    "cellSize": 256,
+    "columns": 4,
+    "frames": 4,
+    "labels": [
+      "south",
+      "east",
+      "north",
+      "west"
+    ],
+    "origin": [
+      0.5,
+      0.859375
+    ],
+    "displayHeight": 56,
+    "displayCell": 121.49152542372882,
+    "fps": 0,
+    "status": "Normalized reference; motion and gameplay pending",
+    "portrait": "assets/production/normalized/survivors/heavy/portrait-south-v1.png",
+    "portraitSha256": "50f12d29c812d30e2f02a419f724d65fbcb6fd688fde419a1ce92633db9b6209",
+    "portraitSourceRect": [
+      149,
+      63,
+      522,
+      584
+    ],
+    "portraitCropPolicy": "Native south-view alpha16 bounds plus 12px clearance, clipped to its source cell. Geometric crop only; all retained RGBA values are unchanged."
+  },
+  "entries": [
+    {
+      "id": "heavy-run-north",
+      "name": "Heavy \u00b7 Run North",
+      "family": "survivors",
+      "kind": "animation",
+      "atlas": "assets/production/motion/heavy-run-north-v1-atlas.png",
+      "source": "assets/production/survivors/heavy/run-north-sheet-v1.png",
+      "sourceSha256": "e876ca5fc27c96bc1a096e39214b5f88ad14ef3a58551c2a016abc568213ff65",
+      "atlasSha256": "10cabb46a53cb49ec2ff430d8873e019f22cdcdaa338a11c5780f2949c34721b",
+      "cellSize": 320,
+      "columns": 4,
+      "frames": 8,
+      "labels": [
+        "north stride 1",
+        "north stride 2",
+        "north stride 3",
+        "north stride 4",
+        "north stride 5",
+        "north stride 6",
+        "north stride 7",
+        "north stride 8"
+      ],
+      "origin": [
+        0.5,
+        0.859375
+      ],
+      "displayHeight": 56,
+      "displayCell": 151.864406779661,
+      "fps": 10,
+      "frameDurationsMs": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "status": "Assistant native/contact-sheet movement candidate; final engine review pending",
+      "notes": "Eight drawn directional run poses from the matching reference. No mirroring or painted edits. One median-height action scale and measured foot anchors. Idle uses the original distinct static facing, never a reference-pose animation."
+    },
+    {
+      "id": "heavy-run-south",
+      "name": "Heavy \u00b7 Run South",
+      "family": "survivors",
+      "kind": "animation",
+      "atlas": "assets/production/motion/heavy-run-south-v1-atlas.png",
+      "source": "assets/production/survivors/heavy/run-south-sheet-v1.png",
+      "sourceSha256": "7892a989d4dd6a47e1f29e8482263f6af46e469e9dc75807326d4543eee9941d",
+      "atlasSha256": "c81f0ff32b3ab62323ecb1a2086743c9d7f5a1dc1f26d987e18c039c5a54d518",
+      "cellSize": 320,
+      "columns": 4,
+      "frames": 8,
+      "labels": [
+        "south stride 1",
+        "south stride 2",
+        "south stride 3",
+        "south stride 4",
+        "south stride 5",
+        "south stride 6",
+        "south stride 7",
+        "south stride 8"
+      ],
+      "origin": [
+        0.5,
+        0.859375
+      ],
+      "displayHeight": 56,
+      "displayCell": 151.864406779661,
+      "fps": 10,
+      "frameDurationsMs": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "status": "Assistant native/contact-sheet movement candidate; final engine review pending",
+      "notes": "Eight drawn directional run poses from the matching reference. No mirroring or painted edits. One median-height action scale and measured foot anchors. Idle uses the original distinct static facing, never a reference-pose animation."
+    },
+    {
+      "id": "heavy-run-east",
+      "name": "Heavy \u00b7 Run East",
+      "family": "survivors",
+      "kind": "animation",
+      "atlas": "assets/production/motion/heavy-run-east-v1-atlas.png",
+      "source": "assets/production/survivors/heavy/run-east-sheet-v1.png",
+      "sourceSha256": "280b9be62faa2c56f19bcc5b1d4a4f877c09588f9110d38d89d25dd56418080d",
+      "atlasSha256": "df37d4c2f07a3fa68998469b881d172ea70d430c70df7d3825f1e29d6e9345c7",
+      "cellSize": 320,
+      "columns": 4,
+      "frames": 8,
+      "labels": [
+        "east stride 1",
+        "east stride 2",
+        "east stride 3",
+        "east stride 4",
+        "east stride 5",
+        "east stride 6",
+        "east stride 7",
+        "east stride 8"
+      ],
+      "origin": [
+        0.5,
+        0.859375
+      ],
+      "displayHeight": 56,
+      "displayCell": 151.864406779661,
+      "fps": 10,
+      "frameDurationsMs": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "status": "Assistant native/contact-sheet movement candidate; final engine review pending",
+      "notes": "Eight drawn directional run poses from the matching reference. No mirroring or painted edits. One median-height action scale and measured foot anchors. Idle uses the original distinct static facing, never a reference-pose animation."
+    },
+    {
+      "id": "heavy-run-west",
+      "name": "Heavy \u00b7 Run West",
+      "family": "survivors",
+      "kind": "animation",
+      "atlas": "assets/production/motion/heavy-run-west-v1-atlas.png",
+      "source": "assets/production/survivors/heavy/run-west-sheet-v3.png",
+      "sourceSha256": "1602dfc6fbecac4e862f665d3f34d57a68b9a31f147d2abdac12f8f1b09ddd3f",
+      "atlasSha256": "698b711105b8938a2bdf77278e77cbd409aeaa4ad3158074d3e98779078f295c",
+      "cellSize": 320,
+      "columns": 4,
+      "frames": 8,
+      "labels": [
+        "west stride 1",
+        "west stride 2",
+        "west stride 3",
+        "west stride 4",
+        "west stride 5",
+        "west stride 6",
+        "west stride 7",
+        "west stride 8"
+      ],
+      "origin": [
+        0.5,
+        0.859375
+      ],
+      "displayHeight": 56,
+      "displayCell": 151.864406779661,
+      "fps": 10,
+      "frameDurationsMs": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "status": "Assistant native/contact-sheet movement candidate; final engine review pending",
+      "notes": "Eight drawn directional run poses from the matching reference. No mirroring or painted edits. One median-height action scale and measured foot anchors. Idle uses the original distinct static facing, never a reference-pose animation."
+    }
+  ]
+}

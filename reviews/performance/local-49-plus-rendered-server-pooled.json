@@ -1,0 +1,71 @@
+{
+  "createdAt": "2026-10-23T17:01:49.542Z",
+  "contentRevision": "b8d9fb6918c854f3eed38b327ed0cb3026e071e6fe24932e50beed36943db241",
+  "scriptedClients": 49,
+  "renderedConnectionsObserved": 1,
+  "reference": {
+    "cpu": "Intel(R) Core(TM) 9 270H",
+    "logicalCpus": 20,
+    "memoryGiB": 31.638248443603516,
+    "node": "v24.19.0"
+  },
+  "metrics": {
+    "baseline": {
+      "durationSeconds": 20.0043376,
+      "samples": 600,
+      "tickP50Ms": 0.9368999999933294,
+      "tickP99Ms": 2.5518000000010943,
+      "tickMaxMs": 9.001299999996263,
+      "eventLoopP99Ms": 23.314431,
+      "peakHostiles": 11,
+      "minimumHostiles": 0,
+      "minimumActivePlayers": 50,
+      "minimumConnections": 50,
+      "encodedOutboundBytes": 47630730,
+      "meanOutboundBytesPerSecondPerClient": 47620.40208719533,
+      "combinedServerAndBotMemory": {
+        "rss": 288153600,
+        "heapTotal": 199041024,
+        "heapUsed": 84036168,
+        "external": 9932369,
+        "arrayBuffers": 5596809
+      }
+    },
+    "channelReviveObserved": true,
+    "reconnectPreservedIdentity": true,
+    "eliminationObserved": true,
+    "eliminatedPlayerReturned": true,
+    "voteMessages": 98,
+    "successfulPurchaseReplies": 96,
+    "stress": {
+      "durationSeconds": 90.05065130000003,
+      "samples": 2702,
+      "tickP50Ms": 7.193499999993946,
+      "tickP99Ms": 13.836000000010245,
+      "tickMaxMs": 18.844799999991665,
+      "eventLoopP99Ms": 35.979263,
+      "peakHostiles": 4000,
+      "minimumHostiles": 4000,
+      "minimumActivePlayers": 50,
+      "minimumConnections": 50,
+      "encodedOutboundBytes": 469774014,
+      "meanOutboundBytesPerSecondPerClient": 104335.50612198623,
+      "combinedServerAndBotMemory": {
+        "rss": 423202816,
+        "heapTotal": 317857792,
+        "heapUsed": 193916288,
+        "external": 22912266,
+        "arrayBuffers": 18576666
+      }
+    },
+    "stressFixtureShots": 87226,
+    "acceptedInputs": 263737,
+    "rejectedInputs": 0
+  },
+  "firstPlayableGate": "incomplete until rendered samples, free-host capacity and device gates are assessed",
+  "limitations": [
+    "Localhost; server and 49 bots share a process. Browser memory is separate and not measured here.",
+    "Explicit fixture: damage suppressed except the lifecycle victim, extended boss health/deadline, real moving/colliding stress bullets refilled every tick, forced damage and positions for lifecycle exercise. Production intermission clocks remain unchanged.",
+    "No phone, WAN, free-host, 60-minute endurance or human playtest claim."
+  ]
+}

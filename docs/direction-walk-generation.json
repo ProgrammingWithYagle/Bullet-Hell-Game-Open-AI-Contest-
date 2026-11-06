@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "tool": "Built-in image_gen.imagegen",
+  "reportedModel": null,
+  "qualitySelectionExposed": false,
+  "transparentBackground": true,
+  "createdAt": "2026-10-23",
+  "entries": [
+    {
+      "classId": "soldier",
+      "direction": "north",
+      "prompt": "Use case: identity-preserve. Production game sprite animation edit for Grave Accord. Image 1 is the transparent animation edit canvas: its first-slot character is the identity, costume, scale and matte ink/gouache finish authority. Fill exactly FOUR equal 256-pixel slots in ONE horizontal row at y=384..640 of the same 1024x1024 transparent canvas. Four complete full-body frames of Mara Rook walking NORTH away from the camera, shown from the rear at the SAME slightly elevated game-camera angle in every frame. Preserve navy watch cap, short brown hair, navy long coat, brown belts/boots, ochre details and compact antique pistol. True rear-facing torso and head, weapon aimed straight north away from viewer with correct foreshortening; no sideways aiming, no visible face. Frame sequence: left foot forward, passing, right foot forward, passing, a seamless restrained 4-frame walk loop. Arms and aiming direction remain steady; legs and lower coat move naturally. One unchanged character in every slot, identical body scale and centered anchor; both feet baseline at y=616, centers x=128,384,640,896. Every entire figure and weapon stay within its cell with generous transparent margins. Quiet broad clothing planes, clean ink outline, readable at 100px gameplay size. Actual transparent alpha, no background, ground shadows, checkerboard, scenery, particles, labels, grid, duplicate figures or extra rows. Generate the WHOLE strip together.",
+      "reference": "tmp/directions/soldier-north-edit.png",
+      "preserved": "assets/proofs/directions/soldier-north-walk-rejected-v1.png",
+      "review": "Rejected: north pistol still angles laterally."
+    },
+    {
+      "classId": "soldier",
+      "direction": "south",
+      "prompt": "Use case: identity-preserve. Production game sprite animation edit for Grave Accord. Image 1 is the transparent animation edit canvas: its first-slot character is the identity, costume, scale and matte ink/gouache finish authority. Fill exactly FOUR equal 256-pixel slots in ONE horizontal row at y=384..640 of the same 1024x1024 transparent canvas. Four complete full-body frames of Mara Rook walking SOUTH toward the camera, shown frontally at the SAME slightly elevated game-camera angle in every frame. Preserve her face, navy watch cap, short brown hair, navy long coat, brown belts/boots, ochre badge and compact antique pistol. Weapon points SOUTH toward viewer with correct foreshortening; no sideways aiming. Frame sequence: left foot forward, passing, right foot forward, passing, a seamless restrained 4-frame walk loop. Arms and aiming direction remain steady; legs and lower coat move naturally. One unchanged character in every slot, identical body scale and centered anchor; both feet baseline at y=616, centers x=128,384,640,896. Every entire figure and weapon stay within its cell with generous transparent margins. Quiet broad clothing planes, clean ink outline, readable at 100px gameplay size. Actual transparent alpha, no background, ground shadows, checkerboard, scenery, particles, labels, grid, duplicate figures or extra rows. Generate the WHOLE strip together.",
+      "reference": "tmp/directions/soldier-south-edit.png",
+      "preserved": "assets/proofs/directions/soldier-south-walk-v1.png",
+      "review": "Four south-facing walk frames; normalization and in-engine review pending."
+    }
+  ]
+}

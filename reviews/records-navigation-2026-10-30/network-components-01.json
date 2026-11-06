@@ -1,0 +1,38 @@
+{
+  "checkedAt": "2026-10-30T21:17:06.694Z",
+  "passed": true,
+  "currentLocalSourceFingerprints": {
+    "runtimeSourceSha256": "b1f568a413d162e597de1f6cea0114ea3d38dc2f72ce2611c2d62be52a980f22",
+    "sourceSnapshotSha256": "251b2273c6ae27af5c8e9033e9191f1d08e4b1051d7b38a8e6c432b499e8cc98"
+  },
+  "sourceGate": {
+    "path": "reviews/records-navigation-2026-10-30/gate-01/runtime-verification.json",
+    "sha256": "dccbaee7a31a56b88229d36377bc154e6e534877d63dce629e466c09cceade8b"
+  },
+  "bundles": [
+    {
+      "name": "server.mjs",
+      "bytes": 2890951,
+      "sha256": "579ea66a571a39703a370af08f28c264552cb5e4c1bcff5637d10b5c4bed4756",
+      "referenceSha256": "579ea66a571a39703a370af08f28c264552cb5e4c1bcff5637d10b5c4bed4756"
+    },
+    {
+      "name": "probe.mjs",
+      "bytes": 2385414,
+      "sha256": "8c1a75da5e7577562251090dcf2192d9059cca01df5f02b87d61666cb83f36c9",
+      "referenceSha256": "8c1a75da5e7577562251090dcf2192d9059cca01df5f02b87d61666cb83f36c9"
+    }
+  ],
+  "reference": {
+    "runtimeSourceCommit": "cb0ca6d3c27d32c0930381334d0dedbb14d4cc7f",
+    "reviewedHead": "71e47d255b3a84e75c496eb105c61fbc31aa15db",
+    "freeze": "reviews/multiplayer-progression-2026-10-30/freeze-06.json",
+    "qa": "reviews/multiplayer-progression-2026-10-30/verification-01.json",
+    "qaSha256": "28c928b29973cfed7bf4ee2be9b31f26ab5d7c0826a0ae366fc8168675a6dca3"
+  },
+  "requiresFreshProbe": false,
+  "limits": [
+    "Exact compiled authority and SDK Session/probe byte comparison; UI styling and metadata have their own full source gate.",
+    "If both bundles are identical, the existing eight/sixteen/fifty-client software evidence applies to these unchanged network components. Human/rendered/WAN/balance/endurance acceptance remains separate."
+  ]
+}

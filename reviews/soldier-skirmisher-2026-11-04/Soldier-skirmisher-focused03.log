@@ -1,0 +1,43 @@
+✔ normal starting 3 SP acquires a separate action; one real burst earns one vulnerable physical follow-through (23.2354ms)
+✔ unearned, expired and directionless follow-through requests spend no opening or recovery (8.8264ms)
+✔ a wall across the whole footprint rejects a step without spending its earned opening (2.0417ms)
+✔ bounds and a crossed lava circle reject the entire step before any recovery is spent (2.7404ms)
+✔ new obstruction, displacement and a real dodge cancel unfinished work without an arrival shot or refund (8.2048ms)
+✔ Crossing Advance splits the same damage into departure and re-aimed arrival rounds (3.4459ms)
+✖ Rear Guard intercepts only one visible hostile round and remains vulnerable to the next (4.9901ms)
+✔ Rear Guard cannot intercept through cover or remove another player's shot (1.7407ms)
+✔ the issued Breach Cadence still fires all three committed-aim rounds from the moving owner (2.7923ms)
+✔ disconnect and paused host end immediately remove windows and motion; reconnect cannot resume it (3.8191ms)
+✔ the early fork uses the same authoritative exclusion for purchases and restored boundaries (0.9335ms)
+✔ issued protocol54 preserves legitimate Builder ownership but cannot invent Soldier techniques (4.0073ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 11
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 908.5748
+
+✖ failing tests:
+
+test at tests\soldier-skirmisher.test.ts:1:5243
+✖ Rear Guard intercepts only one visible hostile round and remains vulnerable to the next (4.9901ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  12 !== 0
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\soldier-skirmisher.test.ts:70:253)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 12,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

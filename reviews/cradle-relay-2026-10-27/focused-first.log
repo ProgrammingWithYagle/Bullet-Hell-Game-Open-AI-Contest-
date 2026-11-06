@@ -1,0 +1,330 @@
+✔ Matron escort paths are connected and body-clear across all maps, difficulty cover and late flanks (67.1462ms)
+✔ escort warning locks its path, moves under its speed budget and stops safely on new cover (3.007ms)
+✔ brood channels warn fully, spawn two/four from clear nest interiors and stop after nest destruction (6.736ms)
+✔ first phase calls one nest while late relays use surviving nests in a warned serial order (35.1325ms)
+✔ lullabies respect the full marked gap, swept body crossings, first activation and one hit per wave (1.6651ms)
+✖ Brutal emits thirty owned needles and Crazed retains that exact prefix before sixty crossing needles (17.1115ms)
+✔ destroying a nest cancels its unreleased needles and broods, while an already launched lullaby continues (2.1851ms)
+✔ phase, pause and explicit resets cancel all owned pending work without delayed emissions (4.4132ms)
+✔ only the explicit Matron ordinary-navigation option routes a brood around cover (3.0113ms)
+✔ Matron nests obey their tell, summon bounded real packs and stop permanently when destroyed (11.8452ms)
+✔ Alchemist landing pools lock positions, remain harmless for 1.3 seconds and slow only on active mold (0.8779ms)
+✔ Bellringer rings have a real rotating 35-degree gap, swept radial contact and no tell damage (0.4288ms)
+✔ Stitchwright has destructible tethers, a one-second neutral rescue and a dodgeable attachment (0.5136ms)
+✔ Glass Surgeon leaves an actual missing edge and breaking one needle cancels only its connected sides (0.5741ms)
+✔ Ash Baker loaves split exactly once into two real crumbs per loaf and show their split directions first (0.4539ms)
+✔ Sluice currents push without damage and prediction uses exactly the same force and dry strips (30.3426ms)
+✔ Stationmaster alternates two distinct signals and swept trains never hit the open track (1.0484ms)
+✔ Lamplighter protects three outlined pockets during its pulse and preserves tell safety (0.4172ms)
+✔ Anatomist tracks only for 0.7 seconds, then keeps two fixed caliper marks until release (0.3181ms)
+✔ Gardener roots can be cut early into a restorative strip without canceling the other vines (0.4736ms)
+✔ Choir casters have separate health and ordered locked beams; one defeated singer cancels only its own release (0.3787ms)
+✔ Abbess moves two sanctuaries during the tell and any survivor can neutralize the incoming wave (0.3987ms)
+✔ Judge damages only its announced half, includes fast crossings and alternates the open half next cast (0.2461ms)
+✔ timed spiral emitters create a sequence of actual projectiles, not fallback pools (0.2189ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 23
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 600.2335
+
+✖ failing tests:
+
+test at tests\matron-ward.test.ts:1:5703
+✖ Brutal emits thirty owned needles and Crazed retains that exact prefix before sixty crossing needles (17.1115ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+  
+    [
+      {
+        angle: 1.958713205585088,
+        angles: [
+          1.958713205585088,
+  ...
+        wave: 0,
+  +     waves: 15,
+  -     waves: 5,
+        x: 1035.2920685660001,
+        y: 491.6741915413918
+      },
+      {
+        angle: 1.708713205585088,
+  ...
+        wave: 0,
+  +     waves: 15,
+  -     waves: 5,
+        x: 1035.2920685660001,
+        y: 491.6741915413918
+      },
+      {
+        angle: 1.458713205585088,
+  ...
+        wave: 0,
+  +     waves: 15,
+  -     waves: 5,
+        x: 1035.2920685660001,
+        y: 491.6741915413918
+      },
+      {
+        angle: 2.798713205585088,
+  ...
+        wave: 0,
+  +     waves: 15,
+  -     waves: 5,
+        x: 1035.2920685660001,
+        y: 491.6741915413918
+      },
+      {
+        angle: 3.048713205585088,
+  ...
+        wave: 0,
+  +     waves: 15,
+  -     waves: 5,
+        x: 1035.2920685660001,
+        y: 491.6741915413918
+      },
+      {
+        angle: 3.298713205585088,
+  ...
+        wave: 0,
+  +     waves: 15,
+  -     waves: 5,
+        x: 1035.2920685660001,
+        y: 491.6741915413918
+      },
+      {
+        angle: 1.958713205585088,
+  ...
+        wave: 1,
+  +     waves: 15,
+  -     waves: 5,
+        x: 1018.7079314339999,
+        y: 474.3258084586082
+      },
+      {
+        angle: 1.708713205585088,
+  ...
+        wave: 1,
+  +     waves: 15,
+  -     waves: 5,
+        x: 1018.7079314339999,
+        y: 474.3258084586082
+      },
+      {
+        angle: 1.458713205585088,
+  ...
+        wave: 1,
+  +     waves: 15,
+  -     waves: 5,
+        x: 1018.7079314339999,
+        y: 474.3258084586082
+      },
+      {
+        angle: 2.798713205585088,
+  ...
+        wave: 1,
+  +     waves: 15,
+  -     waves: 5,
+        x: 1018.7079314339999,
+        y: 474.3258084586082
+      },
+      {
+        angle: 3.048713205585088,
+  ...
+        wave: 1,
+  +     waves: 15,
+  -     waves: 5,
+        x: 1018.7079314339999,
+        y: 474.3258084586082
+      },
+      {
+        angle: 3.298713205585088,
+  ...
+        wave: 1,
+  +     waves: 15,
+  -     waves: 5,
+        x: 1018.7079314339999,
+        y: 474.3258084586082
+      },
+      {
+        angle: 1.958713205585088,
+  ...
+        wave: 2,
+  +     waves: 15,
+  -     waves: 5,
+        x: 1035.2920685660001,
+        y: 491.6741915413918
+      },
+      {
+        angle: 1.708713205585088,
+  ...
+        wave: 2,
+  +     waves: 15,
+  -     waves: 5,
+        x: 1035.2920685660001,
+        y: 491.6741915413918
+      },
+      {
+        angle: 1.458713205585088,
+  ...
+        wave: 2,
+  +     waves: 15,
+  -     waves: 5,
+        x: 1035.2920685660001,
+        y: 491.6741915413918
+      },
+      {
+        angle: 2.798713205585088,
+  ...
+        wave: 2,
+  +     waves: 15,
+  -     waves: 5,
+        x: 1035.2920685660001,
+        y: 491.6741915413918
+      },
+      {
+        angle: 3.048713205585088,
+  ...
+        wave: 2,
+  +     waves: 15,
+  -     waves: 5,
+        x: 1035.2920685660001,
+        y: 491.6741915413918
+      },
+      {
+        angle: 3.298713205585088,
+  ...
+        wave: 2,
+  +     waves: 15,
+  -     waves: 5,
+        x: 1035.2920685660001,
+        y: 491.6741915413918
+      },
+      {
+        angle: 1.958713205585088,
+  ...
+        wave: 3,
+  +     waves: 15,
+  -     waves: 5,
+        x: 1018.7079314339999,
+        y: 474.3258084586082
+      },
+      {
+        angle: 1.708713205585088,
+  ...
+        wave: 3,
+  +     waves: 15,
+  -     waves: 5,
+        x: 1018.7079314339999,
+        y: 474.3258084586082
+      },
+      {
+        angle: 1.458713205585088,
+  ...
+        wave: 3,
+  +     waves: 15,
+  -     waves: 5,
+        x: 1018.7079314339999,
+        y: 474.3258084586082
+      },
+      {
+        angle: 2.798713205585088,
+  ...
+        wave: 3,
+  +     waves: 15,
+  -     waves: 5,
+        x: 1018.7079314339999,
+        y: 474.3258084586082
+      },
+      {
+        angle: 3.048713205585088,
+  ...
+        wave: 3,
+  +     waves: 15,
+  -     waves: 5,
+        x: 1018.7079314339999,
+        y: 474.3258084586082
+      },
+      {
+        angle: 3.298713205585088,
+  ...
+        wave: 3,
+  +     waves: 15,
+  -     waves: 5,
+        x: 1018.7079314339999,
+        y: 474.3258084586082
+      },
+      {
+        angle: 1.958713205585088,
+  ...
+        wave: 4,
+  +     waves: 15,
+  -     waves: 5,
+        x: 1035.2920685660001,
+        y: 491.6741915413918
+      },
+      {
+        angle: 1.708713205585088,
+  ...
+        wave: 4,
+  +     waves: 15,
+  -     waves: 5,
+        x: 1035.2920685660001,
+        y: 491.6741915413918
+      },
+      {
+        angle: 1.458713205585088,
+  ...
+        wave: 4,
+  +     waves: 15,
+  -     waves: 5,
+        x: 1035.2920685660001,
+        y: 491.6741915413918
+      },
+      {
+        angle: 2.798713205585088,
+  ...
+        wave: 4,
+  +     waves: 15,
+  -     waves: 5,
+        x: 1035.2920685660001,
+        y: 491.6741915413918
+      },
+      {
+        angle: 3.048713205585088,
+  ...
+        wave: 4,
+  +     waves: 15,
+  -     waves: 5,
+        x: 1035.2920685660001,
+        y: 491.6741915413918
+      },
+      {
+        angle: 3.298713205585088,
+  ...
+        wave: 4,
+  +     waves: 15,
+  -     waves: 5,
+        x: 1035.2920685660001,
+        y: 491.6741915413918
+      }
+    ]
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\matron-ward.test.ts:50:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ { kind: 'matron-needles', id: 5, x: 1035.2920685660001, y: 491.6741915413918, sourceId: 2, index: 0, beganAt: 132, until: 228, angles: [Array], crossing: false, wave: 0, waves: 15, angle: 1.958713205585088 }, { kind: 'matron-needles', id: 5, x: 1035.2920685660001, y: 491.6741915413918, sourceId: 2, index: 0, beganAt: 132, until: 228, angles: [Array], crossing: false, wave: 0, waves: 15, angle: 1.708713205585088 }, { kind: 'matron-needles', id: 5, x: 1035.2920685660001, y: 491.6741915413918, sourceId: 2, index: 0, beganAt: 132, until: 228, angles: [Array], crossing: false, wave: 0, waves: 15, angle: 1.458713205585088 }, { kind: 'matron-needles', id: 5, x: 1035.2920685660001, y: 491.6741915413918, sourceId: 2, index: 0, beganAt: 132, until: 228, angles: [Array], crossing: false, wave: 0, waves: 15, angle: 2.798713205585088 }, { kind: 'matron-needles', id: 5, x: 1035.2920685660001, y: 491.6741915413918, sourceId: 2, index: 0, beganAt: 132, until: 228, angles: [Array], crossing: false, wave: 0, waves: 15, angle: 3.048713205585088 }, { kind: 'matron-needles', id: 5, x: 1035.2920685660001, y: 491.6741915413918, sourceId: 2, index: 0, beganAt: 132, until: 228, angles: [Array], crossing: false, wave: 0, waves: 15, angle: 3.298713205585088 }, { kind: 'matron-needles', id: 6, x: 1018.7079314339999, y: 474.3258084586082, sourceId: 2, index: 0, beganAt: 132, until: 236, angles: [Array], crossing: false, wave: 1, waves: 15, angle: 1.958713205585088 }, { kind: 'matron-needles', id: 6, x: 1018.7079314339999, y: 474.3258084586082, sourceId: 2, index: 0, beganAt: 132, until: 236, angles: [Array], crossing: false, wave: 1, waves: 15, angle: 1.708713205585088 }, { kind: 'matron-needles', id: 6, x: 1018.7079314339999, y: 474.3258084586082, sourceId: 2, index: 0, beganAt: 132, until: 236, angles: [Array], crossing: false, wave: 1, waves: 15, angle: 1.458713205585088 }, { kind: 'matron-needles', id: 6, x: 1018.7079314339999, y: 474.3258084586082, sourceId: 2, index: 0, beganAt: 132, until: 236, angles: [Array], crossing: false, wave: 1, waves: 15, angle: 2.798713205585088 }, { kind: 'matron-needles', id: 6, x: 1018.7079314339999, y: 474.3258084586082, sourceId: 2, index: 0, beganAt: 132, until: 236, angles: [Array], crossing: false, wave: 1, waves: 15, angle: 3.048713205585088 }, { kind: 'matron-needles', id: 6, x: 1018.7079314339999, y: 474.3258084586082, sourceId: 2, index: 0, beganAt: 132, until: 236, angles: [Array], crossing: false, wave: 1, waves: 15, angle: 3.298713205585088 }, { kind: 'matron-needles', id: 7, x: 1035.2920685660001, y: 491.6741915413918, sourceId: 2, index: 0, beganAt: 132, until: 243, angles: [Array], crossing: false, wave: 2, waves: 15, angle: 1.958713205585088 }, { kind: 'matron-needles', id: 7, x: 1035.2920685660001, y: 491.6741915413918, sourceId: 2, index: 0, beganAt: 132, until: 243, angles: [Array], crossing: false, wave: 2, waves: 15, angle: 1.708713205585088 }, { kind: 'matron-needles', id: 7, x: 1035.2920685660001, y: 491.6741915413918, sourceId: 2, index: 0, beganAt: 132, until: 243, angles: [Array], crossing: false, wave: 2, waves: 15, angle: 1.458713205585088 }, { kind: 'matron-needles', id: 7, x: 1035.2920685660001, y: 491.6741915413918, sourceId: 2, index: 0, beganAt: 132, until: 243, angles: [Array], crossing: false, wave: 2, waves: 15, angle: 2.798713205585088 }, { kind: 'matron-needles', id: 7, x: 1035.2920685660001, y: 491.6741915413918, sourceId: 2, index: 0, beganAt: 132, until: 243, angles: [Array], crossing: false, wave: 2, waves: 15, angle: 3.048713205585088 }, { kind: 'matron-needles', id: 7, x: 1035.2920685660001, y: 491.6741915413918, sourceId: 2, index: 0, beganAt: 132, until: 243, angles: [Array], crossing: false, wave: 2, waves: 15, angle: 3.298713205585088 }, { kind: 'matron-needles', id: 8, x: 1018.7079314339999, y: 474.3258084586082, sourceId: 2, index: 0, beganAt: 132, until: 251, angles: [Array], crossing: false, wave: 3, waves: 15, angle: 1.958713205585088 }, { kind: 'matron-needles', id: 8, x: 1018.7079314339999, y: 474.3258084586082, sourceId: 2, index: 0, beganAt: 132, until: 251, angles: [Array], crossing: false, wave: 3, waves: 15, angle: 1.708713205585088 }, { kind: 'matron-needles', id: 8, x: 1018.7079314339999, y: 474.3258084586082, sourceId: 2, index: 0, beganAt: 132, until: 251, angles: [Array], crossing: false, wave: 3, waves: 15, angle: 1.458713205585088 }, { kind: 'matron-needles', id: 8, x: 1018.7079314339999, y: 474.3258084586082, sourceId: 2, index: 0, beganAt: 132, until: 251, angles: [Array], crossing: false, wave: 3, waves: 15, angle: 2.798713205585088 }, { kind: 'matron-needles', id: 8, x: 1018.7079314339999, y: 474.3258084586082, sourceId: 2, index: 0, beganAt: 132, until: 251, angles: [Array], crossing: false, wave: 3, waves: 15, angle: 3.048713205585088 }, { kind: 'matron-needles', id: 8, x: 1018.7079314339999, y: 474.3258084586082, sourceId: 2, index: 0, beganAt: 132, until: 251, angles: [Array], crossing: false, wave: 3, waves: 15, angle: 3.298713205585088 }, { kind: 'matron-needles', id: 9, x: 1035.2920685660001, y: 491.6741915413918, sourceId: 2, index: 0, beganAt: 132, until: 258, angles: [Array], crossing: false, wave: 4, waves: 15, angle: 1.958713205585088 }, { kind: 'matron-needles', id: 9, x: 1035.2920685660001, y: 491.6741915413918, sourceId: 2, index: 0, beganAt: 132, until: 258, angles: [Array], crossing: false, wave: 4, waves: 15, angle: 1.708713205585088 }, { kind: 'matron-needles', id: 9, x: 1035.2920685660001, y: 491.6741915413918, sourceId: 2, index: 0, beganAt: 132, until: 258, angles: [Array], crossing: false, wave: 4, waves: 15, angle: 1.458713205585088 }, { kind: 'matron-needles', id: 9, x: 1035.2920685660001, y: 491.6741915413918, sourceId: 2, index: 0, beganAt: 132, until: 258, angles: [Array], crossing: false, wave: 4, waves: 15, angle: 2.798713205585088 }, { kind: 'matron-needles', id: 9, x: 1035.2920685660001, y: 491.6741915413918, sourceId: 2, index: 0, beganAt: 132, until: 258, angles: [Array], crossing: false, wave: 4, waves: 15, angle: 3.048713205585088 }, { kind: 'matron-needles', id: 9, x: 1035.2920685660001, y: 491.6741915413918, sourceId: 2, index: 0, beganAt: 132, until: 258, angles: [Array], crossing: false, wave: 4, waves: 15, angle: 3.298713205585088 } ],
+    expected: [ { kind: 'matron-needles', id: 5, x: 1035.2920685660001, y: 491.6741915413918, sourceId: 2, index: 0, beganAt: 132, until: 228, angles: [Array], crossing: false, wave: 0, waves: 5, angle: 1.958713205585088 }, { kind: 'matron-needles', id: 5, x: 1035.2920685660001, y: 491.6741915413918, sourceId: 2, index: 0, beganAt: 132, until: 228, angles: [Array], crossing: false, wave: 0, waves: 5, angle: 1.708713205585088 }, { kind: 'matron-needles', id: 5, x: 1035.2920685660001, y: 491.6741915413918, sourceId: 2, index: 0, beganAt: 132, until: 228, angles: [Array], crossing: false, wave: 0, waves: 5, angle: 1.458713205585088 }, { kind: 'matron-needles', id: 5, x: 1035.2920685660001, y: 491.6741915413918, sourceId: 2, index: 0, beganAt: 132, until: 228, angles: [Array], crossing: false, wave: 0, waves: 5, angle: 2.798713205585088 }, { kind: 'matron-needles', id: 5, x: 1035.2920685660001, y: 491.6741915413918, sourceId: 2, index: 0, beganAt: 132, until: 228, angles: [Array], crossing: false, wave: 0, waves: 5, angle: 3.048713205585088 }, { kind: 'matron-needles', id: 5, x: 1035.2920685660001, y: 491.6741915413918, sourceId: 2, index: 0, beganAt: 132, until: 228, angles: [Array], crossing: false, wave: 0, waves: 5, angle: 3.298713205585088 }, { kind: 'matron-needles', id: 6, x: 1018.7079314339999, y: 474.3258084586082, sourceId: 2, index: 0, beganAt: 132, until: 236, angles: [Array], crossing: false, wave: 1, waves: 5, angle: 1.958713205585088 }, { kind: 'matron-needles', id: 6, x: 1018.7079314339999, y: 474.3258084586082, sourceId: 2, index: 0, beganAt: 132, until: 236, angles: [Array], crossing: false, wave: 1, waves: 5, angle: 1.708713205585088 }, { kind: 'matron-needles', id: 6, x: 1018.7079314339999, y: 474.3258084586082, sourceId: 2, index: 0, beganAt: 132, until: 236, angles: [Array], crossing: false, wave: 1, waves: 5, angle: 1.458713205585088 }, { kind: 'matron-needles', id: 6, x: 1018.7079314339999, y: 474.3258084586082, sourceId: 2, index: 0, beganAt: 132, until: 236, angles: [Array], crossing: false, wave: 1, waves: 5, angle: 2.798713205585088 }, { kind: 'matron-needles', id: 6, x: 1018.7079314339999, y: 474.3258084586082, sourceId: 2, index: 0, beganAt: 132, until: 236, angles: [Array], crossing: false, wave: 1, waves: 5, angle: 3.048713205585088 }, { kind: 'matron-needles', id: 6, x: 1018.7079314339999, y: 474.3258084586082, sourceId: 2, index: 0, beganAt: 132, until: 236, angles: [Array], crossing: false, wave: 1, waves: 5, angle: 3.298713205585088 }, { kind: 'matron-needles', id: 7, x: 1035.2920685660001, y: 491.6741915413918, sourceId: 2, index: 0, beganAt: 132, until: 243, angles: [Array], crossing: false, wave: 2, waves: 5, angle: 1.958713205585088 }, { kind: 'matron-needles', id: 7, x: 1035.2920685660001, y: 491.6741915413918, sourceId: 2, index: 0, beganAt: 132, until: 243, angles: [Array], crossing: false, wave: 2, waves: 5, angle: 1.708713205585088 }, { kind: 'matron-needles', id: 7, x: 1035.2920685660001, y: 491.6741915413918, sourceId: 2, index: 0, beganAt: 132, until: 243, angles: [Array], crossing: false, wave: 2, waves: 5, angle: 1.458713205585088 }, { kind: 'matron-needles', id: 7, x: 1035.2920685660001, y: 491.6741915413918, sourceId: 2, index: 0, beganAt: 132, until: 243, angles: [Array], crossing: false, wave: 2, waves: 5, angle: 2.798713205585088 }, { kind: 'matron-needles', id: 7, x: 1035.2920685660001, y: 491.6741915413918, sourceId: 2, index: 0, beganAt: 132, until: 243, angles: [Array], crossing: false, wave: 2, waves: 5, angle: 3.048713205585088 }, { kind: 'matron-needles', id: 7, x: 1035.2920685660001, y: 491.6741915413918, sourceId: 2, index: 0, beganAt: 132, until: 243, angles: [Array], crossing: false, wave: 2, waves: 5, angle: 3.298713205585088 }, { kind: 'matron-needles', id: 8, x: 1018.7079314339999, y: 474.3258084586082, sourceId: 2, index: 0, beganAt: 132, until: 251, angles: [Array], crossing: false, wave: 3, waves: 5, angle: 1.958713205585088 }, { kind: 'matron-needles', id: 8, x: 1018.7079314339999, y: 474.3258084586082, sourceId: 2, index: 0, beganAt: 132, until: 251, angles: [Array], crossing: false, wave: 3, waves: 5, angle: 1.708713205585088 }, { kind: 'matron-needles', id: 8, x: 1018.7079314339999, y: 474.3258084586082, sourceId: 2, index: 0, beganAt: 132, until: 251, angles: [Array], crossing: false, wave: 3, waves: 5, angle: 1.458713205585088 }, { kind: 'matron-needles', id: 8, x: 1018.7079314339999, y: 474.3258084586082, sourceId: 2, index: 0, beganAt: 132, until: 251, angles: [Array], crossing: false, wave: 3, waves: 5, angle: 2.798713205585088 }, { kind: 'matron-needles', id: 8, x: 1018.7079314339999, y: 474.3258084586082, sourceId: 2, index: 0, beganAt: 132, until: 251, angles: [Array], crossing: false, wave: 3, waves: 5, angle: 3.048713205585088 }, { kind: 'matron-needles', id: 8, x: 1018.7079314339999, y: 474.3258084586082, sourceId: 2, index: 0, beganAt: 132, until: 251, angles: [Array], crossing: false, wave: 3, waves: 5, angle: 3.298713205585088 }, { kind: 'matron-needles', id: 9, x: 1035.2920685660001, y: 491.6741915413918, sourceId: 2, index: 0, beganAt: 132, until: 258, angles: [Array], crossing: false, wave: 4, waves: 5, angle: 1.958713205585088 }, { kind: 'matron-needles', id: 9, x: 1035.2920685660001, y: 491.6741915413918, sourceId: 2, index: 0, beganAt: 132, until: 258, angles: [Array], crossing: false, wave: 4, waves: 5, angle: 1.708713205585088 }, { kind: 'matron-needles', id: 9, x: 1035.2920685660001, y: 491.6741915413918, sourceId: 2, index: 0, beganAt: 132, until: 258, angles: [Array], crossing: false, wave: 4, waves: 5, angle: 1.458713205585088 }, { kind: 'matron-needles', id: 9, x: 1035.2920685660001, y: 491.6741915413918, sourceId: 2, index: 0, beganAt: 132, until: 258, angles: [Array], crossing: false, wave: 4, waves: 5, angle: 2.798713205585088 }, { kind: 'matron-needles', id: 9, x: 1035.2920685660001, y: 491.6741915413918, sourceId: 2, index: 0, beganAt: 132, until: 258, angles: [Array], crossing: false, wave: 4, waves: 5, angle: 3.048713205585088 }, { kind: 'matron-needles', id: 9, x: 1035.2920685660001, y: 491.6741915413918, sourceId: 2, index: 0, beganAt: 132, until: 258, angles: [Array], crossing: false, wave: 4, waves: 5, angle: 3.298713205585088 } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

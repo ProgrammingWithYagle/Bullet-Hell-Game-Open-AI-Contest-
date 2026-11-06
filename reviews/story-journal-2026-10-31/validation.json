@@ -1,0 +1,83 @@
+{
+  "createdAt": "2026-10-31T23:05:56.813Z",
+  "passed": true,
+  "buildId": "2026.10.31-story-journal",
+  "protocol": 46,
+  "contentRevision": "31bcd58adcfd8d9d1d76fc23b484237e68c266a513f2dedb2571f8a09067e131",
+  "runtimeSourceSha256": "a49c96329946b6876c3025a247e28f4576820948ad17758306820e06a6dabda9",
+  "sourceSnapshotSha256": "9e00bd30f78812c4ceeac0d79fe9482ebc23ffb53728c1aca7d27f3d258977e7",
+  "fullGate": {
+    "tests": 1035,
+    "passed": 1035,
+    "failed": 0,
+    "checks": [
+      {
+        "name": "Stage 1 authored content",
+        "passed": true,
+        "elapsedMs": 3115
+      },
+      {
+        "name": "TypeScript",
+        "passed": true,
+        "elapsedMs": 1743
+      },
+      {
+        "name": "Headless rules and real-network integration",
+        "passed": true,
+        "elapsedMs": 72818
+      },
+      {
+        "name": "Production client build",
+        "passed": true,
+        "elapsedMs": 4542
+      },
+      {
+        "name": "Emitted encounter atlas contracts",
+        "passed": true,
+        "elapsedMs": 1269
+      }
+    ],
+    "selectedAtlasContracts": 71
+  },
+  "storyJournal": {
+    "goals": 22,
+    "cosmeticStamps": 66,
+    "newGoals": [
+      "route-story",
+      "story-acts",
+      "story-endings"
+    ],
+    "actMilestones": [
+      5,
+      10,
+      15
+    ],
+    "endingMilestones": [
+      1,
+      2,
+      3
+    ],
+    "fullCampaignMilestones": [
+      1,
+      3,
+      7
+    ],
+    "guidanceLocales": 15,
+    "preparationWaitsForLaunch": true,
+    "grantsCombatPower": false
+  },
+  "checks": {
+    "bestRunRatherThanFragments": true,
+    "lateArrivalCannotInheritActs": true,
+    "firstBankedEndingDeduplicated": true,
+    "legacyClaimsExcluded": true,
+    "profileBytesPreservedOnPreparation": true,
+    "nativeCanonicalSetup": true,
+    "allLocalesSourceBacked": true
+  },
+  "limits": [
+    "Software/controller checks do not claim rendered/human/device/language/final-balance acceptance.",
+    "The current Story narrative is original English; fourteen full translations remain unfinished.",
+    "The full game goal continues and has not been marked complete."
+  ]
+}

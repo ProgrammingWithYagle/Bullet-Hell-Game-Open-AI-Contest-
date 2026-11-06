@@ -1,0 +1,53 @@
+{
+  "createdAt": "2026-10-23T18:41:15.674Z",
+  "kind": "Assistant-operated browser review",
+  "protocolVersion": 4,
+  "contentRevision": "b8d9fb6918c854f3eed38b327ed0cb3026e071e6fe24932e50beed36943db241",
+  "reviewed": [
+    {
+      "area": "Mutation voting",
+      "observation": "Three illustrated cards, countdown, team grade and selected vote/count visible. Actual browser vote changed selected state and count; 50-client cycle showed 18/16/16 after browser choice.",
+      "screenshot": "reviews/ui/mutation-vote-current.png"
+    },
+    {
+      "area": "Contract voting/ratings",
+      "observation": "Concealed illustrated choices and concrete equivalent-squad recommendations; rating explicitly describes purchased power rather than human skill.",
+      "screenshot": "reviews/ui/contract-vote-current.png"
+    },
+    {
+      "area": "North/south walks",
+      "observation": "Both classes use whole-strip generated four-frame walks at gameplay scale with coherent foot anchoring and clean alpha. Medic side views remain static. Full action-library acceptance remains open.",
+      "screenshots": [
+        "reviews/ui/directions-north-in-engine.png",
+        "reviews/ui/supplies-barrier-current.png"
+      ]
+    },
+    {
+      "area": "Masonry",
+      "observation": "Scripted forward movement/dodges stopped with feet inside the upper walkable boundary. Authoritative high-speed cases are covered by separate unit tests.",
+      "screenshot": "reviews/ui/walls-current.png"
+    },
+    {
+      "area": "Constable phases",
+      "observation": "Forced-health fixture displayed regular later phases and Brutal phase four, visible zone/shot warnings. Damage/deadline suppressed, so this is presentation evidence, not combat balance or human readability approval.",
+      "screenshots": [
+        "reviews/ui/constable-phase2-current.png",
+        "reviews/ui/constable-phase3-current.png",
+        "reviews/ui/constable-brutal-phase4-current.png"
+      ]
+    },
+    {
+      "area": "Supply shop/use",
+      "observation": "Actual purchases filled three types, deducted prices and disabled a fourth type. Medkit keyboard healing, pointer Adrenaline consumption and keyboard barrier/field observed.",
+      "evidence": "reviews/ui/supplies-browser-review.json",
+      "screenshot": "reviews/ui/supplies-shop-current.png"
+    }
+  ],
+  "limits": [
+    "Fixture damage suppressed, selected HP/positions/currency injected. Production intermission timers were retained in the separate 49+1 benchmark; hold-vote only froze the visual review timer.",
+    "Desktop Latin typography reviewed. Current full shaped-script/15-locale scene expansion and native review remain pending.",
+    "Requested phone viewport did not apply: read-only DOM remained 1280x1228, so mutation-vote-viewport-request-not-applied.png is not phone evidence.",
+    "No physical touch/controller, human playtest or native-language approval.",
+    "Two prior fixture failures are distinct from gameplay failures: the old short timeout and a OneDrive command-file lock. Safe transient-lock retry was added; the completed visual fixture report is separate."
+  ]
+}

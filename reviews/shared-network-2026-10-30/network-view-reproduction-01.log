@@ -1,0 +1,28 @@
+✖ real peer views preserve every player wire field and decoded build without serializing the schema twice (381.6166ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2695.4009
+
+✖ failing tests:
+
+test at tests\network-view-fields.test.ts:1:717
+✖ real peer views preserve every player wire field and decoded build without serializing the schema twice (381.6166ms)
+  AssertionError [ERR_ASSERTION]: Player views must read the wire fields directly
+  
+  228 !== 0
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\network-view-fields.test.ts:52:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 228,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

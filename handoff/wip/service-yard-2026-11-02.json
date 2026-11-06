@@ -1,0 +1,39 @@
+{
+  "kind": "grave-accord-unfinished-source-patch",
+  "createdDate": "2026-11-02",
+  "baseCommit": "9c84f1cbf0c936074dce1516a59e7303f4f61b2e",
+  "verifiedGameSource": "5fba8f2470c22c60689488ef1a4970221233184e",
+  "patchPath": "handoff/wip/service-yard-2026-11-02.patch",
+  "patchSha256": "e177656a3359b44f71c28d9359706547b36e25e2a21761f0a4b483564554d5cf",
+  "logPath": "handoff/wip/service-yard-controller01.log",
+  "logSha256": "2231e14f55482e30b382648ae13f4dd3de84fb29228718c99fee350b987b347f",
+  "focusedTests": {
+    "passed": 4,
+    "failed": 1,
+    "total": 5
+  },
+  "files": [
+    {
+      "path": "src/shared/ward-skirmish.ts",
+      "bytes": 5962,
+      "sha256": "cb274f981c897d8ff14251215eb28f6109895cd434a36a037ed77eb12312a353"
+    },
+    {
+      "path": "src/shared/porch-watch-rules.json",
+      "bytes": 341,
+      "sha256": "a19cf6be7af8865085a7333895969b2bbfbb6a4dedd39c9bc1252c7519e760b6"
+    },
+    {
+      "path": "src/shared/porch-watch.ts",
+      "bytes": 6510,
+      "sha256": "8129401926cb35fa5b904b2b69c1f07b0ad2bc5947d3082cb854c478117be499"
+    },
+    {
+      "path": "tests/porch-watch.test.ts",
+      "bytes": 5311,
+      "sha256": "a022457bc0ab06d702ef824998267853f9a87b8f181b39b6be9cf4867fc2904c"
+    }
+  ],
+  "scope": "Unintegrated Porch Watch controller, rules, tests and exported Ward context type. No playable second chapter.",
+  "status": "Preserved at user-requested handoff. Not compiled into the verified game or included in its 1251 passing tests."
+}

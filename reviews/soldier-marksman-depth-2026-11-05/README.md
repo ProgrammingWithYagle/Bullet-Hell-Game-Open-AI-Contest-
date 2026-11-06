@@ -1,0 +1,21 @@
+# Soldier Marksman internal choices and acquired Measured Pair
+
+**Current development:** source **99f7d3a1264ec8c5575c9d598f1c1efcddc6239f**, build **2026.11.05-marksman-measured-pair**, protocol **59**, **1,525/1,525tests and all seven checks**. Exact-source [pushCI](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/42043545397) and [PRCI](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/42043575204) conclude success; every job/step and decoded1,525pass/0fail log is checked. Fresh local testing[5348](http://127.0.0.1:5348/)/2724 and public-interface[5349](http://127.0.0.1:5349/)/2725 each bind2,022files and pass four native groups/ten cases, retaining ordinary Short3SP and both later Raid12SP forks. Soldier has seven Skirmisher and four Marksman techniques. Later Marksman development, further Soldier candidates and whole-class assessment remain unfinished. No fixed pathway maximum applies to any class. Human/rendered/device/language/listening/motion/final-balance acceptance remains open. Bosses, armory and Campaign stay later. Metadata HEAD/CI is separate; inspect it live.
+
+Double Bank adds a second physical cover bank; Line Drive instead earns one ordinary-body penetration after contact. Measured Pair is a later remappedBoperation with two actual paid rounds and a second manual request earned by the first real bank. These actual techniques add a real fork and a fifth acquired input without changing issued Skirmisher/General/equipment effects or the27SP/onecapstone budget. High-grade Marksman and whole-class work remain unfinished. See [mechanics](../../docs/SOLDIER_MARKSMAN_DEPTH.md).
+
+The current runtime is8e04a09c; source/test snapshot33156ae1; content87a0e537/protocol59. Source gate04passes1,525tests/all seven checks and exact-source push/PRCI passes every job/step/decoded count. Both2,022-file roots pass four native groups/ten cases each, including ordinary Short3SP and both Raid12SPforks. All31earlier roots are hashed;4current+4preceding exact live services and48older absent identities are checked without cleanup. Private SQLite stays local.
+
+## Natural/replay scope
+
+Four Normal trials atGatehouse2209/Triage9027 retain wins/losses, with18/18/17/18safe restores matching every measured field. Double Bank loses after4inTriage; other three trials win5. Two scenarios/one18pxconservative policy(actual9) and contact counts do not rank builds or establish fun/final balance. No harness healing/resources/position injection, forced clear, invulnerability, deadline edit or score upload.
+
+## Preserved failed and earlier evidence
+
+- focused01diagnostic records36/40passes and four new fixture assumptions; focused02records48/49passes with one remaining fixture SP-field error. Existing Marksman tests remained green. focused03passes51/51; focused04passes52/52after two-contact cue/second-origin coverage.
+- full-gate01stopped at canonical pilot-copy/analytical revision synchronization. full-gate02ran1,523tests with1,489passes/34failures:32explicit current-protocol expectations, the current tree-size expectation and generated changelog parity. Historical edition/rejection checks were retained.
+- full-gate03passed1,523/1,523on original candidate runtimeae14b503; its Triage Line Drive safe replay then exposed endinghealth140restored versus105live. Original execution provenance/reports remain.
+- boundary-repro01records1pass/1fail: victory used cached pre-expiry maxima. The existing refill now follows mutation expiry/cache invalidation; two live/local/authoritative boundary regressions pass. New boundary-fixed natural/replay reports bind finalruntime8e04a09c, and full-gate04passes1,525/1,525. No test/deadline/measurement was removed or relaxed.
+- Published protocol58source22d0df80, afc42747feature/mixedCI and original Small Wakes cancellation remain in their original review scopes. Baseline source/metadata push/PRCI was freshly verified before editing. Later metadataCI is separate.
+
+Source-bound MenuDOM is not full browser-main/rendered/layout/device acceptance. Human fun, language, listening, motion, final balance, portrait/sprite coherence, later classes/bosses/armory/Campaign and whole-game completion remain open. Only the user decides completion.

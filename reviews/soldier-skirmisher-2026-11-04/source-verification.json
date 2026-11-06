@@ -1,0 +1,98 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-04T05:07:02.922Z",
+  "baseMetadata": "2c50a57515203ec04d818902b549cc7ce262523a",
+  "basePlayableSource": "233e9143300989f43f986fdd5fe800975c3f88db",
+  "buildId": "2026.11.04-soldier-skirmisher-step",
+  "protocol": 55,
+  "tests": 1419,
+  "contentRevision": "da03a1304940cf65d0a3298fba1c5e4d84c53a199203f0e3f4c42081c9ec3de6",
+  "runtimeSourceSha256": "ec418b2c67fe707d5066d552ca8e82dfabfefe504de0416bcf361ad3426b13f1",
+  "sourceSnapshotSha256": "16c11717224d168e763985e19148835e2fd64ae8918cec0eb346cdc17ceb635b",
+  "finalGate": {
+    "path": "reviews/soldier-skirmisher-2026-11-04/full-gate03.log",
+    "sha256": "a8ee41b8d81a6cdaf5edc30897d513418f68622feacd87a113a2cda03b033adc"
+  },
+  "retained": {
+    "classNodes": 648,
+    "generalTechniques": 4,
+    "engineerTechniques": 22,
+    "transformations": 36,
+    "weapons": 48,
+    "classes": 12,
+    "storyChaptersUnchanged": true
+  },
+  "implementedSoldierTechniques": 3,
+  "implementedSoldierRoutes": 1,
+  "soldierRouteCompletion": "Early Skirmisher fork only; later actions/evolutions, Squad Command and Field Logistics remain unfinished.",
+  "clientProfileAndPracticeMigration": "Exact issued54/contentd7aea7 local state admitted; all twelve labels, controls, both HUD layouts and historical practice labels retained. Wrong editions/verified claims rejected. Two red regressions then59passing focused checks retained.",
+  "naturalCombat": {
+    "policy": {
+      "path": "reviews/soldier-skirmisher-2026-11-04/combat-policy.mts",
+      "sha256": "d9b54c7b1504f9c435e298f021c812a5148e4a58b2f644cf32be11722fc2c5c6"
+    },
+    "reports": [
+      {
+        "path": "reviews/soldier-skirmisher-2026-11-04/natural-combat-normal.json",
+        "sha256": "0585852564b92490c255c5fd37a7e45b896062558b7fe59f2d7ac3130962aa10"
+      },
+      {
+        "path": "reviews/soldier-skirmisher-2026-11-04/natural-combat-normal-restored.json",
+        "sha256": "41d15af684ad20018a26810e01fe905cfa6bdd6fcdffd0e0f7810bbca3403623"
+      },
+      {
+        "path": "reviews/soldier-skirmisher-2026-11-04/natural-combat-comparison.json",
+        "sha256": "879769959af74596ac7dd20021dfd0117eb86d8fa2a5724b3f445a2c163cf0db"
+      }
+    ],
+    "rows": [
+      {
+        "route": "passing",
+        "result": "victory",
+        "clears": 5,
+        "combatSeconds": 130.3,
+        "earnedSP": 27,
+        "spentSP": 27,
+        "observedSteps": 13
+      },
+      {
+        "route": "advance",
+        "result": "victory",
+        "clears": 5,
+        "combatSeconds": 209.03333333333333,
+        "earnedSP": 27,
+        "spentSP": 27,
+        "observedSteps": 23
+      },
+      {
+        "route": "rear",
+        "result": "defeat",
+        "clears": 4,
+        "combatSeconds": 125.6,
+        "earnedSP": 27,
+        "spentSP": 27,
+        "observedSteps": 14
+      }
+    ],
+    "allThreeMeasuredReplayPairsMatch": true,
+    "safeRestores": [
+      {
+        "route": "passing",
+        "count": 18
+      },
+      {
+        "route": "advance",
+        "count": 18
+      },
+      {
+        "route": "rear",
+        "count": 17
+      }
+    ]
+  },
+  "limits": [
+    "Complete configured automated gate. Exact-source CI and fresh frozen/served integration evidence follow separately.",
+    "Three natural Normal baselines/restored counterparts on one seed/map/policy are not human play or final balance. Two clear five, Rear Guard loses at the fifth; outcomes do not rank options. These early techniques use issued General support, not a complete late Skirmisher tree.",
+    "Human enjoyment/rendered/device/native-language/listening/motion/final-balance acceptance remains open. Story word count remains5741; Service Yard stays unregistered/outside1419, no new story/Campaign proof or SP/mutations."
+  ]
+}

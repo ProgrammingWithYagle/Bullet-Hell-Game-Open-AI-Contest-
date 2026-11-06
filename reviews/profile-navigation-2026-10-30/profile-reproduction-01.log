@@ -1,0 +1,520 @@
+✖ leaving Profile while a file is read prevents a late import from replacing saved progress (386.4684ms)
+✖ a pending profile import ignores conflicting file and cosmetic actions and remains usable afterwards (177.1857ms)
+✖ valid profile files report storage failures accurately and keep the previous bytes available to export (162.4359ms)
+✖ a disposed profile cannot save from its detached cosmetic or file controls (158.0588ms)
+✖ a successful profile import keeps its notice and returns focus to the current import control (171121.8475ms)
+runtime: VirtualAlloc of 3481600 bytes failed with errno=1455
+fatal error: out of memory
+
+runtime stack:
+runtime.throw({0x7ff70e705bdc?, 0x3c127ff5f0?})
+	runtime/panic.go:1229 +0x4d fp=0x3c127ff5b8 sp=0x3c127ff588 pc=0x7ff70e0e3d6d
+runtime.sysUsedOS(0x6315becc000, 0x352000)
+	runtime/mem_windows.go:83 +0x1e5 fp=0x3c127ff638 sp=0x3c127ff5b8 pc=0x7ff70e084545
+runtime.sysUsed(...)
+	runtime/mem.go:91
+runtime.(*mheap).allocSpan(0x7ff70eb63980, 0x1a9, 0x0, 0x1)
+	runtime/mheap.go:1404 +0x4a7 fp=0x3c127ff6e8 sp=0x3c127ff638 pc=0x7ff70e09a5a7
+runtime.(*mheap).alloc.func1()
+	runtime/mheap.go:1017 +0x5c fp=0x3c127ff730 sp=0x3c127ff6e8 pc=0x7ff70e099d5c
+runtime.systemstack(0x63154b04000)
+	runtime/asm_amd64.s:562 +0x49 fp=0x3c127ff740 sp=0x3c127ff730 pc=0x7ff70e0e9949
+
+goroutine 3036 gp=0x631566134a0 m=21 mp=0x63154b00008 [running]:
+runtime.systemstack_switch()
+	runtime/asm_amd64.s:516 +0x8 fp=0x63153868b38 sp=0x63153868b28 pc=0x7ff70e0e98e8
+runtime.(*mheap).alloc(0x352000?, 0x1a9?, 0x0?)
+	runtime/mheap.go:1011 +0x57 fp=0x63153868b80 sp=0x63153868b38 pc=0x7ff70e099cb7
+runtime.(*mcache).allocLarge(0x63153869478?, 0x352000, 0x1)
+	runtime/mcache.go:257 +0x7f fp=0x63153868bd0 sp=0x63153868b80 pc=0x7ff70e08195f
+runtime.mallocgcLarge(0x0?, 0x0, 0x0)
+	runtime/malloc.go:1703 +0x79 fp=0x63153868c28 sp=0x63153868bd0 pc=0x7ff70e07eb79
+runtime.mallocgc(0x352000, 0x0, 0x0)
+	runtime/malloc.go:1156 +0xd3 fp=0x63153868c58 sp=0x63153868c28 pc=0x7ff70e0e1bd3
+runtime.growslice(0x63155c1ee00, 0x0?, 0x0?, 0x0?, 0x63153e000d0?)
+	runtime/slice.go:265 +0x573 fp=0x63153868cc8 sp=0x63153868c58 pc=0x7ff70e0e6033
+main.encodePacket.func1({0x7ff70e648420?, 0x63156fd4210?})
+	github.com/evanw/esbuild/cmd/esbuild/stdio_protocol.go:70 +0x590 fp=0x63153868e88 sp=0x63153868cc8 pc=0x7ff70e5a5ed0
+main.encodePacket.func1({0x7ff70e67c5e0?, 0x631558ee150})
+	github.com/evanw/esbuild/cmd/esbuild/stdio_protocol.go:91 +0xa62 fp=0x63153869048 sp=0x63153868e88 pc=0x7ff70e5a63a2
+main.encodePacket.func1({0x7ff70e648760?, 0x63156fd4240?})
+	github.com/evanw/esbuild/cmd/esbuild/stdio_protocol.go:76 +0x7c6 fp=0x63153869208 sp=0x63153869048 pc=0x7ff70e5a6106
+main.encodePacket.func1({0x7ff70e67c5e0?, 0x631558ee120})
+	github.com/evanw/esbuild/cmd/esbuild/stdio_protocol.go:91 +0xa62 fp=0x631538693c8 sp=0x63153869208 pc=0x7ff70e5a63a2
+main.encodePacket({{0x7ff70e67c5e0?, 0x631558ee120?}, 0xe703b55?, 0xf7?})
+	github.com/evanw/esbuild/cmd/esbuild/stdio_protocol.go:105 +0x20e fp=0x63153869488 sp=0x631538693c8 pc=0x7ff70e5a58ae
+main.(*serviceType).handleBuildRequest(0x631538770b0, 0x5, 0x631537a4f30)
+	github.com/evanw/esbuild/cmd/esbuild/service.go:792 +0x14a8 fp=0x63153869f60 sp=0x63153869488 pc=0x7ff70e59c848
+main.(*serviceType).handleIncomingPacket.func2()
+	github.com/evanw/esbuild/cmd/esbuild/service.go:235 +0x57 fp=0x63153869fe0 sp=0x63153869f60 pc=0x7ff70e59b0b7
+runtime.goexit({})
+	runtime/asm_amd64.s:1771 +0x1 fp=0x63153869fe8 sp=0x63153869fe0 pc=0x7ff70e0eb581
+created by main.(*serviceType).handleIncomingPacket in goroutine 1
+	github.com/evanw/esbuild/cmd/esbuild/service.go:233 +0x1aa
+
+goroutine 1 gp=0x63153808000 m=36 mp=0x63154f01008 [syscall]:
+runtime.cgocall(0x7ff70e0720e0, 0x63154f01358)
+	runtime/cgocall.go:167 +0x3e fp=0x631559079b0 sp=0x63155907948 pc=0x7ff70e0e127e
+syscall.syscalln(0x0?, 0x0?, {0x63155907a28?, 0x7ff70eba2c20?, 0x0?})
+	runtime/syscall_windows.go:431 +0x4e fp=0x631559079d0 sp=0x631559079b0 pc=0x7ff70e0e7aae
+syscall.SyscallN(0x7ff70eba2c20?, {0x63155907a28?, 0x63155907a50?, 0x7ff70e07dcf7?})
+	syscall/dll_windows.go:99 +0x1e fp=0x63155907a08 sp=0x631559079d0 pc=0x7ff70e1188de
+syscall.readFile(0x388, {0x63153914000?, 0x4000, 0x30?}, 0x7ff70e63eea0?, 0x631571a0000?)
+	syscall/zsyscall_windows.go:1030 +0xba fp=0x63155907a80 sp=0x63155907a08 pc=0x7ff70e11dd7a
+syscall.ReadFile(...)
+	syscall/syscall_windows.go:510
+internal/poll.(*FD).Read.func1(0x7ff70eb46520?)
+	internal/poll/fd_windows.go:586 +0x4a fp=0x63155907ac8 sp=0x63155907a80 pc=0x7ff70e13b74a
+internal/poll.(*FD).execIO(0x6315383e000, 0x72, 0x63155907c48)
+	internal/poll/fd_windows.go:304 +0x2c9 fp=0x63155907bc8 sp=0x63155907ac8 pc=0x7ff70e13a709
+internal/poll.(*FD).Read(0x6315383e000, {0x63153914000, 0x4000, 0x4000})
+	internal/poll/fd_windows.go:585 +0x290 fp=0x63155907c90 sp=0x63155907bc8 pc=0x7ff70e13b430
+os.(*File).read(...)
+	os/file_posix.go:30
+os.(*File).Read(0x63153774058, {0x63153914000?, 0x4000?, 0x4000?})
+	os/file.go:144 +0x4f fp=0x63155907cd0 sp=0x63155907c90 pc=0x7ff70e1404ef
+main.runService(0x1)
+	github.com/evanw/esbuild/cmd/esbuild/service.go:134 +0x37f fp=0x63155907df8 sp=0x63155907cd0 pc=0x7ff70e59629f
+main.main()
+	github.com/evanw/esbuild/cmd/esbuild/main.go:252 +0xb16 fp=0x63155907f48 sp=0x63155907df8 pc=0x7ff70e594a16
+runtime.main()
+	runtime/proc.go:290 +0x2c7 fp=0x63155907fe0 sp=0x63155907f48 pc=0x7ff70e0aefa7
+runtime.goexit({})
+	runtime/asm_amd64.s:1771 +0x1 fp=0x63155907fe8 sp=0x63155907fe0 pc=0x7ff70e0eb581
+
+goroutine 2 gp=0x63153808780 m=nil [force gc (idle), 2 minutes]:
+runtime.gopark(0x341459c3b95cc?, 0x0?, 0x0?, 0x0?, 0x0?)
+	runtime/proc.go:462 +0xce fp=0x6315380bfa8 sp=0x6315380bf88 pc=0x7ff70e0e3e8e
+runtime.goparkunlock(...)
+	runtime/proc.go:468
+runtime.forcegchelper()
+	runtime/proc.go:375 +0xb8 fp=0x6315380bfe0 sp=0x6315380bfa8 pc=0x7ff70e0af298
+runtime.goexit({})
+	runtime/asm_amd64.s:1771 +0x1 fp=0x6315380bfe8 sp=0x6315380bfe0 pc=0x7ff70e0eb581
+created by runtime.init.7 in goroutine 1
+	runtime/proc.go:363 +0x1a
+
+goroutine 3 gp=0x63153808b40 m=nil [GC sweep wait]:
+runtime.gopark(0x7ff70eb58801?, 0x0?, 0x0?, 0x0?, 0x0?)
+	runtime/proc.go:462 +0xce fp=0x6315380df88 sp=0x6315380df68 pc=0x7ff70e0e3e8e
+runtime.goparkunlock(...)
+	runtime/proc.go:468
+runtime.bgsweep(0x63153796100)
+	runtime/mgcsweep.go:324 +0x151 fp=0x6315380dfc8 sp=0x6315380df88 pc=0x7ff70e096571
+runtime.gcenable.gowrap1()
+	runtime/mgc.go:214 +0x17 fp=0x6315380dfe0 sp=0x6315380dfc8 pc=0x7ff70e087917
+runtime.goexit({})
+	runtime/asm_amd64.s:1771 +0x1 fp=0x6315380dfe8 sp=0x6315380dfe0 pc=0x7ff70e0eb581
+created by runtime.gcenable in goroutine 1
+	runtime/mgc.go:214 +0x66
+
+goroutine 4 gp=0x63153808d20 m=nil [GC scavenge wait]:
+runtime.gopark(0x69b9a0?, 0x3e6ed1?, 0x0?, 0x0?, 0x0?)
+	runtime/proc.go:462 +0xce fp=0x6315381df78 sp=0x6315381df58 pc=0x7ff70e0e3e8e
+runtime.goparkunlock(...)
+	runtime/proc.go:468
+runtime.(*scavengerState).park(0x7ff70eb59300)
+	runtime/mgcscavenge.go:425 +0x49 fp=0x6315381dfa8 sp=0x6315381df78 pc=0x7ff70e093fe9
+runtime.bgscavenge(0x63153796100)
+	runtime/mgcscavenge.go:658 +0x59 fp=0x6315381dfc8 sp=0x6315381dfa8 pc=0x7ff70e094579
+runtime.gcenable.gowrap2()
+	runtime/mgc.go:215 +0x17 fp=0x6315381dfe0 sp=0x6315381dfc8 pc=0x7ff70e0878d7
+runtime.goexit({})
+	runtime/asm_amd64.s:1771 +0x1 fp=0x6315381dfe8 sp=0x6315381dfe0 pc=0x7ff70e0eb581
+created by runtime.gcenable in goroutine 1
+	runtime/mgc.go:215 +0xa5
+
+goroutine 5 gp=0x631538090e0 m=nil [finalizer wait, 2 minutes]:
+runtime.gopark(0x0?, 0x0?, 0x0?, 0x0?, 0x0?)
+	runtime/proc.go:462 +0xce fp=0x6315381fe20 sp=0x6315381fe00 pc=0x7ff70e0e3e8e
+runtime.runFinalizers()
+	runtime/mfinal.go:210 +0x107 fp=0x6315381ffe0 sp=0x6315381fe20 pc=0x7ff70e0868a7
+runtime.goexit({})
+	runtime/asm_amd64.s:1771 +0x1 fp=0x6315381ffe8 sp=0x6315381ffe0 pc=0x7ff70e0eb581
+created by runtime.createfing in goroutine 1
+	runtime/mfinal.go:172 +0x3d
+
+goroutine 6 gp=0x631538092c0 m=nil [cleanup wait, 2 minutes]:
+runtime.gopark(0x0?, 0x0?, 0x0?, 0x0?, 0x0?)
+	runtime/proc.go:462 +0xce fp=0x63153819f68 sp=0x63153819f48 pc=0x7ff70e0e3e8e
+runtime.goparkunlock(...)
+	runtime/proc.go:468
+runtime.(*cleanupQueue).dequeue(0x7ff70eb595e0)
+	runtime/mcleanup.go:522 +0xd4 fp=0x63153819fa0 sp=0x63153819f68 pc=0x7ff70e083734
+runtime.runCleanups()
+	runtime/mcleanup.go:718 +0x45 fp=0x63153819fe0 sp=0x63153819fa0 pc=0x7ff70e083da5
+runtime.goexit({})
+	runtime/asm_amd64.s:1771 +0x1 fp=0x63153819fe8 sp=0x63153819fe0 pc=0x7ff70e0eb581
+created by runtime.(*cleanupQueue).createGs in goroutine 1
+	runtime/mcleanup.go:672 +0xa5
+
+goroutine 7 gp=0x631538094a0 m=nil [chan receive]:
+runtime.gopark(0x6315383e0c0?, 0x63157014d90?, 0x0?, 0x0?, 0x7ff70e13c740?)
+	runtime/proc.go:462 +0xce fp=0x6315380fee8 sp=0x6315380fec8 pc=0x7ff70e0e3e8e
+runtime.chanrecv(0x63153790460, 0x6315380ffb0, 0x1)
+	runtime/chan.go:667 +0x4ae fp=0x6315380ff60 sp=0x6315380fee8 pc=0x7ff70e0763ce
+runtime.chanrecv2(0x63153774060?, 0x631573e8400?)
+	runtime/chan.go:514 +0x12 fp=0x6315380ff88 sp=0x6315380ff60 pc=0x7ff70e075f12
+main.runService.func1()
+	github.com/evanw/esbuild/cmd/esbuild/service.go:98 +0x45 fp=0x6315380ffe0 sp=0x6315380ff88 pc=0x7ff70e596725
+runtime.goexit({})
+	runtime/asm_amd64.s:1771 +0x1 fp=0x6315380ffe8 sp=0x6315380ffe0 pc=0x7ff70e0eb581
+created by main.runService in goroutine 1
+	github.com/evanw/esbuild/cmd/esbuild/service.go:97 +0x1db
+
+goroutine 8 gp=0x63153809680 m=nil [sleep]:
+runtime.gopark(0x34151744a86c0?, 0x63154000598?, 0x0?, 0x80?, 0x7ff70e700f8e?)
+	runtime/proc.go:462 +0xce fp=0x6315381bf48 sp=0x6315381bf28 pc=0x7ff70e0e3e8e
+time.Sleep(0x3b9aca00)
+	runtime/time.go:363 +0x167 fp=0x6315381bfa0 sp=0x6315381bf48 pc=0x7ff70e0e7d87
+main.runService.func3()
+	github.com/evanw/esbuild/cmd/esbuild/service.go:124 +0x48 fp=0x6315381bfe0 sp=0x6315381bfa0 pc=0x7ff70e596608
+runtime.goexit({})
+	runtime/asm_amd64.s:1771 +0x1 fp=0x6315381bfe8 sp=0x6315381bfe0 pc=0x7ff70e0eb581
+created by main.runService in goroutine 1
+	github.com/evanw/esbuild/cmd/esbuild/service.go:122 +0x30c
+
+goroutine 60 gp=0x6315392f4a0 m=nil [GC worker (idle), 2 minutes]:
+runtime.gopark(0x0?, 0x0?, 0x0?, 0x0?, 0x0?)
+	runtime/proc.go:462 +0xce fp=0x63153959f40 sp=0x63153959f20 pc=0x7ff70e0e3e8e
+runtime.gcBgMarkWorker(0x63153791110)
+	runtime/mgc.go:1791 +0xeb fp=0x63153959fc8 sp=0x63153959f40 pc=0x7ff70e08a30b
+runtime.gcBgMarkStartWorkers.gowrap1()
+	runtime/mgc.go:1695 +0x17 fp=0x63153959fe0 sp=0x63153959fc8 pc=0x7ff70e08a1f7
+runtime.goexit({})
+	runtime/asm_amd64.s:1771 +0x1 fp=0x63153959fe8 sp=0x63153959fe0 pc=0x7ff70e0eb581
+created by runtime.gcBgMarkStartWorkers in goroutine 9
+	runtime/mgc.go:1695 +0x105
+
+goroutine 61 gp=0x6315392f680 m=nil [GC worker (idle), 2 minutes]:
+runtime.gopark(0x0?, 0x0?, 0x0?, 0x0?, 0x0?)
+	runtime/proc.go:462 +0xce fp=0x63153953f40 sp=0x63153953f20 pc=0x7ff70e0e3e8e
+runtime.gcBgMarkWorker(0x63153791110)
+	runtime/mgc.go:1791 +0xeb fp=0x63153953fc8 sp=0x63153953f40 pc=0x7ff70e08a30b
+runtime.gcBgMarkStartWorkers.gowrap1()
+	runtime/mgc.go:1695 +0x17 fp=0x63153953fe0 sp=0x63153953fc8 pc=0x7ff70e08a1f7
+runtime.goexit({})
+	runtime/asm_amd64.s:1771 +0x1 fp=0x63153953fe8 sp=0x63153953fe0 pc=0x7ff70e0eb581
+created by runtime.gcBgMarkStartWorkers in goroutine 9
+	runtime/mgc.go:1695 +0x105
+
+goroutine 62 gp=0x6315392f860 m=nil [GC worker (idle), 2 minutes]:
+runtime.gopark(0x0?, 0x0?, 0x0?, 0x0?, 0x0?)
+	runtime/proc.go:462 +0xce fp=0x63153955f40 sp=0x63153955f20 pc=0x7ff70e0e3e8e
+runtime.gcBgMarkWorker(0x63153791110)
+	runtime/mgc.go:1791 +0xeb fp=0x63153955fc8 sp=0x63153955f40 pc=0x7ff70e08a30b
+runtime.gcBgMarkStartWorkers.gowrap1()
+	runtime/mgc.go:1695 +0x17 fp=0x63153955fe0 sp=0x63153955fc8 pc=0x7ff70e08a1f7
+runtime.goexit({})
+	runtime/asm_amd64.s:1771 +0x1 fp=0x63153955fe8 sp=0x63153955fe0 pc=0x7ff70e0eb581
+created by runtime.gcBgMarkStartWorkers in goroutine 9
+	runtime/mgc.go:1695 +0x105
+
+goroutine 63 gp=0x6315392fa40 m=nil [GC worker (idle), 2 minutes]:
+runtime.gopark(0x0?, 0x0?, 0x0?, 0x0?, 0x0?)
+	runtime/proc.go:462 +0xce fp=0x6315394ff40 sp=0x6315394ff20 pc=0x7ff70e0e3e8e
+runtime.gcBgMarkWorker(0x63153791110)
+	runtime/mgc.go:1791 +0xeb fp=0x6315394ffc8 sp=0x6315394ff40 pc=0x7ff70e08a30b
+runtime.gcBgMarkStartWorkers.gowrap1()
+	runtime/mgc.go:1695 +0x17 fp=0x6315394ffe0 sp=0x6315394ffc8 pc=0x7ff70e08a1f7
+runtime.goexit({})
+	runtime/asm_amd64.s:1771 +0x1 fp=0x6315394ffe8 sp=0x6315394ffe0 pc=0x7ff70e0eb581
+created by runtime.gcBgMarkStartWorkers in goroutine 9
+	runtime/mgc.go:1695 +0x105
+
+goroutine 64 gp=0x6315392fc20 m=nil [GC worker (idle), 2 minutes]:
+runtime.gopark(0x0?, 0x0?, 0x0?, 0x0?, 0x0?)
+	runtime/proc.go:462 +0xce fp=0x63153923f40 sp=0x63153923f20 pc=0x7ff70e0e3e8e
+runtime.gcBgMarkWorker(0x63153791110)
+	runtime/mgc.go:1791 +0xeb fp=0x63153923fc8 sp=0x63153923f40 pc=0x7ff70e08a30b
+runtime.gcBgMarkStartWorkers.gowrap1()
+	runtime/mgc.go:1695 +0x17 fp=0x63153923fe0 sp=0x63153923fc8 pc=0x7ff70e08a1f7
+runtime.goexit({})
+	runtime/asm_amd64.s:1771 +0x1 fp=0x63153923fe8 sp=0x63153923fe0 pc=0x7ff70e0eb581
+created by runtime.gcBgMarkStartWorkers in goroutine 9
+	runtime/mgc.go:1695 +0x105
+
+goroutine 65 gp=0x6315395c000 m=nil [GC worker (idle), 2 minutes]:
+runtime.gopark(0x341298fc9929c?, 0x1?, 0xa0?, 0x11?, 0x0?)
+	runtime/proc.go:462 +0xce fp=0x63153963f40 sp=0x63153963f20 pc=0x7ff70e0e3e8e
+runtime.gcBgMarkWorker(0x63153791110)
+	runtime/mgc.go:1791 +0xeb fp=0x63153963fc8 sp=0x63153963f40 pc=0x7ff70e08a30b
+runtime.gcBgMarkStartWorkers.gowrap1()
+	runtime/mgc.go:1695 +0x17 fp=0x63153963fe0 sp=0x63153963fc8 pc=0x7ff70e08a1f7
+runtime.goexit({})
+	runtime/asm_amd64.s:1771 +0x1 fp=0x63153963fe8 sp=0x63153963fe0 pc=0x7ff70e0eb581
+created by runtime.gcBgMarkStartWorkers in goroutine 9
+	runtime/mgc.go:1695 +0x105
+
+goroutine 82 gp=0x6315395c1e0 m=nil [GC worker (idle)]:
+runtime.gopark(0x34151a958cda4?, 0x3?, 0x38?, 0xca?, 0x0?)
+	runtime/proc.go:462 +0xce fp=0x63153965f40 sp=0x63153965f20 pc=0x7ff70e0e3e8e
+runtime.gcBgMarkWorker(0x63153791110)
+	runtime/mgc.go:1791 +0xeb fp=0x63153965fc8 sp=0x63153965f40 pc=0x7ff70e08a30b
+runtime.gcBgMarkStartWorkers.gowrap1()
+	runtime/mgc.go:1695 +0x17 fp=0x63153965fe0 sp=0x63153965fc8 pc=0x7ff70e08a1f7
+runtime.goexit({})
+	runtime/asm_amd64.s:1771 +0x1 fp=0x63153965fe8 sp=0x63153965fe0 pc=0x7ff70e0eb581
+created by runtime.gcBgMarkStartWorkers in goroutine 9
+	runtime/mgc.go:1695 +0x105
+
+goroutine 83 gp=0x6315395c3c0 m=nil [GC worker (idle)]:
+runtime.gopark(0x7ff70e739540?, 0x63153945200?, 0x1c?, 0xa?, 0x0?)
+	runtime/proc.go:462 +0xce fp=0x6315395ff40 sp=0x6315395ff20 pc=0x7ff70e0e3e8e
+runtime.gcBgMarkWorker(0x63153791110)
+	runtime/mgc.go:1791 +0xeb fp=0x6315395ffc8 sp=0x6315395ff40 pc=0x7ff70e08a30b
+runtime.gcBgMarkStartWorkers.gowrap1()
+	runtime/mgc.go:1695 +0x17 fp=0x6315395ffe0 sp=0x6315395ffc8 pc=0x7ff70e08a1f7
+runtime.goexit({})
+	runtime/asm_amd64.s:1771 +0x1 fp=0x6315395ffe8 sp=0x6315395ffe0 pc=0x7ff70e0eb581
+created by runtime.gcBgMarkStartWorkers in goroutine 9
+	runtime/mgc.go:1695 +0x105
+
+goroutine 84 gp=0x6315395c5a0 m=nil [GC worker (idle)]:
+runtime.gopark(0x34151a90bd74c?, 0x1?, 0xac?, 0x16?, 0x0?)
+	runtime/proc.go:462 +0xce fp=0x63153961f40 sp=0x63153961f20 pc=0x7ff70e0e3e8e
+runtime.gcBgMarkWorker(0x63153791110)
+	runtime/mgc.go:1791 +0xeb fp=0x63153961fc8 sp=0x63153961f40 pc=0x7ff70e08a30b
+runtime.gcBgMarkStartWorkers.gowrap1()
+	runtime/mgc.go:1695 +0x17 fp=0x63153961fe0 sp=0x63153961fc8 pc=0x7ff70e08a1f7
+runtime.goexit({})
+	runtime/asm_amd64.s:1771 +0x1 fp=0x63153961fe8 sp=0x63153961fe0 pc=0x7ff70e0eb581
+created by runtime.gcBgMarkStartWorkers in goroutine 9
+	runtime/mgc.go:1695 +0x105
+
+goroutine 85 gp=0x6315395c780 m=nil [GC worker (idle)]:
+runtime.gopark(0x34151a94c31e8?, 0x1?, 0x0?, 0x0?, 0x0?)
+	runtime/proc.go:462 +0xce fp=0x6315396bf40 sp=0x6315396bf20 pc=0x7ff70e0e3e8e
+runtime.gcBgMarkWorker(0x63153791110)
+	runtime/mgc.go:1791 +0xeb fp=0x6315396bfc8 sp=0x6315396bf40 pc=0x7ff70e08a30b
+runtime.gcBgMarkStartWorkers.gowrap1()
+	runtime/mgc.go:1695 +0x17 fp=0x6315396bfe0 sp=0x6315396bfc8 pc=0x7ff70e08a1f7
+runtime.goexit({})
+	runtime/asm_amd64.s:1771 +0x1 fp=0x6315396bfe8 sp=0x6315396bfe0 pc=0x7ff70e0eb581
+created by runtime.gcBgMarkStartWorkers in goroutine 9
+	runtime/mgc.go:1695 +0x105
+
+goroutine 86 gp=0x6315395c960 m=nil [GC worker (idle), 2 minutes]:
+runtime.gopark(0x341299aac85fc?, 0x3?, 0x94?, 0x64?, 0x0?)
+	runtime/proc.go:462 +0xce fp=0x6315396df40 sp=0x6315396df20 pc=0x7ff70e0e3e8e
+runtime.gcBgMarkWorker(0x63153791110)
+	runtime/mgc.go:1791 +0xeb fp=0x6315396dfc8 sp=0x6315396df40 pc=0x7ff70e08a30b
+runtime.gcBgMarkStartWorkers.gowrap1()
+	runtime/mgc.go:1695 +0x17 fp=0x6315396dfe0 sp=0x6315396dfc8 pc=0x7ff70e08a1f7
+runtime.goexit({})
+	runtime/asm_amd64.s:1771 +0x1 fp=0x6315396dfe8 sp=0x6315396dfe0 pc=0x7ff70e0eb581
+created by runtime.gcBgMarkStartWorkers in goroutine 9
+	runtime/mgc.go:1695 +0x105
+
+goroutine 87 gp=0x6315395cb40 m=nil [GC worker (idle)]:
+runtime.gopark(0x34151a958cda4?, 0x1?, 0x80?, 0xc2?, 0x0?)
+	runtime/proc.go:462 +0xce fp=0x63153967f40 sp=0x63153967f20 pc=0x7ff70e0e3e8e
+runtime.gcBgMarkWorker(0x63153791110)
+	runtime/mgc.go:1791 +0xeb fp=0x63153967fc8 sp=0x63153967f40 pc=0x7ff70e08a30b
+runtime.gcBgMarkStartWorkers.gowrap1()
+	runtime/mgc.go:1695 +0x17 fp=0x63153967fe0 sp=0x63153967fc8 pc=0x7ff70e08a1f7
+runtime.goexit({})
+	runtime/asm_amd64.s:1771 +0x1 fp=0x63153967fe8 sp=0x63153967fe0 pc=0x7ff70e0eb581
+created by runtime.gcBgMarkStartWorkers in goroutine 9
+	runtime/mgc.go:1695 +0x105
+
+goroutine 88 gp=0x6315395cd20 m=nil [GC worker (idle)]:
+runtime.gopark(0x34151a93d2018?, 0x3?, 0x0?, 0x0?, 0x0?)
+	runtime/proc.go:462 +0xce fp=0x63153969f40 sp=0x63153969f20 pc=0x7ff70e0e3e8e
+runtime.gcBgMarkWorker(0x63153791110)
+	runtime/mgc.go:1791 +0xeb fp=0x63153969fc8 sp=0x63153969f40 pc=0x7ff70e08a30b
+runtime.gcBgMarkStartWorkers.gowrap1()
+	runtime/mgc.go:1695 +0x17 fp=0x63153969fe0 sp=0x63153969fc8 pc=0x7ff70e08a1f7
+runtime.goexit({})
+	runtime/asm_amd64.s:1771 +0x1 fp=0x63153969fe8 sp=0x63153969fe0 pc=0x7ff70e0eb581
+created by runtime.gcBgMarkStartWorkers in goroutine 9
+	runtime/mgc.go:1695 +0x105
+
+goroutine 89 gp=0x6315395cf00 m=nil [GC worker (idle)]:
+runtime.gopark(0x34151a94c31e8?, 0x3?, 0x60?, 0x65?, 0x0?)
+	runtime/proc.go:462 +0xce fp=0x63153973f40 sp=0x63153973f20 pc=0x7ff70e0e3e8e
+runtime.gcBgMarkWorker(0x63153791110)
+	runtime/mgc.go:1791 +0xeb fp=0x63153973fc8 sp=0x63153973f40 pc=0x7ff70e08a30b
+runtime.gcBgMarkStartWorkers.gowrap1()
+	runtime/mgc.go:1695 +0x17 fp=0x63153973fe0 sp=0x63153973fc8 pc=0x7ff70e08a1f7
+runtime.goexit({})
+	runtime/asm_amd64.s:1771 +0x1 fp=0x63153973fe8 sp=0x63153973fe0 pc=0x7ff70e0eb581
+created by runtime.gcBgMarkStartWorkers in goroutine 9
+	runtime/mgc.go:1695 +0x105
+
+goroutine 90 gp=0x6315395d0e0 m=nil [GC worker (idle)]:
+runtime.gopark(0x34151a93d2018?, 0x1?, 0x68?, 0x4b?, 0x0?)
+	runtime/proc.go:462 +0xce fp=0x63153975f40 sp=0x63153975f20 pc=0x7ff70e0e3e8e
+runtime.gcBgMarkWorker(0x63153791110)
+	runtime/mgc.go:1791 +0xeb fp=0x63153975fc8 sp=0x63153975f40 pc=0x7ff70e08a30b
+runtime.gcBgMarkStartWorkers.gowrap1()
+	runtime/mgc.go:1695 +0x17 fp=0x63153975fe0 sp=0x63153975fc8 pc=0x7ff70e08a1f7
+runtime.goexit({})
+	runtime/asm_amd64.s:1771 +0x1 fp=0x63153975fe8 sp=0x63153975fe0 pc=0x7ff70e0eb581
+created by runtime.gcBgMarkStartWorkers in goroutine 9
+	runtime/mgc.go:1695 +0x105
+
+goroutine 91 gp=0x6315395d2c0 m=nil [GC worker (idle), 2 minutes]:
+runtime.gopark(0x341297ee3a710?, 0x1?, 0xc0?, 0xef?, 0x0?)
+	runtime/proc.go:462 +0xce fp=0x63153931f40 sp=0x63153931f20 pc=0x7ff70e0e3e8e
+runtime.gcBgMarkWorker(0x63153791110)
+	runtime/mgc.go:1791 +0xeb fp=0x63153931fc8 sp=0x63153931f40 pc=0x7ff70e08a30b
+runtime.gcBgMarkStartWorkers.gowrap1()
+	runtime/mgc.go:1695 +0x17 fp=0x63153931fe0 sp=0x63153931fc8 pc=0x7ff70e08a1f7
+runtime.goexit({})
+	runtime/asm_amd64.s:1771 +0x1 fp=0x63153931fe8 sp=0x63153931fe0 pc=0x7ff70e0eb581
+created by runtime.gcBgMarkStartWorkers in goroutine 9
+	runtime/mgc.go:1695 +0x105
+
+goroutine 92 gp=0x6315395d4a0 m=nil [GC worker (idle), 2 minutes]:
+runtime.gopark(0x341299aac85fc?, 0x3?, 0x6c?, 0x54?, 0x0?)
+	runtime/proc.go:462 +0xce fp=0x63153937f40 sp=0x63153937f20 pc=0x7ff70e0e3e8e
+runtime.gcBgMarkWorker(0x63153791110)
+	runtime/mgc.go:1791 +0xeb fp=0x63153937fc8 sp=0x63153937f40 pc=0x7ff70e08a30b
+runtime.gcBgMarkStartWorkers.gowrap1()
+	runtime/mgc.go:1695 +0x17 fp=0x63153937fe0 sp=0x63153937fc8 pc=0x7ff70e08a1f7
+runtime.goexit({})
+	runtime/asm_amd64.s:1771 +0x1 fp=0x63153937fe8 sp=0x63153937fe0 pc=0x7ff70e0eb581
+created by runtime.gcBgMarkStartWorkers in goroutine 9
+	runtime/mgc.go:1695 +0x105
+
+goroutine 93 gp=0x6315395d680 m=nil [GC worker (idle), 2 minutes]:
+runtime.gopark(0x341297ee3a710?, 0x1?, 0x3c?, 0x1d?, 0x0?)
+	runtime/proc.go:462 +0xce fp=0x6315396ff40 sp=0x6315396ff20 pc=0x7ff70e0e3e8e
+runtime.gcBgMarkWorker(0x63153791110)
+	runtime/mgc.go:1791 +0xeb fp=0x6315396ffc8 sp=0x6315396ff40 pc=0x7ff70e08a30b
+runtime.gcBgMarkStartWorkers.gowrap1()
+	runtime/mgc.go:1695 +0x17 fp=0x6315396ffe0 sp=0x6315396ffc8 pc=0x7ff70e08a1f7
+runtime.goexit({})
+	runtime/asm_amd64.s:1771 +0x1 fp=0x6315396ffe8 sp=0x6315396ffe0 pc=0x7ff70e0eb581
+created by runtime.gcBgMarkStartWorkers in goroutine 9
+	runtime/mgc.go:1695 +0x105
+
+goroutine 94 gp=0x6315395d860 m=nil [GC worker (idle)]:
+runtime.gopark(0x7ff70eba2c20?, 0x3?, 0xa0?, 0xa6?, 0x0?)
+	runtime/proc.go:462 +0xce fp=0x63153971f40 sp=0x63153971f20 pc=0x7ff70e0e3e8e
+runtime.gcBgMarkWorker(0x63153791110)
+	runtime/mgc.go:1791 +0xeb fp=0x63153971fc8 sp=0x63153971f40 pc=0x7ff70e08a30b
+runtime.gcBgMarkStartWorkers.gowrap1()
+	runtime/mgc.go:1695 +0x17 fp=0x63153971fe0 sp=0x63153971fc8 pc=0x7ff70e08a1f7
+runtime.goexit({})
+	runtime/asm_amd64.s:1771 +0x1 fp=0x63153971fe8 sp=0x63153971fe0 pc=0x7ff70e0eb581
+created by runtime.gcBgMarkStartWorkers in goroutine 9
+	runtime/mgc.go:1695 +0x105
+
+goroutine 95 gp=0x6315395da40 m=nil [GC worker (idle)]:
+runtime.gopark(0x34151a958cda4?, 0x1?, 0xec?, 0xc4?, 0x0?)
+	runtime/proc.go:462 +0xce fp=0x6315397df40 sp=0x6315397df20 pc=0x7ff70e0e3e8e
+runtime.gcBgMarkWorker(0x63153791110)
+	runtime/mgc.go:1791 +0xeb fp=0x6315397dfc8 sp=0x6315397df40 pc=0x7ff70e08a30b
+runtime.gcBgMarkStartWorkers.gowrap1()
+	runtime/mgc.go:1695 +0x17 fp=0x6315397dfe0 sp=0x6315397dfc8 pc=0x7ff70e08a1f7
+runtime.goexit({})
+	runtime/asm_amd64.s:1771 +0x1 fp=0x6315397dfe8 sp=0x6315397dfe0 pc=0x7ff70e0eb581
+created by runtime.gcBgMarkStartWorkers in goroutine 9
+	runtime/mgc.go:1695 +0x105
+
+goroutine 4564 gp=0x6315630b4a0 m=nil [sleep]:
+runtime.gopark(0x34151ad44bd10?, 0x0?, 0x0?, 0x0?, 0x0?)
+	runtime/proc.go:462 +0xce fp=0x63157351f58 sp=0x63157351f38 pc=0x7ff70e0e3e8e
+time.Sleep(0xee6b280)
+	runtime/time.go:363 +0x167 fp=0x63157351fb0 sp=0x63157351f58 pc=0x7ff70e0e7d87
+github.com/evanw/esbuild/pkg/api.(*internalContext).rebuild.func1()
+	github.com/evanw/esbuild/pkg/api/api_impl.go:1044 +0x2e fp=0x63157351fe0 sp=0x63157351fb0 pc=0x7ff70e553d2e
+runtime.goexit({})
+	runtime/asm_amd64.s:1771 +0x1 fp=0x63157351fe8 sp=0x63157351fe0 pc=0x7ff70e0eb581
+created by github.com/evanw/esbuild/pkg/api.(*internalContext).rebuild in goroutine 3036
+	github.com/evanw/esbuild/pkg/api/api_impl.go:1043 +0x609
+✖ actual setup ignores an older profile refresh after moving to a different page (1146.5188ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 0
+ℹ fail 6
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 176740.8041
+
+✖ failing tests:
+
+test at tests\profile-menu-lifecycle.test.ts:1:1028
+✖ leaving Profile while a file is read prevents a late import from replacing saved progress (386.4684ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + '{"schemaVersion":1,"contentRevision":"1ae4988671b4316e028ed42c6a9cd63c2efa26f046debad2fb75b8e1fc8e7f6d","practiceOnly":true,"verified":false,"locale":"fr","settings":{"autoFire":false,"aimAssist":false,"hitboxes":true,"reduceMotion":false,"highContrast":false,"branchingTree":false,"showNames":true,"roomChat":true,"volume":0.45,"music":0.3,"textScale":1},"controls":{"bindings":{"up":["KeyW","ArrowUp"],"down":["KeyS","ArrowDown"],"left":["KeyA","ArrowLeft"],"right":["KeyD","ArrowRight"],"fire":["Mouse0"],"dodge":["Space"],"reload":["KeyR"],"q":["KeyQ"],"e":["KeyE"],"ultimate":["KeyX"],"interact":["KeyF"],"supply1":["Digit1"],"supply2":["Digit2"],"supply3":["Digit3"]},"gamepad":{"fire":7,"dodge":0,"reload":2,"q":4,"e":5,"ultimate":3,"interact":1,"supply1":12,"supply2":13,"supply3":14},"fireMode":"hold","interactMode":"hold"},"selectedCosmetic":"field-mark","runs":[],"legacyCampaigns":[]}'
+  - '{"schemaVersion":1,"contentRevision":"1ae4988671b4316e028ed42c6a9cd63c2efa26f046debad2fb75b8e1fc8e7f6d","practiceOnly":true,"verified":false,"locale":"en","settings":{"autoFire":false,"aimAssist":false,"hitboxes":true,"reduceMotion":false,"highContrast":false,"branchingTree":false,"showNames":true,"roomChat":true,"volume":0.45,"music":0.3,"textScale":1},"controls":{"bindings":{"up":["KeyW","ArrowUp"],"down":["KeyS","ArrowDown"],"left":["KeyA","ArrowLeft"],"right":["KeyD","ArrowRight"],"fire":["Mouse0"],"dodge":["Space"],"reload":["KeyR"],"q":["KeyQ"],"e":["KeyE"],"ultimate":["KeyX"],"interact":["KeyF"],"supply1":["Digit1"],"supply2":["Digit2"],"supply3":["Digit3"]},"gamepad":{"fire":7,"dodge":0,"reload":2,"q":4,"e":5,"ultimate":3,"interact":1,"supply1":12,"supply2":13,"supply3":14},"fireMode":"hold","interactMode":"hold"},"selectedCosmetic":"field-mark","runs":[],"legacyCampaigns":[]}'
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\profile-menu-lifecycle.test.ts:21:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '{"schemaVersion":1,"contentRevision":"1ae4988671b4316e028ed42c6a9cd63c2efa26f046debad2fb75b8e1fc8e7f6d","practiceOnly":true,"verified":false,"locale":"fr","settings":{"autoFire":false,"aimAssist":false,"hitboxes":true,"reduceMotion":false,"highContrast":false,"branchingTree":false,"showNames":true,"roomChat":true,"volume":0.45,"music":0.3,"textScale":1},"controls":{"bindings":{"up":["KeyW","ArrowUp"],"down":["KeyS","ArrowDown"],"left":["KeyA","ArrowLeft"],"right":["KeyD","ArrowRight"],"fire":["Mouse0"],"dodge":["Space"],"reload":["KeyR"],"q":["KeyQ"],"e":["KeyE"],"ultimate":["KeyX"],"interact":["KeyF"],"supply1":["Digit1"],"supply2":["Digit2"],"supply3":["Digit3"]},"gamepad":{"fire":7,"dodge":0,"reload":2,"q":4,"e":5,"ultimate":3,"interact":1,"supply1":12,"supply2":13,"supply3":14},"fireMode":"hold","interactMode":"hold"},"selectedCosmetic":"field-mark","runs":[],"legacyCampaigns":[]}',
+    expected: '{"schemaVersion":1,"contentRevision":"1ae4988671b4316e028ed42c6a9cd63c2efa26f046debad2fb75b8e1fc8e7f6d","practiceOnly":true,"verified":false,"locale":"en","settings":{"autoFire":false,"aimAssist":false,"hitboxes":true,"reduceMotion":false,"highContrast":false,"branchingTree":false,"showNames":true,"roomChat":true,"volume":0.45,"music":0.3,"textScale":1},"controls":{"bindings":{"up":["KeyW","ArrowUp"],"down":["KeyS","ArrowDown"],"left":["KeyA","ArrowLeft"],"right":["KeyD","ArrowRight"],"fire":["Mouse0"],"dodge":["Space"],"reload":["KeyR"],"q":["KeyQ"],"e":["KeyE"],"ultimate":["KeyX"],"interact":["KeyF"],"supply1":["Digit1"],"supply2":["Digit2"],"supply3":["Digit3"]},"gamepad":{"fire":7,"dodge":0,"reload":2,"q":4,"e":5,"ultimate":3,"interact":1,"supply1":12,"supply2":13,"supply3":14},"fireMode":"hold","interactMode":"hold"},"selectedCosmetic":"field-mark","runs":[],"legacyCampaigns":[]}',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\profile-menu-lifecycle.test.ts:1:1738
+✖ a pending profile import ignores conflicting file and cosmetic actions and remains usable afterwards (177.1857ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  false !== true
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\profile-menu-lifecycle.test.ts:26:125)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\profile-menu-lifecycle.test.ts:1:2542
+✖ valid profile files report storage failures accurately and keep the previous bytes available to export (162.4359ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'ui.errorProfile'
+  - 'ui.errorSave'
+             ^
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\profile-menu-lifecycle.test.ts:36:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'ui.errorProfile',
+    expected: 'ui.errorSave',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\profile-menu-lifecycle.test.ts:1:3570
+✖ a disposed profile cannot save from its detached cosmetic or file controls (158.0588ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  2 !== 0
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\profile-menu-lifecycle.test.ts:44:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\profile-menu-lifecycle.test.ts:1:4137
+✖ a successful profile import keeps its notice and returns focus to the current import control (171121.8475ms)
+  [RangeError [Error]: Array buffer allocation failed]
+
+test at tests\profile-menu-lifecycle.test.ts:1:4737
+✖ actual setup ignores an older profile refresh after moving to a different page (1146.5188ms)
+  [Error: The service was stopped]

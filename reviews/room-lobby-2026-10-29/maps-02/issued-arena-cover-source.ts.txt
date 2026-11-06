@@ -1,0 +1,44 @@
+import { runtimeArena,runtimeArenas } from '../shared/arena-layouts.ts';
+import library from '../../assets/production/arena-cover-surfaces/library-v2.json';
+import type { Rect } from '../shared/geometry.ts';
+export const arenaCoverArt = library;
+export function preloadArenaCovers(loader: {image(key:string,url:string):unknown}, urls:Record<string,string>){
+  for(const surface of library.entries){
+    if(!urls[surface.id])throw Error('Missing painted arena cover: '+surface.id);
+    loader.image(surface.texture,urls[surface.id]);
+  }
+}
+export function arenaCoverPlan(id: string,difficulty='normal') {
+  const arena = runtimeArena(id,difficulty);
+  const cover=id==='gatehouse'?arena.cover.slice(runtimeArenas.find(a=>a.id===id)!.cover.length):arena.cover;
+  const surface=library.entries.find(entry=>entry.id===id);
+  if(!surface)throw Error('Missing painted arena cover: '+id);
+  return cover.map(rect=>({...rect,texture:surface.texture}));
+}
+export function arenaCoverPlacement(id:string,rect:Rect){
+  const surface=library.entries.find(entry=>entry.id===id);if(!surface)throw Error('Unknown cover surface');
+  const vertical=rect.height>rect.width,minor=Math.min(rect.width,rect.height),major=Math.max(rect.width,rect.height);
+  const scale=minor/surface.height;
+  return {x:rect.x+rect.width/2,y:rect.y+rect.height/2,texture:surface.texture,
+    width:major/scale,height:surface.height,cap:surface.cap,scale,rotation:vertical?Math.PI/2:0};
+}
+export function arenaSceneryPlan(id:string,difficulty='normal'){
+  const a=runtimeArena(id,difficulty),b=a.bounds;
+  if(id==='gatehouse')return {walls:[] as Rect[],props:[] as {x:number;y:number;texture:string;size:number}[]};
+  const themes:Record<string,number[]>={'triage-yard':[0,1,0,1,1,0],'ossuary-works':[6,1,6,1,6,1],
+    'sunken-chapel':[7,2,7,2,7,7],'bell-foundry':[3,6,3,6,6,3],'crown-crypt':[7,4,7,4,4,7]};
+  const textures=themes[id];if(!textures)throw Error('Unknown arena scenery');
+  const points=[[b.x-48,b.y-48],[b.x+b.width+48,b.y-48],[b.x-48,b.y+b.height+48],
+    [b.x+b.width+48,b.y+b.height+48],[b.x+b.width*.3,b.y-48],[b.x+b.width*.7,b.y+b.height+48]];
+  return {walls:[{x:b.x-24,y:b.y-24,width:b.width+48,height:24},{x:b.x-24,y:b.y+b.height,width:b.width+48,height:24},
+    {x:b.x-24,y:b.y,width:24,height:b.height},{x:b.x+b.width,y:b.y,width:24,height:b.height}],
+    props:points.map(([x,y],i)=>({x,y,texture:'environment-'+textures[i],size:64}))};
+}
+// Three horizontal slices preserve painted end caps; the same dimensions drive Phaser.
+export function arenaCoverPreview(id:string,rect:Rect,url:string){
+  const surface=library.entries.find(entry=>entry.id===id);if(!surface||!url)throw Error('Missing cover preview surface: '+id);
+  const p=arenaCoverPlacement(id,rect),edge=p.cap*p.scale,major=p.width*p.scale,minor=p.height*p.scale;
+  const sections=[[0,p.cap,-major/2,edge],[p.cap,surface.width-2*p.cap,-major/2+edge,major-2*edge],[surface.width-p.cap,p.cap,major/2-edge,edge]];
+  const safe=url.replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;');
+  return `<g class="arena-cover-painted" transform="translate(${p.x} ${p.y}) rotate(${p.rotation*180/Math.PI})">${sections.map(([sx,sw,x,w])=>`<svg x="${x}" y="${-minor/2}" width="${w}" height="${minor}" viewBox="${sx} 0 ${sw} ${surface.height}" preserveAspectRatio="none" overflow="hidden"><image href="${safe}" width="${surface.width}" height="${surface.height}"/></svg>`).join('')}</g>`;
+}

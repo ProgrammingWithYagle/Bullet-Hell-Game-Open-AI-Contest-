@@ -1,0 +1,30 @@
+✖ Stationary sentries keep firing through aim sweeps at every deployment heading, including Crossfire Pair (14.9752ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1168.6546
+
+✖ failing tests:
+
+test at tests\engineer-pathways.test.ts:1:11129
+✖ Stationary sentries keep firing through aim sweeps at every deployment heading, including Crossfire Pair (14.9752ms)
+  AssertionError [ERR_ASSERTION]: Changing aim alone must not restart bracing
+  
+  0 !== 14
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\engineer-pathways.test.ts:112:76)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 14,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

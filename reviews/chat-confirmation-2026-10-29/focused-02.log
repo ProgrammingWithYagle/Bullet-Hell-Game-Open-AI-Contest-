@@ -1,0 +1,20 @@
+✔ issued41local saves retain exact map/economy/build identity while unknown and authoritative envelopes stay strict (7.5362ms)
+✔ every delivery state has a source-backed notice in all fifteen catalogs, with bounded cooldown formatting (42.314ms)
+✔ authority confirms delivery/rejections, binds sender identity and acknowledges duplicate requests without duplicate posts (3.4087ms)
+✔ outbox waits for confirmation, retains a request after timeout/drop and permits a safe explicit retry or a genuinely new message (37.3212ms)
+✔ late success still confirms the pending text; cooldown, disable, send failure and destroyed lifetimes preserve bounded state (92.9107ms)
+✔ actual peers receive explicit cooldown and reconnect retry acknowledges a lost confirmation without a duplicate broadcast (3923.2099ms)
+✔ quickly hiding and showing chat restores its recent history without another player needing to post (5184.8438ms)
+✔ the real chat form retains its draft, focus and input guard as it moves through upgrades, settings and combat (1.6935ms)
+✔ chat history refresh and menu replacement keep the draft; successful send clears it and disabled/offline chat cannot block controls (18.098ms)
+✔ confirmation clears only the submitted draft; edits, rejected delivery and uncertainty remain visible across menu moves (0.4143ms)
+✔ C toggles chat, Enter starts typing, and text/copy/custom gameplay bindings remain usable (0.4749ms)
+✔ an unfinished IME composition neither sends nor closes chat; a committed message can be submitted (0.303ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7353.76

@@ -1,0 +1,152 @@
+{
+  "checkedAt": "2026-11-05T00:26:28.527Z",
+  "head": "afc42747f9eb4dc512deff3fd2680590ebae5663",
+  "passed": false,
+  "events": [
+    {
+      "id": 41940263154,
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "failure",
+      "url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/41940263154",
+      "jobs": [
+        {
+          "id": 126958953222,
+          "conclusion": "failure",
+          "log": "reviews/soldier-marksman-2026-11-04/ci-attempt1-pull_request-126958953222.log",
+          "failures": [
+            {
+              "line": "2026-11-05T00:19:25.4167103Z ✔ decoder failure preserves playback through PCM; two invalid decoders fail without a source (0.421505ms)",
+              "i": 513
+            },
+            {
+              "line": "2026-11-05T00:19:36.7186716Z ✔ stale offers and cancelled waiters release their hold; forged and reused permits fail (0.2591ms)",
+              "i": 612
+            },
+            {
+              "line": "2026-11-05T00:19:42.6873100Z ✔ transformation jobs remain bounded and are cancelled by disconnecting before release (8.111293ms)",
+              "i": 698
+            },
+            {
+              "line": "2026-11-05T00:19:47.4175704Z ✔ cancelled admission releases the known ticket once during its retry delay (12.861412ms)",
+              "i": 770
+            },
+            {
+              "line": "2026-11-05T00:19:47.4176466Z ✔ cancelled admission releases the known ticket once during a pending poll (1013.76794ms)",
+              "i": 771
+            },
+            {
+              "line": "2026-11-05T00:19:47.4340578Z ✔ an incompatible HTTP address and startup throttling fail promptly with useful errors (3.919296ms)",
+              "i": 774
+            },
+            {
+              "line": "2026-11-05T00:19:47.5853569Z ✔ an unresolved asset task can be cancelled without accepting its late completion (0.174783ms)",
+              "i": 780
+            },
+            {
+              "line": "2026-11-05T00:21:22.6658474Z ✔ Chapter boundaries, lessons and ordinary proofs survive safe saves; incoherent training, boss counts, arenas and terminal stage claims fail (259.41936ms)",
+              "i": 1338
+            },
+            {
+              "line": "2026-11-05T00:21:45.6880852Z ✔ admission allows two full join attempts per group while remaining bounded after tickets are cancelled (111.563789ms)",
+              "i": 1565
+            },
+            {
+              "line": "2026-11-05T00:22:06.5442119Z ✖ ordinary Short purchases in the optimized public Solo worker release one real cover bank and freeze it on pause (1004.293821ms)",
+              "i": 1624
+            },
+            {
+              "line": "2026-11-05T00:22:41.3471574Z ✔ Every wave has a full warning, occupied promises are cancelled rather than moved, and bounded dense parties finish only by actual actor removal (3.914029ms)",
+              "i": 1901
+            },
+            {
+              "line": "2026-11-05T00:22:41.3497666Z ℹ fail 1",
+              "i": 1955
+            },
+            {
+              "line": "2026-11-05T00:22:41.3497789Z ℹ cancelled 0",
+              "i": 1956
+            },
+            {
+              "line": "2026-11-05T00:22:41.3498398Z ✖ failing tests:",
+              "i": 1961
+            },
+            {
+              "line": "2026-11-05T00:22:41.3504660Z ✖ ordinary Short purchases in the optimized public Solo worker release one real cover bank and freeze it on pause (1004.293821ms)",
+              "i": 1964
+            },
+            {
+              "line": "2026-11-05T00:22:41.3505049Z   AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:",
+              "i": 1965
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 41940241915,
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/41940241915",
+      "jobs": [
+        {
+          "id": 126958880638,
+          "conclusion": "success",
+          "log": "reviews/soldier-marksman-2026-11-04/ci-attempt1-push-126958880638.log",
+          "failures": [
+            {
+              "line": "2026-11-05T00:19:39.8795749Z ✔ decoder failure preserves playback through PCM; two invalid decoders fail without a source (0.652861ms)",
+              "i": 504
+            },
+            {
+              "line": "2026-11-05T00:20:06.3592913Z ✔ stale offers and cancelled waiters release their hold; forged and reused permits fail (0.453619ms)",
+              "i": 603
+            },
+            {
+              "line": "2026-11-05T00:20:08.3513119Z ✔ transformation jobs remain bounded and are cancelled by disconnecting before release (19.917905ms)",
+              "i": 689
+            },
+            {
+              "line": "2026-11-05T00:20:15.7623559Z ✔ cancelled admission releases the known ticket once during its retry delay (18.386341ms)",
+              "i": 761
+            },
+            {
+              "line": "2026-11-05T00:20:15.7649872Z ✔ cancelled admission releases the known ticket once during a pending poll (1017.972388ms)",
+              "i": 762
+            },
+            {
+              "line": "2026-11-05T00:20:15.8155675Z ✔ an incompatible HTTP address and startup throttling fail promptly with useful errors (5.57287ms)",
+              "i": 765
+            },
+            {
+              "line": "2026-11-05T00:20:16.0055398Z ✔ an unresolved asset task can be cancelled without accepting its late completion (0.564045ms)",
+              "i": 771
+            },
+            {
+              "line": "2026-11-05T00:22:14.8762856Z ✔ Chapter boundaries, lessons and ordinary proofs survive safe saves; incoherent training, boss counts, arenas and terminal stage claims fail (979.360311ms)",
+              "i": 1329
+            },
+            {
+              "line": "2026-11-05T00:22:49.9803185Z ✔ admission allows two full join attempts per group while remaining bounded after tickets are cancelled (162.464809ms)",
+              "i": 1556
+            },
+            {
+              "line": "2026-11-05T00:24:02.9425918Z ✔ Every wave has a full warning, occupied promises are cancelled rather than moved, and bounded dense parties finish only by actual actor removal (7.709602ms)",
+              "i": 1892
+            },
+            {
+              "line": "2026-11-05T00:24:03.9270767Z ℹ fail 0",
+              "i": 1946
+            },
+            {
+              "line": "2026-11-05T00:24:03.9271114Z ℹ cancelled 0",
+              "i": 1947
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "credentialsPrintedOrStored": false
+}

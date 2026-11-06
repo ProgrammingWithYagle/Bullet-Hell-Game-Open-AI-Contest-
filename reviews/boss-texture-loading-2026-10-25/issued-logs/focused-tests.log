@@ -1,0 +1,16 @@
+✔ startup loads every boss identity and shared actor but no deferred full boss atlas (2.7515ms)
+✔ all 57 exact identity references keep their original atlas, dimensions, origin and world size (42.7808ms)
+✔ an unavailable full atlas uses that same boss identity at frame zero and ready/shared textures keep their actual pose (0.6039ms)
+✔ one in-flight request coalesces repeated and superseded bosses without retaining stale completions (9.8074ms)
+✔ cycling the full boss roster retains at most two decoded full atlases and reserves space before each load (1.9988ms)
+✔ failed loads keep the identity available and retry only after five seconds with a monotonic finite clock (0.6934ms)
+✔ scene shutdown releases cached resources and rejects further requests, including a late completion (0.581ms)
+✔ a live boss sprite releases its old atlas for its own identity before the texture is destroyed (0.356ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 623.1424

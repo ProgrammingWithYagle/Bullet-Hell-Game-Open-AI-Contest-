@@ -1,0 +1,10 @@
+{
+  "sourceCommit": "18b602ae3e87094d0811c8187eaa586d470d5d5a",
+  "audience": "testing",
+  "attempt": "01",
+  "passed": false,
+  "failure": "The freezer expected the programmatically created testing-unlock-home button as literal HTML id markup. The testing build creates it with document.createElement and assigns its id property.",
+  "correction": "Check the unique button id string in the compiled bundle, alongside actual testing menu markup and worker branches. Compiled setup-handler tests already verify the created button itself.",
+  "publicOrTestingRuntimeChanged": false,
+  "frozenRootCreated": false
+}

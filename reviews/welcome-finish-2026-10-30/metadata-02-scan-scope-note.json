@@ -1,0 +1,6 @@
+{
+  "recordedAt": "2026-10-30T19:52:46.137Z",
+  "acceptedAsFinalExportScan": false,
+  "reason": "Final checkpoint assembly compared the Wiki images array directly to34instead of comparing its length. It stopped before writing the checkpoint, so the following Git add failed. The metadata02scan covered only three already-staged logs and is preserved as a partial scan. The corrected checkpoint uses images.length; metadata03will scan the complete final staged payload.",
+  "runtimeAffected": false
+}

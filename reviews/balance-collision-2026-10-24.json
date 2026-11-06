@@ -1,0 +1,63 @@
+{
+  "createdAt": "2026-10-24T19:58:18.010Z",
+  "automatedPassed": true,
+  "automatedTests": 268,
+  "sourceSnapshotSha256": "6497d3056a6a3608e0e1a9ae96513fa253bc43f139b2bb6cfb36e3cca85d679b",
+  "runtimeSourceSha256": "51d65c0d11bfdb352f78247ca6633c9d787ba6b40e43b39d9d2a72ea66006c58",
+  "protocol": 13,
+  "buildId": "2026.10.24-balance-collision",
+  "healthAudit": "reviews/balance/protocol13-final-health.json",
+  "progressionMatrix": "reviews/balance/protocol13-final-progressions.json",
+  "timedCombinations": 168,
+  "endlessCombinations": 42,
+  "fixtureClears": 2436,
+  "restoredBoundaries": 2226,
+  "healthCases": 1740,
+  "renderedClients": 0,
+  "renderedReviewed": false,
+  "performance": [
+    {
+      "file": "reviews/performance/walking-district-50-final-30s-protocol13.json",
+      "boss": "walking-district",
+      "players": 50,
+      "baselineP99Ms": 9.594900000000052,
+      "stressP99Ms": 23.630600000000413,
+      "stressMaxMs": 42.424699999999575,
+      "stressSamples": 900,
+      "over25ms": 6,
+      "runtimeSourceSha256": "51d65c0d11bfdb352f78247ca6633c9d787ba6b40e43b39d9d2a72ea66006c58",
+      "matchesLatestVerifiedRuntime": true
+    },
+    {
+      "file": "reviews/performance/moths-50-seven-classes-cached-30s-protocol13.json",
+      "boss": "choir-of-moths",
+      "players": 50,
+      "baselineP99Ms": 8.395999999999844,
+      "stressP99Ms": 18.084900000001653,
+      "stressMaxMs": 39.20249999999942,
+      "stressSamples": 901,
+      "over25ms": 1,
+      "runtimeSourceSha256": "fe3e454c7e4b1574e3279048b212f1d6f6155d059dde3f57719b38aaf93ec94e",
+      "matchesLatestVerifiedRuntime": false
+    },
+    {
+      "file": "reviews/performance/city-eater-16-final-30s-protocol13.json",
+      "boss": "city-eater",
+      "players": 16,
+      "baselineP99Ms": 4.150499999999738,
+      "stressP99Ms": 11.338500000005297,
+      "stressMaxMs": 31.78509999999733,
+      "stressSamples": 900,
+      "over25ms": 1,
+      "runtimeSourceSha256": "51d65c0d11bfdb352f78247ca6633c9d787ba6b40e43b39d9d2a72ea66006c58",
+      "matchesLatestVerifiedRuntime": true
+    }
+  ],
+  "limits": [
+    "Local CPU throughput fixtures with deliberately invulnerable players, 1e9 boss health and replenished 4000 hostile bullets; no player win-rate or combat-balance acceptance.",
+    "Preserved five-second failures and instrumented CPU diagnostics are separate from these longer probes. OS/JIT/GC conditions and duration differ; no controlled speedup ratio is claimed.",
+    "The earlier Moths 30-second runtime precedes the final build-stamp/import-order change; exact hashes are retained. Walking District and City Eater match the latest fully verified runtime.",
+    "All samples include occasional ticks above 25 ms. P99 under 25 ms in these local fixtures is not hosted/WAN/device/60-minute or 49-plus-one-rendered capacity acceptance.",
+    "Browser control remains disabled; human, physical-device, native-language, audio listening, full animation, final tuning, rankings/recovery and release gates remain open."
+  ]
+}

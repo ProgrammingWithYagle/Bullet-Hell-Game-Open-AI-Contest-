@@ -1,0 +1,10 @@
+{
+  "checkedAt": "2026-11-06T17:47:10.733Z",
+  "passed": true,
+  "sourceCommit": "3ebc3b86b7370e0253d56ac2e064b2700485cc4e",
+  "initialNativeHTTPAttempt": "native01-testing-http.log",
+  "initialFailureBeforeAnyHTTPOrGameplayCheck": "Asynchronous hidden launchers had not yet written processes-testing.json. No report or passed case was overwritten.",
+  "correction": "Await actual launcher receipts and matching HTTP identities before native02. Existing probe timeouts, game deadlines and source bytes are unchanged.",
+  "sourceChanges": false,
+  "cleanup": false
+}

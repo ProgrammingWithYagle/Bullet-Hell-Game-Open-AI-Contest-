@@ -1,0 +1,56 @@
+✔ mixing roads are fully connected and clear for body and pool geometry on all real arenas/difficulties (103.3922ms)
+✔ mixing walks lock their tell, remain harmless and stop on new masonry without teleporting (1.6311ms)
+✔ culture pools have a full tell, locked centers, shared half-second contact and identical authority/prediction slow (3.3852ms)
+✔ three Standard phases use culture, one catalyst, then a fresh separately warned draining return (9.3936ms)
+✔ advanced Reflux keeps three Brutal legs and adds a fourth fully warned Crazed leg (7.4699ms)
+✔ a catalyst sweeps crossing bodies once per leg and ignores movement completed before activation (2.255ms)
+✔ decant clears actual pool damage and slow when its body reaches a culture circle (2.3927ms)
+✔ controlled vial sprays emit thirty/ninety actual shots and retain the exact Brutal prefix before crossing repeats (3.3474ms)
+✔ owned snapshots are detached and reset/pause/phase cancellation cannot release stale spray work (4.5426ms)
+✔ actual assistance, phase resets and repeated mixing cycles keep their scheduler advancing and clear on exit (1181.7085ms)
+✔ actual client prediction and authority agree through culture slow and its expiration (22.1278ms)
+✔ only exact known issued31 Practice/profile state migrates to the current protocol while retaining builds, form history and optional settings (6.8855ms)
+✔ all fifteen manual guides route all four distinct Mold phases and form help, with existing action poses and static reduced motion (51.8462ms)
+✖ real owner and observer replicate locked draining-return geometry, crossing vial budgets and complete encounter cleanup (257.1053ms)
+✔ Matron nests obey their tell, summon bounded real packs and stop permanently when destroyed (11.239ms)
+✔ Alchemist culture pools lock positions, warn at least1.3 seconds and slow only while active (6.1826ms)
+✔ Bellringer rings have a real rotating 35-degree gap, swept radial contact and no tell damage (0.5822ms)
+✔ Stitchwright has destructible tethers, a one-second neutral rescue and a dodgeable attachment (0.8185ms)
+✔ Glass Surgeon leaves an actual missing edge and breaking one needle cancels only its connected sides (0.6416ms)
+✔ Ash Baker loaves split exactly once into two real crumbs per loaf and show their split directions first (0.5065ms)
+✔ Sluice currents push without damage and prediction uses exactly the same force and dry strips (33.8964ms)
+✔ Stationmaster alternates two distinct signals and swept trains never hit the open track (1.4296ms)
+✔ Lamplighter protects three outlined pockets during its pulse and preserves tell safety (0.4916ms)
+✔ Anatomist tracks only for 0.7 seconds, then keeps two fixed caliper marks until release (0.3321ms)
+✔ Gardener roots can be cut early into a restorative strip without canceling the other vines (0.4852ms)
+✔ Choir casters have separate health and ordered locked beams; one defeated singer cancels only its own release (0.3693ms)
+✔ Abbess moves two sanctuaries during the tell and any survivor can neutralize the incoming wave (0.4189ms)
+✔ Judge damages only its announced half, includes fast crossings and alternates the open half next cast (0.243ms)
+✔ timed spiral emitters create a sequence of actual projectiles, not fallback pools (0.2073ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 28
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2498.3023
+
+✖ failing tests:
+
+test at tests\mold-network.test.ts:1:3644
+✖ real owner and observer replicate locked draining-return geometry, crossing vial budgets and complete encounter cleanup (257.1053ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(q && q.kind === "mold-front")
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\mold-network.test.ts:141:7)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

@@ -1,0 +1,13 @@
+from pathlib import Path
+from PIL import Image
+import hashlib,json
+ROOT=Path(__file__).resolve().parents[1];sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();read=lambda p:json.loads(p.read_text(encoding='utf-8'));path=ROOT/'assets/delivery/selection-portraits-v1/library.json';m=read(path);p=read(ROOT/'docs/selection-portraits-2026-10-25.json');assert len(m['entries'])==7 and len(p['requests'])==2;assert sha(ROOT/m['sourceTool'])==m['sourceToolSha256']
+for request in p['requests']:
+ assert sha(ROOT/request['file'])==request['sha256'] and sha(ROOT/request['request'])==request['requestSha256']
+ for binding in request['inputBindings']:assert sha(ROOT/binding['projectPath'])==binding['sha256']
+results=[]
+for e in m['entries']:
+ assert sha(ROOT/e['source'])==e['sourceSha256'];source=Image.open(ROOT/e['source']);actual=Image.open(ROOT/e['image']);assert source.mode==actual.mode=='RGBA' and actual.size==(480,640);bounds=source.getchannel('A').getbbox();visible=source.getchannel('A').point(lambda a:255 if a>=16 else 0).getbbox();assert list(bounds)==e['sourceAlphaBounds']and list(visible)==e['sourceAlpha16Bounds'];scale=576/(visible[3]-visible[1]);assert scale==e['uniformScale'];crop=source.crop(bounds);size=[round(crop.width*scale),round(crop.height*scale)];assert size==e['resizedCrop'];ground=[(visible[0]+visible[2])/2,visible[3]];offset=[240-round((ground[0]-bounds[0])*scale),608-round((ground[1]-bounds[1])*scale)];assert offset==e['offset'];assert min(offset)>=8 and offset[0]+size[0]<=472 and offset[1]+size[1]<=632
+ predicted=Image.new('RGBA',(480,640));predicted.alpha_composite(crop.resize(size,Image.Resampling.LANCZOS),offset);assert predicted.tobytes()==actual.tobytes();assert sha(ROOT/e['image'])==e['imageSha256'];packed=actual.getchannel('A').point(lambda a:255 if a>=16 else 0).getbbox();assert list(packed)==e['targetAlpha16Bounds'];assert abs(packed[3]-packed[1]-576)<=2;results.append({'classId':e['classId'],'completeRgbaReconstructed':True,'visibleBodyHeight':packed[3]-packed[1],'bottom':packed[3]})
+assert max(e['visibleBodyHeight']for e in results)-min(e['visibleBodyHeight']for e in results)<=2
+report={'passed':True,'verifier':'tools/verify-selection-portraits.py','verifierSha256':sha(Path(__file__)),'manifestSha256':sha(path),'newNativeReturns':2,'completePortraits':7,'results':results,'renderedAccepted':False,'limits':m['limits']};(ROOT/'reviews/selection-portraits-2026-10-25/reconstruction.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n');print(json.dumps({'passed':True,'classes':7,'newPoses':2,'bodyHeights':[e['visibleBodyHeight']for e in results]}))

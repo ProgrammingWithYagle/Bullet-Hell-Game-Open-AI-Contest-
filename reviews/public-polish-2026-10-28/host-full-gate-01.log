@@ -1,0 +1,72 @@
+
+Stage 1 authored content
+{
+  "schemaVersion": 1,
+  "stage": "Stage 1 source validation",
+  "passed": false,
+  "legalMutationSets": 2255,
+  "checks": [
+    {
+      "name": "Complete finite versioned content",
+      "passed": true
+    },
+    {
+      "name": "Seven classes, 378 specialization nodes, all eighteen grades and ultimates",
+      "passed": true
+    },
+    {
+      "name": "Campaign, raid and uncapped endless budgets",
+      "passed": true
+    },
+    {
+      "name": "Fixed boss grades, independent variants and complete translated tier labels",
+      "passed": true
+    },
+    {
+      "name": "Weapon accounting, rates and finite cooldowns",
+      "passed": true
+    },
+    {
+      "name": "Every legal one-, two- and three-mutation composition",
+      "passed": true
+    },
+    {
+      "name": "Boss attack contracts, transitions, arenas and deadlines",
+      "passed": true
+    },
+    {
+      "name": "Sixty-six distinct bosses, route-specific gauntlets and Endless exclusives",
+      "passed": false,
+      "error": "\nnode:fs:2482\r\n    return binding.writeFileUtf8(\r\n                   ^\r\n\r\nError: UNKNOWN: unknown error, open 'C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\reviews\\gauntlet-model-review.json'\r\n    at Object.writeFileSync (node:fs:2482:20)\r\n    at file:///C:/Users/yigal/OneDrive/Documents/ChatGPT/OpenAI%20Multiplayer%20Game%20Contest%20(Bullet%20Hell)/tools/verify-gauntlets.mjs:32:4\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)\r\n    at async node:internal/modules/esm/loader:647:26\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\r\n  errno: -4094,\r\n  code: 'UNKNOWN',\r\n  syscall: 'open',\r\n  path: 'C:\\\\Users\\\\yigal\\\\OneDrive\\\\Documents\\\\ChatGPT\\\\OpenAI Multiplayer Game Contest (Bullet Hell)\\\\reviews\\\\gauntlet-model-review.json'\r\n}\r\n\r\nNode.js v24.22.1\r\n\n\n1 !== 0\n"
+    },
+    {
+      "name": "Design bible and complete editable tables",
+      "passed": true
+    },
+    {
+      "name": "Bellringer eight drawn walking poses and exact retained action RGBA",
+      "passed": true
+    },
+    {
+      "name": "Alchemist eight drawn walking poses and exact retained action RGBA",
+      "passed": true
+    },
+    {
+      "name": "All fifteen translation catalogs and placeholder parity",
+      "passed": true
+    },
+    {
+      "name": "Eight reviewed art proof sets with original provenance",
+      "passed": true
+    },
+    {
+      "name": "Original music and SFX objective review",
+      "passed": true
+    },
+    {
+      "name": "Leaderboard fixtures and bounded score",
+      "passed": true
+    }
+  ]
+}
+Verification failed

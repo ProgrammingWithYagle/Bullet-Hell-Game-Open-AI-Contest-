@@ -1,0 +1,3 @@
+# Matching welcome-screen Windows review
+
+Build from the clean committed welcome-finish source and scoped full gate. Preserve every earlier package and preview. Verify original, fresh complete ZIP extraction and independent ordinary Windows copy before and after their six isolated native offline/LAN diagnostics. Wait for successful extraction verification before launching any fixture in that tree. Seal after exact-source CI and Wiki verification. The styling and retained brand decision have no new rendered/human acceptance. No deployment, release replacement, main merge or contest submission is authorized by this review.

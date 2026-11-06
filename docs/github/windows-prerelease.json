@@ -1,0 +1,31 @@
+{
+  "tag_name": "dev-windows-20261024-1",
+  "target_commitish": "52552c0d4465b918d7cde2ab3c2aa7f1d7eb045e",
+  "name": "Grave Accord — Windows development playtest 2026-10-24",
+  "body": "# Grave Accord — Windows development playtest\n\nExtract the entire ZIP and run **Grave Accord.exe**. No separately installed Node or internet connection is needed for offline solo. Keep all files beside the executable.\n\nThis build has sixty bosses with individual music, seven classes, five modes, six map layouts, class shops/skills, local profiles/mastery and the in-game changelog. The desktop **Local network** menu explicitly starts hosting or joins a private IPv4 address; keep the host app open. The game does not change firewall rules. Profile exports/imports preserve local settings and progress.\n\nThe archive is **741,136,155 bytes** (about 706.8 MiB). Its SHA-256 is `b2a87f08f002e35a23558ab9b4bcca3e997309fd5a567c7e014498a54fe7ae3c`. Source: `52552c0d4465b918d7cde2ab3c2aa7f1d7eb045e`. Build: `2026.10.24-windows-lan`, protocol 13, Electron 45.0.0.\n\nAll 1,633 package members match after fresh ZIP extraction and an ordinary Windows copy. Each of the three copies passed 210 bundled-worker starts, restore/movement/fire/profile/font checks, native decoding of all 61 compressed tracks, no external network attempts/no default LAN server, and a separate two-client LAN/occupied-port/shutdown fixture. The full source pipeline passes 276 tests.\n\nThis is an **unsigned development build**. Manual rendered gameplay/listening and physical second-machine LAN acceptance remain open. Complete action/facing art, final tuning, boss-history translation and verified deployed rankings/recovery are still unfinished. The public browser Site is still its earlier build. See the companion verification JSON for exact scope and limits.\n\n[Illustrated Wiki](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/wiki) · [Art Gallery](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/wiki/Art-Gallery) · [Development PR](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14).\n",
+  "draft": false,
+  "prerelease": true,
+  "make_latest": false,
+  "assets": [
+    {
+      "name": "Grave_Accord_Windows_2026.10.24.zip",
+      "sha256": "b2a87f08f002e35a23558ab9b4bcca3e997309fd5a567c7e014498a54fe7ae3c"
+    },
+    {
+      "name": "Grave_Accord_Windows_2026.10.24_Verification.json",
+      "sha256": "1788edd89c50d4122fe29bafe17915d5ab79c850c9fa0de1748b032e52181e17"
+    },
+    {
+      "name": "Grave_Accord_Windows_2026.10.24_README.md",
+      "sha256": "47b03843a5aecf621cf7019f14205276a1b2a4ffcc63b05d80fc0c1557a50c23"
+    },
+    {
+      "name": "Grave_Accord_Windows_2026.10.24_Manifest.json",
+      "sha256": "1a62e980587e3afff43831c59fcbad3e0e3c06152363b2c461aa20f2b5b5c38e"
+    },
+    {
+      "name": "Grave_Accord_Windows_2026.10.24_SHA256SUMS.txt",
+      "sha256": "32ae45bf25d73ecd042c7ce62350119d100cb24a65a2ef42388ea2281450b586"
+    }
+  ]
+}

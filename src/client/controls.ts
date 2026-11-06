@@ -1,0 +1,245 @@
+import { idleInput, type InputFrame } from '../shared/protocol.ts';
+import {
+  defaultControls,
+  actions,
+  buttonActions,
+  ActionLatch,
+  type Action,
+  type ControlOptions,
+} from './input-bindings.ts';
+export class Controls {
+  private keys = new Set<string>();
+  private pressed = new Set<string>();
+  private virtualPressed = new Set<Action>();
+  private pointers = new Map<number, { kind: 'move' | 'aim'; x: number; y: number }>();
+  private options = defaultControls();
+  private fireLatch = new ActionLatch();
+  private interactLatch = new ActionLatch();
+  private sprintLatch=new ActionLatch();
+  private sprintButton?:HTMLButtonElement;
+  private virtualHeld=new Set<Action>();
+  private suppressPad = true;
+  move = { x: 0, y: 0 };
+  aim = { x: 0, y: 0 };
+  private flaskInput: 'pointer'|'touch'|'pad' = 'pointer';
+  private flaskOffset = {x:0,y:0};
+  flaskPoint(player:{x:number;y:number}){return this.flaskInput==='pointer'?{...this.pointer}:{x:player.x+this.flaskOffset.x,y:player.y+this.flaskOffset.y};}
+  pointer = { x: 800, y: 250 };
+  firing = false;
+  interacting = false;
+  autoFire = false;
+  aimAssist = false;
+  touch = false;
+  blocked = true;
+  private sequence = 0;
+  private retinueCycle = false;
+  takeRetinueCycle(){const pulse=this.retinueCycle;this.retinueCycle=false;return pulse;}
+  private lastButtons: boolean[] = [];
+  private angle = -Math.PI / 2;
+  private listeners = new AbortController();
+  constructor(readonly element: HTMLElement,private toWorld=(point:{x:number;y:number})=>point,private viewport=()=>({width:1600,height:1000})) {
+    const on = <K extends keyof WindowEventMap>(
+      target: EventTarget,
+      type: K,
+      fn: (e: WindowEventMap[K]) => void,
+    ) => target.addEventListener(type, fn as EventListener, { signal: this.listeners.signal });
+    on(window, 'keydown', (e) => {
+      if (
+        this.blocked ||
+        (e.target instanceof HTMLElement &&
+          e.target.closest('input,select,textarea,[contenteditable="true"]'))
+      )
+        return;
+      this.flaskInput='pointer';
+      if (Object.values(this.options.bindings).some((list) => list.includes(e.code)))
+        e.preventDefault();
+      if (!this.keys.has(e.code)) this.pressed.add(e.code);
+      this.keys.add(e.code);
+    });
+    on(window, 'keyup', (e) => {
+      this.keys.delete(e.code);
+    });
+    on(window, 'blur', () => this.clear());
+    on(element, 'contextmenu', (e) => e.preventDefault());
+    on(element, 'pointerdown', (e) => {
+      if (this.blocked) return;
+      element.setPointerCapture(e.pointerId);
+      if (e.pointerType === 'touch') {
+        this.touch = true;
+        const r = element.getBoundingClientRect(),
+          kind = e.clientX < r.left + r.width * 0.45 ? 'move' : 'aim';
+        this.pointers.set(e.pointerId, { kind, x: e.clientX, y: e.clientY });
+        if (kind === 'aim') this.firing = true;
+      } else {
+        this.touch = false;
+        const code = 'Mouse' + e.button;
+        if (!this.keys.has(code)) this.pressed.add(code);
+        this.keys.add(code);
+      }
+      this.flaskInput=e.pointerType==='touch'?'touch':'pointer';
+      this.setPointer(e);
+    });
+    on(element, 'pointermove', (e) => {
+      this.flaskInput=e.pointerType==='touch'?'touch':'pointer';
+      this.setPointer(e);
+      const start = this.pointers.get(e.pointerId);
+      if (start) {
+        const delta = {
+          x: Math.max(-1, Math.min(1, (e.clientX - start.x) / 55)),
+          y: Math.max(-1, Math.min(1, (e.clientY - start.y) / 55)),
+        };
+        if (start.kind === 'move') this.move = delta;
+        else this.aim = delta;
+      }
+    });
+    const release = (e: PointerEvent) => {
+      const start = this.pointers.get(e.pointerId);
+      if (start?.kind === 'move') this.move = { x: 0, y: 0 };
+      else if (start) {
+        this.firing = false;
+        this.aim = { x: 0, y: 0 };
+      }
+      this.keys.delete('Mouse' + e.button);
+      if (e.type === 'pointercancel')
+        for (const code of ['Mouse0', 'Mouse1', 'Mouse2']) this.keys.delete(code);
+      this.pointers.delete(e.pointerId);
+    };
+    on(element, 'pointerup', release);
+    on(element, 'pointercancel', release);
+    for (const button of document.querySelectorAll<HTMLButtonElement>('[data-action]')) {
+      if(button.dataset.action==='sprint')this.sprintButton=button;
+      on(button, 'pointerdown', (e) => {
+        e.preventDefault();
+        if (this.blocked || button.disabled) return;
+        if(e.pointerType==='touch'){this.touch=true;this.flaskInput='touch';}
+        const action = button.dataset.action as Action;
+        if (!actions.includes(action)) return;
+        if (action === 'interact') this.interacting = true;
+        if(action==='sprint')this.virtualHeld.add(action);
+        this.virtualPressed.add(action);
+        button.setPointerCapture(e.pointerId);
+      });
+      const up = () => {
+        if (button.dataset.action === 'interact') this.interacting = false;
+        if(button.dataset.action==='sprint')this.virtualHeld.delete('sprint');
+      };
+      on(button, 'pointerup', up);
+      on(button, 'pointercancel', up);
+    }
+  }
+  configure(options: ControlOptions) {
+    if (JSON.stringify(options) === JSON.stringify(this.options)) return;
+    this.options = structuredClone(options);
+    this.clear();
+  }
+  private setPointer(e: PointerEvent) {
+    const r = (this.element.querySelector?.('canvas') ?? this.element).getBoundingClientRect(),
+      {width,height} = this.viewport(), scale = Math.min(r.width / width, r.height / height);
+    if (!Number.isFinite(scale) || scale <= 0) return;
+    this.pointer = this.toWorld({
+      x: (e.clientX - r.left - (r.width - width * scale) / 2) / scale,
+      y: (e.clientY - r.top - (r.height - height * scale) / 2) / scale,
+    });
+  }
+  clear() {
+    this.retinueCycle=false;
+    this.flaskOffset={x:0,y:0};
+    this.keys.clear();
+    this.pressed.clear();
+    this.virtualPressed.clear();
+    this.pointers.clear();
+    this.move = { x: 0, y: 0 };
+    this.aim = { x: 0, y: 0 };
+    this.firing = this.interacting = false;
+    this.fireLatch.clear();
+    this.interactLatch.clear();
+    this.sprintLatch.clear();this.virtualHeld.clear();
+    this.sprintButton?.setAttribute('aria-pressed','false');
+    this.suppressPad = true;
+  }
+  destroy() {
+    this.clear();
+    this.listeners.abort();
+  }
+  sample(
+    tick: number,
+    player?: { x: number; y: number },
+    boss?: { x: number; y: number },
+  ): InputFrame {
+    const input = idleInput();
+    input.sequence = ++this.sequence;
+    input.clientTick = tick;
+    if (this.blocked) {
+      this.clear();
+      return input;
+    }
+    const held = (a: Action) => this.options.bindings[a].some((k) => this.keys.has(k));
+    const pulse = (a: Action) =>
+      this.virtualPressed.has(a) || this.options.bindings[a].some((k) => this.pressed.has(k));
+    input.moveX = Number(held('right')) - Number(held('left')) + this.move.x;
+    input.moveY = Number(held('down')) - Number(held('up')) + this.move.y;
+    if (player && !this.touch)
+      this.angle = Math.atan2(this.pointer.y - player.y, this.pointer.x - player.x);
+    if (Math.hypot(this.aim.x, this.aim.y) > 0.15) this.angle = Math.atan2(this.aim.y, this.aim.x);
+    if(this.flaskInput==='touch'){const len=Math.hypot(this.aim.x,this.aim.y),scale=len>.15?300/Math.max(1,len):0;this.flaskOffset={x:this.aim.x*scale,y:this.aim.y*scale};}
+    const pad = navigator.getGamepads?.().find((p) => p?.connected);
+    let padFire = false,
+      padInteract = false, padSprint=false;
+    if (pad) {
+      const dead = (n: number) => (Math.abs(n) > 0.18 ? n : 0);
+      input.moveX += dead(pad.axes[0] ?? 0);
+      input.moveY += dead(pad.axes[1] ?? 0);
+      const x = dead(pad.axes[2] ?? 0),
+        y = dead(pad.axes[3] ?? 0);
+      if (x || y) {this.angle = Math.atan2(y, x);this.flaskInput='pad';}
+      if(pad.buttons[this.options.gamepad.e]?.pressed)this.flaskInput='pad';
+      if(this.flaskInput==='pad'){const scale=300/Math.max(1,Math.hypot(x,y));this.flaskOffset={x:x*scale,y:y*scale};}
+      const down = pad.buttons.map((b) => b.pressed);
+      if (this.suppressPad && !down.some(Boolean)) this.suppressPad = false;
+      if (!this.suppressPad) {
+        for (const a of buttonActions) {
+          const n = this.options.gamepad[a];
+          if (down[n] && !this.lastButtons[n]) this.virtualPressed.add(a);
+        }
+        padFire = Boolean(down[this.options.gamepad.fire]);
+        padInteract = Boolean(down[this.options.gamepad.interact]);
+        padSprint=Boolean(down[this.options.gamepad.sprint]);
+      }
+      this.lastButtons = down;
+    } else {
+      this.lastButtons = [];
+      this.suppressPad = false;
+    }
+    if (this.aimAssist && player && boss) {
+      const target = Math.atan2(boss.y - player.y, boss.x - player.x),
+        difference = Math.atan2(Math.sin(target - this.angle), Math.cos(target - this.angle));
+      if (Math.abs(difference) < 0.16) this.angle += difference * 0.35;
+    }
+    input.aim = this.angle;
+    input.moveX = Math.max(-1, Math.min(1, input.moveX));
+    input.moveY = Math.max(-1, Math.min(1, input.moveY));
+    input.fire =
+      this.fireLatch.sample(
+        held('fire') || this.firing || padFire,
+        pulse('fire'),
+        this.options.fireMode,
+      ) || this.autoFire;
+    input.sprint=this.sprintLatch.sample(held('sprint')||this.virtualHeld.has('sprint')||padSprint,pulse('sprint'),this.options.sprintMode);
+    this.sprintButton?.setAttribute('aria-pressed',String(input.sprint));
+    input.interact = this.interactLatch.sample(
+      held('interact') || this.interacting || padInteract,
+      pulse('interact'),
+      this.options.interactMode,
+    );
+    for (let n = 0; n < 3; n++)
+      if (pulse(('supply' + (n + 1)) as Action)) {
+        input.supply = n;
+        break;
+      }
+    for (const a of ['dodge', 'reload', 'q', 'e', 'ultimate','technique1','technique2'] as const) input[a] = pulse(a);
+    this.retinueCycle=pulse('retinue');
+    this.pressed.clear();
+    this.virtualPressed.clear();
+    return input;
+  }
+}

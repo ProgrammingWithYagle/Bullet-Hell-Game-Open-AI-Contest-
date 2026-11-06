@@ -1,0 +1,31 @@
+✔ only exact known issued32 Practice/profile state migrates to the current protocol while retaining builds, form history and optional settings (7.1761ms)
+✔ all fifteen manual guides route all four distinct Mold phases and form help, with eight newly drawn walking frames, retained action poses and static reduced motion (45.4294ms)
+{"continuityDiagnostic":true,"tick":289,"phase":2,"ownerPhase":2,"locked":{"kind":"mold-flask","id":8,"x":800,"y":500,"fromX":866,"fromY":586,"reagent":"acid","radius":78,"batch":2,"slot":0,"beganAt":187,"at":229,"until":230},"base":{"kind":"mold-flask","id":10,"x":800,"y":500,"fromX":763.9746679918792,"fromY":650,"reagent":"alkali","radius":78,"batch":2,"slot":0,"beganAt":247,"at":289,"until":290},"cues":[{"kind":"mold-pool","id":9,"x":800,"y":500,"radius":140,"reagent":"water","index":0,"beganAt":229,"at":229,"until":499,"spentAt":0},{"kind":"mold-pool","id":11,"x":800,"y":500,"radius":78,"reagent":"alkali","index":0,"beganAt":247,"at":289,"until":529,"spentAt":0}]}
+✖ real owner and observer replicate aimed flasks, actual neutralization, cooled vessels, vapor tells and complete encounter cleanup (348.4993ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 2
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2402.7914
+
+✖ failing tests:
+
+test at tests\mold-network.test.ts:1:3730
+✖ real owner and observer replicate aimed flasks, actual neutralization, cooled vessels, vapor tells and complete encounter cleanup (348.4993ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(water && cooled)
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\mold-network.test.ts:202:7)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

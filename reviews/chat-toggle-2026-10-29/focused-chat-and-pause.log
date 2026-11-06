@@ -1,0 +1,17 @@
+✔ boss guide starts closed, pauses Solo only, and closing it preserves an independent manual pause (0.8905ms)
+✔ all fifteen guide dialogs default hidden, expose open/close controls and distinguish frozen Solo from continuing online play (0.7443ms)
+✔ Session never sends a global pause command for an online guide (1.6891ms)
+✔ the actual public offline worker freezes combat clocks, deadlines, player state and warnings while reading, then resumes without catchup or held input (758.2477ms)
+✔ the actual testing offline worker freezes combat clocks, deadlines, player state and warnings while reading, then resumes without catchup or held input (710.4376ms)
+✔ final availability is optional Baby-only while the explicit testing switch keeps current review guides available on all six difficulties (0.9037ms)
+✔ the real chat form retains its draft, focus and input guard as it moves through upgrades, settings and combat (2.2041ms)
+✔ chat history refresh and menu replacement keep the draft; successful send clears it and disabled/offline chat cannot block controls (70.9816ms)
+✔ C toggles chat, Enter starts typing, and text/copy/custom gameplay bindings remain usable (0.4842ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2239.9305
