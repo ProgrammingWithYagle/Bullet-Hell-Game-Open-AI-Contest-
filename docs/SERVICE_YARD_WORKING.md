@@ -1,6 +1,6 @@
 # The Service Yard — second-chapter candidate
 
-**Current Free Play checkpoint:** [Soldier specializations](SOLDIER_SPECIALIZATIONS.md), sourceb5c3f5e123073a64c22f0ca09a592f5021d6a618, build2026.11.05-marksman-twin-lanes/protocol60,1,547passing tests/all seven checks and successful exact-source push/PRCI. Fresh5350/5351native reviews bind2,025files each/four groups/fourteen cases. Seven Skirmisher/seven Marksman techniques execute. Other fitting Soldier routes and whole-class assessment remain open, with no fixed maximum. Service Yard remains unchanged, unregistered/unselectable4pass/1failWIP outside1,547tests. Campaign stays last.
+**Current Free Play checkpoint:** source68cb835e9f66876270686c14185016f43a8d7f72, build2026.11.05-soldier-grenadier/protocol61,1,593passing tests/all seven checks and successful exact-source push/PRCI. Fresh5352/5353native reviews bind2,033files/four groups/eighteen cases. Soldier has7Skirmisher/7Marksman/8Grenadier techniques; further routes and whole-class assessment remain open. Service Yard remains unchanged, unregistered/unselectable4pass/1failWIP outside1,593tests. Campaign stays last.
 
 **Scheduling update:** Campaign is the final phase of [FREE_PLAY_POLISH_ROADMAP.md](FREE_PLAY_POLISH_ROADMAP.md). This WIP is preserved, not the next active slice. Current work is Soldier class development after the Engineer reference, then the remaining classes and bosses individually. The old requested-handoff pause below is historical; the full development goal remains active.
 
