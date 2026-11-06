@@ -1,6 +1,6 @@
 # The Service Yard — second-chapter candidate
 
-**Current Free Play checkpoint:** source68cb835e9f66876270686c14185016f43a8d7f72, build2026.11.05-soldier-grenadier/protocol61,1,593passing tests/all seven checks and successful exact-source push/PRCI. Fresh5352/5353native reviews bind2,033files/four groups/eighteen cases. Soldier has7Skirmisher/7Marksman/8Grenadier techniques; further routes and whole-class assessment remain open. Service Yard remains unchanged, unregistered/unselectable4pass/1failWIP outside1,593tests. Campaign stays last.
+**Current Free Play checkpoint:** sourced5bc83359e2cf5bb9efd410033ff89803f060b9d, build2026.11.05-sniper-settled-shot/protocol62,1,628passing tests/all seven checks and successful exact-source push/PRCI. Fresh5354/5355native reviews bind2,034files/four groups/five cases. Soldier has7Skirmisher/7Marksman/8Grenadier techniques and one initial Sniper operation. Sniper depth/further routes/whole-class assessment remain open. Service Yard remains unchanged, unregistered/unselectable4pass/1failWIP outside1,628tests. Campaign stays last.
 
 **Scheduling update:** Campaign is the final phase of [FREE_PLAY_POLISH_ROADMAP.md](FREE_PLAY_POLISH_ROADMAP.md). This WIP is preserved, not the next active slice. Current work is Soldier class development after the Engineer reference, then the remaining classes and bosses individually. The old requested-handoff pause below is historical; the full development goal remains active.
 
