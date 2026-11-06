@@ -1,7 +1,9 @@
+import{soldierGrenadierMessages}from'./soldier-grenadier.mjs';
 import {soldierMarksmanMessages}from'./soldier-marksman.mjs';
 import {soldierVolleyMessages}from'./soldier-volley.mjs';
 import {soldierReloadMessages}from'./soldier-reload.mjs';
 export const soldierSkirmisherMessages = () => ({
+  ...soldierGrenadierMessages(),
   ...soldierReloadMessages(),
   ...soldierVolleyMessages(),
   ...soldierMarksmanMessages(),

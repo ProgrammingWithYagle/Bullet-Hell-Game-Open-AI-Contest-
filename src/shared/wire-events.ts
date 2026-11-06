@@ -1,14 +1,15 @@
-// Protocol 5 projectile transport. Offline simulation keeps ordinary Event objects.
-import type { Event, Shot } from './protocol.ts';
+// Projectile transport. Offline simulation keeps ordinary Event objects.
+import type { Event, Shot } from "./protocol.ts";
 
-type PlainEvent = Exclude<Event, { type: 'shots' }>;
+type PlainEvent = Exclude<Event, { type: "shots" }>;
 export type ShotBatch = {
-  type: 'shot-batch';
+  type: "shot-batch";
   owner: string;
   radius: number;
   damage: number;
   expires: number;
   pierce: number;
+  visual?: Shot["visual"];
   data: Uint8Array;
 };
 export type WireEvent = PlainEvent | ShotBatch;
@@ -25,8 +26,9 @@ export function encodeEvents(events: Event[]): WireEvent[] {
         let end = start + 1;
         while (
           end < shots.length &&
-          ['radius', 'damage', 'expires', 'pierce'].every(
-            (key) => shots[end][key as keyof Shot] === common[key as keyof Shot],
+          ["radius", "damage", "expires", "pierce", "visual"].every(
+            (key) =>
+              shots[end][key as keyof Shot] === common[key as keyof Shot],
           )
         )
           end++;
@@ -42,12 +44,13 @@ export function encodeEvents(events: Event[]): WireEvent[] {
           view.setFloat64(offset + 32, shot.vy, true);
         }
         output.push({
-          type: 'shot-batch',
+          type: "shot-batch",
           owner,
           radius: common.radius,
           damage: common.damage,
           expires: common.expires,
           pierce: common.pierce,
+          ...(common.visual ? { visual: common.visual } : {}),
           data,
         });
         start = end;
@@ -56,7 +59,7 @@ export function encodeEvents(events: Event[]): WireEvent[] {
     groups.clear();
   };
   for (const event of events) {
-    if (event.type === 'shots') {
+    if (event.type === "shots") {
       for (const shot of event.shots) {
         let group = groups.get(shot.owner);
         if (!group) {
@@ -75,24 +78,26 @@ export function encodeEvents(events: Event[]): WireEvent[] {
 }
 
 export function decodeEvents(events: WireEvent[]): Event[] {
-  if (!Array.isArray(events) || events.length > 12000) throw Error('invalidProjectilePacket');
+  if (!Array.isArray(events) || events.length > 12000)
+    throw Error("invalidProjectilePacket");
   let count = 0;
   return events.map((event): Event => {
-    if (!event || typeof event !== 'object') throw Error('invalidProjectilePacket');
-    if (event.type !== 'shot-batch') {
-      if (!['remove', 'sound', 'notice'].includes(event.type))
-        throw Error('invalidProjectilePacket');
+    if (!event || typeof event !== "object")
+      throw Error("invalidProjectilePacket");
+    if (event.type !== "shot-batch") {
+      if (!["remove", "sound", "notice"].includes(event.type))
+        throw Error("invalidProjectilePacket");
       return event;
     }
-    const { data, owner, radius, damage, expires, pierce } = event;
+    const { data, owner, radius, damage, expires, pierce, visual } = event;
     if (
       !(data instanceof Uint8Array) ||
       data.byteLength % stride !== 0 ||
-      typeof owner !== 'string' ||
+      typeof owner !== "string" ||
       !/^[a-zA-Z0-9_-]{1,64}$/.test(owner) ||
       (count += data.byteLength / stride) > maximumShots
     )
-      throw Error('invalidProjectilePacket');
+      throw Error("invalidProjectilePacket");
     if (
       ![radius, damage, expires, pierce].every(Number.isFinite) ||
       radius < 0 ||
@@ -100,9 +105,10 @@ export function decodeEvents(events: WireEvent[]): Event[] {
       !Number.isSafeInteger(expires) ||
       expires < 0 ||
       !Number.isSafeInteger(pierce) ||
-      pierce < 0
+      pierce < 0 ||
+      (visual !== undefined && visual !== "canister")
     )
-      throw Error('invalidProjectilePacket');
+      throw Error("invalidProjectilePacket");
     const view = new DataView(data.buffer, data.byteOffset, data.byteLength);
     const shots: Shot[] = [];
     for (let offset = 0; offset < data.byteLength; offset += stride) {
@@ -111,10 +117,26 @@ export function decodeEvents(events: WireEvent[]): Event[] {
         y = view.getFloat64(offset + 16, true),
         vx = view.getFloat64(offset + 24, true),
         vy = view.getFloat64(offset + 32, true);
-      if (![id, x, y, vx, vy].every(Number.isFinite) || !Number.isSafeInteger(id) || id < 1)
-        throw Error('invalidProjectilePacket');
-      shots.push({ id, owner, x, y, vx, vy, radius, damage, expires, pierce });
+      if (
+        ![id, x, y, vx, vy].every(Number.isFinite) ||
+        !Number.isSafeInteger(id) ||
+        id < 1
+      )
+        throw Error("invalidProjectilePacket");
+      shots.push({
+        id,
+        owner,
+        x,
+        y,
+        vx,
+        vy,
+        radius,
+        damage,
+        expires,
+        pierce,
+        ...(visual ? { visual } : {}),
+      });
     }
-    return { type: 'shots', shots };
+    return { type: "shots", shots };
   });
 }

@@ -1,6 +1,16 @@
 # Changelog
 
-Development build **2026.11.05-marksman-twin-lanes**, protocol 60. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.05-soldier-grenadier**, protocol 61. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-05 — Read the fuse, keep the same canister
+
+### Grenadier: timed throws and physical handling
+
+- Cooked Canister prepares one finite kit charge on remappable action1, then manually throws it with a running fuse. It slows on the floor and stops at bodies/cover before a cover-blocked blast. Holding past expiry safely vents it; no friendly damage or injury farming is added.
+- Skimming Case and Contact Case choose one physical bank versus an immediate contact burst. Underhand Cast adds a short throw on action2. Optional Re-pin Drill versus Clipped Sling chooses a bounded stored fuse versus keeping the live hand through the issued Precision Burst.
+- Toe Roll kicks your actual grounded canister from nearby clear ground. Live Return catches that same object once for another manual throw, retaining its remaining fuse, casing, spent kick/re-pin rights and recovery. No new charge, targeting assist or clock reset.
+- All issued Skirmisher/Marksman techniques, General/equipment benefits,27SP/onecapstone, remaps and both HUD layouts remain. Exact60 local ownership and twelve-class history migrate with their36-technique/four-General whitelist; local imports never become online proof.
+- Three Soldier routes provide initial coverage, not whole-class completion or a fixed maximum. Further fitting routes, whole-class human assessment, bosses individually, armory and finally Campaign remain open. Only the user decides whole-game completion.
 
 ## 2026-11-05 — Hold the measure, relay the angle
 

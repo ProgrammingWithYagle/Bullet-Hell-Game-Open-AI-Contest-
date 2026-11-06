@@ -1,3 +1,4 @@
+import{grenadierIds as gren}from'../shared/soldier-grenadier.ts';
 import {
   marksmanId,
   marksmanIds,
@@ -9,6 +10,7 @@ import {
   skirmisherRules as rules,
 } from "../shared/soldier-skirmisher.ts";
 export function soldierActionId(p: Pick<PlayerView, "skills">) {
+  if(p.skills.includes(gren.entry))return gren.entry;
   if (p.skills.includes(marksmanId)) return marksmanId;
   return p.skills.includes(ids.advance)
     ? ids.advance
@@ -17,7 +19,7 @@ export function soldierActionId(p: Pick<PlayerView, "skills">) {
       : ids.entry;
 }
 export const soldierLoadId = (p: Pick<PlayerView, "skills">) =>
-  p.skills.includes(ids.roving) ? ids.roving : ids.drill;
+  p.skills.includes(gren.entry)?gren.pitch:p.skills.includes(ids.roving) ? ids.roving : ids.drill;
 export function soldierPaidStepAvailable(p: PlayerView, now: number) {
   return (
     p.classId === "soldier" &&
@@ -28,6 +30,7 @@ export function soldierPaidStepAvailable(p: PlayerView, now: number) {
   );
 }
 export function soldierActions(p: PlayerView, now: number) {
+  if(p.classId==='soldier'&&p.skills.includes(gren.entry))return{command:false,qNameKey:null,qAt:p.qAt,qBlocked:false,extras:[{key:'technique1' as const,id:gren.entry,at:p.kit.technique1At??0,blocked:p.kit.grenadierBlocked??true},...(p.skills.includes(gren.pitch)?[{key:'technique2' as const,id:gren.pitch,at:p.kit.technique2At??0,blocked:p.kit.grenadierShortBlocked??true}]:[])]};
   if (p.classId === "soldier" && p.skills.includes(marksmanId))
     return {
       command: false,

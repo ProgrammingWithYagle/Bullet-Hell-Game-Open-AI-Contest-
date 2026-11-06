@@ -1,5 +1,5 @@
 import revision from '../../content/revision.json' with { type: 'json' };
-export const PROTOCOL = 60;
+export const PROTOCOL = 61;
 export type BossVariant = 'normal' | 'brutal' | 'crazed';
 export const CONTENT_REVISION = revision.sha256;
 export const HZ = 30,
@@ -178,6 +178,7 @@ export function validCommand(x: unknown): x is Command {
 }
 export type Vec = { x: number; y: number };
 export type Shot = {
+  visual?: "canister";
   id: number;
   owner: string;
   x: number;

@@ -78,13 +78,13 @@ async function setup(
 test("the authored whole tree connects two implemented disciplines while retaining the issued Skirmisher region", () => {
   assert.deepEqual(
     specializationRoutes("soldier").map((route) => route.id),
-    ["soldier-skirmisher-1", id],
+    ["soldier-skirmisher-1", id,"soldier-grenadier-1"],
   );
   const whole = specializationMapLayout("soldier")!,
     mark = specializationMapLayout("soldier", id)!,
     old = specializationMapLayout("soldier", "soldier-skirmisher-1")!;
   assert.equal(whole.nodes.filter((node) => node.reference).length, 1);
-  assert.equal(whole.width, 2050);
+  assert.equal(whole.width, 3100);
   assert.equal(old.nodes.length, 8);
   assert.equal(old.edges.length, 7);
   assert.equal(mark.nodes.length, 8);

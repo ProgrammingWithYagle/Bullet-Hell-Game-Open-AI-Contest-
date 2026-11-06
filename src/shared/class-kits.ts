@@ -1,3 +1,4 @@
+import type{GrenadierCue}from'./soldier-grenadier.ts';
 import type {MarksmanBankCue}from'./soldier-marksman.ts';
 import type {SoldierCue} from './soldier-skirmisher.ts';
 // Additional class abilities run only in the authoritative fixed-step simulation.
@@ -26,6 +27,7 @@ import type { Minions } from './minions.ts';
 const ticks = (seconds: number) => Math.ceil(seconds * HZ);
 export const RESCUE_CHARGE_TICKS = ticks(0.3) + 1;
 export type KitStatus = {
+  grenadierRecoveryAt?:number;grenadierFuseUntil?:number;grenadierPinnedUntil?:number;grenadierRemainingFuse?:number;grenadierHolding?:boolean;grenadierCanCatch?:boolean;grenadierCanKick?:boolean;grenadierBlocked?:boolean;grenadierShortBlocked?:boolean;
   soldierBankBlocked?:boolean;
   soldierPairUntil?:number;soldierPairHeld?:boolean;soldierPairBlocked?:boolean;soldierRelayUntil?:number;soldierBankAmmunition?:number;
   soldierFollowupUntil?:number;soldierStepUntil?:number;
@@ -91,6 +93,7 @@ export type Construct = {
   until: number;
 };
 export type KitCue =
+  | GrenadierCue
   | MarksmanBankCue
   | SoldierCue
   | BuilderCue
