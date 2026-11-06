@@ -1,12 +1,8 @@
 # Grave Accord
 
-Current development build **2026.11.02-chapter-checkpoint / protocol 48** adds [portable local Campaign checkpoints](docs/LOCAL_CHAPTER_CHECKPOINT.md): validate a chapter file, review its identity/training, then explicitly resume it on another device or preview. Restored portraits and resource icons follow the actual saved class.
+**Current development:** source **81d818a0f079a6b2245a123f76e532db5e7da71c**, build **2026.11.05-sniper-bore**, protocol **64**, **1,700/1,700 tests and all seven checks**. Exact-source [push CI](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/42252864617) and [PR CI](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/42252889110) succeed with every job/step and decoded1,700pass/0fail/0cancelled/0skipped log checked. Fresh local testing[5358](http://127.0.0.1:5358/)/2734 and public-interface[5359](http://127.0.0.1:5359/)/2735 each bind2,037files/four native groups/sixteen cases. Soldier has seven Skirmisher, seven Marksman, eight Grenadier and four Sniper techniques: Settled Shot, exclusive Carry/Clear handling and acquired Bore Through. Later Sniper operations, further fitting pathways and whole-class assessment remain unfinished. No fixed route maximum applies. Human/rendered/device/language/listening/motion/final-balance acceptance remains open. Metadata HEAD/CI is separate; inspect live.
 
-Campaign exclusively uses slower learning/proofs with no SP or mutation draft. Story-free Free Play keeps rapid SP progression and mutations. The accepted twelve-discipline roster includes [Alchemist / Perrin Moss](docs/ALCHEMIST.md). There are 66 playable bosses, 648 class nodes, 48 weapons, 36 transformations and two General Free Play skills. Existing-boss quality passes remain 18/60.
-
-[Exact source 5fba8f2 CI](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/41484381033) passes 1,251 tests, TypeScript, 15 catalogs, 144 early-chapter cases and the production/art build. Matching [testing](http://127.0.0.1:5314/) and [public interface](http://127.0.0.1:5315/) pass actual room and served-worker probes. [The handoff](handoff/NEXT_CHAT.md) records fingerprints and limits.
-
-The longer campaign, twelve full personal arcs, lasting character mastery and final human/rendered/device/language/listening/balance acceptance remain unfinished. Published Site version 4 / protocol 43 is a separate older release. Only the user decides whole-game completion.
+The game remains unfinished. Classes are the current focus, followed by individual bosses, the later weapon workshop, and Campaign last. Published Site/Windows builds below are separate older releases. Only the user decides whole-game completion. [Current checkpoint](handoff/NEXT_CHAT.md).
 
 ![Grave Accord cover](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/cover.jpg)
 
