@@ -1,3 +1,4 @@
+import { sniperIds } from "../../shared/soldier-sniper.ts";
 import type { PlayerView } from "../../shared/view.ts";
 import type { ControlOptions } from "../input-bindings.ts";
 import { bindingMarkup } from "./engineer-controls.ts";
@@ -14,6 +15,9 @@ export function sniperKitMarkup(
     ["e", "ability.soldier-e.name"],
     ["ultimate", "ability.soldier-ultimate.name"],
     ["technique1", "skill.soldier-sniper-1.name"],
+    ...(p.skills.includes(sniperIds.clear)
+      ? [["reload", "skill." + sniperIds.clear + ".name"] as const]
+      : []),
   ] as const;
   return (
     '<details class="engineer-kit soldier-kit" data-class-kit data-soldier-kit' +
@@ -25,7 +29,15 @@ export function sniperKitMarkup(
     "</span><small>" +
     e(t("ui.equipped")) +
     '</small></summary><p lang="en" dir="ltr">' +
-    e(t("ui.sniper.help")) +
+    e(
+      t(
+        p.skills.includes(sniperIds.carry)
+          ? "ui.sniper.carryHelp"
+          : p.skills.includes(sniperIds.clear)
+            ? "ui.sniper.clearHelp"
+            : "ui.sniper.help",
+      ),
+    ) +
     "</p><ul>" +
     rows
       .map(
@@ -35,7 +47,7 @@ export function sniperKitMarkup(
           '"><span class="engineer-kit-slot">' +
           e(actionLabel(action)) +
           '</span><strong lang="' +
-          (action === "technique1" ? "en" : e(locale)) +
+          (action === "technique1" || action === "reload" ? "en" : e(locale)) +
           '">' +
           e(t(key)) +
           "</strong><div>" +

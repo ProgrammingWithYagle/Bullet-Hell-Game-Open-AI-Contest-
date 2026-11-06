@@ -149,8 +149,8 @@ test("owned Sniper guide shows only its actual remapped action alongside the iss
   assert(!f.host.querySelector('[data-kit-action="reload"]'));
   assert.equal(specializationRoutes("soldier").length, 4);
   const map = specializationMapLayout("soldier", id)!;
-  assert.equal(map.nodes.length, 2);
-  assert.equal(map.edges.length, 1);
+  assert.equal(map.nodes.length, 4);
+  assert.equal(map.edges.length, 3);
   assert.equal(f.requests.length, 0);
 });
 test("Sniper HUD distinguishes settling and manual release and does not require a second round after reservation", async (t) => {

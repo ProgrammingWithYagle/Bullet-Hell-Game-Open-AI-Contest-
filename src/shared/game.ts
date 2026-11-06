@@ -1476,7 +1476,7 @@ export class Game {
       stats = this.stats(p),
       i = p.input;
     p.aim = i.aim;
-    if(p.classId==='soldier')this.sniper.react(p,i,this.sniperContext());
+    const sniperReloadHandled=p.classId==='soldier'&&this.sniper.react(p,i,this.sniperContext());
     if(p.classId==='soldier')this.grenadier.react(p,i,this.grenadierContext());
     p.sprinting=false;
     const moving = leaveMovingBlocks(
@@ -1571,7 +1571,7 @@ export class Game {
     p.y = next.y;
     if(p.classId==='soldier')this.sniper.afterMove(p,now);
     if(footwork)this.skirmisher.afterMove(p,this.skirmisherContext());
-    if (i.reload && now >= p.overdriveUntil && !p.reloadAt && p.ammo < stats.magazine && (p.classId!=='ranger'||this.ranger.canPrimary(p,this.rangerContext())) && (p.classId!=='alchemist'||this.alchemy.canPrimary(p,this.alchemyContext())))
+    if (i.reload && !sniperReloadHandled && now >= p.overdriveUntil && !p.reloadAt && p.ammo < stats.magazine && (p.classId!=='ranger'||this.ranger.canPrimary(p,this.rangerContext())) && (p.classId!=='alchemist'||this.alchemy.canPrimary(p,this.alchemyContext())))
       {this.reload(p);if(p.classId==='soldier')this.marksman.reservePair(p,this.marksmanContext());}
     if(i.q){
       if(!this.classKits.commandEngineer(p,this.kitContext())&&now>=p.qAt)this.ability(p,'q');
@@ -1583,7 +1583,7 @@ export class Game {
     if (i.ultimate && now >= p.ultimateAt) this.ability(p, 'ultimate');
     if(p.classId==='soldier')this.skirmisher.advanceLoad(p,this.skirmisherContext());
     const loading=p.classId==='soldier'&&this.skirmisher.isLoading(p.id);
-    if (i.fire && !p.reloadAt && !loading && !this.grenadier.blocksPrimary(p.id) && !this.sniper.blocksPrimary(p.id) && (p.classId!=='ranger'||this.ranger.canPrimary(p,this.rangerContext())) && (p.classId!=='alchemist'||this.alchemy.canPrimary(p,this.alchemyContext()))) {
+    if (i.fire && !sniperReloadHandled && !p.reloadAt && !loading && !this.grenadier.blocksPrimary(p.id) && !this.sniper.blocksPrimary(p.id) && (p.classId!=='ranger'||this.ranger.canPrimary(p,this.rangerContext())) && (p.classId!=='alchemist'||this.alchemy.canPrimary(p,this.alchemyContext()))) {
       // A new trigger press starts now; sustained fire retains fractional debt.
       // This supports rates above 30Hz without catching up missed idle shots.
       if (!p.wasFiring) p.fireAt = Math.max(p.fireAt, now);
@@ -1595,7 +1595,7 @@ export class Game {
         }
       }
     }
-    p.wasFiring = i.fire && !p.reloadAt && !loading && !this.grenadier.blocksPrimary(p.id) && !this.sniper.blocksPrimary(p.id);
+    p.wasFiring = i.fire && !sniperReloadHandled && !p.reloadAt && !loading && !this.grenadier.blocksPrimary(p.id) && !this.sniper.blocksPrimary(p.id);
   }
   private reload(p: Player) {
     if(p.classId==='soldier')this.skirmisher.interrupt(p.id);

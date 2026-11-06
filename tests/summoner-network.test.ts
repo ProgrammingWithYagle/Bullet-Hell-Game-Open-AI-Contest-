@@ -116,7 +116,7 @@ test(
       await wait(() => !p.connected);
       await wait(() => b.view?.retinue?.length === 0);
       assert.equal(room.state.retinue.size, 0);
-      assert.equal(PROTOCOL,62);
+      assert.equal(PROTOCOL,63);
     } finally {
       await a.close();
       await b.close();

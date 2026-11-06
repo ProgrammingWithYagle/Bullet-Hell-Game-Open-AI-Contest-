@@ -1,6 +1,15 @@
 # Changelog
 
-Development build **2026.11.05-sniper-settled-shot**, protocol 62. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.05-sniper-handling**, protocol 63. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-05 — Carry the opportunity, or clear the round
+
+### Sniper handling choices
+
+- Careful Carry permits relocation of a paid Settled Shot round. Every actual movement restarts settling at the new position within the original deadline; stop before manually firing.
+- Clear Chamber instead uses Reload to recover the one reserved round into available magazine space, cancelling preparation while keeping spent recovery. A full magazine preserves the preparation, and a later ordinary reload remains available.
+- The exclusive early fork changes how a paid opportunity is handled, without more speed, immunity, time, stock or a new hotbar slot. Sniper later acquired operations and whole-class/human assessment remain unfinished.
+- Exact62 ownership/history migration preserves45issued techniques/four General/twelve classes; local imports remain local.27SP/onecapstone, equipment and previous Soldier behavior remain.
 
 ## 2026-11-05 — Plant the shot, choose the moment
 

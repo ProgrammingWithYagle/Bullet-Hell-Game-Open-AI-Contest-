@@ -12,6 +12,7 @@ export type SpecializationMap = {
 // Authored positions belong to real techniques; no proposed family becomes an empty card.
 const positions: Record<string, Point> = {
   'soldier-sniper-1':{x:500,y:255},
+  'soldier-sniper-carry-1':{x:230,y:505},'soldier-sniper-clear-1':{x:770,y:505},
   'soldier-grenadier-1':{x:500,y:255},'soldier-grenadier-skim-1':{x:230,y:505},'soldier-grenadier-contact-1':{x:770,y:505},'soldier-grenadier-pitch-1':{x:500,y:775},'soldier-grenadier-pin-1':{x:230,y:1030},'soldier-grenadier-sling-1':{x:770,y:1030},'soldier-grenadier-kick-1':{x:500,y:1280},'soldier-grenadier-return-1':{x:500,y:1530},
   'soldier-marksman-1':{x:500,y:255},
   'soldier-marksman-carom-1':{x:250,y:510},

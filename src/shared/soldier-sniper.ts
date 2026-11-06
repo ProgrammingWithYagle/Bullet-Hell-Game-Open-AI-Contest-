@@ -5,6 +5,11 @@ import type { Player, Stats } from "./game.ts";
 import type { MotionWindow } from "./motion-window.ts";
 
 export const sniperId = "soldier-sniper-1";
+export const sniperIds = {
+  entry: sniperId,
+  carry: "soldier-sniper-carry-1",
+  clear: "soldier-sniper-clear-1",
+} as const;
 export const sniperRules = catalog.rules.soldierSniper;
 const ticks = (seconds: number) => Math.ceil(seconds * HZ),
   angle = (value: number) => Math.atan2(Math.sin(value), Math.cos(value));
@@ -23,6 +28,7 @@ type Preparation = Vec & {
   aim: number;
   fireLatch: boolean;
   damage: number;
+  handling: "plain" | "carry" | "clear";
 };
 type Flight = { owner: string; weapon: string; origin: Vec };
 export type SniperCue = Vec & {
@@ -137,26 +143,48 @@ export class SoldierSniper {
       q.until <= now ||
       p.weapon !== q.weapon ||
       p.health < q.health ||
-      distance(p, q) > sniperRules.stationaryTolerance
+      (q.handling !== "plain" && !p.skills.includes(sniperIds[q.handling]))
     ) {
       this.preparations.delete(p.id);
       return;
+    }
+    if (distance(p, q) > sniperRules.stationaryTolerance) {
+      if (q.handling !== "carry") {
+        this.interrupt(p.id);
+        return;
+      }
+      q.x = p.x;
+      q.y = p.y;
+      q.aim = p.aim;
+      q.at = now;
+      q.readyAt = now + ticks(sniperRules.settleSeconds);
     }
     return q;
   }
   react(p: Player, input: InputFrame, c: SniperContext) {
     const q = this.preparation(p, c.tick);
-    if (!q) return;
+    if (!q) return false;
     if (!input.fire) q.fireLatch = false;
     if (
       (input.fire && !q.fireLatch) ||
-      input.reload ||
       input.dodge ||
       input.e ||
       input.ultimate
     ) {
       this.interrupt(p.id);
-      return;
+      return false;
+    }
+    if (input.reload) {
+      if (q.handling !== "clear") {
+        this.interrupt(p.id);
+        return false;
+      }
+      if (p.ammo < c.stats(p).magazine) {
+        p.ammo++;
+        this.interrupt(p.id);
+        c.sound(p, "sniper-clear");
+      }
+      return true;
     }
     if (Math.abs(angle(p.aim - q.aim)) > sniperRules.aimArc) {
       q.aim = p.aim;
@@ -164,6 +192,7 @@ export class SoldierSniper {
       q.readyAt = c.tick + ticks(sniperRules.settleSeconds);
       c.sound(p, "sniper-settle");
     }
+    return false;
   }
   afterMove(p: Player, now: number) {
     this.preparation(p, now);
@@ -275,6 +304,11 @@ export class SoldierSniper {
       aim: p.aim,
       fireLatch: p.input.fire,
       damage: sniperRules.damage * stats.ability,
+      handling: p.skills.includes(sniperIds.carry)
+        ? "carry"
+        : p.skills.includes(sniperIds.clear)
+          ? "clear"
+          : "plain",
     });
     c.sound(p, "sniper-settle");
     return true;
