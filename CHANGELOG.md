@@ -1,6 +1,15 @@
 # Changelog
 
-Development build **2026.11.05-sniper-handling**, protocol 63. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.05-sniper-bore**, protocol 64. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-05 — Choose a line through the screen
+
+### Sniper: Bore Through
+
+- After settling a paid round with action1, acquired action2 releases it at reduced impact through one narrow cover section. Thick masonry, another solid and the first body stop the shot.
+- Travel inside cover consumes real time and lifespan; the round can remain inside across a tick boundary and must actually emerge before hitting a body beyond it. Armor still uses the actual firing origin. No body piercing, targeting or free recovery is granted.
+- Careful Carry and Clear Chamber remain optional handling choices. The new action works before a capstone and keeps the same actual round/deadline. Action1 retains its issued direct shot.
+- Exact63 local ownership/history migration preserves47issued techniques/four General/twelve classes.27SP/onecapstone, equipment, remaps, both HUD choices and earlier operations remain. Further Sniper/whole-class/human assessment stays open.
 
 ## 2026-11-05 — Carry the opportunity, or clear the round
 

@@ -15,6 +15,9 @@ export function sniperKitMarkup(
     ["e", "ability.soldier-e.name"],
     ["ultimate", "ability.soldier-ultimate.name"],
     ["technique1", "skill.soldier-sniper-1.name"],
+    ...(p.skills.includes(sniperIds.bore)
+      ? [["technique2", "skill." + sniperIds.bore + ".name"] as const]
+      : []),
     ...(p.skills.includes(sniperIds.clear)
       ? [["reload", "skill." + sniperIds.clear + ".name"] as const]
       : []),
@@ -38,6 +41,9 @@ export function sniperKitMarkup(
             : "ui.sniper.help",
       ),
     ) +
+    (p.skills.includes(sniperIds.bore)
+      ? " " + e(t("ui.sniper.boreHelp"))
+      : "") +
     "</p><ul>" +
     rows
       .map(
@@ -47,7 +53,11 @@ export function sniperKitMarkup(
           '"><span class="engineer-kit-slot">' +
           e(actionLabel(action)) +
           '</span><strong lang="' +
-          (action === "technique1" || action === "reload" ? "en" : e(locale)) +
+          (action === "technique1" ||
+          action === "technique2" ||
+          action === "reload"
+            ? "en"
+            : e(locale)) +
           '">' +
           e(t(key)) +
           "</strong><div>" +
@@ -58,7 +68,8 @@ export function sniperKitMarkup(
     "</ul></details>"
   );
 }
-export function sniperHudLabel(p: PlayerView, now: number) {
+export function sniperHudLabel(p: PlayerView, now: number, bore = false) {
+  if (bore && !p.kit.sniperPrepared) return t("ui.sniper.boreAwait");
   const settling = (p.kit.sniperReadyAt ?? 0) > now,
     target = settling ? p.kit.sniperReadyAt! : p.kit.sniperUntil!;
   return (p.kit.sniperUntil ?? 0) > now

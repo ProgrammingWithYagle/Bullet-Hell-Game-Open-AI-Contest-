@@ -24,7 +24,7 @@ test("The exact issued ten-class local chapter keeps its Summoner identity and e
   assert.equal(restored.players.get("solo")!.classId, "summoner");
   assert.deepEqual(restored.trainingFor("solo"), g.trainingFor("p"));
   assert.equal(restored.offlineCheckpoint()!.contentRevision, CONTENT_REVISION);
-  assert.equal(PROTOCOL,63);
+  assert.equal(PROTOCOL,64);
   const forged = structuredClone(saved);
   forged.player.classId = "ranger";
   assert.throws(() => Game.restoreOffline(forged));

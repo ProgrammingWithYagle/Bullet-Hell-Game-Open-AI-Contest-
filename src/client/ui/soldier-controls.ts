@@ -160,7 +160,7 @@ export function soldierKitMarkup(
 
 /** Owned HUD/touch labels use authority's clock and progress, including stop during recovery. */
 export function soldierHudLabel(p: PlayerView, key: string, now: number) {
-  if(p.skills.includes(sniperId)&&key==='technique1')return sniperHudLabel(p,now);
+  if(p.skills.includes(sniperId)&&(key==='technique1'||key==='technique2'))return sniperHudLabel(p,now,key==='technique2');
   if(p.skills.includes(grenadierIds.entry)&&key.startsWith("technique"))return grenadierHudLabel(p,key,now);
   if (key === "technique2" && p.skills.includes(marksmanIds.pair)) {
     const name = t("skill." + marksmanIds.pair + ".name"),

@@ -1,5 +1,7 @@
+import{soldierSniperBoreMessages}from'./soldier-sniper-bore.mjs';
 import{soldierSniperHandlingMessages}from'./soldier-sniper-handling.mjs';
 export const soldierSniperMessages=()=>({
+  ...soldierSniperBoreMessages(),
   ...soldierSniperHandlingMessages(),
   "pathway.soldier-sniper-1.name": "Sniper",
   "pathway.soldier-sniper-1.summary": "Settled Shot: Plant, settle and deliberately release one actual round.",

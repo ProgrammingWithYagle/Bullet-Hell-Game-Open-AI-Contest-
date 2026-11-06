@@ -1,3 +1,7 @@
+import {
+  advanceSniperBore,
+  type BoreFlight,
+} from "./soldier-sniper-bore-flight.ts";
 import catalog from "../../content/catalog.json";
 import { DT, HZ, type InputFrame, type Shot, type Vec } from "./protocol.ts";
 import { distance, segmentRect, type Rect } from "./geometry.ts";
@@ -9,8 +13,10 @@ export const sniperIds = {
   entry: sniperId,
   carry: "soldier-sniper-carry-1",
   clear: "soldier-sniper-clear-1",
+  bore: "soldier-sniper-bore-1",
 } as const;
 export const sniperRules = catalog.rules.soldierSniper;
+export const sniperBoreRules = catalog.rules.soldierSniperBore;
 const ticks = (seconds: number) => Math.ceil(seconds * HZ),
   angle = (value: number) => Math.atan2(Math.sin(value), Math.cos(value));
 const owned = (p: Player | undefined): p is Player =>
@@ -30,8 +36,8 @@ type Preparation = Vec & {
   damage: number;
   handling: "plain" | "carry" | "clear";
 };
-type Flight = { owner: string; weapon: string; origin: Vec };
-export type SniperCue = Vec & {
+type Flight = { owner: string; weapon: string; origin: Vec; bore?: BoreFlight };
+type SniperSightCue = Vec & {
   kind: "soldier-sight";
   owner: string;
   id: number;
@@ -41,6 +47,18 @@ export type SniperCue = Vec & {
   aim: number;
   radius: number;
 };
+export type SniperPunctureCue = Vec & {
+  kind: "soldier-puncture";
+  owner: string;
+  id: number;
+  at: number;
+  until: number;
+  exitX: number;
+  exitY: number;
+  aim: number;
+  radius: number;
+};
+export type SniperCue = SniperSightCue | SniperPunctureCue;
 export type SniperContext = {
   tick: number;
   stats(p: Player): Stats;
@@ -73,6 +91,7 @@ export class SoldierSniper {
   private barrelUntil = new Map<string, number>();
   private preparations = new Map<string, Preparation>();
   private flights = new Map<number, Flight>();
+  private punctures: SniperPunctureCue[] = [];
   noteBurst(p: Player, now: number, remainingTicks: number) {
     if (!owned(p)) return;
     this.interrupt(p.id);
@@ -104,6 +123,7 @@ export class SoldierSniper {
     this.barrelUntil.clear();
     this.preparations.clear();
     this.flights.clear();
+    this.punctures = [];
   }
   has(id: number) {
     return this.flights.has(id);
@@ -112,6 +132,7 @@ export class SoldierSniper {
     this.flights.delete(id);
   }
   cancelOwner(owner: string) {
+    this.punctures = this.punctures.filter((c) => c.owner !== owner);
     this.barrelUntil.delete(owner);
     this.actions.delete(owner);
     this.preparations.delete(owner);
@@ -198,6 +219,7 @@ export class SoldierSniper {
     this.preparation(p, now);
   }
   step(now: number, players: readonly Player[]) {
+    this.punctures = this.punctures.filter((c) => c.until > now);
     for (const owner of this.preparations.keys()) {
       const p = players.find((p) => p.id === owner);
       if (!p) this.interrupt(owner);
@@ -208,25 +230,27 @@ export class SoldierSniper {
     return this.preparations.has(owner);
   }
   cues(players: readonly Player[]): SniperCue[] {
-    return [...this.preparations.values()].flatMap((q) => {
-      const p = players.find((p) => p.id === q.owner);
-      return live(p)
-        ? [
-            {
-              kind: "soldier-sight" as const,
-              owner: q.owner,
-              id: q.id,
-              x: q.x,
-              y: q.y,
-              at: q.at,
-              readyAt: q.readyAt,
-              until: q.until,
-              aim: q.aim,
-              radius: sniperRules.cueReach,
-            },
-          ]
-        : [];
-    });
+    return [...this.preparations.values()]
+      .flatMap<SniperCue>((q) => {
+        const p = players.find((p) => p.id === q.owner);
+        return live(p)
+          ? [
+              {
+                kind: "soldier-sight" as const,
+                owner: q.owner,
+                id: q.id,
+                x: q.x,
+                y: q.y,
+                at: q.at,
+                readyAt: q.readyAt,
+                until: q.until,
+                aim: q.aim,
+                radius: sniperRules.cueReach,
+              },
+            ]
+          : [];
+      })
+      .concat(this.punctures);
   }
   status(p: Player | undefined, now: number) {
     const q = this.preparation(p, now),
@@ -265,17 +289,7 @@ export class SoldierSniper {
     const q = this.preparation(p, c.tick);
     if (q) {
       if (c.tick < q.readyAt) return false;
-      const shot = c.shoot(p, q.damage);
-      if (!shot) return false;
-      this.flights.set(shot.id, {
-        owner: p.id,
-        weapon: q.weapon,
-        origin: { x: p.x, y: p.y },
-      });
-      this.preparations.delete(p.id);
-      this.action(p, c.tick, false);
-      c.sound(p, "sniper-shot");
-      return true;
+      return this.release(p, q, c, false);
     }
     if (
       c.tick < (this.recovery.get(p.id) ?? 0) ||
@@ -313,6 +327,39 @@ export class SoldierSniper {
     c.sound(p, "sniper-settle");
     return true;
   }
+  private release(p: Player, q: Preparation, c: SniperContext, bore: boolean) {
+    const shot = c.shoot(
+      p,
+      bore
+        ? (q.damage * sniperBoreRules.damage) / sniperRules.damage
+        : q.damage,
+    );
+    if (!shot) return false;
+    this.flights.set(shot.id, {
+      owner: p.id,
+      weapon: q.weapon,
+      origin: { x: p.x, y: p.y },
+      ...(bore ? { bore: { available: true } } : {}),
+    });
+    this.preparations.delete(p.id);
+    this.action(p, c.tick, false);
+    c.sound(p, bore ? "sniper-bore" : "sniper-shot");
+    return true;
+  }
+  bore(p: Player, c: SniperContext) {
+    if (
+      !p.skills.includes(sniperIds.bore) ||
+      this.busy(p, c.tick) ||
+      p.input.reload ||
+      p.input.dodge ||
+      p.input.e ||
+      p.input.ultimate
+    )
+      return false;
+    const q = this.preparation(p, c.tick);
+    if (!q || c.tick < q.readyAt) return false;
+    return this.release(p, q, c, true);
+  }
   advance(s: Shot, c: SniperFlightContext) {
     const f = this.flights.get(s.id);
     if (
@@ -320,9 +367,33 @@ export class SoldierSniper {
       !live(c.owner) ||
       c.owner.id !== f.owner ||
       c.owner.weapon !== f.weapon ||
+      (f.bore && !c.owner.skills.includes(sniperIds.bore)) ||
       c.tick >= s.expires
     )
       return false;
+    if (f.bore)
+      return advanceSniperBore(s, f.bore, {
+        bounds: c.bounds,
+        obstacles: c.obstacles,
+        maximum: sniperBoreRules.coverDepth,
+        impactAfterCover: sniperBoreRules.impactAfterCover,
+        hit: (from, to, wall, window) =>
+          c.hit(from, to, wall, window, f.origin),
+        crossed: (entry, exit) =>
+          this.punctures.push({
+            kind: "soldier-puncture",
+            owner: s.owner,
+            id: s.id,
+            x: entry.x,
+            y: entry.y,
+            exitX: exit.x,
+            exitY: exit.y,
+            at: c.tick,
+            until: c.tick + ticks(sniperBoreRules.cueSeconds),
+            aim: Math.atan2(s.vy, s.vx),
+            radius: sniperBoreRules.cueRadius,
+          }),
+      });
     const from = { x: s.x, y: s.y },
       to = { x: s.x + s.vx * DT, y: s.y + s.vy * DT };
     let wall = 1,

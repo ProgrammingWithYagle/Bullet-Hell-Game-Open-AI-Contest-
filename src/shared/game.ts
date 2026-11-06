@@ -1579,7 +1579,7 @@ export class Game {
     for(const slot of ['technique1','technique2'] as const)if(i[slot])this.classKits.castEngineer(p,slot,this.kitContext());
     if (i.e && (now >= p.eAt || this.classKits.freeStep(p.id, now))) this.ability(p, 'e');
     if(p.classId==='soldier'&&i.technique1){if(p.skills.includes(sniperId))this.sniper.cast(p,this.sniperContext());else if(p.skills.includes(grenadierIds.entry))this.grenadier.cast(p,this.grenadierContext());else if(p.skills.includes(marksmanId))this.marksman.cast(p,this.marksmanContext());else this.skirmisher.cast(p,this.skirmisherContext());}
-    if(p.classId==='soldier'&&i.technique2){if(p.skills.includes(sniperId)){}else if(p.skills.includes(grenadierIds.entry))this.grenadier.shortCast(p,this.grenadierContext());else if(p.skills.includes(marksmanId))this.marksman.castPair(p,this.marksmanContext());else this.skirmisher.load(p,this.skirmisherContext());}
+    if(p.classId==='soldier'&&i.technique2){if(p.skills.includes(sniperId))this.sniper.bore(p,this.sniperContext());else if(p.skills.includes(grenadierIds.entry))this.grenadier.shortCast(p,this.grenadierContext());else if(p.skills.includes(marksmanId))this.marksman.castPair(p,this.marksmanContext());else this.skirmisher.load(p,this.skirmisherContext());}
     if (i.ultimate && now >= p.ultimateAt) this.ability(p, 'ultimate');
     if(p.classId==='soldier')this.skirmisher.advanceLoad(p,this.skirmisherContext());
     const loading=p.classId==='soldier'&&this.skirmisher.isLoading(p.id);
