@@ -1,3 +1,5 @@
+import{sniperId}from'../../shared/soldier-sniper.ts';
+import{sniperKitMarkup,sniperHudLabel}from'./sniper-controls.ts';
 import{grenadierIds}from'../../shared/soldier-grenadier.ts';
 import{grenadierKitMarkup,grenadierHudLabel}from'./grenadier-controls.ts';
 import { marksmanId, marksmanIds } from "../../shared/soldier-marksman.ts";
@@ -20,6 +22,7 @@ export function soldierKitMarkup(
   open: boolean,
 ) {
   if (p.classId !== "soldier" || p.training) return "";
+  if(p.skills.includes(sniperId))return sniperKitMarkup(p,controls,open);
   if(p.skills.includes(grenadierIds.entry))return grenadierKitMarkup(p,controls,open);
   const cl = data.classes.find((c) => c.id === "soldier")!;
   const rows = [
@@ -157,6 +160,7 @@ export function soldierKitMarkup(
 
 /** Owned HUD/touch labels use authority's clock and progress, including stop during recovery. */
 export function soldierHudLabel(p: PlayerView, key: string, now: number) {
+  if(p.skills.includes(sniperId)&&key==='technique1')return sniperHudLabel(p,now);
   if(p.skills.includes(grenadierIds.entry)&&key.startsWith("technique"))return grenadierHudLabel(p,key,now);
   if (key === "technique2" && p.skills.includes(marksmanIds.pair)) {
     const name = t("skill." + marksmanIds.pair + ".name"),

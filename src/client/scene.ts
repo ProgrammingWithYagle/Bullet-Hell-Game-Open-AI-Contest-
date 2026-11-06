@@ -882,6 +882,9 @@ export class CombatScene extends Phaser.Scene {
         }
         continue;
       }
+      if(cue.kind==='soldier-sight'){
+        const local=cue.owner===this.localId,ready=now>=cue.readyAt,color=ready?0xc4bd93:0x879da2,alpha=local?.8:.28,length=Math.min(cue.radius,36);h.lineStyle(ready?2:1.2,color,alpha).strokeCircle(cue.x,cue.y,12);for(const side of [-1,1]){const a=cue.aim+side*Math.PI/15;h.lineBetween(cue.x+Math.cos(a)*15,cue.y+Math.sin(a)*15,cue.x+Math.cos(a)*length,cue.y+Math.sin(a)*length);}continue;
+      }
       if(cue.kind==='soldier-fuse'||cue.kind==='soldier-grenade-contact'||cue.kind==='soldier-grenade-blast'||cue.kind==='soldier-grenade-vent'){
         const local=cue.owner===this.localId,fade=Math.max(0,Math.min(1,(cue.until-now)/Math.max(1,cue.until-cue.at))),color=cue.kind==='soldier-grenade-vent'?0x8d998e:0xc6ae7d;
         if(cue.kind==='soldier-fuse'){const progress=1-fade;h.lineStyle(1.5,color,local?.8:.35).beginPath().arc(cue.x,cue.y,cue.radius,-Math.PI/2,-Math.PI/2+Math.PI*2*progress).strokePath();h.lineStyle(2,color,local?.8:.35).strokeRect(cue.x-3,cue.y-cue.radius-7,6,5);}

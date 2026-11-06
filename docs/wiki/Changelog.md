@@ -1,6 +1,16 @@
 # Changelog
 
-Development build **2026.11.05-soldier-grenadier**, protocol 61. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.05-sniper-settled-shot**, protocol 62. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-05 — Plant the shot, choose the moment
+
+### First Sniper operation
+
+- Settled Shot reserves one real magazine round and starts recovery. Stand still while the sight settles, then deliberately press action1 again to fire. A timer never fires the shot for you.
+- Recenter beyond the settled bearing to prepare a new line within the original finite deadline. Movement and incompatible actions abandon the paid preparation; bodies, cover, travel and source armor still apply.
+- A committed Breach Cadence finishes all three issued shots on its original schedule before Sniper preparation can begin. Rejected setup spends no round or recovery; the owned burst is neither interrupted nor purchased again.
+- The first affordable Sniper operation is distinct from moving Ranger draws, Marksman cover banks, Skirmisher movement/loading and Grenadier fuse handling. Further Sniper choices/later operations and whole-class assessment remain unfinished. No fixed pathway maximum applies.
+- Exact61 ownership/history migration preserves44issued techniques/four General and twelve classes. Local imports never become online proof.27SP/onecapstone, equipment, remaps and both HUD choices remain. Only the user decides whole-game completion.
 
 ## 2026-11-05 — Read the fuse, keep the same canister
 

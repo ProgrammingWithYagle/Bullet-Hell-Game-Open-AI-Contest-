@@ -78,13 +78,13 @@ async function setup(
 test("the authored whole tree connects two implemented disciplines while retaining the issued Skirmisher region", () => {
   assert.deepEqual(
     specializationRoutes("soldier").map((route) => route.id),
-    ["soldier-skirmisher-1", id,"soldier-grenadier-1"],
+    ["soldier-skirmisher-1", id,"soldier-grenadier-1","soldier-sniper-1"],
   );
   const whole = specializationMapLayout("soldier")!,
     mark = specializationMapLayout("soldier", id)!,
     old = specializationMapLayout("soldier", "soldier-skirmisher-1")!;
   assert.equal(whole.nodes.filter((node) => node.reference).length, 1);
-  assert.equal(whole.width, 3100);
+  assert.equal(whole.width, 4150);
   assert.equal(old.nodes.length, 8);
   assert.equal(old.edges.length, 7);
   assert.equal(mark.nodes.length, 8);
@@ -174,7 +174,7 @@ test("owned discipline inspection preserves fold state and rejects replacing an 
   assert.equal(viewOf(f.g, f.p.id).players[0].sp, 9);
   assert(f.p.skills.includes(id));
   assert(!f.p.skills.includes("soldier-skirmisher-1"));
-  assert(!f.host.textContent.includes("Sniper"));
+  assert(f.host.textContent.includes("Sniper"));
   assert(!f.host.textContent.includes("Field Logistics"));
 });
 

@@ -181,7 +181,7 @@ test("Grenadier authored graph preserves two exclusive choices, optional late br
   ]);
   assert(map.edges.some((e) => e.from === ids.pitch && e.to === ids.kick));
   assert(!map.edges.some((e) => e.from === ids.pin && e.to === ids.kick));
-  assert.equal(specializationRoutes("soldier").length, 3);
+  assert.equal(specializationRoutes("soldier").length, 4);
   assert.equal(viewOf(f.g, f.p.id).players[0].sp, 6);
 });
 test("HUD labels use real finite fuse, pinned and ground-handling authority without requiring magazine ammunition", async (t) => {

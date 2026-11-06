@@ -56,6 +56,7 @@ type Memory = {
   weapon: string;
   status: string;
   swordCutId?: number;
+  sniperEventAt?:number;
   attackAt: number;
   hurtAt: number;
   downAt: number;
@@ -99,10 +100,11 @@ export class SurvivorActionClock {
         attackFacing: facingOf(player.aim),
         hurtFacing: facingOf(player.aim),
       };
+      const sniper=player.classId==='soldier'&&player.skills.includes('soldier-sniper-1');
       if (old && continuingCombat && old.status === 'active' && player.status === 'active') {
         const attack = clips.get(player.classId + '-attack-south');
         if (
-          player.classId !== 'ranger' && player.weapon === old.weapon &&
+          !sniper && player.classId !== 'ranger' && player.weapon === old.weapon &&
           player.ammo < old.ammo &&
           attack &&
           view.tick - memory.attackAt >= (attack.frames * HZ) / attack.fps
@@ -115,6 +117,11 @@ export class SurvivorActionClock {
           memory.hurtFacing = facingOf(player.aim);
           memory.attackAt = -Infinity;
         }
+      }
+      if(sniper&&view.phase==='combat'&&player.status==='active'){
+        const primaryAt=player.kit.sniperPrimaryAt??0,shotAt=player.kit.sniperShotAt??0,at=Math.max(primaryAt,shotAt),fresh=at>0&&at!==(memory.sniperEventAt??0),attack=clips.get('soldier-attack-south')!,duration=attack.frames*HZ/attack.fps;
+        memory.sniperEventAt=at;
+        if(fresh&&view.combatTick>=at&&view.combatTick-at<duration&&view.tick-memory.attackAt>=duration&&(!old||(player.weapon===old.weapon&&player.health>=old.health))){memory.attackAt=view.tick-Math.max(0,view.combatTick-at);memory.attackFacing=facingOf(shotAt>=primaryAt?(player.kit.sniperShotAim??player.aim):(player.kit.sniperPrimaryAim??player.aim));}
       }
       if (player.classId === 'swordsman' && view.phase === 'combat' && player.status === 'active') {
         const cut = view.classCues

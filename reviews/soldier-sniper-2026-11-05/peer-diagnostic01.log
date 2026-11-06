@@ -1,0 +1,28 @@
+✖ real ordinary Short Sniper peers retain paid sight, owner-only live flight/removal, pause, late observation and host-exit authority (334.6454ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2084.7912
+
+✖ failing tests:
+
+test at tests\soldier-sniper-network.test.ts:1:179
+✖ real ordinary Short Sniper peers retain paid sight, owner-only live flight/removal, pause, late observation and host-exit authority (334.6454ms)
+  AssertionError [ERR_ASSERTION]: selected manual angle is outside the ordinary protocol: 5.497787143782138
+      at sniperPeerFlow (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\sniper-peer-flow.ts:107:5)
+      at runNextTicks (node:internal/process/task_queues:65:5)
+      at process.processTimers (node:internal/timers:615:9)
+      at async TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\soldier-sniper-network.test.ts:15:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

@@ -128,7 +128,7 @@ test("ordinary Short buys a distinct affordable Grenadier discipline and symmetr
   }
   assert.equal(data.skills.length, 648);
   assert.equal(data.generalSkills.length, 4);
-  assert.equal(data.specializationSkills.length, 44);
+  assert.equal(data.specializationSkills.length, 45);
 });
 test("prime starts one finite recovery without ammo or E, and a separate manual throw retains the cooked fuse", () => {
   const f = fixture(),
@@ -467,8 +467,15 @@ test("reload/dodge/channel/overdrive reject new requests without spending and in
 test("actual health loss cancels an unsecured hand, absorbed damage and living-owner flight do not", () => {
   const f = fixture();
   f.step({ technique1: true });
-  f.p.shield = 100;
+  const healthBeforeShield = f.p.health;
+  f.p.invulnerableUntil = 0;
+  f.p.shield = 10;
   (f.g as any).damage(f.p, 1);
+  assert.equal(f.p.health, healthBeforeShield);
+  assert(
+    f.p.shield < 10,
+    "the real shield absorbed damage outside spawn protection",
+  );
   assert(f.g.kitStatus(f.p.id).grenadierHolding);
   f.p.shield = 0;
   f.p.invulnerableUntil = 0;
@@ -477,8 +484,12 @@ test("actual health loss cancels an unsecured hand, absorbed damage and living-o
   const q = fixture();
   q.step({ technique1: true });
   q.step({ technique1: true });
-  const shot = q.shots()[0];
+  const shot = q.shots()[0],
+    healthBeforeFlightHit = q.p.health;
+  q.p.invulnerableUntil = 0;
+  q.p.shield = 0;
   (q.g as any).damage(q.p, 1);
+  assert(q.p.health < healthBeforeFlightHit);
   assert(q.g.shots.has(shot.id));
   q.step();
   assert(q.g.shots.has(shot.id));
@@ -633,4 +644,32 @@ test("recycling a canister projectile cannot relabel an ordinary primary or anot
   assert(ordinary);
   assert.equal(ordinary.visual, undefined);
   assert(!("visual" in ordinary));
+});
+
+test("purple percentage health loss immediately cancels a live Grenadier hand even if a later real heal restores health; a re-pinned fuse stays stored", () => {
+  for (const pinned of [false, true]) {
+    const f = fixture([ids.pitch, ids.pin]);
+    f.step({ technique1: true });
+    if (pinned) f.step({ reload: true });
+    const before = f.g.kitStatus(f.p.id),
+      health = f.p.health,
+      ammo = f.p.ammo;
+    f.p.invulnerableUntil = 0;
+    assert((f.g as any).purpleStamp(f.p, 0, true));
+    assert(f.p.health < health);
+    (f.g as any).heal(f.ally, f.p, health);
+    assert.equal(f.p.health, health);
+    const after = f.g.kitStatus(f.p.id);
+    assert.equal(
+      after.grenadierHolding,
+      false,
+      "a restored health total cannot erase the actual loss event",
+    );
+    if (pinned) {
+      assert.equal(after.grenadierPinnedUntil, before.grenadierPinnedUntil);
+      assert.equal(after.grenadierRemainingFuse, before.grenadierRemainingFuse);
+    } else assert.equal(after.grenadierFuseUntil, 0);
+    assert.equal(after.grenadierRecoveryAt, before.grenadierRecoveryAt);
+    assert.equal(f.p.ammo, ammo);
+  }
 });

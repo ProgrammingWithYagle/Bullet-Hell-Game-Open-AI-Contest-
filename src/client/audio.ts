@@ -1,3 +1,4 @@
+import{isSniperSound,playSniperSound}from'./soldier-sniper-sound.ts';
 import{isGrenadierSound,playGrenadierSound}from'./soldier-grenadier-sound.ts';
 import {isSoldierSound,playSoldierSound}from'./soldier-sound.ts';
 import {isEngineerSound,playEngineerSound} from './engineer-sound.ts';
@@ -103,6 +104,7 @@ export class AudioBus {
     const now = performance.now();
     if (now - (this.last.get(id) ?? -Infinity) < 60) return;
     this.last.set(id, now);
+    if(isSniperSound(id)){if(this.volume<=0)return;this.active++;try{playSniperSound(this.context,id,this.volume,()=>this.active--);}catch{this.active--;}return;}
     if(isGrenadierSound(id)){if(this.volume<=0)return;this.active++;try{playGrenadierSound(this.context,id,this.volume,()=>this.active--);}catch{this.active--;}return;}
     if(isSoldierSound(id)){
       if(this.volume<=0)return;this.active++;
