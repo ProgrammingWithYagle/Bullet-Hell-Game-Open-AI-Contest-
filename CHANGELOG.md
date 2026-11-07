@@ -1,6 +1,15 @@
 # Changelog
 
-Development build **2026.11.06-sniper-prepared-withdrawal**, protocol 66. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.06-heavy-flak**, protocol 67. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-06 — Place a deliberate break in an incoming lane
+
+### Heavy: Flak Gunner foundation
+
+- Flak Round uses one actual magazine round for a physical defensive shell. A finite burst clears at most three small hostile shots with cover blocking; it deals no body damage. Earlier hits, large objects, beams, fields and ground attacks remain.
+- Choose a shorter all-around Close Pattern or a longer Forward Baffle with a real rear gap. Later acquired Manual Fuze commands the one actual own flight before its original fuse; it cannot duplicate a burst or reset recovery.
+- Ordinary Short3SP buys Fresh Belt and Flak Round. Optional handling and Manual Fuze cost eight SP including the foundation, fitting the ordinary Raid12SP budget. Existing Q/E/ultimate and General benefits remain.
+- Exact66 local ownership preserves all50issued techniques/four General/all twelve classes and historical local records. Original equipment, balances, remaps, both HUD choices and Practice editions remain. Further Heavy operations/routes, remaining classes and human/final-balance acceptance continue.
 
 ## 2026-11-06 — Prepare the return before committing the shot
 

@@ -1,0 +1,414 @@
+import catalog from "../../content/catalog.json";
+import { DT, HZ, type Shot, type Vec } from "./protocol.ts";
+import { segmentRect, type Rect } from "./geometry.ts";
+import { swordCircleContact } from "./sword-geometry.ts";
+import type { Player, Stats } from "./game.ts";
+import type { MotionWindow } from "./motion-window.ts";
+
+// Shared physical flak and deferred, finite interception authority.
+export const flakIds = {
+  entry: "heavy-flak-1",
+  compact: "heavy-flak-compact-1",
+  frontal: "heavy-flak-frontal-1",
+  command: "heavy-flak-command-1",
+} as const;
+export type FlakRules = {
+  speed: number;
+  radius: number;
+  fuseSeconds: number;
+  cooldown: number;
+  burstSeconds: number;
+  baseRadius: number;
+  compactRadius: number;
+  compactFuseSeconds: number;
+  frontalReach: number;
+  frontalArc: number;
+  frontalFuseSeconds: number;
+  projectileLimit: number;
+  maximumHostileRadius: number;
+};
+type Pattern = "base" | "compact" | "frontal";
+type Flight = Vec & {
+  id: number;
+  owner: string;
+  weapon: string;
+  born: number;
+  until: number;
+  aim: number;
+  pattern: Pattern;
+};
+type Pending = Flight & { at: number; reason: "fuse" | "contact" | "command" };
+export type FlakBurstCue = Vec & {
+  kind: "heavy-flak-burst";
+  id: number;
+  owner: string;
+  at: number;
+  until: number;
+  radius: number;
+  aim: number;
+  arc: number;
+  contacts: Vec[];
+};
+type Action = {
+  at: number;
+  aim: number;
+  primaryAt?: number;
+  primaryAim?: number;
+};
+const ticks = (seconds: number) => Math.ceil(seconds * HZ);
+const owned = (p: Player | undefined): p is Player =>
+  !!p && p.classId === "heavy" && p.skills.includes(flakIds.entry);
+const live = (p: Player | undefined): p is Player =>
+  owned(p) && p.connected && p.status === "active" && p.health > 0;
+export type FlakContext = {
+  tick: number;
+  stats(p: Player): Stats;
+  canEmit(): boolean;
+  shoot(
+    p: Player,
+    speed: number,
+    radius: number,
+    fuseSeconds: number,
+  ): Shot | undefined;
+  shot(id: number): Shot | undefined;
+  remove(s: Shot): void;
+  sound(p: Player, id: string, point?: Vec): void;
+};
+export type FlakFlightContext = {
+  tick: number;
+  owner: Player | undefined;
+  bounds: Rect;
+  obstacles: readonly Rect[];
+  body(from: Vec, to: Vec, window: MotionWindow): number | null;
+};
+export type FlakBurstContext = {
+  tick: number;
+  combat: boolean;
+  players: readonly Player[];
+  obstacles: readonly Rect[];
+  shots(): readonly Shot[];
+  remove(s: Shot): boolean;
+  id(): number;
+  sound(p: Player, id: string, point: Vec): void;
+};
+
+/** One physical defensive round; interception is deferred until after ordinary shot advancement. */
+export class HeavyFlak {
+  private recovery = new Map<string, number>();
+  private actions = new Map<string, Action>();
+  private flights = new Map<number, Flight>();
+  private pending: Pending[] = [];
+  private bursts: FlakBurstCue[] = [];
+  constructor(readonly rules: FlakRules) {}
+  clear() {
+    this.recovery.clear();
+    this.actions.clear();
+    this.flights.clear();
+    this.pending = [];
+    this.bursts = [];
+  }
+  has(id: number) {
+    return this.flights.has(id);
+  }
+  forget(id: number) {
+    this.flights.delete(id);
+  }
+  private flight(owner: string) {
+    return [...this.flights.values()].find((f) => f.owner === owner);
+  }
+  private valid(p: Player | undefined, f: Flight): p is Player {
+    return (
+      live(p) &&
+      p.weapon === f.weapon &&
+      (f.pattern === "base" || p.skills.includes(flakIds[f.pattern]))
+    );
+  }
+  private validPending(p: Player | undefined, f: Pending): p is Player {
+    return (
+      this.valid(p, f) &&
+      (f.reason !== "command" || p.skills.includes(flakIds.command))
+    );
+  }
+  private busy(p: Player | undefined, now: number) {
+    return (
+      !live(p) ||
+      p.reloadAt > now ||
+      p.dashUntil > now ||
+      p.channelUntil > now ||
+      p.overdriveUntil > now
+    );
+  }
+  private pattern(p: Player): Pattern {
+    return p.skills.includes(flakIds.compact)
+      ? "compact"
+      : p.skills.includes(flakIds.frontal)
+        ? "frontal"
+        : "base";
+  }
+  private seconds(pattern: Pattern) {
+    return pattern === "compact"
+      ? this.rules.compactFuseSeconds
+      : pattern === "frontal"
+        ? this.rules.frontalFuseSeconds
+        : this.rules.fuseSeconds;
+  }
+  private shape(pattern: Pattern) {
+    return pattern === "frontal"
+      ? { radius: this.rules.frontalReach, arc: this.rules.frontalArc }
+      : {
+          radius:
+            pattern === "compact"
+              ? this.rules.compactRadius
+              : this.rules.baseRadius,
+          arc: Math.PI * 2,
+        };
+  }
+  private queue(
+    f: Flight,
+    now: number,
+    reason: Pending["reason"],
+    point: Vec = f,
+  ) {
+    this.flights.delete(f.id);
+    this.pending.push({ ...f, x: point.x, y: point.y, at: now, reason });
+  }
+  cancelOwner(owner: string) {
+    const ids = [...this.flights.values()]
+      .filter((f) => f.owner === owner)
+      .map((f) => f.id);
+    for (const id of ids) this.flights.delete(id);
+    this.pending = this.pending.filter((f) => f.owner !== owner);
+    this.bursts = this.bursts.filter((c) => c.owner !== owner);
+    this.actions.delete(owner);
+    return ids;
+  }
+  step(now: number, players: readonly Player[]) {
+    const removed: number[] = [];
+    for (const f of this.flights.values())
+      if (
+        !this.valid(
+          players.find((p) => p.id === f.owner),
+          f,
+        )
+      ) {
+        this.flights.delete(f.id);
+        removed.push(f.id);
+      }
+    this.pending = this.pending.filter((f) =>
+      this.validPending(
+        players.find((p) => p.id === f.owner),
+        f,
+      ),
+    );
+    this.bursts = this.bursts.filter((c) => c.until > now);
+    return removed;
+  }
+  primaryReleased(p: Player, now: number) {
+    if (!owned(p)) return;
+    const a = this.actions.get(p.id) ?? { at: 0, aim: 0 };
+    this.actions.set(p.id, { ...a, primaryAt: now, primaryAim: p.aim });
+  }
+  blocksPrimary(owner: string, now: number) {
+    return this.actions.get(owner)?.at === now;
+  }
+  status(p: Player | undefined, now: number) {
+    const f = p ? this.flight(p.id) : undefined,
+      a = p ? this.actions.get(p.id) : undefined;
+    return {
+      technique1At: p ? (this.recovery.get(p.id) ?? 0) : 0,
+      technique2At: 0,
+      heavyFlakBlocked: this.busy(p, now) || !p || p.ammo < 1 || !!f,
+      heavyFlakCommandBlocked:
+        this.busy(p, now) ||
+        !p?.skills.includes(flakIds.command) ||
+        !f ||
+        f.born >= now ||
+        f.until <= now,
+      heavyFlakUntil: f?.until ?? 0,
+      heavyPrimaryAt: a?.primaryAt ?? 0,
+      heavyPrimaryAim: a?.primaryAim ?? 0,
+      heavyFlakShotAt: a?.at ?? 0,
+      heavyFlakShotAim: a?.aim ?? 0,
+    };
+  }
+  cast(p: Player, c: FlakContext) {
+    if (
+      this.busy(p, c.tick) ||
+      p.input.reload ||
+      p.input.dodge ||
+      p.input.ultimate ||
+      p.ammo < 1 ||
+      this.flight(p.id) ||
+      c.tick < (this.recovery.get(p.id) ?? 0) ||
+      !c.canEmit()
+    )
+      return false;
+    const pattern = this.pattern(p),
+      shot = c.shoot(
+        p,
+        this.rules.speed,
+        this.rules.radius,
+        this.seconds(pattern),
+      );
+    if (!shot) return false;
+    p.ammo--;
+    this.recovery.set(
+      p.id,
+      c.tick + ticks(this.rules.cooldown * c.stats(p).cooldown),
+    );
+    this.flights.set(shot.id, {
+      id: shot.id,
+      owner: p.id,
+      weapon: p.weapon,
+      born: c.tick,
+      until: shot.expires,
+      x: shot.x,
+      y: shot.y,
+      aim: p.aim,
+      pattern,
+    });
+    this.actions.set(p.id, {
+      ...this.actions.get(p.id),
+      at: c.tick,
+      aim: p.aim,
+    });
+    c.sound(p, "heavy-flak-shot");
+    return true;
+  }
+  command(p: Player, c: FlakContext) {
+    const f = this.flight(p.id);
+    if (
+      this.busy(p, c.tick) ||
+      !p.skills.includes(flakIds.command) ||
+      p.input.reload ||
+      p.input.dodge ||
+      p.input.ultimate ||
+      !f ||
+      f.born >= c.tick ||
+      c.tick >= f.until ||
+      !this.valid(p, f)
+    )
+      return false;
+    const shot = c.shot(f.id);
+    if (!shot) return false;
+    this.queue(f, c.tick, "command", { x: shot.x, y: shot.y });
+    c.remove(shot);
+    c.sound(p, "heavy-flak-command");
+    return true;
+  }
+  advance(s: Shot, c: FlakFlightContext) {
+    const f = this.flights.get(s.id);
+    if (!f || !this.valid(c.owner, f)) {
+      this.forget(s.id);
+      return false;
+    }
+    const b = c.bounds,
+      pad = s.radius;
+    if (
+      s.x < b.x + pad ||
+      s.y < b.y + pad ||
+      s.x > b.x + b.width - pad ||
+      s.y > b.y + b.height - pad
+    ) {
+      this.forget(s.id);
+      return false;
+    }
+    if (c.tick >= f.until) {
+      this.queue(f, c.tick, "fuse", { x: s.x, y: s.y });
+      return false;
+    }
+    const from = { x: s.x, y: s.y },
+      to = { x: s.x + s.vx * DT, y: s.y + s.vy * DT };
+    let wall = Infinity,
+      bound = Infinity;
+    for (const r of c.obstacles) {
+      const hit = segmentRect(from, to, r, pad);
+      if (hit) wall = Math.min(wall, hit.t);
+    }
+    for (const [axis, lo, hi] of [
+      ["x", b.x + pad, b.x + b.width - pad],
+      ["y", b.y + pad, b.y + b.height - pad],
+    ] as const) {
+      const delta = to[axis] - from[axis];
+      if (delta > 0) bound = Math.min(bound, (hi - from[axis]) / delta);
+      if (delta < 0) bound = Math.min(bound, (lo - from[axis]) / delta);
+    }
+    const body = c.body(from, to, { from: 0, to: 1 }) ?? Infinity,
+      hit = Math.min(wall, body, bound);
+    if (hit <= 1) {
+      const at = {
+        x: from.x + (to.x - from.x) * Math.max(0, hit),
+        y: from.y + (to.y - from.y) * Math.max(0, hit),
+      };
+      s.x = at.x;
+      s.y = at.y;
+      if (bound <= wall && bound <= body) this.forget(s.id);
+      else this.queue(f, c.tick, "contact", at);
+      return false;
+    }
+    s.x = to.x;
+    s.y = to.y;
+    f.x = s.x;
+    f.y = s.y;
+    return true;
+  }
+  flush(c: FlakBurstContext) {
+    const work = this.pending.splice(0);
+    if (!c.combat) return;
+    for (const f of work) {
+      const p = c.players.find((p) => p.id === f.owner);
+      if (!this.validPending(p, f)) continue;
+      const shape = this.shape(f.pattern),
+        hits = c
+          .shots()
+          .flatMap((s) => {
+            if (
+              s.owner !== "hostile" ||
+              s.radius <= 0 ||
+              s.radius > this.rules.maximumHostileRadius ||
+              s.expires <= c.tick
+            )
+              return [];
+            const hit = swordCircleContact(
+              f,
+              f.aim,
+              shape.radius,
+              shape.arc,
+              s,
+              s.radius,
+              c.obstacles,
+            );
+            return hit ? [{ s, near: hit.time * shape.radius }] : [];
+          })
+          .sort((a, b) => a.near - b.near || a.s.id - b.s.id);
+      const contacts: Vec[] = [];
+      for (const h of hits) {
+        if (contacts.length >= this.rules.projectileLimit) break;
+        const point = { x: h.s.x, y: h.s.y };
+        if (c.remove(h.s)) contacts.push(point);
+      }
+      this.bursts.push({
+        kind: "heavy-flak-burst",
+        id: c.id(),
+        owner: f.owner,
+        x: f.x,
+        y: f.y,
+        at: c.tick,
+        until: c.tick + ticks(this.rules.burstSeconds),
+        radius: shape.radius,
+        arc: shape.arc,
+        aim: f.aim,
+        contacts,
+      });
+      c.sound(p, "heavy-flak-burst", { x: f.x, y: f.y });
+    }
+  }
+  cues() {
+    return this.bursts;
+  }
+}
+
+export const heavyFlakRules: FlakRules = {
+  ...catalog.rules.heavyFlak,
+  frontalArc: (catalog.rules.heavyFlak.frontalArcDegrees * Math.PI) / 180,
+};

@@ -1,3 +1,4 @@
+import type{FlakBurstCue}from'./heavy-flak.ts';
 import type{SniperCue}from'./soldier-sniper.ts';
 import type{GrenadierCue}from'./soldier-grenadier.ts';
 import type {MarksmanBankCue}from'./soldier-marksman.ts';
@@ -28,6 +29,7 @@ import type { Minions } from './minions.ts';
 const ticks = (seconds: number) => Math.ceil(seconds * HZ);
 export const RESCUE_CHARGE_TICKS = ticks(0.3) + 1;
 export type KitStatus = {
+  heavyPrimaryAt?:number;heavyPrimaryAim?:number;heavyFlakShotAt?:number;heavyFlakShotAim?:number;heavyFlakUntil?:number;heavyFlakBlocked?:boolean;heavyFlakCommandBlocked?:boolean;
   sniperPrimaryAt?:number;sniperPrimaryAim?:number;sniperShotAt?:number;sniperShotAim?:number;
   sniperRecoveryAt?:number;sniperReadyAt?:number;sniperUntil?:number;sniperPrepared?:boolean;sniperBlocked?:boolean;
   sniperRestAt?:number;sniperRestUntil?:number;sniperRestX?:number;sniperRestY?:number;sniperRestAim?:number;sniperRestSetting?:boolean;sniperRestReady?:boolean;sniperRestBlocked?:boolean;
@@ -98,6 +100,7 @@ export type Construct = {
   until: number;
 };
 export type KitCue =
+  | FlakBurstCue
   | SniperCue
   | GrenadierCue
   | MarksmanBankCue

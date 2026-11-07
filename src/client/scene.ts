@@ -250,6 +250,7 @@ export class CombatScene extends Phaser.Scene {
     note.generateTexture('projectile-note',32,32);note.destroy();
     const beacon=this.make.graphics({x:0,y:0});beacon.lineStyle(3,0xe8ce8a,1).strokeCircle(16,16,8);beacon.fillStyle(0xabc8bd,1).fillCircle(16,16,4);beacon.generateTexture('projectile-beacon',32,32);beacon.destroy();
     const canister=this.make.graphics({x:0,y:0});canister.fillStyle(0x384349,1).fillCircle(16,18,8);canister.lineStyle(2,0xc1a477,1).strokeCircle(16,18,8);canister.fillStyle(0xb5a06f,1).fillRect(12,6,8,6);canister.lineStyle(2,0xd8c69c,1).lineBetween(18,7,24,12);canister.generateTexture('projectile-canister',32,32);canister.destroy();
+    const flak=this.make.graphics({x:0,y:0});flak.fillStyle(0x394349,1).fillRoundedRect(6,11,20,10,4);flak.lineStyle(2,0xbba272,1).strokeRoundedRect(6,11,20,10,4);flak.lineStyle(2,0xd1bf8d,1).lineBetween(20,12,20,20);flak.generateTexture('projectile-flak',32,32);flak.destroy();
     const arrow=this.make.graphics({x:0,y:0});arrow.lineStyle(3,0x3c3024,1).lineBetween(3,16,28,16);arrow.lineStyle(1.5,0xe0cf9d,1).lineBetween(3,16,28,16);arrow.lineStyle(2,0xa8bec0,1).lineBetween(22,11,28,16).lineBetween(28,16,22,21);arrow.lineStyle(2,0x94ad88,1).lineBetween(4,12,8,16).lineBetween(4,20,8,16);arrow.generateTexture('projectile-arrow',32,32);arrow.destroy();
     this.foreground = this.add.graphics().setDepth(30);
     this.bossSprite = this.add
@@ -882,6 +883,13 @@ export class CombatScene extends Phaser.Scene {
         }
         continue;
       }
+      if(cue.kind==='heavy-flak-burst'){
+        const fade=Math.max(0,Math.min(1,(cue.until-now)/Math.max(1,cue.until-cue.at)));h.lineStyle(1.8,0xb7bc9a,.75*fade);
+        if(cue.arc>=Math.PI*2-1e-6)h.strokeCircle(cue.x,cue.y,cue.radius);
+        else{const a=cue.aim-cue.arc/2,b=cue.aim+cue.arc/2;h.beginPath().moveTo(cue.x,cue.y).lineTo(cue.x+Math.cos(a)*cue.radius,cue.y+Math.sin(a)*cue.radius).arc(cue.x,cue.y,cue.radius,a,b).closePath().strokePath();}
+        for(const point of cue.contacts)h.lineBetween(point.x-2,point.y-2,point.x+2,point.y+2).lineBetween(point.x+2,point.y-2,point.x-2,point.y+2);
+        h.strokeCircle(cue.x,cue.y,2);continue;
+      }
       if(cue.kind==='soldier-puncture'){
         const alpha=Math.max(0,Math.min(1,(cue.until-now)/(cue.until-cue.at))),dx=-Math.sin(cue.aim)*5,dy=Math.cos(cue.aim)*5;h.lineStyle(1.8,0xc4bd93,.8*alpha);for(const point of [{x:cue.x,y:cue.y},{x:cue.exitX,y:cue.exitY}]){h.strokeCircle(point.x,point.y,4);h.lineBetween(point.x-dx,point.y-dy,point.x+dx,point.y+dy);}continue;
       }
@@ -1403,7 +1411,7 @@ export class CombatScene extends Phaser.Scene {
       }
       const key =
         'projectile-' +
-        (s.visual==='canister'?'canister':s.owner === 'hostile' ? (this.highContrast ? 'contrast' : 'hostile') : view.players.find(p=>p.id===s.owner)?.classId==='bard'?'note':view.players.find(p=>p.id===s.owner)?.classId==='summoner'?'beacon':view.players.find(p=>p.id===s.owner)?.classId==='ranger'?'arrow':'friendly');
+        (s.visual==='flak'?'flak':s.visual==='canister'?'canister':s.owner === 'hostile' ? (this.highContrast ? 'contrast' : 'hostile') : view.players.find(p=>p.id===s.owner)?.classId==='bard'?'note':view.players.find(p=>p.id===s.owner)?.classId==='summoner'?'beacon':view.players.find(p=>p.id===s.owner)?.classId==='ranger'?'arrow':'friendly');
       let image = this.bulletImages.get(id);
       if (!image) {
         image = this.bulletPool.pop() ?? this.add.image(s.x, s.y, key).setDepth(20);
@@ -1412,7 +1420,7 @@ export class CombatScene extends Phaser.Scene {
       if (image.texture.key !== key) image.setTexture(key);
       image
         .setPosition(s.x, s.y)
-        .setRotation(key==='projectile-arrow'?Math.atan2(s.vy,s.vx):0)
+        .setRotation((key==='projectile-arrow'||key==='projectile-flak')?Math.atan2(s.vy,s.vx):0)
         .setScale((s.radius + 2) / 15)
         .setVisible(true);
       if (s.owner === 'hostile') this.renderedHostiles++;

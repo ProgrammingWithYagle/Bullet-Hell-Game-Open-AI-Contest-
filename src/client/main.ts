@@ -1,3 +1,5 @@
+import{heavyActions}from'./heavy-actions.ts';
+import{heavyHudLabel}from'./ui/heavy-controls.ts';
 import {soldierHudLabel}from'./ui/soldier-controls.ts';
 import {HZ}from'../shared/protocol.ts';
 import {soldierActions}from'./soldier-actions.ts';
@@ -746,7 +748,7 @@ function update(view: View) {
   }else cadenceHost?.remove();
   const abilityList = $('abilities');
   const engineerQ=engineerQNameKey(p),engineerCharges=view.classCues.filter(c=>c.kind==='engineer-charge'&&c.owner===p.id&&c.state!=='spent'&&view.combatTick<c.until).length;
-  const machineryActions=p.classId==='soldier'?soldierActions(p,view.combatTick):engineerActions(p,view.classCues,view.combatTick);
+  const machineryActions=p.classId==='soldier'?soldierActions(p,view.combatTick):p.classId==='heavy'?heavyActions(p,view.combatTick):engineerActions(p,view.classCues,view.combatTick);
   const qLabel=t(machineryActions.qNameKey??(engineerQ?'skill.'+engineerQ+'.name':'ability.'+cl.abilities[0].id+'.name'))+(engineerQ==='engineer-traps-1'?' '+number(engineerCharges)+'/'+number(data.rules.engineerPathways.chargeCapacity):engineerQ==='engineer-builder-1'?' '+t('ui.engineer.builderGroups',{count:number(p.kit.builderGroups??0),capacity:number(p.skills.includes('engineer-builder-linked-1')?2:1)}):'');
   const redoubt=p.skills.includes('engineer-builder-redoubt-1'),ultimateLabel=t(redoubt?'skill.engineer-builder-redoubt-1.name':'ability.'+cl.ultimate.id+'.name');
   for(const slot of ['technique1','technique2']){const shown=machineryActions.extras.some(a=>a.key===slot),touch=document.querySelector<HTMLElement>('[data-action="'+slot+'"]');if(touch)touch.hidden=!shown;if(!shown)abilityList.querySelector('[data-ability="'+slot+'"]')?.remove();}
@@ -763,7 +765,7 @@ function update(view: View) {
       t('ability.' + cl.abilities[1].id + '.name'),
     ],
     ['ultimate', ultimateLabel, p.ultimateAt, t(redoubt?'skill.engineer-builder-redoubt-1.description':'ability.' + cl.ultimate.id + '.name')],
-    ...machineryActions.extras.map(a=>[a.key,(p.classId==='soldier'?soldierHudLabel(p,a.key,view.combatTick):t('skill.'+a.id+'.name')),a.at,t('skill.'+a.id+'.description')] as const),
+    ...machineryActions.extras.map(a=>[a.key,(p.classId==='soldier'?soldierHudLabel(p,a.key,view.combatTick):p.classId==='heavy'?heavyHudLabel(p,a.key,view.combatTick):t('skill.'+a.id+'.name')),a.at,t('skill.'+a.id+'.description')] as const),
   ] as const) {
     let e = abilityList.querySelector<HTMLElement>('[data-ability="' + key + '"]');
     if (!e) {

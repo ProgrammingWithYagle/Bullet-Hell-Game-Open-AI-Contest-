@@ -29,3 +29,8 @@ Failuresretained: new authority37/39 and38/39 misread issuedSoldierultimate maga
 ServiceYard unregisteredrestorable4pass/1failWIP outside1788. Read manifest/log. PatchSHA e177656a3359b44f71c28d9359706547b36e25e2a21761f0a4b483564554d5cf;logSHA2231e14f55482e30b382648ae13f4dd3de84fb29228718c99fee350b987b347f. Meraawaitschair;Senncartempty/nobodyloaded/shedunassigned;Marapaper/bentcap/brassplate/gatewheel/captainkey/officeunresolved;Joss/Nellcoveredpan;Nela/Elsbarrowpending;Hedakettle/cups;Perrinvial. Showtransfers/consent.
 
 No browserautomation(CUA/Playwright/screenshots/switching), subagentswithoutfreshauthorization, mainmerge, productiondeploy, Windowsreplacement,capacitypurchase,privatedbupload oragentcleanup. Standingapprovalcoversverifiedfeaturepush/draftPR14titlebody;keepdraft. No clone/worktree/reconfiguration. Continue development.
+
+
+## Heavy source validation in progress
+
+The first Heavy Flak slice now passes1,854tests/all7checks locally. Protocol67/contentb3945ea273e982b3eb64d95fb278fd4fb2806ce74406fbcb6bb5148f5a683a38/54techniques preserves the50issued techniques and rules. The source publication, exact-source CI and fresh frozen reviews are being completed; the verified published source66 above remains the previous checkpoint until those receipts are recorded. The18natural/safe-replay builds match combat/progression fields, including actual combat-exit shield; raw final shield can differ after secretOffer restore because the issued Practice boundary omits transient shield. Original failed policy01 evidence remains. Do not claim all measured fields match. Later Heavy choices/operations, other routes/classes and human/final-balance acceptance remain open. Development continues.

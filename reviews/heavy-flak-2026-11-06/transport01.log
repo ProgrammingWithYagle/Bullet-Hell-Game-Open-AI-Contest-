@@ -1,0 +1,58 @@
+✔ real Heavy cover peers use ordinary SP, owner-only friendly streams, shared actual contact geometry and host authority (1173.8188ms)
+✔ real Heavy exit peers use ordinary SP, owner-only friendly streams, shared actual contact geometry and host authority (887.3039ms)
+✔ real Heavy compact peers use ordinary SP, owner-only friendly streams, shared actual contact geometry and host authority (1148.6949ms)
+✔ real Heavy frontal peers use ordinary SP, owner-only friendly streams, shared actual contact geometry and host authority (1282.8521ms)
+✔ whole optimized public Heavy cover uses actual ordinary purchases, physical flight/burst and discarded paused input (1078.2403ms)
+✖ whole optimized public Heavy exit uses actual ordinary purchases, physical flight/burst and discarded paused input (6546.6376ms)
+✔ whole optimized public Heavy compact uses actual ordinary purchases, physical flight/burst and discarded paused input (973.3333ms)
+✔ whole optimized public Heavy frontal uses actual ordinary purchases, physical flight/burst and discarded paused input (1031.6792ms)
+✔ whole optimized testing Heavy cover uses actual ordinary purchases, physical flight/burst and discarded paused input (1220.0476ms)
+✖ whole optimized testing Heavy exit uses actual ordinary purchases, physical flight/burst and discarded paused input (6888.9565ms)
+✔ whole optimized testing Heavy compact uses actual ordinary purchases, physical flight/burst and discarded paused input (949.5899ms)
+✔ whole optimized testing Heavy frontal uses actual ordinary purchases, physical flight/burst and discarded paused input (978.7677ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 10
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 20525.3873
+
+✖ failing tests:
+
+test at tests\heavy-flak-worker.test.ts:1:254
+✖ whole optimized public Heavy exit uses actual ordinary purchases, physical flight/burst and discarded paused input (6546.6376ms)
+  AssertionError [ERR_ASSERTION]: actual Solo host end
+      at heavyWait (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\heavy-flak-flow.ts:43:5)
+      at async Object.end (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\heavy-flak-worker-flow.ts:117:9)
+      at async heavyFlakFlow (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\heavy-flak-flow.ts:303:5)
+      at async heavyFlakWorkerFlow (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\heavy-flak-worker-flow.ts:123:20)
+      at async TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\heavy-flak-worker.test.ts:30:20)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\heavy-flak-worker.test.ts:1:254
+✖ whole optimized testing Heavy exit uses actual ordinary purchases, physical flight/burst and discarded paused input (6888.9565ms)
+  AssertionError [ERR_ASSERTION]: actual Solo host end
+      at heavyWait (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\heavy-flak-flow.ts:43:5)
+      at async Object.end (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\heavy-flak-worker-flow.ts:117:9)
+      at async heavyFlakFlow (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\heavy-flak-flow.ts:303:5)
+      at async heavyFlakWorkerFlow (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\heavy-flak-worker-flow.ts:123:20)
+      at async TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\heavy-flak-worker.test.ts:30:20)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

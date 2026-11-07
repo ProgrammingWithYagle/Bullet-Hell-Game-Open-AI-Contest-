@@ -1,0 +1,211 @@
+✔ issued66profiles preserve all twelve disciplines, both HUD layouts, remapped controls and historical local records (7.0866ms)
+✔ issued66records retain exact historical identity while wrong editions and verified claims remain excluded (0.4587ms)
+✖ exact issued66 local checkpoints preserve all twelve class identities and actual old ownership, including the issued Sniper capstone, without acquiring a new Heavy operation (14.0156ms)
+✔ issued66 rejects future Heavy ownership and wrong/online envelopes before current-edition restoration (3.8415ms)
+✖ exact issued66 admits every one of the fifty issued techniques with its actual affordable prerequisite ownership (6.196ms)
+✖ ordinary Short3SP buys exactly Fresh Belt and Flak Round, with no bonus budget (28.5085ms)
+✖ the optional fork and acquired command fit the actual Raid12SP and remain separate purchases (5.9182ms)
+✖ burst fittings exclude each other without spending and Manual Fuze does not require either fitting (18.0344ms)
+✔ actual C launch consumes one round, admits one physical zero-damage shot and blocks only same-frame primary (11.775ms)
+✔ fresh reload rejects C without a flak payment or recovery (3.3738ms)
+✔ fresh dodge rejects C without a flak payment or recovery (2.9536ms)
+✔ fresh ultimate rejects C without a flak payment or recovery (4.945ms)
+✔ reloadAt rejects C without spending its actual magazine round (3.2011ms)
+✔ dashUntil rejects C without spending its actual magazine round (1.6084ms)
+✔ channelUntil rejects C without spending its actual magazine round (1.4801ms)
+✔ overdriveUntil rejects C without spending its actual magazine round (1.3132ms)
+✔ empty or full actual projectile pools reject C without recovery; a failed emitter also spends nothing (12.862ms)
+✔ issued Q and E retain their operations alongside C and overdrive remains the competing mode (8.6436ms)
+✔ a shell uses its finite physical travel and bursts once at the original fuse; B on the expiry frame cannot claim a manual command (5.4068ms)
+✔ same-frame C/B cannot detonate and acquired B consumes the one actual flight without extra payment or recovery (1.71ms)
+✔ burst selection removes only three actual small hostile circles in stable closest-contact/id order (1.9959ms)
+✖ ordinary shot advancement precedes burst sampling and an already landed hit remains damage (5.4261ms)
+✔ actual Game projectile-pool reuse cannot move the captured pending burst (2.0206ms)
+✔ real cover stops the shell at the padded contact and blocks interception behind that cover (1.7241ms)
+✔ a real enemy body consumes the zero-damage shell at physical contact, rather than passing through (3.4031ms)
+✔ bounds consume the actual shell without producing an off-board burst (1.7997ms)
+✔ heavy-flak-compact-1 captures its real fuse and geometry, with an actual rear tradeoff (2.2898ms)
+✔ heavy-flak-frontal-1 captures its real fuse and geometry, with an actual rear tradeoff (2.0782ms)
+✔ manual aim captured at launch retains the forward fan bearing after the owner turns (2.0102ms)
+✖ post-launch movement, actual nonlethal damage and reloading do not refund or delete a live shell (2.868ms)
+✖ disconnect removes unfinished flight while rostered spent recovery remains (2.2759ms)
+✔ weapon removes unfinished flight while rostered spent recovery remains (1.405ms)
+✔ entry removes unfinished flight while rostered spent recovery remains (1.313ms)
+✔ pattern removes unfinished flight while rostered spent recovery remains (1.4081ms)
+✔ death removes unfinished flight while rostered spent recovery remains (1.4137ms)
+✔ host end removes actual flight, pending work and finite burst cues without another emission (1.3171ms)
+✔ shared kit/cue data omit friendly trajectory and raw queue/payment internals (6.214ms)
+ℹ tests 37
+ℹ suites 0
+ℹ pass 29
+ℹ fail 8
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1043.0031
+
+✖ failing tests:
+
+test at tests\heavy-flak-profile.test.ts:1:2768
+✖ exact issued66 local checkpoints preserve all twelve class identities and actual old ownership, including the issued Sniper capstone, without acquiring a new Heavy operation (14.0156ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(g.transact(p.id, { id: item, kind: "skill", item }).ok)
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\heavy-flak-profile.test.ts:132:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\heavy-flak-profile.test.ts:1:4852
+✖ exact issued66 admits every one of the fifty issued techniques with its actual affordable prerequisite ownership (6.196ms)
+  AssertionError [ERR_ASSERTION]: engineer-machinery-convergence-1:engineer-machinery-convergence-1:invalidRequest
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\heavy-flak-profile.test.ts:213:7)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\heavy-flak.test.ts:1:1869
+✖ ordinary Short3SP buys exactly Fresh Belt and Flak Round, with no bonus budget (28.5085ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  undefined !== 3
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\heavy-flak.test.ts:98:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 3,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\heavy-flak.test.ts:1:2197
+✖ the optional fork and acquired command fit the actual Raid12SP and remain separate purchases (5.9182ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  undefined !== 12
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\heavy-flak.test.ts:110:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 12,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\heavy-flak.test.ts:1:2787
+✖ burst fittings exclude each other without spending and Manual Fuze does not require either fitting (18.0344ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  undefined !== 6
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\heavy-flak.test.ts:146:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 6,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\heavy-flak.test.ts:1:8461
+✖ ordinary shot advancement precedes burst sampling and an already landed hit remains damage (5.4261ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(f.p.health < health)
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\heavy-flak.test.ts:333:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\heavy-flak.test.ts:1:11834
+✖ post-launch movement, actual nonlethal damage and reloading do not refund or delete a live shell (2.868ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(f.p.health < health)
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\heavy-flak.test.ts:437:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\heavy-flak.test.ts:1:12420
+✖ disconnect removes unfinished flight while rostered spent recovery remains (2.2759ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(
+  
+      at Object.step (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\heavy-flak.test.ts:56:5)
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\heavy-flak.test.ts:460:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
