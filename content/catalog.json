@@ -45546,6 +45546,48 @@
       "prerequisite": "heavy-flak-1",
       "role": "active",
       "description": "Use action 2 to burst your one actual flying flak shell at its present position. Command it before the original fuse ends; the burst still waits until nearby shots have moved. It cannot act on the launch moment, create another shell or burst, return ammunition or reset recovery. Busy hands reject the command while the original flight and fuse continue. Without a live own shell there is no action to command. Both optional burst fittings retain their actual geometry."
+    },
+    {
+      "classId": "heavy",
+      "branchId": "heavy-pathways",
+      "branchName": "Specializations",
+      "subbranchId": "heavy-flak-1",
+      "subbranchName": "Flak Gunner",
+      "subbranchNameKey": "pathway.heavy-flak-1.name",
+      "capstone": false,
+      "effects": {},
+      "id": "heavy-flak-running-1",
+      "name": "Running Fuze",
+      "nameKey": "skill.heavy-flak-running-1.name",
+      "sourceSkillId": "heavy-flak-running-1",
+      "grade": "B+",
+      "depth": 4,
+      "cost": 3,
+      "freePlaySpRequired": 13,
+      "prerequisite": "heavy-flak-command-1",
+      "role": "evolution",
+      "description": "Change your first Action 2 command into one early interception pulse while the same paid shell keeps flying. That pulse may clear at most one actual small hostile shot. The original fuse or first body/cover contact later makes the final pulse, using only the unspent part of the original combined three-shot allowance. An empty early pulse uses no interception allowance, but the command is still spent. You cannot command that shell again. No new round, extra carrier, extended fuse or recovery reset. Choose this handling instead of Hanging Fuze; omitting both keeps the original immediate three-shot Manual Fuze."
+    },
+    {
+      "classId": "heavy",
+      "branchId": "heavy-pathways",
+      "branchName": "Specializations",
+      "subbranchId": "heavy-flak-1",
+      "subbranchName": "Flak Gunner",
+      "subbranchNameKey": "pathway.heavy-flak-1.name",
+      "capstone": false,
+      "effects": {},
+      "id": "heavy-flak-hanging-1",
+      "name": "Hanging Fuze",
+      "nameKey": "skill.heavy-flak-hanging-1.name",
+      "sourceSkillId": "heavy-flak-hanging-1",
+      "grade": "B+",
+      "depth": 4,
+      "cost": 3,
+      "freePlaySpRequired": 13,
+      "prerequisite": "heavy-flak-command-1",
+      "role": "evolution",
+      "description": "Your first Action 2 command arrests the actual shell at its current air position and firing bearing. It does not burst on that command or extend its original fuse. A separate later Action 2 can burst the same shell there; its original fuse or an actual enemy body contact can still end it. The one burst retains the original three-small-shot allowance and real cover. Busy rejection keeps the arrested shell and original deadline. No teleport, attachment, extra round, persistent mine, refund or recovery reset. Choose this handling instead of Running Fuze; omitting both keeps the original immediate Manual Fuze."
     }
   ]
 }

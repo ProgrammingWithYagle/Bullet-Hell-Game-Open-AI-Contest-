@@ -10,7 +10,7 @@ import {
 } from "../src/client/heavy-flak-sound.ts";
 test("the actual launch, mechanical command and finite burst have distinct bounded native PCM at three common rates", () => {
   const ids = Object.keys(heavyFlakDurations) as HeavyFlakSound[];
-  assert.equal(ids.length, 3);
+  assert.equal(ids.length, 4);
   assert(!isHeavyFlakSound("sniper-shot"));
   assert(!isHeavyFlakSound("heavy-flak-unknown"));
   for (const rate of [22050, 44100, 48000]) {
@@ -30,7 +30,7 @@ test("the actual launch, mechanical command and finite burst have distinct bound
         createHash("sha256").update(Buffer.from(samples.buffer)).digest("hex"),
       );
     }
-    assert.equal(hashes.size, 3);
+    assert.equal(hashes.size, 4);
   }
 });
 test("Heavy sound playback uses the selected finite buffer and releases its audio nodes once ended", () => {

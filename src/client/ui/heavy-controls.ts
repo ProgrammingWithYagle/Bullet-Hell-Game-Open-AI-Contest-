@@ -30,7 +30,14 @@ export function heavyKitMarkup(
         ? [
             {
               action: "technique2" as const,
-              key: "skill." + flakIds.command + ".name",
+              key:
+                "skill." +
+                (p.skills.includes(flakIds.running)
+                  ? flakIds.running
+                  : p.skills.includes(flakIds.hanging)
+                    ? flakIds.hanging
+                    : flakIds.command) +
+                ".name",
             },
           ]
         : []),
@@ -42,7 +49,13 @@ export function heavyKitMarkup(
       : p.skills.includes(flakIds.frontal)
         ? t("skill." + flakIds.frontal + ".description")
         : "",
-    p.skills.includes(flakIds.command) ? t("ui.heavy.commandHelp") : "",
+    p.skills.includes(flakIds.running)
+      ? t("skill." + flakIds.running + ".description")
+      : p.skills.includes(flakIds.hanging)
+        ? t("skill." + flakIds.hanging + ".description")
+        : p.skills.includes(flakIds.command)
+          ? t("ui.heavy.commandHelp")
+          : "",
   ]
     .filter(Boolean)
     .join(" ");
@@ -84,9 +97,24 @@ export function heavyHudLabel(
 ) {
   if (slot === "technique1") return t("skill." + flakIds.entry + ".name");
   const until = p.kit.heavyFlakUntil ?? 0;
+  const name = p.skills.includes(flakIds.running)
+    ? flakIds.running
+    : p.skills.includes(flakIds.hanging)
+      ? flakIds.hanging
+      : flakIds.command;
+  const label =
+    name === flakIds.running
+      ? (p.kit.heavyFlakRunningAt ?? 0) > 0
+        ? "ui.heavy.runningSpent"
+        : "ui.heavy.runningRemaining"
+      : name === flakIds.hanging
+        ? (p.kit.heavyFlakParkedAt ?? 0) > 0
+          ? "ui.heavy.heldRemaining"
+          : "ui.heavy.arrestRemaining"
+        : "ui.heavy.commandRemaining";
   return until > now
-    ? t("ui.heavy.commandRemaining", {
+    ? t(label, {
         seconds: number(Math.ceil((until - now) / 3) / 10),
       })
-    : t("skill." + flakIds.command + ".name");
+    : t("skill." + name + ".name");
 }

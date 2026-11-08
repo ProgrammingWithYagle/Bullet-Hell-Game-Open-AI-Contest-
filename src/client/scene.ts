@@ -1,3 +1,4 @@
+import {flakFlightBearing}from'./heavy-flak-presentation.ts';
 import {skirmisherRules}from'../shared/soldier-skirmisher.ts';
 import {drawAlchemyCue} from './alchemy-presentation.ts';
 import {drawRangerCue} from './ranger-presentation.ts';
@@ -1420,7 +1421,7 @@ export class CombatScene extends Phaser.Scene {
       if (image.texture.key !== key) image.setTexture(key);
       image
         .setPosition(s.x, s.y)
-        .setRotation((key==='projectile-arrow'||key==='projectile-flak')?Math.atan2(s.vy,s.vx):0)
+        .setRotation(key==='projectile-flak'?flakFlightBearing(s,view.players.find(p=>p.id===s.owner)?.kit.heavyFlakShotAim):key==='projectile-arrow'?Math.atan2(s.vy,s.vx):0)
         .setScale((s.radius + 2) / 15)
         .setVisible(true);
       if (s.owner === 'hostile') this.renderedHostiles++;

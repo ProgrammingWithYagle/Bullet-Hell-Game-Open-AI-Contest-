@@ -19,7 +19,11 @@ export function heavyActions(p: PlayerView, now: number) {
               ? [
                   {
                     key: "technique2" as const,
-                    id: flakIds.command,
+                    id: p.skills.includes(flakIds.running)
+                      ? flakIds.running
+                      : p.skills.includes(flakIds.hanging)
+                        ? flakIds.hanging
+                        : flakIds.command,
                     at: 0,
                     blocked:
                       (p.kit.heavyFlakCommandBlocked ?? true) ||

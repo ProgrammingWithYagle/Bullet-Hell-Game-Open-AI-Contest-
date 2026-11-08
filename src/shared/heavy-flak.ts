@@ -11,6 +11,8 @@ export const flakIds = {
   compact: "heavy-flak-compact-1",
   frontal: "heavy-flak-frontal-1",
   command: "heavy-flak-command-1",
+  running: "heavy-flak-running-1",
+  hanging: "heavy-flak-hanging-1",
 } as const;
 export type FlakRules = {
   speed: number;
@@ -28,6 +30,7 @@ export type FlakRules = {
   maximumHostileRadius: number;
 };
 type Pattern = "base" | "compact" | "frontal";
+type Handling = "manual" | "running" | "hanging";
 type Flight = Vec & {
   id: number;
   owner: string;
@@ -36,8 +39,17 @@ type Flight = Vec & {
   until: number;
   aim: number;
   pattern: Pattern;
+  handling: Handling;
+  token: number;
+  commandedAt?: number;
+  parkedAt?: number;
 };
-type Pending = Flight & { at: number; reason: "fuse" | "contact" | "command" };
+type Pending = Flight & {
+  at: number;
+  reason: "fuse" | "contact" | "command" | "running";
+  terminal: boolean;
+  limit: number;
+};
 export type FlakBurstCue = Vec & {
   kind: "heavy-flak-burst";
   id: number;
@@ -72,6 +84,7 @@ export type FlakContext = {
   ): Shot | undefined;
   shot(id: number): Shot | undefined;
   remove(s: Shot): void;
+  update(s: Shot): void;
   sound(p: Player, id: string, point?: Vec): void;
 };
 export type FlakFlightContext = {
@@ -95,6 +108,8 @@ export type FlakBurstContext = {
 /** One physical defensive round; interception is deferred until after ordinary shot advancement. */
 export class HeavyFlak {
   private recovery = new Map<string, number>();
+  private serial = 0;
+  private quotas = new Map<number, number>();
   private actions = new Map<string, Action>();
   private flights = new Map<number, Flight>();
   private pending: Pending[] = [];
@@ -102,6 +117,7 @@ export class HeavyFlak {
   constructor(readonly rules: FlakRules) {}
   clear() {
     this.recovery.clear();
+    this.quotas.clear();
     this.actions.clear();
     this.flights.clear();
     this.pending = [];
@@ -111,7 +127,10 @@ export class HeavyFlak {
     return this.flights.has(id);
   }
   forget(id: number) {
+    const f = this.flights.get(id);
     this.flights.delete(id);
+    if (f && !this.pending.some((p) => p.token === f.token))
+      this.quotas.delete(f.token);
   }
   private flight(owner: string) {
     return [...this.flights.values()].find((f) => f.owner === owner);
@@ -120,13 +139,17 @@ export class HeavyFlak {
     return (
       live(p) &&
       p.weapon === f.weapon &&
-      (f.pattern === "base" || p.skills.includes(flakIds[f.pattern]))
+      (f.pattern === "base" || p.skills.includes(flakIds[f.pattern])) &&
+      (f.handling === "manual" ||
+        (p.skills.includes(flakIds.command) &&
+          p.skills.includes(flakIds[f.handling])))
     );
   }
   private validPending(p: Player | undefined, f: Pending): p is Player {
     return (
       this.valid(p, f) &&
-      (f.reason !== "command" || p.skills.includes(flakIds.command))
+      (!["command", "running"].includes(f.reason) ||
+        p.skills.includes(flakIds.command))
     );
   }
   private busy(p: Player | undefined, now: number) {
@@ -168,15 +191,31 @@ export class HeavyFlak {
     now: number,
     reason: Pending["reason"],
     point: Vec = f,
+    terminal = true,
+    limit = this.rules.projectileLimit,
   ) {
-    this.flights.delete(f.id);
-    this.pending.push({ ...f, x: point.x, y: point.y, at: now, reason });
+    if (terminal) this.flights.delete(f.id);
+    this.pending.push({
+      ...f,
+      x: point.x,
+      y: point.y,
+      at: now,
+      reason,
+      terminal,
+      limit,
+    });
   }
   cancelOwner(owner: string) {
     const ids = [...this.flights.values()]
       .filter((f) => f.owner === owner)
       .map((f) => f.id);
-    for (const id of ids) this.flights.delete(id);
+    for (const id of ids) {
+      const f = this.flights.get(id);
+      if (f) this.quotas.delete(f.token);
+      this.flights.delete(id);
+    }
+    for (const f of [...this.flights.values(), ...this.pending])
+      if (f.owner === owner) this.quotas.delete(f.token);
     this.pending = this.pending.filter((f) => f.owner !== owner);
     this.bursts = this.bursts.filter((c) => c.owner !== owner);
     this.actions.delete(owner);
@@ -192,6 +231,7 @@ export class HeavyFlak {
         )
       ) {
         this.flights.delete(f.id);
+        this.quotas.delete(f.token);
         removed.push(f.id);
       }
     this.pending = this.pending.filter((f) =>
@@ -223,8 +263,12 @@ export class HeavyFlak {
         !p?.skills.includes(flakIds.command) ||
         !f ||
         f.born >= now ||
-        f.until <= now,
+        f.until <= now ||
+        (f.handling === "running" && f.commandedAt !== undefined) ||
+        f.commandedAt === now,
       heavyFlakUntil: f?.until ?? 0,
+      heavyFlakParkedAt: f?.parkedAt ?? 0,
+      heavyFlakRunningAt: f?.handling === "running" ? (f.commandedAt ?? 0) : 0,
       heavyPrimaryAt: a?.primaryAt ?? 0,
       heavyPrimaryAim: a?.primaryAim ?? 0,
       heavyFlakShotAt: a?.at ?? 0,
@@ -256,6 +300,8 @@ export class HeavyFlak {
       p.id,
       c.tick + ticks(this.rules.cooldown * c.stats(p).cooldown),
     );
+    const token = ++this.serial;
+    this.quotas.set(token, this.rules.projectileLimit);
     this.flights.set(shot.id, {
       id: shot.id,
       owner: p.id,
@@ -266,6 +312,12 @@ export class HeavyFlak {
       y: shot.y,
       aim: p.aim,
       pattern,
+      token,
+      handling: p.skills.includes(flakIds.running)
+        ? "running"
+        : p.skills.includes(flakIds.hanging)
+          ? "hanging"
+          : "manual",
     });
     this.actions.set(p.id, {
       ...this.actions.get(p.id),
@@ -286,14 +338,28 @@ export class HeavyFlak {
       !f ||
       f.born >= c.tick ||
       c.tick >= f.until ||
-      !this.valid(p, f)
+      !this.valid(p, f) ||
+      (f.handling === "running" && f.commandedAt !== undefined) ||
+      f.commandedAt === c.tick
     )
       return false;
     const shot = c.shot(f.id);
     if (!shot) return false;
-    this.queue(f, c.tick, "command", { x: shot.x, y: shot.y });
-    c.remove(shot);
-    c.sound(p, "heavy-flak-command");
+    f.commandedAt = c.tick;
+    let sound = "heavy-flak-command";
+    if (f.handling === "running") {
+      this.queue(f, c.tick, "running", { x: shot.x, y: shot.y }, false, 1);
+    } else if (f.handling === "hanging" && f.parkedAt === undefined) {
+      f.parkedAt = c.tick;
+      shot.vx = 0;
+      shot.vy = 0;
+      c.update({ ...shot });
+      sound = "heavy-flak-arrest";
+    } else {
+      this.queue(f, c.tick, "command", { x: shot.x, y: shot.y });
+      c.remove(shot);
+    }
+    c.sound(p, sound);
     return true;
   }
   advance(s: Shot, c: FlakFlightContext) {
@@ -357,7 +423,12 @@ export class HeavyFlak {
     if (!c.combat) return;
     for (const f of work) {
       const p = c.players.find((p) => p.id === f.owner);
-      if (!this.validPending(p, f)) continue;
+      if (!this.validPending(p, f)) {
+        this.quotas.delete(f.token);
+        continue;
+      }
+      const remaining = this.quotas.get(f.token);
+      if (remaining === undefined) continue;
       const shape = this.shape(f.pattern),
         hits = c
           .shots()
@@ -383,10 +454,12 @@ export class HeavyFlak {
           .sort((a, b) => a.near - b.near || a.s.id - b.s.id);
       const contacts: Vec[] = [];
       for (const h of hits) {
-        if (contacts.length >= this.rules.projectileLimit) break;
+        if (contacts.length >= Math.min(f.limit, remaining)) break;
         const point = { x: h.s.x, y: h.s.y };
         if (c.remove(h.s)) contacts.push(point);
       }
+      this.quotas.set(f.token, remaining - contacts.length);
+      if (f.terminal) this.quotas.delete(f.token);
       this.bursts.push({
         kind: "heavy-flak-burst",
         id: c.id(),
@@ -402,6 +475,12 @@ export class HeavyFlak {
       });
       c.sound(p, "heavy-flak-burst", { x: f.x, y: f.y });
     }
+    for (const token of this.quotas.keys())
+      if (
+        ![...this.flights.values()].some((f) => f.token === token) &&
+        !this.pending.some((f) => f.token === token)
+      )
+        this.quotas.delete(token);
   }
   cues() {
     return this.bursts;

@@ -1,6 +1,15 @@
 # Changelog
 
-Development build **2026.11.06-heavy-flak**, protocol 67. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.08-heavy-fuze-handling**, protocol 68. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-08 — Choose how the paid flak shell is operated
+
+### Heavy: optional Fuze handling
+
+- Running Fuze spends one early pulse while the same shell continues with only its unspent part of the original combined three-contact allowance. It cannot repeat the command or extend the fuse.
+- Hanging Fuze arrests the actual shell on the first B, then uses a separate later B or its original fuse/body contact for the one burst. The same-id stopped trajectory stays owner-only; no second round or recovery reset.
+- The two optional B+ choices require13earned SP after Manual Fuze and cost3SP each. Raid starts12SP; earn a real clear before acquisition. They are mutually exclusive and independently compatible with the early disk/fan choice.
+- Exact67 local ownership/history migration preserves all54issued techniques/four General/all12rosters and older editions. General27SP/onecapstone, equipment/balances, remaps and bothHUDchoices remain. Further Heavy depth/routes, other classes and human/final-balance acceptance continue.
 
 ## 2026-11-06 — Place a deliberate break in an incoming lane
 

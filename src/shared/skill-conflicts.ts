@@ -8,6 +8,7 @@ const replacesTurrets=(id:string)=>catalog.skills.some(s=>s.id===id&&(('transfor
 export function conflictingSkill(owned:readonly string[],candidate:string):string|undefined {
   return owned.find(id=>id!==candidate&&(
     (['soldier-sniper-1','soldier-grenadier-1','soldier-marksman-1','soldier-skirmisher-1'].includes(candidate)&&['soldier-sniper-1','soldier-grenadier-1','soldier-marksman-1','soldier-skirmisher-1'].includes(id))||
+    ((candidate==='heavy-flak-running-1'&&id==='heavy-flak-hanging-1')||(candidate==='heavy-flak-hanging-1'&&id==='heavy-flak-running-1'))||
     ((candidate==='heavy-flak-compact-1'&&id==='heavy-flak-frontal-1')||(candidate==='heavy-flak-frontal-1'&&id==='heavy-flak-compact-1'))||
     ((candidate==='soldier-sniper-carry-1'&&id==='soldier-sniper-clear-1')||(candidate==='soldier-sniper-clear-1'&&id==='soldier-sniper-carry-1'))||
     ((candidate==='soldier-grenadier-skim-1'&&id==='soldier-grenadier-contact-1')||(candidate==='soldier-grenadier-contact-1'&&id==='soldier-grenadier-skim-1'))||
