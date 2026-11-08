@@ -1,5 +1,6 @@
+import type{SeamPrivateEvent}from"./heavy-seam.ts";
 import revision from '../../content/revision.json' with { type: 'json' };
-export const PROTOCOL = 68;
+export const PROTOCOL = 69;
 export type BossVariant = 'normal' | 'brutal' | 'crazed';
 export const CONTENT_REVISION = revision.sha256;
 export const HZ = 30,
@@ -217,6 +218,7 @@ export type Field = {
   anchor?:string;
 };
 export type Event =
+  | SeamPrivateEvent
   | { type: 'shots'; shots: Shot[] }
   | { type: 'remove'; ids: number[] }
   | { type: 'sound'; id: string; owner?: string; x?: number; y?: number }

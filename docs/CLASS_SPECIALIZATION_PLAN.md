@@ -106,3 +106,8 @@ Use narrator-led physical detail and distinct human speech. Give teachers, peers
 Run appropriate focused checks, the full gate for runtime slices and exact-source CI. Preserve older previews/private databases and freeze matching review builds only for actual source changes. This plan adds no completed-work ledger credit. The game remains unfinished; only the user decides it is complete.
 
 Heavy now has an affordable Flak operation, two exclusive geometry/fuse fittings, independently acquired Manual Fuze and an independent exclusive Running/Hanging handling fork. Running preserves the physical carrier after one early one-contact pulse; Hanging arrests it for a separate later command. Both conserve the original fuse, paid round, recovery and combined three-contact quota. See [HEAVY_SPECIALIZATIONS.md](HEAVY_SPECIALIZATIONS.md). Later operations/culmination and other fitting Heavy routes remain open; the proposed roster is not a ceiling. No empty cards or generic numerical replacements.
+
+
+### Active Heavy Seam slice
+
+The Flak pathway now has seven implemented techniques under protocol69validation, with a later real C-versus-B operation after Manual Fuze.1,995tests/all7local checks, exact68migration/all12rosters, ordinary3→9→15→21source-bundled worker/actual-peer MenuDOM and108natural/replay pairs are recorded separately from pending exact-source CI/fresh served reviews and human/final-balance acceptance. This is not whole-Heavy or whole-class completion. Further qualitative culmination/other fitting Heavy routes, Soldier alternatives and every remaining class continue without a fixed maximum.

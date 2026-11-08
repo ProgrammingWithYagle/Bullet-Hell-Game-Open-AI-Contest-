@@ -1,3 +1,4 @@
+import{HeavySeamPresentation,drawHeavySeam}from"./heavy-seam-presentation.ts";
 import {flakFlightBearing}from'./heavy-flak-presentation.ts';
 import {skirmisherRules}from'../shared/soldier-skirmisher.ts';
 import {drawAlchemyCue} from './alchemy-presentation.ts';
@@ -78,6 +79,7 @@ export class CombatScene extends Phaser.Scene {
   });
   view: View | null = null;
   localId = 'solo';
+  private heavySeam=new HeavySeamPresentation();
   predicted: PlayerView | null = null;
   hitboxes = true;
   showNames = true;
@@ -278,6 +280,7 @@ export class CombatScene extends Phaser.Scene {
     this.resolveReady();
   }
   apply(view: View) {
+    this.heavySeam.observe(view,this.localId);
     this.survivorActions.observe(view, performance.now());
     this.visualMotion.observe(view);
     if (this.lastPhase && view.phase !== this.lastPhase) {
@@ -323,9 +326,11 @@ export class CombatScene extends Phaser.Scene {
   }
   ingest(events: Event[]) {
     for (const event of events) {
+      if(event.type==='private-class-cues')this.heavySeam.ingest(event,this.view,this.localId);
       if (event.type === 'shots')
         for (const shot of event.shots) this.shots.set(shot.id, { ...shot });
       if (event.type === 'remove') {
+        if(!event.ids.length)this.heavySeam.clear();
         const ids = event.ids.length ? event.ids : [...this.shots.keys()];
         for (const id of ids) {
           this.shots.delete(id);
@@ -826,6 +831,7 @@ export class CombatScene extends Phaser.Scene {
         image.destroy();
         this.constructImages.delete(id);
       }
+    drawHeavySeam(h,this.heavySeam.frame(view,this.localId),now,this.highContrast);
     for (const cue of view.classCues) {
       if(cue.kind==='engineer-builder-plan'||cue.kind==='engineer-builder-work'){
         const work=cue.kind==='engineer-builder-work',color=cue.rejected?0xd78965:work?0xa9d7b5:0xd8c28a;
@@ -883,6 +889,9 @@ export class CombatScene extends Phaser.Scene {
           else h.lineStyle(1,color,local?.5:.2).strokeRect(x-1.5,y-3,3,6);
         }
         continue;
+      }
+      if(cue.kind==='heavy-flak-seam-contacts'){
+        const fade=Math.max(0,Math.min(1,(cue.until-now)/Math.max(1,cue.until-cue.at)));h.lineStyle(1.8,0xc1aa7d,.8*fade);for(const p of cue.contacts)h.lineBetween(p.x-3,p.y-3,p.x+3,p.y+3).lineBetween(p.x+3,p.y-3,p.x-3,p.y+3);continue;
       }
       if(cue.kind==='heavy-flak-burst'){
         const fade=Math.max(0,Math.min(1,(cue.until-now)/Math.max(1,cue.until-cue.at)));h.lineStyle(1.8,0xb7bc9a,.75*fade);

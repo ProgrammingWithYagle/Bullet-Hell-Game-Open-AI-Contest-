@@ -1,6 +1,9 @@
+import { seamId } from "../shared/heavy-seam.ts";
 import { flakIds } from "../shared/heavy-flak.ts";
 import type { PlayerView } from "../shared/view.ts";
 export function heavyActions(p: PlayerView, now: number) {
+  const cutting =
+    p.skills.includes(seamId) && (p.kit.heavyFlakUntil ?? 0) > now;
   return {
     command: false,
     qNameKey: null,
@@ -11,9 +14,11 @@ export function heavyActions(p: PlayerView, now: number) {
         ? [
             {
               key: "technique1" as const,
-              id: flakIds.entry,
-              at: p.kit.technique1At ?? 0,
-              blocked: p.kit.heavyFlakBlocked ?? true,
+              id: cutting ? seamId : flakIds.entry,
+              at: cutting ? 0 : (p.kit.technique1At ?? 0),
+              blocked: cutting
+                ? !p.kit.heavyFlakSeamReady
+                : (p.kit.heavyFlakBlocked ?? true),
             },
             ...(p.skills.includes(flakIds.command)
               ? [

@@ -83,7 +83,7 @@ export type View = {
   signatures: WardenSample[];
   minions: Minion[];
   bossCues: BossCue[];
-  classCues: KitCue[];
+  classCues: (KitCue | import('./heavy-seam.ts').FlakSeamContactCue)[];
   warnings: Warning[];
   fields: Field[];
   mutations: { id: string; remaining: number }[];

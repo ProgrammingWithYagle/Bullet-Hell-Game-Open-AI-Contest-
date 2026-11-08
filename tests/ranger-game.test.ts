@@ -265,7 +265,7 @@ test("Survey positions empower only an arrow committed inside their fixed radius
   press(g, p, { ultimate: true });
   assert(g.shots.has(hostile.id));
   let cues = viewOf(g, p.id).classCues.filter(
-    (c) => c.kind === "ranger-survey",
+    (c):c is import('../src/shared/ranger-kit.ts').RangerCue => c.kind === "ranger-survey",
   );
   assert.equal(cues.length, 2);
   assert.equal(g.ranger.status(p.id, g.combatTick).rangerSurveyCharges, 6);

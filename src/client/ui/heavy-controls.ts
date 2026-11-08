@@ -1,3 +1,4 @@
+import { seamId } from "../../shared/heavy-seam.ts";
 import { data } from "../../shared/game.ts";
 import { flakIds } from "../../shared/heavy-flak.ts";
 import type { PlayerView } from "../../shared/view.ts";
@@ -22,7 +23,9 @@ export function heavyKitMarkup(
         ? [
             {
               action: "technique1" as const,
-              key: "skill." + flakIds.entry + ".name",
+              key: p.skills.includes(seamId)
+                ? "ui.heavy.seamAction"
+                : "skill." + flakIds.entry + ".name",
             },
           ]
         : []),
@@ -44,6 +47,7 @@ export function heavyKitMarkup(
     ];
   const help = [
     t("ui.heavy.flakHelp"),
+    p.skills.includes(seamId) ? t("ui.heavy.seamHelp") : "",
     p.skills.includes(flakIds.compact)
       ? t("skill." + flakIds.compact + ".description")
       : p.skills.includes(flakIds.frontal)
@@ -95,7 +99,20 @@ export function heavyHudLabel(
   slot: "technique1" | "technique2",
   now: number,
 ) {
-  if (slot === "technique1") return t("skill." + flakIds.entry + ".name");
+  if (slot === "technique1") {
+    if (p.skills.includes(seamId) && (p.kit.heavyFlakUntil ?? 0) > now)
+      return t(
+        p.kit.heavyFlakSeamBroken
+          ? "ui.heavy.seamBroken"
+          : "ui.heavy.seamRemaining",
+        {
+          seconds: number(
+            Math.ceil(((p.kit.heavyFlakUntil ?? 0) - now) / 3) / 10,
+          ),
+        },
+      );
+    return t("skill." + flakIds.entry + ".name");
+  }
   const until = p.kit.heavyFlakUntil ?? 0;
   const name = p.skills.includes(flakIds.running)
     ? flakIds.running

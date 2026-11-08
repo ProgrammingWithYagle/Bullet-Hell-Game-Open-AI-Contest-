@@ -669,6 +669,10 @@
       "frontalFuseSeconds": 0.8,
       "projectileLimit": 3,
       "maximumHostileRadius": 6
+    },
+    "heavySeam": {
+      "width": 9,
+      "maximumPoints": 25
     }
   },
   "locales": [
@@ -45588,6 +45592,27 @@
       "prerequisite": "heavy-flak-command-1",
       "role": "evolution",
       "description": "Your first Action 2 command arrests the actual shell at its current air position and firing bearing. It does not burst on that command or extend its original fuse. A separate later Action 2 can burst the same shell there; its original fuse or an actual enemy body contact can still end it. The one burst retains the original three-small-shot allowance and real cover. Busy rejection keeps the arrested shell and original deadline. No teleport, attachment, extra round, persistent mine, refund or recovery reset. Choose this handling instead of Running Fuze; omitting both keeps the original immediate Manual Fuze."
+    },
+    {
+      "classId": "heavy",
+      "branchId": "heavy-pathways",
+      "branchName": "Specializations",
+      "subbranchId": "heavy-flak-1",
+      "subbranchName": "Flak Gunner",
+      "subbranchNameKey": "pathway.heavy-flak-1.name",
+      "capstone": false,
+      "effects": {},
+      "id": "heavy-flak-seam-1",
+      "name": "Seam Fuze",
+      "nameKey": "skill.heavy-flak-seam-1.name",
+      "sourceSkillId": "heavy-flak-seam-1",
+      "grade": "S-",
+      "depth": 5,
+      "cost": 4,
+      "freePlaySpRequired": 19,
+      "prerequisite": "heavy-flak-command-1",
+      "role": "active",
+      "description": "While your paid flak shell is still live, press Action 1 again to cut its flight and clear a thin seam along the ground it actually crossed. The seam reaches 9 pixels to either side and uses only the unspent part of that shell’s original three-small-shot allowance. Action 2 keeps your acquired point-burst operation, so choose a narrow line behind the shell or a wider burst at it. Running Fuze spends from the same allowance; Hanging Fuze retains only the line laid before arrest. Real cover crossing that line permanently severs it for this shell, leaving Action 2 and the original fuse available. Cut before the original fuse ends. Busy hands reject without cutting. No extra round, body damage, shield, recovery reset or lingering trap."
     }
   ]
 }

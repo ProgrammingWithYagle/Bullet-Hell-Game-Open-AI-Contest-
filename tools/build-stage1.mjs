@@ -1,3 +1,4 @@
+import{applyHeavySeam}from'../content/source/heavy-seam.mjs';
 import{applyHeavyFlakHandling}from'../content/source/heavy-flak-handling.mjs';
 import{applyHeavyFlak}from'../content/source/heavy-flak.mjs';
 import{applySniperWithdrawal}from'../content/source/soldier-sniper-withdrawal.mjs';
@@ -289,7 +290,7 @@ const arenas = [
 
 const leaderboards=JSON.parse(fs.readFileSync(path.join(root,'content/leaderboards.json'),'utf8'));
 const manifest = {rules,locales,difficulties,modes,classes,skills,weapons,upgrades,supplies,bosses,bossPools,mutations,arenas,grades,leaderboards,threats:['Normal','Aberrant','Predator','Brute','Scourge','Dread','Disaster','Catastrophe','Cataclysm','Calamity','The Uncounted']};
-applyBard(manifest);applySwordsman(manifest);applySummoner(manifest);applyRanger(manifest);applyAlchemist(manifest);applyEncounterPacing(manifest);addClassTalents(manifest);applyEngineerPathways(manifest);applyEngineerMachinery(manifest);applyEngineerTraps(manifest);applyEngineerBuilder(manifest);applySoldierSkirmisher(manifest);applySoldierReload(manifest);applySoldierVolley(manifest);applySoldierMarksman(manifest);applyMarksmanDepth(manifest);applyMarksmanLate(manifest);applyGrenadier(manifest);applySniper(manifest);applySniperHandling(manifest);applySniperBore(manifest);applySniperRest(manifest);applySniperWithdrawal(manifest);applyHeavyFlak(manifest);applyHeavyFlakHandling(manifest);
+applyBard(manifest);applySwordsman(manifest);applySummoner(manifest);applyRanger(manifest);applyAlchemist(manifest);applyEncounterPacing(manifest);addClassTalents(manifest);applyEngineerPathways(manifest);applyEngineerMachinery(manifest);applyEngineerTraps(manifest);applyEngineerBuilder(manifest);applySoldierSkirmisher(manifest);applySoldierReload(manifest);applySoldierVolley(manifest);applySoldierMarksman(manifest);applyMarksmanDepth(manifest);applyMarksmanLate(manifest);applyGrenadier(manifest);applySniper(manifest);applySniperHandling(manifest);applySniperBore(manifest);applySniperRest(manifest);applySniperWithdrawal(manifest);applyHeavyFlak(manifest);applyHeavyFlakHandling(manifest);applyHeavySeam(manifest);
 applyWardenPatrol(manifest);applyCrazedHorizon(manifest);applyCourierRoute(manifest);applyRatcatcherMuster(manifest);applyClerkAppeal(manifest);applyTollkeeperReturn(manifest);applyMarshalChains(manifest);applyWidowGates(manifest);applyAmbulanceRoute(manifest);applyMatronWard(manifest);applyMoldMixing(manifest);applyBellCarillon(manifest);applyBellCounterpoint(manifest);applyStitchwork(manifest);applyShieldSpecializations(manifest);applyGeneralMobility(manifest);applyGeneralTechniques(manifest);applyGlassSurgery(manifest);applyStoryCampaign(manifest);
 applyBakerOven(manifest);
 applySluicePressure(manifest);

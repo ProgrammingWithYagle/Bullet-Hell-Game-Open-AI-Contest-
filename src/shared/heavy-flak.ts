@@ -5,7 +5,13 @@ import { swordCircleContact } from "./sword-geometry.ts";
 import type { Player, Stats } from "./game.ts";
 import type { MotionWindow } from "./motion-window.ts";
 
-// Shared physical flak and deferred, finite interception authority.
+import {
+  seamGeometry,
+  seamId,
+  heavySeamRules,
+  type FlakSeamContactCue,
+  type FlakSeamOwnerCue,
+} from "./heavy-seam.ts";
 export const flakIds = {
   entry: "heavy-flak-1",
   compact: "heavy-flak-compact-1",
@@ -43,12 +49,14 @@ type Flight = Vec & {
   token: number;
   commandedAt?: number;
   parkedAt?: number;
+  seam?: { points: Vec[]; severed: boolean; sequence: number };
 };
 type Pending = Flight & {
   at: number;
-  reason: "fuse" | "contact" | "command" | "running";
+  reason: "fuse" | "contact" | "command" | "running" | "seam";
   terminal: boolean;
   limit: number;
+  path?: Vec[];
 };
 export type FlakBurstCue = Vec & {
   kind: "heavy-flak-burst";
@@ -66,6 +74,7 @@ type Action = {
   aim: number;
   primaryAt?: number;
   primaryAim?: number;
+  seamAt?: number;
 };
 const ticks = (seconds: number) => Math.ceil(seconds * HZ);
 const owned = (p: Player | undefined): p is Player =>
@@ -85,6 +94,7 @@ export type FlakContext = {
   shot(id: number): Shot | undefined;
   remove(s: Shot): void;
   update(s: Shot): void;
+  obstacles?(): readonly Rect[];
   sound(p: Player, id: string, point?: Vec): void;
 };
 export type FlakFlightContext = {
@@ -114,6 +124,9 @@ export class HeavyFlak {
   private flights = new Map<number, Flight>();
   private pending: Pending[] = [];
   private bursts: FlakBurstCue[] = [];
+  private seamContacts: FlakSeamContactCue[] = [];
+  private seamOwners: { weapon: string; cue: FlakSeamOwnerCue }[] = [];
+  private privateFrames = new Map<string, string>();
   constructor(readonly rules: FlakRules) {}
   clear() {
     this.recovery.clear();
@@ -122,6 +135,8 @@ export class HeavyFlak {
     this.flights.clear();
     this.pending = [];
     this.bursts = [];
+    this.seamContacts = [];
+    this.seamOwners = [];
   }
   has(id: number) {
     return this.flights.has(id);
@@ -139,6 +154,8 @@ export class HeavyFlak {
     return (
       live(p) &&
       p.weapon === f.weapon &&
+      (!f.seam ||
+        (p.skills.includes(seamId) && p.skills.includes(flakIds.command))) &&
       (f.pattern === "base" || p.skills.includes(flakIds[f.pattern])) &&
       (f.handling === "manual" ||
         (p.skills.includes(flakIds.command) &&
@@ -148,7 +165,7 @@ export class HeavyFlak {
   private validPending(p: Player | undefined, f: Pending): p is Player {
     return (
       this.valid(p, f) &&
-      (!["command", "running"].includes(f.reason) ||
+      (!["command", "running", "seam"].includes(f.reason) ||
         p.skills.includes(flakIds.command))
     );
   }
@@ -193,6 +210,7 @@ export class HeavyFlak {
     point: Vec = f,
     terminal = true,
     limit = this.rules.projectileLimit,
+    path?: Vec[],
   ) {
     if (terminal) this.flights.delete(f.id);
     this.pending.push({
@@ -203,6 +221,7 @@ export class HeavyFlak {
       reason,
       terminal,
       limit,
+      ...(path ? { path: path.map((point) => ({ ...point })) } : {}),
     });
   }
   cancelOwner(owner: string) {
@@ -219,6 +238,8 @@ export class HeavyFlak {
     this.pending = this.pending.filter((f) => f.owner !== owner);
     this.bursts = this.bursts.filter((c) => c.owner !== owner);
     this.actions.delete(owner);
+    this.seamContacts = this.seamContacts.filter((c) => c.owner !== owner);
+    this.seamOwners = this.seamOwners.filter((c) => c.cue.owner !== owner);
     return ids;
   }
   step(now: number, players: readonly Player[]) {
@@ -241,6 +262,17 @@ export class HeavyFlak {
       ),
     );
     this.bursts = this.bursts.filter((c) => c.until > now);
+    this.seamContacts = this.seamContacts.filter((c) => c.until > now);
+    this.seamOwners = this.seamOwners.filter((w) => {
+      const p = players.find((p) => p.id === w.cue.owner);
+      return (
+        w.cue.until > now &&
+        live(p) &&
+        p.weapon === w.weapon &&
+        p.skills.includes(seamId) &&
+        p.skills.includes(flakIds.command)
+      );
+    });
     return removed;
   }
   primaryReleased(p: Player, now: number) {
@@ -255,6 +287,19 @@ export class HeavyFlak {
     const f = p ? this.flight(p.id) : undefined,
       a = p ? this.actions.get(p.id) : undefined;
     return {
+      ...(p?.skills.includes(seamId)
+        ? {
+            heavyFlakSeamReady:
+              !!f?.seam &&
+              !f.seam.severed &&
+              f.seam.points.length >= 2 &&
+              f.born < now &&
+              f.until > now &&
+              !this.busy(p, now),
+            heavyFlakSeamBroken: !!f?.seam?.severed,
+            heavyFlakSeamAt: a?.seamAt ?? 0,
+          }
+        : {}),
       technique1At: p ? (this.recovery.get(p.id) ?? 0) : 0,
       technique2At: 0,
       heavyFlakBlocked: this.busy(p, now) || !p || p.ammo < 1 || !!f,
@@ -276,6 +321,8 @@ export class HeavyFlak {
     };
   }
   cast(p: Player, c: FlakContext) {
+    const existing = this.flight(p.id);
+    if (existing?.seam) return this.cutSeam(p, existing, c);
     if (
       this.busy(p, c.tick) ||
       p.input.reload ||
@@ -313,6 +360,15 @@ export class HeavyFlak {
       aim: p.aim,
       pattern,
       token,
+      ...(p.skills.includes(seamId) && p.skills.includes(flakIds.command)
+        ? {
+            seam: {
+              points: [{ x: shot.x, y: shot.y }],
+              severed: false,
+              sequence: p.input.sequence,
+            },
+          }
+        : {}),
       handling: p.skills.includes(flakIds.running)
         ? "running"
         : p.skills.includes(flakIds.hanging)
@@ -362,12 +418,108 @@ export class HeavyFlak {
     c.sound(p, sound);
     return true;
   }
+  private latchSeam(f: Flight, obstacles: readonly Rect[]) {
+    if (!f.seam || f.seam.severed) return;
+    for (let i = 1; i < f.seam.points.length; i++)
+      if (
+        obstacles.some(
+          (w) =>
+            segmentRect(
+              f.seam!.points[i - 1],
+              f.seam!.points[i],
+              w,
+              this.rules.radius,
+            ) !== null,
+        )
+      ) {
+        f.seam.severed = true;
+        return;
+      }
+  }
+  private cutSeam(p: Player, f: Flight, c: FlakContext) {
+    if (
+      !f.seam ||
+      !c.obstacles ||
+      this.busy(p, c.tick) ||
+      !this.valid(p, f) ||
+      p.input.reload ||
+      p.input.dodge ||
+      p.input.ultimate ||
+      f.born >= c.tick ||
+      f.until <= c.tick ||
+      p.input.sequence <= f.seam.sequence ||
+      f.commandedAt === c.tick
+    )
+      return false;
+    const shot = c.shot(f.id),
+      last = f.seam.points.at(-1);
+    if (!shot || !last || last.x !== shot.x || last.y !== shot.y) return false;
+    this.latchSeam(f, c.obstacles());
+    if (f.seam.severed || f.seam.points.length < 2) return false;
+    this.queue(
+      f,
+      c.tick,
+      "seam",
+      { x: shot.x, y: shot.y },
+      true,
+      this.rules.projectileLimit,
+      f.seam.points,
+    );
+    c.remove(shot);
+    this.actions.set(p.id, { ...this.actions.get(p.id)!, seamAt: c.tick });
+    c.sound(p, "heavy-flak-seam-cut");
+    return true;
+  }
+  ownerCues(owner: string, now: number): FlakSeamOwnerCue[] {
+    const flight = [...this.flights.values()]
+      .filter((f) => f.owner === owner && f.seam && f.until > now)
+      .map((f) => ({
+        kind: "heavy-flak-seam-owner" as const,
+        id: f.id,
+        owner,
+        at: f.born,
+        until: f.until,
+        points: f.seam!.points.map((p) => ({ ...p })),
+        broken: f.seam!.severed,
+        stage: "flight" as const,
+      }));
+    const cut = this.seamOwners
+      .filter((w) => w.cue.owner === owner && w.cue.until > now)
+      .slice(-1)
+      .map((w) => ({ ...w.cue, points: w.cue.points.map((p) => ({ ...p })) }));
+    return [...flight, ...cut];
+  }
+  privateUpdates(
+    now: number,
+  ): { owner: string; at: number; cues: FlakSeamOwnerCue[] }[] {
+    const owners = new Set([
+        ...this.privateFrames.keys(),
+        ...[...this.flights.values()].filter((f) => f.seam).map((f) => f.owner),
+        ...this.seamOwners.map((w) => w.cue.owner),
+      ]),
+      updates: { owner: string; at: number; cues: FlakSeamOwnerCue[] }[] = [];
+    for (const owner of owners) {
+      const cues = this.ownerCues(owner, now),
+        signature = JSON.stringify(cues);
+      if (cues.length) {
+        if (this.privateFrames.get(owner) !== signature) {
+          this.privateFrames.set(owner, signature);
+          updates.push({ owner, at: now, cues });
+        }
+      } else if (this.privateFrames.has(owner)) {
+        this.privateFrames.delete(owner);
+        updates.push({ owner, at: now, cues: [] });
+      }
+    }
+    return updates;
+  }
   advance(s: Shot, c: FlakFlightContext) {
     const f = this.flights.get(s.id);
     if (!f || !this.valid(c.owner, f)) {
       this.forget(s.id);
       return false;
     }
+    this.latchSeam(f, c.obstacles);
     const b = c.bounds,
       pad = s.radius;
     if (
@@ -416,6 +568,14 @@ export class HeavyFlak {
     s.y = to.y;
     f.x = s.x;
     f.y = s.y;
+    if (f.seam) {
+      const last = f.seam.points.at(-1);
+      if (!last || last.x !== s.x || last.y !== s.y) {
+        if (f.seam.points.length < heavySeamRules.maximumPoints)
+          f.seam.points.push({ x: s.x, y: s.y });
+        else f.seam.severed = true;
+      }
+    }
     return true;
   }
   flush(c: FlakBurstContext) {
@@ -429,6 +589,59 @@ export class HeavyFlak {
       }
       const remaining = this.quotas.get(f.token);
       if (remaining === undefined) continue;
+      if (f.reason === "seam") {
+        const snapshot = c.shots(),
+          geometry = seamGeometry(
+            f.path ?? [],
+            snapshot,
+            c.obstacles,
+            c.tick,
+            remaining,
+          ),
+          contacts: Vec[] = [];
+        if (geometry.eligible)
+          for (const hit of geometry.candidates) {
+            if (contacts.length >= remaining) break;
+            const s = c.shots().find((s) => s.id === hit.id);
+            if (
+              !s ||
+              s.owner !== "hostile" ||
+              s.radius <= 0 ||
+              s.radius > this.rules.maximumHostileRadius ||
+              s.expires <= c.tick ||
+              s.x !== hit.x ||
+              s.y !== hit.y
+            )
+              continue;
+            const point = { x: s.x, y: s.y };
+            if (c.remove(s)) contacts.push(point);
+          }
+        this.quotas.delete(f.token);
+        const until = c.tick + ticks(this.rules.burstSeconds);
+        this.seamContacts.push({
+          kind: "heavy-flak-seam-contacts",
+          id: c.id(),
+          owner: f.owner,
+          at: c.tick,
+          until,
+          contacts,
+        });
+        this.seamOwners.push({
+          weapon: f.weapon,
+          cue: {
+            kind: "heavy-flak-seam-owner",
+            id: c.id(),
+            owner: f.owner,
+            at: c.tick,
+            until,
+            points: (f.path ?? []).map((p) => ({ ...p })),
+            broken: !geometry.eligible,
+            stage: "cut",
+          },
+        });
+        c.sound(p, "heavy-flak-seam", p);
+        continue;
+      }
       const shape = this.shape(f.pattern),
         hits = c
           .shots()
@@ -483,7 +696,15 @@ export class HeavyFlak {
         this.quotas.delete(token);
   }
   cues() {
-    return this.bursts;
+    return this.seamContacts.length
+      ? [
+          ...this.bursts,
+          ...this.seamContacts.map((c) => ({
+            ...c,
+            contacts: c.contacts.map((p) => ({ ...p })),
+          })),
+        ]
+      : this.bursts;
   }
 }
 

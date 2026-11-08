@@ -118,14 +118,14 @@ async function setup(t: any, mode: "short" | "raid" = "short") {
     foundation,
   };
 }
-test("the Heavy graph contains exactly its six actual techniques, one General reference and the real optional exclusion", () => {
+test("the Heavy graph contains exactly its seven actual techniques, one General reference and the real optional exclusion", () => {
   assert.deepEqual(
     specializationRoutes("heavy").map((r) => r.id),
     [ids.entry],
   );
   const map = specializationMapLayout("heavy", ids.entry)!;
-  assert.equal(map.nodes.length, 7);
-  assert.equal(map.edges.length, 6);
+  assert.equal(map.nodes.length, 8);
+  assert.equal(map.edges.length, 7);
   assert.equal(map.exclusions.length, 2);
   assert(map.nodes.find((n) => n.id === "heavy-ordnance-1")!.reference);
   assert(map.edges.some((e) => e.from === ids.entry && e.to === ids.command));

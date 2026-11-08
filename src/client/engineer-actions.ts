@@ -9,7 +9,7 @@ import { HZ } from "../shared/protocol.ts";
 /** Presentation derives availability from the same owned, living public constructs. */
 export function engineerActions(
   p: PlayerView,
-  cues: readonly KitCue[],
+  cues: readonly (KitCue | import('../shared/heavy-seam.ts').FlakSeamContactCue)[],
   now: number,
 ) {
   if(p.classId==='engineer'&&p.skills.includes(builderIds.entry)){
@@ -22,7 +22,7 @@ export function engineerActions(
     ] as const).filter(([,id])=>p.skills.includes(id)).map(([key,id,at,blocked])=>({key,id:key==='technique1'&&p.skills.includes(builderIds.survey)?builderIds.survey:id,at,blocked}))};
   }
   if(p.classId==='engineer'&&p.skills.includes('engineer-traps-1')){
-    const plates=cues.filter(c=>c.kind==='engineer-charge'&&c.owner===p.id&&c.state!=='spent'&&c.until>now);
+    const plates=cues.filter((c):c is Extract<KitCue,{kind:'engineer-charge'}>=>c.kind==='engineer-charge'&&c.owner===p.id&&c.state!=='spent'&&c.until>now);
     const ready=plates.filter(c=>c.kind==='engineer-charge'&&c.state==='ready');
     const command=p.skills.includes(trapIds.switch)&&plates.some(c=>c.kind==='engineer-charge'&&c.state!=='fuse')&&(p.qAt>now||plates.length>=r.chargeCapacity);
     return {

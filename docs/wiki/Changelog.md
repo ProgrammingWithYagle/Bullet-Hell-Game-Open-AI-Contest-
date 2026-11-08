@@ -1,6 +1,14 @@
 # Changelog
 
-Development build **2026.11.08-heavy-fuze-handling**, protocol 68. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.08-heavy-seam-fuze**, protocol 69. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-08 — Choose a travelled seam or a point burst
+
+### Heavy: Seam Fuze
+
+- A later S- operation after Manual Fuze costs4SP at19earned. A separate Action1 cuts the actual shell’s travelled narrow line, while Action2 retains the acquired point operation. It is compatible with either optional fitting and handling choice.
+- The cut consumes only the original remaining three-small-shot allowance. Actual travel, current cover and original fuse still apply; no extra round, body damage, recovery reset or lingering trap. Cover crossing the laid line severs that option for the shell.
+- The travelled path is sent only to its owner, with shared contact feedback. Existing General27SP/onecapstone, issued effects/equipment/balances, remaps and both HUD choices remain. Further routes/classes and human/final-balance acceptance continue.
 
 ## 2026-11-08 — Choose how the paid flak shell is operated
 

@@ -2356,7 +2356,7 @@ export class Game {
     const bossAt=motionAt(this.bossPrevious,this.boss,fraction);if(!this.skirmish&&!this.director.hasIndependentBodies()&&!weakHits.some(w=>this.director.damageTransfer(w.id))&&!this.director.coreContact(point,point,radius)&&distance(point,bossAt)<=radius+this.bossDefinition().radius&&visible(bossAt))this.hitBoss(p,damage,false,point);
   }
   private grenadierContext():GrenadierContext{return{tick:this.combatTick,bounds:this.arena.bounds,obstacles:this.grenadierObstacles(),stats:p=>this.stats(p),id:()=>this.id(),canEmit:()=>this.canEmitShots('friendly',1),shot:id=>this.shots.get(id),shoot:(p,speed,until)=>this.emitShot(p.id,p.x,p.y,p.aim,speed,0,grenadierRules.radius,0,(until-this.combatTick)/HZ,'canister'),remove:s=>this.removeShot(s),blast:(p,point,damage,fraction)=>this.grenadierBlast(p,point,damage,fraction),sound:(p,id,point=p)=>this.events.push({type:'sound',id,owner:p.id,x:point.x,y:point.y})};}
-  private flakContext():FlakContext{return{tick:this.combatTick,stats:p=>this.stats(p),canEmit:()=>this.canEmitShots('friendly',1),shoot:(p,speed,radius,seconds)=>this.emitShot(p.id,p.x,p.y,p.aim,speed,0,radius,0,seconds,'flak'),shot:id=>this.shots.get(id),remove:s=>this.removeShot(s),update:s=>this.events.push({type:'shots',shots:[{...s}]}),sound:(p,id,point=p)=>this.events.push({type:'sound',id,owner:p.id,x:point.x,y:point.y})};}
+  private flakContext():FlakContext{return{tick:this.combatTick,obstacles:()=>this.grenadierObstacles(),stats:p=>this.stats(p),canEmit:()=>this.canEmitShots('friendly',1),shoot:(p,speed,radius,seconds)=>this.emitShot(p.id,p.x,p.y,p.aim,speed,0,radius,0,seconds,'flak'),shot:id=>this.shots.get(id),remove:s=>this.removeShot(s),update:s=>this.events.push({type:'shots',shots:[{...s}]}),sound:(p,id,point=p)=>this.events.push({type:'sound',id,owner:p.id,x:point.x,y:point.y})};}
   private sniperContext():SniperContext{return{tick:this.combatTick,stats:p=>this.stats(p),id:()=>this.id(),canEmit:()=>this.canEmitShots('friendly',1),shoot:(p,damage)=>this.emitShot(p.id,p.x,p.y,p.aim,sniperRules.speed,damage,sniperRules.radius,0,sniperRules.lifeSeconds),sound:(p,id)=>this.events.push({type:'sound',id,owner:p.id,x:p.x,y:p.y})};}
   private marksmanContext(){return {
     tick:this.combatTick,stats:(p:Player)=>this.stats(p),
@@ -3295,6 +3295,7 @@ export class Game {
       out.push({ type: 'remove', ids: this.removals });
       this.removals = [];
     }
+    out.push(...this.flak.privateUpdates(this.combatTick).map(update=>({type:'private-class-cues' as const,...update,run:this.settings.runId,encounter:this.encounter})));
     return out;
   }
   // Practice-only boundary saves never enter the online room or global rankings.

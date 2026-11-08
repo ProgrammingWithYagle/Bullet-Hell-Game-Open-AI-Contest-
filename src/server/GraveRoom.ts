@@ -343,7 +343,8 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       personal.set(id, list);
     };
     for (const event of this.game.drainEvents()) {
-      if (event.type === 'shots') {
+      if(event.type==='private-class-cues')add(event.owner,event);
+      else if (event.type === 'shots') {
         const hostile = event.shots.filter((s) => s.owner === 'hostile');
         if (hostile.length) shared.push({ type: 'shots', shots: hostile });
         for (const shot of event.shots) {

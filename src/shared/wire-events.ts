@@ -1,3 +1,4 @@
+import { validSeamPrivateEvent } from "./heavy-seam.ts";
 // Projectile transport. Offline simulation keeps ordinary Event objects.
 import type { Event, Shot } from "./protocol.ts";
 
@@ -84,6 +85,10 @@ export function decodeEvents(events: WireEvent[]): Event[] {
   return events.map((event): Event => {
     if (!event || typeof event !== "object")
       throw Error("invalidProjectilePacket");
+    if (event.type === "private-class-cues") {
+      if (!validSeamPrivateEvent(event)) throw Error("invalidProjectilePacket");
+      return event;
+    }
     if (event.type !== "shot-batch") {
       if (!["remove", "sound", "notice"].includes(event.type))
         throw Error("invalidProjectilePacket");

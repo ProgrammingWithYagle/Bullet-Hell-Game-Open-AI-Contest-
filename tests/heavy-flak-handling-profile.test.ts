@@ -177,6 +177,7 @@ test("issued67 rejects future Fuze handling ownership and wrong/online envelopes
   for (const id of [
     "heavy-flak-running-1",
     "heavy-flak-hanging-1",
+    "heavy-flak-seam-1",
   ]) {
     const future = structuredClone(old);
     future.player.skills.push(id);
@@ -198,7 +199,7 @@ test("issued67 rejects future Fuze handling ownership and wrong/online envelopes
 });
 test("exact issued67 admits every one of the fifty-four issued techniques with its actual affordable prerequisite ownership", () => {
   const oldNodes = data.specializationSkills.filter(
-    (s) => !["heavy-flak-running-1","heavy-flak-hanging-1"].includes(s.id),
+    (s) => !["heavy-flak-running-1","heavy-flak-hanging-1","heavy-flak-seam-1"].includes(s.id),
   );
   assert.equal(oldNodes.length, 54);
   const all = [
@@ -237,6 +238,6 @@ test("exact issued67 admits every one of the fifty-four issued techniques with i
     assert.deepEqual(q.skills, p.skills, leaf.id);
     assert.equal(q.classId, p.classId);
     assert.equal(q.totalSp, p.totalSp);
-    assert(!q.skills.some((id) => ["heavy-flak-running-1","heavy-flak-hanging-1"].includes(id)));
+    assert(!q.skills.some((id) => ["heavy-flak-running-1","heavy-flak-hanging-1","heavy-flak-seam-1"].includes(id)));
   }
 });
