@@ -1,0 +1,11 @@
+{
+  "checkedAt": "2026-11-08T18:53:54.505Z",
+  "originalFailureReceiptSha256": "d9a50e38d4a6fd843fe0b38aa60f4eeafcf767d80b261ff93e574c5038aed82b",
+  "actualFallback": "normal production endpoint fallback from src/client/deployment.ts",
+  "containsProductionFallback": true,
+  "containsExpected2744": false,
+  "failedRootNeverLaunched": true,
+  "browserOrGameClientOpenedForIt": false,
+  "productionDeploymentOrExternalGameplayConnectionPerformed": false,
+  "correction": "The initial commentary hypothesized a prior backend port. Source and emitted-byte inspection instead show the normal production endpoint fallback. The missing task-local VITE_GAME_SERVER binding is the cause; the fallback itself is unchanged."
+}

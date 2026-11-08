@@ -1,0 +1,8 @@
+{
+  "at": "2026-11-08T19:23:31.869Z",
+  "original": "verify-frozen.mjs",
+  "failure": "Aggregator required a numeric contact field for the two actual host-exit cleanup cases, whose live carrier is ended before bursting.",
+  "correction": "Keep strict original host-exit/live-carrier/owner-removal assertions and record the absent contact measure as null with its provenance. All measured burst counts still require explicit nonnegative integers. No implicit zero and no positive-contact inference.",
+  "nativeCasesOrSourceChanged": false,
+  "nativeCasesRepeatedOrSkipped": false
+}
