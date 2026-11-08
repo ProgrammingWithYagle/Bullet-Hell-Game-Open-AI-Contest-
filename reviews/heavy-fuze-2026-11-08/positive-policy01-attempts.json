@@ -1,0 +1,37 @@
+{
+  "checkedAt": "2026-11-08T03:30:16.010Z",
+  "passed": false,
+  "rows": [
+    {
+      "audience": "testing",
+      "handling": "running",
+      "passed": false,
+      "actualAdmittedPolicyShells": 0,
+      "actualObservedPolicyBursts": 0,
+      "reason": "failed: The unchanged60second observation bound must include a real positive contact; preserve failures and policy provenance.",
+      "originalProgress": "positive01-testing-running-progress.json",
+      "originalLog": "reviews/heavy-fuze-2026-11-08/positive01-testing-running.log",
+      "hangingAttempted": false
+    },
+    {
+      "audience": "public",
+      "handling": "running",
+      "passed": false,
+      "actualAdmittedPolicyShells": 0,
+      "actualObservedPolicyBursts": 0,
+      "reason": "failed: The unchanged60second observation bound must include a real positive contact; preserve failures and policy provenance.",
+      "originalProgress": "positive01-public-running-progress.json",
+      "originalLog": "reviews/heavy-fuze-2026-11-08/positive01-public-running.log",
+      "hangingAttempted": false
+    }
+  ],
+  "featureRuntimeChanged": false,
+  "core25NativeCasesUnchanged": true,
+  "original60SecondBoundUnchanged": true,
+  "positiveContactClaimed": false,
+  "limits": [
+    "Two separate visible-state policy attempts failed without admitting another shell. Their successful ordinary first-clear acquisition/initial finite-shell witness does not substitute for positive contacts.",
+    "Hanging was not attempted by the fail-fast auxiliary runner. This is separate from the passing1903game tests and25core native cases per audience; no core check was skipped, weakened or extended.",
+    "The cause of zero policy admissions is not established by these original limited measurements. Further diagnostics retain a distinct policy hash and source binding."
+  ]
+}
