@@ -1,6 +1,6 @@
-# Heavy specializations: Flak Gunner
+# Heavy specializations: Flak and Siege Gunner
 
-**Current development:** playable source **4392f4660afdcafe3598c7d17316a602b7eaf128**, build **2026.11.08-heavy-seam-fuze**, protocol **69**, **1,995 passing tests and all seven checks**. Exact-source [push CI](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/42511634024) and [PR CI](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/42511647639) pass with every job, step and decoded 1,995-pass log checked. Fresh [testing](http://127.0.0.1:5368/)/2744 and [public interface](http://127.0.0.1:5369/)/2745 each bind 2,046 files and four native groups / 49 cases. Heavy has seven real Flak techniques, including Seam Fuze’s travelled-line choice beside the point operation. All 56 issued definitions/rules remain exact; the catalog has 57 techniques. Further Heavy depth/routes, fitting Soldier paths, other classes and human/final-balance acceptance remain open. Only the user decides completion. Metadata HEAD/CI is separate; inspect it live.
+**Current development:** playable source **5316ead6b5c573d74d058eba870f18ff4bffc86c**, build **2026.11.09-heavy-traverse-stroke**, protocol **70**, **2,044 passing tests and all seven checks**. Exact-source [push CI](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/42545596780) and [PR CI](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/42545608574) pass with every job, step and decoded 2,044-pass log checked. Fresh [testing](http://127.0.0.1:5370/)/2746 and [public interface](http://127.0.0.1:5371/)/2747 each bind 2,049 files and four native groups / 64 cases. Heavy has seven Flak techniques and three Siege Gunner techniques: a finite paid firing stroke with a real ground/aim fitting choice. All 57 issued definitions/rules/emblems remain exact; the catalog has 60 techniques. Later acquired operations, further Heavy/Soldier routes, remaining classes and human/final-balance acceptance continue. Only the user decides completion. Metadata HEAD/CI is separate; inspect it live.
 
 Hux Bell keeps Suppressing Cone, Braced Firing and Foundry Overture, including the owned General transformations. Flak is a manually placed defensive round beside ordinary damaging fire. Its seven techniques provide two independent early choices and a later spatial operation. Heavy route and class development continues.
 
@@ -32,7 +32,7 @@ Friendly flight, same-id stopped updates and removals remain owner-only. Bounded
 
 The guide and HUD distinguish launch, cuttable line and severed line without adding an empty action. Seven painted equipment emblems have native alpha/provenance checks; all 56 issued emblem files and entries remain exact. The two new short sounds have bounded native PCM checks, while all 12 old Heavy rate/sample comparisons remain exact. Human/rendered/device/native-language/listening/motion acceptance remains open.
 
-## Verification and limits
+## Issued Seam verification and limits (source69 provenance)
 
 [Source and gate](../reviews/heavy-seam-2026-11-08/source-verification.json), [exact-source CI](../reviews/heavy-seam-2026-11-08/source-ci.json), [frozen proof](../reviews/heavy-seam-2026-11-08/frozen-verification.json), [natural/replay proof](../reviews/heavy-seam-2026-11-08/natural-replay-summary.json). The 1,995 tests and all seven checks pass with no failures, cancellations or skips. Exact-source push/PR CI checks every job, step and decoded 1,995-pass log.
 
@@ -44,9 +44,15 @@ The first unregistered 2,045-file testing root is preserved in place. It used th
 
 ## Continuing work
 
-Heavy still needs further useful depth, a qualitative culmination, other fitting routes, whole-class assessment and human/final-balance acceptance. No fixed technique maximum applies. Soldier alternatives and the remaining classes continue; only the user decides completion. Next content admission must whitelist exact 69/df1b63cc4adf21486fe0e142275b7b7634798f274f6e11de6f737ea0340feb28/57 techniques/four General before68, including all 12 ownership/profile/history rosters. Preserve General 648/four shared techniques/27 SP/one capstone, issued equipment/balances, remaps, both HUD choices and original Practice editions. Local imports never become online proof. Service Yard remains unregistered 4-pass/1-fail WIP outside 1,995 tests.
+Heavy still needs further useful depth, a qualitative culmination, other fitting routes, whole-class assessment and human/final-balance acceptance. No fixed technique maximum applies. Soldier alternatives and the remaining classes continue; only the user decides completion. Next content admission must whitelist exact 70/f28e23fd7430e62d25e262869eadc77f945e62f821c473c638a9b8faefcef589/60 techniques/four General before69, including all 12 ownership/profile/history rosters. Preserve General 648/four shared techniques/27 SP/one capstone, issued equipment/balances, remaps, both HUD choices and original Practice editions. Local imports never become online proof. Service Yard remains unregistered 4-pass/1-fail WIP outside 1,995 tests.
 
 
-## Active Siege Gunner source validation
+## Siege Gunner: verified early choices
 
-A second Heavy region adds Traverse Stroke and the exclusive Set Spade/Floating Cradle choices.2,044tests/all7local checks, six actual3→9source MenuDOM/worker/non-host-peer cases and18natural/replay pairs pass. Exact-source CI and fresh frozen native reviews remain pending. All57issued definitions/rules/emblems remain exact. See[mechanics and limits](HEAVY_TRAVERSE_DESIGN.md); later operations/culmination and other routes/classes remain open.
+Traverse Stroke immediately attempts one actual round, then three separately paid rounds at the original ten-tick intervals. Choose a steerable planted Set Spade or a walking Floating Cradle with a locked world bearing. Physical recoil, bodies, cover, time, armor and finite interruption apply. Entry costs3SP including Fresh Belt; a fitting costs5SP in total and is acquired through an actual first Short clear to9earned. Four owned Q/E/ultimate/C rows retain independent remaps and both HUD choices; no empty B card appears. See[the complete mechanics and limits](HEAVY_TRAVERSE_DESIGN.md).
+
+Both 2,049-file reviews pass four native groups/64cases: HTTP1, source UI/prediction39, whole exact-served optimized workers12 and real peers12. Three new cases per transport and audience earn actual Short3→9and buy through source MenuDOM; the new peer cases make Heavy a non-host in a Soldier-hosted room. Source MenuDOM uses asset/i18n stubs and is separate from rendered acceptance.
+
+Eighteen normal natural/replay pairs match every combat/progression field, including combat-exit shield. Gatehouse has9wins/136casts/510paid rounds/12releases; Triage has9losses/125casts/370rounds/6releases. One Gatehouse raw terminal shield reset has explicit issued Practice provenance; Triage has no raw mismatch. Different General spending and a single conservative18px policy(actual9) do not rank builds.
+
+Later Siege operations, a qualitative culmination, additional fitting routes/classes and human/final-balance acceptance remain open. No fixed maximum or class completion is implied.
