@@ -128,7 +128,7 @@ test("ordinary Short buys a distinct affordable Grenadier discipline and symmetr
   }
   assert.equal(data.skills.length, 648);
   assert.equal(data.generalSkills.length, 4);
-  assert.equal(data.specializationSkills.length,57);
+  assert.equal(data.specializationSkills.length,60);
 });
 test("prime starts one finite recovery without ammo or E, and a separate manual throw retains the cooked fuse", () => {
   const f = fixture(),

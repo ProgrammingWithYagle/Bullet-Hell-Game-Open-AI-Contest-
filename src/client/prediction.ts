@@ -1,3 +1,4 @@
+import{traversePredictedMotion,traversePredictedAfterMove}from'./heavy-traverse-prediction.ts';
 import {alchemyPredictedSpeed,cancelPredictedBrew} from './alchemy-presentation.ts';
 import {rangerPredictedSpeed,cancelPredictedRangerDraw} from './ranger-presentation.ts';
 import {advanceMobility,dodgeIntent,takeDodge,sprintUnlocked,mobilityRules} from '../shared/mobility.ts';
@@ -91,16 +92,18 @@ export class Prediction {
           (1 + rally) *
           environment.multiplier *
           terrain.multiplier;
+    const traverseMotion=traversePredictedMotion(p,i,now);
     const next = moveBody(
       p,
       {
-        x: ((dash ? p.dashX : mx) * speed + environment.x + terrain.x + raidForce.x + earlyForce.x) * DT,
-        y: ((dash ? p.dashY : my) * speed + environment.y + terrain.y + raidForce.y + earlyForce.y) * DT,
+        x: ((dash ? p.dashX : mx) * speed * traverseMotion.walk + traverseMotion.x + environment.x + terrain.x + raidForce.x + earlyForce.x) * DT,
+        y: ((dash ? p.dashY : my) * speed * traverseMotion.walk + traverseMotion.y + environment.y + terrain.y + raidForce.y + earlyForce.y) * DT,
       },
       data.rules.playerRadius,
       [...runtimeArena(view.arenaId,view.run.difficulty).obstacles, ...gates, ...blocks],
     );
     p.x = next.x;
     p.y = next.y;
+    traversePredictedAfterMove(p);
   }
 }

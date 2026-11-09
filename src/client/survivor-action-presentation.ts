@@ -100,11 +100,11 @@ export class SurvivorActionClock {
         attackFacing: facingOf(player.aim),
         hurtFacing: facingOf(player.aim),
       };
-      const sniper=player.classId==='soldier'&&player.skills.includes('soldier-sniper-1'),flak=player.classId==='heavy'&&player.skills.includes('heavy-flak-1');
+      const sniper=player.classId==='soldier'&&player.skills.includes('soldier-sniper-1'),flak=player.classId==='heavy'&&player.skills.includes('heavy-flak-1'),traverse=player.classId==='heavy'&&player.skills.includes('heavy-traverse-1');
       if (old && continuingCombat && old.status === 'active' && player.status === 'active') {
         const attack = clips.get(player.classId + '-attack-south');
         if (
-          !sniper && !flak && player.classId !== 'ranger' && player.weapon === old.weapon &&
+          !sniper && !flak && !traverse && player.classId !== 'ranger' && player.weapon === old.weapon &&
           player.ammo < old.ammo &&
           attack &&
           view.tick - memory.attackAt >= (attack.frames * HZ) / attack.fps
@@ -123,10 +123,10 @@ export class SurvivorActionClock {
         memory.sniperEventAt=at;
         if(fresh&&view.combatTick>=at&&view.combatTick-at<duration&&view.tick-memory.attackAt>=duration&&(!old||(player.weapon===old.weapon&&player.health>=old.health))){memory.attackAt=view.tick-Math.max(0,view.combatTick-at);memory.attackFacing=facingOf(shotAt>=primaryAt?(player.kit.sniperShotAim??player.aim):(player.kit.sniperPrimaryAim??player.aim));}
       }
-      if(flak&&view.phase==='combat'&&player.status==='active'){
-        const primaryAt=player.kit.heavyPrimaryAt??0,shotAt=player.kit.heavyFlakShotAt??0,at=Math.max(primaryAt,shotAt),fresh=at>0&&at!==(memory.heavyEventAt??0),attack=clips.get('heavy-attack-south')!,duration=attack.frames*HZ/attack.fps;
+      if((flak||traverse)&&view.phase==='combat'&&player.status==='active'){
+        const primaryAt=player.kit.heavyPrimaryAt??0,shotAt=(traverse?player.kit.heavyTraverseShotAt:player.kit.heavyFlakShotAt)??0,at=Math.max(primaryAt,shotAt),fresh=at>0&&at!==(memory.heavyEventAt??0),attack=clips.get('heavy-attack-south')!,duration=attack.frames*HZ/attack.fps;
         memory.heavyEventAt=at;
-        if(fresh&&view.combatTick>=at&&view.combatTick-at<duration&&view.tick-memory.attackAt>=duration&&(!old||(player.weapon===old.weapon&&player.health>=old.health))){memory.attackAt=view.tick-Math.max(0,view.combatTick-at);memory.attackFacing=facingOf(shotAt>=primaryAt?(player.kit.heavyFlakShotAim??player.aim):(player.kit.heavyPrimaryAim??player.aim));}
+        if(fresh&&view.combatTick>=at&&view.combatTick-at<duration&&view.tick-memory.attackAt>=duration&&(!old||(player.weapon===old.weapon&&player.health>=old.health))){memory.attackAt=view.tick-Math.max(0,view.combatTick-at);memory.attackFacing=facingOf(shotAt>=primaryAt?((traverse?player.kit.heavyTraverseShotAim:player.kit.heavyFlakShotAim)??player.aim):(player.kit.heavyPrimaryAim??player.aim));}
       }
       if (player.classId === 'swordsman' && view.phase === 'combat' && player.status === 'active') {
         const cut = view.classCues

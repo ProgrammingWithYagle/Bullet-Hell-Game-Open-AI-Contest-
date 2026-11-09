@@ -1,0 +1,113 @@
+
+Stage 1 authored content
+{
+  "schemaVersion": 1,
+  "stage": "Stage 1 source validation",
+  "passed": false,
+  "legalMutationSets": 2255,
+  "checks": [
+    {
+      "name": "Complete finite versioned content",
+      "passed": true
+    },
+    {
+      "name": "Twelve classes, 648 specialization nodes, all eighteen grades and ultimates",
+      "passed": true
+    },
+    {
+      "name": "Campaign, raid and uncapped endless budgets",
+      "passed": true
+    },
+    {
+      "name": "Fixed boss grades, independent variants and complete translated tier labels",
+      "passed": true
+    },
+    {
+      "name": "Weapon accounting, rates and finite cooldowns",
+      "passed": true
+    },
+    {
+      "name": "Heavy technique emblems retain exact generated alpha and provenance",
+      "passed": true
+    },
+    {
+      "name": "Soldier technique emblems retain exact generated alpha and provenance",
+      "passed": true
+    },
+    {
+      "name": "Engineer technique emblems retain exact generated alpha and provenance",
+      "passed": true
+    },
+    {
+      "name": "Alchemist retained natives, whole-figure crops and independent RGBA delivery",
+      "passed": true
+    },
+    {
+      "name": "Summoner original natives, complete companion poses and exact RGBA delivery",
+      "passed": true
+    },
+    {
+      "name": "Swordsman native crops, complete delivery poses and item RGBA",
+      "passed": true
+    },
+    {
+      "name": "Every legal one-, two- and three-mutation composition",
+      "passed": true
+    },
+    {
+      "name": "Boss attack contracts, transitions, arenas and deadlines",
+      "passed": true
+    },
+    {
+      "name": "Sixty-six distinct bosses, route-specific gauntlets and Endless exclusives",
+      "passed": true
+    },
+    {
+      "name": "The Open Ledger has fifteen encounters, fourteen decisions and three reserved finales",
+      "passed": true
+    },
+    {
+      "name": "Design bible and complete editable tables",
+      "passed": false,
+      "error": "Stale balance evidence\n+ actual - expected\n\n+ 'df1b63cc4adf21486fe0e142275b7b7634798f274f6e11de6f737ea0340feb28'\n- 'f28e23fd7430e62d25e262869eadc77f945e62f821c473c638a9b8faefcef589'\n"
+    },
+    {
+      "name": "Painted arena cover and lava native pixels, transparency and provenance",
+      "passed": true
+    },
+    {
+      "name": "Painted arena worlds match exact normalized native pixels and floor-fit metadata",
+      "passed": true
+    },
+    {
+      "name": "Bellringer eight drawn walking poses and exact retained action RGBA",
+      "passed": true
+    },
+    {
+      "name": "Alchemist eight drawn walking poses and exact retained action RGBA",
+      "passed": true
+    },
+    {
+      "name": "Ranger whole-figure extraction, independent RGBA reconstruction and exact retained natives",
+      "passed": true
+    },
+    {
+      "name": "All fifteen translation catalogs and placeholder parity",
+      "passed": false,
+      "error": "{\n  \"ok\": false,\n  \"localeCount\": 15,\n  \"bossCount\": 66,\n  \"expansionBossCount\": 49,\n  \"keysPerLocale\": 3019,\n  \"totalMessages\": 45285,\n  \"contentCoverageKeys\": 1875,\n  \"translationReview\": \"AI-authored; native-speaker and runtime layout review pending\",\n  \"errors\": [\n    \"en: canonical key set differs from source specification\",\n    \"en: boss expansion source mismatch at ui.heavy.manualHelp\",\n    \"zh-Hans: boss expansion source mismatch at ui.heavy.manualHelp\",\n    \"zh-Hans: untranslated English copy at pathway.heavy-traverse-1.name\",\n    \"zh-Hans: untranslated English copy at pathway.heavy-traverse-1.summary\",\n    \"zh-Hans: untranslated English copy at pathway.heavy-traverse-spade-1.summary\",\n    \"zh-Hans: untranslated English copy at pathway.heavy-traverse-floating-1.summary\",\n    \"zh-Hans: untranslated English copy at ui.heavy.traverseAction\",\n    \"zh-Hans: untranslated English copy at ui.heavy.traverseRemaining\",\n    \"zh-Hans: untranslated English copy at ui.heavy.traverseHelp\",\n    \"zh-Hans: untranslated English copy at skill.heavy-traverse-1.name\",\n    \"zh-Hans: untranslated English copy at skill.heavy-traverse-1.description\",\n    \"zh-Hans: untranslated English copy at skill.heavy-traverse-spade-1.name\",\n    \"zh-Hans: untranslated English copy at skill.heavy-traverse-spade-1.description\",\n    \"zh-Hans: untranslated English copy at skill.heavy-traverse-floating-1.name\",\n    \"zh-Hans: untranslated English copy at skill.heavy-traverse-floating-1.description\",\n    \"zh-Hant: boss expansion source mismatch at ui.heavy.manualHelp\",\n    \"zh-Hant: untranslated English copy at pathway.heavy-traverse-1.name\",\n    \"zh-Hant: untranslated English copy at pathway.heavy-traverse-1.summary\",\n    \"zh-Hant: untranslated English copy at pathway.heavy-traverse-spade-1.summary\",\n    \"zh-Hant: untranslated English copy at pathway.heavy-traverse-floating-1.summary\",\n    \"zh-Hant: untranslated English copy at ui.heavy.traverseAction\",\n    \"zh-Hant: untranslated English copy at ui.heavy.traverseRemaining\",\n    \"zh-Hant: untranslated English copy at ui.heavy.traverseHelp\",\n    \"zh-Hant: untranslated English copy at skill.heavy-traverse-1.name\",\n    \"zh-Hant: untranslated English copy at skill.heavy-traverse-1.description\",\n    \"zh-Hant: untranslated English copy at skill.heavy-traverse-spade-1.name\",\n    \"zh-Hant: untranslated English copy at skill.heavy-traverse-spade-1.description\",\n    \"zh-Hant: untranslated English copy at skill.heavy-traverse-floating-1.name\",\n    \"zh-Hant: untranslated English copy at skill.heavy-traverse-floating-1.description\",\n    \"ja: boss expansion source mismatch at ui.heavy.manualHelp\",\n    \"ja: untranslated English copy at pathway.heavy-traverse-1.name\",\n    \"ja: untranslated English copy at pathway.heavy-traverse-1.summary\",\n    \"ja: untranslated English copy at pathway.heavy-traverse-spade-1.summary\",\n    \"ja: untranslated English copy at pathway.heavy-traverse-floating-1.summary\",\n    \"ja: untranslated English copy at ui.heavy.traverseAction\",\n    \"ja: untranslated English copy at ui.heavy.traverseRemaining\",\n    \"ja: untranslated English copy at ui.heavy.traverseHelp\",\n    \"ja: untranslated English copy at skill.heavy-traverse-1.name\",\n    \"ja: untranslated English copy at skill.heavy-traverse-1.description\",\n    \"ja: untranslated English copy at skill.heavy-traverse-spade-1.name\",\n    \"ja: untranslated English copy at skill.heavy-traverse-spade-1.description\",\n    \"ja: untranslated English copy at skill.heavy-traverse-floating-1.name\",\n    \"ja: untranslated English copy at skill.heavy-traverse-floating-1.description\",\n    \"es: boss expansion source mismatch at ui.heavy.manualHelp\",\n    \"es: untranslated English copy at pathway.heavy-traverse-1.name\",\n    \"es: untranslated English copy at pathway.heavy-traverse-1.summary\",\n    \"es: untranslated English copy at pathway.heavy-traverse-spade-1.summary\",\n    \"es: untranslated English copy at pathway.heavy-traverse-floating-1.summary\",\n    \"es: untranslated English copy at ui.heavy.traverseAction\",\n    \"es: untranslated English copy at ui.heavy.traverseRemaining\",\n    \"es: untranslated English copy at ui.heavy.traverseHelp\",\n    \"es: untranslated English copy at skill.heavy-traverse-1.name\",\n    \"es: untranslated English copy at skill.heavy-traverse-1.description\",\n    \"es: untranslated English copy at skill.heavy-traverse-spade-1.name\",\n    \"es: untranslated English copy at skill.heavy-traverse-spade-1.description\",\n    \"es: untranslated English copy at skill.heavy-traverse-floating-1.name\",\n    \"es: untranslated English copy at skill.heavy-traverse-floating-1.description\",\n    \"fr: boss expansion source mismatch at ui.heavy.manualHelp\",\n    \"fr: untranslated English copy at pathway.heavy-traverse-1.name\",\n    \"fr: untranslated English copy at pathway.heavy-traverse-1.summary\",\n    \"fr: untranslated English copy at pathway.heavy-traverse-spade-1.summary\",\n    \"fr: untranslated English copy at pathway.heavy-traverse-floating-1.summary\",\n    \"fr: untranslated English copy at ui.heavy.traverseAction\",\n    \"fr: untranslated English copy at ui.heavy.traverseRemaining\",\n    \"fr: untranslated English copy at ui.heavy.traverseHelp\",\n    \"fr: untranslated English copy at skill.heavy-traverse-1.name\",\n    \"fr: untranslated English copy at skill.heavy-traverse-1.description\",\n    \"fr: untranslated English copy at skill.heavy-traverse-spade-1.name\",\n    \"fr: untranslated English copy at skill.heavy-traverse-spade-1.description\",\n    \"fr: untranslated English copy at skill.heavy-traverse-floating-1.name\",\n    \"fr: untranslated English copy at skill.heavy-traverse-floating-1.description\",\n    \"de: boss expansion source mismatch at ui.heavy.manualHelp\",\n    \"de: untranslated English copy at pathway.heavy-traverse-1.name\",\n    \"de: untranslated English copy at pathway.heavy-traverse-1.summary\",\n    \"de: untranslated English copy at pathway.heavy-traverse-spade-1.summary\",\n    \"de: untranslated English copy at pathway.heavy-traverse-floating-1.summary\",\n    \"de: untranslated English copy at ui.heavy.traverseAction\",\n    \"de: untranslated English copy at ui.heavy.traverseRemaining\",\n    \"de: untranslated English copy at ui.heavy.traverseHelp\",\n    \"de: untranslated English copy at skill.heavy-traverse-1.name\",\n    \"de: untranslated English copy at skill.heavy-traverse-1.description\",\n    \"de: untranslated English copy at skill.heavy-traverse-spade-1.name\",\n    \"de: untranslated English copy at skill.heavy-traverse-spade-1.description\",\n    \"de: untranslated English copy at skill.heavy-traverse-floating-1.name\",\n    \"de: untranslated English copy at skill.heavy-traverse-floating-1.description\",\n    \"pt-BR: boss expansion source mismatch at ui.heavy.manualHelp\",\n    \"pt-BR: untranslated English copy at pathway.heavy-traverse-1.name\",\n    \"pt-BR: untranslated English copy at pathway.heavy-traverse-1.summary\",\n    \"pt-BR: untranslated English copy at pathway.heavy-traverse-spade-1.summary\",\n    \"pt-BR: untranslated English copy at pathway.heavy-traverse-floating-1.summary\",\n    \"pt-BR: untranslated English copy at ui.heavy.traverseAction\",\n    \"pt-BR: untranslated English copy at ui.heavy.traverseRemaining\",\n    \"pt-BR: untranslated English copy at ui.heavy.traverseHelp\",\n    \"pt-BR: untranslated English copy at skill.heavy-traverse-1.name\",\n    \"pt-BR: untranslated English copy at skill.heavy-traverse-1.description\",\n    \"pt-BR: untranslated English copy at skill.heavy-traverse-spade-1.name\",\n    \"pt-BR: untranslated English copy at skill.heavy-traverse-spade-1.description\",\n    \"pt-BR: untranslated English copy at skill.heavy-traverse-floating-1.name\",\n    \"pt-BR: untranslated English copy at skill.heavy-traverse-floating-1.description\",\n    \"ru: boss expansion source mismatch at ui.heavy.manualHelp\",\n    \"ru: untranslated English copy at pathway.heavy-traverse-1.name\",\n    \"ru: untranslated English copy at pathway.heavy-traverse-1.summary\",\n    \"ru: untranslated English copy at pathway.heavy-traverse-spade-1.summary\",\n    \"ru: untranslated English copy at pathway.heavy-traverse-floating-1.summary\",\n    \"ru: untranslated English copy at ui.heavy.traverseAction\",\n    \"ru: untranslated English copy at ui.heavy.traverseRemaining\",\n    \"ru: untranslated English copy at ui.heavy.traverseHelp\",\n    \"ru: untranslated English copy at skill.heavy-traverse-1.name\",\n    \"ru: untranslated English copy at skill.heavy-traverse-1.description\",\n    \"ru: untranslated English copy at skill.heavy-traverse-spade-1.name\",\n    \"ru: untranslated English copy at skill.heavy-traverse-spade-1.description\",\n    \"ru: untranslated English copy at skill.heavy-traverse-floating-1.name\",\n    \"ru: untranslated English copy at skill.heavy-traverse-floating-1.description\",\n    \"hi: boss expansion source mismatch at ui.heavy.manualHelp\",\n    \"hi: untranslated English copy at pathway.heavy-traverse-1.name\",\n    \"hi: untranslated English copy at pathway.heavy-traverse-1.summary\",\n    \"hi: untranslated English copy at pathway.heavy-traverse-spade-1.summary\",\n    \"hi: untranslated English copy at pathway.heavy-traverse-floating-1.summary\",\n    \"hi: untranslated English copy at ui.heavy.traverseAction\",\n    \"hi: untranslated English copy at ui.heavy.traverseRemaining\",\n    \"hi: untranslated English copy at ui.heavy.traverseHelp\",\n    \"hi: untranslated English copy at skill.heavy-traverse-1.name\",\n    \"hi: untranslated English copy at skill.heavy-traverse-1.description\",\n    \"hi: untranslated English copy at skill.heavy-traverse-spade-1.name\",\n    \"hi: untranslated English copy at skill.heavy-traverse-spade-1.description\",\n    \"hi: untranslated English copy at skill.heavy-traverse-floating-1.name\",\n    \"hi: untranslated English copy at skill.heavy-traverse-floating-1.description\",\n    \"ar: boss expansion source mismatch at ui.heavy.manualHelp\",\n    \"ar: untranslated English copy at pathway.heavy-traverse-1.name\",\n    \"ar: untranslated English copy at pathway.heavy-traverse-1.summary\",\n    \"ar: untranslated English copy at pathway.heavy-traverse-spade-1.summary\",\n    \"ar: untranslated English copy at pathway.heavy-traverse-floating-1.summary\",\n    \"ar: untranslated English copy at ui.heavy.traverseAction\",\n    \"ar: untranslated English copy at ui.heavy.traverseRemaining\",\n    \"ar: untranslated English copy at ui.heavy.traverseHelp\",\n    \"ar: untranslated English copy at skill.heavy-traverse-1.name\",\n    \"ar: untranslated English copy at skill.heavy-traverse-1.description\",\n    \"ar: untranslated English copy at skill.heavy-traverse-spade-1.name\",\n    \"ar: untranslated English copy at skill.heavy-traverse-spade-1.description\",\n    \"ar: untranslated English copy at skill.heavy-traverse-floating-1.name\",\n    \"ar: untranslated English copy at skill.heavy-traverse-floating-1.description\",\n    \"bn: boss expansion source mismatch at ui.heavy.manualHelp\",\n    \"bn: untranslated English copy at pathway.heavy-traverse-1.name\",\n    \"bn: untranslated English copy at pathway.heavy-traverse-1.summary\",\n    \"bn: untranslated English copy at pathway.heavy-traverse-spade-1.summary\",\n    \"bn: untranslated English copy at pathway.heavy-traverse-floating-1.summary\",\n    \"bn: untranslated English copy at ui.heavy.traverseAction\",\n    \"bn: untranslated English copy at ui.heavy.traverseRemaining\",\n    \"bn: untranslated English copy at ui.heavy.traverseHelp\",\n    \"bn: untranslated English copy at skill.heavy-traverse-1.name\",\n    \"bn: untranslated English copy at skill.heavy-traverse-1.description\",\n    \"bn: untranslated English copy at skill.heavy-traverse-spade-1.name\",\n    \"bn: untranslated English copy at skill.heavy-traverse-spade-1.description\",\n    \"bn: untranslated English copy at skill.heavy-traverse-floating-1.name\",\n    \"bn: untranslated English copy at skill.heavy-traverse-floating-1.description\",\n    \"id: boss expansion source mismatch at ui.heavy.manualHelp\",\n    \"id: untranslated English copy at pathway.heavy-traverse-1.name\",\n    \"id: untranslated English copy at pathway.heavy-traverse-1.summary\",\n    \"id: untranslated English copy at pathway.heavy-traverse-spade-1.summary\",\n    \"id: untranslated English copy at pathway.heavy-traverse-floating-1.summary\",\n    \"id: untranslated English copy at ui.heavy.traverseAction\",\n    \"id: untranslated English copy at ui.heavy.traverseRemaining\",\n    \"id: untranslated English copy at ui.heavy.traverseHelp\",\n    \"id: untranslated English copy at skill.heavy-traverse-1.name\",\n    \"id: untranslated English copy at skill.heavy-traverse-1.description\",\n    \"id: untranslated English copy at skill.heavy-traverse-spade-1.name\",\n    \"id: untranslated English copy at skill.heavy-traverse-spade-1.description\",\n    \"id: untranslated English copy at skill.heavy-traverse-floating-1.name\",\n    \"id: untranslated English copy at skill.heavy-traverse-floating-1.description\",\n    \"ur: boss expansion source mismatch at ui.heavy.manualHelp\",\n    \"ur: untranslated English copy at pathway.heavy-traverse-1.name\",\n    \"ur: untranslated English copy at pathway.heavy-traverse-1.summary\",\n    \"ur: untranslated English copy at pathway.heavy-traverse-spade-1.summary\",\n    \"ur: untranslated English copy at pathway.heavy-traverse-floating-1.summary\",\n    \"ur: untranslated English copy at ui.heavy.traverseAction\",\n    \"ur: untranslated English copy at ui.heavy.traverseRemaining\",\n    \"ur: untranslated English copy at ui.heavy.traverseHelp\",\n    \"ur: untranslated English copy at skill.heavy-traverse-1.name\",\n    \"ur: untranslated English copy at skill.heavy-traverse-1.description\",\n    \"ur: untranslated English copy at skill.heavy-traverse-spade-1.name\",\n    \"ur: untranslated English copy at skill.heavy-traverse-spade-1.description\",\n    \"ur: untranslated English copy at skill.heavy-traverse-floating-1.name\",\n    \"ur: untranslated English copy at skill.heavy-traverse-floating-1.description\",\n    \"ko: boss expansion source mismatch at ui.heavy.manualHelp\",\n    \"ko: untranslated English copy at pathway.heavy-traverse-1.name\",\n    \"ko: untranslated English copy at pathway.heavy-traverse-1.summary\",\n    \"ko: untranslated English copy at pathway.heavy-traverse-spade-1.summary\",\n    \"ko: untranslated English copy at pathway.heavy-traverse-floating-1.summary\",\n    \"ko: untranslated English copy at ui.heavy.traverseAction\",\n    \"ko: untranslated English copy at ui.heavy.traverseRemaining\",\n    \"ko: untranslated English copy at ui.heavy.traverseHelp\",\n    \"ko: untranslated English copy at skill.heavy-traverse-1.name\",\n    \"ko: untranslated English copy at skill.heavy-traverse-1.description\",\n    \"ko: untranslated English copy at skill.heavy-traverse-spade-1.name\",\n    \"ko: untranslated English copy at skill.heavy-traverse-spade-1.description\",\n    \"ko: untranslated English copy at skill.heavy-traverse-floating-1.name\",\n    \"ko: untranslated English copy at skill.heavy-traverse-floating-1.description\"\n  ]\n}\n\n\n\n1 !== 0\n"
+    },
+    {
+      "name": "Eight reviewed art proof sets with original provenance",
+      "passed": true
+    },
+    {
+      "name": "Original music and SFX objective review",
+      "passed": true
+    },
+    {
+      "name": "Leaderboard fixtures and bounded score",
+      "passed": true
+    }
+  ]
+}
+Verification failed

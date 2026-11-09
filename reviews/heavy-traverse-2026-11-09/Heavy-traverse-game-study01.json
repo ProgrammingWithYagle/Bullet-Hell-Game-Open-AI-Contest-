@@ -1,0 +1,142 @@
+{
+  "checkedAt": "2026-11-09T00:35:55.825Z",
+  "source": "4392f466 / metadata ca72abb1",
+  "registered": false,
+  "canonicalFilesWritten": false,
+  "onlineProof": false,
+  "fixtures": "Controlled boss/geometry/minions/resources; prototype ids resolve to empty effects only inside a derived Game bundle. Actual Game shot pool, geometry, armor, damage, input and combat clock.",
+  "cases": [
+    {
+      "name": "actual fixed-step controller pays exactly four actual physical shots and exposes primary only afterward",
+      "passed": true,
+      "details": {
+        "strokeTicks": [
+          1,
+          11,
+          21,
+          31
+        ],
+        "ordinaryFirstAt": 32,
+        "ammo": 40
+      }
+    },
+    {
+      "name": "the two fittings have different ground and aim contracts under actual movement",
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: 614.4501204850784 != 631.6666666666666\n    at near (C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same\\work\\heavy-traverse-stage\\game-probe01.mts:9:33)\n    at <anonymous> (C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same\\work\\heavy-traverse-stage\\game-probe01.mts:22:320)\n    at check (C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same\\work\\heavy-traverse-stage\\game-probe01.mts:17:93)\n    at <anonymous> (C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same\\work\\heavy-traverse-stage\\game-probe01.mts:21:1)\n    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)\n    at async node:internal/modules/esm/loader:647:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)"
+    },
+    {
+      "name": "Floating can walk beyond actual cover and engage separate physical lanes while planted strokes stay occluded",
+      "passed": true,
+      "details": [
+        {
+          "mode": "loose",
+          "losses": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "damage": 0,
+          "shots": 4
+        },
+        {
+          "mode": "spade",
+          "losses": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "damage": 0,
+          "shots": 4
+        },
+        {
+          "mode": "floating",
+          "losses": [
+            0,
+            0,
+            48.6,
+            48.6
+          ],
+          "damage": 97.2,
+          "shots": 4
+        }
+      ]
+    },
+    {
+      "name": "manual slew can redirect later actual rounds while Floating keeps its birth bearing",
+      "passed": true,
+      "details": [
+        {
+          "mode": "loose",
+          "firstDamage": 48.60000000000002,
+          "turnedDamage": 145.80000000000007,
+          "angles": [
+            0,
+            0.6747409422235527,
+            0.6747409422235527,
+            0.6747409422235527
+          ]
+        },
+        {
+          "mode": "spade",
+          "firstDamage": 48.60000000000002,
+          "turnedDamage": 145.80000000000007,
+          "angles": [
+            0,
+            0.6747409422235527,
+            0.6747409422235527,
+            0.6747409422235527
+          ]
+        },
+        {
+          "mode": "floating",
+          "firstDamage": 194.4000000000001,
+          "turnedDamage": 0,
+          "angles": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "name": "real environmental displacement breaks Set Spade and preserves already fired physical work",
+      "passed": true,
+      "details": {
+        "shots": 1,
+        "x": 634,
+        "recovery": 241
+      }
+    },
+    {
+      "name": "paid physical shots use their copied emission origin for source-sensitive armor after the owner moves",
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: 592 != 600\n    at near (C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same\\work\\heavy-traverse-stage\\game-probe01.mts:9:33)\n    at <anonymous> (C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same\\work\\heavy-traverse-stage\\game-probe01.mts:34:309)\n    at check (C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same\\work\\heavy-traverse-stage\\game-probe01.mts:17:93)\n    at <anonymous> (C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same\\work\\heavy-traverse-stage\\game-probe01.mts:33:1)\n    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)\n    at async node:internal/modules/esm/loader:647:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)"
+    },
+    {
+      "name": "actual downing and disconnect remove tracked physical shots with no recovery refund",
+      "passed": true,
+      "details": {
+        "downing": true,
+        "disconnect": true
+      }
+    },
+    {
+      "name": "actual host exit removes all physical stroke shots rather than merely clearing controller metadata",
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n1 !== 0\n\n    at <anonymous> (C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same\\work\\heavy-traverse-stage\\game-probe01.mts:40:77)\n    at check (C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same\\work\\heavy-traverse-stage\\game-probe01.mts:17:93)\n    at <anonymous> (C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same\\work\\heavy-traverse-stage\\game-probe01.mts:39:1)\n    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)\n    at async node:internal/modules/esm/loader:647:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)"
+    },
+    {
+      "name": "actual recoil collides with cover while Braced Firing and Q retain their issued independent authority",
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n30 !== 0\n\n    at <anonymous> (C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same\\work\\heavy-traverse-stage\\game-probe01.mts:43:258)\n    at check (C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same\\work\\heavy-traverse-stage\\game-probe01.mts:17:93)\n    at <anonymous> (C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same\\work\\heavy-traverse-stage\\game-probe01.mts:42:1)\n    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)\n    at async node:internal/modules/esm/loader:647:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)"
+    }
+  ],
+  "passed": false,
+  "passedCount": 5,
+  "failedCount": 4
+}

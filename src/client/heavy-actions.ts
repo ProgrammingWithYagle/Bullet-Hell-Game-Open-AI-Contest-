@@ -1,7 +1,9 @@
+import{traverseIds}from'../shared/heavy-traverse.ts';
 import { seamId } from "../shared/heavy-seam.ts";
 import { flakIds } from "../shared/heavy-flak.ts";
 import type { PlayerView } from "../shared/view.ts";
 export function heavyActions(p: PlayerView, now: number) {
+  if(p.classId==='heavy'&&p.skills.includes(traverseIds.entry))return{command:false,qNameKey:null,qAt:p.qAt,qBlocked:false,extras:[{key:'technique1' as const,id:traverseIds.entry,at:(p.kit.heavyTraverseUntil??0)>now?0:(p.kit.technique1At??0),blocked:p.kit.heavyTraverseBlocked??true}]};
   const cutting =
     p.skills.includes(seamId) && (p.kit.heavyFlakUntil ?? 0) > now;
   return {

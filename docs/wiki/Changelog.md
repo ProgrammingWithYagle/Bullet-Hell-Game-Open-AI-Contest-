@@ -1,6 +1,14 @@
 # Changelog
 
-Development build **2026.11.08-heavy-seam-fuze**, protocol 69. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.09-heavy-traverse-stroke**, protocol 70. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-09 — Maintain a firing stroke or release the feed
+
+### Heavy: Siege Gunner
+
+- Traverse Stroke is a second Heavy route, affordable after Fresh Belt within ordinary Short3SP. Four actual physical rounds each pay their own magazine cost; separate Action1 releases future work. Real recoil, manual barrel slew, bodies, cover, time and armor apply.
+- Choose a stable steerable Set Spade or a walking Floating Cradle with a locked world bearing. Both are real early fittings at5earned/2SP; neither supplies extra rounds, protection or extended recovery.
+- General27SP/onecapstone, issued Flak and Soldier/Engineer operations, all twelve labels/equipment/balances, independent remaps and both HUD choices remain. Later acquired operations, further fitting routes/classes and human/final-balance acceptance continue.
 
 ## 2026-11-08 — Choose a travelled seam or a point burst
 

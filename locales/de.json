@@ -3009,7 +3009,7 @@
     "branch.heavy-pathways": "Specializations",
     "pathway.heavy-flak-1.name": "Flak Gunner",
     "ui.heavy.fieldManual": "Heavy field manual",
-    "ui.heavy.manualHelp": "Choose where to interrupt an incoming lane. Ordinary gunfire, Braced Firing and Suppressing Cone keep their own roles.",
+    "ui.heavy.manualHelp": "Choose a defensive flak round or a paid firing stroke. Ordinary gunfire, Braced Firing and Suppressing Cone keep their own roles.",
     "ui.heavy.flakHelp": "Action 1 spends one magazine round to launch a defensive flak shell. It clears at most three small hostile shots only when it bursts, with cover blocking. It deals no body damage and cannot clear large objects, beams, fields or ground attacks. Moving and bracing are allowed; busy or empty rejection spends nothing.",
     "ui.heavy.commandHelp": "Action 2 commands your one actual flying shell before its original fuse ends. It cannot act on the launch moment, add another shell or reset recovery. The burst uses nearby shots after they move.",
     "ui.heavy.commandRemaining": "burst own shell · {seconds}s fuse",
@@ -3041,6 +3041,19 @@
     "ui.heavy.seamAction": "Flak Round / Seam Cut",
     "ui.heavy.seamRemaining": "cut travelled seam · {seconds}s fuse",
     "ui.heavy.seamBroken": "seam severed · point action remains",
-    "ui.heavy.seamHelp": "Action 1 launches the round; a separate Action 1 before its fuse cuts the narrow line already travelled. Action 2 keeps its point operation. New cover can sever the line for this shell. A cut shares the original allowance and adds no ammunition cost. The controls below show your current bindings."
+    "ui.heavy.seamHelp": "Action 1 launches the round; a separate Action 1 before its fuse cuts the narrow line already travelled. Action 2 keeps its point operation. New cover can sever the line for this shell. A cut shares the original allowance and adds no ammunition cost. The controls below show your current bindings.",
+    "pathway.heavy-traverse-1.name": "Siege Gunner",
+    "pathway.heavy-traverse-1.summary": "Maintain a paid firing stroke; steer, release, or relocate its real muzzle.",
+    "pathway.heavy-traverse-spade-1.summary": "Hold a steerable stable post without adding recoil; displacement breaks the feed.",
+    "pathway.heavy-traverse-floating-1.summary": "Walk with a locked world bearing and real recoil.",
+    "ui.heavy.traverseAction": "Traverse Stroke / Release Feed",
+    "ui.heavy.traverseRemaining": "Release feed · {rounds} of {maximum} fired",
+    "ui.heavy.traverseHelp": "Action 1 starts a four-round stroke, paying for each real round only when it leaves. A separate Action 1 releases the feed without a refund or recovery reset. Ordinary primary waits; reload, dodge, channeling, overdrive, an empty magazine or failed later admission ends unpaid work. Default carriage holds walking and recoils against actual cover; its barrel slews within the first firing sector.",
+    "skill.heavy-traverse-1.name": "Traverse Stroke",
+    "skill.heavy-traverse-1.description": "Start a finite four-round firing stroke with Action 1. The first physical round leaves immediately; three later rounds each require and spend their own actual magazine round over the next second. Walking pauses while the barrel slews toward manual aim, within sixty degrees of its first bearing. Every admitted round recoils your body eight pixels over the following four combat steps, with real cover blocking movement. Another separate Action 1 releases the feed and lets you walk; fired rounds and their recoil remain. Reload, dodge, channeling or overdrive stops unpaid future rounds. Empty or full-pool rejection spends nothing; a failed later slot ends the feed. Primary waits through the stroke. Each round deals 45 base weapon-scaled damage through ordinary bodies, cover, time and armor. Eight-second base recovery starts with the first admitted round. Choose Siege Gunner instead of Flak Gunner.",
+    "skill.heavy-traverse-spade-1.name": "Set Spade",
+    "skill.heavy-traverse-spade-1.description": "Plant this carriage on stable ground before starting a Traverse Stroke: walking input rejects the start without payment. The stroke adds no recoil and keeps its manual barrel slew, while holding walking input. Any actual external ground displacement breaks the post and ends unpaid future rounds; fired rounds remain. Terrain, moving cover and forced movement still apply. The same four actual rounds, original stroke slots and recovery remain. Choose this fitting instead of Floating Cradle.",
+    "skill.heavy-traverse-floating-1.name": "Floating Cradle",
+    "skill.heavy-traverse-floating-1.description": "Walk normally during a Traverse Stroke and retain each paid round’s actual recoil. Every round keeps the initial world bearing: later mouse aim cannot steer the barrel. Relocate the actual muzzle to find new clear lanes, or release the feed when that bearing becomes useless. This grants no movement bonus, protection or extra round and changes no original stroke slots or recovery. Choose this fitting instead of Set Spade."
   }
 }

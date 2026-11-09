@@ -1,6 +1,6 @@
 import type{SeamPrivateEvent}from"./heavy-seam.ts";
 import revision from '../../content/revision.json' with { type: 'json' };
-export const PROTOCOL = 69;
+export const PROTOCOL = 70;
 export type BossVariant = 'normal' | 'brutal' | 'crazed';
 export const CONTENT_REVISION = revision.sha256;
 export const HZ = 30,

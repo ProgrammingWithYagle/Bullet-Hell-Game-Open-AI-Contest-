@@ -673,6 +673,20 @@
     "heavySeam": {
       "width": 9,
       "maximumPoints": 25
+    },
+    "heavyTraverse": {
+      "rounds": 4,
+      "intervalTicks": 10,
+      "deadlineTicks": 31,
+      "cooldown": 8,
+      "damage": 45,
+      "speed": 1050,
+      "radius": 4,
+      "lifeSeconds": 1,
+      "recoilDistance": 8,
+      "recoilTicks": 4,
+      "halfArc": 1.0471975511965976,
+      "turnPerSecond": 2.4
     }
   },
   "locales": [
@@ -45613,6 +45627,69 @@
       "prerequisite": "heavy-flak-command-1",
       "role": "active",
       "description": "While your paid flak shell is still live, press Action 1 again to cut its flight and clear a thin seam along the ground it actually crossed. The seam reaches 9 pixels to either side and uses only the unspent part of that shell’s original three-small-shot allowance. Action 2 keeps your acquired point-burst operation, so choose a narrow line behind the shell or a wider burst at it. Running Fuze spends from the same allowance; Hanging Fuze retains only the line laid before arrest. Real cover crossing that line permanently severs it for this shell, leaving Action 2 and the original fuse available. Cut before the original fuse ends. Busy hands reject without cutting. No extra round, body damage, shield, recovery reset or lingering trap."
+    },
+    {
+      "classId": "heavy",
+      "branchId": "heavy-pathways",
+      "branchName": "Specializations",
+      "subbranchId": "heavy-traverse-1",
+      "subbranchName": "Siege Gunner",
+      "subbranchNameKey": "pathway.heavy-traverse-1.name",
+      "capstone": false,
+      "effects": {},
+      "id": "heavy-traverse-1",
+      "name": "Traverse Stroke",
+      "nameKey": "skill.heavy-traverse-1.name",
+      "sourceSkillId": "heavy-traverse-1",
+      "grade": "D-",
+      "depth": 1,
+      "cost": 2,
+      "freePlaySpRequired": 3,
+      "prerequisite": "heavy-ordnance-1",
+      "role": "active",
+      "description": "Start a finite four-round firing stroke with Action 1. The first physical round leaves immediately; three later rounds each require and spend their own actual magazine round over the next second. Walking pauses while the barrel slews toward manual aim, within sixty degrees of its first bearing. Every admitted round recoils your body eight pixels over the following four combat steps, with real cover blocking movement. Another separate Action 1 releases the feed and lets you walk; fired rounds and their recoil remain. Reload, dodge, channeling or overdrive stops unpaid future rounds. Empty or full-pool rejection spends nothing; a failed later slot ends the feed. Primary waits through the stroke. Each round deals 45 base weapon-scaled damage through ordinary bodies, cover, time and armor. Eight-second base recovery starts with the first admitted round. Choose Siege Gunner instead of Flak Gunner."
+    },
+    {
+      "classId": "heavy",
+      "branchId": "heavy-pathways",
+      "branchName": "Specializations",
+      "subbranchId": "heavy-traverse-1",
+      "subbranchName": "Siege Gunner",
+      "subbranchNameKey": "pathway.heavy-traverse-1.name",
+      "capstone": false,
+      "effects": {},
+      "id": "heavy-traverse-spade-1",
+      "name": "Set Spade",
+      "nameKey": "skill.heavy-traverse-spade-1.name",
+      "sourceSkillId": "heavy-traverse-spade-1",
+      "grade": "D",
+      "depth": 2,
+      "cost": 2,
+      "freePlaySpRequired": 5,
+      "prerequisite": "heavy-traverse-1",
+      "role": "evolution",
+      "description": "Plant this carriage on stable ground before starting a Traverse Stroke: walking input rejects the start without payment. The stroke adds no recoil and keeps its manual barrel slew, while holding walking input. Any actual external ground displacement breaks the post and ends unpaid future rounds; fired rounds remain. Terrain, moving cover and forced movement still apply. The same four actual rounds, original stroke slots and recovery remain. Choose this fitting instead of Floating Cradle."
+    },
+    {
+      "classId": "heavy",
+      "branchId": "heavy-pathways",
+      "branchName": "Specializations",
+      "subbranchId": "heavy-traverse-1",
+      "subbranchName": "Siege Gunner",
+      "subbranchNameKey": "pathway.heavy-traverse-1.name",
+      "capstone": false,
+      "effects": {},
+      "id": "heavy-traverse-floating-1",
+      "name": "Floating Cradle",
+      "nameKey": "skill.heavy-traverse-floating-1.name",
+      "sourceSkillId": "heavy-traverse-floating-1",
+      "grade": "D",
+      "depth": 2,
+      "cost": 2,
+      "freePlaySpRequired": 5,
+      "prerequisite": "heavy-traverse-1",
+      "role": "evolution",
+      "description": "Walk normally during a Traverse Stroke and retain each paid round’s actual recoil. Every round keeps the initial world bearing: later mouse aim cannot steer the barrel. Relocate the actual muzzle to find new clear lanes, or release the feed when that bearing becomes useless. This grants no movement bonus, protection or extra round and changes no original stroke slots or recovery. Choose this fitting instead of Set Spade."
     }
   ]
 }

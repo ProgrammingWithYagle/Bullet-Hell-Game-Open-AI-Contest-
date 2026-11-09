@@ -1,0 +1,198 @@
+{
+  "checkedAt": "2026-11-09T00:36:38.846Z",
+  "source": "4392f466 / metadata ca72abb1",
+  "registered": false,
+  "canonicalFilesWritten": false,
+  "onlineProof": false,
+  "fixtures": "Controlled boss/geometry/minions/resources; prototype ids resolve to empty effects only inside a derived Game bundle. Actual Game shot pool, geometry, armor, damage, input and combat clock.",
+  "cases": [
+    {
+      "name": "actual fixed-step controller pays exactly four actual physical shots and exposes primary only afterward",
+      "passed": true,
+      "details": {
+        "strokeTicks": [
+          1,
+          11,
+          21,
+          31
+        ],
+        "ordinaryFirstAt": 32,
+        "ammo": 40
+      }
+    },
+    {
+      "name": "the two fittings have different ground and aim contracts under actual movement",
+      "passed": true,
+      "details": [
+        {
+          "mode": "loose",
+          "x": 575.2790389756683,
+          "y": 614.4501204850784,
+          "shotAngles": [
+            0,
+            0.7999999999999998,
+            0.8,
+            0.8
+          ],
+          "paid": 4
+        },
+        {
+          "mode": "spade",
+          "x": 600,
+          "y": 631.6666666666669,
+          "shotAngles": [
+            0,
+            0.7999999999999998,
+            0.8,
+            0.8
+          ],
+          "paid": 4
+        },
+        {
+          "mode": "floating",
+          "x": 568,
+          "y": 821.666666666668,
+          "shotAngles": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "paid": 4
+        }
+      ]
+    },
+    {
+      "name": "Floating can walk beyond actual cover and engage separate physical lanes while planted strokes stay occluded",
+      "passed": true,
+      "details": [
+        {
+          "mode": "loose",
+          "losses": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "damage": 0,
+          "shots": 4
+        },
+        {
+          "mode": "spade",
+          "losses": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "damage": 0,
+          "shots": 4
+        },
+        {
+          "mode": "floating",
+          "losses": [
+            0,
+            0,
+            48.6,
+            48.6
+          ],
+          "damage": 97.2,
+          "shots": 4
+        }
+      ]
+    },
+    {
+      "name": "manual slew can redirect later actual rounds while Floating keeps its birth bearing",
+      "passed": true,
+      "details": [
+        {
+          "mode": "loose",
+          "firstDamage": 48.60000000000002,
+          "turnedDamage": 145.80000000000007,
+          "angles": [
+            0,
+            0.6747409422235527,
+            0.6747409422235527,
+            0.6747409422235527
+          ]
+        },
+        {
+          "mode": "spade",
+          "firstDamage": 48.60000000000002,
+          "turnedDamage": 145.80000000000007,
+          "angles": [
+            0,
+            0.6747409422235527,
+            0.6747409422235527,
+            0.6747409422235527
+          ]
+        },
+        {
+          "mode": "floating",
+          "firstDamage": 194.4000000000001,
+          "turnedDamage": 0,
+          "angles": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "name": "real environmental displacement breaks Set Spade and preserves already fired physical work",
+      "passed": true,
+      "details": {
+        "shots": 1,
+        "x": 634,
+        "recovery": 241
+      }
+    },
+    {
+      "name": "paid physical shots use their copied emission origin for source-sensitive armor after the owner moves",
+      "passed": true,
+      "details": {
+        "origins": [
+          {
+            "x": 600,
+            "y": 600
+          }
+        ],
+        "owner": {
+          "x": 592,
+          "y": 707.6666666666673
+        },
+        "damage": 24.3
+      }
+    },
+    {
+      "name": "actual downing and disconnect remove tracked physical shots with no recovery refund",
+      "passed": true,
+      "details": {
+        "downing": true,
+        "disconnect": true
+      }
+    },
+    {
+      "name": "actual host exit removes all physical stroke shots rather than merely clearing controller metadata",
+      "passed": true,
+      "details": {
+        "actualHostExit": true
+      }
+    },
+    {
+      "name": "actual recoil collides with cover while Braced Firing retains its issued window without new protection",
+      "passed": true,
+      "details": {
+        "x": 594.0002,
+        "braceUntil": 151,
+        "shots": 4,
+        "damagePerShot": 48.6
+      }
+    }
+  ],
+  "passed": true,
+  "passedCount": 9,
+  "failedCount": 0
+}

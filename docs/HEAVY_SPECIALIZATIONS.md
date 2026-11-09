@@ -45,3 +45,8 @@ The first unregistered 2,045-file testing root is preserved in place. It used th
 ## Continuing work
 
 Heavy still needs further useful depth, a qualitative culmination, other fitting routes, whole-class assessment and human/final-balance acceptance. No fixed technique maximum applies. Soldier alternatives and the remaining classes continue; only the user decides completion. Next content admission must whitelist exact 69/df1b63cc4adf21486fe0e142275b7b7634798f274f6e11de6f737ea0340feb28/57 techniques/four General before68, including all 12 ownership/profile/history rosters. Preserve General 648/four shared techniques/27 SP/one capstone, issued equipment/balances, remaps, both HUD choices and original Practice editions. Local imports never become online proof. Service Yard remains unregistered 4-pass/1-fail WIP outside 1,995 tests.
+
+
+## Active Siege Gunner source validation
+
+A second Heavy region adds Traverse Stroke and the exclusive Set Spade/Floating Cradle choices.2,044tests/all7local checks, six actual3→9source MenuDOM/worker/non-host-peer cases and18natural/replay pairs pass. Exact-source CI and fresh frozen native reviews remain pending. All57issued definitions/rules/emblems remain exact. See[mechanics and limits](HEAVY_TRAVERSE_DESIGN.md); later operations/culmination and other routes/classes remain open.

@@ -1,3 +1,4 @@
+import{isHeavyTraverseSound,playHeavyTraverseSound}from'./heavy-traverse-sound.ts';
 import{isHeavyFlakSound,playHeavyFlakSound}from'./heavy-flak-sound.ts';
 import{isSniperSound,playSniperSound}from'./soldier-sniper-sound.ts';
 import{isGrenadierSound,playGrenadierSound}from'./soldier-grenadier-sound.ts';
@@ -105,6 +106,7 @@ export class AudioBus {
     const now = performance.now();
     if (now - (this.last.get(id) ?? -Infinity) < 60) return;
     this.last.set(id, now);
+    if(isHeavyTraverseSound(id)){if(this.volume<=0)return;this.active++;try{playHeavyTraverseSound(this.context,id,this.volume,()=>this.active--);}catch{this.active--;}return;}
     if(isHeavyFlakSound(id)){if(this.volume<=0)return;this.active++;try{playHeavyFlakSound(this.context,id,this.volume,()=>this.active--);}catch{this.active--;}return;}
     if(isSniperSound(id)){if(this.volume<=0)return;this.active++;try{playSniperSound(this.context,id,this.volume,()=>this.active--);}catch{this.active--;}return;}
     if(isGrenadierSound(id)){if(this.volume<=0)return;this.active++;try{playGrenadierSound(this.context,id,this.volume,()=>this.active--);}catch{this.active--;}return;}

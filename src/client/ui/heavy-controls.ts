@@ -1,3 +1,4 @@
+import{traverseIds,heavyTraverseRules}from'../../shared/heavy-traverse.ts';
 import { seamId } from "../../shared/heavy-seam.ts";
 import { data } from "../../shared/game.ts";
 import { flakIds } from "../../shared/heavy-flak.ts";
@@ -19,11 +20,11 @@ export function heavyKitMarkup(
       { action: "q", key: "ability." + cl.abilities[0].id + ".name" },
       { action: "e", key: "ability." + cl.abilities[1].id + ".name" },
       { action: "ultimate", key: "ability." + cl.ultimate.id + ".name" },
-      ...(p.skills.includes(flakIds.entry)
+      ...((p.skills.includes(traverseIds.entry)||p.skills.includes(flakIds.entry))
         ? [
             {
               action: "technique1" as const,
-              key: p.skills.includes(seamId)
+              key: p.skills.includes(traverseIds.entry)?"ui.heavy.traverseAction":p.skills.includes(seamId)
                 ? "ui.heavy.seamAction"
                 : "skill." + flakIds.entry + ".name",
             },
@@ -45,7 +46,7 @@ export function heavyKitMarkup(
           ]
         : []),
     ];
-  const help = [
+  const help = (p.skills.includes(traverseIds.entry)?[t("ui.heavy.traverseHelp"),p.skills.includes(traverseIds.spade)?t("skill."+traverseIds.spade+".description"):p.skills.includes(traverseIds.floating)?t("skill."+traverseIds.floating+".description"):""]:[
     t("ui.heavy.flakHelp"),
     p.skills.includes(seamId) ? t("ui.heavy.seamHelp") : "",
     p.skills.includes(flakIds.compact)
@@ -60,7 +61,7 @@ export function heavyKitMarkup(
         : p.skills.includes(flakIds.command)
           ? t("ui.heavy.commandHelp")
           : "",
-  ]
+  ])
     .filter(Boolean)
     .join(" ");
   return (
@@ -99,6 +100,7 @@ export function heavyHudLabel(
   slot: "technique1" | "technique2",
   now: number,
 ) {
+  if(slot==='technique1'&&p.skills.includes(traverseIds.entry))return(p.kit.heavyTraverseUntil??0)>now?t("ui.heavy.traverseRemaining",{rounds:number(p.kit.heavyTraverseRounds??0),maximum:number(heavyTraverseRules.rounds)}):t("skill."+traverseIds.entry+".name");
   if (slot === "technique1") {
     if (p.skills.includes(seamId) && (p.kit.heavyFlakUntil ?? 0) > now)
       return t(
