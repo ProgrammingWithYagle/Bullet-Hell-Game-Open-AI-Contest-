@@ -9,7 +9,12 @@ export const traverseIds = {
 export const heavyTraverseRules = catalog.rules.heavyTraverse;
 type Mode = "loose" | "spade" | "floating";
 type Owner = Player;
+export const clutchId = "heavy-traverse-clutch-1";
+// A later acquired operation transforms the same original finite stroke.
 type Stroke = {
+  requiresClutch?: boolean;
+  forfeited: number;
+  clutch?: { lifted: boolean; at: number; sequence: number };
   owner: string;
   weapon: string;
   mode: Mode;
@@ -24,6 +29,7 @@ type Stroke = {
   post: Vec;
 };
 type Flight = {
+  requiresClutch?: boolean;
   id: number;
   owner: string;
   weapon: string;
@@ -31,6 +37,7 @@ type Flight = {
   origin: Vec;
 };
 type Impulse = {
+  requiresClutch?: boolean;
   owner: string;
   weapon: string;
   mode: Mode;
@@ -46,6 +53,7 @@ type Action = {
   shotAim?: number;
   shotMode?: Mode;
   shotWeapon?: string;
+  shotRequiresClutch?: boolean;
   handledSequence?: number;
   handledAt?: number;
 };
@@ -105,12 +113,13 @@ export class HeavyTraverse {
   }
   private valid(
     p: Owner | undefined,
-    work: { weapon: string; mode: Mode },
+    work: { weapon: string; mode: Mode; requiresClutch?: boolean },
   ): p is Owner {
     return (
       live(p) &&
       p.weapon === work.weapon &&
-      (work.mode === "loose" || p.skills.includes(traverseIds[work.mode]))
+      (work.mode === "loose" || p.skills.includes(traverseIds[work.mode])) &&
+      (!work.requiresClutch || p.skills.includes(clutchId))
     );
   }
   private busy(p: Owner, now: number) {
@@ -154,6 +163,7 @@ export class HeavyTraverse {
         this.interrupt(p, c.tick) ||
         c.tick >= s.until ||
         (s.mode === "spade" &&
+          !s.clutch?.lifted &&
           Math.hypot(p.x - s.post.x, p.y - s.post.y) > 1e-4)
       )
         this.releaseFeed(p.id);
@@ -169,13 +179,16 @@ export class HeavyTraverse {
           handledAt: c.tick,
         });
         c.sound(p, "heavy-traverse-release");
-      } else this.slew(p, s, c.tick);
+      } else {
+        if (p.input.technique2) this.command(p, c);
+        this.slew(p, s, c.tick);
+      }
     }
     this.impulses = this.impulses.filter((i) => i.until >= c.tick);
   }
   walkFactor(owner: string) {
     const s = this.strokes.get(owner);
-    return s && s.mode !== "floating" ? 0 : 1;
+    return s && s.mode !== "floating" && !s.clutch?.lifted ? 0 : 1;
   }
   /** Velocity from paid shots begins on the following combat step; ordinary body collision remains the caller's responsibility. */
   recoil(p: Owner, now: number): Vec {
@@ -212,12 +225,14 @@ export class HeavyTraverse {
       weapon: p.weapon,
       mode: s.mode,
       origin: { x: p.x, y: p.y },
+      requiresClutch: s.requiresClutch,
     });
     if (s.mode !== "spade")
       this.impulses.push({
         owner: p.id,
         weapon: p.weapon,
         mode: s.mode,
+        requiresClutch: s.requiresClutch,
         at: c.tick,
         until: c.tick + this.rules.recoilTicks,
         aim: s.aim,
@@ -228,6 +243,7 @@ export class HeavyTraverse {
       shotAim: s.aim,
       shotMode: s.mode,
       shotWeapon: p.weapon,
+      shotRequiresClutch: s.requiresClutch,
     });
     c.sound(p, "heavy-traverse-shot");
     return true;
@@ -267,6 +283,7 @@ export class HeavyTraverse {
       next: c.tick + this.rules.intervalTicks,
       bornSequence: p.input.sequence,
       fired: 0,
+      forfeited: 0,
       initialAim: p.aim,
       aim: p.aim,
       turnedAt: c.tick,
@@ -290,18 +307,61 @@ export class HeavyTraverse {
       !this.valid(p, s) ||
       this.interrupt(p, c.tick) ||
       c.tick >= s.until ||
-      (s.mode === "spade" && Math.hypot(p.x - s.post.x, p.y - s.post.y) > 1e-4)
+      (s.mode === "spade" &&
+        !s.clutch?.lifted &&
+        Math.hypot(p.x - s.post.x, p.y - s.post.y) > 1e-4)
     ) {
       this.releaseFeed(p.id);
       return;
     }
     if (c.tick < s.next) return;
-    if (c.tick !== s.next || !this.emit(p, s, c)) {
+    if (c.tick !== s.next) {
+      this.releaseFeed(p.id);
+      return;
+    }
+    if (s.clutch?.lifted) {
+      s.forfeited++;
+      s.next += this.rules.intervalTicks;
+      if (s.fired + s.forfeited >= this.rules.rounds) this.releaseFeed(p.id);
+      return;
+    }
+    if (!this.emit(p, s, c)) {
       this.releaseFeed(p.id);
       return;
     }
     s.next += this.rules.intervalTicks;
-    if (s.fired >= this.rules.rounds) this.releaseFeed(p.id);
+    if (s.fired + s.forfeited >= this.rules.rounds) this.releaseFeed(p.id);
+  }
+  command(p: Owner, c: TraverseContext) {
+    const s = this.strokes.get(p.id);
+    if (
+      !s ||
+      !p.skills.includes(clutchId) ||
+      !this.valid(p, s) ||
+      this.interrupt(p, c.tick) ||
+      p.input.technique1 ||
+      c.tick <= s.born ||
+      c.tick >= s.until ||
+      p.input.sequence <= s.bornSequence ||
+      p.input.sequence <= (s.clutch?.sequence ?? -1) ||
+      c.tick <= (s.clutch?.at ?? -1)
+    )
+      return false;
+    if (!s.clutch) {
+      s.clutch = { lifted: true, at: c.tick, sequence: p.input.sequence };
+      s.requiresClutch = true;
+      c.sound(p, "heavy-clutch-lift");
+      return true;
+    }
+    if (
+      !s.clutch.lifted ||
+      (s.mode === "spade" && Math.hypot(p.input.moveX, p.input.moveY) > 1e-6)
+    )
+      return false;
+    s.clutch = { lifted: false, at: c.tick, sequence: p.input.sequence };
+    if (s.mode === "spade") s.post = { x: p.x, y: p.y };
+    c.sound(p, "heavy-clutch-engage");
+    return true;
   }
   blocksPrimary(owner: string, now: number) {
     return this.strokes.has(owner) || this.actions.get(owner)?.shotAt === now;
@@ -320,8 +380,33 @@ export class HeavyTraverse {
       paid =
         a?.shotWeapon &&
         a.shotMode &&
-        this.valid(p, { weapon: a.shotWeapon, mode: a.shotMode });
+        this.valid(p, {
+          weapon: a.shotWeapon,
+          mode: a.shotMode,
+          requiresClutch: a.shotRequiresClutch,
+        });
     return {
+      heavyClutchAt: s?.clutch?.at ?? 0,
+      heavyClutchSequence: s?.clutch?.sequence ?? 0,
+      heavyClutchBlocked:
+        !s ||
+        !p.skills.includes(clutchId) ||
+        !this.valid(p, s) ||
+        this.interrupt(p, now) ||
+        now <= s.born ||
+        now >= s.until ||
+        !!(s.clutch && !s.clutch.lifted) ||
+        !!(
+          s.clutch?.lifted &&
+          s.mode === "spade" &&
+          Math.hypot(p.input.moveX, p.input.moveY) > 1e-6
+        ),
+      heavyClutchLifted: !!s?.clutch?.lifted,
+      heavyClutchUsed: !!s?.clutch,
+      heavyClutchForfeited: s?.forfeited ?? 0,
+      heavyClutchSlotsRemaining: s
+        ? this.rules.rounds - s.fired - s.forfeited
+        : 0,
       heavyPrimaryAt: a?.primaryAt ?? 0,
       heavyPrimaryAim: a?.primaryAim ?? 0,
       heavyTraverseBornAt: s?.born ?? 0,
@@ -335,6 +420,7 @@ export class HeavyTraverse {
       heavyTraverseAim: s?.aim ?? a?.shotAim ?? p.aim,
       heavyTraverseMode: s?.mode ?? this.mode(p),
       heavyTraverseCastAt: a?.castAt ?? 0,
+      heavyTraverseShotRequiresClutch: !!(paid && a?.shotRequiresClutch),
       heavyTraverseShotAt: paid ? (a?.shotAt ?? 0) : 0,
       heavyTraverseShotAim: paid ? (a?.shotAim ?? 0) : 0,
       heavyTraverseShotMode: paid ? a?.shotMode : undefined,
@@ -359,6 +445,7 @@ export class HeavyTraverse {
         this.interrupt(p, c.tick) ||
         c.tick >= s.until ||
         (s.mode === "spade" &&
+          !s.clutch?.lifted &&
           Math.hypot(p.x - s.post.x, p.y - s.post.y) > 1e-4)
       )
         this.releaseFeed(owner);

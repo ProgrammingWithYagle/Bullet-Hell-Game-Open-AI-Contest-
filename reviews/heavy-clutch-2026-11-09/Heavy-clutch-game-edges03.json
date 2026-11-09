@@ -1,0 +1,127 @@
+{
+  "checkedAt": "2026-11-09T02:19:59.926Z",
+  "registered": false,
+  "canonicalFilesWritten": false,
+  "onlineProof": false,
+  "countsAs2044Tests": false,
+  "controlledPrototypeOwnershipOnly": true,
+  "sourceBinding": {
+    "createdAt": "2026-11-09T02:05:42.449Z",
+    "baseSourceCommit": "5316ead6b5c573d74d058eba870f18ff4bffc86c",
+    "baseGameSha256": "5d9f127153de5363c6ae160d1fef5dc07a8c3fb05ea5db6377e6d89f6485c59d",
+    "derivedGameSha256": "641549880bca9a6bf48215797ceef8e1655cab9de8d36951c011b849b157962d",
+    "candidateSha256": "c16ea2cf46d6dca33c1def280ace7d7a895993d69713f7dfc3771c26909379da",
+    "canonicalFilesWritten": false,
+    "registered": false,
+    "onlineProof": false,
+    "controlledPrototypeOwnershipOnly": true,
+    "patches": [
+      "Replace only the actual Game controller import with the workspace candidate",
+      "Resolve only the proposed Clutch id to empty effects for controlled ownership; no purchase or progression claim"
+    ]
+  },
+  "cases": [
+    {
+      "name": "lifted walking retains paid recoil through actual body/cover collision",
+      "passed": true,
+      "details": {
+        "x": 594.0002,
+        "y": 625.332066666667,
+        "paidRounds": 1,
+        "recovery": 241
+      }
+    },
+    {
+      "name": "Spade lifts, moves, and replants at its actual new body point; later actual displacement breaks it",
+      "passed": true,
+      "details": {
+        "replantedAt": {
+          "x": 600,
+          "y": 612.6666666666667
+        },
+        "afterControlledExternalForce": {
+          "x": 600,
+          "y": 614.6666666666667
+        },
+        "paidRounds": 1
+      }
+    },
+    {
+      "name": "required fitting or weapon loss removes the actual base and post-clutch flights without changing recovery",
+      "passed": true,
+      "details": [
+        {
+          "mode": "spade",
+          "loss": "fitting",
+          "actualFlightIdsRemoved": [
+            1,
+            2
+          ],
+          "recovery": 241
+        },
+        {
+          "mode": "spade",
+          "loss": "weapon",
+          "actualFlightIdsRemoved": [
+            1,
+            2
+          ],
+          "recovery": 241
+        },
+        {
+          "mode": "floating",
+          "loss": "fitting",
+          "actualFlightIdsRemoved": [
+            1,
+            2
+          ],
+          "recovery": 241
+        },
+        {
+          "mode": "floating",
+          "loss": "weapon",
+          "actualFlightIdsRemoved": [
+            1,
+            2
+          ],
+          "recovery": 241
+        }
+      ]
+    },
+    {
+      "name": "a post-clutch round keeps its copied emission origin for actual armor dispatch after the owner walks away",
+      "passed": true,
+      "details": {
+        "controlledArmorMultiplier": 0.5,
+        "origins": [
+          {
+            "x": 600,
+            "y": 600
+          },
+          {
+            "x": 592,
+            "y": 600
+          }
+        ],
+        "owner": {
+          "x": 584,
+          "y": 707.6666666666673
+        },
+        "damage": 48.6
+      }
+    },
+    {
+      "name": "holding the lift through all original slots ends the stroke and permits ordinary primary without a delayed C shot",
+      "passed": true,
+      "details": {
+        "lastOriginalSlot": 31,
+        "actualCShots": 1,
+        "ordinaryShotAt": 31,
+        "recovery": 241
+      }
+    }
+  ],
+  "passed": true,
+  "passedCount": 5,
+  "failedCount": 0
+}

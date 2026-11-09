@@ -56,3 +56,8 @@ Both 2,049-file reviews pass four native groups/64cases: HTTP1, source UI/predic
 Eighteen normal natural/replay pairs match every combat/progression field, including combat-exit shield. Gatehouse has9wins/136casts/510paid rounds/12releases; Triage has9losses/125casts/370rounds/6releases. One Gatehouse raw terminal shield reset has explicit issued Practice provenance; Triage has no raw mismatch. Different General spending and a single conservative18px policy(actual9) do not rank builds.
 
 Later Siege operations, a qualitative culmination, additional fitting routes/classes and human/final-balance acceptance remain open. No fixed maximum or class completion is implied.
+
+
+## Active acquired Siege operation
+
+Feed Clutch is admitted as an unverified protocol71 candidate after the published Traverse checkpoint. It lifts and re-engages the same finite stroke once, allowing real walking while original unpaid slots pass. Controlled source/controller/Game/UI/prediction checks pass; complete gate, earned15 transports, exact-source CI and fresh frozen proof are pending. See[mechanics and limits](HEAVY_CLUTCH_DESIGN.md). Heavy and the broader class/game goal remain unfinished.

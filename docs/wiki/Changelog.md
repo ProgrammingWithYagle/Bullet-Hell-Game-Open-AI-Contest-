@@ -1,6 +1,14 @@
 # Changelog
 
-Development build **2026.11.09-heavy-traverse-stroke**, protocol 70. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.09-heavy-feed-clutch**, protocol 71. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-09 — Lift the feed and choose what remains
+
+### Heavy: acquired Siege Gunner operation
+
+- Feed Clutch adds one acquired Action 2 lift and re-engage pair to the same Traverse Stroke. Walking resumes immediately, while original slots passed during the lift are lost without spending rounds.
+- Set Spade replants only with stationary input at the real new point. Floating Cradle retains its first world bearing. Paid recoil, primary commitment, original slots, deadline and recovery remain. Action 1 still releases all unpaid work.
+- The operation costs3SP at11earned after Traverse Stroke, with no required fitting. Actual Short acquisition, full validation, fresh native transport proof and final balance remain under development. General27SP/onecapstone and all60issued techniques remain exact.
 
 ## 2026-11-09 — Maintain a firing stroke or release the feed
 

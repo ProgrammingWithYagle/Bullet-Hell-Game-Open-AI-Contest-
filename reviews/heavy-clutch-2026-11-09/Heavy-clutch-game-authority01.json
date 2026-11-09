@@ -1,0 +1,104 @@
+{
+  "checkedAt": "2026-11-09T02:11:35.025Z",
+  "registered": false,
+  "canonicalFilesWritten": false,
+  "onlineProof": false,
+  "countsAs2044Tests": false,
+  "controlledPrototypeOwnershipOnly": true,
+  "sourceBinding": {
+    "createdAt": "2026-11-09T02:05:42.449Z",
+    "baseSourceCommit": "5316ead6b5c573d74d058eba870f18ff4bffc86c",
+    "baseGameSha256": "5d9f127153de5363c6ae160d1fef5dc07a8c3fb05ea5db6377e6d89f6485c59d",
+    "derivedGameSha256": "641549880bca9a6bf48215797ceef8e1655cab9de8d36951c011b849b157962d",
+    "candidateSha256": "c16ea2cf46d6dca33c1def280ace7d7a895993d69713f7dfc3771c26909379da",
+    "canonicalFilesWritten": false,
+    "registered": false,
+    "onlineProof": false,
+    "controlledPrototypeOwnershipOnly": true,
+    "patches": [
+      "Replace only the actual Game controller import with the workspace candidate",
+      "Resolve only the proposed Clutch id to empty effects for controlled ownership; no purchase or progression claim"
+    ]
+  },
+  "cases": [
+    {
+      "name": "actual source movement releases lifted walking immediately and real Braced Firing still applies its independent60percent speed",
+      "passed": true,
+      "details": {
+        "actualY": 603.8,
+        "braceUntil": 151,
+        "recovery": 241
+      }
+    },
+    {
+      "name": "actual reload, dodge and ultimate stop lifted future work while retaining paid flights and their original recovery",
+      "passed": true,
+      "details": [
+        {
+          "key": "reload",
+          "paidShotStillActual": true,
+          "recovery": 241,
+          "reloadAt": 75,
+          "dashUntil": 0,
+          "overdriveUntil": 0
+        },
+        {
+          "key": "dodge",
+          "paidShotStillActual": true,
+          "recovery": 241,
+          "reloadAt": 0,
+          "dashUntil": 10,
+          "overdriveUntil": 0
+        },
+        {
+          "key": "ultimate",
+          "paidShotStillActual": true,
+          "recovery": 241,
+          "reloadAt": 0,
+          "dashUntil": 0,
+          "overdriveUntil": 183
+        }
+      ]
+    },
+    {
+      "name": "actual early channel return cancels the lifted feed without refund or a delayed catch-up",
+      "passed": true,
+      "details": {
+        "channelUntil": 100,
+        "paidFlights": 1,
+        "recovery": 241
+      }
+    },
+    {
+      "name": "actual operation loss removes only dependent later flights and keeps the earlier base round without refund",
+      "passed": true,
+      "details": {
+        "earlierRetained": 1,
+        "laterRemoved": 2,
+        "recovery": 241
+      }
+    },
+    {
+      "name": "actual full pool ends a re-engaged unpaid slot with no extra round, deferred shot or recovery reset",
+      "passed": true,
+      "details": {
+        "pool": 6000,
+        "actualRounds": 1,
+        "recovery": 241
+      }
+    },
+    {
+      "name": "actual host exit removes lifted C flight, while actual pooled reuse cannot redirect owner cancellation to another player",
+      "passed": true,
+      "details": {
+        "hostRemovedActual": 1,
+        "reusedActualId": 2,
+        "foreignOwner": "ally",
+        "recovery": 241
+      }
+    }
+  ],
+  "passed": true,
+  "passedCount": 6,
+  "failedCount": 0
+}

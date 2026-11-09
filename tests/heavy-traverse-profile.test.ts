@@ -201,6 +201,7 @@ test("exact issued69 admits every one of the fifty-seven issued techniques with 
   const oldNodes = data.specializationSkills.filter(
     (s) =>
       ![
+        "heavy-traverse-clutch-1",
         "heavy-traverse-1",
         "heavy-traverse-spade-1",
         "heavy-traverse-floating-1",

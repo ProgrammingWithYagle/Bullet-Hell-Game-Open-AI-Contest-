@@ -1,10 +1,11 @@
 import {
   traverseIds,
+  clutchId,
   heavyTraverseRules as rules,
 } from "../shared/heavy-traverse.ts";
 import { HZ, type InputFrame } from "../shared/protocol.ts";
 import type { PlayerView } from "../shared/view.ts";
-/** Only known authoritative feed/paid recoil is predicted; never invent a shot, cost or future slot. */
+/** Predict only movement from known feed/paid recoil. Never invent a future shot or payment. */
 export function traversePredictedMotion(
   p: PlayerView,
   i: InputFrame,
@@ -17,9 +18,10 @@ export function traversePredictedMotion(
     p.status !== "active"
   )
     return out;
-  const k = p.kit,
-    mode = k.heavyTraverseMode,
-    active = (k.heavyTraverseUntil ?? 0) > now;
+  let k = p.kit;
+  const mode = k.heavyTraverseMode,
+    active = (k.heavyTraverseUntil ?? 0) > now,
+    hasClutch = p.skills.includes(clutchId);
   const cancel =
     now < p.reloadAt ||
     now < p.dashUntil ||
@@ -27,23 +29,54 @@ export function traversePredictedMotion(
     i.reload ||
     i.dodge ||
     i.ultimate ||
+    (!!k.heavyClutchUsed && !hasClutch) ||
     (i.technique1 &&
       i.sequence > (k.heavyTraverseSequence ?? Infinity) &&
       now > (k.heavyTraverseBornAt ?? Infinity));
   const displaced =
     mode === "spade" &&
+    !k.heavyClutchLifted &&
     Math.hypot(
       p.x - (k.heavyTraversePostX ?? p.x),
       p.y - (k.heavyTraversePostY ?? p.y),
     ) > 1e-4;
   if (active && (cancel || displaced)) p.kit = { ...k, heavyTraverseUntil: 0 };
-  else if (active && mode !== "floating") out.walk = 0;
+  else if (active) {
+    const fresh =
+      hasClutch &&
+      i.technique2 &&
+      !i.technique1 &&
+      now > (k.heavyTraverseBornAt ?? Infinity) &&
+      i.sequence > (k.heavyTraverseSequence ?? Infinity) &&
+      i.sequence > (k.heavyClutchSequence ?? 0) &&
+      now > (k.heavyClutchAt ?? 0);
+    if (
+      fresh &&
+      (!k.heavyClutchUsed ||
+        (k.heavyClutchLifted &&
+          (mode !== "spade" || Math.hypot(i.moveX, i.moveY) <= 1e-6)))
+    ) {
+      const lifting = !k.heavyClutchUsed;
+      p.kit = k = {
+        ...k,
+        heavyClutchUsed: true,
+        heavyClutchLifted: lifting,
+        heavyClutchAt: now,
+        heavyClutchSequence: i.sequence,
+        ...(!lifting && mode === "spade"
+          ? { heavyTraversePostX: p.x, heavyTraversePostY: p.y }
+          : {}),
+      };
+    }
+    if (mode !== "floating" && !k.heavyClutchLifted) out.walk = 0;
+  }
   const shotAt = k.heavyTraverseShotAt ?? 0,
     shotMode = k.heavyTraverseShotMode;
   if (
     shotAt > 0 &&
     now > shotAt &&
     now <= shotAt + rules.recoilTicks &&
+    (!k.heavyTraverseShotRequiresClutch || hasClutch) &&
     shotMode !== "spade" &&
     (shotMode === "loose" ||
       (shotMode === "floating" && p.skills.includes(traverseIds.floating)))
@@ -60,6 +93,7 @@ export function traversePredictedAfterMove(p: PlayerView) {
     p.classId === "heavy" &&
     p.skills.includes(traverseIds.entry) &&
     p.kit.heavyTraverseMode === "spade" &&
+    !p.kit.heavyClutchLifted &&
     Math.hypot(
       p.x - (p.kit.heavyTraversePostX ?? p.x),
       p.y - (p.kit.heavyTraversePostY ?? p.y),

@@ -214,7 +214,7 @@ test("Issued fourteen-technique ownership migrates exactly, while protocol51/52/
     bad.player.skills.push(extra);
     assert.throws(() => Game.restoreOffline(bad));
   }
-  assert.equal(PROTOCOL,70);
+  assert.equal(PROTOCOL,71);
   assert.equal(save.contentRevision, CONTENT_REVISION);
 });
 

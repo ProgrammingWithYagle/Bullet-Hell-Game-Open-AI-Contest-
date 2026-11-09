@@ -29,6 +29,7 @@ import type { Minions } from './minions.ts';
 const ticks = (seconds: number) => Math.ceil(seconds * HZ);
 export const RESCUE_CHARGE_TICKS = ticks(0.3) + 1;
 export type KitStatus = {
+  heavyClutchLifted?:boolean;heavyClutchUsed?:boolean;heavyClutchForfeited?:number;heavyClutchSlotsRemaining?:number;heavyClutchAt?:number;heavyClutchSequence?:number;heavyClutchBlocked?:boolean;heavyTraverseShotRequiresClutch?:boolean;
   heavyTraverseUntil?:number;heavyTraverseBornAt?:number;heavyTraverseSequence?:number;heavyTraversePostX?:number;heavyTraversePostY?:number;heavyTraverseNextAt?:number;heavyTraverseRounds?:number;heavyTraverseAim?:number;heavyTraverseMode?:"loose"|"spade"|"floating";heavyTraverseCastAt?:number;heavyTraverseShotAt?:number;heavyTraverseShotAim?:number;heavyTraverseShotMode?:"loose"|"spade"|"floating";heavyTraverseBlocked?:boolean;
   heavyPrimaryAt?:number;heavyPrimaryAim?:number;heavyFlakShotAt?:number;heavyFlakShotAim?:number;heavyFlakUntil?:number;heavyFlakSeamReady?:boolean;heavyFlakSeamBroken?:boolean;heavyFlakSeamAt?:number;heavyFlakParkedAt?:number;heavyFlakRunningAt?:number;heavyFlakBlocked?:boolean;heavyFlakCommandBlocked?:boolean;
   sniperPrimaryAt?:number;sniperPrimaryAim?:number;sniperShotAt?:number;sniperShotAim?:number;

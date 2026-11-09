@@ -1,0 +1,12 @@
+{
+  "checkedAt": "2026-11-09T13:07:59.340Z",
+  "firstTypecheckPassed": false,
+  "error": "TS2551: heavyClutchShotAt does not exist on KitStatus. The helper-wide function rename also changed two issued heavyTraverseShotAt field references.",
+  "firstRuntimeTransportCases": {
+    "pass": 9,
+    "fail": 0,
+    "limits": "The two undefined late-view field references were not valid firing-timestamp proof; every other operation/flight assertion ran. Do not promote this as full validation."
+  },
+  "correction": "Restore both issued shot timestamp references, then require the late owner to retain actual Clutch ownership and unused-pair state. Re-run strict typecheck and all nine cases.",
+  "gameplayChanged": false
+}

@@ -3062,6 +3062,16 @@
     "skill.heavy-traverse-spade-1.name": "Set Spade",
     "skill.heavy-traverse-spade-1.description": "Plant this carriage on stable ground before starting a Traverse Stroke: walking input rejects the start without payment. The stroke adds no recoil and keeps its manual barrel slew, while holding walking input. Any actual external ground displacement breaks the post and ends unpaid future rounds; fired rounds remain. Terrain, moving cover and forced movement still apply. The same four actual rounds, original stroke slots and recovery remain. Choose this fitting instead of Floating Cradle.",
     "skill.heavy-traverse-floating-1.name": "Floating Cradle",
-    "skill.heavy-traverse-floating-1.description": "Walk normally during a Traverse Stroke and retain each paid round’s actual recoil. Every round keeps the initial world bearing: later mouse aim cannot steer the barrel. Relocate the actual muzzle to find new clear lanes, or release the feed when that bearing becomes useless. This grants no movement bonus, protection or extra round and changes no original stroke slots or recovery. Choose this fitting instead of Set Spade."
+    "skill.heavy-traverse-floating-1.description": "Walk normally during a Traverse Stroke and retain each paid round’s actual recoil. Every round keeps the initial world bearing: later mouse aim cannot steer the barrel. Relocate the actual muzzle to find new clear lanes, or release the feed when that bearing becomes useless. This grants no movement bonus, protection or extra round and changes no original stroke slots or recovery. Choose this fitting instead of Set Spade.",
+    "pathway.heavy-traverse-clutch-1.summary": "Lift once, relocate while slots pass unpaid, then re-engage what remains.",
+    "ui.heavy.clutchAction": "Feed Clutch / Re-engage",
+    "ui.heavy.clutchLift": "Lift feed",
+    "ui.heavy.clutchEngage": "Re-engage · {slots} left",
+    "ui.heavy.clutchSpent": "Clutch used for this stroke",
+    "ui.heavy.clutchIdle": "Feed Clutch · no active stroke",
+    "ui.heavy.clutchFeedRemaining": "Release feed · {rounds} fired · {lost} missed",
+    "ui.heavy.clutchHelp": "Action 2 lifts the active feed once, freeing walking while the original firing slots continue. Slots passed while lifted are lost without spending a round. A separate Action 2 re-engages the remaining slots; primary still waits. Set Spade needs stationary input to replant. Floating keeps its first bearing. Paid recoil remains. Action 1 abandons all unpaid work. The original deadline and recovery never reset.",
+    "skill.heavy-traverse-clutch-1.name": "Feed Clutch",
+    "skill.heavy-traverse-clutch-1.description": "After the first paid Traverse round, a separate Action 2 lifts its feed and frees walking immediately. Original firing slots keep passing: each slot crossed while lifted is lost without firing or spending a round. A separate later Action 2 re-engages the remaining original slots. Use one lift and re-engage pair per stroke; neither command adds a round, catches up a missed slot, extends the one-second stroke or resets recovery. Primary still waits while future stroke work remains. Set Spade deliberately lifts its post and requires stationary input to replant at the actual new body point; an already broken post cannot be rescued. Floating Cradle keeps its original world bearing. Paid recoil remains physical while lifted. Action 1 still abandons all unpaid work. Reload, dodge, channeling and overdrive end unpaid work. No fitting is required."
   }
 }
