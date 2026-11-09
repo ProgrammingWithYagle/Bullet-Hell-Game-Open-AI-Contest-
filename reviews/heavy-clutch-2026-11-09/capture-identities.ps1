@@ -1,0 +1,37 @@
+$ErrorActionPreference='Stop'
+$taskRepo='C:/Users/yigal/OneDrive/Documents/ChatGPT/OpenAI Multiplayer Game Contest (Bullet Hell)'
+$taskScope=Join-Path $taskRepo 'reviews/heavy-clutch-2026-11-09'
+$taskSource=(Get-Content -LiteralPath (Join-Path $PSScriptRoot 'source-commit.txt') -Raw).Trim()
+$taskNode=(Get-Command node).Source
+$taskInventory=@{};foreach($taskProcess in (Get-CimInstance Win32_Process)){$taskInventory[[int]$taskProcess.ProcessId]=$taskProcess}
+$taskListeners=@(Get-NetTCPConnection -State Listen)
+$taskCurrent=@();$taskLaunchers=@()
+foreach($taskAudience in @('testing','public')){
+ $taskRecord=Get-Content -LiteralPath (Join-Path $taskScope ('processes-'+$taskAudience+'.json')) -Raw|ConvertFrom-Json
+ $taskPreview=Get-Content -LiteralPath (Join-Path $taskScope ('preview-'+$taskAudience+'.json')) -Raw|ConvertFrom-Json
+ if($taskRecord.sourceCommit -cne $taskSource){throw 'Source mismatch.'}
+ foreach($taskRole in @('backend','client')){
+  $taskExpected=$taskRecord.$taskRole;$taskLive=$taskInventory[[int]$taskExpected.pid];$taskTicks=([DateTimeOffset]$taskExpected.startedAt).UtcDateTime.Ticks
+  if($taskRole -eq 'backend'){$taskCommand='"'+$taskNode+'" "'+$taskPreview.backend.path+'"'}else{$taskRelative=[IO.Path]::GetRelativePath($taskRepo,$taskPreview.root);$taskCommand='"'+$taskNode+'" node_modules/vite/bin/vite.js preview --outDir '+$taskRelative+' --host 127.0.0.1 --port '+$taskExpected.port+' --strictPort'}
+  if(!$taskLive -or $taskLive.CreationDate.ToUniversalTime().Ticks -ne ($taskTicks-($taskTicks%10)) -or $taskLive.CommandLine -cne $taskCommand){throw ('Exact current '+$taskAudience+' '+$taskRole+' differs.')}
+  if(!($taskListeners|Where-Object {$_.LocalPort -eq $taskExpected.port -and $_.OwningProcess -eq $taskExpected.pid})){throw 'Current listener differs.'}
+  $taskCurrent += [ordered]@{audience=$taskAudience;role=$taskRole;pid=[int]$taskExpected.pid;port=[int]$taskExpected.port;createdAt=$taskLive.CreationDate.ToUniversalTime().ToString('o');startProcessReportedAt=$taskExpected.startedAt;commandLine=$taskLive.CommandLine;sameProcessStillLive=$true;listenerStillOwned=$true}
+ }
+ $taskLauncher=$taskInventory[[int]$taskRecord.launcherPid];if(!$taskLauncher -or $taskLauncher.CommandLine -notmatch 'launch-review.ps1' -or $taskLauncher.CommandLine -notmatch 'heavy-clutch-2026-11-09'){throw 'Launcher identity differs.'}
+ $taskLaunchers += [ordered]@{audience=$taskAudience;pid=[int]$taskRecord.launcherPid;createdAt=$taskLauncher.CreationDate.ToUniversalTime().ToString('o');commandLine=$taskLauncher.CommandLine;startedHidden=$true}
+}
+$taskPrior=Get-Content -LiteralPath (Join-Path $taskRepo 'reviews/heavy-traverse-2026-11-09/process-identities.json') -Raw|ConvertFrom-Json
+$taskHistorical=@();$taskSeen=@{}
+foreach($taskExpected in @($taskPrior.identities)+@($taskPrior.olderRecordedIdentities)){
+ $taskKey=[string]$taskExpected.pid+'|'+[string]$taskExpected.createdAt
+ if($taskSeen.ContainsKey($taskKey)){throw 'Duplicate recorded identity.'};$taskSeen[$taskKey]=$true
+ $taskLive=$taskInventory[[int]$taskExpected.pid]
+ $taskSame=$taskLive -and $taskLive.CommandLine -ceq $taskExpected.commandLine -and [DateTimeOffset]$taskLive.CreationDate -eq [DateTimeOffset]$taskExpected.createdAt
+ $taskOwned=$taskSame -and [bool]($taskListeners|Where-Object {$_.LocalPort -eq $taskExpected.port -and $_.OwningProcess -eq $taskExpected.pid})
+ # Publish only recorded game commands; a reused PID's unrelated command is private.
+ $taskHistorical += [ordered]@{pid=[int]$taskExpected.pid;port=[int]$taskExpected.port;createdAt=$taskExpected.createdAt;commandLine=$taskExpected.commandLine;sameRecordedIdentityLive=[bool]$taskSame;listenerStillOwned=[bool]$taskOwned;observation=$(if($taskSame){'exact recorded identity live'}elseif($taskLive){'PID exists with a different identity'}else{'recorded PID absent'});cleanupPerformed=$false}
+}
+if($taskCurrent.Count -ne 4 -or $taskHistorical.Count -ne 100){throw 'Unexpected recorded inventory.'}
+$taskPriorLive=@($taskHistorical|Where-Object sameRecordedIdentityLive).Count
+[ordered]@{checkedAt=[DateTime]::UtcNow.ToString('o');sourceCommit=$taskSource;identities=$taskCurrent;launchers=$taskLaunchers;olderRecordedIdentities=$taskHistorical;currentExactLiveCount=4;olderRecordedCount=$taskHistorical.Count;olderExactLiveCount=$taskPriorLive;olderNonmatchingOrAbsentCount=$taskHistorical.Count-$taskPriorLive;olderExactListenersOwnedCount=@($taskHistorical|Where-Object listenerStillOwned).Count;cleanupPerformed=$false;limits='Exact current PID/full command/UTC/listeners checked through authorized CIM. All100 prior identities observed dynamically after an interruption; absence or a reused PID is not attributed to agent cleanup. Recorded game commands only; unrelated live commands and private SQLite are not uploaded.'}|ConvertTo-Json -Depth 8|Set-Content -LiteralPath (Join-Path $taskScope 'process-identities.json') -Encoding utf8NoBOM
+Write-Output ('Verified4new + '+$taskPriorLive+' older exact identities, '+($taskHistorical.Count-$taskPriorLive)+' nonmatching/absent. No cleanup.')
