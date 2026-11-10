@@ -10,10 +10,14 @@ export const heavyTraverseRules = catalog.rules.heavyTraverse;
 type Mode = "loose" | "spade" | "floating";
 type Owner = Player;
 export const clutchId = "heavy-traverse-clutch-1";
-// A later acquired operation transforms the same original finite stroke.
+// Optional acquired handling keeps the same finite paid stroke and original opportunities.
+export const keyedId = "heavy-traverse-keyed-1",
+  openId = "heavy-traverse-open-1";
 type Stroke = {
   requiresClutch?: boolean;
+  requiresHandling?: typeof keyedId | typeof openId;
   forfeited: number;
+  converted: number;
   clutch?: { lifted: boolean; at: number; sequence: number };
   owner: string;
   weapon: string;
@@ -30,6 +34,7 @@ type Stroke = {
 };
 type Flight = {
   requiresClutch?: boolean;
+  requiresHandling?: typeof keyedId | typeof openId;
   id: number;
   owner: string;
   weapon: string;
@@ -38,6 +43,7 @@ type Flight = {
 };
 type Impulse = {
   requiresClutch?: boolean;
+  requiresHandling?: typeof keyedId | typeof openId;
   owner: string;
   weapon: string;
   mode: Mode;
@@ -54,6 +60,7 @@ type Action = {
   shotMode?: Mode;
   shotWeapon?: string;
   shotRequiresClutch?: boolean;
+  shotRequiresHandling?: typeof keyedId | typeof openId;
   handledSequence?: number;
   handledAt?: number;
 };
@@ -113,13 +120,19 @@ export class HeavyTraverse {
   }
   private valid(
     p: Owner | undefined,
-    work: { weapon: string; mode: Mode; requiresClutch?: boolean },
+    work: {
+      weapon: string;
+      mode: Mode;
+      requiresClutch?: boolean;
+      requiresHandling?: typeof keyedId | typeof openId;
+    },
   ): p is Owner {
     return (
       live(p) &&
       p.weapon === work.weapon &&
       (work.mode === "loose" || p.skills.includes(traverseIds[work.mode])) &&
-      (!work.requiresClutch || p.skills.includes(clutchId))
+      (!work.requiresClutch || p.skills.includes(clutchId)) &&
+      (!work.requiresHandling || p.skills.includes(work.requiresHandling))
     );
   }
   private busy(p: Owner, now: number) {
@@ -141,7 +154,14 @@ export class HeavyTraverse {
   }
   private slew(p: Owner, s: Stroke, now: number) {
     if (now <= s.turnedAt) return;
-    if (s.mode !== "floating") {
+    if (s.requiresHandling === keyedId && s.clutch && !s.clutch.lifted) {
+      s.turnedAt = now;
+      return;
+    }
+    if (
+      s.mode !== "floating" ||
+      (s.requiresHandling === keyedId && s.clutch?.lifted)
+    ) {
       const goal =
           s.initialAim +
           clamp(
@@ -226,6 +246,7 @@ export class HeavyTraverse {
       mode: s.mode,
       origin: { x: p.x, y: p.y },
       requiresClutch: s.requiresClutch,
+      requiresHandling: s.requiresHandling,
     });
     if (s.mode !== "spade")
       this.impulses.push({
@@ -233,6 +254,7 @@ export class HeavyTraverse {
         weapon: p.weapon,
         mode: s.mode,
         requiresClutch: s.requiresClutch,
+        requiresHandling: s.requiresHandling,
         at: c.tick,
         until: c.tick + this.rules.recoilTicks,
         aim: s.aim,
@@ -244,6 +266,7 @@ export class HeavyTraverse {
       shotMode: s.mode,
       shotWeapon: p.weapon,
       shotRequiresClutch: s.requiresClutch,
+      shotRequiresHandling: s.requiresHandling,
     });
     c.sound(p, "heavy-traverse-shot");
     return true;
@@ -284,6 +307,7 @@ export class HeavyTraverse {
       bornSequence: p.input.sequence,
       fired: 0,
       forfeited: 0,
+      converted: 0,
       initialAim: p.aim,
       aim: p.aim,
       turnedAt: c.tick,
@@ -350,6 +374,11 @@ export class HeavyTraverse {
     if (!s.clutch) {
       s.clutch = { lifted: true, at: c.tick, sequence: p.input.sequence };
       s.requiresClutch = true;
+      s.requiresHandling = p.skills.includes(keyedId)
+        ? keyedId
+        : p.skills.includes(openId)
+          ? openId
+          : undefined;
       c.sound(p, "heavy-clutch-lift");
       return true;
     }
@@ -364,7 +393,32 @@ export class HeavyTraverse {
     return true;
   }
   blocksPrimary(owner: string, now: number) {
-    return this.strokes.has(owner) || this.actions.get(owner)?.shotAt === now;
+    const s = this.strokes.get(owner);
+    return (
+      (!!s && !(s.clutch?.lifted && s.requiresHandling === openId)) ||
+      this.actions.get(owner)?.shotAt === now
+    );
+  }
+  openFeed(owner: string) {
+    const s = this.strokes.get(owner);
+    return !!s && s.clutch?.lifted === true && s.requiresHandling === openId;
+  }
+  /** Derived Game calls once per actually admitted/paid primary round, never once per pellet. */
+  primaryRound(p: Owner, c: TraverseContext) {
+    const s = this.strokes.get(p.id);
+    if (
+      !s ||
+      !this.openFeed(p.id) ||
+      !this.valid(p, s) ||
+      this.interrupt(p, c.tick) ||
+      c.tick >= s.until
+    )
+      return false;
+    s.forfeited++;
+    s.converted++;
+    s.next += this.rules.intervalTicks;
+    if (s.fired + s.forfeited >= this.rules.rounds) this.releaseFeed(p.id);
+    return true;
   }
   primaryReleased(p: Owner, now: number) {
     if (owned(p))
@@ -384,8 +438,11 @@ export class HeavyTraverse {
           weapon: a.shotWeapon,
           mode: a.shotMode,
           requiresClutch: a.shotRequiresClutch,
+          requiresHandling: a.shotRequiresHandling,
         });
     return {
+      heavyClutchConverted: s?.converted ?? 0,
+      heavyClutchHandling: s?.requiresHandling,
       heavyClutchAt: s?.clutch?.at ?? 0,
       heavyClutchSequence: s?.clutch?.sequence ?? 0,
       heavyClutchBlocked:
@@ -421,6 +478,9 @@ export class HeavyTraverse {
       heavyTraverseMode: s?.mode ?? this.mode(p),
       heavyTraverseCastAt: a?.castAt ?? 0,
       heavyTraverseShotRequiresClutch: !!(paid && a?.shotRequiresClutch),
+      heavyTraverseShotRequiresHandling: paid
+        ? a?.shotRequiresHandling
+        : undefined,
       heavyTraverseShotAt: paid ? (a?.shotAt ?? 0) : 0,
       heavyTraverseShotAim: paid ? (a?.shotAim ?? 0) : 0,
       heavyTraverseShotMode: paid ? a?.shotMode : undefined,

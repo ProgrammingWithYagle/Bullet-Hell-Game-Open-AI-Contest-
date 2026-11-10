@@ -108,7 +108,7 @@ test("Marksman is an affordable real alternative to Skirmisher, with symmetric a
   );
   assert.equal(data.skills.length, 648);
   assert.equal(data.generalSkills.length, 4);
-  assert.equal(data.specializationSkills.length,61);
+  assert.equal(data.specializationSkills.length,63);
 });
 
 test("Bank Shot spends one real round and its own recovery without needing or changing E", () => {

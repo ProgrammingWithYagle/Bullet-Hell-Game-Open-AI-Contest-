@@ -200,7 +200,7 @@ test("issued69 rejects future Siege Gunner ownership and wrong/online envelopes 
 test("exact issued69 admits every one of the fifty-seven issued techniques with its actual affordable prerequisite ownership", () => {
   const oldNodes = data.specializationSkills.filter(
     (s) =>
-      ![
+      !["heavy-traverse-keyed-1","heavy-traverse-open-1",
         "heavy-traverse-clutch-1",
         "heavy-traverse-1",
         "heavy-traverse-spade-1",

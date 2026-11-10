@@ -1,3 +1,4 @@
+import { traverseHandlingIndicator } from './heavy-traverse-handling-presentation.ts';
 import{HeavySeamPresentation,drawHeavySeam}from"./heavy-seam-presentation.ts";
 import {flakFlightBearing}from'./heavy-flak-presentation.ts';
 import {skirmisherRules}from'../shared/soldier-skirmisher.ts';
@@ -1358,6 +1359,10 @@ export class CombatScene extends Phaser.Scene {
       nameLabel?.setScale(nameScale).setText(p.name).setPosition(sprite.x,sprite.y-76).setDepth(8+sprite.y/1000).setVisible(this.showNames&&p.status!=='waiting');
       this.shadows.fillStyle(0x10201d, 0.35).fillEllipse(p.x, p.y + 4, 38, 14);
       if (p.id === this.localId) f.lineStyle(2, 0xf5e6af, 0.9).strokeEllipse(p.x, p.y + 4, 42, 20);
+      if(p.id===this.localId){
+        const feed=traverseHandlingIndicator([actual],this.localId,view.phase,view.combatTick);
+        if(feed){f.lineStyle(2,feed.state==='keyed'?0xe9bf70:0xc4d4d9,.9);for(const[a,b]of feed.lines)f.lineBetween(a.x,a.y,b.x,b.y);}
+      }
       if (this.hitboxes)
         f.lineStyle(
           p.id === this.localId ? 3 : 1,

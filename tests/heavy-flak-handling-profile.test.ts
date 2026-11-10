@@ -199,7 +199,7 @@ test("issued67 rejects future Fuze handling ownership and wrong/online envelopes
 });
 test("exact issued67 admits every one of the fifty-four issued techniques with its actual affordable prerequisite ownership", () => {
   const oldNodes = data.specializationSkills.filter(
-    (s) => !["heavy-traverse-clutch-1","heavy-traverse-1","heavy-traverse-spade-1","heavy-traverse-floating-1","heavy-flak-running-1","heavy-flak-hanging-1","heavy-flak-seam-1"].includes(s.id),
+    (s) => !["heavy-traverse-keyed-1","heavy-traverse-open-1","heavy-traverse-clutch-1","heavy-traverse-1","heavy-traverse-spade-1","heavy-traverse-floating-1","heavy-flak-running-1","heavy-flak-hanging-1","heavy-flak-seam-1"].includes(s.id),
   );
   assert.equal(oldNodes.length, 54);
   const all = [

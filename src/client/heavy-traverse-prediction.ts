@@ -1,6 +1,8 @@
 import {
   traverseIds,
   clutchId,
+  keyedId,
+  openId,
   heavyTraverseRules as rules,
 } from "../shared/heavy-traverse.ts";
 import { HZ, type InputFrame } from "../shared/protocol.ts";
@@ -30,6 +32,7 @@ export function traversePredictedMotion(
     i.dodge ||
     i.ultimate ||
     (!!k.heavyClutchUsed && !hasClutch) ||
+    (!!k.heavyClutchHandling && !p.skills.includes(k.heavyClutchHandling)) ||
     (i.technique1 &&
       i.sequence > (k.heavyTraverseSequence ?? Infinity) &&
       now > (k.heavyTraverseBornAt ?? Infinity));
@@ -60,6 +63,13 @@ export function traversePredictedMotion(
       p.kit = k = {
         ...k,
         heavyClutchUsed: true,
+        heavyClutchHandling: lifting
+          ? p.skills.includes(keyedId)
+            ? keyedId
+            : p.skills.includes(openId)
+              ? openId
+              : undefined
+          : k.heavyClutchHandling,
         heavyClutchLifted: lifting,
         heavyClutchAt: now,
         heavyClutchSequence: i.sequence,
@@ -77,6 +87,8 @@ export function traversePredictedMotion(
     now > shotAt &&
     now <= shotAt + rules.recoilTicks &&
     (!k.heavyTraverseShotRequiresClutch || hasClutch) &&
+    (!k.heavyTraverseShotRequiresHandling ||
+      p.skills.includes(k.heavyTraverseShotRequiresHandling)) &&
     shotMode !== "spade" &&
     (shotMode === "loose" ||
       (shotMode === "floating" && p.skills.includes(traverseIds.floating)))

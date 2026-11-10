@@ -1,4 +1,9 @@
-import { traverseIds, clutchId } from "../shared/heavy-traverse.ts";
+import {
+  traverseIds,
+  clutchId,
+  keyedId,
+  openId,
+} from "../shared/heavy-traverse.ts";
 import { seamId } from "../shared/heavy-seam.ts";
 import { flakIds } from "../shared/heavy-flak.ts";
 import type { PlayerView } from "../shared/view.ts";
@@ -23,7 +28,11 @@ export function heavyActions(p: PlayerView, now: number) {
           ? [
               {
                 key: "technique2" as const,
-                id: clutchId,
+                id: p.skills.includes(keyedId)
+                  ? keyedId
+                  : p.skills.includes(openId)
+                    ? openId
+                    : clutchId,
                 at: 0,
                 blocked:
                   (p.kit.heavyTraverseUntil ?? 0) <= now ||

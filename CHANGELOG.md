@@ -1,6 +1,15 @@
 # Changelog
 
-Development build **2026.11.09-heavy-feed-clutch**, protocol 71. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.09-heavy-clutch-handling**, protocol 72. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-09 — Key the bearing or open the feed
+
+### Heavy: a later Siege handling fork
+
+- Keyed Clutch calibrates the actual lifted barrel, including Floating, then locks the re-engaged bearing. Q retains its own aim while primary still waits; later C tracking is deliberately given up.
+- Open Feed permits issued ordinary primary while lifted. Every admitted paid primary round trades the earliest future C opportunity once, independently of pellet count. Full-volley rejection spends no round, cadence or slot.
+- The exclusive B+ handling choices each cost3SP after Feed Clutch at13earned. Original slots, four-round ceiling, recovery, geometry and earlier paid authority remain. All61issued definitions/rules/emblems and15catalogs retain prior values. Exact71ownership/all12history admission precedes70; known69/70records cannot use the older47fallback.
+- Actual earned acquisition, complete source/native validation and final balance continue. No new hotbar row, class completion or human acceptance is implied.
 
 ## 2026-11-09 — Lift the feed and choose what remains
 

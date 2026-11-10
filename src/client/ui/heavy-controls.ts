@@ -1,6 +1,8 @@
 import {
   traverseIds,
   clutchId,
+  keyedId,
+  openId,
   heavyTraverseRules,
 } from "../../shared/heavy-traverse.ts";
 import { seamId } from "../../shared/heavy-seam.ts";
@@ -42,7 +44,11 @@ export function heavyKitMarkup(
             {
               action: "technique2" as const,
               key: p.skills.includes(clutchId)
-                ? "ui.heavy.clutchAction"
+                ? p.skills.includes(keyedId)
+                  ? "skill." + keyedId + ".name"
+                  : p.skills.includes(openId)
+                    ? "skill." + openId + ".name"
+                    : "ui.heavy.clutchAction"
                 : "skill." +
                   (p.skills.includes(flakIds.running)
                     ? flakIds.running
@@ -63,7 +69,15 @@ export function heavyKitMarkup(
             : p.skills.includes(traverseIds.floating)
               ? t("skill." + traverseIds.floating + ".description")
               : "",
-          p.skills.includes(clutchId) ? t("ui.heavy.clutchHelp") : "",
+          p.skills.includes(clutchId)
+            ? t(
+                p.skills.includes(keyedId)
+                  ? "ui.heavy.keyedHelp"
+                  : p.skills.includes(openId)
+                    ? "ui.heavy.openHelp"
+                    : "ui.heavy.clutchHelp",
+              )
+            : "",
         ]
       : [
           t("ui.heavy.flakHelp"),
@@ -120,6 +134,40 @@ export function heavyHudLabel(
   slot: "technique1" | "technique2",
   now: number,
 ) {
+  if (
+    slot === "technique2" &&
+    p.skills.includes(clutchId) &&
+    (p.kit.heavyTraverseUntil ?? 0) > now
+  ) {
+    if (
+      p.kit.heavyClutchLifted &&
+      (p.skills.includes(keyedId) || p.skills.includes(openId))
+    )
+      return t(
+        p.skills.includes(keyedId)
+          ? "ui.heavy.keyedEngage"
+          : "ui.heavy.openEngage",
+        { slots: number(p.kit.heavyClutchSlotsRemaining ?? 0) },
+      );
+    if (p.kit.heavyClutchUsed && p.skills.includes(keyedId))
+      return t("ui.heavy.keyedSpent");
+  }
+  if (
+    slot === "technique1" &&
+    p.skills.includes(openId) &&
+    p.kit.heavyClutchUsed &&
+    (p.kit.heavyTraverseUntil ?? 0) > now
+  )
+    return t("ui.heavy.handlingFeedRemaining", {
+      rounds: number(p.kit.heavyTraverseRounds ?? 0),
+      converted: number(p.kit.heavyClutchConverted ?? 0),
+      lost: number(
+        Math.max(
+          0,
+          (p.kit.heavyClutchForfeited ?? 0) - (p.kit.heavyClutchConverted ?? 0),
+        ),
+      ),
+    });
   if (slot === "technique2" && p.skills.includes(clutchId))
     return (p.kit.heavyTraverseUntil ?? 0) <= now
       ? t("ui.heavy.clutchIdle")

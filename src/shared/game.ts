@@ -1740,6 +1740,7 @@ export class Game {
     if(p.classId==='swordsman'&&!this.sword.canPrimary(p,this.combatTick))return;
     const w = data.weapons.find((w) => w.id === p.weapon)!,
       s = this.stats(p);
+    if(p.classId==='heavy'&&this.traverse.openFeed(p.id)&&!this.canEmitShots('friendly',w.pellets+s.extraShots))return;
     const overdrive = this.combatTick < p.overdriveUntil;
     const braced = this.combatTick < p.braceUntil;
     if (!overdrive) p.ammo--;
@@ -1777,6 +1778,7 @@ export class Game {
       this.ranger.primary(p,this.rangerContext(),{damage,speed:w.projectileSpeed,range:w.projectileSpeed*w.rangeSeconds,pierce:s.pierce,count,spread:w.spreadDegrees*Math.PI/180});
       return;
     }
+    let admittedPrimaryRound=false;
     for (let n = 0; n < count; n++){
       const shot=this.emitShot(
         p.id,
@@ -1793,6 +1795,7 @@ export class Game {
         s.pierce + (overdrive ? 2 : 0),
         w.rangeSeconds,
       );
+      if(shot)admittedPrimaryRound=true;
       if(shot&&p.classId==='soldier')this.sniper.primaryReleased(p,this.combatTick);
       if(shot&&p.classId==='heavy'){this.flak.primaryReleased(p,this.combatTick);this.traverse.primaryReleased(p,this.combatTick);}
       if(shot&&p.classId==='bard')this.bardPrimaryShots.add(shot.id);
@@ -1803,6 +1806,7 @@ export class Game {
         if(p.classId==='assassin'&&this.classKits.untargetable(p.id,this.combatTick))this.trainingShots.set(shot.id,'concealed-hit');
       }
     }
+    if(admittedPrimaryRound&&p.classId==='heavy')this.traverse.primaryRound(p,this.traverseContext());
     this.events.push({
       type: 'sound',
       id:
