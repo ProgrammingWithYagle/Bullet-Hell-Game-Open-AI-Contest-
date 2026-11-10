@@ -1,0 +1,23 @@
+{"mode":"floating","actualShortClear":{"boss":"constable","combatTicks":200,"actualEarnedSP":9}}
+{"mode":"floating","actualShortClear":{"boss":"stitchwright","combatTicks":211,"actualEarnedSP":15}}
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+
+  assert(s.damage>=r.damage)
+
+    at heavyClutchOperation (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\heavy-clutch-flow.ts:31:83)
+    at async earnedClutchFlow (C:\Users\yigal\Documents\Codex\2026-11-05\continue-grave-accord-in-the-same\work\heavy-clutch-handling-movement-stage\retained-clutch-flow.mts:22:18)
+    at async Module.earnedClutchPeerFlow (C:\Users\yigal\Documents\Codex\2026-11-05\continue-grave-accord-in-the-same\work\heavy-clutch-handling-movement-stage\retained-clutch-peer.mts:10:16)
+    at async <anonymous> (C:\Users\yigal\Documents\Codex\2026-11-05\continue-grave-accord-in-the-same\work\heavy-clutch-handling-movement-stage\native-probe.mts:29:294) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.22.1

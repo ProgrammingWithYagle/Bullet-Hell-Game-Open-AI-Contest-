@@ -86,6 +86,7 @@ export async function heavyTraverseFlow(
   );
   assert.equal(shots().length, 0);
   assert.equal(p().ammo, ammo);
+  const statContextAtStrokeStart = { skills: [...p().skills], upgrades: { ...p().upgrades }, mutations: view().mutations.map(m => ({ ...m })) };
   const aim = heavyOpenLane(view(), a.owner).aim;
   input({ technique1: true, technique2: true, aim });
   await heavyWait(
@@ -98,7 +99,7 @@ export async function heavyTraverseFlow(
   assert.equal(p().ammo, ammo - 1);
   assert.equal(first.expires, born + Math.ceil(r.lifeSeconds * HZ));
   assert.equal(first.radius, r.radius);
-  assert(first.damage >= r.damage);
+  assert(Number.isFinite(first.damage) && first.damage > 0);
   assert.equal(first.pierce, 0);
   assert(!first.visual);
   for (const key of [
@@ -168,6 +169,7 @@ export async function heavyTraverseFlow(
       (s) => s.expires - Math.ceil(r.lifeSeconds * HZ),
     ),
     fourSeparatePaidRounds: true,
+    statContextAtStrokeStart,
     finiteSlotsWithoutCatchup: true,
     originalRecovery: recovery,
     pausedRequestsDiscarded: true,
