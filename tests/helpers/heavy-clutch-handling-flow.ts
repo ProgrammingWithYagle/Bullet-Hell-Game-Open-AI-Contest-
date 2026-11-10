@@ -1,3 +1,9 @@
+import { runtimeArena } from "../../src/shared/arena-layouts.ts";
+import { data } from "../../src/shared/game.ts";
+import { segmentRect, segmentCircle } from "../../src/shared/geometry.ts";
+import { gateObstacles } from "../../src/shared/civic-director.ts";
+import { endlessSolids } from "../../src/shared/endless-director.ts";
+import type { View } from "../../src/shared/view.ts";
 import assert from "node:assert/strict";
 import {
   HZ,
@@ -11,13 +17,63 @@ import {
   openId,
   heavyTraverseRules as r,
 } from "../../src/shared/heavy-traverse.ts";
-import {
-  heavyOpenLane,
-  heavyWait,
-  type HeavyFlakAdapter,
-} from "./heavy-flak-flow.ts";
+import { heavyWait, type HeavyFlakAdapter } from "./heavy-flak-flow.ts";
 export type ClutchCarriage = "loose" | "spade" | "floating";
 export type ClutchHandling = typeof keyedId | typeof openId;
+/** Current public cover and actual body/C radii; this is only a native test policy. */
+function handlingLane(view: View, owner: string) {
+  const p = view.players.find((p) => p.id === owner)!,
+    arena = runtimeArena(view.arenaId, view.run.difficulty),
+    walls = [
+      ...arena.obstacles,
+      ...gateObstacles(view.bossCues, view.combatTick),
+      ...endlessSolids(view.bossCues, view.combatTick),
+    ],
+    bodyRadius = data.rules.playerRadius,
+    bossRadius =
+      data.bosses.find((b) => b.id === view.boss.id)!.radius + r.radius;
+  const lanes = Array.from({ length: 64 }, (_, n) => {
+    const aim = (n * Math.PI) / 32,
+      to = { x: p.x + Math.cos(aim) * 2000, y: p.y + Math.sin(aim) * 2000 },
+      walk = { x: p.x + Math.cos(aim) * 24, y: p.y + Math.sin(aim) * 24 };
+    if (
+      walk.x < arena.bounds.x + bodyRadius ||
+      walk.y < arena.bounds.y + bodyRadius ||
+      walk.x > arena.bounds.x + arena.bounds.width - bodyRadius ||
+      walk.y > arena.bounds.y + arena.bounds.height - bodyRadius ||
+      walls.some((w) => segmentRect(p, walk, w, bodyRadius) !== null)
+    )
+      return { aim, clear: 0 };
+    let fraction = 1;
+    for (const w of walls) {
+      const hit = segmentRect(p, to, w, r.radius);
+      if (hit) fraction = Math.min(fraction, hit.t);
+    }
+    const body = segmentCircle(p, to, view.boss, bossRadius);
+    if (body !== null) fraction = Math.min(fraction, body);
+    for (const axis of ["x", "y"] as const) {
+      const lo = arena.bounds[axis] + r.radius,
+        hi =
+          arena.bounds[axis] +
+          (axis === "x" ? arena.bounds.width : arena.bounds.height) -
+          r.radius;
+      if (to[axis] < lo || to[axis] > hi)
+        fraction = Math.min(
+          fraction,
+          ((to[axis] < lo ? lo : hi) - p[axis]) / (to[axis] - p[axis]),
+        );
+    }
+    return {
+      aim: Math.atan2(Math.sin(aim), Math.cos(aim)),
+      clear: 2000 * fraction,
+    };
+  }).sort((a, b) => b.clear - a.clear);
+  assert(
+    lanes[0].clear > 420,
+    "actual body-clear24px and physical C-clear lane",
+  );
+  return lanes[0];
+}
 const bearingDelta = (from: number, to: number) =>
   Math.atan2(Math.sin(to - from), Math.cos(to - from));
 
@@ -98,7 +154,7 @@ export async function heavyClutchHandlingOperation(
   );
   assert.equal(p().ammo, ammo);
   assert.equal(shots().length, 0);
-  const aim = heavyOpenLane(view(), a.owner).aim;
+  const aim = handlingLane(view(), a.owner).aim;
   input({ technique1: true, technique2: true, aim });
   await heavyWait(
     () => C().length === 1 && (p().kit.heavyTraverseUntil ?? 0) > 0,
@@ -151,7 +207,28 @@ export async function heavyClutchHandlingOperation(
         (p().kit.heavyTraverseUntil ?? 0) > 0,
       "one original Keyed opportunity really passes unpaid during calibration",
     );
-  } else {
+  }
+  // Paid C recoil opposes this same-direction walk. Positive progress cannot be its recoil alone.
+  const progress = () =>
+    (p().x - origin.x) * moveX + (p().y - origin.y) * moveY;
+  await heavyWait(
+    () =>
+      !!p().kit.heavyClutchLifted &&
+      (p().kit.heavyTraverseUntil ?? 0) > view().combatTick &&
+      progress() > 5,
+    "actual retained-feed forward walking beyond the original five-pixel requirement",
+  );
+  const walkingProof = {
+    tick: view().combatTick,
+    from: { ...origin },
+    to: { x: p().x, y: p().y },
+    direction: { x: moveX, y: moveY },
+    forwardProgress: progress(),
+    minimumRequired: 5,
+    feedLifted: true,
+    originalUntil: p().kit.heavyTraverseUntil!,
+  };
+  if (handling === openId) {
     input({ aim, moveX, moveY, fire: true });
     await heavyWait(
       () => primary().length > 0,
@@ -270,8 +347,16 @@ export async function heavyClutchHandlingOperation(
     a.checkOwnerStreams?.(s.id);
   }
   let actualHostExit = false;
+  const hostExitCShotIds: number[] = [];
+  const ordinaryPrimaryAliveAtHostExit: number[] = [];
   if (a.end) {
-    const alive = shots().filter((s) => !removed(s.id));
+    const alive = C().filter((s) => !removed(s.id));
+    hostExitCShotIds.push(...alive.map((s) => s.id));
+    ordinaryPrimaryAliveAtHostExit.push(
+      ...primary()
+        .filter((s) => !removed(s.id))
+        .map((s) => s.id),
+    );
     assert(alive.length > 0);
     await a.end();
     await heavyWait(
@@ -306,9 +391,12 @@ export async function heavyClutchHandlingOperation(
     actualStoredBearing: heldBearing,
     initialBearing: aim,
     actualLiftedMovement: { from: origin, to: moved },
+    actualLiftedManualWalkingProof: walkingProof,
     pausedBeforeAndDuringLift: true,
     pausedRequestsDiscarded: true,
     actualHostExit,
+    hostExitCShotIds,
+    ordinaryPrimaryAliveAtHostExit,
     shots: shots().map((s) => ({ ...s })),
     noCheckpointOrBudgetHealthPositionInjection: true,
     limits:
