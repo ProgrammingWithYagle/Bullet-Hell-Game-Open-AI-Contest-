@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import { execFileSync } from 'node:child_process';
+/** Read one bounded UTF-8 runtime report in memory; never extract paths to disk. */
+export function decodeRuntimeEvidenceArchive(zip) {
+  assert(zip.length < 8 * 1024 * 1024);
+  const code = [
+    'import io,json,sys,zipfile',
+    'z=zipfile.ZipFile(io.BytesIO(sys.stdin.buffer.read()))',
+    'n=[n for n in z.namelist() if n.endswith("runtime-verification.json")]',
+    'assert len(n)==1',
+    'i=z.getinfo(n[0]); assert i.file_size<4*1024*1024',
+    'print(json.dumps({"name":n[0],"text":z.read(n[0]).decode("utf-8")}))',
+  ].join('\n');
+  return JSON.parse(execFileSync('python', ['-c', code], { input: zip, encoding: 'utf8', maxBuffer: 8 * 1024 * 1024 }));
+}

@@ -1,0 +1,18 @@
+{"mode":"floating","actualShortClear":{"boss":"tollkeeper","combatTicks":152,"actualEarnedSP":9}}
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: original vote clocks reach the actual next shop
+    at earnedClutchFlow (C:\Users\yigal\Documents\Codex\2026-11-05\continue-grave-accord-in-the-same\work\heavy-clutch-stat-scaling-stage\retained-clutch-flow.mts:15:60)
+    at async Module.earnedClutchPeerFlow (C:\Users\yigal\Documents\Codex\2026-11-05\continue-grave-accord-in-the-same\work\heavy-clutch-stat-scaling-stage\retained-clutch-peer.mts:10:16)
+    at async <anonymous> (C:\Users\yigal\Documents\Codex\2026-11-05\continue-grave-accord-in-the-same\work\heavy-clutch-stat-scaling-stage\native-probe.mts:29:294) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.22.1

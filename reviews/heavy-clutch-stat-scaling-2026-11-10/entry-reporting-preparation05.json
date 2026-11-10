@@ -1,0 +1,40 @@
+{
+  "preparedAt": "2026-11-10T17:11:33.468Z",
+  "sourceCommit": "20aad19bdfb8819cd7db0483b9c79f2c6e9dcd5c",
+  "priorReportingStop": "Native04 passed four loose transport invocations, then its post-run reporting audit stopped: active mutations are a View field, not a PlayerView field. No failed context is relabelled as complete.",
+  "changes": [
+    "Capture actual v().mutations, matching the canonical source helper.",
+    "Explicitly type the copied view as View so this field error is caught by strict checking.",
+    "No input, assertion, timeout, policy, gameplay or source changes."
+  ],
+  "files": [
+    {
+      "file": "retained-traverse-flow05.mts",
+      "sha256": "45e2d103135a3b1b4eb4083caf69f70ab98efc726d9ca3cecf01ebe8cdc7fd0e"
+    },
+    {
+      "file": "retained-traverse-worker05.mts",
+      "sha256": "e07bf32b09865dad1187c42095f94b7ba9e473665a5d4bb721da7ae82c77dccb"
+    },
+    {
+      "file": "retained-traverse-peer05.mts",
+      "sha256": "159959d5c6f536734cddeda22d7a35e56ff6c2fb0408ff21ceabc0961f33d9dc"
+    },
+    {
+      "file": "native-probe05.mts",
+      "sha256": "66ef0124bcd0c82b23ef3dfaab296371b22242eac0c8896f1db2724874df63b2"
+    },
+    {
+      "file": "verify-frozen05.mjs",
+      "sha256": "d11982a3f540898fe725a30cca95ef94e97830b592620df1d075aea9782ac4f9"
+    }
+  ],
+  "driverSha256": "66ef0124bcd0c82b23ef3dfaab296371b22242eac0c8896f1db2724874df63b2",
+  "requiredReruns": 12,
+  "preTransportTypeOnlyCorrection": {
+    "previousSource": "retained-traverse-flow05-before-type-only.mts.txt",
+    "previousSha256": "d1e7d235df11369fc28c3366f51c9735c0fd99213d6975c446e4c18dc04991de",
+    "failedStrictLog": "entry-strict05.log",
+    "correction": "Type-only non-null assertion on the shot timestamp already established by the unchanged actual paid-shot wait. No runtime code, operation assertion or policy changes."
+  }
+}

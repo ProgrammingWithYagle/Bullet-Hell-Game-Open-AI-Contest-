@@ -1,0 +1,11 @@
+$ErrorActionPreference='Stop'
+$taskRepo='C:/Users/yigal/OneDrive/Documents/ChatGPT/OpenAI Multiplayer Game Contest (Bullet Hell)'
+$taskScope='reviews/heavy-clutch-stat-scaling-2026-11-10'
+$taskShell=(Get-Process -Id $PID).Path
+foreach($audience in @('testing','public')){
+ if(Test-Path -LiteralPath (Join-Path $taskRepo ($taskScope+'/processes-'+$audience+'.json'))){throw 'Preserve existing launch evidence.'}
+ foreach($taskLog in @('output/heavy-clutch-stat-scaling-'+$audience+'-launcher01.log','output/heavy-clutch-stat-scaling-'+$audience+'-launcher01-errors.log')){if(Test-Path -LiteralPath (Join-Path $taskRepo $taskLog)){throw 'Preserve existing launcher log.'}}
+ $args=@('-NoProfile','-File',('"'+(Join-Path $taskRepo 'tools/launch-review.ps1')+'"'),'-Audience',$audience,'-Scope',$taskScope)
+ $process=Start-Process -FilePath $taskShell -ArgumentList $args -WorkingDirectory $taskRepo -WindowStyle Hidden -PassThru -RedirectStandardOutput (Join-Path $taskRepo ('output/heavy-clutch-stat-scaling-'+$audience+'-launcher01.log')) -RedirectStandardError (Join-Path $taskRepo ('output/heavy-clutch-stat-scaling-'+$audience+'-launcher01-errors.log'))
+ Write-Output ('Started hidden '+$audience+' launcher PID '+$process.Id+' UTC '+$process.StartTime.ToUniversalTime().ToString('o'))
+}
