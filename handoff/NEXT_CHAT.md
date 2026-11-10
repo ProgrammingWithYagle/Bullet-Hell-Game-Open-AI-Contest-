@@ -1,5 +1,10 @@
 # Grave Accord — current continuation
 
+## Active unverified working tree
+
+Tethered Traverse is now admitted in the working tree, pending full verification: build2026.11.10-heavy-tethered-traverse/protocol73/content9dc09a2d8243caf47ed6f3c9b1f4140814e24a7b482040d34538d0056c0cbce2/catalog64, Heavy Flak7/Siege7. See docs/HEAVY_TETHERED_TRAVERSE_DESIGN.md and reviews/heavy-tethered-traverse-2026-11-10/admission.json. Earlier focused30operation +14guard +1sourceMenuDOM cases and three actual source Raid12→20 peer cases pass; complete source/CI/frozen/natural gates remain pending. The last fully verified source/metadata checkpoint below remains20aad19/c09370e. Its earlier unregistered-study statements describe that checkpoint, not the new working tree. Inspect live status and the chat workspace C:\Users\yigal\Documents\Codex\2026-11-05\continue-grave-accord-in-the-same, including work/heavy-tethered-traverse-stage, before running any single-use helper. The work/ paths refer to that chat workspace, not the checkout. Continue the broader goal; no pause or class/game completion is declared.
+
+
 Development continues. Only the user decides when the game or a class is finished. Use the SAME checkout, C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell), branch feat/first-playable-loop and draft PR14. Every Git invocation uses git -c core.bare=false. No clone, worktree or reconfiguration. No browser automation, CUA, Playwright, screenshots or switching. No subagents without fresh explicit authorization.
 
 ## Verified playable source

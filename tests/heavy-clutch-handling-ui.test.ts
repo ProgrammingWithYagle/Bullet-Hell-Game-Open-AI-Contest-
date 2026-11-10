@@ -72,12 +72,12 @@ test("controlled15SP source MenuDOM buys one optional handling on each real carr
         );
     }
 });
-test("the authored later fork contains only real cards, six prerequisite edges and two independent exclusions", () => {
+test("the authored later fork contains only real cards, seven prerequisite edges and two independent exclusions", () => {
   const map = specializationMapLayout("heavy", ids.entry)!;
-  assert.equal(map.nodes.length, 7);
-  assert.equal(map.edges.length, 6);
+  assert.equal(map.nodes.length, 8);
+  assert.equal(map.edges.length, 7);
   assert.equal(map.exclusions.length, 2);
-  assert.equal(new Set(map.nodes.map((n) => n.x + "," + n.y)).size, 7);
+  assert.equal(new Set(map.nodes.map((n) => n.x + "," + n.y)).size, 8);
   for (const id of [keyedId, openId]) {
     const node = data.specializationSkills.find((n) => n.id === id)!;
     assert.equal(node.prerequisite, clutchId);

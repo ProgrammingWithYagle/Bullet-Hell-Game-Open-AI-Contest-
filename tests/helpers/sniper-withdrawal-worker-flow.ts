@@ -23,6 +23,7 @@ export async function sniperWithdrawalWorkerFlow(code: string) {
     sequence = 0,
     serial = 0,
     paused = false;
+  const recentViews: unknown[] = [], recentInputs: unknown[] = [];
   const purchases: any[] = [],
     observed = new Map<number, ObservedRestShot>(),
     emitted: Shot[] = [],
@@ -30,7 +31,14 @@ export async function sniperWithdrawalWorkerFlow(code: string) {
   worker.on("error", (e) => (error = e));
   worker.on("message", (m) => {
     if (m.type === "ready") ready = true;
-    if (m.type === "view") view = m.view;
+    if (m.type === "view") {
+      view = m.view;
+      const owner = m.view.players.find((p: any) => p.id === "solo");
+      recentViews.push({receivedAt: Date.now(), phase: m.view.phase, tick: m.view.tick, combatTick: m.view.combatTick, encounter: m.view.encounter,
+        owner: owner && {x: owner.x, y: owner.y, health: owner.health, shield: owner.shield, status: owner.status, ammo: owner.ammo, ack: owner.ack, supplies: owner.supplies},
+        boss: {id: m.view.boss.id, x: m.view.boss.x, y: m.view.boss.y, health: m.view.boss.health}});
+      if (recentViews.length > 120) recentViews.shift();
+    }
     if (m.type === "error") error = m;
     if (m.type === "pauseState") paused = m.value;
     if (m.type === "purchaseResult") purchases.push(m);
@@ -79,6 +87,8 @@ export async function sniperWithdrawalWorkerFlow(code: string) {
             ...a,
           };
           assert(validInput(input));
+          recentInputs.push({sentAt: Date.now(), phase: view?.phase, encounter: view?.encounter, observedCombatTick: view?.combatTick, input});
+          if (recentInputs.length > 120) recentInputs.shift();
           worker.postMessage({ type: "input", input });
           return sequence;
         },
@@ -118,6 +128,11 @@ export async function sniperWithdrawalWorkerFlow(code: string) {
       workerPatched: false,
       wholeOptimizedWorkerExecuted: true,
     };
+  } catch (failure) {
+    console.error(JSON.stringify({sniperWithdrawalFailure: {message: failure instanceof Error ? failure.message : String(failure),
+      actualTerminalView: view, paused, actualObservedShots: [...observed.values()], recentViews, recentInputs,
+      observationOnly: true, sourcePolicyAndTimeoutsUnchanged: true}}));
+    throw failure;
   } finally {
     await worker.terminate();
   }

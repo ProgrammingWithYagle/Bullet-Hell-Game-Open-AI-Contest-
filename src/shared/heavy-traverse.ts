@@ -13,8 +13,12 @@ export const clutchId = "heavy-traverse-clutch-1";
 // Optional acquired handling keeps the same finite paid stroke and original opportunities.
 export const keyedId = "heavy-traverse-keyed-1",
   openId = "heavy-traverse-open-1";
+export const lanyardId = "heavy-traverse-lanyard-1";
+export const tetherRadius = 64;
 type Stroke = {
+  tether?: { origin: Vec; at: number; sequence: number };
   requiresClutch?: boolean;
+  requiresLanyard?: boolean;
   requiresHandling?: typeof keyedId | typeof openId;
   forfeited: number;
   converted: number;
@@ -34,6 +38,7 @@ type Stroke = {
 };
 type Flight = {
   requiresClutch?: boolean;
+  requiresLanyard?: boolean;
   requiresHandling?: typeof keyedId | typeof openId;
   id: number;
   owner: string;
@@ -43,6 +48,7 @@ type Flight = {
 };
 type Impulse = {
   requiresClutch?: boolean;
+  requiresLanyard?: boolean;
   requiresHandling?: typeof keyedId | typeof openId;
   owner: string;
   weapon: string;
@@ -52,6 +58,7 @@ type Impulse = {
   aim: number;
 };
 type Action = {
+  lanyardAt?: number;
   castAt?: number;
   primaryAt?: number;
   primaryAim?: number;
@@ -60,6 +67,8 @@ type Action = {
   shotMode?: Mode;
   shotWeapon?: string;
   shotRequiresClutch?: boolean;
+  shotRequiresLanyard?: boolean;
+  shotOrigin?: Vec;
   shotRequiresHandling?: typeof keyedId | typeof openId;
   handledSequence?: number;
   handledAt?: number;
@@ -68,6 +77,7 @@ export type TraverseContext = {
   tick: number;
   stats(p: Owner): Pick<Stats, "damage" | "cooldown">;
   canEmit(): boolean;
+  postPathClear?(origin: Vec, body: Vec): boolean;
   shoot(
     p: Owner,
     aim: number,
@@ -79,6 +89,7 @@ export type TraverseContext = {
   sound(p: Owner, id: string): void;
 };
 export type FlightAuthority = {
+  postPathClear?(origin: Vec, body: Vec): boolean;
   players: readonly Owner[];
   tick: number;
   shot(id: number): Shot | undefined;
@@ -124,6 +135,7 @@ export class HeavyTraverse {
       weapon: string;
       mode: Mode;
       requiresClutch?: boolean;
+  requiresLanyard?: boolean;
       requiresHandling?: typeof keyedId | typeof openId;
     },
   ): p is Owner {
@@ -132,6 +144,7 @@ export class HeavyTraverse {
       p.weapon === work.weapon &&
       (work.mode === "loose" || p.skills.includes(traverseIds[work.mode])) &&
       (!work.requiresClutch || p.skills.includes(clutchId)) &&
+      (!work.requiresLanyard || p.skills.includes(lanyardId)) &&
       (!work.requiresHandling || p.skills.includes(work.requiresHandling))
     );
   }
@@ -152,7 +165,11 @@ export class HeavyTraverse {
   private releaseFeed(owner: string) {
     this.strokes.delete(owner);
   }
+  private tetherValid(p: Owner, s: Stroke, c: { postPathClear?(origin: Vec, body: Vec): boolean }) {
+    return !s.tether || (Math.hypot(p.x-s.tether.origin.x,p.y-s.tether.origin.y)<=tetherRadius && c.postPathClear?.(s.tether.origin,p)===true);
+  }
   private slew(p: Owner, s: Stroke, now: number) {
+    if(s.tether){s.turnedAt=now;return;}
     if (now <= s.turnedAt) return;
     if (s.requiresHandling === keyedId && s.clutch && !s.clutch.lifted) {
       s.turnedAt = now;
@@ -182,8 +199,10 @@ export class HeavyTraverse {
         !this.valid(p, s) ||
         this.interrupt(p, c.tick) ||
         c.tick >= s.until ||
+        !this.tetherValid(p, s, c) ||
         (s.mode === "spade" &&
           !s.clutch?.lifted &&
+          !s.tether &&
           Math.hypot(p.x - s.post.x, p.y - s.post.y) > 1e-4)
       )
         this.releaseFeed(p.id);
@@ -208,7 +227,7 @@ export class HeavyTraverse {
   }
   walkFactor(owner: string) {
     const s = this.strokes.get(owner);
-    return s && s.mode !== "floating" && !s.clutch?.lifted ? 0 : 1;
+    return s && s.mode !== "floating" && !s.clutch?.lifted && !s.tether ? 0 : 1;
   }
   /** Velocity from paid shots begins on the following combat step; ordinary body collision remains the caller's responsibility. */
   recoil(p: Owner, now: number): Vec {
@@ -228,8 +247,10 @@ export class HeavyTraverse {
   }
   private emit(p: Owner, s: Stroke, c: TraverseContext) {
     if (this.interrupt(p, c.tick) || p.ammo < 1 || !c.canEmit()) return false;
+    const origin = s.tether?.origin ?? p;
+    const emitter = s.tether ? {...p,x:origin.x,y:origin.y} : p;
     const shot = c.shoot(
-      p,
+      emitter,
       s.aim,
       this.rules.damage * c.stats(p).damage,
       this.rules.speed,
@@ -244,8 +265,9 @@ export class HeavyTraverse {
       owner: p.id,
       weapon: p.weapon,
       mode: s.mode,
-      origin: { x: p.x, y: p.y },
+      origin: { x: origin.x, y: origin.y },
       requiresClutch: s.requiresClutch,
+      requiresLanyard: s.requiresLanyard,
       requiresHandling: s.requiresHandling,
     });
     if (s.mode !== "spade")
@@ -254,6 +276,7 @@ export class HeavyTraverse {
         weapon: p.weapon,
         mode: s.mode,
         requiresClutch: s.requiresClutch,
+      requiresLanyard: s.requiresLanyard,
         requiresHandling: s.requiresHandling,
         at: c.tick,
         until: c.tick + this.rules.recoilTicks,
@@ -266,9 +289,11 @@ export class HeavyTraverse {
       shotMode: s.mode,
       shotWeapon: p.weapon,
       shotRequiresClutch: s.requiresClutch,
+      shotRequiresLanyard: s.requiresLanyard,
+      shotOrigin: { x: origin.x, y: origin.y },
       shotRequiresHandling: s.requiresHandling,
     });
-    c.sound(p, "heavy-traverse-shot");
+    c.sound(emitter, "heavy-traverse-shot");
     return true;
   }
   cast(p: Owner, c: TraverseContext) {
@@ -331,8 +356,10 @@ export class HeavyTraverse {
       !this.valid(p, s) ||
       this.interrupt(p, c.tick) ||
       c.tick >= s.until ||
+      !this.tetherValid(p, s, c) ||
       (s.mode === "spade" &&
         !s.clutch?.lifted &&
+          !s.tether &&
         Math.hypot(p.x - s.post.x, p.y - s.post.y) > 1e-4)
     ) {
       this.releaseFeed(p.id);
@@ -371,6 +398,14 @@ export class HeavyTraverse {
       c.tick <= (s.clutch?.at ?? -1)
     )
       return false;
+    if(s.clutch && !s.clutch.lifted){
+      if(!p.skills.includes(lanyardId)||s.tether||this.rules.rounds-s.fired-s.forfeited<2||c.postPathClear?.(p,p)!==true)return false;
+      s.tether={origin:{x:p.x,y:p.y},at:c.tick,sequence:p.input.sequence};
+      s.requiresLanyard=true;
+      this.actions.set(p.id,{...this.actions.get(p.id),lanyardAt:c.tick});
+      c.sound(p,"heavy-traverse-post");
+      return true;
+    }
     if (!s.clutch) {
       s.clutch = { lifted: true, at: c.tick, sequence: p.input.sequence };
       s.requiresClutch = true;
@@ -391,6 +426,12 @@ export class HeavyTraverse {
     if (s.mode === "spade") s.post = { x: p.x, y: p.y };
     c.sound(p, "heavy-clutch-engage");
     return true;
+  }
+  /** Accepted body-fired Q retrieves/releases the posted feed before the issued ability executes. */
+  beforeAbility(p: Owner, slot: "q"|"e"|"ultimate", c: TraverseContext) {
+    const s=this.strokes.get(p.id);
+    if(slot!=="q"||!s?.tether)return false;
+    this.releaseFeed(p.id);c.sound(p,"heavy-traverse-release");return true;
   }
   blocksPrimary(owner: string, now: number) {
     const s = this.strokes.get(owner);
@@ -438,9 +479,22 @@ export class HeavyTraverse {
           weapon: a.shotWeapon,
           mode: a.shotMode,
           requiresClutch: a.shotRequiresClutch,
+          requiresLanyard: a.shotRequiresLanyard,
           requiresHandling: a.shotRequiresHandling,
         });
+    const currentPost=s&&this.valid(p,s)?s.tether:undefined,
+      paidPostNow=!!(paid&&a?.shotRequiresLanyard&&a.shotAt===now),
+      postOrigin=currentPost?.origin??(paidPostNow?a?.shotOrigin:undefined);
     return {
+      heavyLanyardAt:postOrigin?(currentPost?.at??a?.lanyardAt??0):0,
+      heavyLanyardSequence:currentPost?.sequence??0,
+      heavyLanyardUntil:postOrigin?(s?.until??now+1):0,
+      heavyLanyardX:postOrigin?.x??p.x,
+      heavyLanyardY:postOrigin?.y??p.y,
+      heavyLanyardRemaining:s?.tether?this.rules.rounds-s.fired-s.forfeited:0,
+      heavyTraverseShotPosted:!!(paid&&a?.shotRequiresLanyard),
+      heavyTraverseShotX:a?.shotOrigin?.x??p.x,
+      heavyTraverseShotY:a?.shotOrigin?.y??p.y,
       heavyClutchConverted: s?.converted ?? 0,
       heavyClutchHandling: s?.requiresHandling,
       heavyClutchAt: s?.clutch?.at ?? 0,
@@ -452,7 +506,7 @@ export class HeavyTraverse {
         this.interrupt(p, now) ||
         now <= s.born ||
         now >= s.until ||
-        !!(s.clutch && !s.clutch.lifted) ||
+        !!(s.clutch && !s.clutch.lifted && (s.tether || !p.skills.includes(lanyardId) || this.rules.rounds-s.fired-s.forfeited<2)) ||
         !!(
           s.clutch?.lifted &&
           s.mode === "spade" &&
@@ -504,8 +558,10 @@ export class HeavyTraverse {
         !this.valid(p, s) ||
         this.interrupt(p, c.tick) ||
         c.tick >= s.until ||
+        !this.tetherValid(p, s, c) ||
         (s.mode === "spade" &&
           !s.clutch?.lifted &&
+          !s.tether &&
           Math.hypot(p.x - s.post.x, p.y - s.post.y) > 1e-4)
       )
         this.releaseFeed(owner);

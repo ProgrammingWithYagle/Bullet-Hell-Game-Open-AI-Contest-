@@ -132,7 +132,7 @@ const encounterMotion = import.meta.glob(
 ) as Record<string, string>;
 const specializationImages=import.meta.glob(['../../assets/production/ui/engineer-tree-2026-11-03/*.png','../../assets/production/ui/soldier-tree-2026-11-04/*.png','../../assets/production/ui/heavy-tree-2026-11-06/*.png'],{query:'?url',import:'default',eager:true}) as Record<string,string>;
 export const assets = {
-  specializationIcons:Object.fromEntries(Object.entries(specializationImages).map(([path,url])=>[path.split('/').at(-1)!.replace('.png',''),url])) as Record<string,string>,
+  specializationIcons:Object.fromEntries(Object.entries(specializationImages).map(([path,url])=>{const name=path.split('/').at(-1)!.replace('.png','');return [name==='heavy-traverse-lanyard-1-v3'?'heavy-traverse-lanyard-1':name,url];})) as Record<string,string>,
   resourceIcons: Object.fromEntries(
     Object.entries(resourceIcons).map(([path, url]) => [
       path.endsWith("alchemist-samples-v1.png") ? "alchemist-samples" : path.endsWith("ranger-quiver-v1.png") ? "ranger-quiver" : path.endsWith("summoner-focus-v1.png") ? "summoner-focus" : path.endsWith("equipment-case-v1.png")

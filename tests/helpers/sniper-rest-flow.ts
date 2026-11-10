@@ -131,26 +131,32 @@ export async function sniperRestFlow(
     approach = boreApproach(p(), arena, "through", boss);
   const walk = async (target: { x: number; y: number }, aim: number) => {
     const end = Date.now() + 5500;
-    while (distance(p(), target) > 1.7) {
-      assert(
-        Date.now() < end && v().phase === "combat",
-        "actual ordinary walk",
+    for (;;) {
+      while (distance(p(), target) > 1.7) {
+        assert(
+          Date.now() < end && v().phase === "combat",
+          "actual ordinary walk",
+        );
+        const d = distance(p(), target),
+          scale = Math.min(1, d / 12);
+        a.input({
+          moveX: ((target.x - p().x) / d) * scale,
+          moveY: ((target.y - p().y) / d) * scale,
+          aim,
+        });
+        await new Promise((r) => setTimeout(r, 25));
+      }
+      const at = v().combatTick,
+        sequence = a.input({ aim });
+      await restWait(
+        () => p().ack >= sequence && v().combatTick >= at + 2,
+        "actual planted stop",
       );
-      const d = distance(p(), target),
-        scale = Math.min(1, d / 12);
-      a.input({
-        moveX: ((target.x - p().x) / d) * scale,
-        moveY: ((target.y - p().y) / d) * scale,
-        aim,
-      });
-      await new Promise((r) => setTimeout(r, 25));
+      // A later stop acknowledgement may include movement after the arrival view.
+      // Correct that actual stopped body with ordinary inputs under the same bound.
+      if (distance(p(), target) <= 1.7) return;
+      assert(Date.now() < end && v().phase === "combat", "actual stopped arrival");
     }
-    const at = v().combatTick,
-      sequence = a.input({ aim });
-    await restWait(
-      () => p().ack >= sequence && v().combatTick >= at + 2,
-      "actual planted stop",
-    );
   };
   await walk(approach, approach.aim);
   const aim = actualBoreAim(p(), arena, approach, "through").aim,

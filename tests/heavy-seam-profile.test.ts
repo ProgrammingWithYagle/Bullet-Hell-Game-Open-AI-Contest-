@@ -194,7 +194,7 @@ test("issued68 rejects future Seam Fuze ownership and wrong/online envelopes bef
 });
 test("exact issued68 admits every one of the fifty-six issued techniques with its actual affordable prerequisite ownership", () => {
   const oldNodes = data.specializationSkills.filter(
-    (s) => !["heavy-traverse-keyed-1","heavy-traverse-open-1","heavy-traverse-clutch-1","heavy-traverse-1","heavy-traverse-spade-1","heavy-traverse-floating-1","heavy-flak-seam-1"].includes(s.id),
+    (s) => !["heavy-traverse-lanyard-1","heavy-traverse-keyed-1","heavy-traverse-open-1","heavy-traverse-clutch-1","heavy-traverse-1","heavy-traverse-spade-1","heavy-traverse-floating-1","heavy-flak-seam-1"].includes(s.id),
   );
   assert.equal(oldNodes.length, 56);
   const all = [

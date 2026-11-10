@@ -1,6 +1,6 @@
 # Development progress
 
-Updated 2026-11-05 for **2026.11.09-heavy-clutch-handling**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
+Updated 2026-11-05 for **2026.11.10-heavy-tethered-traverse**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
 
 66 playable identities: 65 ordinary and 1 secret. Three ordinary bosses in every one of fifty subtiers requires 150 ordinary identities, plus secrets; 85 additional ordinary bosses remain.
 

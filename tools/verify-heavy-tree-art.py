@@ -10,7 +10,7 @@ manifest = json.loads((folder / "provenance.json").read_text(encoding="utf-8"))
 catalog = json.loads((root / "content/catalog.json").read_text(encoding="utf-8"))
 expected = {s["id"] for s in catalog["specializationSkills"] if s["classId"] == "heavy"}
 assert {a["id"] for a in manifest["assets"]} == expected
-assert len(manifest["assets"]) == len(expected) == 13
+assert len(manifest["assets"]) == len(expected) == 14
 rows = []
 for asset in manifest["assets"]:
     path = root / asset["file"]
@@ -27,5 +27,7 @@ for asset in manifest["assets"]:
         box = alpha.point(lambda a: 255 if a >= 16 else 0).getbbox()
         assert box and box[0] > 0 and box[1] > 0 and box[2] < image.width and box[3] < image.height, asset["id"]
         assert alpha.getpixel((0, 0)) == alpha.getpixel((image.width - 1, image.height - 1)) == 0
+        if asset["id"] == "heavy-traverse-lanyard-1":
+            assert all(alpha.getpixel(p) == 0 for p in [(0, 0), (image.width - 1, 0), (0, image.height - 1), (image.width - 1, image.height - 1)])
         rows.append({"id": asset["id"], "size": list(image.size), "alphaBounds": list(box), "sha256": asset["sha256"]})
 print(json.dumps({"passed": True, "assets": rows, "limits": ["Native files and alpha only; rendered UI, device and human visual acceptance remain separate."]}))

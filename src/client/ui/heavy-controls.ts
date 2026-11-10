@@ -1,4 +1,6 @@
+import { postedBState } from "../heavy-post-state.ts";
 import {
+  lanyardId,
   traverseIds,
   clutchId,
   keyedId,
@@ -21,6 +23,7 @@ export function heavyKitMarkup(
   open: boolean,
 ) {
   if (p.classId !== "heavy" || p.training) return "";
+  const postOwned = [traverseIds.entry, clutchId, lanyardId].every(id => p.skills.includes(id));
   const cl = data.classes.find((c) => c.id === "heavy")!,
     rows: { action: KitAction; key: string }[] = [
       { action: "q", key: "ability." + cl.abilities[0].id + ".name" },
@@ -44,7 +47,9 @@ export function heavyKitMarkup(
             {
               action: "technique2" as const,
               key: p.skills.includes(clutchId)
-                ? p.skills.includes(keyedId)
+                ? postOwned
+                  ? "skill." + lanyardId + ".name"
+                  : p.skills.includes(keyedId)
                   ? "skill." + keyedId + ".name"
                   : p.skills.includes(openId)
                     ? "skill." + openId + ".name"
@@ -61,6 +66,11 @@ export function heavyKitMarkup(
         : []),
     ];
   const help = (
+    postOwned ? [
+      t("ui.heavy.lanyardHelp"),
+      t(p.skills.includes(traverseIds.spade) ? "ui.heavy.lanyardSpadeHelp" : p.skills.includes(traverseIds.floating) ? "ui.heavy.lanyardFloatingHelp" : "ui.heavy.lanyardLooseHelp"),
+      t(p.skills.includes(keyedId) ? "ui.heavy.lanyardKeyedHelp" : p.skills.includes(openId) ? "ui.heavy.lanyardOpenHelp" : "ui.heavy.lanyardPlainHelp"),
+    ] :
     p.skills.includes(traverseIds.entry)
       ? [
           t("ui.heavy.traverseHelp"),
@@ -134,6 +144,9 @@ export function heavyHudLabel(
   slot: "technique1" | "technique2",
   now: number,
 ) {
+  const post = postedBState(p, now);
+  if (slot === "technique2" && post) return t("ui.heavy.lanyard" + post.kind[0].toUpperCase() + post.kind.slice(1), { slots: number(post.remaining) });
+  if (slot === "technique1" && post?.kind === "posted") return t("ui.heavy.lanyardRemaining", { slots: number(post.remaining) });
   if (
     slot === "technique2" &&
     p.skills.includes(clutchId) &&

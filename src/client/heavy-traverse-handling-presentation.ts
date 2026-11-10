@@ -1,3 +1,4 @@
+import { postFrame } from './heavy-post-presentation.ts';
 import type { PlayerView } from "../shared/view.ts";
 import {
   traverseIds,
@@ -26,6 +27,7 @@ export function traverseHandlingIndicator(
 ): HandlingIndicator | undefined {
   const p = players.find((p) => p.id === localId),
     k = p?.kit;
+  if (p && postFrame(p, phase, now, localId)) return;
   if (
     !p ||
     p.classId !== "heavy" ||

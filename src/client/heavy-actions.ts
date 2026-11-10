@@ -1,4 +1,5 @@
 import {
+  lanyardId,
   traverseIds,
   clutchId,
   keyedId,
@@ -28,7 +29,9 @@ export function heavyActions(p: PlayerView, now: number) {
           ? [
               {
                 key: "technique2" as const,
-                id: p.skills.includes(keyedId)
+                id: p.skills.includes(lanyardId)
+                  ? lanyardId
+                  : p.skills.includes(keyedId)
                   ? keyedId
                   : p.skills.includes(openId)
                     ? openId

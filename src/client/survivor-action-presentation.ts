@@ -1,19 +1,20 @@
+import{postFrame}from "./heavy-post-presentation.ts";
 // Drawn action selection only. Combat state, damage and movement remain authoritative.
-import library from '../../assets/production/motion/survivor-actions/library.json';
-import bardLibrary from '../../assets/production/motion/bard-actions/library.json';
-import swordLibrary from '../../assets/production/motion/swordsman-actions/library.json';
-import summonerLibrary from '../../assets/production/motion/summoner-actions/library.json';
-import alchemistLibrary from '../../assets/production/motion/alchemist-actions/library.json';
-import {alchemyActionCue,alchemyActionFrame} from './alchemy-presentation.ts';
-import rangerLibrary from '../../assets/production/motion/ranger-actions/library.json';
-import {rangerAttackCue,rangerAttackFrame} from './ranger-presentation.ts';
-import catalog from '../../content/catalog.json';
-import { HZ, type ClassId } from '../shared/protocol.ts';
-import type { View, PlayerView } from '../shared/view.ts';
-import { RESCUE_CHARGE_TICKS } from '../shared/class-kits.ts';
-import { PresentationClock } from './presentation-clock.ts';
-import type { SurvivorFacing } from './survivor-visual-motion.ts';
-import { deliveredSurvivorClip } from './survivor-delivery.ts';
+import library from "../../assets/production/motion/survivor-actions/library.json";
+import bardLibrary from "../../assets/production/motion/bard-actions/library.json";
+import swordLibrary from "../../assets/production/motion/swordsman-actions/library.json";
+import summonerLibrary from "../../assets/production/motion/summoner-actions/library.json";
+import alchemistLibrary from "../../assets/production/motion/alchemist-actions/library.json";
+import {alchemyActionCue,alchemyActionFrame} from "./alchemy-presentation.ts";
+import rangerLibrary from "../../assets/production/motion/ranger-actions/library.json";
+import {rangerAttackCue,rangerAttackFrame} from "./ranger-presentation.ts";
+import catalog from "../../content/catalog.json";
+import { HZ, type ClassId } from "../shared/protocol.ts";
+import type { View, PlayerView } from "../shared/view.ts";
+import { RESCUE_CHARGE_TICKS } from "../shared/class-kits.ts";
+import { PresentationClock } from "./presentation-clock.ts";
+import type { SurvivorFacing } from "./survivor-visual-motion.ts";
+import { deliveredSurvivorClip } from "./survivor-delivery.ts";
 
 type Facing = 'south' | 'east' | 'north' | 'west';
 type Action = 'idle' | 'attack' | 'hurt' | 'dash' | 'downed' | 'guard' | 'brew' | 'throw';
@@ -123,8 +124,9 @@ export class SurvivorActionClock {
         memory.sniperEventAt=at;
         if(fresh&&view.combatTick>=at&&view.combatTick-at<duration&&view.tick-memory.attackAt>=duration&&(!old||(player.weapon===old.weapon&&player.health>=old.health))){memory.attackAt=view.tick-Math.max(0,view.combatTick-at);memory.attackFacing=facingOf(shotAt>=primaryAt?(player.kit.sniperShotAim??player.aim):(player.kit.sniperPrimaryAim??player.aim));}
       }
+      if(postFrame(player,view.phase,view.combatTick,player.id))memory.attackAt=-Infinity;
       if((flak||traverse)&&view.phase==='combat'&&player.status==='active'){
-        const primaryAt=player.kit.heavyPrimaryAt??0,shotAt=(traverse?player.kit.heavyTraverseShotAt:player.kit.heavyFlakShotAt)??0,at=Math.max(primaryAt,shotAt),fresh=at>0&&at!==(memory.heavyEventAt??0),attack=clips.get('heavy-attack-south')!,duration=attack.frames*HZ/attack.fps;
+        const primaryAt=player.kit.heavyPrimaryAt??0,shotAt=(traverse?((player.skills.includes('heavy-traverse-lanyard-1')&&(player.kit as {heavyTraverseShotPosted?:boolean}).heavyTraverseShotPosted)?0:player.kit.heavyTraverseShotAt):player.kit.heavyFlakShotAt)??0,at=Math.max(primaryAt,shotAt),fresh=at>0&&at!==(memory.heavyEventAt??0),attack=clips.get('heavy-attack-south')!,duration=attack.frames*HZ/attack.fps;
         memory.heavyEventAt=at;
         if(fresh&&view.combatTick>=at&&view.combatTick-at<duration&&view.tick-memory.attackAt>=duration&&(!old||(player.weapon===old.weapon&&player.health>=old.health))){memory.attackAt=view.tick-Math.max(0,view.combatTick-at);memory.attackFacing=facingOf(shotAt>=primaryAt?((traverse?player.kit.heavyTraverseShotAim:player.kit.heavyFlakShotAim)??player.aim):(player.kit.heavyPrimaryAim??player.aim));}
       }

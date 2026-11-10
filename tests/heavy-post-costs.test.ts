@@ -1,0 +1,30 @@
+const operationCase = (name: string, run: () => unknown) => test(name, () => { run(); });
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { fixture } from "./helpers/heavy-post-game-fixture.ts";
+import { heavyTraverseRules as rules } from "../src/shared/heavy-traverse.ts";
+
+operationCase('an admitted body-fired Q releases only posted unpaid work before all fourteen actual cone rounds leave the real body', () => {
+  const rows = [];
+  for (const mode of ['loose', 'spade', 'floating'] as const) {
+    const f = fixture(mode); f.post(); for (let t = 5; t <= 11; t++) f.step({ moveY: t <= 8 ? 1 : 0 }); const before = { x: f.p.x, y: f.p.y }, oldRecovery = f.status().technique1At;
+    f.step({ q: true, aim: Math.PI }); assert.equal(f.status().heavyTraverseUntil, 0); assert.equal(f.status().heavyLanyardAt, 0);
+    const actualBody = {x:f.p.x,y:f.p.y}; const Q = f.shots.filter(s => s.at === 12); assert.equal(Q.length, 14); assert(Q.every(s => s.x === actualBody.x && s.y === actualBody.y));
+    for (let t = 13; t <= 35; t++) f.step(); const C = f.shots.filter(s => Math.abs(Math.hypot(s.vx, s.vy) - rules.speed) < 1e-6);
+    assert.deepEqual(C.map(s => s.at), [1, 11]); assert.equal(f.p.ammo, 43); assert.equal(f.status().technique1At, oldRecovery);
+    rows.push({ mode, admittedQAt: 12, actualQProjectiles: 14, bodyBeforePaidRecoil: before, bodyOrigin: actualBody, actualCslots: [1, 11], originalRecovery: oldRecovery, noNewRoundOrRefund: true });
+  }
+  return rows;
+});
+operationCase('an unavailable Q and the original non-posted Clutch Q cannot cancel retained original opportunities', () => {
+  const busy = fixture('spade'); busy.post(); busy.p.qAt = 1000; busy.step({ q: true }); assert.equal(busy.status().heavyLanyardAt, 4); while (busy.g.combatTick < 31) busy.step(); assert.deepEqual(busy.shots.map(s => s.at), [1, 11, 21, 31]);
+  const base = fixture('spade', false); base.step({ technique1: true }); base.step({ technique2: true }); base.step({ technique2: true }); base.step({ q: true }); while (base.g.combatTick < 31) base.step(); assert.deepEqual(base.shots.filter(s => Math.abs(Math.hypot(s.vx, s.vy) - rules.speed) < 1e-6).map(s => s.at), [1, 11, 21, 31]);
+  return { busyQDoesNotRelease: true, originalClutchQPreserved: true };
+});
+operationCase('posting has a distinct non-firing event, preserves the one Clutch pair, and represents only the actual final paid muzzle tick', () => {
+  const f = fixture('spade'); f.post(); assert.equal(f.status().heavyClutchAt, 3); assert.equal(f.status().heavyLanyardAt, 4);
+  assert.equal(f.sounds.filter(s => s.id === 'heavy-clutch-lift').length, 1); assert.equal(f.sounds.filter(s => s.id === 'heavy-clutch-engage').length, 1); assert.equal(f.sounds.filter(s => s.id === 'heavy-traverse-post').length, 1);
+  while (f.g.combatTick < 31) f.step(); assert.equal(f.status().heavyTraverseUntil, 0); assert.equal(f.status().heavyLanyardRemaining, 0); assert.equal(f.status().heavyLanyardAt, 4); assert.equal(f.status().heavyLanyardUntil, 32); assert(f.status().heavyTraverseShotPosted);
+  const origin = { x: f.status().heavyLanyardX, y: f.status().heavyLanyardY }; f.step({ fire: true }); assert.equal(f.status().heavyLanyardAt, 0); assert(f.shots.some(s => s.at === 32 && Math.abs(Math.hypot(s.vx, s.vy) - rules.speed) > 1e-6));
+  return { originalClutchAt: 3, actualPostAt: 4, actualFinalPaidAt: 31, noUnpaidWorkAfterFinal: true, actualPostOrigin: origin, primaryFromBodyAt: 32 };
+});

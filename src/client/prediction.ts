@@ -1,20 +1,20 @@
-import{traversePredictedMotion,traversePredictedAfterMove}from'./heavy-traverse-prediction.ts';
-import {alchemyPredictedSpeed,cancelPredictedBrew} from './alchemy-presentation.ts';
-import {rangerPredictedSpeed,cancelPredictedRangerDraw} from './ranger-presentation.ts';
-import {advanceMobility,dodgeIntent,takeDodge,sprintUnlocked,mobilityRules} from '../shared/mobility.ts';
-import clerkRules from '../shared/clerk-appeal-rules.json';
-import {fieldPosition} from '../shared/field-follow.ts';
-import { earlyWatchMovement } from '../shared/early-watch-director.ts';
-import { endlessSolids, leaveMovingBlocks } from '../shared/endless-director.ts';
-import { raidMovement } from '../shared/raid-director.ts';
-import { districtMovement } from '../shared/district-director.ts';
-import { serviceMovement } from '../shared/service-director.ts';
-import { moveBody, distance } from '../shared/geometry.ts';
-import { gateObstacles, leaveClosingGates } from '../shared/civic-director.ts';
-import { runtimeArena } from '../shared/arena-layouts.ts';
-import { data } from '../shared/game.ts';
-import { DT, HZ, type InputFrame } from '../shared/protocol.ts';
-import type { PlayerView, View } from '../shared/view.ts';
+import{traversePredictedMotion,traversePredictedAfterMove}from "./heavy-post-prediction.ts";
+import {alchemyPredictedSpeed,cancelPredictedBrew} from "./alchemy-presentation.ts";
+import {rangerPredictedSpeed,cancelPredictedRangerDraw} from "./ranger-presentation.ts";
+import {advanceMobility,dodgeIntent,takeDodge,sprintUnlocked,mobilityRules} from "../shared/mobility.ts";
+import clerkRules from "../shared/clerk-appeal-rules.json";
+import {fieldPosition} from "../shared/field-follow.ts";
+import { earlyWatchMovement } from "../shared/early-watch-director.ts";
+import { endlessSolids, leaveMovingBlocks } from "../shared/endless-director.ts";
+import { raidMovement } from "../shared/raid-director.ts";
+import { districtMovement } from "../shared/district-director.ts";
+import { serviceMovement } from "../shared/service-director.ts";
+import { moveBody, distance } from "../shared/geometry.ts";
+import { gateObstacles, leaveClosingGates } from "../shared/civic-director.ts";
+import { runtimeArena } from "../shared/arena-layouts.ts";
+import { data } from "../shared/game.ts";
+import { DT, HZ, type InputFrame } from "../shared/protocol.ts";
+import type { PlayerView, View } from "../shared/view.ts";
 export class Prediction {
   player: PlayerView | null = null;
   private pending: InputFrame[] = [];
@@ -92,7 +92,7 @@ export class Prediction {
           (1 + rally) *
           environment.multiplier *
           terrain.multiplier;
-    const traverseMotion=traversePredictedMotion(p,i,now);
+    const traverseMotion=traversePredictedMotion(p,i,now,{obstacles:[...runtimeArena(view.arenaId,view.run.difficulty).obstacles,...gates,...blocks]});
     const next = moveBody(
       p,
       {
@@ -104,6 +104,6 @@ export class Prediction {
     );
     p.x = next.x;
     p.y = next.y;
-    traversePredictedAfterMove(p);
+    traversePredictedAfterMove(p,{obstacles:[...runtimeArena(view.arenaId,view.run.difficulty).obstacles,...gates,...blocks]},now);
   }
 }

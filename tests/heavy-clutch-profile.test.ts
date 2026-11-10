@@ -197,7 +197,7 @@ test("issued70 rejects future Feed Clutch ownership and wrong/online envelopes b
 });
 test("exact issued70 admits every one of the sixty issued techniques with its actual affordable prerequisite ownership", () => {
   const oldNodes = data.specializationSkills.filter(
-    (s) => !["heavy-traverse-keyed-1","heavy-traverse-open-1","heavy-traverse-clutch-1"].includes(s.id),
+    (s) => !["heavy-traverse-lanyard-1","heavy-traverse-keyed-1","heavy-traverse-open-1","heavy-traverse-clutch-1"].includes(s.id),
   );
   assert.equal(oldNodes.length, 60);
   const all = [

@@ -21,7 +21,7 @@ import { heavyWait, type HeavyFlakAdapter } from "./heavy-flak-flow.ts";
 export type ClutchCarriage = "loose" | "spade" | "floating";
 export type ClutchHandling = typeof keyedId | typeof openId;
 /** Current public cover and actual body/C radii; this is only a native test policy. */
-function handlingLane(view: View, owner: string) {
+export function handlingLane(view: View, owner: string) {
   const p = view.players.find((p) => p.id === owner)!,
     arena = runtimeArena(view.arenaId, view.run.difficulty),
     walls = [

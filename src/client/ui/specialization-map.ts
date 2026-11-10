@@ -11,6 +11,7 @@ export type SpecializationMap = {
 };
 // Authored positions belong to real techniques; no proposed family becomes an empty card.
 const positions: Record<string, Point> = {
+  "heavy-traverse-lanyard-1": { x: 500, y: 1285 },
   "heavy-traverse-keyed-1":{x:250,y:1030},"heavy-traverse-open-1":{x:750,y:1030},
   "heavy-traverse-clutch-1":{x:500,y:775},
   "heavy-traverse-1":{x:500,y:255},"heavy-traverse-spade-1":{x:230,y:505},"heavy-traverse-floating-1":{x:770,y:505},

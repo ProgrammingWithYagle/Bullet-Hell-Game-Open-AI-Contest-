@@ -1,75 +1,78 @@
-import { traverseHandlingIndicator } from './heavy-traverse-handling-presentation.ts';
+import { PostedHeavyScene, preloadPostedHeavy } from "./heavy-post-scene.ts";
+import { heavyPostedUrls as postedUrls } from "./heavy-post-assets.ts";
+import { traverseHandlingIndicator } from "./heavy-traverse-handling-presentation.ts";
 import{HeavySeamPresentation,drawHeavySeam}from"./heavy-seam-presentation.ts";
-import {flakFlightBearing}from'./heavy-flak-presentation.ts';
-import {skirmisherRules}from'../shared/soldier-skirmisher.ts';
-import {drawAlchemyCue} from './alchemy-presentation.ts';
-import {drawRangerCue} from './ranger-presentation.ts';
-import {drawSwordCue} from './sword-presentation.ts';
-import {retinueArt,retinuePose} from './retinue-presentation.ts';
-import {drawSkirmishWarnings,drawWardPatient} from './skirmish-presentation.ts';
-import {drawStitchCue, isStitchCue} from './stitch-cues.ts';
-import {isBellCue} from './bell-presentation.ts';
-import {drawBellCue} from './bell-cues.ts';
-import {isMoldCue} from './mold-presentation.ts';
-import {drawMoldCue} from './mold-cues.ts';
-import {drawMatronCue} from './matron-cues.ts';
-import {drawAmbulanceCue} from './ambulance-cues.ts';
-import {drawWidowCue} from './widow-presentation.ts';
-import clerkRules from '../shared/clerk-appeal-rules.json';
-import {smallWakesPose,drawSmallWakes} from './small-wakes-presentation.ts';
-import {trackArenaViewport,applyArenaCamera,arenaCamera,arenaCameraForBounds,arenaCanvasToWorld} from './arena-camera.ts';
-import { earlyWatchPose, drawEarlyWatch } from './early-watch-presentation.ts';
-import { EndlessPresentation } from './endless-presentation.ts';
-import type { EndlessCue } from '../shared/endless-director.ts';
-import { RaidPresentation } from './raid-presentation.ts';
-import type { RaidCue } from '../shared/raid-director.ts';
-import { DistrictPresentation } from './district-presentation.ts';
-import type { DistrictCue } from '../shared/district-director.ts';
-import { ServicePresentation } from './service-presentation.ts';
-import type { ServiceCue } from '../shared/service-director.ts';
+import {flakFlightBearing}from"./heavy-flak-presentation.ts";
+import {skirmisherRules}from"../shared/soldier-skirmisher.ts";
+import {drawAlchemyCue} from "./alchemy-presentation.ts";
+import {drawRangerCue} from "./ranger-presentation.ts";
+import {drawSwordCue} from "./sword-presentation.ts";
+import {retinueArt,retinuePose} from "./retinue-presentation.ts";
+import {drawSkirmishWarnings,drawWardPatient} from "./skirmish-presentation.ts";
+import {drawStitchCue, isStitchCue} from "./stitch-cues.ts";
+import {isBellCue} from "./bell-presentation.ts";
+import {drawBellCue} from "./bell-cues.ts";
+import {isMoldCue} from "./mold-presentation.ts";
+import {drawMoldCue} from "./mold-cues.ts";
+import {drawMatronCue} from "./matron-cues.ts";
+import {drawAmbulanceCue} from "./ambulance-cues.ts";
+import {drawWidowCue} from "./widow-presentation.ts";
+import clerkRules from "../shared/clerk-appeal-rules.json";
+import {smallWakesPose,drawSmallWakes} from "./small-wakes-presentation.ts";
+import {trackArenaViewport,applyArenaCamera,arenaCamera,arenaCameraForBounds,arenaCanvasToWorld} from "./arena-camera.ts";
+import { earlyWatchPose, drawEarlyWatch } from "./early-watch-presentation.ts";
+import { EndlessPresentation } from "./endless-presentation.ts";
+import type { EndlessCue } from "../shared/endless-director.ts";
+import { RaidPresentation } from "./raid-presentation.ts";
+import type { RaidCue } from "../shared/raid-director.ts";
+import { DistrictPresentation } from "./district-presentation.ts";
+import type { DistrictCue } from "../shared/district-director.ts";
+import { ServicePresentation } from "./service-presentation.ts";
+import type { ServiceCue } from "../shared/service-director.ts";
 import Phaser from 'phaser';
-import {engineerRules} from '../shared/engineer-pathways.ts';
-import { assets } from './assets.ts';
-import { arenaCoverPlan, arenaCoverPlacement, preloadArenaCovers } from './arena-covers.ts';
-import {arenaWorldPlacement,arenaWorldTiles,preloadArenaWorlds} from './arena-worlds.ts';
-import { bossVariantAppearance } from './boss-variant-appearance.ts';
-import { BossVisualMotion } from './boss-visual-motion.ts';
-import { SurvivorVisualMotion } from './survivor-visual-motion.ts';
-import { bossDefeatFrame } from './boss-defeat-presentation.ts';
-import { courierCombatFrame } from './courier-presentation.ts';
+import {engineerRules} from "../shared/engineer-pathways.ts";
+import { assets } from "./assets.ts";
+import { arenaCoverPlan, arenaCoverPlacement, preloadArenaCovers } from "./arena-covers.ts";
+import {arenaWorldPlacement,arenaWorldTiles,preloadArenaWorlds} from "./arena-worlds.ts";
+import { bossVariantAppearance } from "./boss-variant-appearance.ts";
+import { BossVisualMotion } from "./boss-visual-motion.ts";
+import { SurvivorVisualMotion } from "./survivor-visual-motion.ts";
+import { bossDefeatFrame } from "./boss-defeat-presentation.ts";
+import { courierCombatFrame } from "./courier-presentation.ts";
 import {
   ARENA_BACKDROP_DEPTH,
   ARENA_GROUND_DEPTH,
   applyArenaGround,
   preloadArenaGrounds,
-} from './arena-presentation.ts';
+} from "./arena-presentation.ts";
 import {
   constableArt,
   constableCombatPose,
   type ConstableClipId,
-} from './constable-presentation.ts';
-import type { View, PlayerView } from '../shared/view.ts';
-import type { Event, Shot } from '../shared/protocol.ts';
-import { runtimeArena } from '../shared/arena-layouts.ts';
-import { data } from '../shared/game.ts';
-import { FrameMeter } from './frame-meter.ts';
-import { wardenArt, wardenCombatPose, type WardenCombatClipId } from './warden-presentation.ts';
+} from "./constable-presentation.ts";
+import type { View, PlayerView } from "../shared/view.ts";
+import type { Event, Shot } from "../shared/protocol.ts";
+import { runtimeArena } from "../shared/arena-layouts.ts";
+import { data } from "../shared/game.ts";
+import { FrameMeter } from "./frame-meter.ts";
+import { wardenArt, wardenCombatPose, type WardenCombatClipId } from "./warden-presentation.ts";
 import {
   survivorArt,
   survivorPose,
   additionalSurvivors,
   legacySurvivors,
-} from './survivor-presentation.ts';
-import { survivorActionArt, SurvivorActionClock } from './survivor-action-presentation.ts';
-import { heavyArt, heavyPose } from './heavy-presentation.ts';
-import { encounterArt, encounterFrame } from './encounter-presentation.ts';
-import type { Sector } from '../shared/warden-signature.ts';
+} from "./survivor-presentation.ts";
+import { survivorActionArt } from "./survivor-action-presentation.ts";
+import { SurvivorActionClock } from "./survivor-action-presentation.ts";
+import { heavyArt, heavyPose } from "./heavy-presentation.ts";
+import { encounterArt, encounterFrame } from "./encounter-presentation.ts";
+import type { Sector } from "../shared/warden-signature.ts";
 import {
   BossTextureCache,
   bossTexturePresentation,
   preloadBossTextureBase,
   retireBossTexture,
-} from './boss-textures.ts';
+} from "./boss-textures.ts";
 export class CombatScene extends Phaser.Scene {
   onLoadProgress?: (progress: number) => void;
   private resolveReady!: () => void;
@@ -95,6 +98,7 @@ export class CombatScene extends Phaser.Scene {
   private bossTextureAlive = false;
   private cancelBossLoads = new Set<() => void>();
   private survivorActions = new SurvivorActionClock();
+  private postedHeavy = new PostedHeavyScene(() => this.add.sprite(0, 0, 'hux-posted-weapon'));
   private actors = new Map<number, Phaser.GameObjects.Sprite>();
   private companions = new Map<number,Phaser.GameObjects.Sprite>();
   private shadows!: Phaser.GameObjects.Graphics;
@@ -177,6 +181,7 @@ export class CombatScene extends Phaser.Scene {
         frameHeight: clip.cellSize,
       });
     }
+    preloadPostedHeavy(this.load, postedUrls);
     for (const [direction, url] of Object.entries(assets.heavy)) {
       const size =
         direction === 'reference'
@@ -272,6 +277,7 @@ export class CombatScene extends Phaser.Scene {
       () => performance.now(),
     );
     this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
+      this.postedHeavy.clear();
       this.bossTextureAlive = false;
       this.bossTextures?.dispose();
       for (const cancel of [...this.cancelBossLoads]) cancel();
@@ -515,11 +521,11 @@ export class CombatScene extends Phaser.Scene {
       if(isMoldCue(cue)){drawMoldCue(h,f,cue,now,view.bossCues.filter(isMoldCue),this.reduceMotion);continue;}
       if(cue.kind==='matron-walk'||cue.kind==='matron-brood'||cue.kind==='matron-pulse'||cue.kind==='matron-needles'){
         if(cue.kind==='matron-needles'){if(drawnMatronNeedles.has(cue.sourceId))continue;drawnMatronNeedles.add(cue.sourceId);}
-        drawMatronCue(h,f,cue,now,view.bossCues.filter((q):q is import('../shared/matron-ward.ts').MatronCue=>q.kind==='matron-walk'||q.kind==='matron-brood'||q.kind==='matron-pulse'||q.kind==='matron-needles'||(q.kind==='service-prop'&&q.role==='nest')));continue;
+        drawMatronCue(h,f,cue,now,view.bossCues.filter((q):q is import("../shared/matron-ward.ts").MatronCue=>q.kind==='matron-walk'||q.kind==='matron-brood'||q.kind==='matron-pulse'||q.kind==='matron-needles'||(q.kind==='service-prop'&&q.role==='nest')));continue;
       }
       if(cue.kind==='ambulance-patrol'||cue.kind==='ambulance-lane'||cue.kind==='ambulance-stop'||cue.kind==='ambulance-burst'){
         if(cue.kind==='ambulance-burst'){const key=cue.x+':'+cue.y;if(drawnAmbulanceBursts.has(key))continue;drawnAmbulanceBursts.add(key);}
-        drawAmbulanceCue(h,f,cue,now,view.bossCues.filter((q):q is import('../shared/ambulance-route.ts').AmbulanceCue=>q.kind==='ambulance-patrol'||q.kind==='ambulance-lane'||q.kind==='ambulance-stop'||q.kind==='ambulance-burst'||q.kind==='driver'));continue;
+        drawAmbulanceCue(h,f,cue,now,view.bossCues.filter((q):q is import("../shared/ambulance-route.ts").AmbulanceCue=>q.kind==='ambulance-patrol'||q.kind==='ambulance-lane'||q.kind==='ambulance-stop'||q.kind==='ambulance-burst'||q.kind==='driver'));continue;
       }
       if(cue.kind==='arena-lava') {
         continue;
@@ -1262,6 +1268,7 @@ export class CombatScene extends Phaser.Scene {
         view.boss.y,
         data.bosses.find((boss) => boss.id === view.boss.id)!.radius,
       );
+    this.postedHeavy.beginFrame();
     const existing = new Set<string>();
     const nameScale = Math.max(1, this.scale.gameSize.width / Math.max(320, this.scale.displaySize.width)) * this.nameTextScale / this.cameras.main.zoom;
     for (const actual of view.players) {
@@ -1291,47 +1298,52 @@ export class CombatScene extends Phaser.Scene {
         frameNow,
         visualMotion.facing,
       );
-      if (actionPose) {
-        sprite.anims.stop();
-        sprite
-          .setTexture(actionPose.texture, actionPose.frame)
-          .setFlipX(false)
-          .setOrigin(actionPose.origin[0], actionPose.origin[1])
-          .setDisplaySize(actionPose.displayCell, actionPose.displayCell);
-      } else if (
-        additionalSurvivors.some((id) => id === p.classId) ||
-        legacySurvivors.some((id) => id === p.classId)
-      ) {
-        const pose = survivorPose(
-          p.classId,
-          p.aim,
-          moving,
-          p.status,
-          animationTime.combatTick,
-          this.reduceMotion,
-          visualMotion.facing,
-        );
-        sprite.anims.stop();
-        sprite
-          .setTexture(pose.texture, pose.frame)
-          .setFlipX(false)
-          .setOrigin(pose.origin[0], pose.origin[1])
-          .setDisplaySize(pose.displayCell, pose.displayCell);
-      } else if (p.classId === 'heavy') {
-        const pose = heavyPose(
-          p.aim,
-          moving,
-          p.status,
-          animationTime.combatTick,
-          this.reduceMotion,
-          visualMotion.facing,
-        );
-        sprite.anims.stop();
-        sprite
-          .setTexture(pose.texture, pose.frame)
-          .setFlipX(false)
-          .setOrigin(pose.origin[0], pose.origin[1])
-          .setDisplaySize(pose.displayCell, pose.displayCell);
+      if (!this.postedHeavy.apply(sprite, actual, view, this.localId, {
+        moving, facing: visualMotion.facing, combatTick: animationTime.combatTick,
+        reduceMotion: this.reduceMotion, action: actionPose, drawnBody: p,
+      })) {
+        if (actionPose) {
+          sprite.anims.stop();
+          sprite
+            .setTexture(actionPose.texture, actionPose.frame)
+            .setFlipX(false)
+            .setOrigin(actionPose.origin[0], actionPose.origin[1])
+            .setDisplaySize(actionPose.displayCell, actionPose.displayCell);
+        } else if (
+          additionalSurvivors.some((id) => id === p.classId) ||
+          legacySurvivors.some((id) => id === p.classId)
+        ) {
+          const pose = survivorPose(
+            p.classId,
+            p.aim,
+            moving,
+            p.status,
+            animationTime.combatTick,
+            this.reduceMotion,
+            visualMotion.facing,
+          );
+          sprite.anims.stop();
+          sprite
+            .setTexture(pose.texture, pose.frame)
+            .setFlipX(false)
+            .setOrigin(pose.origin[0], pose.origin[1])
+            .setDisplaySize(pose.displayCell, pose.displayCell);
+        } else if (p.classId === 'heavy') {
+          const pose = heavyPose(
+            p.aim,
+            moving,
+            p.status,
+            animationTime.combatTick,
+            this.reduceMotion,
+            visualMotion.facing,
+          );
+          sprite.anims.stop();
+          sprite
+            .setTexture(pose.texture, pose.frame)
+            .setFlipX(false)
+            .setOrigin(pose.origin[0], pose.origin[1])
+            .setDisplaySize(pose.displayCell, pose.displayCell);
+        }
       }
       sprite.setAlpha(
         p.status === 'waiting'
@@ -1388,6 +1400,9 @@ export class CombatScene extends Phaser.Scene {
         );
       }
     }
+    this.postedHeavy.endFrame((a, b) => {
+      f.lineStyle(1.5, 0xc4c0a4, 0.65).lineBetween(a.x, a.y, b.x, b.y);
+    });
     for (const [id, sprite] of this.people)
       if (!existing.has(id)) {
         sprite.destroy();

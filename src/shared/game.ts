@@ -1845,6 +1845,7 @@ export class Game {
     else if (slot === 'e' && !this.classKits.freeStep(p.id, now))
       p.eAt = now + ticks((a.cooldown + (p.classId==='alchemist'&&hasTalent(p,'second-extraction')?alchemyRules.extractionCooldownPenalty:0)) * s.cooldown);
     else if (slot === 'ultimate') p.ultimateAt = now + ticks(a.cooldown * s.ultimateCooldown);
+    if(p.classId==='heavy')this.traverse.beforeAbility(p,slot,this.traverseContext());
     const before={x:p.x,y:p.y},empowered=slot==='e'&&this.classKits.freeStep(p.id,now);
     if(!this.transforms.cast(p,slot,this.transformContext())){
     if(p.classId==='alchemist'){
@@ -2368,8 +2369,8 @@ export class Game {
     const bossAt=motionAt(this.bossPrevious,this.boss,fraction);if(!this.skirmish&&!this.director.hasIndependentBodies()&&!weakHits.some(w=>this.director.damageTransfer(w.id))&&!this.director.coreContact(point,point,radius)&&distance(point,bossAt)<=radius+this.bossDefinition().radius&&visible(bossAt))this.hitBoss(p,damage,false,point);
   }
   private grenadierContext():GrenadierContext{return{tick:this.combatTick,bounds:this.arena.bounds,obstacles:this.grenadierObstacles(),stats:p=>this.stats(p),id:()=>this.id(),canEmit:()=>this.canEmitShots('friendly',1),shot:id=>this.shots.get(id),shoot:(p,speed,until)=>this.emitShot(p.id,p.x,p.y,p.aim,speed,0,grenadierRules.radius,0,(until-this.combatTick)/HZ,'canister'),remove:s=>this.removeShot(s),blast:(p,point,damage,fraction)=>this.grenadierBlast(p,point,damage,fraction),sound:(p,id,point=p)=>this.events.push({type:'sound',id,owner:p.id,x:point.x,y:point.y})};}
-  private traverseContext():TraverseContext{return{tick:this.combatTick,stats:p=>this.stats(p),canEmit:()=>this.canEmitShots('friendly',1),shoot:(p,aim,damage,speed,radius,life)=>this.emitShot(p.id,p.x,p.y,aim,speed,damage,radius,0,life),sound:(p,id)=>this.events.push({type:'sound',id,owner:p.id,x:p.x,y:p.y})};}
-  private traverseAuthority(){return{players:this.roster(),tick:this.combatTick,shot:(id:number)=>this.shots.get(id),remove:(s:Shot)=>this.removeShot(s)};}
+  private traverseContext():TraverseContext{return{postPathClear:(origin,body)=>!this.obstacles.some(w=>segmentRect(origin,body,w,1)!==null),tick:this.combatTick,stats:p=>this.stats(p),canEmit:()=>this.canEmitShots('friendly',1),shoot:(p,aim,damage,speed,radius,life)=>this.emitShot(p.id,p.x,p.y,aim,speed,damage,radius,0,life),sound:(p,id)=>this.events.push({type:'sound',id,owner:p.id,x:p.x,y:p.y})};}
+  private traverseAuthority(){return{postPathClear:(origin:Vec,body:Vec)=>!this.obstacles.some(w=>segmentRect(origin,body,w,1)!==null),players:this.roster(),tick:this.combatTick,shot:(id:number)=>this.shots.get(id),remove:(s:Shot)=>this.removeShot(s)};}
   private flakContext():FlakContext{return{tick:this.combatTick,obstacles:()=>this.grenadierObstacles(),stats:p=>this.stats(p),canEmit:()=>this.canEmitShots('friendly',1),shoot:(p,speed,radius,seconds)=>this.emitShot(p.id,p.x,p.y,p.aim,speed,0,radius,0,seconds,'flak'),shot:id=>this.shots.get(id),remove:s=>this.removeShot(s),update:s=>this.events.push({type:'shots',shots:[{...s}]}),sound:(p,id,point=p)=>this.events.push({type:'sound',id,owner:p.id,x:point.x,y:point.y})};}
   private sniperContext():SniperContext{return{tick:this.combatTick,stats:p=>this.stats(p),id:()=>this.id(),canEmit:()=>this.canEmitShots('friendly',1),shoot:(p,damage)=>this.emitShot(p.id,p.x,p.y,p.aim,sniperRules.speed,damage,sniperRules.radius,0,sniperRules.lifeSeconds),sound:(p,id)=>this.events.push({type:'sound',id,owner:p.id,x:p.x,y:p.y})};}
   private marksmanContext(){return {

@@ -1,6 +1,15 @@
 # Changelog
 
-Development build **2026.11.09-heavy-clutch-handling**, protocol 72. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.10-heavy-tethered-traverse**, protocol 73. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-10 — Stake the gun, work around its firing lane
+
+### Heavy: Tethered Traverse
+
+- After lifting and re-engaging Feed Clutch, a separate Action 2 can stake the same gun at its actual muzzle and bearing while two original opportunities remain. Walk within a breakable 64 px control lead; remaining original rounds still pay and travel from that fixed muzzle.
+- Cover cutting the lead, leaving reach or interruption ends unpaid work. Action 1 releases; an admitted Suppressing Cone retrieves the gun before firing from the body. No extra round, resource, deadline, recovery reset or autonomous second weapon is added.
+- A 4 SP capstone at 19 earned follows Clutch without requiring a fitting or either handling. The gun and hands-free body use seven unmodified native textures, actual operation authority, private control-line presentation and independent remaps in the existing five action rows.
+- All 63 earlier definitions, rules, equipment and old language values remain exact. Exact source72 ownership and all twelve profile/history rosters precede older admission guards. Canonical earned acquisition, transport, complete validation and human/final-balance acceptance continue; no class or game completion is implied.
 
 ## 2026-11-09 — Key the bearing or open the feed
 

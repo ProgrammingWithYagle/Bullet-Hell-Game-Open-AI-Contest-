@@ -120,15 +120,15 @@ async function setup(t: any, mode: "short" | "raid" = "short") {
 }
 test("Siege Gunner shows exactly its real entry/fork/acquired operation with one shared General reference and five overview exclusions", () => {
   const map = specializationMapLayout("heavy", ids.entry)!;
-  assert.equal(map.nodes.length, 7);
-  assert.equal(map.edges.length, 6);
+  assert.equal(map.nodes.length, 8);
+  assert.equal(map.edges.length, 7);
   assert.equal(map.exclusions.length, 2);
   assert.deepEqual(
     new Set(map.nodes.map((n) => n.id)),
-    new Set(["heavy-ordnance-1", ids.entry, ids.spade, ids.floating,"heavy-traverse-clutch-1","heavy-traverse-keyed-1","heavy-traverse-open-1"]),
+    new Set(["heavy-ordnance-1", ids.entry, ids.spade, ids.floating,"heavy-traverse-clutch-1","heavy-traverse-keyed-1","heavy-traverse-open-1","heavy-traverse-lanyard-1"]),
   );
   const all = specializationMapLayout("heavy")!;
-  assert.equal(all.nodes.length, 14);
+  assert.equal(all.nodes.length, 15);
   assert.equal(all.exclusions.length, 5);
   assert.equal(specializationRoutes("heavy").length, 2);
 });

@@ -106,7 +106,7 @@ test("the authored Siege map contains the acquired Clutch operation after entry 
   assert.equal(node.capstone, false);
   assert.deepEqual(node.effects, {});
   const map = specializationMapLayout("heavy", ids.entry)!;
-  assert.equal(map.nodes.length, 7);
+  assert.equal(map.nodes.length, 8);
   assert(map.edges.some((e) => e.from === ids.entry && e.to === clutchId));
   assert(!map.exclusions.some((e) => e.a === clutchId || e.b === clutchId));
   assert.equal(
