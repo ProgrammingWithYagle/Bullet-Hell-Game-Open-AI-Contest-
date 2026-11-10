@@ -174,11 +174,24 @@ export async function heavyClutchHandlingOperation(
     assert(liftedPaused < born + 10);
     converted = forfeited = 3;
   }
+  // An actual primary round has one firing event even when Iron Rain adds pellets.
+  // Slow delivery can also leave the held trigger live after its third conversion.
+  const paidPrimaryRounds = ammo - 1 - p().ammo,
+    primaryRounds = () => sounds("weapon-heavy-lmg").length;
+  assert(Number.isInteger(paidPrimaryRounds) && paidPrimaryRounds >= converted);
+  const postStrokePrimaryRounds = paidPrimaryRounds - converted;
+  if (postStrokePrimaryRounds) {
+    assert.equal(handling, openId);
+    assert.equal(converted, 3);
+    assert.equal(p().kit.heavyTraverseUntil, 0);
+  }
   await heavyWait(
-    () => primary().length === converted,
-    "separate admitted primary event batch matches every actual round conversion",
+    () =>
+      primaryRounds() === paidPrimaryRounds &&
+      primary().length >= paidPrimaryRounds,
+    "separate admitted primary firing events and physical projectiles match every actually paid round",
   );
-  assert.equal(p().ammo, ammo - 1 - converted);
+  assert.equal(p().ammo, ammo - 1 - paidPrimaryRounds);
   if (handling === keyedId) {
     assert.equal(converted, 0);
     assert(forfeited >= 1);
@@ -199,9 +212,10 @@ export async function heavyClutchHandlingOperation(
   });
   await new Promise((r) => setTimeout(r, 100));
   assert.equal(view().combatTick, liftedPaused);
-  assert.equal(p().ammo, ammo - 1 - converted);
+  assert.equal(p().ammo, ammo - 1 - paidPrimaryRounds);
   assert.equal(p().kit.technique1At, recovery);
-  assert.equal(primary().length, converted);
+  assert.equal(primaryRounds(), paidPrimaryRounds);
+  assert(primary().length >= paidPrimaryRounds);
   const expectedC = r.rounds - forfeited;
   const engage = (p().kit.heavyTraverseUntil ?? 0) > 0;
   await a.pause(false);
@@ -227,7 +241,7 @@ export async function heavyClutchHandlingOperation(
     ticks.every((t) => [born, born + 10, born + 20, born + 30].includes(t)),
   );
   if (engage) assert.equal(ticks.at(-1), born + 30);
-  assert.equal(p().ammo, ammo - ticks.length - converted);
+  assert.equal(p().ammo, ammo - ticks.length - paidPrimaryRounds);
   assert.equal(ticks.length + forfeited, 4);
   assert.equal(p().kit.technique1At, recovery);
   assert.equal(sounds("heavy-clutch-lift").length, 1);
@@ -277,10 +291,13 @@ export async function heavyClutchHandlingOperation(
     handling,
     actualAdmissionTicks: ticks,
     actualCrounds: ticks.length,
-    actualPrimaryRounds: converted,
+    actualPrimaryRounds: paidPrimaryRounds,
+    actualPostStrokePrimaryRounds: postStrokePrimaryRounds,
+    actualPrimaryProjectiles: primary().length,
+    actualPrimaryRoundFiringEvents: primaryRounds(),
     actualTradedSlots: converted,
     actualPassedSlots: forfeited - converted,
-    actualPaidRounds: ticks.length + converted,
+    actualPaidRounds: ticks.length + paidPrimaryRounds,
     actualLiftAndSeparateReengagement: engage,
     originalBorn: born,
     originalUntil: until,
