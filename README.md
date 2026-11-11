@@ -2,6 +2,8 @@
 
 **Current development:** source **30fbfefaa66faabd93416dc31e27310149df5fed**, build **2026.11.10-heavy-tethered-traverse**, protocol **73**, catalog **64** (Engineer22/Soldier28/Heavy14). **2,209 tests/all seven checks and exact-source push/PR CI pass. Native review remains incomplete:** each current audience has127passes/two helper failures, with16later cases unexecuted. The legal21SP purchase guard is the first next-chat fix. Development is paused for the requested2026-11-10handoff; resume in the next chat. [Current state, evidence and next steps](handoff/NEXT_CHAT.md). Only the user decides class/game completion; human acceptance remains open.
 
+Local build storage follows [bounded review retention](docs/REVIEW_STORAGE_POLICY.md): one current testing/public pair and one verified rollback archive. The authorized cleanup reduced this checkout from87.6GiB to~8.95GiB; older full copies/services are retired while original assets, receipts, Git and private SQLite remain.
+
 The game remains unfinished. Classes are the current focus, followed by individual bosses, the later weapon workshop, and Campaign last. Published Site/Windows builds below are separate older releases. Only the user decides whole-game completion. [Current checkpoint](handoff/NEXT_CHAT.md).
 
 ![Grave Accord cover](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/cover.jpg)

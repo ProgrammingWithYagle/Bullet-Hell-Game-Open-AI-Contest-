@@ -18,7 +18,20 @@ const fingerprint=()=>{const runtime=createHash('sha256'),snapshot=createHash('s
 const gate=JSON.parse(fs.readFileSync('reviews/runtime-verification.json')),before=fingerprint();assert(gate.passed);assert.equal(gate.runtimeSourceSha256,before.runtimeSourceSha256);assert.equal(gate.sourceSnapshotSha256,before.sourceSnapshotSha256);
 assert.equal(git('diff',commit,'--','src','tests','package.json','pnpm-lock.yaml','pnpm-workspace.yaml','tsconfig.json','vite.config.ts','index.html'),'','Uncommitted runtime inputs');
 const label=path.basename(scope),root='output/playtest-'+label+'-'+audience+'-'+commit.slice(0,7),outputPrefix=path.resolve('output')+path.sep;
-assert(path.resolve(root).startsWith(outputPrefix));assert(!fs.existsSync(root),'Preserve a current review root');
+assert(path.resolve(root).startsWith(outputPrefix));
+// Retention permits one current pair plus one pair undergoing verification.
+// Complete native/CI proof and tools/retain-review-builds.ps1 before starting
+// another pair. Historical receipts and private records are never pruned here.
+if(fs.existsSync('output/review-retention.json')){
+  const retention=JSON.parse(fs.readFileSync('output/review-retention.json','utf8'));
+  assert(retention.schemaVersion===1&&retention.currentRoots.length===2,'Invalid review retention state');
+  const expanded=fs.readdirSync('output',{withFileTypes:true}).filter(e=>e.isDirectory()&&e.name.startsWith('playtest-')).map(e=>path.resolve('output',e.name));
+  const current=new Set(retention.currentRoots.map(p=>path.resolve(p)));
+  const pending=expanded.filter(p=>!current.has(p));
+  const thisPair=new Set(['testing','public'].map(a=>path.resolve('output/playtest-'+label+'-'+a+'-'+commit.slice(0,7))));
+  assert(expanded.length<4&&pending.every(p=>thisPair.has(p)),'Review storage is bounded: finish or retire the pending pair before creating another. See docs/REVIEW_STORAGE_POLICY.md');
+}
+assert(!fs.existsSync(root),'Preserve a current review root');
 const endpoint='http://127.0.0.1:'+serverPort,url='http://127.0.0.1:'+clientPort+'/';
 if(audience==='testing'){
   // Reuse the exact optimized testing output that already passed the complete gate.

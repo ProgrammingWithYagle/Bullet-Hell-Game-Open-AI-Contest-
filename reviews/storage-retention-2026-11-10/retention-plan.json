@@ -1,0 +1,2157 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-11-11T02:33:43.466195+00:00",
+  "repo": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)",
+  "gitHead": "ed2bcd8fc0b20ba6d0ca65edf34f89de52862d98",
+  "branch": "feat/first-playable-loop",
+  "currentScope": "reviews/heavy-tethered-traverse-2026-11-10",
+  "rollbackScope": "reviews/heavy-clutch-stat-scaling-2026-11-10",
+  "currentSourceCommit": "30fbfefaa66faabd93416dc31e27310149df5fed",
+  "rollbackSourceCommit": "20aad19bdfb8819cd7db0483b9c79f2c6e9dcd5c",
+  "keep": [
+    {
+      "path": "output/playtest-heavy-tethered-traverse-2026-11-10-testing-30fbfef",
+      "sourceCommit": "30fbfefaa66faabd93416dc31e27310149df5fed",
+      "scope": "reviews/heavy-tethered-traverse-2026-11-10",
+      "audience": "testing",
+      "manifestPath": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\heavy-tethered-traverse-2026-11-10-testing-files.json",
+      "manifestSha256": "eba32e18de390c11dc6f5996b717bb3fc623b0c790a9c658a719f5c047f77a2d",
+      "files": 2060,
+      "bytes": 856444629,
+      "treeStatSha256": "0cbe90bc1de21f99bdcbafad4f368f93d1a4791bfcbce7b0d200c83162f84d65"
+    },
+    {
+      "path": "output/playtest-heavy-tethered-traverse-2026-11-10-public-30fbfef",
+      "sourceCommit": "30fbfefaa66faabd93416dc31e27310149df5fed",
+      "scope": "reviews/heavy-tethered-traverse-2026-11-10",
+      "audience": "public",
+      "manifestPath": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\heavy-tethered-traverse-2026-11-10-public-files.json",
+      "manifestSha256": "aad6166e7c767eb13265830050abe7a4231e6e3fd28ae04b9fe794fc1f397905",
+      "files": 2060,
+      "bytes": 856439365,
+      "treeStatSha256": "79f30d665f86af45c0964c13f0add1c5c6ba757c0e487123ecd4d73f6d2b64cd"
+    }
+  ],
+  "keepBackendPaths": [
+    "output/frozen-heavy-tethered-traverse-2026-11-10-30fbfef.mjs"
+  ],
+  "retireDirectories": [
+    {
+      "path": "output/playtest-alchemist-2026-11-02-public-62030d3",
+      "files": 1989,
+      "bytes": 763530806,
+      "treeStatSha256": "006a4ddef6f6ddbaebf68673c6065349c03b43d03bb6d9cb5e076a33ae844f16",
+      "identity": {
+        "sourceCommit": "62030d335f97bb1db4285462beb9fefa543bf621",
+        "buildId": "2026.11.02-alchemist",
+        "protocol": 48,
+        "contentRevision": "1dd8789a6050eac2ca2f677bc15a8cdbfafaf78d73226d5be7cfbfc3ed70ba04",
+        "audience": "public",
+        "runtimeSourceSha256": "307734d850039da5008fd8142a4ab128f6d30524624f351fa98a29aa4704f547",
+        "sourceSnapshotSha256": "8db3017ee70cd97129ab1c7563837825043150f64be52e4793be6fc1f729d67b",
+        "endpoint": "http://127.0.0.1:2689"
+      },
+      "identitySha256": "12c7639277786ead4ac6c28f51b7b8c599b7c8aea40e5ad33e894f55afab0630"
+    },
+    {
+      "path": "output/playtest-alchemist-2026-11-02-testing-62030d3",
+      "files": 1989,
+      "bytes": 763536120,
+      "treeStatSha256": "183139791c0805af3ef06f05a23bbd961b8216f8958b0602878f8683c62e7d40",
+      "identity": {
+        "sourceCommit": "62030d335f97bb1db4285462beb9fefa543bf621",
+        "buildId": "2026.11.02-alchemist",
+        "protocol": 48,
+        "contentRevision": "1dd8789a6050eac2ca2f677bc15a8cdbfafaf78d73226d5be7cfbfc3ed70ba04",
+        "audience": "testing",
+        "runtimeSourceSha256": "307734d850039da5008fd8142a4ab128f6d30524624f351fa98a29aa4704f547",
+        "sourceSnapshotSha256": "8db3017ee70cd97129ab1c7563837825043150f64be52e4793be6fc1f729d67b",
+        "endpoint": "http://127.0.0.1:2688"
+      },
+      "identitySha256": "a865db4218b0edd5be7e61d968be2470739c6524c9c6c96fd2be5b4206791508"
+    },
+    {
+      "path": "output/playtest-baker-oven-2026-10-31-public-76ff463",
+      "files": 1701,
+      "bytes": 740228764,
+      "treeStatSha256": "7125a3fa81f9c3125a4fe46f9eb4125a4ebe92802c908cea393f3890920b5f79",
+      "identity": {
+        "sourceCommit": "76ff463764e2448c20c3c627d8fa62faa91c2c05",
+        "buildId": "2026.10.31-baker-oven",
+        "protocol": 46,
+        "contentRevision": "31bcd58adcfd8d9d1d76fc23b484237e68c266a513f2dedb2571f8a09067e131",
+        "audience": "public",
+        "runtimeSourceSha256": "5748d6e602f86e04157a97f081648f09c362f6f8f91d0166f8f5853dd3ac2acb",
+        "sourceSnapshotSha256": "129148b5141865f1a8fa41d31fecd15cca0849c02880f7760a5139420cbe75fe",
+        "endpoint": "http://127.0.0.1:2661"
+      },
+      "identitySha256": "8804ef480251b2b68c116a5ba6f39d756b1b9e8454ca5acb3ebcc240b6b7987a"
+    },
+    {
+      "path": "output/playtest-baker-oven-2026-10-31-testing-76ff463",
+      "files": 1701,
+      "bytes": 740234350,
+      "treeStatSha256": "a4c278d5336e75ad31bdb2808104a24dcb2d4ba4764b38e87a4ad61f9d5c8afb",
+      "identity": {
+        "sourceCommit": "76ff463764e2448c20c3c627d8fa62faa91c2c05",
+        "buildId": "2026.10.31-baker-oven",
+        "protocol": 46,
+        "contentRevision": "31bcd58adcfd8d9d1d76fc23b484237e68c266a513f2dedb2571f8a09067e131",
+        "audience": "testing",
+        "runtimeSourceSha256": "5748d6e602f86e04157a97f081648f09c362f6f8f91d0166f8f5853dd3ac2acb",
+        "sourceSnapshotSha256": "129148b5141865f1a8fa41d31fecd15cca0849c02880f7760a5139420cbe75fe",
+        "endpoint": "http://127.0.0.1:2660"
+      },
+      "identitySha256": "4bf54402aae0a8ed2f623b03fe76c0c1c4b6fd3a69636cbb753efbe357060378"
+    },
+    {
+      "path": "output/playtest-bard-2026-11-01-public-61141f9",
+      "files": 1740,
+      "bytes": 743867957,
+      "treeStatSha256": "9e3d0ca4574d577a50215e9d568efb043e843e14238cfbe30222bad696004634",
+      "identity": {
+        "sourceCommit": "61141f9a1c1cee3e2d0258d47308f2593121f6e9",
+        "buildId": "2026.11.01-bard",
+        "protocol": 47,
+        "contentRevision": "85c266d3bbb2457910b5237bbab3769bd1ada06014d39ded5eefe5854e5392cb",
+        "audience": "public",
+        "runtimeSourceSha256": "b7a995fd8fc865549e3b863a208a8a56c51fb28d687d6ac1a5b7e1dd33edc53b",
+        "sourceSnapshotSha256": "5d5481a7a60016ff55ac09f9053b85c0e2e0fca3cd62282dd899078589601710",
+        "endpoint": "http://127.0.0.1:2681"
+      },
+      "identitySha256": "03fca47b75f35a163666f3b632fcec4f74f26f593715af3a734d7be61c947f27"
+    },
+    {
+      "path": "output/playtest-bard-2026-11-01-testing-61141f9",
+      "files": 1740,
+      "bytes": 743873242,
+      "treeStatSha256": "cadee87c589dc231d1530a727fe5e7d9a132f14d5b37916b8139c7a1ab3339ae",
+      "identity": {
+        "sourceCommit": "61141f9a1c1cee3e2d0258d47308f2593121f6e9",
+        "buildId": "2026.11.01-bard",
+        "protocol": 47,
+        "contentRevision": "85c266d3bbb2457910b5237bbab3769bd1ada06014d39ded5eefe5854e5392cb",
+        "audience": "testing",
+        "runtimeSourceSha256": "b7a995fd8fc865549e3b863a208a8a56c51fb28d687d6ac1a5b7e1dd33edc53b",
+        "sourceSnapshotSha256": "5d5481a7a60016ff55ac09f9053b85c0e2e0fca3cd62282dd899078589601710",
+        "endpoint": "http://127.0.0.1:2680"
+      },
+      "identitySha256": "21f5d3a0e97ba4947ec94a118edb0cefa0f01515fec45f8d1e721f385d155441"
+    },
+    {
+      "path": "output/playtest-chapter-checkpoint-2026-11-02-public-5fba8f2",
+      "files": 1989,
+      "bytes": 763556588,
+      "treeStatSha256": "81a151b4fa848dbc82dfc12c8bdd9a01124dc3cd63e34c25b94eb11f3872d9a7",
+      "identity": {
+        "sourceCommit": "5fba8f2470c22c60689488ef1a4970221233184e",
+        "buildId": "2026.11.02-chapter-checkpoint",
+        "protocol": 48,
+        "contentRevision": "1dd8789a6050eac2ca2f677bc15a8cdbfafaf78d73226d5be7cfbfc3ed70ba04",
+        "audience": "public",
+        "runtimeSourceSha256": "a23674215746f787a644c3d457f8b762e039086721df489f0fa140839b2bad04",
+        "sourceSnapshotSha256": "e99ab2b10effa783985c9c71966fb715fcb2dd371592f6e7fd437d0b3081e2b4",
+        "endpoint": "http://127.0.0.1:2691"
+      },
+      "identitySha256": "581b3ec096bd9e1fdf6e71c9d4d79fdbfcb1f0433707148aa120754eb431f65d"
+    },
+    {
+      "path": "output/playtest-chapter-checkpoint-2026-11-02-testing-5fba8f2",
+      "files": 1989,
+      "bytes": 763561877,
+      "treeStatSha256": "aa4fd97bbc870fd9815790425e468e342ada74fdf896f28364552ac545e709ac",
+      "identity": {
+        "sourceCommit": "5fba8f2470c22c60689488ef1a4970221233184e",
+        "buildId": "2026.11.02-chapter-checkpoint",
+        "protocol": 48,
+        "contentRevision": "1dd8789a6050eac2ca2f677bc15a8cdbfafaf78d73226d5be7cfbfc3ed70ba04",
+        "audience": "testing",
+        "runtimeSourceSha256": "a23674215746f787a644c3d457f8b762e039086721df489f0fa140839b2bad04",
+        "sourceSnapshotSha256": "e99ab2b10effa783985c9c71966fb715fcb2dd371592f6e7fd437d0b3081e2b4",
+        "endpoint": "http://127.0.0.1:2690"
+      },
+      "identitySha256": "f9a22da0dd8703da0bb13fb809a7d57ad3120ff258078031e4aef3325fb16302"
+    },
+    {
+      "path": "output/playtest-class-tree-polish-2026-11-02-public-a63533a",
+      "files": 1989,
+      "bytes": 763604046,
+      "treeStatSha256": "a5f8d789b88f1ea195e60b3ffae3b426ddef6170170d5278285b3770b49cc6cf",
+      "identity": {
+        "sourceCommit": "a63533a5a4401659bac44fc8ffa7f72dd82774bc",
+        "buildId": "2026.11.02-class-tree-polish",
+        "protocol": 50,
+        "contentRevision": "a6a17f1935ebd8e91d8d5916a7c8ee920190e13bc42a07e09dec98723e94390f",
+        "audience": "public",
+        "runtimeSourceSha256": "3abaf4336dbfa9164c116aca02edba90ca99724923b967f763431d086584d332",
+        "sourceSnapshotSha256": "dc50e4f6de59719cee876e03ceb47c0b198a2af4b15eda7d3d51c5e1124abbe7",
+        "endpoint": "http://127.0.0.1:2695"
+      },
+      "identitySha256": "9a69756cbb5cd6c7bc57147aac244edee4415ee9e862942aa9c9f0023988e4d8"
+    },
+    {
+      "path": "output/playtest-class-tree-polish-2026-11-02-testing-a63533a",
+      "files": 1989,
+      "bytes": 763609335,
+      "treeStatSha256": "0ba1e5c5697278f1be34d3c537e8fda0e98ef77b3b0f6c6d348a1870e6e351b4",
+      "identity": {
+        "sourceCommit": "a63533a5a4401659bac44fc8ffa7f72dd82774bc",
+        "buildId": "2026.11.02-class-tree-polish",
+        "protocol": 50,
+        "contentRevision": "a6a17f1935ebd8e91d8d5916a7c8ee920190e13bc42a07e09dec98723e94390f",
+        "audience": "testing",
+        "runtimeSourceSha256": "3abaf4336dbfa9164c116aca02edba90ca99724923b967f763431d086584d332",
+        "sourceSnapshotSha256": "dc50e4f6de59719cee876e03ceb47c0b198a2af4b15eda7d3d51c5e1124abbe7",
+        "endpoint": "http://127.0.0.1:2694"
+      },
+      "identitySha256": "4029c556a836a6937372f860d69147f1de916dae78b296fbc091204de785e251"
+    },
+    {
+      "path": "output/playtest-engineer-builder-2026-11-03-public-d3de8ed",
+      "files": 2011,
+      "bytes": 796431641,
+      "treeStatSha256": "0860986fa2da745c6c201f9961bdb9d5fa31871666c721042566fb7a6e9e3e58",
+      "identity": {
+        "sourceCommit": "d3de8edfd00375880a4c07eae658a0ea77ac8486",
+        "buildId": "2026.11.03-engineer-builder",
+        "protocol": 54,
+        "contentRevision": "d7aea7cb50f954a88d02ff12291808900bbd00d1e4445c4e0af2655168132510",
+        "audience": "public",
+        "runtimeSourceSha256": "5fa7b96e74ca7efcce35a2485b93cc599295eb4f08bfb736cfb0dd2b41e7a537",
+        "sourceSnapshotSha256": "66cf67b1afd0f7d1f5b5baa7f7017939fd4905392f4010658ec83bbbec9e13bc",
+        "endpoint": "http://127.0.0.1:2705"
+      },
+      "identitySha256": "28c8d41bdb18d9fcbdd154e477a68c215fc6c86324455549a00dc68a21d17637"
+    },
+    {
+      "path": "output/playtest-engineer-builder-2026-11-03-testing-d3de8ed",
+      "files": 2011,
+      "bytes": 796436927,
+      "treeStatSha256": "61812bdfd7a558bfe287aa951ad1dbb69a0e2e30e7ce21a45f875729314da598",
+      "identity": {
+        "sourceCommit": "d3de8edfd00375880a4c07eae658a0ea77ac8486",
+        "buildId": "2026.11.03-engineer-builder",
+        "protocol": 54,
+        "contentRevision": "d7aea7cb50f954a88d02ff12291808900bbd00d1e4445c4e0af2655168132510",
+        "audience": "testing",
+        "runtimeSourceSha256": "5fa7b96e74ca7efcce35a2485b93cc599295eb4f08bfb736cfb0dd2b41e7a537",
+        "sourceSnapshotSha256": "66cf67b1afd0f7d1f5b5baa7f7017939fd4905392f4010658ec83bbbec9e13bc",
+        "endpoint": "http://127.0.0.1:2704"
+      },
+      "identitySha256": "36f416ea09c4c4f409e80e4eebd4e15e027c02b0fea21fc6b68d2e34b007b9cc"
+    },
+    {
+      "path": "output/playtest-engineer-controls-2026-11-04-public-233e914",
+      "files": 2011,
+      "bytes": 796439451,
+      "treeStatSha256": "363265f4d36aee54f1526c68d0767ac82919708e556fd4ff0e2314f0198430da",
+      "identity": {
+        "sourceCommit": "233e9143300989f43f986fdd5fe800975c3f88db",
+        "buildId": "2026.11.04-engineer-kit-guide",
+        "protocol": 54,
+        "contentRevision": "d7aea7cb50f954a88d02ff12291808900bbd00d1e4445c4e0af2655168132510",
+        "audience": "public",
+        "runtimeSourceSha256": "6bcbc0d192fce70539cb3abe400229ef72c185b2f1384064f97afb57978bf0ae",
+        "sourceSnapshotSha256": "f42e11d0cf52b8e7fbb37b6dbb755fe5831471435dee0b3e5bdc3bc835fdcedc",
+        "endpoint": "http://127.0.0.1:2713"
+      },
+      "identitySha256": "c3a386cc2af60b26c878e414017c99f3db49c8475fef81b9b7365c8a9aedaf55"
+    },
+    {
+      "path": "output/playtest-engineer-controls-2026-11-04-testing-233e914",
+      "files": 2011,
+      "bytes": 796444737,
+      "treeStatSha256": "b86389ff26f9b8b0f0ab6a7cc520af9d083bb2f04b6f9310c61b492b3119bff7",
+      "identity": {
+        "sourceCommit": "233e9143300989f43f986fdd5fe800975c3f88db",
+        "buildId": "2026.11.04-engineer-kit-guide",
+        "protocol": 54,
+        "contentRevision": "d7aea7cb50f954a88d02ff12291808900bbd00d1e4445c4e0af2655168132510",
+        "audience": "testing",
+        "runtimeSourceSha256": "6bcbc0d192fce70539cb3abe400229ef72c185b2f1384064f97afb57978bf0ae",
+        "sourceSnapshotSha256": "f42e11d0cf52b8e7fbb37b6dbb755fe5831471435dee0b3e5bdc3bc835fdcedc",
+        "endpoint": "http://127.0.0.1:2712"
+      },
+      "identitySha256": "12a5b8d73e255f83e15796c33cd901bec70f47f7c07c6b5b48737c4c29eb5daa"
+    },
+    {
+      "path": "output/playtest-engineer-pathways-2026-11-02-public-ab8e4b3",
+      "files": 1989,
+      "bytes": 763596436,
+      "treeStatSha256": "41a83cb8e93c4218dda379581e34a549b0f9905d384ecbfc8b9ca5a569724e3b",
+      "identity": {
+        "sourceCommit": "ab8e4b37b65c9dee32c95dfb643207009c590674",
+        "buildId": "2026.11.02-engineer-pathways",
+        "protocol": 49,
+        "contentRevision": "a6a17f1935ebd8e91d8d5916a7c8ee920190e13bc42a07e09dec98723e94390f",
+        "audience": "public",
+        "runtimeSourceSha256": "225c931010188c4901ca8a9aabe137bc6a4ea16569d0f99eb2364bea58b3d81d",
+        "sourceSnapshotSha256": "ea48e3eb498b9914ef031d673d2205295d98b0339f8242ca2ce4de440123876a",
+        "endpoint": "http://127.0.0.1:2693"
+      },
+      "identitySha256": "7a4a7fcefdd3ba6068484c0c7cd8ebb141978621a0664880fc96a68d7a041903"
+    },
+    {
+      "path": "output/playtest-engineer-pathways-2026-11-02-testing-ab8e4b3",
+      "files": 1989,
+      "bytes": 763601725,
+      "treeStatSha256": "1b111203e421cfd77bda41e20141d1472a3a8987dfb25039e902147208714f9c",
+      "identity": {
+        "sourceCommit": "ab8e4b37b65c9dee32c95dfb643207009c590674",
+        "buildId": "2026.11.02-engineer-pathways",
+        "protocol": 49,
+        "contentRevision": "a6a17f1935ebd8e91d8d5916a7c8ee920190e13bc42a07e09dec98723e94390f",
+        "audience": "testing",
+        "runtimeSourceSha256": "225c931010188c4901ca8a9aabe137bc6a4ea16569d0f99eb2364bea58b3d81d",
+        "sourceSnapshotSha256": "ea48e3eb498b9914ef031d673d2205295d98b0339f8242ca2ce4de440123876a",
+        "endpoint": "http://127.0.0.1:2692"
+      },
+      "identitySha256": "b419cdbc99fa749e924e5e8f7961fa32eb3673eb4d371a0b5b66bf69294c2e27"
+    },
+    {
+      "path": "output/playtest-engineer-replay-2026-11-04-testing-d7bef25",
+      "files": 2011,
+      "bytes": 796438566,
+      "treeStatSha256": "12d9773daeebeb7bfffb43e387dce2f48078b67ec800399dc07de25fcfe2ea41",
+      "identity": {
+        "sourceCommit": "d7bef25b6afe6a5d57903785bfc4f68eec8d4aac",
+        "buildId": "2026.11.04-engineer-replay-polish",
+        "protocol": 54,
+        "contentRevision": "d7aea7cb50f954a88d02ff12291808900bbd00d1e4445c4e0af2655168132510",
+        "audience": "testing",
+        "runtimeSourceSha256": "957a41716471d9a9b93feb52cc3bae144c06ea00c1714d8170c36568e12bccf6",
+        "sourceSnapshotSha256": "75cfc5f14ee8161d75359d45fa376c291f762234f1422c7ae7bf790ce1e15f8a",
+        "endpoint": "http://127.0.0.1:2708"
+      },
+      "identitySha256": "313d53122c450f95374948f211bb54411696558715219ac058cb8ade6dc2ad02"
+    },
+    {
+      "path": "output/playtest-engineer-run-exit-2026-11-04-public-7f5cdac",
+      "files": 2011,
+      "bytes": 796432737,
+      "treeStatSha256": "bc304499297e3a6392d10c8d5b4c509f2427efdd907ce06a2157990b943ca611",
+      "identity": {
+        "sourceCommit": "7f5cdac6e84524a391fd96675c857a21d35dd9c7",
+        "buildId": "2026.11.04-engineer-exit-polish",
+        "protocol": 54,
+        "contentRevision": "d7aea7cb50f954a88d02ff12291808900bbd00d1e4445c4e0af2655168132510",
+        "audience": "public",
+        "runtimeSourceSha256": "d1134719bcdf793c9f810459139a62b490e011c39d0f6e9bf9656ce8fdaed1ab",
+        "sourceSnapshotSha256": "33d221c496cbf945d74e6a5140e1dc2f645e4c452f0c0a4d03374383608c23df",
+        "endpoint": "http://127.0.0.1:2707"
+      },
+      "identitySha256": "fe6319828e60b205f262a7b97f28d51367d0e2ecc480db92baa43c744c69a197"
+    },
+    {
+      "path": "output/playtest-engineer-run-exit-2026-11-04-testing-7f5cdac",
+      "files": 2011,
+      "bytes": 796438023,
+      "treeStatSha256": "98e0bee7bc0e4ecfb9637481ffccf892aae88c32ca38e600c1a467979e6acf6c",
+      "identity": {
+        "sourceCommit": "7f5cdac6e84524a391fd96675c857a21d35dd9c7",
+        "buildId": "2026.11.04-engineer-exit-polish",
+        "protocol": 54,
+        "contentRevision": "d7aea7cb50f954a88d02ff12291808900bbd00d1e4445c4e0af2655168132510",
+        "audience": "testing",
+        "runtimeSourceSha256": "d1134719bcdf793c9f810459139a62b490e011c39d0f6e9bf9656ce8fdaed1ab",
+        "sourceSnapshotSha256": "33d221c496cbf945d74e6a5140e1dc2f645e4c452f0c0a4d03374383608c23df",
+        "endpoint": "http://127.0.0.1:2706"
+      },
+      "identitySha256": "5338a05168ad72160f9310901932345f3e2e2dbd191abace23175467b1849524"
+    },
+    {
+      "path": "output/playtest-engineer-transition-2026-11-04-public-f670914",
+      "files": 2011,
+      "bytes": 796433807,
+      "treeStatSha256": "65d9b25896b3da622c7694fe2bae50f8867e09398d7d0a512c217ed7c0db7e36",
+      "identity": {
+        "sourceCommit": "f67091403b530829d7e6e7d192fcc2e488edcd90",
+        "buildId": "2026.11.04-engineer-transition-polish",
+        "protocol": 54,
+        "contentRevision": "d7aea7cb50f954a88d02ff12291808900bbd00d1e4445c4e0af2655168132510",
+        "audience": "public",
+        "runtimeSourceSha256": "d8ef00a49467033256c0a44d31e7df66056b6248ca72bd9c2b4ccaca029f0d3b",
+        "sourceSnapshotSha256": "65f6827990b96f6323a64cc9565f3599a734eba24b60efb9e0f13fc4ca1ccbd1",
+        "endpoint": "http://127.0.0.1:2711"
+      },
+      "identitySha256": "4e977d50969a2674abaa84e6608fe84ebc5363e80f775a8a6048ac9d56547e7a"
+    },
+    {
+      "path": "output/playtest-engineer-transition-2026-11-04-testing-f670914",
+      "files": 2011,
+      "bytes": 796439093,
+      "treeStatSha256": "a53a3e06f21f0c31e4d342c55564d8a427cb5bc0fcaf747321ee7a699a29ca81",
+      "identity": {
+        "sourceCommit": "f67091403b530829d7e6e7d192fcc2e488edcd90",
+        "buildId": "2026.11.04-engineer-transition-polish",
+        "protocol": 54,
+        "contentRevision": "d7aea7cb50f954a88d02ff12291808900bbd00d1e4445c4e0af2655168132510",
+        "audience": "testing",
+        "runtimeSourceSha256": "d8ef00a49467033256c0a44d31e7df66056b6248ca72bd9c2b4ccaca029f0d3b",
+        "sourceSnapshotSha256": "65f6827990b96f6323a64cc9565f3599a734eba24b60efb9e0f13fc4ca1ccbd1",
+        "endpoint": "http://127.0.0.1:2710"
+      },
+      "identitySha256": "a1b601409944265c841ac4e79a88cf4869689668b23ae82aea500c04d12e53cf"
+    },
+    {
+      "path": "output/playtest-engineer-traps-2026-11-03-public-c4b2b6f",
+      "files": 2003,
+      "bytes": 783767957,
+      "treeStatSha256": "295dc4caa2951ca12a33395bb3d920eb0317dcdecafac125542d7fb64c4c0b33",
+      "identity": {
+        "sourceCommit": "c4b2b6fc9396960cc890b9f6a6bbe242c47ccac6",
+        "buildId": "2026.11.03-engineer-traps",
+        "protocol": 53,
+        "contentRevision": "2bcf8d4f883afe0a674ea23066435376c1cc97631de03dff74dadb4cfe373fea",
+        "audience": "public",
+        "runtimeSourceSha256": "2d52234066a8fa3cccb173b658f7d29e7f620aac2bbf40f5afa7eeb4dd68497f",
+        "sourceSnapshotSha256": "42d881f67f60138efbe109f8a47b0c4a328290a17b3f1d36dca0c662e1d9cd27",
+        "endpoint": "http://127.0.0.1:2703"
+      },
+      "identitySha256": "775f02bd6de9cb3ac551393798a9f4168c9652259e50152a688f5287827a9733"
+    },
+    {
+      "path": "output/playtest-engineer-traps-2026-11-03-testing-c4b2b6f",
+      "files": 2003,
+      "bytes": 783773243,
+      "treeStatSha256": "712720739eb88fc1f1d1c54575bf86fce9057a061c7b01af9982a40a47095f2b",
+      "identity": {
+        "sourceCommit": "c4b2b6fc9396960cc890b9f6a6bbe242c47ccac6",
+        "buildId": "2026.11.03-engineer-traps",
+        "protocol": 53,
+        "contentRevision": "2bcf8d4f883afe0a674ea23066435376c1cc97631de03dff74dadb4cfe373fea",
+        "audience": "testing",
+        "runtimeSourceSha256": "2d52234066a8fa3cccb173b658f7d29e7f620aac2bbf40f5afa7eeb4dd68497f",
+        "sourceSnapshotSha256": "42d881f67f60138efbe109f8a47b0c4a328290a17b3f1d36dca0c662e1d9cd27",
+        "endpoint": "http://127.0.0.1:2702"
+      },
+      "identitySha256": "09ddd3f58c78af34ba04cefeae5d4060740dfb1f38dffd72f391435db44a3a74"
+    },
+    {
+      "path": "output/playtest-first-return-2026-10-31-public-57f1956",
+      "files": 1701,
+      "bytes": 740550472,
+      "treeStatSha256": "14ae36f709666b4d13c94f6cc68e2d855d08c72481a89273c783f95ed55b7863",
+      "identity": {
+        "sourceCommit": "57f1956a208e7768807cc7692a241ecc8cd12967",
+        "buildId": "2026.10.31-first-return",
+        "protocol": 47,
+        "contentRevision": "1707fd9bd432dfb24107300944b99e70bcbe8a5e05077ddebaf0c2907013a1b1",
+        "audience": "public",
+        "runtimeSourceSha256": "fd6c199c1c48abb794e7c6a54c14941e2ab817c33f01eba7f42ac9207772a80a",
+        "sourceSnapshotSha256": "d6ffc88e7971f47aba7f3e2520db6960d7b54c7ed3194007426489b8345dd315",
+        "endpoint": "http://127.0.0.1:2673"
+      },
+      "identitySha256": "f94262c4fa1f33b962968219c3d01cce712c84293d2310477874499a3f79d737"
+    },
+    {
+      "path": "output/playtest-first-return-2026-10-31-testing-57f1956",
+      "files": 1701,
+      "bytes": 740555883,
+      "treeStatSha256": "bd7014e9e7630f5bca1be4f941739e248090701fe7fcff84cfe56baa781f5226",
+      "identity": {
+        "sourceCommit": "57f1956a208e7768807cc7692a241ecc8cd12967",
+        "buildId": "2026.10.31-first-return",
+        "protocol": 47,
+        "contentRevision": "1707fd9bd432dfb24107300944b99e70bcbe8a5e05077ddebaf0c2907013a1b1",
+        "audience": "testing",
+        "runtimeSourceSha256": "fd6c199c1c48abb794e7c6a54c14941e2ab817c33f01eba7f42ac9207772a80a",
+        "sourceSnapshotSha256": "d6ffc88e7971f47aba7f3e2520db6960d7b54c7ed3194007426489b8345dd315",
+        "endpoint": "http://127.0.0.1:2672"
+      },
+      "identitySha256": "533f3c95341716c83230f088cda5e927987e67c24c53f8e7025c884d0711ee3a"
+    },
+    {
+      "path": "output/playtest-foundation-workbook-2026-11-03-public-42ec806",
+      "files": 1997,
+      "bytes": 775136508,
+      "treeStatSha256": "41408026997b38dbb15b9cd9135069b15ef4017349baffdcec505056856357f7",
+      "identity": {
+        "sourceCommit": "42ec8060c9b9f4dc83b663ca5655ba0df6deb35e",
+        "buildId": "2026.11.03-workbook-zoom-polish",
+        "protocol": 52,
+        "contentRevision": "1d1292a7442e6eeab687739ce510eba46fd061ae087abd3d8ff51d2f0b7e0186",
+        "audience": "public",
+        "runtimeSourceSha256": "e13fe1617602fdfcfdc7e42ee416e8903dfe1c24441afe3710dd090fb4c92c14",
+        "sourceSnapshotSha256": "db129d454b95fc95d67a66241ae264e58f3e59318770805cde8007a1827f0d2e",
+        "endpoint": "http://127.0.0.1:2701"
+      },
+      "identitySha256": "285bd2506e9939707cb93d6201873aeda098c53960ca0c2ad02117107c8601af"
+    },
+    {
+      "path": "output/playtest-foundation-workbook-2026-11-03-testing-42ec806",
+      "files": 1997,
+      "bytes": 775141794,
+      "treeStatSha256": "1de7e3405d4d2740f1f6af42dd2d1e8fd72e17152554e49b05d78776bad71f29",
+      "identity": {
+        "sourceCommit": "42ec8060c9b9f4dc83b663ca5655ba0df6deb35e",
+        "buildId": "2026.11.03-workbook-zoom-polish",
+        "protocol": 52,
+        "contentRevision": "1d1292a7442e6eeab687739ce510eba46fd061ae087abd3d8ff51d2f0b7e0186",
+        "audience": "testing",
+        "runtimeSourceSha256": "e13fe1617602fdfcfdc7e42ee416e8903dfe1c24441afe3710dd090fb4c92c14",
+        "sourceSnapshotSha256": "db129d454b95fc95d67a66241ae264e58f3e59318770805cde8007a1827f0d2e",
+        "endpoint": "http://127.0.0.1:2700"
+      },
+      "identitySha256": "9f42924ae67f0a86e6e43e12d6064327c375012d9a6bc0b3710cc03b5367862a"
+    },
+    {
+      "path": "output/playtest-general-mobility-2026-10-31-public-55cc82d",
+      "files": 1701,
+      "bytes": 740062672,
+      "treeStatSha256": "391ebc7e2e211a08e09add50888cfb83b7346371543ff0394e8f274fb69ab7a4",
+      "identity": {
+        "sourceCommit": "55cc82da4b67448cdb3f3385ac2e59638055398f",
+        "buildId": "2026.10.31-general-mobility",
+        "protocol": 45,
+        "contentRevision": "5a4ffd871d1880ccb681aee1faa5e51a664385752977fa7a136b50d44c7c6927",
+        "audience": "public",
+        "runtimeSourceSha256": "6023989f3b3eb1ff1cce7132557163133257e9db98350d55b7e99ace274a173d",
+        "sourceSnapshotSha256": "33428360c67202a351266b89f315289e7e2a7dbff4d38f5814ebd65fc8a7a5a1",
+        "endpoint": "http://127.0.0.1:2655"
+      },
+      "identitySha256": "88b62d314c08ee5d83bb0a30240868e2157b4423cc8c4b343bdf750e9969305f"
+    },
+    {
+      "path": "output/playtest-general-mobility-2026-10-31-testing-55cc82d",
+      "files": 1701,
+      "bytes": 740068365,
+      "treeStatSha256": "d2c57c8e0a5080e229a7597e0b7cbb1bd54427075bb3824886af89a4bf4f6391",
+      "identity": {
+        "sourceCommit": "55cc82da4b67448cdb3f3385ac2e59638055398f",
+        "buildId": "2026.10.31-general-mobility",
+        "protocol": 45,
+        "contentRevision": "5a4ffd871d1880ccb681aee1faa5e51a664385752977fa7a136b50d44c7c6927",
+        "audience": "testing",
+        "runtimeSourceSha256": "6023989f3b3eb1ff1cce7132557163133257e9db98350d55b7e99ace274a173d",
+        "sourceSnapshotSha256": "33428360c67202a351266b89f315289e7e2a7dbff4d38f5814ebd65fc8a7a5a1",
+        "endpoint": "http://127.0.0.1:2654"
+      },
+      "identitySha256": "97f4f6ababdef8b7595977e6e8b70e37cdbcd1b0b9764d502e1c4060d2f432c9"
+    },
+    {
+      "path": "output/playtest-glass-surgery-2026-10-31-public-517472b",
+      "files": 1701,
+      "bytes": 740133341,
+      "treeStatSha256": "5a06140956c755dcee0b30d16aac305c4ee01f5993e33099b546e60fe5008a49",
+      "identity": {
+        "sourceCommit": "517472b3e1efda13500d35e0351b3a7fdb565b92",
+        "buildId": "2026.10.31-glass-surgery",
+        "protocol": 45,
+        "contentRevision": "fd77a95b869f368f49ce988f613db276385c45843e0152c69c3c67e13683a97b",
+        "audience": "public",
+        "runtimeSourceSha256": "34a38cc374020ae34c367b44a30628cd8007966448a14bd29fadd23523028d14",
+        "sourceSnapshotSha256": "423713f241747111bd587aef97fcf5d4d95f1255f0cc1f2c7dc3ef5cd6a2808d",
+        "endpoint": "http://127.0.0.1:2657"
+      },
+      "identitySha256": "2dd0a8aecf42dd448d5b202fbc044c14fe6b44575576e6b5d8f864128f323376"
+    },
+    {
+      "path": "output/playtest-glass-surgery-2026-10-31-testing-517472b",
+      "files": 1701,
+      "bytes": 740139034,
+      "treeStatSha256": "4654e415c99ff8767f3a8c0a1891f9f2b4969357edb6ec413f5f075da99b13cc",
+      "identity": {
+        "sourceCommit": "517472b3e1efda13500d35e0351b3a7fdb565b92",
+        "buildId": "2026.10.31-glass-surgery",
+        "protocol": 45,
+        "contentRevision": "fd77a95b869f368f49ce988f613db276385c45843e0152c69c3c67e13683a97b",
+        "audience": "testing",
+        "runtimeSourceSha256": "34a38cc374020ae34c367b44a30628cd8007966448a14bd29fadd23523028d14",
+        "sourceSnapshotSha256": "423713f241747111bd587aef97fcf5d4d95f1255f0cc1f2c7dc3ef5cd6a2808d",
+        "endpoint": "http://127.0.0.1:2656"
+      },
+      "identitySha256": "987cfb875922dd782f95dada9bff1794feced04edd9ab49f496ad6d09a187a79"
+    },
+    {
+      "path": "output/playtest-heavy-clutch-2026-11-09-public-12c265f",
+      "files": 2050,
+      "bytes": 845595972,
+      "treeStatSha256": "506f92a82e4e4d30133a20903adacd8190843ede560c333245af06ec60d61a85",
+      "identity": {
+        "sourceCommit": "12c265fca9f30777474ba97d36ae1393621e7147",
+        "buildId": "2026.11.09-heavy-feed-clutch",
+        "protocol": 71,
+        "contentRevision": "76410d1cca4ce1874da61acf3fefa6c359720b62452411c172b2b4f86f788de2",
+        "audience": "public",
+        "runtimeSourceSha256": "350926b9a9469f9a5632510fb6e56651894a1922a4ff08d2fc9f8ee452f62a18",
+        "sourceSnapshotSha256": "511d3c7e268f5cf4be0c1adfd87a74954e3cd7db30e7bdcdd66a593d2248ea64",
+        "endpoint": "http://127.0.0.1:2749"
+      },
+      "identitySha256": "0038319a1ba87c599c935967c9bcee2d32955fa1c6859959d2e419e7cdcc2949"
+    },
+    {
+      "path": "output/playtest-heavy-clutch-2026-11-09-testing-12c265f",
+      "files": 2050,
+      "bytes": 845601279,
+      "treeStatSha256": "20eccb9ebd878115a9914ab3d0586c6594708b4aa54267372a3c7008093595e0",
+      "identity": {
+        "sourceCommit": "12c265fca9f30777474ba97d36ae1393621e7147",
+        "buildId": "2026.11.09-heavy-feed-clutch",
+        "protocol": 71,
+        "contentRevision": "76410d1cca4ce1874da61acf3fefa6c359720b62452411c172b2b4f86f788de2",
+        "audience": "testing",
+        "runtimeSourceSha256": "350926b9a9469f9a5632510fb6e56651894a1922a4ff08d2fc9f8ee452f62a18",
+        "sourceSnapshotSha256": "511d3c7e268f5cf4be0c1adfd87a74954e3cd7db30e7bdcdd66a593d2248ea64",
+        "endpoint": "http://127.0.0.1:2748"
+      },
+      "identitySha256": "73987b3b16f08d6b8a1b419376d928065241dae6764874759b314ba47de771eb"
+    },
+    {
+      "path": "output/playtest-heavy-clutch-handling-2026-11-09-public-18da7f9",
+      "files": 2052,
+      "bytes": 847238485,
+      "treeStatSha256": "23d86934c7bbe2d23e2c4a326aca1859acdb0ac8df14265e2a3cb957373cb76b",
+      "identity": {
+        "sourceCommit": "18da7f9267710090ea9566fc49728d44c8f26dbe",
+        "buildId": "2026.11.09-heavy-clutch-handling",
+        "protocol": 72,
+        "contentRevision": "cc0f92021ec2a1bb9d0b82a4a85bc6bc6f026655a90d77ae3362f36da929fba4",
+        "audience": "public",
+        "runtimeSourceSha256": "9703aee1a5b0a2b1691ccfa24b703fc8d6c022c838ea833d8f386a3fa19f113f",
+        "sourceSnapshotSha256": "5e283b0d6022a98c176a30c32a2ed7c3845c77ccee1abadc0187b39f5cdd7ef1",
+        "endpoint": "http://127.0.0.1:2751"
+      },
+      "identitySha256": "579184448d846dcbb101afa6e45d9ba75c54f75043e3130224b7682c73e16b6c"
+    },
+    {
+      "path": "output/playtest-heavy-clutch-handling-2026-11-09-testing-18da7f9",
+      "files": 2052,
+      "bytes": 847243782,
+      "treeStatSha256": "c55424d0d091bd1fbc8abaf8a61e7e42eddd7ad51f5a438d39db055b98ad3990",
+      "identity": {
+        "sourceCommit": "18da7f9267710090ea9566fc49728d44c8f26dbe",
+        "buildId": "2026.11.09-heavy-clutch-handling",
+        "protocol": 72,
+        "contentRevision": "cc0f92021ec2a1bb9d0b82a4a85bc6bc6f026655a90d77ae3362f36da929fba4",
+        "audience": "testing",
+        "runtimeSourceSha256": "9703aee1a5b0a2b1691ccfa24b703fc8d6c022c838ea833d8f386a3fa19f113f",
+        "sourceSnapshotSha256": "5e283b0d6022a98c176a30c32a2ed7c3845c77ccee1abadc0187b39f5cdd7ef1",
+        "endpoint": "http://127.0.0.1:2750"
+      },
+      "identitySha256": "3b5bed63932a234e524f082b829730162ae582bca49c3891dcf0f418018db4e7"
+    },
+    {
+      "path": "output/playtest-heavy-clutch-handling-movement-2026-11-09-public-205d1bd",
+      "files": 2052,
+      "bytes": 847238485,
+      "treeStatSha256": "13558cdc89e2f7bcfbbef3580b033d952bba59363dfa290606b150d207b134ce",
+      "identity": {
+        "sourceCommit": "205d1bd35db96f0b9a4054514f887e6865b5a660",
+        "buildId": "2026.11.09-heavy-clutch-handling",
+        "protocol": 72,
+        "contentRevision": "cc0f92021ec2a1bb9d0b82a4a85bc6bc6f026655a90d77ae3362f36da929fba4",
+        "audience": "public",
+        "runtimeSourceSha256": "9703aee1a5b0a2b1691ccfa24b703fc8d6c022c838ea833d8f386a3fa19f113f",
+        "sourceSnapshotSha256": "fbaeeb379dde214c006e4e388e33067df28061d19490aca2a444b58e258785ba",
+        "endpoint": "http://127.0.0.1:2755"
+      },
+      "identitySha256": "bb6612e90f6adf611d2e9840c8a4b9cc6f1f96f51b62ec4138ab27d65f88c943"
+    },
+    {
+      "path": "output/playtest-heavy-clutch-handling-movement-2026-11-09-testing-205d1bd",
+      "files": 2052,
+      "bytes": 847243782,
+      "treeStatSha256": "7ef52f73df5875a51299146279173c6313736ab397244b698ce809594c53ccac",
+      "identity": {
+        "sourceCommit": "205d1bd35db96f0b9a4054514f887e6865b5a660",
+        "buildId": "2026.11.09-heavy-clutch-handling",
+        "protocol": 72,
+        "contentRevision": "cc0f92021ec2a1bb9d0b82a4a85bc6bc6f026655a90d77ae3362f36da929fba4",
+        "audience": "testing",
+        "runtimeSourceSha256": "9703aee1a5b0a2b1691ccfa24b703fc8d6c022c838ea833d8f386a3fa19f113f",
+        "sourceSnapshotSha256": "fbaeeb379dde214c006e4e388e33067df28061d19490aca2a444b58e258785ba",
+        "endpoint": "http://127.0.0.1:2754"
+      },
+      "identitySha256": "afd79b9a4291e31e55238c3080f0b310960ee0798637b51697595f50a752d9e4"
+    },
+    {
+      "path": "output/playtest-heavy-clutch-handling-rounds-2026-11-09-public-d238694",
+      "files": 2052,
+      "bytes": 847238485,
+      "treeStatSha256": "de9b485f7600102ba861916e26afd039ba61721fd41e07f7c33916fb79fa89c0",
+      "identity": {
+        "sourceCommit": "d2386943ce6d2fbf077ee1a2aa40a55b8bc7f8e2",
+        "buildId": "2026.11.09-heavy-clutch-handling",
+        "protocol": 72,
+        "contentRevision": "cc0f92021ec2a1bb9d0b82a4a85bc6bc6f026655a90d77ae3362f36da929fba4",
+        "audience": "public",
+        "runtimeSourceSha256": "9703aee1a5b0a2b1691ccfa24b703fc8d6c022c838ea833d8f386a3fa19f113f",
+        "sourceSnapshotSha256": "ce9867c5ba2418e2a7791f255d704a8ff46fc47f9e422e0ed39b7a3dd0da7be9",
+        "endpoint": "http://127.0.0.1:2753"
+      },
+      "identitySha256": "941eb4265b10123f1027f65a12a324014bd34ff7de477b75bfc52dd68b44b9a0"
+    },
+    {
+      "path": "output/playtest-heavy-clutch-handling-rounds-2026-11-09-testing-d238694",
+      "files": 2052,
+      "bytes": 847243782,
+      "treeStatSha256": "1e41f27403106c230e3df901f59a4748fdc03775801bf1904792a7bd35a780c7",
+      "identity": {
+        "sourceCommit": "d2386943ce6d2fbf077ee1a2aa40a55b8bc7f8e2",
+        "buildId": "2026.11.09-heavy-clutch-handling",
+        "protocol": 72,
+        "contentRevision": "cc0f92021ec2a1bb9d0b82a4a85bc6bc6f026655a90d77ae3362f36da929fba4",
+        "audience": "testing",
+        "runtimeSourceSha256": "9703aee1a5b0a2b1691ccfa24b703fc8d6c022c838ea833d8f386a3fa19f113f",
+        "sourceSnapshotSha256": "ce9867c5ba2418e2a7791f255d704a8ff46fc47f9e422e0ed39b7a3dd0da7be9",
+        "endpoint": "http://127.0.0.1:2752"
+      },
+      "identitySha256": "8dbb61268b453aacd998e3b3f23231bb0a3bf966dbf7a5a22a767813aec59e25"
+    },
+    {
+      "path": "output/playtest-heavy-clutch-stat-scaling-2026-11-10-public-20aad19",
+      "files": 2052,
+      "bytes": 847238485,
+      "treeStatSha256": "5b8621760e7e2ae04d7a4a077f7f2c2d2e4a142a34f0cae87255cde3ee02f732",
+      "identity": {
+        "sourceCommit": "20aad19bdfb8819cd7db0483b9c79f2c6e9dcd5c",
+        "buildId": "2026.11.09-heavy-clutch-handling",
+        "protocol": 72,
+        "contentRevision": "cc0f92021ec2a1bb9d0b82a4a85bc6bc6f026655a90d77ae3362f36da929fba4",
+        "audience": "public",
+        "runtimeSourceSha256": "9703aee1a5b0a2b1691ccfa24b703fc8d6c022c838ea833d8f386a3fa19f113f",
+        "sourceSnapshotSha256": "13a917a96504b02c86d4c19d3b9678d775adeaa893d7169fa458c5f141ed8552",
+        "endpoint": "http://127.0.0.1:2757"
+      },
+      "identitySha256": "5ed7a9d526e25b5f70d45428870fbfea80704dae694bfe86481a1e877294fba9"
+    },
+    {
+      "path": "output/playtest-heavy-clutch-stat-scaling-2026-11-10-testing-20aad19",
+      "files": 2052,
+      "bytes": 847243782,
+      "treeStatSha256": "001775502c836af9aa2e795885c1aaf6c47a7ce342a0099780ee52b71c48f3dc",
+      "identity": {
+        "sourceCommit": "20aad19bdfb8819cd7db0483b9c79f2c6e9dcd5c",
+        "buildId": "2026.11.09-heavy-clutch-handling",
+        "protocol": 72,
+        "contentRevision": "cc0f92021ec2a1bb9d0b82a4a85bc6bc6f026655a90d77ae3362f36da929fba4",
+        "audience": "testing",
+        "runtimeSourceSha256": "9703aee1a5b0a2b1691ccfa24b703fc8d6c022c838ea833d8f386a3fa19f113f",
+        "sourceSnapshotSha256": "13a917a96504b02c86d4c19d3b9678d775adeaa893d7169fa458c5f141ed8552",
+        "endpoint": "http://127.0.0.1:2756"
+      },
+      "identitySha256": "082fc20f2cc1523bb33c6b82e4f99f711d517d306373e5c30f416865599ae5b2"
+    },
+    {
+      "path": "output/playtest-heavy-flak-2026-11-06-public-d796d66",
+      "files": 2043,
+      "bytes": 838070661,
+      "treeStatSha256": "831b38a968d5e7045e87e7353f914cdd2b916c24315d41e1d7ea4a89120d5b6b",
+      "identity": {
+        "sourceCommit": "d796d66a32f031ed9a25fc8d0751b7db7de4bbe7",
+        "buildId": "2026.11.06-heavy-flak",
+        "protocol": 67,
+        "contentRevision": "b3945ea273e982b3eb64d95fb278fd4fb2806ce74406fbcb6bb5148f5a683a38",
+        "audience": "public",
+        "runtimeSourceSha256": "6f05a8f209592c263cf4e367e6cd0ebcedbce1d193483a620bf15f35b0ac86d5",
+        "sourceSnapshotSha256": "5fa8de17497ad52bb0bb5df1ac28e39df04b3d06bffeebbc8562c4618d605168",
+        "endpoint": "http://127.0.0.1:2741"
+      },
+      "identitySha256": "e3ff0971259676a9b4d6aa2bb2b75d27bdad71717dddafba215dceac50bcc35e"
+    },
+    {
+      "path": "output/playtest-heavy-flak-2026-11-06-testing-d796d66",
+      "files": 2043,
+      "bytes": 838075946,
+      "treeStatSha256": "12edc64794b6057dc59ed54ae764b3a53eda958085514baa9264132d8a63b9d7",
+      "identity": {
+        "sourceCommit": "d796d66a32f031ed9a25fc8d0751b7db7de4bbe7",
+        "buildId": "2026.11.06-heavy-flak",
+        "protocol": 67,
+        "contentRevision": "b3945ea273e982b3eb64d95fb278fd4fb2806ce74406fbcb6bb5148f5a683a38",
+        "audience": "testing",
+        "runtimeSourceSha256": "6f05a8f209592c263cf4e367e6cd0ebcedbce1d193483a620bf15f35b0ac86d5",
+        "sourceSnapshotSha256": "5fa8de17497ad52bb0bb5df1ac28e39df04b3d06bffeebbc8562c4618d605168",
+        "endpoint": "http://127.0.0.1:2740"
+      },
+      "identitySha256": "94a4ed399c8e1f55450613462c500b454a7ceb564b66da58e8d23d982c435b21"
+    },
+    {
+      "path": "output/playtest-heavy-fuze-2026-11-08-public-c56ae85",
+      "files": 2045,
+      "bytes": 839774030,
+      "treeStatSha256": "3d8f0512fc4009f715521281cc5151154fdb9cfe5454229f96025aadbebc0fb7",
+      "identity": {
+        "sourceCommit": "c56ae850ee9c487202379a4e093811c376bec3b1",
+        "buildId": "2026.11.08-heavy-fuze-handling",
+        "protocol": 68,
+        "contentRevision": "172934435baf5582387756d83e3bfc10872847bbd3e74087497b1206656bcf2c",
+        "audience": "public",
+        "runtimeSourceSha256": "2f7611629c28689c93ce339b6c05270c7e1ad3b9461bee16b1797b11d54f00ce",
+        "sourceSnapshotSha256": "a8fb647be14afe6a94e83156b23bf802690a28b0f80fcb5ea453251cd19f50bc",
+        "endpoint": "http://127.0.0.1:2743"
+      },
+      "identitySha256": "0583094f140d3578367d0c41c01085f4ef378334c110f7fbd7c2580d14c76c29"
+    },
+    {
+      "path": "output/playtest-heavy-fuze-2026-11-08-testing-c56ae85",
+      "files": 2045,
+      "bytes": 839779315,
+      "treeStatSha256": "250231d3c8ee7640a379f3598b0b0cbdacb410d7c0f6148ca1c9e6bd1152efd5",
+      "identity": {
+        "sourceCommit": "c56ae850ee9c487202379a4e093811c376bec3b1",
+        "buildId": "2026.11.08-heavy-fuze-handling",
+        "protocol": 68,
+        "contentRevision": "172934435baf5582387756d83e3bfc10872847bbd3e74087497b1206656bcf2c",
+        "audience": "testing",
+        "runtimeSourceSha256": "2f7611629c28689c93ce339b6c05270c7e1ad3b9461bee16b1797b11d54f00ce",
+        "sourceSnapshotSha256": "a8fb647be14afe6a94e83156b23bf802690a28b0f80fcb5ea453251cd19f50bc",
+        "endpoint": "http://127.0.0.1:2742"
+      },
+      "identitySha256": "1eea9c82e923771dd54ec9fd06a1684e69bee0553e0a28bec3ba2e9f55e717ee"
+    },
+    {
+      "path": "output/playtest-heavy-seam-2026-11-08-r2-public-4392f46",
+      "files": 2046,
+      "bytes": 840556397,
+      "treeStatSha256": "92da671f8f99111ee99c2a135a3aba751b9ab3434cc471b844b14139ab6f091f",
+      "identity": {
+        "sourceCommit": "4392f4660afdcafe3598c7d17316a602b7eaf128",
+        "buildId": "2026.11.08-heavy-seam-fuze",
+        "protocol": 69,
+        "contentRevision": "df1b63cc4adf21486fe0e142275b7b7634798f274f6e11de6f737ea0340feb28",
+        "audience": "public",
+        "runtimeSourceSha256": "9f76b9cd26c1da31b5c6f609c1eec6afa8f9749d02513186d7a4a74beaf0042b",
+        "sourceSnapshotSha256": "0ead64ed675d551377c2a3e257bb66ee3a2f2203bd7ec58fc7480ef82ac82a8a",
+        "endpoint": "http://127.0.0.1:2745"
+      },
+      "identitySha256": "8f591f3a1b04f4d817e3cefbf143f4bc800a95c3ec4dc51b6c21280e8b28d42a"
+    },
+    {
+      "path": "output/playtest-heavy-seam-2026-11-08-r2-testing-4392f46",
+      "files": 2046,
+      "bytes": 840561679,
+      "treeStatSha256": "87f57acedd4356a8e3a924a4704534458ff39ecc3379b3ca5e7837bc10ab746a",
+      "identity": {
+        "sourceCommit": "4392f4660afdcafe3598c7d17316a602b7eaf128",
+        "buildId": "2026.11.08-heavy-seam-fuze",
+        "protocol": 69,
+        "contentRevision": "df1b63cc4adf21486fe0e142275b7b7634798f274f6e11de6f737ea0340feb28",
+        "audience": "testing",
+        "runtimeSourceSha256": "9f76b9cd26c1da31b5c6f609c1eec6afa8f9749d02513186d7a4a74beaf0042b",
+        "sourceSnapshotSha256": "0ead64ed675d551377c2a3e257bb66ee3a2f2203bd7ec58fc7480ef82ac82a8a",
+        "endpoint": "http://127.0.0.1:2744"
+      },
+      "identitySha256": "0a762732ae147c1b7d2ccbbf3a563065f946c9d60fbe9963dfeb4b370428a1dd"
+    },
+    {
+      "path": "output/playtest-heavy-seam-2026-11-08-testing-4392f46",
+      "files": 2045,
+      "bytes": 840561327,
+      "treeStatSha256": "2fb1bd304770227bba0002efc4e007d33cd8dbd5ca61c9e5f7fda98306f1bb07",
+      "identity": null
+    },
+    {
+      "path": "output/playtest-heavy-traverse-2026-11-09-public-5316ead",
+      "files": 2049,
+      "bytes": 844720319,
+      "treeStatSha256": "ab1b4d0f0c87081d6822d2eb2c6f81984f5bc16421c33c1147b5e293bc1cc76c",
+      "identity": {
+        "sourceCommit": "5316ead6b5c573d74d058eba870f18ff4bffc86c",
+        "buildId": "2026.11.09-heavy-traverse-stroke",
+        "protocol": 70,
+        "contentRevision": "f28e23fd7430e62d25e262869eadc77f945e62f821c473c638a9b8faefcef589",
+        "audience": "public",
+        "runtimeSourceSha256": "6bf1da2d26f7207d29f80b1a3d7ab75a3785f4acda3ea50a7e4991d7216560f5",
+        "sourceSnapshotSha256": "18e795cbee96963a4be10fb6d64b862f4a13cf1f86082af2aea4721c2b7f98cd",
+        "endpoint": "http://127.0.0.1:2747"
+      },
+      "identitySha256": "e33a97df7c9327aec7a416620b26706037f5b924be571772baf359d31d154c1d"
+    },
+    {
+      "path": "output/playtest-heavy-traverse-2026-11-09-testing-5316ead",
+      "files": 2049,
+      "bytes": 844725585,
+      "treeStatSha256": "cabd08bd75304e50b5c589c6b59c6cbeee4547b585d000437d9c90052c6c611f",
+      "identity": {
+        "sourceCommit": "5316ead6b5c573d74d058eba870f18ff4bffc86c",
+        "buildId": "2026.11.09-heavy-traverse-stroke",
+        "protocol": 70,
+        "contentRevision": "f28e23fd7430e62d25e262869eadc77f945e62f821c473c638a9b8faefcef589",
+        "audience": "testing",
+        "runtimeSourceSha256": "6bf1da2d26f7207d29f80b1a3d7ab75a3785f4acda3ea50a7e4991d7216560f5",
+        "sourceSnapshotSha256": "18e795cbee96963a4be10fb6d64b862f4a13cf1f86082af2aea4721c2b7f98cd",
+        "endpoint": "http://127.0.0.1:2746"
+      },
+      "identitySha256": "b223ad1ad94177371dc8e56802a0fdbf24ef107c0b6496f237c1c0e8d7487f0c"
+    },
+    {
+      "path": "output/playtest-hud-alignment-2026-10-31-public-366c12d",
+      "files": 1701,
+      "bytes": 739854835,
+      "treeStatSha256": "57207c1d60927311e69cfb2b07bf3efb770a42d94678eea83ffccff9db8fc487",
+      "identity": {
+        "sourceCommit": "366c12d0830b53d03b0e5f3b302803ad863c65fc",
+        "buildId": "2026.10.30-shared-network",
+        "protocol": 43,
+        "contentRevision": "1ae4988671b4316e028ed42c6a9cd63c2efa26f046debad2fb75b8e1fc8e7f6d",
+        "audience": "public",
+        "runtimeSourceSha256": "43314fe504e1471f4cbb71b673119f39adff44d7fafe4e7afe24d9eece6bb4e4",
+        "sourceSnapshotSha256": "d224c4a8985bdf4e80e9d8cb6def98d016e8db515a25d729d1bfdc88bc7fc80b",
+        "endpoint": "http://127.0.0.1:2647"
+      },
+      "identitySha256": "2050abbedd3f6fd073a9c90e940094535e158378729fffb678099ac04f88ae22"
+    },
+    {
+      "path": "output/playtest-hud-alignment-2026-10-31-testing-366c12d",
+      "files": 1701,
+      "bytes": 739860519,
+      "treeStatSha256": "a92f9d98b3eabab50439ba163624256715ac5b4fdc329e4e4d978d5e321e7480",
+      "identity": {
+        "sourceCommit": "366c12d0830b53d03b0e5f3b302803ad863c65fc",
+        "buildId": "2026.10.30-shared-network",
+        "protocol": 43,
+        "contentRevision": "1ae4988671b4316e028ed42c6a9cd63c2efa26f046debad2fb75b8e1fc8e7f6d",
+        "audience": "testing",
+        "runtimeSourceSha256": "43314fe504e1471f4cbb71b673119f39adff44d7fafe4e7afe24d9eece6bb4e4",
+        "sourceSnapshotSha256": "d224c4a8985bdf4e80e9d8cb6def98d016e8db515a25d729d1bfdc88bc7fc80b",
+        "endpoint": "http://127.0.0.1:2646"
+      },
+      "identitySha256": "7cbe42a791de15b5fe7d5c12931eca37c58f7cb28aed1d95b91fe94377752975"
+    },
+    {
+      "path": "output/playtest-lamplight-reading-2026-10-31-public-8a4674c",
+      "files": 1701,
+      "bytes": 740474500,
+      "treeStatSha256": "bb5345823981618e00f476a8723979aafc3c2d9323ace70b91e6e355fa560552",
+      "identity": {
+        "sourceCommit": "8a4674c0934bd12fa20e0c9cddb45c6e7570ee02",
+        "buildId": "2026.10.31-lamplight-reading",
+        "protocol": 47,
+        "contentRevision": "e80e0f1d1bd444b1c5d16fae4c7aae322b31bcac70ac180b74964f6ba0326b48",
+        "audience": "public",
+        "runtimeSourceSha256": "cb5d93b36a808fbc64256b5dd340ded4f138846e2d3cc71664ea19415f57611c",
+        "sourceSnapshotSha256": "68edc8ce98b5508fb574a409cffdbb0322532876ee49fbfbd63042ec0c09ffca",
+        "endpoint": "http://127.0.0.1:2671"
+      },
+      "identitySha256": "f09c828704b67f7fa9b4cd07163dbdc78a5f37dcde7d8ff03e441084e9f6ea57"
+    },
+    {
+      "path": "output/playtest-lamplight-reading-2026-10-31-testing-8a4674c",
+      "files": 1701,
+      "bytes": 740479911,
+      "treeStatSha256": "d7f73cf23fe0e18bfa2121cbe206157401132c4f32bcb748eef30bbfbdeea70b",
+      "identity": {
+        "sourceCommit": "8a4674c0934bd12fa20e0c9cddb45c6e7570ee02",
+        "buildId": "2026.10.31-lamplight-reading",
+        "protocol": 47,
+        "contentRevision": "e80e0f1d1bd444b1c5d16fae4c7aae322b31bcac70ac180b74964f6ba0326b48",
+        "audience": "testing",
+        "runtimeSourceSha256": "cb5d93b36a808fbc64256b5dd340ded4f138846e2d3cc71664ea19415f57611c",
+        "sourceSnapshotSha256": "68edc8ce98b5508fb574a409cffdbb0322532876ee49fbfbd63042ec0c09ffca",
+        "endpoint": "http://127.0.0.1:2670"
+      },
+      "identitySha256": "985a6b90fc595ab2b975a18c801a7d8f48e1185ada11f8efaa7a58016517cba2"
+    },
+    {
+      "path": "output/playtest-machinery-progression-2026-11-03-public-76bac94",
+      "files": 1997,
+      "bytes": 775098558,
+      "treeStatSha256": "73acc1b2c50d50bea388b4a99acea9d0198e43cbb8924402acbfce5cfba0eaad",
+      "identity": {
+        "sourceCommit": "76bac94af793762aa3176a85bd0c18b929ec1bfd",
+        "buildId": "2026.11.03-machinery-progression",
+        "protocol": 51,
+        "contentRevision": "9b4db7927068a0b75ba0d915094354eb66102090eeed913b8d013e3c9459233f",
+        "audience": "public",
+        "runtimeSourceSha256": "76b542b82b6367f22abf2f793d56d507b664fb6fd28a96dfd2b426b43c256e10",
+        "sourceSnapshotSha256": "1a3a3cdd3ecf0a0c94da6663bb958d0bffe1b6b798532a56c62775da84e2ab0c",
+        "endpoint": "http://127.0.0.1:2697"
+      },
+      "identitySha256": "fbe3cf6b932295ecd228f1f0ad832d26ebf44bd82066b82e8344ac301c8a125e"
+    },
+    {
+      "path": "output/playtest-machinery-progression-2026-11-03-testing-76bac94",
+      "files": 1997,
+      "bytes": 775103844,
+      "treeStatSha256": "66be6b6207dcd0173bc95155ee6c3e521826ec179620760f6c68fb72079fc5a6",
+      "identity": {
+        "sourceCommit": "76bac94af793762aa3176a85bd0c18b929ec1bfd",
+        "buildId": "2026.11.03-machinery-progression",
+        "protocol": 51,
+        "contentRevision": "9b4db7927068a0b75ba0d915094354eb66102090eeed913b8d013e3c9459233f",
+        "audience": "testing",
+        "runtimeSourceSha256": "76b542b82b6367f22abf2f793d56d507b664fb6fd28a96dfd2b426b43c256e10",
+        "sourceSnapshotSha256": "1a3a3cdd3ecf0a0c94da6663bb958d0bffe1b6b798532a56c62775da84e2ab0c",
+        "endpoint": "http://127.0.0.1:2696"
+      },
+      "identitySha256": "2639246291d612b31691779caab8b99b3a94961289b12d0bbdcdfbee0d858c32"
+    },
+    {
+      "path": "output/playtest-manual-cascade-2026-11-03-public-4090068",
+      "files": 1997,
+      "bytes": 775099201,
+      "treeStatSha256": "8bebf0cf3d4d5499edd0480974ce420a8a885b4349b4a1bb508b3ca2a927564e",
+      "identity": {
+        "sourceCommit": "40900680b3553d7cf6d068a3da6d855c8b56a4b1",
+        "buildId": "2026.11.03-machinery-manual-polish",
+        "protocol": 51,
+        "contentRevision": "9b4db7927068a0b75ba0d915094354eb66102090eeed913b8d013e3c9459233f",
+        "audience": "public",
+        "runtimeSourceSha256": "d329708d42890890d93369db646890aac79e61a6ed7881c2fd9d4a6ec8f68137",
+        "sourceSnapshotSha256": "55c248d209a276fcf60c869d1ef41f544a321a63794d56e8ab421d6671c62edc",
+        "endpoint": "http://127.0.0.1:2699"
+      },
+      "identitySha256": "4bd3d74322ec9173f7e91990efcbfd451087fd3f728eee10acce44f8ea7abc61"
+    },
+    {
+      "path": "output/playtest-manual-cascade-2026-11-03-testing-4090068",
+      "files": 1997,
+      "bytes": 775104487,
+      "treeStatSha256": "41c8049fa394fa5fbc1048e6386a0c4796906d2fa243bcdbd642e71bf7851154",
+      "identity": {
+        "sourceCommit": "40900680b3553d7cf6d068a3da6d855c8b56a4b1",
+        "buildId": "2026.11.03-machinery-manual-polish",
+        "protocol": 51,
+        "contentRevision": "9b4db7927068a0b75ba0d915094354eb66102090eeed913b8d013e3c9459233f",
+        "audience": "testing",
+        "runtimeSourceSha256": "d329708d42890890d93369db646890aac79e61a6ed7881c2fd9d4a6ec8f68137",
+        "sourceSnapshotSha256": "55c248d209a276fcf60c869d1ef41f544a321a63794d56e8ab421d6671c62edc",
+        "endpoint": "http://127.0.0.1:2698"
+      },
+      "identitySha256": "0b930776d61e66d5655fb46a8082921774897711f1d1fdcfa711c1fd4c1b7a6f"
+    },
+    {
+      "path": "output/playtest-opening-chapter-2026-11-01-public-8fc4706",
+      "files": 1701,
+      "bytes": 740619642,
+      "treeStatSha256": "73832bf1fef5201fdb73e29a0c6a047aa4833398f9f820f770b65f5ca1a8597e",
+      "identity": {
+        "sourceCommit": "8fc470663ece1ec3be82de1095c4a524b3e6b107",
+        "buildId": "2026.11.01-opening-chapter",
+        "protocol": 47,
+        "contentRevision": "5b8c858463c86d7e5d2fb70a547dd95ddcb5c38e20be547c39c4f1707e31e779",
+        "audience": "public",
+        "runtimeSourceSha256": "915b80f1de5431840e09a076aa5aaa33febba90cc7e9230d8ddd360575d15d8c",
+        "sourceSnapshotSha256": "49b706263e53b1b5e262c6f59197a0450ed7ace45024b76faafe134ba0cc7d73",
+        "endpoint": "http://127.0.0.1:2679"
+      },
+      "identitySha256": "c60f4a7310956442ddc0845ddd175ecdca6e98696106ada27076fe58437ea52e"
+    },
+    {
+      "path": "output/playtest-opening-chapter-2026-11-01-testing-8fc4706",
+      "files": 1701,
+      "bytes": 740624932,
+      "treeStatSha256": "255eba6c32f2f3dc0240df51ff70a6bfc74e44f4e7304700f465c91bc26ce3e2",
+      "identity": {
+        "sourceCommit": "8fc470663ece1ec3be82de1095c4a524b3e6b107",
+        "buildId": "2026.11.01-opening-chapter",
+        "protocol": 47,
+        "contentRevision": "5b8c858463c86d7e5d2fb70a547dd95ddcb5c38e20be547c39c4f1707e31e779",
+        "audience": "testing",
+        "runtimeSourceSha256": "915b80f1de5431840e09a076aa5aaa33febba90cc7e9230d8ddd360575d15d8c",
+        "sourceSnapshotSha256": "49b706263e53b1b5e262c6f59197a0450ed7ace45024b76faafe134ba0cc7d73",
+        "endpoint": "http://127.0.0.1:2678"
+      },
+      "identitySha256": "3dd3cc3fe64033d9478128af2d6ce55af2af8776454c0339130ac613facf9cf5"
+    },
+    {
+      "path": "output/playtest-ranger-2026-11-02-public-1f3ef92",
+      "files": 1937,
+      "bytes": 759238913,
+      "treeStatSha256": "d9c259a47f9a2b32d01368880506dc1b12ec7e0ae4b66b4acfe6932a595c268f",
+      "identity": {
+        "sourceCommit": "1f3ef9223f98ef7017c058e872e3b2444ad0c699",
+        "buildId": "2026.11.02-ranger",
+        "protocol": 48,
+        "contentRevision": "8bda5e247f3df132a9c80f244fd8a7c2b3eaf468e2c6a8927f87a35937fbe110",
+        "audience": "public",
+        "runtimeSourceSha256": "284b562890f2f75cafd118b7917f66b122ff6d22302fb0a1280773d220867db4",
+        "sourceSnapshotSha256": "0c7d6979d5b3b4ff7a91ad47ea36fd9dd5657eef773b4246deb3cddf8780ad33",
+        "endpoint": "http://127.0.0.1:2687"
+      },
+      "identitySha256": "87d5c3bde8dd477e9a2248bf3c7abe02479b993e7817100ebad813a4594cff58"
+    },
+    {
+      "path": "output/playtest-ranger-2026-11-02-testing-1f3ef92",
+      "files": 1937,
+      "bytes": 759244222,
+      "treeStatSha256": "bd056657630cd57f4e3670990f4f63a9bf504ad76a826aabd51876e733eb4cc7",
+      "identity": {
+        "sourceCommit": "1f3ef9223f98ef7017c058e872e3b2444ad0c699",
+        "buildId": "2026.11.02-ranger",
+        "protocol": 48,
+        "contentRevision": "8bda5e247f3df132a9c80f244fd8a7c2b3eaf468e2c6a8927f87a35937fbe110",
+        "audience": "testing",
+        "runtimeSourceSha256": "284b562890f2f75cafd118b7917f66b122ff6d22302fb0a1280773d220867db4",
+        "sourceSnapshotSha256": "0c7d6979d5b3b4ff7a91ad47ea36fd9dd5657eef773b4246deb3cddf8780ad33",
+        "endpoint": "http://127.0.0.1:2686"
+      },
+      "identitySha256": "e995d2d20fb2cb28a6e2c3056f22e63ec798e70bbb3647b33522c7f1c9768320"
+    },
+    {
+      "path": "output/playtest-shield-specializations-2026-10-31-public-810d9dc",
+      "files": 1701,
+      "bytes": 740033420,
+      "treeStatSha256": "6a86ffd25b8cfafbc4f7a17d76e23fbcd785fa35df7c7d71b2bdd2e9550f930d",
+      "identity": {
+        "sourceCommit": "810d9dcec526b9bf0f844d2e6c2ff0839536aa7d",
+        "buildId": "2026.10.31-shield-specializations",
+        "protocol": 44,
+        "contentRevision": "39fd34dfd7530860d0ecfad5d7e86361438fae9bd3ac93881ec4fe51a3974322",
+        "audience": "public",
+        "runtimeSourceSha256": "7d3ed6ea43bf82dbe29f1d36a0d5a147a22efe588d087ac8d120de284fc03122",
+        "sourceSnapshotSha256": "76100d60ba7b0fd51eb322054f04f222afbe3b20af05c68e4e95d8fa85cc4272",
+        "endpoint": "http://127.0.0.1:2653"
+      },
+      "identitySha256": "c5e2dacfb1b17ae7154f9836d00dc298df4074aa521ab92e52b7743e24d8f1ca"
+    },
+    {
+      "path": "output/playtest-shield-specializations-2026-10-31-testing-810d9dc",
+      "files": 1701,
+      "bytes": 740039115,
+      "treeStatSha256": "031dd7d578f60ad61ce7bf2393fa9b0bd0f882c4d3250d524ffc4b4be1be5c52",
+      "identity": {
+        "sourceCommit": "810d9dcec526b9bf0f844d2e6c2ff0839536aa7d",
+        "buildId": "2026.10.31-shield-specializations",
+        "protocol": 44,
+        "contentRevision": "39fd34dfd7530860d0ecfad5d7e86361438fae9bd3ac93881ec4fe51a3974322",
+        "audience": "testing",
+        "runtimeSourceSha256": "7d3ed6ea43bf82dbe29f1d36a0d5a147a22efe588d087ac8d120de284fc03122",
+        "sourceSnapshotSha256": "76100d60ba7b0fd51eb322054f04f222afbe3b20af05c68e4e95d8fa85cc4272",
+        "endpoint": "http://127.0.0.1:2652"
+      },
+      "identitySha256": "0f8793ed758af046e9c0c91b9ca0701466e6f06536170d6116b2582b41463597"
+    },
+    {
+      "path": "output/playtest-soldier-grenadier-2026-11-05-public-68cb835",
+      "files": 2033,
+      "bytes": 826489166,
+      "treeStatSha256": "73c475b12a9ce522b334fcc41c7a1cc17de5da8245d7d3a4c7fb3beed0a7c6f0",
+      "identity": {
+        "sourceCommit": "68cb835e9f66876270686c14185016f43a8d7f72",
+        "buildId": "2026.11.05-soldier-grenadier",
+        "protocol": 61,
+        "contentRevision": "8cc259ca145f72fd2492e1e1f7576e567fb41a903fc1a8e7fb5fda042379e37f",
+        "audience": "public",
+        "runtimeSourceSha256": "8200b69a59529e606f77b0772fce565e10b466fa766adcabbb78322ba66da929",
+        "sourceSnapshotSha256": "ed033516b241982fa4a9caf488fdc4258950179db70a44fbfd74433fc7f02d5b",
+        "endpoint": "http://127.0.0.1:2729"
+      },
+      "identitySha256": "497871ff7b8a9cbe934712fdebbb0572d34845ca6ac3188bf42220fb481e7bbc"
+    },
+    {
+      "path": "output/playtest-soldier-grenadier-2026-11-05-testing-68cb835",
+      "files": 2033,
+      "bytes": 826494454,
+      "treeStatSha256": "1211f1785f2bf9f63a9625a6a393e79db77475ead63183c16617dd5f6a376dee",
+      "identity": {
+        "sourceCommit": "68cb835e9f66876270686c14185016f43a8d7f72",
+        "buildId": "2026.11.05-soldier-grenadier",
+        "protocol": 61,
+        "contentRevision": "8cc259ca145f72fd2492e1e1f7576e567fb41a903fc1a8e7fb5fda042379e37f",
+        "audience": "testing",
+        "runtimeSourceSha256": "8200b69a59529e606f77b0772fce565e10b466fa766adcabbb78322ba66da929",
+        "sourceSnapshotSha256": "ed033516b241982fa4a9caf488fdc4258950179db70a44fbfd74433fc7f02d5b",
+        "endpoint": "http://127.0.0.1:2728"
+      },
+      "identitySha256": "d50bf15675ce585039d64f6ec9a5b7707d10473d45bb747b18677fc631e08b61"
+    },
+    {
+      "path": "output/playtest-soldier-marksman-2026-11-04-public-afc4274",
+      "files": 2019,
+      "bytes": 806630653,
+      "treeStatSha256": "644bf978aa47c86749c68b92516ccb6787f7648c14c123fb3b45e0a045c76c68",
+      "identity": {
+        "sourceCommit": "afc42747f9eb4dc512deff3fd2680590ebae5663",
+        "buildId": "2026.11.04-soldier-bank-shot",
+        "protocol": 58,
+        "contentRevision": "78d78be91de271588e2c3a35baac583f5f2f93412a89160bff3b58832c4c13f7",
+        "audience": "public",
+        "runtimeSourceSha256": "10f5e398f4b8e453e24bf2b377d5322a4465ffabc9c320dab147a89fed04b2ad",
+        "sourceSnapshotSha256": "a8178bf401e9a89eb467b7fb29b69d713139cb164f11da46e94d1a0ef5bc4648",
+        "endpoint": "http://127.0.0.1:2721"
+      },
+      "identitySha256": "417ba2b9484c0298ac9b57bd80a82a057775bb6ebd1b7afb41ce1eb1ddcc3226"
+    },
+    {
+      "path": "output/playtest-soldier-marksman-2026-11-04-testing-afc4274",
+      "files": 2019,
+      "bytes": 806635939,
+      "treeStatSha256": "c2bee22ecc349bb46301ebb51810e32e1bdf168db35b8a0e4901b3bc5cd6c12f",
+      "identity": {
+        "sourceCommit": "afc42747f9eb4dc512deff3fd2680590ebae5663",
+        "buildId": "2026.11.04-soldier-bank-shot",
+        "protocol": 58,
+        "contentRevision": "78d78be91de271588e2c3a35baac583f5f2f93412a89160bff3b58832c4c13f7",
+        "audience": "testing",
+        "runtimeSourceSha256": "10f5e398f4b8e453e24bf2b377d5322a4465ffabc9c320dab147a89fed04b2ad",
+        "sourceSnapshotSha256": "a8178bf401e9a89eb467b7fb29b69d713139cb164f11da46e94d1a0ef5bc4648",
+        "endpoint": "http://127.0.0.1:2720"
+      },
+      "identitySha256": "6f330e2b5011a06abdf2f764cf42be1ebe2b7ef517c167a760b04007f8adf030"
+    },
+    {
+      "path": "output/playtest-soldier-marksman-depth-2026-11-05-public-99f7d3a",
+      "files": 2022,
+      "bytes": 811069511,
+      "treeStatSha256": "3fdfacb07d768d2ffc024a6a438996c7fbb79991e29850c2af97b3553aa02188",
+      "identity": {
+        "sourceCommit": "99f7d3a1264ec8c5575c9d598f1c1efcddc6239f",
+        "buildId": "2026.11.05-marksman-measured-pair",
+        "protocol": 59,
+        "contentRevision": "87a0e537a0bb27015572bd340c9761b1a05298d8c6250817a25d5011433b144f",
+        "audience": "public",
+        "runtimeSourceSha256": "8e04a09cbea8b1250262576a20cefa64797c35a2d4dd896d3496f54d25048c58",
+        "sourceSnapshotSha256": "33156ae1b9e3d4179e540e8f79a5ec9e6e13bd9f24ff20502d0d4d0f92921473",
+        "endpoint": "http://127.0.0.1:2725"
+      },
+      "identitySha256": "898e1a5a78700d760b5bfccce357a58b7c636543982c6696f641e746d5819175"
+    },
+    {
+      "path": "output/playtest-soldier-marksman-depth-2026-11-05-testing-99f7d3a",
+      "files": 2022,
+      "bytes": 811074800,
+      "treeStatSha256": "dbe7fa3392cb4cc1b06636b68a67bf0ab0102d0ac6ad3bd5c452bf240698b751",
+      "identity": {
+        "sourceCommit": "99f7d3a1264ec8c5575c9d598f1c1efcddc6239f",
+        "buildId": "2026.11.05-marksman-measured-pair",
+        "protocol": 59,
+        "contentRevision": "87a0e537a0bb27015572bd340c9761b1a05298d8c6250817a25d5011433b144f",
+        "audience": "testing",
+        "runtimeSourceSha256": "8e04a09cbea8b1250262576a20cefa64797c35a2d4dd896d3496f54d25048c58",
+        "sourceSnapshotSha256": "33156ae1b9e3d4179e540e8f79a5ec9e6e13bd9f24ff20502d0d4d0f92921473",
+        "endpoint": "http://127.0.0.1:2724"
+      },
+      "identitySha256": "0e9e64c114a0958f80b274b18d28697b5a326c4c5be6bb79b7738f5c8693415b"
+    },
+    {
+      "path": "output/playtest-soldier-marksman-late-2026-11-05-public-b5c3f5e",
+      "files": 2025,
+      "bytes": 815362813,
+      "treeStatSha256": "b377603823ac896d9ff9f8144a3abc31e547cca58c1f134e3bdb969cd16734d7",
+      "identity": {
+        "sourceCommit": "b5c3f5e123073a64c22f0ca09a592f5021d6a618",
+        "buildId": "2026.11.05-marksman-twin-lanes",
+        "protocol": 60,
+        "contentRevision": "4ab2898a2eb9f7f6b6041753cac7a7d6a2ebc7581e6256e79e9858c95567d232",
+        "audience": "public",
+        "runtimeSourceSha256": "45dabce7b46e53f31f8349c34407a8764fc31e8736cff4dffc1cbb196038f6e0",
+        "sourceSnapshotSha256": "369fd215c85874343d33fb7e1ec1b647e554791d3684b8c9128eb41e429961a3",
+        "endpoint": "http://127.0.0.1:2727"
+      },
+      "identitySha256": "b3158c3a866c18b7ff5d79622a003026f42dfc7d5bb375206dc4188a46f76b7d"
+    },
+    {
+      "path": "output/playtest-soldier-marksman-late-2026-11-05-testing-b5c3f5e",
+      "files": 2025,
+      "bytes": 815368102,
+      "treeStatSha256": "22cfba8a1268ac03ad95c3831b3c6f4f292605893f9bcf845fec43c4dc45fa95",
+      "identity": {
+        "sourceCommit": "b5c3f5e123073a64c22f0ca09a592f5021d6a618",
+        "buildId": "2026.11.05-marksman-twin-lanes",
+        "protocol": 60,
+        "contentRevision": "4ab2898a2eb9f7f6b6041753cac7a7d6a2ebc7581e6256e79e9858c95567d232",
+        "audience": "testing",
+        "runtimeSourceSha256": "45dabce7b46e53f31f8349c34407a8764fc31e8736cff4dffc1cbb196038f6e0",
+        "sourceSnapshotSha256": "369fd215c85874343d33fb7e1ec1b647e554791d3684b8c9128eb41e429961a3",
+        "endpoint": "http://127.0.0.1:2726"
+      },
+      "identitySha256": "6860fe58b0fa116a5db60cb2e0c2698475b3f7263c1d944cb4a5197348df64f5"
+    },
+    {
+      "path": "output/playtest-soldier-marksman-sync-2026-11-05-public-22d0df8",
+      "files": 2019,
+      "bytes": 806630653,
+      "treeStatSha256": "be0c2ac6159f34cc70dcbe240e2cd92157d8068b9fa39d245ceb89fbe537ee28",
+      "identity": {
+        "sourceCommit": "22d0df8072fc146285096eaa9223df905edbd41a",
+        "buildId": "2026.11.04-soldier-bank-shot",
+        "protocol": 58,
+        "contentRevision": "78d78be91de271588e2c3a35baac583f5f2f93412a89160bff3b58832c4c13f7",
+        "audience": "public",
+        "runtimeSourceSha256": "10f5e398f4b8e453e24bf2b377d5322a4465ffabc9c320dab147a89fed04b2ad",
+        "sourceSnapshotSha256": "f9c9d55d95620fcae8605bc56afd504736a60c12007f548f7fd32cac427b3d4f",
+        "endpoint": "http://127.0.0.1:2723"
+      },
+      "identitySha256": "c5e6ec0786a93cde34a09d8281b252d2e001b299bc36b3eb4c8fc808fc952b22"
+    },
+    {
+      "path": "output/playtest-soldier-marksman-sync-2026-11-05-testing-22d0df8",
+      "files": 2019,
+      "bytes": 806635939,
+      "treeStatSha256": "9b5498ec82eab95e4777d0362c1772773e05583aa99e751dd1c24ec10de23391",
+      "identity": {
+        "sourceCommit": "22d0df8072fc146285096eaa9223df905edbd41a",
+        "buildId": "2026.11.04-soldier-bank-shot",
+        "protocol": 58,
+        "contentRevision": "78d78be91de271588e2c3a35baac583f5f2f93412a89160bff3b58832c4c13f7",
+        "audience": "testing",
+        "runtimeSourceSha256": "10f5e398f4b8e453e24bf2b377d5322a4465ffabc9c320dab147a89fed04b2ad",
+        "sourceSnapshotSha256": "f9c9d55d95620fcae8605bc56afd504736a60c12007f548f7fd32cac427b3d4f",
+        "endpoint": "http://127.0.0.1:2722"
+      },
+      "identitySha256": "38b678336c82904513183cc73a5c0bed07c605f5a3151f5b226bfbab1c2a8ed1"
+    },
+    {
+      "path": "output/playtest-soldier-reload-2026-11-04-public-84b6bba",
+      "files": 2016,
+      "bytes": 803440185,
+      "treeStatSha256": "f4db56197669fc89c9581b9b6295610943a433ba3b068d0ba385c828be87cbb3",
+      "identity": {
+        "sourceCommit": "84b6bbad3cc0a759a456cf20af2298c3b4c7a751",
+        "buildId": "2026.11.04-soldier-roving-load",
+        "protocol": 56,
+        "contentRevision": "833b5a88a27000579adf2b9d5c12f113805d83184eb99dae71f9fba8cbf6a2fd",
+        "audience": "public",
+        "runtimeSourceSha256": "b6697a454108b6213e4e0d8da78bfb22095794a0cfd2a1c46d4dae9b68b6ee5c",
+        "sourceSnapshotSha256": "f6eec31e8c81320930385be3f51e6fb1c9c9954342f2d7ea461276b9a3655fb2",
+        "endpoint": "http://127.0.0.1:2717"
+      },
+      "identitySha256": "c0ace32d8a6039aca1cb82cd1258604d3da9026714fe2d12e6091cb777f583b7"
+    },
+    {
+      "path": "output/playtest-soldier-reload-2026-11-04-testing-84b6bba",
+      "files": 2016,
+      "bytes": 803445474,
+      "treeStatSha256": "7efad05a893957b54439b2f10c217de4e359f4e8a06f256ed79b9634c1238ecb",
+      "identity": {
+        "sourceCommit": "84b6bbad3cc0a759a456cf20af2298c3b4c7a751",
+        "buildId": "2026.11.04-soldier-roving-load",
+        "protocol": 56,
+        "contentRevision": "833b5a88a27000579adf2b9d5c12f113805d83184eb99dae71f9fba8cbf6a2fd",
+        "audience": "testing",
+        "runtimeSourceSha256": "b6697a454108b6213e4e0d8da78bfb22095794a0cfd2a1c46d4dae9b68b6ee5c",
+        "sourceSnapshotSha256": "f6eec31e8c81320930385be3f51e6fb1c9c9954342f2d7ea461276b9a3655fb2",
+        "endpoint": "http://127.0.0.1:2716"
+      },
+      "identitySha256": "1ef807e6b32babda00d9c3da3d9e9cba137801d0bed2922a017fc95c4a84776f"
+    },
+    {
+      "path": "output/playtest-soldier-skirmisher-2026-11-04-public-ef502f7",
+      "files": 2014,
+      "bytes": 800287837,
+      "treeStatSha256": "e9e86f73f321704cc7a4e536f6d27e0fbb213735b53d318b5b4f1261c968fe59",
+      "identity": {
+        "sourceCommit": "ef502f7c291525bcc3f2464aa976e73a0271383b",
+        "buildId": "2026.11.04-soldier-skirmisher-step",
+        "protocol": 55,
+        "contentRevision": "da03a1304940cf65d0a3298fba1c5e4d84c53a199203f0e3f4c42081c9ec3de6",
+        "audience": "public",
+        "runtimeSourceSha256": "ec418b2c67fe707d5066d552ca8e82dfabfefe504de0416bcf361ad3426b13f1",
+        "sourceSnapshotSha256": "16c11717224d168e763985e19148835e2fd64ae8918cec0eb346cdc17ceb635b",
+        "endpoint": "http://127.0.0.1:2715"
+      },
+      "identitySha256": "0fe8b5d51c0e6fc43d8bce4a3648f2d6932acb7b4ea9a2d7ef62b7b92955b996"
+    },
+    {
+      "path": "output/playtest-soldier-skirmisher-2026-11-04-testing-ef502f7",
+      "files": 2014,
+      "bytes": 800293122,
+      "treeStatSha256": "c5893705a83664bad7449b8b27a0aa50023a1659d20432472781e1f75a8b5fdf",
+      "identity": {
+        "sourceCommit": "ef502f7c291525bcc3f2464aa976e73a0271383b",
+        "buildId": "2026.11.04-soldier-skirmisher-step",
+        "protocol": 55,
+        "contentRevision": "da03a1304940cf65d0a3298fba1c5e4d84c53a199203f0e3f4c42081c9ec3de6",
+        "audience": "testing",
+        "runtimeSourceSha256": "ec418b2c67fe707d5066d552ca8e82dfabfefe504de0416bcf361ad3426b13f1",
+        "sourceSnapshotSha256": "16c11717224d168e763985e19148835e2fd64ae8918cec0eb346cdc17ceb635b",
+        "endpoint": "http://127.0.0.1:2714"
+      },
+      "identitySha256": "944952fd8c7652bfa96546e3a329f192dbfdd74ecdb050b023c61651728894c3"
+    },
+    {
+      "path": "output/playtest-soldier-sniper-2026-11-05-public-d5bc833",
+      "files": 2034,
+      "bytes": 827606976,
+      "treeStatSha256": "1833a5082b2d607a0d42f7491d505aafb45412fa692c7bebfb216f3a98d15d74",
+      "identity": {
+        "sourceCommit": "d5bc83359e2cf5bb9efd410033ff89803f060b9d",
+        "buildId": "2026.11.05-sniper-settled-shot",
+        "protocol": 62,
+        "contentRevision": "dbed606e76c6a9eca213580505238a0b82ee041ec1590264b062e614928ae14c",
+        "audience": "public",
+        "runtimeSourceSha256": "779ef75a274a0c6a02c574d0610ea7cec3c4766dc58a3b8e1e86d9a0cb920ed1",
+        "sourceSnapshotSha256": "9fe6eaf0311975f4696be775afbe3acee9a18f92886a04f40dfe2cdcea8e6579",
+        "endpoint": "http://127.0.0.1:2731"
+      },
+      "identitySha256": "d75cdedcc30040658d6286449e74982d003c8eb0a7bb169d5d9cc6f90e14c180"
+    },
+    {
+      "path": "output/playtest-soldier-sniper-2026-11-05-testing-d5bc833",
+      "files": 2034,
+      "bytes": 827612265,
+      "treeStatSha256": "7ee831dd5b1637128cfcca86991b64680b076e80889b3a3bdd1ee86dc7e2df41",
+      "identity": {
+        "sourceCommit": "d5bc83359e2cf5bb9efd410033ff89803f060b9d",
+        "buildId": "2026.11.05-sniper-settled-shot",
+        "protocol": 62,
+        "contentRevision": "dbed606e76c6a9eca213580505238a0b82ee041ec1590264b062e614928ae14c",
+        "audience": "testing",
+        "runtimeSourceSha256": "779ef75a274a0c6a02c574d0610ea7cec3c4766dc58a3b8e1e86d9a0cb920ed1",
+        "sourceSnapshotSha256": "9fe6eaf0311975f4696be775afbe3acee9a18f92886a04f40dfe2cdcea8e6579",
+        "endpoint": "http://127.0.0.1:2730"
+      },
+      "identitySha256": "e953e4cd5698ebacdde634d6b2fcc1355d05a8f0bac3ba3d0ff961c417654a42"
+    },
+    {
+      "path": "output/playtest-soldier-sniper-bore-2026-11-05-public-81d818a",
+      "files": 2037,
+      "bytes": 831326225,
+      "treeStatSha256": "3b2112541eaa354b1a5f97a7d9de7a600137b18546eb557a095d9738d12bd30b",
+      "identity": {
+        "sourceCommit": "81d818a0f079a6b2245a123f76e532db5e7da71c",
+        "buildId": "2026.11.05-sniper-bore",
+        "protocol": 64,
+        "contentRevision": "dc74b9f4d60656db95f0ccaac4b73cda247cc9834370ddbc21df222fcd76e8b9",
+        "audience": "public",
+        "runtimeSourceSha256": "6a3ba6e2cca30237b54c7d7cc232fbc25a79dc7456d2bdf12b38961c6855bd76",
+        "sourceSnapshotSha256": "33af2386a350f339c19c91a45fe94ca3b2e6e8cc8195911d96dfa719d2aa9444",
+        "endpoint": "http://127.0.0.1:2735"
+      },
+      "identitySha256": "2fa524d32234d7e10e10197e307b5ca46f39d52ede7545f341f823c059fbe083"
+    },
+    {
+      "path": "output/playtest-soldier-sniper-bore-2026-11-05-testing-81d818a",
+      "files": 2037,
+      "bytes": 831331512,
+      "treeStatSha256": "1365d63256def4a221e9e361ef583ff055a470067c0994bb8acc2a9ef9d734ee",
+      "identity": {
+        "sourceCommit": "81d818a0f079a6b2245a123f76e532db5e7da71c",
+        "buildId": "2026.11.05-sniper-bore",
+        "protocol": 64,
+        "contentRevision": "dc74b9f4d60656db95f0ccaac4b73cda247cc9834370ddbc21df222fcd76e8b9",
+        "audience": "testing",
+        "runtimeSourceSha256": "6a3ba6e2cca30237b54c7d7cc232fbc25a79dc7456d2bdf12b38961c6855bd76",
+        "sourceSnapshotSha256": "33af2386a350f339c19c91a45fe94ca3b2e6e8cc8195911d96dfa719d2aa9444",
+        "endpoint": "http://127.0.0.1:2734"
+      },
+      "identitySha256": "67b407c9f1729303a4a5a3003ea084726085f54c9eb6491e0e63e93ae96de3d0"
+    },
+    {
+      "path": "output/playtest-soldier-sniper-depth-2026-11-05-public-9e09c75",
+      "files": 2036,
+      "bytes": 829865055,
+      "treeStatSha256": "b87bb5567047c43e9e0d2315b259a1dd829b08c3d3e94b0cdd470fe6d23727fe",
+      "identity": {
+        "sourceCommit": "9e09c75cc76ac63092abb9d175d6214cc72daf20",
+        "buildId": "2026.11.05-sniper-handling",
+        "protocol": 63,
+        "contentRevision": "ab9c05008157f8aa069f47c7f23cb022622f0d0ef6be51424ae5ce2b91cc6230",
+        "audience": "public",
+        "runtimeSourceSha256": "39fa8794d1f3a816266865abe374305b104a5b1bb9adab74505ea4ffd78eb797",
+        "sourceSnapshotSha256": "0afc6d56edbea36d710a61a0cc1349940c46ffb1370da3a66e65627ec6f01fdf",
+        "endpoint": "http://127.0.0.1:2733"
+      },
+      "identitySha256": "acfee21fc2d69a6b5a83b7bd259c3fb1eafa04dca3365447d5f11f89a2c92791"
+    },
+    {
+      "path": "output/playtest-soldier-sniper-depth-2026-11-05-testing-9e09c75",
+      "files": 2036,
+      "bytes": 829870342,
+      "treeStatSha256": "a90aedf6e108c7088c14fb55d6fc925cc62160b5e5d2e1c09ab78659e64cc3f5",
+      "identity": {
+        "sourceCommit": "9e09c75cc76ac63092abb9d175d6214cc72daf20",
+        "buildId": "2026.11.05-sniper-handling",
+        "protocol": 63,
+        "contentRevision": "ab9c05008157f8aa069f47c7f23cb022622f0d0ef6be51424ae5ce2b91cc6230",
+        "audience": "testing",
+        "runtimeSourceSha256": "39fa8794d1f3a816266865abe374305b104a5b1bb9adab74505ea4ffd78eb797",
+        "sourceSnapshotSha256": "0afc6d56edbea36d710a61a0cc1349940c46ffb1370da3a66e65627ec6f01fdf",
+        "endpoint": "http://127.0.0.1:2732"
+      },
+      "identitySha256": "9dfbaa737c3a6e25298b0a4b14e9d63805bc7d551d85fd24782288a23616acf9"
+    },
+    {
+      "path": "output/playtest-soldier-sniper-rest-2026-11-06-public-3ebc3b8",
+      "files": 2038,
+      "bytes": 832597119,
+      "treeStatSha256": "719b21a92b2d26fd9e818d179f733f071a29e89ab938160b1445f21e979a3cac",
+      "identity": {
+        "sourceCommit": "3ebc3b86b7370e0253d56ac2e064b2700485cc4e",
+        "buildId": "2026.11.06-sniper-field-rest",
+        "protocol": 65,
+        "contentRevision": "b63c012f16073da48f623c3bee255bbb42126545f831e6c9e5ce4053fabee052",
+        "audience": "public",
+        "runtimeSourceSha256": "ddf1950bde9e8224217f8838e9b71bcbc942071856fc214db0a1c74077f2c70a",
+        "sourceSnapshotSha256": "231a02a719b99d688652c0b1227e249fa98fbf174448d57bcacd8e21b91ec6ee",
+        "endpoint": "http://127.0.0.1:2737"
+      },
+      "identitySha256": "2328d0b6a0c1d2989a203c1f92bb32a6eccbd66bbb3f815d0d5b756382ef45b1"
+    },
+    {
+      "path": "output/playtest-soldier-sniper-rest-2026-11-06-testing-3ebc3b8",
+      "files": 2038,
+      "bytes": 832602406,
+      "treeStatSha256": "7b585c86b3f2cbf88d4c2c5412f559760ff61f5b3b686c0b549854880b051cc0",
+      "identity": {
+        "sourceCommit": "3ebc3b86b7370e0253d56ac2e064b2700485cc4e",
+        "buildId": "2026.11.06-sniper-field-rest",
+        "protocol": 65,
+        "contentRevision": "b63c012f16073da48f623c3bee255bbb42126545f831e6c9e5ce4053fabee052",
+        "audience": "testing",
+        "runtimeSourceSha256": "ddf1950bde9e8224217f8838e9b71bcbc942071856fc214db0a1c74077f2c70a",
+        "sourceSnapshotSha256": "231a02a719b99d688652c0b1227e249fa98fbf174448d57bcacd8e21b91ec6ee",
+        "endpoint": "http://127.0.0.1:2736"
+      },
+      "identitySha256": "e883bf33657bb187f281cbe4c0f461015d601a319b224474cc78f1df8f4493a9"
+    },
+    {
+      "path": "output/playtest-soldier-sniper-withdrawal-2026-11-06-public-6345afc",
+      "files": 2039,
+      "bytes": 833689571,
+      "treeStatSha256": "d1c2dc565f18b9e539d58fdd9337bf0d320c64b2401314b7408510b3d0516273",
+      "identity": {
+        "sourceCommit": "6345afc1ae9fdab087126cb608dd2c95ec82b92f",
+        "buildId": "2026.11.06-sniper-prepared-withdrawal",
+        "protocol": 66,
+        "contentRevision": "1733aa5ad71626b1c2d08231f4fa1c3ebc87ec72cbd4e5eff60c3ddc96e86c9a",
+        "audience": "public",
+        "runtimeSourceSha256": "2be654c5a6406ad631868da6b8f0aef79db4d6575157fd5a347d5ff4836d5495",
+        "sourceSnapshotSha256": "c299268a500dce036288024b7f038248cd024dd1890ca0e9ab34b5e5165e8e9d",
+        "endpoint": "http://127.0.0.1:2739"
+      },
+      "identitySha256": "82f78db6608617a28d69dd9bd00504a9f1208e0e01950f027e770d79aaf7b3d3"
+    },
+    {
+      "path": "output/playtest-soldier-sniper-withdrawal-2026-11-06-testing-6345afc",
+      "files": 2039,
+      "bytes": 833694858,
+      "treeStatSha256": "f36c7f8c210c4db96840ddc92ee295c9f30957c9b02df4681cc6a8bcb90616fa",
+      "identity": {
+        "sourceCommit": "6345afc1ae9fdab087126cb608dd2c95ec82b92f",
+        "buildId": "2026.11.06-sniper-prepared-withdrawal",
+        "protocol": 66,
+        "contentRevision": "1733aa5ad71626b1c2d08231f4fa1c3ebc87ec72cbd4e5eff60c3ddc96e86c9a",
+        "audience": "testing",
+        "runtimeSourceSha256": "2be654c5a6406ad631868da6b8f0aef79db4d6575157fd5a347d5ff4836d5495",
+        "sourceSnapshotSha256": "c299268a500dce036288024b7f038248cd024dd1890ca0e9ab34b5e5165e8e9d",
+        "endpoint": "http://127.0.0.1:2738"
+      },
+      "identitySha256": "29f5f8d0e4aa844ba8498e2c6718aa3b4416c230673da77eac4bd66a83df9705"
+    },
+    {
+      "path": "output/playtest-soldier-volley-2026-11-04-public-d9abd98",
+      "files": 2018,
+      "bytes": 805476483,
+      "treeStatSha256": "6c1ba0fa0fb52247badecfe31abd34ba754a81c68a29efc5a65557a27c693a0a",
+      "identity": {
+        "sourceCommit": "d9abd98da876da7d5fb386e85e37f2ff232f9ff5",
+        "buildId": "2026.11.04-soldier-running-volley",
+        "protocol": 57,
+        "contentRevision": "d86d223b830a1bd0a75ad54e5fa4ee1b69075313e05d32502c12672559ffb4cd",
+        "audience": "public",
+        "runtimeSourceSha256": "6116d42e2920607139f12772db7347dabfbb2403bbb498f4a6509fd9afe45232",
+        "sourceSnapshotSha256": "69ba45a977543e37c6a65a1367c615712f77a9dbfc2bb61419e2ea17f71bd0dc",
+        "endpoint": "http://127.0.0.1:2719"
+      },
+      "identitySha256": "fee7c6755059bea29e1345dfa5db070768c7b83a60621e25064289aa019b68c9"
+    },
+    {
+      "path": "output/playtest-soldier-volley-2026-11-04-testing-d9abd98",
+      "files": 2018,
+      "bytes": 805481772,
+      "treeStatSha256": "bccf141c634b2b1490b7710e3a19aa8bdac487388059173e947dd51c0cf60087",
+      "identity": {
+        "sourceCommit": "d9abd98da876da7d5fb386e85e37f2ff232f9ff5",
+        "buildId": "2026.11.04-soldier-running-volley",
+        "protocol": 57,
+        "contentRevision": "d86d223b830a1bd0a75ad54e5fa4ee1b69075313e05d32502c12672559ffb4cd",
+        "audience": "testing",
+        "runtimeSourceSha256": "6116d42e2920607139f12772db7347dabfbb2403bbb498f4a6509fd9afe45232",
+        "sourceSnapshotSha256": "69ba45a977543e37c6a65a1367c615712f77a9dbfc2bb61419e2ea17f71bd0dc",
+        "endpoint": "http://127.0.0.1:2718"
+      },
+      "identitySha256": "3a1563eabe4dc357a1ee3367519e3ad2b4ce145b037b131e5a5053cd6d66b9a3"
+    },
+    {
+      "path": "output/playtest-station-signals-2026-10-31-public-ea08414",
+      "files": 1701,
+      "bytes": 740417658,
+      "treeStatSha256": "2648cc978274528316537d5a193145cb5795057a0a0002df491fc060d81305da",
+      "identity": {
+        "sourceCommit": "ea08414c2b1463c5f26f85c02c4ece8eac0a8735",
+        "buildId": "2026.10.31-station-signals",
+        "protocol": 47,
+        "contentRevision": "77b0d920d24b5f96e422f6697e8346e04cc88159920954261508b30d878d0264",
+        "audience": "public",
+        "runtimeSourceSha256": "f6f73e124c10e03c43ed2a207dc74f80e01e70df5eeedb6d3a90b7e60cdcd54f",
+        "sourceSnapshotSha256": "800edd1a6aa7e96022528fabbeacce547d0963dde865a37267e5f5956ef14ed3",
+        "endpoint": "http://127.0.0.1:2669"
+      },
+      "identitySha256": "e3d64b75c8ec8d46c8a56818616c29b368590c2b66316f00b645e333545abbe5"
+    },
+    {
+      "path": "output/playtest-station-signals-2026-10-31-testing-ea08414",
+      "files": 1701,
+      "bytes": 740423069,
+      "treeStatSha256": "eec167e4ac2d8d415c0a71a7ef02629c21ec4d60d28e6972fbb58b50f5c53925",
+      "identity": {
+        "sourceCommit": "ea08414c2b1463c5f26f85c02c4ece8eac0a8735",
+        "buildId": "2026.10.31-station-signals",
+        "protocol": 47,
+        "contentRevision": "77b0d920d24b5f96e422f6697e8346e04cc88159920954261508b30d878d0264",
+        "audience": "testing",
+        "runtimeSourceSha256": "f6f73e124c10e03c43ed2a207dc74f80e01e70df5eeedb6d3a90b7e60cdcd54f",
+        "sourceSnapshotSha256": "800edd1a6aa7e96022528fabbeacce547d0963dde865a37267e5f5956ef14ed3",
+        "endpoint": "http://127.0.0.1:2668"
+      },
+      "identitySha256": "252ca5c6feab907583634faafdcad981ed0c2d6c7f112bbf0deab8559df6febe"
+    },
+    {
+      "path": "output/playtest-story-campaign-2026-10-31-public-4448f8d",
+      "files": 1701,
+      "bytes": 740190289,
+      "treeStatSha256": "2a9c5d124c600d8e01ed654d0f3def21eb943e362bb5efbd298d567b7dd10284",
+      "identity": {
+        "sourceCommit": "4448f8d913a2e3c789afe22f57ab1699874c7d97",
+        "buildId": "2026.10.31-open-ledger",
+        "protocol": 46,
+        "contentRevision": "22f660b0d378316283eb081b458adcc4cd827f7465d9089ed9146ab2ac242c9c",
+        "audience": "public",
+        "runtimeSourceSha256": "377ae0549b55fa04d3568af98dd3ab5e429729334b6213dd49aa10edee55f63d",
+        "sourceSnapshotSha256": "ea47cf96f6c48532ce40d8cb5938e5e629d597263dc99d1d5e3945965b2b3e38",
+        "endpoint": "http://127.0.0.1:2659"
+      },
+      "identitySha256": "1077b27dc1cedd95fa3f5a3a92dd899a8b9488288139e400eb792e0d2530a3d0"
+    },
+    {
+      "path": "output/playtest-story-campaign-2026-10-31-testing-4448f8d",
+      "files": 1701,
+      "bytes": 740195875,
+      "treeStatSha256": "4e069d2fa397b52762e5b544cf33e54c4ede1286884a16cf35150010675fed29",
+      "identity": {
+        "sourceCommit": "4448f8d913a2e3c789afe22f57ab1699874c7d97",
+        "buildId": "2026.10.31-open-ledger",
+        "protocol": 46,
+        "contentRevision": "22f660b0d378316283eb081b458adcc4cd827f7465d9089ed9146ab2ac242c9c",
+        "audience": "testing",
+        "runtimeSourceSha256": "377ae0549b55fa04d3568af98dd3ab5e429729334b6213dd49aa10edee55f63d",
+        "sourceSnapshotSha256": "ea47cf96f6c48532ce40d8cb5938e5e629d597263dc99d1d5e3945965b2b3e38",
+        "endpoint": "http://127.0.0.1:2658"
+      },
+      "identitySha256": "ae408b5bb4cdec66827471beea679946b0c391b492699e6cc4872cdc33257160"
+    },
+    {
+      "path": "output/playtest-story-editions-2026-10-31-public-1e1a728",
+      "files": 1701,
+      "bytes": 740276304,
+      "treeStatSha256": "80caaab9d00e85db5b813ca28914995014060c9b7120a06f251320a9c2312b59",
+      "identity": {
+        "sourceCommit": "1e1a72856e476d41939ab766c190589e78d9789a",
+        "buildId": "2026.10.31-story-editions",
+        "protocol": 46,
+        "contentRevision": "31bcd58adcfd8d9d1d76fc23b484237e68c266a513f2dedb2571f8a09067e131",
+        "audience": "public",
+        "runtimeSourceSha256": "72672db7dbc00931f54ef5cc3120c68ceebf590bcce894783ff3909b91b4372e",
+        "sourceSnapshotSha256": "380e5e0da75605c939dd2f956f2eea627aa4e50d0aa61853e47fc167a30813a8",
+        "endpoint": "http://127.0.0.1:2665"
+      },
+      "identitySha256": "b5ec57634b372cc9fda4e608cc916e0d7bb628175c93c7d28349ea3bbb2ee4fd"
+    },
+    {
+      "path": "output/playtest-story-editions-2026-10-31-testing-1e1a728",
+      "files": 1701,
+      "bytes": 740281890,
+      "treeStatSha256": "900f1686eb15d4eb0d7b6261f67b91e73c86b095d2b186b88912e25d6fadee94",
+      "identity": {
+        "sourceCommit": "1e1a72856e476d41939ab766c190589e78d9789a",
+        "buildId": "2026.10.31-story-editions",
+        "protocol": 46,
+        "contentRevision": "31bcd58adcfd8d9d1d76fc23b484237e68c266a513f2dedb2571f8a09067e131",
+        "audience": "testing",
+        "runtimeSourceSha256": "72672db7dbc00931f54ef5cc3120c68ceebf590bcce894783ff3909b91b4372e",
+        "sourceSnapshotSha256": "380e5e0da75605c939dd2f956f2eea627aa4e50d0aa61853e47fc167a30813a8",
+        "endpoint": "http://127.0.0.1:2664"
+      },
+      "identitySha256": "e882c7cbaebdc84f1364fa27451aaa9104e05b5bfe4ca6d327138ecedc84822c"
+    },
+    {
+      "path": "output/playtest-story-hubs-2026-10-31-public-01ae374",
+      "files": 1701,
+      "bytes": 740372873,
+      "treeStatSha256": "0403a4bde25636e2a7b0a06f66f9194cb382ce1ad97cc665fed862e540bfa977",
+      "identity": {
+        "sourceCommit": "01ae374cbcf37a27600dc42d3d96e52161daaa16",
+        "buildId": "2026.10.31-story-hubs",
+        "protocol": 47,
+        "contentRevision": "f464a132bbc18083c5780239f18f24ff447a5be87de3e64db22d6881e7793290",
+        "audience": "public",
+        "runtimeSourceSha256": "62912679127a34430d93aff4c01c679248cbdd0f9a204051677cf37806a9ab83",
+        "sourceSnapshotSha256": "42109fc2b1fbc6ff26060feffbe13dd0e8c39e73b32b0704bc95f5379a84d0fa",
+        "endpoint": "http://127.0.0.1:2667"
+      },
+      "identitySha256": "cbfa0c553e48ce3fa8b86e4fa7a1fb390afa036a81758224670504fa2a3c50f0"
+    },
+    {
+      "path": "output/playtest-story-hubs-2026-10-31-testing-01ae374",
+      "files": 1701,
+      "bytes": 740378284,
+      "treeStatSha256": "1f13d0d3b6d5aba7ed771a7209de65b2cc73998ab339022660ac64779bc075d1",
+      "identity": {
+        "sourceCommit": "01ae374cbcf37a27600dc42d3d96e52161daaa16",
+        "buildId": "2026.10.31-story-hubs",
+        "protocol": 47,
+        "contentRevision": "f464a132bbc18083c5780239f18f24ff447a5be87de3e64db22d6881e7793290",
+        "audience": "testing",
+        "runtimeSourceSha256": "62912679127a34430d93aff4c01c679248cbdd0f9a204051677cf37806a9ab83",
+        "sourceSnapshotSha256": "42109fc2b1fbc6ff26060feffbe13dd0e8c39e73b32b0704bc95f5379a84d0fa",
+        "endpoint": "http://127.0.0.1:2666"
+      },
+      "identitySha256": "b2e76532d1fc3ddabe477722b1709054816d2767dbe74a53e9134ee35ab8f11a"
+    },
+    {
+      "path": "output/playtest-story-journal-2026-10-31-public-23afb5d",
+      "files": 1701,
+      "bytes": 740247297,
+      "treeStatSha256": "b971734aeaae3a0d27be06a28c43cba383c59a38a81fa6de17e808dc3be838cb",
+      "identity": {
+        "sourceCommit": "23afb5d41b69bee83a891e0757461bc30a8045e7",
+        "buildId": "2026.10.31-story-journal",
+        "protocol": 46,
+        "contentRevision": "31bcd58adcfd8d9d1d76fc23b484237e68c266a513f2dedb2571f8a09067e131",
+        "audience": "public",
+        "runtimeSourceSha256": "a49c96329946b6876c3025a247e28f4576820948ad17758306820e06a6dabda9",
+        "sourceSnapshotSha256": "9e00bd30f78812c4ceeac0d79fe9482ebc23ffb53728c1aca7d27f3d258977e7",
+        "endpoint": "http://127.0.0.1:2663"
+      },
+      "identitySha256": "1f8403c245ea2a1741ac69a55dd633e11d86574cb878cfa0151a76048e4fb90e"
+    },
+    {
+      "path": "output/playtest-story-journal-2026-10-31-testing-23afb5d",
+      "files": 1701,
+      "bytes": 740252883,
+      "treeStatSha256": "6b2556aac40355c2065f1038627b7989bf8bfe746136e628d2d8807d3be549e1",
+      "identity": {
+        "sourceCommit": "23afb5d41b69bee83a891e0757461bc30a8045e7",
+        "buildId": "2026.10.31-story-journal",
+        "protocol": 46,
+        "contentRevision": "31bcd58adcfd8d9d1d76fc23b484237e68c266a513f2dedb2571f8a09067e131",
+        "audience": "testing",
+        "runtimeSourceSha256": "a49c96329946b6876c3025a247e28f4576820948ad17758306820e06a6dabda9",
+        "sourceSnapshotSha256": "9e00bd30f78812c4ceeac0d79fe9482ebc23ffb53728c1aca7d27f3d258977e7",
+        "endpoint": "http://127.0.0.1:2662"
+      },
+      "identitySha256": "39c8d3dc4aee74d71264c3163dc60cab7cb2c2b54931c17d05ab5fd73d9724c9"
+    },
+    {
+      "path": "output/playtest-story-voices-2026-10-31-public-fc383d8",
+      "files": 1701,
+      "bytes": 740572596,
+      "treeStatSha256": "de7dd1076f523d5d3a084009a1dc33bccbe1d569fb2c87e28b885365db24c082",
+      "identity": {
+        "sourceCommit": "fc383d8bf31a1d037f675633726e7124a59c85dd",
+        "buildId": "2026.10.31-story-voices",
+        "protocol": 47,
+        "contentRevision": "fd913548f72bfaea33f52a16821f786491d647c10677d8c8957b248c2da799db",
+        "audience": "public",
+        "runtimeSourceSha256": "f46d8ddfecd25a94c91532e8986c1bd9882993cc1ee75d2c953ace5496717bff",
+        "sourceSnapshotSha256": "035461539f26c1ae7b1b973b9ec37fdeee491c5e5b6f55b3d75327e385500ca2",
+        "endpoint": "http://127.0.0.1:2677"
+      },
+      "identitySha256": "4b2c166a5fb3c9d9074d863f803f9a039e2b1902fcd90fcf4411a51198d50675"
+    },
+    {
+      "path": "output/playtest-story-voices-2026-10-31-testing-fc383d8",
+      "files": 1701,
+      "bytes": 740577921,
+      "treeStatSha256": "894a644eaa41f1477cb3e691dea1e0ada87fa49f57cc7f9994c36c1646e9a502",
+      "identity": {
+        "sourceCommit": "fc383d8bf31a1d037f675633726e7124a59c85dd",
+        "buildId": "2026.10.31-story-voices",
+        "protocol": 47,
+        "contentRevision": "fd913548f72bfaea33f52a16821f786491d647c10677d8c8957b248c2da799db",
+        "audience": "testing",
+        "runtimeSourceSha256": "f46d8ddfecd25a94c91532e8986c1bd9882993cc1ee75d2c953ace5496717bff",
+        "sourceSnapshotSha256": "035461539f26c1ae7b1b973b9ec37fdeee491c5e5b6f55b3d75327e385500ca2",
+        "endpoint": "http://127.0.0.1:2676"
+      },
+      "identitySha256": "83e8e548c1eaed34c8c4e6f19458f2f74eba0de2ec2b40de5608ca3200b0585b"
+    },
+    {
+      "path": "output/playtest-summoner-2026-11-01-public-b2b90aa",
+      "files": 1893,
+      "bytes": 755909032,
+      "treeStatSha256": "6bd92eadfab20d1284de310df58eb68df78085d603a84e6924c990c5e95a23bb",
+      "identity": {
+        "sourceCommit": "b2b90aae1eeaee88e94a3a6e3a98da5e4bc7f3bd",
+        "buildId": "2026.11.01-summoner",
+        "protocol": 48,
+        "contentRevision": "f099f438f83d4f79da2fd18bc8cd680e3e8616e5febb50d7b78609b47d09bb32",
+        "audience": "public",
+        "runtimeSourceSha256": "e49f198599d8267b3049e83e6ca9ac5e0e20da1aca41443c2dcc2eb5fe16a4da",
+        "sourceSnapshotSha256": "6af6639c1d5235937ac21e29d113d5259131192b2fdacaa8fa2acb00fdf82bee",
+        "endpoint": "http://127.0.0.1:2685"
+      },
+      "identitySha256": "85d3fdc4659ab45c8371de1d7afb1d605178228d4a839311d01e8cb3024fa7d5"
+    },
+    {
+      "path": "output/playtest-summoner-2026-11-01-testing-b2b90aa",
+      "files": 1893,
+      "bytes": 755914338,
+      "treeStatSha256": "19278af583eb8c43b7a864329daca1e6aa971ee98e6e079b8cf3cf608ba2882f",
+      "identity": {
+        "sourceCommit": "b2b90aae1eeaee88e94a3a6e3a98da5e4bc7f3bd",
+        "buildId": "2026.11.01-summoner",
+        "protocol": 48,
+        "contentRevision": "f099f438f83d4f79da2fd18bc8cd680e3e8616e5febb50d7b78609b47d09bb32",
+        "audience": "testing",
+        "runtimeSourceSha256": "e49f198599d8267b3049e83e6ca9ac5e0e20da1aca41443c2dcc2eb5fe16a4da",
+        "sourceSnapshotSha256": "6af6639c1d5235937ac21e29d113d5259131192b2fdacaa8fa2acb00fdf82bee",
+        "endpoint": "http://127.0.0.1:2684"
+      },
+      "identitySha256": "dab421d920b7371a8b690fe7b4c451805419eca21bd4fbb198a6782aa9326ce0"
+    },
+    {
+      "path": "output/playtest-swordsman-2026-11-01-public-08acf5f",
+      "files": 1789,
+      "bytes": 748008007,
+      "treeStatSha256": "bc65f2ae69f4bdecc1bc5ada13354840aeabe753e7f22b5267477666fe7e56f1",
+      "identity": {
+        "sourceCommit": "08acf5f3383ac7899c8dec73d334e9d9d66a5d7b",
+        "buildId": "2026.11.01-swordsman",
+        "protocol": 47,
+        "contentRevision": "e74efafe14d4694ef9afd8ea6df038c3fd0e697e4b6d5039f9a6d70173c8b6bd",
+        "audience": "public",
+        "runtimeSourceSha256": "b16b55dccd745ec0d42b47c00da1cf52461ba1c7865a63bf3c33edc19806b7fa",
+        "sourceSnapshotSha256": "c45e7c2fdef7d5298c02365c3741d7ea67d4667fbb6326f36c081396e10ce862",
+        "endpoint": "http://127.0.0.1:2683"
+      },
+      "identitySha256": "50e7bd915ac599d2c8b82c980de8efc16151bc772ba36ad728eb1d4fdd65386e"
+    },
+    {
+      "path": "output/playtest-swordsman-2026-11-01-testing-08acf5f",
+      "files": 1789,
+      "bytes": 748013290,
+      "treeStatSha256": "b5d6e809a7d9736526109ae38485d22b36db48777e33e537f3ed0a4261c47763",
+      "identity": {
+        "sourceCommit": "08acf5f3383ac7899c8dec73d334e9d9d66a5d7b",
+        "buildId": "2026.11.01-swordsman",
+        "protocol": 47,
+        "contentRevision": "e74efafe14d4694ef9afd8ea6df038c3fd0e697e4b6d5039f9a6d70173c8b6bd",
+        "audience": "testing",
+        "runtimeSourceSha256": "b16b55dccd745ec0d42b47c00da1cf52461ba1c7865a63bf3c33edc19806b7fa",
+        "sourceSnapshotSha256": "c45e7c2fdef7d5298c02365c3741d7ea67d4667fbb6326f36c081396e10ce862",
+        "endpoint": "http://127.0.0.1:2682"
+      },
+      "identitySha256": "fbcdfb67aac849b4bb79b95700a32a8ea21d92875bd908983940dc4911562e5c"
+    },
+    {
+      "path": "output/playtest-ward-approach-2026-10-31-public-a61403e",
+      "files": 1701,
+      "bytes": 740570286,
+      "treeStatSha256": "253ba22096f7f554f44a91f36111b9ed41e10267b1f0bc275bc8ec7e1dcdcb91",
+      "identity": {
+        "sourceCommit": "a61403e632023ee7dc47c059bead6ddcd16f3e87",
+        "buildId": "2026.10.31-ward-approach",
+        "protocol": 47,
+        "contentRevision": "fd913548f72bfaea33f52a16821f786491d647c10677d8c8957b248c2da799db",
+        "audience": "public",
+        "runtimeSourceSha256": "57ae28f71b36497e988f2a7dc2440111f059a02d5b332c8053494d466455de08",
+        "sourceSnapshotSha256": "a7929361a6d1464960636c72b2ade396b77b4e440b66684a1fe98d33fec6acce",
+        "endpoint": "http://127.0.0.1:2675"
+      },
+      "identitySha256": "f1407783f363c461d54a9b1f1ed0bfe31ad0737007411485641c6898ab72815a"
+    },
+    {
+      "path": "output/playtest-ward-approach-2026-10-31-testing-a61403e",
+      "files": 1701,
+      "bytes": 740575611,
+      "treeStatSha256": "57b311acc47ceb5000b3db707799bf875699c6f3514683e89c7485516382c818",
+      "identity": {
+        "sourceCommit": "a61403e632023ee7dc47c059bead6ddcd16f3e87",
+        "buildId": "2026.10.31-ward-approach",
+        "protocol": 47,
+        "contentRevision": "fd913548f72bfaea33f52a16821f786491d647c10677d8c8957b248c2da799db",
+        "audience": "testing",
+        "runtimeSourceSha256": "57ae28f71b36497e988f2a7dc2440111f059a02d5b332c8053494d466455de08",
+        "sourceSnapshotSha256": "a7929361a6d1464960636c72b2ade396b77b4e440b66684a1fe98d33fec6acce",
+        "endpoint": "http://127.0.0.1:2674"
+      },
+      "identitySha256": "255167dc0bfcf30e2a0b8715c349f592facd772af1cb6917de7239c8f380c5df"
+    }
+  ],
+  "retireBackends": [
+    {
+      "path": "output/frozen-alchemist-2026-11-02-62030d3.mjs",
+      "bytes": 3591417,
+      "sha256": "1a8899786516c25e952c1cb76bf2498910616ad478244f6724d249182e3c50bb"
+    },
+    {
+      "path": "output/frozen-baker-oven-2026-10-31-76ff463.mjs",
+      "bytes": 2973721,
+      "sha256": "8c6cd2146809c717c4a0989fbc095aa9e656c6abffe2be6db924252d271b640a"
+    },
+    {
+      "path": "output/frozen-bard-2026-11-01-61141f9.mjs",
+      "bytes": 3132907,
+      "sha256": "48af52a4afd0ef1686274301e4c110a68f4d96701239c00e77e6263866e5cb44"
+    },
+    {
+      "path": "output/frozen-chapter-checkpoint-2026-11-02-5fba8f2.mjs",
+      "bytes": 3591417,
+      "sha256": "1a8899786516c25e952c1cb76bf2498910616ad478244f6724d249182e3c50bb"
+    },
+    {
+      "path": "output/frozen-class-tree-polish-2026-11-02-a63533a.mjs",
+      "bytes": 3603009,
+      "sha256": "2d427335b61b210550b249943fa172e9b8d9efffde1128eb000abe68069ca130"
+    },
+    {
+      "path": "output/frozen-engineer-builder-2026-11-03-d3de8ed.mjs",
+      "bytes": 3687077,
+      "sha256": "266098a5425297f303e08eda4e1388134805e26b43e8246d9dfd7d244dd5d73a"
+    },
+    {
+      "path": "output/frozen-engineer-controls-2026-11-04-233e914.mjs",
+      "bytes": 3687162,
+      "sha256": "e32b692fb4f54ae2a119aeb1d480c17844a18031ea77d6f9140a098e9320d15a"
+    },
+    {
+      "path": "output/frozen-engineer-pathways-2026-11-02-ab8e4b3.mjs",
+      "bytes": 3602546,
+      "sha256": "17543e0cf0d3bb325df7c4be0c55d193e5c5d3d089fa50d6eab7fb9be0ba6ada"
+    },
+    {
+      "path": "output/frozen-engineer-replay-2026-11-04-d7bef25.mjs",
+      "bytes": 3687139,
+      "sha256": "4f733540837ea3c52576f7b9025e89fd41891834e78cd3c28d2357588ca22555"
+    },
+    {
+      "path": "output/frozen-engineer-run-exit-2026-11-04-7f5cdac.mjs",
+      "bytes": 3687105,
+      "sha256": "b37ce1ebf76e08433a4ac8e15d54bb14d0f6d25befaaba63a921d3ee352e2682"
+    },
+    {
+      "path": "output/frozen-engineer-transition-2026-11-04-f670914.mjs",
+      "bytes": 3687162,
+      "sha256": "e32b692fb4f54ae2a119aeb1d480c17844a18031ea77d6f9140a098e9320d15a"
+    },
+    {
+      "path": "output/frozen-engineer-traps-2026-11-03-c4b2b6f.mjs",
+      "bytes": 3655067,
+      "sha256": "10be558d778bf93b1dd3b04f9827d452d57eb171a485aa60d9b3bd19276d2504"
+    },
+    {
+      "path": "output/frozen-field-journal-2026-10-31-49367dc.mjs",
+      "bytes": 2909836,
+      "sha256": "d9654b277bf0a7b38ff8d43e492bea6fa19cd2b6d2a9ef522da9d8f1deb2bcb1"
+    },
+    {
+      "path": "output/frozen-field-journal-2026-10-31-5c5ebd0.mjs",
+      "bytes": 2909836,
+      "sha256": "d9654b277bf0a7b38ff8d43e492bea6fa19cd2b6d2a9ef522da9d8f1deb2bcb1"
+    },
+    {
+      "path": "output/frozen-first-return-2026-10-31-57f1956.mjs",
+      "bytes": 3001500,
+      "sha256": "d369e1417465a1bf00e1983d2b5fe736dc40cf8d2228822f5c672dc656af3cf2"
+    },
+    {
+      "path": "output/frozen-foundation-workbook-2026-11-03-42ec806.mjs",
+      "bytes": 3631609,
+      "sha256": "a9bec5c9a4206c467c845892bbb03954915a0061d9a1de818f84af56f668ac49"
+    },
+    {
+      "path": "output/frozen-general-mobility-2026-10-31-55cc82d.mjs",
+      "bytes": 2920524,
+      "sha256": "ccdc4d10f3e5e0bd37904be91395eca2ad3ce102a4b55afa6b0240c6f89fa353"
+    },
+    {
+      "path": "output/frozen-glass-surgery-2026-10-31-517472b.mjs",
+      "bytes": 2927198,
+      "sha256": "1b4420b6398d51401f4df449c9f36ef439d2ca90345e9c28f65999fba75beab8"
+    },
+    {
+      "path": "output/frozen-heavy-clutch-2026-11-09-12c265f.mjs",
+      "bytes": 3925452,
+      "sha256": "07b0e4b2149dc251b6bee2219881a5f37f5febd769854b8881942ac6675c8e41"
+    },
+    {
+      "path": "output/frozen-heavy-clutch-handling-2026-11-09-18da7f9.mjs",
+      "bytes": 3935633,
+      "sha256": "b7d04900591ba882501ff8569fde32ad1985a6af35abd8cb176cfb43ec111fba"
+    },
+    {
+      "path": "output/frozen-heavy-clutch-handling-movement-2026-11-09-205d1bd.mjs",
+      "bytes": 3935633,
+      "sha256": "b7d04900591ba882501ff8569fde32ad1985a6af35abd8cb176cfb43ec111fba"
+    },
+    {
+      "path": "output/frozen-heavy-clutch-handling-rounds-2026-11-09-d238694.mjs",
+      "bytes": 3935633,
+      "sha256": "b7d04900591ba882501ff8569fde32ad1985a6af35abd8cb176cfb43ec111fba"
+    },
+    {
+      "path": "output/frozen-heavy-clutch-stat-scaling-2026-11-10-20aad19.mjs",
+      "bytes": 3935633,
+      "sha256": "b7d04900591ba882501ff8569fde32ad1985a6af35abd8cb176cfb43ec111fba"
+    },
+    {
+      "path": "output/frozen-heavy-flak-2026-11-06-d796d66.mjs",
+      "bytes": 3872328,
+      "sha256": "223dadc9a188dd783a1d95b8a850504e7bd779ad1507355158fa1bfe4a4d4960"
+    },
+    {
+      "path": "output/frozen-heavy-fuze-2026-11-08-c56ae85.mjs",
+      "bytes": 3881927,
+      "sha256": "2d68bdef7e5d16c24d483d871ea404a5505c56c5651201383259323c489ea395"
+    },
+    {
+      "path": "output/frozen-heavy-seam-2026-11-08-r2-4392f46.mjs",
+      "bytes": 3895775,
+      "sha256": "9bfd4dfea24501251d08ca88529a34b98752eb3da8e3b103d8005526fef1ad97"
+    },
+    {
+      "path": "output/frozen-heavy-traverse-2026-11-09-5316ead.mjs",
+      "bytes": 3917783,
+      "sha256": "f99955b63f39fa194b119f78417f1dfe6383e0df0e4b4ed5d5796fb0de78f3ac"
+    },
+    {
+      "path": "output/frozen-hud-alignment-2026-10-31-366c12d.mjs",
+      "bytes": 2887661,
+      "sha256": "2a84272e344bb9026ea9c4515a35debcfc1c069967e865759fbf82f7d26a2812"
+    },
+    {
+      "path": "output/frozen-lamplight-reading-2026-10-31-8a4674c.mjs",
+      "bytes": 2999828,
+      "sha256": "a02bdaa2d5f3abd85608c3782f4bf9a33992a86af9e501cac38d4b9389703e5c"
+    },
+    {
+      "path": "output/frozen-machinery-progression-2026-11-03-76bac94.mjs",
+      "bytes": 3626109,
+      "sha256": "65ed64677dc6a7e7f6913d9fdbc9836b29dfd140e2e6be0bbf8993a539966389"
+    },
+    {
+      "path": "output/frozen-manual-cascade-2026-11-03-4090068.mjs",
+      "bytes": 3626109,
+      "sha256": "65ed64677dc6a7e7f6913d9fdbc9836b29dfd140e2e6be0bbf8993a539966389"
+    },
+    {
+      "path": "output/frozen-opening-chapter-2026-11-01-8fc4706.mjs",
+      "bytes": 3038800,
+      "sha256": "997cc030e86916b836eebe668ef9e6aa77dc964723ac523b688e6d6f029cbf6a"
+    },
+    {
+      "path": "output/frozen-ranger-2026-11-02-1f3ef92.mjs",
+      "bytes": 3476453,
+      "sha256": "3db10d9445a5c5627593703e883f6bdd81435b811557cb127efb2b793272aa36"
+    },
+    {
+      "path": "output/frozen-shield-specializations-2026-10-31-810d9dc.mjs",
+      "bytes": 2913754,
+      "sha256": "6bbc68a2e4a4fbe4a44d812174e01abb858a41b276c250e3709262b4d9a466ab"
+    },
+    {
+      "path": "output/frozen-soldier-grenadier-2026-11-05-68cb835.mjs",
+      "bytes": 3792979,
+      "sha256": "c99f0eaee6db6ce68454145fc7e7aaa6a5f8f8a895256c3c28154a3172795158"
+    },
+    {
+      "path": "output/frozen-soldier-marksman-2026-11-04-afc4274.mjs",
+      "bytes": 3733266,
+      "sha256": "08ebe73d521fecaf149a2efd1a2514aff0df8f5af504cfae13c249004383fe05"
+    },
+    {
+      "path": "output/frozen-soldier-marksman-depth-2026-11-05-99f7d3a.mjs",
+      "bytes": 3742809,
+      "sha256": "872d25a2fa1c97717dad14cffc0a2b16b5617de7e1a3b82beb94e019cb4e7f30"
+    },
+    {
+      "path": "output/frozen-soldier-marksman-late-2026-11-05-b5c3f5e.mjs",
+      "bytes": 3754984,
+      "sha256": "c831577c40be6cfd313f81281989eadd6719015735eb782e82d0ab782e88becc"
+    },
+    {
+      "path": "output/frozen-soldier-marksman-sync-2026-11-05-22d0df8.mjs",
+      "bytes": 3733266,
+      "sha256": "08ebe73d521fecaf149a2efd1a2514aff0df8f5af504cfae13c249004383fe05"
+    },
+    {
+      "path": "output/frozen-soldier-reload-2026-11-04-84b6bba.mjs",
+      "bytes": 3711613,
+      "sha256": "702084e538e0696d2005d02f8a992e0150899775b207832d8efcd1f98539b00e"
+    },
+    {
+      "path": "output/frozen-soldier-skirmisher-2026-11-04-ef502f7.mjs",
+      "bytes": 3702224,
+      "sha256": "23c8a1d332fbad132c21a7a1395e7b377dee03625b74e2bdf9b9abeb0f52bfab"
+    },
+    {
+      "path": "output/frozen-soldier-sniper-2026-11-05-d5bc833.mjs",
+      "bytes": 3807693,
+      "sha256": "5802ebdad7896170f2fcf358285fc9725c512dad6268859d1b7b39633b14ae3e"
+    },
+    {
+      "path": "output/frozen-soldier-sniper-bore-2026-11-05-81d818a.mjs",
+      "bytes": 3826963,
+      "sha256": "1409a683165bb305593e5015f72c3d31a618a637d534e5c785f0db7c3a8de9b5"
+    },
+    {
+      "path": "output/frozen-soldier-sniper-depth-2026-11-05-9e09c75.mjs",
+      "bytes": 3815506,
+      "sha256": "e21130bee14491b240b943d2e7e5770da6a07db1f4b8531680259e5a9d9797b8"
+    },
+    {
+      "path": "output/frozen-soldier-sniper-rest-2026-11-06-3ebc3b8.mjs",
+      "bytes": 3837059,
+      "sha256": "22bdd6cb292f3fcf35ad9dbde28bf6a7f77be39347a18a1cbbf1e1bc3c657766"
+    },
+    {
+      "path": "output/frozen-soldier-sniper-withdrawal-2026-11-06-6345afc.mjs",
+      "bytes": 3850289,
+      "sha256": "e84700b1c16a5cc2c0a9cfddde250fc12613a98c87bec8eeb192f632ebb21e32"
+    },
+    {
+      "path": "output/frozen-soldier-volley-2026-11-04-d9abd98.mjs",
+      "bytes": 3721787,
+      "sha256": "4a9027028e4921f437928718beb96a22eb58577c4e631d467827cc1187c394cc"
+    },
+    {
+      "path": "output/frozen-station-signals-2026-10-31-ea08414.mjs",
+      "bytes": 2990853,
+      "sha256": "1efc7b33312278e19be4fd35e73f46074f6097c7bc267d4a8b1da2d46a47de4c"
+    },
+    {
+      "path": "output/frozen-story-campaign-2026-10-31-4448f8d.mjs",
+      "bytes": 2969912,
+      "sha256": "6767ff131dbc5253c684646146bea0a0dd80b8f51678761e3580972505db87e6"
+    },
+    {
+      "path": "output/frozen-story-editions-2026-10-31-1e1a728.mjs",
+      "bytes": 2973721,
+      "sha256": "8c6cd2146809c717c4a0989fbc095aa9e656c6abffe2be6db924252d271b640a"
+    },
+    {
+      "path": "output/frozen-story-hubs-2026-10-31-01ae374.mjs",
+      "bytes": 2984883,
+      "sha256": "f6260a9fbce4342153f3aaaeacc9284893a4ff7844e8caace60ad094c436727b"
+    },
+    {
+      "path": "output/frozen-story-journal-2026-10-31-23afb5d.mjs",
+      "bytes": 2973721,
+      "sha256": "8c6cd2146809c717c4a0989fbc095aa9e656c6abffe2be6db924252d271b640a"
+    },
+    {
+      "path": "output/frozen-story-voices-2026-10-31-fc383d8.mjs",
+      "bytes": 3009498,
+      "sha256": "fbc85880e8d052b7b4ca60ffdd06fd635bc33ba659898242c964339b60780586"
+    },
+    {
+      "path": "output/frozen-summoner-2026-11-01-b2b90aa.mjs",
+      "bytes": 3364942,
+      "sha256": "e36d5f1995a27be9b3d71e234561fafe4b18a6d529422456d238871ab2089787"
+    },
+    {
+      "path": "output/frozen-swordsman-2026-11-01-08acf5f.mjs",
+      "bytes": 3239988,
+      "sha256": "fc0d14857b65148b4cf11c5728c196bf947834325967626e4fb7ad70913074e1"
+    },
+    {
+      "path": "output/frozen-ward-approach-2026-10-31-a61403e.mjs",
+      "bytes": 3009498,
+      "sha256": "fbc85880e8d052b7b4ca60ffdd06fd635bc33ba659898242c964339b60780586"
+    }
+  ],
+  "retireDirectoryCount": 108,
+  "retireFileBytes": 85210322106,
+  "candidateArchive": "output/review-rollback.next.zip",
+  "finalArchive": "output/review-rollback.zip",
+  "previousArchiveSha256": null,
+  "sourceAssetsReviewsReleaseAndPrivateDatabasesExcluded": true,
+  "policy": "Keep one current expanded testing/public pair and one verified rollback archive; retire older expanded build copies and their exact preview services. Original receipts remain historical.",
+  "authorizedByUser": true,
+  "cleanupNotYetPerformed": true
+}
