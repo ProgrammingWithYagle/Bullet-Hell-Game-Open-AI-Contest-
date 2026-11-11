@@ -3,7 +3,7 @@
 Use apply-review-retention.ps1 for reviewed, identity-checked Windows cleanup.
 Private databases, source, assets, release files and original receipts are excluded.
 """
-import argparse, collections, datetime, hashlib, json, os, pathlib, re, stat, subprocess, tempfile, unittest, zipfile
+import argparse, collections, datetime, hashlib, json, os, pathlib, re, shutil, stat, subprocess, tempfile, unittest, zipfile
 
 SCHEMA=1
 def now():return datetime.datetime.now(datetime.timezone.utc).isoformat()
@@ -47,7 +47,7 @@ def checked_repo(value):
 def scope_path(repo,scope):
     assert re.fullmatch(r'reviews/[a-z0-9-]+',scope)
     return repo/scope
-def preview(repo,scope,audience):
+def preview(repo,scope,audience,require_backend=True):
     file=scope_path(repo,scope)/('preview-'+audience+'.json');p=read(file)
     assert p['passed'] and p['audience']==audience
     root=pathlib.Path(p['root']).resolve();assert root.parent==repo/'output' and re.fullmatch(r'playtest-[a-z0-9-]+',root.name)
@@ -55,15 +55,18 @@ def preview(repo,scope,audience):
     assert digest(manifest.read_bytes())==p['manifestSha256']
     m=read(manifest);assert len(m['members'])==p['files']
     backend=pathlib.Path(p['backend']['path']).resolve();assert backend.parent==repo/'output' and re.fullmatch(r'frozen-[a-z0-9-]+\.mjs',backend.name)
-    assert digest(backend.read_bytes())==p['backend']['sha256']
+    if require_backend:assert digest(backend.read_bytes())==p['backend']['sha256']
     return p,m,file,root,backend
 def plan(args):
     repo=checked_repo(args.repo);destination=scope_path(repo,args.receipt_scope);destination.mkdir(exist_ok=True)
     current=[preview(repo,args.current_scope,a) for a in ['testing','public']]
-    rollback=[preview(repo,args.rollback_scope,a) for a in ['testing','public']]
+    rollback=[preview(repo,args.rollback_scope,a,require_backend=False) for a in ['testing','public']]
     assert len({p[0]['sourceCommit'] for p in current})==1 and len({p[0]['sourceCommit'] for p in rollback})==1
     rollback_proof=read(scope_path(repo,args.rollback_scope)/'frozen-verification.json')
     assert rollback_proof['passed'] and rollback_proof['sourceCommit']==rollback[0][0]['sourceCommit'],'Rollback must be a fully reviewed source'
+    state_path=repo/'output/review-retention.json';state=read(state_path) if state_path.exists() else {}
+    archive_matches=state.get('rollbackScope')==args.rollback_scope and state.get('rollbackSourceCommit')==rollback[0][0]['sourceCommit'] and (repo/'output/review-rollback.zip').is_file()
+    reuse=rollback_mode([p[3].is_dir() for p in rollback],archive_matches)
     keep={p[3] for p in current};assert len(keep)==2
     retained=[{'path':p[3].relative_to(repo).as_posix(),'sourceCommit':p[0]['sourceCommit'],'scope':args.current_scope,'audience':p[0]['audience'],'manifestPath':p[0]['manifestPath'],'manifestSha256':p[0]['manifestSha256'],**snapshot(p[3])} for p in current]
     directories=[]
@@ -75,7 +78,7 @@ def plan(args):
         if identity.exists():row.update({'identity':read(identity),'identitySha256':digest(identity.read_bytes())})
         else:row['identity']=None
         directories.append(row)
-    assert all(p[3].relative_to(repo).as_posix() in {r['path'] for r in directories} for p in rollback)
+    if not reuse:assert all(p[3].relative_to(repo).as_posix() in {r['path'] for r in directories} for p in rollback)
     keep_backends={p[4] for p in current};backends=[]
     for file in sorted((repo/'output').glob('frozen-*.mjs')):
         assert file.is_file() and not file.is_symlink() and re.fullmatch(r'frozen-[a-z0-9-]+\.mjs',file.name)
@@ -83,6 +86,8 @@ def plan(args):
     previous=repo/'output/review-rollback.zip'
     record={'schemaVersion':SCHEMA,'createdAt':now(),'repo':str(repo),'gitHead':git(repo,'rev-parse','HEAD'),'branch':git(repo,'branch','--show-current'),'currentScope':args.current_scope,'rollbackScope':args.rollback_scope,'currentSourceCommit':current[0][0]['sourceCommit'],'rollbackSourceCommit':rollback[0][0]['sourceCommit'],'keep':retained,'keepBackendPaths':[p.relative_to(repo).as_posix() for p in sorted(keep_backends)],'retireDirectories':directories,'retireBackends':backends,'retireDirectoryCount':len(directories),'retireFileBytes':sum(r['bytes'] for r in directories+backends),'candidateArchive':'output/review-rollback.next.zip','finalArchive':'output/review-rollback.zip','previousArchiveSha256':digest(previous.read_bytes()) if previous.exists() else None,'sourceAssetsReviewsReleaseAndPrivateDatabasesExcluded':True,'policy':'Keep one current expanded testing/public pair and one verified rollback archive; retire older expanded build copies and their exact preview services. Original receipts remain historical.','authorizedByUser':True,'cleanupNotYetPerformed':True}
     assert record['branch']=='feat/first-playable-loop'
+    record['reuseExistingVerifiedRollback']=reuse
+    record['existingRollbackArchiveSha256']=state.get('rollbackArchiveSha256') if reuse else None
     write_new(destination/'retention-plan.json',record)
     print(json.dumps({'planned':True,'retireDirectories':len(directories),'retireGiB':round(record['retireFileBytes']/2**30,3),'keep':[r['path'] for r in retained],'rollback':record['rollbackSourceCommit']}))
 def safe_member(value):
@@ -90,6 +95,11 @@ def safe_member(value):
     parts=value.split('/');assert parts and all(p not in ('','.','..') for p in parts)
     assert not private(value),'Private data cannot enter a build archive'
     return pathlib.PurePosixPath(value)
+def rollback_mode(expanded,archive_matches):
+    assert len(expanded)==2
+    if all(expanded):return False
+    assert not any(expanded) and archive_matches,'Rollback must be an intact expanded pair or the matching verified archive'
+    return True
 def encode_archive(target,rows,metadata):
     objects={};members=[]
     with zipfile.ZipFile(target,'x',compression=zipfile.ZIP_DEFLATED,compresslevel=3,allowZip64=True) as archive:
@@ -144,7 +154,12 @@ def archive(args):
     assert git(repo,'rev-parse','HEAD')==p['gitHead']
     target=repo/p['candidateArchive'];assert target.parent==repo/'output' and target.name=='review-rollback.next.zip'
     rows=[];roots=[]
-    for audience in ['testing','public']:
+    if p.get('reuseExistingVerifiedRollback'):
+        previous=repo/p['finalArchive'];index=verify_archive(previous,p['existingRollbackArchiveSha256'])
+        assert index['sourceCommit']==p['rollbackSourceCommit'] and index['scope']==p['rollbackScope']
+        assert not target.exists();shutil.copyfile(previous,target)
+        assert digest(target.read_bytes())==p['existingRollbackArchiveSha256']
+    for audience in ([] if p.get('reuseExistingVerifiedRollback') else ['testing','public']):
         preview_data,manifest,preview_file,root,backend=preview(repo,p['rollbackScope'],audience)
         roots.append(root.relative_to(repo).as_posix())
         expected={m['path']:m for m in manifest['members']};actual=regular_files(root);assert {r[0] for r in actual}==set(expected)
@@ -152,9 +167,9 @@ def archive(args):
         for file in [backend,pathlib.Path(preview_data['manifestPath'])]:
             member=file.relative_to(repo).as_posix()
             if member not in {r[0] for r in rows}:rows.append((member,file,{'bytes':file.stat().st_size,'sha256':digest(file.read_bytes())}))
-    index=encode_archive(target,rows,{'sourceCommit':p['rollbackSourceCommit'],'scope':p['rollbackScope'],'roots':roots,'externalProjectNodeModulesRequired':True,'purpose':'One last fully reviewed testing/public rollback pair; duplicate file content stored once.'})
+    if not p.get('reuseExistingVerifiedRollback'):index=encode_archive(target,rows,{'sourceCommit':p['rollbackSourceCommit'],'scope':p['rollbackScope'],'roots':roots,'externalProjectNodeModulesRequired':True,'purpose':'One last fully reviewed testing/public rollback pair; duplicate file content stored once.'})
     archive_sha=digest(target.read_bytes());verified=verify_archive(target,archive_sha);assert verified==index
-    write_new(plan_file.parent/'rollback-archive.json',{'passed':True,'verifiedAt':now(),'candidateArchive':p['candidateArchive'],'finalArchive':p['finalArchive'],'sourceCommit':p['rollbackSourceCommit'],'archiveSha256':archive_sha,'archiveBytes':target.stat().st_size,'restoredFiles':len(index['members']),'uniqueObjects':len(index['objects']),'unpackedBytes':sum(m['bytes'] for m in index['members']),'allArchivedObjectsAndReferencesVerified':True,'privateDatabasesIncluded':False,'originalFoldersStillPresent':True})
+    write_new(plan_file.parent/'rollback-archive.json',{'passed':True,'verifiedAt':now(),'candidateArchive':p['candidateArchive'],'finalArchive':p['finalArchive'],'sourceCommit':p['rollbackSourceCommit'],'archiveSha256':archive_sha,'archiveBytes':target.stat().st_size,'restoredFiles':len(index['members']),'uniqueObjects':len(index['objects']),'unpackedBytes':sum(m['bytes'] for m in index['members']),'allArchivedObjectsAndReferencesVerified':True,'privateDatabasesIncluded':False,'originalFoldersStillPresent':not p.get('reuseExistingVerifiedRollback',False),'reusedExistingVerifiedRollback':p.get('reuseExistingVerifiedRollback',False)})
     print(json.dumps({'archived':True,'files':len(index['members']),'uniqueObjects':len(index['objects']),'archiveGiB':round(target.stat().st_size/2**30,3)}))
 def verify(args):
     proof=read(args.receipt);repo=checked_repo(args.repo)
@@ -166,6 +181,11 @@ def verify(args):
         write_new(pathlib.Path(args.receipt).parent/'rollback-restore-check.json',{'passed':True,'checkedAt':now(),'archiveSha256':proof['archiveSha256'],'destination':str(destination),'restoredFiles':len(index['members']),'allRestoredMemberBytesExact':True,'temporaryTreeMayBeRemovedAfterVerification':True,'noRuntimeOrOnlineProofClaimed':True})
     print(json.dumps({'verified':True,'files':len(index['members']),'restoreCheck':bool(args.restore_check)}))
 class SafetyTests(unittest.TestCase):
+    def test_cold_rollback_selection(self):
+        self.assertTrue(rollback_mode([False,False],True))
+        self.assertFalse(rollback_mode([True,True],False))
+        for flags,matching in [([False,False],False),([True,False],True)]:
+            with self.assertRaises(AssertionError):rollback_mode(flags,matching)
     def test_roundtrip_and_dedup(self):
         with tempfile.TemporaryDirectory() as folder:
             base=pathlib.Path(folder);a=base/'a';b=base/'b';a.write_bytes(b'alpha'*20);b.write_bytes(b'beta')
