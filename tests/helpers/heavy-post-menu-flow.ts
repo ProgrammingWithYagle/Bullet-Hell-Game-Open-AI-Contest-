@@ -67,7 +67,7 @@ export async function menuAcquirer(host: any) {
             0,
           ),
         node = all.find((s: any) => s.id === item)!;
-      assert([3, 9, 12, 15, 20].includes(earned));
+      assert([3, 9, 12, 15, 20, 21].includes(earned));
       binding?.dispose();
       let requests = 0,
         pending: Promise<void> | undefined;

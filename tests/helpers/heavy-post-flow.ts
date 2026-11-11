@@ -4,7 +4,7 @@ import { lanyardId, clutchId, heavyTraverseRules as rules } from '../../src/shar
 import { heavyWait, type HeavyFlakAdapter } from './heavy-flak-flow.ts';
 import { handlingLane, type ClutchCarriage, type ClutchHandling } from './heavy-clutch-handling-flow.ts';
 
-type PostTransportAdapter = Omit<HeavyFlakAdapter, 'input'> & { input(action: Partial<InputFrame>): number };
+type PostTransportAdapter = Omit<HeavyFlakAdapter, 'input'> & { input(action: Partial<InputFrame>): number; paused(): boolean };
 
 /** Real authority/transport only. The caller supplies actual earned purchases and its unchanged client/server. */
 export async function heavyPostOperation(a: PostTransportAdapter, mode: ClutchCarriage, handling?: ClutchHandling) {
@@ -18,7 +18,7 @@ export async function heavyPostOperation(a: PostTransportAdapter, mode: ClutchCa
     .filter(s => s.owner === a.owner && !previous.has(s.id) && Math.abs(Math.hypot(s.vx, s.vy) - rules.speed) < 1e-6 && s.radius === rules.radius)
     .map(s => [s.id, { ...s }] as const)).values()];
   const removed = (id: number) => a.events.some(e => e.type === 'remove' && e.ids.includes(id));
-  await a.pause(true);await heavyWait(() => !!view().matchPaused, 'actual pre-post pause');
+  await a.pause(true);await heavyWait(() => a.paused(), 'actual pre-post pause');
   const pausedBefore = view().combatTick, ammo = owner().ammo;
   a.input({ technique1: true, technique2: true, fire: true, reload: true, dodge: true, q: true, e: true, ultimate: true });
   await new Promise(resolve => setTimeout(resolve, 140));assert.equal(view().combatTick, pausedBefore);assert.equal(owner().ammo, ammo);assert.equal(rounds().length, 0);
@@ -44,7 +44,7 @@ export async function heavyPostOperation(a: PostTransportAdapter, mode: ClutchCa
   await heavyWait(() => (owner().kit.heavyLanyardUntil ?? 0) > view().combatTick && (owner().x - from.x) * direction.x + (owner().y - from.y) * direction.y > 5, 'actual forward walking while the paid gun remains posted');
   const moved = { x: owner().x, y: owner().y }, movedAt = view().combatTick;
   a.input({ aim });assert(movedAt < until);assert(Math.hypot(moved.x - post.x, moved.y - post.y) <= 64);assert.equal(owner().kit.heavyLanyardX, post.x);assert.equal(owner().kit.heavyLanyardY, post.y);assert.equal(owner().kit.heavyTraverseAim, bearing);
-  await a.pause(true);await heavyWait(() => !!view().matchPaused, 'actual posted gun pause');
+  await a.pause(true);await heavyWait(() => a.paused(), 'actual posted gun pause');
   assert((owner().kit.heavyLanyardAt ?? 0) > 0, 'post still has unpaid work at its original pause');
   await heavyWait(() => rounds().length === owner().kit.heavyTraverseRounds, 'separate actual paid event batch catches up to the paused post view');
   const paused = view().combatTick, count = rounds().length, paidAmmo = owner().ammo;

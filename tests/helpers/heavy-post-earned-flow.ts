@@ -200,6 +200,7 @@ async function runEarnedPostFlow(
       events: a.events(),
       bursts: new Map(),
       input: a.input,
+      paused: a.paused,
       purchase: async () => assert.fail("Operation cannot purchase"),
       start: async () => assert.fail("Operation cannot restart"),
       pause: async (value) => {
