@@ -1,0 +1,2718 @@
+{
+  "checkedAt": "2026-11-10T22:05:17.620Z",
+  "passed": true,
+  "sourceCommit": "30fbfefaa66faabd93416dc31e27310149df5fed",
+  "runtimeSourceSha256": "c213467e0877fce574552b98139e4171a71ad4430069102a880db46c65f86de8",
+  "sourceSnapshotSha256": "565333e00e8cf875e4be37b6e7f5a12ef55a9835f578a441ea1b442dea1c59c8",
+  "policySourceSha256": "c1bf55f88cca808f80c16dacc74dc7020520d77051427243f92cc16ecad86737",
+  "map": "triage-yard",
+  "seed": 9027,
+  "originalSimulationRowsComplete": true,
+  "simulationRerun": false,
+  "originalFailedComparisonPreserved": true,
+  "originalExecutions": [
+    {
+      "edition": "natural",
+      "originalHelperExitCode": 0,
+      "log": "reviews/heavy-tethered-traverse-2026-11-10/post19-triage-yard-9027-natural.log",
+      "logSha256": "fbae9792a54ecb1f0888644de870e52868dc01d57045290beb8544849dc46c4a"
+    },
+    {
+      "edition": "restore",
+      "originalHelperExitCode": 1,
+      "log": "reviews/heavy-tethered-traverse-2026-11-10/post19-triage-yard-9027-restore.log",
+      "logSha256": "e4a77143a18083e0ad485491c87d67737f13a5ae01d12611d1049602cb4510c7"
+    }
+  ],
+  "originalReportBindings": [
+    {
+      "file": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same/outputs/Heavy-tethered-traverse-post18-triage-yard-9027.json",
+      "sha256": "802b1903f6fefcf018800c6b257f815ad350b6d3a70cb49ce7ed89876a99e815"
+    },
+    {
+      "file": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same/outputs/Heavy-tethered-traverse-post18-triage-yard-9027-restored.json",
+      "sha256": "4c1bd749e9c50bf575ec743ffb617a85c04bce4c188cd610dfd4c17ef76a425b"
+    },
+    {
+      "file": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same/outputs/Heavy-tethered-traverse-post18-triage-yard-9027-comparison.json",
+      "sha256": "a90d4132683a462b9ec58b9cbf7f4818f297d86a127b10baf98c39d516ee5dcf"
+    }
+  ],
+  "allMeasuredFieldsMatch": false,
+  "combatAndProgressionFieldsMatch": true,
+  "comparisons": [
+    {
+      "route": "standard-loose-mantlet",
+      "safeRestores": 13,
+      "mismatches": [
+        "posts"
+      ],
+      "allMeasuredFieldsMatch": false,
+      "combatAndProgressionFieldsMatch": true,
+      "terminalShield": {
+        "natural": 56.2,
+        "restored": 56.2
+      },
+      "expectedTerminalShieldNormalization": false,
+      "postGameplayFieldsAndRelativeCommandsMatch": true,
+      "rawAbsolutePostSequencesMatch": false,
+      "rawPostInputSequenceProvenance": [
+        {
+          "encounter": 3,
+          "castAt": 2887,
+          "natural": {
+            "clutchSequence": 2889,
+            "postSequence": 2891
+          },
+          "restored": {
+            "clutchSequence": 273,
+            "postSequence": 275
+          },
+          "commonOffset": 2616,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3145,
+          "natural": {
+            "clutchSequence": 3147,
+            "postSequence": 3149
+          },
+          "restored": {
+            "clutchSequence": 531,
+            "postSequence": 533
+          },
+          "commonOffset": 2616,
+          "relativeInputCommandGap": 2
+        }
+      ],
+      "inputCountersResetByTheActualSourceRestoreAPI": true,
+      "controlledResetProof": "controlled-transport-reset31.json",
+      "passed": true
+    },
+    {
+      "route": "standard-loose-vents",
+      "safeRestores": 13,
+      "mismatches": [
+        "posts"
+      ],
+      "allMeasuredFieldsMatch": false,
+      "combatAndProgressionFieldsMatch": true,
+      "terminalShield": {
+        "natural": 60,
+        "restored": 60
+      },
+      "expectedTerminalShieldNormalization": false,
+      "postGameplayFieldsAndRelativeCommandsMatch": true,
+      "rawAbsolutePostSequencesMatch": false,
+      "rawPostInputSequenceProvenance": [
+        {
+          "encounter": 3,
+          "castAt": 2545,
+          "natural": {
+            "clutchSequence": 2547,
+            "postSequence": 2549
+          },
+          "restored": {
+            "clutchSequence": 146,
+            "postSequence": 148
+          },
+          "commonOffset": 2401,
+          "relativeInputCommandGap": 2
+        }
+      ],
+      "inputCountersResetByTheActualSourceRestoreAPI": true,
+      "controlledResetProof": "controlled-transport-reset31.json",
+      "passed": true
+    },
+    {
+      "route": "standard-loose-split",
+      "safeRestores": 13,
+      "mismatches": [
+        "posts"
+      ],
+      "allMeasuredFieldsMatch": false,
+      "combatAndProgressionFieldsMatch": true,
+      "terminalShield": {
+        "natural": 0,
+        "restored": 0
+      },
+      "expectedTerminalShieldNormalization": false,
+      "postGameplayFieldsAndRelativeCommandsMatch": true,
+      "rawAbsolutePostSequencesMatch": false,
+      "rawPostInputSequenceProvenance": [
+        {
+          "encounter": 3,
+          "castAt": 2857,
+          "natural": {
+            "clutchSequence": 2859,
+            "postSequence": 2861
+          },
+          "restored": {
+            "clutchSequence": 121,
+            "postSequence": 123
+          },
+          "commonOffset": 2738,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3100,
+          "natural": {
+            "clutchSequence": 3102,
+            "postSequence": 3104
+          },
+          "restored": {
+            "clutchSequence": 364,
+            "postSequence": 366
+          },
+          "commonOffset": 2738,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3328,
+          "natural": {
+            "clutchSequence": 3330,
+            "postSequence": 3332
+          },
+          "restored": {
+            "clutchSequence": 592,
+            "postSequence": 594
+          },
+          "commonOffset": 2738,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3556,
+          "natural": {
+            "clutchSequence": 3558,
+            "postSequence": 3560
+          },
+          "restored": {
+            "clutchSequence": 820,
+            "postSequence": 822
+          },
+          "commonOffset": 2738,
+          "relativeInputCommandGap": 2
+        }
+      ],
+      "inputCountersResetByTheActualSourceRestoreAPI": true,
+      "controlledResetProof": "controlled-transport-reset31.json",
+      "passed": true
+    },
+    {
+      "route": "standard-spade-mantlet",
+      "safeRestores": 18,
+      "mismatches": [
+        "posts"
+      ],
+      "allMeasuredFieldsMatch": false,
+      "combatAndProgressionFieldsMatch": true,
+      "terminalShield": {
+        "natural": 0,
+        "restored": 0
+      },
+      "expectedTerminalShieldNormalization": false,
+      "postGameplayFieldsAndRelativeCommandsMatch": true,
+      "rawAbsolutePostSequencesMatch": false,
+      "rawPostInputSequenceProvenance": [
+        {
+          "encounter": 3,
+          "castAt": 2854,
+          "natural": {
+            "clutchSequence": 2856,
+            "postSequence": 2858
+          },
+          "restored": {
+            "clutchSequence": 15,
+            "postSequence": 17
+          },
+          "commonOffset": 2841,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3115,
+          "natural": {
+            "clutchSequence": 3117,
+            "postSequence": 3119
+          },
+          "restored": {
+            "clutchSequence": 276,
+            "postSequence": 278
+          },
+          "commonOffset": 2841,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3337,
+          "natural": {
+            "clutchSequence": 3339,
+            "postSequence": 3341
+          },
+          "restored": {
+            "clutchSequence": 498,
+            "postSequence": 500
+          },
+          "commonOffset": 2841,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3580,
+          "natural": {
+            "clutchSequence": 3582,
+            "postSequence": 3584
+          },
+          "restored": {
+            "clutchSequence": 741,
+            "postSequence": 743
+          },
+          "commonOffset": 2841,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3802,
+          "natural": {
+            "clutchSequence": 3804,
+            "postSequence": 3806
+          },
+          "restored": {
+            "clutchSequence": 963,
+            "postSequence": 965
+          },
+          "commonOffset": 2841,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 3832,
+          "natural": {
+            "clutchSequence": 3834,
+            "postSequence": 3836
+          },
+          "restored": {
+            "clutchSequence": 17,
+            "postSequence": 19
+          },
+          "commonOffset": 3817,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 4039,
+          "natural": {
+            "clutchSequence": 4041,
+            "postSequence": 4043
+          },
+          "restored": {
+            "clutchSequence": 224,
+            "postSequence": 226
+          },
+          "commonOffset": 3817,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 4234,
+          "natural": {
+            "clutchSequence": 4236,
+            "postSequence": 4238
+          },
+          "restored": {
+            "clutchSequence": 419,
+            "postSequence": 421
+          },
+          "commonOffset": 3817,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 4429,
+          "natural": {
+            "clutchSequence": 4431,
+            "postSequence": 4433
+          },
+          "restored": {
+            "clutchSequence": 614,
+            "postSequence": 616
+          },
+          "commonOffset": 3817,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 4627,
+          "natural": {
+            "clutchSequence": 4629,
+            "postSequence": 4631
+          },
+          "restored": {
+            "clutchSequence": 812,
+            "postSequence": 814
+          },
+          "commonOffset": 3817,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 4831,
+          "natural": {
+            "clutchSequence": 4833,
+            "postSequence": 4835
+          },
+          "restored": {
+            "clutchSequence": 1016,
+            "postSequence": 1018
+          },
+          "commonOffset": 3817,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 5041,
+          "natural": {
+            "clutchSequence": 5043,
+            "postSequence": 5045
+          },
+          "restored": {
+            "clutchSequence": 1226,
+            "postSequence": 1228
+          },
+          "commonOffset": 3817,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 5320,
+          "natural": {
+            "clutchSequence": 5322,
+            "postSequence": 5324
+          },
+          "restored": {
+            "clutchSequence": 1505,
+            "postSequence": 1507
+          },
+          "commonOffset": 3817,
+          "relativeInputCommandGap": 2
+        }
+      ],
+      "inputCountersResetByTheActualSourceRestoreAPI": true,
+      "controlledResetProof": "controlled-transport-reset31.json",
+      "passed": true
+    },
+    {
+      "route": "standard-spade-vents",
+      "safeRestores": 13,
+      "mismatches": [
+        "posts"
+      ],
+      "allMeasuredFieldsMatch": false,
+      "combatAndProgressionFieldsMatch": true,
+      "terminalShield": {
+        "natural": 50.859375,
+        "restored": 50.859375
+      },
+      "expectedTerminalShieldNormalization": false,
+      "postGameplayFieldsAndRelativeCommandsMatch": true,
+      "rawAbsolutePostSequencesMatch": false,
+      "rawPostInputSequenceProvenance": [
+        {
+          "encounter": 3,
+          "castAt": 2860,
+          "natural": {
+            "clutchSequence": 2862,
+            "postSequence": 2864
+          },
+          "restored": {
+            "clutchSequence": 12,
+            "postSequence": 14
+          },
+          "commonOffset": 2850,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3361,
+          "natural": {
+            "clutchSequence": 3363,
+            "postSequence": 3365
+          },
+          "restored": {
+            "clutchSequence": 513,
+            "postSequence": 515
+          },
+          "commonOffset": 2850,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3610,
+          "natural": {
+            "clutchSequence": 3612,
+            "postSequence": 3614
+          },
+          "restored": {
+            "clutchSequence": 762,
+            "postSequence": 764
+          },
+          "commonOffset": 2850,
+          "relativeInputCommandGap": 2
+        }
+      ],
+      "inputCountersResetByTheActualSourceRestoreAPI": true,
+      "controlledResetProof": "controlled-transport-reset31.json",
+      "passed": true
+    },
+    {
+      "route": "standard-spade-split",
+      "safeRestores": 18,
+      "mismatches": [
+        "posts"
+      ],
+      "allMeasuredFieldsMatch": false,
+      "combatAndProgressionFieldsMatch": true,
+      "terminalShield": {
+        "natural": 0,
+        "restored": 0
+      },
+      "expectedTerminalShieldNormalization": false,
+      "postGameplayFieldsAndRelativeCommandsMatch": true,
+      "rawAbsolutePostSequencesMatch": false,
+      "rawPostInputSequenceProvenance": [
+        {
+          "encounter": 3,
+          "castAt": 2839,
+          "natural": {
+            "clutchSequence": 2841,
+            "postSequence": 2843
+          },
+          "restored": {
+            "clutchSequence": 12,
+            "postSequence": 14
+          },
+          "commonOffset": 2829,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3097,
+          "natural": {
+            "clutchSequence": 3099,
+            "postSequence": 3101
+          },
+          "restored": {
+            "clutchSequence": 270,
+            "postSequence": 272
+          },
+          "commonOffset": 2829,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3325,
+          "natural": {
+            "clutchSequence": 3327,
+            "postSequence": 3329
+          },
+          "restored": {
+            "clutchSequence": 498,
+            "postSequence": 500
+          },
+          "commonOffset": 2829,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3574,
+          "natural": {
+            "clutchSequence": 3576,
+            "postSequence": 3578
+          },
+          "restored": {
+            "clutchSequence": 747,
+            "postSequence": 749
+          },
+          "commonOffset": 2829,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3805,
+          "natural": {
+            "clutchSequence": 3807,
+            "postSequence": 3809
+          },
+          "restored": {
+            "clutchSequence": 978,
+            "postSequence": 980
+          },
+          "commonOffset": 2829,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 3889,
+          "natural": {
+            "clutchSequence": 3891,
+            "postSequence": 3893
+          },
+          "restored": {
+            "clutchSequence": 12,
+            "postSequence": 14
+          },
+          "commonOffset": 3879,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 4132,
+          "natural": {
+            "clutchSequence": 4134,
+            "postSequence": 4136
+          },
+          "restored": {
+            "clutchSequence": 255,
+            "postSequence": 257
+          },
+          "commonOffset": 3879,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 4351,
+          "natural": {
+            "clutchSequence": 4353,
+            "postSequence": 4355
+          },
+          "restored": {
+            "clutchSequence": 474,
+            "postSequence": 476
+          },
+          "commonOffset": 3879,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 4600,
+          "natural": {
+            "clutchSequence": 4602,
+            "postSequence": 4604
+          },
+          "restored": {
+            "clutchSequence": 723,
+            "postSequence": 725
+          },
+          "commonOffset": 3879,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 4819,
+          "natural": {
+            "clutchSequence": 4821,
+            "postSequence": 4823
+          },
+          "restored": {
+            "clutchSequence": 942,
+            "postSequence": 944
+          },
+          "commonOffset": 3879,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 5068,
+          "natural": {
+            "clutchSequence": 5070,
+            "postSequence": 5072
+          },
+          "restored": {
+            "clutchSequence": 1191,
+            "postSequence": 1193
+          },
+          "commonOffset": 3879,
+          "relativeInputCommandGap": 2
+        }
+      ],
+      "inputCountersResetByTheActualSourceRestoreAPI": true,
+      "controlledResetProof": "controlled-transport-reset31.json",
+      "passed": true
+    },
+    {
+      "route": "standard-floating-mantlet",
+      "safeRestores": 18,
+      "mismatches": [
+        "posts"
+      ],
+      "allMeasuredFieldsMatch": false,
+      "combatAndProgressionFieldsMatch": true,
+      "terminalShield": {
+        "natural": 0,
+        "restored": 0
+      },
+      "expectedTerminalShieldNormalization": false,
+      "postGameplayFieldsAndRelativeCommandsMatch": true,
+      "rawAbsolutePostSequencesMatch": false,
+      "rawPostInputSequenceProvenance": [
+        {
+          "encounter": 3,
+          "castAt": 2737,
+          "natural": {
+            "clutchSequence": 2739,
+            "postSequence": 2741
+          },
+          "restored": {
+            "clutchSequence": 15,
+            "postSequence": 17
+          },
+          "commonOffset": 2724,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 2971,
+          "natural": {
+            "clutchSequence": 2973,
+            "postSequence": 2975
+          },
+          "restored": {
+            "clutchSequence": 249,
+            "postSequence": 251
+          },
+          "commonOffset": 2724,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3202,
+          "natural": {
+            "clutchSequence": 3204,
+            "postSequence": 3206
+          },
+          "restored": {
+            "clutchSequence": 480,
+            "postSequence": 482
+          },
+          "commonOffset": 2724,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3424,
+          "natural": {
+            "clutchSequence": 3426,
+            "postSequence": 3428
+          },
+          "restored": {
+            "clutchSequence": 702,
+            "postSequence": 704
+          },
+          "commonOffset": 2724,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3649,
+          "natural": {
+            "clutchSequence": 3651,
+            "postSequence": 3653
+          },
+          "restored": {
+            "clutchSequence": 927,
+            "postSequence": 929
+          },
+          "commonOffset": 2724,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 3754,
+          "natural": {
+            "clutchSequence": 3756,
+            "postSequence": 3758
+          },
+          "restored": {
+            "clutchSequence": 15,
+            "postSequence": 17
+          },
+          "commonOffset": 3741,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 4021,
+          "natural": {
+            "clutchSequence": 4023,
+            "postSequence": 4025
+          },
+          "restored": {
+            "clutchSequence": 282,
+            "postSequence": 284
+          },
+          "commonOffset": 3741,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 4270,
+          "natural": {
+            "clutchSequence": 4272,
+            "postSequence": 4274
+          },
+          "restored": {
+            "clutchSequence": 531,
+            "postSequence": 533
+          },
+          "commonOffset": 3741,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 4549,
+          "natural": {
+            "clutchSequence": 4551,
+            "postSequence": 4553
+          },
+          "restored": {
+            "clutchSequence": 810,
+            "postSequence": 812
+          },
+          "commonOffset": 3741,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 4786,
+          "natural": {
+            "clutchSequence": 4788,
+            "postSequence": 4790
+          },
+          "restored": {
+            "clutchSequence": 1047,
+            "postSequence": 1049
+          },
+          "commonOffset": 3741,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 5065,
+          "natural": {
+            "clutchSequence": 5067,
+            "postSequence": 5069
+          },
+          "restored": {
+            "clutchSequence": 1326,
+            "postSequence": 1328
+          },
+          "commonOffset": 3741,
+          "relativeInputCommandGap": 2
+        }
+      ],
+      "inputCountersResetByTheActualSourceRestoreAPI": true,
+      "controlledResetProof": "controlled-transport-reset31.json",
+      "passed": true
+    },
+    {
+      "route": "standard-floating-vents",
+      "safeRestores": 13,
+      "mismatches": [
+        "posts"
+      ],
+      "allMeasuredFieldsMatch": false,
+      "combatAndProgressionFieldsMatch": true,
+      "terminalShield": {
+        "natural": 16.679218749999993,
+        "restored": 16.679218749999993
+      },
+      "expectedTerminalShieldNormalization": false,
+      "postGameplayFieldsAndRelativeCommandsMatch": true,
+      "rawAbsolutePostSequencesMatch": false,
+      "rawPostInputSequenceProvenance": [
+        {
+          "encounter": 3,
+          "castAt": 2785,
+          "natural": {
+            "clutchSequence": 2787,
+            "postSequence": 2789
+          },
+          "restored": {
+            "clutchSequence": 15,
+            "postSequence": 17
+          },
+          "commonOffset": 2772,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3541,
+          "natural": {
+            "clutchSequence": 3543,
+            "postSequence": 3545
+          },
+          "restored": {
+            "clutchSequence": 771,
+            "postSequence": 773
+          },
+          "commonOffset": 2772,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3784,
+          "natural": {
+            "clutchSequence": 3786,
+            "postSequence": 3788
+          },
+          "restored": {
+            "clutchSequence": 1014,
+            "postSequence": 1016
+          },
+          "commonOffset": 2772,
+          "relativeInputCommandGap": 2
+        }
+      ],
+      "inputCountersResetByTheActualSourceRestoreAPI": true,
+      "controlledResetProof": "controlled-transport-reset31.json",
+      "passed": true
+    },
+    {
+      "route": "standard-floating-split",
+      "safeRestores": 13,
+      "mismatches": [
+        "posts"
+      ],
+      "allMeasuredFieldsMatch": false,
+      "combatAndProgressionFieldsMatch": true,
+      "terminalShield": {
+        "natural": 44.45,
+        "restored": 44.45
+      },
+      "expectedTerminalShieldNormalization": false,
+      "postGameplayFieldsAndRelativeCommandsMatch": true,
+      "rawAbsolutePostSequencesMatch": false,
+      "rawPostInputSequenceProvenance": [
+        {
+          "encounter": 3,
+          "castAt": 2746,
+          "natural": {
+            "clutchSequence": 2748,
+            "postSequence": 2750
+          },
+          "restored": {
+            "clutchSequence": 16,
+            "postSequence": 18
+          },
+          "commonOffset": 2732,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3034,
+          "natural": {
+            "clutchSequence": 3036,
+            "postSequence": 3038
+          },
+          "restored": {
+            "clutchSequence": 304,
+            "postSequence": 306
+          },
+          "commonOffset": 2732,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3298,
+          "natural": {
+            "clutchSequence": 3300,
+            "postSequence": 3302
+          },
+          "restored": {
+            "clutchSequence": 568,
+            "postSequence": 570
+          },
+          "commonOffset": 2732,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3592,
+          "natural": {
+            "clutchSequence": 3594,
+            "postSequence": 3596
+          },
+          "restored": {
+            "clutchSequence": 862,
+            "postSequence": 864
+          },
+          "commonOffset": 2732,
+          "relativeInputCommandGap": 2
+        }
+      ],
+      "inputCountersResetByTheActualSourceRestoreAPI": true,
+      "controlledResetProof": "controlled-transport-reset31.json",
+      "passed": true
+    },
+    {
+      "route": "keyed-loose-mantlet",
+      "safeRestores": 13,
+      "mismatches": [
+        "posts"
+      ],
+      "allMeasuredFieldsMatch": false,
+      "combatAndProgressionFieldsMatch": true,
+      "terminalShield": {
+        "natural": 61.2,
+        "restored": 61.2
+      },
+      "expectedTerminalShieldNormalization": false,
+      "postGameplayFieldsAndRelativeCommandsMatch": true,
+      "rawAbsolutePostSequencesMatch": false,
+      "rawPostInputSequenceProvenance": [
+        {
+          "encounter": 3,
+          "castAt": 2887,
+          "natural": {
+            "clutchSequence": 2889,
+            "postSequence": 2891
+          },
+          "restored": {
+            "clutchSequence": 289,
+            "postSequence": 291
+          },
+          "commonOffset": 2600,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3109,
+          "natural": {
+            "clutchSequence": 3111,
+            "postSequence": 3113
+          },
+          "restored": {
+            "clutchSequence": 511,
+            "postSequence": 513
+          },
+          "commonOffset": 2600,
+          "relativeInputCommandGap": 2
+        }
+      ],
+      "inputCountersResetByTheActualSourceRestoreAPI": true,
+      "controlledResetProof": "controlled-transport-reset31.json",
+      "passed": true
+    },
+    {
+      "route": "keyed-loose-vents",
+      "safeRestores": 13,
+      "mismatches": [
+        "posts"
+      ],
+      "allMeasuredFieldsMatch": false,
+      "combatAndProgressionFieldsMatch": true,
+      "terminalShield": {
+        "natural": 80,
+        "restored": 80
+      },
+      "expectedTerminalShieldNormalization": false,
+      "postGameplayFieldsAndRelativeCommandsMatch": true,
+      "rawAbsolutePostSequencesMatch": false,
+      "rawPostInputSequenceProvenance": [
+        {
+          "encounter": 3,
+          "castAt": 2887,
+          "natural": {
+            "clutchSequence": 2889,
+            "postSequence": 2891
+          },
+          "restored": {
+            "clutchSequence": 297,
+            "postSequence": 299
+          },
+          "commonOffset": 2592,
+          "relativeInputCommandGap": 2
+        }
+      ],
+      "inputCountersResetByTheActualSourceRestoreAPI": true,
+      "controlledResetProof": "controlled-transport-reset31.json",
+      "passed": true
+    },
+    {
+      "route": "keyed-loose-split",
+      "safeRestores": 13,
+      "mismatches": [
+        "posts"
+      ],
+      "allMeasuredFieldsMatch": false,
+      "combatAndProgressionFieldsMatch": true,
+      "terminalShield": {
+        "natural": 80,
+        "restored": 80
+      },
+      "expectedTerminalShieldNormalization": false,
+      "postGameplayFieldsAndRelativeCommandsMatch": true,
+      "rawAbsolutePostSequencesMatch": false,
+      "rawPostInputSequenceProvenance": [
+        {
+          "encounter": 3,
+          "castAt": 2887,
+          "natural": {
+            "clutchSequence": 2889,
+            "postSequence": 2891
+          },
+          "restored": {
+            "clutchSequence": 294,
+            "postSequence": 296
+          },
+          "commonOffset": 2595,
+          "relativeInputCommandGap": 2
+        }
+      ],
+      "inputCountersResetByTheActualSourceRestoreAPI": true,
+      "controlledResetProof": "controlled-transport-reset31.json",
+      "passed": true
+    },
+    {
+      "route": "keyed-spade-mantlet",
+      "safeRestores": 18,
+      "mismatches": [
+        "posts"
+      ],
+      "allMeasuredFieldsMatch": false,
+      "combatAndProgressionFieldsMatch": true,
+      "terminalShield": {
+        "natural": 0,
+        "restored": 0
+      },
+      "expectedTerminalShieldNormalization": false,
+      "postGameplayFieldsAndRelativeCommandsMatch": true,
+      "rawAbsolutePostSequencesMatch": false,
+      "rawPostInputSequenceProvenance": [
+        {
+          "encounter": 3,
+          "castAt": 2848,
+          "natural": {
+            "clutchSequence": 2850,
+            "postSequence": 2852
+          },
+          "restored": {
+            "clutchSequence": 15,
+            "postSequence": 17
+          },
+          "commonOffset": 2835,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3106,
+          "natural": {
+            "clutchSequence": 3108,
+            "postSequence": 3110
+          },
+          "restored": {
+            "clutchSequence": 273,
+            "postSequence": 275
+          },
+          "commonOffset": 2835,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3340,
+          "natural": {
+            "clutchSequence": 3342,
+            "postSequence": 3344
+          },
+          "restored": {
+            "clutchSequence": 507,
+            "postSequence": 509
+          },
+          "commonOffset": 2835,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3574,
+          "natural": {
+            "clutchSequence": 3576,
+            "postSequence": 3578
+          },
+          "restored": {
+            "clutchSequence": 741,
+            "postSequence": 743
+          },
+          "commonOffset": 2835,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3805,
+          "natural": {
+            "clutchSequence": 3807,
+            "postSequence": 3809
+          },
+          "restored": {
+            "clutchSequence": 972,
+            "postSequence": 974
+          },
+          "commonOffset": 2835,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 3853,
+          "natural": {
+            "clutchSequence": 3855,
+            "postSequence": 3857
+          },
+          "restored": {
+            "clutchSequence": 15,
+            "postSequence": 17
+          },
+          "commonOffset": 3840,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 4063,
+          "natural": {
+            "clutchSequence": 4065,
+            "postSequence": 4067
+          },
+          "restored": {
+            "clutchSequence": 225,
+            "postSequence": 227
+          },
+          "commonOffset": 3840,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 4273,
+          "natural": {
+            "clutchSequence": 4275,
+            "postSequence": 4277
+          },
+          "restored": {
+            "clutchSequence": 435,
+            "postSequence": 437
+          },
+          "commonOffset": 3840,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 4483,
+          "natural": {
+            "clutchSequence": 4485,
+            "postSequence": 4487
+          },
+          "restored": {
+            "clutchSequence": 645,
+            "postSequence": 647
+          },
+          "commonOffset": 3840,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 4693,
+          "natural": {
+            "clutchSequence": 4695,
+            "postSequence": 4697
+          },
+          "restored": {
+            "clutchSequence": 855,
+            "postSequence": 857
+          },
+          "commonOffset": 3840,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 4903,
+          "natural": {
+            "clutchSequence": 4905,
+            "postSequence": 4907
+          },
+          "restored": {
+            "clutchSequence": 1065,
+            "postSequence": 1067
+          },
+          "commonOffset": 3840,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 5113,
+          "natural": {
+            "clutchSequence": 5115,
+            "postSequence": 5117
+          },
+          "restored": {
+            "clutchSequence": 1275,
+            "postSequence": 1277
+          },
+          "commonOffset": 3840,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 5323,
+          "natural": {
+            "clutchSequence": 5325,
+            "postSequence": 5327
+          },
+          "restored": {
+            "clutchSequence": 1485,
+            "postSequence": 1487
+          },
+          "commonOffset": 3840,
+          "relativeInputCommandGap": 2
+        }
+      ],
+      "inputCountersResetByTheActualSourceRestoreAPI": true,
+      "controlledResetProof": "controlled-transport-reset31.json",
+      "passed": true
+    },
+    {
+      "route": "keyed-spade-vents",
+      "safeRestores": 13,
+      "mismatches": [
+        "posts"
+      ],
+      "allMeasuredFieldsMatch": false,
+      "combatAndProgressionFieldsMatch": true,
+      "terminalShield": {
+        "natural": 53.109375,
+        "restored": 53.109375
+      },
+      "expectedTerminalShieldNormalization": false,
+      "postGameplayFieldsAndRelativeCommandsMatch": true,
+      "rawAbsolutePostSequencesMatch": false,
+      "rawPostInputSequenceProvenance": [
+        {
+          "encounter": 3,
+          "castAt": 2842,
+          "natural": {
+            "clutchSequence": 2844,
+            "postSequence": 2846
+          },
+          "restored": {
+            "clutchSequence": 15,
+            "postSequence": 17
+          },
+          "commonOffset": 2829,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3100,
+          "natural": {
+            "clutchSequence": 3102,
+            "postSequence": 3104
+          },
+          "restored": {
+            "clutchSequence": 273,
+            "postSequence": 275
+          },
+          "commonOffset": 2829,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3349,
+          "natural": {
+            "clutchSequence": 3351,
+            "postSequence": 3353
+          },
+          "restored": {
+            "clutchSequence": 522,
+            "postSequence": 524
+          },
+          "commonOffset": 2829,
+          "relativeInputCommandGap": 2
+        }
+      ],
+      "inputCountersResetByTheActualSourceRestoreAPI": true,
+      "controlledResetProof": "controlled-transport-reset31.json",
+      "passed": true
+    },
+    {
+      "route": "keyed-spade-split",
+      "safeRestores": 13,
+      "mismatches": [
+        "posts"
+      ],
+      "allMeasuredFieldsMatch": false,
+      "combatAndProgressionFieldsMatch": true,
+      "terminalShield": {
+        "natural": 20.650000000000002,
+        "restored": 20.650000000000002
+      },
+      "expectedTerminalShieldNormalization": false,
+      "postGameplayFieldsAndRelativeCommandsMatch": true,
+      "rawAbsolutePostSequencesMatch": false,
+      "rawPostInputSequenceProvenance": [
+        {
+          "encounter": 3,
+          "castAt": 2848,
+          "natural": {
+            "clutchSequence": 2850,
+            "postSequence": 2852
+          },
+          "restored": {
+            "clutchSequence": 16,
+            "postSequence": 18
+          },
+          "commonOffset": 2834,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3106,
+          "natural": {
+            "clutchSequence": 3108,
+            "postSequence": 3110
+          },
+          "restored": {
+            "clutchSequence": 274,
+            "postSequence": 276
+          },
+          "commonOffset": 2834,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3340,
+          "natural": {
+            "clutchSequence": 3342,
+            "postSequence": 3344
+          },
+          "restored": {
+            "clutchSequence": 508,
+            "postSequence": 510
+          },
+          "commonOffset": 2834,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3601,
+          "natural": {
+            "clutchSequence": 3603,
+            "postSequence": 3605
+          },
+          "restored": {
+            "clutchSequence": 769,
+            "postSequence": 771
+          },
+          "commonOffset": 2834,
+          "relativeInputCommandGap": 2
+        }
+      ],
+      "inputCountersResetByTheActualSourceRestoreAPI": true,
+      "controlledResetProof": "controlled-transport-reset31.json",
+      "passed": true
+    },
+    {
+      "route": "keyed-floating-mantlet",
+      "safeRestores": 17,
+      "mismatches": [
+        "posts"
+      ],
+      "allMeasuredFieldsMatch": false,
+      "combatAndProgressionFieldsMatch": true,
+      "terminalShield": {
+        "natural": 0,
+        "restored": 0
+      },
+      "expectedTerminalShieldNormalization": false,
+      "postGameplayFieldsAndRelativeCommandsMatch": true,
+      "rawAbsolutePostSequencesMatch": false,
+      "rawPostInputSequenceProvenance": [
+        {
+          "encounter": 3,
+          "castAt": 2839,
+          "natural": {
+            "clutchSequence": 2841,
+            "postSequence": 2843
+          },
+          "restored": {
+            "clutchSequence": 110,
+            "postSequence": 112
+          },
+          "commonOffset": 2731,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3070,
+          "natural": {
+            "clutchSequence": 3072,
+            "postSequence": 3074
+          },
+          "restored": {
+            "clutchSequence": 341,
+            "postSequence": 343
+          },
+          "commonOffset": 2731,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3292,
+          "natural": {
+            "clutchSequence": 3294,
+            "postSequence": 3296
+          },
+          "restored": {
+            "clutchSequence": 563,
+            "postSequence": 565
+          },
+          "commonOffset": 2731,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3514,
+          "natural": {
+            "clutchSequence": 3516,
+            "postSequence": 3518
+          },
+          "restored": {
+            "clutchSequence": 785,
+            "postSequence": 787
+          },
+          "commonOffset": 2731,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3760,
+          "natural": {
+            "clutchSequence": 3762,
+            "postSequence": 3764
+          },
+          "restored": {
+            "clutchSequence": 1031,
+            "postSequence": 1033
+          },
+          "commonOffset": 2731,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 4030,
+          "natural": {
+            "clutchSequence": 4032,
+            "postSequence": 4034
+          },
+          "restored": {
+            "clutchSequence": 1301,
+            "postSequence": 1303
+          },
+          "commonOffset": 2731,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 4069,
+          "natural": {
+            "clutchSequence": 4071,
+            "postSequence": 4073
+          },
+          "restored": {
+            "clutchSequence": 14,
+            "postSequence": 16
+          },
+          "commonOffset": 4057,
+          "relativeInputCommandGap": 2
+        }
+      ],
+      "inputCountersResetByTheActualSourceRestoreAPI": true,
+      "controlledResetProof": "controlled-transport-reset31.json",
+      "passed": true
+    },
+    {
+      "route": "keyed-floating-vents",
+      "safeRestores": 18,
+      "mismatches": [
+        "posts"
+      ],
+      "allMeasuredFieldsMatch": false,
+      "combatAndProgressionFieldsMatch": true,
+      "terminalShield": {
+        "natural": 0,
+        "restored": 0
+      },
+      "expectedTerminalShieldNormalization": false,
+      "postGameplayFieldsAndRelativeCommandsMatch": true,
+      "rawAbsolutePostSequencesMatch": false,
+      "rawPostInputSequenceProvenance": [
+        {
+          "encounter": 3,
+          "castAt": 2773,
+          "natural": {
+            "clutchSequence": 2775,
+            "postSequence": 2777
+          },
+          "restored": {
+            "clutchSequence": 16,
+            "postSequence": 18
+          },
+          "commonOffset": 2759,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3025,
+          "natural": {
+            "clutchSequence": 3027,
+            "postSequence": 3029
+          },
+          "restored": {
+            "clutchSequence": 268,
+            "postSequence": 270
+          },
+          "commonOffset": 2759,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3277,
+          "natural": {
+            "clutchSequence": 3279,
+            "postSequence": 3281
+          },
+          "restored": {
+            "clutchSequence": 520,
+            "postSequence": 522
+          },
+          "commonOffset": 2759,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3520,
+          "natural": {
+            "clutchSequence": 3522,
+            "postSequence": 3524
+          },
+          "restored": {
+            "clutchSequence": 763,
+            "postSequence": 765
+          },
+          "commonOffset": 2759,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3763,
+          "natural": {
+            "clutchSequence": 3765,
+            "postSequence": 3767
+          },
+          "restored": {
+            "clutchSequence": 1006,
+            "postSequence": 1008
+          },
+          "commonOffset": 2759,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 3817,
+          "natural": {
+            "clutchSequence": 3819,
+            "postSequence": 3821
+          },
+          "restored": {
+            "clutchSequence": 21,
+            "postSequence": 23
+          },
+          "commonOffset": 3798,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 4060,
+          "natural": {
+            "clutchSequence": 4062,
+            "postSequence": 4064
+          },
+          "restored": {
+            "clutchSequence": 264,
+            "postSequence": 266
+          },
+          "commonOffset": 3798,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 4375,
+          "natural": {
+            "clutchSequence": 4377,
+            "postSequence": 4379
+          },
+          "restored": {
+            "clutchSequence": 579,
+            "postSequence": 581
+          },
+          "commonOffset": 3798,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 4618,
+          "natural": {
+            "clutchSequence": 4620,
+            "postSequence": 4622
+          },
+          "restored": {
+            "clutchSequence": 822,
+            "postSequence": 824
+          },
+          "commonOffset": 3798,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 4861,
+          "natural": {
+            "clutchSequence": 4863,
+            "postSequence": 4865
+          },
+          "restored": {
+            "clutchSequence": 1065,
+            "postSequence": 1067
+          },
+          "commonOffset": 3798,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 5149,
+          "natural": {
+            "clutchSequence": 5151,
+            "postSequence": 5153
+          },
+          "restored": {
+            "clutchSequence": 1353,
+            "postSequence": 1355
+          },
+          "commonOffset": 3798,
+          "relativeInputCommandGap": 2
+        }
+      ],
+      "inputCountersResetByTheActualSourceRestoreAPI": true,
+      "controlledResetProof": "controlled-transport-reset31.json",
+      "passed": true
+    },
+    {
+      "route": "keyed-floating-split",
+      "safeRestores": 13,
+      "mismatches": [
+        "posts"
+      ],
+      "allMeasuredFieldsMatch": false,
+      "combatAndProgressionFieldsMatch": true,
+      "terminalShield": {
+        "natural": 48.25,
+        "restored": 48.25
+      },
+      "expectedTerminalShieldNormalization": false,
+      "postGameplayFieldsAndRelativeCommandsMatch": true,
+      "rawAbsolutePostSequencesMatch": false,
+      "rawPostInputSequenceProvenance": [
+        {
+          "encounter": 3,
+          "castAt": 2752,
+          "natural": {
+            "clutchSequence": 2754,
+            "postSequence": 2756
+          },
+          "restored": {
+            "clutchSequence": 13,
+            "postSequence": 15
+          },
+          "commonOffset": 2741,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3268,
+          "natural": {
+            "clutchSequence": 3270,
+            "postSequence": 3272
+          },
+          "restored": {
+            "clutchSequence": 529,
+            "postSequence": 531
+          },
+          "commonOffset": 2741,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3514,
+          "natural": {
+            "clutchSequence": 3516,
+            "postSequence": 3518
+          },
+          "restored": {
+            "clutchSequence": 775,
+            "postSequence": 777
+          },
+          "commonOffset": 2741,
+          "relativeInputCommandGap": 2
+        }
+      ],
+      "inputCountersResetByTheActualSourceRestoreAPI": true,
+      "controlledResetProof": "controlled-transport-reset31.json",
+      "passed": true
+    },
+    {
+      "route": "open-loose-mantlet",
+      "safeRestores": 13,
+      "mismatches": [
+        "posts"
+      ],
+      "allMeasuredFieldsMatch": false,
+      "combatAndProgressionFieldsMatch": true,
+      "terminalShield": {
+        "natural": 80,
+        "restored": 80
+      },
+      "expectedTerminalShieldNormalization": false,
+      "postGameplayFieldsAndRelativeCommandsMatch": true,
+      "rawAbsolutePostSequencesMatch": false,
+      "rawPostInputSequenceProvenance": [
+        {
+          "encounter": 3,
+          "castAt": 2602,
+          "natural": {
+            "clutchSequence": 2604,
+            "postSequence": 2606
+          },
+          "restored": {
+            "clutchSequence": 20,
+            "postSequence": 22
+          },
+          "commonOffset": 2584,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 2887,
+          "natural": {
+            "clutchSequence": 2889,
+            "postSequence": 2891
+          },
+          "restored": {
+            "clutchSequence": 305,
+            "postSequence": 307
+          },
+          "commonOffset": 2584,
+          "relativeInputCommandGap": 2
+        }
+      ],
+      "inputCountersResetByTheActualSourceRestoreAPI": true,
+      "controlledResetProof": "controlled-transport-reset31.json",
+      "passed": true
+    },
+    {
+      "route": "open-loose-vents",
+      "safeRestores": 13,
+      "mismatches": [
+        "posts"
+      ],
+      "allMeasuredFieldsMatch": false,
+      "combatAndProgressionFieldsMatch": true,
+      "terminalShield": {
+        "natural": 80,
+        "restored": 80
+      },
+      "expectedTerminalShieldNormalization": false,
+      "postGameplayFieldsAndRelativeCommandsMatch": true,
+      "rawAbsolutePostSequencesMatch": false,
+      "rawPostInputSequenceProvenance": [
+        {
+          "encounter": 3,
+          "castAt": 2575,
+          "natural": {
+            "clutchSequence": 2577,
+            "postSequence": 2579
+          },
+          "restored": {
+            "clutchSequence": 17,
+            "postSequence": 19
+          },
+          "commonOffset": 2560,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 2887,
+          "natural": {
+            "clutchSequence": 2889,
+            "postSequence": 2891
+          },
+          "restored": {
+            "clutchSequence": 329,
+            "postSequence": 331
+          },
+          "commonOffset": 2560,
+          "relativeInputCommandGap": 2
+        }
+      ],
+      "inputCountersResetByTheActualSourceRestoreAPI": true,
+      "controlledResetProof": "controlled-transport-reset31.json",
+      "passed": true
+    },
+    {
+      "route": "open-loose-split",
+      "safeRestores": 13,
+      "mismatches": [
+        "posts"
+      ],
+      "allMeasuredFieldsMatch": false,
+      "combatAndProgressionFieldsMatch": true,
+      "terminalShield": {
+        "natural": 80,
+        "restored": 80
+      },
+      "expectedTerminalShieldNormalization": false,
+      "postGameplayFieldsAndRelativeCommandsMatch": true,
+      "rawAbsolutePostSequencesMatch": false,
+      "rawPostInputSequenceProvenance": [
+        {
+          "encounter": 3,
+          "castAt": 2887,
+          "natural": {
+            "clutchSequence": 2889,
+            "postSequence": 2891
+          },
+          "restored": {
+            "clutchSequence": 315,
+            "postSequence": 317
+          },
+          "commonOffset": 2574,
+          "relativeInputCommandGap": 2
+        }
+      ],
+      "inputCountersResetByTheActualSourceRestoreAPI": true,
+      "controlledResetProof": "controlled-transport-reset31.json",
+      "passed": true
+    },
+    {
+      "route": "open-spade-mantlet",
+      "safeRestores": 18,
+      "mismatches": [
+        "posts"
+      ],
+      "allMeasuredFieldsMatch": false,
+      "combatAndProgressionFieldsMatch": true,
+      "terminalShield": {
+        "natural": 0,
+        "restored": 0
+      },
+      "expectedTerminalShieldNormalization": false,
+      "postGameplayFieldsAndRelativeCommandsMatch": true,
+      "rawAbsolutePostSequencesMatch": false,
+      "rawPostInputSequenceProvenance": [
+        {
+          "encounter": 3,
+          "castAt": 2848,
+          "natural": {
+            "clutchSequence": 2850,
+            "postSequence": 2852
+          },
+          "restored": {
+            "clutchSequence": 15,
+            "postSequence": 17
+          },
+          "commonOffset": 2835,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3106,
+          "natural": {
+            "clutchSequence": 3108,
+            "postSequence": 3110
+          },
+          "restored": {
+            "clutchSequence": 273,
+            "postSequence": 275
+          },
+          "commonOffset": 2835,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3340,
+          "natural": {
+            "clutchSequence": 3342,
+            "postSequence": 3344
+          },
+          "restored": {
+            "clutchSequence": 507,
+            "postSequence": 509
+          },
+          "commonOffset": 2835,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3574,
+          "natural": {
+            "clutchSequence": 3576,
+            "postSequence": 3578
+          },
+          "restored": {
+            "clutchSequence": 741,
+            "postSequence": 743
+          },
+          "commonOffset": 2835,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3805,
+          "natural": {
+            "clutchSequence": 3807,
+            "postSequence": 3809
+          },
+          "restored": {
+            "clutchSequence": 972,
+            "postSequence": 974
+          },
+          "commonOffset": 2835,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 3853,
+          "natural": {
+            "clutchSequence": 3855,
+            "postSequence": 3857
+          },
+          "restored": {
+            "clutchSequence": 15,
+            "postSequence": 17
+          },
+          "commonOffset": 3840,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 4063,
+          "natural": {
+            "clutchSequence": 4065,
+            "postSequence": 4067
+          },
+          "restored": {
+            "clutchSequence": 225,
+            "postSequence": 227
+          },
+          "commonOffset": 3840,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 4273,
+          "natural": {
+            "clutchSequence": 4275,
+            "postSequence": 4277
+          },
+          "restored": {
+            "clutchSequence": 435,
+            "postSequence": 437
+          },
+          "commonOffset": 3840,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 4483,
+          "natural": {
+            "clutchSequence": 4485,
+            "postSequence": 4487
+          },
+          "restored": {
+            "clutchSequence": 645,
+            "postSequence": 647
+          },
+          "commonOffset": 3840,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 4693,
+          "natural": {
+            "clutchSequence": 4695,
+            "postSequence": 4697
+          },
+          "restored": {
+            "clutchSequence": 855,
+            "postSequence": 857
+          },
+          "commonOffset": 3840,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 4903,
+          "natural": {
+            "clutchSequence": 4905,
+            "postSequence": 4907
+          },
+          "restored": {
+            "clutchSequence": 1065,
+            "postSequence": 1067
+          },
+          "commonOffset": 3840,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 5113,
+          "natural": {
+            "clutchSequence": 5115,
+            "postSequence": 5117
+          },
+          "restored": {
+            "clutchSequence": 1275,
+            "postSequence": 1277
+          },
+          "commonOffset": 3840,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 5323,
+          "natural": {
+            "clutchSequence": 5325,
+            "postSequence": 5327
+          },
+          "restored": {
+            "clutchSequence": 1485,
+            "postSequence": 1487
+          },
+          "commonOffset": 3840,
+          "relativeInputCommandGap": 2
+        }
+      ],
+      "inputCountersResetByTheActualSourceRestoreAPI": true,
+      "controlledResetProof": "controlled-transport-reset31.json",
+      "passed": true
+    },
+    {
+      "route": "open-spade-vents",
+      "safeRestores": 13,
+      "mismatches": [
+        "posts"
+      ],
+      "allMeasuredFieldsMatch": false,
+      "combatAndProgressionFieldsMatch": true,
+      "terminalShield": {
+        "natural": 53.109375,
+        "restored": 53.109375
+      },
+      "expectedTerminalShieldNormalization": false,
+      "postGameplayFieldsAndRelativeCommandsMatch": true,
+      "rawAbsolutePostSequencesMatch": false,
+      "rawPostInputSequenceProvenance": [
+        {
+          "encounter": 3,
+          "castAt": 2842,
+          "natural": {
+            "clutchSequence": 2844,
+            "postSequence": 2846
+          },
+          "restored": {
+            "clutchSequence": 15,
+            "postSequence": 17
+          },
+          "commonOffset": 2829,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3100,
+          "natural": {
+            "clutchSequence": 3102,
+            "postSequence": 3104
+          },
+          "restored": {
+            "clutchSequence": 273,
+            "postSequence": 275
+          },
+          "commonOffset": 2829,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3349,
+          "natural": {
+            "clutchSequence": 3351,
+            "postSequence": 3353
+          },
+          "restored": {
+            "clutchSequence": 522,
+            "postSequence": 524
+          },
+          "commonOffset": 2829,
+          "relativeInputCommandGap": 2
+        }
+      ],
+      "inputCountersResetByTheActualSourceRestoreAPI": true,
+      "controlledResetProof": "controlled-transport-reset31.json",
+      "passed": true
+    },
+    {
+      "route": "open-spade-split",
+      "safeRestores": 18,
+      "mismatches": [
+        "posts"
+      ],
+      "allMeasuredFieldsMatch": false,
+      "combatAndProgressionFieldsMatch": true,
+      "terminalShield": {
+        "natural": 0,
+        "restored": 0
+      },
+      "expectedTerminalShieldNormalization": false,
+      "postGameplayFieldsAndRelativeCommandsMatch": true,
+      "rawAbsolutePostSequencesMatch": false,
+      "rawPostInputSequenceProvenance": [
+        {
+          "encounter": 3,
+          "castAt": 2845,
+          "natural": {
+            "clutchSequence": 2847,
+            "postSequence": 2849
+          },
+          "restored": {
+            "clutchSequence": 15,
+            "postSequence": 17
+          },
+          "commonOffset": 2832,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3079,
+          "natural": {
+            "clutchSequence": 3081,
+            "postSequence": 3083
+          },
+          "restored": {
+            "clutchSequence": 249,
+            "postSequence": 251
+          },
+          "commonOffset": 2832,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3307,
+          "natural": {
+            "clutchSequence": 3309,
+            "postSequence": 3311
+          },
+          "restored": {
+            "clutchSequence": 477,
+            "postSequence": 479
+          },
+          "commonOffset": 2832,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3535,
+          "natural": {
+            "clutchSequence": 3537,
+            "postSequence": 3539
+          },
+          "restored": {
+            "clutchSequence": 705,
+            "postSequence": 707
+          },
+          "commonOffset": 2832,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3781,
+          "natural": {
+            "clutchSequence": 3783,
+            "postSequence": 3785
+          },
+          "restored": {
+            "clutchSequence": 951,
+            "postSequence": 953
+          },
+          "commonOffset": 2832,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 3811,
+          "natural": {
+            "clutchSequence": 3813,
+            "postSequence": 3815
+          },
+          "restored": {
+            "clutchSequence": 16,
+            "postSequence": 18
+          },
+          "commonOffset": 3797,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 4030,
+          "natural": {
+            "clutchSequence": 4032,
+            "postSequence": 4034
+          },
+          "restored": {
+            "clutchSequence": 235,
+            "postSequence": 237
+          },
+          "commonOffset": 3797,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 4249,
+          "natural": {
+            "clutchSequence": 4251,
+            "postSequence": 4253
+          },
+          "restored": {
+            "clutchSequence": 454,
+            "postSequence": 456
+          },
+          "commonOffset": 3797,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 4468,
+          "natural": {
+            "clutchSequence": 4470,
+            "postSequence": 4472
+          },
+          "restored": {
+            "clutchSequence": 673,
+            "postSequence": 675
+          },
+          "commonOffset": 3797,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 4687,
+          "natural": {
+            "clutchSequence": 4689,
+            "postSequence": 4691
+          },
+          "restored": {
+            "clutchSequence": 892,
+            "postSequence": 894
+          },
+          "commonOffset": 3797,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 4906,
+          "natural": {
+            "clutchSequence": 4908,
+            "postSequence": 4910
+          },
+          "restored": {
+            "clutchSequence": 1111,
+            "postSequence": 1113
+          },
+          "commonOffset": 3797,
+          "relativeInputCommandGap": 2
+        }
+      ],
+      "inputCountersResetByTheActualSourceRestoreAPI": true,
+      "controlledResetProof": "controlled-transport-reset31.json",
+      "passed": true
+    },
+    {
+      "route": "open-floating-mantlet",
+      "safeRestores": 17,
+      "mismatches": [
+        "posts"
+      ],
+      "allMeasuredFieldsMatch": false,
+      "combatAndProgressionFieldsMatch": true,
+      "terminalShield": {
+        "natural": 0,
+        "restored": 0
+      },
+      "expectedTerminalShieldNormalization": false,
+      "postGameplayFieldsAndRelativeCommandsMatch": true,
+      "rawAbsolutePostSequencesMatch": false,
+      "rawPostInputSequenceProvenance": [
+        {
+          "encounter": 3,
+          "castAt": 2839,
+          "natural": {
+            "clutchSequence": 2841,
+            "postSequence": 2843
+          },
+          "restored": {
+            "clutchSequence": 110,
+            "postSequence": 112
+          },
+          "commonOffset": 2731,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3070,
+          "natural": {
+            "clutchSequence": 3072,
+            "postSequence": 3074
+          },
+          "restored": {
+            "clutchSequence": 341,
+            "postSequence": 343
+          },
+          "commonOffset": 2731,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3292,
+          "natural": {
+            "clutchSequence": 3294,
+            "postSequence": 3296
+          },
+          "restored": {
+            "clutchSequence": 563,
+            "postSequence": 565
+          },
+          "commonOffset": 2731,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3514,
+          "natural": {
+            "clutchSequence": 3516,
+            "postSequence": 3518
+          },
+          "restored": {
+            "clutchSequence": 785,
+            "postSequence": 787
+          },
+          "commonOffset": 2731,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3760,
+          "natural": {
+            "clutchSequence": 3762,
+            "postSequence": 3764
+          },
+          "restored": {
+            "clutchSequence": 1031,
+            "postSequence": 1033
+          },
+          "commonOffset": 2731,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 4030,
+          "natural": {
+            "clutchSequence": 4032,
+            "postSequence": 4034
+          },
+          "restored": {
+            "clutchSequence": 1301,
+            "postSequence": 1303
+          },
+          "commonOffset": 2731,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 4069,
+          "natural": {
+            "clutchSequence": 4071,
+            "postSequence": 4073
+          },
+          "restored": {
+            "clutchSequence": 14,
+            "postSequence": 16
+          },
+          "commonOffset": 4057,
+          "relativeInputCommandGap": 2
+        }
+      ],
+      "inputCountersResetByTheActualSourceRestoreAPI": true,
+      "controlledResetProof": "controlled-transport-reset31.json",
+      "passed": true
+    },
+    {
+      "route": "open-floating-vents",
+      "safeRestores": 18,
+      "mismatches": [
+        "posts"
+      ],
+      "allMeasuredFieldsMatch": false,
+      "combatAndProgressionFieldsMatch": true,
+      "terminalShield": {
+        "natural": 0,
+        "restored": 0
+      },
+      "expectedTerminalShieldNormalization": false,
+      "postGameplayFieldsAndRelativeCommandsMatch": true,
+      "rawAbsolutePostSequencesMatch": false,
+      "rawPostInputSequenceProvenance": [
+        {
+          "encounter": 3,
+          "castAt": 2773,
+          "natural": {
+            "clutchSequence": 2775,
+            "postSequence": 2777
+          },
+          "restored": {
+            "clutchSequence": 16,
+            "postSequence": 18
+          },
+          "commonOffset": 2759,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3025,
+          "natural": {
+            "clutchSequence": 3027,
+            "postSequence": 3029
+          },
+          "restored": {
+            "clutchSequence": 268,
+            "postSequence": 270
+          },
+          "commonOffset": 2759,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3277,
+          "natural": {
+            "clutchSequence": 3279,
+            "postSequence": 3281
+          },
+          "restored": {
+            "clutchSequence": 520,
+            "postSequence": 522
+          },
+          "commonOffset": 2759,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3520,
+          "natural": {
+            "clutchSequence": 3522,
+            "postSequence": 3524
+          },
+          "restored": {
+            "clutchSequence": 763,
+            "postSequence": 765
+          },
+          "commonOffset": 2759,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3763,
+          "natural": {
+            "clutchSequence": 3765,
+            "postSequence": 3767
+          },
+          "restored": {
+            "clutchSequence": 1006,
+            "postSequence": 1008
+          },
+          "commonOffset": 2759,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 3817,
+          "natural": {
+            "clutchSequence": 3819,
+            "postSequence": 3821
+          },
+          "restored": {
+            "clutchSequence": 21,
+            "postSequence": 23
+          },
+          "commonOffset": 3798,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 4060,
+          "natural": {
+            "clutchSequence": 4062,
+            "postSequence": 4064
+          },
+          "restored": {
+            "clutchSequence": 264,
+            "postSequence": 266
+          },
+          "commonOffset": 3798,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 4375,
+          "natural": {
+            "clutchSequence": 4377,
+            "postSequence": 4379
+          },
+          "restored": {
+            "clutchSequence": 579,
+            "postSequence": 581
+          },
+          "commonOffset": 3798,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 4618,
+          "natural": {
+            "clutchSequence": 4620,
+            "postSequence": 4622
+          },
+          "restored": {
+            "clutchSequence": 822,
+            "postSequence": 824
+          },
+          "commonOffset": 3798,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 4861,
+          "natural": {
+            "clutchSequence": 4863,
+            "postSequence": 4865
+          },
+          "restored": {
+            "clutchSequence": 1065,
+            "postSequence": 1067
+          },
+          "commonOffset": 3798,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 4,
+          "castAt": 5149,
+          "natural": {
+            "clutchSequence": 5151,
+            "postSequence": 5153
+          },
+          "restored": {
+            "clutchSequence": 1353,
+            "postSequence": 1355
+          },
+          "commonOffset": 3798,
+          "relativeInputCommandGap": 2
+        }
+      ],
+      "inputCountersResetByTheActualSourceRestoreAPI": true,
+      "controlledResetProof": "controlled-transport-reset31.json",
+      "passed": true
+    },
+    {
+      "route": "open-floating-split",
+      "safeRestores": 13,
+      "mismatches": [
+        "posts"
+      ],
+      "allMeasuredFieldsMatch": false,
+      "combatAndProgressionFieldsMatch": true,
+      "terminalShield": {
+        "natural": 48.25,
+        "restored": 48.25
+      },
+      "expectedTerminalShieldNormalization": false,
+      "postGameplayFieldsAndRelativeCommandsMatch": true,
+      "rawAbsolutePostSequencesMatch": false,
+      "rawPostInputSequenceProvenance": [
+        {
+          "encounter": 3,
+          "castAt": 2752,
+          "natural": {
+            "clutchSequence": 2754,
+            "postSequence": 2756
+          },
+          "restored": {
+            "clutchSequence": 13,
+            "postSequence": 15
+          },
+          "commonOffset": 2741,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3268,
+          "natural": {
+            "clutchSequence": 3270,
+            "postSequence": 3272
+          },
+          "restored": {
+            "clutchSequence": 529,
+            "postSequence": 531
+          },
+          "commonOffset": 2741,
+          "relativeInputCommandGap": 2
+        },
+        {
+          "encounter": 3,
+          "castAt": 3514,
+          "natural": {
+            "clutchSequence": 3516,
+            "postSequence": 3518
+          },
+          "restored": {
+            "clutchSequence": 775,
+            "postSequence": 777
+          },
+          "commonOffset": 2741,
+          "relativeInputCommandGap": 2
+        }
+      ],
+      "inputCountersResetByTheActualSourceRestoreAPI": true,
+      "controlledResetProof": "controlled-transport-reset31.json",
+      "passed": true
+    }
+  ],
+  "limits": [
+    "Independent comparison correction on the unchanged original complete54 simulation trajectories. The original comparison helpers exited1 after comparing absolute transport input identities; their failed reports/logs and all raw counters remain exact. They are not relabeled successful helper executions.",
+    "Every other post value, command gap/order, body/muzzle/bearing, ammo and original clock matches exactly. Both raw sequence numbers must have the same offset, and that offset must remain constant for every post in one combat encounter. No field is silently discarded.",
+    "The actual source safe-local restore API is separately probed with an explicitly controlled lobby transport-counter fixture. It restarts ack/input sequence at0 and preserves the entire safe checkpoint. Original natural-run ack boundaries were not recorded; the reset explanation is supported by this source behavior and the preserved raw offsets.",
+    "Raw absolute input counters and possible issued terminal shield resets continue to make allMeasuredFieldsMatch false. All gameplay/progression values and relative command admission order match; human/rendered/device/native-language/listening/motion/final-balance and online import acceptance are not claimed."
+  ]
+}
