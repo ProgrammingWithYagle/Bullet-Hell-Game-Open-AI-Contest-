@@ -1,0 +1,4783 @@
+{
+  "createdAt": "2026-11-12T01:01:28.097Z",
+  "registered": false,
+  "canonicalCatalogUnchanged": true,
+  "researchRegistryOnly": true,
+  "virtualCatalogCount": 67,
+  "proposedIds": [
+    "heavy-linework-1",
+    "heavy-linework-yoke-1",
+    "heavy-linework-sheave-1"
+  ],
+  "countsAs2211Tests": false,
+  "onlineProof": false,
+  "canonicalFilesWritten": false,
+  "gameBundleSha256": "a4bfe632630909303d89c2515522811f410239a810b59130a766599f82d44079",
+  "runnerSha256": "1c0970e3930821c969026b1b532fbbcdf22c72bfbee3c1a3724194fb9eac6415",
+  "sourceFingerprints": {
+    "runtimeSourceSha256": "c213467e0877fce574552b98139e4171a71ad4430069102a880db46c65f86de8",
+    "sourceSnapshotSha256": "7211728dc29df50da0b1df6cdf1d5fdf1ad034852526f36cf8a7c036a1507f79"
+  },
+  "cases": 27,
+  "pass": 27,
+  "fail": 0,
+  "results": [
+    {
+      "label": "ordinary Short3SP buys actual Fresh Belt plus virtual Anchor Cartridge exactly",
+      "passed": true,
+      "details": {
+        "earned": 3,
+        "spent": 3,
+        "rawOwnershipInjected": false
+      }
+    },
+    {
+      "label": "entry retains foundation prerequisite and earned3 gate",
+      "passed": true,
+      "details": {
+        "controlledBudget": 2
+      }
+    },
+    {
+      "label": "heavy-linework-yoke-1 keeps its original entry prerequisite and5earned gate",
+      "passed": true,
+      "details": {
+        "controlledBudgets": [
+          4,
+          5
+        ],
+        "rawOwnershipInjected": false
+      }
+    },
+    {
+      "label": "heavy-linework-sheave-1 keeps its original entry prerequisite and5earned gate",
+      "passed": true,
+      "details": {
+        "controlledBudgets": [
+          4,
+          5
+        ],
+        "rawOwnershipInjected": false
+      }
+    },
+    {
+      "label": "heavy-linework-yoke-1 preserves symmetric fitting exclusion",
+      "passed": true,
+      "details": {
+        "first": "heavy-linework-yoke-1",
+        "rejected": "heavy-linework-sheave-1"
+      }
+    },
+    {
+      "label": "heavy-linework-sheave-1 preserves symmetric fitting exclusion",
+      "passed": true,
+      "details": {
+        "first": "heavy-linework-sheave-1",
+        "rejected": "heavy-linework-yoke-1"
+      }
+    },
+    {
+      "label": "heavy-linework-1 excludes heavy-flak-1 through actual transaction",
+      "passed": true,
+      "details": {
+        "first": "heavy-linework-1",
+        "rejected": "heavy-flak-1"
+      }
+    },
+    {
+      "label": "heavy-linework-1 excludes heavy-traverse-1 through actual transaction",
+      "passed": true,
+      "details": {
+        "first": "heavy-linework-1",
+        "rejected": "heavy-traverse-1"
+      }
+    },
+    {
+      "label": "heavy-flak-1 excludes heavy-linework-1 through actual transaction",
+      "passed": true,
+      "details": {
+        "first": "heavy-flak-1",
+        "rejected": "heavy-linework-1"
+      }
+    },
+    {
+      "label": "heavy-flak-1 excludes heavy-traverse-1 through actual transaction",
+      "passed": true,
+      "details": {
+        "first": "heavy-flak-1",
+        "rejected": "heavy-traverse-1"
+      }
+    },
+    {
+      "label": "heavy-traverse-1 excludes heavy-linework-1 through actual transaction",
+      "passed": true,
+      "details": {
+        "first": "heavy-traverse-1",
+        "rejected": "heavy-linework-1"
+      }
+    },
+    {
+      "label": "heavy-traverse-1 excludes heavy-flak-1 through actual transaction",
+      "passed": true,
+      "details": {
+        "first": "heavy-traverse-1",
+        "rejected": "heavy-flak-1"
+      }
+    },
+    {
+      "label": "soldier cannot buy proposed Heavy entry",
+      "passed": true,
+      "details": {
+        "classId": "soldier"
+      }
+    },
+    {
+      "label": "tank cannot buy proposed Heavy entry",
+      "passed": true,
+      "details": {
+        "classId": "tank"
+      }
+    },
+    {
+      "label": "medic cannot buy proposed Heavy entry",
+      "passed": true,
+      "details": {
+        "classId": "medic"
+      }
+    },
+    {
+      "label": "mage cannot buy proposed Heavy entry",
+      "passed": true,
+      "details": {
+        "classId": "mage"
+      }
+    },
+    {
+      "label": "engineer cannot buy proposed Heavy entry",
+      "passed": true,
+      "details": {
+        "classId": "engineer"
+      }
+    },
+    {
+      "label": "assassin cannot buy proposed Heavy entry",
+      "passed": true,
+      "details": {
+        "classId": "assassin"
+      }
+    },
+    {
+      "label": "bard cannot buy proposed Heavy entry",
+      "passed": true,
+      "details": {
+        "classId": "bard"
+      }
+    },
+    {
+      "label": "swordsman cannot buy proposed Heavy entry",
+      "passed": true,
+      "details": {
+        "classId": "swordsman"
+      }
+    },
+    {
+      "label": "summoner cannot buy proposed Heavy entry",
+      "passed": true,
+      "details": {
+        "classId": "summoner"
+      }
+    },
+    {
+      "label": "ranger cannot buy proposed Heavy entry",
+      "passed": true,
+      "details": {
+        "classId": "ranger"
+      }
+    },
+    {
+      "label": "alchemist cannot buy proposed Heavy entry",
+      "passed": true,
+      "details": {
+        "classId": "alchemist"
+      }
+    },
+    {
+      "label": "story rejects SP acquisition of proposed research operation",
+      "passed": true,
+      "details": {
+        "actualStoryGate": true
+      }
+    },
+    {
+      "label": "bare actual first-clear acquisition3to9 without resource/health/position injection or checkpoints",
+      "passed": true,
+      "details": {
+        "fitting": "bare",
+        "completedEncounters": 1,
+        "earnedSp": 9,
+        "spentSp": 3,
+        "skills": [
+          "heavy-ordnance-1",
+          "heavy-linework-1"
+        ],
+        "phase": "shop",
+        "steps": 1266,
+        "combatTicks": 215,
+        "health": 105,
+        "damageTaken": 0,
+        "actualPurchases": [
+          {
+            "item": "heavy-ordnance-1",
+            "kind": "skill",
+            "result": {
+              "ok": true
+            },
+            "earnedSp": 3,
+            "skills": [
+              "heavy-ordnance-1"
+            ],
+            "phase": "lobby",
+            "encounter": 0
+          },
+          {
+            "item": "heavy-linework-1",
+            "kind": "skill",
+            "result": {
+              "ok": true
+            },
+            "earnedSp": 3,
+            "skills": [
+              "heavy-ordnance-1",
+              "heavy-linework-1"
+            ],
+            "phase": "lobby",
+            "encounter": 0
+          },
+          {
+            "item": "heavy-3",
+            "kind": "weapon",
+            "result": {
+              "ok": false,
+              "reason": "insufficientCoins"
+            },
+            "earnedSp": 3,
+            "skills": [
+              "heavy-ordnance-1",
+              "heavy-linework-1"
+            ],
+            "phase": "lobby",
+            "encounter": 0
+          },
+          {
+            "item": "heavy-2",
+            "kind": "weapon",
+            "result": {
+              "ok": false,
+              "reason": "insufficientCoins"
+            },
+            "earnedSp": 3,
+            "skills": [
+              "heavy-ordnance-1",
+              "heavy-linework-1"
+            ],
+            "phase": "lobby",
+            "encounter": 0
+          },
+          {
+            "item": "heavy-1",
+            "kind": "weapon",
+            "result": {
+              "ok": false,
+              "reason": "insufficientCoins"
+            },
+            "earnedSp": 3,
+            "skills": [
+              "heavy-ordnance-1",
+              "heavy-linework-1"
+            ],
+            "phase": "lobby",
+            "encounter": 0
+          },
+          {
+            "item": "damage",
+            "kind": "upgrade",
+            "result": {
+              "ok": true
+            },
+            "earnedSp": 3,
+            "skills": [
+              "heavy-ordnance-1",
+              "heavy-linework-1"
+            ],
+            "phase": "lobby",
+            "encounter": 0
+          },
+          {
+            "item": "fire-rate",
+            "kind": "upgrade",
+            "result": {
+              "ok": false,
+              "reason": "insufficientCoins"
+            },
+            "earnedSp": 3,
+            "skills": [
+              "heavy-ordnance-1",
+              "heavy-linework-1"
+            ],
+            "phase": "lobby",
+            "encounter": 0
+          },
+          {
+            "item": "health",
+            "kind": "upgrade",
+            "result": {
+              "ok": false,
+              "reason": "insufficientCoins"
+            },
+            "earnedSp": 3,
+            "skills": [
+              "heavy-ordnance-1",
+              "heavy-linework-1"
+            ],
+            "phase": "lobby",
+            "encounter": 0
+          },
+          {
+            "item": "reload",
+            "kind": "upgrade",
+            "result": {
+              "ok": false,
+              "reason": "insufficientCoins"
+            },
+            "earnedSp": 3,
+            "skills": [
+              "heavy-ordnance-1",
+              "heavy-linework-1"
+            ],
+            "phase": "lobby",
+            "encounter": 0
+          },
+          {
+            "item": "magazine",
+            "kind": "upgrade",
+            "result": {
+              "ok": false,
+              "reason": "insufficientCoins"
+            },
+            "earnedSp": 3,
+            "skills": [
+              "heavy-ordnance-1",
+              "heavy-linework-1"
+            ],
+            "phase": "lobby",
+            "encounter": 0
+          },
+          {
+            "item": "medkit",
+            "kind": "supply",
+            "result": {
+              "ok": false,
+              "reason": "insufficientCoins"
+            },
+            "earnedSp": 3,
+            "skills": [
+              "heavy-ordnance-1",
+              "heavy-linework-1"
+            ],
+            "phase": "lobby",
+            "encounter": 0
+          }
+        ],
+        "operations": [
+          {
+            "tick": 1,
+            "event": "linework-shot",
+            "ammo": 44,
+            "health": 140,
+            "status": {
+              "lineworkRecovery": 241,
+              "lineworkFlight": 1,
+              "lineworkUntil": 0,
+              "lineworkActive": false,
+              "lineworkMode": "bare",
+              "lineworkPaidLength": 0,
+              "lineworkAt": 0,
+              "lineworkCommandSequence": 0,
+              "lineworkNow": 1
+            }
+          },
+          {
+            "tick": 21,
+            "event": "linework-engage",
+            "ammo": 44,
+            "health": 140,
+            "status": {
+              "lineworkRecovery": 241,
+              "lineworkFlight": 0,
+              "lineworkUntil": 151,
+              "lineworkAnchor": {
+                "x": 476.5367782241873,
+                "y": 218.6
+              },
+              "lineworkActive": true,
+              "lineworkMode": "bare",
+              "lineworkPaidLength": 576.4041457767873,
+              "lineworkAt": 20,
+              "lineworkCommandSequence": 21,
+              "lineworkNow": 21
+            }
+          },
+          {
+            "tick": 23,
+            "event": "linework-release",
+            "ammo": 44,
+            "health": 140,
+            "status": {
+              "lineworkRecovery": 241,
+              "lineworkFlight": 0,
+              "lineworkUntil": 0,
+              "lineworkActive": false,
+              "lineworkMode": "bare",
+              "lineworkPaidLength": 0,
+              "lineworkAt": 0,
+              "lineworkCommandSequence": 0,
+              "lineworkNow": 23
+            }
+          }
+        ],
+        "frames": [
+          {
+            "tick": 3,
+            "combatTick": 3,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 695,
+            "y": 752,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1166.4,
+            "totalSp": 3
+          },
+          {
+            "tick": 6,
+            "combatTick": 6,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 695,
+            "y": 752,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1166.4,
+            "totalSp": 3
+          },
+          {
+            "tick": 9,
+            "combatTick": 9,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 695,
+            "y": 752,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1166.4,
+            "totalSp": 3
+          },
+          {
+            "tick": 12,
+            "combatTick": 12,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 695,
+            "y": 752,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1166.4,
+            "totalSp": 3
+          },
+          {
+            "tick": 15,
+            "combatTick": 15,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 695,
+            "y": 752,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1166.4,
+            "totalSp": 3
+          },
+          {
+            "tick": 18,
+            "combatTick": 18,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 695,
+            "y": 752,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1166.4,
+            "totalSp": 3
+          },
+          {
+            "tick": 21,
+            "combatTick": 21,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 692.5604884615941,
+            "y": 746.1553533412964,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1166.4,
+            "totalSp": 3
+          },
+          {
+            "tick": 24,
+            "combatTick": 24,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 690.1051271230946,
+            "y": 728.614822984651,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1166.4,
+            "totalSp": 3
+          },
+          {
+            "tick": 27,
+            "combatTick": 27,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 698.1661444286214,
+            "y": 720.5538056791243,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1166.4,
+            "totalSp": 3
+          },
+          {
+            "tick": 30,
+            "combatTick": 30,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 706.2271617341481,
+            "y": 712.4927883735975,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1166.4,
+            "totalSp": 3
+          },
+          {
+            "tick": 33,
+            "combatTick": 33,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 714.2881790396749,
+            "y": 704.4317710680707,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1166.4,
+            "totalSp": 3
+          },
+          {
+            "tick": 36,
+            "combatTick": 36,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 722.3491963452017,
+            "y": 696.3707537625439,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1166.4,
+            "totalSp": 3
+          },
+          {
+            "tick": 39,
+            "combatTick": 39,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 730.4102136507285,
+            "y": 688.3097364570172,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1154.2,
+            "totalSp": 3
+          },
+          {
+            "tick": 42,
+            "combatTick": 42,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 738.4712309562552,
+            "y": 680.2487191514904,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1129.8,
+            "totalSp": 3
+          },
+          {
+            "tick": 45,
+            "combatTick": 45,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 746.532248261782,
+            "y": 672.1877018459636,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1105.3999999999999,
+            "totalSp": 3
+          },
+          {
+            "tick": 48,
+            "combatTick": 48,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 752.1276481162655,
+            "y": 662.4792116303688,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1080.9999999999998,
+            "totalSp": 3
+          },
+          {
+            "tick": 51,
+            "combatTick": 51,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 756.4902392452274,
+            "y": 651.94698495974,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1056.5999999999997,
+            "totalSp": 3
+          },
+          {
+            "tick": 54,
+            "combatTick": 54,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 760.8528303741892,
+            "y": 641.4147582891112,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1044.3999999999996,
+            "totalSp": 3
+          },
+          {
+            "tick": 57,
+            "combatTick": 57,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 765.2154215031511,
+            "y": 630.8825316184824,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1007.7999999999995,
+            "totalSp": 3
+          },
+          {
+            "tick": 60,
+            "combatTick": 60,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 769.578012632113,
+            "y": 620.3503049478536,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 995.5999999999995,
+            "totalSp": 3
+          },
+          {
+            "tick": 63,
+            "combatTick": 63,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 773.9406037610748,
+            "y": 609.8180782772248,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 952.8999999999994,
+            "totalSp": 3
+          },
+          {
+            "tick": 66,
+            "combatTick": 66,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 940.6999999999994,
+            "totalSp": 3
+          },
+          {
+            "tick": 69,
+            "combatTick": 69,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 916.2999999999993,
+            "totalSp": 3
+          },
+          {
+            "tick": 72,
+            "combatTick": 72,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 891.8999999999992,
+            "totalSp": 3
+          },
+          {
+            "tick": 75,
+            "combatTick": 75,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 861.3999999999992,
+            "totalSp": 3
+          },
+          {
+            "tick": 78,
+            "combatTick": 78,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 830.8999999999992,
+            "totalSp": 3
+          },
+          {
+            "tick": 81,
+            "combatTick": 81,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 818.6999999999991,
+            "totalSp": 3
+          },
+          {
+            "tick": 84,
+            "combatTick": 84,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 794.299999999999,
+            "totalSp": 3
+          },
+          {
+            "tick": 87,
+            "combatTick": 87,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 782.099999999999,
+            "totalSp": 3
+          },
+          {
+            "tick": 90,
+            "combatTick": 90,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 757.6999999999989,
+            "totalSp": 3
+          },
+          {
+            "tick": 93,
+            "combatTick": 93,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 733.2999999999988,
+            "totalSp": 3
+          },
+          {
+            "tick": 96,
+            "combatTick": 96,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 721.0999999999988,
+            "totalSp": 3
+          },
+          {
+            "tick": 99,
+            "combatTick": 99,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 696.6999999999987,
+            "totalSp": 3
+          },
+          {
+            "tick": 102,
+            "combatTick": 102,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 672.2999999999986,
+            "totalSp": 3
+          },
+          {
+            "tick": 105,
+            "combatTick": 105,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 660.0999999999985,
+            "totalSp": 3
+          },
+          {
+            "tick": 108,
+            "combatTick": 108,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 635.6999999999985,
+            "totalSp": 3
+          },
+          {
+            "tick": 111,
+            "combatTick": 111,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 605.1999999999985,
+            "totalSp": 3
+          },
+          {
+            "tick": 114,
+            "combatTick": 114,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 592.9999999999984,
+            "totalSp": 3
+          },
+          {
+            "tick": 117,
+            "combatTick": 117,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 568.5999999999983,
+            "totalSp": 3
+          },
+          {
+            "tick": 120,
+            "combatTick": 120,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 544.1999999999982,
+            "totalSp": 3
+          },
+          {
+            "tick": 123,
+            "combatTick": 123,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 783.8704822941353,
+            "y": 605.7049879161135,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 531.9999999999982,
+            "totalSp": 3
+          },
+          {
+            "tick": 126,
+            "combatTick": 126,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 794.4027089647641,
+            "y": 610.0675790450754,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 501.4999999999981,
+            "totalSp": 3
+          },
+          {
+            "tick": 129,
+            "combatTick": 129,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 804.9349356353929,
+            "y": 614.4301701740372,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 477.09999999999815,
+            "totalSp": 3
+          },
+          {
+            "tick": 132,
+            "combatTick": 132,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 812.9959529409197,
+            "y": 622.491187479564,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 464.89999999999816,
+            "totalSp": 3
+          },
+          {
+            "tick": 135,
+            "combatTick": 135,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 821.0569702464464,
+            "y": 630.5522047850908,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 440.4999999999982,
+            "totalSp": 3
+          },
+          {
+            "tick": 138,
+            "combatTick": 138,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 829.1179875519732,
+            "y": 638.6132220906176,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 416.0999999999982,
+            "totalSp": 3
+          },
+          {
+            "tick": 141,
+            "combatTick": 141,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 837.1790048575,
+            "y": 646.6742393961443,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 403.8999999999982,
+            "totalSp": 3
+          },
+          {
+            "tick": 144,
+            "combatTick": 144,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 845.2400221630268,
+            "y": 654.7352567016711,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 391.6999999999982,
+            "totalSp": 3
+          },
+          {
+            "tick": 147,
+            "combatTick": 147,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 850.8354220175103,
+            "y": 664.4437469172659,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 367.29999999999825,
+            "totalSp": 3
+          },
+          {
+            "tick": 150,
+            "combatTick": 150,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 855.1980131464721,
+            "y": 674.9759735878947,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 342.8999999999983,
+            "totalSp": 3
+          },
+          {
+            "tick": 153,
+            "combatTick": 153,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 859.560604275434,
+            "y": 685.5082002585235,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 330.6999999999983,
+            "totalSp": 3
+          },
+          {
+            "tick": 156,
+            "combatTick": 156,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 863.9231954043959,
+            "y": 696.0404269291523,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 318.4999999999983,
+            "totalSp": 3
+          },
+          {
+            "tick": 159,
+            "combatTick": 159,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 868.2857865333577,
+            "y": 706.5726535997811,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 306.2999999999983,
+            "totalSp": 3
+          },
+          {
+            "tick": 162,
+            "combatTick": 162,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 872.6483776623196,
+            "y": 717.1048802704099,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 281.89999999999833,
+            "totalSp": 3
+          },
+          {
+            "tick": 165,
+            "combatTick": 165,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 877.0109687912815,
+            "y": 727.6371069410387,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 257.49999999999835,
+            "totalSp": 3
+          },
+          {
+            "tick": 168,
+            "combatTick": 168,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 881.3735599202433,
+            "y": 738.1693336116675,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 245.29999999999836,
+            "totalSp": 3
+          },
+          {
+            "tick": 171,
+            "combatTick": 171,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 885.7361510492052,
+            "y": 748.7015602822963,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 220.89999999999839,
+            "totalSp": 3
+          },
+          {
+            "tick": 174,
+            "combatTick": 174,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 890.2199252650827,
+            "y": 759.526348804887,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 202.59999999999837,
+            "totalSp": 3
+          },
+          {
+            "tick": 177,
+            "combatTick": 177,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 898.9526940127365,
+            "y": 768.2591175525408,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 190.39999999999839,
+            "totalSp": 3
+          },
+          {
+            "tick": 180,
+            "combatTick": 180,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 907.6854627603904,
+            "y": 776.9918863001947,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 165.9999999999984,
+            "totalSp": 3
+          },
+          {
+            "tick": 183,
+            "combatTick": 183,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 916.4182315080442,
+            "y": 785.7246550478485,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 153.79999999999842,
+            "totalSp": 3
+          },
+          {
+            "tick": 186,
+            "combatTick": 186,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 925.151000255698,
+            "y": 794.4574237955023,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 129.39999999999844,
+            "totalSp": 3
+          },
+          {
+            "tick": 189,
+            "combatTick": 189,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 933.8837690033519,
+            "y": 803.1901925431562,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 117.19999999999844,
+            "totalSp": 3
+          },
+          {
+            "tick": 192,
+            "combatTick": 192,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 942.6165377510057,
+            "y": 811.92296129081,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 104.99999999999844,
+            "totalSp": 3
+          },
+          {
+            "tick": 195,
+            "combatTick": 195,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 951.3493064986595,
+            "y": 820.6557300384638,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 80.59999999999843,
+            "totalSp": 3
+          },
+          {
+            "tick": 198,
+            "combatTick": 198,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 960.0820752463134,
+            "y": 829.3884987861177,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 80.59999999999843,
+            "totalSp": 3
+          },
+          {
+            "tick": 201,
+            "combatTick": 201,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 967.4793012079855,
+            "y": 839.0136486933917,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 56.199999999998425,
+            "totalSp": 3
+          },
+          {
+            "tick": 204,
+            "combatTick": 204,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 978.7092224526314,
+            "y": 846.8159946371117,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 43.99999999999842,
+            "totalSp": 3
+          },
+          {
+            "tick": 207,
+            "combatTick": 207,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 984.1994148762961,
+            "y": 839.5457365206966,
+            "health": 140,
+            "ammo": 43,
+            "bossHealth": 31.799999999998423,
+            "totalSp": 3
+          },
+          {
+            "tick": 210,
+            "combatTick": 210,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 984.1994148762961,
+            "y": 832.2754784042814,
+            "health": 140,
+            "ammo": 42,
+            "bossHealth": 19.599999999998424,
+            "totalSp": 3
+          },
+          {
+            "tick": 213,
+            "combatTick": 213,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 984.1994148762961,
+            "y": 825.0052202878663,
+            "health": 140,
+            "ammo": 41,
+            "bossHealth": 7.399999999998425,
+            "totalSp": 3
+          }
+        ],
+        "terminalRun": false,
+        "checkpointsCreatedOrImported": false,
+        "rawOwnershipInjected": false
+      }
+    },
+    {
+      "label": "heavy-linework-yoke-1 actual first-clear acquisition3to9 without resource/health/position injection or checkpoints",
+      "passed": true,
+      "details": {
+        "fitting": "heavy-linework-yoke-1",
+        "completedEncounters": 1,
+        "earnedSp": 9,
+        "spentSp": 5,
+        "skills": [
+          "heavy-ordnance-1",
+          "heavy-linework-1",
+          "heavy-linework-yoke-1"
+        ],
+        "phase": "shop",
+        "steps": 1266,
+        "combatTicks": 215,
+        "health": 105,
+        "damageTaken": 0,
+        "actualPurchases": [
+          {
+            "item": "heavy-ordnance-1",
+            "kind": "skill",
+            "result": {
+              "ok": true
+            },
+            "earnedSp": 3,
+            "skills": [
+              "heavy-ordnance-1"
+            ],
+            "phase": "lobby",
+            "encounter": 0
+          },
+          {
+            "item": "heavy-linework-1",
+            "kind": "skill",
+            "result": {
+              "ok": true
+            },
+            "earnedSp": 3,
+            "skills": [
+              "heavy-ordnance-1",
+              "heavy-linework-1"
+            ],
+            "phase": "lobby",
+            "encounter": 0
+          },
+          {
+            "item": "heavy-3",
+            "kind": "weapon",
+            "result": {
+              "ok": false,
+              "reason": "insufficientCoins"
+            },
+            "earnedSp": 3,
+            "skills": [
+              "heavy-ordnance-1",
+              "heavy-linework-1"
+            ],
+            "phase": "lobby",
+            "encounter": 0
+          },
+          {
+            "item": "heavy-2",
+            "kind": "weapon",
+            "result": {
+              "ok": false,
+              "reason": "insufficientCoins"
+            },
+            "earnedSp": 3,
+            "skills": [
+              "heavy-ordnance-1",
+              "heavy-linework-1"
+            ],
+            "phase": "lobby",
+            "encounter": 0
+          },
+          {
+            "item": "heavy-1",
+            "kind": "weapon",
+            "result": {
+              "ok": false,
+              "reason": "insufficientCoins"
+            },
+            "earnedSp": 3,
+            "skills": [
+              "heavy-ordnance-1",
+              "heavy-linework-1"
+            ],
+            "phase": "lobby",
+            "encounter": 0
+          },
+          {
+            "item": "damage",
+            "kind": "upgrade",
+            "result": {
+              "ok": true
+            },
+            "earnedSp": 3,
+            "skills": [
+              "heavy-ordnance-1",
+              "heavy-linework-1"
+            ],
+            "phase": "lobby",
+            "encounter": 0
+          },
+          {
+            "item": "fire-rate",
+            "kind": "upgrade",
+            "result": {
+              "ok": false,
+              "reason": "insufficientCoins"
+            },
+            "earnedSp": 3,
+            "skills": [
+              "heavy-ordnance-1",
+              "heavy-linework-1"
+            ],
+            "phase": "lobby",
+            "encounter": 0
+          },
+          {
+            "item": "health",
+            "kind": "upgrade",
+            "result": {
+              "ok": false,
+              "reason": "insufficientCoins"
+            },
+            "earnedSp": 3,
+            "skills": [
+              "heavy-ordnance-1",
+              "heavy-linework-1"
+            ],
+            "phase": "lobby",
+            "encounter": 0
+          },
+          {
+            "item": "reload",
+            "kind": "upgrade",
+            "result": {
+              "ok": false,
+              "reason": "insufficientCoins"
+            },
+            "earnedSp": 3,
+            "skills": [
+              "heavy-ordnance-1",
+              "heavy-linework-1"
+            ],
+            "phase": "lobby",
+            "encounter": 0
+          },
+          {
+            "item": "magazine",
+            "kind": "upgrade",
+            "result": {
+              "ok": false,
+              "reason": "insufficientCoins"
+            },
+            "earnedSp": 3,
+            "skills": [
+              "heavy-ordnance-1",
+              "heavy-linework-1"
+            ],
+            "phase": "lobby",
+            "encounter": 0
+          },
+          {
+            "item": "medkit",
+            "kind": "supply",
+            "result": {
+              "ok": false,
+              "reason": "insufficientCoins"
+            },
+            "earnedSp": 3,
+            "skills": [
+              "heavy-ordnance-1",
+              "heavy-linework-1"
+            ],
+            "phase": "lobby",
+            "encounter": 0
+          },
+          {
+            "item": "heavy-linework-yoke-1",
+            "kind": "skill",
+            "result": {
+              "ok": true
+            },
+            "earnedSp": 9,
+            "skills": [
+              "heavy-ordnance-1",
+              "heavy-linework-1",
+              "heavy-linework-yoke-1"
+            ],
+            "phase": "shop",
+            "encounter": 1
+          }
+        ],
+        "operations": [
+          {
+            "tick": 1,
+            "event": "linework-shot",
+            "ammo": 44,
+            "health": 140,
+            "status": {
+              "lineworkRecovery": 241,
+              "lineworkFlight": 1,
+              "lineworkUntil": 0,
+              "lineworkActive": false,
+              "lineworkMode": "bare",
+              "lineworkPaidLength": 0,
+              "lineworkAt": 0,
+              "lineworkCommandSequence": 0,
+              "lineworkNow": 1
+            }
+          },
+          {
+            "tick": 21,
+            "event": "linework-engage",
+            "ammo": 44,
+            "health": 140,
+            "status": {
+              "lineworkRecovery": 241,
+              "lineworkFlight": 0,
+              "lineworkUntil": 151,
+              "lineworkAnchor": {
+                "x": 476.5367782241873,
+                "y": 218.6
+              },
+              "lineworkActive": true,
+              "lineworkMode": "bare",
+              "lineworkPaidLength": 576.4041457767873,
+              "lineworkAt": 20,
+              "lineworkCommandSequence": 21,
+              "lineworkNow": 21
+            }
+          },
+          {
+            "tick": 23,
+            "event": "linework-release",
+            "ammo": 44,
+            "health": 140,
+            "status": {
+              "lineworkRecovery": 241,
+              "lineworkFlight": 0,
+              "lineworkUntil": 0,
+              "lineworkActive": false,
+              "lineworkMode": "bare",
+              "lineworkPaidLength": 0,
+              "lineworkAt": 0,
+              "lineworkCommandSequence": 0,
+              "lineworkNow": 23
+            }
+          }
+        ],
+        "frames": [
+          {
+            "tick": 3,
+            "combatTick": 3,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 695,
+            "y": 752,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1166.4,
+            "totalSp": 3
+          },
+          {
+            "tick": 6,
+            "combatTick": 6,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 695,
+            "y": 752,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1166.4,
+            "totalSp": 3
+          },
+          {
+            "tick": 9,
+            "combatTick": 9,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 695,
+            "y": 752,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1166.4,
+            "totalSp": 3
+          },
+          {
+            "tick": 12,
+            "combatTick": 12,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 695,
+            "y": 752,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1166.4,
+            "totalSp": 3
+          },
+          {
+            "tick": 15,
+            "combatTick": 15,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 695,
+            "y": 752,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1166.4,
+            "totalSp": 3
+          },
+          {
+            "tick": 18,
+            "combatTick": 18,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 695,
+            "y": 752,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1166.4,
+            "totalSp": 3
+          },
+          {
+            "tick": 21,
+            "combatTick": 21,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 692.5604884615941,
+            "y": 746.1553533412964,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1166.4,
+            "totalSp": 3
+          },
+          {
+            "tick": 24,
+            "combatTick": 24,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 690.1051271230946,
+            "y": 728.614822984651,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1166.4,
+            "totalSp": 3
+          },
+          {
+            "tick": 27,
+            "combatTick": 27,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 698.1661444286214,
+            "y": 720.5538056791243,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1166.4,
+            "totalSp": 3
+          },
+          {
+            "tick": 30,
+            "combatTick": 30,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 706.2271617341481,
+            "y": 712.4927883735975,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1166.4,
+            "totalSp": 3
+          },
+          {
+            "tick": 33,
+            "combatTick": 33,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 714.2881790396749,
+            "y": 704.4317710680707,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1166.4,
+            "totalSp": 3
+          },
+          {
+            "tick": 36,
+            "combatTick": 36,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 722.3491963452017,
+            "y": 696.3707537625439,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1166.4,
+            "totalSp": 3
+          },
+          {
+            "tick": 39,
+            "combatTick": 39,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 730.4102136507285,
+            "y": 688.3097364570172,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1154.2,
+            "totalSp": 3
+          },
+          {
+            "tick": 42,
+            "combatTick": 42,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 738.4712309562552,
+            "y": 680.2487191514904,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1129.8,
+            "totalSp": 3
+          },
+          {
+            "tick": 45,
+            "combatTick": 45,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 746.532248261782,
+            "y": 672.1877018459636,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1105.3999999999999,
+            "totalSp": 3
+          },
+          {
+            "tick": 48,
+            "combatTick": 48,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 752.1276481162655,
+            "y": 662.4792116303688,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1080.9999999999998,
+            "totalSp": 3
+          },
+          {
+            "tick": 51,
+            "combatTick": 51,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 756.4902392452274,
+            "y": 651.94698495974,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1056.5999999999997,
+            "totalSp": 3
+          },
+          {
+            "tick": 54,
+            "combatTick": 54,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 760.8528303741892,
+            "y": 641.4147582891112,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1044.3999999999996,
+            "totalSp": 3
+          },
+          {
+            "tick": 57,
+            "combatTick": 57,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 765.2154215031511,
+            "y": 630.8825316184824,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1007.7999999999995,
+            "totalSp": 3
+          },
+          {
+            "tick": 60,
+            "combatTick": 60,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 769.578012632113,
+            "y": 620.3503049478536,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 995.5999999999995,
+            "totalSp": 3
+          },
+          {
+            "tick": 63,
+            "combatTick": 63,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 773.9406037610748,
+            "y": 609.8180782772248,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 952.8999999999994,
+            "totalSp": 3
+          },
+          {
+            "tick": 66,
+            "combatTick": 66,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 940.6999999999994,
+            "totalSp": 3
+          },
+          {
+            "tick": 69,
+            "combatTick": 69,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 916.2999999999993,
+            "totalSp": 3
+          },
+          {
+            "tick": 72,
+            "combatTick": 72,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 891.8999999999992,
+            "totalSp": 3
+          },
+          {
+            "tick": 75,
+            "combatTick": 75,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 861.3999999999992,
+            "totalSp": 3
+          },
+          {
+            "tick": 78,
+            "combatTick": 78,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 830.8999999999992,
+            "totalSp": 3
+          },
+          {
+            "tick": 81,
+            "combatTick": 81,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 818.6999999999991,
+            "totalSp": 3
+          },
+          {
+            "tick": 84,
+            "combatTick": 84,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 794.299999999999,
+            "totalSp": 3
+          },
+          {
+            "tick": 87,
+            "combatTick": 87,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 782.099999999999,
+            "totalSp": 3
+          },
+          {
+            "tick": 90,
+            "combatTick": 90,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 757.6999999999989,
+            "totalSp": 3
+          },
+          {
+            "tick": 93,
+            "combatTick": 93,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 733.2999999999988,
+            "totalSp": 3
+          },
+          {
+            "tick": 96,
+            "combatTick": 96,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 721.0999999999988,
+            "totalSp": 3
+          },
+          {
+            "tick": 99,
+            "combatTick": 99,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 696.6999999999987,
+            "totalSp": 3
+          },
+          {
+            "tick": 102,
+            "combatTick": 102,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 672.2999999999986,
+            "totalSp": 3
+          },
+          {
+            "tick": 105,
+            "combatTick": 105,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 660.0999999999985,
+            "totalSp": 3
+          },
+          {
+            "tick": 108,
+            "combatTick": 108,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 635.6999999999985,
+            "totalSp": 3
+          },
+          {
+            "tick": 111,
+            "combatTick": 111,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 605.1999999999985,
+            "totalSp": 3
+          },
+          {
+            "tick": 114,
+            "combatTick": 114,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 592.9999999999984,
+            "totalSp": 3
+          },
+          {
+            "tick": 117,
+            "combatTick": 117,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 568.5999999999983,
+            "totalSp": 3
+          },
+          {
+            "tick": 120,
+            "combatTick": 120,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 544.1999999999982,
+            "totalSp": 3
+          },
+          {
+            "tick": 123,
+            "combatTick": 123,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 783.8704822941353,
+            "y": 605.7049879161135,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 531.9999999999982,
+            "totalSp": 3
+          },
+          {
+            "tick": 126,
+            "combatTick": 126,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 794.4027089647641,
+            "y": 610.0675790450754,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 501.4999999999981,
+            "totalSp": 3
+          },
+          {
+            "tick": 129,
+            "combatTick": 129,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 804.9349356353929,
+            "y": 614.4301701740372,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 477.09999999999815,
+            "totalSp": 3
+          },
+          {
+            "tick": 132,
+            "combatTick": 132,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 812.9959529409197,
+            "y": 622.491187479564,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 464.89999999999816,
+            "totalSp": 3
+          },
+          {
+            "tick": 135,
+            "combatTick": 135,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 821.0569702464464,
+            "y": 630.5522047850908,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 440.4999999999982,
+            "totalSp": 3
+          },
+          {
+            "tick": 138,
+            "combatTick": 138,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 829.1179875519732,
+            "y": 638.6132220906176,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 416.0999999999982,
+            "totalSp": 3
+          },
+          {
+            "tick": 141,
+            "combatTick": 141,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 837.1790048575,
+            "y": 646.6742393961443,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 403.8999999999982,
+            "totalSp": 3
+          },
+          {
+            "tick": 144,
+            "combatTick": 144,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 845.2400221630268,
+            "y": 654.7352567016711,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 391.6999999999982,
+            "totalSp": 3
+          },
+          {
+            "tick": 147,
+            "combatTick": 147,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 850.8354220175103,
+            "y": 664.4437469172659,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 367.29999999999825,
+            "totalSp": 3
+          },
+          {
+            "tick": 150,
+            "combatTick": 150,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 855.1980131464721,
+            "y": 674.9759735878947,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 342.8999999999983,
+            "totalSp": 3
+          },
+          {
+            "tick": 153,
+            "combatTick": 153,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 859.560604275434,
+            "y": 685.5082002585235,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 330.6999999999983,
+            "totalSp": 3
+          },
+          {
+            "tick": 156,
+            "combatTick": 156,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 863.9231954043959,
+            "y": 696.0404269291523,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 318.4999999999983,
+            "totalSp": 3
+          },
+          {
+            "tick": 159,
+            "combatTick": 159,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 868.2857865333577,
+            "y": 706.5726535997811,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 306.2999999999983,
+            "totalSp": 3
+          },
+          {
+            "tick": 162,
+            "combatTick": 162,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 872.6483776623196,
+            "y": 717.1048802704099,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 281.89999999999833,
+            "totalSp": 3
+          },
+          {
+            "tick": 165,
+            "combatTick": 165,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 877.0109687912815,
+            "y": 727.6371069410387,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 257.49999999999835,
+            "totalSp": 3
+          },
+          {
+            "tick": 168,
+            "combatTick": 168,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 881.3735599202433,
+            "y": 738.1693336116675,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 245.29999999999836,
+            "totalSp": 3
+          },
+          {
+            "tick": 171,
+            "combatTick": 171,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 885.7361510492052,
+            "y": 748.7015602822963,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 220.89999999999839,
+            "totalSp": 3
+          },
+          {
+            "tick": 174,
+            "combatTick": 174,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 890.2199252650827,
+            "y": 759.526348804887,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 202.59999999999837,
+            "totalSp": 3
+          },
+          {
+            "tick": 177,
+            "combatTick": 177,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 898.9526940127365,
+            "y": 768.2591175525408,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 190.39999999999839,
+            "totalSp": 3
+          },
+          {
+            "tick": 180,
+            "combatTick": 180,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 907.6854627603904,
+            "y": 776.9918863001947,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 165.9999999999984,
+            "totalSp": 3
+          },
+          {
+            "tick": 183,
+            "combatTick": 183,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 916.4182315080442,
+            "y": 785.7246550478485,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 153.79999999999842,
+            "totalSp": 3
+          },
+          {
+            "tick": 186,
+            "combatTick": 186,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 925.151000255698,
+            "y": 794.4574237955023,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 129.39999999999844,
+            "totalSp": 3
+          },
+          {
+            "tick": 189,
+            "combatTick": 189,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 933.8837690033519,
+            "y": 803.1901925431562,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 117.19999999999844,
+            "totalSp": 3
+          },
+          {
+            "tick": 192,
+            "combatTick": 192,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 942.6165377510057,
+            "y": 811.92296129081,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 104.99999999999844,
+            "totalSp": 3
+          },
+          {
+            "tick": 195,
+            "combatTick": 195,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 951.3493064986595,
+            "y": 820.6557300384638,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 80.59999999999843,
+            "totalSp": 3
+          },
+          {
+            "tick": 198,
+            "combatTick": 198,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 960.0820752463134,
+            "y": 829.3884987861177,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 80.59999999999843,
+            "totalSp": 3
+          },
+          {
+            "tick": 201,
+            "combatTick": 201,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 967.4793012079855,
+            "y": 839.0136486933917,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 56.199999999998425,
+            "totalSp": 3
+          },
+          {
+            "tick": 204,
+            "combatTick": 204,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 978.7092224526314,
+            "y": 846.8159946371117,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 43.99999999999842,
+            "totalSp": 3
+          },
+          {
+            "tick": 207,
+            "combatTick": 207,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 984.1994148762961,
+            "y": 839.5457365206966,
+            "health": 140,
+            "ammo": 43,
+            "bossHealth": 31.799999999998423,
+            "totalSp": 3
+          },
+          {
+            "tick": 210,
+            "combatTick": 210,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 984.1994148762961,
+            "y": 832.2754784042814,
+            "health": 140,
+            "ammo": 42,
+            "bossHealth": 19.599999999998424,
+            "totalSp": 3
+          },
+          {
+            "tick": 213,
+            "combatTick": 213,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 984.1994148762961,
+            "y": 825.0052202878663,
+            "health": 140,
+            "ammo": 41,
+            "bossHealth": 7.399999999998425,
+            "totalSp": 3
+          }
+        ],
+        "terminalRun": false,
+        "checkpointsCreatedOrImported": false,
+        "rawOwnershipInjected": false
+      }
+    },
+    {
+      "label": "heavy-linework-sheave-1 actual first-clear acquisition3to9 without resource/health/position injection or checkpoints",
+      "passed": true,
+      "details": {
+        "fitting": "heavy-linework-sheave-1",
+        "completedEncounters": 1,
+        "earnedSp": 9,
+        "spentSp": 5,
+        "skills": [
+          "heavy-ordnance-1",
+          "heavy-linework-1",
+          "heavy-linework-sheave-1"
+        ],
+        "phase": "shop",
+        "steps": 1266,
+        "combatTicks": 215,
+        "health": 105,
+        "damageTaken": 0,
+        "actualPurchases": [
+          {
+            "item": "heavy-ordnance-1",
+            "kind": "skill",
+            "result": {
+              "ok": true
+            },
+            "earnedSp": 3,
+            "skills": [
+              "heavy-ordnance-1"
+            ],
+            "phase": "lobby",
+            "encounter": 0
+          },
+          {
+            "item": "heavy-linework-1",
+            "kind": "skill",
+            "result": {
+              "ok": true
+            },
+            "earnedSp": 3,
+            "skills": [
+              "heavy-ordnance-1",
+              "heavy-linework-1"
+            ],
+            "phase": "lobby",
+            "encounter": 0
+          },
+          {
+            "item": "heavy-3",
+            "kind": "weapon",
+            "result": {
+              "ok": false,
+              "reason": "insufficientCoins"
+            },
+            "earnedSp": 3,
+            "skills": [
+              "heavy-ordnance-1",
+              "heavy-linework-1"
+            ],
+            "phase": "lobby",
+            "encounter": 0
+          },
+          {
+            "item": "heavy-2",
+            "kind": "weapon",
+            "result": {
+              "ok": false,
+              "reason": "insufficientCoins"
+            },
+            "earnedSp": 3,
+            "skills": [
+              "heavy-ordnance-1",
+              "heavy-linework-1"
+            ],
+            "phase": "lobby",
+            "encounter": 0
+          },
+          {
+            "item": "heavy-1",
+            "kind": "weapon",
+            "result": {
+              "ok": false,
+              "reason": "insufficientCoins"
+            },
+            "earnedSp": 3,
+            "skills": [
+              "heavy-ordnance-1",
+              "heavy-linework-1"
+            ],
+            "phase": "lobby",
+            "encounter": 0
+          },
+          {
+            "item": "damage",
+            "kind": "upgrade",
+            "result": {
+              "ok": true
+            },
+            "earnedSp": 3,
+            "skills": [
+              "heavy-ordnance-1",
+              "heavy-linework-1"
+            ],
+            "phase": "lobby",
+            "encounter": 0
+          },
+          {
+            "item": "fire-rate",
+            "kind": "upgrade",
+            "result": {
+              "ok": false,
+              "reason": "insufficientCoins"
+            },
+            "earnedSp": 3,
+            "skills": [
+              "heavy-ordnance-1",
+              "heavy-linework-1"
+            ],
+            "phase": "lobby",
+            "encounter": 0
+          },
+          {
+            "item": "health",
+            "kind": "upgrade",
+            "result": {
+              "ok": false,
+              "reason": "insufficientCoins"
+            },
+            "earnedSp": 3,
+            "skills": [
+              "heavy-ordnance-1",
+              "heavy-linework-1"
+            ],
+            "phase": "lobby",
+            "encounter": 0
+          },
+          {
+            "item": "reload",
+            "kind": "upgrade",
+            "result": {
+              "ok": false,
+              "reason": "insufficientCoins"
+            },
+            "earnedSp": 3,
+            "skills": [
+              "heavy-ordnance-1",
+              "heavy-linework-1"
+            ],
+            "phase": "lobby",
+            "encounter": 0
+          },
+          {
+            "item": "magazine",
+            "kind": "upgrade",
+            "result": {
+              "ok": false,
+              "reason": "insufficientCoins"
+            },
+            "earnedSp": 3,
+            "skills": [
+              "heavy-ordnance-1",
+              "heavy-linework-1"
+            ],
+            "phase": "lobby",
+            "encounter": 0
+          },
+          {
+            "item": "medkit",
+            "kind": "supply",
+            "result": {
+              "ok": false,
+              "reason": "insufficientCoins"
+            },
+            "earnedSp": 3,
+            "skills": [
+              "heavy-ordnance-1",
+              "heavy-linework-1"
+            ],
+            "phase": "lobby",
+            "encounter": 0
+          },
+          {
+            "item": "heavy-linework-sheave-1",
+            "kind": "skill",
+            "result": {
+              "ok": true
+            },
+            "earnedSp": 9,
+            "skills": [
+              "heavy-ordnance-1",
+              "heavy-linework-1",
+              "heavy-linework-sheave-1"
+            ],
+            "phase": "shop",
+            "encounter": 1
+          }
+        ],
+        "operations": [
+          {
+            "tick": 1,
+            "event": "linework-shot",
+            "ammo": 44,
+            "health": 140,
+            "status": {
+              "lineworkRecovery": 241,
+              "lineworkFlight": 1,
+              "lineworkUntil": 0,
+              "lineworkActive": false,
+              "lineworkMode": "bare",
+              "lineworkPaidLength": 0,
+              "lineworkAt": 0,
+              "lineworkCommandSequence": 0,
+              "lineworkNow": 1
+            }
+          },
+          {
+            "tick": 21,
+            "event": "linework-engage",
+            "ammo": 44,
+            "health": 140,
+            "status": {
+              "lineworkRecovery": 241,
+              "lineworkFlight": 0,
+              "lineworkUntil": 151,
+              "lineworkAnchor": {
+                "x": 476.5367782241873,
+                "y": 218.6
+              },
+              "lineworkActive": true,
+              "lineworkMode": "bare",
+              "lineworkPaidLength": 576.4041457767873,
+              "lineworkAt": 20,
+              "lineworkCommandSequence": 21,
+              "lineworkNow": 21
+            }
+          },
+          {
+            "tick": 23,
+            "event": "linework-release",
+            "ammo": 44,
+            "health": 140,
+            "status": {
+              "lineworkRecovery": 241,
+              "lineworkFlight": 0,
+              "lineworkUntil": 0,
+              "lineworkActive": false,
+              "lineworkMode": "bare",
+              "lineworkPaidLength": 0,
+              "lineworkAt": 0,
+              "lineworkCommandSequence": 0,
+              "lineworkNow": 23
+            }
+          }
+        ],
+        "frames": [
+          {
+            "tick": 3,
+            "combatTick": 3,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 695,
+            "y": 752,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1166.4,
+            "totalSp": 3
+          },
+          {
+            "tick": 6,
+            "combatTick": 6,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 695,
+            "y": 752,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1166.4,
+            "totalSp": 3
+          },
+          {
+            "tick": 9,
+            "combatTick": 9,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 695,
+            "y": 752,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1166.4,
+            "totalSp": 3
+          },
+          {
+            "tick": 12,
+            "combatTick": 12,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 695,
+            "y": 752,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1166.4,
+            "totalSp": 3
+          },
+          {
+            "tick": 15,
+            "combatTick": 15,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 695,
+            "y": 752,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1166.4,
+            "totalSp": 3
+          },
+          {
+            "tick": 18,
+            "combatTick": 18,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 695,
+            "y": 752,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1166.4,
+            "totalSp": 3
+          },
+          {
+            "tick": 21,
+            "combatTick": 21,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 692.5604884615941,
+            "y": 746.1553533412964,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1166.4,
+            "totalSp": 3
+          },
+          {
+            "tick": 24,
+            "combatTick": 24,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 690.1051271230946,
+            "y": 728.614822984651,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1166.4,
+            "totalSp": 3
+          },
+          {
+            "tick": 27,
+            "combatTick": 27,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 698.1661444286214,
+            "y": 720.5538056791243,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1166.4,
+            "totalSp": 3
+          },
+          {
+            "tick": 30,
+            "combatTick": 30,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 706.2271617341481,
+            "y": 712.4927883735975,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1166.4,
+            "totalSp": 3
+          },
+          {
+            "tick": 33,
+            "combatTick": 33,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 714.2881790396749,
+            "y": 704.4317710680707,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1166.4,
+            "totalSp": 3
+          },
+          {
+            "tick": 36,
+            "combatTick": 36,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 722.3491963452017,
+            "y": 696.3707537625439,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1166.4,
+            "totalSp": 3
+          },
+          {
+            "tick": 39,
+            "combatTick": 39,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 730.4102136507285,
+            "y": 688.3097364570172,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1154.2,
+            "totalSp": 3
+          },
+          {
+            "tick": 42,
+            "combatTick": 42,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 738.4712309562552,
+            "y": 680.2487191514904,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1129.8,
+            "totalSp": 3
+          },
+          {
+            "tick": 45,
+            "combatTick": 45,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 746.532248261782,
+            "y": 672.1877018459636,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1105.3999999999999,
+            "totalSp": 3
+          },
+          {
+            "tick": 48,
+            "combatTick": 48,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 752.1276481162655,
+            "y": 662.4792116303688,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1080.9999999999998,
+            "totalSp": 3
+          },
+          {
+            "tick": 51,
+            "combatTick": 51,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 756.4902392452274,
+            "y": 651.94698495974,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1056.5999999999997,
+            "totalSp": 3
+          },
+          {
+            "tick": 54,
+            "combatTick": 54,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 760.8528303741892,
+            "y": 641.4147582891112,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1044.3999999999996,
+            "totalSp": 3
+          },
+          {
+            "tick": 57,
+            "combatTick": 57,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 765.2154215031511,
+            "y": 630.8825316184824,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 1007.7999999999995,
+            "totalSp": 3
+          },
+          {
+            "tick": 60,
+            "combatTick": 60,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 769.578012632113,
+            "y": 620.3503049478536,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 995.5999999999995,
+            "totalSp": 3
+          },
+          {
+            "tick": 63,
+            "combatTick": 63,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 773.9406037610748,
+            "y": 609.8180782772248,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 952.8999999999994,
+            "totalSp": 3
+          },
+          {
+            "tick": 66,
+            "combatTick": 66,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 940.6999999999994,
+            "totalSp": 3
+          },
+          {
+            "tick": 69,
+            "combatTick": 69,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 916.2999999999993,
+            "totalSp": 3
+          },
+          {
+            "tick": 72,
+            "combatTick": 72,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 891.8999999999992,
+            "totalSp": 3
+          },
+          {
+            "tick": 75,
+            "combatTick": 75,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 861.3999999999992,
+            "totalSp": 3
+          },
+          {
+            "tick": 78,
+            "combatTick": 78,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 830.8999999999992,
+            "totalSp": 3
+          },
+          {
+            "tick": 81,
+            "combatTick": 81,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 818.6999999999991,
+            "totalSp": 3
+          },
+          {
+            "tick": 84,
+            "combatTick": 84,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 794.299999999999,
+            "totalSp": 3
+          },
+          {
+            "tick": 87,
+            "combatTick": 87,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 782.099999999999,
+            "totalSp": 3
+          },
+          {
+            "tick": 90,
+            "combatTick": 90,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 757.6999999999989,
+            "totalSp": 3
+          },
+          {
+            "tick": 93,
+            "combatTick": 93,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 733.2999999999988,
+            "totalSp": 3
+          },
+          {
+            "tick": 96,
+            "combatTick": 96,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 721.0999999999988,
+            "totalSp": 3
+          },
+          {
+            "tick": 99,
+            "combatTick": 99,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 696.6999999999987,
+            "totalSp": 3
+          },
+          {
+            "tick": 102,
+            "combatTick": 102,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 672.2999999999986,
+            "totalSp": 3
+          },
+          {
+            "tick": 105,
+            "combatTick": 105,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 660.0999999999985,
+            "totalSp": 3
+          },
+          {
+            "tick": 108,
+            "combatTick": 108,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 635.6999999999985,
+            "totalSp": 3
+          },
+          {
+            "tick": 111,
+            "combatTick": 111,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 605.1999999999985,
+            "totalSp": 3
+          },
+          {
+            "tick": 114,
+            "combatTick": 114,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 592.9999999999984,
+            "totalSp": 3
+          },
+          {
+            "tick": 117,
+            "combatTick": 117,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 568.5999999999983,
+            "totalSp": 3
+          },
+          {
+            "tick": 120,
+            "combatTick": 120,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 776.8489978470494,
+            "y": 602.7965938301389,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 544.1999999999982,
+            "totalSp": 3
+          },
+          {
+            "tick": 123,
+            "combatTick": 123,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 783.8704822941353,
+            "y": 605.7049879161135,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 531.9999999999982,
+            "totalSp": 3
+          },
+          {
+            "tick": 126,
+            "combatTick": 126,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 794.4027089647641,
+            "y": 610.0675790450754,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 501.4999999999981,
+            "totalSp": 3
+          },
+          {
+            "tick": 129,
+            "combatTick": 129,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 804.9349356353929,
+            "y": 614.4301701740372,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 477.09999999999815,
+            "totalSp": 3
+          },
+          {
+            "tick": 132,
+            "combatTick": 132,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 812.9959529409197,
+            "y": 622.491187479564,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 464.89999999999816,
+            "totalSp": 3
+          },
+          {
+            "tick": 135,
+            "combatTick": 135,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 821.0569702464464,
+            "y": 630.5522047850908,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 440.4999999999982,
+            "totalSp": 3
+          },
+          {
+            "tick": 138,
+            "combatTick": 138,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 829.1179875519732,
+            "y": 638.6132220906176,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 416.0999999999982,
+            "totalSp": 3
+          },
+          {
+            "tick": 141,
+            "combatTick": 141,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 837.1790048575,
+            "y": 646.6742393961443,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 403.8999999999982,
+            "totalSp": 3
+          },
+          {
+            "tick": 144,
+            "combatTick": 144,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 845.2400221630268,
+            "y": 654.7352567016711,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 391.6999999999982,
+            "totalSp": 3
+          },
+          {
+            "tick": 147,
+            "combatTick": 147,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 850.8354220175103,
+            "y": 664.4437469172659,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 367.29999999999825,
+            "totalSp": 3
+          },
+          {
+            "tick": 150,
+            "combatTick": 150,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 855.1980131464721,
+            "y": 674.9759735878947,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 342.8999999999983,
+            "totalSp": 3
+          },
+          {
+            "tick": 153,
+            "combatTick": 153,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 859.560604275434,
+            "y": 685.5082002585235,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 330.6999999999983,
+            "totalSp": 3
+          },
+          {
+            "tick": 156,
+            "combatTick": 156,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 863.9231954043959,
+            "y": 696.0404269291523,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 318.4999999999983,
+            "totalSp": 3
+          },
+          {
+            "tick": 159,
+            "combatTick": 159,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 868.2857865333577,
+            "y": 706.5726535997811,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 306.2999999999983,
+            "totalSp": 3
+          },
+          {
+            "tick": 162,
+            "combatTick": 162,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 872.6483776623196,
+            "y": 717.1048802704099,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 281.89999999999833,
+            "totalSp": 3
+          },
+          {
+            "tick": 165,
+            "combatTick": 165,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 877.0109687912815,
+            "y": 727.6371069410387,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 257.49999999999835,
+            "totalSp": 3
+          },
+          {
+            "tick": 168,
+            "combatTick": 168,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 881.3735599202433,
+            "y": 738.1693336116675,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 245.29999999999836,
+            "totalSp": 3
+          },
+          {
+            "tick": 171,
+            "combatTick": 171,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 885.7361510492052,
+            "y": 748.7015602822963,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 220.89999999999839,
+            "totalSp": 3
+          },
+          {
+            "tick": 174,
+            "combatTick": 174,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 890.2199252650827,
+            "y": 759.526348804887,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 202.59999999999837,
+            "totalSp": 3
+          },
+          {
+            "tick": 177,
+            "combatTick": 177,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 898.9526940127365,
+            "y": 768.2591175525408,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 190.39999999999839,
+            "totalSp": 3
+          },
+          {
+            "tick": 180,
+            "combatTick": 180,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 907.6854627603904,
+            "y": 776.9918863001947,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 165.9999999999984,
+            "totalSp": 3
+          },
+          {
+            "tick": 183,
+            "combatTick": 183,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 916.4182315080442,
+            "y": 785.7246550478485,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 153.79999999999842,
+            "totalSp": 3
+          },
+          {
+            "tick": 186,
+            "combatTick": 186,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 925.151000255698,
+            "y": 794.4574237955023,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 129.39999999999844,
+            "totalSp": 3
+          },
+          {
+            "tick": 189,
+            "combatTick": 189,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 933.8837690033519,
+            "y": 803.1901925431562,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 117.19999999999844,
+            "totalSp": 3
+          },
+          {
+            "tick": 192,
+            "combatTick": 192,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 942.6165377510057,
+            "y": 811.92296129081,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 104.99999999999844,
+            "totalSp": 3
+          },
+          {
+            "tick": 195,
+            "combatTick": 195,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 951.3493064986595,
+            "y": 820.6557300384638,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 80.59999999999843,
+            "totalSp": 3
+          },
+          {
+            "tick": 198,
+            "combatTick": 198,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 960.0820752463134,
+            "y": 829.3884987861177,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 80.59999999999843,
+            "totalSp": 3
+          },
+          {
+            "tick": 201,
+            "combatTick": 201,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 967.4793012079855,
+            "y": 839.0136486933917,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 56.199999999998425,
+            "totalSp": 3
+          },
+          {
+            "tick": 204,
+            "combatTick": 204,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 978.7092224526314,
+            "y": 846.8159946371117,
+            "health": 140,
+            "ammo": 44,
+            "bossHealth": 43.99999999999842,
+            "totalSp": 3
+          },
+          {
+            "tick": 207,
+            "combatTick": 207,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 984.1994148762961,
+            "y": 839.5457365206966,
+            "health": 140,
+            "ammo": 43,
+            "bossHealth": 31.799999999998423,
+            "totalSp": 3
+          },
+          {
+            "tick": 210,
+            "combatTick": 210,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 984.1994148762961,
+            "y": 832.2754784042814,
+            "health": 140,
+            "ammo": 42,
+            "bossHealth": 19.599999999998424,
+            "totalSp": 3
+          },
+          {
+            "tick": 213,
+            "combatTick": 213,
+            "phase": "combat",
+            "encounter": 0,
+            "x": 984.1994148762961,
+            "y": 825.0052202878663,
+            "health": 140,
+            "ammo": 41,
+            "bossHealth": 7.399999999998425,
+            "totalSp": 3
+          }
+        ],
+        "terminalRun": false,
+        "checkpointsCreatedOrImported": false,
+        "rawOwnershipInjected": false
+      }
+    }
+  ],
+  "allAttempts": [
+    {
+      "item": "heavy-ordnance-1",
+      "kind": "skill",
+      "result": {
+        "ok": true
+      },
+      "earnedSp": 3,
+      "skills": [
+        "heavy-ordnance-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-linework-1",
+      "kind": "skill",
+      "result": {
+        "ok": true
+      },
+      "earnedSp": 3,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-linework-1",
+      "kind": "skill",
+      "result": {
+        "ok": false,
+        "reason": "prerequisite"
+      },
+      "earnedSp": 3,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-linework-1",
+      "kind": "skill",
+      "result": {
+        "ok": false,
+        "reason": "prerequisite"
+      },
+      "earnedSp": 2,
+      "skills": [],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-ordnance-1",
+      "kind": "skill",
+      "result": {
+        "ok": true
+      },
+      "earnedSp": 2,
+      "skills": [
+        "heavy-ordnance-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-linework-1",
+      "kind": "skill",
+      "result": {
+        "ok": false,
+        "reason": "insufficientPoints"
+      },
+      "earnedSp": 2,
+      "skills": [
+        "heavy-ordnance-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-linework-yoke-1",
+      "kind": "skill",
+      "result": {
+        "ok": false,
+        "reason": "prerequisite"
+      },
+      "earnedSp": 4,
+      "skills": [],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-ordnance-1",
+      "kind": "skill",
+      "result": {
+        "ok": true
+      },
+      "earnedSp": 4,
+      "skills": [
+        "heavy-ordnance-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-linework-1",
+      "kind": "skill",
+      "result": {
+        "ok": true
+      },
+      "earnedSp": 4,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-linework-yoke-1",
+      "kind": "skill",
+      "result": {
+        "ok": false,
+        "reason": "insufficientPoints"
+      },
+      "earnedSp": 4,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-linework-yoke-1",
+      "kind": "skill",
+      "result": {
+        "ok": true
+      },
+      "earnedSp": 5,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1",
+        "heavy-linework-yoke-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-linework-sheave-1",
+      "kind": "skill",
+      "result": {
+        "ok": false,
+        "reason": "prerequisite"
+      },
+      "earnedSp": 4,
+      "skills": [],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-ordnance-1",
+      "kind": "skill",
+      "result": {
+        "ok": true
+      },
+      "earnedSp": 4,
+      "skills": [
+        "heavy-ordnance-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-linework-1",
+      "kind": "skill",
+      "result": {
+        "ok": true
+      },
+      "earnedSp": 4,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-linework-sheave-1",
+      "kind": "skill",
+      "result": {
+        "ok": false,
+        "reason": "insufficientPoints"
+      },
+      "earnedSp": 4,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-linework-sheave-1",
+      "kind": "skill",
+      "result": {
+        "ok": true
+      },
+      "earnedSp": 5,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1",
+        "heavy-linework-sheave-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-ordnance-1",
+      "kind": "skill",
+      "result": {
+        "ok": true
+      },
+      "earnedSp": 27,
+      "skills": [
+        "heavy-ordnance-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-linework-1",
+      "kind": "skill",
+      "result": {
+        "ok": true
+      },
+      "earnedSp": 27,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-linework-yoke-1",
+      "kind": "skill",
+      "result": {
+        "ok": true
+      },
+      "earnedSp": 27,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1",
+        "heavy-linework-yoke-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-linework-sheave-1",
+      "kind": "skill",
+      "result": {
+        "ok": false,
+        "reason": "incompatibleItem"
+      },
+      "earnedSp": 27,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1",
+        "heavy-linework-yoke-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-ordnance-1",
+      "kind": "skill",
+      "result": {
+        "ok": true
+      },
+      "earnedSp": 27,
+      "skills": [
+        "heavy-ordnance-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-linework-1",
+      "kind": "skill",
+      "result": {
+        "ok": true
+      },
+      "earnedSp": 27,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-linework-sheave-1",
+      "kind": "skill",
+      "result": {
+        "ok": true
+      },
+      "earnedSp": 27,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1",
+        "heavy-linework-sheave-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-linework-yoke-1",
+      "kind": "skill",
+      "result": {
+        "ok": false,
+        "reason": "incompatibleItem"
+      },
+      "earnedSp": 27,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1",
+        "heavy-linework-sheave-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-ordnance-1",
+      "kind": "skill",
+      "result": {
+        "ok": true
+      },
+      "earnedSp": 27,
+      "skills": [
+        "heavy-ordnance-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-linework-1",
+      "kind": "skill",
+      "result": {
+        "ok": true
+      },
+      "earnedSp": 27,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-flak-1",
+      "kind": "skill",
+      "result": {
+        "ok": false,
+        "reason": "incompatibleItem"
+      },
+      "earnedSp": 27,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-ordnance-1",
+      "kind": "skill",
+      "result": {
+        "ok": true
+      },
+      "earnedSp": 27,
+      "skills": [
+        "heavy-ordnance-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-linework-1",
+      "kind": "skill",
+      "result": {
+        "ok": true
+      },
+      "earnedSp": 27,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-traverse-1",
+      "kind": "skill",
+      "result": {
+        "ok": false,
+        "reason": "incompatibleItem"
+      },
+      "earnedSp": 27,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-ordnance-1",
+      "kind": "skill",
+      "result": {
+        "ok": true
+      },
+      "earnedSp": 27,
+      "skills": [
+        "heavy-ordnance-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-flak-1",
+      "kind": "skill",
+      "result": {
+        "ok": true
+      },
+      "earnedSp": 27,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-flak-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-linework-1",
+      "kind": "skill",
+      "result": {
+        "ok": false,
+        "reason": "incompatibleItem"
+      },
+      "earnedSp": 27,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-flak-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-ordnance-1",
+      "kind": "skill",
+      "result": {
+        "ok": true
+      },
+      "earnedSp": 27,
+      "skills": [
+        "heavy-ordnance-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-flak-1",
+      "kind": "skill",
+      "result": {
+        "ok": true
+      },
+      "earnedSp": 27,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-flak-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-traverse-1",
+      "kind": "skill",
+      "result": {
+        "ok": false,
+        "reason": "incompatibleItem"
+      },
+      "earnedSp": 27,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-flak-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-ordnance-1",
+      "kind": "skill",
+      "result": {
+        "ok": true
+      },
+      "earnedSp": 27,
+      "skills": [
+        "heavy-ordnance-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-traverse-1",
+      "kind": "skill",
+      "result": {
+        "ok": true
+      },
+      "earnedSp": 27,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-traverse-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-linework-1",
+      "kind": "skill",
+      "result": {
+        "ok": false,
+        "reason": "incompatibleItem"
+      },
+      "earnedSp": 27,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-traverse-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-ordnance-1",
+      "kind": "skill",
+      "result": {
+        "ok": true
+      },
+      "earnedSp": 27,
+      "skills": [
+        "heavy-ordnance-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-traverse-1",
+      "kind": "skill",
+      "result": {
+        "ok": true
+      },
+      "earnedSp": 27,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-traverse-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-flak-1",
+      "kind": "skill",
+      "result": {
+        "ok": false,
+        "reason": "incompatibleItem"
+      },
+      "earnedSp": 27,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-traverse-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-linework-1",
+      "kind": "skill",
+      "result": {
+        "ok": false,
+        "reason": "prerequisite"
+      },
+      "earnedSp": 27,
+      "skills": [],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-linework-1",
+      "kind": "skill",
+      "result": {
+        "ok": false,
+        "reason": "prerequisite"
+      },
+      "earnedSp": 27,
+      "skills": [],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-linework-1",
+      "kind": "skill",
+      "result": {
+        "ok": false,
+        "reason": "prerequisite"
+      },
+      "earnedSp": 27,
+      "skills": [],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-linework-1",
+      "kind": "skill",
+      "result": {
+        "ok": false,
+        "reason": "prerequisite"
+      },
+      "earnedSp": 27,
+      "skills": [],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-linework-1",
+      "kind": "skill",
+      "result": {
+        "ok": false,
+        "reason": "prerequisite"
+      },
+      "earnedSp": 27,
+      "skills": [],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-linework-1",
+      "kind": "skill",
+      "result": {
+        "ok": false,
+        "reason": "prerequisite"
+      },
+      "earnedSp": 27,
+      "skills": [],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-linework-1",
+      "kind": "skill",
+      "result": {
+        "ok": false,
+        "reason": "prerequisite"
+      },
+      "earnedSp": 27,
+      "skills": [],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-linework-1",
+      "kind": "skill",
+      "result": {
+        "ok": false,
+        "reason": "prerequisite"
+      },
+      "earnedSp": 27,
+      "skills": [],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-linework-1",
+      "kind": "skill",
+      "result": {
+        "ok": false,
+        "reason": "prerequisite"
+      },
+      "earnedSp": 27,
+      "skills": [],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-linework-1",
+      "kind": "skill",
+      "result": {
+        "ok": false,
+        "reason": "prerequisite"
+      },
+      "earnedSp": 27,
+      "skills": [],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-linework-1",
+      "kind": "skill",
+      "result": {
+        "ok": false,
+        "reason": "prerequisite"
+      },
+      "earnedSp": 27,
+      "skills": [],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-linework-1",
+      "kind": "skill",
+      "result": {
+        "ok": false,
+        "reason": "storyLearningRequired"
+      },
+      "earnedSp": 0,
+      "skills": [],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-ordnance-1",
+      "kind": "skill",
+      "result": {
+        "ok": true
+      },
+      "earnedSp": 3,
+      "skills": [
+        "heavy-ordnance-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-linework-1",
+      "kind": "skill",
+      "result": {
+        "ok": true
+      },
+      "earnedSp": 3,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-3",
+      "kind": "weapon",
+      "result": {
+        "ok": false,
+        "reason": "insufficientCoins"
+      },
+      "earnedSp": 3,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-2",
+      "kind": "weapon",
+      "result": {
+        "ok": false,
+        "reason": "insufficientCoins"
+      },
+      "earnedSp": 3,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-1",
+      "kind": "weapon",
+      "result": {
+        "ok": false,
+        "reason": "insufficientCoins"
+      },
+      "earnedSp": 3,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "damage",
+      "kind": "upgrade",
+      "result": {
+        "ok": true
+      },
+      "earnedSp": 3,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "fire-rate",
+      "kind": "upgrade",
+      "result": {
+        "ok": false,
+        "reason": "insufficientCoins"
+      },
+      "earnedSp": 3,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "health",
+      "kind": "upgrade",
+      "result": {
+        "ok": false,
+        "reason": "insufficientCoins"
+      },
+      "earnedSp": 3,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "reload",
+      "kind": "upgrade",
+      "result": {
+        "ok": false,
+        "reason": "insufficientCoins"
+      },
+      "earnedSp": 3,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "magazine",
+      "kind": "upgrade",
+      "result": {
+        "ok": false,
+        "reason": "insufficientCoins"
+      },
+      "earnedSp": 3,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "medkit",
+      "kind": "supply",
+      "result": {
+        "ok": false,
+        "reason": "insufficientCoins"
+      },
+      "earnedSp": 3,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-ordnance-1",
+      "kind": "skill",
+      "result": {
+        "ok": true
+      },
+      "earnedSp": 3,
+      "skills": [
+        "heavy-ordnance-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-linework-1",
+      "kind": "skill",
+      "result": {
+        "ok": true
+      },
+      "earnedSp": 3,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-3",
+      "kind": "weapon",
+      "result": {
+        "ok": false,
+        "reason": "insufficientCoins"
+      },
+      "earnedSp": 3,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-2",
+      "kind": "weapon",
+      "result": {
+        "ok": false,
+        "reason": "insufficientCoins"
+      },
+      "earnedSp": 3,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-1",
+      "kind": "weapon",
+      "result": {
+        "ok": false,
+        "reason": "insufficientCoins"
+      },
+      "earnedSp": 3,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "damage",
+      "kind": "upgrade",
+      "result": {
+        "ok": true
+      },
+      "earnedSp": 3,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "fire-rate",
+      "kind": "upgrade",
+      "result": {
+        "ok": false,
+        "reason": "insufficientCoins"
+      },
+      "earnedSp": 3,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "health",
+      "kind": "upgrade",
+      "result": {
+        "ok": false,
+        "reason": "insufficientCoins"
+      },
+      "earnedSp": 3,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "reload",
+      "kind": "upgrade",
+      "result": {
+        "ok": false,
+        "reason": "insufficientCoins"
+      },
+      "earnedSp": 3,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "magazine",
+      "kind": "upgrade",
+      "result": {
+        "ok": false,
+        "reason": "insufficientCoins"
+      },
+      "earnedSp": 3,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "medkit",
+      "kind": "supply",
+      "result": {
+        "ok": false,
+        "reason": "insufficientCoins"
+      },
+      "earnedSp": 3,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-linework-yoke-1",
+      "kind": "skill",
+      "result": {
+        "ok": true
+      },
+      "earnedSp": 9,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1",
+        "heavy-linework-yoke-1"
+      ],
+      "phase": "shop",
+      "encounter": 1
+    },
+    {
+      "item": "heavy-ordnance-1",
+      "kind": "skill",
+      "result": {
+        "ok": true
+      },
+      "earnedSp": 3,
+      "skills": [
+        "heavy-ordnance-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-linework-1",
+      "kind": "skill",
+      "result": {
+        "ok": true
+      },
+      "earnedSp": 3,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-3",
+      "kind": "weapon",
+      "result": {
+        "ok": false,
+        "reason": "insufficientCoins"
+      },
+      "earnedSp": 3,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-2",
+      "kind": "weapon",
+      "result": {
+        "ok": false,
+        "reason": "insufficientCoins"
+      },
+      "earnedSp": 3,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-1",
+      "kind": "weapon",
+      "result": {
+        "ok": false,
+        "reason": "insufficientCoins"
+      },
+      "earnedSp": 3,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "damage",
+      "kind": "upgrade",
+      "result": {
+        "ok": true
+      },
+      "earnedSp": 3,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "fire-rate",
+      "kind": "upgrade",
+      "result": {
+        "ok": false,
+        "reason": "insufficientCoins"
+      },
+      "earnedSp": 3,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "health",
+      "kind": "upgrade",
+      "result": {
+        "ok": false,
+        "reason": "insufficientCoins"
+      },
+      "earnedSp": 3,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "reload",
+      "kind": "upgrade",
+      "result": {
+        "ok": false,
+        "reason": "insufficientCoins"
+      },
+      "earnedSp": 3,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "magazine",
+      "kind": "upgrade",
+      "result": {
+        "ok": false,
+        "reason": "insufficientCoins"
+      },
+      "earnedSp": 3,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "medkit",
+      "kind": "supply",
+      "result": {
+        "ok": false,
+        "reason": "insufficientCoins"
+      },
+      "earnedSp": 3,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1"
+      ],
+      "phase": "lobby",
+      "encounter": 0
+    },
+    {
+      "item": "heavy-linework-sheave-1",
+      "kind": "skill",
+      "result": {
+        "ok": true
+      },
+      "earnedSp": 9,
+      "skills": [
+        "heavy-ordnance-1",
+        "heavy-linework-1",
+        "heavy-linework-sheave-1"
+      ],
+      "phase": "shop",
+      "encounter": 1
+    }
+  ],
+  "limits": [
+    "Research-only virtual67card registry in a copied Game. The shipped64card catalog/menus/protocol/online services are unchanged. These transactions are proposed local purchases, not canonical or online purchases.",
+    "Controlled gate/exclusion cases explicitly set earned budgets. The three ordinary Short partial acquisition runs use real start3SP and one actual clear to9SP without resource, health, position, deadline or hazard injection, no forced clears and no checkpoint creation/import.",
+    "One Baby Gatehouse seed and one visible-state combat policy assess early affordability and first-clear access only. They are not complete natural runs, final balance, human enjoyment or class/game completion. Native menus, all twelve local edition/history rosters, worker/peer transport, art/controls/sound/prediction and wider live behavior remain required before content admission."
+  ]
+}
