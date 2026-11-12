@@ -249,6 +249,8 @@ test("old custom controls gain unused Sprint bindings while keeping every prior 
     old: any = structuredClone(current);
   delete old.bindings.retinue;
   delete old.gamepad.retinue;
+  delete old.bindings.technique3;
+  delete old.gamepad.technique3;
   delete old.bindings.sprint;
   delete old.gamepad.sprint;
   delete old.sprintMode;

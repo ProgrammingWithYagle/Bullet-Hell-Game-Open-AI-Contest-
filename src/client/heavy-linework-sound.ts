@@ -4,6 +4,7 @@ export const lineworkSoundIds = [
   'linework-engage',
   'linework-brake',
   'linework-release',
+  'linework-reserve-select',
 ] as const;
 export type LineworkSoundId = (typeof lineworkSoundIds)[number];
 export const isHeavyLineworkSound = (id: string): id is LineworkSoundId =>
@@ -14,6 +15,7 @@ const durations: Record<LineworkSoundId, number> = {
   'linework-engage': 0.16,
   'linework-brake': 0.1,
   'linework-release': 0.085,
+  'linework-reserve-select': 0.115,
 };
 export const heavyLineworkDuration = (id: LineworkSoundId) => durations[id];
 /** Finite mechanical cues; objective sample checks are separate from listening acceptance. */
@@ -31,7 +33,9 @@ export function heavyLineworkSample(id: LineworkSoundId, time: number) {
             ? 190
             : id === 'linework-brake'
               ? 320
-              : 510,
+              : id === 'linework-reserve-select'
+                ? 640
+                : 510,
     fall = id === 'linework-engage' ? 1 + phase * 0.35 : 1 - phase * 0.3;
   return (
     envelope *

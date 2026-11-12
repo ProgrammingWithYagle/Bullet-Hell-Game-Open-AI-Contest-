@@ -16,7 +16,7 @@ export async function menuAcquirer(host: any) {
   const controls = defaultControls(),
     observations: any[] = [];
   controls.bindings.technique1 = ["KeyZ", "KeyG"];
-  controls.gamepad.technique1 = 8;
+  controls.gamepad.technique1 = 8;controls.gamepad.technique3=6;
   controls.bindings.technique2 = ["KeyN", "KeyY"];
   controls.gamepad.technique2 = 9;
   let binding: any;

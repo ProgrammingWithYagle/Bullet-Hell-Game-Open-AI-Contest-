@@ -16,4 +16,5 @@ export function catalogAt73<
   } as T;
 }
 export const messagesAt73 = (messages: Record<string, unknown>) =>
-  Object.fromEntries(Object.entries(messages).filter(([k]) => !newMessages.has(k)));
+  Object.fromEntries(Object.entries(messages).filter(([key]) => !newMessages.has(key) && key !== 'ui.technique3' &&
+    !key.startsWith('ui.heavy.reserve') && !key.startsWith('skill.heavy-linework-reserve-1.')));

@@ -22,7 +22,7 @@ import {
 import { lineworkMenu } from './helpers/heavy-linework-menu-flow.ts';
 import { lineworkFixture } from './helpers/heavy-linework-fixture.ts';
 
-test('source Lineworker graph exposes exactly the entry and fitting fork with real prerequisites and exclusion', () => {
+test('source Lineworker graph exposes the entry, fitting fork and acquired reserve with real prerequisites', () => {
   const routes = specializationRoutes('heavy');
   assert.deepEqual(
     routes.map((route) => route.id),
@@ -41,6 +41,7 @@ test('source Lineworker graph exposes exactly the entry and fitting fork with re
     { from: 'heavy-ordnance-1', to: lineworkIds.entry },
     { from: lineworkIds.entry, to: lineworkIds.yoke },
     { from: lineworkIds.entry, to: lineworkIds.sheave },
+    { from: lineworkIds.entry, to: lineworkIds.reserve },
   ]);
   assert.deepEqual(map.exclusions, [{ a: lineworkIds.yoke, b: lineworkIds.sheave }]);
 });

@@ -46,7 +46,7 @@ async function setup(t: any, mode: "short" | "raid" = "short") {
     results: any[] = [];
   controls.bindings.technique1 = ["KeyZ", "KeyG"];
   controls.bindings.technique2 = ["KeyN", "KeyY"];
-  controls.gamepad.technique1 = 8;
+  controls.gamepad.technique1 = 8;controls.gamepad.technique3=6;
   controls.gamepad.technique2 = 9;
   assert(validControls(controls));
   let binding: any;

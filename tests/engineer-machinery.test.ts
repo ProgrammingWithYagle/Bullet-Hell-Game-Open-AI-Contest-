@@ -508,6 +508,8 @@ test("Exact protocol-49/50 boundaries preserve twelve identities and old choices
   delete old.bindings.technique2;
   delete old.gamepad.technique1;
   delete old.gamepad.technique2;
+  delete old.bindings.technique3;
+  delete old.gamepad.technique3;
   old.bindings.q = ["KeyC"];
   old.gamepad.q = 6;
   old.bindings.e = ["KeyB"];

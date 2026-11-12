@@ -48,7 +48,7 @@ async function ui(t: any, skills: string[] = [], early = false) {
     controls = defaultControls(),
     requests: any[] = [];
   controls.bindings.technique1 = ["KeyZ", "KeyG"];
-  controls.gamepad.technique1 = 8;
+  controls.gamepad.technique1 = 8;controls.gamepad.technique3=6;
   env.host.innerHTML =
     '<div class="loadout-editor">' +
     shop.shopMarkup(player, [], true, "normal", undefined, true, controls) +

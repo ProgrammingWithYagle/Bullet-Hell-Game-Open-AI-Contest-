@@ -13,6 +13,7 @@ export const actions = [
   'ultimate',
   'technique1',
   'technique2',
+  'technique3',
   'interact',
   'supply1',
   'supply2',
@@ -46,6 +47,7 @@ export const defaultControls = (): ControlOptions => ({
     ultimate: ['KeyX'],
     technique1:['KeyC'],
     technique2:['KeyB'],
+    technique3:['KeyM'],
     interact: ['KeyF'],
     supply1: ['Digit1'],
     supply2: ['Digit2'],
@@ -62,6 +64,7 @@ export const defaultControls = (): ControlOptions => ({
     ultimate: 3,
     technique1:6,
     technique2:11,
+    technique3:8,
     interact: 1,
     supply1: 12,
     supply2: 13,
@@ -142,14 +145,15 @@ export function migrateMobilityControls(value:unknown):unknown {
   if(!value||typeof value!=='object'||Array.isArray(value))return value;
   const old=value as Record<string,any>;
   if(!old.bindings||!old.gamepad)return value;
-  const sets=[['sprint','retinue','technique1','technique2'],['retinue','technique1','technique2'],['technique1','technique2'],['sprint','retinue'],['retinue']];
+  const issuedMissing=[[],['sprint','retinue','technique1','technique2'],['retinue','technique1','technique2'],['technique1','technique2'],['sprint','retinue'],['retinue']];
+  const sets=issuedMissing.map(missing=>[...missing,'technique3']);
   for(const missing of sets){
     const legacyActions=actions.filter(a=>!missing.includes(a)),legacyButtons=buttonActions.filter(a=>!missing.includes(a));
     const top=missing.includes('sprint')?['bindings','gamepad','fireMode','interactMode']:['bindings','gamepad','fireMode','interactMode','sprintMode'];
     if(Object.keys(old).length!==top.length||!top.every(k=>Object.hasOwn(old,k))||Object.keys(old.bindings).length!==legacyActions.length||Object.keys(old.gamepad).length!==legacyButtons.length||!legacyActions.every(a=>Object.hasOwn(old.bindings,a))||!legacyButtons.every(a=>Object.hasOwn(old.gamepad,a)))continue;
     const next=structuredClone(old),keys=new Set(Object.values(old.bindings).flat()),pads=new Set(Object.values(old.gamepad));
     for(const action of missing){
-      const preferred:Record<string,string>={sprint:'ShiftLeft',retinue:'KeyV',technique1:'KeyC',technique2:'KeyB'},preferredPad:Record<string,number>={sprint:10,retinue:15,technique1:6,technique2:11};
+      const preferred:Record<string,string>={sprint:'ShiftLeft',retinue:'KeyV',technique1:'KeyC',technique2:'KeyB',technique3:'KeyM'},preferredPad:Record<string,number>={sprint:10,retinue:15,technique1:6,technique2:11,technique3:8};
       const key=[preferred[action],'ShiftRight','ControlLeft','ControlRight',...Array.from({length:26},(_,n)=>'Key'+String.fromCharCode(65+n)),...Array.from({length:10},(_,n)=>'Digit'+n),'Mouse0','Mouse1','Mouse2','Space','ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].find(k=>!keys.has(k));
       const pad=[preferredPad[action],11,6,15,10,16,8,9,...Array.from({length:17},(_,n)=>n)].find(n=>!pads.has(n));
       if(!key||pad===undefined)return value;

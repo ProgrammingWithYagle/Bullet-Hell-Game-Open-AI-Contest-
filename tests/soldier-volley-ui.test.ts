@@ -42,7 +42,7 @@ async function setup(t: any, late = false) {
   const p = g.addPlayer("solo", "Mara", "soldier"),
     controls = defaultControls();
   controls.bindings.technique1 = ["KeyZ", "KeyG"];
-  controls.gamepad.technique1 = 8;
+  controls.gamepad.technique1 = 8;controls.gamepad.technique3=6;
   controls.bindings.technique2 = ["KeyN", "KeyH"];
   controls.gamepad.technique2 = 9;
   const requests: any[] = [],

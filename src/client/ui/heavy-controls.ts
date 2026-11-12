@@ -17,7 +17,7 @@ import { bindingMarkup } from "./engineer-controls.ts";
 import { actionLabel } from "./control-settings.ts";
 import { escape as e } from "./html.ts";
 import { locale, number, t } from "../i18n.ts";
-type KitAction = "q" | "e" | "ultimate" | "technique1" | "technique2";
+type KitAction = "q" | "e" | "ultimate" | "technique1" | "technique2" | "technique3";
 export function heavyKitMarkup(
   p: PlayerView,
   controls: ControlOptions,
@@ -66,9 +66,12 @@ export function heavyKitMarkup(
             },
           ]
         : []),
+      ...(lineworkOwned && p.skills.includes(lineworkIds.reserve)
+        ? [{ action: "technique3" as const, key: "ui.heavy.reserveAction" }]
+        : []),
     ];
   const help = (
-    lineworkOwned?[t("ui.heavy.lineworkHelp"),t(p.skills.includes(lineworkIds.yoke)?"ui.heavy.lineworkYokeHelp":p.skills.includes(lineworkIds.sheave)?"ui.heavy.lineworkSheaveHelp":"ui.heavy.lineworkBareHelp")]:postOwned ? [
+    lineworkOwned?[t("ui.heavy.lineworkHelp"),t(p.skills.includes(lineworkIds.yoke)?"ui.heavy.lineworkYokeHelp":p.skills.includes(lineworkIds.sheave)?"ui.heavy.lineworkSheaveHelp":"ui.heavy.lineworkBareHelp"),p.skills.includes(lineworkIds.reserve)?t("ui.heavy.reserveHelp"):""]:postOwned ? [
       t("ui.heavy.lanyardHelp"),
       t(p.skills.includes(traverseIds.spade) ? "ui.heavy.lanyardSpadeHelp" : p.skills.includes(traverseIds.floating) ? "ui.heavy.lanyardFloatingHelp" : "ui.heavy.lanyardLooseHelp"),
       t(p.skills.includes(keyedId) ? "ui.heavy.lanyardKeyedHelp" : p.skills.includes(openId) ? "ui.heavy.lanyardOpenHelp" : "ui.heavy.lanyardPlainHelp"),
@@ -143,10 +146,18 @@ export function heavyKitMarkup(
 }
 export function heavyHudLabel(
   p: PlayerView,
-  slot: "technique1" | "technique2",
+  slot: "technique1" | "technique2" | "technique3",
   now: number,
 ) {
   if(p.skills.includes(lineworkIds.entry)){
+    if (slot === 'technique3') {
+      const line = p.kit.lineworkConnection;
+      if (!line || now >= line.until) return t('ui.heavy.reserveNeedsAnchor');
+      if (line.reserveFlight !== undefined) return t('ui.heavy.reserveWaiting');
+      if (line.reserve) return t(line.active ? 'ui.heavy.reserveBrake' : 'ui.heavy.reserveSelect');
+      if (line.reserveSpent) return t('ui.heavy.reserveSpent');
+      return t(line.active ? 'ui.heavy.reserveBrake' : 'ui.heavy.reserveCast');
+    }
     if(slot==='technique1')return(p.kit.lineworkFlight??0)>0||(p.kit.lineworkUntil??0)>now?t('ui.heavy.lineworkRelease'):t('skill.'+lineworkIds.entry+'.name');
     return(p.kit.lineworkUntil??0)>now?t(p.kit.lineworkActive?'ui.heavy.lineworkBrake':'ui.heavy.lineworkEngage'):(p.kit.lineworkFlight??0)>0?t('ui.heavy.lineworkWaiting'):t('ui.heavy.lineworkIdle');
   }

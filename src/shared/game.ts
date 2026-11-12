@@ -1256,7 +1256,7 @@ export class Game {
       if (p.pending.length) {
         const latest = p.pending.at(-1)!;
         const next = { ...latest };
-        for (const k of ['reload', 'dodge', 'q', 'e', 'ultimate','technique1','technique2'] as const)
+        for (const k of ['reload', 'dodge', 'q', 'e', 'ultimate','technique1','technique2','technique3'] as const)
           next[k] = p.pending.some((i) => i[k]);
         next.supply = p.pending.find((i) => i.supply >= 0)?.supply ?? -1;
         p.ack = latest.sequence;
@@ -1267,7 +1267,7 @@ export class Game {
         p.input = { ...idleInput(), sequence: p.ack, aim: p.aim };
       this.stepPlayer(p);
       // One-shot actions are consumed by the authoritative step, held movement/fire/interact persist briefly.
-      p.input.reload = p.input.dodge = p.input.q = p.input.e = p.input.ultimate = p.input.technique1 = p.input.technique2 = false;
+      p.input.reload = p.input.dodge = p.input.q = p.input.e = p.input.ultimate = p.input.technique1 = p.input.technique2 = p.input.technique3 = false;
       p.input.supply = -1;
     }
     this.grid.clear();

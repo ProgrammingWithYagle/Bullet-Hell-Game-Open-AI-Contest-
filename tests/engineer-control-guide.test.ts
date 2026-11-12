@@ -49,6 +49,7 @@ async function fixture(t: any, skills: string[] = [], expanded = false) {
     q: 16,
     technique1: 8,
     technique2: 9,
+    technique3: 3,
     ultimate: 6,
   });
   assert(validControls(controls));

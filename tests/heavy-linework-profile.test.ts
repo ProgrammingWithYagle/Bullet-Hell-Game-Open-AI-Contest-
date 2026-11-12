@@ -46,7 +46,7 @@ test('issued73 fixture is actual captured64-technique/fourGeneral authority, nev
   assert.equal(issued.privateUserDataIncluded, false);
   assert.equal(issued.proposedCheckpointCreatedOrImported, false);
   assert.equal(issued.all64ActualIssuedTechniqueOwnerships.length, 64);
-  assert.equal(PROTOCOL, 74);
+  assert.equal(PROTOCOL, 75);
 });
 for (const classId of implementedClassIds)
   test(
@@ -86,7 +86,10 @@ for (const layout of ['grouped', 'separate'])
       const p = issued.profiles.find((p: any) => p.layout === layout).profile,
         parsed = parseProfile(JSON.stringify(p));
       assert.equal(parsed.contentRevision, CONTENT_REVISION);
-      for (const key of ['controls', 'settings', 'runs', 'legacyCampaigns', 'mastery'])
+      const { technique3: _key, ...bindings } = parsed.controls.bindings;
+      const { technique3: _button, ...gamepad } = parsed.controls.gamepad;
+      assert.deepEqual({ ...parsed.controls, bindings, gamepad }, p.controls);
+      for (const key of ['settings', 'runs', 'legacyCampaigns', 'mastery'])
         assert.deepEqual((parsed as any)[key], p[key]);
       assert.equal(parsed.practiceOnly, true);
       assert.equal(parsed.verified, false);
@@ -159,7 +162,7 @@ test('actual current-edition purchases restore as local ownership without carryi
   for (const item of ['heavy-ordnance-1', 'heavy-linework-1'])
     assert(g.transact(p.id, { id: item, kind: 'skill', item }).ok);
   const save = g.offlineCheckpoint()!;
-  assert.equal(save.protocolVersion, 74);
+  assert.equal(save.protocolVersion, 75);
   assert.equal(save.contentRevision, CONTENT_REVISION);
   const restored = Game.restoreOffline(save),
     r = restored.players.get('solo')!;
@@ -170,5 +173,5 @@ test('actual current-edition purchases restore as local ownership without carryi
   const profile = freshProfile();
   assert.equal(profile.verified, false);
   assert.equal(profile.practiceOnly, true);
-  assert.equal(data.specializationSkills.length, 67);
+  assert.equal(data.specializationSkills.length, 68);
 });

@@ -45,7 +45,7 @@ async function setup(t: any, mode: "short" | "raid" = "short") {
     results: any[] = [];
   controls.bindings.technique1 = ["KeyZ", "KeyG"];
   controls.bindings.technique2 = ["KeyN", "KeyY"];
-  controls.gamepad.technique1 = 8;
+  controls.gamepad.technique1 = 8;controls.gamepad.technique3=6;
   controls.gamepad.technique2 = 9;
   assert(validControls(controls));
   let binding: any;
@@ -128,7 +128,7 @@ test("Siege Gunner shows exactly its real entry/fork/acquired operation with one
     new Set(["heavy-ordnance-1", ids.entry, ids.spade, ids.floating,"heavy-traverse-clutch-1","heavy-traverse-keyed-1","heavy-traverse-open-1","heavy-traverse-lanyard-1"]),
   );
   const all = specializationMapLayout("heavy")!;
-  assert.equal(all.nodes.length, 18);
+  assert.equal(all.nodes.length, 19);
   assert.equal(all.exclusions.length, 8);
   assert.deepEqual(specializationRoutes("heavy").map(route=>route.id), ["heavy-flak-1", ids.entry, "heavy-linework-1"]);
 });

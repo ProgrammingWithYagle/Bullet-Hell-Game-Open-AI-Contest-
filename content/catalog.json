@@ -697,6 +697,9 @@
       "maximumLength": 600,
       "bodyStop": 10,
       "slack": 2
+    },
+    "heavyLineworkReserve": {
+      "minimumSeparation": 100
     }
   },
   "locales": [
@@ -45847,6 +45850,27 @@
       "prerequisite": "heavy-linework-1",
       "role": "evolution",
       "description": "While braked, pay out actual clear cable up to its original600px maximum, then use a separate Action2 to haul from the changed approach. Keep lateral walking while hauling and keep primary fire committed. Repeated braking never resets the original150tick lifetime, returns the paid anchor round or resets recovery. Losing this fitting after using payout releases dependent work. Choose Open Sheave instead of Straight Yoke."
+    },
+    {
+      "classId": "heavy",
+      "branchId": "heavy-pathways",
+      "branchName": "Specializations",
+      "subbranchId": "heavy-linework-1",
+      "subbranchName": "Lineworker",
+      "subbranchNameKey": "pathway.heavy-linework-1.name",
+      "capstone": false,
+      "effects": {},
+      "id": "heavy-linework-reserve-1",
+      "name": "Reserve Anchor",
+      "nameKey": "skill.heavy-linework-reserve-1.name",
+      "sourceSkillId": "heavy-linework-reserve-1",
+      "grade": "B-",
+      "depth": 3,
+      "cost": 3,
+      "freePlaySpRequired": 11,
+      "prerequisite": "heavy-linework-1",
+      "role": "evolution",
+      "description": "While braked on an attached line, Action 3 spends one more magazine round on a second physical anchor. It must attach to current masonry at least 100 px from the first contact. A separate Action 3 selects the reserve and releases the first line. Action 2 then hauls on the selected line. Both anchors share the first cast’s expiry and recovery. A paid shot can miss or hit an obstruction. You can prepare one reserve per first anchor."
     }
   ]
 }

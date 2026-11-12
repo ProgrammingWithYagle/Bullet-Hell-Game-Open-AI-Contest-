@@ -11,7 +11,13 @@ import {
   lineworkIds,
   lineworkTemporaryConstructs,
 } from '../../src/shared/heavy-linework.ts';
-import { HZ, type Event, type InputFrame, type Result } from '../../src/shared/protocol.ts';
+import {
+  HZ,
+  type Event,
+  type InputFrame,
+  type Result,
+  type Vec,
+} from '../../src/shared/protocol.ts';
 import type { View } from '../../src/shared/view.ts';
 import { restWait } from './sniper-rest-flow.ts';
 import { restRaidInput, type ObservedRestShot } from './sniper-rest-raid-policy.ts';
@@ -33,11 +39,11 @@ export type LineworkTransport = {
   end?(): void;
   allyPolicy?(): void;
   stopAlly?(): void;
-  checkObservers?(anchorId: number, until: number): Promise<void>;
+  checkObservers?(anchorId: number, until: number, reserveId?: number): Promise<void>;
 };
 
 /** Pick a manual ray from public geometry and visible bodies. */
-function anchorBearing(view: View, id: string) {
+function anchorBearing(view: View, id: string, fromAnchor?: Vec) {
   const player = view.players.find((p) => p.id === id)!;
   const arena = runtimeArena(view.arenaId, view.run.difficulty);
   const solids = [
@@ -69,6 +75,8 @@ function anchorBearing(view: View, id: string) {
       if (!hit || hit.index >= arena.obstacles.length || hit.t * 560 < 135 || hit.t * 560 > 480)
         return [];
       const contact = { x: player.x + x * 560 * hit.t, y: player.y + y * 560 * hit.t };
+      if (fromAnchor && Math.hypot(contact.x - fromAnchor.x, contact.y - fromAnchor.y) < 116)
+        return [];
       const bounds = arena.bounds;
       if (
         contact.x < bounds.x + rules.radius ||
@@ -104,7 +112,11 @@ function anchorBearing(view: View, id: string) {
   return candidates[0].aim;
 }
 
-export async function earnedLineworkFlow(transport: LineworkTransport, fitting: LineworkFitting) {
+export async function earnedLineworkFlow(
+  transport: LineworkTransport,
+  fitting: LineworkFitting,
+  withReserve = false,
+) {
   const view = () => {
     const current = transport.view();
     assert(current, 'Missing authoritative view');
@@ -187,6 +199,129 @@ export async function earnedLineworkFlow(transport: LineworkTransport, fitting: 
     await restWait(() => sounded('linework-anchor'), 'Physical attachment sound reaches the owner');
     return { aim, ammo, shot, castAt, recovery, line };
   }
+  const earnedSequence = [3];
+  async function clearToShop(encounter: number, earnedSP: number) {
+    const clearDeadline = Date.now() + 200_000;
+    while (view().phase === 'combat') {
+      assert(Date.now() < clearDeadline, 'Ordinary Short clear policy bound');
+      transport.input(restRaidInput(view(), player(), [...transport.observed.values()]));
+      transport.allyPolicy?.();
+      await sleep(25);
+    }
+    transport.stopAlly?.();
+    assert.notEqual(view().phase, 'defeat');
+    assert.equal(view().encounter, encounter);
+    assert.equal(earned(), earnedSP);
+    assert.equal(player().progress.clears, encounter);
+    earnedSequence.push(earned());
+    console.log(
+      JSON.stringify({
+        fitting,
+        withReserve,
+        actualEarnedSP: earned(),
+        actualClears: player().progress.clears,
+        combatTick: view().combatTick,
+      }),
+    );
+    const shopDeadline = Date.now() + 90_000;
+    while (view().phase !== 'shop') {
+      assert(
+        Date.now() < shopDeadline && view().phase !== 'defeat',
+        'Original reward clocks reach the shop',
+      );
+      if (['mutationVote', 'contractVote'].includes(view().phase)) transport.vote(0);
+      await sleep(25);
+    }
+  }
+  async function deploy(earnedSP: number) {
+    await equip();
+    const deadline = Date.now() + 90_000;
+    while (view().phase !== 'combat') {
+      assert(
+        Date.now() < deadline && view().phase !== 'defeat',
+        'Original shop and deployment clocks reach combat',
+      );
+      await sleep(25);
+    }
+    assert.equal(earned(), earnedSP);
+    assert(!view().run.testingModified && !view().run.customized);
+  }
+  async function selectReserve(first: Awaited<ReturnType<typeof attach>>) {
+    const aim = anchorBearing(view(), transport.id, first.line.origin);
+    const before = ownedShots().length,
+      ammo = player().ammo;
+    await acknowledge({ aim, technique3: true }, 'Admitted separate paid reserve cast');
+    await restWait(
+      () =>
+        ownedShots()
+          .slice(before)
+          .some((shot) => shot.visual === 'heavy-anchor'),
+      'Actual reserve flight arrives',
+    );
+    const shot = ownedShots()
+      .slice(before)
+      .find((shot) => shot.visual === 'heavy-anchor')!;
+    assert.notEqual(shot.id, first.shot.id);
+    assert.equal(shot.damage, 0);
+    assert.equal(player().ammo, ammo - 1);
+    await restWait(
+      () => !!player().kit.lineworkConnection?.reserve && removed(shot.id),
+      'Real alternate masonry and separate removal',
+    );
+    const parent = player().kit.lineworkConnection!,
+      alternate = parent.reserve!;
+    assert.deepEqual(parent.origin, first.line.origin);
+    assert.equal(alternate.until, first.line.until);
+    assert.equal(player().kit.lineworkRecovery, first.recovery);
+    const separation = Math.hypot(
+      parent.origin.x - alternate.origin.x,
+      parent.origin.y - alternate.origin.y,
+    );
+    assert(separation >= 100);
+    transport.pause(true);
+    await restWait(() => transport.paused(), 'Actual paused two-anchor view');
+    const tick = view().combatTick,
+      ack = player().ack;
+    transport.input({ aim, technique3: true });
+    await sleep(90);
+    assert.equal(view().combatTick, tick);
+    assert.equal(player().ack, ack);
+    assert.equal(player().ammo, ammo - 1);
+    assert.deepEqual(player().kit.lineworkConnection?.origin, parent.origin);
+    await transport.checkObservers?.(first.shot.id, parent.until, shot.id);
+    transport.pause(false);
+    await restWait(
+      () => !transport.paused(),
+      'Original clock resumes after two-anchor observation',
+    );
+    await acknowledge(
+      { aim, technique3: true, technique2: true },
+      'Separate reserve selection before haul',
+    );
+    const selected = player().kit.lineworkConnection!;
+    assert(selected.reserveSelected && !selected.active && !selected.reserve);
+    assert.deepEqual(selected.origin, alternate.origin);
+    assert.equal(selected.until, first.line.until);
+    assert.equal(player().kit.lineworkRecovery, first.recovery);
+    assert.equal(player().ammo, ammo - 1);
+    return {
+      operation: {
+        primaryAnchor: first.line.origin,
+        reserveAnchor: alternate.origin,
+        separation,
+        firstAnchorId: first.shot.id,
+        reserveAnchorId: shot.id,
+        paidReserveRounds: 1,
+        originalUntil: parent.until,
+        selectedUntil: selected.until,
+        originalRecovery: first.recovery,
+        selectedWhileBraked: true,
+        pausedSelectionDiscarded: true,
+      },
+      selected: { ...first, shot, aim, line: selected },
+    };
+  }
+
   try {
     assert.equal(earned(), 3);
     assert.deepEqual(player().skills, []);
@@ -204,53 +339,23 @@ export async function earnedLineworkFlow(transport: LineworkTransport, fitting: 
     assert(!player().kit.lineworkConnection);
     assert.equal(player().kit.lineworkRecovery, first.recovery);
 
-    const clearDeadline = Date.now() + 200_000;
-    while (view().phase === 'combat') {
-      assert(Date.now() < clearDeadline, 'Ordinary Short first-clear policy bound');
-      transport.input(restRaidInput(view(), player(), [...transport.observed.values()]));
-      transport.allyPolicy?.();
-      await sleep(25);
-    }
-    transport.stopAlly?.();
-    assert.notEqual(view().phase, 'defeat');
-    assert.equal(view().encounter, 1);
-    assert.equal(earned(), 9);
-    assert.equal(player().progress.clears, 1);
-    console.log(
-      JSON.stringify({
-        fitting,
-        actualEarnedSP: earned(),
-        actualClears: player().progress.clears,
-        combatTick: view().combatTick,
-      }),
-    );
-    const shopDeadline = Date.now() + 90_000;
-    while (view().phase !== 'shop') {
-      assert(
-        Date.now() < shopDeadline && view().phase !== 'defeat',
-        'Original reward clocks reach the first shop',
-      );
-      if (['mutationVote', 'contractVote'].includes(view().phase)) transport.vote(0);
-      await sleep(25);
-    }
+    await clearToShop(1, 9);
     if (fitting !== 'bare') {
       await buy(lineworkIds[fitting]);
       await menu.inspect(lineworkIds[fitting === 'yoke' ? 'sheave' : 'yoke'], false);
     } else await menu.inspect(lineworkIds.sheave, true);
-    const spent = spentLineworkSP(player());
-    assert.equal(spent, fitting === 'bare' ? 3 : 5);
-    await equip();
-    const deployDeadline = Date.now() + 90_000;
-    while (view().phase !== 'combat') {
-      assert(
-        Date.now() < deployDeadline && view().phase !== 'defeat',
-        'Original shop and deployment clocks reach combat',
-      );
-      await sleep(25);
+    if (withReserve) {
+      await menu.inspect(lineworkIds.reserve, false);
+      await deploy(9);
+      await clearToShop(2, 15);
+      await buy(lineworkIds.reserve);
     }
-    assert.equal(earned(), 9);
-    assert(!view().run.testingModified && !view().run.customized);
-    const second = await attach();
+    const spent = spentLineworkSP(player());
+    assert.equal(spent, (fitting === 'bare' ? 3 : 5) + (withReserve ? 3 : 0));
+    await deploy(withReserve ? 15 : 9);
+    const current = await attach();
+    const reserve = withReserve ? await selectReserve(current) : undefined;
+    const second = reserve?.selected ?? current;
     let payout = 0;
     if (fitting === 'sheave') {
       const initial = second.line.initialLength;
@@ -304,7 +409,7 @@ export async function earnedLineworkFlow(transport: LineworkTransport, fitting: 
     assert.equal(player().ammo, frozenAmmo);
     assert.equal(player().ack, frozenAck);
     assert.equal(player().kit.lineworkUntil, second.line.until);
-    await transport.checkObservers?.(second.shot.id, second.line.until);
+    if (!withReserve) await transport.checkObservers?.(second.shot.id, second.line.until);
     transport.pause(false);
     await restWait(() => !transport.paused(), 'Actual unpause acknowledgement');
     if (transport.end) {
@@ -320,8 +425,9 @@ export async function earnedLineworkFlow(transport: LineworkTransport, fitting: 
     return {
       passed: true,
       fitting,
-      actualEarnedSequence: [3, 9],
-      actualClears: 1,
+      actualEarnedSequence: earnedSequence,
+      actualClears: earnedSequence.length - 1,
+      reserve: reserve?.operation,
       spent,
       walked,
       payout,

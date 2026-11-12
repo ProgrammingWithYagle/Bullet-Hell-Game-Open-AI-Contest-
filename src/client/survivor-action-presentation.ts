@@ -126,9 +126,10 @@ export class SurvivorActionClock {
       }
       if(postFrame(player,view.phase,view.combatTick,player.id))memory.attackAt=-Infinity;
       if((flak||traverse||linework)&&view.phase==='combat'&&player.status==='active'){
-        const primaryAt=player.kit.heavyPrimaryAt??0,shotAt=(linework?player.kit.lineworkCastAt:traverse?((player.skills.includes('heavy-traverse-lanyard-1')&&(player.kit as {heavyTraverseShotPosted?:boolean}).heavyTraverseShotPosted)?0:player.kit.heavyTraverseShotAt):player.kit.heavyFlakShotAt)??0,at=Math.max(primaryAt,shotAt),fresh=at>0&&at!==(memory.heavyEventAt??0),attack=clips.get('heavy-attack-south')!,duration=attack.frames*HZ/attack.fps;
+        const reserveAt=player.kit.lineworkReserveCastAt??0,anchorAt=player.kit.lineworkCastAt??0;
+        const primaryAt=player.kit.heavyPrimaryAt??0,shotAt=(linework?Math.max(reserveAt,anchorAt):traverse?((player.skills.includes('heavy-traverse-lanyard-1')&&(player.kit as {heavyTraverseShotPosted?:boolean}).heavyTraverseShotPosted)?0:player.kit.heavyTraverseShotAt):player.kit.heavyFlakShotAt)??0,at=Math.max(primaryAt,shotAt),fresh=at>0&&at!==(memory.heavyEventAt??0),attack=clips.get('heavy-attack-south')!,duration=attack.frames*HZ/attack.fps;
         memory.heavyEventAt=at;
-        if(fresh&&view.combatTick>=at&&view.combatTick-at<duration&&view.tick-memory.attackAt>=duration&&(!old||(player.weapon===old.weapon&&player.health>=old.health))){memory.attackAt=view.tick-Math.max(0,view.combatTick-at);memory.attackFacing=facingOf(shotAt>=primaryAt?((linework?player.kit.lineworkCastAim:traverse?player.kit.heavyTraverseShotAim:player.kit.heavyFlakShotAim)??player.aim):(player.kit.heavyPrimaryAim??player.aim));}
+        if(fresh&&view.combatTick>=at&&view.combatTick-at<duration&&view.tick-memory.attackAt>=duration&&(!old||(player.weapon===old.weapon&&player.health>=old.health))){memory.attackAt=view.tick-Math.max(0,view.combatTick-at);memory.attackFacing=facingOf(shotAt>=primaryAt?((linework?(reserveAt>anchorAt?player.kit.lineworkReserveCastAim:player.kit.lineworkCastAim):traverse?player.kit.heavyTraverseShotAim:player.kit.heavyFlakShotAim)??player.aim):(player.kit.heavyPrimaryAim??player.aim));}
       }
       if (player.classId === 'swordsman' && view.phase === 'combat' && player.status === 'active') {
         const cut = view.classCues

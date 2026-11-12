@@ -10,8 +10,10 @@ export const lineworkIds = {
   entry: 'heavy-linework-1',
   yoke: 'heavy-linework-yoke-1',
   sheave: 'heavy-linework-sheave-1',
+  reserve: 'heavy-linework-reserve-1',
 } as const;
 export const heavyLineworkRules = catalog.rules.heavyLinework;
+const reserveRules = catalog.rules.heavyLineworkReserve;
 /** Built, living constructs use their existing current collision shape, never attachment identity. */
 export function lineworkTemporaryConstructs(
   cues: readonly { kind: string }[],
@@ -40,8 +42,9 @@ type Flight = {
   until: number;
   lineUntil: number;
   cancelled: boolean;
+  reserve?: boolean;
 };
-export type LineworkConnection = {
+type Attachment = {
   owner: string;
   weapon: string;
   scope: string;
@@ -57,6 +60,12 @@ export type LineworkConnection = {
   commandAt: number;
   commandSequence: number;
   requiresFitting?: string;
+};
+export type LineworkConnection = Attachment & {
+  reserve?: Attachment;
+  reserveFlight?: number;
+  reserveSpent?: boolean;
+  reserveSelected?: boolean;
 };
 export type LineworkContext = {
   tick: number;
@@ -94,18 +103,25 @@ const mode = (p: Player): Mode =>
       : 'bare';
 const sameRect = (a: Rect, b: Rect) =>
   a.x === b.x && a.y === b.y && a.width === b.width && a.height === b.height;
+function copyAttachment<T extends Attachment>(line: T): T {
+  return {
+    ...line,
+    origin: { ...line.origin },
+    normal: { ...line.normal },
+    wall: { ...line.wall },
+  };
+}
+function copyConnection(line: LineworkConnection): LineworkConnection {
+  const copy = copyAttachment(line);
+  if (line.reserve) copy.reserve = copyAttachment(line.reserve);
+  return copy;
+}
 export class HeavyLinework {
   /** Isolated client forecast seeded by an acknowledged transient line, never a checkpoint or emission. */
   static forPrediction(p: { id: string }, known: Partial<LineworkStatus>) {
     const model = new HeavyLinework(),
       line = known.lineworkConnection;
-    if (line && line.owner === p.id)
-      model.lines.set(p.id, {
-        ...line,
-        origin: { ...line.origin },
-        normal: { ...line.normal },
-        wall: { ...line.wall },
-      });
+    if (line && line.owner === p.id) model.lines.set(p.id, copyConnection(line));
     if ((known.lineworkCastAt ?? 0) > 0)
       model.casts.set(p.id, {
         at: known.lineworkCastAt!,
@@ -120,6 +136,7 @@ export class HeavyLinework {
   private lines = new Map<string, LineworkConnection>();
   private casts = new Map<string, { at: number; sequence: number; aim: number }>();
   private primaries = new Map<string, { at: number; aim: number }>();
+  private reserveCasts = new Map<string, { at: number; aim: number }>();
   clear(c: Pick<LineworkContext, 'shot' | 'remove'>) {
     for (const id of [...this.flights.keys()]) {
       const shot = c.shot(id);
@@ -130,6 +147,7 @@ export class HeavyLinework {
     this.lines.clear();
     this.casts.clear();
     this.primaries.clear();
+    this.reserveCasts.clear();
   }
   has(id: number) {
     return this.flights.has(id);
@@ -138,7 +156,21 @@ export class HeavyLinework {
     return this.flights.size > 0 || this.lines.size > 0;
   }
   forget(id: number) {
+    const flight = this.flights.get(id);
+    if (flight?.reserve) {
+      const line = this.lines.get(flight.owner);
+      if (line?.reserveFlight === id) line.reserveFlight = undefined;
+    }
     this.flights.delete(id);
+  }
+  private reserveParent(flight: Flight, owner: Player | undefined, tick: number) {
+    const parent = this.lines.get(flight.owner);
+    if (
+      owner?.skills.includes(lineworkIds.reserve) &&
+      parent?.reserveFlight === flight.id &&
+      tick < parent.until
+    )
+      return parent;
   }
   private valid(p: Player | undefined, f: Pick<Flight, 'owner' | 'weapon'>) {
     return live(p) && p.id === f.owner && p.weapon === f.weapon;
@@ -169,6 +201,7 @@ export class HeavyLinework {
     }
     this.casts.delete(owner);
     this.primaries.delete(owner);
+    this.reserveCasts.delete(owner);
   }
   private pointClear(
     p: Player,
@@ -180,6 +213,7 @@ export class HeavyLinework {
       c.tick >= line.until ||
       !this.valid(p, line) ||
       (line.requiresFitting && !p.skills.includes(line.requiresFitting)) ||
+      (line.reserveSelected && !p.skills.includes(lineworkIds.reserve)) ||
       !c.masonry.some((w) => sameRect(w, line.wall))
     )
       return false;
@@ -202,15 +236,20 @@ export class HeavyLinework {
   reconcile(players: readonly Player[], c: LineworkContext) {
     for (const [id, f] of this.flights) {
       const p = players.find((p) => p.id === f.owner);
-      if (!this.valid(p, f) || f.scope !== c.scope) {
+      if (
+        !this.valid(p, f) ||
+        f.scope !== c.scope ||
+        (f.reserve && !this.reserveParent(f, p, c.tick))
+      ) {
         const shot = c.shot(id);
         if (shot) c.remove(shot);
-        else this.flights.delete(id);
+        else this.forget(id);
       } else if (p && this.busy(p, c.tick)) f.cancelled = true;
     }
     for (const [owner, line] of this.lines) {
       const p = players.find((p) => p.id === owner);
       if (!p || this.busy(p, c.tick) || !this.pointClear(p, line, c)) this.lines.delete(owner);
+      else this.validateReserve(p, line, c);
     }
   }
   cast(p: Player, c: LineworkContext) {
@@ -263,6 +302,53 @@ export class HeavyLinework {
     c.sound(p, 'linework-shot');
     return true;
   }
+
+  private commandReserve(p: Player, line: LineworkConnection, c: LineworkContext) {
+    if (line.active || p.input.reload || p.input.dodge || p.input.ultimate || p.input.q) return;
+    const alternate = line.reserve;
+    if (alternate) {
+      if (c.tick <= alternate.at || !this.pointClear(p, alternate, c)) return;
+      this.lines.set(p.id, {
+        ...alternate,
+        commandAt: c.tick,
+        commandSequence: p.input.sequence,
+        reserveSpent: true,
+        reserveSelected: true,
+      });
+      c.sound(p, 'linework-reserve-select');
+      return;
+    }
+    const remaining = line.until - c.tick;
+    if (line.reserveSpent || p.ammo < 1 || remaining <= 1 || !c.canEmit()) return;
+    const flightTicks = Math.min(heavyLineworkRules.flightTicks, remaining);
+    const shot = c.shoot(p, heavyLineworkRules.speed, heavyLineworkRules.radius, flightTicks / HZ);
+    if (!shot) return;
+    p.ammo--;
+    line.reserveSpent = true;
+    line.reserveFlight = shot.id;
+    this.reserveCasts.set(p.id, { at: c.tick, aim: p.aim });
+    this.flights.set(shot.id, {
+      id: shot.id,
+      owner: p.id,
+      weapon: p.weapon,
+      scope: c.scope,
+      born: c.tick,
+      sequence: p.input.sequence,
+      until: shot.expires,
+      lineUntil: line.until,
+      cancelled: false,
+      reserve: true,
+    });
+    c.sound(p, 'linework-shot');
+  }
+
+  private validateReserve(p: Player, line: LineworkConnection, c: LineworkContext) {
+    if (
+      line.reserve &&
+      (!p.skills.includes(lineworkIds.reserve) || !this.pointClear(p, line.reserve, c))
+    )
+      line.reserve = undefined;
+  }
   beforeMove(p: Player, c: LineworkContext) {
     if (!owned(p)) return;
     if (this.busy(p, c.tick)) {
@@ -275,8 +361,9 @@ export class HeavyLinework {
       this.lines.delete(p.id);
       return;
     }
+    const reserveCommand = p.input.technique3 && p.skills.includes(lineworkIds.reserve);
     if (
-      !p.input.technique2 ||
+      (!p.input.technique2 && !reserveCommand) ||
       p.input.technique1 ||
       c.tick <= line.at ||
       c.tick <= line.commandAt ||
@@ -285,6 +372,10 @@ export class HeavyLinework {
       return;
     line.commandAt = c.tick;
     line.commandSequence = p.input.sequence;
+    if (reserveCommand) {
+      this.commandReserve(p, line, c);
+      return;
+    }
     if (!line.requiresFitting) line.mode = mode(p);
     if (line.active) {
       line.active = false;
@@ -324,6 +415,7 @@ export class HeavyLinework {
       this.lines.delete(p.id);
       return;
     }
+    this.validateReserve(p, line, c);
     if (
       mode(p) === 'sheave' &&
       !line.active &&
@@ -339,6 +431,7 @@ export class HeavyLinework {
   blocksPrimary(owner: string, now: number) {
     return (
       this.casts.get(owner)?.at === now ||
+      this.reserveCasts.get(owner)?.at === now ||
       !!(this.lines.get(owner)?.active && this.lines.get(owner)?.mode !== 'yoke')
     );
   }
@@ -352,8 +445,15 @@ export class HeavyLinework {
   }
   advance(s: Shot, c: FlightContext) {
     const f = this.flights.get(s.id);
-    if (!f || !this.valid(c.owner, f) || f.scope !== c.scope || c.tick >= f.until) {
-      this.flights.delete(s.id);
+    const reserveParent = f?.reserve ? this.reserveParent(f, c.owner, c.tick) : undefined;
+    if (
+      !f ||
+      !this.valid(c.owner, f) ||
+      f.scope !== c.scope ||
+      c.tick >= f.until ||
+      (f.reserve && !reserveParent)
+    ) {
+      this.forget(s.id);
       return false;
     }
     const from = { x: s.x, y: s.y },
@@ -423,12 +523,20 @@ export class HeavyLinework {
           commandSequence: Math.max(f.sequence, c.owner.input.sequence),
         };
         if (this.pointClear(c.owner, line, c)) {
-          this.lines.set(f.owner, line);
-          c.contact?.(c.owner, origin);
+          if (!reserveParent) {
+            this.lines.set(f.owner, line);
+            c.contact?.(c.owner, origin);
+          } else if (
+            Math.hypot(reserveParent.origin.x - origin.x, reserveParent.origin.y - origin.y) >=
+            reserveRules.minimumSeparation
+          ) {
+            reserveParent.reserve = line;
+            c.contact?.(c.owner, origin);
+          }
         }
       }
     }
-    this.flights.delete(s.id);
+    this.forget(s.id);
     return false;
   }
   primaryReleased(p: Player, now: number) {
@@ -447,9 +555,12 @@ export class HeavyLinework {
     },
   ) {
     const line = this.lines.get(p.id),
-      flight = [...this.flights.values()].find((f) => f.owner === p.id && !f.cancelled),
+      flight = [...this.flights.values()].find(
+        (f) => f.owner === p.id && !f.cancelled && !f.reserve,
+      ),
       cast = this.casts.get(p.id),
       primary = this.primaries.get(p.id),
+      reserveCast = this.reserveCasts.get(p.id),
       busy = this.busy(p, now),
       active = !!line || !!flight;
     return {
@@ -478,14 +589,18 @@ export class HeavyLinework {
           ? now <= (cast?.at ?? now)
           : p.ammo < 1 || now < (this.recovery.get(p.id) ?? 0) || options?.canEmit === false),
       lineworkCommandBlocked: busy || !line || now <= line.at,
-      lineworkConnection: line
-        ? {
-            ...line,
-            origin: { ...line.origin },
-            normal: { ...line.normal },
-            wall: { ...line.wall },
-          }
-        : undefined,
+      lineworkConnection: line ? copyConnection(line) : undefined,
+      lineworkReserveCastAt: reserveCast?.at ?? 0,
+      lineworkReserveCastAim: reserveCast?.aim ?? p.aim,
+      lineworkReserveBlocked:
+        !p.skills.includes(lineworkIds.reserve) ||
+        busy ||
+        !line ||
+        line.active ||
+        now <= line.at ||
+        (line.reserve
+          ? now <= line.reserve.at
+          : line.reserveSpent || p.ammo < 1 || line.until - now <= 1 || options?.canEmit === false),
       heavyPrimaryAt: primary?.at ?? 0,
       heavyPrimaryAim: primary?.aim ?? p.aim,
     };

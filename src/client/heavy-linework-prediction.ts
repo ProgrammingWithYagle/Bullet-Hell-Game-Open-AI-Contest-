@@ -93,6 +93,7 @@ export function lineworkPredictedMotion(
         lineworkCommandSequence: s.lineworkCommandSequence,
         lineworkBlocked: s.lineworkBlocked,
         lineworkCommandBlocked: s.lineworkCommandBlocked,
+        lineworkReserveBlocked: s.lineworkReserveBlocked,
       };
     },
   };

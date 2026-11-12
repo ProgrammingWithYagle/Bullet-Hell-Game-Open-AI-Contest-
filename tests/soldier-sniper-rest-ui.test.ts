@@ -59,7 +59,7 @@ for (const clear of [false, true])
         shop = await menuBundle(t, "src/client/ui/shop.ts", stubs),
         controls = defaultControls();
       controls.bindings.technique1 = ["KeyZ", "KeyG"];
-      controls.gamepad.technique1 = 8;
+      controls.gamepad.technique1 = 8;controls.gamepad.technique3=6;
       controls.bindings.technique2 = ["KeyN", "KeyY"];
       controls.gamepad.technique2 = 9;
       controls.bindings.reload = ["KeyT", "KeyK"];

@@ -308,6 +308,7 @@ test("The two earned actions support remapped keyboard, gamepad and touch pulses
     options.bindings.technique2 = ["KeyG"];
     options.gamepad.technique1 = 16;
     options.gamepad.technique2 = 8;
+    options.gamepad.technique3 = 11;
     controls.configure(options);
     controls.blocked = false;
     controls.sample(0);

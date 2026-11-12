@@ -63,7 +63,7 @@ function confirmedPurchase(
   return true;
 }
 
-export async function runLineworkWorker(code: string, fitting: LineworkFitting) {
+export async function runLineworkWorker(code: string, fitting: LineworkFitting, reserve = false) {
   const wrapper =
     "import{parentPort}from'node:worker_threads';globalThis.self={};globalThis.postMessage=m=>parentPort.postMessage(m);" +
     code +
@@ -136,6 +136,7 @@ export async function runLineworkWorker(code: string, fitting: LineworkFitting) 
         paused: () => paused && view?.combatTick === pauseTick,
       },
       fitting,
+      reserve,
     );
     return { ...result, wholeOptimizedWorker: true, workerPatched: false, transport: 'worker' };
   } finally {
@@ -143,7 +144,11 @@ export async function runLineworkWorker(code: string, fitting: LineworkFitting) 
   }
 }
 
-export async function runLineworkPeers(endpoint: string, fitting: LineworkFitting) {
+export async function runLineworkPeers(
+  endpoint: string,
+  fitting: LineworkFitting,
+  reserve = false,
+) {
   const host = new Session(endpoint),
     heavy = new Session(endpoint),
     late = new Session(endpoint);
@@ -220,7 +225,7 @@ export async function runLineworkPeers(endpoint: string, fitting: LineworkFittin
             );
         },
         stopAlly: () => host.input(inputFrame(host.view, ++hostSequence, {})),
-        checkObservers: async (anchorId, until) => {
+        checkObservers: async (anchorId, until, reserveId) => {
           const tick = heavy.view!.combatTick;
           heavy.room!.send('pauseMatch', false);
           heavy.room!.send('endMatch');
@@ -237,7 +242,15 @@ export async function runLineworkPeers(endpoint: string, fitting: LineworkFittin
           assert.equal(heavy.view!.phase, 'combat');
           assert.equal(player(heavy)!.kit.lineworkConnection?.until, until);
           const ownerRaw = heavy.room!.state.players.get(heavy.id)!;
-          assert.equal(JSON.parse(ownerRaw.lineworkOwner).lineworkConnection.until, until);
+          const ownerConnection = JSON.parse(ownerRaw.lineworkOwner).lineworkConnection;
+          assert.equal(ownerConnection.until, until);
+          if (reserveId !== undefined) {
+            assert.equal(ownerConnection.reserve.until, until);
+            assert.deepEqual(
+              ownerConnection.reserve.origin,
+              player(heavy)!.kit.lineworkConnection!.reserve!.origin,
+            );
+          }
           assert.deepEqual(player(late)!.skills, []);
           for (const observer of [host, late]) {
             const raw = observer.room!.state.players.get(heavy.id)!;
@@ -261,10 +274,17 @@ export async function runLineworkPeers(endpoint: string, fitting: LineworkFittin
                 event.type === 'shots' && event.shots.some((shot) => shot.owner === heavy.id),
             ),
           );
-          assert(!foreign.some((event) => event.type === 'remove' && event.ids.includes(anchorId)));
+          assert(
+            !foreign.some(
+              (event) =>
+                event.type === 'remove' &&
+                event.ids.some((id) => id === anchorId || id === reserveId),
+            ),
+          );
         },
       },
       fitting,
+      reserve,
     );
     await restWait(
       () => [host, heavy, late].every((s) => s.view?.phase === 'defeat' && s.view.endedByHost),

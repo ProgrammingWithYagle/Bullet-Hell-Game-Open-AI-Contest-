@@ -1,6 +1,14 @@
 # Changelog
 
-Development build **2026.11.12-heavy-lineworker**, protocol 74. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.12-heavy-reserve-anchor**, protocol 75. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-12 — Set a reserve and choose the lead
+
+### Heavy Lineworker
+
+- Reserve Anchor costs 3 SP after Anchor Cartridge at 11 earned. Ordinary Short reaches 15 SP on its second clear.
+- A dedicated remappable Action 3 pays one round from a braked line. A later Action 3 chooses the alternate masonry attachment within the same original lifetime. Action 2 hauls on the chosen line.
+- The actual first-anchor recovery, General 648, four shared techniques, 27 SP and one capstone stay in place. Exact issued protocol 74 ownership and all twelve profile and history rosters precede edition 73.
 
 ## 2026-11-12 — Set an anchor, choose how to approach
 

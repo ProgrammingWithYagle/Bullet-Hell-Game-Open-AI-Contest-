@@ -7,6 +7,7 @@ export type LineworkRenderPlan = {
   anchor: Vec;
   active: boolean;
   remainingTicks: number;
+  reserve?: Vec;
 };
 /** Only an actual acknowledged owner line may be drawn; the carried native gun stays on the body. */
 export function lineworkRenderPlan(
@@ -30,7 +31,8 @@ export function lineworkRenderPlan(
     c.weapon !== p.weapon ||
     c.scope !== view.run.id + ':' + view.encounter + ':' + view.arenaId ||
     now >= c.until ||
-    (c.requiresFitting && !p.skills.includes(c.requiresFitting))
+    (c.requiresFitting && !p.skills.includes(c.requiresFitting)) ||
+    (c.reserveSelected && !p.skills.includes(lineworkIds.reserve))
   )
     return;
   const anchor = c.origin,
@@ -45,7 +47,25 @@ export function lineworkRenderPlan(
     length > limit
   )
     return;
+  const alternate = c.reserve;
+  const reserveLength =
+    alternate && Math.hypot(drawnBody.x - alternate.origin.x, drawnBody.y - alternate.origin.y);
+  const reserveLimit =
+    alternate &&
+    (k.lineworkMode === 'sheave'
+      ? heavyLineworkRules.maximumLength
+      : alternate.paidLength + heavyLineworkRules.slack);
+  const reserve =
+    p.skills.includes(lineworkIds.reserve) &&
+    alternate &&
+    now < alternate.until &&
+    reserveLength !== undefined &&
+    reserveLimit !== undefined &&
+    reserveLength <= Math.min(reserveLimit, heavyLineworkRules.maximumLength)
+      ? { ...alternate.origin }
+      : undefined;
   return {
+    ...(reserve ? { reserve } : {}),
     from: { x: drawnBody.x, y: drawnBody.y },
     anchor: { ...anchor },
     active: c.active,
@@ -62,6 +82,23 @@ export function drawLinework(g: Graphics, plan: LineworkRenderPlan | undefined) 
   g.lineStyle(1.5, plan.active ? 0xd6bb78 : 0xa7aaa0, 0.7)
     .lineBetween(plan.from.x, plan.from.y, plan.anchor.x, plan.anchor.y)
     .strokeCircle(plan.anchor.x, plan.anchor.y, 4);
+  const reserve = plan.reserve;
+  if (!reserve) return;
+  const dx = reserve.x - plan.from.x,
+    dy = reserve.y - plan.from.y;
+  const steps = Math.min(18, Math.max(1, Math.ceil(Math.hypot(dx, dy) / 24)));
+  g.lineStyle(1, 0xa4bcbd, 0.62);
+  for (let step = 0; step < steps; step++) {
+    const from = step / steps,
+      to = (step + 0.52) / steps;
+    g.lineBetween(
+      plan.from.x + dx * from,
+      plan.from.y + dy * from,
+      plan.from.x + dx * to,
+      plan.from.y + dy * to,
+    );
+  }
+  g.strokeCircle(reserve.x, reserve.y, 5);
 }
 export function lineworkProjectilePlan(s: Pick<Shot, 'visual' | 'vx' | 'vy'>) {
   return s.visual === 'heavy-anchor'

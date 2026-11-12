@@ -7,7 +7,7 @@ const root=fileURLToPath(new URL('../',import.meta.url)).replaceAll('\\','/').re
 const messages=JSON.parse(fs.readFileSync(root+'/locales/en.json','utf8')).messages;
 const stubs={'i18n.ts':'const m='+JSON.stringify(messages)+';export const locale="en",number=String;export const t=(k,a={})=>Object.entries(a).reduce((s,[k,v])=>s.replaceAll("{"+k+"}",String(v)),m[k]??k);'};
 const state=(f:ReturnType<typeof fixture>)=>{const v=viewOf(f.g,f.p.id);return{p:v.players.find(p=>p.id===f.p.id)!,now:v.combatTick};};
-const controls=()=>{const c=defaultControls();c.bindings.technique1=['KeyZ','KeyG'];c.bindings.technique2=['KeyN','KeyY'];c.gamepad.technique1=8;c.gamepad.technique2=9;assert(validControls(c));return c;};
+const controls=()=>{const c=defaultControls();c.bindings.technique1=['KeyZ','KeyG'];c.bindings.technique2=['KeyN','KeyY'];c.gamepad.technique1=8;c.gamepad.technique3=6;c.gamepad.technique2=9;assert(validControls(c));return c;};
 
 test('controlled canonical purchases renders five actual independently remapped rows and replaces contradictory base guide prose',async t=>{
   const env=menuEnvironment(t),ui=await menuBundle(t,fileURLToPath(new URL('../src/client/ui/heavy-controls.ts',import.meta.url)),stubs);

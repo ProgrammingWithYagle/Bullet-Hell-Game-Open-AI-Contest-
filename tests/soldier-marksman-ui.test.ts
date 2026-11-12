@@ -52,7 +52,7 @@ async function setup(
   for (const item of skills)
     assert(g.transact(p.id, { id: item, kind: "skill", item }).ok);
   controls.bindings.technique1 = ["KeyZ", "KeyG"];
-  controls.gamepad.technique1 = 8;
+  controls.gamepad.technique1 = 8;controls.gamepad.technique3=6;
   const requests: any[] = [],
     player = viewOf(g, p.id).players[0];
   env.host.innerHTML =

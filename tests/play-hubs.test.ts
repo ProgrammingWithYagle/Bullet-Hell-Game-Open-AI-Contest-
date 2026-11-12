@@ -53,7 +53,7 @@ test("Free Play supports bounded custom opening/form/seed, persists it and never
   ])
     assert(!validFreePlay(bad));
   assert.throws(() => new Game({ mode: "story", freePlay: config }));
-  assert.equal(PROTOCOL,74);
+  assert.equal(PROTOCOL,75);
 });
 test("Custom Free Play results cannot award personal mastery, stamps or campaign records", () => {
   const g = new Game({

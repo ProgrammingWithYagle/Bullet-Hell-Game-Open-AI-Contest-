@@ -47,6 +47,8 @@ test('remapped keyboard, mouse, gamepad and touch dispatch actions independently
     options.bindings.e = ['KeyQ'];
     options.bindings.fire = ['KeyC'];
     options.fireMode = 'toggle';
+    options.bindings.technique3 = ['KeyP'];
+    options.gamepad.technique3 = 9;
     controls.configure(options);
     controls.sample(0);
     event(win, 'keydown', { code: 'KeyQ' });
@@ -97,6 +99,19 @@ test('remapped keyboard, mouse, gamepad and touch dispatch actions independently
     controls.sample(17);assert(!controls.takeRetinueCycle(),'Holding a key does not spam orders');event(win,'keyup',{code:'KeyB'});
     buttons[options.gamepad.retinue].pressed=true;controls.sample(18);assert(controls.takeRetinueCycle());controls.sample(19);assert(!controls.takeRetinueCycle(),'Holding the pad button emits one edge');
     buttons[options.gamepad.retinue].pressed=false;controls.sample(20);event(win,'keydown',{code:'KeyB'});controls.sample(21);event(win,'blur');assert(!controls.takeRetinueCycle());
+    touch.dataset.action = 'technique3';
+    event(win, 'keydown', { code: 'KeyP' });
+    const reserve = controls.sample(22);
+    assert(reserve.technique3 && !reserve.technique2 && !reserve.interact);
+    assert(!controls.sample(23).technique3);
+    event(win, 'keyup', { code: 'KeyP' });
+    buttons[9].pressed = true;
+    assert(controls.sample(24).technique3);
+    assert(!controls.sample(25).technique3);
+    buttons[9].pressed = false;
+    event(touch, 'pointerdown', { pointerId: 9, pointerType: 'touch' });
+    assert(controls.sample(26).technique3);
+    assert(!controls.sample(27).technique3);
     controls.destroy();
     controls = undefined;
   } finally {

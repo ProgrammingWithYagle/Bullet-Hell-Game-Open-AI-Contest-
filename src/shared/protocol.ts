@@ -1,6 +1,6 @@
 import type{SeamPrivateEvent}from"./heavy-seam.ts";
 import revision from '../../content/revision.json' with { type: 'json' };
-export const PROTOCOL = 74;
+export const PROTOCOL = 75;
 export type BossVariant = 'normal' | 'brutal' | 'crazed';
 export const CONTENT_REVISION = revision.sha256;
 export const HZ = 30,
@@ -117,6 +117,7 @@ export type InputFrame = {
   ultimate: boolean;
   technique1: boolean;
   technique2: boolean;
+  technique3: boolean;
   interact: boolean;
   supply: number;
 };
@@ -135,10 +136,11 @@ export const idleInput = (): InputFrame => ({
   ultimate: false,
   technique1: false,
   technique2: false,
+  technique3: false,
   interact: false,
   supply: -1,
 });
-const booleans = ['fire', 'reload', 'dodge', 'sprint', 'q', 'e', 'ultimate', 'technique1', 'technique2', 'interact'] as const;
+const booleans = ['fire', 'reload', 'dodge', 'sprint', 'q', 'e', 'ultimate', 'technique1', 'technique2', 'technique3', 'interact'] as const;
 const inputKeys = new Set(Object.keys(idleInput()));
 export function validInput(x: unknown): x is InputFrame {
   if (!x || typeof x !== 'object' || Array.isArray(x)) return false;

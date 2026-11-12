@@ -74,6 +74,8 @@ test("Exact earlier control shapes retain chosen keys and pad buttons when the n
   const earlier = defaultControls() as any;
   delete earlier.bindings.retinue;
   delete earlier.gamepad.retinue;
+  delete earlier.bindings.technique3;
+  delete earlier.gamepad.technique3;
   earlier.bindings.q = ["KeyV"];
   earlier.gamepad.q = 15;
   const upgraded = migrateMobilityControls(earlier) as ReturnType<

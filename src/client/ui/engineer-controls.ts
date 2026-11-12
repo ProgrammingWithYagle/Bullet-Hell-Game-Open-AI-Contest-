@@ -12,10 +12,11 @@ import { profileText } from "../profile-text.ts";
 import { escape as e } from "./html.ts";
 
 type KitAction =
-  "q" | "e" | "ultimate" | "technique1" | "technique2" | "reload";
+  "q" | "e" | "ultimate" | "technique1" | "technique2" | "technique3" | "reload";
 // These are affected inputs, not an inference from a technique's visual frame.
 // Breach Casings also works when a placed charge triggers without remote input.
 const controlsByTechnique: Record<string, readonly KitAction[]> = {
+  "heavy-linework-reserve-1": ["technique3", "technique2"],
   "heavy-traverse-lanyard-1": ["technique1", "technique2", "q"],
   "heavy-flak-1":["technique1"],"heavy-flak-compact-1":["technique1"],"heavy-flak-frontal-1":["technique1"],"heavy-flak-command-1":["technique2"],
   "soldier-sniper-1": ["technique1"],
@@ -81,7 +82,9 @@ export const techniqueSlotLabel = (slot: KitAction) =>
             ? "ui.pathwayUltimate"
             : slot === "technique1"
               ? "ui.pathwayAction1"
-              : "ui.pathwayAction2",
+              : slot === "technique3"
+                ? "ui.technique3"
+                : "ui.pathwayAction2",
       );
 
 export function bindingMarkup(action: KitAction, controls: ControlOptions) {
