@@ -1,0 +1,109 @@
+{
+  "preparedAt": "2026-11-12T00:06:25.845Z",
+  "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+  "prior": [
+    {
+      "audience": "testing",
+      "partial": "reviews/heavy-tethered-menu21-2026-11-10/native03-testing-partial.json",
+      "partialSha256": "962d4139da5023b218900f3819c713c5fc1a22db2048cb380f8f19f55e267d25",
+      "passingPostCases": 14,
+      "failed": [
+        {
+          "label": "worker-post-open-floating",
+          "cases": 1,
+          "passed": false,
+          "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+          "startedAt": "2026-11-11T16:59:31.748Z",
+          "finishedAt": "2026-11-11T17:23:19.924Z",
+          "log": "reviews/heavy-tethered-menu21-2026-11-10/native03-testing-worker-post-open-floating.log",
+          "logSha256": "6a89de7be3211d6a2e6a11c5469a53141283661f0ba49d25c7996d67387872c8",
+          "retainedOriginalExecution": false
+        },
+        {
+          "label": "room-post-open-loose",
+          "cases": 1,
+          "passed": false,
+          "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+          "startedAt": "2026-11-11T16:56:29.433Z",
+          "finishedAt": "2026-11-11T17:23:19.959Z",
+          "log": "reviews/heavy-tethered-menu21-2026-11-10/native03-testing-room-post-open-loose.log",
+          "logSha256": "19ffb5aef65ecc4db1d6d5abdcde4c9c3823d3c8c6b6bde65bfb4bafb1db8427",
+          "retainedOriginalExecution": false
+        },
+        {
+          "label": "room-post-open-spade",
+          "cases": 1,
+          "passed": false,
+          "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+          "startedAt": "2026-11-11T16:56:36.400Z",
+          "finishedAt": "2026-11-11T17:23:20.273Z",
+          "log": "reviews/heavy-tethered-menu21-2026-11-10/native03-testing-room-post-open-spade.log",
+          "logSha256": "1cff076fe55f345cf56ab5e2b08d8349017c70d6ac9602102406c09fbf19e7a3",
+          "retainedOriginalExecution": false
+        }
+      ]
+    },
+    {
+      "audience": "public",
+      "partial": "reviews/heavy-tethered-menu21-2026-11-10/native03-public-partial.json",
+      "partialSha256": "2358e6e4650fd27959e892778b2db9e5bae0499034244d1744a2e75370584aa5",
+      "passingPostCases": 12,
+      "failed": [
+        {
+          "label": "room-post-open-spade",
+          "cases": 1,
+          "passed": false,
+          "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+          "startedAt": "2026-11-11T16:56:13.271Z",
+          "finishedAt": "2026-11-11T17:23:19.765Z",
+          "log": "reviews/heavy-tethered-menu21-2026-11-10/native03-public-room-post-open-spade.log",
+          "logSha256": "74993c8ddec50325af3aa6e2e0ca739f43c3a1eace3742a561f52c216b34dd43",
+          "retainedOriginalExecution": false
+        },
+        {
+          "label": "worker-post-open-spade",
+          "cases": 1,
+          "passed": false,
+          "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+          "startedAt": "2026-11-11T16:55:55.106Z",
+          "finishedAt": "2026-11-11T17:23:19.848Z",
+          "log": "reviews/heavy-tethered-menu21-2026-11-10/native03-public-worker-post-open-spade.log",
+          "logSha256": "ea58cfe24c1b902a620ef9325f2e5cecb6ab10d5c620cce4cf591da1279adff3",
+          "retainedOriginalExecution": false
+        },
+        {
+          "label": "worker-post-open-loose",
+          "cases": 1,
+          "passed": false,
+          "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+          "startedAt": "2026-11-11T16:55:54.937Z",
+          "finishedAt": "2026-11-11T17:23:19.987Z",
+          "log": "reviews/heavy-tethered-menu21-2026-11-10/native03-public-worker-post-open-loose.log",
+          "logSha256": "c2cd8b30a7be93bc015170181f2ee5f7480813c2ce30925667c9d2824451d298",
+          "retainedOriginalExecution": false
+        },
+        {
+          "label": "room-post-open-loose",
+          "cases": 1,
+          "passed": false,
+          "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+          "startedAt": "2026-11-11T16:56:11.329Z",
+          "finishedAt": "2026-11-11T17:23:20.040Z",
+          "log": "reviews/heavy-tethered-menu21-2026-11-10/native03-public-room-post-open-loose.log",
+          "logSha256": "00fddbbaa3574831d7029c4d9fe0f80f4e842c3af03596d5849034093c7cdb3a",
+          "retainedOriginalExecution": false
+        }
+      ]
+    }
+  ],
+  "passingPostCasesRetained": 26,
+  "failedPostCasesPreserved": 7,
+  "missingPassingCasesToExecute": 10,
+  "failureObservation": "Seven cases ended at existing per-clear, vote/shop or deployment wall-clock bounds, with terminal contexts preserved. Their exact cause is not inferred from the interruption. Original failures remain failures.",
+  "runtimeUnchanged": true,
+  "sourceAndHelpersUnchanged": true,
+  "originalTimeoutsAndPoliciesRetained": true,
+  "native03DriverSha256": "92b5a1a033171e2a93772d939d20b48b27f67f292070d2061bc5f6688114f938",
+  "native04DriverSha256": "57878b8112586663dc0c9be378bc6a9f3f0c30ea9458463c30407be821aada6a",
+  "onlyProbeReceiptPrefixChanged": true
+}

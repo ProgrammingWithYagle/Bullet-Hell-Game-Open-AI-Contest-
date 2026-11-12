@@ -1,0 +1,218 @@
+{
+  "studiedAt": "2026-11-12T00:16:57.179Z",
+  "registered": false,
+  "canonicalFilesChanged": false,
+  "onlineProof": false,
+  "countsAs2211Tests": false,
+  "prototypeSourceBase": "30fbfefaa66faabd93416dc31e27310149df5fed",
+  "copiedGameBundleSha256": "7ea14bd9ca65daa519b067650d2c1aea384e9f4748b2072d18c83d53b7de990a",
+  "candidate02Sha256": "10421aded34e81e8c6662d949e72795569012bb42e6e8b194fce3d1a665c397d",
+  "runnerSha256": "e7b098531c8dcf1cb072e85173743afd6ffd847a1b3ea491b30d45c79dd4f07c",
+  "cases": 12,
+  "pass": 9,
+  "fail": 3,
+  "results": [
+    {
+      "label": "bare actual primary-versus-lateral handling",
+      "passed": true,
+      "details": {
+        "mode": "bare",
+        "primaryProjectiles": 0,
+        "actualLateralMovement": 48.33002312124685,
+        "originalUntil": 151,
+        "afterUntil": 151,
+        "ammoBefore": 45,
+        "ammoAfter": 44,
+        "rawProposedOwnership": true
+      }
+    },
+    {
+      "label": "yoke actual primary-versus-lateral handling",
+      "passed": true,
+      "details": {
+        "mode": "yoke",
+        "primaryProjectiles": 2,
+        "actualLateralMovement": -0.2668049619633095,
+        "originalUntil": 151,
+        "afterUntil": 151,
+        "ammoBefore": 45,
+        "ammoAfter": 42,
+        "rawProposedOwnership": true
+      }
+    },
+    {
+      "label": "sheave actual primary-versus-lateral handling",
+      "passed": true,
+      "details": {
+        "mode": "sheave",
+        "primaryProjectiles": 0,
+        "actualLateralMovement": 48.33002312124685,
+        "originalUntil": 151,
+        "afterUntil": 151,
+        "ammoBefore": 45,
+        "ammoAfter": 44,
+        "rawProposedOwnership": true
+      }
+    },
+    {
+      "label": "bare payout and fitting dependency",
+      "passed": true,
+      "details": {
+        "mode": "bare",
+        "original": {
+          "lineworkRecovery": 241,
+          "lineworkFlight": 0,
+          "lineworkUntil": 151,
+          "lineworkAnchor": {
+            "x": 476.5367782241873,
+            "y": 218.6
+          },
+          "lineworkActive": false,
+          "lineworkMode": "bare",
+          "lineworkPaidLength": 576.4041457767873,
+          "lineworkAt": 20,
+          "lineworkCommandSequence": 20,
+          "lineworkNow": 20
+        },
+        "paidOut": {
+          "lineworkRecovery": 241,
+          "lineworkFlight": 0,
+          "lineworkUntil": 0,
+          "lineworkActive": false,
+          "lineworkMode": "bare",
+          "lineworkPaidLength": 0,
+          "lineworkAt": 0,
+          "lineworkCommandSequence": 0,
+          "lineworkNow": 23
+        },
+        "after": {
+          "lineworkRecovery": 241,
+          "lineworkFlight": 0,
+          "lineworkUntil": 0,
+          "lineworkActive": false,
+          "lineworkMode": "bare",
+          "lineworkPaidLength": 0,
+          "lineworkAt": 0,
+          "lineworkCommandSequence": 0,
+          "lineworkNow": 23
+        },
+        "noRoundRefund": true,
+        "noClockReset": true
+      }
+    },
+    {
+      "label": "sheave payout and fitting dependency",
+      "passed": true,
+      "details": {
+        "mode": "sheave",
+        "original": {
+          "lineworkRecovery": 241,
+          "lineworkFlight": 0,
+          "lineworkUntil": 151,
+          "lineworkAnchor": {
+            "x": 476.5367782241873,
+            "y": 218.6
+          },
+          "lineworkActive": false,
+          "lineworkMode": "sheave",
+          "lineworkPaidLength": 576.4041457767873,
+          "lineworkAt": 20,
+          "lineworkCommandSequence": 20,
+          "lineworkNow": 20
+        },
+        "paidOut": {
+          "lineworkRecovery": 241,
+          "lineworkFlight": 0,
+          "lineworkUntil": 151,
+          "lineworkAnchor": {
+            "x": 476.5367782241873,
+            "y": 218.6
+          },
+          "lineworkActive": false,
+          "lineworkMode": "sheave",
+          "lineworkPaidLength": 576.4041457767873,
+          "lineworkAt": 20,
+          "lineworkCommandSequence": 20,
+          "lineworkNow": 23
+        },
+        "after": {
+          "lineworkRecovery": 241,
+          "lineworkFlight": 0,
+          "lineworkUntil": 0,
+          "lineworkActive": false,
+          "lineworkMode": "bare",
+          "lineworkPaidLength": 0,
+          "lineworkAt": 0,
+          "lineworkCommandSequence": 0,
+          "lineworkNow": 25
+        },
+        "noRoundRefund": true,
+        "noClockReset": true
+      }
+    },
+    {
+      "label": "blocked dodge retains issued admission authority",
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: rejected issued action must preserve the existing line\n\n0 !== 151\n",
+      "stack": "AssertionError [ERR_ASSERTION]: rejected issued action must preserve the existing line\n\n0 !== 151\n\n    at <anonymous> (C:\\Users\\yigal\\Documents\\Codex\\2026-11-10\\continue-grave-accord-in-the-same\\work\\menu21-stage\\lineworker-guards04.mts:33:112)\n    at run (C:\\Users\\yigal\\Documents\\Codex\\2026-11-10\\continue-grave-accord-in-the-same\\work\\menu21-stage\\lineworker-guards04.mts:14:61)\n    at <anonymous> (C:\\Users\\yigal\\Documents\\Codex\\2026-11-10\\continue-grave-accord-in-the-same\\work\\menu21-stage\\lineworker-guards04.mts:28:86)"
+    },
+    {
+      "label": "admitted dodge retains issued admission authority",
+      "passed": true,
+      "details": {
+        "action": "dodge",
+        "admitted": true,
+        "originalUntil": 151,
+        "actualUntil": 0,
+        "controlledAdmissionFixture": true
+      }
+    },
+    {
+      "label": "blocked reload retains issued admission authority",
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: rejected issued action must preserve the existing line\n\n0 !== 151\n",
+      "stack": "AssertionError [ERR_ASSERTION]: rejected issued action must preserve the existing line\n\n0 !== 151\n\n    at <anonymous> (C:\\Users\\yigal\\Documents\\Codex\\2026-11-10\\continue-grave-accord-in-the-same\\work\\menu21-stage\\lineworker-guards04.mts:33:112)\n    at run (C:\\Users\\yigal\\Documents\\Codex\\2026-11-10\\continue-grave-accord-in-the-same\\work\\menu21-stage\\lineworker-guards04.mts:14:61)\n    at <anonymous> (C:\\Users\\yigal\\Documents\\Codex\\2026-11-10\\continue-grave-accord-in-the-same\\work\\menu21-stage\\lineworker-guards04.mts:28:86)"
+    },
+    {
+      "label": "admitted reload retains issued admission authority",
+      "passed": true,
+      "details": {
+        "action": "reload",
+        "admitted": true,
+        "originalUntil": 151,
+        "actualUntil": 0,
+        "controlledAdmissionFixture": true
+      }
+    },
+    {
+      "label": "blocked ultimate retains issued admission authority",
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: rejected issued action must preserve the existing line\n\n0 !== 151\n",
+      "stack": "AssertionError [ERR_ASSERTION]: rejected issued action must preserve the existing line\n\n0 !== 151\n\n    at <anonymous> (C:\\Users\\yigal\\Documents\\Codex\\2026-11-10\\continue-grave-accord-in-the-same\\work\\menu21-stage\\lineworker-guards04.mts:33:112)\n    at run (C:\\Users\\yigal\\Documents\\Codex\\2026-11-10\\continue-grave-accord-in-the-same\\work\\menu21-stage\\lineworker-guards04.mts:14:61)\n    at <anonymous> (C:\\Users\\yigal\\Documents\\Codex\\2026-11-10\\continue-grave-accord-in-the-same\\work\\menu21-stage\\lineworker-guards04.mts:28:86)"
+    },
+    {
+      "label": "admitted ultimate retains issued admission authority",
+      "passed": true,
+      "details": {
+        "action": "ultimate",
+        "admitted": true,
+        "originalUntil": 151,
+        "actualUntil": 0,
+        "controlledAdmissionFixture": true
+      }
+    },
+    {
+      "label": "separate C releases unpaid work and retains actual cartridge/recovery",
+      "passed": true,
+      "details": {
+        "originalRecovery": 241,
+        "ammoAfter": 44
+      }
+    }
+  ],
+  "limits": [
+    "Unregistered copied-Game raw-ownership controlled fixtures. Actual paid physical attachment/motor/primary/body movement run against current real Gatehouse cover; boss attacks are explicitly held. No canonical card/purchase/earned progression/online checkpoint/acceptance exists.",
+    "Blocked-action fixtures explicitly set ordinary recovery or magazine to make admission unavailable. Failures are preserved and block any admission decision; no gameplay deadline/content/source is changed.",
+    "Human/rendered/device/language/listening/motion/final-balance and live-pressure assessment remain open."
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "preparedAt": "2026-11-11T16:40:21.300Z",
+  "originalFailures": [
+    {
+      "path": "reviews/heavy-tethered-menu21-2026-11-10/native02-testing-partial.json",
+      "sha256": "b2177e4150fc10a4d48e8d6460bb5988bc34f180f3bf426a41384711796e594a"
+    },
+    {
+      "path": "reviews/heavy-tethered-menu21-2026-11-10/native02-testing-http.log",
+      "sha256": "ad5a467279b780da2bafdf54543f2bee39c679e3692234fc03fc38340ce06f6a"
+    },
+    {
+      "path": "reviews/heavy-tethered-menu21-2026-11-10/native02-public-partial.json",
+      "sha256": "745bac914b71a7a8937dcc54535f7eed8a6ac45a1ce12de0eea3a9104b360752"
+    },
+    {
+      "path": "reviews/heavy-tethered-menu21-2026-11-10/native02-public-http.log",
+      "sha256": "ad5a467279b780da2bafdf54543f2bee39c679e3692234fc03fc38340ce06f6a"
+    }
+  ],
+  "actualCause": "Native02 HTTP loaded the original launch receipt; fresh launch03 health correctly has a different start time. The unmodified canonical smoke tool now receives the actual launch03 scope, with exact copies of the same preview manifests and fresh process records. Its own receipt is copied byte-exact into the main proof scope.",
+  "noSmokeAssertionOrTimeoutChange": true,
+  "noGameplayOrSourceChange": true,
+  "smokeSourceSha256": "a776fa261923d547a444f9139f837691cf64a0f6151cb06e2e823f38d9681789",
+  "actualLaunchScope": "reviews/heavy-tethered-menu21-launch03-2026-11-11",
+  "drivers": [
+    {
+      "file": "run-reviews03.mjs",
+      "sha256": "1f297a41fbff619585165dba1c8c863204bd6fe8a452272cd90f3afd0b599468"
+    },
+    {
+      "file": "native-probe03.mts",
+      "sha256": "92b5a1a033171e2a93772d939d20b48b27f67f292070d2061bc5f6688114f938"
+    },
+    {
+      "file": "verify-frozen03.mjs",
+      "sha256": "f72895079b0362920276db2d40498e6509ce2478a4b35c601dd6de09b7d0519c"
+    }
+  ],
+  "allNative02EvidenceRetained": true
+}

@@ -1,0 +1,318 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-11T16:36:56.133Z",
+  "phase": "source",
+  "head": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+  "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+  "events": [
+    {
+      "id": 42958812304,
+      "event": "push",
+      "url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/42958812304",
+      "headSha": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+      "status": "completed",
+      "conclusion": "success",
+      "totalJobs": 1,
+      "jobs": [
+        {
+          "id": 130320199451,
+          "name": "verify",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "number": 1,
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+              "number": 2,
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+              "number": 3,
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Install pinned package manager",
+              "number": 4,
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Install locked dependencies",
+              "number": 5,
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Install pinned image verification dependency",
+              "number": 6,
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Verify content, rules, networking and client build",
+              "number": 7,
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Preserve verification report",
+              "number": 8,
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+              "number": 15,
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+              "number": 16,
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "number": 17,
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ],
+          "tests": 2211,
+          "pass": 2211,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "log": "reviews/heavy-tethered-menu21-2026-11-10/ci-source-push-130320199451.log",
+          "decodedLogSha256": "d1b4a8af68a3b84795732121fc2c1593bcfbafc13d7aac66af848f0e84211011",
+          "verified": true,
+          "runtimeEvidence": {
+            "verified": true,
+            "committedGitSourceBytesExact": true,
+            "localAndGitCoreSourceBytesExact": true,
+            "sourceByteBindingAudit": "reviews/heavy-tethered-menu21-2026-11-10/source-binding-audit12.json",
+            "sourceByteBindingAuditSha256": "480ca72f8ffb92cbe4183c1b9960d665fecd982b21939fa1c7d7d8a0a5281ae5",
+            "localRawRuntimeSourceSha256": "c213467e0877fce574552b98139e4171a71ad4430069102a880db46c65f86de8",
+            "localRawSourceSnapshotSha256": "7211728dc29df50da0b1df6cdf1d5fdf1ad034852526f36cf8a7c036a1507f79",
+            "artifactId": 13829011383,
+            "artifactName": "verification-evidence",
+            "artifactArchiveSha256": "6f54051e00c374880526b75450c77aa92b185eef4444b3b2d09bb42f41d6d139",
+            "runtimeReportMember": "runtime-verification.json",
+            "runtimeReportSha256": "3c127a1756a16ff60cdc8b07214f4096ca136243a6ce2e1f512e3bbcb2465a50",
+            "runtimeSourceSha256": "c213467e0877fce574552b98139e4171a71ad4430069102a880db46c65f86de8",
+            "sourceSnapshotSha256": "7211728dc29df50da0b1df6cdf1d5fdf1ad034852526f36cf8a7c036a1507f79",
+            "contentRevision": "9dc09a2d8243caf47ed6f3c9b1f4140814e24a7b482040d34538d0056c0cbce2",
+            "verificationDriverSha256": "207175ba295b17adf64bb9c63c7d00df507c4f0142faf9bcac7ea83dcf66e09b",
+            "testFiles": 349,
+            "testFileConcurrency": 4,
+            "checks": [
+              {
+                "name": "Stage 1 authored content",
+                "passed": true,
+                "elapsedMs": 31597
+              },
+              {
+                "name": "Playable main-story word count",
+                "passed": true,
+                "elapsedMs": 56
+              },
+              {
+                "name": "TypeScript",
+                "passed": true,
+                "elapsedMs": 3390
+              },
+              {
+                "name": "Early chapter build feasibility",
+                "passed": true,
+                "elapsedMs": 705
+              },
+              {
+                "name": "Headless rules and real-network integration",
+                "passed": true,
+                "elapsedMs": 980990
+              },
+              {
+                "name": "Production client build",
+                "passed": true,
+                "elapsedMs": 2190
+              },
+              {
+                "name": "Emitted encounter atlas contracts",
+                "passed": true,
+                "elapsedMs": 639
+              }
+            ],
+            "outputFiles": 2059,
+            "originalFullRuntimeReportRetainedInGitHubArtifact": true,
+            "duplicatedAssetInventory": false
+          }
+        }
+      ]
+    },
+    {
+      "id": 42958828041,
+      "event": "pull_request",
+      "url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/42958828041",
+      "headSha": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+      "status": "completed",
+      "conclusion": "success",
+      "totalJobs": 1,
+      "jobs": [
+        {
+          "id": 130320248915,
+          "name": "verify",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "number": 1,
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+              "number": 2,
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+              "number": 3,
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Install pinned package manager",
+              "number": 4,
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Install locked dependencies",
+              "number": 5,
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Install pinned image verification dependency",
+              "number": 6,
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Verify content, rules, networking and client build",
+              "number": 7,
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Preserve verification report",
+              "number": 8,
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+              "number": 15,
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+              "number": 16,
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "number": 17,
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ],
+          "tests": 2211,
+          "pass": 2211,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "log": "reviews/heavy-tethered-menu21-2026-11-10/ci-source-pull_request-130320248915.log",
+          "decodedLogSha256": "5ff64ad27f39b96ab62c7787b0b93fc0ca32ea997494cad2cc0adea01a7579cd",
+          "verified": true,
+          "runtimeEvidence": {
+            "verified": true,
+            "committedGitSourceBytesExact": true,
+            "localAndGitCoreSourceBytesExact": true,
+            "sourceByteBindingAudit": "reviews/heavy-tethered-menu21-2026-11-10/source-binding-audit12.json",
+            "sourceByteBindingAuditSha256": "480ca72f8ffb92cbe4183c1b9960d665fecd982b21939fa1c7d7d8a0a5281ae5",
+            "localRawRuntimeSourceSha256": "c213467e0877fce574552b98139e4171a71ad4430069102a880db46c65f86de8",
+            "localRawSourceSnapshotSha256": "7211728dc29df50da0b1df6cdf1d5fdf1ad034852526f36cf8a7c036a1507f79",
+            "artifactId": 13829076501,
+            "artifactName": "verification-evidence",
+            "artifactArchiveSha256": "039d7caf627045ddb64c306fc926973124237c4cb4813ac2237ff85412e6b5e5",
+            "runtimeReportMember": "runtime-verification.json",
+            "runtimeReportSha256": "7aedeab62b4cd2e06677fa9e2f67ad114010b40c998a443e54aa776861942a55",
+            "runtimeSourceSha256": "c213467e0877fce574552b98139e4171a71ad4430069102a880db46c65f86de8",
+            "sourceSnapshotSha256": "7211728dc29df50da0b1df6cdf1d5fdf1ad034852526f36cf8a7c036a1507f79",
+            "contentRevision": "9dc09a2d8243caf47ed6f3c9b1f4140814e24a7b482040d34538d0056c0cbce2",
+            "verificationDriverSha256": "207175ba295b17adf64bb9c63c7d00df507c4f0142faf9bcac7ea83dcf66e09b",
+            "testFiles": 349,
+            "testFileConcurrency": 4,
+            "checks": [
+              {
+                "name": "Stage 1 authored content",
+                "passed": true,
+                "elapsedMs": 38185
+              },
+              {
+                "name": "Playable main-story word count",
+                "passed": true,
+                "elapsedMs": 65
+              },
+              {
+                "name": "TypeScript",
+                "passed": true,
+                "elapsedMs": 4429
+              },
+              {
+                "name": "Early chapter build feasibility",
+                "passed": true,
+                "elapsedMs": 899
+              },
+              {
+                "name": "Headless rules and real-network integration",
+                "passed": true,
+                "elapsedMs": 1028349
+              },
+              {
+                "name": "Production client build",
+                "passed": true,
+                "elapsedMs": 2946
+              },
+              {
+                "name": "Emitted encounter atlas contracts",
+                "passed": true,
+                "elapsedMs": 779
+              }
+            ],
+            "outputFiles": 2059,
+            "originalFullRuntimeReportRetainedInGitHubArtifact": true,
+            "duplicatedAssetInventory": false
+          }
+        }
+      ]
+    }
+  ],
+  "draftPR14": true,
+  "credentialsPrintedOrStored": false,
+  "transport": "Bounded native GitHub API for both push/PR runs and decoded log files; GitHub connector supplies draft-PR metadata. Cached credential remains in memory only."
+}
