@@ -1,4 +1,6 @@
-# Heavy: candidate Lineworker region
+# Heavy route studies
+
+The initial Lineworker techniques are now available in protocol 74. The earlier unregistered studies below retain their original dates and outcomes. The later corner-guide study remains controlled geometry and movement evidence. [Current Lineworker design and observations](HEAVY_LINEWORKER_DESIGN.md).
 
 Unregistered design study, 2026-11-10. No catalog card, skill id, ownership, art integration or gameplay acceptance is created here. The Tethered Traverse proof correction is now complete; the executed controlled studies below remain separate from any content admission. The next admission must preserve exact73 /9dc09a2d8243caf47ed6f3c9b1f4140814e24a7b482040d34538d0056c0cbce2 /64 techniques /four General before72 across ownership and all twelve profile/history rosters.
 

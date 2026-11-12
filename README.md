@@ -1,6 +1,6 @@
 # Grave Accord
 
-**Current development:** source **30fbfefaa66faabd93416dc31e27310149df5fed**, build **2026.11.10-heavy-tethered-traverse**, protocol **73**, catalog **64** (Engineer22/Soldier28/Heavy14). **2,209 tests/all seven checks and exact-source push/PR CI pass. Native review remains incomplete:** each current audience has127passes/two helper failures, with16later cases unexecuted. The legal21SP purchase guard is the first next-chat fix. Development is paused for the requested2026-11-10handoff; resume in the next chat. [Current state, evidence and next steps](handoff/NEXT_CHAT.md). Only the user decides class/game completion; human acceptance remains open.
+Development source **ad5925f76ae1279e1503fe79d76d92daa16af80a** uses build **2026.11.12-heavy-lineworker**, protocol **74** and catalog **67**. The full local gate passed 2,304 tests and all seven checks. Exact-source push and draft PR checks passed. Both local audiences bind 2,063 files and pass native HTTP plus six earned Lineworker acquisitions each. [Verification](reviews/heavy-lineworker-entry-2026-11-12/frozen-verification.json), [current continuation](handoff/NEXT_CHAT.md).
 
 Local build storage follows [bounded review retention](docs/REVIEW_STORAGE_POLICY.md): one current testing/public pair and one verified rollback archive. The authorized cleanup reduced this checkout from87.6GiB to~8.95GiB; older full copies/services are retired while original assets, receipts, Git and private SQLite remain.
 

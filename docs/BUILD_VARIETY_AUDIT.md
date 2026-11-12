@@ -1,11 +1,11 @@
 # Scoped build variety audit
 
-The existing Engineer/Soldier/Heavy specializations and four shared techniques provide **2,190distinct legal operation/mobility configurations** in controlled27SPshops. Every configuration was replayed through real canonical Game.transact purchases, preserving prerequisites, exclusions, costs and one capstone. Required-foundation-only duplicates and all648legacy numerical variations are excluded.
+Actual 27-SP purchases through the canonical shop verified **2,226 distinct builds** across the Engineer, Soldier and Heavy specialization trees and four shared techniques. The 2,190 issued builds are preserved. Anchor Cartridge adds 36 Heavy builds, with 12 each for bare hauling, Straight Yoke and Open Sheave. The count excludes legacy numerical variants and foundation-only duplicates. [All build signatures and purchases](../reviews/heavy-lineworker-entry-2026-11-12/build-census.json).
 
-| Class | Distinct scoped configurations | Actual verified purchases |
+| Class | Distinct builds | Verified purchases |
 | --- | ---: | ---: |
-| Engineer |841|5,598|
-| Soldier |853|5,547|
-| Heavy |496|3,208|
+| Engineer | 841 | 5,598 |
+| Soldier | 853 | 5,547 |
+| Heavy | 532 | 3,376 |
 
-[Complete configurations, runner binding and limits](../reviews/heavy-lineworker-research-2026-11-10/build-variety05.json). This is a shop-legality census, not2,190earned clears or equally powerful/useful builds. It does not finish these classes or the game. Further creative routes and the other classes remain open; no fixed maximum applies. Local controlled ownership never becomes online proof.
+The 48 earned Short runs measure four actual Heavy policies across three arenas and two difficulties. The census covers shop legality. The seeded runs cover those individual trajectories, outcomes and purchases. Human review and final balance remain open. [Seeded runs](../reviews/heavy-lineworker-entry-2026-11-12/seeded-short.json).
