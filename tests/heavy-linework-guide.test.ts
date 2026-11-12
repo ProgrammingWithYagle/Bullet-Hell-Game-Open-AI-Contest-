@@ -12,6 +12,7 @@ import { lineworkEye, pickLineworkGuide } from '../src/shared/heavy-linework-gui
 import { HZ, idleInput, type InputFrame, type Vec } from '../src/shared/protocol.ts';
 import { viewOf } from '../src/shared/view.ts';
 import { Prediction } from '../src/client/prediction.ts';
+import { lineworkMenu } from './helpers/heavy-linework-menu-flow.ts';
 import { drawLinework, lineworkRenderPlan } from '../src/client/heavy-linework-presentation.ts';
 
 const point = ({ x, y }: Vec) => ({ x, y });
@@ -216,4 +217,37 @@ test('prediction forecasts only the acknowledged guide and draws its two private
   f.step();
   assert(!f.line());
   assert.equal(f.status().lineworkRecovery, f.recovery);
+});
+
+test('rounded room coordinates use authoritative guide readiness for the selector and haul label', async () => {
+  const f = fixture('face');
+  f.install();
+  const guide = f.line()!.guide!;
+  // Reproduce a real peer body rounded from 4.99 px away to 5.10 px away.
+  f.heavy.x = guide.point.x;
+  f.heavy.y = guide.point.y - 4.99;
+  f.step();
+  const owner = viewOf(f.game, f.heavy.id).players[0];
+  assert(distance(owner, guide.point) < heavyLineworkGuideRules.redirectReach);
+  assert.equal(owner.kit.lineworkGuideBlocked, false);
+  assert.equal(owner.kit.lineworkCommandBlocked, true);
+  const replicated = { ...owner, x: Math.round(owner.x * 4) / 4, y: Math.round(owner.y * 4) / 4 };
+  assert(distance(replicated, guide.point) > heavyLineworkGuideRules.redirectReach);
+  const menu = await lineworkMenu(() => replicated);
+  try {
+    assert.equal(
+      menu.guide.heavyHudLabel(replicated, 'technique2', f.game.combatTick),
+      'Redirect first',
+    );
+    assert.equal(
+      menu.guide.heavyHudLabel(replicated, 'technique3', f.game.combatTick),
+      'Redirect to anchor',
+    );
+  } finally {
+    await menu.close();
+  }
+  f.step({ technique3: true });
+  assert(f.line()?.guideUsed && !f.line()?.guide && !f.line()?.active);
+  assert.deepEqual(f.line()?.origin, f.first.origin);
+  assert.equal(f.line()?.until, f.first.until);
 });

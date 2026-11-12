@@ -1,4 +1,4 @@
-import{heavyLineworkGuideRules,lineworkIds}from'../../shared/heavy-linework.ts';
+import{lineworkIds}from'../../shared/heavy-linework.ts';
 import { postedBState } from "../heavy-post-state.ts";
 import {
   lanyardId,
@@ -168,7 +168,7 @@ export function heavyHudLabel(
     }
     if(slot==='technique1')return(p.kit.lineworkFlight??0)>0||(p.kit.lineworkUntil??0)>now?t('ui.heavy.lineworkRelease'):t('skill.'+lineworkIds.entry+'.name');
     const guide = p.kit.lineworkConnection?.guide;
-    if (guide && !p.kit.lineworkActive && Math.hypot(p.x - guide.point.x, p.y - guide.point.y) <= heavyLineworkGuideRules.redirectReach)
+    if (guide && !p.kit.lineworkActive && p.kit.lineworkCommandBlocked)
       return t('ui.heavy.guideRedirectFirst');
     return(p.kit.lineworkUntil??0)>now?t(p.kit.lineworkActive?'ui.heavy.lineworkBrake':'ui.heavy.lineworkEngage'):(p.kit.lineworkFlight??0)>0?t('ui.heavy.lineworkWaiting'):t('ui.heavy.lineworkIdle');
   }

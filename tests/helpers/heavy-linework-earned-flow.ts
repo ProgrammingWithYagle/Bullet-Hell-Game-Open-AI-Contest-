@@ -8,7 +8,6 @@ import { constructHit } from '../../src/shared/class-kits.ts';
 import { moveBody, segmentCircle, segmentRect } from '../../src/shared/geometry.ts';
 import {
   heavyLineworkRules as rules,
-  heavyLineworkGuideRules as guideRules,
   lineworkIds,
   lineworkTemporaryConstructs,
 } from '../../src/shared/heavy-linework.ts';
@@ -338,19 +337,42 @@ export async function earnedLineworkFlow(
     };
   }
 
+  const walkObservations: {
+    target: Vec;
+    startTick: number;
+    endTick: number;
+    commands: number;
+    elapsedMs: number;
+    completed: boolean;
+  }[] = [];
+
   async function walkTo(target: Vec) {
-    await restWait(() => {
-      const p = player(),
-        dx = target.x - p.x,
-        dy = target.y - p.y;
-      const distance = Math.hypot(dx, dy);
-      if (distance <= 2.5) return true;
-      const scale = Math.max(18, distance);
-      transport.input({ moveX: dx / scale, moveY: dy / scale, aim: Math.atan2(dy, dx) });
-      return false;
-    }, 'Ordinary inputs reach the surveyed Gatehouse point');
-    await acknowledge({}, 'Braked and still at the surveyed point');
-    assert(Math.hypot(target.x - player().x, target.y - player().y) <= 6);
+    const began = Date.now();
+    const observation = { target: { ...target }, startTick: view().combatTick,
+      endTick: view().combatTick, commands: 0, elapsedMs: 0, completed: false };
+    walkObservations.push(observation);
+    let commandedAt = -1;
+    try {
+      await restWait(() => {
+        const p = player(), dx = target.x - p.x, dy = target.y - p.y;
+        const distance = Math.hypot(dx, dy);
+        if (distance <= 2.5) return true;
+        const now = view().combatTick;
+        if (now === commandedAt) return false;
+        commandedAt = now;
+        const scale = Math.max(18, distance);
+        transport.input({ moveX: dx / scale, moveY: dy / scale, aim: Math.atan2(dy, dx) });
+        observation.commands++;
+        return false;
+      }, 'Ordinary inputs reach the surveyed Gatehouse point');
+      await acknowledge({}, 'Braked and still at the surveyed point');
+      assert(Math.hypot(target.x - player().x, target.y - player().y) <= 6);
+      observation.completed = true;
+    } finally {
+      observation.endTick = view().combatTick;
+      observation.elapsedMs = Date.now() - began;
+      assert(observation.commands <= observation.endTick - observation.startTick + 1);
+    }
   }
 
   async function setAndRedirectGuide() {
@@ -396,7 +418,7 @@ export async function earnedLineworkFlow(
       return (
         !!line?.guide &&
         !line.active &&
-        Math.hypot(p.x - line.guide.point.x, p.y - line.guide.point.y) <= guideRules.redirectReach
+        p.kit.lineworkGuideBlocked === false
       );
     }, 'Motor stops braked at the guide');
     const firstHaul = Math.hypot(player().x - start.x, player().y - start.y);
@@ -434,6 +456,7 @@ export async function earnedLineworkFlow(
     return {
       selected: { ...first, aim: anchorAim, line: redirected },
       operation: {
+        walkObservations,
         firstAnchor: first.line.origin,
         guide: fitted.guide.point,
         masonryFoot: fitted.guide.foot,
@@ -584,6 +607,7 @@ export async function earnedLineworkFlow(
         combatTick: current?.combatTick,
         actor,
         fitting,
+        walkObservations,
       }),
     );
     throw error;
