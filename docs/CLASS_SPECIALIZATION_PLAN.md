@@ -1,6 +1,6 @@
 # Class specialization: next development direction
 
-Development source **ad5925f76ae1279e1503fe79d76d92daa16af80a** uses build **2026.11.12-heavy-lineworker**, protocol **74** and catalog **67**. The full local gate passed 2,304 tests and all seven checks. Exact-source push and draft PR checks passed. Both local audiences bind 2,063 files and pass native HTTP plus six earned Lineworker acquisitions each. [Current continuation](../handoff/NEXT_CHAT.md).
+Development source **6a75d36a32875c71a47a139dd32426612cd8c59d** uses build **2026.11.12-heavy-reserve-anchor**, protocol **75** and catalog **68**. The local gate and both exact-source workflows passed 2,322 tests and all seven checks. The testing and public review clients each bind 2,064 files and passed native HTTP plus six earned Reserve Anchor cases. [Verification](../reviews/heavy-reserve-anchor-ci-2026-11-12/frozen-verification.json), [current continuation](../handoff/NEXT_CHAT.md).
 
 The Engineer reference receipts below retain their original source and historical preview labels; they are not relabeled as current-source acceptance.
 
@@ -26,7 +26,7 @@ That direction is accepted. The example designs below are proposals for iteratio
 
 ## What exists
 
-The live catalog has twelve classes, 648 class nodes (54 per class), 48 weapons, 36 ability transformations, four General Free Play purchases and sixty-seven specialization techniques across Engineer (22), Soldier (28) and Heavy (17). Heavy has seven Flak, seven Siege Gunner and three Lineworker techniques. Every class has three legacy parent branches, each with three six-node paths. Their grade lanes cover all eighteen grades: D-, D, D+, C-, C, C+, B-, B, B+, A-, A, A+, S-, S, S+, SS-, SS and SS+. These existing class branches are not completed new specializations.
+The live catalog has twelve classes, 648 class nodes (54 per class), 48 weapons, 36 ability transformations, four General Free Play purchases and sixty-eight specialization techniques across Engineer (22), Soldier (28) and Heavy (18). Heavy has seven Flak, seven Siege Gunner and four Lineworker techniques. Every class has three legacy parent branches, each with three six-node paths. Their grade lanes cover all eighteen grades: D-, D, D+, C-, C, C+, B-, B, B+, A-, A, A+, S-, S, S+, SS-, SS and SS+. These existing class branches are not completed new specializations.
 
 The current paths mostly extend familiar numerical effects. Some nodes already change abilities, including the three transformations per class and Heavy/Tank shield-cap choices. Preserve those working distinctions. The request is for deeper identities and choices, not merely new names for damage, cooldown and health bonuses. Historical SKILL_TREE_AND_MENU.md / CLASS_TALENTS.md / OPTIONAL_SKILL_MAP.md snapshots contain older seven-class totals; current catalog and the current handoff take precedence.
 

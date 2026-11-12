@@ -1,6 +1,6 @@
 # Current implementation state
 
-Development source **ad5925f76ae1279e1503fe79d76d92daa16af80a** uses build **2026.11.12-heavy-lineworker**, protocol **74** and catalog **67**. The full local gate passed 2,304 tests and all seven checks. Exact-source push and draft PR checks passed. Both local audiences bind 2,063 files and pass native HTTP plus six earned Lineworker acquisitions each. [Verification](../reviews/heavy-lineworker-entry-2026-11-12/frozen-verification.json), [current continuation](../handoff/NEXT_CHAT.md).
+Development source **6a75d36a32875c71a47a139dd32426612cd8c59d** uses build **2026.11.12-heavy-reserve-anchor**, protocol **75** and catalog **68**. The local gate and both exact-source workflows passed 2,322 tests and all seven checks. The testing and public review clients each bind 2,064 files and passed native HTTP plus six earned Reserve Anchor cases. [Verification](../reviews/heavy-reserve-anchor-ci-2026-11-12/frozen-verification.json), [current continuation](../handoff/NEXT_CHAT.md).
 
 ## Historical portable local Campaign checkpoint, 2026-11-02
 

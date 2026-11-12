@@ -1,6 +1,6 @@
 # Grave Accord — Free Play polish roadmap
 
-Development source **ad5925f76ae1279e1503fe79d76d92daa16af80a** uses build **2026.11.12-heavy-lineworker**, protocol **74** and catalog **67**. The full local gate passed 2,304 tests and all seven checks. Exact-source push and draft PR checks passed. Both local audiences bind 2,063 files and pass native HTTP plus six earned Lineworker acquisitions each. [Verification](../reviews/heavy-lineworker-entry-2026-11-12/frozen-verification.json), [current continuation](../handoff/NEXT_CHAT.md).
+Development source **6a75d36a32875c71a47a139dd32426612cd8c59d** uses build **2026.11.12-heavy-reserve-anchor**, protocol **75** and catalog **68**. The local gate and both exact-source workflows passed 2,322 tests and all seven checks. The testing and public review clients each bind 2,064 files and passed native HTTP plus six earned Reserve Anchor cases. [Verification](../reviews/heavy-reserve-anchor-ci-2026-11-12/frozen-verification.json), [current continuation](../handoff/NEXT_CHAT.md).
 
 The Engineer reference receipts below retain their original source and historical preview labels; they are not relabeled as current-source acceptance.
 
@@ -87,7 +87,7 @@ Current base-story prose remains 5,741 checked English words; all twelve persona
 
 Starting playable source for this roadmap: `ab8e4b37b65c9dee32c95dfb643207009c590674`, build `2026.11.02-engineer-pathways`, protocol 49; 1,265 passing tests and exact-source CI run 41564738365. Metadata HEAD at the research audit: `74163e18c46ef523ee8b174fa0b11e17dac5fbec`, clean checkout and live CI run 41566073872, all jobs/steps successful. The research/planning commit is not a newer playable feature.
 
-Use the same checkout, `feat/first-playable-loop` and draft PR14. Every Git invocation uses `git -c core.bare=false`. Keep older previews/private SQLite files intact. Browser automation and subagents remain disabled. Feature-branch pushes and draft-PR metadata updates are authorized; main merge, production/Windows replacement, capacity purchase and private-database upload are not. The whole game remains unfinished, and only the user decides when it is complete.
+Use the same checkout, `feat/first-playable-loop` and draft PR14. Every Git invocation uses `git -c core.bare=false`. Use the current expanded pair and verified rollback archive under the bounded retention policy. Preserve private SQLite files and original review receipts. Browser automation and subagents remain disabled. Feature-branch pushes and draft-PR metadata updates are authorized; main merge, production/Windows replacement, capacity purchase and private-database upload are not. The whole game remains unfinished, and only the user decides when it is complete.
 
 ## New tree feedback and queued workshop — 2026-11-03
 
@@ -99,8 +99,6 @@ The user separately queued the per-weapon workshop/shop overhaul in ARMORY_REWOR
 
 The encounter-transition source now resolves actual primary-timing and prior-zone movement divergences: each refilled primary starts ready and old hostile-zone slowing clears at a fresh encounter, while ordinary in-combat slowing and Q/E/ultimate recovery remain. Three legal Normal Engineer runs and their18-safe-boundary restored counterparts each clear five encounters with matching measured outcomes. This native policy trial does not settle human enjoyment, class balance or every legal combination. That historical Engineer trial was supplemented by the later reference/control review, followed by Soldier and the current Heavy development. The meaningful shop remains queued.
 
-## Current next slice: close Tethered Traverse proof, then continue classes
+## Current class work
 
-Soldier retains seven Skirmisher, seven Marksman, eight Grenadier and six Sniper techniques. Engineer has22; Heavy has14 across Flak and Siege Gunner. These are developed regions without a fixed route ceiling or whole-class completion. Current source73 passes2,209/all7 and exact CI, but both frozen reviews stopped at a legal21SP menu-helper guard. Fix the wrapper and exercise actual Short three-clear purchases before promoting the native review. [Current handoff](../handoff/NEXT_CHAT.md) records exact results and provenance.
-
-Lineworker is an unregistered physical hauling candidate; geometry availability and a built copied-Game prototype do not establish gameplay value, purchases or online proof. Compare its actual tradeoffs with walking, Sprint, dodge and existing class operations before admitting a card. Foot Soldier, Hunter, Officer/Command, Support and further fitting routes remain proposals. Continue one coherent, creative behavioral slice at a time. Human/rendered/device/native-language/listening/motion/final-balance acceptance remains open; only the user decides completion.
+The legal 21-SP Tethered Traverse correction passed the complete source and frozen reviews. Lineworker now offers the Anchor Cartridge, two early fittings and Reserve Anchor. Engineer has 22, Soldier 28 and Heavy 18 authored techniques. Corner Guide remains research, and Foot Soldier, Hunter, Officer/Command and Support remain proposals. The next work stays with class specializations. Human, rendered, device, native-language, listening, motion and final balance acceptance remain open. [Tethered Traverse proof](HEAVY_TETHERED_PROOF.md), [current handoff](../handoff/NEXT_CHAT.md).

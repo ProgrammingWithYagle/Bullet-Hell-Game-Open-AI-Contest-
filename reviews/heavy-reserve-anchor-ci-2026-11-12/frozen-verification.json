@@ -1,0 +1,692 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-12T20:21:18.466Z",
+  "sourceCommit": "6a75d36a32875c71a47a139dd32426612cd8c59d",
+  "protocol": 75,
+  "contentRevision": "912c760975a4e284f19941e658c3724a62a050012453f6b7f3905f539df45d3e",
+  "runtimeSourceSha256": "b826470ed3f8c7123e0917af0f7018a787df58df0b25b6355ec0652ef806b465",
+  "sourceSnapshotSha256": "2cde1af5c5a062c1608986bc00910bf1de9a5d192fef7ffa15972c49876b5c55",
+  "tests": {
+    "tests": 2322,
+    "pass": 2322,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "sourceChecks": [
+    {
+      "name": "Stage 1 authored content",
+      "passed": true,
+      "elapsedMs": 57087
+    },
+    {
+      "name": "Playable main-story word count",
+      "passed": true,
+      "elapsedMs": 104
+    },
+    {
+      "name": "TypeScript",
+      "passed": true,
+      "elapsedMs": 2281
+    },
+    {
+      "name": "Early chapter build feasibility",
+      "passed": true,
+      "elapsedMs": 484
+    },
+    {
+      "name": "Headless rules and real-network integration",
+      "passed": true,
+      "elapsedMs": 724410
+    },
+    {
+      "name": "Production client build",
+      "passed": true,
+      "elapsedMs": 3539
+    },
+    {
+      "name": "Emitted encounter atlas contracts",
+      "passed": true,
+      "elapsedMs": 1054
+    }
+  ],
+  "exactSourcePushAndPRJobsStepsLogsAndOwnArtifacts": true,
+  "verificationScheduling": {
+    "originalFloor": 4,
+    "revisedFloor": 6,
+    "upperBound": 8,
+    "identicalApplicationAndTestSource": true,
+    "originalCandidate": "24addec58cf2c06c37159cc0da146816e4b5bc6b",
+    "originalScope": "reviews/heavy-reserve-anchor-2026-11-12",
+    "originalCancelledWorkflows": [
+      {
+        "event": "push",
+        "runId": 43269057136,
+        "attempt": 1,
+        "jobs": [
+          {
+            "id": 131360356096,
+            "log": "reviews/heavy-reserve-anchor-2026-11-12/ci-source-push-131360356096.log",
+            "sha256": "941a3e87d6dfdda34a7f1a85ff37a01236686ab5c01dff64a01f94e197509fb2"
+          }
+        ]
+      },
+      {
+        "event": "pull_request",
+        "runId": 43269090012,
+        "attempt": 1,
+        "jobs": [
+          {
+            "id": 131360468761,
+            "log": "reviews/heavy-reserve-anchor-2026-11-12/ci-source-pull_request-131360468761.log",
+            "sha256": "433011c3b0fd07ad077ee4a997f9f05144031785fe8de18d46226fba41a73f80"
+          }
+        ]
+      },
+      {
+        "event": "push",
+        "runId": 43269057136,
+        "attempt": 2,
+        "jobs": [
+          {
+            "id": 131374443974,
+            "log": "reviews/heavy-reserve-anchor-2026-11-12/ci-source-push-131374443974.log",
+            "sha256": "720610e00474000b26f8ade5c1cca158888d4cafb3e7bd9dbd80aa86b03565de"
+          }
+        ]
+      },
+      {
+        "event": "pull_request",
+        "runId": 43269090012,
+        "attempt": 2,
+        "jobs": [
+          {
+            "id": 131374451052,
+            "log": "reviews/heavy-reserve-anchor-2026-11-12/ci-source-pull_request-131374451052.log",
+            "sha256": "5b5b3cb226263b73d7591d4cf8780350e220464d6dce7facb9ecb0c3106c2805"
+          }
+        ]
+      }
+    ],
+    "retiredScope": "reviews/storage-reserve-ci-attempt-2026-11-12"
+  },
+  "sourceByteBinding": "reviews/heavy-reserve-anchor-ci-2026-11-12/source-binding.json",
+  "ci": "reviews/heavy-reserve-anchor-ci-2026-11-12/source-ci.json",
+  "rows": [
+    {
+      "audience": "testing",
+      "url": "http://127.0.0.1:5390/",
+      "endpoint": "http://127.0.0.1:2766",
+      "filesHashed": 2064,
+      "nativeCases": 7,
+      "httpChecks": 52,
+      "manifestSha256": "539dec94f7dca079666ac49372353d3a6b03c0e6e443940c9eb5722efb28471c",
+      "servedWorkerSha256": "2ca497e71c52db620635e383879b65ed35a11dd5d7967e51d97d1f20b9307894",
+      "backendSha256": "9b1e9e5833c23f87c38b170e9adf961b94be8dfa1c0aa7816687c020e0dd89d0",
+      "emittedEmblems": [
+        {
+          "path": "assets/heavy-linework-1-DtPDXBng.png",
+          "bytes": 1032600,
+          "sha256": "5fe9f7dd36f9998af4685d6dfd36bdbec177f0023187958277c2ed319fcad7e9"
+        },
+        {
+          "path": "assets/heavy-linework-yoke-1-C2dn46IY.png",
+          "bytes": 1457875,
+          "sha256": "884af66a7ac33a22a859d0e405b1a87d4c94584b504683087f406a84aa5b3c66"
+        },
+        {
+          "path": "assets/heavy-linework-sheave-1-BXommnj2.png",
+          "bytes": 1315841,
+          "sha256": "f3cb55d9068ae0608cd28d0bf186e882a6f71f71a282cf43437750e833a6c254"
+        },
+        {
+          "path": "assets/heavy-linework-reserve-1-uruZGiy_.png",
+          "bytes": 925627,
+          "sha256": "89c733485811142f120d35aa1435ac083242fece8bd37e3811354c31c4936edf"
+        }
+      ],
+      "cases": [
+        {
+          "transport": "worker",
+          "fitting": "bare",
+          "actualEarnedSequence": [
+            3,
+            9,
+            15
+          ],
+          "spent": 6,
+          "walked": 57.00000000000012,
+          "payout": 0,
+          "paidPrimaryProjectiles": 0,
+          "reserve": {
+            "primaryAnchor": {
+              "x": 545.9759055029151,
+              "y": 571.4
+            },
+            "reserveAnchor": {
+              "x": 888.656869714231,
+              "y": 890.5999999999999
+            },
+            "separation": 468.3149402195035,
+            "firstAnchorId": 183,
+            "reserveAnchorId": 184,
+            "paidReserveRounds": 1,
+            "originalUntil": 504,
+            "selectedUntil": 504,
+            "originalRecovery": 594,
+            "selectedWhileBraked": true,
+            "pausedSelectionDiscarded": true
+          },
+          "logSha256": "5605f75bb4ec15c26629c62c6323770c9806d6f59e75f5437234076d7fbf1559",
+          "receiptSha256": "bb1ab2583e130ccb39c8d5a37a903b7adde16eb5380ffdc13546398ecc79a50b"
+        },
+        {
+          "transport": "worker",
+          "fitting": "yoke",
+          "actualEarnedSequence": [
+            3,
+            9,
+            15
+          ],
+          "spent": 8,
+          "walked": 57.00000000000012,
+          "payout": 0,
+          "paidPrimaryProjectiles": 3,
+          "reserve": {
+            "primaryAnchor": {
+              "x": 545.9759055029151,
+              "y": 571.4
+            },
+            "reserveAnchor": {
+              "x": 888.656869714231,
+              "y": 890.5999999999999
+            },
+            "separation": 468.3149402195035,
+            "firstAnchorId": 183,
+            "reserveAnchorId": 184,
+            "paidReserveRounds": 1,
+            "originalUntil": 506,
+            "selectedUntil": 506,
+            "originalRecovery": 596,
+            "selectedWhileBraked": true,
+            "pausedSelectionDiscarded": true
+          },
+          "logSha256": "dca384487784f5da3787a4a8d0883645d6297db5286349a8e8704f387a54bda1",
+          "receiptSha256": "1d0d639245323195dfec19c0d2570c1d6085a6177f218b061203219c2d594731"
+        },
+        {
+          "transport": "worker",
+          "fitting": "sheave",
+          "actualEarnedSequence": [
+            3,
+            9,
+            15
+          ],
+          "spent": 8,
+          "walked": 56.99999999999961,
+          "payout": 18.99906310984295,
+          "paidPrimaryProjectiles": 0,
+          "reserve": {
+            "primaryAnchor": {
+              "x": 545.9759055029151,
+              "y": 571.4
+            },
+            "reserveAnchor": {
+              "x": 888.656869714231,
+              "y": 890.5999999999999
+            },
+            "separation": 468.3149402195035,
+            "firstAnchorId": 183,
+            "reserveAnchorId": 184,
+            "paidReserveRounds": 1,
+            "originalUntil": 506,
+            "selectedUntil": 506,
+            "originalRecovery": 596,
+            "selectedWhileBraked": true,
+            "pausedSelectionDiscarded": true
+          },
+          "logSha256": "ad3a0071cd9bbaaef2348dbc2322c6d272f1bfbf4d75497614f29435b5d7ae6b",
+          "receiptSha256": "fec79e7e64647e3023e7a39732b160a6632c6c3aef73caa8846a29f5de5b51ed"
+        },
+        {
+          "transport": "peer",
+          "fitting": "bare",
+          "actualEarnedSequence": [
+            3,
+            9,
+            15
+          ],
+          "spent": 6,
+          "walked": 61.70747523598741,
+          "payout": 0,
+          "paidPrimaryProjectiles": 0,
+          "reserve": {
+            "primaryAnchor": {
+              "x": 993.2,
+              "y": 798.7619152838853
+            },
+            "reserveAnchor": {
+              "x": 543.8,
+              "y": 573.8
+            },
+            "separation": 502.56166121998814,
+            "firstAnchorId": 278,
+            "reserveAnchorId": 279,
+            "paidReserveRounds": 1,
+            "originalUntil": 702,
+            "selectedUntil": 702,
+            "originalRecovery": 792,
+            "selectedWhileBraked": true,
+            "pausedSelectionDiscarded": true
+          },
+          "logSha256": "39e46aface29e9e52a6455937e2190cc7cc4efaaeea59fe6c6db5da5e4b708b0",
+          "receiptSha256": "abef6c6de1f6b350b1b2a3e0f7bf505e705851773ee96a2a8b6b03def2b23a73"
+        },
+        {
+          "transport": "peer",
+          "fitting": "yoke",
+          "actualEarnedSequence": [
+            3,
+            9,
+            15
+          ],
+          "spent": 8,
+          "walked": 83.63051177650416,
+          "payout": 0,
+          "paidPrimaryProjectiles": 2,
+          "reserve": {
+            "primaryAnchor": {
+              "x": 993.2,
+              "y": 798.7619152838853
+            },
+            "reserveAnchor": {
+              "x": 543.8,
+              "y": 573.8
+            },
+            "separation": 502.56166121998814,
+            "firstAnchorId": 274,
+            "reserveAnchorId": 275,
+            "paidReserveRounds": 1,
+            "originalUntil": 706,
+            "selectedUntil": 706,
+            "originalRecovery": 796,
+            "selectedWhileBraked": true,
+            "pausedSelectionDiscarded": true
+          },
+          "logSha256": "b8ab2bc7dde4e032d12021b3600ed77055ca5b8483503ba1b80396c411aa39f1",
+          "receiptSha256": "6de0288092f5e5af140c8d241c06252028340b6cef3cc2b092c3fc04bb0753a8"
+        },
+        {
+          "transport": "peer",
+          "fitting": "sheave",
+          "actualEarnedSequence": [
+            3,
+            9,
+            15
+          ],
+          "spent": 8,
+          "walked": 57.10571337440764,
+          "payout": 25.4550380678794,
+          "paidPrimaryProjectiles": 0,
+          "reserve": {
+            "primaryAnchor": {
+              "x": 993.2,
+              "y": 798.7619152838853
+            },
+            "reserveAnchor": {
+              "x": 543.8,
+              "y": 573.8
+            },
+            "separation": 502.56166121998814,
+            "firstAnchorId": 278,
+            "reserveAnchorId": 279,
+            "paidReserveRounds": 1,
+            "originalUntil": 675,
+            "selectedUntil": 675,
+            "originalRecovery": 765,
+            "selectedWhileBraked": true,
+            "pausedSelectionDiscarded": true
+          },
+          "logSha256": "6eee1b99a99d66546e434f4a8fc11e0ed11eef11ff935c843869f9c859c4f29d",
+          "receiptSha256": "571af920a4bf44e217bfe5ca93b1a96e4208be64e65a0f03b754b00944e6b434"
+        }
+      ]
+    },
+    {
+      "audience": "public",
+      "url": "http://127.0.0.1:5391/",
+      "endpoint": "http://127.0.0.1:2767",
+      "filesHashed": 2064,
+      "nativeCases": 7,
+      "httpChecks": 52,
+      "manifestSha256": "114bb0d3215f845aeaab3de505b31978f4b444f91b8f35ab0df2863c242fef90",
+      "servedWorkerSha256": "f3abdaa78110049a41e2879e2817770fba8b86e6b4884fa8ce9f51a09f8c78e7",
+      "backendSha256": "9b1e9e5833c23f87c38b170e9adf961b94be8dfa1c0aa7816687c020e0dd89d0",
+      "emittedEmblems": [
+        {
+          "path": "assets/heavy-linework-1-DtPDXBng.png",
+          "bytes": 1032600,
+          "sha256": "5fe9f7dd36f9998af4685d6dfd36bdbec177f0023187958277c2ed319fcad7e9"
+        },
+        {
+          "path": "assets/heavy-linework-yoke-1-C2dn46IY.png",
+          "bytes": 1457875,
+          "sha256": "884af66a7ac33a22a859d0e405b1a87d4c94584b504683087f406a84aa5b3c66"
+        },
+        {
+          "path": "assets/heavy-linework-sheave-1-BXommnj2.png",
+          "bytes": 1315841,
+          "sha256": "f3cb55d9068ae0608cd28d0bf186e882a6f71f71a282cf43437750e833a6c254"
+        },
+        {
+          "path": "assets/heavy-linework-reserve-1-uruZGiy_.png",
+          "bytes": 925627,
+          "sha256": "89c733485811142f120d35aa1435ac083242fece8bd37e3811354c31c4936edf"
+        }
+      ],
+      "cases": [
+        {
+          "transport": "worker",
+          "fitting": "bare",
+          "actualEarnedSequence": [
+            3,
+            9,
+            15
+          ],
+          "spent": 6,
+          "walked": 46.740000000000016,
+          "payout": 0,
+          "paidPrimaryProjectiles": 0,
+          "reserve": {
+            "primaryAnchor": {
+              "x": 545.9759055029151,
+              "y": 571.4
+            },
+            "reserveAnchor": {
+              "x": 888.656869714231,
+              "y": 890.5999999999999
+            },
+            "separation": 468.3149402195035,
+            "firstAnchorId": 155,
+            "reserveAnchorId": 156,
+            "paidReserveRounds": 1,
+            "originalUntil": 486,
+            "selectedUntil": 486,
+            "originalRecovery": 576,
+            "selectedWhileBraked": true,
+            "pausedSelectionDiscarded": true
+          },
+          "logSha256": "6a11efd358ef3b772275b1a6e4c7c646715e6d2266e78377bb9edca3e7cca2da",
+          "receiptSha256": "f9839c301e11113210f10ab280e8ef10a2ac5695f188cb37e75dd40f393a5feb"
+        },
+        {
+          "transport": "worker",
+          "fitting": "yoke",
+          "actualEarnedSequence": [
+            3,
+            9,
+            15
+          ],
+          "spent": 8,
+          "walked": 46.740000000000016,
+          "payout": 0,
+          "paidPrimaryProjectiles": 2,
+          "reserve": {
+            "primaryAnchor": {
+              "x": 545.9759055029151,
+              "y": 571.4
+            },
+            "reserveAnchor": {
+              "x": 888.656869714231,
+              "y": 890.5999999999999
+            },
+            "separation": 468.3149402195035,
+            "firstAnchorId": 155,
+            "reserveAnchorId": 156,
+            "paidReserveRounds": 1,
+            "originalUntil": 485,
+            "selectedUntil": 485,
+            "originalRecovery": 575,
+            "selectedWhileBraked": true,
+            "pausedSelectionDiscarded": true
+          },
+          "logSha256": "efdec1c7650a39e9e018bc3e4ae0032ffadc1e010f837a2709b09c2b17eb96fe",
+          "receiptSha256": "b62fc08181f9b291324f521faaae6d679a970ce0d550205fd346a1cb5f369518"
+        },
+        {
+          "transport": "worker",
+          "fitting": "sheave",
+          "actualEarnedSequence": [
+            3,
+            9,
+            15
+          ],
+          "spent": 8,
+          "walked": 46.73999999999979,
+          "payout": 15.579221394922314,
+          "paidPrimaryProjectiles": 0,
+          "reserve": {
+            "primaryAnchor": {
+              "x": 545.9759055029151,
+              "y": 571.4
+            },
+            "reserveAnchor": {
+              "x": 888.656869714231,
+              "y": 890.5999999999999
+            },
+            "separation": 468.3149402195035,
+            "firstAnchorId": 155,
+            "reserveAnchorId": 156,
+            "paidReserveRounds": 1,
+            "originalUntil": 486,
+            "selectedUntil": 486,
+            "originalRecovery": 576,
+            "selectedWhileBraked": true,
+            "pausedSelectionDiscarded": true
+          },
+          "logSha256": "cccfbca41eac0c8c567970c86dec0388671852848f077ebbe0506c2000629e7e",
+          "receiptSha256": "feb643f3b3b3d0858f93f6a9d0427b227654cda8dcbeb13f9570da80bbbb5eb2"
+        },
+        {
+          "transport": "peer",
+          "fitting": "bare",
+          "actualEarnedSequence": [
+            3,
+            9,
+            15
+          ],
+          "spent": 6,
+          "walked": 76.0271333143635,
+          "payout": 0,
+          "paidPrimaryProjectiles": 0,
+          "reserve": {
+            "primaryAnchor": {
+              "x": 993.2,
+              "y": 798.7619152838853
+            },
+            "reserveAnchor": {
+              "x": 543.8,
+              "y": 573.8
+            },
+            "separation": 502.56166121998814,
+            "firstAnchorId": 217,
+            "reserveAnchorId": 218,
+            "paidReserveRounds": 1,
+            "originalUntil": 569,
+            "selectedUntil": 569,
+            "originalRecovery": 659,
+            "selectedWhileBraked": true,
+            "pausedSelectionDiscarded": true
+          },
+          "logSha256": "255fb8741530d3845e910927606292ad806b6076b352e98158a30dc0c2e3b51e",
+          "receiptSha256": "d1e27b23d5b84a68f77db5b6db7e8619bf4e97a626f39522dd042216348bb3e2"
+        },
+        {
+          "transport": "peer",
+          "fitting": "yoke",
+          "actualEarnedSequence": [
+            3,
+            9,
+            15
+          ],
+          "spent": 8,
+          "walked": 76.0271333143635,
+          "payout": 0,
+          "paidPrimaryProjectiles": 3,
+          "reserve": {
+            "primaryAnchor": {
+              "x": 993.2,
+              "y": 798.7619152838853
+            },
+            "reserveAnchor": {
+              "x": 543.8,
+              "y": 573.8
+            },
+            "separation": 502.56166121998814,
+            "firstAnchorId": 218,
+            "reserveAnchorId": 219,
+            "paidReserveRounds": 1,
+            "originalUntil": 600,
+            "selectedUntil": 600,
+            "originalRecovery": 690,
+            "selectedWhileBraked": true,
+            "pausedSelectionDiscarded": true
+          },
+          "logSha256": "b57008a25a55292f9ded398cf08a965ee28c7d1e9272b4a4541d8109ea167321",
+          "receiptSha256": "29efa67a36a19e5d9c954dc825ee7ae47580a25d58b195e55feac14a559be036"
+        },
+        {
+          "transport": "peer",
+          "fitting": "sheave",
+          "actualEarnedSequence": [
+            3,
+            9,
+            15
+          ],
+          "spent": 8,
+          "walked": 68.07027618571853,
+          "payout": 22.62669318275016,
+          "paidPrimaryProjectiles": 0,
+          "reserve": {
+            "primaryAnchor": {
+              "x": 993.2,
+              "y": 798.7619152838853
+            },
+            "reserveAnchor": {
+              "x": 543.8,
+              "y": 573.8
+            },
+            "separation": 502.56166121998814,
+            "firstAnchorId": 249,
+            "reserveAnchorId": 250,
+            "paidReserveRounds": 1,
+            "originalUntil": 642,
+            "selectedUntil": 642,
+            "originalRecovery": 732,
+            "selectedWhileBraked": true,
+            "pausedSelectionDiscarded": true
+          },
+          "logSha256": "497ab412489d6421a8fe22d2819f8d1cb7f111346d3ba1db864d9d2b5f44d8fe",
+          "receiptSha256": "3e81e3e3fae3edaba05ca77a559a68a5d98475ae192b28b193d2e74a809b100a"
+        }
+      ]
+    }
+  ],
+  "previousVerifiedReview": "reviews/heavy-lineworker-entry-2026-11-12/frozen-verification.json",
+  "previousSourceCommit": "ad5925f76ae1279e1503fe79d76d92daa16af80a",
+  "previousRollbackArchiveSha256": "6c64927850589fc51185135363f3606373fe1cfb9a4516ef001a7d239d1d86a6",
+  "originalFailedGate": {
+    "counts": {
+      "tests": 2322,
+      "pass": 2321,
+      "fail": 1,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "logSha256": "aeb5b222e6c7c26ad0eb335dcecd358bc28697cb2166495371ca12acd52349c3",
+    "assertionCorrection": {
+      "checkedAt": "2026-11-12T17:08:11.275Z",
+      "path": "tests/heavy-flak.test.ts",
+      "oldExpected": 17,
+      "currentExpected": 18,
+      "oldSha256": "9e29ae5ce4ae909396433373635d54d0d158c625a276d76842898cca893eef78",
+      "newSha256": "fb8783904fc3d42c5a09ac288f3d323a2082b0a9c76ba459e704c87800591d53",
+      "previousSourceSnapshotSha256": "76a0a4c0a4d210456e43f5ff15e28ad8675911a0f6ce7cea4a1d9af5311ce2f5",
+      "sourceSnapshotSha256": "2cde1af5c5a062c1608986bc00910bf1de9a5d192fef7ffa15972c49876b5c55",
+      "runtimeSourceSha256": "b826470ed3f8c7123e0917af0f7018a787df58df0b25b6355ec0652ef806b465",
+      "originalFullGateLogSha256": "aeb5b222e6c7c26ad0eb335dcecd358bc28697cb2166495371ca12acd52349c3"
+    }
+  },
+  "focused": [
+    {
+      "name": "focused-new-09",
+      "counts": {
+        "tests": 105,
+        "pass": 104,
+        "fail": 1,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "passed": false,
+      "logSha256": "9e3543183baff986379297232f8fbbe6ae1e0ce18562897e425dd8dfd437234a"
+    },
+    {
+      "name": "focused-new-15",
+      "counts": {
+        "tests": 108,
+        "pass": 107,
+        "fail": 1,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "passed": false,
+      "logSha256": "7b82192c8eebe9722057dba3e3b4403af18a55824be4898a7370647a6e242350"
+    },
+    {
+      "name": "focused-new-16",
+      "counts": {
+        "tests": 108,
+        "pass": 108,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "passed": true,
+      "logSha256": "3ab91a86e1565c2dbfcb838a7a3e565268ad9a0a02e06c664239a87eab48c9ed"
+    },
+    {
+      "name": "focused-transports-12",
+      "counts": {
+        "tests": 2,
+        "pass": 2,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "passed": true,
+      "logSha256": "fe2fcc92a802b362b8a58133bbd43654157cac01a7cd01b28b5787f038a8d27a"
+    },
+    {
+      "name": "focused-catalog-22",
+      "counts": {
+        "tests": 52,
+        "pass": 52,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "passed": true,
+      "logSha256": "74d2b3f34b72bd02b6dd1932fe4bde44f75c8f72dab5e819a10b32362d45f007"
+    }
+  ],
+  "controlledBuildSets": 2262,
+  "controlledGeometryCases": 41,
+  "seededShortTrials": 48,
+  "actualSeededReservePurchases": 19,
+  "preexistingPrivateSQLiteRelatedFilesVerified": 213,
+  "privateHashesRemainLocalOnly": true,
+  "serviceYardWipExact": true,
+  "processIdentities": "reviews/heavy-reserve-anchor-ci-2026-11-12/process-identities.json",
+  "retentionPromotionPending": true,
+  "scope": "Fresh local HTTP and three whole served worker plus three non-host peer Short acquisitions per audience. Each actual reserve purchase follows two clears. The full source gate independently executes historical and current source tests. Earlier Lineworker and Tethered Traverse receipts retain their original source and results. Human, rendered, device, language, listening, motion and final balance review remain open."
+}

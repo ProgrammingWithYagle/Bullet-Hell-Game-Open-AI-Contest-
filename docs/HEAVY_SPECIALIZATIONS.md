@@ -1,6 +1,6 @@
 # Heavy specializations
 
-Development source **ad5925f76ae1279e1503fe79d76d92daa16af80a** uses build **2026.11.12-heavy-lineworker**, protocol **74** and catalog **67**. The full local gate passed 2,304 tests and all seven checks. Exact-source push and draft PR checks passed. Both local audiences bind 2,063 files and pass native HTTP plus six earned Lineworker acquisitions each. [Verification](../reviews/heavy-lineworker-entry-2026-11-12/frozen-verification.json).
+Development source **6a75d36a32875c71a47a139dd32426612cd8c59d** uses build **2026.11.12-heavy-reserve-anchor**, protocol **75** and catalog **68**. The local gate and both exact-source workflows passed 2,322 tests and all seven checks. The testing and public review clients each bind 2,064 files and passed native HTTP plus six earned Reserve Anchor cases. [Verification](../reviews/heavy-reserve-anchor-ci-2026-11-12/frozen-verification.json), [current continuation](../handoff/NEXT_CHAT.md).
 
 Hux Bell retains Suppressing Cone, Braced Firing, Foundry Overture and owned General transformations. Fresh Belt plus any one route entry fits actual ordinary Short3SP. Optional fittings and later operations must earn their place through changed decisions, not a second payment for existing benefits.
 
@@ -36,7 +36,7 @@ See [Traverse Stroke](HEAVY_TRAVERSE_DESIGN.md), [Feed Clutch](HEAVY_CLUTCH_DESI
 
 ## Lineworker
 
-Anchor Cartridge spends one real round on a masonry attachment. A separate command engages or brakes the motor while Hux carries the gun. Straight Yoke allows paid primary with axial steering. Open Sheave allows finite payout while braked and commits primary during haul. The base operation remains available without a fitting. [Owned operations and evidence](HEAVY_LINEWORKER_DESIGN.md).
+Anchor Cartridge spends one real round on a masonry attachment. A separate command engages or brakes the motor while Hux carries the gun. Straight Yoke allows paid primary with axial steering. Open Sheave allows finite payout while braked and commits primary during haul. The base operation remains available without a fitting. Reserve Anchor spends a second round on a distinct masonry attachment while braked. An independent selector commits to it before a separate haul. [Owned operations and evidence](HEAVY_LINEWORKER_DESIGN.md).
 
 ## Tethered Traverse verification history
 
@@ -44,4 +44,4 @@ The source dd2ae752 testing and public reviews each bound 2,060 files at ports 5
 
 All126natural/replay pairs match combat/progression and relative post commands. New post trials retain27Gatehouse wins and8Triage wins/19losses,366posts/748paid posted C emissions. Raw shield and absolute input-counter differences remain explicit; allMeasuredFieldsMatch is false. Independent comparison31 analyzes original trajectories without rerunning/relabeling the failed original comparison helpers. Different General spending and a single conservative policy do not rank builds or isolate win causes. [Measurements and limits](../reviews/heavy-tethered-traverse-2026-11-10/natural-replay-summary.json). Earlier source69–72 receipts retain their original sources, including the previously fully reviewed [source72 checkpoint](../reviews/heavy-clutch-stat-scaling-2026-11-10/frozen-verification.json).
 
-The next content edition must admit exact protocol 74, content `a7874267d15e45143a83ac286f78a3a2c79c0964bea0b033fff3f86915c9f0d1`, catalog 67 and four shared General techniques before protocol 73 across ownership and all twelve profile and history rosters. Service Yard remains a restorable 4-pass/1-fail work in progress. Further Heavy and Soldier routes and the other classes remain open.
+The next content edition must admit exact protocol 75, content `912c760975a4e284f19941e658c3724a62a050012453f6b7f3905f539df45d3e`, catalog 68 and four shared General techniques before protocol 74 across ownership and all twelve profile and history rosters. Service Yard remains a restorable 4-pass/1-fail work in progress. Further Heavy and Soldier routes and the other classes remain open.

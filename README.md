@@ -1,6 +1,6 @@
 # Grave Accord
 
-Development source **ad5925f76ae1279e1503fe79d76d92daa16af80a** uses build **2026.11.12-heavy-lineworker**, protocol **74** and catalog **67**. The full local gate passed 2,304 tests and all seven checks. Exact-source push and draft PR checks passed. Both local audiences bind 2,063 files and pass native HTTP plus six earned Lineworker acquisitions each. [Verification](reviews/heavy-lineworker-entry-2026-11-12/frozen-verification.json), [current continuation](handoff/NEXT_CHAT.md).
+Development source **6a75d36a32875c71a47a139dd32426612cd8c59d** uses build **2026.11.12-heavy-reserve-anchor**, protocol **75** and catalog **68**. The local gate and both exact-source workflows passed 2,322 tests and all seven checks. The testing and public review clients each bind 2,064 files and passed native HTTP plus six earned Reserve Anchor cases. [Verification](reviews/heavy-reserve-anchor-ci-2026-11-12/frozen-verification.json), [current continuation](handoff/NEXT_CHAT.md).
 
 Local build storage follows [bounded review retention](docs/REVIEW_STORAGE_POLICY.md): one current testing/public pair and one verified rollback archive. The authorized cleanup reduced this checkout from87.6GiB to~8.95GiB; older full copies/services are retired while original assets, receipts, Git and private SQLite remain.
 
@@ -46,7 +46,7 @@ pnpm verify
 pnpm dev
 ```
 
-Open [localhost:5173](http://127.0.0.1:5173/). Offline Solo runs in a worker and needs no multiplayer server. For matching protocol-43 local online rooms, run `pnpm server` in a second terminal; its default loopback port is 2567.
+Open [localhost:5173](http://127.0.0.1:5173/). Offline Solo runs in a worker and needs no multiplayer server. For local online rooms from this checkout, run `pnpm server` in a second terminal; its default loopback port is 2567.
 
 Development and testing builds include rehearsal tools. Public builds omit the boss selector and currency tools. Use `pnpm build:testing` or `pnpm build:public` for the intended audience. [Public polish](docs/PUBLIC_POLISH.md) describes the current scope and review boundaries.
 
@@ -54,8 +54,8 @@ Development and testing builds include rehearsal tools. Public builds omit the b
 
 | Part | Implemented content |
 | --- | --- |
-| Survivors | Nine classes, each with two abilities and an ultimate |
-| Builds | 486 class skills, 81 specialization paths, 27 ability transformations and 36 weapons |
+| Survivors | Twelve classes, each with two abilities and an ultimate |
+| Builds | 648 General class nodes, four shared techniques, 68 specialization techniques, 36 ability transformations and 48 weapons |
 | Encounters | 66 executable identities, including nine scheduled Endless exclusives and an optional Uncounted finale; individual original themes |
 | Routes | Quarantine Run, Midnight Circuit, Black Bell Pilgrimage, Grand Raid and Endless Vigil |
 | Arenas | Six different playable layouts with difficulty-specific cover and hazards |
@@ -67,11 +67,11 @@ The optional expanded skill map shows all 54 skills per class with zoom, scrolli
 
 ## Development status
 
-The current local software gate passes **956 tests, 956 pass, 0 fail**, plus authored content/fifteen locales/RGBA, TypeScript, production build and 71atlas contracts. [Current checkpoint](docs/CHECKPOINT_2026_10_25.md) distinguishes source CI, frozen previews, package verification and Wiki evidence. Rendered/human/device acceptance remains open.
+The October 25 checkpoint recorded 956 passing tests alongside authored content, TypeScript, production build and atlas checks. [Historical verification](docs/CHECKPOINT_2026_10_25.md).
 
-The implementation ledger records the completed encounter quality passes and remaining work. Content expansion and the proposed General Double Dash/Sprint branch are deferred during public polish. Complete action/facing animation, final encounter tuning, verified hosted rankings and durable online recovery remain unfinished. Rendered, listening, native-language, physical-device, WAN, endurance, capacity and human balance acceptance remain open.
+The implementation ledger records the completed encounter quality passes and remaining work. General includes Sprint and Double Dash among its four shared techniques. Complete action/facing animation, final encounter tuning, verified hosted rankings and durable online recovery remain unfinished. Rendered, listening, native-language, physical-device, WAN, endurance, capacity and human balance acceptance remain open.
 
-[Development Progress](docs/DEVELOPMENT_PROGRESS.md) is generated from the single implementation ledger. [Changelog](CHANGELOG.md) and the in-game journal share one update history. The [Wiki](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/wiki) covers playing and the [game bible](docs/GAME_BIBLE.md) preserves the design. Continue development from the [current checkpoint](docs/CHECKPOINT_2026_10_25.md) and `START_NEXT_CHAT.txt`; dated history retains predecessor evidence.
+[Development Progress](docs/DEVELOPMENT_PROGRESS.md) is generated from the single implementation ledger. [Changelog](CHANGELOG.md) and the in-game journal share one update history. The [Wiki](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/wiki) covers playing and the [game bible](docs/GAME_BIBLE.md) preserves the design. Continue development from the [current checkpoint](handoff/NEXT_CHAT.md) and `START_NEXT_CHAT.txt`; dated history retains predecessor evidence.
 
 Online rooms open a **Waiting room** with the player list and a copyable code. Use **Prepare equipment** while waiting; the host presses **Start run**. The **Room code** button remains available during play. Selecting a specific map keeps it for the run; the two random options choose once or before each fight. Painted cover and themed scenery apply across all thirty-six map/difficulty combinations. New rendered/human acceptance remains open.
 

@@ -4,8 +4,8 @@ The user explicitly authorized this bounded policy on2026-11-10 after the checko
 
 ## Retained state
 
-- The current expanded testing and public pair binds source `ad5925f76ae1279e1503fe79d76d92daa16af80a` and 2,063 files each. Testing uses ports 5386/2762 and public uses 5387/2763. Each passes seven native cases. [Verification](../reviews/heavy-lineworker-entry-2026-11-12/frozen-verification.json), [rotation receipt](../reviews/storage-lineworker-entry-2026-11-12/retention-result.json).
-- The local verified rollback archive `output/review-rollback.zip` contains the previous fully reviewed Tethered Traverse pair, source `dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2`. The restore check verified all files before promotion. The archive is 800,602,493 bytes with SHA-256 `6c64927850589fc51185135363f3606373fe1cfb9a4516ef001a7d239d1d86a6`. [Rollback receipt](../reviews/storage-lineworker-entry-2026-11-12/rollback-archive.json).
+- The current expanded testing and public pair binds source `6a75d36a32875c71a47a139dd32426612cd8c59d` and 2,064 files each. Testing uses ports 5390/2766 and public uses 5391/2767. Each passed seven native cases. [Verification](../reviews/heavy-reserve-anchor-ci-2026-11-12/frozen-verification.json), [rotation receipt](../reviews/storage-reserve-anchor-ci-2026-11-12/retention-result.json).
+- The verified rollback archive `output/review-rollback.zip` contains the protocol 74 Lineworker pair, source `ad5925f76ae1279e1503fe79d76d92daa16af80a`. The restore check verified 4,129 files. The archive is 804,293,243 bytes with SHA-256 `ee9576a5bbca3ec6659c48e6947f57a2fde23ff03a8984ff0f1388e542e889fc`. [Rollback receipt](../reviews/storage-reserve-anchor-ci-2026-11-12/rollback-archive.json).
 - Original small review logs/manifests and all213private SQLite-related files remain. Every private file matched its pre-cleanup bytes. No private database or private hash manifest was uploaded.
 
 The cleanup retired52older exact preview processes after verifying PID/full command/UTC/listeners, removed108obsolete expanded build directories plus old backend bundles, and reduced logical size from87.568GiB to8.947GiB(~78.621GiB reclaimed). Other output contains historical QA/publication evidence and private records; it was preserved. [Executed result](../reviews/storage-retention-2026-11-10/retention-result.json), [post-cleanup verification](../reviews/storage-retention-2026-11-10/verification.json), [explicit target plan](../reviews/storage-retention-2026-11-10/retention-plan.json). Earlier source67-root byte audits remain true historical observations, not claims that those folders are still present. The old failed unregistered Seam folder was also explicitly retired; its original failed receipts remain.
@@ -29,13 +29,13 @@ The state pointer is `output/review-retention.json`. Future preservation audits 
 Verify without expanding:
 
 ```powershell
-python tools/review-retention.py verify --repo . --receipt reviews/storage-lineworker-entry-2026-11-12/rollback-archive.json
+python tools/review-retention.py verify --repo . --receipt reviews/storage-reserve-anchor-ci-2026-11-12/rollback-archive.json
 ```
 
 Restore the original files when needed:
 
 ```powershell
-python tools/review-retention.py restore --archive output/review-rollback.zip --sha256 6c64927850589fc51185135363f3606373fe1cfb9a4516ef001a7d239d1d86a6 --into .
+python tools/review-retention.py restore --archive output/review-rollback.zip --sha256 ee9576a5bbca3ec6659c48e6947f57a2fde23ff03a8984ff0f1388e542e889fc --into .
 ```
 
 Existing identical manifest files are verified and retained; conflicting files are never overwritten. Restoration does not start services. Use fresh launch receipts for an explicitly requested rollback; the old launcher writes process receipts, so do not relaunch into an original historical receipt scope. Remove temporary restored copies through a fresh checked retention plan. Private SQLite stays at its original local paths and is excluded from the build archive.

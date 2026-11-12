@@ -1,6 +1,6 @@
 # Heavy route studies
 
-The initial Lineworker techniques are now available in protocol 74. The earlier unregistered studies below retain their original dates and outcomes. The later corner-guide study remains controlled geometry and movement evidence. [Current Lineworker design and observations](HEAVY_LINEWORKER_DESIGN.md).
+The initial Lineworker techniques entered protocol 74. Protocol 75 adds the acquired Reserve Anchor. The earlier unregistered studies below retain their original dates and outcomes. Corner Guide remains in the copied Game research registry, with useful geometry observed in 26 of 36 pairs. [Current Lineworker design and observations](HEAVY_LINEWORKER_DESIGN.md).
 
 Unregistered design study, 2026-11-10. No catalog card, skill id, ownership, art integration or gameplay acceptance is created here. The Tethered Traverse proof correction is now complete; the executed controlled studies below remain separate from any content admission. The next admission must preserve exact73 /9dc09a2d8243caf47ed6f3c9b1f4140814e24a7b482040d34538d0056c0cbce2 /64 techniques /four General before72 across ownership and all twelve profile/history rosters.
 
@@ -34,4 +34,4 @@ Current unregistered Lineworker research has progressed to handling prototype05 
 
 The quiet selected routes reach the9px approach disk with all six policies in all36map/difficulty pairs. Bare hauling arrives earlier than walking/Sprint on those selected routes; ordinary Dodge followed by walking is earlier on three Ossuary routes. Yoke admits ordinary paid primary while suppressing lateral control; bare/Sheave keep lateral control while committing primary. Sheave payout retains the original deadline and captures its actual fitting dependency. These are specific controlled tradeoffs, not final-balance or human acceptance. No new collectible resource, card, catalog edition or canonical/online checkpoint exists.
 
-Current issued build-legality audit:841Engineer,853Soldier and496Heavy distinct specialization/shared-mobility sets,2,190total. Every set is replayed through actual canonical purchases in controlled27SPshops; legacy numerical variations are excluded. This measures legal available decisions, not2,190natural runs, equally useful builds or class completion. See [the scoped build audit](BUILD_VARIETY_AUDIT.md).
+Build-legality audit before Lineworker admission:841Engineer,853Soldier and496Heavy distinct specialization/shared-mobility sets,2,190total. Every set is replayed through actual canonical purchases in controlled27SPshops; legacy numerical variations are excluded. This measures legal available decisions, not2,190natural runs, equally useful builds or class completion. See [the scoped build audit](BUILD_VARIETY_AUDIT.md).

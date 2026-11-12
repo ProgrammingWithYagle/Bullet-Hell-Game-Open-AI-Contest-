@@ -1,6 +1,6 @@
 # Soldier specializations — developing distinct disciplines
 
-Development source **ad5925f76ae1279e1503fe79d76d92daa16af80a** uses build **2026.11.12-heavy-lineworker**, protocol **74** and catalog **67**. The full local gate passed 2,304 tests and all seven checks. Exact-source push and draft PR checks passed. Both local audiences bind 2,063 files and pass native HTTP plus six earned Lineworker acquisitions each. [Current continuation](../handoff/NEXT_CHAT.md).
+Development source **6a75d36a32875c71a47a139dd32426612cd8c59d** uses build **2026.11.12-heavy-reserve-anchor**, protocol **75** and catalog **68**. The local gate and both exact-source workflows passed 2,322 tests and all seven checks. The testing and public review clients each bind 2,064 files and passed native HTTP plus six earned Reserve Anchor cases. [Verification](../reviews/heavy-reserve-anchor-ci-2026-11-12/frozen-verification.json), [current continuation](../handoff/NEXT_CHAT.md).
 
 Soldier’s 28 techniques remain a scoped reference after Engineer. Heavy is the current class audit, while further fitting Soldier routes remain open. Read [Grenadier mechanics and assessment](SOLDIER_GRENADIER_DESIGN.md), [late Marksman mechanics and route assessment](SOLDIER_MARKSMAN_LATE.md), [issued bank/fork/Pair mechanics](SOLDIER_MARKSMAN_DEPTH.md), and [the open roster](SOLDIER_ROUTE_CANDIDATES.md). Three-route coverage is an initial milestone, not a ceiling or class completion. Proposed routes remain unregistered.
 
