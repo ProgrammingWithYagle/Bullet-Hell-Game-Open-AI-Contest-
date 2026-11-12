@@ -1,3 +1,5 @@
+import{lineworkRenderPlan,drawLinework,lineworkProjectilePlan}from './heavy-linework-presentation.ts';
+import{lineworkIds}from'../shared/heavy-linework.ts';
 import { PostedHeavyScene, preloadPostedHeavy } from "./heavy-post-scene.ts";
 import { heavyPostedUrls as postedUrls } from "./heavy-post-assets.ts";
 import { traverseHandlingIndicator } from "./heavy-traverse-handling-presentation.ts";
@@ -182,6 +184,7 @@ export class CombatScene extends Phaser.Scene {
       });
     }
     preloadPostedHeavy(this.load, postedUrls);
+    this.load.image('projectile-anchor',assets.specializationIcons[lineworkIds.entry]);
     for (const [direction, url] of Object.entries(assets.heavy)) {
       const size =
         direction === 'reference'
@@ -1290,6 +1293,7 @@ export class CombatScene extends Phaser.Scene {
       sprite.x += dx * blend;
       sprite.y += dy * blend;
       sprite.setDepth(5 + sprite.y / 1000);
+      drawLinework(f,lineworkRenderPlan(p,view,this.localId,{x:sprite.x,y:sprite.y},now));
       const actionPose = this.survivorActions.pose(
         p,
         view,
@@ -1439,7 +1443,8 @@ export class CombatScene extends Phaser.Scene {
         this.recycleBullet(id);
         continue;
       }
-      const key =
+      const anchor=lineworkProjectilePlan(s);
+      const key = anchor?.texture ??
         'projectile-' +
         (s.visual==='flak'?'flak':s.visual==='canister'?'canister':s.owner === 'hostile' ? (this.highContrast ? 'contrast' : 'hostile') : view.players.find(p=>p.id===s.owner)?.classId==='bard'?'note':view.players.find(p=>p.id===s.owner)?.classId==='summoner'?'beacon':view.players.find(p=>p.id===s.owner)?.classId==='ranger'?'arrow':'friendly');
       let image = this.bulletImages.get(id);
@@ -1450,8 +1455,8 @@ export class CombatScene extends Phaser.Scene {
       if (image.texture.key !== key) image.setTexture(key);
       image
         .setPosition(s.x, s.y)
-        .setRotation(key==='projectile-flak'?flakFlightBearing(s,view.players.find(p=>p.id===s.owner)?.kit.heavyFlakShotAim):key==='projectile-arrow'?Math.atan2(s.vy,s.vx):0)
-        .setScale((s.radius + 2) / 15)
+        .setRotation(anchor?anchor.rotation:key==='projectile-flak'?flakFlightBearing(s,view.players.find(p=>p.id===s.owner)?.kit.heavyFlakShotAim):key==='projectile-arrow'?Math.atan2(s.vy,s.vx):0)
+        .setScale(anchor?anchor.displaySide/Math.max(1,image.width,image.height):(s.radius + 2) / 15)
         .setVisible(true);
       if (s.owner === 'hostile') this.renderedHostiles++;
     }

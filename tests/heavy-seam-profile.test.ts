@@ -1,3 +1,4 @@
+import {issuedAtOrBefore73}from'./helpers/issued73-preservation.ts';
 import { Game, data } from "../src/shared/game.ts";
 import { PROTOCOL } from "../src/shared/protocol.ts";
 import test from "node:test";
@@ -193,7 +194,7 @@ test("issued68 rejects future Seam Fuze ownership and wrong/online envelopes bef
     );
 });
 test("exact issued68 admits every one of the fifty-six issued techniques with its actual affordable prerequisite ownership", () => {
-  const oldNodes = data.specializationSkills.filter(
+  const oldNodes = data.specializationSkills.filter(issuedAtOrBefore73).filter(
     (s) => !["heavy-traverse-lanyard-1","heavy-traverse-keyed-1","heavy-traverse-open-1","heavy-traverse-clutch-1","heavy-traverse-1","heavy-traverse-spade-1","heavy-traverse-floating-1","heavy-flak-seam-1"].includes(s.id),
   );
   assert.equal(oldNodes.length, 56);

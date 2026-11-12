@@ -210,5 +210,5 @@ test('Historical protocol-52 Practice clears retain all twelve labels while forg
   const records=implementedClassIds.map(classId=>({schemaVersion:1,id:classId,practiceOnly:true,verified:false,contentRevision:previous,protocol:52,mode:'story',difficulty:'normal',classId,completedEncounters:data.modes.find(m=>m.id==='story')!.encounters,accords:0,combatTicks:120,secret:'locked',memorial:false}));
   const store={getItem:()=>JSON.stringify([...records,{...records[0],id:'forged',protocol:51}]),setItem(){}};
   assert.equal(practiceRecords(store).length,12);assert.equal(PRACTICE_RECORDS_KEY,'ga-practice-campaign-records-v1');
-  const profile=freshProfile();profile.contentRevision=previous;const parsed=parseProfile(JSON.stringify(profile));assert(parsed);assert.equal(parsed.contentRevision,CONTENT_REVISION);assert.equal(PROTOCOL,73);
+  const profile=freshProfile();profile.contentRevision=previous;const parsed=parseProfile(JSON.stringify(profile));assert(parsed);assert.equal(parsed.contentRevision,CONTENT_REVISION);assert.equal(PROTOCOL,74);
 });

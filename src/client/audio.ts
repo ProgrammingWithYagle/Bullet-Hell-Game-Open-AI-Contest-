@@ -1,3 +1,4 @@
+import{isHeavyLineworkSound,playHeavyLineworkSound}from './heavy-linework-sound.ts';
 import { isHeavyPostSound, playHeavyPostSound } from './heavy-post-sound.ts';
 import{isHeavyClutchSound,playHeavyClutchSound}from'./heavy-clutch-sound.ts';
 import{isHeavyTraverseSound,playHeavyTraverseSound}from'./heavy-traverse-sound.ts';
@@ -108,6 +109,7 @@ export class AudioBus {
     const now = performance.now();
     if (now - (this.last.get(id) ?? -Infinity) < 60) return;
     this.last.set(id, now);
+    if(isHeavyLineworkSound(id)){if(this.volume<=0)return;this.active++;try{playHeavyLineworkSound(this.context,id,this.volume,()=>this.active--);}catch{this.active--;}return;}
     if(isHeavyPostSound(id)){if(this.volume<=0)return;this.active++;try{playHeavyPostSound(this.context,id,this.volume,()=>this.active--);}catch{this.active--;}return;}
     if(isHeavyClutchSound(id)){if(this.volume<=0)return;this.active++;try{playHeavyClutchSound(this.context,id,this.volume,()=>this.active--);}catch{this.active--;}return;}
     if(isHeavyTraverseSound(id)){if(this.volume<=0)return;this.active++;try{playHeavyTraverseSound(this.context,id,this.volume,()=>this.active--);}catch{this.active--;}return;}

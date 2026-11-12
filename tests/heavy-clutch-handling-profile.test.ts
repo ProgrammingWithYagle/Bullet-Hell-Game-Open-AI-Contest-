@@ -1,3 +1,4 @@
+import {issuedAtOrBefore73}from'./helpers/issued73-preservation.ts';
 import { Game, data } from "../src/shared/game.ts";
 import { PROTOCOL } from "../src/shared/protocol.ts";
 import test from "node:test";
@@ -200,7 +201,7 @@ test("issued71 rejects future Clutch handling ownership and wrong/online envelop
     );
 });
 test("exact issued71 admits every one of the sixty-one issued techniques with its actual affordable prerequisite ownership", () => {
-  const oldNodes = data.specializationSkills.filter(
+  const oldNodes = data.specializationSkills.filter(issuedAtOrBefore73).filter(
     (s) => !["heavy-traverse-lanyard-1","heavy-traverse-keyed-1", "heavy-traverse-open-1"].includes(s.id),
   );
   assert.equal(oldNodes.length, 61);

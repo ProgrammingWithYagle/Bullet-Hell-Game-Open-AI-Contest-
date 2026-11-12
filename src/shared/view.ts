@@ -92,6 +92,13 @@ export type View = {
   votes: Record<string, number>;
   accord: Game['accord'];
 };
+/** Anchor coordinates and the friendly projectile ID travel only to the Lineworker. */
+export function splitLineworkKit(kit: KitStatus) {
+  if (kit.lineworkRecovery === undefined) return { shared: kit, owner: undefined };
+  const { lineworkAnchor, lineworkConnection, lineworkFlight, ...shared } = kit;
+  return { shared, owner: { lineworkAnchor, lineworkConnection, lineworkFlight } };
+}
+
 export function viewOf(g: Game, owner: string): View {
   return {
     ...(g.chapter?{chapter:g.chapter,patients:g.patients}:{}),
@@ -124,7 +131,7 @@ export function viewOf(g: Game, owner: string): View {
       id: p.id,
       progress: structuredClone(p.progress),
       eligible: p.eligible,
-      kit: g.kitStatus(p.id),
+      kit: p.id === owner ? g.kitStatus(p.id) : splitLineworkKit(g.kitStatus(p.id)).shared,
       terrain: structuredClone(p.terrain),
       name: p.name,
       classId: p.classId,

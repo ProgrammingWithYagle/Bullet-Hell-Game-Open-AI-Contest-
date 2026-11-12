@@ -4,7 +4,8 @@ import { Room, ServerError, type Client, type ISendOptions } from '@colyseus/cor
 import { randomBytes } from 'node:crypto';
 import {createRoomPassword,matchesRoomPassword} from './room-password.ts';
 import { performance } from 'node:perf_hooks';
-import { Encoder } from '@colyseus/schema';
+import { Encoder, StateView } from '@colyseus/schema';
+import { splitLineworkKit } from '../shared/view.ts';
 import { encodeEvents } from '../shared/wire-events.ts';
 import { Game, implementedBossIds, type Settings } from '../shared/game.ts';
 import {
@@ -261,6 +262,13 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
     this.instrument(client);
     if (!this.state.owner) this.state.owner = client.sessionId;
     this.syncState();
+    this.bindLineworkView(client);
+  }
+  private bindLineworkView(client: Client) {
+    const player = this.state.players.get(client.sessionId);
+    if (player?.classId !== 'heavy') return;
+    client.view ??= new StateView();
+    client.view.add(player);
   }
   private instrument(client: Client) {
     if (this.instrumented.has(client)) return;
@@ -295,6 +303,8 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       client.send('events', encodeEvents([{ type: 'shots', shots: shots.slice(i, i + 128) }]));
   }
   async onDrop(client: Client) {
+    client.view?.dispose();
+    client.view = undefined;
     if (!(await this.journal.writable())) return;
     this.game.setConnected(client.sessionId, false);
     this.transferOwner();
@@ -309,8 +319,11 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
     this.game.setConnected(client.sessionId, true);
     this.instrument(client);
     this.syncState();
+    this.bindLineworkView(client);
   }
   async onLeave(client: Client) {
+    client.view?.dispose();
+    client.view = undefined;
     this.roomChat.remove(client.sessionId);
     if (!(await this.journal.writable())) return;
     this.game.setConnected(client.sessionId, false);
@@ -440,6 +453,8 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
       view.reviveProgress = Math.floor(p.reviveProgress);
       view.reviveTarget = p.reviveTarget;
       view.selfRevives = p.selfRevives;
+      const kit = splitLineworkKit(g.kitStatus(p.id));
+      view.lineworkOwner = kit.owner ? JSON.stringify(kit.owner) : '';
       view.build = JSON.stringify({
         ...(g.trainingFor(p.id)?{training:g.trainingFor(p.id)}:{}),
         progress: p.progress,
@@ -448,7 +463,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
         skills: p.skills,
         upgrades: p.upgrades,
         supplies: p.supplies,
-        kit: g.kitStatus(p.id),
+        kit: kit.shared,
         terrain: p.terrain,
       });
       view.speed = g.movementSpeed(p);

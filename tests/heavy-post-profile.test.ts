@@ -1,3 +1,4 @@
+import {issuedAtOrBefore73}from'./helpers/issued73-preservation.ts';
 import { Game, data } from "../src/shared/game.ts";
 import { PROTOCOL } from "../src/shared/protocol.ts";
 import test from "node:test";
@@ -200,7 +201,7 @@ test("issued72 rejects future Tethered Traverse ownership and wrong/online envel
     );
 });
 test("exact issued72 admits every one of the sixty-three issued techniques with its actual affordable prerequisite ownership", () => {
-  const oldNodes = data.specializationSkills.filter(
+  const oldNodes = data.specializationSkills.filter(issuedAtOrBefore73).filter(
     (s) => s.id !== "heavy-traverse-lanyard-1",
   );
   assert.equal(oldNodes.length, 63);

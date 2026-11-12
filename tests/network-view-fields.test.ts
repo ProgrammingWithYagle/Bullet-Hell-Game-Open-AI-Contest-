@@ -75,10 +75,12 @@ test(
     );
     for (const s of peers)
       for (const wire of s.room!.state.players.values()) {
-        const expected = original.call(wire) as Record<string, unknown>;
+        const { lineworkOwner, ...expected } = original.call(wire) as Record<string, unknown>;
+        assert(!lineworkOwner, 'The fixture has no owned Lineworker geometry');
         const view = s.view!.players.find(
           (p) => p.id === wire.id,
         )! as unknown as Record<string, unknown>;
+        assert(!('lineworkOwner' in view), 'The private wire field is decoded into kit');
         for (const [key, value] of Object.entries(expected)) {
           const actual =
             key === 'x' || key === 'y'

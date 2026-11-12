@@ -1,3 +1,4 @@
+import{catalogAt73,messagesAt73}from'./helpers/issued73-preservation.ts';
 import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import{createHash}from'node:crypto';
 import catalog from '../content/catalog.json';import baseline from './fixtures/heavy-post-issued72.json';
 import {Game,data}from'../src/shared/game.ts';import{viewOf}from'../src/shared/view.ts';
@@ -6,9 +7,9 @@ const sha=(s:string|Buffer)=>createHash('sha256').update(s).digest('hex'),all=[.
 const buy=(g:Game,p:{id:string},item:string)=>g.transact(p.id,{id:item,kind:'skill',item});
 test('the admitted capstone preserves every source72 catalog value and all63 issued techniques exactly',()=>{
  const node=data.specializationSkills.find(s=>s.id===lanyardId)!;assert(node);assert.equal(node.cost,4);assert.equal(node.freePlaySpRequired,19);assert.equal(node.prerequisite,clutchId);assert.equal(node.capstone,true);assert.equal(node.role,'capstone');assert.deepEqual(node.effects,{});
- const old={...catalog,specializationSkills:catalog.specializationSkills.filter(s=>s.id!==lanyardId)};
+ const at73=catalogAt73(catalog),old={...at73,specializationSkills:at73.specializationSkills.filter(s=>s.id!==lanyardId)};
  assert.equal(old.specializationSkills.length,63);assert.equal(sha(JSON.stringify(old)),baseline.contentRevision);
- assert.equal(data.skills.length,648);assert.equal(data.generalSkills.length,4);assert.equal(data.classes.length,12);assert.equal(data.specializationSkills.length,64);
+ assert.equal(data.skills.length,648);assert.equal(data.generalSkills.length,4);assert.equal(data.classes.length,12);assert.equal(data.specializationSkills.length,67);
 });
 test('twenty-seven controlled late-Endless builds make actual source purchases for exactly27SP and one capstone, with idempotent transaction retries',()=>{
  for(const mode of['loose','spade','floating']as const)for(const handling of[undefined,keyedId,openId])for(const general of['mantlet','vents','split']){
@@ -32,7 +33,7 @@ test('the issued one-capstone limit, required Clutch, class and Campaign restric
 });
 test('all fifteen catalogs retain every earlier message value and the new English pilot copy has no empty owned label',()=>{
  for(const row of baseline.locales){const value=JSON.parse(fs.readFileSync(new URL('../locales/'+row.file,import.meta.url),'utf8'));for(const key of baseline.newMessageKeys)assert(typeof value.messages[key]==='string'&&value.messages[key].trim().length>0,key);
-  const old=Object.fromEntries(Object.entries(value.messages).filter(([key])=>!baseline.newMessageKeys.includes(key)));assert.equal(sha(JSON.stringify(old)),row.messagesSha256,row.file);
+  const old=Object.fromEntries(Object.entries(messagesAt73(value.messages)).filter(([key])=>!baseline.newMessageKeys.includes(key)));assert.equal(sha(JSON.stringify(old)),row.messagesSha256,row.file);
  }
  for(const row of baseline.unchangedSoundSources)assert.equal(sha(fs.readFileSync(new URL('../'+row.file,import.meta.url))),row.sha256,row.file);
 });

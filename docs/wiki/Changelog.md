@@ -1,6 +1,15 @@
 # Changelog
 
-Development build **2026.11.10-heavy-tethered-traverse**, protocol 73. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.12-heavy-lineworker**, protocol 74. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-12 — Set an anchor, choose how to approach
+
+### Heavy: Lineworker
+
+- Anchor Cartridge fits the ordinary3SP start beside Fresh Belt. Pay one physical round, wait for actual masonry attachment, then separately haul, brake or release while carrying the gun.
+- Straight Yoke permits paid primary along a constrained approach axis; Open Sheave permits finite payout while braked and commits primary during hauling. Omitting either fitting retains a useful bare operation.
+- Original150tick line,600px bound,8second base recovery, current cover/bodies/hazards and admitted issued abilities remain. No invulnerability, resource, teleport or automatic aim is added.
+- All64issued techniques, General648/four shared, equipment, effects and27SP/onecapstone remain. Exact73ownership and all12profile/history rosters precede72. This early slice leaves later acquired operations, wider class work and human acceptance open.
 
 ## 2026-11-10 — Stake the gun, work around its firing lane
 

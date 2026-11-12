@@ -10,7 +10,7 @@ import type {TestingCommand} from './testing-command.ts';
 import { recordProfileView } from './profile.ts';
 import {recordChapterView} from './chapter-journal.ts';
 import { Client, ErrorCode, type Room } from '@colyseus/sdk';
-import { WorldState } from '../shared/network-state.ts';
+import { WorldState, type PlayerState } from '../shared/network-state.ts';
 import {
   CONTENT_REVISION,
   PROTOCOL,
@@ -530,6 +530,14 @@ export class Session {
     return this.closing;
   }
 }
+function playerBuild(player: PlayerState) {
+  const build = JSON.parse(player.build);
+  if (player.lineworkOwner) {
+    build.kit = { ...build.kit, ...JSON.parse(player.lineworkOwner) };
+  }
+  return build;
+}
+
 function networkView(s: WorldState): View {
   const hazards = JSON.parse(s.hazards || '{}'),
     intermission = JSON.parse(s.intermission || '{}');
@@ -574,7 +582,7 @@ function networkView(s: WorldState): View {
     slowUntil: p.slowUntil,
     poisonUntil: p.poisonUntil,
     dodgeCooldown: p.dodgeCooldown,
-    ...JSON.parse(p.build),
+    ...playerBuild(p),
   }));
   return {
     run: intermission.run,

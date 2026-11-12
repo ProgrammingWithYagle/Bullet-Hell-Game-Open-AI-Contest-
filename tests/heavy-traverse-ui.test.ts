@@ -118,7 +118,7 @@ async function setup(t: any, mode: "short" | "raid" = "short") {
     foundation,
   };
 }
-test("Siege Gunner shows exactly its real entry/fork/acquired operation with one shared General reference and five overview exclusions", () => {
+test("Siege Gunner shows exactly its real entry/fork/acquired operation with one shared General reference in the three-route Heavy tree", () => {
   const map = specializationMapLayout("heavy", ids.entry)!;
   assert.equal(map.nodes.length, 8);
   assert.equal(map.edges.length, 7);
@@ -128,9 +128,9 @@ test("Siege Gunner shows exactly its real entry/fork/acquired operation with one
     new Set(["heavy-ordnance-1", ids.entry, ids.spade, ids.floating,"heavy-traverse-clutch-1","heavy-traverse-keyed-1","heavy-traverse-open-1","heavy-traverse-lanyard-1"]),
   );
   const all = specializationMapLayout("heavy")!;
-  assert.equal(all.nodes.length, 15);
-  assert.equal(all.exclusions.length, 5);
-  assert.equal(specializationRoutes("heavy").length, 2);
+  assert.equal(all.nodes.length, 18);
+  assert.equal(all.exclusions.length, 8);
+  assert.deepEqual(specializationRoutes("heavy").map(route=>route.id), ["heavy-flak-1", ids.entry, "heavy-linework-1"]);
 });
 test("actual source MenuDOM makes exactly two affordable Short3 purchases and exposes four independently remapped owned rows", async (t) => {
   const f = await setup(t);

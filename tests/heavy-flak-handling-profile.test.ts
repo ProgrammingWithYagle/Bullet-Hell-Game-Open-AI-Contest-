@@ -1,3 +1,4 @@
+import {issuedAtOrBefore73}from'./helpers/issued73-preservation.ts';
 import { Game, data } from "../src/shared/game.ts";
 import { PROTOCOL } from "../src/shared/protocol.ts";
 import test from "node:test";
@@ -198,7 +199,7 @@ test("issued67 rejects future Fuze handling ownership and wrong/online envelopes
     );
 });
 test("exact issued67 admits every one of the fifty-four issued techniques with its actual affordable prerequisite ownership", () => {
-  const oldNodes = data.specializationSkills.filter(
+  const oldNodes = data.specializationSkills.filter(issuedAtOrBefore73).filter(
     (s) => !["heavy-traverse-lanyard-1","heavy-traverse-keyed-1","heavy-traverse-open-1","heavy-traverse-clutch-1","heavy-traverse-1","heavy-traverse-spade-1","heavy-traverse-floating-1","heavy-flak-running-1","heavy-flak-hanging-1","heavy-flak-seam-1"].includes(s.id),
   );
   assert.equal(oldNodes.length, 54);

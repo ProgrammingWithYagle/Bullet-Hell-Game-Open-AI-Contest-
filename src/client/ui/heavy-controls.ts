@@ -1,3 +1,4 @@
+import{lineworkIds}from'../../shared/heavy-linework.ts';
 import { postedBState } from "../heavy-post-state.ts";
 import {
   lanyardId,
@@ -23,18 +24,19 @@ export function heavyKitMarkup(
   open: boolean,
 ) {
   if (p.classId !== "heavy" || p.training) return "";
+  const lineworkOwned=p.skills.includes(lineworkIds.entry);
   const postOwned = [traverseIds.entry, clutchId, lanyardId].every(id => p.skills.includes(id));
   const cl = data.classes.find((c) => c.id === "heavy")!,
     rows: { action: KitAction; key: string }[] = [
       { action: "q", key: "ability." + cl.abilities[0].id + ".name" },
       { action: "e", key: "ability." + cl.abilities[1].id + ".name" },
       { action: "ultimate", key: "ability." + cl.ultimate.id + ".name" },
-      ...(p.skills.includes(traverseIds.entry) ||
+      ...(lineworkOwned || p.skills.includes(traverseIds.entry) ||
       p.skills.includes(flakIds.entry)
         ? [
             {
               action: "technique1" as const,
-              key: p.skills.includes(traverseIds.entry)
+              key: lineworkOwned?"ui.heavy.lineworkAction":p.skills.includes(traverseIds.entry)
                 ? "ui.heavy.traverseAction"
                 : p.skills.includes(seamId)
                   ? "ui.heavy.seamAction"
@@ -42,11 +44,11 @@ export function heavyKitMarkup(
             },
           ]
         : []),
-      ...(p.skills.includes(clutchId) || p.skills.includes(flakIds.command)
+      ...(lineworkOwned || p.skills.includes(clutchId) || p.skills.includes(flakIds.command)
         ? [
             {
               action: "technique2" as const,
-              key: p.skills.includes(clutchId)
+              key: lineworkOwned?"ui.heavy.lineworkDrive":p.skills.includes(clutchId)
                 ? postOwned
                   ? "skill." + lanyardId + ".name"
                   : p.skills.includes(keyedId)
@@ -66,7 +68,7 @@ export function heavyKitMarkup(
         : []),
     ];
   const help = (
-    postOwned ? [
+    lineworkOwned?[t("ui.heavy.lineworkHelp"),t(p.skills.includes(lineworkIds.yoke)?"ui.heavy.lineworkYokeHelp":p.skills.includes(lineworkIds.sheave)?"ui.heavy.lineworkSheaveHelp":"ui.heavy.lineworkBareHelp")]:postOwned ? [
       t("ui.heavy.lanyardHelp"),
       t(p.skills.includes(traverseIds.spade) ? "ui.heavy.lanyardSpadeHelp" : p.skills.includes(traverseIds.floating) ? "ui.heavy.lanyardFloatingHelp" : "ui.heavy.lanyardLooseHelp"),
       t(p.skills.includes(keyedId) ? "ui.heavy.lanyardKeyedHelp" : p.skills.includes(openId) ? "ui.heavy.lanyardOpenHelp" : "ui.heavy.lanyardPlainHelp"),
@@ -144,6 +146,10 @@ export function heavyHudLabel(
   slot: "technique1" | "technique2",
   now: number,
 ) {
+  if(p.skills.includes(lineworkIds.entry)){
+    if(slot==='technique1')return(p.kit.lineworkFlight??0)>0||(p.kit.lineworkUntil??0)>now?t('ui.heavy.lineworkRelease'):t('skill.'+lineworkIds.entry+'.name');
+    return(p.kit.lineworkUntil??0)>now?t(p.kit.lineworkActive?'ui.heavy.lineworkBrake':'ui.heavy.lineworkEngage'):(p.kit.lineworkFlight??0)>0?t('ui.heavy.lineworkWaiting'):t('ui.heavy.lineworkIdle');
+  }
   const post = postedBState(p, now);
   if (slot === "technique2" && post) return t("ui.heavy.lanyard" + post.kind[0].toUpperCase() + post.kind.slice(1), { slots: number(post.remaining) });
   if (slot === "technique1" && post?.kind === "posted") return t("ui.heavy.lanyardRemaining", { slots: number(post.remaining) });

@@ -4,6 +4,7 @@ export const PlayerState = schema(
   {
     id: t.string().default(''),
     name: t.string().default(''),
+    lineworkOwner: t.string().view().default(''),
     classId: t.string().default('soldier'),
     x: t.int16().default(0),
     y: t.int16().default(0),

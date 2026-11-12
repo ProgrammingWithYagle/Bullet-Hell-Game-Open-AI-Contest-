@@ -121,7 +121,7 @@ async function setup(t: any, mode: "short" | "raid" = "short") {
 test("the Heavy graph contains exactly its seven actual techniques, one General reference and the real optional exclusion", () => {
   assert.deepEqual(
     specializationRoutes("heavy").map((r) => r.id),
-    [ids.entry,"heavy-traverse-1"],
+    [ids.entry,"heavy-traverse-1","heavy-linework-1"],
   );
   const map = specializationMapLayout("heavy", ids.entry)!;
   assert.equal(map.nodes.length, 8);

@@ -111,7 +111,7 @@ export function decodeEvents(events: WireEvent[]): Event[] {
       expires < 0 ||
       !Number.isSafeInteger(pierce) ||
       pierce < 0 ||
-      (visual !== undefined && visual !== "canister" && visual !== "flak")
+      (visual !== undefined && visual !== "canister" && visual !== "flak" && visual !== "heavy-anchor")
     )
       throw Error("invalidProjectilePacket");
     const view = new DataView(data.buffer, data.byteOffset, data.byteLength);

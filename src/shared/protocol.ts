@@ -1,6 +1,6 @@
 import type{SeamPrivateEvent}from"./heavy-seam.ts";
 import revision from '../../content/revision.json' with { type: 'json' };
-export const PROTOCOL = 73;
+export const PROTOCOL = 74;
 export type BossVariant = 'normal' | 'brutal' | 'crazed';
 export const CONTENT_REVISION = revision.sha256;
 export const HZ = 30,
@@ -179,7 +179,7 @@ export function validCommand(x: unknown): x is Command {
 }
 export type Vec = { x: number; y: number };
 export type Shot = {
-  visual?: "canister" | "flak";
+  visual?: "canister" | "flak" | "heavy-anchor";
   id: number;
   owner: string;
   x: number;

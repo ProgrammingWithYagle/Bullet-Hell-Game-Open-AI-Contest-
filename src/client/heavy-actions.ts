@@ -1,3 +1,4 @@
+import{lineworkIds}from'../shared/heavy-linework.ts';
 import {
   lanyardId,
   traverseIds,
@@ -9,6 +10,7 @@ import { seamId } from "../shared/heavy-seam.ts";
 import { flakIds } from "../shared/heavy-flak.ts";
 import type { PlayerView } from "../shared/view.ts";
 export function heavyActions(p: PlayerView, now: number) {
+  if(p.classId==='heavy'&&p.skills.includes(lineworkIds.entry))return{command:false,qNameKey:null,qAt:p.qAt,qBlocked:false,extras:[{key:'technique1' as const,id:lineworkIds.entry,at:(p.kit.lineworkFlight??0)>0||(p.kit.lineworkUntil??0)>now?0:p.kit.lineworkRecovery??0,blocked:p.kit.lineworkBlocked??true},{key:'technique2' as const,id:p.skills.includes(lineworkIds.yoke)?lineworkIds.yoke:p.skills.includes(lineworkIds.sheave)?lineworkIds.sheave:lineworkIds.entry,at:0,blocked:p.kit.lineworkCommandBlocked??true}]};
   if (p.classId === "heavy" && p.skills.includes(traverseIds.entry))
     return {
       command: false,

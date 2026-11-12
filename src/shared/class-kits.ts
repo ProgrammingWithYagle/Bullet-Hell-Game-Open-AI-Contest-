@@ -1,3 +1,4 @@
+import type{LineworkStatus}from'./heavy-linework.ts';
 import type{FlakBurstCue}from'./heavy-flak.ts';
 import type{SniperCue}from'./soldier-sniper.ts';
 import type{GrenadierCue}from'./soldier-grenadier.ts';
@@ -28,7 +29,7 @@ import type { Player, Stats, Boss } from './game.ts';
 import type { Minions } from './minions.ts';
 const ticks = (seconds: number) => Math.ceil(seconds * HZ);
 export const RESCUE_CHARGE_TICKS = ticks(0.3) + 1;
-export type KitStatus = {
+export type KitStatus = Partial<LineworkStatus> & {
   heavyClutchConverted?:number;heavyClutchHandling?:"heavy-traverse-keyed-1"|"heavy-traverse-open-1";heavyTraverseShotRequiresHandling?:"heavy-traverse-keyed-1"|"heavy-traverse-open-1";
   heavyLanyardAt?:number;heavyLanyardSequence?:number;heavyLanyardUntil?:number;heavyLanyardX?:number;heavyLanyardY?:number;heavyLanyardRemaining?:number;heavyTraverseShotPosted?:boolean;heavyTraverseShotX?:number;heavyTraverseShotY?:number;
   heavyClutchLifted?:boolean;heavyClutchUsed?:boolean;heavyClutchForfeited?:number;heavyClutchSlotsRemaining?:number;heavyClutchAt?:number;heavyClutchSequence?:number;heavyClutchBlocked?:boolean;heavyTraverseShotRequiresClutch?:boolean;

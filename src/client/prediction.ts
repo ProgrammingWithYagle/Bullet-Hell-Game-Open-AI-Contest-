@@ -1,3 +1,5 @@
+import{lineworkTemporaryConstructs}from'../shared/heavy-linework.ts';
+import{lineworkPredictedMotion,lineworkPredictedSpeed}from './heavy-linework-prediction.ts';
 import{traversePredictedMotion,traversePredictedAfterMove}from "./heavy-post-prediction.ts";
 import {alchemyPredictedSpeed,cancelPredictedBrew} from "./alchemy-presentation.ts";
 import {rangerPredictedSpeed,cancelPredictedRangerDraw} from "./ranger-presentation.ts";
@@ -37,8 +39,8 @@ export class Prediction {
     const p = this.player;
     if (!p || view.phase !== 'combat' || p.status !== 'active') return;
     const now = ++this.tick,
-      len = Math.hypot(i.moveX, i.moveY),
-      mx = len > 1 ? i.moveX / len : i.moveX,
+      len = Math.hypot(i.moveX, i.moveY);
+    let mx = len > 1 ? i.moveX / len : i.moveX,
       my = len > 1 ? i.moveY / len : i.moveY;
     p.aim = i.aim;
     const gates = gateObstacles(view.bossCues, now);
@@ -87,23 +89,26 @@ export class Prediction {
         ? now < p.kit.chargeUntil
           ? 600
           : data.rules.dodgeSpeed
-        : (p.classId==='alchemist'?alchemyPredictedSpeed(p,now):rangerPredictedSpeed(p,now)) * (p.sprinting?mobilityRules.sprintMultiplier:1) *
+        : (p.classId==='alchemist'?alchemyPredictedSpeed(p,now):p.classId==='heavy'?lineworkPredictedSpeed(p,now):rangerPredictedSpeed(p,now)) * (p.sprinting?mobilityRules.sprintMultiplier:1) *
           Math.min(now < p.slowUntil ? 0.65 : 1, now < p.poisonUntil ? clerkRules.purpleSlowMultiplier : 1) *
           (1 + rally) *
           environment.multiplier *
           terrain.multiplier;
     const traverseMotion=traversePredictedMotion(p,i,now,{obstacles:[...runtimeArena(view.arenaId,view.run.difficulty).obstacles,...gates,...blocks]});
+    const linework=lineworkPredictedMotion(p,i,now,{scope:view.run.id+':'+view.encounter+':'+view.arenaId,obstacles:[...runtimeArena(view.arenaId,view.run.difficulty).obstacles,...gates,...blocks],masonry:runtimeArena(view.arenaId,view.run.difficulty).obstacles,constructs:()=>lineworkTemporaryConstructs(view.classCues,now)},dash?0:speed/(p.sprinting?mobilityRules.sprintMultiplier:1));
+    const haulLength=Math.hypot(linework.x,linework.y);if(linework.yoke&&haulLength>1e-9){const projection=(mx*linework.x+my*linework.y)/haulLength;mx=linework.x/haulLength*projection;my=linework.y/haulLength*projection;}
     const next = moveBody(
       p,
       {
-        x: ((dash ? p.dashX : mx) * speed * traverseMotion.walk + traverseMotion.x + environment.x + terrain.x + raidForce.x + earlyForce.x) * DT,
-        y: ((dash ? p.dashY : my) * speed * traverseMotion.walk + traverseMotion.y + environment.y + terrain.y + raidForce.y + earlyForce.y) * DT,
+        x: ((dash ? p.dashX : mx) * speed * traverseMotion.walk + traverseMotion.x + linework.x + environment.x + terrain.x + raidForce.x + earlyForce.x) * DT,
+        y: ((dash ? p.dashY : my) * speed * traverseMotion.walk + traverseMotion.y + linework.y + environment.y + terrain.y + raidForce.y + earlyForce.y) * DT,
       },
       data.rules.playerRadius,
       [...runtimeArena(view.arenaId,view.run.difficulty).obstacles, ...gates, ...blocks],
     );
     p.x = next.x;
     p.y = next.y;
+    linework.finish();
     traversePredictedAfterMove(p,{obstacles:[...runtimeArena(view.arenaId,view.run.difficulty).obstacles,...gates,...blocks]},now);
   }
 }
