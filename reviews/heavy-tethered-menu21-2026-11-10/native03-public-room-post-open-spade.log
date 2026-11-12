@@ -1,0 +1,22 @@
+{"mode":"spade","handling":"heavy-traverse-open-1","acquisition":"short","actualClear":{"boss":"ashen-usher","combatTicks":106,"actualEarnedSP":9}}
+{"mode":"spade","handling":"heavy-traverse-open-1","acquisition":"short","actualClear":{"boss":"stitchwright","combatTicks":292,"actualEarnedSP":15}}
+{"mode":"spade","handling":"heavy-traverse-open-1","acquisition":"short","actualClear":{"boss":"pallbearer","combatTicks":490,"actualEarnedSP":21}}
+{"actualTerminalContext":{"mode":"spade","handling":"heavy-traverse-open-1","acquisition":"short","phase":"shop","tick":6126,"combatTick":891,"encounter":3,"matchPaused":false,"boss":{"id":"pallbearer","x":1122,"y":709,"health":0},"owner":{"id":"KlfLv0GOW","ack":966,"status":"active","x":947.5,"y":575,"health":96,"ammo":52,"skills":["heavy-ordnance-1","heavy-traverse-1","heavy-traverse-spade-1","heavy-traverse-clutch-1","heavy-traverse-open-1","heavy-traverse-lanyard-1"],"upgrades":{"damage":3,"health":2,"fire-rate":2,"reload":2,"magazine":2},"kit":{"chargeUntil":0,"veilUntil":0,"passageUntil":0,"stepCharges":0,"shield":0,"shieldUntil":0,"armor":0,"armorUntil":0,"technique1At":0,"technique2At":0,"heavyLanyardAt":0,"heavyLanyardSequence":0,"heavyLanyardUntil":0,"heavyLanyardX":947.4641109856082,"heavyLanyardY":574.9745025543159,"heavyLanyardRemaining":0,"heavyTraverseShotPosted":false,"heavyTraverseShotX":947.4641109856082,"heavyTraverseShotY":574.9745025543159,"heavyClutchConverted":0,"heavyClutchAt":0,"heavyClutchSequence":0,"heavyClutchBlocked":true,"heavyClutchLifted":false,"heavyClutchUsed":false,"heavyClutchForfeited":0,"heavyClutchSlotsRemaining":0,"heavyPrimaryAt":0,"heavyPrimaryAim":0,"heavyTraverseBornAt":0,"heavyTraverseSequence":0,"heavyTraversePostX":947.4641109856082,"heavyTraversePostY":574.9745025543159,"heavyTraverseUntil":0,"heavyTraverseNextAt":0,"heavyTraverseRounds":0,"heavyTraverseAim":0.6548642560575751,"heavyTraverseMode":"spade","heavyTraverseCastAt":0,"heavyTraverseShotRequiresClutch":false,"heavyTraverseShotAt":0,"heavyTraverseShotAim":0,"heavyTraverseBlocked":false}},"mutations":[{"id":"hot-iron","remaining":1},{"id":"open-veins","remaining":2},{"id":"quick-blood","remaining":3}]},"noTimeoutOrPolicyChange":true}
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: original shop and deployment clocks
+    at runEarnedPostFlow (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\heavy-post-earned-flow.ts:176:7)
+    at async earnedPostFlow (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\heavy-post-earned-flow.ts:243:16)
+    at async Module.earnedPostPeerFlow (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\heavy-post-peer-flow.ts:130:20)
+    at async <anonymous> (C:\Users\yigal\Documents\Codex\2026-11-10\continue-grave-accord-in-the-same\work\menu21-stage\native-probe03.mts:82:30) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.22.1
