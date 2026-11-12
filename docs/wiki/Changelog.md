@@ -1,6 +1,14 @@
 # Changelog
 
-Development build **2026.11.12-heavy-reserve-anchor**, protocol 75. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.12-heavy-corner-guide**, protocol 76. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-12 — Haul through a supported turn
+
+### Heavy Lineworker
+
+- Corner Guide costs 3 SP after Anchor Cartridge at 11 earned. Choose it or Reserve Anchor. Both early fittings and bare hauling remain available.
+- Aimed Action 3 installs a guide at nearby masonry for one round while braked. Haul to it, redirect with Action 3 and use Action 2 for a separate haul to the first anchor within its original clock.
+- Protocol 76 restores exact protocol 75 ownership and all twelve profile and history rosters before edition 74.
 
 ## 2026-11-12 — Set a reserve and choose the lead
 

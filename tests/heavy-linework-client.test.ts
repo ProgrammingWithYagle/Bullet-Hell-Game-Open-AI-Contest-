@@ -42,8 +42,9 @@ test('source Lineworker graph exposes the entry, fitting fork and acquired reser
     { from: lineworkIds.entry, to: lineworkIds.yoke },
     { from: lineworkIds.entry, to: lineworkIds.sheave },
     { from: lineworkIds.entry, to: lineworkIds.reserve },
+    { from: lineworkIds.entry, to: lineworkIds.guide },
   ]);
-  assert.deepEqual(map.exclusions, [{ a: lineworkIds.yoke, b: lineworkIds.sheave }]);
+  assert.deepEqual(map.exclusions, [{ a: lineworkIds.yoke, b: lineworkIds.sheave }, { a: lineworkIds.reserve, b: lineworkIds.guide }]);
 });
 
 for (const fitting of [lineworkIds.yoke, lineworkIds.sheave]) {

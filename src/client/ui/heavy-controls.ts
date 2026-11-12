@@ -1,4 +1,4 @@
-import{lineworkIds}from'../../shared/heavy-linework.ts';
+import{heavyLineworkGuideRules,lineworkIds}from'../../shared/heavy-linework.ts';
 import { postedBState } from "../heavy-post-state.ts";
 import {
   lanyardId,
@@ -68,10 +68,12 @@ export function heavyKitMarkup(
         : []),
       ...(lineworkOwned && p.skills.includes(lineworkIds.reserve)
         ? [{ action: "technique3" as const, key: "ui.heavy.reserveAction" }]
-        : []),
+        : lineworkOwned && p.skills.includes(lineworkIds.guide)
+          ? [{ action: "technique3" as const, key: "ui.heavy.guideAction" }]
+          : []),
     ];
   const help = (
-    lineworkOwned?[t("ui.heavy.lineworkHelp"),t(p.skills.includes(lineworkIds.yoke)?"ui.heavy.lineworkYokeHelp":p.skills.includes(lineworkIds.sheave)?"ui.heavy.lineworkSheaveHelp":"ui.heavy.lineworkBareHelp"),p.skills.includes(lineworkIds.reserve)?t("ui.heavy.reserveHelp"):""]:postOwned ? [
+    lineworkOwned?[t("ui.heavy.lineworkHelp"),t(p.skills.includes(lineworkIds.yoke)?"ui.heavy.lineworkYokeHelp":p.skills.includes(lineworkIds.sheave)?"ui.heavy.lineworkSheaveHelp":"ui.heavy.lineworkBareHelp"),p.skills.includes(lineworkIds.reserve)?t("ui.heavy.reserveHelp"):p.skills.includes(lineworkIds.guide)?t("ui.heavy.guideHelp"):""]:postOwned ? [
       t("ui.heavy.lanyardHelp"),
       t(p.skills.includes(traverseIds.spade) ? "ui.heavy.lanyardSpadeHelp" : p.skills.includes(traverseIds.floating) ? "ui.heavy.lanyardFloatingHelp" : "ui.heavy.lanyardLooseHelp"),
       t(p.skills.includes(keyedId) ? "ui.heavy.lanyardKeyedHelp" : p.skills.includes(openId) ? "ui.heavy.lanyardOpenHelp" : "ui.heavy.lanyardPlainHelp"),
@@ -153,12 +155,21 @@ export function heavyHudLabel(
     if (slot === 'technique3') {
       const line = p.kit.lineworkConnection;
       if (!line || now >= line.until) return t('ui.heavy.reserveNeedsAnchor');
+      if (p.skills.includes(lineworkIds.guide)) {
+        if (line.guide) return t(p.kit.lineworkGuideBlocked ? 'ui.heavy.guideApproach' : 'ui.heavy.guideRedirect');
+        if (line.guideUsed) return t('ui.heavy.guideSpent');
+        if (line.active) return t('ui.heavy.guideBrake');
+        return t(p.kit.lineworkGuideBlocked ? 'ui.heavy.guideAim' : 'ui.heavy.guideSet');
+      }
       if (line.reserveFlight !== undefined) return t('ui.heavy.reserveWaiting');
       if (line.reserve) return t(line.active ? 'ui.heavy.reserveBrake' : 'ui.heavy.reserveSelect');
       if (line.reserveSpent) return t('ui.heavy.reserveSpent');
       return t(line.active ? 'ui.heavy.reserveBrake' : 'ui.heavy.reserveCast');
     }
     if(slot==='technique1')return(p.kit.lineworkFlight??0)>0||(p.kit.lineworkUntil??0)>now?t('ui.heavy.lineworkRelease'):t('skill.'+lineworkIds.entry+'.name');
+    const guide = p.kit.lineworkConnection?.guide;
+    if (guide && !p.kit.lineworkActive && Math.hypot(p.x - guide.point.x, p.y - guide.point.y) <= heavyLineworkGuideRules.redirectReach)
+      return t('ui.heavy.guideRedirectFirst');
     return(p.kit.lineworkUntil??0)>now?t(p.kit.lineworkActive?'ui.heavy.lineworkBrake':'ui.heavy.lineworkEngage'):(p.kit.lineworkFlight??0)>0?t('ui.heavy.lineworkWaiting'):t('ui.heavy.lineworkIdle');
   }
   const post = postedBState(p, now);

@@ -22,7 +22,9 @@ export function heavyActions(p: PlayerView, now: number) {
         { key: 'technique2' as const, id: fitting, at: 0, blocked: p.kit.lineworkCommandBlocked ?? true },
         ...(p.skills.includes(lineworkIds.reserve)
           ? [{ key: 'technique3' as const, id: lineworkIds.reserve, at: 0, blocked: p.kit.lineworkReserveBlocked ?? true }]
-          : []),
+          : p.skills.includes(lineworkIds.guide)
+            ? [{ key: 'technique3' as const, id: lineworkIds.guide, at: 0, blocked: p.kit.lineworkGuideBlocked ?? true }]
+            : []),
       ],
     };
   }

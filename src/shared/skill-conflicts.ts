@@ -7,6 +7,7 @@ const replacesTurrets=(id:string)=>catalog.skills.some(s=>s.id===id&&(('transfor
 /** Same conflicts for inspection, authoritative spending and boundary restoration. */
 export function conflictingSkill(owned:readonly string[],candidate:string):string|undefined {
   return owned.find(id=>id!==candidate&&(
+    ((candidate==='heavy-linework-guide-1'&&id==='heavy-linework-reserve-1')||(candidate==='heavy-linework-reserve-1'&&id==='heavy-linework-guide-1'))||
     ((candidate==='heavy-linework-yoke-1'&&id==='heavy-linework-sheave-1')||(candidate==='heavy-linework-sheave-1'&&id==='heavy-linework-yoke-1'))||
     ((candidate==='heavy-traverse-keyed-1'&&id==='heavy-traverse-open-1')||(candidate==='heavy-traverse-open-1'&&id==='heavy-traverse-keyed-1'))||
     ((['heavy-flak-1','heavy-traverse-1','heavy-linework-1'].includes(candidate)&&['heavy-flak-1','heavy-traverse-1','heavy-linework-1'].includes(id)))||

@@ -8,6 +8,7 @@ import { constructHit } from '../../src/shared/class-kits.ts';
 import { moveBody, segmentCircle, segmentRect } from '../../src/shared/geometry.ts';
 import {
   heavyLineworkRules as rules,
+  heavyLineworkGuideRules as guideRules,
   lineworkIds,
   lineworkTemporaryConstructs,
 } from '../../src/shared/heavy-linework.ts';
@@ -24,6 +25,7 @@ import { restRaidInput, type ObservedRestShot } from './sniper-rest-raid-policy.
 import { lineworkMenu, spentLineworkSP } from './heavy-linework-menu-flow.ts';
 
 export type LineworkFitting = 'bare' | 'yoke' | 'sheave';
+export type LineworkAcquisition = boolean | 'guide';
 type Purchase = { kind: 'skill' | 'weapon' | 'upgrade' | 'supply'; item: string };
 export type LineworkTransport = {
   id: string;
@@ -39,7 +41,17 @@ export type LineworkTransport = {
   end?(): void;
   allyPolicy?(): void;
   stopAlly?(): void;
-  checkObservers?(anchorId: number, until: number, reserveId?: number): Promise<void>;
+  checkObservers?(anchorId: number, until: number, reserveId?: number, guide?: Vec): Promise<void>;
+};
+
+// A two-leg Gatehouse Baby route from the ordinary third deployment.
+const guideRoute = {
+  castFrom: { x: 695, y: 731.5999999999999 },
+  approach: { x: 0.6608406857770962, y: 0.7505262074182735 },
+  setFrom: { x: 695, y: 861.5999999999999 },
+  guide: { x: 695, y: 878.5999999999999 },
+  detour: { x: 695, y: 813.5999999999999 },
+  anchor: { x: 832.3584905660377, y: 890.5999999999999 },
 };
 
 /** Pick a manual ray from public geometry and visible bodies. */
@@ -115,8 +127,11 @@ function anchorBearing(view: View, id: string, fromAnchor?: Vec) {
 export async function earnedLineworkFlow(
   transport: LineworkTransport,
   fitting: LineworkFitting,
-  withReserve = false,
+  acquisition: LineworkAcquisition = false,
 ) {
+  const withReserve = acquisition === true;
+  const withGuide = acquisition === 'guide';
+  const evolution = withGuide ? lineworkIds.guide : withReserve ? lineworkIds.reserve : undefined;
   const view = () => {
     const current = transport.view();
     assert(current, 'Missing authoritative view');
@@ -162,9 +177,9 @@ export async function earnedLineworkFlow(
       await transport.purchase({ kind: 'upgrade', item });
     await transport.purchase({ kind: 'supply', item: 'medkit' });
   }
-  async function attach() {
+  async function attach(bearing?: number) {
     await acknowledge({}, 'Stopped policy input before selecting an actual wall');
-    const aim = anchorBearing(view(), transport.id),
+    const aim = bearing ?? anchorBearing(view(), transport.id),
       ammo = player().ammo,
       previous = ownedShots().length;
     const sequence = await acknowledge(
@@ -218,6 +233,7 @@ export async function earnedLineworkFlow(
       JSON.stringify({
         fitting,
         withReserve,
+        ...(withGuide ? { withGuide } : {}),
         actualEarnedSP: earned(),
         actualClears: player().progress.clears,
         combatTick: view().combatTick,
@@ -322,6 +338,115 @@ export async function earnedLineworkFlow(
     };
   }
 
+  async function walkTo(target: Vec) {
+    await restWait(() => {
+      const p = player(),
+        dx = target.x - p.x,
+        dy = target.y - p.y;
+      const distance = Math.hypot(dx, dy);
+      if (distance <= 2.5) return true;
+      const scale = Math.max(18, distance);
+      transport.input({ moveX: dx / scale, moveY: dy / scale, aim: Math.atan2(dy, dx) });
+      return false;
+    }, 'Ordinary inputs reach the surveyed Gatehouse point');
+    await acknowledge({}, 'Braked and still at the surveyed point');
+    assert(Math.hypot(target.x - player().x, target.y - player().y) <= 6);
+  }
+
+  async function setAndRedirectGuide() {
+    assert.equal(view().arenaId, 'gatehouse');
+    await walkTo(guideRoute.castFrom);
+    const first = await attach(Math.atan2(guideRoute.approach.y, guideRoute.approach.x));
+    assert(
+      Math.hypot(
+        first.line.origin.x - guideRoute.anchor.x,
+        first.line.origin.y - guideRoute.anchor.y,
+      ) <= 16,
+    );
+    await walkTo(guideRoute.setFrom);
+    const aim = Math.atan2(guideRoute.guide.y - player().y, guideRoute.guide.x - player().x);
+    await acknowledge({ aim }, 'Aim preview reaches the authoritative guide status');
+    const ammo = player().ammo,
+      before = ownedShots().length;
+    assert.equal(
+      player().kit.lineworkGuideBlocked,
+      false,
+      'Owner can read the aimed masonry as ready',
+    );
+    await acknowledge(
+      { aim, technique3: true, technique2: true },
+      'Paid guide has priority over same-frame haul',
+    );
+    const fitted = player().kit.lineworkConnection!;
+    assert(fitted.guide && fitted.guideUsed && !fitted.active);
+    assert.equal(player().ammo, ammo - 1);
+    assert.equal(ownedShots().length, before);
+    assert.deepEqual(fitted.origin, first.line.origin);
+    assert.equal(fitted.until, first.line.until);
+    assert.equal(player().kit.lineworkRecovery, first.recovery);
+    await restWait(() => sounded('linework-guide-set'), 'Paid guide cue arrives');
+
+    await walkTo(guideRoute.detour);
+    const start = { x: player().x, y: player().y };
+    assert(Math.hypot(start.x - fitted.guide.point.x, start.y - fitted.guide.point.y) > 45);
+    await acknowledge({ technique2: true }, 'Separate haul begins along the guide leg');
+    await restWait(() => {
+      const p = player(),
+        line = p.kit.lineworkConnection;
+      return (
+        !!line?.guide &&
+        !line.active &&
+        Math.hypot(p.x - line.guide.point.x, p.y - line.guide.point.y) <= guideRules.redirectReach
+      );
+    }, 'Motor stops braked at the guide');
+    const firstHaul = Math.hypot(player().x - start.x, player().y - start.y);
+    assert(firstHaul > 45);
+    assert.equal(player().kit.lineworkGuideBlocked, false);
+
+    transport.pause(true);
+    await restWait(() => transport.paused(), 'Actual paused guide view');
+    const tick = view().combatTick,
+      ack = player().ack;
+    transport.input({ technique3: true });
+    await sleep(90);
+    assert.equal(view().combatTick, tick);
+    assert.equal(player().ack, ack);
+    assert.equal(player().ammo, ammo - 1);
+    assert.deepEqual(player().kit.lineworkConnection?.guide, fitted.guide);
+    await transport.checkObservers?.(first.shot.id, fitted.until, undefined, fitted.guide.point);
+    transport.pause(false);
+    await restWait(() => !transport.paused(), 'Original combat clock resumes');
+    await acknowledge(
+      { technique3: true, technique2: true },
+      'Redirect has priority over same-frame second haul',
+    );
+    const redirected = player().kit.lineworkConnection!;
+    assert(redirected.guideUsed && !redirected.guide && !redirected.active);
+    assert.deepEqual(redirected.origin, first.line.origin);
+    assert.equal(redirected.until, first.line.until);
+    assert.equal(player().kit.lineworkRecovery, first.recovery);
+    assert.equal(player().ammo, ammo - 1);
+    await restWait(() => sounded('linework-guide-redirect'), 'Separate redirect cue arrives');
+    const anchorAim = Math.atan2(
+      redirected.origin.y - player().y,
+      redirected.origin.x - player().x,
+    );
+    return {
+      selected: { ...first, aim: anchorAim, line: redirected },
+      operation: {
+        firstAnchor: first.line.origin,
+        guide: fitted.guide.point,
+        masonryFoot: fitted.guide.foot,
+        paidGuideRounds: 1,
+        firstHaul,
+        originalUntil: first.line.until,
+        redirectedUntil: redirected.until,
+        originalRecovery: first.recovery,
+        pausedRedirectDiscarded: true,
+      },
+    };
+  }
+
   try {
     assert.equal(earned(), 3);
     assert.deepEqual(player().skills, []);
@@ -344,20 +469,27 @@ export async function earnedLineworkFlow(
       await buy(lineworkIds[fitting]);
       await menu.inspect(lineworkIds[fitting === 'yoke' ? 'sheave' : 'yoke'], false);
     } else await menu.inspect(lineworkIds.sheave, true);
-    if (withReserve) {
-      await menu.inspect(lineworkIds.reserve, false);
+    if (evolution) {
+      await menu.inspect(evolution, false);
+      if (withGuide) {
+        const rejected = await transport.purchase({ kind: 'skill', item: evolution });
+        assert(!rejected.ok && !player().skills.includes(evolution));
+        assert.equal(earned(), 9);
+      }
       await deploy(9);
       await clearToShop(2, 15);
-      await buy(lineworkIds.reserve);
+      await buy(evolution);
+      if (withGuide) await menu.inspect(lineworkIds.reserve, false);
     }
     const spent = spentLineworkSP(player());
-    assert.equal(spent, (fitting === 'bare' ? 3 : 5) + (withReserve ? 3 : 0));
-    await deploy(withReserve ? 15 : 9);
-    const current = await attach();
+    assert.equal(spent, (fitting === 'bare' ? 3 : 5) + (evolution ? 3 : 0));
+    await deploy(evolution ? 15 : 9);
+    const guide = withGuide ? await setAndRedirectGuide() : undefined;
+    const current = guide?.selected ?? (await attach());
     const reserve = withReserve ? await selectReserve(current) : undefined;
     const second = reserve?.selected ?? current;
     let payout = 0;
-    if (fitting === 'sheave') {
+    if (fitting === 'sheave' && !withGuide) {
       const initial = second.line.initialLength;
       const out = { aim: second.aim, moveX: -Math.cos(second.aim), moveY: -Math.sin(second.aim) };
       const begin = view().combatTick;
@@ -389,6 +521,10 @@ export async function earnedLineworkFlow(
         .slice(beforePrimary)
         .filter((s) => !s.visual);
     assert(walked > 8);
+    const towardOriginal =
+      Math.hypot(start.x - second.line.origin.x, start.y - second.line.origin.y) -
+      Math.hypot(player().x - second.line.origin.x, player().y - second.line.origin.y);
+    if (withGuide) assert(towardOriginal > 8, 'Second haul moves toward the original anchor');
     assert.equal(player().kit.lineworkUntil, second.line.until);
     if (fitting === 'yoke') {
       assert(primary.length > 0);
@@ -409,7 +545,7 @@ export async function earnedLineworkFlow(
     assert.equal(player().ammo, frozenAmmo);
     assert.equal(player().ack, frozenAck);
     assert.equal(player().kit.lineworkUntil, second.line.until);
-    if (!withReserve) await transport.checkObservers?.(second.shot.id, second.line.until);
+    if (!evolution) await transport.checkObservers?.(second.shot.id, second.line.until);
     transport.pause(false);
     await restWait(() => !transport.paused(), 'Actual unpause acknowledgement');
     if (transport.end) {
@@ -428,6 +564,7 @@ export async function earnedLineworkFlow(
       actualEarnedSequence: earnedSequence,
       actualClears: earnedSequence.length - 1,
       reserve: reserve?.operation,
+      guide: guide ? { ...guide.operation, towardOriginal } : undefined,
       spent,
       walked,
       payout,

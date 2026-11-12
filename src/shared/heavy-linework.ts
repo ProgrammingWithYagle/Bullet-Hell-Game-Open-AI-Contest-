@@ -4,6 +4,14 @@ import { DT, HZ, type Shot, type Vec } from './protocol.ts';
 import { segmentRect, type Rect } from './geometry.ts';
 import type { Player, Stats } from './game.ts';
 import type { MotionWindow } from './motion-window.ts';
+import {
+  canRedirectLinework,
+  clearLineworkSpan,
+  lineworkEye,
+  lineworkLength,
+  pickLineworkGuide,
+  type LineworkGuide,
+} from './heavy-linework-guide.ts';
 
 // Physical paid anchor/hauling authority. The original finite clocks and current collision decide outcomes.
 export const lineworkIds = {
@@ -11,9 +19,11 @@ export const lineworkIds = {
   yoke: 'heavy-linework-yoke-1',
   sheave: 'heavy-linework-sheave-1',
   reserve: 'heavy-linework-reserve-1',
+  guide: 'heavy-linework-guide-1',
 } as const;
 export const heavyLineworkRules = catalog.rules.heavyLinework;
 const reserveRules = catalog.rules.heavyLineworkReserve;
+export const heavyLineworkGuideRules = catalog.rules.heavyLineworkGuide;
 /** Built, living constructs use their existing current collision shape, never attachment identity. */
 export function lineworkTemporaryConstructs(
   cues: readonly { kind: string }[],
@@ -66,6 +76,8 @@ export type LineworkConnection = Attachment & {
   reserveFlight?: number;
   reserveSpent?: boolean;
   reserveSelected?: boolean;
+  guide?: LineworkGuide;
+  guideUsed?: boolean;
 };
 export type LineworkContext = {
   tick: number;
@@ -77,6 +89,7 @@ export type LineworkContext = {
   remove(s: Shot): void;
   obstacles: readonly Rect[];
   masonry: readonly Rect[];
+  bounds?: Rect;
   constructs?(): readonly Construct[];
   sound(p: Player, id: string, point?: Vec): void;
 };
@@ -114,6 +127,13 @@ function copyAttachment<T extends Attachment>(line: T): T {
 function copyConnection(line: LineworkConnection): LineworkConnection {
   const copy = copyAttachment(line);
   if (line.reserve) copy.reserve = copyAttachment(line.reserve);
+  if (line.guide)
+    copy.guide = {
+      ...line.guide,
+      point: { ...line.guide.point },
+      foot: { ...line.guide.foot },
+      support: { ...line.guide.support },
+    };
   return copy;
 }
 export class HeavyLinework {
@@ -121,6 +141,7 @@ export class HeavyLinework {
   static forPrediction(p: { id: string }, known: Partial<LineworkStatus>) {
     const model = new HeavyLinework(),
       line = known.lineworkConnection;
+    model.predicting = true;
     if (line && line.owner === p.id) model.lines.set(p.id, copyConnection(line));
     if ((known.lineworkCastAt ?? 0) > 0)
       model.casts.set(p.id, {
@@ -136,6 +157,7 @@ export class HeavyLinework {
   private lines = new Map<string, LineworkConnection>();
   private casts = new Map<string, { at: number; sequence: number; aim: number }>();
   private primaries = new Map<string, { at: number; aim: number }>();
+  private predicting = false;
   private reserveCasts = new Map<string, { at: number; aim: number }>();
   clear(c: Pick<LineworkContext, 'shot' | 'remove'>) {
     for (const id of [...this.flights.keys()]) {
@@ -214,24 +236,22 @@ export class HeavyLinework {
       !this.valid(p, line) ||
       (line.requiresFitting && !p.skills.includes(line.requiresFitting)) ||
       (line.reserveSelected && !p.skills.includes(lineworkIds.reserve)) ||
+      (line.guideUsed && !p.skills.includes(lineworkIds.guide)) ||
+      (line.guide && !c.masonry.some((wall) => sameRect(wall, line.guide!.support))) ||
       !c.masonry.some((w) => sameRect(w, line.wall))
     )
       return false;
     const currentMode = line.requiresFitting ? line.mode : mode(p);
-    const length = Math.hypot(p.x - line.origin.x, p.y - line.origin.y),
+    const length = lineworkLength(p, line),
       limit =
-        currentMode === 'sheave' && !line.active
+        currentMode === 'sheave' && !line.active && !line.guide
           ? heavyLineworkRules.maximumLength
           : line.paidLength + heavyLineworkRules.slack;
     if (length > heavyLineworkRules.maximumLength || length > limit) return false;
-    const end = {
-      x: line.origin.x + line.normal.x * 1.25,
-      y: line.origin.y + line.normal.y * 1.25,
-    };
-    return (
-      !c.obstacles.some((w) => segmentRect(p, end, w, 1) !== null) &&
-      !(c.constructs?.() ?? []).some((body) => constructHit(p, end, body, 1) !== null)
-    );
+    const end = lineworkEye(line);
+    return line.guide
+      ? clearLineworkSpan(p, line.guide.point, c) && clearLineworkSpan(line.guide.point, end, c)
+      : clearLineworkSpan(p, end, c);
   }
   reconcile(players: readonly Player[], c: LineworkContext) {
     for (const [id, f] of this.flights) {
@@ -342,6 +362,23 @@ export class HeavyLinework {
     c.sound(p, 'linework-shot');
   }
 
+  private commandGuide(p: Player, line: LineworkConnection, c: LineworkContext) {
+    if (line.active || p.input.reload || p.input.dodge || p.input.ultimate || p.input.q) return;
+    if (line.guide) {
+      if (!canRedirectLinework(p, line, c)) return;
+      line.guide = undefined;
+      c.sound(p, 'linework-guide-redirect');
+      return;
+    }
+    if (this.predicting || line.guideUsed || p.ammo < 1 || p.input.moveX || p.input.moveY) return;
+    const guide = pickLineworkGuide(p, p.input.aim, line, c);
+    if (!guide) return;
+    p.ammo--;
+    line.guide = { ...guide, at: c.tick };
+    line.guideUsed = true;
+    c.sound(p, 'linework-guide-set');
+  }
+
   private validateReserve(p: Player, line: LineworkConnection, c: LineworkContext) {
     if (
       line.reserve &&
@@ -361,9 +398,10 @@ export class HeavyLinework {
       this.lines.delete(p.id);
       return;
     }
+    const guideCommand = p.input.technique3 && p.skills.includes(lineworkIds.guide);
     const reserveCommand = p.input.technique3 && p.skills.includes(lineworkIds.reserve);
     if (
-      (!p.input.technique2 && !reserveCommand) ||
+      (!p.input.technique2 && !reserveCommand && !guideCommand) ||
       p.input.technique1 ||
       c.tick <= line.at ||
       c.tick <= line.commandAt ||
@@ -372,6 +410,10 @@ export class HeavyLinework {
       return;
     line.commandAt = c.tick;
     line.commandSequence = p.input.sequence;
+    if (guideCommand) {
+      this.commandGuide(p, line, c);
+      return;
+    }
     if (reserveCommand) {
       this.commandReserve(p, line, c);
       return;
@@ -383,13 +425,21 @@ export class HeavyLinework {
       return;
     }
     if (
+      line.guide &&
+      Math.hypot(p.x - line.guide.point.x, p.y - line.guide.point.y) <=
+        heavyLineworkGuideRules.redirectReach
+    )
+      return;
+    if (
       line.mode === 'sheave' &&
+      !line.guide &&
       Math.hypot(p.x - line.origin.x, p.y - line.origin.y) >
         line.initialLength + heavyLineworkRules.slack
     )
       line.requiresFitting = lineworkIds.sheave;
-    const length = Math.hypot(p.x - line.origin.x, p.y - line.origin.y);
-    line.paidLength = line.mode === 'sheave' ? length : Math.min(line.paidLength, length);
+    const length = lineworkLength(p, line);
+    line.paidLength =
+      line.mode === 'sheave' && !line.guide ? length : Math.min(line.paidLength, length);
     line.active = true;
     if (line.mode === 'yoke') line.requiresFitting = lineworkIds.yoke;
     c.sound(p, 'linework-engage');
@@ -398,10 +448,12 @@ export class HeavyLinework {
     const line = this.lines.get(p.id);
     if (!line?.active || this.busy(p, c.tick) || !this.pointClear(p, line, c))
       return { x: 0, y: 0, yoke: false };
-    const dx = line.origin.x + line.normal.x * heavyLineworkRules.bodyStop - p.x,
-      dy = line.origin.y + line.normal.y * heavyLineworkRules.bodyStop - p.y,
+    const dx =
+        (line.guide?.point.x ?? line.origin.x + line.normal.x * heavyLineworkRules.bodyStop) - p.x,
+      dy =
+        (line.guide?.point.y ?? line.origin.y + line.normal.y * heavyLineworkRules.bodyStop) - p.y,
       d = Math.hypot(dx, dy);
-    if (d <= 1) {
+    if (d <= (line.guide ? heavyLineworkGuideRules.redirectReach : 1)) {
       line.active = false;
       return { x: 0, y: 0, yoke: false };
     }
@@ -416,6 +468,14 @@ export class HeavyLinework {
       return;
     }
     this.validateReserve(p, line, c);
+    if (line.guide) {
+      if (
+        Math.hypot(p.x - line.guide.point.x, p.y - line.guide.point.y) <=
+        heavyLineworkGuideRules.redirectReach
+      )
+        line.active = false;
+      return;
+    }
     if (
       mode(p) === 'sheave' &&
       !line.active &&
@@ -432,6 +492,7 @@ export class HeavyLinework {
     return (
       this.casts.get(owner)?.at === now ||
       this.reserveCasts.get(owner)?.at === now ||
+      this.lines.get(owner)?.guide?.at === now ||
       !!(this.lines.get(owner)?.active && this.lines.get(owner)?.mode !== 'yoke')
     );
   }
@@ -552,6 +613,7 @@ export class HeavyLinework {
       ultimateCooldownScale?: number;
       uncommittedSpeed?: number;
       overdriveTicks?: number;
+      guideContext?: LineworkContext;
     },
   ) {
     const line = this.lines.get(p.id),
@@ -563,6 +625,11 @@ export class HeavyLinework {
       reserveCast = this.reserveCasts.get(p.id),
       busy = this.busy(p, now),
       active = !!line || !!flight;
+    const atGuide =
+      !!line?.guide &&
+      Math.hypot(p.x - line.guide.point.x, p.y - line.guide.point.y) <=
+        heavyLineworkGuideRules.redirectReach;
+    const guideContext = options?.guideContext;
     return {
       lineworkRecovery: this.recovery.get(p.id) ?? 0,
       lineworkFlight: flight?.id ?? 0,
@@ -588,7 +655,21 @@ export class HeavyLinework {
         (active
           ? now <= (cast?.at ?? now)
           : p.ammo < 1 || now < (this.recovery.get(p.id) ?? 0) || options?.canEmit === false),
-      lineworkCommandBlocked: busy || !line || now <= line.at,
+      lineworkCommandBlocked: busy || !line || now <= line.at || (!line.active && atGuide),
+      lineworkGuideBlocked:
+        !p.skills.includes(lineworkIds.guide) ||
+        busy ||
+        !line ||
+        line.active ||
+        now <= line.at ||
+        !guideContext ||
+        (line.guide
+          ? !canRedirectLinework(p, line, guideContext)
+          : line.guideUsed ||
+            p.ammo < 1 ||
+            !!p.input.moveX ||
+            !!p.input.moveY ||
+            !pickLineworkGuide(p, p.input.aim, line, guideContext)),
       lineworkConnection: line ? copyConnection(line) : undefined,
       lineworkReserveCastAt: reserveCast?.at ?? 0,
       lineworkReserveCastAim: reserveCast?.aim ?? p.aim,

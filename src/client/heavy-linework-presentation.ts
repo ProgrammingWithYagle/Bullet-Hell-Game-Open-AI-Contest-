@@ -1,4 +1,5 @@
 import { lineworkIds, heavyLineworkRules } from '../shared/heavy-linework.ts';
+import { lineworkLength } from '../shared/heavy-linework-guide.ts';
 import type { PlayerView, View } from '../shared/view.ts';
 import type { Shot, Vec } from '../shared/protocol.ts';
 type Frame = Pick<View, 'phase' | 'combatTick' | 'run' | 'encounter' | 'arenaId'>;
@@ -8,6 +9,7 @@ export type LineworkRenderPlan = {
   active: boolean;
   remainingTicks: number;
   reserve?: Vec;
+  guide?: { point: Vec; foot: Vec };
 };
 /** Only an actual acknowledged owner line may be drawn; the carried native gun stays on the body. */
 export function lineworkRenderPlan(
@@ -32,17 +34,20 @@ export function lineworkRenderPlan(
     c.scope !== view.run.id + ':' + view.encounter + ':' + view.arenaId ||
     now >= c.until ||
     (c.requiresFitting && !p.skills.includes(c.requiresFitting)) ||
-    (c.reserveSelected && !p.skills.includes(lineworkIds.reserve))
+    (c.reserveSelected && !p.skills.includes(lineworkIds.reserve)) ||
+    (c.guideUsed && !p.skills.includes(lineworkIds.guide))
   )
     return;
   const anchor = c.origin,
-    length = Math.hypot(drawnBody.x - anchor.x, drawnBody.y - anchor.y),
+    length = lineworkLength(drawnBody, c),
     limit =
-      k.lineworkMode === 'sheave' && !c.active
+      k.lineworkMode === 'sheave' && !c.active && !c.guide
         ? heavyLineworkRules.maximumLength
         : c.paidLength + heavyLineworkRules.slack;
   if (
     ![anchor.x, anchor.y, drawnBody.x, drawnBody.y].every(Number.isFinite) ||
+    !Number.isFinite(length) ||
+    (c.guide && ![c.guide.foot.x, c.guide.foot.y].every(Number.isFinite)) ||
     length > heavyLineworkRules.maximumLength ||
     length > limit
   )
@@ -66,6 +71,7 @@ export function lineworkRenderPlan(
       : undefined;
   return {
     ...(reserve ? { reserve } : {}),
+    ...(c.guide ? { guide: { point: { ...c.guide.point }, foot: { ...c.guide.foot } } } : {}),
     from: { x: drawnBody.x, y: drawnBody.y },
     anchor: { ...anchor },
     active: c.active,
@@ -79,9 +85,21 @@ type Graphics = {
 };
 export function drawLinework(g: Graphics, plan: LineworkRenderPlan | undefined) {
   if (!plan) return;
-  g.lineStyle(1.5, plan.active ? 0xd6bb78 : 0xa7aaa0, 0.7)
-    .lineBetween(plan.from.x, plan.from.y, plan.anchor.x, plan.anchor.y)
-    .strokeCircle(plan.anchor.x, plan.anchor.y, 4);
+  g.lineStyle(1.5, plan.active ? 0xd6bb78 : 0xa7aaa0, 0.7);
+  if (plan.guide) {
+    const { point, foot } = plan.guide;
+    g.lineBetween(plan.from.x, plan.from.y, point.x, point.y)
+      .lineBetween(point.x, point.y, plan.anchor.x, plan.anchor.y)
+      .strokeCircle(plan.anchor.x, plan.anchor.y, 4)
+      .lineStyle(2, 0xd6bb78, 0.85)
+      .lineBetween(foot.x, foot.y, point.x, point.y)
+      .strokeCircle(point.x, point.y, 4);
+  } else
+    g.lineBetween(plan.from.x, plan.from.y, plan.anchor.x, plan.anchor.y).strokeCircle(
+      plan.anchor.x,
+      plan.anchor.y,
+      4,
+    );
   const reserve = plan.reserve;
   if (!reserve) return;
   const dx = reserve.x - plan.from.x,

@@ -128,8 +128,8 @@ test("Siege Gunner shows exactly its real entry/fork/acquired operation with one
     new Set(["heavy-ordnance-1", ids.entry, ids.spade, ids.floating,"heavy-traverse-clutch-1","heavy-traverse-keyed-1","heavy-traverse-open-1","heavy-traverse-lanyard-1"]),
   );
   const all = specializationMapLayout("heavy")!;
-  assert.equal(all.nodes.length, 19);
-  assert.equal(all.exclusions.length, 8);
+  assert.equal(all.nodes.length, 20);
+  assert.equal(all.exclusions.length, 9);
   assert.deepEqual(specializationRoutes("heavy").map(route=>route.id), ["heavy-flak-1", ids.entry, "heavy-linework-1"]);
 });
 test("actual source MenuDOM makes exactly two affordable Short3 purchases and exposes four independently remapped owned rows", async (t) => {

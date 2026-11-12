@@ -31,6 +31,7 @@ test('The specialization graph contains only real techniques, their General refe
     'heavy-traverse-floating-1>heavy-traverse-spade-1',
     'heavy-traverse-keyed-1>heavy-traverse-open-1',
     'heavy-linework-sheave-1>heavy-linework-yoke-1',
+    'heavy-linework-guide-1>heavy-linework-reserve-1',
   ]));
   for(const cl of data.classes.filter(c=>!['engineer','soldier','heavy'].includes(c.id)))assert.equal(specializationMapLayout(cl.id),null);
   const html=specializationMapMarkup(map,['engineer-constructs-1','engineer-machinery-1'],(id,ref)=>'<button data-graph-focus="'+id+'">'+(ref?'General':'Technique')+'</button>');

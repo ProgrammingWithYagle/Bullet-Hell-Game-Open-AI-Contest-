@@ -10,6 +10,7 @@ type Context = {
   scope: string;
   obstacles: readonly Rect[];
   masonry: readonly Rect[];
+  bounds?: Rect;
   constructs?(): readonly Construct[];
 };
 export function lineworkPredictedSpeed(p: PlayerView, now: number) {
@@ -78,6 +79,7 @@ export function lineworkPredictedMotion(
       }
       const s = model.status(actor, now, {
         canEmit: false,
+        guideContext: context,
         magazineCapacity: p.kit.lineworkMagazineCapacity ?? p.ammo,
       });
       p.kit = {
@@ -94,6 +96,7 @@ export function lineworkPredictedMotion(
         lineworkBlocked: s.lineworkBlocked,
         lineworkCommandBlocked: s.lineworkCommandBlocked,
         lineworkReserveBlocked: s.lineworkReserveBlocked,
+        lineworkGuideBlocked: s.lineworkGuideBlocked,
       };
     },
   };

@@ -103,7 +103,7 @@ test("ordinary Short3SP buys exactly Fresh Belt and Flak Round, with no bonus bu
   assert.equal(f.p.totalSp, 3);
   assert.equal(
     data.specializationSkills.filter((s) => s.classId === "heavy").length,
-    18,
+    19,
   );
 });
 test("the optional fork and acquired command fit the actual Raid12SP and remain separate purchases", () => {

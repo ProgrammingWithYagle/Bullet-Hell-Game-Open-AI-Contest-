@@ -95,8 +95,8 @@ export type View = {
 /** Anchor coordinates and the friendly projectile ID travel only to the Lineworker. */
 export function splitLineworkKit(kit: KitStatus) {
   if (kit.lineworkRecovery === undefined) return { shared: kit, owner: undefined };
-  const { lineworkAnchor, lineworkConnection, lineworkFlight, ...shared } = kit;
-  return { shared, owner: { lineworkAnchor, lineworkConnection, lineworkFlight } };
+  const { lineworkAnchor, lineworkConnection, lineworkFlight, lineworkGuideBlocked, ...shared } = kit;
+  return { shared, owner: { lineworkAnchor, lineworkConnection, lineworkFlight, lineworkGuideBlocked } };
 }
 
 export function viewOf(g: Game, owner: string): View {

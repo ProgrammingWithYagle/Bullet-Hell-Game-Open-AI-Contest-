@@ -95,7 +95,7 @@ export class Prediction {
           environment.multiplier *
           terrain.multiplier;
     const traverseMotion=traversePredictedMotion(p,i,now,{obstacles:[...runtimeArena(view.arenaId,view.run.difficulty).obstacles,...gates,...blocks]});
-    const linework=lineworkPredictedMotion(p,i,now,{scope:view.run.id+':'+view.encounter+':'+view.arenaId,obstacles:[...runtimeArena(view.arenaId,view.run.difficulty).obstacles,...gates,...blocks],masonry:runtimeArena(view.arenaId,view.run.difficulty).obstacles,constructs:()=>lineworkTemporaryConstructs(view.classCues,now)},dash?0:speed/(p.sprinting?mobilityRules.sprintMultiplier:1));
+    const linework=lineworkPredictedMotion(p,i,now,{scope:view.run.id+':'+view.encounter+':'+view.arenaId,obstacles:[...runtimeArena(view.arenaId,view.run.difficulty).obstacles,...gates,...blocks],masonry:runtimeArena(view.arenaId,view.run.difficulty).obstacles,bounds:runtimeArena(view.arenaId,view.run.difficulty).bounds,constructs:()=>lineworkTemporaryConstructs(view.classCues,now)},dash?0:speed/(p.sprinting?mobilityRules.sprintMultiplier:1));
     const haulLength=Math.hypot(linework.x,linework.y);if(linework.yoke&&haulLength>1e-9){const projection=(mx*linework.x+my*linework.y)/haulLength;mx=linework.x/haulLength*projection;my=linework.y/haulLength*projection;}
     const next = moveBody(
       p,

@@ -9,7 +9,7 @@ test('the admitted capstone preserves every source72 catalog value and all63 iss
  const node=data.specializationSkills.find(s=>s.id===lanyardId)!;assert(node);assert.equal(node.cost,4);assert.equal(node.freePlaySpRequired,19);assert.equal(node.prerequisite,clutchId);assert.equal(node.capstone,true);assert.equal(node.role,'capstone');assert.deepEqual(node.effects,{});
  const at73=catalogAt73(catalog),old={...at73,specializationSkills:at73.specializationSkills.filter(s=>s.id!==lanyardId)};
  assert.equal(old.specializationSkills.length,63);assert.equal(sha(JSON.stringify(old)),baseline.contentRevision);
- assert.equal(data.skills.length,648);assert.equal(data.generalSkills.length,4);assert.equal(data.classes.length,12);assert.equal(data.specializationSkills.length,68);
+ assert.equal(data.skills.length,648);assert.equal(data.generalSkills.length,4);assert.equal(data.classes.length,12);assert.equal(data.specializationSkills.length,69);
 });
 test('twenty-seven controlled late-Endless builds make actual source purchases for exactly27SP and one capstone, with idempotent transaction retries',()=>{
  for(const mode of['loose','spade','floating']as const)for(const handling of[undefined,keyedId,openId])for(const general of['mantlet','vents','split']){

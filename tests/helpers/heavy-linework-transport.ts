@@ -14,6 +14,7 @@ import type { View } from '../../src/shared/view.ts';
 import {
   earnedLineworkFlow,
   type LineworkFitting,
+  type LineworkAcquisition,
   type LineworkTransport,
 } from './heavy-linework-earned-flow.ts';
 import { restWait } from './sniper-rest-flow.ts';
@@ -63,7 +64,11 @@ function confirmedPurchase(
   return true;
 }
 
-export async function runLineworkWorker(code: string, fitting: LineworkFitting, reserve = false) {
+export async function runLineworkWorker(
+  code: string,
+  fitting: LineworkFitting,
+  acquisition: LineworkAcquisition = false,
+) {
   const wrapper =
     "import{parentPort}from'node:worker_threads';globalThis.self={};globalThis.postMessage=m=>parentPort.postMessage(m);" +
     code +
@@ -136,7 +141,7 @@ export async function runLineworkWorker(code: string, fitting: LineworkFitting, 
         paused: () => paused && view?.combatTick === pauseTick,
       },
       fitting,
-      reserve,
+      acquisition,
     );
     return { ...result, wholeOptimizedWorker: true, workerPatched: false, transport: 'worker' };
   } finally {
@@ -147,7 +152,7 @@ export async function runLineworkWorker(code: string, fitting: LineworkFitting, 
 export async function runLineworkPeers(
   endpoint: string,
   fitting: LineworkFitting,
-  reserve = false,
+  acquisition: LineworkAcquisition = false,
 ) {
   const host = new Session(endpoint),
     heavy = new Session(endpoint),
@@ -225,7 +230,7 @@ export async function runLineworkPeers(
             );
         },
         stopAlly: () => host.input(inputFrame(host.view, ++hostSequence, {})),
-        checkObservers: async (anchorId, until, reserveId) => {
+        checkObservers: async (anchorId, until, reserveId, guide) => {
           const tick = heavy.view!.combatTick;
           heavy.room!.send('pauseMatch', false);
           heavy.room!.send('endMatch');
@@ -251,6 +256,10 @@ export async function runLineworkPeers(
               player(heavy)!.kit.lineworkConnection!.reserve!.origin,
             );
           }
+          if (guide) {
+            assert.deepEqual(ownerConnection.guide.point, guide);
+            assert.equal(JSON.parse(ownerRaw.lineworkOwner).lineworkGuideBlocked, false);
+          }
           assert.deepEqual(player(late)!.skills, []);
           for (const observer of [host, late]) {
             const raw = observer.room!.state.players.get(heavy.id)!;
@@ -259,6 +268,7 @@ export async function runLineworkPeers(
             assert.equal(visible.lineworkAnchor, undefined);
             assert.equal(visible.lineworkConnection, undefined);
             assert.equal(visible.lineworkFlight, undefined);
+            assert.equal(visible.lineworkGuideBlocked, undefined);
           }
           assert(
             foreign.some(
@@ -284,7 +294,7 @@ export async function runLineworkPeers(
         },
       },
       fitting,
-      reserve,
+      acquisition,
     );
     await restWait(
       () => [host, heavy, late].every((s) => s.view?.phase === 'defeat' && s.view.endedByHost),

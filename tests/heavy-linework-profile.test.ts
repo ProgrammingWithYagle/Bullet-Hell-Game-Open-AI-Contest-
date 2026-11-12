@@ -46,7 +46,7 @@ test('issued73 fixture is actual captured64-technique/fourGeneral authority, nev
   assert.equal(issued.privateUserDataIncluded, false);
   assert.equal(issued.proposedCheckpointCreatedOrImported, false);
   assert.equal(issued.all64ActualIssuedTechniqueOwnerships.length, 64);
-  assert.equal(PROTOCOL, 75);
+  assert.equal(PROTOCOL, 76);
 });
 for (const classId of implementedClassIds)
   test(
@@ -162,7 +162,7 @@ test('actual current-edition purchases restore as local ownership without carryi
   for (const item of ['heavy-ordnance-1', 'heavy-linework-1'])
     assert(g.transact(p.id, { id: item, kind: 'skill', item }).ok);
   const save = g.offlineCheckpoint()!;
-  assert.equal(save.protocolVersion, 75);
+  assert.equal(save.protocolVersion, 76);
   assert.equal(save.contentRevision, CONTENT_REVISION);
   const restored = Game.restoreOffline(save),
     r = restored.players.get('solo')!;
@@ -173,5 +173,5 @@ test('actual current-edition purchases restore as local ownership without carryi
   const profile = freshProfile();
   assert.equal(profile.verified, false);
   assert.equal(profile.practiceOnly, true);
-  assert.equal(data.specializationSkills.length, 68);
+  assert.equal(data.specializationSkills.length, 69);
 });

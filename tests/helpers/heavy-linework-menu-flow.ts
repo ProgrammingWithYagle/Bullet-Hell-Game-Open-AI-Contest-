@@ -72,15 +72,21 @@ export async function lineworkMenu(player: () => PlayerView) {
     env.host.innerHTML = guide.heavyKitMarkup(current, controls, true);
     const ownsEntry = current.skills.includes(lineworkIds.entry);
     const ownsReserve = current.skills.includes(lineworkIds.reserve);
+    const ownsGuide = current.skills.includes(lineworkIds.guide);
     assert.equal(
       env.host.querySelectorAll('[data-kit-action]').length,
-      ownsEntry ? (ownsReserve ? 6 : 5) : 3,
+      ownsEntry ? (ownsReserve || ownsGuide ? 6 : 5) : 3,
     );
-    const reserve = env.host.querySelector('[data-kit-action="technique3"]');
-    assert.equal(!!reserve, ownsReserve);
-    if (reserve)
-      for (const label of ['Cast / select reserve', 'M', 'P', '6'])
-        assert(reserve.textContent.includes(label));
+    const evolution = env.host.querySelector('[data-kit-action="technique3"]');
+    assert.equal(!!evolution, ownsReserve || ownsGuide);
+    if (evolution)
+      for (const label of [
+        ownsGuide ? 'Set / redirect guide' : 'Cast / select reserve',
+        'M',
+        'P',
+        '6',
+      ])
+        assert(evolution.textContent.includes(label));
     if (!ownsEntry) return;
     const cast = env.host.querySelector('[data-kit-action="technique1"]')!;
     const drive = env.host.querySelector('[data-kit-action="technique2"]')!;
@@ -121,12 +127,12 @@ export async function lineworkMenu(player: () => PlayerView) {
       if (item === 'heavy-ordnance-1')
         env.host.querySelector('[data-prerequisite="heavy-ordnance-1"]')!.click();
       else env.host.querySelector('[data-inspect="' + item + '"]')!.click();
-      if (item === lineworkIds.reserve) {
-        const reserve = env.host.querySelector(
+      if (item === lineworkIds.reserve || item === lineworkIds.guide) {
+        const evolution = env.host.querySelector(
           '#item-details [data-technique-control="technique3"]',
         )!;
-        assert(reserve);
-        for (const label of ['M', 'P', '6']) assert(reserve.textContent.includes(label));
+        assert(evolution);
+        for (const label of ['M', 'P', '6']) assert(evolution.textContent.includes(label));
       }
       const button = env.host.querySelector('#buy-selected')!;
       assert.equal(button.disabled, !purchasable, item);

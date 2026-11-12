@@ -371,7 +371,7 @@ test("known public-v4 local saves and profiles preserve economy, names, bindings
   old.contentRevision = issued;
   old.player.coins = 731;
   const restored = Game.restoreOffline(old).offlineCheckpoint()!;
-  assert.equal(PROTOCOL,75);
+  assert.equal(PROTOCOL,76);
   assert.equal(restored.protocolVersion, PROTOCOL);
   assert.equal(restored.contentRevision, CONTENT_REVISION);
   assert.deepEqual(restored.player, old.player);
