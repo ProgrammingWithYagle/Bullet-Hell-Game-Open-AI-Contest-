@@ -1,6 +1,6 @@
 # Heavy route studies
 
-The initial Lineworker techniques entered protocol 74. Protocol 75 adds the acquired Reserve Anchor. The earlier unregistered studies below retain their original dates and outcomes. Corner Guide remains in the copied Game research registry, with useful geometry observed in 26 of 36 pairs. [Current Lineworker design and observations](HEAVY_LINEWORKER_DESIGN.md).
+The initial Lineworker techniques entered protocol 74, Reserve Anchor entered protocol 75 and Corner Guide entered protocol 76. The original copied Game studies below retain their dates and outcomes. The wall-face addition extended Corner Guide coverage from the 26 corner pairs to all 36 pairs in controlled geometry. [Current Lineworker design and observations](HEAVY_LINEWORKER_DESIGN.md).
 
 Unregistered design study, 2026-11-10. No catalog card, skill id, ownership, art integration or gameplay acceptance is created here. The Tethered Traverse proof correction is now complete; the executed controlled studies below remain separate from any content admission. The next admission must preserve exact73 /9dc09a2d8243caf47ed6f3c9b1f4140814e24a7b482040d34538d0056c0cbce2 /64 techniques /four General before72 across ownership and all twelve profile/history rosters.
 

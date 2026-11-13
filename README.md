@@ -1,6 +1,6 @@
 # Grave Accord
 
-Development source **6a75d36a32875c71a47a139dd32426612cd8c59d** uses build **2026.11.12-heavy-reserve-anchor**, protocol **75** and catalog **68**. The local gate and both exact-source workflows passed 2,322 tests and all seven checks. The testing and public review clients each bind 2,064 files and passed native HTTP plus six earned Reserve Anchor cases. [Verification](reviews/heavy-reserve-anchor-ci-2026-11-12/frozen-verification.json), [current continuation](handoff/NEXT_CHAT.md).
+Development source **21f490af74c2a05c59fa94e1bf3ce6f8614c9279** uses build **2026.11.12-heavy-corner-guide**, protocol **76** and catalog **69**. The local gate and both exact-source workflows passed 2,331 tests and all seven checks. The testing and public review clients each bind 2,065 files and passed native HTTP plus six earned Corner Guide cases. [Verification](reviews/heavy-corner-guide-r2-2026-11-12/frozen-verification.json), [current continuation](handoff/NEXT_CHAT.md).
 
 Local build storage follows [bounded review retention](docs/REVIEW_STORAGE_POLICY.md): one current testing/public pair and one verified rollback archive. The authorized cleanup reduced this checkout from87.6GiB to~8.95GiB; older full copies/services are retired while original assets, receipts, Git and private SQLite remain.
 
@@ -55,7 +55,7 @@ Development and testing builds include rehearsal tools. Public builds omit the b
 | Part | Implemented content |
 | --- | --- |
 | Survivors | Twelve classes, each with two abilities and an ultimate |
-| Builds | 648 General class nodes, four shared techniques, 68 specialization techniques, 36 ability transformations and 48 weapons |
+| Builds | 648 General class nodes, four shared techniques, 69 specialization techniques, 36 ability transformations and 48 weapons |
 | Encounters | 66 executable identities, including nine scheduled Endless exclusives and an optional Uncounted finale; individual original themes |
 | Routes | Quarantine Run, Midnight Circuit, Black Bell Pilgrimage, Grand Raid and Endless Vigil |
 | Arenas | Six different playable layouts with difficulty-specific cover and hazards |
