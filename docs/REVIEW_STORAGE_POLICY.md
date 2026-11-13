@@ -29,13 +29,14 @@ The state pointer is `output/review-retention.json`. Future preservation audits 
 Verify without expanding:
 
 ```powershell
-python tools/review-retention.py verify --repo . --receipt reviews/storage-reserve-anchor-ci-2026-11-12/rollback-archive.json
+python tools/review-retention.py verify --repo . --receipt reviews/storage-heavy-corner-guide-r2-2026-11-12/rollback-archive.json
 ```
 
 Restore the original files when needed:
 
 ```powershell
-python tools/review-retention.py restore --archive output/review-rollback.zip --sha256 ee9576a5bbca3ec6659c48e6947f57a2fde23ff03a8984ff0f1388e542e889fc --into .
+$reviewState = Get-Content -LiteralPath output/review-retention.json -Raw | ConvertFrom-Json
+python tools/review-retention.py restore --archive $reviewState.rollbackArchive --sha256 $reviewState.rollbackArchiveSha256 --into .
 ```
 
 Existing identical manifest files are verified and retained; conflicting files are never overwritten. Restoration does not start services. Use fresh launch receipts for an explicitly requested rollback; the old launcher writes process receipts, so do not relaunch into an original historical receipt scope. Remove temporary restored copies through a fresh checked retention plan. Private SQLite stays at its original local paths and is excluded from the build archive.
