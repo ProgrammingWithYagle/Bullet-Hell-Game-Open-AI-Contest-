@@ -1,0 +1,21 @@
+.alchemy-controls {
+  --alchemy-edge: #aa9575;
+  --alchemy-paper: #eee2cb;
+  --alchemy-ground: #211c23ed;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .25rem;
+  max-width: 32rem;
+  padding: .3rem .45rem;
+  border: 1px solid var(--alchemy-edge);
+  background: var(--alchemy-ground);
+  color: var(--alchemy-paper);
+  pointer-events: auto;
+  font-size: .75rem;
+}
+.alchemy-controls[hidden] { display: none; }
+.alchemy-controls > small { flex: 1 1 100%; overflow-wrap: anywhere; }
+.alchemy-recipe-buttons { display: flex; flex-wrap: wrap; gap: .25rem; }
+.alchemy-recipe-buttons button { min-height: 2.5rem; padding: .35rem .6rem; font-size: .75rem; }
+.alchemy-recipe-buttons button[aria-pressed="true"] { border-color: var(--alchemy-paper); background: #4a3a42; opacity: 1; }
+@media (max-width: 600px) { .alchemy-controls { max-width: 100%; } .alchemy-recipe-buttons button { min-height: 2.75rem; } }

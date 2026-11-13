@@ -1,0 +1,19 @@
+✔ host-only pause freezes real peers, chat stays live, leaving resumes and transfers private invite access, end reaches everyone (1219.9979ms)
+✔ explicit pause holds the real intermission clock, rejects transactions, and Continue restores the same remaining time (465.3807ms)
+✔ a dropped paused host reconnects without taking host control back or stopping the remaining player (641.5222ms)
+✔ a manually paused journal renews its lease without stepping the game or its timers (9.8212ms)
+✔ real peer views preserve every player wire field and decoded build without serializing the schema twice (452.6402ms)
+✔ fifty real peers can join a private room by code from one IP and wait for the host (4653.7922ms)
+✔ a shared group can leave a sixteen-player lobby and rejoin a fifty-player lobby within one minute (8483.306ms)
+✔ failed room-code guesses remain limited without locking out a known valid code (189.3813ms)
+✔ known room-code lookups have a bounded shared-network budget and cannot be reset with forwarded headers (329.8047ms)
+✔ admission allows two full join attempts per group while remaining bounded after tickets are cancelled (291.2973ms)
+✔ records reads allow a full group to browse results and roster pages while retaining a shared-IP limit (750.5532ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 17304.7218

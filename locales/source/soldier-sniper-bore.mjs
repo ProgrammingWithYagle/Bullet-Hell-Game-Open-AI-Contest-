@@ -1,0 +1,6 @@
+export const soldierSniperBoreMessages=()=>({
+  "skill.soldier-sniper-bore-1.name": "Bore Through",
+  "skill.soldier-sniper-bore-1.description": "After preparing and settling Settled Shot, action 2 releases the same paid round with70base ability impact instead of110. It may cross one narrow cover section, at most68pixels along its actual path including the round's width, then retains sixty percent impact. Travel inside cover consumes real time and lifespan; deeper masonry, another solid or the first body stops it. Armor uses your actual firing origin. This is no body piercing, bank, targeting or armor bypass. It cannot prepare a fresh round, extend the original opportunity, return ammunition or reset recovery. Action 1 keeps its direct shot. Careful Carry and Clear Chamber remain optional handling choices.",
+  "ui.sniper.boreHelp": "Bore Through uses action 2 to release the already settled round through one narrow cover section at reduced impact. Prepare with action 1 first. Real travel continues inside cover; deeper masonry, another solid and the first body stop the shot. Action 1 retains its direct shot, and the original preparation deadline/recovery still apply.",
+  "ui.sniper.boreAwait": "settle action 1 first"
+});

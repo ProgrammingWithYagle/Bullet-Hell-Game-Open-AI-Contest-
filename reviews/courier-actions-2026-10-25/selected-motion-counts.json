@@ -1,0 +1,99 @@
+{
+  "passed": true,
+  "sourceTool": "tools/audit-selected-motion-v2.mjs",
+  "sourceToolSha256": "2817e45c6566ba1ee289163fc9785f475031f96792e55c4b0425347351496ec4",
+  "selectedAnimation": {
+    "atlases": 243,
+    "selectedFrames": 1462
+  },
+  "productionNormalized": {
+    "atlases": 242,
+    "selectedFrames": 1454
+  },
+  "retainedLegacyProof": {
+    "atlases": 1,
+    "selectedFrames": 8
+  },
+  "categories": {
+    "survivors": {
+      "atlases": 168,
+      "selectedFrames": 820
+    },
+    "warden": {
+      "atlases": 5,
+      "selectedFrames": 27
+    },
+    "constable": {
+      "atlases": 5,
+      "selectedFrames": 27
+    },
+    "encounters": {
+      "atlases": 65,
+      "selectedFrames": 588
+    }
+  },
+  "sources": [
+    {
+      "path": "assets/production/motion/heavy-library.json",
+      "lfTextSha256": "b3d130925da67bebd4cf11138f41413d227d5b64807160cee6a7a0a7acea2dee"
+    },
+    {
+      "path": "assets/production/motion/survivor-library.json",
+      "lfTextSha256": "1567f387547c5ac694b582b57c211e4b0d9196006fe3836b2f02d5a76876b8bb"
+    },
+    {
+      "path": "assets/production/motion/legacy-survivor-library.json",
+      "lfTextSha256": "d71d2e17fe10190885774ab3216dbb9ba39960e5bbb7b3ab61ff4da09925886c"
+    },
+    {
+      "path": "assets/production/motion/survivor-actions/library.json",
+      "lfTextSha256": "1099e503b38044ae0bf0df7944fa8e14b335958a8dcb9db24348b352eb4e60dd"
+    },
+    {
+      "path": "assets/production/motion/warden-rehearsal.json",
+      "lfTextSha256": "efdf188fc62590f194736184b0987d8ffa3558c45511b4d782e8134cd80f9a6d"
+    },
+    {
+      "path": "assets/production/motion/constable-library.json",
+      "lfTextSha256": "1953fe709ca7a0b59a028d44147f9c772634c3f41fb1b3e3cb3f70390f7bf192"
+    },
+    {
+      "path": "assets/production/motion/encounter-library.json",
+      "lfTextSha256": "64907b9ecf3d40be72ad4bec7f7b0b8592a260ad1f0f5be3352fc224b1d25bbd"
+    },
+    {
+      "path": "assets/production/motion/civic-library.json",
+      "lfTextSha256": "4d0097eb51a7a682319ebb0d31807ba647728c3c1aa39bfc6c05179fb8499953"
+    },
+    {
+      "path": "assets/production/motion/service-library.json",
+      "lfTextSha256": "21d72ac6346d23c4dd5c544730946cb2a00707e9f41038eed841ca0344880065"
+    },
+    {
+      "path": "assets/production/motion/district-library.json",
+      "lfTextSha256": "e382d08973553cc62a6b5a3a6af4d97178f9cb8cc0d09da253de7cc598574399"
+    },
+    {
+      "path": "assets/production/motion/raid-library.json",
+      "lfTextSha256": "239153bbd8a7b0f0be1d1d1f750204c37793a15ec1de3c15fbf97f69b02efb5f"
+    },
+    {
+      "path": "assets/production/motion/endless-library.json",
+      "lfTextSha256": "ab589035efdedf25973068f874b501de4b1f8b4e316794cb95ee214728a3643c"
+    },
+    {
+      "path": "assets/production/motion/opening-defeats-library.json",
+      "lfTextSha256": "3f672c3af90783f75ad6e3b507295c881ae133bf8dc96d9a7af1cf33080b0aba"
+    },
+    {
+      "path": "assets/production/motion/courier-library.json",
+      "lfTextSha256": "8771c12376edb64e46b9c8cca5fe572373a945ea21c0559d5fe27702c38416fb"
+    }
+  ],
+  "limits": [
+    "Selected animation metadata only; static references and unselected archives are excluded.",
+    "Eight retained Constable proof-atlas poses are counted separately from production-path poses.",
+    "Engineer north selects four frames even though its original archived atlas has an unused second row.",
+    "Counts do not establish rendered or human acceptance."
+  ]
+}

@@ -1,0 +1,21 @@
+{"handling":"manual","ordinarySeamClear":1,"boss":"ragpicker-kite","earnedSP":9,"seconds":5}
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+
+  assert(!reject.ok&&reject.reason==='insufficientPoints')
+
+    at seamFlow (C:\Users\yigal\Documents\Codex\2026-11-05\continue-grave-accord-in-the-same\work\heavy-seam-stage\seam-flow01.mts:12:95)
+    at async seamWorkerFlow (C:\Users\yigal\Documents\Codex\2026-11-05\continue-grave-accord-in-the-same\work\heavy-seam-stage\seam-worker01.mts:68:20)
+    at async <anonymous> (C:\Users\yigal\Documents\Codex\2026-11-05\continue-grave-accord-in-the-same\work\heavy-seam-stage\invoke-worker01.mts:1:133) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.22.1

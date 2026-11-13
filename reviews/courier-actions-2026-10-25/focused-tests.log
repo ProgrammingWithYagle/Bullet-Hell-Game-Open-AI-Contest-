@@ -1,0 +1,27 @@
+✔ startup loads every boss identity and shared actor but no deferred full boss atlas (2.2637ms)
+✔ all 57 exact identity references keep their original atlas, dimensions, origin and world size (65.8681ms)
+✔ an unavailable full atlas uses that same boss identity at frame zero and ready/shared textures keep their actual pose (0.6598ms)
+✔ one in-flight request coalesces repeated and superseded bosses without retaining stale completions (8.8018ms)
+✔ cycling the full boss roster retains at most two decoded full atlases and reserves space before each load (4.0656ms)
+✔ failed loads keep the identity available and retry only after five seconds with a monotonic finite clock (0.9507ms)
+✔ scene shutdown releases cached resources and rejects further requests, including a late completion (1.4919ms)
+✔ a live boss sprite releases its old atlas for its own identity before the texture is destroyed (0.4534ms)
+✔ Courier motion binds three complete native strips and the retained sixteen-pose source prefix (9.2449ms)
+✔ normal and Brutal Courier charges keep their exact authoritative action poses ahead of hit reactions and drawing lead (32.9458ms)
+✔ Courier idle shows all four breathing poses and a real friendly hit starts and completes all four recoil poses (2.5079ms)
+✔ a real successful Accord plays the upright entry once then loops three weak Courier poses for the full authoritative stagger (8.2685ms)
+✔ Courier death overrides recoil, charge and Accord and completes on world time with rewards banked only once (3.2294ms)
+✔ all cropped identities retain world anchors through loading and eviction, and live Courier poses never select a corpse fallback (20.3988ms)
+✔ seven combined boss atlases retain every original source and bind fifty-six complete new collapse poses (86.1679ms)
+✔ all seven normal and Brutal defeats play once on world time after authority stops combat and bank rewards only once (83.8986ms)
+✔ stale cast, hurt and stagger cues cannot restart a settled defeat; reduced motion and a fresh encounter have explicit states (2.4903ms)
+✔ unavailable collapse atlases use their own exact settled image while live fallback identities stay unchanged (2.0493ms)
+✔ evicting a live or defeated combined atlas releases the sprite to the matching identity before texture destruction (0.6086ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 785.7111

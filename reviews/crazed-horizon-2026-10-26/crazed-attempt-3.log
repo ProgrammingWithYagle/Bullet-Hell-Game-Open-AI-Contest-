@@ -1,0 +1,44 @@
+✔ all seven survivors are selectable with their own four compatible weapon tiers and 54 purchasable nodes (7.6241ms)
+✔ Tank wall takes finite swept bullet damage while teammates walk through it (8.9084ms)
+✔ Tank charge moves its authored distance, stops on cover and hits a crossed enemy only once (2.815ms)
+✔ The City Holds grants finite team shield and capped armor without stacking identical fields (13.6998ms)
+✔ Mage sigil deals one burst and slows ordinary enemies without slowing the boss (6.8799ms)
+✔ Mage ward detonates at the locked aim point and grants nearby allies a temporary shield (5.8414ms)
+✔ Silent Twelfth releases three timed pulses and clears only nearby hostile projectiles (7.9552ms)
+✔ Engineer deploys an 80-HP turret with real owned projectiles; cover still blocks its fire (4.9933ms)
+✔ Engineer siege and skill paths change actual construct count, health, damage and duration (5.5155ms)
+✔ Assassin veil prevents new target locks but still takes existing projectile and contact damage (7.8045ms)
+✔ Assassin Shadow Step sweeps enemies, respects masonry and ultimate provides three free empowered steps (0.9438ms)
+✔ new class-specific skills affect barrier health, sigil radius, veil duration and extra ultimate charges (1.7945ms)
+✔ Last Passage guarantees critical primary damage and Siege Engine accelerates owned turrets (3.1111ms)
+✔ all 66 identities admit Crazed with their fixed grade, inherited full signature and tier-appropriate phase count (39.3866ms)
+✔ Crazed queues at most the finite pending budget and actual echoes never exceed the 4000-hostile cap (188.73ms)
+✔ controlled Clockmender rings scale actual shots 24/60/180, preserve stop/resume and leave no uncontrolled duplicates (46.6975ms)
+✔ controlled drone swarms retain live source cancellation at the higher projectile densities (11.454ms)
+✔ variant pressure locks pursuit positions, warns before contact, sweeps fast movement and expires without hidden repeats (0.7114ms)
+✔ Brutal and Crazed add different real warned patterns, rotate targets and bound fifty-player marks (26.3033ms)
+✔ real Crazed corner pressure reaches distant players and is removed by phase changes, stagger, victory, timeout and wipe (35.0148ms)
+✔ Warden active cones retain a clear auxiliary-pressure window even in Crazed (62.6142ms)
+✔ Endless progresses each actually cleared identity through Standard, Brutal and Crazed across saved boundaries (123.3915ms)
+✔ known protocol20 local saves and profiles retain progress; unproven legacy form history is conservatively Standard (4.6792ms)
+✔ four spacious maps reduce real retreat distance and painted/colliding geometry together while two narrow layouts stay full size (31.3601ms)
+✔ phase transitions send one distinct priority sound per actual phase and the original new cue reconstructs exactly (351.3882ms)
+✖ real owner/observer rooms replicate purple Crazed admission, locked extra pressure, phase sound and cleanup (6790.1282ms)
+ℹ tests 26
+ℹ suites 0
+ℹ pass 25
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9693.1441
+
+✖ failing tests:
+
+test at tests\crazed-horizon.test.ts:1:13565
+✖ real owner/observer rooms replicate purple Crazed admission, locked extra pressure, phase sound and cleanup (6790.1282ms)
+  Error: Crazed room did not replicate
+      at until (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\crazed-horizon.test.ts:198:107)
+      at async TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\crazed-horizon.test.ts:207:38)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)

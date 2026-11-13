@@ -1,0 +1,75 @@
+{
+  "passed": true,
+  "verifier": "tools/verify-opening-defeats.py",
+  "verifierSha256": "9d498f1f8ed27a55cbd48935b4b388a1a5be0deee971639241187b5ba8064eb9",
+  "librarySha256": "3f672c3af90783f75ad6e3b507295c881ae133bf8dc96d9a7af1cf33080b0aba",
+  "nativeReturns": 8,
+  "selectedSheets": 7,
+  "retainedRejectedLayouts": 1,
+  "newCompleteDefeatPoses": 56,
+  "preservedOriginalActionPoses": 56,
+  "results": [
+    {
+      "bossId": "courier",
+      "newCompletePoses": 8,
+      "originalLivePoses": 8,
+      "wholeNativePartitionExact": true,
+      "packedRgbaReconstructed": true,
+      "originalLiveRgbaAndWorldTransformUnchanged": true
+    },
+    {
+      "bossId": "ratcatcher",
+      "newCompletePoses": 8,
+      "originalLivePoses": 8,
+      "wholeNativePartitionExact": true,
+      "packedRgbaReconstructed": true,
+      "originalLiveRgbaAndWorldTransformUnchanged": true
+    },
+    {
+      "bossId": "quarantine-clerk",
+      "newCompletePoses": 8,
+      "originalLivePoses": 8,
+      "wholeNativePartitionExact": true,
+      "packedRgbaReconstructed": true,
+      "originalLiveRgbaAndWorldTransformUnchanged": true
+    },
+    {
+      "bossId": "tollkeeper",
+      "newCompletePoses": 8,
+      "originalLivePoses": 8,
+      "wholeNativePartitionExact": true,
+      "packedRgbaReconstructed": true,
+      "originalLiveRgbaAndWorldTransformUnchanged": true
+    },
+    {
+      "bossId": "chain-marshal",
+      "newCompletePoses": 8,
+      "originalLivePoses": 8,
+      "wholeNativePartitionExact": true,
+      "packedRgbaReconstructed": true,
+      "originalLiveRgbaAndWorldTransformUnchanged": true
+    },
+    {
+      "bossId": "gate-widow",
+      "newCompletePoses": 8,
+      "originalLivePoses": 8,
+      "wholeNativePartitionExact": true,
+      "packedRgbaReconstructed": true,
+      "originalLiveRgbaAndWorldTransformUnchanged": true
+    },
+    {
+      "bossId": "black-ambulance",
+      "newCompletePoses": 8,
+      "originalLivePoses": 8,
+      "wholeNativePartitionExact": true,
+      "packedRgbaReconstructed": true,
+      "originalLiveRgbaAndWorldTransformUnchanged": true
+    }
+  ],
+  "renderedAccepted": false,
+  "limits": [
+    "Independent complete-native and packed-RGBA reconstruction only.",
+    "Original live pixels/world transforms are preserved; new pose anatomy and transitions remain candidates for rendered/device/human review.",
+    "Ambulance v1 is retained and rejected because two whole groups connect; selected v2 uses two columns and four rows."
+  ]
+}

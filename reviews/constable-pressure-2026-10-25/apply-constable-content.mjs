@@ -1,0 +1,11 @@
+import fs from 'node:fs';
+import {createHash} from 'node:crypto';
+import {reviseConstable} from '../../content/source/constable-encounter.mjs';
+const catalog=JSON.parse(fs.readFileSync('content/catalog.json','utf8'));
+reviseConstable(catalog.bosses);
+const write=(file,data)=>fs.writeFileSync(file,JSON.stringify(data,null,2)+'\n');
+write('content/bosses.json',catalog.bosses);write('content/catalog.json',catalog);
+const revision=JSON.parse(fs.readFileSync('content/revision.json','utf8'));
+revision.sha256=createHash('sha256').update(JSON.stringify(catalog)).digest('hex');
+write('content/revision.json',revision);
+console.log(JSON.stringify({updated:'constable',contentRevision:revision.sha256,ordinaryBosses:catalog.bosses.length}));

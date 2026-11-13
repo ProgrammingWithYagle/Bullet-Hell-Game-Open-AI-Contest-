@@ -1,0 +1,2 @@
+const labels={en:'Boss defeated','zh-Hans':'首领已击败','zh-Hant':'首領已擊敗',ja:'ボス撃破',es:'Jefe derrotado',fr:'Boss vaincu',de:'Boss besiegt','pt-BR':'Chefe derrotado',ru:'Босс повержен',hi:'बॉस पराजित',ar:'هُزم الزعيم',bn:'বস পরাজিত',id:'Bos dikalahkan',ur:'باس شکست کھا گیا',ko:'보스 처치'};
+export function bossDefeatMessages(locale){if(!labels[locale])throw Error('Missing boss defeat locale '+locale);return{'ui.bossDefeated':labels[locale].normalize('NFC')};}

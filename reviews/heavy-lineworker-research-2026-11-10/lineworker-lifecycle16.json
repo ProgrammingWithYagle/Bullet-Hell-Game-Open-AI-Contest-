@@ -1,0 +1,158 @@
+{
+  "createdAt": "2026-11-12T00:42:57.628Z",
+  "registered": false,
+  "onlineProof": false,
+  "canonicalSourceAndTestsUnchanged": true,
+  "countsAs2211Tests": false,
+  "prototype": "03",
+  "prototypeBundleSha256": "1abf7ee1498ee8b1dc20124b2acaf59959a4cb081762970df314a2263bfcab89",
+  "runnerSha256": "84242c96c7cdf9079cc93177e6219429248db52029296ad163186d4f7f1b1a56",
+  "cases": 17,
+  "pass": 14,
+  "fail": 3,
+  "results": [
+    {
+      "label": "fresh empty magazine admits no anchor, payment or recovery",
+      "passed": true,
+      "details": {
+        "ammo": 0,
+        "recovery": 0
+      }
+    },
+    {
+      "label": "actual ordinary body consumes paid anchor flight without damage or attachment",
+      "passed": true,
+      "details": {
+        "paidRound": 1,
+        "bodyHealth": 1000,
+        "attached": false
+      }
+    },
+    {
+      "label": "controlled temporary solid stops flight without becoming masonry attachment",
+      "passed": true,
+      "details": {
+        "controlledTemporarySolid": true,
+        "actualGameCollision": true,
+        "attached": false
+      }
+    },
+    {
+      "label": "current original masonry removal permanently releases unpaid work",
+      "passed": true,
+      "details": {
+        "removedActualOriginalWall": true,
+        "recovery": 241,
+        "noRefund": true
+      }
+    },
+    {
+      "label": "new actual cover across the current lead severs it permanently",
+      "passed": true,
+      "details": {
+        "controlledNewCover": true,
+        "actualCurrentLineObstruction": true
+      }
+    },
+    {
+      "label": "entry loss removes paid flight and retains rostered recovery",
+      "passed": true,
+      "details": {
+        "loss": "entry",
+        "removedShotId": 1,
+        "recovery": 241
+      }
+    },
+    {
+      "label": "weapon loss removes paid flight and retains rostered recovery",
+      "passed": true,
+      "details": {
+        "loss": "weapon",
+        "removedShotId": 1,
+        "recovery": 241
+      }
+    },
+    {
+      "label": "actual disconnect/reconnect immediately removes dependent flight without erasing recovery",
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: disconnect must retire actual flight before a same-frame reconnect",
+      "stack": "AssertionError [ERR_ASSERTION]: disconnect must retire actual flight before a same-frame reconnect\n    at <anonymous> (C:\\Users\\yigal\\Documents\\Codex\\2026-11-10\\continue-grave-accord-in-the-same\\work\\menu21-stage\\lineworker-lifecycle16.mts:18:200)\n    at run (C:\\Users\\yigal\\Documents\\Codex\\2026-11-10\\continue-grave-accord-in-the-same\\work\\menu21-stage\\lineworker-lifecycle16.mts:11:110)\n    at <anonymous> (C:\\Users\\yigal\\Documents\\Codex\\2026-11-10\\continue-grave-accord-in-the-same\\work\\menu21-stage\\lineworker-lifecycle16.mts:18:1)"
+    },
+    {
+      "label": "actual disconnect/reconnect immediately releases an already attached line",
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: disconnect must release attached work immediately\n\n151 !== 0\n",
+      "stack": "AssertionError [ERR_ASSERTION]: disconnect must release attached work immediately\n\n151 !== 0\n\n    at <anonymous> (C:\\Users\\yigal\\Documents\\Codex\\2026-11-10\\continue-grave-accord-in-the-same\\work\\menu21-stage\\lineworker-lifecycle16.mts:19:179)\n    at run (C:\\Users\\yigal\\Documents\\Codex\\2026-11-10\\continue-grave-accord-in-the-same\\work\\menu21-stage\\lineworker-lifecycle16.mts:11:110)\n    at <anonymous> (C:\\Users\\yigal\\Documents\\Codex\\2026-11-10\\continue-grave-accord-in-the-same\\work\\menu21-stage\\lineworker-lifecycle16.mts:19:1)"
+    },
+    {
+      "label": "unused Yoke loss falls back to bare handling instead of retaining primary privilege",
+      "passed": true,
+      "details": {
+        "mode": "bare",
+        "noPrimaryPrivilege": true
+      }
+    },
+    {
+      "label": "used Yoke loss removes its dependent work while keeping paid recovery",
+      "passed": true,
+      "details": {
+        "recovery": 241
+      }
+    },
+    {
+      "label": "brake/reengage never extends original finite lifetime or pays another cartridge",
+      "passed": true,
+      "details": {
+        "originalUntil": 151,
+        "endedAt": 152,
+        "rounds": 1
+      }
+    },
+    {
+      "label": "admitted cone brakes the motor without resetting the remaining line or its recovery",
+      "passed": true,
+      "details": {
+        "actualConeAdmitted": true,
+        "retainedUntil": 151,
+        "recovery": 241
+      }
+    },
+    {
+      "label": "rejected cone preserves current active motor and original deadline",
+      "passed": true,
+      "details": {
+        "coneRejected": true,
+        "motorRetained": true
+      }
+    },
+    {
+      "label": "issued Braced Firing slows actual motor displacement rather than granting an extra movement privilege",
+      "passed": true,
+      "details": {
+        "ordinaryDisplacement": 6.333333333333293,
+        "bracedDisplacement": 3.8000000000000482,
+        "issuedEOnly": true
+      }
+    },
+    {
+      "label": "actual host exit removes tracked flight/work instead of carrying it into another phase",
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert(!f.g.shots.has(id))\n",
+      "stack": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert(!f.g.shots.has(id))\n\n    at <anonymous> (C:\\Users\\yigal\\Documents\\Codex\\2026-11-10\\continue-grave-accord-in-the-same\\work\\menu21-stage\\lineworker-lifecycle16.mts:26:190)\n    at run (C:\\Users\\yigal\\Documents\\Codex\\2026-11-10\\continue-grave-accord-in-the-same\\work\\menu21-stage\\lineworker-lifecycle16.mts:11:110)\n    at <anonymous> (C:\\Users\\yigal\\Documents\\Codex\\2026-11-10\\continue-grave-accord-in-the-same\\work\\menu21-stage\\lineworker-lifecycle16.mts:26:1)"
+    },
+    {
+      "label": "pooled-shot reuse cannot redirect old cleanup onto another owner",
+      "passed": true,
+      "details": {
+        "oldId": 1,
+        "foreignId": 2,
+        "foreignOwnerRetained": "ally",
+        "onlyCopiedIdsUsedForCleanupChecks": true
+      }
+    }
+  ],
+  "limits": [
+    "Controlled copied-Game lifecycle fixtures, including explicit cover/body/resources/recovery states and held boss attacks. No canonical purchase, real earned progression or online checkpoint is created.",
+    "Current geometry, actual ordinary body/temporary-solid collision, admitted issued abilities, actual disconnect API, host exit and real shot pool run in the copied authority. These are not rendered/native-device or live-combat balance acceptance."
+  ]
+}

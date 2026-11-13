@@ -1,0 +1,22 @@
+✔ switching equipment tabs retains focus on the current selected tab (295.2518ms)
+✔ switching skill branches retains focus and old detached tab handlers cannot redraw the panel (167.3566ms)
+✔ arrow, Home and End keys navigate shop tabs, including mirrored horizontal direction (157.4003ms)
+✔ disposed equipment ignores old connected controls and cannot submit a purchase (156.1678ms)
+✔ purchase errors remain in the current equipment status and clear on a fresh item choice (143.959ms)
+✔ a prerequisite link focuses its actual skill without resetting the skill scroll (154.2895ms)
+✔ hidden or inert equipment cannot spend currency and a disposed result cannot alter a newer panel (136.4974ms)
+✔ empty equipment and skill details show their own painted image while currency keeps text labels (153.041ms)
+✔ player resources use the same painted coins and manual without removing accessible labels or values (12.4875ms)
+✔ opening an own result reuses its downloaded first roster page and loads all fifty-one members once (382.36ms)
+✔ roster reuse ends with the filter generation and cannot show an old result in this week (215.6523ms)
+✔ a failed own-result prefetch is retried normally when its row arrives through pagination (197.532ms)
+✔ a recent shortcut from a different difficulty cannot appear in the selected board (164.3239ms)
+✔ an own result beyond two board pages stays a single row without repeated roster lookups (670.6755ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2320.7208

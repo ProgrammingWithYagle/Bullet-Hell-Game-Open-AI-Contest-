@@ -1,0 +1,130 @@
+✖ device record filters retain the current keyboard editing focus (326.6571ms)
+✖ switching record tabs focuses the current live tab (160.7043ms)
+✖ online records retain mode, difficulty, squad size and week when returning from device records (148.7854ms)
+✖ device and online record filters keep their separate choices (156.6057ms)
+✖ a smaller mode keeps the corrected squad size and time period on return (137.7903ms)
+✖ disposed record controls cannot navigate back or start a new board request (121.2068ms)
+✖ detached record filters and tabs cannot replace the live online view (136.5355ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 0
+ℹ fail 7
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1973.666
+
+✖ failing tests:
+
+test at tests\records-navigation.test.ts:1:1774
+✖ device record filters retain the current keyboard editing focus (326.6571ms)
+  AssertionError [ERR_ASSERTION]: Focus must remain on the live record filter
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\records-navigation.test.ts:29:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\records-navigation.test.ts:1:2208
+✖ switching record tabs focuses the current live tab (160.7043ms)
+  AssertionError [ERR_ASSERTION]: Focus must move to the live record tab
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\records-navigation.test.ts:37:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\records-navigation.test.ts:1:2614
+✖ online records retain mode, difficulty, squad size and week when returning from device records (148.7854ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'short' !== 'endless'
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\records-navigation.test.ts:46:9)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'short',
+    expected: 'endless',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\records-navigation.test.ts:1:3641
+✖ device and online record filters keep their separate choices (156.6057ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'long' !== 'endless'
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\records-navigation.test.ts:60:9)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'long',
+    expected: 'endless',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\records-navigation.test.ts:1:4349
+✖ a smaller mode keeps the corrected squad size and time period on return (137.7903ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  '17-50' !== 'solo'
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\records-navigation.test.ts:65:54)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '17-50',
+    expected: 'solo',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\records-navigation.test.ts:1:5159
+✖ disposed record controls cannot navigate back or start a new board request (121.2068ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\records-navigation.test.ts:73:62)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\records-navigation.test.ts:1:5481
+✖ detached record filters and tabs cannot replace the live online view (136.5355ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(f.host.querySelector('[data-record-mode]'))
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\records-navigation.test.ts:80:2)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

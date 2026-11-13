@@ -1,0 +1,80 @@
+{
+  "createdAt": "2026-10-24T01:46:28.032Z",
+  "contentRevision": "b8d9fb6918c854f3eed38b327ed0cb3026e071e6fe24932e50beed36943db241",
+  "protocolVersion": 6,
+  "classRoster": {
+    "soldier": 17,
+    "medic": 17,
+    "heavy": 16
+  },
+  "players": 50,
+  "renderedClients": 0,
+  "scriptedClients": 50,
+  "firstPlayableGate": "incomplete",
+  "reference": {
+    "cpu": "Intel(R) Core(TM) 9 270H",
+    "logicalCpus": 20,
+    "memoryGiB": 31.638248443603516,
+    "platform": "win32",
+    "node": "v24.19.0"
+  },
+  "baseline": {
+    "scenario": "active combat",
+    "peakMinions": 0,
+    "peakBossCues": 4,
+    "bossId": "ratcatcher",
+    "durationSeconds": 5.052033499999999,
+    "samples": 152,
+    "tickP50Ms": 4.904399999999441,
+    "tickP99Ms": 15.926099999999678,
+    "tickMaxMs": 16.011099999999715,
+    "eventLoopP99Ms": 72.024063,
+    "encodedOutboundBytes": 10864900,
+    "meanOutboundBytesPerSecondPerClient": 43011.98715329184,
+    "peakHostiles": 0,
+    "stressProjectilesSpawned": 0,
+    "processMemory": {
+      "rss": 250122240,
+      "heapTotal": 183312384,
+      "heapUsed": 60133576,
+      "external": 8499973,
+      "arrayBuffers": 4157664
+    }
+  },
+  "stress": {
+    "scenario": "4000-hostile stress",
+    "peakMinions": 0,
+    "peakBossCues": 1,
+    "bossId": "ratcatcher",
+    "durationSeconds": 5.041601000000001,
+    "samples": 148,
+    "tickP50Ms": 15.09310000000005,
+    "tickP99Ms": 59.696099999999205,
+    "tickMaxMs": 68.3775999999998,
+    "eventLoopP99Ms": 136.839167,
+    "encodedOutboundBytes": 27288177,
+    "meanOutboundBytesPerSecondPerClient": 108252.02946444986,
+    "peakHostiles": 4000,
+    "stressProjectilesSpawned": 9083,
+    "processMemory": {
+      "rss": 294817792,
+      "heapTotal": 210460672,
+      "heapUsed": 102202160,
+      "external": 11184252,
+      "arrayBuffers": 6841847
+    }
+  },
+  "actions": {
+    "acceptedInputs": 9100,
+    "rejectedInputs": 0,
+    "successfulPurchaseReplies": 100,
+    "votes": 100
+  },
+  "limitations": [
+    "All clients are scripted; no rendered-client FPS measurement.",
+    "Signatures and phase changes may retire hostile shots; 4000 is a measured peak, not a continuous-every-frame guarantee.",
+    "Server and bot clients share this process; memory is combined.",
+    "Invulnerability and extended boss health isolate throughput; stress projectiles and short intermissions are test fixtures.",
+    "Localhost pilot does not establish WAN performance, free-host capacity, device performance, reconnection endurance or human play quality."
+  ]
+}

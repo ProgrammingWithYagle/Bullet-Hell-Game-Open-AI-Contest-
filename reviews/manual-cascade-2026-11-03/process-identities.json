@@ -1,0 +1,61 @@
+{
+  "checkedAt": "2026-11-03T17:39:13.2178621Z",
+  "sourceCommit": "40900680b3553d7cf6d068a3da6d855c8b56a4b1",
+  "identities": [
+    {
+      "audience": "testing",
+      "role": "backend",
+      "pid": 14556,
+      "port": 2698,
+      "createdAt": "2026-11-03T17:36:34.7362170Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-manual-cascade-2026-11-03-4090068.mjs\""
+    },
+    {
+      "audience": "testing",
+      "role": "client",
+      "pid": 5452,
+      "port": 5322,
+      "createdAt": "2026-11-03T17:36:35.3688300Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-manual-cascade-2026-11-03-testing-4090068 --host 127.0.0.1 --port 5322 --strictPort"
+    },
+    {
+      "audience": "public",
+      "role": "backend",
+      "pid": 4336,
+      "port": 2699,
+      "createdAt": "2026-11-03T17:37:41.5215470Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-manual-cascade-2026-11-03-4090068.mjs\""
+    },
+    {
+      "audience": "public",
+      "role": "client",
+      "pid": 14536,
+      "port": 5323,
+      "createdAt": "2026-11-03T17:37:42.1729330Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-manual-cascade-2026-11-03-public-4090068 --host 127.0.0.1 --port 5323 --strictPort"
+    }
+  ],
+  "listeners": [
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 5323,
+      "OwningProcess": 14536
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 5322,
+      "OwningProcess": 5452
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 2699,
+      "OwningProcess": 4336
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 2698,
+      "OwningProcess": 14556
+    }
+  ],
+  "cleanupPerformed": false
+}

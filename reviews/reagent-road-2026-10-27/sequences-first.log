@@ -1,0 +1,150 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+... Skipped lines
+
+  {
++   at: 857,
+-   at: 523,
+    draining: false,
+    leg: 1,
+    legs: 1,
+    path: [
+      {
++       castAt: 587,
++       castEndsAt: 634,
++       castReleaseAt: 614,
+-       castAt: 192,
+-       castEndsAt: 239,
+-       castReleaseAt: 219,
+        deadline: 4500,
+        defeatedAt: 0,
+        health: 1186.5554567999998,
+        hurtAt: -100,
+        id: 'alchemist',
+...
+        vulnerableUntil: 0,
+-       x: 800,
+-       y: 332
+-     },
+-     {
+        x: 873,
++       y: 601
+-       y: 377
+      },
+      {
++       x: 809,
++       y: 537
+-       x: 873,
+-       y: 409
+      },
+      {
++       x: 777,
++       y: 537
+-       x: 873,
+-       y: 441
+      },
+      {
++       x: 745,
++       y: 537
+-       x: 873,
+-       y: 473
+      },
+      {
++       x: 745,
+-       x: 873,
+        y: 505
+      },
+-     {
+-       x: 873,
+-       y: 537
+-     },
+-     {
+-       x: 873,
+-       y: 569
+-     },
+-     {
+-       x: 873,
+-       y: 601
+-     }
+    ]
+  }
+
+    at file:///C:/Users/yigal/OneDrive/Documents/ChatGPT/OpenAI%20Multiplayer%20Game%20Contest%20(Bullet%20Hell)/tools/probe-mold.mjs:136:44
+    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+    at async node:internal/modules/esm/loader:647:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: {
+    path: [
+      {
+        id: 'alchemist',
+        hurtAt: -100,
+        defeatedAt: 0,
+        castAt: 587,
+        castReleaseAt: 614,
+        castEndsAt: 634,
+        variant: 'normal',
+        x: 873,
+        y: 601,
+        health: 1186.5554567999998,
+        maxHealth: 1603.4533199999998,
+        phase: 1,
+        threat: 3,
+        deadline: 4500,
+        staggerUntil: 0,
+        vulnerableUntil: 0
+      },
+      { x: 809, y: 537 },
+      { x: 777, y: 537 },
+      { x: 745, y: 537 },
+      { x: 745, y: 505 }
+    ],
+    at: 857,
+    leg: 1,
+    legs: 1,
+    draining: false
+  },
+  expected: {
+    path: [
+      {
+        id: 'alchemist',
+        hurtAt: -100,
+        defeatedAt: 0,
+        castAt: 192,
+        castReleaseAt: 219,
+        castEndsAt: 239,
+        variant: 'normal',
+        x: 800,
+        y: 332,
+        health: 1186.5554567999998,
+        maxHealth: 1603.4533199999998,
+        phase: 1,
+        threat: 3,
+        deadline: 4500,
+        staggerUntil: 0,
+        vulnerableUntil: 0
+      },
+      { x: 873, y: 377 },
+      { x: 873, y: 409 },
+      { x: 873, y: 441 },
+      { x: 873, y: 473 },
+      { x: 873, y: 505 },
+      { x: 873, y: 537 },
+      { x: 873, y: 569 },
+      { x: 873, y: 601 }
+    ],
+    at: 523,
+    leg: 1,
+    legs: 1,
+    draining: false
+  },
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.22.1

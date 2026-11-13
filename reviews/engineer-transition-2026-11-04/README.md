@@ -1,0 +1,13 @@
+# Engineer encounter-transition polish
+
+Candidate build2026.11.04-engineer-transition-polish/protocol54, contentd7aea7…unchanged. Based on the verified primary-readiness sourced7bef25/1,388tests. A further actual combat comparison confirmed Traps and Builder match, while Machinery still diverges. The first divergent state was a prior hostile-zone slow lasting a few frozen combat ticks; movement first diverged at tick391.
+
+The corrected regression-before-fix02.log records one failing fresh-movement boundary case and one passing ordinary combat-slow control. regression-before-fix.log is retained as an initial fixture setup error: normal hostile bullets do not cause this slow; actual hostile zone fields do. It is NOT a reproduced game failure. The final test uses an actual damaging zone, ordinary opening protection/expiry, naturally stepped intermissions and four safe restore phases. Only enemy completion is controlled in that boundary fixture.
+
+The fix clears slowUntil at the existing fresh-encounter poison/status reset. It preserves in-combat slowdown, weapon intervals, ability recovery, catalog/prices/assets/locales/protocol/save/acquisition/ownership definitions. Complete gate, exact-source CI, new same-candidate actual-combat pairs and fresh review probes follow separately. No human/rendered/device/native-language/listening/motion/literary/final-balance acceptance is implied. Earlier previews and private SQLite remain. No browser automation, subagents, cleanup or deployment.
+
+Final full-gate01.log passes all1,390tests, TypeScript, authored content/locales/story,144early-Campaign cases, production build and71encounter/300survivor/60companion atlas contracts. Exact raw log and runtime/snapshot fingerprints bind in source-verification.json. Catalog/protocol54/ownership definitions remain exact; only the inherited primary reset and current fresh-encounter slow reset change gameplay.
+
+Final native combat/restoration: three Short/Normal/seed2209/fixedGatehouse legal Engineer pilots and their18-safe-phase restored copies each naturally clear five encounters/spend27earned SP. Outcome/action/timing comparison passes exactly for all three. These native policy trials use actual damage, ordinary rewards/inputs and no injected enemy completion/resources; they are separate from controlled boundary fixtures and human/final balance. Exact-source CI/frozen reviews are recorded alongside.
+
+Publication: draftPR14binds this exact1390-test source, source push/PR CI, fresh5334/5335three-group reviews and the six actual Normal combat runs/three exact safe-restore pairs. Earlier partial source and fixture errors remain honestly labeled. Metadata HEAD CI is separate; no receipt-only commit loop. Runtime inputs remain exact.

@@ -1,0 +1,37 @@
+{
+  "preservedAttempts": [
+    {
+      "file": "full-attempt-1.log",
+      "issue": "Balance report still referenced previous content revision.",
+      "resolution": "Recomputed the unchanged offensive model for the new content hash;15834rows,0deadline misses."
+    },
+    {
+      "file": "full-attempt-2.log",
+      "issue": "Progress regression still expected58 remaining original quality passes.",
+      "resolution": "Updated to57 after actual Courier integration."
+    },
+    {
+      "file": "full-attempt-3.log",
+      "issue": "Standalone probe called a private content accessor.",
+      "resolution": "Read radius from the public authoritative catalog."
+    }
+  ],
+  "passingIntermediates": [
+    "full-before-doc-sync.log",
+    "full-before-arrow.log"
+  ],
+  "finalPassingLog": "full-current.log",
+  "rawLogsExplicitlyAdmittedAt": "02cba9e031d289cfc3f3e043385185ce1668aeb3",
+  "reasonForSeparateEvidenceCommit": "Repository ignores *.log; raw logs were force-added explicitly without amending source/history.",
+  "finalChecks": [
+    "510tests/510pass/0fail",
+    "15locale/source parity",
+    "TypeScript",
+    "production build",
+    "216complete actual routes/56086observed ticks",
+    "exact source and PR CI logs",
+    "all previous asset/image blobs preserved",
+    "all nine prior frozen roots/all ten process roots",
+    "exact18Wiki Markdown blobs/34image blobs/34public image hashes/4publicHTMLresponses"
+  ]
+}

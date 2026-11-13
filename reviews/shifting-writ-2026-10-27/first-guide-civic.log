@@ -1,0 +1,41 @@
+✔ boss guide starts closed, pauses Solo only, and closing it preserves an independent manual pause (1.2005ms)
+✔ all fifteen guide dialogs default hidden, expose open/close controls and distinguish frozen Solo from continuing online play (0.8192ms)
+✔ Session never sends a global pause command for an online guide (1.1237ms)
+✔ the actual offline worker freezes combat clocks, deadlines, player state and warnings while reading, then resumes without catchup or held input (920.746ms)
+✔ Tollkeeper locks both segments, reflects once at the wall and sweeps moving survivors only after its tell (5.8347ms)
+✖ Chain Marshal anchors absorb actual shots and breaking one cancels only its own sweep (56.2018ms)
+✔ Widow rotates the open gate, blocks shots and movement, and ejects a closing overlap without trapping (0.6451ms)
+✔ Widow collision prediction uses the same active shutters as the authoritative player step (17.3278ms)
+✔ Ambulance patrols, locks and executes a charge, then exposes its driver for exactly three seconds (32.446ms)
+✔ each civic boss executes its tier-appropriate phases without a Normal shield event and cleans on victory/deadline (47.3654ms)
+✔ Quarantine has four nonrepeating regular choices then an actual route finale and 27 SP (17.7081ms)
+✔ all six arena choices launch real collision layouts and survive a local boundary; old v6 stays Practice only (5.0782ms)
+✔ real clients receive all four civic signatures, selected map, breakable anchors and active gates (4702.6798ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 12
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7476.6671
+
+✖ failing tests:
+
+test at tests\civic-encounters.test.ts:1:2709
+✖ Chain Marshal anchors absorb actual shots and breaking one cancels only its own sweep (56.2018ms)
+  AssertionError [ERR_ASSERTION]: Unbroken anchor must still produce real contact damage
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\civic-encounters.test.ts:129:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

@@ -1,0 +1,13 @@
+{
+  "checkedAt": "2026-11-09T13:14:20.363Z",
+  "firstWorkerFailedAfterActualEarnedSequence": [
+    3,
+    9,
+    15
+  ],
+  "cause": "The encounter counter denotes completed encounters. After two real clears, the third active fight reports encounter2, not3.",
+  "correction": "Only the final driver assertion changes to2. Version01 scripts/logs remain exact, including any still-running peer binding. Version02 writes new result/log filenames.",
+  "gameplayChanged": false,
+  "deadlinesChanged": false,
+  "checksSkipped": false
+}

@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-11-08T18:50:47.769Z",
+  "sourceCommit": "4392f4660afdcafe3598c7d17316a602b7eaf128",
+  "root": "output/playtest-heavy-seam-2026-11-08-testing-4392f46",
+  "registered": false,
+  "previewWritten": false,
+  "processesStarted": false,
+  "files": 2045,
+  "allBytesMatchOriginalFullGate01": true,
+  "orderedArtifactBindingsSha256": "c2b57ed34744cc893534debf675ef8ab055819f1a86025c1d8af490744ca8899",
+  "observedEmbeddedLoopbackURLs": [],
+  "expectedEndpoint": "http://127.0.0.1:2744",
+  "failure": "freeze-client-review moved dist before checking the embedded endpoint. The missing task-local VITE_GAME_SERVER override caused the strict endpoint check to fail.",
+  "preservedInPlace": true,
+  "deletedMovedOrReconfiguredAfterFailure": false,
+  "retry": "Rerun all seven checks with task-local VITE_GAME_AUDIENCE=testing and VITE_GAME_SERVER=http://127.0.0.1:2744. Freeze into reviews/heavy-seam-2026-11-08-r2, retain this first root, copy its successful preview receipts into the canonical proof scope.",
+  "olderFrozenRoots": 51,
+  "additionalUnregisteredFailedRoot": 1,
+  "priorRecordedProcessIdentities": 92
+}

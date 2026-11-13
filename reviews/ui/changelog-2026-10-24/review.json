@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "reviewedAt": "2026-10-24",
+  "build": "2026.10.24-journal",
+  "sourceSnapshotSha256": "003b7242fea60cb68529d3be3eed14ceecb80697d7ff61b83b74bf14e53dbf22",
+  "screenshots": [
+    {
+      "file": "changelog-in-game.png",
+      "sha256": "1ae9d38c53263defe3ee84b3d4af17b66d0424783d68970be0e01c41b3e5c1cd"
+    },
+    {
+      "file": "changelog-arabic-menu.png",
+      "sha256": "e204911f87af76e5baeb090bab00194aabb4bc64a8a2b3597ba71636561aaf52"
+    }
+  ],
+  "checks": [
+    "Opened journal from the actual local main-menu footer after reload.",
+    "Read seven rendered dated milestones and the matching build identifier.",
+    "Changed the journal to the Arabic menu; reviewed mirrored navigation and explicitly English left-to-right editorial content.",
+    "DOM observation: viewport 676 px, document scrollWidth 661 px, seven article elements, document lang ar and editorial lang en/dir ltr.",
+    "Restored English and returned to the original main menu through Back."
+  ],
+  "limits": [
+    "One current in-app browser viewport inspected; no physical-device, native-speaker or complete game acceptance implied.",
+    "Historical milestone test counts refer to their own source checkpoints."
+  ]
+}

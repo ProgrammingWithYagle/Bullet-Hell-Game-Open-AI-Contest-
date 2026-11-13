@@ -1,0 +1,10 @@
+{
+  "checkedAt": "2026-11-11T01:46:55.603Z",
+  "secondCommitPreparationStoppedBeforeCommit": true,
+  "partialIndexInspectedAndRetained": true,
+  "reason": "The first staged-byte expectation assumed every raw CRLF text path is normalized. Existing log attributes explicitly unset text and retain exact raw logs; JSON receipt attributes set text/eol=lf.",
+  "sourceOrTestsChanged": false,
+  "gitConfigurationOrAttributesChanged": false,
+  "originalEvidenceAndRawArchiveUnchanged": true,
+  "correction": "Derive committed-byte expectations from existing per-path attributes; raw logs must match raw hashes and LF-normalized JSON must match LF-equivalent hashes."
+}

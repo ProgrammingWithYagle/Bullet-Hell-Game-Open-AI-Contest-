@@ -1,0 +1,33 @@
+✔ every secondary map uses non-bed art bound to its exact authoritative cover rectangle (4.9416ms)
+✔ secondary maps have distinct encounter axes and a genuine factory chicane rather than another open center lane (0.4351ms)
+✔ five opaque ground paintings bind their exact natives and all six existing map footprints (209.2328ms)
+✔ map switches reset the whole floor rectangle below cover without changing collision, bounds or spawns (1.7729ms)
+✔ the actual floor preload planner queues every identity once and rejects missing URLs before queuing (0.6663ms)
+✖ six maps have six distinct footprints and cover layouts with reachable spawns and all Accord pads (29.0237ms)
+✔ prediction and authoritative movement agree on every new footprint, including fast dodges against cover (33.778ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 6
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 695.9798
+
+✖ failing tests:
+
+test at tests\arena-layouts.test.ts:1:483
+✖ six maps have six distinct footprints and cover layouts with reachable spawns and all Accord pads (29.0237ms)
+  AssertionError [ERR_ASSERTION]: ossuary-works has a blocked spawn
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\arena-layouts.test.ts:25:5)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

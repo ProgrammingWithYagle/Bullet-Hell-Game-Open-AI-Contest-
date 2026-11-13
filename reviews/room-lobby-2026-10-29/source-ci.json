@@ -1,0 +1,31 @@
+{
+  "sourceCommit": "0feaf34b9a4221346157fb0d7a50798290bd9205",
+  "jobs": [
+    {
+      "jobId": 123661436005,
+      "path": "reviews/room-lobby-2026-10-29/source-ci-job-123661436005.log",
+      "bytes": 154102,
+      "sha256": "7be9108155188a78f2c03a7072beafd022ab0a9e3c3054ba3203df6b7713825c",
+      "counts": [
+        "tests 795",
+        "pass 795",
+        "fail 0"
+      ],
+      "passed": true
+    },
+    {
+      "jobId": 123661340688,
+      "path": "reviews/room-lobby-2026-10-29/source-ci-job-123661340688.log",
+      "bytes": 153130,
+      "sha256": "c69737fdef345d26a090ad9dd94118d57244cee7ac2516d4444fb3f2d70e7bfa",
+      "counts": [
+        "tests 795",
+        "pass 794",
+        "fail 1"
+      ],
+      "passed": false
+    }
+  ],
+  "passed": false,
+  "finding": "One exact-source job passed795/795. The other timed out waiting5000ms for a contract vote behind the new5000ms boss-defeat beat. The later protocol40 source derives that wait from BOSS_DEFEAT_TICKS plus2500ms transport allowance and budgets all three encounters explicitly; no gameplay timing was shortened."
+}

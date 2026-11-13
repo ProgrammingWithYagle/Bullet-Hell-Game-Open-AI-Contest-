@@ -1,0 +1,18 @@
+✔ the real chat form retains its draft, focus and input guard as it moves through upgrades, settings and combat (1.5243ms)
+✔ chat history refresh and menu replacement keep the draft; successful send clears it and disabled/offline chat cannot block controls (84.7298ms)
+✔ real private-room peers share a server result, can read its paged roster, and retain it after a complete server restart (1377.5849ms)
+✔ only the host may end an endless run during a break; testing servers cannot create team records (641.8382ms)
+✔ team score rounds exact fractions once and damage keys retain safe-integer ratio order (1.5332ms)
+✔ real simulation hooks retain departed entrants, admit waiting players at the next fight and freeze survivors before healing (15.1849ms)
+✔ testing changes, zero-duration clears and individual deadline violations never receive team ranks (10.2455ms)
+✔ persistent boards preserve shared competition ranks, exact filters, weekly boundaries and immutable idempotent results (72.5171ms)
+✔ endless ranks use only completed clears and last-clear time/ratio; final failed-fight duration is display only (1.765ms)
+✔ a failed record write never stops combat and can retry the exact banked result without duplicating it (6.197ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4531.9931

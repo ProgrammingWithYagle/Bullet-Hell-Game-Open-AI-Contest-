@@ -1,0 +1,795 @@
+{
+  "checkedAt": "2026-11-06T16:32:42.2569029Z",
+  "sourceCommit": "81d818a0f079a6b2245a123f76e532db5e7da71c",
+  "identities": [
+    {
+      "audience": "testing",
+      "role": "backend",
+      "pid": 18016,
+      "port": 2734,
+      "createdAt": "2026-11-06T16:30:39.5239590Z",
+      "startProcessReportedAt": "2026-11-06T16:30:39.5239597Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1030-493-0_26.1030.493.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-soldier-sniper-bore-2026-11-05-81d818a.mjs\"",
+      "sameProcessStillLive": true,
+      "listenerStillOwned": true
+    },
+    {
+      "audience": "testing",
+      "role": "client",
+      "pid": 1124,
+      "port": 5358,
+      "createdAt": "2026-11-06T16:30:39.5455970Z",
+      "startProcessReportedAt": "2026-11-06T16:30:39.5455971Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1030-493-0_26.1030.493.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-soldier-sniper-bore-2026-11-05-testing-81d818a --host 127.0.0.1 --port 5358 --strictPort",
+      "sameProcessStillLive": true,
+      "listenerStillOwned": true
+    },
+    {
+      "audience": "public",
+      "role": "backend",
+      "pid": 46180,
+      "port": 2735,
+      "createdAt": "2026-11-06T16:30:39.5255600Z",
+      "startProcessReportedAt": "2026-11-06T16:30:39.5255605Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1030-493-0_26.1030.493.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-soldier-sniper-bore-2026-11-05-81d818a.mjs\"",
+      "sameProcessStillLive": true,
+      "listenerStillOwned": true
+    },
+    {
+      "audience": "public",
+      "role": "client",
+      "pid": 43796,
+      "port": 5359,
+      "createdAt": "2026-11-06T16:30:39.5467340Z",
+      "startProcessReportedAt": "2026-11-06T16:30:39.5467342Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1030-493-0_26.1030.493.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-soldier-sniper-bore-2026-11-05-public-81d818a --host 127.0.0.1 --port 5359 --strictPort",
+      "sameProcessStillLive": true,
+      "listenerStillOwned": true
+    }
+  ],
+  "launchers": [
+    {
+      "audience": "testing",
+      "pid": 13256,
+      "createdAt": "2026-11-06T16:30:38.9953380Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1030-493-0_26.1030.493.0_x64__3k8sg7r9htsxt\\dependencies\\native\\powershell\\pwsh.exe\" -NoProfile -File \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\tools\\launch-review.ps1\" -Audience testing -Scope reviews/soldier-sniper-bore-2026-11-05",
+      "startedHidden": true
+    },
+    {
+      "audience": "public",
+      "pid": 38836,
+      "createdAt": "2026-11-06T16:30:39.0535960Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1030-493-0_26.1030.493.0_x64__3k8sg7r9htsxt\\dependencies\\native\\powershell\\pwsh.exe\" -NoProfile -File \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\tools\\launch-review.ps1\" -Audience public -Scope reviews/soldier-sniper-bore-2026-11-05",
+      "startedHidden": true
+    }
+  ],
+  "olderRecordedIdentities": [
+    {
+      "pid": 5488,
+      "port": 2732,
+      "createdAt": "2026-11-06T03:47:30.178032Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-soldier-sniper-depth-2026-11-05-9e09c75.mjs\"",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 22040,
+      "port": 5356,
+      "createdAt": "2026-11-06T03:47:30.192401Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-soldier-sniper-depth-2026-11-05-testing-9e09c75 --host 127.0.0.1 --port 5356 --strictPort",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 29664,
+      "port": 2733,
+      "createdAt": "2026-11-06T03:47:30.198112Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-soldier-sniper-depth-2026-11-05-9e09c75.mjs\"",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 37060,
+      "port": 5357,
+      "createdAt": "2026-11-06T03:47:30.21459Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-soldier-sniper-depth-2026-11-05-public-9e09c75 --host 127.0.0.1 --port 5357 --strictPort",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 37564,
+      "port": 2730,
+      "createdAt": "2026-11-06T03:03:03.9716Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-soldier-sniper-2026-11-05-d5bc833.mjs\"",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 38776,
+      "port": 5354,
+      "createdAt": "2026-11-06T03:03:03.98767Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-soldier-sniper-2026-11-05-testing-d5bc833 --host 127.0.0.1 --port 5354 --strictPort",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 14744,
+      "port": 2731,
+      "createdAt": "2026-11-06T03:03:04.054471Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-soldier-sniper-2026-11-05-d5bc833.mjs\"",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 64992,
+      "port": 5355,
+      "createdAt": "2026-11-06T03:03:04.071779Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-soldier-sniper-2026-11-05-public-d5bc833 --host 127.0.0.1 --port 5355 --strictPort",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 39100,
+      "port": 2728,
+      "createdAt": "2026-11-06T01:11:48.640555Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-soldier-grenadier-2026-11-05-68cb835.mjs\"",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 39348,
+      "port": 5352,
+      "createdAt": "2026-11-06T01:11:48.657119Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-soldier-grenadier-2026-11-05-testing-68cb835 --host 127.0.0.1 --port 5352 --strictPort",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 25060,
+      "port": 2729,
+      "createdAt": "2026-11-06T01:11:48.671827Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-soldier-grenadier-2026-11-05-68cb835.mjs\"",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 20804,
+      "port": 5353,
+      "createdAt": "2026-11-06T01:11:48.690549Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-soldier-grenadier-2026-11-05-public-68cb835 --host 127.0.0.1 --port 5353 --strictPort",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 63280,
+      "port": 2726,
+      "createdAt": "2026-11-05T20:50:49.602806Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-soldier-marksman-late-2026-11-05-b5c3f5e.mjs\"",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 10064,
+      "port": 5350,
+      "createdAt": "2026-11-05T20:50:49.617334Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-soldier-marksman-late-2026-11-05-testing-b5c3f5e --host 127.0.0.1 --port 5350 --strictPort",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 29208,
+      "port": 2727,
+      "createdAt": "2026-11-05T20:50:49.648087Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-soldier-marksman-late-2026-11-05-b5c3f5e.mjs\"",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 3688,
+      "port": 5351,
+      "createdAt": "2026-11-05T20:50:49.663783Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-soldier-marksman-late-2026-11-05-public-b5c3f5e --host 127.0.0.1 --port 5351 --strictPort",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 44012,
+      "port": 2724,
+      "createdAt": "2026-11-05T14:18:53.486804Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-soldier-marksman-depth-2026-11-05-99f7d3a.mjs\"",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 19080,
+      "port": 5348,
+      "createdAt": "2026-11-05T14:18:53.502025Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-soldier-marksman-depth-2026-11-05-testing-99f7d3a --host 127.0.0.1 --port 5348 --strictPort",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 56976,
+      "port": 2725,
+      "createdAt": "2026-11-05T14:18:53.497038Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-soldier-marksman-depth-2026-11-05-99f7d3a.mjs\"",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 57332,
+      "port": 5349,
+      "createdAt": "2026-11-05T14:18:53.514298Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-soldier-marksman-depth-2026-11-05-public-99f7d3a --host 127.0.0.1 --port 5349 --strictPort",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 38884,
+      "port": 2722,
+      "createdAt": "2026-11-05T02:40:13.686472Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1030-493-0_26.1030.493.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-soldier-marksman-sync-2026-11-05-22d0df8.mjs\"",
+      "sameRecordedIdentityLive": true,
+      "listenerStillOwned": true,
+      "observation": "exact recorded identity live",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 54492,
+      "port": 5346,
+      "createdAt": "2026-11-05T02:40:13.709907Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1030-493-0_26.1030.493.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-soldier-marksman-sync-2026-11-05-testing-22d0df8 --host 127.0.0.1 --port 5346 --strictPort",
+      "sameRecordedIdentityLive": true,
+      "listenerStillOwned": true,
+      "observation": "exact recorded identity live",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 16404,
+      "port": 2723,
+      "createdAt": "2026-11-05T02:40:17.411026Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1030-493-0_26.1030.493.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-soldier-marksman-sync-2026-11-05-22d0df8.mjs\"",
+      "sameRecordedIdentityLive": true,
+      "listenerStillOwned": true,
+      "observation": "exact recorded identity live",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 21540,
+      "port": 5347,
+      "createdAt": "2026-11-05T02:40:17.436145Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1030-493-0_26.1030.493.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-soldier-marksman-sync-2026-11-05-public-22d0df8 --host 127.0.0.1 --port 5347 --strictPort",
+      "sameRecordedIdentityLive": true,
+      "listenerStillOwned": true,
+      "observation": "exact recorded identity live",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 460,
+      "port": 2720,
+      "createdAt": "2026-11-05T00:18:38.968722Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-soldier-marksman-2026-11-04-afc4274.mjs\"",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 60320,
+      "port": 5344,
+      "createdAt": "2026-11-05T00:18:39.431727Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-soldier-marksman-2026-11-04-testing-afc4274 --host 127.0.0.1 --port 5344 --strictPort",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 46260,
+      "port": 2721,
+      "createdAt": "2026-11-05T00:18:49.240526Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-soldier-marksman-2026-11-04-afc4274.mjs\"",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 57296,
+      "port": 5345,
+      "createdAt": "2026-11-05T00:18:49.691127Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-soldier-marksman-2026-11-04-public-afc4274 --host 127.0.0.1 --port 5345 --strictPort",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 11904,
+      "port": 2718,
+      "createdAt": "2026-11-04T15:51:26.058154Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-soldier-volley-2026-11-04-d9abd98.mjs\"",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 60352,
+      "port": 5342,
+      "createdAt": "2026-11-04T15:51:26.517196Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-soldier-volley-2026-11-04-testing-d9abd98 --host 127.0.0.1 --port 5342 --strictPort",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 48144,
+      "port": 2719,
+      "createdAt": "2026-11-04T15:51:29.286487Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-soldier-volley-2026-11-04-d9abd98.mjs\"",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 28404,
+      "port": 5343,
+      "createdAt": "2026-11-04T15:51:29.733887Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-soldier-volley-2026-11-04-public-d9abd98 --host 127.0.0.1 --port 5343 --strictPort",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 39064,
+      "port": 2716,
+      "createdAt": "2026-11-04T06:14:56.546Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-soldier-reload-2026-11-04-84b6bba.mjs\"",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 34716,
+      "port": 5340,
+      "createdAt": "2026-11-04T06:14:56.976075Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-soldier-reload-2026-11-04-testing-84b6bba --host 127.0.0.1 --port 5340 --strictPort",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 53184,
+      "port": 2717,
+      "createdAt": "2026-11-04T06:14:56.986902Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-soldier-reload-2026-11-04-84b6bba.mjs\"",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 24880,
+      "port": 5341,
+      "createdAt": "2026-11-04T06:14:57.426702Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-soldier-reload-2026-11-04-public-84b6bba --host 127.0.0.1 --port 5341 --strictPort",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 55240,
+      "port": 2714,
+      "createdAt": "2026-11-04T05:10:55.785338Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-soldier-skirmisher-2026-11-04-ef502f7.mjs\"",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 55368,
+      "port": 5338,
+      "createdAt": "2026-11-04T05:10:56.220014Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-soldier-skirmisher-2026-11-04-testing-ef502f7 --host 127.0.0.1 --port 5338 --strictPort",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 15724,
+      "port": 2715,
+      "createdAt": "2026-11-04T05:11:02.584768Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-soldier-skirmisher-2026-11-04-ef502f7.mjs\"",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 36012,
+      "port": 5339,
+      "createdAt": "2026-11-04T05:11:03.036179Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-soldier-skirmisher-2026-11-04-public-ef502f7 --host 127.0.0.1 --port 5339 --strictPort",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 43404,
+      "port": 2712,
+      "createdAt": "2026-11-04T03:13:20.630311Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-engineer-controls-2026-11-04-233e914.mjs\"",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 3080,
+      "port": 5336,
+      "createdAt": "2026-11-04T03:13:21.077024Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-engineer-controls-2026-11-04-testing-233e914 --host 127.0.0.1 --port 5336 --strictPort",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 31128,
+      "port": 2713,
+      "createdAt": "2026-11-04T03:13:21.045146Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-engineer-controls-2026-11-04-233e914.mjs\"",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "PID exists with a different identity",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 55192,
+      "port": 5337,
+      "createdAt": "2026-11-04T03:13:21.505249Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-engineer-controls-2026-11-04-public-233e914 --host 127.0.0.1 --port 5337 --strictPort",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 52480,
+      "port": 2710,
+      "createdAt": "2026-11-04T02:33:44.839132Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-engineer-transition-2026-11-04-f670914.mjs\"",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 50212,
+      "port": 5334,
+      "createdAt": "2026-11-04T02:33:45.26732Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-engineer-transition-2026-11-04-testing-f670914 --host 127.0.0.1 --port 5334 --strictPort",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 25672,
+      "port": 2711,
+      "createdAt": "2026-11-04T02:33:45.233775Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-engineer-transition-2026-11-04-f670914.mjs\"",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 43592,
+      "port": 5335,
+      "createdAt": "2026-11-04T02:33:45.678161Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-engineer-transition-2026-11-04-public-f670914 --host 127.0.0.1 --port 5335 --strictPort",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 18932,
+      "port": 2706,
+      "createdAt": "2026-11-04T01:42:57.523375Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-engineer-run-exit-2026-11-04-7f5cdac.mjs\"",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 46972,
+      "port": 5330,
+      "createdAt": "2026-11-04T01:42:57.957401Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-engineer-run-exit-2026-11-04-testing-7f5cdac --host 127.0.0.1 --port 5330 --strictPort",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 3560,
+      "port": 2707,
+      "createdAt": "2026-11-04T01:42:57.570522Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-engineer-run-exit-2026-11-04-7f5cdac.mjs\"",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 31032,
+      "port": 5331,
+      "createdAt": "2026-11-04T01:42:57.995881Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-engineer-run-exit-2026-11-04-public-7f5cdac --host 127.0.0.1 --port 5331 --strictPort",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 41964,
+      "port": 2704,
+      "createdAt": "2026-11-03T23:49:10.502Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-engineer-builder-2026-11-03-d3de8ed.mjs\"",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 48664,
+      "port": 5328,
+      "createdAt": "2026-11-03T23:49:10.982411Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-engineer-builder-2026-11-03-testing-d3de8ed --host 127.0.0.1 --port 5328 --strictPort",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 13784,
+      "port": 2705,
+      "createdAt": "2026-11-03T23:50:50.157413Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-engineer-builder-2026-11-03-d3de8ed.mjs\"",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 38964,
+      "port": 5329,
+      "createdAt": "2026-11-03T23:50:50.594066Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-engineer-builder-2026-11-03-public-d3de8ed --host 127.0.0.1 --port 5329 --strictPort",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 36296,
+      "port": 2702,
+      "createdAt": "2026-11-03T22:09:19.036088Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-engineer-traps-2026-11-03-c4b2b6f.mjs\"",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 39132,
+      "port": 5326,
+      "createdAt": "2026-11-03T22:09:19.462574Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-engineer-traps-2026-11-03-testing-c4b2b6f --host 127.0.0.1 --port 5326 --strictPort",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 47936,
+      "port": 2703,
+      "createdAt": "2026-11-03T22:09:26.017807Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-engineer-traps-2026-11-03-c4b2b6f.mjs\"",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 42884,
+      "port": 5327,
+      "createdAt": "2026-11-03T22:09:26.487406Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-engineer-traps-2026-11-03-public-c4b2b6f --host 127.0.0.1 --port 5327 --strictPort",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 39128,
+      "port": 2700,
+      "createdAt": "2026-11-03T20:41:32.593908Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-foundation-workbook-2026-11-03-42ec806.mjs\"",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 49032,
+      "port": 5324,
+      "createdAt": "2026-11-03T20:41:33.022136Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-foundation-workbook-2026-11-03-testing-42ec806 --host 127.0.0.1 --port 5324 --strictPort",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 3956,
+      "port": 2701,
+      "createdAt": "2026-11-03T20:45:30.585486Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-foundation-workbook-2026-11-03-42ec806.mjs\"",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 14504,
+      "port": 5325,
+      "createdAt": "2026-11-03T20:45:31.034383Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-foundation-workbook-2026-11-03-public-42ec806 --host 127.0.0.1 --port 5325 --strictPort",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 14556,
+      "port": 2698,
+      "createdAt": "2026-11-03T17:36:34.736217Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-manual-cascade-2026-11-03-4090068.mjs\"",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 5452,
+      "port": 5322,
+      "createdAt": "2026-11-03T17:36:35.36883Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-manual-cascade-2026-11-03-testing-4090068 --host 127.0.0.1 --port 5322 --strictPort",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 4336,
+      "port": 2699,
+      "createdAt": "2026-11-03T17:37:41.521547Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-manual-cascade-2026-11-03-4090068.mjs\"",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 14536,
+      "port": 5323,
+      "createdAt": "2026-11-03T17:37:42.172933Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-manual-cascade-2026-11-03-public-4090068 --host 127.0.0.1 --port 5323 --strictPort",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 38668,
+      "port": 2696,
+      "createdAt": "2026-11-03T16:59:31.274592Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-machinery-progression-2026-11-03-76bac94.mjs\"",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 11088,
+      "port": 5320,
+      "createdAt": "2026-11-03T16:59:31.930762Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-machinery-progression-2026-11-03-testing-76bac94 --host 127.0.0.1 --port 5320 --strictPort",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 37036,
+      "port": 2697,
+      "createdAt": "2026-11-03T16:59:56.82062Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-machinery-progression-2026-11-03-76bac94.mjs\"",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    },
+    {
+      "pid": 44812,
+      "port": 5321,
+      "createdAt": "2026-11-03T16:59:57.41273Z",
+      "commandLine": "\"C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-machinery-progression-2026-11-03-public-76bac94 --host 127.0.0.1 --port 5321 --strictPort",
+      "sameRecordedIdentityLive": false,
+      "listenerStillOwned": false,
+      "observation": "recorded PID absent",
+      "cleanupPerformed": false
+    }
+  ],
+  "currentExactLiveCount": 4,
+  "olderRecordedCount": 72,
+  "olderExactLiveCount": 4,
+  "olderNonmatchingOrAbsentCount": 68,
+  "olderExactListenersOwnedCount": 4,
+  "cleanupPerformed": false,
+  "limits": "Exact current PID/full command/UTC/listeners checked through authorized CIM. All72 prior identities observed dynamically after an interruption; absence or a reused PID is not attributed to agent cleanup. Recorded game commands only; unrelated live commands and private SQLite are not uploaded."
+}

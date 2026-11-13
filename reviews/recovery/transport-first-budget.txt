@@ -1,0 +1,70 @@
+✖ fifty developed builds fit the unchanged writer limit and preserve their exact raw identity in both envelope formats (82.5485ms)
+✔ packed signatures authenticate before inflation and bind the encoding without downgrading legacy checkpoints (6.9862ms)
+✔ authenticated expansion beyond one MiB, truncated streams and trailing compressed data are rejected (9.5946ms)
+✔ legacy envelope compatibility retains strict UTF-8, metadata, clock and expiry checks (1.3738ms)
+✔ an incompressible legal roster fails closed without dropping receipts or raising the transport limit (42.0843ms)
+✔ real room clients observe checkpoint waits, cannot alter frozen builds and join after the barrier (318.9194ms)
+✔ real clients see a latched checkpoint outage while the Practice encounter continues (212.23ms)
+✔ room freezes its exact boundary and starts combat only after both durable acknowledgements (24.6398ms)
+✔ room captures victory intermissions, pauses their clocks and guards automatic redeployment (16.015ms)
+✔ combat continues during a lease request; an outage latches Practice status and terminal runs finalize (10.7533ms)
+✔ disposing a room during a slow checkpoint cannot start combat or broadcast after disposal (3.7298ms)
+✔ journal acknowledges combat before the caller starts it, refreshes every thirty seconds and preserves response-lost event IDs (12.1371ms)
+✔ initial outages, invalid acknowledgements and later failures cannot silently re-enable a journal (4.7756ms)
+✔ actual HTTP process restart preserves file-backed boundaries and only one competing owner can claim them (932.7223ms)
+✔ combat interrupted by a process restart can restore only as Recovery Practice (797.9618ms)
+✖ fifty developed builds cross bounded real HTTP, survive process replacement and retain one-owner recovery with every receipt (388.914ms)
+✔ HTTP writer authentication binds exact UTF-8 bytes, route, time and nonce; identical event retries need a new nonce (31.285ms)
+✔ writer transport matches the documented seconds, body-digest and base64url HMAC contract (5.5199ms)
+✔ a valid key cannot impersonate an unconfigured server or key ID, or add unsigned URL queries (2.0187ms)
+✔ authenticated JSON rejects unknown fields, ill-typed restore flags and invalid IDs before changing a run (12.1907ms)
+✔ unauthenticated/oversized writes and ranked registrations are rejected without creating a run (3.8957ms)
+✔ authenticated ledger requests distinguish a stale ownership conflict from unavailable nonce/database storage (5.9021ms)
+✔ actual local HTTP client registers, retries, reads and finalizes signed state without following redirects or leaking service access (75.1973ms)
+✔ SQL lifecycle registration and event retry are idempotent; conflicts and finalized replay cannot change state (15.8443ms)
+✔ two competing restore claims against the same expired lease yield exactly one owner epoch (3.273ms)
+✔ interrupted combat can only claim recovery practice and that downgrade stays latched (2.7244ms)
+✔ stale boundary sequence fails the SQL guard and cannot insert an event or replace a checkpoint (2.8391ms)
+✔ a pre-combat checkpoint cannot roll back started combat as a ranked boundary (2.641ms)
+✔ signed multiplayer boundary retains both builds, inventory, exact votes/RNG and duplicate-purchase replies (10.7132ms)
+✔ fifty-player signed boundary round-trip stays bounded and retains every distinct participant build (11.7555ms)
+✔ tampering, key mismatch, expiry, unsafe phases and malformed identities cannot restore a signed game (1.606ms)
+✔ boundary validator rejects duplicate participants, forged inventory and foreign vote IDs (1.0359ms)
+ℹ tests 32
+ℹ suites 0
+ℹ pass 30
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2668.889
+
+✖ failing tests:
+
+test at tests\checkpoint-transport.test.ts:1:880
+✖ fifty developed builds fit the unchanged writer limit and preserve their exact raw identity in both envelope formats (82.5485ms)
+  Error: checkpointTransferTooLarge
+      at signBoundary (<game-repository>\src\server\checkpoints.ts:58:13)
+      at TestContext.<anonymous> (<game-repository>\tests\checkpoint-transport.test.ts:31:18)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+
+test at tests\run-journal.test.ts:1:9167
+✖ fifty developed builds cross bounded real HTTP, survive process replacement and retain one-owner recovery with every receipt (388.914ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  false !== true
+  
+      at TestContext.<anonymous> (<game-repository>\tests\run-journal.test.ts:333:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

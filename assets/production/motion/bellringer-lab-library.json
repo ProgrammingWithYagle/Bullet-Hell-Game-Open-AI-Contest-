@@ -1,0 +1,312 @@
+{
+  "schemaVersion": 1,
+  "entry": {
+    "id": "bellringer-action",
+    "bossId": "bellringer",
+    "role": "boss",
+    "name": "Bellringer · signature",
+    "family": "bosses",
+    "kind": "animation",
+    "atlas": "assets/production/motion/bellringer-action-walk-v2-atlas.png",
+    "atlasSha256": "3f9e6ca972d9ba8187d9eff2c346960c893a1449d6764de0c8fafccee07e4ec5",
+    "source": "assets/production/generated/resonant-tolls-2026-10-27/bellringer-walk-v1-native.png",
+    "sourceSha256": "b4ace798b021cce03b93c110c988ce3798ac131b80b1c7d468c983661a5816a8",
+    "cellSize": 384,
+    "columns": 4,
+    "frames": 16,
+    "labels": [
+      "Idle",
+      "Prepare",
+      "Lift",
+      "Anticipation",
+      "Release",
+      "Channel",
+      "Recovery",
+      "Defeat",
+      "Walk 1",
+      "Walk 2",
+      "Walk 3",
+      "Walk 4",
+      "Walk 5",
+      "Walk 6",
+      "Walk 7",
+      "Walk 8"
+    ],
+    "origin": [
+      0.5,
+      0.8333333333333334
+    ],
+    "displayHeight": 150,
+    "displayCell": 311.35135135135135,
+    "fps": 10,
+    "frameDurationsMs": [
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      125,
+      125,
+      125,
+      125,
+      125,
+      125,
+      125,
+      125
+    ],
+    "status": "Eight preserved action poses plus eight newly drawn walking poses; native and technical packing reviewed. Rendered/human gait and full directional acceptance remain open.",
+    "notes": "Original first eight action frames are pixel-exact. New walk uses one uniform scale, fixed row-level source anchors and whole-cell alpha-preserving placement. No mirrored/repainted/puppet frames."
+  },
+  "walkStartFrame": 8,
+  "walkFrames": 8,
+  "walkFps": 8,
+  "preservedActionFrames": 8,
+  "preservedActionAtlas": "assets/production/motion/bellringer-action-v1-atlas.png",
+  "preservedActionAtlasSha256": "77b19ce98acc1c34e8fdf5c4e68938cb66ae9db50892e5460e50709c21d6f7f9",
+  "nativeSource": "assets/production/generated/resonant-tolls-2026-10-27/bellringer-walk-v1-native.png",
+  "request": "assets/production/generated/resonant-tolls-2026-10-27/walk-v1-request.json",
+  "requestSha256": "7812a8abe36171068936d6a90e9a5a395bd015cf76831e6e8e91f5c3aceeffc2",
+  "nativeSha256": "b4ace798b021cce03b93c110c988ce3798ac131b80b1c7d468c983661a5816a8",
+  "nativeSize": [
+    1774,
+    887
+  ],
+  "recipes": [
+    {
+      "index": 0,
+      "atlasFrame": 8,
+      "sourceCanvas": [
+        0,
+        0,
+        444,
+        444
+      ],
+      "sourceAnchor": [
+        221.75,
+        414
+      ],
+      "uniformScale": 0.5285714285714286,
+      "resizedSize": [
+        235,
+        235
+      ],
+      "offset": [
+        75,
+        101
+      ],
+      "targetAnchor": [
+        192,
+        320
+      ],
+      "packedRgbaSha256": "19805c77c3aad94619d44246a2459f045520301bfbab0fb87034f89e992b42bc"
+    },
+    {
+      "index": 1,
+      "atlasFrame": 9,
+      "sourceCanvas": [
+        444,
+        0,
+        887,
+        444
+      ],
+      "sourceAnchor": [
+        221.75,
+        414
+      ],
+      "uniformScale": 0.5285714285714286,
+      "resizedSize": [
+        234,
+        235
+      ],
+      "offset": [
+        75,
+        101
+      ],
+      "targetAnchor": [
+        192,
+        320
+      ],
+      "packedRgbaSha256": "0de1f78f6f0155275d476e6baa921db1aab9a6377c02a7a4a4a3c500005e62d7"
+    },
+    {
+      "index": 2,
+      "atlasFrame": 10,
+      "sourceCanvas": [
+        887,
+        0,
+        1330,
+        444
+      ],
+      "sourceAnchor": [
+        221.75,
+        414
+      ],
+      "uniformScale": 0.5285714285714286,
+      "resizedSize": [
+        234,
+        235
+      ],
+      "offset": [
+        75,
+        101
+      ],
+      "targetAnchor": [
+        192,
+        320
+      ],
+      "packedRgbaSha256": "0a877c8097156e585470a82d328f30e3fed4c81562287c6c0e5e746d525df8e7"
+    },
+    {
+      "index": 3,
+      "atlasFrame": 11,
+      "sourceCanvas": [
+        1330,
+        0,
+        1774,
+        444
+      ],
+      "sourceAnchor": [
+        221.75,
+        414
+      ],
+      "uniformScale": 0.5285714285714286,
+      "resizedSize": [
+        235,
+        235
+      ],
+      "offset": [
+        75,
+        101
+      ],
+      "targetAnchor": [
+        192,
+        320
+      ],
+      "packedRgbaSha256": "8d6450a3d1f0e8216bd15a4b188bba2b4da184b3c7448892f5c94c8f5a9a7c59"
+    },
+    {
+      "index": 4,
+      "atlasFrame": 12,
+      "sourceCanvas": [
+        0,
+        444,
+        444,
+        887
+      ],
+      "sourceAnchor": [
+        221.75,
+        393
+      ],
+      "uniformScale": 0.5285714285714286,
+      "resizedSize": [
+        235,
+        234
+      ],
+      "offset": [
+        75,
+        112
+      ],
+      "targetAnchor": [
+        192,
+        320
+      ],
+      "packedRgbaSha256": "f48b2d5f36ec4d811cb8e9f02b8a6513508bd88f6fa08a8059fb3503786dbfe9"
+    },
+    {
+      "index": 5,
+      "atlasFrame": 13,
+      "sourceCanvas": [
+        444,
+        444,
+        887,
+        887
+      ],
+      "sourceAnchor": [
+        221.75,
+        393
+      ],
+      "uniformScale": 0.5285714285714286,
+      "resizedSize": [
+        234,
+        234
+      ],
+      "offset": [
+        75,
+        112
+      ],
+      "targetAnchor": [
+        192,
+        320
+      ],
+      "packedRgbaSha256": "549a123e908f02b73c16115c0a3601dbb2dadc0902d3e5824fb5efd97405ca94"
+    },
+    {
+      "index": 6,
+      "atlasFrame": 14,
+      "sourceCanvas": [
+        887,
+        444,
+        1330,
+        887
+      ],
+      "sourceAnchor": [
+        221.75,
+        393
+      ],
+      "uniformScale": 0.5285714285714286,
+      "resizedSize": [
+        234,
+        234
+      ],
+      "offset": [
+        75,
+        112
+      ],
+      "targetAnchor": [
+        192,
+        320
+      ],
+      "packedRgbaSha256": "276d8182fd5fd3584f90df67c3b5198cef3cd5676091cc6f2e9700f6d4897c86"
+    },
+    {
+      "index": 7,
+      "atlasFrame": 15,
+      "sourceCanvas": [
+        1330,
+        444,
+        1774,
+        887
+      ],
+      "sourceAnchor": [
+        221.75,
+        393
+      ],
+      "uniformScale": 0.5285714285714286,
+      "resizedSize": [
+        235,
+        234
+      ],
+      "offset": [
+        75,
+        112
+      ],
+      "targetAnchor": [
+        192,
+        320
+      ],
+      "packedRgbaSha256": "dd1e076397fb3969f5b553b1ef7eedb009a6d1896ea3628cc68966d72613b956"
+    }
+  ],
+  "preview": "assets/production/motion/bellringer-walk-v1-preview.gif",
+  "renderedAccepted": false,
+  "humanAccepted": false,
+  "alphaEdgeNote": "Original native 1774x887 is divided with rounded quarter/half canvases. Visible alpha >=16 clears every cell edge. Faint edge pixels are retained, not erased. Row-level baselines correct sheet-row placement while preserving within-row gait offsets.",
+  "review": {
+    "identity": "Skull, muted red hood/stole, charcoal robe, bone front panel, boots and two brass handbells retained in all eight native poses.",
+    "motion": "Distinct boot contacts/passes and coat/arm follow-through are drawn. Gait continuity was reviewed as static native poses; no rendered-playback acceptance.",
+    "composition": "Visible complete figures and props clear their assigned source canvases; full alpha owned by the recorded canvases is packed without creative edits."
+  }
+}

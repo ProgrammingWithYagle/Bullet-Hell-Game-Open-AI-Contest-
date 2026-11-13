@@ -1,0 +1,25 @@
+{"route":"base-manual-mantlet","map":"gatehouse","seed":2209,"phase":"lobby","encounter":0,"seconds":0}
+{"route":"base-manual-mantlet","map":"gatehouse","seed":2209,"phase":"combat","encounter":0,"seconds":0}
+{"route":"base-manual-mantlet","map":"gatehouse","seed":2209,"phase":"mutationVote","encounter":1,"seconds":16}
+{"route":"base-manual-mantlet","map":"gatehouse","seed":2209,"phase":"contractVote","encounter":1,"seconds":16}
+{"route":"base-manual-mantlet","map":"gatehouse","seed":2209,"phase":"shop","encounter":1,"seconds":16}
+{"route":"base-manual-mantlet","map":"gatehouse","seed":2209,"phase":"loading","encounter":1,"seconds":16}
+{"route":"base-manual-mantlet","map":"gatehouse","seed":2209,"phase":"combat","encounter":1,"seconds":16}
+{"route":"base-manual-mantlet","map":"gatehouse","seed":2209,"phase":"mutationVote","encounter":2,"seconds":31}
+{"route":"base-manual-mantlet","map":"gatehouse","seed":2209,"phase":"contractVote","encounter":2,"seconds":31}
+{"route":"base-manual-mantlet","map":"gatehouse","seed":2209,"phase":"shop","encounter":2,"seconds":31}
+{"route":"base-manual-mantlet","map":"gatehouse","seed":2209,"phase":"loading","encounter":2,"seconds":31}
+{"route":"base-manual-mantlet","map":"gatehouse","seed":2209,"phase":"combat","encounter":2,"seconds":31}
+{"route":"base-manual-mantlet","map":"gatehouse","seed":2209,"phase":"mutationVote","encounter":3,"seconds":54}
+{"route":"base-manual-mantlet","map":"gatehouse","seed":2209,"phase":"contractVote","encounter":3,"seconds":54}
+{"route":"base-manual-mantlet","map":"gatehouse","seed":2209,"phase":"shop","encounter":3,"seconds":54}
+{"route":"base-manual-mantlet","map":"gatehouse","seed":2209,"phase":"loading","encounter":3,"seconds":54}
+{"route":"base-manual-mantlet","map":"gatehouse","seed":2209,"phase":"combat","encounter":3,"seconds":54}
+C:\Users\yigal\Documents\Codex\2026-11-05\continue-grave-accord-in-the-same\work\heavy-seam-stage\seam-pilot01.mts:507
+        if(event.type==="private-class-cues"&&event.owner===p.id)privatePath=event.cues.map(c=>({...c,points:c.points.map(p=>({...p}))}));
+                                                                 ^
+
+TypeError: Assignment to constant variable.
+    at <anonymous> (C:\Users\yigal\Documents\Codex\2026-11-05\continue-grave-accord-in-the-same\work\heavy-seam-stage\seam-pilot01.mts:507:66)
+
+Node.js v24.22.1

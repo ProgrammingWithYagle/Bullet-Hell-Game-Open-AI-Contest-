@@ -1,0 +1,182 @@
+{
+  "savedAt": "2026-10-29T21:33:47.681Z",
+  "goalStatus": "active",
+  "previousGoalTurn": "progress",
+  "sourceCommit": "5dfc6a8722ac137219d9eca68610d022e12f27c8",
+  "buildId": "2026.10.29-chat-confirmation",
+  "protocol": 42,
+  "localGate": {
+    "passed": true,
+    "tests": 827,
+    "pass": 827,
+    "fail": 0,
+    "path": "reviews/chat-confirmation-2026-10-29/gate-01/runtime-verification.json",
+    "runtimeSourceSha256": "54723b032322d0e209bf2a9b922802ef772476b5ebf1ca22a15327edba6a3069",
+    "sourceSnapshotSha256": "c8d66eedeb9157dd695dfeecb5229293cfb2e508af4d09b15908157ed7c9df62"
+  },
+  "additionalSourceBinding": {
+    "sha256": "33f4c509cc5f4e550d5d5745e62580555d3d00211564777da61a8d04b0b63e37",
+    "files": 108,
+    "bytes": 50366784
+  },
+  "previews": [
+    {
+      "audience": "testing",
+      "url": "http://127.0.0.1:5236/",
+      "endpoint": "http://127.0.0.1:2610",
+      "root": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\playtest-chat-confirmation-testing-5dfc6a8-r01",
+      "files": 1698,
+      "bytes": 734094722,
+      "httpHashes": 33,
+      "backend": {
+        "path": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-chat-confirmation-testing-5dfc6a8-r01\\server.mjs",
+        "bytes": 2712633,
+        "sha256": "875ef1c8b6d542ba7c2a6aa2f56cb68dc81158f07ef92a1769f4d8e8fe67b4de",
+        "externalProjectNodeModulesRequired": true
+      },
+      "processes": {
+        "createdAt": "2026-10-29T21:31:40.3831976Z",
+        "sourceCommit": "5dfc6a8722ac137219d9eca68610d022e12f27c8",
+        "protocol": 42,
+        "audience": "testing",
+        "launcherPid": 10052,
+        "node": "C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "backend": {
+          "pid": 57524,
+          "startedAt": "2026-10-29T21:31:40.1515089Z",
+          "script": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-chat-confirmation-testing-5dfc6a8-r01\\server.mjs",
+          "sha256": "875ef1c8b6d542ba7c2a6aa2f56cb68dc81158f07ef92a1769f4d8e8fe67b4de",
+          "port": 2610
+        },
+        "client": {
+          "pid": 25840,
+          "startedAt": "2026-10-29T21:31:40.3004103Z",
+          "root": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\playtest-chat-confirmation-testing-5dfc6a8-r01",
+          "port": 5236,
+          "command": "vite preview --outDir output\\playtest-chat-confirmation-testing-5dfc6a8-r01 --host 127.0.0.1 --port 5236 --strictPort"
+        }
+      },
+      "holdingSession": 77474,
+      "peerSample": {
+        "peers": 2,
+        "phase": "combat",
+        "bossId": "gate-widow",
+        "form": "normal",
+        "difficulty": "baby",
+        "mode": "short",
+        "sameBoss": true,
+        "chosenRehearsalOpenerIgnored": false,
+        "chosenRehearsalOpenerRetained": true,
+        "testingModified": false,
+        "roomChatDelivered": true,
+        "chatServerConfirmed": true,
+        "chatCooldownExplicit": true,
+        "chatRejectedDraftRetained": true,
+        "roomCodeJoined": true,
+        "hostStartRequired": true,
+        "selectedMapRetained": true,
+        "passwordProtected": true,
+        "incorrectPasswordRejected": true,
+        "roomListingLockFlag": true,
+        "noPasswordInListing": true,
+        "noPersonalClearClaimed": true
+      },
+      "startedAt": "2026-10-29T21:31:41.401Z"
+    },
+    {
+      "audience": "public",
+      "url": "http://127.0.0.1:5237/",
+      "endpoint": "http://127.0.0.1:2611",
+      "root": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\playtest-chat-confirmation-public-5dfc6a8-r01",
+      "files": 1698,
+      "bytes": 734089044,
+      "httpHashes": 33,
+      "backend": {
+        "path": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-chat-confirmation-public-5dfc6a8-r01\\server.mjs",
+        "bytes": 2712633,
+        "sha256": "875ef1c8b6d542ba7c2a6aa2f56cb68dc81158f07ef92a1769f4d8e8fe67b4de",
+        "externalProjectNodeModulesRequired": true
+      },
+      "processes": {
+        "createdAt": "2026-10-29T21:32:04.4409029Z",
+        "sourceCommit": "5dfc6a8722ac137219d9eca68610d022e12f27c8",
+        "protocol": 42,
+        "audience": "public",
+        "launcherPid": 40616,
+        "node": "C:\\Users\\yigal\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "backend": {
+          "pid": 61028,
+          "startedAt": "2026-10-29T21:32:04.3917310Z",
+          "script": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-chat-confirmation-public-5dfc6a8-r01\\server.mjs",
+          "sha256": "875ef1c8b6d542ba7c2a6aa2f56cb68dc81158f07ef92a1769f4d8e8fe67b4de",
+          "port": 2611
+        },
+        "client": {
+          "pid": 14984,
+          "startedAt": "2026-10-29T21:32:04.4164572Z",
+          "root": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\playtest-chat-confirmation-public-5dfc6a8-r01",
+          "port": 5237,
+          "command": "vite preview --outDir output\\playtest-chat-confirmation-public-5dfc6a8-r01 --host 127.0.0.1 --port 5237 --strictPort"
+        }
+      },
+      "holdingSession": 2002,
+      "peerSample": {
+        "peers": 2,
+        "phase": "combat",
+        "bossId": "ratcatcher",
+        "form": "normal",
+        "difficulty": "baby",
+        "mode": "short",
+        "sameBoss": true,
+        "chosenRehearsalOpenerIgnored": true,
+        "chosenRehearsalOpenerRetained": false,
+        "testingModified": false,
+        "roomChatDelivered": true,
+        "chatServerConfirmed": true,
+        "chatCooldownExplicit": true,
+        "chatRejectedDraftRetained": true,
+        "roomCodeJoined": true,
+        "hostStartRequired": true,
+        "selectedMapRetained": true,
+        "passwordProtected": true,
+        "incorrectPasswordRejected": true,
+        "roomListingLockFlag": true,
+        "noPasswordInListing": true,
+        "noPersonalClearClaimed": true
+      },
+      "startedAt": "2026-10-29T21:32:04.984Z"
+    }
+  ],
+  "issuedReceiptsPreserved": 8,
+  "publication": {
+    "pushed": false,
+    "sourceCI": "Not run; public source upload awaits the existing direct permission question.",
+    "wikiPublished": false,
+    "wikiCurrent": "4919fc4291039733956b49025b3e99c295fbc0d2",
+    "canonicalPagesPrepared": 18,
+    "changedWikiPages": [
+      "Bosses.md",
+      "Changelog.md",
+      "Development-Progress.md",
+      "Getting-Started.md",
+      "Home.md",
+      "Hosting-and-Recovery.md"
+    ],
+    "wikiAuthorized": true,
+    "draftPR": 14,
+    "mainMerged": false,
+    "gameDeployed": false,
+    "automaticReview": "The earlier source push was rejected twice. Retrieved prior upload permission was not accepted as a trusted current user message. Do not retry or bypass; await the already-pending direct reply."
+  },
+  "limits": [
+    "Native software, exact bytes, source art and actual local transport only; no browser/rendered/human, native-language, listening, physical-device or WAN acceptance.",
+    "Current source stays local; earlier previews, artwork, packages and raw reports are unchanged. No paid service, new roster/branches, checkout, delegation, merge, hosted deployment or contest submission."
+  ],
+  "next": [
+    "Await the existing source-publication question; do not ask it again unless clarification is needed.",
+    "After direct permission, push verified game/source/evidence, verify both exact-source CI jobs, publish the already-authorized canonical Wiki pages and verify18pages/34images/public hashes.",
+    "Obtain human review of confirmed chat, the new status panel, room-code placement and boss-ending message.",
+    "Continue local current-content polish and a matching verified Windows review package; retain human/device/language/listening/WAN/endurance/capacity and coordinated-release gates.",
+    "Future shield-cap branches and selective blocking remain notes only."
+  ]
+}

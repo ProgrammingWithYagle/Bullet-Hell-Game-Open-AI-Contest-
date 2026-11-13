@@ -1,0 +1,77 @@
+{
+  "passed": true,
+  "classId": "medic",
+  "buildId": "2026.10.25-soldier-medic-actions",
+  "protocol": 13,
+  "sourceSnapshotSha256": "f423a97462d28913bf99a434f9c1b9d4a824f4a746b242fe6fa63d6542b020f5",
+  "runtimeSourceSha256": "221df6e7be7675c2bb28f7228e6907bbbfb6d54d4a948c741943f3f2b86a7575",
+  "fullPipeline": {
+    "tests": 304,
+    "failed": 0,
+    "outputFiles": 1582,
+    "logSha256": "0d75742342b5341044118782dbdfdb5682599e0d00998852c8ec7f53378721d8"
+  },
+  "art": {
+    "newActionClips": 20,
+    "newActionPoses": 88,
+    "actualActionNativeReturns": 21,
+    "newSideRunClips": 2,
+    "newSideRunPoses": 16,
+    "actualSideRunNativeReturns": 2,
+    "retainedNorthSouthClips": 2,
+    "retainedNorthSouthPoses": 8,
+    "totalSelectedClassPoses": 112,
+    "wholePoseActionMasks": 4,
+    "wholePoseRunMasks": 1,
+    "independentActionVerificationSha256": "4a2538a584ee92d5e00ba95fb55ab5d9d6c5a62428e9df11a4eb9ed3a5dd641d",
+    "independentRunVerificationSha256": "bda4af763b77f4eae2d53653c0bfb1d52e716150f06c676a118cb9ddbde4f59d",
+    "actionProvenanceSha256": "6c6a5bbfe5584925df60f8e015971feed759b0a36a273af622cd7286044919a9",
+    "runProvenanceSha256": "6f6b8ec7e0e281055959a4469a6c10442524c987a5e4ae2346f108b15b95c21b",
+    "creativePixelEdits": false,
+    "sourceAlphaErasure": false,
+    "facingMirrors": false,
+    "priorNorthSouthNativeBytesUnchanged": true
+  },
+  "preservedIterations": [
+    {
+      "path": "reviews/medic-actions-2026-10-24/packing-first.log",
+      "sha256": "5cdc7e3665eba710eeab107ef72332d070ed2b81f927d8c136eb0ba87fb9b204"
+    },
+    {
+      "path": "reviews/medic-actions-2026-10-24/packing-second.log",
+      "sha256": "3c2a605bd96e83798fe7e172e7fb5fce056a39061ba6e2689077d0476da28bfb"
+    },
+    {
+      "path": "reviews/medic-actions-2026-10-24/gutter-inspection.json",
+      "sha256": "6e7de3fb2744d7c8e08a91a515dfa27c02ca8b0cd8312d8416a3d617a5ed0269"
+    },
+    {
+      "path": "reviews/medic-actions-2026-10-24/gutter-inspection-first.json",
+      "sha256": "60414effecc0baccabe45c3a16e75c0bbfcd893134856af8826b1c7324648660"
+    },
+    {
+      "path": "reviews/medic-actions-2026-10-24/component-inspection-first.json",
+      "sha256": "071b04b463e251a3578c305ec9dc152af60652768c2baa9f228a5e86f59c257c"
+    }
+  ],
+  "noImageToolErrors": 1,
+  "previousFiveClassVerificationBytesUnchanged": true,
+  "wiki": {
+    "images": 17,
+    "previousFifteenImageHashesUnchanged": true,
+    "added": [
+      "images/soldier-actions.jpg",
+      "images/medic-actions.jpg"
+    ]
+  },
+  "checks": [
+    "Actual primary shots consume ammo and select the independent matching attack in all four aim directions.",
+    "Run loops follow authored eight- or ten-fps timing, stable reduced/stopped/waiting fallbacks and one shared calibrated body scale.",
+    "Previous authoritative hit interruption, dodge, downed holds, revival and participant/class/run isolation tests remain passing."
+  ],
+  "limits": [
+    "Native/contact-sheet and software state evidence only. Rendered Phaser transitions, physical-device and human acceptance remain open.",
+    "Basic seven-survivor motion sets are drawn; special-ability and remaining boss action production continues.",
+    "Published Windows archive and frozen endurance timings retain their separate earlier source identities."
+  ]
+}

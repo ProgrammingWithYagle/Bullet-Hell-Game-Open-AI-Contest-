@@ -1,0 +1,268 @@
+import assert from "node:assert/strict";
+import { earnedClutchHandlingFlow } from "./heavy-clutch-handling-earned-flow.ts";
+import { menuAcquirer } from "./heavy-clutch-handling-menu-flow.ts";
+import type { ClutchHandling } from "./heavy-clutch-handling-flow.ts";
+import { Session } from "../../src/client/session.ts";
+import { data } from "../../src/shared/game.ts";
+import { idleInput, validInput } from "../../src/shared/protocol.ts";
+import { validSeamPrivateEvent } from "../../src/shared/heavy-seam.ts";
+import { restWait } from "./sniper-rest-flow.ts";
+import { restRaidInput } from "./sniper-rest-raid-policy.ts";
+import { heavyOpenLane } from "./heavy-flak-flow.ts";
+export async function earnedClutchHandlingPeerFlow(
+  endpoint: string,
+  mode: "loose" | "spade" | "floating",
+  handling: ClutchHandling,
+  acquisition: "short" | "raid" = "short",
+) {
+  const host = new Session(endpoint),
+    ally = new Session(endpoint),
+    late = new Session(endpoint),
+    sessions = [host, ally],
+    observed = new Map<number, any>(),
+    events: any[] = [],
+    emitted: any[] = [],
+    removed = new Set<number>(),
+    privateEvents: any[] = [],
+    foreign: any[] = [],
+    purchases: any[] = [],
+    allyPurchases: any[] = [],
+    cues = new Map<any, Map<number, any>>([
+      [host, new Map()],
+      [ally, new Map()],
+      [late, new Map()],
+    ]);
+  let sequence = 0,
+    allySequence = 0,
+    lateJoined = false,
+    menu: any;
+  host.onPurchase = (r: any) => purchases.push(r);
+  ally.onPurchase = (r: any) => allyPurchases.push(r);
+  host.onEvents = (batch: any[]) => {
+    for (const e of batch) {
+      events.push(structuredClone(e));
+      if (e.type === "private-class-cues") {
+        assert(validSeamPrivateEvent(e));
+        privateEvents.push(structuredClone(e));
+      }
+      if (e.type === "shots")
+        for (const s of e.shots) {
+          observed.set(s.id, { ...s, seenAt: host.view?.combatTick ?? 0 });
+          if (s.owner === host.id) emitted.push({ ...s });
+        }
+      if (e.type === "remove")
+        for (const id of e.ids) {
+          removed.add(id);
+          observed.delete(id);
+        }
+    }
+  };
+  for (const s of [ally, late])
+    s.onEvents = (events: any[]) => foreign.push(...structuredClone(events));
+  for (const s of [host, ally, late])
+    s.onView = (v: any) => {
+      assert(!v.classCues.some((c: any) => c.kind === "heavy-flak-seam-owner"));
+      for (const c of v.classCues)
+        if (
+          c.kind === "heavy-flak-burst" ||
+          c.kind === "heavy-flak-seam-contacts"
+        )
+          cues.get(s)!.set(c.id, structuredClone(c));
+    };
+  const frame = (s: any, action: any, n: number) => {
+      const f = {
+        ...idleInput(),
+        sequence: n,
+        clientTick: s.view?.combatTick ?? 0,
+        aim: 0,
+        ...action,
+      };
+      assert(validInput(f));
+      s.input(f);
+    },
+    p = () => host.view!.players.find((p: any) => p.id === host.id)!,
+    input = (a: any) => {
+      frame(host, a, ++sequence);
+      return sequence;
+    },
+    join = {
+      name: "Ordinary Clutch Heavy host",
+      classId: "heavy" as const,
+      mode: acquisition,
+      difficulty: "baby",
+      maxPlayers: 4,
+      arenaSelection: "fixed" as const,
+      openingArenaId: "gatehouse",
+    };
+  try {
+    await ally.connect({
+      ...join,
+      name: "Ordinary Soldier room host",
+      classId: "soldier",
+    });
+    await host.connect(
+      { ...join, name: "Ordinary Heavy nonhost owner" },
+      { roomId: ally.room!.roomId },
+    );
+    await restWait(
+      () => !!host.view && !!ally.view,
+      "actual ordinary Clutch lobbies",
+    );
+    assert.equal(host.view!.owner, ally.id);
+    assert.notEqual(host.id, ally.id);
+    menu = await menuAcquirer(host);
+    for (const w of data.weapons
+      .filter((w: any) => w.classId === "soldier")
+      .toSorted((x: any, y: any) => y.tier - x.tier)) {
+      const n = allyPurchases.length;
+      ally.purchase({ kind: "weapon", item: w.id });
+      await restWait(() => {
+        const r = allyPurchases[n];
+        return (
+          !!r &&
+          (!r.ok ||
+            ally.view?.players.find((p: any) => p.id === ally.id)?.weapon ===
+              w.id)
+        );
+      }, "ordinary ally weapon response plus separate view");
+      if (allyPurchases[n].ok) break;
+    }
+    const result = await earnedClutchHandlingFlow(
+      {
+        id: host.id,
+        events: () => events,
+        view: () => host.view,
+        input,
+        start: () => ally.start(),
+        vote: (index: number) => {
+          host.vote(index);
+          ally.vote(index);
+        },
+        request: async (request: any) => {
+          const n = purchases.length;
+          host.purchase(request);
+          await restWait(() => {
+            const r = purchases[n];
+            return (
+              !!r &&
+              (!r.ok ||
+                (request.kind === "skill"
+                  ? p().skills.includes(request.item)
+                  : request.kind === "weapon"
+                    ? p().weapon === request.item
+                    : true))
+            );
+          }, "ordinary Clutch owner purchase response plus separate view");
+          return purchases[n];
+        },
+        pause: (value: boolean) => ally.setMatchPaused(value),
+        end: async () => {
+          ally.endMatch();
+          await restWait(
+            () =>
+              sessions.every(
+                (s) => s.view?.phase === "defeat" && s.view.endedByHost,
+              ),
+            "actual Soldier host exit reaches all peers",
+          );
+        },
+        paused: () => !!host.view?.matchPaused,
+        observedShots: () => [...observed.values()],
+        emittedShots: () => emitted,
+        removed: (id: number) => removed.has(id),
+        privateEvents: () => privateEvents,
+        bursts: () => [...cues.get(host)!.values()],
+        acquire: menu.acquire,
+        companions: () => {
+          const v = ally.view,
+            q = v?.players.find((p: any) => p.id === ally.id);
+          if (v && q)
+            frame(
+              ally,
+              restRaidInput(v, q, [...observed.values()]),
+              ++allySequence,
+            );
+        },
+        stopCompanions: () => frame(ally, {}, ++allySequence),
+        checkPausedObservers: async () => {
+          await restWait(
+            () => !!ally.view?.matchPaused,
+            "actual shared paused Clutch clock",
+          );
+          const tick = host.view!.combatTick;
+          host.room!.send("pauseMatch", false);
+          host.room!.send("endMatch");
+          await late.connect(
+            { ...join, name: "Late Clutch medic observer", classId: "medic" },
+            { roomId: host.room!.roomId },
+          );
+          sessions.push(late);
+          lateJoined = true;
+          await restWait(
+            () => !!late.view?.matchPaused,
+            "late observer sees paused current clock",
+          );
+          await new Promise((r) => setTimeout(r, 60));
+          assert(host.view!.matchPaused && host.view!.phase === "combat");
+          assert.equal(host.view!.combatTick, tick);
+          assert.equal(
+            late.view!.players.find((p: any) => p.id === late.id)!.skills
+              .length,
+            0,
+          );
+          assert(!foreign.some((e) => e.type === "private-class-cues"));
+        },
+        checkSharedBurst: async (c: any) => {
+          await restWait(
+            () => sessions.every((s) => cues.get(s)!.has(c.id)),
+            "actual shared finite Seam/point contact geometry",
+          );
+          for (const s of sessions) assert.deepEqual(cues.get(s)!.get(c.id), c);
+        },
+        checkOwnerStreams: (id: number) => {
+          assert(!foreign.some((e) => e.type === "private-class-cues"));
+          assert(
+            !foreign.some(
+              (e) =>
+                e.type === "shots" &&
+                e.shots.some((s: any) => s.owner === host.id),
+            ),
+          );
+          assert(
+            !foreign.some((e) => e.type === "remove" && e.ids.includes(id)),
+          );
+        },
+      },
+      mode,
+      handling,
+      acquisition,
+    );
+    for (const id of result.actualLiftAndSeparateReengagement
+      ? ["heavy-clutch-lift", "heavy-clutch-engage"]
+      : ["heavy-clutch-lift"])
+      assert(
+        foreign.some(
+          (e) => e.type === "sound" && e.owner === host.id && e.id === id,
+        ),
+      );
+    return {
+      ...result,
+      heavyOwnerIsNotRoomHost: true,
+      actualRoomHostId: ally.id,
+      actualHeavyOwnerId: host.id,
+      ownerOnlyFriendlyFlightsAndRemovals: true,
+      actualLatePeerWithoutOwnership: lateJoined,
+      nonHostPauseAndEndRejected: true,
+      realPeers: sessions.length,
+      sourceBoundMenuDOMAtActual3And9And15: acquisition === "short",
+      sourceBoundMenuDOMAtActual12And20: acquisition === "raid",
+      menuObservations: menu.observations,
+      noCheckpointUploaded: true,
+    };
+  } finally {
+    await menu?.close();
+    host.close();
+    ally.close();
+    late.close();
+  }
+}

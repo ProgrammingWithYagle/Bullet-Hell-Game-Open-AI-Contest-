@@ -1,0 +1,76 @@
+{
+  "createdAt": "2026-10-29T01:25:14.798Z",
+  "passed": true,
+  "tests": 756,
+  "pass": 756,
+  "fail": 0,
+  "runtimeSourceSha256": "5aba4fc106ea739ca14a78dd2db0892ce5a98484033bddaa4092d046f9cacb4f",
+  "sourceSnapshotSha256": "66595ba68f92856e7ee357381add83bc84c72da566e20c39b3ae8ae6ee643f74",
+  "gate": {
+    "path": "reviews/public-polish-followup-2026-10-28/gate-03/runtime-verification.json",
+    "sha256": "cf56c5a828bba1b75ac8fb5b6e85c5971cdce591e813414c711d04554cc73b29"
+  },
+  "checks": [
+    {
+      "name": "Stage 1 authored content",
+      "passed": true,
+      "elapsedMs": 1395
+    },
+    {
+      "name": "TypeScript",
+      "passed": true,
+      "elapsedMs": 1739
+    },
+    {
+      "name": "Headless rules and real-network integration",
+      "passed": true,
+      "elapsedMs": 51111
+    },
+    {
+      "name": "Production client build",
+      "passed": true,
+      "elapsedMs": 3388
+    },
+    {
+      "name": "Emitted encounter atlas contracts",
+      "passed": true,
+      "elapsedMs": 656
+    }
+  ],
+  "issuedReceiptsPreserved": 8,
+  "copied": [
+    {
+      "path": "reviews/public-polish-followup-2026-10-28/full-gate-03.log",
+      "bytes": 92764,
+      "sha256": "ea65838be7209bd301fadf486dbc5092423178998d44eb84b2833951412d05a1"
+    },
+    {
+      "path": "reviews/public-polish-followup-2026-10-28/full-gate-02.log",
+      "bytes": 899,
+      "sha256": "b84dadc124444cf0b88990f3d349090bced36baab3813ffeb8853292ee958480"
+    },
+    {
+      "path": "reviews/public-polish-followup-2026-10-28/content-recheck.log",
+      "bytes": 1791,
+      "sha256": "e20a953a6510b86102ee2110fe45a9ea28bb2f4ddb73f78eaf5e1345c9d26705"
+    },
+    {
+      "path": "reviews/public-polish-followup-2026-10-28/preset-focus.log",
+      "bytes": 745,
+      "sha256": "a03645af74d15bf5c42f0397cb834f1d75175c659969c635a232b046df63aa34"
+    },
+    {
+      "path": "reviews/public-polish-followup-2026-10-28/run-gate.mjs",
+      "bytes": 2657,
+      "sha256": "b742a2969d40c8367d84976f4f8855560e44fce49c2f081f40893d9dba790a5f"
+    }
+  ],
+  "attempts": [
+    "The before-preset full gate passed but predates the preset-retention change.",
+    "Gate 02 stopped on a transient OneDrive error opening an unchanged Stage 1 report. All issued receipts were restored.",
+    "Stage 1 and gauntlet verifiers now avoid rewriting identical reports. Gate 03 verifies the current source and passes the complete existing gate."
+  ],
+  "limits": [
+    "Automated software evidence; no rendered UI, human, audio, native-language or physical-device acceptance."
+  ]
+}

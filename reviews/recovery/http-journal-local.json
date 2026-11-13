@@ -1,0 +1,29 @@
+{
+  "createdAt": "2026-10-23T19:59:04.675Z",
+  "sourceSnapshotSha256": "84d629e376acbdd10fa6c30132743add33a6f738255735a224d1d058869f60e5",
+  "fullVerificationPassed": true,
+  "fullTestCount": 68,
+  "evidence": [
+    "tests/run-service.test.ts",
+    "tests/run-store.test.ts",
+    "tests/run-journal.test.ts"
+  ],
+  "outcomes": [
+    "Documented HTTP signing vector verified independently",
+    "Exact-body/method/path/time/server/key tampering rejected",
+    "SQL nonce replay and unknown fields rejected",
+    "Separate local HTTP process stopped/restarted with file-backed SQLite",
+    "One of two competing owner claims accepted",
+    "Build/supplies/cards/votes/RNG and purchase deduplication preserved",
+    "Stale owner and finalized restore rejected",
+    "Interrupted combat requires explicit Practice recovery",
+    "Thirty-second lease refresh and expired-lease latch checked"
+  ],
+  "limitations": [
+    "Local synthetic evidence, not deployed D1 or a recovered rendered match",
+    "Lease clock is controlled through isolated fixture IPC; victories are synthetic",
+    "Journal not called by GraveRoom; player recovery credentials/bindings pending",
+    "Large fifty-player checkpoint transfer and historical roster/ranking integration pending",
+    "Temporary generated test keys only; no live secret configuration"
+  ]
+}

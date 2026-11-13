@@ -1,0 +1,49 @@
+{
+  "checkedAt": "2026-11-10T03:40:59.602Z",
+  "reproducedMovementAssertion": true,
+  "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert(Math.hypot(moved.x - origin.x, moved.y - origin.y) > 5)\n\n    at heavyClutchHandlingOperation (C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\tests\\helpers\\heavy-clutch-handling-flow.ts:165:3)\n    at async <anonymous> (C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same\\work\\heavy-clutch-handling-movement-stage\\reproduce-slow01.mts:7:5)",
+  "controlledLateEndless27AndExistingSlow": true,
+  "origin": {
+    "x": 600,
+    "y": 600
+  },
+  "actualAfter": {
+    "x": 603.7334666857414,
+    "y": 598.00442048077
+  },
+  "actualDisplacement": 4.233333333333327,
+  "actualTick": 4,
+  "actualKit": {
+    "heavyClutchConverted": 1,
+    "heavyClutchHandling": "heavy-traverse-open-1",
+    "heavyClutchAt": 3,
+    "heavyClutchSequence": 5,
+    "heavyClutchBlocked": false,
+    "heavyClutchLifted": true,
+    "heavyClutchUsed": true,
+    "heavyClutchForfeited": 1,
+    "heavyClutchSlotsRemaining": 2,
+    "heavyPrimaryAt": 4,
+    "heavyPrimaryAim": -0.4908738521234055,
+    "heavyTraverseBornAt": 2,
+    "heavyTraverseSequence": 3,
+    "heavyTraversePostX": 600,
+    "heavyTraversePostY": 600,
+    "technique1At": 242,
+    "heavyTraverseUntil": 33,
+    "heavyTraverseNextAt": 22,
+    "heavyTraverseRounds": 1,
+    "heavyTraverseAim": -0.4908738521234055,
+    "heavyTraverseMode": "floating",
+    "heavyTraverseCastAt": 2,
+    "heavyTraverseShotRequiresClutch": false,
+    "heavyTraverseShotAt": 2,
+    "heavyTraverseShotAim": -0.4908738521234055,
+    "heavyTraverseShotMode": "floating",
+    "heavyTraverseBlocked": false
+  },
+  "actualConversions": 1,
+  "canonicalFilesWritten": false,
+  "runtimeChanged": false,
+  "onlineProof": false
+}

@@ -1,0 +1,28 @@
+✔ Cancel keeps a newer load intact after the older join returns success (533.5413ms)
+✔ Cancel keeps a newer load intact after the older join returns error (388.359ms)
+✔ Escape cancels before artwork or audio settles and late completions do not reopen the game (311.789ms)
+✔ a saved language that fails to load still reaches the usable English menu with a retry notice (296.9007ms)
+✔ the latest language choice wins even when the older download finishes later (205.456ms)
+✔ choosing English cancels an older RTL language result without reversing document direction (103.0776ms)
+✔ an aborted language request never changes the catalog, page direction or saved preference (84.7934ms)
+✔ obsolete language failures are ignored while a current failure preserves the working language and can retry (83.7951ms)
+✔ leaving a setup page aborts its pending language choice without saving or redrawing the next page (474.7225ms)
+✔ a language load error remains on the current page with a retry and the current selection (361.9572ms)
+✔ a completed language change keeps the current text draft, cursor and focused field (325.5283ms)
+✔ a working language change reports a storage error without reverting to an inconsistent menu (297.2122ms)
+✔ a cosmetic profile refresh keeps an unrelated pending language choice active (430.2704ms)
+✔ leaving Profile while a file is read prevents a late import from replacing saved progress (375.2511ms)
+✔ a pending profile import ignores conflicting file and cosmetic actions and remains usable afterwards (167.8599ms)
+✔ valid profile files report storage failures accurately and keep the previous bytes available to export (168.379ms)
+✔ a disposed profile cannot save from its detached cosmetic or file controls (158.6034ms)
+✔ a successful profile import keeps its notice and returns focus to the current import control (170.6265ms)
+✔ actual setup ignores an older profile refresh after moving to a different page (389.4668ms)
+✔ an imported language refreshes its owning setup and keeps the success notice and import focus (394.3171ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4189.2633

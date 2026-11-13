@@ -1,0 +1,14 @@
+{
+  "checkedAt": "2026-11-08T02:49:18.473Z",
+  "originalEarnedCases": {
+    "tests": 6,
+    "pass": 0,
+    "fail": 6,
+    "allSixActualFirstClearsReached20SP": true
+  },
+  "cause": "Game.changePhase includes the issued bossDefeatRemaining before the normal vote duration. The new clock assertion omitted that existing5second settled-fall hold.",
+  "correction": "Use the unmodified actual bossDefeatRemaining(view.boss,view.tick), report the raw phase remainder and hold separately, and assert the remaining normal15/15/25/5second clock.",
+  "gameplayAndDeadlinesChanged": false,
+  "timeoutOrBoundChanges": false,
+  "originalHelperAndFailurePreserved": true
+}

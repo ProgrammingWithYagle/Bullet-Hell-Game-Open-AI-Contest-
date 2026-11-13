@@ -1,0 +1,483 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-09T14:59:23.518Z",
+  "sourceCommit": "12c265fca9f30777474ba97d36ae1393621e7147",
+  "metadataHead": "b5e74feced69663b9dcf8dfd4d21d367d7db56dd",
+  "buildId": "2026.11.09-heavy-feed-clutch",
+  "protocol": 71,
+  "contentRevision": "76410d1cca4ce1874da61acf3fefa6c359720b62452411c172b2b4f86f788de2",
+  "runtimeSourceSha256": "350926b9a9469f9a5632510fb6e56651894a1922a4ff08d2fc9f8ee452f62a18",
+  "sourceSnapshotSha256": "511d3c7e268f5cf4be0c1adfd87a74954e3cd7db30e7bdcdd66a593d2248ea64",
+  "tests": 2093,
+  "checks": 7,
+  "techniques": 61,
+  "sourceCI": {
+    "passed": true,
+    "checkedAt": "2026-11-09T14:18:52.078Z",
+    "phase": "source",
+    "head": "12c265fca9f30777474ba97d36ae1393621e7147",
+    "sourceCommit": "12c265fca9f30777474ba97d36ae1393621e7147",
+    "events": [
+      {
+        "id": 42629325885,
+        "event": "push",
+        "url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/42629325885",
+        "headSha": "12c265fca9f30777474ba97d36ae1393621e7147",
+        "status": "completed",
+        "conclusion": "success",
+        "totalJobs": 1,
+        "jobs": [
+          {
+            "id": 129201218355,
+            "name": "verify",
+            "status": "completed",
+            "conclusion": "success",
+            "steps": [
+              {
+                "name": "Set up job",
+                "number": 1,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+                "number": 2,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+                "number": 3,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Install pinned package manager",
+                "number": 4,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Install locked dependencies",
+                "number": 5,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Install pinned image verification dependency",
+                "number": 6,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Verify content, rules, networking and client build",
+                "number": 7,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Preserve verification report",
+                "number": 8,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Post Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+                "number": 15,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+                "number": 16,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Complete job",
+                "number": 17,
+                "status": "completed",
+                "conclusion": "success"
+              }
+            ],
+            "tests": 2093,
+            "pass": 2093,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "log": "reviews/heavy-clutch-2026-11-09/ci-source-push-129201218355.log",
+            "decodedLogSha256": "b79cc74ed8b38d9059bd834695c84497e5bd036cd1732d83bd8f19c82527ed6e",
+            "verified": true
+          }
+        ]
+      },
+      {
+        "id": 42629348448,
+        "event": "pull_request",
+        "url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/42629348448",
+        "headSha": "12c265fca9f30777474ba97d36ae1393621e7147",
+        "status": "completed",
+        "conclusion": "success",
+        "totalJobs": 1,
+        "jobs": [
+          {
+            "id": 129201295156,
+            "name": "verify",
+            "status": "completed",
+            "conclusion": "success",
+            "steps": [
+              {
+                "name": "Set up job",
+                "number": 1,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+                "number": 2,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+                "number": 3,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Install pinned package manager",
+                "number": 4,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Install locked dependencies",
+                "number": 5,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Install pinned image verification dependency",
+                "number": 6,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Verify content, rules, networking and client build",
+                "number": 7,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Preserve verification report",
+                "number": 8,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Post Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+                "number": 15,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+                "number": 16,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Complete job",
+                "number": 17,
+                "status": "completed",
+                "conclusion": "success"
+              }
+            ],
+            "tests": 2093,
+            "pass": 2093,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "log": "reviews/heavy-clutch-2026-11-09/ci-source-pull_request-129201295156.log",
+            "decodedLogSha256": "cd0a69395be0a7e86bb1c6a03f7449d205fd1d3a8d2e6878f6a51489607b390d",
+            "verified": true
+          }
+        ]
+      }
+    ],
+    "draftPR14": true,
+    "credentialsPrintedOrStored": false,
+    "transport": "Bounded native GitHub API for both push/PR runs and decoded log files; GitHub connector supplies draft-PR metadata. Cached credential remains in memory only."
+  },
+  "metadataCI": {
+    "passed": true,
+    "checkedAt": "2026-11-09T14:57:50.305Z",
+    "phase": "metadata",
+    "head": "b5e74feced69663b9dcf8dfd4d21d367d7db56dd",
+    "sourceCommit": "12c265fca9f30777474ba97d36ae1393621e7147",
+    "events": [
+      {
+        "id": 42636634550,
+        "event": "push",
+        "url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/42636634550",
+        "headSha": "b5e74feced69663b9dcf8dfd4d21d367d7db56dd",
+        "status": "completed",
+        "conclusion": "success",
+        "totalJobs": 1,
+        "jobs": [
+          {
+            "id": 129226388577,
+            "name": "verify",
+            "status": "completed",
+            "conclusion": "success",
+            "steps": [
+              {
+                "name": "Set up job",
+                "number": 1,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+                "number": 2,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+                "number": 3,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Install pinned package manager",
+                "number": 4,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Install locked dependencies",
+                "number": 5,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Install pinned image verification dependency",
+                "number": 6,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Verify content, rules, networking and client build",
+                "number": 7,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Preserve verification report",
+                "number": 8,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Post Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+                "number": 15,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+                "number": 16,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Complete job",
+                "number": 17,
+                "status": "completed",
+                "conclusion": "success"
+              }
+            ],
+            "tests": 2093,
+            "pass": 2093,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "log": "C:/Users/yigal/Documents/Codex/2026-11-05/continue-grave-accord-in-the-same/outputs/Heavy-clutch-metadata-ci-push-129226388577.log",
+            "decodedLogSha256": "9fc4f8d1fc2d833a46e65899ecdcef9ed6e95af4a85a26b7daf5e7ebc5876438",
+            "verified": true
+          }
+        ]
+      },
+      {
+        "id": 42636659219,
+        "event": "pull_request",
+        "url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/42636659219",
+        "headSha": "b5e74feced69663b9dcf8dfd4d21d367d7db56dd",
+        "status": "completed",
+        "conclusion": "success",
+        "totalJobs": 1,
+        "jobs": [
+          {
+            "id": 129226474523,
+            "name": "verify",
+            "status": "completed",
+            "conclusion": "success",
+            "steps": [
+              {
+                "name": "Set up job",
+                "number": 1,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+                "number": 2,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+                "number": 3,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Install pinned package manager",
+                "number": 4,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Install locked dependencies",
+                "number": 5,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Install pinned image verification dependency",
+                "number": 6,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Verify content, rules, networking and client build",
+                "number": 7,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Preserve verification report",
+                "number": 8,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Post Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+                "number": 15,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+                "number": 16,
+                "status": "completed",
+                "conclusion": "success"
+              },
+              {
+                "name": "Complete job",
+                "number": 17,
+                "status": "completed",
+                "conclusion": "success"
+              }
+            ],
+            "tests": 2093,
+            "pass": 2093,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "log": "C:/Users/yigal/Documents/Codex/2026-11-05/continue-grave-accord-in-the-same/outputs/Heavy-clutch-metadata-ci-pull_request-129226474523.log",
+            "decodedLogSha256": "b1853e82f1d4ef6a1f32cbb6fddbb966f1838df7f7c3a363d68592296c9915f9",
+            "verified": true
+          }
+        ]
+      }
+    ],
+    "draftPR14": true,
+    "credentialsPrintedOrStored": false,
+    "transport": "Bounded native GitHub API for both push/PR runs and decoded log files; GitHub connector supplies draft-PR metadata. Cached credential remains in memory only."
+  },
+  "finalPR": {
+    "passed": true,
+    "checkedAt": "2026-11-09T14:58:18.347Z",
+    "url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14",
+    "title": "Expand Grave Accord with Soldier pathways and Heavy Siege Gunner",
+    "head": "b5e74feced69663b9dcf8dfd4d21d367d7db56dd",
+    "branch": "feat/first-playable-loop",
+    "base": "main",
+    "draft": true,
+    "state": "open",
+    "titleAndBodyMatch": true,
+    "bodySha256": "76d9e7137249134035a951f3bd4bd8cdca290d5567c9738bd7ee15f4aca7d933",
+    "transport": "Bounded native API using the existing cached repository credential completes only the authorized PR14 title/body update. Draft/open/feature head/main base are checked before and after; credentials stay in memory.",
+    "credentialsPrintedOrStored": false
+  },
+  "independentPRRead": {
+    "passed": true,
+    "checkedAt": "2026-11-09T14:59:09.055Z",
+    "url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14",
+    "head": "b5e74feced69663b9dcf8dfd4d21d367d7db56dd",
+    "branch": "feat/first-playable-loop",
+    "base": "main",
+    "draft": true,
+    "state": "open",
+    "merged": false,
+    "title": "Expand Grave Accord with Soldier pathways and Heavy Siege Gunner",
+    "titleAndBodyMatchPreparedNativeUpdate": true,
+    "bodySha256": "76d9e7137249134035a951f3bd4bd8cdca290d5567c9738bd7ee15f4aca7d933",
+    "transport": "Independent GitHub connector get_pr_info read, compared with prepared title/body and exact feature head. No merge/deployment."
+  },
+  "liveReviews": [
+    {
+      "audience": "testing",
+      "url": "http://127.0.0.1:5372/",
+      "endpoint": "http://127.0.0.1:2748",
+      "sourceCommit": "12c265fca9f30777474ba97d36ae1393621e7147",
+      "protocol": 71,
+      "files": 2050,
+      "nativeGroups": 4,
+      "nativeCases": 84,
+      "manifestSha256": "cbbe9c75b8415f64150a4b865e098c06436f7a04faec948a693fff79a3d71f9e"
+    },
+    {
+      "audience": "public",
+      "url": "http://127.0.0.1:5373/",
+      "endpoint": "http://127.0.0.1:2749",
+      "sourceCommit": "12c265fca9f30777474ba97d36ae1393621e7147",
+      "protocol": 71,
+      "files": 2050,
+      "nativeGroups": 4,
+      "nativeCases": 84,
+      "manifestSha256": "c83010130b003b1a9215201d0c4864c9e38f085ac1b4153cc5d698620ab5f8d6"
+    }
+  ],
+  "currentExactProcesses": 4,
+  "priorRecordedIdentities": 100,
+  "priorExactLive": 32,
+  "priorAbsentOrNonmatching": 68,
+  "currentIdentityObservationAt": "2026-11-09T14:58:43.0587210Z",
+  "priorRegisteredRootProof": {
+    "count": 55,
+    "checkedAt": "2026-11-09T14:31:14.670Z"
+  },
+  "failedRootPreserved": true,
+  "originalRuntimeExecutionProvenanceUnchanged": true,
+  "sourceAndMetadataRuntimeTestRuleAssetsExact": true,
+  "serviceYardPatchAndLogExact": true,
+  "broaderClassAndGameDevelopmentComplete": false,
+  "limits": [
+    "Verified feature/publication checkpoint only. Further pathways and human/rendered/device/native-language/listening/motion/final-balance acceptance remain open. Only the user decides completion.",
+    "All36 pairs match combat/progression fields including combat-exit shield; raw terminal shield resets remain explicit with issued Practice provenance. Different spending and one policy do not rank builds.",
+    "Keyed/Open handling remains a workspace-only study outside the2093tests and published61cards. No private database, process or prior review is modified."
+  ]
+}

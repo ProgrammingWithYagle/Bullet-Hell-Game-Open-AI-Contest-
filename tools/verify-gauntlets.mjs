@@ -14,7 +14,7 @@ for(let seed=1;seed<=1000;seed++)for(const mode of c.modes.filter(m=>m.kind!=='e
  }assert.equal(seen.size,mode.encounters);routes++;
 }
 for(let seed=1;seed<=200;seed++){
- const rng=prng(seed),routeIds=Object.entries(c.bossPools).filter(([id])=>id!=='endless').flatMap(([,p])=>[...p.regular,...p.finale]),exclusive=c.bossPools.endless.exclusive;
+ const rng=prng(seed),routeIds=Object.entries(c.bossPools).filter(([id])=>id!=='endless'&&id!=='story').flatMap(([,p])=>[...p.regular,...p.finale]),exclusive=c.bossPools.endless.exclusive;
  const history=[],bags={route:new Set(routeIds),exclusive:new Set(exclusive)};
  for(let encounter=1;encounter<=200;encounter++){
   const isExclusive=encounter>=4&&encounter%4===0,kind=isExclusive?'exclusive':'route',pool=isExclusive?exclusive:encounter<=3?c.bossPools.endless.openingPool:routeIds;
@@ -29,4 +29,6 @@ for(let seed=1;seed<=200;seed++){
 }
 const report={schemaVersion:1,passed:true,kind:'Deterministic design acceptance model; not playable runtime evidence',timedRoutes:routes,concealedCardsValidated:contractCards,endlessEncounters,guaranteedExclusiveEncounters:exclusiveEncounters,seeds:{timed:1000,endless:200},repeatProtectionEncounters:12,limits:['The model checks pool arithmetic, uniqueness and selected sequence constraints. Actual vote/reconnect/server integration remains a gameplay check.','An exclusive slot offers three exclusive identities, so any vote result produces an exclusive boss.']};
 report.contentRevision=JSON.parse(fs.readFileSync('content/revision.json','utf8')).sha256;
-fs.writeFileSync('reviews/gauntlet-model-review.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));
+const reportPath='reviews/gauntlet-model-review.json',reportText=JSON.stringify(report,null,2)+'\n';
+if(!fs.existsSync(reportPath)||fs.readFileSync(reportPath,'utf8')!==reportText)fs.writeFileSync(reportPath,reportText);
+console.log(JSON.stringify(report,null,2));

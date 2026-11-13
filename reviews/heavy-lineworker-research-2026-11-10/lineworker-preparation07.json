@@ -1,0 +1,69 @@
+{
+  "preparedAt": "2026-11-12T00:21:16.624Z",
+  "sourceSnapshot": {
+    "runtimeSourceSha256": "c213467e0877fce574552b98139e4171a71ad4430069102a880db46c65f86de8",
+    "sourceSnapshotSha256": "7211728dc29df50da0b1df6cdf1d5fdf1ad034852526f36cf8a7c036a1507f79"
+  },
+  "originalPrototype02AndFailed9Pass3FailGuardRunPreserved": true,
+  "originalMovementStudy216ArmsPreserved": true,
+  "originalPrototype02Binding": {
+    "builtAt": "2026-11-10T22:37:19.939Z",
+    "sourceBase": "30fbfefaa66faabd93416dc31e27310149df5fed",
+    "runtimeSourceSha256": "c213467e0877fce574552b98139e4171a71ad4430069102a880db46c65f86de8",
+    "sourceSnapshotSha256": "565333e00e8cf875e4be37b6e7f5a12ef55a9835f578a441ea1b442dea1c59c8",
+    "canonicalGameSha256": "b571015499e975d59762757140f626edad30f1a96181c22458e65827b5d4873a",
+    "derivedGameSha256": "3fe5a37117319daeba2da29efddb542d6f3830b076609334dfc8d835cefc5014",
+    "candidateSha256": "10421aded34e81e8c6662d949e72795569012bb42e6e8b194fce3d1a665c397d",
+    "bundleSha256": "7ea14bd9ca65daa519b067650d2c1aea384e9f4748b2072d18c83d53b7de990a",
+    "registered": false,
+    "canonicalFilesWritten": false,
+    "onlineProof": false,
+    "countsAs2209Tests": false,
+    "controlledProposedRawOwnershipOnly": true,
+    "virtualCatalogUnchanged": true,
+    "proposedIdsAreNotCanonicalPurchases": true,
+    "proposedCheckpointsMustNeverBeImportedIntoCurrentOrOnlineSource": true,
+    "patches": [
+      "  readonly traverse = new HeavyTraverse();",
+      "const sk = skillFor(id,p.classId)!;",
+      "kitStatus(id:string){return {...this.classKits.status(id,this.combatTick),",
+      "    this.traverse.reconcile(this.traverseAuthority());",
+      "    this.traverse.beforeMove(p,this.traverseContext());",
+      "    const footwork=p.classId==='soldier'",
+      "traverseRecoil.x + environment.x",
+      "traverseRecoil.y + environment.y",
+      "    p.y = next.y;\n    if(p.classId",
+      "if(p.classId==='heavy'&&i.technique1){if(p.skills.includes(traverseIds.entry))",
+      "if(p.classId==='heavy')this.traverse.beforeAbility(p,slot,this.traverseContext());",
+      "    this.traverse.forget(s.id);",
+      "      if(this.flak.has(s.id)){",
+      "  private traverseContext():TraverseContext"
+    ],
+    "phaseCleanupCalls": 6,
+    "valueAcceptancePending": true
+  },
+  "changes": [
+    "Prototype03 removes cancellation caused solely by rejected Dodge/Reload/ultimate input. Actual admitted Dodge and actual reload call explicit interruption hooks; admitted ultimate already uses its real ability hook.",
+    "Movement07 keeps original prototype02/rules/input policy and150ticks, records every tick, and separately labels9px body-radius arrival plus original2px point observation."
+  ],
+  "files": [
+    {
+      "file": "linework-candidate03.mts",
+      "sha256": "d761b799ba4986606accecbb8e76b148bcd7c9317a1a055f8a9d22338c12fc3c"
+    },
+    {
+      "file": "build-study03.mjs",
+      "sha256": "1141d27c961fea0d887a77fd0a178818d58d06e448a4d3e727014006e8e5ee5c"
+    },
+    {
+      "file": "lineworker-guards08.mts",
+      "sha256": "018c0e309d9767df6354a3e1570bcbdebe8ba4f0548c4d6baeb9e88b7c79cdde"
+    },
+    {
+      "file": "lineworker-value07.mts",
+      "sha256": "c60c3e80311c647cbdb838e5064099a2ca9406da8717015cf84eb8bc099ab9f5"
+    }
+  ],
+  "canonicalFilesChanged": false,
+  "registered": false
+}

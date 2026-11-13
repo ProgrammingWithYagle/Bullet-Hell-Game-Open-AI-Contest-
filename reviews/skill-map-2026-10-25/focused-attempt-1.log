@@ -1,0 +1,54 @@
+✔ personal progress credits actual deployments, persists boundaries and rejects impossible history (12.9219ms)
+✔ all six difficulties use the complete budget and Hard full participation unlocks the last two (6.5883ms)
+✔ late arrivals cannot turn a partial campaign and secret clear into a full Hard unlock (2.8848ms)
+✔ completed Endless mastery survives defeat, extraction, repeated views and stale restored checkpoints (10.1475ms)
+✔ secret failure retains campaign mastery; a later stale view never removes the memorial (2.5069ms)
+✔ teammate channel rescues count once and solo self-revival does not award cooperation (13.2557ms)
+✔ protocol-12 Practice migration preserves the secret offer and personal solo history (1.7007ms)
+✔ profiles migrate existing preferences and retain unverified legacy clears without granting unlocks (0.4748ms)
+✔ import validates all bytes before replacement and keeps an exact prior backup (1.3692ms)
+✔ storage failures and corrupt prior files preserve the previous profile bytes (0.9144ms)
+✔ bindings reject conflicts and reserved navigation, and touch/gamepad can share action names (0.487ms)
+✔ hold/toggle latches recognize quick taps, hold edges and reset on blur/pause (0.2029ms)
+✔ profile messages cover fifteen locales, preserve placeholders and interpolate toggle instructions (5.2433ms)
+✔ replayed branches may discover another story without double-awarding encounter mastery (1.7385ms)
+✔ legacy Hard campaign records stay portable but never infer missing participation or grant mastery (1.6758ms)
+✔ each expanded class map exposes all 54 real skills and exactly their prerequisites without overlapping targets (6.785ms)
+✔ keyboard navigation follows path depth and neighboring branches with bounded Home and End (0.5539ms)
+✔ zoom retains a minimum target above 44 pixels and preserves the viewport center (0.2086ms)
+✔ map markup has every inspect target once, real prerequisite edges and escaped labels (1.8374ms)
+✔ map adapter provides one roving tab stop and arrow focus without a purchase action (1.4833ms)
+✔ classic is the default and issued eight-field profiles retain progress while migrating the option (5.7558ms)
+✖ all fifteen locales expose the option, navigation help and zoom controls with placeholder parity (19.1881ms)
+✔ the actual shop switches between 18 and 54 skills and expanded inspection uses the existing guarded purchase path (237.5264ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 22
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 839.9363
+
+✖ failing tests:
+
+test at tests\skill-map.test.ts:1:5845
+✖ all fifteen locales expose the option, navigation help and zoom controls with placeholder parity (19.1881ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(typeof messages['ui.' + key] === 'string' && messages['ui.' + key].length > 2)
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\skill-map.test.ts:117:7)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

@@ -1,0 +1,64 @@
+✔ all 66 identities admit Crazed with their fixed grade, inherited full signature and tier-appropriate phase count (33.7714ms)
+✔ Crazed queues at most the finite pending budget and actual echoes never exceed the 4000-hostile cap (147.9213ms)
+✖ controlled Clockmender rings scale actual shots 24/60/180, preserve stop/resume and leave no uncontrolled duplicates (4.9304ms)
+✔ controlled drone swarms retain live source cancellation at the higher projectile densities (7.0973ms)
+✔ variant pressure locks pursuit positions, warns before contact, sweeps fast movement and expires without hidden repeats (0.7719ms)
+✔ Brutal and Crazed add different real warned patterns, rotate targets and bound fifty-player marks (33.4949ms)
+✔ real Crazed corner pressure reaches distant players and is removed by phase changes, stagger, victory, timeout and wipe (40.5915ms)
+✔ Warden active cones retain a clear auxiliary-pressure window even in Crazed (92.0796ms)
+✔ Endless progresses each actually cleared identity through Standard, Brutal and Crazed across saved boundaries (217.0082ms)
+✖ known protocol20 local saves and profiles retain progress; unproven legacy form history is conservatively Standard (1.8677ms)
+✔ four spacious maps reduce real retreat distance and painted/colliding geometry together while two narrow layouts stay full size (35.8117ms)
+✔ phase transitions send one distinct priority sound per actual phase and the original new cue reconstructs exactly (442.9045ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 10
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1696.0034
+
+✖ failing tests:
+
+test at tests\crazed-horizon.test.ts:1:3145
+✖ controlled Clockmender rings scale actual shots 24/60/180, preserve stop/resume and leave no uncontrolled duplicates (4.9304ms)
+  AssertionError [ERR_ASSERTION]: normal
+  
+  31 !== 24
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\crazed-horizon.test.ts:59:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 31,
+    expected: 24,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\crazed-horizon.test.ts:1:9624
+✖ known protocol20 local saves and profiles retain progress; unproven legacy form history is conservatively Standard (1.8677ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1060 !== 777
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\crazed-horizon.test.ts:155:112)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1060,
+    expected: 777,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

@@ -1,0 +1,214 @@
+@import "../src/client/fonts.css";
+:root {
+  color-scheme: dark;
+  font-family: "Noto Sans", sans-serif;
+  color: #e8dfc8;
+  background: #112522;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+a {
+  color: #dfc392;
+  text-underline-offset: 4px;
+}
+header {
+  padding: 20px 4vw;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid #43564c;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+}
+header a {
+  text-decoration: none;
+  font-weight: 700;
+}
+header a span {
+  color: #acbaab;
+  font-weight: 400;
+}
+.tag,
+.eyebrow {
+  color: #bba476;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+}
+main {
+  max-width: 1260px;
+  margin: 0 auto;
+  padding: 38px 24px 30px;
+}
+.intro {
+  max-width: 760px;
+  margin-bottom: 26px;
+}
+h1 {
+  font-family: "IM Fell English SC", Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(34px, 5vw, 58px);
+  line-height: 1.05;
+  margin: 12px 0;
+}
+p {
+  font-size: 14px;
+  line-height: 1.75;
+  color: #bfc9b9;
+}
+.bench {
+  border: 1px solid #4a5a4b;
+  background: #142b27;
+}
+.toolbar {
+  padding: 15px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+.toolbar strong {
+  font-size: 14px;
+  display: block;
+}
+#clock {
+  font-size: 12px;
+  color: #b0bda9;
+  display: block;
+  margin-top: 5px;
+}
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+button {
+  font: inherit;
+  font-size: 12px;
+  border: 1px solid #758169;
+  color: #f0e7cf;
+  background: #294438;
+  padding: 10px 16px;
+  cursor: pointer;
+  border-radius: 2px;
+}
+button:hover {
+  background: #3d5947;
+}
+button:disabled {
+  opacity: 0.45;
+  cursor: wait;
+}
+button:focus-visible,
+a:focus-visible,
+#stage:focus-visible {
+  outline: 3px solid #e4bc72;
+  outline-offset: 4px;
+}
+#play {
+  background: #dfc392;
+  color: #1a2d25;
+  border-color: #dfc392;
+  font-weight: 700;
+}
+#stage {
+  width: 100%;
+  aspect-ratio: 8 / 5;
+  overflow: hidden;
+  background: #152d29;
+}
+#stage canvas {
+  display: block;
+  max-width: 100%;
+}
+.readout {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  padding: 13px 18px;
+  border-top: 1px solid #3f5346;
+  font-size: 11px;
+}
+#health {
+  color: #ecce98;
+  font-variant-numeric: tabular-nums;
+}
+#status {
+  color: #b6c5b0;
+}
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 8px 18px 16px;
+  font-size: 12px;
+  color: #c3cbb9;
+}
+input {
+  accent-color: #dfc392;
+}
+.instructions {
+  padding: 0 18px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.instructions p {
+  font-size: 12px;
+}
+.pad {
+  display: flex;
+  gap: 5px;
+}
+.pad button {
+  touch-action: none;
+  user-select: none;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 10px;
+}
+.notes {
+  margin-top: 24px;
+  max-width: 980px;
+}
+.notes p {
+  font-size: 12px;
+}
+@media (max-width: 650px) {
+  header {
+    flex-direction: column;
+  }
+  main {
+    padding: 26px 12px;
+  }
+  .toolbar,
+  .instructions {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .toolbar {
+    padding: 12px;
+  }
+  .buttons {
+    width: 100%;
+  }
+  button {
+    padding: 10px 12px;
+  }
+  .readout {
+    gap: 9px 15px;
+  }
+  #status {
+    flex-basis: 100%;
+  }
+  .pad {
+    width: 100%;
+  }
+  .pad button {
+    flex: 1;
+  }
+}

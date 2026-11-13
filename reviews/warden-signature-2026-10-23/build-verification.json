@@ -1,0 +1,48 @@
+{
+  "createdAt": "2026-10-23T23:25:56.242Z",
+  "passed": true,
+  "command": "node node_modules/vite/bin/vite.js build --config tools/warden-rehearsal.vite.ts --logLevel warn",
+  "exitCode": 0,
+  "outputDirectory": "tmp/warden-rehearsal-build",
+  "outputFiles": 978,
+  "outputTreeSha256": "adf4dd7e62773d3b844ded8e8a967d339ac7a0d05fddb1b85a6d3e89a3206f1f",
+  "source": [
+    {
+      "path": "src/shared/warden-signature.ts",
+      "sha256": "ff965c6e629daee3b89be16cb8d35ecba789cd657e97efed73eb6308d4044009"
+    },
+    {
+      "path": "src/shared/warden-rehearsal.ts",
+      "sha256": "2b777afa1d19e924a99506a2caa663ca8a02a42363c7091e5a3b497bdc4d3df7"
+    },
+    {
+      "path": "src/client/warden-presentation.ts",
+      "sha256": "bff86656c6e55377cee73b64c438ca4891c21ece7e66015ee28065775bbaab05"
+    },
+    {
+      "path": "tools/warden-rehearsal.ts",
+      "sha256": "d09038c77b28bff388e602d78a31e41386b88791a5fea92c314167817b8209f2"
+    },
+    {
+      "path": "tools/warden-rehearsal.html",
+      "sha256": "ce55abf78798cd50bfa143626ac96c301d87fbfd6231a920439c9e078a5f9a7a"
+    },
+    {
+      "path": "tools/warden-rehearsal.css",
+      "sha256": "b82fb28d106a15ffa8b29fe544b00a61680aedc504e4e20407a173a9274a9838"
+    },
+    {
+      "path": "tools/warden-rehearsal.vite.ts",
+      "sha256": "60044c48e1eb60f60f9d3a140b4609d0c4bf18d32b9c0dc769ec1d3c530199d8"
+    },
+    {
+      "path": "assets/production/motion/warden-rehearsal.json",
+      "sha256": "2a0d342b3c94d15859cfcdb8102dbd69747c6e7e1423c8566a26d5b5eff6ca6d"
+    }
+  ],
+  "warning": "Existing large JavaScript chunk warning.",
+  "limits": [
+    "Build and source/asset identity only; no browser execution or Phaser motion acceptance.",
+    "The rehearsal remains outside the normal production build."
+  ]
+}

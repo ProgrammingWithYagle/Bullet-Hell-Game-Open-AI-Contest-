@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-11-08T03:16:20.019Z",
+  "sourceCommit": "c56ae850ee9c487202379a4e093811c376bec3b1",
+  "identityCommandFailed": "Exact current testing backend differs.",
+  "nativeAttempts": [
+    "native01-testing-partial.json",
+    "native01-public-partial.json"
+  ],
+  "initialReadinessPreserved": "initial-sandbox-startup-readiness.json",
+  "initialProcessReceiptsPreserved": [
+    "initial-sandbox-processes-testing.json",
+    "initial-sandbox-processes-public.json"
+  ],
+  "subsequentCIMObservation": "initial-launch-observation01.json",
+  "allFourInitiallyRecordedPIDsAbsent": true,
+  "cleanupPerformed": false,
+  "runtimeOrTestsChanged": false,
+  "limits": "Initial normal-sandbox launch lifetime failed. Exact cause is not asserted from absence alone. Relaunch uses an authorized persistent-process boundary; frozen roots/source/private SQLite stay preserved. No original failure is relabeled as successful."
+}

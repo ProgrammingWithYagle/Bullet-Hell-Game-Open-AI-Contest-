@@ -72,6 +72,7 @@ node_modules/
 dist/
 release/
 output/
+outputs/
 tmp/
 .env
 .env.*
@@ -80,3 +81,12 @@ tmp/
 playwright-report/
 test-results/
 .wiki-checkout/
+
+# Python tool caches
+__pycache__/
+*.pyc
+
+.art-verify-venv/
+dist-public/
+data/*.sqlite
+data/*.sqlite-*

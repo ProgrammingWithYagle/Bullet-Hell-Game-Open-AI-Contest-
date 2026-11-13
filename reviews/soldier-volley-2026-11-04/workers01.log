@@ -1,0 +1,28 @@
+✖ real peers serialize paid/relay proof and pause/late observation in a clearly controlled legal late-budget server fixture (9415.4859ms)
+✔ actual optimized public Solo worker executes earned paid and relay steps with real round expenditure and pause (11651.3027ms)
+✔ actual optimized testing Solo worker executes earned paid and relay steps with real round expenditure and pause (11908.0993ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 2
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 24817.2475
+
+✖ failing tests:
+
+test at tests\soldier-volley-network.test.ts:1:450
+✖ real peers serialize paid/relay proof and pause/late observation in a clearly controlled legal late-budget server fixture (9415.4859ms)
+  AssertionError [ERR_ASSERTION]: second paid step
+      at wait (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\soldier-volley-network.test.ts:10:375)
+      at async TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\soldier-volley-network.test.ts:18:650)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

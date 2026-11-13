@@ -1,0 +1,40 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import {fileURLToPath} from 'node:url';
+import {createHash} from 'node:crypto';
+const stage=path.dirname(fileURLToPath(import.meta.url)),root='C:/Users/yigal/OneDrive/Documents/ChatGPT/OpenAI Multiplayer Game Contest (Bullet Hell)',scope=root+'/reviews/heavy-clutch-stat-scaling-2026-11-10';
+const sha=b=>createHash('sha256').update(b).digest('hex'),files=new Map();
+for(const audience of ['testing','public']){const n=JSON.parse(fs.readFileSync(scope+'/native-'+audience+'.json','utf8'));assert(n.passed&&n.cases===106&&n.invocations===44);}
+assert(!fs.existsSync(scope+'/frozen-verification.json'));
+let flow=fs.readFileSync(stage+'/retained-traverse-flow.mts','utf8');
+const capture=' const previous=new Set(a.emittedShots().map((s:any)=>s.id))';
+assert.equal(flow.split(capture).length,2);
+flow=flow.replace(capture,' const statContextAtStrokeStart=structuredClone({skills:p().skills,upgrades:p().upgrades,mutations:p().mutations});\n'+capture);
+const returned="return{passed:true,mode,ordinaryMode:'short'";assert.equal(flow.split(returned).length,2);
+flow=flow.replace(returned,"return{passed:true,statContextAtStrokeStart,shots:shots().map((s:any)=>({...s})),mode,ordinaryMode:'short'");
+files.set('retained-traverse-flow04.mts',flow);
+for(const group of ['worker','peer']){
+  let s=fs.readFileSync(stage+'/retained-traverse-'+group+'.mts','utf8');
+  assert.equal(s.split("'./retained-traverse-flow.mts'").length,2);
+  files.set('retained-traverse-'+group+'04.mts',s.replace("'./retained-traverse-flow.mts'","'./retained-traverse-flow04.mts'"));
+}
+let probe=fs.readFileSync(stage+'/native-probe.mts','utf8');
+for(const group of ['worker','peer'])probe=probe.replace("new URL('retained-traverse-"+group+".mts',import.meta.url)","new URL('retained-traverse-"+group+"04.mts',import.meta.url)");
+const output="scope+'/native-'+group+'-'+audience";assert.equal(probe.split(output).length,2);probe=probe.replace(output,"scope+'/native04-'+group+'-'+audience");
+files.set('native-probe04.mts',probe);
+let verify=fs.readFileSync(stage+'/verify-frozen03.mjs','utf8');
+verify=verify.replace("read(scope+'/native-'+audience+'.json')","read(scope+'/native04-'+audience+'.json')");
+const record="read(scope+'/native-'+group+'-'+audience+'-'+variant+'.json')";assert.equal(verify.split(record).length,2);
+verify=verify.replace(record,"read(native.reportOverrides?.[group+'-'+variant]??(scope+'/native-'+group+'-'+audience+'-'+variant+'.json'))");
+// The final history audit has its own local n, distinct from the audience loop's native.
+verify=verify.replace("const n=read(scope+'/native-'+audience+'.json');assert(n.previousInterruptedWallClockFailuresPreserved&&n.existingDriverAndSourceBytesUnchanged&&n.attemptHistory.length===2)","const n=read(scope+'/native04-'+audience+'.json');assert(n.previousInterruptedWallClockFailuresPreserved&&n.existingDriverAndSourceBytesUnchanged&&n.attemptHistory.length===3)");
+verify=verify.replace("assert(!p.passed&&p.checks.some(c=>!c.passed));","assert(h.attempt==='native03'?p.passed&&p.checks.every(c=>c.passed):!p.passed&&p.checks.some(c=>!c.passed));");
+verify=verify.replace("read(scope+'/native03-'+audience+'-timing.json')","read(scope+'/native04-'+audience+'-timing.json')");
+verify=verify.replace("['native01','native02','native03'].map(a=>","['native01','native02','native03','native04'].map(a=>");
+files.set('verify-frozen04.mjs',verify);
+for(const [name]of files)assert(!fs.existsSync(stage+'/'+name),name);
+const record04={preparedAt:new Date().toISOString(),sourceCommit:fs.readFileSync(stage+'/source-commit.txt','utf8').trim(),priorAuditStop:{helper:'verify-frozen03.mjs',message:'Entry retained report lacks statContextAtStrokeStart and shots required by the final audit; no final frozen report was written.',originalNative03MatricesPreserved:true},changes:['Capture actual skill/upgrade/mutation values immediately before the first paid stroke command.','Return copies of the actual emitted shot values.','No operation assertion, input, gameplay, original wait/policy/timeout or source changes.','Version wrappers/probe/output names; original reports and their exact execution remain untouched.'],requiredReruns:12,files:[...files].map(([file,raw])=>({file,sha256:sha(raw)})),driverSha256:sha(probe),limits:'Only the twelve rerun entry cases acquire this newly reported context; no original report gains retroactive fields.'};
+for(const [name,raw]of files)fs.writeFileSync(stage+'/'+name,raw,{flag:'wx'});
+fs.writeFileSync(stage+'/entry-reporting-preparation04.json',JSON.stringify(record04,null,2)+'\n',{flag:'wx'});
+console.log(JSON.stringify({prepared:true,files:files.size,requiredReruns:12,sourceAndPoliciesUnchanged:true}));

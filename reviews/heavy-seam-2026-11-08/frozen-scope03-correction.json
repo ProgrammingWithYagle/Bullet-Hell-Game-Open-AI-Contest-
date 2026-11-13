@@ -1,0 +1,9 @@
+{
+  "at": "2026-11-08T19:24:21.567Z",
+  "original": "verify-frozen02.mjs",
+  "failure": "The older preservation report stores scope labels without the reviews/ prefix; the new current pair uses a full repository-relative scope.",
+  "correction": "Validate and normalize each label/full scope before reading its original preview and hashing every original file. No root, receipt, native check or source bytes change.",
+  "nativeOrSourceChanged": false,
+  "oldRootsSkipped": false,
+  "failedReportWritten": false
+}

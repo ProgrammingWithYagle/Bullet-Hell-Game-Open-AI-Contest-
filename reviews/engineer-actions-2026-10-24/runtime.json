@@ -1,0 +1,57 @@
+{
+  "passed": true,
+  "buildId": "2026.10.24-engineer-actions",
+  "protocol": 13,
+  "sourceSnapshotSha256": "f2c22efc47b88e3f52a4882cf8fab942023ad0bbe7d2119bfa40e4f27c204b7b",
+  "runtimeSourceSha256": "88a3817d29f0535cba3e731fbe0cbe03c599511cc2ce05d613045de665f9cc79",
+  "contentRevision": "b8d9fb6918c854f3eed38b327ed0cb3026e071e6fe24932e50beed36943db241",
+  "fullPipeline": {
+    "tests": 292,
+    "failed": 0,
+    "outputFiles": 1474,
+    "logSha256": "3414b4e7f49f93dcb68a6e454486a8a97c94f16543372f24a52ef8af5b517acf"
+  },
+  "art": {
+    "newClips": 20,
+    "newDrawnPoses": 88,
+    "retainedNativeReturns": 23,
+    "combinedTankEngineerNativeReturns": 48,
+    "existingEngineerRunPoses": 32,
+    "engineerTotalSelectedPoses": 120,
+    "selectedProductionPoseTotal": 879,
+    "independentReconstruction": "reviews/engineer-actions-2026-10-24/verification.json",
+    "reconstructionSha256": "3f394dd4c4bec60ae07678a96e8ef9e6d1faeb724cdc84707b9de7d4b07016ae",
+    "provenance": "docs/engineer-actions-2026-10-24.json",
+    "provenanceSha256": "7ed02b91e2c4a794007f4b56b7180421b81c88c8b28e7dc5a3e7f70a161ea1bc",
+    "creativePixelEdits": false,
+    "alphaErasure": false,
+    "facingMirrors": false
+  },
+  "presentationChecks": [
+    "All twenty Engineer clips load through the existing authority-driven presentation clock.",
+    "Simultaneous Engineer firing and Tank falling/reviving keep participant-specific cues.",
+    "Changing class identity resets prior class cues.",
+    "Existing Tank tests cover firing interruption, full dodge interval, late-observer falls, revive, reduced motion and encounter resets."
+  ],
+  "wikiImage": {
+    "files": 11,
+    "priorTenImageHashesUnchanged": true,
+    "added": "images/engineer-actions.jpg"
+  },
+  "preservedIteration": {
+    "initialFailingTestLogSha256": "0ef3e5bbf048893421365d185a307590262fa6baaf1c190acc6e87769b00cca4",
+    "cause": "The test assigned displayed Tank aim directly, which authority overwrites from real input. The fixture now submits actual aim input; gameplay implementation did not change.",
+    "rejectedNativeSheets": [
+      "downed-east-v1",
+      "downed-north-v1",
+      "downed-west-v1"
+    ],
+    "correction": "Whole regenerated falls preserve right-hand weapon and facing, falling onto the left side. All rejected originals and exact requests remain retained."
+  },
+  "issuedWindowsArchiveSourceUnchanged": "52552c0d4465b918d7cde2ab3c2aa7f1d7eb045e",
+  "limits": [
+    "Native/contact-sheet/GIF review and state tests only; no new rendered Phaser transitions, listening, physical-device or human acceptance.",
+    "The other five survivors and many bosses still need complete action libraries.",
+    "Published Windows development download is immutable and predates these source changes."
+  ]
+}

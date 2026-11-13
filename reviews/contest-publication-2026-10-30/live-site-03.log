@@ -1,0 +1,23 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Published bytes differ: index.html
++ actual - expected
+
++ 'acba0916cede0ce5337f5c473f77c37eac21deebe9b6fe5662f695d736f1b93a'
+- '9fe843083c2309f943d3f87ad7d62a479063e531421d7f3870bb8deb3e0d981e'
+
+    at file:///C:/Users/yigal/OneDrive/Documents/ChatGPT/OpenAI%20Multiplayer%20Game%20Contest%20(Bullet%20Hell)/reviews/contest-publication-2026-10-30/verify-live.mjs:20:12
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async Promise.all (index 0)
+    at async file:///C:/Users/yigal/OneDrive/Documents/ChatGPT/OpenAI%20Multiplayer%20Game%20Contest%20(Bullet%20Hell)/reviews/contest-publication-2026-10-30/verify-live.mjs:16:1 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 'acba0916cede0ce5337f5c473f77c37eac21deebe9b6fe5662f695d736f1b93a',
+  expected: '9fe843083c2309f943d3f87ad7d62a479063e531421d7f3870bb8deb3e0d981e',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.22.1

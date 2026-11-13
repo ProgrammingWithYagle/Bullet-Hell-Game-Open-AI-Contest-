@@ -1,0 +1,7225 @@
+{
+  "checkedAt": "2026-11-06T01:05:48.954Z",
+  "baselineMetadata": "d925cb8c1af84442070673687b2bb90837e9b902",
+  "runtimeSourceSha256": "8200b69a59529e606f77b0772fce565e10b466fa766adcabbb78322ba66da929",
+  "build": "2026.11.05-soldier-grenadier",
+  "protocol": 61,
+  "contentRevision": "8cc259ca145f72fd2492e1e1f7576e567fb41a903fc1a8e7fb5fda042379e37f",
+  "difficulty": "normal",
+  "seed": 2209,
+  "map": "gatehouse",
+  "rows": [
+    {
+      "route": "grenadier-skim-pin",
+      "phase": "defeat",
+      "completedEncounters": 2,
+      "combatSeconds": 189.4,
+      "damageDealt": 7894.7788800000035,
+      "damageTaken": 28.1,
+      "endingHealth": 110,
+      "earnedSP": 15,
+      "spentSP": 14,
+      "skills": [
+        "soldier-ballistics-1",
+        "soldier-grenadier-1",
+        "soldier-grenadier-skim-1",
+        "soldier-command-1",
+        "soldier-command-2",
+        "soldier-grenadier-pitch-1",
+        "general-sprint"
+      ],
+      "purchases": [
+        {
+          "kind": "skill",
+          "item": "soldier-ballistics-1",
+          "encounter": 0,
+          "earnedSP": 3
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-grenadier-1",
+          "encounter": 0,
+          "earnedSP": 3
+        },
+        {
+          "kind": "upgrade",
+          "item": "damage",
+          "encounter": 0,
+          "earnedSP": 3
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-grenadier-skim-1",
+          "encounter": 1,
+          "earnedSP": 9
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-command-1",
+          "encounter": 1,
+          "earnedSP": 9
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-command-2",
+          "encounter": 1,
+          "earnedSP": 9
+        },
+        {
+          "kind": "weapon",
+          "item": "soldier-2",
+          "encounter": 1,
+          "earnedSP": 9
+        },
+        {
+          "kind": "upgrade",
+          "item": "damage",
+          "encounter": 1,
+          "earnedSP": 9
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-grenadier-pitch-1",
+          "encounter": 2,
+          "earnedSP": 15
+        },
+        {
+          "kind": "skill",
+          "item": "general-sprint",
+          "encounter": 2,
+          "earnedSP": 15
+        },
+        {
+          "kind": "weapon",
+          "item": "soldier-3",
+          "encounter": 2,
+          "earnedSP": 15
+        }
+      ],
+      "fights": [
+        {
+          "encounter": 0,
+          "boss": "constable",
+          "startedAt": 0,
+          "earnedSP": 3,
+          "skills": [
+            "soldier-ballistics-1",
+            "soldier-grenadier-1"
+          ],
+          "weapon": "soldier-0",
+          "startingHealth": 110
+        },
+        {
+          "encounter": 1,
+          "boss": "stitchwright",
+          "startedAt": 1064,
+          "earnedSP": 9,
+          "skills": [
+            "soldier-ballistics-1",
+            "soldier-grenadier-1",
+            "soldier-grenadier-skim-1",
+            "soldier-command-1",
+            "soldier-command-2"
+          ],
+          "weapon": "soldier-2",
+          "startingHealth": 110
+        },
+        {
+          "encounter": 2,
+          "boss": "pallbearer",
+          "startedAt": 1632,
+          "earnedSP": 15,
+          "skills": [
+            "soldier-ballistics-1",
+            "soldier-grenadier-1",
+            "soldier-grenadier-skim-1",
+            "soldier-command-1",
+            "soldier-command-2",
+            "soldier-grenadier-pitch-1",
+            "general-sprint"
+          ],
+          "weapon": "soldier-3",
+          "startingHealth": 110
+        }
+      ],
+      "actions": [
+        {
+          "encounter": 0,
+          "tick": 16,
+          "sound": "grenadier-prime",
+          "requested": "prime",
+          "ammo": 8,
+          "recovery": 316
+        },
+        {
+          "encounter": 0,
+          "tick": 26,
+          "sound": "grenadier-throw",
+          "requested": "throw",
+          "ammo": 8,
+          "recovery": 316
+        },
+        {
+          "encounter": 0,
+          "tick": 88,
+          "sound": "grenadier-blast",
+          "requested": "",
+          "ammo": 1,
+          "recovery": 316
+        },
+        {
+          "encounter": 0,
+          "tick": 804,
+          "sound": "grenadier-prime",
+          "requested": "prime",
+          "ammo": 8,
+          "recovery": 1104
+        },
+        {
+          "encounter": 0,
+          "tick": 814,
+          "sound": "grenadier-throw",
+          "requested": "throw",
+          "ammo": 8,
+          "recovery": 1104
+        },
+        {
+          "encounter": 0,
+          "tick": 827,
+          "sound": "grenadier-contact",
+          "requested": "",
+          "ammo": 6,
+          "recovery": 1104
+        },
+        {
+          "encounter": 0,
+          "tick": 876,
+          "sound": "grenadier-blast",
+          "requested": "",
+          "ammo": 1,
+          "recovery": 1104
+        },
+        {
+          "encounter": 1,
+          "tick": 1082,
+          "sound": "grenadier-prime",
+          "requested": "prime",
+          "ammo": 19,
+          "recovery": 1367
+        },
+        {
+          "encounter": 1,
+          "tick": 1092,
+          "sound": "grenadier-throw",
+          "requested": "throw",
+          "ammo": 19,
+          "recovery": 1367
+        },
+        {
+          "encounter": 1,
+          "tick": 1102,
+          "sound": "grenadier-contact",
+          "requested": "",
+          "ammo": 16,
+          "recovery": 1367
+        },
+        {
+          "encounter": 1,
+          "tick": 1154,
+          "sound": "grenadier-blast",
+          "requested": "",
+          "ammo": 2,
+          "recovery": 1367
+        },
+        {
+          "encounter": 1,
+          "tick": 1398,
+          "sound": "grenadier-prime",
+          "requested": "prime",
+          "ammo": 23,
+          "recovery": 1683
+        },
+        {
+          "encounter": 1,
+          "tick": 1408,
+          "sound": "grenadier-throw",
+          "requested": "throw",
+          "ammo": 23,
+          "recovery": 1683
+        },
+        {
+          "encounter": 1,
+          "tick": 1470,
+          "sound": "grenadier-blast",
+          "requested": "",
+          "ammo": 6,
+          "recovery": 1683
+        },
+        {
+          "encounter": 2,
+          "tick": 1649,
+          "sound": "grenadier-prime",
+          "requested": "prime",
+          "ammo": 10,
+          "recovery": 1934
+        },
+        {
+          "encounter": 2,
+          "tick": 1659,
+          "sound": "grenadier-throw",
+          "requested": "throw",
+          "ammo": 10,
+          "recovery": 1934
+        },
+        {
+          "encounter": 2,
+          "tick": 1721,
+          "sound": "grenadier-blast",
+          "requested": "",
+          "ammo": 3,
+          "recovery": 1934
+        },
+        {
+          "encounter": 2,
+          "tick": 1994,
+          "sound": "grenadier-prime",
+          "requested": "prime",
+          "ammo": 11,
+          "recovery": 2279
+        },
+        {
+          "encounter": 2,
+          "tick": 2004,
+          "sound": "grenadier-throw",
+          "requested": "throw",
+          "ammo": 11,
+          "recovery": 2279
+        },
+        {
+          "encounter": 2,
+          "tick": 2017,
+          "sound": "grenadier-contact",
+          "requested": "",
+          "ammo": 9,
+          "recovery": 2279
+        },
+        {
+          "encounter": 2,
+          "tick": 2066,
+          "sound": "grenadier-blast",
+          "requested": "",
+          "ammo": 4,
+          "recovery": 2279
+        },
+        {
+          "encounter": 2,
+          "tick": 2280,
+          "sound": "grenadier-prime",
+          "requested": "prime",
+          "ammo": 0,
+          "recovery": 2565
+        },
+        {
+          "encounter": 2,
+          "tick": 2290,
+          "sound": "grenadier-throw",
+          "requested": "throw",
+          "ammo": 0,
+          "recovery": 2565
+        },
+        {
+          "encounter": 2,
+          "tick": 2308,
+          "sound": "grenadier-contact",
+          "requested": "",
+          "ammo": 0,
+          "recovery": 2565
+        },
+        {
+          "encounter": 2,
+          "tick": 2352,
+          "sound": "grenadier-blast",
+          "requested": "",
+          "ammo": 0,
+          "recovery": 2565
+        }
+      ],
+      "contacts": [
+        {
+          "encounter": 0,
+          "kind": "soldier-grenade-blast",
+          "id": 27,
+          "owner": "solo",
+          "x": 795.9538205248831,
+          "y": 425.6360921222326,
+          "radius": 90,
+          "at": 88,
+          "until": 99
+        },
+        {
+          "encounter": 0,
+          "kind": "soldier-grenade-contact",
+          "id": 276,
+          "owner": "solo",
+          "x": 825.9567086033381,
+          "y": 319.13862542197967,
+          "radius": 5,
+          "at": 827,
+          "until": 838
+        },
+        {
+          "encounter": 0,
+          "kind": "soldier-grenade-blast",
+          "id": 283,
+          "owner": "solo",
+          "x": 825.9567086033381,
+          "y": 319.13862542197967,
+          "radius": 90,
+          "at": 876,
+          "until": 887
+        },
+        {
+          "encounter": 1,
+          "kind": "soldier-grenade-contact",
+          "id": 361,
+          "owner": "solo",
+          "x": 783.186469196222,
+          "y": 475.2143856054091,
+          "radius": 5,
+          "at": 1102,
+          "until": 1113
+        },
+        {
+          "encounter": 1,
+          "kind": "soldier-grenade-blast",
+          "id": 379,
+          "owner": "solo",
+          "x": 783.186469196222,
+          "y": 475.2143856054091,
+          "radius": 90,
+          "at": 1154,
+          "until": 1165
+        },
+        {
+          "encounter": 1,
+          "kind": "soldier-grenade-blast",
+          "id": 436,
+          "owner": "solo",
+          "x": 751.4170373232046,
+          "y": 601.6658529036554,
+          "radius": 90,
+          "at": 1470,
+          "until": 1481
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-grenade-blast",
+          "id": 486,
+          "owner": "solo",
+          "x": 791.0847575061313,
+          "y": 430.3159115043787,
+          "radius": 90,
+          "at": 1721,
+          "until": 1732
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-grenade-contact",
+          "id": 539,
+          "owner": "solo",
+          "x": 1134.6938636528798,
+          "y": 686.809260690445,
+          "radius": 5,
+          "at": 2017,
+          "until": 2028
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-grenade-blast",
+          "id": 561,
+          "owner": "solo",
+          "x": 1134.6938636528798,
+          "y": 686.809260690445,
+          "radius": 90,
+          "at": 2066,
+          "until": 2077
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-grenade-contact",
+          "id": 615,
+          "owner": "solo",
+          "x": 1246.3718741328503,
+          "y": 566.5642086465763,
+          "radius": 5,
+          "at": 2308,
+          "until": 2319
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-grenade-blast",
+          "id": 616,
+          "owner": "solo",
+          "x": 1246.3718741328503,
+          "y": 566.5642086465763,
+          "radius": 90,
+          "at": 2352,
+          "until": 2363
+        }
+      ],
+      "steps": [],
+      "restoredBoundaryCount": 0
+    },
+    {
+      "route": "grenadier-contact-pin",
+      "phase": "defeat",
+      "completedEncounters": 2,
+      "combatSeconds": 189.4,
+      "damageDealt": 7894.778880000004,
+      "damageTaken": 28.1,
+      "endingHealth": 110,
+      "earnedSP": 15,
+      "spentSP": 14,
+      "skills": [
+        "soldier-ballistics-1",
+        "soldier-grenadier-1",
+        "soldier-grenadier-contact-1",
+        "soldier-command-1",
+        "soldier-command-2",
+        "soldier-grenadier-pitch-1",
+        "general-sprint"
+      ],
+      "purchases": [
+        {
+          "kind": "skill",
+          "item": "soldier-ballistics-1",
+          "encounter": 0,
+          "earnedSP": 3
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-grenadier-1",
+          "encounter": 0,
+          "earnedSP": 3
+        },
+        {
+          "kind": "upgrade",
+          "item": "damage",
+          "encounter": 0,
+          "earnedSP": 3
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-grenadier-contact-1",
+          "encounter": 1,
+          "earnedSP": 9
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-command-1",
+          "encounter": 1,
+          "earnedSP": 9
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-command-2",
+          "encounter": 1,
+          "earnedSP": 9
+        },
+        {
+          "kind": "weapon",
+          "item": "soldier-2",
+          "encounter": 1,
+          "earnedSP": 9
+        },
+        {
+          "kind": "upgrade",
+          "item": "damage",
+          "encounter": 1,
+          "earnedSP": 9
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-grenadier-pitch-1",
+          "encounter": 2,
+          "earnedSP": 15
+        },
+        {
+          "kind": "skill",
+          "item": "general-sprint",
+          "encounter": 2,
+          "earnedSP": 15
+        },
+        {
+          "kind": "weapon",
+          "item": "soldier-3",
+          "encounter": 2,
+          "earnedSP": 15
+        }
+      ],
+      "fights": [
+        {
+          "encounter": 0,
+          "boss": "constable",
+          "startedAt": 0,
+          "earnedSP": 3,
+          "skills": [
+            "soldier-ballistics-1",
+            "soldier-grenadier-1"
+          ],
+          "weapon": "soldier-0",
+          "startingHealth": 110
+        },
+        {
+          "encounter": 1,
+          "boss": "stitchwright",
+          "startedAt": 1064,
+          "earnedSP": 9,
+          "skills": [
+            "soldier-ballistics-1",
+            "soldier-grenadier-1",
+            "soldier-grenadier-contact-1",
+            "soldier-command-1",
+            "soldier-command-2"
+          ],
+          "weapon": "soldier-2",
+          "startingHealth": 110
+        },
+        {
+          "encounter": 2,
+          "boss": "pallbearer",
+          "startedAt": 1632,
+          "earnedSP": 15,
+          "skills": [
+            "soldier-ballistics-1",
+            "soldier-grenadier-1",
+            "soldier-grenadier-contact-1",
+            "soldier-command-1",
+            "soldier-command-2",
+            "soldier-grenadier-pitch-1",
+            "general-sprint"
+          ],
+          "weapon": "soldier-3",
+          "startingHealth": 110
+        }
+      ],
+      "actions": [
+        {
+          "encounter": 0,
+          "tick": 16,
+          "sound": "grenadier-prime",
+          "requested": "prime",
+          "ammo": 8,
+          "recovery": 316
+        },
+        {
+          "encounter": 0,
+          "tick": 26,
+          "sound": "grenadier-throw",
+          "requested": "throw",
+          "ammo": 8,
+          "recovery": 316
+        },
+        {
+          "encounter": 0,
+          "tick": 88,
+          "sound": "grenadier-blast",
+          "requested": "",
+          "ammo": 1,
+          "recovery": 316
+        },
+        {
+          "encounter": 0,
+          "tick": 804,
+          "sound": "grenadier-prime",
+          "requested": "prime",
+          "ammo": 8,
+          "recovery": 1104
+        },
+        {
+          "encounter": 0,
+          "tick": 814,
+          "sound": "grenadier-throw",
+          "requested": "throw",
+          "ammo": 8,
+          "recovery": 1104
+        },
+        {
+          "encounter": 0,
+          "tick": 827,
+          "sound": "grenadier-contact",
+          "requested": "",
+          "ammo": 6,
+          "recovery": 1104
+        },
+        {
+          "encounter": 0,
+          "tick": 876,
+          "sound": "grenadier-blast",
+          "requested": "",
+          "ammo": 1,
+          "recovery": 1104
+        },
+        {
+          "encounter": 1,
+          "tick": 1082,
+          "sound": "grenadier-prime",
+          "requested": "prime",
+          "ammo": 19,
+          "recovery": 1367
+        },
+        {
+          "encounter": 1,
+          "tick": 1092,
+          "sound": "grenadier-throw",
+          "requested": "throw",
+          "ammo": 19,
+          "recovery": 1367
+        },
+        {
+          "encounter": 1,
+          "tick": 1102,
+          "sound": "grenadier-contact",
+          "requested": "",
+          "ammo": 16,
+          "recovery": 1367
+        },
+        {
+          "encounter": 1,
+          "tick": 1102,
+          "sound": "grenadier-blast",
+          "requested": "",
+          "ammo": 16,
+          "recovery": 1367
+        },
+        {
+          "encounter": 1,
+          "tick": 1398,
+          "sound": "grenadier-prime",
+          "requested": "prime",
+          "ammo": 23,
+          "recovery": 1683
+        },
+        {
+          "encounter": 1,
+          "tick": 1408,
+          "sound": "grenadier-throw",
+          "requested": "throw",
+          "ammo": 23,
+          "recovery": 1683
+        },
+        {
+          "encounter": 1,
+          "tick": 1470,
+          "sound": "grenadier-blast",
+          "requested": "",
+          "ammo": 6,
+          "recovery": 1683
+        },
+        {
+          "encounter": 2,
+          "tick": 1649,
+          "sound": "grenadier-prime",
+          "requested": "prime",
+          "ammo": 10,
+          "recovery": 1934
+        },
+        {
+          "encounter": 2,
+          "tick": 1659,
+          "sound": "grenadier-throw",
+          "requested": "throw",
+          "ammo": 10,
+          "recovery": 1934
+        },
+        {
+          "encounter": 2,
+          "tick": 1721,
+          "sound": "grenadier-blast",
+          "requested": "",
+          "ammo": 3,
+          "recovery": 1934
+        },
+        {
+          "encounter": 2,
+          "tick": 1994,
+          "sound": "grenadier-prime",
+          "requested": "prime",
+          "ammo": 11,
+          "recovery": 2279
+        },
+        {
+          "encounter": 2,
+          "tick": 2004,
+          "sound": "grenadier-throw",
+          "requested": "throw",
+          "ammo": 11,
+          "recovery": 2279
+        },
+        {
+          "encounter": 2,
+          "tick": 2017,
+          "sound": "grenadier-contact",
+          "requested": "",
+          "ammo": 9,
+          "recovery": 2279
+        },
+        {
+          "encounter": 2,
+          "tick": 2017,
+          "sound": "grenadier-blast",
+          "requested": "",
+          "ammo": 9,
+          "recovery": 2279
+        },
+        {
+          "encounter": 2,
+          "tick": 2280,
+          "sound": "grenadier-prime",
+          "requested": "prime",
+          "ammo": 0,
+          "recovery": 2565
+        },
+        {
+          "encounter": 2,
+          "tick": 2290,
+          "sound": "grenadier-throw",
+          "requested": "throw",
+          "ammo": 0,
+          "recovery": 2565
+        },
+        {
+          "encounter": 2,
+          "tick": 2308,
+          "sound": "grenadier-contact",
+          "requested": "",
+          "ammo": 0,
+          "recovery": 2565
+        },
+        {
+          "encounter": 2,
+          "tick": 2308,
+          "sound": "grenadier-blast",
+          "requested": "",
+          "ammo": 0,
+          "recovery": 2565
+        }
+      ],
+      "contacts": [
+        {
+          "encounter": 0,
+          "kind": "soldier-grenade-blast",
+          "id": 27,
+          "owner": "solo",
+          "x": 795.9538205248831,
+          "y": 425.6360921222326,
+          "radius": 90,
+          "at": 88,
+          "until": 99
+        },
+        {
+          "encounter": 0,
+          "kind": "soldier-grenade-contact",
+          "id": 276,
+          "owner": "solo",
+          "x": 825.9567086033381,
+          "y": 319.13862542197967,
+          "radius": 5,
+          "at": 827,
+          "until": 838
+        },
+        {
+          "encounter": 0,
+          "kind": "soldier-grenade-blast",
+          "id": 283,
+          "owner": "solo",
+          "x": 825.9567086033381,
+          "y": 319.13862542197967,
+          "radius": 90,
+          "at": 876,
+          "until": 887
+        },
+        {
+          "encounter": 1,
+          "kind": "soldier-grenade-contact",
+          "id": 361,
+          "owner": "solo",
+          "x": 783.186469196222,
+          "y": 475.2143856054091,
+          "radius": 5,
+          "at": 1102,
+          "until": 1113
+        },
+        {
+          "encounter": 1,
+          "kind": "soldier-grenade-blast",
+          "id": 362,
+          "owner": "solo",
+          "x": 783.186469196222,
+          "y": 475.2143856054091,
+          "radius": 90,
+          "at": 1102,
+          "until": 1113
+        },
+        {
+          "encounter": 1,
+          "kind": "soldier-grenade-blast",
+          "id": 436,
+          "owner": "solo",
+          "x": 751.4170373232046,
+          "y": 601.6658529036554,
+          "radius": 90,
+          "at": 1470,
+          "until": 1481
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-grenade-blast",
+          "id": 486,
+          "owner": "solo",
+          "x": 791.0847575061313,
+          "y": 430.3159115043787,
+          "radius": 90,
+          "at": 1721,
+          "until": 1732
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-grenade-contact",
+          "id": 539,
+          "owner": "solo",
+          "x": 1134.6938636528798,
+          "y": 686.809260690445,
+          "radius": 5,
+          "at": 2017,
+          "until": 2028
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-grenade-blast",
+          "id": 540,
+          "owner": "solo",
+          "x": 1134.6938636528798,
+          "y": 686.809260690445,
+          "radius": 90,
+          "at": 2017,
+          "until": 2028
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-grenade-contact",
+          "id": 615,
+          "owner": "solo",
+          "x": 1246.3718741328503,
+          "y": 566.5642086465763,
+          "radius": 5,
+          "at": 2308,
+          "until": 2319
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-grenade-blast",
+          "id": 616,
+          "owner": "solo",
+          "x": 1246.3718741328503,
+          "y": 566.5642086465763,
+          "radius": 90,
+          "at": 2308,
+          "until": 2319
+        }
+      ],
+      "steps": [],
+      "restoredBoundaryCount": 0
+    },
+    {
+      "route": "grenadier-skim-sling",
+      "phase": "victory",
+      "completedEncounters": 5,
+      "combatSeconds": 144.73333333333332,
+      "damageDealt": 34577.03312099399,
+      "damageTaken": 122.1,
+      "endingHealth": 112,
+      "earnedSP": 27,
+      "spentSP": 27,
+      "skills": [
+        "soldier-ballistics-1",
+        "soldier-grenadier-1",
+        "soldier-grenadier-skim-1",
+        "soldier-command-1",
+        "soldier-command-2",
+        "soldier-grenadier-pitch-1",
+        "general-sprint",
+        "soldier-grenadier-sling-1",
+        "general-brake-step",
+        "soldier-grenadier-kick-1",
+        "soldier-grenadier-return-1"
+      ],
+      "purchases": [
+        {
+          "kind": "skill",
+          "item": "soldier-ballistics-1",
+          "encounter": 0,
+          "earnedSP": 3
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-grenadier-1",
+          "encounter": 0,
+          "earnedSP": 3
+        },
+        {
+          "kind": "upgrade",
+          "item": "damage",
+          "encounter": 0,
+          "earnedSP": 3
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-grenadier-skim-1",
+          "encounter": 1,
+          "earnedSP": 9
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-command-1",
+          "encounter": 1,
+          "earnedSP": 9
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-command-2",
+          "encounter": 1,
+          "earnedSP": 9
+        },
+        {
+          "kind": "weapon",
+          "item": "soldier-2",
+          "encounter": 1,
+          "earnedSP": 9
+        },
+        {
+          "kind": "upgrade",
+          "item": "damage",
+          "encounter": 1,
+          "earnedSP": 9
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-grenadier-pitch-1",
+          "encounter": 2,
+          "earnedSP": 15
+        },
+        {
+          "kind": "skill",
+          "item": "general-sprint",
+          "encounter": 2,
+          "earnedSP": 15
+        },
+        {
+          "kind": "weapon",
+          "item": "soldier-3",
+          "encounter": 2,
+          "earnedSP": 15
+        },
+        {
+          "kind": "upgrade",
+          "item": "damage",
+          "encounter": 2,
+          "earnedSP": 15
+        },
+        {
+          "kind": "upgrade",
+          "item": "fire-rate",
+          "encounter": 2,
+          "earnedSP": 15
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-grenadier-sling-1",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "skill",
+          "item": "general-brake-step",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "upgrade",
+          "item": "damage",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "upgrade",
+          "item": "fire-rate",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "upgrade",
+          "item": "health",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "upgrade",
+          "item": "reload",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "upgrade",
+          "item": "magazine",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "supply",
+          "item": "medkit",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "upgrade",
+          "item": "damage",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-grenadier-kick-1",
+          "encounter": 4,
+          "earnedSP": 27
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-grenadier-return-1",
+          "encounter": 4,
+          "earnedSP": 27
+        },
+        {
+          "kind": "upgrade",
+          "item": "fire-rate",
+          "encounter": 4,
+          "earnedSP": 27
+        },
+        {
+          "kind": "upgrade",
+          "item": "health",
+          "encounter": 4,
+          "earnedSP": 27
+        },
+        {
+          "kind": "upgrade",
+          "item": "reload",
+          "encounter": 4,
+          "earnedSP": 27
+        },
+        {
+          "kind": "upgrade",
+          "item": "magazine",
+          "encounter": 4,
+          "earnedSP": 27
+        },
+        {
+          "kind": "upgrade",
+          "item": "fire-rate",
+          "encounter": 4,
+          "earnedSP": 27
+        },
+        {
+          "kind": "upgrade",
+          "item": "health",
+          "encounter": 4,
+          "earnedSP": 27
+        },
+        {
+          "kind": "upgrade",
+          "item": "reload",
+          "encounter": 4,
+          "earnedSP": 27
+        },
+        {
+          "kind": "upgrade",
+          "item": "magazine",
+          "encounter": 4,
+          "earnedSP": 27
+        }
+      ],
+      "fights": [
+        {
+          "encounter": 0,
+          "boss": "constable",
+          "startedAt": 0,
+          "earnedSP": 3,
+          "skills": [
+            "soldier-ballistics-1",
+            "soldier-grenadier-1"
+          ],
+          "weapon": "soldier-0",
+          "startingHealth": 110
+        },
+        {
+          "encounter": 1,
+          "boss": "stitchwright",
+          "startedAt": 1091,
+          "earnedSP": 9,
+          "skills": [
+            "soldier-ballistics-1",
+            "soldier-grenadier-1",
+            "soldier-grenadier-skim-1",
+            "soldier-command-1",
+            "soldier-command-2"
+          ],
+          "weapon": "soldier-2",
+          "startingHealth": 110
+        },
+        {
+          "encounter": 2,
+          "boss": "pallbearer",
+          "startedAt": 1778,
+          "earnedSP": 15,
+          "skills": [
+            "soldier-ballistics-1",
+            "soldier-grenadier-1",
+            "soldier-grenadier-skim-1",
+            "soldier-command-1",
+            "soldier-command-2",
+            "soldier-grenadier-pitch-1",
+            "general-sprint"
+          ],
+          "weapon": "soldier-3",
+          "startingHealth": 110
+        },
+        {
+          "encounter": 3,
+          "boss": "wire-harpist",
+          "startedAt": 2507,
+          "earnedSP": 21,
+          "skills": [
+            "soldier-ballistics-1",
+            "soldier-grenadier-1",
+            "soldier-grenadier-skim-1",
+            "soldier-command-1",
+            "soldier-command-2",
+            "soldier-grenadier-pitch-1",
+            "general-sprint",
+            "soldier-grenadier-sling-1",
+            "general-brake-step"
+          ],
+          "weapon": "soldier-3",
+          "startingHealth": 96
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "startedAt": 3276,
+          "earnedSP": 27,
+          "skills": [
+            "soldier-ballistics-1",
+            "soldier-grenadier-1",
+            "soldier-grenadier-skim-1",
+            "soldier-command-1",
+            "soldier-command-2",
+            "soldier-grenadier-pitch-1",
+            "general-sprint",
+            "soldier-grenadier-sling-1",
+            "general-brake-step",
+            "soldier-grenadier-kick-1",
+            "soldier-grenadier-return-1"
+          ],
+          "weapon": "soldier-3",
+          "startingHealth": 112
+        }
+      ],
+      "actions": [
+        {
+          "encounter": 0,
+          "tick": 16,
+          "sound": "grenadier-prime",
+          "requested": "prime",
+          "ammo": 8,
+          "recovery": 316
+        },
+        {
+          "encounter": 0,
+          "tick": 26,
+          "sound": "grenadier-throw",
+          "requested": "throw",
+          "ammo": 8,
+          "recovery": 316
+        },
+        {
+          "encounter": 0,
+          "tick": 88,
+          "sound": "grenadier-blast",
+          "requested": "",
+          "ammo": 1,
+          "recovery": 316
+        },
+        {
+          "encounter": 0,
+          "tick": 804,
+          "sound": "grenadier-prime",
+          "requested": "prime",
+          "ammo": 8,
+          "recovery": 1104
+        },
+        {
+          "encounter": 1,
+          "tick": 1109,
+          "sound": "grenadier-prime",
+          "requested": "prime",
+          "ammo": 19,
+          "recovery": 1394
+        },
+        {
+          "encounter": 1,
+          "tick": 1119,
+          "sound": "grenadier-throw",
+          "requested": "throw",
+          "ammo": 19,
+          "recovery": 1394
+        },
+        {
+          "encounter": 1,
+          "tick": 1129,
+          "sound": "grenadier-contact",
+          "requested": "",
+          "ammo": 16,
+          "recovery": 1394
+        },
+        {
+          "encounter": 1,
+          "tick": 1181,
+          "sound": "grenadier-blast",
+          "requested": "",
+          "ammo": 2,
+          "recovery": 1394
+        },
+        {
+          "encounter": 1,
+          "tick": 1395,
+          "sound": "grenadier-prime",
+          "requested": "prime",
+          "ammo": 22,
+          "recovery": 1680
+        },
+        {
+          "encounter": 1,
+          "tick": 1405,
+          "sound": "grenadier-throw",
+          "requested": "throw",
+          "ammo": 22,
+          "recovery": 1680
+        },
+        {
+          "encounter": 1,
+          "tick": 1467,
+          "sound": "grenadier-blast",
+          "requested": "",
+          "ammo": 5,
+          "recovery": 1680
+        },
+        {
+          "encounter": 1,
+          "tick": 1688,
+          "sound": "grenadier-prime",
+          "requested": "prime",
+          "ammo": 23,
+          "recovery": 1973
+        },
+        {
+          "encounter": 1,
+          "tick": 1698,
+          "sound": "grenadier-throw",
+          "requested": "throw",
+          "ammo": 23,
+          "recovery": 1973
+        },
+        {
+          "encounter": 1,
+          "tick": 1713,
+          "sound": "grenadier-contact",
+          "requested": "",
+          "ammo": 19,
+          "recovery": 1973
+        },
+        {
+          "encounter": 1,
+          "tick": 1760,
+          "sound": "grenadier-blast",
+          "requested": "",
+          "ammo": 6,
+          "recovery": 1973
+        },
+        {
+          "encounter": 2,
+          "tick": 1796,
+          "sound": "grenadier-prime",
+          "requested": "prime",
+          "ammo": 10,
+          "recovery": 2081
+        },
+        {
+          "encounter": 2,
+          "tick": 1806,
+          "sound": "grenadier-throw",
+          "requested": "throw",
+          "ammo": 10,
+          "recovery": 2081
+        },
+        {
+          "encounter": 2,
+          "tick": 1868,
+          "sound": "grenadier-blast",
+          "requested": "",
+          "ammo": 3,
+          "recovery": 2081
+        },
+        {
+          "encounter": 2,
+          "tick": 2098,
+          "sound": "grenadier-prime",
+          "requested": "prime",
+          "ammo": 11,
+          "recovery": 2383
+        },
+        {
+          "encounter": 2,
+          "tick": 2108,
+          "sound": "grenadier-throw",
+          "requested": "throw",
+          "ammo": 11,
+          "recovery": 2383
+        },
+        {
+          "encounter": 2,
+          "tick": 2112,
+          "sound": "grenadier-contact",
+          "requested": "",
+          "ammo": 10,
+          "recovery": 2383
+        },
+        {
+          "encounter": 2,
+          "tick": 2170,
+          "sound": "grenadier-blast",
+          "requested": "",
+          "ammo": 4,
+          "recovery": 2383
+        },
+        {
+          "encounter": 2,
+          "tick": 2403,
+          "sound": "grenadier-prime",
+          "requested": "prime",
+          "ammo": 11,
+          "recovery": 2688
+        },
+        {
+          "encounter": 2,
+          "tick": 2413,
+          "sound": "grenadier-throw",
+          "requested": "throw",
+          "ammo": 11,
+          "recovery": 2688
+        },
+        {
+          "encounter": 2,
+          "tick": 2425,
+          "sound": "grenadier-contact",
+          "requested": "",
+          "ammo": 9,
+          "recovery": 2688
+        },
+        {
+          "encounter": 2,
+          "tick": 2475,
+          "sound": "grenadier-blast",
+          "requested": "",
+          "ammo": 4,
+          "recovery": 2688
+        },
+        {
+          "encounter": 3,
+          "tick": 2525,
+          "sound": "grenadier-prime",
+          "requested": "prime",
+          "ammo": 12,
+          "recovery": 2810
+        },
+        {
+          "encounter": 3,
+          "tick": 2535,
+          "sound": "grenadier-throw",
+          "requested": "throw",
+          "ammo": 12,
+          "recovery": 2810
+        },
+        {
+          "encounter": 3,
+          "tick": 2597,
+          "sound": "grenadier-blast",
+          "requested": "",
+          "ammo": 4,
+          "recovery": 2810
+        },
+        {
+          "encounter": 3,
+          "tick": 3099,
+          "sound": "grenadier-prime",
+          "requested": "prime",
+          "ammo": 2,
+          "recovery": 3384
+        },
+        {
+          "encounter": 3,
+          "tick": 3109,
+          "sound": "grenadier-throw",
+          "requested": "throw",
+          "ammo": 2,
+          "recovery": 3384
+        },
+        {
+          "encounter": 3,
+          "tick": 3119,
+          "sound": "grenadier-contact",
+          "requested": "",
+          "ammo": 0,
+          "recovery": 3384
+        },
+        {
+          "encounter": 3,
+          "tick": 3171,
+          "sound": "grenadier-blast",
+          "requested": "",
+          "ammo": 0,
+          "recovery": 3384
+        },
+        {
+          "encounter": 4,
+          "tick": 3293,
+          "sound": "grenadier-prime",
+          "requested": "prime",
+          "ammo": 15,
+          "recovery": 3578
+        },
+        {
+          "encounter": 4,
+          "tick": 3303,
+          "sound": "grenadier-throw",
+          "requested": "throw",
+          "ammo": 15,
+          "recovery": 3578
+        },
+        {
+          "encounter": 4,
+          "tick": 3365,
+          "sound": "grenadier-blast",
+          "requested": "",
+          "ammo": 6,
+          "recovery": 3578
+        },
+        {
+          "encounter": 4,
+          "tick": 3579,
+          "sound": "grenadier-prime",
+          "requested": "prime",
+          "ammo": 0,
+          "recovery": 3864
+        },
+        {
+          "encounter": 4,
+          "tick": 3589,
+          "sound": "grenadier-throw",
+          "requested": "throw",
+          "ammo": 0,
+          "recovery": 3864
+        },
+        {
+          "encounter": 4,
+          "tick": 3651,
+          "sound": "grenadier-blast",
+          "requested": "",
+          "ammo": 14,
+          "recovery": 3864
+        },
+        {
+          "encounter": 4,
+          "tick": 3865,
+          "sound": "grenadier-prime",
+          "requested": "prime",
+          "ammo": 8,
+          "recovery": 4150
+        },
+        {
+          "encounter": 4,
+          "tick": 3875,
+          "sound": "grenadier-throw",
+          "requested": "throw",
+          "ammo": 8,
+          "recovery": 4150
+        },
+        {
+          "encounter": 4,
+          "tick": 3937,
+          "sound": "grenadier-blast",
+          "requested": "",
+          "ammo": 0,
+          "recovery": 4150
+        },
+        {
+          "encounter": 4,
+          "tick": 4151,
+          "sound": "grenadier-prime",
+          "requested": "prime",
+          "ammo": 16,
+          "recovery": 4436
+        }
+      ],
+      "contacts": [
+        {
+          "encounter": 0,
+          "kind": "soldier-grenade-blast",
+          "id": 27,
+          "owner": "solo",
+          "x": 795.9538205248831,
+          "y": 425.6360921222326,
+          "radius": 90,
+          "at": 88,
+          "until": 99
+        },
+        {
+          "encounter": 1,
+          "kind": "soldier-grenade-contact",
+          "id": 361,
+          "owner": "solo",
+          "x": 783.186469196222,
+          "y": 475.2143856054091,
+          "radius": 5,
+          "at": 1129,
+          "until": 1140
+        },
+        {
+          "encounter": 1,
+          "kind": "soldier-grenade-blast",
+          "id": 379,
+          "owner": "solo",
+          "x": 783.186469196222,
+          "y": 475.2143856054091,
+          "radius": 90,
+          "at": 1181,
+          "until": 1192
+        },
+        {
+          "encounter": 1,
+          "kind": "soldier-grenade-blast",
+          "id": 438,
+          "owner": "solo",
+          "x": 715.2192951275485,
+          "y": 688.4116050567939,
+          "radius": 90,
+          "at": 1467,
+          "until": 1478
+        },
+        {
+          "encounter": 1,
+          "kind": "soldier-grenade-contact",
+          "id": 487,
+          "owner": "solo",
+          "x": 799.4660487771963,
+          "y": 628.5846615256065,
+          "radius": 5,
+          "at": 1713,
+          "until": 1724
+        },
+        {
+          "encounter": 1,
+          "kind": "soldier-grenade-blast",
+          "id": 501,
+          "owner": "solo",
+          "x": 799.4660487771963,
+          "y": 628.5846615256065,
+          "radius": 90,
+          "at": 1760,
+          "until": 1771
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-grenade-blast",
+          "id": 529,
+          "owner": "solo",
+          "x": 791.0847575061313,
+          "y": 430.3159115043787,
+          "radius": 90,
+          "at": 1868,
+          "until": 1879
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-grenade-contact",
+          "id": 602,
+          "owner": "solo",
+          "x": 1126.9952447774492,
+          "y": 685.7309916627632,
+          "radius": 5,
+          "at": 2112,
+          "until": 2123
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-grenade-blast",
+          "id": 618,
+          "owner": "solo",
+          "x": 1126.9952447774492,
+          "y": 685.7309916627632,
+          "radius": 90,
+          "at": 2170,
+          "until": 2181
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-grenade-contact",
+          "id": 700,
+          "owner": "solo",
+          "x": 1285.1751561649842,
+          "y": 503.67479564618503,
+          "radius": 5,
+          "at": 2425,
+          "until": 2436
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-grenade-blast",
+          "id": 712,
+          "owner": "solo",
+          "x": 1285.1751561649842,
+          "y": 503.67479564618503,
+          "radius": 90,
+          "at": 2475,
+          "until": 2486
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-grenade-blast",
+          "id": 762,
+          "owner": "solo",
+          "x": 791.0847575061313,
+          "y": 430.3159115043787,
+          "radius": 90,
+          "at": 2597,
+          "until": 2608
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-grenade-contact",
+          "id": 922,
+          "owner": "solo",
+          "x": 853.1597483498875,
+          "y": 365.80889166146426,
+          "radius": 5,
+          "at": 3119,
+          "until": 3130
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-grenade-blast",
+          "id": 927,
+          "owner": "solo",
+          "x": 853.1597483498875,
+          "y": 365.80889166146426,
+          "radius": 90,
+          "at": 3171,
+          "until": 3182
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-grenade-blast",
+          "id": 1006,
+          "owner": "solo",
+          "x": 791.0847575061313,
+          "y": 430.3159115043787,
+          "radius": 90,
+          "at": 3365,
+          "until": 3376
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-grenade-blast",
+          "id": 1115,
+          "owner": "solo",
+          "x": 791.0847575061313,
+          "y": 430.3159115043787,
+          "radius": 90,
+          "at": 3651,
+          "until": 3662
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-grenade-blast",
+          "id": 1292,
+          "owner": "solo",
+          "x": 791.0847575061313,
+          "y": 430.3159115043787,
+          "radius": 90,
+          "at": 3937,
+          "until": 3948
+        }
+      ],
+      "steps": [],
+      "restoredBoundaryCount": 0
+    },
+    {
+      "route": "grenadier-contact-sling",
+      "phase": "victory",
+      "completedEncounters": 5,
+      "combatSeconds": 144.73333333333332,
+      "damageDealt": 34577.03312099399,
+      "damageTaken": 122.1,
+      "endingHealth": 112,
+      "earnedSP": 27,
+      "spentSP": 27,
+      "skills": [
+        "soldier-ballistics-1",
+        "soldier-grenadier-1",
+        "soldier-grenadier-contact-1",
+        "soldier-command-1",
+        "soldier-command-2",
+        "soldier-grenadier-pitch-1",
+        "general-sprint",
+        "soldier-grenadier-sling-1",
+        "general-brake-step",
+        "soldier-grenadier-kick-1",
+        "soldier-grenadier-return-1"
+      ],
+      "purchases": [
+        {
+          "kind": "skill",
+          "item": "soldier-ballistics-1",
+          "encounter": 0,
+          "earnedSP": 3
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-grenadier-1",
+          "encounter": 0,
+          "earnedSP": 3
+        },
+        {
+          "kind": "upgrade",
+          "item": "damage",
+          "encounter": 0,
+          "earnedSP": 3
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-grenadier-contact-1",
+          "encounter": 1,
+          "earnedSP": 9
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-command-1",
+          "encounter": 1,
+          "earnedSP": 9
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-command-2",
+          "encounter": 1,
+          "earnedSP": 9
+        },
+        {
+          "kind": "weapon",
+          "item": "soldier-2",
+          "encounter": 1,
+          "earnedSP": 9
+        },
+        {
+          "kind": "upgrade",
+          "item": "damage",
+          "encounter": 1,
+          "earnedSP": 9
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-grenadier-pitch-1",
+          "encounter": 2,
+          "earnedSP": 15
+        },
+        {
+          "kind": "skill",
+          "item": "general-sprint",
+          "encounter": 2,
+          "earnedSP": 15
+        },
+        {
+          "kind": "weapon",
+          "item": "soldier-3",
+          "encounter": 2,
+          "earnedSP": 15
+        },
+        {
+          "kind": "upgrade",
+          "item": "damage",
+          "encounter": 2,
+          "earnedSP": 15
+        },
+        {
+          "kind": "upgrade",
+          "item": "fire-rate",
+          "encounter": 2,
+          "earnedSP": 15
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-grenadier-sling-1",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "skill",
+          "item": "general-brake-step",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "upgrade",
+          "item": "damage",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "upgrade",
+          "item": "fire-rate",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "upgrade",
+          "item": "health",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "upgrade",
+          "item": "reload",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "upgrade",
+          "item": "magazine",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "supply",
+          "item": "medkit",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "upgrade",
+          "item": "damage",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-grenadier-kick-1",
+          "encounter": 4,
+          "earnedSP": 27
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-grenadier-return-1",
+          "encounter": 4,
+          "earnedSP": 27
+        },
+        {
+          "kind": "upgrade",
+          "item": "fire-rate",
+          "encounter": 4,
+          "earnedSP": 27
+        },
+        {
+          "kind": "upgrade",
+          "item": "health",
+          "encounter": 4,
+          "earnedSP": 27
+        },
+        {
+          "kind": "upgrade",
+          "item": "reload",
+          "encounter": 4,
+          "earnedSP": 27
+        },
+        {
+          "kind": "upgrade",
+          "item": "magazine",
+          "encounter": 4,
+          "earnedSP": 27
+        },
+        {
+          "kind": "upgrade",
+          "item": "fire-rate",
+          "encounter": 4,
+          "earnedSP": 27
+        },
+        {
+          "kind": "upgrade",
+          "item": "health",
+          "encounter": 4,
+          "earnedSP": 27
+        },
+        {
+          "kind": "upgrade",
+          "item": "reload",
+          "encounter": 4,
+          "earnedSP": 27
+        },
+        {
+          "kind": "upgrade",
+          "item": "magazine",
+          "encounter": 4,
+          "earnedSP": 27
+        }
+      ],
+      "fights": [
+        {
+          "encounter": 0,
+          "boss": "constable",
+          "startedAt": 0,
+          "earnedSP": 3,
+          "skills": [
+            "soldier-ballistics-1",
+            "soldier-grenadier-1"
+          ],
+          "weapon": "soldier-0",
+          "startingHealth": 110
+        },
+        {
+          "encounter": 1,
+          "boss": "stitchwright",
+          "startedAt": 1091,
+          "earnedSP": 9,
+          "skills": [
+            "soldier-ballistics-1",
+            "soldier-grenadier-1",
+            "soldier-grenadier-contact-1",
+            "soldier-command-1",
+            "soldier-command-2"
+          ],
+          "weapon": "soldier-2",
+          "startingHealth": 110
+        },
+        {
+          "encounter": 2,
+          "boss": "pallbearer",
+          "startedAt": 1778,
+          "earnedSP": 15,
+          "skills": [
+            "soldier-ballistics-1",
+            "soldier-grenadier-1",
+            "soldier-grenadier-contact-1",
+            "soldier-command-1",
+            "soldier-command-2",
+            "soldier-grenadier-pitch-1",
+            "general-sprint"
+          ],
+          "weapon": "soldier-3",
+          "startingHealth": 110
+        },
+        {
+          "encounter": 3,
+          "boss": "wire-harpist",
+          "startedAt": 2507,
+          "earnedSP": 21,
+          "skills": [
+            "soldier-ballistics-1",
+            "soldier-grenadier-1",
+            "soldier-grenadier-contact-1",
+            "soldier-command-1",
+            "soldier-command-2",
+            "soldier-grenadier-pitch-1",
+            "general-sprint",
+            "soldier-grenadier-sling-1",
+            "general-brake-step"
+          ],
+          "weapon": "soldier-3",
+          "startingHealth": 96
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "startedAt": 3276,
+          "earnedSP": 27,
+          "skills": [
+            "soldier-ballistics-1",
+            "soldier-grenadier-1",
+            "soldier-grenadier-contact-1",
+            "soldier-command-1",
+            "soldier-command-2",
+            "soldier-grenadier-pitch-1",
+            "general-sprint",
+            "soldier-grenadier-sling-1",
+            "general-brake-step",
+            "soldier-grenadier-kick-1",
+            "soldier-grenadier-return-1"
+          ],
+          "weapon": "soldier-3",
+          "startingHealth": 112
+        }
+      ],
+      "actions": [
+        {
+          "encounter": 0,
+          "tick": 16,
+          "sound": "grenadier-prime",
+          "requested": "prime",
+          "ammo": 8,
+          "recovery": 316
+        },
+        {
+          "encounter": 0,
+          "tick": 26,
+          "sound": "grenadier-throw",
+          "requested": "throw",
+          "ammo": 8,
+          "recovery": 316
+        },
+        {
+          "encounter": 0,
+          "tick": 88,
+          "sound": "grenadier-blast",
+          "requested": "",
+          "ammo": 1,
+          "recovery": 316
+        },
+        {
+          "encounter": 0,
+          "tick": 804,
+          "sound": "grenadier-prime",
+          "requested": "prime",
+          "ammo": 8,
+          "recovery": 1104
+        },
+        {
+          "encounter": 1,
+          "tick": 1109,
+          "sound": "grenadier-prime",
+          "requested": "prime",
+          "ammo": 19,
+          "recovery": 1394
+        },
+        {
+          "encounter": 1,
+          "tick": 1119,
+          "sound": "grenadier-throw",
+          "requested": "throw",
+          "ammo": 19,
+          "recovery": 1394
+        },
+        {
+          "encounter": 1,
+          "tick": 1129,
+          "sound": "grenadier-contact",
+          "requested": "",
+          "ammo": 16,
+          "recovery": 1394
+        },
+        {
+          "encounter": 1,
+          "tick": 1129,
+          "sound": "grenadier-blast",
+          "requested": "",
+          "ammo": 16,
+          "recovery": 1394
+        },
+        {
+          "encounter": 1,
+          "tick": 1395,
+          "sound": "grenadier-prime",
+          "requested": "prime",
+          "ammo": 22,
+          "recovery": 1680
+        },
+        {
+          "encounter": 1,
+          "tick": 1405,
+          "sound": "grenadier-throw",
+          "requested": "throw",
+          "ammo": 22,
+          "recovery": 1680
+        },
+        {
+          "encounter": 1,
+          "tick": 1467,
+          "sound": "grenadier-blast",
+          "requested": "",
+          "ammo": 5,
+          "recovery": 1680
+        },
+        {
+          "encounter": 1,
+          "tick": 1688,
+          "sound": "grenadier-prime",
+          "requested": "prime",
+          "ammo": 23,
+          "recovery": 1973
+        },
+        {
+          "encounter": 1,
+          "tick": 1698,
+          "sound": "grenadier-throw",
+          "requested": "throw",
+          "ammo": 23,
+          "recovery": 1973
+        },
+        {
+          "encounter": 1,
+          "tick": 1713,
+          "sound": "grenadier-contact",
+          "requested": "",
+          "ammo": 19,
+          "recovery": 1973
+        },
+        {
+          "encounter": 1,
+          "tick": 1713,
+          "sound": "grenadier-blast",
+          "requested": "",
+          "ammo": 19,
+          "recovery": 1973
+        },
+        {
+          "encounter": 2,
+          "tick": 1796,
+          "sound": "grenadier-prime",
+          "requested": "prime",
+          "ammo": 10,
+          "recovery": 2081
+        },
+        {
+          "encounter": 2,
+          "tick": 1806,
+          "sound": "grenadier-throw",
+          "requested": "throw",
+          "ammo": 10,
+          "recovery": 2081
+        },
+        {
+          "encounter": 2,
+          "tick": 1868,
+          "sound": "grenadier-blast",
+          "requested": "",
+          "ammo": 3,
+          "recovery": 2081
+        },
+        {
+          "encounter": 2,
+          "tick": 2098,
+          "sound": "grenadier-prime",
+          "requested": "prime",
+          "ammo": 11,
+          "recovery": 2383
+        },
+        {
+          "encounter": 2,
+          "tick": 2108,
+          "sound": "grenadier-throw",
+          "requested": "throw",
+          "ammo": 11,
+          "recovery": 2383
+        },
+        {
+          "encounter": 2,
+          "tick": 2112,
+          "sound": "grenadier-contact",
+          "requested": "",
+          "ammo": 10,
+          "recovery": 2383
+        },
+        {
+          "encounter": 2,
+          "tick": 2112,
+          "sound": "grenadier-blast",
+          "requested": "",
+          "ammo": 10,
+          "recovery": 2383
+        },
+        {
+          "encounter": 2,
+          "tick": 2403,
+          "sound": "grenadier-prime",
+          "requested": "prime",
+          "ammo": 11,
+          "recovery": 2688
+        },
+        {
+          "encounter": 2,
+          "tick": 2413,
+          "sound": "grenadier-throw",
+          "requested": "throw",
+          "ammo": 11,
+          "recovery": 2688
+        },
+        {
+          "encounter": 2,
+          "tick": 2425,
+          "sound": "grenadier-contact",
+          "requested": "",
+          "ammo": 9,
+          "recovery": 2688
+        },
+        {
+          "encounter": 2,
+          "tick": 2425,
+          "sound": "grenadier-blast",
+          "requested": "",
+          "ammo": 9,
+          "recovery": 2688
+        },
+        {
+          "encounter": 3,
+          "tick": 2525,
+          "sound": "grenadier-prime",
+          "requested": "prime",
+          "ammo": 12,
+          "recovery": 2810
+        },
+        {
+          "encounter": 3,
+          "tick": 2535,
+          "sound": "grenadier-throw",
+          "requested": "throw",
+          "ammo": 12,
+          "recovery": 2810
+        },
+        {
+          "encounter": 3,
+          "tick": 2597,
+          "sound": "grenadier-blast",
+          "requested": "",
+          "ammo": 4,
+          "recovery": 2810
+        },
+        {
+          "encounter": 3,
+          "tick": 3099,
+          "sound": "grenadier-prime",
+          "requested": "prime",
+          "ammo": 2,
+          "recovery": 3384
+        },
+        {
+          "encounter": 3,
+          "tick": 3109,
+          "sound": "grenadier-throw",
+          "requested": "throw",
+          "ammo": 2,
+          "recovery": 3384
+        },
+        {
+          "encounter": 3,
+          "tick": 3119,
+          "sound": "grenadier-contact",
+          "requested": "",
+          "ammo": 0,
+          "recovery": 3384
+        },
+        {
+          "encounter": 3,
+          "tick": 3119,
+          "sound": "grenadier-blast",
+          "requested": "",
+          "ammo": 0,
+          "recovery": 3384
+        },
+        {
+          "encounter": 4,
+          "tick": 3293,
+          "sound": "grenadier-prime",
+          "requested": "prime",
+          "ammo": 15,
+          "recovery": 3578
+        },
+        {
+          "encounter": 4,
+          "tick": 3303,
+          "sound": "grenadier-throw",
+          "requested": "throw",
+          "ammo": 15,
+          "recovery": 3578
+        },
+        {
+          "encounter": 4,
+          "tick": 3365,
+          "sound": "grenadier-blast",
+          "requested": "",
+          "ammo": 6,
+          "recovery": 3578
+        },
+        {
+          "encounter": 4,
+          "tick": 3579,
+          "sound": "grenadier-prime",
+          "requested": "prime",
+          "ammo": 0,
+          "recovery": 3864
+        },
+        {
+          "encounter": 4,
+          "tick": 3589,
+          "sound": "grenadier-throw",
+          "requested": "throw",
+          "ammo": 0,
+          "recovery": 3864
+        },
+        {
+          "encounter": 4,
+          "tick": 3651,
+          "sound": "grenadier-blast",
+          "requested": "",
+          "ammo": 14,
+          "recovery": 3864
+        },
+        {
+          "encounter": 4,
+          "tick": 3865,
+          "sound": "grenadier-prime",
+          "requested": "prime",
+          "ammo": 8,
+          "recovery": 4150
+        },
+        {
+          "encounter": 4,
+          "tick": 3875,
+          "sound": "grenadier-throw",
+          "requested": "throw",
+          "ammo": 8,
+          "recovery": 4150
+        },
+        {
+          "encounter": 4,
+          "tick": 3937,
+          "sound": "grenadier-blast",
+          "requested": "",
+          "ammo": 0,
+          "recovery": 4150
+        },
+        {
+          "encounter": 4,
+          "tick": 4151,
+          "sound": "grenadier-prime",
+          "requested": "prime",
+          "ammo": 16,
+          "recovery": 4436
+        }
+      ],
+      "contacts": [
+        {
+          "encounter": 0,
+          "kind": "soldier-grenade-blast",
+          "id": 27,
+          "owner": "solo",
+          "x": 795.9538205248831,
+          "y": 425.6360921222326,
+          "radius": 90,
+          "at": 88,
+          "until": 99
+        },
+        {
+          "encounter": 1,
+          "kind": "soldier-grenade-contact",
+          "id": 361,
+          "owner": "solo",
+          "x": 783.186469196222,
+          "y": 475.2143856054091,
+          "radius": 5,
+          "at": 1129,
+          "until": 1140
+        },
+        {
+          "encounter": 1,
+          "kind": "soldier-grenade-blast",
+          "id": 362,
+          "owner": "solo",
+          "x": 783.186469196222,
+          "y": 475.2143856054091,
+          "radius": 90,
+          "at": 1129,
+          "until": 1140
+        },
+        {
+          "encounter": 1,
+          "kind": "soldier-grenade-blast",
+          "id": 438,
+          "owner": "solo",
+          "x": 715.2192951275485,
+          "y": 688.4116050567939,
+          "radius": 90,
+          "at": 1467,
+          "until": 1478
+        },
+        {
+          "encounter": 1,
+          "kind": "soldier-grenade-contact",
+          "id": 487,
+          "owner": "solo",
+          "x": 799.4660487771963,
+          "y": 628.5846615256065,
+          "radius": 5,
+          "at": 1713,
+          "until": 1724
+        },
+        {
+          "encounter": 1,
+          "kind": "soldier-grenade-blast",
+          "id": 488,
+          "owner": "solo",
+          "x": 799.4660487771963,
+          "y": 628.5846615256065,
+          "radius": 90,
+          "at": 1713,
+          "until": 1724
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-grenade-blast",
+          "id": 529,
+          "owner": "solo",
+          "x": 791.0847575061313,
+          "y": 430.3159115043787,
+          "radius": 90,
+          "at": 1868,
+          "until": 1879
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-grenade-contact",
+          "id": 602,
+          "owner": "solo",
+          "x": 1126.9952447774492,
+          "y": 685.7309916627632,
+          "radius": 5,
+          "at": 2112,
+          "until": 2123
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-grenade-blast",
+          "id": 603,
+          "owner": "solo",
+          "x": 1126.9952447774492,
+          "y": 685.7309916627632,
+          "radius": 90,
+          "at": 2112,
+          "until": 2123
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-grenade-contact",
+          "id": 700,
+          "owner": "solo",
+          "x": 1285.1751561649842,
+          "y": 503.67479564618503,
+          "radius": 5,
+          "at": 2425,
+          "until": 2436
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-grenade-blast",
+          "id": 701,
+          "owner": "solo",
+          "x": 1285.1751561649842,
+          "y": 503.67479564618503,
+          "radius": 90,
+          "at": 2425,
+          "until": 2436
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-grenade-blast",
+          "id": 762,
+          "owner": "solo",
+          "x": 791.0847575061313,
+          "y": 430.3159115043787,
+          "radius": 90,
+          "at": 2597,
+          "until": 2608
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-grenade-contact",
+          "id": 922,
+          "owner": "solo",
+          "x": 853.1597483498875,
+          "y": 365.80889166146426,
+          "radius": 5,
+          "at": 3119,
+          "until": 3130
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-grenade-blast",
+          "id": 923,
+          "owner": "solo",
+          "x": 853.1597483498875,
+          "y": 365.80889166146426,
+          "radius": 90,
+          "at": 3119,
+          "until": 3130
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-grenade-blast",
+          "id": 1006,
+          "owner": "solo",
+          "x": 791.0847575061313,
+          "y": 430.3159115043787,
+          "radius": 90,
+          "at": 3365,
+          "until": 3376
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-grenade-blast",
+          "id": 1115,
+          "owner": "solo",
+          "x": 791.0847575061313,
+          "y": 430.3159115043787,
+          "radius": 90,
+          "at": 3651,
+          "until": 3662
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-grenade-blast",
+          "id": 1292,
+          "owner": "solo",
+          "x": 791.0847575061313,
+          "y": 430.3159115043787,
+          "radius": 90,
+          "at": 3937,
+          "until": 3948
+        }
+      ],
+      "steps": [],
+      "restoredBoundaryCount": 0
+    },
+    {
+      "route": "marksman-carom",
+      "phase": "defeat",
+      "completedEncounters": 4,
+      "combatSeconds": 222.33333333333334,
+      "damageDealt": 32820.13869345163,
+      "damageTaken": 241.3,
+      "endingHealth": 0,
+      "earnedSP": 27,
+      "spentSP": 26,
+      "skills": [
+        "soldier-ballistics-1",
+        "soldier-marksman-1",
+        "soldier-marksman-carom-1",
+        "soldier-command-1",
+        "soldier-command-2",
+        "soldier-marksman-pair-1",
+        "general-sprint",
+        "soldier-marksman-reserve-1",
+        "soldier-marksman-relay-1",
+        "soldier-marksman-twin-1"
+      ],
+      "purchases": [
+        {
+          "kind": "skill",
+          "item": "soldier-ballistics-1",
+          "encounter": 0,
+          "earnedSP": 3
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-marksman-1",
+          "encounter": 0,
+          "earnedSP": 3
+        },
+        {
+          "kind": "upgrade",
+          "item": "damage",
+          "encounter": 0,
+          "earnedSP": 3
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-marksman-carom-1",
+          "encounter": 1,
+          "earnedSP": 9
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-command-1",
+          "encounter": 1,
+          "earnedSP": 9
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-command-2",
+          "encounter": 1,
+          "earnedSP": 9
+        },
+        {
+          "kind": "weapon",
+          "item": "soldier-2",
+          "encounter": 1,
+          "earnedSP": 9
+        },
+        {
+          "kind": "upgrade",
+          "item": "damage",
+          "encounter": 1,
+          "earnedSP": 9
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-marksman-pair-1",
+          "encounter": 2,
+          "earnedSP": 15
+        },
+        {
+          "kind": "skill",
+          "item": "general-sprint",
+          "encounter": 2,
+          "earnedSP": 15
+        },
+        {
+          "kind": "weapon",
+          "item": "soldier-3",
+          "encounter": 2,
+          "earnedSP": 15
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-marksman-reserve-1",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "upgrade",
+          "item": "damage",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "upgrade",
+          "item": "fire-rate",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "upgrade",
+          "item": "health",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "upgrade",
+          "item": "reload",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "upgrade",
+          "item": "magazine",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "supply",
+          "item": "medkit",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "upgrade",
+          "item": "fire-rate",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-marksman-relay-1",
+          "encounter": 4,
+          "earnedSP": 27
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-marksman-twin-1",
+          "encounter": 4,
+          "earnedSP": 27
+        },
+        {
+          "kind": "upgrade",
+          "item": "damage",
+          "encounter": 4,
+          "earnedSP": 27
+        },
+        {
+          "kind": "upgrade",
+          "item": "fire-rate",
+          "encounter": 4,
+          "earnedSP": 27
+        },
+        {
+          "kind": "upgrade",
+          "item": "health",
+          "encounter": 4,
+          "earnedSP": 27
+        },
+        {
+          "kind": "upgrade",
+          "item": "reload",
+          "encounter": 4,
+          "earnedSP": 27
+        },
+        {
+          "kind": "upgrade",
+          "item": "magazine",
+          "encounter": 4,
+          "earnedSP": 27
+        }
+      ],
+      "fights": [
+        {
+          "encounter": 0,
+          "boss": "constable",
+          "startedAt": 0,
+          "earnedSP": 3,
+          "skills": [
+            "soldier-ballistics-1",
+            "soldier-marksman-1"
+          ],
+          "weapon": "soldier-0",
+          "startingHealth": 110
+        },
+        {
+          "encounter": 1,
+          "boss": "stitchwright",
+          "startedAt": 1155,
+          "earnedSP": 9,
+          "skills": [
+            "soldier-ballistics-1",
+            "soldier-marksman-1",
+            "soldier-marksman-carom-1",
+            "soldier-command-1",
+            "soldier-command-2"
+          ],
+          "weapon": "soldier-2",
+          "startingHealth": 110
+        },
+        {
+          "encounter": 2,
+          "boss": "pallbearer",
+          "startedAt": 1717,
+          "earnedSP": 15,
+          "skills": [
+            "soldier-ballistics-1",
+            "soldier-marksman-1",
+            "soldier-marksman-carom-1",
+            "soldier-command-1",
+            "soldier-command-2",
+            "soldier-marksman-pair-1",
+            "general-sprint"
+          ],
+          "weapon": "soldier-3",
+          "startingHealth": 110
+        },
+        {
+          "encounter": 3,
+          "boss": "wire-harpist",
+          "startedAt": 2736,
+          "earnedSP": 21,
+          "skills": [
+            "soldier-ballistics-1",
+            "soldier-marksman-1",
+            "soldier-marksman-carom-1",
+            "soldier-command-1",
+            "soldier-command-2",
+            "soldier-marksman-pair-1",
+            "general-sprint",
+            "soldier-marksman-reserve-1"
+          ],
+          "weapon": "soldier-3",
+          "startingHealth": 120
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "startedAt": 3981,
+          "earnedSP": 27,
+          "skills": [
+            "soldier-ballistics-1",
+            "soldier-marksman-1",
+            "soldier-marksman-carom-1",
+            "soldier-command-1",
+            "soldier-command-2",
+            "soldier-marksman-pair-1",
+            "general-sprint",
+            "soldier-marksman-reserve-1",
+            "soldier-marksman-relay-1",
+            "soldier-marksman-twin-1"
+          ],
+          "weapon": "soldier-3",
+          "startingHealth": 130
+        }
+      ],
+      "actions": [
+        {
+          "encounter": 0,
+          "tick": 1,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 10
+        },
+        {
+          "encounter": 0,
+          "tick": 265,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 8
+        },
+        {
+          "encounter": 0,
+          "tick": 514,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 8
+        },
+        {
+          "encounter": 0,
+          "tick": 766,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 8
+        },
+        {
+          "encounter": 0,
+          "tick": 1018,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 8
+        },
+        {
+          "encounter": 1,
+          "tick": 1156,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 23
+        },
+        {
+          "encounter": 1,
+          "tick": 1387,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 4
+        },
+        {
+          "encounter": 1,
+          "tick": 1636,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 22
+        },
+        {
+          "encounter": 2,
+          "tick": 1720,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 10
+        },
+        {
+          "encounter": 2,
+          "tick": 1723,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 9
+        },
+        {
+          "encounter": 2,
+          "tick": 1735,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 7
+        },
+        {
+          "encounter": 2,
+          "tick": 2014,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 10
+        },
+        {
+          "encounter": 2,
+          "tick": 2068,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 2
+        },
+        {
+          "encounter": 2,
+          "tick": 2074,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 1
+        },
+        {
+          "encounter": 2,
+          "tick": 2305,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 10
+        },
+        {
+          "encounter": 2,
+          "tick": 2413,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 9
+        },
+        {
+          "encounter": 2,
+          "tick": 2419,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 8
+        },
+        {
+          "encounter": 2,
+          "tick": 2548,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 10
+        },
+        {
+          "encounter": 3,
+          "tick": 2737,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 13
+        },
+        {
+          "encounter": 3,
+          "tick": 2740,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 11
+        },
+        {
+          "encounter": 3,
+          "tick": 2809,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 13
+        },
+        {
+          "encounter": 3,
+          "tick": 2974,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 12
+        },
+        {
+          "encounter": 3,
+          "tick": 3139,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 12
+        },
+        {
+          "encounter": 3,
+          "tick": 3199,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 13
+        },
+        {
+          "encounter": 3,
+          "tick": 3205,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 11
+        },
+        {
+          "encounter": 3,
+          "tick": 3436,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 3
+        },
+        {
+          "encounter": 3,
+          "tick": 3523,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 12
+        },
+        {
+          "encounter": 3,
+          "tick": 3583,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 13
+        },
+        {
+          "encounter": 3,
+          "tick": 3667,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 1
+        },
+        {
+          "encounter": 3,
+          "tick": 3913,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 12
+        },
+        {
+          "encounter": 3,
+          "tick": 3916,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 11
+        },
+        {
+          "encounter": 4,
+          "tick": 3982,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 15
+        },
+        {
+          "encounter": 4,
+          "tick": 3985,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 13
+        },
+        {
+          "encounter": 4,
+          "tick": 4039,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 15
+        },
+        {
+          "encounter": 4,
+          "tick": 4048,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 12
+        },
+        {
+          "encounter": 4,
+          "tick": 4348,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 14
+        },
+        {
+          "encounter": 4,
+          "tick": 4399,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 15
+        },
+        {
+          "encounter": 4,
+          "tick": 4408,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 12
+        },
+        {
+          "encounter": 4,
+          "tick": 4708,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 14
+        },
+        {
+          "encounter": 4,
+          "tick": 4711,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 13
+        },
+        {
+          "encounter": 4,
+          "tick": 4762,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 15
+        },
+        {
+          "encounter": 4,
+          "tick": 4771,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 12
+        },
+        {
+          "encounter": 4,
+          "tick": 5056,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 3
+        },
+        {
+          "encounter": 4,
+          "tick": 5107,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 15
+        },
+        {
+          "encounter": 4,
+          "tick": 5116,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 12
+        },
+        {
+          "encounter": 4,
+          "tick": 5416,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 14
+        },
+        {
+          "encounter": 4,
+          "tick": 5419,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 13
+        },
+        {
+          "encounter": 4,
+          "tick": 5470,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 15
+        },
+        {
+          "encounter": 4,
+          "tick": 5479,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 12
+        },
+        {
+          "encounter": 4,
+          "tick": 5779,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 14
+        },
+        {
+          "encounter": 4,
+          "tick": 5830,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 15
+        },
+        {
+          "encounter": 4,
+          "tick": 5839,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 12
+        },
+        {
+          "encounter": 4,
+          "tick": 6139,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 14
+        },
+        {
+          "encounter": 4,
+          "tick": 6142,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 13
+        },
+        {
+          "encounter": 4,
+          "tick": 6193,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 15
+        },
+        {
+          "encounter": 4,
+          "tick": 6202,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 12
+        },
+        {
+          "encounter": 4,
+          "tick": 6502,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 14
+        },
+        {
+          "encounter": 4,
+          "tick": 6553,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 15
+        },
+        {
+          "encounter": 4,
+          "tick": 6562,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 12
+        }
+      ],
+      "contacts": [
+        {
+          "encounter": 0,
+          "kind": "soldier-bank",
+          "id": 5,
+          "owner": "solo",
+          "x": 643.45165422378,
+          "y": 886.5999999999999,
+          "radius": 4,
+          "incomingAim": 1.9378729278576519,
+          "outgoingAim": -1.9378729278576519,
+          "at": 6,
+          "until": 15
+        },
+        {
+          "encounter": 0,
+          "kind": "soldier-bank",
+          "id": 67,
+          "owner": "solo",
+          "x": 1069.5322261830113,
+          "y": 790,
+          "radius": 4,
+          "incomingAim": 2.011771312416581,
+          "outgoingAim": -2.011771312416581,
+          "at": 269,
+          "until": 278
+        },
+        {
+          "encounter": 0,
+          "kind": "soldier-bank",
+          "id": 138,
+          "owner": "solo",
+          "x": 1033.0887329002421,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -0.1540274687560368,
+          "outgoingAim": 0.1540274687560368,
+          "at": 515,
+          "until": 524
+        },
+        {
+          "encounter": 0,
+          "kind": "soldier-bank",
+          "id": 220,
+          "owner": "solo",
+          "x": 1026.4641779004153,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -0.19302414833541218,
+          "outgoingAim": 0.19302414833541218,
+          "at": 766,
+          "until": 775
+        },
+        {
+          "encounter": 0,
+          "kind": "soldier-bank",
+          "id": 338,
+          "owner": "solo",
+          "x": 408.9844059648074,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -2.795904279183094,
+          "outgoingAim": 2.795904279183094,
+          "at": 1021,
+          "until": 1030
+        },
+        {
+          "encounter": 1,
+          "kind": "soldier-bank",
+          "id": 355,
+          "owner": "solo",
+          "x": 643.45165422378,
+          "y": 886.5999999999999,
+          "radius": 4,
+          "incomingAim": 1.9378729278576519,
+          "outgoingAim": -1.9378729278576519,
+          "at": 1161,
+          "until": 1170
+        },
+        {
+          "encounter": 1,
+          "kind": "soldier-bank",
+          "id": 355,
+          "owner": "solo",
+          "x": 615,
+          "y": 812.6032260715878,
+          "radius": 4,
+          "incomingAim": -1.9378729278576519,
+          "outgoingAim": -1.2037197257321415,
+          "at": 1163,
+          "until": 1172
+        },
+        {
+          "encounter": 1,
+          "kind": "soldier-bank",
+          "id": 411,
+          "owner": "solo",
+          "x": 682.511240110906,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -2.079121268551836,
+          "outgoingAim": 2.079121268551836,
+          "at": 1404,
+          "until": 1413
+        },
+        {
+          "encounter": 1,
+          "kind": "soldier-bank",
+          "id": 411,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 464.3822637142924,
+          "radius": 4,
+          "incomingAim": 2.079121268551836,
+          "outgoingAim": 1.0624713850379572,
+          "at": 1413,
+          "until": 1422
+        },
+        {
+          "encounter": 1,
+          "kind": "soldier-bank",
+          "id": 454,
+          "owner": "solo",
+          "x": 1064.8,
+          "y": 561.0233250611627,
+          "radius": 4,
+          "incomingAim": 1.1249279622598067,
+          "outgoingAim": 2.0166646913299866,
+          "at": 1637,
+          "until": 1646
+        },
+        {
+          "encounter": 1,
+          "kind": "soldier-bank",
+          "id": 454,
+          "owner": "solo",
+          "x": 909.1832904733361,
+          "y": 886.5999999999999,
+          "radius": 4,
+          "incomingAim": 2.0166646913299866,
+          "outgoingAim": -2.0166646913299866,
+          "at": 1649,
+          "until": 1658
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-bank",
+          "id": 478,
+          "owner": "solo",
+          "x": 643.45165422378,
+          "y": 886.5999999999999,
+          "radius": 4,
+          "incomingAim": 1.9378729278576519,
+          "outgoingAim": -1.9378729278576519,
+          "at": 1725,
+          "until": 1734
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-bank",
+          "id": 478,
+          "owner": "solo",
+          "x": 615,
+          "y": 812.6032260715878,
+          "radius": 4,
+          "incomingAim": -1.9378729278576519,
+          "outgoingAim": -1.2037197257321415,
+          "at": 1727,
+          "until": 1736
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-bank",
+          "id": 479,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 483.9304925826916,
+          "radius": 4,
+          "incomingAim": -2.1543068164279964,
+          "outgoingAim": -0.987285837161797,
+          "at": 1732,
+          "until": 1741
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-bank",
+          "id": 479,
+          "owner": "solo",
+          "x": 720.3307086049301,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -0.987285837161797,
+          "outgoingAim": 0.987285837161797,
+          "at": 1743,
+          "until": 1752
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-bank",
+          "id": 481,
+          "owner": "solo",
+          "x": 354.7219862952348,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -2.317591854572508,
+          "outgoingAim": 2.317591854572508,
+          "at": 1754,
+          "until": 1763
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-bank",
+          "id": 481,
+          "owner": "solo",
+          "x": 274.79999999999995,
+          "y": 308.9444607633688,
+          "radius": 4,
+          "incomingAim": 2.317591854572508,
+          "outgoingAim": 0.8240007990172852,
+          "at": 1758,
+          "until": 1767
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-bank",
+          "id": 534,
+          "owner": "solo",
+          "x": 770.5236262945774,
+          "y": 886.5999999999999,
+          "radius": 4,
+          "incomingAim": 2.5986389938078034,
+          "outgoingAim": -2.5986389938078034,
+          "at": 2024,
+          "until": 2033
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-bank",
+          "id": 534,
+          "owner": "solo",
+          "x": 615,
+          "y": 792.7480013567576,
+          "radius": 4,
+          "incomingAim": -2.5986389938078034,
+          "outgoingAim": -0.5429536597819897,
+          "at": 2030,
+          "until": 2039
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-bank",
+          "id": 542,
+          "owner": "solo",
+          "x": 1388.1999999999998,
+          "y": 626.0187687663442,
+          "radius": 4,
+          "incomingAim": 0.6333479960457498,
+          "outgoingAim": 2.5082446575440436,
+          "at": 2072,
+          "until": 2081
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-bank",
+          "id": 543,
+          "owner": "solo",
+          "x": 1388.1999999999998,
+          "y": 626.0187687663442,
+          "radius": 4,
+          "incomingAim": 0.6333479960457498,
+          "outgoingAim": 2.5082446575440436,
+          "at": 2078,
+          "until": 2087
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-bank",
+          "id": 542,
+          "owner": "solo",
+          "x": 1164.8689504245515,
+          "y": 790,
+          "radius": 4,
+          "incomingAim": 2.5082446575440436,
+          "outgoingAim": -2.5082446575440436,
+          "at": 2082,
+          "until": 2091
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-bank",
+          "id": 543,
+          "owner": "solo",
+          "x": 1164.8689504245515,
+          "y": 790,
+          "radius": 4,
+          "incomingAim": 2.5082446575440436,
+          "outgoingAim": -2.5082446575440436,
+          "at": 2088,
+          "until": 2097
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-bank",
+          "id": 594,
+          "owner": "solo",
+          "x": 1388.1999999999998,
+          "y": 428.8458704221482,
+          "radius": 4,
+          "incomingAim": 0.49884028281050463,
+          "outgoingAim": 2.642752370779289,
+          "at": 2311,
+          "until": 2320
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-bank",
+          "id": 594,
+          "owner": "solo",
+          "x": 1224,
+          "y": 518.3010935103927,
+          "radius": 4,
+          "incomingAim": 2.642752370779289,
+          "outgoingAim": 0.49884028281050463,
+          "at": 2318,
+          "until": 2327
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-bank",
+          "id": 628,
+          "owner": "solo",
+          "x": 1178.4410047260676,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -0.8458991537989672,
+          "outgoingAim": 0.8458991537989672,
+          "at": 2416,
+          "until": 2425
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-bank",
+          "id": 629,
+          "owner": "solo",
+          "x": 1098.6925176714756,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -1.1091321966298948,
+          "outgoingAim": 1.1091321966298948,
+          "at": 2421,
+          "until": 2430
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-bank",
+          "id": 628,
+          "owner": "solo",
+          "x": 1388.1999999999998,
+          "y": 459.4108671910506,
+          "radius": 4,
+          "incomingAim": 0.8458991537989672,
+          "outgoingAim": 2.295693499790826,
+          "at": 2427,
+          "until": 2436
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-bank",
+          "id": 629,
+          "owner": "solo",
+          "x": 1207.550075444,
+          "y": 441.4,
+          "radius": 4,
+          "incomingAim": 1.1091321966298948,
+          "outgoingAim": -1.1091321966298948,
+          "at": 2429,
+          "until": 2438
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-bank",
+          "id": 659,
+          "owner": "solo",
+          "x": 1043.6990658174311,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -0.9363139783632574,
+          "outgoingAim": 0.9363139783632574,
+          "at": 2556,
+          "until": 2565
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-bank",
+          "id": 659,
+          "owner": "solo",
+          "x": 1204.7356740975424,
+          "y": 441.4,
+          "radius": 4,
+          "incomingAim": 0.9363139783632574,
+          "outgoingAim": -0.9363139783632574,
+          "at": 2565,
+          "until": 2574
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-bank",
+          "id": 714,
+          "owner": "solo",
+          "x": 643.45165422378,
+          "y": 886.5999999999999,
+          "radius": 4,
+          "incomingAim": 1.9378729278576519,
+          "outgoingAim": -1.9378729278576519,
+          "at": 2742,
+          "until": 2751
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-bank",
+          "id": 714,
+          "owner": "solo",
+          "x": 615,
+          "y": 812.6032260715878,
+          "radius": 4,
+          "incomingAim": -1.9378729278576519,
+          "outgoingAim": -1.2037197257321415,
+          "at": 2744,
+          "until": 2753
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-bank",
+          "id": 716,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 483.9304925826916,
+          "radius": 4,
+          "incomingAim": -2.1543068164279964,
+          "outgoingAim": -0.987285837161797,
+          "at": 2749,
+          "until": 2758
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-bank",
+          "id": 716,
+          "owner": "solo",
+          "x": 720.3307086049301,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -0.987285837161797,
+          "outgoingAim": 0.987285837161797,
+          "at": 2760,
+          "until": 2769
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-bank",
+          "id": 721,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 501.55822521133325,
+          "radius": 4,
+          "incomingAim": -2.549688809036006,
+          "outgoingAim": -0.5919038445537874,
+          "at": 2817,
+          "until": 2826
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-bank",
+          "id": 750,
+          "owner": "solo",
+          "x": 1080.3427939840392,
+          "y": 790,
+          "radius": 4,
+          "incomingAim": 1.9562072612588233,
+          "outgoingAim": -1.9562072612588233,
+          "at": 2977,
+          "until": 2986
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-bank",
+          "id": 750,
+          "owner": "solo",
+          "x": 850.1487271114005,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -1.9562072612588233,
+          "outgoingAim": 1.9562072612588233,
+          "at": 2997,
+          "until": 3006
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-bank",
+          "id": 790,
+          "owner": "solo",
+          "x": 1064.8,
+          "y": 530.4928856202386,
+          "radius": 4,
+          "incomingAim": -1.0053474356311523,
+          "outgoingAim": -2.136245217958641,
+          "at": 3139,
+          "until": 3148
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-bank",
+          "id": 790,
+          "owner": "solo",
+          "x": 869.4205525791726,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -2.136245217958641,
+          "outgoingAim": 2.136245217958641,
+          "at": 3151,
+          "until": 3160
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-bank",
+          "id": 791,
+          "owner": "solo",
+          "x": 1064.8,
+          "y": 530.4928856202386,
+          "radius": 4,
+          "incomingAim": -1.0053474356311523,
+          "outgoingAim": -2.136245217958641,
+          "at": 3199,
+          "until": 3208
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-bank",
+          "id": 796,
+          "owner": "solo",
+          "x": 1064.8,
+          "y": 530.4928856202386,
+          "radius": 4,
+          "incomingAim": -1.0053474356311523,
+          "outgoingAim": -2.136245217958641,
+          "at": 3205,
+          "until": 3214
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-bank",
+          "id": 791,
+          "owner": "solo",
+          "x": 869.4205525791726,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -2.136245217958641,
+          "outgoingAim": 2.136245217958641,
+          "at": 3211,
+          "until": 3220
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-bank",
+          "id": 796,
+          "owner": "solo",
+          "x": 869.4205525791726,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -2.136245217958641,
+          "outgoingAim": 2.136245217958641,
+          "at": 3217,
+          "until": 3226
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-bank",
+          "id": 848,
+          "owner": "solo",
+          "x": 1064.8,
+          "y": 530.4928856202386,
+          "radius": 4,
+          "incomingAim": -1.0053474356311523,
+          "outgoingAim": -2.136245217958641,
+          "at": 3436,
+          "until": 3445
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-bank",
+          "id": 848,
+          "owner": "solo",
+          "x": 869.4205525791726,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -2.136245217958641,
+          "outgoingAim": 2.136245217958641,
+          "at": 3448,
+          "until": 3457
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-bank",
+          "id": 860,
+          "owner": "solo",
+          "x": 1064.8,
+          "y": 530.4928856202386,
+          "radius": 4,
+          "incomingAim": -1.0053474356311523,
+          "outgoingAim": -2.136245217958641,
+          "at": 3523,
+          "until": 3532
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-bank",
+          "id": 860,
+          "owner": "solo",
+          "x": 869.4205525791726,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -2.136245217958641,
+          "outgoingAim": 2.136245217958641,
+          "at": 3535,
+          "until": 3544
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-bank",
+          "id": 876,
+          "owner": "solo",
+          "x": 1064.8,
+          "y": 530.4928856202386,
+          "radius": 4,
+          "incomingAim": -1.0053474356311523,
+          "outgoingAim": -2.136245217958641,
+          "at": 3583,
+          "until": 3592
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-bank",
+          "id": 876,
+          "owner": "solo",
+          "x": 869.4205525791726,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -2.136245217958641,
+          "outgoingAim": 2.136245217958641,
+          "at": 3595,
+          "until": 3604
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-bank",
+          "id": 889,
+          "owner": "solo",
+          "x": 958.9348311404909,
+          "y": 886.5999999999999,
+          "radius": 4,
+          "incomingAim": 1.7411006898899497,
+          "outgoingAim": -1.7411006898899497,
+          "at": 3680,
+          "until": 3689
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-bank",
+          "id": 889,
+          "owner": "solo",
+          "x": 844.7468102116269,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -1.7411006898899497,
+          "outgoingAim": 1.7411006898899497,
+          "at": 3703,
+          "until": 3712
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-bank",
+          "id": 963,
+          "owner": "solo",
+          "x": 1156.7654260250513,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -0.1564313225964269,
+          "outgoingAim": 0.1564313225964269,
+          "at": 3916,
+          "until": 3925
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-bank",
+          "id": 964,
+          "owner": "solo",
+          "x": 1156.7654260250513,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -0.1564313225964269,
+          "outgoingAim": 0.1564313225964269,
+          "at": 3919,
+          "until": 3928
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-bank",
+          "id": 963,
+          "owner": "solo",
+          "x": 1325.1999999999998,
+          "y": 249.16649007824532,
+          "radius": 4,
+          "incomingAim": 0.1564313225964269,
+          "outgoingAim": 2.9851613309933662,
+          "at": 3922,
+          "until": 3931
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-bank",
+          "id": 964,
+          "owner": "solo",
+          "x": 1325.1999999999998,
+          "y": 249.16649007824532,
+          "radius": 4,
+          "incomingAim": 0.1564313225964269,
+          "outgoingAim": 2.9851613309933662,
+          "at": 3925,
+          "until": 3934
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 970,
+          "owner": "solo",
+          "x": 643.45165422378,
+          "y": 886.5999999999999,
+          "radius": 4,
+          "incomingAim": 1.9378729278576519,
+          "outgoingAim": -1.9378729278576519,
+          "at": 3987,
+          "until": 3996
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 970,
+          "owner": "solo",
+          "x": 615,
+          "y": 812.6032260715878,
+          "radius": 4,
+          "incomingAim": -1.9378729278576519,
+          "outgoingAim": -1.2037197257321415,
+          "at": 3989,
+          "until": 3998
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 972,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 483.9304925826916,
+          "radius": 4,
+          "incomingAim": -2.1543068164279964,
+          "outgoingAim": -0.987285837161797,
+          "at": 3994,
+          "until": 4003
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 972,
+          "owner": "solo",
+          "x": 720.3307086049301,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -0.987285837161797,
+          "outgoingAim": 0.987285837161797,
+          "at": 4005,
+          "until": 4014
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 974,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 501.55822521133325,
+          "radius": 4,
+          "incomingAim": -2.549688809036006,
+          "outgoingAim": -0.5919038445537874,
+          "at": 4047,
+          "until": 4056
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 982,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 552.6509745252405,
+          "radius": 4,
+          "incomingAim": -2.7242217342354387,
+          "outgoingAim": -0.41737091935435455,
+          "at": 4056,
+          "until": 4065
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1063,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 501.55822521133325,
+          "radius": 4,
+          "incomingAim": -2.549688809036006,
+          "outgoingAim": -0.5919038445537874,
+          "at": 4356,
+          "until": 4365
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1066,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 501.55822521133325,
+          "radius": 4,
+          "incomingAim": -2.549688809036006,
+          "outgoingAim": -0.5919038445537874,
+          "at": 4407,
+          "until": 4416
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1068,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 552.6509745252405,
+          "radius": 4,
+          "incomingAim": -2.7242217342354387,
+          "outgoingAim": -0.41737091935435455,
+          "at": 4416,
+          "until": 4425
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1069,
+          "owner": "solo",
+          "x": 325.39949234487176,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -2.375155883836573,
+          "outgoingAim": 2.375155883836573,
+          "at": 4428,
+          "until": 4437
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1069,
+          "owner": "solo",
+          "x": 274.79999999999995,
+          "y": 271.31710449843365,
+          "radius": 4,
+          "incomingAim": 2.375155883836573,
+          "outgoingAim": 0.7664367697532202,
+          "at": 4430,
+          "until": 4439
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1068,
+          "owner": "solo",
+          "x": 1292.1265958904125,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -0.41737091935435455,
+          "outgoingAim": 0.41737091935435455,
+          "at": 4443,
+          "until": 4452
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1200,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 501.55822521133325,
+          "radius": 4,
+          "incomingAim": -2.549688809036006,
+          "outgoingAim": -0.5919038445537874,
+          "at": 4716,
+          "until": 4725
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1201,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 501.55822521133325,
+          "radius": 4,
+          "incomingAim": -2.549688809036006,
+          "outgoingAim": -0.5919038445537874,
+          "at": 4719,
+          "until": 4728
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1203,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 501.55822521133325,
+          "radius": 4,
+          "incomingAim": -2.549688809036006,
+          "outgoingAim": -0.5919038445537874,
+          "at": 4770,
+          "until": 4779
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1208,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 552.6509745252405,
+          "radius": 4,
+          "incomingAim": -2.7242217342354387,
+          "outgoingAim": -0.41737091935435455,
+          "at": 4779,
+          "until": 4788
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1209,
+          "owner": "solo",
+          "x": 325.39949234487176,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -2.375155883836573,
+          "outgoingAim": 2.375155883836573,
+          "at": 4791,
+          "until": 4800
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1209,
+          "owner": "solo",
+          "x": 274.79999999999995,
+          "y": 271.31710449843365,
+          "radius": 4,
+          "incomingAim": 2.375155883836573,
+          "outgoingAim": 0.7664367697532202,
+          "at": 4793,
+          "until": 4802
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1208,
+          "owner": "solo",
+          "x": 1292.1265958904125,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -0.41737091935435455,
+          "outgoingAim": 0.41737091935435455,
+          "at": 4806,
+          "until": 4815
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1301,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 501.55822521133325,
+          "radius": 4,
+          "incomingAim": -2.549688809036006,
+          "outgoingAim": -0.5919038445537874,
+          "at": 5064,
+          "until": 5073
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1304,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 501.55822521133325,
+          "radius": 4,
+          "incomingAim": -2.549688809036006,
+          "outgoingAim": -0.5919038445537874,
+          "at": 5115,
+          "until": 5124
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1306,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 552.6509745252405,
+          "radius": 4,
+          "incomingAim": -2.7242217342354387,
+          "outgoingAim": -0.41737091935435455,
+          "at": 5124,
+          "until": 5133
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1307,
+          "owner": "solo",
+          "x": 325.39949234487176,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -2.375155883836573,
+          "outgoingAim": 2.375155883836573,
+          "at": 5136,
+          "until": 5145
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1307,
+          "owner": "solo",
+          "x": 274.79999999999995,
+          "y": 271.31710449843365,
+          "radius": 4,
+          "incomingAim": 2.375155883836573,
+          "outgoingAim": 0.7664367697532202,
+          "at": 5138,
+          "until": 5147
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1306,
+          "owner": "solo",
+          "x": 1292.1265958904125,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -0.41737091935435455,
+          "outgoingAim": 0.41737091935435455,
+          "at": 5151,
+          "until": 5160
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1444,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 501.55822521133325,
+          "radius": 4,
+          "incomingAim": -2.549688809036006,
+          "outgoingAim": -0.5919038445537874,
+          "at": 5424,
+          "until": 5433
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1445,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 501.55822521133325,
+          "radius": 4,
+          "incomingAim": -2.549688809036006,
+          "outgoingAim": -0.5919038445537874,
+          "at": 5427,
+          "until": 5436
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1447,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 501.55822521133325,
+          "radius": 4,
+          "incomingAim": -2.549688809036006,
+          "outgoingAim": -0.5919038445537874,
+          "at": 5478,
+          "until": 5487
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1449,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 552.6509745252405,
+          "radius": 4,
+          "incomingAim": -2.7242217342354387,
+          "outgoingAim": -0.41737091935435455,
+          "at": 5487,
+          "until": 5496
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1450,
+          "owner": "solo",
+          "x": 325.39949234487176,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -2.375155883836573,
+          "outgoingAim": 2.375155883836573,
+          "at": 5499,
+          "until": 5508
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1450,
+          "owner": "solo",
+          "x": 274.79999999999995,
+          "y": 271.31710449843365,
+          "radius": 4,
+          "incomingAim": 2.375155883836573,
+          "outgoingAim": 0.7664367697532202,
+          "at": 5501,
+          "until": 5510
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1449,
+          "owner": "solo",
+          "x": 1292.1265958904125,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -0.41737091935435455,
+          "outgoingAim": 0.41737091935435455,
+          "at": 5514,
+          "until": 5523
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1539,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 501.55822521133325,
+          "radius": 4,
+          "incomingAim": -2.549688809036006,
+          "outgoingAim": -0.5919038445537874,
+          "at": 5787,
+          "until": 5796
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1542,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 501.55822521133325,
+          "radius": 4,
+          "incomingAim": -2.549688809036006,
+          "outgoingAim": -0.5919038445537874,
+          "at": 5838,
+          "until": 5847
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1547,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 552.6509745252405,
+          "radius": 4,
+          "incomingAim": -2.7242217342354387,
+          "outgoingAim": -0.41737091935435455,
+          "at": 5847,
+          "until": 5856
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1548,
+          "owner": "solo",
+          "x": 325.39949234487176,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -2.375155883836573,
+          "outgoingAim": 2.375155883836573,
+          "at": 5859,
+          "until": 5868
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1548,
+          "owner": "solo",
+          "x": 274.79999999999995,
+          "y": 271.31710449843365,
+          "radius": 4,
+          "incomingAim": 2.375155883836573,
+          "outgoingAim": 0.7664367697532202,
+          "at": 5861,
+          "until": 5870
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1547,
+          "owner": "solo",
+          "x": 1292.1265958904125,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -0.41737091935435455,
+          "outgoingAim": 0.41737091935435455,
+          "at": 5874,
+          "until": 5883
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1691,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 501.55822521133325,
+          "radius": 4,
+          "incomingAim": -2.549688809036006,
+          "outgoingAim": -0.5919038445537874,
+          "at": 6147,
+          "until": 6156
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1692,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 501.55822521133325,
+          "radius": 4,
+          "incomingAim": -2.549688809036006,
+          "outgoingAim": -0.5919038445537874,
+          "at": 6150,
+          "until": 6159
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1694,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 501.55822521133325,
+          "radius": 4,
+          "incomingAim": -2.549688809036006,
+          "outgoingAim": -0.5919038445537874,
+          "at": 6201,
+          "until": 6210
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1696,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 552.6509745252405,
+          "radius": 4,
+          "incomingAim": -2.7242217342354387,
+          "outgoingAim": -0.41737091935435455,
+          "at": 6210,
+          "until": 6219
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1697,
+          "owner": "solo",
+          "x": 325.39949234487176,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -2.375155883836573,
+          "outgoingAim": 2.375155883836573,
+          "at": 6222,
+          "until": 6231
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1697,
+          "owner": "solo",
+          "x": 274.79999999999995,
+          "y": 271.31710449843365,
+          "radius": 4,
+          "incomingAim": 2.375155883836573,
+          "outgoingAim": 0.7664367697532202,
+          "at": 6224,
+          "until": 6233
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1696,
+          "owner": "solo",
+          "x": 1292.1265958904125,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -0.41737091935435455,
+          "outgoingAim": 0.41737091935435455,
+          "at": 6237,
+          "until": 6246
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1790,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 501.55822521133325,
+          "radius": 4,
+          "incomingAim": -2.549688809036006,
+          "outgoingAim": -0.5919038445537874,
+          "at": 6510,
+          "until": 6519
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1843,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 501.55822521133325,
+          "radius": 4,
+          "incomingAim": -2.549688809036006,
+          "outgoingAim": -0.5919038445537874,
+          "at": 6561,
+          "until": 6570
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1845,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 552.6509745252405,
+          "radius": 4,
+          "incomingAim": -2.7242217342354387,
+          "outgoingAim": -0.41737091935435455,
+          "at": 6570,
+          "until": 6579
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1846,
+          "owner": "solo",
+          "x": 325.39949234487176,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -2.375155883836573,
+          "outgoingAim": 2.375155883836573,
+          "at": 6582,
+          "until": 6591
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1846,
+          "owner": "solo",
+          "x": 274.79999999999995,
+          "y": 271.31710449843365,
+          "radius": 4,
+          "incomingAim": 2.375155883836573,
+          "outgoingAim": 0.7664367697532202,
+          "at": 6584,
+          "until": 6593
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1845,
+          "owner": "solo",
+          "x": 1292.1265958904125,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -0.41737091935435455,
+          "outgoingAim": 0.41737091935435455,
+          "at": 6597,
+          "until": 6606
+        }
+      ],
+      "steps": [],
+      "restoredBoundaryCount": 0
+    },
+    {
+      "route": "marksman-line",
+      "phase": "victory",
+      "completedEncounters": 5,
+      "combatSeconds": 171.46666666666667,
+      "damageDealt": 34656.53312099377,
+      "damageTaken": 197.2,
+      "endingHealth": 130,
+      "earnedSP": 27,
+      "spentSP": 26,
+      "skills": [
+        "soldier-ballistics-1",
+        "soldier-marksman-1",
+        "soldier-marksman-line-1",
+        "soldier-command-1",
+        "soldier-command-2",
+        "soldier-marksman-pair-1",
+        "general-sprint",
+        "soldier-marksman-reserve-1",
+        "soldier-marksman-relay-1",
+        "soldier-marksman-twin-1"
+      ],
+      "purchases": [
+        {
+          "kind": "skill",
+          "item": "soldier-ballistics-1",
+          "encounter": 0,
+          "earnedSP": 3
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-marksman-1",
+          "encounter": 0,
+          "earnedSP": 3
+        },
+        {
+          "kind": "upgrade",
+          "item": "damage",
+          "encounter": 0,
+          "earnedSP": 3
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-marksman-line-1",
+          "encounter": 1,
+          "earnedSP": 9
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-command-1",
+          "encounter": 1,
+          "earnedSP": 9
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-command-2",
+          "encounter": 1,
+          "earnedSP": 9
+        },
+        {
+          "kind": "weapon",
+          "item": "soldier-2",
+          "encounter": 1,
+          "earnedSP": 9
+        },
+        {
+          "kind": "upgrade",
+          "item": "damage",
+          "encounter": 1,
+          "earnedSP": 9
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-marksman-pair-1",
+          "encounter": 2,
+          "earnedSP": 15
+        },
+        {
+          "kind": "skill",
+          "item": "general-sprint",
+          "encounter": 2,
+          "earnedSP": 15
+        },
+        {
+          "kind": "weapon",
+          "item": "soldier-3",
+          "encounter": 2,
+          "earnedSP": 15
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-marksman-reserve-1",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "upgrade",
+          "item": "damage",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "upgrade",
+          "item": "fire-rate",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "upgrade",
+          "item": "health",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "upgrade",
+          "item": "reload",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "upgrade",
+          "item": "magazine",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "supply",
+          "item": "medkit",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "upgrade",
+          "item": "fire-rate",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-marksman-relay-1",
+          "encounter": 4,
+          "earnedSP": 27
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-marksman-twin-1",
+          "encounter": 4,
+          "earnedSP": 27
+        },
+        {
+          "kind": "upgrade",
+          "item": "damage",
+          "encounter": 4,
+          "earnedSP": 27
+        },
+        {
+          "kind": "upgrade",
+          "item": "fire-rate",
+          "encounter": 4,
+          "earnedSP": 27
+        },
+        {
+          "kind": "upgrade",
+          "item": "health",
+          "encounter": 4,
+          "earnedSP": 27
+        },
+        {
+          "kind": "upgrade",
+          "item": "reload",
+          "encounter": 4,
+          "earnedSP": 27
+        },
+        {
+          "kind": "upgrade",
+          "item": "magazine",
+          "encounter": 4,
+          "earnedSP": 27
+        },
+        {
+          "kind": "upgrade",
+          "item": "damage",
+          "encounter": 4,
+          "earnedSP": 27
+        }
+      ],
+      "fights": [
+        {
+          "encounter": 0,
+          "boss": "constable",
+          "startedAt": 0,
+          "earnedSP": 3,
+          "skills": [
+            "soldier-ballistics-1",
+            "soldier-marksman-1"
+          ],
+          "weapon": "soldier-0",
+          "startingHealth": 110
+        },
+        {
+          "encounter": 1,
+          "boss": "stitchwright",
+          "startedAt": 1068,
+          "earnedSP": 9,
+          "skills": [
+            "soldier-ballistics-1",
+            "soldier-marksman-1",
+            "soldier-marksman-line-1",
+            "soldier-command-1",
+            "soldier-command-2"
+          ],
+          "weapon": "soldier-2",
+          "startingHealth": 55
+        },
+        {
+          "encounter": 2,
+          "boss": "pallbearer",
+          "startedAt": 1363,
+          "earnedSP": 15,
+          "skills": [
+            "soldier-ballistics-1",
+            "soldier-marksman-1",
+            "soldier-marksman-line-1",
+            "soldier-command-1",
+            "soldier-command-2",
+            "soldier-marksman-pair-1",
+            "general-sprint"
+          ],
+          "weapon": "soldier-3",
+          "startingHealth": 55
+        },
+        {
+          "encounter": 3,
+          "boss": "wire-harpist",
+          "startedAt": 1875,
+          "earnedSP": 21,
+          "skills": [
+            "soldier-ballistics-1",
+            "soldier-marksman-1",
+            "soldier-marksman-line-1",
+            "soldier-command-1",
+            "soldier-command-2",
+            "soldier-marksman-pair-1",
+            "general-sprint",
+            "soldier-marksman-reserve-1"
+          ],
+          "weapon": "soldier-3",
+          "startingHealth": 60
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "startedAt": 2732,
+          "earnedSP": 27,
+          "skills": [
+            "soldier-ballistics-1",
+            "soldier-marksman-1",
+            "soldier-marksman-line-1",
+            "soldier-command-1",
+            "soldier-command-2",
+            "soldier-marksman-pair-1",
+            "general-sprint",
+            "soldier-marksman-reserve-1",
+            "soldier-marksman-relay-1",
+            "soldier-marksman-twin-1"
+          ],
+          "weapon": "soldier-3",
+          "startingHealth": 130
+        }
+      ],
+      "actions": [
+        {
+          "encounter": 0,
+          "tick": 1,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 10
+        },
+        {
+          "encounter": 0,
+          "tick": 265,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 8
+        },
+        {
+          "encounter": 0,
+          "tick": 514,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 8
+        },
+        {
+          "encounter": 0,
+          "tick": 766,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 8
+        },
+        {
+          "encounter": 0,
+          "tick": 1018,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 8
+        },
+        {
+          "encounter": 1,
+          "tick": 1069,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 23
+        },
+        {
+          "encounter": 1,
+          "tick": 1357,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 22
+        },
+        {
+          "encounter": 2,
+          "tick": 1366,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 10
+        },
+        {
+          "encounter": 2,
+          "tick": 1369,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 9
+        },
+        {
+          "encounter": 2,
+          "tick": 1375,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 8
+        },
+        {
+          "encounter": 2,
+          "tick": 1597,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 2
+        },
+        {
+          "encounter": 2,
+          "tick": 1714,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 6
+        },
+        {
+          "encounter": 2,
+          "tick": 1726,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 5
+        },
+        {
+          "encounter": 2,
+          "tick": 1831,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 10
+        },
+        {
+          "encounter": 3,
+          "tick": 1876,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 13
+        },
+        {
+          "encounter": 3,
+          "tick": 1879,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 11
+        },
+        {
+          "encounter": 3,
+          "tick": 1933,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 13
+        },
+        {
+          "encounter": 3,
+          "tick": 2107,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 12
+        },
+        {
+          "encounter": 3,
+          "tick": 2266,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 12
+        },
+        {
+          "encounter": 3,
+          "tick": 2320,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 13
+        },
+        {
+          "encounter": 3,
+          "tick": 2338,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 10
+        },
+        {
+          "encounter": 3,
+          "tick": 2578,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 12
+        },
+        {
+          "encounter": 3,
+          "tick": 2611,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 8
+        },
+        {
+          "encounter": 4,
+          "tick": 2734,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 20
+        },
+        {
+          "encounter": 4,
+          "tick": 2737,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 19
+        },
+        {
+          "encounter": 4,
+          "tick": 2797,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 21
+        },
+        {
+          "encounter": 4,
+          "tick": 2809,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 17
+        },
+        {
+          "encounter": 4,
+          "tick": 3082,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 13
+        },
+        {
+          "encounter": 4,
+          "tick": 3145,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 21
+        },
+        {
+          "encounter": 4,
+          "tick": 3157,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 17
+        },
+        {
+          "encounter": 4,
+          "tick": 3421,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 14
+        },
+        {
+          "encounter": 4,
+          "tick": 3427,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 12
+        },
+        {
+          "encounter": 4,
+          "tick": 3490,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 21
+        },
+        {
+          "encounter": 4,
+          "tick": 3502,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 17
+        },
+        {
+          "encounter": 4,
+          "tick": 3772,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 13
+        },
+        {
+          "encounter": 4,
+          "tick": 3835,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 21
+        },
+        {
+          "encounter": 4,
+          "tick": 3847,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 17
+        },
+        {
+          "encounter": 4,
+          "tick": 4108,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 14
+        },
+        {
+          "encounter": 4,
+          "tick": 4117,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 12
+        },
+        {
+          "encounter": 4,
+          "tick": 4180,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 21
+        },
+        {
+          "encounter": 4,
+          "tick": 4192,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 17
+        },
+        {
+          "encounter": 4,
+          "tick": 4462,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 13
+        },
+        {
+          "encounter": 4,
+          "tick": 4525,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 21
+        },
+        {
+          "encounter": 4,
+          "tick": 4537,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 17
+        },
+        {
+          "encounter": 4,
+          "tick": 4801,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 20
+        },
+        {
+          "encounter": 4,
+          "tick": 4807,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 21
+        },
+        {
+          "encounter": 4,
+          "tick": 4870,
+          "sound": "soldier-bank-shot",
+          "requested": "pair",
+          "ammo": 21
+        },
+        {
+          "encounter": 4,
+          "tick": 4882,
+          "sound": "soldier-bank-shot",
+          "requested": "bank",
+          "ammo": 17
+        }
+      ],
+      "contacts": [
+        {
+          "encounter": 0,
+          "kind": "soldier-bank",
+          "id": 5,
+          "owner": "solo",
+          "x": 719.4321616276085,
+          "y": 886.5999999999999,
+          "radius": 4,
+          "incomingAim": 1.4196083479090147,
+          "outgoingAim": -1.4196083479090147,
+          "at": 5,
+          "until": 14
+        },
+        {
+          "encounter": 0,
+          "kind": "soldier-bank",
+          "id": 67,
+          "owner": "solo",
+          "x": 820.2195286799897,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -2.151568624159828,
+          "outgoingAim": 2.151568624159828,
+          "at": 283,
+          "until": 292
+        },
+        {
+          "encounter": 0,
+          "kind": "soldier-bank",
+          "id": 138,
+          "owner": "solo",
+          "x": 990.2052760498269,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -2.7034802735619077,
+          "outgoingAim": 2.7034802735619077,
+          "at": 514,
+          "until": 523
+        },
+        {
+          "encounter": 0,
+          "kind": "soldier-bank",
+          "id": 243,
+          "owner": "solo",
+          "x": 990.638221330778,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -2.6873641720175963,
+          "outgoingAim": 2.6873641720175963,
+          "at": 766,
+          "until": 775
+        },
+        {
+          "encounter": 0,
+          "kind": "soldier-bank",
+          "id": 339,
+          "owner": "solo",
+          "x": 539.4252175883972,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -0.9240884782206891,
+          "outgoingAim": 0.9240884782206891,
+          "at": 1023,
+          "until": 1032
+        },
+        {
+          "encounter": 1,
+          "kind": "soldier-bank",
+          "id": 347,
+          "owner": "solo",
+          "x": 719.4321616276085,
+          "y": 886.5999999999999,
+          "radius": 4,
+          "incomingAim": 1.4196083479090147,
+          "outgoingAim": -1.4196083479090147,
+          "at": 1073,
+          "until": 1082
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-bank",
+          "id": 414,
+          "owner": "solo",
+          "x": 719.4321616276085,
+          "y": 886.5999999999999,
+          "radius": 4,
+          "incomingAim": 1.4196083479090147,
+          "outgoingAim": -1.4196083479090147,
+          "at": 1370,
+          "until": 1379
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-bank",
+          "id": 415,
+          "owner": "solo",
+          "x": 728.5169752369114,
+          "y": 886.5999999999999,
+          "radius": 4,
+          "incomingAim": 1.4358588593209476,
+          "outgoingAim": -1.4358588593209476,
+          "at": 1374,
+          "until": 1383
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-bank",
+          "id": 416,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 534.7683215128536,
+          "radius": 4,
+          "incomingAim": -2.4423209875932326,
+          "outgoingAim": -0.6992716659965607,
+          "at": 1382,
+          "until": 1391
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-bank",
+          "id": 448,
+          "owner": "solo",
+          "x": 1388.1999999999998,
+          "y": 709.931918728982,
+          "radius": 4,
+          "incomingAim": -0.0795730644397346,
+          "outgoingAim": -3.062019589150059,
+          "at": 1608,
+          "until": 1617
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-bank",
+          "id": 477,
+          "owner": "solo",
+          "x": 989.05917951253,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -1.3833623745196744,
+          "outgoingAim": 1.3833623745196744,
+          "at": 1723,
+          "until": 1732
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-bank",
+          "id": 478,
+          "owner": "solo",
+          "x": 989.05917951253,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -1.3833623745196744,
+          "outgoingAim": 1.3833623745196744,
+          "at": 1735,
+          "until": 1744
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-bank",
+          "id": 505,
+          "owner": "solo",
+          "x": 1035.2219557324408,
+          "y": 790,
+          "radius": 4,
+          "incomingAim": 0.9092379596020719,
+          "outgoingAim": -0.9092379596020719,
+          "at": 1841,
+          "until": 1850
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-bank",
+          "id": 513,
+          "owner": "solo",
+          "x": 719.4321616276085,
+          "y": 886.5999999999999,
+          "radius": 4,
+          "incomingAim": 1.4196083479090147,
+          "outgoingAim": -1.4196083479090147,
+          "at": 1880,
+          "until": 1889
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-bank",
+          "id": 515,
+          "owner": "solo",
+          "x": 728.5169752369114,
+          "y": 886.5999999999999,
+          "radius": 4,
+          "incomingAim": 1.4358588593209476,
+          "outgoingAim": -1.4358588593209476,
+          "at": 1884,
+          "until": 1893
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-bank",
+          "id": 517,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 501.55822521133325,
+          "radius": 4,
+          "incomingAim": -2.549688809036006,
+          "outgoingAim": -0.5919038445537874,
+          "at": 1941,
+          "until": 1950
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-bank",
+          "id": 546,
+          "owner": "solo",
+          "x": 1126.806247290334,
+          "y": 790,
+          "radius": 4,
+          "incomingAim": 2.1796239436119675,
+          "outgoingAim": -2.1796239436119675,
+          "at": 2108,
+          "until": 2117
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-bank",
+          "id": 591,
+          "owner": "solo",
+          "x": 1018.446914982236,
+          "y": 790,
+          "radius": 4,
+          "incomingAim": 2.0305889765091596,
+          "outgoingAim": -2.0305889765091596,
+          "at": 2273,
+          "until": 2282
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-bank",
+          "id": 593,
+          "owner": "solo",
+          "x": 1388.1999999999998,
+          "y": 475.0713682447388,
+          "radius": 4,
+          "incomingAim": -0.24497682976713475,
+          "outgoingAim": -2.8966158238226587,
+          "at": 2324,
+          "until": 2333
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-bank",
+          "id": 596,
+          "owner": "solo",
+          "x": 1388.1999999999998,
+          "y": 417.25158591259174,
+          "radius": 4,
+          "incomingAim": -0.13389969664144735,
+          "outgoingAim": -3.007692956948346,
+          "at": 2338,
+          "until": 2347
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-bank",
+          "id": 659,
+          "owner": "solo",
+          "x": 1180.228290542946,
+          "y": 441.4,
+          "radius": 4,
+          "incomingAim": 2.86143789930902,
+          "outgoingAim": -2.86143789930902,
+          "at": 2585,
+          "until": 2594
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-bank",
+          "id": 666,
+          "owner": "solo",
+          "x": 1180.228290542946,
+          "y": 441.4,
+          "radius": 4,
+          "incomingAim": 2.86143789930902,
+          "outgoingAim": -2.86143789930902,
+          "at": 2618,
+          "until": 2627
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 696,
+          "owner": "solo",
+          "x": 720.3303742454691,
+          "y": 886.5999999999999,
+          "radius": 4,
+          "incomingAim": 1.4212115936982068,
+          "outgoingAim": -1.4212115936982068,
+          "at": 2739,
+          "until": 2748
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 697,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 564.4414840341213,
+          "radius": 4,
+          "incomingAim": -2.3765708071086644,
+          "outgoingAim": -0.7650218464811288,
+          "at": 2744,
+          "until": 2753
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 705,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 497.62398829511613,
+          "radius": 4,
+          "incomingAim": -2.560510056433321,
+          "outgoingAim": -0.5810825971564724,
+          "at": 2806,
+          "until": 2815
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 708,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 549.762384044774,
+          "radius": 4,
+          "incomingAim": -2.7350429816327537,
+          "outgoingAim": -0.4065496719570395,
+          "at": 2817,
+          "until": 2826
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 785,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 497.62398829511613,
+          "radius": 4,
+          "incomingAim": -2.560510056433321,
+          "outgoingAim": -0.5810825971564724,
+          "at": 3091,
+          "until": 3100
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 788,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 497.62398829511613,
+          "radius": 4,
+          "incomingAim": -2.560510056433321,
+          "outgoingAim": -0.5810825971564724,
+          "at": 3154,
+          "until": 3163
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 791,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 549.762384044774,
+          "radius": 4,
+          "incomingAim": -2.7350429816327537,
+          "outgoingAim": -0.4065496719570395,
+          "at": 3165,
+          "until": 3174
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 792,
+          "owner": "solo",
+          "x": 325.72140402864187,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -2.385977131233888,
+          "outgoingAim": 2.385977131233888,
+          "at": 3177,
+          "until": 3186
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 873,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 497.62398829511613,
+          "radius": 4,
+          "incomingAim": -2.560510056433321,
+          "outgoingAim": -0.5810825971564724,
+          "at": 3430,
+          "until": 3439
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 875,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 497.62398829511613,
+          "radius": 4,
+          "incomingAim": -2.560510056433321,
+          "outgoingAim": -0.5810825971564724,
+          "at": 3436,
+          "until": 3445
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 928,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 497.62398829511613,
+          "radius": 4,
+          "incomingAim": -2.560510056433321,
+          "outgoingAim": -0.5810825971564724,
+          "at": 3499,
+          "until": 3508
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 931,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 549.762384044774,
+          "radius": 4,
+          "incomingAim": -2.7350429816327537,
+          "outgoingAim": -0.4065496719570395,
+          "at": 3510,
+          "until": 3519
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 932,
+          "owner": "solo",
+          "x": 325.72140402864187,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -2.385977131233888,
+          "outgoingAim": 2.385977131233888,
+          "at": 3522,
+          "until": 3531
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1017,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 497.62398829511613,
+          "radius": 4,
+          "incomingAim": -2.560510056433321,
+          "outgoingAim": -0.5810825971564724,
+          "at": 3781,
+          "until": 3790
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1019,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 497.62398829511613,
+          "radius": 4,
+          "incomingAim": -2.560510056433321,
+          "outgoingAim": -0.5810825971564724,
+          "at": 3844,
+          "until": 3853
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1022,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 549.762384044774,
+          "radius": 4,
+          "incomingAim": -2.7350429816327537,
+          "outgoingAim": -0.4065496719570395,
+          "at": 3855,
+          "until": 3864
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1023,
+          "owner": "solo",
+          "x": 325.72140402864187,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -2.385977131233888,
+          "outgoingAim": 2.385977131233888,
+          "at": 3867,
+          "until": 3876
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1106,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 497.62398829511613,
+          "radius": 4,
+          "incomingAim": -2.560510056433321,
+          "outgoingAim": -0.5810825971564724,
+          "at": 4117,
+          "until": 4126
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1108,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 497.62398829511613,
+          "radius": 4,
+          "incomingAim": -2.560510056433321,
+          "outgoingAim": -0.5810825971564724,
+          "at": 4126,
+          "until": 4135
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1159,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 497.62398829511613,
+          "radius": 4,
+          "incomingAim": -2.560510056433321,
+          "outgoingAim": -0.5810825971564724,
+          "at": 4189,
+          "until": 4198
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1163,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 549.762384044774,
+          "radius": 4,
+          "incomingAim": -2.7350429816327537,
+          "outgoingAim": -0.4065496719570395,
+          "at": 4200,
+          "until": 4209
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1164,
+          "owner": "solo",
+          "x": 325.72140402864187,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -2.385977131233888,
+          "outgoingAim": 2.385977131233888,
+          "at": 4212,
+          "until": 4221
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1251,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 497.62398829511613,
+          "radius": 4,
+          "incomingAim": -2.560510056433321,
+          "outgoingAim": -0.5810825971564724,
+          "at": 4471,
+          "until": 4480
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1257,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 497.62398829511613,
+          "radius": 4,
+          "incomingAim": -2.560510056433321,
+          "outgoingAim": -0.5810825971564724,
+          "at": 4534,
+          "until": 4543
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1260,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 549.762384044774,
+          "radius": 4,
+          "incomingAim": -2.7350429816327537,
+          "outgoingAim": -0.4065496719570395,
+          "at": 4545,
+          "until": 4554
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1261,
+          "owner": "solo",
+          "x": 325.72140402864187,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -2.385977131233888,
+          "outgoingAim": 2.385977131233888,
+          "at": 4557,
+          "until": 4566
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1393,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 497.62398829511613,
+          "radius": 4,
+          "incomingAim": -2.560510056433321,
+          "outgoingAim": -0.5810825971564724,
+          "at": 4810,
+          "until": 4819
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1395,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 497.62398829511613,
+          "radius": 4,
+          "incomingAim": -2.560510056433321,
+          "outgoingAim": -0.5810825971564724,
+          "at": 4816,
+          "until": 4825
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1397,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 497.62398829511613,
+          "radius": 4,
+          "incomingAim": -2.560510056433321,
+          "outgoingAim": -0.5810825971564724,
+          "at": 4879,
+          "until": 4888
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1400,
+          "owner": "solo",
+          "x": 547.8,
+          "y": 549.762384044774,
+          "radius": 4,
+          "incomingAim": -2.7350429816327537,
+          "outgoingAim": -0.4065496719570395,
+          "at": 4890,
+          "until": 4899
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-bank",
+          "id": 1401,
+          "owner": "solo",
+          "x": 325.72140402864187,
+          "y": 222.6,
+          "radius": 4,
+          "incomingAim": -2.385977131233888,
+          "outgoingAim": 2.385977131233888,
+          "at": 4902,
+          "until": 4911
+        }
+      ],
+      "steps": [],
+      "restoredBoundaryCount": 0
+    },
+    {
+      "route": "skirmisher-advance",
+      "phase": "victory",
+      "completedEncounters": 5,
+      "combatSeconds": 145.03333333333333,
+      "damageDealt": 34661.03312099375,
+      "damageTaken": 166.49999999999997,
+      "endingHealth": 97.5,
+      "earnedSP": 27,
+      "spentSP": 26,
+      "skills": [
+        "soldier-ballistics-1",
+        "soldier-skirmisher-1",
+        "soldier-skirmisher-advance-1",
+        "soldier-command-1",
+        "soldier-command-2",
+        "soldier-skirmisher-drill-1",
+        "general-sprint",
+        "soldier-skirmisher-roving-1",
+        "soldier-skirmisher-ready-1",
+        "soldier-skirmisher-volley-1"
+      ],
+      "purchases": [
+        {
+          "kind": "skill",
+          "item": "soldier-ballistics-1",
+          "encounter": 0,
+          "earnedSP": 3
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-skirmisher-1",
+          "encounter": 0,
+          "earnedSP": 3
+        },
+        {
+          "kind": "upgrade",
+          "item": "damage",
+          "encounter": 0,
+          "earnedSP": 3
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-skirmisher-advance-1",
+          "encounter": 1,
+          "earnedSP": 9
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-command-1",
+          "encounter": 1,
+          "earnedSP": 9
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-command-2",
+          "encounter": 1,
+          "earnedSP": 9
+        },
+        {
+          "kind": "weapon",
+          "item": "soldier-2",
+          "encounter": 1,
+          "earnedSP": 9
+        },
+        {
+          "kind": "upgrade",
+          "item": "damage",
+          "encounter": 1,
+          "earnedSP": 9
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-skirmisher-drill-1",
+          "encounter": 2,
+          "earnedSP": 15
+        },
+        {
+          "kind": "skill",
+          "item": "general-sprint",
+          "encounter": 2,
+          "earnedSP": 15
+        },
+        {
+          "kind": "weapon",
+          "item": "soldier-3",
+          "encounter": 2,
+          "earnedSP": 15
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-skirmisher-roving-1",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "upgrade",
+          "item": "damage",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "upgrade",
+          "item": "fire-rate",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "upgrade",
+          "item": "health",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "upgrade",
+          "item": "reload",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "upgrade",
+          "item": "magazine",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "supply",
+          "item": "medkit",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "upgrade",
+          "item": "fire-rate",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-skirmisher-ready-1",
+          "encounter": 4,
+          "earnedSP": 27
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-skirmisher-volley-1",
+          "encounter": 4,
+          "earnedSP": 27
+        },
+        {
+          "kind": "upgrade",
+          "item": "damage",
+          "encounter": 4,
+          "earnedSP": 27
+        },
+        {
+          "kind": "upgrade",
+          "item": "fire-rate",
+          "encounter": 4,
+          "earnedSP": 27
+        },
+        {
+          "kind": "upgrade",
+          "item": "health",
+          "encounter": 4,
+          "earnedSP": 27
+        },
+        {
+          "kind": "upgrade",
+          "item": "reload",
+          "encounter": 4,
+          "earnedSP": 27
+        },
+        {
+          "kind": "upgrade",
+          "item": "magazine",
+          "encounter": 4,
+          "earnedSP": 27
+        }
+      ],
+      "fights": [
+        {
+          "encounter": 0,
+          "boss": "constable",
+          "startedAt": 0,
+          "earnedSP": 3,
+          "skills": [
+            "soldier-ballistics-1",
+            "soldier-skirmisher-1"
+          ],
+          "weapon": "soldier-0",
+          "startingHealth": 110
+        },
+        {
+          "encounter": 1,
+          "boss": "stitchwright",
+          "startedAt": 1068,
+          "earnedSP": 9,
+          "skills": [
+            "soldier-ballistics-1",
+            "soldier-skirmisher-1",
+            "soldier-skirmisher-advance-1",
+            "soldier-command-1",
+            "soldier-command-2"
+          ],
+          "weapon": "soldier-2",
+          "startingHealth": 55
+        },
+        {
+          "encounter": 2,
+          "boss": "pallbearer",
+          "startedAt": 1300,
+          "earnedSP": 15,
+          "skills": [
+            "soldier-ballistics-1",
+            "soldier-skirmisher-1",
+            "soldier-skirmisher-advance-1",
+            "soldier-command-1",
+            "soldier-command-2",
+            "soldier-skirmisher-drill-1",
+            "general-sprint"
+          ],
+          "weapon": "soldier-3",
+          "startingHealth": 55
+        },
+        {
+          "encounter": 3,
+          "boss": "wire-harpist",
+          "startedAt": 1833,
+          "earnedSP": 21,
+          "skills": [
+            "soldier-ballistics-1",
+            "soldier-skirmisher-1",
+            "soldier-skirmisher-advance-1",
+            "soldier-command-1",
+            "soldier-command-2",
+            "soldier-skirmisher-drill-1",
+            "general-sprint",
+            "soldier-skirmisher-roving-1"
+          ],
+          "weapon": "soldier-3",
+          "startingHealth": 45
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "startedAt": 2280,
+          "earnedSP": 27,
+          "skills": [
+            "soldier-ballistics-1",
+            "soldier-skirmisher-1",
+            "soldier-skirmisher-advance-1",
+            "soldier-command-1",
+            "soldier-command-2",
+            "soldier-skirmisher-drill-1",
+            "general-sprint",
+            "soldier-skirmisher-roving-1",
+            "soldier-skirmisher-ready-1",
+            "soldier-skirmisher-volley-1"
+          ],
+          "weapon": "soldier-3",
+          "startingHealth": 97.5
+        }
+      ],
+      "actions": [],
+      "contacts": [],
+      "steps": [
+        {
+          "encounter": 0,
+          "kind": "soldier-step",
+          "id": 7,
+          "owner": "solo",
+          "x": 701.0272640597502,
+          "y": 737.4488973629473,
+          "toX": 735.4687729726083,
+          "toY": 654.2997394369314,
+          "at": 2,
+          "until": 11,
+          "mode": "passing",
+          "aim": -1.3284119188404584,
+          "radius": 9
+        },
+        {
+          "encounter": 0,
+          "kind": "soldier-step",
+          "id": 272,
+          "owner": "solo",
+          "x": 873.8466232850592,
+          "y": 227.60028701257426,
+          "toX": 783.8466232850592,
+          "toY": 227.60028701257426,
+          "at": 815,
+          "until": 824,
+          "mode": "passing",
+          "aim": 1.4210024197023887,
+          "radius": 9
+        },
+        {
+          "encounter": 1,
+          "kind": "soldier-step",
+          "id": 353,
+          "owner": "solo",
+          "x": 771.0160878758663,
+          "y": 651.6300876175549,
+          "toX": 780.9767472936271,
+          "toY": 562.1829788662745,
+          "at": 1086,
+          "until": 1095,
+          "mode": "advance",
+          "aim": -1.4598951427346982,
+          "radius": 9
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-step",
+          "id": 413,
+          "owner": "solo",
+          "x": 759.0248308739534,
+          "y": 655.0975060421656,
+          "toX": 770.3479221600085,
+          "toY": 565.8126383224469,
+          "at": 1344,
+          "until": 1353,
+          "mode": "advance",
+          "aim": -1.4446499078598078,
+          "radius": 9
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-step",
+          "id": 460,
+          "owner": "solo",
+          "x": 1031.2098045781772,
+          "y": 526.5494427918505,
+          "toX": 952.7213361211398,
+          "toY": 570.5898823817165,
+          "at": 1602,
+          "until": 1611,
+          "mode": "advance",
+          "aim": 2.630261905164275,
+          "radius": 9
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-step",
+          "id": 518,
+          "owner": "solo",
+          "x": 759.0248308739534,
+          "y": 655.0975060421656,
+          "toX": 770.3479221600085,
+          "toY": 565.8126383224469,
+          "at": 1860,
+          "until": 1869,
+          "mode": "advance",
+          "aim": -1.4446499078598078,
+          "radius": 9
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-step",
+          "id": 569,
+          "owner": "solo",
+          "x": 1142.5252435669634,
+          "y": 718.696562191574,
+          "toX": 1083.5174712238415,
+          "toY": 650.7400849204388,
+          "at": 2118,
+          "until": 2127,
+          "mode": "advance",
+          "aim": -2.285828771227143,
+          "radius": 9
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-step",
+          "id": 613,
+          "owner": "solo",
+          "x": 750.2553081753158,
+          "y": 651.8118856100451,
+          "toX": 764.0879005933782,
+          "toY": 562.8812419207309,
+          "at": 2305,
+          "until": 2314,
+          "mode": "advance",
+          "aim": -1.4164892245529597,
+          "radius": 9,
+          "loaded": true,
+          "relay": false
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-step",
+          "id": 722,
+          "owner": "solo",
+          "x": 786.4201726856846,
+          "y": 600.1911160845832,
+          "toX": 790.971481871525,
+          "toY": 510.3062698384284,
+          "at": 2634,
+          "until": 2643,
+          "mode": "advance",
+          "aim": -1.5202046457704768,
+          "radius": 9
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-step",
+          "id": 726,
+          "owner": "solo",
+          "x": 801.5622458622287,
+          "y": 535.8746359006782,
+          "toX": 801.8139624361071,
+          "toY": 445.87498790821974,
+          "at": 2648,
+          "until": 2657,
+          "mode": "advance",
+          "aim": -1.5679994723276771,
+          "radius": 9,
+          "loaded": true,
+          "relay": false
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-step",
+          "id": 730,
+          "owner": "solo",
+          "x": 824.4687040908274,
+          "y": 489.4983724631045,
+          "toX": 812.5300689559755,
+          "toY": 400.29372577294106,
+          "at": 2666,
+          "until": 2675,
+          "mode": "advance",
+          "aim": -1.7038399733976364,
+          "radius": 9,
+          "loaded": true,
+          "relay": true
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-step",
+          "id": 860,
+          "owner": "solo",
+          "x": 1094.0838147012532,
+          "y": 396.57279462645425,
+          "toX": 1006.1779389073822,
+          "toY": 377.27105892956604,
+          "at": 2892,
+          "until": 2901,
+          "mode": "advance",
+          "aim": -2.92544990211964,
+          "radius": 9
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-step",
+          "id": 878,
+          "owner": "solo",
+          "x": 1069.7189626224,
+          "y": 343.3856873162095,
+          "toX": 979.7990433689115,
+          "toY": 339.58988418036427,
+          "at": 2991,
+          "until": 3000,
+          "mode": "advance",
+          "aim": -3.099404549653341,
+          "radius": 9,
+          "loaded": true,
+          "relay": false
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-step",
+          "id": 882,
+          "owner": "solo",
+          "x": 1025.8221022809612,
+          "y": 320.5265089970972,
+          "toX": 935.9028460299903,
+          "toY": 324.33798578073817,
+          "at": 3009,
+          "until": 3018,
+          "mode": "advance",
+          "aim": 3.099230242273294,
+          "radius": 9,
+          "loaded": true,
+          "relay": true
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-step",
+          "id": 962,
+          "owner": "solo",
+          "x": 1052.374953551655,
+          "y": 234.8255619878554,
+          "toX": 968.3858021363842,
+          "toY": 267.16474015525375,
+          "at": 3181,
+          "until": 3190,
+          "mode": "advance",
+          "aim": 2.774049024165678,
+          "radius": 9
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-step",
+          "id": 1033,
+          "owner": "solo",
+          "x": 1037.5775527535188,
+          "y": 233.91923450982927,
+          "toX": 954.3879601063255,
+          "toY": 268.2629628338485,
+          "at": 3334,
+          "until": 3343,
+          "mode": "advance",
+          "aim": 2.7500692519684895,
+          "radius": 9,
+          "loaded": true,
+          "relay": false
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-step",
+          "id": 1037,
+          "owner": "solo",
+          "x": 1002.3736831166984,
+          "y": 243.34274701365598,
+          "toX": 919.9579871750184,
+          "toY": 279.50423291300115,
+          "at": 3352,
+          "until": 3361,
+          "mode": "advance",
+          "aim": 2.7281172407313172,
+          "radius": 9,
+          "loaded": true,
+          "relay": true
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-step",
+          "id": 1139,
+          "owner": "solo",
+          "x": 538.550187343817,
+          "y": 246.66358699854686,
+          "toX": 624.1080529912384,
+          "toY": 274.5894106364952,
+          "at": 3666,
+          "until": 3675,
+          "mode": "advance",
+          "aim": 0.315494844159132,
+          "radius": 9
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-step",
+          "id": 1143,
+          "owner": "solo",
+          "x": 613.0380529912385,
+          "y": 274.5894106364952,
+          "toX": 698.8444700380745,
+          "toY": 301.74192053124443,
+          "at": 3677,
+          "until": 3686,
+          "mode": "advance",
+          "aim": 0.3064695270772109,
+          "radius": 9,
+          "loaded": true,
+          "relay": false
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-step",
+          "id": 1147,
+          "owner": "solo",
+          "x": 652.8214111260249,
+          "y": 320.8052957145115,
+          "toX": 742.4288272059063,
+          "toY": 329.2023775580468,
+          "at": 3695,
+          "until": 3704,
+          "mode": "advance",
+          "aim": 0.09343680739629992,
+          "radius": 9,
+          "loaded": true,
+          "relay": true
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-step",
+          "id": 1234,
+          "owner": "solo",
+          "x": 613.8206177184943,
+          "y": 531.4932147101802,
+          "toX": 675.2267422152203,
+          "toY": 465.69589049184594,
+          "at": 3924,
+          "until": 3933,
+          "mode": "advance",
+          "aim": -0.8199055346560227,
+          "radius": 9
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-step",
+          "id": 1252,
+          "owner": "solo",
+          "x": 643.4544502431094,
+          "y": 559.0059886785951,
+          "toX": 694.5481370654308,
+          "toY": 484.91526613587365,
+          "at": 4020,
+          "until": 4029,
+          "mode": "advance",
+          "aim": -0.9670777560099173,
+          "radius": 9,
+          "loaded": true,
+          "relay": false
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-step",
+          "id": 1307,
+          "owner": "solo",
+          "x": 694.5481370654308,
+          "y": 534.7302661358736,
+          "toX": 736.9891177600352,
+          "toY": 455.36551856064216,
+          "at": 4038,
+          "until": 4047,
+          "mode": "advance",
+          "aim": -1.0797300265771197,
+          "radius": 9,
+          "loaded": true,
+          "relay": true
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-step",
+          "id": 1339,
+          "owner": "solo",
+          "x": 688.6118257879244,
+          "y": 598.4906167473911,
+          "toX": 723.3202259231044,
+          "toY": 515.4525112773346,
+          "at": 4210,
+          "until": 4219,
+          "mode": "advance",
+          "aim": -1.1748853143209812,
+          "radius": 9
+        }
+      ],
+      "restoredBoundaryCount": 0
+    },
+    {
+      "route": "skirmisher-rear",
+      "phase": "defeat",
+      "completedEncounters": 4,
+      "combatSeconds": 160.4,
+      "damageDealt": 31370.145173451583,
+      "damageTaken": 214.8,
+      "endingHealth": 0,
+      "earnedSP": 27,
+      "spentSP": 26,
+      "skills": [
+        "soldier-ballistics-1",
+        "soldier-skirmisher-1",
+        "soldier-skirmisher-rear-1",
+        "soldier-command-1",
+        "soldier-command-2",
+        "soldier-skirmisher-drill-1",
+        "general-sprint",
+        "soldier-skirmisher-roving-1",
+        "soldier-skirmisher-ready-1",
+        "soldier-skirmisher-volley-1"
+      ],
+      "purchases": [
+        {
+          "kind": "skill",
+          "item": "soldier-ballistics-1",
+          "encounter": 0,
+          "earnedSP": 3
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-skirmisher-1",
+          "encounter": 0,
+          "earnedSP": 3
+        },
+        {
+          "kind": "upgrade",
+          "item": "damage",
+          "encounter": 0,
+          "earnedSP": 3
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-skirmisher-rear-1",
+          "encounter": 1,
+          "earnedSP": 9
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-command-1",
+          "encounter": 1,
+          "earnedSP": 9
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-command-2",
+          "encounter": 1,
+          "earnedSP": 9
+        },
+        {
+          "kind": "weapon",
+          "item": "soldier-2",
+          "encounter": 1,
+          "earnedSP": 9
+        },
+        {
+          "kind": "upgrade",
+          "item": "damage",
+          "encounter": 1,
+          "earnedSP": 9
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-skirmisher-drill-1",
+          "encounter": 2,
+          "earnedSP": 15
+        },
+        {
+          "kind": "skill",
+          "item": "general-sprint",
+          "encounter": 2,
+          "earnedSP": 15
+        },
+        {
+          "kind": "weapon",
+          "item": "soldier-3",
+          "encounter": 2,
+          "earnedSP": 15
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-skirmisher-roving-1",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "upgrade",
+          "item": "damage",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "upgrade",
+          "item": "fire-rate",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "upgrade",
+          "item": "health",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "upgrade",
+          "item": "reload",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "upgrade",
+          "item": "magazine",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "supply",
+          "item": "medkit",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "upgrade",
+          "item": "fire-rate",
+          "encounter": 3,
+          "earnedSP": 21
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-skirmisher-ready-1",
+          "encounter": 4,
+          "earnedSP": 27
+        },
+        {
+          "kind": "skill",
+          "item": "soldier-skirmisher-volley-1",
+          "encounter": 4,
+          "earnedSP": 27
+        },
+        {
+          "kind": "upgrade",
+          "item": "damage",
+          "encounter": 4,
+          "earnedSP": 27
+        },
+        {
+          "kind": "upgrade",
+          "item": "fire-rate",
+          "encounter": 4,
+          "earnedSP": 27
+        },
+        {
+          "kind": "upgrade",
+          "item": "health",
+          "encounter": 4,
+          "earnedSP": 27
+        },
+        {
+          "kind": "upgrade",
+          "item": "reload",
+          "encounter": 4,
+          "earnedSP": 27
+        },
+        {
+          "kind": "upgrade",
+          "item": "magazine",
+          "encounter": 4,
+          "earnedSP": 27
+        }
+      ],
+      "fights": [
+        {
+          "encounter": 0,
+          "boss": "constable",
+          "startedAt": 0,
+          "earnedSP": 3,
+          "skills": [
+            "soldier-ballistics-1",
+            "soldier-skirmisher-1"
+          ],
+          "weapon": "soldier-0",
+          "startingHealth": 110
+        },
+        {
+          "encounter": 1,
+          "boss": "stitchwright",
+          "startedAt": 1068,
+          "earnedSP": 9,
+          "skills": [
+            "soldier-ballistics-1",
+            "soldier-skirmisher-1",
+            "soldier-skirmisher-rear-1",
+            "soldier-command-1",
+            "soldier-command-2"
+          ],
+          "weapon": "soldier-2",
+          "startingHealth": 55
+        },
+        {
+          "encounter": 2,
+          "boss": "pallbearer",
+          "startedAt": 1300,
+          "earnedSP": 15,
+          "skills": [
+            "soldier-ballistics-1",
+            "soldier-skirmisher-1",
+            "soldier-skirmisher-rear-1",
+            "soldier-command-1",
+            "soldier-command-2",
+            "soldier-skirmisher-drill-1",
+            "general-sprint"
+          ],
+          "weapon": "soldier-3",
+          "startingHealth": 55
+        },
+        {
+          "encounter": 3,
+          "boss": "wire-harpist",
+          "startedAt": 1823,
+          "earnedSP": 21,
+          "skills": [
+            "soldier-ballistics-1",
+            "soldier-skirmisher-1",
+            "soldier-skirmisher-rear-1",
+            "soldier-command-1",
+            "soldier-command-2",
+            "soldier-skirmisher-drill-1",
+            "general-sprint",
+            "soldier-skirmisher-roving-1"
+          ],
+          "weapon": "soldier-3",
+          "startingHealth": 60
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "startedAt": 2478,
+          "earnedSP": 27,
+          "skills": [
+            "soldier-ballistics-1",
+            "soldier-skirmisher-1",
+            "soldier-skirmisher-rear-1",
+            "soldier-command-1",
+            "soldier-command-2",
+            "soldier-skirmisher-drill-1",
+            "general-sprint",
+            "soldier-skirmisher-roving-1",
+            "soldier-skirmisher-ready-1",
+            "soldier-skirmisher-volley-1"
+          ],
+          "weapon": "soldier-3",
+          "startingHealth": 104
+        }
+      ],
+      "actions": [],
+      "contacts": [],
+      "steps": [
+        {
+          "encounter": 0,
+          "kind": "soldier-step",
+          "id": 7,
+          "owner": "solo",
+          "x": 701.0272640597502,
+          "y": 737.4488973629473,
+          "toX": 735.4687729726083,
+          "toY": 654.2997394369314,
+          "at": 2,
+          "until": 11,
+          "mode": "passing",
+          "aim": -1.3284119188404584,
+          "radius": 9
+        },
+        {
+          "encounter": 0,
+          "kind": "soldier-step",
+          "id": 272,
+          "owner": "solo",
+          "x": 873.8466232850592,
+          "y": 227.60028701257426,
+          "toX": 783.8466232850592,
+          "toY": 227.60028701257426,
+          "at": 815,
+          "until": 824,
+          "mode": "passing",
+          "aim": 1.4210024197023887,
+          "radius": 9
+        },
+        {
+          "encounter": 1,
+          "kind": "soldier-step",
+          "id": 353,
+          "owner": "solo",
+          "x": 771.0160878758663,
+          "y": 651.6300876175549,
+          "toX": 761.0554284581056,
+          "toY": 741.0771963688352,
+          "at": 1086,
+          "until": 1095,
+          "mode": "rear",
+          "aim": -1.4598951427346982,
+          "radius": 9
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-step",
+          "id": 412,
+          "owner": "solo",
+          "x": 759.0248308739534,
+          "y": 655.0975060421656,
+          "toX": 747.7017395878984,
+          "toY": 744.3823737618843,
+          "at": 1344,
+          "until": 1353,
+          "mode": "rear",
+          "aim": -1.4446499078598078,
+          "radius": 9
+        },
+        {
+          "encounter": 2,
+          "kind": "soldier-step",
+          "id": 458,
+          "owner": "solo",
+          "x": 1029.9158929747969,
+          "y": 734.7404353925823,
+          "toX": 1116.0771041069445,
+          "toY": 760.7451598910553,
+          "at": 1602,
+          "until": 1611,
+          "mode": "rear",
+          "aim": -2.848471782478204,
+          "radius": 9
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-step",
+          "id": 514,
+          "owner": "solo",
+          "x": 759.0248308739534,
+          "y": 655.0975060421656,
+          "toX": 747.7017395878984,
+          "toY": 744.3823737618843,
+          "at": 1860,
+          "until": 1869,
+          "mode": "rear",
+          "aim": -1.4446499078598078,
+          "radius": 9
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-step",
+          "id": 568,
+          "owner": "solo",
+          "x": 1271.1346688378771,
+          "y": 675.9655829986948,
+          "toX": 1343.7300549625456,
+          "toY": 729.1624805906624,
+          "at": 2120,
+          "until": 2129,
+          "mode": "rear",
+          "aim": -2.509199702139025,
+          "radius": 9
+        },
+        {
+          "encounter": 3,
+          "kind": "soldier-step",
+          "id": 630,
+          "owner": "solo",
+          "x": 911.2552508380193,
+          "y": 287.73619537837715,
+          "toX": 995.6389641569673,
+          "toY": 256.44100522868166,
+          "at": 2408,
+          "until": 2417,
+          "mode": "rear",
+          "aim": 2.786449771052518,
+          "radius": 9
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-step",
+          "id": 659,
+          "owner": "solo",
+          "x": 759.0248308739534,
+          "y": 655.0975060421656,
+          "toX": 747.7017395878984,
+          "toY": 744.3823737618843,
+          "at": 2506,
+          "until": 2515,
+          "mode": "rear",
+          "aim": -1.4446499078598078,
+          "radius": 9,
+          "loaded": true,
+          "relay": false
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-step",
+          "id": 750,
+          "owner": "solo",
+          "x": 790.434896760034,
+          "y": 661.4654061538942,
+          "toX": 787.823099863509,
+          "toY": 751.4275010437493,
+          "at": 2849,
+          "until": 2858,
+          "mode": "rear",
+          "aim": -1.5417722864989247,
+          "radius": 9,
+          "loaded": true,
+          "relay": false
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-step",
+          "id": 753,
+          "owner": "solo",
+          "x": 813.3959202313059,
+          "y": 689.6892512836822,
+          "toX": 816.0005264712569,
+          "toY": 779.6515546464508,
+          "at": 2867,
+          "until": 2876,
+          "mode": "rear",
+          "aim": -1.5997404373354818,
+          "radius": 9,
+          "loaded": true,
+          "relay": true
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-step",
+          "id": 835,
+          "owner": "solo",
+          "x": 860.165574875295,
+          "y": 650.7526958065572,
+          "toX": 876.8585933482132,
+          "toY": 739.1910536286177,
+          "at": 3150,
+          "until": 3159,
+          "mode": "rear",
+          "aim": -1.7573545900609748,
+          "radius": 9
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-step",
+          "id": 887,
+          "owner": "solo",
+          "x": 898.9268451726339,
+          "y": 645.4135807762367,
+          "toX": 926.0172472848315,
+          "toY": 731.2396264348795,
+          "at": 3192,
+          "until": 3201,
+          "mode": "rear",
+          "aim": -1.8765421238869788,
+          "radius": 9,
+          "loaded": true,
+          "relay": false
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-step",
+          "id": 890,
+          "owner": "solo",
+          "x": 926.0172472848315,
+          "y": 670.4896264348795,
+          "toX": 956.8769578464339,
+          "toY": 755.0335692341961,
+          "at": 3210,
+          "until": 3219,
+          "mode": "rear",
+          "aim": -1.9207834091105922,
+          "radius": 9,
+          "loaded": true,
+          "relay": true
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-step",
+          "id": 968,
+          "owner": "solo",
+          "x": 942.5580455274063,
+          "y": 622.2975358484616,
+          "toX": 982.2294735628032,
+          "toY": 703.0822980108418,
+          "at": 3408,
+          "until": 3417,
+          "mode": "rear",
+          "aim": -2.027278985518693,
+          "radius": 9
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-step",
+          "id": 983,
+          "owner": "solo",
+          "x": 965.1809266509385,
+          "y": 617.373464837464,
+          "toX": 1010.2669765416613,
+          "toY": 695.2660068761679,
+          "at": 3535,
+          "until": 3544,
+          "mode": "rear",
+          "aim": -2.0954994753099796,
+          "radius": 9,
+          "loaded": true,
+          "relay": false
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-step",
+          "id": 986,
+          "owner": "solo",
+          "x": 987.018958025482,
+          "y": 639.1403252761077,
+          "toX": 1033.6080368510707,
+          "toY": 716.1432975186328,
+          "at": 3553,
+          "until": 3562,
+          "mode": "rear",
+          "aim": -2.114905870265487,
+          "radius": 9,
+          "loaded": true,
+          "relay": true
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-step",
+          "id": 1122,
+          "owner": "solo",
+          "x": 1005.193791997963,
+          "y": 589.8781211629635,
+          "toX": 1061.2315281263925,
+          "toY": 660.3037708198925,
+          "at": 3878,
+          "until": 3887,
+          "mode": "rear",
+          "aim": -2.2429102185856533,
+          "radius": 9,
+          "loaded": true,
+          "relay": false
+        },
+        {
+          "encounter": 4,
+          "kind": "soldier-step",
+          "id": 1125,
+          "owner": "solo",
+          "x": 1035.6587077585946,
+          "y": 598.5655210598254,
+          "toX": 1094.8191016345916,
+          "toY": 666.3891732501704,
+          "at": 3896,
+          "until": 3905,
+          "mode": "rear",
+          "aim": -2.288076839029169,
+          "radius": 9,
+          "loaded": true,
+          "relay": true
+        }
+      ],
+      "restoredBoundaryCount": 0
+    }
+  ],
+  "limits": [
+    "Actual native Game inputs, real health/completion, natural rewards/purchases and ordinary clocks. No resource/health/position injection, forced clear, deadline edits, invulnerability or score upload.",
+    "One autonomous steering policy with18px conservative clearance and300px preferred range, while actual game radius is9. Builds have different handling, spending and possible earned budgets. These observations do not rank builds or establish enjoyment/final balance.",
+    "Harness-only wall reflection planning for Marksman; Grenadier uses current boss bearing and visible finite handling authority, not production targeting. All game requests are ordinary inputs. Kicks/catches require real proximity; their absence in a run remains evidence.",
+    "Safe-boundary restore reseeds transport sequence from authoritative ack. Original execution provenance and losses are retained."
+  ]
+}

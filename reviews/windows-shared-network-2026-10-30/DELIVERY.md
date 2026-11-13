@@ -1,0 +1,9 @@
+# Local Windows shared-network review
+
+Extract the entire [ZIP](../../release/Grave_Accord_2026.10.30_Shared_Network_Public_Review.zip) and open Grave Accord.exe. First choose a language, then New here? → Start gently → Play. Local network → Host lets friends join on the same private network using the matching code/password.
+
+Build 2026.10.30-shared-network/protocol 43, source 71fc34cfd88a245d7003f16df7a7dc5e90986410. Equipment and skills show different painted images when no item is selected. The shop and player status use matching equipment-case, coin and field-manual artwork with written labels. Valid room-code lookups and admissions allow a full group sharing one connection to join and retry, while wrong-code guesses keep their separate limit. Opening your own result reuses its first roster page; loading more results keeps one own row, and a mismatched difficulty cannot inject a recent result.
+
+The matching local Windows review verifies all 1,902 files on the original, fresh complete ZIP extraction and independent Japanese-path Windows copy, before and after six packaged offline/LAN diagnostics. Its **848387334-byte ZIP** has SHA256 **4a8f24625c3e8d39327156c6fd9198e67a0341ad8ad509bfab52e8691c7eb0a0**. Font paths 221/276/277 characters pass. [Package status](../../reviews/windows-shared-network-2026-10-30/package-status.json) and [delivery guide](../../reviews/windows-shared-network-2026-10-30/DELIVERY.md) bind the archive and sidecars. These software checks do not establish rendered, human, physical-device, listening or native-language acceptance.
+
+Offline cases cover 210 starts and shields, 67 music decodes, profiles and bundled fonts with no renderer Node/outside network. LAN cases use the bundled authority and two real SDK peers. These local software checks do not establish human/rendered/device/listening/native-language or physical second-machine/WAN acceptance. The public download remains unchanged.

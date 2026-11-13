@@ -1,0 +1,144 @@
+{"handling":"running","actualFirstClear":true,"boss":"chain-colossus","seconds":6.533333333333333,"earnedSP":20}
+✖ actual Heavy running peers earn one clear, acquire with20SP, preserve owner-only flight/updates/removal and end an actual carrier by host authority (7267.6025ms)
+{"handling":"hanging","actualFirstClear":true,"boss":"chain-colossus","seconds":6.533333333333333,"earnedSP":20}
+✖ actual Heavy hanging peers earn one clear, acquire with20SP, preserve owner-only flight/updates/removal and end an actual carrier by host authority (7128.5283ms)
+{"handling":"running","actualFirstClear":true,"boss":"bell-triplets","seconds":5.933333333333334,"earnedSP":20}
+✖ whole optimized public Heavy running earns20SP through an actual Raid clear and operates one paid carrier (6473.0004ms)
+{"handling":"hanging","actualFirstClear":true,"boss":"bell-triplets","seconds":5.933333333333334,"earnedSP":20}
+✖ whole optimized public Heavy hanging earns20SP through an actual Raid clear and operates one paid carrier (6780.2658ms)
+{"handling":"running","actualFirstClear":true,"boss":"chain-colossus","seconds":5.833333333333333,"earnedSP":20}
+✖ whole optimized testing Heavy running earns20SP through an actual Raid clear and operates one paid carrier (6670.2795ms)
+{"handling":"hanging","actualFirstClear":true,"boss":"chain-colossus","seconds":5.833333333333333,"earnedSP":20}
+✖ whole optimized testing Heavy hanging earns20SP through an actual Raid clear and operates one paid carrier (6698.3733ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 0
+ℹ fail 6
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 27764.6562
+
+✖ failing tests:
+
+test at tests\heavy-flak-handling-network.test.ts:1:246
+✖ actual Heavy running peers earn one clear, acquire with20SP, preserve owner-only flight/updates/removal and end an actual carrier by host authority (7267.6025ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(v().phaseEnds-v().tick<=seconds*HZ)
+  
+      at clock (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\heavy-flak-handling-flow.ts:29:215)
+      at heavyFlakHandlingFlow (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\heavy-flak-handling-flow.ts:30:118)
+      at runNextTicks (node:internal/process/task_queues:65:5)
+      at process.processTimers (node:internal/timers:615:9)
+      at async heavyFlakHandlingPeerFlow (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\heavy-flak-handling-peer-flow.ts:17:16)
+      at async TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\heavy-flak-handling-network.test.ts:2:392)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\heavy-flak-handling-network.test.ts:1:246
+✖ actual Heavy hanging peers earn one clear, acquire with20SP, preserve owner-only flight/updates/removal and end an actual carrier by host authority (7128.5283ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(v().phaseEnds-v().tick<=seconds*HZ)
+  
+      at clock (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\heavy-flak-handling-flow.ts:29:215)
+      at heavyFlakHandlingFlow (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\heavy-flak-handling-flow.ts:30:118)
+      at async heavyFlakHandlingPeerFlow (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\heavy-flak-handling-peer-flow.ts:17:16)
+      at async TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\heavy-flak-handling-network.test.ts:2:392)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\heavy-flak-handling-worker.test.ts:1:257
+✖ whole optimized public Heavy running earns20SP through an actual Raid clear and operates one paid carrier (6473.0004ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(v().phaseEnds-v().tick<=seconds*HZ)
+  
+      at clock (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\heavy-flak-handling-flow.ts:29:215)
+      at heavyFlakHandlingFlow (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\heavy-flak-handling-flow.ts:30:118)
+      at async heavyFlakHandlingWorkerFlow (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\heavy-flak-handling-worker-flow.ts:67:20)
+      at async TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\heavy-flak-handling-worker.test.ts:2:503)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\heavy-flak-handling-worker.test.ts:1:257
+✖ whole optimized public Heavy hanging earns20SP through an actual Raid clear and operates one paid carrier (6780.2658ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(v().phaseEnds-v().tick<=seconds*HZ)
+  
+      at clock (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\heavy-flak-handling-flow.ts:29:215)
+      at heavyFlakHandlingFlow (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\heavy-flak-handling-flow.ts:30:118)
+      at async heavyFlakHandlingWorkerFlow (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\heavy-flak-handling-worker-flow.ts:67:20)
+      at async TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\heavy-flak-handling-worker.test.ts:2:503)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\heavy-flak-handling-worker.test.ts:1:257
+✖ whole optimized testing Heavy running earns20SP through an actual Raid clear and operates one paid carrier (6670.2795ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(v().phaseEnds-v().tick<=seconds*HZ)
+  
+      at clock (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\heavy-flak-handling-flow.ts:29:215)
+      at heavyFlakHandlingFlow (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\heavy-flak-handling-flow.ts:30:118)
+      at async heavyFlakHandlingWorkerFlow (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\heavy-flak-handling-worker-flow.ts:67:20)
+      at async TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\heavy-flak-handling-worker.test.ts:2:503)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\heavy-flak-handling-worker.test.ts:1:257
+✖ whole optimized testing Heavy hanging earns20SP through an actual Raid clear and operates one paid carrier (6698.3733ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(v().phaseEnds-v().tick<=seconds*HZ)
+  
+      at clock (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\heavy-flak-handling-flow.ts:29:215)
+      at heavyFlakHandlingFlow (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\heavy-flak-handling-flow.ts:30:118)
+      at async heavyFlakHandlingWorkerFlow (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\heavy-flak-handling-worker-flow.ts:67:20)
+      at async TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\heavy-flak-handling-worker.test.ts:2:503)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

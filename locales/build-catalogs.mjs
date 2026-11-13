@@ -1,10 +1,51 @@
-// Stage 1 data authoring utility. This does not implement the game runtime.
+import {engineerPathwayMessages} from './source/engineer-pathways.mjs';
+import {bardMessages} from './source/bard.mjs';
+import {swordsmanMessages} from './source/swordsman.mjs';
+import {summonerMessages} from './source/summoner.mjs';
+import {wardSkirmishMessages} from './source/ward-skirmish.mjs';
+import {storyReadingMessages} from './source/story-reading.mjs';
+import {lamplightWatchMessages} from './source/lamplight-watch.mjs';
+import {stationSignalsMessages} from './source/station-signals.mjs';
+import {playHubsMessages} from './source/play-hubs.mjs';
+import {sluicePressureMessages} from './source/sluice-pressure.mjs';
+import {bakerOvenMessages} from './source/baker-oven.mjs';
+import {storyCampaignMessages} from './source/story-campaign.mjs';
+import {glassSurgeryMessages} from './source/glass-surgery.mjs';
+import {generalMobilityMessages} from './source/general-mobility.mjs';
+// Rebuild all runtime catalogs from their authored sources.
 import { readFile, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
+import { shieldSpecializationMessages } from './source/shield-specializations.mjs';
+import { fieldJournalMessages } from './source/field-journal.mjs';
+import { stitchworkMessages } from './source/stitchwork.mjs';
 import { english } from './source/en.mjs';
 import additional from './source/additional.mjs';
+import { skillMapMessages } from './source/skill-map.mjs';
+import { earlyWatchMessages } from './source/early-watch.mjs';
 import { expansionMessages } from './source/boss-expansion.mjs';
+import { interfaceMessages } from './source/interface-expansion.mjs';
+import { contractMessages } from './source/contract-ui.mjs';
+import { suppliesMessages } from './source/supplies-ui.mjs';
+import { capacityMessages, playtestMessages } from './source/capacity-ui.mjs';
+import { recoveryMessages } from './source/recovery-ui.mjs';
+import { smallWakesMessages } from './source/small-wakes.mjs';
+import { difficultyRuleMessages } from './source/difficulty-rules.mjs';
+import { classTalentMessages } from './source/class-talents.mjs';
+import { wardenMessages } from './source/warden-patrol.mjs';
+import { crazedHorizonMessages } from './source/crazed-horizon.mjs';
+import { courierRouteMessages } from './source/courier-route.mjs';
+import { ratcatcherMusterMessages } from './source/ratcatcher-muster.mjs';
+import { clerkAppealMessages } from './source/clerk-appeal.mjs';
+import { tollkeeperReturnMessages } from './source/tollkeeper-return.mjs';
+import { marshalMessages } from './source/marshal-chains.mjs';
+import { widowMessages } from './source/widow-gates.mjs';
+import { ambulanceMessages } from './source/ambulance-route.mjs';
+import { matronMessages } from './source/matron-ward.mjs';
+import { moldStillMessages } from './source/mold-still.mjs';
+import { bellReturnChainMessages } from './source/bell-return-chain.mjs';
+import { runtimeExtraMessages } from './source/runtime-extras.mjs';
+import { bossGuideMessages } from './source/boss-guide.mjs';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const catalog = JSON.parse(await readFile(path.join(root, 'content/catalog.json'), 'utf8'));
 const ids = ['en','zh-Hans','zh-Hant','ja','es','fr','de','pt-BR','ru','hi','ar','bn','id','ur','ko'];
@@ -21,7 +62,24 @@ for (const id of ids) {
     keys.forEach((key, index) => { messages[`${group}.${key}`] = values[index]; });
   }
   Object.assign(messages, additional[id]);
-  Object.assign(messages, expansionMessages(id));
+  Object.assign(messages, expansionMessages(id), shieldSpecializationMessages(id),generalMobilityMessages(id),glassSurgeryMessages(id),storyCampaignMessages(id),bakerOvenMessages(id),sluicePressureMessages(id),playHubsMessages(id),stationSignalsMessages(id),lamplightWatchMessages(id),storyReadingMessages(id),wardSkirmishMessages(id));
+  Object.assign(messages, earlyWatchMessages(id));
+  Object.assign(messages, skillMapMessages(id));
+  Object.assign(messages, interfaceMessages(id));
+  Object.assign(messages, contractMessages(id));
+  Object.assign(messages, suppliesMessages(id));
+  Object.assign(messages, capacityMessages(id));
+  Object.assign(messages, playtestMessages(id));
+  messages['skill.soldier-command-1.description']??=messages['template.skill'];
+  messages['weapon.soldier-0.description']??=messages['template.weapon'];
+  Object.assign(messages,bardMessages(id,catalog,messages),swordsmanMessages(id,catalog,messages),summonerMessages(id,catalog,messages));
+  // Added specialization nodes reuse the approved localized base names plus an already
+  // localized focus label. Numerical effect text is formatted from the authored values.
+  for(const skill of catalog.skills)if(skill.sourceSkillId&&skill.sourceSkillId!==skill.id){
+    const base=messages[`skill.${skill.sourceSkillId}.name`],focus=messages[skill.subbranchNameKey];
+    if(!base||!focus)throw Error(`${id}: missing specialization name ${skill.id}`);
+    messages[`skill.${skill.id}.name`]=base+' · '+focus;
+  }
   const generic = key => messages[`template.${key}`];
   for (const x of catalog.weapons) messages[`weapon.${x.id}.description`] = generic('weapon');
   for (const x of catalog.skills) messages[`skill.${x.id}.description`] = generic('skill');
@@ -30,6 +88,16 @@ for (const id of ids) {
   // Plurals are separate typed messages, selected through Intl.PluralRules, never English-only suffixes.
   const plurals = (await import(`./source/plurals.mjs`)).default[id];
   for (const [key, forms] of Object.entries(plurals)) messages[`count.${key}`] = { plural: 'count', forms };
+  // Later gameplay and interface providers also replace older generic text.
+  // Keep them after the base descriptions so a rebuild preserves those replacements.
+  Object.assign(messages, recoveryMessages(id), smallWakesMessages(id), expansionMessages(id),
+    earlyWatchMessages(id), skillMapMessages(id), difficultyRuleMessages(id), classTalentMessages(id, catalog),
+    wardenMessages(id), crazedHorizonMessages(id), courierRouteMessages(id), ratcatcherMusterMessages(id),
+    clerkAppealMessages(id), tollkeeperReturnMessages(id), marshalMessages(id), widowMessages(id),
+    ambulanceMessages(id), matronMessages(id), moldStillMessages(id), bellReturnChainMessages(id),
+    runtimeExtraMessages(id), bossGuideMessages(id), stitchworkMessages(id), fieldJournalMessages(id), shieldSpecializationMessages(id),generalMobilityMessages(id),glassSurgeryMessages(id),storyCampaignMessages(id),bakerOvenMessages(id),sluicePressureMessages(id),playHubsMessages(id),stationSignalsMessages(id),lamplightWatchMessages(id),storyReadingMessages(id),wardSkirmishMessages(id));
+  Object.assign(messages,bardMessages(id,catalog,messages),swordsmanMessages(id,catalog,messages),summonerMessages(id,catalog,messages));
+  Object.assign(messages,engineerPathwayMessages(id));
   const info = catalog.locales.find(x => x.id === id);
   const output = {
     meta: { schemaVersion: 1, locale: id, nativeName: info.name, direction: info.direction,

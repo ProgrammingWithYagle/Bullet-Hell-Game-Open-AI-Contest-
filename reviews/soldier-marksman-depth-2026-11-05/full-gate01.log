@@ -1,0 +1,109 @@
+
+Stage 1 authored content
+{
+  "schemaVersion": 1,
+  "stage": "Stage 1 source validation",
+  "passed": false,
+  "legalMutationSets": 2255,
+  "checks": [
+    {
+      "name": "Complete finite versioned content",
+      "passed": true
+    },
+    {
+      "name": "Twelve classes, 648 specialization nodes, all eighteen grades and ultimates",
+      "passed": true
+    },
+    {
+      "name": "Campaign, raid and uncapped endless budgets",
+      "passed": true
+    },
+    {
+      "name": "Fixed boss grades, independent variants and complete translated tier labels",
+      "passed": true
+    },
+    {
+      "name": "Weapon accounting, rates and finite cooldowns",
+      "passed": true
+    },
+    {
+      "name": "Soldier technique emblems retain exact generated alpha and provenance",
+      "passed": true
+    },
+    {
+      "name": "Engineer technique emblems retain exact generated alpha and provenance",
+      "passed": true
+    },
+    {
+      "name": "Alchemist retained natives, whole-figure crops and independent RGBA delivery",
+      "passed": true
+    },
+    {
+      "name": "Summoner original natives, complete companion poses and exact RGBA delivery",
+      "passed": true
+    },
+    {
+      "name": "Swordsman native crops, complete delivery poses and item RGBA",
+      "passed": true
+    },
+    {
+      "name": "Every legal one-, two- and three-mutation composition",
+      "passed": true
+    },
+    {
+      "name": "Boss attack contracts, transitions, arenas and deadlines",
+      "passed": true
+    },
+    {
+      "name": "Sixty-six distinct bosses, route-specific gauntlets and Endless exclusives",
+      "passed": true
+    },
+    {
+      "name": "The Open Ledger has fifteen encounters, fourteen decisions and three reserved finales",
+      "passed": true
+    },
+    {
+      "name": "Design bible and complete editable tables",
+      "passed": false,
+      "error": "Stale balance evidence\n+ actual - expected\n\n+ '78d78be91de271588e2c3a35baac583f5f2f93412a89160bff3b58832c4c13f7'\n- '87a0e537a0bb27015572bd340c9761b1a05298d8c6250817a25d5011433b144f'\n"
+    },
+    {
+      "name": "Painted arena cover and lava native pixels, transparency and provenance",
+      "passed": true
+    },
+    {
+      "name": "Painted arena worlds match exact normalized native pixels and floor-fit metadata",
+      "passed": true
+    },
+    {
+      "name": "Bellringer eight drawn walking poses and exact retained action RGBA",
+      "passed": true
+    },
+    {
+      "name": "Alchemist eight drawn walking poses and exact retained action RGBA",
+      "passed": true
+    },
+    {
+      "name": "Ranger whole-figure extraction, independent RGBA reconstruction and exact retained natives",
+      "passed": true
+    },
+    {
+      "name": "All fifteen translation catalogs and placeholder parity",
+      "passed": false,
+      "error": "{\n  \"ok\": false,\n  \"localeCount\": 15,\n  \"bossCount\": 66,\n  \"expansionBossCount\": 49,\n  \"keysPerLocale\": 2896,\n  \"totalMessages\": 43440,\n  \"contentCoverageKeys\": 1875,\n  \"translationReview\": \"AI-authored; native-speaker and runtime layout review pending\",\n  \"errors\": [\n    \"en: canonical key set differs from source specification\",\n    \"zh-Hans: untranslated English copy at ui.soldier.caromReady\",\n    \"zh-Hans: untranslated English copy at ui.soldier.lineReady\",\n    \"zh-Hans: untranslated English copy at ui.soldier.pairOpening\",\n    \"zh-Hans: untranslated English copy at ui.soldier.pairHelp\",\n    \"zh-Hans: untranslated English copy at skill.soldier-marksman-carom-1.name\",\n    \"zh-Hans: untranslated English copy at skill.soldier-marksman-carom-1.description\",\n    \"zh-Hans: untranslated English copy at skill.soldier-marksman-line-1.name\",\n    \"zh-Hans: untranslated English copy at skill.soldier-marksman-line-1.description\",\n    \"zh-Hans: untranslated English copy at skill.soldier-marksman-pair-1.name\",\n    \"zh-Hans: untranslated English copy at skill.soldier-marksman-pair-1.description\",\n    \"zh-Hant: untranslated English copy at ui.soldier.caromReady\",\n    \"zh-Hant: untranslated English copy at ui.soldier.lineReady\",\n    \"zh-Hant: untranslated English copy at ui.soldier.pairOpening\",\n    \"zh-Hant: untranslated English copy at ui.soldier.pairHelp\",\n    \"zh-Hant: untranslated English copy at skill.soldier-marksman-carom-1.name\",\n    \"zh-Hant: untranslated English copy at skill.soldier-marksman-carom-1.description\",\n    \"zh-Hant: untranslated English copy at skill.soldier-marksman-line-1.name\",\n    \"zh-Hant: untranslated English copy at skill.soldier-marksman-line-1.description\",\n    \"zh-Hant: untranslated English copy at skill.soldier-marksman-pair-1.name\",\n    \"zh-Hant: untranslated English copy at skill.soldier-marksman-pair-1.description\",\n    \"ja: untranslated English copy at ui.soldier.caromReady\",\n    \"ja: untranslated English copy at ui.soldier.lineReady\",\n    \"ja: untranslated English copy at ui.soldier.pairOpening\",\n    \"ja: untranslated English copy at ui.soldier.pairHelp\",\n    \"ja: untranslated English copy at skill.soldier-marksman-carom-1.name\",\n    \"ja: untranslated English copy at skill.soldier-marksman-carom-1.description\",\n    \"ja: untranslated English copy at skill.soldier-marksman-line-1.name\",\n    \"ja: untranslated English copy at skill.soldier-marksman-line-1.description\",\n    \"ja: untranslated English copy at skill.soldier-marksman-pair-1.name\",\n    \"ja: untranslated English copy at skill.soldier-marksman-pair-1.description\",\n    \"es: untranslated English copy at ui.soldier.caromReady\",\n    \"es: untranslated English copy at ui.soldier.lineReady\",\n    \"es: untranslated English copy at ui.soldier.pairOpening\",\n    \"es: untranslated English copy at ui.soldier.pairHelp\",\n    \"es: untranslated English copy at skill.soldier-marksman-carom-1.name\",\n    \"es: untranslated English copy at skill.soldier-marksman-carom-1.description\",\n    \"es: untranslated English copy at skill.soldier-marksman-line-1.name\",\n    \"es: untranslated English copy at skill.soldier-marksman-line-1.description\",\n    \"es: untranslated English copy at skill.soldier-marksman-pair-1.name\",\n    \"es: untranslated English copy at skill.soldier-marksman-pair-1.description\",\n    \"fr: untranslated English copy at ui.soldier.caromReady\",\n    \"fr: untranslated English copy at ui.soldier.lineReady\",\n    \"fr: untranslated English copy at ui.soldier.pairOpening\",\n    \"fr: untranslated English copy at ui.soldier.pairHelp\",\n    \"fr: untranslated English copy at skill.soldier-marksman-carom-1.name\",\n    \"fr: untranslated English copy at skill.soldier-marksman-carom-1.description\",\n    \"fr: untranslated English copy at skill.soldier-marksman-line-1.name\",\n    \"fr: untranslated English copy at skill.soldier-marksman-line-1.description\",\n    \"fr: untranslated English copy at skill.soldier-marksman-pair-1.name\",\n    \"fr: untranslated English copy at skill.soldier-marksman-pair-1.description\",\n    \"de: untranslated English copy at ui.soldier.caromReady\",\n    \"de: untranslated English copy at ui.soldier.lineReady\",\n    \"de: untranslated English copy at ui.soldier.pairOpening\",\n    \"de: untranslated English copy at ui.soldier.pairHelp\",\n    \"de: untranslated English copy at skill.soldier-marksman-carom-1.name\",\n    \"de: untranslated English copy at skill.soldier-marksman-carom-1.description\",\n    \"de: untranslated English copy at skill.soldier-marksman-line-1.name\",\n    \"de: untranslated English copy at skill.soldier-marksman-line-1.description\",\n    \"de: untranslated English copy at skill.soldier-marksman-pair-1.name\",\n    \"de: untranslated English copy at skill.soldier-marksman-pair-1.description\",\n    \"pt-BR: untranslated English copy at ui.soldier.caromReady\",\n    \"pt-BR: untranslated English copy at ui.soldier.lineReady\",\n    \"pt-BR: untranslated English copy at ui.soldier.pairOpening\",\n    \"pt-BR: untranslated English copy at ui.soldier.pairHelp\",\n    \"pt-BR: untranslated English copy at skill.soldier-marksman-carom-1.name\",\n    \"pt-BR: untranslated English copy at skill.soldier-marksman-carom-1.description\",\n    \"pt-BR: untranslated English copy at skill.soldier-marksman-line-1.name\",\n    \"pt-BR: untranslated English copy at skill.soldier-marksman-line-1.description\",\n    \"pt-BR: untranslated English copy at skill.soldier-marksman-pair-1.name\",\n    \"pt-BR: untranslated English copy at skill.soldier-marksman-pair-1.description\",\n    \"ru: untranslated English copy at ui.soldier.caromReady\",\n    \"ru: untranslated English copy at ui.soldier.lineReady\",\n    \"ru: untranslated English copy at ui.soldier.pairOpening\",\n    \"ru: untranslated English copy at ui.soldier.pairHelp\",\n    \"ru: untranslated English copy at skill.soldier-marksman-carom-1.name\",\n    \"ru: untranslated English copy at skill.soldier-marksman-carom-1.description\",\n    \"ru: untranslated English copy at skill.soldier-marksman-line-1.name\",\n    \"ru: untranslated English copy at skill.soldier-marksman-line-1.description\",\n    \"ru: untranslated English copy at skill.soldier-marksman-pair-1.name\",\n    \"ru: untranslated English copy at skill.soldier-marksman-pair-1.description\",\n    \"hi: untranslated English copy at ui.soldier.caromReady\",\n    \"hi: untranslated English copy at ui.soldier.lineReady\",\n    \"hi: untranslated English copy at ui.soldier.pairOpening\",\n    \"hi: untranslated English copy at ui.soldier.pairHelp\",\n    \"hi: untranslated English copy at skill.soldier-marksman-carom-1.name\",\n    \"hi: untranslated English copy at skill.soldier-marksman-carom-1.description\",\n    \"hi: untranslated English copy at skill.soldier-marksman-line-1.name\",\n    \"hi: untranslated English copy at skill.soldier-marksman-line-1.description\",\n    \"hi: untranslated English copy at skill.soldier-marksman-pair-1.name\",\n    \"hi: untranslated English copy at skill.soldier-marksman-pair-1.description\",\n    \"ar: untranslated English copy at ui.soldier.caromReady\",\n    \"ar: untranslated English copy at ui.soldier.lineReady\",\n    \"ar: untranslated English copy at ui.soldier.pairOpening\",\n    \"ar: untranslated English copy at ui.soldier.pairHelp\",\n    \"ar: untranslated English copy at skill.soldier-marksman-carom-1.name\",\n    \"ar: untranslated English copy at skill.soldier-marksman-carom-1.description\",\n    \"ar: untranslated English copy at skill.soldier-marksman-line-1.name\",\n    \"ar: untranslated English copy at skill.soldier-marksman-line-1.description\",\n    \"ar: untranslated English copy at skill.soldier-marksman-pair-1.name\",\n    \"ar: untranslated English copy at skill.soldier-marksman-pair-1.description\",\n    \"bn: untranslated English copy at ui.soldier.caromReady\",\n    \"bn: untranslated English copy at ui.soldier.lineReady\",\n    \"bn: untranslated English copy at ui.soldier.pairOpening\",\n    \"bn: untranslated English copy at ui.soldier.pairHelp\",\n    \"bn: untranslated English copy at skill.soldier-marksman-carom-1.name\",\n    \"bn: untranslated English copy at skill.soldier-marksman-carom-1.description\",\n    \"bn: untranslated English copy at skill.soldier-marksman-line-1.name\",\n    \"bn: untranslated English copy at skill.soldier-marksman-line-1.description\",\n    \"bn: untranslated English copy at skill.soldier-marksman-pair-1.name\",\n    \"bn: untranslated English copy at skill.soldier-marksman-pair-1.description\",\n    \"id: untranslated English copy at ui.soldier.caromReady\",\n    \"id: untranslated English copy at ui.soldier.lineReady\",\n    \"id: untranslated English copy at ui.soldier.pairOpening\",\n    \"id: untranslated English copy at ui.soldier.pairHelp\",\n    \"id: untranslated English copy at skill.soldier-marksman-carom-1.name\",\n    \"id: untranslated English copy at skill.soldier-marksman-carom-1.description\",\n    \"id: untranslated English copy at skill.soldier-marksman-line-1.name\",\n    \"id: untranslated English copy at skill.soldier-marksman-line-1.description\",\n    \"id: untranslated English copy at skill.soldier-marksman-pair-1.name\",\n    \"id: untranslated English copy at skill.soldier-marksman-pair-1.description\",\n    \"ur: untranslated English copy at ui.soldier.caromReady\",\n    \"ur: untranslated English copy at ui.soldier.lineReady\",\n    \"ur: untranslated English copy at ui.soldier.pairOpening\",\n    \"ur: untranslated English copy at ui.soldier.pairHelp\",\n    \"ur: untranslated English copy at skill.soldier-marksman-carom-1.name\",\n    \"ur: untranslated English copy at skill.soldier-marksman-carom-1.description\",\n    \"ur: untranslated English copy at skill.soldier-marksman-line-1.name\",\n    \"ur: untranslated English copy at skill.soldier-marksman-line-1.description\",\n    \"ur: untranslated English copy at skill.soldier-marksman-pair-1.name\",\n    \"ur: untranslated English copy at skill.soldier-marksman-pair-1.description\",\n    \"ko: untranslated English copy at ui.soldier.caromReady\",\n    \"ko: untranslated English copy at ui.soldier.lineReady\",\n    \"ko: untranslated English copy at ui.soldier.pairOpening\",\n    \"ko: untranslated English copy at ui.soldier.pairHelp\",\n    \"ko: untranslated English copy at skill.soldier-marksman-carom-1.name\",\n    \"ko: untranslated English copy at skill.soldier-marksman-carom-1.description\",\n    \"ko: untranslated English copy at skill.soldier-marksman-line-1.name\",\n    \"ko: untranslated English copy at skill.soldier-marksman-line-1.description\",\n    \"ko: untranslated English copy at skill.soldier-marksman-pair-1.name\",\n    \"ko: untranslated English copy at skill.soldier-marksman-pair-1.description\"\n  ]\n}\n\n\n\n1 !== 0\n"
+    },
+    {
+      "name": "Eight reviewed art proof sets with original provenance",
+      "passed": true
+    },
+    {
+      "name": "Original music and SFX objective review",
+      "passed": true
+    },
+    {
+      "name": "Leaderboard fixtures and bounded score",
+      "passed": true
+    }
+  ]
+}
+Verification failed

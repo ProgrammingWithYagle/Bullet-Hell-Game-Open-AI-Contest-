@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-11-04T02:27:51.611Z",
+  "baseSource": "d7bef25b6afe6a5d57903785bfc4f68eec8d4aac",
+  "beforeFix": {
+    "path": "reviews/engineer-transition-2026-11-04/regression-before-fix02.log",
+    "sha256": "a2edf1607f8a7a838b26d2a9761ce04f62705f3b2353a6061f3bb74bdc813078",
+    "failures": 1,
+    "passedControl": 1
+  },
+  "afterFix": {
+    "path": "reviews/engineer-transition-2026-11-04/focused-after-fix.log",
+    "sha256": "b11a9fad0f2e8be0fda1fdd066175edc304d9c201a3edcea0b79701db856e459"
+  },
+  "excludedFixtureSetupFailure": {
+    "path": "reviews/engineer-transition-2026-11-04/regression-before-fix.log",
+    "reason": "Incorrect projectile fixture; slowdown is produced by hostile zone fields. Retained raw log is not counted as a game regression."
+  },
+  "limits": "A controlled hostile-zone/enemy-completion boundary fixture, separate from actual full combat trials and human balance."
+}

@@ -1,0 +1,35 @@
+{
+  "checkedAt": "2026-11-10T13:09:34.092Z",
+  "passed": true,
+  "currentSource": "205d1bd35db96f0b9a4054514f887e6865b5a660",
+  "rows": [
+    {
+      "operation": "clutch",
+      "mutation": "iron-rain",
+      "actualBaseDamage": 45,
+      "actualDamageMultiplier": 0.756,
+      "actualShotDamage": [
+        34.02,
+        34.02,
+        34.02
+      ],
+      "expectedDamage": 34.02,
+      "failure": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert(s.damage>=r.damage)\n\n    at heavyClutchOperation (C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\tests\\helpers\\heavy-clutch-flow.ts:31:83)\n    at async <anonymous> (C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same\\work\\heavy-clutch-stat-scaling-stage\\reproduce-damage-floor01.mts:14:11)",
+      "allOtherRuntimeBytesUnchanged": true
+    },
+    {
+      "operation": "entry",
+      "mutation": "iron-rain",
+      "actualBaseDamage": 45,
+      "actualDamageMultiplier": 0.756,
+      "actualShotDamage": [
+        34.02
+      ],
+      "expectedDamage": 34.02,
+      "failure": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert(first.damage >= r.damage)\n\n    at heavyTraverseFlow (C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\tests\\helpers\\heavy-traverse-flow.ts:101:3)\n    at async <anonymous> (C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same\\work\\heavy-clutch-stat-scaling-stage\\reproduce-damage-floor01.mts:14:11)",
+      "allOtherRuntimeBytesUnchanged": true
+    }
+  ],
+  "originalFailedPeerMutationSnapshotsRetained": false,
+  "limits": "Controlled actual Game reproduces the invalid base-damage floor. It does not identify the original failed sessions mutation. No helper or gameplay source has yet changed."
+}

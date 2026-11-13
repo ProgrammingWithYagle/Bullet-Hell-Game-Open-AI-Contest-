@@ -1,0 +1,112 @@
+{
+  "checkedAt": "2026-11-09T02:18:52.971Z",
+  "registered": false,
+  "canonicalFilesWritten": false,
+  "onlineProof": false,
+  "countsAs2044Tests": false,
+  "controlledPrototypeOwnershipOnly": true,
+  "sourceBinding": {
+    "createdAt": "2026-11-09T02:05:42.449Z",
+    "baseSourceCommit": "5316ead6b5c573d74d058eba870f18ff4bffc86c",
+    "baseGameSha256": "5d9f127153de5363c6ae160d1fef5dc07a8c3fb05ea5db6377e6d89f6485c59d",
+    "derivedGameSha256": "641549880bca9a6bf48215797ceef8e1655cab9de8d36951c011b849b157962d",
+    "candidateSha256": "c16ea2cf46d6dca33c1def280ace7d7a895993d69713f7dfc3771c26909379da",
+    "canonicalFilesWritten": false,
+    "registered": false,
+    "onlineProof": false,
+    "controlledPrototypeOwnershipOnly": true,
+    "patches": [
+      "Replace only the actual Game controller import with the workspace candidate",
+      "Resolve only the proposed Clutch id to empty effects for controlled ownership; no purchase or progression claim"
+    ]
+  },
+  "cases": [
+    {
+      "name": "lifted walking retains paid recoil through actual body/cover collision",
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert(Math.abs(f.p.y-(600+190*4/30))<1e-6)\n\n    at <anonymous> (C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same\\work\\heavy-clutch-stage\\game-edges02.mts:12:35)\n    at check (C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same\\work\\heavy-clutch-stage\\game-edges02.mts:8:97)\n    at <anonymous> (C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same\\work\\heavy-clutch-stage\\game-edges02.mts:9:1)\n    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)\n    at async node:internal/modules/esm/loader:647:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)"
+    },
+    {
+      "name": "Spade lifts, moves, and replants at its actual new body point; later actual displacement breaks it",
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert(Math.hypot(f.p.x-post.x,f.p.y-post.y)>1)\n\n    at <anonymous> (C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same\\work\\heavy-clutch-stage\\game-edges02.mts:21:2)\n    at check (C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same\\work\\heavy-clutch-stage\\game-edges02.mts:8:97)\n    at <anonymous> (C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same\\work\\heavy-clutch-stage\\game-edges02.mts:16:1)\n    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)\n    at async node:internal/modules/esm/loader:647:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)"
+    },
+    {
+      "name": "required fitting or weapon loss removes the actual base and post-clutch flights without changing recovery",
+      "passed": true,
+      "details": [
+        {
+          "mode": "spade",
+          "loss": "fitting",
+          "actualFlightIdsRemoved": [
+            1,
+            2
+          ],
+          "recovery": 241
+        },
+        {
+          "mode": "spade",
+          "loss": "weapon",
+          "actualFlightIdsRemoved": [
+            1,
+            2
+          ],
+          "recovery": 241
+        },
+        {
+          "mode": "floating",
+          "loss": "fitting",
+          "actualFlightIdsRemoved": [
+            1,
+            2
+          ],
+          "recovery": 241
+        },
+        {
+          "mode": "floating",
+          "loss": "weapon",
+          "actualFlightIdsRemoved": [
+            1,
+            2
+          ],
+          "recovery": 241
+        }
+      ]
+    },
+    {
+      "name": "a post-clutch round keeps its copied emission origin for actual armor dispatch after the owner walks away",
+      "passed": true,
+      "details": {
+        "controlledArmorMultiplier": 0.5,
+        "origins": [
+          {
+            "x": 600,
+            "y": 600
+          },
+          {
+            "x": 592,
+            "y": 600
+          }
+        ],
+        "owner": {
+          "x": 584,
+          "y": 707.6666666666673
+        },
+        "damage": 48.6
+      }
+    },
+    {
+      "name": "holding the lift through all original slots ends the stroke and permits ordinary primary without a delayed C shot",
+      "passed": true,
+      "details": {
+        "lastOriginalSlot": 31,
+        "actualCShots": 1,
+        "ordinaryShotAt": 31,
+        "recovery": 241
+      }
+    }
+  ],
+  "passed": false,
+  "passedCount": 3,
+  "failedCount": 2
+}

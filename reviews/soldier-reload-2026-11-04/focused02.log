@@ -1,0 +1,60 @@
+✔ issued54profiles preserve all twelve disciplines, both HUD layouts, remapped controls and historical local records (4.6499ms)
+✔ issued54records retain exact historical identity while wrong editions and verified claims remain excluded (0.3774ms)
+✔ issued55profiles preserve all twelve disciplines, both HUD layouts, remapped controls and historical local records (4.7439ms)
+✔ issued55records retain exact historical identity while wrong editions and verified claims remain excluded (0.3589ms)
+✖ native Raid tree inspects new techniques/remaps without buying and performs actual guarded purchases (401.239ms)
+✔ owned guide adds exactly one loading input, evolves its meaning and uses actual remapped controls (317.7159ms)
+✔ HUD labels derive round progress and next-round time from authority rather than reusing the burst window (316.9913ms)
+✔ original finite loading sounds are bounded and distinct while the existing footwork stays finite (7.3572ms)
+✔ ordinary Raid's 12 SP buys the fifth action; earned gates keep the evolution later and preserve General (5.0335ms)
+✔ individual rounds use each actual weapon's modified reload clock and stop at four without overflow (47.575ms)
+✔ replacing a normal reload never converts elapsed work into cartridges (5.414ms)
+✔ stop works during recovery, retains inserted rounds and resumes held primary without catch-up shots (4.8492ms)
+✔ manual full Reload interrupts; simultaneous Reload and action2 chooses the full reload (13.07ms)
+✔ base drill stops for a fresh burst or successful step; a rejected step preserves its work (5.4399ms)
+✔ Roving Chamber keeps the same finite drill through burst and all three physical commitments (14.4695ms)
+✔ dodge and actual health loss stop both drills; a fully absorbed hit does not (20.0894ms)
+✔ owner/weapon/phase loss clears unfinished work and an actual ultimate refill ends the drill (5.9055ms)
+✔ walking remains real while sprint is gated; full magazines and unowned requests spend no recovery (5.7732ms)
+✔ issued Breach Cadence still delivers its three scheduled burst rounds during roving loading (4.4187ms)
+✔ public load progress is owner-attached and strips private bookkeeping; stop stays available during recovery (3.3988ms)
+✔ exact issued55 safe ownership migrates without inventing new techniques or online proof (4.8213ms)
+✔ Soldier shows only the implemented authored fork, its General reference and real exclusion navigation (2.0551ms)
+✔ native map and reading view inspect real controls without buying and hide unimplemented routes (424.4523ms)
+✔ owned Soldier controls reveal only the earned action and preserve fold state through reading redraw (808.8764ms)
+✔ normal starting SP purchases through native General reference and guarded specialization confirmation (300.7782ms)
+✔ HUD action is owned, has a finite earned window and never invents an action from inspection (25.9328ms)
+✔ original footwork audio is finite and bounded at common native rates (4.1542ms)
+✔ real peers receive owner-only follow-through and paused host exit clears it for a late observer (592.2365ms)
+✔ normal starting 3 SP acquires a separate action; one real burst earns one vulnerable physical follow-through (24.658ms)
+✔ unearned, expired and directionless follow-through requests spend no opening or recovery (8.3551ms)
+✔ a wall across the whole footprint rejects a step without spending its earned opening (2.1288ms)
+✔ bounds and a crossed lava circle reject the entire step before any recovery is spent (2.834ms)
+✔ new obstruction, displacement and a real dodge cancel unfinished work without an arrival shot or refund (11.7043ms)
+✔ Crossing Advance splits the same damage into departure and re-aimed arrival rounds (2.5886ms)
+✔ Rear Guard intercepts only one visible hostile round and remains vulnerable to the next (2.2144ms)
+✔ Rear Guard cannot intercept through cover or remove another player's shot (1.9509ms)
+✔ the issued Breach Cadence still fires all three committed-aim rounds from the moving owner (2.9087ms)
+✔ disconnect and host end immediately remove windows and motion; reconnect cannot resume it (3.7231ms)
+✔ the early fork uses the same authoritative exclusion for purchases and restored boundaries (0.871ms)
+✔ issued protocol54 preserves legitimate Builder ownership but cannot invent Soldier techniques (4.1539ms)
+✔ new follow-through coexists with the issued moving rally and bounded second resupply (14.0029ms)
+✔ downing immediately cancels unfinished Soldier work, without revival or an arrival shot (1.8125ms)
+ℹ tests 42
+ℹ suites 0
+ℹ pass 41
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6582.9422
+
+✖ failing tests:
+
+test at tests\soldier-reload-ui.test.ts:1:2118
+✖ native Raid tree inspects new techniques/remaps without buying and performs actual guarded purchases (401.239ms)
+  TypeError [Error]: Cannot read properties of null (reading 'click')
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\soldier-reload-ui.test.ts:25:63)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)

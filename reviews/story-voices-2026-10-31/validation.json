@@ -1,0 +1,83 @@
+{
+  "createdAt": "2026-11-01T03:40:22.094Z",
+  "passed": true,
+  "buildId": "2026.10.31-story-voices",
+  "protocol": 47,
+  "contentRevision": "fd913548f72bfaea33f52a16821f786491d647c10677d8c8957b248c2da799db",
+  "runtimeSourceSha256": "f46d8ddfecd25a94c91532e8986c1bd9882993cc1ee75d2c953ace5496717bff",
+  "sourceSnapshotSha256": "035461539f26c1ae7b1b973b9ec37fdeee491c5e5b6f55b3d75327e385500ca2",
+  "fullGate": {
+    "tests": 1110,
+    "passed": 1110,
+    "failed": 0,
+    "checks": [
+      {
+        "name": "Stage 1 authored content",
+        "passed": true,
+        "elapsedMs": 4603
+      },
+      {
+        "name": "Playable main-story word count",
+        "passed": true,
+        "elapsedMs": 363
+      },
+      {
+        "name": "TypeScript",
+        "passed": true,
+        "elapsedMs": 2024
+      },
+      {
+        "name": "Headless rules and real-network integration",
+        "passed": true,
+        "elapsedMs": 72065
+      },
+      {
+        "name": "Production client build",
+        "passed": true,
+        "elapsedMs": 4278
+      },
+      {
+        "name": "Emitted encounter atlas contracts",
+        "passed": true,
+        "elapsedMs": 1081
+      }
+    ],
+    "selectedAtlasContracts": 71
+  },
+  "narrative": {
+    "descriptiveProseExplicitNarration": true,
+    "spokenTurnSpeakerPreserved": true,
+    "changedCurrentlyUsedTurns": {
+      "en": 40,
+      "es": 40,
+      "ar": 40
+    },
+    "openingManuscriptsUnchanged": true,
+    "openingEnglishWords": 3027,
+    "authoredPlayableMainStoryEnglishWords": 5058,
+    "uniquePassages": 104,
+    "target": 5000000,
+    "targetAchieved": false,
+    "semanticTagAlonePreservesBookmarks": true,
+    "wordOrSpeakerChangeRestartsScene": true
+  },
+  "softwareEvidence": {
+    "affectedReaderLanguageHubChecks": 29,
+    "actualHeadingAndArabicDirection": true,
+    "bookmarksAndWordCount": true
+  },
+  "invariants": {
+    "sharedCatalogUnchanged": true,
+    "fixedBossProfilesUnchanged": true,
+    "sharedGameplayAndSkirmishUnchanged": true,
+    "allThreeOpeningPackagesUnchanged": true
+  },
+  "limits": [
+    "No browser automation or rendered/human/native-language/literary/pacing acceptance is claimed.",
+    "A first dialogue revision is not a completed character or antagonist arc.",
+    "Story mastery/economy/node graph, five new classes, voice pilot and expression/action sprites remain unfinished.",
+    "Current playable roster is7; accepted eventual roster is12.",
+    "No production deployment, main merge, paid capacity increase or Windows replacement occurred.",
+    "The full game-development goal remains active."
+  ]
+}

@@ -1,0 +1,574 @@
+{
+  "checkedAt": "2026-10-30T03:42:35.776Z",
+  "passed": true,
+  "label": "source",
+  "scope": "Current staged changes excluding this receipt; bounded pattern scan, not complete secret detection.",
+  "branch": "feat/first-playable-loop",
+  "findings": [],
+  "members": [
+    {
+      "path": ".gitattributes",
+      "bytes": 12577,
+      "sha256": "bdebef61b7f9f46fb37100e0dfec4c371d2ba7cee18c95980a6665bdeb601194",
+      "textScanned": true
+    },
+    {
+      "path": "CHANGELOG.md",
+      "bytes": 156397,
+      "sha256": "124c97e14a2209054e0960b681270a8ff8deb5a99026654a8385e002c383f74c",
+      "textScanned": true
+    },
+    {
+      "path": "README.md",
+      "bytes": 9210,
+      "sha256": "b177042279ddad7a43f217a23c5a9233ce08ea1189415193039da3ab488ceae9",
+      "textScanned": true
+    },
+    {
+      "path": "START_NEXT_CHAT.txt",
+      "bytes": 2616,
+      "sha256": "2db7f6a39464d5d0773784fb6b4e22bbbea30379db51b3ff247c766f206d81c5",
+      "textScanned": true
+    },
+    {
+      "path": "docs/CHECKPOINT_2026_10_25.md",
+      "bytes": 6732,
+      "sha256": "2e883c52c59c7a3cd4201a81be5e87971d1f673d25c52782578e86d0ac423ba9",
+      "textScanned": true
+    },
+    {
+      "path": "docs/DEVELOPMENT_PROGRESS.md",
+      "bytes": 26079,
+      "sha256": "c8797e1c9f2848f8767810cd980ea801533af30a7cfcebf5d667ec57720c3a10",
+      "textScanned": true
+    },
+    {
+      "path": "docs/HANDOFF_NEXT_CHAT.md",
+      "bytes": 682,
+      "sha256": "bf5f96b112c480ce3a5175647881346d1d315fa4b9b0bec51321f09ae7a0bc85",
+      "textScanned": true
+    },
+    {
+      "path": "docs/IMPLEMENTATION_STATE.md",
+      "bytes": 3871,
+      "sha256": "f3fe56dc3332b8fbc6844ec5573686e3759fbca1004d03155528adb850198403",
+      "textScanned": true
+    },
+    {
+      "path": "docs/PUBLIC_POLISH.md",
+      "bytes": 4162,
+      "sha256": "26bd43fa515ccde61a9e15b837bd8021d610ae84b1162c5cd45cd63a26b19a21",
+      "textScanned": true
+    },
+    {
+      "path": "docs/development-work-ledger.json",
+      "bytes": 29817,
+      "sha256": "755f456aba067b385cab694fdba0656087021d8670be5d181410f48444fd5b0c",
+      "textScanned": true
+    },
+    {
+      "path": "docs/wiki/Changelog.md",
+      "bytes": 156397,
+      "sha256": "124c97e14a2209054e0960b681270a8ff8deb5a99026654a8385e002c383f74c",
+      "textScanned": true
+    },
+    {
+      "path": "docs/wiki/Development-Progress.md",
+      "bytes": 26079,
+      "sha256": "c8797e1c9f2848f8767810cd980ea801533af30a7cfcebf5d667ec57720c3a10",
+      "textScanned": true
+    },
+    {
+      "path": "docs/wiki/Getting-Started.md",
+      "bytes": 21452,
+      "sha256": "d8c6d4bd1d13cf610285c5c151a97ece5ef6474ed6b08bf6c04307ba81301da8",
+      "textScanned": true
+    },
+    {
+      "path": "docs/wiki/Home.md",
+      "bytes": 8512,
+      "sha256": "a530badbf6c572eec3beed90c5ea99aa4f765295e50acdd8f27e223e0c018551",
+      "textScanned": true
+    },
+    {
+      "path": "locales/ar.json",
+      "bytes": 202564,
+      "sha256": "8a51402d9660d53b96e4407eeec0d4d4e7de2af6d7c3e3a71ceeccdc93f3d4e8",
+      "textScanned": true
+    },
+    {
+      "path": "locales/bn.json",
+      "bytes": 265105,
+      "sha256": "28641d934cd220101f4712b9a2353a8320da721f1d60cbd8cf1d7e8ce6a1f2d0",
+      "textScanned": true
+    },
+    {
+      "path": "locales/de.json",
+      "bytes": 165548,
+      "sha256": "55f9c91f641033de02c4473d8bdcd80349ae8c2cb172de8a7f435717c7c4d8d9",
+      "textScanned": true
+    },
+    {
+      "path": "locales/en.json",
+      "bytes": 160001,
+      "sha256": "a09ddd1214d6037077b726d2433c24f307feed4dc03275d471ae67c42f3cf9a1",
+      "textScanned": true
+    },
+    {
+      "path": "locales/es.json",
+      "bytes": 173890,
+      "sha256": "182948b48a40a03fe498d815f6d7e1a9c0e7934645c3a9b8a05af6c9e4cb6be1",
+      "textScanned": true
+    },
+    {
+      "path": "locales/fr.json",
+      "bytes": 165825,
+      "sha256": "24f843679caef964a9bd4cec85a0caef3cc3c02a8b84971c853d5244db926450",
+      "textScanned": true
+    },
+    {
+      "path": "locales/hi.json",
+      "bytes": 272192,
+      "sha256": "3c353ac8e282914cb7255ce9e54dce1a8694648db14f42b4cfce1c3377aaf1e7",
+      "textScanned": true
+    },
+    {
+      "path": "locales/id.json",
+      "bytes": 165147,
+      "sha256": "0a0ea9c0a98274f02f87bba970c60744ead207c1990da6c3db33340498d8c29a",
+      "textScanned": true
+    },
+    {
+      "path": "locales/ja.json",
+      "bytes": 172631,
+      "sha256": "8764e7aa38e3af587bb0d3e675ca8a30c50c3422ac546323be778a4d5b5a6d64",
+      "textScanned": true
+    },
+    {
+      "path": "locales/ko.json",
+      "bytes": 168709,
+      "sha256": "a63029597ff19d602ade58e80158cda3d36ba22b28ca6dea04ece1fc51692632",
+      "textScanned": true
+    },
+    {
+      "path": "locales/pt-BR.json",
+      "bytes": 165315,
+      "sha256": "8facff256598422d79a973ea2ad25b80968c0d36d11effd74790bff14b6a7f06",
+      "textScanned": true
+    },
+    {
+      "path": "locales/ru.json",
+      "bytes": 227649,
+      "sha256": "e6b6c3097f3c4d9e3862d49656294c208eab9dff95b5e8d31efb5b90b4c75b6c",
+      "textScanned": true
+    },
+    {
+      "path": "locales/source/home-gallery.mjs",
+      "bytes": 4104,
+      "sha256": "08b7dec31f5be366d9a6191f84fe105db1d6ec5d594d55d03b77c3abba421cec",
+      "textScanned": true
+    },
+    {
+      "path": "locales/source/runtime-extras.mjs",
+      "bytes": 17630,
+      "sha256": "f117e2d11af7bcabc702ad1cf843460075a82fb9b638fd7d9ec47812be39d4e7",
+      "textScanned": true
+    },
+    {
+      "path": "locales/ur.json",
+      "bytes": 205697,
+      "sha256": "c6f2202dcceae1e3f1ee7ffaaeff8fcb2f5508ebbafc9f52a8284bdeea84587d",
+      "textScanned": true
+    },
+    {
+      "path": "locales/zh-Hans.json",
+      "bytes": 154274,
+      "sha256": "8f5eef9ac3d15fe744279187bda16839d7d481b21ab66eae85cbc7decf890f02",
+      "textScanned": true
+    },
+    {
+      "path": "locales/zh-Hant.json",
+      "bytes": 154256,
+      "sha256": "5d644a2557babd8416bc79ac6b4af63daf0ba4244465c21f4544fa58f875d848",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/IMPLEMENTATION.md",
+      "bytes": 2240,
+      "sha256": "4748f38483d648625c87b802901132344a6bf079409f57b892110e54a1b877ae",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/focused-01.log",
+      "bytes": 839,
+      "sha256": "d19f56184c1386cbb0ebbc70ce73e825a3d744e6ee9254a8217b03fa534dfa6a",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/focused-02.log",
+      "bytes": 1376,
+      "sha256": "9723ea22f8d90604fb3fc95ccab7165ecda64a127d477cb17bfc83801b917b44",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/freeze-review.mjs",
+      "bytes": 10582,
+      "sha256": "d31172cf81f186681fa08c8dbe6503ea1ff70d52e876f6ac841d83bb79b8a435",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/full-gate-01.log",
+      "bytes": 3285,
+      "sha256": "877c01ffed6b03c329e52bc73a11a047022a10ad1cd48bfe1a8e74febbef6fd6",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/full-gate-02.log",
+      "bytes": 108593,
+      "sha256": "2c64300a1b93cc3994bbf2d1b7d8c4e699b028377b21bfcf3b74df397be661de",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/full-gate-03.log",
+      "bytes": 2211,
+      "sha256": "e23d485292fb920ef919a2d209dd8f7ead054fff1c69b14b9c4a5bff6ca4ba8b",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/full-gate-04.log",
+      "bytes": 107786,
+      "sha256": "f15bd7870cab40516d89d13bcdaff0a3ae6f0cf3a222b7884f7fd446cf537057",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/gate-01/alchemist-lab-2026-10-27--art-verification.json",
+      "bytes": 3238,
+      "sha256": "1a34801387c735f1fa36eeeebd11b7493d6adc50dc4adc4dd6b5f0e26c1c74ea",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/gate-01/gate-preservation.json",
+      "bytes": 34572,
+      "sha256": "aee26b624ee7a241a69270231d7e8e8e141b6b07d1653b61da417584ce47fee5",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/gate-01/resonant-tolls-2026-10-27--art-verification.json",
+      "bytes": 3235,
+      "sha256": "9097860a723322f04214cfbc4fee897d38751f1ac681eac20cc8c200706b7c9b",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/gate-01/resonant-tolls-2026-10-27--emitted-atlases-public.json",
+      "bytes": 26468,
+      "sha256": "2cf44dc5d75919502d02ba95432c046fba6601aeac88c687b097ddb7d097094f",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/gate-01/resonant-tolls-2026-10-27--emitted-atlases-testing.json",
+      "bytes": 25964,
+      "sha256": "3e1480a6a9549fc9be87b90acdbfb5694fc6d625a6e5f2cd1a7277a3bbabc6c0",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/gate-01/runtime-verification.json",
+      "bytes": 230,
+      "sha256": "a6ed489c3ae9b61a6bbfd802aef88ebdc7fca63951b7b158f06be67fa33acc29",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/gate-01/small-wakes-2026-10-26--art-verification.json",
+      "bytes": 2964,
+      "sha256": "c06f2b3d1584d70e71407e4b4a238a210a442685e829ac424fb356bcbab2e77d",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/gate-01/stage1-validation.json",
+      "bytes": 3159,
+      "sha256": "37fcfc8fea7d121f8adb3376711975244fd601468b457445873aa0a2c63c3c5b",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/gate-01/warden-patrol-2026-10-25--art-verification.json",
+      "bytes": 762,
+      "sha256": "abf1b97cf81c99f619d19def80a83d0d2bbe8098d924e5287328d8702dd0813f",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/gate-02/alchemist-lab-2026-10-27--art-verification.json",
+      "bytes": 3238,
+      "sha256": "1a34801387c735f1fa36eeeebd11b7493d6adc50dc4adc4dd6b5f0e26c1c74ea",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/gate-02/gate-preservation.json",
+      "bytes": 34572,
+      "sha256": "621e511b493fd555bc306982f7083f756e45396437d2068918ee80b2e35f8da5",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/gate-02/resonant-tolls-2026-10-27--art-verification.json",
+      "bytes": 3235,
+      "sha256": "9097860a723322f04214cfbc4fee897d38751f1ac681eac20cc8c200706b7c9b",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/gate-02/resonant-tolls-2026-10-27--emitted-atlases-public.json",
+      "bytes": 26468,
+      "sha256": "2cf44dc5d75919502d02ba95432c046fba6601aeac88c687b097ddb7d097094f",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/gate-02/resonant-tolls-2026-10-27--emitted-atlases-testing.json",
+      "bytes": 25964,
+      "sha256": "3e1480a6a9549fc9be87b90acdbfb5694fc6d625a6e5f2cd1a7277a3bbabc6c0",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/gate-02/runtime-verification.json",
+      "bytes": 457,
+      "sha256": "1a4169552141da0e703946fc20dc335a5270b5aaaee92651f1a22647080ed647",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/gate-02/small-wakes-2026-10-26--art-verification.json",
+      "bytes": 2964,
+      "sha256": "92aed9c15f4dd5ea8319bea70f8c6af8db11deb6897c8ff23d88ca9d2d5b0220",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/gate-02/stage1-validation.json",
+      "bytes": 1978,
+      "sha256": "9ef6e8c147e15c0b854fafd2d06ed41a1cb8ef0602e7556fdb13f37f1a4cca76",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/gate-02/warden-patrol-2026-10-25--art-verification.json",
+      "bytes": 762,
+      "sha256": "228190144230452adbc835b963396f21391691da60403440725c893a91315daf",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/gate-03/alchemist-lab-2026-10-27--art-verification.json",
+      "bytes": 3238,
+      "sha256": "1a34801387c735f1fa36eeeebd11b7493d6adc50dc4adc4dd6b5f0e26c1c74ea",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/gate-03/gate-preservation.json",
+      "bytes": 34572,
+      "sha256": "163c8a6081138eecd8cc59e6cb51360622b20673687d67ad12611f9a1ce6fd67",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/gate-03/resonant-tolls-2026-10-27--art-verification.json",
+      "bytes": 3235,
+      "sha256": "9097860a723322f04214cfbc4fee897d38751f1ac681eac20cc8c200706b7c9b",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/gate-03/resonant-tolls-2026-10-27--emitted-atlases-public.json",
+      "bytes": 26468,
+      "sha256": "2cf44dc5d75919502d02ba95432c046fba6601aeac88c687b097ddb7d097094f",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/gate-03/resonant-tolls-2026-10-27--emitted-atlases-testing.json",
+      "bytes": 25964,
+      "sha256": "3e1480a6a9549fc9be87b90acdbfb5694fc6d625a6e5f2cd1a7277a3bbabc6c0",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/gate-03/runtime-verification.json",
+      "bytes": 303,
+      "sha256": "ac928ca6977b02d1bacaa51b5eaf81fffb7237bdd329122804281a45e369b73c",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/gate-03/small-wakes-2026-10-26--art-verification.json",
+      "bytes": 2964,
+      "sha256": "c06f2b3d1584d70e71407e4b4a238a210a442685e829ac424fb356bcbab2e77d",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/gate-03/stage1-validation.json",
+      "bytes": 1978,
+      "sha256": "9ef6e8c147e15c0b854fafd2d06ed41a1cb8ef0602e7556fdb13f37f1a4cca76",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/gate-03/warden-patrol-2026-10-25--art-verification.json",
+      "bytes": 762,
+      "sha256": "abf1b97cf81c99f619d19def80a83d0d2bbe8098d924e5287328d8702dd0813f",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/gate-04/alchemist-lab-2026-10-27--art-verification.json",
+      "bytes": 3238,
+      "sha256": "1a34801387c735f1fa36eeeebd11b7493d6adc50dc4adc4dd6b5f0e26c1c74ea",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/gate-04/gate-preservation.json",
+      "bytes": 34570,
+      "sha256": "ac25a7cb50ca06af7487437f549677452e9404815ee32300acc0b42c838e0b12",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/gate-04/resonant-tolls-2026-10-27--art-verification.json",
+      "bytes": 3235,
+      "sha256": "9097860a723322f04214cfbc4fee897d38751f1ac681eac20cc8c200706b7c9b",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/gate-04/resonant-tolls-2026-10-27--emitted-atlases-public.json",
+      "bytes": 26468,
+      "sha256": "2cf44dc5d75919502d02ba95432c046fba6601aeac88c687b097ddb7d097094f",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/gate-04/resonant-tolls-2026-10-27--emitted-atlases-testing.json",
+      "bytes": 25964,
+      "sha256": "3e1480a6a9549fc9be87b90acdbfb5694fc6d625a6e5f2cd1a7277a3bbabc6c0",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/gate-04/runtime-verification.json",
+      "bytes": 315537,
+      "sha256": "62dc3b70340917a4e9aab0fe02a029fe5c84943fc6f6f23f54838afef74bf836",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/gate-04/small-wakes-2026-10-26--art-verification.json",
+      "bytes": 2964,
+      "sha256": "fa29c4c29b5fff1f9e8b97c4d41e4997f4bce3611905d0b577aa2bf97226887a",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/gate-04/stage1-validation.json",
+      "bytes": 1978,
+      "sha256": "9ef6e8c147e15c0b854fafd2d06ed41a1cb8ef0602e7556fdb13f37f1a4cca76",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/gate-04/warden-patrol-2026-10-25--art-verification.json",
+      "bytes": 762,
+      "sha256": "a1a7508fce1179bf8a17defbcbaafcae59190fe721b7b0e1da3a4a708e84b220",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/launch-preview.ps1",
+      "bytes": 3806,
+      "sha256": "e063ef9860809bf6930e77b44cb4d8aa03e1e41c30841854ea7f352a4eabc592",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/local-verification.json",
+      "bytes": 881,
+      "sha256": "3cf5046d2978aa632bb40b845a317bc13b49dc700fa38dd661199e0079e3781b",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/previous-metadata-ci.json",
+      "bytes": 1026,
+      "sha256": "c24b410458d9434647132bc71ff1f36db3cecd046b2768b1971de784c8c2df34",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/publish-wiki.mjs",
+      "bytes": 2907,
+      "sha256": "4dacffa68c00b3604a64c5215c096d4111d9c0595c93d3057c28cab18f224dec",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/review-inputs.mjs",
+      "bytes": 2462,
+      "sha256": "22d838a5c49490312fca64aea9a7e40ddaf8090c3d1d9dae1921e2e649543cab",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/run-gate.mjs",
+      "bytes": 3314,
+      "sha256": "c97af7dc2ff96bb03833c0b98c4dda1d9fd5a8ba76ed7f2b8eb35d66b5ffcad3",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/scan-export.mjs",
+      "bytes": 1670,
+      "sha256": "ed93f488936ebf2b5e9f012ed2447a587c628bf06a9d1b6dd5b13f216c0f9dcf",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/smoke-preview.mts",
+      "bytes": 11735,
+      "sha256": "6540cbf6fae6adabdcae830bcf9bfb8d2641f9c925b7a1a25969cb123fa84fc2",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/verify-local.mjs",
+      "bytes": 1819,
+      "sha256": "a3d01f4dfd47e1e37d694e9722f0c0794a80a075773ff0de2ddfa6180a1159ce",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/home-gallery-2026-10-29/verify-wiki.mjs",
+      "bytes": 1654,
+      "sha256": "a672e3ba18af03c93c4daf72348d87a2ffdf7e99af0c141abb0bdd10f656a951",
+      "textScanned": true
+    },
+    {
+      "path": "src/client/main.ts",
+      "bytes": 51580,
+      "sha256": "3aba4e38c204f38931573f04f360c633741b602e523582b1490d4f875b1435b7",
+      "textScanned": true
+    },
+    {
+      "path": "src/client/ui/home-gallery.css",
+      "bytes": 2208,
+      "sha256": "4a908be48413d2313377ec40925a7320b13b7a663dd13351fe6949162ca24203",
+      "textScanned": true
+    },
+    {
+      "path": "src/client/ui/home-gallery.ts",
+      "bytes": 4545,
+      "sha256": "d1116cabfff6b25b132e2c2df46b448aca70b099cdf855b0c566fe820c90e8b6",
+      "textScanned": true
+    },
+    {
+      "path": "src/client/ui/setup.ts",
+      "bytes": 33436,
+      "sha256": "fe3524b523df830de640e6e068df7b6755e67fc646ea8cab07e6ba197e25c6dd",
+      "textScanned": true
+    },
+    {
+      "path": "src/shared/development-progress.json",
+      "bytes": 34813,
+      "sha256": "2456e10c388bad3c4abf8af0ce16aa96934edae3f981884aacf96756dc92307d",
+      "textScanned": true
+    },
+    {
+      "path": "src/shared/update-history.json",
+      "bytes": 182500,
+      "sha256": "b8b61b6422c6a53cc80f0b993f87218a48a32503e1fca0dcacd79121285873d8",
+      "textScanned": true
+    },
+    {
+      "path": "tests/expedition-presentation.test.ts",
+      "bytes": 16657,
+      "sha256": "2ef2d7adcc68df5a8fd6bb68c68212e69ac9309e910ca0362e4309c81c47aaaa",
+      "textScanned": true
+    },
+    {
+      "path": "tests/helpers/menu-fixture.ts",
+      "bytes": 3562,
+      "sha256": "91f9c722583545de3fd0b7996943d9a67a893568c696331438873102ab8250a5",
+      "textScanned": true
+    },
+    {
+      "path": "tests/home-gallery.test.ts",
+      "bytes": 4521,
+      "sha256": "030daeab656f0e4a9c59041dde786f4f5346119a408603e0288e0396411dd439",
+      "textScanned": true
+    }
+  ]
+}

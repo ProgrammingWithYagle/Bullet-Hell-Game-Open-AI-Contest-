@@ -1,0 +1,73 @@
+{
+  "sourceCommit": "33623246e9b62e3cbb7efc965ab0f0c01489bd61",
+  "buildId": "2026.10.28-portable-review",
+  "sourceLocalAndCIPassed": true,
+  "allThreePackageByteChecksPassed": true,
+  "archive": {
+    "path": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\release\\Grave_Accord_2026.10.28_Public_Review.zip",
+    "bytes": 831669696,
+    "sha256": "a4231b5d7f4e8faf4c6506a749faa641415f6be1b77e787f8927365ad57aa182"
+  },
+  "manifestSha256": "99bc98b02507b1f9a3686e5fb2f99e0e4f104702fe7205e829ab78b2d0ca84e2",
+  "copies": [
+    {
+      "copy": "original",
+      "reports": [
+        {
+          "kind": "smoke",
+          "path": "reviews/portable-review-2026-10-28/native-original-01-smoke.json",
+          "sha256": "67b68bcb42980a88f483e5701ccb203dc269d39e579e00258128cf1940efedff",
+          "passed": true,
+          "error": null
+        },
+        {
+          "kind": "lan",
+          "path": "reviews/portable-review-2026-10-28/native-original-01-lan.json",
+          "sha256": "1c9b904bc57023b8a6c3527add4c2184a9c04e4f90b89bcb53ec2f211a0fd171",
+          "passed": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "copy": "fresh-extraction",
+      "reports": [
+        {
+          "kind": "smoke",
+          "path": "reviews/portable-review-2026-10-28/native-extracted-01-smoke.json",
+          "sha256": "1c8783aa1abcd4926fc17b0a304b94b672f7550aeee3758238544145f4df0f49",
+          "passed": false,
+          "error": "NetworkError: A network error occurred."
+        },
+        {
+          "kind": "lan",
+          "path": "reviews/portable-review-2026-10-28/native-extracted-01-lan.json",
+          "sha256": "9d955d82111f50363efbac7fd816c2c388ff72f065d1755487cb2a6b27b8817c",
+          "passed": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "copy": "ordinary-copy",
+      "reports": [
+        {
+          "kind": "smoke",
+          "path": "reviews/portable-review-2026-10-28/native-copied-01-smoke.json",
+          "sha256": "1c8783aa1abcd4926fc17b0a304b94b672f7550aeee3758238544145f4df0f49",
+          "passed": false,
+          "error": "NetworkError: A network error occurred."
+        },
+        {
+          "kind": "lan",
+          "path": "reviews/portable-review-2026-10-28/native-copied-01-lan.json",
+          "sha256": "e6aae456a71672e8c39509a709816b76ecd5621520912a950e03c6b6ce6bbaf1",
+          "passed": true,
+          "error": null
+        }
+      ]
+    }
+  ],
+  "portableAccepted": false,
+  "reason": "Original native offline check passed, but both deeper copies fail local font loading. All three native LAN fixtures pass. Font paths are222/265/262characters, with identical bytes. The next source fixes protocol loading; this issued package/archive remains preserved and unaccepted."
+}

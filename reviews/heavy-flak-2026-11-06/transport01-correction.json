@@ -1,0 +1,15 @@
+{
+  "checkedAt": "2026-11-07T16:50:53.010Z",
+  "original": {
+    "pass": 10,
+    "fail": 2,
+    "cancelled": 0,
+    "skipped": 0,
+    "allFourRealPeerCasesPassed": true
+  },
+  "cause": "The new Solo fixture treated the issued endRun message as a generic host end. It calls Game.endEndless and deliberately does not end ordinary Short runs.",
+  "correction": "Whole-worker cases now exercise actual natural fuse expiry after flight pause. Real-peer cases retain the actual endMatch/host-exit proof. A separate helper type now exposes absent Session views as undefined.",
+  "gameplayChanged": false,
+  "deadlinesOrTimeoutsChanged": false,
+  "sourceWorkerPatched": false
+}

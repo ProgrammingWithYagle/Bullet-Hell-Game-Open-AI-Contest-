@@ -1,0 +1,47 @@
+✔ 21 transformations are legal six-SP depth-three purchases with stable IDs and prerequisites (7.6632ms)
+✔ Breach Cadence emits three real delayed shots on the locked aim with unchanged damage budget (13.5012ms)
+✔ Marching Colors follows authority and prediction beyond the original rally location (8.7814ms)
+✔ Supply Line has a weaker field and refills only present allies a second time at midpoint (7.9237ms)
+✔ Split Suppression creates two narrow cones, a central gap, real slow and the same total pellet damage (2.2257ms)
+✔ Shoulder Mantlet follows aim, takes finite projectile damage and trades body armor for its front wall (2.3749ms)
+✔ Furnace Vents schedules short-lived rings only during Overdrive (13.0156ms)
+✔ Cornerstone creates two angled half-length finite walls with matching swept collision (2.3841ms)
+✔ Wake Guard leaves a two-second departure wall without replacing the ordinary Q wall (3.5626ms)
+✔ Procession follows its owner, admits late allies once and cannot refill shields by leaving and returning (7.843ms)
+✔ Field Triage anchors healing on the injured ally and retains reduced radius while moving (1.1597ms)
+✔ Serum Relay heals and cleanses three unique targets through a chain beyond the old radius (0.8189ms)
+✔ Second Breath spreads healing into three pulses and still gives Normal 25% revival with none on Hard (9.5485ms)
+✔ Ward Echo delivers 40 then 25 at a locked point while keeping the finite allied shield (1.3076ms)
+✔ Twin Sigils makes two smaller centers with half burst damage and separate persistent slow regions (1.4643ms)
+✔ Orbit Requiem uses three actual moving pulse centers and splits the original pulse budget (3.4285ms)
+✔ Crossfire Pair halves each turret health and damage and assigns distinct near/far target preferences (1.8966ms)
+✔ Return Current stores only absorbed HP damage and releases at most 72 nearby damage once (6.3676ms)
+✔ Foundry Relay is a finite moving siege body with 160 base health and 160 pixels-per-second speed (2.3724ms)
+✔ Decoy Veil attracts actual targeting and absorbs projectiles without entering the player roster (1.1768ms)
+✔ Aftercut splits actual path damage 60/40 and holds the delayed sweep at the original path (0.924ms)
+✔ Unwritten Traps trades duration and a charge for three real departure pulses (4.2058ms)
+✔ scheduled talent damage and cues stop when their owner is down or the encounter ends (1.9419ms)
+✖ issued protocol-17 local saves retain skill node ownership and progression under protocol 18 (1.6201ms)
+✔ every talent has authored names and behavior help in all fifteen locales (18.1042ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 24
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 947.1373
+
+✖ failing tests:
+
+test at tests\class-talents.test.ts:1:16228
+✖ issued protocol-17 local saves retain skill node ownership and progression under protocol 18 (1.6201ms)
+  Error: invalidBuild
+      at Game.restoreOffline (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\src\shared\game.ts:2598:13)
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\class-talents.test.ts:195:22)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)

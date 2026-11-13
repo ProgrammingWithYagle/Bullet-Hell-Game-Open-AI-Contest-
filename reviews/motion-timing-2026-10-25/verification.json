@@ -1,0 +1,94 @@
+{
+  "passed": true,
+  "buildId": "2026.10.25-motion-timing",
+  "protocol": 13,
+  "sourceSnapshotSha256": "75fffe753ded3b52742c2f7c6cc7822f6f4b6084604d15cf497d149bbee8ac71",
+  "runtimeSourceSha256": "b50f52c83ae491452cf88b4692829eb2ea8f287fc8131b405d61c7f0f4b22a33",
+  "fullPipeline": {
+    "tests": 309,
+    "failed": 0,
+    "outputFiles": 1582,
+    "logSha256": "678dc0c5c55c3e38251e7b91f98a811945a99069dbb1b6e80261ae62ec72a7fd"
+  },
+  "before": {
+    "sourceCommit": "3f27a9bc1186342df152885ec5129aaf5a000898",
+    "failingRegressions": 2,
+    "observedDodgeFrames": [
+      0,
+      2,
+      3,
+      5
+    ],
+    "expectedDodgeFrames": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "chargeFailure": "A real Rescue Charge still displayed frame zero where proportional ten-tick timing required frame one.",
+    "logSha256": "544e1f70a7f829b09c567dbd3d76f4dbe51a27b3998890edcbe7393557e431d5"
+  },
+  "after": {
+    "focusedTests": 27,
+    "newTimingTests": 5,
+    "failed": 0,
+    "observedDodgeFrames": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "drawingFrequencyFixtureHz": 60,
+    "authorityPatchFrequencyFixtureHz": 20,
+    "maximumDrawingLeadMs": 50,
+    "maximumDrawingLeadTicks": 1.5,
+    "actualRescueChargeTicks": 10,
+    "ordinaryDodgeTicks": 7,
+    "reducedMotionStable": true,
+    "viewUnchangedByDrawing": true,
+    "duplicateStallResetAndNonfiniteTimeChecks": true,
+    "logSha256": "1e890b47981eee42627ac912fe36e4a7215fa5b76f010224f7a43c1c28656063"
+  },
+  "preservedArtProofs": [
+    {
+      "path": "reviews/survivor-actions-2026-10-24/verification.json",
+      "sha256": "3660e010a78032ec97de7dc045d03a09bf4a50c3a28bfd6bf359a27d2dd5e887"
+    },
+    {
+      "path": "reviews/engineer-actions-2026-10-24/verification.json",
+      "sha256": "3f394dd4c4bec60ae07678a96e8ef9e6d1faeb724cdc84707b9de7d4b07016ae"
+    },
+    {
+      "path": "reviews/mage-actions-2026-10-24/verification.json",
+      "sha256": "56e00f8524fa19229d96124cb4ef1f0b6b555e57ae268a0d1b5bedbf09388406"
+    },
+    {
+      "path": "reviews/heavy-actions-2026-10-24/verification.json",
+      "sha256": "3943b25e5e390f4bb213fff913a23da93d29f018daf38a0cd58d878e7aef65a0"
+    },
+    {
+      "path": "reviews/assassin-actions-2026-10-24/verification.json",
+      "sha256": "31d07eb798ee7455701af8bf189baa2a62034c7c8c9ca868109cb5831640ea24"
+    },
+    {
+      "path": "reviews/soldier-actions-2026-10-24/verification.json",
+      "sha256": "1f10e895546adce0ec4b6e6e21ae4e23bede0eb12712a57db5931e384417b552"
+    },
+    {
+      "path": "reviews/medic-actions-2026-10-24/verification.json",
+      "sha256": "4a2538a584ee92d5e00ba95fb55ab5d9d6c5a62428e9df11a4eb9ed3a5dd641d"
+    }
+  ],
+  "wikiImages": 17,
+  "wikiImageManifestBytesUnchanged": true,
+  "limits": [
+    "Software frame-clock and real-input tests, not rendered device FPS or human animation acceptance.",
+    "Interpolation selects frames inside authority-selected actions and never advances gameplay state.",
+    "The Windows archive and one-hour frozen endurance report retain their earlier source identities.",
+    "Special-ability/boss art, balance, hosted recovery/ranking and final release acceptance remain incomplete."
+  ]
+}

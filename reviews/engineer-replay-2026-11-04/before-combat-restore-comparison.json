@@ -1,0 +1,38 @@
+{
+  "checkedAt": "2026-11-04T02:00:57.765Z",
+  "sourceCommit": "7f5cdac6e84524a391fd96675c857a21d35dd9c7",
+  "difficulty": "normal",
+  "comparisons": [
+    {
+      "route": "machinery",
+      "restoredBoundaryCount": 18,
+      "exactRunOutcomeAndActionsMatch": false,
+      "mismatches": [
+        "combatSeconds",
+        "damageDealt",
+        "damageTaken",
+        "fights"
+      ]
+    },
+    {
+      "route": "traps",
+      "restoredBoundaryCount": 18,
+      "exactRunOutcomeAndActionsMatch": true,
+      "mismatches": []
+    },
+    {
+      "route": "builder",
+      "restoredBoundaryCount": 18,
+      "exactRunOutcomeAndActionsMatch": false,
+      "mismatches": [
+        "combatSeconds",
+        "damageDealt",
+        "damageTaken",
+        "endingHealth",
+        "fights"
+      ]
+    }
+  ],
+  "passed": false,
+  "limits": "Same autonomous policy/seed/map, exact checkpoint restoration at safe phases, actual combat. A mismatch is a replay investigation lead; this is not human or final-balance acceptance."
+}

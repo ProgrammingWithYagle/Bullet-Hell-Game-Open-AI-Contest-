@@ -1,0 +1,27 @@
+✔ all six opening arenas show the real bounds, cover, spawns and difficulty hazards (20.1348ms)
+✔ welcome, map legends and difficulty explanations cover all fifteen supported locales (1.6472ms)
+✔ mode previews describe all five authored run lengths and each difficulty has a distinct non-fallback symbol (0.7069ms)
+✔ compiled public setup shares the clear first-run flow and preserves its audience boundary (229.4714ms)
+✖ compiled testing setup shares the clear first-run flow and preserves its audience boundary (135.4996ms)
+✔ actual armory presents all seven classes' existing names and prices while inspection and unaffordable buys spend nothing (114.2662ms)
+✔ catalytic warnings retain their real radius and produce a bounded local eruption with a static reduced-motion alternative (1.6413ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 6
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1452.0045
+
+✖ failing tests:
+
+test at tests\expedition-presentation.test.ts:1:4276
+✖ compiled testing setup shares the clear first-run flow and preserves its audience boundary (135.4996ms)
+  ReferenceError [Error]: document is not defined
+      at render (file:///C:/Users/yigal/AppData/Local/Packages/sandbox.%7Bbcf337ba-9a4f-4c56-9cb9-c2683885d6d1%7D/AC/Temp/grave-public-setup-KvOguO/setup.mjs:78916:22)
+      at Module.mountSetup (file:///C:/Users/yigal/AppData/Local/Packages/sandbox.%7Bbcf337ba-9a4f-4c56-9cb9-c2683885d6d1%7D/AC/Temp/grave-public-setup-KvOguO/setup.mjs:79156:3)
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\expedition-presentation.test.ts:269:6)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)

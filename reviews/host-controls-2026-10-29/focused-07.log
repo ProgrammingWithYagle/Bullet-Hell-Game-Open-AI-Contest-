@@ -1,0 +1,21 @@
+✔ Cancel keeps a newer load intact after the older join returns success (440.9396ms)
+✔ Cancel keeps a newer load intact after the older join returns error (305.0633ms)
+✔ Escape cancels before artwork or audio settles and late completions do not reopen the game (226.9977ms)
+✔ password eye buttons reveal exact typed text without submitting or changing it; cancel clears the form (3.787ms)
+✔ host invite and waiting-room password controls render only the authorized value and clear it on owner change (5.3815ms)
+✔ explicit host buttons send Pause/Continue, menu state alone sends nothing, and ending needs confirmation (5.3002ms)
+✔ ending an encounter clears queued actions without inventing a clear or a player-down reason (1.1982ms)
+✔ issued42local Practice keeps build/map/economy identity while server checkpoints remain strict (3.5116ms)
+✔ all fifteen catalogs include the exact authored host-control and password notices (26.7627ms)
+✔ host-only pause freezes real peers, chat stays live, leaving resumes and transfers private invite access, end reaches everyone (1179.5091ms)
+✔ explicit pause holds the real intermission clock, rejects transactions, and Continue restores the same remaining time (514.974ms)
+✔ a dropped paused host reconnects without taking host control back or stopping the remaining player (669.3507ms)
+✔ a manually paused journal renews its lease without stepping the game or its timers (8.1576ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4492.991

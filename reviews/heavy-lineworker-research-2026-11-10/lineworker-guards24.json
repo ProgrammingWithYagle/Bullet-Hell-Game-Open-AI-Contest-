@@ -1,0 +1,233 @@
+{
+  "studiedAt": "2026-11-12T00:55:57.760Z",
+  "registered": false,
+  "canonicalFilesChanged": false,
+  "onlineProof": false,
+  "countsAs2211Tests": false,
+  "prototypeSourceBase": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+  "copiedGameBundleSha256": "602f942aa3fdf878828559ac2e44b33432f4664d80685c21e186f3479c66899f",
+  "candidate05Sha256": "7ce40b8772b238bd3441ee287fe67f5e53686ebcb93b51c5a844858666d80e40",
+  "runnerSha256": "266c3e55dac152ea4789f107bb416e91c7d9930e852f9909de7bfe4d1602508d",
+  "cases": 12,
+  "pass": 12,
+  "fail": 0,
+  "results": [
+    {
+      "label": "bare actual primary-versus-lateral handling",
+      "passed": true,
+      "details": {
+        "mode": "bare",
+        "primaryProjectiles": 0,
+        "actualLateralMovement": 48.33002312124685,
+        "originalUntil": 151,
+        "afterUntil": 151,
+        "ammoBefore": 45,
+        "ammoAfter": 44,
+        "rawProposedOwnership": true
+      }
+    },
+    {
+      "label": "yoke actual primary-versus-lateral handling",
+      "passed": true,
+      "details": {
+        "mode": "yoke",
+        "primaryProjectiles": 2,
+        "actualLateralMovement": -0.2668049619633095,
+        "originalUntil": 151,
+        "afterUntil": 151,
+        "ammoBefore": 45,
+        "ammoAfter": 42,
+        "rawProposedOwnership": true
+      }
+    },
+    {
+      "label": "sheave actual primary-versus-lateral handling",
+      "passed": true,
+      "details": {
+        "mode": "sheave",
+        "primaryProjectiles": 0,
+        "actualLateralMovement": 48.33002312124685,
+        "originalUntil": 151,
+        "afterUntil": 151,
+        "ammoBefore": 45,
+        "ammoAfter": 44,
+        "rawProposedOwnership": true
+      }
+    },
+    {
+      "label": "bare payout and fitting dependency",
+      "passed": true,
+      "details": {
+        "mode": "bare",
+        "original": {
+          "lineworkRecovery": 241,
+          "lineworkFlight": 0,
+          "lineworkUntil": 151,
+          "lineworkAnchor": {
+            "x": 476.5367782241873,
+            "y": 218.6
+          },
+          "lineworkActive": false,
+          "lineworkMode": "bare",
+          "lineworkPaidLength": 576.4041457767873,
+          "lineworkAt": 20,
+          "lineworkCommandSequence": 20,
+          "lineworkNow": 20
+        },
+        "paidOut": {
+          "lineworkRecovery": 241,
+          "lineworkFlight": 0,
+          "lineworkUntil": 0,
+          "lineworkActive": false,
+          "lineworkMode": "bare",
+          "lineworkPaidLength": 0,
+          "lineworkAt": 0,
+          "lineworkCommandSequence": 0,
+          "lineworkNow": 23
+        },
+        "after": {
+          "lineworkRecovery": 241,
+          "lineworkFlight": 0,
+          "lineworkUntil": 0,
+          "lineworkActive": false,
+          "lineworkMode": "bare",
+          "lineworkPaidLength": 0,
+          "lineworkAt": 0,
+          "lineworkCommandSequence": 0,
+          "lineworkNow": 23
+        },
+        "noRoundRefund": true,
+        "noClockReset": true
+      }
+    },
+    {
+      "label": "sheave payout and fitting dependency",
+      "passed": true,
+      "details": {
+        "mode": "sheave",
+        "original": {
+          "lineworkRecovery": 241,
+          "lineworkFlight": 0,
+          "lineworkUntil": 151,
+          "lineworkAnchor": {
+            "x": 476.5367782241873,
+            "y": 218.6
+          },
+          "lineworkActive": false,
+          "lineworkMode": "sheave",
+          "lineworkPaidLength": 576.4041457767873,
+          "lineworkAt": 20,
+          "lineworkCommandSequence": 20,
+          "lineworkNow": 20
+        },
+        "paidOut": {
+          "lineworkRecovery": 241,
+          "lineworkFlight": 0,
+          "lineworkUntil": 151,
+          "lineworkAnchor": {
+            "x": 476.5367782241873,
+            "y": 218.6
+          },
+          "lineworkActive": false,
+          "lineworkMode": "sheave",
+          "lineworkPaidLength": 576.4041457767873,
+          "lineworkAt": 20,
+          "lineworkCommandSequence": 20,
+          "lineworkNow": 23
+        },
+        "after": {
+          "lineworkRecovery": 241,
+          "lineworkFlight": 0,
+          "lineworkUntil": 0,
+          "lineworkActive": false,
+          "lineworkMode": "bare",
+          "lineworkPaidLength": 0,
+          "lineworkAt": 0,
+          "lineworkCommandSequence": 0,
+          "lineworkNow": 25
+        },
+        "noRoundRefund": true,
+        "noClockReset": true
+      }
+    },
+    {
+      "label": "blocked dodge retains issued admission authority",
+      "passed": true,
+      "details": {
+        "action": "dodge",
+        "admitted": false,
+        "originalUntil": 151,
+        "actualUntil": 151,
+        "controlledAdmissionFixture": true
+      }
+    },
+    {
+      "label": "admitted dodge retains issued admission authority",
+      "passed": true,
+      "details": {
+        "action": "dodge",
+        "admitted": true,
+        "originalUntil": 151,
+        "actualUntil": 0,
+        "controlledAdmissionFixture": true
+      }
+    },
+    {
+      "label": "blocked reload retains issued admission authority",
+      "passed": true,
+      "details": {
+        "action": "reload",
+        "admitted": false,
+        "originalUntil": 151,
+        "actualUntil": 151,
+        "controlledAdmissionFixture": true
+      }
+    },
+    {
+      "label": "admitted reload retains issued admission authority",
+      "passed": true,
+      "details": {
+        "action": "reload",
+        "admitted": true,
+        "originalUntil": 151,
+        "actualUntil": 0,
+        "controlledAdmissionFixture": true
+      }
+    },
+    {
+      "label": "blocked ultimate retains issued admission authority",
+      "passed": true,
+      "details": {
+        "action": "ultimate",
+        "admitted": false,
+        "originalUntil": 151,
+        "actualUntil": 151,
+        "controlledAdmissionFixture": true
+      }
+    },
+    {
+      "label": "admitted ultimate retains issued admission authority",
+      "passed": true,
+      "details": {
+        "action": "ultimate",
+        "admitted": true,
+        "originalUntil": 151,
+        "actualUntil": 0,
+        "controlledAdmissionFixture": true
+      }
+    },
+    {
+      "label": "separate C releases unpaid work and retains actual cartridge/recovery",
+      "passed": true,
+      "details": {
+        "originalRecovery": 241,
+        "ammoAfter": 44
+      }
+    }
+  ],
+  "limits": [
+    "Unregistered copied-Game raw-ownership controlled fixtures. Actual paid physical attachment/motor/primary/body movement run against current real Gatehouse cover; boss attacks are explicitly held. No canonical card/purchase/earned progression/online checkpoint/acceptance exists.",
+    "Blocked-action fixtures explicitly set ordinary recovery or magazine to make admission unavailable. Failures are preserved and block any admission decision; no gameplay deadline/content/source is changed.",
+    "Human/rendered/device/language/listening/motion/final-balance and live-pressure assessment remain open."
+  ]
+}

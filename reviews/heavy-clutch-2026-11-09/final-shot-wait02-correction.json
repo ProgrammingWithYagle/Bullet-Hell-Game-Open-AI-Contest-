@@ -1,0 +1,18 @@
+{
+  "checkedAt": "2026-11-09T13:33:44.927Z",
+  "firstFullGate": {
+    "tests": 2093,
+    "pass": 2092,
+    "fail": 1,
+    "cancelled": 0,
+    "skipped": 0,
+    "failed": "whole unmodified optimized testing Clutch spade",
+    "observedLastAdmissionBeforeFinalMessage": 23,
+    "requiredFinalAdmission": 33
+  },
+  "cause": "The new final wait accepted a completed authoritative view with at least two prior shots. The last original shot is delivered as a separate worker event batch, so that condition did not establish its arrival.",
+  "correction": "Require both the final original-slot shot event and completed stroke view within the same existing6second wait. Keep every admission, slot, cost, recovery and movement assertion. No gameplay, deadline or timeout changes. Original gate01/log/runtime-failure receipt remain exact.",
+  "gameplayChanged": false,
+  "deadlinesChanged": false,
+  "checksSkipped": false
+}

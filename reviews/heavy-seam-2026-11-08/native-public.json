@@ -1,0 +1,131 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-08T19:19:47.043Z",
+  "audience": "public",
+  "groups": 4,
+  "cases": 49,
+  "invocations": 20,
+  "checks": [
+    {
+      "label": "http",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-seam-2026-11-08/native01-public-http.log"
+    },
+    {
+      "label": "guide",
+      "cases": 30,
+      "passed": true,
+      "log": "reviews/heavy-seam-2026-11-08/native01-public-guide.log"
+    },
+    {
+      "label": "worker-cover",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-seam-2026-11-08/native01-public-worker-cover.log"
+    },
+    {
+      "label": "room-cover",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-seam-2026-11-08/native01-public-room-cover.log"
+    },
+    {
+      "label": "worker-fuse",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-seam-2026-11-08/native01-public-worker-fuse.log"
+    },
+    {
+      "label": "room-exit",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-seam-2026-11-08/native01-public-room-exit.log"
+    },
+    {
+      "label": "worker-compact",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-seam-2026-11-08/native01-public-worker-compact.log"
+    },
+    {
+      "label": "room-compact",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-seam-2026-11-08/native01-public-room-compact.log"
+    },
+    {
+      "label": "worker-frontal",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-seam-2026-11-08/native01-public-worker-frontal.log"
+    },
+    {
+      "label": "room-frontal",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-seam-2026-11-08/native01-public-room-frontal.log"
+    },
+    {
+      "label": "worker-running",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-seam-2026-11-08/native01-public-worker-running.log"
+    },
+    {
+      "label": "room-running",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-seam-2026-11-08/native01-public-room-running.log"
+    },
+    {
+      "label": "worker-hanging",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-seam-2026-11-08/native01-public-worker-hanging.log"
+    },
+    {
+      "label": "room-hanging",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-seam-2026-11-08/native01-public-room-hanging.log"
+    },
+    {
+      "label": "worker-seam-manual",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-seam-2026-11-08/native01-public-worker-seam-manual.log"
+    },
+    {
+      "label": "room-seam-manual",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-seam-2026-11-08/native01-public-room-seam-manual.log"
+    },
+    {
+      "label": "worker-seam-running",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-seam-2026-11-08/native01-public-worker-seam-running.log"
+    },
+    {
+      "label": "room-seam-running",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-seam-2026-11-08/native01-public-room-seam-running.log"
+    },
+    {
+      "label": "worker-seam-hanging",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-seam-2026-11-08/native01-public-worker-seam-hanging.log"
+    },
+    {
+      "label": "room-seam-hanging",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-seam-2026-11-08/native01-public-room-seam-hanging.log"
+    }
+  ],
+  "limits": "HTTP1;30source UI/control/private-presentation cases with explicit controlled fixtures;9whole exact-served optimized Solo-worker cases;9real-peer cases. Three new Seam cases in each worker/peer group earn actual Short3→9→15→21SP across three clears. Peer cases drive source MenuDOM with asset/i18n stubs and prove owner-only path data/late peer/host cleanup. Operation cases may have zero contacts; natural and controlled contact evidence is separate. No browser/rendered/device/native-language/listening/human/final-balance acceptance."
+}

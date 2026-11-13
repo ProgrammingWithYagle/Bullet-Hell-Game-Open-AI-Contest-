@@ -1,0 +1,27 @@
+# Siege Gunner: a finite firing stroke
+
+Playable source **5316ead6b5c573d74d058eba870f18ff4bffc86c**, protocol **70**, passes **2,044 tests and all seven checks**, exact-source push/PR CI and both frozen 64-case reviews. [Source evidence](../reviews/heavy-traverse-2026-11-09/source-verification.json), [frozen proof](../reviews/heavy-traverse-2026-11-09/frozen-verification.json) and [natural/replay measurements](../reviews/heavy-traverse-2026-11-09/natural-replay-summary.json) state their separate scope. This slice adds three techniques; Heavy and the broader game remain unfinished.
+
+| Technique | Access | Decision |
+| --- | --- | --- |
+| Traverse Stroke | D-, 3 earned, 2 SP after 1 SP Fresh Belt | Start four finite firing slots; slew a planted barrel or release the unpaid feed. |
+| Set Spade | D, 5 earned, 2 SP after entry | Keep a steerable post without new recoil; actual displacement breaks it. |
+| Floating Cradle | D, 5 earned, 2 SP after entry; excludes Spade | Walk and retain recoil while every round keeps the initial world bearing. |
+
+C admits one physical round immediately, then attempts a separately paid round at 10, 20 and 30 combat ticks. Each successful emission spends one actual magazine round and deals 45 base weapon-scaled damage at 1,050 pixels/second, radius 4 and one second of flight. Eight-second base recovery begins with the first admitted round. Primary waits; a separate C releases unpaid future work. Failed initial admission spends nothing. A failed later slot ends the feed; no slot is caught up or deadline extended.
+
+The loose carriage holds manual walking while its barrel slews within 60 degrees of its birth bearing, at 2.4 radians/second. Each admitted shot recoils its owner eight pixels over four following combat steps. Actual cover and environmental, raid and district forces remain. This grants no protection. Reload/dodge/channel/overdrive, or fresh R/dodge/ultimate input, stops unpaid work. Already paid shots and recoil remain after a simple feed release.
+
+Spade requires stationary input to start. It adds no new recoil, keeps manual slew and holds walking; actual displacement breaks the post. Floating permits normal walking and real recoil while later mouse aim cannot steer its rounds. Controlled actual-Game comparisons show the cost and benefit: Floating walks beyond a wall to two new real lanes while planted strokes remain occluded. Loose/Spade can slew three later rounds toward a second actual body while Floating keeps the first lane. These fixtures do not rank builds.
+
+Bodies, cover, expiry, pool admission and armor remain authoritative. Each flight stores a copied emission origin for source-sensitive armor. Owner/weapon/entry/required-fitting loss removes actual special flights; rostered recovery stays. Downing and host/phase exit clear real work. Friendly flight/removal streams stay owner-only. Actual firing timing and sound use the public owner body; no planned trajectory or private payment record enters projectile packets.
+
+Q/E/ultimate and General transformations remain issued. This post does not resell E’s resistance, primary cadence or Mantlet. Auxiliary C uses weapon damage and normal cooldown scaling; it does not add primary pellets, critical rolls or pierces. General 21 SP plus the default 3-SP entry and Sprint 3 SP totals 27. A fitting’s 5 SP plus General 21 SP and Padded Harness 1 SP also totals 27. One capstone remains.
+
+Four owned Q/E/ultimate/C rows show real remaps and contextual feed release in both HUD choices. There is no empty B card. Prediction uses known authoritative paid recoil and feed without inventing future shots or payments; pose selection uses actual firing reports. Three new painted equipment emblems pass native alpha/hash checks; all 57 earlier emblems/definitions/rules remain exact. Two new sounds pass bounded native PCM checks. Fifteen catalogs contain explicit English pilot copy; native-language, rendered, device, listening, motion and human acceptance remain open.
+
+Per audience, the 2,049-file review passes HTTP 1, source UI/prediction 39, whole exact-served optimized Solo workers 12 and real peers 12. Three new worker and three new peer cases earn actual Short 3→9 through one real baby-difficulty clear. Source MenuDOM buys Fresh Belt/entry at 3 and a chosen fitting at 9, with original clocks and no checkpoint, budget, health, position or hazard injection. The new peer cases use Heavy as a non-host owner in a Soldier-hosted room. Asset/i18n stubs and controlled UI fixtures remain explicitly separate from rendered acceptance.
+
+Eighteen normal-difficulty natural/replay pairs cover three carriages and three General plans on two maps. Every combat/progression field, including combat-exit shield, matches. Nine Gatehouse wins and nine Triage losses remain. One raw Gatehouse terminal shield difference has explicit issued secretOffer Practice-reset provenance; Triage has none. The 261 actual strokes, 880 paid rounds and 18 deliberate releases conserve original slots/recovery. Different spending and one conservative 18-pixel steering policy against the actual 9-pixel body do not rank builds. Losses and unacquired/unused work stay visible.
+
+Later acquired operations, a qualitative culmination, further fitting Heavy/Soldier routes, remaining classes and whole-class assessment continue without a fixed maximum. Service Yard stays unregistered 4-pass/1-fail WIP outside the 2,044 tests. Only the user decides completion.

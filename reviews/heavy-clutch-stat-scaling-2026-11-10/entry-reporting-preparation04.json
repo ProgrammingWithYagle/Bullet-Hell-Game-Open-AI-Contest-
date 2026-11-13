@@ -1,0 +1,40 @@
+{
+  "preparedAt": "2026-11-10T17:08:02.111Z",
+  "sourceCommit": "20aad19bdfb8819cd7db0483b9c79f2c6e9dcd5c",
+  "priorAuditStop": {
+    "helper": "verify-frozen03.mjs",
+    "message": "Entry retained report lacks statContextAtStrokeStart and shots required by the final audit; no final frozen report was written.",
+    "originalNative03MatricesPreserved": true
+  },
+  "changes": [
+    "Capture actual skill/upgrade/mutation values immediately before the first paid stroke command.",
+    "Return copies of the actual emitted shot values.",
+    "No operation assertion, input, gameplay, original wait/policy/timeout or source changes.",
+    "Version wrappers/probe/output names; original reports and their exact execution remain untouched."
+  ],
+  "requiredReruns": 12,
+  "files": [
+    {
+      "file": "retained-traverse-flow04.mts",
+      "sha256": "32f2bc9f58505ba4b25e038d97a6c067dbe98e4c0c1dd3aee22dac7111650ab1"
+    },
+    {
+      "file": "retained-traverse-worker04.mts",
+      "sha256": "8a21f02b252151dc2415e74b16f26c301d2dd752f5f13509ac1e76a6f9d67473"
+    },
+    {
+      "file": "retained-traverse-peer04.mts",
+      "sha256": "f0cf5ca3b6389aa867398685fcd9be2af04e0cba4d17a4b62ba992759333eb26"
+    },
+    {
+      "file": "native-probe04.mts",
+      "sha256": "3dae2fe214d6cf6423f0d8047ef25c4ca5308d9e628c7fe10fab77ae615e4bc7"
+    },
+    {
+      "file": "verify-frozen04.mjs",
+      "sha256": "13ce7b3e24f61801ff3c80fab72b4d5c0b8420bf7c51c1a6dc1db486436b4094"
+    }
+  ],
+  "driverSha256": "3dae2fe214d6cf6423f0d8047ef25c4ca5308d9e628c7fe10fab77ae615e4bc7",
+  "limits": "Only the twelve rerun entry cases acquire this newly reported context; no original report gains retroactive fields."
+}

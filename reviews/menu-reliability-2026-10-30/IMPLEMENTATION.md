@@ -1,0 +1,5 @@
+# Local-network menu reliability
+
+Six native compiled controller regressions fail against the previous source: late callbacks redraw a reused connected host, initial status can undo a completed start, status refresh erases address/focus, failed Stop leaves a disabled retry, pending hosting permits conflicting Join, and detached setup controls can start a server after leaving. The implementation owns disposal from actual setup, versions initial status, checks page ownership at every async boundary, restores drafts/focus, guards conflicting actions and restores controls in finally. Back leaves without implicitly stopping a server.
+
+The first focused run used the restricted network sandbox; its four real HTTP menu cases timed out while the ten gallery/LAN controller cases passed. The escalated focused run is separate. Original failures and issued reports are preserved. No browser/rendered/human/device/listening/physical-second-machine LAN acceptance is claimed. Protocol43 and gameplay/records rules stay unchanged.

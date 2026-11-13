@@ -1,0 +1,24 @@
+{
+  "checkedAt": "2026-11-04T02:12:12.655Z",
+  "baseMetadata": "52212302fc80902b7e3597bd44558e388be0dbf4",
+  "playableSource": "7f5cdac6e84524a391fd96675c857a21d35dd9c7",
+  "beforeFix": {
+    "path": "reviews/engineer-replay-2026-11-04/regression-before-fix.log",
+    "sha256": "55d904fac3f13dbd985548ee9105e5731fbab8b50f6439e0483acda99a18897d",
+    "failures": 12,
+    "passedControl": 1
+  },
+  "afterFix": {
+    "path": "reviews/engineer-replay-2026-11-04/focused-after-fix.log",
+    "sha256": "bb4854a00ddac4856dc6d718995fc5321021e0a887bf8735dfcd9c4c9810c1d8",
+    "passed": 60
+  },
+  "limits": "Controlled enemy completion isolates real encounter/save transitions. Actual combat trials are separate; this is not human or final-balance acceptance.",
+  "finalFocused": {
+    "path": "reviews/engineer-replay-2026-11-04/focused-final.log",
+    "sha256": "16c73fe63f96e0773d595446db00e4b1251c410eb641b1a33395a6e03779df6b",
+    "passed": 60,
+    "immutablePerTickProjectileSnapshots": true
+  },
+  "gateSequence": "Full gate01 passed1,388tests. Final test review then deep-cloned per-tick projectile/kit samples to avoid retaining mutable pooled shot references. Runtime source remained identical. Focused final60passed, and full gate02 verifies the final exact test/source snapshot."
+}

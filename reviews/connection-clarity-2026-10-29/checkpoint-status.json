@@ -1,0 +1,229 @@
+{
+  "savedAt": "2026-10-29T23:30:42.633Z",
+  "goalStatus": "active",
+  "previousGoalTurn": "progress",
+  "sourceCommit": "49b3d5ad592e53181ce03fb165caa562ad14a083",
+  "buildId": "2026.10.29-connection-clarity",
+  "protocol": 42,
+  "localGate": {
+    "passed": true,
+    "tests": 849,
+    "pass": 849,
+    "fail": 0,
+    "path": "reviews/connection-clarity-2026-10-29/gate-02/runtime-verification.json",
+    "runtimeSourceSha256": "02d4b24f014b1a220e184c66e121fb748a2a55fc6bbb6734764e7ef459f7e56a",
+    "sourceSnapshotSha256": "f8be0c2d901162d587c6e1a2d2f650b633bacf8b02c5f442e99435641a630bec"
+  },
+  "additionalSourceBinding": {
+    "sha256": "3297386250f88b377539cca1fc8a9f3abea5ba26abbd8e3dea21a51b15146069",
+    "files": 151,
+    "bytes": 50537685
+  },
+  "sourceCI": {
+    "capturedAt": "2026-10-29T23:27:31.454Z",
+    "passed": true,
+    "sourceCommit": "49b3d5ad592e53181ce03fb165caa562ad14a083",
+    "jobs": [
+      {
+        "id": 123792834905,
+        "headRevision": "49b3d5ad592e53181ce03fb165caa562ad14a083",
+        "conclusion": "success",
+        "url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/40972627940/job/123792834905",
+        "path": "reviews/connection-clarity-2026-10-29/ci-123792834905.log",
+        "bytes": 162625,
+        "sha256": "7856bb6aac9c77b30d8c023b0a18a6b76f26489824fb155702baeb957d01b925",
+        "tests": 849,
+        "pass": 849,
+        "fail": 0
+      },
+      {
+        "id": 123792784807,
+        "headRevision": "49b3d5ad592e53181ce03fb165caa562ad14a083",
+        "conclusion": "success",
+        "url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/40972612949/job/123792784807",
+        "path": "reviews/connection-clarity-2026-10-29/ci-123792784807.log",
+        "bytes": 162112,
+        "sha256": "5c646b1cded7bb555ea51aa98b2d53535a3ce23f9d66ff6d8728fe53abe3ea04",
+        "tests": 849,
+        "pass": 849,
+        "fail": 0
+      }
+    ],
+    "limits": [
+      "Complete decoded connector logs and exact check-head identities. Software CI is separate from rendered/human/device/listening/language/WAN acceptance."
+    ]
+  },
+  "previews": [
+    {
+      "audience": "testing",
+      "url": "http://127.0.0.1:5238/",
+      "endpoint": "http://127.0.0.1:2612",
+      "sourceCommit": "49b3d5ad592e53181ce03fb165caa562ad14a083",
+      "root": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\playtest-connection-clarity-testing-49b3d5a-r02",
+      "files": 1698,
+      "bytes": 734108585,
+      "holdingSession": 43635,
+      "backend": {
+        "pid": 21692,
+        "startedAt": "2026-10-29T23:25:28.9958706Z",
+        "script": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-connection-clarity-testing-49b3d5a-r02\\server.mjs",
+        "sha256": "875ef1c8b6d542ba7c2a6aa2f56cb68dc81158f07ef92a1769f4d8e8fe67b4de",
+        "port": 2612
+      },
+      "client": {
+        "pid": 35052,
+        "startedAt": "2026-10-29T23:25:29.1180368Z",
+        "root": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\playtest-connection-clarity-testing-49b3d5a-r02",
+        "port": 5238,
+        "command": "vite preview --outDir output\\playtest-connection-clarity-testing-49b3d5a-r02 --host 127.0.0.1 --port 5238 --strictPort"
+      },
+      "backendBundle": {
+        "path": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-connection-clarity-testing-49b3d5a-r02\\server.mjs",
+        "bytes": 2712633,
+        "sha256": "875ef1c8b6d542ba7c2a6aa2f56cb68dc81158f07ef92a1769f4d8e8fe67b4de",
+        "externalProjectNodeModulesRequired": true
+      },
+      "httpHashes": 33,
+      "peerSample": {
+        "peers": 2,
+        "phase": "combat",
+        "bossId": "gate-widow",
+        "form": "normal",
+        "difficulty": "baby",
+        "mode": "short",
+        "sameBoss": true,
+        "chosenRehearsalOpenerIgnored": false,
+        "chosenRehearsalOpenerRetained": true,
+        "testingModified": false,
+        "roomChatDelivered": true,
+        "chatServerConfirmed": true,
+        "chatCooldownExplicit": true,
+        "chatRejectedDraftRetained": true,
+        "roomCodeJoined": true,
+        "hostStartRequired": true,
+        "selectedMapRetained": true,
+        "passwordProtected": true,
+        "incorrectPasswordRejected": true,
+        "roomListingLockFlag": true,
+        "noPasswordInListing": true,
+        "noPersonalClearClaimed": true
+      },
+      "teamRecords": {
+        "available": true,
+        "persistent": true,
+        "readStatus": 200,
+        "scope": "server",
+        "qualifyingRowsBeforeProbe": 0,
+        "noSyntheticScoresSubmitted": true
+      }
+    },
+    {
+      "audience": "public",
+      "url": "http://127.0.0.1:5239/",
+      "endpoint": "http://127.0.0.1:2613",
+      "sourceCommit": "49b3d5ad592e53181ce03fb165caa562ad14a083",
+      "root": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\playtest-connection-clarity-public-49b3d5a-r02",
+      "files": 1698,
+      "bytes": 734102907,
+      "holdingSession": 54334,
+      "backend": {
+        "pid": 40012,
+        "startedAt": "2026-10-29T23:26:07.8572935Z",
+        "script": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-connection-clarity-public-49b3d5a-r02\\server.mjs",
+        "sha256": "875ef1c8b6d542ba7c2a6aa2f56cb68dc81158f07ef92a1769f4d8e8fe67b4de",
+        "port": 2613
+      },
+      "client": {
+        "pid": 64696,
+        "startedAt": "2026-10-29T23:26:07.8854003Z",
+        "root": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\playtest-connection-clarity-public-49b3d5a-r02",
+        "port": 5239,
+        "command": "vite preview --outDir output\\playtest-connection-clarity-public-49b3d5a-r02 --host 127.0.0.1 --port 5239 --strictPort"
+      },
+      "backendBundle": {
+        "path": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-connection-clarity-public-49b3d5a-r02\\server.mjs",
+        "bytes": 2712633,
+        "sha256": "875ef1c8b6d542ba7c2a6aa2f56cb68dc81158f07ef92a1769f4d8e8fe67b4de",
+        "externalProjectNodeModulesRequired": true
+      },
+      "httpHashes": 33,
+      "peerSample": {
+        "peers": 2,
+        "phase": "combat",
+        "bossId": "ratcatcher",
+        "form": "normal",
+        "difficulty": "baby",
+        "mode": "short",
+        "sameBoss": true,
+        "chosenRehearsalOpenerIgnored": true,
+        "chosenRehearsalOpenerRetained": false,
+        "testingModified": false,
+        "roomChatDelivered": true,
+        "chatServerConfirmed": true,
+        "chatCooldownExplicit": true,
+        "chatRejectedDraftRetained": true,
+        "roomCodeJoined": true,
+        "hostStartRequired": true,
+        "selectedMapRetained": true,
+        "passwordProtected": true,
+        "incorrectPasswordRejected": true,
+        "roomListingLockFlag": true,
+        "noPasswordInListing": true,
+        "noPersonalClearClaimed": true
+      },
+      "teamRecords": {
+        "available": true,
+        "persistent": true,
+        "readStatus": 200,
+        "scope": "server",
+        "qualifyingRowsBeforeProbe": 0,
+        "noSyntheticScoresSubmitted": true
+      }
+    }
+  ],
+  "wiki": {
+    "sourceCommit": "49b3d5ad592e53181ce03fb165caa562ad14a083",
+    "publishedCommit": "064db30c8a559ea427cb4d20e1f7e3c36163c2f3",
+    "pages": 18,
+    "images": 34,
+    "publicPageChecks": 4,
+    "allImageHashesMatch": true
+  },
+  "pr": {
+    "url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/pull/14",
+    "draft": true,
+    "title": "Build Grave Accord and polish multiplayer, maps and player status",
+    "descriptionMatchesLocalConfig": true
+  },
+  "publication": {
+    "sourcePublished": true,
+    "exactSourceCIPassed": true,
+    "wikiPublished": true,
+    "wikiVerified": true,
+    "mainMerged": false,
+    "gameDeployed": false,
+    "hostedReleaseReplaced": false,
+    "contestSubmitted": false
+  },
+  "historicalReceiptsPreserved": 8,
+  "priorWikiReceiptPreserved": true,
+  "renderedAccepted": false,
+  "humanAccepted": false,
+  "feedback": {
+    "preview": "http://127.0.0.1:5239/",
+    "asked": true,
+    "answerPending": true,
+    "browserOpen": "Queued only; no assistant browser observation."
+  },
+  "windows": {
+    "currentVerifiedReviewSource": "fe82c7e38c8fa73804678b6637815b23aceb0ce5",
+    "connectionClarityPackaged": false,
+    "olderArchivePreserved": true
+  },
+  "limits": [
+    "Software/rules, actual local transport, compiled native controllers and native hash checks only; not a browser/rendered playtest or personal clear.",
+    "Current source, exact source CI, fresh testing/public previews and canonical Wiki are verified. Later metadata closure must retain the same runtime/test trees.",
+    "Prior previews, packages, original artwork, rejected attempts and raw reports remain separate. Native Windows review predates this pass; a matching new package needs its own complete verification.",
+    "Human balance/rendered/device/listening/native-language, WAN/endurance/capacity, shared hosted rankings/recovery and coordinated release acceptance remain open. Browser automation remains disabled."
+  ]
+}

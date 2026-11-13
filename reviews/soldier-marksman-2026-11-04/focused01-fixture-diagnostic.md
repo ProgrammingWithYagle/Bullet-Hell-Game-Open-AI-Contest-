@@ -1,0 +1,3 @@
+# First focused candidate run
+
+focused01 raw log is preserved:13passes/5failures. The fixture now explicitly supplies zero aim for intended rightward casts, including direct controller calls. The reflected-body case started60pixels from a58radiusConstable plus4radiusprojectile; its first shot correctly hit before banking. The body now starts140pixels behind the caster. Safe offline restoration deliberately uses the local solo identity, so ownership assertions now use solo rather than the fixture transport IDs s/q. No combat geometry, radius, timing, immunity, migration guard or damage rule was changed for these fixture errors.

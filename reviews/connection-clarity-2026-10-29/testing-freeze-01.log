@@ -1,0 +1,23 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Uncommitted art/locale/check input: LICENSE
++ actual - expected
+
++ '4472c86ac83e7f8cfe94a5ce7bf3db069da9630d716c5e366d3da8e52c9c2877'
+- 'd269587d75c417362ca1d5745419bb7ade7b05a27b25ef97f31f590e1cdfbefe'
+
+    at file:///C:/Users/yigal/OneDrive/Documents/ChatGPT/OpenAI%20Multiplayer%20Game%20Contest%20(Bullet%20Hell)/reviews/connection-clarity-2026-10-29/freeze-review.mjs:50:47
+    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+    at async node:internal/modules/esm/loader:647:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: '4472c86ac83e7f8cfe94a5ce7bf3db069da9630d716c5e366d3da8e52c9c2877',
+  expected: 'd269587d75c417362ca1d5745419bb7ade7b05a27b25ef97f31f590e1cdfbefe',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.22.1

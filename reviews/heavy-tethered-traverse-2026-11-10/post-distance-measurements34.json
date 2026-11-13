@@ -1,0 +1,62 @@
+{
+  "checkedAt": "2026-11-10T22:14:04.228Z",
+  "sourceCommit": "30fbfefaa66faabd93416dc31e27310149df5fed",
+  "runtimeSourceSha256": "c213467e0877fce574552b98139e4171a71ad4430069102a880db46c65f86de8",
+  "sourceSnapshotSha256": "565333e00e8cf875e4be37b6e7f5a12ef55a9835f578a441ea1b442dea1c59c8",
+  "originalDerivedSummary": "natural-replay-summary32.json",
+  "originalDerivedSummarySha256": "e2a1728f6871f2d7aed7083a687d6fa46322381d0ab09cdee6348a45be3c0425",
+  "currentSummarySha256": "e5bea5aa071d2d367c5687b29b1e09320c1397dfddb334a050d5b007b4dc21f4",
+  "allOriginalSimulationAndComparisonReportsUnchanged": true,
+  "allActualLeadsWithin64": true,
+  "rows": [
+    {
+      "map": "gatehouse",
+      "handling": "standard",
+      "samples": 1235,
+      "maximumDistanceFromFixedMuzzle": 63.79420329786748,
+      "maximumDisplacementFromPostAdmissionBody": 66.12966883918985,
+      "actualLeadRadius": 64
+    },
+    {
+      "map": "gatehouse",
+      "handling": "keyed",
+      "samples": 1555,
+      "maximumDistanceFromFixedMuzzle": 63.7144387971166,
+      "maximumDisplacementFromPostAdmissionBody": 62.57880684925624,
+      "actualLeadRadius": 64
+    },
+    {
+      "map": "gatehouse",
+      "handling": "open",
+      "samples": 1493,
+      "maximumDistanceFromFixedMuzzle": 63.79420329786748,
+      "maximumDisplacementFromPostAdmissionBody": 60.584341062577785,
+      "actualLeadRadius": 64
+    },
+    {
+      "map": "triage-yard",
+      "handling": "standard",
+      "samples": 934,
+      "maximumDistanceFromFixedMuzzle": 63.84000000000003,
+      "maximumDisplacementFromPostAdmissionBody": 61.60509365068738,
+      "actualLeadRadius": 64
+    },
+    {
+      "map": "triage-yard",
+      "handling": "keyed",
+      "samples": 924,
+      "maximumDistanceFromFixedMuzzle": 63.33333333333376,
+      "maximumDisplacementFromPostAdmissionBody": 67.9417613499618,
+      "actualLeadRadius": 64
+    },
+    {
+      "map": "triage-yard",
+      "handling": "open",
+      "samples": 1055,
+      "maximumDistanceFromFixedMuzzle": 63.725250538338436,
+      "maximumDisplacementFromPostAdmissionBody": 60.82621180734075,
+      "actualLeadRadius": 64
+    }
+  ],
+  "note": "The original maximumObservedPostedBodyTravel field is a chord from the body position sampled after post admission, including actual recoil. It is not distance from the fixed muzzle or integrated path length. That admission body may already differ from the fixed muzzle within the first movement tick, so this chord can exceed64 while every actual lead remains within64. Both explicit distances are now retained; raw trajectories and the original derived summary32 remain exact."
+}
