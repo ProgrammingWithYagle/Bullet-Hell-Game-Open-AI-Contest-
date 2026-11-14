@@ -33,7 +33,11 @@ test('The specialization graph contains only real techniques, their General refe
     'heavy-linework-sheave-1>heavy-linework-yoke-1',
     'heavy-linework-guide-1>heavy-linework-reserve-1',
   ]));
-  for(const cl of data.classes.filter(c=>!['engineer','soldier','heavy'].includes(c.id)))assert.equal(specializationMapLayout(cl.id),null);
+  for(const cl of data.classes.filter(c=>!['engineer','soldier','heavy','tank'].includes(c.id)))assert.equal(specializationMapLayout(cl.id),null);
+  const tank=specializationMapLayout('tank')!;assert(tank);
+  assert.deepEqual(tank.nodes.filter(node=>node.reference).map(node=>node.id),['tank-protection-1']);
+  assert.deepEqual(tank.nodes.filter(node=>!node.reference).map(node=>node.id),['tank-bulwark-carry-1','tank-bulwark-pivot-1','tank-bulwark-port-1']);
+  assert.equal(tank.edges.length,3);assert.deepEqual(tank.exclusions,[{a:'tank-bulwark-pivot-1',b:'tank-bulwark-port-1'}]);
   const html=specializationMapMarkup(map,['engineer-constructs-1','engineer-machinery-1'],(id,ref)=>'<button data-graph-focus="'+id+'">'+(ref?'General':'Technique')+'</button>');
   assert.equal((html.match(/data-from=/g)??[]).length,data.specializationSkills.filter(s=>s.classId==='engineer').length);assert(html.includes('conflicting-route'));assert(!html.includes('Field Works'));assert(!html.includes('data-purchase'));
 });

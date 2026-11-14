@@ -266,7 +266,8 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
   }
   private bindLineworkView(client: Client) {
     const player = this.state.players.get(client.sessionId);
-    if (player?.classId !== 'heavy') return;
+    // The owner-filtered kit payload carries both Lineworker and Tank handling.
+    if (!player || (player.classId !== 'heavy' && player.classId !== 'tank')) return;
     client.view ??= new StateView();
     client.view.add(player);
   }

@@ -1,3 +1,4 @@
+import {readFileSync} from 'node:fs';
 import { Game, data } from "../src/shared/game.ts";
 import { PROTOCOL } from "../src/shared/protocol.ts";
 import test from "node:test";
@@ -195,9 +196,8 @@ test("issued66 rejects future Heavy ownership and wrong/online envelopes before 
     );
 });
 test("exact issued66 admits every one of the fifty issued techniques with its actual affordable prerequisite ownership", () => {
-  const oldNodes = data.specializationSkills.filter(
-    (s) => s.classId !== "heavy",
-  );
+  const issuedIds=new Set<string>(JSON.parse(readFileSync(new URL('./fixtures/heavy-linework-issued73.json',import.meta.url),'utf8')).issuedSpecializationIds.filter((id:string)=>id.startsWith('engineer-')||id.startsWith('soldier-')));
+  const oldNodes=data.specializationSkills.filter(node=>issuedIds.has(node.id));
   assert.equal(oldNodes.length, 50);
   const all = [
     ...data.skills,

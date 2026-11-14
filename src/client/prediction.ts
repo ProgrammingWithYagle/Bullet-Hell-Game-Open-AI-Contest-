@@ -1,3 +1,4 @@
+import {tankPredictedWalk} from './tank-bulwark-prediction.ts';
 import{lineworkTemporaryConstructs}from'../shared/heavy-linework.ts';
 import{lineworkPredictedMotion,lineworkPredictedSpeed}from './heavy-linework-prediction.ts';
 import{traversePredictedMotion,traversePredictedAfterMove}from "./heavy-post-prediction.ts";
@@ -38,6 +39,7 @@ export class Prediction {
   private advance(i: InputFrame, view: View) {
     const p = this.player;
     if (!p || view.phase !== 'combat' || p.status !== 'active') return;
+    if(p.classId==='tank'&&p.kit.bulwarkCarried)i={...i,q:false,e:false,ultimate:false,reload:false,dodge:false};
     const now = ++this.tick,
       len = Math.hypot(i.moveX, i.moveY);
     let mx = len > 1 ? i.moveX / len : i.moveX,
@@ -106,8 +108,10 @@ export class Prediction {
       data.rules.playerRadius,
       [...runtimeArena(view.arenaId,view.run.difficulty).obstacles, ...gates, ...blocks],
     );
-    p.x = next.x;
-    p.y = next.y;
+    const tankNext=tankPredictedWalk(p,next,view,{tick:now,bounds:runtimeArena(view.arenaId,view.run.difficulty).bounds,
+      obstacles:[...runtimeArena(view.arenaId,view.run.difficulty).obstacles,...gates,...blocks],lavaPits:runtimeArena(view.arenaId,view.run.difficulty).lavaPits});
+    p.x = tankNext.x;
+    p.y = tankNext.y;
     linework.finish();
     traversePredictedAfterMove(p,{obstacles:[...runtimeArena(view.arenaId,view.run.difficulty).obstacles,...gates,...blocks]},now);
   }

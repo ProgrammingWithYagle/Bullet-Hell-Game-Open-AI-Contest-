@@ -93,10 +93,16 @@ export type View = {
   accord: Game['accord'];
 };
 /** Anchor coordinates and the friendly projectile ID travel only to the Lineworker. */
+export function splitBulwarkKit(kit:KitStatus){
+  if(kit.bulwarkCarried===undefined)return {shared:kit,owner:undefined};
+  const {bulwarkCarried,bulwarkCanLift,bulwarkCanSet,bulwarkCanHandle,bulwarkPrimaryReady,bulwarkPortPhase,bulwarkRecoveryAt,bulwarkCommitAt,bulwarkCommitUntil,bulwarkPanelUntil,bulwarkHeading,bulwarkPanelIds,...shared}=kit;
+  return {shared,owner:{bulwarkCarried,bulwarkCanLift,bulwarkCanSet,bulwarkCanHandle,bulwarkPrimaryReady,bulwarkPortPhase,bulwarkRecoveryAt,bulwarkCommitAt,bulwarkCommitUntil,bulwarkPanelUntil,bulwarkHeading,bulwarkPanelIds}};
+}
 export function splitLineworkKit(kit: KitStatus) {
-  if (kit.lineworkRecovery === undefined) return { shared: kit, owner: undefined };
-  const { lineworkAnchor, lineworkConnection, lineworkFlight, lineworkGuideBlocked, ...shared } = kit;
-  return { shared, owner: { lineworkAnchor, lineworkConnection, lineworkFlight, lineworkGuideBlocked } };
+  const base=splitBulwarkKit(kit);
+  if (kit.lineworkRecovery === undefined) return base;
+  const { lineworkAnchor, lineworkConnection, lineworkFlight, lineworkGuideBlocked, ...shared } = base.shared;
+  return { shared, owner: { ...base.owner,lineworkAnchor, lineworkConnection, lineworkFlight, lineworkGuideBlocked } };
 }
 
 export function viewOf(g: Game, owner: string): View {

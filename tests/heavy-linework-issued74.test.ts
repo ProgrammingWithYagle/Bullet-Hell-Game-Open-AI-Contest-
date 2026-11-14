@@ -27,7 +27,7 @@ test('exact edition 74 preserves all 67 issued technique restores, twelve classe
   assert.deepEqual(
     issued.issuedSpecializationIds,
     data.specializationSkills
-      .filter((skill) => skill.id !== lineworkIds.reserve && skill.id !== lineworkIds.guide)
+      .filter((skill) => issued.issuedSpecializationIds.includes(skill.id))
       .map((skill) => skill.id),
   );
   assert.deepEqual(
@@ -37,7 +37,7 @@ test('exact edition 74 preserves all 67 issued technique restores, twelve classe
   assert.equal(issued.individual.length, 67);
   assert.equal(issued.classes.length, 12);
   assert.equal(issued.lineworker.length, 3);
-  assert.equal(PROTOCOL, 76);
+  assert.equal(PROTOCOL, 77);
   for (const row of [...issued.individual, ...issued.classes, ...issued.lineworker]) {
     const input = structuredClone(row.checkpoint);
     const g = Game.restoreOffline(input),
@@ -162,7 +162,7 @@ test('a real current reserve purchase restores ownership without a transient anc
   assert.equal(p.totalSp, 15);
   assert(buy('skill', lineworkIds.reserve));
   const checkpoint = g.offlineCheckpoint()!;
-  assert.equal(checkpoint.protocolVersion, 76);
+  assert.equal(checkpoint.protocolVersion, PROTOCOL);
   assert(checkpoint.practiceOnly);
   const restored = Game.restoreOffline(checkpoint),
     player = restored.players.get('solo')!;

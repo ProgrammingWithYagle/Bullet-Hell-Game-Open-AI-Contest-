@@ -290,7 +290,7 @@ export class Game {
   readonly sniper = new SoldierSniper();
   readonly grenadier = new SoldierGrenadier();
   readonly marksman = new SoldierMarksman();
-  kitStatus(id:string){return {...this.classKits.status(id,this.combatTick),...(this.players.get(id)?.classId==='heavy'&&this.players.get(id)?.skills.includes(lineworkIds.entry)?this.lineworkStatus(this.players.get(id)!):{}),...(this.players.get(id)?.classId==='heavy'&&this.players.get(id)?.skills.includes(traverseIds.entry)?this.traverse.status(this.players.get(id)!,this.combatTick):{}),...(this.players.get(id)?.classId==='heavy'&&this.players.get(id)?.skills.includes(flakIds.entry)?this.flak.status(this.players.get(id),this.combatTick):{}),...(this.players.get(id)?.classId==='soldier'?{...this.skirmisher.status(id),...(this.players.get(id)?.skills.includes(sniperId)?this.sniper.status(this.players.get(id),this.combatTick):{}),...(this.players.get(id)?.skills.includes(grenadierIds.entry)?this.grenadier.status(this.players.get(id),this.grenadierContext()):{}),...(this.players.get(id)?.skills.includes(marksmanId)?this.marksman.status(this.players.get(id),this.combatTick):{}),soldierMagazineCapacity:this.stats(this.players.get(id)!).magazine}:{}),...(this.players.get(id)?.classId==='alchemist'?{...this.alchemy.status(id,this.combatTick,this.alchemyOptions(this.players.get(id)!)),alchemySamplesCapacity:this.stats(this.players.get(id)!).magazine}:{}),...(this.players.get(id)?.classId==='ranger'?{...this.ranger.status(id,this.combatTick,this.rangerOptions(this.players.get(id)!)),rangerQuiverCapacity:this.stats(this.players.get(id)!).magazine}:{}),...(this.players.get(id)?.classId==='bard'?this.bard.status(id):{}),...(this.players.get(id)?.classId==='swordsman'?this.sword.status(id,this.combatTick):{}),...(this.players.get(id)?.classId==='summoner'?this.retinue.status(this.players.get(id)!,this.combatTick,this.summonerOptions(this.players.get(id)!)):{})};}
+  kitStatus(id:string){return {...this.classKits.status(id,this.combatTick),...(this.players.get(id)?.classId==='tank'?this.classKits.bulwarkStatus(this.players.get(id)!,{tick:this.combatTick,bounds:this.arena.bounds,obstacles:this.obstacles,lavaPits:this.arena.lavaPits}):{}),...(this.players.get(id)?.classId==='heavy'&&this.players.get(id)?.skills.includes(lineworkIds.entry)?this.lineworkStatus(this.players.get(id)!):{}),...(this.players.get(id)?.classId==='heavy'&&this.players.get(id)?.skills.includes(traverseIds.entry)?this.traverse.status(this.players.get(id)!,this.combatTick):{}),...(this.players.get(id)?.classId==='heavy'&&this.players.get(id)?.skills.includes(flakIds.entry)?this.flak.status(this.players.get(id),this.combatTick):{}),...(this.players.get(id)?.classId==='soldier'?{...this.skirmisher.status(id),...(this.players.get(id)?.skills.includes(sniperId)?this.sniper.status(this.players.get(id),this.combatTick):{}),...(this.players.get(id)?.skills.includes(grenadierIds.entry)?this.grenadier.status(this.players.get(id),this.grenadierContext()):{}),...(this.players.get(id)?.skills.includes(marksmanId)?this.marksman.status(this.players.get(id),this.combatTick):{}),soldierMagazineCapacity:this.stats(this.players.get(id)!).magazine}:{}),...(this.players.get(id)?.classId==='alchemist'?{...this.alchemy.status(id,this.combatTick,this.alchemyOptions(this.players.get(id)!)),alchemySamplesCapacity:this.stats(this.players.get(id)!).magazine}:{}),...(this.players.get(id)?.classId==='ranger'?{...this.ranger.status(id,this.combatTick,this.rangerOptions(this.players.get(id)!)),rangerQuiverCapacity:this.stats(this.players.get(id)!).magazine}:{}),...(this.players.get(id)?.classId==='bard'?this.bard.status(id):{}),...(this.players.get(id)?.classId==='swordsman'?this.sword.status(id,this.combatTick):{}),...(this.players.get(id)?.classId==='summoner'?this.retinue.status(this.players.get(id)!,this.combatTick,this.summonerOptions(this.players.get(id)!)):{})};}
   readonly transforms = new AbilityTransforms();
   classCues(){return [...this.flak.cues(),...this.sniper.cues(this.roster()),...this.grenadier.cues(this.roster()),...this.marksman.cues(),...this.skirmisher.cues(this.roster()),...this.classKits.cues(),...this.transforms.cues(),...this.bard.cues(),...this.sword.cues(this.roster(),this.combatTick),...this.ranger.cues(this.rangerContext()),...this.alchemy.cues(this.alchemyContext())];}
   private aimTargets(wardsOnly=true){const real=this.roster().filter(p=>p.status==='active'&&!this.classKits.untargetable(p.id,this.combatTick));return [...real,...this.classKits.decoyTargets(this.roster(),this.combatTick),...this.retinueTargets(wardsOnly)];}
@@ -559,6 +559,7 @@ export class Game {
     return p;
   }
   setConnected(id: string, connected: boolean) {
+    if(!connected)this.classKits.dropTankWall(id);
     if(!connected)this.skirmisher.remove(id);
     if(!connected)for(const shotId of this.sniper.cancelOwner(id)){const shot=this.shots.get(shotId);if(shot)this.removeShot(shot);}
     if(!connected)for(const shotId of this.grenadier.cancelOwner(id)){const shot=this.shots.get(shotId);if(shot)this.removeShot(shot);}
@@ -1487,7 +1488,8 @@ export class Game {
   private stepPlayer(p: Player) {
     const now = this.combatTick,
       stats = this.stats(p),
-      i = p.input;
+      carried = p.classId === 'tank' && this.classKits.tankWallCarried(p.id, now),
+      i = carried ? { ...p.input, q: false, e: false, ultimate: false, reload: false, dodge: false, fire: this.classKits.canTankPortFire(p,{tick:now,bounds:this.arena.bounds,obstacles:this.obstacles,lavaPits:this.arena.lavaPits}) && p.input.fire } : p.input;
     p.aim = i.aim;
     const sniperReloadHandled=p.classId==='soldier'&&this.sniper.react(p,i,this.sniperContext());
     if(p.classId==='soldier')this.grenadier.react(p,i,this.grenadierContext());
@@ -1599,8 +1601,17 @@ export class Game {
       rule.playerRadius,
       this.obstacles,
     );
-    p.x = next.x;
-    p.y = next.y;
+    const tankWorld = p.classId === 'tank' ? { tick: now, bounds: this.arena.bounds, obstacles: this.obstacles, lavaPits: this.arena.lavaPits } : undefined;
+    const tankHandling = tankWorld && i.technique2 ? this.classKits.commandTankHandling(p,tankWorld,next) : undefined;
+    if(tankHandling)this.events.push({type:'sound',id:'tank-wall-'+tankHandling,owner:p.id,x:p.x,y:p.y});
+    const final = tankWorld ? this.classKits.moveTankWall(p, next, tankWorld) : next;
+    p.x = final.x;
+    p.y = final.y;
+    if (tankWorld && i.technique1) {
+      const command = this.classKits.commandTankWall(p, tankWorld);
+      if (command) this.events.push({ type: 'sound', id: 'tank-wall-' + command, x: p.x, y: p.y, owner: p.id });
+    }
+    const handsBusy = (carried || (p.classId === 'tank' && this.classKits.tankWallCarried(p.id, now))) && !(tankWorld && this.classKits.canTankPortFire(p,tankWorld));
     if (lineworkContext) this.linework.afterMove(p, lineworkContext);
     if(p.classId==='soldier')this.sniper.afterMove(p,now);
     if(footwork)this.skirmisher.afterMove(p,this.skirmisherContext());
@@ -1619,7 +1630,7 @@ export class Game {
     if(p.classId==='soldier')this.skirmisher.advanceLoad(p,this.skirmisherContext());
     this.traverse.advance(p,this.traverseContext());
     const loading=p.classId==='soldier'&&this.skirmisher.isLoading(p.id);
-    if (i.fire && !sniperReloadHandled && !p.reloadAt && !loading && !this.grenadier.blocksPrimary(p.id) && !this.sniper.blocksPrimary(p.id) && !this.flak.blocksPrimary(p.id,now) && !this.traverse.blocksPrimary(p.id,now) && !this.linework.blocksPrimary(p.id,now) && (p.classId!=='ranger'||this.ranger.canPrimary(p,this.rangerContext())) && (p.classId!=='alchemist'||this.alchemy.canPrimary(p,this.alchemyContext()))) {
+    if (i.fire && !handsBusy && !sniperReloadHandled && !p.reloadAt && !loading && !this.grenadier.blocksPrimary(p.id) && !this.sniper.blocksPrimary(p.id) && !this.flak.blocksPrimary(p.id,now) && !this.traverse.blocksPrimary(p.id,now) && !this.linework.blocksPrimary(p.id,now) && (p.classId!=='ranger'||this.ranger.canPrimary(p,this.rangerContext())) && (p.classId!=='alchemist'||this.alchemy.canPrimary(p,this.alchemyContext()))) {
       // A new trigger press starts now; sustained fire retains fractional debt.
       // This supports rates above 30Hz without catching up missed idle shots.
       if (!p.wasFiring) p.fireAt = Math.max(p.fireAt, now);
@@ -1631,7 +1642,7 @@ export class Game {
         }
       }
     }
-    p.wasFiring = i.fire && !sniperReloadHandled && !p.reloadAt && !loading && !this.grenadier.blocksPrimary(p.id) && !this.sniper.blocksPrimary(p.id) && !this.flak.blocksPrimary(p.id,now) && !this.traverse.blocksPrimary(p.id,now) && !this.linework.blocksPrimary(p.id,now);
+    p.wasFiring = i.fire && !handsBusy && !sniperReloadHandled && !p.reloadAt && !loading && !this.grenadier.blocksPrimary(p.id) && !this.sniper.blocksPrimary(p.id) && !this.flak.blocksPrimary(p.id,now) && !this.traverse.blocksPrimary(p.id,now) && !this.linework.blocksPrimary(p.id,now);
   }
   private reload(p: Player) {
     if(p.classId==='heavy')this.linework.interrupt(p.id);
@@ -2055,6 +2066,7 @@ export class Game {
       if(p.classId==='summoner')this.clearOwnerRetinue(p.id);
       if(p.classId==='ranger')this.clearOwnerRanger(p.id);
       if(p.classId==='alchemist')this.clearOwnerAlchemy(p.id);
+      if(p.classId==='tank')this.classKits.dropTankWall(p.id);
       if(p.classId==='heavy')this.traverse.cancelOwner(p.id,this.traverseAuthority());
       if(p.classId==='heavy')this.linework.dropOwner(p.id,{shot:id=>this.shots.get(id),remove:s=>this.removeShot(s)});
       if(p.classId==='heavy')for(const id of this.flak.cancelOwner(p.id)){const shot=this.shots.get(id);if(shot)this.removeShot(shot);}
@@ -3177,6 +3189,7 @@ export class Game {
           const hit = segmentRect(old, next, cover, s.radius);
           if (hit) wall = Math.min(wall, hit.t);
         }
+      if(s.owner!=='hostile')for(const cover of this.classKits.tankPortCovers(s.owner,this.combatTick)){const contact=constructHit(old,next,cover,s.radius);if(contact!==null)wall=Math.min(wall,contact); }
       let player: Player | undefined,
         barrier: Field | undefined,
         structure: Construct | undefined,

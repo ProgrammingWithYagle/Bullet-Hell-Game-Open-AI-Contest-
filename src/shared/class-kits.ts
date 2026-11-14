@@ -1,3 +1,5 @@
+import {TankBulwark,type BulwarkWorld,type BulwarkStatus} from './tank-bulwark.ts';
+import {portWallHit} from './tank-bulwark-port.ts';
 import type{LineworkStatus}from'./heavy-linework.ts';
 import type{FlakBurstCue}from'./heavy-flak.ts';
 import type{SniperCue}from'./soldier-sniper.ts';
@@ -29,7 +31,7 @@ import type { Player, Stats, Boss } from './game.ts';
 import type { Minions } from './minions.ts';
 const ticks = (seconds: number) => Math.ceil(seconds * HZ);
 export const RESCUE_CHARGE_TICKS = ticks(0.3) + 1;
-export type KitStatus = Partial<LineworkStatus> & {
+export type KitStatus = Partial<BulwarkStatus> & Partial<LineworkStatus> & {
   heavyClutchConverted?:number;heavyClutchHandling?:"heavy-traverse-keyed-1"|"heavy-traverse-open-1";heavyTraverseShotRequiresHandling?:"heavy-traverse-keyed-1"|"heavy-traverse-open-1";
   heavyLanyardAt?:number;heavyLanyardSequence?:number;heavyLanyardUntil?:number;heavyLanyardX?:number;heavyLanyardY?:number;heavyLanyardRemaining?:number;heavyTraverseShotPosted?:boolean;heavyTraverseShotX?:number;heavyTraverseShotY?:number;
   heavyClutchLifted?:boolean;heavyClutchUsed?:boolean;heavyClutchForfeited?:number;heavyClutchSlotsRemaining?:number;heavyClutchAt?:number;heavyClutchSequence?:number;heavyClutchBlocked?:boolean;heavyTraverseShotRequiresClutch?:boolean;
@@ -87,6 +89,8 @@ export type Construct = {
   braceUntil?: number;
   source?: string;
   halfSpan?: number;
+  bulwarkPortOffset?:number;
+  bulwarkPortHalfSpan?:number;
   follow?: boolean;
   mobile?: boolean;
   farAim?: boolean;
@@ -175,7 +179,8 @@ export type KitContext = {
   erase(point: Vec, radius: number): void;
 };
 
-export function constructHit(from: Vec, to: Vec, body: Construct, pad: number) {
+export function constructHit(from: Vec, to: Vec, body: Construct, pad: number) { return portWallHit(from,to,body,pad,closedConstructHit); }
+function closedConstructHit(from: Vec, to: Vec, body: Construct, pad: number) {
   // A conservative L1 bound contains every rotated padded wall corner. Most
   // bullets miss every construct; reject them before trigonometry/allocation.
   const halfSpan = body.halfSpan ?? 110;
@@ -233,6 +238,17 @@ export class ClassKits {
   }[] = [];
   private statuses = new Map<string, KitStatus>();
   private towers = new Map<number, Tower>();
+  private tankCarry = new TankBulwark();
+  commandTankHandling(p: Player, world: BulwarkWorld, next: Vec) { return this.tankCarry.beginHandling(p,this.towers,world,next); }
+  bulwarkStatus(p:Player,world:BulwarkWorld){return this.tankCarry.status(p,this.towers,world);}
+  tankPortStatus(id: string) { return this.tankCarry.portStatus(id); }
+  canTankPortFire(p: Player, world: BulwarkWorld) { return this.tankCarry.canPrimary(p,this.towers,world); }
+  tankPortCovers(id: string, tick: number) { return this.tankCarry.portCovers(id,this.towers,tick).flatMap(w=>{const body=this.towers.get(w.id);return body?[body]:[];}); }
+  tankPivotStatus(id: string) { return this.tankCarry.pivotStatus(id); }
+  dropTankWall(id: string) { this.tankCarry.remove(id,this.towers); }
+  tankWallCarried(id: string, tick: number) { return !!this.tankCarry.active(id, this.towers, tick); }
+  moveTankWall(p: Player, next: Vec, world: BulwarkWorld) { return this.tankCarry.move(p, next, this.towers, world); }
+  commandTankWall(p: Player, world: BulwarkWorld) { return this.tankCarry.command(p, this.towers, world); }
   private areas: Area[] = [];
   private charges = new Map<
     string,
@@ -248,6 +264,7 @@ export class ClassKits {
     this.retaliation = [];
     this.statuses.clear();
     this.towers.clear();
+    this.tankCarry.clear();
     this.areas = [];
     this.charges.clear();
   }
@@ -715,6 +732,7 @@ export class ClassKits {
     return id;
   }
   step(c: KitContext) {
+    this.tankCarry.step(c.players,this.towers,c.tick);
     this.combatClock=c.tick;this.builder.step(c,this.towers);
     this.traps.step(c);
     this.machinery.step(c,this.towers);this.machineryCues=this.machinery.cues(c);

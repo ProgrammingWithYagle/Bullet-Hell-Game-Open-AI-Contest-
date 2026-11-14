@@ -1,3 +1,4 @@
+import {portClosedPieces} from '../shared/tank-bulwark-port.ts';
 import{lineworkRenderPlan,drawLinework,lineworkProjectilePlan}from './heavy-linework-presentation.ts';
 import{lineworkIds}from'../shared/heavy-linework.ts';
 import { PostedHeavyScene, preloadPostedHeavy } from "./heavy-post-scene.ts";
@@ -1003,21 +1004,14 @@ export class CombatScene extends Phaser.Scene {
             ? 0xe9c27a
             : 0x97d8c7;
       if (cue.kind === 'wall') {
-        const span=cue.halfSpan??110;
-        const cosine = Math.cos(cue.aim),
-          sine = Math.sin(cue.aim),
-          points = [
-            [-12, -span],
-            [12, -span],
-            [12, span],
-            [-12, span],
-          ].map(
-            ([x, y]) =>
-              new Phaser.Math.Vector2(cue.x + x * cosine - y * sine, cue.y + x * sine + y * cosine),
-          );
+        const span=cue.halfSpan??110,cosine=Math.cos(cue.aim),sine=Math.sin(cue.aim);
         const folding=now<(cue.buildingUntil??0),panelColor=cue.builder?0xa6c2aa:color;
-        h.fillStyle(panelColor,folding?.06:.28).fillPoints(points, true);
-        h.lineStyle(folding?2:4,panelColor,folding?.5:1).strokePoints(points, true);
+        for(const panel of portClosedPieces(cue)){
+          const half=panel.halfSpan??110;
+          const points=[[-12,-half],[12,-half],[12,half],[-12,half]].map(([x,y])=>new Phaser.Math.Vector2(panel.x+x*cosine-y*sine,panel.y+x*sine+y*cosine));
+          h.fillStyle(panelColor,folding?.06:.28).fillPoints(points,true);
+          h.lineStyle(folding?2:4,panelColor,folding?.5:1).strokePoints(points,true);
+        }
         if(cue.builder){
           for(const side of [-1,1]){const along=side*(span-10);h.fillStyle(0xd1b46c,folding?.4:1).fillCircle(cue.x-along*sine,cue.y+along*cosine,4);}
           if(folding){const began=cue.buildingAt??cue.at,progress=Math.max(0,Math.min(1,(now-began)/Math.max(1,(cue.buildingUntil??now)-began)));h.lineStyle(3,0xd1b46c,.9).beginPath().arc(cue.x,cue.y,20,-Math.PI/2,-Math.PI/2+Math.PI*2*progress).strokePath();}

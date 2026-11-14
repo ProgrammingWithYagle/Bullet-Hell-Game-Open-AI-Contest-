@@ -1,3 +1,4 @@
+import {tankActions,tankHudLabel,tankCommitBlocked} from './tank-actions.ts';
 import{heavyActions}from'./heavy-actions.ts';
 import{heavyHudLabel}from'./ui/heavy-controls.ts';
 import {soldierHudLabel}from'./ui/soldier-controls.ts';
@@ -748,7 +749,7 @@ function update(view: View) {
   }else cadenceHost?.remove();
   const abilityList = $('abilities');
   const engineerQ=engineerQNameKey(p),engineerCharges=view.classCues.filter(c=>c.kind==='engineer-charge'&&c.owner===p.id&&c.state!=='spent'&&view.combatTick<c.until).length;
-  const machineryActions=p.classId==='soldier'?soldierActions(p,view.combatTick):p.classId==='heavy'?heavyActions(p,view.combatTick):engineerActions(p,view.classCues,view.combatTick);
+  const machineryActions=p.classId==='tank'?tankActions(p,view.combatTick):p.classId==='soldier'?soldierActions(p,view.combatTick):p.classId==='heavy'?heavyActions(p,view.combatTick):engineerActions(p,view.classCues,view.combatTick);
   const qLabel=t(machineryActions.qNameKey??(engineerQ?'skill.'+engineerQ+'.name':'ability.'+cl.abilities[0].id+'.name'))+(engineerQ==='engineer-traps-1'?' '+number(engineerCharges)+'/'+number(data.rules.engineerPathways.chargeCapacity):engineerQ==='engineer-builder-1'?' '+t('ui.engineer.builderGroups',{count:number(p.kit.builderGroups??0),capacity:number(p.skills.includes('engineer-builder-linked-1')?2:1)}):'');
   const redoubt=p.skills.includes('engineer-builder-redoubt-1'),ultimateLabel=t(redoubt?'skill.engineer-builder-redoubt-1.name':'ability.'+cl.ultimate.id+'.name');
   for(const slot of ['technique1','technique2','technique3']){const shown=machineryActions.extras.some(a=>a.key===slot),touch=document.querySelector<HTMLElement>('[data-action="'+slot+'"]');if(touch)touch.hidden=!shown;if(!shown)abilityList.querySelector('[data-ability="'+slot+'"]')?.remove();}
@@ -765,7 +766,7 @@ function update(view: View) {
       t('ability.' + cl.abilities[1].id + '.name'),
     ],
     ['ultimate', ultimateLabel, p.ultimateAt, t(redoubt?'skill.engineer-builder-redoubt-1.description':'ability.' + cl.ultimate.id + '.name')],
-    ...machineryActions.extras.map(a=>[a.key,(p.classId==='soldier'?soldierHudLabel(p,a.key,view.combatTick):p.classId==='heavy'?heavyHudLabel(p,a.key,view.combatTick):t('skill.'+a.id+'.name')),a.at,t('skill.'+a.id+'.description')] as const),
+    ...machineryActions.extras.map(a=>[a.key,(p.classId==='tank'?tankHudLabel(p,a.key,view.combatTick):p.classId==='soldier'?soldierHudLabel(p,a.key,view.combatTick):p.classId==='heavy'?heavyHudLabel(p,a.key,view.combatTick):t('skill.'+a.id+'.name')),a.at,t('skill.'+a.id+'.description')] as const),
   ] as const) {
     let e = abilityList.querySelector<HTMLElement>('[data-ability="' + key + '"]');
     if (!e) {
@@ -773,7 +774,7 @@ function update(view: View) {
       e.dataset.ability = key;
       abilityList.append(e);
     }
-    const rangerBlocked=(key==='q'&&machineryActions.qBlocked)||!!machineryActions.extras.find(a=>a.key===key)?.blocked||rangerCommitBlocked(p,key,view.combatTick)||alchemyCommitBlocked(p,key,view.combatTick)||(key==='q'&&!machineryActions.command&&p.skills.includes('engineer-traps-1')&&view.classCues.filter(c=>c.kind==='engineer-charge'&&c.owner===p.id&&c.state!=='spent'&&view.combatTick<c.until).length>=data.rules.engineerPathways.chargeCapacity);
+    const rangerBlocked=(key==='q'&&machineryActions.qBlocked)||!!machineryActions.extras.find(a=>a.key===key)?.blocked||rangerCommitBlocked(p,key,view.combatTick)||alchemyCommitBlocked(p,key,view.combatTick)||tankCommitBlocked(p,key)||(key==='q'&&!machineryActions.command&&p.skills.includes('engineer-traps-1')&&view.classCues.filter(c=>c.kind==='engineer-charge'&&c.owner===p.id&&c.state!=='spent'&&view.combatTick<c.until).length>=data.rules.engineerPathways.chargeCapacity);
     e.className = at <= view.combatTick && !(key==='sprint'&&p.sprintExhausted) && !rangerBlocked ? 'ability ready' : 'ability';
     e.title = name || label;
     if((engineerQ&&key==='q')||key==='technique1'||key==='technique2'||key==='technique3')e.lang='en';else e.removeAttribute('lang');
@@ -786,6 +787,12 @@ function update(view: View) {
       ' ' +
       (at > view.combatTick ? clock((at - view.combatTick) / 30) : rangerBlocked ? '—' : '✓');
     if (e.textContent !== value) e.textContent = value;
+  }
+  for(const action of ['q','e','ultimate','dodge','reload']){
+    const button=document.querySelector<HTMLButtonElement>('.touch-buttons [data-action="'+action+'"]');
+    if(!button)continue;
+    if(tankCommitBlocked(p,action)){button.dataset.bulwarkDisabled='';button.disabled=true;}
+    else if(button.dataset.bulwarkDisabled!==undefined){delete button.dataset.bulwarkDisabled;button.disabled=false;}
   }
   $('squad').textContent =
     t('ui.players') +

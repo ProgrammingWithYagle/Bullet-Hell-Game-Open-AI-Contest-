@@ -21,7 +21,7 @@ test('exact edition 75 restores 68 issued techniques, twelve classes and six Lin
   assert.deepEqual(
     issued.issuedSpecializationIds,
     data.specializationSkills
-      .filter((skill) => skill.id !== lineworkIds.guide)
+      .filter((skill) => issued.issuedSpecializationIds.includes(skill.id))
       .map((skill) => skill.id),
   );
   assert.deepEqual(

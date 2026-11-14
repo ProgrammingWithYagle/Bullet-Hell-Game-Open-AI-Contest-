@@ -1,6 +1,14 @@
 # Changelog
 
-Development build **2026.11.12-heavy-corner-guide**, protocol 76. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.13-tank-mobile-bulwark**, protocol 77. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-13 — Carry and work an existing shield
+
+### Tank Mobile Bulwark
+
+- Shoulder Wall folds an owned Protective Wall into a narrow carried shield for 2 SP after Broad Guard at 3 earned.
+- Choose Braced Pivot or Firing Port for 2 SP at 5 earned. Pivot commits a stationary turn; the port trades exposed center cover for paid, aligned primary fire.
+- The original wall health, first expiry, Q recovery and ammunition remain. Edition 76 local ownership and all twelve profile/history rosters restore before edition 75.
 
 ## 2026-11-12 — Haul through a supported turn
 
