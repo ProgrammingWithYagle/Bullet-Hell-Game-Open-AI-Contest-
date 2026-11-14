@@ -1,3 +1,4 @@
+import {bulwarkTrialWorld,planBulwarkStaging,trialCastClear} from './tank-bulwark-staging.ts';
 import assert from 'node:assert/strict';
 import {setTimeout as sleep} from 'node:timers/promises';
 import {data} from '../../src/shared/game.ts';
@@ -33,8 +34,7 @@ export async function earnedBulwarkFlow(transport:BulwarkTransport,handling:Bulw
  const earned=()=>player().sp+spentBulwarkSP(player());
  const panels=()=>view().classCues.filter((cue):cue is Construct=>cue.kind==='wall'&&cue.owner===transport.id);
  const sound=(id:string)=>transport.events.some(event=>event.type==='sound'&&event.owner===transport.id&&event.id===id);
- const world=()=>{const current=view(),arena=runtimeArena(current.arenaId,current.run.difficulty);return {...arena,tick:current.combatTick,
-   obstacles:[...arena.obstacles,...gateObstacles(current.bossCues,current.combatTick),...endlessSolids(current.bossCues,current.combatTick)]};};
+ const world=()=>bulwarkTrialWorld(view());
  const acknowledge=async(input:Partial<InputFrame>,label:string)=>{const sequence=transport.input(input);await restWait(()=>player().ack>=sequence,label);return sequence;};
  const menu=await bulwarkMenu(player),earnedSequence=[3];
  async function buy(item:string){await menu.inspect(item,true,async()=>{const result=await transport.purchase({kind:'skill',item});assert(result.ok,JSON.stringify(result));});}
@@ -53,14 +53,17 @@ export async function earnedBulwarkFlow(transport:BulwarkTransport,handling:Bulw
   }
   await acknowledge({aim},label+' stops at an acknowledged position');
  }
- function castBearing(){
-  const p=player(),w=world();
-  for(const aim of [-Math.PI/2,0,Math.PI,Math.PI/2,-Math.PI/4,Math.PI/4]){
-   const n={x:Math.cos(aim),y:Math.sin(aim)};
-   // The issued panel is placed by its actual Q; this only selects clear ordinary ground for the trial.
-   const plausible=[50,65,80,100].every(length=>wallFootprintClear(w,{x:p.x+n.x*length,y:p.y+n.y*length},n,110));
-   if(plausible)return aim;
-  }throw Error('No full-width ordinary Q route from the acknowledged deployment');
+ const observations:{tag:string;tick:number;body:Vec;ready:boolean|undefined;panels:{id:number;x:number;y:number;health:number;until:number}[]}[]=[];
+ const observe=(tag:string)=>{observations.push({tag,tick:view().combatTick,body:point(player()),ready:player().kit.bulwarkCanLift,panels:panels().map(wall=>({id:wall.id,x:wall.x,y:wall.y,health:wall.health,until:wall.until}))});};
+ async function stageForQ(){
+  for(let attempt=0;attempt<3;attempt++){
+   const threats=[...(view().boss.health>0?[view().boss]:[]),...view().minions.filter(actor=>actor.health>0)];
+   const route=planBulwarkStaging(world(),player(),threats);assert(route,'Public geometry has a reachable clear Q staging route');
+   observe('staging-'+attempt+'-'+route.points.length+'-waypoints');
+   for(const target of route.points)await walk(target,route.aim,'Walk to real clear Q staging ground');
+   await acknowledge({aim:route.aim},'Still at actual Q staging ground');
+   if(trialCastClear(world(),player(),route.aim))return route.aim;
+  }throw Error('Actual terrain changed during all three bounded Q staging attempts');
  }
  async function liftAndWalk(){
   await acknowledge({},'Stopped policy before actual Protective Wall');
@@ -70,12 +73,25 @@ export async function earnedBulwarkFlow(transport:BulwarkTransport,handling:Bulw
    const ordinary=restRaidInput(view(),player(),[...transport.observed.values()]);
    transport.input({...ordinary,q:false,fire:false});await sleep(25);
   }
-  await acknowledge({},'Stopped recovery policy before the new Q');const aim=castBearing();
+  await acknowledge({},'Stopped recovery policy before the new Q');
+  await restWait(()=>view().combatTick>=Math.max(player().dashUntil,player().reloadAt),'Original active hand/movement commitment finishes before staging');
+  const aim=await stageForQ();
   await acknowledge({q:true,aim},'Issued Q acknowledged');
   await restWait(()=>panels().length===1,'Original Protective Wall appears in the separate public cue update');
+  observe('original-Q-visible');
   const original=structuredClone(panels()[0]),qAt=player().qAt,n={x:Math.cos(original.aim),y:Math.sin(original.aim)};
   await walk({x:original.x-n.x*32,y:original.y-n.y*32},aim,'Approach actual paid wall rear');
-  await restWait(()=>player().kit.bulwarkCanLift===true,'Authority admits the actual stationary rear approach');
+  observe('original-rear-arrival');
+  const liftDeadline=Date.now()+6000;
+  while(player().kit.bulwarkCanLift!==true){
+   const live=panels().find(wall=>wall.id===original.id);observe('await-actual-lift');
+   assert(live&&live.health>0&&live.until>view().combatTick,'The original panel must survive until its actual lift');
+   assert(Date.now()<liftDeadline,'Authority admits the actual stationary rear approach');
+   const rear={x:live.x-n.x*32,y:live.y-n.y*32};
+   if(distance(player(),rear)>1.2)await walk(rear,aim,'Re-approach the actual displaced panel rear');
+   else{await acknowledge({aim},'Actual stationary lift readiness frame');await sleep(25);}
+  }
+  observe('lift-ready');
   const ammo=player().ammo;
   await acknowledge({technique1:true,aim},'Separate actual lift command');
   await restWait(()=>player().kit.bulwarkCarried===true,'Acknowledged original panel is carried');
@@ -86,7 +102,7 @@ export async function earnedBulwarkFlow(transport:BulwarkTransport,handling:Bulw
   const direction=candidates.find(direction=>{
    for(let i=1;i<=12;i++){
     const body={x:start.x+direction.x*i*3,y:start.y+direction.y*i*3};
-    if(distance(moveBody(start,{x:body.x-start.x,y:body.y-start.y},data.rules.playerRadius,w.obstacles),body)>.1)return false;
+    if(distance(moveBody(start,{x:body.x-start.x,y:body.y-start.y},data.rules.playerRadius,[...w.obstacles]),body)>.1)return false;
     if(!wallFootprintClear(w,{x:body.x+n.x*32,y:body.y+n.y*32},n,110))return false;
    }return true;
   });assert(direction,'A real full-width setdown route exists');
@@ -167,7 +183,7 @@ export async function earnedBulwarkFlow(transport:BulwarkTransport,handling:Bulw
   if(transport.end){transport.end();await restWait(()=>view().phase==='defeat','Real room host exit');assert.equal(panels().length,0);}
   return {passed:true,handling,actualEarnedSequence:earnedSequence,actualClears:1,spent:spentBulwarkSP(player()),earlyCarryAtEarned3:true,
    earlyMoved:early.moved,laterMoved:current.moved,turned,paidPortRounds,pausedCommandsDiscarded:true,originalPanelUntil:current.original.until,
-   originalQRecovery:current.qAt,originalLifetimeTicks:current.original.until-current.original.at,menuObservations:menu.observations};
- }catch(error){console.error(JSON.stringify({error:error instanceof Error?error.message:String(error),handling,phase:transport.view()?.phase,combatTick:transport.view()?.combatTick,player:transport.view()?.players.find(p=>p.id===transport.id),panels:transport.view()?.classCues.filter(c=>c.owner===transport.id)}));throw error;}
+   originalQRecovery:current.qAt,originalLifetimeTicks:current.original.until-current.original.at,menuObservations:menu.observations,observations};
+ }catch(error){console.error(JSON.stringify({error:error instanceof Error?error.message:String(error),handling,observations,arenaId:transport.view()?.arenaId,boss:transport.view()?.boss,bossCues:transport.view()?.bossCues,phase:transport.view()?.phase,combatTick:transport.view()?.combatTick,player:transport.view()?.players.find(p=>p.id===transport.id),panels:transport.view()?.classCues.filter(c=>c.owner===transport.id)}));throw error;}
  finally{await menu.close();}
 }
