@@ -1,0 +1,29 @@
+# Tank Mobile Bulwark
+
+Tank can turn an existing Protective Wall into carried cover, then choose a committed turn or a vulnerable firing opening. These are three implemented operations in an unfinished class. Further paths and human acceptance remain open.
+
+| Purchase | Acquisition | Operation and cost |
+| --- | --- | --- |
+| Shoulder Wall | 2 SP after Broad Guard; ordinary 3 earned SP | Approach the original wall rear and use Action 1 to fold and carry it. Both hands stay occupied. A separate Action 1 attempts a clear full-width setdown. |
+| Braced Pivot | Optional 2 SP after Shoulder Wall, gate 5 earned SP; ordinary Short purchase at 9 | While still, Action 2 captures the aimed bearing and turns over twelve combat intervals. Movement or displacement interrupts it. Recovery is sixty intervals. |
+| Firing Port | Alternative 2 SP with the same gate | While still, Action 2 exposes a central opening over six intervals. Aligned primary fire spends ordinary ammunition. Another Action 2 closes over six intervals. The body is exposed throughout opening and closing. |
+
+Shoulder Wall retains the same panel IDs, health, first expiry and Q recovery. Its carried half-span is 55; full-width setdown restores the original geometry. It adds no second shield, refreshed lifetime or refunded rounds. Bounds, masonry and lava govern the complete footprint. The original five-second Protective Wall lifetime remains.
+
+Braced Pivot and Firing Port exclude each other. Pivot tests the swept turn, not only its endpoint, and setdown does not reset its recovery. Port fire must stay within ten degrees of the original heading. Thin central hostile rounds reach the body; rims and rounds too large for the opening strike physical panel pieces once. Wide owned patterns can clip those pieces without damaging their own wall or refunding ammunition. Walking or forced displacement closes the port and blocks primary. Action 1 has priority.
+
+Cornerstone carries its two original panels together. Their individual damage and missing-member state persist. The original three Tank transformations, equipment, numerical General tree, four shared techniques, 27-SP cap, one-capstone rule and saved control/HUD choices remain. Owner loss, expiry, death, disconnect and phase cleanup retire dependent work. Only the owner receives handling readiness and commands; all peers receive the actual physical panels and opening. Prediction and drawing use acknowledged geometry.
+
+## Verification boundary
+
+Source **137dc2c023eb99adefb4574ba746b664ea8f56f8**, build **2026.11.13-tank-mobile-bulwark**, protocol **77**, catalog **72**, content `44b615d4bdf78e469135ba5c30b84a0af5c07b0681c46856227daf633e9347be`, runtime `c282ef8bf1cd5230d490dea47e27f27f60ee2b42623f25202f1f6ccb7576b7cb`, source snapshot `b19ef349842e1c15b03a94314dfe8deb93c9a1a0d1b13a4cf94d0e2cd40e5e47`.
+
+The complete local gate passed **2469 tests and all seven checks**. Both exact-source workflows passed every job/step, decoded log and own runtime artifact. Each audience binds **2068 files** and passed HTTP plus six earned Short cases: all three choices through a whole served optimized worker and a real non-host room. These are actual 3→9 SP purchases without checkpoint imports. [Frozen proof](../reviews/tank-mobile-bulwark-r2-2026-11-14/frozen-verification.json), [source CI](../reviews/tank-mobile-bulwark-r2-2026-11-14/source-ci.json).
+
+The initial 0915 source passed 2426/all 7 and exact-source CI, but its native attempt finished 12 pass/2 fail across 14 composed cases. Public peer Pivot could not cast from cramped current ground. Testing peer Port never observed lift readiness before its original panel disappeared; that cause is unproven. The corrected harness plans real terrain-safe walking, checks the actual Q ray and original-panel survival, and records observations. Its 43 controlled staging cases and six focused worker/peer cases passed. Game/content/clocks/deadlines are unchanged. Original failures, drivers and receipts remain in [raw evidence](../reviews/tank-mobile-bulwark-r2-2026-11-14/raw-evidence-binding.json). The failed pair was retired through checked retention.
+
+Actual controlled 27 SP purchases verified 2334 legal configurations: Engineer 841, Soldier 853, Heavy 604 and Tank 36. Tank has 12 plain-carry, 12 Pivot and 12 Port configurations with optional shared mobility. All 2298 prior signatures remain. This excludes numerical General variations and does not rank builds. [Census](../reviews/tank-mobile-bulwark-r2-2026-11-14/build-census.json).
+
+The 72 natural Short runs cover six arenas, Baby/Normal, two seeds and all three handling policies. Plain carry recorded 19 victories/5 defeats; Pivot 18/6; Port 18/6 with 213 paid port rounds. All 72 complete raw rows match the earlier research policy. Thirty-six controlled arena/difficulty projectile pairs passed. These local imports are separate from native transport proof and human balance acceptance. [Natural runs](../reviews/tank-mobile-bulwark-r2-2026-11-14/natural-short.json), [geometry](../reviews/tank-mobile-bulwark-r2-2026-11-14/geometry.json). The earlier Tethered 126-pair comparison still has raw shield/counter differences and allMeasuredFieldsMatch=false.
+
+Protocol 77 admits exact 76/content345593d5c0275ad0d5c4a794e08cc1e7d7646e8ae8c597644d47f40540376848/catalog 69/four shared General techniques before 75 across ownership and all twelve profile/history rosters. The next content edition must admit exact 77/content44b615d4bdf78e469135ba5c30b84a0af5c07b0681c46856227daf633e9347be/catalog 72/four shared General techniques before 76. Local imports never become online proof. New owned labels use the existing English pilot; native-language review remains open. Human/rendered/device/listening/motion/final-balance acceptance remains open.

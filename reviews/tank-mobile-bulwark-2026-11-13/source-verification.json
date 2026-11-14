@@ -1,0 +1,74 @@
+{
+  "passed": true,
+  "sourceCommit": "0915e5635a2afbf6e347f9f5a4e681fd56bfcf5a",
+  "protocol": 77,
+  "contentRevision": "44b615d4bdf78e469135ba5c30b84a0af5c07b0681c46856227daf633e9347be",
+  "buildId": "2026.11.13-tank-mobile-bulwark",
+  "runtimeSourceSha256": "c282ef8bf1cd5230d490dea47e27f27f60ee2b42623f25202f1f6ccb7576b7cb",
+  "sourceSnapshotSha256": "60f6c1a478be7898deed209203648669e5aa72d8761027756ce51ebedfbd5611",
+  "verificationDriverSha256": "5339069df1bc0ee829e5853286a777053ea4b0db1b51eaf16dde7278e43546c5",
+  "testFiles": 371,
+  "testFileConcurrency": 8,
+  "testResults": {
+    "tests": 2426,
+    "pass": 2426,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "checks": [
+    {
+      "name": "Stage 1 authored content",
+      "passed": true,
+      "elapsedMs": 56287
+    },
+    {
+      "name": "Playable main-story word count",
+      "passed": true,
+      "elapsedMs": 131
+    },
+    {
+      "name": "TypeScript",
+      "passed": true,
+      "elapsedMs": 2494
+    },
+    {
+      "name": "Early chapter build feasibility",
+      "passed": true,
+      "elapsedMs": 474
+    },
+    {
+      "name": "Headless rules and real-network integration",
+      "passed": true,
+      "elapsedMs": 770519
+    },
+    {
+      "name": "Production client build",
+      "passed": true,
+      "elapsedMs": 3919
+    },
+    {
+      "name": "Emitted encounter atlas contracts",
+      "passed": true,
+      "elapsedMs": 1084
+    }
+  ],
+  "localGate": {
+    "passed": true,
+    "actualCompleteExecution": true,
+    "result": "gate157-result.json",
+    "proof": "gate157-runtime-verification.json",
+    "log": "gate157.log",
+    "originalPassing150Retained": true,
+    "originalFailed137And140Preserved": true,
+    "precommitEOFCorrection": "precommit-format-failure156.json"
+  },
+  "sourceByteBinding": "source-binding.json",
+  "preexistingPrivateSQLiteRelatedFilesVerified": 213,
+  "privateHashesRemainLocalOnly": true,
+  "serviceYardExact": true,
+  "priorReviewScope": "reviews/heavy-corner-guide-r2-2026-11-12",
+  "rollbackArchiveSha256": "36b5f239ecc30afbfc5d56e60748df1464cd56641cf6a098cb2188aec2871fd6",
+  "humanAcceptance": false
+}

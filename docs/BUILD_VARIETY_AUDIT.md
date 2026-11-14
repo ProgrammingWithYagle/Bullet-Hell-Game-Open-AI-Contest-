@@ -1,12 +1,17 @@
 # Scoped build variety audit
 
-Actual canonical purchases verified **2,298 distinct builds** under the 27-SP cap across Engineer, Soldier and Heavy specializations and four shared techniques. All 2,262 prior builds remain legal. Corner Guide adds 36 Heavy builds, with 12 each for bare hauling, Straight Yoke and Open Sheave. The census covers specialized operations and optional shared mobility. [Build signatures and purchases](../reviews/heavy-corner-guide-r2-2026-11-12/build-census.json).
+Actual canonical purchases verified **2,334 distinct builds** under 27 SP across Engineer, Soldier, Heavy and Tank specializations with four shared techniques. All 2,298 prior signatures remain legal. Tank adds 36 configurations:12 each for plain Shoulder Wall, Braced Pivot and Firing Port. These count specialized operations and optional shared mobility; they exclude numerical General variations and do not measure natural acquisition or balance. [Census](../reviews/tank-mobile-bulwark-r2-2026-11-14/build-census.json).
 
 | Class | Distinct builds | Verified purchases |
 | --- | ---: | ---: |
 | Engineer | 841 | 5,598 |
 | Soldier | 853 | 5,547 |
 | Heavy | 604 | 3,784 |
+| Tank | 36 | 168 |
+
+Tank's 72 natural Short policy trials include 19/5 plain, 18/6 Pivot and 18/6 Port victories/defeats. Port spent 213 actual primary rounds through the opening. All 72 raw rows match their earlier research policy; different purchases and defeats remain. Thirty-six controlled geometry pairs passed. Separate frozen worker/peer runs prove actual 3→9 SP purchase and owned operation for each handling. [Tank design and limits](TANK_MOBILE_BULWARK_DESIGN.md), [natural runs](../reviews/tank-mobile-bulwark-r2-2026-11-14/natural-short.json), [geometry](../reviews/tank-mobile-bulwark-r2-2026-11-14/geometry.json).
+
+## Earlier Heavy studies
 
 All 43 controlled cases passed. This includes 26 arena and difficulty pairs where the straight cable broke behind cover, ten coverless pairs where a wall-face guide diverted the first haul by about 63–64 degrees, four fitting combinations and three admission or release cases. The 24 paired Baby Short runs include ten guides actually bought at 15 SP and both hauls. Triage corner runs include a victory and a defeat. The four Ossuary corner runs ended before the first clear. The Crown wall-face guide runs reached four clears, the matched direct runs reached two, and all four ended in defeat. [Geometry](../reviews/heavy-corner-guide-r2-2026-11-12/geometry.json), [corner runs](../reviews/heavy-corner-guide-r2-2026-11-12/seeded-short-corner.json), [wall-face runs](../reviews/heavy-corner-guide-r2-2026-11-12/seeded-short-face.json).
 
