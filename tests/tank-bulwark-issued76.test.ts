@@ -116,11 +116,11 @@ test('edition 76 rejects future Tank ownership, mismatched editions and server e
     assert.throws(() => Game.restoreOffline({ ...issuedCheckpoint, ...patch }), /versionMismatch/);
 });
 
-for(const handling of ['none','pivot','port'] as const)test('actual current77 Tank '+handling+' purchases restore only local ownership with no invented live shield',()=>{
+for(const handling of ['none','pivot','port'] as const)test('actual current-edition Tank '+handling+' purchases restore only local ownership with no invented live shield',()=>{
   const game=new Game({mode:'endless',seed:41});game.encounter=9;const player=game.addPlayer('solo','Controlled current Tank restore','tank');
   const ids=['tank-protection-1',bulwarkIds.entry,...(handling==='none'?[]:[bulwarkIds[handling]])];
   for(const item of ids)assert(game.transact(player.id,{id:item,kind:'skill',item}).ok);
-  const checkpoint=game.offlineCheckpoint()!;assert(checkpoint.practiceOnly);assert.equal(checkpoint.protocolVersion,77);assert.equal(checkpoint.contentRevision,CONTENT_REVISION);
+  const checkpoint=game.offlineCheckpoint()!;assert(checkpoint.practiceOnly);assert.equal(checkpoint.protocolVersion,PROTOCOL);assert.equal(checkpoint.contentRevision,CONTENT_REVISION);
   const restored=Game.restoreOffline(structuredClone(checkpoint)),owner=restored.players.get('solo')!;
   assert.deepEqual(owner.skills,ids);assert.equal(restored.classCues().length,0);assert.equal(restored.shots.size,0);
   assert.equal(restored.kitStatus(owner.id).bulwarkCarried,false);assert.deepEqual(restored.kitStatus(owner.id).bulwarkPanelIds,[]);

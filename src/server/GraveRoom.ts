@@ -380,7 +380,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
         }
         if (hostile.length) shared.push({ type: 'remove', ids: hostile });
         for (const [owner, ids] of own) add(owner, { type: 'remove', ids });
-      } else if (event.type === 'sound' && event.id.startsWith('weapon-')) {
+      } else if (event.type === 'sound' && (event.id.startsWith('weapon-')||event.id.startsWith('tank-intercept-'))) {
         if (event.owner) add(event.owner, event);
       } else shared.push(event);
     }

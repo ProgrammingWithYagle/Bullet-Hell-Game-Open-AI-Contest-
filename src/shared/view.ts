@@ -93,10 +93,16 @@ export type View = {
   accord: Game['accord'];
 };
 /** Anchor coordinates and the friendly projectile ID travel only to the Lineworker. */
+export function splitInterceptorKit(kit:KitStatus){
+  if(kit.interceptorPhase===undefined)return {shared:kit,owner:undefined};
+  const {interceptorPhase,interceptorMode,interceptorHeading,interceptorStartedAt,interceptorReadyAt,interceptorExpiresAt,interceptorScreenUntil,interceptorMotionX,interceptorMotionY,interceptorInputDown,interceptorCanArm,interceptorCanLaunch,interceptorCanCrossLeft,interceptorCanCrossRight,...shared}=kit;
+  return {shared,owner:{interceptorPhase,interceptorMode,interceptorHeading,interceptorStartedAt,interceptorReadyAt,interceptorExpiresAt,interceptorScreenUntil,interceptorMotionX,interceptorMotionY,interceptorInputDown,interceptorCanArm,interceptorCanLaunch,interceptorCanCrossLeft,interceptorCanCrossRight}};
+}
 export function splitBulwarkKit(kit:KitStatus){
-  if(kit.bulwarkCarried===undefined)return {shared:kit,owner:undefined};
-  const {bulwarkCarried,bulwarkCanLift,bulwarkCanSet,bulwarkCanHandle,bulwarkPrimaryReady,bulwarkPortPhase,bulwarkRecoveryAt,bulwarkCommitAt,bulwarkCommitUntil,bulwarkPanelUntil,bulwarkHeading,bulwarkPanelIds,...shared}=kit;
-  return {shared,owner:{bulwarkCarried,bulwarkCanLift,bulwarkCanSet,bulwarkCanHandle,bulwarkPrimaryReady,bulwarkPortPhase,bulwarkRecoveryAt,bulwarkCommitAt,bulwarkCommitUntil,bulwarkPanelUntil,bulwarkHeading,bulwarkPanelIds}};
+  const base=splitInterceptorKit(kit);
+  if(base.shared.bulwarkCarried===undefined)return base;
+  const {bulwarkCarried,bulwarkCanLift,bulwarkCanSet,bulwarkCanHandle,bulwarkPrimaryReady,bulwarkPortPhase,bulwarkRecoveryAt,bulwarkCommitAt,bulwarkCommitUntil,bulwarkPanelUntil,bulwarkHeading,bulwarkPanelIds,...shared}=base.shared;
+  return {shared,owner:{...base.owner,bulwarkCarried,bulwarkCanLift,bulwarkCanSet,bulwarkCanHandle,bulwarkPrimaryReady,bulwarkPortPhase,bulwarkRecoveryAt,bulwarkCommitAt,bulwarkCommitUntil,bulwarkPanelUntil,bulwarkHeading,bulwarkPanelIds}};
 }
 export function splitLineworkKit(kit: KitStatus) {
   const base=splitBulwarkKit(kit);

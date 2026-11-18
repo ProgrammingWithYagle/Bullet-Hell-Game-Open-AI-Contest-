@@ -1,0 +1,16 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {interceptorIds} from '../src/shared/tank-interceptor.ts';
+import type {Construct} from '../src/shared/class-kits.ts';
+import {distance} from '../src/shared/geometry.ts';
+import {interceptionFixture,point} from './helpers/tank-interceptor-fixture.ts';
+for(const choice of ['forward','crossing','standfast'] as const)for(const handling of ['none','pivot','port'] as const)test(choice+' screens after an actual '+handling+' wall lift and setdown, preserving original paid panels',()=>{
+ const wallId=handling==='none'?'tank-bulwark-carry-1':'tank-bulwark-'+handling+'-1',f=interceptionFixture({choice,extra:[wallId]});
+ f.step({q:true});const original=f.g.classCues().filter((cue):cue is Construct=>cue.kind==='wall'&&cue.owner===f.p.id);assert.equal(original.length,1);const wall=original[0],target={x:wall.x-Math.cos(wall.aim)*32,y:wall.y-Math.sin(wall.aim)*32};
+ for(let n=0;distance(f.p,target)>.4;n++){assert(n<60);const size=Math.max(distance(f.p,target),f.g.movementSpeed(f.p)/30);f.step({moveX:(target.x-f.p.x)/size,moveY:(target.y-f.p.y)/size});}f.step();f.step({technique1:true});assert(f.g.classKits.tankWallCarried(f.p.id,f.g.combatTick));
+ const control=interceptionFixture({choice,extra:[wallId]});control.step({e:true});const issuedRecovery=control.p.eAt-control.g.combatTick;assert(issuedRecovery>0);const qAt=f.p.qAt,ammo=f.p.ammo;f.step({technique3:true});assert(!f.status());assert.equal(f.p.eAt,0);assert.equal(f.g.kitStatus(f.p.id).interceptorCanArm,false);f.step({technique1:true});assert(!f.g.classKits.tankWallCarried(f.p.id,f.g.combatTick));const start=f.launch(-Math.PI/2);
+ const current=f.g.classCues().find((cue):cue is Construct=>cue.kind==='wall'&&cue.id===wall.id);assert(current);assert.equal(current.health,wall.health);assert.equal(current.until,wall.until);assert.equal(current.maxHealth,wall.maxHealth);assert.equal(f.p.qAt,qAt);assert.equal(f.p.ammo,ammo);assert.equal(f.p.eAt-start.at,issuedRecovery);
+});
+for(const choice of ['forward','crossing','standfast'] as const)test(choice+' ready preparation gives way to the original Wake Guard E cast',()=>{const f=interceptionFixture({choice,talent:'tank-protection-3'});f.arm();f.step({e:true});assert(!f.status());assert(f.p.eAt>f.g.combatTick);assert(f.p.invulnerableUntil>f.g.combatTick);assert(f.g.classCues().some(c=>c.kind==='wall'&&c.source==='wake'));});
+test('owned idle readiness reflects the hands-free standing requirement of the actual command',()=>{const f=interceptionFixture();f.step({fire:true});assert.equal(f.g.kitStatus(f.p.id).interceptorCanArm,false);f.step({technique3:true,fire:true});assert(!f.status());assert.equal(f.p.eAt,0);f.step();assert.equal(f.g.kitStatus(f.p.id).interceptorCanArm,true);f.step({moveY:1});assert.equal(f.g.kitStatus(f.p.id).interceptorCanArm,false);});
+test('ready launch status requires releasing the actual primary trigger',()=>{const f=interceptionFixture();f.arm();f.step({fire:true});assert.equal(f.status()?.phase,'ready');assert.equal(f.g.kitStatus(f.p.id).interceptorCanLaunch,false);f.step({technique3:true,fire:true});assert.equal(f.status()?.phase,'ready');assert.equal(f.p.eAt,0);f.step();assert.equal(f.g.kitStatus(f.p.id).interceptorCanLaunch,true);});

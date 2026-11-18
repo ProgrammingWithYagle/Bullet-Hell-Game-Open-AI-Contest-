@@ -843,7 +843,21 @@ export class CombatScene extends Phaser.Scene {
         this.constructImages.delete(id);
       }
     drawHeavySeam(h,this.heavySeam.frame(view,this.localId),now,this.highContrast);
+    const interceptOwner=view.players.find(p=>p.id===this.localId);
+    if(interceptOwner&&['winding','ready'].includes(interceptOwner.kit.interceptorPhase??'')&&now<(interceptOwner.kit.interceptorExpiresAt??0)){
+      const k=interceptOwner.kit,a=k.interceptorHeading??interceptOwner.aim,c=Math.cos(a),s=Math.sin(a),x=interceptOwner.x+c*24,y=interceptOwner.y+s*24;
+      h.lineStyle(2,this.highContrast?0xffffff:0xb9d5d0,.45).lineBetween(x+s*64,y-c*64,x-s*64,y+c*64);
+      if(k.interceptorPhase==='winding'){const progress=Math.max(0,Math.min(1,(now-(k.interceptorStartedAt??now))/Math.max(1,(k.interceptorReadyAt??now)-(k.interceptorStartedAt??now))));h.lineStyle(2,0xd9c08d,.8).beginPath().arc(interceptOwner.x,interceptOwner.y,18,-Math.PI/2,-Math.PI/2+progress*Math.PI*2).strokePath();}
+    }
     for (const cue of view.classCues) {
+      if(cue.kind==='tank-intercept-screen'){
+        if(now>=cue.until)continue;
+        const c=Math.cos(cue.aim),s=Math.sin(cue.aim),color=this.highContrast?0xffffff:cue.owner===this.localId?0xcbd8b6:0x9fc7cf;
+        const points=[[-cue.thickness,-cue.halfSpan],[cue.thickness,-cue.halfSpan],[cue.thickness,cue.halfSpan],[-cue.thickness,cue.halfSpan]].map(([x,y])=>new Phaser.Math.Vector2(cue.x+x*c-y*s,cue.y+x*s+y*c));
+        h.fillStyle(color,.32).fillPoints(points,true);h.lineStyle(3,color,.95).strokePoints(points,true);
+        for(const end of [-1,1]){const x=cue.x-s*cue.halfSpan*end,y=cue.y+c*cue.halfSpan*end;h.lineStyle(4,0xd4bd87,.9).lineBetween(x-c*8,y-s*8,x+c*8,y+s*8);}
+        continue;
+      }
       if(cue.kind==='engineer-builder-plan'||cue.kind==='engineer-builder-work'){
         const work=cue.kind==='engineer-builder-work',color=cue.rejected?0xd78965:work?0xa9d7b5:0xd8c28a;
         if(work||cue.owner===this.localId){

@@ -788,7 +788,7 @@ function update(view: View) {
       (at > view.combatTick ? clock((at - view.combatTick) / 30) : rangerBlocked ? '—' : '✓');
     if (e.textContent !== value) e.textContent = value;
   }
-  for(const action of ['q','e','ultimate','dodge','reload']){
+  for(const action of ['q','e','ultimate','dodge','reload','fire','technique1','technique2']){
     const button=document.querySelector<HTMLButtonElement>('.touch-buttons [data-action="'+action+'"]');
     if(!button)continue;
     if(tankCommitBlocked(p,action)){button.dataset.bulwarkDisabled='';button.disabled=true;}

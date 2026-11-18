@@ -6,7 +6,7 @@ const builder='engineer-builder-1',longspan='engineer-builder-longspan-1',wings=
 const replacesTurrets=(id:string)=>catalog.skills.some(s=>s.id===id&&(('transform'in s&&s.transform==='crossfire-pair')||('extraTurrets'in s.effects&&(s.effects.extraTurrets??0)>0)));
 /** Same conflicts for inspection, authoritative spending and boundary restoration. */
 export function conflictingSkill(owned:readonly string[],candidate:string):string|undefined {
-  return owned.find(id=>id!==candidate&&((['tank-bulwark-pivot-1','tank-bulwark-port-1'].includes(candidate)&&['tank-bulwark-pivot-1','tank-bulwark-port-1'].includes(id))||
+  return owned.find(id=>id!==candidate&&((["tank-interceptor-crossing-1","tank-interceptor-standfast-1"].includes(candidate)&&["tank-interceptor-crossing-1","tank-interceptor-standfast-1"].includes(id))||(['tank-bulwark-pivot-1','tank-bulwark-port-1'].includes(candidate)&&['tank-bulwark-pivot-1','tank-bulwark-port-1'].includes(id))||
     ((candidate==='heavy-linework-guide-1'&&id==='heavy-linework-reserve-1')||(candidate==='heavy-linework-reserve-1'&&id==='heavy-linework-guide-1'))||
     ((candidate==='heavy-linework-yoke-1'&&id==='heavy-linework-sheave-1')||(candidate==='heavy-linework-sheave-1'&&id==='heavy-linework-yoke-1'))||
     ((candidate==='heavy-traverse-keyed-1'&&id==='heavy-traverse-open-1')||(candidate==='heavy-traverse-open-1'&&id==='heavy-traverse-keyed-1'))||

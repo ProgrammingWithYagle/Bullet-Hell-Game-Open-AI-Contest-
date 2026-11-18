@@ -1,3 +1,4 @@
+import {tankInterceptionInput,tankInterceptionSpeed,tankInterceptionAfterMove} from './tank-interceptor-prediction.ts';
 import {tankPredictedWalk} from './tank-bulwark-prediction.ts';
 import{lineworkTemporaryConstructs}from'../shared/heavy-linework.ts';
 import{lineworkPredictedMotion,lineworkPredictedSpeed}from './heavy-linework-prediction.ts';
@@ -25,7 +26,7 @@ export class Prediction {
   acknowledge(view: View, id: string) {
     const p = view.players.find((p) => p.id === id);
     if (!p) return;
-    this.player = { ...p, terrain: structuredClone(p.terrain) };
+    this.player = { ...p, kit:{...p.kit}, terrain: structuredClone(p.terrain) };
     this.tick = view.combatTick;
     this.pending =
       view.phase === 'combat' ? this.pending.filter((i) => i.sequence > p.ack).slice(-120) : [];
@@ -39,6 +40,8 @@ export class Prediction {
   private advance(i: InputFrame, view: View) {
     const p = this.player;
     if (!p || view.phase !== 'combat' || p.status !== 'active') return;
+    const interceptorPrevious={x:p.x,y:p.y};
+    i=tankInterceptionInput(p,i,this.tick+1);
     if(p.classId==='tank'&&p.kit.bulwarkCarried)i={...i,q:false,e:false,ultimate:false,reload:false,dodge:false};
     const now = ++this.tick,
       len = Math.hypot(i.moveX, i.moveY);
@@ -88,9 +91,7 @@ export class Prediction {
       ),
       dash = now < p.dashUntil,
       speed = dash
-        ? now < p.kit.chargeUntil
-          ? 600
-          : data.rules.dodgeSpeed
+        ? (tankInterceptionSpeed(p,now) ?? (now < p.kit.chargeUntil ? 600 : data.rules.dodgeSpeed))
         : (p.classId==='alchemist'?alchemyPredictedSpeed(p,now):p.classId==='heavy'?lineworkPredictedSpeed(p,now):rangerPredictedSpeed(p,now)) * (p.sprinting?mobilityRules.sprintMultiplier:1) *
           Math.min(now < p.slowUntil ? 0.65 : 1, now < p.poisonUntil ? clerkRules.purpleSlowMultiplier : 1) *
           (1 + rally) *
@@ -112,6 +113,7 @@ export class Prediction {
       obstacles:[...runtimeArena(view.arenaId,view.run.difficulty).obstacles,...gates,...blocks],lavaPits:runtimeArena(view.arenaId,view.run.difficulty).lavaPits});
     p.x = tankNext.x;
     p.y = tankNext.y;
+    tankInterceptionAfterMove(p,interceptorPrevious,{tick:now,playerRadius:data.rules.playerRadius,bounds:runtimeArena(view.arenaId,view.run.difficulty).bounds,obstacles:[...runtimeArena(view.arenaId,view.run.difficulty).obstacles,...gates,...blocks],lavaPits:runtimeArena(view.arenaId,view.run.difficulty).lavaPits});
     linework.finish();
     traversePredictedAfterMove(p,{obstacles:[...runtimeArena(view.arenaId,view.run.difficulty).obstacles,...gates,...blocks]},now);
   }

@@ -1,3 +1,4 @@
+import {isTankInterceptorSound,playTankInterceptorSound} from './tank-interceptor-sound.ts';
 import {isTankBulwarkSound,playTankBulwarkSound} from './tank-bulwark-sound.ts';
 import{isHeavyLineworkSound,playHeavyLineworkSound}from './heavy-linework-sound.ts';
 import { isHeavyPostSound, playHeavyPostSound } from './heavy-post-sound.ts';
@@ -110,6 +111,7 @@ export class AudioBus {
     const now = performance.now();
     if (now - (this.last.get(id) ?? -Infinity) < 60) return;
     this.last.set(id, now);
+    if(isTankInterceptorSound(id)){if(this.volume<=0)return;this.active++;try{playTankInterceptorSound(this.context,id,this.volume,()=>this.active--);}catch{this.active--;}return;}
     if(isTankBulwarkSound(id)){if(this.volume<=0)return;this.active++;try{playTankBulwarkSound(this.context,id,this.volume,()=>this.active--);}catch{this.active--;}return;}
     if(isHeavyLineworkSound(id)){if(this.volume<=0)return;this.active++;try{playHeavyLineworkSound(this.context,id,this.volume,()=>this.active--);}catch{this.active--;}return;}
     if(isHeavyPostSound(id)){if(this.volume<=0)return;this.active++;try{playHeavyPostSound(this.context,id,this.volume,()=>this.active--);}catch{this.active--;}return;}

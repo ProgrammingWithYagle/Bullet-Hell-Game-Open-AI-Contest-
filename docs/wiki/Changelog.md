@@ -1,6 +1,14 @@
 # Changelog
 
-Development build **2026.11.13-tank-mobile-bulwark**, protocol 77. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.17-tank-interceptor**, protocol 78. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-17 — Choose how to hold a screening line
+
+### Tank Interceptor
+
+- Interception Line captures a bearing, then spends Rescue Charge recovery on a brief physical front screen while giving up ram, new invulnerability and primary fire. Normal E stays unchanged.
+- Choose Crossing Guard to cross sideways at the captured facing, or Standfast to brace in place. Both use the same recovery and brief window.
+- Combine the operation with existing wall handling after an actual setdown. Exact edition77 ownership and all twelve profile/history rosters restore before76. Classes and human acceptance remain unfinished.
 
 ## 2026-11-13 — Carry and work an existing shield
 
