@@ -161,6 +161,7 @@ export async function runInterceptionPeers(
     hostPurchases: Receipt[] = [];
   let sequence = 0,
     hostSequence = 0;
+  let sharedDodge: { sequence: number; ack: number; x: number; y: number } | undefined;
   tank.onPurchase = (result) => purchases.push(result);
   host.onPurchase = (result) => hostPurchases.push(result);
   tank.onEvents = (batch) => remember(events, observed, batch, tank.view?.combatTick ?? 0);
@@ -208,6 +209,27 @@ export async function runInterceptionPeers(
           return purchases[index];
         },
         start: () => host.start(),
+        onFirstCombat: async () => {
+          await restWait(() => host.view?.phase === 'combat' && !!player(host), 'Host receives the actual opening combat');
+          const sequence = ++hostSequence;
+          const hostOffset = foreign.length;
+          const tankOffset = events.length;
+          const isDodge = (event: Event) => event.type === 'sound' && event.id === 'dodge';
+          host.input(inputFrame(host.view, sequence, { dodge: true, aim: player(host)!.aim }));
+          await restWait(
+            () => player(host)!.ack >= sequence &&
+              foreign.slice(hostOffset).some(isDodge) && events.slice(tankOffset).some(isDodge),
+            'Acknowledged host dodge reaches both real clients',
+          );
+          const hostDodge = foreign.slice(hostOffset).find(isDodge);
+          const tankDodge = events.slice(tankOffset).find(isDodge);
+          assert(hostDodge?.type === 'sound' && typeof hostDodge.x === 'number' && typeof hostDodge.y === 'number');
+          assert.deepEqual(hostDodge, tankDodge);
+          sharedDodge = { sequence, ack: player(host)!.ack, x: hostDodge.x, y: hostDodge.y };
+          const neutral = ++hostSequence;
+          host.input(inputFrame(host.view, neutral, {}));
+          await restWait(() => player(host)!.ack >= neutral, 'Host neutral frame after shared dodge');
+        },
         vote: (index) => {
           host.vote(index);
           tank.vote(index);
@@ -240,7 +262,7 @@ export async function runInterceptionPeers(
             const physical=observer.view!.classCues.filter((c):c is InterceptorScreenCue=>c.kind==='tank-intercept-screen'&&c.owner===tank.id);
             if(phase==='ready')assert.equal(physical.length,0);else{assert.equal(physical.length,1);assert.equal(physical[0].id,screenId);assert.equal(physical[0].until,until);assert(!('readyAt'in physical[0]));}
           }
-          assert(foreign.some(event=>event.type==='shots'&&event.shots.some(s=>s.owner==='hostile')),'Observer event channel actually receives shared hostile rounds');
+          assert(sharedDodge && sharedDodge.ack >= sharedDodge.sequence, 'Observer received a shared combat event');
           assert(!foreign.some(event=>event.type==='sound'&&event.owner===tank.id&&event.id.startsWith('tank-intercept-')),'Preparation/ready/launch/impact reports remain owner-only');
           assert(!foreign.some(event=>event.type==='shots'&&event.shots.some(s=>s.owner===tank.id)));
 
@@ -258,6 +280,7 @@ export async function runInterceptionPeers(
       tankIsNonHost: true,
       ownerPrivatePreparationAndPublicScreen: true,
       sharedPhysicalScreen: true,
+      sharedDodge,
       ownerPrivateSounds: true,
       transport: 'peer',
     };

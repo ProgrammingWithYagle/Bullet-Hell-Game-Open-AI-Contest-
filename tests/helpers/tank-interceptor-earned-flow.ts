@@ -16,7 +16,7 @@ export type InterceptionTransport={
  id:string;view():View|undefined;events:Event[];observed:Map<number,ObservedRestShot>;
  input(input:Partial<InputFrame>):number;purchase(request:{kind:'skill'|'weapon'|'upgrade'|'supply';item:string}):Promise<Result>;
  start():void;vote(index:number):void;pause(value:boolean):void;paused():boolean;end?():void;
- allyPolicy?():void;stopAlly?():void;checkObservers?(observation:InterceptionObservation):Promise<void>;
+ onFirstCombat?():Promise<void>;allyPolicy?():void;stopAlly?():void;checkObservers?(observation:InterceptionObservation):Promise<void>;
 };
 const point=({x,y}:Vec)=>({x,y}),wrap=(a:number)=>Math.atan2(Math.sin(a),Math.cos(a));
 /** Public terrain planning only. No teleports, checkpoint imports, arranged damage or modified game clocks. */
@@ -62,7 +62,9 @@ export async function earnedInterceptionFlow(transport:InterceptionTransport,cho
  }
  async function clearToShop(){const deadline=Date.now()+200_000;while(view().phase==='combat'){assert(Date.now()<deadline,'Ordinary Short clear policy bound');transport.input(restRaidInput(view(),player(),[...transport.observed.values()]));transport.allyPolicy?.();await sleep(25);}transport.stopAlly?.();assert.notEqual(view().phase,'defeat');assert.equal(player().progress.clears,1);assert.equal(view().encounter,1);assert.equal(earned(),9);earnedSequence.push(9);const shopDeadline=Date.now()+90_000;while(view().phase!=='shop'){assert(Date.now()<shopDeadline&&view().phase!=='defeat','Original rewards reach actual shop');if(['mutationVote','contractVote'].includes(view().phase))transport.vote(0);await sleep(25);}}
  try{
-  assert.equal(earned(),3);assert.deepEqual(player().skills,[]);await buy('tank-bastion-1');await buy(interceptorIds.entry);await menu.inspect(interceptorIds.crossing,false);await menu.inspect(interceptorIds.standfast,false);await equip();transport.start();await restWait(()=>view().phase==='combat','Ordinary Short deployment');const early=await screen('forward',false);await clearToShop();
+  assert.equal(earned(),3);assert.deepEqual(player().skills,[]);await buy('tank-bastion-1');await buy(interceptorIds.entry);await menu.inspect(interceptorIds.crossing,false);await menu.inspect(interceptorIds.standfast,false);await equip();transport.start();await restWait(()=>view().phase==='combat','Ordinary Short deployment');
+  await transport.onFirstCombat?.();
+  const early=await screen('forward',false);await clearToShop();
   if(choice!=='forward'){await buy(interceptorIds[choice]);await menu.inspect(interceptorIds[choice==='crossing'?'standfast':'crossing'],false);}else{await menu.inspect(interceptorIds.crossing,true);await menu.inspect(interceptorIds.standfast,true);}await equip();const deploymentDeadline=Date.now()+90_000;while(view().phase!=='combat'){assert(Date.now()<deploymentDeadline&&view().phase!=='defeat','Original shop reaches next combat');await sleep(25);}assert.equal(earned(),9);assert(!view().run.testingModified&&!view().run.customized);const later=await screen(choice,true);
   if(transport.end){transport.end();await restWait(()=>view().phase==='defeat','Actual host end');assert.equal(screens().length,0);}
   return {passed:true,choice,actualEarnedSequence:earnedSequence,actualClears:1,spent:spentInterceptionSP(player()),earlyScreenAtEarned3:true,early,later,pausedCommandsDiscarded:true,purchases:menu.observations,observations,checkpointImports:0,scope:'Actual3-to9SP source purchase buttons and whole transport commands, physical screen identity/motion/expiry and private readiness/sounds. Hostile impact sounds are reported only when actually observed; local collision/natural proof remains separate. No human/rendered/device/balance acceptance.'};
