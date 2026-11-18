@@ -1,6 +1,6 @@
 # Grave Accord — Free Play polish roadmap
 
-Development source **21f490af74c2a05c59fa94e1bf3ce6f8614c9279** uses build **2026.11.12-heavy-corner-guide**, protocol **76** and catalog **69**. The local gate and both exact-source workflows passed 2,331 tests and all seven checks. The testing and public review clients each bind 2,065 files and passed native HTTP plus six earned Corner Guide cases. [Verification](../reviews/heavy-corner-guide-r2-2026-11-12/frozen-verification.json), [current continuation](../handoff/NEXT_CHAT.md).
+Source **911966ddefe65a2ff757b580c47197fa0518fd7e**, build **2026.11.17-tank-interceptor**, protocol **78**, catalog **75**, content `6472614e137114fdb043bdbdff2952997932aba352e449a70508adfe3f5b4647`, runtime `1197b39b470b9bb27bb802afa78a930331f9e5da2e4ac3b1fe6f42aad8716a7f`, source snapshot `15169433e2463aa3cc423943bb99968b768d21e21dfb514b70273b38bfd0584d`. The complete source gate passed **2586 tests and all seven checks**. Both exact-source GitHub workflows passed every job and step, and their decoded logs and own runtime reports match the source. The frozen pair binds 2071 files per audience. Both audiences passed HTTP and all three earned Short choices through the complete served worker and real non-host rooms. [Source CI](../reviews/tank-interceptor-2026-11-17/source-ci.json), [frozen proof](../reviews/tank-interceptor-2026-11-17/frozen-verification.json).
 
 The Engineer reference receipts below retain their original source and historical preview labels; they are not relabeled as current-source acceptance.
 
@@ -13,7 +13,7 @@ Finish one coherent area before opening the next. Use the public-release-era gam
 | Order | Focus | Concrete result needed before the next focus |
 | --- | --- | --- |
 | 1 — scoped reference checked | Class-tree structure and Engineer reference | Separate General and Specializations; build an honest, readable specialization graph; finish Engineer's three distinct pathways and their internal choices; verify the full build loop. |
-| 2 — active: scoped Soldier assessment / next Heavy audit | Remaining classes, individually | Bring each class through the same quality checklist. At least three distinctive routes is initial coverage, with no fixed maximum. Do not release eleven sets of placeholder cards at once. |
+| 2 — active: Tank specialization work | Remaining classes, individually | Bring each class through the same quality checklist. At least three distinctive routes is initial coverage, with no fixed maximum. Do not release eleven sets of placeholder cards at once. |
 | 3 | Class balance and Free Play build variety | Compare complete legal builds across classes, weapons, mutations, difficulties, solo and co-op. Resolve dominant combinations, weak support paths and unclear interactions. |
 | 4 | Existing bosses, individually | Polish tells, movement, phases, hit rules, arenas, audio and difficulty identities. Work from early encounters toward late and secret encounters; do not start a second boss while the first has known major defects. |
 | 5 | The rest of Free Play | Finish the surrounding run loop: menus, objectives, rewards, pacing, readability, controls, networking, saves, performance and presentation. Address shared defects earlier when they block the current class or boss. |
@@ -102,3 +102,5 @@ The encounter-transition source now resolves actual primary-timing and prior-zon
 ## Current class work
 
 The legal 21-SP Tethered Traverse correction passed the complete source and frozen reviews. Lineworker offers Anchor Cartridge, two early fittings, and a choice between Reserve Anchor and Corner Guide. Engineer has 22, Soldier 28 and Heavy 19 authored techniques. Foot Soldier, Hunter, Officer/Command and Support remain proposals. The next work stays with class specializations. Human, rendered, device, native-language, listening, motion and final balance acceptance remain open. [Tethered Traverse proof](HEAVY_TETHERED_PROOF.md), [current handoff](../handoff/NEXT_CHAT.md).
+
+Tank retains six implemented techniques in two specializations. Bastion is an unregistered study of a timed guard reserve, with controlled evidence for a carried wall and a distant ally. [Interceptor verification](TANK_INTERCEPTOR_DESIGN.md).

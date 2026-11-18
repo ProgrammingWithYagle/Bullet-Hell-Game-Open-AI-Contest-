@@ -1,5 +1,18 @@
 # Scoped build variety audit
 
+Actual purchases under 27 SP verified **2,478 distinct specialization and shared mobility configurations** across four classes. The new Tank route adds 144 configurations across its two specialization branches while preserving all 2,334 prior configurations. The census uses minimal purchase costs for identical operation sets. Numerical General variations and natural acquisition are outside that count. [Census](../reviews/tank-interceptor-2026-11-17/build-census.json).
+
+| Class | Distinct builds | Verified purchases |
+| --- | ---: | ---: |
+| Engineer | 841 | 5598 |
+| Soldier | 853 | 5547 |
+| Heavy | 604 | 3784 |
+| Tank | 180 | 1128 |
+
+Tank has 36 wall-only configurations, 36 screen-only configurations and 108 combinations of screening and wall handling. The three screen modes and three wall handling choices are multiplied by legal shared movement sets. The 216 scripted trials and the 144 geometry cases show when the screen is used and what it stops. Frozen cases separately demonstrate actual purchases in Short. [Interceptor design and results](TANK_INTERCEPTOR_DESIGN.md).
+
+## Previous Mobile Bulwark census
+
 Actual canonical purchases verified **2,334 distinct builds** under 27 SP across Engineer, Soldier, Heavy and Tank specializations with four shared techniques. All 2,298 prior signatures remain legal. Tank adds 36 configurations:12 each for plain Shoulder Wall, Braced Pivot and Firing Port. These count specialized operations and optional shared mobility; they exclude numerical General variations and do not measure natural acquisition or balance. [Census](../reviews/tank-mobile-bulwark-r2-2026-11-14/build-census.json).
 
 | Class | Distinct builds | Verified purchases |
