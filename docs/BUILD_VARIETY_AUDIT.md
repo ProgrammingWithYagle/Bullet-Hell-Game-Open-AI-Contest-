@@ -1,5 +1,9 @@
 # Scoped build variety audit
 
+Actual purchases under 27 SP verified **3,046 distinct specialization and shared mobility configurations**. Tank has 748 configurations. Bastion adds 568, including 192 plain Gate Signal, 188 Split Watch and 188 Corner Post configurations. All 2,478 prior signatures remain purchaseable. Six controlled wall hybrids exercised both carried Action 2 fittings followed by setdown and Gate Signal. [Bastion census](../reviews/tank-bastion-2026-11-18/build-census.json) · [Hybrid cases](../reviews/tank-bastion-2026-11-18/wall-hybrids.json)
+
+## Interceptor census
+
 Actual purchases under 27 SP verified **2,478 distinct specialization and shared mobility configurations** across four classes. The new Tank route adds 144 configurations across its two specialization branches while preserving all 2,334 prior configurations. The census uses minimal purchase costs for identical operation sets. Numerical General variations and natural acquisition are outside that count. [Census](../reviews/tank-interceptor-2026-11-17/build-census.json).
 
 | Class | Distinct builds | Verified purchases |

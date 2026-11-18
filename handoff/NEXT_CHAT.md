@@ -4,6 +4,10 @@ Development remains active. Only the user decides when a class or the game is fi
 
 Read [Interceptor](../docs/TANK_INTERCEPTOR_DESIGN.md), [Mobile Bulwark](../docs/TANK_MOBILE_BULWARK_DESIGN.md), [Tethered Traverse](../docs/HEAVY_TETHERED_TRAVERSE_DESIGN.md), [Heavy](../docs/HEAVY_SPECIALIZATIONS.md), [further studies](../docs/HEAVY_FURTHER_ROUTE_STUDIES.md), [Soldier](../docs/SOLDIER_SPECIALIZATIONS.md), [open Soldier routes](../docs/SOLDIER_ROUTE_CANDIDATES.md), [class plan](../docs/CLASS_SPECIALIZATION_PLAN.md), [Service Yard](../docs/SERVICE_YARD_WORKING.md) and [bounded storage](../docs/REVIEW_STORAGE_POLICY.md). Current source/accepted proof outranks historical study proposals.
 
+## Bastion branch development
+
+The feature source integrates Gate Signal, Split Watch and Corner Post at protocol 79 and catalog 78. The owned Action 2, complete terrain footprint, synchronized crossing authority, shared arrows and private feedback have canonical Game evidence. The Solo worker and a real non-host room earned 3 to 9 SP and performed the owned actions. See [Bastion](../docs/TANK_BASTION_DESIGN.md) for the 3,046 legal builds, 28 Short trials and protocol 78 preservation. Use the exact protocol 79 review receipts when judging promotion. Tank is still in development under the class checklist in the roadmap.
+
 ## Current Interceptor checkpoint
 
 Source **911966ddefe65a2ff757b580c47197fa0518fd7e**, build **2026.11.17-tank-interceptor**, protocol **78**, catalog **75**, content `6472614e137114fdb043bdbdff2952997932aba352e449a70508adfe3f5b4647`, runtime `1197b39b470b9bb27bb802afa78a930331f9e5da2e4ac3b1fe6f42aad8716a7f`, source snapshot `15169433e2463aa3cc423943bb99968b768d21e21dfb514b70273b38bfd0584d`.

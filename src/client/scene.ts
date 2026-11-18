@@ -1,3 +1,4 @@
+import {drawTankGate} from './tank-bastion-presentation.ts';
 import {portClosedPieces} from '../shared/tank-bulwark-port.ts';
 import{lineworkRenderPlan,drawLinework,lineworkProjectilePlan}from './heavy-linework-presentation.ts';
 import{lineworkIds}from'../shared/heavy-linework.ts';
@@ -850,6 +851,10 @@ export class CombatScene extends Phaser.Scene {
       if(k.interceptorPhase==='winding'){const progress=Math.max(0,Math.min(1,(now-(k.interceptorStartedAt??now))/Math.max(1,(k.interceptorReadyAt??now)-(k.interceptorStartedAt??now))));h.lineStyle(2,0xd9c08d,.8).beginPath().arc(interceptOwner.x,interceptOwner.y,18,-Math.PI/2,-Math.PI/2+progress*Math.PI*2).strokePath();}
     }
     for (const cue of view.classCues) {
+      if(cue.kind==='tank-gate-signal'){
+        drawTankGate(h,cue,now,data.rules.playerRadius,this.highContrast);
+        continue;
+      }
       if(cue.kind==='tank-intercept-screen'){
         if(now>=cue.until)continue;
         const c=Math.cos(cue.aim),s=Math.sin(cue.aim),color=this.highContrast?0xffffff:cue.owner===this.localId?0xcbd8b6:0x9fc7cf;

@@ -20,7 +20,7 @@ import {
 import { restWait } from './sniper-rest-flow.ts';
 import { restRaidInput, type ObservedRestShot } from './sniper-rest-raid-policy.ts';
 
-const ordinaryShort = {
+export const ordinaryShort = {
   mode: 'short',
   difficulty: 'baby',
   arenaSelection: 'fixed',
@@ -28,7 +28,7 @@ const ordinaryShort = {
 } as const;
 type Purchase = Parameters<InterceptionTransport['purchase']>[0];
 type Receipt = Result & { id?: string };
-function remember(
+export function remember(
   events: Event[],
   observed: Map<number, ObservedRestShot>,
   batch: Event[],
@@ -41,7 +41,7 @@ function remember(
     if (event.type === 'remove') for (const id of event.ids) observed.delete(id);
   }
 }
-function inputFrame(
+export function inputFrame(
   current: View | null | undefined,
   sequence: number,
   props: Partial<InputFrame>,
@@ -50,7 +50,7 @@ function inputFrame(
   assert(validInput(input));
   return input;
 }
-function confirmedPurchase(
+export function confirmedPurchase(
   current: View | null | undefined,
   id: string,
   request: Purchase,
@@ -64,9 +64,13 @@ function confirmedPurchase(
   return true;
 }
 
-export async function runInterceptionWorker(
+export function runInterceptionWorker(code: string, handling: InterceptionChoice) {
+  return runTankWorker(code, transport => earnedInterceptionFlow(transport, handling));
+}
+
+export async function runTankWorker<R extends object>(
   code: string,
-  handling: InterceptionChoice,
+  flow: (transport: InterceptionTransport) => Promise<R>,
 ) {
   const wrapper =
     "import{parentPort}from'node:worker_threads';globalThis.self={};globalThis.postMessage=m=>parentPort.postMessage(m);" +
@@ -111,7 +115,7 @@ export async function runInterceptionWorker(
       classId: 'tank',
     });
     await restWait(() => !!view, 'Ordinary optimized worker lobby');
-    const result = await earnedInterceptionFlow(
+    const result = await flow(
       {
         id,
         events,
@@ -139,7 +143,6 @@ export async function runInterceptionWorker(
         pause: (value) => worker.postMessage({ type: 'pause', value }),
         paused: () => paused && view?.combatTick === pauseTick,
       },
-      handling,
     );
     return { ...result, wholeOptimizedWorker: true, workerPatched: false, transport: 'worker' };
   } finally {

@@ -12,6 +12,7 @@ export type SpecializationMap = {
 // Authored positions belong to real techniques; no proposed family becomes an empty card.
 const positions: Record<string, Point> = {
   "tank-bastion-1":{x:500,y:75},"tank-interceptor-1":{x:500,y:255},"tank-interceptor-crossing-1":{x:230,y:505},"tank-interceptor-standfast-1":{x:770,y:505},
+  "tank-gate-signal-1":{x:500,y:255},"tank-gate-signal-split-1":{x:230,y:505},"tank-gate-signal-corner-1":{x:770,y:505},
   "tank-protection-1":{x:500,y:75},"tank-bulwark-carry-1":{x:500,y:255},"tank-bulwark-pivot-1":{x:230,y:505},"tank-bulwark-port-1":{x:770,y:505},
   "heavy-linework-1":{x:500,y:255},"heavy-linework-yoke-1":{x:230,y:505},"heavy-linework-sheave-1":{x:770,y:505},"heavy-linework-reserve-1":{x:230,y:775},"heavy-linework-guide-1":{x:770,y:775},
   "heavy-traverse-lanyard-1": { x: 500, y: 1285 },
@@ -73,7 +74,7 @@ const positions: Record<string, Point> = {
   "engineer-builder-redoubt-1": { x: 500, y: 1270 },
 };
 export function specializationRoutes(classId: string) {
-  return [
+  const routes = [
     ...new Map(
       catalog.specializationSkills
         .filter((s) => s.classId === classId)
@@ -83,6 +84,12 @@ export function specializationRoutes(classId: string) {
         ]),
     ).values(),
   ];
+  if (classId === 'tank') {
+    const order = ['tank-bulwark-1', 'tank-gate-signal-1', 'tank-interceptor-1'];
+    const rank = (id: string) => order.includes(id) ? order.indexOf(id) : order.length;
+    routes.sort((a, b) => rank(a.id) - rank(b.id));
+  }
+  return routes;
 }
 export function specializationMapLayout(
   classId: string,
@@ -113,13 +120,16 @@ export function specializationMapLayout(
     const offset = single
       ? 0
       : routes.findIndex((r) => r.id === technique?.subbranchId) * 1050;
+    const attached = n.reference && !single && classId === 'tank'
+      ? routes.flatMap((r, i) => techniques.some(t => t.subbranchId === r.id && t.prerequisite === n.id) ? [i] : [])
+      : [];
     return {
       ...n,
       ...point,
       x: n.reference
         ? single
           ? 500
-          : classId==='tank' ? point.x+Math.max(0,routes.findIndex(r=>techniques.some(t=>t.subbranchId===r.id&&t.prerequisite===n.id)))*1050 : (routes.length * 1050 - 50) / 2
+          : attached.length ? point.x + (attached[0] + attached[attached.length - 1]) * 525 : (routes.length * 1050 - 50) / 2
         : point.x + offset,
     };
   });

@@ -1,3 +1,4 @@
+import { bastionIds } from './tank-bastion.ts';
 import catalog from '../../content/catalog.json';
 const anchor='engineer-machinery-anchor-1',survey='engineer-machinery-survey-1';
 const traps='engineer-traps-1',machinery='engineer-machinery-1';
@@ -6,6 +7,9 @@ const builder='engineer-builder-1',longspan='engineer-builder-longspan-1',wings=
 const replacesTurrets=(id:string)=>catalog.skills.some(s=>s.id===id&&(('transform'in s&&s.transform==='crossfire-pair')||('extraTurrets'in s.effects&&(s.effects.extraTurrets??0)>0)));
 /** Same conflicts for inspection, authoritative spending and boundary restoration. */
 export function conflictingSkill(owned:readonly string[],candidate:string):string|undefined {
+  const otherBastion = candidate === bastionIds.split ? bastionIds.corner :
+    candidate === bastionIds.corner ? bastionIds.split : undefined;
+  if (otherBastion && owned.includes(otherBastion)) return otherBastion;
   return owned.find(id=>id!==candidate&&((["tank-interceptor-crossing-1","tank-interceptor-standfast-1"].includes(candidate)&&["tank-interceptor-crossing-1","tank-interceptor-standfast-1"].includes(id))||(['tank-bulwark-pivot-1','tank-bulwark-port-1'].includes(candidate)&&['tank-bulwark-pivot-1','tank-bulwark-port-1'].includes(id))||
     ((candidate==='heavy-linework-guide-1'&&id==='heavy-linework-reserve-1')||(candidate==='heavy-linework-reserve-1'&&id==='heavy-linework-guide-1'))||
     ((candidate==='heavy-linework-yoke-1'&&id==='heavy-linework-sheave-1')||(candidate==='heavy-linework-sheave-1'&&id==='heavy-linework-yoke-1'))||

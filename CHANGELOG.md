@@ -1,6 +1,14 @@
 # Changelog
 
-Development build **2026.11.17-tank-interceptor**, protocol 78. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.18-tank-bastion**, protocol 79. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-18 — Mark a way back through the fighting
+
+### Tank Bastion
+
+- Gate Signal spends The City Holds recovery to leave a timed reserve for a player who walks across the marked retreat.
+- Split Watch serves two independent halves. Corner Post offers two perpendicular ways to claim one reserve.
+- Action 2 uses the owned wall fitting while carrying a shield. Local Practice restores issued Interceptor ownership and all twelve profile and history rosters.
 
 ## 2026-11-17 — Choose how to hold a screening line
 

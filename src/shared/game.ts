@@ -1,3 +1,4 @@
+import { TankBastion, bastionIds } from './tank-bastion.ts';
 import {TankInterceptor} from './tank-interceptor.ts';
 import {RESCUE_CHARGE_TICKS as interceptorDuration} from './class-kits.ts';
 import{HeavyLinework,lineworkIds,lineworkTemporaryConstructs,type LineworkContext}from './heavy-linework.ts';
@@ -284,6 +285,7 @@ export class Game {
     const id=sounds[event.kind];
     if(id&&!this.events.some(e=>e.type==='sound'&&e.id===id&&e.owner===event.owner))this.events.push({type:'sound',id,owner:event.owner,x:event.x,y:event.y});
   });
+  private readonly bastion = new TankBastion(() => this.id());
   readonly classKits = new ClassKits();
   readonly bard = new BardKit();
   readonly sword = new SwordsmanKit();
@@ -297,9 +299,9 @@ export class Game {
   readonly sniper = new SoldierSniper();
   readonly grenadier = new SoldierGrenadier();
   readonly marksman = new SoldierMarksman();
-  kitStatus(id:string){return {...this.classKits.status(id,this.combatTick),...(this.players.get(id)?.classId==='tank'?this.interceptor.ownerStatus(this.players.get(id)!,{tick:this.combatTick,playerRadius:rule.playerRadius,bounds:this.arena.bounds,obstacles:this.obstacles,lavaPits:this.arena.lavaPits},this.classKits.tankWallCarried(id,this.combatTick),this.phase==='combat'):{}),...(this.players.get(id)?.classId==='tank'?this.classKits.bulwarkStatus(this.players.get(id)!,{tick:this.combatTick,bounds:this.arena.bounds,obstacles:this.obstacles,lavaPits:this.arena.lavaPits}):{}),...(this.players.get(id)?.classId==='heavy'&&this.players.get(id)?.skills.includes(lineworkIds.entry)?this.lineworkStatus(this.players.get(id)!):{}),...(this.players.get(id)?.classId==='heavy'&&this.players.get(id)?.skills.includes(traverseIds.entry)?this.traverse.status(this.players.get(id)!,this.combatTick):{}),...(this.players.get(id)?.classId==='heavy'&&this.players.get(id)?.skills.includes(flakIds.entry)?this.flak.status(this.players.get(id),this.combatTick):{}),...(this.players.get(id)?.classId==='soldier'?{...this.skirmisher.status(id),...(this.players.get(id)?.skills.includes(sniperId)?this.sniper.status(this.players.get(id),this.combatTick):{}),...(this.players.get(id)?.skills.includes(grenadierIds.entry)?this.grenadier.status(this.players.get(id),this.grenadierContext()):{}),...(this.players.get(id)?.skills.includes(marksmanId)?this.marksman.status(this.players.get(id),this.combatTick):{}),soldierMagazineCapacity:this.stats(this.players.get(id)!).magazine}:{}),...(this.players.get(id)?.classId==='alchemist'?{...this.alchemy.status(id,this.combatTick,this.alchemyOptions(this.players.get(id)!)),alchemySamplesCapacity:this.stats(this.players.get(id)!).magazine}:{}),...(this.players.get(id)?.classId==='ranger'?{...this.ranger.status(id,this.combatTick,this.rangerOptions(this.players.get(id)!)),rangerQuiverCapacity:this.stats(this.players.get(id)!).magazine}:{}),...(this.players.get(id)?.classId==='bard'?this.bard.status(id):{}),...(this.players.get(id)?.classId==='swordsman'?this.sword.status(id,this.combatTick):{}),...(this.players.get(id)?.classId==='summoner'?this.retinue.status(this.players.get(id)!,this.combatTick,this.summonerOptions(this.players.get(id)!)):{})};}
+  kitStatus(id:string){return {...this.bastionStatus(this.players.get(id)),...this.classKits.status(id,this.combatTick),...(this.players.get(id)?.classId==='tank'?this.interceptor.ownerStatus(this.players.get(id)!,{tick:this.combatTick,playerRadius:rule.playerRadius,bounds:this.arena.bounds,obstacles:this.obstacles,lavaPits:this.arena.lavaPits},this.classKits.tankWallCarried(id,this.combatTick),this.phase==='combat'):{}),...(this.players.get(id)?.classId==='tank'?this.classKits.bulwarkStatus(this.players.get(id)!,{tick:this.combatTick,bounds:this.arena.bounds,obstacles:this.obstacles,lavaPits:this.arena.lavaPits}):{}),...(this.players.get(id)?.classId==='heavy'&&this.players.get(id)?.skills.includes(lineworkIds.entry)?this.lineworkStatus(this.players.get(id)!):{}),...(this.players.get(id)?.classId==='heavy'&&this.players.get(id)?.skills.includes(traverseIds.entry)?this.traverse.status(this.players.get(id)!,this.combatTick):{}),...(this.players.get(id)?.classId==='heavy'&&this.players.get(id)?.skills.includes(flakIds.entry)?this.flak.status(this.players.get(id),this.combatTick):{}),...(this.players.get(id)?.classId==='soldier'?{...this.skirmisher.status(id),...(this.players.get(id)?.skills.includes(sniperId)?this.sniper.status(this.players.get(id),this.combatTick):{}),...(this.players.get(id)?.skills.includes(grenadierIds.entry)?this.grenadier.status(this.players.get(id),this.grenadierContext()):{}),...(this.players.get(id)?.skills.includes(marksmanId)?this.marksman.status(this.players.get(id),this.combatTick):{}),soldierMagazineCapacity:this.stats(this.players.get(id)!).magazine}:{}),...(this.players.get(id)?.classId==='alchemist'?{...this.alchemy.status(id,this.combatTick,this.alchemyOptions(this.players.get(id)!)),alchemySamplesCapacity:this.stats(this.players.get(id)!).magazine}:{}),...(this.players.get(id)?.classId==='ranger'?{...this.ranger.status(id,this.combatTick,this.rangerOptions(this.players.get(id)!)),rangerQuiverCapacity:this.stats(this.players.get(id)!).magazine}:{}),...(this.players.get(id)?.classId==='bard'?this.bard.status(id):{}),...(this.players.get(id)?.classId==='swordsman'?this.sword.status(id,this.combatTick):{}),...(this.players.get(id)?.classId==='summoner'?this.retinue.status(this.players.get(id)!,this.combatTick,this.summonerOptions(this.players.get(id)!)):{})};}
   readonly transforms = new AbilityTransforms();
-  classCues(){return [...this.interceptor.cues(this.roster(),this.combatTick,this.phase==='combat'),...this.flak.cues(),...this.sniper.cues(this.roster()),...this.grenadier.cues(this.roster()),...this.marksman.cues(),...this.skirmisher.cues(this.roster()),...this.classKits.cues(),...this.transforms.cues(),...this.bard.cues(),...this.sword.cues(this.roster(),this.combatTick),...this.ranger.cues(this.rangerContext()),...this.alchemy.cues(this.alchemyContext())];}
+  classCues(){return [...(this.phase==='combat'?this.bastion.cues(this.combatTick):[]),...this.interceptor.cues(this.roster(),this.combatTick,this.phase==='combat'),...this.flak.cues(),...this.sniper.cues(this.roster()),...this.grenadier.cues(this.roster()),...this.marksman.cues(),...this.skirmisher.cues(this.roster()),...this.classKits.cues(),...this.transforms.cues(),...this.bard.cues(),...this.sword.cues(this.roster(),this.combatTick),...this.ranger.cues(this.rangerContext()),...this.alchemy.cues(this.alchemyContext())];}
   private aimTargets(wardsOnly=true){const real=this.roster().filter(p=>p.status==='active'&&!this.classKits.untargetable(p.id,this.combatTick));return [...real,...this.classKits.decoyTargets(this.roster(),this.combatTick),...this.retinueTargets(wardsOnly)];}
   private hurtTarget(id:string,amount:number){const p=this.players.get(id);if(p)this.damage(p,amount);else if(/^retinue:\d+$/.test(id))this.retinue.hit(Number(id.slice(8)),amount,this.combatTick);else this.classKits.hitDecoy(id,amount);}
   private bossPrevious = { x: 800, y: 250 };
@@ -566,6 +568,7 @@ export class Game {
     return p;
   }
   setConnected(id: string, connected: boolean) {
+    if(!connected)this.bastion.remove(id);
     if(!connected)this.interceptor.forget(id,this.players.get(id),this.combatTick);
     if(!connected)this.classKits.dropTankWall(id);
     if(!connected)this.skirmisher.remove(id);
@@ -879,7 +882,7 @@ export class Game {
     this.phase = 'defeat'; this.phaseEnds = 0; this.boss.defeatedAt = 0;
     this.chapterState?.fail();this.wardPatients.clear();
     for (const shot of this.shots.values()) if (this.traverse.has(shot.id)||this.flak.has(shot.id)||this.marksman.has(shot.id)||this.grenadier.has(shot.id)||this.sniper.has(shot.id)) this.removeShot(shot);
-    this.interceptor.clear(this.roster(),this.combatTick);this.classKits.clear();
+    this.bastion.clear();this.interceptor.clear(this.roster(),this.combatTick);this.classKits.clear();
     this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.alchemy.clear();this.skirmisher.clear();this.marksman.clear();this.grenadier.clear();this.sniper.clear();this.flak.clear();this.traverse.clear();this.linework.clear({shot:id=>this.shots.get(id),remove:s=>this.removeShot(s)});
     if(this.chapterState){this.skirmish?.fail();this.clearChapterCombat();}
     return true;
@@ -929,7 +932,7 @@ export class Game {
     Object.assign(this.selectedContract,classifiedContract(this.selectedContract.bossId??'constable',encounterVariant(this.settings.difficulty,this.selectedContract.variant)));
     this.phaseAttackReadyAt = 0;
     this.variantPressure.reset(this.combatTick);
-    this.interceptor.clear(this.roster(),this.combatTick);this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.alchemy.clear();this.skirmisher.clear();this.marksman.clear();this.grenadier.clear();this.sniper.clear();this.flak.clear();this.traverse.clear();this.linework.clear({shot:id=>this.shots.get(id),remove:s=>this.removeShot(s)});this.transforms.clear();this.wardenPatrol.clear();
+    this.bastion.clear();this.interceptor.clear(this.roster(),this.combatTick);this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.alchemy.clear();this.skirmisher.clear();this.marksman.clear();this.grenadier.clear();this.sniper.clear();this.flak.clear();this.traverse.clear();this.linework.clear({shot:id=>this.shots.get(id),remove:s=>this.removeShot(s)});this.transforms.clear();this.wardenPatrol.clear();
     this.pruneExpired();
     this.phase = 'combat';
     this.phaseEnds = 0;
@@ -1074,7 +1077,7 @@ export class Game {
     if(this.chapterState){this.clearChapterNode(true);return;}
     this.scoreObserver?.clear(this);
     for (const player of this.players.values()) this.clearPoison(player);
-    this.interceptor.clear(this.roster(),this.combatTick);this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.alchemy.clear();this.skirmisher.clear();this.marksman.clear();this.grenadier.clear();this.sniper.clear();this.flak.clear();this.traverse.clear();this.linework.clear({shot:id=>this.shots.get(id),remove:s=>this.removeShot(s)});this.transforms.clear();this.wardenPatrol.clear();
+    this.bastion.clear();this.interceptor.clear(this.roster(),this.combatTick);this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.alchemy.clear();this.skirmisher.clear();this.marksman.clear();this.grenadier.clear();this.sniper.clear();this.flak.clear();this.traverse.clear();this.linework.clear({shot:id=>this.shots.get(id),remove:s=>this.removeShot(s)});this.transforms.clear();this.wardenPatrol.clear();
     this.completedBossIds.add(this.boss.id);
     const previous=this.completedBossForms.get(this.boss.id);
     if(!previous||['normal','brutal','crazed'].indexOf(this.boss.variant)>['normal','brutal','crazed'].indexOf(previous))this.completedBossForms.set(this.boss.id,this.boss.variant);
@@ -1279,6 +1282,9 @@ export class Game {
       p.input.reload = p.input.dodge = p.input.q = p.input.e = p.input.ultimate = p.input.technique1 = p.input.technique2 = p.input.technique3 = false;
       p.input.supply = -1;
     }
+    if (this.bastion.hasStations) {
+      this.bastion.resolve(this.bastionWorld(), this.roster(), (id, guard) => this.admitBastionGuard(id, guard));
+    }
     this.grid.clear();
     for (const p of this.players.values()){
       this.limitPersonalShield(p);
@@ -1342,7 +1348,7 @@ export class Game {
       } else this.phase = 'defeat';
       this.chapterState?.fail();this.wardPatients.clear();
       for (const player of this.players.values()) this.clearPoison(player);
-      this.interceptor.clear(this.roster(),this.combatTick);this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.alchemy.clear();this.skirmisher.clear();this.marksman.clear();this.grenadier.clear();this.sniper.clear();this.flak.clear();this.traverse.clear();this.linework.clear({shot:id=>this.shots.get(id),remove:s=>this.removeShot(s)});this.transforms.clear();this.wardenPatrol.clear();
+      this.bastion.clear();this.interceptor.clear(this.roster(),this.combatTick);this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.alchemy.clear();this.skirmisher.clear();this.marksman.clear();this.grenadier.clear();this.sniper.clear();this.flak.clear();this.traverse.clear();this.linework.clear({shot:id=>this.shots.get(id),remove:s=>this.removeShot(s)});this.transforms.clear();this.wardenPatrol.clear();
       this.director.reset('constable');
       this.minions.clear();
       this.signatures = [];
@@ -1357,11 +1363,11 @@ export class Game {
     else this.skirmish?.cancel();
     this.phase=success?'victory':'defeat';
     for(const p of this.players.values())this.clearPoison(p);
-    this.interceptor.clear(this.roster(),this.combatTick);this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.alchemy.clear();this.skirmisher.clear();this.marksman.clear();this.grenadier.clear();this.sniper.clear();this.flak.clear();this.traverse.clear();this.linework.clear({shot:id=>this.shots.get(id),remove:s=>this.removeShot(s)});this.transforms.clear();this.minions.clear();this.director.reset('constable');this.signatures=[];this.warnings.length=0;this.fields.length=0;this.clearShots();this.accord=null;
+    this.bastion.clear();this.interceptor.clear(this.roster(),this.combatTick);this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.alchemy.clear();this.skirmisher.clear();this.marksman.clear();this.grenadier.clear();this.sniper.clear();this.flak.clear();this.traverse.clear();this.linework.clear({shot:id=>this.shots.get(id),remove:s=>this.removeShot(s)});this.transforms.clear();this.minions.clear();this.director.reset('constable');this.signatures=[];this.warnings.length=0;this.fields.length=0;this.clearShots();this.accord=null;
   }
   private clearChapterCombat() {
     for (const p of this.players.values()) this.clearPoison(p);
-    this.interceptor.clear(this.roster(),this.combatTick);this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.alchemy.clear();this.skirmisher.clear();this.marksman.clear();this.grenadier.clear();this.sniper.clear();this.flak.clear();this.traverse.clear();this.linework.clear({shot:id=>this.shots.get(id),remove:s=>this.removeShot(s)});
+    this.bastion.clear();this.interceptor.clear(this.roster(),this.combatTick);this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.alchemy.clear();this.skirmisher.clear();this.marksman.clear();this.grenadier.clear();this.sniper.clear();this.flak.clear();this.traverse.clear();this.linework.clear({shot:id=>this.shots.get(id),remove:s=>this.removeShot(s)});
     this.transforms.clear();
     this.wardenPatrol.clear();
     this.minions.clear();
@@ -1615,6 +1621,11 @@ export class Game {
     const tankHandling = tankWorld && i.technique2 ? this.classKits.commandTankHandling(p,tankWorld,next) : undefined;
     if(tankHandling)this.events.push({type:'sound',id:'tank-wall-'+tankHandling,owner:p.id,x:p.x,y:p.y});
     const final = tankWorld ? this.classKits.moveTankWall(p, next, tankWorld) : next;
+    if (this.bastion.hasStations && p.connected && len > 0 && !dash && !footwork && !haul &&
+        p.x === p.oldX && p.y === p.oldY && !traverseRecoil.x && !traverseRecoil.y &&
+        [environment, terrain, raidForce, earlyForce].every(force => Math.abs(force.x) + Math.abs(force.y) <= 0.000001)) {
+      this.bastion.record({ id: p.id, from: { x: p.x, y: p.y }, to: final, input: { x: mx, y: my } });
+    }
     p.x = final.x;
     p.y = final.y;
     this.interceptor.afterMove(p,interceptorWorld);
@@ -1638,6 +1649,19 @@ export class Game {
     if(p.classId==='heavy'&&i.technique1){if(lineworkContext)this.linework.cast(p,lineworkContext);else if(p.skills.includes(traverseIds.entry))this.traverse.cast(p,this.traverseContext());else this.flak.cast(p,this.flakContext());}
     if(p.classId==='heavy'&&i.technique2)this.flak.command(p,this.flakContext());
     if (i.ultimate && now >= p.ultimateAt) this.ability(p, 'ultimate');
+    else if (p.classId === 'tank' && p.skills.includes(bastionIds.entry) && i.technique2 &&
+        !p.input.ultimate && !i.technique1 && !i.technique3 && !carried && !handsBusy &&
+        !i.q && !i.e && !i.dodge && !i.reload && !i.fire && i.supply < 0 &&
+        len === 0 && this.bastionStance(p)) {
+      const ultimate = data.classes.find(cls => cls.id === 'tank')!.ultimate;
+      const potency = 1 + (stats.effects.ultimatePotency ?? 0);
+      const { allyShield = 0, allyArmor = 0 } = ultimate.effects ?? {};
+      const shield = hasTalent(p, 'procession') ? 90 : allyShield;
+      const location = this.bastion.plant(p, {
+        shield: shield * potency, armor: allyArmor * potency, until: now + ticks(ultimate.duration),
+      }, ticks(ultimate.cooldown * stats.ultimateCooldown), this.bastionWorld());
+      if (location) this.events.push({ type: 'sound', id: 'tank-gate-plant', owner: p.id, ...location });
+    }
     if(p.classId==='soldier')this.skirmisher.advanceLoad(p,this.skirmisherContext());
     this.traverse.advance(p,this.traverseContext());
     const loading=p.classId==='soldier'&&this.skirmisher.isLoading(p.id);
@@ -1655,6 +1679,42 @@ export class Game {
     }
     p.wasFiring = i.fire && !handsBusy && !sniperReloadHandled && !p.reloadAt && !loading && !this.grenadier.blocksPrimary(p.id) && !this.sniper.blocksPrimary(p.id) && !this.flak.blocksPrimary(p.id,now) && !this.traverse.blocksPrimary(p.id,now) && !this.linework.blocksPrimary(p.id,now);
   }
+  private bastionWorld() {
+    return { tick: this.combatTick, playerRadius: rule.playerRadius, bounds: this.arena.bounds,
+      obstacles: this.obstacles, lavaPits: this.arena.lavaPits };
+  }
+
+  private bastionStance(p: Player) {
+    return p.x === p.oldX && p.y === p.oldY &&
+      p.dashUntil <= this.combatTick && p.reloadAt <= this.combatTick &&
+      !this.interceptor.stateSnapshot(p.id);
+  }
+
+  private bastionStatus(p: Player | undefined) {
+    if (p?.classId !== 'tank' || !p.skills.includes(bastionIds.entry)) return {};
+    return {
+      bastionCanPlant: this.phase === 'combat' && this.bastionStance(p) &&
+        Math.hypot(p.input.moveX, p.input.moveY) === 0 && !p.input.fire &&
+        !this.classKits.tankWallCarried(p.id, this.combatTick) && this.bastion.canPlant(p, this.bastionWorld()),
+    };
+  }
+
+  private admitBastionGuard(id: string, guard: { shield: number; armor: number; until: number }) {
+    const target = this.players.get(id);
+    if (!target?.connected || target.status !== 'active') return false;
+    const now = this.combatTick, old = this.classKits.status(id, now);
+    const shield = Math.min(guard.shield, Math.max(0, this.maximumShield(target) - target.shield - target.supplyShield));
+    const offersShield = shield > old.shield && old.shieldUntil <= guard.until;
+    const offersArmor = guard.armor > old.armor && old.armorUntil <= guard.until;
+    if (offersShield) this.classKits.grantShield(id, shield, guard.until, now);
+    if (offersArmor) this.classKits.protect(id, 0, guard.armor, guard.until, now);
+    if (offersShield || offersArmor) {
+      this.events.push({ type: 'sound', id: 'tank-gate-claim', owner: id, x: target.x, y: target.y });
+      return true;
+    }
+    return false;
+  }
+
   private reload(p: Player) {
     if(p.classId==='heavy')this.linework.interrupt(p.id);
     if(p.classId==='soldier')this.skirmisher.interrupt(p.id);
@@ -2077,7 +2137,7 @@ export class Game {
       if(p.classId==='summoner')this.clearOwnerRetinue(p.id);
       if(p.classId==='ranger')this.clearOwnerRanger(p.id);
       if(p.classId==='alchemist')this.clearOwnerAlchemy(p.id);
-      if(p.classId==='tank')this.interceptor.forget(p.id,p,this.combatTick);
+      if(p.classId==='tank'){this.bastion.remove(p.id);this.interceptor.forget(p.id,p,this.combatTick);}
       if(p.classId==='tank')this.classKits.dropTankWall(p.id);
       if(p.classId==='heavy')this.traverse.cancelOwner(p.id,this.traverseAuthority());
       if(p.classId==='heavy')this.linework.dropOwner(p.id,{shot:id=>this.shots.get(id),remove:s=>this.removeShot(s)});

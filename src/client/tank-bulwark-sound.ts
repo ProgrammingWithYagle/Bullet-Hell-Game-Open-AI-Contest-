@@ -8,23 +8,32 @@ export const bulwarkSoundIds = [
 export type BulwarkSoundId = (typeof bulwarkSoundIds)[number];
 export const isTankBulwarkSound = (id: string): id is BulwarkSoundId =>
   (bulwarkSoundIds as readonly string[]).includes(id);
-const pitches: Record<BulwarkSoundId, number> = {
+export const bastionSoundIds = ['tank-gate-plant', 'tank-gate-claim'] as const;
+type BastionSoundId = (typeof bastionSoundIds)[number];
+export const isTankBastionSound = (id: string): id is BastionSoundId =>
+  (bastionSoundIds as readonly string[]).includes(id);
+type TankGuardSoundId = BulwarkSoundId | BastionSoundId;
+const pitches: Record<TankGuardSoundId, number> = {
   'tank-wall-lift': 170,
   'tank-wall-set': 110,
   'tank-wall-pivot': 260,
   'tank-wall-port-open': 470,
   'tank-wall-port-close': 330,
+  'tank-gate-plant': 153,
+  'tank-gate-claim': 525,
 };
-const durations: Record<BulwarkSoundId, number> = {
+const durations: Record<TankGuardSoundId, number> = {
   'tank-wall-lift': 0.14,
   'tank-wall-set': 0.1,
   'tank-wall-pivot': 0.19,
   'tank-wall-port-open': 0.085,
   'tank-wall-port-close': 0.075,
+  'tank-gate-plant': 0.18,
+  'tank-gate-claim': 0.125,
 };
-export const tankBulwarkDuration = (id: BulwarkSoundId) => durations[id];
+export const tankBulwarkDuration = (id: TankGuardSoundId) => durations[id];
 /** Finite mechanical cues; objective sample checks are separate from listening acceptance. */
-export function tankBulwarkSample(id: BulwarkSoundId, time: number) {
+export function tankBulwarkSample(id: TankGuardSoundId, time: number) {
   const duration = durations[id];
   if (time <= 0 || time >= duration) return 0;
   const phase = time / duration,
@@ -40,7 +49,7 @@ export function tankBulwarkSample(id: BulwarkSoundId, time: number) {
 }
 export function playTankBulwarkSound(
   context: AudioContext,
-  id: BulwarkSoundId,
+  id: TankGuardSoundId,
   volume: number,
   done: () => void,
 ) {

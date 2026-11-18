@@ -1,3 +1,4 @@
+import {tankBastionMessages} from './tank-bastion.mjs';
 import {tankInterceptorMessages} from './tank-interceptor.mjs';
 import {tankBulwarkMessages} from './tank-bulwark.mjs';
 import {heavyLineworkMessages} from './heavy-linework.mjs';
@@ -27,4 +28,4 @@ const en={
   'skill.engineer-traps-1.description':'Q places one charge 120 pixels ahead: 1 second to arm, then a 44-pixel trigger and a visible 0.5-second fuse. Its 100-pixel blast deals 150 base damage, with turret-damage bonuses; ordinary enemies slow by 50% for 2 seconds, bosses are never slowed. Cover blocks triggering and blasts. Maximum two owned charges, each expiring after 36 seconds. Invalid ground or full capacity spends no cooldown. Replaces Q turrets; excludes Carriage Sentry, Crossfire Pair and extra-turret capstones. Barricade and Impossible Machine remain available.',
 };
 // This pilot's detailed copy is explicitly English. Full translations remain pending.
-export const engineerPathwayMessages=()=>({...en,...engineerMachineryMessages(),...engineerTrapsMessages(),...engineerBuilderMessages(),...soldierSkirmisherMessages(),...heavyFlakMessages(),...heavyFlakHandlingMessages(),...heavySeamMessages(),...heavyTraverseMessages(),...heavyClutchMessages(),...heavyClutchHandlingMessages(),...heavyTetheredTraverseMessages(),...heavyLineworkMessages(),...tankBulwarkMessages(),...tankInterceptorMessages()});
+export const engineerPathwayMessages=()=>({...en,...engineerMachineryMessages(),...engineerTrapsMessages(),...engineerBuilderMessages(),...soldierSkirmisherMessages(),...heavyFlakMessages(),...heavyFlakHandlingMessages(),...heavySeamMessages(),...heavyTraverseMessages(),...heavyClutchMessages(),...heavyClutchHandlingMessages(),...heavyTetheredTraverseMessages(),...heavyLineworkMessages(),...tankBulwarkMessages(),...tankInterceptorMessages(),...tankBastionMessages()});

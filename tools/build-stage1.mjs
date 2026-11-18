@@ -1,4 +1,5 @@
-import {applyTankInterceptor,authoredDate as tankInterceptorAuthoredDate} from '../content/source/tank-interceptor.mjs';
+import {applyTankBastion,authoredDate as tankBastionAuthoredDate} from '../content/source/tank-bastion.mjs';
+import {applyTankInterceptor} from '../content/source/tank-interceptor.mjs';
 import {applyTankBulwark,authoredDate as tankBulwarkAuthoredDate} from '../content/source/tank-bulwark.mjs';
 import { applyHeavyLinework } from '../content/source/heavy-linework.mjs';
 import { applyHeavyTetheredTraverse } from '../content/source/heavy-tethered-traverse.mjs';
@@ -297,7 +298,7 @@ const arenas = [
 
 const leaderboards=JSON.parse(fs.readFileSync(path.join(root,'content/leaderboards.json'),'utf8'));
 const manifest = {rules,locales,difficulties,modes,classes,skills,weapons,upgrades,supplies,bosses,bossPools,mutations,arenas,grades,leaderboards,threats:['Normal','Aberrant','Predator','Brute','Scourge','Dread','Disaster','Catastrophe','Cataclysm','Calamity','The Uncounted']};
-applyBard(manifest);applySwordsman(manifest);applySummoner(manifest);applyRanger(manifest);applyAlchemist(manifest);applyEncounterPacing(manifest);addClassTalents(manifest);applyEngineerPathways(manifest);applyEngineerMachinery(manifest);applyEngineerTraps(manifest);applyEngineerBuilder(manifest);applySoldierSkirmisher(manifest);applySoldierReload(manifest);applySoldierVolley(manifest);applySoldierMarksman(manifest);applyMarksmanDepth(manifest);applyMarksmanLate(manifest);applyGrenadier(manifest);applySniper(manifest);applySniperHandling(manifest);applySniperBore(manifest);applySniperRest(manifest);applySniperWithdrawal(manifest);applyHeavyFlak(manifest);applyHeavyFlakHandling(manifest);applyHeavySeam(manifest);applyHeavyTraverse(manifest);applyHeavyClutch(manifest);applyHeavyClutchHandling(manifest);applyHeavyTetheredTraverse(manifest);applyHeavyLinework(manifest);applyTankBulwark(manifest);applyTankInterceptor(manifest);
+applyBard(manifest);applySwordsman(manifest);applySummoner(manifest);applyRanger(manifest);applyAlchemist(manifest);applyEncounterPacing(manifest);addClassTalents(manifest);applyEngineerPathways(manifest);applyEngineerMachinery(manifest);applyEngineerTraps(manifest);applyEngineerBuilder(manifest);applySoldierSkirmisher(manifest);applySoldierReload(manifest);applySoldierVolley(manifest);applySoldierMarksman(manifest);applyMarksmanDepth(manifest);applyMarksmanLate(manifest);applyGrenadier(manifest);applySniper(manifest);applySniperHandling(manifest);applySniperBore(manifest);applySniperRest(manifest);applySniperWithdrawal(manifest);applyHeavyFlak(manifest);applyHeavyFlakHandling(manifest);applyHeavySeam(manifest);applyHeavyTraverse(manifest);applyHeavyClutch(manifest);applyHeavyClutchHandling(manifest);applyHeavyTetheredTraverse(manifest);applyHeavyLinework(manifest);applyTankBulwark(manifest);applyTankInterceptor(manifest);applyTankBastion(manifest);
 applyWardenPatrol(manifest);applyCrazedHorizon(manifest);applyCourierRoute(manifest);applyRatcatcherMuster(manifest);applyClerkAppeal(manifest);applyTollkeeperReturn(manifest);applyMarshalChains(manifest);applyWidowGates(manifest);applyAmbulanceRoute(manifest);applyMatronWard(manifest);applyMoldMixing(manifest);applyBellCarillon(manifest);applyBellCounterpoint(manifest);applyStitchwork(manifest);applyShieldSpecializations(manifest);applyGeneralMobility(manifest);applyGeneralTechniques(manifest);applyGlassSurgery(manifest);applyStoryCampaign(manifest);
 applyBakerOven(manifest);
 applySluicePressure(manifest);
@@ -506,5 +507,5 @@ if(!fs.existsSync(path.join(root,'docs/ACCEPTANCE.md')))write('docs/ACCEPTANCE.m
   ['Delivery','Windows + public URL + GitHub release + Wiki + Project + ruleset','Pending'],
 ])+'\n');
 const fingerprint=crypto.createHash('sha256').update(JSON.stringify(manifest)).digest('hex');
-json('content/revision.json',{version:rules.contentVersion,sha256:fingerprint,authoredDate:tankInterceptorAuthoredDate});
+json('content/revision.json',{version:rules.contentVersion,sha256:fingerprint,authoredDate:tankBastionAuthoredDate});
 console.log(JSON.stringify({classes:classes.length,skills:skills.length,weapons:weapons.length,bosses:bosses.length,mutations:mutations.length,arenas:arenas.length,locales:locales.length,revision:fingerprint}));
