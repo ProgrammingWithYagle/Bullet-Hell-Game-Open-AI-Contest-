@@ -35,14 +35,18 @@ export async function runBastionPeers(endpoint: string, choice: BastionChoice) {
     await restWait(() => !!player(host) && !!player(tank), 'Both original lobbies received');
     assert.equal(tank.view!.owner, host.id);
     assert.notEqual(tank.id, host.id);
-    for (const weapon of data.weapons.filter(w => w.classId === 'soldier').sort((a, b) => b.tier - a.tier)) {
-      if (player(host)!.weapon === weapon.id) break;
-      const request = { kind: 'weapon', item: weapon.id } as const, index = hostPurchases.length;
-      host.purchase(request);
-      await restWait(() => confirmedPurchase(host.view, host.id, request, hostPurchases[index]), 'Ordinary host weapon acknowledgment');
-      if (hostPurchases[index].ok) break;
+    async function equipHost() {
+      for (const weapon of data.weapons.filter(w => w.classId === 'soldier').sort((a, b) => b.tier - a.tier)) {
+        if (player(host)!.weapon === weapon.id) break;
+        const request = { kind: 'weapon', item: weapon.id } as const, index = hostPurchases.length;
+        host.purchase(request);
+        await restWait(() => confirmedPurchase(host.view, host.id, request, hostPurchases[index]), 'Ordinary host weapon acknowledgment');
+        if (hostPurchases[index].ok) break;
+      }
     }
-    const transport: InterceptionTransport = {
+    await equipHost();
+    const transport: InterceptionTransport & { equipAlly(): Promise<void> } = {
+      equipAlly: equipHost,
       id: tank.id, view: () => tank.view ?? undefined, events, observed,
       input: props => input(tank, ++tankSequence, props),
       purchase: async request => {
@@ -78,19 +82,20 @@ export async function runBastionPeers(endpoint: string, choice: BastionChoice) {
       input: hostInput,
       checkGate: async gate => {
         const sharedCue = (view: View | null) => view?.classCues.find(cue => cue.kind === 'tank-gate-signal' && cue.id === gate.id);
-        await restWait(() => !!sharedCue(host.view), 'Host receives the actual physical station');
+        await restWait(() => JSON.stringify(sharedCue(host.view)) === JSON.stringify(gate), 'Host receives the actual physical station');
         assert.deepEqual(sharedCue(host.view), gate);
         const foreign = host.view!.players.find(p => p.id === tank.id)!;
         assert(!Object.hasOwn(foreign.kit, 'bastionCanPlant'));
+        assert(!Object.hasOwn(foreign.kit, 'bastionAdjustment'));
         assert(!host.room!.state.players.get(tank.id)!.lineworkOwner);
         assert(Object.hasOwn(player(tank)!.kit, 'bastionCanPlant'));
-        assert(!shared.some(event => event.type === 'sound' && event.id === 'tank-gate-plant'));
+        assert(!shared.some(event => event.type === 'sound' && (event.id === 'tank-gate-plant' || event.id === 'tank-gate-adjust')));
       },
       checkClaim: async until => {
         await restWait(() => player(host)?.kit.armorUntil === until &&
           shared.some(event => event.type === 'sound' && event.id === 'tank-gate-claim' && event.owner === host.id),
         'Host receives the guard and the private claim event');
-        assert(!events.some(event => event.type === 'sound' && event.id === 'tank-gate-claim'));
+        assert(!events.some(event => event.type === 'sound' && event.id === 'tank-gate-claim' && event.owner === host.id));
       },
     });
     return { ...result, realPeers: 2, tankIsNonHost: true, ownerPrivate: true, transport: 'peer' };

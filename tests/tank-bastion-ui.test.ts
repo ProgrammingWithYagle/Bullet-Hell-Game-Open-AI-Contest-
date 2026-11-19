@@ -59,6 +59,8 @@ test('Bastion graph uses the actual Broad Guard prerequisite and fitting exclusi
     { from: 'tank-protection-1', to: bastionIds.entry },
     { from: bastionIds.entry, to: bastionIds.split },
     { from: bastionIds.entry, to: bastionIds.corner },
+    { from: bastionIds.split, to: bastionIds.relief },
+    { from: bastionIds.corner, to: bastionIds.countermarch },
   ]);
   assert.deepEqual(route.exclusions, [{ a: bastionIds.split, b: bastionIds.corner }]);
 });
@@ -83,8 +85,8 @@ test('the arena draws an inward arrow only for the unspent half and draws nothin
   assert.equal(lines.length, 5);
 });
 
-test('Bastion’s two distinct cues use the shared finite synthesis without joining the issued wall registry', () => {
-  assert.deepEqual(bastionSoundIds, ['tank-gate-plant', 'tank-gate-claim']);
+test('Bastion’s three distinct cues use the shared finite synthesis without joining the issued wall registry', () => {
+  assert.deepEqual(bastionSoundIds, ['tank-gate-plant', 'tank-gate-claim', 'tank-gate-adjust']);
   for (const rate of [32000, 44100, 48000]) {
     const fingerprints = new Set<string>();
     for (const id of bastionSoundIds) {
@@ -97,6 +99,39 @@ test('Bastion’s two distinct cues use the shared finite synthesis without join
       assert.equal(tankBulwarkSample(id, duration), 0);
       fingerprints.add(samples.slice(0, 128).join(','));
     }
-    assert.equal(fingerprints.size, 2);
+    assert.equal(fingerprints.size, 3);
+  }
+});
+
+test('the remapped Action 2 describes ready late fittings and retains carried wall priority', async t => {
+  const env = menuEnvironment(t);
+  const guide = await menuBundle(t, 'src/client/ui/tank-controls.ts', stubs);
+  const hud = await menuBundle(t, 'src/client/tank-actions.ts', stubs);
+  const controls = defaultControls();
+  controls.bindings.technique2 = ['KeyN', 'KeyY'];
+  controls.gamepad.technique2 = 9;
+  for (const [fitting, item, ready, label] of [
+    [bastionIds.split, bastionIds.relief, 'relief', 'Move reserve to this half'],
+    [bastionIds.corner, bastionIds.countermarch, 'turn', 'Reverse this entrance'],
+  ] as const) {
+    const game = new Game({ mode: 'short' });
+    game.encounter = 2;
+    const tank = game.addPlayer('solo', 'Bastion', 'tank');
+    for (const skill of ['tank-protection-1', bastionIds.entry, fitting, item, bulwarkIds.entry, bulwarkIds.pivot]) {
+      assert(game.transact(tank.id, { id: skill, kind: 'skill', item: skill }).ok, skill);
+    }
+    const player = viewOf(game, 'solo').players[0];
+    env.host.innerHTML = guide.tankKitMarkup(player, controls, true);
+    const row = [...env.host.querySelectorAll('[data-kit-action="technique2"]')].find(row => row.textContent.includes(messages['skill.' + item + '.name']));
+    assert(row);
+    for (const remap of ['N', 'Y', '9']) assert(row.textContent.includes(remap));
+    player.ultimateAt = 1000;
+    player.kit.bastionAdjustment = ready;
+    const button = () => hud.tankActions(player, 0).extras.find((a: { key: string }) => a.key === 'technique2');
+    assert.deepEqual(button(), { key: 'technique2', id: item, at: 0, blocked: false });
+    assert.equal(hud.tankHudLabel(player, 'technique2', 0), label);
+    player.kit.bulwarkCarried = true;
+    player.kit.bulwarkCanHandle = true;
+    assert.deepEqual(button(), { key: 'technique2', id: bulwarkIds.pivot, at: 0, blocked: false });
   }
 });

@@ -14,7 +14,9 @@ export function tankActions(p:PlayerView,now:number){
     if(handling&&(!gate||p.kit.bulwarkCarried))extras.push({key:'technique2',id:handling,at:Math.max(p.kit.bulwarkRecoveryAt??0,p.kit.bulwarkCommitUntil??0),blocked:!p.kit.bulwarkCanHandle});
   }
   if(gate&&!extras.some(action=>action.key==='technique2')){
-    extras.push({key:'technique2',id:bastionIds.entry,at:p.ultimateAt,blocked:!p.kit.bastionCanPlant});
+    const adjustment = p.kit.bastionAdjustment;
+    const id = adjustment === 'relief' ? bastionIds.relief : adjustment === 'turn' ? bastionIds.countermarch : bastionIds.entry;
+    extras.push({key:'technique2',id,at:adjustment?0:p.ultimateAt,blocked:!adjustment&&!p.kit.bastionCanPlant});
   }
   if(tank&&p.skills.includes(interceptorIds.entry)){
     const phase=p.kit.interceptorPhase??'idle',active=phase==='screen',winding=phase==='winding';
@@ -38,6 +40,8 @@ export function tankHudLabel(p:PlayerView,slot:'technique1'|'technique2'|'techni
   const gate=p.skills.includes(bastionIds.entry);
   const handling=p.skills.includes(bulwarkIds.pivot)||p.skills.includes(bulwarkIds.port);
   if(gate&&(!p.kit.bulwarkCarried||!handling)){
+    if(p.kit.bastionAdjustment==='turn')return t('ui.tank.bastionCountermarch');
+    if(p.kit.bastionAdjustment==='relief')return t('ui.tank.bastionRelief');
     return t(p.ultimateAt<=now&&!p.kit.bastionCanPlant?'ui.tank.bastionBlocked':'ui.tank.bastionPlace');
   }
   if(!p.kit.bulwarkCarried)return t('ui.tank.needsCarry');

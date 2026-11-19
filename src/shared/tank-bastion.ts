@@ -5,10 +5,12 @@ export const bastionIds = {
   entry: 'tank-gate-signal-1',
   split: 'tank-gate-signal-split-1',
   corner: 'tank-gate-signal-corner-1',
+  countermarch: 'tank-gate-signal-countermarch-1',
+  relief: 'tank-gate-signal-relief-1',
 } as const;
 
 export const bastionRules = { lead: 42, halfSpan: 54, approachDepth: 28, minimumCrossingDot: 0.5 } as const;
-export type BastionStatus = { bastionCanPlant: boolean };
+export type BastionStatus = { bastionCanPlant: boolean; bastionAdjustment?: 'turn' | 'relief' };
 export type BastionWorld = {
   tick: number;
   playerRadius: number;
@@ -25,7 +27,8 @@ type Walk = { id: string; from: Vec; to: Vec; input: Vec };
 type Half = 'whole' | 'left' | 'right';
 type Entrance = { normal: Vec; half: Half; reserve: number };
 type Layout = { center: Vec; entrances: Entrance[]; remaining: boolean[] };
-type Station = Layout & { id: number; owner: string; at: number; guard: Guard };
+type Adjustment = { index: number; kind: 'turn' | 'relief' };
+type Station = Layout & { id: number; owner: string; at: number; guard: Guard; adjustment?: Adjustment; adjusted?: true };
 type Candidate = { station: Station; target: string; index: number; reserve: number; fraction: number };
 export type BastionCue = {
   kind: 'tank-gate-signal';
@@ -80,6 +83,19 @@ function entranceClear(world: BastionWorld, center: Vec, n: Vec) {
   });
 }
 
+function onMarkedSpan(half: Half, across: number, radius: number) {
+  if (Math.abs(across) > bastionRules.halfSpan - radius) return false;
+  if (half === 'left') return across < -radius;
+  if (half === 'right') return across > radius;
+  return true;
+}
+
+function inShelter(position: Vec, { normal, half }: Entrance, radius: number) {
+  const depth = dot(position, normal);
+  return depth >= -bastionRules.approachDepth && depth <= -radius &&
+    onMarkedSpan(half, dot(position, tangent(normal)), radius);
+}
+
 export class TankBastion {
   private readonly stations = new Map<string, Station>();
   private readonly walks: Walk[] = [];
@@ -123,6 +139,41 @@ export class TankBastion {
     return layout.center;
   }
 
+  private adjustmentFor(actor: Actor, world: BastionWorld) {
+    if (actor.classId !== 'tank' || !active(actor)) return;
+    const station = this.stations.get(actor.id);
+    if (!station || station.adjusted || station.adjustment ||
+        world.tick <= station.at || world.tick >= station.guard.until) return;
+
+    let kind: Adjustment['kind'];
+    if (actor.skills.includes(bastionIds.corner) && actor.skills.includes(bastionIds.countermarch)) {
+      kind = 'turn';
+    } else if (actor.skills.includes(bastionIds.split) && actor.skills.includes(bastionIds.relief)) {
+      if (station.remaining.length !== 2 || station.remaining.filter(Boolean).length !== 1) return;
+      kind = 'relief';
+    } else return;
+
+    const position = relative(actor, station.center);
+    const aim = { x: Math.cos(actor.aim), y: Math.sin(actor.aim) };
+    const towardOriginalThreat = kind === 'relief' ? 1 : -1;
+    const index = station.entrances.findIndex(face =>
+      station.remaining[face.reserve] === (kind === 'turn') &&
+      dot(aim, face.normal) * towardOriginalThreat >= Math.cos(Math.PI / 8) &&
+      inShelter(position, face, world.playerRadius) && entranceClear(world, station.center, face.normal));
+    if (index >= 0) return { station, adjustment: { index, kind } };
+  }
+
+  readyAdjustment(actor: Actor, world: BastionWorld) {
+    return this.adjustmentFor(actor, world)?.adjustment.kind;
+  }
+
+  requestAdjustment(actor: Actor, world: BastionWorld) {
+    const request = this.adjustmentFor(actor, world);
+    if (!request) return false;
+    request.station.adjustment = request.adjustment;
+    return true;
+  }
+
   remove(owner: string) {
     this.stations.delete(owner);
   }
@@ -136,7 +187,7 @@ export class TankBastion {
     this.walks.push(walk);
   }
 
-  resolve(world: BastionWorld, players: readonly Actor[], accept: (target: string, guard: Guard) => boolean) {
+  resolve(world: BastionWorld, players: readonly Actor[], accept: (target: string, guard: Guard) => boolean, adjusted?: (owner: string, center: Vec) => void) {
     const present = new Set(players.filter(active).map(p => p.id));
     const candidates: Candidate[] = [];
     for (const [owner, station] of this.stations) {
@@ -157,9 +208,7 @@ export class TankBastion {
           const fraction = before / (before - after), side = tangent(normal);
           const across = dot(a, side) + fraction * (dot(b, side) - dot(a, side));
           const radius = world.playerRadius;
-          if (Math.abs(across) > bastionRules.halfSpan - radius ||
-              (half === 'left' && across >= -radius) || (half === 'right' && across <= radius) ||
-              !walkClear(world, from, to)) continue;
+          if (!onMarkedSpan(half, across, radius) || !walkClear(world, from, to)) continue;
           candidates.push({ station, target: id, index, reserve, fraction });
         }
       }
@@ -178,6 +227,27 @@ export class TankBastion {
       station.remaining[reserve] = false;
       claimed.add(target);
       if (!station.remaining.includes(true)) this.stations.delete(station.owner);
+    }
+
+    // Commands change the next crossing. Every crossing in this interval used the earlier marks.
+    for (const station of this.stations.values()) {
+      const request = station.adjustment;
+      if (!request) continue;
+      delete station.adjustment;
+      const face = station.entrances[request.index];
+      if (request.kind === 'turn') {
+        if (!station.remaining[face.reserve]) continue;
+        const { x, y } = face.normal;
+        face.normal = { x: -x, y: -y };
+      } else {
+        const other = station.entrances[1 - request.index];
+        if (!other || station.remaining[face.reserve] || !station.remaining[other.reserve]) continue;
+        const previous = face.reserve;
+        face.reserve = other.reserve;
+        other.reserve = previous;
+      }
+      station.adjusted = true;
+      adjusted?.(station.owner, station.center);
     }
   }
 

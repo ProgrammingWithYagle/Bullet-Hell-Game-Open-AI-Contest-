@@ -1,6 +1,14 @@
 # Changelog
 
-Development build **2026.11.18-tank-bastion**, protocol 79. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.18-tank-bastion-fittings**, protocol 80. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-18 — Choose which approach to keep open
+
+### Tank Bastion
+
+- Relief Watch can move the unused half guard to the Split Watch lane already used by an ally.
+- Countermarch can turn one Corner Post entrance while keeping the perpendicular approach.
+- The existing deadline governs both operations. Only a real walk across the active arrow claims the reserve.
 
 ## 2026-11-18 — Mark a way back through the fighting
 

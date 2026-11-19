@@ -1,5 +1,9 @@
 # Scoped build variety audit
 
+## Bastion late fittings
+
+Actual 27-SP purchases verify 3,398 distinct specialization and shared mobility configurations. Tank has 1,100, including 176 new Relief Watch and 176 new Countermarch signatures. Every one of the 3,046 previously legal signatures still purchases. The audit counts configurations with actual specialization and shared purchases, excluding numerical General variants. [Census](../reviews/tank-bastion-fittings-2026-11-18/build-census.json).
+
 Actual purchases under 27 SP verified **3,046 distinct specialization and shared mobility configurations**. Tank has 748 configurations. Bastion adds 568, including 192 plain Gate Signal, 188 Split Watch and 188 Corner Post configurations. All 2,478 prior signatures remain purchaseable. Six controlled wall hybrids exercised both carried Action 2 fittings followed by setdown and Gate Signal. [Bastion census](../reviews/tank-bastion-2026-11-18/build-census.json) · [Hybrid cases](../reviews/tank-bastion-2026-11-18/wall-hybrids.json)
 
 ## Interceptor census

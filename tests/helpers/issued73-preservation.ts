@@ -1,3 +1,4 @@
+import lateBastionEdition from '../fixtures/tank-bastion-issued79-bindings.json';
 import bastionEdition from '../fixtures/tank-bastion-issued78-bindings.json';
 import interceptorEdition from '../fixtures/tank-interceptor-issued77-bindings.json';
 import tankEdition from '../fixtures/tank-issued76-bindings.json';
@@ -7,7 +8,7 @@ const issued = JSON.parse(
 );
 const ids = new Set<string>(issued.issuedSpecializationIds),
   rules = new Set<string>(issued.issuedRuleKeys),
-  newMessages = new Set<string>([...issued.introduced74MessageKeys,...tankEdition.introduced77MessageKeys,...interceptorEdition.introduced78MessageKeys,...bastionEdition.addedLocaleKeys]);
+  newMessages = new Set<string>([...issued.introduced74MessageKeys,...tankEdition.introduced77MessageKeys,...interceptorEdition.introduced78MessageKeys,...bastionEdition.addedLocaleKeys,...lateBastionEdition.addedLocaleKeys]);
 export const issuedAtOrBefore73 = (s: { id: string }) => ids.has(s.id);
 export function catalogAt73<
   T extends { rules: Record<string, unknown>; specializationSkills: readonly { id: string }[] },

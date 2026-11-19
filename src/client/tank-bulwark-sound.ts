@@ -8,7 +8,7 @@ export const bulwarkSoundIds = [
 export type BulwarkSoundId = (typeof bulwarkSoundIds)[number];
 export const isTankBulwarkSound = (id: string): id is BulwarkSoundId =>
   (bulwarkSoundIds as readonly string[]).includes(id);
-export const bastionSoundIds = ['tank-gate-plant', 'tank-gate-claim'] as const;
+export const bastionSoundIds = ['tank-gate-plant', 'tank-gate-claim', 'tank-gate-adjust'] as const;
 type BastionSoundId = (typeof bastionSoundIds)[number];
 export const isTankBastionSound = (id: string): id is BastionSoundId =>
   (bastionSoundIds as readonly string[]).includes(id);
@@ -21,6 +21,7 @@ const pitches: Record<TankGuardSoundId, number> = {
   'tank-wall-port-close': 330,
   'tank-gate-plant': 153,
   'tank-gate-claim': 525,
+  'tank-gate-adjust': 294,
 };
 const durations: Record<TankGuardSoundId, number> = {
   'tank-wall-lift': 0.14,
@@ -30,6 +31,7 @@ const durations: Record<TankGuardSoundId, number> = {
   'tank-wall-port-close': 0.075,
   'tank-gate-plant': 0.18,
   'tank-gate-claim': 0.125,
+  'tank-gate-adjust': 0.14,
 };
 export const tankBulwarkDuration = (id: TankGuardSoundId) => durations[id];
 /** Finite mechanical cues; objective sample checks are separate from listening acceptance. */

@@ -13,6 +13,7 @@ export type SpecializationMap = {
 const positions: Record<string, Point> = {
   "tank-bastion-1":{x:500,y:75},"tank-interceptor-1":{x:500,y:255},"tank-interceptor-crossing-1":{x:230,y:505},"tank-interceptor-standfast-1":{x:770,y:505},
   "tank-gate-signal-1":{x:500,y:255},"tank-gate-signal-split-1":{x:230,y:505},"tank-gate-signal-corner-1":{x:770,y:505},
+  "tank-gate-signal-relief-1":{x:230,y:775},"tank-gate-signal-countermarch-1":{x:770,y:775},
   "tank-protection-1":{x:500,y:75},"tank-bulwark-carry-1":{x:500,y:255},"tank-bulwark-pivot-1":{x:230,y:505},"tank-bulwark-port-1":{x:770,y:505},
   "heavy-linework-1":{x:500,y:255},"heavy-linework-yoke-1":{x:230,y:505},"heavy-linework-sheave-1":{x:770,y:505},"heavy-linework-reserve-1":{x:230,y:775},"heavy-linework-guide-1":{x:770,y:775},
   "heavy-traverse-lanyard-1": { x: 500, y: 1285 },

@@ -14,7 +14,21 @@ The game resolves same-tick claims by crossing time across all stations. Exact t
 
 The sill is shared ground feedback. Inward arrows mark open faces, and a spent half dims and loses its arrow. Only the owner receives placement readiness and the planting sound. Only the claimant receives the claim sound. The command guide uses the saved keyboard and controller bindings in either HUD layout. The three painted emblems use unmodified built-in ImageGen output. [Art provenance and prompts](../assets/production/ui/tank-bastion-2026-11-18/provenance.json)
 
-## Verification
+## Late fittings
+
+Relief Watch extends Split Watch. After a crossing spends one half, stand just behind that half, aim toward the original approach and use Action 2. The remaining reserve moves into the used lane once. Countermarch extends Corner Post. Stand just behind an open entrance, aim in the direction its arrow points and use Action 2 to reverse that entrance once. The second approach can still claim the same guard.
+
+Each late fitting costs 3 SP after its corresponding early choice and requires 11 earned SP. The second Short clear pays 15. The command retains the original station ID, guard and deadline. Crossings already in progress use the previous marks and can spend the reserve before the change. The update becomes the shared physical arrow for later crossings. The ready command and latch sound reach the owner. The carried-wall fitting keeps Action 2 during carry. Tank now has eleven techniques across three routes.
+
+In focused local execution, the complete optimized Solo worker earned Countermarch and claimed the reversed route. A real non-host Tank earned Relief Watch, moved its second reserve to the teammate’s used lane and then took it by walking. The 24 ordinary scripted Short replays with canonical code reproduce three Soldier claims after a Relief Watch adjustment and two owner claims after Countermarch. The paired unused-purchase controls matched on gameplay, progression and timing. These cases establish specific interactions, while longer class balance, human, rendered, device, native-language, listening and motion reviews remain open. [Relief Watch runs](../reviews/tank-bastion-fittings-2026-11-18/relief-natural.json) · [Countermarch runs](../reviews/tank-bastion-fittings-2026-11-18/countermarch-natural.json) · [Emblem prompts](../assets/production/ui/tank-bastion-late-2026-11-18/provenance.json).
+
+The other transport pair passed as well. Solo Relief Watch reopened its spent half, and a Soldier in a real non-host Countermarch trial crossed the reversed perpendicular approach. Eight fresh and restored Solo Countermarch pairs matched every recorded field after a restore from the actual 15-SP shop. Two matched active pairs made a real reversed claim. [Additional transports](../reviews/tank-bastion-fittings-2026-11-18/opposite-transports.json) · [Safe-shop comparison](../reviews/tank-bastion-fittings-2026-11-18/safe-shop-comparison.json).
+
+Thirty of 36 scripted Standard runs cleared all ten encounters and reached 27 earned SP. The six losses reached Matron on Normal Solo seed 73. The earlier policy stayed behind the Ossuary Works chicanes. The final comparison used legal waypoints around the cover in both visits to that arena. Tank earned the selected late fitting and combined it with Mobile Bulwark and Interceptor within the existing budget. The gate policy produced 38 owner claims. The co-op Short trials above provide the separate teammate and late-operation evidence. [Solo Standard](../reviews/tank-bastion-fittings-2026-11-18/standard-solo.json) · [Two-player Standard](../reviews/tank-bastion-fittings-2026-11-18/standard-party.json).
+
+The local protocol 80 gate passed 2,616 tests and all seven checks. The previous run passed 2,611 tests and identified five graph, locale projection and generated ledger expectations for the earlier edition. Both earned late-operation tests passed in that run. The corrected checks preserve all previous issued messages and assertions about actual graph edges. The original gate remains in the continuation workspace.
+
+## Initial protocol 79 verification
 
 Source **83bc91973585b3f483c8b43a02cc00fa5a9dd20f**, build **2026.11.18-tank-bastion**, protocol **79**, catalog **78**. Content SHA-256 `d784e4ab3aab24a08c50ca8d1bb8b63cb18c2bfea3337ae5818beb6bd144ece0`. Runtime SHA-256 `0fb2ca15df788de36ad3b87fa61bcd75026164771af736921df639a7a48688f2`. Source snapshot SHA-256 `58a6ae372131bffb066387b897b3c020d3aba47619e685f1eb1fff653d68dd20`.
 
@@ -35,4 +49,4 @@ The protocol 79 catalog projects exactly to the issued protocol 78 catalog when 
 
 A copied-Game trial assessed Countermarch, a 3-SP choice that reverses one unspent entrance after the second ordinary Short clear. The controlled cases confirmed the original deadline and guard, and preserved claims already in progress. In 162 ordinary Short runs, two turns led to guard claims. Both used Corner Post. One of those runs took 33 less damage and ended 14 combat intervals earlier. The other matched the control on damage and clock. Each policy won 40 of 54 runs. Countermarch remains a candidate while the late-use case is assessed. [Study summary](../reviews/tank-bastion-2026-11-18/countermarch-study.json).
 
-Tank has nine techniques across three routes. Broader solo and co-op balance, human play, rendered and device review, native-language review and listening acceptance remain open.
+At protocol 79 Tank had nine techniques across three routes. Broader solo and co-op balance, human play, rendered and device review, native-language review and listening acceptance remain open.

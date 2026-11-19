@@ -10,7 +10,9 @@ import { restWait } from './sniper-rest-flow.ts';
 import { restRaidInput } from './sniper-rest-raid-policy.ts';
 import type { InterceptionTransport } from './tank-interceptor-earned-flow.ts';
 
-export type BastionChoice = 'plain' | 'split' | 'corner';
+type BaseChoice = 'plain' | 'split' | 'corner';
+export type BastionChoice = BaseChoice | 'relief' | 'countermarch';
+type BastionTransport = InterceptionTransport & { equipAlly?(): Promise<void> };
 type Actor = { player(): PlayerView; input(props: Partial<InputFrame>): number };
 type Peer = Actor & { checkGate(gate: BastionCue): Promise<void>; checkClaim(until: number): Promise<void> };
 const skills = [...data.skills, ...data.generalSkills, ...data.specializationSkills];
@@ -19,7 +21,7 @@ const point = ({ x, y }: Vec) => ({ x, y });
 const offset = (center: Vec, n: Vec, depth: number, side: number) =>
   ({ x: center.x + n.x * depth - n.y * side, y: center.y + n.y * depth + n.x * side });
 
-function formation(view: View, tank: PlayerView, runner: PlayerView, choice: BastionChoice) {
+function formation(view: View, tank: PlayerView, runner: PlayerView, choice: BaseChoice, reversed: boolean, late: boolean) {
   const world = { ...bulwarkTrialWorld(view), playerRadius: data.rules.playerRadius };
   const planner = new TankBastion(() => assert.fail('Inspection cannot allocate a cue'));
   const queue = [{ at: point(tank), dx: 0, dy: 0, parent: -1 }], seen = new Set(['0:0']);
@@ -34,10 +36,14 @@ function formation(view: View, tank: PlayerView, runner: PlayerView, choice: Bas
       const center = offset(node.at, face, -bastionRules.lead, 0);
       const lateral = choice === 'split' ? -30 : choice === 'corner' ? -30 : 0;
       const from = offset(center, normal, 16, lateral), to = offset(center, normal, -16, lateral);
-      if (!clearTrialWalk(world, runner.id === tank.id ? node.at : runner, from) || !clearTrialWalk(world, from, to)) continue;
+      const approach = reversed ? to : from;
+      if (!clearTrialWalk(world, runner.id === tank.id ? node.at : runner, approach) || !clearTrialWalk(world, from, to)) continue;
+      const shelter = reversed ? [offset(center, normal, 0, -67), offset(center, normal, -16, -67), to] : [from, to];
+      if (late && !shelter.every((at, index) => clearTrialWalk(world, shelter[index - 1] ?? node.at, at))) continue;
+      const reverseAim = Math.atan2(-normal.y, -normal.x);
       const path: Vec[] = [];
       for (let at = index; queue[at].parent >= 0; at = queue[at].parent) path.unshift(queue[at].at);
-      return { aim, from, to, path };
+      return { aim, reverseAim, from, to, path, shelter };
     }
     for (const [dx, dy] of [[0, 1], [1, 0], [0, -1], [-1, 0], [1, 1], [1, -1], [-1, 1], [-1, -1]]) {
       const x = node.dx + dx, y = node.dy + dy, key = x + ':' + y;
@@ -50,7 +56,9 @@ function formation(view: View, tank: PlayerView, runner: PlayerView, choice: Bas
   }
 }
 
-export async function earnedBastionFlow(t: InterceptionTransport, choice: BastionChoice, peer?: Peer) {
+export async function earnedBastionFlow(t: BastionTransport, choice: BastionChoice, peer?: Peer) {
+  const fit = choice === 'relief' ? 'split' : choice === 'countermarch' ? 'corner' : choice;
+  const late = choice === 'relief' || choice === 'countermarch' ? bastionIds[choice] : undefined;
   const view = () => { const v = t.view(); assert(v); return v; };
   const player = () => { const p = view().players.find(p => p.id === t.id); assert(p); return p; };
   const tank = { player, input: t.input }, runner = peer ?? tank;
@@ -89,38 +97,51 @@ export async function earnedBastionFlow(t: InterceptionTransport, choice: Bastio
   t.start();
   await restWait(() => view().phase === 'combat', 'Actual Short deployment');
   await t.onFirstCombat?.();
-  const deadline = Date.now() + 185_000;
-  while (view().phase === 'combat') {
-    assert(Date.now() < deadline, 'First ordinary Short clear');
-    t.input({ ...restRaidInput(view(), player(), [...t.observed.values()]), ultimate: false });
-    t.allyPolicy?.();
-    await sleep(25);
+  const actualEarnedSequence = [3];
+  for (const clears of late ? [1, 2] : [1]) {
+    const deadline = Date.now() + 185_000;
+    while (view().phase === 'combat') {
+      assert(Date.now() < deadline, 'Ordinary Short clear ' + clears);
+      t.input({ ...restRaidInput(view(), player(), [...t.observed.values()]), ultimate: false });
+      t.allyPolicy?.();
+      await sleep(25);
+    }
+    t.stopAlly?.();
+    assert.equal(player().progress.clears, clears);
+    assert.equal(earned(), clears === 1 ? 9 : 15);
+    actualEarnedSequence.push(earned());
+    const payoutDeadline = Date.now() + 90_000;
+    while (view().phase !== 'shop') {
+      assert(view().phase !== 'defeat' && Date.now() < payoutDeadline);
+      if (['contractVote', 'mutationVote'].includes(view().phase)) t.vote(0);
+      await sleep(25);
+    }
+    if (clears === 1 && fit !== 'plain') {
+      assert((await buy(bastionIds[fit])).ok);
+      assert.equal((await buy(bastionIds[fit === 'split' ? 'corner' : 'split'])).reason, 'incompatibleItem');
+    }
+    if (late) {
+      if (clears === 1) {
+        assert.equal((await buy(late)).reason, 'insufficientPoints');
+        await equip();
+        await t.equipAlly?.();
+      } else assert((await buy(late)).ok);
+    }
+    const deploymentDeadline = Date.now() + 90_000;
+    while (view().phase !== 'combat') {
+      const current = view();
+      assert(current.phase !== 'defeat' && Date.now() < deploymentDeadline,
+        'Ordinary deployment after the paid shop: ' + JSON.stringify({ phase: current.phase, tick: current.tick, phaseEnds: current.phaseEnds }));
+      await sleep(25);
+    }
   }
-  t.stopAlly?.();
-  assert.equal(player().progress.clears, 1);
-  assert.equal(earned(), 9);
-  const payoutDeadline = Date.now() + 90_000;
-  while (view().phase !== 'shop') {
-    assert(view().phase !== 'defeat' && Date.now() < payoutDeadline);
-    if (['contractVote', 'mutationVote'].includes(view().phase)) t.vote(0);
-    await sleep(25);
-  }
-  if (choice !== 'plain') {
-    assert((await buy(bastionIds[choice])).ok);
-    assert.equal((await buy(bastionIds[choice === 'split' ? 'corner' : 'split'])).reason, 'incompatibleItem');
-  }
-  const deploymentDeadline = Date.now() + 90_000;
-  while (view().phase !== 'combat') {
-    const current = view();
-    assert(current.phase !== 'defeat' && Date.now() < deploymentDeadline,
-      'Ordinary deployment after the paid shop: ' + JSON.stringify({ phase: current.phase, tick: current.tick, phaseEnds: current.phaseEnds }));
-    await sleep(25);
-  }
+
   assert(!view().run.testingModified && !view().run.customized);
-  const route = formation(view(), player(), runner.player(), choice);
+  const reversed = choice === 'countermarch';
+  const route = formation(view(), player(), runner.player(), fit, reversed, !!late);
   assert(route, 'A real terrain-safe formation exists');
   for (const waypoint of route.path) await walk(tank, waypoint, route.aim);
-  if (peer) await walk(peer, route.from, route.aim);
+  if (peer) await walk(peer, reversed ? route.to : route.from, route.aim);
   await acknowledge(tank, { aim: route.aim }, 'Aimed bearing acknowledged separately');
   await restWait(() => player().kit.bastionCanPlant === true, 'Owned station is available on clear ground');
   const eventStart = t.events.length;
@@ -129,7 +150,7 @@ export async function earnedBastionFlow(t: InterceptionTransport, choice: Bastio
   const gate = structuredClone(live()!);
   assert.equal(gate.until - gate.at, Math.ceil(issuedUltimate.duration * HZ));
   assert.equal(player().ultimateAt - gate.at, Math.ceil(issuedUltimate.cooldown * HZ));
-  assert.equal(gate.entrances.length, choice === 'plain' ? 1 : 2);
+  assert.equal(gate.entrances.length, fit === 'plain' ? 1 : 2);
   assert(gate.entrances.every(face => face.open));
   await restWait(() => t.events.slice(eventStart).some(event =>
     event.type === 'sound' && event.id === 'tank-gate-plant' && event.owner === t.id), 'Separate plant feedback reaches the owner');
@@ -148,17 +169,62 @@ export async function earnedBastionFlow(t: InterceptionTransport, choice: Bastio
   await acknowledge(tank, { aim: route.aim }, 'Neutral Action 2 release after resume');
   assert(distance(paused.owner, player()) < 0.25);
 
-  if (!peer) await walk(runner, route.from, route.aim);
-  await walk(runner, route.to, route.aim);
-  await restWait(() => runner.player().kit.armorUntil === gate.until, 'Original deadline on the actual guard');
-  assert.equal(runner.player().kit.armor, choice === 'split' ? 0.175 : 0.35);
+  let adjustedGate: BastionCue | undefined;
+  let finalClaimant = runner;
+  async function adjust(kind: 'turn' | 'relief', aim: number) {
+    await acknowledge(tank, { aim }, 'Separate stationary fitting aim');
+    await restWait(() => player().kit.bastionAdjustment === kind, 'Owned late fitting is ready');
+    const after = t.events.length, recovery = player().ultimateAt;
+    await acknowledge(tank, { aim, technique2: true }, 'Owned late Action 2 acknowledged');
+    await restWait(() => t.events.slice(after).some(event =>
+      event.type === 'sound' && event.id === 'tank-gate-adjust' && event.owner === t.id), 'Private late operation response');
+    await restWait(() => {
+      const updated = live();
+      if (updated?.id !== gate.id) return false;
+      return kind === 'relief'
+        ? updated.entrances[0].open && !updated.entrances[1].open
+        : Math.cos(updated.entrances[1].aim - gate.entrances[1].aim) < -0.9999;
+    }, 'Changed geometry observed independently of the action acknowledgment');
+    adjustedGate = structuredClone(live()!);
+    assert.equal(adjustedGate.id, gate.id);
+    assert.equal(adjustedGate.until, gate.until);
+    assert.equal(player().ultimateAt, recovery);
+    await peer?.checkGate(adjustedGate);
+  }
+  if (reversed) {
+    for (const waypoint of route.shelter) await walk(tank, waypoint, route.reverseAim);
+    await adjust('turn', route.reverseAim);
+    await walk(runner, route.from, route.reverseAim);
+  } else {
+    if (!peer) await walk(runner, route.from, route.aim);
+    await walk(runner, route.to, route.aim);
+    if (choice === 'relief') {
+      await restWait(() => runner.player().kit.armorUntil === gate.until, 'The first half pays its original guard');
+      assert.deepEqual(live()?.entrances.map(face => face.open), [false, true]);
+      if (peer) {
+        await peer.checkClaim(gate.until);
+        for (const waypoint of route.shelter) await walk(tank, waypoint, route.aim);
+      }
+      await adjust('relief', route.aim);
+      if (peer) {
+        await walk(tank, route.from, route.aim);
+        await walk(tank, route.to, route.aim);
+        finalClaimant = tank;
+      }
+    }
+  }
+  await restWait(() => finalClaimant.player().kit.armorUntil === gate.until, 'Original deadline on the actual guard');
+  assert.equal(finalClaimant.player().kit.armor, fit === 'split' ? 0.175 : 0.35);
   if (choice === 'split') assert.deepEqual(live()?.entrances.map(face => face.open), [false, true]);
+  else if (choice === 'relief' && !peer) assert.deepEqual(live()?.entrances.map(face => face.open), [true, false]);
   else assert.equal(live(), undefined);
-  if (peer) await peer.checkClaim(gate.until);
+  if (peer && finalClaimant === peer) await peer.checkClaim(gate.until);
   else await restWait(() => t.events.some(event => event.type === 'sound' && event.id === 'tank-gate-claim' &&
     event.owner === t.id), 'Separate owned claim feedback');
-  const result = { passed: true, choice, actualEarnedSequence: [3, 9], spent: spent(),
-    sharedGate: gate, guardUntil: gate.until, pausedCommandsDiscarded: true, claimant: runner.player().classId };
+  const result = { passed: true, choice, actualEarnedSequence, spent: spent(),
+    sharedGate: gate, ...(adjustedGate ? { adjustedGate } : {}), guardUntil: gate.until,
+    pausedCommandsDiscarded: true, claimant: finalClaimant.player().classId };
+
   if (t.end) {
     t.end();
     await restWait(() => view().phase === 'defeat' && !!view().endedByHost, 'Actual host exit');

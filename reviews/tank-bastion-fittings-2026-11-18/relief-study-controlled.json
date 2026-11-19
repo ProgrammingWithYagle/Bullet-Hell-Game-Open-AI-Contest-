@@ -1,0 +1,1064 @@
+{
+  "scope": "Copied Game. Two unmodified ordinary Short combat clears and actual 15 earned SP. A controlled stagger in the third encounter isolates crossing and reservation authority.",
+  "binding": {
+    "sourceCommit": "83bc91973585b3f483c8b43a02cc00fa5a9dd20f",
+    "profile": "candidate",
+    "sourceRuntimeSha256": "0fb2ca15df788de36ad3b87fa61bcd75026164771af736921df639a7a48688f2",
+    "bundleSha256": "023ca5e1729d8193bf2f3fcf295ec133d9d8099a7172b1318b7538fb22ff6517",
+    "studyCatalogAdditions": [
+      "tank-gate-signal-countermarch-1",
+      "tank-gate-signal-relief-1"
+    ],
+    "publishedCatalogAdditions": [],
+    "overlays": {
+      "content/catalog.json": "7a86ff3a1005d3b55da6d37555c6c04bcf53d82b39afaa44976e72abfa4de26c",
+      "src/shared/tank-bastion.ts": "adaa44b810ed78b43118145506929dda8ed456178263318e67783d0ee3a4a7e6",
+      "src/shared/game.ts": "e66eb6876bd0882f44d8e81dfe40afeec7aed01d26b2f65e807960296428054a"
+    }
+  },
+  "rows": [
+    {
+      "arena": "gatehouse",
+      "difficulty": "baby",
+      "seed": 41,
+      "variation": "left",
+      "passed": true,
+      "firstShop": [
+        {
+          "encounter": 1,
+          "totalSp": 9,
+          "at": 722,
+          "clears": 1
+        },
+        {
+          "encounter": 2,
+          "totalSp": 15,
+          "at": 944,
+          "clears": 2
+        }
+      ],
+      "purchases": [
+        {
+          "id": "tank-gate-signal-relief-1",
+          "earned": 3,
+          "before": 0,
+          "after": 0,
+          "response": {
+            "ok": false,
+            "reason": "prerequisite"
+          }
+        },
+        {
+          "id": "tank-gate-signal-split-1",
+          "earned": 9,
+          "before": 6,
+          "after": 4,
+          "response": {
+            "ok": true
+          }
+        },
+        {
+          "id": "tank-gate-signal-relief-1",
+          "earned": 9,
+          "before": 4,
+          "after": 4,
+          "response": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "id": "tank-gate-signal-countermarch-1",
+          "earned": 15,
+          "before": 10,
+          "after": 10,
+          "response": {
+            "ok": false,
+            "reason": "prerequisite"
+          }
+        },
+        {
+          "id": "tank-gate-signal-relief-1",
+          "earned": 15,
+          "before": 10,
+          "after": 7,
+          "response": {
+            "ok": true
+          }
+        }
+      ],
+      "issued": {
+        "kind": "tank-gate-signal",
+        "id": 458,
+        "owner": "tank",
+        "x": 737,
+        "y": 752,
+        "at": 950,
+        "until": 1190,
+        "radius": 54,
+        "entrances": [
+          {
+            "aim": -3.141592653589793,
+            "half": "left",
+            "open": true
+          },
+          {
+            "aim": -3.141592653589793,
+            "half": "right",
+            "open": true
+          }
+        ],
+        "center": {
+          "x": 737,
+          "y": 752
+        }
+      },
+      "post": {
+        "kind": "tank-gate-signal",
+        "id": 458,
+        "owner": "tank",
+        "x": 737,
+        "y": 752,
+        "at": 950,
+        "until": 1190,
+        "radius": 54,
+        "entrances": [
+          {
+            "aim": -3.141592653589793,
+            "half": "left",
+            "open": true
+          },
+          {
+            "aim": -3.141592653589793,
+            "half": "right",
+            "open": false
+          }
+        ],
+        "center": {
+          "x": 737,
+          "y": 752
+        }
+      },
+      "trace": [
+        {
+          "owner": "tank",
+          "target": "tank",
+          "entrance": 0,
+          "until": 1190,
+          "tick": 962
+        },
+        {
+          "owner": "tank",
+          "target": "soldier",
+          "entrance": 0,
+          "until": 1190,
+          "tick": 972
+        }
+      ],
+      "recovery": 3800,
+      "receivedArmor": 0.175
+    },
+    {
+      "arena": "triage-yard",
+      "difficulty": "baby",
+      "seed": 73,
+      "variation": "right",
+      "passed": true,
+      "firstShop": [
+        {
+          "encounter": 1,
+          "totalSp": 9,
+          "at": 871,
+          "clears": 1
+        },
+        {
+          "encounter": 2,
+          "totalSp": 15,
+          "at": 1342,
+          "clears": 2
+        }
+      ],
+      "purchases": [
+        {
+          "id": "tank-gate-signal-relief-1",
+          "earned": 3,
+          "before": 0,
+          "after": 0,
+          "response": {
+            "ok": false,
+            "reason": "prerequisite"
+          }
+        },
+        {
+          "id": "tank-gate-signal-split-1",
+          "earned": 9,
+          "before": 6,
+          "after": 4,
+          "response": {
+            "ok": true
+          }
+        },
+        {
+          "id": "tank-gate-signal-relief-1",
+          "earned": 9,
+          "before": 4,
+          "after": 4,
+          "response": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "id": "tank-gate-signal-countermarch-1",
+          "earned": 15,
+          "before": 10,
+          "after": 10,
+          "response": {
+            "ok": false,
+            "reason": "prerequisite"
+          }
+        },
+        {
+          "id": "tank-gate-signal-relief-1",
+          "earned": 15,
+          "before": 10,
+          "after": 7,
+          "response": {
+            "ok": true
+          }
+        }
+      ],
+      "issued": {
+        "kind": "tank-gate-signal",
+        "id": 635,
+        "owner": "tank",
+        "x": 1141.2,
+        "y": 775.2,
+        "at": 1348,
+        "until": 1588,
+        "radius": 54,
+        "entrances": [
+          {
+            "aim": -3.141592653589793,
+            "half": "left",
+            "open": true
+          },
+          {
+            "aim": -3.141592653589793,
+            "half": "right",
+            "open": true
+          }
+        ],
+        "center": {
+          "x": 1141.2,
+          "y": 775.2
+        }
+      },
+      "post": {
+        "kind": "tank-gate-signal",
+        "id": 635,
+        "owner": "tank",
+        "x": 1141.2,
+        "y": 775.2,
+        "at": 1348,
+        "until": 1588,
+        "radius": 54,
+        "entrances": [
+          {
+            "aim": -3.141592653589793,
+            "half": "left",
+            "open": false
+          },
+          {
+            "aim": -3.141592653589793,
+            "half": "right",
+            "open": true
+          }
+        ],
+        "center": {
+          "x": 1141.2,
+          "y": 775.2
+        }
+      },
+      "trace": [
+        {
+          "owner": "tank",
+          "target": "tank",
+          "entrance": 1,
+          "until": 1588,
+          "tick": 1360
+        },
+        {
+          "owner": "tank",
+          "target": "soldier",
+          "entrance": 1,
+          "until": 1588,
+          "tick": 1370
+        }
+      ],
+      "recovery": 4198,
+      "receivedArmor": 0.175
+    },
+    {
+      "arena": "triage-yard",
+      "difficulty": "normal",
+      "seed": 73,
+      "variation": "left",
+      "passed": true,
+      "firstShop": [
+        {
+          "encounter": 1,
+          "totalSp": 9,
+          "at": 1217,
+          "clears": 1
+        },
+        {
+          "encounter": 2,
+          "totalSp": 15,
+          "at": 1600,
+          "clears": 2
+        }
+      ],
+      "purchases": [
+        {
+          "id": "tank-gate-signal-relief-1",
+          "earned": 3,
+          "before": 0,
+          "after": 0,
+          "response": {
+            "ok": false,
+            "reason": "prerequisite"
+          }
+        },
+        {
+          "id": "tank-gate-signal-split-1",
+          "earned": 9,
+          "before": 6,
+          "after": 4,
+          "response": {
+            "ok": true
+          }
+        },
+        {
+          "id": "tank-gate-signal-relief-1",
+          "earned": 9,
+          "before": 4,
+          "after": 4,
+          "response": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "id": "tank-gate-signal-countermarch-1",
+          "earned": 15,
+          "before": 10,
+          "after": 10,
+          "response": {
+            "ok": false,
+            "reason": "prerequisite"
+          }
+        },
+        {
+          "id": "tank-gate-signal-relief-1",
+          "earned": 15,
+          "before": 10,
+          "after": 7,
+          "response": {
+            "ok": true
+          }
+        }
+      ],
+      "issued": {
+        "kind": "tank-gate-signal",
+        "id": 747,
+        "owner": "tank",
+        "x": 1141.2,
+        "y": 775.2,
+        "at": 1606,
+        "until": 1846,
+        "radius": 54,
+        "entrances": [
+          {
+            "aim": -3.141592653589793,
+            "half": "left",
+            "open": true
+          },
+          {
+            "aim": -3.141592653589793,
+            "half": "right",
+            "open": true
+          }
+        ],
+        "center": {
+          "x": 1141.2,
+          "y": 775.2
+        }
+      },
+      "post": {
+        "kind": "tank-gate-signal",
+        "id": 747,
+        "owner": "tank",
+        "x": 1141.2,
+        "y": 775.2,
+        "at": 1606,
+        "until": 1846,
+        "radius": 54,
+        "entrances": [
+          {
+            "aim": -3.141592653589793,
+            "half": "left",
+            "open": true
+          },
+          {
+            "aim": -3.141592653589793,
+            "half": "right",
+            "open": false
+          }
+        ],
+        "center": {
+          "x": 1141.2,
+          "y": 775.2
+        }
+      },
+      "trace": [
+        {
+          "owner": "tank",
+          "target": "tank",
+          "entrance": 0,
+          "until": 1846,
+          "tick": 1618
+        },
+        {
+          "owner": "tank",
+          "target": "soldier",
+          "entrance": 0,
+          "until": 1846,
+          "tick": 1628
+        }
+      ],
+      "recovery": 4456,
+      "receivedArmor": 0.175
+    },
+    {
+      "arena": "gatehouse",
+      "difficulty": "normal",
+      "seed": 41,
+      "variation": "old-claim",
+      "passed": true,
+      "firstShop": [
+        {
+          "encounter": 1,
+          "totalSp": 9,
+          "at": 1020,
+          "clears": 1
+        },
+        {
+          "encounter": 2,
+          "totalSp": 15,
+          "at": 1530,
+          "clears": 2
+        }
+      ],
+      "purchases": [
+        {
+          "id": "tank-gate-signal-relief-1",
+          "earned": 3,
+          "before": 0,
+          "after": 0,
+          "response": {
+            "ok": false,
+            "reason": "prerequisite"
+          }
+        },
+        {
+          "id": "tank-gate-signal-split-1",
+          "earned": 9,
+          "before": 6,
+          "after": 4,
+          "response": {
+            "ok": true
+          }
+        },
+        {
+          "id": "tank-gate-signal-relief-1",
+          "earned": 9,
+          "before": 4,
+          "after": 4,
+          "response": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "id": "tank-gate-signal-countermarch-1",
+          "earned": 15,
+          "before": 10,
+          "after": 10,
+          "response": {
+            "ok": false,
+            "reason": "prerequisite"
+          }
+        },
+        {
+          "id": "tank-gate-signal-relief-1",
+          "earned": 15,
+          "before": 10,
+          "after": 7,
+          "response": {
+            "ok": true
+          }
+        }
+      ],
+      "issued": {
+        "kind": "tank-gate-signal",
+        "id": 807,
+        "owner": "tank",
+        "x": 737,
+        "y": 752,
+        "at": 1535,
+        "until": 1775,
+        "radius": 54,
+        "entrances": [
+          {
+            "aim": -3.141592653589793,
+            "half": "left",
+            "open": true
+          },
+          {
+            "aim": -3.141592653589793,
+            "half": "right",
+            "open": true
+          }
+        ],
+        "center": {
+          "x": 737,
+          "y": 752
+        }
+      },
+      "trace": [
+        {
+          "owner": "tank",
+          "target": "tank",
+          "entrance": 0,
+          "until": 1775,
+          "tick": 1545
+        },
+        {
+          "owner": "tank",
+          "target": "soldier",
+          "entrance": 1,
+          "until": 1775,
+          "tick": 1552
+        }
+      ],
+      "recovery": 4385
+    },
+    {
+      "arena": "triage-yard",
+      "difficulty": "baby",
+      "seed": 73,
+      "variation": "new-waits",
+      "passed": true,
+      "firstShop": [
+        {
+          "encounter": 1,
+          "totalSp": 9,
+          "at": 871,
+          "clears": 1
+        },
+        {
+          "encounter": 2,
+          "totalSp": 15,
+          "at": 1342,
+          "clears": 2
+        }
+      ],
+      "purchases": [
+        {
+          "id": "tank-gate-signal-relief-1",
+          "earned": 3,
+          "before": 0,
+          "after": 0,
+          "response": {
+            "ok": false,
+            "reason": "prerequisite"
+          }
+        },
+        {
+          "id": "tank-gate-signal-split-1",
+          "earned": 9,
+          "before": 6,
+          "after": 4,
+          "response": {
+            "ok": true
+          }
+        },
+        {
+          "id": "tank-gate-signal-relief-1",
+          "earned": 9,
+          "before": 4,
+          "after": 4,
+          "response": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "id": "tank-gate-signal-countermarch-1",
+          "earned": 15,
+          "before": 10,
+          "after": 10,
+          "response": {
+            "ok": false,
+            "reason": "prerequisite"
+          }
+        },
+        {
+          "id": "tank-gate-signal-relief-1",
+          "earned": 15,
+          "before": 10,
+          "after": 7,
+          "response": {
+            "ok": true
+          }
+        }
+      ],
+      "issued": {
+        "kind": "tank-gate-signal",
+        "id": 635,
+        "owner": "tank",
+        "x": 1141.2,
+        "y": 775.2,
+        "at": 1348,
+        "until": 1588,
+        "radius": 54,
+        "entrances": [
+          {
+            "aim": -3.141592653589793,
+            "half": "left",
+            "open": true
+          },
+          {
+            "aim": -3.141592653589793,
+            "half": "right",
+            "open": true
+          }
+        ],
+        "center": {
+          "x": 1141.2,
+          "y": 775.2
+        }
+      },
+      "post": {
+        "kind": "tank-gate-signal",
+        "id": 635,
+        "owner": "tank",
+        "x": 1141.2,
+        "y": 775.2,
+        "at": 1348,
+        "until": 1588,
+        "radius": 54,
+        "entrances": [
+          {
+            "aim": -3.141592653589793,
+            "half": "left",
+            "open": true
+          },
+          {
+            "aim": -3.141592653589793,
+            "half": "right",
+            "open": false
+          }
+        ],
+        "center": {
+          "x": 1141.2,
+          "y": 775.2
+        }
+      },
+      "trace": [
+        {
+          "owner": "tank",
+          "target": "tank",
+          "entrance": 0,
+          "until": 1588,
+          "tick": 1360
+        },
+        {
+          "owner": "tank",
+          "target": "soldier",
+          "entrance": 0,
+          "until": 1588,
+          "tick": 1373
+        }
+      ],
+      "recovery": 4198,
+      "receivedArmor": 0.175
+    },
+    {
+      "arena": "gatehouse",
+      "difficulty": "baby",
+      "seed": 41,
+      "variation": "owner-guard",
+      "passed": true,
+      "firstShop": [
+        {
+          "encounter": 1,
+          "totalSp": 9,
+          "at": 648,
+          "clears": 1
+        },
+        {
+          "encounter": 2,
+          "totalSp": 15,
+          "at": 919,
+          "clears": 2
+        }
+      ],
+      "purchases": [
+        {
+          "id": "tank-gate-signal-relief-1",
+          "earned": 3,
+          "before": 0,
+          "after": 0,
+          "response": {
+            "ok": false,
+            "reason": "prerequisite"
+          }
+        },
+        {
+          "id": "tank-gate-signal-split-1",
+          "earned": 9,
+          "before": 6,
+          "after": 4,
+          "response": {
+            "ok": true
+          }
+        },
+        {
+          "id": "tank-gate-signal-relief-1",
+          "earned": 9,
+          "before": 4,
+          "after": 4,
+          "response": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "id": "tank-gate-signal-countermarch-1",
+          "earned": 15,
+          "before": 10,
+          "after": 10,
+          "response": {
+            "ok": false,
+            "reason": "prerequisite"
+          }
+        },
+        {
+          "id": "tank-gate-signal-relief-1",
+          "earned": 15,
+          "before": 10,
+          "after": 7,
+          "response": {
+            "ok": true
+          }
+        }
+      ],
+      "issued": {
+        "kind": "tank-gate-signal",
+        "id": 346,
+        "owner": "tank",
+        "x": 737,
+        "y": 752,
+        "at": 920,
+        "until": 1160,
+        "radius": 54,
+        "entrances": [
+          {
+            "aim": -3.141592653589793,
+            "half": "left",
+            "open": true
+          },
+          {
+            "aim": -3.141592653589793,
+            "half": "right",
+            "open": true
+          }
+        ],
+        "center": {
+          "x": 737,
+          "y": 752
+        }
+      },
+      "post": {
+        "kind": "tank-gate-signal",
+        "id": 346,
+        "owner": "tank",
+        "x": 737,
+        "y": 752,
+        "at": 920,
+        "until": 1160,
+        "radius": 54,
+        "entrances": [
+          {
+            "aim": -3.141592653589793,
+            "half": "left",
+            "open": true
+          },
+          {
+            "aim": -3.141592653589793,
+            "half": "right",
+            "open": false
+          }
+        ],
+        "center": {
+          "x": 737,
+          "y": 752
+        }
+      },
+      "trace": [
+        {
+          "owner": "tank",
+          "target": "tank",
+          "entrance": 0,
+          "until": 1160,
+          "tick": 932
+        }
+      ],
+      "recovery": 3770
+    },
+    {
+      "arena": "gatehouse",
+      "difficulty": "baby",
+      "seed": 41,
+      "variation": "unowned",
+      "passed": true,
+      "firstShop": [
+        {
+          "encounter": 1,
+          "totalSp": 9,
+          "at": 722,
+          "clears": 1
+        },
+        {
+          "encounter": 2,
+          "totalSp": 15,
+          "at": 944,
+          "clears": 2
+        }
+      ],
+      "purchases": [
+        {
+          "id": "tank-gate-signal-relief-1",
+          "earned": 3,
+          "before": 0,
+          "after": 0,
+          "response": {
+            "ok": false,
+            "reason": "prerequisite"
+          }
+        },
+        {
+          "id": "tank-gate-signal-split-1",
+          "earned": 9,
+          "before": 6,
+          "after": 4,
+          "response": {
+            "ok": true
+          }
+        },
+        {
+          "id": "tank-gate-signal-relief-1",
+          "earned": 9,
+          "before": 4,
+          "after": 4,
+          "response": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "id": "tank-gate-signal-countermarch-1",
+          "earned": 15,
+          "before": 10,
+          "after": 10,
+          "response": {
+            "ok": false,
+            "reason": "prerequisite"
+          }
+        }
+      ],
+      "issued": {
+        "kind": "tank-gate-signal",
+        "id": 458,
+        "owner": "tank",
+        "x": 737,
+        "y": 752,
+        "at": 950,
+        "until": 1190,
+        "radius": 54,
+        "entrances": [
+          {
+            "aim": -3.141592653589793,
+            "half": "left",
+            "open": true
+          },
+          {
+            "aim": -3.141592653589793,
+            "half": "right",
+            "open": true
+          }
+        ],
+        "center": {
+          "x": 737,
+          "y": 752
+        }
+      },
+      "post": {
+        "kind": "tank-gate-signal",
+        "id": 458,
+        "owner": "tank",
+        "x": 737,
+        "y": 752,
+        "at": 950,
+        "until": 1190,
+        "radius": 54,
+        "entrances": [
+          {
+            "aim": -3.141592653589793,
+            "half": "left",
+            "open": false
+          },
+          {
+            "aim": -3.141592653589793,
+            "half": "right",
+            "open": true
+          }
+        ],
+        "center": {
+          "x": 737,
+          "y": 752
+        }
+      },
+      "trace": [
+        {
+          "owner": "tank",
+          "target": "tank",
+          "entrance": 0,
+          "until": 1190,
+          "tick": 962
+        }
+      ],
+      "recovery": 3800
+    },
+    {
+      "arena": "gatehouse",
+      "difficulty": "baby",
+      "seed": 41,
+      "variation": "expiry",
+      "passed": true,
+      "firstShop": [
+        {
+          "encounter": 1,
+          "totalSp": 9,
+          "at": 722,
+          "clears": 1
+        },
+        {
+          "encounter": 2,
+          "totalSp": 15,
+          "at": 944,
+          "clears": 2
+        }
+      ],
+      "purchases": [
+        {
+          "id": "tank-gate-signal-relief-1",
+          "earned": 3,
+          "before": 0,
+          "after": 0,
+          "response": {
+            "ok": false,
+            "reason": "prerequisite"
+          }
+        },
+        {
+          "id": "tank-gate-signal-split-1",
+          "earned": 9,
+          "before": 6,
+          "after": 4,
+          "response": {
+            "ok": true
+          }
+        },
+        {
+          "id": "tank-gate-signal-relief-1",
+          "earned": 9,
+          "before": 4,
+          "after": 4,
+          "response": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "id": "tank-gate-signal-countermarch-1",
+          "earned": 15,
+          "before": 10,
+          "after": 10,
+          "response": {
+            "ok": false,
+            "reason": "prerequisite"
+          }
+        },
+        {
+          "id": "tank-gate-signal-relief-1",
+          "earned": 15,
+          "before": 10,
+          "after": 7,
+          "response": {
+            "ok": true
+          }
+        }
+      ],
+      "issued": {
+        "kind": "tank-gate-signal",
+        "id": 458,
+        "owner": "tank",
+        "x": 737,
+        "y": 752,
+        "at": 950,
+        "until": 1190,
+        "radius": 54,
+        "entrances": [
+          {
+            "aim": -3.141592653589793,
+            "half": "left",
+            "open": true
+          },
+          {
+            "aim": -3.141592653589793,
+            "half": "right",
+            "open": true
+          }
+        ],
+        "center": {
+          "x": 737,
+          "y": 752
+        }
+      },
+      "trace": [
+        {
+          "owner": "tank",
+          "target": "tank",
+          "entrance": 0,
+          "until": 1190,
+          "tick": 962
+        }
+      ],
+      "recovery": 3800
+    }
+  ],
+  "failures": 0
+}

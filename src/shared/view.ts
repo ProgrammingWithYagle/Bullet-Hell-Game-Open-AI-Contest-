@@ -95,8 +95,8 @@ export type View = {
 /** Anchor coordinates and the friendly projectile ID travel only to the Lineworker. */
 export function splitInterceptorKit(kit:KitStatus){
   if(kit.interceptorPhase===undefined&&kit.bastionCanPlant===undefined)return {shared:kit,owner:undefined};
-  const {bastionCanPlant,interceptorPhase,interceptorMode,interceptorHeading,interceptorStartedAt,interceptorReadyAt,interceptorExpiresAt,interceptorScreenUntil,interceptorMotionX,interceptorMotionY,interceptorInputDown,interceptorCanArm,interceptorCanLaunch,interceptorCanCrossLeft,interceptorCanCrossRight,...shared}=kit;
-  return {shared,owner:{bastionCanPlant,interceptorPhase,interceptorMode,interceptorHeading,interceptorStartedAt,interceptorReadyAt,interceptorExpiresAt,interceptorScreenUntil,interceptorMotionX,interceptorMotionY,interceptorInputDown,interceptorCanArm,interceptorCanLaunch,interceptorCanCrossLeft,interceptorCanCrossRight}};
+  const {bastionCanPlant,bastionAdjustment,interceptorPhase,interceptorMode,interceptorHeading,interceptorStartedAt,interceptorReadyAt,interceptorExpiresAt,interceptorScreenUntil,interceptorMotionX,interceptorMotionY,interceptorInputDown,interceptorCanArm,interceptorCanLaunch,interceptorCanCrossLeft,interceptorCanCrossRight,...shared}=kit;
+  return {shared,owner:{bastionCanPlant,bastionAdjustment,interceptorPhase,interceptorMode,interceptorHeading,interceptorStartedAt,interceptorReadyAt,interceptorExpiresAt,interceptorScreenUntil,interceptorMotionX,interceptorMotionY,interceptorInputDown,interceptorCanArm,interceptorCanLaunch,interceptorCanCrossLeft,interceptorCanCrossRight}};
 }
 export function splitBulwarkKit(kit:KitStatus){
   const base=splitInterceptorKit(kit);

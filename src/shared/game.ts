@@ -1283,7 +1283,8 @@ export class Game {
       p.input.supply = -1;
     }
     if (this.bastion.hasStations) {
-      this.bastion.resolve(this.bastionWorld(), this.roster(), (id, guard) => this.admitBastionGuard(id, guard));
+      this.bastion.resolve(this.bastionWorld(), this.roster(), (id, guard) => this.admitBastionGuard(id, guard),
+        (owner, center) => this.events.push({ type: 'sound', id: 'tank-gate-adjust', owner, ...center }));
     }
     this.grid.clear();
     for (const p of this.players.values()){
@@ -1653,14 +1654,17 @@ export class Game {
         !p.input.ultimate && !i.technique1 && !i.technique3 && !carried && !handsBusy &&
         !i.q && !i.e && !i.dodge && !i.reload && !i.fire && i.supply < 0 &&
         len === 0 && this.bastionStance(p)) {
-      const ultimate = data.classes.find(cls => cls.id === 'tank')!.ultimate;
-      const potency = 1 + (stats.effects.ultimatePotency ?? 0);
-      const { allyShield = 0, allyArmor = 0 } = ultimate.effects ?? {};
-      const shield = hasTalent(p, 'procession') ? 90 : allyShield;
-      const location = this.bastion.plant(p, {
-        shield: shield * potency, armor: allyArmor * potency, until: now + ticks(ultimate.duration),
-      }, ticks(ultimate.cooldown * stats.ultimateCooldown), this.bastionWorld());
-      if (location) this.events.push({ type: 'sound', id: 'tank-gate-plant', owner: p.id, ...location });
+      const world = this.bastionWorld();
+      if (!this.bastion.requestAdjustment(p, world)) {
+        const ultimate = data.classes.find(cls => cls.id === 'tank')!.ultimate;
+        const potency = 1 + (stats.effects.ultimatePotency ?? 0);
+        const { allyShield = 0, allyArmor = 0 } = ultimate.effects ?? {};
+        const shield = hasTalent(p, 'procession') ? 90 : allyShield;
+        const location = this.bastion.plant(p, {
+          shield: shield * potency, armor: allyArmor * potency, until: now + ticks(ultimate.duration),
+        }, ticks(ultimate.cooldown * stats.ultimateCooldown), world);
+        if (location) this.events.push({ type: 'sound', id: 'tank-gate-plant', owner: p.id, ...location });
+      }
     }
     if(p.classId==='soldier')this.skirmisher.advanceLoad(p,this.skirmisherContext());
     this.traverse.advance(p,this.traverseContext());
@@ -1692,11 +1696,12 @@ export class Game {
 
   private bastionStatus(p: Player | undefined) {
     if (p?.classId !== 'tank' || !p.skills.includes(bastionIds.entry)) return {};
-    return {
-      bastionCanPlant: this.phase === 'combat' && this.bastionStance(p) &&
-        Math.hypot(p.input.moveX, p.input.moveY) === 0 && !p.input.fire &&
-        !this.classKits.tankWallCarried(p.id, this.combatTick) && this.bastion.canPlant(p, this.bastionWorld()),
-    };
+    const stationary = this.phase === 'combat' && this.bastionStance(p) &&
+      Math.hypot(p.input.moveX, p.input.moveY) === 0 && !p.input.fire && !this.classKits.tankWallCarried(p.id, this.combatTick);
+    if (!stationary) return { bastionCanPlant: false };
+    const world = this.bastionWorld();
+    const bastionAdjustment = this.bastion.readyAdjustment(p, world);
+    return { bastionCanPlant: this.bastion.canPlant(p, world), ...(bastionAdjustment ? { bastionAdjustment } : {}) };
   }
 
   private admitBastionGuard(id: string, guard: { shield: number; armor: number; until: number }) {
