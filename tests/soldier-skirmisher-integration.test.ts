@@ -88,7 +88,8 @@ test("Soldier retains its authored Skirmisher fork beside the real Marksman entr
   );
   const whole=specializationMapLayout('soldier')!;assert.equal(whole.width,4150);assert.equal(whole.nodes.length,29);assert.equal(whole.edges.length,28);
   assert(whole.exclusions.some(pair=>pair.a===ids.entry&&pair.b==='soldier-marksman-1'));
-  assert.equal(specializationMapLayout("medic"), null);
+  const ownTechniqueIds = new Set(data.specializationSkills.filter(skill => skill.classId === "soldier").map(skill => skill.id));
+  assert(whole.nodes.every(node => node.reference || ownTechniqueIds.has(node.id)));
 });
 
 test("native map and reading view inspect real controls without buying and hide unimplemented routes", async (t) => {

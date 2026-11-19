@@ -1,0 +1,24 @@
+# Medic Field Surgery
+
+Field Dressing gives the Medic an alternative use of Healing Field recovery. Spend 1 SP on Clean Hands and 2 SP on Field Dressing. Stand still with your hands free and use Action 1. The closest active ally within 30 degrees of your aim and within 104 pixels is the patient. Aim away from allies to treat yourself. The selected patient needs missing health and a clear line through terrain. Preparation takes 16 combat intervals. Its first positive dose spends Healing Field recovery. Up to two more doses follow six intervals apart while the same patient is eligible. Actual loss of the Medic's health, incompatible action, loss of reach and movement outside the current fitting's allowance interrupt the treatment.
+
+| First-clear fitting | What the Medic can do |
+| --- | --- |
+| Steady Step | Walk up to 32 actual pixels after the first dose. Continue treating the same patient on the original schedule. |
+| Set Aside | Use Action 1 while still after a dose to set aside one remaining dose. Spend up to 24 intervals on another action or movement. Stop and use Action 1 to resume on the same patient. |
+
+The two fittings exclude each other. Each costs 2 SP after Field Dressing at five earned SP, available in ordinary Short after the first clear at nine. The 27-SP and one-capstone limits apply. Both HUD layouts display owned commands using the player's bindings. The owner sees preparation and hears treatment sounds. Peers see the physical dose on the same patient. Three generated emblems retain their original alpha and source bytes. Seven bounded sounds accompany the treatment. [Art provenance](../assets/production/ui/medic-field-surgery-2026-11-19/provenance.json) · [Audio checks](../reviews/medic-field-surgery-2026-11-19/audio-validation.json).
+
+## Run evidence
+
+The base pilot compared issued, owned-unused and active treatment across 36 ordinary Short runs. Owning the unused card preserved the measured trajectory in all 12 matched controls. The active policies produced 61 actual doses and restored 854.7075 HP. Fourteen doses healed teammates. Solo ended with four victories of six in each policy, and two-player play ended with five of six.
+
+The 40 fitting runs bought the choices at the first real shop. Unused purchases matched the base treatment again. Set Aside recorded 22 holds and nine resumptions. The small Solo policy sample moved from two to three wins of four, while two-player play moved from four to three. A further 24 runs with a walking policy recorded one natural Steady Step in a two-player Bell Foundry run. That treatment kept two scheduled doses after the step. The scripted Solo walking sample offered no such use. The separate controlled and native cases exercised a successful step through the real movement rules. [Fitting studies and exact evidence](../reviews/medic-field-surgery-2026-11-19/local-evidence-bindings.json).
+
+Protocol 83 counts the whole resolved movement during a valid Steady Step command. A controlled follow-up reproduced a raid pull contributing to that movement alongside walking. Tightening that rule is part of the later Field Surgery fittings.
+
+Six source cases used the complete optimized Solo worker or an actual two-player room with a non-host Medic. Both fits were earned after an ordinary first clear. Every case observed at least two actual doses and discarded commands sent while paused. Eight exact Solo pairs matched after restoring the actual 9-SP shop across four arena, difficulty and seed choices. The replays retained the fitted purchases, combat commands and measured outcomes. [Safe shop replays](../reviews/medic-field-surgery-2026-11-19/solo-safe-shop-replays.json).
+
+The build census admits 4,751 legal configurations, preserving all 4,502 previous configurations. Medic has 249. The protocol 82 edition restores 381 exact local checkpoints, the twelve saved profile and history rosters, both HUD layouts and their remapped controls. All fifteen dictionaries preserve issued keys. The new technique text is an English pilot. [Build census](../reviews/medic-field-surgery-2026-11-19/build-census.json) · [Migration binding](../tests/fixtures/medic-issued82-bindings.json).
+
+The review covers the entry and first-clear fittings. Continue Field Surgery's later choices, then Rapid Response and Preventive Care. Human play, rendered and physical-device checks, native-language review, listening, motion and final balance remain open.

@@ -11,6 +11,10 @@ export type SpecializationMap = {
 };
 // Authored positions belong to real techniques; no proposed family becomes an empty card.
 const positions: Record<string, Point> = {
+  "medic-triage-1": { x: 500, y: 75 },
+  "medic-field-dressing-1": { x: 500, y: 255 },
+  "medic-surgery-steady-step-1": { x: 230, y: 505 },
+  "medic-surgery-set-aside-1": { x: 770, y: 505 },
   "tank-bastion-1":{x:500,y:75},"tank-interceptor-1":{x:500,y:255},"tank-interceptor-crossing-1":{x:230,y:505},"tank-interceptor-standfast-1":{x:770,y:505},
   "tank-interceptor-return-crossing-1":{x:230,y:775},"tank-interceptor-offset-brace-1":{x:770,y:775},
   "tank-gate-signal-1":{x:500,y:255},"tank-gate-signal-split-1":{x:230,y:505},"tank-gate-signal-corner-1":{x:770,y:505},

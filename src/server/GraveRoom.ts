@@ -266,8 +266,8 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
   }
   private bindLineworkView(client: Client) {
     const player = this.state.players.get(client.sessionId);
-    // The owner-filtered kit payload carries both Lineworker and Tank handling.
-    if (!player || (player.classId !== 'heavy' && player.classId !== 'tank')) return;
+    // These classes use the owner-filtered kit payload.
+    if (!player || (player.classId !== 'heavy' && player.classId !== 'tank' && player.classId !== 'medic')) return;
     client.view ??= new StateView();
     client.view.add(player);
   }
@@ -380,7 +380,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
         }
         if (hostile.length) shared.push({ type: 'remove', ids: hostile });
         for (const [owner, ids] of own) add(owner, { type: 'remove', ids });
-      } else if (event.type === 'sound' && (event.id.startsWith('weapon-')||event.id.startsWith('tank-intercept-')||event.id.startsWith('tank-gate-')||event.id==='tank-wall-set-folded'||event.id==='tank-wall-port-shift')) {
+      } else if (event.type === 'sound' && (event.id.startsWith('weapon-')||event.id.startsWith('medic-dressing-')||event.id.startsWith('tank-intercept-')||event.id.startsWith('tank-gate-')||event.id==='tank-wall-set-folded'||event.id==='tank-wall-port-shift')) {
         if (event.owner) add(event.owner, event);
       } else shared.push(event);
     }

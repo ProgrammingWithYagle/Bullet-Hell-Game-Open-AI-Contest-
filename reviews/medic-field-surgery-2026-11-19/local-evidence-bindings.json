@@ -1,0 +1,431 @@
+{
+  "protocol": 83,
+  "buildId": "2026.11.19-medic-field-surgery",
+  "contentRevision": "1719985fd93fc79e682a2196cecd551e63e4485cb91fd6c77f3b4e7ec1dd810e",
+  "tests": 2672,
+  "checks": 7,
+  "runtimeSourceSha256": "1a288923e65c593e2dd479f17cbae677b03bc01b5b2e48cb9e50dfeb8eeafd8a",
+  "sourceSnapshotSha256": "22f7fe2587dcef6790928f5436d3700f1240b6e49e3bb715939c2d9d6084d979",
+  "native": [
+    {
+      "transport": "worker",
+      "fitting": "entry",
+      "doses": 2,
+      "receipt": "source-worker-entry.json"
+    },
+    {
+      "transport": "worker",
+      "fitting": "step",
+      "doses": 2,
+      "receipt": "source-worker-step.json"
+    },
+    {
+      "transport": "worker",
+      "fitting": "aside",
+      "doses": 2,
+      "receipt": "source-worker-aside.json"
+    },
+    {
+      "transport": "peer",
+      "fitting": "entry",
+      "doses": 2,
+      "receipt": "source-peer-entry.json"
+    },
+    {
+      "transport": "peer",
+      "fitting": "step",
+      "doses": 2,
+      "receipt": "source-peer-step.json"
+    },
+    {
+      "transport": "peer",
+      "fitting": "aside",
+      "doses": 2,
+      "receipt": "source-peer-aside.json"
+    }
+  ],
+  "replays": 8,
+  "study": {
+    "base": {
+      "solo": {
+        "issued": {
+          "runs": 6,
+          "wins": 4,
+          "doses": 0,
+          "allyDoses": 0,
+          "healed": 0,
+          "operations": {
+            "step": 0,
+            "hold": 0,
+            "resume": 0
+          }
+        },
+        "owned-unused": {
+          "runs": 6,
+          "wins": 4,
+          "doses": 0,
+          "allyDoses": 0,
+          "healed": 0,
+          "operations": {
+            "step": 0,
+            "hold": 0,
+            "resume": 0
+          }
+        },
+        "active": {
+          "runs": 6,
+          "wins": 4,
+          "doses": 29,
+          "allyDoses": 0,
+          "healed": 410.7125,
+          "operations": {
+            "step": 0,
+            "hold": 0,
+            "resume": 0
+          }
+        }
+      },
+      "coop": {
+        "issued": {
+          "runs": 6,
+          "wins": 5,
+          "doses": 0,
+          "allyDoses": 0,
+          "healed": 0,
+          "operations": {
+            "step": 0,
+            "hold": 0,
+            "resume": 0
+          }
+        },
+        "owned-unused": {
+          "runs": 6,
+          "wins": 5,
+          "doses": 0,
+          "allyDoses": 0,
+          "healed": 0,
+          "operations": {
+            "step": 0,
+            "hold": 0,
+            "resume": 0
+          }
+        },
+        "active": {
+          "runs": 6,
+          "wins": 5,
+          "doses": 32,
+          "allyDoses": 14,
+          "healed": 443.99500000000006,
+          "operations": {
+            "step": 0,
+            "hold": 0,
+            "resume": 0
+          }
+        }
+      }
+    },
+    "fittings": {
+      "solo": {
+        "entry": {
+          "runs": 4,
+          "wins": 2,
+          "doses": 20,
+          "allyDoses": 0,
+          "healed": 297.3125,
+          "operations": {
+            "step": 0,
+            "hold": 0,
+            "resume": 0
+          }
+        },
+        "step-unused": {
+          "runs": 4,
+          "wins": 2,
+          "doses": 20,
+          "allyDoses": 0,
+          "healed": 297.3125,
+          "operations": {
+            "step": 0,
+            "hold": 0,
+            "resume": 0
+          }
+        },
+        "step-active": {
+          "runs": 4,
+          "wins": 2,
+          "doses": 20,
+          "allyDoses": 0,
+          "healed": 297.3125,
+          "operations": {
+            "step": 0,
+            "hold": 0,
+            "resume": 0
+          }
+        },
+        "aside-unused": {
+          "runs": 4,
+          "wins": 2,
+          "doses": 20,
+          "allyDoses": 0,
+          "healed": 297.3125,
+          "operations": {
+            "step": 0,
+            "hold": 0,
+            "resume": 0
+          }
+        },
+        "aside-active": {
+          "runs": 4,
+          "wins": 3,
+          "doses": 21,
+          "allyDoses": 0,
+          "healed": 345.63750000000005,
+          "operations": {
+            "step": 0,
+            "hold": 9,
+            "resume": 4
+          }
+        }
+      },
+      "coop": {
+        "entry": {
+          "runs": 4,
+          "wins": 4,
+          "doses": 29,
+          "allyDoses": 11,
+          "healed": 417.0625,
+          "operations": {
+            "step": 0,
+            "hold": 0,
+            "resume": 0
+          }
+        },
+        "step-unused": {
+          "runs": 4,
+          "wins": 4,
+          "doses": 29,
+          "allyDoses": 11,
+          "healed": 417.0625,
+          "operations": {
+            "step": 0,
+            "hold": 0,
+            "resume": 0
+          }
+        },
+        "step-active": {
+          "runs": 4,
+          "wins": 4,
+          "doses": 29,
+          "allyDoses": 11,
+          "healed": 417.0625,
+          "operations": {
+            "step": 0,
+            "hold": 0,
+            "resume": 0
+          }
+        },
+        "aside-unused": {
+          "runs": 4,
+          "wins": 4,
+          "doses": 29,
+          "allyDoses": 11,
+          "healed": 417.0625,
+          "operations": {
+            "step": 0,
+            "hold": 0,
+            "resume": 0
+          }
+        },
+        "aside-active": {
+          "runs": 4,
+          "wins": 3,
+          "doses": 33,
+          "allyDoses": 16,
+          "healed": 435.7605,
+          "operations": {
+            "step": 0,
+            "hold": 13,
+            "resume": 5
+          }
+        }
+      }
+    },
+    "walking": {
+      "solo": {
+        "entry": {
+          "runs": 4,
+          "wins": 2,
+          "doses": 20,
+          "allyDoses": 0,
+          "healed": 297.3125,
+          "operations": {
+            "step": 0,
+            "hold": 0,
+            "resume": 0
+          }
+        },
+        "step-unused": {
+          "runs": 4,
+          "wins": 2,
+          "doses": 20,
+          "allyDoses": 0,
+          "healed": 297.3125,
+          "operations": {
+            "step": 0,
+            "hold": 0,
+            "resume": 0
+          }
+        },
+        "step-active": {
+          "runs": 4,
+          "wins": 2,
+          "doses": 20,
+          "allyDoses": 0,
+          "healed": 297.3125,
+          "operations": {
+            "step": 0,
+            "hold": 0,
+            "resume": 0
+          }
+        }
+      },
+      "coop": {
+        "entry": {
+          "runs": 4,
+          "wins": 4,
+          "doses": 29,
+          "allyDoses": 11,
+          "healed": 417.0625,
+          "operations": {
+            "step": 0,
+            "hold": 0,
+            "resume": 0
+          }
+        },
+        "step-unused": {
+          "runs": 4,
+          "wins": 4,
+          "doses": 29,
+          "allyDoses": 11,
+          "healed": 417.0625,
+          "operations": {
+            "step": 0,
+            "hold": 0,
+            "resume": 0
+          }
+        },
+        "step-active": {
+          "runs": 4,
+          "wins": 4,
+          "doses": 29,
+          "allyDoses": 11,
+          "healed": 417.0625,
+          "operations": {
+            "step": 1,
+            "hold": 0,
+            "resume": 0
+          }
+        }
+      }
+    }
+  },
+  "files": [
+    {
+      "path": "source-verification.json",
+      "bytes": 388725,
+      "sha256": "81a4a8ff464fbce74e1c0349c87ce2f3ef57e63f81eeb07c017d662dae4413a4"
+    },
+    {
+      "path": "source-test-correction.json",
+      "bytes": 405,
+      "sha256": "17a10d6c66e86e177de54f4612db5f00d2ba9bf50defcce6cd45f4c0d995e4ee"
+    },
+    {
+      "path": "build-census.json",
+      "bytes": 2774444,
+      "sha256": "8a4a3646bed4be8e26bba18659c849b961798df0c12b751575ee2e18c980b318"
+    },
+    {
+      "path": "solo-base-study.json",
+      "bytes": 51689,
+      "sha256": "d48ff16213c60b85b2022d4851707d000d99fc47770a9a722274ece0b344dd52"
+    },
+    {
+      "path": "coop-base-study.json",
+      "bytes": 52802,
+      "sha256": "53a3e307e31a449fcb15f8ccbb092c128e09b8871a572fced7d96717997a2f0b"
+    },
+    {
+      "path": "solo-fittings-study.json",
+      "bytes": 89939,
+      "sha256": "bc6533f268504d0e5377243bcd76af4e3e45635f587e486e8639ddbd8fe9fc4b"
+    },
+    {
+      "path": "coop-fittings-study.json",
+      "bytes": 100643,
+      "sha256": "158741781c9ebca34fcd8fcdfdac4317e30c175dbba81ff850a08beb5e080df6"
+    },
+    {
+      "path": "solo-walking-study.json",
+      "bytes": 52437,
+      "sha256": "6b390032456b6a052cd78cdc3742210f6d47104a5ad972d0212ecf1171f8afa7"
+    },
+    {
+      "path": "coop-walking-study.json",
+      "bytes": 58081,
+      "sha256": "0187fd20fd29fe41ab3bd20362fcb4f3f7c34a1c86ab30860a361221f4d56ae7"
+    },
+    {
+      "path": "solo-safe-shop-replays.json",
+      "bytes": 93489,
+      "sha256": "271b40817c47dd8c6afce99404baf7d9f5ca2b54673d64a5f840d03e43b213d1"
+    },
+    {
+      "path": "audio-validation.json",
+      "bytes": 1338,
+      "sha256": "2c28d02f16883ed0409b09f2d48717e8e16b70c2e3afe34e12ea5d0a91a3a244"
+    },
+    {
+      "path": "prior-metadata-ci.json",
+      "bytes": 1742,
+      "sha256": "d40d2d703a1c614f70bf036d5fe9ee43718efe7df8ab890bccacb7a925d352e1"
+    },
+    {
+      "path": "source-worker-entry.json",
+      "bytes": 1500,
+      "sha256": "ffeaa4ef516304e6c3b419a1f3046833b50fd2fef192e6de94e0306da0470930"
+    },
+    {
+      "path": "source-worker-step.json",
+      "bytes": 1648,
+      "sha256": "6966d3db9943d5f5c24806b80927259e3e3f4fe5dd54ddc51a91456e2f3141ec"
+    },
+    {
+      "path": "source-worker-aside.json",
+      "bytes": 1690,
+      "sha256": "1ac6603115b6e175a7fda28f9fd97ed3a999a45f30eb655274baec6b9108a48a"
+    },
+    {
+      "path": "source-peer-entry.json",
+      "bytes": 1170,
+      "sha256": "c4cbed1c7a28fa1e21373e6c7543027535149af913b0428a2ee56230d0a2695e"
+    },
+    {
+      "path": "source-peer-step.json",
+      "bytes": 2070,
+      "sha256": "e4f17af9532f0a0bc672aa1b24afdca14afe4e1b4f4e8672c8fc8df3ac338cb7"
+    },
+    {
+      "path": "source-peer-aside.json",
+      "bytes": 2079,
+      "sha256": "4227fbdff716e2e8c5bea94d38b0f1f0ec6d320cbc71be5725ff5ee9616e3ab3"
+    }
+  ],
+  "documents": [
+    "docs/MEDIC_FIELD_SURGERY.md",
+    "docs/BUILD_VARIETY_AUDIT.md",
+    "docs/CLASS_SPECIALIZATION_PLAN.md",
+    "docs/FREE_PLAY_POLISH_ROADMAP.md",
+    "handoff/NEXT_CHAT.md"
+  ]
+}

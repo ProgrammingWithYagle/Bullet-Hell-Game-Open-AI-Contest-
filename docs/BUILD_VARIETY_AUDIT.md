@@ -1,5 +1,9 @@
 # Scoped build variety audit
 
+## Medic Field Surgery
+
+Real purchase calls under the shared 27-SP economy verify 4,751 legal configurations. Medic has 249, with 81 for each early fitting. All 4,502 previously legal configurations remain available. [Census](../reviews/medic-field-surgery-2026-11-19/build-census.json).
+
 ## Interceptor late fittings
 
 Actual purchases under the 27-SP limit verify 4,502 distinct configurations. Tank has 2,204, including 312 new Return Crossing and 312 new Offset Brace configurations. Every one of the 3,878 previously legal signatures remains available. [Census](../reviews/tank-interceptor-fittings-2026-11-19/build-census.json).

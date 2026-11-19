@@ -4,6 +4,10 @@ Development remains active. Only the user decides when a class or the game is fi
 
 Read [Interceptor](../docs/TANK_INTERCEPTOR_DESIGN.md), [Mobile Bulwark](../docs/TANK_MOBILE_BULWARK_DESIGN.md), [Tethered Traverse](../docs/HEAVY_TETHERED_TRAVERSE_DESIGN.md), [Heavy](../docs/HEAVY_SPECIALIZATIONS.md), [further studies](../docs/HEAVY_FURTHER_ROUTE_STUDIES.md), [Soldier](../docs/SOLDIER_SPECIALIZATIONS.md), [open Soldier routes](../docs/SOLDIER_ROUTE_CANDIDATES.md), [class plan](../docs/CLASS_SPECIALIZATION_PLAN.md), [Service Yard](../docs/SERVICE_YARD_WORKING.md) and [bounded storage](../docs/REVIEW_STORAGE_POLICY.md). Current source/accepted proof outranks historical study proposals.
 
+## Protocol 83 Medic Field Surgery candidate
+
+Protocol 83 adds Field Dressing and two first-clear fittings. The full local gate passed 2,672 tests and seven checks. All six source transport cases passed after ordinary purchases. All eight paired Solo replays matched through the remaining encounters after a 9-SP shop. [Design](../docs/MEDIC_FIELD_SURGERY.md) · [Local evidence](../reviews/medic-field-surgery-2026-11-19/local-evidence-bindings.json). The protocol 82 retained pair is recorded below. Continue Field Surgery before the next Medic route.
+
 ## Current exact protocol 82 Interceptor checkpoint
 
 Source **6c811bfa5e6ca3c5fe92cafaa27f3ff2b7866850**, build **2026.11.19-tank-interceptor-fittings**, protocol **82**, catalog **84**. The complete local gate and both exact GitHub workflows passed 2,651 tests and all seven checks. Each frozen audience binds 2,080 files and passed eleven checks. Testing uses [5408](http://127.0.0.1:5408/) with backend 2784. Public review uses [5409](http://127.0.0.1:5409/) with backend 2785. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44579614367) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44579647073) · [Frozen results](../reviews/tank-interceptor-fittings-2026-11-19/frozen-verification.json) · [Saved evidence](../reviews/tank-interceptor-fittings-2026-11-19/publication-byte-bindings.json).

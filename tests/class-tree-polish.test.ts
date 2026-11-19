@@ -33,7 +33,14 @@ test('The specialization graph contains only real techniques, their General refe
     'heavy-linework-sheave-1>heavy-linework-yoke-1',
     'heavy-linework-guide-1>heavy-linework-reserve-1',
   ]));
-  for(const cl of data.classes.filter(c=>!['engineer','soldier','heavy','tank'].includes(c.id)))assert.equal(specializationMapLayout(cl.id),null);
+  const medic = specializationMapLayout('medic')!;
+  assert.deepEqual(medic.nodes.filter(node => node.reference).map(node => node.id), ['medic-triage-1']);
+  const medicTechniques = data.specializationSkills.filter(skill => skill.classId === 'medic');
+  assert.deepEqual(medic.nodes.filter(node => !node.reference).map(node => node.id), medicTechniques.map(skill => skill.id));
+  assert.deepEqual(medic.edges, medicTechniques.map(skill => ({ from: skill.prerequisite, to: skill.id })));
+  assert.deepEqual(medic.exclusions, [{ a: 'medic-surgery-steady-step-1', b: 'medic-surgery-set-aside-1' }]);
+  for (const cls of data.classes.filter(cls => data.specializationSkills.every(skill => skill.classId !== cls.id)))
+    assert.equal(specializationMapLayout(cls.id), null);
   const tank=specializationMapLayout('tank')!;assert(tank);
   assert.deepEqual(tank.nodes.filter(node=>node.reference).map(node=>node.id),['tank-protection-1','tank-bastion-1']);
   const tankTechniques = data.specializationSkills.filter(skill => skill.classId === 'tank');
@@ -89,5 +96,12 @@ test('Campaign training and archived SP Story do not expose the Free Play specia
   const campaign=shop.shopMarkup(v);assert(campaign.includes('data-shop-tab="tree"'));assert(!campaign.includes('data-shop-tab="specializations"'));assert(!campaign.includes('data-inspect="engineer-constructs-1"'));assert(!campaign.includes('data-inspect="general-sprint"'));
   const free=new Game(),q=free.addPlayer('q','Tamsin','engineer'),old=shop.shopMarkup(viewOf(free,q.id).players[0],[],true,'normal',undefined,false);assert(!old.includes('data-shop-tab="specializations"'));assert(!old.includes('pathway-choices'));
   const soldier=new Game({mode:'story'}),s=soldier.addPlayer('s','Mara','soldier'),other=shop.shopMarkup(viewOf(soldier,s.id).players[0]);assert(!other.includes('data-shop-tab="specializations"'));assert(!other.includes('data-inspect="soldier-ballistics-1"'));
-  const medic=new Game(),m=medic.addPlayer('m','Perrin','medic'),unimplemented=shop.shopMarkup(viewOf(medic,m.id).players[0]);assert(!unimplemented.includes('data-shop-tab="specializations"'));assert(unimplemented.includes('data-inspect="medic-chemistry-1"'));
+  const medic = new Game(), io = medic.addPlayer('m', 'Iona', 'medic');
+  const freeMedic = shop.shopMarkup(viewOf(medic, io.id).players[0]);
+  assert(freeMedic.includes('data-shop-tab="specializations"'));
+  assert(freeMedic.includes('data-inspect="medic-chemistry-1"'));
+  const storyMedic = new Game({ mode: 'story' }), student = storyMedic.addPlayer('m', 'Iona', 'medic');
+  const study = shop.shopMarkup(viewOf(storyMedic, student.id).players[0]);
+  assert(!study.includes('data-shop-tab="specializations"'));
+  assert(!study.includes('data-inspect="medic-chemistry-1"'));
 });

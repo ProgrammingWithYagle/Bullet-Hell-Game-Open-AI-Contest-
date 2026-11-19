@@ -1,6 +1,14 @@
 # Changelog
 
-Development build **2026.11.19-tank-interceptor-fittings**, protocol 82. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.19-medic-field-surgery**, protocol 83. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-19 — Treat during a break in the fight
+
+### Medic Field Surgery
+
+- Field Dressing prepares rapid treatment for you or a reachable ally. Its first dose spends Healing Field recovery.
+- Steady Step lets you walk a short distance after the first dose and keep treating the same patient.
+- Set Aside holds one paid dose for a brief break. Both fittings become available after one ordinary Short clear.
 
 ## 2026-11-19 — Change the lane your screen protects
 

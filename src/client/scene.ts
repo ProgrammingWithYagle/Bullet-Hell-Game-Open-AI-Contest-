@@ -850,7 +850,23 @@ export class CombatScene extends Phaser.Scene {
       h.lineStyle(2,this.highContrast?0xffffff:0xb9d5d0,.45).lineBetween(x+s*64,y-c*64,x-s*64,y+c*64);
       if(k.interceptorPhase==='winding'){const progress=Math.max(0,Math.min(1,(now-(k.interceptorStartedAt??now))/Math.max(1,(k.interceptorReadyAt??now)-(k.interceptorStartedAt??now))));h.lineStyle(2,0xd9c08d,.8).beginPath().arc(interceptOwner.x,interceptOwner.y,18,-Math.PI/2,-Math.PI/2+progress*Math.PI*2).strokePath();}
     }
+    const dressing = interceptOwner?.kit.fieldDressing;
+    if (interceptOwner && dressing?.phase === 'preparing' && dressing.startedAt !== undefined && dressing.nextAt !== undefined) {
+      const fraction = Math.max(0, Math.min(1, (now - dressing.startedAt) / Math.max(1, dressing.nextAt - dressing.startedAt)));
+      h.lineStyle(2, this.highContrast ? 0xffffff : 0xe4d9b8, .8).beginPath()
+        .arc(interceptOwner.x, interceptOwner.y, 19, -Math.PI / 2, -Math.PI / 2 + fraction * Math.PI * 2).strokePath();
+    }
     for (const cue of view.classCues) {
+      if (cue.kind === 'medic-dressing') {
+        const fade = Math.max(0, Math.min(1, (cue.until - now) / (cue.until - cue.at)));
+        if (fade <= 0) continue;
+        const color = this.highContrast ? 0xffffff : 0xe4d9b8;
+        h.lineStyle(2, color, .6 * fade).strokeCircle(cue.toX, cue.toY, cue.radius + 7 * (1 - fade));
+        if (cue.owner !== cue.patient) {
+          h.lineStyle(1.5, color, .55 * fade).lineBetween(cue.x, cue.y, cue.toX, cue.toY);
+        }
+        continue;
+      }
       if(cue.kind==='tank-gate-signal'){
         drawTankGate(h,cue,now,data.rules.playerRadius,this.highContrast);
         continue;

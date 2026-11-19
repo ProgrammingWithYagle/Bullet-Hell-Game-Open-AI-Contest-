@@ -16,6 +16,9 @@ type KitAction =
 // These are affected inputs, not an inference from a technique's visual frame.
 // Breach Casings also works when a placed charge triggers without remote input.
 const controlsByTechnique: Record<string, readonly KitAction[]> = {
+  "medic-field-dressing-1": ["technique1", "q"],
+  "medic-surgery-steady-step-1": ["technique1"],
+  "medic-surgery-set-aside-1": ["technique1", "fire"],
   "tank-gate-signal-1":["technique2","ultimate"],"tank-gate-signal-split-1":["technique2"],"tank-gate-signal-corner-1":["technique2"],"tank-gate-signal-relief-1":["technique2"],"tank-gate-signal-countermarch-1":["technique2"],
   "tank-interceptor-1":["technique3","e"],"tank-interceptor-crossing-1":["technique3"],"tank-interceptor-standfast-1":["technique3"],
   "tank-interceptor-return-crossing-1":["technique3"],"tank-interceptor-offset-brace-1":["technique3"],
