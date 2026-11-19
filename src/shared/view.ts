@@ -101,8 +101,8 @@ export function splitInterceptorKit(kit:KitStatus){
 export function splitBulwarkKit(kit:KitStatus){
   const base=splitInterceptorKit(kit);
   if(base.shared.bulwarkCarried===undefined)return base;
-  const {bulwarkCarried,bulwarkCanLift,bulwarkCanSet,bulwarkCanHandle,bulwarkPrimaryReady,bulwarkPortPhase,bulwarkRecoveryAt,bulwarkCommitAt,bulwarkCommitUntil,bulwarkPanelUntil,bulwarkHeading,bulwarkPanelIds,...shared}=base.shared;
-  return {shared,owner:{...base.owner,bulwarkCarried,bulwarkCanLift,bulwarkCanSet,bulwarkCanHandle,bulwarkPrimaryReady,bulwarkPortPhase,bulwarkRecoveryAt,bulwarkCommitAt,bulwarkCommitUntil,bulwarkPanelUntil,bulwarkHeading,bulwarkPanelIds}};
+  const {bulwarkCarried,bulwarkCanLift,bulwarkCanSet,bulwarkCanSetFolded,bulwarkCanHandle,bulwarkCanShiftPort,bulwarkPrimaryReady,bulwarkPortPhase,bulwarkRecoveryAt,bulwarkCommitAt,bulwarkCommitUntil,bulwarkPanelUntil,bulwarkHeading,bulwarkPanelIds,...shared}=base.shared;
+  return {shared,owner:{...base.owner,bulwarkCarried,bulwarkCanLift,bulwarkCanSet,bulwarkCanSetFolded,bulwarkCanHandle,bulwarkCanShiftPort,bulwarkPrimaryReady,bulwarkPortPhase,bulwarkRecoveryAt,bulwarkCommitAt,bulwarkCommitUntil,bulwarkPanelUntil,bulwarkHeading,bulwarkPanelIds}};
 }
 export function splitLineworkKit(kit: KitStatus) {
   const base=splitBulwarkKit(kit);

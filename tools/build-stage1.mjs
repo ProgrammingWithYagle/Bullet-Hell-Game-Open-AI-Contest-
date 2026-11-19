@@ -1,4 +1,5 @@
-import {applyTankBastion,authoredDate as tankBastionAuthoredDate} from '../content/source/tank-bastion.mjs';
+import {applyTankBulwarkLate,authoredDate as tankBulwarkLateAuthoredDate} from '../content/source/tank-bulwark-late.mjs';
+import {applyTankBastion} from '../content/source/tank-bastion.mjs';
 import {applyTankInterceptor} from '../content/source/tank-interceptor.mjs';
 import {applyTankBulwark,authoredDate as tankBulwarkAuthoredDate} from '../content/source/tank-bulwark.mjs';
 import { applyHeavyLinework } from '../content/source/heavy-linework.mjs';
@@ -306,6 +307,7 @@ applyStationSignals(manifest);
 applyLamplightWatch(manifest);
 applyWardApproach(manifest);
 applyOpeningChapter(manifest);
+applyTankBulwarkLate(manifest);
 for(const [key,value] of Object.entries(manifest)) json('content/'+key+'.json',value);
 json('content/catalog.json',manifest);
 write('docs/balance/skills.csv',csv(['id','class','branch','subbranch','name','depth','cost','grade','prerequisite','capstone','effects'],skills.map(s=>[s.id,s.classId,s.branchName,s.subbranchName,s.name,s.depth,s.cost,s.grade,s.prerequisite??'',s.capstone,JSON.stringify(s.effects)])));
@@ -507,5 +509,5 @@ if(!fs.existsSync(path.join(root,'docs/ACCEPTANCE.md')))write('docs/ACCEPTANCE.m
   ['Delivery','Windows + public URL + GitHub release + Wiki + Project + ruleset','Pending'],
 ])+'\n');
 const fingerprint=crypto.createHash('sha256').update(JSON.stringify(manifest)).digest('hex');
-json('content/revision.json',{version:rules.contentVersion,sha256:fingerprint,authoredDate:tankBastionAuthoredDate});
+json('content/revision.json',{version:rules.contentVersion,sha256:fingerprint,authoredDate:tankBulwarkLateAuthoredDate});
 console.log(JSON.stringify({classes:classes.length,skills:skills.length,weapons:weapons.length,bosses:bosses.length,mutations:mutations.length,arenas:arenas.length,locales:locales.length,revision:fingerprint}));

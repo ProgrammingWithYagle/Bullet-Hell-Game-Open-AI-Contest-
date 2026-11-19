@@ -9,6 +9,8 @@ The user explicitly authorized this bounded policy on 2026-11-10 after the check
 - The failed 0915 Tank pair was separately retired after both audiences finished 12 pass/2 fail in 14 composed cases. Its original logs, receipts and manifest hashes remain. [Checked retirement](../reviews/storage-tank-attempt-2026-11-14/retention-result.json).
 - All 213 pre-existing private SQLite-related files remain byte-exact and local. Original 108-folder/52-process retirement receipts and 124 historical identities remain historical. No retired build was recreated. [Initial cleanup](../reviews/storage-retention-2026-11-10/verification.json).
 
+The protocol 80 late-Bastion pair was retired after both exact draft-PR attempts reached the job limit. Its 22 passing native cases, passing local gate and push workflow, and both original PR logs remain in the review evidence. The checkout retains the exact protocol 79 pair and original Interceptor archive. [Retirement](../reviews/storage-tank-bastion-fittings-timeout-2026-11-18/retention-result.json) · [Saved evidence](../reviews/tank-bastion-fittings-2026-11-18/review-evidence-bindings.json).
+
 ## Future lifecycle
 
 Use the canonical freezer. Its retention guard permits the current pair plus one pair undergoing verification, and refuses another pair. Complete or retire the pending pair before making more full copies. No browser, deployment, purchase, main merge, clone/worktree or Git reconfiguration is involved.

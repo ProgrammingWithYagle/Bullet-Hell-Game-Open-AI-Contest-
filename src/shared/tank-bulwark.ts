@@ -10,9 +10,11 @@ export type BulwarkStatus = {
   bulwarkCarried:boolean;
   bulwarkCanLift:boolean;
   bulwarkCanSet:boolean;
+  bulwarkCanSetFolded?:boolean;
   bulwarkCanHandle:boolean;
+  bulwarkCanShiftPort?:boolean;
   bulwarkPrimaryReady:boolean;
-  bulwarkPortPhase:'closed'|'opening'|'open'|'closing';
+  bulwarkPortPhase:'closed'|'opening'|'open'|'closing'|'shifting';
   bulwarkRecoveryAt:number;
   bulwarkCommitAt:number;
   bulwarkCommitUntil:number;
@@ -63,7 +65,9 @@ export type WallStore = Pick<ReadonlyMap<number, BulwarkWall>, 'get' | 'values'>
 export const bulwarkIds = {
   entry: 'tank-bulwark-carry-1',
   pivot: 'tank-bulwark-pivot-1',
+  foldedSetdown: 'tank-bulwark-folded-setdown-1',
   port: 'tank-bulwark-port-1',
+  sidePort: 'tank-bulwark-side-port-1',
 } as const;
 export const bulwarkRules = {
   lead: 32,
@@ -78,6 +82,9 @@ export const bulwarkRules = {
   portWindTicks: 6,
   portHalfSpan: 14,
   portAimRadians: Math.PI / 18,
+  sidePortMinRadians: Math.PI / 15,
+  sidePortMaxRadians: Math.PI * 35 / 180,
+  sidePortRim: 5,
 } as const;
 
 const distance = (a: Vec, b: Vec) => Math.hypot(a.x - b.x, a.y - b.y);
@@ -131,7 +138,7 @@ type HeldWall = {
   members: Member[];
   pivot?: Pivot;
   pivotUsed?: boolean;
-  port?: {phase: "opening" | "open" | "closing"; at: number; until: number};
+  port?: {phase: "opening" | "open" | "closing"; at: number; until: number; heading?: number; pendingHeading?: number};
   portUsed?: boolean;
 };
 
@@ -140,11 +147,15 @@ export class TankBulwark {
   private held = new Map<string, HeldWall>();
   private commands = new Map<string, number>();
   private pivotRecovery = new Map<string, number>();
+  private readonly shiftedPanels = new Set<number>();
+  private readonly setInPlace = new Set<number>();
 
   clear() {
     this.held.clear();
     this.commands.clear();
     this.pivotRecovery.clear();
+    this.shiftedPanels.clear();
+    this.setInPlace.clear();
   }
 
   remove(id: string, walls: WallStore) {
@@ -165,6 +176,14 @@ export class TankBulwark {
   }
 
   step(players: readonly BulwarkOwner[], walls: WallStore, tick: number) {
+    for (const id of this.setInPlace) {
+      const wall = walls.get(id);
+      if (!wall || wall.until <= tick || wall.health <= 0) this.setInPlace.delete(id);
+    }
+    for (const id of this.shiftedPanels) {
+      const wall = walls.get(id);
+      if (!wall || wall.until <= tick || wall.health <= 0) this.shiftedPanels.delete(id);
+    }
     for (const [id, held] of this.held) {
       if (!this.active(id, walls, tick)) continue;
       const owner = players.find(player => player.id === id);
@@ -197,7 +216,7 @@ export class TankBulwark {
     if (player.dashUntil > world.tick || player.reloadAt > world.tick || player.input.reload ||
         player.input.q || player.input.e || player.input.ultimate || player.input.dodge) return;
     const placed = [...walls.values()]
-      .filter(wall => wall.owner === player.id && wall.kind === 'wall' &&
+      .filter(wall => wall.owner === player.id && wall.kind === 'wall' && !this.setInPlace.has(wall.id) &&
         (!wall.source || wall.source.startsWith('corner-')) && wall.until > world.tick && wall.health > 0)
       .sort((a, b) => b.at - a.at || a.id - b.id);
     const first = placed[0];
@@ -242,18 +261,33 @@ export class TankBulwark {
     return Math.abs(Math.atan2(Math.sin(player.input.aim-from),Math.cos(player.input.aim-from)))>=.02;
   }
 
+  private setdown(player: BulwarkOwner, held: HeldWall, walls: WallStore, world: BulwarkWorld) {
+    const center = lead(player, held.normal);
+    const fits = (frames: ReturnType<TankBulwark['frames']>) => frames.length === held.members.length &&
+      frames.every(frame => wallFootprintClear(world, frame.center, normalOf(frame.wall), frame.halfSpan));
+    const full = this.frames(held, center, false, walls);
+    if (fits(full)) return { frames: full, folded: false };
+    if (!player.skills.includes(bulwarkIds.foldedSetdown) || !player.skills.includes(bulwarkIds.pivot) ||
+        held.pivot || ejected(player) || player.input.moveX || player.input.moveY) return;
+    const folded = this.frames(held, center, true, walls);
+    if (fits(folded)) return { frames: folded, folded: true };
+  }
+
   status(player:BulwarkOwner,walls:WallStore,world:BulwarkWorld):Partial<BulwarkStatus>{
     if(!available(player))return {};
     this.active(player.id,walls,world.tick);
     const held=this.held.get(player.id),port=held?.port,pivot=held?.pivot;
-    const full=held?this.frames(held,lead(player,held.normal),false,walls):[];
+    const placement = held && this.setdown(player, held, walls, world);
+    const canHandle = this.handlingReady(player, walls, world);
     return {
       bulwarkCarried:!!held,
       bulwarkCanLift:!held&&!!this.pickup(player,walls,world),
-      bulwarkCanSet:!!held&&full.length===held.members.length&&full.every(frame=>wallFootprintClear(world,frame.center,normalOf(frame.wall),frame.halfSpan)),
-      bulwarkCanHandle:this.handlingReady(player,walls,world),
+      bulwarkCanSet:!!placement,
+      ...(placement?.folded ? { bulwarkCanSetFolded: true } : {}),
+      bulwarkCanHandle:canHandle,
+      ...(held && canHandle && this.sideHeading(held, player, walls) !== undefined ? { bulwarkCanShiftPort: true } : {}),
       bulwarkPrimaryReady:this.canPrimary(player,walls,world),
-      bulwarkPortPhase:port?.phase??'closed',
+      bulwarkPortPhase:port?.pendingHeading !== undefined ? 'shifting' : port?.phase ?? 'closed',
       bulwarkRecoveryAt:this.pivotRecovery.get(player.id)??0,
       bulwarkCommitAt:pivot?.at??port?.at??0,
       bulwarkCommitUntil:pivot?.until??(port?.phase==='open'?0:port?.until)??0,
@@ -263,18 +297,20 @@ export class TankBulwark {
     };
   }
 
-  command(player: BulwarkOwner, walls: WallStore, world: BulwarkWorld): 'lift' | 'set' | undefined {
+  command(player: BulwarkOwner, walls: WallStore, world: BulwarkWorld): 'lift' | 'set' | 'set-folded' | undefined {
     if (!available(player) || player.input.sequence <= (this.commands.get(player.id) ?? -1)) return;
     this.commands.set(player.id, player.input.sequence);
     if (this.active(player.id, walls, world.tick)) {
       const held = this.held.get(player.id)!;
-      const frames = this.frames(held, lead(player, held.normal), false, walls);
-      if (frames.length !== held.members.length ||
-          frames.some(frame => !wallFootprintClear(world, frame.center, normalOf(frame.wall), frame.halfSpan))) return;
-      for (const frame of frames) Object.assign(frame.wall, frame.center, { halfSpan: frame.originalSpan });
+      const placement = this.setdown(player, held, walls, world);
+      if (!placement) return;
+      for (const { wall, center, halfSpan, originalSpan } of placement.frames) {
+        Object.assign(wall, center, { halfSpan: placement.folded ? halfSpan : originalSpan });
+        if (placement.folded) this.setInPlace.add(wall.id);
+      }
       this.clearPort(held,walls);
       this.held.delete(player.id);
-      return 'set';
+      return placement.folded ? 'set-folded' : 'set';
     }
     const picked=this.pickup(player,walls,world);
     if(!picked)return;
@@ -314,22 +350,87 @@ export class TankBulwark {
 
   private syncPort(held:HeldWall,walls:WallStore,tick:number){
     if(!held.port||tick<held.port.until)return;
-    if(held.port.phase==='opening')held.port.phase='open';
+    if(held.port.phase==='opening') {
+      held.port.phase='open';
+      if (held.port.pendingHeading !== undefined) {
+        held.port.heading = held.port.pendingHeading;
+        delete held.port.pendingHeading;
+      }
+    }
     else if(held.port.phase==='closing')this.clearPort(held,walls);
   }
 
-  private applyPort(held:HeldWall,player:BulwarkOwner,walls:WallStore){
-    if(!held.port)return;
-    const center=lead(player,held.normal);
-    for(const member of held.members){
-      const wall=walls.get(member.id);if(!wall)continue;
-      const normal=normalOf(wall),along={x:-normal.y,y:normal.x};
-      const projection=held.normal.x*normal.x+held.normal.y*normal.y;
-      if(Math.abs(projection)<.1){this.clearPort(held,walls);return;}
-      const t=((wall.x-center.x)*normal.x+(wall.y-center.y)*normal.y)/projection;
-      const crossing={x:center.x+held.normal.x*t,y:center.y+held.normal.y*t};
-      wall.bulwarkPortOffset=(crossing.x-wall.x)*along.x+(crossing.y-wall.y)*along.y;
-      wall.bulwarkPortHalfSpan=bulwarkRules.portHalfSpan/Math.abs(projection);
+  private portCut(wall: BulwarkWall, from: Vec, heading: Vec) {
+    const normal = normalOf(wall), along = { x: -normal.y, y: normal.x };
+    const projection = heading.x * normal.x + heading.y * normal.y;
+    if (Math.abs(projection) < .1) return;
+    const t = ((wall.x - from.x) * normal.x + (wall.y - from.y) * normal.y) / projection;
+    const x = from.x + heading.x * t, y = from.y + heading.y * t;
+    return {
+      offset: (x - wall.x) * along.x + (y - wall.y) * along.y,
+      halfSpan: bulwarkRules.portHalfSpan / Math.abs(projection),
+      t,
+    };
+  }
+
+  private sidePortCuts(held: HeldWall, from: Vec, heading: Vec, walls: WallStore) {
+    const cuts: { wall: BulwarkWall; offset: number; halfSpan: number }[] = [];
+    for (const { id } of held.members) {
+      const wall = walls.get(id);
+      if (!wall) return;
+      const cut = this.portCut(wall, from, heading);
+      if (!cut || cut.t <= 0) return;
+      const span = wall.halfSpan ?? bulwarkRules.defaultHalfSpan;
+      const offset = Math.abs(cut.offset);
+      if (offset - cut.halfSpan >= span) continue;
+      if (offset + cut.halfSpan + bulwarkRules.sidePortRim > span) return;
+      cuts.push({ wall, offset: cut.offset, halfSpan: cut.halfSpan });
+    }
+    if (cuts.length) return cuts;
+  }
+
+  private sideHeading(held: HeldWall, player: BulwarkOwner, walls: WallStore) {
+    if (!player.skills.includes(bulwarkIds.sidePort) || held.port?.phase !== 'open' ||
+        held.members.some(member => this.shiftedPanels.has(member.id))) return;
+    const aim = player.input.aim;
+    const heading = { x: Math.cos(aim), y: Math.sin(aim) };
+    const dot = heading.x * held.normal.x + heading.y * held.normal.y;
+    if (dot > Math.cos(bulwarkRules.sidePortMinRadians) || dot < Math.cos(bulwarkRules.sidePortMaxRadians)) return;
+    if (this.sidePortCuts(held, player, heading, walls)) return aim;
+  }
+
+  private applyPort(held: HeldWall, player: BulwarkOwner, walls: WallStore) {
+    const port = held.port;
+    if (!port) return;
+    if (port.heading !== undefined) {
+      const heading = { x: Math.cos(port.heading), y: Math.sin(port.heading) };
+      const cuts = this.sidePortCuts(held, player, heading, walls);
+      if (!cuts) return this.clearPort(held, walls);
+      // On a paired wall only the panel crossed by the new slit should open.
+      for (const { id } of held.members) {
+        const wall = walls.get(id);
+        if (wall) {
+          delete wall.bulwarkPortOffset;
+          delete wall.bulwarkPortHalfSpan;
+        }
+      }
+      for (const { wall, offset, halfSpan } of cuts) {
+        wall.bulwarkPortOffset = offset;
+        wall.bulwarkPortHalfSpan = halfSpan;
+      }
+      return;
+    }
+    const origin = lead(player, held.normal);
+    for (const { id } of held.members) {
+      const wall = walls.get(id);
+      if (!wall) continue;
+      const cut = this.portCut(wall, origin, held.normal);
+      if (!cut) {
+        this.clearPort(held, walls);
+        return;
+      }
+      wall.bulwarkPortOffset = cut.offset;
+      wall.bulwarkPortHalfSpan = cut.halfSpan;
     }
   }
 
@@ -353,11 +454,12 @@ export class TankBulwark {
         player.input.technique1||player.input.moveX||player.input.moveY||ejected(player)||
         player.input.q||player.input.e||player.input.ultimate||player.input.reload||player.input.dodge||
         player.reloadAt>world.tick||player.dashUntil>world.tick)return false;
-    const dot=Math.cos(player.input.aim)*held.normal.x+Math.sin(player.input.aim)*held.normal.y;
+    const normal = port.heading === undefined ? held.normal : { x: Math.cos(port.heading), y: Math.sin(port.heading) };
+    const dot=Math.cos(player.input.aim)*normal.x+Math.sin(player.input.aim)*normal.y;
     return dot>=Math.cos(bulwarkRules.portAimRadians);
   }
 
-  beginHandling(player:BulwarkOwner,walls:WallStore,world:BulwarkWorld,next:Vec=player):'pivot'|'port-open'|'port-close'|undefined{
+  beginHandling(player:BulwarkOwner,walls:WallStore,world:BulwarkWorld,next:Vec=player):'pivot'|'port-open'|'port-close'|'port-shift'|undefined{
     if(!player.skills.includes(bulwarkIds.port))return this.beginPivot(player,walls,world,next)?'pivot':undefined;
     if(!this.handlingReady(player,walls,world,next)||
         player.input.sequence<=(this.commands.get(player.id)??-1))return;
@@ -368,7 +470,15 @@ export class TankBulwark {
     const closing=held.port?.phase==='open';
     this.commands.set(player.id,player.input.sequence);
     held.portUsed=true;
-    held.port={phase:closing?'closing':'opening',at:world.tick,until:world.tick+bulwarkRules.portWindTicks};
+    const heading = this.sideHeading(held, player, walls);
+    if (heading !== undefined) {
+      for (const { id } of held.members) this.shiftedPanels.add(id);
+      held.port = { phase: 'opening', at: world.tick, until: world.tick + bulwarkRules.portWindTicks,
+        heading: held.port?.heading, pendingHeading: heading };
+      this.applyPort(held,player,walls);
+      return 'port-shift';
+    }
+    held.port={phase:closing?'closing':'opening',at:world.tick,until:world.tick+bulwarkRules.portWindTicks,heading:held.port?.heading};
     this.applyPort(held,player,walls);
     return closing?'port-close':'port-open';
   }

@@ -1,0 +1,3095 @@
+{
+  "scope": "Candidate runtime and exact protocol 80 control. Ordinary Short with actual casts, earned 21 SP purchase, physical carries and live threats. The fallback policy returns to full-width clear ground.",
+  "bindings": {
+    "exact": {
+      "variant": "exact80",
+      "sourceCommit": "237e1620a74777600e3564b23059a7689b261ca3",
+      "contentRevision": "563e4fba3657c0847b0211980c6b9aedf1c471c9876b65cd547c07d296d7e258",
+      "catalogSize": 80,
+      "bundleSha256": "29670a0bd16775954e955d0695eb7696e436833d003cfab93aec5a28a1acfd2c",
+      "runtimeFiles": {
+        "src/shared/game.ts": "8c35ab5afd67aca4016b01c1ec3c86b47334a142badbdf373a13158472dd8ea4",
+        "src/shared/ranger-kit.ts": "e490be8bf70941849eda61bd308a026805ceee235fc2dc08cec979d54a4d2972",
+        "src/shared/heavy-traverse.ts": "39b599044795c35a8af7b44a78da67d7d0844ddb80c7cc99e59fa3c9b2f592b0",
+        "src/shared/soldier-skirmisher.ts": "de17aa693d4df4926958e8a52941cd17da60d2c62b447a2d6476d8bd510f6537",
+        "src/shared/tank-bastion.ts": "a15f9f9574df36fe31c70c927d8579d8998c588868e4824d1c9686d793457a6c",
+        "src/shared/soldier-marksman.ts": "1db9d4dd53d75234cc2c84de82df8c6fca93b6f948b37125ad0ade4a688c6ad8",
+        "src/shared/summoner-kit.ts": "650724a43f6f62479f992d5fff41e5c9e5db9f39679a56fdee0256685ca9d7b7",
+        "src/shared/motion-window.ts": "d4a9208267a7c1e37be65daf2c3e77b0ada5612fb9d6a7911d2d4236e442f72d",
+        "src/shared/class-kits.ts": "79c5939821fb4beba7a7fcc0a6fbac65dbf5c80aa5e1ad0e635425c5d87722b2",
+        "src/shared/bard-kit.ts": "77cc38a17ad9d93a82a38fcfd8b72c8d0376726a3246e38269b47ee9948f0bbe",
+        "src/shared/heavy-linework.ts": "37d7b1dfda2b921a70079a26aa02cb49350f02ba5abdf59fe65c5460864a22d1",
+        "src/shared/sword-geometry.ts": "c176edd83e7229fc44abbcfb7d037b9aeef270756d7e269dfcb436d127271918",
+        "src/shared/soldier-sniper.ts": "978e646410cb1f195e749fd0e69a83146efdd04830f70acaa1801f936c52add9",
+        "src/shared/tank-interceptor.ts": "e8eb7eb094d35ace4815fa200d7a5a9416ca3a9ad1e8a1287f4636520b5f65d9",
+        "src/shared/sword-rules.json": "36ade2383c267bf099761bf68aee786e82086ed4e094b0f257fa192e5ab0c527",
+        "src/shared/alchemist-kit.ts": "fa028664e12f96326c884f474088ab9e8d8011b35727c5288de4bca40d06d0e4",
+        "src/shared/heavy-flak.ts": "3e5047491a403c286c96d99430c60c6d60fc1b65eb1552ff643a26d5578d6dba",
+        "src/shared/alchemy-rules.json": "ed15676095256e7d0fdd084fa9687bf6126a1a8712f80baaca2d1bc4ce669e0c",
+        "src/shared/swordsman-kit.ts": "39ca2ad99a03497d1fe291d8daf3d5b16ff738435274d5e6713367c8d1ed6d93",
+        "src/shared/story-chapter.ts": "631853c58dcd5dfabe9762257819c2ab1b5185bca3fbdd64b117926bdd985ccc",
+        "src/shared/ward-skirmish.ts": "b929cb9925e459e49fac7ecf3c4df987ceccbce70082f788a9b4a85c169b52f3",
+        "src/shared/free-play.ts": "9d66dba0fca1025694f701aac4ad9cf19dcc855bdb0747f50022b272bd2d5482",
+        "src/shared/story-campaign.ts": "332e112c6e8522b612d3a19def0f40a3c9dc469bc261fb6966953cd2a7f55a74",
+        "src/shared/story-training.ts": "f94fa42c48deebbde137ad80499839f3d78446acb0b1624f0b8b7f72cf3db11c",
+        "src/shared/variant-pressure.ts": "a15bc55729b990ee1be31e4532c1ed7f6c6da4d5421031f54383e0a3787724c1",
+        "src/shared/boss-defeat-flow.ts": "d0ad8cf5046efde79b4ed174a89b4eee4ae7e3cfef04f295bd5d17c07742bce4",
+        "src/shared/arena-selection.ts": "d81dd51dfe884ea447ff4c923bb942b814ae85936045d65af232699188f1b861",
+        "src/shared/soldier-grenadier.ts": "6e187880dc534c2a8541c4d51c7f05f579572b7ec23cf813ca7265c278ce3d13",
+        "src/shared/warden-patrol.ts": "0e82f8c70f9e678c99831fc5ca3b9dfe77d322585f743b04219b085f37aafc69",
+        "src/shared/mobility.ts": "5ffa6041f35f8d9297dd0ecd11085689e9599c426bb84804eddb89214a84dfac",
+        "src/shared/ability-transforms.ts": "04dfd5458a8faf83f09063ecf43b57156f26ee84e358b48e224e2c30788887d2",
+        "src/shared/class-talents.ts": "fd2bdd52b1aa3aad429f4e2cca4308b5e29a8fe4ca3df2070fb562569650942b",
+        "src/shared/field-follow.ts": "f815f64741950317b0762b27221d8a5c8194e562a4a91e14d0531cd0648dfd7d",
+        "src/shared/phase-break-layout.ts": "eca2aa0a5bc503a5e2de54af1325c7a71e8d0f7c1b2f58580116691fb7146b83",
+        "src/shared/encounter-policy.ts": "bef2891b12e84a6c74e1c1d2744d74c206f08a315f44428525e1cdb6a5b2a05b",
+        "src/shared/recovery-policy.ts": "0f5f39a9a61a8d40d375d91ab318ca8913dad8986eaa873fcb95279d156e6379",
+        "src/shared/early-watch-director.ts": "d367576516b210ca66afecfc9625b141518fe3664e208f44d80d49fa32b6658b",
+        "src/shared/small-wakes-director.ts": "2df7bbcd4b17a138a67931da96432d14b3997191b8a75aebd02b272dc42c1093",
+        "src/shared/boss-body-bounds.ts": "154a0aa4884429493de1d59b8fc2cac43930cbe18af234f30af113003ca8e239",
+        "src/shared/constable-signature.ts": "d2fb007054c7198027eefadbc07fd60e90f3583063ec39aa3f271952f817cf38",
+        "src/shared/boss-threat.ts": "e550b9512f6857ff6972b26b370a2927af52042742fa20fec795b307756cec61",
+        "src/shared/endless-director.ts": "8f22fd8c03118baa071f6e5e88ea89466bf118cbcaf2d9b5c9e56b62705a49ad",
+        "src/shared/brutal-volley.ts": "3688f8c7c999374a468ec40ea4c7ee8e77a8097a15ecde692f84c62f07058ea0",
+        "src/shared/run-progress.ts": "6b1b2de7ee28f51b3713d3324cf531ee3676512da2bf8370ce56154f5be3ce2e",
+        "src/shared/endless-schedule.ts": "fb48bdd6128497dc6025908ffecc3ba653ecb54d9ff5b402a4ee1388dc7fe430",
+        "src/shared/raid-director.ts": "ee9f692cd4ce0dbcea1220b73cec49df7b5d6b37a138a490ce6f4a32b4381dd1",
+        "src/shared/protocol.ts": "230a21553e423e6fbefda84b5e094e664eeb4b37f14524433e98727cfc8f8073",
+        "content/catalog.json": "54d7366b0210558b4504333ca7257208544d9b5d1a694c555b734a7f0b44f483",
+        "src/shared/district-director.ts": "5d0cdc1e93605c2b6e707215b83e60ec314d900b75d0ab2292745407bcb139f8",
+        "src/shared/arena-layouts.ts": "9b75f7b7f47a97dff941c2b8f5562421afe94d10154b8dd0d2615a32a8ef0a6d",
+        "src/shared/geometry.ts": "bc7e8599a331868989757c21f84ecb335c50bb3e5454a5894726f38d1d2514bd",
+        "src/shared/random.ts": "82222fa4041390726946b75c5e7cf1cd4b1c012ea74e959d1d1cf2c00dbb1027",
+        "src/shared/clerk-appeal.ts": "c3222d9f1e9c32637805b0e60877ff0cd69f822db90869a5afba7f795c82daa7",
+        "src/shared/practice-migration.ts": "9537f244deddc929e3af65d1b1f78731a9e4fd1bda60fb67967f6fd4702dc7dc",
+        "src/shared/minions.ts": "2f7f1908351ce83998b564586d5488a3ad2d5716f8204252ff32a2fecd15c627",
+        "src/shared/boss-director.ts": "54245aa3cdb57976f52eb5f5ab5a17e799245cf48e6d69e3f9dd72de1b11e69b",
+        "src/shared/engineer-pathways.ts": "3964dfc2c26643ba4d8bbac9dc4e84bccc87bc20152de6bc8a1a5e3d1529d9ee",
+        "src/shared/skill-conflicts.ts": "90c2c889a8cd6c4760ff7f3079cdffdcaf2493e99feb25070dc2994c9a675e20",
+        "src/shared/civic-director.ts": "2022946168d88ecb32ee5724ff6992d6f54cf127ffd83747540c2a0f8c85f5f9",
+        "src/shared/warden-signature.ts": "8c2abbb7c50f4280fcc651af648ad370d342d6e1d072db705655375a338574fb",
+        "src/shared/ranger-rules.json": "5da7de5ae28b461fd9f641dbcf597a9ec61503503ec21c33255a0679dd777b81",
+        "src/shared/boss-body-bounds.json": "ed7e93c76b59179b884b7f01565bfe5de4a5f537563413b4655af2dfe0ba5de8",
+        "src/shared/soldier-sniper-bore-flight.ts": "9d173992c04173e753ddcadc0a72642d16002cf743e6943390ae799d75df76e5",
+        "src/shared/summoner-rules.json": "6188de93ee5857f2427d3985d65bfa88c6f3a44c8bbdc618509ad97a8ae66e04",
+        "src/shared/rat-navigation.ts": "5694bc716d781db0ab130d010b086ca3d8aa082994d37be6084859961685e1e8",
+        "src/shared/tank-bulwark.ts": "1689fec89288267a8d9b3e4c5f91865e51846ee5b5970031b15647b546c2ebb5",
+        "src/shared/soldier-sniper-positions.ts": "9aab0dac4625012fb51e2b879a536451bd8b58d23e3612bb9297bea0cf003723",
+        "src/shared/heavy-linework-guide.ts": "cda0a378617791c25814614836b0654a08e3da29cc7fc50aab9ad53f886b5e43",
+        "src/shared/tank-bulwark-port.ts": "9dd123876b08199cbd8b4fe09536484a5fc405b974ee5fe1b43db930d49a2213",
+        "src/shared/engineer-machinery.ts": "b8d78e091ce7bce58b9683f144af79edc433d79d3e8ff400487bada1075afc71",
+        "src/shared/engineer-builder.ts": "d8922307b3e7c5a7ce9aeab74647e1f0f3f545bb39e86d120c08181df1d715e6",
+        "src/shared/engineer-traps.ts": "3211d5c4c582660b94a5888513189e8f0407c724855e0ea348198930ed77b6ca",
+        "content/revision.json": "f545e4b9caa04bb543df5832b976a947793f2aa6d219e381c7098b88e139bb29",
+        "src/shared/small-wakes-body-bounds.ts": "8b3387befd5342a3bdc02dfca59370b5b7a0e0719178fa9bee698a77205c7d04",
+        "src/shared/boss-threats.json": "8d118e4a9e8de29c95c259297ee044bd6891885edc833be80884b6286d2ca239",
+        "src/shared/boss-hop-route.ts": "fda9f31e16dacf35f467ecc16ca8f204d5e00321adaa3a42628d7fdd2c26dfa2",
+        "src/shared/service-director.ts": "6b8cf3711f8a40c28c3dafe264ad101396f102a80a7397d8085a9f1f689e6122",
+        "src/shared/heavy-seam.ts": "5107c9c9c066fe33d4e7bcef369c179c87b96b4703dc4cb885ce829284d0bfed",
+        "src/shared/baby-cover.ts": "9ae9ddabfdfc90375f66dbe309e9246c5659291b384a55ab22b6a5413e4fa077",
+        "src/shared/arena-footprint.ts": "7b4757d62561fc99f85e51e228275cb8bc1edf9cbb892b33f18e7f42731fe97a",
+        "src/shared/ambulance-route.ts": "c2fde5836a45c5c4354bb2ca9859a087e67576059cf20ff13b93883efe10b32f",
+        "src/shared/marshal-chains.ts": "8da968d39fe665c5dc608c727a0b65b7d6dca450bcba8783dc9eb98a0d6f738f",
+        "src/shared/widow-gates.ts": "6ccb1b40f22ac49fde15af1f2c8a7d31e4a8723fc555fb8883e372c3f09508c9",
+        "src/shared/tollkeeper-return.ts": "ecd16001352e14589e1fececd6a159ba9ebd2d5e3cdcd94e1e36b554d2f2b876",
+        "src/shared/clerk-appeal-rules.json": "4d66459e7b5e8efd3a6ee2b1cd972abda2edc431291599dccc17bbb8e66a3f40",
+        "src/shared/clerk-placement.ts": "3e9f4df3c1acf292a42559ade9c6c2e0a4d7bc85a5ee9e6f23d15f2ac0e9c362",
+        "src/shared/courier-route.ts": "98b536f4b80bcee0ab8093829e40ec6234ef28c25430c5ecc4e28ad08170ec8d",
+        "src/shared/ratcatcher-muster.ts": "fba4212fe2dce9b8dd62ad85fc6fdfac33e0eb4c81f97799a576ea1a568f271b",
+        "src/shared/soldier-sniper-bore-geometry.ts": "1540c2e9276fef13c133812fc226f046725b6455fef5456fc45c7b4c9406dba7",
+        "src/shared/small-wakes-body-bounds.json": "373e35342b58f266b71971ec672b40b16fc14d2529e1727728586fd7320ea7cd",
+        "src/shared/soldier-sniper-withdrawal.ts": "c68305e62b07108243779aa356feaac278c0f2482acd03667cdbe538f32ced1b",
+        "src/shared/soldier-sniper-rest.ts": "bebb1006b9996548ab20d5d7818631c66f47693a56e5594b2e4d53a1ee7480db",
+        "src/shared/tollkeeper-return-rules.json": "20328fdc2d1597b625cc7dc660d3efe166d6fafc1e336a2643eb8e65e032cc34",
+        "src/shared/ratcatcher-muster-rules.json": "b1450ff63369f40e0cd91e3d06de35b24044c8dd154239ecfc639bfc3c2f0126",
+        "src/shared/courier-route-rules.json": "ff55b7f254104119fbc0fe88c2aceb5acf83ba0ef7ccb93ce3e6d79889775334",
+        "src/shared/widow-gates-rules.json": "ef25dc85fa4941892f8cccba0d6ecd8006108022c1c461733b999aa177de9111",
+        "src/shared/marshal-chains-rules.json": "12ba46be11774968271bb4e948a31bf63377b5f89d62bcec948546fc403bb74c",
+        "src/shared/ambulance-route-rules.json": "b8cf50504fe5736512fa57fabf5abda2dcfbe68dd7e2b31c90d3a81fa48937a4",
+        "src/shared/lamplight-watch.ts": "dba457d80b0c2b8d98317a9f2f926f1a090f9c17a5b98864347fed82fbc82ea6",
+        "src/shared/ring-contact.ts": "5d9094ef5a837f180ae3d72b654273be041ecf99b0c80ebaaa2302b3826c90c6",
+        "src/shared/stitchwork.ts": "02e4d4c6d2c40d896106060e2ab3e67b3f42c005a84ecbe9f745687c5f0c2d06",
+        "src/shared/baker-oven.ts": "b6d7f74be3ee2e6fee38707f825a5e800f6a34b7b11ade1e909521fc92bd340f",
+        "src/shared/mold-mixing.ts": "aa4b68642882d69df4fc8c46f88806ef41916593920c5166819d0cd7d2c03f3c",
+        "src/shared/station-signals.ts": "d00dec1449cd0454103ab0464d0e419bad18c070d21d62a0659586196fa77632",
+        "src/shared/sluice-pressure.ts": "951c06f6acd2a12e749bf990b8a0e657d534490dabc6e71f76d1fa976fb19e66",
+        "src/shared/matron-ward.ts": "825b503869288716c458d08c56140eae4a272f1d81de5034b1fbf0d354ca1821",
+        "src/shared/glass-surgery.ts": "01693c32eecb876b2f8936eb5702a1bda9d7a9fc31b14196f6cfdd361f175f13",
+        "src/shared/bell-carillon.ts": "52a04d704112353d29be2e468457ffccb5a424b33a02fb183e3e2127ad630419",
+        "src/shared/stitchwork-rules.json": "36b023d9671d13af56bd585f345cf5bbdaf65915c52316ecf6953bdc1a68cc31",
+        "src/shared/matron-ward-rules.json": "e2a04474d7d7093dc2b2d85aa6cbc3a902352618f8c160e9aa3793e635e51081",
+        "src/shared/bell-return-chain.ts": "c61d855c1097fbc1211071cdc397ca055d3f72357e37e6e519330069eeee4d6d",
+        "src/shared/bell-carillon-rules.json": "d07495332bf1e982b5c9fccd7a966c4d2bdc7fcfe0abca6635fa9c4988088b07",
+        "src/shared/mold-still.ts": "23b30a337449fdce5fa111407816ef54f9829d9b621b56afbe29b510700cee23",
+        "src/shared/mold-mixing-rules.json": "2df874f2d863b024f9e007d6faaea16eda77b73514b114e2c671a5d19bac6304",
+        "src/shared/bell-return-chain-rules.json": "12f7be524cccfa1b943e6f8c66397c779cbb58e7e1d8d447ceb0f425ca43c046",
+        "src/shared/mold-still-rules.json": "5e76e6a5feaea4c860450abcfc4312341e434066410e55ede559134c89fdb6d1"
+      }
+    },
+    "study": {
+      "variant": "runtime81",
+      "parentCommit": "237e1620a74777600e3564b23059a7689b261ca3",
+      "contentRevision": "9aeb7546f78fb0e13b9072bff0aab7510a89b7c0845c15038fa088646273f08f",
+      "catalogSize": 82,
+      "bundleSha256": "cde03d042319e88cf1690127971a8eae43f00ca19583ea1965746628634d845a",
+      "runtimeFiles": {
+        "src/shared/game.ts": "8c35ab5afd67aca4016b01c1ec3c86b47334a142badbdf373a13158472dd8ea4",
+        "src/shared/heavy-linework.ts": "37d7b1dfda2b921a70079a26aa02cb49350f02ba5abdf59fe65c5460864a22d1",
+        "src/shared/soldier-grenadier.ts": "6e187880dc534c2a8541c4d51c7f05f579572b7ec23cf813ca7265c278ce3d13",
+        "src/shared/soldier-marksman.ts": "1db9d4dd53d75234cc2c84de82df8c6fca93b6f948b37125ad0ade4a688c6ad8",
+        "src/shared/motion-window.ts": "d4a9208267a7c1e37be65daf2c3e77b0ada5612fb9d6a7911d2d4236e442f72d",
+        "src/shared/tank-interceptor.ts": "e8eb7eb094d35ace4815fa200d7a5a9416ca3a9ad1e8a1287f4636520b5f65d9",
+        "src/shared/soldier-skirmisher.ts": "de17aa693d4df4926958e8a52941cd17da60d2c62b447a2d6476d8bd510f6537",
+        "src/shared/ward-skirmish.ts": "b929cb9925e459e49fac7ecf3c4df987ceccbce70082f788a9b4a85c169b52f3",
+        "src/shared/alchemist-kit.ts": "fa028664e12f96326c884f474088ab9e8d8011b35727c5288de4bca40d06d0e4",
+        "src/shared/warden-patrol.ts": "0e82f8c70f9e678c99831fc5ca3b9dfe77d322585f743b04219b085f37aafc69",
+        "src/shared/alchemy-rules.json": "ed15676095256e7d0fdd084fa9687bf6126a1a8712f80baaca2d1bc4ce669e0c",
+        "src/shared/story-chapter.ts": "631853c58dcd5dfabe9762257819c2ab1b5185bca3fbdd64b117926bdd985ccc",
+        "src/shared/soldier-sniper.ts": "978e646410cb1f195e749fd0e69a83146efdd04830f70acaa1801f936c52add9",
+        "src/shared/ranger-kit.ts": "e490be8bf70941849eda61bd308a026805ceee235fc2dc08cec979d54a4d2972",
+        "src/shared/free-play.ts": "9d66dba0fca1025694f701aac4ad9cf19dcc855bdb0747f50022b272bd2d5482",
+        "src/shared/story-training.ts": "f94fa42c48deebbde137ad80499839f3d78446acb0b1624f0b8b7f72cf3db11c",
+        "src/shared/class-kits.ts": "79c5939821fb4beba7a7fcc0a6fbac65dbf5c80aa5e1ad0e635425c5d87722b2",
+        "src/shared/sword-geometry.ts": "c176edd83e7229fc44abbcfb7d037b9aeef270756d7e269dfcb436d127271918",
+        "src/shared/heavy-traverse.ts": "39b599044795c35a8af7b44a78da67d7d0844ddb80c7cc99e59fa3c9b2f592b0",
+        "src/shared/summoner-kit.ts": "650724a43f6f62479f992d5fff41e5c9e5db9f39679a56fdee0256685ca9d7b7",
+        "src/shared/bard-kit.ts": "77cc38a17ad9d93a82a38fcfd8b72c8d0376726a3246e38269b47ee9948f0bbe",
+        "src/shared/class-talents.ts": "fd2bdd52b1aa3aad429f4e2cca4308b5e29a8fe4ca3df2070fb562569650942b",
+        "src/shared/heavy-flak.ts": "3e5047491a403c286c96d99430c60c6d60fc1b65eb1552ff643a26d5578d6dba",
+        "src/shared/sword-rules.json": "36ade2383c267bf099761bf68aee786e82086ed4e094b0f257fa192e5ab0c527",
+        "src/shared/tank-bastion.ts": "a15f9f9574df36fe31c70c927d8579d8998c588868e4824d1c9686d793457a6c",
+        "src/shared/arena-selection.ts": "d81dd51dfe884ea447ff4c923bb942b814ae85936045d65af232699188f1b861",
+        "src/shared/variant-pressure.ts": "a15bc55729b990ee1be31e4532c1ed7f6c6da4d5421031f54383e0a3787724c1",
+        "src/shared/swordsman-kit.ts": "39ca2ad99a03497d1fe291d8daf3d5b16ff738435274d5e6713367c8d1ed6d93",
+        "src/shared/field-follow.ts": "f815f64741950317b0762b27221d8a5c8194e562a4a91e14d0531cd0648dfd7d",
+        "src/shared/boss-defeat-flow.ts": "d0ad8cf5046efde79b4ed174a89b4eee4ae7e3cfef04f295bd5d17c07742bce4",
+        "src/shared/mobility.ts": "5ffa6041f35f8d9297dd0ecd11085689e9599c426bb84804eddb89214a84dfac",
+        "src/shared/ability-transforms.ts": "04dfd5458a8faf83f09063ecf43b57156f26ee84e358b48e224e2c30788887d2",
+        "src/shared/story-campaign.ts": "332e112c6e8522b612d3a19def0f40a3c9dc469bc261fb6966953cd2a7f55a74",
+        "src/shared/phase-break-layout.ts": "eca2aa0a5bc503a5e2de54af1325c7a71e8d0f7c1b2f58580116691fb7146b83",
+        "src/shared/brutal-volley.ts": "3688f8c7c999374a468ec40ea4c7ee8e77a8097a15ecde692f84c62f07058ea0",
+        "src/shared/encounter-policy.ts": "bef2891b12e84a6c74e1c1d2744d74c206f08a315f44428525e1cdb6a5b2a05b",
+        "src/shared/recovery-policy.ts": "0f5f39a9a61a8d40d375d91ab318ca8913dad8986eaa873fcb95279d156e6379",
+        "src/shared/small-wakes-director.ts": "2df7bbcd4b17a138a67931da96432d14b3997191b8a75aebd02b272dc42c1093",
+        "src/shared/boss-body-bounds.ts": "154a0aa4884429493de1d59b8fc2cac43930cbe18af234f30af113003ca8e239",
+        "src/shared/early-watch-director.ts": "d367576516b210ca66afecfc9625b141518fe3664e208f44d80d49fa32b6658b",
+        "src/shared/constable-signature.ts": "d2fb007054c7198027eefadbc07fd60e90f3583063ec39aa3f271952f817cf38",
+        "src/shared/boss-threat.ts": "e550b9512f6857ff6972b26b370a2927af52042742fa20fec795b307756cec61",
+        "src/shared/endless-director.ts": "8f22fd8c03118baa071f6e5e88ea89466bf118cbcaf2d9b5c9e56b62705a49ad",
+        "src/shared/raid-director.ts": "ee9f692cd4ce0dbcea1220b73cec49df7b5d6b37a138a490ce6f4a32b4381dd1",
+        "src/shared/endless-schedule.ts": "fb48bdd6128497dc6025908ffecc3ba653ecb54d9ff5b402a4ee1388dc7fe430",
+        "src/shared/run-progress.ts": "6b1b2de7ee28f51b3713d3324cf531ee3676512da2bf8370ce56154f5be3ce2e",
+        "src/shared/protocol.ts": "5852f68ff44ebef7fbf1233055277736cd7d2a731fbfded75c3427300bed8ec9",
+        "src/shared/district-director.ts": "5d0cdc1e93605c2b6e707215b83e60ec314d900b75d0ab2292745407bcb139f8",
+        "content/catalog.json": "717a32c88b81c59e2992694c56f3483853c7ff90071a4f189d3e1541ead9620e",
+        "src/shared/geometry.ts": "bc7e8599a331868989757c21f84ecb335c50bb3e5454a5894726f38d1d2514bd",
+        "src/shared/random.ts": "82222fa4041390726946b75c5e7cf1cd4b1c012ea74e959d1d1cf2c00dbb1027",
+        "src/shared/practice-migration.ts": "5e62e0b358887ebfdcb78dc5314f1745e28171df3184edb3bfb5e734e7244900",
+        "src/shared/boss-director.ts": "54245aa3cdb57976f52eb5f5ab5a17e799245cf48e6d69e3f9dd72de1b11e69b",
+        "src/shared/arena-layouts.ts": "9b75f7b7f47a97dff941c2b8f5562421afe94d10154b8dd0d2615a32a8ef0a6d",
+        "src/shared/warden-signature.ts": "8c2abbb7c50f4280fcc651af648ad370d342d6e1d072db705655375a338574fb",
+        "src/shared/minions.ts": "2f7f1908351ce83998b564586d5488a3ad2d5716f8204252ff32a2fecd15c627",
+        "src/shared/clerk-appeal.ts": "c3222d9f1e9c32637805b0e60877ff0cd69f822db90869a5afba7f795c82daa7",
+        "src/shared/engineer-pathways.ts": "3964dfc2c26643ba4d8bbac9dc4e84bccc87bc20152de6bc8a1a5e3d1529d9ee",
+        "src/shared/skill-conflicts.ts": "90c2c889a8cd6c4760ff7f3079cdffdcaf2493e99feb25070dc2994c9a675e20",
+        "src/shared/civic-director.ts": "2022946168d88ecb32ee5724ff6992d6f54cf127ffd83747540c2a0f8c85f5f9",
+        "src/shared/heavy-linework-guide.ts": "cda0a378617791c25814614836b0654a08e3da29cc7fc50aab9ad53f886b5e43",
+        "src/shared/ranger-rules.json": "5da7de5ae28b461fd9f641dbcf597a9ec61503503ec21c33255a0679dd777b81",
+        "src/shared/soldier-sniper-bore-flight.ts": "9d173992c04173e753ddcadc0a72642d16002cf743e6943390ae799d75df76e5",
+        "src/shared/soldier-sniper-positions.ts": "9aab0dac4625012fb51e2b879a536451bd8b58d23e3612bb9297bea0cf003723",
+        "src/shared/tank-bulwark.ts": "940cbb7b05d955c6bf60b094f00bb23d556c85143cf51cd73b30c0f017475234",
+        "src/shared/tank-bulwark-port.ts": "9dd123876b08199cbd8b4fe09536484a5fc405b974ee5fe1b43db930d49a2213",
+        "src/shared/engineer-builder.ts": "d8922307b3e7c5a7ce9aeab74647e1f0f3f545bb39e86d120c08181df1d715e6",
+        "src/shared/engineer-machinery.ts": "b8d78e091ce7bce58b9683f144af79edc433d79d3e8ff400487bada1075afc71",
+        "src/shared/engineer-traps.ts": "3211d5c4c582660b94a5888513189e8f0407c724855e0ea348198930ed77b6ca",
+        "content/revision.json": "357177f685784a790a3cb621767c6888c400df37abc654893feba930839e85ac",
+        "src/shared/boss-body-bounds.json": "ed7e93c76b59179b884b7f01565bfe5de4a5f537563413b4655af2dfe0ba5de8",
+        "src/shared/summoner-rules.json": "6188de93ee5857f2427d3985d65bfa88c6f3a44c8bbdc618509ad97a8ae66e04",
+        "src/shared/rat-navigation.ts": "5694bc716d781db0ab130d010b086ca3d8aa082994d37be6084859961685e1e8",
+        "src/shared/heavy-seam.ts": "5107c9c9c066fe33d4e7bcef369c179c87b96b4703dc4cb885ce829284d0bfed",
+        "src/shared/boss-threats.json": "8d118e4a9e8de29c95c259297ee044bd6891885edc833be80884b6286d2ca239",
+        "src/shared/boss-hop-route.ts": "fda9f31e16dacf35f467ecc16ca8f204d5e00321adaa3a42628d7fdd2c26dfa2",
+        "src/shared/service-director.ts": "6b8cf3711f8a40c28c3dafe264ad101396f102a80a7397d8085a9f1f689e6122",
+        "src/shared/small-wakes-body-bounds.ts": "8b3387befd5342a3bdc02dfca59370b5b7a0e0719178fa9bee698a77205c7d04",
+        "src/shared/ambulance-route.ts": "c2fde5836a45c5c4354bb2ca9859a087e67576059cf20ff13b93883efe10b32f",
+        "src/shared/tollkeeper-return.ts": "ecd16001352e14589e1fececd6a159ba9ebd2d5e3cdcd94e1e36b554d2f2b876",
+        "src/shared/widow-gates.ts": "6ccb1b40f22ac49fde15af1f2c8a7d31e4a8723fc555fb8883e372c3f09508c9",
+        "src/shared/marshal-chains.ts": "8da968d39fe665c5dc608c727a0b65b7d6dca450bcba8783dc9eb98a0d6f738f",
+        "src/shared/baby-cover.ts": "9ae9ddabfdfc90375f66dbe309e9246c5659291b384a55ab22b6a5413e4fa077",
+        "src/shared/arena-footprint.ts": "7b4757d62561fc99f85e51e228275cb8bc1edf9cbb892b33f18e7f42731fe97a",
+        "src/shared/ratcatcher-muster.ts": "fba4212fe2dce9b8dd62ad85fc6fdfac33e0eb4c81f97799a576ea1a568f271b",
+        "src/shared/courier-route.ts": "98b536f4b80bcee0ab8093829e40ec6234ef28c25430c5ecc4e28ad08170ec8d",
+        "src/shared/clerk-placement.ts": "3e9f4df3c1acf292a42559ade9c6c2e0a4d7bc85a5ee9e6f23d15f2ac0e9c362",
+        "src/shared/clerk-appeal-rules.json": "4d66459e7b5e8efd3a6ee2b1cd972abda2edc431291599dccc17bbb8e66a3f40",
+        "src/shared/soldier-sniper-bore-geometry.ts": "1540c2e9276fef13c133812fc226f046725b6455fef5456fc45c7b4c9406dba7",
+        "src/shared/soldier-sniper-rest.ts": "bebb1006b9996548ab20d5d7818631c66f47693a56e5594b2e4d53a1ee7480db",
+        "src/shared/ratcatcher-muster-rules.json": "b1450ff63369f40e0cd91e3d06de35b24044c8dd154239ecfc639bfc3c2f0126",
+        "src/shared/ambulance-route-rules.json": "b8cf50504fe5736512fa57fabf5abda2dcfbe68dd7e2b31c90d3a81fa48937a4",
+        "src/shared/tollkeeper-return-rules.json": "20328fdc2d1597b625cc7dc660d3efe166d6fafc1e336a2643eb8e65e032cc34",
+        "src/shared/soldier-sniper-withdrawal.ts": "c68305e62b07108243779aa356feaac278c0f2482acd03667cdbe538f32ced1b",
+        "src/shared/small-wakes-body-bounds.json": "373e35342b58f266b71971ec672b40b16fc14d2529e1727728586fd7320ea7cd",
+        "src/shared/widow-gates-rules.json": "ef25dc85fa4941892f8cccba0d6ecd8006108022c1c461733b999aa177de9111",
+        "src/shared/courier-route-rules.json": "ff55b7f254104119fbc0fe88c2aceb5acf83ba0ef7ccb93ce3e6d79889775334",
+        "src/shared/marshal-chains-rules.json": "12ba46be11774968271bb4e948a31bf63377b5f89d62bcec948546fc403bb74c",
+        "src/shared/lamplight-watch.ts": "dba457d80b0c2b8d98317a9f2f926f1a090f9c17a5b98864347fed82fbc82ea6",
+        "src/shared/station-signals.ts": "d00dec1449cd0454103ab0464d0e419bad18c070d21d62a0659586196fa77632",
+        "src/shared/ring-contact.ts": "5d9094ef5a837f180ae3d72b654273be041ecf99b0c80ebaaa2302b3826c90c6",
+        "src/shared/bell-carillon.ts": "52a04d704112353d29be2e468457ffccb5a424b33a02fb183e3e2127ad630419",
+        "src/shared/sluice-pressure.ts": "951c06f6acd2a12e749bf990b8a0e657d534490dabc6e71f76d1fa976fb19e66",
+        "src/shared/stitchwork.ts": "02e4d4c6d2c40d896106060e2ab3e67b3f42c005a84ecbe9f745687c5f0c2d06",
+        "src/shared/baker-oven.ts": "b6d7f74be3ee2e6fee38707f825a5e800f6a34b7b11ade1e909521fc92bd340f",
+        "src/shared/mold-mixing.ts": "aa4b68642882d69df4fc8c46f88806ef41916593920c5166819d0cd7d2c03f3c",
+        "src/shared/matron-ward.ts": "825b503869288716c458d08c56140eae4a272f1d81de5034b1fbf0d354ca1821",
+        "src/shared/glass-surgery.ts": "01693c32eecb876b2f8936eb5702a1bda9d7a9fc31b14196f6cfdd361f175f13",
+        "src/shared/stitchwork-rules.json": "36b023d9671d13af56bd585f345cf5bbdaf65915c52316ecf6953bdc1a68cc31",
+        "src/shared/matron-ward-rules.json": "e2a04474d7d7093dc2b2d85aa6cbc3a902352618f8c160e9aa3793e635e51081",
+        "src/shared/mold-still.ts": "23b30a337449fdce5fa111407816ef54f9829d9b621b56afbe29b510700cee23",
+        "src/shared/mold-mixing-rules.json": "2df874f2d863b024f9e007d6faaea16eda77b73514b114e2c671a5d19bac6304",
+        "src/shared/bell-carillon-rules.json": "d07495332bf1e982b5c9fccd7a966c4d2bdc7fcfe0abca6635fa9c4988088b07",
+        "src/shared/bell-return-chain.ts": "c61d855c1097fbc1211071cdc397ca055d3f72357e37e6e519330069eeee4d6d",
+        "src/shared/mold-still-rules.json": "5e76e6a5feaea4c860450abcfc4312341e434066410e55ede559134c89fdb6d1",
+        "src/shared/bell-return-chain-rules.json": "12f7be524cccfa1b943e6f8c66397c779cbb58e7e1d8d447ceb0f425ca43c046"
+      }
+    }
+  },
+  "rows": [
+    {
+      "arena": "gatehouse",
+      "difficulty": "baby",
+      "seed": 41,
+      "policy": "banked",
+      "outcome": "victory",
+      "clears": 5,
+      "ticks": 1850,
+      "damageTaken": 0,
+      "damageDealt": 20796.61987259624,
+      "bought": [
+        {
+          "id": "tank-protection-1",
+          "earned": 3,
+          "clears": 0
+        },
+        {
+          "id": "tank-bulwark-carry-1",
+          "earned": 3,
+          "clears": 0
+        },
+        {
+          "id": "tank-bulwark-pivot-1",
+          "earned": 9,
+          "clears": 1
+        }
+      ],
+      "casts": [
+        {
+          "encounter": 4,
+          "at": 1503,
+          "until": 1653,
+          "id": 626,
+          "qAt": 1971
+        }
+      ],
+      "lifts": [
+        {
+          "encounter": 4,
+          "id": 626,
+          "tick": 1516,
+          "at": {
+            "x": 834.4117093751822,
+            "y": 466.4547458326027
+          }
+        }
+      ],
+      "setdowns": [
+        {
+          "encounter": 4,
+          "id": 626,
+          "tick": 1534,
+          "fromCast": 31,
+          "compact": false,
+          "health": 157.5,
+          "until": 1653,
+          "point": {
+            "x": 834.4117093751822,
+            "y": 466.4547458326027
+          }
+        }
+      ],
+      "events": [
+        {
+          "encounter": 4,
+          "id": 626,
+          "tick": 1535,
+          "event": "primary after setdown",
+          "paid": 1
+        }
+      ],
+      "attempts": 1,
+      "inspected": 6
+    },
+    {
+      "arena": "gatehouse",
+      "difficulty": "baby",
+      "seed": 41,
+      "policy": "owned",
+      "outcome": "victory",
+      "clears": 5,
+      "ticks": 1850,
+      "damageTaken": 0,
+      "damageDealt": 20796.61987259624,
+      "bought": [
+        {
+          "id": "tank-protection-1",
+          "earned": 3,
+          "clears": 0
+        },
+        {
+          "id": "tank-bulwark-carry-1",
+          "earned": 3,
+          "clears": 0
+        },
+        {
+          "id": "tank-bulwark-pivot-1",
+          "earned": 9,
+          "clears": 1
+        },
+        {
+          "id": "tank-bulwark-folded-setdown-1",
+          "earned": 21,
+          "clears": 3
+        }
+      ],
+      "casts": [
+        {
+          "encounter": 4,
+          "at": 1503,
+          "until": 1653,
+          "id": 626,
+          "qAt": 1971
+        }
+      ],
+      "lifts": [
+        {
+          "encounter": 4,
+          "id": 626,
+          "tick": 1516,
+          "at": {
+            "x": 834.4117093751822,
+            "y": 466.4547458326027
+          }
+        }
+      ],
+      "setdowns": [
+        {
+          "encounter": 4,
+          "id": 626,
+          "tick": 1534,
+          "fromCast": 31,
+          "compact": false,
+          "health": 157.5,
+          "until": 1653,
+          "point": {
+            "x": 834.4117093751822,
+            "y": 466.4547458326027
+          }
+        }
+      ],
+      "events": [
+        {
+          "encounter": 4,
+          "id": 626,
+          "tick": 1535,
+          "event": "primary after setdown",
+          "paid": 1
+        }
+      ],
+      "attempts": 1,
+      "inspected": 6
+    },
+    {
+      "arena": "gatehouse",
+      "difficulty": "baby",
+      "seed": 41,
+      "policy": "active",
+      "outcome": "victory",
+      "clears": 5,
+      "ticks": 1841,
+      "damageTaken": 0,
+      "damageDealt": 20796.61987259624,
+      "bought": [
+        {
+          "id": "tank-protection-1",
+          "earned": 3,
+          "clears": 0
+        },
+        {
+          "id": "tank-bulwark-carry-1",
+          "earned": 3,
+          "clears": 0
+        },
+        {
+          "id": "tank-bulwark-pivot-1",
+          "earned": 9,
+          "clears": 1
+        },
+        {
+          "id": "tank-bulwark-folded-setdown-1",
+          "earned": 21,
+          "clears": 3
+        }
+      ],
+      "casts": [
+        {
+          "encounter": 4,
+          "at": 1503,
+          "until": 1653,
+          "id": 626,
+          "qAt": 1971
+        }
+      ],
+      "lifts": [
+        {
+          "encounter": 4,
+          "id": 626,
+          "tick": 1516,
+          "at": {
+            "x": 834.4117093751822,
+            "y": 466.4547458326027
+          }
+        }
+      ],
+      "setdowns": [
+        {
+          "encounter": 4,
+          "id": 626,
+          "tick": 1526,
+          "fromCast": 23,
+          "compact": true,
+          "health": 157.5,
+          "until": 1653,
+          "point": {
+            "x": 877.0377866469192,
+            "y": 455.5452299669054
+          }
+        }
+      ],
+      "events": [
+        {
+          "encounter": 4,
+          "id": 626,
+          "tick": 1527,
+          "event": "primary after setdown",
+          "paid": 1
+        }
+      ],
+      "attempts": 1,
+      "inspected": 6
+    },
+    {
+      "arena": "triage-yard",
+      "difficulty": "normal",
+      "seed": 73,
+      "policy": "banked",
+      "outcome": "victory",
+      "clears": 5,
+      "ticks": 7974,
+      "damageTaken": 240,
+      "damageDealt": 38245.01896966693,
+      "bought": [
+        {
+          "id": "tank-protection-1",
+          "earned": 3,
+          "clears": 0
+        },
+        {
+          "id": "tank-bulwark-carry-1",
+          "earned": 3,
+          "clears": 0
+        },
+        {
+          "id": "tank-bulwark-pivot-1",
+          "earned": 9,
+          "clears": 1
+        }
+      ],
+      "casts": [
+        {
+          "encounter": 3,
+          "at": 3776,
+          "until": 3926,
+          "id": 1406,
+          "qAt": 4244
+        },
+        {
+          "encounter": 3,
+          "at": 4250,
+          "until": 4400,
+          "id": 1660,
+          "qAt": 4718
+        },
+        {
+          "encounter": 3,
+          "at": 4772,
+          "until": 4922,
+          "id": 1925,
+          "qAt": 5240
+        },
+        {
+          "encounter": 4,
+          "at": 5308,
+          "until": 5458,
+          "id": 2235,
+          "qAt": 5776
+        },
+        {
+          "encounter": 4,
+          "at": 5782,
+          "until": 5932,
+          "id": 2558,
+          "qAt": 6250
+        },
+        {
+          "encounter": 4,
+          "at": 6856,
+          "until": 7006,
+          "id": 3281,
+          "qAt": 7324
+        },
+        {
+          "encounter": 4,
+          "at": 7390,
+          "until": 7540,
+          "id": 3721,
+          "qAt": 7858
+        },
+        {
+          "encounter": 4,
+          "at": 7870,
+          "until": 8020,
+          "id": 4048,
+          "qAt": 8338
+        }
+      ],
+      "lifts": [
+        {
+          "encounter": 3,
+          "id": 1406,
+          "tick": 3791,
+          "at": {
+            "x": 1205.4105210618309,
+            "y": 496.3032229367757
+          }
+        },
+        {
+          "encounter": 3,
+          "id": 1660,
+          "tick": 4265,
+          "at": {
+            "x": 249.4278313839361,
+            "y": 265.567704268833
+          }
+        },
+        {
+          "encounter": 3,
+          "id": 1925,
+          "tick": 4787,
+          "at": {
+            "x": 647.6048495667053,
+            "y": 204.35178315284196
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 2235,
+          "tick": 5321,
+          "at": {
+            "x": 944.8860318465087,
+            "y": 684.1171043007324
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 2558,
+          "tick": 5795,
+          "at": {
+            "x": 562.5382628371957,
+            "y": 267.1546628502179
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 3281,
+          "tick": 6869,
+          "at": {
+            "x": 266.89902246511207,
+            "y": 204.79133556070815
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 3721,
+          "tick": 7403,
+          "at": {
+            "x": 535.5250330275425,
+            "y": 244.4933200794031
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 4048,
+          "tick": 7883,
+          "at": {
+            "x": 266.93361405572335,
+            "y": 203.34339059976355
+          }
+        }
+      ],
+      "setdowns": [
+        {
+          "encounter": 3,
+          "id": 1406,
+          "tick": 3805,
+          "fromCast": 29,
+          "compact": false,
+          "health": 157.5,
+          "until": 3926,
+          "point": {
+            "x": 1205.4105210618309,
+            "y": 496.3032229367757
+          }
+        },
+        {
+          "encounter": 3,
+          "id": 1660,
+          "tick": 4285,
+          "fromCast": 35,
+          "compact": false,
+          "health": 157.5,
+          "until": 4400,
+          "point": {
+            "x": 249.4278313839361,
+            "y": 265.567704268833
+          }
+        },
+        {
+          "encounter": 3,
+          "id": 1925,
+          "tick": 4833,
+          "fromCast": 61,
+          "compact": false,
+          "health": 98.75,
+          "until": 4922,
+          "point": {
+            "x": 647.6048495667053,
+            "y": 204.35178315284196
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 2235,
+          "tick": 5359,
+          "fromCast": 51,
+          "compact": false,
+          "health": 157.5,
+          "until": 5458,
+          "point": {
+            "x": 944.8860318465087,
+            "y": 684.1171043007324
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 2558,
+          "tick": 5813,
+          "fromCast": 31,
+          "compact": false,
+          "health": 157.5,
+          "until": 5932,
+          "point": {
+            "x": 562.5382628371957,
+            "y": 267.1546628502179
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 3281,
+          "tick": 6897,
+          "fromCast": 41,
+          "compact": false,
+          "health": 157.5,
+          "until": 7006,
+          "point": {
+            "x": 266.89902246511207,
+            "y": 204.79133556070815
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 3721,
+          "tick": 7415,
+          "fromCast": 25,
+          "compact": false,
+          "health": 157.5,
+          "until": 7540,
+          "point": {
+            "x": 535.5250330275425,
+            "y": 244.4933200794031
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 4048,
+          "tick": 7911,
+          "fromCast": 41,
+          "compact": false,
+          "health": 157.5,
+          "until": 8020,
+          "point": {
+            "x": 266.93361405572335,
+            "y": 203.34339059976355
+          }
+        }
+      ],
+      "events": [
+        {
+          "encounter": 3,
+          "id": 1406,
+          "tick": 3806,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 3,
+          "id": 1660,
+          "tick": 4286,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 3,
+          "id": 1925,
+          "tick": 4834,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 4,
+          "id": 2235,
+          "tick": 5360,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 4,
+          "id": 2558,
+          "tick": 5814,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 4,
+          "id": 3281,
+          "tick": 6898,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 4,
+          "id": 3721,
+          "tick": 7416,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 4,
+          "id": 4048,
+          "tick": 7912,
+          "event": "primary after setdown",
+          "paid": 1
+        }
+      ],
+      "attempts": 8,
+      "inspected": 74
+    },
+    {
+      "arena": "triage-yard",
+      "difficulty": "normal",
+      "seed": 73,
+      "policy": "owned",
+      "outcome": "victory",
+      "clears": 5,
+      "ticks": 7974,
+      "damageTaken": 240,
+      "damageDealt": 38245.01896966693,
+      "bought": [
+        {
+          "id": "tank-protection-1",
+          "earned": 3,
+          "clears": 0
+        },
+        {
+          "id": "tank-bulwark-carry-1",
+          "earned": 3,
+          "clears": 0
+        },
+        {
+          "id": "tank-bulwark-pivot-1",
+          "earned": 9,
+          "clears": 1
+        },
+        {
+          "id": "tank-bulwark-folded-setdown-1",
+          "earned": 21,
+          "clears": 3
+        }
+      ],
+      "casts": [
+        {
+          "encounter": 3,
+          "at": 3776,
+          "until": 3926,
+          "id": 1406,
+          "qAt": 4244
+        },
+        {
+          "encounter": 3,
+          "at": 4250,
+          "until": 4400,
+          "id": 1660,
+          "qAt": 4718
+        },
+        {
+          "encounter": 3,
+          "at": 4772,
+          "until": 4922,
+          "id": 1925,
+          "qAt": 5240
+        },
+        {
+          "encounter": 4,
+          "at": 5308,
+          "until": 5458,
+          "id": 2235,
+          "qAt": 5776
+        },
+        {
+          "encounter": 4,
+          "at": 5782,
+          "until": 5932,
+          "id": 2558,
+          "qAt": 6250
+        },
+        {
+          "encounter": 4,
+          "at": 6856,
+          "until": 7006,
+          "id": 3281,
+          "qAt": 7324
+        },
+        {
+          "encounter": 4,
+          "at": 7390,
+          "until": 7540,
+          "id": 3721,
+          "qAt": 7858
+        },
+        {
+          "encounter": 4,
+          "at": 7870,
+          "until": 8020,
+          "id": 4048,
+          "qAt": 8338
+        }
+      ],
+      "lifts": [
+        {
+          "encounter": 3,
+          "id": 1406,
+          "tick": 3791,
+          "at": {
+            "x": 1205.4105210618309,
+            "y": 496.3032229367757
+          }
+        },
+        {
+          "encounter": 3,
+          "id": 1660,
+          "tick": 4265,
+          "at": {
+            "x": 249.4278313839361,
+            "y": 265.567704268833
+          }
+        },
+        {
+          "encounter": 3,
+          "id": 1925,
+          "tick": 4787,
+          "at": {
+            "x": 647.6048495667053,
+            "y": 204.35178315284196
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 2235,
+          "tick": 5321,
+          "at": {
+            "x": 944.8860318465087,
+            "y": 684.1171043007324
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 2558,
+          "tick": 5795,
+          "at": {
+            "x": 562.5382628371957,
+            "y": 267.1546628502179
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 3281,
+          "tick": 6869,
+          "at": {
+            "x": 266.89902246511207,
+            "y": 204.79133556070815
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 3721,
+          "tick": 7403,
+          "at": {
+            "x": 535.5250330275425,
+            "y": 244.4933200794031
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 4048,
+          "tick": 7883,
+          "at": {
+            "x": 266.93361405572335,
+            "y": 203.34339059976355
+          }
+        }
+      ],
+      "setdowns": [
+        {
+          "encounter": 3,
+          "id": 1406,
+          "tick": 3805,
+          "fromCast": 29,
+          "compact": false,
+          "health": 157.5,
+          "until": 3926,
+          "point": {
+            "x": 1205.4105210618309,
+            "y": 496.3032229367757
+          }
+        },
+        {
+          "encounter": 3,
+          "id": 1660,
+          "tick": 4285,
+          "fromCast": 35,
+          "compact": false,
+          "health": 157.5,
+          "until": 4400,
+          "point": {
+            "x": 249.4278313839361,
+            "y": 265.567704268833
+          }
+        },
+        {
+          "encounter": 3,
+          "id": 1925,
+          "tick": 4833,
+          "fromCast": 61,
+          "compact": false,
+          "health": 98.75,
+          "until": 4922,
+          "point": {
+            "x": 647.6048495667053,
+            "y": 204.35178315284196
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 2235,
+          "tick": 5359,
+          "fromCast": 51,
+          "compact": false,
+          "health": 157.5,
+          "until": 5458,
+          "point": {
+            "x": 944.8860318465087,
+            "y": 684.1171043007324
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 2558,
+          "tick": 5813,
+          "fromCast": 31,
+          "compact": false,
+          "health": 157.5,
+          "until": 5932,
+          "point": {
+            "x": 562.5382628371957,
+            "y": 267.1546628502179
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 3281,
+          "tick": 6897,
+          "fromCast": 41,
+          "compact": false,
+          "health": 157.5,
+          "until": 7006,
+          "point": {
+            "x": 266.89902246511207,
+            "y": 204.79133556070815
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 3721,
+          "tick": 7415,
+          "fromCast": 25,
+          "compact": false,
+          "health": 157.5,
+          "until": 7540,
+          "point": {
+            "x": 535.5250330275425,
+            "y": 244.4933200794031
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 4048,
+          "tick": 7911,
+          "fromCast": 41,
+          "compact": false,
+          "health": 157.5,
+          "until": 8020,
+          "point": {
+            "x": 266.93361405572335,
+            "y": 203.34339059976355
+          }
+        }
+      ],
+      "events": [
+        {
+          "encounter": 3,
+          "id": 1406,
+          "tick": 3806,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 3,
+          "id": 1660,
+          "tick": 4286,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 3,
+          "id": 1925,
+          "tick": 4834,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 4,
+          "id": 2235,
+          "tick": 5360,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 4,
+          "id": 2558,
+          "tick": 5814,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 4,
+          "id": 3281,
+          "tick": 6898,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 4,
+          "id": 3721,
+          "tick": 7416,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 4,
+          "id": 4048,
+          "tick": 7912,
+          "event": "primary after setdown",
+          "paid": 1
+        }
+      ],
+      "attempts": 8,
+      "inspected": 74
+    },
+    {
+      "arena": "triage-yard",
+      "difficulty": "normal",
+      "seed": 73,
+      "policy": "active",
+      "outcome": "victory",
+      "clears": 5,
+      "ticks": 7327,
+      "damageTaken": 85,
+      "damageDealt": 38230.04296966827,
+      "bought": [
+        {
+          "id": "tank-protection-1",
+          "earned": 3,
+          "clears": 0
+        },
+        {
+          "id": "tank-bulwark-carry-1",
+          "earned": 3,
+          "clears": 0
+        },
+        {
+          "id": "tank-bulwark-pivot-1",
+          "earned": 9,
+          "clears": 1
+        },
+        {
+          "id": "tank-bulwark-folded-setdown-1",
+          "earned": 21,
+          "clears": 3
+        }
+      ],
+      "casts": [
+        {
+          "encounter": 3,
+          "at": 3776,
+          "until": 3926,
+          "id": 1406,
+          "qAt": 4244
+        },
+        {
+          "encounter": 3,
+          "at": 4406,
+          "until": 4556,
+          "id": 1746,
+          "qAt": 4874
+        },
+        {
+          "encounter": 3,
+          "at": 5048,
+          "until": 5198,
+          "id": 2110,
+          "qAt": 5516
+        },
+        {
+          "encounter": 4,
+          "at": 5586,
+          "until": 5736,
+          "id": 2448,
+          "qAt": 6054
+        },
+        {
+          "encounter": 4,
+          "at": 6060,
+          "until": 6210,
+          "id": 2740,
+          "qAt": 6528
+        },
+        {
+          "encounter": 4,
+          "at": 6600,
+          "until": 6750,
+          "id": 3148,
+          "qAt": 7068
+        }
+      ],
+      "lifts": [
+        {
+          "encounter": 3,
+          "id": 1406,
+          "tick": 3791,
+          "at": {
+            "x": 1205.4105210618309,
+            "y": 496.3032229367757
+          }
+        },
+        {
+          "encounter": 3,
+          "id": 1746,
+          "tick": 4421,
+          "at": {
+            "x": 563.4591773220881,
+            "y": 318.7406192828121
+          }
+        },
+        {
+          "encounter": 3,
+          "id": 2110,
+          "tick": 5063,
+          "at": {
+            "x": 277.6321301475252,
+            "y": 316.92453789613694
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 2448,
+          "tick": 5599,
+          "at": {
+            "x": 948.4905974365249,
+            "y": 458.9810334384083
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 2740,
+          "tick": 6073,
+          "at": {
+            "x": 677.9325159138427,
+            "y": 243.83439632463072
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 3148,
+          "tick": 6613,
+          "at": {
+            "x": 220.1560358749584,
+            "y": 256.29165389864124
+          }
+        }
+      ],
+      "setdowns": [
+        {
+          "encounter": 3,
+          "id": 1406,
+          "tick": 3799,
+          "fromCast": 23,
+          "compact": true,
+          "health": 157.5,
+          "until": 3926,
+          "point": {
+            "x": 1181.73190923194,
+            "y": 511.24722982279377
+          }
+        },
+        {
+          "encounter": 3,
+          "id": 1746,
+          "tick": 4445,
+          "fromCast": 39,
+          "compact": true,
+          "health": 157.5,
+          "until": 4556,
+          "point": {
+            "x": 468.9421304693075,
+            "y": 370.9950722435816
+          }
+        },
+        {
+          "encounter": 3,
+          "id": 2110,
+          "tick": 5084,
+          "fromCast": 36,
+          "compact": true,
+          "health": 157.5,
+          "until": 5198,
+          "point": {
+            "x": 195.22505924113216,
+            "y": 276.0213025151954
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 2448,
+          "tick": 5617,
+          "fromCast": 31,
+          "compact": true,
+          "health": 157.5,
+          "until": 5736,
+          "point": {
+            "x": 1015.0004911069499,
+            "y": 522.5454420642168
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 2740,
+          "tick": 6085,
+          "fromCast": 25,
+          "compact": true,
+          "health": 157.5,
+          "until": 6210,
+          "point": {
+            "x": 707.4026381234963,
+            "y": 191.57052833776933
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 3148,
+          "tick": 6628,
+          "fromCast": 28,
+          "compact": true,
+          "health": 157.5,
+          "until": 6750,
+          "point": {
+            "x": 167.79129909559904,
+            "y": 311.3728153064076
+          }
+        }
+      ],
+      "events": [
+        {
+          "encounter": 3,
+          "id": 1406,
+          "tick": 3800,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 3,
+          "id": 1746,
+          "tick": 4446,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 3,
+          "id": 2110,
+          "tick": 5085,
+          "event": "primary after setdown",
+          "paid": 0
+        },
+        {
+          "encounter": 4,
+          "id": 2448,
+          "tick": 5618,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 4,
+          "id": 2740,
+          "tick": 6086,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 4,
+          "id": 3148,
+          "tick": 6629,
+          "event": "primary after setdown",
+          "paid": 1
+        }
+      ],
+      "attempts": 6,
+      "inspected": 60
+    },
+    {
+      "arena": "sunken-chapel",
+      "difficulty": "normal",
+      "seed": 73,
+      "policy": "banked",
+      "outcome": "victory",
+      "clears": 5,
+      "ticks": 7865,
+      "damageTaken": 147,
+      "damageDealt": 43872.54065729303,
+      "bought": [
+        {
+          "id": "tank-protection-1",
+          "earned": 3,
+          "clears": 0
+        },
+        {
+          "id": "tank-bulwark-carry-1",
+          "earned": 3,
+          "clears": 0
+        },
+        {
+          "id": "tank-bulwark-pivot-1",
+          "earned": 9,
+          "clears": 1
+        }
+      ],
+      "casts": [
+        {
+          "encounter": 3,
+          "at": 4328,
+          "until": 4478,
+          "id": 1752,
+          "qAt": 4796
+        },
+        {
+          "encounter": 3,
+          "at": 5030,
+          "until": 5180,
+          "id": 2130,
+          "qAt": 5498
+        },
+        {
+          "encounter": 3,
+          "at": 5510,
+          "until": 5660,
+          "id": 2395,
+          "qAt": 5978
+        },
+        {
+          "encounter": 4,
+          "at": 6275,
+          "until": 6425,
+          "id": 2926,
+          "qAt": 6743
+        },
+        {
+          "encounter": 4,
+          "at": 6797,
+          "until": 6947,
+          "id": 3276,
+          "qAt": 7265
+        },
+        {
+          "encounter": 4,
+          "at": 7271,
+          "until": 7421,
+          "id": 3600,
+          "qAt": 7739
+        },
+        {
+          "encounter": 4,
+          "at": 7745,
+          "until": 7895,
+          "id": 3922,
+          "qAt": 8213
+        }
+      ],
+      "lifts": [
+        {
+          "encounter": 3,
+          "id": 1752,
+          "tick": 4339,
+          "at": {
+            "x": 1280.1591518955963,
+            "y": 793.1716540685688
+          }
+        },
+        {
+          "encounter": 3,
+          "id": 2130,
+          "tick": 5041,
+          "at": {
+            "x": 1363.6572882911603,
+            "y": 670.8380162734732
+          }
+        },
+        {
+          "encounter": 3,
+          "id": 2395,
+          "tick": 5521,
+          "at": {
+            "x": 991.386780303428,
+            "y": 707.2942904619711
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 2926,
+          "tick": 6286,
+          "at": {
+            "x": 1332.4782912637747,
+            "y": 589.4265281932506
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 3276,
+          "tick": 6808,
+          "at": {
+            "x": 1029.169436739812,
+            "y": 486.6283125207823
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 3600,
+          "tick": 7282,
+          "at": {
+            "x": 993.2777869805742,
+            "y": 624.7550042666986
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 3922,
+          "tick": 7756,
+          "at": {
+            "x": 1318.1767294169326,
+            "y": 565.1112231838729
+          }
+        }
+      ],
+      "setdowns": [
+        {
+          "encounter": 3,
+          "id": 1752,
+          "tick": 4359,
+          "fromCast": 31,
+          "compact": false,
+          "health": 157.5,
+          "until": 4478,
+          "point": {
+            "x": 1280.1591518955963,
+            "y": 793.1716540685688
+          }
+        },
+        {
+          "encounter": 3,
+          "id": 2130,
+          "tick": 5051,
+          "fromCast": 21,
+          "compact": false,
+          "health": 157.5,
+          "until": 5180,
+          "point": {
+            "x": 1363.6572882911603,
+            "y": 670.8380162734732
+          }
+        },
+        {
+          "encounter": 3,
+          "id": 2395,
+          "tick": 5553,
+          "fromCast": 43,
+          "compact": false,
+          "health": 122.25,
+          "until": 5660,
+          "point": {
+            "x": 991.386780303428,
+            "y": 707.2942904619711
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 2926,
+          "tick": 6306,
+          "fromCast": 31,
+          "compact": false,
+          "health": 35,
+          "until": 6425,
+          "point": {
+            "x": 1332.4782912637747,
+            "y": 589.4265281932506
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 3276,
+          "tick": 6828,
+          "fromCast": 31,
+          "compact": false,
+          "health": 157.5,
+          "until": 6947,
+          "point": {
+            "x": 1029.169436739812,
+            "y": 486.6283125207823
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 3600,
+          "tick": 7310,
+          "fromCast": 39,
+          "compact": false,
+          "health": 157.5,
+          "until": 7421,
+          "point": {
+            "x": 993.2777869805742,
+            "y": 624.7550042666986
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 3922,
+          "tick": 7772,
+          "fromCast": 27,
+          "compact": false,
+          "health": 157.5,
+          "until": 7895,
+          "point": {
+            "x": 1318.1767294169326,
+            "y": 565.1112231838729
+          }
+        }
+      ],
+      "events": [
+        {
+          "encounter": 3,
+          "id": 1752,
+          "tick": 4360,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 3,
+          "id": 2130,
+          "tick": 5052,
+          "event": "primary after setdown",
+          "paid": 0
+        },
+        {
+          "encounter": 3,
+          "id": 2395,
+          "tick": 5554,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 4,
+          "id": 2926,
+          "tick": 6307,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 4,
+          "id": 3276,
+          "tick": 6829,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 4,
+          "id": 3600,
+          "tick": 7311,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 4,
+          "id": 3922,
+          "tick": 7773,
+          "event": "primary after setdown",
+          "paid": 0
+        }
+      ],
+      "attempts": 7,
+      "inspected": 49
+    },
+    {
+      "arena": "sunken-chapel",
+      "difficulty": "normal",
+      "seed": 73,
+      "policy": "owned",
+      "outcome": "victory",
+      "clears": 5,
+      "ticks": 7865,
+      "damageTaken": 147,
+      "damageDealt": 43872.54065729303,
+      "bought": [
+        {
+          "id": "tank-protection-1",
+          "earned": 3,
+          "clears": 0
+        },
+        {
+          "id": "tank-bulwark-carry-1",
+          "earned": 3,
+          "clears": 0
+        },
+        {
+          "id": "tank-bulwark-pivot-1",
+          "earned": 9,
+          "clears": 1
+        },
+        {
+          "id": "tank-bulwark-folded-setdown-1",
+          "earned": 21,
+          "clears": 3
+        }
+      ],
+      "casts": [
+        {
+          "encounter": 3,
+          "at": 4328,
+          "until": 4478,
+          "id": 1752,
+          "qAt": 4796
+        },
+        {
+          "encounter": 3,
+          "at": 5030,
+          "until": 5180,
+          "id": 2130,
+          "qAt": 5498
+        },
+        {
+          "encounter": 3,
+          "at": 5510,
+          "until": 5660,
+          "id": 2395,
+          "qAt": 5978
+        },
+        {
+          "encounter": 4,
+          "at": 6275,
+          "until": 6425,
+          "id": 2926,
+          "qAt": 6743
+        },
+        {
+          "encounter": 4,
+          "at": 6797,
+          "until": 6947,
+          "id": 3276,
+          "qAt": 7265
+        },
+        {
+          "encounter": 4,
+          "at": 7271,
+          "until": 7421,
+          "id": 3600,
+          "qAt": 7739
+        },
+        {
+          "encounter": 4,
+          "at": 7745,
+          "until": 7895,
+          "id": 3922,
+          "qAt": 8213
+        }
+      ],
+      "lifts": [
+        {
+          "encounter": 3,
+          "id": 1752,
+          "tick": 4339,
+          "at": {
+            "x": 1280.1591518955963,
+            "y": 793.1716540685688
+          }
+        },
+        {
+          "encounter": 3,
+          "id": 2130,
+          "tick": 5041,
+          "at": {
+            "x": 1363.6572882911603,
+            "y": 670.8380162734732
+          }
+        },
+        {
+          "encounter": 3,
+          "id": 2395,
+          "tick": 5521,
+          "at": {
+            "x": 991.386780303428,
+            "y": 707.2942904619711
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 2926,
+          "tick": 6286,
+          "at": {
+            "x": 1332.4782912637747,
+            "y": 589.4265281932506
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 3276,
+          "tick": 6808,
+          "at": {
+            "x": 1029.169436739812,
+            "y": 486.6283125207823
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 3600,
+          "tick": 7282,
+          "at": {
+            "x": 993.2777869805742,
+            "y": 624.7550042666986
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 3922,
+          "tick": 7756,
+          "at": {
+            "x": 1318.1767294169326,
+            "y": 565.1112231838729
+          }
+        }
+      ],
+      "setdowns": [
+        {
+          "encounter": 3,
+          "id": 1752,
+          "tick": 4359,
+          "fromCast": 31,
+          "compact": false,
+          "health": 157.5,
+          "until": 4478,
+          "point": {
+            "x": 1280.1591518955963,
+            "y": 793.1716540685688
+          }
+        },
+        {
+          "encounter": 3,
+          "id": 2130,
+          "tick": 5051,
+          "fromCast": 21,
+          "compact": false,
+          "health": 157.5,
+          "until": 5180,
+          "point": {
+            "x": 1363.6572882911603,
+            "y": 670.8380162734732
+          }
+        },
+        {
+          "encounter": 3,
+          "id": 2395,
+          "tick": 5553,
+          "fromCast": 43,
+          "compact": false,
+          "health": 122.25,
+          "until": 5660,
+          "point": {
+            "x": 991.386780303428,
+            "y": 707.2942904619711
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 2926,
+          "tick": 6306,
+          "fromCast": 31,
+          "compact": false,
+          "health": 35,
+          "until": 6425,
+          "point": {
+            "x": 1332.4782912637747,
+            "y": 589.4265281932506
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 3276,
+          "tick": 6828,
+          "fromCast": 31,
+          "compact": false,
+          "health": 157.5,
+          "until": 6947,
+          "point": {
+            "x": 1029.169436739812,
+            "y": 486.6283125207823
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 3600,
+          "tick": 7310,
+          "fromCast": 39,
+          "compact": false,
+          "health": 157.5,
+          "until": 7421,
+          "point": {
+            "x": 993.2777869805742,
+            "y": 624.7550042666986
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 3922,
+          "tick": 7772,
+          "fromCast": 27,
+          "compact": false,
+          "health": 157.5,
+          "until": 7895,
+          "point": {
+            "x": 1318.1767294169326,
+            "y": 565.1112231838729
+          }
+        }
+      ],
+      "events": [
+        {
+          "encounter": 3,
+          "id": 1752,
+          "tick": 4360,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 3,
+          "id": 2130,
+          "tick": 5052,
+          "event": "primary after setdown",
+          "paid": 0
+        },
+        {
+          "encounter": 3,
+          "id": 2395,
+          "tick": 5554,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 4,
+          "id": 2926,
+          "tick": 6307,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 4,
+          "id": 3276,
+          "tick": 6829,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 4,
+          "id": 3600,
+          "tick": 7311,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 4,
+          "id": 3922,
+          "tick": 7773,
+          "event": "primary after setdown",
+          "paid": 0
+        }
+      ],
+      "attempts": 7,
+      "inspected": 49
+    },
+    {
+      "arena": "sunken-chapel",
+      "difficulty": "normal",
+      "seed": 73,
+      "policy": "active",
+      "outcome": "victory",
+      "clears": 5,
+      "ticks": 8424,
+      "damageTaken": 160,
+      "damageDealt": 43723.9806572935,
+      "bought": [
+        {
+          "id": "tank-protection-1",
+          "earned": 3,
+          "clears": 0
+        },
+        {
+          "id": "tank-bulwark-carry-1",
+          "earned": 3,
+          "clears": 0
+        },
+        {
+          "id": "tank-bulwark-pivot-1",
+          "earned": 9,
+          "clears": 1
+        },
+        {
+          "id": "tank-bulwark-folded-setdown-1",
+          "earned": 21,
+          "clears": 3
+        }
+      ],
+      "casts": [
+        {
+          "encounter": 3,
+          "at": 4328,
+          "until": 4478,
+          "id": 1752,
+          "qAt": 4796
+        },
+        {
+          "encounter": 3,
+          "at": 4880,
+          "until": 5030,
+          "id": 2037,
+          "qAt": 5348
+        },
+        {
+          "encounter": 3,
+          "at": 5372,
+          "until": 5522,
+          "id": 2318,
+          "qAt": 5840
+        },
+        {
+          "encounter": 4,
+          "at": 5971,
+          "until": 6121,
+          "id": 2654,
+          "qAt": 6439
+        },
+        {
+          "encounter": 4,
+          "at": 6505,
+          "until": 6655,
+          "id": 3011,
+          "qAt": 6973
+        },
+        {
+          "encounter": 4,
+          "at": 7027,
+          "until": 7177,
+          "id": 3333,
+          "qAt": 7495
+        },
+        {
+          "encounter": 4,
+          "at": 7687,
+          "until": 7837,
+          "id": 3797,
+          "qAt": 8155
+        },
+        {
+          "encounter": 4,
+          "at": 8161,
+          "until": 8311,
+          "id": 4132,
+          "qAt": 8629
+        }
+      ],
+      "lifts": [
+        {
+          "encounter": 3,
+          "id": 1752,
+          "tick": 4339,
+          "at": {
+            "x": 1280.1591518955963,
+            "y": 793.1716540685688
+          }
+        },
+        {
+          "encounter": 3,
+          "id": 2037,
+          "tick": 4891,
+          "at": {
+            "x": 925.4035750096434,
+            "y": 453.3793695237351
+          }
+        },
+        {
+          "encounter": 3,
+          "id": 2318,
+          "tick": 5383,
+          "at": {
+            "x": 1340.843081233637,
+            "y": 404.69825410020053
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 2654,
+          "tick": 5982,
+          "at": {
+            "x": 597.5778254644715,
+            "y": 503.63933751271577
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 3011,
+          "tick": 6516,
+          "at": {
+            "x": 1023.4751624234159,
+            "y": 627.236326077162
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 3333,
+          "tick": 7038,
+          "at": {
+            "x": 1025.05414322115,
+            "y": 626.6297740481233
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 3797,
+          "tick": 7698,
+          "at": {
+            "x": 1345.8017283245676,
+            "y": 283.1791236499145
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 4132,
+          "tick": 8172,
+          "at": {
+            "x": 1299.3011358186577,
+            "y": 359.46035391081364
+          }
+        }
+      ],
+      "setdowns": [
+        {
+          "encounter": 3,
+          "id": 1752,
+          "tick": 4350,
+          "fromCast": 22,
+          "compact": true,
+          "health": 157.5,
+          "until": 4478,
+          "point": {
+            "x": 1337.3416114961067,
+            "y": 775.0011748774195
+          }
+        },
+        {
+          "encounter": 3,
+          "id": 2037,
+          "tick": 4902,
+          "fromCast": 22,
+          "compact": true,
+          "health": 157.5,
+          "until": 5030,
+          "point": {
+            "x": 900.5509202372878,
+            "y": 398.76851391089826
+          }
+        },
+        {
+          "encounter": 3,
+          "id": 2318,
+          "tick": 5398,
+          "fromCast": 26,
+          "compact": true,
+          "health": 51.75,
+          "until": 5522,
+          "point": {
+            "x": 1389.2917959394124,
+            "y": 482.90772950669054
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 2654,
+          "tick": 5999,
+          "fromCast": 28,
+          "compact": true,
+          "health": 157.5,
+          "until": 6121,
+          "point": {
+            "x": 537.7164857036914,
+            "y": 413.7470686457857
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 3011,
+          "tick": 6529,
+          "fromCast": 24,
+          "compact": true,
+          "health": 157.5,
+          "until": 6655,
+          "point": {
+            "x": 982.132885314357,
+            "y": 691.0079194666781
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 3333,
+          "tick": 7051,
+          "fromCast": 24,
+          "compact": true,
+          "health": 157.5,
+          "until": 7177,
+          "point": {
+            "x": 984.0391754117386,
+            "y": 690.6123686781705
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 3797,
+          "tick": 7704,
+          "fromCast": 17,
+          "compact": true,
+          "health": 140,
+          "until": 7837,
+          "point": {
+            "x": 1354.957793088046,
+            "y": 309.63978271288937
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 4132,
+          "tick": 8178,
+          "fromCast": 17,
+          "compact": true,
+          "health": 157.5,
+          "until": 8311,
+          "point": {
+            "x": 1320.5985873977102,
+            "y": 341.28293505559884
+          }
+        }
+      ],
+      "events": [
+        {
+          "encounter": 3,
+          "id": 1752,
+          "tick": 4351,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 3,
+          "id": 2037,
+          "tick": 4903,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 3,
+          "id": 2318,
+          "tick": 5399,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 4,
+          "id": 2654,
+          "tick": 6000,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 4,
+          "id": 3011,
+          "tick": 6530,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 4,
+          "id": 3333,
+          "tick": 7052,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 4,
+          "id": 3797,
+          "tick": 7705,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 4,
+          "id": 4132,
+          "tick": 8179,
+          "event": "primary after setdown",
+          "paid": 1
+        }
+      ],
+      "attempts": 8,
+      "inspected": 52
+    },
+    {
+      "arena": "crown-crypt",
+      "difficulty": "normal",
+      "seed": 73,
+      "policy": "banked",
+      "outcome": "victory",
+      "clears": 5,
+      "ticks": 7218,
+      "damageTaken": 209,
+      "damageDealt": 34706.03312099536,
+      "bought": [
+        {
+          "id": "tank-protection-1",
+          "earned": 3,
+          "clears": 0
+        },
+        {
+          "id": "tank-bulwark-carry-1",
+          "earned": 3,
+          "clears": 0
+        },
+        {
+          "id": "tank-bulwark-pivot-1",
+          "earned": 9,
+          "clears": 1
+        }
+      ],
+      "casts": [
+        {
+          "encounter": 3,
+          "at": 4258,
+          "until": 4408,
+          "id": 1672,
+          "qAt": 4726
+        },
+        {
+          "encounter": 3,
+          "at": 4756,
+          "until": 4906,
+          "id": 1961,
+          "qAt": 5224
+        },
+        {
+          "encounter": 4,
+          "at": 5267,
+          "until": 5417,
+          "id": 2296,
+          "qAt": 5735
+        },
+        {
+          "encounter": 4,
+          "at": 5951,
+          "until": 6101,
+          "id": 2751,
+          "qAt": 6419
+        },
+        {
+          "encounter": 4,
+          "at": 6425,
+          "until": 6575,
+          "id": 3059,
+          "qAt": 6893
+        },
+        {
+          "encounter": 4,
+          "at": 6899,
+          "until": 7049,
+          "id": 3373,
+          "qAt": 7367
+        }
+      ],
+      "lifts": [
+        {
+          "encounter": 3,
+          "id": 1672,
+          "tick": 4271,
+          "at": {
+            "x": 1314.7486994525034,
+            "y": 167.13345283074653
+          }
+        },
+        {
+          "encounter": 3,
+          "id": 1961,
+          "tick": 4769,
+          "at": {
+            "x": 1322.6038275113922,
+            "y": 347.2299137139213
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 2296,
+          "tick": 5280,
+          "at": {
+            "x": 1138.0454808939048,
+            "y": 467.80946292364587
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 2751,
+          "tick": 5964,
+          "at": {
+            "x": 1205.473046543494,
+            "y": 152.80923459096368
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 3059,
+          "tick": 6438,
+          "at": {
+            "x": 1068.1031047846832,
+            "y": 246.82631831973185
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 3373,
+          "tick": 6912,
+          "at": {
+            "x": 1326.0029123087488,
+            "y": 254.40568204736522
+          }
+        }
+      ],
+      "setdowns": [
+        {
+          "encounter": 3,
+          "id": 1672,
+          "tick": 4293,
+          "fromCast": 35,
+          "compact": false,
+          "health": 157.5,
+          "until": 4408,
+          "point": {
+            "x": 1314.7486994525034,
+            "y": 167.13345283074653
+          }
+        },
+        {
+          "encounter": 3,
+          "id": 1961,
+          "tick": 4803,
+          "fromCast": 47,
+          "compact": false,
+          "health": 157.5,
+          "until": 4906,
+          "point": {
+            "x": 1322.6038275113922,
+            "y": 347.2299137139213
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 2296,
+          "tick": 5314,
+          "fromCast": 47,
+          "compact": false,
+          "health": 94.5,
+          "until": 5417,
+          "point": {
+            "x": 1138.0454808939048,
+            "y": 467.80946292364587
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 2751,
+          "tick": 6002,
+          "fromCast": 51,
+          "compact": false,
+          "health": 157.5,
+          "until": 6101,
+          "point": {
+            "x": 1205.473046543494,
+            "y": 152.80923459096368
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 3059,
+          "tick": 6472,
+          "fromCast": 47,
+          "compact": false,
+          "health": 157.5,
+          "until": 6575,
+          "point": {
+            "x": 1068.1031047846832,
+            "y": 246.82631831973185
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 3373,
+          "tick": 6946,
+          "fromCast": 47,
+          "compact": false,
+          "health": 157.5,
+          "until": 7049,
+          "point": {
+            "x": 1326.0029123087488,
+            "y": 254.40568204736522
+          }
+        }
+      ],
+      "events": [
+        {
+          "encounter": 3,
+          "id": 1672,
+          "tick": 4294,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 3,
+          "id": 1961,
+          "tick": 4804,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 4,
+          "id": 2296,
+          "tick": 5315,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 4,
+          "id": 2751,
+          "tick": 6003,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 4,
+          "id": 3059,
+          "tick": 6473,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 4,
+          "id": 3373,
+          "tick": 6947,
+          "event": "primary after setdown",
+          "paid": 1
+        }
+      ],
+      "attempts": 6,
+      "inspected": 30
+    },
+    {
+      "arena": "crown-crypt",
+      "difficulty": "normal",
+      "seed": 73,
+      "policy": "owned",
+      "outcome": "victory",
+      "clears": 5,
+      "ticks": 7218,
+      "damageTaken": 209,
+      "damageDealt": 34706.03312099536,
+      "bought": [
+        {
+          "id": "tank-protection-1",
+          "earned": 3,
+          "clears": 0
+        },
+        {
+          "id": "tank-bulwark-carry-1",
+          "earned": 3,
+          "clears": 0
+        },
+        {
+          "id": "tank-bulwark-pivot-1",
+          "earned": 9,
+          "clears": 1
+        },
+        {
+          "id": "tank-bulwark-folded-setdown-1",
+          "earned": 21,
+          "clears": 3
+        }
+      ],
+      "casts": [
+        {
+          "encounter": 3,
+          "at": 4258,
+          "until": 4408,
+          "id": 1672,
+          "qAt": 4726
+        },
+        {
+          "encounter": 3,
+          "at": 4756,
+          "until": 4906,
+          "id": 1961,
+          "qAt": 5224
+        },
+        {
+          "encounter": 4,
+          "at": 5267,
+          "until": 5417,
+          "id": 2296,
+          "qAt": 5735
+        },
+        {
+          "encounter": 4,
+          "at": 5951,
+          "until": 6101,
+          "id": 2751,
+          "qAt": 6419
+        },
+        {
+          "encounter": 4,
+          "at": 6425,
+          "until": 6575,
+          "id": 3059,
+          "qAt": 6893
+        },
+        {
+          "encounter": 4,
+          "at": 6899,
+          "until": 7049,
+          "id": 3373,
+          "qAt": 7367
+        }
+      ],
+      "lifts": [
+        {
+          "encounter": 3,
+          "id": 1672,
+          "tick": 4271,
+          "at": {
+            "x": 1314.7486994525034,
+            "y": 167.13345283074653
+          }
+        },
+        {
+          "encounter": 3,
+          "id": 1961,
+          "tick": 4769,
+          "at": {
+            "x": 1322.6038275113922,
+            "y": 347.2299137139213
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 2296,
+          "tick": 5280,
+          "at": {
+            "x": 1138.0454808939048,
+            "y": 467.80946292364587
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 2751,
+          "tick": 5964,
+          "at": {
+            "x": 1205.473046543494,
+            "y": 152.80923459096368
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 3059,
+          "tick": 6438,
+          "at": {
+            "x": 1068.1031047846832,
+            "y": 246.82631831973185
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 3373,
+          "tick": 6912,
+          "at": {
+            "x": 1326.0029123087488,
+            "y": 254.40568204736522
+          }
+        }
+      ],
+      "setdowns": [
+        {
+          "encounter": 3,
+          "id": 1672,
+          "tick": 4293,
+          "fromCast": 35,
+          "compact": false,
+          "health": 157.5,
+          "until": 4408,
+          "point": {
+            "x": 1314.7486994525034,
+            "y": 167.13345283074653
+          }
+        },
+        {
+          "encounter": 3,
+          "id": 1961,
+          "tick": 4803,
+          "fromCast": 47,
+          "compact": false,
+          "health": 157.5,
+          "until": 4906,
+          "point": {
+            "x": 1322.6038275113922,
+            "y": 347.2299137139213
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 2296,
+          "tick": 5314,
+          "fromCast": 47,
+          "compact": false,
+          "health": 94.5,
+          "until": 5417,
+          "point": {
+            "x": 1138.0454808939048,
+            "y": 467.80946292364587
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 2751,
+          "tick": 6002,
+          "fromCast": 51,
+          "compact": false,
+          "health": 157.5,
+          "until": 6101,
+          "point": {
+            "x": 1205.473046543494,
+            "y": 152.80923459096368
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 3059,
+          "tick": 6472,
+          "fromCast": 47,
+          "compact": false,
+          "health": 157.5,
+          "until": 6575,
+          "point": {
+            "x": 1068.1031047846832,
+            "y": 246.82631831973185
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 3373,
+          "tick": 6946,
+          "fromCast": 47,
+          "compact": false,
+          "health": 157.5,
+          "until": 7049,
+          "point": {
+            "x": 1326.0029123087488,
+            "y": 254.40568204736522
+          }
+        }
+      ],
+      "events": [
+        {
+          "encounter": 3,
+          "id": 1672,
+          "tick": 4294,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 3,
+          "id": 1961,
+          "tick": 4804,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 4,
+          "id": 2296,
+          "tick": 5315,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 4,
+          "id": 2751,
+          "tick": 6003,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 4,
+          "id": 3059,
+          "tick": 6473,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 4,
+          "id": 3373,
+          "tick": 6947,
+          "event": "primary after setdown",
+          "paid": 1
+        }
+      ],
+      "attempts": 6,
+      "inspected": 30
+    },
+    {
+      "arena": "crown-crypt",
+      "difficulty": "normal",
+      "seed": 73,
+      "policy": "active",
+      "outcome": "victory",
+      "clears": 5,
+      "ticks": 6945,
+      "damageTaken": 122,
+      "damageDealt": 34724.75312099536,
+      "bought": [
+        {
+          "id": "tank-protection-1",
+          "earned": 3,
+          "clears": 0
+        },
+        {
+          "id": "tank-bulwark-carry-1",
+          "earned": 3,
+          "clears": 0
+        },
+        {
+          "id": "tank-bulwark-pivot-1",
+          "earned": 9,
+          "clears": 1
+        },
+        {
+          "id": "tank-bulwark-folded-setdown-1",
+          "earned": 21,
+          "clears": 3
+        }
+      ],
+      "casts": [
+        {
+          "encounter": 3,
+          "at": 4258,
+          "until": 4408,
+          "id": 1672,
+          "qAt": 4726
+        },
+        {
+          "encounter": 3,
+          "at": 4744,
+          "until": 4894,
+          "id": 1958,
+          "qAt": 5212
+        },
+        {
+          "encounter": 4,
+          "at": 5257,
+          "until": 5407,
+          "id": 2330,
+          "qAt": 5725
+        },
+        {
+          "encounter": 4,
+          "at": 5923,
+          "until": 6073,
+          "id": 2823,
+          "qAt": 6391
+        },
+        {
+          "encounter": 4,
+          "at": 6421,
+          "until": 6571,
+          "id": 3254,
+          "qAt": 6889
+        },
+        {
+          "encounter": 4,
+          "at": 6895,
+          "until": 7045,
+          "id": 3647,
+          "qAt": 7363
+        }
+      ],
+      "lifts": [
+        {
+          "encounter": 3,
+          "id": 1672,
+          "tick": 4271,
+          "at": {
+            "x": 1314.7486994525034,
+            "y": 167.13345283074653
+          }
+        },
+        {
+          "encounter": 3,
+          "id": 1958,
+          "tick": 4757,
+          "at": {
+            "x": 1152.2518472175905,
+            "y": 451.7365961855641
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 2330,
+          "tick": 5270,
+          "at": {
+            "x": 1138.0454808939048,
+            "y": 467.80946292364587
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 2823,
+          "tick": 5936,
+          "at": {
+            "x": 1281.1484217637862,
+            "y": 174.66007953007303
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 3254,
+          "tick": 6434,
+          "at": {
+            "x": 1203.5784785526848,
+            "y": 152.87930595003465
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 3647,
+          "tick": 6908,
+          "at": {
+            "x": 1077.9734855623506,
+            "y": 503.9449605785571
+          }
+        }
+      ],
+      "setdowns": [
+        {
+          "encounter": 3,
+          "id": 1672,
+          "tick": 4283,
+          "fromCast": 25,
+          "compact": true,
+          "health": 157.5,
+          "until": 4408,
+          "point": {
+            "x": 1272.7086399861419,
+            "y": 124.32418514178954
+          }
+        },
+        {
+          "encounter": 3,
+          "id": 1958,
+          "tick": 4769,
+          "fromCast": 25,
+          "compact": true,
+          "health": 143.4,
+          "until": 4894,
+          "point": {
+            "x": 1146.3798371520093,
+            "y": 511.4485673286246
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 2330,
+          "tick": 5288,
+          "fromCast": 31,
+          "compact": true,
+          "health": 94.5,
+          "until": 5407,
+          "point": {
+            "x": 1185.0364322655878,
+            "y": 546.9033975152701
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 2823,
+          "tick": 5954,
+          "fromCast": 31,
+          "compact": true,
+          "health": 157.5,
+          "until": 6073,
+          "point": {
+            "x": 1354.8805545860732,
+            "y": 229.68346173688238
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 3254,
+          "tick": 6454,
+          "fromCast": 33,
+          "compact": true,
+          "health": 157.5,
+          "until": 6571,
+          "point": {
+            "x": 1311.4165122958811,
+            "y": 146.96673642391147
+          }
+        },
+        {
+          "encounter": 4,
+          "id": 3647,
+          "tick": 6915,
+          "fromCast": 20,
+          "compact": true,
+          "health": 157.5,
+          "until": 7045,
+          "point": {
+            "x": 1050.0909743837597,
+            "y": 506.50729747595307
+          }
+        }
+      ],
+      "events": [
+        {
+          "encounter": 3,
+          "id": 1672,
+          "tick": 4284,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 3,
+          "id": 1958,
+          "tick": 4770,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 4,
+          "id": 2330,
+          "tick": 5289,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 4,
+          "id": 2823,
+          "tick": 5955,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 4,
+          "id": 3254,
+          "tick": 6455,
+          "event": "primary after setdown",
+          "paid": 1
+        },
+        {
+          "encounter": 4,
+          "id": 3647,
+          "tick": 6916,
+          "event": "primary after setdown",
+          "paid": 1
+        }
+      ],
+      "attempts": 6,
+      "inspected": 23
+    }
+  ],
+  "failures": 0,
+  "mismatches": []
+}

@@ -28,7 +28,7 @@ That direction is accepted. The example designs below are proposals for iteratio
 
 ## What exists
 
-The live catalog has twelve classes, 648 class nodes (54 per class), 48 weapons, 36 ability transformations, four General Free Play purchases and eighty specialization techniques across Engineer (22), Soldier (28), Heavy (19) and Tank (11). Heavy has seven Flak, seven Siege Gunner and five Lineworker techniques. Every class has three legacy parent branches, each with three six-node paths. Their grade lanes cover all eighteen grades: D-, D, D+, C-, C, C+, B-, B, B+, A-, A, A+, S-, S, S+, SS-, SS and SS+. These existing class branches are not completed new specializations.
+The live catalog has twelve classes, 648 class nodes (54 per class), 48 weapons, 36 ability transformations, four General Free Play purchases and eighty-two specialization techniques across Engineer (22), Soldier (28), Heavy (19) and Tank (13). Heavy has seven Flak, seven Siege Gunner and five Lineworker techniques. Every class has three legacy parent branches, each with three six-node paths. Their grade lanes cover all eighteen grades: D-, D, D+, C-, C, C+, B-, B, B+, A-, A, A+, S-, S, S+, SS-, SS and SS+. These existing class branches are not completed new specializations.
 
 The current paths mostly extend familiar numerical effects. Some nodes already change abilities, including the three transformations per class and Heavy/Tank shield-cap choices. Preserve those working distinctions. The request is for deeper identities and choices, not merely new names for damage, cooldown and health bonuses. Historical SKILL_TREE_AND_MENU.md / CLASS_TALENTS.md / OPTIONAL_SKILL_MAP.md snapshots contain older seven-class totals; current catalog and the current handoff take precedence.
 

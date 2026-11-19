@@ -14,7 +14,21 @@ Braced Pivot and Firing Port exclude each other. Pivot tests the swept turn, not
 
 Cornerstone carries its two original panels together. Their individual damage and missing-member state persist. The original three Tank transformations, equipment, numerical General tree, four shared techniques, 27-SP cap, one-capstone rule and saved control/HUD choices remain. Owner loss, expiry, death, disconnect and phase cleanup retire dependent work. Only the owner receives handling readiness and commands; all peers receive the actual physical panels and opening. Prediction and drawing use acknowledged geometry.
 
-## Verification boundary
+## Late Mobile Bulwark fittings
+
+Folded Setdown extends Braced Pivot. When full-width setdown is blocked, stand still in a clear compact footprint and use Action 1. The Tank leaves the folded panel on the ground, then can use the weapon again. The original panel retains its damage, facing, deadline and Q recovery. Cornerstone keeps both surviving panels in their relative folded positions. Their narrow covers stay fixed until destroyed or expired.
+
+Side Port extends Firing Port. With the central slot open, stand still and aim 12 to 35 degrees off center. When Shift port appears, use Action 2. The prior opening stays exposed for six combat intervals while the fitting moves. The Tank can then spend primary ammunition along the new bearing. A paired Cornerstone panel opens only where the new ray crosses and leaves a safe rim. Walking closes the port. Each original wall can accept one shift, including after a setdown and lift.
+
+Each fitting costs 3 SP after its related early technique and has a gate of 17 earned SP. The third ordinary Short clear pays 21 SP. Existing control remaps drive their shop cards, owned guide and contextual HUD. New emblems use unmodified generated alpha and the recorded prompts. [Provenance](../assets/production/ui/tank-bulwark-late-2026-11-18/provenance.json).
+
+The protocol 81 local gate passed 2,626 tests and all seven checks. Both actual earned transports reached 3, 9, 15 and 21 SP for each fitting. The Solo Side Port tap in the earlier check arrived during the centered shot's ordinary cooldown. The corrected held-trigger observation recorded one paid shifted shot. The two fits add 240 legal combinations each, with all 3,398 previously legal combinations preserved. [Verification and transport receipts](../reviews/tank-bulwark-fittings-2026-11-18/local-evidence-bindings.json).
+
+All twelve Folded Setdown Short runs won. Active policies made 21 compact placements and spent a primary round after 20 of them. Their first matched placements freed the Tank six to ten combat intervals earlier than walking back to full-width ground. The 36 Side Port runs produced nine wins and three defeats per policy. Six paid shots at a shifted bearing sent 25 projectiles beyond the panel. Unused-purchase controls matched the corresponding baseline on the measured outcomes. [Folded Short](../reviews/tank-bulwark-fittings-2026-11-18/folded-short.json) · [Side Port Short](../reviews/tank-bulwark-fittings-2026-11-18/side-short.json).
+
+The exact protocol 80 migration covers 241 saved builds, the two HUD layouts, three action remaps, all twelve profile and history rosters, and fifteen prior dictionaries. English pilot copy still needs native-language review, alongside human play, rendering, devices, listening, motion and final balance. [Fixture binding](../tests/fixtures/tank-bulwark-issued80-bindings.json).
+
+## Original Mobile Bulwark verification
 
 Source **137dc2c023eb99adefb4574ba746b664ea8f56f8**, build **2026.11.13-tank-mobile-bulwark**, protocol **77**, catalog **72**, content `44b615d4bdf78e469135ba5c30b84a0af5c07b0681c46856227daf633e9347be`, runtime `c282ef8bf1cd5230d490dea47e27f27f60ee2b42623f25202f1f6ccb7576b7cb`, source snapshot `b19ef349842e1c15b03a94314dfe8deb93c9a1a0d1b13a4cf94d0e2cd40e5e47`.
 

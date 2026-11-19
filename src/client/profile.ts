@@ -246,6 +246,7 @@ export function parseProfile(raw: string): ProfileV1 {
     // An older edition cannot contain clears from a discipline not yet in its roster.
     if(typeof old.contentRevision==='string'&&old.contentRevision!==CONTENT_REVISION){
       const recentRosters:Record<string,number>={
+        '563e4fba3657c0847b0211980c6b9aedf1c471c9876b65cd547c07d296d7e258':12,
         'd784e4ab3aab24a08c50ca8d1bb8b63cb18c2bfea3337ae5818beb6bd144ece0':12,
         '6472614e137114fdb043bdbdff2952997932aba352e449a70508adfe3f5b4647':12,
         '44b615d4bdf78e469135ba5c30b84a0af5c07b0681c46856227daf633e9347be':12,
@@ -285,6 +286,7 @@ export function parseProfile(raw: string): ProfileV1 {
       const roster:readonly string[]=implementedClassIds.slice(0,recentRosters[old.contentRevision]??7);
       if(Array.isArray(old.runs)&&old.runs.some(r=>r&&typeof r==='object'&&typeof r.classId==='string'&&!roster.includes(r.classId)))throw Error('ui.errorProfile');
     }
+    if(old.contentRevision==='563e4fba3657c0847b0211980c6b9aedf1c471c9876b65cd547c07d296d7e258'&&old.schemaVersion===1&&old.practiceOnly===true&&old.verified===false)old.contentRevision=CONTENT_REVISION;
     if(old.contentRevision==='d784e4ab3aab24a08c50ca8d1bb8b63cb18c2bfea3337ae5818beb6bd144ece0'&&old.schemaVersion===1&&old.practiceOnly===true&&old.verified===false)old.contentRevision=CONTENT_REVISION;
     if(old.contentRevision==='6472614e137114fdb043bdbdff2952997932aba352e449a70508adfe3f5b4647'&&old.schemaVersion===1&&old.practiceOnly===true&&old.verified===false)old.contentRevision=CONTENT_REVISION;
     if(old.contentRevision==='44b615d4bdf78e469135ba5c30b84a0af5c07b0681c46856227daf633e9347be'&&old.schemaVersion===1&&old.practiceOnly===true&&old.verified===false)old.contentRevision=CONTENT_REVISION;

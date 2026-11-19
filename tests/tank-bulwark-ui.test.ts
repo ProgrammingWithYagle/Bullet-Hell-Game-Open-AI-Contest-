@@ -52,7 +52,7 @@ for(const expanded of [false,true])for(const handling of ['unowned','none','pivo
     assert.deepEqual(f.requests,[]);assert.equal(f.p.skills.length,handling==='unowned'?0:handling==='none'?2:3);
   });
 
-test('three authored Tank cards have real descriptions, dependencies and mutually exclusive handling in the actual shop',async t=>{
+test('Mobile Bulwark cards have real descriptions, dependencies and mutually exclusive handling in the actual shop',async t=>{
   const f=await menu(t,'none',true);
   for(const id of Object.values(bulwarkIds)){
     const node=data.specializationSkills.find(node=>node.id===id)!;assert(node);

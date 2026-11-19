@@ -1,4 +1,4 @@
-import {bulwarkTrialWorld,planBulwarkStaging,trialCastClear} from './tank-bulwark-staging.ts';
+import {bulwarkTrialWorld,compactSetdownTarget,planBulwarkStaging,trialCastClear} from './tank-bulwark-staging.ts';
 import assert from 'node:assert/strict';
 import {setTimeout as sleep} from 'node:timers/promises';
 import {data} from '../../src/shared/game.ts';
@@ -14,14 +14,14 @@ import {restWait} from './sniper-rest-flow.ts';
 import {restRaidInput,type ObservedRestShot} from './sniper-rest-raid-policy.ts';
 import {bulwarkMenu,spentBulwarkSP} from './tank-bulwark-menu-flow.ts';
 
-export type BulwarkHandling='none'|'pivot'|'port';
+export type BulwarkHandling='none'|'pivot'|'port'|'folded'|'side';
 export type BulwarkTransport={
  id:string;view():View|undefined;events:Event[];observed:Map<number,ObservedRestShot>;
  input(input:Partial<InputFrame>):number;
  purchase(request:{kind:'skill'|'weapon'|'upgrade'|'supply';item:string}):Promise<Result>;
  start():void;vote(index:number):void;pause(value:boolean):void;paused():boolean;end?():void;
  allyPolicy?():void;stopAlly?():void;
- checkObservers?(ids:readonly number[],until:number,open:boolean):Promise<void>;
+ checkObservers?(ids:readonly number[],until:number,open:boolean,carried:boolean):Promise<void>;
 };
 const point=({x,y}:Vec)=>({x,y});
 const near=(a:number,b:number)=>assert(Math.abs(a-b)<.35,a+' != '+b);
@@ -29,6 +29,8 @@ const wrap=(value:number)=>Math.atan2(Math.sin(value),Math.cos(value));
 
 /** Ordinary3→9SP Short, actual source purchase buttons and acknowledged transport commands. No checkpoint import or injected game state. */
 export async function earnedBulwarkFlow(transport:BulwarkTransport,handling:BulwarkHandling){
+ const late=handling==='folded'?bulwarkIds.foldedSetdown:handling==='side'?bulwarkIds.sidePort:undefined;
+ const base=handling==='folded'?'pivot':handling==='side'?'port':handling;
  const view=()=>{const current=transport.view();assert(current);return current;};
  const player=()=>{const current=view().players.find(p=>p.id===transport.id);assert(current);return current;};
  const earned=()=>player().sp+spentBulwarkSP(player());
@@ -55,17 +57,22 @@ export async function earnedBulwarkFlow(transport:BulwarkTransport,handling:Bulw
  }
  const observations:{tag:string;tick:number;body:Vec;ready:boolean|undefined;panels:{id:number;x:number;y:number;health:number;until:number}[]}[]=[];
  const observe=(tag:string)=>{observations.push({tag,tick:view().combatTick,body:point(player()),ready:player().kit.bulwarkCanLift,panels:panels().map(wall=>({id:wall.id,x:wall.x,y:wall.y,health:wall.health,until:wall.until}))});};
- async function stageForQ(){
+ async function stageForQ(compact:boolean){
   for(let attempt=0;attempt<3;attempt++){
    const threats=[...(view().boss.health>0?[view().boss]:[]),...view().minions.filter(actor=>actor.health>0)];
-   const route=planBulwarkStaging(world(),player(),threats);assert(route,'Public geometry has a reachable clear Q staging route');
+   const w=world();
+   const route=planBulwarkStaging(w,player(),threats,(body,aim)=>!compact||!!compactSetdownTarget(w,
+    {x:body.x+68*Math.cos(aim),y:body.y+68*Math.sin(aim)},aim));
+   assert(route,'Public geometry has a reachable clear Q staging route');
    observe('staging-'+attempt+'-'+route.points.length+'-waypoints');
    for(const target of route.points)await walk(target,route.aim,'Walk to real clear Q staging ground');
    await acknowledge({aim:route.aim},'Still at actual Q staging ground');
-   if(trialCastClear(world(),player(),route.aim))return route.aim;
+   const w2=world(), from=player();
+   if(trialCastClear(w2,from,route.aim)&&(!compact||compactSetdownTarget(w2,
+    {x:from.x+68*Math.cos(route.aim),y:from.y+68*Math.sin(route.aim)},route.aim)))return route.aim;
   }throw Error('Actual terrain changed during all three bounded Q staging attempts');
  }
- async function liftAndWalk(){
+ async function liftAndWalk(compact=false){
   await acknowledge({},'Stopped policy before actual Protective Wall');
   const recoveryDeadline=Date.now()+200_000;
   while(view().combatTick<player().qAt){
@@ -75,7 +82,7 @@ export async function earnedBulwarkFlow(transport:BulwarkTransport,handling:Bulw
   }
   await acknowledge({},'Stopped recovery policy before the new Q');
   await restWait(()=>view().combatTick>=Math.max(player().dashUntil,player().reloadAt),'Original active hand/movement commitment finishes before staging');
-  const aim=await stageForQ();
+  const aim=await stageForQ(compact);
   await acknowledge({q:true,aim},'Issued Q acknowledged');
   await restWait(()=>panels().length===1,'Original Protective Wall appears in the separate public cue update');
   observe('original-Q-visible');
@@ -98,6 +105,13 @@ export async function earnedBulwarkFlow(transport:BulwarkTransport,handling:Bulw
   assert.equal(panels()[0].id,original.id);assert.equal(panels()[0].until,original.until);near(panels()[0].halfSpan??55,55);
   await acknowledge({fire:true,aim},'Closed carried wall commits primary');assert.equal(player().ammo,ammo);
   const start=point(player()),w=world();
+  if(compact){
+   const target=compactSetdownTarget(w,start,original.aim);assert(target,'Actual Q reaches compact terrain plan');
+   await walk(target,aim,'Carry the original panel onto compact-only ground');
+   assert(player().kit.bulwarkCanSetFolded,'Server admits the real compact-only fit');
+   assert.equal(player().qAt,qAt);assert.equal(panels()[0].until,original.until);
+   return {aim,original,qAt,moved:distance(start,player()),ammo};
+  }
   const candidates=[n,{x:-n.x,y:-n.y},{x:-n.y,y:n.x},{x:n.y,y:-n.x}];
   const direction=candidates.find(direction=>{
    for(let i=1;i<=12;i++){
@@ -117,13 +131,14 @@ export async function earnedBulwarkFlow(transport:BulwarkTransport,handling:Bulw
   const wall=panels().find(w=>w.id===first.original.id);assert(wall);assert.equal(wall.until,first.original.until);
   near(wall.halfSpan??110,110);assert.equal(player().qAt,first.qAt);assert(wall.health<=first.original.health);
  }
- async function clearToShop(){
+ async function clearToShop(clears:number){
   const deadline=Date.now()+200_000;
   while(view().phase==='combat'){
    assert(Date.now()<deadline,'Ordinary Short clear policy bound');transport.input(restRaidInput(view(),player(),[...transport.observed.values()]));
    transport.allyPolicy?.();await sleep(25);
   }
-  transport.stopAlly?.();assert.notEqual(view().phase,'defeat');assert.equal(view().encounter,1);assert.equal(player().progress.clears,1);assert.equal(earned(),9);earnedSequence.push(9);
+  transport.stopAlly?.();assert.notEqual(view().phase,'defeat');assert.equal(view().encounter,clears);assert.equal(player().progress.clears,clears);
+  assert.equal(earned(),3+clears*6);earnedSequence.push(earned());
   const shopDeadline=Date.now()+90_000;
   while(view().phase!=='shop'){
    assert(Date.now()<shopDeadline&&view().phase!=='defeat','Original rewards reach the next shop');
@@ -134,14 +149,26 @@ export async function earnedBulwarkFlow(transport:BulwarkTransport,handling:Bulw
   assert.equal(earned(),3);assert.deepEqual(player().skills,[]);await buy('tank-protection-1');await buy(bulwarkIds.entry);
   await menu.inspect(bulwarkIds.pivot,false);await menu.inspect(bulwarkIds.port,false);await equip();transport.start();
   await restWait(()=>view().phase==='combat','Ordinary Short deployment');
-  const early=await liftAndWalk();await setDown(early);await clearToShop();
-  if(handling!=='none'){
-   await buy(bulwarkIds[handling]);await menu.inspect(bulwarkIds[handling==='pivot'?'port':'pivot'],false);
+  const early=await liftAndWalk();await setDown(early);await clearToShop(1);
+  if(base!=='none'){
+   await buy(bulwarkIds[base]);await menu.inspect(bulwarkIds[base==='pivot'?'port':'pivot'],false);
   }else{await menu.inspect(bulwarkIds.pivot,true);await menu.inspect(bulwarkIds.port,true);}
-  await equip();const deploymentDeadline=Date.now()+90_000;
-  while(view().phase!=='combat'){assert(Date.now()<deploymentDeadline&&view().phase!=='defeat','Original shop clock reaches combat');await sleep(25);}
-  assert.equal(earned(),9);assert(!view().run.testingModified&&!view().run.customized);
-  const current=await liftAndWalk();let turned=0,paidPortRounds=0;
+  async function deploy(){
+   await equip();
+   const deadline=Date.now()+90_000;
+   while(view().phase!=='combat'){assert(Date.now()<deadline&&view().phase!=='defeat','Original shop clock reaches combat');await sleep(25);}
+  }
+  if(late)for(const clears of [1,2,3]){
+   if(clears>1)await clearToShop(clears);
+   if(clears===3)await buy(late);
+   else{
+    await menu.inspect(late,false);
+    assert.equal((await transport.purchase({kind:'skill',item:late})).reason,'insufficientPoints');
+   }
+   await deploy();
+  }else await deploy();
+  assert.equal(earned(),late?21:9);assert(!view().run.testingModified&&!view().run.customized);
+  const current=await liftAndWalk(handling==='folded');let turned=0,paidPortRounds=0,paidAfterFold=0,shiftedOffset=0;
   if(handling==='pivot'){
    const from=panels()[0].aim,w=world(),p=player();
    const angle=[Math.PI/4,-Math.PI/4,Math.PI/6,-Math.PI/6,Math.PI/2].find(angle=>{
@@ -157,7 +184,7 @@ export async function earnedBulwarkFlow(transport:BulwarkTransport,handling:Bulw
    await restWait(()=>view().combatTick>=(player().kit.bulwarkCommitUntil??Infinity)&&Math.abs(wrap(panels()[0].aim-from-angle))<.01,'Original twelve-interval turn finishes');
    turned=wrap(panels()[0].aim-from);assert(Math.abs(turned)>.5);assert.equal(player().kit.bulwarkRecoveryAt,recovery);
   }
-  if(handling==='port'){
+  if(base==='port'){
    await acknowledge({aim:current.aim},'Still before opening the actual port');assert(player().kit.bulwarkCanHandle);
    await acknowledge({technique2:true,aim:current.aim},'Actual port opening begins');
    await restWait(()=>player().kit.bulwarkPortPhase==='open'&&player().kit.bulwarkPrimaryReady===true,'Original six intervals expose the primary opening');
@@ -165,24 +192,58 @@ export async function earnedBulwarkFlow(transport:BulwarkTransport,handling:Bulw
    await acknowledge({fire:true,aim:current.aim},'Actual paid primary through the live opening');
    await acknowledge({aim:current.aim},'Primary trigger released separately');paidPortRounds=before-player().ammo;assert.equal(paidPortRounds,1);
    await restWait(()=>transport.events.slice(eventIndex).some(e=>e.type==='shots'&&e.shots.some(s=>s.owner===transport.id)),'Separate actual owner projectile batch arrives');
+   if(handling==='side'){
+    const initial=panels()[0].bulwarkPortOffset??0, aim=wrap(current.aim+Math.PI/6);
+    await acknowledge({aim},'Deliberate off-center Side Port aim');
+    assert(player().kit.bulwarkCanShiftPort);
+    const index=transport.events.length;
+    await acknowledge({technique2:true,aim},'Actual Side Port operation');
+    await restWait(()=>sound('tank-wall-port-shift'),'Owner receives Side Port sound');
+    await restWait(()=>player().kit.bulwarkPortPhase==='open'&&player().kit.bulwarkPrimaryReady===true&&
+      Math.abs((panels()[0].bulwarkPortOffset??0)-initial)>14,'The same physical panel exposes a shifted slit');
+    shiftedOffset=(panels()[0].bulwarkPortOffset??0)-initial;
+    const reserve=player().ammo;
+    await acknowledge({fire:true,aim},'Actual primary through the shifted slit');
+    // The centered shot can still be on its ordinary weapon recovery when the slit finishes moving.
+    await restWait(()=>player().ammo<reserve,'Actual held trigger reaches its first paid shifted shot');
+    await acknowledge({aim},'Separate primary release at the shifted bearing');
+    assert.equal(player().ammo,reserve-1);paidPortRounds++;
+    await restWait(()=>transport.events.slice(index).some(e=>e.type==='shots'&&e.shots.some(s=>s.owner===transport.id)),
+      'Owner receives ordinary paid projectiles after the shift');
+    assert(!player().kit.bulwarkCanShiftPort);
+   }else{
    await acknowledge({technique2:true,aim:current.aim},'Independent actual closing command');
    await restWait(()=>player().kit.bulwarkPortPhase==='closed','Original six-interval closure finishes');assert.equal(panels()[0].bulwarkPortHalfSpan,undefined);
    await acknowledge({technique2:true,aim:current.aim},'A separate command opens the original panel again');
    await restWait(()=>player().kit.bulwarkPortPhase==='open','Actual port reopened for ownership observation');
+   }
   }
-  assert.equal(panels()[0].until,current.original.until);assert.equal(player().qAt,current.qAt);assert(player().kit.bulwarkCanSet);
+  const compact=handling==='folded';
+  if(compact){
+   const before=structuredClone(panels()[0]);
+   await acknowledge({technique1:true,aim:current.aim},'Actual compact fallback command');
+   await restWait(()=>player().kit.bulwarkCarried===false&&sound('tank-wall-set-folded'),'Owner receives folded setdown');
+   const wall=panels()[0];assert(wall);assert.equal(wall.id,before.id);assert.equal(wall.halfSpan,55);
+   assert.equal(wall.aim,before.aim);assert.equal(wall.until,before.until);assert(wall.health<=before.health);
+   assert(!player().kit.bulwarkCanLift);
+   const ammo=player().ammo;
+   await acknowledge({fire:true,aim:current.aim},'Regained actual primary after setdown');
+   await acknowledge({aim:current.aim},'Separate trigger release');
+   paidAfterFold=ammo-player().ammo;assert.equal(paidAfterFold,1);
+  }
+  assert.equal(panels()[0].until,current.original.until);assert.equal(player().qAt,current.qAt);assert.equal(player().kit.bulwarkCanSet,!compact);
   transport.stopAlly?.();await acknowledge({aim:player().kit.bulwarkHeading},'Neutral frame before actual transport pause');
   transport.pause(true);await restWait(()=>transport.paused(),'Actual transport pause channel acknowledged');
-  const frozenTick=view().combatTick,frozenAck=player().ack,frozenAmmo=player().ammo,ids=[...player().kit.bulwarkPanelIds!];
+  const frozenTick=view().combatTick,frozenAck=player().ack,frozenAmmo=player().ammo,ids=panels().map(panel=>panel.id);
   transport.input({technique1:true,technique2:true,fire:true,aim:current.aim});await sleep(90);
-  assert.equal(view().combatTick,frozenTick);assert.equal(player().ack,frozenAck);assert.equal(player().ammo,frozenAmmo);assert(player().kit.bulwarkCarried);
-  await transport.checkObservers?.(ids,current.original.until,handling==='port');
+  assert.equal(view().combatTick,frozenTick);assert.equal(player().ack,frozenAck);assert.equal(player().ammo,frozenAmmo);assert.equal(player().kit.bulwarkCarried,!compact);
+  await transport.checkObservers?.(ids,current.original.until,base==='port',!compact);
   transport.pause(false);await restWait(()=>!transport.paused(),'Actual unpause acknowledgement');
-  await acknowledge({aim:player().kit.bulwarkHeading},'Neutral post-pause frame');assert(player().kit.bulwarkCarried,'Paused commands cannot replay on resume');
-  await setDown(current);
+  await acknowledge({aim:player().kit.bulwarkHeading},'Neutral post-pause frame');assert.equal(player().kit.bulwarkCarried,!compact,'Paused commands cannot replay on resume');
+  if(!compact)await setDown(current);
   if(transport.end){transport.end();await restWait(()=>view().phase==='defeat','Real room host exit');assert.equal(panels().length,0);}
-  return {passed:true,handling,actualEarnedSequence:earnedSequence,actualClears:1,spent:spentBulwarkSP(player()),earlyCarryAtEarned3:true,
-   earlyMoved:early.moved,laterMoved:current.moved,turned,paidPortRounds,pausedCommandsDiscarded:true,originalPanelUntil:current.original.until,
+  return {passed:true,handling,actualEarnedSequence:earnedSequence,actualClears:late?3:1,spent:spentBulwarkSP(player()),earlyCarryAtEarned3:true,
+   earlyMoved:early.moved,laterMoved:current.moved,turned,paidPortRounds,paidAfterFold,shiftedOffset,pausedCommandsDiscarded:true,originalPanelUntil:current.original.until,
    originalQRecovery:current.qAt,originalLifetimeTicks:current.original.until-current.original.at,menuObservations:menu.observations,observations};
  }catch(error){console.error(JSON.stringify({error:error instanceof Error?error.message:String(error),handling,observations,arenaId:transport.view()?.arenaId,boss:transport.view()?.boss,bossCues:transport.view()?.bossCues,phase:transport.view()?.phase,combatTick:transport.view()?.combatTick,player:transport.view()?.players.find(p=>p.id===transport.id),panels:transport.view()?.classCues.filter(c=>c.owner===transport.id)}));throw error;}
  finally{await menu.close();}

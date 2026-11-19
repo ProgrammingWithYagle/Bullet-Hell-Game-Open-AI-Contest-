@@ -227,14 +227,14 @@ export async function runBulwarkPeers(
             );
         },
         stopAlly: () => host.input(inputFrame(host.view, ++hostSequence, {})),
-        checkObservers:async(ids,until,open)=>{
+        checkObservers:async(ids,until,open,carried)=>{
           const tick=tank.view!.combatTick;tank.room!.send('pauseMatch',false);tank.room!.send('endMatch');
           await late.connect({...join,name:'Late observer',classId:'medic'},{roomId:host.room!.roomId});
           await restWait(()=>late.view?.matchPaused===true&&!!player(late),'Late peer receives authoritative paused view');
           await sleep(60);assert.equal(tank.view!.combatTick,tick);assert.equal(tank.view!.phase,'combat');
           const own=player(tank)!,raw=tank.room!.state.players.get(tank.id)!;
-          const privateKit=JSON.parse(raw.lineworkOwner);assert(privateKit.bulwarkCarried);
-          assert.deepEqual(privateKit.bulwarkPanelIds,ids);assert.equal(privateKit.bulwarkPanelUntil,until);
+          const privateKit=JSON.parse(raw.lineworkOwner);assert.equal(privateKit.bulwarkCarried,carried);
+          assert.deepEqual(privateKit.bulwarkPanelIds,carried?ids:[]);assert.equal(privateKit.bulwarkPanelUntil,carried?until:0);
           assert.deepEqual(player(late)!.skills,[]);
           for(const observer of [host,late]){
             const encoded=observer.room!.state.players.get(tank.id)!;assert(!encoded.lineworkOwner,'Owner handling is absent on foreign connection');
@@ -244,8 +244,10 @@ export async function runBulwarkPeers(
             assert.deepEqual(panels.map(cue=>cue.id),ids);
             for(const panel of panels){assert.equal(panel.until,until);assert.equal((panel.bulwarkPortHalfSpan??0)>0,open);}
           }
-          assert.equal(own.kit.bulwarkCarried,true);
+          assert.equal(own.kit.bulwarkCarried,carried);
           assert(foreign.some(event=>event.type==='sound'&&event.owner===tank.id&&event.id==='tank-wall-lift'));
+          assert(!foreign.some(event=>event.type==='sound'&&event.owner===tank.id&&
+            ['tank-wall-set-folded','tank-wall-port-shift'].includes(event.id)));
           assert(!foreign.some(event=>event.type==='shots'&&event.shots.some(shot=>shot.owner===tank.id)));
 
         },

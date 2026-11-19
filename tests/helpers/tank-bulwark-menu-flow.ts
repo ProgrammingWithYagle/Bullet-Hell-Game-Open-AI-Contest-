@@ -70,7 +70,14 @@ export async function bulwarkMenu(player: () => PlayerView) {
   const checkOwnedGuide=()=>{
     const current=player();env.host.innerHTML=guide.tankKitMarkup(current,controls,true);
     const entry=current.skills.includes(lineworkIds.entry),pivot=current.skills.includes(lineworkIds.pivot),port=current.skills.includes(lineworkIds.port);
-    assert.equal(env.host.querySelectorAll('[data-kit-action]').length,!entry?3:port?7:pivot?6:5);
+    const late=[lineworkIds.foldedSetdown,lineworkIds.sidePort].filter(id=>current.skills.includes(id));
+    assert.equal(env.host.querySelectorAll('[data-kit-action]').length,(!entry?3:port?7:pivot?6:5)+late.length);
+    for(const id of late){
+      const action=id===lineworkIds.foldedSetdown?'technique1':'technique2';
+      const row=[...env.host.querySelectorAll('[data-kit-action="'+action+'"]')].find(node=>node.textContent.includes(messages['skill.'+id+'.name']));
+      assert(row,id);
+      for(const key of action==='technique1'?['Z','G','8']:['N','Y','9'])assert(row.textContent.includes(key));
+    }
     assert.equal(!!env.host.querySelector('[data-kit-action="technique1"]'),entry);
     assert.equal(!!env.host.querySelector('[data-kit-action="technique2"]'),pivot||port);
     assert.equal(!!env.host.querySelector('[data-kit-action="fire"]'),port);
@@ -109,9 +116,10 @@ export async function bulwarkMenu(player: () => PlayerView) {
       if (item === 'tank-protection-1')
         env.host.querySelector('[data-prerequisite="tank-protection-1"]')!.click();
       else env.host.querySelector('[data-inspect="' + item + '"]')!.click();
-      if(item===lineworkIds.pivot||item===lineworkIds.port){
-        const command=env.host.querySelector('#item-details [data-technique-control="technique2"]');assert(command);
-        for(const label of ['N','Y','9'])assert(command.textContent.includes(label));
+      if([lineworkIds.pivot,lineworkIds.port,lineworkIds.foldedSetdown,lineworkIds.sidePort].some(id=>id===item)){
+        const folded=item===lineworkIds.foldedSetdown;
+        const command=env.host.querySelector('#item-details [data-technique-control="'+(folded?'technique1':'technique2')+'"]');assert(command);
+        for(const label of folded?['Z','G','8']:['N','Y','9'])assert(command.textContent.includes(label));
       }
       assert([3,9,15,21,27].includes(before.sp+spentBulwarkSP(before)));
       const button = env.host.querySelector('#buy-selected')!;

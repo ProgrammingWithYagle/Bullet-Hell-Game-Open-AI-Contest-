@@ -40,13 +40,29 @@ export function trialCastClear(world:BulwarkWorld,from:Vec,aim:number){
  return clearTrialWalk(world,from,{x:end.x-normal.x*32,y:end.y-normal.y*32});
 }
 export type StagingRoute={aim:number;points:Vec[];searched:number;from:Vec;goal:Vec};
+/** Require a real compact-only destination reachable with the carried panel. */
+export function compactSetdownTarget(world:BulwarkWorld,rear:Vec,aim:number){
+ const normal={x:Math.cos(aim),y:Math.sin(aim)}, side={x:-normal.y,y:normal.x};
+ const along=(body:Vec,n:number)=>({x:body.x+n*side.x,y:body.y+n*side.y});
+ const fit=(body:Vec,span:number)=>wallFootprintClear(world,
+  {x:body.x+32*normal.x,y:body.y+32*normal.y},normal,span);
+ for(const sign of [-1,1])for(let distance=24;distance<=104;distance+=4){
+  const n=sign*distance,target=along(rear,n);
+  // Leave extra room around the predicted compact footprint and choose a
+  // target deep enough into the full setdown obstruction for net rounding.
+  if(fit(target,104)||!clearTrialWalk(world,rear,target))continue;
+  if(!Array.from({length:distance/4+1},(_,i)=>along(rear,sign*4*i)).every(at=>fit(at,58)))continue;
+  return target;
+ }
+}
 /** Harness-only manual staging on acknowledged geometry. Never moves a player or modifies terrain. */
-export function planBulwarkStaging(world:BulwarkWorld,start:Vec,threats:readonly Vec[]=[]):StagingRoute|undefined{
+export function planBulwarkStaging(world:BulwarkWorld,start:Vec,threats:readonly Vec[]=[],
+  choose:(body:Vec,aim:number)=>boolean=()=>true):StagingRoute|undefined{
  const step=32,queue:{p:Vec;x:number;y:number;parent:number}[]=[{p:{x:start.x,y:start.y},x:0,y:0,parent:-1}],seen=new Set(['0:0']);
  for(let at=0;at<queue.length&&at<640;at++){
   const node=queue[at],safe=!threats.length||threats.every(threat=>distance(node.p,threat)>=320);
   if(safe){
-   const aim=stagingBearings.filter(aim=>trialCastClear(world,node.p,aim)).sort((a,b)=>{
+   const aim=stagingBearings.filter(aim=>trialCastClear(world,node.p,aim)&&choose(node.p,aim)).sort((a,b)=>{
     const clearance=(angle:number)=>Math.min(...threats.map(threat=>distance(threat,{x:node.p.x+Math.cos(angle)*100,y:node.p.y+Math.sin(angle)*100})),10000);
     return clearance(b)-clearance(a);
    })[0];

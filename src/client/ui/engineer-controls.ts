@@ -19,6 +19,7 @@ const controlsByTechnique: Record<string, readonly KitAction[]> = {
   "tank-gate-signal-1":["technique2","ultimate"],"tank-gate-signal-split-1":["technique2"],"tank-gate-signal-corner-1":["technique2"],"tank-gate-signal-relief-1":["technique2"],"tank-gate-signal-countermarch-1":["technique2"],
   "tank-interceptor-1":["technique3","e"],"tank-interceptor-crossing-1":["technique3"],"tank-interceptor-standfast-1":["technique3"],
   "tank-bulwark-carry-1":["q","technique1"],"tank-bulwark-pivot-1":["technique1","technique2"],"tank-bulwark-port-1":["technique1","technique2","fire","reload"],
+  "tank-bulwark-folded-setdown-1":["technique1"],"tank-bulwark-side-port-1":["technique2","fire"],
   "heavy-linework-reserve-1": ["technique3", "technique2"],
   "heavy-linework-guide-1": ["technique3", "technique2"],
   "heavy-traverse-lanyard-1": ["technique1", "technique2", "q"],

@@ -137,7 +137,7 @@ test(
         2,
       );
       assert.equal(room.state.players.size, 3);
-      assert.equal(PROTOCOL,80);
+      assert.equal(PROTOCOL,81);
       await a.close();
       await wait(
         () =>

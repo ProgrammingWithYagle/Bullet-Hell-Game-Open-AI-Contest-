@@ -1,5 +1,9 @@
 # Scoped build variety audit
 
+## Mobile Bulwark late fittings
+
+Actual 27-SP purchases verify 3,878 distinct specialization and shared mobility configurations. Tank has 1,580, including 240 new Folded Setdown and 240 new Side Port signatures. Every one of the 3,398 prior signatures remains legal. [Census](../reviews/tank-bulwark-fittings-2026-11-18/build-census.json).
+
 ## Bastion late fittings
 
 Actual 27-SP purchases verify 3,398 distinct specialization and shared mobility configurations. Tank has 1,100, including 176 new Relief Watch and 176 new Countermarch signatures. Every one of the 3,046 previously legal signatures still purchases. The audit counts configurations with actual specialization and shared purchases, excluding numerical General variants. [Census](../reviews/tank-bastion-fittings-2026-11-18/build-census.json).

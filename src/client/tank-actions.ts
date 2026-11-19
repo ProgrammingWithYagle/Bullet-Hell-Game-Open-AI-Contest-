@@ -9,8 +9,11 @@ export function tankActions(p:PlayerView,now:number){
   const tank=p.classId==='tank'&&!p.training, gate=tank&&p.skills.includes(bastionIds.entry);
   const owned=tank&&p.skills.includes(bulwarkIds.entry);
   if(owned){
-    extras.push({key:'technique1',id:bulwarkIds.entry,at:0,blocked:p.kit.bulwarkCarried?!p.kit.bulwarkCanSet:!p.kit.bulwarkCanLift});
-    const handling=p.skills.includes(bulwarkIds.port)?bulwarkIds.port:p.skills.includes(bulwarkIds.pivot)?bulwarkIds.pivot:undefined;
+    const setdown = p.kit.bulwarkCanSetFolded ? bulwarkIds.foldedSetdown : bulwarkIds.entry;
+    extras.push({key:'technique1',id:setdown,at:0,blocked:p.kit.bulwarkCarried?!p.kit.bulwarkCanSet:!p.kit.bulwarkCanLift});
+    const handling=p.skills.includes(bulwarkIds.port)
+      ? p.kit.bulwarkCanShiftPort || p.kit.bulwarkPortPhase === 'shifting' ? bulwarkIds.sidePort : bulwarkIds.port
+      : p.skills.includes(bulwarkIds.pivot) ? bulwarkIds.pivot : undefined;
     if(handling&&(!gate||p.kit.bulwarkCarried))extras.push({key:'technique2',id:handling,at:Math.max(p.kit.bulwarkRecoveryAt??0,p.kit.bulwarkCommitUntil??0),blocked:!p.kit.bulwarkCanHandle});
   }
   if(gate&&!extras.some(action=>action.key==='technique2')){
@@ -36,7 +39,7 @@ export function tankHudLabel(p:PlayerView,slot:'technique1'|'technique2'|'techni
     const phase=p.kit.interceptorPhase??'idle';
     return t(phase==='screen'?'ui.tank.interceptBrake':phase==='winding'?'ui.tank.interceptWinding':phase==='ready'?(p.kit.interceptorMode==='standfast'?'ui.tank.interceptBrace':'ui.tank.interceptLaunch'):p.eAt<=now&&!p.kit.interceptorCanArm?'ui.tank.interceptBlocked':'ui.tank.interceptPrepare');
   }
-  if(slot==='technique1')return t(p.kit.bulwarkCarried?'ui.tank.setShield':'ui.tank.liftShield');
+  if(slot==='technique1')return t(p.kit.bulwarkCanSetFolded?'ui.tank.setFoldedShield':p.kit.bulwarkCarried?'ui.tank.setShield':'ui.tank.liftShield');
   const gate=p.skills.includes(bastionIds.entry);
   const handling=p.skills.includes(bulwarkIds.pivot)||p.skills.includes(bulwarkIds.port);
   if(gate&&(!p.kit.bulwarkCarried||!handling)){
@@ -47,6 +50,8 @@ export function tankHudLabel(p:PlayerView,slot:'technique1'|'technique2'|'techni
   if(!p.kit.bulwarkCarried)return t('ui.tank.needsCarry');
   if(p.skills.includes(bulwarkIds.port)){
     const phase=p.kit.bulwarkPortPhase??'closed';
+    if(phase==='shifting')return t('ui.tank.shiftingPort');
+    if(p.kit.bulwarkCanShiftPort)return t('ui.tank.shiftPort');
     return t(phase==='opening'?'ui.tank.openingPort':phase==='closing'?'ui.tank.closingPort':phase==='open'?'ui.tank.closePort':'ui.tank.openPort');
   }
   return t((p.kit.bulwarkCommitUntil??0)>now?'ui.tank.turningShield':'ui.tank.turnShield');

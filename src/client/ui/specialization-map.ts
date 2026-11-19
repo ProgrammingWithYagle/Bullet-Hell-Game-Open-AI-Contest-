@@ -15,6 +15,7 @@ const positions: Record<string, Point> = {
   "tank-gate-signal-1":{x:500,y:255},"tank-gate-signal-split-1":{x:230,y:505},"tank-gate-signal-corner-1":{x:770,y:505},
   "tank-gate-signal-relief-1":{x:230,y:775},"tank-gate-signal-countermarch-1":{x:770,y:775},
   "tank-protection-1":{x:500,y:75},"tank-bulwark-carry-1":{x:500,y:255},"tank-bulwark-pivot-1":{x:230,y:505},"tank-bulwark-port-1":{x:770,y:505},
+  "tank-bulwark-folded-setdown-1":{x:230,y:775},"tank-bulwark-side-port-1":{x:770,y:775},
   "heavy-linework-1":{x:500,y:255},"heavy-linework-yoke-1":{x:230,y:505},"heavy-linework-sheave-1":{x:770,y:505},"heavy-linework-reserve-1":{x:230,y:775},"heavy-linework-guide-1":{x:770,y:775},
   "heavy-traverse-lanyard-1": { x: 500, y: 1285 },
   "heavy-traverse-keyed-1":{x:250,y:1030},"heavy-traverse-open-1":{x:750,y:1030},

@@ -1,6 +1,14 @@
 # Changelog
 
-Development build **2026.11.18-tank-bastion-fittings**, protocol 80. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.18-tank-bulwark-fittings**, protocol 81. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-18 — Choose how to use cover in tight lanes
+
+### Tank Mobile Bulwark
+
+- Folded Setdown lets the Tank leave narrow cover where the full-width shield cannot fit.
+- Side Port lets the Tank shift an open firing slit once to aim down a different line.
+- Both fittings keep the original panels and their deadlines. They become available after three ordinary Short clears.
 
 ## 2026-11-18 — Choose which approach to keep open
 

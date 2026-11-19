@@ -28,6 +28,8 @@ Thirty of 36 scripted Standard runs cleared all ten encounters and reached 27 ea
 
 The local protocol 80 gate passed 2,616 tests and all seven checks. The previous run passed 2,611 tests and identified five graph, locale projection and generated ledger expectations for the earlier edition. Both earned late-operation tests passed in that run. The corrected checks preserve all previous issued messages and assertions about actual graph edges. The original gate remains in the continuation workspace.
 
+The exact protocol 80 push workflow and all 22 frozen preview cases passed. Each audience binds 2,076 files. Both attempts of the draft pull-request workflow reached its 20-minute job limit. The protocol 80 pair was retired after retaining its original logs, build manifests and test results. The fully verified protocol 79 pair remained active. The next source revision gives this expanded suite a 35-minute job limit. [Source, CI attempts and native evidence](../reviews/tank-bastion-fittings-2026-11-18/review-evidence-bindings.json) · [Retirement](../reviews/storage-tank-bastion-fittings-timeout-2026-11-18/retention-result.json).
+
 ## Initial protocol 79 verification
 
 Source **83bc91973585b3f483c8b43a02cc00fa5a9dd20f**, build **2026.11.18-tank-bastion**, protocol **79**, catalog **78**. Content SHA-256 `d784e4ab3aab24a08c50ca8d1bb8b63cb18c2bfea3337ae5818beb6bd144ece0`. Runtime SHA-256 `0fb2ca15df788de36ad3b87fa61bcd75026164771af736921df639a7a48688f2`. Source snapshot SHA-256 `58a6ae372131bffb066387b897b3c020d3aba47619e685f1eb1fff653d68dd20`.
