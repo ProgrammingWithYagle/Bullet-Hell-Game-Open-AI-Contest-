@@ -1,5 +1,9 @@
 # Scoped build variety audit
 
+## Interceptor late fittings
+
+Actual purchases under the 27-SP limit verify 4,502 distinct configurations. Tank has 2,204, including 312 new Return Crossing and 312 new Offset Brace configurations. Every one of the 3,878 previously legal signatures remains available. [Census](../reviews/tank-interceptor-fittings-2026-11-19/build-census.json).
+
 ## Mobile Bulwark late fittings
 
 Actual 27-SP purchases verify 3,878 distinct specialization and shared mobility configurations. Tank has 1,580, including 240 new Folded Setdown and 240 new Side Port signatures. Every one of the 3,398 prior signatures remains legal. [Census](../reviews/tank-bulwark-fittings-2026-11-18/build-census.json).

@@ -12,7 +12,26 @@ Crossing Guard and Standfast exclude each other. Both can coexist with the separ
 
 Only the owner receives preparation, launch readiness, brake status and operation sounds. Peers see the shared physical screen while it exists. Both saved HUD layouts and remapped keyboard and controller actions remain available. The three new emblems use unmodified generated raster images with the recorded provenance. [Emblem provenance](../assets/production/ui/tank-interceptor-2026-11-17/provenance.json).
 
-## Verification
+## Late Interceptor fittings
+
+**Return Crossing** follows Crossing Guard. Complete at least two outward steps. Then hold the opposite crossing direction and press Action 3 while the return prompt is available. The same screen reverses once. It keeps its original facing, deadline and E recovery. An early, late or blocked attempt brakes normally.
+
+**Offset Brace** follows Standfast. At launch, hold a perpendicular direction to put a narrower screen 56 pixels to that side. The Tank stays planted. Keep the original command held for the existing window, or use a new movement direction to release. The shifted screen leaves the center open.
+
+Each fitting costs 3 SP after its early choice at 17 earned SP. Ordinary Short reaches 21 SP after its third clear. Original 27-SP and one-capstone rules apply. The owner sees readiness and hears the operation sounds. Other clients share the physical screen. The emblems use unmodified generated alpha. [Art provenance](../assets/production/ui/tank-interceptor-late-2026-11-19/provenance.json).
+
+The protocol 82 source passed 2,651 tests and seven checks. Four complete transport exercises made ordinary purchases through 3, 9, 15 and 21 earned SP. Both fittings worked in the optimized Solo worker and as a Tank in a real non-host room. All eight fresh and restored Solo pairs matched on the recorded fields across the remaining encounters. [Local evidence](../reviews/tank-interceptor-fittings-2026-11-19/local-evidence-bindings.json).
+
+| Fitting | Ordinary Short runs | Victories with prior or unused fitting | Victories with fitting in use | Actual reversals or offsets |
+| --- | ---: | ---: | ---: | ---: |
+| Return Crossing | 36 | 8 of 12 per policy | 9 of 12 | 8 |
+| Offset Brace | 36 | 9 of 12 per policy | 10 of 12 | 8 |
+
+The six arenas and two difficulties produced twelve triplets for each fitting. The unused purchases matched the corresponding prior builds on measured outcomes. Controllers based movement decisions on observed projectile packets and terrain. These results describe scripted policies. Human play, rendering, devices, native language, listening, motion and final balance remain open. [Return Crossing runs](../reviews/tank-interceptor-fittings-2026-11-19/return-short.json) · [Offset Brace runs](../reviews/tank-interceptor-fittings-2026-11-19/offset-short.json).
+
+Protocol 82 admits the exact protocol 81 local ownership edition. The fixtures cover 299 builds, both saved HUD layouts, three remaps, all twelve local profile/history rosters and the fifteen issued dictionaries. The two fits add 312 legal configurations each. All 3,878 prior configurations remain legal. Two controlled 23-SP hybrids operated their wall fitting, planted Gate Signal and ran their late screen with independent recoveries. [Fixture binding](../tests/fixtures/tank-interceptor-issued81-bindings.json) · [Build census](../reviews/tank-interceptor-fittings-2026-11-19/build-census.json) · [Hybrid controls](../reviews/tank-interceptor-fittings-2026-11-19/triple-hybrid-controls.json).
+
+## Original protocol 78 verification
 
 Source **911966ddefe65a2ff757b580c47197fa0518fd7e**, build **2026.11.17-tank-interceptor**, protocol **78**, catalog **75**, content `6472614e137114fdb043bdbdff2952997932aba352e449a70508adfe3f5b4647`, runtime `1197b39b470b9bb27bb802afa78a930331f9e5da2e4ac3b1fe6f42aad8716a7f`, source snapshot `15169433e2463aa3cc423943bb99968b768d21e21dfb514b70273b38bfd0584d`.
 

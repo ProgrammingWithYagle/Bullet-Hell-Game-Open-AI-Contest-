@@ -1,6 +1,14 @@
 # Changelog
 
-Development build **2026.11.18-tank-bulwark-fittings**, protocol 81. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.19-tank-interceptor-fittings**, protocol 82. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-19 — Change the lane your screen protects
+
+### Tank Interceptor
+
+- Return Crossing can turn a sideways screen back toward the lane it has just left.
+- Offset Brace extends a narrow stationary screen to one side and leaves the center exposed.
+- Both fittings keep the original screen deadline and are available after three ordinary Short clears.
 
 ## 2026-11-18 — Choose how to use cover in tight lanes
 

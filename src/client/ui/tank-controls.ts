@@ -28,8 +28,12 @@ export function tankKitMarkup(p:PlayerView,controls:ControlOptions,open:boolean)
     if(p.skills.includes(bulwarkIds.port))rows.push({action:'technique2',key:'skill.'+bulwarkIds.port+'.name'},{action:'fire',key:'ui.tank.primary'});
   }
   if(p.skills.includes(interceptorIds.entry))rows.push({action:'technique3',key:'skill.'+(p.skills.includes(interceptorIds.standfast)?interceptorIds.standfast:p.skills.includes(interceptorIds.crossing)?interceptorIds.crossing:interceptorIds.entry)+'.name'});
+  if(p.skills.includes(interceptorIds.returns))rows.push({action:'technique3',key:'skill.'+interceptorIds.returns+'.name'});
+  if(p.skills.includes(interceptorIds.offset))rows.push({action:'technique3',key:'skill.'+interceptorIds.offset+'.name'});
   const help=[gate?t('ui.tank.bastionHelp'):'',p.skills.includes(bastionIds.relief)?t('ui.tank.bastionReliefHelp'):'',p.skills.includes(bastionIds.countermarch)?t('ui.tank.bastionCountermarchHelp'):'',owned?t('ui.tank.carryHelp'):'',p.skills.includes(interceptorIds.entry)?t('ui.tank.interceptHelp'):'',p.skills.includes(interceptorIds.crossing)?t('ui.tank.crossingHelp'):'',p.skills.includes(interceptorIds.standfast)?t('ui.tank.standfastHelp'):'',p.skills.includes(bulwarkIds.pivot)?t('ui.tank.pivotHelp'):'',p.skills.includes(bulwarkIds.port)?t('ui.tank.portHelp'):'',
     p.skills.includes(bulwarkIds.foldedSetdown)?t('ui.tank.foldedSetdownHelp'):'',
-    p.skills.includes(bulwarkIds.sidePort)?t('ui.tank.sidePortHelp'):''].filter(Boolean).join(' ');
+    p.skills.includes(bulwarkIds.sidePort)?t('ui.tank.sidePortHelp'):'',
+    p.skills.includes(interceptorIds.returns)?t('ui.tank.interceptReturnHelp'):'',
+    p.skills.includes(interceptorIds.offset)?t('ui.tank.interceptOffsetHelp'):''].filter(Boolean).join(' ');
   return '<details class="engineer-kit tank-kit" data-class-kit data-tank-kit'+(open?' open':'')+'><summary id="tank-kit-controls"><span lang="'+e(locale)+'">'+e(t('ui.controls'))+'</span><small>'+e(t('ui.equipped'))+'</small></summary><p lang="en" dir="ltr">'+e(help)+'</p><ul>'+rows.map(({action,key})=>'<li data-kit-action="'+action+'"><span class="engineer-kit-slot">'+e(actionLabel(action as Action))+'</span><strong lang="'+e(key.startsWith('ui.tank.')||key.startsWith('skill.tank-bulwark-')||key.startsWith('skill.tank-interceptor-')||key.startsWith('skill.tank-gate-signal-')?'en':locale)+'" dir="auto">'+e(t(key))+'</strong>'+bindingMarkup(action,controls)+'</li>').join('')+'</ul></details>';
 }

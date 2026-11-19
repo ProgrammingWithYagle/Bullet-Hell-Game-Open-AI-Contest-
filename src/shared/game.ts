@@ -281,7 +281,7 @@ export class Game {
     return [...this.director.cues(),...this.brutalVolley.cues(),...this.variantPressure.cues(),...this.wardenPatrol.cues(),...lava];
   }
   readonly interceptor = new TankInterceptor(()=>this.id(),event=>{
-    const sounds:Record<string,string>={armed:'tank-intercept-set',ready:'tank-intercept-ready',launched:'tank-intercept-launch','manual-brake':'tank-intercept-brake','walk-brake':'tank-intercept-brake','blocked-ground':'tank-intercept-blocked','blocked-shot':'tank-intercept-impact'};
+    const sounds:Record<string,string>={armed:'tank-intercept-set',ready:'tank-intercept-ready',launched:'tank-intercept-launch','manual-brake':'tank-intercept-brake','walk-brake':'tank-intercept-brake','blocked-ground':'tank-intercept-blocked','blocked-shot':'tank-intercept-impact','reversed-crossing':'tank-intercept-return','offset-launched':'tank-intercept-offset'};
     const id=sounds[event.kind];
     if(id&&!this.events.some(e=>e.type==='sound'&&e.id===id&&e.owner===event.owner))this.events.push({type:'sound',id,owner:event.owner,x:event.x,y:event.y});
   });

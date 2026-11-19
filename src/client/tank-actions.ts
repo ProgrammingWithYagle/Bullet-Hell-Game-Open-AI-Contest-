@@ -23,7 +23,10 @@ export function tankActions(p:PlayerView,now:number){
   }
   if(tank&&p.skills.includes(interceptorIds.entry)){
     const phase=p.kit.interceptorPhase??'idle',active=phase==='screen',winding=phase==='winding';
-    const id=p.skills.includes(interceptorIds.standfast)?interceptorIds.standfast:p.skills.includes(interceptorIds.crossing)?interceptorIds.crossing:interceptorIds.entry;
+    const kit=p.kit,offset=kit.interceptorCanOffsetLeft||kit.interceptorCanOffsetRight||kit.interceptorOffset!==undefined;
+    const id=kit.interceptorCanReturn?interceptorIds.returns:offset?interceptorIds.offset:
+      p.skills.includes(interceptorIds.standfast)?interceptorIds.standfast:
+      p.skills.includes(interceptorIds.crossing)?interceptorIds.crossing:interceptorIds.entry;
     extras.push({key:'technique3',id,at:active?0:winding?p.kit.interceptorReadyAt??0:p.eAt,blocked:active?false:winding?false:phase==='ready'?!p.kit.interceptorCanLaunch:!p.kit.interceptorCanArm});
   }
   return {command:false,qNameKey:null,qAt:p.qAt,qBlocked:!!p.kit.bulwarkCarried||p.kit.interceptorPhase==='screen',extras};
@@ -37,6 +40,8 @@ export function tankCommitBlocked(p:PlayerView,action:string){
 export function tankHudLabel(p:PlayerView,slot:'technique1'|'technique2'|'technique3',now:number){
   if(slot==='technique3'){
     const phase=p.kit.interceptorPhase??'idle';
+    if(phase==='screen'&&p.kit.interceptorCanReturn)return t('ui.tank.interceptReturn');
+    if(phase==='ready'&&(p.kit.interceptorCanOffsetLeft||p.kit.interceptorCanOffsetRight))return t('ui.tank.interceptOffset');
     return t(phase==='screen'?'ui.tank.interceptBrake':phase==='winding'?'ui.tank.interceptWinding':phase==='ready'?(p.kit.interceptorMode==='standfast'?'ui.tank.interceptBrace':'ui.tank.interceptLaunch'):p.eAt<=now&&!p.kit.interceptorCanArm?'ui.tank.interceptBlocked':'ui.tank.interceptPrepare');
   }
   if(slot==='technique1')return t(p.kit.bulwarkCanSetFolded?'ui.tank.setFoldedShield':p.kit.bulwarkCarried?'ui.tank.setShield':'ui.tank.liftShield');

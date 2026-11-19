@@ -1,8 +1,8 @@
-export const interceptorSoundIds=['tank-intercept-set','tank-intercept-ready','tank-intercept-launch','tank-intercept-brake','tank-intercept-blocked','tank-intercept-impact'] as const;
+export const interceptorSoundIds=['tank-intercept-set','tank-intercept-ready','tank-intercept-launch','tank-intercept-brake','tank-intercept-blocked','tank-intercept-impact','tank-intercept-return','tank-intercept-offset'] as const;
 export type InterceptorSoundId=typeof interceptorSoundIds[number];
 export const isTankInterceptorSound=(id:string):id is InterceptorSoundId=>(interceptorSoundIds as readonly string[]).includes(id);
-const pitches:Record<InterceptorSoundId,number>={'tank-intercept-set':155,'tank-intercept-ready':590,'tank-intercept-launch':225,'tank-intercept-brake':110,'tank-intercept-blocked':85,'tank-intercept-impact':390};
-const durations:Record<InterceptorSoundId,number>={'tank-intercept-set':.16,'tank-intercept-ready':.075,'tank-intercept-launch':.12,'tank-intercept-brake':.1,'tank-intercept-blocked':.08,'tank-intercept-impact':.06};
+const pitches:Record<InterceptorSoundId,number>={'tank-intercept-set':155,'tank-intercept-ready':590,'tank-intercept-launch':225,'tank-intercept-brake':110,'tank-intercept-blocked':85,'tank-intercept-impact':390,'tank-intercept-return':285,'tank-intercept-offset':185};
+const durations:Record<InterceptorSoundId,number>={'tank-intercept-set':.16,'tank-intercept-ready':.075,'tank-intercept-launch':.12,'tank-intercept-brake':.1,'tank-intercept-blocked':.08,'tank-intercept-impact':.06,'tank-intercept-return':.125,'tank-intercept-offset':.145};
 export const tankInterceptorDuration=(id:InterceptorSoundId)=>durations[id];
 /** Finite quiet mechanical cues. Objective sample checks do not establish listening acceptance. */
 export function tankInterceptorSample(id:InterceptorSoundId,time:number){

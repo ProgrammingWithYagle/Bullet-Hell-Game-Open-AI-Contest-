@@ -14,7 +14,9 @@ The working protocol 81 edition adds Folded Setdown and Side Port. The two fits 
 
 The protocol 80 Bastion source `237e1620a74777600e3564b23059a7689b261ca3` passed 2,616 local tests, all seven checks, the exact push workflow and all 22 frozen tests. Two PR attempts hit the 20-minute job limit. Only the timed-out pair's expanded copies and four exact services were retired. The fully reviewed protocol 79 pair stayed active during that retirement and is now the rollback for protocol 81. The longer budget starts with the Mobile Bulwark source. [Preserved evidence](../reviews/tank-bastion-fittings-2026-11-18/review-evidence-bindings.json).
 
-Return Crossing and Offset Brace remain Interceptor studies. Continue Tank under the roadmap before Medic. Current research lives in `C:/Users/yigal/Documents/Codex/2026-11-18/ok/work/tank-crossing-return` and `C:/Users/yigal/Documents/Codex/2026-11-18/ok/work/tank-offset-brace`. Human play, rendering, devices, native language, listening, motion and final balance remain open.
+Protocol 82 adds Return Crossing and Offset Brace. Both were bought normally at 21 SP and used in Solo and non-host rooms. All eight fresh/restored comparisons matched on the recorded fields. The local gate passed 2,651 tests and all seven checks. Check exact GitHub and frozen review evidence before promoting. Human play, rendering, devices, native language, listening, motion and final balance remain open. [Design](../docs/TANK_INTERCEPTOR_DESIGN.md) · [Tank run review](../docs/TANK_RUN_REVIEW.md) · [Local evidence](../reviews/tank-interceptor-fittings-2026-11-19/local-evidence-bindings.json).
+
+The later protocol 81 documentation commit passed the exact pull-request workflow. Its separate push workflow reported 2,625 passes and one failure while the ordinary-dodge worker test waited for its observation. The original playable source has its own two passing receipts above. [Documentation commit workflows](../reviews/tank-interceptor-fittings-2026-11-19/protocol81-metadata-ci.json).
 
 ## Historical protocol 79 Bastion review
 

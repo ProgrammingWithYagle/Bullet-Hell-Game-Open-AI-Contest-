@@ -1,3 +1,4 @@
+import interceptorFittings from './fixtures/tank-interceptor-issued81-bindings.json';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
@@ -14,7 +15,7 @@ const issued = JSON.parse(bytes);
 const digest = (text: string) => createHash('sha256').update(text).digest('hex');
 
 test('the issued Bastion fittings edition restores all 241 exact local builds', () => {
-  assert.equal(PROTOCOL, 81);
+  assert.equal(PROTOCOL,82);
   assert.equal(issued.protocol, 80);
   assert.equal(issued.sourceCommit, binding.sourceCommit);
   assert.equal(issued.contentRevision, binding.sourceRevision);
@@ -80,8 +81,8 @@ test('issued 80 retains both HUD layouts, remaps and historical records for all 
 
 test('the two late Bulwark fittings append copy to all fifteen issued 80 dictionaries', () => {
   assert.equal(Object.keys(issued.dictionaries).length, 15);
-  const appended = new Set(binding.addedLocaleKeys);
-  assert.equal(appended.size, 11);
+  const appended = new Set([...binding.addedLocaleKeys,...interceptorFittings.addedLocaleKeys]);
+  assert.equal(binding.addedLocaleKeys.length, 11);
   for (const [id, hash] of Object.entries(issued.dictionaries)) {
     const locale = JSON.parse(readFileSync(new URL('../locales/' + id + '.json', import.meta.url), 'utf8'));
     for (const key of appended) assert(Object.hasOwn(locale.messages, key), key);

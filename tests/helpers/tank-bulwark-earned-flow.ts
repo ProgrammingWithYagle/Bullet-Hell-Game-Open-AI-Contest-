@@ -57,22 +57,43 @@ export async function earnedBulwarkFlow(transport:BulwarkTransport,handling:Bulw
  }
  const observations:{tag:string;tick:number;body:Vec;ready:boolean|undefined;panels:{id:number;x:number;y:number;health:number;until:number}[]}[]=[];
  const observe=(tag:string)=>{observations.push({tag,tick:view().combatTick,body:point(player()),ready:player().kit.bulwarkCanLift,panels:panels().map(wall=>({id:wall.id,x:wall.x,y:wall.y,health:wall.health,until:wall.until}))});};
- async function stageForQ(compact:boolean){
+ function pivotAngle(w:ReturnType<typeof world>,p:Vec,from:number){
+  return [Math.PI/4,-Math.PI/4,Math.PI/6,-Math.PI/6,Math.PI/2,-Math.PI/2].find(angle=>{
+   for(let step=0;step<=36;step++){const a=from+angle*step/36,n={x:Math.cos(a),y:Math.sin(a)};
+    if(!wallFootprintClear(w,{x:p.x+n.x*32,y:p.y+n.y*32},n,55))return false;}
+   const n={x:Math.cos(from+angle),y:Math.sin(from+angle)};
+   return wallFootprintClear(w,{x:p.x+n.x*32,y:p.y+n.y*32},n,112);
+  });
+ }
+ function walkDirection(w:ReturnType<typeof world>,start:Vec,aim:number,needsPivot:boolean){
+  const n={x:Math.cos(aim),y:Math.sin(aim)};
+  return [n,{x:-n.x,y:-n.y},{x:-n.y,y:n.x},{x:n.y,y:-n.x}].find(direction=>{
+   for(let i=1;i<=12;i++){
+    const body={x:start.x+direction.x*i*3,y:start.y+direction.y*i*3};
+    if(distance(moveBody(start,{x:body.x-start.x,y:body.y-start.y},data.rules.playerRadius,[...w.obstacles]),body)>.1)return false;
+    if(!wallFootprintClear(w,{x:body.x+n.x*32,y:body.y+n.y*32},n,110))return false;
+   }
+   return !needsPivot||pivotAngle(w,{x:start.x+direction.x*36,y:start.y+direction.y*36},aim)!==undefined;
+  });
+ }
+ async function stageForQ(compact:boolean,needsPivot:boolean){
   for(let attempt=0;attempt<3;attempt++){
    const threats=[...(view().boss.health>0?[view().boss]:[]),...view().minions.filter(actor=>actor.health>0)];
    const w=world();
-   const route=planBulwarkStaging(w,player(),threats,(body,aim)=>!compact||!!compactSetdownTarget(w,
-    {x:body.x+68*Math.cos(aim),y:body.y+68*Math.sin(aim)},aim));
+   const compatible=(w:ReturnType<typeof world>,body:Vec,aim:number)=>{
+    const rear={x:body.x+68*Math.cos(aim),y:body.y+68*Math.sin(aim)};
+    return (!compact||!!compactSetdownTarget(w,rear,aim))&&(!needsPivot||!!walkDirection(w,rear,aim,true));
+   };
+   const route=planBulwarkStaging(w,player(),threats,(body,aim)=>compatible(w,body,aim));
    assert(route,'Public geometry has a reachable clear Q staging route');
    observe('staging-'+attempt+'-'+route.points.length+'-waypoints');
    for(const target of route.points)await walk(target,route.aim,'Walk to real clear Q staging ground');
    await acknowledge({aim:route.aim},'Still at actual Q staging ground');
    const w2=world(), from=player();
-   if(trialCastClear(w2,from,route.aim)&&(!compact||compactSetdownTarget(w2,
-    {x:from.x+68*Math.cos(route.aim),y:from.y+68*Math.sin(route.aim)},route.aim)))return route.aim;
+   if(trialCastClear(w2,from,route.aim)&&compatible(w2,from,route.aim))return route.aim;
   }throw Error('Actual terrain changed during all three bounded Q staging attempts');
  }
- async function liftAndWalk(compact=false){
+ async function liftAndWalk(compact=false,needsPivot=false){
   await acknowledge({},'Stopped policy before actual Protective Wall');
   const recoveryDeadline=Date.now()+200_000;
   while(view().combatTick<player().qAt){
@@ -82,7 +103,7 @@ export async function earnedBulwarkFlow(transport:BulwarkTransport,handling:Bulw
   }
   await acknowledge({},'Stopped recovery policy before the new Q');
   await restWait(()=>view().combatTick>=Math.max(player().dashUntil,player().reloadAt),'Original active hand/movement commitment finishes before staging');
-  const aim=await stageForQ(compact);
+  const aim=await stageForQ(compact,needsPivot);
   await acknowledge({q:true,aim},'Issued Q acknowledged');
   await restWait(()=>panels().length===1,'Original Protective Wall appears in the separate public cue update');
   observe('original-Q-visible');
@@ -112,14 +133,8 @@ export async function earnedBulwarkFlow(transport:BulwarkTransport,handling:Bulw
    assert.equal(player().qAt,qAt);assert.equal(panels()[0].until,original.until);
    return {aim,original,qAt,moved:distance(start,player()),ammo};
   }
-  const candidates=[n,{x:-n.x,y:-n.y},{x:-n.y,y:n.x},{x:n.y,y:-n.x}];
-  const direction=candidates.find(direction=>{
-   for(let i=1;i<=12;i++){
-    const body={x:start.x+direction.x*i*3,y:start.y+direction.y*i*3};
-    if(distance(moveBody(start,{x:body.x-start.x,y:body.y-start.y},data.rules.playerRadius,[...w.obstacles]),body)>.1)return false;
-    if(!wallFootprintClear(w,{x:body.x+n.x*32,y:body.y+n.y*32},n,110))return false;
-   }return true;
-  });assert(direction,'A real full-width setdown route exists');
+  const direction=walkDirection(w,start,original.aim,needsPivot);
+  assert(direction,'A real carried route exists with a clear setdown and intended turn');
   await walk({x:start.x+direction.x*36,y:start.y+direction.y*36},aim,'Actual carried movement');
   const moved=distance(start,player());assert(moved>30);assert(player().kit.bulwarkCanSet);
   assert.equal(player().qAt,qAt);assert.equal(panels()[0].until,original.until);assert(panels()[0].health<=original.health);
@@ -168,14 +183,11 @@ export async function earnedBulwarkFlow(transport:BulwarkTransport,handling:Bulw
    await deploy();
   }else await deploy();
   assert.equal(earned(),late?21:9);assert(!view().run.testingModified&&!view().run.customized);
-  const current=await liftAndWalk(handling==='folded');let turned=0,paidPortRounds=0,paidAfterFold=0,shiftedOffset=0;
+  const current=await liftAndWalk(handling==='folded',handling==='pivot');let turned=0,paidPortRounds=0,paidAfterFold=0,shiftedOffset=0;
   if(handling==='pivot'){
    const from=panels()[0].aim,w=world(),p=player();
-   const angle=[Math.PI/4,-Math.PI/4,Math.PI/6,-Math.PI/6,Math.PI/2].find(angle=>{
-    for(let step=0;step<=36;step++){const a=from+angle*step/36,n={x:Math.cos(a),y:Math.sin(a)};
-     if(!wallFootprintClear(w,{x:p.x+n.x*32,y:p.y+n.y*32},n,55))return false;}
-    const n={x:Math.cos(from+angle),y:Math.sin(from+angle)};return wallFootprintClear(w,{x:p.x+n.x*32,y:p.y+n.y*32},n,110);
-   });assert(angle!==undefined,'Real turn sweep and full-width endpoint are clear');
+   const angle=pivotAngle(w,p,from);
+   assert(angle!==undefined,'The actual carried destination still has a clear turn and full-width setdown');
    await acknowledge({aim:wrap(from+angle)},'Captured aim arrives before the separate handling command');assert(player().kit.bulwarkCanHandle);
    await acknowledge({technique2:true,aim:wrap(from+angle)},'Actual Braced Pivot begins');
    await restWait(()=>sound('tank-wall-pivot'),'Actual turn sound arrives');

@@ -69,7 +69,14 @@ export async function interceptionMenu(player: () => PlayerView) {
   }[] = [];
   const checkOwnedGuide=()=>{
     const current=player();env.host.innerHTML=guide.tankKitMarkup(current,controls,true);const entry=current.skills.includes(lineworkIds.entry);
-    assert.equal(env.host.querySelectorAll('[data-kit-action]').length,entry?4:3);assert.equal(!!env.host.querySelector('[data-kit-action="technique3"]'),entry);
+    const late=[lineworkIds.returns,lineworkIds.offset].filter(id=>current.skills.includes(id));
+    assert.equal(env.host.querySelectorAll('[data-kit-action]').length,(entry?4:3)+late.length);
+    assert.equal(!!env.host.querySelector('[data-kit-action="technique3"]'),entry);
+    for(const id of late){
+      const row=[...env.host.querySelectorAll('[data-kit-action="technique3"]')].find(node=>node.textContent.includes(messages['skill.'+id+'.name']));
+      assert(row,id);
+      for(const label of ['M','P','6'])assert(row.textContent.includes(label));
+    }
     assert(!env.host.querySelector('[data-kit-action="technique1"]'));assert(!env.host.querySelector('[data-kit-action="technique2"]'));
     if(entry)for(const label of ['M','P','6'])assert(env.host.querySelector('[data-kit-action="technique3"]')!.textContent.includes(label));
   };
@@ -105,7 +112,7 @@ export async function interceptionMenu(player: () => PlayerView) {
       if (item === 'tank-bastion-1')
         env.host.querySelector('[data-prerequisite="tank-bastion-1"]')!.click();
       else env.host.querySelector('[data-inspect="' + item + '"]')!.click();
-      if(([lineworkIds.entry,lineworkIds.crossing,lineworkIds.standfast] as readonly string[]).includes(item)){
+      if(([lineworkIds.entry,lineworkIds.crossing,lineworkIds.standfast,lineworkIds.returns,lineworkIds.offset] as readonly string[]).includes(item)){
         const command=env.host.querySelector('#item-details [data-technique-control="technique3"]');assert(command);
         for(const label of ['M','P','6'])assert(command.textContent.includes(label));
       }
