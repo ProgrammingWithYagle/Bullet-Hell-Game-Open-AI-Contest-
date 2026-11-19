@@ -4,8 +4,8 @@ The user explicitly authorized this bounded policy on 2026-11-10 after the check
 
 ## Retained state
 
-- The current expanded source is `911966ddefe65a2ff757b580c47197fa0518fd7e`, protocol 78. testing 5400/2776 and public 5401/2777. Each audience passed seven native cases, and the pair binds 2071 files per audience. [Verification](../reviews/tank-interceptor-2026-11-17/frozen-verification.json).
-- The current Interceptor pair remains expanded. The Mobile Bulwark pair, source `137dc2c023eb99adefb4574ba746b664ea8f56f8`, is the verified rollback in `output/review-rollback.zip`. Archive SHA-256 `993ea196dba823c0a2da2af3b72113a1205f3b699995ce1b57a5fdeb9d54d9a4`. All 4139 restored members passed their byte checks. [Rotation](../reviews/storage-tank-interceptor-2026-11-17/retention-result.json).
+- The expanded Bastion pair uses source `83bc91973585b3f483c8b43a02cc00fa5a9dd20f` and protocol 79. Testing uses ports 5402 and 2778. Public review uses ports 5403 and 2779. Both audiences bind 2,074 files and passed seven cases each. [Verification](../reviews/tank-bastion-2026-11-18/frozen-verification.json).
+- The Interceptor pair, source `911966ddefe65a2ff757b580c47197fa0518fd7e`, is the verified rollback in `output/review-rollback.zip`. All 4,145 restored files matched their archived bytes. Archive SHA-256 `833a8caae9cb96a416e001c35b1c1556f8e254bae5c6093c7088905f67b18988`. [Rotation](../reviews/storage-tank-bastion-2026-11-18/retention-result.json).
 - The failed 0915 Tank pair was separately retired after both audiences finished 12 pass/2 fail in 14 composed cases. Its original logs, receipts and manifest hashes remain. [Checked retirement](../reviews/storage-tank-attempt-2026-11-14/retention-result.json).
 - All 213 pre-existing private SQLite-related files remain byte-exact and local. Original 108-folder/52-process retirement receipts and 124 historical identities remain historical. No retired build was recreated. [Initial cleanup](../reviews/storage-retention-2026-11-10/verification.json).
 
