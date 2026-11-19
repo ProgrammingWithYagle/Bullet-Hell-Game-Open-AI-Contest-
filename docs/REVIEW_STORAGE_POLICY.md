@@ -4,12 +4,13 @@ The user explicitly authorized this bounded policy on 2026-11-10 after the check
 
 ## Retained state
 
-- The expanded Bastion pair uses source `83bc91973585b3f483c8b43a02cc00fa5a9dd20f` and protocol 79. Testing uses ports 5402 and 2778. Public review uses ports 5403 and 2779. Both audiences bind 2,074 files and passed seven cases each. [Verification](../reviews/tank-bastion-2026-11-18/frozen-verification.json).
-- The Interceptor pair, source `911966ddefe65a2ff757b580c47197fa0518fd7e`, is the verified rollback in `output/review-rollback.zip`. All 4,145 restored files matched their archived bytes. Archive SHA-256 `833a8caae9cb96a416e001c35b1c1556f8e254bae5c6093c7088905f67b18988`. [Rotation](../reviews/storage-tank-bastion-2026-11-18/retention-result.json).
-- The failed 0915 Tank pair was separately retired after both audiences finished 12 pass/2 fail in 14 composed cases. Its original logs, receipts and manifest hashes remain. [Checked retirement](../reviews/storage-tank-attempt-2026-11-14/retention-result.json).
-- All 213 pre-existing private SQLite-related files remain byte-exact and local. Original 108-folder/52-process retirement receipts and 124 historical identities remain historical. No retired build was recreated. [Initial cleanup](../reviews/storage-retention-2026-11-10/verification.json).
+Source **f2c8f02708904fdf4d3208da3067f264c61a87fb**, build **2026.11.18-tank-bulwark-fittings**, protocol **81**, catalog **82**. The local gate and both exact GitHub workflows passed 2,626 tests and all seven checks. Each frozen audience binds 2,078 files and passed eleven checks after the same-source Pivot retest. Testing uses [5406](http://127.0.0.1:5406/) with backend 2782. Public review uses [5407](http://127.0.0.1:5407/) with backend 2783. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44568671142) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44568707603) · [Frozen results](../reviews/tank-bulwark-fittings-2026-11-18/frozen-verification.json) · [Saved evidence](../reviews/tank-bulwark-fittings-2026-11-18/publication-byte-bindings.json).
 
-The protocol 80 late-Bastion pair was retired after both exact draft-PR attempts reached the job limit. Its 22 passing native cases, passing local gate and push workflow, and both original PR logs remain in the review evidence. The checkout retains the exact protocol 79 pair and original Interceptor archive. [Retirement](../reviews/storage-tank-bastion-fittings-timeout-2026-11-18/retention-result.json) · [Saved evidence](../reviews/tank-bastion-fittings-2026-11-18/review-evidence-bindings.json).
+The protocol 79 Bastion pair is the verified rollback in `output/review-rollback.zip`. All 4,151 restored files matched their archived bytes. Archive SHA-256 `8d189b2e008a8ce229ecd1112285ddc168d39bec7e58df8173996ae5fa4498e8`. All 213 original private SQLite-related files matched their inventory. [Rotation](../reviews/storage-tank-bulwark-fittings-2026-11-19/retention-result.json).
+
+The protocol 80 late-Bastion pair was retired after two exact draft-PR timeouts. Its 22 passing native cases, passing local gate and push workflow, and both original PR logs remain in the review evidence. [Retirement](../reviews/storage-tank-bastion-fittings-timeout-2026-11-18/retention-result.json) · [Saved evidence](../reviews/tank-bastion-fittings-2026-11-18/review-evidence-bindings.json).
+
+Original retirement receipts and earlier package evidence remain under their dated review scopes.
 
 ## Future lifecycle
 

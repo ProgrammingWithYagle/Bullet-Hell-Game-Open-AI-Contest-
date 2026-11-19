@@ -1,6 +1,6 @@
 # Tank Mobile Bulwark
 
-Tank can turn an existing Protective Wall into carried cover, then choose a committed turn or a vulnerable firing opening. These are three implemented operations in an unfinished class. Further paths and human acceptance remain open.
+Tank can turn an existing Protective Wall into carried cover, then choose a committed turn or a vulnerable firing opening. The route also offers two later fittings in an unfinished Tank class. Human acceptance remains open.
 
 | Purchase | Acquisition | Operation and cost |
 | --- | --- | --- |
@@ -27,6 +27,12 @@ The protocol 81 local gate passed 2,626 tests and all seven checks. Both actual 
 All twelve Folded Setdown Short runs won. Active policies made 21 compact placements and spent a primary round after 20 of them. Their first matched placements freed the Tank six to ten combat intervals earlier than walking back to full-width ground. The 36 Side Port runs produced nine wins and three defeats per policy. Six paid shots at a shifted bearing sent 25 projectiles beyond the panel. Unused-purchase controls matched the corresponding baseline on the measured outcomes. [Folded Short](../reviews/tank-bulwark-fittings-2026-11-18/folded-short.json) · [Side Port Short](../reviews/tank-bulwark-fittings-2026-11-18/side-short.json).
 
 The exact protocol 80 migration covers 241 saved builds, the two HUD layouts, three action remaps, all twelve profile and history rosters, and fifteen prior dictionaries. English pilot copy still needs native-language review, alongside human play, rendering, devices, listening, motion and final balance. [Fixture binding](../tests/fixtures/tank-bulwark-issued80-bindings.json).
+
+## Protocol 81 review
+
+Source **f2c8f02708904fdf4d3208da3067f264c61a87fb**, build **2026.11.18-tank-bulwark-fittings**, protocol **81**, catalog **82**. The local gate and both exact GitHub workflows passed 2,626 tests and all seven checks. Each frozen audience binds 2,078 files and passed eleven checks after the same-source Pivot retest. Testing uses [5406](http://127.0.0.1:5406/) with backend 2782. Public review uses [5407](http://127.0.0.1:5407/) with backend 2783. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44568671142) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44568707603) · [Frozen results](../reviews/tank-bulwark-fittings-2026-11-18/frozen-verification.json) · [Saved evidence](../reviews/tank-bulwark-fittings-2026-11-18/publication-byte-bindings.json).
+
+The first public Pivot case reached ground too cramped for the turn. The successful retest chose a legal carried route and used the same frozen worker, client and backend bytes. The first run and targeted retest are both in the archive.
 
 ## Original Mobile Bulwark verification
 

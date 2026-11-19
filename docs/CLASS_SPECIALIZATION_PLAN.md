@@ -1,6 +1,6 @@
 # Class specialization: next development direction
 
-Current Tank source **83bc91973585b3f483c8b43a02cc00fa5a9dd20f** brings the catalog to 78 techniques, including nine across three Tank routes. Both verified previews and the class work use [Bastion](TANK_BASTION_DESIGN.md) as the current checkpoint.
+Current Tank source **f2c8f02708904fdf4d3208da3067f264c61a87fb** brings the catalog to 82 techniques, including thirteen across three Tank paths. Both live previews match the exact locally and remotely verified [Mobile Bulwark](TANK_MOBILE_BULWARK_DESIGN.md) checkpoint.
 
 Historical Interceptor source **911966ddefe65a2ff757b580c47197fa0518fd7e**, build **2026.11.17-tank-interceptor**, protocol **78**, catalog **75**, content `6472614e137114fdb043bdbdff2952997932aba352e449a70508adfe3f5b4647`, runtime `1197b39b470b9bb27bb802afa78a930331f9e5da2e4ac3b1fe6f42aad8716a7f`, source snapshot `15169433e2463aa3cc423943bb99968b768d21e21dfb514b70273b38bfd0584d`. The complete source gate passed **2586 tests and all seven checks**. Both exact-source GitHub workflows passed every job and step, and their decoded logs and own runtime reports match the source. The frozen pair binds 2071 files per audience. Both audiences passed HTTP and all three earned Short choices through the complete served worker and real non-host rooms. [Source CI](../reviews/tank-interceptor-2026-11-17/source-ci.json), [frozen proof](../reviews/tank-interceptor-2026-11-17/frozen-verification.json). [Interceptor design](TANK_INTERCEPTOR_DESIGN.md).
 
