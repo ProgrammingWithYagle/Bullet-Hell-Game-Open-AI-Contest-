@@ -1,5 +1,9 @@
 # Scoped build variety audit
 
+## Mage Binding
+
+The protocol 87 census purchased 249 legal Binding configurations using the existing 27-SP budget. It included the issued Mage transformations and four General mobility skills. There are 81 Fixed Angle and 81 Reverse Face configurations. [Census](../reviews/mage-binding-2026-11-20/build-census.json) · [Run study](MAGE_BINDING.md).
+
 ## Medic later Field Surgery fittings
 
 The two later choices admit 4,891 legal configurations under ordinary 27-SP purchases. Medic has 389. All 4,751 earlier configurations remain legal. [Census](../reviews/medic-surgery-fittings-2026-11-19/build-census.json).

@@ -1,0 +1,201 @@
+{
+  "passed": true,
+  "protocol": 87,
+  "revision": "3a77cf3d6bb196bbff0743e988a18928e39bf4acf899dfc4a3c1b24103b7c3b1",
+  "bundle": "1e33f5f2d6f0e8ccf637db1e676bc11e5fbcbf052ecd7d970a8196ed7e46995a",
+  "cases": 80,
+  "pairedControlTraces": 16,
+  "exactReplays": 12,
+  "aggregate": [
+    {
+      "mode": "short",
+      "cohort": "solo",
+      "path": "short-solo03.json",
+      "sha256": "26ecbb10ac17a57194e2c7e2c68c9a1515620873ee55fcf2b8c5f208dce4f8fe",
+      "cases": 20,
+      "exactUnusedMatches": 4,
+      "stats": [
+        {
+          "policy": "banked",
+          "won": 2,
+          "casts": 0,
+          "contacts": 0,
+          "usedFitting": 0
+        },
+        {
+          "policy": "unused",
+          "won": 2,
+          "casts": 0,
+          "contacts": 0,
+          "usedFitting": 0
+        },
+        {
+          "policy": "pivot",
+          "won": 3,
+          "casts": 6,
+          "contacts": 6,
+          "usedFitting": 0
+        },
+        {
+          "policy": "fixed",
+          "won": 3,
+          "casts": 5,
+          "contacts": 5,
+          "usedFitting": 3
+        },
+        {
+          "policy": "reverse",
+          "won": 3,
+          "casts": 6,
+          "contacts": 6,
+          "usedFitting": 4
+        }
+      ]
+    },
+    {
+      "mode": "short",
+      "cohort": "party",
+      "path": "short-party03.json",
+      "sha256": "fb8e9a56ec3b8bfde6d2ac917dd71f51a4f0540e46f29f81382681bcdeffc8f0",
+      "cases": 20,
+      "exactUnusedMatches": 4,
+      "stats": [
+        {
+          "policy": "banked",
+          "won": 3,
+          "casts": 0,
+          "contacts": 0,
+          "usedFitting": 0
+        },
+        {
+          "policy": "unused",
+          "won": 3,
+          "casts": 0,
+          "contacts": 0,
+          "usedFitting": 0
+        },
+        {
+          "policy": "pivot",
+          "won": 3,
+          "casts": 10,
+          "contacts": 10,
+          "usedFitting": 0
+        },
+        {
+          "policy": "fixed",
+          "won": 4,
+          "casts": 11,
+          "contacts": 11,
+          "usedFitting": 9
+        },
+        {
+          "policy": "reverse",
+          "won": 3,
+          "casts": 10,
+          "contacts": 10,
+          "usedFitting": 8
+        }
+      ]
+    },
+    {
+      "mode": "standard",
+      "cohort": "solo",
+      "path": "standard-solo03.json",
+      "sha256": "52dc9650a84ee72e16459c2769fea72589ef5ba6d349f674c2a018a99642b976",
+      "cases": 20,
+      "exactUnusedMatches": 4,
+      "stats": [
+        {
+          "policy": "banked",
+          "won": 2,
+          "casts": 0,
+          "contacts": 0,
+          "usedFitting": 0
+        },
+        {
+          "policy": "unused",
+          "won": 2,
+          "casts": 0,
+          "contacts": 0,
+          "usedFitting": 0
+        },
+        {
+          "policy": "pivot",
+          "won": 3,
+          "casts": 22,
+          "contacts": 23,
+          "usedFitting": 0
+        },
+        {
+          "policy": "fixed",
+          "won": 3,
+          "casts": 27,
+          "contacts": 29,
+          "usedFitting": 25
+        },
+        {
+          "policy": "reverse",
+          "won": 3,
+          "casts": 22,
+          "contacts": 23,
+          "usedFitting": 19
+        }
+      ]
+    },
+    {
+      "mode": "standard",
+      "cohort": "party",
+      "path": "standard-party03.json",
+      "sha256": "8c8dc57dc83e297d438ec61c32a88f5d6b23996d021bbd14da8e823352270d67",
+      "cases": 20,
+      "exactUnusedMatches": 4,
+      "stats": [
+        {
+          "policy": "banked",
+          "won": 3,
+          "casts": 0,
+          "contacts": 0,
+          "usedFitting": 0
+        },
+        {
+          "policy": "unused",
+          "won": 3,
+          "casts": 0,
+          "contacts": 0,
+          "usedFitting": 0
+        },
+        {
+          "policy": "pivot",
+          "won": 3,
+          "casts": 22,
+          "contacts": 23,
+          "usedFitting": 0
+        },
+        {
+          "policy": "fixed",
+          "won": 1,
+          "casts": 15,
+          "contacts": 18,
+          "usedFitting": 12
+        },
+        {
+          "policy": "reverse",
+          "won": 3,
+          "casts": 20,
+          "contacts": 18,
+          "usedFitting": 16
+        }
+      ]
+    }
+  ],
+  "totalContacts": 182,
+  "selectiveFixed": {
+    "additionalCases": 4,
+    "won": 4,
+    "locks": 1,
+    "firstPolicyWins": 1,
+    "contacts": 5,
+    "path": "standard-party-selective01.json",
+    "sha256": "34f31bbbd9569db2a048500b27d77b1987adc26953ce548895d26c39adf4649c"
+  }
+}

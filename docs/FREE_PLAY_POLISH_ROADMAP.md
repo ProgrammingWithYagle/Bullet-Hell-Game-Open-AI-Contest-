@@ -111,4 +111,6 @@ Rapid Response has three playable cards. Its two fittings were both exercised at
 
 Preventive Care’s two fittings were exercised at the earned 9-SP Short shop through the complete optimized Solo worker and a real non-host Medic in each review audience. Continue the scoped Medic review with legal hybrid builds and whole runs. Human play, rendering, physical devices, native-language review, listening, motion and final balance remain open. [Preventive Care](MEDIC_PREVENTIVE_CARE.md).
 
-The scoped Medic review covers all three pathways in 96 Standard runs, twelve matched Solo replays and two controlled hybrid checks. Continue with Mage Binding. Human acceptance and final balance remain open. [Medic run review](MEDIC_RUN_REVIEW.md).
+The scoped Medic review covers all three pathways in 96 Standard runs, twelve matched Solo replays and two controlled hybrid checks. Human acceptance and final balance remain open. [Medic run review](MEDIC_RUN_REVIEW.md).
+
+Protocol 87 adds Binding with Pivot Sigil, Fixed Angle and Reverse Face. All six purchased-operation cases passed from installed source across Solo and joined co-op. The retained protocol 86 pair continues to serve review while the Binding candidate proceeds through publication. [Mage Binding](MAGE_BINDING.md).

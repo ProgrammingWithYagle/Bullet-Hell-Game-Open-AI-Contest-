@@ -873,6 +873,30 @@ export class CombatScene extends Phaser.Scene {
       h.lineBetween(x - 5, y - 23, x + 3, y - 18);
     }
     for (const cue of view.classCues) {
+      if (cue.kind === 'mage-pivot-mark' || cue.kind === 'mage-pivot-stroke') {
+        if (now >= cue.until) continue;
+        const remaining = Math.max(0, Math.min(1, (cue.until - now) / Math.max(1, cue.until - cue.at)));
+        const { x, y, radius, toX, toY } = cue;
+        const edge = this.highContrast ? 0xffffff : cue.fixed ? 0xf3d7ad : 0xdccafa;
+        h.fillStyle(0x231730, .62).fillCircle(x, y, 7);
+        h.lineStyle(2, edge, .94).strokeRect(x - 4, y - 4, 8, 8);
+        if (cue.kind === 'mage-pivot-mark') {
+          h.lineStyle(2, edge, .38).strokeCircle(x, y, radius);
+          h.lineStyle(3, edge, .95).beginPath()
+            .arc(x, y, radius, -Math.PI / 2, -Math.PI / 2 + remaining * Math.PI * 2).strokePath();
+          continue;
+        }
+        h.lineStyle(radius * 2, this.highContrast ? 0x100e19 : 0x493d6f, .56).lineBetween(x, y, toX, toY);
+        h.lineStyle(cue.fixed ? 4 : 2, edge, .7 + .3 * remaining).lineBetween(x, y, toX, toY);
+        if (cue.fixed) h.lineStyle(2, edge, .95).strokeRect(toX - 4, toY - 4, 8, 8);
+        if (cue.reversed && Math.hypot(toX - x, toY - y) > 18) {
+          const angle = Math.atan2(toY - y, toX - x), ax = Math.cos(angle), ay = Math.sin(angle);
+          h.lineStyle(2, edge, .95).beginPath()
+            .moveTo(toX - 9 * ax - 5 * ay, toY - 9 * ay + 5 * ax).lineTo(toX, toY)
+            .lineTo(toX - 9 * ax + 5 * ay, toY - 9 * ay - 5 * ax).strokePath();
+        }
+        continue;
+      }
       if (cue.kind === 'medic-precaution-wrap' || cue.kind === 'medic-precaution-station' || cue.kind === 'medic-precaution-dose') {
         if (now >= cue.until) continue;
         const remaining = Math.max(0, Math.min(1, (cue.until - now) / Math.max(1, cue.until - cue.at)));

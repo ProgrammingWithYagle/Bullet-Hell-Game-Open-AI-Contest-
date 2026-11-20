@@ -1,6 +1,13 @@
 # Changelog
 
-Development build **2026.11.20-medic-preventive-care**, protocol 86. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.20-mage-binding**, protocol 87. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-20 — Draw the line
+
+### Mage Binding
+
+- Pivot Sigil draws a steerable line from a floor mark. It spends Binding Sigil recovery and stops at solid cover.
+- Fixed Angle leaves the line in place while the Mage acts. Reverse Face turns the line around once and carries forward its earlier contacts.
 
 ## 2026-11-20 — Prepare the patient
 

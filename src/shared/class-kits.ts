@@ -1,3 +1,4 @@
+import type { PivotStatus, PivotCue } from './mage-pivot-sigil.ts';
 import type { PrecautionCue, PrecautionStatus } from './medic-preventive-care.ts';
 import type { RapidResponseCue, RapidResponseStatus } from './medic-rapid-response.ts';
 import type { FieldDressingCue, FieldDressingStatus } from './medic-field-surgery.ts';
@@ -40,6 +41,7 @@ export type KitStatus = Partial<InterceptorStatus> & Partial<BastionStatus> & Pa
   fieldDressing?: FieldDressingStatus;
   rapidResponse?: RapidResponseStatus;
   precautionWrap?: PrecautionStatus;
+  pivotSigil?: PivotStatus;
   heavyClutchConverted?:number;heavyClutchHandling?:"heavy-traverse-keyed-1"|"heavy-traverse-open-1";heavyTraverseShotRequiresHandling?:"heavy-traverse-keyed-1"|"heavy-traverse-open-1";
   heavyLanyardAt?:number;heavyLanyardSequence?:number;heavyLanyardUntil?:number;heavyLanyardX?:number;heavyLanyardY?:number;heavyLanyardRemaining?:number;heavyTraverseShotPosted?:boolean;heavyTraverseShotX?:number;heavyTraverseShotY?:number;
   heavyClutchLifted?:boolean;heavyClutchUsed?:boolean;heavyClutchForfeited?:number;heavyClutchSlotsRemaining?:number;heavyClutchAt?:number;heavyClutchSequence?:number;heavyClutchBlocked?:boolean;heavyTraverseShotRequiresClutch?:boolean;
@@ -117,7 +119,7 @@ export type Construct = {
   until: number;
 };
 export type KitCue =
-  | FieldDressingCue | RapidResponseCue | PrecautionCue
+  | FieldDressingCue | RapidResponseCue | PrecautionCue | PivotCue
   | BastionCue
   | InterceptorScreenCue
   | FlakBurstCue
@@ -185,6 +187,7 @@ export type KitContext = {
     damage: number,
     touched: Set<string>,
     cover?: boolean,
+    slow?: { ticks: number; multiplier: number },
   ): void;
   shoot(owner: Player, from: Vec, angle: number, damage: number): void;
   erase(point: Vec, radius: number): void;

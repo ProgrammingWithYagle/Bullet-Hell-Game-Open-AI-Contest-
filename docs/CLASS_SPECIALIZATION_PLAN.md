@@ -2,7 +2,7 @@
 
 Current verified source **c05ff5dd2c2ac3c5de16b50284878b78e93c8487** has 95 techniques. Medic has five Field Surgery, three Rapid Response and three Preventive Care cards. [Preventive Care](MEDIC_PREVENTIVE_CARE.md).
 
-The scoped Medic review covers all three pathways in 96 Standard runs, twelve matched Solo replays and two controlled hybrid checks. Continue with Mage Binding. Human acceptance and final balance remain open. [Medic run review](MEDIC_RUN_REVIEW.md).
+The scoped Medic review covers all three pathways in 96 Standard runs, twelve matched Solo replays and two controlled hybrid checks. Human acceptance and final balance remain open. [Medic run review](MEDIC_RUN_REVIEW.md).
 
 The scoped class review covers the timing, movement and reserve choices together.
 
@@ -142,3 +142,5 @@ Original legal 21 SP and later test-pause failures retain exact provenance. Both
 Tank mobile bulwark research includes the retained carry study and corrected Braced Pivot handling. Pivot passed 26 controlled cases, 36 paired arena/difficulty interceptions and 48 natural Short runs with actual earned 9 SP acquisition. Ten of eleven natural turns completed, and all 24 omitted-fitting rows exactly match the preceding carry matrix. Original failures, blocked endpoints and defeats remain. The canonical Tank catalog has zero specialization cards. Continue the authored Tank branch and contrasting handling choice before source/worker/peer admission. [Tank study](TANK_MOBILE_BULWARK_STUDY.md).
 
 Tank has eleven techniques across Mobile Bulwark, Interceptor and Bastion. Relief Watch and Countermarch extend the two early Bastion fittings and have actual 15-SP Solo and non-host room evidence. Continue the class checklist and broader acceptance before treating the class as finished. [Bastion](TANK_BASTION_DESIGN.md) Next work continues with Tank and the remaining class routes before the boss pass.
+
+Protocol 87 adds Binding with Pivot Sigil, Fixed Angle and Reverse Face. All six purchased-operation cases passed from installed source across Solo and joined co-op. The retained protocol 86 pair continues to serve review while the Binding candidate proceeds through publication. [Mage Binding](MAGE_BINDING.md).
