@@ -1,0 +1,137 @@
+{
+  "passed": true,
+  "protocol": 84,
+  "contentRevision": "5efdcb282f139fc46d075048751a8e9a2825ac487adff68c6fe2408a3443c1fc",
+  "transport": "peer",
+  "fitting": "tie",
+  "bought": [
+    {
+      "item": "medic-triage-1",
+      "earned": 3,
+      "clears": 0
+    },
+    {
+      "item": "medic-field-dressing-1",
+      "earned": 3,
+      "clears": 0
+    },
+    {
+      "item": "medic-surgery-steady-step-1",
+      "earned": 9,
+      "clears": 1
+    },
+    {
+      "item": "medic-surgery-tie-off-1",
+      "earned": 15,
+      "clears": 2
+    }
+  ],
+  "patient": "actual-teammate",
+  "opening": {
+    "boss": "pallbearer",
+    "tick": 1083
+  },
+  "before": {
+    "health": 84,
+    "tick": 1555,
+    "qAt": 0,
+    "x": 798.75,
+    "y": 583.5
+  },
+  "recoveryAt": 2040,
+  "preparationAttempts": 1,
+  "doses": 2,
+  "physical": [
+    {
+      "kind": "medic-dressing",
+      "id": 273,
+      "owner": "JWo8AlyHb",
+      "patient": "IlDReaDdD",
+      "x": 798.7080374934185,
+      "y": 583.5595178672368,
+      "toX": 799.0280660277413,
+      "toY": 619.9152823574259,
+      "radius": 15,
+      "at": 1572,
+      "until": 1578
+    },
+    {
+      "kind": "medic-dressing",
+      "id": 276,
+      "owner": "JWo8AlyHb",
+      "patient": "IlDReaDdD",
+      "x": 798.8621434677063,
+      "y": 606.0589901132403,
+      "toX": 799.0280660277413,
+      "toY": 619.9152823574259,
+      "radius": 15,
+      "at": 1578,
+      "until": 1584
+    }
+  ],
+  "manoeuvre": {
+    "walked": 22.5,
+    "knot": {
+      "kind": "medic-dressing-knot",
+      "id": 274,
+      "owner": "JWo8AlyHb",
+      "patient": "IlDReaDdD",
+      "x": 799.0280660277413,
+      "y": 619.9152823574259,
+      "toX": 799.0280660277413,
+      "toY": 619.9152823574259,
+      "radius": 24,
+      "at": 1574,
+      "until": 1578
+    },
+    "kept": {
+      "kind": "medic-dressing",
+      "id": 276,
+      "owner": "JWo8AlyHb",
+      "patient": "IlDReaDdD",
+      "x": 798.8621434677063,
+      "y": 606.0589901132403,
+      "toX": 799.0280660277413,
+      "toY": 619.9152823574259,
+      "radius": 15,
+      "at": 1578,
+      "until": 1584
+    },
+    "shotTick": 1576,
+    "observedShotTick": 1577,
+    "ammunitionSpent": 1
+  },
+  "witnessed": {
+    "nonHost": true,
+    "sharedCue": 273,
+    "tiedMarker": 274,
+    "ownedStatePrivate": true,
+    "ownedSoundsPrivate": true
+  },
+  "firstObservation": {
+    "tick": 1572,
+    "owner": {
+      "x": 798.75,
+      "y": 583.5
+    },
+    "patient": {
+      "x": 799,
+      "y": 620
+    },
+    "remainingWound": 8.400001525878906,
+    "status": {
+      "phase": "applying",
+      "patient": "IlDReaDdD",
+      "startedAt": 1556,
+      "nextAt": 1578,
+      "doses": 1,
+      "ready": true,
+      "canHold": false,
+      "stepRemaining": 32
+    },
+    "privateDoses": 1
+  },
+  "pausedCommandsDiscarded": true,
+  "noCheckpointImports": true,
+  "testedAudience": "public"
+}

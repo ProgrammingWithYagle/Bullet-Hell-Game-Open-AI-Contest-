@@ -6,7 +6,7 @@ import { idleInput, type InputFrame } from '../src/shared/protocol.ts';
 import { viewOf } from '../src/shared/view.ts';
 
 type Options = {
-  fitted?: 'step' | 'aside';
+  fitted?: 'step' | 'aside' | 'tie' | 'wrap';
   allies?: 0 | 1 | 2;
   owned?: boolean;
   difficulty?: 'normal' | 'hellish';
@@ -19,17 +19,20 @@ const sound = (events: ReturnType<Game['drainEvents']>, state: string) =>
 function fixture({ fitted, allies = 0, owned = true, difficulty = 'normal' }: Options = {}) {
   const g = new Game({ mode: 'short', seed: 41, difficulty, maxPlayers: allies + 1,
     openingArenaId: 'gatehouse', arenaSelection: 'fixed' });
-  g.encounter = fitted ? 1 : 0;
+  const later = fitted === 'tie' || fitted === 'wrap';
+  const parent = fitted === 'tie' ? 'step' : fitted === 'wrap' ? 'aside' : fitted;
+  g.encounter = later ? 2 : parent ? 1 : 0;
   const medic = g.addPlayer('medic', 'Iona', 'medic');
   const ally = allies >= 1 ? g.addPlayer('ally', 'Mara', 'soldier') : undefined;
   const other = allies >= 2 ? g.addPlayer('other', 'Second Medic', 'medic') : undefined;
   for (const owner of other ? [medic, other] : [medic]) {
-    assert.equal(owner.totalSp, fitted ? 9 : 3);
+    assert.equal(owner.totalSp, later ? 15 : parent ? 9 : 3);
     assert(g.transact(owner.id, { id: 'triage', kind: 'skill', item: 'medic-triage-1' }).ok);
     if (owned) assert(g.transact(owner.id, { id: 'entry', kind: 'skill', item: fieldSurgeryIds.entry }).ok);
-    if (fitted && owner === medic) {
-      const opposing = fitted === 'step' ? 'aside' : 'step';
-      assert(g.transact(owner.id, { id: 'fitting', kind: 'skill', item: fieldSurgeryIds[fitted] }).ok);
+    if (parent && owner === medic) {
+      const opposing = parent === 'step' ? 'aside' : 'step';
+      assert(g.transact(owner.id, { id: 'fitting', kind: 'skill', item: fieldSurgeryIds[parent] }).ok);
+      if (later) assert(g.transact(owner.id, { id: 'later-fitting', kind: 'skill', item: fieldSurgeryIds[fitted] }).ok);
       const denied = g.transact(owner.id, { id: 'opposing', kind: 'skill', item: fieldSurgeryIds[opposing] });
       assert.equal(denied.reason, 'incompatibleItem');
     }
@@ -252,4 +255,126 @@ test('blocked Set Aside resumption preserves the original deadline and the charg
   assert.equal(sound(f.step({ medic: { technique1: true } }), 'dose').length, 0);
   assert.equal(f.medic.healing, placed);
   assert(!f.state());
+});
+
+test('Tie Off trades the third dose for a real primary round while the original second dose settles', () => {
+  for (const allies of [0, 1] as const) {
+    const f = fixture({ fitted: 'tie', allies });
+    const patient = f.ally ?? f.medic;
+    f.wound(patient, 68);
+    const first = f.begin(patient);
+    f.until(first);
+    const paid = f.medic.qAt, ammo = f.medic.ammo, health = patient.health;
+    assert.equal(sound(f.step({ medic: { moveY: 1 } }), 'step').length, 1);
+    assert(f.g.kitStatus(f.medic.id).fieldDressing?.canTie);
+    assert.equal(sound(f.step({ medic: { moveY: 1, technique1: true } }), 'tie').length, 1);
+    const before = viewOf(f.g, patient.id);
+    const knot = before.classCues.find(cue => cue.kind === 'medic-dressing-knot');
+    assert(knot?.patient === patient.id && knot.owner === f.medic.id && knot.radius === 24);
+    assert.equal(knot.until, first + 6);
+    if (f.ally) assert.equal(before.players.find(player => player.id === f.medic.id)?.kit.fieldDressing, undefined);
+    assert.equal(f.g.kitStatus(f.medic.id).fieldDressing?.ready, false);
+    assert.equal(sound(f.step({ medic: { fire: true } }), 'dose').length, 0);
+    assert.equal(f.medic.ammo, ammo - 1);
+    assert.deepEqual(f.g.classCues().find(cue => cue.kind === 'medic-dressing-knot'), knot);
+    assert.equal(patient.health, health);
+    assert.equal(sound(f.until(first + 6), 'dose').length, 1);
+    assert(patient.health > health && !f.state());
+    assert.equal(sound(f.until(first + 12), 'dose').length, 0);
+    assert.equal(f.medic.qAt, paid);
+  }
+});
+
+test('Movement bound, reach and removal cancel a tied dose and erase its shared anchor', () => {
+  for (const cause of ['leave', 'wall', 'disconnect', 'ownership'] as const) {
+    const f = fixture({ fitted: 'tie', allies: 1 });
+    const patient = f.ally!;
+    f.wound(patient, 68);
+    const first = f.begin(patient);
+    f.until(first);
+    f.step({ medic: { moveY: 1 } });
+    f.step({ medic: { moveY: 1, technique1: true } });
+    const before = patient.health, paid = f.medic.qAt;
+    assert.equal(f.g.kitStatus(f.medic.id).fieldDressing?.phase, 'tied');
+    if (cause === 'wall') f.arena.obstacles.push({ x: f.medic.x + 30, y: f.at.y - 24, width: 8, height: 90 });
+    if (cause === 'disconnect') f.g.setConnected(patient.id, false);
+    if (cause === 'ownership') f.medic.skills = f.medic.skills.filter(skill => skill !== fieldSurgeryIds.tie);
+    const events = f.until(first + 6, cause === 'leave' ? { ally: { dodge: true, moveY: 1 } } : {});
+    assert.equal(sound(events, 'dose').length, 0, cause);
+    assert.equal(patient.health, before, cause);
+    assert.equal(f.medic.qAt, paid);
+    assert(!f.state());
+    assert(!f.g.classCues().some(cue => cue.kind === 'medic-dressing-knot'));
+  }
+});
+
+test('A real raid pull cancels the paid Steady Step alongside ordinary walk input', () => {
+  const f = fixture({ fitted: 'tie' });
+  f.wound(f.medic, 68);
+  const first = f.begin();
+  f.until(first);
+  const m = f.medic, paid = m.qAt, x = m.x, health = m.health;
+  f.g['director'].raids['shapes'].push({
+    kind: 'raid-lane', style: 'pull', id: 65_001, x1: m.x - 60, y1: m.y, x2: m.x + 60, y2: m.y,
+    width: 90, damage: 0, forceX: 45, forceY: 0, disabled: false, dependencies: [], index: 0,
+    at: first + 1, until: first + 4,
+  });
+  assert.equal(sound(f.step({ medic: { moveY: 1 } }), 'stop').length, 1);
+  assert(m.x > x + 1);
+  assert.equal(m.health, health);
+  assert.equal(m.qAt, paid);
+  assert(!f.state());
+});
+
+test('Wrapped Dressing pauses accrued preparation through a primary shot and resumes with the original patient', () => {
+  for (const allies of [0, 1] as const) {
+    const f = fixture({ fitted: 'wrap', allies });
+    const patient = f.ally ?? f.medic;
+    f.wound(patient, 68);
+    const first = f.begin(patient);
+    f.until(first - 9);
+    const health = patient.health, ammo = f.medic.ammo;
+    assert(f.g.kitStatus(f.medic.id).fieldDressing?.canWrap);
+    assert.equal(sound(f.step({ medic: { technique1: true } }), 'wrap').length, 1);
+    const wrapped = f.g.kitStatus(f.medic.id).fieldDressing!;
+    assert(wrapped.phase === 'wrapped' && wrapped.nextAt === f.g.combatTick + 24);
+    assert.equal(f.medic.qAt, 0);
+    assert.equal(f.g.classCues().length, 0);
+    const x = f.medic.x;
+    f.step({ medic: { fire: true, moveX: -1 } });
+    assert(f.medic.x < x && f.medic.ammo === ammo - 1);
+    assert.equal(sound(f.until(first + 4), 'dose').length, 0);
+    assert.equal(patient.health, health);
+    assert.equal(f.medic.qAt, 0);
+    assert.equal(sound(f.step({ medic: { technique1: true } }), 'resume').length, 1);
+    const resumed = f.g.kitStatus(f.medic.id).fieldDressing!;
+    assert(resumed.phase === 'preparing' && resumed.patient === patient.id);
+    assert.equal(resumed.startedAt, f.g.combatTick - 8);
+    assert.equal(resumed.nextAt, f.g.combatTick + 8);
+    assert.equal(f.medic.qAt, 0);
+    assert.equal(sound(f.until(resumed.nextAt!), 'dose').length, 1);
+    assert(patient.health > health && f.medic.qAt > f.g.combatTick);
+    assert.equal(sound(f.until(resumed.nextAt! + 12), 'dose').length, 2);
+    assert(!f.state());
+  }
+});
+
+test('An early wrap cancels normally and an expired wrapped preparation pays no Q recovery', () => {
+  const early = fixture({ fitted: 'wrap' });
+  early.wound(early.medic, 62);
+  early.begin();
+  assert.equal(sound(early.step({ medic: { technique1: true } }), 'stop').length, 1);
+  assert.equal(early.medic.qAt, 0);
+  const expired = fixture({ fitted: 'wrap' });
+  expired.wound(expired.medic, 62);
+  const first = expired.begin();
+  expired.until(first - 9);
+  expired.step({ medic: { technique1: true } });
+  const end = expired.state()!.holdingUntil;
+  expired.until(end - 1);
+  const events = expired.step({ medic: { technique1: true } });
+  assert.equal(sound(events, 'stop').length, 1);
+  assert.equal(sound(events, 'dose').length, 0);
+  assert.equal(expired.medic.qAt, 0);
+  assert(!expired.state());
 });

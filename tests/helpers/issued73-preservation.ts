@@ -1,3 +1,4 @@
+import lateMedicEdition from '../fixtures/medic-issued83-bindings.json';
 import medicEdition from '../fixtures/medic-issued82-bindings.json';
 import interceptorFittings from '../fixtures/tank-interceptor-issued81-bindings.json';
 import bulwarkFittings from '../fixtures/tank-bulwark-issued80-bindings.json';
@@ -11,7 +12,7 @@ const issued = JSON.parse(
 );
 const ids = new Set<string>(issued.issuedSpecializationIds),
   rules = new Set<string>(issued.issuedRuleKeys),
-  newMessages = new Set<string>([...issued.introduced74MessageKeys,...tankEdition.introduced77MessageKeys,...interceptorEdition.introduced78MessageKeys,...bastionEdition.addedLocaleKeys,...lateBastionEdition.addedLocaleKeys,...bulwarkFittings.addedLocaleKeys,...medicEdition.addedLocaleKeys,...interceptorFittings.addedLocaleKeys]);
+  newMessages = new Set<string>([...issued.introduced74MessageKeys,...tankEdition.introduced77MessageKeys,...interceptorEdition.introduced78MessageKeys,...bastionEdition.addedLocaleKeys,...lateBastionEdition.addedLocaleKeys,...bulwarkFittings.addedLocaleKeys,...lateMedicEdition.addedLocaleKeys,...medicEdition.addedLocaleKeys,...interceptorFittings.addedLocaleKeys]);
 export const issuedAtOrBefore73 = (s: { id: string }) => ids.has(s.id);
 export function catalogAt73<
   T extends { rules: Record<string, unknown>; specializationSkills: readonly { id: string }[] },

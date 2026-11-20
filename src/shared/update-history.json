@@ -1,5 +1,5 @@
 {
-  "buildId": "2026.11.19-medic-field-surgery",
+  "buildId": "2026.11.19-medic-surgery-fittings",
   "snapshot": {
     "bosses": 66,
     "classes": 12,
@@ -14,11 +14,27 @@
       "endless",
       "story"
     ],
-    "protocol": 83,
+    "protocol": 84,
     "sharedSkills": 4,
-    "specializationSkills": 87
+    "specializationSkills": 89
   },
   "entries": [
+    {
+      "id": "medic-surgery-fittings",
+      "title": "Keep treatment ready while you act",
+      "date": "2026-11-19",
+      "groups": [
+        {
+          "title": "Medic Field Surgery",
+          "items": [
+            "Tie Off lets you use another action while the same patient waits for one tied dose inside the marked area.",
+            "Wrapped Dressing saves part of the preparation through a brief break. Unwrap it on the same patient, then finish preparation.",
+            "Both fittings cost 3 SP after their own route. They are available after two ordinary Short clears.",
+            "Forced movement now interrupts a Steady Step even while you give a walking command."
+          ]
+        }
+      ]
+    },
     {
       "id": "medic-field-surgery",
       "title": "Treat during a break in the fight",

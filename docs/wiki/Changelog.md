@@ -1,6 +1,15 @@
 # Changelog
 
-Development build **2026.11.19-medic-field-surgery**, protocol 83. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.19-medic-surgery-fittings**, protocol 84. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-19 — Keep treatment ready while you act
+
+### Medic Field Surgery
+
+- Tie Off lets you use another action while the same patient waits for one tied dose inside the marked area.
+- Wrapped Dressing saves part of the preparation through a brief break. Unwrap it on the same patient, then finish preparation.
+- Both fittings cost 3 SP after their own route. They are available after two ordinary Short clears.
+- Forced movement now interrupts a Steady Step even while you give a walking command.
 
 ## 2026-11-19 — Treat during a break in the fight
 

@@ -3,7 +3,8 @@ import assert from "node:assert/strict";
 import { Worker } from "node:worker_threads";
 import { build } from "esbuild";
 import { Game } from "../src/shared/game.ts";
-import { idleInput } from "../src/shared/protocol.ts";
+import { idleInput, type InputFrame } from "../src/shared/protocol.ts";
+import type { View } from "../src/shared/view.ts";
 function checkpoint() {
   // A legal late entrant supplies this integration fixture's budget; it is local Practice only.
   const g = new Game({
@@ -57,11 +58,18 @@ for (const testing of [false, true])
         { execArgv: [] },
       );
       let ready = false,
-        view: any,
+        view: View | undefined,
+        pauseState: { value: boolean; combatTick: number } | undefined,
+        react: ((frame: View) => void) | undefined,
         error: unknown;
       worker.on("message", (m) => {
         if (m.type === "ready") ready = true;
-        if (m.type === "view") view = m.view;
+        if (m.type === "view") {
+          const frame: View = m.view;
+          view = frame;
+          react?.(frame);
+        }
+        if (m.type === "pauseState") pauseState = m;
         if (m.type === "error") error = m;
       });
       worker.on("error", (e) => (error = e));
@@ -78,53 +86,47 @@ for (const testing of [false, true])
         worker.postMessage({ type: "resume", value: checkpoint() });
         await wait(() => !!view, "local boundary");
         worker.postMessage({ type: "start" });
-        await wait(() => view.phase === "combat", "combat");
-        worker.postMessage({
-          type: "input",
-          input: { ...idleInput(), sequence: 1, dodge: true, moveX: 1 },
+        await wait(() => view?.phase === "combat", "combat");
+        const send = (sequence: number, controls: Partial<InputFrame>) => worker.postMessage({
+          type: "input", input: { ...idleInput(), ...controls, sequence, clientTick: view!.combatTick },
         });
-        await wait(
-          () => view.players[0].dodgeInputDown === true,
-          "ordinary dodge",
-        );
-        worker.postMessage({
-          type: "input",
-          input: { ...idleInput(), sequence: 2, sprint: true, moveY: 1 },
-        });
-        await wait(
-          () => view.players[0].dodgeSteered === true,
-          "course correction",
-        );
-        worker.postMessage({
-          type: "input",
-          input: { ...idleInput(), sequence: 3, dodge: true },
-        });
-        await wait(
-          () => view.players[0].dashUntil < view.players[0].dodgeControlUntil,
-          "brake",
-        );
-        const at = view.players[0].dodgeAt;
-        assert.equal(view.players[0].dodgeCharges, 0);
+        let paid: { recovery: number; window: number } | undefined;
+        let turned = false;
+        let brake: View["players"][number] | undefined;
+        react = (frame) => {
+          const player = frame.players[0];
+          // A worker can emit after several simulation steps. Recovery and the acknowledged command survive that batch.
+          if (!paid && player.ack === 1 && player.dodgeCharges === 0 && player.dodgeAt > frame.combatTick) {
+            paid = { recovery: player.dodgeAt, window: player.dodgeControlUntil ?? 0 };
+            send(2, { sprint: true, moveY: 1 });
+          } else if (paid && !turned && player.ack === 2 && player.dodgeSteered && player.dashY > .9) {
+            turned = true;
+            send(3, { dodge: true });
+          } else if (turned && player.ack === 3 && player.dashUntil < (player.dodgeControlUntil ?? 0)) {
+            brake = player;
+            react = undefined;
+          }
+        };
+        send(1, { dodge: true, moveX: 1 });
+        await wait(() => !!paid, "ordinary dodge pays one charge");
+        await wait(() => turned, "course correction turns toward the second command");
+        await wait(() => !!brake, "brake cuts the same dash short");
+        const stopping = brake!;
+        assert.equal(stopping.dodgeControlUntil, paid!.window);
+        assert.equal(stopping.dodgeAt, paid!.recovery);
+        assert.equal(stopping.dodgeCharges, 0);
         worker.postMessage({ type: "pause", value: true });
-        await new Promise((r) => setTimeout(r, 40));
-        const tick = view.combatTick,
-          x = view.players[0].x;
-        worker.postMessage({
-          type: "input",
-          input: { ...idleInput(), sequence: 4, moveX: 1 },
-        });
+        await wait(() => pauseState?.value === true && view?.combatTick === pauseState.combatTick, "pause acknowledged");
+        const tick = view!.combatTick, x = view!.players[0].x;
+        send(4, { moveX: 1 });
         await new Promise((r) => setTimeout(r, 60));
-        assert.equal(view.combatTick, tick);
+        assert.equal(view!.combatTick, tick);
         worker.postMessage({ type: "pause", value: false });
-        await wait(() => view.combatTick > tick + 2, "resume");
-        assert.equal(view.players[0].x, x);
-        assert.equal(view.players[0].dodgeAt, at);
-        assert.equal(view.players[0].dodgeCharges, 0);
-        assert.equal(
-          view.players[0].ack,
-          3,
-          "The paused input was never acknowledged; consumed one-shot Dodge may return to false normally",
-        );
+        await wait(() => pauseState?.value === false && view!.combatTick > tick + 2, "resume");
+        assert.equal(view!.players[0].x, x);
+        assert.equal(view!.players[0].dodgeAt, paid!.recovery);
+        assert.equal(view!.players[0].dodgeCharges, 0);
+        assert.equal(view!.players[0].ack, 3, "The paused fourth input was never acknowledged");
       } finally {
         await worker.terminate();
       }

@@ -856,7 +856,24 @@ export class CombatScene extends Phaser.Scene {
       h.lineStyle(2, this.highContrast ? 0xffffff : 0xe4d9b8, .8).beginPath()
         .arc(interceptOwner.x, interceptOwner.y, 19, -Math.PI / 2, -Math.PI / 2 + fraction * Math.PI * 2).strokePath();
     }
+    if (interceptOwner && dressing?.phase === 'wrapped' && now < (dressing.nextAt ?? now)) {
+      const color = this.highContrast ? 0xffffff : 0xe4d9b8;
+      const x = interceptOwner.x, y = interceptOwner.y;
+      h.lineStyle(2, color, .65).strokeRoundedRect(x - 8, y - 25, 16, 10, 2);
+      h.lineBetween(x - 5, y - 23, x + 3, y - 18);
+    }
     for (const cue of view.classCues) {
+      if (cue.kind === 'medic-dressing-knot') {
+        if (now < cue.until) {
+          const color = this.highContrast ? 0xffffff : 0xe4d9b8;
+          h.lineStyle(2, color, .65);
+          for (let index = 0; index < 4; index++) {
+            const start = index * Math.PI / 2 + Math.PI / 9;
+            h.beginPath().arc(cue.x, cue.y, cue.radius, start, start + Math.PI / 3).strokePath();
+          }
+        }
+        continue;
+      }
       if (cue.kind === 'medic-dressing') {
         const fade = Math.max(0, Math.min(1, (cue.until - now) / (cue.until - cue.at)));
         if (fade <= 0) continue;

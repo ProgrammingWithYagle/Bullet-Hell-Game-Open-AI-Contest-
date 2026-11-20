@@ -1592,6 +1592,10 @@ export class Game {
     );
     const raidForce = raidMovement(this.director.raids.cues(), p, now);
     const earlyForce = earlyWatchMovement(this.director.earlyWatch.cues(), p, now, now < p.dashUntil);
+    if (p.classId === 'medic' && len > 0 && this.fieldSurgery.hasTreatments &&
+        (p.x !== p.oldX || p.y !== p.oldY || [environment, terrain, raidForce, earlyForce].some(force => Math.abs(force.x) + Math.abs(force.y) > 1e-6))) {
+      this.fieldSurgery.interruptForcedStep(p.id);
+    }
     const dash = now < p.dashUntil,
       speed = dash
         ? (this.interceptor.speed(p.id,now) ?? this.classKits.chargeSpeed(p.id, now) ?? rule.dodgeSpeed)

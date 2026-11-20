@@ -6,6 +6,8 @@ export const fieldSurgeryIds = {
   entry: 'medic-field-dressing-1',
   step: 'medic-surgery-steady-step-1',
   aside: 'medic-surgery-set-aside-1',
+  tie: 'medic-surgery-tie-off-1',
+  wrap: 'medic-surgery-wrapped-dressing-1',
 } as const;
 export const fieldDressingRules = {
   range: 104,
@@ -16,11 +18,14 @@ export const fieldDressingRules = {
   doseAmount: 12,
   stepDistance: 32,
   holdTicks: 24,
+  tieMinimumWalk: 5,
+  tiePatientRadius: 24,
+  wrapRemainingMax: 8,
   cueTicks: 6,
 } as const;
 
 export type FieldDressingStatus = {
-  phase: 'idle' | 'preparing' | 'applying' | 'held';
+  phase: 'idle' | 'preparing' | 'applying' | 'held' | 'tied' | 'wrapped';
   ready: boolean;
   patient?: string;
   startedAt?: number;
@@ -28,9 +33,10 @@ export type FieldDressingStatus = {
   doses?: number;
   stepRemaining?: number;
   canHold?: boolean;
+  canTie?: boolean;
+  canWrap?: boolean;
 };
-export type FieldDressingCue = Vec & {
-  kind: 'medic-dressing';
+type DressingCue = Vec & {
   id: number;
   owner: string;
   patient: string;
@@ -40,6 +46,8 @@ export type FieldDressingCue = Vec & {
   at: number;
   until: number;
 };
+
+export type FieldDressingCue = DressingCue & ({ kind: 'medic-dressing' } | { kind: 'medic-dressing-knot' });
 
 type Treatment = {
   target: string;
@@ -53,8 +61,12 @@ type Treatment = {
   walking: boolean;
   setAside: boolean;
   holdingUntil: number;
+  fittingRequest?: 'tie' | 'wrap';
+  usedFitting?: 'tie' | 'wrap';
+  patientAnchor?: FieldDressingCue;
+  preparationLeft?: number;
 };
-type CareEvent = 'prepare' | 'dose' | 'step' | 'hold' | 'resume' | 'stop' | 'finish';
+type CareEvent = 'prepare' | 'dose' | 'step' | 'hold' | 'resume' | 'stop' | 'finish' | 'tie' | 'wrap';
 export type FieldSurgeryWorld = {
   tick: number;
   players: ReadonlyMap<string, Player>;
@@ -83,6 +95,12 @@ const canHold = (owner: Player, job: Treatment) =>
   job.dosesGiven > 0 && !job.setAside && owner.skills.includes(fieldSurgeryIds.aside);
 const canWalk = (owner: Player, job: Treatment) =>
   job.dosesGiven > 0 && job.walked < fieldDressingRules.stepDistance && owner.skills.includes(fieldSurgeryIds.step);
+
+const canTie = (owner: Player, job: Treatment) =>
+  job.walked >= fieldDressingRules.tieMinimumWalk && canWalk(owner, job) && owner.skills.includes(fieldSurgeryIds.tie);
+const canWrap = (owner: Player, job: Treatment, tick: number) =>
+  job.dosesGiven === 0 && !job.setAside && owner.skills.includes(fieldSurgeryIds.wrap) &&
+  job.nextAt > tick && job.nextAt - tick <= fieldDressingRules.wrapRemainingMax;
 
 function selectPatient(owner: Player, aim: number, world: FieldSurgeryWorld) {
   const facing = { x: Math.cos(aim), y: Math.sin(aim) };
@@ -115,6 +133,7 @@ export class FieldSurgery {
     return job && {
       target: job.target, at: job.at, nextAt: job.nextAt, dosesGiven: job.dosesGiven,
       limit: job.limit, walked: job.walked, holdingUntil: job.holdingUntil,
+      usedFitting: job.usedFitting, patientAnchor: job.patientAnchor && at(job.patientAnchor), preparationLeft: job.preparationLeft,
     };
   }
 
@@ -127,18 +146,25 @@ export class FieldSurgery {
       return { phase: 'idle', ready: still && owner.qAt <= world.tick && !!target, patient: target?.id };
     }
     const target = world.players.get(job.target);
-    const phase = job.holdingUntil ? 'held' : job.dosesGiven ? 'applying' : 'preparing';
+    const phase = job.holdingUntil ? (job.preparationLeft ? 'wrapped' : 'held') :
+      job.patientAnchor ? 'tied' : job.dosesGiven ? 'applying' : 'preparing';
     return {
       phase, patient: job.target, startedAt: job.at,
       nextAt: job.holdingUntil || job.nextAt, doses: job.dosesGiven,
-      ready: phase !== 'held' || (still && injured(target) && withinReach(owner, target, world)),
+      ready: !job.patientAnchor && (!job.holdingUntil || (still && injured(target) && withinReach(owner, target, world))),
       canHold: phase === 'applying' && canHold(owner, job),
-      stepRemaining: canWalk(owner, job) ? fieldDressingRules.stepDistance - job.walked : undefined,
+      canTie: (phase === 'applying' && job.nextAt > world.tick + 1 && canTie(owner, job)) || undefined,
+      canWrap: (phase === 'preparing' && canWrap(owner, job, world.tick + 1)) || undefined,
+      stepRemaining: phase === 'applying' && canWalk(owner, job) ? fieldDressingRules.stepDistance - job.walked : undefined,
     };
   }
 
   cues(now: number) {
-    return [...this.pulses.values()].filter(pulse => pulse.until > now);
+    const cues = [...this.pulses.values()].filter(pulse => pulse.until > now);
+    for (const { patientAnchor } of this.treatments.values()) {
+      if (patientAnchor && patientAnchor.until > now) cues.push(patientAnchor);
+    }
+    return cues;
   }
 
   command(owner: Player, input: InputFrame, world: FieldSurgeryWorld) {
@@ -160,6 +186,7 @@ export class FieldSurgery {
   }
 
   private continueTreatment(owner: Player, input: InputFrame, job: Treatment, world: FieldSurgeryWorld) {
+    if (job.patientAnchor) return;
     if (job.holdingUntil) {
       if (!input.technique1 || moving(input) || occupied(input) || recovering(owner, world.tick) ||
           world.tick >= job.holdingUntil) return;
@@ -167,8 +194,16 @@ export class FieldSurgery {
       if (!injured(target) || !withinReach(owner, target, world)) return;
       job.holdingUntil = 0;
       job.last = at(owner);
-      job.nextAt = Math.max(world.tick, job.nextAt);
+      if (job.preparationLeft) {
+        job.at = world.tick - (fieldDressingRules.preparationTicks - job.preparationLeft);
+        job.nextAt = world.tick + job.preparationLeft;
+        job.preparationLeft = undefined;
+      } else job.nextAt = Math.max(world.tick, job.nextAt);
       world.report(owner, 'resume', owner);
+      return;
+    }
+    if (input.technique1 && !moving(input) && !occupied(input) && canWrap(owner, job, world.tick)) {
+      job.fittingRequest = 'wrap';
       return;
     }
     if (input.technique1 && !moving(input) && !occupied(input) && canHold(owner, job)) {
@@ -178,8 +213,17 @@ export class FieldSurgery {
       world.report(owner, 'hold', owner);
       return;
     }
-    job.walking = moving(input) && canWalk(owner, job);
+    job.walking = moving(input) && distance(owner, job.last) <= .05 && canWalk(owner, job);
+    if (input.technique1 && job.walking && job.nextAt > world.tick && !occupied(input) && canTie(owner, job)) {
+      job.fittingRequest = 'tie';
+      return;
+    }
     if (input.technique1 || occupied(input) || (moving(input) && !job.walking)) this.stop(owner, job, world);
+  }
+
+  interruptForcedStep(id: string) {
+    const job = this.treatments.get(id);
+    if (job) job.walking = false;
   }
 
   advance(world: FieldSurgeryWorld) {
@@ -191,6 +235,7 @@ export class FieldSurgery {
       }
       const target = world.players.get(job.target);
       if (!injured(target) || owner.damageTaken !== job.damageBefore ||
+          (job.usedFitting && !owner.skills.includes(fieldSurgeryIds[job.usedFitting])) ||
           (job.dosesGiven === 0 && owner.qAt > world.tick)) {
         this.stop(owner, job, world);
         continue;
@@ -199,8 +244,35 @@ export class FieldSurgery {
         if (world.tick >= job.holdingUntil) this.stop(owner, job, world);
         continue;
       }
-      if (recovering(owner, world.tick) || !withinReach(owner, target, world) || !this.acceptMovement(owner, job, world)) {
+      const beforeWalk = job.walked;
+      const reachable = withinReach(owner, target, world);
+      const valid = job.patientAnchor ? distance(target, job.patientAnchor) <= fieldDressingRules.tiePatientRadius :
+        !recovering(owner, world.tick) && this.acceptMovement(owner, job, world);
+      if (!reachable || !valid) {
         this.stop(owner, job, world);
+        continue;
+      }
+      if (job.fittingRequest === 'tie') {
+        if (job.walked === beforeWalk) {
+          this.stop(owner, job, world);
+          continue;
+        }
+        job.fittingRequest = undefined;
+        job.usedFitting = 'tie';
+        job.patientAnchor = {
+          kind: 'medic-dressing-knot', id: world.nextId(), owner: owner.id, patient: target.id,
+          x: target.x, y: target.y, toX: target.x, toY: target.y,
+          radius: fieldDressingRules.tiePatientRadius, at: world.tick, until: job.nextAt,
+        };
+        job.limit = job.dosesGiven + 1;
+        world.report(owner, 'tie', owner);
+      } else if (job.fittingRequest === 'wrap') {
+        job.fittingRequest = undefined;
+        job.usedFitting = 'wrap';
+        job.setAside = true;
+        job.preparationLeft = job.nextAt - world.tick;
+        job.holdingUntil = world.tick + fieldDressingRules.holdTicks;
+        world.report(owner, 'wrap', owner);
         continue;
       }
       if (world.tick < job.nextAt) continue;

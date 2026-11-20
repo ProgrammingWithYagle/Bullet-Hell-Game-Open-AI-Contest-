@@ -4,6 +4,10 @@ Development remains active. Only the user decides when a class or the game is fi
 
 Read [Interceptor](../docs/TANK_INTERCEPTOR_DESIGN.md), [Mobile Bulwark](../docs/TANK_MOBILE_BULWARK_DESIGN.md), [Tethered Traverse](../docs/HEAVY_TETHERED_TRAVERSE_DESIGN.md), [Heavy](../docs/HEAVY_SPECIALIZATIONS.md), [further studies](../docs/HEAVY_FURTHER_ROUTE_STUDIES.md), [Soldier](../docs/SOLDIER_SPECIALIZATIONS.md), [open Soldier routes](../docs/SOLDIER_ROUTE_CANDIDATES.md), [class plan](../docs/CLASS_SPECIALIZATION_PLAN.md), [Service Yard](../docs/SERVICE_YARD_WORKING.md) and [bounded storage](../docs/REVIEW_STORAGE_POLICY.md). Current source/accepted proof outranks historical study proposals.
 
+## Protocol 84 later Field Surgery candidate
+
+The local gate passed 2,683 tests. Four exact source transport checks recorded ordinary 15-SP Tie Off and Wrapped Dressing, and six staged safe-shop pairs matched through the remaining encounters. Verify the frozen pair and exact GitHub jobs before promoting. Rapid Response is the next Medic route. [Field Surgery](../docs/MEDIC_FIELD_SURGERY.md) · [Local evidence](../reviews/medic-surgery-fittings-2026-11-19/local-evidence-bindings.json).
+
 ## Current exact protocol 83 Medic Field Surgery review
 
 Source **be2e815cd2050695a125d9aae64810ce62d3387e**, build **2026.11.19-medic-field-surgery**, protocol **83**, catalog **87**. The exact local and GitHub checks passed 2,672 tests and all seven checks. Each frozen audience binds 2,090 files and passed seven checks. Testing uses [5410](http://127.0.0.1:5410/) with backend 2786. Public review uses [5411](http://127.0.0.1:5411/) with backend 2787. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44630096794) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44630124317) · [Frozen results](../reviews/medic-field-surgery-2026-11-19/frozen-verification.json) · [Saved evidence](../reviews/medic-field-surgery-2026-11-19/publication-byte-bindings.json).

@@ -1,5 +1,9 @@
 # Scoped build variety audit
 
+## Medic later Field Surgery fittings
+
+The two later choices admit 4,891 legal configurations under ordinary 27-SP purchases. Medic has 389. All 4,751 earlier configurations remain legal. [Census](../reviews/medic-surgery-fittings-2026-11-19/build-census.json).
+
 ## Medic Field Surgery
 
 Real purchase calls under the shared 27-SP economy verify 4,751 legal configurations. Medic has 249, with 81 for each early fitting. All 4,502 previously legal configurations remain available. [Census](../reviews/medic-field-surgery-2026-11-19/build-census.json).

@@ -1,0 +1,31 @@
+{
+  "sameWholeOptimizedWorkers": true,
+  "filteredOnlyFirstDodgeView": true,
+  "results": [
+    {
+      "mode": "prior-coalesced",
+      "passed": 0,
+      "failed": 2,
+      "scope": [
+        "public",
+        "testing"
+      ],
+      "source": "be2e815cd2050695a125d9aae64810ce62d3387e",
+      "bundle": "c2fce492df0536c62d00905a8a2969c68cd6800dd1259569134c50594734941e",
+      "logSha256": "8aab99fb41833ab8d5d344882ec24039e920eda6c5592444a7ac1bc85313f544"
+    },
+    {
+      "mode": "fixed-coalesced",
+      "passed": 2,
+      "failed": 0,
+      "scope": [
+        "public",
+        "testing"
+      ],
+      "source": "be2e815cd2050695a125d9aae64810ce62d3387e",
+      "bundle": "34cad2dc449d7c4174eb10d2289989cb71b0080908f87cd43fffe3013692a3b0",
+      "logSha256": "89dbec76d4cae8c1479c2af4cfc1e7d8fa0107616210753febbf1db617fa2789"
+    }
+  ],
+  "diagnosis": "Dodge recovery and the acknowledged command remain visible even when the one-shot input flag clears before observation."
+}
