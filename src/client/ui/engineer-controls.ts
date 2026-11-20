@@ -12,10 +12,13 @@ import { profileText } from "../profile-text.ts";
 import { escape as e } from "./html.ts";
 
 type KitAction =
-  "q" | "e" | "ultimate" | "technique1" | "technique2" | "technique3" | "reload" | "fire";
+  "q" | "e" | "ultimate" | "technique1" | "technique2" | "technique3" | "reload" | "fire" | "interact";
 // These are affected inputs, not an inference from a technique's visual frame.
 // Breach Casings also works when a placed charge triggers without remote input.
 const controlsByTechnique: Record<string, readonly KitAction[]> = {
+  "medic-rescue-run-1": ["technique2", "e", "interact"],
+  "medic-response-switchback-1": ["technique2"],
+  "medic-response-moving-handoff-1": ["technique2"],
   "medic-field-dressing-1": ["technique1", "q"],
   "medic-surgery-steady-step-1": ["technique1"],
   "medic-surgery-set-aside-1": ["technique1", "fire"],
@@ -82,7 +85,7 @@ const controlsByTechnique: Record<string, readonly KitAction[]> = {
 export const techniqueControlSlots = (id: string) =>
   controlsByTechnique[id] ?? [];
 export const techniqueSlotLabel = (slot: KitAction) =>
-  slot === "reload" ? t("ui.reload") : slot === "fire" ? t("ui.tank.primary") : slot === "q"
+  slot === "interact" ? t("ui.revive") : slot === "reload" ? t("ui.reload") : slot === "fire" ? t("ui.tank.primary") : slot === "q"
     ? "Q"
     : t(
         slot === "e"

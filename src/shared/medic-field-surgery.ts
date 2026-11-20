@@ -1,4 +1,5 @@
-import { distance, segmentRect, type Rect } from './geometry.ts';
+import { distance, type Rect } from './geometry.ts';
+import { activeCareParticipant as active, aimedCarePatient, careLineClear, injuredCareParticipant as injured } from './medic-patients.ts';
 import type { Player } from './game.ts';
 import type { InputFrame, Vec } from './protocol.ts';
 
@@ -77,15 +78,11 @@ export type FieldSurgeryWorld = {
   report: (owner: Player, event: CareEvent, at: Vec) => void;
 };
 
-const active = (player: Player | undefined): player is Player =>
-  !!player && player.connected && !player.expired && player.status === 'active' && player.health > 0;
 const owns = (owner: Player | undefined): owner is Player =>
   active(owner) && owner.classId === 'medic' && owner.skills.includes(fieldSurgeryIds.entry);
-const injured = (player: Player | undefined): player is Player =>
-  active(player) && player.maxHealth - player.health > 1e-6;
 const withinReach = (owner: Player, target: Player, world: FieldSurgeryWorld) =>
   owner.id === target.id || (distance(owner, target) <= fieldDressingRules.range &&
-    world.obstacles.every(wall => segmentRect(owner, target, wall, 1) === null));
+    careLineClear(owner, target, world.obstacles));
 const moving = (input: InputFrame) => Math.hypot(input.moveX, input.moveY) > 1e-6;
 const occupied = (i: InputFrame) => i.fire || i.dodge || i.reload || i.q || i.e || i.ultimate ||
   i.technique2 || i.technique3 || i.interact || i.sprint || i.supply >= 0;
@@ -103,21 +100,7 @@ const canWrap = (owner: Player, job: Treatment, tick: number) =>
   job.nextAt > tick && job.nextAt - tick <= fieldDressingRules.wrapRemainingMax;
 
 function selectPatient(owner: Player, aim: number, world: FieldSurgeryWorld) {
-  const facing = { x: Math.cos(aim), y: Math.sin(aim) };
-  let closest: Player | undefined;
-  let nearestDistance = Infinity;
-  for (const peer of world.players.values()) {
-    if (peer.id === owner.id || !active(peer)) continue;
-    const dx = peer.x - owner.x, dy = peer.y - owner.y;
-    const span = Math.hypot(dx, dy);
-    if (span > fieldDressingRules.range || span > nearestDistance ||
-        dx * facing.x + dy * facing.y < span * fieldDressingRules.facingDot) continue;
-    if (span === nearestDistance && closest && peer.id >= closest.id) continue;
-    closest = peer;
-    nearestDistance = span;
-  }
-  const target = closest ?? owner;
-  return injured(target) && withinReach(owner, target, world) ? target : undefined;
+  return aimedCarePatient(owner, aim, world.players, world.obstacles, fieldDressingRules.range, fieldDressingRules.facingDot);
 }
 
 export class FieldSurgery {

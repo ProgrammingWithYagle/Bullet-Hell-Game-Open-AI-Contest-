@@ -1,3 +1,4 @@
+import { rapidResponseIds } from './medic-rapid-response.ts';
 import { fieldSurgeryIds } from './medic-field-surgery.ts';
 import { bastionIds } from './tank-bastion.ts';
 import catalog from '../../content/catalog.json';
@@ -8,6 +9,9 @@ const builder='engineer-builder-1',longspan='engineer-builder-longspan-1',wings=
 const replacesTurrets=(id:string)=>catalog.skills.some(s=>s.id===id&&(('transform'in s&&s.transform==='crossfire-pair')||('extraTurrets'in s.effects&&(s.effects.extraTurrets??0)>0)));
 /** Same conflicts for inspection, authoritative spending and boundary restoration. */
 export function conflictingSkill(owned:readonly string[],candidate:string):string|undefined {
+  const otherResponse = candidate === rapidResponseIds.switchback ? rapidResponseIds.handoff :
+    candidate === rapidResponseIds.handoff ? rapidResponseIds.switchback : undefined;
+  if (otherResponse && owned.includes(otherResponse)) return otherResponse;
   const otherSurgery = candidate === fieldSurgeryIds.step ? fieldSurgeryIds.aside :
     candidate === fieldSurgeryIds.aside ? fieldSurgeryIds.step : undefined;
   if (otherSurgery && owned.includes(otherSurgery)) return otherSurgery;

@@ -1,4 +1,4 @@
-import { medicActions, medicDressingLabel } from './medic-actions.ts';
+import { medicActions, medicDressingLabel, medicResponseLabel } from './medic-actions.ts';
 import {tankActions,tankHudLabel,tankCommitBlocked} from './tank-actions.ts';
 import{heavyActions}from'./heavy-actions.ts';
 import{heavyHudLabel}from'./ui/heavy-controls.ts';
@@ -767,7 +767,7 @@ function update(view: View) {
       t('ability.' + cl.abilities[1].id + '.name'),
     ],
     ['ultimate', ultimateLabel, p.ultimateAt, t(redoubt?'skill.engineer-builder-redoubt-1.description':'ability.' + cl.ultimate.id + '.name')],
-    ...machineryActions.extras.map(a=>[a.key,(p.classId==='tank'?tankHudLabel(p,a.key,view.combatTick):p.classId==='soldier'?soldierHudLabel(p,a.key,view.combatTick):p.classId==='heavy'?heavyHudLabel(p,a.key,view.combatTick):p.classId==='medic'?medicDressingLabel(p,view.combatTick):t('skill.'+a.id+'.name')),a.at,t('skill.'+a.id+'.description')] as const),
+    ...machineryActions.extras.map(a=>[a.key,(p.classId==='tank'?tankHudLabel(p,a.key,view.combatTick):p.classId==='soldier'?soldierHudLabel(p,a.key,view.combatTick):p.classId==='heavy'?heavyHudLabel(p,a.key,view.combatTick):p.classId==='medic'?(a.key==='technique2'?medicResponseLabel(p):medicDressingLabel(p,view.combatTick)):t('skill.'+a.id+'.name')),a.at,t('skill.'+a.id+'.description')] as const),
   ] as const) {
     let e = abilityList.querySelector<HTMLElement>('[data-ability="' + key + '"]');
     if (!e) {

@@ -11,6 +11,10 @@ export type SpecializationMap = {
 };
 // Authored positions belong to real techniques; no proposed family becomes an empty card.
 const positions: Record<string, Point> = {
+  "medic-recovery-1": { x: 500, y: 75 },
+  "medic-rescue-run-1": { x: 500, y: 255 },
+  "medic-response-switchback-1": { x: 230, y: 505 },
+  "medic-response-moving-handoff-1": { x: 770, y: 505 },
   "medic-triage-1": { x: 500, y: 75 },
   "medic-field-dressing-1": { x: 500, y: 255 },
   "medic-surgery-steady-step-1": { x: 230, y: 505 },
@@ -129,7 +133,7 @@ export function specializationMapLayout(
     const offset = single
       ? 0
       : routes.findIndex((r) => r.id === technique?.subbranchId) * 1050;
-    const attached = n.reference && !single && classId === 'tank'
+    const attached = n.reference && !single && (classId === 'tank' || references.length > 1)
       ? routes.flatMap((r, i) => techniques.some(t => t.subbranchId === r.id && t.prerequisite === n.id) ? [i] : [])
       : [];
     return {

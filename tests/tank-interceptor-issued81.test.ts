@@ -1,3 +1,4 @@
+import responseEdition from './fixtures/medic-issued84-bindings.json';
 import lateMedicEdition from './fixtures/medic-issued83-bindings.json';
 import medicEdition from './fixtures/medic-issued82-bindings.json';
 import assert from 'node:assert/strict';
@@ -16,7 +17,7 @@ const issued=JSON.parse(raw);
 const sha=(text:string)=>createHash('sha256').update(text).digest('hex');
 
 test('the issued Bulwark fittings edition restores its 299 exact local builds',()=>{
-  assert.equal(PROTOCOL,84);
+  assert.equal(PROTOCOL,85);
   assert.equal(issued.protocol,81);
   assert.equal(issued.sourceCommit,binding.sourceCommit);
   assert.equal(issued.contentRevision,binding.sourceRevision);
@@ -81,7 +82,7 @@ test('issued 81 retains both HUD layouts, three remaps and all twelve local hist
 
 test('the Interceptor fittings extend all fifteen issued 81 dictionaries',()=>{
   assert.equal(Object.keys(issued.dictionaries).length,15);
-  const added=new Set([...binding.addedLocaleKeys,...lateMedicEdition.addedLocaleKeys,...medicEdition.addedLocaleKeys]);
+  const added=new Set([...binding.addedLocaleKeys,...responseEdition.addedLocaleKeys,...lateMedicEdition.addedLocaleKeys,...medicEdition.addedLocaleKeys]);
   assert.equal(binding.addedLocaleKeys.length,10);
   for(const [id,digest] of Object.entries(issued.dictionaries)){
     const locale=JSON.parse(readFileSync(new URL('../locales/'+id+'.json',import.meta.url),'utf8'));

@@ -1,3 +1,4 @@
+import { rapidResponseRules } from '../shared/medic-rapid-response.ts';
 import {drawTankGate} from './tank-bastion-presentation.ts';
 import {portClosedPieces} from '../shared/tank-bulwark-port.ts';
 import{lineworkRenderPlan,drawLinework,lineworkProjectilePlan}from './heavy-linework-presentation.ts';
@@ -850,6 +851,15 @@ export class CombatScene extends Phaser.Scene {
       h.lineStyle(2,this.highContrast?0xffffff:0xb9d5d0,.45).lineBetween(x+s*64,y-c*64,x-s*64,y+c*64);
       if(k.interceptorPhase==='winding'){const progress=Math.max(0,Math.min(1,(now-(k.interceptorStartedAt??now))/Math.max(1,(k.interceptorReadyAt??now)-(k.interceptorStartedAt??now))));h.lineStyle(2,0xd9c08d,.8).beginPath().arc(interceptOwner.x,interceptOwner.y,18,-Math.PI/2,-Math.PI/2+progress*Math.PI*2).strokePath();}
     }
+    const response = interceptOwner?.kit.rapidResponse;
+    if (interceptOwner && response?.phase === 'running' && now < (response.until ?? now)) {
+      const progress = Math.min(1, (response.walked ?? 0) / rapidResponseRules.requiredWalk);
+      h.lineStyle(2, this.highContrast ? 0xffffff : 0x98bbab, .85).beginPath()
+        .arc(interceptOwner.x, interceptOwner.y, 17, -Math.PI / 2, -Math.PI / 2 + progress * Math.PI * 2).strokePath();
+    } else if (interceptOwner && response?.phase === 'arrived' && now < (response.until ?? now)) {
+      h.lineStyle(2, this.highContrast ? 0xffffff : 0x98bbab, .85)
+        .strokeRoundedRect(interceptOwner.x - 6, interceptOwner.y - 26, 12, 9, 2);
+    }
     const dressing = interceptOwner?.kit.fieldDressing;
     if (interceptOwner && dressing?.phase === 'preparing' && dressing.startedAt !== undefined && dressing.nextAt !== undefined) {
       const fraction = Math.max(0, Math.min(1, (now - dressing.startedAt) / Math.max(1, dressing.nextAt - dressing.startedAt)));
@@ -863,6 +873,16 @@ export class CombatScene extends Phaser.Scene {
       h.lineBetween(x - 5, y - 23, x + 3, y - 18);
     }
     for (const cue of view.classCues) {
+      if (cue.kind === 'medic-response-dose') {
+        const fade = Math.max(0, Math.min(1, (cue.until - now) / (cue.until - cue.at)));
+        if (fade <= 0) continue;
+        const color = this.highContrast ? 0xffffff : 0x98bbab;
+        const r = cue.radius + 4 * (1 - fade), x = cue.toX, y = cue.toY;
+        h.lineStyle(2, color, .8 * fade).beginPath().moveTo(x, y - r).lineTo(x + r, y)
+          .lineTo(x, y + r).lineTo(x - r, y).closePath().strokePath();
+        if (cue.owner !== cue.patient) h.lineStyle(1.5, color, .55 * fade).lineBetween(cue.x, cue.y, x, y);
+        continue;
+      }
       if (cue.kind === 'medic-dressing-knot') {
         if (now < cue.until) {
           const color = this.highContrast ? 0xffffff : 0xe4d9b8;

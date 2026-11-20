@@ -4,6 +4,10 @@ Development remains active. Only the user decides when a class or the game is fi
 
 Read [Interceptor](../docs/TANK_INTERCEPTOR_DESIGN.md), [Mobile Bulwark](../docs/TANK_MOBILE_BULWARK_DESIGN.md), [Tethered Traverse](../docs/HEAVY_TETHERED_TRAVERSE_DESIGN.md), [Heavy](../docs/HEAVY_SPECIALIZATIONS.md), [further studies](../docs/HEAVY_FURTHER_ROUTE_STUDIES.md), [Soldier](../docs/SOLDIER_SPECIALIZATIONS.md), [open Soldier routes](../docs/SOLDIER_ROUTE_CANDIDATES.md), [class plan](../docs/CLASS_SPECIALIZATION_PLAN.md), [Service Yard](../docs/SERVICE_YARD_WORKING.md) and [bounded storage](../docs/REVIEW_STORAGE_POLICY.md). Current source/accepted proof outranks historical study proposals.
 
+## Protocol 85 Rapid Response candidate
+
+Protocol 85 adds Rapid Response with three cards. The local gate passed 2,705 tests and seven checks, and all six exact source transport cases passed. Verify both frozen audiences and the exact GitHub workflows before promotion. [Rapid Response](../docs/MEDIC_RAPID_RESPONSE.md) · [Local evidence](../reviews/medic-rapid-response-2026-11-19/local-evidence-bindings.json).
+
 ## Current exact protocol 84 Field Surgery fittings review
 
 Source **ec18a2786c9e5935431e92c1482d97b836610c64**, build **2026.11.19-medic-surgery-fittings**, protocol **84**, catalog **89**. The local gate and both exact GitHub workflows passed 2,683 tests and all seven checks. Each frozen audience binds 2,094 files and passed eleven checks. Testing uses [5412](http://127.0.0.1:5412/) with backend 2788. Public review uses [5413](http://127.0.0.1:5413/) with backend 2789. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44669006051) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44669025410) · [Frozen results](../reviews/medic-surgery-fittings-2026-11-19/frozen-verification.json) · [Saved evidence](../reviews/medic-surgery-fittings-2026-11-19/publication-byte-bindings.json).

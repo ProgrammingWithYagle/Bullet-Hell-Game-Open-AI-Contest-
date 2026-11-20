@@ -1,6 +1,14 @@
 # Changelog
 
-Development build **2026.11.19-medic-surgery-fittings**, protocol 84. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.19-medic-rapid-response**, protocol 85. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-19 — Reach the patient
+
+### Medic Rapid Response
+
+- Rescue Run spends Cleansing Serum recovery for a brief steerable run and a focused dose after stopping.
+- Switchback rewards a sharp turn with one longer run. Moving Handoff delivers a smaller dose without stopping.
+- Manual revival now needs a clear path to the downed teammate. The usual revive time and difficulty rules still apply.
 
 ## 2026-11-19 — Keep treatment ready while you act
 

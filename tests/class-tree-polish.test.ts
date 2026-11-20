@@ -34,11 +34,14 @@ test('The specialization graph contains only real techniques, their General refe
     'heavy-linework-guide-1>heavy-linework-reserve-1',
   ]));
   const medic = specializationMapLayout('medic')!;
-  assert.deepEqual(medic.nodes.filter(node => node.reference).map(node => node.id), ['medic-triage-1']);
+  assert.deepEqual(medic.nodes.filter(node => node.reference).map(node => node.id), ['medic-triage-1', 'medic-recovery-1']);
   const medicTechniques = data.specializationSkills.filter(skill => skill.classId === 'medic');
   assert.deepEqual(medic.nodes.filter(node => !node.reference).map(node => node.id), medicTechniques.map(skill => skill.id));
   assert.deepEqual(medic.edges, medicTechniques.map(skill => ({ from: skill.prerequisite, to: skill.id })));
-  assert.deepEqual(medic.exclusions, [{ a: 'medic-surgery-steady-step-1', b: 'medic-surgery-set-aside-1' }]);
+  assert.deepEqual(medic.exclusions, [
+    { a: 'medic-surgery-steady-step-1', b: 'medic-surgery-set-aside-1' },
+    { a: 'medic-response-switchback-1', b: 'medic-response-moving-handoff-1' },
+  ]);
   for (const cls of data.classes.filter(cls => data.specializationSkills.every(skill => skill.classId !== cls.id)))
     assert.equal(specializationMapLayout(cls.id), null);
   const tank=specializationMapLayout('tank')!;assert(tank);

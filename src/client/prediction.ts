@@ -1,3 +1,4 @@
+import { rapidResponseRules, responseWalkAllowed } from '../shared/medic-rapid-response.ts';
 import {tankInterceptionInput,tankInterceptionSpeed,tankInterceptionAfterMove} from './tank-interceptor-prediction.ts';
 import {tankPredictedWalk} from './tank-bulwark-prediction.ts';
 import{lineworkTemporaryConstructs}from'../shared/heavy-linework.ts';
@@ -83,6 +84,9 @@ export class Prediction {
     );
     const raidForce = raidMovement(view.bossCues, p, now);
     const earlyForce = earlyWatchMovement(view.bossCues, p, now, now < p.dashUntil);
+    const rescue = p.kit.rapidResponse;
+    const running = rescue?.phase === 'running' && now < (rescue.until ?? 0) && responseWalkAllowed(i);
+    if (rescue?.phase === 'running' && !running) p.kit.rapidResponse = undefined;
     const rally = Math.max(
         0,
         ...view.fields
@@ -92,7 +96,7 @@ export class Prediction {
       dash = now < p.dashUntil,
       speed = dash
         ? (tankInterceptionSpeed(p,now) ?? (now < p.kit.chargeUntil ? 600 : data.rules.dodgeSpeed))
-        : (p.classId==='alchemist'?alchemyPredictedSpeed(p,now):p.classId==='heavy'?lineworkPredictedSpeed(p,now):rangerPredictedSpeed(p,now)) * (p.sprinting?mobilityRules.sprintMultiplier:1) *
+        : (p.classId==='alchemist'?alchemyPredictedSpeed(p,now):p.classId==='heavy'?lineworkPredictedSpeed(p,now):rangerPredictedSpeed(p,now)) * (p.sprinting?mobilityRules.sprintMultiplier:running ? rapidResponseRules.speed : 1) *
           Math.min(now < p.slowUntil ? 0.65 : 1, now < p.poisonUntil ? clerkRules.purpleSlowMultiplier : 1) *
           (1 + rally) *
           environment.multiplier *

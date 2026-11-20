@@ -57,3 +57,5 @@ The earlier 48 Reserve Anchor Short trials span all six arenas, Baby and Normal,
 A separate matched Ossuary Works study routed around the opening wall using ordinary movement. The immediate approach produced four Normal victories, including two earned reserve hauls. All four Baby runs cleared the first encounter and lost the second. The original policy and a delayed approach both timed out on all eight samples before the first clear. [Ossuary Works comparison](../reviews/heavy-reserve-anchor-ci-2026-11-12/ossuary-opening.json).
 
 The previous Lineworker comparison remains available with its 48 distinct seeded Short runs and four policies. Human review and final balance remain open. [Earlier runs](../reviews/heavy-lineworker-entry-2026-11-12/seeded-short.json).
+
+Protocol 85 Rapid Response verifies 6,014 legal configurations and preserves all 4,891 earlier signatures. Medic has 1,512, including 880 with both owned entry actions. [Census](../reviews/medic-rapid-response-2026-11-19/build-census.json).
