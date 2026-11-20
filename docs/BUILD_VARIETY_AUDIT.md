@@ -59,3 +59,5 @@ A separate matched Ossuary Works study routed around the opening wall using ordi
 The previous Lineworker comparison remains available with its 48 distinct seeded Short runs and four policies. Human review and final balance remain open. [Earlier runs](../reviews/heavy-lineworker-entry-2026-11-12/seeded-short.json).
 
 Protocol 85 Rapid Response verifies 6,014 legal configurations and preserves all 4,891 earlier signatures. Medic has 1,512, including 880 with both owned entry actions. [Census](../reviews/medic-rapid-response-2026-11-19/build-census.json).
+
+Protocol 86 Preventive Care verifies 9,277 legal configurations and preserves all 6,014 previous signatures. Medic has 4,775, including 1,590 with all three pathway entry actions. [Census](../reviews/medic-preventive-care-2026-11-20/build-census.json).

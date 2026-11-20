@@ -1,3 +1,4 @@
+import type { PrecautionCue, PrecautionStatus } from './medic-preventive-care.ts';
 import type { RapidResponseCue, RapidResponseStatus } from './medic-rapid-response.ts';
 import type { FieldDressingCue, FieldDressingStatus } from './medic-field-surgery.ts';
 import type { BastionCue, BastionStatus } from './tank-bastion.ts';
@@ -38,6 +39,7 @@ export const RESCUE_CHARGE_TICKS = ticks(0.3) + 1;
 export type KitStatus = Partial<InterceptorStatus> & Partial<BastionStatus> & Partial<BulwarkStatus> & Partial<LineworkStatus> & {
   fieldDressing?: FieldDressingStatus;
   rapidResponse?: RapidResponseStatus;
+  precautionWrap?: PrecautionStatus;
   heavyClutchConverted?:number;heavyClutchHandling?:"heavy-traverse-keyed-1"|"heavy-traverse-open-1";heavyTraverseShotRequiresHandling?:"heavy-traverse-keyed-1"|"heavy-traverse-open-1";
   heavyLanyardAt?:number;heavyLanyardSequence?:number;heavyLanyardUntil?:number;heavyLanyardX?:number;heavyLanyardY?:number;heavyLanyardRemaining?:number;heavyTraverseShotPosted?:boolean;heavyTraverseShotX?:number;heavyTraverseShotY?:number;
   heavyClutchLifted?:boolean;heavyClutchUsed?:boolean;heavyClutchForfeited?:number;heavyClutchSlotsRemaining?:number;heavyClutchAt?:number;heavyClutchSequence?:number;heavyClutchBlocked?:boolean;heavyTraverseShotRequiresClutch?:boolean;
@@ -115,7 +117,7 @@ export type Construct = {
   until: number;
 };
 export type KitCue =
-  | FieldDressingCue | RapidResponseCue
+  | FieldDressingCue | RapidResponseCue | PrecautionCue
   | BastionCue
   | InterceptorScreenCue
   | FlakBurstCue

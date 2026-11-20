@@ -550,7 +550,7 @@ export class Stitchwork {
             stitchSeamContact({ x: p.oldX, y: p.oldY }, p, q)
           ) {
             this.touched.add(key);
-            c.damage(p.id, q.damage);
+            c.damage(p.id, q.damage, "direct");
           }
         }
       }

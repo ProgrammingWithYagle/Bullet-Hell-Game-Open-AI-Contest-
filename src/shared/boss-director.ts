@@ -133,7 +133,8 @@ export type SignatureContext = {
   movementSpeedScale?: number;
   phase: number;
   id(): number;
-  damage(id: string, amount: number): void;
+  // Direct contacts must already be limited to one hit per actor and strike.
+  damage(id: string, amount: number, contact?: 'direct'): void;
   spawnRat(
     position: Vec,
     goal: Vec,
@@ -558,7 +559,7 @@ export class BossDirector {
             context.radius + 9,
           ) !== null
         ) {
-          context.damage(target.id, charge.damage * context.damageScale);
+          context.damage(target.id, charge.damage * context.damageScale, 'direct');
           charge.touched.add(target.id);
         }
       if (

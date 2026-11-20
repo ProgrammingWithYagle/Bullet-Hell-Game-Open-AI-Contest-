@@ -16,6 +16,9 @@ type KitAction =
 // These are affected inputs, not an inference from a technique's visual frame.
 // Breach Casings also works when a placed charge triggers without remote input.
 const controlsByTechnique: Record<string, readonly KitAction[]> = {
+  "medic-precaution-wrap-1": ["technique3", "q"],
+  "medic-preventive-doorstep-kit-1": ["technique3"],
+  "medic-preventive-layered-wrap-1": ["technique3"],
   "medic-rescue-run-1": ["technique2", "e", "interact"],
   "medic-response-switchback-1": ["technique2"],
   "medic-response-moving-handoff-1": ["technique2"],

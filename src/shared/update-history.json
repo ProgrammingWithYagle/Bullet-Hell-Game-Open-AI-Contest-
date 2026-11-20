@@ -1,5 +1,5 @@
 {
-  "buildId": "2026.11.19-medic-rapid-response",
+  "buildId": "2026.11.20-medic-preventive-care",
   "snapshot": {
     "bosses": 66,
     "classes": 12,
@@ -14,11 +14,25 @@
       "endless",
       "story"
     ],
-    "protocol": 85,
+    "protocol": 86,
     "sharedSkills": 4,
-    "specializationSkills": 92
+    "specializationSkills": 95
   },
   "entries": [
+    {
+      "id": "medic-preventive-care",
+      "title": "Prepare the patient",
+      "date": "2026-11-20",
+      "groups": [
+        {
+          "title": "Medic Preventive Care",
+          "items": [
+            "Precaution Wrap prepares one patient before a projectile, charge or stitched-seam wound. The first qualifying wound pays Healing Field recovery for a bounded dose.",
+            "Doorstep Kit lets a walking teammate claim a placed wrap. Layered Wrap lets the Medic release one dose for up to two wounds."
+          ]
+        }
+      ]
+    },
     {
       "id": "medic-rapid-response",
       "title": "Reach the patient",

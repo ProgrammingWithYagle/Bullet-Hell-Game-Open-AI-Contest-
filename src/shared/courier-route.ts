@@ -374,7 +374,7 @@ export class CourierRoute {
             c.radius + 9,
           ) !== null
         ) {
-          c.damage(target.id, this.attack.damage * c.damageScale);
+          c.damage(target.id, this.attack.damage * c.damageScale, "direct");
           leg.touched.add(target.id);
         }
       if (

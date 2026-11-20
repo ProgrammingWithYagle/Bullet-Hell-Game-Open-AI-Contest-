@@ -1,3 +1,4 @@
+import preventiveEdition from '../fixtures/medic-issued85-bindings.json';
 import responseEdition from '../fixtures/medic-issued84-bindings.json';
 import lateMedicEdition from '../fixtures/medic-issued83-bindings.json';
 import medicEdition from '../fixtures/medic-issued82-bindings.json';
@@ -13,7 +14,7 @@ const issued = JSON.parse(
 );
 const ids = new Set<string>(issued.issuedSpecializationIds),
   rules = new Set<string>(issued.issuedRuleKeys),
-  newMessages = new Set<string>([...issued.introduced74MessageKeys,...tankEdition.introduced77MessageKeys,...interceptorEdition.introduced78MessageKeys,...bastionEdition.addedLocaleKeys,...lateBastionEdition.addedLocaleKeys,...bulwarkFittings.addedLocaleKeys,...responseEdition.addedLocaleKeys,...lateMedicEdition.addedLocaleKeys,...medicEdition.addedLocaleKeys,...interceptorFittings.addedLocaleKeys]);
+  newMessages = new Set<string>([...issued.introduced74MessageKeys,...tankEdition.introduced77MessageKeys,...interceptorEdition.introduced78MessageKeys,...bastionEdition.addedLocaleKeys,...lateBastionEdition.addedLocaleKeys,...bulwarkFittings.addedLocaleKeys,...preventiveEdition.addedLocaleKeys, ...responseEdition.addedLocaleKeys,...lateMedicEdition.addedLocaleKeys,...medicEdition.addedLocaleKeys,...interceptorFittings.addedLocaleKeys]);
 export const issuedAtOrBefore73 = (s: { id: string }) => ids.has(s.id);
 export function catalogAt73<
   T extends { rules: Record<string, unknown>; specializationSkills: readonly { id: string }[] },

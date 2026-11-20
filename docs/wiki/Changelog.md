@@ -1,6 +1,13 @@
 # Changelog
 
-Development build **2026.11.19-medic-rapid-response**, protocol 85. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.20-medic-preventive-care**, protocol 86. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-20 — Prepare the patient
+
+### Medic Preventive Care
+
+- Precaution Wrap prepares one patient before a projectile, charge or stitched-seam wound. The first qualifying wound pays Healing Field recovery for a bounded dose.
+- Doorstep Kit lets a walking teammate claim a placed wrap. Layered Wrap lets the Medic release one dose for up to two wounds.
 
 ## 2026-11-19 — Reach the patient
 

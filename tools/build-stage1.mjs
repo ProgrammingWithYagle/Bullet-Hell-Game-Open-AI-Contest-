@@ -1,4 +1,5 @@
-import { applyMedicRapidResponse, authoredDate as responseAuthoredDate } from '../content/source/medic-rapid-response.mjs';
+import { applyMedicPreventiveCare, authoredDate as preventiveAuthoredDate } from '../content/source/medic-preventive-care.mjs';
+import { applyMedicRapidResponse } from '../content/source/medic-rapid-response.mjs';
 import { applyMedicSurgeryFittings } from '../content/source/medic-surgery-fittings.mjs';
 import { applyFieldSurgery } from '../content/source/medic-field-surgery.mjs';
 import { applyTankInterceptorLate } from '../content/source/tank-interceptor-late.mjs';
@@ -316,6 +317,7 @@ applyTankInterceptorLate(manifest);
 applyFieldSurgery(manifest);
 applyMedicSurgeryFittings(manifest);
 applyMedicRapidResponse(manifest);
+applyMedicPreventiveCare(manifest);
 for(const [key,value] of Object.entries(manifest)) json('content/'+key+'.json',value);
 json('content/catalog.json',manifest);
 write('docs/balance/skills.csv',csv(['id','class','branch','subbranch','name','depth','cost','grade','prerequisite','capstone','effects'],skills.map(s=>[s.id,s.classId,s.branchName,s.subbranchName,s.name,s.depth,s.cost,s.grade,s.prerequisite??'',s.capstone,JSON.stringify(s.effects)])));
@@ -517,5 +519,5 @@ if(!fs.existsSync(path.join(root,'docs/ACCEPTANCE.md')))write('docs/ACCEPTANCE.m
   ['Delivery','Windows + public URL + GitHub release + Wiki + Project + ruleset','Pending'],
 ])+'\n');
 const fingerprint=crypto.createHash('sha256').update(JSON.stringify(manifest)).digest('hex');
-json('content/revision.json',{version:rules.contentVersion,sha256:fingerprint,authoredDate:responseAuthoredDate});
+json('content/revision.json',{version:rules.contentVersion,sha256:fingerprint,authoredDate:preventiveAuthoredDate});
 console.log(JSON.stringify({classes:classes.length,skills:skills.length,weapons:weapons.length,bosses:bosses.length,mutations:mutations.length,arenas:arenas.length,locales:locales.length,revision:fingerprint}));

@@ -873,6 +873,31 @@ export class CombatScene extends Phaser.Scene {
       h.lineBetween(x - 5, y - 23, x + 3, y - 18);
     }
     for (const cue of view.classCues) {
+      if (cue.kind === 'medic-precaution-wrap' || cue.kind === 'medic-precaution-station' || cue.kind === 'medic-precaution-dose') {
+        if (now >= cue.until) continue;
+        const remaining = Math.max(0, Math.min(1, (cue.until - now) / Math.max(1, cue.until - cue.at)));
+        const color = this.highContrast ? 0xffffff : 0xd7b689;
+        const { x, y, radius } = cue;
+        if (cue.kind === 'medic-precaution-station') {
+          h.lineStyle(2, color, .7).strokeCircle(x, y, radius);
+          h.lineStyle(2, color, .95).strokeRoundedRect(x - 7, y - 4, 14, 9, 2)
+            .lineBetween(x - 3, y - 4, x - 3, y - 7).lineBetween(x - 3, y - 7, x + 3, y - 7)
+            .lineBetween(x + 3, y - 7, x + 3, y - 4);
+          h.lineStyle(3, color, .9).beginPath()
+            .arc(x, y, radius, -Math.PI / 2, -Math.PI / 2 + remaining * Math.PI * 2).strokePath();
+        } else if (cue.kind === 'medic-precaution-dose') {
+          const r = radius + 6 * (1 - remaining);
+          h.lineStyle(2, color, .96 * remaining).beginPath()
+            .moveTo(x - r + 5, y - r).lineTo(x - r, y - r).lineTo(x - r, y + r).lineTo(x - r + 5, y + r)
+            .moveTo(x + r - 5, y - r).lineTo(x + r, y - r).lineTo(x + r, y + r).lineTo(x + r - 5, y + r)
+            .strokePath();
+        } else {
+          h.lineStyle(2, color, .48 + .42 * remaining);
+          h.lineBetween(x - 7, y - 19, x + 7, y - 19);
+          if (cue.layered) h.lineBetween(x - 7, y - 23, x + 7, y - 23);
+        }
+        continue;
+      }
       if (cue.kind === 'medic-response-dose') {
         const fade = Math.max(0, Math.min(1, (cue.until - now) / (cue.until - cue.at)));
         if (fade <= 0) continue;

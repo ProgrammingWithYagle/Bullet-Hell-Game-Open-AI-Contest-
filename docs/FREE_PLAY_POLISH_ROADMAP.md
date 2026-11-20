@@ -108,3 +108,5 @@ Tank has fifteen techniques across Mobile Bulwark, Interceptor and Bastion. The 
 Field Surgery has five playable techniques. The early fittings use the 9-SP Short shop, and Tie Off and Wrapped Dressing use the 15-SP shop. [Field Surgery](MEDIC_FIELD_SURGERY.md).
 
 Rapid Response has three playable cards. Its two fittings were both exercised at the earned 9-SP Short shop through the optimized worker and a real non-host Medic in each review audience. Continue Medic with Preventive Care, then the scoped class review. Human play, rendering, physical devices, native-language review, listening, motion and final balance remain open. [Rapid Response](MEDIC_RAPID_RESPONSE.md).
+
+Protocol 86 adds Preventive Care with three cards. The local gate passed 2,729 tests and seven checks, and all six exact source transport cases passed. Verify both frozen audiences and the exact GitHub workflows before promotion, then continue the scoped Medic review. [Preventive Care](MEDIC_PREVENTIVE_CARE.md) · [Local evidence](../reviews/medic-preventive-care-2026-11-20/local-evidence-bindings.json).

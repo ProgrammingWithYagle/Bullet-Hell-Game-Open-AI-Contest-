@@ -13,7 +13,7 @@ export function careLineClear(from: Vec, to: Vec, obstacles: readonly Rect[]) {
 }
 
 export function aimedCarePatient(owner: Player, aim: number, players: ReadonlyMap<string, Player>,
-  obstacles: readonly Rect[], range: number, facingDot: number) {
+  obstacles: readonly Rect[], range: number, facingDot: number, requireInjury = true) {
   const x = Math.cos(aim), y = Math.sin(aim);
   let closest: Player | undefined;
   let nearestDistance = Infinity;
@@ -27,6 +27,6 @@ export function aimedCarePatient(owner: Player, aim: number, players: ReadonlyMa
     nearestDistance = span;
   }
   const target = closest ?? owner;
-  return injuredCareParticipant(target) && (target.id === owner.id ||
+  return activeCareParticipant(target) && (!requireInjury || injuredCareParticipant(target)) && (target.id === owner.id ||
     (distance(owner, target) <= range && careLineClear(owner, target, obstacles))) ? target : undefined;
 }

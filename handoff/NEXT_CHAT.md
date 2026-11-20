@@ -4,6 +4,10 @@ Development remains active. Only the user decides when a class or the game is fi
 
 Read [Interceptor](../docs/TANK_INTERCEPTOR_DESIGN.md), [Mobile Bulwark](../docs/TANK_MOBILE_BULWARK_DESIGN.md), [Tethered Traverse](../docs/HEAVY_TETHERED_TRAVERSE_DESIGN.md), [Heavy](../docs/HEAVY_SPECIALIZATIONS.md), [further studies](../docs/HEAVY_FURTHER_ROUTE_STUDIES.md), [Soldier](../docs/SOLDIER_SPECIALIZATIONS.md), [open Soldier routes](../docs/SOLDIER_ROUTE_CANDIDATES.md), [class plan](../docs/CLASS_SPECIALIZATION_PLAN.md), [Service Yard](../docs/SERVICE_YARD_WORKING.md) and [bounded storage](../docs/REVIEW_STORAGE_POLICY.md). Current source/accepted proof outranks historical study proposals.
 
+## Protocol 86 Preventive Care candidate
+
+Protocol 86 adds Preventive Care with three cards. The local gate passed 2,729 tests and seven checks, and all six exact source transport cases passed. Verify both frozen audiences and the exact GitHub workflows before promotion, then continue the scoped Medic review. [Preventive Care](../docs/MEDIC_PREVENTIVE_CARE.md) · [Local evidence](../reviews/medic-preventive-care-2026-11-20/local-evidence-bindings.json).
+
 ## Current exact protocol 85 Rapid Response review
 
 Source **7c84f1faa2556eeaca653902742b0646e75161b5**, build **2026.11.19-medic-rapid-response**, protocol **85**, catalog **92**. The local gate and both exact GitHub workflows passed 2,705 tests and all seven checks. Each frozen audience binds 2,102 files and passed seven checks. Testing uses [5414](http://127.0.0.1:5414/) with backend 2790. Public review uses [5415](http://127.0.0.1:5415/) with backend 2791. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44756663200) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44756690617) · [Frozen results](../reviews/medic-rapid-response-2026-11-19/frozen-verification.json) · [Saved evidence](../reviews/medic-rapid-response-2026-11-19/publication-byte-bindings.json).
