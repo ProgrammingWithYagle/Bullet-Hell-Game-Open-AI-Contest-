@@ -9,6 +9,12 @@ Field Dressing gives the Medic an alternative use of Healing Field recovery. Spe
 
 The two fittings exclude each other. Each costs 2 SP after Field Dressing at five earned SP, available in ordinary Short after the first clear at nine. The 27-SP and one-capstone limits apply. Both HUD layouts display owned commands using the player's bindings. The owner sees preparation and hears treatment sounds. Peers see the physical dose on the same patient. Three generated emblems retain their original alpha and source bytes. Seven bounded sounds accompany the treatment. [Art provenance](../assets/production/ui/medic-field-surgery-2026-11-19/provenance.json) · [Audio checks](../reviews/medic-field-surgery-2026-11-19/audio-validation.json).
 
+## Retained review
+
+Source **be2e815cd2050695a125d9aae64810ce62d3387e**, build **2026.11.19-medic-field-surgery**, protocol **83**, catalog **87**. The exact local and GitHub checks passed 2,672 tests and all seven checks. Each frozen audience binds 2,090 files and passed seven checks. Testing uses [5410](http://127.0.0.1:5410/) with backend 2786. Public review uses [5411](http://127.0.0.1:5411/) with backend 2787. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44630096794) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44630124317) · [Frozen results](../reviews/medic-field-surgery-2026-11-19/frozen-verification.json) · [Saved evidence](../reviews/medic-field-surgery-2026-11-19/publication-byte-bindings.json).
+
+The protocol 82 Interceptor pair is the verified rollback in `output/review-rollback.zip`. All 4,163 restored files matched their archived bytes. Archive SHA-256 `6769e465b03978f121eff7be8b316af34e67c7bee8cf596e2f919c4d728e336e`. All 213 original private SQLite-related files matched their inventory. [Rotation](../reviews/storage-medic-field-surgery-2026-11-19/retention-result.json).
+
 ## Run evidence
 
 The base pilot compared issued, owned-unused and active treatment across 36 ordinary Short runs. Owning the unused card preserved the measured trajectory in all 12 matched controls. The active policies produced 61 actual doses and restored 854.7075 HP. Fourteen doses healed teammates. Solo ended with four victories of six in each policy, and two-player play ended with five of six.
