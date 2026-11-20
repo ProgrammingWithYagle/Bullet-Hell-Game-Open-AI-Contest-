@@ -1,0 +1,283 @@
+{
+  "passed": true,
+  "sourceCommit": "ec18a2786c9e5935431e92c1482d97b836610c64",
+  "contentRevision": "5efdcb282f139fc46d075048751a8e9a2825ac487adff68c6fe2408a3443c1fc",
+  "protocol": 84,
+  "checkedAt": "2026-11-20T03:47:59.532Z",
+  "nativeDriverSha256": "580afa4fadcd173c5421b6c2147a05659bc1e7f9970c710b44835ae16b667052",
+  "priorDriverSha256": "3d18863fed6dee15930b4cc7028bfbff8dd7170f7910c7aea112cc5f246696b2",
+  "audiences": [
+    {
+      "passed": true,
+      "audience": "testing",
+      "sourceCommit": "ec18a2786c9e5935431e92c1482d97b836610c64",
+      "contentRevision": "5efdcb282f139fc46d075048751a8e9a2825ac487adff68c6fe2408a3443c1fc",
+      "protocol": 84,
+      "url": "http://127.0.0.1:5412/",
+      "endpoint": "http://127.0.0.1:2788",
+      "files": 2094,
+      "manifestSha256": "63c0a15de8b93bf3e2d19684a9da0f128ae93a0f7ed00e8b0b96941b688e55da",
+      "backendSha256": "c823e1941fd6ba1871932c2df879d280c2837fde6b7779d68757f1597db77c7d",
+      "backendStartedAt": "2026-11-20T03:36:25.125Z",
+      "worker": {
+        "path": "assets/offline.worker-Bc2fYEZl.js",
+        "bytes": 1566417,
+        "sha256": "24af48940022cc6fbc127fbbde5934ab3f2c43ee8186ac612f70e02b64ced57b"
+      },
+      "sampledNewAssets": 14,
+      "httpSha256": "653eb384924104bc1efa5b05d908983a772ab7b09c8956408106fb81b0ac07c4",
+      "httpLogSha256": "7022652e717054d1d5225ac20e3257d8e191cfeeb541adda6733931db9d06f98",
+      "cases": [
+        {
+          "fitting": "entry",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "testing-worker-entry.log",
+          "logSha256": "5c0a61bfff9f82fabe60d1a4286979d69b31c9d71b9b398e60c58b2ada3ce0bb",
+          "raw": "testing-worker-entry.json",
+          "resultSha256": "32b9edcfba4fdfc87612a03f7b31f9edcb300e67152d1f36bab141aaf3fecc73",
+          "backendStartedAt": "2026-11-20T03:36:25.125Z"
+        },
+        {
+          "fitting": "step",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "testing-worker-step.log",
+          "logSha256": "c126bd499569d3eb5243ac9c3e6d7281d75b9f62f357c75fe334b2cefc0fc47d",
+          "raw": "testing-worker-step.json",
+          "resultSha256": "79428e571c5d7fd7c624c2da2bc48ca1cedaac3344e59183277f4fd7f79ff7cf",
+          "backendStartedAt": "2026-11-20T03:36:25.125Z"
+        },
+        {
+          "fitting": "aside",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "testing-worker-aside.log",
+          "logSha256": "593f5f6234371d7009bf25ab771dd5bae99fafa681dfdf57e5251d8eb5765557",
+          "raw": "testing-worker-aside.json",
+          "resultSha256": "8251de09a8f18d53f4b1e7939f1626ca9d206a5525b01c1914adb7c04eeff2fe",
+          "backendStartedAt": "2026-11-20T03:36:25.125Z"
+        },
+        {
+          "fitting": "tie",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "testing-worker-tie.log",
+          "logSha256": "f70912982df21289170164307f18a01802a658a13572924a085e4db5c5a8a405",
+          "raw": "testing-worker-tie.json",
+          "resultSha256": "ecbc307ba55373be078aec1505583d9f91df6005f23f4ef3cb238fba621cbd29",
+          "backendStartedAt": "2026-11-20T03:36:25.125Z"
+        },
+        {
+          "fitting": "wrap",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "testing-worker-wrap.log",
+          "logSha256": "14e76252b0d170838b678cdccccfdf42e8e357bf6fd6b7b9ce052715b031a850",
+          "raw": "testing-worker-wrap.json",
+          "resultSha256": "644331e05f85e511cf77bebbb49593a1ee78114e35f1cf52a1c5d9cef2128666",
+          "backendStartedAt": "2026-11-20T03:36:25.125Z"
+        },
+        {
+          "fitting": "entry",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "testing-peer-entry.log",
+          "logSha256": "1703b3256334954eb760843245d974d1b1429216811524328b0e116c94741dd8",
+          "raw": "testing-peer-entry.json",
+          "resultSha256": "ec38ec21913edd6fc1108edec2d0b388e23f122577fa186c3290b0186b485325",
+          "backendStartedAt": "2026-11-20T03:36:25.125Z"
+        },
+        {
+          "fitting": "step",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "testing-peer-step.log",
+          "logSha256": "8a29f2a9ad4b99ba5520c1abfa2cd793d0cbc2974d5b34d7d1b1418ba3626fee",
+          "raw": "testing-peer-step.json",
+          "resultSha256": "0f32e74b8fa329cf8c1e46e5c255a530d2121d92d3b2c4c57572e1c24fbb9b9e",
+          "backendStartedAt": "2026-11-20T03:36:25.125Z"
+        },
+        {
+          "fitting": "aside",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "testing-peer-aside.log",
+          "logSha256": "1ff9f93c02ba093e9005b2704af7774f632afd1c414888e640758e5673f16b8a",
+          "raw": "testing-peer-aside.json",
+          "resultSha256": "4a651a8397867a3fef86f36a548b3138caec0cf13028c9d74f32b4dc5c3ab582",
+          "backendStartedAt": "2026-11-20T03:36:25.125Z"
+        },
+        {
+          "fitting": "tie",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "testing-peer-tie.log",
+          "logSha256": "cc7e9a0ebc680968201724c036d1132d3d3428aec0ac0b1c561678a51df91d82",
+          "raw": "testing-peer-tie.json",
+          "resultSha256": "f2776034471fa856516e19b8a29a7bc01ba55777484089eed0ee91b222babe20",
+          "backendStartedAt": "2026-11-20T03:36:25.125Z"
+        },
+        {
+          "fitting": "wrap",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "testing-peer-wrap.log",
+          "logSha256": "9e2320c36095b679cafb906837e4f8382814d98e59161e55863c200221a8d5ce",
+          "raw": "testing-peer-wrap.json",
+          "resultSha256": "f0149f7c2e00077d930457c5351bfc8f5a3439cb3191a186ce52239ad8e83fb0",
+          "backendStartedAt": "2026-11-20T03:36:25.125Z"
+        }
+      ],
+      "caseCount": 11,
+      "remainingProbeRooms": 0,
+      "remainingProbeConnections": 0
+    },
+    {
+      "passed": true,
+      "audience": "public",
+      "sourceCommit": "ec18a2786c9e5935431e92c1482d97b836610c64",
+      "contentRevision": "5efdcb282f139fc46d075048751a8e9a2825ac487adff68c6fe2408a3443c1fc",
+      "protocol": 84,
+      "url": "http://127.0.0.1:5413/",
+      "endpoint": "http://127.0.0.1:2789",
+      "files": 2094,
+      "manifestSha256": "3444a736ebcadf7994142ac5242f0cc32390f51a2a16730c803f6cc318c7cefb",
+      "backendSha256": "c823e1941fd6ba1871932c2df879d280c2837fde6b7779d68757f1597db77c7d",
+      "backendStartedAt": "2026-11-20T03:36:24.645Z",
+      "worker": {
+        "path": "assets/offline.worker-BnFHgrkK.js",
+        "bytes": 1566514,
+        "sha256": "8e096e76f4d79a80ca4f4bd319f1bd9120e0cfa33c13695778469cee32e0bbc8"
+      },
+      "sampledNewAssets": 14,
+      "httpSha256": "3c0ce19e0a7d8eea4774d777851c268d4bb0a342e29820a6dcd3ef8f2b5173aa",
+      "httpLogSha256": "44faa258c1dd727347aad11bceba411f4868de5b1b2dee5bc505a59c0e29ff0c",
+      "cases": [
+        {
+          "fitting": "entry",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "public-worker-entry.log",
+          "logSha256": "2e15b1540458a79f87966bc076e5cbc89f39ec65eb06a86dc55f53b0ce4d5c23",
+          "raw": "public-worker-entry.json",
+          "resultSha256": "2933b198f9d40c30a47414d9e2a6f10a55935b581a983c1a67e7025e9b9f906a",
+          "backendStartedAt": "2026-11-20T03:36:24.645Z"
+        },
+        {
+          "fitting": "step",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "public-worker-step.log",
+          "logSha256": "ffd8ae2720edf1b5768d9885fe29275927a5f308f1129a3708cad28079328824",
+          "raw": "public-worker-step.json",
+          "resultSha256": "d7695044d3029ab644adf9aed37c17c41f282e1e0c1730f7e71d793a6b02c35b",
+          "backendStartedAt": "2026-11-20T03:36:24.645Z"
+        },
+        {
+          "fitting": "aside",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "public-worker-aside.log",
+          "logSha256": "850dbaea2813e72957b1bc38c5deb3d1e107dffb5ede0f08d97b1430086a8cfc",
+          "raw": "public-worker-aside.json",
+          "resultSha256": "9d6150cf42d9062ae0df294eb3faa8a9db1d65fba5e42b4f5a3d509d1430c861",
+          "backendStartedAt": "2026-11-20T03:36:24.645Z"
+        },
+        {
+          "fitting": "tie",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "public-worker-tie.log",
+          "logSha256": "dbfa1f8b371e6164a05d3a4a0498c3af3b323a17767281c5d24e77096d71dc18",
+          "raw": "public-worker-tie.json",
+          "resultSha256": "29bafca8f2f1d7e4a09949eebf79ebd8a6ffac24fec1a8a58c7d6270a376a5b8",
+          "backendStartedAt": "2026-11-20T03:36:24.645Z"
+        },
+        {
+          "fitting": "wrap",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "public-worker-wrap.log",
+          "logSha256": "ecb9133401c6398bf0a3ef68b9a70d034e5e0648009fe1be657956e70d3bd81a",
+          "raw": "public-worker-wrap.json",
+          "resultSha256": "c8676897de95ca7ec67be11aefaa3cccd63853557c9089b3ffe4ba414b65ebe7",
+          "backendStartedAt": "2026-11-20T03:36:24.645Z"
+        },
+        {
+          "fitting": "entry",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "public-peer-entry.log",
+          "logSha256": "1fcdb441eae48c186e19d96dce0744cbb6e03e9f731af7002459314603139ee5",
+          "raw": "public-peer-entry.json",
+          "resultSha256": "667436b6238e36b54fe9c592094a6cef320a0eedea88a4614eafea4322f187e2",
+          "backendStartedAt": "2026-11-20T03:36:24.645Z"
+        },
+        {
+          "fitting": "step",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "public-peer-step.log",
+          "logSha256": "8558fc035e71abc170d7f781e926375f6f1cad0e8e906ec3b407834776a20203",
+          "raw": "public-peer-step.json",
+          "resultSha256": "cef7e3721c041386323f6d3558f5e18703715781954490dabf5fc51a2dded72f",
+          "backendStartedAt": "2026-11-20T03:36:24.645Z"
+        },
+        {
+          "fitting": "aside",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "public-peer-aside.log",
+          "logSha256": "ddcdff7eb24755dca5a76f425e708b8b964b611ae3b488983313675222e8f253",
+          "raw": "public-peer-aside.json",
+          "resultSha256": "9df4aca7301b69d543d969225d70bb7f039f3482d1ac2b5b3563db088adaeec2",
+          "backendStartedAt": "2026-11-20T03:36:24.645Z"
+        },
+        {
+          "fitting": "tie",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "public-peer-tie.log",
+          "logSha256": "8335ac670b0ce9fd51e73c2e37c77202e52bcf03d7b356ef020a19a91b8839f3",
+          "raw": "public-peer-tie.json",
+          "resultSha256": "9f6101925821acacce83172bcd6116f2afd81508997ad1b0ca409fc5d355f309",
+          "backendStartedAt": "2026-11-20T03:36:24.645Z"
+        },
+        {
+          "fitting": "wrap",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "public-peer-wrap.log",
+          "logSha256": "944fac8eb07fd3192f72f7f8af14f11e830436c5f84eaf1d8ed55677f7df49a5",
+          "raw": "public-peer-wrap.json",
+          "resultSha256": "3b72eafb05219668b1b58c8711e86cd9378cf99057ef2336d7b90565be21ac75",
+          "backendStartedAt": "2026-11-20T03:36:24.645Z"
+        }
+      ],
+      "caseCount": 11,
+      "remainingProbeRooms": 0,
+      "remainingProbeConnections": 0
+    }
+  ]
+}

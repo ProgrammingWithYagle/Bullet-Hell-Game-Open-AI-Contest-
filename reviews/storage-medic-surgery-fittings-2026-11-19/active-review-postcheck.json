@@ -1,0 +1,166 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-20T04:07:28.4971420Z",
+  "stage": "after",
+  "currentScope": "reviews/medic-surgery-fittings-2026-11-19",
+  "rollbackScope": "reviews/medic-field-surgery-2026-11-19",
+  "rollbackSha256": "9d7a8ea2590f24b3d25d60d0f850736e81fec7b847e6989e341e0637268e1eb1",
+  "previews": [
+    {
+      "scope": "reviews/medic-surgery-fittings-2026-11-19",
+      "audience": "testing",
+      "source": "ec18a2786c9e5935431e92c1482d97b836610c64",
+      "bindings": [
+        {
+          "kind": "client",
+          "pid": 24096,
+          "port": 5412,
+          "processUtc": "2026-11-20T03:36:24.5998820Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1118-904-0_26.1118.904.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-medic-surgery-fittings-2026-11-19-testing-ec18a27 --host 127.0.0.1 --port 5412 --strictPort"
+        },
+        {
+          "kind": "backend",
+          "pid": 13468,
+          "port": 2788,
+          "processUtc": "2026-11-20T03:36:24.5855360Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1118-904-0_26.1118.904.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-medic-surgery-fittings-2026-11-19-ec18a27.mjs\""
+        }
+      ],
+      "health": {
+        "status": "ok",
+        "startedAt": "2026-11-20T03:36:25.125Z",
+        "uptimeSeconds": 1856.9165475,
+        "prototype": "grave-accord-development",
+        "playable": {
+          "bosses": 66,
+          "classes": 12,
+          "modes": [
+            "short",
+            "standard",
+            "long",
+            "raid",
+            "endless",
+            "story"
+          ]
+        },
+        "protocolVersion": 84,
+        "contentRevision": "5efdcb282f139fc46d075048751a8e9a2825ac487adff68c6fe2408a3443c1fc",
+        "practiceOnly": true,
+        "audience": "testing",
+        "teamRecords": {
+          "available": true,
+          "scope": "server",
+          "persistent": true
+        },
+        "sourceCommit": "ec18a2786c9e5935431e92c1482d97b836610c64",
+        "capacity": {
+          "reservedSlots": 0,
+          "instanceLimit": 50,
+          "rooms": 0,
+          "roomLimit": 4,
+          "available": true,
+          "canJoin": true,
+          "canCreate": true,
+          "queued": 0,
+          "offeredSlots": 0
+        }
+      }
+    },
+    {
+      "scope": "reviews/medic-surgery-fittings-2026-11-19",
+      "audience": "public",
+      "source": "ec18a2786c9e5935431e92c1482d97b836610c64",
+      "bindings": [
+        {
+          "kind": "client",
+          "pid": 57004,
+          "port": 5413,
+          "processUtc": "2026-11-20T03:36:24.1186360Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1118-904-0_26.1118.904.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-medic-surgery-fittings-2026-11-19-public-ec18a27 --host 127.0.0.1 --port 5413 --strictPort"
+        },
+        {
+          "kind": "backend",
+          "pid": 59120,
+          "port": 2789,
+          "processUtc": "2026-11-20T03:36:24.1055270Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1118-904-0_26.1118.904.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-medic-surgery-fittings-2026-11-19-ec18a27.mjs\""
+        }
+      ],
+      "health": {
+        "status": "ok",
+        "startedAt": "2026-11-20T03:36:24.645Z",
+        "uptimeSeconds": 1859.6321145,
+        "prototype": "grave-accord-development",
+        "playable": {
+          "bosses": 66,
+          "classes": 12,
+          "modes": [
+            "short",
+            "standard",
+            "long",
+            "raid",
+            "endless",
+            "story"
+          ]
+        },
+        "protocolVersion": 84,
+        "contentRevision": "5efdcb282f139fc46d075048751a8e9a2825ac487adff68c6fe2408a3443c1fc",
+        "practiceOnly": true,
+        "audience": "public",
+        "teamRecords": {
+          "available": true,
+          "scope": "server",
+          "persistent": true
+        },
+        "sourceCommit": "ec18a2786c9e5935431e92c1482d97b836610c64",
+        "capacity": {
+          "reservedSlots": 0,
+          "instanceLimit": 50,
+          "rooms": 0,
+          "roomLimit": 4,
+          "available": true,
+          "canJoin": true,
+          "canCreate": true,
+          "queued": 0,
+          "offeredSlots": 0
+        }
+      }
+    },
+    {
+      "scope": "reviews/medic-field-surgery-2026-11-19",
+      "audience": "testing",
+      "source": "be2e815cd2050695a125d9aae64810ce62d3387e",
+      "bindings": [
+        {
+          "kind": "client",
+          "port": 5410,
+          "retired": true
+        },
+        {
+          "kind": "backend",
+          "port": 2786,
+          "retired": true
+        }
+      ],
+      "health": null
+    },
+    {
+      "scope": "reviews/medic-field-surgery-2026-11-19",
+      "audience": "public",
+      "source": "be2e815cd2050695a125d9aae64810ce62d3387e",
+      "bindings": [
+        {
+          "kind": "client",
+          "port": 5411,
+          "retired": true
+        },
+        {
+          "kind": "backend",
+          "port": 2787,
+          "retired": true
+        }
+      ],
+      "health": null
+    }
+  ]
+}

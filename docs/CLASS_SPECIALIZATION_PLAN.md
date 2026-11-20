@@ -1,6 +1,6 @@
 # Class specialization: next development direction
 
-Current verified source **be2e815cd2050695a125d9aae64810ce62d3387e** has 87 techniques, including the first three Field Surgery cards for Medic. The Tank review remains available, and Medic remains the active class. [Field Surgery](MEDIC_FIELD_SURGERY.md) · [Tank run review](TANK_RUN_REVIEW.md).
+Current verified source **ec18a2786c9e5935431e92c1482d97b836610c64** has 89 techniques, including all five Field Surgery cards. Medic remains the active class and Rapid Response is the next route. [Field Surgery](MEDIC_FIELD_SURGERY.md) · [Tank run review](TANK_RUN_REVIEW.md).
 
 Historical Interceptor source **911966ddefe65a2ff757b580c47197fa0518fd7e**, build **2026.11.17-tank-interceptor**, protocol **78**, catalog **75**, content `6472614e137114fdb043bdbdff2952997932aba352e449a70508adfe3f5b4647`, runtime `1197b39b470b9bb27bb802afa78a930331f9e5da2e4ac3b1fe6f42aad8716a7f`, source snapshot `15169433e2463aa3cc423943bb99968b768d21e21dfb514b70273b38bfd0584d`. The complete source gate passed **2586 tests and all seven checks**. Both exact-source GitHub workflows passed every job and step, and their decoded logs and own runtime reports match the source. The frozen pair binds 2071 files per audience. Both audiences passed HTTP and all three earned Short choices through the complete served worker and real non-host rooms. [Source CI](../reviews/tank-interceptor-2026-11-17/source-ci.json), [frozen proof](../reviews/tank-interceptor-2026-11-17/frozen-verification.json). [Interceptor design](TANK_INTERCEPTOR_DESIGN.md).
 
