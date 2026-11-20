@@ -1,10 +1,10 @@
 # Class specialization: next development direction
 
-Current verified source **7c84f1faa2556eeaca653902742b0646e75161b5** has 92 techniques. Medic has three Rapid Response cards and five Field Surgery cards. Preventive Care is the active route. [Rapid Response](MEDIC_RAPID_RESPONSE.md) · [Field Surgery](MEDIC_FIELD_SURGERY.md).
+Current verified source **c05ff5dd2c2ac3c5de16b50284878b78e93c8487** has 95 techniques. Medic has five Field Surgery, three Rapid Response and three Preventive Care cards. [Preventive Care](MEDIC_PREVENTIVE_CARE.md).
 
-Protocol 86 adds Preventive Care with three cards. The local gate passed 2,729 tests and seven checks, and all six exact source transport cases passed. Verify both frozen audiences and the exact GitHub workflows before promotion, then continue the scoped Medic review. [Preventive Care](MEDIC_PREVENTIVE_CARE.md) · [Local evidence](../reviews/medic-preventive-care-2026-11-20/local-evidence-bindings.json).
+Continue the scoped Medic review with legal hybrid builds and whole runs. Human play, rendering, physical devices, native-language review, listening, motion and final balance remain open.
 
-Continue Medic with Preventive Care, then the scoped class review. Human play, rendering, physical devices, native-language review, listening, motion and final balance remain open.
+The scoped class review covers the timing, movement and reserve choices together.
 
 Historical Interceptor source **911966ddefe65a2ff757b580c47197fa0518fd7e**, build **2026.11.17-tank-interceptor**, protocol **78**, catalog **75**, content `6472614e137114fdb043bdbdff2952997932aba352e449a70508adfe3f5b4647`, runtime `1197b39b470b9bb27bb802afa78a930331f9e5da2e4ac3b1fe6f42aad8716a7f`, source snapshot `15169433e2463aa3cc423943bb99968b768d21e21dfb514b70273b38bfd0584d`. The complete source gate passed **2586 tests and all seven checks**. Both exact-source GitHub workflows passed every job and step, and their decoded logs and own runtime reports match the source. The frozen pair binds 2071 files per audience. Both audiences passed HTTP and all three earned Short choices through the complete served worker and real non-host rooms. [Source CI](../reviews/tank-interceptor-2026-11-17/source-ci.json), [frozen proof](../reviews/tank-interceptor-2026-11-17/frozen-verification.json). [Interceptor design](TANK_INTERCEPTOR_DESIGN.md).
 

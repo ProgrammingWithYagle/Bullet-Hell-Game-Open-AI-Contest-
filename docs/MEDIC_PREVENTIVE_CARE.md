@@ -10,6 +10,12 @@ A nonlethal hostile projectile, an accepted charge contact or a Stitchwright sea
 
 The owner sees the remapped action, availability and captured hits. The physical wrap, station and delivered dose appear in the room. Both HUD layouts preserve the saved control mappings. The three emblems retain their original image bytes. Seven short operation cues accompany the private action state. [Art](../assets/production/ui/medic-preventive-care-2026-11-20/provenance.json) · [Audio](../reviews/medic-preventive-care-2026-11-20/audio-checks.json).
 
+## Retained protocol 86 review
+
+Source **c05ff5dd2c2ac3c5de16b50284878b78e93c8487**, build **2026.11.20-medic-preventive-care**, protocol **86**, catalog **95**. The local gate and both exact GitHub workflows passed 2,729 tests and all seven checks. Each frozen audience binds 2,112 files and passed seven checks. Testing uses [5416](http://127.0.0.1:5416/) with backend 2792. Public review uses [5417](http://127.0.0.1:5417/) with backend 2793. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44769177404) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44769207762) · [Frozen results](../reviews/medic-preventive-care-2026-11-20/frozen-verification.json) · [Saved evidence](../reviews/medic-preventive-care-2026-11-20/publication-byte-bindings.json).
+
+The protocol 85 Rapid Response pair is the verified rollback in `output/review-rollback.zip`. All 4,207 restored files matched their archived bytes. Archive SHA-256 `644e564e30aaf2431c3cd2033c60b2680061f20797ec9ea6fe2b07da46b8543d`. All 213 original private SQLite-related files matched their inventory. [Rotation](../reviews/storage-medic-preventive-care-2026-11-20/retention-result.json).
+
 ## Verification
 
 The exact local gate passed 2,729 tests and seven checks. Six optimized Solo and real non-host source cases earned the first Short clear and observed a positive dose from each variant. Their measured recovery was 3.18–3.20 HP. Each Layered Wrap case manually released a captured wound. The focused authoritative tests exercised two distinct wounds, the two-hit limit and shared Q arbitration with Field Dressing. All 465 issued Practice fixtures, two saved HUD layouts, three remaps, twelve class profiles and fifteen dictionaries passed. The 22 added messages are an English pilot. [Local evidence](../reviews/medic-preventive-care-2026-11-20/local-evidence-bindings.json) · [Practice fixture](../tests/fixtures/medic-issued85-bindings.json).
