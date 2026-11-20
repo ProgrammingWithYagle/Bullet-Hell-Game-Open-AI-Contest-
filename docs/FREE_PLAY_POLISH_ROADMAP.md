@@ -110,3 +110,5 @@ Field Surgery has five playable techniques. The early fittings use the 9-SP Shor
 Rapid Response has three playable cards. Its two fittings were both exercised at the earned 9-SP Short shop through the optimized worker and a real non-host Medic in each review audience. [Rapid Response](MEDIC_RAPID_RESPONSE.md).
 
 Preventive Care’s two fittings were exercised at the earned 9-SP Short shop through the complete optimized Solo worker and a real non-host Medic in each review audience. Continue the scoped Medic review with legal hybrid builds and whole runs. Human play, rendering, physical devices, native-language review, listening, motion and final balance remain open. [Preventive Care](MEDIC_PREVENTIVE_CARE.md).
+
+The scoped Medic review covers all three pathways in 96 Standard runs, twelve matched Solo replays and two controlled hybrid checks. Continue with Mage Binding. Human acceptance and final balance remain open. [Medic run review](MEDIC_RUN_REVIEW.md).

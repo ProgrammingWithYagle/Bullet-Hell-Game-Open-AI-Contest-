@@ -1,0 +1,366 @@
+{
+  "sourceBasis": "separately compiled, byte-identical installed Game runtime",
+  "probeProtocol": 86,
+  "contentRevision": "6804a534edddc489675628e35eaf6745c42c296bb8a2a167141547c6bbce324d",
+  "bundleSha256": "42d7d99127f7b001df44e57bfa0552fcd2b4860809f0f5172f51dba811347729",
+  "runtimeSourceSha256": "f7bb5978c1174b8605973b5a910f389a90066f9171504278f014489df5b233b9",
+  "controlled": [
+    {
+      "caseId": "walk-and-wrap",
+      "spent": 18,
+      "station": 1,
+      "shot": 2,
+      "paidE": 389,
+      "paidQ": 508,
+      "recovered": 14.400000000000006,
+      "newSurgeryRecovery": 993,
+      "bothRecoveriesIndependent": true,
+      "samePointDeadline": 97,
+      "tiedDose": 3,
+      "knot": 5
+    },
+    {
+      "caseId": "two-patients",
+      "spent": 18,
+      "firstPatient": "lane",
+      "secondPatient": "sill",
+      "firstDose": 10.560000000000002,
+      "secondDose": 12.599999999999994,
+      "paidQ": 508,
+      "paidE": 385,
+      "sharedPulse": 5,
+      "observerPrivateStateExcluded": true,
+      "wrappedDressingDose": 11.439999999999998,
+      "wrappedShots": 1
+    }
+  ],
+  "checks": [
+    {
+      "name": "whole-standard-solo01.json",
+      "sha256": "788d3f8525bc958d4deebe9b6abfba52f5ca918eda40fb49c389b87e4e4691ae"
+    },
+    {
+      "name": "whole-standard-party01.json",
+      "sha256": "25f7f5f350385dd6adaace48557e68f686415b497147986d1da960671c793dbf"
+    },
+    {
+      "name": "whole-controls02.json",
+      "sha256": "07d1954dc701577616dd12c8ce97750f9bc92d8d81d9fb4f0030552dbefcb34c"
+    },
+    {
+      "name": "whole-runtime01.json",
+      "sha256": "89f7033ab591b62b025e15cc8bf8bc815fb929e89b2f948591538e8079c8ca80"
+    }
+  ],
+  "cohorts": [
+    {
+      "cohort": "solo",
+      "receipt": "whole-standard-solo01.json",
+      "split": [
+        {
+          "active": false,
+          "runs": 24,
+          "victories": 12,
+          "at27": 12,
+          "completeHybrid": 12,
+          "firstHybridShops": {
+            "16": 12
+          },
+          "allEightPortfolios": 8,
+          "encounteredBosses": [
+            "bridge-ferryman",
+            "city-eater",
+            "constable",
+            "lamplighter",
+            "ledger-leech",
+            "matron",
+            "pallbearer",
+            "stitchwright",
+            "wire-harpist",
+            "wire-seamstress"
+          ],
+          "lastBossDefeats": {
+            "matron": 12
+          },
+          "purchasedLate": {
+            "medic-preventive-doorstep-kit-1": {
+              "count": 6,
+              "firstEarned": 8
+            },
+            "medic-response-moving-handoff-1": {
+              "count": 6,
+              "firstEarned": 8
+            },
+            "medic-surgery-tie-off-1": {
+              "count": 6,
+              "firstEarned": 19
+            },
+            "medic-preventive-layered-wrap-1": {
+              "count": 6,
+              "firstEarned": 8
+            },
+            "medic-response-switchback-1": {
+              "count": 6,
+              "firstEarned": 8
+            },
+            "medic-surgery-wrapped-dressing-1": {
+              "count": 6,
+              "firstEarned": 19
+            }
+          },
+          "operations": {},
+          "dosesByPath": {},
+          "teammateDoses": 0,
+          "unassignedDoses": 0,
+          "observedHealingAcrossDoseIntervals": 0
+        },
+        {
+          "active": true,
+          "runs": 24,
+          "victories": 11,
+          "at27": 12,
+          "completeHybrid": 12,
+          "firstHybridShops": {
+            "16": 12
+          },
+          "allEightPortfolios": 8,
+          "encounteredBosses": [
+            "bridge-ferryman",
+            "city-eater",
+            "constable",
+            "lamplighter",
+            "ledger-leech",
+            "matron",
+            "pallbearer",
+            "stitchwright",
+            "wire-harpist",
+            "wire-seamstress"
+          ],
+          "lastBossDefeats": {
+            "matron": 12,
+            "city-eater": 1
+          },
+          "purchasedLate": {
+            "medic-preventive-doorstep-kit-1": {
+              "count": 6,
+              "firstEarned": 8
+            },
+            "medic-response-moving-handoff-1": {
+              "count": 6,
+              "firstEarned": 8
+            },
+            "medic-surgery-tie-off-1": {
+              "count": 6,
+              "firstEarned": 19
+            },
+            "medic-preventive-layered-wrap-1": {
+              "count": 6,
+              "firstEarned": 8
+            },
+            "medic-response-switchback-1": {
+              "count": 6,
+              "firstEarned": 8
+            },
+            "medic-surgery-wrapped-dressing-1": {
+              "count": 6,
+              "firstEarned": 19
+            }
+          },
+          "operations": {
+            "surgery/prepare": 137,
+            "surgery/stop": 114,
+            "surgery/dose": 62,
+            "surgery/finish": 20,
+            "response/launch": 81,
+            "response/arrive": 51,
+            "response/dose": 51,
+            "care/wrap": 300,
+            "care/place": 101,
+            "care/claim": 99,
+            "response/switch": 37,
+            "care/layer": 137,
+            "care/capture": 7,
+            "care/settle": 10,
+            "care/dose": 10,
+            "surgery/step": 3,
+            "surgery/tie": 3,
+            "response/handoff": 26,
+            "surgery/hold": 13,
+            "surgery/resume": 2,
+            "surgery/wrap": 6
+          },
+          "dosesByPath": {
+            "surgery": 62,
+            "response": 77,
+            "care": 10
+          },
+          "teammateDoses": 0,
+          "unassignedDoses": 0,
+          "observedHealingAcrossDoseIntervals": 2030.46
+        }
+      ],
+      "replay": {
+        "restored": 12,
+        "exact": 12
+      },
+      "matchedRunOutcomes": {
+        "bothWin": 11,
+        "onlyActive": 0,
+        "onlyUnused": 1
+      }
+    },
+    {
+      "cohort": "party",
+      "receipt": "whole-standard-party01.json",
+      "split": [
+        {
+          "active": false,
+          "runs": 24,
+          "victories": 24,
+          "at27": 24,
+          "completeHybrid": 24,
+          "firstHybridShops": {
+            "16": 24
+          },
+          "allEightPortfolios": 8,
+          "encounteredBosses": [
+            "bridge-ferryman",
+            "city-eater",
+            "constable",
+            "lamplighter",
+            "ledger-leech",
+            "matron",
+            "pallbearer",
+            "stitchwright",
+            "wire-harpist",
+            "wire-seamstress"
+          ],
+          "lastBossDefeats": {},
+          "purchasedLate": {
+            "medic-response-switchback-1": {
+              "count": 12,
+              "firstEarned": 8
+            },
+            "medic-preventive-doorstep-kit-1": {
+              "count": 12,
+              "firstEarned": 8
+            },
+            "medic-surgery-tie-off-1": {
+              "count": 12,
+              "firstEarned": 19
+            },
+            "medic-preventive-layered-wrap-1": {
+              "count": 12,
+              "firstEarned": 8
+            },
+            "medic-response-moving-handoff-1": {
+              "count": 12,
+              "firstEarned": 8
+            },
+            "medic-surgery-wrapped-dressing-1": {
+              "count": 12,
+              "firstEarned": 19
+            }
+          },
+          "operations": {},
+          "dosesByPath": {},
+          "teammateDoses": 0,
+          "unassignedDoses": 0,
+          "observedHealingAcrossDoseIntervals": 0
+        },
+        {
+          "active": true,
+          "runs": 24,
+          "victories": 23,
+          "at27": 24,
+          "completeHybrid": 24,
+          "firstHybridShops": {
+            "16": 24
+          },
+          "allEightPortfolios": 8,
+          "encounteredBosses": [
+            "bridge-ferryman",
+            "city-eater",
+            "constable",
+            "lamplighter",
+            "ledger-leech",
+            "matron",
+            "pallbearer",
+            "stitchwright",
+            "wire-harpist",
+            "wire-seamstress"
+          ],
+          "lastBossDefeats": {
+            "city-eater": 1
+          },
+          "purchasedLate": {
+            "medic-response-switchback-1": {
+              "count": 12,
+              "firstEarned": 8
+            },
+            "medic-preventive-doorstep-kit-1": {
+              "count": 12,
+              "firstEarned": 8
+            },
+            "medic-surgery-tie-off-1": {
+              "count": 12,
+              "firstEarned": 19
+            },
+            "medic-preventive-layered-wrap-1": {
+              "count": 12,
+              "firstEarned": 8
+            },
+            "medic-response-moving-handoff-1": {
+              "count": 12,
+              "firstEarned": 8
+            },
+            "medic-surgery-wrapped-dressing-1": {
+              "count": 12,
+              "firstEarned": 19
+            }
+          },
+          "operations": {
+            "surgery/prepare": 119,
+            "surgery/stop": 67,
+            "surgery/dose": 119,
+            "surgery/step": 8,
+            "surgery/tie": 7,
+            "surgery/finish": 48,
+            "response/launch": 115,
+            "response/switch": 49,
+            "response/arrive": 64,
+            "response/dose": 62,
+            "care/wrap": 365,
+            "care/place": 128,
+            "care/claim": 115,
+            "care/layer": 162,
+            "response/handoff": 43,
+            "care/settle": 5,
+            "surgery/wrap": 12,
+            "surgery/hold": 9,
+            "care/capture": 2,
+            "care/dose": 4,
+            "surgery/resume": 4
+          },
+          "dosesByPath": {
+            "surgery": 119,
+            "response": 105,
+            "care": 4
+          },
+          "teammateDoses": 125,
+          "unassignedDoses": 0,
+          "observedHealingAcrossDoseIntervals": 3035.47
+        }
+      ],
+      "replay": {
+        "restored": 0,
+        "exact": 0
+      },
+      "matchedRunOutcomes": {
+        "bothWin": 23,
+        "onlyActive": 0,
+        "onlyUnused": 1
+      }
+    }
+  ]
+}

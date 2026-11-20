@@ -2,7 +2,7 @@
 
 Current verified source **c05ff5dd2c2ac3c5de16b50284878b78e93c8487** has 95 techniques. Medic has five Field Surgery, three Rapid Response and three Preventive Care cards. [Preventive Care](MEDIC_PREVENTIVE_CARE.md).
 
-Continue the scoped Medic review with legal hybrid builds and whole runs. Human play, rendering, physical devices, native-language review, listening, motion and final balance remain open.
+The scoped Medic review covers all three pathways in 96 Standard runs, twelve matched Solo replays and two controlled hybrid checks. Continue with Mage Binding. Human acceptance and final balance remain open. [Medic run review](MEDIC_RUN_REVIEW.md).
 
 The scoped class review covers the timing, movement and reserve choices together.
 
