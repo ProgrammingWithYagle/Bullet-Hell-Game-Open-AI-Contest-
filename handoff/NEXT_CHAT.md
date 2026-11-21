@@ -10,7 +10,11 @@ Source **27bc2d33ca43c4a78ade74279f39dd87aeb1a6f0**, build **2026.11.20-mage-vol
 
 The protocol 88 Mage Spatial Craft pair is the verified rollback in `output/review-rollback.zip`. All 4,263 restored files match their archived bytes. Archive SHA-256 51884863b268bdef09833f760a44f578b6df2a901ce7ac79d4eb913119d1a0fa. All 213 original private SQLite-related files match their inventory. [Rotation](../reviews/storage-mage-volatile-spellwork-2026-11-20/retention-result.json).
 
-Review the three Mage pathways together, then move to the Assassin Duelist pathway. Human play, rendered presentation, physical devices, listening, native-language review and final balance remain open. [Volatile Spellwork](../docs/MAGE_VOLATILE_SPELLWORK.md).
+Continue with Assassin Duelist. Read the scoped Mage review for the current class evidence. Human play, rendered presentation, physical devices, listening, native-language review and final balance remain open. [Volatile Spellwork](../docs/MAGE_VOLATILE_SPELLWORK.md).
+
+## Scoped Mage run review
+
+The scoped Mage review covers eight fitting combinations in 96 Standard runs, twelve exact replays and two focused mixed fights. The first whole-run policy missed the Fuse Seal window. The revised comparison included all three pathways. Human acceptance and final balance remain open. [Mage run review](../docs/MAGE_RUN_REVIEW.md) · [Evidence](../reviews/mage-whole-review-2026-11-20/whole-mage-bindings.json).
 
 ## Protocol 88 Mage Spatial Craft rollback review
 

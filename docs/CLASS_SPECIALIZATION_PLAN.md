@@ -143,7 +143,7 @@ Tank mobile bulwark research includes the retained carry study and corrected Bra
 
 Tank has eleven techniques across Mobile Bulwark, Interceptor and Bastion. Relief Watch and Countermarch extend the two early Bastion fittings and have actual 15-SP Solo and non-host room evidence. Continue the class checklist and broader acceptance before treating the class as finished. [Bastion](TANK_BASTION_DESIGN.md) Next work continues with Tank and the remaining class routes before the boss pass.
 
-Review the three Mage pathways together, then move to the Assassin Duelist pathway. Human play, rendered presentation, physical devices, listening, native-language review and final balance remain open. [Volatile Spellwork](MAGE_VOLATILE_SPELLWORK.md).
+The scoped Mage review covers eight fitting combinations in 96 Standard runs, twelve exact replays and two focused mixed fights. The first whole-run policy missed the Fuse Seal window. The revised comparison included all three pathways. Human acceptance and final balance remain open. Continue with Assassin Duelist. [Mage run review](MAGE_RUN_REVIEW.md). Human play, rendered presentation, physical devices, listening, native-language review and final balance remain open. [Volatile Spellwork](MAGE_VOLATILE_SPELLWORK.md).
 
 Spatial Craft passed its Short and Standard study and is available in both frozen previews. [Run study](MAGE_SPATIAL_CRAFT.md).
 
