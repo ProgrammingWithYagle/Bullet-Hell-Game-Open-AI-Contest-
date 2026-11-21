@@ -1,3 +1,4 @@
+import { slipRouteRules, type SlipRouteStatus } from './assassin-slip-route.ts';
 import type { CalledOpeningCue, CalledOpeningStatus } from './assassin-called-opening.ts';
 import type { FuseCue, FuseStatus } from './mage-fuse-seal.ts';
 import type { WaymarkCue, WaymarkStatus } from './mage-waymark-return.ts';
@@ -48,6 +49,7 @@ export type KitStatus = Partial<InterceptorStatus> & Partial<BastionStatus> & Pa
   waymark?: WaymarkStatus;
   fuseSeal?: FuseStatus;
   calledOpening?: CalledOpeningStatus;
+  slipRoute?: SlipRouteStatus;
   heavyClutchConverted?:number;heavyClutchHandling?:"heavy-traverse-keyed-1"|"heavy-traverse-open-1";heavyTraverseShotRequiresHandling?:"heavy-traverse-keyed-1"|"heavy-traverse-open-1";
   heavyLanyardAt?:number;heavyLanyardSequence?:number;heavyLanyardUntil?:number;heavyLanyardX?:number;heavyLanyardY?:number;heavyLanyardRemaining?:number;heavyTraverseShotPosted?:boolean;heavyTraverseShotX?:number;heavyTraverseShotY?:number;
   heavyClutchLifted?:boolean;heavyClutchUsed?:boolean;heavyClutchForfeited?:number;heavyClutchSlotsRemaining?:number;heavyClutchAt?:number;heavyClutchSequence?:number;heavyClutchBlocked?:boolean;heavyTraverseShotRequiresClutch?:boolean;
@@ -98,6 +100,7 @@ const emptyStatus = (): KitStatus => ({
 });
 export type Construct = {
   kind: 'turret' | 'siege' | 'wall' | 'decoy';
+  slipRouteEcho?: true;
   machinery?: boolean;
   builder?:boolean;builderGroup?:number;buildingAt?:number;buildingUntil?:number;linkedSiege?:number;
   followOffset?: Vec;
@@ -341,6 +344,32 @@ export class ClassKits {
       if (t.owner === p.id && t.source === source) this.towers.delete(id);
     const id = c.id();
     this.towers.set(id, { kind: 'decoy', id, owner: p.id, ...point, radius: 18, aim: p.aim, health, maxHealth: health, at: c.tick, until: c.tick + ticks(seconds), damage: 0, fireAt: c.tick, interval: 1, source });
+    return id;
+  }
+  private liveVeilDecoy(owner: string, now: number) {
+    return [...this.towers.values()].find(t => t.owner === owner && t.kind === 'decoy' && !t.source && t.health > 0 && t.until > now);
+  }
+  canTradeVeil(owner: Player, now: number): boolean {
+    const state = this.statuses.get(owner.id);
+    return !!state && state.veilUntil > now + slipRouteRules.minimumExchangeTicks &&
+      (!hasTalent(owner, 'decoy-veil') || !!this.liveVeilDecoy(owner.id, now));
+  }
+  slipEcho(owner: string, id: number, now: number): Construct | undefined {
+    const echo = this.towers.get(id);
+    return echo?.owner === owner && echo.slipRouteEcho && echo.until > now && echo.health > 0 ? echo : undefined;
+  }
+  tradeVeil(owner: Player, ctx: KitContext, point: Vec): Construct | undefined {
+    if (!this.canTradeVeil(owner, ctx.tick)) return undefined;
+    const state = this.statuses.get(owner.id)!;
+    const until = Math.min(state.veilUntil, ctx.tick + slipRouteRules.echoTicks);
+    let echo = hasTalent(owner, 'decoy-veil') ? this.liveVeilDecoy(owner.id, ctx.tick) : undefined;
+    if (!echo) {
+      const id = this.placeDecoy(owner, ctx, point, slipRouteRules.echoHealth, (until - ctx.tick) / HZ, 'assassin-slip-route');
+      echo = this.towers.get(id)!;
+    }
+    Object.assign(echo, point, { until: Math.min(until, echo.until), slipRouteEcho: true });
+    state.veilUntil = Math.min(state.veilUntil, ctx.tick + slipRouteRules.retainedVeilTicks);
+    return echo;
   }
   constructs() {
     return [...this.towers.values()].filter((t) => t.health > 0&&this.combatClock>=(t.buildingUntil??0));
@@ -628,6 +657,7 @@ export class ClassKits {
     } else if (p.classId === 'assassin') {
       const state = this.state(p.id);
       if (slot === 'q') {
+        for (const [id, tower] of this.towers) if (tower.owner === p.id && tower.slipRouteEcho) this.towers.delete(id);
         const decoy = hasTalent(p, 'decoy-veil');
         state.veilUntil =
           now + ticks((decoy ? 4 : 6) * (1 + (s.effects.veilDuration ?? 0)));
@@ -775,7 +805,7 @@ export class ClassKits {
       );
     }
     for (const [id, tower] of this.towers) {
-      if(tower.machinery&&!c.players.some(p=>p.id===tower.owner&&p.connected&&p.status==='active')){this.towers.delete(id);continue;}
+      if((tower.machinery||tower.slipRouteEcho)&&!c.players.some(p=>p.id===tower.owner&&p.connected&&p.status==='active')){this.towers.delete(id);continue;}
       if (c.tick >= tower.until || tower.health <= 0) {
         this.queueRetaliation(tower);
         this.towers.delete(id);

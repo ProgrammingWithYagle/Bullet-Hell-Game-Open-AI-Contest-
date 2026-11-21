@@ -1,4 +1,4 @@
-import { assassinActions, assassinDuelLabel } from './assassin-actions.ts';
+import { assassinActions, assassinDuelLabel, assassinSlipLabel } from './assassin-actions.ts';
 import { mageActions, mageBindingLabel, mageWaymarkLabel, mageFuseLabel } from './mage-actions.ts';
 import { medicActions, medicHudLabel } from './medic-actions.ts';
 import {tankActions,tankHudLabel,tankCommitBlocked} from './tank-actions.ts';
@@ -769,7 +769,7 @@ function update(view: View) {
       t('ability.' + cl.abilities[1].id + '.name'),
     ],
     ['ultimate', ultimateLabel, p.ultimateAt, t(redoubt?'skill.engineer-builder-redoubt-1.description':'ability.' + cl.ultimate.id + '.name')],
-    ...machineryActions.extras.map(a=>[a.key,(p.classId==='tank'?tankHudLabel(p,a.key,view.combatTick):p.classId==='soldier'?soldierHudLabel(p,a.key,view.combatTick):p.classId==='heavy'?heavyHudLabel(p,a.key,view.combatTick):p.classId==='medic'?medicHudLabel(p,a.key,view.combatTick):p.classId==='mage'?(a.key==='technique3'?mageFuseLabel(p,view.combatTick):a.key==='technique2'?mageWaymarkLabel(p,view.combatTick):mageBindingLabel(p,view.combatTick)):p.classId==='assassin'?assassinDuelLabel(p,view.combatTick):t('skill.'+a.id+'.name')),a.at,t('skill.'+a.id+'.description')] as const),
+    ...machineryActions.extras.map(a=>[a.key,(p.classId==='tank'?tankHudLabel(p,a.key,view.combatTick):p.classId==='soldier'?soldierHudLabel(p,a.key,view.combatTick):p.classId==='heavy'?heavyHudLabel(p,a.key,view.combatTick):p.classId==='medic'?medicHudLabel(p,a.key,view.combatTick):p.classId==='mage'?(a.key==='technique3'?mageFuseLabel(p,view.combatTick):a.key==='technique2'?mageWaymarkLabel(p,view.combatTick):mageBindingLabel(p,view.combatTick)):p.classId==='assassin'?(a.key==='technique2'?assassinSlipLabel(p,view.combatTick):assassinDuelLabel(p,view.combatTick)):t('skill.'+a.id+'.name')),a.at,t('skill.'+a.id+'.description')] as const),
   ] as const) {
     let e = abilityList.querySelector<HTMLElement>('[data-ability="' + key + '"]');
     if (!e) {

@@ -1,0 +1,101 @@
+{
+  "passed": true,
+  "revision": "448522105b115dd46ff6f8c80d25c980f988c7bade981dc66abd4326832ce461",
+  "protocol": 91,
+  "cases": [
+    {
+      "path": "native-scratch02/worker-entry.json",
+      "sha256": "992eecf6c44f5183dc45c69985a7b4f17dfa9dac69c81160b239144b3d012f36",
+      "fitting": "entry",
+      "transport": "worker",
+      "boss": "ragpicker-kite",
+      "earned": 3,
+      "paid": 673,
+      "echoId": 9,
+      "movementSamples": 1,
+      "automaticThreshold": false
+    },
+    {
+      "path": "native-scratch02/worker-relay.json",
+      "sha256": "6c08bb23cc54f027b8a2f00fc4d8bd68606d764bebb06732ebca0019976277bc",
+      "fitting": "relay",
+      "transport": "worker",
+      "boss": "stitchwright",
+      "earned": 9,
+      "paid": 2156,
+      "echoId": 105,
+      "movementSamples": 9,
+      "automaticThreshold": false
+    },
+    {
+      "path": "native-scratch02/worker-threshold.json",
+      "sha256": "cdfd178a5c1120374f3fb8db78c2a19f2bec88998d6495018c158bbb8b33204e",
+      "fitting": "threshold",
+      "transport": "worker",
+      "boss": "stitchwright",
+      "earned": 9,
+      "paid": 2066,
+      "echoId": 78,
+      "movementSamples": 1,
+      "automaticThreshold": false
+    },
+    {
+      "path": "native-scratch02/peer-entry.json",
+      "sha256": "574e4a28b12594dfb4c645be87aa7c351d8ee66144221cfb571d31d8e2fb26bb",
+      "fitting": "entry",
+      "transport": "peer",
+      "boss": "tollkeeper",
+      "earned": 3,
+      "paid": 816,
+      "echoId": 48,
+      "movementSamples": 1,
+      "automaticThreshold": false
+    },
+    {
+      "path": "native-scratch02/peer-relay.json",
+      "sha256": "e769e6c70e19a4f344806e4535d6f5277b466f279d1af4ef1c506b84a9b4feb3",
+      "fitting": "relay",
+      "transport": "peer",
+      "boss": "stitchwright",
+      "earned": 9,
+      "paid": 1123,
+      "echoId": 190,
+      "movementSamples": 6,
+      "automaticThreshold": false
+    },
+    {
+      "path": "native-scratch02/peer-threshold.json",
+      "sha256": "da3a4eb5be30e8be580028d3e36ec5d6e984fafc9762b106186da412f2b74258",
+      "fitting": "threshold",
+      "transport": "peer",
+      "boss": "stitchwright",
+      "earned": 9,
+      "paid": 989,
+      "echoId": 112,
+      "movementSamples": 1,
+      "automaticThreshold": false
+    }
+  ],
+  "driver": "6c5110d91a8919712b06796c76d2a4bf58e1ca2bef3c58ad3f5c6cb9e1eb771c",
+  "worker": "d00f078896fbd977f5b68cfdca8a62d378025ffa36182d0c86d1c10eede2629e",
+  "inputs": {
+    "src/shared/protocol.ts": "6faae2c472f9391f8f6bcfafc15aacbcb6e3fdca4669ce2d43fb98ee4e5345ee",
+    "src/shared/game.ts": "d1639df1fc14405c63818e68de6513421d91bac8b39a0b7b00f607d5bb73c74c",
+    "src/shared/view.ts": "9c80f6486e754da2cdbbcaa565e6ed2848997919e79be363d46427989ccf11b8",
+    "content/revision.json": "4cf0f4b62782a683221213c5dc6ad6e3e4f089dfb2f3dd384d863a837a036c82",
+    "content/catalog.json": "e34f462398409a88686ab5909d5b628c62065a64084137dd733dbfb56f7342e1",
+    "src/shared/assassin-slip-route.ts": "4acc216d66da6567b5083eae7ff3ff76219c3a813fc19c98d6f45e75df84e986",
+    "src/shared/class-kits.ts": "b0bb14200d385a23750df187a585cd1bdc89a7344d991886a67d33adf86650b5",
+    "src/shared/skill-conflicts.ts": "01b421ef5a8747f4f2c4cc7c250303dd7303155442b9e21180787a514627e4b7",
+    "src/shared/practice-migration.ts": "41dd8f5c2ef6f6de243a38ec1810b59d79e0388e0efb4e76a4880d861c08a106",
+    "src/server/GraveRoom.ts": "0ab4f7ad00d9375a5f897a12c84781c64be4e821baef8336792a63a971cb13e6",
+    "src/client/progress.ts": "e5be44c0bef108c4e9018e51233cccbd662abdb277bf9381380e628c2a3b979e",
+    "src/client/profile.ts": "8ed42568481b9467744c32757c2a057dbffcbdc20481ebb11edce8716cf917f3"
+  },
+  "bundle": "native-bundle02",
+  "attempt": "native-scratch02",
+  "helpers": {
+    "fitting-route-pilot.mjs": "ba5af57f1b61966609b7ff8ab65707474a426c47034a056aa8f4afcfe90fc900",
+    "route-pilot.mjs": "0eb8dab0a9dd64cfd13b7c97d1605ed0daf9d39cfc4bd9b3baec317f6d3bfbbb"
+  }
+}

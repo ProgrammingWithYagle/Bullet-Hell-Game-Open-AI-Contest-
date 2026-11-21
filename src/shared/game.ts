@@ -1,3 +1,4 @@
+import { SlipRoute, slipRouteId, type SlipRouteWorld } from './assassin-slip-route.ts';
 import { CalledOpening, calledOpeningId, type CalledOpeningWorld } from './assassin-called-opening.ts';
 import { FuseSeal, fuseSealId, fuseSealRules, type FuseWorld } from './mage-fuse-seal.ts';
 import { WaymarkReturn, waymarkReturnId, type WaymarkWorld } from './mage-waymark-return.ts';
@@ -300,6 +301,7 @@ export class Game {
   private readonly waymarkReturn = new WaymarkReturn();
   private readonly fuseSeal = new FuseSeal();
   private readonly calledOpening = new CalledOpening();
+  private readonly slipRoute = new SlipRoute();
   private readonly bastion = new TankBastion(() => this.id());
   readonly classKits = new ClassKits();
   readonly bard = new BardKit();
@@ -314,7 +316,7 @@ export class Game {
   readonly sniper = new SoldierSniper();
   readonly grenadier = new SoldierGrenadier();
   readonly marksman = new SoldierMarksman();
-  kitStatus(id:string){return {...this.medicStatus(id),...this.magePivotStatus(id),...this.mageSpatialStatus(id),...this.mageFuseStatus(id),...this.assassinDuelStatus(id),...this.bastionStatus(this.players.get(id)),...this.classKits.status(id,this.combatTick),...(this.players.get(id)?.classId==='tank'?this.interceptor.ownerStatus(this.players.get(id)!,{tick:this.combatTick,playerRadius:rule.playerRadius,bounds:this.arena.bounds,obstacles:this.obstacles,lavaPits:this.arena.lavaPits},this.classKits.tankWallCarried(id,this.combatTick),this.phase==='combat'):{}),...(this.players.get(id)?.classId==='tank'?this.classKits.bulwarkStatus(this.players.get(id)!,{tick:this.combatTick,bounds:this.arena.bounds,obstacles:this.obstacles,lavaPits:this.arena.lavaPits}):{}),...(this.players.get(id)?.classId==='heavy'&&this.players.get(id)?.skills.includes(lineworkIds.entry)?this.lineworkStatus(this.players.get(id)!):{}),...(this.players.get(id)?.classId==='heavy'&&this.players.get(id)?.skills.includes(traverseIds.entry)?this.traverse.status(this.players.get(id)!,this.combatTick):{}),...(this.players.get(id)?.classId==='heavy'&&this.players.get(id)?.skills.includes(flakIds.entry)?this.flak.status(this.players.get(id),this.combatTick):{}),...(this.players.get(id)?.classId==='soldier'?{...this.skirmisher.status(id),...(this.players.get(id)?.skills.includes(sniperId)?this.sniper.status(this.players.get(id),this.combatTick):{}),...(this.players.get(id)?.skills.includes(grenadierIds.entry)?this.grenadier.status(this.players.get(id),this.grenadierContext()):{}),...(this.players.get(id)?.skills.includes(marksmanId)?this.marksman.status(this.players.get(id),this.combatTick):{}),soldierMagazineCapacity:this.stats(this.players.get(id)!).magazine}:{}),...(this.players.get(id)?.classId==='alchemist'?{...this.alchemy.status(id,this.combatTick,this.alchemyOptions(this.players.get(id)!)),alchemySamplesCapacity:this.stats(this.players.get(id)!).magazine}:{}),...(this.players.get(id)?.classId==='ranger'?{...this.ranger.status(id,this.combatTick,this.rangerOptions(this.players.get(id)!)),rangerQuiverCapacity:this.stats(this.players.get(id)!).magazine}:{}),...(this.players.get(id)?.classId==='bard'?this.bard.status(id):{}),...(this.players.get(id)?.classId==='swordsman'?this.sword.status(id,this.combatTick):{}),...(this.players.get(id)?.classId==='summoner'?this.retinue.status(this.players.get(id)!,this.combatTick,this.summonerOptions(this.players.get(id)!)):{})};}
+  kitStatus(id:string){return {...this.medicStatus(id),...this.magePivotStatus(id),...this.mageSpatialStatus(id),...this.mageFuseStatus(id),...this.assassinDuelStatus(id),...this.assassinSlipStatus(id),...this.bastionStatus(this.players.get(id)),...this.classKits.status(id,this.combatTick),...(this.players.get(id)?.classId==='tank'?this.interceptor.ownerStatus(this.players.get(id)!,{tick:this.combatTick,playerRadius:rule.playerRadius,bounds:this.arena.bounds,obstacles:this.obstacles,lavaPits:this.arena.lavaPits},this.classKits.tankWallCarried(id,this.combatTick),this.phase==='combat'):{}),...(this.players.get(id)?.classId==='tank'?this.classKits.bulwarkStatus(this.players.get(id)!,{tick:this.combatTick,bounds:this.arena.bounds,obstacles:this.obstacles,lavaPits:this.arena.lavaPits}):{}),...(this.players.get(id)?.classId==='heavy'&&this.players.get(id)?.skills.includes(lineworkIds.entry)?this.lineworkStatus(this.players.get(id)!):{}),...(this.players.get(id)?.classId==='heavy'&&this.players.get(id)?.skills.includes(traverseIds.entry)?this.traverse.status(this.players.get(id)!,this.combatTick):{}),...(this.players.get(id)?.classId==='heavy'&&this.players.get(id)?.skills.includes(flakIds.entry)?this.flak.status(this.players.get(id),this.combatTick):{}),...(this.players.get(id)?.classId==='soldier'?{...this.skirmisher.status(id),...(this.players.get(id)?.skills.includes(sniperId)?this.sniper.status(this.players.get(id),this.combatTick):{}),...(this.players.get(id)?.skills.includes(grenadierIds.entry)?this.grenadier.status(this.players.get(id),this.grenadierContext()):{}),...(this.players.get(id)?.skills.includes(marksmanId)?this.marksman.status(this.players.get(id),this.combatTick):{}),soldierMagazineCapacity:this.stats(this.players.get(id)!).magazine}:{}),...(this.players.get(id)?.classId==='alchemist'?{...this.alchemy.status(id,this.combatTick,this.alchemyOptions(this.players.get(id)!)),alchemySamplesCapacity:this.stats(this.players.get(id)!).magazine}:{}),...(this.players.get(id)?.classId==='ranger'?{...this.ranger.status(id,this.combatTick,this.rangerOptions(this.players.get(id)!)),rangerQuiverCapacity:this.stats(this.players.get(id)!).magazine}:{}),...(this.players.get(id)?.classId==='bard'?this.bard.status(id):{}),...(this.players.get(id)?.classId==='swordsman'?this.sword.status(id,this.combatTick):{}),...(this.players.get(id)?.classId==='summoner'?this.retinue.status(this.players.get(id)!,this.combatTick,this.summonerOptions(this.players.get(id)!)):{})};}
   readonly transforms = new AbilityTransforms();
   classCues(){return [...(this.phase==='combat'?this.fieldSurgery.cues(this.combatTick):[]),...(this.phase==='combat'?this.rapidResponse.cues(this.combatTick):[]),...(this.phase==='combat'?this.preventiveCare.cues({players:this.players,tick:this.combatTick}):[]),...(this.phase==='combat'?[...this.pivotSigil.cues(),...this.waymarkReturn.cues(),...this.fuseSeal.cues(),...this.calledOpening.cues()]:[]),...(this.phase==='combat'?this.bastion.cues(this.combatTick):[]),...this.interceptor.cues(this.roster(),this.combatTick,this.phase==='combat'),...this.flak.cues(),...this.sniper.cues(this.roster()),...this.grenadier.cues(this.roster()),...this.marksman.cues(),...this.skirmisher.cues(this.roster()),...this.classKits.cues(),...this.transforms.cues(),...this.bard.cues(),...this.sword.cues(this.roster(),this.combatTick),...this.ranger.cues(this.rangerContext()),...this.alchemy.cues(this.alchemyContext())];}
   private aimTargets(wardsOnly=true){const real=this.roster().filter(p=>p.status==='active'&&!this.classKits.untargetable(p.id,this.combatTick));return [...real,...this.classKits.decoyTargets(this.roster(),this.combatTick),...this.retinueTargets(wardsOnly)];}
@@ -597,7 +599,7 @@ export class Game {
     return p;
   }
   setConnected(id: string, connected: boolean) {
-    if(!connected){this.bastion.remove(id);this.fieldSurgery.drop(id);this.rapidResponse.drop(id);this.preventiveCare.drop(id);this.pivotSigil.drop(id);this.waymarkReturn.drop(id);this.fuseSeal.drop(id);this.calledOpening.drop(id);}
+    if(!connected){this.bastion.remove(id);this.fieldSurgery.drop(id);this.rapidResponse.drop(id);this.preventiveCare.drop(id);this.pivotSigil.drop(id);this.waymarkReturn.drop(id);this.fuseSeal.drop(id);this.calledOpening.drop(id);this.slipRoute.drop(id);}
     if(!connected)this.interceptor.forget(id,this.players.get(id),this.combatTick);
     if(!connected)this.classKits.dropTankWall(id);
     if(!connected)this.skirmisher.remove(id);
@@ -911,7 +913,7 @@ export class Game {
     this.phase = 'defeat'; this.phaseEnds = 0; this.boss.defeatedAt = 0;
     this.chapterState?.fail();this.wardPatients.clear();
     for (const shot of this.shots.values()) if (this.traverse.has(shot.id)||this.flak.has(shot.id)||this.marksman.has(shot.id)||this.grenadier.has(shot.id)||this.sniper.has(shot.id)) this.removeShot(shot);
-    this.fieldSurgery.clear();this.rapidResponse.clear();this.preventiveCare.clear();this.pivotSigil.clear();this.waymarkReturn.clear();this.fuseSeal.clear();this.calledOpening.clear();this.bastion.clear();this.interceptor.clear(this.roster(),this.combatTick);this.classKits.clear();
+    this.fieldSurgery.clear();this.rapidResponse.clear();this.preventiveCare.clear();this.pivotSigil.clear();this.waymarkReturn.clear();this.fuseSeal.clear();this.calledOpening.clear();this.slipRoute.clear();this.bastion.clear();this.interceptor.clear(this.roster(),this.combatTick);this.classKits.clear();
     this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.alchemy.clear();this.skirmisher.clear();this.marksman.clear();this.grenadier.clear();this.sniper.clear();this.flak.clear();this.traverse.clear();this.linework.clear({shot:id=>this.shots.get(id),remove:s=>this.removeShot(s)});
     if(this.chapterState){this.skirmish?.fail();this.clearChapterCombat();}
     return true;
@@ -961,7 +963,7 @@ export class Game {
     Object.assign(this.selectedContract,classifiedContract(this.selectedContract.bossId??'constable',encounterVariant(this.settings.difficulty,this.selectedContract.variant)));
     this.phaseAttackReadyAt = 0;
     this.variantPressure.reset(this.combatTick);
-    this.fieldSurgery.clear();this.rapidResponse.clear();this.preventiveCare.clear();this.pivotSigil.clear();this.waymarkReturn.clear();this.fuseSeal.clear();this.calledOpening.clear();this.bastion.clear();this.interceptor.clear(this.roster(),this.combatTick);this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.alchemy.clear();this.skirmisher.clear();this.marksman.clear();this.grenadier.clear();this.sniper.clear();this.flak.clear();this.traverse.clear();this.linework.clear({shot:id=>this.shots.get(id),remove:s=>this.removeShot(s)});this.transforms.clear();this.wardenPatrol.clear();
+    this.fieldSurgery.clear();this.rapidResponse.clear();this.preventiveCare.clear();this.pivotSigil.clear();this.waymarkReturn.clear();this.fuseSeal.clear();this.calledOpening.clear();this.slipRoute.clear();this.bastion.clear();this.interceptor.clear(this.roster(),this.combatTick);this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.alchemy.clear();this.skirmisher.clear();this.marksman.clear();this.grenadier.clear();this.sniper.clear();this.flak.clear();this.traverse.clear();this.linework.clear({shot:id=>this.shots.get(id),remove:s=>this.removeShot(s)});this.transforms.clear();this.wardenPatrol.clear();
     this.pruneExpired();
     this.phase = 'combat';
     this.phaseEnds = 0;
@@ -1106,7 +1108,7 @@ export class Game {
     if(this.chapterState){this.clearChapterNode(true);return;}
     this.scoreObserver?.clear(this);
     for (const player of this.players.values()) this.clearPoison(player);
-    this.fieldSurgery.clear();this.rapidResponse.clear();this.preventiveCare.clear();this.pivotSigil.clear();this.waymarkReturn.clear();this.fuseSeal.clear();this.calledOpening.clear();this.bastion.clear();this.interceptor.clear(this.roster(),this.combatTick);this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.alchemy.clear();this.skirmisher.clear();this.marksman.clear();this.grenadier.clear();this.sniper.clear();this.flak.clear();this.traverse.clear();this.linework.clear({shot:id=>this.shots.get(id),remove:s=>this.removeShot(s)});this.transforms.clear();this.wardenPatrol.clear();
+    this.fieldSurgery.clear();this.rapidResponse.clear();this.preventiveCare.clear();this.pivotSigil.clear();this.waymarkReturn.clear();this.fuseSeal.clear();this.calledOpening.clear();this.slipRoute.clear();this.bastion.clear();this.interceptor.clear(this.roster(),this.combatTick);this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.alchemy.clear();this.skirmisher.clear();this.marksman.clear();this.grenadier.clear();this.sniper.clear();this.flak.clear();this.traverse.clear();this.linework.clear({shot:id=>this.shots.get(id),remove:s=>this.removeShot(s)});this.transforms.clear();this.wardenPatrol.clear();
     this.completedBossIds.add(this.boss.id);
     const previous=this.completedBossForms.get(this.boss.id);
     if(!previous||['normal','brutal','crazed'].indexOf(this.boss.variant)>['normal','brutal','crazed'].indexOf(previous))this.completedBossForms.set(this.boss.id,this.boss.variant);
@@ -1373,6 +1375,7 @@ export class Game {
     if (this.preventiveCare.active) this.preventiveCare.advance(this.precautionWorld());
     if (this.fuseSeal.active) this.fuseSeal.advance(this.players, this.fuseWorld());
     if (this.calledOpening.active) this.calledOpening.advance(this.players, this.calledOpeningWorld());
+    if (this.slipRoute.active) this.slipRoute.advance(this.players, this.assassinSlipWorld());
     this.flak.flush({tick:this.combatTick,combat:this.phase==='combat',players:this.roster(),obstacles:this.grenadierObstacles(),shots:()=>[...this.shots.values()],remove:s=>{if(!this.shots.has(s.id))return false;this.removeShot(s);return true;},id:()=>this.id(),sound:(p,id,point)=>this.events.push({type:'sound',id,owner:p.id,x:point.x,y:point.y})});
     this.stepRevives();
     for(const p of this.players.values())this.limitPersonalShield(p);
@@ -1396,7 +1399,7 @@ export class Game {
       } else this.phase = 'defeat';
       this.chapterState?.fail();this.wardPatients.clear();
       for (const player of this.players.values()) this.clearPoison(player);
-      this.fieldSurgery.clear();this.rapidResponse.clear();this.preventiveCare.clear();this.pivotSigil.clear();this.waymarkReturn.clear();this.fuseSeal.clear();this.calledOpening.clear();this.bastion.clear();this.interceptor.clear(this.roster(),this.combatTick);this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.alchemy.clear();this.skirmisher.clear();this.marksman.clear();this.grenadier.clear();this.sniper.clear();this.flak.clear();this.traverse.clear();this.linework.clear({shot:id=>this.shots.get(id),remove:s=>this.removeShot(s)});this.transforms.clear();this.wardenPatrol.clear();
+      this.fieldSurgery.clear();this.rapidResponse.clear();this.preventiveCare.clear();this.pivotSigil.clear();this.waymarkReturn.clear();this.fuseSeal.clear();this.calledOpening.clear();this.slipRoute.clear();this.bastion.clear();this.interceptor.clear(this.roster(),this.combatTick);this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.alchemy.clear();this.skirmisher.clear();this.marksman.clear();this.grenadier.clear();this.sniper.clear();this.flak.clear();this.traverse.clear();this.linework.clear({shot:id=>this.shots.get(id),remove:s=>this.removeShot(s)});this.transforms.clear();this.wardenPatrol.clear();
       this.director.reset('constable');
       this.minions.clear();
       this.signatures = [];
@@ -1411,11 +1414,11 @@ export class Game {
     else this.skirmish?.cancel();
     this.phase=success?'victory':'defeat';
     for(const p of this.players.values())this.clearPoison(p);
-    this.fieldSurgery.clear();this.rapidResponse.clear();this.preventiveCare.clear();this.pivotSigil.clear();this.waymarkReturn.clear();this.fuseSeal.clear();this.calledOpening.clear();this.bastion.clear();this.interceptor.clear(this.roster(),this.combatTick);this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.alchemy.clear();this.skirmisher.clear();this.marksman.clear();this.grenadier.clear();this.sniper.clear();this.flak.clear();this.traverse.clear();this.linework.clear({shot:id=>this.shots.get(id),remove:s=>this.removeShot(s)});this.transforms.clear();this.minions.clear();this.director.reset('constable');this.signatures=[];this.warnings.length=0;this.fields.length=0;this.clearShots();this.accord=null;
+    this.fieldSurgery.clear();this.rapidResponse.clear();this.preventiveCare.clear();this.pivotSigil.clear();this.waymarkReturn.clear();this.fuseSeal.clear();this.calledOpening.clear();this.slipRoute.clear();this.bastion.clear();this.interceptor.clear(this.roster(),this.combatTick);this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.alchemy.clear();this.skirmisher.clear();this.marksman.clear();this.grenadier.clear();this.sniper.clear();this.flak.clear();this.traverse.clear();this.linework.clear({shot:id=>this.shots.get(id),remove:s=>this.removeShot(s)});this.transforms.clear();this.minions.clear();this.director.reset('constable');this.signatures=[];this.warnings.length=0;this.fields.length=0;this.clearShots();this.accord=null;
   }
   private clearChapterCombat() {
     for (const p of this.players.values()) this.clearPoison(p);
-    this.fieldSurgery.clear();this.rapidResponse.clear();this.preventiveCare.clear();this.pivotSigil.clear();this.waymarkReturn.clear();this.fuseSeal.clear();this.calledOpening.clear();this.bastion.clear();this.interceptor.clear(this.roster(),this.combatTick);this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.alchemy.clear();this.skirmisher.clear();this.marksman.clear();this.grenadier.clear();this.sniper.clear();this.flak.clear();this.traverse.clear();this.linework.clear({shot:id=>this.shots.get(id),remove:s=>this.removeShot(s)});
+    this.fieldSurgery.clear();this.rapidResponse.clear();this.preventiveCare.clear();this.pivotSigil.clear();this.waymarkReturn.clear();this.fuseSeal.clear();this.calledOpening.clear();this.slipRoute.clear();this.bastion.clear();this.interceptor.clear(this.roster(),this.combatTick);this.classKits.clear();this.bard.clear();this.sword.clear();this.retinue.clear();this.ranger.clear();this.alchemy.clear();this.skirmisher.clear();this.marksman.clear();this.grenadier.clear();this.sniper.clear();this.flak.clear();this.traverse.clear();this.linework.clear({shot:id=>this.shots.get(id),remove:s=>this.removeShot(s)});
     this.transforms.clear();
     this.wardenPatrol.clear();
     this.minions.clear();
@@ -1708,10 +1711,13 @@ export class Game {
         [environment,terrain,raidForce,earlyForce].every(force => Math.abs(force.x)+Math.abs(force.y)<=1e-6);
       this.fuseSeal.command(p, i, this.fuseWorld(), voluntary);
     }
-    if (p.classId === 'assassin' && (i.technique1 || this.calledOpening.has(p.id))) {
-      const voluntary = len>0 && !dash && !p.sprinting &&
-        [environment,terrain,raidForce,earlyForce].every(force => Math.abs(force.x)+Math.abs(force.y)<=1e-6);
-      this.calledOpening.move(p, i, this.calledOpeningWorld(), voluntary);
+    const duelling = p.classId === 'assassin' && (i.technique1 || this.calledOpening.has(p.id));
+    const slipping = p.classId === 'assassin' && (i.technique2 || this.slipRoute.has(p.id));
+    if (duelling || slipping) {
+      const voluntary = len > 0 && !dash && !p.sprinting &&
+        [environment, terrain, raidForce, earlyForce].every(force => Math.abs(force.x) + Math.abs(force.y) <= 1e-6);
+      if (duelling) this.calledOpening.move(p, i, this.calledOpeningWorld(), voluntary);
+      if (slipping) this.slipRoute.move(p, i, this.assassinSlipWorld(), voluntary);
     }
     this.interceptor.afterMove(p,interceptorWorld);
     if (tankWorld && i.technique1) {
@@ -1767,6 +1773,48 @@ export class Game {
     }
     p.wasFiring = i.fire && !handsBusy && !sniperReloadHandled && !p.reloadAt && !loading && !this.grenadier.blocksPrimary(p.id) && !this.sniper.blocksPrimary(p.id) && !this.flak.blocksPrimary(p.id,now) && !this.traverse.blocksPrimary(p.id,now) && !this.linework.blocksPrimary(p.id,now);
   }
+  private assassinSlipStatus(id: string) {
+    const owner = this.players.get(id);
+    if (owner?.classId !== 'assassin' || !owner.skills.includes(slipRouteId)) return {};
+    return { slipRoute: this.slipRoute.status(owner, this.assassinSlipWorld(), this.phase === 'combat') };
+  }
+
+  private assassinSlipWorld(): SlipRouteWorld {
+    const game = this, arena = this.arena, bounds = arena.bounds, obstacles = this.obstacles, now = this.combatTick;
+    let threats: RangerTarget[] | undefined;
+    function floor(point: Vec, radius: number) {
+      return point.x >= bounds.x + radius && point.x <= bounds.x + bounds.width - radius &&
+        point.y >= bounds.y + radius && point.y <= bounds.y + bounds.height - radius &&
+        obstacles.every(rect => segmentRect(point, point, rect, radius) === null) &&
+        arena.lavaPits.every(pit => distance(point, pit) > pit.radius + radius);
+    }
+    const echo = (owner: Player, origin: Vec, bend: Vec) => hasTalent(owner, 'decoy-veil') ? bend : origin;
+    return {
+      tick: now, cover: arena.obstacles, obstacles,
+      get threats() {
+        return threats ??= game.directTargets().filter(target => target.health > 0 && !target.key.startsWith('weak:'));
+      },
+      floor: point => floor(point, rule.playerRadius),
+      passage: owner => this.classKits.status(owner.id, now).passageUntil > now,
+      veilUntil: owner => this.classKits.status(owner.id, now).veilUntil,
+      startVeil: owner => { this.ability(owner, 'q'); return this.classKits.status(owner.id, now).veilUntil; },
+      canExchange: (owner, origin, bend) => floor(echo(owner, origin, bend), 18) && this.classKits.canTradeVeil(owner, now),
+      exchange: (owner, origin, bend) => {
+        const point = echo(owner, origin, bend);
+        return floor(point, 18) ? this.classKits.tradeVeil(owner, this.kitContext(), point) : undefined;
+      },
+      echo: (owner, id) => this.classKits.slipEcho(owner.id, id, now),
+      shiftEcho: (owner, id, point) => {
+        const present = this.classKits.slipEcho(owner.id, id, now);
+        if (!present || !floor(point, 18) || obstacles.some(rect => segmentRect(present, point, rect, 18)) ||
+            arena.lavaPits.some(pit => segmentCircle(present, point, pit, pit.radius + 18) !== null)) return false;
+        Object.assign(present, point);
+        return true;
+      },
+      note: (owner, event, point) => this.events.push({ type: 'sound', id: 'assassin-slip-' + event, owner: owner.id, x: point.x, y: point.y }),
+    };
+  }
+
   private assassinDuelStatus(id: string) {
     const owner = this.players.get(id);
     if (owner?.classId !== 'assassin' || !owner.skills.includes(calledOpeningId)) return {};
@@ -2370,6 +2418,7 @@ export class Game {
       this.waymarkReturn.drop(p.id);
       this.fuseSeal.drop(p.id);
       this.calledOpening.drop(p.id);
+      this.slipRoute.drop(p.id);
       if(p.classId==='summoner')this.clearOwnerRetinue(p.id);
       if(p.classId==='ranger')this.clearOwnerRanger(p.id);
       if(p.classId==='alchemist')this.clearOwnerAlchemy(p.id);

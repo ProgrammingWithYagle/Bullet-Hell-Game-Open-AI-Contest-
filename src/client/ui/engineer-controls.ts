@@ -16,6 +16,9 @@ type KitAction =
 // These are affected inputs, not an inference from a technique's visual frame.
 // Breach Casings also works when a placed charge triggers without remote input.
 const controlsByTechnique: Record<string, readonly KitAction[]> = {
+  "assassin-slip-route-1": ["technique2", "q"],
+  "assassin-infiltrator-footstep-relay-1": ["technique2"],
+  "assassin-infiltrator-threshold-echo-1": ["technique2"],
   "assassin-called-opening-1": ["technique1", "e"],
   "assassin-duelist-passing-cut-1": ["technique1"],
   "assassin-duelist-counterturn-1": ["technique1"],

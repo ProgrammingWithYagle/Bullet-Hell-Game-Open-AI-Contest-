@@ -4,6 +4,10 @@ Development remains active. Only the user decides when a class or the game is fi
 
 Read [Interceptor](../docs/TANK_INTERCEPTOR_DESIGN.md), [Mobile Bulwark](../docs/TANK_MOBILE_BULWARK_DESIGN.md), [Tethered Traverse](../docs/HEAVY_TETHERED_TRAVERSE_DESIGN.md), [Heavy](../docs/HEAVY_SPECIALIZATIONS.md), [further studies](../docs/HEAVY_FURTHER_ROUTE_STUDIES.md), [Soldier](../docs/SOLDIER_SPECIALIZATIONS.md), [open Soldier routes](../docs/SOLDIER_ROUTE_CANDIDATES.md), [class plan](../docs/CLASS_SPECIALIZATION_PLAN.md), [Service Yard](../docs/SERVICE_YARD_WORKING.md) and [bounded storage](../docs/REVIEW_STORAGE_POLICY.md). Current source/accepted proof outranks historical study proposals.
 
+## Protocol 91 Assassin Infiltrator candidate
+
+Protocol 91 adds Infiltrator with Slip Route, Footstep Relay and Threshold Echo. The exact local gate and six purchased operations passed. Duelist remains the retained preview while Infiltrator proceeds through publication. [Infiltrator](../docs/ASSASSIN_INFILTRATOR.md).
+
 ## Current exact protocol 90 Assassin Duelist review
 
 Source **cc72b0044650d7980a306c478bc285caa8f36384**, build **2026.11.20-assassin-duelist**, protocol **90**, catalog **107**. The local suite and both GitHub workflows passed 2,799 tests and seven checks. Each frozen audience binds 2,153 files and passed seven checks. Testing uses [5424](http://127.0.0.1:5424/) with backend 2800. Public review uses [5425](http://127.0.0.1:5425/) with backend 2801. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44930935886) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44930952749) · [Frozen checks](../reviews/assassin-duelist-2026-11-20/frozen-verification.json).

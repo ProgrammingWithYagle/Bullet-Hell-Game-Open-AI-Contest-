@@ -1,5 +1,9 @@
 # Scoped build variety audit
 
+## Assassin Infiltrator
+
+The protocol 91 census purchased 1,090 Assassin configurations in 27-SP shops. 598 use both pathways, with all 243 issued Duelist configurations preserved. [Census](../reviews/assassin-infiltrator-2026-11-21/build-census.json) · [Run study](ASSASSIN_INFILTRATOR.md).
+
 ## Assassin Duelist
 
 The protocol 90 census purchased 243 Duelist configurations in 27-SP shops. Each fitting has 78 legal configurations. All 12,924 earlier sets remained legal. [Census](../reviews/assassin-duelist-2026-11-20/build-census.json) · [Run study](ASSASSIN_DUELIST.md).

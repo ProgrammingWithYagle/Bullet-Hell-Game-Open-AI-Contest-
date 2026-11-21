@@ -37,7 +37,7 @@ test('exact edition 74 preserves all 67 issued technique restores, twelve classe
   assert.equal(issued.individual.length, 67);
   assert.equal(issued.classes.length, 12);
   assert.equal(issued.lineworker.length, 3);
-  assert.equal(PROTOCOL, 90);
+  assert.equal(PROTOCOL, 91);
   for (const row of [...issued.individual, ...issued.classes, ...issued.lineworker]) {
     const input = structuredClone(row.checkpoint);
     const g = Game.restoreOffline(input),

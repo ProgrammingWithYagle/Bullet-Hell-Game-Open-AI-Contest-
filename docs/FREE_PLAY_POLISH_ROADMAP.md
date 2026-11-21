@@ -120,3 +120,5 @@ Spatial Craft is available in both frozen previews. [Run study](MAGE_SPATIAL_CRA
 Volatile Spellwork is available in both frozen previews. [Run study](MAGE_VOLATILE_SPELLWORK.md).
 
 Duelist is available in both frozen previews. Continue with Assassin Infiltrator, then Mark Hunter and the scoped whole-Assassin review. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Duelist](ASSASSIN_DUELIST.md).
+
+Protocol 91 adds Infiltrator with Slip Route, Footstep Relay and Threshold Echo. The exact local gate and six purchased operations passed. Duelist remains the retained preview while Infiltrator proceeds through publication. [Infiltrator](ASSASSIN_INFILTRATOR.md).

@@ -1,3 +1,4 @@
+import { slipRouteRules } from '../shared/assassin-slip-route.ts';
 import { rapidResponseRules } from '../shared/medic-rapid-response.ts';
 import {drawTankGate} from './tank-bastion-presentation.ts';
 import {portClosedPieces} from '../shared/tank-bulwark-port.ts';
@@ -871,6 +872,26 @@ export class CombatScene extends Phaser.Scene {
       const x = interceptOwner.x, y = interceptOwner.y;
       h.lineStyle(2, color, .65).strokeRoundedRect(x - 8, y - 25, 16, 10, 2);
       h.lineBetween(x - 5, y - 23, x + 3, y - 18);
+    }
+    const slip = interceptOwner?.kit.slipRoute;
+    if (interceptOwner && slip?.ground && now < (slip.until ?? now)) {
+      const color = this.highContrast ? 0xffffff : 0xe4bac3;
+      const origin = slip.ground;
+      h.lineStyle(2, color, .64).strokeRoundedRect(origin.x - 9, origin.y - 7, 18, 14, 2);
+      if (slip.cover) h.lineStyle(2, color, .48).strokeCircle(slip.cover.x, slip.cover.y, 7);
+      if (slip.bentAt) h.lineStyle(2, color, .76).strokeCircle(slip.bentAt.x, slip.bentAt.y, 5);
+      if (slip.progress && slip.phase === 'walk') {
+        h.lineStyle(2, color, .83).beginPath()
+          .arc(interceptOwner.x, interceptOwner.y, 19, -Math.PI / 2, -Math.PI / 2 + slip.progress * Math.PI * 2).strokePath();
+      }
+      if (slip.phase === 'watch') {
+        for (let arc = 0; arc < 4; arc++) {
+          const heading = arc * Math.PI / 2;
+          h.lineStyle(1.5, color, .42).beginPath()
+            .arc(origin.x, origin.y, slipRouteRules.thresholdRadius, heading - .13, heading + .13).strokePath();
+        }
+      }
+      if (slip.relayTo) h.lineStyle(2, color, .76).strokeRoundedRect(slip.relayTo.x - 7, slip.relayTo.y - 7, 14, 14, 3);
     }
     const fuse = interceptOwner?.kit.fuseSeal;
     if (fuse?.guide && now < (fuse.until ?? now)) {

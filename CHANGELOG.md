@@ -1,6 +1,13 @@
 # Changelog
 
-Development build **2026.11.20-assassin-duelist**, protocol 90. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.21-assassin-infiltrator**, protocol 91. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-21 — Walk behind cover
+
+### Assassin Infiltrator
+
+- Slip Route spends Invisibility recovery, then lets the Assassin leave an echo after walking behind real cover.
+- Footstep Relay sends the same echo along walked ground. Threshold Echo can wait for a hostile to cross the entrance.
 
 ## 2026-11-20 — Call the opening
 
