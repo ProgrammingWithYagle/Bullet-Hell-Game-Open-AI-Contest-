@@ -1,6 +1,6 @@
 # Grave Accord — Free Play polish roadmap
 
-Source **c05ff5dd2c2ac3c5de16b50284878b78e93c8487**, build **2026.11.20-medic-preventive-care**, protocol **86**, catalog **95**. The local gate and both exact GitHub workflows passed 2,729 tests and all seven checks. Each frozen audience binds 2,112 files and passed seven checks. Testing uses [5416](http://127.0.0.1:5416/) with backend 2792. Public review uses [5417](http://127.0.0.1:5417/) with backend 2793. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44769177404) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44769207762) · [Frozen results](../reviews/medic-preventive-care-2026-11-20/frozen-verification.json) · [Saved evidence](../reviews/medic-preventive-care-2026-11-20/publication-byte-bindings.json).
+Source **61bf282b6b115617d83cd3cb1f68f25dd87a7517**, build **2026.11.20-mage-binding**, protocol **87**, catalog **98**. The local suite and both GitHub workflows passed 2,748 tests and seven checks. Each frozen audience binds 2,120 files and passed seven checks. Testing uses [5418](http://127.0.0.1:5418/) with backend 2794. Public review uses [5419](http://127.0.0.1:5419/) with backend 2795. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44781423345) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44781450554) · [Frozen checks](../reviews/mage-binding-2026-11-20/frozen-verification.json).
 
 The Engineer reference receipts below retain their original source and historical preview labels; they are not relabeled as current-source acceptance.
 
@@ -113,4 +113,4 @@ Preventive Care’s two fittings were exercised at the earned 9-SP Short shop th
 
 The scoped Medic review covers all three pathways in 96 Standard runs, twelve matched Solo replays and two controlled hybrid checks. Human acceptance and final balance remain open. [Medic run review](MEDIC_RUN_REVIEW.md).
 
-Protocol 87 adds Binding with Pivot Sigil, Fixed Angle and Reverse Face. All six purchased-operation cases passed from installed source across Solo and joined co-op. The retained protocol 86 pair continues to serve review while the Binding candidate proceeds through publication. [Mage Binding](MAGE_BINDING.md).
+Continue Mage with Spatial Craft and Volatile Spellwork. The scoped Mage review follows those pathways. Human play, rendered presentation, physical devices, listening, native-language review and final balance remain open. [Mage Binding](MAGE_BINDING.md).

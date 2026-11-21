@@ -1,0 +1,174 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-21T00:52:42.0974653Z",
+  "stage": "after",
+  "currentScope": "reviews/mage-binding-2026-11-20",
+  "rollbackScope": "reviews/medic-preventive-care-2026-11-20",
+  "rollbackSha256": "5a345602d63b7bb0653c2ee857f15ead623eeed7c1f065805bdd5383d1cf8f5e",
+  "previews": [
+    {
+      "scope": "reviews/mage-binding-2026-11-20",
+      "audience": "testing",
+      "source": "61bf282b6b115617d83cd3cb1f68f25dd87a7517",
+      "bindings": [
+        {
+          "kind": "client",
+          "pid": 40396,
+          "port": 5418,
+          "processUtc": "2026-11-21T00:45:54.4750460Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-mage-binding-2026-11-20-testing-61bf282 --host 127.0.0.1 --port 5418 --strictPort"
+        },
+        {
+          "kind": "backend",
+          "pid": 42164,
+          "port": 2794,
+          "processUtc": "2026-11-21T00:45:54.4570920Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-mage-binding-2026-11-20-61bf282.mjs\""
+        }
+      ],
+      "health": {
+        "status": "ok",
+        "startedAt": "2026-11-21T00:45:55.356Z",
+        "uptimeSeconds": 400.0659058,
+        "prototype": "grave-accord-development",
+        "playable": {
+          "bosses": 66,
+          "classes": 12,
+          "modes": [
+            "short",
+            "standard",
+            "long",
+            "raid",
+            "endless",
+            "story"
+          ]
+        },
+        "protocolVersion": 87,
+        "contentRevision": "3a77cf3d6bb196bbff0743e988a18928e39bf4acf899dfc4a3c1b24103b7c3b1",
+        "practiceOnly": true,
+        "audience": "testing",
+        "teamRecords": {
+          "available": true,
+          "scope": "server",
+          "persistent": true
+        },
+        "sourceCommit": "61bf282b6b115617d83cd3cb1f68f25dd87a7517",
+        "capacity": {
+          "reservedSlots": 0,
+          "instanceLimit": 50,
+          "rooms": 0,
+          "roomLimit": 4,
+          "available": true,
+          "canJoin": true,
+          "canCreate": true,
+          "queued": 0,
+          "offeredSlots": 0
+        }
+      }
+    },
+    {
+      "scope": "reviews/mage-binding-2026-11-20",
+      "audience": "public",
+      "source": "61bf282b6b115617d83cd3cb1f68f25dd87a7517",
+      "bindings": [
+        {
+          "kind": "client",
+          "pid": 42228,
+          "port": 5419,
+          "processUtc": "2026-11-21T00:45:54.4756310Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-mage-binding-2026-11-20-public-61bf282 --host 127.0.0.1 --port 5419 --strictPort"
+        },
+        {
+          "kind": "backend",
+          "pid": 44212,
+          "port": 2795,
+          "processUtc": "2026-11-21T00:45:54.4571130Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-mage-binding-2026-11-20-61bf282.mjs\""
+        }
+      ],
+      "health": {
+        "status": "ok",
+        "startedAt": "2026-11-21T00:45:55.361Z",
+        "uptimeSeconds": 402.6661791,
+        "prototype": "grave-accord-development",
+        "playable": {
+          "bosses": 66,
+          "classes": 12,
+          "modes": [
+            "short",
+            "standard",
+            "long",
+            "raid",
+            "endless",
+            "story"
+          ]
+        },
+        "protocolVersion": 87,
+        "contentRevision": "3a77cf3d6bb196bbff0743e988a18928e39bf4acf899dfc4a3c1b24103b7c3b1",
+        "practiceOnly": true,
+        "audience": "public",
+        "teamRecords": {
+          "available": true,
+          "scope": "server",
+          "persistent": true
+        },
+        "sourceCommit": "61bf282b6b115617d83cd3cb1f68f25dd87a7517",
+        "capacity": {
+          "reservedSlots": 0,
+          "instanceLimit": 50,
+          "rooms": 0,
+          "roomLimit": 4,
+          "available": true,
+          "canJoin": true,
+          "canCreate": true,
+          "queued": 0,
+          "offeredSlots": 0
+        }
+      }
+    },
+    {
+      "scope": "reviews/medic-preventive-care-2026-11-20",
+      "audience": "testing",
+      "source": "c05ff5dd2c2ac3c5de16b50284878b78e93c8487",
+      "bindings": [
+        {
+          "kind": "client",
+          "port": 5416,
+          "originallyRecordedPid": 11776,
+          "alreadyStopped": true,
+          "retired": true
+        },
+        {
+          "kind": "backend",
+          "port": 2792,
+          "originallyRecordedPid": 52324,
+          "alreadyStopped": true,
+          "retired": true
+        }
+      ],
+      "health": null
+    },
+    {
+      "scope": "reviews/medic-preventive-care-2026-11-20",
+      "audience": "public",
+      "source": "c05ff5dd2c2ac3c5de16b50284878b78e93c8487",
+      "bindings": [
+        {
+          "kind": "client",
+          "port": 5417,
+          "originallyRecordedPid": 31984,
+          "alreadyStopped": true,
+          "retired": true
+        },
+        {
+          "kind": "backend",
+          "port": 2793,
+          "originallyRecordedPid": 39084,
+          "alreadyStopped": true,
+          "retired": true
+        }
+      ],
+      "health": null
+    }
+  ]
+}

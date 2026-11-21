@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-11-21T00:48:50.885468+00:00",
+  "repo": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)",
+  "gitHead": "61bf282b6b115617d83cd3cb1f68f25dd87a7517",
+  "branch": "feat/first-playable-loop",
+  "currentScope": "reviews/mage-binding-2026-11-20",
+  "rollbackScope": "reviews/medic-preventive-care-2026-11-20",
+  "currentSourceCommit": "61bf282b6b115617d83cd3cb1f68f25dd87a7517",
+  "rollbackSourceCommit": "c05ff5dd2c2ac3c5de16b50284878b78e93c8487",
+  "keep": [
+    {
+      "path": "output/playtest-mage-binding-2026-11-20-testing-61bf282",
+      "sourceCommit": "61bf282b6b115617d83cd3cb1f68f25dd87a7517",
+      "scope": "reviews/mage-binding-2026-11-20",
+      "audience": "testing",
+      "manifestPath": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\mage-binding-2026-11-20-testing-files.json",
+      "manifestSha256": "721ad01fe299599c7e1b35f5953f4779b802e6caed933451c94850537abe4c7f",
+      "files": 2120,
+      "bytes": 892114788,
+      "treeStatSha256": "338564b716d00fba40dfd4504909ccec80712116c6eb6327f8e571ab96ed3d39"
+    },
+    {
+      "path": "output/playtest-mage-binding-2026-11-20-public-61bf282",
+      "sourceCommit": "61bf282b6b115617d83cd3cb1f68f25dd87a7517",
+      "scope": "reviews/mage-binding-2026-11-20",
+      "audience": "public",
+      "manifestPath": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\mage-binding-2026-11-20-public-files.json",
+      "manifestSha256": "704202c361dc980041d6e5e2c74170780bc0582c8ca6e9ad17dc200d56528b71",
+      "files": 2120,
+      "bytes": 892109508,
+      "treeStatSha256": "7570e8a8cc12195e9b68aabbbc8c3ae0f1de94941d549c16746dae6a94c06252"
+    }
+  ],
+  "keepBackendPaths": [
+    "output/frozen-mage-binding-2026-11-20-61bf282.mjs"
+  ],
+  "retireDirectories": [
+    {
+      "path": "output/playtest-medic-preventive-care-2026-11-20-public-c05ff5d",
+      "files": 2112,
+      "bytes": 887809649,
+      "treeStatSha256": "5ef7b12a7a6129a94b8b688401cc5903454170efd3aea36a5c801d115805df20",
+      "identity": {
+        "sourceCommit": "c05ff5dd2c2ac3c5de16b50284878b78e93c8487",
+        "buildId": "2026.11.20-medic-preventive-care",
+        "protocol": 86,
+        "contentRevision": "6804a534edddc489675628e35eaf6745c42c296bb8a2a167141547c6bbce324d",
+        "audience": "public",
+        "runtimeSourceSha256": "f7bb5978c1174b8605973b5a910f389a90066f9171504278f014489df5b233b9",
+        "sourceSnapshotSha256": "8c191ea542f1d3ab0379d023f0b33fa7717525743b248c766e2738af31545479",
+        "endpoint": "http://127.0.0.1:2793"
+      },
+      "identitySha256": "77e6a57c363fc5148c96a758d4a1989fca4e91c2bd0b26706b47efab0550fdc4"
+    },
+    {
+      "path": "output/playtest-medic-preventive-care-2026-11-20-testing-c05ff5d",
+      "files": 2112,
+      "bytes": 887814935,
+      "treeStatSha256": "8979890695d88c38a86bdd901bfac79e3cfd7a4b60ed00e5287fbff3be1ae895",
+      "identity": {
+        "sourceCommit": "c05ff5dd2c2ac3c5de16b50284878b78e93c8487",
+        "buildId": "2026.11.20-medic-preventive-care",
+        "protocol": 86,
+        "contentRevision": "6804a534edddc489675628e35eaf6745c42c296bb8a2a167141547c6bbce324d",
+        "audience": "testing",
+        "runtimeSourceSha256": "f7bb5978c1174b8605973b5a910f389a90066f9171504278f014489df5b233b9",
+        "sourceSnapshotSha256": "8c191ea542f1d3ab0379d023f0b33fa7717525743b248c766e2738af31545479",
+        "endpoint": "http://127.0.0.1:2792"
+      },
+      "identitySha256": "a31bd0cd35c5a979ae41c6ea65888238d227db7ad8b1572eabcb8532a3f71dbd"
+    }
+  ],
+  "retireBackends": [
+    {
+      "path": "output/frozen-medic-preventive-care-2026-11-20-c05ff5d.mjs",
+      "bytes": 4167052,
+      "sha256": "f01aa4e4d065aac070245834f2af39bc04b057a8c77237d7f38473db40a58878"
+    }
+  ],
+  "retireDirectoryCount": 2,
+  "retireFileBytes": 1779791636,
+  "candidateArchive": "output/review-rollback.next.zip",
+  "finalArchive": "output/review-rollback.zip",
+  "previousArchiveSha256": "644e564e30aaf2431c3cd2033c60b2680061f20797ec9ea6fe2b07da46b8543d",
+  "sourceAssetsReviewsReleaseAndPrivateDatabasesExcluded": true,
+  "policy": "Keep one current expanded testing/public pair and one verified rollback archive; retire older expanded build copies and their exact preview services. Original receipts remain historical.",
+  "authorizedByUser": true,
+  "cleanupNotYetPerformed": true,
+  "reuseExistingVerifiedRollback": false,
+  "existingRollbackArchiveSha256": null
+}

@@ -1,6 +1,6 @@
 # Class specialization: next development direction
 
-Current verified source **c05ff5dd2c2ac3c5de16b50284878b78e93c8487** has 95 techniques. Medic has five Field Surgery, three Rapid Response and three Preventive Care cards. [Preventive Care](MEDIC_PREVENTIVE_CARE.md).
+Current verified source **61bf282b6b115617d83cd3cb1f68f25dd87a7517** has 98 techniques. Mage has Pivot Sigil, Fixed Angle and Reverse Face. [Mage Binding](MAGE_BINDING.md).
 
 The scoped Medic review covers all three pathways in 96 Standard runs, twelve matched Solo replays and two controlled hybrid checks. Human acceptance and final balance remain open. [Medic run review](MEDIC_RUN_REVIEW.md).
 
@@ -143,4 +143,4 @@ Tank mobile bulwark research includes the retained carry study and corrected Bra
 
 Tank has eleven techniques across Mobile Bulwark, Interceptor and Bastion. Relief Watch and Countermarch extend the two early Bastion fittings and have actual 15-SP Solo and non-host room evidence. Continue the class checklist and broader acceptance before treating the class as finished. [Bastion](TANK_BASTION_DESIGN.md) Next work continues with Tank and the remaining class routes before the boss pass.
 
-Protocol 87 adds Binding with Pivot Sigil, Fixed Angle and Reverse Face. All six purchased-operation cases passed from installed source across Solo and joined co-op. The retained protocol 86 pair continues to serve review while the Binding candidate proceeds through publication. [Mage Binding](MAGE_BINDING.md).
+Continue Mage with Spatial Craft and Volatile Spellwork. The scoped Mage review follows those pathways. Human play, rendered presentation, physical devices, listening, native-language review and final balance remain open. [Mage Binding](MAGE_BINDING.md).
