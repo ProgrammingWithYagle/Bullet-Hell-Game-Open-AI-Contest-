@@ -1,0 +1,106 @@
+{
+  "passed": true,
+  "protocol": 89,
+  "contentRevision": "868983b908277d7fd5025837c1f9c9b40fb7aeb213cb0c77279941237f43a259",
+  "transport": "worker",
+  "fitting": "shunt",
+  "bought": [
+    {
+      "item": "mage-hexcraft-1",
+      "earned": 3,
+      "clears": 0
+    },
+    {
+      "item": "mage-fuse-seal-1",
+      "earned": 3,
+      "clears": 0
+    },
+    {
+      "item": "mage-volatile-shunt-fuse-1",
+      "earned": 9,
+      "clears": 1
+    }
+  ],
+  "firstClear": 1,
+  "next": {
+    "boss": "stitchwright",
+    "arena": "gatehouse",
+    "start": 576
+  },
+  "result": {
+    "prepared": {
+      "x": 695,
+      "y": 752,
+      "kind": "mage-fuse-point",
+      "owner": "solo",
+      "id": 58,
+      "at": 578,
+      "until": 656,
+      "radius": 18,
+      "phase": "prepared"
+    },
+    "firstCharge": {
+      "x": 695,
+      "y": 752,
+      "kind": "mage-fuse-point",
+      "owner": "solo",
+      "id": 58,
+      "at": 579,
+      "until": 617,
+      "radius": 18,
+      "phase": "binding"
+    },
+    "shifted": {
+      "x": 744.995617631952,
+      "y": 718.8271463753917,
+      "kind": "mage-fuse-point",
+      "owner": "solo",
+      "id": 58,
+      "at": 579,
+      "until": 611,
+      "radius": 18,
+      "phase": "binding"
+    },
+    "vent": {
+      "x": 744.995617631952,
+      "y": 718.8271463753917,
+      "kind": "mage-fuse-vent",
+      "owner": "solo",
+      "id": 58,
+      "at": 588,
+      "until": 595,
+      "radius": 12,
+      "phase": "binding",
+      "segments": [
+        {
+          "from": {
+            "x": 744.995617631952,
+            "y": 718.8271463753917
+          },
+          "to": {
+            "x": 792.5714160582912,
+            "y": 384.24270874552184
+          }
+        }
+      ]
+    },
+    "paid": 3279,
+    "original": 0,
+    "qClock": 939,
+    "sounds": [
+      "prepare",
+      "binding",
+      "shunt",
+      "vent"
+    ],
+    "originalAngle": -1.429549508611264,
+    "privateGuide": true
+  },
+  "pausedCommandsDiscarded": true,
+  "noCheckpointImports": true,
+  "wholeOptimizedWorker": true,
+  "workerPatched": false,
+  "workerSha256": "dea0184b09e5799a8e880bcc5065fcc47a96e1aca87a208abfafb03cb17f4058",
+  "driverSha256": "7fadedc25050d759390c8b3e6b73450599c05a871254910439ae32a1cd3a0e6f",
+  "testedAudience": "public"
+}

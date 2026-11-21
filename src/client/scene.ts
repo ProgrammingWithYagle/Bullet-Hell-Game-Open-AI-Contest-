@@ -872,7 +872,44 @@ export class CombatScene extends Phaser.Scene {
       h.lineStyle(2, color, .65).strokeRoundedRect(x - 8, y - 25, 16, 10, 2);
       h.lineBetween(x - 5, y - 23, x + 3, y - 18);
     }
+    const fuse = interceptOwner?.kit.fuseSeal;
+    if (fuse?.guide && now < (fuse.until ?? now)) {
+      const edge = this.highContrast ? 0xffffff : 0xffd09a;
+      for (const { from, to } of fuse.guide) {
+        const dx = to.x - from.x, dy = to.y - from.y, length = Math.hypot(dx, dy);
+        h.lineStyle(1.5, edge, this.highContrast ? .68 : .40);
+        for (let start = 5; start < length; start += 18) {
+          const end = Math.min(start + 6, length);
+          h.lineBetween(from.x + dx * start / length, from.y + dy * start / length,
+            from.x + dx * end / length, from.y + dy * end / length);
+        }
+      }
+    }
     for (const cue of view.classCues) {
+      if (cue.kind === 'mage-fuse-point' || cue.kind === 'mage-fuse-vent') {
+        if (now >= cue.until) continue;
+        const energy = Math.max(0, Math.min(1, (cue.until - now) / Math.max(1, cue.until - cue.at)));
+        const edge = this.highContrast ? 0xffffff : cue.phase === 'binding' ? 0xe6afee :
+          cue.phase === 'ward' ? 0xb4e7d4 : 0xffce98;
+        if (cue.kind === 'mage-fuse-vent') {
+          for (const { from, to } of cue.segments) {
+            h.lineStyle(cue.radius * 2, 0x3c1929, .43 * energy).lineBetween(from.x, from.y, to.x, to.y);
+            h.lineStyle(4, edge, .87 * energy).lineBetween(from.x, from.y, to.x, to.y);
+            h.fillStyle(edge, .80 * energy).fillCircle(to.x, to.y, 3.5);
+          }
+          continue;
+        }
+        const { x, y, radius } = cue;
+        h.fillStyle(0x281726, .70).fillCircle(x, y, radius - 5);
+        h.lineStyle(2, edge, .91).strokeRoundedRect(x - 8, y - 8, 16, 16, 3);
+        if (cue.phase === 'binding' || cue.phase === 'crossed') h.lineBetween(x, y - 5, x, y + 5);
+        if (cue.phase === 'ward' || cue.phase === 'crossed') h.lineBetween(x - 5, y, x + 5, y);
+        if (cue.echo) h.fillStyle(edge, 1).fillCircle(x + 8, y - 8, 3);
+        if (cue.risk) h.lineStyle(1, edge, .6).strokeCircle(x, y, radius + 3);
+        h.lineStyle(2.6, edge, .94).beginPath()
+          .arc(x, y, radius, -Math.PI / 2, -Math.PI / 2 + energy * Math.PI * 2).strokePath();
+        continue;
+      }
       if (cue.kind === 'mage-waymark') {
         if (now >= cue.until) continue;
         const age = Math.max(0, Math.min(1, (cue.until - now) / Math.max(1, cue.until - cue.at)));

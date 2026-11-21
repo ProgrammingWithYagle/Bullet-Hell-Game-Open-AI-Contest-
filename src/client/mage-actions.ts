@@ -1,3 +1,4 @@
+import { mageVolatileIds } from '../shared/mage-fuse-seal.ts';
 import { mageSpatialIds } from '../shared/mage-waymark-return.ts';
 import { mageBindingIds } from '../shared/mage-pivot-sigil.ts';
 import type { PlayerView } from '../shared/view.ts';
@@ -12,10 +13,16 @@ export function mageActions(player: PlayerView) {
   const waymark = player.kit.waymark;
   const waymarkId = waymark?.phase === 'resting' || waymark?.canHold ? mageSpatialIds.hold :
     waymark?.sideWindow ? mageSpatialIds.side : mageSpatialIds.entry;
+  const fuse = player.kit.fuseSeal;
+  const fuseReady = !!(fuse?.ready || fuse?.canShunt);
+  const fuseId = fuse?.split || fuse?.echo ? mageVolatileIds.twin :
+    fuse?.canShunt ? mageVolatileIds.shunt : mageVolatileIds.entry;
   const extras = [
     ...(active && player.skills.includes(mageBindingIds.entry) ? [{ key:'technique1' as const,id,at,blocked:!pivot?.ready }] : []),
     ...(active && player.skills.includes(mageSpatialIds.entry) ? [{ key:'technique2' as const,id:waymarkId,
       at:waymark?.ready ? 0 : waymark?.until ?? player.eAt,blocked:!waymark?.ready }] : []),
+    ...(active && player.skills.includes(mageVolatileIds.entry) ? [{ key:'technique3' as const,id:fuseId,
+      at:fuseReady ? 0 : fuse?.until ?? player.ultimateAt,blocked:!fuseReady }] : []),
   ];
   return { command: false, qNameKey: null, qAt: player.qAt, qBlocked: false, extras };
 }
@@ -44,4 +51,18 @@ export function mageWaymarkLabel(player: PlayerView, now: number) {
   }
   if (waymark?.phase === 'marked') return t(waymark.ready ? 'ui.mage.waymarkCommit' : 'ui.mage.waymarkWalk');
   return t(!waymark?.ready && (waymark?.until ?? player.eAt) <= now ? 'ui.mage.waymarkFind' : 'ui.mage.waymarkMark');
+}
+
+export function mageFuseLabel(player: PlayerView, now: number) {
+  const fuse = player.kit.fuseSeal;
+  if (!fuse || fuse.phase === 'idle')
+    return t(!fuse?.ready && (fuse?.until ?? player.ultimateAt) <= now ? 'ui.mage.fuseFind' : 'ui.mage.fuseSet');
+  if (fuse.phase === 'prepared') return t('ui.mage.fuseFeed');
+  if (fuse.echo) return t('ui.mage.fuseEcho');
+  if (!fuse.ready) return t(fuse.canShunt ? 'ui.mage.fuseShunt' : 'ui.mage.fuseAim');
+  if (fuse.risk && (fuse.until ?? now) - now <= 12) return t('ui.mage.fuseHurry');
+  if (fuse.split) return t('ui.mage.fuseSplit');
+  if (fuse.phase === 'binding') return t('ui.mage.fuseBinding');
+  if (fuse.phase === 'ward') return t('ui.mage.fuseWard');
+  return t('ui.mage.fuseCrossed');
 }

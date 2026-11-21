@@ -1,6 +1,13 @@
 # Changelog
 
-Development build **2026.11.20-mage-spatial-craft**, protocol 88. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.20-mage-volatile-spellwork**, protocol 89. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-20 — Light the fuse
+
+### Mage Volatile Spellwork
+
+- Fuse Seal charges with a completed Binding or Ward spell and spends the original Silent Twelfth recovery.
+- Shunt Fuse moves a live seal while walking. Twin Vent lets the Mage aim its two strokes separately on the same fuse.
 
 ## 2026-11-20 — Mark the way back
 

@@ -1,0 +1,784 @@
+{
+  "passed": true,
+  "revision": "868983b908277d7fd5025837c1f9c9b40fb7aeb213cb0c77279941237f43a259",
+  "gameBundle": "5ace75c8b369875b3f38701b975281ac234bbfc4ed53f595fe5a855bb56f6505",
+  "drivers": {
+    "trial": {
+      "file": "natural-fuse-fittings.mjs",
+      "sha256": "62d01b948a7af5fb48d304ab320bdf5cc6afa506ae53c526878df3ee276c8015"
+    },
+    "bank": {
+      "file": "natural-fuse-fittings-bank.mjs",
+      "sha256": "a34f9c57dfeda2fbb97274634a632fd961104e23c01427f0149dd447cbf0edac"
+    },
+    "adaptive": {
+      "file": "natural-fuse-fittings-adapt.mjs",
+      "sha256": "bbfae2e25bbd126f89f2481687de552313af553876980c81564cc2e01cfb5930"
+    }
+  },
+  "cases": 112,
+  "bankedFollowups": 32,
+  "adaptiveStandardFollowups": 16,
+  "matchedControls": 16,
+  "exactReplays": 12,
+  "runs": [
+    {
+      "mode": "short",
+      "cohort": "solo",
+      "path": "short-solo02.json",
+      "sha256": "c45d453ce98ce8ec60f4e1b9f93c6b527d41581a92a1d8b859f24d6926369ece",
+      "stats": [
+        {
+          "policy": "banked",
+          "runs": 4,
+          "wins": 3,
+          "marks": 0,
+          "paid": 0,
+          "vents": 0,
+          "positiveVents": 0,
+          "woundShortens": 0,
+          "shifted": 0,
+          "split": 0,
+          "echo": 0,
+          "differentEchoBearing": 0
+        },
+        {
+          "policy": "unused",
+          "runs": 4,
+          "wins": 3,
+          "marks": 0,
+          "paid": 0,
+          "vents": 0,
+          "positiveVents": 0,
+          "woundShortens": 0,
+          "shifted": 0,
+          "split": 0,
+          "echo": 0,
+          "differentEchoBearing": 0
+        },
+        {
+          "policy": "binding",
+          "runs": 4,
+          "wins": 3,
+          "marks": 2,
+          "paid": 2,
+          "vents": 2,
+          "positiveVents": 2,
+          "woundShortens": 0,
+          "shifted": 0,
+          "split": 0,
+          "echo": 0,
+          "differentEchoBearing": 0
+        },
+        {
+          "policy": "ward",
+          "runs": 4,
+          "wins": 2,
+          "marks": 5,
+          "paid": 5,
+          "vents": 5,
+          "positiveVents": 5,
+          "woundShortens": 0,
+          "shifted": 0,
+          "split": 0,
+          "echo": 0,
+          "differentEchoBearing": 0
+        },
+        {
+          "policy": "crossed",
+          "runs": 4,
+          "wins": 3,
+          "marks": 2,
+          "paid": 2,
+          "vents": 2,
+          "positiveVents": 2,
+          "woundShortens": 0,
+          "shifted": 0,
+          "split": 0,
+          "echo": 0,
+          "differentEchoBearing": 0
+        },
+        {
+          "policy": "shunt",
+          "runs": 4,
+          "wins": 2,
+          "marks": 0,
+          "paid": 0,
+          "vents": 0,
+          "positiveVents": 0,
+          "woundShortens": 0,
+          "shifted": 0,
+          "split": 0,
+          "echo": 0,
+          "differentEchoBearing": 0
+        },
+        {
+          "policy": "twin",
+          "runs": 4,
+          "wins": 2,
+          "marks": 0,
+          "paid": 0,
+          "vents": 0,
+          "positiveVents": 0,
+          "woundShortens": 0,
+          "shifted": 0,
+          "split": 0,
+          "echo": 0,
+          "differentEchoBearing": 0
+        }
+      ]
+    },
+    {
+      "mode": "short",
+      "cohort": "party",
+      "path": "short-party02.json",
+      "sha256": "4444326958951baad86aa334a6ff5e8f98ded12549799e4f17da01a03bc458a8",
+      "stats": [
+        {
+          "policy": "banked",
+          "runs": 4,
+          "wins": 4,
+          "marks": 0,
+          "paid": 0,
+          "vents": 0,
+          "positiveVents": 0,
+          "woundShortens": 0,
+          "shifted": 0,
+          "split": 0,
+          "echo": 0,
+          "differentEchoBearing": 0
+        },
+        {
+          "policy": "unused",
+          "runs": 4,
+          "wins": 4,
+          "marks": 0,
+          "paid": 0,
+          "vents": 0,
+          "positiveVents": 0,
+          "woundShortens": 0,
+          "shifted": 0,
+          "split": 0,
+          "echo": 0,
+          "differentEchoBearing": 0
+        },
+        {
+          "policy": "binding",
+          "runs": 4,
+          "wins": 4,
+          "marks": 2,
+          "paid": 2,
+          "vents": 2,
+          "positiveVents": 2,
+          "woundShortens": 0,
+          "shifted": 0,
+          "split": 0,
+          "echo": 0,
+          "differentEchoBearing": 0
+        },
+        {
+          "policy": "ward",
+          "runs": 4,
+          "wins": 4,
+          "marks": 6,
+          "paid": 6,
+          "vents": 6,
+          "positiveVents": 6,
+          "woundShortens": 0,
+          "shifted": 0,
+          "split": 0,
+          "echo": 0,
+          "differentEchoBearing": 0
+        },
+        {
+          "policy": "crossed",
+          "runs": 4,
+          "wins": 4,
+          "marks": 2,
+          "paid": 2,
+          "vents": 2,
+          "positiveVents": 2,
+          "woundShortens": 0,
+          "shifted": 0,
+          "split": 0,
+          "echo": 0,
+          "differentEchoBearing": 0
+        },
+        {
+          "policy": "shunt",
+          "runs": 4,
+          "wins": 4,
+          "marks": 0,
+          "paid": 0,
+          "vents": 0,
+          "positiveVents": 0,
+          "woundShortens": 0,
+          "shifted": 0,
+          "split": 0,
+          "echo": 0,
+          "differentEchoBearing": 0
+        },
+        {
+          "policy": "twin",
+          "runs": 4,
+          "wins": 4,
+          "marks": 0,
+          "paid": 0,
+          "vents": 0,
+          "positiveVents": 0,
+          "woundShortens": 0,
+          "shifted": 0,
+          "split": 0,
+          "echo": 0,
+          "differentEchoBearing": 0
+        }
+      ]
+    },
+    {
+      "mode": "standard",
+      "cohort": "solo",
+      "path": "standard-solo02.json",
+      "sha256": "d52eb4c56502471cc1cd4352d37b9e9068b1126b1321ece29a7fc5c28577015f",
+      "stats": [
+        {
+          "policy": "banked",
+          "runs": 4,
+          "wins": 4,
+          "marks": 0,
+          "paid": 0,
+          "vents": 0,
+          "positiveVents": 0,
+          "woundShortens": 0,
+          "shifted": 0,
+          "split": 0,
+          "echo": 0,
+          "differentEchoBearing": 0
+        },
+        {
+          "policy": "unused",
+          "runs": 4,
+          "wins": 4,
+          "marks": 0,
+          "paid": 0,
+          "vents": 0,
+          "positiveVents": 0,
+          "woundShortens": 0,
+          "shifted": 0,
+          "split": 0,
+          "echo": 0,
+          "differentEchoBearing": 0
+        },
+        {
+          "policy": "binding",
+          "runs": 4,
+          "wins": 3,
+          "marks": 4,
+          "paid": 4,
+          "vents": 4,
+          "positiveVents": 4,
+          "woundShortens": 0,
+          "shifted": 0,
+          "split": 0,
+          "echo": 0,
+          "differentEchoBearing": 0
+        },
+        {
+          "policy": "ward",
+          "runs": 4,
+          "wins": 3,
+          "marks": 12,
+          "paid": 12,
+          "vents": 11,
+          "positiveVents": 11,
+          "woundShortens": 0,
+          "shifted": 0,
+          "split": 0,
+          "echo": 0,
+          "differentEchoBearing": 0
+        },
+        {
+          "policy": "crossed",
+          "runs": 4,
+          "wins": 2,
+          "marks": 4,
+          "paid": 4,
+          "vents": 4,
+          "positiveVents": 4,
+          "woundShortens": 0,
+          "shifted": 0,
+          "split": 0,
+          "echo": 0,
+          "differentEchoBearing": 0
+        },
+        {
+          "policy": "shunt",
+          "runs": 4,
+          "wins": 3,
+          "marks": 2,
+          "paid": 2,
+          "vents": 2,
+          "positiveVents": 2,
+          "woundShortens": 0,
+          "shifted": 2,
+          "split": 0,
+          "echo": 0,
+          "differentEchoBearing": 0
+        },
+        {
+          "policy": "twin",
+          "runs": 4,
+          "wins": 2,
+          "marks": 3,
+          "paid": 3,
+          "vents": 4,
+          "positiveVents": 2,
+          "woundShortens": 0,
+          "shifted": 0,
+          "split": 2,
+          "echo": 2,
+          "differentEchoBearing": 0
+        }
+      ]
+    },
+    {
+      "mode": "standard",
+      "cohort": "party",
+      "path": "standard-party02.json",
+      "sha256": "3477b99ecda76389fb6ebf20c622b73259314c17f99e0d1cf13329ccb5475484",
+      "stats": [
+        {
+          "policy": "banked",
+          "runs": 4,
+          "wins": 3,
+          "marks": 0,
+          "paid": 0,
+          "vents": 0,
+          "positiveVents": 0,
+          "woundShortens": 0,
+          "shifted": 0,
+          "split": 0,
+          "echo": 0,
+          "differentEchoBearing": 0
+        },
+        {
+          "policy": "unused",
+          "runs": 4,
+          "wins": 3,
+          "marks": 0,
+          "paid": 0,
+          "vents": 0,
+          "positiveVents": 0,
+          "woundShortens": 0,
+          "shifted": 0,
+          "split": 0,
+          "echo": 0,
+          "differentEchoBearing": 0
+        },
+        {
+          "policy": "binding",
+          "runs": 4,
+          "wins": 4,
+          "marks": 3,
+          "paid": 3,
+          "vents": 3,
+          "positiveVents": 3,
+          "woundShortens": 0,
+          "shifted": 0,
+          "split": 0,
+          "echo": 0,
+          "differentEchoBearing": 0
+        },
+        {
+          "policy": "ward",
+          "runs": 4,
+          "wins": 2,
+          "marks": 9,
+          "paid": 9,
+          "vents": 9,
+          "positiveVents": 9,
+          "woundShortens": 0,
+          "shifted": 0,
+          "split": 0,
+          "echo": 0,
+          "differentEchoBearing": 0
+        },
+        {
+          "policy": "crossed",
+          "runs": 4,
+          "wins": 3,
+          "marks": 3,
+          "paid": 3,
+          "vents": 3,
+          "positiveVents": 3,
+          "woundShortens": 0,
+          "shifted": 0,
+          "split": 0,
+          "echo": 0,
+          "differentEchoBearing": 0
+        },
+        {
+          "policy": "shunt",
+          "runs": 4,
+          "wins": 2,
+          "marks": 1,
+          "paid": 1,
+          "vents": 1,
+          "positiveVents": 1,
+          "woundShortens": 0,
+          "shifted": 1,
+          "split": 0,
+          "echo": 0,
+          "differentEchoBearing": 0
+        },
+        {
+          "policy": "twin",
+          "runs": 4,
+          "wins": 2,
+          "marks": 1,
+          "paid": 1,
+          "vents": 2,
+          "positiveVents": 1,
+          "woundShortens": 0,
+          "shifted": 0,
+          "split": 1,
+          "echo": 1,
+          "differentEchoBearing": 0
+        }
+      ]
+    }
+  ],
+  "bankFiles": [
+    {
+      "path": "bank-short-solo-crown-crypt-shunt.json",
+      "sha256": "e84fa4d9dfb970cc56856c2bc918b24296282c2fac815f91ba93baa60284d6c4",
+      "mode": "short",
+      "cohort": "solo"
+    },
+    {
+      "path": "bank-short-solo-crown-crypt-twin.json",
+      "sha256": "9480475f0372ce80455963639b9153485a17dee6e4019690e9f6b9c62344e1ad",
+      "mode": "short",
+      "cohort": "solo"
+    },
+    {
+      "path": "bank-short-solo-gatehouse-shunt.json",
+      "sha256": "9faee756dfd9ec7c6750da9b820bdf4343467a5ad3c71adfff9c81fe658add07",
+      "mode": "short",
+      "cohort": "solo"
+    },
+    {
+      "path": "bank-short-solo-gatehouse-twin.json",
+      "sha256": "b04c6f9535a09d0cc926c9b523cee92ba25a6379428a92d719bd63104cf86783",
+      "mode": "short",
+      "cohort": "solo"
+    },
+    {
+      "path": "bank-short-solo-ossuary-works-shunt.json",
+      "sha256": "0502f47567ced33801d2d3c192948dc2b70cfbf0bc933017271d87b9df036b83",
+      "mode": "short",
+      "cohort": "solo"
+    },
+    {
+      "path": "bank-short-solo-ossuary-works-twin.json",
+      "sha256": "1e6fdf44c9e773ab0e09251e52a6d6caf0b3bb97134dc220148aba49b944b62c",
+      "mode": "short",
+      "cohort": "solo"
+    },
+    {
+      "path": "bank-short-solo-sunken-chapel-shunt.json",
+      "sha256": "d552e39184d49fdd898d436852a7979a4c3f41f27bbd79548c01b6f6e7d07f24",
+      "mode": "short",
+      "cohort": "solo"
+    },
+    {
+      "path": "bank-short-solo-sunken-chapel-twin.json",
+      "sha256": "fde184a765c90443daa327ddc70fa4257f5b784e2bf6c03c98354983e70ce0a9",
+      "mode": "short",
+      "cohort": "solo"
+    },
+    {
+      "path": "bank-short-party-crown-crypt-shunt.json",
+      "sha256": "86a885a7dbb56a1c6b35bf2cfce0e4b7f4f15d49ddeef04a41e857e3b4feb0f8",
+      "mode": "short",
+      "cohort": "party"
+    },
+    {
+      "path": "bank-short-party-crown-crypt-twin.json",
+      "sha256": "57f239a796cc92f0b6369beac962f8561bcd5a2f23a08d092609121f26c1c0dd",
+      "mode": "short",
+      "cohort": "party"
+    },
+    {
+      "path": "bank-short-party-gatehouse-shunt.json",
+      "sha256": "ebdeccc9ce341e93830119d64627a3c569b829cf3b10e6406daf944ee90aec17",
+      "mode": "short",
+      "cohort": "party"
+    },
+    {
+      "path": "bank-short-party-gatehouse-twin.json",
+      "sha256": "84d3345bbdf3b72917d1356632d001bdf0232fbdac08316da83ff559d01d2906",
+      "mode": "short",
+      "cohort": "party"
+    },
+    {
+      "path": "bank-short-party-ossuary-works-shunt.json",
+      "sha256": "27bd3124d203443f76b87b085d93a76ff2dadf892f223f3fd4108e4986bb37c9",
+      "mode": "short",
+      "cohort": "party"
+    },
+    {
+      "path": "bank-short-party-ossuary-works-twin.json",
+      "sha256": "b63e90e4df1f5aa02b554d36b5251fc5493d0cbbcfc788bed0cbe332492e8cff",
+      "mode": "short",
+      "cohort": "party"
+    },
+    {
+      "path": "bank-short-party-sunken-chapel-shunt.json",
+      "sha256": "35aca932bbffed355b0b4dc459de3df1e804c598cd2ec0d46be804556d204d6f",
+      "mode": "short",
+      "cohort": "party"
+    },
+    {
+      "path": "bank-short-party-sunken-chapel-twin.json",
+      "sha256": "75a82c31a799fe874a6e67b4c68ec984243fc4e4970788081ac692b6dd9c678f",
+      "mode": "short",
+      "cohort": "party"
+    },
+    {
+      "path": "bank-standard-solo-crown-crypt-shunt.json",
+      "sha256": "06c347e769069e14fde5fa87b3b08ec024ab15eef0b70210bba37075ebacc7b4",
+      "mode": "standard",
+      "cohort": "solo"
+    },
+    {
+      "path": "bank-standard-solo-crown-crypt-twin.json",
+      "sha256": "9f2348a706286a80f33a4d8a7fa0c713bb0788c292ddd4c890a21480a0f802cc",
+      "mode": "standard",
+      "cohort": "solo"
+    },
+    {
+      "path": "bank-standard-solo-gatehouse-shunt.json",
+      "sha256": "ba45f7a2bd70620027ac65f36775dbb339cae593b8762369a0b0788f5d3300a1",
+      "mode": "standard",
+      "cohort": "solo"
+    },
+    {
+      "path": "bank-standard-solo-gatehouse-twin.json",
+      "sha256": "c9c840823834b43e6a27705ab86855e82a5697f8677ed31b1655de0def308ef8",
+      "mode": "standard",
+      "cohort": "solo"
+    },
+    {
+      "path": "bank-standard-solo-ossuary-works-shunt.json",
+      "sha256": "71981863c65e1f672050f6cdfbb79b5fcaae9678fc512339d780b7cc2b9a816c",
+      "mode": "standard",
+      "cohort": "solo"
+    },
+    {
+      "path": "bank-standard-solo-ossuary-works-twin.json",
+      "sha256": "78d6a012fc6b3cdc542627c8323444a7ff0e5fb48c814a97761523dc3d7c6299",
+      "mode": "standard",
+      "cohort": "solo"
+    },
+    {
+      "path": "bank-standard-solo-sunken-chapel-shunt.json",
+      "sha256": "a06c87d5f6dde3924ab88ec8c6a5a4bf0da4aedbe8dcc0594240e3b65e11fa30",
+      "mode": "standard",
+      "cohort": "solo"
+    },
+    {
+      "path": "bank-standard-solo-sunken-chapel-twin.json",
+      "sha256": "df6276ba1c15294264ef4a381f66b59dbccc8015c09e05634f2ed8f64d6fee7a",
+      "mode": "standard",
+      "cohort": "solo"
+    },
+    {
+      "path": "bank-standard-party-crown-crypt-shunt.json",
+      "sha256": "570ad19e32e13cd1035244bdd7f72bd52fe8d22014041d22a7471721c3a18ec7",
+      "mode": "standard",
+      "cohort": "party"
+    },
+    {
+      "path": "bank-standard-party-crown-crypt-twin.json",
+      "sha256": "b8d1604f339c6a086efdb51502e22ca8d4fc532cacbb62800e1f83e56805924c",
+      "mode": "standard",
+      "cohort": "party"
+    },
+    {
+      "path": "bank-standard-party-gatehouse-shunt.json",
+      "sha256": "33fe617e2c0b790db9aaf6e3797c824f51b500504ab2b01c9896e705821e539e",
+      "mode": "standard",
+      "cohort": "party"
+    },
+    {
+      "path": "bank-standard-party-gatehouse-twin.json",
+      "sha256": "b4dc573e95b9671416e590cc752b51c7eb16221dd3ae7a012aae8c3a50735eac",
+      "mode": "standard",
+      "cohort": "party"
+    },
+    {
+      "path": "bank-standard-party-ossuary-works-shunt.json",
+      "sha256": "56bf63be8fe5c29985082b6a1dff80deb44cb7adb5df0db69208bb3756afc457",
+      "mode": "standard",
+      "cohort": "party"
+    },
+    {
+      "path": "bank-standard-party-ossuary-works-twin.json",
+      "sha256": "cf2067bae66f02e7a8f50102803ecc83e8fc6c3a78d531529ed0fc01f4e942d2",
+      "mode": "standard",
+      "cohort": "party"
+    },
+    {
+      "path": "bank-standard-party-sunken-chapel-shunt.json",
+      "sha256": "15c3b616c72372a679d30bb9a3a9b448ecbd09c610e8a0e7f4b103e2e924a3ff",
+      "mode": "standard",
+      "cohort": "party"
+    },
+    {
+      "path": "bank-standard-party-sunken-chapel-twin.json",
+      "sha256": "30e83d13318ddaa21a325b638983d6a7b93d9a28fbee2554fdc9811a8263ec01",
+      "mode": "standard",
+      "cohort": "party"
+    }
+  ],
+  "adaptiveFiles": [
+    {
+      "path": "adaptive-standard-solo-crown-crypt-shunt.json",
+      "sha256": "2a64ded767adbf990e71d17663369b72ab723d352dd2fc352458c94f51cd2c44",
+      "mode": "standard",
+      "cohort": "solo"
+    },
+    {
+      "path": "adaptive-standard-solo-crown-crypt-twin.json",
+      "sha256": "2b837e8208708bd7c7cd99dc3570ed38b48d4233208c9e56ba753cc9f9d92a3a",
+      "mode": "standard",
+      "cohort": "solo"
+    },
+    {
+      "path": "adaptive-standard-solo-gatehouse-shunt.json",
+      "sha256": "0cb132ec3a5894089cffb5f2a467c334a44e1af44e1b08aaa84984f8b0e97886",
+      "mode": "standard",
+      "cohort": "solo"
+    },
+    {
+      "path": "adaptive-standard-solo-gatehouse-twin.json",
+      "sha256": "8a82a0fd8368b8bf2120b9b00bc3ff8c89cfb9e6aaf5335e79fdb1897acf5bbf",
+      "mode": "standard",
+      "cohort": "solo"
+    },
+    {
+      "path": "adaptive-standard-solo-ossuary-works-shunt.json",
+      "sha256": "12c79c2570ca5cdefba135b48ae361cc716f4f23ead7d6c7f7c4678f8c3ac8ca",
+      "mode": "standard",
+      "cohort": "solo"
+    },
+    {
+      "path": "adaptive-standard-solo-ossuary-works-twin.json",
+      "sha256": "562f711d52ddc3ef0dbf60369c40377f52f9f9791e64d0616e3ed67c7bac7ab2",
+      "mode": "standard",
+      "cohort": "solo"
+    },
+    {
+      "path": "adaptive-standard-solo-sunken-chapel-shunt.json",
+      "sha256": "38df656deaa472fa6a2949e1fee8e1f1feceba25279dd17132de9cd8fda7c120",
+      "mode": "standard",
+      "cohort": "solo"
+    },
+    {
+      "path": "adaptive-standard-solo-sunken-chapel-twin.json",
+      "sha256": "1f8089a98dedc61ac6fb2becf49ed86f9a8a834099a5cbfb0d213de17a716803",
+      "mode": "standard",
+      "cohort": "solo"
+    },
+    {
+      "path": "adaptive-standard-party-crown-crypt-shunt.json",
+      "sha256": "a24df8fa0faa80fafba882638d007caa59df335e10afa34d0290e9500bba2681",
+      "mode": "standard",
+      "cohort": "party"
+    },
+    {
+      "path": "adaptive-standard-party-crown-crypt-twin.json",
+      "sha256": "1ee9f5d55b113967ab48a8075d5fa5b47cd0a382ece1a391e9af87cf17875bfa",
+      "mode": "standard",
+      "cohort": "party"
+    },
+    {
+      "path": "adaptive-standard-party-gatehouse-shunt.json",
+      "sha256": "ddc667827915813fb2b1568bf8ee606c345cdcb7ccdc81f05971f77ebec8ecfe",
+      "mode": "standard",
+      "cohort": "party"
+    },
+    {
+      "path": "adaptive-standard-party-gatehouse-twin.json",
+      "sha256": "c6c5201830dac8c5988e285f2475e211b308b82c7beda1dcde0a1fcca2dcec2d",
+      "mode": "standard",
+      "cohort": "party"
+    },
+    {
+      "path": "adaptive-standard-party-ossuary-works-shunt.json",
+      "sha256": "332fe163b76207e75a2d5c50f91b447bccde7606011aff77bf613c79d452a68b",
+      "mode": "standard",
+      "cohort": "party"
+    },
+    {
+      "path": "adaptive-standard-party-ossuary-works-twin.json",
+      "sha256": "2e860ac991daf218c6e36c6067007a275bcb6a71436c8652f9a25056d3fba290",
+      "mode": "standard",
+      "cohort": "party"
+    },
+    {
+      "path": "adaptive-standard-party-sunken-chapel-shunt.json",
+      "sha256": "bfb46acd6da9ca185ffdae3a55abb2322e61eceb9a09989fa250b2b091ab9e1e",
+      "mode": "standard",
+      "cohort": "party"
+    },
+    {
+      "path": "adaptive-standard-party-sunken-chapel-twin.json",
+      "sha256": "eb56cf559115116dfb37d6f8d5796b315bb42935ff659ca352a91a4638c8e2f0",
+      "mode": "standard",
+      "cohort": "party"
+    }
+  ],
+  "aggregate": {
+    "policy": "all",
+    "runs": 160,
+    "wins": 118,
+    "marks": 102,
+    "paid": 102,
+    "vents": 108,
+    "positiveVents": 95,
+    "woundShortens": 0,
+    "shifted": 20,
+    "split": 18,
+    "echo": 18,
+    "differentEchoBearing": 4
+  },
+  "bankAggregate": {
+    "policy": "spell recovery banked",
+    "runs": 32,
+    "wins": 21,
+    "marks": 16,
+    "paid": 16,
+    "vents": 22,
+    "positiveVents": 19,
+    "woundShortens": 0,
+    "shifted": 6,
+    "split": 8,
+    "echo": 8,
+    "differentEchoBearing": 4
+  },
+  "adaptiveAggregate": {
+    "policy": "adaptive Standard",
+    "runs": 16,
+    "wins": 11,
+    "marks": 25,
+    "paid": 25,
+    "vents": 24,
+    "positiveVents": 17,
+    "woundShortens": 0,
+    "shifted": 11,
+    "split": 7,
+    "echo": 7,
+    "differentEchoBearing": 0
+  }
+}

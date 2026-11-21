@@ -1,0 +1,143 @@
+{
+  "passed": true,
+  "protocol": 89,
+  "contentRevision": "868983b908277d7fd5025837c1f9c9b40fb7aeb213cb0c77279941237f43a259",
+  "transport": "worker",
+  "fitting": "twin",
+  "bought": [
+    {
+      "item": "mage-hexcraft-1",
+      "earned": 3,
+      "clears": 0
+    },
+    {
+      "item": "mage-fuse-seal-1",
+      "earned": 3,
+      "clears": 0
+    },
+    {
+      "item": "mage-volatile-twin-vent-1",
+      "earned": 9,
+      "clears": 1
+    }
+  ],
+  "firstClear": 1,
+  "next": {
+    "boss": "stitchwright",
+    "arena": "gatehouse",
+    "start": 576
+  },
+  "result": {
+    "prepared": {
+      "x": 695,
+      "y": 752,
+      "kind": "mage-fuse-point",
+      "owner": "solo",
+      "id": 58,
+      "at": 578,
+      "until": 656,
+      "radius": 18,
+      "phase": "prepared"
+    },
+    "firstCharge": {
+      "x": 695,
+      "y": 752,
+      "kind": "mage-fuse-point",
+      "owner": "solo",
+      "id": 58,
+      "at": 579,
+      "until": 617,
+      "radius": 18,
+      "phase": "binding"
+    },
+    "crossed": {
+      "x": 695,
+      "y": 752,
+      "kind": "mage-fuse-point",
+      "owner": "solo",
+      "id": 58,
+      "at": 580,
+      "until": 607,
+      "radius": 18,
+      "phase": "crossed"
+    },
+    "vent": {
+      "x": 695,
+      "y": 752,
+      "kind": "mage-fuse-vent",
+      "owner": "solo",
+      "id": 58,
+      "at": 581,
+      "until": 588,
+      "radius": 12,
+      "phase": "binding",
+      "segments": [
+        {
+          "from": {
+            "x": 695,
+            "y": 752
+          },
+          "to": {
+            "x": 776.9649144810287,
+            "y": 424.1403420758851
+          }
+        }
+      ],
+      "part": "first"
+    },
+    "echo": {
+      "x": 695,
+      "y": 752,
+      "kind": "mage-fuse-vent",
+      "owner": "solo",
+      "id": 61,
+      "at": 582,
+      "until": 589,
+      "radius": 12,
+      "phase": "ward",
+      "segments": [
+        {
+          "from": {
+            "x": 829.4775008194058,
+            "y": 590.7058532575757
+          },
+          "to": {
+            "x": 909.3181034569059,
+            "y": 657.2722161631815
+          }
+        },
+        {
+          "from": {
+            "x": 829.4775008194058,
+            "y": 590.7058532575757
+          },
+          "to": {
+            "x": 749.6368981819057,
+            "y": 524.1394903519698
+          }
+        }
+      ],
+      "part": "echo"
+    },
+    "paid": 3279,
+    "original": 0,
+    "qClock": 939,
+    "sounds": [
+      "prepare",
+      "binding",
+      "crossed",
+      "split",
+      "echo"
+    ],
+    "originalAngle": -1.3258176636680326,
+    "echoAngle": -0.8758176636680326,
+    "privateGuide": true
+  },
+  "pausedCommandsDiscarded": true,
+  "noCheckpointImports": true,
+  "wholeOptimizedWorker": true,
+  "workerPatched": false,
+  "workerSha256": "dea0184b09e5799a8e880bcc5065fcc47a96e1aca87a208abfafb03cb17f4058",
+  "driverSha256": "7fadedc25050d759390c8b3e6b73450599c05a871254910439ae32a1cd3a0e6f",
+  "testedAudience": "public"
+}

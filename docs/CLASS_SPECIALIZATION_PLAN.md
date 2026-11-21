@@ -146,3 +146,5 @@ Tank has eleven techniques across Mobile Bulwark, Interceptor and Bastion. Relie
 Continue with Mage Volatile Spellwork, then review the three Mage pathways together. Human play, rendered presentation, physical devices, listening, native-language review and final balance remain open. [Spatial Craft](MAGE_SPATIAL_CRAFT.md).
 
 Spatial Craft passed its Short and Standard study and is available in both frozen previews. [Run study](MAGE_SPATIAL_CRAFT.md).
+
+Protocol 89 adds Volatile Spellwork with Fuse Seal, Shunt Fuse and Twin Vent. The exact local gate and six purchased operations passed. The retained Spatial Craft pair serves review while Volatile Spellwork proceeds through publication. [Volatile Spellwork](MAGE_VOLATILE_SPELLWORK.md).

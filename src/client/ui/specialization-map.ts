@@ -11,6 +11,10 @@ export type SpecializationMap = {
 };
 // Authored positions belong to real techniques; no proposed family becomes an empty card.
 const positions: Record<string, Point> = {
+  "mage-hexcraft-1": { x: 500, y: 75 },
+  "mage-fuse-seal-1": { x: 500, y: 255 },
+  "mage-volatile-shunt-fuse-1": { x: 230, y: 505 },
+  "mage-volatile-twin-vent-1": { x: 770, y: 505 },
   "mage-warding-1": { x: 500, y: 75 },
   "mage-waymark-return-1": { x: 500, y: 255 },
   "mage-spatial-hold-trace-1": { x: 230, y: 505 },

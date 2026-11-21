@@ -1,5 +1,9 @@
 # Scoped build variety audit
 
+## Mage Volatile Spellwork
+
+The protocol 89 census purchased 3,647 legal Mage configurations in 27-SP shops. 1,166 carry all three pathways, with all 1,090 prior Mage configurations preserved. [Census](../reviews/mage-volatile-spellwork-2026-11-20/build-census.json) · [Run study](MAGE_VOLATILE_SPELLWORK.md).
+
 ## Mage Spatial Craft
 
 The protocol 88 census purchased 1,090 legal Mage configurations in 27-SP shops, including 598 two-path builds. All 249 earlier Binding configurations are present. [Census](../reviews/mage-spatial-craft-2026-11-20/build-census.json) · [Run study](MAGE_SPATIAL_CRAFT.md).

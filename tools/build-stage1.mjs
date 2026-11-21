@@ -1,4 +1,5 @@
-import { applyMageSpatialCraft, authoredDate as spatialAuthoredDate } from '../content/source/mage-spatial-craft.mjs';
+import { applyMageVolatileSpellwork, authoredDate as volatileAuthoredDate } from '../content/source/mage-volatile-spellwork.mjs';
+import { applyMageSpatialCraft } from '../content/source/mage-spatial-craft.mjs';
 import { applyMageBinding } from '../content/source/mage-binding.mjs';
 import { applyMedicPreventiveCare } from '../content/source/medic-preventive-care.mjs';
 import { applyMedicRapidResponse } from '../content/source/medic-rapid-response.mjs';
@@ -322,6 +323,7 @@ applyMedicRapidResponse(manifest);
 applyMedicPreventiveCare(manifest);
 applyMageBinding(manifest);
 applyMageSpatialCraft(manifest);
+applyMageVolatileSpellwork(manifest);
 for(const [key,value] of Object.entries(manifest)) json('content/'+key+'.json',value);
 json('content/catalog.json',manifest);
 write('docs/balance/skills.csv',csv(['id','class','branch','subbranch','name','depth','cost','grade','prerequisite','capstone','effects'],skills.map(s=>[s.id,s.classId,s.branchName,s.subbranchName,s.name,s.depth,s.cost,s.grade,s.prerequisite??'',s.capstone,JSON.stringify(s.effects)])));
@@ -523,5 +525,5 @@ if(!fs.existsSync(path.join(root,'docs/ACCEPTANCE.md')))write('docs/ACCEPTANCE.m
   ['Delivery','Windows + public URL + GitHub release + Wiki + Project + ruleset','Pending'],
 ])+'\n');
 const fingerprint=crypto.createHash('sha256').update(JSON.stringify(manifest)).digest('hex');
-json('content/revision.json',{version:rules.contentVersion,sha256:fingerprint,authoredDate:spatialAuthoredDate});
+json('content/revision.json',{version:rules.contentVersion,sha256:fingerprint,authoredDate:volatileAuthoredDate});
 console.log(JSON.stringify({classes:classes.length,skills:skills.length,weapons:weapons.length,bosses:bosses.length,mutations:mutations.length,arenas:arenas.length,locales:locales.length,revision:fingerprint}));
