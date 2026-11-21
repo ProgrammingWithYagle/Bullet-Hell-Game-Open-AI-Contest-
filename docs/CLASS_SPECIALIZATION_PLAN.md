@@ -1,6 +1,6 @@
 # Class specialization: next development direction
 
-Current verified source **b69636150e788e83dd2725b38c1b3d42c6ca1ad6** has 101 techniques. The Mage has Binding and Spatial Craft. [Binding](MAGE_BINDING.md) · [Spatial Craft](MAGE_SPATIAL_CRAFT.md).
+Current verified source **27bc2d33ca43c4a78ade74279f39dd87aeb1a6f0** has 104 techniques. The Mage has Binding, Spatial Craft and Volatile Spellwork. [Volatile Spellwork](MAGE_VOLATILE_SPELLWORK.md).
 
 The scoped Medic review covers all three pathways in 96 Standard runs, twelve matched Solo replays and two controlled hybrid checks. Human acceptance and final balance remain open. [Medic run review](MEDIC_RUN_REVIEW.md).
 
@@ -143,8 +143,8 @@ Tank mobile bulwark research includes the retained carry study and corrected Bra
 
 Tank has eleven techniques across Mobile Bulwark, Interceptor and Bastion. Relief Watch and Countermarch extend the two early Bastion fittings and have actual 15-SP Solo and non-host room evidence. Continue the class checklist and broader acceptance before treating the class as finished. [Bastion](TANK_BASTION_DESIGN.md) Next work continues with Tank and the remaining class routes before the boss pass.
 
-Continue with Mage Volatile Spellwork, then review the three Mage pathways together. Human play, rendered presentation, physical devices, listening, native-language review and final balance remain open. [Spatial Craft](MAGE_SPATIAL_CRAFT.md).
+Review the three Mage pathways together, then move to the Assassin Duelist pathway. Human play, rendered presentation, physical devices, listening, native-language review and final balance remain open. [Volatile Spellwork](MAGE_VOLATILE_SPELLWORK.md).
 
 Spatial Craft passed its Short and Standard study and is available in both frozen previews. [Run study](MAGE_SPATIAL_CRAFT.md).
 
-Protocol 89 adds Volatile Spellwork with Fuse Seal, Shunt Fuse and Twin Vent. The exact local gate and six purchased operations passed. The retained Spatial Craft pair serves review while Volatile Spellwork proceeds through publication. [Volatile Spellwork](MAGE_VOLATILE_SPELLWORK.md).
+Volatile Spellwork passed its Short and Standard study and is available in both frozen previews. [Run study](MAGE_VOLATILE_SPELLWORK.md).

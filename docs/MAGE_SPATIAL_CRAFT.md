@@ -20,11 +20,11 @@ There were 80 paired seeded runs spanning Short and Standard, Solo and two playe
 | Standard | Solo | 2 / 4 | 2 / 4 | 3 / 4 | 2 / 4 | 2 / 4 |
 | Standard | Two players | 2 / 4 | 2 / 4 | 3 / 4 | 4 / 4 | 4 / 4 |
 
-## Current protocol 88 review
+## Protocol 88 rollback review
 
-Source **b69636150e788e83dd2725b38c1b3d42c6ca1ad6**, build **2026.11.20-mage-spatial-craft**, protocol **88**, catalog **101**. The local suite and both GitHub workflows passed 2,766 tests and seven checks. Each frozen audience binds 2,130 files and passed seven checks. Testing uses [5420](http://127.0.0.1:5420/) with backend 2796. Public review uses [5421](http://127.0.0.1:5421/) with backend 2797. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44849542955) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44849562092) · [Frozen checks](../reviews/mage-spatial-craft-2026-11-20/frozen-verification.json).
+Source **b69636150e788e83dd2725b38c1b3d42c6ca1ad6**, build **2026.11.20-mage-spatial-craft**, protocol **88**, catalog **101**. The local suite and both GitHub workflows passed 2,766 tests and seven checks. Each frozen audience binds 2,130 files and passed seven checks. The 5420/2796 and 5421/2797 listeners had stopped before promotion. The archived pair is the verified rollback. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44849542955) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44849562092) · [Frozen checks](../reviews/mage-spatial-craft-2026-11-20/frozen-verification.json).
 
-The protocol 87 Mage Binding pair is the verified rollback in `output/review-rollback.zip`. All 4,243 restored files match their archived bytes. Archive SHA-256 156b5ece7efeb851ba11e96dad14eb66a1d54540a01e336129b08224f591363a. All 213 original private SQLite-related files match their inventory. [Rotation](../reviews/storage-mage-spatial-craft-2026-11-20/retention-result.json).
+The protocol 87 Mage Binding pair served as the rollback during the protocol 88 review in `output/review-rollback.zip`. All 4,243 restored files match their archived bytes. Archive SHA-256 156b5ece7efeb851ba11e96dad14eb66a1d54540a01e336129b08224f591363a. All 213 original private SQLite-related files match their inventory. [Rotation](../reviews/storage-mage-spatial-craft-2026-11-20/retention-result.json).
 
 ## Verification
 

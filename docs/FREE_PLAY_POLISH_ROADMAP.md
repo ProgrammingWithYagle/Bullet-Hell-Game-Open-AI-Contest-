@@ -1,6 +1,6 @@
 # Grave Accord — Free Play polish roadmap
 
-Source **b69636150e788e83dd2725b38c1b3d42c6ca1ad6**, build **2026.11.20-mage-spatial-craft**, protocol **88**, catalog **101**. The local suite and both GitHub workflows passed 2,766 tests and seven checks. Each frozen audience binds 2,130 files and passed seven checks. Testing uses [5420](http://127.0.0.1:5420/) with backend 2796. Public review uses [5421](http://127.0.0.1:5421/) with backend 2797. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44849542955) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44849562092) · [Frozen checks](../reviews/mage-spatial-craft-2026-11-20/frozen-verification.json).
+Source **27bc2d33ca43c4a78ade74279f39dd87aeb1a6f0**, build **2026.11.20-mage-volatile-spellwork**, protocol **89**, catalog **104**. The local suite and both GitHub workflows passed 2,784 tests and seven checks. Each frozen audience binds 2,143 files and passed seven checks. Testing uses [5422](http://127.0.0.1:5422/) with backend 2798. Public review uses [5423](http://127.0.0.1:5423/) with backend 2799. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44854827757) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44854846080) · [Frozen checks](../reviews/mage-volatile-spellwork-2026-11-20/frozen-verification.json).
 
 The Engineer reference receipts below retain their original source and historical preview labels; they are not relabeled as current-source acceptance.
 
@@ -113,8 +113,8 @@ Preventive Care’s two fittings were exercised at the earned 9-SP Short shop th
 
 The scoped Medic review covers all three pathways in 96 Standard runs, twelve matched Solo replays and two controlled hybrid checks. Human acceptance and final balance remain open. [Medic run review](MEDIC_RUN_REVIEW.md).
 
-Continue with Mage Volatile Spellwork, then review the three Mage pathways together. Human play, rendered presentation, physical devices, listening, native-language review and final balance remain open. [Spatial Craft](MAGE_SPATIAL_CRAFT.md).
+Review the three Mage pathways together, then move to the Assassin Duelist pathway. Human play, rendered presentation, physical devices, listening, native-language review and final balance remain open. [Volatile Spellwork](MAGE_VOLATILE_SPELLWORK.md).
 
 Spatial Craft is available in both frozen previews. [Run study](MAGE_SPATIAL_CRAFT.md).
 
-Protocol 89 adds Volatile Spellwork with Fuse Seal, Shunt Fuse and Twin Vent. The exact local gate and six purchased operations passed. The retained Spatial Craft pair serves review while Volatile Spellwork proceeds through publication. [Volatile Spellwork](MAGE_VOLATILE_SPELLWORK.md).
+Volatile Spellwork is available in both frozen previews. [Run study](MAGE_VOLATILE_SPELLWORK.md).
