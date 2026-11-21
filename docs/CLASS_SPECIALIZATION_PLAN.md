@@ -1,6 +1,6 @@
 # Class specialization: next development direction
 
-Current verified source **61bf282b6b115617d83cd3cb1f68f25dd87a7517** has 98 techniques. Mage has Pivot Sigil, Fixed Angle and Reverse Face. [Mage Binding](MAGE_BINDING.md).
+Current verified source **b69636150e788e83dd2725b38c1b3d42c6ca1ad6** has 101 techniques. The Mage has Binding and Spatial Craft. [Binding](MAGE_BINDING.md) · [Spatial Craft](MAGE_SPATIAL_CRAFT.md).
 
 The scoped Medic review covers all three pathways in 96 Standard runs, twelve matched Solo replays and two controlled hybrid checks. Human acceptance and final balance remain open. [Medic run review](MEDIC_RUN_REVIEW.md).
 
@@ -143,6 +143,6 @@ Tank mobile bulwark research includes the retained carry study and corrected Bra
 
 Tank has eleven techniques across Mobile Bulwark, Interceptor and Bastion. Relief Watch and Countermarch extend the two early Bastion fittings and have actual 15-SP Solo and non-host room evidence. Continue the class checklist and broader acceptance before treating the class as finished. [Bastion](TANK_BASTION_DESIGN.md) Next work continues with Tank and the remaining class routes before the boss pass.
 
-Continue Mage with Spatial Craft and Volatile Spellwork. The scoped Mage review follows those pathways. Human play, rendered presentation, physical devices, listening, native-language review and final balance remain open. [Mage Binding](MAGE_BINDING.md).
+Continue with Mage Volatile Spellwork, then review the three Mage pathways together. Human play, rendered presentation, physical devices, listening, native-language review and final balance remain open. [Spatial Craft](MAGE_SPATIAL_CRAFT.md).
 
-Protocol 88 adds Spatial Craft with Waymark Return, Hold the Trace and Side Landing. All six purchased operations passed from the exact installed source. The retained Binding pair serves review while Spatial Craft proceeds through publication. [Spatial Craft](MAGE_SPATIAL_CRAFT.md).
+Spatial Craft passed its Short and Standard study and is available in both frozen previews. [Run study](MAGE_SPATIAL_CRAFT.md).

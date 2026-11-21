@@ -1,6 +1,6 @@
 # Grave Accord — Free Play polish roadmap
 
-Source **61bf282b6b115617d83cd3cb1f68f25dd87a7517**, build **2026.11.20-mage-binding**, protocol **87**, catalog **98**. The local suite and both GitHub workflows passed 2,748 tests and seven checks. Each frozen audience binds 2,120 files and passed seven checks. Testing uses [5418](http://127.0.0.1:5418/) with backend 2794. Public review uses [5419](http://127.0.0.1:5419/) with backend 2795. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44781423345) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44781450554) · [Frozen checks](../reviews/mage-binding-2026-11-20/frozen-verification.json).
+Source **b69636150e788e83dd2725b38c1b3d42c6ca1ad6**, build **2026.11.20-mage-spatial-craft**, protocol **88**, catalog **101**. The local suite and both GitHub workflows passed 2,766 tests and seven checks. Each frozen audience binds 2,130 files and passed seven checks. Testing uses [5420](http://127.0.0.1:5420/) with backend 2796. Public review uses [5421](http://127.0.0.1:5421/) with backend 2797. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44849542955) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44849562092) · [Frozen checks](../reviews/mage-spatial-craft-2026-11-20/frozen-verification.json).
 
 The Engineer reference receipts below retain their original source and historical preview labels; they are not relabeled as current-source acceptance.
 
@@ -13,7 +13,7 @@ Finish one coherent area before opening the next. Use the public-release-era gam
 | Order | Focus | Concrete result needed before the next focus |
 | --- | --- | --- |
 | 1 — scoped reference checked | Class-tree structure and Engineer reference | Separate General and Specializations; build an honest, readable specialization graph; finish Engineer's three distinct pathways and their internal choices; verify the full build loop. |
-| 2 — active: Medic specialization work | Remaining classes, individually | Bring each class through the same quality checklist. At least three distinctive routes is initial coverage, with no fixed maximum. Do not release eleven sets of placeholder cards at once. |
+| 2 — active: Mage specialization work | Remaining classes, individually | Bring each class through the same quality checklist. At least three distinctive routes is initial coverage, with no fixed maximum. Do not release eleven sets of placeholder cards at once. |
 | 3 | Class balance and Free Play build variety | Compare complete legal builds across classes, weapons, mutations, difficulties, solo and co-op. Resolve dominant combinations, weak support paths and unclear interactions. |
 | 4 | Existing bosses, individually | Polish tells, movement, phases, hit rules, arenas, audio and difficulty identities. Work from early encounters toward late and secret encounters; do not start a second boss while the first has known major defects. |
 | 5 | The rest of Free Play | Finish the surrounding run loop: menus, objectives, rewards, pacing, readability, controls, networking, saves, performance and presentation. Address shared defects earlier when they block the current class or boss. |
@@ -113,6 +113,6 @@ Preventive Care’s two fittings were exercised at the earned 9-SP Short shop th
 
 The scoped Medic review covers all three pathways in 96 Standard runs, twelve matched Solo replays and two controlled hybrid checks. Human acceptance and final balance remain open. [Medic run review](MEDIC_RUN_REVIEW.md).
 
-Continue Mage with Spatial Craft and Volatile Spellwork. The scoped Mage review follows those pathways. Human play, rendered presentation, physical devices, listening, native-language review and final balance remain open. [Mage Binding](MAGE_BINDING.md).
+Continue with Mage Volatile Spellwork, then review the three Mage pathways together. Human play, rendered presentation, physical devices, listening, native-language review and final balance remain open. [Spatial Craft](MAGE_SPATIAL_CRAFT.md).
 
-Protocol 88 adds Spatial Craft with Waymark Return, Hold the Trace and Side Landing. All six purchased operations passed from the exact installed source. The retained Binding pair serves review while Spatial Craft proceeds through publication. [Spatial Craft](MAGE_SPATIAL_CRAFT.md).
+Spatial Craft is available in both frozen previews. [Run study](MAGE_SPATIAL_CRAFT.md).
